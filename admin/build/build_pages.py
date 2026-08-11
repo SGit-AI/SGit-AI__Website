@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.8'
+SITE_VERSION = 'v0.1.9'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.8', '2026-08-11', 'this release',
+    ('v0.1.9', '2026-08-11', 'this release',
+     '"Try sgit in your browser" page: the real sgit-ai wheel running client-side under Pyodide (verified in headless Chromium first) — key derivation, encrypt/decrypt, an in-memory vault round trip, and a Python REPL. Plus: bootstrap fast-path for static hosting (no 2.5s bridge wait on GitHub Pages), CNAME for sgit.ai, and GitHub Pages deployment via Actions in the SGit-AI__Website repo.'),
+    ('v0.1.8', '2026-08-11', 'obj-cas-imm-775783f31110',
      'Skills promoted to a top-level nav item with a new /skills page and the three agent skills shipped in the vault (latest versions, verbatim); llms.txt added at the vault root — encrypted for key-holders today, a standard public llms.txt when the site deploys to GitHub Pages; Home nav link retired (the brand mark covers it).'),
     ('v0.1.7', '2026-08-11', 'obj-cas-imm-c226a3aff160',
      'SG/Vault section rebuilt from the official docs bundle: corrected security-page structure-key claim to current reality, git page aligned with the publishing guide (three-rule boundary, leak audit, GitHub round trip, restore drill), new pages for static hosting on GitHub Pages, sub-vaults, and no-code content authoring; .gitignore extended with work/ and *.pem rules.'),
@@ -46,7 +48,8 @@ function wait(ms){return new Promise(function(res){var t=Date.now();(function p(
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
 async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
-async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>"""
 
@@ -61,6 +64,7 @@ def nav(p, here):
   <a class="brand" href="{p}index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
+  <a class="{cls('try')}" href="{p}try.html">Try</a>
   <a class="{cls('use-cases')}" href="{p}use-cases.html">Use Cases</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
   <a class="{cls('vault')}" href="{p}vault/index.html">SG/Vault</a>
@@ -146,7 +150,8 @@ INDEX = """<header class="hero">
   <p class="sub">Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.</p>
   <div class="ctas">
     <button class="pipbtn" type="button" data-copy="pip install sgit-ai">$ pip install sgit-ai <span class="cp">copy</span></button>
-    <a class="cta2" href="docs/quickstart.html">Get started in 5 minutes →</a>
+    <a class="cta2" href="try.html">Or try it in your browser →</a>
+    <a class="cta2" href="docs/quickstart.html">5-minute quickstart →</a>
   </div>
   <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0</p>
 </header>
@@ -415,6 +420,160 @@ SEC = """<main class="doc">
 
   <div class="note"><b>Honesty note:</b> sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read <a href="docs/limitations.html">when NOT to use sgit</a> before trusting it with anything critical.</div>
 </main>"""
+
+# ============================================================ try.html
+TRY = """<main class="doc" style="max-width:840px">
+  <h1>Try sgit in your browser</h1>
+  <p class="lead">This page downloads a Python runtime (Pyodide, ~20&nbsp;MB) and installs the <b>real <code>sgit-ai</code> wheel from PyPI</b> — the same code <code>pip install</code> gives you — then runs it right here. Everything executes in your browser: key derivation, encryption, an in-memory vault. Nothing you type leaves this page.</p>
+  <div class="note"><b>What this is:</b> the in-memory demonstration of sgit's engine running client-side. The full network transport (clone/push/pull from the browser) is the next milestone — the server's CORS is already verified open for it. First load is heavy (~20&nbsp;MB, cached by your browser afterwards); key derivation runs 600,000 PBKDF2 rounds in WebAssembly, so expect ~1–2&nbsp;s where native takes ~0.3&nbsp;s.</div>
+
+  <div class="btnrow">
+    <button class="btn" id="btn-load" type="button">Load the sgit engine (~20 MB)</button>
+  </div>
+  <div class="try-term" id="term">— engine not loaded —</div>
+
+  <div class="btnrow">
+    <button class="btn alt" id="btn-keys" type="button" disabled>1 · Derive vault keys</button>
+    <button class="btn alt" id="btn-crypt" type="button" disabled>2 · Encrypt &amp; decrypt</button>
+    <button class="btn alt" id="btn-vault" type="button" disabled>3 · In-memory vault round trip</button>
+  </div>
+
+  <h2>Python console</h2>
+  <p class="small dim">The full <code>sgit_ai</code> package is importable. The last expression's value is printed.</p>
+  <textarea class="pyin" id="pyin" spellcheck="false">from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
+vc = Vault__Crypto()
+vc.derive_keys('my-passphrase', 'demo1234')</textarea>
+  <div class="btnrow"><button class="btn alt" id="btn-run" type="button" disabled>Run</button></div>
+
+  <p class="small dim">How this works: <a href="vault/static-hosting.html">the same site</a> serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.</p>
+</main>
+
+<script>
+(function(){
+  'use strict';
+  var py = null;
+  var term = null;
+
+  function tlog(msg){
+    if (!term) term = document.getElementById('term');
+    if (term.textContent === '— engine not loaded —') term.textContent = '';
+    term.textContent += msg + '\\n';
+    term.scrollTop = term.scrollHeight;
+  }
+  function setEnabled(on){
+    ['btn-keys','btn-crypt','btn-vault','btn-run'].forEach(function(id){
+      var el = document.getElementById(id); if (el) el.disabled = !on;
+    });
+  }
+
+  async function loadEngine(){
+    var btn = document.getElementById('btn-load');
+    btn.disabled = true; btn.textContent = 'Loading…';
+    try {
+      tlog('› fetching Pyodide (CPython 3.12 → WebAssembly)…');
+      var loadPyodide = null;
+      try {
+        var sgMod = await import('https://tools.sgraph.ai/core/pyodide/v1/v1.0/v1.0.0/sg-pyodide.js');
+        loadPyodide = function(){ return sgMod.loadPyodide({ onProgress: function(e){ tlog('  [' + (e.stage||'') + '] ' + (e.detail||'')); } }); };
+        tlog('  using sg-pyodide loader from tools.sgraph.ai');
+      } catch (e) {
+        tlog('  tools.sgraph.ai unavailable — falling back to jsDelivr');
+        var offMod = await import('https://cdn.jsdelivr.net/pyodide/v0.27.4/full/pyodide.mjs');
+        loadPyodide = function(){ return offMod.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.27.4/full/' }); };
+      }
+      var t0 = Date.now();
+      py = await loadPyodide();
+      tlog('✓ Pyodide ready in ' + ((Date.now()-t0)/1000).toFixed(1) + 's');
+      py.setStdout({ batched: function(s){ tlog(s); } });
+      py.setStderr({ batched: function(s){ tlog('! ' + s); } });
+
+      tlog('› loading cryptography (WASM), micropip, ssl…');
+      await py.loadPackage(['cryptography', 'micropip', 'ssl']);
+      var micropip = py.pyimport('micropip');
+
+      tlog('› installing osbot-utils from PyPI…');
+      await micropip.install('osbot-utils');
+
+      tlog('› installing the real sgit-ai wheel from PyPI…');
+      var meta  = await (await fetch('https://pypi.org/pypi/sgit-ai/json')).json();
+      var wheel = null;
+      for (var i = 0; i < meta.urls.length; i++) if (meta.urls[i].filename.slice(-4) === '.whl') wheel = meta.urls[i];
+      var bytes = new Uint8Array(await (await fetch(wheel.url)).arrayBuffer());
+      py.FS.writeFile('/tmp/' + wheel.filename, bytes);
+      await micropip.install.callKwargs('emfs:///tmp/' + wheel.filename, { deps: false });
+      tlog('✓ installed ' + wheel.filename);
+
+      await py.runPythonAsync('import sgit_ai');
+      tlog('✓ sgit engine loaded — the buttons below run the real thing.');
+      btn.textContent = 'Engine loaded ✓';
+      setEnabled(true);
+    } catch (e) {
+      tlog('✗ load failed: ' + e);
+      tlog('  (This page needs internet access to a CDN and PyPI. If you are viewing');
+      tlog('   it inside a restricted context, try the hosted site at sgit.ai.)');
+      btn.disabled = false; btn.textContent = 'Retry load';
+    }
+  }
+
+  async function runPy(code, label){
+    if (!py) return;
+    if (label) tlog('\\n$ ' + label);
+    try {
+      var out = await py.runPythonAsync(code);
+      if (out !== undefined && out !== null) tlog(String(out));
+    } catch (e) {
+      tlog('✗ ' + e);
+    }
+  }
+
+  var DEMO_KEYS = [
+    "import time, json",
+    "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
+    "vc = Vault__Crypto()",
+    "t0 = time.time()",
+    "keys = vc.derive_keys('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "ms = int((time.time()-t0)*1000)",
+    "rk = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "print(f'PBKDF2-SHA256 x 600,000 iterations: {ms} ms (in WebAssembly)')",
+    "print('read key   :', rk.hex()[:32] + '…')",
+    "print('ref file id:', 'ref-pid-muw-' + vc.derive_ref_file_id(rk, 'd4k9xq2r'))",
+    "'— keys derived locally; the passphrase never left this page —'"
+  ].join('\\n');
+
+  var DEMO_CRYPT = [
+    "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
+    "vc = Vault__Crypto()",
+    "rk = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "ct = vc.encrypt_metadata(rk, 'the server never sees this sentence')",
+    "print('ciphertext (AES-256-GCM, b64):', ct[:56] + '…')",
+    "pt = vc.decrypt_metadata(rk, ct)",
+    "print('decrypted  :', pt)",
+    "'— round trip: ' + ('OK' if pt == 'the server never sees this sentence' else 'FAILED') + ' —'"
+  ].join('\\n');
+
+  var DEMO_VAULT = [
+    "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
+    "from sgit_ai.network.api.Vault__API__In_Memory import Vault__API__In_Memory",
+    "vc  = Vault__Crypto()",
+    "api = Vault__API__In_Memory().setup()",
+    "rk  = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "plaintext = b'hello from an in-browser vault'",
+    "ct  = vc.encrypt(rk, plaintext)",
+    "oid = vc.compute_object_id(ct)",
+    "api.write('d4k9xq2r', oid, 'write-key', ct)",
+    "print('stored object:', oid, f'({len(ct)} encrypted bytes)')",
+    "back = vc.decrypt(rk, bytes(api.read('d4k9xq2r', oid)))",
+    "print('read back    :', back.decode())",
+    "'— content-addressed, encrypted, round-tripped — entirely in this tab —'"
+  ].join('\\n');
+
+  document.getElementById('btn-load').addEventListener('click', loadEngine);
+  document.getElementById('btn-keys').addEventListener('click', function(){ runPy(DEMO_KEYS, 'derive vault keys'); });
+  document.getElementById('btn-crypt').addEventListener('click', function(){ runPy(DEMO_CRYPT, 'encrypt / decrypt'); });
+  document.getElementById('btn-vault').addEventListener('click', function(){ runPy(DEMO_VAULT, 'in-memory vault round trip'); });
+  document.getElementById('btn-run').addEventListener('click', function(){ runPy(document.getElementById('pyin').value, 'console'); });
+})();
+</script>"""
 
 # ============================================================ skills.html
 SKILLS = """<main class="doc">
@@ -1147,9 +1306,11 @@ ADMIN = """<main class="doc">
 <pre class="shell"><span class="d"># 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row</span>
 <span class="d"># 2. regenerate + validate</span>
 <span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span>
-<span class="d"># 3. ship — the site deploys by pushing the vault</span>
-<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span></pre>
-  <p>The deployment pipeline <em>is</em> sgit: commit, push, done. The server hosting this site never saw a byte of its plaintext. See <a href="versions.html">release history</a>.</p>
+<span class="d"># 3. ship to the vault — the encrypted deployment</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span>
+<span class="d"># 4. ship to git — same folder, second remote; GitHub Pages deploys from it</span>
+<span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit -m "site vX.Y.Z" &amp;&amp; git push origin dev</span></pre>
+  <p>One folder, one source of truth, two remotes: the same working tree is an sgit vault <em>and</em> a git repository (<code>SGit-AI/SGit-AI__Website</code>). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See <a href="versions.html">release history</a>.</p>
 
   <h2>Design &amp; contributions</h2>
   <p>A standing brief for Claude Code sessions proposing design improvements lives at <a href="brief-design-improvements.md">admin/brief-design-improvements.md</a> — it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.</p>
@@ -1179,6 +1340,9 @@ PAGES = [
      'home', INDEX),
     ('use-cases.html', 'Use cases — sgit', 'Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.', 'use-cases', UC),
     ('security.html', 'Security model — sgit', "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.", 'security', SEC),
+    ('try.html', 'Try sgit in your browser — sgit.ai',
+     'The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.',
+     'try', TRY),
     ('skills.html', 'Skills for AI agents — sgit', 'Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.', 'skills', SKILLS),
     ('docs/index.html', 'Documentation — sgit', 'sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.', 'docs', DOCS_HUB),
     ('docs/what-is-sgit.html', 'What is sgit — Docs', 'sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.', 'docs', WHATIS),

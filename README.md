@@ -28,5 +28,8 @@ and powers production workflows; this site says so honestly on every relevant pa
    `VERSION_LOG` row — the version badge appears in the nav of every page.
 2. `python3 admin/build/build_pages.py && node admin/build/validate.js`
 3. `sgit commit -m "site v0.1.n: ..." && sgit push`
+4. `git add -A && git commit -m "site v0.1.n" && git push origin dev`
 
-The deployment pipeline is sgit itself: the site ships by pushing the vault.
+One folder, two remotes: this working tree is an sgit vault AND the git repo
+`SGit-AI/SGit-AI__Website` (which deploys to https://sgit.ai via GitHub Pages
+on every push to `dev`). A release is done when BOTH remotes are in sync.
