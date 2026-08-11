@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quickstart — sgit Docs</title>
+<meta name="description" content="From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="nl" href="../use-cases.html">Use Cases</a>
+  <a class="nl here" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Introduction</p>
+  <h1>Quickstart</h1>
+  <p class="lead">From zero to a synced, encrypted, versioned vault in five minutes.</p>
+
+  <h2>1 — Create a vault</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai</span>
+<span class="p">$</span> <span class="cmd">sgit create my-vault</span>
+<span class="g">✓</span> Vault created and registered
+<span class="g">✓</span> Initial commit pushed
+
+  Vault key: <span class="y">q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span></pre>
+  <div class="warnbox"><b>Save the vault key now</b> — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</div>
+  <p class="small dim">Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead — the current contents become the first snapshot.</p>
+
+  <h2>2 — Work like git</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">cd my-vault</span>
+<span class="p">$</span> <span class="cmd">echo "# Plan" &gt; plan.md</span>
+<span class="p">$</span> <span class="cmd">sgit status</span>
+  <span class="g">added:</span> plan.md
+<span class="p">$</span> <span class="cmd">sgit commit -m "add the plan"</span>
+<span class="g">✓</span> Committed 1 file</pre>
+  <p>There is no staging area — <code>sgit commit</code> snapshots the whole folder. Files like <code>.env</code> and private keys are always excluded, automatically.</p>
+
+  <h2>3 — Push</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit push</span>
+<span class="g">✓</span> Pushed 1 commit — only ciphertext left this machine</pre>
+
+  <h2>4 — Clone somewhere else</h2>
+<pre class="shell"><span class="d"># on another machine, or in an agent's session</span>
+<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span>
+<span class="g">✓</span> Cloned and decrypted 1 file
+<span class="p">$</span> <span class="cmd">sgit pull</span>      <span class="d"># pick up new commits any time</span></pre>
+
+  <h2>5 — Look around</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history log --oneline</span>     <span class="d"># commit history</span>
+<span class="p">$</span> <span class="cmd">sgit history diff</span>              <span class="d"># what changed</span>
+<span class="p">$</span> <span class="cmd">sgit vault info</span>                <span class="d"># identity, remote, web URL</span></pre>
+  <p>The web URL printed by <code>sgit vault info</code> opens the same vault in the SG/Vault browser app — decrypted in the browser, never on the server.</p>
+
+  <h2>Where next</h2>
+  <ul>
+    <li><a href="sgit-for-git-users.html">sgit for git users</a> — the Rosetta stone</li>
+    <li><a href="two-branch-model.html">The two-branch model</a> — how collaboration works</li>
+    <li><a href="agents.html">Working with AI agents</a> — give an agent a private, versioned workspace</li>
+  </ul>
+
+  <div class="pagenav"><a href="installation.html">← Installation</a><a href="sgit-for-git-users.html">sgit for git users →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.8</a> · <a href="../admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security.html">Security</a>
+    <a href="../use-cases.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

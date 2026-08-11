@@ -1,0 +1,19 @@
+# ── raw sgit store files: opaque ciphertext, not text ─────────────────
+# The encrypted vault store (.sg_vault/**, minus the gitignored local/)
+# IS tracked in git — that is the point: the git remote holds a
+# zero-knowledge mirror of the vault. Treat it as binary: no diffs, no
+# merge attempts, no EOL normalisation. Ciphertext has no meaningful
+# line-based diff, and a textual merge would corrupt it.
+.sg_vault/** binary -diff -merge
+obj-cas-imm-* binary -diff -merge
+ref-pid-*     binary -diff -merge
+idx-pid-*     binary -diff -merge
+key-rnd-imm-* binary -diff -merge
+branch-named-* binary -diff -merge
+branch-clone-* binary -diff -merge
+
+# ── generated pages: keep diffs quiet in PRs ──────────────────────────
+# Every *.html is produced by admin/build/build_pages.py; mark it
+# generated so code hosts collapse these diffs and reviewers look at the
+# generator instead.
+*.html linguist-generated=true

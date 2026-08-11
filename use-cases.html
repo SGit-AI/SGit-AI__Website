@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Use cases — sgit</title>
+<meta name="description" content="Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="nl here" href="use-cases.html">Use Cases</a>
+  <a class="nl" href="docs/index.html">Docs</a>
+  <a class="nl" href="vault/index.html">SG/Vault</a>
+  <a class="nl" href="skills.html">Skills</a>
+  <a class="nl" href="security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <h1>Use cases</h1>
+  <p class="lead">Five things people point sgit at today. Every workflow below runs on shipped commands — nothing aspirational.</p>
+
+  <section class="uc" id="ai-agents">
+    <h2>Private memory for AI agents</h2>
+    <p>An agent's context window ends; its work shouldn't. A vault is just a folder — the agent clones it, reads and writes files normally, commits, and pushes. The next session pulls and continues where the last one stopped. Everything is encrypted before it leaves the agent's machine, so the shared state can hold things you would never put in a third-party database: client documents, security findings, personal data.</p>
+<pre class="shell"><span class="d"># session 1</span>
+<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r workspace</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "session 1: research notes" &amp;&amp; sgit push</span>
+<span class="d"># session 2, days later, different machine</span>
+<span class="p">$</span> <span class="cmd">sgit pull</span>   <span class="d"># continue exactly where session 1 stopped</span></pre>
+    <p><a href="docs/agents.html">Full agent guide →</a></p>
+  </section>
+
+  <section class="uc" id="multi-agent">
+    <h2>Multi-agent collaboration</h2>
+    <p>Give each agent its own named branch. Every clone also gets a private clone branch whose key never leaves that agent's session, so agents cannot trample each other's work-in-progress. Work meets on named branches, and a human reviews the merge. Agents can inspect each other's commits read-only with <code>sgit history show</code> and <code>sgit history diff</code> — without pulling, so looking never means merging.</p>
+<pre class="shell"><span class="d"># agent A</span>  <span class="p">$</span> <span class="cmd">sgit branch new feature-analysis</span> … <span class="cmd">sgit push</span>
+<span class="d"># agent B</span>  <span class="p">$</span> <span class="cmd">sgit branch new feature-report</span>   … <span class="cmd">sgit push</span>
+<span class="d"># human  </span>  <span class="p">$</span> <span class="cmd">sgit pull</span> → review → merge, with <span class="cmd">sgit resolve --show</span> on conflicts</pre>
+  </section>
+
+  <section class="uc" id="human-ai">
+    <h2>Human ↔ agent workspaces</h2>
+    <p>The same vault has two doors: you in the SG/Vault web app, the agent in the CLI. The browser client is an independent implementation of the same wire format — you browse, edit and review in a UI while the agent works the same files from the terminal. Both sides see each other's commits; neither side's plaintext ever touches the server. (How the browser side works: <a href="https://sgraph.ai">sgraph.ai</a>.)</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault info</span>
+  Web URL: <span class="cy">https://vault.sgraph.ai/en-gb/#&lt;your-vault-key&gt;</span></pre>
+  </section>
+
+  <section class="uc" id="encrypted-backup">
+    <h2>Encrypted folders with history</h2>
+    <p>A shared folder where the hosting provider cannot read the contents — with commits, diffs, and rollback. Work offline, commit locally, push when ready; restore any prior version with <code>sgit history revert</code>. Vault-level <code>backup</code> and <code>restore</code> produce portable archives, and <code>sgit vault move</code> rotates keys if a key is ever exposed.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit init --existing</span>        <span class="d"># vault-ify a folder you already have</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "baseline" &amp;&amp; sgit push</span>
+<span class="p">$</span> <span class="cmd">sgit history revert --commit obj-cas-imm-b2d70f</span>   <span class="d"># roll back</span></pre>
+  </section>
+
+  <section class="uc" id="secure-file-exchange">
+    <h2>Signed &amp; encrypted file exchange</h2>
+    <p>Alongside vault sync, sgit ships a PKI toolset: generate keypairs, exchange public keys as contact bundles, then sign, verify, encrypt and decrypt individual files for named recipients — useful when a file has to travel outside a vault but still needs integrity and confidentiality.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit pki keygen --label "release keys"</span>
+<span class="p">$</span> <span class="cmd">sgit pki sign report.pdf --fingerprint &lt;fp&gt;</span>
+<span class="p">$</span> <span class="cmd">sgit pki encrypt report.pdf --recipient &lt;fp&gt;</span></pre>
+  </section>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="admin/versions.html">v0.1.8</a> · <a href="admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="docs/what-is-sgit.html">What is sgit</a>
+    <a href="docs/installation.html">Installation</a>
+    <a href="docs/quickstart.html">Quickstart</a>
+    <a href="docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="docs/agents.html">Working with AI agents</a>
+    <a href="docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="vault/vault-apps.html">Building vault apps</a>
+    <a href="vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="vault/content-authoring.html">Content authoring</a>
+    <a href="vault/sub-vaults.html">Sub-vaults</a>
+    <a href="vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="security.html">Security</a>
+    <a href="use-cases.html">Use cases</a>
+    <a href="skills.html">Skills for AI agents</a>
+    <a href="llms.txt">llms.txt</a>
+    <a href="admin/index.html">Admin &amp; engineering</a>
+    <a href="admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

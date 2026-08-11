@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Content authoring — SG/Vault</title>
+<meta name="description" content="Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="nl" href="../use-cases.html">Use Cases</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl here" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / Content authoring</p>
+  <h1>Publishing content without code</h1>
+  <p class="lead">Not everything needs an app. The vault browser renders two kinds of structured content natively — <b>markdown documents</b> and <b><code>_page.json</code> page layouts</b> — so a vault full of files becomes a navigable, themed, printable site with no HTML written at all. This is the lighter on-ramp; <a href="vault-apps.html">vault apps</a> are the heavier one.</p>
+
+  <h2>Which one, when</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Reach for markdown</th><th>Reach for <code>_page.json</code></th></tr>
+    <tr><td>Prose-first documents, articles, reports, specs, step-by-step guides, linked hierarchies of notes</td><td>Designed pages: hero banners, galleries and slideshows, hub pages with clickable cards, decks, embedded PDFs, explicit theme control</td></tr>
+  </table></div>
+  <p>Both can coexist in one folder — <code>_page.json</code> takes priority in the browse view. A file named exactly <code>_page.json</code> is auto-detected, no registration; one at the vault root renders immediately on open.</p>
+
+  <h2><code>_page.json</code> in one screen</h2>
+<pre class="shell">{
+  "title": "Q3 Report",
+  "theme": { "mode": "light", "accent": "#0f766e", "font": "serif", "density": "spacious" },
+  "navigation": [ { "label": "Overview", "anchor": "overview" } ],
+  "components": [
+    { "type": "hero",    "title": "Q3 Report", "height": "medium" },
+    { "type": "section", "title": "Overview", "layout": "narrow", "children": [
+      { "type": "text",     "content": "…" },
+      { "type": "gallery",  "images": ["img/a.webp","img/b.webp"], "columns": 3 },
+      { "type": "markdown", "file": "notes/summary.md" }
+    ]}
+  ]
+}</pre>
+  <ul>
+    <li><b>Eleven component types:</b> <code>hero</code>, <code>section</code> (the only container — everything else nests in its <code>children</code>), <code>text</code>, <code>bullet-points</code>, <code>title</code>, <code>image</code>, <code>gallery</code> (click-to-lightbox), <code>slides</code>, <code>pdf</code>, <code>markdown</code>, <code>cards</code>, <code>columns</code>.</li>
+    <li><b>Themes:</b> <code>dark</code>/<code>light</code> shorthand or a full block (mode, accent, font, density, background); six named schemes exist, and all but the dark deck are print-safe.</li>
+    <li><b>Paths are vault-relative to the folder holding <code>_page.json</code></b> — <code>../</code> allowed but never outside the vault, and <b>no external URLs</b>: vault files only, so a page never phones home.</li>
+    <li><b>Live edit preview:</b> the browse view has a split JSON-editor with a debounced preview — but it <b>cannot save</b>; you copy the JSON out and push it with sgit. (The intended loop, verbatim from the internal skill: paste in JSON suggested by an AI, preview it immediately, then commit.)</li>
+  </ul>
+
+  <h2>Markdown in vaults — the extras</h2>
+  <ul>
+    <li><b>Print-aware front matter</b> (first line, <code>---</code>-delimited): <code>page_break_before: h1</code> and a literal <code>print_css</code> block, so a markdown file prints like a document, not a web page. Plus <code>&lt;!-- page-break --&gt;</code> anywhere for an explicit break.</li>
+    <li><b>Image sizing with the pipe syntax</b> — <code>![caption|400](img.png)</code>, <code>|60%</code>, <code>|800x600</code> — inside the alt text, so it degrades gracefully in any other renderer.</li>
+    <li><b>Internal links open as tabs</b>, with extension fallbacks; link folders via <code>folder/README.md</code>, not <code>folder/</code>. The browse view auto-opens the alphabetically first file — name your entry <code>README.md</code> or <code>00-INDEX.md</code>, or add a root <code>_page.json</code>.</li>
+    <li><b>Editing saves</b> — unlike the <code>_page.json</code> editor, the markdown split-editor persists to the vault (writable vaults only).</li>
+    <li><b>The traps:</b> raw HTML is stripped and shows as escaped text; nested lists, task lists, footnotes and anchor-id headings are not supported. Write flat, plain markdown.</li>
+  </ul>
+
+  <div class="note"><b>The agent angle:</b> both formats are plain JSON and plain text — which makes them ideal surfaces for AI agents to author. An agent writes <code>_page.json</code> or markdown into a vault with <code>sgit write --json</code>, a human previews it in the browser, and the whole loop stays end-to-end encrypted.</div>
+
+  <div class="pagenav"><a href="sg-bridge.html">← The window.sg bridge</a><a href="sub-vaults.html">Sub-vaults →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.8</a> · <a href="../admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security.html">Security</a>
+    <a href="../use-cases.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
