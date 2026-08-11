@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.11</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.12</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
   <a class="nl" href="../docs/index.html">Docs</a>
@@ -25,10 +25,11 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">This site ships by pushing its vault, and the site version — <b>v0.1.11</b>, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own <code>sgit history log</code> is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">This site ships by pushing its vault, and the site version — <b>v0.1.12</b>, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own <code>sgit history log</code> is the authoritative audit trail; this page is the human-readable index of it.</p>
   <div class="tablewrap"><table class="vers">
     <tr><th>Version</th><th>Date</th><th>Vault commit</th><th>Changes</th></tr>
-    <tr><td class="vnum">v0.1.11</td><td>2026-08-11</td><td class="vid">this release</td><td>Browser-transport fix for in-browser clone: drop the redundant X-API-Key header (the servers CORS-allow x-sgraph-access-token but not x-api-key, and one disallowed header fails the whole preflight — diagnosed live from the first user clone attempt); CORS/network failures now surface as readable HTTP 599 errors instead of a Pyodide SystemError.</td></tr>
+    <tr><td class="vnum">v0.1.12</td><td>2026-08-11</td><td class="vid">this release</td><td>In-browser clone completes: serial-executor shim for Pyodide (WebAssembly cannot spawn threads, so all parallel blob transfers run sequentially in the browser) — validated natively against the live server with thread creation disabled: full 225-blob clone of this site vault. A serial/auto-detect mode is proposed upstream to the sgit CLI.</td></tr>
+    <tr><td class="vnum">v0.1.11</td><td>2026-08-11</td><td class="vid">obj-cas-imm-c9afa76a79cb</td><td>Browser-transport fix for in-browser clone: drop the redundant X-API-Key header (the servers CORS-allow x-sgraph-access-token but not x-api-key, and one disallowed header fails the whole preflight — diagnosed live from the first user clone attempt); CORS/network failures now surface as readable HTTP 599 errors instead of a Pyodide SystemError.</td></tr>
     <tr><td class="vnum">v0.1.10</td><td>2026-08-11</td><td class="vid">obj-cas-imm-deac6363bff9</td><td>In-browser terminal on /try: the real sgit CLI in-process (init, commit, status, history — and network commands via a browser XHR transport: clone/push/pull straight to the SG/Send servers), plus a busybox of file commands over the in-memory filesystem. Key hygiene: every example key on the site is now an obviously-invalid placeholder (format-valid example keys are squattable namespaces), enforced by a new validator rule.</td></tr>
     <tr><td class="vnum">v0.1.9</td><td>2026-08-11</td><td class="vid">obj-cas-imm-83b8c23a1baa</td><td>"Try sgit in your browser" page: the real sgit-ai wheel running client-side under Pyodide (verified in headless Chromium first) — key derivation, encrypt/decrypt, an in-memory vault round trip, and a Python REPL. Plus: bootstrap fast-path for static hosting (no 2.5s bridge wait on GitHub Pages), CNAME for sgit.ai, and GitHub Pages deployment via Actions in the SGit-AI__Website repo.</td></tr>
     <tr><td class="vnum">v0.1.8</td><td>2026-08-11</td><td class="vid">obj-cas-imm-775783f31110</td><td>Skills promoted to a top-level nav item with a new /skills page and the three agent skills shipped in the vault (latest versions, verbatim); llms.txt added at the vault root — encrypted for key-holders today, a standard public llms.txt when the site deploys to GitHub Pages; Home nav link retired (the brand mark covers it).</td></tr>
@@ -49,7 +50,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.11</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.12</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>
