@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.12</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.13</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
   <a class="nl" href="../docs/index.html">Docs</a>
@@ -68,6 +68,14 @@ HEAD 2e2dd4c · 1 file changed · author + message parsed
   </ul>
   <p>The vault serving this site ships the full <code>.gitignore</code> / <code>.gitattributes</code> pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see <a href="static-hosting.html">static hosting on GitHub Pages</a>.</p>
 
+  <h3>What a key rotation does to the mirror</h3>
+  <p>Rotating a vault key (<code>delete-on-remote</code> → <code>rekey</code> → <code>push</code>) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the <code>.gitattributes</code> binary rule means no diff churn), but two consequences are worth knowing before you rotate:</p>
+  <ul>
+    <li><b>Git becomes the history.</b> A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.</li>
+    <li><b>A rekey protects the server, not the mirror.</b> Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed <em>and</em> the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.</li>
+  </ul>
+  <p class="small dim">This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the <a href="../admin/versions.html">release history</a>.</p>
+
   <h2>Status — honestly</h2>
   <ul>
     <li>The reader is <b>in review, not shipped</b>. It is read-only, follows first parents (no merge traversal), and skips submodules and shallow clones by design.</li>
@@ -83,7 +91,7 @@ HEAD 2e2dd4c · 1 file changed · author + message parsed
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.12</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.13</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>
