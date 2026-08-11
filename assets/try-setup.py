@@ -9,6 +9,41 @@
 import io, os, re, sys, shlex, shutil, contextlib
 
 
+# ---------- 0. serial executor (Pyodide cannot spawn threads) ----------
+# sgit parallelises blob transfers with ThreadPoolExecutor; under WebAssembly
+# thread creation fails ("can't start new thread"). All call sites import the
+# executor at call time, so one global swap makes every transfer path serial.
+# Verified natively against the live server with thread creation disabled:
+# full 225-blob clone, byte-correct.
+def _install_serial_executor():
+    import concurrent.futures as _cf
+
+    class _SerialExecutor:
+        def __init__(self, max_workers=None, **kw):
+            pass
+        def submit(self, fn, *a, **kw):
+            f = _cf.Future()
+            try:
+                f.set_result(fn(*a, **kw))
+            except BaseException as e:
+                f.set_exception(e)
+            return f
+        def map(self, fn, *iterables, timeout=None, chunksize=1):
+            return map(fn, *iterables)
+        def shutdown(self, wait=True, **kw):
+            pass
+        def __enter__(self):
+            return self
+        def __exit__(self, *a):
+            return False
+
+    _cf.ThreadPoolExecutor = _SerialExecutor
+
+
+if sys.platform == 'emscripten':
+    _install_serial_executor()
+
+
 # ---------- 1. XHR transport ----------
 def _install_xhr_transport():
     import sgit_ai.network.api.Vault__API as vapi
