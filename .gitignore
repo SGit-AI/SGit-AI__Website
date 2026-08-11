@@ -1,0 +1,26 @@
+# ── git + sgit, side by side ──────────────────────────────────────────
+# This folder is both a git repository and an sgit vault, by design. Git
+# tracks the working files AND the encrypted vault store (.sg_vault/), so
+# a git remote doubles as a zero-knowledge mirror of the vault's history.
+# Only the tiers holding NON-encrypted material are excluded.
+
+# sgit local credential tier — plaintext vault key, push token, unwrapped
+# private keys. NEVER commit. The rest of .sg_vault/ (bare/) is the
+# encrypted server-parity store and is safe.
+.sg_vault/local/
+
+# scratch/checkout area — may hold plaintext transiently during sgit ops
+.sg_vault/work/
+
+# defence in depth: no unwrapped key material anywhere, ever
+*.pem
+
+# Git's own metadata (sgit honours .gitignore, so this also keeps git
+# internals from being swept into vault snapshots).
+.git/
+
+# Build/OS noise.
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

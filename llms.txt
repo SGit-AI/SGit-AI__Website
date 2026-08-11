@@ -1,0 +1,45 @@
+# sgit.ai
+
+> sgit is git for encrypted vaults: clone, commit, branch and merge files that are
+> encrypted client-side (AES-256-GCM) before they leave your machine. The server stores
+> ciphertext under opaque IDs — it never sees filenames, contents, or commit messages.
+> This site is the official documentation for sgit and the SGraph vault platform
+> (SG/Vault, SG/Send) — and is itself served from an encrypted vault.
+
+Notes for agents:
+- sgit is in beta and powers production workflows. Honest edges: /docs/limitations.html
+- Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
+- Vault keys are full-strength generated keys (`passphrase:vault_id`). No password reset exists.
+- The agent-facing command is `sgit write <path> --file <f> --message <m> --push --json`;
+  every read path has a --json flag.
+- Cross-session state pattern: clone/pull at session start, commit + push at session end.
+
+## Docs
+- [What is sgit](/docs/what-is-sgit.html): the pitch, the mechanism, the architecture
+- [Quickstart](/docs/quickstart.html): create, commit, push, clone — in 5 minutes
+- [Installation](/docs/installation.html): pip install, verify with sgit doctor
+- [sgit for git users](/docs/sgit-for-git-users.html): command Rosetta stone + the three differences
+- [The two-branch model](/docs/two-branch-model.html): private clone branches, shared named branches
+- [Working with AI agents](/docs/agents.html): sgit write, --json everywhere, sparse clones, multi-agent
+- [When NOT to use sgit](/docs/limitations.html): the honest page
+
+## SG/Vault platform
+- [Platform overview](/vault/index.html): the browser app, App Mode, the three on-ramps
+- [Building vault apps](/vault/vault-apps.html): app.json, the authoring contract, ship with sgit push
+- [The window.sg bridge](/vault/sg-bridge.html): runtime API, permissions, the sovereignty rail
+- [Content authoring](/vault/content-authoring.html): markdown + _page.json, no code
+- [Sub-vaults](/vault/sub-vaults.html): vaults inside vaults; links, embeds, extract & seed
+- [Git repos inside vaults](/vault/git-and-vaults.html): git + sgit side by side; encrypted mirror on GitHub
+- [Static hosting](/vault/static-hosting.html): GitHub Pages / S3, zero backend, still encrypted
+
+## Skills (packaged instructions for AI agents)
+- [Skills overview](/skills.html): what they are and how to install them
+- [use sgit and vaults](/skills/use_sgit-and-vaults__SKILL.md): the CLI + cross-session persistent state
+- [create vault apps](/skills/create-vault-apps__SKILL.md): build an app that lives inside a vault
+- [create vault content](/skills/create-vault-content__SKILL.md): author _page.json layouts and vault markdown
+
+## Optional
+- [Security model](/security.html): crypto stack, what the server sees, key strength
+- [Use cases](/use-cases.html): five workflows on shipped commands
+- [Admin & engineering](/admin/index.html): how this site is built and released
+- [Release history](/admin/versions.html): the site version bumps on every push

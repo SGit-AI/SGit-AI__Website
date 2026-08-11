@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" data-root="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>sgit — the encrypted git for humans and AI agents</title>
+<meta name="description" content="sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="nl" href="use-cases.html">Use Cases</a>
+  <a class="nl" href="docs/index.html">Docs</a>
+  <a class="nl" href="vault/index.html">SG/Vault</a>
+  <a class="nl" href="skills.html">Skills</a>
+  <a class="nl" href="security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<header class="hero">
+  <div class="eyebrow">Agents need private, versioned state</div>
+  <h1>The encrypted git for<br>humans and AI agents</h1>
+  <p class="sub">Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.</p>
+  <div class="ctas">
+    <button class="pipbtn" type="button" data-copy="pip install sgit-ai">$ pip install sgit-ai <span class="cp">copy</span></button>
+    <a class="cta2" href="docs/quickstart.html">Get started in 5 minutes →</a>
+  </div>
+  <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0</p>
+</header>
+
+<!-- terminal walkthrough -->
+<section class="band" id="demo">
+  <div class="term">
+    <div class="ttabs">
+      <button class="ttab active" data-pane="t1" data-cap="The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe." type="button"><span class="n">1</span>Create</button>
+      <button class="ttab" data-pane="t2" data-cap="Same muscle memory as git. No staging area: commit snapshots the folder." type="button"><span class="n">2</span>Work like git</button>
+      <button class="ttab" data-pane="t3" data-cap="Full history and diffs — decrypted locally, never on the server." type="button"><span class="n">3</span>History &amp; diffs</button>
+      <button class="ttab" data-pane="t4" data-cap="Only ciphertext travels. Another machine — or another agent — clones with the key." type="button"><span class="n">4</span>Sync</button>
+      <button class="ttab" data-pane="t5" data-cap="Tab 5 is the command your AI agent uses." type="button"><span class="n">5</span>Agent mode</button>
+    </div>
+    <div class="tbody">
+      <div class="pane active" id="t1">
+<span class="p">$</span> <span class="cmd">sgit create my-vault</span><br>
+<span class="g">✓</span> Vault created and registered<br>
+<span class="g">✓</span> Initial commit pushed<br><br>
+&nbsp;&nbsp;Vault key: <span class="y">q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span><br><br>
+<span class="d">Keep this safe — it is the address, the auth, and the</span><br>
+<span class="d">encryption key in one string. Without it, nobody — including</span><br>
+<span class="d">the server — can read this vault.</span>
+      </div>
+      <div class="pane" id="t2">
+<span class="p">$</span> <span class="cmd">vim notes/positioning.md</span><br>
+<span class="p">$</span> <span class="cmd">sgit status</span><br>
+&nbsp;&nbsp;On clone branch <span class="cy">branch-clone-3f9c</span> → named branch <span class="cy">main</span><br>
+&nbsp;&nbsp;<span class="y">modified:</span>&nbsp;&nbsp;notes/positioning.md<br>
+&nbsp;&nbsp;<span class="g">added:</span>&nbsp;&nbsp;&nbsp;&nbsp;drafts/hero-copy.md<br><br>
+<span class="p">$</span> <span class="cmd">sgit commit -m "first draft of hero copy"</span><br>
+<span class="g">✓</span> Committed 2 files <span class="d">(no staging area — commit snapshots the folder)</span>
+      </div>
+      <div class="pane" id="t3">
+<span class="p">$</span> <span class="cmd">sgit history log --oneline</span><br>
+<span class="y">c4e81a</span> first draft of hero copy<br>
+<span class="y">b2d70f</span> initial commit<br><br>
+<span class="p">$</span> <span class="cmd">sgit history diff</span><br>
+<span class="d">--- a/notes/positioning.md</span><br>
+<span class="d">+++ b/notes/positioning.md</span><br>
+<span class="r">- sgit is a CLI for encrypted sync</span><br>
+<span class="g">+ sgit is git for encrypted vaults</span>
+      </div>
+      <div class="pane" id="t4">
+<span class="p">$</span> <span class="cmd">sgit push</span><br>
+<span class="g">✓</span> Pushed 2 objects <span class="d">(delta push — only changed, only ciphertext)</span><br><br>
+<span class="d"># on another machine (or another agent)</span><br>
+<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span><br>
+<span class="g">✓</span> Cloned and decrypted 12 files<br><br>
+<span class="p">$</span> <span class="cmd">sgit pull</span><br>
+<span class="g">✓</span> Up to date
+      </div>
+      <div class="pane" id="t5">
+<span class="d"># one call: encrypt, commit, push, machine-readable result —</span><br>
+<span class="d"># no working-directory scan, no full clone needed</span><br>
+<span class="p">$</span> <span class="cmd">sgit write notes/finding.md --file result.md \</span><br>
+<span class="cmd">&nbsp;&nbsp;&nbsp;&nbsp;--message "agent A: analysis" --push --json</span><br>
+{<br>
+&nbsp;&nbsp;<span class="cy">"status"</span>: <span class="g">"pushed"</span>,<br>
+&nbsp;&nbsp;<span class="cy">"path"</span>: <span class="g">"notes/finding.md"</span>,<br>
+&nbsp;&nbsp;<span class="cy">"blob_id"</span>: <span class="g">"obj-cas-imm-9c2e41ab77d0"</span><br>
+}
+      </div>
+    </div>
+    <p class="tcap" id="tcap">The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.</p>
+  </div>
+</section>
+
+<!-- durable identity + features -->
+<section class="band alt" id="features">
+  <h2>Git workflows. Encrypted vaults. Zero knowledge.</h2>
+  <p class="blurb">sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine.</p>
+  <div class="feat">
+    <div class="f rev"><b>Git-like version control</b><span>commit, branch, merge, diff, log, stash, revert your encrypted files</span></div>
+    <div class="f rev"><b>Client-side encryption</b><span>AES-256-GCM before upload; keys derived from your vault key, never sent to the server</span></div>
+    <div class="f rev"><b>Real three-way merge</b><span>conflict files plus a base/ours/theirs <code>resolve --show</code> view</span></div>
+    <div class="f rev"><b>The two-branch model</b><span>a private clone branch per machine or agent; shared named branches for collaboration</span></div>
+    <div class="f rev"><b>Sparse &amp; thin clones</b><span>structure now, content on demand — for agents on a time budget</span></div>
+    <div class="f rev"><b>Browser interop</b><span>open the same vault in SG/Vault on the web — CLI and browser speak one wire format</span></div>
+  </div>
+</section>
+
+<!-- server sees -->
+<section class="band" id="zero-knowledge">
+  <h2>What the server sees</h2>
+  <div class="sees">
+    <div class="cols">
+      <div class="col you rev">
+        <h3>Your machine</h3>
+        <ul>
+          <li>filenames &amp; folder structure</li>
+          <li>file contents</li>
+          <li>commit messages</li>
+          <li>branch names</li>
+          <li>the vault key &amp; derived keys</li>
+        </ul>
+      </div>
+      <div class="arrow">
+        <svg width="46" height="24" viewBox="0 0 46 24" fill="none"><path d="M2 12h36m0 0-7-7m7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="col srv rev">
+        <h3>The server</h3>
+        <ul>
+          <li>obj-cas-imm-3f9c41ab77d0</li>
+          <li>ref-pid-muw-8e02cc194b3a</li>
+          <li>ciphertext blobs (AES-256-GCM)</li>
+          <li>object sizes · timestamps</li>
+          <li>the vault id</li>
+        </ul>
+      </div>
+    </div>
+    <p class="cap">That's the whole list — and we publish the threat model, including what the server <em>can</em> see (sizes, timing, vault ID). <a href="security.html">Read the security model →</a></p>
+  </div>
+</section>
+
+<!-- agents -->
+<section class="band alt" id="agents">
+  <h2>Built for agents</h2>
+  <p class="blurb">Agents need shared state. Shared state needs versioning — and privacy. sgit is the encrypted, versioned workspace for humans and AI agents.</p>
+  <div class="cards">
+    <div class="card rev"><span class="tag">Persistent memory</span><h3>A vault is just a folder</h3><p>An agent clones it, reads and writes files normally, commits, pushes. The next session pulls and continues. State survives the context window.</p></div>
+    <div class="card rev"><span class="tag">Multi-agent, human-merged</span><h3>A branch per agent</h3><p>Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge — in the terminal or in the SG/Vault browser.</p></div>
+    <div class="card rev"><span class="tag">Agent-grade plumbing</span><h3>Machine-readable everything</h3><p><code>sgit write</code> for surgical single-call commits, <code>--json</code> on every read path, <code>cat --id</code> with zero network calls, sparse clones for fast cold starts.</p></div>
+  </div>
+  <p class="blurb" style="margin-top:1.6rem;margin-bottom:0"><a href="docs/agents.html">Read the agent guide →</a> &nbsp;·&nbsp; <a href="skills.html">Install the skills →</a> &nbsp;·&nbsp; <a href="llms.txt">llms.txt</a></p>
+</section>
+
+<!-- use cases -->
+<section class="band" id="use-cases">
+  <h2>What people use it for</h2>
+  <div class="cards">
+    <a class="card rev" href="use-cases.html#ai-agents"><span class="tag">Use case</span><h3>Private memory for AI agents</h3><p>Durable, versioned state between sessions — encrypted end to end.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases.html#multi-agent"><span class="tag">Use case</span><h3>Multi-agent collaboration</h3><p>Agents on their own branches, humans reviewing the merge.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases.html#human-ai"><span class="tag">Use case</span><h3>Human ↔ agent workspaces</h3><p>You in the SG/Vault browser, the agent in the CLI — same vault.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases.html#encrypted-backup"><span class="tag">Use case</span><h3>Encrypted folders with history</h3><p>A shared folder the hosting provider cannot read, with rollback.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases.html#secure-file-exchange"><span class="tag">Use case</span><h3>Signed &amp; encrypted exchange</h3><p>PKI: sign, verify, encrypt and decrypt files for named recipients.</p><span class="go">Read →</span></a>
+  </div>
+</section>
+
+<!-- trust -->
+<section class="band alt" id="trust">
+  <h2>In production — and honest about it</h2>
+  <p class="blurb">sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when <em>not</em> to use it.</p>
+  <div class="trust">
+    <span><b>~4,000</b> tests</span>
+    <span><b>mutation testing</b> in CI</span>
+    <span><b>integration tests</b> against a real server</span>
+    <span><b>2</b> runtime dependencies</span>
+    <span><b>Apache-2.0</b></span>
+    <span><a href="security.html"><b>security model</b> published</a></span>
+    <span><a href="docs/limitations.html"><b>when NOT</b> to use sgit</a></span>
+  </div>
+</section>
+
+<!-- ecosystem -->
+<section class="band" id="ecosystem">
+  <h2>One vault, three doors</h2>
+  <div class="eco">
+    <div class="e rev"><div class="think">Think of it as</div><b>sgit</b> <span class="as">— git, for encrypted vaults</span><p>Open source CLI. Free. Apache-2.0. <code>pip install sgit-ai</code></p></div>
+    <div class="e rev"><div class="think">Think of it as</div><b>SG/Vault</b> <span class="as">— the web app for your vaults</span><p>Browse, edit and review the same vaults in the browser — an independent implementation of the same wire format.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
+    <div class="e rev"><div class="think">Think of it as</div><b>SG/Send</b> <span class="as">— the transfer API underneath</span><p>The zero-knowledge storage service both clients speak to — the same server the integration tests run against.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
+  </div>
+</section>
+
+<!-- closer -->
+<section class="band alt" id="get-started">
+  <div class="triplet" style="margin-bottom:1.4rem">Encrypted vaults. <b>Git workflows.</b> Zero knowledge.</div>
+  <div class="ctas">
+    <button class="pipbtn" type="button" data-copy="pip install sgit-ai">$ pip install sgit-ai <span class="cp">copy</span></button>
+    <a class="cta2" href="docs/quickstart.html">5-minute quickstart →</a>
+    <a class="cta2" href="https://github.com/SGit-AI/SGit-AI__CLI">Star on GitHub →</a>
+  </div>
+</section>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="admin/versions.html">v0.1.8</a> · <a href="admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="docs/what-is-sgit.html">What is sgit</a>
+    <a href="docs/installation.html">Installation</a>
+    <a href="docs/quickstart.html">Quickstart</a>
+    <a href="docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="docs/agents.html">Working with AI agents</a>
+    <a href="docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="vault/vault-apps.html">Building vault apps</a>
+    <a href="vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="vault/content-authoring.html">Content authoring</a>
+    <a href="vault/sub-vaults.html">Sub-vaults</a>
+    <a href="vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="security.html">Security</a>
+    <a href="use-cases.html">Use cases</a>
+    <a href="skills.html">Skills for AI agents</a>
+    <a href="llms.txt">llms.txt</a>
+    <a href="admin/index.html">Admin &amp; engineering</a>
+    <a href="admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

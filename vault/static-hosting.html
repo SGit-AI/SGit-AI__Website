@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Static hosting on GitHub Pages — SG/Vault</title>
+<meta name="description" content="Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="nl" href="../use-cases.html">Use Cases</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl here" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / Static hosting</p>
+  <h1>Static hosting — GitHub Pages / S3</h1>
+  <p class="lead">The same vault-app HTML runs against the live API <b>or</b> a 100% static file host, transparently. The app only talks to <code>window.sg</code>; static vs live is a property of the transport, not the app. Shipped, opt-in, default-off.</p>
+
+  <h2>Why it works</h2>
+  <p>Everything needed to open and browse a vault is a plain GET to a deterministic path: file IDs (commits, trees, refs, indexes) are content hashes or HMACs of the key, computed client-side — <b>no discovery or listing call exists</b>. So a static host that serves those exact paths just works: the browser GETs ciphertext from GitHub Pages or S3 and decrypts locally. No backend, no server, still zero-knowledge — the bytes on the CDN are ciphertext.</p>
+<pre class="shell"><span class="d">&lt;!-- on the hosting page, before the host boots --&gt;</span>
+&lt;script&gt;
+  window.SG_STATIC   = true;                    <span class="d">// batch reads → GETs; writes → EREADONLY</span>
+  window.SG_ENDPOINT = 'https://my-org.github.io/my-vault';
+&lt;/script&gt;</pre>
+
+  <h2>What works statically — and what doesn't</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Call</th><th>Static?</th></tr>
+    <tr><td>Open, browse, read files, history — <code>sg.vfs.read/readText/list</code></td><td>✅ plain GETs</td></tr>
+    <tr><td>Large reads</td><td>✅ falls back from presigned to direct GET</td></tr>
+    <tr><td>Batch reads</td><td>✅ fan out to parallel GETs, identical result shape</td></tr>
+    <tr><td>Writes, deletes, <code>sg.append.*</code>, vault creation</td><td>❌ rejected cleanly with <code>EREADONLY</code></td></tr>
+  </table></div>
+  <p>A static vault is a <b>read-only snapshot</b> — ideal for published docs, reports, dashboards and view-only shares. The app detects it via <code>sg.app.writable === false</code> and hides its editing UI; the same HTML runs writable against the live endpoint. <em>Same app, two backends.</em></p>
+
+  <h2>The layout — path mirroring is the one hard requirement</h2>
+  <p>The live API serves <code>GET /api/vault/read/&lt;vaultId&gt;/&lt;filePath&gt;</code>; the static host must serve the vault's encrypted <code>bare/</code> tree at exactly that path under your base:</p>
+<pre class="shell">&lt;repo root&gt;/                    <span class="d">→ https://my-org.github.io/my-vault/</span>
+└── api/vault/read/&lt;vaultId&gt;/
+    └── bare/
+        ├── data/      obj-cas-imm-*    <span class="d"># immutable — cache forever</span>
+        ├── refs/      ref-pid-muw-*    <span class="d"># mutable head — no-store</span>
+        ├── indexes/   idx-pid-muw-*
+        └── keys/      key-rnd-imm-*</pre>
+  <p>If the repo is your vault's own git remote (working tree + <code>bare/</code> committed per the <a href="git-and-vaults.html">side-by-side pattern</a>), the encrypted tree is already in the repo — publishing is just placing it under the right path prefix. Visitors open <code>https://…/my-vault/#&lt;key&gt;</code>: the key travels in the URL fragment (never sent to the host), the transport GETs ciphertext, the browser decrypts and renders.</p>
+
+  <h2>Honest caveats</h2>
+  <ul>
+    <li><b>Read-only and frozen.</b> The static tree is a snapshot at export time; new live commits appear only when you re-export.</li>
+    <li><b>Paths must match exactly</b>, or reads 404. (A configurable read-path template is a proposed follow-on, not shipped.)</li>
+    <li><b>Cross-origin setups need CORS</b> on the static host for GETs; same-origin needs nothing.</li>
+    <li><b>The key is the read capability.</b> Anyone with the full URL can read the snapshot — that is the point of publishing one — but the host itself only ever holds ciphertext.</li>
+  </ul>
+
+  <div class="pagenav"><a href="git-and-vaults.html">← Git repos inside vaults</a><span></span></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.8</a> · <a href="../admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security.html">Security</a>
+    <a href="../use-cases.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
