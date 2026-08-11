@@ -44,6 +44,27 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
   }
 }
 
+// 3b. orphan check — every page must be reachable from at least one other page.
+// (A page can be written, built, and pushed while nothing links to it; that happened
+// with briefs.html in v0.1.13. Unreachable is the same as unpublished.)
+{
+  const pages = files.filter(f => f.endsWith('.html'));
+  const linkedTo = new Set();
+  for (const f of pages) {
+    const html = fs.readFileSync(f, 'utf8');
+    for (const m of html.matchAll(/href="([^"#]+\.html)(#[^"]*)?"/g)) {
+      if (/^https?:/.test(m[1])) continue;
+      linkedTo.add(path.resolve(path.dirname(f), m[1]));
+    }
+  }
+  for (const f of pages) {
+    if (path.resolve(f) === path.resolve(root, 'index.html')) continue;   // the front door
+    if (!linkedTo.has(path.resolve(f))) {
+      fails++; console.log('ORPHAN FAIL', path.relative(root, f), '-> generated but nothing links to it');
+    }
+  }
+}
+
 // 4. shared JS must parse
 try { new vm.Script(fs.readFileSync(path.join(root, 'assets/site.js'), 'utf8')); }
 catch (e) { fails++; console.log('JS FAIL assets/site.js', e.message); }

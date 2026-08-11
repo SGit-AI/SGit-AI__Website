@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.13'
+SITE_VERSION = 'v0.1.14'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.13', '2026-08-11', 'this release',
+    ('v0.1.14', '2026-08-12', 'this release',
+     'Two new pages, both linked this time: docs/exposed-vault-key.html (the rotation runbook plus the case study of this site\'s own key leak) and briefs.html (cross-team briefs — which v0.1.13 built but never registered, so nothing linked to it). New validator rule: every generated page must be reachable from another page, or the build fails. Added a fourth CLI-team ask: history-preserving rekey.'),
+    ('v0.1.13', '2026-08-12', 'obj-cas-imm-5168ef3fe1a7',
      'SECURITY: the vault passphrase had been written into admin/build/validate.js as an anti-leak tripwire regex — which put the literal secret into a tracked, public file (present in 3 commits). Removed; the tripwire now reads the secret from the gitignored local/ tier and scans for it, so it can never be hardcoded again. The key must be treated as compromised and rotated. Also: a /briefs page collecting the cross-team briefs (multi-agent collaboration log), and a "contacting the server" notice before network commands in the browser terminal.'),
     ('v0.1.12', '2026-08-11', 'obj-cas-imm-e8ceb3fc2239',
      'In-browser clone completes: serial-executor shim for Pyodide (WebAssembly cannot spawn threads, so all parallel blob transfers run sequentially in the browser) — validated natively against the live server with thread creation disabled: full 225-blob clone of this site vault. A serial/auto-detect mode is proposed upstream to the sgit CLI.'),
@@ -115,6 +117,7 @@ def footer(p):
     <a href="{p}security.html">Security</a>
     <a href="{p}use-cases.html">Use cases</a>
     <a href="{p}skills.html">Skills for AI agents</a>
+    <a href="{p}briefs.html">Cross-team briefs</a>
     <a href="{p}llms.txt">llms.txt</a>
     <a href="{p}admin/index.html">Admin &amp; engineering</a>
     <a href="{p}admin/versions.html">Release history</a>
@@ -424,6 +427,7 @@ SEC = """<main class="doc">
     <li>~4,000 tests including mutation testing in CI and integration tests against a real server — no mocks.</li>
     <li>An internal security review series (twelve findings, each individually worked through and debriefed — covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.</li>
     <li>Found something? Report it via <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">GitHub</a> — security reports get priority.</li>
+    <li><b>Key exposed?</b> <a href="docs/exposed-vault-key.html">The rotation runbook</a> — including a worked case study of the day this site's own vault key leaked, and what it cost to fix.</li>
   </ul>
 
   <div class="note"><b>Honesty note:</b> sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read <a href="docs/limitations.html">when NOT to use sgit</a> before trusting it with anything critical.</div>
@@ -703,6 +707,8 @@ DOCS_HUB = """<main class="doc">
     <div class="grp">
       <h2>Project</h2>
       <a href="limitations.html">When NOT to use sgit<small>The honest page</small></a>
+      <a href="exposed-vault-key.html">If a vault key is exposed<small>The rotation runbook, with a real case study</small></a>
+      <a href="../briefs.html">Cross-team briefs<small>Open asks to the CLI and API teams</small></a>
       <a href="../admin/index.html">Admin &amp; engineering<small>How this site is built and released</small></a>
       <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub<small>Source, issues, changelog</small></a>
     </div>
@@ -951,6 +957,62 @@ AGENTS = """<main class="doc">
   <div class="note"><b>For Claude users:</b> a packaged sgit Skill teaches a Claude session this entire workflow — install, clone, work, commit, push — so cross-session persistent state works out of the box.</div>
 
   <div class="pagenav"><a href="two-branch-model.html">← The two-branch model</a><a href="limitations.html">When NOT to use sgit →</a></div>
+</main>"""
+
+# ============================================================ docs/exposed-vault-key.html
+EXPOSED_KEY = """<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Project</p>
+  <h1>If a vault key is exposed</h1>
+  <p class="lead">A vault key is a <b>bearer credential</b>: whoever holds it can read and write the vault, from anywhere, with no account and no reset. There is no revocation list to add it to. So an exposed key has exactly one remedy — <b>rotate it</b>, which means taking the old vault off the server and re-encrypting the content under a new key.</p>
+  <div class="warnbox"><b>Act first, investigate second.</b> Rotation takes minutes and costs you a commit history. Working out exactly who saw what takes hours. Do them in that order.</div>
+
+  <h2>The runbook</h2>
+  <ol>
+    <li><b>Confirm you hold a complete local clone.</b> The rotation re-encrypts from your working copy — if your only full copy is on the server, clone it before you delete anything. <code>sgit status</code> should be clean, and <code>sgit vault backup</code> is cheap insurance.</li>
+    <li><b>Delete the vault from the server:</b> <code>sgit vault delete-on-remote --token &lt;token&gt;</code>. This is the step that actually revokes the old key. Rekeying <em>without</em> it leaves the old vault — and the old key's access to it — alive on the server.</li>
+    <li><b>Rotate:</b> <code>sgit vault rekey</code>. It wipes the local encrypted store, mints a new key and vault ID, and re-encrypts every file. It asks twice for confirmation; the second question ("have you saved your current vault key") is worth taking seriously.</li>
+    <li><b>Save the new key</b> — password manager, before you do anything else. It cannot be recovered.</li>
+    <li><b>Publish:</b> <code>sgit push</code>. The vault is now live under the new key with a fresh ID.</li>
+    <li><b>Verify the old key is dead</b> (see below). Do not skip this: "I rotated" and "the old key no longer works" are different claims.</li>
+    <li><b>Re-point every consumer</b> — other machines, agents, CI secrets, share links, bookmarks into the web client. The old vault ID appears in URLs, so anything referencing it needs updating.</li>
+    <li><b>Then</b> investigate: where did the key appear, for how long, and who could have fetched it.</li>
+  </ol>
+
+  <h2>Verifying the old key is dead</h2>
+  <p>Four independent checks — each should fail or 404:</p>
+<pre class="shell"><span class="d"># 1. the obvious one</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;old-vault-key&gt; /tmp/check</span>     <span class="d"># must fail: no branch index found</span>
+
+<span class="d"># 2-4. raw HTTP against the old vault id — derive the ids, then GET/PUT them</span>
+<span class="d">#   - the old ref file id            → expect 404</span>
+<span class="d">#   - a known old object id          → expect 404</span>
+<span class="d">#   - a PUT with the old write key   → expect rejection</span></pre>
+  <p>A successful clone or a 200 on any of those means the rotation did not take — most often because <code>delete-on-remote</code> was skipped.</p>
+
+  <h2>What rotation costs</h2>
+  <ul>
+    <li><b>Vault history resets to a single commit.</b> Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is <a href="../briefs.html">proposed to the CLI team</a>.) If the vault is <a href="../vault/git-and-vaults.html">mirrored to git</a>, the content history survives there — which is one of the better arguments for running the two side by side.</li>
+    <li><b>Every object ID changes.</b> IDs are content hashes <em>of the ciphertext</em>, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.</li>
+    <li><b>The vault ID changes</b>, so every URL and stored reference to it breaks.</li>
+  </ul>
+
+  <h2>The limit worth understanding: mirrors</h2>
+  <p><b>A rotation protects the server. It cannot un-publish a mirror.</b> Encrypted objects already pushed to a git remote stay in that history and remain decryptable by the old key. If the old key was <em>also</em> committed there, anyone who clones the repository can still read the old content, forever, regardless of what you rotate.</p>
+  <ul>
+    <li><b>Public content</b> (a website, published docs): a non-issue — the plaintext was public anyway. Rotate and move on.</li>
+    <li><b>Private content:</b> the rotation is only half the job. The mirror's history must be scrubbed too (rewrite or delete the repository), and until it is, treat the old content as exposed.</li>
+  </ul>
+
+  <h2>Case study: this website, 11 August 2026</h2>
+  <p>This page exists because it happened here, to the vault that serves this site.</p>
+  <p><b>What went wrong.</b> The site's build has a validator that blocks secrets and stale terms from being published. To catch the vault passphrase specifically, an agent (me) added a rule matching that exact passphrase — and wrote the literal secret into <code>admin/build/validate.js</code>, a <em>tracked</em> file. The guard against leaking became the leak. Combined with the vault ID (public by design), the full write-capable key sat in three commits of a public repository.</p>
+  <p><b>How it was caught.</b> Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the <a href="../vault/git-and-vaults.html">git page</a>: grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.</p>
+  <p><b>The response,</b> inside the hour: <code>delete-on-remote</code> (336 files removed from the server) → <code>rekey</code> (39 files re-encrypted under a new key and ID) → <code>push</code>. Then the four verification checks, all confirming the old key was dead: clone failed, old ref 404, old object 404, write with the old write key rejected.</p>
+  <p><b>The aftermath, measured.</b> 336 old objects out, 90 new in, <b>zero overlap</b> — no object ID survived, because the addressing hashes ciphertext. Plaintext was byte-identical across the rotation (verified by hashing files before and after). Vault history went from 14 commits to one; the git mirror kept all 14.</p>
+  <p><b>What changed structurally.</b> The tripwire now reads the passphrase from the gitignored <code>.sg_vault/local/</code> tier at runtime and scans for it, instead of carrying it — so the secret can no longer live in a tracked file, and the check still works. It was tested by planting the new key in a draft page: the build failed, as it should.</p>
+  <div class="note"><b>The transferable lessons.</b> (1) Never write a secret into a file that ships — derive it at runtime from the ignored tier. (2) A leak audit is worth running before your first publish <em>and</em> after anything touches your build config. (3) Grep the full history, not just the working tree; <code>git grep &lt;secret&gt; $(git rev-list --all)</code> is the check that found this. (4) Rotate before you investigate. (5) Write the incident down — this page is more useful than a quiet fix.</div>
+
+  <div class="pagenav"><a href="limitations.html">← When NOT to use sgit</a><a href="../security.html">The security model →</a></div>
 </main>"""
 
 # ============================================================ docs/limitations.html
@@ -1357,6 +1419,19 @@ BRIEFS = """<main class="doc">
   <p><code>sys.platform == 'emscripten'</code> is true under Pyodide and false everywhere else. One small <code>Transfer__Executor</code> helper (Type_Safe, per house rules) returns either a real thread pool or a trivial serial executor with the same surface, across the six call sites (four in <code>clone/Vault__Sync__Clone.py</code>, two in <code>push/Vault__Batch.py</code> — all import the executor at call time, which is what let the browser patch it).</p>
   <p><b>Evidence it's correct:</b> validated natively against the live dev server with thread creation disabled and the executor swapped for a serial one — a full clone of this site's own vault (13 commits, 59 trees, <b>225 blobs</b>) produced a byte-correct working copy. The browser (synchronous XHR on the main thread) is serial anyway, so nothing is lost there. The website already ships this exact shim client-side (<code>assets/try-setup.py</code>, section 0) — proof of the interface; the ask is to make it native so no shim is needed.</p>
 
+  <h2>→ To the sgit CLI team: preserve history across a rekey</h2>
+  <p><b>Status:</b> open · <b>Discovered:</b> live, rotating this site's own vault key after an exposure (see the <a href="docs/exposed-vault-key.html">case study</a>).</p>
+  <p>Today <code>sgit vault rekey</code> wipes the local encrypted store, mints a new key, and re-encrypts the <em>current working files</em> — so the vault's commit history resets to a single commit. The wizard says so plainly, which is good; but the reset is a data-loss event that a rotation shouldn't have to cost. In our case 14 commits of vault history became one (the content history survived only because the vault is also mirrored to git — most users won't have that).</p>
+  <p><b>The ask:</b> a history-preserving rotation — <code>sgit vault rekey --preserve-history</code>, or the default once proven. Everything required is already local in a full clone:</p>
+  <ol>
+    <li>Walk the commit DAG from every ref.</li>
+    <li>Decrypt each object (blob, tree, commit) under the old key.</li>
+    <li>Re-encrypt under the new key — which yields a new content-addressed ID, since IDs hash the ciphertext.</li>
+    <li>Rewrite bottom-up: blobs first, then trees with their new child IDs, then commits with new tree and parent IDs; finally the refs and branch index.</li>
+  </ol>
+  <p>It is a full graph rewrite with an ID remap table, not a new crypto design — the same walk <code>clone</code> already does, run locally in reverse. Worth pairing with a <code>--dry-run</code> that reports how many objects would be rewritten, and a verification pass (re-read every rewritten commit under the new key) before the old store is wiped.</p>
+  <p><b>One honest limit to document alongside it:</b> a rotation cannot un-publish what a mirror already holds. Ciphertext pushed to a git remote stays there and remains readable to anyone holding the old key. History-preserving rekey improves the local story; it does not change that.</p>
+
   <h2>→ To the SG/Send API team: two browser-transport findings</h2>
   <ul>
     <li><b>CORS allow-list is missing <code>x-api-key</code>.</b> sgit sends its token on both <code>x-sgraph-access-token</code> (allowed) and <code>X-API-Key</code> (not allowed). A single disallowed header fails the whole browser preflight — Starlette returns <code>400 Disallowed CORS headers</code> — which is what blocked the first in-browser clone. Either add <code>x-api-key</code> to the CORS middleware's <code>allow_headers</code>, or treat the second header as native-CLI-only. (The website's browser transport currently drops <code>X-API-Key</code> client-side as a workaround.)</li>
@@ -1465,6 +1540,8 @@ PAGES = [
     ('docs/two-branch-model.html', 'The two-branch model — sgit Docs', "sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.", 'docs', TWOBRANCH),
     ('docs/agents.html', 'Working with AI agents — sgit Docs', 'The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.', 'docs', AGENTS),
     ('docs/limitations.html', 'When NOT to use sgit — Docs', "The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.", 'docs', LIMITS),
+    ('docs/exposed-vault-key.html', 'If a vault key is exposed — sgit Docs', 'The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.', 'docs', EXPOSED_KEY),
+    ('briefs.html', 'Cross-team briefs — sgit.ai', "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.", 'briefs', BRIEFS),
     ('vault/index.html', 'SG/Vault & the vault platform — sgit.ai',
      'The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.', 'vault', VAULT_HUB),
     ('vault/vault-apps.html', 'Building vault apps — SG/Vault', 'How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.', 'vault', VAULT_APPS),
