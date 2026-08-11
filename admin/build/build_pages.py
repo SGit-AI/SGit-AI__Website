@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.10'
+SITE_VERSION = 'v0.1.11'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.10', '2026-08-11', 'this release',
+    ('v0.1.11', '2026-08-11', 'this release',
+     'Browser-transport fix for in-browser clone: drop the redundant X-API-Key header (the servers CORS-allow x-sgraph-access-token but not x-api-key, and one disallowed header fails the whole preflight — diagnosed live from the first user clone attempt); CORS/network failures now surface as readable HTTP 599 errors instead of a Pyodide SystemError.'),
+    ('v0.1.10', '2026-08-11', 'obj-cas-imm-deac6363bff9',
      'In-browser terminal on /try: the real sgit CLI in-process (init, commit, status, history — and network commands via a browser XHR transport: clone/push/pull straight to the SG/Send servers), plus a busybox of file commands over the in-memory filesystem. Key hygiene: every example key on the site is now an obviously-invalid placeholder (format-valid example keys are squattable namespaces), enforced by a new validator rule.'),
     ('v0.1.9', '2026-08-11', 'obj-cas-imm-83b8c23a1baa',
      '"Try sgit in your browser" page: the real sgit-ai wheel running client-side under Pyodide (verified in headless Chromium first) — key derivation, encrypt/decrypt, an in-memory vault round trip, and a Python REPL. Plus: bootstrap fast-path for static hosting (no 2.5s bridge wait on GitHub Pages), CNAME for sgit.ai, and GitHub Pages deployment via Actions in the SGit-AI__Website repo.'),
