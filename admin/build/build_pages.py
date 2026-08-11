@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.9'
+SITE_VERSION = 'v0.1.10'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.9', '2026-08-11', 'this release',
+    ('v0.1.10', '2026-08-11', 'this release',
+     'In-browser terminal on /try: the real sgit CLI in-process (init, commit, status, history — and network commands via a browser XHR transport: clone/push/pull straight to the SG/Send servers), plus a busybox of file commands over the in-memory filesystem. Key hygiene: every example key on the site is now an obviously-invalid placeholder (format-valid example keys are squattable namespaces), enforced by a new validator rule.'),
+    ('v0.1.9', '2026-08-11', 'obj-cas-imm-83b8c23a1baa',
      '"Try sgit in your browser" page: the real sgit-ai wheel running client-side under Pyodide (verified in headless Chromium first) — key derivation, encrypt/decrypt, an in-memory vault round trip, and a Python REPL. Plus: bootstrap fast-path for static hosting (no 2.5s bridge wait on GitHub Pages), CNAME for sgit.ai, and GitHub Pages deployment via Actions in the SGit-AI__Website repo.'),
     ('v0.1.8', '2026-08-11', 'obj-cas-imm-775783f31110',
      'Skills promoted to a top-level nav item with a new /skills page and the three agent skills shipped in the vault (latest versions, verbatim); llms.txt added at the vault root — encrypted for key-holders today, a standard public llms.txt when the site deploys to GitHub Pages; Home nav link retired (the brand mark covers it).'),
@@ -171,7 +173,7 @@ INDEX = """<header class="hero">
 <span class="p">$</span> <span class="cmd">sgit create my-vault</span><br>
 <span class="g">✓</span> Vault created and registered<br>
 <span class="g">✓</span> Initial commit pushed<br><br>
-&nbsp;&nbsp;Vault key: <span class="y">q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span><br><br>
+&nbsp;&nbsp;Vault key: <span class="y">&lt;24-char-passphrase&gt;:&lt;vault-id&gt;</span><br><br>
 <span class="d">Keep this safe — it is the address, the auth, and the</span><br>
 <span class="d">encryption key in one string. Without it, nobody — including</span><br>
 <span class="d">the server — can read this vault.</span>
@@ -199,7 +201,7 @@ INDEX = """<header class="hero">
 <span class="p">$</span> <span class="cmd">sgit push</span><br>
 <span class="g">✓</span> Pushed 2 objects <span class="d">(delta push — only changed, only ciphertext)</span><br><br>
 <span class="d"># on another machine (or another agent)</span><br>
-<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span><br>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt;</span><br>
 <span class="g">✓</span> Cloned and decrypted 12 files<br><br>
 <span class="p">$</span> <span class="cmd">sgit pull</span><br>
 <span class="g">✓</span> Up to date
@@ -335,7 +337,7 @@ UC = """<main class="doc">
     <h2>Private memory for AI agents</h2>
     <p>An agent's context window ends; its work shouldn't. A vault is just a folder — the agent clones it, reads and writes files normally, commits, and pushes. The next session pulls and continues where the last one stopped. Everything is encrypted before it leaves the agent's machine, so the shared state can hold things you would never put in a third-party database: client documents, security findings, personal data.</p>
 <pre class="shell"><span class="d"># session 1</span>
-<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r workspace</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span>
 <span class="p">$</span> <span class="cmd">sgit commit -m "session 1: research notes" &amp;&amp; sgit push</span>
 <span class="d"># session 2, days later, different machine</span>
 <span class="p">$</span> <span class="cmd">sgit pull</span>   <span class="d"># continue exactly where session 1 stopped</span></pre>
@@ -424,8 +426,8 @@ SEC = """<main class="doc">
 # ============================================================ try.html
 TRY = """<main class="doc" style="max-width:840px">
   <h1>Try sgit in your browser</h1>
-  <p class="lead">This page downloads a Python runtime (Pyodide, ~20&nbsp;MB) and installs the <b>real <code>sgit-ai</code> wheel from PyPI</b> — the same code <code>pip install</code> gives you — then runs it right here. Everything executes in your browser: key derivation, encryption, an in-memory vault. Nothing you type leaves this page.</p>
-  <div class="note"><b>What this is:</b> the in-memory demonstration of sgit's engine running client-side. The full network transport (clone/push/pull from the browser) is the next milestone — the server's CORS is already verified open for it. First load is heavy (~20&nbsp;MB, cached by your browser afterwards); key derivation runs 600,000 PBKDF2 rounds in WebAssembly, so expect ~1–2&nbsp;s where native takes ~0.3&nbsp;s.</div>
+  <p class="lead">This page downloads a Python runtime (Pyodide, ~20&nbsp;MB) and installs the <b>real <code>sgit-ai</code> wheel from PyPI</b> — the same code <code>pip install</code> gives you — then runs it right here: a working terminal with the actual <code>sgit</code> CLI, an in-memory filesystem, and a network transport routed through your browser. Keys are derived and content encrypted locally; nothing you type leaves this page except the ciphertext sgit itself sends when <em>you</em> run a network command.</p>
+  <div class="note"><b>What this is:</b> sgit's engine, client-side. File commands run against this tab's in-memory filesystem (gone on refresh; the remote vault persists). Network commands (<code>clone</code>, <code>push</code>, <code>pull</code>, <code>doctor</code>) go straight from your browser to the SG/Send servers over CORS — the page freezes while they run (synchronous transport; it's a demo, not a product). First load is heavy (~20&nbsp;MB, cached afterwards); 600,000 PBKDF2 rounds take ~1–2&nbsp;s in WebAssembly.</div>
 
   <div class="btnrow">
     <button class="btn" id="btn-load" type="button">Load the sgit engine (~20 MB)</button>
@@ -438,11 +440,24 @@ TRY = """<main class="doc" style="max-width:840px">
     <button class="btn alt" id="btn-vault" type="button" disabled>3 · In-memory vault round trip</button>
   </div>
 
+  <h2>The terminal</h2>
+  <p class="small dim">The real <code>sgit</code> CLI plus a small toolbox of file commands (<code>ls</code>, <code>cd</code>, <code>cat</code>, <code>mkdir</code>, <code>echo &gt; file</code>, <code>tree</code>, …). Type <code>help</code> for the list. History with ↑/↓.</p>
+  <div class="try-term" id="shterm">— load the engine above to start —</div>
+  <div class="shrow">
+    <span class="shp" id="shp">/workspace $</span>
+    <input class="shin" id="shin" type="text" spellcheck="false" autocomplete="off" disabled placeholder="help">
+  </div>
+<pre class="shell"><span class="d"># a session to try (the vault key can be any vault you hold a key for):</span>
+<span class="cmd">sgit init my-vault</span>&nbsp;&nbsp;<span class="cmd">cd my-vault</span>&nbsp;&nbsp;<span class="cmd">echo "hello" &gt; notes.md</span>
+<span class="cmd">sgit status</span>&nbsp;&nbsp;<span class="cmd">sgit commit -m "from a browser"</span>
+<span class="d"># and the one that makes it real — clone straight from the SG/Send servers:</span>
+<span class="cmd">sgit clone &lt;vault-key&gt; demo</span>&nbsp;&nbsp;<span class="cmd">cd demo</span>&nbsp;&nbsp;<span class="cmd">ls</span>&nbsp;&nbsp;<span class="cmd">sgit history log --oneline</span></pre>
+
   <h2>Python console</h2>
   <p class="small dim">The full <code>sgit_ai</code> package is importable. The last expression's value is printed.</p>
   <textarea class="pyin" id="pyin" spellcheck="false">from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
 vc = Vault__Crypto()
-vc.derive_keys('my-passphrase', 'demo1234')</textarea>
+vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
   <div class="btnrow"><button class="btn alt" id="btn-run" type="button" disabled>Run</button></div>
 
   <p class="small dim">How this works: <a href="vault/static-hosting.html">the same site</a> serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.</p>
@@ -453,6 +468,12 @@ vc.derive_keys('my-passphrase', 'demo1234')</textarea>
   'use strict';
   var py = null;
   var term = null;
+
+  async function grabText(path){
+    try { if (window.sg && window.sg.vfs && window.sg.vfs.readText) { var t = await window.sg.vfs.readText(path); if (t) return t; } } catch(e){}
+    try { var r = await fetch(path); if (r.ok) return await r.text(); } catch(e){}
+    return null;
+  }
 
   function tlog(msg){
     if (!term) term = document.getElementById('term');
@@ -504,7 +525,13 @@ vc.derive_keys('my-passphrase', 'demo1234')</textarea>
       tlog('✓ installed ' + wheel.filename);
 
       await py.runPythonAsync('import sgit_ai');
-      tlog('✓ sgit engine loaded — the buttons below run the real thing.');
+
+      tlog('› wiring the browser network transport + terminal…');
+      var setup = await grabText('assets/try-setup.py');
+      if (setup) { await py.runPythonAsync(setup); tlog('✓ terminal ready — network transport routed through this browser.'); shellReady(); }
+      else { tlog('! terminal setup not found — demos and console still work.'); }
+
+      tlog('✓ sgit engine loaded — the buttons and terminal below run the real thing.');
       btn.textContent = 'Engine loaded ✓';
       setEnabled(true);
     } catch (e) {
@@ -531,19 +558,19 @@ vc.derive_keys('my-passphrase', 'demo1234')</textarea>
     "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
     "vc = Vault__Crypto()",
     "t0 = time.time()",
-    "keys = vc.derive_keys('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "keys = vc.derive_keys('not-a-real-passphrase', 'DEMO-VAULT')",
     "ms = int((time.time()-t0)*1000)",
-    "rk = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "rk = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
     "print(f'PBKDF2-SHA256 x 600,000 iterations: {ms} ms (in WebAssembly)')",
     "print('read key   :', rk.hex()[:32] + '…')",
-    "print('ref file id:', 'ref-pid-muw-' + vc.derive_ref_file_id(rk, 'd4k9xq2r'))",
+    "print('ref file id:', 'ref-pid-muw-' + vc.derive_ref_file_id(rk, 'DEMO-VAULT'))",
     "'— keys derived locally; the passphrase never left this page —'"
   ].join('\\n');
 
   var DEMO_CRYPT = [
     "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
     "vc = Vault__Crypto()",
-    "rk = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "rk = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
     "ct = vc.encrypt_metadata(rk, 'the server never sees this sentence')",
     "print('ciphertext (AES-256-GCM, b64):', ct[:56] + '…')",
     "pt = vc.decrypt_metadata(rk, ct)",
@@ -556,16 +583,48 @@ vc.derive_keys('my-passphrase', 'demo1234')</textarea>
     "from sgit_ai.network.api.Vault__API__In_Memory import Vault__API__In_Memory",
     "vc  = Vault__Crypto()",
     "api = Vault__API__In_Memory().setup()",
-    "rk  = vc.derive_read_key('q7vmz2krx94wtb1h8pnj3fya', 'd4k9xq2r')",
+    "rk  = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
     "plaintext = b'hello from an in-browser vault'",
     "ct  = vc.encrypt(rk, plaintext)",
     "oid = vc.compute_object_id(ct)",
-    "api.write('d4k9xq2r', oid, 'write-key', ct)",
+    "api.write('DEMO-VAULT', oid, 'write-key', ct)",
     "print('stored object:', oid, f'({len(ct)} encrypted bytes)')",
-    "back = vc.decrypt(rk, bytes(api.read('d4k9xq2r', oid)))",
+    "back = vc.decrypt(rk, bytes(api.read('DEMO-VAULT', oid)))",
     "print('read back    :', back.decode())",
     "'— content-addressed, encrypted, round-tripped — entirely in this tab —'"
   ].join('\\n');
+
+  var shHist = [], shIdx = -1;
+  function shlog(msg){
+    var t = document.getElementById('shterm');
+    if (t.textContent === '— load the engine above to start —') t.textContent = '';
+    t.textContent += msg + '\\n';
+    t.scrollTop = t.scrollHeight;
+  }
+  function shellReady(){
+    var inp = document.getElementById('shin');
+    inp.disabled = false;
+    shlog("sgit terminal ready — type 'help' to see what's here.");
+    inp.addEventListener('keydown', async function(ev){
+      if (ev.key === 'ArrowUp'){ if (shIdx < shHist.length - 1){ shIdx++; inp.value = shHist[shHist.length - 1 - shIdx]; } ev.preventDefault(); return; }
+      if (ev.key === 'ArrowDown'){ if (shIdx > 0){ shIdx--; inp.value = shHist[shHist.length - 1 - shIdx]; } else { shIdx = -1; inp.value = ''; } ev.preventDefault(); return; }
+      if (ev.key !== 'Enter') return;
+      var line = inp.value; inp.value = ''; shIdx = -1;
+      if (line.trim()) shHist.push(line);
+      shlog(document.getElementById('shp').textContent + ' ' + line);
+      if (!line.trim()) return;
+      inp.disabled = true;
+      try {
+        py.globals.set('__CMD', line);
+        var out = await py.runPythonAsync('__sh(__CMD)');
+        if (out === '\\x00__CLEAR__') { document.getElementById('shterm').textContent = ''; }
+        else if (out) shlog(out);
+        var cwd = await py.runPythonAsync('import os; os.getcwd()');
+        document.getElementById('shp').textContent = cwd + ' $';
+      } catch (e) { shlog('✗ ' + e); }
+      inp.disabled = false; inp.focus();
+    });
+  }
 
   document.getElementById('btn-load').addEventListener('click', loadEngine);
   document.getElementById('btn-keys').addEventListener('click', function(){ runPy(DEMO_KEYS, 'derive vault keys'); });
@@ -710,7 +769,7 @@ QUICK = """<main class="doc">
 <span class="g">✓</span> Vault created and registered
 <span class="g">✓</span> Initial commit pushed
 
-  Vault key: <span class="y">q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span></pre>
+  Vault key: <span class="y">&lt;24-char-passphrase&gt;:&lt;vault-id&gt;</span></pre>
   <div class="warnbox"><b>Save the vault key now</b> — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</div>
   <p class="small dim">Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead — the current contents become the first snapshot.</p>
 
@@ -729,7 +788,7 @@ QUICK = """<main class="doc">
 
   <h2>4 — Clone somewhere else</h2>
 <pre class="shell"><span class="d"># on another machine, or in an agent's session</span>
-<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt;</span>
 <span class="g">✓</span> Cloned and decrypted 1 file
 <span class="p">$</span> <span class="cmd">sgit pull</span>      <span class="d"># pick up new commits any time</span></pre>
 
