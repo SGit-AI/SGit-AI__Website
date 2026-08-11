@@ -22,6 +22,7 @@ Notes for agents:
 - [The two-branch model](/docs/two-branch-model.html): private clone branches, shared named branches
 - [Working with AI agents](/docs/agents.html): sgit write, --json everywhere, sparse clones, multi-agent
 - [When NOT to use sgit](/docs/limitations.html): the honest page
+- [If a vault key is exposed](/docs/exposed-vault-key.html): rotation runbook + real case study
 
 ## SG/Vault platform
 - [Platform overview](/vault/index.html): the browser app, App Mode, the three on-ramps
@@ -37,6 +38,9 @@ Notes for agents:
 - [use sgit and vaults](/skills/use_sgit-and-vaults__SKILL.md): the CLI + cross-session persistent state
 - [create vault apps](/skills/create-vault-apps__SKILL.md): build an app that lives inside a vault
 - [create vault content](/skills/create-vault-content__SKILL.md): author _page.json layouts and vault markdown
+
+## Cross-team briefs
+- [Briefs](/briefs.html): open asks to the sgit CLI and SG/Send API teams (serial transfer mode for WASM, history-preserving rekey, browser-transport CORS findings) — multi-agent collaboration in public
 
 ## Optional
 - [Security model](/security.html): crypto stack, what the server sees, key strength
