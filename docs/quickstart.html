@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.9</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.10</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
   <a class="nl here" href="../docs/index.html">Docs</a>
@@ -33,7 +33,7 @@
 <span class="g">✓</span> Vault created and registered
 <span class="g">✓</span> Initial commit pushed
 
-  Vault key: <span class="y">q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span></pre>
+  Vault key: <span class="y">&lt;24-char-passphrase&gt;:&lt;vault-id&gt;</span></pre>
   <div class="warnbox"><b>Save the vault key now</b> — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</div>
   <p class="small dim">Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead — the current contents become the first snapshot.</p>
 
@@ -52,7 +52,7 @@
 
   <h2>4 — Clone somewhere else</h2>
 <pre class="shell"><span class="d"># on another machine, or in an agent's session</span>
-<span class="p">$</span> <span class="cmd">sgit clone q7vmz2krx94wtb1h8pnj3fya:d4k9xq2r</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt;</span>
 <span class="g">✓</span> Cloned and decrypted 1 file
 <span class="p">$</span> <span class="cmd">sgit pull</span>      <span class="d"># pick up new commits any time</span></pre>
 
@@ -77,7 +77,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.9</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.10</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>

@@ -49,7 +49,12 @@ try { new vm.Script(fs.readFileSync(path.join(root, 'assets/site.js'), 'utf8'));
 catch (e) { fails++; console.log('JS FAIL assets/site.js', e.message); }
 
 // 5. banned words in content (retired concepts / legacy naming / stale stage)
-const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, /military[- ]grade/i];
+const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, /military[- ]grade/i,
+  // no format-valid vault keys in site content — they are squattable namespaces on any SG/Send server.
+  // (24 lowercase-alnum chars, colon, 4-24 lowercase-alnum chars = the real key shape)
+  /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/,
+  // and never the live site vault's own passphrase, anywhere
+  /hxztnjk1fr94zg3ba21o9laa/];
 // the design brief quotes banned phrases in order to prohibit them — mention, not use.
 // skills/ ships canonical upstream agent artifacts verbatim — not site copy, never edited here.
 const EXEMPT = ['admin/build/validate.js', 'admin/brief-design-improvements.md'];
