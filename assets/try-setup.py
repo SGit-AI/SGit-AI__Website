@@ -39,11 +39,20 @@ def _install_xhr_transport():
         xhr.open(method, url, False)                      # synchronous — the page freezes briefly
         xhr.overrideMimeType('text/plain; charset=x-user-defined')
         for k, v in headers.items():
+            if k.lower() == 'x-api-key':
+                # sgit sends the token on BOTH x-sgraph-access-token and X-API-Key
+                # (native-CLI compat). The servers' CORS allow-list has the former
+                # but not the latter, and a disallowed header fails the whole
+                # preflight — so the browser transport drops the redundant one.
+                continue
             xhr.setRequestHeader(k, str(v))
-        if data:
-            xhr.send(to_js(bytearray(data)))
-        else:
-            xhr.send()
+        try:
+            if data:
+                xhr.send(to_js(bytearray(data)))
+            else:
+                xhr.send()
+        except Exception as e:
+            raise HTTPError(url, 599, 'browser blocked the request (CORS or network): %s' % e, {}, io.BytesIO(b''))
         raw    = bytes(ord(c) & 0xFF for c in xhr.responseText)
         status = int(xhr.status)
         if status == 0:
