@@ -179,3 +179,17 @@ footer.site .verline a{display:inline;color:var(--accent-dk);padding:0}
 .rev{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
 .rev.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+/* ---------- try page ---------- */
+.try-term{background:var(--term-bg);border-radius:10px;padding:1rem 1.15rem;font-family:var(--mono);
+  font-size:.78rem;line-height:1.6;min-height:200px;max-height:420px;overflow:auto;color:#c9d1d9;
+  white-space:pre-wrap;box-shadow:var(--shadow);margin:1rem 0}
+.btnrow{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
+.btn{background:var(--accent-dk);color:#fff;border:none;border-radius:8px;padding:.55rem 1.1rem;
+  font-family:var(--sans);font-size:.85rem;font-weight:600;cursor:pointer}
+.btn:hover{background:var(--accent)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn.alt{background:var(--panel);color:var(--fg);border:1px solid var(--line2)}
+.btn.alt:hover{border-color:var(--accent)}
+textarea.pyin{width:100%;min-height:96px;background:var(--term-bg);color:#c9d1d9;border:1px solid var(--line2);
+  border-radius:8px;font-family:var(--mono);font-size:.8rem;padding:.7rem;box-sizing:border-box;resize:vertical}

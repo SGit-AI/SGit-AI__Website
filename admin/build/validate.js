@@ -13,7 +13,7 @@ while (!fs.existsSync(path.join(root, 'app.json'))) {
 let fails = 0;
 function walk(d) {
   return fs.readdirSync(d, { withFileTypes: true }).flatMap(e => {
-    if (e.name === '.sg_vault') return [];
+    if (e.name === '.sg_vault' || e.name === '.git') return [];
     const p = path.join(d, e.name);
     return e.isDirectory() ? walk(p) : [p];
   });

@@ -12,7 +12,8 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.8</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.9</a>
+  <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
   <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
@@ -61,9 +62,11 @@
 <pre class="shell"><span class="d"># 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row</span>
 <span class="d"># 2. regenerate + validate</span>
 <span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span>
-<span class="d"># 3. ship — the site deploys by pushing the vault</span>
-<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span></pre>
-  <p>The deployment pipeline <em>is</em> sgit: commit, push, done. The server hosting this site never saw a byte of its plaintext. See <a href="versions.html">release history</a>.</p>
+<span class="d"># 3. ship to the vault — the encrypted deployment</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span>
+<span class="d"># 4. ship to git — same folder, second remote; GitHub Pages deploys from it</span>
+<span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit -m "site vX.Y.Z" &amp;&amp; git push origin dev</span></pre>
+  <p>One folder, one source of truth, two remotes: the same working tree is an sgit vault <em>and</em> a git repository (<code>SGit-AI/SGit-AI__Website</code>). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See <a href="versions.html">release history</a>.</p>
 
   <h2>Design &amp; contributions</h2>
   <p>A standing brief for Claude Code sessions proposing design improvements lives at <a href="brief-design-improvements.md">admin/brief-design-improvements.md</a> — it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.</p>
@@ -76,7 +79,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.8</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.9</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -116,7 +119,8 @@ function wait(ms){return new Promise(function(res){var t=Date.now();(function p(
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
 async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
-async function boot(){var sg=await wait(2500);await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>
 </body>
