@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.12'
+SITE_VERSION = 'v0.1.13'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.12', '2026-08-11', 'this release',
+    ('v0.1.13', '2026-08-11', 'this release',
+     'SECURITY: the vault passphrase had been written into admin/build/validate.js as an anti-leak tripwire regex — which put the literal secret into a tracked, public file (present in 3 commits). Removed; the tripwire now reads the secret from the gitignored local/ tier and scans for it, so it can never be hardcoded again. The key must be treated as compromised and rotated. Also: a /briefs page collecting the cross-team briefs (multi-agent collaboration log), and a "contacting the server" notice before network commands in the browser terminal.'),
+    ('v0.1.12', '2026-08-11', 'obj-cas-imm-e8ceb3fc2239',
      'In-browser clone completes: serial-executor shim for Pyodide (WebAssembly cannot spawn threads, so all parallel blob transfers run sequentially in the browser) — validated natively against the live server with thread creation disabled: full 225-blob clone of this site vault. A serial/auto-detect mode is proposed upstream to the sgit CLI.'),
     ('v0.1.11', '2026-08-11', 'obj-cas-imm-c9afa76a79cb',
      'Browser-transport fix for in-browser clone: drop the redundant X-API-Key header (the servers CORS-allow x-sgraph-access-token but not x-api-key, and one disallowed header fails the whole preflight — diagnosed live from the first user clone attempt); CORS/network failures now surface as readable HTTP 599 errors instead of a Pyodide SystemError.'),
@@ -617,6 +619,11 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
       if (line.trim()) shHist.push(line);
       shlog(document.getElementById('shp').textContent + ' ' + line);
       if (!line.trim()) return;
+      var lc = line.trim();
+      if (/^sgit(-ai)?\s+(clone|push|pull|fetch|doctor|remote)/.test(lc)) {
+        shlog('⏳ contacting the SG/Send servers — the tab freezes until this returns (synchronous transport; output appears on completion)…');
+        await new Promise(function(r){ setTimeout(r, 30); });   // let the notice paint before the blocking call
+      }
       inp.disabled = true;
       try {
         py.globals.set('__CMD', line);
@@ -1192,6 +1199,14 @@ HEAD 2e2dd4c · 1 file changed · author + message parsed
   </ul>
   <p>The vault serving this site ships the full <code>.gitignore</code> / <code>.gitattributes</code> pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see <a href="static-hosting.html">static hosting on GitHub Pages</a>.</p>
 
+  <h3>What a key rotation does to the mirror</h3>
+  <p>Rotating a vault key (<code>delete-on-remote</code> → <code>rekey</code> → <code>push</code>) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the <code>.gitattributes</code> binary rule means no diff churn), but two consequences are worth knowing before you rotate:</p>
+  <ul>
+    <li><b>Git becomes the history.</b> A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.</li>
+    <li><b>A rekey protects the server, not the mirror.</b> Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed <em>and</em> the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.</li>
+  </ul>
+  <p class="small dim">This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the <a href="../admin/versions.html">release history</a>.</p>
+
   <h2>Status — honestly</h2>
   <ul>
     <li>The reader is <b>in review, not shipped</b>. It is read-only, follows first parents (no merge traversal), and skips submodules and shallow clones by design.</li>
@@ -1326,6 +1341,41 @@ STATIC_HOSTING = """<main class="doc">
   </ul>
 
   <div class="pagenav"><a href="git-and-vaults.html">← Git repos inside vaults</a><span></span></div>
+</main>"""
+
+# ============================================================ briefs.html
+BRIEFS = """<main class="doc">
+  <h1>Cross-team briefs</h1>
+  <p class="lead">This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.</p>
+  <div class="note"><b>For the agent reading this:</b> each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the <a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a> repo under <code>team/humans/dinis_cruz/claude-code-web/</code>; this page is the human-readable index and the shareable URL (<code>sgit.ai/briefs.html</code>).</div>
+
+  <h2>→ To the sgit CLI team: serial transfer mode for Pyodide/WASM</h2>
+  <p><b>Status:</b> open · <b>Discovered:</b> live, during the first in-browser clone from the SG/Send servers.</p>
+  <p>sgit now runs in the browser under Pyodide (CPython → WebAssembly), and <a href="try.html">the Try page</a> clones real vaults from the live servers. The blocker: sgit parallelises blob transfer with <code>ThreadPoolExecutor</code>, and WebAssembly cannot spawn OS threads — so a clone dies at the blob stage with <code>can't start new thread</code> (index, branch metadata, commits and trees all download fine first, since those paths are sequential).</p>
+  <p><b>The ask:</b> make sgit threadless-safe natively, auto-detected — no flag needed for the common case:</p>
+<pre class="shell">SERIAL_TRANSFERS = (sys.platform == 'emscripten') or bool(os.environ.get('SGIT_SERIAL_TRANSFERS'))</pre>
+  <p><code>sys.platform == 'emscripten'</code> is true under Pyodide and false everywhere else. One small <code>Transfer__Executor</code> helper (Type_Safe, per house rules) returns either a real thread pool or a trivial serial executor with the same surface, across the six call sites (four in <code>clone/Vault__Sync__Clone.py</code>, two in <code>push/Vault__Batch.py</code> — all import the executor at call time, which is what let the browser patch it).</p>
+  <p><b>Evidence it's correct:</b> validated natively against the live dev server with thread creation disabled and the executor swapped for a serial one — a full clone of this site's own vault (13 commits, 59 trees, <b>225 blobs</b>) produced a byte-correct working copy. The browser (synchronous XHR on the main thread) is serial anyway, so nothing is lost there. The website already ships this exact shim client-side (<code>assets/try-setup.py</code>, section 0) — proof of the interface; the ask is to make it native so no shim is needed.</p>
+
+  <h2>→ To the SG/Send API team: two browser-transport findings</h2>
+  <ul>
+    <li><b>CORS allow-list is missing <code>x-api-key</code>.</b> sgit sends its token on both <code>x-sgraph-access-token</code> (allowed) and <code>X-API-Key</code> (not allowed). A single disallowed header fails the whole browser preflight — Starlette returns <code>400 Disallowed CORS headers</code> — which is what blocked the first in-browser clone. Either add <code>x-api-key</code> to the CORS middleware's <code>allow_headers</code>, or treat the second header as native-CLI-only. (The website's browser transport currently drops <code>X-API-Key</code> client-side as a workaround.)</li>
+    <li><b>The presigned-S3 fallback dodges transport patching.</b> <code>_presigned_read_fallback</code> (large blobs) uses a function-local <code>urlopen</code> import, invisible to a monkey-patched transport and untested under CORS from a browser origin. Worth a look before large-blob vaults meet the browser.</li>
+  </ul>
+
+  <h2>→ Roadmap note: a Web-Worker async transport</h2>
+  <p>The in-browser terminal uses <em>synchronous</em> XHR, so the tab freezes during a network command and output appears only on completion. Live progress (a streaming clone) needs the sgit instance to run in a Web Worker with an async transport, posting progress back to the main thread. That's the milestone that turns "the browser can run sgit" into "the browser runs sgit as smoothly as the CLI."</p>
+
+  <h2>The collaboration log so far</h2>
+  <p>Other briefs this site's agent has produced and handed off (in the CLI repo):</p>
+  <ul>
+    <li><b>git_reader review</b> — verified a pure-Python git reader against a real 906-commit repo; fixed one Type_Safe defaults bug, flagged a sanitization bug before ship.</li>
+    <li><b>Pyodide-in-browser verification</b> — proved sgit-ai v0.14.27 runs under WebAssembly, with the <code>ssl</code>-package and <code>.setup()</code> discoveries the tools team's handoff didn't have.</li>
+    <li><b>Design-improvements brief</b> — a standing request for a design pass, with the site's hard constraints spelled out.</li>
+  </ul>
+  <p class="small dim">This is what "the encrypted git for humans and AI agents" looks like from the inside: agents doing real work, filing real bugs, handing off with receipts.</p>
+
+  <div class="pagenav"><a href="index.html">← Home</a><a href="admin/index.html">Admin &amp; engineering →</a></div>
 </main>"""
 
 # ============================================================ admin/index.html

@@ -50,11 +50,22 @@ catch (e) { fails++; console.log('JS FAIL assets/site.js', e.message); }
 
 // 5. banned words in content (retired concepts / legacy naming / stale stage)
 const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, /military[- ]grade/i,
-  // no format-valid vault keys in site content — they are squattable namespaces on any SG/Send server.
-  // (24 lowercase-alnum chars, colon, 4-24 lowercase-alnum chars = the real key shape)
-  /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/,
-  // and never the live site vault's own passphrase, anywhere
-  /hxztnjk1fr94zg3ba21o9laa/];
+  // no format-valid vault keys in site content — they are squattable namespaces on any SG/Send
+  // server (24 lowercase-alnum : 4-24 lowercase-alnum = the real key shape). This is a PATTERN,
+  // not a secret — never hardcode an actual passphrase here (that would be the leak this guards
+  // against). The live vault's own passphrase is caught by the derived scan below.
+  /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/];
+
+// 5b. the passphrase tripwire, done safely: read the secret from the gitignored local/ tier
+// (never present it in this tracked file) and scan the tree for it. Skips when local/ is absent
+// (e.g. CI without the key) — the structural check above still applies there.
+let SECRET = null;
+try {
+  const vk = fs.readFileSync(path.join(root, '.sg_vault/local/vault_key'), 'utf8').trim();
+  const pass = vk.split(':')[0];
+  if (pass && pass.length >= 12) SECRET = pass;
+} catch (e) { /* local/ not present — structural check still covers key-shaped strings */ }
+
 // the design brief quotes banned phrases in order to prohibit them — mention, not use.
 // skills/ ships canonical upstream agent artifacts verbatim — not site copy, never edited here.
 const EXEMPT = ['admin/build/validate.js', 'admin/brief-design-improvements.md'];
@@ -66,6 +77,9 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
   for (const re of BANNED) {
     const m = text.match(re);
     if (m) { fails++; console.log('BANNED-WORD FAIL', path.relative(root, f), '->', JSON.stringify(m[0])); }
+  }
+  if (SECRET && text.includes(SECRET)) {
+    fails++; console.log('SECRET-LEAK FAIL', path.relative(root, f), '-> vault passphrase present in a tracked file');
   }
 }
 
