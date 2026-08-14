@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.14'
+SITE_VERSION = 'v0.1.15'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.14', '2026-08-12', 'this release',
+    ('v0.1.15', '2026-08-12', 'this release',
+     'New Deploy section: self-hosting guidance rendered LIVE in the browser from an encrypted SG/Send vault, using a published read-only key — ciphertext over CORS, AES-256-GCM decryption via Web Crypto, no copy stored on this site and no rebuild when the SG/Send team pushes. Includes a three-tier cache (session memory, permanent Cache API for immutable objects, always-fresh ref) and a vault debug panel showing the HEAD commit, per-object request log, and cache hit/miss stats.'),
+    ('v0.1.14', '2026-08-12', 'obj-cas-imm-3b54c02dbb96',
      'Two new pages, both linked this time: docs/exposed-vault-key.html (the rotation runbook plus the case study of this site\'s own key leak) and briefs.html (cross-team briefs — which v0.1.13 built but never registered, so nothing linked to it). New validator rule: every generated page must be reachable from another page, or the build fails. Added a fourth CLI-team ask: history-preserving rekey.'),
     ('v0.1.13', '2026-08-12', 'obj-cas-imm-5168ef3fe1a7',
      'SECURITY: the vault passphrase had been written into admin/build/validate.js as an anti-leak tripwire regex — which put the literal secret into a tracked, public file (present in 3 commits). Removed; the tripwire now reads the secret from the gitignored local/ tier and scans for it, so it can never be hardcoded again. The key must be treated as compromised and rotated. Also: a /briefs page collecting the cross-team briefs (multi-agent collaboration log), and a "contacting the server" notice before network commands in the browser terminal.'),
@@ -78,6 +80,7 @@ def nav(p, here):
   <a class="{cls('use-cases')}" href="{p}use-cases.html">Use Cases</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
   <a class="{cls('vault')}" href="{p}vault/index.html">SG/Vault</a>
+  <a class="{cls('deploy')}" href="{p}deploy/index.html">Deploy</a>
   <a class="{cls('skills')}" href="{p}skills.html">Skills</a>
   <a class="{cls('security')}" href="{p}security.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
@@ -646,6 +649,58 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
   document.getElementById('btn-crypt').addEventListener('click', function(){ runPy(DEMO_CRYPT, 'encrypt / decrypt'); });
   document.getElementById('btn-vault').addEventListener('click', function(){ runPy(DEMO_VAULT, 'in-memory vault round trip'); });
   document.getElementById('btn-run').addEventListener('click', function(){ runPy(document.getElementById('pyin').value, 'console'); });
+})();
+</script>"""
+
+# ============================================================ deploy/index.html
+DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
+  <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
+  <h1>Run your own SG/Send server</h1>
+  <p class="lead">Deployment guidance for standing up your own zero-knowledge vault server — Docker, AWS, GCP, Heroku, or a static host. <b>These pages are not part of this website.</b> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
+  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading.</div>
+</main>
+
+<div class="vdocs">
+  <aside class="vdocs-nav" id="vdocs-nav"><span class="dim small">opening vault…</span></aside>
+  <article class="vdocs-body" id="vdocs-body"><p class="dim">Fetching the encrypted index…</p></article>
+</div>
+
+<button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
+<div class="vdbg" id="vdbg">
+  <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
+  <div class="vdbg-btns">
+    <button id="vdbg-refresh" type="button">check for new commit</button>
+    <button id="vdbg-clear" type="button">clear cache &amp; reload</button>
+  </div>
+  <div id="vdbg-note"></div>
+  <div class="vdbg-h">what you are looking at</div>
+  <div class="vdbg-dim" style="line-height:1.6;white-space:normal;font-family:var(--sans);font-size:.72rem">
+    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally.
+    Objects whose id contains <b>-imm-</b> are content-addressed and therefore immutable, so they
+    are cached permanently; the mutable <b>ref</b> is refetched every load, which is how a new
+    commit is noticed at all. Nothing here is stored on sgit.ai.
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var R = document.documentElement.getAttribute('data-root') || '';
+  async function grab(p){
+    try { if (window.sg && window.sg.vfs && window.sg.vfs.readText) { var t = await window.sg.vfs.readText(p); if (t) return t; } } catch(e){}
+    try { var r = await fetch(p); if (r.ok) return await r.text(); } catch(e){}
+    return null;
+  }
+  async function boot(){
+    var src = await grab(R + 'assets/vault-docs.js') || await grab('../assets/vault-docs.js');
+    if (!src) { document.getElementById('vdocs-body').innerHTML = '<div class="warnbox">Could not load the vault reader.</div>'; return; }
+    try { (0, eval)(src); } catch (e) { console.error('[deploy] reader failed', e); return; }
+    var cfgText = await grab('vault.json') || await grab(R + 'deploy/vault.json');
+    if (!cfgText) { document.getElementById('vdocs-body').innerHTML = '<div class="warnbox">Missing deploy/vault.json.</div>'; return; }
+    window.SGVaultDocs.mount(JSON.parse(cfgText));
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>"""
 
@@ -1528,6 +1583,9 @@ PAGES = [
      'home', INDEX),
     ('use-cases.html', 'Use cases — sgit', 'Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.', 'use-cases', UC),
     ('security.html', 'Security model — sgit', "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.", 'security', SEC),
+    ('deploy/index.html', 'Run your own SG/Send server — sgit.ai',
+     'Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.',
+     'deploy', DEPLOY),
     ('try.html', 'Try sgit in your browser — sgit.ai',
      'The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.',
      'try', TRY),

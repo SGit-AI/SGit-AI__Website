@@ -1,0 +1,7 @@
+{
+  "_comment": "Live source for the deployment docs. The read key is PUBLIC and read-only by construction: it decrypts this vault's content and nothing else, and cannot write. Rotate by replacing this file — the site picks it up on the next load, no rebuild.",
+  "endpoint": "https://dev.send.sgraph.ai",
+  "vault_id": "fyofmkvr",
+  "read_key": "8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1",
+  "maintained_by": "the SG/Send team — see MAINTENANCE.md inside the vault"
+}
