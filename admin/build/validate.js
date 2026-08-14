@@ -30,8 +30,11 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
     catch (e) { fails++; console.log('JS FAIL', rel, 'script', i, e.message); }
   });
 
-  // 2. authoring contract: no declarative refs to vault files
-  const bad = html.match(/<link[^>]*href=(?!"data:)|<script[^>]+src=|<img[^>]+src=/g);
+  // 2. authoring contract: no declarative refs to vault files.
+  // The contract exists because the vault host cannot serve a declarative fetch of a vault
+  // path — stylesheets, scripts and images must come through the bridge. <link rel="canonical">
+  // and rel="alternate" fetch nothing; they are metadata a crawler reads, so they are exempt.
+  const bad = html.match(/<link(?![^>]*rel="(?:canonical|alternate)")[^>]*href=(?!"data:)|<script[^>]+src=|<img[^>]+src=/g);
   if (bad) { fails++; console.log('CONTRACT FAIL', rel, bad); }
 
   // 3. internal links must resolve
@@ -84,6 +87,35 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
     }
     if (/<[a-z]+[ >]/.test(text.replace(/`[^`]*`/g, ''))) {
       fails++; console.log('MD-HTML FAIL', path.relative(root, f), '-> raw HTML leaked into the markdown');
+    }
+  }
+}
+
+// 3d. crawl surface. The fade-in that hides the unstyled flash once left the body at
+// opacity:0 for any client that did not run the bootstrap — invisible to a reader and a
+// hidden-text signal to an indexer. An agent reported the site not ranking for its own
+// language; this is the regression guard for the fix, plus the files a crawler looks for.
+{
+  for (const f of files.filter(f => f.endsWith('.html'))) {
+    const html = fs.readFileSync(f, 'utf8'), rel = path.relative(root, f);
+    if (/opacity:0/.test(html) && !/<noscript><style>body\{opacity:1/.test(html)) {
+      fails++; console.log('NOJS FAIL', rel, '-> body can stay invisible without JS');
+    }
+    if (/opacity:0/.test(html) && !/animation:sg-reveal/.test(html)) {
+      fails++; console.log('NOJS FAIL', rel, '-> no CSS-only reveal failsafe');
+    }
+    if (!/rel="canonical"/.test(html)) { fails++; console.log('CANONICAL FAIL', rel); }
+  }
+  const need = ['robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt'];
+  for (const n of need) {
+    if (!fs.existsSync(path.join(root, n))) { fails++; console.log('CRAWL FAIL', n, '-> missing'); }
+  }
+  const sitemap = fs.existsSync(path.join(root, 'sitemap.xml'))
+    ? fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8') : '';
+  for (const f of files.filter(f => f.endsWith('.html'))) {
+    const rel = path.relative(root, f).replace(/\\/g, '/');
+    if (sitemap && !sitemap.includes('/' + rel)) {
+      fails++; console.log('SITEMAP FAIL', rel, '-> not listed');
     }
   }
 }

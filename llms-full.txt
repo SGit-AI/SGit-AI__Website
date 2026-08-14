@@ -1,0 +1,2266 @@
+# sgit.ai — complete documentation, single file
+
+> Every page of https://sgit.ai concatenated into one document, generated at build time
+> (v0.1.26). Nothing here needs a second request. Individual pages live at the paths
+> shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
+>
+> sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
+> client-side (AES-256-GCM) before they leave your machine. The server stores ciphertext under
+> opaque IDs — it never sees filenames, contents, or commit messages.
+
+
+
+==============================================================================
+# sgit — the encrypted git for humans and AI agents
+
+> sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
+>
+> Page: https://sgit.ai/index.html
+
+Agents need private, versioned state
+
+# The encrypted git for
+humans and AI agents
+
+Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.
+
+[Or try it in your browser →](try.md) [5-minute quickstart →](docs/quickstart.md)
+
+Pure Python · two runtime dependencies · Apache-2.0
+
+$sgit create my-vault
+✓ Vault created and registered
+✓ Initial commit pushed
+
+ Vault key: <24-char-passphrase>:<vault-id>
+
+Keep this safe — it is the address, the auth, and the
+encryption key in one string. Without it, nobody — including
+the server — can read this vault.
+
+$vim notes/positioning.md
+$sgit status
+ On clone branch branch-clone-3f9c → named branch main
+modified: notes/positioning.md
+added: drafts/hero-copy.md
+
+$sgit commit -m "first draft of hero copy"
+✓ Committed 2 files (no staging area — commit snapshots the folder)
+
+$sgit history log --oneline
+c4e81a first draft of hero copy
+b2d70f initial commit
+
+$sgit history diff
+--- a/notes/positioning.md
++++ b/notes/positioning.md
+- sgit is a CLI for encrypted sync
++ sgit is git for encrypted vaults
+
+$sgit push
+✓ Pushed 2 objects (delta push — only changed, only ciphertext)
+
+# on another machine (or another agent)
+$sgit clone <vault-key>
+✓ Cloned and decrypted 12 files
+
+$sgit pull
+✓ Up to date
+
+# one call: encrypt, commit, push, machine-readable result —
+# no working-directory scan, no full clone needed
+$sgit write notes/finding.md --file result.md \
+ --message "agent A: analysis" --push --json
+ {
+"status": "pushed",
+"path": "notes/finding.md",
+"blob_id": "obj-cas-imm-9c2e41ab77d0"
+ }
+
+The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.
+
+## Git workflows. Encrypted vaults. Zero knowledge.
+
+sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine.
+
+**Git-like version control**commit, branch, merge, diff, log, stash, revert your encrypted files
+
+**Client-side encryption**AES-256-GCM before upload; keys derived from your vault key, never sent to the server
+
+**Real three-way merge**conflict files plus a base/ours/theirs `resolve --show` view
+
+**The two-branch model**a private clone branch per machine or agent; shared named branches for collaboration
+
+**Sparse & thin clones**structure now, content on demand — for agents on a time budget
+
+**Browser interop**open the same vault in SG/Vault on the web — CLI and browser speak one wire format
+
+## What the server sees
+
+### Your machine
+
+- filenames & folder structure
+- file contents
+- commit messages
+- branch names
+- the vault key & derived keys
+
+*[diagram]*
+
+### The server
+
+- obj-cas-imm-3f9c41ab77d0
+- ref-pid-muw-8e02cc194b3a
+- ciphertext blobs (AES-256-GCM)
+- object sizes · timestamps
+- the vault id
+
+That's the whole list — and we publish the threat model, including what the server *can* see (sizes, timing, vault ID). [Read the security model →](security.md)
+
+## Built for agents
+
+Agents need shared state. Shared state needs versioning — and privacy. sgit is the encrypted, versioned workspace for humans and AI agents.
+
+Persistent memory
+
+### A vault is just a folder
+
+An agent clones it, reads and writes files normally, commits, pushes. The next session pulls and continues. State survives the context window.
+
+Multi-agent, human-merged
+
+### A branch per agent
+
+Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge — in the terminal or in the SG/Vault browser.
+
+Agent-grade plumbing
+
+### Machine-readable everything
+
+`sgit write` for surgical single-call commits, `--json` on every read path, `cat --id` with zero network calls, sparse clones for fast cold starts.
+
+[Read the agent guide →](docs/agents.md) · [Install the skills →](skills.md) · [llms.txt](llms.txt)
+
+## What people use it for
+
+[Use case### Private memory for AI agentsDurable, versioned state between sessions — encrypted end to end.Read →](use-cases/index.md#ai-agents)
+
+[Use case### Multi-agent collaborationAgents on their own branches, humans reviewing the merge.Read →](use-cases/index.md#multi-agent)
+
+[Use case### Human ↔ agent workspacesYou in the SG/Vault browser, the agent in the CLI — same vault.Read →](use-cases/index.md#human-ai)
+
+[Use case### Encrypted folders with historyA shared folder the hosting provider cannot read, with rollback.Read →](use-cases/index.md#encrypted-backup)
+
+[Use case### Signed & encrypted exchangePKI: sign, verify, encrypt and decrypt files for named recipients.Read →](use-cases/index.md#secure-file-exchange)
+
+## In production — and honest about it
+
+sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when *not* to use it.
+
+**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why.md)
+
+## One vault, three doors
+
+Think of it as
+
+**sgit** — git, for encrypted vaults
+
+Open source CLI. Free. Apache-2.0. `pip install sgit-ai`
+
+Think of it as
+
+**SG/Vault** — the web app for your vaults
+
+Browse, edit and review the same vaults in the browser — an independent implementation of the same wire format.
+
+[Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
+
+Think of it as
+
+**SG/Send** — the transfer API underneath
+
+The zero-knowledge storage service both clients speak to — the same server the integration tests run against.
+
+[Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
+
+Encrypted vaults. **Git workflows.** Zero knowledge.
+
+[5-minute quickstart →](docs/quickstart.md) [Star on GitHub →](https://github.com/SGit-AI/SGit-AI__CLI)
+
+
+
+==============================================================================
+# Use cases — sgit
+
+> Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
+>
+> Page: https://sgit.ai/use-cases/index.html
+
+[Home](../index.md) / Use cases
+
+# Use cases
+
+Two kinds of page here. **Workflows** are the mechanics — what sgit does, on shipped commands. **Situations** are who has the problem, each with a working recipe, an honest evidence status, and a brief you can hand to an agent.
+
+**Reading this as an agent?** Every page on this site has a `.md` twin at the same path — this one is [use-cases/index.md](index.md). Internal links inside the markdown point at markdown, so you can traverse the whole site without parsing HTML. The machine index is [llms.txt](../llms.txt).
+
+## Situations
+
+Each of these is a place where the sentence "this needs version control, and the store must not be able to read it" is literally true. The pages are written to be usable: the setup, the commands, what is proven versus what is a pattern, and an agent brief.
+
+[AI agents### Agent state that isn't the vendor's to readDurable memory across sessions and machines, and shared memory between agents, with the store unable to read either. **Evidence: this website.**](ai-agents.md)
+
+[Professional services### Working documents with clientsLegal, M&A, audit, assessment: the deliverable and the working notes, versioned, in a store that cannot read them — and read access you can hand out without an account.](professional-services.md)
+
+[Security teams### Findings about your own weaknessesPentest output and vulnerability data need history, diffs and multi-person workflow — and are the last thing to put in a SaaS you don't control.](security-teams.md)
+
+[Health & regulated### Data that changes what is permissibleWhen the host provably cannot read the content, the conversation stops being about the provider's access controls. Read the caveats on that page before quoting it.](health-regulated.md)
+
+## Workflows
+
+The mechanics underneath those situations. Every one runs on shipped commands — nothing aspirational.
+
+## Private memory for AI agents
+
+An agent's context window ends; its work shouldn't. A vault is just a folder — the agent clones it, reads and writes files normally, commits, and pushes. The next session pulls and continues where the last one stopped. Everything is encrypted before it leaves the agent's machine, so the shared state can hold things you would never put in a third-party database: client documents, security findings, personal data.
+
+```
+# session 1
+$ sgit clone <vault-key> workspace
+$ sgit commit -m "session 1: research notes" && sgit push
+# session 2, days later, different machine
+$ sgit pull   # continue exactly where session 1 stopped
+```
+
+[Full agent guide →](../docs/agents.md)
+
+## Multi-agent collaboration
+
+Give each agent its own named branch. Every clone also gets a private clone branch whose key never leaves that agent's session, so agents cannot trample each other's work-in-progress. Work meets on named branches, and a human reviews the merge. Agents can inspect each other's commits read-only with `sgit history show` and `sgit history diff` — without pulling, so looking never means merging.
+
+```
+# agent A  $ sgit branch new feature-analysis … sgit push
+# agent B  $ sgit branch new feature-report   … sgit push
+# human    $ sgit pull → review → merge, with sgit resolve --show on conflicts
+```
+
+## Human ↔ agent workspaces
+
+The same vault has two doors: you in the SG/Vault web app, the agent in the CLI. The browser client is an independent implementation of the same wire format — you browse, edit and review in a UI while the agent works the same files from the terminal. Both sides see each other's commits; neither side's plaintext ever touches the server. (How the browser side works: [sgraph.ai](https://sgraph.ai).)
+
+```
+$ sgit vault info
+  Web URL: https://vault.sgraph.ai/en-gb/#<your-vault-key>
+```
+
+## Encrypted folders with history
+
+A shared folder where the hosting provider cannot read the contents — with commits, diffs, and rollback. Work offline, commit locally, push when ready; restore any prior version with `sgit history revert`. Vault-level `backup` and `restore` produce portable archives, and `sgit vault move` rotates keys if a key is ever exposed.
+
+```
+$ sgit init --existing        # vault-ify a folder you already have
+$ sgit commit -m "baseline" && sgit push
+$ sgit history revert --commit obj-cas-imm-b2d70f   # roll back
+```
+
+## Signed & encrypted file exchange
+
+Alongside vault sync, sgit ships a PKI toolset: generate keypairs, exchange public keys as contact bundles, then sign, verify, encrypt and decrypt individual files for named recipients — useful when a file has to travel outside a vault but still needs integrity and confidentiality.
+
+```
+$ sgit pki keygen --label "release keys"
+$ sgit pki sign report.pdf --fingerprint <fp>
+$ sgit pki encrypt report.pdf --recipient <fp>
+```
+
+[← Why this exists](../why.md)[Documentation →](../docs/index.md)
+
+
+
+==============================================================================
+# Agent state that isn't the vendor's to read — sgit use cases
+
+> Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
+>
+> Page: https://sgit.ai/use-cases/ai-agents.html
+
+[Home](../index.md) / [Use cases](index.md) / AI agents
+
+# Agent state that isn't the vendor's to read
+
+An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.
+
+## The problem
+
+Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor's memory feature — all of which the provider can read.
+
+That is fine while the state is "which step am I on". It stops being fine the moment the state contains the client's documents, the security findings, the unreleased code, the personal data. At that point the question is no longer about engineering: it is whether you are permitted to put that material there at all, and the answer often arrives from someone who does not care how good the access controls are.
+
+The second half of the problem is coordination. One agent needs durable memory; several agents need *shared* memory with isolation, a review step, and a way to look at each other's work without merging it. That is version control — and version control's usual answer is a host that reads everything.
+
+## What sgit does about it
+
+A vault is a folder. The agent clones it, reads and writes files normally, commits, and pushes; the next session pulls and continues. Encryption happens before anything leaves the machine, so the shared state can hold what a third-party database cannot. Each clone also gets a [private branch](../docs/two-branch-model.md) whose key never leaves that session, so agents can work concurrently without trampling each other, and meet on a shared named branch.
+
+## The recipe
+
+**One agent, many sessions.** The whole pattern is two commands at the session boundaries:
+
+```
+# session start — always, before anything else
+$ sgit clone <vault-key> workspace   # or: sgit pull
+# … the agent works normally: read, write, edit files …
+# session end — always, before the context runs out
+$ sgit commit -m "session 4: drafted the migration plan" && sgit push
+```
+
+**Write a single file without a working copy** — the agent-shaped command, with machine-readable output:
+
+```
+$ sgit write notes/findings.md --file ./findings.md \
+      --message "add findings" --push --json
+```
+
+**Several agents, one vault.** Give each a named branch; let a human own the merge:
+
+```
+# agent A  $ sgit branch new research  … sgit push
+# agent B  $ sgit branch new drafting  … sgit push
+# either agent, read-only — looking is not merging
+$ sgit history show <commit>
+$ sgit history diff --remote
+```
+
+**Big vault, small task.** A sparse clone keeps the agent's working set — and its token budget — proportionate to the job:
+
+```
+$ sgit clone <vault-key> workspace --sparse notes/ drafts/
+```
+
+## Evidence status
+
+PROVEN
+
+**This website is the evidence.** It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:
+
+- The [Deploy section](../deploy/index.md) is maintained by a *different* team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.
+- The [cross-team briefs](../briefs.md) and the [key-leak incident](../docs/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
+
+Honest limit: n is small, and the agents are supervised by the people who wrote the tool.
+
+## Brief for an agent
+
+Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+
+```
+# everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/ai-agents.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything
+```
+
+> Read https://sgit.ai/use-cases/ai-agents.md and https://sgit.ai/docs/agents.md. Then set up agent state in a vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository. Then write a short SESSION.md describing the clone/pull-at-start and commit/push-at-end protocol so future sessions follow it.
+
+That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+
+## Related
+
+- [Working with AI agents](../docs/agents.md) — the full agent-facing surface: `--json` everywhere, the session pattern, multi-agent collaboration
+- [The two-branch model](../docs/two-branch-model.md) — why every clone gets a private branch
+- [Skills](../skills.md) — packaged instructions that make an agent competent at this without you explaining it
+
+[← Use cases](index.md)[Professional services →](professional-services.md)
+
+
+
+==============================================================================
+# Working documents with clients — sgit use cases
+
+> Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.
+>
+> Page: https://sgit.ai/use-cases/professional-services.html
+
+[Home](../index.md) / [Use cases](index.md) / Professional services
+
+# Working documents with clients
+
+Legal, M&A, audit, security assessment. The material that most needs versions and review is the material that least belongs readable on a third party's disk.
+
+## The problem
+
+A engagement produces two bodies of text: the deliverable, and everything behind it — working notes, drafts, the evidence, the arguments that did not survive. Both need history: who changed what, when, and what the previous version said. Both need more than one person in them.
+
+The usual tools split badly. A shared drive gives you collaboration and no history worth the name. A private repo gives you history and hands the whole engagement to a host. Email attachments give you neither and produce six versions named `final_v3_JS_edits`.
+
+And then the engagement ends, and you need to hand the client something they can keep and verify — without giving them an account on your systems, and without them needing your tooling to read it later.
+
+## What sgit does about it
+
+The working set is a vault: full history, branches, diffs, three-way merge, all client-side. The store holds ciphertext under opaque ids, so "where is this hosted" and "who can read this" stop being the same question — including for the host's staff, a subpoena served on the host, or a breach of it.
+
+For handover, a **read key** is derived one way: it decrypts and cannot be turned into write access. You can give a client read access to a specific vault without giving them anything else, and without the host mediating it.
+
+## The recipe
+
+**One vault per engagement.** Keep the boundary at the vault, not at a folder — it is the unit of access.
+
+```
+$ sgit create acme-acquisition
+  Vault key: <passphrase>:<vault-id>   ← password manager, now. There is no reset.
+$ mkdir deliverable working evidence && sgit commit -m "structure" && sgit push
+```
+
+**Review as branches**, so the draft in flight is never the draft on the record:
+
+```
+$ sgit branch new draft-2 && sgit push
+$ sgit history diff --commit <prev>      # exactly what changed since the last version
+$ sgit resolve --show                     # when two reviewers touch the same file
+```
+
+**Hand over read-only** at the end, or throughout:
+
+```
+$ sgit dev derive-keys '<vault-key>'    # the read key, derived one way
+# the client, with nothing but that key:
+$ sgit clone --read-key <read-key> <vault-id> engagement
+# …and a write attempt is refused, which they can verify themselves
+```
+
+**Archive on close.** The archive is self-contained ciphertext — keep it wherever your retention policy says, including somewhere you don't trust:
+
+```
+$ sgit vault backup --include-key       # store the key separately from the archive
+```
+
+## Evidence status
+
+PATTERN — not yet evidenced publicly
+
+The mechanics above are all shipped commands and are exercised daily; what we do **not** have is a published professional-services deployment we can point you at. Treat this page as a design that fits the constraints, not as a case study.
+
+Two things to weigh before you use it on a real engagement: sgit is in [beta](../docs/limitations.md), and there is no key recovery — if your firm's key management is not already real, this trade-off will find you. If you do run this pattern, we would like to write it up: [say so in the open](https://github.com/SGit-AI/SGit-AI__CLI/issues).
+
+## Brief for an agent
+
+Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+
+```
+# everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/professional-services.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything
+```
+
+> Read https://sgit.ai/use-cases/professional-services.md and https://sgit.ai/docs/agents.md. Then set up an engagement vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository.
+
+That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+
+## Related
+
+- [When NOT to use sgit](../docs/limitations.md) — read this before committing a client engagement to it
+- [SG/Vault](../vault/index.md) — the browser app, so a client can read without installing anything
+- [Security model](../security.md) — precisely what the server can and cannot see
+
+[← AI agents](ai-agents.md)[Security teams →](security-teams.md)
+
+
+
+==============================================================================
+# Findings about your own weaknesses — sgit use cases
+
+> Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.
+>
+> Page: https://sgit.ai/use-cases/security-teams.html
+
+[Home](../index.md) / [Use cases](index.md) / Security teams
+
+# Findings about your own weaknesses
+
+Pentest output is a map of how to get in. It needs history, diffs and several people — and it is the last thing to hand to a SaaS you don't control.
+
+## The problem
+
+Assessment work produces exactly the document an attacker would most like to have: what is exposed, how to reach it, what has not been fixed yet, and which excuse each owner gave. It is also work that genuinely needs version control — findings get re-tested, severities change, remediation gets tracked across months, and several people edit the same report.
+
+So it goes into a ticketing system or a shared repo, because those are the tools that do the workflow. Both are readable by the provider, and both are now a single place holding the complete attack path for the organisation. That is a concentration of risk that a security team, of all teams, can see clearly.
+
+## What sgit does about it
+
+The findings live in a vault: versioned, diffable, multi-person, and ciphertext everywhere but on the machines of the people working on them. The host is a key-value store for opaque ids; compromising it yields encrypted objects and traffic timing.
+
+It also gives you a defensible answer to the question that follows an incident — "where was this stored, and who could read it?" — that does not depend on a vendor's access-control configuration being correct on the day.
+
+## The recipe
+
+**A vault per engagement or per client**, with the report and the raw evidence separated so you can share one without the other:
+
+```
+$ sgit create acme-pentest-2026q3
+$ mkdir report evidence retest && sgit commit -m "structure" && sgit push
+```
+
+**Re-test cycles as commits**, so severity changes are a diff rather than a claim:
+
+```
+$ sgit commit -m "retest: SQLi in /search fixed, XSS in /profile still open"
+$ sgit history log --oneline
+$ sgit history diff --commit <initial-report> --files-only
+```
+
+**Deliver read-only** to the client, keeping the write side entirely on your team:
+
+```
+$ sgit dev derive-keys '<vault-key>'
+$ sgit clone --read-key <read-key> <vault-id> report   # what the client runs
+```
+
+**One rule, learned the hard way:** never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from [our own incident](../docs/exposed-vault-key.md).
+
+## Evidence status
+
+PARTIAL — adjacent evidence only
+
+We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's [exposed-key incident](../docs/exposed-vault-key.md) — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.
+
+That write-up is the artefact a security team would actually judge us on, so it is on the site rather than in a drawer. If you run assessment work on sgit, the failure modes you hit are the ones we want to hear about.
+
+## Brief for an agent
+
+Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+
+```
+# everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/security-teams.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything
+```
+
+> Read https://sgit.ai/use-cases/security-teams.md and https://sgit.ai/docs/agents.md. Then set up an assessment vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository. Also add a pre-push check that fails if the vault key appears in any tracked file, reading the secret from a gitignored path rather than hardcoding it.
+
+That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+
+## Related
+
+- [If a vault key is exposed](../docs/exposed-vault-key.md) — the runbook and the case study
+- [Security model](../security.md) — the crypto stack and the honest side channels
+- [Self-hosting](../deploy/index.md) — when the storage layer has to be yours too
+
+[← Professional services](professional-services.md)[Health & regulated →](health-regulated.md)
+
+
+
+==============================================================================
+# Data that changes what is permissible — sgit use cases
+
+> What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims.
+>
+> Page: https://sgit.ai/use-cases/health-regulated.html
+
+[Home](../index.md) / [Use cases](index.md) / Health & regulated
+
+# Data that changes what is permissible
+
+When the host provably cannot read the content, the conversation stops being about the provider's access controls — because there is nothing for them to control access to.
+
+**Read this first.** sgit holds no compliance certification of any kind — no HIPAA attestation, no ISO 27001, no SOC 2, no GDPR adequacy finding. Nothing on this page is legal or regulatory advice, and client-side encryption does not by itself make a processing activity lawful. What follows is a description of a technical property and what it does and does not change. Your compliance function decides the rest.
+
+## The problem
+
+Regulated data drags its rules with it. The moment a document is stored somewhere a third party can read, that third party is in scope: they become a processor, they need an agreement, their jurisdiction matters, their breach becomes your notification, and their sub-processors become your problem too. Most of the effort in these projects is not securing the data — it is the paperwork proving who could have seen it.
+
+And the work itself still needs versions and collaboration, which is why it so often ends up in a general-purpose tool with a data-processing addendum stapled on.
+
+## What the property actually changes
+
+Content is encrypted before it leaves the client; the store holds ciphertext under opaque ids and never receives a key. That moves specific arguments, and it is worth being exact about which:
+
+| Question | What changes |
+|---|---|
+| Can the host read the content? | No — not with a warrant, a rogue administrator, or a breach. This is the strong claim, and it is structural rather than procedural. |
+| What does the host still learn? | The vault id, the size of each object, and request timing. Sizes and timing are a real if narrow side channel — see the [security page](../security.md). |
+| Does this remove the processor relationship? | **Not automatically.** Storing ciphertext may still be processing, depending on the regime and on who holds keys. Ask your counsel; do not take a vendor's word for it, including ours. |
+| Does it help with access logging and minimisation? | Partly: a vault is a natural boundary, and read access is a key rather than an account, which makes "who could read this" a shorter list. |
+| Does it help with retention and deletion? | Partly, and awkwardly: history keeps old ciphertext until pruned, so "delete" needs thought. See [limitations](../docs/limitations.md). |
+
+## The recipe
+
+**Scope one vault to one purpose.** The vault is the access boundary, so make it match the lawful basis for the data in it — not the team, not the project folder.
+
+```
+$ sgit create study-1234-analysis
+$ sgit commit -m "structure" && sgit push
+```
+
+**Key management is the whole control.** There is no reset and no recovery: the key is the access control, so it has to be managed like one — in a password manager or an HSM-backed store, with a named owner and a documented rotation path.
+
+```
+$ sgit vault backup --include-key     # archive and key stored separately
+$ sgit vault rekey                          # rotation — see the exposed-key runbook
+```
+
+**Self-host if the storage layer is itself in scope.** The [deployment guidance](../deploy/index.md) covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.
+
+## Evidence status
+
+PATTERN — and the most caveated page here
+
+No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a [published threat model](../security.md) that names its own side channels.
+
+That is evidence of engineering care. It is not evidence of compliance, and we are not going to blur the two.
+
+## Brief for an agent
+
+Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+
+```
+# everything on this site is readable as markdown — no HTML parsing needed
+$ curl -s https://sgit.ai/use-cases/health-regulated.md
+$ curl -s https://sgit.ai/llms.txt          # the index of everything
+```
+
+> Read https://sgit.ai/use-cases/health-regulated.md and https://sgit.ai/docs/agents.md. Then set up a scoped vault for regulated data for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository. Do not claim any compliance property in what you write; describe only the technical behaviour.
+
+That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+
+## Related
+
+- [Security model](../security.md) — including what the server still observes
+- [When NOT to use sgit](../docs/limitations.md) — retention, deletion and the key-loss trade-off
+- [Run your own server](../deploy/index.md) — when the storage layer must be in your own boundary
+
+[← Security teams](security-teams.md)[All use cases →](index.md)
+
+
+
+==============================================================================
+# Security model — sgit
+
+> sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.
+>
+> Page: https://sgit.ai/security.html
+
+# Security model
+
+Zero knowledge, precisely stated: every file is encrypted on your machine before upload, keys are derived locally from your vault key, and the server stores ciphertext under opaque identifiers. This page tells you exactly what that means — including what the server *can* see.
+
+## What the server sees — and never sees
+
+| The server never sees | The server does see |
+|---|---|
+| File contents (encrypted client-side, AES-256-GCM) | The vault ID (an opaque random identifier) |
+| Filenames and folder structure | Encrypted object sizes |
+| Commit messages and branch names | Timing of reads and writes |
+| Your vault key or any derived key | Approximate activity volume (object counts) |
+
+We state the right-hand column deliberately. Traffic analysis of sizes and timing is a real (if narrow) channel, and pretending otherwise would be marketing, not security.
+
+## The crypto stack
+
+| Layer | Construction |
+|---|---|
+| Content encryption | AES-256-GCM, 12-byte IV, 16-byte tag — byte-compatible with the browser's Web Crypto API |
+| Key derivation from the vault key | PBKDF2-HMAC-SHA256, 600,000 iterations, distinct per-vault salts for read and write keys |
+| Purpose-specific keys | HKDF-SHA256 — per-file keys and a structure key, one-way derived from the read key |
+| Server-side identifiers | HMAC-SHA256-derived opaque IDs — the server addresses files it cannot name |
+| Object identity | Content-addressed: `obj-cas-imm-<sha256-prefix>` over ciphertext, enabling dedup without plaintext knowledge |
+
+One precision note, because precision beats marketing: the key hierarchy derives a *structure key* (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key — activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.
+
+## Key strength
+
+Vault keys are generated, not chosen. A generated passphrase is 24 characters over a 36-symbol alphabet — about **124 bits of entropy** (3624 ≈ 2124), far beyond brute-force reach — before key derivation adds 600,000 rounds of PBKDF2-SHA256 on top. The key never travels to the server: it is the address, the credential, and the root of the encryption hierarchy in one string, and it stays on your machines.
+
+**Consequence you should want:** there is no password reset. If you lose the vault key, nobody — including us — can recover the contents. Keep it in a password manager, and use `sgit vault backup` for belt-and-braces.
+
+## Two implementations, one wire format
+
+The sgit CLI and the SG/Vault browser client are independent implementations of the same encrypted wire format, kept interoperable through a versioned contract with test vectors. Every crypto operation must produce byte-for-byte identical output to the Web Crypto API given the same inputs — that requirement is enforced with mandatory test vectors, and it means a second, independent codebase continuously exercises the same format. (More on the browser side at [sgraph.ai](https://sgraph.ai).)
+
+## Secrets safety by default
+
+sgit is not a secrets manager, and it actively refuses to become an accidental one: files like `.env*`, `.netrc`, `.pgpass`, `.git-credentials` and private key files (`id_rsa`, …) are *always* excluded from commits, so a stray credential can't get swept into a vault snapshot.
+
+## Open security process
+
+- Open source under Apache-2.0, with a deliberately tiny dependency surface: two runtime dependencies.
+- ~4,000 tests including mutation testing in CI and integration tests against a real server — no mocks.
+- An internal security review series (twelve findings, each individually worked through and debriefed — covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.
+- Found something? Report it via [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — security reports get priority.
+- **Key exposed?** [The rotation runbook](docs/exposed-vault-key.md) — including a worked case study of the day this site's own vault key leaked, and what it cost to fix.
+
+**Honesty note:** sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read [when NOT to use sgit](docs/limitations.md) before trusting it with anything critical.
+
+
+
+==============================================================================
+# Why does this exist? — sgit.ai
+
+> A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
+>
+> Page: https://sgit.ai/why.html
+
+# Why does this exist?
+
+Someone left this under the announcement post. It is the most useful comment we received, so it gets its own page.
+
+> "I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."
+
+Fair question — and the "don't bother answering" is fair too, because most answers to it *are* marketing. So: no pitch, no adjectives, and the follow-up questions answered in advance rather than deflected. Where the criticism lands, we say so.
+
+There is also nothing being sold. sgit is Apache-2.0 and installable with `pip install sgit-ai`. So "why would I buy this" has no answer, because there is no purchase. The question worth answering is **why would anyone use it**.
+
+**The whole thesis in one sentence:** you have files that need version control and collaboration, and the place they are stored must not be able to read them.
+Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo — we say so on [the page about when not to use this](docs/limitations.md).
+
+## What this makes possible that wasn't
+
+This page assumes you know git. So rather than re-explain version control, here is only the delta: things you cannot do with git and a host, or cannot do without that host reading everything. Each one is running on this website right now — the links go to the thing itself, not to a description of it.
+
+### A live website whose host cannot read it
+
+The [Deploy section](deploy/index.md) of this site is not part of this site. Its pages live in an encrypted vault maintained by a different team; your browser fetches the ciphertext straight from an SG/Send server over CORS and decrypts it in the tab. There is no build step, no CI job, no copy of that content on sgit.ai. When that team runs `sgit push`, the next page load has it.
+
+**Without sgit:** you can serve a static site from a host, or you can keep the content private, but not both. GitHub Pages serves what GitHub can read. A private bucket plus a decrypting front end is buildable — content addressing, cache tiers, key derivation, an update path — and that is roughly the thing being described here. There is no documented, off-the-shelf way to do it with git and a git host.
+
+See it working: [how this page works](deploy/how-this-works.md), with the object model and the request timeline.
+
+### Read access as a thing you can publish
+
+A vault has a **read key** that is derived one way, so it decrypts content and cannot be turned back into write access. That makes it safe to put in a file the whole internet can fetch — which is exactly what `deploy/vault.json` on this site does. Anyone can take it and run `sgit clone --read-key <key> fyofmkvr` to get the same documents on their own machine, and watch a write attempt get refused.
+
+**Without sgit:** git access is repository-shaped and host-mediated. A deploy key that can read gives its holder everything in plaintext, and revoking it is an operation on the host's access-control list. Here, the capability *is* the key: it travels with the reader, it works against any server holding the ciphertext, and the host is not asked to enforce anything.
+
+### Two agents collaborating in a workspace neither host can read
+
+This site is built and published by Claude Code sessions that share state through a vault. Each session clones into its own private branch, commits there, and pushes to the shared named branch — the [two-branch model](docs/two-branch-model.md), which is git's isolate-then-merge shape applied to encrypted objects. The pages in the Deploy section come from a *second* team's vault, maintained by an agent that has never had access to this repository or this site.
+
+**Without sgit:** agent-to-agent shared memory means a database or a repo that the provider reads. That is fine until the state includes client documents, security findings, or unreleased work — at which point the question stops being technical.
+
+The architecture, drawn: [two sessions, one vault, one live site](deploy/how-this-works.md).
+
+### Private data with public-CDN economics
+
+Object ids are SHA-256 hashes *of the ciphertext*, so an object can never change under its id. That makes every object permanently cacheable by infrastructure that cannot read it — a browser's Cache API, a proxy, a CDN edge. On this site that is not theory: after the first visit, a page load fetches **one 69-byte object** (the mutable HEAD pointer) and serves everything else from cache — and inside the [freshness window](deploy/how-this-works.md) it fetches nothing at all. Open the vault panel on any Deploy page and watch the counters.
+
+**Without sgit:** caching private content at the edge is precisely what you are told not to do, because the cache would hold readable data. Content-addressed ciphertext removes the conflict — the cache holds bytes it cannot interpret, keyed by a hash it cannot invert.
+
+### Storage becomes a commodity you don't have to trust
+
+The server is a key-value store for opaque ids. It never receives a key, never sees a filename, and cannot tell a legal draft from a photo. That means the backing store is interchangeable — a managed SG/Send server, one you [run yourself](deploy/index.md), an S3 bucket, a disk — and choosing it stops being a trust decision. A subpoena, a breach, or a curious administrator on that host yields ciphertext.
+
+**Without sgit:** "who hosts this?" and "who can read this?" are the same question. Every migration is a re-negotiation of that trust; here it is a copy operation.
+
+### Transit security that doesn't rest on the CA system
+
+The content is already encrypted before it leaves the client, so TLS is transport hygiene rather than the security boundary. A mis-issued certificate, a coerced or compromised CA out of the ~150 your browser trusts by default, or a TLS-terminating middlebox in a corporate network sees the same thing the server sees: ciphertext addressed by opaque ids.
+
+**The advanced version** — and where this is heading: the read key stays on the client and never appears in a published file, or the scheme moves to PKI with the private key existing only on the client. Then the confidentiality of the data in transit depends on one key you hold, not on the whole certificate-authority arrangement being sound end to end. Today's published-read-key form on this site is the deliberately simple case: the content *is* meant to be public, so the only job is proving the host never had it in the clear.
+
+## Who has that problem
+
+Not a market-size claim — just the situations where the sentence at the top is literally true today. These matter, but they are the ordinary reasons; the section above is the interesting one.
+
+[AI agents### Agent state that isn't the vendor's to readAn agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.Recipe, evidence and an agent brief →](use-cases/ai-agents.md)
+
+[Professional services### Working documents with clientsLegal, M&A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.Recipe, evidence and an agent brief →](use-cases/professional-services.md)
+
+[Health & regulated### Data that changes what is permissibleWhen the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.Recipe, evidence and an agent brief →](use-cases/health-regulated.md)
+
+[Security teams### Findings about your own weaknessesPentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.Recipe, evidence and an agent brief →](use-cases/security-teams.md)
+
+## git and sgit, side by side
+
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site runs both at once** — one working tree, two remotes: the encrypted vault is pushed with `sgit push`, and the same directory is pushed to GitHub with `git push`, which is what builds and deploys it. Neither is a fallback for the other.
+
+|  | git | sgit |
+|---|---|---|
+| **The host can read your content** | Yes — that is what makes everything else work | No. It stores ciphertext under opaque ids and never receives a key |
+| **Performance at scale** | **Far better.** Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files | Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4 MB but this is not a video archive |
+| **Ecosystem** | **Everything.** CI, code review, IDEs, hosting, decades of tooling and answers | A CLI, a browser client, and an agent skill. Deliberately small, and young |
+| **Archaeology** | **Better.**`bisect`, `blame`, `rebase`, `cherry-pick`, hooks, submodules | `history log / diff / show / revert / reset`. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist |
+| **Partial commits** | Staging area, index, `add -p` | None. A commit snapshots the whole folder |
+| **Branching and merge** | The reference implementation of the idea | The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge |
+| **Read-only access for someone else** | An account on the host, or a deploy key that reads plaintext | A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement |
+| **Reading it from a browser** | Via the host's UI or API, in plaintext | Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's [Deploy section](deploy/index.md) is that |
+| **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
+| **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
+
+**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
+
+## Why the existing answers don't cover it
+
+This is the strongest form of the objection: every one of these exists and is more mature. Each solves part of it.
+
+| What you'd reach for | What it gives you | What's missing |
+|---|---|---|
+| git + a private repo | Everything about workflow, perfected | The host reads all of it. Fine for code; not for client data — and none of the six capabilities above. |
+| git-crypt / SOPS / age | Encrypted file *contents* inside git | Filenames, directory structure, commit messages and history shape stay readable to the host; no browser access; key distribution is manual. |
+| Dropbox / Drive / SharePoint | Sync, sharing, a UI everyone knows | The provider can read it, and there are no branches, no merges, no commit history you can reason about. |
+| S3 + KMS, or a database with encryption at rest | Encryption the auditors recognise | Whoever holds the key can decrypt — and that's the provider, or anyone with the right IAM role. No git-shaped workflow, no offline. |
+| Build it yourself | Exactly what you want | Roughly what this project is: four thousand tests, a wire format two independent clients agree on, and a year of edge cases. It's free — you may as well take it. |
+
+The gap they share is the same one: **you can have the workflow, or you can have the privacy, but not both in the same tool.** If you think that gap doesn't matter, we disagree about something factual — a much better disagreement to have than one about adjectives.
+
+## The market question, answered directly
+
+- **The client is open source, and that is the distribution strategy, not a substitute for one.** Apache-2.0, no licence tiers, no open-core feature gating in the CLI. It spreads by being free and useful, and the services are built on top of it — the ordinary way open source scales into a business.
+- **The commercial layer is the hosted service** (SG/Send) and what gets built around it. You can also [self-host](deploy/index.md) — that guidance is published, live, in a vault — so the lock-in argument doesn't hold: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected.
+- **We are not going to quote a market size.** We don't have credible numbers, and a TAM slide is exactly the marketing this page is avoiding. What we can say honestly: the amount of machine-generated state that someone else should not be able to read went from approximately zero to very large in about two years, and it has to live somewhere.
+- **It might still be a small market.** That's a legitimate outcome. The tool would still be worth having for the people in it, and it costs them nothing.
+
+## Where the criticism is right
+
+- **The category is unproven.** "Git for encrypted vaults" is not a shelf anyone shops from yet. We might be early, wrong, or both.
+- **Most people don't need it.** If your files aren't sensitive, this is strictly more complexity than a private repo.
+- **Zero-knowledge has real costs** — no server-side search, no password recovery, and key management becomes your problem. Permanent trade-offs, not bugs to be fixed later.
+- **It's beta.** In production use daily, but young.
+
+## The follow-up questions
+
+You said you'd have many. Here are the ones we'd expect, answered without hedging. If yours isn't here, [ask it in public](https://github.com/SGit-AI/SGit-AI__CLI/issues) and we'll add it.
+
+**Give me one thing I cannot do with git and GitHub today.**
+
+Publish a site whose content the host has never seen in the clear, updated by a push, readable by anyone you hand a read key to, and cached at the edge by infrastructure that cannot decrypt it. The [Deploy section](deploy/index.md) is that, live. You can assemble something similar yourself out of a bucket, a decryption front end and a cache policy — and what you would have assembled is this.
+
+**Isn't publishing a key on a website obviously a mistake?**
+
+Publishing a *write* key would be — we have an [incident write-up](docs/exposed-vault-key.md) about doing exactly that by accident. The read key is a different object: derived one way, it decrypts and cannot be inverted into write access. Publishing it is how a reader gets the content without the site ever being trusted with the ability to change it. That's a checkable property, not a policy: take the key, clone with it, and watch the write get refused.
+
+**Doesn't TLS already solve the confidentiality problem?**
+
+TLS protects the hop, not the destination. It ends at the server, which then holds your plaintext — and it rests on a certificate-authority system where any of roughly 150 default-trusted roots can vouch for any name, and where corporate middleboxes terminate it on purpose. Encrypting before the bytes leave means a mis-issued certificate or a terminating proxy sees ciphertext. The direction of travel is stronger still: the read key never leaving the client, or PKI where the private key exists only there.
+
+**Isn't this just git with encryption bolted on?**
+
+No — and the difference is why the existing tools don't cover the case. Encrypting files inside git still leaves the host holding your filenames, directory structure, commit messages and the shape of your history. sgit encrypts all of that: the server sees opaque identifiers and ciphertext, and never receives a key. A different storage model that keeps git's verbs.
+
+**Why not git-crypt or SOPS? They're mature and I already know them.**
+
+Use them if they fit — they're good tools designed for a different job: keeping a handful of secrets inside an otherwise-public repo. They don't hide structure, don't work in a browser, and key distribution across a team is manual. sgit targets the case where the *whole workspace* is the sensitive thing.
+
+**If it's free, what's the business model — and what happens when you need to make money?**
+
+The hosted service, and what gets built on it. The client stays Apache-2.0 and self-hosting is documented, which is the protection that matters: the escape hatch is a checkable property of the format, not a promise about future behaviour.
+
+**What if you disappear?**
+
+You keep a full local copy — every clone contains the complete encrypted store. The format is documented, the client is open source, and two independent implementations already read it. If the project stopped tomorrow, your data stays readable with code you already have.
+
+**"Zero-knowledge" is a marketing term. What does the server actually see?**
+
+The vault ID, the size of each encrypted object, and when requests happen. That's the list, and it's on [the security page](security.md) including the uncomfortable parts: object sizes and timing are a real, if narrow, side channel. Anyone who tells you their zero-knowledge system leaks nothing at all is not being careful with words.
+
+**How do I know the cryptography is right?**
+
+You don't have to take our word for it, which is the point. It's standard and boring — AES-256-GCM, PBKDF2-SHA256 at 600k iterations, HKDF — with no custom primitives. The code is open, and the outputs must match the browser's Web Crypto API byte-for-byte, enforced with test vectors. Two independent implementations reading the same format is a stronger check than any single audit.
+
+**What happens when I lose the key? Be honest.**
+
+The data is gone. No reset, no recovery, no support ticket that helps. That's the direct consequence of the server not being able to read your content, and if your organisation can't manage keys reliably, this trade-off will hurt you and you should not use it.
+
+**Why would an AI agent need this specifically?**
+
+Because agent state is now sensitive and shared. An agent that stops and resumes needs durable memory; several agents working together need shared memory with isolation and a review step; and the contents are increasingly things a client or regulator cares about. Version control solves the coordination half. Client-side encryption solves the half that determines whether you're allowed to do it at all.
+
+**Isn't this over-engineered for what it does?**
+
+Judge it by the surface: two runtime dependencies, a pure-Python client, one file format. The complexity that exists — the two-branch model, content addressing, three-way merge — is what makes concurrent editing safe without the server being able to help, because the server can't read anything. Remove the encryption and yes, it's over-engineered; you'd just use git.
+
+**Is anyone actually using it, or is this a demo?**
+
+This website is served from a vault it manages, deployed by pushing that vault. The [deployment docs](deploy/index.md) are decrypted in your browser, live, from a different vault maintained by another team. The [Try page](try.md) runs the real client in your browser. It's in daily production use by its authors — a small n, honestly stated, and more than a demo.
+
+**Why should I trust a beta?**
+
+For anything critical, don't yet — and keep backups regardless. What we offer instead of a trust-me is evidence: ~4,000 tests, mutation testing, integration tests against a real server, a published threat model, and an [incident write-up](docs/exposed-vault-key.md) of the day we leaked our own key, including what it cost to fix. A project that hides that class of mistake is the one to worry about.
+
+**Fine — but I still think there's no market.**
+
+You may be right. It costs nothing to be wrong about this in our direction: the code is free, the format is open, and if the category never materialises, the people who did need it still got a working tool. The failure mode we'd actually regret is the opposite one — building it after everyone had already put their machines' private state somewhere readable.
+
+## An invitation, meant literally
+
+You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](docs/exposed-vault-key.md) and the [open briefs](briefs.md) got written.
+
+[← Home](index.md)[When NOT to use sgit →](docs/limitations.md)
+
+
+
+==============================================================================
+# Run your own SG/Send server — sgit.ai
+
+> Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.
+>
+> Page: https://sgit.ai/deploy/index.html
+
+[Home](../index.md) / Deploy
+
+# Run your own SG/Send server
+
+Deployment guidance for standing up your own zero-knowledge vault server — Docker, AWS, GCP, Heroku, or a static host. **These pages are not part of this website.** They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.
+
+**How this page works:** the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs `sgit push`, the next load of this page has it. Open the **vault panel** (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. [**Full architecture, with diagrams →**](how-this-works.md)
+
+opening vault…
+
+Fetching the encrypted index…
+
+### Vault debug [how this works →](how-this-works.md)
+
+not open yet
+
+what you are looking at
+
+ Every row above is an encrypted object pulled from the SG/Send API and decrypted locally — click one to see what it actually contains. Objects whose id contains **-imm-** are content-addressed and therefore immutable, so they are cached permanently; the mutable **ref** is the one mutable object, so it is checked at most once per freshness window (120s) rather than once per page — inside the window, reading the docs makes no requests at all, and **check for new commit** forces one whenever you want it.
+
+The **tree** objects are the reason a first visit reads more than one file: filenames are encrypted inside them, so building the navigation means reading every directory. That index is a pure function of the commit id, so it is memoised — after the first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
+
+[How this page works →](how-this-works.md) Architecture diagrams, the object model, the cache tiers, and how two Claude Code sessions publish into this vault.
+
+
+
+==============================================================================
+# How the live-vault docs work — sgit.ai
+
+> A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
+>
+> Page: https://sgit.ai/deploy/how-this-works.html
+
+[Home](../index.md) / [Deploy](index.md) / How this works
+
+# How this page works
+
+The [deployment guidance](index.md) next door is not stored on this website. It is written by a different team, in a different Claude Code session, into a different encrypted vault — and your browser assembles it from ciphertext at the moment you ask for it. This page explains the whole mechanism, because it is a compact demonstration of what sgit is actually for.
+
+## Two sessions, two vaults, one page
+
+Nothing here is a pipeline anyone had to build. Both sides just use sgit, and the shared vault format does the integration:
+
+*[diagram]*
+Neither team's session knows about the other's. The only shared thing is a vault format and a published read key.
+
+Concretely, when the SG/Send team improves a deployment guide, the sequence is: edit markdown → `sgit commit` → `sgit push`. That is the entire publish step. There is no build to trigger on our side, no webhook, no content sync, and no copy of their text in our repository. The next visitor to the Deploy page gets the new version because the browser reads their vault's current commit.
+
+## What happens when you open the page
+
+Everything below runs client-side, in about 300 lines of JavaScript using the browser's built-in Web Crypto API:
+
+*[diagram]*
+The server answers ordinary GETs for opaque file ids. It never sees a key, a filename, or a byte of plaintext.
+
+## Why the caching is safe — and why it's this shape
+
+The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes *of the ciphertext*, so an object can never change under its id — which makes it permanently cacheable. The ref is the one mutable pointer, so it is the only thing that has to be refetched at all:
+
+| Tier | What it holds | Lifetime | Why |
+|---|---|---|---|
+| memory | decrypted objects | this page session | avoids decrypting the same tree twice while you click around |
+| Cache API | ciphertext of `obj-cas-imm-*` | until you clear it | content-addressed ⇒ immutable ⇒ can never be stale |
+| localStorage | the file index (path → blob) | keyed by commit id | a pure function of the commit, so an unchanged HEAD reads no tree objects |
+| freshness window | the ref (`ref-pid-muw-*`) | **120 s** (`ref_ttl_s`) | it is the mutable HEAD; checking it once per window instead of once per page view is what takes steady-state reading to zero requests |
+
+### The freshness window
+
+The ref has to be refetched sometimes — that is how a new commit is noticed. It does not have to be refetched on *every page view*. So the answer is kept for `ref_ttl_s` seconds (120 by default, set in `deploy/vault.json`), and inside that window the reader reuses it.
+
+Three things follow, and they are the whole trade:
+
+- **Reading the docs costs nothing.** Click through ten pages inside the window and the network stays silent — every object is content-addressed and already cached, and the one mutable object is inside its window. The panel logs the ref as `TTL` with a live countdown to the next check.
+- **Server load stops scaling with page views.** It scales with *readers per window* instead: one 69-byte request per reader per two minutes, however much they read.
+- **Propagation is delayed, and bounded.** A new commit is picked up within 120 seconds at worst, and immediately if you press **check for new commit** — which forces a fetch and ignores the window. That button is not a debug affordance; it is the escape hatch that makes the window safe to have.
+
+Measured on this site: a cold load fetches 18 objects (~14 KB); the next load fetches **one 69-byte object** — the ref — and serves the rest from cache; a load inside the freshness window fetches **nothing at all**. Open the vault panel and press **clear list**, then click around, to watch it happen.
+
+## Who can see what
+
+### SG/Send server
+
+- opaque object ids
+- ciphertext blobs
+- sizes and timing
+- the vault id
+
+### GitHub Pages
+
+- the page shell
+- the public read key
+- no vault content at all
+
+### Your browser
+
+- the read key
+- decrypted filenames
+- decrypted content
+- the commit history
+
+Two hosts, neither of which can read the documents. The decryption exists in exactly one place: the tab in front of you.
+
+The read key is deliberately public — it is *read-only by construction*, derived one-way so it cannot be turned back into write access. Publishing it is what lets the site show the content without the site ever being trusted with the ability to change it. Anyone can verify that: take the key out of `deploy/vault.json`, run `sgit clone --read-key <key> fyofmkvr`, and watch a write attempt get refused.
+
+## Why this is the interesting demo
+
+- **Two teams integrated without integrating.** No API contract was designed, no sync job written, no permissions negotiated. One side pushes to a vault; the other side holds a read key. That is the whole interface.
+- **Publishing is a git operation.** The SG/Send team's release process is `sgit push` — and their content appears on a website they do not control and cannot deploy to.
+- **Least privilege that is structural, not procedural.** This site *cannot* alter their documentation, however compromised it might be, because the key it holds does not carry that power.
+- **The same property scales down to one agent.** Give an agent a read key and it can read a knowledge base without any ability to corrupt it; give it the full key and it can contribute. That is the same mechanism this page uses, applied to agent workflows.
+
+## The honest trade-offs
+
+- **Search engines and agents see an empty shell.** Content that only exists after decryption is invisible to anything that does not run JavaScript. sgraph.ai solves this by decrypting at the CDN edge and serving `.md` alongside each page; this site is static, so it does not. That is a real cost of the approach as built here.
+- **It needs a secure context.** Web Crypto is unavailable over plain HTTP, so this only works on HTTPS (or localhost).
+- **The server can't help.** No server-side search, no previews, no summaries — everything is opaque to it. That is the point, and it is also a limitation.
+- **Diagrams are hand-drawn SVG, not a diagramming library.** This site is also served *from inside a vault*, where external resources are blocked by the app authoring contract — so importing a renderer from a CDN would break the very demonstration this page describes. The constraint chose the implementation.
+
+[← The deployment docs](index.md)[Git and vaults →](../vault/git-and-vaults.md)
+
+
+
+==============================================================================
+# Try sgit in your browser — sgit.ai
+
+> The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.
+>
+> Page: https://sgit.ai/try.html
+
+# Try sgit in your browser
+
+This page downloads a Python runtime (Pyodide, ~20 MB) and installs the **real `sgit-ai` wheel from PyPI** — the same code `pip install` gives you — then runs it right here: a working terminal with the actual `sgit` CLI, an in-memory filesystem, and a network transport routed through your browser. Keys are derived and content encrypted locally; nothing you type leaves this page except the ciphertext sgit itself sends when *you* run a network command.
+
+**What this is:** sgit's engine, client-side. File commands run against this tab's in-memory filesystem (gone on refresh; the remote vault persists). Network commands (`clone`, `push`, `pull`, `doctor`) go straight from your browser to the SG/Send servers over CORS — the page freezes while they run (synchronous transport; it's a demo, not a product). First load is heavy (~20 MB, cached afterwards); 600,000 PBKDF2 rounds take ~1–2 s in WebAssembly.
+
+— engine not loaded —
+
+## The terminal
+
+The real `sgit` CLI plus a small toolbox of file commands (`ls`, `cd`, `cat`, `mkdir`, `echo > file`, `tree`, …). Type `help` for the list. History with ↑/↓.
+
+— load the engine above to start —
+
+/workspace $
+
+```
+# a session to try (the vault key can be any vault you hold a key for):
+sgit init my-vault  cd my-vault  echo "hello" > notes.md
+sgit status  sgit commit -m "from a browser"
+# and the one that makes it real — clone straight from the SG/Send servers:
+sgit clone <vault-key> demo  cd demo  ls  sgit history log --oneline
+```
+
+## Python console
+
+The full `sgit_ai` package is importable. The last expression's value is printed.
+
+from sgit_ai.crypto.Vault__Crypto import Vault__Crypto vc = Vault__Crypto() vc.derive_keys('my-passphrase', 'DEMO-VAULT')
+
+How this works: [the same site](vault/static-hosting.md) serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.
+
+
+
+==============================================================================
+# Skills for AI agents — sgit
+
+> Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.
+>
+> Page: https://sgit.ai/skills.html
+
+# Skills — sgit for AI agents
+
+A skill is a packaged set of instructions an AI agent loads to do a job well: the commands that matter, the patterns that work, the traps already hit and documented so the agent doesn't hit them again. sgit treats agents as first-class users, so its skills are first-class artifacts — versioned, verified against specific releases, and shipped right here in this vault.
+
+## The three skills
+
+## Operate
+
+[use sgit and vaultsThe CLI end to end — and the cross-session pattern: clone/pull at session start, commit + push at session end, so state survives the context window. Includes the multi-agent branch-per-agent workflow.](skills/use_sgit-and-vaults__SKILL.md)
+
+## Build
+
+[create vault appsThe vault-app playbook: the authoring contract, what the host gives you for free, proven layout patterns, the validation gate, and a nine-row table of failure modes with fixes — all bug-fixed against real vault behaviour.](skills/create-vault-apps__SKILL.md)
+
+## Author
+
+[create vault contentStructured content without code: the full _page.json schema (embedded — no repo clone needed) and vault markdown authoring, with checklists and copy-paste templates.](skills/create-vault-content__SKILL.md)
+
+## Installing a skill
+
+For Claude Code and compatible agents: drop the skill file into your skills directory (e.g. `~/.claude/skills/<name>/SKILL.md`) or paste it into the session as context. The skill's own description tells the agent when to trigger it. A minimal bootstrap for a fresh session is one line:
+
+```
+$ pip install sgit-ai && sgit clone <vault-key> workspace
+# then read skills/ inside any vault that ships them — like this one
+```
+
+The skills above are the canonical current versions, verified against sgit-ai v0.14.x and the current app-shell. They carry their own honesty markers — including which CLI commands are disabled right now and which platform features are trial-only — so an agent reading them gets ground truth, not marketing.
+
+**Also for agents:** this site ships an [llms.txt](llms.txt) at the vault root — the standard machine-readable index. Inside the vault it is encrypted like everything else (agents holding the key read it via `sgit cat llms.txt`); on a static deployment it becomes a plain public llms.txt. Same file, two trust contexts.
+
+[← Working with AI agents](docs/agents.md)[The SG/Vault platform →](vault/index.md)
+
+
+
+==============================================================================
+# Documentation — sgit
+
+> sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
+>
+> Page: https://sgit.ai/docs/index.html
+
+# Documentation
+
+Start with the five-minute quickstart. If you know git, the Rosetta stone will make sgit feel familiar in one read.
+
+## Introduction
+
+[What is sgitThe pitch, the mechanism, the architecture](what-is-sgit.md) [Installationpip install, verify, upgrade](installation.md) [QuickstartCreate, commit, push, clone — in 5 minutes](quickstart.md)
+
+## Concepts
+
+[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security.md)
+
+## Guides
+
+[Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](../vault/index.md)
+
+## Project
+
+[When NOT to use sgitThe honest page](limitations.md) [Why does this exist?Answering the no-market criticism, plus a FAQ](../why.md) [If a vault key is exposedThe rotation runbook, with a real case study](exposed-vault-key.md) [Cross-team briefsOpen asks to the CLI and API teams](../briefs.md) [Admin & engineeringHow this site is built and released](../admin/index.md) [GitHubSource, issues, changelog](https://github.com/SGit-AI/SGit-AI__CLI)
+
+**Coming next:** a full per-command CLI reference, generated directly from the CLI's own argument parser on every release — so the reference can never drift from the shipped tool.
+
+
+
+==============================================================================
+# What is sgit — Docs
+
+> sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
+>
+> Page: https://sgit.ai/docs/what-is-sgit.html
+
+[Docs](index.md) / Introduction
+
+# What is sgit
+
+**sgit is git for encrypted vaults.** Clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine. The server stores ciphertext under opaque IDs — it never sees your filenames, your contents, or your commit messages.
+
+It's like git and a password vault had a baby.
+
+## How it works
+
+A vault is an ordinary folder plus a `.sg_vault/` directory. When you commit, sgit snapshots the folder into a git-like object graph — commits pointing at trees pointing at content blobs — and encrypts every object client-side. When you push, only changed ciphertext travels. Object IDs are content-addressed (`obj-cas-imm-…`), so unchanged files are never re-uploaded, and the server can deduplicate data it cannot read.
+
+```
+your-folder/
+├── <your files>            # untouched — a vault is just a folder
+└── .sg_vault/
+    ├── bare/                # encrypted objects, refs, branch keys
+    └── local/               # your private clone-branch key — never pushed
+```
+
+The **vault key** (`passphrase:vault-id`) is three things in one string: the address of the vault on the server, the credential to access it, and the root of the local key-derivation hierarchy. Whoever holds it can decrypt the vault; nobody else — including the server — can. See the [security model](../security.md) for the full derivation chain.
+
+## What makes it different from git
+
+- **Everything is encrypted client-side** — content, filenames, messages, branch names.
+- **No staging area** — commit snapshots the whole folder, like `git commit -a` for everything.
+- **A two-branch model** — a private clone branch per machine or agent plus shared named branches, which is what makes safe multi-agent collaboration possible. [Details →](two-branch-model.md)
+
+## One vault, three doors
+
+- **sgit** — this CLI. Open source, Apache-2.0, `pip install sgit-ai`.
+- **SG/Vault** — the web app: browse, edit and review the same vaults in a browser, via an independent implementation of the same wire format. [How it works →](https://sgraph.ai)
+- **SG/Send** — the zero-knowledge transfer API both clients speak to. [How it works →](https://sgraph.ai)
+
+**Maturity:** sgit is in beta and has been powering production workflows for a while. The vault format is versioned and `sgit migrate` handles upgrades. Read [when NOT to use sgit](limitations.md) for the honest edges.
+
+[Installation →](installation.md)
+
+
+
+==============================================================================
+# Installation — sgit Docs
+
+> Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
+>
+> Page: https://sgit.ai/docs/installation.html
+
+[Docs](index.md) / Introduction
+
+# Installation
+
+Pure Python, two runtime dependencies. Python 3.11 or newer.
+
+```
+$ pip install sgit-ai
+# or, on externally-managed systems:
+$ pipx install sgit-ai
+```
+
+This installs two entry points: `sgit` and `sgit-ai` (they are identical — use whichever you like).
+
+## Verify
+
+```
+$ sgit version
+sgit-ai v0.14.x
+$ sgit doctor
+✓ remote reachable   ✓ TLS ok   ✓ config valid
+```
+
+`sgit doctor` checks connectivity and configuration and prints per-OS fix instructions for the common problems (including SSL certificate issues). Add `--json` if a script or an agent is doing the checking.
+
+## Upgrade
+
+```
+$ sgit update   # wraps pip install --upgrade sgit-ai
+```
+
+[← What is sgit](what-is-sgit.md)[Quickstart →](quickstart.md)
+
+
+
+==============================================================================
+# Quickstart — sgit Docs
+
+> From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.
+>
+> Page: https://sgit.ai/docs/quickstart.html
+
+[Docs](index.md) / Introduction
+
+# Quickstart
+
+From zero to a synced, encrypted, versioned vault in five minutes.
+
+## 1 — Create a vault
+
+```
+$ pip install sgit-ai
+$ sgit create my-vault
+✓ Vault created and registered
+✓ Initial commit pushed
+
+  Vault key: <24-char-passphrase>:<vault-id>
+```
+
+**Save the vault key now** — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.
+
+Already have a folder full of files? `cd` into it and run `sgit init --existing` instead — the current contents become the first snapshot.
+
+## 2 — Work like git
+
+```
+$ cd my-vault
+$ echo "# Plan" > plan.md
+$ sgit status
+  added: plan.md
+$ sgit commit -m "add the plan"
+✓ Committed 1 file
+```
+
+There is no staging area — `sgit commit` snapshots the whole folder. Files like `.env` and private keys are always excluded, automatically.
+
+## 3 — Push
+
+```
+$ sgit push
+✓ Pushed 1 commit — only ciphertext left this machine
+```
+
+## 4 — Clone somewhere else
+
+```
+# on another machine, or in an agent's session
+$ sgit clone <vault-key>
+✓ Cloned and decrypted 1 file
+$ sgit pull      # pick up new commits any time
+```
+
+## 5 — Look around
+
+```
+$ sgit history log --oneline     # commit history
+$ sgit history diff              # what changed
+$ sgit vault info                # identity, remote, web URL
+```
+
+The web URL printed by `sgit vault info` opens the same vault in the SG/Vault browser app — decrypted in the browser, never on the server.
+
+## Where next
+
+- [sgit for git users](sgit-for-git-users.md) — the Rosetta stone
+- [The two-branch model](two-branch-model.md) — how collaboration works
+- [Working with AI agents](agents.md) — give an agent a private, versioned workspace
+
+[← Installation](installation.md)[sgit for git users →](sgit-for-git-users.md)
+
+
+
+==============================================================================
+# sgit for git users — Docs
+
+> The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
+>
+> Page: https://sgit.ai/docs/sgit-for-git-users.html
+
+[Docs](index.md) / Concepts
+
+# sgit for git users
+
+If you know git, you know most of sgit. Same verbs, same mental model — with three deliberate differences that exist because the payload is encrypted.
+
+## The Rosetta stone
+
+| git | sgit | Notes |
+|---|---|---|
+| `git init` | `sgit init` | `--existing` vault-ifies a non-empty folder |
+| `git clone <url>` | `sgit clone <vault-key>` | the key is URL + auth + decryption in one |
+| `git status` | `sgit status` | `--explain` teaches the branch model |
+| `git commit -am` | `sgit commit -m` | always whole-folder — there is no staging area |
+| `git push / pull / fetch` | `sgit push / pull / fetch` | push is delta + ciphertext only |
+| `git log` | `sgit history log` | `--oneline`, `--patch`, `--json`, ranges |
+| `git diff` | `sgit history diff` | `--remote`, `--commit`, `--files-only` |
+| `git show` | `sgit history show` | read-only — fetches missing objects without merging |
+| `git revert / reset` | `sgit history revert / reset` |  |
+| `git stash` | `sgit vault stash` | `pop`, `list`, `drop` |
+| `git branch / checkout` | `sgit branch new / switch / checkout` |  |
+| `git merge` conflicts | `sgit resolve --show` | three-way base/ours/theirs view with a verdict per file |
+| `git remote` | `sgit remote add / list / set-url` |  |
+| `git fsck` | `sgit check fsck` | verifies encrypted object integrity, can repair |
+
+## The three differences that matter
+
+### 1. No staging area
+
+Every commit snapshots the whole folder. This removes git's most confusing concept, and it fits the security model: partial staging would leak "which parts changed" into workflows that are supposed to be opaque. Use branches where you would have used the index.
+
+### 2. The vault key is URL, auth, and encryption key in one
+
+`passphrase:vault-id`. There is no separate remote URL to configure, no separate credential to manage, and no password reset. Whoever holds the key holds the vault — treat it like the private key it is.
+
+### 3. Two layers of branches
+
+You never work directly on a shared branch. Every clone works on a private **clone branch** (its key never leaves your machine) and `push` forwards commits to the shared **named branch**. That's why two agents on the same vault can't corrupt each other's work-in-progress. [The full story →](two-branch-model.md)
+
+[← Quickstart](quickstart.md)[The two-branch model →](two-branch-model.md)
+
+
+
+==============================================================================
+# The two-branch model — sgit Docs
+
+> sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
+>
+> Page: https://sgit.ai/docs/two-branch-model.html
+
+[Docs](index.md) / Concepts
+
+# The two-branch model
+
+sgit's central architectural idea: every clone works on a private branch, and sharing is an explicit act.
+
+## Clone branches and named branches
+
+```
+        agent A's machine                    the server                    agent B's machine
+  ┌───────────────────────┐        ┌───────────────────────────┐        ┌───────────────────────┐
+  │  clone branch (A)     │  push  │   named branch "main"     │  pull  │  clone branch (B)     │
+  │  key: local only ─────┼───────▶│   key: shared via vault   │◀───────┼─ key: local only      │
+  └───────────────────────┘        └───────────────────────────┘        └───────────────────────┘
+```
+
+- **Named branches** (`main`, `feature-x`, …) are shared and live on the server — encrypted, like everything else.
+- **Clone branches** are created per clone. Their key is stored only in `.sg_vault/local/` and is never pushed. All your commits land here first.
+- `sgit push` re-encrypts your clone-branch commits with the named branch's key and forwards them. `sgit pull` brings named-branch commits down and merges them into your clone branch.
+
+Run `sgit status --explain` any time — it prints this model with your vault's actual branch names filled in.
+
+## Why it works this way
+
+- **Isolation by construction.** Two machines — or two agents — on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.
+- **Sharing is explicit.** Nothing you commit is visible to anyone until you `push`. An agent can iterate messily in private and publish only the result.
+- **Safe concurrent pushes.** Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering — pull, merge, push again.
+
+## Merging and conflicts
+
+When histories diverge, sgit runs a genuine three-way merge (common ancestor + ours + theirs) per file. Non-conflicting changes merge automatically; conflicting paths get `.conflict` files, and:
+
+```
+$ sgit resolve --show
+  notes/plan.md   CONFLICT (both changed)
+    base   │ ship in Q3
+    ours   │ ship in Q4          ← your clone branch
+    theirs │ ship in Q3, beta Q2 ← the named branch
+    verdict: genuine conflict  (not one-sided, not identical)
+```
+
+The verdict line matters in multi-writer vaults: it distinguishes genuine conflicts from one-sided or identical changes, so you (or an agent) only spend attention where a human decision is actually required. `sgit merge-abort` backs out of a merge cleanly.
+
+[← sgit for git users](sgit-for-git-users.md)[Working with AI agents →](agents.md)
+
+
+
+==============================================================================
+# Working with AI agents — sgit Docs
+
+> The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
+>
+> Page: https://sgit.ai/docs/agents.html
+
+[Docs](index.md) / Guides
+
+# Working with AI agents
+
+sgit is designed to be driven by AI agents as well as humans. A vault is just a folder — the agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.
+
+## The session pattern
+
+```
+# start of session: get the workspace
+$ sgit clone <vault-key> workspace   # or: sgit pull, if already cloned
+# … agent works on files normally …
+# end of session: persist the state
+$ sgit commit -m "session: findings and next steps"
+$ sgit push
+```
+
+The next session — hours or weeks later, on any machine — runs `sgit pull` and continues. State survives the context window, encrypted end to end.
+
+## `sgit write` — the surgical commit
+
+When an agent needs to record one result, cloning a whole vault is waste. `write` commits a file directly to the vault HEAD in a single call: no working-directory scan, no full clone needed.
+
+```
+$ sgit write notes/finding.md --file result.md \
+    --message "agent A: analysis" --push --json
+{ "status": "pushed", "path": "notes/finding.md",
+  "blob_id": "obj-cas-imm-9c2e41ab77d0" }
+```
+
+- `--also vault-path:local-file` (repeatable) makes a multi-file write **atomic** — one commit, all or nothing.
+- Content-hash dedup: writing identical content returns `unchanged` and creates no commit.
+- `--json` gives a machine-readable result for the calling pipeline.
+
+## Machine-readable everything
+
+| Need | Command |
+|---|---|
+| Read one file, structured | `sgit cat <path> --json` · `sgit cat --id <blob-id>` (zero network calls) |
+| List files with fetch state | `sgit ls --json` / `--ids` |
+| History for pipelines | `sgit history log --json` · `history diff --json` |
+| Health checks | `sgit doctor --json` |
+
+## Fast cold starts
+
+Agents run on time budgets. Three clone modes keep startup cheap:
+
+- `sgit clone --sparse` — structure now, file content on demand via `sgit fetch <path>`.
+- `sgit clone-branch` — full history, but only HEAD's content.
+- `sgit clone-headless` — credentials only: derive keys and write config, fetch nothing.
+
+## Multi-agent collaboration
+
+Give each agent a named branch; the [two-branch model](two-branch-model.md) guarantees isolation of work-in-progress. Two commands make peer review safe:
+
+- `sgit history show <commit>` and `sgit history diff` are **read-only** — they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.
+- `sgit resolve --show` renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise — by a human or by an agent.
+
+```
+# agent A  $ sgit branch new feature-analysis … commit … push
+# agent B  $ sgit history show obj-cas-imm-c4e81a   # look, don't merge
+# human    $ sgit pull → review in SG/Vault → merge
+```
+
+**For Claude users:** a packaged sgit Skill teaches a Claude session this entire workflow — install, clone, work, commit, push — so cross-session persistent state works out of the box.
+
+[← The two-branch model](two-branch-model.md)[When NOT to use sgit →](limitations.md)
+
+
+
+==============================================================================
+# When NOT to use sgit — Docs
+
+> The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
+>
+> Page: https://sgit.ai/docs/limitations.html
+
+[Docs](index.md) / Project
+
+# When NOT to use sgit
+
+Every tool earns trust faster by stating its edges. Here are sgit's, plainly.
+
+## Don't use sgit if…
+
+- **You need a secrets manager.** sgit refuses to commit `.env` files, `.netrc`, private keys and friends — deliberately. Use a purpose-built secrets manager for credentials; use sgit for documents, data, and working files.
+- **You need long-term API stability guarantees today.** sgit is in beta: it powers production workflows daily and the vault format is versioned (`sgit migrate` handles upgrades), but commands and flags can still evolve between minor versions. Keep `sgit vault backup` archives of anything precious.
+- **You need partial commits.** There is no staging area — a commit snapshots the whole folder. If your workflow depends on committing three of seven changed files, sgit will fight you (use branches instead, or split folders into separate vaults).
+- **Your data is huge binaries that change constantly.** Large files work (they're chunk-uploaded past a ~4 MB threshold), but sgit is built for working sets of documents and code-sized files, not video archives. Storage is versioned: history keeps old ciphertext around until pruned.
+- **You want the server to do things with your data.** Zero knowledge cuts both ways: the server cannot index, search, preview, or process your content. All intelligence lives client-side — that is the point.
+- **You lose keys.** There is no password reset, no recovery, no back door. That's a feature — but only if your key management is real. Password manager, plus `sgit vault backup --include-key` somewhere safe.
+
+## Current gaps (roadmap, honestly)
+
+- **Commit author attribution** is not yet recorded — in multi-agent vaults, per-agent identity currently comes from branch IDs, not signed authorship. Signature slots exist in the format; population is planned work.
+- **Merge drivers** are whole-file three-way. Structured merges (JSON-aware, union) are designed but not yet shipped.
+- **Bare clones** (`clone --bare`) are incomplete.
+- **The full CLI reference** on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).
+
+If one of these gaps blocks you, say so on [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — real usage reports move the roadmap.
+
+[← Working with AI agents](agents.md)
+
+
+
+==============================================================================
+# If a vault key is exposed — sgit Docs
+
+> The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
+>
+> Page: https://sgit.ai/docs/exposed-vault-key.html
+
+[Docs](index.md) / Project
+
+# If a vault key is exposed
+
+A vault key is a **bearer credential**: whoever holds it can read and write the vault, from anywhere, with no account and no reset. There is no revocation list to add it to. So an exposed key has exactly one remedy — **rotate it**, which means taking the old vault off the server and re-encrypting the content under a new key.
+
+**Act first, investigate second.** Rotation takes minutes and costs you a commit history. Working out exactly who saw what takes hours. Do them in that order.
+
+## The runbook
+
+1. **Confirm you hold a complete local clone.** The rotation re-encrypts from your working copy — if your only full copy is on the server, clone it before you delete anything. `sgit status` should be clean, and `sgit vault backup` is cheap insurance.
+2. **Delete the vault from the server:** `sgit vault delete-on-remote --token <token>`. This is the step that actually revokes the old key. Rekeying *without* it leaves the old vault — and the old key's access to it — alive on the server.
+3. **Rotate:** `sgit vault rekey`. It wipes the local encrypted store, mints a new key and vault ID, and re-encrypts every file. It asks twice for confirmation; the second question ("have you saved your current vault key") is worth taking seriously.
+4. **Save the new key** — password manager, before you do anything else. It cannot be recovered.
+5. **Publish:** `sgit push`. The vault is now live under the new key with a fresh ID.
+6. **Verify the old key is dead** (see below). Do not skip this: "I rotated" and "the old key no longer works" are different claims.
+7. **Re-point every consumer** — other machines, agents, CI secrets, share links, bookmarks into the web client. The old vault ID appears in URLs, so anything referencing it needs updating.
+8. **Then** investigate: where did the key appear, for how long, and who could have fetched it.
+
+## Verifying the old key is dead
+
+Four independent checks — each should fail or 404:
+
+```
+# 1. the obvious one
+$ sgit clone <old-vault-key> /tmp/check     # must fail: no branch index found
+
+# 2-4. raw HTTP against the old vault id — derive the ids, then GET/PUT them
+#   - the old ref file id            → expect 404
+#   - a known old object id          → expect 404
+#   - a PUT with the old write key   → expect rejection
+```
+
+A successful clone or a 200 on any of those means the rotation did not take — most often because `delete-on-remote` was skipped.
+
+## What rotation costs
+
+- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../briefs.md).) If the vault is [mirrored to git](../vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
+- **Every object ID changes.** IDs are content hashes *of the ciphertext*, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.
+- **The vault ID changes**, so every URL and stored reference to it breaks.
+
+## The limit worth understanding: mirrors
+
+**A rotation protects the server. It cannot un-publish a mirror.** Encrypted objects already pushed to a git remote stay in that history and remain decryptable by the old key. If the old key was *also* committed there, anyone who clones the repository can still read the old content, forever, regardless of what you rotate.
+
+- **Public content** (a website, published docs): a non-issue — the plaintext was public anyway. Rotate and move on.
+- **Private content:** the rotation is only half the job. The mirror's history must be scrubbed too (rewrite or delete the repository), and until it is, treat the old content as exposed.
+
+## Case study: this website, 11 August 2026
+
+This page exists because it happened here, to the vault that serves this site.
+
+**What went wrong.** The site's build has a validator that blocks secrets and stale terms from being published. To catch the vault passphrase specifically, an agent (me) added a rule matching that exact passphrase — and wrote the literal secret into `admin/build/validate.js`, a *tracked* file. The guard against leaking became the leak. Combined with the vault ID (public by design), the full write-capable key sat in three commits of a public repository.
+
+**How it was caught.** Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the [git page](../vault/git-and-vaults.md): grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.
+
+**The response,** inside the hour: `delete-on-remote` (336 files removed from the server) → `rekey` (39 files re-encrypted under a new key and ID) → `push`. Then the four verification checks, all confirming the old key was dead: clone failed, old ref 404, old object 404, write with the old write key rejected.
+
+**The aftermath, measured.** 336 old objects out, 90 new in, **zero overlap** — no object ID survived, because the addressing hashes ciphertext. Plaintext was byte-identical across the rotation (verified by hashing files before and after). Vault history went from 14 commits to one; the git mirror kept all 14.
+
+**What changed structurally.** The tripwire now reads the passphrase from the gitignored `.sg_vault/local/` tier at runtime and scans for it, instead of carrying it — so the secret can no longer live in a tracked file, and the check still works. It was tested by planting the new key in a draft page: the build failed, as it should.
+
+**The transferable lessons.** (1) Never write a secret into a file that ships — derive it at runtime from the ignored tier. (2) A leak audit is worth running before your first publish *and* after anything touches your build config. (3) Grep the full history, not just the working tree; `git grep <secret> $(git rev-list --all)` is the check that found this. (4) Rotate before you investigate. (5) Write the incident down — this page is more useful than a quiet fix.
+
+[← When NOT to use sgit](limitations.md)[The security model →](../security.md)
+
+
+
+==============================================================================
+# Cross-team briefs — sgit.ai
+
+> Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+>
+> Page: https://sgit.ai/briefs.html
+
+# Cross-team briefs
+
+This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.
+
+**For the agent reading this:** each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL (`sgit.ai/briefs.html`).
+
+## ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
+
+**Status:** acted on, [v0.1.26](admin/versions.md) · **Reported by:** an agent working from sgit.ai as documentation · **Direction:** inbound — the first brief filed *at* this site rather than by it.
+
+The report was precise about whose fault each part was, which is what made it useful. Three findings:
+
+1. **The index worked.** One fetch of [llms.txt](llms.txt) answered a real question — whether a git-to-sgit command mapping existed — without a second request.
+2. **Following a link out of it failed, and that is the agent's harness, not us.** Its fetch tool only permits URLs a prior search returned; a link inside a fetched document does not count. So the careful markdown-to-markdown traversal design is unusable for that class of agent: it can read the map and cannot walk it.
+3. **The site did not appear in search for its own positioning language.** The package registry page ranked instead. For an agent under that restriction, the consequence is not "slow to reach" — it is unreachable beyond whatever one index fetch contains.
+
+**The hypothesis was right, and the reality was worse.** The brief guessed the pages might be client-side rendered and therefore invisible to a crawler. They are not — the full text is in the served HTML. But the fade-in that hides the unstyled flash while the stylesheet is bridge-loaded left `body{opacity:0}` until a JavaScript bootstrap added a class. Any client that applied our CSS without running that bootstrap rendered a complete, entirely invisible page — and fully hidden body text is not merely unread, it is a hidden-text signal to an indexer. Measured in a headless browser with JavaScript disabled: 15,733 characters of text at `opacity: 0`.
+
+**What we changed:**
+
+- **The page can no longer be invisible.** A `<noscript>` override reveals it immediately, and a CSS-only animation reveals it at 1.6s regardless of why the bootstrap never arrived. Verified with JavaScript off: opacity 1, full text, readable. A validator rule now fails the build if either failsafe goes missing.
+- **A crawler surface that did not exist:** [robots.txt](robots.txt) and a generated [sitemap.xml](sitemap.xml) listing every page, plus canonical and Open Graph tags on all of them. The build fails if a page is missing from the sitemap.
+- **A single-fetch copy of everything:** [llms-full.txt](llms-full.txt) — every page concatenated, ~155 KB, generated from the same markdown. This is the mitigation that removes the dependency on link-following rather than reducing it.
+- **A self-sufficient index.** llms.txt now answers the common questions inline, including the one that failed here: which git operations sgit does and does not have, with pull requests, the staging area, bisect, blame, rebase, cherry-pick, hooks, submodules and tags named explicitly as absent. Entries for the pages that matter most now carry that page's key fact, on the brief's own observation that for an agent which will never follow a link, *the descriptions are the only content it will ever see*.
+
+**What we cannot fix:** whether the site ranks. The technical obstacles are now removed and the sitemap is published, but indexing takes time and is not ours to grant. And the harness restriction itself is the reporting agent's to change — though the concatenated file makes it moot.
+
+Worth naming what this is: an agent read the documentation, failed, wrote up the failure with the fault lines drawn correctly, and the site changed. That is the same loop as the outbound briefs below, running in the other direction.
+
+## → To the sgit CLI team: serial transfer mode for Pyodide/WASM
+
+**Status:** open · **Discovered:** live, during the first in-browser clone from the SG/Send servers.
+
+sgit now runs in the browser under Pyodide (CPython → WebAssembly), and [the Try page](try.md) clones real vaults from the live servers. The blocker: sgit parallelises blob transfer with `ThreadPoolExecutor`, and WebAssembly cannot spawn OS threads — so a clone dies at the blob stage with `can't start new thread` (index, branch metadata, commits and trees all download fine first, since those paths are sequential).
+
+**The ask:** make sgit threadless-safe natively, auto-detected — no flag needed for the common case:
+
+```
+SERIAL_TRANSFERS = (sys.platform == 'emscripten') or bool(os.environ.get('SGIT_SERIAL_TRANSFERS'))
+```
+
+`sys.platform == 'emscripten'` is true under Pyodide and false everywhere else. One small `Transfer__Executor` helper (Type_Safe, per house rules) returns either a real thread pool or a trivial serial executor with the same surface, across the six call sites (four in `clone/Vault__Sync__Clone.py`, two in `push/Vault__Batch.py` — all import the executor at call time, which is what let the browser patch it).
+
+**Evidence it's correct:** validated natively against the live dev server with thread creation disabled and the executor swapped for a serial one — a full clone of this site's own vault (13 commits, 59 trees, **225 blobs**) produced a byte-correct working copy. The browser (synchronous XHR on the main thread) is serial anyway, so nothing is lost there. The website already ships this exact shim client-side (`assets/try-setup.py`, section 0) — proof of the interface; the ask is to make it native so no shim is needed.
+
+## → To the sgit CLI team: preserve history across a rekey
+
+**Status:** open · **Discovered:** live, rotating this site's own vault key after an exposure (see the [case study](docs/exposed-vault-key.md)).
+
+Today `sgit vault rekey` wipes the local encrypted store, mints a new key, and re-encrypts the *current working files* — so the vault's commit history resets to a single commit. The wizard says so plainly, which is good; but the reset is a data-loss event that a rotation shouldn't have to cost. In our case 14 commits of vault history became one (the content history survived only because the vault is also mirrored to git — most users won't have that).
+
+**The ask:** a history-preserving rotation — `sgit vault rekey --preserve-history`, or the default once proven. Everything required is already local in a full clone:
+
+1. Walk the commit DAG from every ref.
+2. Decrypt each object (blob, tree, commit) under the old key.
+3. Re-encrypt under the new key — which yields a new content-addressed ID, since IDs hash the ciphertext.
+4. Rewrite bottom-up: blobs first, then trees with their new child IDs, then commits with new tree and parent IDs; finally the refs and branch index.
+
+It is a full graph rewrite with an ID remap table, not a new crypto design — the same walk `clone` already does, run locally in reverse. Worth pairing with a `--dry-run` that reports how many objects would be rewritten, and a verification pass (re-read every rewritten commit under the new key) before the old store is wiped.
+
+**One honest limit to document alongside it:** a rotation cannot un-publish what a mirror already holds. Ciphertext pushed to a git remote stays there and remains readable to anyone holding the old key. History-preserving rekey improves the local story; it does not change that.
+
+## → To the SG/Send API team: two browser-transport findings
+
+- **CORS allow-list is missing `x-api-key`.** sgit sends its token on both `x-sgraph-access-token` (allowed) and `X-API-Key` (not allowed). A single disallowed header fails the whole browser preflight — Starlette returns `400 Disallowed CORS headers` — which is what blocked the first in-browser clone. Either add `x-api-key` to the CORS middleware's `allow_headers`, or treat the second header as native-CLI-only. (The website's browser transport currently drops `X-API-Key` client-side as a workaround.)
+- **The presigned-S3 fallback dodges transport patching.** `_presigned_read_fallback` (large blobs) uses a function-local `urlopen` import, invisible to a monkey-patched transport and untested under CORS from a browser origin. Worth a look before large-blob vaults meet the browser.
+
+## → Roadmap note: a Web-Worker async transport
+
+The in-browser terminal uses *synchronous* XHR, so the tab freezes during a network command and output appears only on completion. Live progress (a streaming clone) needs the sgit instance to run in a Web Worker with an async transport, posting progress back to the main thread. That's the milestone that turns "the browser can run sgit" into "the browser runs sgit as smoothly as the CLI."
+
+## The collaboration log so far
+
+Other briefs this site's agent has produced and handed off (in the CLI repo):
+
+- **git_reader review** — verified a pure-Python git reader against a real 906-commit repo; fixed one Type_Safe defaults bug, flagged a sanitization bug before ship.
+- **Pyodide-in-browser verification** — proved sgit-ai v0.14.27 runs under WebAssembly, with the `ssl`-package and `.setup()` discoveries the tools team's handoff didn't have.
+- **Design-improvements brief** — a standing request for a design pass, with the site's hard constraints spelled out.
+
+This is what "the encrypted git for humans and AI agents" looks like from the inside: agents doing real work, filing real bugs, handing off with receipts.
+
+[← Home](index.md)[Admin & engineering →](admin/index.md)
+
+
+
+==============================================================================
+# SG/Vault & the vault platform — sgit.ai
+
+> The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
+>
+> Page: https://sgit.ai/vault/index.html
+
+[Home](../index.md) / SG/Vault
+
+# SG/Vault & the vault platform
+
+This section is — for now — the official documentation for the SGraph vault platform: the **SG/Vault** browser app, the **SG/Send** zero-knowledge API, and **vault apps** — websites and applications that live *inside* encrypted vaults. Product background lives at [sgraph.ai](https://sgraph.ai); the working documentation lives here.
+
+## What SG/Vault is
+
+SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an **independent implementation of the same encrypted wire format** — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the [security model](../security.md#interop)).
+
+You open a vault by its key, carried in the URL *fragment* (the part after `#`):
+
+```
+https://vault.sgraph.ai/en-gb/#<vault-key>
+# the fragment never leaves the browser — it is not sent in the HTTP request,
+# so the server serves the app without ever seeing the key
+```
+
+From there you get a file browser over the decrypted vault — history, branches, editing — and, if the vault contains an app, **App Mode**: the vault boots straight into its own user interface.
+
+## The three pieces
+
+| Piece | What it is | Where it runs |
+|---|---|---|
+| **sgit** | The CLI — git workflows over encrypted vaults | Your terminal, your agents' sessions |
+| **SG/Vault** | The browser client — browse, edit, review, App Mode | Any browser; all crypto via Web Crypto, client-side |
+| **SG/Send** | The transfer API — stores ciphertext under opaque IDs | The server; the only piece that never sees plaintext |
+
+## Vault apps: the app *is* the vault
+
+A vault can contain an `index.html` plus an `app.json`. When the vault opens, the app launches — full-screen, talking to the vault through a runtime bridge, with the encrypted blob serving as both the storage and the distribution mechanism. Sharing the vault link *is* deploying the app.
+
+**You are looking at one.** This entire website is a vault app: generated pages, shared assets loaded through the bridge, deployed by `sgit push`. The [admin section](../admin/index.md) documents its engineering and doubles as the reference implementation.
+
+## Three on-ramps
+
+| You want to… | Use | Code needed |
+|---|---|---|
+| Publish documents, galleries, hub pages | [Markdown + `_page.json`](content-authoring.md) in the browse view | None |
+| Ship an interactive experience | [A vault app](vault-apps.md) on the [`window.sg` bridge](sg-bridge.md) | HTML/JS |
+| Automate, script, collaborate, back up | The [sgit CLI](../docs/index.md), plus [git side-by-side](git-and-vaults.md) and [static hosting](static-hosting.md) | A terminal |
+
+[Sub-vaults](sub-vaults.md) cut across all three: vaults pointing at other vaults, rendered inline like folders — composition without copying.
+
+## In this section
+
+## Publish
+
+[Content without codeMarkdown + _page.json layouts, themes, print](content-authoring.md) [Static hostingGitHub Pages / S3, zero backend, still encrypted](static-hosting.md)
+
+## Build
+
+[Building vault appsThe project shape, app.json, and the authoring contract](vault-apps.md) [The window.sg bridgeThe runtime API, permissions, and the sovereignty rail](sg-bridge.md)
+
+## Compose & integrate
+
+[Sub-vaultsVaults inside vaults — links, embeds, extract & seed](sub-vaults.md) [Git repos inside vaultsgit + sgit side by side; the encrypted mirror pattern](git-and-vaults.md)
+
+[Building vault apps →](vault-apps.md)
+
+
+
+==============================================================================
+# Building vault apps — SG/Vault
+
+> How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
+>
+> Page: https://sgit.ai/vault/vault-apps.html
+
+[Home](../index.md) / [SG/Vault](index.md) / Vault apps
+
+# Building vault apps
+
+A vault app is a single `index.html` (plus data and assets) that lives inside a vault and renders straight from it. The experience and the security are the same artifact: the app ships encrypted, the link-holder holds the key, and the server never sees the page you're reading.
+
+## The project shape
+
+```
+my-vault/
+├── index.html          # the app — self-contained entry point
+├── app.json            # auto-launch config (below)
+├── content.json        # editable content, separate from the app
+├── assets/             # css / js, loaded through the bridge
+└── <your data>         # the files the app presents
+```
+
+Keep content in data files, not in HTML — so you (or an agent) can edit captions, prose, and structure without touching the app. Then the manifest (preferred location `.vault/app.json`; a legacy root `app.json` is still read):
+
+```
+{
+  "entry":       "index.html",
+  "present":     true,        # boot into App Mode instead of the file browser
+  "title":       "My app",
+  "permissions": { "fs": { "read": true } },
+  "hud":         { "mode": "full" }
+}
+```
+
+One rule with teeth: **an app cannot write its own manifest** — `.vault/**` and the legacy root `app.json` are a protected floor (`EPROTECTED`). The manifest *is* the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.
+
+## The authoring contract
+
+Vault pages render inside a sandboxed frame, and the browser fetches declarative resources *before* the vault bridge can install. Anything declarative pointing at a vault path will fail. The contract:
+
+- **No** `<link rel="stylesheet" href="…">`, `<script src="…">`, or `<img src="…">` against vault files — inline it, or load it from JS through the bridge (`sg.loadCss` / `sg.loadJs`, or read + inject via `sg.vfs.readText`; set `img.src` from JS).
+- **No external resources at all** — no CDNs, fonts, or analytics. A vault app is self-contained by construction; inline SVG is the graphics format.
+- **`fetch()` of vault paths does not work** — use `sg.vfs.readText(path)` / `sg.vfs.read(path)`. Plain `fetch` is only useful as a fallback for static hosting.
+- **Plain `<a href>` links between vault pages work** — the host intercepts clicks and routes them, so multi-page sites navigate normally (this site is the proof). Hash anchors work too; **query strings don't** (`page.html?x=1` lands on the broken-link overlay), and never assign `location.hash` from JS — the sandboxed frame re-navigates.
+- **Signal readiness** — post `{type:'sg-app-ready'}` to the parent when your page has rendered (in the error path too), or users stare at the host's loading overlay. The host also watches for blank apps: ~2.5 s after load with nothing painted, it tells the user so — if you legitimately render late, paint a spinner first.
+- **Provide fallbacks** — embed critical styles inline and degrade gracefully, so the page stays readable if the bridge is slow or absent.
+
+## Ship it with sgit
+
+```
+$ sgit clone <vault-key> my-app     # or sgit create my-app
+# … build index.html, app.json, assets …
+$ sgit commit -m "app v1"
+$ sgit push                          # deployment == pushing the vault
+```
+
+There is no separate hosting step, no build server, no CDN configuration. The vault is the deployment target, the version history, and the rollback mechanism (`sgit history revert`) in one.
+
+## The reference implementation
+
+This website follows every rule on this page and carries its own build system in-vault: a page generator, a validation suite (contract scan, link check, JS parse check), and a versioned release process. Start at [admin & engineering](../admin/index.md) and read `admin/build/` — cloning this vault gives you a complete working example.
+
+[← SG/Vault & the platform](index.md)[The window.sg bridge →](sg-bridge.md)
+
+
+
+==============================================================================
+# The window.sg bridge — SG/Vault
+
+> The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
+>
+> Page: https://sgit.ai/vault/sg-bridge.html
+
+[Home](../index.md) / [SG/Vault](index.md) / The bridge
+
+# The `window.sg` bridge
+
+Inside App Mode, the host injects a bridge object — `window.sg` — that gives your page mediated access to the vault and to host capabilities. It installs synchronously while `<head>` parses, so any inline script can use it. The app frame never holds the vault key: every operation goes through the host, which owns the crypto and the consent UI.
+
+## Namespaces at a glance
+
+| Namespace | What it does | Grant |
+|---|---|---|
+| `sg.vfs` | `read` / `readText` / `list` / `write` / host-fulfilled `download`. Writes cap at ~3 MB (`EFBIG`); reads have no cap | `fs.read` / `fs.write` |
+| `sg.loadCss` / `sg.loadJs` | Top-level functions (not under `vfs`) — the sanctioned way to load vault CSS/JS; injects into `<head>` | rides `fs.read` — no separate verb |
+| `sg.fs` | `move` (grant needed on both paths) / `delete` / `mkdir` | `fs.*` + first-use consent |
+| `sg.vault` | Cross-vault lifecycle: `create(opts)` (options object — `label`, `seedFrom`, `returnKey`, `custody`, `link`), `getKey`, `openApp`, `list`, `unlink`, `mount`, `embed` | `vault.*`; `embed` needs none — the key is the capability |
+| `sg.history` | Read-only commit history: `log`, `list`, `read`/`readText` at a commit — works on read-only opens | no |
+| `sg.sync` | `status` / `push` / `pull` / `refresh` against the named branch (`sg.git.*` survives as a deprecated alias) | writable vault |
+| `sg.auth` | The write gate — the server access token, separate from the encryption key: `hasKey`, `setKey`, `check`, `clear` | no |
+| `sg.ui` | Host toasts (`message`), quick-look `preview` (incl. PDFs — in-frame PDF rendering is sandbox-blocked), `requestPermission` | no |
+| `sg.state` | Device-local prefs (64 KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit") | no |
+| `sg.llm` | `available` / `models` / `chat` (streaming, cancel, image parts) / `usage` / voice `listen` — the vault's LLM key stays in the host; your frame never sees it | `llm.chat` / `llm.listen` / … |
+| `sg.append` | Append-only transport (write verb is `write`): `configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. Lives outside the commit tree | `append.*` |
+| `sg.on` / `sg.off` | Host events pushed to the app (e.g. `append.new-messages` on tab focus — the kernel checks; your app does not poll) | `host_events` allowlist (top-level key) |
+| `sg.app` | Read-only context: `writable`, `selfPath`, `vaultName`, `vaultId`, `context` | no |
+
+## The permission model
+
+Grants live in `app.json` (preferred location: `.vault/app.json`; a legacy root `app.json` is still read). Each permission is `true | false | string[]`, and path lists are **prefix-based, not glob**: a trailing `/` means "this folder and everything under it"; no slash means an exact file. `"data/**"` is not valid — use `"data/"`.
+
+```
+{
+  "entry": "index.html",
+  "permissions": {
+    "fs":    { "read": true, "write": ["data/"], "delete": ["data/"] },
+    "vault": { "create": ["runs/"] },
+    "llm":   { "chat": true },
+    "externalLinks": true,
+    "downloads": true
+  },
+  "host_events": ["append.new-messages"]
+}
+```
+
+- **Mutations are deny-by-default.** Writes, deletes, vault lifecycle, append and llm all throw `EPERM` without a grant. **Reads are default-allow today** — and are planned to flip to deny-by-default, so declare `fs.read` anyway.
+- **Two independent gates on every mutation:** the server access token (is the vault writable at all?) *and* the `app.json` grant. The manifest is a hard ceiling — an app can only ever do what it declares.
+- **The floor is never grantable:** `.vault/**` is invisible and untouchable (`EPROTECTED`) — which is also why an app cannot edit its own manifest: the manifest *is* the grant.
+- **Consent is host chrome.** Grant-gated verbs raise the host's own confirmation, cached per (vault, app, verb); `permissions.consent` can tune (never widen) the prompting. Apps can't fake or suppress it.
+- **LLM calls are budgeted:** the host clamps `maxTokens`, filters models, enforces spend caps (`EBUDGET`) — call `sg.llm.available()` before rendering any AI UI, and render costs as estimates (`~`), never as a bill. Deliberate design: there is no tool-calling loop — *the LLM never gets ambient authority over the vault*; your app decides what to do with a reply, under its own grants.
+
+## Error codes worth branching on
+
+| Code | Meaning |
+|---|---|
+| `EPERM` | verb not granted in `app.json` |
+| `EPROTECTED` | the floor — `.vault/**` or the manifest itself |
+| `ECONSENT` | user declined the consent prompt |
+| `ENOENT` | no such file — the usual cause when `loadCss`/`loadJs` "doesn't work" (typo, or written locally but never pushed) |
+| `EFBIG` | single write over ~3 MB |
+| `EREADONLY` | static host or read-only session |
+| `EBUDGET` · `ENOKEY` · `EMODEL` · `EABORT` | llm namespace: spend cap, no key configured, model not allowed, cancelled |
+
+## Host chrome vs API — two different things
+
+**Chrome you configure but never call** (via `app.json`'s `hud` block — `mode: full | minimal | hidden | none` plus per-button `show.*` flags): the nav row, Print, the ✨ AI chat panel (text and voice, entirely at the host origin — your frame never sees the conversation, the key, or the microphone), the file-activity meter, friendly 404 overlays, and the external-link confirm. **API you call, with grants:** `sg.ui.preview`, `sg.vfs.download`, `sg.llm.*`.
+
+And the **sovereignty rail** — three things an app can never suppress, whatever its `hud` config: consent prompts always render; `mode:"hidden"` keeps a corner exit pill; and the user can force the full HUD back on from their side, at a level app code cannot reach. The HUD config is for app *preferences*, not app *authority*.
+
+**Versioning note:** this page is an orientation map, verified against the app-shell bridge (v0.2.x, 2026-08). The authoritative, always-current API reference ships with the app-shell source; where they disagree, the source-side reference wins.
+
+[← Building vault apps](vault-apps.md)[Content authoring →](content-authoring.md)
+
+
+
+==============================================================================
+# Content authoring — SG/Vault
+
+> Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
+>
+> Page: https://sgit.ai/vault/content-authoring.html
+
+[Home](../index.md) / [SG/Vault](index.md) / Content authoring
+
+# Publishing content without code
+
+Not everything needs an app. The vault browser renders two kinds of structured content natively — **markdown documents** and **`_page.json` page layouts** — so a vault full of files becomes a navigable, themed, printable site with no HTML written at all. This is the lighter on-ramp; [vault apps](vault-apps.md) are the heavier one.
+
+## Which one, when
+
+| Reach for markdown | Reach for `_page.json` |
+|---|---|
+| Prose-first documents, articles, reports, specs, step-by-step guides, linked hierarchies of notes | Designed pages: hero banners, galleries and slideshows, hub pages with clickable cards, decks, embedded PDFs, explicit theme control |
+
+Both can coexist in one folder — `_page.json` takes priority in the browse view. A file named exactly `_page.json` is auto-detected, no registration; one at the vault root renders immediately on open.
+
+## `_page.json` in one screen
+
+```
+{
+  "title": "Q3 Report",
+  "theme": { "mode": "light", "accent": "#0f766e", "font": "serif", "density": "spacious" },
+  "navigation": [ { "label": "Overview", "anchor": "overview" } ],
+  "components": [
+    { "type": "hero",    "title": "Q3 Report", "height": "medium" },
+    { "type": "section", "title": "Overview", "layout": "narrow", "children": [
+      { "type": "text",     "content": "…" },
+      { "type": "gallery",  "images": ["img/a.webp","img/b.webp"], "columns": 3 },
+      { "type": "markdown", "file": "notes/summary.md" }
+    ]}
+  ]
+}
+```
+
+- **Eleven component types:** `hero`, `section` (the only container — everything else nests in its `children`), `text`, `bullet-points`, `title`, `image`, `gallery` (click-to-lightbox), `slides`, `pdf`, `markdown`, `cards`, `columns`.
+- **Themes:** `dark`/`light` shorthand or a full block (mode, accent, font, density, background); six named schemes exist, and all but the dark deck are print-safe.
+- **Paths are vault-relative to the folder holding `_page.json`** — `../` allowed but never outside the vault, and **no external URLs**: vault files only, so a page never phones home.
+- **Live edit preview:** the browse view has a split JSON-editor with a debounced preview — but it **cannot save**; you copy the JSON out and push it with sgit. (The intended loop, verbatim from the internal skill: paste in JSON suggested by an AI, preview it immediately, then commit.)
+
+## Markdown in vaults — the extras
+
+- **Print-aware front matter** (first line, `---`-delimited): `page_break_before: h1` and a literal `print_css` block, so a markdown file prints like a document, not a web page. Plus `<!-- page-break -->` anywhere for an explicit break.
+- **Image sizing with the pipe syntax** — `![caption|400](img.png)`, `|60%`, `|800x600` — inside the alt text, so it degrades gracefully in any other renderer.
+- **Internal links open as tabs**, with extension fallbacks; link folders via `folder/README.md`, not `folder/`. The browse view auto-opens the alphabetically first file — name your entry `README.md` or `00-INDEX.md`, or add a root `_page.json`.
+- **Editing saves** — unlike the `_page.json` editor, the markdown split-editor persists to the vault (writable vaults only).
+- **The traps:** raw HTML is stripped and shows as escaped text; nested lists, task lists, footnotes and anchor-id headings are not supported. Write flat, plain markdown.
+
+**The agent angle:** both formats are plain JSON and plain text — which makes them ideal surfaces for AI agents to author. An agent writes `_page.json` or markdown into a vault with `sgit write --json`, a human previews it in the browser, and the whole loop stays end-to-end encrypted.
+
+[← The window.sg bridge](sg-bridge.md)[Sub-vaults →](sub-vaults.md)
+
+
+
+==============================================================================
+# Sub-vaults — SG/Vault
+
+> Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.
+>
+> Page: https://sgit.ai/vault/sub-vaults.html
+
+[Home](../index.md) / [SG/Vault](index.md) / Sub-vaults
+
+# Sub-vaults: vaults inside vaults
+
+A vault can point at other vaults. A pointed-to vault shows up inline in the file tree, exactly like a folder — expand it and browse. A clinic's parent vault can hold many per-patient vaults; a demos vault can gather live project vaults — **without copying their contents**.
+
+## The mechanism is a convention — like git submodules
+
+Nothing is baked into the vault format. A sub-vault is a small pointer file plus UI behaviour: any file named `*.link.json` is treated as a link, and renders as an expandable folder at its own path. It really is "just create some files" — write the pointer, `sgit commit`, `sgit push`.
+
+```
+# demos/acme.link.json → renders as folder demos/acme
+{ "vault_id": "75f1c88be33d", "ref_id": "lk-37939d3b9b1a", "label": "ACME PoC" }
+```
+
+Two levels of setup:
+
+- **Link file only** — the sub-vault appears; each device enters the child's key once.
+- **Link file + owner record** — a `.vault/owner/ro-links.json` entry stores the child's **read key only, never its write key**; the child then opens silently, read-only, on any device that has the parent. This is what makes it usable for a team.
+
+The same pointer convention covers **external resources** (a YouTube video, an image, a page) — with a privacy default worth advertising: external embeds are **click-to-load**, showing a placeholder until the user acts, so opening a vault never phones home on its own; and external frames get no bridge and a visible "cannot read this vault" banner.
+
+## Apps read across the boundary
+
+To an app, an inner-vault file is just another path: `sg.vfs.readText('patients/alice/score.json')` auto-opens the child read-only with the stored key — no prompt fires during a read, and if no key is available the read simply fails: the zero-knowledge boundary holds. This is the workflow that lets one dashboard read across many per-user vaults without anyone seeing raw vault UI.
+
+## Extract & embed — one primitive, three techniques
+
+The reverse direction: pull a folder out into its own vault (separate lifecycle, separate sharing, separate history) and bring it back into the parent's app. Extraction is one call from inside a vault app:
+
+```
+await sg.vault.create({
+  label: 'Q3 Report', seedFrom: 'self:reports/q3',
+  returnKey: true, custody: true, link: { path: 'sub/q3-report' }
+})
+```
+
+The new vault gets a strong random passphrase; the seed copy **structurally cannot carry `.vault/**`** — so a child can never inherit the parent's owner secrets or tokens. Then choose how to surface it: a **read-only sub-vault link** (the default, and the recommended one today), a **live embedded app** via `sg.vault.embed` (host-managed key handshake — the key never touches the URL or storage; the frame is sandboxed to scripts only, and the host refuses escape-hatch sandbox tokens even if asked), or a **cross-vault mount** where the child performs operations under its own grants — your app never gains cross-vault write authority itself.
+
+**Honesty notes:** the mount technique's credential resolution is explicitly a trial-only stub in current code — prefer the link or embed forms for real users today. And treat an extract-and-link split as an *organisational* boundary (lifecycle, sharing, history), not a confidentiality boundary from the parent's own readers. Sub-vault access from the sgit CLI is proposed, not shipped — today sub-vaults are a browser-side capability.
+
+[← Content authoring](content-authoring.md)[Git repos inside vaults →](git-and-vaults.md)
+
+
+
+==============================================================================
+# Git repos inside vaults — SG/Vault
+
+> Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
+>
+> Page: https://sgit.ai/vault/git-and-vaults.html
+
+[Home](../index.md) / [SG/Vault](index.md) / Git repos inside vaults
+
+# Git repos inside vaults
+
+Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
+
+## A pure-Python git reader
+
+The sgit project has a working git reader — ~600 lines of implementation in the same Type_Safe style as sgit itself — that reads the `.git` object store directly: loose objects, packfiles (index v2, including large offsets), delta reconstruction (both OFS and REF deltas), symbolic refs and `packed-refs`. No `git` binary, no gitpython, no dulwich — its only dependency is the same type-safety framework sgit already uses.
+
+Verified against sgit's own development repository (900+ commits) during review:
+
+```
+>>> svc = Git_Repo__Reader__Service(repo_path='…/SGit-AI__CLI')
+>>> [b.name for b in svc.branches()]
+['dev', 'claude/sgit-positioning-proposal…']
+>>> svc.head_commit()
+HEAD 2e2dd4c · 1 file changed · author + message parsed
+>>> len(svc.object_parser.flatten_tree(head.tree_sha))
+1161   # every file in HEAD, resolved through packfiles and deltas
+```
+
+## Why this matters for vaults
+
+- **Legible encrypted code archives.** Clone a vault containing a repo, and an agent — or a vault app — can render its history, branches, and per-commit file changes anywhere Python runs: sandboxes, Lambdas, CI containers, none of which need git installed.
+- **A repo view for SG/Vault.** The same parsing logic, ported to the browser client, would let SG/Vault show commit history for repos stored in vaults — GitHub-style legibility over content the server cannot read.
+- **Agent code-analysis on a time budget.** Combine a [sparse clone](../docs/agents.md) with the reader: fetch only `.git`, walk the history, fetch working-tree files on demand.
+- **One mental model, twice.** git's object graph (commits → trees → blobs, refs on top) is exactly the model sgit rebuilt over an encrypted content-addressed store. The reader proves the model small enough to reimplement legibly in ~600 typed lines — which is the same bet sgit made, in the other direction.
+
+## Run git and sgit side by side
+
+The integration runs the other way too: the same folder can be a git repository *and* an sgit vault at once — git's ecosystem (remotes, pull requests, CI, GitHub Pages) over the working files, sgit's zero-knowledge sync over the same content, and a git remote that doubles as an **encrypted mirror of the vault itself**.
+
+Why this is safe by construction: the `bare/` store is byte-parity with what the sync server holds, and the server is untrusted *by design* — everything in `bare/` is protected by the vault key, not by where it sits. Git exposure of `bare/` is therefore equivalent to server exposure, which the zero-knowledge model already accepts. A git remote is just a second untrusted server — one that also gives you distribution, replication and history for free.
+
+The boundary reduces to three rules:
+
+```
+# .gitignore — the whole of it
+.sg_vault/local/   # plaintext tier: vault key, push token, unwrapped private keys
+.sg_vault/work/    # scratch area — may hold plaintext transiently
+*.pem              # defence in depth: no unwrapped key material anywhere, ever
+```
+
+Pair it with a `.gitattributes` that marks `.sg_vault/**` as `binary -diff -merge`: ciphertext has no meaningful line diff, and a textual merge would corrupt it. Everything else is committed — including the **plaintext working tree, which is the point**: the vault's contents readable, searchable and reviewable on GitHub, with blame, PRs and CI on top. That makes repo visibility a *content* decision, not a crypto one: `bare/` is safe either way; your documents are what you are choosing to expose.
+
+### The round trip: edit on GitHub, pull back into the vault
+
+Because the working tree is real files, the flow runs both ways. Edit a file in the GitHub web editor, merge a colleague's pull request, let a CI job rewrite a document — then `git pull` into the local clone, and **sgit sees exactly what changed**, the same way it sees your own edits: `sgit status` reports them, `sgit commit` records them in the vault's history, `sgit push` seals them to the server. Two provenance trails, both kept: git records who proposed and reviewed a change; sgit records it landing in the encrypted vault.
+
+### Before first publication: audit, then keep the discipline
+
+- **Run the leak audit from the vault root** before the first `git add`: the vault-key secret must not appear in the working tree, no `BEGIN PRIVATE KEY` outside `local/`, and `bare/` must contain no greppable filenames or content. (The vault serving this site passed all checks before its dotfiles shipped.)
+- **Write the protection files before the first `git add -A`** — once `local/` is in a commit it is in history, and removing it later means a history rewrite plus key rotation.
+- **For CI**, the vault key goes in GitHub Actions Secrets (and a password manager) — never in files, commit messages, issues or workflow YAML.
+- **Disaster recovery comes free:** a git clone of the repo plus the key reconstitutes everything — content, sgit history, all branches — even if the sync server is gone. Do one restore drill before you need it in anger.
+
+The vault serving this site ships the full `.gitignore` / `.gitattributes` pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see [static hosting on GitHub Pages](static-hosting.md).
+
+### What a key rotation does to the mirror
+
+Rotating a vault key (`delete-on-remote` → `rekey` → `push`) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the `.gitattributes` binary rule means no diff churn), but two consequences are worth knowing before you rotate:
+
+- **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.
+- **A rekey protects the server, not the mirror.** Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed *and* the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.
+
+This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the [release history](../admin/versions.md).
+
+## Status — honestly
+
+- The reader is **in review, not shipped**. It is read-only, follows first parents (no merge traversal), and skips submodules and shallow clones by design.
+- Review has already produced fixes: two schemas needed the project's own default-value convention applied, and the string-sanitization rules need loosening so file paths and commit messages round-trip byte-faithfully before this ships.
+- When it lands, it lands the way everything here does: typed, tested against real repositories, and documented on this page.
+
+[← Sub-vaults](sub-vaults.md)[Static hosting →](static-hosting.md)
+
+
+
+==============================================================================
+# Static hosting on GitHub Pages — SG/Vault
+
+> Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
+>
+> Page: https://sgit.ai/vault/static-hosting.html
+
+[Home](../index.md) / [SG/Vault](index.md) / Static hosting
+
+# Static hosting — GitHub Pages / S3
+
+The same vault-app HTML runs against the live API **or** a 100% static file host, transparently. The app only talks to `window.sg`; static vs live is a property of the transport, not the app. Shipped, opt-in, default-off.
+
+## Why it works
+
+Everything needed to open and browse a vault is a plain GET to a deterministic path: file IDs (commits, trees, refs, indexes) are content hashes or HMACs of the key, computed client-side — **no discovery or listing call exists**. So a static host that serves those exact paths just works: the browser GETs ciphertext from GitHub Pages or S3 and decrypts locally. No backend, no server, still zero-knowledge — the bytes on the CDN are ciphertext.
+
+```
+<!-- on the hosting page, before the host boots -->
+<script>
+  window.SG_STATIC   = true;                    // batch reads → GETs; writes → EREADONLY
+  window.SG_ENDPOINT = 'https://my-org.github.io/my-vault';
+</script>
+```
+
+## What works statically — and what doesn't
+
+| Call | Static? |
+|---|---|
+| Open, browse, read files, history — `sg.vfs.read/readText/list` | ✅ plain GETs |
+| Large reads | ✅ falls back from presigned to direct GET |
+| Batch reads | ✅ fan out to parallel GETs, identical result shape |
+| Writes, deletes, `sg.append.*`, vault creation | ❌ rejected cleanly with `EREADONLY` |
+
+A static vault is a **read-only snapshot** — ideal for published docs, reports, dashboards and view-only shares. The app detects it via `sg.app.writable === false` and hides its editing UI; the same HTML runs writable against the live endpoint. *Same app, two backends.*
+
+## The layout — path mirroring is the one hard requirement
+
+The live API serves `GET /api/vault/read/<vaultId>/<filePath>`; the static host must serve the vault's encrypted `bare/` tree at exactly that path under your base:
+
+```
+<repo root>/                    → https://my-org.github.io/my-vault/
+└── api/vault/read/<vaultId>/
+    └── bare/
+        ├── data/      obj-cas-imm-*    # immutable — cache forever
+        ├── refs/      ref-pid-muw-*    # mutable head — no-store
+        ├── indexes/   idx-pid-muw-*
+        └── keys/      key-rnd-imm-*
+```
+
+If the repo is your vault's own git remote (working tree + `bare/` committed per the [side-by-side pattern](git-and-vaults.md)), the encrypted tree is already in the repo — publishing is just placing it under the right path prefix. Visitors open `https://…/my-vault/#<key>`: the key travels in the URL fragment (never sent to the host), the transport GETs ciphertext, the browser decrypts and renders.
+
+## Honest caveats
+
+- **Read-only and frozen.** The static tree is a snapshot at export time; new live commits appear only when you re-export.
+- **Paths must match exactly**, or reads 404. (A configurable read-path template is a proposed follow-on, not shipped.)
+- **Cross-origin setups need CORS** on the static host for GETs; same-origin needs nothing.
+- **The key is the read capability.** Anyone with the full URL can read the snapshot — that is the point of publishing one — but the host itself only ever holds ciphertext.
+
+[← Git repos inside vaults](git-and-vaults.md)
+
+
+
+==============================================================================
+# Admin & engineering — sgit.ai
+
+> How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
+>
+> Page: https://sgit.ai/admin/index.html
+
+[Home](../index.md) / Admin
+
+# Admin & engineering
+
+How this site is built, shipped, and versioned. sgit.ai is not hosted on a web server — it is a **vault app**: a set of HTML pages living inside an encrypted SG/Send vault, decrypted and rendered in your browser. The site about sgit is delivered by sgit.
+
+## Architecture
+
+```
+vault root
+├── index.html · security.html · why.html      # root pages
+├── docs/*.html                                      # 8 documentation pages
+├── vault/*.html                                     # 4 SG/Vault platform pages
+├── admin/                                           # this section
+│   ├── index.html · versions.html
+│   ├── brief-design-improvements.md                 # brief for Claude Code
+│   └── build/                                       # the build system itself
+│       ├── build_pages.py                           # generates every page
+│       └── validate.js                              # pre-push checks
+├── assets/site.css · assets/site.js                 # shared, loaded at runtime
+└── app.json                                         # auto-launch config
+```
+
+- **The authoring contract.** Vault pages render inside a sandboxed frame, so declarative references to vault files (`<link>`, `<script src>`, `<img src>`) would 404 before the vault bridge installs. Every page therefore carries only a tiny critical-style block plus a ~20-line bootstrap.
+- **Shared assets over the bridge.** The bootstrap waits for the `window.sg` bridge and loads `assets/site.css` / `assets/site.js` through it — trying `sg.loadCss`/`sg.loadJs` first, then `sg.vfs.readText` + inject, then plain `fetch` as a static-hosting fallback. Worst case, pages degrade to readable unstyled HTML.
+- **Multi-page navigation.** Plain relative `<a href>` links between pages — the vault host intercepts clicks and routes them, giving normal browser-style navigation (back/forward/history come from the host chrome).
+- **Read-only by design.** The app requests no write permissions in `app.json`; reads need no grant. Nothing on this site can modify the vault.
+
+## Build system
+
+Every page is generated from a single Python script holding one shared template (nav, footer, bootstrap, version stamp) plus per-page content. Nothing is hand-edited twice: change the template once, regenerate, and every page updates consistently — including the version badge you can see in the nav.
+
+## Validation before every push
+
+- Every inline script and `site.js` is parse-checked with Node.
+- A contract scan proves no `<link href>`, `<script src>`, or `<img src>` references a vault path.
+- Every internal link is resolved against the real file tree — broken links fail the build.
+- A banned-words scan keeps retired concepts and legacy naming out of the content.
+
+## Release process
+
+```
+# 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row
+# 2. regenerate + validate
+$ python3 admin/build/build_pages.py && node admin/build/validate.js
+# 3. ship to the vault — the encrypted deployment
+$ sgit commit -m "site vX.Y.Z: …" && sgit push
+# 4. ship to git — same folder, second remote; GitHub Pages deploys from it
+$ git add -A && git commit -m "site vX.Y.Z" && git push origin dev
+```
+
+One folder, one source of truth, two remotes: the same working tree is an sgit vault *and* a git repository (`SGit-AI/SGit-AI__Website`). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See [release history](versions.md).
+
+## Design & contributions
+
+A standing brief for Claude Code sessions proposing design improvements lives at [admin/brief-design-improvements.md](brief-design-improvements.md) — it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.
+
+[← Home](../index.md)[Release history →](versions.md)
+
+
+
+==============================================================================
+# Release history — sgit.ai
+
+> Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
+>
+> Page: https://sgit.ai/admin/versions.html
+
+[Home](../index.md) / [Admin](index.md) / Versions
+
+# Release history
+
+This site ships by pushing its vault, and the site version — **v0.1.26**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+
+| Version | Date | Vault commit | Changes |
+|---|---|---|---|
+| v0.1.26 | 2026-08-14 | this release | Acts on an inbound brief from an agent that tried to use this site as documentation and could not. It reported that the site did not rank for its own positioning language and guessed the pages might be client-side rendered. They are not — the full text is in the served HTML — but the fade-in that hides the unstyled flash left body{opacity:0} until a JavaScript bootstrap ran, so any client applying our CSS without running that bootstrap rendered a complete but entirely invisible page (measured: 15,733 characters at opacity 0), which is also a hidden-text signal to an indexer. Fixed with a noscript override and a CSS-only reveal failsafe, both now enforced by the validator. Adds the crawler surface that never existed: robots.txt, a generated sitemap.xml covering every page, and canonical plus Open Graph tags. Adds llms-full.txt — every page in one document — for the very common agent harness that will not follow a link out of a fetched file, and makes llms.txt self-sufficient: inline answers to the common questions (including exactly which git operations exist and which do not) and per-page key facts, on the brief's observation that for such an agent the descriptions are the only content it will ever see. The brief and what changed are published on the briefs page. |
+| v0.1.25 | 2026-08-14 | obj-cas-imm-1861dd16dd11 | Three changes that go together. (1) Every page now has a .md twin at the same path, generated from the same content so the two cannot drift, with internal links rewritten to point at markdown — an agent can traverse the whole site without parsing HTML, and llms.txt is now generated from the page registry rather than hand-maintained. (2) A git-and-sgit comparison on the Why page that says plainly where git is better — performance at scale, ecosystem, bisect/blame/rebase, partial commits — and how the two run side by side, as they do on this site. (3) Use cases moved to /use-cases/ with a page per situation: the problem, a working recipe on shipped commands, an honest evidence status (proven / partial / pattern), and a brief you can hand to an agent. Validator gained three rules: every page has a markdown twin, markdown links resolve, and no raw HTML leaks into the markdown. |
+| v0.1.24 | 2026-08-14 | obj-cas-imm-3c426ddbe9e9 | Why page rewritten around the right question. The first version answered "is there a market" with verticals and a comparison table; the sharper answer is what sgit makes possible that was not possible before, so that is now the headline: six capabilities running on this site — a live site its host cannot read, read access as a publishable capability, two agents sharing a workspace neither host can read, private data with CDN economics, storage as untrusted commodity, and transit security that does not rest on the CA system (including where that goes next: the read key never leaving the client, or PKI with a client-only private key). The page now assumes the reader knows git and only covers the delta. Also corrects the business-model answer: the client being open source IS the distribution strategy, with services built on top — not "no revenue attached". |
+| v0.1.23 | 2026-08-14 | obj-cas-imm-89a142ee3598 | A freshness window on the mutable HEAD pointer. The ref was the last per-page-view network request left; it is now checked at most once every ref_ttl_s seconds (120 by default, configurable in deploy/vault.json), so reading inside the window costs zero requests and server load scales with readers rather than page views. The cost is a bounded propagation delay — a new commit appears within the window at worst — and "check for new commit" forces a fetch that ignores it. The vault panel logs the reused ref as TTL and counts down live to the next check. |
+| v0.1.22 | 2026-08-14 | obj-cas-imm-d9ac70d78c31 | Kills the load-time flicker of the vault panel. The panel's remembered width and open state were restored by the reader script, which loads asynchronously — so the panel painted at its CSS default width, then jumped and slid open a beat later. Restoration now happens synchronously, before the first paint, and the slide transition is suppressed until state has settled. Opening and closing the panel by hand still animates; restoring it never does. |
+| v0.1.21 | 2026-08-14 | obj-cas-imm-5a60bc3bf25b | Object bodies in the vault panel are now syntax-coloured like an editor — keys, strings, numbers, literals and punctuation each get their own colour — and word wrapping is off, so structure survives and long values (base64 ciphertext, object ids) scroll horizontally instead of folding into a wall of text. Highlighting is applied only when the decrypted object actually parses as JSON, so markdown blobs stay plain. |
+| v0.1.20 | 2026-08-14 | obj-cas-imm-78146d2f4f86 | The vault panel now links to the page that explains it. There is a compact “how this works” link in the panel header (always visible) and a fuller card at the foot of the panel pointing at deploy/how-this-works.html — the panel is where you are when the question occurs to you, so it is where the answer should be offered. |
+| v0.1.19 | 2026-08-14 | obj-cas-imm-fe67d9589a2e | Fixes the resize grip, which shipped in v0.1.18 but was unusable: it was absolutely positioned inside the panel's scrolling area, so it scrolled out of reach as soon as you moved down the object list, and at 6px fully transparent it was invisible anyway. The panel is now a flex shell — a fixed 12px drag rail with a visible handle, plus a separately scrolling body — and dragging uses pointer events with capture (mouse, pen and touch). Double-click the rail to reset the width. |
+| v0.1.18 | 2026-08-14 | obj-cas-imm-6eded1c95732 | Vault panel becomes an object inspector: every row now shows what the object IS (ref/commit/tree/blob), WHY it was read, and — on click — its decrypted contents, pretty-printed for JSON. The panel is width-resizable (dragged from its left edge, remembered). Plus a real optimisation the panel made obvious: the path→blob index is a pure function of the commit id, so it is now memoised in localStorage — a first visit walks every tree to learn the encrypted filenames, but subsequent visits to an unchanged commit read zero tree objects. |
+| v0.1.17 | 2026-08-14 | obj-cas-imm-9d5b50f68679 | Vault panel: a "clear list" button that resets the request log and counters without touching the caches (so you can see exactly which objects one page needs); the panel's open/closed state now persists across navigation and reloads; cached objects record when they were stored and the panel shows their age. Navigation now scrolls to the top of the content rather than the top of the document. New page: deploy/how-this-works.html — the full architecture with hand-drawn SVG diagrams of the two-session publishing pipeline and the client-side read path. |
+| v0.1.16 | 2026-08-12 | obj-cas-imm-34684a789fe6 | New /why page answering the sharpest public criticism of the project ("I see no market or value whatsoever") directly and without marketing: who actually has the problem, why git-crypt/Dropbox/S3+KMS do not cover it, the market question answered plainly (the CLI has no revenue attached; hosting is the commercial layer; no TAM claims), where the criticism is right, and a twelve-question FAQ pre-answering the promised follow-ups. |
+| v0.1.15 | 2026-08-12 | obj-cas-imm-0959988dd4fe | New Deploy section: self-hosting guidance rendered LIVE in the browser from an encrypted SG/Send vault, using a published read-only key — ciphertext over CORS, AES-256-GCM decryption via Web Crypto, no copy stored on this site and no rebuild when the SG/Send team pushes. Includes a three-tier cache (session memory, permanent Cache API for immutable objects, always-fresh ref) and a vault debug panel showing the HEAD commit, per-object request log, and cache hit/miss stats. |
+| v0.1.14 | 2026-08-12 | obj-cas-imm-3b54c02dbb96 | Two new pages, both linked this time: docs/exposed-vault-key.html (the rotation runbook plus the case study of this site's own key leak) and briefs.html (cross-team briefs — which v0.1.13 built but never registered, so nothing linked to it). New validator rule: every generated page must be reachable from another page, or the build fails. Added a fourth CLI-team ask: history-preserving rekey. |
+| v0.1.13 | 2026-08-12 | obj-cas-imm-5168ef3fe1a7 | SECURITY: the vault passphrase had been written into admin/build/validate.js as an anti-leak tripwire regex — which put the literal secret into a tracked, public file (present in 3 commits). Removed; the tripwire now reads the secret from the gitignored local/ tier and scans for it, so it can never be hardcoded again. The key must be treated as compromised and rotated. Also: a /briefs page collecting the cross-team briefs (multi-agent collaboration log), and a "contacting the server" notice before network commands in the browser terminal. |
+| v0.1.12 | 2026-08-11 | obj-cas-imm-e8ceb3fc2239 | In-browser clone completes: serial-executor shim for Pyodide (WebAssembly cannot spawn threads, so all parallel blob transfers run sequentially in the browser) — validated natively against the live server with thread creation disabled: full 225-blob clone of this site vault. A serial/auto-detect mode is proposed upstream to the sgit CLI. |
+| v0.1.11 | 2026-08-11 | obj-cas-imm-c9afa76a79cb | Browser-transport fix for in-browser clone: drop the redundant X-API-Key header (the servers CORS-allow x-sgraph-access-token but not x-api-key, and one disallowed header fails the whole preflight — diagnosed live from the first user clone attempt); CORS/network failures now surface as readable HTTP 599 errors instead of a Pyodide SystemError. |
+| v0.1.10 | 2026-08-11 | obj-cas-imm-deac6363bff9 | In-browser terminal on /try: the real sgit CLI in-process (init, commit, status, history — and network commands via a browser XHR transport: clone/push/pull straight to the SG/Send servers), plus a busybox of file commands over the in-memory filesystem. Key hygiene: every example key on the site is now an obviously-invalid placeholder (format-valid example keys are squattable namespaces), enforced by a new validator rule. |
+| v0.1.9 | 2026-08-11 | obj-cas-imm-83b8c23a1baa | "Try sgit in your browser" page: the real sgit-ai wheel running client-side under Pyodide (verified in headless Chromium first) — key derivation, encrypt/decrypt, an in-memory vault round trip, and a Python REPL. Plus: bootstrap fast-path for static hosting (no 2.5s bridge wait on GitHub Pages), CNAME for sgit.ai, and GitHub Pages deployment via Actions in the SGit-AI__Website repo. |
+| v0.1.8 | 2026-08-11 | obj-cas-imm-775783f31110 | Skills promoted to a top-level nav item with a new /skills page and the three agent skills shipped in the vault (latest versions, verbatim); llms.txt added at the vault root — encrypted for key-holders today, a standard public llms.txt when the site deploys to GitHub Pages; Home nav link retired (the brand mark covers it). |
+| v0.1.7 | 2026-08-11 | obj-cas-imm-c226a3aff160 | SG/Vault section rebuilt from the official docs bundle: corrected security-page structure-key claim to current reality, git page aligned with the publishing guide (three-rule boundary, leak audit, GitHub round trip, restore drill), new pages for static hosting on GitHub Pages, sub-vaults, and no-code content authoring; .gitignore extended with work/ and *.pem rules. |
+| v0.1.6 | 2026-08-11 | obj-cas-imm-f62d9bd2d0d4 | Corrected git integration to the side-by-side design: git now tracks the encrypted .sg_vault store (only the plaintext local/ folder is excluded), so a git remote doubles as a zero-knowledge mirror of the vault. Pattern documented on the git-and-vaults page. |
+| v0.1.5 | 2026-08-11 | obj-cas-imm-353038cc3e56 | Git integration: .gitignore (keeps .sg_vault/ — above all local/ keys and token — plus git metadata and build noise out of git and out of vault snapshots) and .gitattributes (raw sgit store files marked binary/-diff/-merge; generated *.html marked linguist-generated). |
+| v0.1.4 | 2026-08-11 | obj-cas-imm-90254d9591ff | New SG/Vault section — for now the official sgraph platform documentation: SG/Vault & the platform, building vault apps, the window.sg bridge & host capabilities, and "git repos inside vaults" (engineering preview of the pure-Python git reader, verified against a real 906-commit repo). |
+| v0.1.3 | 2026-08-11 | obj-cas-imm-46a8b14d4fca | Beta status (in production use), light theme, admin & engineering section, per-push version badge on every page, SG/Vault & SG/Send now link to sgraph.ai, design-improvements brief for Claude Code. |
+| v0.1.2 | 2026-08-11 | obj-cas-imm-c3084abbba8c | Replaced the proposal app with the sgit.ai MVP site: 12 individually-navigable pages, shared CSS/JS loaded through the SG bridge, full-strength keys in all examples. |
+| v0.1.1 | 2026-08-11 | obj-cas-imm-7f1fbacf0485 | Initial vault app: the positioning & messaging proposal microsite with an embedded landing-page prototype. |
+
+Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The "vault commit" of the newest row reads "this release" because the commit ID only exists once the release is committed — it is recorded here retroactively by the next release.
+
+[← Admin & engineering](index.md)

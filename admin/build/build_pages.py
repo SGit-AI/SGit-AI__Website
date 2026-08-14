@@ -10,7 +10,8 @@ import os
 import re
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.1.25'
+SITE_VERSION = 'v0.1.26'
+BUILD_DATE   = '2026-08-14'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +23,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.25', '2026-08-14', 'this release',
+    ('v0.1.26', '2026-08-14', 'this release',
+     "Acts on an inbound brief from an agent that tried to use this site as documentation and could not. It reported that the site did not rank for its own positioning language and guessed the pages might be client-side rendered. They are not — the full text is in the served HTML — but the fade-in that hides the unstyled flash left body{opacity:0} until a JavaScript bootstrap ran, so any client applying our CSS without running that bootstrap rendered a complete but entirely invisible page (measured: 15,733 characters at opacity 0), which is also a hidden-text signal to an indexer. Fixed with a noscript override and a CSS-only reveal failsafe, both now enforced by the validator. Adds the crawler surface that never existed: robots.txt, a generated sitemap.xml covering every page, and canonical plus Open Graph tags. Adds llms-full.txt — every page in one document — for the very common agent harness that will not follow a link out of a fetched file, and makes llms.txt self-sufficient: inline answers to the common questions (including exactly which git operations exist and which do not) and per-page key facts, on the brief's observation that for such an agent the descriptions are the only content it will ever see. The brief and what changed are published on the briefs page."),
+    ('v0.1.25', '2026-08-14', 'obj-cas-imm-1861dd16dd11',
      "Three changes that go together. (1) Every page now has a .md twin at the same path, generated from the same content so the two cannot drift, with internal links rewritten to point at markdown — an agent can traverse the whole site without parsing HTML, and llms.txt is now generated from the page registry rather than hand-maintained. (2) A git-and-sgit comparison on the Why page that says plainly where git is better — performance at scale, ecosystem, bisect/blame/rebase, partial commits — and how the two run side by side, as they do on this site. (3) Use cases moved to /use-cases/ with a page per situation: the problem, a working recipe on shipped commands, an honest evidence status (proven / partial / pattern), and a brief you can hand to an agent. Validator gained three rules: every page has a markdown twin, markdown links resolve, and no raw HTML leaks into the markdown."),
     ('v0.1.24', '2026-08-14', 'obj-cas-imm-3c426ddbe9e9',
      "Why page rewritten around the right question. The first version answered \"is there a market\" with verticals and a comparison table; the sharper answer is what sgit makes possible that was not possible before, so that is now the headline: six capabilities running on this site — a live site its host cannot read, read access as a publishable capability, two agents sharing a workspace neither host can read, private data with CDN economics, storage as untrusted commodity, and transit security that does not rest on the CA system (including where that goes next: the read key never leaving the client, or PKI with a client-only private key). The page now assumes the reader knows git and only covers the delta. Also corrects the business-model answer: the client being open source IS the distribution strategy, with services built on top — not \"no revenue attached\"."),
@@ -87,9 +90,17 @@ var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documen
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>"""
 
+# The fade-in hides the unstyled flash while site.css is bridge-loaded. It must never be able
+# to leave the page invisible: a crawler that applies CSS but does not run our bootstrap would
+# otherwise see a fully hidden body — invisible to a reader and a hidden-text signal to an
+# indexer. Two failsafes: <noscript> reveals immediately, and a CSS-only animation reveals at
+# 1.6s regardless of why the bootstrap never arrived.
 CRITICAL = ("<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;"
-            "font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}"
-            "html.ready body{opacity:1}</style>")
+            "font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;"
+            "animation:sg-reveal 0s linear 1.6s forwards}"
+            "html.ready body{opacity:1;animation:none}"
+            "@keyframes sg-reveal{to{opacity:1}}</style>"
+            "<noscript><style>body{opacity:1;animation:none}</style></noscript>")
 
 def nav(p, here):
     def cls(k):
@@ -146,6 +157,7 @@ def footer(p, md=''):
     <a href="{p}skills.html">Skills for AI agents</a>
     <a href="{p}briefs.html">Cross-team briefs</a>
     <a href="{p}llms.txt">llms.txt</a>
+    <a href="{p}llms-full.txt">llms-full.txt</a>
     <a href="{p}admin/index.html">Admin &amp; engineering</a>
     <a href="{p}admin/versions.html">Release history</a>
   </div>
@@ -153,6 +165,7 @@ def footer(p, md=''):
 
 def page(path, title, desc, here, body):
     p = '../' if '/' in path else ''
+    md_name = os.path.basename(path)[:-5] + '.md'
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
 <head>
@@ -160,6 +173,14 @@ def page(path, title, desc, here, body):
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="canonical" href="https://sgit.ai/{path}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/{path}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="{md_name}" title="This page as markdown">
 {CRITICAL}
 </head>
 <body>
@@ -2104,6 +2125,25 @@ BRIEFS = """<main class="doc">
   <p class="lead">This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.</p>
   <div class="note"><b>For the agent reading this:</b> each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the <a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a> repo under <code>team/humans/dinis_cruz/claude-code-web/</code>; this page is the human-readable index and the shareable URL (<code>sgit.ai/briefs.html</code>).</div>
 
+  <h2>← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank</h2>
+  <p><b>Status:</b> acted on, <a href="admin/versions.html">v0.1.26</a> · <b>Reported by:</b> an agent working from sgit.ai as documentation · <b>Direction:</b> inbound — the first brief filed <em>at</em> this site rather than by it.</p>
+  <p>The report was precise about whose fault each part was, which is what made it useful. Three findings:</p>
+  <ol>
+    <li><b>The index worked.</b> One fetch of <a href="llms.txt">llms.txt</a> answered a real question — whether a git-to-sgit command mapping existed — without a second request.</li>
+    <li><b>Following a link out of it failed, and that is the agent's harness, not us.</b> Its fetch tool only permits URLs a prior search returned; a link inside a fetched document does not count. So the careful markdown-to-markdown traversal design is unusable for that class of agent: it can read the map and cannot walk it.</li>
+    <li><b>The site did not appear in search for its own positioning language.</b> The package registry page ranked instead. For an agent under that restriction, the consequence is not "slow to reach" — it is unreachable beyond whatever one index fetch contains.</li>
+  </ol>
+  <p><b>The hypothesis was right, and the reality was worse.</b> The brief guessed the pages might be client-side rendered and therefore invisible to a crawler. They are not — the full text is in the served HTML. But the fade-in that hides the unstyled flash while the stylesheet is bridge-loaded left <code>body{opacity:0}</code> until a JavaScript bootstrap added a class. Any client that applied our CSS without running that bootstrap rendered a complete, entirely invisible page — and fully hidden body text is not merely unread, it is a hidden-text signal to an indexer. Measured in a headless browser with JavaScript disabled: 15,733 characters of text at <code>opacity: 0</code>.</p>
+  <p><b>What we changed:</b></p>
+  <ul>
+    <li><b>The page can no longer be invisible.</b> A <code>&lt;noscript&gt;</code> override reveals it immediately, and a CSS-only animation reveals it at 1.6s regardless of why the bootstrap never arrived. Verified with JavaScript off: opacity 1, full text, readable. A validator rule now fails the build if either failsafe goes missing.</li>
+    <li><b>A crawler surface that did not exist:</b> <a href="robots.txt">robots.txt</a> and a generated <a href="sitemap.xml">sitemap.xml</a> listing every page, plus canonical and Open Graph tags on all of them. The build fails if a page is missing from the sitemap.</li>
+    <li><b>A single-fetch copy of everything:</b> <a href="llms-full.txt">llms-full.txt</a> — every page concatenated, ~155 KB, generated from the same markdown. This is the mitigation that removes the dependency on link-following rather than reducing it.</li>
+    <li><b>A self-sufficient index.</b> llms.txt now answers the common questions inline, including the one that failed here: which git operations sgit does and does not have, with pull requests, the staging area, bisect, blame, rebase, cherry-pick, hooks, submodules and tags named explicitly as absent. Entries for the pages that matter most now carry that page's key fact, on the brief's own observation that for an agent which will never follow a link, <em>the descriptions are the only content it will ever see</em>.</li>
+  </ul>
+  <p><b>What we cannot fix:</b> whether the site ranks. The technical obstacles are now removed and the sitemap is published, but indexing takes time and is not ours to grant. And the harness restriction itself is the reporting agent's to change — though the concatenated file makes it moot.</p>
+  <p class="small dim">Worth naming what this is: an agent read the documentation, failed, wrote up the failure with the fault lines drawn correctly, and the site changed. That is the same loop as the outbound briefs below, running in the other direction.</p>
+
   <h2>→ To the sgit CLI team: serial transfer mode for Pyodide/WASM</h2>
   <p><b>Status:</b> open · <b>Discovered:</b> live, during the first in-browser clone from the SG/Send servers.</p>
   <p>sgit now runs in the browser under Pyodide (CPython → WebAssembly), and <a href="try.html">the Try page</a> clones real vaults from the live servers. The blocker: sgit parallelises blob transfer with <code>ThreadPoolExecutor</code>, and WebAssembly cannot spawn OS threads — so a clone dies at the blob stage with <code>can't start new thread</code> (index, branch metadata, commits and trees all download fine first, since those paths are sequential).</p>
@@ -2401,6 +2441,27 @@ Notes for agents:
   every read path has a --json flag.
 - Cross-session state pattern: clone/pull at session start, commit + push at session end.
 - Task-shaped guidance with recipes and agent briefs lives under /use-cases/.
+
+If your tooling cannot follow links out of this file, fetch /llms-full.txt — every page of
+this site concatenated into one document (~155 KB). One request gets the complete set.
+
+Quick answers (so you do not need a second request for the common questions):
+- Does sgit do the git operations you know? Yes for: init, create, clone, status, commit,
+  push, pull, fetch, branch (new/list/switch/checkout), merge with conflict resolution,
+  history log/diff/show/revert/reset, stash. No for: pull requests (a hosting-platform
+  construct layered on merge, not a git primitive), a staging area or partial commits
+  (a commit snapshots the whole folder), bisect, blame, rebase, cherry-pick, hooks,
+  submodules and tags. Full mapping: /docs/sgit-for-git-users.md
+- The three deliberate differences from git: no staging area; every clone gets its own
+  private branch and publishing to a shared branch is explicit; the vault key is address,
+  credential and encryption key in one string.
+- What the server can see: the vault ID, the size of each encrypted object, and request
+  timing. Never filenames, contents, or commit messages. /security.md
+- Read access is a separate, one-way-derived key: publishable, cannot be turned into write
+  access, works against any server holding the ciphertext. This site publishes one.
+- Crypto: AES-256-GCM, PBKDF2-HMAC-SHA256 at 600k iterations, HKDF-SHA256. No custom
+  primitives; output matches the browser Web Crypto API byte for byte.
+- sgit is beta; it has no compliance certification of any kind.
 """
 
 LLMS_SECTIONS = [
@@ -2416,6 +2477,18 @@ LLMS_SECTIONS = [
     ('security',  'Optional'),
     ('admin',     'Optional'),
 ]
+
+LLMS_FACTS = {
+    'docs/sgit-for-git-users.html': 'The three differences: no staging area; private clone branch per machine or agent with explicit publishing; the vault key is address + credential + encryption key in one string.',
+    'docs/limitations.html':        'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
+    'docs/two-branch-model.html':   'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',
+    'security.html':                'The server sees the vault ID, object sizes and request timing — nothing else. Sizes and timing are an acknowledged side channel.',
+    'docs/agents.html':             'sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.',
+    'docs/quickstart.html':         'sgit create <name> then commit/push; the vault key is printed once and there is no reset.',
+    'docs/installation.html':       'pip install sgit-ai — Python >= 3.11, two runtime dependencies, entry points sgit and sgit-ai.',
+    'use-cases/health-regulated.html': 'No HIPAA, ISO 27001, SOC 2 or GDPR finding exists; client-side encryption does not by itself make processing lawful.',
+    'deploy/how-this-works.html':   'The ref is checked at most once per 120s freshness window; every other object is content-addressed and cached forever.',
+}
 
 LLMS_EXTRA = {
     'skills': ['- [use sgit and vaults](/skills/use_sgit-and-vaults__SKILL.md): the CLI + cross-session persistent state',
@@ -2433,7 +2506,9 @@ def write_llms(pages):
                 continue
             seen.add(path)
             name = title.split(' — ')[0].split(' | ')[0]
-            rows.append(f'- [{name}](/{path[:-5]}.md): {desc}')
+            fact = LLMS_FACTS.get(path)
+            rows.append(f'- [{name}](/{path[:-5]}.md): {desc}'
+                        + (f' **Key fact:** {fact}' if fact else ''))
         rows += LLMS_EXTRA.get(key, [])
         if not rows:
             continue
@@ -2445,6 +2520,73 @@ def write_llms(pages):
         out.append('## Optional\n' + '\n'.join(optional) + '\n')
     text = '\n'.join(out)
     with open(os.path.join(ROOT, 'llms.txt'), 'w') as f:
+        f.write(text)
+    return text
+
+
+
+
+# ============================================================ crawl + agent surface
+# An agent reported that it could fetch llms.txt but could not follow a link out of it —
+# its harness only allows URLs a search has already returned, and the site did not rank for
+# its own positioning language. Two consequences, both handled here: the site has to be
+# crawlable (robots + sitemap, and a page that is not invisible without JS — see CRITICAL),
+# and the index has to be useful to an agent that will never follow a link, which means
+# self-sufficient answers in llms.txt and a single-fetch concatenation in llms-full.txt.
+
+def write_robots():
+    text = f"""# sgit.ai — everything here is public and intended to be indexed.
+User-agent: *
+Allow: /
+
+Sitemap: https://sgit.ai/sitemap.xml
+
+# For agents and LLMs:
+#   https://sgit.ai/llms.txt       annotated map of the site, one line per page
+#   https://sgit.ai/llms-full.txt  every page concatenated — one fetch gets everything
+# Every page is also available as markdown at the same path with .html swapped for .md.
+"""
+    with open(os.path.join(ROOT, 'robots.txt'), 'w') as f:
+        f.write(text)
+    return text
+
+
+def write_sitemap(pages, today):
+    urls = []
+    for path, *_ in pages:
+        pri = '1.0' if path == 'index.html' else ('0.8' if '/' not in path else '0.6')
+        urls.append(f'  <url>\n    <loc>https://sgit.ai/{path}</loc>\n'
+                    f'    <lastmod>{today}</lastmod>\n    <priority>{pri}</priority>\n  </url>')
+    for extra in ('llms.txt', 'llms-full.txt'):
+        urls.append(f'  <url>\n    <loc>https://sgit.ai/{extra}</loc>\n'
+                    f'    <lastmod>{today}</lastmod>\n    <priority>0.5</priority>\n  </url>')
+    text = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + '\n'.join(urls) + '\n</urlset>\n')
+    with open(os.path.join(ROOT, 'sitemap.xml'), 'w') as f:
+        f.write(text)
+    return text
+
+
+def write_llms_full(pages):
+    """Every page in one document. For agents whose harness will not follow a link out of a
+    fetched file — a common restriction — this is the difference between the documentation
+    being reachable and being unreachable."""
+    parts = [f"""# sgit.ai — complete documentation, single file
+
+> Every page of https://sgit.ai concatenated into one document, generated at build time
+> ({SITE_VERSION}). Nothing here needs a second request. Individual pages live at the paths
+> shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
+>
+> sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
+> client-side (AES-256-GCM) before they leave your machine. The server stores ciphertext under
+> opaque IDs — it never sees filenames, contents, or commit messages.
+"""]
+    for path, title, desc, here, body in pages:
+        parts.append(f'\n\n{"=" * 78}\n# {title}\n\n> {desc}\n>\n> Page: https://sgit.ai/{path}\n\n'
+                     + to_markdown(body))
+    text = '\n'.join(parts).rstrip() + '\n'
+    with open(os.path.join(ROOT, 'llms-full.txt'), 'w') as f:
         f.write(text)
     return text
 
@@ -2506,5 +2648,8 @@ for path, title, desc, here, body in PAGES:
     md_total += write_md(path, title, desc, body)
 print(f'wrote {len(PAGES)} markdown mirrors ({md_total} bytes)')
 print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
+print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
+print('wrote robots.txt (%d bytes)' % len(write_robots()))
+print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))
 
 print('done:', len(PAGES), 'pages —', SITE_VERSION)
