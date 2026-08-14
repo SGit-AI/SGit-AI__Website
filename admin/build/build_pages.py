@@ -7,8 +7,10 @@ Release process (see admin/index.html):
   3. run this script, run the validation suite, sgit commit + push
 """
 import os
+import re
+from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.1.24'
+SITE_VERSION = 'v0.1.25'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +22,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.24', '2026-08-14', 'this release',
+    ('v0.1.25', '2026-08-14', 'this release',
+     "Three changes that go together. (1) Every page now has a .md twin at the same path, generated from the same content so the two cannot drift, with internal links rewritten to point at markdown — an agent can traverse the whole site without parsing HTML, and llms.txt is now generated from the page registry rather than hand-maintained. (2) A git-and-sgit comparison on the Why page that says plainly where git is better — performance at scale, ecosystem, bisect/blame/rebase, partial commits — and how the two run side by side, as they do on this site. (3) Use cases moved to /use-cases/ with a page per situation: the problem, a working recipe on shipped commands, an honest evidence status (proven / partial / pattern), and a brief you can hand to an agent. Validator gained three rules: every page has a markdown twin, markdown links resolve, and no raw HTML leaks into the markdown."),
+    ('v0.1.24', '2026-08-14', 'obj-cas-imm-3c426ddbe9e9',
      "Why page rewritten around the right question. The first version answered \"is there a market\" with verticals and a comparison table; the sharper answer is what sgit makes possible that was not possible before, so that is now the headline: six capabilities running on this site — a live site its host cannot read, read access as a publishable capability, two agents sharing a workspace neither host can read, private data with CDN economics, storage as untrusted commodity, and transit security that does not rest on the CA system (including where that goes next: the read key never leaving the client, or PKI with a client-only private key). The page now assumes the reader knows git and only covers the delta. Also corrects the business-model answer: the client being open source IS the distribution strategy, with services built on top — not \"no revenue attached\"."),
     ('v0.1.23', '2026-08-14', 'obj-cas-imm-89a142ee3598',
      "A freshness window on the mutable HEAD pointer. The ref was the last per-page-view network request left; it is now checked at most once every ref_ttl_s seconds (120 by default, configurable in deploy/vault.json), so reading inside the window costs zero requests and server load scales with readers rather than page views. The cost is a bounded propagation delay — a new commit appears within the window at worst — and \"check for new commit\" forces a fetch that ignores it. The vault panel logs the reused ref as TTL and counts down live to the next check."),
@@ -96,7 +100,7 @@ def nav(p, here):
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
   <a class="{cls('why')}" href="{p}why.html">Why</a>
   <a class="{cls('try')}" href="{p}try.html">Try</a>
-  <a class="{cls('use-cases')}" href="{p}use-cases.html">Use Cases</a>
+  <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
   <a class="{cls('vault')}" href="{p}vault/index.html">SG/Vault</a>
   <a class="{cls('deploy')}" href="{p}deploy/index.html">Deploy</a>
@@ -105,13 +109,13 @@ def nav(p, here):
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>"""
 
-def footer(p):
+def footer(p, md=''):
     return f"""<footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="{p}admin/versions.html">{SITE_VERSION}</a> · <a href="{p}admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="{p}admin/versions.html">{SITE_VERSION}</a> · <a href="{p}admin/index.html">engineering</a> · <a href="{md}" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -138,7 +142,7 @@ def footer(p):
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
     <a href="{p}security.html">Security</a>
     <a href="{p}why.html">Why does this exist?</a>
-    <a href="{p}use-cases.html">Use cases</a>
+    <a href="{p}use-cases/index.html">Use cases</a>
     <a href="{p}skills.html">Skills for AI agents</a>
     <a href="{p}briefs.html">Cross-team briefs</a>
     <a href="{p}llms.txt">llms.txt</a>
@@ -164,7 +168,7 @@ def page(path, title, desc, here, body):
 
 {body}
 
-{footer(p)}
+{footer(p, os.path.basename(path)[:-5] + '.md')}
 
 {BOOT}
 </body>
@@ -317,11 +321,11 @@ INDEX = """<header class="hero">
 <section class="band" id="use-cases">
   <h2>What people use it for</h2>
   <div class="cards">
-    <a class="card rev" href="use-cases.html#ai-agents"><span class="tag">Use case</span><h3>Private memory for AI agents</h3><p>Durable, versioned state between sessions — encrypted end to end.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases.html#multi-agent"><span class="tag">Use case</span><h3>Multi-agent collaboration</h3><p>Agents on their own branches, humans reviewing the merge.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases.html#human-ai"><span class="tag">Use case</span><h3>Human ↔ agent workspaces</h3><p>You in the SG/Vault browser, the agent in the CLI — same vault.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases.html#encrypted-backup"><span class="tag">Use case</span><h3>Encrypted folders with history</h3><p>A shared folder the hosting provider cannot read, with rollback.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases.html#secure-file-exchange"><span class="tag">Use case</span><h3>Signed &amp; encrypted exchange</h3><p>PKI: sign, verify, encrypt and decrypt files for named recipients.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases/index.html#ai-agents"><span class="tag">Use case</span><h3>Private memory for AI agents</h3><p>Durable, versioned state between sessions — encrypted end to end.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases/index.html#multi-agent"><span class="tag">Use case</span><h3>Multi-agent collaboration</h3><p>Agents on their own branches, humans reviewing the merge.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases/index.html#human-ai"><span class="tag">Use case</span><h3>Human ↔ agent workspaces</h3><p>You in the SG/Vault browser, the agent in the CLI — same vault.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases/index.html#encrypted-backup"><span class="tag">Use case</span><h3>Encrypted folders with history</h3><p>A shared folder the hosting provider cannot read, with rollback.</p><span class="go">Read →</span></a>
+    <a class="card rev" href="use-cases/index.html#secure-file-exchange"><span class="tag">Use case</span><h3>Signed &amp; encrypted exchange</h3><p>PKI: sign, verify, encrypt and decrypt files for named recipients.</p><span class="go">Read →</span></a>
   </div>
 </section>
 
@@ -362,9 +366,7 @@ INDEX = """<header class="hero">
 </section>"""
 
 # ============================================================ use-cases.html
-UC = """<main class="doc">
-  <h1>Use cases</h1>
-  <p class="lead">Five things people point sgit at today. Every workflow below runs on shipped commands — nothing aspirational.</p>
+UC_BODY = """
 
   <section class="uc" id="ai-agents">
     <h2>Private memory for AI agents</h2>
@@ -406,8 +408,7 @@ UC = """<main class="doc">
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit pki keygen --label "release keys"</span>
 <span class="p">$</span> <span class="cmd">sgit pki sign report.pdf --fingerprint &lt;fp&gt;</span>
 <span class="p">$</span> <span class="cmd">sgit pki encrypt report.pdf --recipient &lt;fp&gt;</span></pre>
-  </section>
-</main>"""
+  </section>"""
 
 # ============================================================ security.html
 SEC = """<main class="doc">
@@ -673,6 +674,246 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
 })();
 </script>"""
 
+
+
+def reroot(html, prefix):
+    """Re-point root-relative links in a body that has moved into a subdirectory.
+    Leaves absolute URLs, fragments and already-relative-up links alone."""
+    def fix(m):
+        href = m.group(1)
+        if href.startswith(('http', 'mailto:', '#', '../', '/')):
+            return m.group(0)
+        return f'href="{prefix}{href}"'
+    return re.sub(r'href="([^"]+)"', fix, html)
+
+
+UC_HUB = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Use cases</p>
+  <h1>Use cases</h1>
+  <p class="lead">Two kinds of page here. <b>Workflows</b> are the mechanics — what sgit does, on shipped commands. <b>Situations</b> are who has the problem, each with a working recipe, an honest evidence status, and a brief you can hand to an agent.</p>
+
+  <div class="note"><b>Reading this as an agent?</b> Every page on this site has a <code>.md</code> twin at the same path — this one is <a href="index.md">use-cases/index.md</a>. Internal links inside the markdown point at markdown, so you can traverse the whole site without parsing HTML. The machine index is <a href="../llms.txt">llms.txt</a>.</div>
+
+  <h2>Situations</h2>
+  <p>Each of these is a place where the sentence "this needs version control, and the store must not be able to read it" is literally true. The pages are written to be usable: the setup, the commands, what is proven versus what is a pattern, and an agent brief.</p>
+  <div class="cards" style="max-width:none;padding:0">
+    <a class="card" href="ai-agents.html"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>Durable memory across sessions and machines, and shared memory between agents, with the store unable to read either. <b>Evidence: this website.</b></p></a>
+    <a class="card" href="professional-services.html"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, assessment: the deliverable and the working notes, versioned, in a store that cannot read them — and read access you can hand out without an account.</p></a>
+    <a class="card" href="security-teams.html"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest output and vulnerability data need history, diffs and multi-person workflow — and are the last thing to put in a SaaS you don't control.</p></a>
+    <a class="card" href="health-regulated.html"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, the conversation stops being about the provider's access controls. Read the caveats on that page before quoting it.</p></a>
+  </div>
+
+  <h2>Workflows</h2>
+  <p>The mechanics underneath those situations. Every one runs on shipped commands — nothing aspirational.</p>
+""" + reroot(UC_BODY, '../') + """
+  <div class="pagenav"><a href="../why.html">← Why this exists</a><a href="../docs/index.html">Documentation →</a></div>
+</main>"""
+
+
+# ---------------------------------------------------------------- shared bits
+def uc_agent_brief(title, path, extra=''):
+    return f"""
+  <h2>Brief for an agent</h2>
+  <p>Paste this into an agent that has the <a href="../skills.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+<pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/{path}.md</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
+  <blockquote class="challenge">Read https://sgit.ai/use-cases/{path}.md and https://sgit.ai/docs/agents.md.
+  Then set up {title.lower()} for this project: create the vault, structure the folders as
+  described, commit and push, and report the vault key back to me once — I will store it.
+  Do not write the key to any file in the repository.{extra}</blockquote>
+  <p class="small dim">That last sentence matters. We have a <a href="../docs/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+"""
+
+def uc_evidence(status, cls, body):
+    return f"""
+  <h2>Evidence status</h2>
+  <div class="evbox {cls}"><span class="evtag">{status}</span>{body}</div>
+"""
+
+
+# ---------------------------------------------------------------- ai-agents
+UC_AGENTS = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / AI agents</p>
+  <h1>Agent state that isn't the vendor's to read</h1>
+  <p class="lead">An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.</p>
+
+  <h2>The problem</h2>
+  <p>Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor's memory feature — all of which the provider can read.</p>
+  <p>That is fine while the state is "which step am I on". It stops being fine the moment the state contains the client's documents, the security findings, the unreleased code, the personal data. At that point the question is no longer about engineering: it is whether you are permitted to put that material there at all, and the answer often arrives from someone who does not care how good the access controls are.</p>
+  <p>The second half of the problem is coordination. One agent needs durable memory; several agents need <em>shared</em> memory with isolation, a review step, and a way to look at each other's work without merging it. That is version control — and version control's usual answer is a host that reads everything.</p>
+
+  <h2>What sgit does about it</h2>
+  <p>A vault is a folder. The agent clones it, reads and writes files normally, commits, and pushes; the next session pulls and continues. Encryption happens before anything leaves the machine, so the shared state can hold what a third-party database cannot. Each clone also gets a <a href="../docs/two-branch-model.html">private branch</a> whose key never leaves that session, so agents can work concurrently without trampling each other, and meet on a shared named branch.</p>
+
+  <h2>The recipe</h2>
+  <p><b>One agent, many sessions.</b> The whole pattern is two commands at the session boundaries:</p>
+<pre class="shell"><span class="d"># session start — always, before anything else</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span>   <span class="d"># or: sgit pull</span>
+<span class="d"># … the agent works normally: read, write, edit files …</span>
+<span class="d"># session end — always, before the context runs out</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "session 4: drafted the migration plan" &amp;&amp; sgit push</span></pre>
+  <p><b>Write a single file without a working copy</b> — the agent-shaped command, with machine-readable output:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit write notes/findings.md --file ./findings.md \\
+      --message "add findings" --push --json</span></pre>
+  <p><b>Several agents, one vault.</b> Give each a named branch; let a human own the merge:</p>
+<pre class="shell"><span class="d"># agent A</span>  <span class="p">$</span> <span class="cmd">sgit branch new research</span>  … <span class="cmd">sgit push</span>
+<span class="d"># agent B</span>  <span class="p">$</span> <span class="cmd">sgit branch new drafting</span>  … <span class="cmd">sgit push</span>
+<span class="d"># either agent, read-only — looking is not merging</span>
+<span class="p">$</span> <span class="cmd">sgit history show &lt;commit&gt;</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --remote</span></pre>
+  <p><b>Big vault, small task.</b> A sparse clone keeps the agent's working set — and its token budget — proportionate to the job:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace --sparse notes/ drafts/</span></pre>
+""" + uc_evidence('PROVEN', 'ev-ok', """
+  <p><b>This website is the evidence.</b> It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:</p>
+  <ul>
+    <li>The <a href="../deploy/index.html">Deploy section</a> is maintained by a <em>different</em> team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.</li>
+    <li>The <a href="../briefs.html">cross-team briefs</a> and the <a href="../docs/exposed-vault-key.html">key-leak incident</a> were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.</li>
+  </ul>
+  <p>Honest limit: n is small, and the agents are supervised by the people who wrote the tool.</p>""") + uc_agent_brief(
+  'agent state in a vault', 'ai-agents',
+  ' Then write a short SESSION.md describing the clone/pull-at-start and commit/push-at-end protocol so future sessions follow it.') + """
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/agents.html">Working with AI agents</a> — the full agent-facing surface: <code>--json</code> everywhere, the session pattern, multi-agent collaboration</li>
+    <li><a href="../docs/two-branch-model.html">The two-branch model</a> — why every clone gets a private branch</li>
+    <li><a href="../skills.html">Skills</a> — packaged instructions that make an agent competent at this without you explaining it</li>
+  </ul>
+  <div class="pagenav"><a href="index.html">← Use cases</a><a href="professional-services.html">Professional services →</a></div>
+</main>"""
+
+
+# ---------------------------------------------------------------- professional services
+UC_PROSERV = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / Professional services</p>
+  <h1>Working documents with clients</h1>
+  <p class="lead">Legal, M&amp;A, audit, security assessment. The material that most needs versions and review is the material that least belongs readable on a third party's disk.</p>
+
+  <h2>The problem</h2>
+  <p>A engagement produces two bodies of text: the deliverable, and everything behind it — working notes, drafts, the evidence, the arguments that did not survive. Both need history: who changed what, when, and what the previous version said. Both need more than one person in them.</p>
+  <p>The usual tools split badly. A shared drive gives you collaboration and no history worth the name. A private repo gives you history and hands the whole engagement to a host. Email attachments give you neither and produce six versions named <code>final_v3_JS_edits</code>.</p>
+  <p>And then the engagement ends, and you need to hand the client something they can keep and verify — without giving them an account on your systems, and without them needing your tooling to read it later.</p>
+
+  <h2>What sgit does about it</h2>
+  <p>The working set is a vault: full history, branches, diffs, three-way merge, all client-side. The store holds ciphertext under opaque ids, so "where is this hosted" and "who can read this" stop being the same question — including for the host's staff, a subpoena served on the host, or a breach of it.</p>
+  <p>For handover, a <b>read key</b> is derived one way: it decrypts and cannot be turned into write access. You can give a client read access to a specific vault without giving them anything else, and without the host mediating it.</p>
+
+  <h2>The recipe</h2>
+  <p><b>One vault per engagement.</b> Keep the boundary at the vault, not at a folder — it is the unit of access.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit create acme-acquisition</span>
+<span class="d">  Vault key: &lt;passphrase&gt;:&lt;vault-id&gt;   ← password manager, now. There is no reset.</span>
+<span class="p">$</span> <span class="cmd">mkdir deliverable working evidence &amp;&amp; sgit commit -m "structure" &amp;&amp; sgit push</span></pre>
+  <p><b>Review as branches</b>, so the draft in flight is never the draft on the record:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit branch new draft-2 &amp;&amp; sgit push</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --commit &lt;prev&gt;</span>      <span class="d"># exactly what changed since the last version</span>
+<span class="p">$</span> <span class="cmd">sgit resolve --show</span>                     <span class="d"># when two reviewers touch the same file</span></pre>
+  <p><b>Hand over read-only</b> at the end, or throughout:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit dev derive-keys '&lt;vault-key&gt;'</span>    <span class="d"># the read key, derived one way</span>
+<span class="d"># the client, with nothing but that key:</span>
+<span class="p">$</span> <span class="cmd">sgit clone --read-key &lt;read-key&gt; &lt;vault-id&gt; engagement</span>
+<span class="d"># …and a write attempt is refused, which they can verify themselves</span></pre>
+  <p><b>Archive on close.</b> The archive is self-contained ciphertext — keep it wherever your retention policy says, including somewhere you don't trust:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault backup --include-key</span>       <span class="d"># store the key separately from the archive</span></pre>
+""" + uc_evidence('PATTERN — not yet evidenced publicly', 'ev-warn', """
+  <p>The mechanics above are all shipped commands and are exercised daily; what we do <b>not</b> have is a published professional-services deployment we can point you at. Treat this page as a design that fits the constraints, not as a case study.</p>
+  <p>Two things to weigh before you use it on a real engagement: sgit is in <a href="../docs/limitations.html">beta</a>, and there is no key recovery — if your firm's key management is not already real, this trade-off will find you. If you do run this pattern, we would like to write it up: <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">say so in the open</a>.</p>""") + uc_agent_brief(
+  'an engagement vault', 'professional-services') + """
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/limitations.html">When NOT to use sgit</a> — read this before committing a client engagement to it</li>
+    <li><a href="../vault/index.html">SG/Vault</a> — the browser app, so a client can read without installing anything</li>
+    <li><a href="../security.html">Security model</a> — precisely what the server can and cannot see</li>
+  </ul>
+  <div class="pagenav"><a href="ai-agents.html">← AI agents</a><a href="security-teams.html">Security teams →</a></div>
+</main>"""
+
+
+# ---------------------------------------------------------------- security teams
+UC_SECTEAMS = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / Security teams</p>
+  <h1>Findings about your own weaknesses</h1>
+  <p class="lead">Pentest output is a map of how to get in. It needs history, diffs and several people — and it is the last thing to hand to a SaaS you don't control.</p>
+
+  <h2>The problem</h2>
+  <p>Assessment work produces exactly the document an attacker would most like to have: what is exposed, how to reach it, what has not been fixed yet, and which excuse each owner gave. It is also work that genuinely needs version control — findings get re-tested, severities change, remediation gets tracked across months, and several people edit the same report.</p>
+  <p>So it goes into a ticketing system or a shared repo, because those are the tools that do the workflow. Both are readable by the provider, and both are now a single place holding the complete attack path for the organisation. That is a concentration of risk that a security team, of all teams, can see clearly.</p>
+
+  <h2>What sgit does about it</h2>
+  <p>The findings live in a vault: versioned, diffable, multi-person, and ciphertext everywhere but on the machines of the people working on them. The host is a key-value store for opaque ids; compromising it yields encrypted objects and traffic timing.</p>
+  <p>It also gives you a defensible answer to the question that follows an incident — "where was this stored, and who could read it?" — that does not depend on a vendor's access-control configuration being correct on the day.</p>
+
+  <h2>The recipe</h2>
+  <p><b>A vault per engagement or per client</b>, with the report and the raw evidence separated so you can share one without the other:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit create acme-pentest-2026q3</span>
+<span class="p">$</span> <span class="cmd">mkdir report evidence retest &amp;&amp; sgit commit -m "structure" &amp;&amp; sgit push</span></pre>
+  <p><b>Re-test cycles as commits</b>, so severity changes are a diff rather than a claim:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit commit -m "retest: SQLi in /search fixed, XSS in /profile still open"</span>
+<span class="p">$</span> <span class="cmd">sgit history log --oneline</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --commit &lt;initial-report&gt; --files-only</span></pre>
+  <p><b>Deliver read-only</b> to the client, keeping the write side entirely on your team:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit dev derive-keys '&lt;vault-key&gt;'</span>
+<span class="p">$</span> <span class="cmd">sgit clone --read-key &lt;read-key&gt; &lt;vault-id&gt; report</span>   <span class="d"># what the client runs</span></pre>
+  <div class="warnbox"><b>One rule, learned the hard way:</b> never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from <a href="../docs/exposed-vault-key.html">our own incident</a>.</div>
+""" + uc_evidence('PARTIAL — adjacent evidence only', 'ev-warn', """
+  <p>We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's <a href="../docs/exposed-vault-key.html">exposed-key incident</a> — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.</p>
+  <p>That write-up is the artefact a security team would actually judge us on, so it is on the site rather than in a drawer. If you run assessment work on sgit, the failure modes you hit are the ones we want to hear about.</p>""") + uc_agent_brief(
+  'an assessment vault', 'security-teams',
+  ' Also add a pre-push check that fails if the vault key appears in any tracked file, reading the secret from a gitignored path rather than hardcoding it.') + """
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/exposed-vault-key.html">If a vault key is exposed</a> — the runbook and the case study</li>
+    <li><a href="../security.html">Security model</a> — the crypto stack and the honest side channels</li>
+    <li><a href="../deploy/index.html">Self-hosting</a> — when the storage layer has to be yours too</li>
+  </ul>
+  <div class="pagenav"><a href="professional-services.html">← Professional services</a><a href="health-regulated.html">Health &amp; regulated →</a></div>
+</main>"""
+
+
+# ---------------------------------------------------------------- health & regulated
+UC_HEALTH = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / Health &amp; regulated</p>
+  <h1>Data that changes what is permissible</h1>
+  <p class="lead">When the host provably cannot read the content, the conversation stops being about the provider's access controls — because there is nothing for them to control access to.</p>
+
+  <div class="warnbox"><b>Read this first.</b> sgit holds no compliance certification of any kind — no HIPAA attestation, no ISO 27001, no SOC 2, no GDPR adequacy finding. Nothing on this page is legal or regulatory advice, and client-side encryption does not by itself make a processing activity lawful. What follows is a description of a technical property and what it does and does not change. Your compliance function decides the rest.</div>
+
+  <h2>The problem</h2>
+  <p>Regulated data drags its rules with it. The moment a document is stored somewhere a third party can read, that third party is in scope: they become a processor, they need an agreement, their jurisdiction matters, their breach becomes your notification, and their sub-processors become your problem too. Most of the effort in these projects is not securing the data — it is the paperwork proving who could have seen it.</p>
+  <p>And the work itself still needs versions and collaboration, which is why it so often ends up in a general-purpose tool with a data-processing addendum stapled on.</p>
+
+  <h2>What the property actually changes</h2>
+  <p>Content is encrypted before it leaves the client; the store holds ciphertext under opaque ids and never receives a key. That moves specific arguments, and it is worth being exact about which:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Question</th><th>What changes</th></tr>
+    <tr><td>Can the host read the content?</td><td>No — not with a warrant, a rogue administrator, or a breach. This is the strong claim, and it is structural rather than procedural.</td></tr>
+    <tr><td>What does the host still learn?</td><td>The vault id, the size of each object, and request timing. Sizes and timing are a real if narrow side channel — see the <a href="../security.html">security page</a>.</td></tr>
+    <tr><td>Does this remove the processor relationship?</td><td><b>Not automatically.</b> Storing ciphertext may still be processing, depending on the regime and on who holds keys. Ask your counsel; do not take a vendor's word for it, including ours.</td></tr>
+    <tr><td>Does it help with access logging and minimisation?</td><td>Partly: a vault is a natural boundary, and read access is a key rather than an account, which makes "who could read this" a shorter list.</td></tr>
+    <tr><td>Does it help with retention and deletion?</td><td>Partly, and awkwardly: history keeps old ciphertext until pruned, so "delete" needs thought. See <a href="../docs/limitations.html">limitations</a>.</td></tr>
+  </table></div>
+
+  <h2>The recipe</h2>
+  <p><b>Scope one vault to one purpose.</b> The vault is the access boundary, so make it match the lawful basis for the data in it — not the team, not the project folder.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit create study-1234-analysis</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "structure" &amp;&amp; sgit push</span></pre>
+  <p><b>Key management is the whole control.</b> There is no reset and no recovery: the key is the access control, so it has to be managed like one — in a password manager or an HSM-backed store, with a named owner and a documented rotation path.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault backup --include-key</span>     <span class="d"># archive and key stored separately</span>
+<span class="p">$</span> <span class="cmd">sgit vault rekey</span>                          <span class="d"># rotation — see the exposed-key runbook</span></pre>
+  <p><b>Self-host if the storage layer is itself in scope.</b> The <a href="../deploy/index.html">deployment guidance</a> covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.</p>
+""" + uc_evidence('PATTERN — and the most caveated page here', 'ev-warn', """
+  <p>No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a <a href="../security.html">published threat model</a> that names its own side channels.</p>
+  <p>That is evidence of engineering care. It is not evidence of compliance, and we are not going to blur the two.</p>""") + uc_agent_brief(
+  'a scoped vault for regulated data', 'health-regulated',
+  ' Do not claim any compliance property in what you write; describe only the technical behaviour.') + """
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../security.html">Security model</a> — including what the server still observes</li>
+    <li><a href="../docs/limitations.html">When NOT to use sgit</a> — retention, deletion and the key-loss trade-off</li>
+    <li><a href="../deploy/index.html">Run your own server</a> — when the storage layer must be in your own boundary</li>
+  </ul>
+  <div class="pagenav"><a href="security-teams.html">← Security teams</a><a href="index.html">All use cases →</a></div>
+</main>"""
+
 # ============================================================ why.html
 WHY = """<main class="doc">
   <h1>Why does this exist?</h1>
@@ -737,11 +978,30 @@ WHY = """<main class="doc">
   <h2>Who has that problem</h2>
   <p>Not a market-size claim — just the situations where the sentence at the top is literally true today. These matter, but they are the ordinary reasons; the section above is the interesting one.</p>
   <div class="cards" style="max-width:none;padding:0">
-    <div class="card"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>An agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.</p></div>
-    <div class="card"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.</p></div>
-    <div class="card"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.</p></div>
-    <div class="card"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.</p></div>
+    <a class="card" href="use-cases/ai-agents.html"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>An agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/professional-services.html"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/health-regulated.html"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/security-teams.html"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
   </div>
+
+  <h2>git and sgit, side by side</h2>
+  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site runs both at once</b> — one working tree, two remotes: the encrypted vault is pushed with <code>sgit push</code>, and the same directory is pushed to GitHub with <code>git push</code>, which is what builds and deploys it. Neither is a fallback for the other.</p>
+
+  <div class="tablewrap"><table>
+    <tr><th></th><th>git</th><th>sgit</th></tr>
+    <tr><td><b>The host can read your content</b></td><td>Yes — that is what makes everything else work</td><td>No. It stores ciphertext under opaque ids and never receives a key</td></tr>
+    <tr><td><b>Performance at scale</b></td><td><b>Far better.</b> Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files</td><td>Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4&nbsp;MB but this is not a video archive</td></tr>
+    <tr><td><b>Ecosystem</b></td><td><b>Everything.</b> CI, code review, IDEs, hosting, decades of tooling and answers</td><td>A CLI, a browser client, and an agent skill. Deliberately small, and young</td></tr>
+    <tr><td><b>Archaeology</b></td><td><b>Better.</b> <code>bisect</code>, <code>blame</code>, <code>rebase</code>, <code>cherry-pick</code>, hooks, submodules</td><td><code>history log / diff / show / revert / reset</code>. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist</td></tr>
+    <tr><td><b>Partial commits</b></td><td>Staging area, index, <code>add -p</code></td><td>None. A commit snapshots the whole folder</td></tr>
+    <tr><td><b>Branching and merge</b></td><td>The reference implementation of the idea</td><td>The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge</td></tr>
+    <tr><td><b>Read-only access for someone else</b></td><td>An account on the host, or a deploy key that reads plaintext</td><td>A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement</td></tr>
+    <tr><td><b>Reading it from a browser</b></td><td>Via the host's UI or API, in plaintext</td><td>Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's <a href="deploy/index.html">Deploy section</a> is that</td></tr>
+    <tr><td><b>If the host is breached</b></td><td>Your content is in the breach</td><td>Opaque ids, ciphertext, object sizes and timing</td></tr>
+    <tr><td><b>Recovery when you lose the credential</b></td><td>Reset your password; the repo is unaffected</td><td>Nothing. No reset, no recovery — the direct cost of the row above</td></tr>
+  </table></div>
+
+  <p><b>So the split, concretely:</b> source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The <a href="vault/git-and-vaults.html">side-by-side setup</a> — what to commit, what to keep out of git, and the <code>.gitattributes</code> that stops git trying to diff ciphertext — is documented, because it is how this site is developed.</p>
 
   <h2>Why the existing answers don't cover it</h2>
   <p>This is the strongest form of the objection: every one of these exists and is more mature. Each solves part of it.</p>
@@ -1133,7 +1393,7 @@ DOCS_HUB = """<main class="doc">
     <div class="grp">
       <h2>Guides</h2>
       <a href="agents.html">Working with AI agents<small>write, --json, sparse clones, multi-agent patterns</small></a>
-      <a href="../use-cases.html">Use cases<small>Five workflows, all on shipped commands</small></a>
+      <a href="../use-cases/index.html">Use cases<small>Five workflows, all on shipped commands</small></a>
       <a href="../vault/index.html">SG/Vault platform<small>The browser app, vault apps, the window.sg bridge</small></a>
     </div>
     <div class="grp">
@@ -1894,7 +2154,7 @@ ADMIN = """<main class="doc">
 
   <h2>Architecture</h2>
 <pre class="shell">vault root
-├── index.html · use-cases.html · security.html      <span class="d"># root pages</span>
+├── index.html · security.html · why.html      <span class="d"># root pages</span>
 ├── docs/*.html                                      <span class="d"># 8 documentation pages</span>
 ├── vault/*.html                                     <span class="d"># 4 SG/Vault platform pages</span>
 ├── admin/                                           <span class="d"># this section</span>
@@ -1955,11 +2215,255 @@ def versions_body():
   <div class="pagenav"><a href="index.html">← Admin &amp; engineering</a><span></span></div>
 </main>"""
 
+# ============================================================ markdown mirror
+# Every page is also written as .md next to its .html. This is not a nicety: agents
+# are a first-class audience for this site, and asking them to parse styled HTML to
+# reach guidance is a tax with no upside. The markdown is generated from the same
+# body the HTML is built from, so the two can never drift.
+#
+# Internal .html links are rewritten to .md so an agent can traverse the whole site
+# without ever touching HTML. Anything visual (SVG diagrams, terminal chrome) is
+# reduced to its caption or its plain text — the words survive, the styling does not.
+
+class Markdown_Writer(HTMLParser):
+    SKIP       = {'script', 'style', 'svg', 'button', 'nav', 'footer'}
+    SKIP_CLASS = {'capnum'}          # decoration whose text says nothing in prose
+    VOID       = {'br', 'img', 'hr', 'input', 'meta', 'link', 'source'}
+    BLOCK  = {'p', 'div', 'section', 'article', 'main', 'header', 'ul', 'ol', 'table', 'tr', 'blockquote', 'details'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out       = []          # emitted chunks
+        self.skipst    = []          # tag stack while inside a skipped element
+        self.pre       = 0           # depth inside <pre>
+        self.list      = []          # stack of ('ul'|'ol', counter)
+        self.row       = None        # cells of the table row being built
+        self.thead     = False
+        self.cols      = 0
+        self.href      = None
+        self.link_text = None
+        self.figcap    = False
+
+    # ---- helpers
+    def emit(self, s):
+        if self.skipst: return
+        if self.link_text is not None: self.link_text.append(s)
+        elif self.row is not None:     self.row[-1] += s
+        else:                          self.out.append(s)
+
+    def block(self):
+        if self.out and not self.out[-1].endswith('\n\n'):
+            self.out.append('\n\n' if self.out[-1].strip() else '\n')
+
+    # ---- tags
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if self.skipst:                                  # already inside a skipped subtree
+            if tag not in self.VOID: self.skipst.append(tag)
+            return
+        if tag in self.SKIP or a.get('class') in self.SKIP_CLASS:
+            self.skipst = [tag]
+            return
+
+        if   tag == 'pre':  self.pre += 1; self.block(); self.emit('```\n')
+        elif tag == 'code' and not self.pre: self.emit('`')
+        elif tag in ('b', 'strong'): self.emit('**')
+        elif tag in ('em', 'i'):     self.emit('*')
+        elif tag == 'br':            self.emit('  \n' if not self.pre else '\n')
+        elif tag == 'a':
+            self.href = a.get('href'); self.link_text = []
+        elif tag in ('h1', 'h2', 'h3', 'h4'):
+            self.block(); self.emit('#' * int(tag[1]) + ' ')
+        elif tag in ('ul', 'ol'):
+            self.block(); self.list.append([tag, 0])
+        elif tag == 'li':
+            if not self.list: self.list.append(['ul', 0])
+            self.list[-1][1] += 1
+            kind, n = self.list[-1]
+            indent = '  ' * (len(self.list) - 1)
+            self.out.append('\n' + indent + (f'{n}. ' if kind == 'ol' else '- '))
+        elif tag == 'table':
+            self.block(); self.thead = True; self.cols = 0
+        elif tag == 'tr':
+            self.row = []
+        elif tag in ('td', 'th'):
+            if self.row is not None: self.row.append('')
+        elif tag == 'blockquote':
+            self.block(); self.emit('> ')
+        elif tag == 'summary':
+            self.block(); self.emit('**')
+        elif tag in self.BLOCK:
+            self.block()
+        if a.get('class') == 'figcap': self.figcap = True
+
+    def handle_endtag(self, tag):
+        if self.skipst:
+            if tag in self.skipst:
+                while self.skipst and self.skipst.pop() != tag:
+                    pass
+            if not self.skipst and tag == 'svg':
+                self.out.append('\n\n*[diagram]*')
+            return
+
+        if   tag == 'pre': self.pre = max(0, self.pre - 1); self.emit('\n```\n\n')
+        elif tag == 'code' and not self.pre: self.emit('`')
+        elif tag in ('b', 'strong'): self.emit('**')
+        elif tag in ('em', 'i'):     self.emit('*')
+        elif tag == 'a':
+            text = ''.join(self.link_text or []).strip()
+            href, self.link_text, self.href = self.href, None, None
+            if not text: return
+            if href and not href.startswith(('http', 'mailto:', '#')):
+                href = re.sub(r'\.html(#|$)', r'.md\1', href)
+            self.emit(f'[{text}]({href})' if href else text)
+        elif tag in ('h1', 'h2', 'h3', 'h4'): self.out.append('\n\n')
+        elif tag in ('ul', 'ol'):
+            if self.list: self.list.pop()
+            self.out.append('\n')
+        elif tag == 'tr':
+            cells = [' '.join(c.split()) for c in (self.row or [])]
+            self.row = None
+            if not cells: return
+            self.out.append('\n| ' + ' | '.join(cells) + ' |')
+            if self.thead:
+                self.out.append('\n|' + '---|' * len(cells))
+                self.thead = False
+        elif tag == 'table':  self.out.append('\n\n')
+        elif tag == 'summary': self.emit('**\n')
+        elif tag in self.BLOCK: self.block()
+        self.figcap = False
+
+    def handle_data(self, data):
+        if self.skipst: return
+        if self.pre:
+            self.emit(data)
+        else:
+            text = re.sub(r'\s+', ' ', data)
+            if text.strip() or (self.out and self.out[-1].endswith((')', '`', '*'))):
+                self.emit(text)
+
+    def markdown(self):
+        md = ''.join(self.out)
+        md = md.replace('\u00a0', ' ')
+        md = re.sub(r'[ \t]+\n', '\n', md)
+        md = re.sub(r'\n{3,}', '\n\n', md)
+        md = re.sub(r'\n +([-*] |\d+\. )', r'\n\1', md)      # un-indent top-level bullets
+        return md.strip() + '\n'
+
+
+def to_markdown(body):
+    w = Markdown_Writer()
+    w.feed(body)
+    return w.markdown()
+
+
+def write_md(path, title, desc, body):
+    depth = path.count('/')
+    root  = '../' * depth
+    md    = (f'# {title}\n\n> {desc}\n\n'
+             f'*Source: <https://sgit.ai/{path}> · site {SITE_VERSION} · '
+             f'this file is generated from the same content as the page, so the two cannot drift. '
+             f'Every page on this site has a `.md` twin; internal links below point at them.*\n\n---\n\n'
+             + to_markdown(body)
+             + f'\n\n---\n\n*[Site index for agents]({root}llms.txt) · '
+               f'[HTML version](https://sgit.ai/{path})*\n')
+    out = os.path.join(ROOT, path[:-5] + '.md')
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    with open(out, 'w') as f:
+        f.write(md)
+    return len(md)
+
+
+
+# ============================================================ llms.txt
+# Generated from PAGES, so it cannot go stale — the same reason the orphan and
+# link checks exist. Every entry points at the .md twin: an agent following this
+# index never has to parse HTML.
+
+LLMS_PREAMBLE = """# sgit.ai
+
+> sgit is git for encrypted vaults: clone, commit, branch and merge files that are
+> encrypted client-side (AES-256-GCM) before they leave your machine. The server stores
+> ciphertext under opaque IDs — it never sees filenames, contents, or commit messages.
+> This site is the official documentation for sgit and the SGraph vault platform
+> (SG/Vault, SG/Send) — and is itself served from an encrypted vault.
+
+Every page below is markdown, generated from the same source as the HTML page at the
+same path (swap `.md` for `.html`). Links inside the markdown point at markdown, so you
+can traverse the entire site without parsing HTML.
+
+Notes for agents:
+- sgit is in beta and powers production workflows. Honest edges: /docs/limitations.md
+- Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
+- Vault keys are full-strength generated keys (`passphrase:vault_id`). No password reset exists.
+- Never write a vault key into a tracked file. See /docs/exposed-vault-key.md for what that costs.
+- The agent-facing command is `sgit write <path> --file <f> --message <m> --push --json`;
+  every read path has a --json flag.
+- Cross-session state pattern: clone/pull at session start, commit + push at session end.
+- Task-shaped guidance with recipes and agent briefs lives under /use-cases/.
+"""
+
+LLMS_SECTIONS = [
+    ('why',       'Why this exists'),
+    ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
+    ('docs',      'Docs'),
+    ('vault',     'SG/Vault platform'),
+    ('deploy',    'Deploy (rendered live from an encrypted vault)'),
+    ('try',       'Try it'),
+    ('skills',    'Skills (packaged instructions for AI agents)'),
+    ('briefs',    'Cross-team briefs'),
+    ('home',      'Optional'),
+    ('security',  'Optional'),
+    ('admin',     'Optional'),
+]
+
+LLMS_EXTRA = {
+    'skills': ['- [use sgit and vaults](/skills/use_sgit-and-vaults__SKILL.md): the CLI + cross-session persistent state',
+               '- [create vault apps](/skills/create-vault-apps__SKILL.md): build an app that lives inside a vault',
+               '- [create vault content](/skills/create-vault-content__SKILL.md): author _page.json layouts and vault markdown'],
+}
+
+
+def write_llms(pages):
+    out, seen, optional = [LLMS_PREAMBLE], set(), []
+    for key, heading in LLMS_SECTIONS:
+        rows = []
+        for path, title, desc, here, _ in pages:
+            if here != key or path in seen:
+                continue
+            seen.add(path)
+            name = title.split(' — ')[0].split(' | ')[0]
+            rows.append(f'- [{name}](/{path[:-5]}.md): {desc}')
+        rows += LLMS_EXTRA.get(key, [])
+        if not rows:
+            continue
+        if heading == 'Optional':
+            optional += rows
+        else:
+            out.append(f'## {heading}\n' + '\n'.join(rows) + '\n')
+    if optional:
+        out.append('## Optional\n' + '\n'.join(optional) + '\n')
+    text = '\n'.join(out)
+    with open(os.path.join(ROOT, 'llms.txt'), 'w') as f:
+        f.write(text)
+    return text
+
+
+
 PAGES = [
     ('index.html', 'sgit — the encrypted git for humans and AI agents',
      'sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.',
      'home', INDEX),
-    ('use-cases.html', 'Use cases — sgit', 'Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.', 'use-cases', UC),
+    ('use-cases/index.html', 'Use cases — sgit',
+     'Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.', 'use-cases', UC_HUB),
+    ('use-cases/ai-agents.html', "Agent state that isn't the vendor's to read — sgit use cases",
+     'Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).', 'use-cases', UC_AGENTS),
+    ('use-cases/professional-services.html', 'Working documents with clients — sgit use cases',
+     'Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.', 'use-cases', UC_PROSERV),
+    ('use-cases/security-teams.html', 'Findings about your own weaknesses — sgit use cases',
+     'Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.', 'use-cases', UC_SECTEAMS),
+    ('use-cases/health-regulated.html', 'Data that changes what is permissible — sgit use cases',
+     'What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims.', 'use-cases', UC_HEALTH),
     ('security.html', 'Security model — sgit', "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.", 'security', SEC),
     ('why.html', 'Why does this exist? — sgit.ai',
      'A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.',
@@ -1996,7 +2500,11 @@ PAGES = [
     ('admin/versions.html', 'Release history — sgit.ai', 'Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.', 'admin', versions_body()),
 ]
 
+md_total = 0
 for path, title, desc, here, body in PAGES:
     page(path, title, desc, here, body)
+    md_total += write_md(path, title, desc, body)
+print(f'wrote {len(PAGES)} markdown mirrors ({md_total} bytes)')
+print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 
 print('done:', len(PAGES), 'pages —', SITE_VERSION)

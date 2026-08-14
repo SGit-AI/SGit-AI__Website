@@ -1,32 +1,48 @@
 <!doctype html>
-<html lang="en" data-root="">
+<html lang="en" data-root="../">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Use cases — sgit</title>
-<meta name="description" content="Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.">
+<meta name="description" content="Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.">
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
 </head>
 <body>
 
 <nav class="site"><div class="row">
-  <a class="brand" href="index.html">sgit<span>.ai</span></a>
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="admin/versions.html" title="Site release history">v0.1.24</a>
-  <a class="nl" href="why.html">Why</a>
-  <a class="nl" href="try.html">Try</a>
-  <a class="nl here" href="use-cases.html">Use Cases</a>
-  <a class="nl" href="docs/index.html">Docs</a>
-  <a class="nl" href="vault/index.html">SG/Vault</a>
-  <a class="nl" href="deploy/index.html">Deploy</a>
-  <a class="nl" href="skills.html">Skills</a>
-  <a class="nl" href="security.html">Security</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.25</a>
+  <a class="nl" href="../why.html">Why</a>
+  <a class="nl" href="../try.html">Try</a>
+  <a class="nl here" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>
 
 <main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Use cases</p>
   <h1>Use cases</h1>
-  <p class="lead">Five things people point sgit at today. Every workflow below runs on shipped commands — nothing aspirational.</p>
+  <p class="lead">Two kinds of page here. <b>Workflows</b> are the mechanics — what sgit does, on shipped commands. <b>Situations</b> are who has the problem, each with a working recipe, an honest evidence status, and a brief you can hand to an agent.</p>
+
+  <div class="note"><b>Reading this as an agent?</b> Every page on this site has a <code>.md</code> twin at the same path — this one is <a href="index.md">use-cases/index.md</a>. Internal links inside the markdown point at markdown, so you can traverse the whole site without parsing HTML. The machine index is <a href="../llms.txt">llms.txt</a>.</div>
+
+  <h2>Situations</h2>
+  <p>Each of these is a place where the sentence "this needs version control, and the store must not be able to read it" is literally true. The pages are written to be usable: the setup, the commands, what is proven versus what is a pattern, and an agent brief.</p>
+  <div class="cards" style="max-width:none;padding:0">
+    <a class="card" href="ai-agents.html"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>Durable memory across sessions and machines, and shared memory between agents, with the store unable to read either. <b>Evidence: this website.</b></p></a>
+    <a class="card" href="professional-services.html"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, assessment: the deliverable and the working notes, versioned, in a store that cannot read them — and read access you can hand out without an account.</p></a>
+    <a class="card" href="security-teams.html"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest output and vulnerability data need history, diffs and multi-person workflow — and are the last thing to put in a SaaS you don't control.</p></a>
+    <a class="card" href="health-regulated.html"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, the conversation stops being about the provider's access controls. Read the caveats on that page before quoting it.</p></a>
+  </div>
+
+  <h2>Workflows</h2>
+  <p>The mechanics underneath those situations. Every one runs on shipped commands — nothing aspirational.</p>
+
 
   <section class="uc" id="ai-agents">
     <h2>Private memory for AI agents</h2>
@@ -36,7 +52,7 @@
 <span class="p">$</span> <span class="cmd">sgit commit -m "session 1: research notes" &amp;&amp; sgit push</span>
 <span class="d"># session 2, days later, different machine</span>
 <span class="p">$</span> <span class="cmd">sgit pull</span>   <span class="d"># continue exactly where session 1 stopped</span></pre>
-    <p><a href="docs/agents.html">Full agent guide →</a></p>
+    <p><a href="../docs/agents.html">Full agent guide →</a></p>
   </section>
 
   <section class="uc" id="multi-agent">
@@ -69,6 +85,7 @@
 <span class="p">$</span> <span class="cmd">sgit pki sign report.pdf --fingerprint &lt;fp&gt;</span>
 <span class="p">$</span> <span class="cmd">sgit pki encrypt report.pdf --recipient &lt;fp&gt;</span></pre>
   </section>
+  <div class="pagenav"><a href="../why.html">← Why this exists</a><a href="../docs/index.html">Documentation →</a></div>
 </main>
 
 <footer class="site"><div class="cols">
@@ -76,39 +93,39 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="admin/versions.html">v0.1.24</a> · <a href="admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.25</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
-    <a href="docs/what-is-sgit.html">What is sgit</a>
-    <a href="docs/installation.html">Installation</a>
-    <a href="docs/quickstart.html">Quickstart</a>
-    <a href="docs/sgit-for-git-users.html">sgit for git users</a>
-    <a href="docs/agents.html">Working with AI agents</a>
-    <a href="docs/limitations.html">When NOT to use sgit</a>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
   </div>
   <div>
     <h4>SG/Vault platform</h4>
-    <a href="vault/index.html">SG/Vault &amp; the platform</a>
-    <a href="vault/vault-apps.html">Building vault apps</a>
-    <a href="vault/sg-bridge.html">The window.sg bridge</a>
-    <a href="vault/content-authoring.html">Content authoring</a>
-    <a href="vault/sub-vaults.html">Sub-vaults</a>
-    <a href="vault/git-and-vaults.html">Git repos inside vaults</a>
-    <a href="vault/static-hosting.html">Static hosting</a>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
   <div>
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
-    <a href="security.html">Security</a>
-    <a href="why.html">Why does this exist?</a>
-    <a href="use-cases.html">Use cases</a>
-    <a href="skills.html">Skills for AI agents</a>
-    <a href="briefs.html">Cross-team briefs</a>
-    <a href="llms.txt">llms.txt</a>
-    <a href="admin/index.html">Admin &amp; engineering</a>
-    <a href="admin/versions.html">Release history</a>
+    <a href="../security.html">Security</a>
+    <a href="../why.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
   </div>
 </div></footer>
 

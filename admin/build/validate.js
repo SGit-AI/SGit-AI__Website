@@ -65,6 +65,29 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
   }
 }
 
+// 3c. markdown mirrors — agents are a first-class audience for this site, so every page
+// must have a .md twin, and the links inside the markdown (which are rewritten .html -> .md)
+// must resolve too. A dangling .md link is invisible from the HTML site and fatal to an agent.
+{
+  const pages = files.filter(f => f.endsWith('.html'));
+  for (const f of pages) {
+    const md = f.replace(/\.html$/, '.md');
+    if (!fs.existsSync(md)) { fails++; console.log('MD-MIRROR FAIL', path.relative(root, f), '-> no .md twin'); }
+  }
+  for (const f of files.filter(f => f.endsWith('.md') && fs.existsSync(f.replace(/\.md$/, '.html')))) {
+    const text = fs.readFileSync(f, 'utf8');
+    for (const m of text.matchAll(/\]\(([^)\s]+\.md)(#[^)]*)?\)/g)) {
+      if (/^https?:/.test(m[1])) continue;
+      if (!fs.existsSync(path.join(path.dirname(f), m[1]))) {
+        fails++; console.log('MD-LINK FAIL', path.relative(root, f), '->', m[1]);
+      }
+    }
+    if (/<[a-z]+[ >]/.test(text.replace(/`[^`]*`/g, ''))) {
+      fails++; console.log('MD-HTML FAIL', path.relative(root, f), '-> raw HTML leaked into the markdown');
+    }
+  }
+}
+
 // 4. shared JS must parse
 try { new vm.Script(fs.readFileSync(path.join(root, 'assets/site.js'), 'utf8')); }
 catch (e) { fails++; console.log('JS FAIL assets/site.js', e.message); }

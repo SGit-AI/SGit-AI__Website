@@ -12,10 +12,10 @@
 <nav class="site"><div class="row">
   <a class="brand" href="index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="admin/versions.html" title="Site release history">v0.1.24</a>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.1.25</a>
   <a class="nl here" href="why.html">Why</a>
   <a class="nl" href="try.html">Try</a>
-  <a class="nl" href="use-cases.html">Use Cases</a>
+  <a class="nl" href="use-cases/index.html">Use Cases</a>
   <a class="nl" href="docs/index.html">Docs</a>
   <a class="nl" href="vault/index.html">SG/Vault</a>
   <a class="nl" href="deploy/index.html">Deploy</a>
@@ -87,11 +87,30 @@
   <h2>Who has that problem</h2>
   <p>Not a market-size claim — just the situations where the sentence at the top is literally true today. These matter, but they are the ordinary reasons; the section above is the interesting one.</p>
   <div class="cards" style="max-width:none;padding:0">
-    <div class="card"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>An agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.</p></div>
-    <div class="card"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.</p></div>
-    <div class="card"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.</p></div>
-    <div class="card"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.</p></div>
+    <a class="card" href="use-cases/ai-agents.html"><span class="tag">AI agents</span><h3>Agent state that isn't the vendor's to read</h3><p>An agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/professional-services.html"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/health-regulated.html"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
+    <a class="card" href="use-cases/security-teams.html"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
   </div>
+
+  <h2>git and sgit, side by side</h2>
+  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site runs both at once</b> — one working tree, two remotes: the encrypted vault is pushed with <code>sgit push</code>, and the same directory is pushed to GitHub with <code>git push</code>, which is what builds and deploys it. Neither is a fallback for the other.</p>
+
+  <div class="tablewrap"><table>
+    <tr><th></th><th>git</th><th>sgit</th></tr>
+    <tr><td><b>The host can read your content</b></td><td>Yes — that is what makes everything else work</td><td>No. It stores ciphertext under opaque ids and never receives a key</td></tr>
+    <tr><td><b>Performance at scale</b></td><td><b>Far better.</b> Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files</td><td>Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4&nbsp;MB but this is not a video archive</td></tr>
+    <tr><td><b>Ecosystem</b></td><td><b>Everything.</b> CI, code review, IDEs, hosting, decades of tooling and answers</td><td>A CLI, a browser client, and an agent skill. Deliberately small, and young</td></tr>
+    <tr><td><b>Archaeology</b></td><td><b>Better.</b> <code>bisect</code>, <code>blame</code>, <code>rebase</code>, <code>cherry-pick</code>, hooks, submodules</td><td><code>history log / diff / show / revert / reset</code>. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist</td></tr>
+    <tr><td><b>Partial commits</b></td><td>Staging area, index, <code>add -p</code></td><td>None. A commit snapshots the whole folder</td></tr>
+    <tr><td><b>Branching and merge</b></td><td>The reference implementation of the idea</td><td>The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge</td></tr>
+    <tr><td><b>Read-only access for someone else</b></td><td>An account on the host, or a deploy key that reads plaintext</td><td>A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement</td></tr>
+    <tr><td><b>Reading it from a browser</b></td><td>Via the host's UI or API, in plaintext</td><td>Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's <a href="deploy/index.html">Deploy section</a> is that</td></tr>
+    <tr><td><b>If the host is breached</b></td><td>Your content is in the breach</td><td>Opaque ids, ciphertext, object sizes and timing</td></tr>
+    <tr><td><b>Recovery when you lose the credential</b></td><td>Reset your password; the repo is unaffected</td><td>Nothing. No reset, no recovery — the direct cost of the row above</td></tr>
+  </table></div>
+
+  <p><b>So the split, concretely:</b> source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The <a href="vault/git-and-vaults.html">side-by-side setup</a> — what to commit, what to keep out of git, and the <code>.gitattributes</code> that stops git trying to diff ciphertext — is documented, because it is how this site is developed.</p>
 
   <h2>Why the existing answers don't cover it</h2>
   <p>This is the strongest form of the objection: every one of these exists and is more mature. Each solves part of it.</p>
@@ -150,7 +169,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="admin/versions.html">v0.1.24</a> · <a href="admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="admin/versions.html">v0.1.25</a> · <a href="admin/index.html">engineering</a> · <a href="why.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -177,7 +196,7 @@
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
     <a href="security.html">Security</a>
     <a href="why.html">Why does this exist?</a>
-    <a href="use-cases.html">Use cases</a>
+    <a href="use-cases/index.html">Use cases</a>
     <a href="skills.html">Skills for AI agents</a>
     <a href="briefs.html">Cross-team briefs</a>
     <a href="llms.txt">llms.txt</a>

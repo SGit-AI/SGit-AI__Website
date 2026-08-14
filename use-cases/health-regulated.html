@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data that changes what is permissible — sgit use cases</title>
+<meta name="description" content="What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.25</a>
+  <a class="nl" href="../why.html">Why</a>
+  <a class="nl" href="../try.html">Try</a>
+  <a class="nl here" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / Health &amp; regulated</p>
+  <h1>Data that changes what is permissible</h1>
+  <p class="lead">When the host provably cannot read the content, the conversation stops being about the provider's access controls — because there is nothing for them to control access to.</p>
+
+  <div class="warnbox"><b>Read this first.</b> sgit holds no compliance certification of any kind — no HIPAA attestation, no ISO 27001, no SOC 2, no GDPR adequacy finding. Nothing on this page is legal or regulatory advice, and client-side encryption does not by itself make a processing activity lawful. What follows is a description of a technical property and what it does and does not change. Your compliance function decides the rest.</div>
+
+  <h2>The problem</h2>
+  <p>Regulated data drags its rules with it. The moment a document is stored somewhere a third party can read, that third party is in scope: they become a processor, they need an agreement, their jurisdiction matters, their breach becomes your notification, and their sub-processors become your problem too. Most of the effort in these projects is not securing the data — it is the paperwork proving who could have seen it.</p>
+  <p>And the work itself still needs versions and collaboration, which is why it so often ends up in a general-purpose tool with a data-processing addendum stapled on.</p>
+
+  <h2>What the property actually changes</h2>
+  <p>Content is encrypted before it leaves the client; the store holds ciphertext under opaque ids and never receives a key. That moves specific arguments, and it is worth being exact about which:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Question</th><th>What changes</th></tr>
+    <tr><td>Can the host read the content?</td><td>No — not with a warrant, a rogue administrator, or a breach. This is the strong claim, and it is structural rather than procedural.</td></tr>
+    <tr><td>What does the host still learn?</td><td>The vault id, the size of each object, and request timing. Sizes and timing are a real if narrow side channel — see the <a href="../security.html">security page</a>.</td></tr>
+    <tr><td>Does this remove the processor relationship?</td><td><b>Not automatically.</b> Storing ciphertext may still be processing, depending on the regime and on who holds keys. Ask your counsel; do not take a vendor's word for it, including ours.</td></tr>
+    <tr><td>Does it help with access logging and minimisation?</td><td>Partly: a vault is a natural boundary, and read access is a key rather than an account, which makes "who could read this" a shorter list.</td></tr>
+    <tr><td>Does it help with retention and deletion?</td><td>Partly, and awkwardly: history keeps old ciphertext until pruned, so "delete" needs thought. See <a href="../docs/limitations.html">limitations</a>.</td></tr>
+  </table></div>
+
+  <h2>The recipe</h2>
+  <p><b>Scope one vault to one purpose.</b> The vault is the access boundary, so make it match the lawful basis for the data in it — not the team, not the project folder.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit create study-1234-analysis</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "structure" &amp;&amp; sgit push</span></pre>
+  <p><b>Key management is the whole control.</b> There is no reset and no recovery: the key is the access control, so it has to be managed like one — in a password manager or an HSM-backed store, with a named owner and a documented rotation path.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault backup --include-key</span>     <span class="d"># archive and key stored separately</span>
+<span class="p">$</span> <span class="cmd">sgit vault rekey</span>                          <span class="d"># rotation — see the exposed-key runbook</span></pre>
+  <p><b>Self-host if the storage layer is itself in scope.</b> The <a href="../deploy/index.html">deployment guidance</a> covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.</p>
+
+  <h2>Evidence status</h2>
+  <div class="evbox ev-warn"><span class="evtag">PATTERN — and the most caveated page here</span>
+  <p>No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a <a href="../security.html">published threat model</a> that names its own side channels.</p>
+  <p>That is evidence of engineering care. It is not evidence of compliance, and we are not going to blur the two.</p></div>
+
+  <h2>Brief for an agent</h2>
+  <p>Paste this into an agent that has the <a href="../skills.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+<pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/health-regulated.md</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
+  <blockquote class="challenge">Read https://sgit.ai/use-cases/health-regulated.md and https://sgit.ai/docs/agents.md.
+  Then set up a scoped vault for regulated data for this project: create the vault, structure the folders as
+  described, commit and push, and report the vault key back to me once — I will store it.
+  Do not write the key to any file in the repository. Do not claim any compliance property in what you write; describe only the technical behaviour.</blockquote>
+  <p class="small dim">That last sentence matters. We have a <a href="../docs/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../security.html">Security model</a> — including what the server still observes</li>
+    <li><a href="../docs/limitations.html">When NOT to use sgit</a> — retention, deletion and the key-loss trade-off</li>
+    <li><a href="../deploy/index.html">Run your own server</a> — when the storage layer must be in your own boundary</li>
+  </ul>
+  <div class="pagenav"><a href="security-teams.html">← Security teams</a><a href="index.html">All use cases →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.25</a> · <a href="../admin/index.html">engineering</a> · <a href="health-regulated.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security.html">Security</a>
+    <a href="../why.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
