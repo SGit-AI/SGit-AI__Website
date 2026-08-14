@@ -37,7 +37,8 @@
     this.vaultId  = cfg.vault_id;
     this.readKey  = cfg.read_key;
     this.mem      = new Map();
-    this.stats    = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0 };
+    this.stats    = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0,
+                      oldestCache: null, newestCache: null };
     this.log      = [];
   }
 
@@ -80,9 +81,14 @@
     if (immutable && this.cache) {
       var hit = await this.cache.match(url);
       if (hit) {
-        var bufC = new Uint8Array(await hit.arrayBuffer());
+        var stamp = parseInt(hit.headers.get('x-sg-cached-at') || '0', 10) || null;
+        var bufC  = new Uint8Array(await hit.arrayBuffer());
         this.stats.cacheHit++; this.stats.bytesCache += bufC.length;
-        entry.src = 'cache'; entry.bytes = bufC.length; entry.ms = performance.now() - t0;
+        if (stamp) {
+          this.stats.oldestCache = this.stats.oldestCache ? Math.min(this.stats.oldestCache, stamp) : stamp;
+          this.stats.newestCache = this.stats.newestCache ? Math.max(this.stats.newestCache, stamp) : stamp;
+        }
+        entry.src = 'cache'; entry.bytes = bufC.length; entry.ms = performance.now() - t0; entry.cachedAt = stamp;
         this.log.push(entry); this.stats.ms += entry.ms;
         return bufC;
       }
@@ -91,7 +97,12 @@
     var resp = await fetch(url, { cache: immutable ? 'default' : 'no-store' });
     if (!resp.ok) throw new Error('HTTP ' + resp.status + ' for ' + vaultPath);
     var buf = new Uint8Array(await resp.arrayBuffer());
-    if (immutable && this.cache) { try { await this.cache.put(url, new Response(buf)); } catch (e) {} }
+    if (immutable && this.cache) {
+      try {
+        await this.cache.put(url, new Response(buf, { headers: { 'x-sg-cached-at': String(Date.now()) } }));
+        entry.cachedAt = Date.now();          // stored now, on this very request
+      } catch (e) {}
+    }
 
     this.stats.fetch++; this.stats.bytesNet += buf.length;
     entry.bytes = buf.length; entry.ms = performance.now() - t0;
@@ -144,6 +155,11 @@
     var files = await this.files();
     if (!files[path]) throw new Error('not in vault: ' + path);
     return dec.decode(await this.object(files[path].blob_id));
+  };
+  VaultReader.prototype.resetStats = function () {         // clear the view, keep the caches
+    this.log.length = 0;
+    this.stats = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0,
+                   oldestCache: null, newestCache: null };
   };
   VaultReader.prototype.clearCaches = async function () {
     this.mem.clear(); this._files = null;
@@ -256,6 +272,18 @@
 
   function el(id) { return document.getElementById(id); }
   function fmtBytes(n) { return n < 1024 ? n + ' B' : (n / 1024).toFixed(1) + ' KB'; }
+  function ago(ms) {
+    if (!ms) return '';
+    var s = Math.round((Date.now() - ms) / 1000);
+    if (s < 5)    return 'just now';
+    if (s < 60)   return s + 's ago';
+    if (s < 3600) return Math.round(s / 60) + 'm ago';
+    if (s < 86400) return Math.round(s / 3600) + 'h ago';
+    return Math.round(s / 86400) + 'd ago';
+  }
+  function stamp(ms) {
+    return ms ? new Date(ms).toISOString().replace('T', ' ').slice(0, 19) + ' UTC' : '—';
+  }
 
   function title(path) {
     var name = path.split('/').pop().replace(/\.md$/, '');
@@ -318,14 +346,21 @@
           row('memory hits', String(s.memHit)) +
           row('decryptions', String(s.decrypts)) +
           row('transfer time', s.ms.toFixed(0) + ' ms') +
+          row('cached locally', s.newestCache
+                ? stamp(s.newestCache) + '  (' + ago(s.newestCache) + ')'
+                : (s.fetch ? 'this page load — ' + stamp(Date.now()) : '—')) +
+          (s.oldestCache && s.oldestCache !== s.newestCache
+                ? row('oldest entry', stamp(s.oldestCache) + '  (' + ago(s.oldestCache) + ')') : '') +
         '</div>' +
         '<div class="vdbg-h">requests <span class="vdbg-dim">(newest last)</span></div>' +
-        '<div class="vdbg-log">' + reader.log.slice(-40).map(function (e) {
+        '<div class="vdbg-log">' + (reader.log.length ? reader.log.slice(-60).map(function (e) {
           return '<div><span class="' + (e.src === 'cache' ? 'g' : 'cy') + '">' +
                  (e.src === 'cache' ? 'CACHE' : ' NET ') + '</span> ' +
-                 e.path.slice(0, 26).padEnd(26) + ' ' +
-                 String(e.bytes).padStart(6) + 'B ' + e.ms.toFixed(0) + 'ms</div>';
-        }).join('') + '</div>';
+                 e.path.slice(0, 24).padEnd(24) + ' ' +
+                 String(e.bytes).padStart(6) + 'B ' + String(e.ms.toFixed(0)).padStart(4) + 'ms' +
+                 (e.cachedAt ? '  <span class="dimc">' + ago(e.cachedAt) + '</span>' : '') +
+                 '</div>';
+        }).join('') : '<span class="vdbg-dim">list cleared — navigate to a page to see its objects</span>') + '</div>';
       function row(k, v) { return '<div class="k">' + k + '</div><div class="v">' + String(v).replace(/</g, '&lt;') + '</div>'; }
     }
 
@@ -348,7 +383,12 @@
             if (files[t]) location.hash = t; else window.open(t, '_blank');
           });
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        var anchor = document.querySelector('.vdocs');
+        if (anchor) {
+          var navH = (document.querySelector('nav.site') || {}).offsetHeight || 56;
+          var y    = anchor.getBoundingClientRect().top + window.scrollY - navH - 8;
+          if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
       } catch (e) {
         body.innerHTML = '<div class="warnbox">Could not read <code>' + path + '</code>: ' + String(e) + '</div>';
       }
@@ -357,8 +397,22 @@
 
     window.addEventListener('hashchange', function () { show(decodeURIComponent(location.hash.slice(1))); });
 
-    el('vdbg-toggle').addEventListener('click', function () { el('vdbg').classList.toggle('open'); });
-    el('vdbg-close').addEventListener('click', function () { el('vdbg').classList.remove('open'); });
+    // panel open/closed survives navigation and reloads
+    function setPanel(open) {
+      el('vdbg').classList.toggle('open', open);
+      try { localStorage.setItem('sgit-vdbg-open', open ? '1' : '0'); } catch (e) {}
+    }
+    var wasOpen = false;
+    try { wasOpen = localStorage.getItem('sgit-vdbg-open') === '1'; } catch (e) {}
+    if (wasOpen) el('vdbg').classList.add('open');
+
+    el('vdbg-toggle').addEventListener('click', function () { setPanel(!el('vdbg').classList.contains('open')); });
+    el('vdbg-close').addEventListener('click', function () { setPanel(false); });
+    el('vdbg-reset').addEventListener('click', function () {
+      reader.resetStats();
+      el('vdbg-note').textContent = 'list cleared — the caches are untouched; load a page to see just its objects';
+      paintDebug();
+    });
     el('vdbg-clear').addEventListener('click', async function () {
       await reader.clearCaches(); reader.log.length = 0;
       reader.stats = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0 };

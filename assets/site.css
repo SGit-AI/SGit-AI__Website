@@ -256,3 +256,10 @@ details.faq summary::before{content:"+";color:var(--accent);font-weight:700;flex
 details.faq[open] summary::before{content:"−"}
 details.faq summary:hover{background:var(--panel2)}
 details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;line-height:1.65}
+.vdbg-log .dimc{color:#6b7280}
+
+/* figures */
+.figure{margin:1.6rem 0}
+.figure svg{width:100%;height:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:.8rem;box-shadow:var(--shadow)}
+.figcap{font-size:.78rem;color:var(--dim);text-align:center;margin:.5rem 0 0;line-height:1.5}
