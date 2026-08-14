@@ -3,5 +3,7 @@
   "endpoint": "https://dev.send.sgraph.ai",
   "vault_id": "fyofmkvr",
   "read_key": "8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1",
-  "maintained_by": "the SG/Send team — see MAINTENANCE.md inside the vault"
+  "maintained_by": "the SG/Send team — see MAINTENANCE.md inside the vault",
+  "ref_ttl_s": 120,
+  "_ref_ttl_note": "How often the mutable HEAD pointer is re-checked, in seconds. Inside this window the reader reuses the last answer, so navigating the docs costs zero network requests; it is also the worst-case delay before a new commit shows up. The vault panel's 'check for new commit' button ignores it. Set to 0 to check on every page view."
 }

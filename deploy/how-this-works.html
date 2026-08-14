@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.22</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.23</a>
   <a class="nl" href="../why.html">Why</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
@@ -166,14 +166,24 @@
   </div>
 
   <h2>Why the caching is safe — and why it's this shape</h2>
-  <p>The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes <em>of the ciphertext</em>, so an object can never change under its id — which makes it permanently cacheable. The ref, by contrast, is the one mutable pointer, so it is refetched every single load. That combination is what lets the page be both fast and current:</p>
+  <p>The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes <em>of the ciphertext</em>, so an object can never change under its id — which makes it permanently cacheable. The ref is the one mutable pointer, so it is the only thing that has to be refetched at all:</p>
   <div class="tablewrap"><table>
     <tr><th>Tier</th><th>What it holds</th><th>Lifetime</th><th>Why</th></tr>
     <tr><td>memory</td><td>decrypted objects</td><td>this page session</td><td>avoids decrypting the same tree twice while you click around</td></tr>
     <tr><td>Cache API</td><td>ciphertext of <code>obj-cas-imm-*</code></td><td>until you clear it</td><td>content-addressed ⇒ immutable ⇒ can never be stale</td></tr>
-    <tr><td>none</td><td>the ref (<code>ref-pid-muw-*</code>)</td><td>refetched every load</td><td>it is the mutable HEAD; this is how a new commit is noticed at all</td></tr>
+    <tr><td>localStorage</td><td>the file index (path &rarr; blob)</td><td>keyed by commit id</td><td>a pure function of the commit, so an unchanged HEAD reads no tree objects</td></tr>
+    <tr><td>freshness window</td><td>the ref (<code>ref-pid-muw-*</code>)</td><td><b>120 s</b> (<code>ref_ttl_s</code>)</td><td>it is the mutable HEAD; checking it once per window instead of once per page view is what takes steady-state reading to zero requests</td></tr>
   </table></div>
-  <p>Measured on this site: a cold load fetches 18 objects (~14 KB); a reload fetches <b>one 69-byte object</b> — the ref — and serves the other 17 from cache. Open the vault panel and press <b>clear list</b>, then click a page, to see exactly which objects that one page needed.</p>
+
+  <h3>The freshness window</h3>
+  <p>The ref has to be refetched sometimes — that is how a new commit is noticed. It does not have to be refetched on <em>every page view</em>. So the answer is kept for <code>ref_ttl_s</code> seconds (120 by default, set in <code>deploy/vault.json</code>), and inside that window the reader reuses it.</p>
+  <p>Three things follow, and they are the whole trade:</p>
+  <ul>
+    <li><b>Reading the docs costs nothing.</b> Click through ten pages inside the window and the network stays silent — every object is content-addressed and already cached, and the one mutable object is inside its window. The panel logs the ref as <code>TTL</code> with a live countdown to the next check.</li>
+    <li><b>Server load stops scaling with page views.</b> It scales with <em>readers per window</em> instead: one 69-byte request per reader per two minutes, however much they read.</li>
+    <li><b>Propagation is delayed, and bounded.</b> A new commit is picked up within 120 seconds at worst, and immediately if you press <b>check for new commit</b> — which forces a fetch and ignores the window. That button is not a debug affordance; it is the escape hatch that makes the window safe to have.</li>
+  </ul>
+  <p>Measured on this site: a cold load fetches 18 objects (~14 KB); the next load fetches <b>one 69-byte object</b> — the ref — and serves the rest from cache; a load inside the freshness window fetches <b>nothing at all</b>. Open the vault panel and press <b>clear list</b>, then click around, to watch it happen.</p>
 
   <h2>Who can see what</h2>
   <div class="sees" style="margin:1.2rem 0">
@@ -213,7 +223,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.22</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.23</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>

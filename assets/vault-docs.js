@@ -5,11 +5,14 @@
  * decrypt with AES-256-GCM (Web Crypto), walk commit → tree → blobs. No server
  * side, no build step: publishing is `sgit push`, and the next page load has it.
  *
- * Three cache tiers, mirroring what the object model allows:
+ * Cache tiers, mirroring what the object model allows:
  *   mem    — decrypted objects for this page session
  *   Cache  — ciphertext for obj-cas-imm-* (content-addressed ⇒ immutable ⇒ forever)
- *   none   — the ref (mutable HEAD pointer) is always refetched; that is how a
- *            new commit is noticed at all.
+ *   TTL    — the ref (mutable HEAD pointer) is the one object that can change, so it is the
+ *            only thing that must be refetched — but only once per freshness window
+ *            (ref_ttl_s, default 120s), not once per page view. Inside that window,
+ *            navigating the docs costs zero network requests; the window is also the
+ *            worst-case delay before a new commit is noticed.
  */
 (function () {
   'use strict';
@@ -54,8 +57,9 @@
     this.vaultId  = cfg.vault_id;
     this.readKey  = cfg.read_key;
     this.mem      = new Map();
-    this.stats    = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0,
-                      oldestCache: null, newestCache: null };
+    this.refTtlMs = (cfg.ref_ttl_s == null ? 120 : cfg.ref_ttl_s) * 1000;
+    this.stats    = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
+                      decrypts: 0, ms: 0, oldestCache: null, newestCache: null };
     this.log      = [];
   }
 
@@ -151,14 +155,55 @@
     return JSON.parse(dec.decode(await this.object(objId, meta)));
   };
 
-  // open: ref → commit (+ decrypted message). Always refetches the ref.
-  VaultReader.prototype.open = async function () {
-    var refBytes = await this.raw('bare/refs/' + await this.refFileId(),
-                     { kind: 'ref', reason: 'the mutable HEAD pointer — refetched every load to notice new commits' });
-    var refEntry = this._lastEntry;
-    var refText  = await this.decryptText(refBytes);
-    if (refEntry) refEntry.preview = refText;
-    var ref      = JSON.parse(refText);
+  // The ref is the only object that can change, so it is the only thing that has to be
+  // refetched — but it does not have to be refetched on *every* page view. Within a freshness
+  // window (ref_ttl_s, default 120s) the last answer is reused, which is what makes navigating
+  // the docs cost zero network requests. The window is also the worst-case propagation delay
+  // for a new commit; "check for new commit" forces a fetch and ignores it entirely.
+  VaultReader.prototype.refKey = function () { return 'sgit-vdocs-ref:' + this.vaultId; };
+  VaultReader.prototype.refCached = function () {
+    try {
+      var raw = localStorage.getItem(this.refKey());
+      if (!raw) return null;
+      var rec = JSON.parse(raw);
+      if (!rec || !rec.text || !rec.at) return null;
+      if (Date.now() - rec.at >= this.refTtlMs) return null;      // window elapsed
+      return rec;
+    } catch (e) { return null; }
+  };
+  VaultReader.prototype.refFreshMsLeft = function () {
+    var rec = this.refCached();
+    return rec ? Math.max(0, rec.at + this.refTtlMs - Date.now()) : 0;
+  };
+
+  // open: ref → commit (+ decrypted message). The ref is served from the freshness window
+  // when one is open; pass {force:true} to always go to the network.
+  VaultReader.prototype.open = async function (opts) {
+    opts = opts || {};
+    var refId = 'ref-pid-muw-' + await this.fileId('sg-vault-v1:file-id:ref:' + this.vaultId);
+    var refText, fresh = opts.force ? null : this.refCached();
+
+    if (fresh) {
+      refText = fresh.text;
+      this.stats.refTtlHit++;
+      this.refCheckedAt = fresh.at;
+      this.log.push({ path: refId, src: 'ttl', bytes: 0, ms: 0, kind: 'ref',
+                      reason: 'the mutable HEAD pointer — still inside its ' + (this.refTtlMs / 1000) +
+                              's freshness window, so no request was made',
+                      preview: refText, freshUntil: fresh.at + this.refTtlMs, checkedAt: fresh.at });
+    } else {
+      var refBytes = await this.raw('bare/refs/' + refId,
+                       { kind: 'ref', reason: opts.force
+                           ? 'the mutable HEAD pointer — fetched on demand, ignoring the freshness window'
+                           : 'the mutable HEAD pointer — freshness window had elapsed, so it was refetched' });
+      var refEntry = this._lastEntry;
+      refText = await this.decryptText(refBytes);
+      if (refEntry) { refEntry.preview = refText; refEntry.freshUntil = Date.now() + this.refTtlMs; }
+      this.refCheckedAt = Date.now();
+      try { localStorage.setItem(this.refKey(), JSON.stringify({ text: refText, at: this.refCheckedAt })); } catch (e) {}
+    }
+
+    var ref = JSON.parse(refText);
     var commit   = await this.objectJson(ref.commit_id,
                      { kind: 'commit', reason: 'the commit this ref points at — holds the tree id and the message' });
     this.head    = ref.commit_id;
@@ -213,8 +258,8 @@
   };
   VaultReader.prototype.resetStats = function () {         // clear the view, keep the caches
     this.log.length = 0;
-    this.stats = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0,
-                   oldestCache: null, newestCache: null };
+    this.stats = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
+                   decrypts: 0, ms: 0, oldestCache: null, newestCache: null };
   };
   VaultReader.prototype.clearCaches = async function () {
     this.mem.clear(); this._files = null;
@@ -223,6 +268,7 @@
         var k = localStorage.key(i);
         if (k && k.indexOf('sgit-vdocs-idx:') === 0) localStorage.removeItem(k);
       }
+      localStorage.removeItem(this.refKey());        // drop the freshness window too
     } catch (e) {}
     if (this.cache) { try { await caches.delete('sgit-vault-docs-v1'); this.cache = await caches.open('sgit-vault-docs-v1'); } catch (e) {} }
   };
@@ -424,6 +470,9 @@
           row('network fetches', String(s.fetch) + '  (' + fmtBytes(s.bytesNet) + ')') +
           row('cache hits', String(s.cacheHit) + '  (' + fmtBytes(s.bytesCache) + ')') +
           row('memory hits', String(s.memHit)) +
+          row('HEAD checks saved', String(s.refTtlHit) +
+                '  (freshness window ' + (reader.refTtlMs / 1000) + 's)') +
+          row('next HEAD check', '<span data-ttl-live>' + ttlText() + '</span>') +
           row('decryptions', String(s.decrypts)) +
           row('file index', s.indexMemo ? 'memoised — no tree objects read' : 'built by walking every tree') +
           row('transfer time', s.ms.toFixed(0) + ' ms') +
@@ -435,8 +484,10 @@
         '</div>' +
         '<div class="vdbg-h">objects read <span class="vdbg-dim">(newest last · click a row to inspect)</span></div>' +
         '<div class="vdbg-objs">' + (reader.log.length ? reader.log.map(function (e, i) {
-          var srcCls = e.src === 'cache' ? 'g' : e.src === 'mem' ? 'm' : e.src === 'memo' ? 'm' : 'cy';
-          var srcTxt = e.src === 'cache' ? 'CACHE' : e.src === 'mem' ? ' MEM ' : e.src === 'memo' ? 'MEMO ' : ' NET ';
+          var srcCls = e.src === 'cache' ? 'g' : e.src === 'mem' ? 'm' : e.src === 'memo' ? 'm'
+                     : e.src === 'ttl' ? 't' : 'cy';
+          var srcTxt = e.src === 'cache' ? 'CACHE' : e.src === 'mem' ? ' MEM ' : e.src === 'memo' ? 'MEMO '
+                     : e.src === 'ttl' ? ' TTL ' : ' NET ';
           return '<div class="objrow" data-i="' + i + '">' +
                    '<div class="objhead">' +
                      '<span class="' + srcCls + '">' + srcTxt + '</span> ' +
@@ -445,7 +496,8 @@
                      '<span class="meta">' + e.bytes + 'B · ' + e.ms.toFixed(0) + 'ms' +
                        (e.cachedAt ? ' · ' + ago(e.cachedAt) : '') + '</span>' +
                    '</div>' +
-                   '<div class="objwhy">' + (e.reason || '') + '</div>' +
+                   '<div class="objwhy">' + (e.reason || '') +
+                     (e.freshUntil ? ' &middot; <span class="ttlpill" data-ttl-live="pill">next check ' + ttlText() + '</span>' : '') + '</div>' +
                    '<pre class="objbody" hidden>' + (e.preview
                         ? (isJson(e.preview) ? hlJson : esc2)(e.preview.slice(0, 4000)) +
                           (e.preview.length > 4000 ? '\n… truncated' : '')
@@ -460,8 +512,24 @@
           row.classList.toggle('open', !b.hidden);
         });
       });
-      function row(k, v) { return '<div class="k">' + k + '</div><div class="v">' + String(v).replace(/</g, '&lt;') + '</div>'; }
+      function row(k, v) {
+        var val = /^<span data-ttl-live>/.test(v) ? v : String(v).replace(/</g, '&lt;');
+        return '<div class="k">' + k + '</div><div class="v">' + val + '</div>';
+      }
     }
+
+    // The freshness window counts down live rather than only on repaint, so the panel shows
+    // exactly when the next HEAD check is due while you click around the docs.
+    function ttlText() {
+      var left = Math.ceil(reader.refFreshMsLeft() / 1000);
+      return left > 0 ? 'in ' + left + 's' : 'due now — the next page view re-checks';
+    }
+    setInterval(function () {
+      var txt = ttlText();
+      document.querySelectorAll('[data-ttl-live]').forEach(function (n) {
+        n.textContent = (n.getAttribute('data-ttl-live') === 'pill' ? 'next check ' : '') + txt;
+      });
+    }, 1000);
 
     // ---- routing
     async function show(path) {
@@ -550,13 +618,14 @@
     });
     el('vdbg-clear').addEventListener('click', async function () {
       await reader.clearCaches(); reader.log.length = 0;
-      reader.stats = { fetch: 0, cacheHit: 0, memHit: 0, bytesNet: 0, bytesCache: 0, decrypts: 0, ms: 0 };
-      await reader.open(); files = await reader.files();
+      reader.stats = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
+                       decrypts: 0, ms: 0, oldestCache: null, newestCache: null };
+      await reader.open({ force: true }); files = await reader.files();
       show(decodeURIComponent(location.hash.slice(1)));
     });
     el('vdbg-refresh').addEventListener('click', async function () {
       var before = reader.head;
-      await reader.open();
+      await reader.open({ force: true });
       if (reader.head !== before) { reader._files = null; files = await reader.files(); }
       el('vdbg-note').textContent = reader.head === before
         ? 'up to date — HEAD unchanged' : 'new commit picked up: ' + reader.head;

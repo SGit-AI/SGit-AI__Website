@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.22'
+SITE_VERSION = 'v0.1.23'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.22', '2026-08-14', 'this release',
+    ('v0.1.23', '2026-08-14', 'this release',
+     "A freshness window on the mutable HEAD pointer. The ref was the last per-page-view network request left; it is now checked at most once every ref_ttl_s seconds (120 by default, configurable in deploy/vault.json), so reading inside the window costs zero requests and server load scales with readers rather than page views. The cost is a bounded propagation delay — a new commit appears within the window at worst — and \"check for new commit\" forces a fetch that ignores it. The vault panel logs the reused ref as TTL and counts down live to the next check."),
+    ('v0.1.22', '2026-08-14', 'obj-cas-imm-d9ac70d78c31',
      "Kills the load-time flicker of the vault panel. The panel's remembered width and open state were restored by the reader script, which loads asynchronously — so the panel painted at its CSS default width, then jumped and slid open a beat later. Restoration now happens synchronously, before the first paint, and the slide transition is suppressed until state has settled. Opening and closing the panel by hand still animates; restoring it never does."),
     ('v0.1.21', '2026-08-14', 'obj-cas-imm-5a60bc3bf25b',
      "Object bodies in the vault panel are now syntax-coloured like an editor — keys, strings, numbers, literals and punctuation each get their own colour — and word wrapping is off, so structure survives and long values (base64 ciphertext, object ids) scroll horizontally instead of folding into a wall of text. Highlighting is applied only when the decrypted object actually parses as JSON, so markdown blobs stay plain."),
@@ -769,7 +771,9 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
     Every row above is an encrypted object pulled from the SG/Send API and decrypted locally —
     click one to see what it actually contains. Objects whose id contains <b>-imm-</b> are
     content-addressed and therefore immutable, so they are cached permanently; the mutable
-    <b>ref</b> is refetched every load, which is how a new commit is noticed at all.
+    <b>ref</b> is the one mutable object, so it is checked at most once per freshness window
+    (120s) rather than once per page — inside the window, reading the docs makes no requests
+    at all, and <b>check for new commit</b> forces one whenever you want it.
     <br><br>The <b>tree</b> objects are the reason a first visit reads more than one file:
     filenames are encrypted inside them, so building the navigation means reading every
     directory. That index is a pure function of the commit id, so it is memoised — after the
@@ -971,14 +975,24 @@ HOW_THIS_WORKS = """<main class="doc">
   </div>
 
   <h2>Why the caching is safe — and why it's this shape</h2>
-  <p>The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes <em>of the ciphertext</em>, so an object can never change under its id — which makes it permanently cacheable. The ref, by contrast, is the one mutable pointer, so it is refetched every single load. That combination is what lets the page be both fast and current:</p>
+  <p>The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes <em>of the ciphertext</em>, so an object can never change under its id — which makes it permanently cacheable. The ref is the one mutable pointer, so it is the only thing that has to be refetched at all:</p>
   <div class="tablewrap"><table>
     <tr><th>Tier</th><th>What it holds</th><th>Lifetime</th><th>Why</th></tr>
     <tr><td>memory</td><td>decrypted objects</td><td>this page session</td><td>avoids decrypting the same tree twice while you click around</td></tr>
     <tr><td>Cache API</td><td>ciphertext of <code>obj-cas-imm-*</code></td><td>until you clear it</td><td>content-addressed ⇒ immutable ⇒ can never be stale</td></tr>
-    <tr><td>none</td><td>the ref (<code>ref-pid-muw-*</code>)</td><td>refetched every load</td><td>it is the mutable HEAD; this is how a new commit is noticed at all</td></tr>
+    <tr><td>localStorage</td><td>the file index (path &rarr; blob)</td><td>keyed by commit id</td><td>a pure function of the commit, so an unchanged HEAD reads no tree objects</td></tr>
+    <tr><td>freshness window</td><td>the ref (<code>ref-pid-muw-*</code>)</td><td><b>120 s</b> (<code>ref_ttl_s</code>)</td><td>it is the mutable HEAD; checking it once per window instead of once per page view is what takes steady-state reading to zero requests</td></tr>
   </table></div>
-  <p>Measured on this site: a cold load fetches 18 objects (~14 KB); a reload fetches <b>one 69-byte object</b> — the ref — and serves the other 17 from cache. Open the vault panel and press <b>clear list</b>, then click a page, to see exactly which objects that one page needed.</p>
+
+  <h3>The freshness window</h3>
+  <p>The ref has to be refetched sometimes — that is how a new commit is noticed. It does not have to be refetched on <em>every page view</em>. So the answer is kept for <code>ref_ttl_s</code> seconds (120 by default, set in <code>deploy/vault.json</code>), and inside that window the reader reuses it.</p>
+  <p>Three things follow, and they are the whole trade:</p>
+  <ul>
+    <li><b>Reading the docs costs nothing.</b> Click through ten pages inside the window and the network stays silent — every object is content-addressed and already cached, and the one mutable object is inside its window. The panel logs the ref as <code>TTL</code> with a live countdown to the next check.</li>
+    <li><b>Server load stops scaling with page views.</b> It scales with <em>readers per window</em> instead: one 69-byte request per reader per two minutes, however much they read.</li>
+    <li><b>Propagation is delayed, and bounded.</b> A new commit is picked up within 120 seconds at worst, and immediately if you press <b>check for new commit</b> — which forces a fetch and ignores the window. That button is not a debug affordance; it is the escape hatch that makes the window safe to have.</li>
+  </ul>
+  <p>Measured on this site: a cold load fetches 18 objects (~14 KB); the next load fetches <b>one 69-byte object</b> — the ref — and serves the rest from cache; a load inside the freshness window fetches <b>nothing at all</b>. Open the vault panel and press <b>clear list</b>, then click around, to watch it happen.</p>
 
   <h2>Who can see what</h2>
   <div class="sees" style="margin:1.2rem 0">
