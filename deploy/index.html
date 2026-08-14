@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Run your own SG/Send server — sgit.ai</title>
+<meta name="description" content="Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.">
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s}html.ready body{opacity:1}</style>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.15</a>
+  <a class="nl" href="../try.html">Try</a>
+  <a class="nl" href="../use-cases.html">Use Cases</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl here" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills.html">Skills</a>
+  <a class="nl" href="../security.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
+  <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
+  <h1>Run your own SG/Send server</h1>
+  <p class="lead">Deployment guidance for standing up your own zero-knowledge vault server — Docker, AWS, GCP, Heroku, or a static host. <b>These pages are not part of this website.</b> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
+  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading.</div>
+</main>
+
+<div class="vdocs">
+  <aside class="vdocs-nav" id="vdocs-nav"><span class="dim small">opening vault…</span></aside>
+  <article class="vdocs-body" id="vdocs-body"><p class="dim">Fetching the encrypted index…</p></article>
+</div>
+
+<button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
+<div class="vdbg" id="vdbg">
+  <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
+  <div class="vdbg-btns">
+    <button id="vdbg-refresh" type="button">check for new commit</button>
+    <button id="vdbg-clear" type="button">clear cache &amp; reload</button>
+  </div>
+  <div id="vdbg-note"></div>
+  <div class="vdbg-h">what you are looking at</div>
+  <div class="vdbg-dim" style="line-height:1.6;white-space:normal;font-family:var(--sans);font-size:.72rem">
+    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally.
+    Objects whose id contains <b>-imm-</b> are content-addressed and therefore immutable, so they
+    are cached permanently; the mutable <b>ref</b> is refetched every load, which is how a new
+    commit is noticed at all. Nothing here is stored on sgit.ai.
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var R = document.documentElement.getAttribute('data-root') || '';
+  async function grab(p){
+    try { if (window.sg && window.sg.vfs && window.sg.vfs.readText) { var t = await window.sg.vfs.readText(p); if (t) return t; } } catch(e){}
+    try { var r = await fetch(p); if (r.ok) return await r.text(); } catch(e){}
+    return null;
+  }
+  async function boot(){
+    var src = await grab(R + 'assets/vault-docs.js') || await grab('../assets/vault-docs.js');
+    if (!src) { document.getElementById('vdocs-body').innerHTML = '<div class="warnbox">Could not load the vault reader.</div>'; return; }
+    try { (0, eval)(src); } catch (e) { console.error('[deploy] reader failed', e); return; }
+    var cfgText = await grab('vault.json') || await grab(R + 'deploy/vault.json');
+    if (!cfgText) { document.getElementById('vdocs-body').innerHTML = '<div class="warnbox">Missing deploy/vault.json.</div>'; return; }
+    window.SGVaultDocs.mount(JSON.parse(cfgText));
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.15</a> · <a href="../admin/index.html">engineering</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security.html">Security</a>
+    <a href="../use-cases.html">Use cases</a>
+    <a href="../skills.html">Skills for AI agents</a>
+    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

@@ -24,6 +24,9 @@ Notes for agents:
 - [When NOT to use sgit](/docs/limitations.html): the honest page
 - [If a vault key is exposed](/docs/exposed-vault-key.html): rotation runbook + real case study
 
+## Deploy (live from an encrypted vault)
+- [Run your own SG/Send server](/deploy/index.html): self-hosting guidance — Docker, AWS Lambda/EC2/Fargate, Cloud Run, Heroku, static. Rendered client-side from encrypted vault `fyofmkvr` with a published read-only key; the SG/Send team publishes by `sgit push` and this page reflects it with no rebuild.
+
 ## SG/Vault platform
 - [Platform overview](/vault/index.html): the browser app, App Mode, the three on-ramps
 - [Building vault apps](/vault/vault-apps.html): app.json, the authoring contract, ship with sgit push
