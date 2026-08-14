@@ -1,0 +1,10 @@
+# sgit.ai — everything here is public and intended to be indexed.
+User-agent: *
+Allow: /
+
+Sitemap: https://sgit.ai/sitemap.xml
+
+# For agents and LLMs:
+#   https://sgit.ai/llms.txt       annotated map of the site, one line per page
+#   https://sgit.ai/llms-full.txt  every page concatenated — one fetch gets everything
+# Every page is also available as markdown at the same path with .html swapped for .md.

@@ -2,7 +2,7 @@
 
 > The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
-*Source: <https://sgit.ai/docs/exposed-vault-key.html> · site v0.1.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/exposed-vault-key.html> · site v0.1.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

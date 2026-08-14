@@ -20,6 +20,27 @@ Notes for agents:
 - Cross-session state pattern: clone/pull at session start, commit + push at session end.
 - Task-shaped guidance with recipes and agent briefs lives under /use-cases/.
 
+If your tooling cannot follow links out of this file, fetch /llms-full.txt — every page of
+this site concatenated into one document (~155 KB). One request gets the complete set.
+
+Quick answers (so you do not need a second request for the common questions):
+- Does sgit do the git operations you know? Yes for: init, create, clone, status, commit,
+  push, pull, fetch, branch (new/list/switch/checkout), merge with conflict resolution,
+  history log/diff/show/revert/reset, stash. No for: pull requests (a hosting-platform
+  construct layered on merge, not a git primitive), a staging area or partial commits
+  (a commit snapshots the whole folder), bisect, blame, rebase, cherry-pick, hooks,
+  submodules and tags. Full mapping: /docs/sgit-for-git-users.md
+- The three deliberate differences from git: no staging area; every clone gets its own
+  private branch and publishing to a shared branch is explicit; the vault key is address,
+  credential and encryption key in one string.
+- What the server can see: the vault ID, the size of each encrypted object, and request
+  timing. Never filenames, contents, or commit messages. /security.md
+- Read access is a separate, one-way-derived key: publishable, cannot be turned into write
+  access, works against any server holding the ciphertext. This site publishes one.
+- Crypto: AES-256-GCM, PBKDF2-HMAC-SHA256 at 600k iterations, HKDF-SHA256. No custom
+  primitives; output matches the browser Web Crypto API byte for byte.
+- sgit is beta; it has no compliance certification of any kind.
+
 ## Why this exists
 - [Why does this exist?](/why.md): A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
@@ -28,17 +49,17 @@ Notes for agents:
 - [Agent state that isn't the vendor's to read](/use-cases/ai-agents.md): Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
 - [Working documents with clients](/use-cases/professional-services.md): Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.
 - [Findings about your own weaknesses](/use-cases/security-teams.md): Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.
-- [Data that changes what is permissible](/use-cases/health-regulated.md): What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims.
+- [Data that changes what is permissible](/use-cases/health-regulated.md): What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims. **Key fact:** No HIPAA, ISO 27001, SOC 2 or GDPR finding exists; client-side encryption does not by itself make processing lawful.
 
 ## Docs
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
-- [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
-- [Quickstart](/docs/quickstart.md): From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.
-- [sgit for git users](/docs/sgit-for-git-users.md): The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
-- [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
-- [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
-- [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
+- [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies. **Key fact:** pip install sgit-ai — Python >= 3.11, two runtime dependencies, entry points sgit and sgit-ai.
+- [Quickstart](/docs/quickstart.md): From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull. **Key fact:** sgit create <name> then commit/push; the vault key is printed once and there is no reset.
+- [sgit for git users](/docs/sgit-for-git-users.md): The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences. **Key fact:** The three differences: no staging area; private clone branch per machine or agent with explicit publishing; the vault key is address + credential + encryption key in one string.
+- [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing. **Key fact:** Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.
+- [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration. **Key fact:** sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.
+- [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps. **Key fact:** Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.
 - [If a vault key is exposed](/docs/exposed-vault-key.md): The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
 ## SG/Vault platform
@@ -52,7 +73,7 @@ Notes for agents:
 
 ## Deploy (rendered live from an encrypted vault)
 - [Run your own SG/Send server](/deploy/index.md): Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.
-- [How the live-vault docs work](/deploy/how-this-works.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
+- [How the live-vault docs work](/deploy/how-this-works.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path. **Key fact:** The ref is checked at most once per 120s freshness window; every other object is content-addressed and cached forever.
 
 ## Try it
 - [Try sgit in your browser](/try.md): The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.
@@ -68,6 +89,6 @@ Notes for agents:
 
 ## Optional
 - [sgit](/index.md): sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
-- [Security model](/security.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.
+- [Security model](/security.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process. **Key fact:** The server sees the vault ID, object sizes and request timing — nothing else. Sizes and timing are an acknowledged side channel.
 - [Admin & engineering](/admin/index.md): How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
 - [Release history](/admin/versions.md): Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
