@@ -31,6 +31,23 @@
     return out;
   }
 
+  function kindOf(plain, fallback) {
+    try {
+      var o = JSON.parse(dec.decode(plain));
+      if (o.schema === 'commit_v1')       return 'commit';
+      if (o.schema === 'tree_v1')         return 'tree';
+      if (o.schema === 'branch_index_v1') return 'branch index';
+      if (o.commit_id)                    return 'ref';
+      return 'json';
+    } catch (e) { return fallback || 'blob'; }
+  }
+  function previewOf(plain) {
+    var text;
+    try { text = dec.decode(plain); } catch (e) { return '(binary, ' + plain.length + ' bytes)'; }
+    try { return JSON.stringify(JSON.parse(text), null, 2); } catch (e) {}
+    return text;
+  }
+
   // ---------------------------------------------------------------- reader
   function VaultReader(cfg) {
     this.endpoint = cfg.endpoint.replace(/\/$/, '');
@@ -72,11 +89,14 @@
   VaultReader.prototype.decryptB64    = async function (b64)   { return b64 ? this.decryptText(b64ToBytes(b64)) : ''; };
 
   // fetch raw ciphertext for a vault path, with the cache policy the id implies
-  VaultReader.prototype.raw = async function (vaultPath) {
+  VaultReader.prototype.raw = async function (vaultPath, meta) {
+    meta = meta || {};
     var url        = this.endpoint + '/api/vault/read/' + this.vaultId + '/' + vaultPath;
     var immutable  = vaultPath.indexOf('-imm-') !== -1;
     var t0         = performance.now();
-    var entry      = { path: vaultPath.split('/').pop(), src: 'net', bytes: 0, ms: 0 };
+    var entry      = { path: vaultPath.split('/').pop(), src: 'net', bytes: 0, ms: 0,
+                       kind: meta.kind || '?', reason: meta.reason || '' };
+    this._lastEntry = entry;
 
     if (immutable && this.cache) {
       var hit = await this.cache.match(url);
@@ -111,22 +131,36 @@
   };
 
   // a decrypted object, memoised for the session
-  VaultReader.prototype.object = async function (objId) {
-    if (this.mem.has(objId)) { this.stats.memHit++; return this.mem.get(objId); }
-    var bytes = await this.raw('bare/data/' + objId);
+  VaultReader.prototype.object = async function (objId, meta) {
+    meta = meta || {};
+    if (this.mem.has(objId)) {
+      this.stats.memHit++;
+      this.log.push({ path: objId, src: 'mem', bytes: this.mem.get(objId).length, ms: 0,
+                      kind: meta.kind || 'object', reason: (meta.reason || '') + ' — already decrypted this session',
+                      preview: previewOf(this.mem.get(objId)) });
+      return this.mem.get(objId);
+    }
+    var bytes = await this.raw('bare/data/' + objId, meta);
+    var entry = this._lastEntry;
     var plain = await this.decrypt(bytes);
     this.mem.set(objId, plain);
+    if (entry) { entry.preview = previewOf(plain); entry.kind = kindOf(plain, meta.kind); }
     return plain;
   };
-  VaultReader.prototype.objectJson = async function (objId) {
-    return JSON.parse(dec.decode(await this.object(objId)));
+  VaultReader.prototype.objectJson = async function (objId, meta) {
+    return JSON.parse(dec.decode(await this.object(objId, meta)));
   };
 
   // open: ref → commit (+ decrypted message). Always refetches the ref.
   VaultReader.prototype.open = async function () {
-    var refBytes = await this.raw('bare/refs/' + await this.refFileId());
-    var ref      = JSON.parse(await this.decryptText(refBytes));
-    var commit   = await this.objectJson(ref.commit_id);
+    var refBytes = await this.raw('bare/refs/' + await this.refFileId(),
+                     { kind: 'ref', reason: 'the mutable HEAD pointer — refetched every load to notice new commits' });
+    var refEntry = this._lastEntry;
+    var refText  = await this.decryptText(refBytes);
+    if (refEntry) refEntry.preview = refText;
+    var ref      = JSON.parse(refText);
+    var commit   = await this.objectJson(ref.commit_id,
+                     { kind: 'commit', reason: 'the commit this ref points at — holds the tree id and the message' });
     this.head    = ref.commit_id;
     this.commit  = commit;
     this.message = await this.decryptB64(commit.message_enc);
@@ -136,7 +170,9 @@
   // walk the tree into a flat path → entry map
   VaultReader.prototype.tree = async function (treeId, prefix, out) {
     out = out || {}; prefix = prefix || '';
-    var tree = await this.objectJson(treeId);
+    var tree = await this.objectJson(treeId,
+                 { kind: 'tree', reason: 'directory listing for /' + prefix +
+                          ' — filenames are encrypted in here, so the nav needs it' });
     for (var i = 0; i < (tree.entries || []).length; i++) {
       var e    = tree.entries[i];
       var name = await this.decryptB64(e.name_enc);
@@ -146,15 +182,34 @@
     }
     return out;
   };
+  // The file index (path -> blob id) is a pure function of the commit id, so once
+  // computed for a commit it can be reused forever. Without this every page load
+  // re-walks every tree object just to learn the (encrypted) filenames for the nav.
+  VaultReader.prototype.indexKey = function () { return 'sgit-vdocs-idx:' + this.vaultId + ':' + this.head; };
+
   VaultReader.prototype.files = async function () {
     if (!this.commit) await this.open();
-    if (!this._files) this._files = await this.tree(this.commit.tree_id);
+    if (this._files) return this._files;
+    try {
+      var cached = localStorage.getItem(this.indexKey());
+      if (cached) {
+        this._files = JSON.parse(cached);
+        this.stats.indexMemo = true;
+        this.log.push({ path: 'file index', src: 'memo', bytes: cached.length, ms: 0, kind: 'index',
+                        reason: 'path→blob map for commit ' + this.head + ' — memoised, so no tree objects were read',
+                        preview: JSON.stringify(this._files, null, 2) });
+        return this._files;
+      }
+    } catch (e) {}
+    this._files = await this.tree(this.commit.tree_id);
+    try { localStorage.setItem(this.indexKey(), JSON.stringify(this._files)); } catch (e) {}
     return this._files;
   };
   VaultReader.prototype.readText = async function (path) {
     var files = await this.files();
     if (!files[path]) throw new Error('not in vault: ' + path);
-    return dec.decode(await this.object(files[path].blob_id));
+    return dec.decode(await this.object(files[path].blob_id,
+             { kind: 'blob', reason: 'content of ' + path + ' — the page you asked for' }));
   };
   VaultReader.prototype.resetStats = function () {         // clear the view, keep the caches
     this.log.length = 0;
@@ -163,6 +218,12 @@
   };
   VaultReader.prototype.clearCaches = async function () {
     this.mem.clear(); this._files = null;
+    try {
+      for (var i = localStorage.length - 1; i >= 0; i--) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('sgit-vdocs-idx:') === 0) localStorage.removeItem(k);
+      }
+    } catch (e) {}
     if (this.cache) { try { await caches.delete('sgit-vault-docs-v1'); this.cache = await caches.open('sgit-vault-docs-v1'); } catch (e) {} }
   };
 
@@ -271,6 +332,7 @@
   var D = window.SGVaultDocs;
 
   function el(id) { return document.getElementById(id); }
+  function esc2(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
   function fmtBytes(n) { return n < 1024 ? n + ' B' : (n / 1024).toFixed(1) + ' KB'; }
   function ago(ms) {
     if (!ms) return '';
@@ -345,6 +407,7 @@
           row('cache hits', String(s.cacheHit) + '  (' + fmtBytes(s.bytesCache) + ')') +
           row('memory hits', String(s.memHit)) +
           row('decryptions', String(s.decrypts)) +
+          row('file index', s.indexMemo ? 'memoised — no tree objects read' : 'built by walking every tree') +
           row('transfer time', s.ms.toFixed(0) + ' ms') +
           row('cached locally', s.newestCache
                 ? stamp(s.newestCache) + '  (' + ago(s.newestCache) + ')'
@@ -352,15 +415,32 @@
           (s.oldestCache && s.oldestCache !== s.newestCache
                 ? row('oldest entry', stamp(s.oldestCache) + '  (' + ago(s.oldestCache) + ')') : '') +
         '</div>' +
-        '<div class="vdbg-h">requests <span class="vdbg-dim">(newest last)</span></div>' +
-        '<div class="vdbg-log">' + (reader.log.length ? reader.log.slice(-60).map(function (e) {
-          return '<div><span class="' + (e.src === 'cache' ? 'g' : 'cy') + '">' +
-                 (e.src === 'cache' ? 'CACHE' : ' NET ') + '</span> ' +
-                 e.path.slice(0, 24).padEnd(24) + ' ' +
-                 String(e.bytes).padStart(6) + 'B ' + String(e.ms.toFixed(0)).padStart(4) + 'ms' +
-                 (e.cachedAt ? '  <span class="dimc">' + ago(e.cachedAt) + '</span>' : '') +
+        '<div class="vdbg-h">objects read <span class="vdbg-dim">(newest last · click a row to inspect)</span></div>' +
+        '<div class="vdbg-objs">' + (reader.log.length ? reader.log.map(function (e, i) {
+          var srcCls = e.src === 'cache' ? 'g' : e.src === 'mem' ? 'm' : e.src === 'memo' ? 'm' : 'cy';
+          var srcTxt = e.src === 'cache' ? 'CACHE' : e.src === 'mem' ? ' MEM ' : e.src === 'memo' ? 'MEMO ' : ' NET ';
+          return '<div class="objrow" data-i="' + i + '">' +
+                   '<div class="objhead">' +
+                     '<span class="' + srcCls + '">' + srcTxt + '</span> ' +
+                     '<span class="kind k-' + (e.kind || '').replace(/[^a-z]/g, '') + '">' + (e.kind || '?') + '</span> ' +
+                     '<span class="oid">' + e.path + '</span>' +
+                     '<span class="meta">' + e.bytes + 'B · ' + e.ms.toFixed(0) + 'ms' +
+                       (e.cachedAt ? ' · ' + ago(e.cachedAt) : '') + '</span>' +
+                   '</div>' +
+                   '<div class="objwhy">' + (e.reason || '') + '</div>' +
+                   '<pre class="objbody" hidden>' + (e.preview
+                        ? esc2(e.preview.slice(0, 4000)) + (e.preview.length > 4000 ? '\n… truncated' : '')
+                        : '(not decrypted — this row is the raw fetch)') + '</pre>' +
                  '</div>';
-        }).join('') : '<span class="vdbg-dim">list cleared — navigate to a page to see its objects</span>') + '</div>';
+        }).join('') : '<span class="vdbg-dim">list cleared — navigate to a page to see exactly which objects it needs</span>') + '</div>';
+
+      el('vdbg-body').querySelectorAll('.objrow').forEach(function (row) {
+        row.querySelector('.objhead').addEventListener('click', function () {
+          var b = row.querySelector('.objbody');
+          b.hidden = !b.hidden;
+          row.classList.toggle('open', !b.hidden);
+        });
+      });
       function row(k, v) { return '<div class="k">' + k + '</div><div class="v">' + String(v).replace(/</g, '&lt;') + '</div>'; }
     }
 
@@ -405,6 +485,24 @@
     var wasOpen = false;
     try { wasOpen = localStorage.getItem('sgit-vdbg-open') === '1'; } catch (e) {}
     if (wasOpen) el('vdbg').classList.add('open');
+
+    // width is draggable and remembered
+    try {
+      var w = parseInt(localStorage.getItem('sgit-vdbg-w') || '0', 10);
+      if (w > 300) el('vdbg').style.width = Math.min(w, window.innerWidth - 40) + 'px';
+    } catch (e) {}
+    (function () {
+      var grip = el('vdbg-grip'), dragging = false;
+      function move(x) {
+        var w = Math.max(320, Math.min(window.innerWidth - 40, window.innerWidth - x));
+        el('vdbg').style.width = w + 'px';
+        try { localStorage.setItem('sgit-vdbg-w', String(w)); } catch (e) {}
+      }
+      grip.addEventListener('mousedown', function (ev) { dragging = true; ev.preventDefault(); document.body.style.userSelect = 'none'; });
+      window.addEventListener('mousemove', function (ev) { if (dragging) move(ev.clientX); });
+      window.addEventListener('mouseup',   function () { dragging = false; document.body.style.userSelect = ''; });
+      grip.addEventListener('touchmove', function (ev) { if (ev.touches[0]) move(ev.touches[0].clientX); }, { passive: true });
+    })();
 
     el('vdbg-toggle').addEventListener('click', function () { setPanel(!el('vdbg').classList.contains('open')); });
     el('vdbg-close').addEventListener('click', function () { setPanel(false); });
