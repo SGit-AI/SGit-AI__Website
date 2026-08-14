@@ -105,6 +105,11 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
       fails++; console.log('NOJS FAIL', rel, '-> no CSS-only reveal failsafe');
     }
     if (!/rel="canonical"/.test(html)) { fails++; console.log('CANONICAL FAIL', rel); }
+    for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      try { JSON.parse(m[1]); }
+      catch (e) { fails++; console.log('JSONLD FAIL', rel, e.message); }
+    }
+    if (!/application\/ld\+json/.test(html)) { fails++; console.log('JSONLD FAIL', rel, '-> no structured data'); }
   }
   const need = ['robots.txt', 'sitemap.xml', 'llms.txt', 'llms-full.txt'];
   for (const n of need) {

@@ -8,9 +8,10 @@ Release process (see admin/index.html):
 """
 import os
 import re
+import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.1.26'
+SITE_VERSION = 'v0.1.27'
 BUILD_DATE   = '2026-08-14'
 
 def find_vault_root():
@@ -23,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.26', '2026-08-14', 'this release',
+    ('v0.1.27', '2026-08-14', 'this release',
+     "Entity disambiguation, after checking what search actually returns. Google's AI Overview for the bare query already knows this project — and sources it from PyPI, because the PyPI page never linked here and this site was not in the index. \"sgit\" is also an Android Git client, an Indian engineering college and a class of shell shortcut, so the job is not only being indexed but being resolved to the right thing. Every page now carries JSON-LD: a SoftwareApplication node with sameAs pointing at the PyPI and GitHub identifiers that already rank, an explicit disambiguatingDescription naming the collisions, and a per-page TechArticle node. Google's own 2026 guidance says structured data is not required for generative-AI features — this is here for entity resolution, not ranking. The validator now fails the build if a page has no structured data or if any JSON-LD block does not parse."),
+    ('v0.1.26', '2026-08-14', 'obj-cas-imm-5da2eb791bb2',
      "Acts on an inbound brief from an agent that tried to use this site as documentation and could not. It reported that the site did not rank for its own positioning language and guessed the pages might be client-side rendered. They are not — the full text is in the served HTML — but the fade-in that hides the unstyled flash left body{opacity:0} until a JavaScript bootstrap ran, so any client applying our CSS without running that bootstrap rendered a complete but entirely invisible page (measured: 15,733 characters at opacity 0), which is also a hidden-text signal to an indexer. Fixed with a noscript override and a CSS-only reveal failsafe, both now enforced by the validator. Adds the crawler surface that never existed: robots.txt, a generated sitemap.xml covering every page, and canonical plus Open Graph tags. Adds llms-full.txt — every page in one document — for the very common agent harness that will not follow a link out of a fetched file, and makes llms.txt self-sufficient: inline answers to the common questions (including exactly which git operations exist and which do not) and per-page key facts, on the brief's observation that for such an agent the descriptions are the only content it will ever see. The brief and what changed are published on the briefs page."),
     ('v0.1.25', '2026-08-14', 'obj-cas-imm-1861dd16dd11',
      "Three changes that go together. (1) Every page now has a .md twin at the same path, generated from the same content so the two cannot drift, with internal links rewritten to point at markdown — an agent can traverse the whole site without parsing HTML, and llms.txt is now generated from the page registry rather than hand-maintained. (2) A git-and-sgit comparison on the Why page that says plainly where git is better — performance at scale, ecosystem, bisect/blame/rebase, partial commits — and how the two run side by side, as they do on this site. (3) Use cases moved to /use-cases/ with a page per situation: the problem, a working recipe on shipped commands, an honest evidence status (proven / partial / pattern), and a brief you can hand to an agent. Validator gained three rules: every page has a markdown twin, markdown links resolve, and no raw HTML leaks into the markdown."),
@@ -163,6 +166,56 @@ def footer(p, md=''):
   </div>
 </div></footer>"""
 
+# ---------------------------------------------------------------- structured data
+# Google's 2026 AI-optimisation guidance is explicit that structured data is not required
+# to appear in generative-AI features — "it is still SEO". It is included here for a
+# different and specific reason: "sgit" is an ambiguous string. It also names an Android
+# Git client, an Indian engineering college, and a class of shell shortcut, and Google's
+# AI Overview for the bare query currently disambiguates between them while sourcing this
+# project from PyPI. sameAs links the site to the identifiers that already rank, which is
+# how an entity gets resolved to the right thing rather than to the most popular thing.
+
+def json_ld(path, title, desc):
+    site = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "sgit",
+        "alternateName": ["sgit-ai", "sgit CLI"],
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Version control",
+        "operatingSystem": "macOS, Linux, Windows",
+        "url": "https://sgit.ai",
+        "downloadUrl": "https://pypi.org/project/sgit-ai/",
+        "installUrl": "https://pypi.org/project/sgit-ai/",
+        "softwareHelp": "https://sgit.ai/docs/",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "programmingLanguage": "Python",
+        "softwareRequirements": "Python >= 3.11",
+        "description": ("git for encrypted vaults: clone, commit, branch and merge files that are "
+                        "encrypted client-side with AES-256-GCM before they leave your machine. The "
+                        "server stores ciphertext under opaque ids and never sees filenames, contents "
+                        "or commit messages."),
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+        "sameAs": ["https://pypi.org/project/sgit-ai/",
+                   "https://github.com/SGit-AI/SGit-AI__CLI",
+                   "https://github.com/SGit-AI/SGit-AI__Website"],
+        "disambiguatingDescription": ("Distinct from SGit, the Android Git client, and from SGIT, "
+                                      "the Dr. Samuel George Institute of Engineering and Technology. "
+                                      "This is the encrypted-vault CLI published to PyPI as sgit-ai."),
+    }
+    page_node = {"@context": "https://schema.org",
+                 "@type": "TechArticle" if path != 'index.html' else "WebSite",
+                 "name": title, "headline": title, "description": desc,
+                 "url": f"https://sgit.ai/{path}",
+                 "inLanguage": "en",
+                 "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"},
+                 "about": {"@type": "SoftwareApplication", "name": "sgit",
+                           "sameAs": "https://pypi.org/project/sgit-ai/"}}
+    blocks = [site, page_node] if path == 'index.html' else [page_node]
+    return '\n'.join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False)
+                      + '</script>' for b in blocks)
+
+
 def page(path, title, desc, here, body):
     p = '../' if '/' in path else ''
     md_name = os.path.basename(path)[:-5] + '.md'
@@ -181,6 +234,7 @@ def page(path, title, desc, here, body):
 <meta property="og:description" content="{desc}">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="{md_name}" title="This page as markdown">
+{json_ld(path, title, desc)}
 {CRITICAL}
 </head>
 <body>
