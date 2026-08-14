@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.20</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.22</a>
   <a class="nl" href="../why.html">Why</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
@@ -37,7 +37,7 @@
 </div>
 
 <button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
-<div class="vdbg" id="vdbg">
+<div class="vdbg vdbg-noanim" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
   <h3>Vault debug <a class="vdbg-help" href="how-this-works.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
@@ -67,6 +67,31 @@
 </div>
 
 <script>
+/* Restore the panel's remembered width and open state synchronously, before the first paint.
+   The reader script that owns the panel loads asynchronously, so doing this there meant the
+   panel painted at its CSS default, then jumped width and slid open a second later. The
+   .vdbg-noanim class holds the slide transition off until the reader has settled — after
+   which opening and closing by hand animates as before. */
+(function () {
+  try {
+    var p = document.getElementById('vdbg');
+    var w = parseInt(localStorage.getItem('sgit-vdbg-w') || '0', 10);
+    if (w > 300) p.style.width = Math.max(320, Math.min(window.innerWidth - 40, w)) + 'px';
+    if (localStorage.getItem('sgit-vdbg-open') === '1') p.classList.add('open');
+  } catch (e) {}
+  // Two frames later the restored state has been committed, so hand the slide transition back
+  // for user-driven open/close. Done here rather than in the reader so the panel still animates
+  // normally even if the vault is unreachable and the reader never boots.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      var p = document.getElementById('vdbg');
+      if (p) p.classList.remove('vdbg-noanim');
+    });
+  });
+})();
+</script>
+
+<script>
 (function(){
   'use strict';
   var R = document.documentElement.getAttribute('data-root') || '';
@@ -92,7 +117,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.20</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.22</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>
