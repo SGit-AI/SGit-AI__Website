@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.19</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.20</a>
   <a class="nl" href="../why.html">Why</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
@@ -40,7 +40,7 @@
 <div class="vdbg" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
-  <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <h3>Vault debug <a class="vdbg-help" href="how-this-works.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
     <button id="vdbg-reset" type="button">clear list</button>
@@ -58,6 +58,10 @@
     filenames are encrypted inside them, so building the navigation means reading every
     directory. That index is a pure function of the commit id, so it is memoised — after the
     first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
+  </div>
+  <div class="vdbg-more">
+    <a href="how-this-works.html">How this page works &rarr;</a>
+    <span>Architecture diagrams, the object model, the cache tiers, and how two Claude&nbsp;Code sessions publish into this vault.</span>
   </div>
   </div>
 </div>
@@ -88,7 +92,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.19</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.20</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>

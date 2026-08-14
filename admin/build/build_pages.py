@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.19'
+SITE_VERSION = 'v0.1.20'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.19', '2026-08-14', 'this release',
+    ('v0.1.20', '2026-08-14', 'this release',
+     "The vault panel now links to the page that explains it. There is a compact “how this works” link in the panel header (always visible) and a fuller card at the foot of the panel pointing at deploy/how-this-works.html — the panel is where you are when the question occurs to you, so it is where the answer should be offered."),
+    ('v0.1.19', '2026-08-14', 'obj-cas-imm-fe67d9589a2e',
      "Fixes the resize grip, which shipped in v0.1.18 but was unusable: it was absolutely positioned inside the panel\'s scrolling area, so it scrolled out of reach as soon as you moved down the object list, and at 6px fully transparent it was invisible anyway. The panel is now a flex shell — a fixed 12px drag rail with a visible handle, plus a separately scrolling body — and dragging uses pointer events with capture (mouse, pen and touch). Double-click the rail to reset the width."),
     ('v0.1.18', '2026-08-14', 'obj-cas-imm-6eded1c95732',
      'Vault panel becomes an object inspector: every row now shows what the object IS (ref/commit/tree/blob), WHY it was read, and — on click — its decrypted contents, pretty-printed for JSON. The panel is width-resizable (dragged from its left edge, remembered). Plus a real optimisation the panel made obvious: the path→blob index is a pure function of the commit id, so it is now memoised in localStorage — a first visit walks every tree to learn the encrypted filenames, but subsequent visits to an unchanged commit read zero tree objects.'),
@@ -750,7 +752,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
 <div class="vdbg" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
-  <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <h3>Vault debug <a class="vdbg-help" href="how-this-works.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
     <button id="vdbg-reset" type="button">clear list</button>
@@ -768,6 +770,10 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
     filenames are encrypted inside them, so building the navigation means reading every
     directory. That index is a pure function of the commit id, so it is memoised — after the
     first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
+  </div>
+  <div class="vdbg-more">
+    <a href="how-this-works.html">How this page works &rarr;</a>
+    <span>Architecture diagrams, the object model, the cache tiers, and how two Claude&nbsp;Code sessions publish into this vault.</span>
   </div>
   </div>
 </div>
