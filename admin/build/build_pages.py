@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.17'
+SITE_VERSION = 'v0.1.18'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.17', '2026-08-12', 'this release',
+    ('v0.1.18', '2026-08-14', 'this release',
+     'Vault panel becomes an object inspector: every row now shows what the object IS (ref/commit/tree/blob), WHY it was read, and — on click — its decrypted contents, pretty-printed for JSON. The panel is width-resizable (dragged from its left edge, remembered). Plus a real optimisation the panel made obvious: the path→blob index is a pure function of the commit id, so it is now memoised in localStorage — a first visit walks every tree to learn the encrypted filenames, but subsequent visits to an unchanged commit read zero tree objects.'),
+    ('v0.1.17', '2026-08-14', 'obj-cas-imm-9d5b50f68679',
      'Vault panel: a "clear list" button that resets the request log and counters without touching the caches (so you can see exactly which objects one page needs); the panel\'s open/closed state now persists across navigation and reloads; cached objects record when they were stored and the panel shows their age. Navigation now scrolls to the top of the content rather than the top of the document. New page: deploy/how-this-works.html — the full architecture with hand-drawn SVG diagrams of the two-session publishing pipeline and the client-side read path.'),
     ('v0.1.16', '2026-08-12', 'obj-cas-imm-34684a789fe6',
      'New /why page answering the sharpest public criticism of the project ("I see no market or value whatsoever") directly and without marketing: who actually has the problem, why git-crypt/Dropbox/S3+KMS do not cover it, the market question answered plainly (the CLI has no revenue attached; hosting is the commercial layer; no TAM claims), where the criticism is right, and a twelve-question FAQ pre-answering the promised follow-ups.'),
@@ -744,6 +746,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
 
 <button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
 <div class="vdbg" id="vdbg">
+  <div class="vdbg-grip" id="vdbg-grip" title="drag to resize"></div>
   <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
@@ -754,10 +757,14 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   <div id="vdbg-note"></div>
   <div class="vdbg-h">what you are looking at</div>
   <div class="vdbg-dim" style="line-height:1.6;white-space:normal;font-family:var(--sans);font-size:.72rem">
-    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally.
-    Objects whose id contains <b>-imm-</b> are content-addressed and therefore immutable, so they
-    are cached permanently; the mutable <b>ref</b> is refetched every load, which is how a new
-    commit is noticed at all. Nothing here is stored on sgit.ai.
+    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally —
+    click one to see what it actually contains. Objects whose id contains <b>-imm-</b> are
+    content-addressed and therefore immutable, so they are cached permanently; the mutable
+    <b>ref</b> is refetched every load, which is how a new commit is noticed at all.
+    <br><br>The <b>tree</b> objects are the reason a first visit reads more than one file:
+    filenames are encrypted inside them, so building the navigation means reading every
+    directory. That index is a pure function of the commit id, so it is memoised — after the
+    first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
   </div>
 </div>
 
