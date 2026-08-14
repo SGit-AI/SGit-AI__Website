@@ -259,6 +259,21 @@ input.shin::placeholder{color:#8b949e;opacity:.6}
 blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid var(--warm);
   background:var(--panel);border-radius:0 10px 10px 0;font-size:1rem;font-style:italic;color:#34363c;
   box-shadow:var(--shadow);line-height:1.7}
+/* ---------- capability stack (why.html) ----------
+   Scoped under .capstack on purpose: a bare .cap would also hit the .sees figure
+   captions, which are <p class="cap"> and long predate this. */
+.capstack{display:flex;flex-direction:column;gap:.9rem;margin:1.4rem 0 2rem}
+.capstack .cap{position:relative;background:var(--panel);border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:10px;padding:1.1rem 1.3rem 1.1rem 3.4rem;box-shadow:var(--shadow)}
+.capstack .capnum{position:absolute;left:1.15rem;top:1.15rem;font-family:var(--mono);font-size:.78rem;
+  font-weight:700;color:var(--accent);letter-spacing:-.03em}
+.capstack .cap h3{margin:0 0 .5rem;font-size:1.05rem;color:#101114;letter-spacing:-.015em}
+.capstack .cap p{margin:.5rem 0;font-size:.92rem;line-height:1.65;color:#34363c}
+.capstack .capvs{background:var(--panel2);border-radius:8px;padding:.7rem .85rem;font-size:.86rem;color:#3c3f45}
+.capstack .capvs b{color:var(--warm)}
+.capstack .capsee{font-size:.82rem;color:var(--dim);margin-bottom:0}
+@media (max-width:560px){.capstack .cap{padding:2.4rem 1rem 1rem}.capstack .capnum{top:.85rem;left:1rem}}
+
 details.faq{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:.5rem 0;
   box-shadow:var(--shadow);overflow:hidden}
 details.faq summary{cursor:pointer;padding:.75rem 1rem;font-size:.9rem;font-weight:600;color:#101114;
