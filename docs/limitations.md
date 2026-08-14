@@ -1,0 +1,38 @@
+# When NOT to use sgit — Docs
+
+> The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
+
+*Source: <https://sgit.ai/docs/limitations.html> · site v0.1.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+
+---
+
+[Docs](index.md) / Project
+
+# When NOT to use sgit
+
+Every tool earns trust faster by stating its edges. Here are sgit's, plainly.
+
+## Don't use sgit if…
+
+- **You need a secrets manager.** sgit refuses to commit `.env` files, `.netrc`, private keys and friends — deliberately. Use a purpose-built secrets manager for credentials; use sgit for documents, data, and working files.
+- **You need long-term API stability guarantees today.** sgit is in beta: it powers production workflows daily and the vault format is versioned (`sgit migrate` handles upgrades), but commands and flags can still evolve between minor versions. Keep `sgit vault backup` archives of anything precious.
+- **You need partial commits.** There is no staging area — a commit snapshots the whole folder. If your workflow depends on committing three of seven changed files, sgit will fight you (use branches instead, or split folders into separate vaults).
+- **Your data is huge binaries that change constantly.** Large files work (they're chunk-uploaded past a ~4 MB threshold), but sgit is built for working sets of documents and code-sized files, not video archives. Storage is versioned: history keeps old ciphertext around until pruned.
+- **You want the server to do things with your data.** Zero knowledge cuts both ways: the server cannot index, search, preview, or process your content. All intelligence lives client-side — that is the point.
+- **You lose keys.** There is no password reset, no recovery, no back door. That's a feature — but only if your key management is real. Password manager, plus `sgit vault backup --include-key` somewhere safe.
+
+## Current gaps (roadmap, honestly)
+
+- **Commit author attribution** is not yet recorded — in multi-agent vaults, per-agent identity currently comes from branch IDs, not signed authorship. Signature slots exist in the format; population is planned work.
+- **Merge drivers** are whole-file three-way. Structured merges (JSON-aware, union) are designed but not yet shipped.
+- **Bare clones** (`clone --bare`) are incomplete.
+- **The full CLI reference** on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).
+
+If one of these gaps blocks you, say so on [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — real usage reports move the roadmap.
+
+[← Working with AI agents](agents.md)
+
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/docs/limitations.html)*
