@@ -14,6 +14,9 @@ Notes for agents:
   every read path has a --json flag.
 - Cross-session state pattern: clone/pull at session start, commit + push at session end.
 
+## Why this exists
+- [Why does this exist?](/why.html): a direct, non-marketing answer to "I see no market or value whatsoever" — the concrete use cases, why git-crypt/Dropbox/S3+KMS don't cover them, where the criticism is right, and a FAQ of hard follow-up questions
+
 ## Docs
 - [What is sgit](/docs/what-is-sgit.html): the pitch, the mechanism, the architecture
 - [Quickstart](/docs/quickstart.html): create, commit, push, clone — in 5 minutes
