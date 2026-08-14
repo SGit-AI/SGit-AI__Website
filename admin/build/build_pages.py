@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.18'
+SITE_VERSION = 'v0.1.19'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.18', '2026-08-14', 'this release',
+    ('v0.1.19', '2026-08-14', 'this release',
+     "Fixes the resize grip, which shipped in v0.1.18 but was unusable: it was absolutely positioned inside the panel\'s scrolling area, so it scrolled out of reach as soon as you moved down the object list, and at 6px fully transparent it was invisible anyway. The panel is now a flex shell — a fixed 12px drag rail with a visible handle, plus a separately scrolling body — and dragging uses pointer events with capture (mouse, pen and touch). Double-click the rail to reset the width."),
+    ('v0.1.18', '2026-08-14', 'obj-cas-imm-6eded1c95732',
      'Vault panel becomes an object inspector: every row now shows what the object IS (ref/commit/tree/blob), WHY it was read, and — on click — its decrypted contents, pretty-printed for JSON. The panel is width-resizable (dragged from its left edge, remembered). Plus a real optimisation the panel made obvious: the path→blob index is a pure function of the commit id, so it is now memoised in localStorage — a first visit walks every tree to learn the encrypted filenames, but subsequent visits to an unchanged commit read zero tree objects.'),
     ('v0.1.17', '2026-08-14', 'obj-cas-imm-9d5b50f68679',
      'Vault panel: a "clear list" button that resets the request log and counters without touching the caches (so you can see exactly which objects one page needs); the panel\'s open/closed state now persists across navigation and reloads; cached objects record when they were stored and the panel shows their age. Navigation now scrolls to the top of the content rather than the top of the document. New page: deploy/how-this-works.html — the full architecture with hand-drawn SVG diagrams of the two-session publishing pipeline and the client-side read path.'),
@@ -746,7 +748,8 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
 
 <button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
 <div class="vdbg" id="vdbg">
-  <div class="vdbg-grip" id="vdbg-grip" title="drag to resize"></div>
+  <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
+  <div class="vdbg-inner">
   <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
@@ -765,6 +768,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
     filenames are encrypted inside them, so building the navigation means reading every
     directory. That index is a pure function of the commit id, so it is memoised — after the
     first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
+  </div>
   </div>
 </div>
 

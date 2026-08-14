@@ -486,22 +486,38 @@
     try { wasOpen = localStorage.getItem('sgit-vdbg-open') === '1'; } catch (e) {}
     if (wasOpen) el('vdbg').classList.add('open');
 
-    // width is draggable and remembered
+    // width is draggable (pointer events cover mouse, pen and touch) and remembered
+    var DEFAULT_W = Math.min(460, Math.round(window.innerWidth * 0.92));
+    function applyWidth(w) {
+      w = Math.max(320, Math.min(window.innerWidth - 40, Math.round(w)));
+      el('vdbg').style.width = w + 'px';
+      try { localStorage.setItem('sgit-vdbg-w', String(w)); } catch (e) {}
+    }
     try {
-      var w = parseInt(localStorage.getItem('sgit-vdbg-w') || '0', 10);
-      if (w > 300) el('vdbg').style.width = Math.min(w, window.innerWidth - 40) + 'px';
+      var savedW = parseInt(localStorage.getItem('sgit-vdbg-w') || '0', 10);
+      if (savedW > 300) applyWidth(savedW);
     } catch (e) {}
     (function () {
-      var grip = el('vdbg-grip'), dragging = false;
-      function move(x) {
-        var w = Math.max(320, Math.min(window.innerWidth - 40, window.innerWidth - x));
-        el('vdbg').style.width = w + 'px';
-        try { localStorage.setItem('sgit-vdbg-w', String(w)); } catch (e) {}
+      var grip = el('vdbg-grip');
+      grip.addEventListener('pointerdown', function (ev) {
+        ev.preventDefault();
+        grip.setPointerCapture(ev.pointerId);
+        grip.classList.add('dragging');
+        document.body.style.userSelect = 'none';
+      });
+      grip.addEventListener('pointermove', function (ev) {
+        if (!grip.classList.contains('dragging')) return;
+        applyWidth(window.innerWidth - ev.clientX);
+      });
+      function stop(ev) {
+        if (!grip.classList.contains('dragging')) return;
+        grip.classList.remove('dragging');
+        document.body.style.userSelect = '';
+        try { grip.releasePointerCapture(ev.pointerId); } catch (e) {}
       }
-      grip.addEventListener('mousedown', function (ev) { dragging = true; ev.preventDefault(); document.body.style.userSelect = 'none'; });
-      window.addEventListener('mousemove', function (ev) { if (dragging) move(ev.clientX); });
-      window.addEventListener('mouseup',   function () { dragging = false; document.body.style.userSelect = ''; });
-      grip.addEventListener('touchmove', function (ev) { if (ev.touches[0]) move(ev.touches[0].clientX); }, { passive: true });
+      grip.addEventListener('pointerup', stop);
+      grip.addEventListener('pointercancel', stop);
+      grip.addEventListener('dblclick', function () { applyWidth(DEFAULT_W); });
     })();
 
     el('vdbg-toggle').addEventListener('click', function () { setPanel(!el('vdbg').classList.contains('open')); });
