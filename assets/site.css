@@ -231,6 +231,8 @@ input.shin::placeholder{color:#8b949e;opacity:.6}
   font-family:var(--mono);font-size:.72rem;box-shadow:-8px 0 30px rgba(0,0,0,.3)}
 .vdbg-inner{flex:1;min-width:0;overflow-y:auto;padding:1rem 1.1rem}
 .vdbg.open{transform:translateX(0)}
+/* the slide is for hand-driven open/close only — never for restoring state on load */
+.vdbg.vdbg-noanim{transition:none}
 .vdbg h3{font-family:var(--sans);font-size:.8rem;color:#fff;margin:0 0 .8rem;display:flex;justify-content:space-between;align-items:center}
 .vdbg-help{margin-left:auto;margin-right:.7rem;font-family:var(--sans);font-size:.68rem;font-weight:400;
   color:#2dd4bf;text-decoration:none;border-bottom:1px dotted #1f6f68;white-space:nowrap}
@@ -296,6 +298,17 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
 .objrow .meta{color:#6b7280;font-size:.65rem;margin-left:auto;white-space:nowrap}
 .objwhy{color:#8b949e;font-size:.66rem;line-height:1.45;padding:.1rem 0 .15rem 0;white-space:normal;font-family:var(--sans)}
 .objbody{background:#080b10;border:1px solid #1d2532;border-radius:6px;margin:.35rem 0 .2rem;padding:.5rem .6rem;
-  font-size:.64rem;line-height:1.5;max-height:280px;overflow:auto;white-space:pre-wrap;word-break:break-word;color:#9fb3c8}
+  font-size:.64rem;line-height:1.55;max-height:320px;overflow:auto;white-space:pre;word-break:normal;
+  overflow-wrap:normal;tab-size:2;color:#9fb3c8}
+/* json syntax colours — key / string / number / literal / punctuation */
+.objbody .j-k{color:#7ee3d8}
+.objbody .j-s{color:#e3a86c}
+.objbody .j-n{color:#a5b4fc}
+.objbody .j-l{color:#d2a8ff;font-style:italic}
+.objbody .j-p{color:#4c5566}
+.objbody::-webkit-scrollbar{height:9px;width:9px}
+.objbody::-webkit-scrollbar-track{background:#080b10}
+.objbody::-webkit-scrollbar-thumb{background:#2c3646;border-radius:5px}
+.objbody::-webkit-scrollbar-thumb:hover{background:#3d4a5e}
 .objrow.open .objhead{background:#161b26}
 .vdbg-objs .m{color:#d2a8ff}

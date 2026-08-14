@@ -333,6 +333,24 @@
 
   function el(id) { return document.getElementById(id); }
   function esc2(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+  // Minimal JSON syntax highlighter for the object inspector. Escaping happens first, then a
+  // single left-to-right pass tokenises the escaped text — strings are matched before anything
+  // else, so a brace or digit *inside* a string is consumed by the string branch and never
+  // recoloured. Safe on truncated input: an unterminated token simply fails to match and stays
+  // plain. Only used when the full preview parsed as JSON, so prose is left alone.
+  var JSON_TOK = /("(?:\\.|[^"\\])*")(\s*:)?|\b(?:true|false|null)\b|-?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?|[{}\[\],]/g;
+  function hlJson(text) {
+    return esc2(text).replace(JSON_TOK, function (m, str, colon) {
+      if (str) return colon
+        ? '<span class="j-k">' + str + '</span><span class="j-p">' + colon + '</span>'
+        : '<span class="j-s">' + str + '</span>';
+      if (m === 'true' || m === 'false' || m === 'null') return '<span class="j-l">' + m + '</span>';
+      if (/^[{}\[\],]$/.test(m)) return '<span class="j-p">' + m + '</span>';
+      return '<span class="j-n">' + m + '</span>';
+    });
+  }
+  function isJson(text) { try { JSON.parse(text); return true; } catch (e) { return false; } }
   function fmtBytes(n) { return n < 1024 ? n + ' B' : (n / 1024).toFixed(1) + ' KB'; }
   function ago(ms) {
     if (!ms) return '';
@@ -429,7 +447,8 @@
                    '</div>' +
                    '<div class="objwhy">' + (e.reason || '') + '</div>' +
                    '<pre class="objbody" hidden>' + (e.preview
-                        ? esc2(e.preview.slice(0, 4000)) + (e.preview.length > 4000 ? '\n… truncated' : '')
+                        ? (isJson(e.preview) ? hlJson : esc2)(e.preview.slice(0, 4000)) +
+                          (e.preview.length > 4000 ? '\n… truncated' : '')
                         : '(not decrypted — this row is the raw fetch)') + '</pre>' +
                  '</div>';
         }).join('') : '<span class="vdbg-dim">list cleared — navigate to a page to see exactly which objects it needs</span>') + '</div>';
@@ -482,6 +501,8 @@
       el('vdbg').classList.toggle('open', open);
       try { localStorage.setItem('sgit-vdbg-open', open ? '1' : '0'); } catch (e) {}
     }
+    // The inline script next to the panel markup already restored open state and width before
+    // the first paint; this is the fallback for a page that ships the panel without it.
     var wasOpen = false;
     try { wasOpen = localStorage.getItem('sgit-vdbg-open') === '1'; } catch (e) {}
     if (wasOpen) el('vdbg').classList.add('open');

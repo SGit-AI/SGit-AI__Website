@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.20'
+SITE_VERSION = 'v0.1.22'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.20', '2026-08-14', 'this release',
+    ('v0.1.22', '2026-08-14', 'this release',
+     "Kills the load-time flicker of the vault panel. The panel's remembered width and open state were restored by the reader script, which loads asynchronously — so the panel painted at its CSS default width, then jumped and slid open a beat later. Restoration now happens synchronously, before the first paint, and the slide transition is suppressed until state has settled. Opening and closing the panel by hand still animates; restoring it never does."),
+    ('v0.1.21', '2026-08-14', 'obj-cas-imm-5a60bc3bf25b',
+     "Object bodies in the vault panel are now syntax-coloured like an editor — keys, strings, numbers, literals and punctuation each get their own colour — and word wrapping is off, so structure survives and long values (base64 ciphertext, object ids) scroll horizontally instead of folding into a wall of text. Highlighting is applied only when the decrypted object actually parses as JSON, so markdown blobs stay plain."),
+    ('v0.1.20', '2026-08-14', 'obj-cas-imm-78146d2f4f86',
      "The vault panel now links to the page that explains it. There is a compact “how this works” link in the panel header (always visible) and a fuller card at the foot of the panel pointing at deploy/how-this-works.html — the panel is where you are when the question occurs to you, so it is where the answer should be offered."),
     ('v0.1.19', '2026-08-14', 'obj-cas-imm-fe67d9589a2e',
      "Fixes the resize grip, which shipped in v0.1.18 but was unusable: it was absolutely positioned inside the panel\'s scrolling area, so it scrolled out of reach as soon as you moved down the object list, and at 6px fully transparent it was invisible anyway. The panel is now a flex shell — a fixed 12px drag rail with a visible handle, plus a separately scrolling body — and dragging uses pointer events with capture (mouse, pen and touch). Double-click the rail to reset the width."),
@@ -749,7 +753,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
 </div>
 
 <button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
-<div class="vdbg" id="vdbg">
+<div class="vdbg vdbg-noanim" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
   <h3>Vault debug <a class="vdbg-help" href="how-this-works.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
@@ -777,6 +781,31 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   </div>
   </div>
 </div>
+
+<script>
+/* Restore the panel's remembered width and open state synchronously, before the first paint.
+   The reader script that owns the panel loads asynchronously, so doing this there meant the
+   panel painted at its CSS default, then jumped width and slid open a second later. The
+   .vdbg-noanim class holds the slide transition off until the reader has settled — after
+   which opening and closing by hand animates as before. */
+(function () {
+  try {
+    var p = document.getElementById('vdbg');
+    var w = parseInt(localStorage.getItem('sgit-vdbg-w') || '0', 10);
+    if (w > 300) p.style.width = Math.max(320, Math.min(window.innerWidth - 40, w)) + 'px';
+    if (localStorage.getItem('sgit-vdbg-open') === '1') p.classList.add('open');
+  } catch (e) {}
+  // Two frames later the restored state has been committed, so hand the slide transition back
+  // for user-driven open/close. Done here rather than in the reader so the panel still animates
+  // normally even if the vault is unreachable and the reader never boots.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      var p = document.getElementById('vdbg');
+      if (p) p.classList.remove('vdbg-noanim');
+    });
+  });
+})();
+</script>
 
 <script>
 (function(){

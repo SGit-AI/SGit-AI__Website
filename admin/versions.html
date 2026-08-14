@@ -12,7 +12,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.20</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.22</a>
   <a class="nl" href="../why.html">Why</a>
   <a class="nl" href="../try.html">Try</a>
   <a class="nl" href="../use-cases.html">Use Cases</a>
@@ -27,10 +27,12 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">This site ships by pushing its vault, and the site version — <b>v0.1.20</b>, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own <code>sgit history log</code> is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">This site ships by pushing its vault, and the site version — <b>v0.1.22</b>, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own <code>sgit history log</code> is the authoritative audit trail; this page is the human-readable index of it.</p>
   <div class="tablewrap"><table class="vers">
     <tr><th>Version</th><th>Date</th><th>Vault commit</th><th>Changes</th></tr>
-    <tr><td class="vnum">v0.1.20</td><td>2026-08-14</td><td class="vid">this release</td><td>The vault panel now links to the page that explains it. There is a compact “how this works” link in the panel header (always visible) and a fuller card at the foot of the panel pointing at deploy/how-this-works.html — the panel is where you are when the question occurs to you, so it is where the answer should be offered.</td></tr>
+    <tr><td class="vnum">v0.1.22</td><td>2026-08-14</td><td class="vid">this release</td><td>Kills the load-time flicker of the vault panel. The panel's remembered width and open state were restored by the reader script, which loads asynchronously — so the panel painted at its CSS default width, then jumped and slid open a beat later. Restoration now happens synchronously, before the first paint, and the slide transition is suppressed until state has settled. Opening and closing the panel by hand still animates; restoring it never does.</td></tr>
+    <tr><td class="vnum">v0.1.21</td><td>2026-08-14</td><td class="vid">obj-cas-imm-5a60bc3bf25b</td><td>Object bodies in the vault panel are now syntax-coloured like an editor — keys, strings, numbers, literals and punctuation each get their own colour — and word wrapping is off, so structure survives and long values (base64 ciphertext, object ids) scroll horizontally instead of folding into a wall of text. Highlighting is applied only when the decrypted object actually parses as JSON, so markdown blobs stay plain.</td></tr>
+    <tr><td class="vnum">v0.1.20</td><td>2026-08-14</td><td class="vid">obj-cas-imm-78146d2f4f86</td><td>The vault panel now links to the page that explains it. There is a compact “how this works” link in the panel header (always visible) and a fuller card at the foot of the panel pointing at deploy/how-this-works.html — the panel is where you are when the question occurs to you, so it is where the answer should be offered.</td></tr>
     <tr><td class="vnum">v0.1.19</td><td>2026-08-14</td><td class="vid">obj-cas-imm-fe67d9589a2e</td><td>Fixes the resize grip, which shipped in v0.1.18 but was unusable: it was absolutely positioned inside the panel's scrolling area, so it scrolled out of reach as soon as you moved down the object list, and at 6px fully transparent it was invisible anyway. The panel is now a flex shell — a fixed 12px drag rail with a visible handle, plus a separately scrolling body — and dragging uses pointer events with capture (mouse, pen and touch). Double-click the rail to reset the width.</td></tr>
     <tr><td class="vnum">v0.1.18</td><td>2026-08-14</td><td class="vid">obj-cas-imm-6eded1c95732</td><td>Vault panel becomes an object inspector: every row now shows what the object IS (ref/commit/tree/blob), WHY it was read, and — on click — its decrypted contents, pretty-printed for JSON. The panel is width-resizable (dragged from its left edge, remembered). Plus a real optimisation the panel made obvious: the path→blob index is a pure function of the commit id, so it is now memoised in localStorage — a first visit walks every tree to learn the encrypted filenames, but subsequent visits to an unchanged commit read zero tree objects.</td></tr>
     <tr><td class="vnum">v0.1.17</td><td>2026-08-14</td><td class="vid">obj-cas-imm-9d5b50f68679</td><td>Vault panel: a "clear list" button that resets the request log and counters without touching the caches (so you can see exactly which objects one page needs); the panel's open/closed state now persists across navigation and reloads; cached objects record when they were stored and the panel shows their age. Navigation now scrolls to the top of the content rather than the top of the document. New page: deploy/how-this-works.html — the full architecture with hand-drawn SVG diagrams of the two-session publishing pipeline and the client-side read path.</td></tr>
@@ -60,7 +62,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.20</a> · <a href="../admin/index.html">engineering</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.1.22</a> · <a href="../admin/index.html">engineering</a></p>
   </div>
   <div>
     <h4>Docs</h4>
