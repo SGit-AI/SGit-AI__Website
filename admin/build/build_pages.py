@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.16'
+SITE_VERSION = 'v0.1.17'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.16', '2026-08-12', 'this release',
+    ('v0.1.17', '2026-08-12', 'this release',
+     'Vault panel: a "clear list" button that resets the request log and counters without touching the caches (so you can see exactly which objects one page needs); the panel\'s open/closed state now persists across navigation and reloads; cached objects record when they were stored and the panel shows their age. Navigation now scrolls to the top of the content rather than the top of the document. New page: deploy/how-this-works.html — the full architecture with hand-drawn SVG diagrams of the two-session publishing pipeline and the client-side read path.'),
+    ('v0.1.16', '2026-08-12', 'obj-cas-imm-34684a789fe6',
      'New /why page answering the sharpest public criticism of the project ("I see no market or value whatsoever") directly and without marketing: who actually has the problem, why git-crypt/Dropbox/S3+KMS do not cover it, the market question answered plainly (the CLI has no revenue attached; hosting is the commercial layer; no TAM claims), where the criticism is right, and a twelve-question FAQ pre-answering the promised follow-ups.'),
     ('v0.1.15', '2026-08-12', 'obj-cas-imm-0959988dd4fe',
      'New Deploy section: self-hosting guidance rendered LIVE in the browser from an encrypted SG/Send vault, using a published read-only key — ciphertext over CORS, AES-256-GCM decryption via Web Crypto, no copy stored on this site and no rebuild when the SG/Send team pushes. Includes a three-tier cache (session memory, permanent Cache API for immutable objects, always-fresh ref) and a vault debug panel showing the HEAD commit, per-object request log, and cache hit/miss stats.'),
@@ -732,7 +734,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
   <h1>Run your own SG/Send server</h1>
   <p class="lead">Deployment guidance for standing up your own zero-knowledge vault server — Docker, AWS, GCP, Heroku, or a static host. <b>These pages are not part of this website.</b> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
-  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading.</div>
+  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. <a href="how-this-works.html"><b>Full architecture, with diagrams →</b></a></div>
 </main>
 
 <div class="vdocs">
@@ -745,6 +747,7 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   <h3>Vault debug <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
+    <button id="vdbg-reset" type="button">clear list</button>
     <button id="vdbg-refresh" type="button">check for new commit</button>
     <button id="vdbg-clear" type="button">clear cache &amp; reload</button>
   </div>
@@ -778,6 +781,191 @@ DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>"""
+
+# ============================================================ deploy/how-this-works.html
+HOW_THIS_WORKS = """<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Deploy</a> / How this works</p>
+  <h1>How this page works</h1>
+  <p class="lead">The <a href="index.html">deployment guidance</a> next door is not stored on this website. It is written by a different team, in a different Claude Code session, into a different encrypted vault — and your browser assembles it from ciphertext at the moment you ask for it. This page explains the whole mechanism, because it is a compact demonstration of what sgit is actually for.</p>
+
+  <h2>Two sessions, two vaults, one page</h2>
+  <p>Nothing here is a pipeline anyone had to build. Both sides just use sgit, and the shared vault format does the integration:</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 900 470" role="img" aria-label="Two Claude Code sessions publish into two separate encrypted vaults; the browser combines them">
+    <defs>
+      <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="#8a8d94"/>
+      </marker>
+      <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="#0f766e"/>
+      </marker>
+    </defs>
+    <style>
+      .bx{fill:#fff;stroke:#e5e1d5;stroke-width:1.5;rx:10}
+      .bxa{fill:#f0fbf9;stroke:#0f766e;stroke-width:1.5;rx:10}
+      .bxs{fill:#0d1117;rx:10}
+      .t{font:600 13px ui-sans-serif,system-ui,sans-serif;fill:#101114}
+      .s{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#5c5f66}
+      .w{font:600 13px ui-sans-serif,system-ui,sans-serif;fill:#fff}
+      .ws{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b949e}
+      .lb{font:11px ui-sans-serif,system-ui,sans-serif;fill:#5c5f66}
+      .ln{stroke:#8a8d94;stroke-width:1.5;fill:none;marker-end:url(#a1)}
+      .lna{stroke:#0f766e;stroke-width:1.8;fill:none;marker-end:url(#a2)}
+      .hd{font:700 10px ui-sans-serif,system-ui,sans-serif;fill:#8a8d94;letter-spacing:.12em}
+    </style>
+
+    <text x="20" y="20" class="hd">SG/SEND TEAM</text>
+    <rect class="bx" x="20" y="30" width="270" height="58"/>
+    <text x="36" y="54" class="t">Claude Code session</text>
+    <text x="36" y="74" class="s">writes deployment markdown</text>
+
+    <text x="610" y="20" class="hd">SGIT.AI TEAM</text>
+    <rect class="bx" x="610" y="30" width="270" height="58"/>
+    <text x="626" y="54" class="t">Claude Code session</text>
+    <text x="626" y="74" class="s">generates the site pages</text>
+
+    <path class="ln" d="M155 88 L155 130"/>
+    <text x="165" y="113" class="lb">sgit push</text>
+    <path class="ln" d="M745 88 L745 130"/>
+    <text x="755" y="113" class="lb">sgit push + git push</text>
+
+    <rect class="bxa" x="20" y="130" width="270" height="62"/>
+    <text x="36" y="154" class="t">Vault · deployment docs</text>
+    <text x="36" y="174" class="s">fyofmkvr · 17 files, encrypted</text>
+
+    <rect class="bxa" x="610" y="130" width="270" height="62"/>
+    <text x="626" y="154" class="t">Vault · this website</text>
+    <text x="626" y="174" class="s">+ mirrored to a git repo</text>
+
+    <path class="ln" d="M155 192 L155 240"/>
+    <path class="ln" d="M745 192 L745 240"/>
+
+    <rect class="bxs" x="20" y="240" width="270" height="70"/>
+    <text x="36" y="266" class="w">SG/Send server</text>
+    <text x="36" y="286" class="ws">ciphertext + opaque ids only</text>
+    <text x="36" y="302" class="ws">cannot read any of it</text>
+
+    <rect class="bxs" x="610" y="240" width="270" height="70"/>
+    <text x="626" y="266" class="w">GitHub Pages</text>
+    <text x="626" y="286" class="ws">static HTML + the public</text>
+    <text x="626" y="302" class="ws">read key (read-only)</text>
+
+    <path class="lna" d="M155 310 L155 360 L330 360 L330 392"/>
+    <text x="168" y="352" class="lb">encrypted objects, over CORS</text>
+    <path class="ln" d="M745 310 L745 360 L570 360 L570 392"/>
+    <text x="470" y="352" class="lb" text-anchor="end">page shell</text>
+
+    <rect class="bxa" x="240" y="392" width="420" height="62"/>
+    <text x="262" y="416" class="t">Your browser — the only place with both halves</text>
+    <text x="262" y="436" class="s">AES-256-GCM decryption happens here, in this tab</text>
+  </svg>
+  <p class="figcap">Neither team's session knows about the other's. The only shared thing is a vault format and a published read key.</p>
+  </div>
+
+  <p>Concretely, when the SG/Send team improves a deployment guide, the sequence is: edit markdown → <code>sgit commit</code> → <code>sgit push</code>. That is the entire publish step. There is no build to trigger on our side, no webhook, no content sync, and no copy of their text in our repository. The next visitor to the Deploy page gets the new version because the browser reads their vault's current commit.</p>
+
+  <h2>What happens when you open the page</h2>
+  <p>Everything below runs client-side, in about 300 lines of JavaScript using the browser's built-in Web Crypto API:</p>
+
+  <div class="figure">
+  <svg viewBox="0 0 900 300" role="img" aria-label="The client-side read path from read key to rendered page">
+    <style>
+      .n{fill:#fff;stroke:#e5e1d5;stroke-width:1.5;rx:9}
+      .na{fill:#f0fbf9;stroke:#0f766e;stroke-width:1.5;rx:9}
+      .nt{font:600 12px ui-sans-serif,system-ui,sans-serif;fill:#101114}
+      .ns{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;fill:#5c5f66}
+      .fl{stroke:#8a8d94;stroke-width:1.5;fill:none;marker-end:url(#a1)}
+      .cc{font:10px ui-sans-serif,system-ui,sans-serif;fill:#0f766e}
+      .cw{font:10px ui-sans-serif,system-ui,sans-serif;fill:#a16207}
+    </style>
+    <rect class="na" x="10" y="40" width="150" height="56"/>
+    <text x="24" y="63" class="nt">read key</text>
+    <text x="24" y="81" class="ns">64 hex, published</text>
+
+    <path class="fl" d="M160 68 L205 68"/>
+    <rect class="n" x="210" y="40" width="160" height="56"/>
+    <text x="224" y="63" class="nt">derive file id</text>
+    <text x="224" y="81" class="ns">HMAC-SHA256</text>
+
+    <path class="fl" d="M370 68 L415 68"/>
+    <rect class="n" x="420" y="40" width="170" height="56"/>
+    <text x="434" y="63" class="nt">GET the ref</text>
+    <text x="434" y="81" class="ns">always fresh</text>
+    <text x="434" y="112" class="cw">mutable — never cached</text>
+
+    <path class="fl" d="M590 68 L635 68"/>
+    <rect class="n" x="640" y="40" width="170" height="56"/>
+    <text x="654" y="63" class="nt">decrypt</text>
+    <text x="654" y="81" class="ns">AES-256-GCM</text>
+
+    <path class="fl" d="M725 96 L725 130 L160 130 L160 165"/>
+
+    <rect class="n" x="10" y="165" width="185" height="56"/>
+    <text x="24" y="188" class="nt">commit object</text>
+    <text x="24" y="206" class="ns">→ tree id</text>
+
+    <path class="fl" d="M195 193 L240 193"/>
+    <rect class="n" x="245" y="165" width="185" height="56"/>
+    <text x="259" y="188" class="nt">tree walk</text>
+    <text x="259" y="206" class="ns">names decrypted</text>
+    <text x="259" y="238" class="cc">immutable — cached forever</text>
+
+    <path class="fl" d="M430 193 L475 193"/>
+    <rect class="n" x="480" y="165" width="185" height="56"/>
+    <text x="494" y="188" class="nt">blob for this page</text>
+    <text x="494" y="206" class="ns">markdown, decrypted</text>
+
+    <path class="fl" d="M665 193 L710 193"/>
+    <rect class="na" x="715" y="165" width="175" height="56"/>
+    <text x="729" y="188" class="nt">rendered HTML</text>
+    <text x="729" y="206" class="ns">in the page</text>
+  </svg>
+  <p class="figcap">The server answers ordinary GETs for opaque file ids. It never sees a key, a filename, or a byte of plaintext.</p>
+  </div>
+
+  <h2>Why the caching is safe — and why it's this shape</h2>
+  <p>The cache policy is not a tuning choice; it falls out of the data model. Object ids are content hashes <em>of the ciphertext</em>, so an object can never change under its id — which makes it permanently cacheable. The ref, by contrast, is the one mutable pointer, so it is refetched every single load. That combination is what lets the page be both fast and current:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Tier</th><th>What it holds</th><th>Lifetime</th><th>Why</th></tr>
+    <tr><td>memory</td><td>decrypted objects</td><td>this page session</td><td>avoids decrypting the same tree twice while you click around</td></tr>
+    <tr><td>Cache API</td><td>ciphertext of <code>obj-cas-imm-*</code></td><td>until you clear it</td><td>content-addressed ⇒ immutable ⇒ can never be stale</td></tr>
+    <tr><td>none</td><td>the ref (<code>ref-pid-muw-*</code>)</td><td>refetched every load</td><td>it is the mutable HEAD; this is how a new commit is noticed at all</td></tr>
+  </table></div>
+  <p>Measured on this site: a cold load fetches 18 objects (~14 KB); a reload fetches <b>one 69-byte object</b> — the ref — and serves the other 17 from cache. Open the vault panel and press <b>clear list</b>, then click a page, to see exactly which objects that one page needed.</p>
+
+  <h2>Who can see what</h2>
+  <div class="sees" style="margin:1.2rem 0">
+    <div class="cols" style="grid-template-columns:1fr 1fr 1fr">
+      <div class="col srv"><h3>SG/Send server</h3><ul>
+        <li>opaque object ids</li><li>ciphertext blobs</li><li>sizes and timing</li><li>the vault id</li></ul></div>
+      <div class="col srv"><h3>GitHub Pages</h3><ul>
+        <li>the page shell</li><li>the public read key</li><li>no vault content at all</li></ul></div>
+      <div class="col you"><h3>Your browser</h3><ul>
+        <li>the read key</li><li>decrypted filenames</li><li>decrypted content</li><li>the commit history</li></ul></div>
+    </div>
+    <p class="cap">Two hosts, neither of which can read the documents. The decryption exists in exactly one place: the tab in front of you.</p>
+  </div>
+  <p>The read key is deliberately public — it is <em>read-only by construction</em>, derived one-way so it cannot be turned back into write access. Publishing it is what lets the site show the content without the site ever being trusted with the ability to change it. Anyone can verify that: take the key out of <code>deploy/vault.json</code>, run <code>sgit clone --read-key &lt;key&gt; fyofmkvr</code>, and watch a write attempt get refused.</p>
+
+  <h2>Why this is the interesting demo</h2>
+  <ul>
+    <li><b>Two teams integrated without integrating.</b> No API contract was designed, no sync job written, no permissions negotiated. One side pushes to a vault; the other side holds a read key. That is the whole interface.</li>
+    <li><b>Publishing is a git operation.</b> The SG/Send team's release process is <code>sgit push</code> — and their content appears on a website they do not control and cannot deploy to.</li>
+    <li><b>Least privilege that is structural, not procedural.</b> This site <em>cannot</em> alter their documentation, however compromised it might be, because the key it holds does not carry that power.</li>
+    <li><b>The same property scales down to one agent.</b> Give an agent a read key and it can read a knowledge base without any ability to corrupt it; give it the full key and it can contribute. That is the same mechanism this page uses, applied to agent workflows.</li>
+  </ul>
+
+  <h2>The honest trade-offs</h2>
+  <ul>
+    <li><b>Search engines and agents see an empty shell.</b> Content that only exists after decryption is invisible to anything that does not run JavaScript. sgraph.ai solves this by decrypting at the CDN edge and serving <code>.md</code> alongside each page; this site is static, so it does not. That is a real cost of the approach as built here.</li>
+    <li><b>It needs a secure context.</b> Web Crypto is unavailable over plain HTTP, so this only works on HTTPS (or localhost).</li>
+    <li><b>The server can't help.</b> No server-side search, no previews, no summaries — everything is opaque to it. That is the point, and it is also a limitation.</li>
+    <li><b>Diagrams are hand-drawn SVG, not a diagramming library.</b> This site is also served <em>from inside a vault</em>, where external resources are blocked by the app authoring contract — so importing a renderer from a CDN would break the very demonstration this page describes. The constraint chose the implementation.</li>
+  </ul>
+
+  <div class="pagenav"><a href="index.html">← The deployment docs</a><a href="../vault/git-and-vaults.html">Git and vaults →</a></div>
+</main>"""
 
 # ============================================================ skills.html
 SKILLS = """<main class="doc">
@@ -1665,6 +1853,9 @@ PAGES = [
     ('deploy/index.html', 'Run your own SG/Send server — sgit.ai',
      'Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.',
      'deploy', DEPLOY),
+    ('deploy/how-this-works.html', 'How the live-vault docs work — sgit.ai',
+     'A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.',
+     'deploy', HOW_THIS_WORKS),
     ('try.html', 'Try sgit in your browser — sgit.ai',
      'The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.',
      'try', TRY),
