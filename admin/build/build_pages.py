@@ -8,7 +8,7 @@ Release process (see admin/index.html):
 """
 import os
 
-SITE_VERSION = 'v0.1.15'
+SITE_VERSION = 'v0.1.16'
 
 def find_vault_root():
     d = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +20,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.1.15', '2026-08-12', 'this release',
+    ('v0.1.16', '2026-08-12', 'this release',
+     'New /why page answering the sharpest public criticism of the project ("I see no market or value whatsoever") directly and without marketing: who actually has the problem, why git-crypt/Dropbox/S3+KMS do not cover it, the market question answered plainly (the CLI has no revenue attached; hosting is the commercial layer; no TAM claims), where the criticism is right, and a twelve-question FAQ pre-answering the promised follow-ups.'),
+    ('v0.1.15', '2026-08-12', 'obj-cas-imm-0959988dd4fe',
      'New Deploy section: self-hosting guidance rendered LIVE in the browser from an encrypted SG/Send vault, using a published read-only key — ciphertext over CORS, AES-256-GCM decryption via Web Crypto, no copy stored on this site and no rebuild when the SG/Send team pushes. Includes a three-tier cache (session memory, permanent Cache API for immutable objects, always-fresh ref) and a vault debug panel showing the HEAD commit, per-object request log, and cache hit/miss stats.'),
     ('v0.1.14', '2026-08-12', 'obj-cas-imm-3b54c02dbb96',
      'Two new pages, both linked this time: docs/exposed-vault-key.html (the rotation runbook plus the case study of this site\'s own key leak) and briefs.html (cross-team briefs — which v0.1.13 built but never registered, so nothing linked to it). New validator rule: every generated page must be reachable from another page, or the build fails. Added a fourth CLI-team ask: history-preserving rekey.'),
@@ -76,6 +78,7 @@ def nav(p, here):
   <a class="brand" href="{p}index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
+  <a class="{cls('why')}" href="{p}why.html">Why</a>
   <a class="{cls('try')}" href="{p}try.html">Try</a>
   <a class="{cls('use-cases')}" href="{p}use-cases.html">Use Cases</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
@@ -118,6 +121,7 @@ def footer(p):
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
     <a href="{p}security.html">Security</a>
+    <a href="{p}why.html">Why does this exist?</a>
     <a href="{p}use-cases.html">Use cases</a>
     <a href="{p}skills.html">Skills for AI agents</a>
     <a href="{p}briefs.html">Cross-team briefs</a>
@@ -317,6 +321,7 @@ INDEX = """<header class="hero">
     <span><b>Apache-2.0</b></span>
     <span><a href="security.html"><b>security model</b> published</a></span>
     <span><a href="docs/limitations.html"><b>when NOT</b> to use sgit</a></span>
+    <span><a href="why.html"><b>why</b> does this exist?</a></span>
   </div>
 </section>
 
@@ -652,6 +657,76 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
 })();
 </script>"""
 
+# ============================================================ why.html
+WHY = """<main class="doc">
+  <h1>Why does this exist?</h1>
+  <p class="lead">Someone left this under the announcement post. It is the most useful comment we received, so it gets its own page.</p>
+  <blockquote class="challenge">"I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."</blockquote>
+  <p>Fair question. The "don't bother answering" is fair too — most answers to it <em>are</em> marketing, and a good skeptic has learned to discount them in advance. So: no pitch, no adjectives, and the follow-up questions answered in advance rather than deflected. Where the criticism lands, we say so.</p>
+
+  <h2>First, the premise is half right</h2>
+  <p>There is nothing being sold. sgit is Apache-2.0, free, and installable with <code>pip install sgit-ai</code>; the source is on GitHub and the crypto is standard and inspectable. So "why would I buy this" has no answer, because there is no purchase. The question worth answering is <b>why would anyone use it</b> — and that one is narrow and specific:</p>
+  <div class="note" style="font-size:.95rem"><b>You have files that need version control and collaboration, and the place they are stored should not be able to read them.</b><br>If that sentence does not describe a problem you have, sgit is not for you — and no follow-up question will change that. Most people should use git and a private repo. We say so on <a href="docs/limitations.html">the page about when not to use this</a>.</p>
+
+  <h2>Who actually has that problem</h2>
+  <p>Not a market-size claim — just the concrete situations where the sentence above is literally true today:</p>
+  <div class="cards" style="max-width:none;padding:0">
+    <div class="card"><span class="tag">AI agents</span><h3>Agent memory that isn't the vendor's to read</h3><p>An agent's work has to survive its context window, so it goes somewhere. Increasingly that somewhere holds client documents, security findings, medical notes, unreleased code. "It's in a database our provider can read" is a sentence a lot of organisations cannot sign off on.</p></div>
+    <div class="card"><span class="tag">Professional services</span><h3>Working documents with clients</h3><p>Legal, M&amp;A, audit, security assessment. The deliverable and the working notes are exactly the material that must not sit readable on a third party's disk — and yet needs versions, review, and a shared workspace.</p></div>
+    <div class="card"><span class="tag">Health &amp; regulated</span><h3>Data that changes what is permissible</h3><p>When the host provably cannot read the content, the compliance conversation changes shape: you are no longer arguing about the provider's access controls, because there is nothing to control access to.</p></div>
+    <div class="card"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results and vulnerability data are the last thing you want in a SaaS you don't control — and the first thing that needs history, diffs, and multi-person workflow.</p></div>
+  </div>
+
+  <h2>Why the existing answers don't cover it</h2>
+  <p>This is the strongest form of the objection: every one of these already exists and is more mature. Each solves part of it.</p>
+  <div class="tablewrap"><table>
+    <tr><th>What you'd reach for</th><th>What it gives you</th><th>What's missing</th></tr>
+    <tr><td>git + a private repo</td><td>Everything about workflow, perfected</td><td>The host reads all of it. Fine for code; not for client data.</td></tr>
+    <tr><td>git-crypt / SOPS / age</td><td>Encrypted file <em>contents</em> inside git</td><td>Filenames, directory structure, commit messages and history shape stay readable to the host; no browser access; key distribution is manual.</td></tr>
+    <tr><td>Dropbox / Drive / SharePoint</td><td>Sync, sharing, a UI everyone knows</td><td>The provider can read it, and there are no branches, no merges, no commit history you can reason about.</td></tr>
+    <tr><td>S3 + KMS, or a database with encryption at rest</td><td>Encryption the auditors recognise</td><td>Whoever holds the key can decrypt — and that's the provider, or anyone with the right IAM role. Also no git-shaped workflow, and no offline.</td></tr>
+    <tr><td>Build it yourself</td><td>Exactly what you want</td><td>Roughly what this project is: four thousand tests, a wire format two independent clients agree on, and a year of edge cases. It's free — you may as well take it.</td></tr>
+  </table></div>
+  <p>The gap all of them share is the same one: <b>you can have the workflow, or you can have the privacy, but not both in the same tool.</b> That's the whole thesis. If you think that gap doesn't matter, then we genuinely disagree about something factual — which is a much better disagreement to have than one about adjectives.</p>
+
+  <h2>The market question, answered directly</h2>
+  <ul>
+    <li><b>The CLI has no revenue attached and never will</b> — it's Apache-2.0. Its success metric is whether people use it, not whether anyone pays.</li>
+    <li><b>The commercial layer is hosting</b> (SG/Send), which is the ordinary open-core shape: the client is free, the managed server is a service. And you can <a href="deploy/index.html">self-host</a> — that guidance is published, so the lock-in argument doesn't hold.</li>
+    <li><b>We are not going to quote a market size.</b> We don't have credible numbers, and inventing a TAM slide is exactly the marketing this page is trying to avoid. What we can say honestly: the number of AI agents holding state that someone else shouldn't read went from approximately zero to very large in about two years, and that state has to live somewhere.</li>
+    <li><b>It might still be a small market.</b> That's a legitimate outcome. The tool would still be worth having for the people in it, and it costs them nothing.</li>
+  </ul>
+
+  <h2>Where the criticism is right</h2>
+  <ul>
+    <li><b>The category is unproven.</b> "Git for encrypted vaults" is not a shelf anyone shops from yet. We might be early, wrong, or both.</li>
+    <li><b>Most people don't need it.</b> If your files aren't sensitive, this is strictly more complexity than a private repo.</li>
+    <li><b>Zero-knowledge has real costs</b> — no server-side search, no password recovery, and key management becomes your problem. Those are permanent trade-offs, not bugs to be fixed later.</li>
+    <li><b>It's beta.</b> In production use daily, but young.</li>
+  </ul>
+
+  <h2 id="faq">The follow-up questions</h2>
+  <p>You said you'd have many. Here are the ones we'd expect, answered without hedging. If yours isn't here, <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">ask it in public</a> and we'll add it.</p>
+
+  <details class="faq"><summary>Isn't this just git with encryption bolted on?</summary><p>No — and the difference is exactly why the existing tools don't cover the case. Encrypting files inside git still leaves the host holding your filenames, your directory structure, your commit messages, and the shape of your history. sgit encrypts all of that: the server sees opaque identifiers and ciphertext, and never receives a key. It's a different storage model that happens to keep git's verbs.</p></details>
+  <details class="faq"><summary>Why not git-crypt or SOPS? They're mature and I already know them.</summary><p>Use them if they fit — they're good tools. They're designed for a different job: keeping a handful of secrets inside an otherwise-public repo. They don't hide structure, they don't work in a browser, and key distribution across a team is manual. sgit targets the case where the <em>whole workspace</em> is the sensitive thing.</p></details>
+  <details class="faq"><summary>If it's free, what's the business model — and what happens when you need to make money?</summary><p>Hosting. The client stays Apache-2.0 and self-hosting is documented, which is the protection that matters: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected. That's a checkable property, not a promise.</p></details>
+  <details class="faq"><summary>What if you disappear?</summary><p>You keep a full local copy — every clone contains the complete encrypted store. The format is documented, the client is open source, and two independent implementations already read it. If the project stopped tomorrow, your data stays readable with code you already have.</p></details>
+  <details class="faq"><summary>"Zero-knowledge" is a marketing term. What does the server actually see?</summary><p>The vault ID, the size of each encrypted object, and when requests happen. That's the list, and it's on <a href="security.html">the security page</a> including the uncomfortable parts: object sizes and timing are a real, if narrow, side channel. Anyone who tells you their zero-knowledge system leaks nothing at all is not being careful with words.</p></details>
+  <details class="faq"><summary>How do I know the cryptography is right?</summary><p>You don't have to take our word for it, which is the point. It's standard and boring — AES-256-GCM, PBKDF2-SHA256 at 600k iterations, HKDF — with no custom primitives. The code is open, and the outputs must match the browser's Web Crypto API byte-for-byte, which is enforced with test vectors. Two independent implementations reading the same format is a stronger check than any single audit.</p></details>
+  <details class="faq"><summary>What happens when I lose the key? Be honest.</summary><p>The data is gone. There is no reset, no recovery, no support ticket that helps. That's the direct consequence of the server not being able to read your content, and if your organisation can't manage keys reliably, this trade-off will hurt you and you should not use it.</p></details>
+  <details class="faq"><summary>Why would an AI agent need this specifically?</summary><p>Because agent state is now sensitive and shared. An agent that stops and resumes needs durable memory; several agents working together need shared memory with isolation and a review step; and the contents are increasingly things a client or regulator cares about. Version control solves the coordination half. Client-side encryption solves the half that determines whether you're allowed to do it at all.</p></details>
+  <details class="faq"><summary>Isn't this over-engineered for what it does?</summary><p>Judge it by the surface: two runtime dependencies, a pure-Python client, one file format. The complexity that does exist — the two-branch model, content addressing, three-way merge — is what makes concurrent editing safe without the server being able to help, because the server can't read anything. Remove the encryption and yes, it's over-engineered; you'd just use git.</p></details>
+  <details class="faq"><summary>Is anyone actually using it, or is this a demo?</summary><p>This website is served from a vault it manages, deployed by pushing that vault. The <a href="deploy/index.html">deployment docs</a> are decrypted in your browser, live, from a different vault maintained by another team. The <a href="try.html">Try page</a> runs the real client in your browser. It's in daily production use by its authors — a small n, honestly stated, and more than a demo.</p></details>
+  <details class="faq"><summary>Why should I trust a beta?</summary><p>For anything critical, don't yet — and keep backups regardless. What we offer instead of a trust-me is evidence: ~4,000 tests, mutation testing, integration tests against a real server, a published threat model, and an <a href="docs/exposed-vault-key.html">incident write-up</a> of the day we leaked our own key, including what it cost to fix. A project that hides that class of mistake is the one to worry about.</p></details>
+  <details class="faq"><summary>Fine — but I still think there's no market.</summary><p>You may be right. It costs nothing to be wrong about this in our direction: the code is free, the format is open, and if the category never materialises, the people who did need it still got a working tool. The failure mode we'd actually regret is the opposite one — building it after everyone had already put their agents' private state somewhere readable.</p></details>
+
+  <h2>An invitation, meant literally</h2>
+  <p>You said you'd come back with many follow-up questions. Please do — <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">in the open, on the issue tracker</a>. Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the <a href="docs/exposed-vault-key.html">key-leak incident</a> and the <a href="briefs.html">open briefs</a> got written.</p>
+
+  <div class="pagenav"><a href="index.html">← Home</a><a href="docs/limitations.html">When NOT to use sgit →</a></div>
+</main>"""
+
 # ============================================================ deploy/index.html
 DEPLOY = """<main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
@@ -762,6 +837,7 @@ DOCS_HUB = """<main class="doc">
     <div class="grp">
       <h2>Project</h2>
       <a href="limitations.html">When NOT to use sgit<small>The honest page</small></a>
+      <a href="../why.html">Why does this exist?<small>Answering the no-market criticism, plus a FAQ</small></a>
       <a href="exposed-vault-key.html">If a vault key is exposed<small>The rotation runbook, with a real case study</small></a>
       <a href="../briefs.html">Cross-team briefs<small>Open asks to the CLI and API teams</small></a>
       <a href="../admin/index.html">Admin &amp; engineering<small>How this site is built and released</small></a>
@@ -1583,6 +1659,9 @@ PAGES = [
      'home', INDEX),
     ('use-cases.html', 'Use cases — sgit', 'Five real workflows sgit enables today: agent memory, multi-agent collaboration, human-AI workspaces, encrypted backup with history, and signed file exchange.', 'use-cases', UC),
     ('security.html', 'Security model — sgit', "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.", 'security', SEC),
+    ('why.html', 'Why does this exist? — sgit.ai',
+     'A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.',
+     'why', WHY),
     ('deploy/index.html', 'Run your own SG/Send server — sgit.ai',
      'Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.',
      'deploy', DEPLOY),

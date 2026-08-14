@@ -242,3 +242,17 @@ input.shin::placeholder{color:#8b949e;opacity:.6}
 .vdbg-btns button{background:#161b26;color:#c9d1d9;border:1px solid #2c3646;border-radius:6px;padding:.35rem .7rem;font-size:.7rem;cursor:pointer;font-family:var(--sans)}
 .vdbg-btns button:hover{border-color:#2dd4bf}
 #vdbg-note{color:#3fb950;margin-top:.6rem;min-height:1em}
+
+/* ---------- why / faq ---------- */
+blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid var(--warm);
+  background:var(--panel);border-radius:0 10px 10px 0;font-size:1rem;font-style:italic;color:#34363c;
+  box-shadow:var(--shadow);line-height:1.7}
+details.faq{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:.5rem 0;
+  box-shadow:var(--shadow);overflow:hidden}
+details.faq summary{cursor:pointer;padding:.75rem 1rem;font-size:.9rem;font-weight:600;color:#101114;
+  list-style:none;display:flex;align-items:flex-start;gap:.5rem}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::before{content:"+";color:var(--accent);font-weight:700;flex:none;width:.9em}
+details.faq[open] summary::before{content:"−"}
+details.faq summary:hover{background:var(--panel2)}
+details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;line-height:1.65}
