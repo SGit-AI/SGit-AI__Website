@@ -51,6 +51,11 @@ Quick answers (so you do not need a second request for the common questions):
 - [Findings about your own weaknesses](/use-cases/security-teams.md): Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.
 - [Data that changes what is permissible](/use-cases/health-regulated.md): What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims. **Key fact:** No HIPAA, ISO 27001, SOC 2 or GDPR finding exists; client-side encryption does not by itself make processing lawful.
 
+## Case studies (worked accounts of what actually happened, with numbers)
+- [Case studies](/case-studies/index.md): Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
+- [A live site whose host cannot read it](/case-studies/live-vault-docs.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
+- [The day we leaked our own vault key](/case-studies/exposed-vault-key.md): The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
+
 ## Docs
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
