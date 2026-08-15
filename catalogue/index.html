@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.12</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.13</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -47,6 +47,39 @@
   <aside class="vdocs-nav" id="vdocs-nav"><span class="dim small">opening the catalogue…</span></aside>
   <article class="vdocs-body" id="vdocs-body"><p class="dim">Fetching the encrypted index…</p></article>
 </div>
+
+<button class="vdbg-toggle" id="vdbg-toggle" type="button">▤ vault panel</button>
+<div class="vdbg vdbg-noanim" id="vdbg">
+  <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
+  <div class="vdbg-inner">
+  <h3>Vault debug <a class="vdbg-help" href="../case-studies/live-vault-docs.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
+  <div class="vdbg-btns">
+    <button id="vdbg-reset" type="button">clear list</button>
+    <button id="vdbg-refresh" type="button">check for new commit</button>
+    <button id="vdbg-clear" type="button">clear cache &amp; reload</button>
+  </div>
+  <div id="vdbg-note"></div>
+  <div class="vdbg-h">what you are looking at</div>
+  <div class="vdbg-dim" style="line-height:1.6;white-space:normal;font-family:var(--sans);font-size:.72rem">
+    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally —
+    click one to see what it actually contains. Objects whose id contains <b>-imm-</b> are
+    content-addressed and therefore immutable, so they are cached permanently; the mutable
+    <b>ref</b> is the one mutable object, so it is checked at most once per freshness window
+    (120s) rather than once per page — inside the window, reading the docs makes no requests
+    at all, and <b>check for new commit</b> forces one whenever you want it.
+    <br><br>The <b>tree</b> objects are the reason a first visit reads more than one file:
+    filenames are encrypted inside them, so building the navigation means reading every
+    directory. That index is a pure function of the commit id, so it is memoised — after the
+    first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
+  </div>
+  <div class="vdbg-more">
+    <a href="../case-studies/live-vault-docs.html">How this page works &rarr;</a>
+    <span>Architecture diagrams, the object model, the cache tiers, and how a page like this one reads a vault it holds only the read key to.</span>
+  </div>
+  </div>
+</div>
+
 <script>
 /* Restore the panel's remembered width and open state synchronously, before the first paint.
    The reader script that owns the panel loads asynchronously, so doing this there meant the
@@ -98,7 +131,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.12</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.13</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
