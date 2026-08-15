@@ -50,6 +50,9 @@ Quick answers (so you do not need a second request for the common questions):
 - [The Strategy in Seven Maps](/demos/strategy-maps.md): The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it.
 - [sgit, on a Wardley Map](/demos/sgit-maps.md): Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key.
 
+## Catalogue (the index of published vaults — read keys, shapes, evidence and write-key status)
+- [The vault catalogue](/catalogue/index.md): An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived.
+
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
 - [The serialised pull request](/use-cases/serialised-pull-request.md): An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.
