@@ -292,7 +292,10 @@ blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid
 .sgv-embed-load:hover{border-color:#2dd4bf}
 .sgv-embed-load:disabled{opacity:.6;cursor:wait}
 .sgv-embed-loading{font-family:var(--mono);font-size:.8rem;color:var(--dim);padding:.8rem 0}
-.sgv-embed-frame{width:100%;height:600px;border:1px solid var(--line2);border-radius:12px;
+.sgv-embed-frame{width:100%;height:600px;
+  }
+.sgv-embed-frame.sgv-embed-tall{height:760px}
+.sgv-embed-frame{border:1px solid var(--line2);border-radius:12px;
   background:#0e1116;box-shadow:var(--shadow)}
 
 details.faq{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:.5rem 0;

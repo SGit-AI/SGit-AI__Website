@@ -107,7 +107,27 @@
     "for(var i=0;i<bin.length;i++)o[i]=bin.charCodeAt(i);return o;});}}," +
     "loadCss:function(p){return rpc('readText',p).then(function(t){var s=document.createElement('style');" +
     "s.textContent=t;document.head.appendChild(s);});}," +
-    "loadJs:function(p){return rpc('readText',p).then(function(t){(0,eval)(t);});}};})();";
+    "loadJs:function(p){return rpc('readText',p).then(function(t){(0,eval)(t);});}};" +
+    // Vault-path <img> support: apps set img.src to relative vault paths (per the authoring
+    // contract, from JS). In a srcdoc frame those resolve against an opaque origin and 404,
+    // so intercept them — read the bytes over the bridge, swap in a blob: URL. Same job the
+    // real host's interceptor does.
+    "var MIME={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',webp:'image/webp',gif:'image/gif',svg:'image/svg+xml'};" +
+    "function vaultImg(img){var p=img.getAttribute('src');" +
+    "if(!p||/^(data:|blob:|https?:|\\/\\/)/.test(p))return;" +
+    "img.removeAttribute('src');" +
+    "rpc('readB64',p.replace(/^\\.?\\//,'')).then(function(b64){" +
+    "var ext=(p.split('.').pop()||'').toLowerCase();" +
+    "var bin=atob(b64),o=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)o[i]=bin.charCodeAt(i);" +
+    "img.src=URL.createObjectURL(new Blob([o],{type:MIME[ext]||'application/octet-stream'}));" +
+    "}).catch(function(){});}" +
+    "new MutationObserver(function(ms){ms.forEach(function(m){" +
+    "if(m.type==='attributes'&&m.target.tagName==='IMG')vaultImg(m.target);" +
+    "(m.addedNodes||[]).forEach(function(n){if(n.tagName==='IMG')vaultImg(n);" +
+    "else if(n.querySelectorAll)n.querySelectorAll('img').forEach(vaultImg);});});})" +
+    ".observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src']});" +
+    "document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('img').forEach(vaultImg);});" +
+    "})();";
 
   // ---- mount
   async function mount(el, cfg) {

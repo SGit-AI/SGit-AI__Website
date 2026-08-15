@@ -47,6 +47,7 @@ Quick answers (so you do not need a second request for the common questions):
 ## Demos (live end-to-end examples with published read keys)
 - [Demos](/demos/index.md): Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
 - [A vault app, live inside this page](/demos/vault-app-embed.md): The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
+- [The Strategy in Seven Maps](/demos/strategy-maps.md): The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it.
 
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
