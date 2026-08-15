@@ -2,7 +2,7 @@
 
 > Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
 
-*Source: <https://sgit.ai/vault/git-and-vaults.html> · site v0.2.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/git-and-vaults.html> · site v0.2.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # Git repos inside vaults
 
 Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
+
+**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../case-studies/one-tree-two-remotes.md).
 
 ## A pure-Python git reader
 
