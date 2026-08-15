@@ -51,6 +51,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
+- [The serialised pull request](/use-cases/serialised-pull-request.md): An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.
 - [Agent state that isn't the vendor's to read](/use-cases/ai-agents.md): Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
 - [Working documents with clients](/use-cases/professional-services.md): Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.
 - [Findings about your own weaknesses](/use-cases/security-teams.md): Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.

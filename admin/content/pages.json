@@ -30,6 +30,12 @@
     "desc": "Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows."
   },
   {
+    "path": "use-cases/serialised-pull-request.html",
+    "section": "use-cases",
+    "title": "The serialised pull request — sgit use cases",
+    "desc": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table."
+  },
+  {
     "path": "use-cases/ai-agents.html",
     "section": "use-cases",
     "title": "Agent state that isn't the vendor's to read — sgit use cases",
