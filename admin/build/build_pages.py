@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.13'
+SITE_VERSION = 'v0.2.14'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.13', '2026-08-15', 'this release',
+    ('v0.2.14', '2026-08-15', 'this release',
+     "Ask B of the 14 Aug pack begins: the hub.sgit.ai briefing-pack plan lands in admin/plans/, and — per the spec's central instruction — the capability audit comes before any architecture. The audit table is already 13 rows deep, seeded entirely from evidence this project has produced: verified present (open-from-read-key in our readers, single-object decrypt, the app runtime under a sandboxed iframe, sparse per-object fetch, cross-session caching with the 120s ref window, frameability), verified partial with the exact gap named (the official UI parses but rejects its own documented read-only credential format), and honestly unknown (client-side merge, the in-UI diff and history views — enumerated in the bundle, never driven). The partial rows are flagged as the dangerous ones, because a partial capability gets assumed complete. The plan also fixes the pack's shape: six parts in order, the four absences stated up front, surfacing/adding/absent applied per feature (blame is adding, not surfacing), permissions as worked key topologies, and the private-vault key-handling flow named as the one needing a considered position. The crawler question is closed as answered: full text in the served HTML, noscript reveal since v0.1.26, and Google indexing confirmed."),
+    ('v0.2.13', '2026-08-15', 'obj-cas-imm-35d4e3e3a906',
      "Fix: the catalogue page shipped without the vault debug panel markup that the shared reader wires unconditionally, so the reader threw on two missing elements and the first document never rendered (navigation and clicked entries worked; the initial body stalled at the fetching message). The panel is now on the page — which it should have been anyway, since watching the ciphertext arrive is half the point — and the headless check confirms the README renders on load with zero page errors."),
     ('v0.2.12', '2026-08-15', 'obj-cas-imm-15dbcf053020',
      "The catalogue: a vault indexing vaults, including itself. The 14 Aug briefing pack's Ask A lands as designed — a submission queue whose per-entry cost is a read key and one line, with everything else derived by opening the vault. The deriver (admin/build/catalogue_derive.py, ~120 lines, read-only, no token) turns a read key into file count, plaintext size, commit depth, HEAD, top-level layout, file types, app entries and browser-renderability; proven on all three published-key vaults (Field Notes 4bshby5n, the strategy/maps vault ookq4mn4 — both app entry points detected — and the deploy-docs vault fyofmkvr, markdown-only). The catalogue itself lives in a new vault (kc67yhgw) published with its own read key and listed in itself: README (how to submit), SCHEMA (supplied-vs-derived, and the two rules — read keys yes, vault keys never; escrow the write key BEFORE publishing, because a frozen vault can never be corrected), three processed entries, and the two public to-do lists the brief asked for — awaiting-a-read-key (seeded with eight vaults named in the memos, each carrying the pre-publish audit instruction the strategy-maps case taught) and awaiting-processing (the agent's queue, currently empty). /catalogue/ renders it live via the same reader as the deploy docs — updated by pushing to the vault, no site deploy. Write-key status is a first-class field: 'known and escrowed' or 'lost', stated publicly per entry."),
