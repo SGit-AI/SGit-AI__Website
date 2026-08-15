@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.10'
+SITE_VERSION = 'v0.2.11'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.10', '2026-08-15', 'this release',
+    ('v0.2.11', '2026-08-15', 'this release',
+     "sgit gets its own Wardley map analysis — six maps starting with git at full strength, because a map that flatters its author is not a map: version control today (git's moat is the platform layer, resting on readable storage), the files that cannot follow (a hole in the map where their foundation should be), sgit's move (no new verbs, invert the bottom layer), the boundary on one map (two chains from one team, split by 'may the store read this?'), agents as the new user (the serialised diff versus ambient authority), and the strategy (commoditise private version control). The maps are drawn as inline SVG by a ~90-line renderer — no images, no dependencies — and the analysis ships as a SECOND app inside the same vault as the SG/Send strategy essay (ookq4mn4): one encrypted store, two entry points, one published read key; the embed opens it by passing entry to the same host. The embed shim gained link handling — in-page anchors scroll manually (assigning location.hash re-navigates a srcdoc frame) and relative .html links remount the frame on the new entry, so the two apps cross-link inside the embed; verified headless: 6 maps, 42 nodes, 12 evolve arrows, and clicking the companion link lands on the strategy essay. Linked from the Why page's boundary section. Also: Google has confirmed indexing sgit.ai, which unblocks the component registry when its turn comes."),
+    ('v0.2.10', '2026-08-15', 'obj-cas-imm-cedfb3d06f6a',
      "Plan bookkeeping: the why-expansion plan's status table now reflects reality — Why reframe done, serialised PR done with its CLI brief, two of three demo vaults live, embed at the minimal-host stage pending the UI team's credential fix."),
     ('v0.2.9', '2026-08-15', 'obj-cas-imm-2ce42cfd214e',
      "The two remaining pieces of the briefing-pack plan land. (1) The Why page is reframed from rebuttal to boundary map: it now opens with where git wins, then draws the boundary precisely — the operations are not the gap (commit through merge all exist; proposing reviewable changes without write access is present, as a serialised diff, and is a differentiator); what is absent is the hosted review interface and the ecosystem above the protocol; and git is also client-side, so the real difference is that the objects are encrypted there, with the losses stated as a given-up/in-exchange-for table. New protocol section: the six-step read path verbatim, the two keys named explicitly, the three modes (Local/API/Web), and the two-implementations proof point. The LinkedIn comment and the market answer move below the boundary, kept whole. (2) New lead use case: the serialised pull request — no credential issued at all, grounded in the 5 Aug Black Hat disclosure, with an honest shipped-vs-pattern table (emit exists as history diff --json; import is not first-class) and evidence status PARTIAL. The matching brief to the CLI team asks for sgit diff export/apply, a published diff format, and ignore-file support — the latter now a prerequisite for the one-folder-two-VCS pattern the site publishes."),

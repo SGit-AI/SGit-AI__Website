@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.10). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.11). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -210,6 +210,8 @@ Live, end-to-end demonstrations — each one a vault that was actually created, 
 
 [Report · real### The Strategy in Seven MapsNot demo content: the actual SG/Send strategy, published on LinkedIn in May 2026, served live from a vault with a published read key — plus the audit that shows why the original vault could not publish its key, and the republish pattern that fixed it.Open the walkthrough →](strategy-maps.md)
 
+[Analysis · live### sgit, on a Wardley MapSix maps of sgit's own positioning — where git wins, where the boundary falls, the agent as the new user — drawn as inline SVG and served as a **second app from the same vault** as the strategy essay: one store, two entry points, one read key.Open the analysis →](sgit-maps.md)
+
 ## Coming next
 
 Two more shapes from [the plan](../admin/plans/why-expansion-plan.md), on the same template: a **two-agent inbox** vault (produced by actually running two sessions against it), which gets the full transcript, its own published read key, and a live embed.
@@ -384,6 +386,50 @@ The [first demo](vault-app-embed.md) was built without image files. This app loa
 - [Briefing to the SG/Vault UI team](../briefs/briefing-sgvault-ui-embed.md) — the path to embedding the official UI instead of our minimal host
 
 [← First demo](vault-app-embed.md)[All demos →](index.md)
+
+
+
+==============================================================================
+# sgit, on a Wardley Map — sgit.ai demos
+
+> Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key.
+>
+> Page: https://sgit.ai/demos/sgit-maps.html
+
+[Home](../index.md) / [Demos](index.md) / sgit on a Wardley map
+
+# sgit, on a Wardley Map
+
+Six maps analysing sgit's own positioning — starting with where git wins, because a map that flatters its author is not a map. It lives as a **second app inside the same vault** as the SG/Send strategy essay: one encrypted store, two entry points, both openable with the one read key already published on this site.
+
+**What is new here technically:** a vault is not limited to one app. This vault (`ookq4mn4`) now carries two — `index.html` (the strategy essay) and `sgit-maps.html` (this analysis) — and the embed below opens the second by passing an `entry` to the same host that opens the first. The maps are not images: each is drawn as inline SVG from data in the page, decrypted in your browser.
+
+## The live embed
+
+The links between the two apps work *inside* the embed: the header of this analysis links to the strategy essay and back, and the embed host remounts the frame on the new entry — vault apps cross-linking under a read key.
+
+Same vault and read key as [the strategy essay demo](strategy-maps.md) — only the entry differs.
+
+## The six maps, in one paragraph each
+
+1. **Version control, today** — git at full strength: a commodity whose moat is the platform layer above it, all of it resting on the host reading plaintext.
+2. **The files that cannot follow** — the same need with one changed constraint, and a hole in the map where its foundation should be: nothing on the right is both versioned and unable to read you.
+3. **sgit's move** — no new verbs; invert the bottom layer instead. Encrypted, content-addressed objects make the store a commodity *because* it cannot read, and produce one novel component: the publishable read key.
+4. **The boundary, on one map** — both chains under one team: code flows right through git; protected files flow through sgit. The split is the layer above the protocol and the substrate below it, never the operations. One folder can run both — this site does.
+5. **The new user: agents** — durable memory, plus the serialised diff versus the write-scoped token; the evolve arrows all point away from ambient authority.
+6. **The strategy** — commoditise private version control; the value accrues to the layer above, and every component on that layer is already running on sgit.ai, including the page in the embed.
+
+| Shape | Evidence status | Copy or reference |
+|---|---|---|
+| Structured analysis (positioning) | **LIVE** — authored for sgit.ai from the [boundary-map work](../why/index.md); the maps state where git wins first | **Reference** — the embed reads vault `ookq4mn4` live; pushing a better map updates this page with no rebuild |
+
+## Related
+
+- [The Strategy in Seven Maps](strategy-maps.md) — the SG/Send half, first app in the same vault
+- [The boundary map in prose](../why/index.md) — the same argument, as the Why page
+- [How the embed works](vault-app-embed.md) — the full walkthrough of the mechanism
+
+[← The strategy essay](strategy-maps.md)[All demos →](index.md)
 
 
 
@@ -1167,7 +1213,7 @@ Two corrections to where people assume the line falls, because the obvious versi
 | Server-side delta compression and packing |
 | Hosted review, CI, and content-triggered automation |
 
-That is the whole trade, stated once. Every capability further down this page is something bought with it.
+That is the whole trade, stated once. Every capability further down this page is something bought with it. The same boundary is also drawn as [six Wardley Maps, served live from an encrypted vault](../demos/sgit-maps.md) — including a map of git at full strength, because a map that flatters its author is not a map.
 
 ## The protocol, on one page
 
@@ -2724,11 +2770,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.10**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.11**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.10 | 2026-08-15 | this release | Plan bookkeeping: the why-expansion plan's status table now reflects reality — Why reframe done, serialised PR done with its CLI brief, two of three demo vaults live, embed at the minimal-host stage pending the UI team's credential fix. |
+| v0.2.11 | 2026-08-15 | this release | sgit gets its own Wardley map analysis — six maps starting with git at full strength, because a map that flatters its author is not a map: version control today (git's moat is the platform layer, resting on readable storage), the files that cannot follow (a hole in the map where their foundation should be), sgit's move (no new verbs, invert the bottom layer), the boundary on one map (two chains from one team, split by 'may the store read this?'), agents as the new user (the serialised diff versus ambient authority), and the strategy (commoditise private version control). The maps are drawn as inline SVG by a ~90-line renderer — no images, no dependencies — and the analysis ships as a SECOND app inside the same vault as the SG/Send strategy essay (ookq4mn4): one encrypted store, two entry points, one published read key; the embed opens it by passing entry to the same host. The embed shim gained link handling — in-page anchors scroll manually (assigning location.hash re-navigates a srcdoc frame) and relative .html links remount the frame on the new entry, so the two apps cross-link inside the embed; verified headless: 6 maps, 42 nodes, 12 evolve arrows, and clicking the companion link lands on the strategy essay. Linked from the Why page's boundary section. Also: Google has confirmed indexing sgit.ai, which unblocks the component registry when its turn comes. |
+| v0.2.10 | 2026-08-15 | obj-cas-imm-cedfb3d06f6a | Plan bookkeeping: the why-expansion plan's status table now reflects reality — Why reframe done, serialised PR done with its CLI brief, two of three demo vaults live, embed at the minimal-host stage pending the UI team's credential fix. |
 | v0.2.9 | 2026-08-15 | obj-cas-imm-2ce42cfd214e | The two remaining pieces of the briefing-pack plan land. (1) The Why page is reframed from rebuttal to boundary map: it now opens with where git wins, then draws the boundary precisely — the operations are not the gap (commit through merge all exist; proposing reviewable changes without write access is present, as a serialised diff, and is a differentiator); what is absent is the hosted review interface and the ecosystem above the protocol; and git is also client-side, so the real difference is that the objects are encrypted there, with the losses stated as a given-up/in-exchange-for table. New protocol section: the six-step read path verbatim, the two keys named explicitly, the three modes (Local/API/Web), and the two-implementations proof point. The LinkedIn comment and the market answer move below the boundary, kept whole. (2) New lead use case: the serialised pull request — no credential issued at all, grounded in the 5 Aug Black Hat disclosure, with an honest shipped-vs-pattern table (emit exists as history diff --json; import is not first-class) and evidence status PARTIAL. The matching brief to the CLI team asks for sgit diff export/apply, a published diff format, and ignore-file support — the latter now a prerequisite for the one-folder-two-VCS pattern the site publishes. |
 | v0.2.8 | 2026-08-15 | obj-cas-imm-4060eca3121d | Second demo, and the first with real content: The Strategy in Seven Maps — the actual SG/Send strategy, published on LinkedIn in May 2026 — served live from a vault with a published read key. The page also publishes the audit that made this interesting: the original vault could NOT publish its read key, because its own read-write credential was written inside its content (a production briefing quoted the clone command verbatim), server-side bookkeeping under .vault/owner/ carried live delete_auth tokens, and the vault's keys derive from a legacy low-entropy token. The fix is the pattern the page teaches: republish, don't retrofit — sanitised copy, credentials redacted with a visible note, fresh full-entropy vault (ookq4mn4), and only then a published read key; a republish also sheds the history you cannot publish. The embed host gained vault-path image support (a MutationObserver swaps img.src vault paths for blob: URLs read over the bridge, the same job the real host's interceptor does) — verified: all eight Wardley Map PNGs travelled as ciphertext and rendered. |
 | v0.2.7 | 2026-08-15 | obj-cas-imm-1b9cd77fb6d7 | The full-UI embed experiment, run and published. Driving the real SG/Vault interface framed inside a page: the UI is frameable (no X-Frame-Options, no frame-ancestors), and App Mode works completely inside a cross-origin iframe — with a valid credential the official app-shell booted the Field Notes demo under the full HUD chrome. The one gap is the credential: the loader documents a read-only format (vault_id + 64-hex read key) but the client rejects it, and the CLI's 64hex:vault_id shorthand gets PBKDF2'd as a passphrase and derives the wrong file ids. No URL selects the SGit view, either. Both are now precise, evidence-backed asks in the UI-team briefing — honour the documented format (which alone makes the official UI embeddable with only the published read key) and add a |view:sgit deep-link. The demo page carries the findings table. |

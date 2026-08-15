@@ -1,0 +1,72 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Demos</a> / sgit on a Wardley map</p>
+  <h1>sgit, on a Wardley Map</h1>
+  <p class="lead">Six maps analysing sgit's own positioning — starting with where git wins, because a map that flatters its author is not a map. It lives as a <b>second app inside the same vault</b> as the SG/Send strategy essay: one encrypted store, two entry points, both openable with the one read key already published on this site.</p>
+
+  <div class="note"><b>What is new here technically:</b> a vault is not limited to one app. This vault (<code>ookq4mn4</code>) now carries two — <code>index.html</code> (the strategy essay) and <code>sgit-maps.html</code> (this analysis) — and the embed below opens the second by passing an <code>entry</code> to the same host that opens the first. The maps are not images: each is drawn as inline SVG from data in the page, decrypted in your browser.</div>
+
+  <h2>The live embed</h2>
+  <p>The links between the two apps work <em>inside</em> the embed: the header of this analysis links to the strategy essay and back, and the embed host remounts the frame on the new entry — vault apps cross-linking under a read key.</p>
+  <div class="sgv-embed" id="embed-sgitmaps"
+       data-endpoint="https://dev.send.sgraph.ai" data-vault="ookq4mn4"
+       data-readkey="451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b" data-entry="sgit-maps.html" data-title="sgit, on a Wardley Map" data-tall="1">
+    <button class="sgv-embed-load" type="button">▶ Open the analysis in this page</button>
+    <p class="small dim" style="margin:.5rem 0 0">Same vault and read key as <a href="strategy-maps.html">the strategy essay demo</a> — only the entry differs.</p>
+  </div>
+
+  <h2>The six maps, in one paragraph each</h2>
+  <ol>
+    <li><b>Version control, today</b> — git at full strength: a commodity whose moat is the platform layer above it, all of it resting on the host reading plaintext.</li>
+    <li><b>The files that cannot follow</b> — the same need with one changed constraint, and a hole in the map where its foundation should be: nothing on the right is both versioned and unable to read you.</li>
+    <li><b>sgit's move</b> — no new verbs; invert the bottom layer instead. Encrypted, content-addressed objects make the store a commodity <em>because</em> it cannot read, and produce one novel component: the publishable read key.</li>
+    <li><b>The boundary, on one map</b> — both chains under one team: code flows right through git; protected files flow through sgit. The split is the layer above the protocol and the substrate below it, never the operations. One folder can run both — this site does.</li>
+    <li><b>The new user: agents</b> — durable memory, plus the serialised diff versus the write-scoped token; the evolve arrows all point away from ambient authority.</li>
+    <li><b>The strategy</b> — commoditise private version control; the value accrues to the layer above, and every component on that layer is already running on sgit.ai, including the page in the embed.</li>
+  </ol>
+
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>Evidence status</th><th>Copy or reference</th></tr>
+    <tr><td>Structured analysis (positioning)</td><td><b>LIVE</b> — authored for sgit.ai from the <a href="../why/index.html">boundary-map work</a>; the maps state where git wins first</td><td><b>Reference</b> — the embed reads vault <code>ookq4mn4</code> live; pushing a better map updates this page with no rebuild</td></tr>
+  </table></div>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="strategy-maps.html">The Strategy in Seven Maps</a> — the SG/Send half, first app in the same vault</li>
+    <li><a href="../why/index.html">The boundary map in prose</a> — the same argument, as the Why page</li>
+    <li><a href="vault-app-embed.html">How the embed works</a> — the full walkthrough of the mechanism</li>
+  </ul>
+  <div class="pagenav"><a href="strategy-maps.html">← The strategy essay</a><a href="index.html">All demos →</a></div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var R = document.documentElement.getAttribute('data-root') || '';
+  async function grab(p) {
+    try { if (window.sg && window.sg.vfs && window.sg.vfs.readText) { var t = await window.sg.vfs.readText(p); if (t) return t; } } catch (e) {}
+    try { var r = await fetch(p); if (r.ok) return await r.text(); } catch (e) {}
+    return null;
+  }
+  var box = document.getElementById('embed-sgitmaps');
+  box.querySelector('.sgv-embed-load').addEventListener('click', async function () {
+    this.disabled = true; this.textContent = 'opening…';
+    var src = await grab(R + 'assets/vault-embed.js') || await grab('../assets/vault-embed.js');
+    if (!src) { box.innerHTML = '<div class="warnbox">Could not load the embed host.</div>'; return; }
+    try { (0, eval)(src); } catch (e) { box.innerHTML = '<div class="warnbox">Embed host failed to start: ' + e + '</div>'; return; }
+    var btn = this;
+    try {
+      await window.SGVaultEmbed.mount(box, {
+        endpoint: box.getAttribute('data-endpoint'),
+        vault_id: box.getAttribute('data-vault'),
+        read_key: box.getAttribute('data-readkey'),
+        entry:    box.getAttribute('data-entry'),
+        title:    box.getAttribute('data-title')
+      });
+      box.querySelector('.sgv-embed-frame').classList.add('sgv-embed-tall');
+      btn.remove();
+    } catch (e) {
+      box.innerHTML = '<div class="warnbox"><b>Embed failed:</b> ' + e + '</div>';
+    }
+  });
+})();
+</script>

@@ -2,7 +2,7 @@
 
 > A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
-*Source: <https://sgit.ai/why/index.html> · site v0.2.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/why/index.html> · site v0.2.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -47,7 +47,7 @@ Two corrections to where people assume the line falls, because the obvious versi
 | Server-side delta compression and packing |
 | Hosted review, CI, and content-triggered automation |
 
-That is the whole trade, stated once. Every capability further down this page is something bought with it.
+That is the whole trade, stated once. Every capability further down this page is something bought with it. The same boundary is also drawn as [six Wardley Maps, served live from an encrypted vault](../demos/sgit-maps.md) — including a map of git at full strength, because a map that flatters its author is not a map.
 
 ## The protocol, on one page
 
