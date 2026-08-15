@@ -2,7 +2,7 @@
 
 > Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
 
-*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

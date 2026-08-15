@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.9'
+SITE_VERSION = 'v0.2.10'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.9', '2026-08-15', 'this release',
+    ('v0.2.10', '2026-08-15', 'this release',
+     "Plan bookkeeping: the why-expansion plan's status table now reflects reality — Why reframe done, serialised PR done with its CLI brief, two of three demo vaults live, embed at the minimal-host stage pending the UI team's credential fix."),
+    ('v0.2.9', '2026-08-15', 'obj-cas-imm-2ce42cfd214e',
      "The two remaining pieces of the briefing-pack plan land. (1) The Why page is reframed from rebuttal to boundary map: it now opens with where git wins, then draws the boundary precisely — the operations are not the gap (commit through merge all exist; proposing reviewable changes without write access is present, as a serialised diff, and is a differentiator); what is absent is the hosted review interface and the ecosystem above the protocol; and git is also client-side, so the real difference is that the objects are encrypted there, with the losses stated as a given-up/in-exchange-for table. New protocol section: the six-step read path verbatim, the two keys named explicitly, the three modes (Local/API/Web), and the two-implementations proof point. The LinkedIn comment and the market answer move below the boundary, kept whole. (2) New lead use case: the serialised pull request — no credential issued at all, grounded in the 5 Aug Black Hat disclosure, with an honest shipped-vs-pattern table (emit exists as history diff --json; import is not first-class) and evidence status PARTIAL. The matching brief to the CLI team asks for sgit diff export/apply, a published diff format, and ignore-file support — the latter now a prerequisite for the one-folder-two-VCS pattern the site publishes."),
     ('v0.2.8', '2026-08-15', 'obj-cas-imm-4060eca3121d',
      "Second demo, and the first with real content: The Strategy in Seven Maps — the actual SG/Send strategy, published on LinkedIn in May 2026 — served live from a vault with a published read key. The page also publishes the audit that made this interesting: the original vault could NOT publish its read key, because its own read-write credential was written inside its content (a production briefing quoted the clone command verbatim), server-side bookkeeping under .vault/owner/ carried live delete_auth tokens, and the vault's keys derive from a legacy low-entropy token. The fix is the pattern the page teaches: republish, don't retrofit — sanitised copy, credentials redacted with a visible note, fresh full-entropy vault (ookq4mn4), and only then a published read key; a republish also sheds the history you cannot publish. The embed host gained vault-path image support (a MutationObserver swaps img.src vault paths for blob: URLs read over the bridge, the same job the real host's interceptor does) — verified: all eight Wardley Map PNGs travelled as ciphertext and rendered."),

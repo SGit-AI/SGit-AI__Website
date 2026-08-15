@@ -11,10 +11,10 @@ Decisions taken up front, per the project lead: reusable interface pieces are **
 |---|---|
 | Discoverability (crawlability, sitemap, llms-full.txt, self-sufficient llms.txt) | **Done** (v0.1.26–27) — remaining: watch Search Console after the v0.2.0 URL moves |
 | Naming decision (component vs plugin) | **Decided** — enforce from the first component page |
-| Why reframe to boundary map | Phase 1 below |
-| Serialised PR as the lead example | Phase 2 — with one honesty gap found (see below) |
-| Three sample vaults | Phase 3 — as end-to-end builds, not imports |
-| Embed reuse from the SG/Vault UI | Phase 4 — briefing filed, fallback defined |
+| Why reframe to boundary map | **Done** (v0.2.9) — boundary first, protocol section, rebuttal moved below |
+| Serialised PR as the lead example | **Done** (v0.2.9) — /use-cases/serialised-pull-request.html, PARTIAL status; CLI brief filed |
+| Three sample vaults | 2 of 3 done — gallery (v0.2.6) and the real strategy report (v0.2.8); the two-agent inbox remains |
+| Embed reuse from the SG/Vault UI | Minimal host shipped (v0.2.6–8, images included); official-UI embed blocked on the read-only credential format — findings in the briefing (v0.2.7) |
 | Component registry | Phase 5 — gated on indexing being observed, per the brief |
 
 ## Phase 1 — Reframe /why/ from rebuttal to boundary map
