@@ -2,7 +2,7 @@
 
 > How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
 
-*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,16 +46,16 @@ That is the whole rule, and it is worth stating as a condition rather than a pat
 
 Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
 
-## The mechanism that surprised us
+## The mechanism that surprised us — and the correction a reader caught
 
-After every release, `git status` shows one modified file:
+Mid-cycle, `git status` showed one modified file that nothing had touched:
 
 ```
 $ git status --porcelain
  M .sg_vault/bare/refs/ref-pid-muw-4a7e6bc14d96
 ```
 
-That is the vault's HEAD pointer, and it looks like the mirror has drifted. It has not. Decrypting both sides — the committed ref and the working-tree ref — showed the same commit id:
+That is the vault's HEAD pointer, and it looked like the git mirror had drifted from the vault. It had not: decrypting the committed ref and the working-tree ref gave the same commit id.
 
 ```
 vault HEAD (working tree) : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
@@ -63,9 +63,17 @@ vault HEAD (in git)       : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
 same commit? True
 ```
 
-The bytes differ because AES-GCM encrypts with a fresh random IV on every write — merely touching the vault re-encrypts the ref, and git sees a modified file. The consequence is worth pinning up: **for the ref, `git status` cannot tell you whether the mirror is stale.** Dirty means nothing, and clean would only be luck. Every other object in the store is content-addressed — its name is the hash of its ciphertext — so it never changes under its id and git diffs it correctly, or rather never needs to. The mutability of exactly one file is the entire class of false signal, and checking real sync means decrypting the ref or asking `sgit status`, not asking git.
+The bytes differ whenever the ref is rewritten because AES-GCM encrypts with a fresh random IV on every write — the same pointer never re-encrypts to the same ciphertext. The first version of this page concluded "the ref always looks dirty to git", and a reader asked the right question: *if you push sgit first and commit git after, don't the files match?*
 
-This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise at best, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
+**They do.** We tested it rather than argue it: with the release ordering below — sgit push first, git commit after — git captures the freshly written ref every time, and the tree ends every release clean. Then we tried to make it dirty: `sgit ls`, `history log`, `status`, `vault info`, a no-op commit, a no-op push, `pull`, `fetch` — none of them rewrites the ref. The ref changes only when a *real* push writes a new commit pointer, and the ordering guarantees git commits right after that happens.
+
+So the accurate statement is a rule about ordering, not a permanent condition:
+
+- **sgit before git, always.** Push the vault, then commit the tree to git. The mirror then includes the exact ref the push wrote, and a clean `git status` is the normal end state — the one we measured after this very release.
+- **Git the other way round is silently stale.** Commit git first and the mirror carries the *previous* ref; push sgit without a following git commit and the tree shows the ref modified. Both are ordering slips, and the second is how the screenshot above happened.
+- **When the ref does show modified, the bytes tell you nothing.** A rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit — so "dirty" does not mean stale, and only decrypting it (or asking `sgit status`) answers the real question. Every other object in the store is content-addressed and immutable, so this false signal is confined to exactly one file.
+
+This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
 
 ## What changed: the release script
 
@@ -80,7 +88,7 @@ $ ./admin/build/release.sh "site v0.2.2: describe the release"
 5. confirm   — both remotes reported in sync, or exit 1 loudly
 ```
 
-Two design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
+The ordering inside the script is the point the section above proved: sgit pushes before git commits, so the mirror always carries the ref that push just wrote, and the expected end state of every release is a clean tree. Two further design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
 
 ## The numbers
 
