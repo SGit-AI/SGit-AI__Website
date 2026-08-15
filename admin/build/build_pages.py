@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.11'
+SITE_VERSION = 'v0.2.12'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.11', '2026-08-15', 'this release',
+    ('v0.2.12', '2026-08-15', 'this release',
+     "The catalogue: a vault indexing vaults, including itself. The 14 Aug briefing pack's Ask A lands as designed — a submission queue whose per-entry cost is a read key and one line, with everything else derived by opening the vault. The deriver (admin/build/catalogue_derive.py, ~120 lines, read-only, no token) turns a read key into file count, plaintext size, commit depth, HEAD, top-level layout, file types, app entries and browser-renderability; proven on all three published-key vaults (Field Notes 4bshby5n, the strategy/maps vault ookq4mn4 — both app entry points detected — and the deploy-docs vault fyofmkvr, markdown-only). The catalogue itself lives in a new vault (kc67yhgw) published with its own read key and listed in itself: README (how to submit), SCHEMA (supplied-vs-derived, and the two rules — read keys yes, vault keys never; escrow the write key BEFORE publishing, because a frozen vault can never be corrected), three processed entries, and the two public to-do lists the brief asked for — awaiting-a-read-key (seeded with eight vaults named in the memos, each carrying the pre-publish audit instruction the strategy-maps case taught) and awaiting-processing (the agent's queue, currently empty). /catalogue/ renders it live via the same reader as the deploy docs — updated by pushing to the vault, no site deploy. Write-key status is a first-class field: 'known and escrowed' or 'lost', stated publicly per entry."),
+    ('v0.2.11', '2026-08-15', 'obj-cas-imm-1f8635c410ef',
      "sgit gets its own Wardley map analysis — six maps starting with git at full strength, because a map that flatters its author is not a map: version control today (git's moat is the platform layer, resting on readable storage), the files that cannot follow (a hole in the map where their foundation should be), sgit's move (no new verbs, invert the bottom layer), the boundary on one map (two chains from one team, split by 'may the store read this?'), agents as the new user (the serialised diff versus ambient authority), and the strategy (commoditise private version control). The maps are drawn as inline SVG by a ~90-line renderer — no images, no dependencies — and the analysis ships as a SECOND app inside the same vault as the SG/Send strategy essay (ookq4mn4): one encrypted store, two entry points, one published read key; the embed opens it by passing entry to the same host. The embed shim gained link handling — in-page anchors scroll manually (assigning location.hash re-navigates a srcdoc frame) and relative .html links remount the frame on the new entry, so the two apps cross-link inside the embed; verified headless: 6 maps, 42 nodes, 12 evolve arrows, and clicking the companion link lands on the strategy essay. Linked from the Why page's boundary section. Also: Google has confirmed indexing sgit.ai, which unblocks the component registry when its turn comes."),
     ('v0.2.10', '2026-08-15', 'obj-cas-imm-cedfb3d06f6a',
      "Plan bookkeeping: the why-expansion plan's status table now reflects reality — Why reframe done, serialised PR done with its CLI brief, two of three demo vaults live, embed at the minimal-host stage pending the UI team's credential fix."),
@@ -140,6 +142,7 @@ def nav(p, here):
   <a class="{cls('why')}" href="{p}why/index.html">Why</a>
   <a class="{cls('try')}" href="{p}try/index.html">Try</a>
   <a class="{cls('demos')}" href="{p}demos/index.html">Demos</a>
+  <a class="{cls('catalogue')}" href="{p}catalogue/index.html">Catalogue</a>
   <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
@@ -512,6 +515,7 @@ Quick answers (so you do not need a second request for the common questions):
 LLMS_SECTIONS = [
     ('why',       'Why this exists'),
     ('demos',     'Demos (live end-to-end examples with published read keys)'),
+    ('catalogue', 'Catalogue (the index of published vaults — read keys, shapes, evidence and write-key status)'),
     ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
     ('docs',      'Docs'),
