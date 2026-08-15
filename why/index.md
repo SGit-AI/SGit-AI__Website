@@ -2,26 +2,75 @@
 
 > A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
-*Source: <https://sgit.ai/why/index.html> · site v0.2.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/why/index.html> · site v0.2.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 # Why does this exist?
 
-Someone left this under the announcement post. It is the most useful comment we received, so it gets its own page.
-
-> "I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."
-
-Fair question — and the "don't bother answering" is fair too, because most answers to it *are* marketing. So: no pitch, no adjectives, and the follow-up questions answered in advance rather than deflected. Where the criticism lands, we say so.
-
-There is also nothing being sold. sgit is Apache-2.0 and installable with `pip install sgit-ai`. So "why would I buy this" has no answer, because there is no purchase. The question worth answering is **why would anyone use it**.
+This page is a boundary map, not a pitch. It starts with where git wins — plainly, in a table, without hedging — because a page that names the incumbent's territory is falsifiable, and falsifiable is what makes the rest of it worth reading. Then it draws what is left: the territory where the store being unable to read your files changes what is possible.
 
 **The whole thesis in one sentence:** you have files that need version control and collaboration, and the place they are stored must not be able to read them.
 Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo — we say so on [the page about when not to use this](../docs/limitations.md).
 
-## What this makes possible that wasn't
+## git and sgit, side by side
 
-This page assumes you know git. So rather than re-explain version control, here is only the delta: things you cannot do with git and a host, or cannot do without that host reading everything. Each one is running on this website right now — the links go to the thing itself, not to a description of it.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site runs both at once** — one working tree, two remotes: the encrypted vault is pushed with `sgit push`, and the same directory is pushed to GitHub with `git push`, which is what builds and deploys it. Neither is a fallback for the other.
+
+|  | git | sgit |
+|---|---|---|
+| **The host can read your content** | Yes — that is what makes everything else work | No. It stores ciphertext under opaque ids and never receives a key |
+| **Performance at scale** | **Far better.** Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files | Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4 MB but this is not a video archive |
+| **Ecosystem above the protocol** | **Everything.** CI, hosted code review, issue tracking, IDEs, decades of tooling and answers | A CLI, a browser client, and an agent skill. Deliberately small, and young |
+| **Proposing changes without write access** | Fork + pull request — mediated by the platform, requires an account there | A [serialised diff](../use-cases/serialised-pull-request.md) — the proposer holds no credential at all, and the artefact moves by any channel |
+| **Archaeology** | **Better.**`bisect`, `blame`, `rebase`, `cherry-pick`, hooks, submodules | `history log / diff / show / revert / reset`. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist |
+| **Partial commits** | Staging area, index, `add -p` | None. A commit snapshots the whole folder |
+| **Branching and merge** | The reference implementation of the idea | The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge |
+| **Read-only access for someone else** | An account on the host, or a deploy key that reads plaintext | A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement |
+| **Reading it from a browser** | Via the host's UI or API, in plaintext | Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's [Deploy section](../deploy/index.md) is that |
+| **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
+| **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
+
+**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
+
+## The boundary, precisely
+
+Two corrections to where people assume the line falls, because the obvious version of this map is wrong:
+
+**The boundary is not the operations.** sgit has commit, push, pull, clone, branch, switch, merge with conflict resolution, history, diff, revert and stash — the full mapping is on [one page](../docs/sgit-for-git-users.md) and does not need restating here. What is absent is the *hosted review interface* and the ecosystem above the protocol: CI, issue tracking, server-side search, delta compression. A pull request is a platform construct layered on a merge, not a version-control primitive — and proposing reviewable changes *without holding write access* is present, as a [serialised diff](../use-cases/serialised-pull-request.md), and is a differentiator rather than a gap.
+
+**Git is also client-side.** The difference is not that work moved to the client — a git client already holds the complete object model and history. The difference is that in sgit *the objects are encrypted there*, so what is lost is exactly what a readable server could have added on top:
+
+| Given up | In exchange for |
+|---|---|
+| Server-side search and indexing | Nothing readable to disclose — not to the host's staff, not to a breach, not to a subpoena served on the host |
+| Server-side delta compression and packing |
+| Hosted review, CI, and content-triggered automation |
+
+That is the whole trade, stated once. Every capability further down this page is something bought with it.
+
+## The protocol, on one page
+
+sgit is a protocol more than a product, and the strongest evidence is that the read path fits in six steps. Two independent implementations — the Python CLI and the JavaScript browser client — walk it against the same vaults, and the file-naming convention is documented well enough that a third party could implement it:
+
+```
+1. branch name  → deterministic filename       # derived locally — no lookup, no listing
+2. that file    → the head index
+3. head         → the commit        # encrypted
+4. commit       → the tree          # encrypted — filenames live in here
+5. tree         → blob, or another tree
+6. decrypt the blob → your file
+```
+
+Deterministic names disclose *existence, not content*: everything the server ever holds is a bit of metadata — opaque ids, sizes, timing — and ciphertext. And the filenames carrying structure is what makes browser consumption fast: a client can decide to cache a file forever without knowing what it is, because content-addressed ids can never change underneath it.
+
+**Two keys, named explicitly.** The *vault key* encrypts, decrypts and writes; it is the credential and there is no reset. The *read key* is derived one-way from it: it can decrypt everything and write nothing, which is what makes it safe to hand out — or [publish](../demos/vault-app-embed.md). (An API access token is a third thing and often confused: it gates service usage, does no encryption, and is transparent to the security model.)
+
+**Three modes, one vault.** *Local* — a person or agent on one machine, offline included. *API* — agents and services against the REST endpoints. *Web* — people in a browser, with a key in the fragment. The same vault serves all three at once; an agent can create a vault in a terminal session and a person can be reading it in a browser moments later.
+
+## The other side of the boundary: what this makes possible
+
+This page assumes you know git, so here is only the delta: things you cannot do with git and a host, or cannot do without that host reading everything. Each one is running on this website right now — the links go to the thing itself, not to a description of it.
 
 ### A live website whose host cannot read it
 
@@ -75,25 +124,6 @@ Not a market-size claim — just the situations where the sentence at the top is
 
 [Security teams### Findings about your own weaknessesPentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.Recipe, evidence and an agent brief →](../use-cases/security-teams.md)
 
-## git and sgit, side by side
-
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site runs both at once** — one working tree, two remotes: the encrypted vault is pushed with `sgit push`, and the same directory is pushed to GitHub with `git push`, which is what builds and deploys it. Neither is a fallback for the other.
-
-|  | git | sgit |
-|---|---|---|
-| **The host can read your content** | Yes — that is what makes everything else work | No. It stores ciphertext under opaque ids and never receives a key |
-| **Performance at scale** | **Far better.** Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files | Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4 MB but this is not a video archive |
-| **Ecosystem** | **Everything.** CI, code review, IDEs, hosting, decades of tooling and answers | A CLI, a browser client, and an agent skill. Deliberately small, and young |
-| **Archaeology** | **Better.**`bisect`, `blame`, `rebase`, `cherry-pick`, hooks, submodules | `history log / diff / show / revert / reset`. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist |
-| **Partial commits** | Staging area, index, `add -p` | None. A commit snapshots the whole folder |
-| **Branching and merge** | The reference implementation of the idea | The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge |
-| **Read-only access for someone else** | An account on the host, or a deploy key that reads plaintext | A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement |
-| **Reading it from a browser** | Via the host's UI or API, in plaintext | Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's [Deploy section](../deploy/index.md) is that |
-| **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
-| **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
-
-**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
-
 ## Why the existing answers don't cover it
 
 This is the strongest form of the objection: every one of these exists and is more mature. Each solves part of it.
@@ -108,7 +138,13 @@ This is the strongest form of the objection: every one of these exists and is mo
 
 The gap they share is the same one: **you can have the workflow, or you can have the privacy, but not both in the same tool.** If you think that gap doesn't matter, we disagree about something factual — a much better disagreement to have than one about adjectives.
 
-## The market question, answered directly
+## The comment this page answers
+
+> "I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."
+
+Someone left that under the announcement post, and it is the most useful comment we received — the boundary map above is the answer to "why", made falsifiable instead of rhetorical. Two things it gets right before the rebuttal starts: most answers to it *are* marketing, and there is nothing being sold — sgit is Apache-2.0 and installable with `pip install sgit-ai`, so the only question worth answering is why anyone would **use** it.
+
+## The market question
 
 - **The client is open source, and that is the distribution strategy, not a substitute for one.** Apache-2.0, no licence tiers, no open-core feature gating in the CLI. It spreads by being free and useful, and the services are built on top of it — the ordinary way open source scales into a business.
 - **The commercial layer is the hosted service** (SG/Send) and what gets built around it. You can also [self-host](../deploy/index.md) — that guidance is published, live, in a vault — so the lock-in argument doesn't hold: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected.

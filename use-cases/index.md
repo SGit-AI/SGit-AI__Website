@@ -2,7 +2,7 @@
 
 > Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
 
-*Source: <https://sgit.ai/use-cases/index.html> · site v0.2.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/index.html> · site v0.2.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,6 +17,8 @@ Two kinds of page here. **Workflows** are the mechanics — what sgit does, on s
 ## Situations
 
 Each of these is a place where the sentence "this needs version control, and the store must not be able to read it" is literally true. The pages are written to be usable: the setup, the commands, what is proven versus what is a pattern, and an agent brief.
+
+[The lead example### The serialised pull requestAn agent proposes changes to a shared vault while holding **no credential at all** — clone with a public read key, commit on a private branch, emit a diff for human review. The answer to ambient agent authority, built before the guidance recommending it.](serialised-pull-request.md)
 
 [AI agents### Agent state that isn't the vendor's to readDurable memory across sessions and machines, and shared memory between agents, with the store unable to read either. **Evidence: this website.**](ai-agents.md)
 

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.8</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.9</a>
   <a class="nl here" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -37,15 +37,56 @@
 
 <main class="doc">
   <h1>Why does this exist?</h1>
-  <p class="lead">Someone left this under the announcement post. It is the most useful comment we received, so it gets its own page.</p>
-  <blockquote class="challenge">"I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."</blockquote>
-  <p>Fair question — and the "don't bother answering" is fair too, because most answers to it <em>are</em> marketing. So: no pitch, no adjectives, and the follow-up questions answered in advance rather than deflected. Where the criticism lands, we say so.</p>
-  <p>There is also nothing being sold. sgit is Apache-2.0 and installable with <code>pip install sgit-ai</code>. So "why would I buy this" has no answer, because there is no purchase. The question worth answering is <b>why would anyone use it</b>.</p>
+  <p class="lead">This page is a boundary map, not a pitch. It starts with where git wins — plainly, in a table, without hedging — because a page that names the incumbent's territory is falsifiable, and falsifiable is what makes the rest of it worth reading. Then it draws what is left: the territory where the store being unable to read your files changes what is possible.</p>
 
   <div class="note" style="font-size:1rem"><b>The whole thesis in one sentence:</b> you have files that need version control and collaboration, and the place they are stored must not be able to read them.<br><span class="small">Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo — we say so on <a href="../docs/limitations.html">the page about when not to use this</a>.</span></div>
 
-  <h2>What this makes possible that wasn't</h2>
-  <p>This page assumes you know git. So rather than re-explain version control, here is only the delta: things you cannot do with git and a host, or cannot do without that host reading everything. Each one is running on this website right now — the links go to the thing itself, not to a description of it.</p>
+  <h2>git and sgit, side by side</h2>
+  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site runs both at once</b> — one working tree, two remotes: the encrypted vault is pushed with <code>sgit push</code>, and the same directory is pushed to GitHub with <code>git push</code>, which is what builds and deploys it. Neither is a fallback for the other.</p>
+
+  <div class="tablewrap"><table>
+    <tr><th></th><th>git</th><th>sgit</th></tr>
+    <tr><td><b>The host can read your content</b></td><td>Yes — that is what makes everything else work</td><td>No. It stores ciphertext under opaque ids and never receives a key</td></tr>
+    <tr><td><b>Performance at scale</b></td><td><b>Far better.</b> Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files</td><td>Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4&nbsp;MB but this is not a video archive</td></tr>
+    <tr><td><b>Ecosystem above the protocol</b></td><td><b>Everything.</b> CI, hosted code review, issue tracking, IDEs, decades of tooling and answers</td><td>A CLI, a browser client, and an agent skill. Deliberately small, and young</td></tr>
+    <tr><td><b>Proposing changes without write access</b></td><td>Fork + pull request — mediated by the platform, requires an account there</td><td>A <a href="../use-cases/serialised-pull-request.html">serialised diff</a> — the proposer holds no credential at all, and the artefact moves by any channel</td></tr>
+    <tr><td><b>Archaeology</b></td><td><b>Better.</b> <code>bisect</code>, <code>blame</code>, <code>rebase</code>, <code>cherry-pick</code>, hooks, submodules</td><td><code>history log / diff / show / revert / reset</code>. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist</td></tr>
+    <tr><td><b>Partial commits</b></td><td>Staging area, index, <code>add -p</code></td><td>None. A commit snapshots the whole folder</td></tr>
+    <tr><td><b>Branching and merge</b></td><td>The reference implementation of the idea</td><td>The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge</td></tr>
+    <tr><td><b>Read-only access for someone else</b></td><td>An account on the host, or a deploy key that reads plaintext</td><td>A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement</td></tr>
+    <tr><td><b>Reading it from a browser</b></td><td>Via the host's UI or API, in plaintext</td><td>Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's <a href="../deploy/index.html">Deploy section</a> is that</td></tr>
+    <tr><td><b>If the host is breached</b></td><td>Your content is in the breach</td><td>Opaque ids, ciphertext, object sizes and timing</td></tr>
+    <tr><td><b>Recovery when you lose the credential</b></td><td>Reset your password; the repo is unaffected</td><td>Nothing. No reset, no recovery — the direct cost of the row above</td></tr>
+  </table></div>
+
+  <p><b>So the split, concretely:</b> source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The <a href="../vault/git-and-vaults.html">side-by-side setup</a> — what to commit, what to keep out of git, and the <code>.gitattributes</code> that stops git trying to diff ciphertext — is documented, because it is how this site is developed.</p>
+
+  <h2>The boundary, precisely</h2>
+  <p>Two corrections to where people assume the line falls, because the obvious version of this map is wrong:</p>
+  <p><b>The boundary is not the operations.</b> sgit has commit, push, pull, clone, branch, switch, merge with conflict resolution, history, diff, revert and stash — the full mapping is on <a href="../docs/sgit-for-git-users.html">one page</a> and does not need restating here. What is absent is the <em>hosted review interface</em> and the ecosystem above the protocol: CI, issue tracking, server-side search, delta compression. A pull request is a platform construct layered on a merge, not a version-control primitive — and proposing reviewable changes <em>without holding write access</em> is present, as a <a href="../use-cases/serialised-pull-request.html">serialised diff</a>, and is a differentiator rather than a gap.</p>
+  <p><b>Git is also client-side.</b> The difference is not that work moved to the client — a git client already holds the complete object model and history. The difference is that in sgit <em>the objects are encrypted there</em>, so what is lost is exactly what a readable server could have added on top:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Given up</th><th>In exchange for</th></tr>
+    <tr><td>Server-side search and indexing</td><td rowspan="3">Nothing readable to disclose — not to the host's staff, not to a breach, not to a subpoena served on the host</td></tr>
+    <tr><td>Server-side delta compression and packing</td></tr>
+    <tr><td>Hosted review, CI, and content-triggered automation</td></tr>
+  </table></div>
+  <p>That is the whole trade, stated once. Every capability further down this page is something bought with it.</p>
+
+  <h2>The protocol, on one page</h2>
+  <p>sgit is a protocol more than a product, and the strongest evidence is that the read path fits in six steps. Two independent implementations — the Python CLI and the JavaScript browser client — walk it against the same vaults, and the file-naming convention is documented well enough that a third party could implement it:</p>
+<pre class="shell">1. branch name  → deterministic filename       <span class="d"># derived locally — no lookup, no listing</span>
+2. that file    → the head index
+3. head         → the commit        <span class="d"># encrypted</span>
+4. commit       → the tree          <span class="d"># encrypted — filenames live in here</span>
+5. tree         → blob, or another tree
+6. decrypt the blob → your file</pre>
+  <p>Deterministic names disclose <em>existence, not content</em>: everything the server ever holds is a bit of metadata — opaque ids, sizes, timing — and ciphertext. And the filenames carrying structure is what makes browser consumption fast: a client can decide to cache a file forever without knowing what it is, because content-addressed ids can never change underneath it.</p>
+  <p><b>Two keys, named explicitly.</b> The <em>vault key</em> encrypts, decrypts and writes; it is the credential and there is no reset. The <em>read key</em> is derived one-way from it: it can decrypt everything and write nothing, which is what makes it safe to hand out — or <a href="../demos/vault-app-embed.html">publish</a>. (An API access token is a third thing and often confused: it gates service usage, does no encryption, and is transparent to the security model.)</p>
+  <p><b>Three modes, one vault.</b> <em>Local</em> — a person or agent on one machine, offline included. <em>API</em> — agents and services against the REST endpoints. <em>Web</em> — people in a browser, with a key in the fragment. The same vault serves all three at once; an agent can create a vault in a terminal session and a person can be reading it in a browser moments later.</p>
+
+  <h2>The other side of the boundary: what this makes possible</h2>
+  <p>This page assumes you know git, so here is only the delta: things you cannot do with git and a host, or cannot do without that host reading everything. Each one is running on this website right now — the links go to the thing itself, not to a description of it.</p>
 
   <div class="capstack">
 
@@ -104,25 +145,6 @@
     <a class="card" href="../use-cases/security-teams.html"><span class="tag">Security teams</span><h3>Findings about your own weaknesses</h3><p>Pentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.</p><p class="cardgo">Recipe, evidence and an agent brief &rarr;</p></a>
   </div>
 
-  <h2>git and sgit, side by side</h2>
-  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site runs both at once</b> — one working tree, two remotes: the encrypted vault is pushed with <code>sgit push</code>, and the same directory is pushed to GitHub with <code>git push</code>, which is what builds and deploys it. Neither is a fallback for the other.</p>
-
-  <div class="tablewrap"><table>
-    <tr><th></th><th>git</th><th>sgit</th></tr>
-    <tr><td><b>The host can read your content</b></td><td>Yes — that is what makes everything else work</td><td>No. It stores ciphertext under opaque ids and never receives a key</td></tr>
-    <tr><td><b>Performance at scale</b></td><td><b>Far better.</b> Twenty years of optimisation: packfiles, deltas, a mature index, repos with millions of files</td><td>Built for working sets of documents and code-sized files. Every object is encrypted and content-addressed individually; large binaries chunk-upload past ~4&nbsp;MB but this is not a video archive</td></tr>
-    <tr><td><b>Ecosystem</b></td><td><b>Everything.</b> CI, code review, IDEs, hosting, decades of tooling and answers</td><td>A CLI, a browser client, and an agent skill. Deliberately small, and young</td></tr>
-    <tr><td><b>Archaeology</b></td><td><b>Better.</b> <code>bisect</code>, <code>blame</code>, <code>rebase</code>, <code>cherry-pick</code>, hooks, submodules</td><td><code>history log / diff / show / revert / reset</code>. No bisect, no blame, no rebase — the server cannot help, so anything not implemented client-side does not exist</td></tr>
-    <tr><td><b>Partial commits</b></td><td>Staging area, index, <code>add -p</code></td><td>None. A commit snapshots the whole folder</td></tr>
-    <tr><td><b>Branching and merge</b></td><td>The reference implementation of the idea</td><td>The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge</td></tr>
-    <tr><td><b>Read-only access for someone else</b></td><td>An account on the host, or a deploy key that reads plaintext</td><td>A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement</td></tr>
-    <tr><td><b>Reading it from a browser</b></td><td>Via the host's UI or API, in plaintext</td><td>Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's <a href="../deploy/index.html">Deploy section</a> is that</td></tr>
-    <tr><td><b>If the host is breached</b></td><td>Your content is in the breach</td><td>Opaque ids, ciphertext, object sizes and timing</td></tr>
-    <tr><td><b>Recovery when you lose the credential</b></td><td>Reset your password; the repo is unaffected</td><td>Nothing. No reset, no recovery — the direct cost of the row above</td></tr>
-  </table></div>
-
-  <p><b>So the split, concretely:</b> source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The <a href="../vault/git-and-vaults.html">side-by-side setup</a> — what to commit, what to keep out of git, and the <code>.gitattributes</code> that stops git trying to diff ciphertext — is documented, because it is how this site is developed.</p>
-
   <h2>Why the existing answers don't cover it</h2>
   <p>This is the strongest form of the objection: every one of these exists and is more mature. Each solves part of it.</p>
   <div class="tablewrap"><table>
@@ -135,7 +157,11 @@
   </table></div>
   <p>The gap they share is the same one: <b>you can have the workflow, or you can have the privacy, but not both in the same tool.</b> If you think that gap doesn't matter, we disagree about something factual — a much better disagreement to have than one about adjectives.</p>
 
-  <h2>The market question, answered directly</h2>
+  <h2>The comment this page answers</h2>
+  <blockquote class="challenge">"I appreciate the work and effort in this but i see no market or value what so ever (especially market). My first question if was being sold this would be why but then don't try and answer cause i would return with so many follow up questions to anything you would say."</blockquote>
+  <p>Someone left that under the announcement post, and it is the most useful comment we received — the boundary map above is the answer to "why", made falsifiable instead of rhetorical. Two things it gets right before the rebuttal starts: most answers to it <em>are</em> marketing, and there is nothing being sold — sgit is Apache-2.0 and installable with <code>pip install sgit-ai</code>, so the only question worth answering is why anyone would <b>use</b> it.</p>
+
+  <h2>The market question</h2>
   <ul>
     <li><b>The client is open source, and that is the distribution strategy, not a substitute for one.</b> Apache-2.0, no licence tiers, no open-core feature gating in the CLI. It spreads by being free and useful, and the services are built on top of it — the ordinary way open source scales into a business.</li>
     <li><b>The commercial layer is the hosted service</b> (SG/Send) and what gets built around it. You can also <a href="../deploy/index.html">self-host</a> — that guidance is published, live, in a vault — so the lock-in argument doesn't hold: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected.</li>
@@ -180,7 +206,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.8</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.9</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

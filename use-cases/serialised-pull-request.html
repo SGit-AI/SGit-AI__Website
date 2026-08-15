@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The serialised pull request — sgit use cases</title>
+<meta name="description" content="An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.">
+<link rel="canonical" href="https://sgit.ai/use-cases/serialised-pull-request.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/use-cases/serialised-pull-request.html">
+<meta property="og:title" content="The serialised pull request — sgit use cases">
+<meta property="og:description" content="An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="serialised-pull-request.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The serialised pull request — sgit use cases", "headline": "The serialised pull request — sgit use cases", "description": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.", "url": "https://sgit.ai/use-cases/serialised-pull-request.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.9</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
+  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl here" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / The serialised pull request</p>
+  <h1>The serialised pull request</h1>
+  <p class="lead">An agent clones a public vault needing no credential at all, makes changes, commits, and emits a diff. A person imports that diff on another machine, reviews it, and merges. No token was issued, so no token could be stolen, scoped too widely, or left unrevoked.</p>
+
+  <h2>The problem: ambient authority</h2>
+  <p>The standard way to let an agent contribute to a repository is to give it a credential — and the credential is nearly always bigger than the task. One widely used coding agent held a token scoped to <em>every repository its developer had authorised</em>. The platform capability that would fix this — a user-minted, short-lived, single-repository token — has been an open feature request since June 2026, which is the polite way of saying it does not exist.</p>
+  <p>The consequences stopped being theoretical this month. Research disclosed at Black&nbsp;Hat on <b>5 August 2026</b> showed that a GitHub issue opened by an account with <em>no repository privileges</em> was enough to reach CI secrets in the vendors' own repositories — for three leading agents, under each vendor's default, unmodified workflow configuration. The attacker did not break anything; they asked a confused deputy to use authority it already held. That is what ambient authority means, and every write-scoped agent token is a standing instance of it.</p>
+
+  <h2>The workflow</h2>
+  <p>In the project lead's own words, from the session where it happened:</p>
+  <blockquote class="challenge">"I got Claude to clone a vault, a public repo, and I didn't need any permissions. Then Claude made a bunch of changes, then I got Claude to create commits and give me a diff. On another machine I cloned that vault, imported the diff, saw the changes, and then I merged them. Fundamentally, it's like a serialised pull request."</blockquote>
+<pre class="shell"><span class="d"># the agent's side — no credential at any point</span>
+<span class="p">$</span> <span class="cmd">sgit clone --read-key &lt;published-read-key&gt; &lt;vault-id&gt; work</span>
+<span class="d"># … changes, commits on the private clone branch …</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --json &gt; proposed-changes.json</span>   <span class="d"># the serialised artefact</span>
+
+<span class="d"># the human's side, on another machine</span>
+<span class="p">$</span> <span class="cmd">sgit clone '&lt;vault-key&gt;' review</span>
+<span class="d"># import the diff, review it, merge, push — see "honest mechanics" below</span></pre>
+  <p>Four properties, and each is the strong form of something a platform PR only approximates:</p>
+  <ul>
+    <li><b>No credential is issued at all.</b> Stronger than a short-lived scoped token: there is nothing to steal, nothing to expire, nothing to revoke, and nothing for an injected instruction to spend.</li>
+    <li><b>The artefact is inspectable before it takes effect.</b> A diff is reviewed; a write is discovered. The privileged action happens on the reviewer's machine, after human eyes.</li>
+    <li><b>Provenance survives per commit</b>, not per session — the history records what was proposed, not just what was merged.</li>
+    <li><b>It is capability-shaped, not trust-shaped.</b> It assumes no shared platform accounts and no fork write access, and the artefact moves by any channel — a vault, an email, a queue.</li>
+  </ul>
+  <p>Published security guidance now independently recommends exactly this shape: run analysis in a read-only job holding no publishing credentials, and pass a constrained, reviewed artefact into a separate privileged step — never one job that both consumes untrusted input and can publish. Having built the recommended control <em>before</em> the recommendation is a stronger claim than any feature comparison, so we make it plainly.</p>
+
+  <h2>The honest mechanics</h2>
+  <p>What is shipped versus what is pattern, checked against the CLI rather than asserted:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Step</th><th>Status today</th></tr>
+    <tr><td>Credential-free clone of a public vault (read key only)</td><td><b>Shipped</b> — <code>sgit clone --read-key</code>; this site publishes working read keys on its <a href="../demos/index.html">demo pages</a></td></tr>
+    <tr><td>Private-branch commits that cannot touch the shared branch</td><td><b>Shipped</b> — the <a href="../docs/two-branch-model.html">two-branch model</a></td></tr>
+    <tr><td>Emit the diff as a machine-readable artefact</td><td><b>Shipped</b> — <code>sgit history diff --json</code></td></tr>
+    <tr><td>First-class import: <code>sgit diff apply</code></td><td><b>Not shipped.</b> The workflow was performed, but the import half was review-and-merge by hand. A <a href="../briefs/brief-serialised-diff-and-ignore.md">brief to the CLI team</a> asks for <code>sgit diff export</code> / <code>sgit diff apply</code> as first-class commands</td></tr>
+    <tr><td>A published specification of the diff format</td><td><b>Not published.</b> If this is the headline workflow, its artefact needs a spec a third party can implement — same brief</td></tr>
+  </table></div>
+
+  <h2>Evidence status</h2>
+  <div class="evbox ev-warn"><span class="evtag">PARTIAL — performed once, import not yet first-class</span>
+  <p>The workflow ran end to end exactly as quoted, and every step on the agent's side is a shipped command exercised daily. What keeps this from PROVEN is the import: until <code>sgit diff apply</code> exists, the human side leans on manual review-and-merge, and a workflow with a manual middle is a pattern, not a product. The brief is filed; this page upgrades itself when the commands land.</p></div>
+
+  <h2>Brief for an agent</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/serialised-pull-request.md</span></pre>
+  <blockquote class="challenge">Read https://sgit.ai/use-cases/serialised-pull-request.md. Clone the vault I name using
+  only its read key, make the changes I describe on your clone branch, commit with clear
+  messages, then emit `sgit history diff --json` and give me the output as a file. Do not
+  ask for, hold, or use any write credential at any point.</blockquote>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/two-branch-model.html">The two-branch model</a> — why the agent's commits cannot reach the shared branch</li>
+    <li><a href="ai-agents.html">Agent state that isn't the vendor's to read</a> — the memory half of the agent story</li>
+    <li><a href="../why/index.html">The boundary map</a> — where this sits: proposing changes without write access is present; the hosted review interface is not</li>
+  </ul>
+  <div class="pagenav"><a href="index.html">← Use cases</a><a href="ai-agents.html">AI agents →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.9</a> · <a href="../admin/index.html">engineering</a> · <a href="serialised-pull-request.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
