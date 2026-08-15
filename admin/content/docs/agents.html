@@ -1,0 +1,57 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Working with AI agents</h1>
+  <p class="lead">sgit is designed to be driven by AI agents as well as humans. A vault is just a folder — the agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.</p>
+
+  <h2>The session pattern</h2>
+<pre class="shell"><span class="d"># start of session: get the workspace</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span>   <span class="d"># or: sgit pull, if already cloned</span>
+<span class="d"># … agent works on files normally …</span>
+<span class="d"># end of session: persist the state</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "session: findings and next steps"</span>
+<span class="p">$</span> <span class="cmd">sgit push</span></pre>
+  <p>The next session — hours or weeks later, on any machine — runs <code>sgit pull</code> and continues. State survives the context window, encrypted end to end.</p>
+
+  <h2><code>sgit write</code> — the surgical commit</h2>
+  <p>When an agent needs to record one result, cloning a whole vault is waste. <code>write</code> commits a file directly to the vault HEAD in a single call: no working-directory scan, no full clone needed.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit write notes/finding.md --file result.md \
+    --message "agent A: analysis" --push --json</span>
+{ "status": "pushed", "path": "notes/finding.md",
+  "blob_id": "obj-cas-imm-9c2e41ab77d0" }</pre>
+  <ul>
+    <li><code>--also vault-path:local-file</code> (repeatable) makes a multi-file write <b>atomic</b> — one commit, all or nothing.</li>
+    <li>Content-hash dedup: writing identical content returns <code>unchanged</code> and creates no commit.</li>
+    <li><code>--json</code> gives a machine-readable result for the calling pipeline.</li>
+  </ul>
+
+  <h2>Machine-readable everything</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Need</th><th>Command</th></tr>
+    <tr><td>Read one file, structured</td><td><code>sgit cat &lt;path&gt; --json</code> · <code>sgit cat --id &lt;blob-id&gt;</code> (zero network calls)</td></tr>
+    <tr><td>List files with fetch state</td><td><code>sgit ls --json</code> / <code>--ids</code></td></tr>
+    <tr><td>History for pipelines</td><td><code>sgit history log --json</code> · <code>history diff --json</code></td></tr>
+    <tr><td>Health checks</td><td><code>sgit doctor --json</code></td></tr>
+  </table></div>
+
+  <h2>Fast cold starts</h2>
+  <p>Agents run on time budgets. Three clone modes keep startup cheap:</p>
+  <ul>
+    <li><code>sgit clone --sparse</code> — structure now, file content on demand via <code>sgit fetch &lt;path&gt;</code>.</li>
+    <li><code>sgit clone-branch</code> — full history, but only HEAD's content.</li>
+    <li><code>sgit clone-headless</code> — credentials only: derive keys and write config, fetch nothing.</li>
+  </ul>
+
+  <h2>Multi-agent collaboration</h2>
+  <p>Give each agent a named branch; the <a href="two-branch-model.html">two-branch model</a> guarantees isolation of work-in-progress. Two commands make peer review safe:</p>
+  <ul>
+    <li><code>sgit history show &lt;commit&gt;</code> and <code>sgit history diff</code> are <b>read-only</b> — they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.</li>
+    <li><code>sgit resolve --show</code> renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise — by a human or by an agent.</li>
+  </ul>
+<pre class="shell"><span class="d"># agent A</span>  <span class="p">$</span> <span class="cmd">sgit branch new feature-analysis</span> … commit … push
+<span class="d"># agent B</span>  <span class="p">$</span> <span class="cmd">sgit history show obj-cas-imm-c4e81a</span>   <span class="d"># look, don't merge</span>
+<span class="d"># human  </span>  <span class="p">$</span> <span class="cmd">sgit pull</span> → review in SG/Vault → merge</pre>
+
+  <div class="note"><b>For Claude users:</b> a packaged sgit Skill teaches a Claude session this entire workflow — install, clone, work, commit, push — so cross-session persistent state works out of the box.</div>
+
+  <div class="pagenav"><a href="two-branch-model.html">← The two-branch model</a><a href="limitations.html">When NOT to use sgit →</a></div>
+</main>

@@ -1,0 +1,45 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / Vault apps</p>
+  <h1>Building vault apps</h1>
+  <p class="lead">A vault app is a single <code>index.html</code> (plus data and assets) that lives inside a vault and renders straight from it. The experience and the security are the same artifact: the app ships encrypted, the link-holder holds the key, and the server never sees the page you're reading.</p>
+
+  <h2>The project shape</h2>
+<pre class="shell">my-vault/
+├── index.html          <span class="d"># the app — self-contained entry point</span>
+├── app.json            <span class="d"># auto-launch config (below)</span>
+├── content.json        <span class="d"># editable content, separate from the app</span>
+├── assets/             <span class="d"># css / js, loaded through the bridge</span>
+└── &lt;your data&gt;         <span class="d"># the files the app presents</span></pre>
+  <p>Keep content in data files, not in HTML — so you (or an agent) can edit captions, prose, and structure without touching the app. Then the manifest (preferred location <code>.vault/app.json</code>; a legacy root <code>app.json</code> is still read):</p>
+<pre class="shell">{
+  "entry":       "index.html",
+  "present":     true,        <span class="d"># boot into App Mode instead of the file browser</span>
+  "title":       "My app",
+  "permissions": { "fs": { "read": true } },
+  "hud":         { "mode": "full" }
+}</pre>
+  <p>One rule with teeth: <b>an app cannot write its own manifest</b> — <code>.vault/**</code> and the legacy root <code>app.json</code> are a protected floor (<code>EPROTECTED</code>). The manifest <em>is</em> the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.</p>
+
+  <h2>The authoring contract</h2>
+  <p>Vault pages render inside a sandboxed frame, and the browser fetches declarative resources <em>before</em> the vault bridge can install. Anything declarative pointing at a vault path will fail. The contract:</p>
+  <ul>
+    <li><b>No</b> <code>&lt;link rel="stylesheet" href="…"&gt;</code>, <code>&lt;script src="…"&gt;</code>, or <code>&lt;img src="…"&gt;</code> against vault files — inline it, or load it from JS through the bridge (<code>sg.loadCss</code> / <code>sg.loadJs</code>, or read + inject via <code>sg.vfs.readText</code>; set <code>img.src</code> from JS).</li>
+    <li><b>No external resources at all</b> — no CDNs, fonts, or analytics. A vault app is self-contained by construction; inline SVG is the graphics format.</li>
+    <li><b><code>fetch()</code> of vault paths does not work</b> — use <code>sg.vfs.readText(path)</code> / <code>sg.vfs.read(path)</code>. Plain <code>fetch</code> is only useful as a fallback for static hosting.</li>
+    <li><b>Plain <code>&lt;a href&gt;</code> links between vault pages work</b> — the host intercepts clicks and routes them, so multi-page sites navigate normally (this site is the proof). Hash anchors work too; <b>query strings don't</b> (<code>page.html?x=1</code> lands on the broken-link overlay), and never assign <code>location.hash</code> from JS — the sandboxed frame re-navigates.</li>
+    <li><b>Signal readiness</b> — post <code>{type:'sg-app-ready'}</code> to the parent when your page has rendered (in the error path too), or users stare at the host's loading overlay. The host also watches for blank apps: ~2.5&nbsp;s after load with nothing painted, it tells the user so — if you legitimately render late, paint a spinner first.</li>
+    <li><b>Provide fallbacks</b> — embed critical styles inline and degrade gracefully, so the page stays readable if the bridge is slow or absent.</li>
+  </ul>
+
+  <h2>Ship it with sgit</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; my-app</span>     <span class="d"># or sgit create my-app</span>
+<span class="d"># … build index.html, app.json, assets …</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "app v1"</span>
+<span class="p">$</span> <span class="cmd">sgit push</span>                          <span class="d"># deployment == pushing the vault</span></pre>
+  <p>There is no separate hosting step, no build server, no CDN configuration. The vault is the deployment target, the version history, and the rollback mechanism (<code>sgit history revert</code>) in one.</p>
+
+  <h2>The reference implementation</h2>
+  <p>This website follows every rule on this page and carries its own build system in-vault: a page generator, a validation suite (contract scan, link check, JS parse check), and a versioned release process. Start at <a href="../admin/index.html">admin &amp; engineering</a> and read <code>admin/build/</code> — cloning this vault gives you a complete working example.</p>
+
+  <div class="pagenav"><a href="index.html">← SG/Vault &amp; the platform</a><a href="sg-bridge.html">The window.sg bridge →</a></div>
+</main>

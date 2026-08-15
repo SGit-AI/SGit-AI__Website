@@ -2,7 +2,7 @@
 
 > The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
 
-*Source: <https://sgit.ai/vault/index.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/index.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ This section is — for now — the official documentation for the SGraph vault 
 
 ## What SG/Vault is
 
-SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an **independent implementation of the same encrypted wire format** — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the [security model](../security.md#interop)).
+SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an **independent implementation of the same encrypted wire format** — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the [security model](../security/index.md#interop)).
 
 You open a vault by its key, carried in the URL *fragment* (the part after `#`):
 

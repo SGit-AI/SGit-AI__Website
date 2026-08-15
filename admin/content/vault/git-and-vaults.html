@@ -1,0 +1,63 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / Git repos inside vaults</p>
+  <h1>Git repos inside vaults</h1>
+  <p class="lead"><span class="dim">Engineering preview.</span> A git repository is, in the end, just files — which means a vault can hold a complete repo, <code>.git</code> folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is <em>legibility</em>: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.</p>
+
+  <h2>A pure-Python git reader</h2>
+  <p>The sgit project has a working git reader — ~600 lines of implementation in the same Type_Safe style as sgit itself — that reads the <code>.git</code> object store directly: loose objects, packfiles (index v2, including large offsets), delta reconstruction (both OFS and REF deltas), symbolic refs and <code>packed-refs</code>. No <code>git</code> binary, no gitpython, no dulwich — its only dependency is the same type-safety framework sgit already uses.</p>
+  <p>Verified against sgit's own development repository (900+ commits) during review:</p>
+<pre class="shell"><span class="p">&gt;&gt;&gt;</span> <span class="cmd">svc = Git_Repo__Reader__Service(repo_path='…/SGit-AI__CLI')</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="cmd">[b.name for b in svc.branches()]</span>
+['dev', 'claude/sgit-positioning-proposal…']
+<span class="p">&gt;&gt;&gt;</span> <span class="cmd">svc.head_commit()</span>
+HEAD 2e2dd4c · 1 file changed · author + message parsed
+<span class="p">&gt;&gt;&gt;</span> <span class="cmd">len(svc.object_parser.flatten_tree(head.tree_sha))</span>
+1161   <span class="d"># every file in HEAD, resolved through packfiles and deltas</span></pre>
+
+  <h2>Why this matters for vaults</h2>
+  <ul>
+    <li><b>Legible encrypted code archives.</b> Clone a vault containing a repo, and an agent — or a vault app — can render its history, branches, and per-commit file changes anywhere Python runs: sandboxes, Lambdas, CI containers, none of which need git installed.</li>
+    <li><b>A repo view for SG/Vault.</b> The same parsing logic, ported to the browser client, would let SG/Vault show commit history for repos stored in vaults — GitHub-style legibility over content the server cannot read.</li>
+    <li><b>Agent code-analysis on a time budget.</b> Combine a <a href="../docs/agents.html">sparse clone</a> with the reader: fetch only <code>.git</code>, walk the history, fetch working-tree files on demand.</li>
+    <li><b>One mental model, twice.</b> git's object graph (commits → trees → blobs, refs on top) is exactly the model sgit rebuilt over an encrypted content-addressed store. The reader proves the model small enough to reimplement legibly in ~600 typed lines — which is the same bet sgit made, in the other direction.</li>
+  </ul>
+
+  <h2>Run git and sgit side by side</h2>
+  <p>The integration runs the other way too: the same folder can be a git repository <em>and</em> an sgit vault at once — git's ecosystem (remotes, pull requests, CI, GitHub Pages) over the working files, sgit's zero-knowledge sync over the same content, and a git remote that doubles as an <b>encrypted mirror of the vault itself</b>.</p>
+  <p>Why this is safe by construction: the <code>bare/</code> store is byte-parity with what the sync server holds, and the server is untrusted <em>by design</em> — everything in <code>bare/</code> is protected by the vault key, not by where it sits. Git exposure of <code>bare/</code> is therefore equivalent to server exposure, which the zero-knowledge model already accepts. A git remote is just a second untrusted server — one that also gives you distribution, replication and history for free.</p>
+  <p>The boundary reduces to three rules:</p>
+<pre class="shell"><span class="d"># .gitignore — the whole of it</span>
+.sg_vault/local/   <span class="d"># plaintext tier: vault key, push token, unwrapped private keys</span>
+.sg_vault/work/    <span class="d"># scratch area — may hold plaintext transiently</span>
+*.pem              <span class="d"># defence in depth: no unwrapped key material anywhere, ever</span></pre>
+  <p>Pair it with a <code>.gitattributes</code> that marks <code>.sg_vault/**</code> as <code>binary -diff -merge</code>: ciphertext has no meaningful line diff, and a textual merge would corrupt it. Everything else is committed — including the <b>plaintext working tree, which is the point</b>: the vault's contents readable, searchable and reviewable on GitHub, with blame, PRs and CI on top. That makes repo visibility a <em>content</em> decision, not a crypto one: <code>bare/</code> is safe either way; your documents are what you are choosing to expose.</p>
+
+  <h3>The round trip: edit on GitHub, pull back into the vault</h3>
+  <p>Because the working tree is real files, the flow runs both ways. Edit a file in the GitHub web editor, merge a colleague's pull request, let a CI job rewrite a document — then <code>git pull</code> into the local clone, and <b>sgit sees exactly what changed</b>, the same way it sees your own edits: <code>sgit status</code> reports them, <code>sgit commit</code> records them in the vault's history, <code>sgit push</code> seals them to the server. Two provenance trails, both kept: git records who proposed and reviewed a change; sgit records it landing in the encrypted vault.</p>
+
+  <h3>Before first publication: audit, then keep the discipline</h3>
+  <ul>
+    <li><b>Run the leak audit from the vault root</b> before the first <code>git add</code>: the vault-key secret must not appear in the working tree, no <code>BEGIN PRIVATE KEY</code> outside <code>local/</code>, and <code>bare/</code> must contain no greppable filenames or content. (The vault serving this site passed all checks before its dotfiles shipped.)</li>
+    <li><b>Write the protection files before the first <code>git add -A</code></b> — once <code>local/</code> is in a commit it is in history, and removing it later means a history rewrite plus key rotation.</li>
+    <li><b>For CI</b>, the vault key goes in GitHub Actions Secrets (and a password manager) — never in files, commit messages, issues or workflow YAML.</li>
+    <li><b>Disaster recovery comes free:</b> a git clone of the repo plus the key reconstitutes everything — content, sgit history, all branches — even if the sync server is gone. Do one restore drill before you need it in anger.</li>
+  </ul>
+  <p>The vault serving this site ships the full <code>.gitignore</code> / <code>.gitattributes</code> pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see <a href="static-hosting.html">static hosting on GitHub Pages</a>.</p>
+
+  <h3>What a key rotation does to the mirror</h3>
+  <p>Rotating a vault key (<code>delete-on-remote</code> → <code>rekey</code> → <code>push</code>) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the <code>.gitattributes</code> binary rule means no diff churn), but two consequences are worth knowing before you rotate:</p>
+  <ul>
+    <li><b>Git becomes the history.</b> A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.</li>
+    <li><b>A rekey protects the server, not the mirror.</b> Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed <em>and</em> the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.</li>
+  </ul>
+  <p class="small dim">This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the <a href="../admin/versions.html">release history</a>.</p>
+
+  <h2>Status — honestly</h2>
+  <ul>
+    <li>The reader is <b>in review, not shipped</b>. It is read-only, follows first parents (no merge traversal), and skips submodules and shallow clones by design.</li>
+    <li>Review has already produced fixes: two schemas needed the project's own default-value convention applied, and the string-sanitization rules need loosening so file paths and commit messages round-trip byte-faithfully before this ships.</li>
+    <li>When it lands, it lands the way everything here does: typed, tested against real repositories, and documented on this page.</li>
+  </ul>
+
+  <div class="pagenav"><a href="sub-vaults.html">← Sub-vaults</a><a href="static-hosting.html">Static hosting →</a></div>
+</main>

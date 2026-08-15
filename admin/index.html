@@ -21,15 +21,16 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.27</a>
-  <a class="nl" href="../why.html">Why</a>
-  <a class="nl" href="../try.html">Try</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.0</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
-  <a class="nl" href="../skills.html">Skills</a>
-  <a class="nl" href="../security.html">Security</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>
 
@@ -39,18 +40,28 @@
   <p class="lead">How this site is built, shipped, and versioned. sgit.ai is not hosted on a web server — it is a <b>vault app</b>: a set of HTML pages living inside an encrypted SG/Send vault, decrypted and rendered in your browser. The site about sgit is delivered by sgit.</p>
 
   <h2>Architecture</h2>
-<pre class="shell">vault root
-├── index.html · security.html · why.html      <span class="d"># root pages</span>
-├── docs/*.html                                      <span class="d"># 8 documentation pages</span>
-├── vault/*.html                                     <span class="d"># 4 SG/Vault platform pages</span>
-├── admin/                                           <span class="d"># this section</span>
-│   ├── index.html · versions.html
-│   ├── brief-design-improvements.md                 <span class="d"># brief for Claude Code</span>
-│   └── build/                                       <span class="d"># the build system itself</span>
-│       ├── build_pages.py                           <span class="d"># generates every page</span>
-│       └── validate.js                              <span class="d"># pre-push checks</span>
-├── assets/site.css · assets/site.js                 <span class="d"># shared, loaded at runtime</span>
-└── app.json                                         <span class="d"># auto-launch config</span></pre>
+<pre class="shell"><span class="d"># published site — one folder per section; root holds only what must live there</span>
+├── index.html · index.md                     <span class="d"># the front door + its markdown twin</span>
+├── CNAME · app.json · robots.txt · sitemap.xml
+├── llms.txt · llms-full.txt                  <span class="d"># machine index; every page in one file</span>
+├── why/ · try/ · security/ · skills/ · briefs/
+├── use-cases/       <span class="d"># patterns, each with an evidence status + agent brief</span>
+├── case-studies/    <span class="d"># things that actually happened, with numbers</span>
+├── docs/ · vault/ · deploy/
+├── assets/          <span class="d"># site.css, site.js, vault-docs.js, try-setup.py</span>
+└── admin/
+    ├── content/     <span class="d"># page bodies — one file per page, plus pages.json</span>
+    └── build/       <span class="d"># build_pages.py (the engine) + validate.js</span></pre>
+
+  <h2>Adding a page</h2>
+  <p>Content and machinery are separate, so nothing in the generator grows as the site does — it was 2,709 lines with every page inlined, and is 648 now that bodies live in <code>admin/content/</code>. A new page is a file and a row:</p>
+<pre class="shell"><span class="d"># 1. write the body — just the &lt;main&gt;, no head, no nav, no footer</span>
+<span class="p">$</span> <span class="cmd">vim admin/content/case-studies/my-study.html</span>
+<span class="d"># 2. register it: { "path", "section", "title", "desc" }</span>
+<span class="p">$</span> <span class="cmd">vim admin/content/pages.json</span>
+<span class="d"># 3. build and check</span>
+<span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span></pre>
+  <p>The build then produces, for free: the page with nav and footer, its <code>.md</code> twin with links rewritten to markdown, its row in <code>llms.txt</code>, its section in <code>llms-full.txt</code>, its entry in <code>sitemap.xml</code>, and its canonical, Open&nbsp;Graph and JSON-LD tags. The validator refuses the build if the page is unreachable from anywhere, if a link or a markdown twin is missing, if it carries no structured data, or if it could render invisible without JavaScript.</p>
   <ul>
     <li><b>The authoring contract.</b> Vault pages render inside a sandboxed frame, so declarative references to vault files (<code>&lt;link&gt;</code>, <code>&lt;script src&gt;</code>, <code>&lt;img src&gt;</code>) would 404 before the vault bridge installs. Every page therefore carries only a tiny critical-style block plus a ~20-line bootstrap.</li>
     <li><b>Shared assets over the bridge.</b> The bootstrap waits for the <code>window.sg</code> bridge and loads <code>assets/site.css</code> / <code>assets/site.js</code> through it — trying <code>sg.loadCss</code>/<code>sg.loadJs</code> first, then <code>sg.vfs.readText</code> + inject, then plain <code>fetch</code> as a static-hosting fallback. Worst case, pages degrade to readable unstyled HTML.</li>
@@ -90,7 +101,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.27</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.0</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -115,11 +126,12 @@
   <div>
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
-    <a href="../security.html">Security</a>
-    <a href="../why.html">Why does this exist?</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
     <a href="../use-cases/index.html">Use cases</a>
-    <a href="../skills.html">Skills for AI agents</a>
-    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>

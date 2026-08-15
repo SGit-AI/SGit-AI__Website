@@ -1,12 +1,12 @@
-# If a vault key is exposed — sgit Docs
+# The day we leaked our own vault key — sgit.ai case study
 
 > The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
-*Source: <https://sgit.ai/docs/exposed-vault-key.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/exposed-vault-key.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Docs](index.md) / Project
+[Docs](../docs/index.md) / Project
 
 # If a vault key is exposed
 
@@ -43,7 +43,7 @@ A successful clone or a 200 on any of those means the rotation did not take — 
 
 ## What rotation costs
 
-- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../briefs.md).) If the vault is [mirrored to git](../vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
+- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../briefs/index.md).) If the vault is [mirrored to git](../vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
 - **Every object ID changes.** IDs are content hashes *of the ciphertext*, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.
 - **The vault ID changes**, so every URL and stored reference to it breaks.
 
@@ -70,9 +70,9 @@ This page exists because it happened here, to the vault that serves this site.
 
 **The transferable lessons.** (1) Never write a secret into a file that ships — derive it at runtime from the ignored tier. (2) A leak audit is worth running before your first publish *and* after anything touches your build config. (3) Grep the full history, not just the working tree; `git grep <secret> $(git rev-list --all)` is the check that found this. (4) Rotate before you investigate. (5) Write the incident down — this page is more useful than a quiet fix.
 
-[← When NOT to use sgit](limitations.md)[The security model →](../security.md)
+[← When NOT to use sgit](../docs/limitations.md)[The security model →](../security/index.md)
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/docs/exposed-vault-key.html)*
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/case-studies/exposed-vault-key.html)*

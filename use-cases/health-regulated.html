@@ -21,15 +21,16 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.27</a>
-  <a class="nl" href="../why.html">Why</a>
-  <a class="nl" href="../try.html">Try</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.0</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
   <a class="nl here" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
-  <a class="nl" href="../skills.html">Skills</a>
-  <a class="nl" href="../security.html">Security</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>
 
@@ -49,7 +50,7 @@
   <div class="tablewrap"><table>
     <tr><th>Question</th><th>What changes</th></tr>
     <tr><td>Can the host read the content?</td><td>No — not with a warrant, a rogue administrator, or a breach. This is the strong claim, and it is structural rather than procedural.</td></tr>
-    <tr><td>What does the host still learn?</td><td>The vault id, the size of each object, and request timing. Sizes and timing are a real if narrow side channel — see the <a href="../security.html">security page</a>.</td></tr>
+    <tr><td>What does the host still learn?</td><td>The vault id, the size of each object, and request timing. Sizes and timing are a real if narrow side channel — see the <a href="../security/index.html">security page</a>.</td></tr>
     <tr><td>Does this remove the processor relationship?</td><td><b>Not automatically.</b> Storing ciphertext may still be processing, depending on the regime and on who holds keys. Ask your counsel; do not take a vendor's word for it, including ours.</td></tr>
     <tr><td>Does it help with access logging and minimisation?</td><td>Partly: a vault is a natural boundary, and read access is a key rather than an account, which makes "who could read this" a shorter list.</td></tr>
     <tr><td>Does it help with retention and deletion?</td><td>Partly, and awkwardly: history keeps old ciphertext until pruned, so "delete" needs thought. See <a href="../docs/limitations.html">limitations</a>.</td></tr>
@@ -66,11 +67,11 @@
 
   <h2>Evidence status</h2>
   <div class="evbox ev-warn"><span class="evtag">PATTERN — and the most caveated page here</span>
-  <p>No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a <a href="../security.html">published threat model</a> that names its own side channels.</p>
+  <p>No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a <a href="../security/index.html">published threat model</a> that names its own side channels.</p>
   <p>That is evidence of engineering care. It is not evidence of compliance, and we are not going to blur the two.</p></div>
 
   <h2>Brief for an agent</h2>
-  <p>Paste this into an agent that has the <a href="../skills.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+  <p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a> installed, or point it at the markdown directly.</p>
 <pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
 <span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/health-regulated.md</span>
 <span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
@@ -78,11 +79,11 @@
   Then set up a scoped vault for regulated data for this project: create the vault, structure the folders as
   described, commit and push, and report the vault key back to me once — I will store it.
   Do not write the key to any file in the repository. Do not claim any compliance property in what you write; describe only the technical behaviour.</blockquote>
-  <p class="small dim">That last sentence matters. We have a <a href="../docs/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+  <p class="small dim">That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../security.html">Security model</a> — including what the server still observes</li>
+    <li><a href="../security/index.html">Security model</a> — including what the server still observes</li>
     <li><a href="../docs/limitations.html">When NOT to use sgit</a> — retention, deletion and the key-loss trade-off</li>
     <li><a href="../deploy/index.html">Run your own server</a> — when the storage layer must be in your own boundary</li>
   </ul>
@@ -94,7 +95,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.27</a> · <a href="../admin/index.html">engineering</a> · <a href="health-regulated.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.0</a> · <a href="../admin/index.html">engineering</a> · <a href="health-regulated.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -119,11 +120,12 @@
   <div>
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
-    <a href="../security.html">Security</a>
-    <a href="../why.html">Why does this exist?</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
     <a href="../use-cases/index.html">Use cases</a>
-    <a href="../skills.html">Skills for AI agents</a>
-    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>

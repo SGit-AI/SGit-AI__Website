@@ -1,0 +1,34 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Concepts</p>
+  <h1>sgit for git users</h1>
+  <p class="lead">If you know git, you know most of sgit. Same verbs, same mental model — with three deliberate differences that exist because the payload is encrypted.</p>
+
+  <h2>The Rosetta stone</h2>
+  <div class="tablewrap"><table>
+    <tr><th>git</th><th>sgit</th><th>Notes</th></tr>
+    <tr><td><code>git init</code></td><td><code>sgit init</code></td><td><code>--existing</code> vault-ifies a non-empty folder</td></tr>
+    <tr><td><code>git clone &lt;url&gt;</code></td><td><code>sgit clone &lt;vault-key&gt;</code></td><td>the key is URL + auth + decryption in one</td></tr>
+    <tr><td><code>git status</code></td><td><code>sgit status</code></td><td><code>--explain</code> teaches the branch model</td></tr>
+    <tr><td><code>git commit -am</code></td><td><code>sgit commit -m</code></td><td>always whole-folder — there is no staging area</td></tr>
+    <tr><td><code>git push / pull / fetch</code></td><td><code>sgit push / pull / fetch</code></td><td>push is delta + ciphertext only</td></tr>
+    <tr><td><code>git log</code></td><td><code>sgit history log</code></td><td><code>--oneline</code>, <code>--patch</code>, <code>--json</code>, ranges</td></tr>
+    <tr><td><code>git diff</code></td><td><code>sgit history diff</code></td><td><code>--remote</code>, <code>--commit</code>, <code>--files-only</code></td></tr>
+    <tr><td><code>git show</code></td><td><code>sgit history show</code></td><td>read-only — fetches missing objects without merging</td></tr>
+    <tr><td><code>git revert / reset</code></td><td><code>sgit history revert / reset</code></td><td></td></tr>
+    <tr><td><code>git stash</code></td><td><code>sgit vault stash</code></td><td><code>pop</code>, <code>list</code>, <code>drop</code></td></tr>
+    <tr><td><code>git branch / checkout</code></td><td><code>sgit branch new / switch / checkout</code></td><td></td></tr>
+    <tr><td><code>git merge</code> conflicts</td><td><code>sgit resolve --show</code></td><td>three-way base/ours/theirs view with a verdict per file</td></tr>
+    <tr><td><code>git remote</code></td><td><code>sgit remote add / list / set-url</code></td><td></td></tr>
+    <tr><td><code>git fsck</code></td><td><code>sgit check fsck</code></td><td>verifies encrypted object integrity, can repair</td></tr>
+  </table></div>
+
+  <h2>The three differences that matter</h2>
+  <h3>1. No staging area</h3>
+  <p>Every commit snapshots the whole folder. This removes git's most confusing concept, and it fits the security model: partial staging would leak "which parts changed" into workflows that are supposed to be opaque. Use branches where you would have used the index.</p>
+  <h3>2. The vault key is URL, auth, and encryption key in one</h3>
+  <p><code>passphrase:vault-id</code>. There is no separate remote URL to configure, no separate credential to manage, and no password reset. Whoever holds the key holds the vault — treat it like the private key it is.</p>
+  <h3>3. Two layers of branches</h3>
+  <p>You never work directly on a shared branch. Every clone works on a private <b>clone branch</b> (its key never leaves your machine) and <code>push</code> forwards commits to the shared <b>named branch</b>. That's why two agents on the same vault can't corrupt each other's work-in-progress. <a href="two-branch-model.html">The full story →</a></p>
+
+  <div class="pagenav"><a href="quickstart.html">← Quickstart</a><a href="two-branch-model.html">The two-branch model →</a></div>
+</main>

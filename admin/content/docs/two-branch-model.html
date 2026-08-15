@@ -1,0 +1,37 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Concepts</p>
+  <h1>The two-branch model</h1>
+  <p class="lead">sgit's central architectural idea: every clone works on a private branch, and sharing is an explicit act.</p>
+
+  <h2>Clone branches and named branches</h2>
+<pre class="shell">        agent A's machine                    the server                    agent B's machine
+  ┌───────────────────────┐        ┌───────────────────────────┐        ┌───────────────────────┐
+  │  clone branch (A)     │  push  │   named branch "main"     │  pull  │  clone branch (B)     │
+  │  key: local only ─────┼───────▶│   key: shared via vault   │◀───────┼─ key: local only      │
+  └───────────────────────┘        └───────────────────────────┘        └───────────────────────┘</pre>
+  <ul>
+    <li><b>Named branches</b> (<code>main</code>, <code>feature-x</code>, …) are shared and live on the server — encrypted, like everything else.</li>
+    <li><b>Clone branches</b> are created per clone. Their key is stored only in <code>.sg_vault/local/</code> and is never pushed. All your commits land here first.</li>
+    <li><code>sgit push</code> re-encrypts your clone-branch commits with the named branch's key and forwards them. <code>sgit pull</code> brings named-branch commits down and merges them into your clone branch.</li>
+  </ul>
+  <p>Run <code>sgit status --explain</code> any time — it prints this model with your vault's actual branch names filled in.</p>
+
+  <h2>Why it works this way</h2>
+  <ul>
+    <li><b>Isolation by construction.</b> Two machines — or two agents — on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.</li>
+    <li><b>Sharing is explicit.</b> Nothing you commit is visible to anyone until you <code>push</code>. An agent can iterate messily in private and publish only the result.</li>
+    <li><b>Safe concurrent pushes.</b> Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering — pull, merge, push again.</li>
+  </ul>
+
+  <h2>Merging and conflicts</h2>
+  <p>When histories diverge, sgit runs a genuine three-way merge (common ancestor + ours + theirs) per file. Non-conflicting changes merge automatically; conflicting paths get <code>.conflict</code> files, and:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit resolve --show</span>
+  notes/plan.md   <span class="y">CONFLICT (both changed)</span>
+    base   │ ship in Q3
+    ours   │ ship in Q4          <span class="d">← your clone branch</span>
+    theirs │ ship in Q3, beta Q2 <span class="d">← the named branch</span>
+    verdict: <span class="y">genuine conflict</span>  <span class="d">(not one-sided, not identical)</span></pre>
+  <p>The verdict line matters in multi-writer vaults: it distinguishes genuine conflicts from one-sided or identical changes, so you (or an agent) only spend attention where a human decision is actually required. <code>sgit merge-abort</code> backs out of a merge cleanly.</p>
+
+  <div class="pagenav"><a href="sgit-for-git-users.html">← sgit for git users</a><a href="agents.html">Working with AI agents →</a></div>
+</main>

@@ -1,0 +1,55 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / SG/Vault</p>
+  <h1>SG/Vault &amp; the vault platform</h1>
+  <p class="lead">This section is — for now — the official documentation for the SGraph vault platform: the <b>SG/Vault</b> browser app, the <b>SG/Send</b> zero-knowledge API, and <b>vault apps</b> — websites and applications that live <em>inside</em> encrypted vaults. Product background lives at <a href="https://sgraph.ai">sgraph.ai</a>; the working documentation lives here.</p>
+
+  <h2>What SG/Vault is</h2>
+  <p>SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an <b>independent implementation of the same encrypted wire format</b> — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the <a href="../security/index.html#interop">security model</a>).</p>
+  <p>You open a vault by its key, carried in the URL <em>fragment</em> (the part after <code>#</code>):</p>
+<pre class="shell">https://vault.sgraph.ai/en-gb/<span class="y">#&lt;vault-key&gt;</span>
+<span class="d"># the fragment never leaves the browser — it is not sent in the HTTP request,</span>
+<span class="d"># so the server serves the app without ever seeing the key</span></pre>
+  <p>From there you get a file browser over the decrypted vault — history, branches, editing — and, if the vault contains an app, <b>App Mode</b>: the vault boots straight into its own user interface.</p>
+
+  <h2>The three pieces</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Piece</th><th>What it is</th><th>Where it runs</th></tr>
+    <tr><td><b>sgit</b></td><td>The CLI — git workflows over encrypted vaults</td><td>Your terminal, your agents' sessions</td></tr>
+    <tr><td><b>SG/Vault</b></td><td>The browser client — browse, edit, review, App Mode</td><td>Any browser; all crypto via Web Crypto, client-side</td></tr>
+    <tr><td><b>SG/Send</b></td><td>The transfer API — stores ciphertext under opaque IDs</td><td>The server; the only piece that never sees plaintext</td></tr>
+  </table></div>
+
+  <h2>Vault apps: the app <em>is</em> the vault</h2>
+  <p>A vault can contain an <code>index.html</code> plus an <code>app.json</code>. When the vault opens, the app launches — full-screen, talking to the vault through a runtime bridge, with the encrypted blob serving as both the storage and the distribution mechanism. Sharing the vault link <em>is</em> deploying the app.</p>
+  <div class="note"><b>You are looking at one.</b> This entire website is a vault app: generated pages, shared assets loaded through the bridge, deployed by <code>sgit push</code>. The <a href="../admin/index.html">admin section</a> documents its engineering and doubles as the reference implementation.</div>
+
+  <h2>Three on-ramps</h2>
+  <div class="tablewrap"><table>
+    <tr><th>You want to…</th><th>Use</th><th>Code needed</th></tr>
+    <tr><td>Publish documents, galleries, hub pages</td><td><a href="content-authoring.html">Markdown + <code>_page.json</code></a> in the browse view</td><td>None</td></tr>
+    <tr><td>Ship an interactive experience</td><td><a href="vault-apps.html">A vault app</a> on the <a href="sg-bridge.html"><code>window.sg</code> bridge</a></td><td>HTML/JS</td></tr>
+    <tr><td>Automate, script, collaborate, back up</td><td>The <a href="../docs/index.html">sgit CLI</a>, plus <a href="git-and-vaults.html">git side-by-side</a> and <a href="static-hosting.html">static hosting</a></td><td>A terminal</td></tr>
+  </table></div>
+  <p><a href="sub-vaults.html">Sub-vaults</a> cut across all three: vaults pointing at other vaults, rendered inline like folders — composition without copying.</p>
+
+  <h2>In this section</h2>
+  <div class="dochub">
+    <div class="grp">
+      <h2>Publish</h2>
+      <a href="content-authoring.html">Content without code<small>Markdown + _page.json layouts, themes, print</small></a>
+      <a href="static-hosting.html">Static hosting<small>GitHub Pages / S3, zero backend, still encrypted</small></a>
+    </div>
+    <div class="grp">
+      <h2>Build</h2>
+      <a href="vault-apps.html">Building vault apps<small>The project shape, app.json, and the authoring contract</small></a>
+      <a href="sg-bridge.html">The window.sg bridge<small>The runtime API, permissions, and the sovereignty rail</small></a>
+    </div>
+    <div class="grp">
+      <h2>Compose &amp; integrate</h2>
+      <a href="sub-vaults.html">Sub-vaults<small>Vaults inside vaults — links, embeds, extract &amp; seed</small></a>
+      <a href="git-and-vaults.html">Git repos inside vaults<small>git + sgit side by side; the encrypted mirror pattern</small></a>
+    </div>
+  </div>
+
+  <div class="pagenav"><span></span><a href="vault-apps.html">Building vault apps →</a></div>
+</main>

@@ -42,7 +42,7 @@ Quick answers (so you do not need a second request for the common questions):
 - sgit is beta; it has no compliance certification of any kind.
 
 ## Why this exists
-- [Why does this exist?](/why.md): A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
+- [Why does this exist?](/why/index.md): A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
@@ -60,7 +60,6 @@ Quick answers (so you do not need a second request for the common questions):
 - [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing. **Key fact:** Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration. **Key fact:** sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps. **Key fact:** Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.
-- [If a vault key is exposed](/docs/exposed-vault-key.md): The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
 ## SG/Vault platform
 - [SG/Vault & the vault platform](/vault/index.md): The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
@@ -73,22 +72,21 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Deploy (rendered live from an encrypted vault)
 - [Run your own SG/Send server](/deploy/index.md): Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site.
-- [How the live-vault docs work](/deploy/how-this-works.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path. **Key fact:** The ref is checked at most once per 120s freshness window; every other object is content-addressed and cached forever.
 
 ## Try it
-- [Try sgit in your browser](/try.md): The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.
+- [Try sgit in your browser](/try/index.md): The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.
 
 ## Skills (packaged instructions for AI agents)
-- [Skills for AI agents](/skills.md): Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.
+- [Skills for AI agents](/skills/index.md): Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.
 - [use sgit and vaults](/skills/use_sgit-and-vaults__SKILL.md): the CLI + cross-session persistent state
 - [create vault apps](/skills/create-vault-apps__SKILL.md): build an app that lives inside a vault
 - [create vault content](/skills/create-vault-content__SKILL.md): author _page.json layouts and vault markdown
 
 ## Cross-team briefs
-- [Cross-team briefs](/briefs.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+- [Cross-team briefs](/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 
 ## Optional
 - [sgit](/index.md): sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
-- [Security model](/security.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process. **Key fact:** The server sees the vault ID, object sizes and request timing — nothing else. Sizes and timing are an acknowledged side channel.
+- [Security model](/security/index.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.
 - [Admin & engineering](/admin/index.md): How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
 - [Release history](/admin/versions.md): Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.

@@ -2,7 +2,7 @@
 
 > Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.
 
-*Source: <https://sgit.ai/use-cases/professional-services.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/professional-services.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -69,7 +69,7 @@ Two things to weigh before you use it on a real engagement: sgit is in [beta](..
 
 ## Brief for an agent
 
-Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+Paste this into an agent that has the [sgit skill](../skills/index.md) installed, or point it at the markdown directly.
 
 ```
 # everything on this site is readable as markdown — no HTML parsing needed
@@ -79,13 +79,13 @@ $ curl -s https://sgit.ai/llms.txt          # the index of everything
 
 > Read https://sgit.ai/use-cases/professional-services.md and https://sgit.ai/docs/agents.md. Then set up an engagement vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository.
 
-That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+That last sentence matters. We have a [write-up of the day we got it wrong](../case-studies/exposed-vault-key.md).
 
 ## Related
 
 - [When NOT to use sgit](../docs/limitations.md) — read this before committing a client engagement to it
 - [SG/Vault](../vault/index.md) — the browser app, so a client can read without installing anything
-- [Security model](../security.md) — precisely what the server can and cannot see
+- [Security model](../security/index.md) — precisely what the server can and cannot see
 
 [← AI agents](ai-agents.md)[Security teams →](security-teams.md)
 

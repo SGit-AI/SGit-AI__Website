@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
 
-*Source: <https://sgit.ai/index.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,7 +13,7 @@ humans and AI agents
 
 Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.
 
-[Or try it in your browser →](try.md) [5-minute quickstart →](docs/quickstart.md)
+[Or try it in your browser →](try/index.md) [5-minute quickstart →](docs/quickstart.md)
 
 Pure Python · two runtime dependencies · Apache-2.0
 
@@ -104,7 +104,7 @@ sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders 
 - object sizes · timestamps
 - the vault id
 
-That's the whole list — and we publish the threat model, including what the server *can* see (sizes, timing, vault ID). [Read the security model →](security.md)
+That's the whole list — and we publish the threat model, including what the server *can* see (sizes, timing, vault ID). [Read the security model →](security/index.md)
 
 ## Built for agents
 
@@ -128,7 +128,7 @@ Agent-grade plumbing
 
 `sgit write` for surgical single-call commits, `--json` on every read path, `cat --id` with zero network calls, sparse clones for fast cold starts.
 
-[Read the agent guide →](docs/agents.md) · [Install the skills →](skills.md) · [llms.txt](llms.txt)
+[Read the agent guide →](docs/agents.md) · [Install the skills →](skills/index.md) · [llms.txt](llms.txt)
 
 ## What people use it for
 
@@ -146,7 +146,7 @@ Agent-grade plumbing
 
 sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when *not* to use it.
 
-**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why.md)
+**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security/index.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why/index.md)
 
 ## One vault, three doors
 

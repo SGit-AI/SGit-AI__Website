@@ -2,7 +2,7 @@
 
 > How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
 
-*Source: <https://sgit.ai/admin/index.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/index.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -15,19 +15,34 @@ How this site is built, shipped, and versioned. sgit.ai is not hosted on a web s
 ## Architecture
 
 ```
-vault root
-├── index.html · security.html · why.html      # root pages
-├── docs/*.html                                      # 8 documentation pages
-├── vault/*.html                                     # 4 SG/Vault platform pages
-├── admin/                                           # this section
-│   ├── index.html · versions.html
-│   ├── brief-design-improvements.md                 # brief for Claude Code
-│   └── build/                                       # the build system itself
-│       ├── build_pages.py                           # generates every page
-│       └── validate.js                              # pre-push checks
-├── assets/site.css · assets/site.js                 # shared, loaded at runtime
-└── app.json                                         # auto-launch config
+# published site — one folder per section; root holds only what must live there
+├── index.html · index.md                     # the front door + its markdown twin
+├── CNAME · app.json · robots.txt · sitemap.xml
+├── llms.txt · llms-full.txt                  # machine index; every page in one file
+├── why/ · try/ · security/ · skills/ · briefs/
+├── use-cases/       # patterns, each with an evidence status + agent brief
+├── case-studies/    # things that actually happened, with numbers
+├── docs/ · vault/ · deploy/
+├── assets/          # site.css, site.js, vault-docs.js, try-setup.py
+└── admin/
+    ├── content/     # page bodies — one file per page, plus pages.json
+    └── build/       # build_pages.py (the engine) + validate.js
 ```
+
+## Adding a page
+
+Content and machinery are separate, so nothing in the generator grows as the site does — it was 2,709 lines with every page inlined, and is 648 now that bodies live in `admin/content/`. A new page is a file and a row:
+
+```
+# 1. write the body — just the <main>, no head, no nav, no footer
+$ vim admin/content/case-studies/my-study.html
+# 2. register it: { "path", "section", "title", "desc" }
+$ vim admin/content/pages.json
+# 3. build and check
+$ python3 admin/build/build_pages.py && node admin/build/validate.js
+```
+
+The build then produces, for free: the page with nav and footer, its `.md` twin with links rewritten to markdown, its row in `llms.txt`, its section in `llms-full.txt`, its entry in `sitemap.xml`, and its canonical, Open Graph and JSON-LD tags. The validator refuses the build if the page is unreachable from anywhere, if a link or a markdown twin is missing, if it carries no structured data, or if it could render invisible without JavaScript.
 
 - **The authoring contract.** Vault pages render inside a sandboxed frame, so declarative references to vault files (`<link>`, `<script src>`, `<img src>`) would 404 before the vault bridge installs. Every page therefore carries only a tiny critical-style block plus a ~20-line bootstrap.
 - **Shared assets over the bridge.** The bootstrap waits for the `window.sg` bridge and loads `assets/site.css` / `assets/site.js` through it — trying `sg.loadCss`/`sg.loadJs` first, then `sg.vfs.readText` + inject, then plain `fetch` as a static-hosting fallback. Worst case, pages degrade to readable unstyled HTML.

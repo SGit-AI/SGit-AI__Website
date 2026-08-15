@@ -1,16 +1,16 @@
-# How the live-vault docs work — sgit.ai
+# A live site whose host cannot read it — sgit.ai case study
 
 > A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
 
-*Source: <https://sgit.ai/deploy/how-this-works.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/live-vault-docs.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Deploy](index.md) / How this works
+[Home](../index.md) / [Deploy](../deploy/index.md) / How this works
 
 # How this page works
 
-The [deployment guidance](index.md) next door is not stored on this website. It is written by a different team, in a different Claude Code session, into a different encrypted vault — and your browser assembles it from ciphertext at the moment you ask for it. This page explains the whole mechanism, because it is a compact demonstration of what sgit is actually for.
+The [deployment guidance](../deploy/index.md) next door is not stored on this website. It is written by a different team, in a different Claude Code session, into a different encrypted vault — and your browser assembles it from ciphertext at the moment you ask for it. This page explains the whole mechanism, because it is a compact demonstration of what sgit is actually for.
 
 ## Two sessions, two vaults, one page
 
@@ -91,9 +91,9 @@ The read key is deliberately public — it is *read-only by construction*, deriv
 - **The server can't help.** No server-side search, no previews, no summaries — everything is opaque to it. That is the point, and it is also a limitation.
 - **Diagrams are hand-drawn SVG, not a diagramming library.** This site is also served *from inside a vault*, where external resources are blocked by the app authoring contract — so importing a renderer from a CDN would break the very demonstration this page describes. The constraint chose the implementation.
 
-[← The deployment docs](index.md)[Git and vaults →](../vault/git-and-vaults.md)
+[← The deployment docs](../deploy/index.md)[Git and vaults →](../vault/git-and-vaults.md)
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/deploy/how-this-works.html)*
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/case-studies/live-vault-docs.html)*

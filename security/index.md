@@ -2,7 +2,7 @@
 
 > sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.
 
-*Source: <https://sgit.ai/security.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/security/index.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -53,11 +53,11 @@ sgit is not a secrets manager, and it actively refuses to become an accidental o
 - ~4,000 tests including mutation testing in CI and integration tests against a real server — no mocks.
 - An internal security review series (twelve findings, each individually worked through and debriefed — covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.
 - Found something? Report it via [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — security reports get priority.
-- **Key exposed?** [The rotation runbook](docs/exposed-vault-key.md) — including a worked case study of the day this site's own vault key leaked, and what it cost to fix.
+- **Key exposed?** [The rotation runbook](../case-studies/exposed-vault-key.md) — including a worked case study of the day this site's own vault key leaked, and what it cost to fix.
 
-**Honesty note:** sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read [when NOT to use sgit](docs/limitations.md) before trusting it with anything critical.
+**Honesty note:** sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read [when NOT to use sgit](../docs/limitations.md) before trusting it with anything critical.
 
 
 ---
 
-*[Site index for agents](llms.txt) · [HTML version](https://sgit.ai/security.html)*
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/security/index.html)*

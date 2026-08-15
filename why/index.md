@@ -2,7 +2,7 @@
 
 > A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
-*Source: <https://sgit.ai/why.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/why/index.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,7 +17,7 @@ Fair question — and the "don't bother answering" is fair too, because most ans
 There is also nothing being sold. sgit is Apache-2.0 and installable with `pip install sgit-ai`. So "why would I buy this" has no answer, because there is no purchase. The question worth answering is **why would anyone use it**.
 
 **The whole thesis in one sentence:** you have files that need version control and collaboration, and the place they are stored must not be able to read them.
-Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo — we say so on [the page about when not to use this](docs/limitations.md).
+Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo — we say so on [the page about when not to use this](../docs/limitations.md).
 
 ## What this makes possible that wasn't
 
@@ -25,11 +25,11 @@ This page assumes you know git. So rather than re-explain version control, here 
 
 ### A live website whose host cannot read it
 
-The [Deploy section](deploy/index.md) of this site is not part of this site. Its pages live in an encrypted vault maintained by a different team; your browser fetches the ciphertext straight from an SG/Send server over CORS and decrypts it in the tab. There is no build step, no CI job, no copy of that content on sgit.ai. When that team runs `sgit push`, the next page load has it.
+The [Deploy section](../deploy/index.md) of this site is not part of this site. Its pages live in an encrypted vault maintained by a different team; your browser fetches the ciphertext straight from an SG/Send server over CORS and decrypts it in the tab. There is no build step, no CI job, no copy of that content on sgit.ai. When that team runs `sgit push`, the next page load has it.
 
 **Without sgit:** you can serve a static site from a host, or you can keep the content private, but not both. GitHub Pages serves what GitHub can read. A private bucket plus a decrypting front end is buildable — content addressing, cache tiers, key derivation, an update path — and that is roughly the thing being described here. There is no documented, off-the-shelf way to do it with git and a git host.
 
-See it working: [how this page works](deploy/how-this-works.md), with the object model and the request timeline.
+See it working: [how this page works](../case-studies/live-vault-docs.md), with the object model and the request timeline.
 
 ### Read access as a thing you can publish
 
@@ -39,21 +39,21 @@ A vault has a **read key** that is derived one way, so it decrypts content and c
 
 ### Two agents collaborating in a workspace neither host can read
 
-This site is built and published by Claude Code sessions that share state through a vault. Each session clones into its own private branch, commits there, and pushes to the shared named branch — the [two-branch model](docs/two-branch-model.md), which is git's isolate-then-merge shape applied to encrypted objects. The pages in the Deploy section come from a *second* team's vault, maintained by an agent that has never had access to this repository or this site.
+This site is built and published by Claude Code sessions that share state through a vault. Each session clones into its own private branch, commits there, and pushes to the shared named branch — the [two-branch model](../docs/two-branch-model.md), which is git's isolate-then-merge shape applied to encrypted objects. The pages in the Deploy section come from a *second* team's vault, maintained by an agent that has never had access to this repository or this site.
 
 **Without sgit:** agent-to-agent shared memory means a database or a repo that the provider reads. That is fine until the state includes client documents, security findings, or unreleased work — at which point the question stops being technical.
 
-The architecture, drawn: [two sessions, one vault, one live site](deploy/how-this-works.md).
+The architecture, drawn: [two sessions, one vault, one live site](../case-studies/live-vault-docs.md).
 
 ### Private data with public-CDN economics
 
-Object ids are SHA-256 hashes *of the ciphertext*, so an object can never change under its id. That makes every object permanently cacheable by infrastructure that cannot read it — a browser's Cache API, a proxy, a CDN edge. On this site that is not theory: after the first visit, a page load fetches **one 69-byte object** (the mutable HEAD pointer) and serves everything else from cache — and inside the [freshness window](deploy/how-this-works.md) it fetches nothing at all. Open the vault panel on any Deploy page and watch the counters.
+Object ids are SHA-256 hashes *of the ciphertext*, so an object can never change under its id. That makes every object permanently cacheable by infrastructure that cannot read it — a browser's Cache API, a proxy, a CDN edge. On this site that is not theory: after the first visit, a page load fetches **one 69-byte object** (the mutable HEAD pointer) and serves everything else from cache — and inside the [freshness window](../case-studies/live-vault-docs.md) it fetches nothing at all. Open the vault panel on any Deploy page and watch the counters.
 
 **Without sgit:** caching private content at the edge is precisely what you are told not to do, because the cache would hold readable data. Content-addressed ciphertext removes the conflict — the cache holds bytes it cannot interpret, keyed by a hash it cannot invert.
 
 ### Storage becomes a commodity you don't have to trust
 
-The server is a key-value store for opaque ids. It never receives a key, never sees a filename, and cannot tell a legal draft from a photo. That means the backing store is interchangeable — a managed SG/Send server, one you [run yourself](deploy/index.md), an S3 bucket, a disk — and choosing it stops being a trust decision. A subpoena, a breach, or a curious administrator on that host yields ciphertext.
+The server is a key-value store for opaque ids. It never receives a key, never sees a filename, and cannot tell a legal draft from a photo. That means the backing store is interchangeable — a managed SG/Send server, one you [run yourself](../deploy/index.md), an S3 bucket, a disk — and choosing it stops being a trust decision. A subpoena, a breach, or a curious administrator on that host yields ciphertext.
 
 **Without sgit:** "who hosts this?" and "who can read this?" are the same question. Every migration is a re-negotiation of that trust; here it is a copy operation.
 
@@ -67,13 +67,13 @@ The content is already encrypted before it leaves the client, so TLS is transpor
 
 Not a market-size claim — just the situations where the sentence at the top is literally true today. These matter, but they are the ordinary reasons; the section above is the interesting one.
 
-[AI agents### Agent state that isn't the vendor's to readAn agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.Recipe, evidence and an agent brief →](use-cases/ai-agents.md)
+[AI agents### Agent state that isn't the vendor's to readAn agent's work has to survive its context window, so it goes somewhere — and that somewhere increasingly holds client documents, security findings, unreleased code.Recipe, evidence and an agent brief →](../use-cases/ai-agents.md)
 
-[Professional services### Working documents with clientsLegal, M&A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.Recipe, evidence and an agent brief →](use-cases/professional-services.md)
+[Professional services### Working documents with clientsLegal, M&A, audit, security assessment: the deliverable and the working notes are exactly the material that must not sit readable on a third party's disk.Recipe, evidence and an agent brief →](../use-cases/professional-services.md)
 
-[Health & regulated### Data that changes what is permissibleWhen the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.Recipe, evidence and an agent brief →](use-cases/health-regulated.md)
+[Health & regulated### Data that changes what is permissibleWhen the host provably cannot read the content, you are no longer arguing about the provider's access controls, because there is nothing to control access to.Recipe, evidence and an agent brief →](../use-cases/health-regulated.md)
 
-[Security teams### Findings about your own weaknessesPentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.Recipe, evidence and an agent brief →](use-cases/security-teams.md)
+[Security teams### Findings about your own weaknessesPentest results are the last thing you want in a SaaS you don't control, and the first thing that needs history, diffs and multi-person workflow.Recipe, evidence and an agent brief →](../use-cases/security-teams.md)
 
 ## git and sgit, side by side
 
@@ -88,11 +88,11 @@ The honest framing is not "sgit instead of git". It is two tools with different 
 | **Partial commits** | Staging area, index, `add -p` | None. A commit snapshots the whole folder |
 | **Branching and merge** | The reference implementation of the idea | The same shape, applied to encrypted objects: a private branch per clone, shared named branches, whole-file three-way merge |
 | **Read-only access for someone else** | An account on the host, or a deploy key that reads plaintext | A read key — derived one way, publishable, works against any server holding the ciphertext, no account and no host involvement |
-| **Reading it from a browser** | Via the host's UI or API, in plaintext | Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's [Deploy section](deploy/index.md) is that |
+| **Reading it from a browser** | Via the host's UI or API, in plaintext | Directly: fetch the ciphertext and decrypt in the tab with Web Crypto. This page's [Deploy section](../deploy/index.md) is that |
 | **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
 | **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
 
-**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
+**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
 
 ## Why the existing answers don't cover it
 
@@ -111,7 +111,7 @@ The gap they share is the same one: **you can have the workflow, or you can have
 ## The market question, answered directly
 
 - **The client is open source, and that is the distribution strategy, not a substitute for one.** Apache-2.0, no licence tiers, no open-core feature gating in the CLI. It spreads by being free and useful, and the services are built on top of it — the ordinary way open source scales into a business.
-- **The commercial layer is the hosted service** (SG/Send) and what gets built around it. You can also [self-host](deploy/index.md) — that guidance is published, live, in a vault — so the lock-in argument doesn't hold: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected.
+- **The commercial layer is the hosted service** (SG/Send) and what gets built around it. You can also [self-host](../deploy/index.md) — that guidance is published, live, in a vault — so the lock-in argument doesn't hold: if the commercial layer becomes unpalatable, you run your own server and your data and workflow are unaffected.
 - **We are not going to quote a market size.** We don't have credible numbers, and a TAM slide is exactly the marketing this page is avoiding. What we can say honestly: the amount of machine-generated state that someone else should not be able to read went from approximately zero to very large in about two years, and it has to live somewhere.
 - **It might still be a small market.** That's a legitimate outcome. The tool would still be worth having for the people in it, and it costs them nothing.
 
@@ -128,11 +128,11 @@ You said you'd have many. Here are the ones we'd expect, answered without hedgin
 
 **Give me one thing I cannot do with git and GitHub today.**
 
-Publish a site whose content the host has never seen in the clear, updated by a push, readable by anyone you hand a read key to, and cached at the edge by infrastructure that cannot decrypt it. The [Deploy section](deploy/index.md) is that, live. You can assemble something similar yourself out of a bucket, a decryption front end and a cache policy — and what you would have assembled is this.
+Publish a site whose content the host has never seen in the clear, updated by a push, readable by anyone you hand a read key to, and cached at the edge by infrastructure that cannot decrypt it. The [Deploy section](../deploy/index.md) is that, live. You can assemble something similar yourself out of a bucket, a decryption front end and a cache policy — and what you would have assembled is this.
 
 **Isn't publishing a key on a website obviously a mistake?**
 
-Publishing a *write* key would be — we have an [incident write-up](docs/exposed-vault-key.md) about doing exactly that by accident. The read key is a different object: derived one way, it decrypts and cannot be inverted into write access. Publishing it is how a reader gets the content without the site ever being trusted with the ability to change it. That's a checkable property, not a policy: take the key, clone with it, and watch the write get refused.
+Publishing a *write* key would be — we have an [incident write-up](../case-studies/exposed-vault-key.md) about doing exactly that by accident. The read key is a different object: derived one way, it decrypts and cannot be inverted into write access. Publishing it is how a reader gets the content without the site ever being trusted with the ability to change it. That's a checkable property, not a policy: take the key, clone with it, and watch the write get refused.
 
 **Doesn't TLS already solve the confidentiality problem?**
 
@@ -156,7 +156,7 @@ You keep a full local copy — every clone contains the complete encrypted store
 
 **"Zero-knowledge" is a marketing term. What does the server actually see?**
 
-The vault ID, the size of each encrypted object, and when requests happen. That's the list, and it's on [the security page](security.md) including the uncomfortable parts: object sizes and timing are a real, if narrow, side channel. Anyone who tells you their zero-knowledge system leaks nothing at all is not being careful with words.
+The vault ID, the size of each encrypted object, and when requests happen. That's the list, and it's on [the security page](../security/index.md) including the uncomfortable parts: object sizes and timing are a real, if narrow, side channel. Anyone who tells you their zero-knowledge system leaks nothing at all is not being careful with words.
 
 **How do I know the cryptography is right?**
 
@@ -176,11 +176,11 @@ Judge it by the surface: two runtime dependencies, a pure-Python client, one fil
 
 **Is anyone actually using it, or is this a demo?**
 
-This website is served from a vault it manages, deployed by pushing that vault. The [deployment docs](deploy/index.md) are decrypted in your browser, live, from a different vault maintained by another team. The [Try page](try.md) runs the real client in your browser. It's in daily production use by its authors — a small n, honestly stated, and more than a demo.
+This website is served from a vault it manages, deployed by pushing that vault. The [deployment docs](../deploy/index.md) are decrypted in your browser, live, from a different vault maintained by another team. The [Try page](../try/index.md) runs the real client in your browser. It's in daily production use by its authors — a small n, honestly stated, and more than a demo.
 
 **Why should I trust a beta?**
 
-For anything critical, don't yet — and keep backups regardless. What we offer instead of a trust-me is evidence: ~4,000 tests, mutation testing, integration tests against a real server, a published threat model, and an [incident write-up](docs/exposed-vault-key.md) of the day we leaked our own key, including what it cost to fix. A project that hides that class of mistake is the one to worry about.
+For anything critical, don't yet — and keep backups regardless. What we offer instead of a trust-me is evidence: ~4,000 tests, mutation testing, integration tests against a real server, a published threat model, and an [incident write-up](../case-studies/exposed-vault-key.md) of the day we leaked our own key, including what it cost to fix. A project that hides that class of mistake is the one to worry about.
 
 **Fine — but I still think there's no market.**
 
@@ -188,11 +188,11 @@ You may be right. It costs nothing to be wrong about this in our direction: the 
 
 ## An invitation, meant literally
 
-You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](docs/exposed-vault-key.md) and the [open briefs](briefs.md) got written.
+You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](../case-studies/exposed-vault-key.md) and the [open briefs](../briefs/index.md) got written.
 
-[← Home](index.md)[When NOT to use sgit →](docs/limitations.md)
+[← Home](../index.md)[When NOT to use sgit →](../docs/limitations.md)
 
 
 ---
 
-*[Site index for agents](llms.txt) · [HTML version](https://sgit.ai/why.html)*
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/why/index.html)*

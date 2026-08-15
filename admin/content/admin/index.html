@@ -1,0 +1,61 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Admin</p>
+  <h1>Admin &amp; engineering</h1>
+  <p class="lead">How this site is built, shipped, and versioned. sgit.ai is not hosted on a web server — it is a <b>vault app</b>: a set of HTML pages living inside an encrypted SG/Send vault, decrypted and rendered in your browser. The site about sgit is delivered by sgit.</p>
+
+  <h2>Architecture</h2>
+<pre class="shell"><span class="d"># published site — one folder per section; root holds only what must live there</span>
+├── index.html · index.md                     <span class="d"># the front door + its markdown twin</span>
+├── CNAME · app.json · robots.txt · sitemap.xml
+├── llms.txt · llms-full.txt                  <span class="d"># machine index; every page in one file</span>
+├── why/ · try/ · security/ · skills/ · briefs/
+├── use-cases/       <span class="d"># patterns, each with an evidence status + agent brief</span>
+├── case-studies/    <span class="d"># things that actually happened, with numbers</span>
+├── docs/ · vault/ · deploy/
+├── assets/          <span class="d"># site.css, site.js, vault-docs.js, try-setup.py</span>
+└── admin/
+    ├── content/     <span class="d"># page bodies — one file per page, plus pages.json</span>
+    └── build/       <span class="d"># build_pages.py (the engine) + validate.js</span></pre>
+
+  <h2>Adding a page</h2>
+  <p>Content and machinery are separate, so nothing in the generator grows as the site does — it was 2,709 lines with every page inlined, and is 648 now that bodies live in <code>admin/content/</code>. A new page is a file and a row:</p>
+<pre class="shell"><span class="d"># 1. write the body — just the &lt;main&gt;, no head, no nav, no footer</span>
+<span class="p">$</span> <span class="cmd">vim admin/content/case-studies/my-study.html</span>
+<span class="d"># 2. register it: { "path", "section", "title", "desc" }</span>
+<span class="p">$</span> <span class="cmd">vim admin/content/pages.json</span>
+<span class="d"># 3. build and check</span>
+<span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span></pre>
+  <p>The build then produces, for free: the page with nav and footer, its <code>.md</code> twin with links rewritten to markdown, its row in <code>llms.txt</code>, its section in <code>llms-full.txt</code>, its entry in <code>sitemap.xml</code>, and its canonical, Open&nbsp;Graph and JSON-LD tags. The validator refuses the build if the page is unreachable from anywhere, if a link or a markdown twin is missing, if it carries no structured data, or if it could render invisible without JavaScript.</p>
+  <ul>
+    <li><b>The authoring contract.</b> Vault pages render inside a sandboxed frame, so declarative references to vault files (<code>&lt;link&gt;</code>, <code>&lt;script src&gt;</code>, <code>&lt;img src&gt;</code>) would 404 before the vault bridge installs. Every page therefore carries only a tiny critical-style block plus a ~20-line bootstrap.</li>
+    <li><b>Shared assets over the bridge.</b> The bootstrap waits for the <code>window.sg</code> bridge and loads <code>assets/site.css</code> / <code>assets/site.js</code> through it — trying <code>sg.loadCss</code>/<code>sg.loadJs</code> first, then <code>sg.vfs.readText</code> + inject, then plain <code>fetch</code> as a static-hosting fallback. Worst case, pages degrade to readable unstyled HTML.</li>
+    <li><b>Multi-page navigation.</b> Plain relative <code>&lt;a href&gt;</code> links between pages — the vault host intercepts clicks and routes them, giving normal browser-style navigation (back/forward/history come from the host chrome).</li>
+    <li><b>Read-only by design.</b> The app requests no write permissions in <code>app.json</code>; reads need no grant. Nothing on this site can modify the vault.</li>
+  </ul>
+
+  <h2>Build system</h2>
+  <p>Every page is generated from a single Python script holding one shared template (nav, footer, bootstrap, version stamp) plus per-page content. Nothing is hand-edited twice: change the template once, regenerate, and every page updates consistently — including the version badge you can see in the nav.</p>
+
+  <h2>Validation before every push</h2>
+  <ul>
+    <li>Every inline script and <code>site.js</code> is parse-checked with Node.</li>
+    <li>A contract scan proves no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code>, or <code>&lt;img src&gt;</code> references a vault path.</li>
+    <li>Every internal link is resolved against the real file tree — broken links fail the build.</li>
+    <li>A banned-words scan keeps retired concepts and legacy naming out of the content.</li>
+  </ul>
+
+  <h2>Release process</h2>
+<pre class="shell"><span class="d"># 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row</span>
+<span class="d"># 2. regenerate + validate</span>
+<span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span>
+<span class="d"># 3. ship to the vault — the encrypted deployment</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span>
+<span class="d"># 4. ship to git — same folder, second remote; GitHub Pages deploys from it</span>
+<span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit -m "site vX.Y.Z" &amp;&amp; git push origin dev</span></pre>
+  <p>One folder, one source of truth, two remotes: the same working tree is an sgit vault <em>and</em> a git repository (<code>SGit-AI/SGit-AI__Website</code>). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See <a href="versions.html">release history</a>.</p>
+
+  <h2>Design &amp; contributions</h2>
+  <p>A standing brief for Claude Code sessions proposing design improvements lives at <a href="brief-design-improvements.md">admin/brief-design-improvements.md</a> — it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.</p>
+
+  <div class="pagenav"><a href="../index.html">← Home</a><a href="versions.html">Release history →</a></div>
+</main>

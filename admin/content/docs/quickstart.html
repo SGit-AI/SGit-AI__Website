@@ -1,0 +1,49 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Introduction</p>
+  <h1>Quickstart</h1>
+  <p class="lead">From zero to a synced, encrypted, versioned vault in five minutes.</p>
+
+  <h2>1 — Create a vault</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai</span>
+<span class="p">$</span> <span class="cmd">sgit create my-vault</span>
+<span class="g">✓</span> Vault created and registered
+<span class="g">✓</span> Initial commit pushed
+
+  Vault key: <span class="y">&lt;24-char-passphrase&gt;:&lt;vault-id&gt;</span></pre>
+  <div class="warnbox"><b>Save the vault key now</b> — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</div>
+  <p class="small dim">Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead — the current contents become the first snapshot.</p>
+
+  <h2>2 — Work like git</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">cd my-vault</span>
+<span class="p">$</span> <span class="cmd">echo "# Plan" &gt; plan.md</span>
+<span class="p">$</span> <span class="cmd">sgit status</span>
+  <span class="g">added:</span> plan.md
+<span class="p">$</span> <span class="cmd">sgit commit -m "add the plan"</span>
+<span class="g">✓</span> Committed 1 file</pre>
+  <p>There is no staging area — <code>sgit commit</code> snapshots the whole folder. Files like <code>.env</code> and private keys are always excluded, automatically.</p>
+
+  <h2>3 — Push</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit push</span>
+<span class="g">✓</span> Pushed 1 commit — only ciphertext left this machine</pre>
+
+  <h2>4 — Clone somewhere else</h2>
+<pre class="shell"><span class="d"># on another machine, or in an agent's session</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt;</span>
+<span class="g">✓</span> Cloned and decrypted 1 file
+<span class="p">$</span> <span class="cmd">sgit pull</span>      <span class="d"># pick up new commits any time</span></pre>
+
+  <h2>5 — Look around</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history log --oneline</span>     <span class="d"># commit history</span>
+<span class="p">$</span> <span class="cmd">sgit history diff</span>              <span class="d"># what changed</span>
+<span class="p">$</span> <span class="cmd">sgit vault info</span>                <span class="d"># identity, remote, web URL</span></pre>
+  <p>The web URL printed by <code>sgit vault info</code> opens the same vault in the SG/Vault browser app — decrypted in the browser, never on the server.</p>
+
+  <h2>Where next</h2>
+  <ul>
+    <li><a href="sgit-for-git-users.html">sgit for git users</a> — the Rosetta stone</li>
+    <li><a href="two-branch-model.html">The two-branch model</a> — how collaboration works</li>
+    <li><a href="agents.html">Working with AI agents</a> — give an agent a private, versioned workspace</li>
+  </ul>
+
+  <div class="pagenav"><a href="installation.html">← Installation</a><a href="sgit-for-git-users.html">sgit for git users →</a></div>
+</main>

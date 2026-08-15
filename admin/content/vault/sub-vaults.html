@@ -1,0 +1,30 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / Sub-vaults</p>
+  <h1>Sub-vaults: vaults inside vaults</h1>
+  <p class="lead">A vault can point at other vaults. A pointed-to vault shows up inline in the file tree, exactly like a folder — expand it and browse. A clinic's parent vault can hold many per-patient vaults; a demos vault can gather live project vaults — <b>without copying their contents</b>.</p>
+
+  <h2>The mechanism is a convention — like git submodules</h2>
+  <p>Nothing is baked into the vault format. A sub-vault is a small pointer file plus UI behaviour: any file named <code>*.link.json</code> is treated as a link, and renders as an expandable folder at its own path. It really is "just create some files" — write the pointer, <code>sgit commit</code>, <code>sgit push</code>.</p>
+<pre class="shell"><span class="d"># demos/acme.link.json → renders as folder demos/acme</span>
+{ "vault_id": "75f1c88be33d", "ref_id": "lk-37939d3b9b1a", "label": "ACME PoC" }</pre>
+  <p>Two levels of setup:</p>
+  <ul>
+    <li><b>Link file only</b> — the sub-vault appears; each device enters the child's key once.</li>
+    <li><b>Link file + owner record</b> — a <code>.vault/owner/ro-links.json</code> entry stores the child's <b>read key only, never its write key</b>; the child then opens silently, read-only, on any device that has the parent. This is what makes it usable for a team.</li>
+  </ul>
+  <p>The same pointer convention covers <b>external resources</b> (a YouTube video, an image, a page) — with a privacy default worth advertising: external embeds are <b>click-to-load</b>, showing a placeholder until the user acts, so opening a vault never phones home on its own; and external frames get no bridge and a visible "cannot read this vault" banner.</p>
+
+  <h2>Apps read across the boundary</h2>
+  <p>To an app, an inner-vault file is just another path: <code>sg.vfs.readText('patients/alice/score.json')</code> auto-opens the child read-only with the stored key — no prompt fires during a read, and if no key is available the read simply fails: the zero-knowledge boundary holds. This is the workflow that lets one dashboard read across many per-user vaults without anyone seeing raw vault UI.</p>
+
+  <h2>Extract &amp; embed — one primitive, three techniques</h2>
+  <p>The reverse direction: pull a folder out into its own vault (separate lifecycle, separate sharing, separate history) and bring it back into the parent's app. Extraction is one call from inside a vault app:</p>
+<pre class="shell">await sg.vault.create({
+  label: 'Q3 Report', seedFrom: 'self:reports/q3',
+  returnKey: true, custody: true, link: { path: 'sub/q3-report' }
+})</pre>
+  <p>The new vault gets a strong random passphrase; the seed copy <b>structurally cannot carry <code>.vault/**</code></b> — so a child can never inherit the parent's owner secrets or tokens. Then choose how to surface it: a <b>read-only sub-vault link</b> (the default, and the recommended one today), a <b>live embedded app</b> via <code>sg.vault.embed</code> (host-managed key handshake — the key never touches the URL or storage; the frame is sandboxed to scripts only, and the host refuses escape-hatch sandbox tokens even if asked), or a <b>cross-vault mount</b> where the child performs operations under its own grants — your app never gains cross-vault write authority itself.</p>
+  <div class="warnbox"><b>Honesty notes:</b> the mount technique's credential resolution is explicitly a trial-only stub in current code — prefer the link or embed forms for real users today. And treat an extract-and-link split as an <em>organisational</em> boundary (lifecycle, sharing, history), not a confidentiality boundary from the parent's own readers. Sub-vault access from the sgit CLI is proposed, not shipped — today sub-vaults are a browser-side capability.</div>
+
+  <div class="pagenav"><a href="content-authoring.html">← Content authoring</a><a href="git-and-vaults.html">Git repos inside vaults →</a></div>
+</main>
