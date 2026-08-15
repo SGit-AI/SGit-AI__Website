@@ -44,6 +44,10 @@ Quick answers (so you do not need a second request for the common questions):
 ## Why this exists
 - [Why does this exist?](/why/index.md): A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
+## Demos (live end-to-end examples with published read keys)
+- [Demos](/demos/index.md): Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
+- [A vault app, live inside this page](/demos/vault-app-embed.md): The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
+
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
 - [Agent state that isn't the vendor's to read](/use-cases/ai-agents.md): Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).

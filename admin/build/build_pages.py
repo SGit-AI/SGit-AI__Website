@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.5'
+SITE_VERSION = 'v0.2.6'
 BUILD_DATE   = '2026-08-14'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.5', '2026-08-14', 'this release',
+    ('v0.2.6', '2026-08-15', 'this release',
+     "The first demo ships: a vault app running live inside a sgit.ai page from a published read-only key. A new vault (Field Notes, 4bshby5n) was created from scratch for it — a self-contained app following the authoring contract, generative SVG art, content in content.json read over the bridge — and /demos/vault-app-embed.html is the complete walkthrough: init, commit, push, derive the read key, publish it deliberately, embed. The embed host is assets/vault-embed.js (~170 lines): HMAC-derived ids, ciphertext over CORS, Web Crypto decryption, the app booted in a sandbox=allow-scripts iframe with an opaque origin, and its sg.vfs/loadCss/loadJs calls answered over postMessage — the same shape as SG/Vault's vault-in-vault, minimal by design until the UI team answers the reuse briefing. Also rewrites the one-tree-two-remotes ordering section as a clean rule (the discovery narrative is gone), adds the Demos nav section, and extends the key-leak tripwire to scan for every demo vault's passphrase, not only the site's own. Verified end to end in headless Chromium: bridge live (the app's status line reads content via sg.vfs.readText from the vault), six tiles rendered, frame origin opaque, mutations impossible by construction."),
+    ('v0.2.5', '2026-08-14', 'obj-cas-imm-fedcfbd348c0',
      "Corrects the one-tree-two-remotes case study, prompted by a reader question: if sgit pushes first and git commits after, don't the files match? They do — tested rather than argued. With that ordering git captures the freshly written ref every time and a clean tree is the normal end state of a release; reads (ls, history, status, vault info), no-op commits and pushes, pull and fetch were all tried and none rewrites the ref. The section is now a rule about ordering rather than a claim of permanent drift, keeping the part that is true and useful: when the ref IS dirty, the bytes tell you nothing, because a rewritten ref never byte-matches even when it decrypts to the same commit."),
     ('v0.2.4', '2026-08-14', 'obj-cas-imm-854db222f8cb',
      "Wider layout across the site. The reading column was a classic 720px prose measure, which squeezed the content into the middle of a modern display and made every page longer than it needed to be. The measure is now 960px and the wide container 1360px, with the body type up a step (.93rem to .98rem) so the longer line keeps a comfortable character count; the home-page sections (hero, terminal, feature grid, cards) scaled in proportion, and the deploy-section nav column widened with them. Verified at 1600px (no overflow, content fills the frame) and at 390px (no horizontal scroll)."),
@@ -127,6 +129,7 @@ def nav(p, here):
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
   <a class="{cls('why')}" href="{p}why/index.html">Why</a>
   <a class="{cls('try')}" href="{p}try/index.html">Try</a>
+  <a class="{cls('demos')}" href="{p}demos/index.html">Demos</a>
   <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
@@ -498,6 +501,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 LLMS_SECTIONS = [
     ('why',       'Why this exists'),
+    ('demos',     'Demos (live end-to-end examples with published read keys)'),
     ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
     ('docs',      'Docs'),

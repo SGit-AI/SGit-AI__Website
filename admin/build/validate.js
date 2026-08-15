@@ -144,12 +144,22 @@ const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, 
 // 5b. the passphrase tripwire, done safely: read the secret from the gitignored local/ tier
 // (never present it in this tracked file) and scan the tree for it. Skips when local/ is absent
 // (e.g. CI without the key) — the structural check above still applies there.
-let SECRET = null;
+const SECRETS = [];
 try {
   const vk = fs.readFileSync(path.join(root, '.sg_vault/local/vault_key'), 'utf8').trim();
   const pass = vk.split(':')[0];
-  if (pass && pass.length >= 12) SECRET = pass;
+  if (pass && pass.length >= 12) SECRETS.push(pass);
 } catch (e) { /* local/ not present — structural check still covers key-shaped strings */ }
+// demo vaults: their write keys live in the same gitignored tier; every one is scanned for.
+// (Read keys are deliberately published and are exempt by design — different shape entirely.)
+try {
+  const dk = path.join(root, '.sg_vault/local/demo-keys');
+  for (const f of fs.readdirSync(dk)) {
+    if (!/vault-key$/.test(f)) continue;
+    const pass = fs.readFileSync(path.join(dk, f), 'utf8').trim().split(':')[0];
+    if (pass && pass.length >= 12) SECRETS.push(pass);
+  }
+} catch (e) { /* no demo keys yet */ }
 
 // the design brief quotes banned phrases in order to prohibit them — mention, not use.
 // skills/ ships canonical upstream agent artifacts verbatim — not site copy, never edited here.
@@ -163,8 +173,10 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
     const m = text.match(re);
     if (m) { fails++; console.log('BANNED-WORD FAIL', path.relative(root, f), '->', JSON.stringify(m[0])); }
   }
-  if (SECRET && text.includes(SECRET)) {
-    fails++; console.log('SECRET-LEAK FAIL', path.relative(root, f), '-> vault passphrase present in a tracked file');
+  for (const secret of SECRETS) {
+    if (text.includes(secret)) {
+      fails++; console.log('SECRET-LEAK FAIL', path.relative(root, f), '-> a vault passphrase is present in a tracked file');
+    }
   }
 }
 

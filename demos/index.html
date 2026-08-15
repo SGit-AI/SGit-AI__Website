@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quickstart — sgit Docs</title>
-<meta name="description" content="From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.">
-<link rel="canonical" href="https://sgit.ai/docs/quickstart.html">
+<title>Demos — sgit.ai</title>
+<meta name="description" content="Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.">
+<link rel="canonical" href="https://sgit.ai/demos/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
-<meta property="og:url" content="https://sgit.ai/docs/quickstart.html">
-<meta property="og:title" content="Quickstart — sgit Docs">
-<meta property="og:description" content="From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.">
+<meta property="og:url" content="https://sgit.ai/demos/index.html">
+<meta property="og:title" content="Demos — sgit.ai">
+<meta property="og:description" content="Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.">
 <meta name="twitter:card" content="summary">
-<link rel="alternate" type="text/markdown" href="quickstart.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Quickstart — sgit Docs", "headline": "Quickstart — sgit Docs", "description": "From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.", "url": "https://sgit.ai/docs/quickstart.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Demos — sgit.ai", "headline": "Demos — sgit.ai", "description": "Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.", "url": "https://sgit.ai/demos/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -24,10 +24,10 @@
   <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.6</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
-  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl here" href="../demos/index.html">Demos</a>
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
   <a class="nl" href="../case-studies/index.html">Case Studies</a>
-  <a class="nl here" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
   <a class="nl" href="../skills/index.html">Skills</a>
@@ -36,53 +36,17 @@
 </div></nav>
 
 <main class="doc">
-  <p class="crumb"><a href="index.html">Docs</a> / Introduction</p>
-  <h1>Quickstart</h1>
-  <p class="lead">From zero to a synced, encrypted, versioned vault in five minutes.</p>
-
-  <h2>1 — Create a vault</h2>
-<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai</span>
-<span class="p">$</span> <span class="cmd">sgit create my-vault</span>
-<span class="g">✓</span> Vault created and registered
-<span class="g">✓</span> Initial commit pushed
-
-  Vault key: <span class="y">&lt;24-char-passphrase&gt;:&lt;vault-id&gt;</span></pre>
-  <div class="warnbox"><b>Save the vault key now</b> — in a password manager, not a text file. It is the address, the credential, and the encryption key in one string. There is no reset: lose it and the vault is unrecoverable, by design.</div>
-  <p class="small dim">Already have a folder full of files? <code>cd</code> into it and run <code>sgit init --existing</code> instead — the current contents become the first snapshot.</p>
-
-  <h2>2 — Work like git</h2>
-<pre class="shell"><span class="p">$</span> <span class="cmd">cd my-vault</span>
-<span class="p">$</span> <span class="cmd">echo "# Plan" &gt; plan.md</span>
-<span class="p">$</span> <span class="cmd">sgit status</span>
-  <span class="g">added:</span> plan.md
-<span class="p">$</span> <span class="cmd">sgit commit -m "add the plan"</span>
-<span class="g">✓</span> Committed 1 file</pre>
-  <p>There is no staging area — <code>sgit commit</code> snapshots the whole folder. Files like <code>.env</code> and private keys are always excluded, automatically.</p>
-
-  <h2>3 — Push</h2>
-<pre class="shell"><span class="p">$</span> <span class="cmd">sgit push</span>
-<span class="g">✓</span> Pushed 1 commit — only ciphertext left this machine</pre>
-
-  <h2>4 — Clone somewhere else</h2>
-<pre class="shell"><span class="d"># on another machine, or in an agent's session</span>
-<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt;</span>
-<span class="g">✓</span> Cloned and decrypted 1 file
-<span class="p">$</span> <span class="cmd">sgit pull</span>      <span class="d"># pick up new commits any time</span></pre>
-
-  <h2>5 — Look around</h2>
-<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history log --oneline</span>     <span class="d"># commit history</span>
-<span class="p">$</span> <span class="cmd">sgit history diff</span>              <span class="d"># what changed</span>
-<span class="p">$</span> <span class="cmd">sgit vault info</span>                <span class="d"># identity, remote, web URL</span></pre>
-  <p>The web URL printed by <code>sgit vault info</code> opens the same vault in the SG/Vault browser app — decrypted in the browser, never on the server.</p>
-
-  <h2>Where next</h2>
-  <ul>
-    <li><a href="sgit-for-git-users.html">sgit for git users</a> — the Rosetta stone</li>
-    <li><a href="two-branch-model.html">The two-branch model</a> — how collaboration works</li>
-    <li><a href="agents.html">Working with AI agents</a> — give an agent a private, versioned workspace</li>
-  </ul>
-
-  <div class="pagenav"><a href="installation.html">← Installation</a><a href="sgit-for-git-users.html">sgit for git users →</a></div>
+  <p class="crumb"><a href="../index.html">Home</a> / Demos</p>
+  <h1>Demos</h1>
+  <p class="lead">Live, end-to-end demonstrations — each one a vault that was actually created, pushed, and embedded in the page that documents it. The walkthroughs are complete: every command, the keys that are deliberately public, and the ones that never will be.</p>
+  <div class="note"><b>The rule every demo follows:</b> the vault's <em>read key</em> is published on purpose — it is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's <em>write key</em> appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.</div>
+  <h2>Published</h2>
+  <div class="cards" style="max-width:none;padding:0">
+    <a class="card" href="vault-app-embed.html"><span class="tag">Gallery · live</span><h3>A vault app, live inside this page</h3><p>Field Notes: a self-contained vault app created from scratch, pushed, and opened inside sgit.ai with a published read key — sandboxed iframe, postMessage bridge, every byte decrypted in your browser.</p><p class="cardgo">Open the walkthrough &rarr;</p></a>
+  </div>
+  <h2>Coming next</h2>
+  <p>Two more shapes from <a href="../admin/plans/why-expansion-plan.md">the plan</a>, on the same template: a <b>report</b> vault (a fictional security assessment with re-test history) and a <b>two-agent inbox</b> vault (produced by actually running two sessions against it). Each gets the full transcript, its own published read key, and a live embed.</p>
+  <div class="pagenav"><a href="../index.html">← Home</a><a href="vault-app-embed.html">The first demo →</a></div>
 </main>
 
 <footer class="site"><div class="cols">
@@ -90,7 +54,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.6</a> · <a href="../admin/index.html">engineering</a> · <a href="quickstart.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.6</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
