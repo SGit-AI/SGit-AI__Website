@@ -53,6 +53,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Case studies (worked accounts of what actually happened, with numbers)
 - [Case studies](/case-studies/index.md): Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
+- [One working tree, two version control systems](/case-studies/one-tree-two-remotes.md): How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
 - [A live site whose host cannot read it](/case-studies/live-vault-docs.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
 - [The day we leaked our own vault key](/case-studies/exposed-vault-key.md): The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 

@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.1). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.2). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -649,6 +649,8 @@ Things that actually happened, written up while the details were still checkable
 
 [Incident### The day we leaked our own vault keyAn agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.Read the incident →](exposed-vault-key.md)
 
+[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and why the encrypted ref always looks modified to git even when nothing changed.Read the workflow →](one-tree-two-remotes.md)
+
 [Architecture### A live site whose host cannot read itTwo Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.Read the architecture →](live-vault-docs.md)
 
 ## How these are written
@@ -670,6 +672,115 @@ The incident write-up is the template for the uncomfortable kind. It names the a
 - [Release history](../admin/versions.md) — every change to this site, with the vault commit that carried it
 
 [← Home](../index.md)[Use cases →](../use-cases/index.md)
+
+
+
+==============================================================================
+# One working tree, two version control systems — sgit.ai case study
+
+> How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
+>
+> Page: https://sgit.ai/case-studies/one-tree-two-remotes.html
+
+[Home](../index.md) / [Case studies](index.md) / One tree, two remotes
+
+# One working tree, two version control systems
+
+This site is developed in a single folder that is simultaneously an sgit vault and a git repository. Every release pushes both. This page is the workflow, the boundary that makes it safe, the one thing that genuinely surprised us, and the script that keeps the two remotes honest.
+
+## What happened
+
+The folder that holds this site has two version control directories side by side:
+
+```
+sgit-ai-website/
+├── .git/          → github.com/SGit-AI/SGit-AI__Website  (public mirror + Pages deploy)
+├── .sg_vault/     → an SG/Send vault                     (encrypted history + live vault)
+└── index.html, why/, case-studies/, admin/ …         ← the same files, once
+```
+
+They are not two copies kept in agreement. They are two version control systems pointed at **one directory** — `git status` and `sgit status` describe the same bytes. There is no synchronisation step because there is nothing to synchronise; a release is simply two pushes of the same tree:
+
+```
+$ sgit commit -m "site v0.2.1: …" && sgit push   # encrypted history → SG/Send
+$ git add -A && git commit && git push            # public mirror → GitHub → Pages
+```
+
+Each remote does a different job. The git push is what deploys — a GitHub Action publishes the tree to GitHub Pages (excluding `.sg_vault/`, which the public site does not need). The sgit push is what other agents read — this site's vault is cloned and pulled by the Claude Code sessions that build it, and the encrypted store in the git repo doubles as a full off-site mirror of the vault.
+
+## The boundary that makes it safe
+
+The entire pattern rests on one file: `.gitignore`. Everything encrypted **is** committed to git — 900+ objects under `.sg_vault/bare/`, all ciphertext under opaque ids. What is excluded is exactly the plaintext tier:
+
+```
+.sg_vault/local/     # vault key, access token, private PEM — plaintext, never committed
+.sg_vault/work/      # scratch state
+*.pem
+```
+
+That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../vault/git-and-vaults.md) page covers which side of that line a given project is on.
+
+Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
+
+## The mechanism that surprised us
+
+After every release, `git status` shows one modified file:
+
+```
+$ git status --porcelain
+ M .sg_vault/bare/refs/ref-pid-muw-4a7e6bc14d96
+```
+
+That is the vault's HEAD pointer, and it looks like the mirror has drifted. It has not. Decrypting both sides — the committed ref and the working-tree ref — showed the same commit id:
+
+```
+vault HEAD (working tree) : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
+vault HEAD (in git)       : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
+same commit? True
+```
+
+The bytes differ because AES-GCM encrypts with a fresh random IV on every write — merely touching the vault re-encrypts the ref, and git sees a modified file. The consequence is worth pinning up: **for the ref, `git status` cannot tell you whether the mirror is stale.** Dirty means nothing, and clean would only be luck. Every other object in the store is content-addressed — its name is the hash of its ciphertext — so it never changes under its id and git diffs it correctly, or rather never needs to. The mutability of exactly one file is the entire class of false signal, and checking real sync means decrypting the ref or asking `sgit status`, not asking git.
+
+This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise at best, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
+
+## What changed: the release script
+
+Two pushes with no enforcement is an invitation to forget one — push only sgit and the site never deploys; push only git and the live vault (the one other sessions clone) falls behind. So the release is now one script, [`admin/build/release.sh`](../admin/index.md), and it is deliberately strict:
+
+```
+$ ./admin/build/release.sh "site v0.2.2: describe the release"
+1. build     — regenerate every page, markdown twin, llms*.txt, sitemap
+2. validate  — 90+ file checks, including the key-leak tripwire; any failure aborts
+3. sgit      — commit + push the vault, verify "in sync with remote"
+4. git       — commit + push, verify local HEAD == origin
+5. confirm   — both remotes reported in sync, or exit 1 loudly
+```
+
+Two design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
+
+## The numbers
+
+| What | Count |
+|---|---|
+| Files in the shared working tree | ~120 |
+| Encrypted objects committed to git under `.sg_vault/bare/` | 933 |
+| Plaintext files excluded from git (the `local/` tier) | 5 — key, token, PEM, config, base_url |
+| Mutable files in the store (the false-drift class) | 1 — the ref |
+| Releases shipped through this workflow so far | every version on the [release history](../admin/versions.md) |
+
+## What we still do not know
+
+- **History depth differs and we accept it.** The vault was rekeyed after the key leak, which reset its history; git kept the full history across the rekey. The two histories agree from that point forward but are not equal before it. For this site that is fine; for an audit-grade deployment you would want the equivalence stated precisely.
+- **The IV churn is cosmetic but not free.** Every release commits a re-encrypted ref to git — a 69-byte file that changes on every push forever. Harmless at this scale; a vault with many mutable refs would want them out of git or normalised.
+
+## Related
+
+- [Git repos inside vaults](../vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
+- [The day we leaked our own vault key](exposed-vault-key.md) — why the tripwire exists
+- [A live site whose host cannot read it](live-vault-docs.md) — what the sgit push feeds
+- [Admin & engineering](../admin/index.md) — the build system this script belongs to
+
+[← Case studies](index.md)[Git repos inside vaults →](../vault/git-and-vaults.md)
 
 
 
@@ -2059,6 +2170,8 @@ The new vault gets a strong random passphrase; the seed copy **structurally cann
 
 Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
 
+**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../case-studies/one-tree-two-remotes.md).
+
 ## A pure-Python git reader
 
 The sgit project has a working git reader — ~600 lines of implementation in the same Type_Safe style as sgit itself — that reads the `.git` object store directly: loose objects, packfiles (index v2, including large offsets), delta reconstruction (both OFS and REF deltas), symbolic refs and `packed-refs`. No `git` binary, no gitpython, no dulwich — its only dependency is the same type-safety framework sgit already uses.
@@ -2288,11 +2401,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.1**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.2**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.1 | 2026-08-14 | this release | Fixes a gap the v0.2.0 restructure opened: llms.txt is generated by walking a list of known sections, and the new case-studies section was not in it, so all three of those pages were silently absent from the machine index — present on the site, invisible to any agent reading llms.txt. The section is added, and the generator now refuses to build if any page would be omitted, which is the same guard as the orphan-page rule and for the same reason: a page nothing links to and a page the index does not list are both unpublished. |
+| v0.2.2 | 2026-08-14 | this release | New case study: one working tree, two version control systems — the workflow this site is actually developed with. One folder is both an sgit vault and a git repository; a release is two pushes of the same tree. The page covers what each remote carries, the one-file .gitignore boundary that makes it safe (everything encrypted is committed; only the plaintext local/ tier is excluded), and the finding that surprised us: the encrypted ref always looks modified to git because AES-GCM uses a fresh IV per write, so for that one file git status cannot detect staleness — proved by decrypting both sides to the same commit id. Ships admin/build/release.sh, which makes the discipline mechanical: build, validate (the key-leak tripwire gates BOTH pushes, not just the deployed one), push sgit, push git, and refuse to finish unless both remotes report in sync. The script deliberately never invokes commands that echo the vault key. |
+| v0.2.1 | 2026-08-14 | obj-cas-imm-49cf3a524b0c | Fixes a gap the v0.2.0 restructure opened: llms.txt is generated by walking a list of known sections, and the new case-studies section was not in it, so all three of those pages were silently absent from the machine index — present on the site, invisible to any agent reading llms.txt. The section is added, and the generator now refuses to build if any page would be omitted, which is the same guard as the orphan-page rule and for the same reason: a page nothing links to and a page the index does not list are both unpublished. |
 | v0.2.0 | 2026-08-14 | obj-cas-imm-d8f580db4d0f | Structural release — the middle digit moves, as the numbering note below promised it would. Two changes. (1) The root held 19 files and every page body was inlined in a 2,709-line generator; bodies now live one-per-file in admin/content/ with a pages.json manifest, and the generator is a 648-line engine that does not grow as the site does. Adding a page is a content file plus a manifest row; the build then produces the HTML, the markdown twin, the llms.txt row, the llms-full.txt section, the sitemap entry and the canonical/OG/JSON-LD tags. The refactor was verified output-preserving before any page moved: all 31 pages byte-identical. (2) Sections became folders — why/, try/, security/, skills/, briefs/ — leaving 9 files in the root, all of them ones that must be there. New case-studies/ section, which is where the leaked-key incident and the live-vault architecture now live; they were filed under docs/ and deploy/ where nobody looking for a case study would find them. Links were rewritten mechanically by resolving each href against the old path and re-expressing it from the new one, then verified by crawling every internal URL from the homepage: 29 URLs, zero broken. |
 | v0.1.27 | 2026-08-14 | obj-cas-imm-87daa0751f0d | Entity disambiguation, after checking what search actually returns. Google's AI Overview for the bare query already knows this project — and sources it from PyPI, because the PyPI page never linked here and this site was not in the index. "sgit" is also an Android Git client, an Indian engineering college and a class of shell shortcut, so the job is not only being indexed but being resolved to the right thing. Every page now carries JSON-LD: a SoftwareApplication node with sameAs pointing at the PyPI and GitHub identifiers that already rank, an explicit disambiguatingDescription naming the collisions, and a per-page TechArticle node. Google's own 2026 guidance says structured data is not required for generative-AI features — this is here for entity resolution, not ranking. The validator now fails the build if a page has no structured data or if any JSON-LD block does not parse. |
 | v0.1.26 | 2026-08-14 | obj-cas-imm-5da2eb791bb2 | Acts on an inbound brief from an agent that tried to use this site as documentation and could not. It reported that the site did not rank for its own positioning language and guessed the pages might be client-side rendered. They are not — the full text is in the served HTML — but the fade-in that hides the unstyled flash left body{opacity:0} until a JavaScript bootstrap ran, so any client applying our CSS without running that bootstrap rendered a complete but entirely invisible page (measured: 15,733 characters at opacity 0), which is also a hidden-text signal to an indexer. Fixed with a noscript override and a CSS-only reveal failsafe, both now enforced by the validator. Adds the crawler surface that never existed: robots.txt, a generated sitemap.xml covering every page, and canonical plus Open Graph tags. Adds llms-full.txt — every page in one document — for the very common agent harness that will not follow a link out of a fetched file, and makes llms.txt self-sufficient: inline answers to the common questions (including exactly which git operations exist and which do not) and per-page key facts, on the brief's observation that for such an agent the descriptions are the only content it will ever see. The brief and what changed are published on the briefs page. |

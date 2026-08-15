@@ -42,6 +42,12 @@
     "desc": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it."
   },
   {
+    "path": "case-studies/one-tree-two-remotes.html",
+    "section": "case-studies",
+    "title": "One working tree, two version control systems — sgit.ai case study",
+    "desc": "How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync."
+  },
+  {
     "path": "security/index.html",
     "section": "security",
     "title": "Security model — sgit",
