@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.5). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.6). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -186,6 +186,122 @@ The zero-knowledge storage service both clients speak to — the same server the
 Encrypted vaults. **Git workflows.** Zero knowledge.
 
 [5-minute quickstart →](docs/quickstart.md) [Star on GitHub →](https://github.com/SGit-AI/SGit-AI__CLI)
+
+
+
+==============================================================================
+# Demos — sgit.ai
+
+> Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
+>
+> Page: https://sgit.ai/demos/index.html
+
+[Home](../index.md) / Demos
+
+# Demos
+
+Live, end-to-end demonstrations — each one a vault that was actually created, pushed, and embedded in the page that documents it. The walkthroughs are complete: every command, the keys that are deliberately public, and the ones that never will be.
+
+**The rule every demo follows:** the vault's *read key* is published on purpose — it is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
+
+## Published
+
+[Gallery · live### A vault app, live inside this pageField Notes: a self-contained vault app created from scratch, pushed, and opened inside sgit.ai with a published read key — sandboxed iframe, postMessage bridge, every byte decrypted in your browser.Open the walkthrough →](vault-app-embed.md)
+
+## Coming next
+
+Two more shapes from [the plan](../admin/plans/why-expansion-plan.md), on the same template: a **report** vault (a fictional security assessment with re-test history) and a **two-agent inbox** vault (produced by actually running two sessions against it). Each gets the full transcript, its own published read key, and a live embed.
+
+[← Home](../index.md)[The first demo →](vault-app-embed.md)
+
+
+
+==============================================================================
+# A vault app, live inside this page — sgit.ai demos
+
+> The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
+>
+> Page: https://sgit.ai/demos/vault-app-embed.html
+
+[Home](../index.md) / [Demos](index.md) / Vault app embed
+
+# A vault app, live inside this page
+
+Below is an application running out of an encrypted vault, embedded in this page with nothing but a **published read-only key**. This walkthrough is the complete process that produced it — every command, the key that is deliberately public, and the one that never will be.
+
+**The one-sentence mechanism:** the vault's ciphertext is fetched from the SG/Send server over CORS, decrypted in your browser with the read key printed on this page, and the vault's `index.html` is booted inside a sandboxed iframe with a `window.sg` bridge — the same shape SG/Vault's own vault-in-vault embedding uses. No copy of the app or its content exists on sgit.ai.
+
+## The live embed
+
+Click to open it. The status line inside the app will read `content: sg.vfs.readText("content.json") — live from the vault`, which is the bridge proving itself: the app asked the embed host for a vault file and got it.
+
+Loads ~10 encrypted objects from `dev.send.sgraph.ai` and decrypts them here. Nothing you do in it can write — the page only holds a read key.
+
+## How this vault was made, end to end
+
+**1 — Write the app.** A vault app is one self-contained `index.html` — CSS and JS inlined, content in `content.json`, generative SVG instead of image files — plus an `app.json` that auto-launches it. It follows the [authoring contract](../vault/vault-apps.md): no `<link href>`, `<script src>` or `<img src>` against vault paths, content read via `sg.vfs.readText` with an inlined fallback, and `sg-app-ready` posted when rendered.
+
+```
+demo-vault-gallery/
+├── index.html      # the app — one file, contract-compliant
+├── content.json    # the editable content the app reads over the bridge
+├── app.json        # { "entry": "index.html", "present": true, "auto_open": true }
+└── README.md
+```
+
+**2 — Make the folder a vault and push it.**
+
+```
+$ sgit init --existing .
+  Vault key: <passphrase>:4bshby5n   ← saved to a password manager. Not printed here, not ever.
+$ sgit commit -m "Field Notes v1: app, content, README" && sgit push
+  Push complete. Pushed 1 commit(s), 4 object(s) uploaded.
+```
+
+**3 — Derive the read key.** It is computed one-way from the vault key: it can decrypt everything in the vault and can never be turned back into write access.
+
+```
+$ sgit dev derive-keys '<vault-key>'
+  read_key: 2848993a68c02a33…   ← this one is safe to publish. See below.
+```
+
+**4 — Publish the read key.** Deliberately, in full, in this page's source:
+
+```
+vault id : 4bshby5n
+endpoint : https://dev.send.sgraph.ai
+read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81
+```
+
+Anyone can take those three lines and read this vault — from the CLI (`sgit clone --read-key 2848993a68c0… 4bshby5n`), from their own page, from a script. That is the point: **read access is a capability you can hand out**, without an account, without the host mediating it, and without it ever becoming write access. A write attempt with this key is refused by construction — try it.
+
+**5 — Embed it.** The host on this page is [`assets/vault-embed.js`](../admin/index.md), ~170 lines: derive the ref id with HMAC-SHA256, fetch ciphertext over CORS, decrypt with Web Crypto, boot the app in an iframe with `sandbox="allow-scripts"` (opaque origin — the app gets no cookies, no storage, no reach into this page), and answer its `sg.vfs` calls over postMessage.
+
+## What the app can and cannot do in here
+
+| Capability | In this embed | Why |
+|---|---|---|
+| `sg.vfs.readText` / `sg.vfs.read` | works | served by the host from decrypted vault objects |
+| `sg.loadCss` / `sg.loadJs` | works | same read path, injected into the frame |
+| any mutation (`sg.fs.*`, `sg.vault.*`, …) | impossible | the page holds only a read key — there is no write capability to misuse, not even by a bug in the host |
+| reach this page, cookies, storage, top navigation | blocked | `sandbox="allow-scripts"` and an opaque origin; the only channel is postMessage |
+
+## Honest scope
+
+This is our **minimal** host — enough bridge for read-only apps, which is exactly what a published read key permits. The canonical app-iframe host (full `window.sg`, permissions, HUD chrome) is the SG/Vault UI's code, and [a briefing asking to reuse it](../briefs/briefing-sgvault-ui-embed.md) is with that team; when it lands, this page swaps hosts and the walkthrough gains the full-fidelity embed. Until then: what you see above is real, live, and reproducible from the commands on this page.
+
+| Shape | Evidence status | Copy or reference |
+|---|---|---|
+| Gallery (app + content) | **LIVE** — the embed above reads the real vault on every load | **Reference** — a push to the vault changes this page's embed with no rebuild |
+
+## Related
+
+- [Building vault apps](../vault/vault-apps.md) — the authoring contract this app follows
+- [A live site whose host cannot read it](../case-studies/live-vault-docs.md) — the same read path rendering markdown docs
+- [Sub-vaults](../vault/sub-vaults.md) — vault-in-vault, the pattern this embed mirrors
+- [The plan](../admin/plans/why-expansion-plan.md) — two more demo vaults (a report, a two-agent inbox) follow this template
+
+[← Demos](index.md)[Building vault apps →](../vault/vault-apps.md)
 
 
 
@@ -649,7 +765,7 @@ Things that actually happened, written up while the details were still checkable
 
 [Incident### The day we leaked our own vault keyAn agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.Read the incident →](exposed-vault-key.md)
 
-[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and why the encrypted ref always looks modified to git even when nothing changed.Read the workflow →](one-tree-two-remotes.md)
+[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and the ordering rule that keeps the git mirror true to the vault.Read the workflow →](one-tree-two-remotes.md)
 
 [Architecture### A live site whose host cannot read itTwo Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.Read the architecture →](live-vault-docs.md)
 
@@ -686,7 +802,7 @@ The incident write-up is the template for the uncomfortable kind. It names the a
 
 # One working tree, two version control systems
 
-This site is developed in a single folder that is simultaneously an sgit vault and a git repository. Every release pushes both. This page is the workflow, the boundary that makes it safe, the one thing that genuinely surprised us, and the script that keeps the two remotes honest.
+This site is developed in a single folder that is simultaneously an sgit vault and a git repository. Every release pushes both. This page is the workflow, the boundary that makes it safe, the one ordering rule that keeps the mirror true, and the script that enforces it.
 
 ## What happened
 
@@ -722,34 +838,20 @@ That is the whole rule, and it is worth stating as a condition rather than a pat
 
 Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
 
-## The mechanism that surprised us — and the correction a reader caught
+## The one ordering rule: sgit first, then git
 
-Mid-cycle, `git status` showed one modified file that nothing had touched:
-
-```
-$ git status --porcelain
- M .sg_vault/bare/refs/ref-pid-muw-4a7e6bc14d96
-```
-
-That is the vault's HEAD pointer, and it looked like the git mirror had drifted from the vault. It had not: decrypting the committed ref and the working-tree ref gave the same commit id.
+Almost everything in the shared store is content-addressed — an object's name is the hash of its ciphertext, so it never changes under its id and the two systems can never disagree about it. Exactly one file is mutable: the vault's HEAD pointer, the **ref**. Every real `sgit push` rewrites it, and that makes the order of the two pushes matter:
 
 ```
-vault HEAD (working tree) : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
-vault HEAD (in git)       : {"commit_id": "obj-cas-imm-49cf3a524b0c"}
-same commit? True
+✓ sgit commit && sgit push     # 1st — writes the new ref
+✓ git add -A && git commit && git push   # 2nd — captures that exact ref
 ```
 
-The bytes differ whenever the ref is rewritten because AES-GCM encrypts with a fresh random IV on every write — the same pointer never re-encrypts to the same ciphertext. The first version of this page concluded "the ref always looks dirty to git", and a reader asked the right question: *if you push sgit first and commit git after, don't the files match?*
+Done in this order, the git mirror always carries the ref the push just wrote, and a clean `git status` is the normal end state of every release — reads and no-op operations (`ls`, `history`, `status`, `pull`, `fetch`) do not rewrite the ref, so nothing drifts between releases. We verified both claims by testing them.
 
-**They do.** We tested it rather than argue it: with the release ordering below — sgit push first, git commit after — git captures the freshly written ref every time, and the tree ends every release clean. Then we tried to make it dirty: `sgit ls`, `history log`, `status`, `vault info`, a no-op commit, a no-op push, `pull`, `fetch` — none of them rewrites the ref. The ref changes only when a *real* push writes a new commit pointer, and the ordering guarantees git commits right after that happens.
+Reverse the order and the failure is quiet: commit git first and the mirror carries the *previous* ref — in sync by bytes, one commit behind in meaning. Push sgit without a following git commit and the ref shows as modified in `git status`.
 
-So the accurate statement is a rule about ordering, not a permanent condition:
-
-- **sgit before git, always.** Push the vault, then commit the tree to git. The mirror then includes the exact ref the push wrote, and a clean `git status` is the normal end state — the one we measured after this very release.
-- **Git the other way round is silently stale.** Commit git first and the mirror carries the *previous* ref; push sgit without a following git commit and the tree shows the ref modified. Both are ordering slips, and the second is how the screenshot above happened.
-- **When the ref does show modified, the bytes tell you nothing.** A rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit — so "dirty" does not mean stale, and only decrypting it (or asking `sgit status`) answers the real question. Every other object in the store is content-addressed and immutable, so this false signal is confined to exactly one file.
-
-This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
+One property to know when reading that modified flag: **the ref's bytes carry no information about staleness.** AES-GCM encrypts with a fresh random IV on every write, so a rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit id. "Dirty" therefore does not mean the mirror is stale, and byte-equality would not mean it is current — the only real answers are decrypting the ref or asking `sgit status`. This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
 
 ## What changed: the release script
 
@@ -764,7 +866,7 @@ $ ./admin/build/release.sh "site v0.2.2: describe the release"
 5. confirm   — both remotes reported in sync, or exit 1 loudly
 ```
 
-The ordering inside the script is the point the section above proved: sgit pushes before git commits, so the mirror always carries the ref that push just wrote, and the expected end state of every release is a clean tree. Two further design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
+The ordering inside the script is the rule above, made unforgettable: sgit pushes before git commits, and the expected end state of every release is a clean tree. Two further design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
 
 ## The numbers
 
@@ -2415,11 +2517,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.5**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.6**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.5 | 2026-08-14 | this release | Corrects the one-tree-two-remotes case study, prompted by a reader question: if sgit pushes first and git commits after, don't the files match? They do — tested rather than argued. With that ordering git captures the freshly written ref every time and a clean tree is the normal end state of a release; reads (ls, history, status, vault info), no-op commits and pushes, pull and fetch were all tried and none rewrites the ref. The section is now a rule about ordering rather than a claim of permanent drift, keeping the part that is true and useful: when the ref IS dirty, the bytes tell you nothing, because a rewritten ref never byte-matches even when it decrypts to the same commit. |
+| v0.2.6 | 2026-08-15 | this release | The first demo ships: a vault app running live inside a sgit.ai page from a published read-only key. A new vault (Field Notes, 4bshby5n) was created from scratch for it — a self-contained app following the authoring contract, generative SVG art, content in content.json read over the bridge — and /demos/vault-app-embed.html is the complete walkthrough: init, commit, push, derive the read key, publish it deliberately, embed. The embed host is assets/vault-embed.js (~170 lines): HMAC-derived ids, ciphertext over CORS, Web Crypto decryption, the app booted in a sandbox=allow-scripts iframe with an opaque origin, and its sg.vfs/loadCss/loadJs calls answered over postMessage — the same shape as SG/Vault's vault-in-vault, minimal by design until the UI team answers the reuse briefing. Also rewrites the one-tree-two-remotes ordering section as a clean rule (the discovery narrative is gone), adds the Demos nav section, and extends the key-leak tripwire to scan for every demo vault's passphrase, not only the site's own. Verified end to end in headless Chromium: bridge live (the app's status line reads content via sg.vfs.readText from the vault), six tiles rendered, frame origin opaque, mutations impossible by construction. |
+| v0.2.5 | 2026-08-14 | obj-cas-imm-fedcfbd348c0 | Corrects the one-tree-two-remotes case study, prompted by a reader question: if sgit pushes first and git commits after, don't the files match? They do — tested rather than argued. With that ordering git captures the freshly written ref every time and a clean tree is the normal end state of a release; reads (ls, history, status, vault info), no-op commits and pushes, pull and fetch were all tried and none rewrites the ref. The section is now a rule about ordering rather than a claim of permanent drift, keeping the part that is true and useful: when the ref IS dirty, the bytes tell you nothing, because a rewritten ref never byte-matches even when it decrypts to the same commit. |
 | v0.2.4 | 2026-08-14 | obj-cas-imm-854db222f8cb | Wider layout across the site. The reading column was a classic 720px prose measure, which squeezed the content into the middle of a modern display and made every page longer than it needed to be. The measure is now 960px and the wide container 1360px, with the body type up a step (.93rem to .98rem) so the longer line keeps a comfortable character count; the home-page sections (hero, terminal, feature grid, cards) scaled in proportion, and the deploy-section nav column widened with them. Verified at 1600px (no overflow, content fills the frame) and at 390px (no horizontal scroll). |
 | v0.2.3 | 2026-08-14 | obj-cas-imm-6deb6376d9bd | Plans and briefs from the 14 Aug briefing pack. Publishes the implementation plan for the Why reframe (boundary map), the serialised-pull-request lead example (with one honesty gap found while planning: the diff emit exists as history diff --json, but the CLI has no apply/import command, so the page will ship as PARTIAL and a brief goes to the CLI team asking for sgit diff export/apply plus a published diff format), three end-to-end demo vaults with deliberately published read keys, the embed-reuse work, and the component registry (components, never plugins — plugin stays reserved for capability grants; registry gated on indexing being observed). Files a briefing to the SG/Vault UI team with six concrete questions about reusing their app-iframe host code inside sgit.ai pages, linked from the briefs page. |
 | v0.2.2 | 2026-08-14 | obj-cas-imm-29aa935bd44a | New case study: one working tree, two version control systems — the workflow this site is actually developed with. One folder is both an sgit vault and a git repository; a release is two pushes of the same tree. The page covers what each remote carries, the one-file .gitignore boundary that makes it safe (everything encrypted is committed; only the plaintext local/ tier is excluded), and the finding that surprised us: the encrypted ref always looks modified to git because AES-GCM uses a fresh IV per write, so for that one file git status cannot detect staleness — proved by decrypting both sides to the same commit id. Ships admin/build/release.sh, which makes the discipline mechanical: build, validate (the key-leak tripwire gates BOTH pushes, not just the deployed one), push sgit, push git, and refuse to finish unless both remotes report in sync. The script deliberately never invokes commands that echo the vault key. |

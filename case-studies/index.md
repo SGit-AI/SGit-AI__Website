@@ -2,7 +2,7 @@
 
 > Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
 
-*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,7 +18,7 @@ Things that actually happened, written up while the details were still checkable
 
 [Incident### The day we leaked our own vault keyAn agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.Read the incident →](exposed-vault-key.md)
 
-[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and why the encrypted ref always looks modified to git even when nothing changed.Read the workflow →](one-tree-two-remotes.md)
+[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and the ordering rule that keeps the git mirror true to the vault.Read the workflow →](one-tree-two-remotes.md)
 
 [Architecture### A live site whose host cannot read itTwo Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.Read the architecture →](live-vault-docs.md)
 

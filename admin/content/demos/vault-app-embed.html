@@ -1,0 +1,95 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Demos</a> / Vault app embed</p>
+  <h1>A vault app, live inside this page</h1>
+  <p class="lead">Below is an application running out of an encrypted vault, embedded in this page with nothing but a <b>published read-only key</b>. This walkthrough is the complete process that produced it — every command, the key that is deliberately public, and the one that never will be.</p>
+
+  <div class="note"><b>The one-sentence mechanism:</b> the vault's ciphertext is fetched from the SG/Send server over CORS, decrypted in your browser with the read key printed on this page, and the vault's <code>index.html</code> is booted inside a sandboxed iframe with a <code>window.sg</code> bridge — the same shape SG/Vault's own vault-in-vault embedding uses. No copy of the app or its content exists on sgit.ai.</div>
+
+  <h2>The live embed</h2>
+  <p>Click to open it. The status line inside the app will read <code>content: sg.vfs.readText("content.json") — live from the vault</code>, which is the bridge proving itself: the app asked the embed host for a vault file and got it.</p>
+  <div class="sgv-embed" id="embed-gallery"
+       data-endpoint="https://dev.send.sgraph.ai" data-vault="4bshby5n"
+       data-readkey="2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81" data-title="Field Notes — demo vault">
+    <button class="sgv-embed-load" type="button">▶ Open the vault app in this page</button>
+    <p class="small dim" style="margin:.5rem 0 0">Loads ~10 encrypted objects from <code>dev.send.sgraph.ai</code> and decrypts them here. Nothing you do in it can write — the page only holds a read key.</p>
+  </div>
+
+  <h2>How this vault was made, end to end</h2>
+  <p><b>1 — Write the app.</b> A vault app is one self-contained <code>index.html</code> — CSS and JS inlined, content in <code>content.json</code>, generative SVG instead of image files — plus an <code>app.json</code> that auto-launches it. It follows the <a href="../vault/vault-apps.html">authoring contract</a>: no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code> or <code>&lt;img src&gt;</code> against vault paths, content read via <code>sg.vfs.readText</code> with an inlined fallback, and <code>sg-app-ready</code> posted when rendered.</p>
+<pre class="shell">demo-vault-gallery/
+├── index.html      <span class="d"># the app — one file, contract-compliant</span>
+├── content.json    <span class="d"># the editable content the app reads over the bridge</span>
+├── app.json        <span class="d"># { "entry": "index.html", "present": true, "auto_open": true }</span>
+└── README.md</pre>
+  <p><b>2 — Make the folder a vault and push it.</b></p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit init --existing .</span>
+<span class="d">  Vault key: &lt;passphrase&gt;:4bshby5n   ← saved to a password manager. Not printed here, not ever.</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "Field Notes v1: app, content, README" &amp;&amp; sgit push</span>
+<span class="d">  Push complete. Pushed 1 commit(s), 4 object(s) uploaded.</span></pre>
+  <p><b>3 — Derive the read key.</b> It is computed one-way from the vault key: it can decrypt everything in the vault and can never be turned back into write access.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit dev derive-keys '&lt;vault-key&gt;'</span>
+<span class="d">  read_key: 2848993a68c02a33…   ← this one is safe to publish. See below.</span></pre>
+  <p><b>4 — Publish the read key.</b> Deliberately, in full, in this page's source:</p>
+<pre class="shell">vault id : 4bshby5n
+endpoint : https://dev.send.sgraph.ai
+read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre>
+  <p>Anyone can take those three lines and read this vault — from the CLI (<code>sgit clone --read-key 2848993a68c0… 4bshby5n</code>), from their own page, from a script. That is the point: <b>read access is a capability you can hand out</b>, without an account, without the host mediating it, and without it ever becoming write access. A write attempt with this key is refused by construction — try it.</p>
+  <p><b>5 — Embed it.</b> The host on this page is <a href="../admin/index.html"><code>assets/vault-embed.js</code></a>, ~170 lines: derive the ref id with HMAC-SHA256, fetch ciphertext over CORS, decrypt with Web Crypto, boot the app in an iframe with <code>sandbox="allow-scripts"</code> (opaque origin — the app gets no cookies, no storage, no reach into this page), and answer its <code>sg.vfs</code> calls over postMessage.</p>
+
+  <h2>What the app can and cannot do in here</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Capability</th><th>In this embed</th><th>Why</th></tr>
+    <tr><td><code>sg.vfs.readText</code> / <code>sg.vfs.read</code></td><td>works</td><td>served by the host from decrypted vault objects</td></tr>
+    <tr><td><code>sg.loadCss</code> / <code>sg.loadJs</code></td><td>works</td><td>same read path, injected into the frame</td></tr>
+    <tr><td>any mutation (<code>sg.fs.*</code>, <code>sg.vault.*</code>, …)</td><td>impossible</td><td>the page holds only a read key — there is no write capability to misuse, not even by a bug in the host</td></tr>
+    <tr><td>reach this page, cookies, storage, top navigation</td><td>blocked</td><td><code>sandbox="allow-scripts"</code> and an opaque origin; the only channel is postMessage</td></tr>
+  </table></div>
+
+  <h2>Honest scope</h2>
+  <p>This is our <b>minimal</b> host — enough bridge for read-only apps, which is exactly what a published read key permits. The canonical app-iframe host (full <code>window.sg</code>, permissions, HUD chrome) is the SG/Vault UI's code, and <a href="../briefs/briefing-sgvault-ui-embed.md">a briefing asking to reuse it</a> is with that team; when it lands, this page swaps hosts and the walkthrough gains the full-fidelity embed. Until then: what you see above is real, live, and reproducible from the commands on this page.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>Evidence status</th><th>Copy or reference</th></tr>
+    <tr><td>Gallery (app + content)</td><td><b>LIVE</b> — the embed above reads the real vault on every load</td><td><b>Reference</b> — a push to the vault changes this page's embed with no rebuild</td></tr>
+  </table></div>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../vault/vault-apps.html">Building vault apps</a> — the authoring contract this app follows</li>
+    <li><a href="../case-studies/live-vault-docs.html">A live site whose host cannot read it</a> — the same read path rendering markdown docs</li>
+    <li><a href="../vault/sub-vaults.html">Sub-vaults</a> — vault-in-vault, the pattern this embed mirrors</li>
+    <li><a href="../admin/plans/why-expansion-plan.md">The plan</a> — two more demo vaults (a report, a two-agent inbox) follow this template</li>
+  </ul>
+  <div class="pagenav"><a href="index.html">← Demos</a><a href="../vault/vault-apps.html">Building vault apps →</a></div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var R = document.documentElement.getAttribute('data-root') || '';
+  async function grab(p) {
+    try { if (window.sg && window.sg.vfs && window.sg.vfs.readText) { var t = await window.sg.vfs.readText(p); if (t) return t; } } catch (e) {}
+    try { var r = await fetch(p); if (r.ok) return await r.text(); } catch (e) {}
+    return null;
+  }
+  var box = document.getElementById('embed-gallery');
+  box.querySelector('.sgv-embed-load').addEventListener('click', async function () {
+    this.disabled = true; this.textContent = 'opening…';
+    var src = await grab(R + 'assets/vault-embed.js') || await grab('../assets/vault-embed.js');
+    if (!src) { box.innerHTML = '<div class="warnbox">Could not load the embed host.</div>'; return; }
+    try { (0, eval)(src); } catch (e) { box.innerHTML = '<div class="warnbox">Embed host failed to start: ' + e + '</div>'; return; }
+    var btn = this;
+    try {
+      var res = await window.SGVaultEmbed.mount(box, {
+        endpoint: box.getAttribute('data-endpoint'),
+        vault_id: box.getAttribute('data-vault'),
+        read_key: box.getAttribute('data-readkey'),
+        title:    box.getAttribute('data-title')
+      });
+      btn.remove();
+      console.log('[embed] vault files:', res.files);
+    } catch (e) {
+      box.innerHTML = '<div class="warnbox"><b>Embed failed:</b> ' + e + '</div>';
+    }
+  });
+})();
+</script>

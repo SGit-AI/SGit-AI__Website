@@ -6,6 +6,18 @@
     "desc": "sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data."
   },
   {
+    "path": "demos/index.html",
+    "section": "demos",
+    "title": "Demos — sgit.ai",
+    "desc": "Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key."
+  },
+  {
+    "path": "demos/vault-app-embed.html",
+    "section": "demos",
+    "title": "A vault app, live inside this page — sgit.ai demos",
+    "desc": "The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge."
+  },
+  {
     "path": "use-cases/index.html",
     "section": "use-cases",
     "title": "Use cases — sgit",

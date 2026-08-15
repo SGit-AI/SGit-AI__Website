@@ -2,7 +2,7 @@
 
 > The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 
-*Source: <https://sgit.ai/docs/limitations.html> · site v0.2.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/limitations.html> · site v0.2.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
