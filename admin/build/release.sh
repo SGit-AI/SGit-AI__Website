@@ -54,10 +54,11 @@ done
 echo "   git: HEAD == origin/$BRANCH"
 
 step "5/5 release complete"
-# The one file allowed to be dirty afterwards is the vault ref: AES-GCM uses a
-# fresh IV per write, so sgit's own push re-encrypts it and git sees a change
-# even though it decrypts to the same commit. Anything ELSE dirty is a real
-# problem and gets reported.
+# Because sgit pushed before git committed, the tree should end clean — the git
+# mirror includes the exact ref that push wrote. A dirty ref here means the
+# ordering was violated somewhere; it is tolerated (a rewritten ref can decrypt
+# to the same commit — fresh AES-GCM IV per write) but anything else dirty is a
+# real problem and gets reported.
 LEFTOVER="$(git status --porcelain | grep -v '\.sg_vault/bare/refs/' || true)"
 [ -z "$LEFTOVER" ] || { echo "note: unexpected dirty files after release:"; echo "$LEFTOVER"; }
 echo "both remotes in sync — done."

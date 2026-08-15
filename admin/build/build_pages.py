@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.4'
+SITE_VERSION = 'v0.2.5'
 BUILD_DATE   = '2026-08-14'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.4', '2026-08-14', 'this release',
+    ('v0.2.5', '2026-08-14', 'this release',
+     "Corrects the one-tree-two-remotes case study, prompted by a reader question: if sgit pushes first and git commits after, don't the files match? They do — tested rather than argued. With that ordering git captures the freshly written ref every time and a clean tree is the normal end state of a release; reads (ls, history, status, vault info), no-op commits and pushes, pull and fetch were all tried and none rewrites the ref. The section is now a rule about ordering rather than a claim of permanent drift, keeping the part that is true and useful: when the ref IS dirty, the bytes tell you nothing, because a rewritten ref never byte-matches even when it decrypts to the same commit."),
+    ('v0.2.4', '2026-08-14', 'obj-cas-imm-854db222f8cb',
      "Wider layout across the site. The reading column was a classic 720px prose measure, which squeezed the content into the middle of a modern display and made every page longer than it needed to be. The measure is now 960px and the wide container 1360px, with the body type up a step (.93rem to .98rem) so the longer line keeps a comfortable character count; the home-page sections (hero, terminal, feature grid, cards) scaled in proportion, and the deploy-section nav column widened with them. Verified at 1600px (no overflow, content fills the frame) and at 390px (no horizontal scroll)."),
     ('v0.2.3', '2026-08-14', 'obj-cas-imm-6deb6376d9bd',
      "Plans and briefs from the 14 Aug briefing pack. Publishes the implementation plan for the Why reframe (boundary map), the serialised-pull-request lead example (with one honesty gap found while planning: the diff emit exists as history diff --json, but the CLI has no apply/import command, so the page will ship as PARTIAL and a brief goes to the CLI team asking for sgit diff export/apply plus a published diff format), three end-to-end demo vaults with deliberately published read keys, the embed-reuse work, and the component registry (components, never plugins — plugin stays reserved for capability grants; registry gated on indexing being observed). Files a briefing to the SG/Vault UI team with six concrete questions about reusing their app-iframe host code inside sgit.ai pages, linked from the briefs page."),
