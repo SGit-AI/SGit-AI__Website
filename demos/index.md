@@ -2,7 +2,7 @@
 
 > Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
 
-*Source: <https://sgit.ai/demos/index.html> · site v0.2.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/index.html> · site v0.2.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,9 +18,11 @@ Live, end-to-end demonstrations — each one a vault that was actually created, 
 
 [Gallery · live### A vault app, live inside this pageField Notes: a self-contained vault app created from scratch, pushed, and opened inside sgit.ai with a published read key — sandboxed iframe, postMessage bridge, every byte decrypted in your browser.Open the walkthrough →](vault-app-embed.md)
 
+[Report · real### The Strategy in Seven MapsNot demo content: the actual SG/Send strategy, published on LinkedIn in May 2026, served live from a vault with a published read key — plus the audit that shows why the original vault could not publish its key, and the republish pattern that fixed it.Open the walkthrough →](strategy-maps.md)
+
 ## Coming next
 
-Two more shapes from [the plan](../admin/plans/why-expansion-plan.md), on the same template: a **report** vault (a fictional security assessment with re-test history) and a **two-agent inbox** vault (produced by actually running two sessions against it). Each gets the full transcript, its own published read key, and a live embed.
+Two more shapes from [the plan](../admin/plans/why-expansion-plan.md), on the same template: a **two-agent inbox** vault (produced by actually running two sessions against it), which gets the full transcript, its own published read key, and a live embed.
 
 [← Home](../index.md)[The first demo →](vault-app-embed.md)
 
