@@ -1,0 +1,46 @@
+<main class="doc">
+  <h1>Security model</h1>
+  <p class="lead">Zero knowledge, precisely stated: every file is encrypted on your machine before upload, keys are derived locally from your vault key, and the server stores ciphertext under opaque identifiers. This page tells you exactly what that means — including what the server <em>can</em> see.</p>
+
+  <h2 id="server-sees">What the server sees — and never sees</h2>
+  <div class="tablewrap"><table>
+    <tr><th>The server never sees</th><th>The server does see</th></tr>
+    <tr><td>File contents (encrypted client-side, AES-256-GCM)</td><td>The vault ID (an opaque random identifier)</td></tr>
+    <tr><td>Filenames and folder structure</td><td>Encrypted object sizes</td></tr>
+    <tr><td>Commit messages and branch names</td><td>Timing of reads and writes</td></tr>
+    <tr><td>Your vault key or any derived key</td><td>Approximate activity volume (object counts)</td></tr>
+  </table></div>
+  <p class="small dim">We state the right-hand column deliberately. Traffic analysis of sizes and timing is a real (if narrow) channel, and pretending otherwise would be marketing, not security.</p>
+
+  <h2 id="crypto">The crypto stack</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Layer</th><th>Construction</th></tr>
+    <tr><td>Content encryption</td><td>AES-256-GCM, 12-byte IV, 16-byte tag — byte-compatible with the browser's Web Crypto API</td></tr>
+    <tr><td>Key derivation from the vault key</td><td>PBKDF2-HMAC-SHA256, 600,000 iterations, distinct per-vault salts for read and write keys</td></tr>
+    <tr><td>Purpose-specific keys</td><td>HKDF-SHA256 — per-file keys and a structure key, one-way derived from the read key</td></tr>
+    <tr><td>Server-side identifiers</td><td>HMAC-SHA256-derived opaque IDs — the server addresses files it cannot name</td></tr>
+    <tr><td>Object identity</td><td>Content-addressed: <code>obj-cas-imm-&lt;sha256-prefix&gt;</code> over ciphertext, enabling dedup without plaintext knowledge</td></tr>
+  </table></div>
+  <p>One precision note, because precision beats marketing: the key hierarchy derives a <em>structure key</em> (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key — activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.</p>
+
+  <h2 id="keys">Key strength</h2>
+  <p>Vault keys are generated, not chosen. A generated passphrase is 24 characters over a 36-symbol alphabet — about <b>124 bits of entropy</b> (36<sup>24</sup> ≈ 2<sup>124</sup>), far beyond brute-force reach — before key derivation adds 600,000 rounds of PBKDF2-SHA256 on top. The key never travels to the server: it is the address, the credential, and the root of the encryption hierarchy in one string, and it stays on your machines.</p>
+  <div class="warnbox"><b>Consequence you should want:</b> there is no password reset. If you lose the vault key, nobody — including us — can recover the contents. Keep it in a password manager, and use <code>sgit vault backup</code> for belt-and-braces.</div>
+
+  <h2 id="interop">Two implementations, one wire format</h2>
+  <p>The sgit CLI and the SG/Vault browser client are independent implementations of the same encrypted wire format, kept interoperable through a versioned contract with test vectors. Every crypto operation must produce byte-for-byte identical output to the Web Crypto API given the same inputs — that requirement is enforced with mandatory test vectors, and it means a second, independent codebase continuously exercises the same format. (More on the browser side at <a href="https://sgraph.ai">sgraph.ai</a>.)</p>
+
+  <h2 id="secrets">Secrets safety by default</h2>
+  <p>sgit is not a secrets manager, and it actively refuses to become an accidental one: files like <code>.env*</code>, <code>.netrc</code>, <code>.pgpass</code>, <code>.git-credentials</code> and private key files (<code>id_rsa</code>, …) are <em>always</em> excluded from commits, so a stray credential can't get swept into a vault snapshot.</p>
+
+  <h2 id="process">Open security process</h2>
+  <ul>
+    <li>Open source under Apache-2.0, with a deliberately tiny dependency surface: two runtime dependencies.</li>
+    <li>~4,000 tests including mutation testing in CI and integration tests against a real server — no mocks.</li>
+    <li>An internal security review series (twelve findings, each individually worked through and debriefed — covering key residency, IV determinism trade-offs, logging hygiene, and more) is being prepared for publication on this page.</li>
+    <li>Found something? Report it via <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">GitHub</a> — security reports get priority.</li>
+    <li><b>Key exposed?</b> <a href="../case-studies/exposed-vault-key.html">The rotation runbook</a> — including a worked case study of the day this site's own vault key leaked, and what it cost to fix.</li>
+  </ul>
+
+  <div class="note"><b>Honesty note:</b> sgit is in beta — it powers production workflows daily, and the cryptography is conservative and standard (AES-GCM, PBKDF2, HKDF — nothing exotic). Still: read <a href="../docs/limitations.html">when NOT to use sgit</a> before trusting it with anything critical.</div>
+</main>

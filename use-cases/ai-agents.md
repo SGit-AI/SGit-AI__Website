@@ -2,7 +2,7 @@
 
 > Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
 
-*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,13 +66,13 @@ PROVEN
 **This website is the evidence.** It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:
 
 - The [Deploy section](../deploy/index.md) is maintained by a *different* team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.
-- The [cross-team briefs](../briefs.md) and the [key-leak incident](../docs/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
+- The [cross-team briefs](../briefs/index.md) and the [key-leak incident](../case-studies/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
 
 Honest limit: n is small, and the agents are supervised by the people who wrote the tool.
 
 ## Brief for an agent
 
-Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+Paste this into an agent that has the [sgit skill](../skills/index.md) installed, or point it at the markdown directly.
 
 ```
 # everything on this site is readable as markdown — no HTML parsing needed
@@ -82,13 +82,13 @@ $ curl -s https://sgit.ai/llms.txt          # the index of everything
 
 > Read https://sgit.ai/use-cases/ai-agents.md and https://sgit.ai/docs/agents.md. Then set up agent state in a vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository. Then write a short SESSION.md describing the clone/pull-at-start and commit/push-at-end protocol so future sessions follow it.
 
-That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+That last sentence matters. We have a [write-up of the day we got it wrong](../case-studies/exposed-vault-key.md).
 
 ## Related
 
 - [Working with AI agents](../docs/agents.md) — the full agent-facing surface: `--json` everywhere, the session pattern, multi-agent collaboration
 - [The two-branch model](../docs/two-branch-model.md) — why every clone gets a private branch
-- [Skills](../skills.md) — packaged instructions that make an agent competent at this without you explaining it
+- [Skills](../skills/index.md) — packaged instructions that make an agent competent at this without you explaining it
 
 [← Use cases](index.md)[Professional services →](professional-services.md)
 

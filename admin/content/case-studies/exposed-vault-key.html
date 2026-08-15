@@ -1,0 +1,54 @@
+<main class="doc">
+  <p class="crumb"><a href="../docs/index.html">Docs</a> / Project</p>
+  <h1>If a vault key is exposed</h1>
+  <p class="lead">A vault key is a <b>bearer credential</b>: whoever holds it can read and write the vault, from anywhere, with no account and no reset. There is no revocation list to add it to. So an exposed key has exactly one remedy — <b>rotate it</b>, which means taking the old vault off the server and re-encrypting the content under a new key.</p>
+  <div class="warnbox"><b>Act first, investigate second.</b> Rotation takes minutes and costs you a commit history. Working out exactly who saw what takes hours. Do them in that order.</div>
+
+  <h2>The runbook</h2>
+  <ol>
+    <li><b>Confirm you hold a complete local clone.</b> The rotation re-encrypts from your working copy — if your only full copy is on the server, clone it before you delete anything. <code>sgit status</code> should be clean, and <code>sgit vault backup</code> is cheap insurance.</li>
+    <li><b>Delete the vault from the server:</b> <code>sgit vault delete-on-remote --token &lt;token&gt;</code>. This is the step that actually revokes the old key. Rekeying <em>without</em> it leaves the old vault — and the old key's access to it — alive on the server.</li>
+    <li><b>Rotate:</b> <code>sgit vault rekey</code>. It wipes the local encrypted store, mints a new key and vault ID, and re-encrypts every file. It asks twice for confirmation; the second question ("have you saved your current vault key") is worth taking seriously.</li>
+    <li><b>Save the new key</b> — password manager, before you do anything else. It cannot be recovered.</li>
+    <li><b>Publish:</b> <code>sgit push</code>. The vault is now live under the new key with a fresh ID.</li>
+    <li><b>Verify the old key is dead</b> (see below). Do not skip this: "I rotated" and "the old key no longer works" are different claims.</li>
+    <li><b>Re-point every consumer</b> — other machines, agents, CI secrets, share links, bookmarks into the web client. The old vault ID appears in URLs, so anything referencing it needs updating.</li>
+    <li><b>Then</b> investigate: where did the key appear, for how long, and who could have fetched it.</li>
+  </ol>
+
+  <h2>Verifying the old key is dead</h2>
+  <p>Four independent checks — each should fail or 404:</p>
+<pre class="shell"><span class="d"># 1. the obvious one</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;old-vault-key&gt; /tmp/check</span>     <span class="d"># must fail: no branch index found</span>
+
+<span class="d"># 2-4. raw HTTP against the old vault id — derive the ids, then GET/PUT them</span>
+<span class="d">#   - the old ref file id            → expect 404</span>
+<span class="d">#   - a known old object id          → expect 404</span>
+<span class="d">#   - a PUT with the old write key   → expect rejection</span></pre>
+  <p>A successful clone or a 200 on any of those means the rotation did not take — most often because <code>delete-on-remote</code> was skipped.</p>
+
+  <h2>What rotation costs</h2>
+  <ul>
+    <li><b>Vault history resets to a single commit.</b> Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is <a href="../briefs/index.html">proposed to the CLI team</a>.) If the vault is <a href="../vault/git-and-vaults.html">mirrored to git</a>, the content history survives there — which is one of the better arguments for running the two side by side.</li>
+    <li><b>Every object ID changes.</b> IDs are content hashes <em>of the ciphertext</em>, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.</li>
+    <li><b>The vault ID changes</b>, so every URL and stored reference to it breaks.</li>
+  </ul>
+
+  <h2>The limit worth understanding: mirrors</h2>
+  <p><b>A rotation protects the server. It cannot un-publish a mirror.</b> Encrypted objects already pushed to a git remote stay in that history and remain decryptable by the old key. If the old key was <em>also</em> committed there, anyone who clones the repository can still read the old content, forever, regardless of what you rotate.</p>
+  <ul>
+    <li><b>Public content</b> (a website, published docs): a non-issue — the plaintext was public anyway. Rotate and move on.</li>
+    <li><b>Private content:</b> the rotation is only half the job. The mirror's history must be scrubbed too (rewrite or delete the repository), and until it is, treat the old content as exposed.</li>
+  </ul>
+
+  <h2>Case study: this website, 11 August 2026</h2>
+  <p>This page exists because it happened here, to the vault that serves this site.</p>
+  <p><b>What went wrong.</b> The site's build has a validator that blocks secrets and stale terms from being published. To catch the vault passphrase specifically, an agent (me) added a rule matching that exact passphrase — and wrote the literal secret into <code>admin/build/validate.js</code>, a <em>tracked</em> file. The guard against leaking became the leak. Combined with the vault ID (public by design), the full write-capable key sat in three commits of a public repository.</p>
+  <p><b>How it was caught.</b> Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the <a href="../vault/git-and-vaults.html">git page</a>: grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.</p>
+  <p><b>The response,</b> inside the hour: <code>delete-on-remote</code> (336 files removed from the server) → <code>rekey</code> (39 files re-encrypted under a new key and ID) → <code>push</code>. Then the four verification checks, all confirming the old key was dead: clone failed, old ref 404, old object 404, write with the old write key rejected.</p>
+  <p><b>The aftermath, measured.</b> 336 old objects out, 90 new in, <b>zero overlap</b> — no object ID survived, because the addressing hashes ciphertext. Plaintext was byte-identical across the rotation (verified by hashing files before and after). Vault history went from 14 commits to one; the git mirror kept all 14.</p>
+  <p><b>What changed structurally.</b> The tripwire now reads the passphrase from the gitignored <code>.sg_vault/local/</code> tier at runtime and scans for it, instead of carrying it — so the secret can no longer live in a tracked file, and the check still works. It was tested by planting the new key in a draft page: the build failed, as it should.</p>
+  <div class="note"><b>The transferable lessons.</b> (1) Never write a secret into a file that ships — derive it at runtime from the ignored tier. (2) A leak audit is worth running before your first publish <em>and</em> after anything touches your build config. (3) Grep the full history, not just the working tree; <code>git grep &lt;secret&gt; $(git rev-list --all)</code> is the check that found this. (4) Rotate before you investigate. (5) Write the incident down — this page is more useful than a quiet fix.</div>
+
+  <div class="pagenav"><a href="../docs/limitations.html">← When NOT to use sgit</a><a href="../security/index.html">The security model →</a></div>
+</main>

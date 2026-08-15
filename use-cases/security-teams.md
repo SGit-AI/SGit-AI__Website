@@ -2,7 +2,7 @@
 
 > Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.
 
-*Source: <https://sgit.ai/use-cases/security-teams.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/security-teams.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -48,19 +48,19 @@ $ sgit dev derive-keys '<vault-key>'
 $ sgit clone --read-key <read-key> <vault-id> report   # what the client runs
 ```
 
-**One rule, learned the hard way:** never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from [our own incident](../docs/exposed-vault-key.md).
+**One rule, learned the hard way:** never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from [our own incident](../case-studies/exposed-vault-key.md).
 
 ## Evidence status
 
 PARTIAL — adjacent evidence only
 
-We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's [exposed-key incident](../docs/exposed-vault-key.md) — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.
+We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's [exposed-key incident](../case-studies/exposed-vault-key.md) — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.
 
 That write-up is the artefact a security team would actually judge us on, so it is on the site rather than in a drawer. If you run assessment work on sgit, the failure modes you hit are the ones we want to hear about.
 
 ## Brief for an agent
 
-Paste this into an agent that has the [sgit skill](../skills.md) installed, or point it at the markdown directly.
+Paste this into an agent that has the [sgit skill](../skills/index.md) installed, or point it at the markdown directly.
 
 ```
 # everything on this site is readable as markdown — no HTML parsing needed
@@ -70,12 +70,12 @@ $ curl -s https://sgit.ai/llms.txt          # the index of everything
 
 > Read https://sgit.ai/use-cases/security-teams.md and https://sgit.ai/docs/agents.md. Then set up an assessment vault for this project: create the vault, structure the folders as described, commit and push, and report the vault key back to me once — I will store it. Do not write the key to any file in the repository. Also add a pre-push check that fails if the vault key appears in any tracked file, reading the secret from a gitignored path rather than hardcoding it.
 
-That last sentence matters. We have a [write-up of the day we got it wrong](../docs/exposed-vault-key.md).
+That last sentence matters. We have a [write-up of the day we got it wrong](../case-studies/exposed-vault-key.md).
 
 ## Related
 
-- [If a vault key is exposed](../docs/exposed-vault-key.md) — the runbook and the case study
-- [Security model](../security.md) — the crypto stack and the honest side channels
+- [If a vault key is exposed](../case-studies/exposed-vault-key.md) — the runbook and the case study
+- [Security model](../security/index.md) — the crypto stack and the honest side channels
 - [Self-hosting](../deploy/index.md) — when the storage layer has to be yours too
 
 [← Professional services](professional-services.md)[Health & regulated →](health-regulated.md)

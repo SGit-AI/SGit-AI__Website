@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 
-*Source: <https://sgit.ai/docs/what-is-sgit.html> · site v0.1.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/what-is-sgit.html> · site v0.2.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ your-folder/
     └── local/               # your private clone-branch key — never pushed
 ```
 
-The **vault key** (`passphrase:vault-id`) is three things in one string: the address of the vault on the server, the credential to access it, and the root of the local key-derivation hierarchy. Whoever holds it can decrypt the vault; nobody else — including the server — can. See the [security model](../security.md) for the full derivation chain.
+The **vault key** (`passphrase:vault-id`) is three things in one string: the address of the vault on the server, the credential to access it, and the root of the local key-derivation hierarchy. Whoever holds it can decrypt the vault; nobody else — including the server — can. See the [security model](../security/index.md) for the full derivation chain.
 
 ## What makes it different from git
 

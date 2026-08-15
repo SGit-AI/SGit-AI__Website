@@ -1,0 +1,30 @@
+<main class="doc">
+  <h1>Skills — sgit for AI agents</h1>
+  <p class="lead">A skill is a packaged set of instructions an AI agent loads to do a job well: the commands that matter, the patterns that work, the traps already hit and documented so the agent doesn't hit them again. sgit treats agents as first-class users, so its skills are first-class artifacts — versioned, verified against specific releases, and shipped right here in this vault.</p>
+
+  <h2>The three skills</h2>
+  <div class="dochub">
+    <div class="grp">
+      <h2>Operate</h2>
+      <a href="use_sgit-and-vaults__SKILL.md">use sgit and vaults<small>The CLI end to end — and the cross-session pattern: clone/pull at session start, commit + push at session end, so state survives the context window. Includes the multi-agent branch-per-agent workflow.</small></a>
+    </div>
+    <div class="grp">
+      <h2>Build</h2>
+      <a href="create-vault-apps__SKILL.md">create vault apps<small>The vault-app playbook: the authoring contract, what the host gives you for free, proven layout patterns, the validation gate, and a nine-row table of failure modes with fixes — all bug-fixed against real vault behaviour.</small></a>
+    </div>
+    <div class="grp">
+      <h2>Author</h2>
+      <a href="create-vault-content__SKILL.md">create vault content<small>Structured content without code: the full _page.json schema (embedded — no repo clone needed) and vault markdown authoring, with checklists and copy-paste templates.</small></a>
+    </div>
+  </div>
+
+  <h2>Installing a skill</h2>
+  <p>For Claude Code and compatible agents: drop the skill file into your skills directory (e.g. <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>) or paste it into the session as context. The skill's own description tells the agent when to trigger it. A minimal bootstrap for a fresh session is one line:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai &amp;&amp; sgit clone &lt;vault-key&gt; workspace</span>
+<span class="d"># then read skills/ inside any vault that ships them — like this one</span></pre>
+  <p>The skills above are the canonical current versions, verified against sgit-ai v0.14.x and the current app-shell. They carry their own honesty markers — including which CLI commands are disabled right now and which platform features are trial-only — so an agent reading them gets ground truth, not marketing.</p>
+
+  <div class="note"><b>Also for agents:</b> this site ships an <a href="../llms.txt">llms.txt</a> at the vault root — the standard machine-readable index. Inside the vault it is encrypted like everything else (agents holding the key read it via <code>sgit cat llms.txt</code>); on a static deployment it becomes a plain public llms.txt. Same file, two trust contexts.</div>
+
+  <div class="pagenav"><a href="../docs/agents.html">← Working with AI agents</a><a href="../vault/index.html">The SG/Vault platform →</a></div>
+</main>

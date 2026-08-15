@@ -13,7 +13,11 @@ while (!fs.existsSync(path.join(root, 'app.json'))) {
 let fails = 0;
 function walk(d) {
   return fs.readdirSync(d, { withFileTypes: true }).flatMap(e => {
+    // admin/content holds the page bodies the generator reads — source fragments, not
+    // published pages. They have no <head>, no nav, and their links are checked in the
+    // built output, so validating them here would only produce false failures.
     if (e.name === '.sg_vault' || e.name === '.git') return [];
+    if (e.name === 'content' && path.basename(d) === 'admin') return [];
     const p = path.join(d, e.name);
     return e.isDirectory() ? walk(p) : [p];
   });

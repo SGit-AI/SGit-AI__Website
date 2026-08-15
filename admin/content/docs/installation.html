@@ -1,0 +1,21 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Introduction</p>
+  <h1>Installation</h1>
+  <p class="lead">Pure Python, two runtime dependencies. Python 3.11 or newer.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai</span>
+<span class="d"># or, on externally-managed systems:</span>
+<span class="p">$</span> <span class="cmd">pipx install sgit-ai</span></pre>
+  <p>This installs two entry points: <code>sgit</code> and <code>sgit-ai</code> (they are identical — use whichever you like).</p>
+
+  <h2>Verify</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit version</span>
+sgit-ai v0.14.x
+<span class="p">$</span> <span class="cmd">sgit doctor</span>
+<span class="g">✓</span> remote reachable   <span class="g">✓</span> TLS ok   <span class="g">✓</span> config valid</pre>
+  <p><code>sgit doctor</code> checks connectivity and configuration and prints per-OS fix instructions for the common problems (including SSL certificate issues). Add <code>--json</code> if a script or an agent is doing the checking.</p>
+
+  <h2>Upgrade</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit update</span>   <span class="d"># wraps pip install --upgrade sgit-ai</span></pre>
+
+  <div class="pagenav"><a href="what-is-sgit.html">← What is sgit</a><a href="quickstart.html">Quickstart →</a></div>
+</main>

@@ -21,15 +21,16 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.27</a>
-  <a class="nl" href="../why.html">Why</a>
-  <a class="nl" href="../try.html">Try</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.0</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
   <a class="nl here" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
-  <a class="nl" href="../skills.html">Skills</a>
-  <a class="nl" href="../security.html">Security</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>
 
@@ -57,15 +58,15 @@
   <p><b>Deliver read-only</b> to the client, keeping the write side entirely on your team:</p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit dev derive-keys '&lt;vault-key&gt;'</span>
 <span class="p">$</span> <span class="cmd">sgit clone --read-key &lt;read-key&gt; &lt;vault-id&gt; report</span>   <span class="d"># what the client runs</span></pre>
-  <div class="warnbox"><b>One rule, learned the hard way:</b> never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from <a href="../docs/exposed-vault-key.html">our own incident</a>.</div>
+  <div class="warnbox"><b>One rule, learned the hard way:</b> never let the vault key reach a tracked file, a CI variable, or a chat message. Put a check in your pipeline that greps for it, and make that check read the secret from somewhere ignored rather than hardcoding it. That is not hypothetical advice — it is the exact fix from <a href="../case-studies/exposed-vault-key.html">our own incident</a>.</div>
 
   <h2>Evidence status</h2>
   <div class="evbox ev-warn"><span class="evtag">PARTIAL — adjacent evidence only</span>
-  <p>We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's <a href="../docs/exposed-vault-key.html">exposed-key incident</a> — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.</p>
+  <p>We have not published a pentest firm running this. What we can point at is the closest thing we own: this project's <a href="../case-studies/exposed-vault-key.html">exposed-key incident</a> — a real key leak, in a public commit, with the detection gap, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix written up rather than quietly patched.</p>
   <p>That write-up is the artefact a security team would actually judge us on, so it is on the site rather than in a drawer. If you run assessment work on sgit, the failure modes you hit are the ones we want to hear about.</p></div>
 
   <h2>Brief for an agent</h2>
-  <p>Paste this into an agent that has the <a href="../skills.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+  <p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a> installed, or point it at the markdown directly.</p>
 <pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
 <span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/security-teams.md</span>
 <span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
@@ -73,12 +74,12 @@
   Then set up an assessment vault for this project: create the vault, structure the folders as
   described, commit and push, and report the vault key back to me once — I will store it.
   Do not write the key to any file in the repository. Also add a pre-push check that fails if the vault key appears in any tracked file, reading the secret from a gitignored path rather than hardcoding it.</blockquote>
-  <p class="small dim">That last sentence matters. We have a <a href="../docs/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+  <p class="small dim">That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../docs/exposed-vault-key.html">If a vault key is exposed</a> — the runbook and the case study</li>
-    <li><a href="../security.html">Security model</a> — the crypto stack and the honest side channels</li>
+    <li><a href="../case-studies/exposed-vault-key.html">If a vault key is exposed</a> — the runbook and the case study</li>
+    <li><a href="../security/index.html">Security model</a> — the crypto stack and the honest side channels</li>
     <li><a href="../deploy/index.html">Self-hosting</a> — when the storage layer has to be yours too</li>
   </ul>
   <div class="pagenav"><a href="professional-services.html">← Professional services</a><a href="health-regulated.html">Health &amp; regulated →</a></div>
@@ -89,7 +90,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.27</a> · <a href="../admin/index.html">engineering</a> · <a href="security-teams.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.0</a> · <a href="../admin/index.html">engineering</a> · <a href="security-teams.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -114,11 +115,12 @@
   <div>
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
-    <a href="../security.html">Security</a>
-    <a href="../why.html">Why does this exist?</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
     <a href="../use-cases/index.html">Use cases</a>
-    <a href="../skills.html">Skills for AI agents</a>
-    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>

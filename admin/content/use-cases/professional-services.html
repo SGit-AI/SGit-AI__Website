@@ -1,0 +1,55 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / Professional services</p>
+  <h1>Working documents with clients</h1>
+  <p class="lead">Legal, M&amp;A, audit, security assessment. The material that most needs versions and review is the material that least belongs readable on a third party's disk.</p>
+
+  <h2>The problem</h2>
+  <p>A engagement produces two bodies of text: the deliverable, and everything behind it — working notes, drafts, the evidence, the arguments that did not survive. Both need history: who changed what, when, and what the previous version said. Both need more than one person in them.</p>
+  <p>The usual tools split badly. A shared drive gives you collaboration and no history worth the name. A private repo gives you history and hands the whole engagement to a host. Email attachments give you neither and produce six versions named <code>final_v3_JS_edits</code>.</p>
+  <p>And then the engagement ends, and you need to hand the client something they can keep and verify — without giving them an account on your systems, and without them needing your tooling to read it later.</p>
+
+  <h2>What sgit does about it</h2>
+  <p>The working set is a vault: full history, branches, diffs, three-way merge, all client-side. The store holds ciphertext under opaque ids, so "where is this hosted" and "who can read this" stop being the same question — including for the host's staff, a subpoena served on the host, or a breach of it.</p>
+  <p>For handover, a <b>read key</b> is derived one way: it decrypts and cannot be turned into write access. You can give a client read access to a specific vault without giving them anything else, and without the host mediating it.</p>
+
+  <h2>The recipe</h2>
+  <p><b>One vault per engagement.</b> Keep the boundary at the vault, not at a folder — it is the unit of access.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit create acme-acquisition</span>
+<span class="d">  Vault key: &lt;passphrase&gt;:&lt;vault-id&gt;   ← password manager, now. There is no reset.</span>
+<span class="p">$</span> <span class="cmd">mkdir deliverable working evidence &amp;&amp; sgit commit -m "structure" &amp;&amp; sgit push</span></pre>
+  <p><b>Review as branches</b>, so the draft in flight is never the draft on the record:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit branch new draft-2 &amp;&amp; sgit push</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --commit &lt;prev&gt;</span>      <span class="d"># exactly what changed since the last version</span>
+<span class="p">$</span> <span class="cmd">sgit resolve --show</span>                     <span class="d"># when two reviewers touch the same file</span></pre>
+  <p><b>Hand over read-only</b> at the end, or throughout:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit dev derive-keys '&lt;vault-key&gt;'</span>    <span class="d"># the read key, derived one way</span>
+<span class="d"># the client, with nothing but that key:</span>
+<span class="p">$</span> <span class="cmd">sgit clone --read-key &lt;read-key&gt; &lt;vault-id&gt; engagement</span>
+<span class="d"># …and a write attempt is refused, which they can verify themselves</span></pre>
+  <p><b>Archive on close.</b> The archive is self-contained ciphertext — keep it wherever your retention policy says, including somewhere you don't trust:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit vault backup --include-key</span>       <span class="d"># store the key separately from the archive</span></pre>
+
+  <h2>Evidence status</h2>
+  <div class="evbox ev-warn"><span class="evtag">PATTERN — not yet evidenced publicly</span>
+  <p>The mechanics above are all shipped commands and are exercised daily; what we do <b>not</b> have is a published professional-services deployment we can point you at. Treat this page as a design that fits the constraints, not as a case study.</p>
+  <p>Two things to weigh before you use it on a real engagement: sgit is in <a href="../docs/limitations.html">beta</a>, and there is no key recovery — if your firm's key management is not already real, this trade-off will find you. If you do run this pattern, we would like to write it up: <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">say so in the open</a>.</p></div>
+
+  <h2>Brief for an agent</h2>
+  <p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+<pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/professional-services.md</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
+  <blockquote class="challenge">Read https://sgit.ai/use-cases/professional-services.md and https://sgit.ai/docs/agents.md.
+  Then set up an engagement vault for this project: create the vault, structure the folders as
+  described, commit and push, and report the vault key back to me once — I will store it.
+  Do not write the key to any file in the repository.</blockquote>
+  <p class="small dim">That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/limitations.html">When NOT to use sgit</a> — read this before committing a client engagement to it</li>
+    <li><a href="../vault/index.html">SG/Vault</a> — the browser app, so a client can read without installing anything</li>
+    <li><a href="../security/index.html">Security model</a> — precisely what the server can and cannot see</li>
+  </ul>
+  <div class="pagenav"><a href="ai-agents.html">← AI agents</a><a href="security-teams.html">Security teams →</a></div>
+</main>

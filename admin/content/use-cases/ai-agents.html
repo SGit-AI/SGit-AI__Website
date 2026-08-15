@@ -1,0 +1,60 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / AI agents</p>
+  <h1>Agent state that isn't the vendor's to read</h1>
+  <p class="lead">An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.</p>
+
+  <h2>The problem</h2>
+  <p>Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor's memory feature — all of which the provider can read.</p>
+  <p>That is fine while the state is "which step am I on". It stops being fine the moment the state contains the client's documents, the security findings, the unreleased code, the personal data. At that point the question is no longer about engineering: it is whether you are permitted to put that material there at all, and the answer often arrives from someone who does not care how good the access controls are.</p>
+  <p>The second half of the problem is coordination. One agent needs durable memory; several agents need <em>shared</em> memory with isolation, a review step, and a way to look at each other's work without merging it. That is version control — and version control's usual answer is a host that reads everything.</p>
+
+  <h2>What sgit does about it</h2>
+  <p>A vault is a folder. The agent clones it, reads and writes files normally, commits, and pushes; the next session pulls and continues. Encryption happens before anything leaves the machine, so the shared state can hold what a third-party database cannot. Each clone also gets a <a href="../docs/two-branch-model.html">private branch</a> whose key never leaves that session, so agents can work concurrently without trampling each other, and meet on a shared named branch.</p>
+
+  <h2>The recipe</h2>
+  <p><b>One agent, many sessions.</b> The whole pattern is two commands at the session boundaries:</p>
+<pre class="shell"><span class="d"># session start — always, before anything else</span>
+<span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span>   <span class="d"># or: sgit pull</span>
+<span class="d"># … the agent works normally: read, write, edit files …</span>
+<span class="d"># session end — always, before the context runs out</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "session 4: drafted the migration plan" &amp;&amp; sgit push</span></pre>
+  <p><b>Write a single file without a working copy</b> — the agent-shaped command, with machine-readable output:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit write notes/findings.md --file ./findings.md \
+      --message "add findings" --push --json</span></pre>
+  <p><b>Several agents, one vault.</b> Give each a named branch; let a human own the merge:</p>
+<pre class="shell"><span class="d"># agent A</span>  <span class="p">$</span> <span class="cmd">sgit branch new research</span>  … <span class="cmd">sgit push</span>
+<span class="d"># agent B</span>  <span class="p">$</span> <span class="cmd">sgit branch new drafting</span>  … <span class="cmd">sgit push</span>
+<span class="d"># either agent, read-only — looking is not merging</span>
+<span class="p">$</span> <span class="cmd">sgit history show &lt;commit&gt;</span>
+<span class="p">$</span> <span class="cmd">sgit history diff --remote</span></pre>
+  <p><b>Big vault, small task.</b> A sparse clone keeps the agent's working set — and its token budget — proportionate to the job:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace --sparse notes/ drafts/</span></pre>
+
+  <h2>Evidence status</h2>
+  <div class="evbox ev-ok"><span class="evtag">PROVEN</span>
+  <p><b>This website is the evidence.</b> It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:</p>
+  <ul>
+    <li>The <a href="../deploy/index.html">Deploy section</a> is maintained by a <em>different</em> team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.</li>
+    <li>The <a href="../briefs/index.html">cross-team briefs</a> and the <a href="../case-studies/exposed-vault-key.html">key-leak incident</a> were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.</li>
+  </ul>
+  <p>Honest limit: n is small, and the agents are supervised by the people who wrote the tool.</p></div>
+
+  <h2>Brief for an agent</h2>
+  <p>Paste this into an agent that has the <a href="../skills/index.html">sgit skill</a> installed, or point it at the markdown directly.</p>
+<pre class="shell"><span class="d"># everything on this site is readable as markdown — no HTML parsing needed</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/use-cases/ai-agents.md</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/llms.txt</span>          <span class="d"># the index of everything</span></pre>
+  <blockquote class="challenge">Read https://sgit.ai/use-cases/ai-agents.md and https://sgit.ai/docs/agents.md.
+  Then set up agent state in a vault for this project: create the vault, structure the folders as
+  described, commit and push, and report the vault key back to me once — I will store it.
+  Do not write the key to any file in the repository. Then write a short SESSION.md describing the clone/pull-at-start and commit/push-at-end protocol so future sessions follow it.</blockquote>
+  <p class="small dim">That last sentence matters. We have a <a href="../case-studies/exposed-vault-key.html">write-up of the day we got it wrong</a>.</p>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../docs/agents.html">Working with AI agents</a> — the full agent-facing surface: <code>--json</code> everywhere, the session pattern, multi-agent collaboration</li>
+    <li><a href="../docs/two-branch-model.html">The two-branch model</a> — why every clone gets a private branch</li>
+    <li><a href="../skills/index.html">Skills</a> — packaged instructions that make an agent competent at this without you explaining it</li>
+  </ul>
+  <div class="pagenav"><a href="index.html">← Use cases</a><a href="professional-services.html">Professional services →</a></div>
+</main>

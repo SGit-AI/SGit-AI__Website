@@ -1,0 +1,32 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Case studies</p>
+  <h1>Case studies</h1>
+  <p class="lead">Things that actually happened, written up while the details were still checkable — including the ones that went wrong. Each is a worked account with the mechanism, the numbers, and what changed as a result.</p>
+
+  <div class="note"><b>What counts as a case study here:</b> a specific event or system, with evidence a reader can verify — commands they can run, numbers we measured, or a live page they can open. Not a pattern, not a design we like the look of. Patterns live in <a href="../use-cases/index.html">use cases</a>, which label their evidence honestly; if a use case ever earns a real deployment, its write-up lands here and the two link to each other.</div>
+
+  <h2>Published</h2>
+  <div class="cards" style="max-width:none;padding:0">
+    <a class="card" href="exposed-vault-key.html"><span class="tag">Incident</span><h3>The day we leaked our own vault key</h3><p>An agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.</p><p class="cardgo">Read the incident &rarr;</p></a>
+    <a class="card" href="live-vault-docs.html"><span class="tag">Architecture</span><h3>A live site whose host cannot read it</h3><p>Two Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.</p><p class="cardgo">Read the architecture &rarr;</p></a>
+  </div>
+
+  <h2>How these are written</h2>
+  <p>Same shape every time, so they stay comparable and so an agent can parse them:</p>
+  <ul>
+    <li><b>What happened</b> — the sequence, in order, with timestamps or commit ids where they exist.</li>
+    <li><b>The mechanism</b> — why it happened, at the level of the object model or the code, not at the level of "human error".</li>
+    <li><b>The numbers</b> — measured, not estimated, and stated even when they are unflattering.</li>
+    <li><b>What changed</b> — the structural fix, and the check that stops it recurring. A write-up with no change attached is a story, not a case study.</li>
+    <li><b>What we still do not know</b> — stated rather than smoothed over.</li>
+  </ul>
+  <p>The incident write-up is the template for the uncomfortable kind. It names the agent that made the mistake, the detection gap that let it survive three commits, and the cost of the fix — because a project that hides that class of mistake is the one to worry about.</p>
+
+  <h2>Related</h2>
+  <ul>
+    <li><a href="../use-cases/index.html">Use cases</a> — the patterns, each with an explicit evidence status</li>
+    <li><a href="../briefs/index.html">Cross-team briefs</a> — what this site's agent hands to other teams, and what they hand back</li>
+    <li><a href="../admin/versions.html">Release history</a> — every change to this site, with the vault commit that carried it</li>
+  </ul>
+  <div class="pagenav"><a href="../index.html">← Home</a><a href="../use-cases/index.html">Use cases →</a></div>
+</main>

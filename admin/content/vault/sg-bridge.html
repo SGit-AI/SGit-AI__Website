@@ -1,0 +1,64 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / The bridge</p>
+  <h1>The <code>window.sg</code> bridge</h1>
+  <p class="lead">Inside App Mode, the host injects a bridge object — <code>window.sg</code> — that gives your page mediated access to the vault and to host capabilities. It installs synchronously while <code>&lt;head&gt;</code> parses, so any inline script can use it. The app frame never holds the vault key: every operation goes through the host, which owns the crypto and the consent UI.</p>
+
+  <h2>Namespaces at a glance</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Namespace</th><th>What it does</th><th>Grant</th></tr>
+    <tr><td><code>sg.vfs</code></td><td><code>read</code> / <code>readText</code> / <code>list</code> / <code>write</code> / host-fulfilled <code>download</code>. Writes cap at ~3&nbsp;MB (<code>EFBIG</code>); reads have no cap</td><td><code>fs.read</code> / <code>fs.write</code></td></tr>
+    <tr><td><code>sg.loadCss</code> / <code>sg.loadJs</code></td><td>Top-level functions (not under <code>vfs</code>) — the sanctioned way to load vault CSS/JS; injects into <code>&lt;head&gt;</code></td><td>rides <code>fs.read</code> — no separate verb</td></tr>
+    <tr><td><code>sg.fs</code></td><td><code>move</code> (grant needed on both paths) / <code>delete</code> / <code>mkdir</code></td><td><code>fs.*</code> + first-use consent</td></tr>
+    <tr><td><code>sg.vault</code></td><td>Cross-vault lifecycle: <code>create(opts)</code> (options object — <code>label</code>, <code>seedFrom</code>, <code>returnKey</code>, <code>custody</code>, <code>link</code>), <code>getKey</code>, <code>openApp</code>, <code>list</code>, <code>unlink</code>, <code>mount</code>, <code>embed</code></td><td><code>vault.*</code>; <code>embed</code> needs none — the key is the capability</td></tr>
+    <tr><td><code>sg.history</code></td><td>Read-only commit history: <code>log</code>, <code>list</code>, <code>read</code>/<code>readText</code> at a commit — works on read-only opens</td><td>no</td></tr>
+    <tr><td><code>sg.sync</code></td><td><code>status</code> / <code>push</code> / <code>pull</code> / <code>refresh</code> against the named branch (<code>sg.git.*</code> survives as a deprecated alias)</td><td>writable vault</td></tr>
+    <tr><td><code>sg.auth</code></td><td>The write gate — the server access token, separate from the encryption key: <code>hasKey</code>, <code>setKey</code>, <code>check</code>, <code>clear</code></td><td>no</td></tr>
+    <tr><td><code>sg.ui</code></td><td>Host toasts (<code>message</code>), quick-look <code>preview</code> (incl. PDFs — in-frame PDF rendering is sandbox-blocked), <code>requestPermission</code></td><td>no</td></tr>
+    <tr><td><code>sg.state</code></td><td>Device-local prefs (64&nbsp;KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit")</td><td>no</td></tr>
+    <tr><td><code>sg.llm</code></td><td><code>available</code> / <code>models</code> / <code>chat</code> (streaming, cancel, image parts) / <code>usage</code> / voice <code>listen</code> — the vault's LLM key stays in the host; your frame never sees it</td><td><code>llm.chat</code> / <code>llm.listen</code> / …</td></tr>
+    <tr><td><code>sg.append</code></td><td>Append-only transport (write verb is <code>write</code>): <code>configure</code>, <code>write</code>, <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code>. Lives outside the commit tree</td><td><code>append.*</code></td></tr>
+    <tr><td><code>sg.on</code> / <code>sg.off</code></td><td>Host events pushed to the app (e.g. <code>append.new-messages</code> on tab focus — the kernel checks; your app does not poll)</td><td><code>host_events</code> allowlist (top-level key)</td></tr>
+    <tr><td><code>sg.app</code></td><td>Read-only context: <code>writable</code>, <code>selfPath</code>, <code>vaultName</code>, <code>vaultId</code>, <code>context</code></td><td>no</td></tr>
+  </table></div>
+
+  <h2>The permission model</h2>
+  <p>Grants live in <code>app.json</code> (preferred location: <code>.vault/app.json</code>; a legacy root <code>app.json</code> is still read). Each permission is <code>true | false | string[]</code>, and path lists are <b>prefix-based, not glob</b>: a trailing <code>/</code> means "this folder and everything under it"; no slash means an exact file. <code>"data/**"</code> is not valid — use <code>"data/"</code>.</p>
+<pre class="shell">{
+  "entry": "index.html",
+  "permissions": {
+    "fs":    { "read": true, "write": ["data/"], "delete": ["data/"] },
+    "vault": { "create": ["runs/"] },
+    "llm":   { "chat": true },
+    "externalLinks": true,
+    "downloads": true
+  },
+  "host_events": ["append.new-messages"]
+}</pre>
+  <ul>
+    <li><b>Mutations are deny-by-default.</b> Writes, deletes, vault lifecycle, append and llm all throw <code>EPERM</code> without a grant. <b>Reads are default-allow today</b> — and are planned to flip to deny-by-default, so declare <code>fs.read</code> anyway.</li>
+    <li><b>Two independent gates on every mutation:</b> the server access token (is the vault writable at all?) <em>and</em> the <code>app.json</code> grant. The manifest is a hard ceiling — an app can only ever do what it declares.</li>
+    <li><b>The floor is never grantable:</b> <code>.vault/**</code> is invisible and untouchable (<code>EPROTECTED</code>) — which is also why an app cannot edit its own manifest: the manifest <em>is</em> the grant.</li>
+    <li><b>Consent is host chrome.</b> Grant-gated verbs raise the host's own confirmation, cached per (vault, app, verb); <code>permissions.consent</code> can tune (never widen) the prompting. Apps can't fake or suppress it.</li>
+    <li><b>LLM calls are budgeted:</b> the host clamps <code>maxTokens</code>, filters models, enforces spend caps (<code>EBUDGET</code>) — call <code>sg.llm.available()</code> before rendering any AI UI, and render costs as estimates (<code>~</code>), never as a bill. Deliberate design: there is no tool-calling loop — <em>the LLM never gets ambient authority over the vault</em>; your app decides what to do with a reply, under its own grants.</li>
+  </ul>
+
+  <h2>Error codes worth branching on</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Code</th><th>Meaning</th></tr>
+    <tr><td><code>EPERM</code></td><td>verb not granted in <code>app.json</code></td></tr>
+    <tr><td><code>EPROTECTED</code></td><td>the floor — <code>.vault/**</code> or the manifest itself</td></tr>
+    <tr><td><code>ECONSENT</code></td><td>user declined the consent prompt</td></tr>
+    <tr><td><code>ENOENT</code></td><td>no such file — the usual cause when <code>loadCss</code>/<code>loadJs</code> "doesn't work" (typo, or written locally but never pushed)</td></tr>
+    <tr><td><code>EFBIG</code></td><td>single write over ~3&nbsp;MB</td></tr>
+    <tr><td><code>EREADONLY</code></td><td>static host or read-only session</td></tr>
+    <tr><td><code>EBUDGET</code> · <code>ENOKEY</code> · <code>EMODEL</code> · <code>EABORT</code></td><td>llm namespace: spend cap, no key configured, model not allowed, cancelled</td></tr>
+  </table></div>
+
+  <h2>Host chrome vs API — two different things</h2>
+  <p><b>Chrome you configure but never call</b> (via <code>app.json</code>'s <code>hud</code> block — <code>mode: full | minimal | hidden | none</code> plus per-button <code>show.*</code> flags): the nav row, Print, the ✨&nbsp;AI chat panel (text and voice, entirely at the host origin — your frame never sees the conversation, the key, or the microphone), the file-activity meter, friendly 404 overlays, and the external-link confirm. <b>API you call, with grants:</b> <code>sg.ui.preview</code>, <code>sg.vfs.download</code>, <code>sg.llm.*</code>.</p>
+  <p>And the <b>sovereignty rail</b> — three things an app can never suppress, whatever its <code>hud</code> config: consent prompts always render; <code>mode:"hidden"</code> keeps a corner exit pill; and the user can force the full HUD back on from their side, at a level app code cannot reach. The HUD config is for app <em>preferences</em>, not app <em>authority</em>.</p>
+
+  <div class="warnbox"><b>Versioning note:</b> this page is an orientation map, verified against the app-shell bridge (v0.2.x, 2026-08). The authoritative, always-current API reference ships with the app-shell source; where they disagree, the source-side reference wins.</div>
+
+  <div class="pagenav"><a href="vault-apps.html">← Building vault apps</a><a href="content-authoring.html">Content authoring →</a></div>
+</main>

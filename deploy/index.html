@@ -21,15 +21,16 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.1.27</a>
-  <a class="nl" href="../why.html">Why</a>
-  <a class="nl" href="../try.html">Try</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.0</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl here" href="../deploy/index.html">Deploy</a>
-  <a class="nl" href="../skills.html">Skills</a>
-  <a class="nl" href="../security.html">Security</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
 </div></nav>
 
@@ -37,7 +38,7 @@
   <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
   <h1>Run your own SG/Send server</h1>
   <p class="lead">Deployment guidance for standing up your own zero-knowledge vault server — Docker, AWS, GCP, Heroku, or a static host. <b>These pages are not part of this website.</b> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
-  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. <a href="how-this-works.html"><b>Full architecture, with diagrams →</b></a></div>
+  <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai — when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. <a href="../case-studies/live-vault-docs.html"><b>Full architecture, with diagrams →</b></a></div>
 </main>
 
 <div class="vdocs">
@@ -49,7 +50,7 @@
 <div class="vdbg vdbg-noanim" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
-  <h3>Vault debug <a class="vdbg-help" href="how-this-works.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <h3>Vault debug <a class="vdbg-help" href="../case-studies/live-vault-docs.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
     <button id="vdbg-reset" type="button">clear list</button>
@@ -71,7 +72,7 @@
     first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
   </div>
   <div class="vdbg-more">
-    <a href="how-this-works.html">How this page works &rarr;</a>
+    <a href="../case-studies/live-vault-docs.html">How this page works &rarr;</a>
     <span>Architecture diagrams, the object model, the cache tiers, and how two Claude&nbsp;Code sessions publish into this vault.</span>
   </div>
   </div>
@@ -128,7 +129,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.1.27</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.0</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -153,11 +154,12 @@
   <div>
     <h4>Project</h4>
     <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
-    <a href="../security.html">Security</a>
-    <a href="../why.html">Why does this exist?</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
     <a href="../use-cases/index.html">Use cases</a>
-    <a href="../skills.html">Skills for AI agents</a>
-    <a href="../briefs.html">Cross-team briefs</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>
