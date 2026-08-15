@@ -127,6 +127,15 @@
     "else if(n.querySelectorAll)n.querySelectorAll('img').forEach(vaultImg);});});})" +
     ".observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src']});" +
     "document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('img').forEach(vaultImg);});" +
+    // Link handling: in-page anchors must scroll manually (assigning location.hash re-navigates
+    // a srcdoc frame), and relative .html links become a navigation request to the host, which
+    // remounts the frame on the new entry — vault apps can cross-link inside the embed.
+    "document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');" +
+    "if(!a)return;var h=a.getAttribute('href');" +
+    "if(/^#/.test(h)){e.preventDefault();var t=document.getElementById(h.slice(1));if(t)t.scrollIntoView({behavior:'smooth'});return;}" +
+    "if(/^(https?:|mailto:|data:|blob:)/.test(h))return;" +
+    "if(/\\.html(#.*)?$/.test(h)){e.preventDefault();parent.postMessage({sgvEmbed:1,nav:h.split('#')[0]},'*');}" +
+    "},true);" +
     "})();";
 
   // ---- mount
@@ -167,6 +176,19 @@
         else reply.error = 'unknown op: ' + m.op;
       } catch (e) { reply.error = String(e && e.message || e); }
       ev.source.postMessage(reply, '*');
+    });
+
+    // Cross-app navigation: a vault app clicked a relative .html link — remount this
+    // element on the new entry. Same vault, same reader, different app.
+    var navigated = false;
+    window.addEventListener('message', function (ev) {
+      if (navigated || ev.source !== frame.contentWindow) return;
+      var m = ev.data;
+      if (m && m.sgvEmbed === 1 && typeof m.nav === 'string' && /\.html$/.test(m.nav)) {
+        navigated = true;
+        el.innerHTML = '';
+        mount(el, Object.assign({}, cfg, { entry: m.nav.replace(/^\.?\//, '') }));
+      }
     });
 
     // The app signals readiness the standard way; we clear the loading note on it,
