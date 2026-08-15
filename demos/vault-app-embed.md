@@ -2,7 +2,7 @@
 
 > The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
 
-*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -68,6 +68,19 @@ Anyone can take those three lines and read this vault — from the CLI (`sgit cl
 | `sg.loadCss` / `sg.loadJs` | works | same read path, injected into the frame |
 | any mutation (`sg.fs.*`, `sg.vault.*`, …) | impossible | the page holds only a read key — there is no write capability to misuse, not even by a bug in the host |
 | reach this page, cookies, storage, top navigation | blocked | `sandbox="allow-scripts"` and an opaque origin; the only channel is postMessage |
+
+## Embedding the full SG/Vault UI — what we found
+
+The embed above is our minimal host. The obvious next step is embedding the *real* SG/Vault interface — the App-Mode chrome, or the vault browser with its FILES / SGIT / SETTINGS rail — so we ran the experiment against the live UI, framed inside a page like this one. Results, honestly:
+
+| Question | Answer | Evidence |
+|---|---|---|
+| Can the vault UI be iframed at all? | **Yes** | no `X-Frame-Options`, no `frame-ancestors` |
+| Does App Mode work inside a cross-origin iframe? | **Yes — fully** | with a valid credential, `app-shell` booted this same Field Notes app under the complete HUD: toolbar, URL bar, read/write badges |
+| Can it open with *only the read key*? | **Not yet** | the loader's format catalogue documents a read-only credential (`<vault_id> <64-hex read_key>`), but the client rejects it — and the CLI's `64hex:vault_id` shorthand gets treated as a passphrase and derives the wrong file ids |
+| Can the SGit view be embedded in isolation? | **No URL for it** | view switching is an in-page event; there is no deep-link that selects a view |
+
+So the one thing between this page and embedding the official UI is the credential format — everything downstream of it already works. Both gaps are now precise asks in [the briefing to the SG/Vault UI team](../briefs/briefing-sgvault-ui-embed.md): honour the documented read-only format end to end, and add a `|view:sgit` deep-link so the commit/ref/tree inspector — the best possible "look inside the encrypted store" demo — can be a page of its own. The moment the first ask lands, this page gains a second embed: the real UI, opened with the same published read key you see above.
 
 ## Honest scope
 

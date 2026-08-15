@@ -28,6 +28,21 @@ We know you already solved the hard part. The SG/Vault web app opens a vault app
 5. **Version stability.** If we load your script cross-origin, your deploys become our deploys. Is there a pinned/versioned URL, or should we vendor a copy and track releases? What is the compatibility contract on the postMessage protocol?
 6. **The `_page.json` renderer.** Some demo vaults are content-authored (markdown + `_page.json`) rather than full vault apps. Is the renderer for that reachable through the same embed path, or is it a separate module?
 
+## Empirical findings (15 Aug) — we ran the experiment so you don't have to
+
+We drove your real UI headless (ciphertext and assets mirrored; same bytes) with vault `4bshby5n` framed inside a third-party page:
+
+1. **The UI is frameable.** No `X-Frame-Options`, no `frame-ancestors` on `dev.vault.sgraph.ai`.
+2. **App Mode works inside a cross-origin iframe, chrome and all.** With a valid credential in the root hash inbox, the frame redirected to `/en-gb/app`, `app-shell` booted our demo app, and the full HUD rendered — Open Vault, AI button, `R1 W0`, the Read-only badge, the URL bar. Screenshot available on request.
+3. **The read-only credential is parsed but not honoured.** `vault-loader-format.js` documents format 4 — `<vault_id> <64-hex read_key>` — but the client rejects it: `[app-shell] init failed: Invalid vault key format. Expected {passphrase}:{vault_id} or …` (the message goes on to offer a legacy credential form). The CLI's `{64-hex}:{vault_id}` shorthand fares worse: the 64-hex is treated as a passphrase, PBKDF2'd, and derives the wrong file ids ("Vault not found: HEAD ref missing" — it looked for `ref-pid-muw-abfd8ea0f1a2`; the read-key-derived ref is `ref-pid-muw-11ea50e81f4d`).
+4. **`/en-gb/vault` (the browser surface with the FILES / SGIT / SETTINGS rail) stalled at "Loading Vault UI — Initialising…" in our harness.** Possibly an artifact of our mirror (a dynamic call we broke) rather than your code — unverified, not "broken". `vault-nav` switches views via a `vault-nav-switch` event, and we found no URL that selects a view.
+
+## The two asks these findings sharpen
+
+**Ask 1 — honour format 4 end to end.** This is now the single blocker: the moment `SGVault` accepts `<vault_id> <64-hex read_key>`, sgit.ai can embed your *actual UI* on the public demo pages with only the published read key — `<iframe src="https://dev.vault.sgraph.ai/#<vault_id>%20<read_key>">` — and everything else already works (finding 2). Our minimal host becomes the fallback rather than the demo.
+
+**Ask 2 — a deep-link that selects a view.** The routing supports `#token|path` and `|app:path`; a `|view:sgit` (and `|view:files`, `|view:settings`) segment would let a page embed the SGit view in isolation — the commit/ref/tree inspector is exactly what a "look inside the encrypted store" demo wants to show, and today it is only reachable by a click inside the frame.
+
 ## The concrete ask
 
 Whichever is cheapest for you, in order of our preference:
