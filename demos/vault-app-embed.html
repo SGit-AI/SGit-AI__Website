@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.16</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.17</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl here" href="../demos/index.html">Demos</a>
@@ -97,14 +97,14 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
   <p>So the credential gap is closed, and the consequence is the point of this whole page: <b>a published read key is now enough to embed the official interface</b> — no account, no token, no write capability anywhere in the chain. And the mechanism got better than the one we first tested: the UI now ships an <b>embed protocol</b>, so the host page hands the key over a validated <code>postMessage</code> handshake instead of a URL fragment. The key never appears in any URL, is never written to the frame's storage (it lives in the frame's memory for the session), the frame proves it is the right recipient before the key is sent, and the host gets structured <code>vault-ready</code> / <code>vault-error</code> events back instead of guessing from load timings.</p>
   <p>Below is exactly that — both surfaces, opened with the same published key printed further up this page, loading on click because they pull the full UI from another origin. The area is deliberately wider than this text column, because the vault browser is a full working surface, and there is a full-screen button for vaults with a big UX.</p>
 
-  <div class="sgv-embed sgv-breakout">
+  <div class="sgv-embed">
     <div class="sgv-btnrow">
       <button class="sgv-embed-load" id="ui-app" type="button">▶ App Mode — the vault's own app</button>
       <button class="sgv-embed-load" id="ui-vault" type="button">▤ Vault browser — FILES / SGIT / SETTINGS</button>
       <button class="sgv-embed-load" id="uifs" type="button" style="display:none">⛶ Full screen</button>
     </div>
     <p class="small dim" style="margin:.5rem 0 0" id="uinote">Loads <code>dev.vault.sgraph.ai</code> in an iframe and completes the embed handshake. Nothing on sgit.ai ever sees more than the published read key it already prints.</p>
-    <iframe class="sgv-embed-frame sgv-embed-ui" id="uiframe" title="The official SG/Vault UI, opened read-only" allow="fullscreen" allowfullscreen style="display:none"></iframe>
+    <iframe class="sgv-embed-frame sgv-embed-ui sgv-breakout" id="uiframe" title="The official SG/Vault UI, opened read-only" allow="fullscreen" allowfullscreen style="display:none"></iframe>
   </div>
   <script>
   (function () {
@@ -213,7 +213,7 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.16</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-app-embed.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.17</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-app-embed.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
