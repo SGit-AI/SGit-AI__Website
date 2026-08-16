@@ -12,13 +12,17 @@
   --shadow:0 1px 2px rgba(28,29,33,.05),0 4px 14px rgba(28,29,33,.04);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* Paint the canvas the site colour: on iOS, pinch-zooming out (or rotating while
+   zoomed) shows the area beyond the layout viewport, which takes the HTML element's
+   background — unset, that area is white and reads as "the site does not fill the
+   screen". */
+html{scroll-behavior:smooth;background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.65}
 a{color:var(--accent-dk);text-decoration:none}
 a:hover{text-decoration:underline}
 h1,h2,h3{line-height:1.2;letter-spacing:-.015em}
 code,pre,kbd{font-family:var(--mono)}
-p code,li code,td code{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:.08em .35em;font-size:.84em;color:#24343f}
+p code,li code,td code,.note code,.doc code{overflow-wrap:anywhere;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:.08em .35em;font-size:.84em;color:#24343f}
 .inner{max-width:var(--measure);margin:0 auto;padding:0 1.1rem}
 .inner-wide{max-width:var(--wide);margin:0 auto;padding:0 1.1rem}
 .dim{color:var(--dim)} .small{font-size:.85rem}
@@ -301,6 +305,7 @@ blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid
    94vw < 100vw keeps the page free of horizontal scroll. Height tracks the viewport. */
 .sgv-breakout{width:min(94vw,1680px);position:relative;left:50%;transform:translateX(-50%)}
 .sgv-btnrow{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.sgv-uiembed-label{font-family:var(--mono);font-size:.85rem;font-weight:600;color:#0f766e;margin:1.4rem 0 0}
 .sgv-embed-frame.sgv-embed-ui{height:clamp(560px,78vh,1050px)}
 .sgv-embed-frame:fullscreen{width:100vw;height:100vh;border-radius:0;background:#0d1117}
 .sgv-embed-frame{border:1px solid var(--line2);border-radius:12px;
