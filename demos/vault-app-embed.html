@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.15</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.16</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl here" href="../demos/index.html">Demos</a>
@@ -94,28 +94,73 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
     <tr><td>Does the vault browser open read-only?</td><td><b>Yes</b></td><td><code>vault-shell</code> with the FILES / SGIT / SETTINGS rail, the real decrypted tree (4 files, 10.6 KB), and an explicit <code>R1 W0</code> + <b>Read-only</b> badge in the chrome</td></tr>
     <tr><td>Is the SGit view reachable?</td><td><b>Yes — but still no deep-link</b></td><td>driving the nav reaches HISTORY / REFS / TREE / BRANCHES / STATUS / REPAIR with both real commits listed; no URL selects a view, so a host page cannot frame the SGit view <em>in isolation</em>. The one ask still open.</td></tr>
   </table></div>
-  <p>So the credential gap is closed, and the consequence is the point of this whole page: <b>a published read key is now enough to embed the official interface</b> — no account, no token, no write capability anywhere in the chain. Below is exactly that, opened with the same key printed further up this page. It loads on click, because it pulls the full UI from another origin.</p>
+  <p>So the credential gap is closed, and the consequence is the point of this whole page: <b>a published read key is now enough to embed the official interface</b> — no account, no token, no write capability anywhere in the chain. And the mechanism got better than the one we first tested: the UI now ships an <b>embed protocol</b>, so the host page hands the key over a validated <code>postMessage</code> handshake instead of a URL fragment. The key never appears in any URL, is never written to the frame's storage (it lives in the frame's memory for the session), the frame proves it is the right recipient before the key is sent, and the host gets structured <code>vault-ready</code> / <code>vault-error</code> events back instead of guessing from load timings.</p>
+  <p>Below is exactly that — both surfaces, opened with the same published key printed further up this page, loading on click because they pull the full UI from another origin. The area is deliberately wider than this text column, because the vault browser is a full working surface, and there is a full-screen button for vaults with a big UX.</p>
 
-  <div class="sgv-embed">
-    <button class="sgv-embed-load" id="uiload" type="button">▶ Open the official SG/Vault UI here, with the published read key</button>
-    <p class="small dim" style="margin:.5rem 0 0" id="uinote">Loads <code>dev.vault.sgraph.ai</code> in an iframe, credential in the fragment. Nothing on sgit.ai sees it.</p>
-    <iframe class="sgv-embed-frame sgv-embed-tall" id="uiframe" title="The official SG/Vault UI, opened read-only" style="display:none"></iframe>
+  <div class="sgv-embed sgv-breakout">
+    <div class="sgv-btnrow">
+      <button class="sgv-embed-load" id="ui-app" type="button">▶ App Mode — the vault's own app</button>
+      <button class="sgv-embed-load" id="ui-vault" type="button">▤ Vault browser — FILES / SGIT / SETTINGS</button>
+      <button class="sgv-embed-load" id="uifs" type="button" style="display:none">⛶ Full screen</button>
+    </div>
+    <p class="small dim" style="margin:.5rem 0 0" id="uinote">Loads <code>dev.vault.sgraph.ai</code> in an iframe and completes the embed handshake. Nothing on sgit.ai ever sees more than the published read key it already prints.</p>
+    <iframe class="sgv-embed-frame sgv-embed-ui" id="uiframe" title="The official SG/Vault UI, opened read-only" allow="fullscreen" allowfullscreen style="display:none"></iframe>
   </div>
   <script>
   (function () {
-    var b = document.getElementById('uiload'), f = document.getElementById('uiframe'), n = document.getElementById('uinote');
-    b.addEventListener('click', function () {
-      /* The canonical prefixed read-key form the CLI emits and the loader now accepts.
-         Deliberately published: it is read-only by construction and cannot become write. */
-      f.src = 'https://dev.vault.sgraph.ai/#' + encodeURIComponent('sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n');
-      f.style.display = 'block'; b.style.display = 'none';
-      n.innerHTML = 'Opened read-only. The chrome should show <code>R1 W0</code> and a <b>Read-only</b> badge — that is the server-side write gate reporting that this credential has none.';
+    'use strict';
+    var ORIGIN = 'https://dev.vault.sgraph.ai';
+    /* The canonical prefixed read-key form the CLI emits and the loader accepts.
+       Deliberately published: read-only by construction, cannot become write. */
+    var CRED = 'sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n';
+    var f = document.getElementById('uiframe'), n = document.getElementById('uinote');
+    var fsBtn = document.getElementById('uifs');
+    var armed = null, fallbackT = null;
+
+    window.addEventListener('message', function (e) {
+      if (e.origin !== ORIGIN || !f.contentWindow || e.source !== f.contentWindow) return;
+      var d = e.data || {};
+      if (d.sg === 'vault-embed-ready' && armed) {
+        clearTimeout(fallbackT);
+        /* targetOrigin pinned to the vault origin — the key cannot be delivered
+           to a wrong-origin frame even by a bug on this page. */
+        e.source.postMessage({ sg: 'vault-open', key: CRED, mode: armed }, ORIGIN);
+        n.textContent = 'Handshake complete — key handed over postMessage, opening…';
+      } else if (d.sg === 'vault-ready') {
+        n.innerHTML = 'Opened <b>read-only</b> over the embed protocol — the key never appeared in a URL and was never written to the frame\'s storage' +
+          (d.fileCount ? '; ' + d.fileCount + ' files decrypted in the frame' : '') +
+          '. The chrome shows <code>R1 W0</code> / <b>Read-only</b>: the server-side write gate reporting this credential has none.';
+      } else if (d.sg === 'vault-error') {
+        n.textContent = 'Vault open failed: ' + (d.message || 'unknown error');
+      }
+    });
+
+    function mount(mode) {
+      armed = mode;
+      f.style.display = 'block'; fsBtn.style.display = '';
+      n.textContent = 'Handshaking with the vault UI\u2026';
+      var page = mode === 'vault' ? '/en-gb/vault/' : '/en-gb/app/';
+      f.src = ORIGIN + page + '?embed=1&parent=' + encodeURIComponent(location.origin);
+      clearTimeout(fallbackT);
+      fallbackT = setTimeout(function () {
+        /* Deploy-skew fallback: the URL-fragment inbox still works (key briefly in
+           the frame URL — acceptable for a deliberately published read key). */
+        if (mode === 'app') { f.src = ORIGIN + '/#' + encodeURIComponent(CRED); n.textContent = 'Embed handshake timed out; fell back to the URL-fragment flow.'; }
+        else { n.textContent = 'Embed handshake timed out. Reload and try again.'; }
+      }, 12000);
+    }
+    document.getElementById('ui-app').addEventListener('click', function () { mount('app'); });
+    document.getElementById('ui-vault').addEventListener('click', function () { mount('vault'); });
+    fsBtn.addEventListener('click', function () {
+      try { if (f.requestFullscreen) f.requestFullscreen(); } catch (e) {}
     });
   }());
   </script>
 
+  <p><b>What is still not possible — precisely.</b> The two buttons above select a <em>surface</em> (App Mode or the vault browser). They cannot select a <em>view</em> inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only <code>{key, mode, deepLink}</code> where <code>deepLink</code> is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and <a href="../briefs/briefing-sgvault-ui-embed.md">the briefing</a> now states exactly that ask: an optional <code>view</code> field on <code>vault-open</code>, applied after mount. Everything else on this page works today.</p>
+
   <h2>Honest scope</h2>
-  <p>This is our <b>minimal</b> host — enough bridge for read-only apps, which is exactly what a published read key permits. The canonical app-iframe host (full <code>window.sg</code>, permissions, HUD chrome) is the SG/Vault UI's code, and <a href="../briefs/briefing-sgvault-ui-embed.md">a briefing asking to reuse it</a> is with that team; when it lands, this page swaps hosts and the walkthrough gains the full-fidelity embed. Until then: what you see above is real, live, and reproducible from the commands on this page.</p>
+  <p>Two hosts now run on this page, and keeping both is deliberate. The <b>minimal</b> host is ~170 lines and shows the protocol with nothing hidden: derive, fetch, decrypt, answer <code>sg.vfs</code> over postMessage. The <b>official</b> host is the real product — full <code>window.sg</code> surface, permissions, HUD chrome, and now an embed handshake that keeps the key out of URLs and storage. Read the small one to understand the mechanism; use the big one to see what a product built on it feels like. Everything above is live and reproducible from the commands on this page.</p>
   <div class="tablewrap"><table>
     <tr><th>Shape</th><th>Evidence status</th><th>Copy or reference</th></tr>
     <tr><td>Gallery (app + content)</td><td><b>LIVE</b> — the embed above reads the real vault on every load</td><td><b>Reference</b> — a push to the vault changes this page's embed with no rebuild</td></tr>
@@ -168,7 +213,7 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.15</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-app-embed.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.16</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-app-embed.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

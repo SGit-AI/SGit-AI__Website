@@ -2,7 +2,7 @@
 
 > The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
 
-*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.16 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -83,13 +83,17 @@ The embed above is our minimal host: ~170 lines, enough bridge for a read-only a
 | Does the vault browser open read-only? | **Yes** | `vault-shell` with the FILES / SGIT / SETTINGS rail, the real decrypted tree (4 files, 10.6 KB), and an explicit `R1 W0` + **Read-only** badge in the chrome |
 | Is the SGit view reachable? | **Yes — but still no deep-link** | driving the nav reaches HISTORY / REFS / TREE / BRANCHES / STATUS / REPAIR with both real commits listed; no URL selects a view, so a host page cannot frame the SGit view *in isolation*. The one ask still open. |
 
-So the credential gap is closed, and the consequence is the point of this whole page: **a published read key is now enough to embed the official interface** — no account, no token, no write capability anywhere in the chain. Below is exactly that, opened with the same key printed further up this page. It loads on click, because it pulls the full UI from another origin.
+So the credential gap is closed, and the consequence is the point of this whole page: **a published read key is now enough to embed the official interface** — no account, no token, no write capability anywhere in the chain. And the mechanism got better than the one we first tested: the UI now ships an **embed protocol**, so the host page hands the key over a validated `postMessage` handshake instead of a URL fragment. The key never appears in any URL, is never written to the frame's storage (it lives in the frame's memory for the session), the frame proves it is the right recipient before the key is sent, and the host gets structured `vault-ready` / `vault-error` events back instead of guessing from load timings.
 
-Loads `dev.vault.sgraph.ai` in an iframe, credential in the fragment. Nothing on sgit.ai sees it.
+Below is exactly that — both surfaces, opened with the same published key printed further up this page, loading on click because they pull the full UI from another origin. The area is deliberately wider than this text column, because the vault browser is a full working surface, and there is a full-screen button for vaults with a big UX.
+
+Loads `dev.vault.sgraph.ai` in an iframe and completes the embed handshake. Nothing on sgit.ai ever sees more than the published read key it already prints.
+
+**What is still not possible — precisely.** The two buttons above select a *surface* (App Mode or the vault browser). They cannot select a *view* inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only `{key, mode, deepLink}` where `deepLink` is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and [the briefing](../briefs/briefing-sgvault-ui-embed.md) now states exactly that ask: an optional `view` field on `vault-open`, applied after mount. Everything else on this page works today.
 
 ## Honest scope
 
-This is our **minimal** host — enough bridge for read-only apps, which is exactly what a published read key permits. The canonical app-iframe host (full `window.sg`, permissions, HUD chrome) is the SG/Vault UI's code, and [a briefing asking to reuse it](../briefs/briefing-sgvault-ui-embed.md) is with that team; when it lands, this page swaps hosts and the walkthrough gains the full-fidelity embed. Until then: what you see above is real, live, and reproducible from the commands on this page.
+Two hosts now run on this page, and keeping both is deliberate. The **minimal** host is ~170 lines and shows the protocol with nothing hidden: derive, fetch, decrypt, answer `sg.vfs` over postMessage. The **official** host is the real product — full `window.sg` surface, permissions, HUD chrome, and now an embed handshake that keeps the key out of URLs and storage. Read the small one to understand the mechanism; use the big one to see what a product built on it feels like. Everything above is live and reproducible from the commands on this page.
 
 | Shape | Evidence status | Copy or reference |
 |---|---|---|

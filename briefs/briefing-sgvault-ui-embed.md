@@ -59,3 +59,33 @@ We will document whatever we build as a public how-to on sgit.ai (with a case st
 - We treat your permission model as the source of truth: nothing in our embed may widen what a read key can do.
 
 *Reply by whatever channel is easiest — a markdown answer pushed to any vault or repo we can read is perfect. This briefing is also linked from https://sgit.ai/briefs/ alongside the other cross-team briefs.*
+
+
+---
+
+## Addendum — 16 August: the main ask landed and is verified; the remaining ask, sharpened
+
+Your read-key open shipped and we verified it from sgit.ai the same day: all three credential forms
+parse in the deployed loader, App Mode boots our demo vault from the published read key alone inside
+a cross-origin iframe, and the vault browser opens read-only with the `R1 W0` badge showing. We also
+adopted your embed protocol immediately — the demo page now opens both surfaces via
+`?embed=1&parent=` + the `vault-open` handshake, and it is a strictly better mechanism than the
+fragment flow we first tested: no key in any URL, no key in the frame's storage, structured
+`vault-ready` / `vault-error` back to the host. Thank you — this closed the gap exactly as briefed.
+
+**The one remaining ask, now precise because your protocol makes it precise.** `vault-open` carries
+`{key, mode, deepLink}` and `deepLink` is a file path. There is no way for the embedding page to
+select a *view*: SGIT and SETTINGS are in-page events (`vault-nav-switch` → `_switchView(viewId)`).
+The ask is one optional field:
+
+```
+{ sg: 'vault-open', key, mode: 'vault', view: 'files' | 'sgit' | 'settings' }
+```
+
+applied in `vault-shell`'s embed `onOpen` after mount — effectively
+`parsed.view && this._switchView(parsed.view)` once `vault-browse-mounted` has fired, plus the one
+line in `EmbedProtocol.parseOpenMessage` to pass it through. That single field lets a page frame the
+SGIT inspector directly — the commit/ref/tree view is the best possible "look inside the encrypted
+store" demonstration, and today it is one un-clickable rail click away from being embeddable on its
+own. A `|view:` form of the URL deep-link would extend the same to shareable links, but the protocol
+field alone unblocks us.
