@@ -2,7 +2,7 @@
 
 > A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page.
 
-*Source: <https://sgit.ai/vaults/algarve-photos.html> · site v0.2.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vaults/algarve-photos.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,6 +19,8 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 ## See it live, here
 
+Both surfaces open automatically below. You can also [**open the gallery app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) — the read key travels in the URL fragment, which the vault UI accepts directly.
+
 ## What this vault demonstrates
 
 | Feature | How this vault uses it |
@@ -28,6 +30,72 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 | Content + narrative | `NARRATIVE.md` carries the written week; `gallery.json` carries per-photo titles, captions, chapters — edit the JSON, push, and the gallery updates |
 | Deep history | 36 commits of organising, captioning and re-cutting — open the SGIT view above and read the story of the story |
 | Owner secrets done right | `.vault/owner/readonly-tokens.json` decrypts to *further ciphertext* — owner bookkeeping is double-encrypted under a key the read key cannot reach |
+
+## What is going on here, step by step
+
+The two embeds above are the real product, which makes them easy to scroll past without noticing what is unusual. Each row below points at one thing and says why it matters. Every screenshot is of this vault, driven by a script that opens it with the **published read key** and nothing else — the same credential printed at the top of this page.
+
+the app itself
+
+### The app is real HTML, not a viewer
+
+The gallery is the vault's own `index.html` — an editorial layout with chapters, pull quotes and photo rows, written as ordinary HTML and CSS. Nothing renders it into a fixed "photo album" template: whatever the author wrote is what runs.
+
+Each photograph here arrived as ciphertext, was decrypted in the browser, and was handed to the page as a `blob:` URL. The server never saw a picture — it served opaque bytes and has no idea this is a gallery.
+
+A chapter row: two decrypted photographs, laid out by the vault’s own CSS.
+
+interaction
+
+### Click a photo and the app takes over
+
+Because the app is real HTML, it can behave like any web app. Clicking a photograph opens the gallery's own lightbox: a larger image, the caption and chapter from `gallery.json`, and arrows to move through all twenty.
+
+This is the part that surprises people most — an encrypted store is usually a download-and-open experience. Here the interaction is authored *inside* the vault and the reader never leaves the page.
+
+The lightbox: caption, chapter, position (1 / 20), and prev/next arrows.
+
+watch it decrypt
+
+### A pane that shows the decryption happening
+
+The app frame ships with a debug pane, and its **Vault** tab is the timeline of the open: the vault unlocked, the file tree loaded, `app.json` found, the app iframe ready — each with the milliseconds it took.
+
+Read the key line: the vault opens from a key that is shown truncated, and the file tree — *seventy files* — is built in the browser from encrypted directory objects. Filenames are encrypted too, so even the folder structure is something the client reconstructs rather than something the server reports.
+
+The Vault tab: each step of the open, with timings.
+
+the sg bridge
+
+### And a console you can type into
+
+The **REPL** tab is a small console over the `sg.*` bridge — the same API the app itself uses. `vfs.list` walks the decrypted tree, `vfs.read` prints a text file.
+
+Note what the help text says about writing: `vfs.write` and `vfs.delete` are marked *writable vaults only*. This page's key is read-only, so those commands are refused — not hidden by the interface, but impossible, because no write capability exists anywhere in the chain.
+
+vfs.list at the vault root, then inside /photos — typed live, answered from decrypted objects.
+
+transparency
+
+### The whole vault is browsable — including its source
+
+The second surface on this page is the vault browser. It shows the real tree: `photos/originals/` with its twenty WebP files, the thumbnails and web-sized copies beside them, and the app's own files.
+
+Open `index.html` and press **Source** and you are reading the gallery's code — the same 29.9 KB the app boots from. A published vault is transparent in a way a hosted gallery rarely is: the reader can inspect exactly what is running.
+
+photos/originals expanded, with index.html open in source view.
+
+version control
+
+### And it is version control, not just storage
+
+The **SGIT** tab is why this is sgit rather than a folder in the cloud. Every commit that built this gallery is here — thirty-six of them — with real object ids, dates and branch labels, and `tree` and `diff` links per commit.
+
+This is the vault's history, read from the same encrypted objects, with the same read key. Nothing was re-uploaded to make it browsable: the history *is* the storage.
+
+The SGit view: the commit history of the gallery, read-only.
+
+**How these pictures were made.** They are not mock-ups and they are not hand-cropped. `admin/build/capture_shots.mjs` opens this vault in a real browser with the published read key, performs the navigation each row describes — scroll to a chapter, click a photograph, open the debug pane, switch to the REPL and type `vfs.list`, expand `photos/originals`, switch to the SGit view — and crops the result. Re-running it after the vault changes regenerates every image. The tool takes a read key, so it can document any published vault the same way.
 
 ## The audit, honestly
 

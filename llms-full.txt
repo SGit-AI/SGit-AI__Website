@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.21). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.22). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -425,6 +425,8 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 ## See it live, here
 
+Both surfaces open automatically below. You can also [**open the gallery app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) — the read key travels in the URL fragment, which the vault UI accepts directly.
+
 ## What this vault demonstrates
 
 | Feature | How this vault uses it |
@@ -434,6 +436,72 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 | Content + narrative | `NARRATIVE.md` carries the written week; `gallery.json` carries per-photo titles, captions, chapters — edit the JSON, push, and the gallery updates |
 | Deep history | 36 commits of organising, captioning and re-cutting — open the SGIT view above and read the story of the story |
 | Owner secrets done right | `.vault/owner/readonly-tokens.json` decrypts to *further ciphertext* — owner bookkeeping is double-encrypted under a key the read key cannot reach |
+
+## What is going on here, step by step
+
+The two embeds above are the real product, which makes them easy to scroll past without noticing what is unusual. Each row below points at one thing and says why it matters. Every screenshot is of this vault, driven by a script that opens it with the **published read key** and nothing else — the same credential printed at the top of this page.
+
+the app itself
+
+### The app is real HTML, not a viewer
+
+The gallery is the vault's own `index.html` — an editorial layout with chapters, pull quotes and photo rows, written as ordinary HTML and CSS. Nothing renders it into a fixed "photo album" template: whatever the author wrote is what runs.
+
+Each photograph here arrived as ciphertext, was decrypted in the browser, and was handed to the page as a `blob:` URL. The server never saw a picture — it served opaque bytes and has no idea this is a gallery.
+
+A chapter row: two decrypted photographs, laid out by the vault’s own CSS.
+
+interaction
+
+### Click a photo and the app takes over
+
+Because the app is real HTML, it can behave like any web app. Clicking a photograph opens the gallery's own lightbox: a larger image, the caption and chapter from `gallery.json`, and arrows to move through all twenty.
+
+This is the part that surprises people most — an encrypted store is usually a download-and-open experience. Here the interaction is authored *inside* the vault and the reader never leaves the page.
+
+The lightbox: caption, chapter, position (1 / 20), and prev/next arrows.
+
+watch it decrypt
+
+### A pane that shows the decryption happening
+
+The app frame ships with a debug pane, and its **Vault** tab is the timeline of the open: the vault unlocked, the file tree loaded, `app.json` found, the app iframe ready — each with the milliseconds it took.
+
+Read the key line: the vault opens from a key that is shown truncated, and the file tree — *seventy files* — is built in the browser from encrypted directory objects. Filenames are encrypted too, so even the folder structure is something the client reconstructs rather than something the server reports.
+
+The Vault tab: each step of the open, with timings.
+
+the sg bridge
+
+### And a console you can type into
+
+The **REPL** tab is a small console over the `sg.*` bridge — the same API the app itself uses. `vfs.list` walks the decrypted tree, `vfs.read` prints a text file.
+
+Note what the help text says about writing: `vfs.write` and `vfs.delete` are marked *writable vaults only*. This page's key is read-only, so those commands are refused — not hidden by the interface, but impossible, because no write capability exists anywhere in the chain.
+
+vfs.list at the vault root, then inside /photos — typed live, answered from decrypted objects.
+
+transparency
+
+### The whole vault is browsable — including its source
+
+The second surface on this page is the vault browser. It shows the real tree: `photos/originals/` with its twenty WebP files, the thumbnails and web-sized copies beside them, and the app's own files.
+
+Open `index.html` and press **Source** and you are reading the gallery's code — the same 29.9 KB the app boots from. A published vault is transparent in a way a hosted gallery rarely is: the reader can inspect exactly what is running.
+
+photos/originals expanded, with index.html open in source view.
+
+version control
+
+### And it is version control, not just storage
+
+The **SGIT** tab is why this is sgit rather than a folder in the cloud. Every commit that built this gallery is here — thirty-six of them — with real object ids, dates and branch labels, and `tree` and `diff` links per commit.
+
+This is the vault's history, read from the same encrypted objects, with the same read key. Nothing was re-uploaded to make it browsable: the history *is* the storage.
+
+The SGit view: the commit history of the gallery, read-only.
+
+**How these pictures were made.** They are not mock-ups and they are not hand-cropped. `admin/build/capture_shots.mjs` opens this vault in a real browser with the published read key, performs the navigation each row describes — scroll to a chapter, click a photograph, open the debug pane, switch to the REPL and type `vfs.list`, expand `photos/originals`, switch to the SGit view — and crops the result. Re-running it after the vault changes regenerates every image. The tool takes a read key, so it can document any published vault the same way.
 
 ## The audit, honestly
 
@@ -3041,11 +3109,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.21**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.22**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.21 | 2026-08-16 | this release | Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks. |
+| v0.2.22 | 2026-08-16 | this release | The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than , because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts. |
+| v0.2.21 | 2026-08-16 | obj-cas-imm-10164a7a31ab | Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks. |
 | v0.2.20 | 2026-08-16 | obj-cas-imm-23e6ea08a77d | Both surfaces at once, reader-requested: on the vault pages, App Mode and the vault browser now each open in their OWN frame, stacked — the app first, the FILES/SGIT/SETTINGS browser under it — instead of one frame the buttons fought over. The second open is fast by design and the component says so: the encrypted objects are already in the client's cache from the first surface, so the second mostly decrypts rather than fetches — the caching story demonstrating itself. Each frame carries its own status line from its own handshake (one listener, replies routed by which frame sent them). The Full screen button is gone from these pages — with each surface getting a full-width, viewport-height frame of its own, it earned nothing. Verified headless: both surfaces open (5.0s through the slow test mirror, faster live), app above browser, two independent vault-ready events. |
 | v0.2.19 | 2026-08-16 | obj-cas-imm-2773e0dfba35 | The site starts doing the thing it was building toward: publishing vaults. New /vaults/ section — an index of every read key this site has deliberately published, and one page per vault (five at launch: Field Notes, Strategy Maps, Deploy Docs, the Catalogue itself, and — new — Algarve · May 2026) with a real description, the features that vault exercises, what the shape is good for, the derived facts, the key as a copyable sgit_rk1_ credential with a CLI command and an open-in-the-official-UI link, and the vault RUNNING LIVE in the page via the reusable embed component (assets/vault-ui-embed.js — the two-surface embed-protocol host from the demo page, now attribute-driven; App Mode hidden for vaults without an app). Pages load the component contract-compliantly (fetch+eval, no script src — every page must survive being served from inside a vault). The Algarve vault is the first entry processed through the catalogue's submission queue as designed: read key supplied in chat, everything else derived — 71 files, 29 MB (60 WebP photos in originals/web/thumbs), 36 commits, auto-opening gallery app with a chaptered narrative. Its pre-publication audit is published on the page per the rules: one finding (a live delete_auth token in public-preview bookkeeping — narrow scope, the owner advised to rotate) and one counterpoint worth showcasing (the same vault's readonly-tokens bookkeeping decrypts to further ciphertext: owner secrets double-encrypted, the pattern that fixes the finding class). Catalogue vault updated in the same breath — new entry, trip-gallery-1 ticked off the awaiting list (7 remain) — and /catalogue/ picked it up with no site deploy, which is that design working. |
 | v0.2.18 | 2026-08-16 | obj-cas-imm-68578f7b1bf4 | The tag pipeline's first contact with a real GitHub rule, fixed within the hour. v0.2.17's run DID tag itself — the first CI-authored tag — but the historical backfill push was rejected wholesale: a workflow's GITHUB_TOKEN cannot push any ref pointing at a commit whose tree carries a different version of a workflow file, and the `workflows` permission that would allow it is not grantable to that token. Every pre-v0.2.17 release predates the current deploy-pages.yml, so all 33 backfill tags bounced — and because the tag job failed, the deploy was skipped and v0.2.17 never reached the live site (this release carries its changes out). The fix splits the pushes by what they are: THIS release's tag at HEAD is load-bearing and fails the job if rejected (it never should be — HEAD's workflow blob matches the branch, which is why v0.2.17's own tag went through); the historical backfill is best-effort per tag, warns per rejection, and emits one notice with the single human command that completes the set — `git push origin --tags` from any workflows-scoped credential. Once a human has done that once, the backfill loop becomes a chain of no-ops. Lesson recorded for the case-studies pile: the same both-remotes discipline that made CI verify-and-tag instead of commit-and-tag also meant the failure cost nothing but a skipped deploy — no bump commit was stranded on one side of the two-VCS split. |

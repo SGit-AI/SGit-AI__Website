@@ -2,7 +2,7 @@
 
 > How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
 
-*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
