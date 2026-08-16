@@ -139,7 +139,13 @@ const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, 
   // server (24 lowercase-alnum : 4-24 lowercase-alnum = the real key shape). This is a PATTERN,
   // not a secret — never hardcode an actual passphrase here (that would be the leak this guards
   // against). The live vault's own passphrase is caught by the derived scan below.
-  /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/];
+  /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/,
+  // the sgit CLI's canonical WRITE-credential prefix. New CLI output prints keys prefixed, so
+  // a pasted key now arrives self-labelled — which makes this a cheap, high-signal tripwire:
+  // sgit_vk1_ marks a vault key by construction and must never reach a tracked file.
+  // Its read-only sibling sgit_rk1_ is deliberately NOT banned — we publish one on the demos
+  // page, because a read key is a capability we hand out on purpose.
+  /sgit_vk1_/];
 
 // 5b. the passphrase tripwire, done safely: read the secret from the gitignored local/ tier
 // (never present it in this tracked file) and scan the tree for it. Skips when local/ is absent

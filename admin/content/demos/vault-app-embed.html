@@ -45,16 +45,36 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
     <tr><td>reach this page, cookies, storage, top navigation</td><td>blocked</td><td><code>sandbox="allow-scripts"</code> and an opaque origin; the only channel is postMessage</td></tr>
   </table></div>
 
-  <h2>Embedding the full SG/Vault UI — what we found</h2>
-  <p>The embed above is our minimal host. The obvious next step is embedding the <em>real</em> SG/Vault interface — the App-Mode chrome, or the vault browser with its FILES / SGIT / SETTINGS rail — so we ran the experiment against the live UI, framed inside a page like this one. Results, honestly:</p>
+  <h2>Embedding the full SG/Vault UI — the gap closed</h2>
+  <p>The embed above is our minimal host: ~170 lines, enough bridge for a read-only app. The obvious next step was embedding the <em>real</em> SG/Vault interface — App-Mode chrome, or the vault browser with its FILES / SGIT / SETTINGS rail. When we first ran that experiment it worked in every respect but one: the credential. The loader documented a read-only format but the client rejected it, and the CLI's <code>64hex:vault_id</code> shorthand was parsed as a passphrase, PBKDF2'd, and derived the wrong file ids (we measured <code>abfd8ea0f1a2</code> where the vault's real ref id is <code>11ea50e81f4d</code> — hence "Vault not found"). We filed both as asks.</p>
+  <p><b>They landed.</b> The deployed loader now detects a read-key credential as <b>format 6</b> — <code>&lt;64-hex read_key&gt;:&lt;vault_id&gt;</code>, matching what <code>sgit clone</code> already accepted — and, critically, <em>checks it before the passphrase formats</em>, which is exactly the ordering bug we hit. It also strips the sgit CLI's canonical key prefixes before detection, so a key pasted straight from new CLI output is understood — including <code>sgit_rk1_</code>, the read-only one, which is the form we publish. (Its write-credential sibling is the prefix our own build refuses to let onto this site at all: the release validator treats that string as a leak and fails the build, which is why you will not find it written out here.) Re-running the same experiment against the live build:</p>
   <div class="tablewrap"><table>
     <tr><th>Question</th><th>Answer</th><th>Evidence</th></tr>
     <tr><td>Can the vault UI be iframed at all?</td><td><b>Yes</b></td><td>no <code>X-Frame-Options</code>, no <code>frame-ancestors</code></td></tr>
-    <tr><td>Does App Mode work inside a cross-origin iframe?</td><td><b>Yes — fully</b></td><td>with a valid credential, <code>app-shell</code> booted this same Field Notes app under the complete HUD: toolbar, URL bar, read/write badges</td></tr>
-    <tr><td>Can it open with <em>only the read key</em>?</td><td><b>Not yet</b></td><td>the loader's format catalogue documents a read-only credential (<code>&lt;vault_id&gt; &lt;64-hex read_key&gt;</code>), but the client rejects it — and the CLI's <code>64hex:vault_id</code> shorthand gets treated as a passphrase and derives the wrong file ids</td></tr>
-    <tr><td>Can the SGit view be embedded in isolation?</td><td><b>No URL for it</b></td><td>view switching is an in-page event; there is no deep-link that selects a view</td></tr>
+    <tr><td>Does App Mode work inside a cross-origin iframe?</td><td><b>Yes — fully</b></td><td>the complete HUD: toolbar, URL bar, read/write badges</td></tr>
+    <tr><td>Can it open with <em>only the read key</em>?</td><td><b>Yes — now</b></td><td>all three forms parse in the deployed loader (<code>hex:id</code>, <code>sgit_rk1_hex:id</code>, and the legacy <code>id hex</code>); App Mode booted this Field Notes app from the published read key alone, six SVG studies rendered, the app's own status line reading <code>content.json</code> over the bridge</td></tr>
+    <tr><td>Does the vault browser open read-only?</td><td><b>Yes</b></td><td><code>vault-shell</code> with the FILES / SGIT / SETTINGS rail, the real decrypted tree (4 files, 10.6 KB), and an explicit <code>R1 W0</code> + <b>Read-only</b> badge in the chrome</td></tr>
+    <tr><td>Is the SGit view reachable?</td><td><b>Yes — but still no deep-link</b></td><td>driving the nav reaches HISTORY / REFS / TREE / BRANCHES / STATUS / REPAIR with both real commits listed; no URL selects a view, so a host page cannot frame the SGit view <em>in isolation</em>. The one ask still open.</td></tr>
   </table></div>
-  <p>So the one thing between this page and embedding the official UI is the credential format — everything downstream of it already works. Both gaps are now precise asks in <a href="../briefs/briefing-sgvault-ui-embed.md">the briefing to the SG/Vault UI team</a>: honour the documented read-only format end to end, and add a <code>|view:sgit</code> deep-link so the commit/ref/tree inspector — the best possible "look inside the encrypted store" demo — can be a page of its own. The moment the first ask lands, this page gains a second embed: the real UI, opened with the same published read key you see above.</p>
+  <p>So the credential gap is closed, and the consequence is the point of this whole page: <b>a published read key is now enough to embed the official interface</b> — no account, no token, no write capability anywhere in the chain. Below is exactly that, opened with the same key printed further up this page. It loads on click, because it pulls the full UI from another origin.</p>
+
+  <div class="sgv-embed">
+    <button class="sgv-embed-load" id="uiload" type="button">▶ Open the official SG/Vault UI here, with the published read key</button>
+    <p class="small dim" style="margin:.5rem 0 0" id="uinote">Loads <code>dev.vault.sgraph.ai</code> in an iframe, credential in the fragment. Nothing on sgit.ai sees it.</p>
+    <iframe class="sgv-embed-frame sgv-embed-tall" id="uiframe" title="The official SG/Vault UI, opened read-only" style="display:none"></iframe>
+  </div>
+  <script>
+  (function () {
+    var b = document.getElementById('uiload'), f = document.getElementById('uiframe'), n = document.getElementById('uinote');
+    b.addEventListener('click', function () {
+      /* The canonical prefixed read-key form the CLI emits and the loader now accepts.
+         Deliberately published: it is read-only by construction and cannot become write. */
+      f.src = 'https://dev.vault.sgraph.ai/#' + encodeURIComponent('sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n');
+      f.style.display = 'block'; b.style.display = 'none';
+      n.innerHTML = 'Opened read-only. The chrome should show <code>R1 W0</code> and a <b>Read-only</b> badge — that is the server-side write gate reporting that this credential has none.';
+    });
+  }());
+  </script>
 
   <h2>Honest scope</h2>
   <p>This is our <b>minimal</b> host — enough bridge for read-only apps, which is exactly what a published read key permits. The canonical app-iframe host (full <code>window.sg</code>, permissions, HUD chrome) is the SG/Vault UI's code, and <a href="../briefs/briefing-sgvault-ui-embed.md">a briefing asking to reuse it</a> is with that team; when it lands, this page swaps hosts and the walkthrough gains the full-fidelity embed. Until then: what you see above is real, live, and reproducible from the commands on this page.</p>

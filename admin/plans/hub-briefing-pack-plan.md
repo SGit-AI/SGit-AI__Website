@@ -1,7 +1,7 @@
 # Plan: the hub.sgit.ai briefing pack
 
 **Source:** 14 Aug briefing pack, Part B (`02-hub-briefing-pack-spec`). Ask A (the catalogue) shipped in v0.2.12–13.
-**Status:** capability audit STARTED — 13 rows below, seeded from evidence this project has already produced. Rows marked *needs UI team* go into the next UI-team briefing.
+**Status:** capability audit STARTED — 16 rows below, seeded from evidence this project has produced. **Updated 15 Aug against the deployed read-key build: row 1, the entry point for everything, has flipped from partial to present.** Rows still marked `?` go into the next UI-team briefing.
 **Deliverable:** a six-part pack published on the site in the cross-team brief form, BEFORE the hub is built.
 
 ## The model (settled — restate, do not relitigate)
@@ -14,22 +14,26 @@ Legend: **✓ verified** = demonstrated by this project with a written check; **
 
 | # | Capability | Status | Where it lives | Evidence |
 |---|---|---|---|---|
-| 1 | Open a vault in the browser from a read key | **partial** | Official UI: `vault-loader-format.js` format 4 (`<vault_id> <64-hex>`) is parsed but the client **rejects** it ("Invalid vault key format") — the one gap, already an ask in the UI briefing. Our minimal readers do it fully: `assets/vault-docs.js`, `assets/vault-embed.js`, `admin/build/catalogue_derive.py` | ✓ verified both ways (v0.2.7 findings; catalogue derivation on 3 vaults) |
+| 1 | Open a vault in the browser from a read key | **present** | **Gap closed 15 Aug.** The official UI's `vault-loader-format.js` now detects **format 6** (`<64-hex>:<vault_id>`, CLI-clone parity) *before* the passphrase formats — the exact ordering that previously PBKDF2'd the read key into the wrong ref id — and strips the CLI's canonical key prefixes first. Our own readers already did it: `assets/vault-docs.js`, `assets/vault-embed.js`, `admin/build/catalogue_derive.py` | ✓ verified against the deployed build: all three credential forms parse; App Mode boots the demo vault from the published read key alone in a cross-origin iframe |
 | 2 | Open from a full vault key | **present** | Official UI `/#token` flow; App Mode booted with a valid credential — including inside a cross-origin iframe | ✓ verified (v0.2.7) |
-| 3 | List a tree, navigate directories | **present** | Our readers walk trees with encrypted names (`name_enc`); official UI has the `/en-gb/vault` browser (stalled at "Initialising…" in our headless harness — reported unverified, not broken) | ✓ verified (ours); UI ? |
+| 3 | List a tree, navigate directories | **present** | Our readers walk trees with encrypted names (`name_enc`); the official `/en-gb/vault` browser now verified too — `vault-shell` with the FILES / SGIT / SETTINGS rail and the real decrypted tree, opened read-only | ✓ verified both (the earlier "Initialising…" stall was harness timing, not the UI) |
 | 4 | Fetch and decrypt a single object by path | **present** | derive → fetch → decrypt, the six-step read path; all three of our readers | ✓ verified |
 | 5 | Render markdown, highlight code | **partial** | Markdown: `vault-docs.js` renders the deploy docs and catalogue live. Code highlighting inside a vault viewer: unknown | md ✓ verified; highlight ? |
-| 6 | Walk commit history | **partial** | Our deriver walks `parents` to depth 200; CLI `sgit history log`. Official UI ships the `vault-sgit-view` component family (enumerated, not driven) | ✓ verified (ours); UI ? |
-| 7 | Fetch two versions and compare | **partial** | CLI: `sgit history diff --json` exists (basis of the serialised-PR page). Browser: `vault-diff-view` component exists in the UI bundle, not driven | CLI ✓; UI ? |
+| 6 | Walk commit history | **present** | Our deriver walks `parents` to depth 200; CLI `sgit history log`. The official SGit view is now driven and verified: HISTORY / REFS / TREE / BRANCHES / STATUS / REPAIR, both commits listed with real object ids, dates and branch labels — **from the read key alone** | ✓ verified both |
+| 7 | Fetch two versions and compare | **partial** | CLI: `sgit history diff --json` exists (basis of the serialised-PR page). Browser: each history row renders `tree` and `diff` affordances in the read-only SGit view — present in the UI, but we have **not** driven them, so rendering quality is unmeasured | CLI ✓; UI present-but-unexercised |
 | 8 | Sparse / partial fetch | **present** | Inherent to the object model: our readers fetch per-object on demand — a page visit reads only the ref, the trees, and that page's blob. CLI documents sparse clones | ✓ verified (4-file page load demo) |
 | 9 | Local caching between sessions | **present** (ours) | `vault-docs.js`: immutable objects in the Cache API, memoised tree index, ref checked once per 120 s window — a warm reload makes **zero** requests. Official UI behaviour unknown | ✓ verified headless; UI ? |
 | 10 | Sub-vault traversal and link files | **partial** | Vault-in-vault embedding exists both sides: UI's `sg-embed-frame`, our embed host. Link-file traversal untested | embed ✓; links ? |
 | 11 | App runtime and its permission model | **present** | `app.json` entry points, sandboxed iframe with opaque origin, `sg.*` bridge over postMessage; verified in our host AND official App Mode in an iframe | ✓ verified (v0.2.6–7, v0.2.11) |
 | 12 | Write and push from the browser | **present** (UI) | `vault-browse-edit` components; R1 W0 badge implies write path. Not driven by us; our readers are read-only by design | UI ✓ observed; ? to confirm |
 | 13 | Merge and conflict handling client-side | **unknown** | No component found for it in the enumeration | ? — likely the genuinely new build |
-| — | Frameable at all | **present** | No `X-Frame-Options`, no `frame-ancestors` on the official UI | ✓ verified (v0.2.7) |
+| — | Frameable at all | **present** | No `X-Frame-Options`, no `frame-ancestors` on the official UI | ✓ verified (v0.2.7, re-verified 15 Aug) |
+| — | Read-only posture visible to the reader | **present** | The chrome carries an explicit `R1 W0` and `Read-only` badge when opened with a read key — the write gate reporting it has none. Useful for the pack's "see that you cannot write" screen | ✓ verified |
+| — | Deep-link to a specific view (e.g. SGit) | **absent** | View switching remains an in-page event; no URL selects a view, so a host page cannot frame the SGit view *in isolation*. The one UI ask still open | ✓ verified absent |
 
-**The partial rows are the dangerous ones** (the spec's own warning): 1, 5, 6, 7, 10 will each be assumed complete by anyone writing architecture without this table.
+**The partial rows are the dangerous ones** (the spec's own warning): 5, 7, 10 and 12 will each be assumed complete by anyone writing architecture without this table. Row 7 is the sharpest example — the diff affordances are visibly *there*, which is exactly how a partial gets recorded as done.
+
+**What changed on 15 Aug, and why it matters to the pack:** row 1 was the single gap blocking the forge's entry point, and it closed. The consequence is larger than one row — it means the hub's read-only tier can be **assembled from the existing UI rather than built**, opened by a published read key, which is the assembly-not-construction claim the spec asks the audit to settle. The remaining new build is concentrated in rows 12–13 and the deep-link absence.
 
 ## 2–6. The pack's remaining parts (order matters)
 
@@ -57,7 +61,7 @@ Checked and fixed in earlier releases, and now confirmed externally: every page'
 
 ## Next actions
 
-1. Confirm-or-deny pass on the `?` rows with the UI team (extends the existing embed briefing — rows 3, 5, 6, 7, 10, 12, 13).
+1. Confirm-or-deny pass on the `?` rows with the UI team (extends the existing embed briefing — now rows 5, 7, 9, 10, 12, 13, plus the view deep-link, which is the only original ask still open).
 2. Draft the pack as `briefs/hub-briefing-pack.html` (+ .md twin) in the cross-team brief form; audit table first, absences up front.
 3. Publish before building — the method demonstrated at its largest scale so far.
 

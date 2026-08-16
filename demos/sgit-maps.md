@@ -2,7 +2,7 @@
 
 > Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key.
 
-*Source: <https://sgit.ai/demos/sgit-maps.html> · site v0.2.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/sgit-maps.html> · site v0.2.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
