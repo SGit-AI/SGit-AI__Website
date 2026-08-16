@@ -2,7 +2,7 @@
 
 > A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
 
-*Source: <https://sgit.ai/case-studies/live-vault-docs.html> · site v0.2.20 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/live-vault-docs.html> · site v0.2.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
