@@ -2,11 +2,11 @@
 
 > A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page.
 
-*Source: <https://sgit.ai/vaults/algarve-photos.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/algarve-may-2026/index.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Vaults](index.md) / Algarve · May 2026
+[Home](../../../index.md) / [Vaults](../../../index.md) / Algarve · May 2026
 
 # Algarve · May 2026
 
@@ -103,13 +103,13 @@ Every vault gets an audit before its read key is published here, and this one ha
 
 ## What this shape is for
 
-Photo albums, trip diaries, family archives, portfolio galleries — anything where the pictures should not sit plaintext on someone else’s server, but a single shareable key should open the whole experience, chapters and captions included. This is the first of several galleries in [the catalogue’s](../catalogue/index.md) awaiting list.
+Photo albums, trip diaries, family archives, portfolio galleries — anything where the pictures should not sit plaintext on someone else’s server, but a single shareable key should open the whole experience, chapters and captions included. This is the first of several galleries in [the catalogue’s](../../../catalogue/index.md) awaiting list.
 
 ## Derived facts
 
-71 files · 29 MB · 36 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+71 files · 29 MB · 36 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/vaults/algarve-photos.html)*
+*[Site index for agents](../../../llms.txt) · [HTML version](https://sgit.ai/demos/vaults/algarve-may-2026/index.html)*

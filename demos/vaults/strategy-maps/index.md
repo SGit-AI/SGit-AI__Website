@@ -2,11 +2,11 @@
 
 > The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary.
 
-*Source: <https://sgit.ai/vaults/strategy-maps.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/strategy-maps/index.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Vaults](index.md) / Strategy Maps
+[Home](../../../index.md) / [Vaults](../../../index.md) / Strategy Maps
 
 # Strategy Maps
 
@@ -25,7 +25,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 |---|---|
 | Two app entry points | `index.html` (the strategy essay, eight Wardley map PNGs) and `sgit-maps.html` (six inline-SVG maps) — one encrypted store, two front doors |
 | Vault-path images | the essay’s PNGs travel as ciphertext and are swapped in as `blob:` URLs after decryption |
-| Republish pattern | this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — [the audit is public](../demos/strategy-maps.md) |
+| Republish pattern | this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — [the audit is public](../../strategy-maps.md) |
 | Cross-app links | the two apps link to each other and the links survive embedding |
 
 ## What this shape is for
@@ -34,9 +34,9 @@ Published analysis with real assets: strategy documents, briefs, decks. The two-
 
 ## Derived facts
 
-33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/vaults/strategy-maps.html)*
+*[Site index for agents](../../../llms.txt) · [HTML version](https://sgit.ai/demos/vaults/strategy-maps/index.html)*

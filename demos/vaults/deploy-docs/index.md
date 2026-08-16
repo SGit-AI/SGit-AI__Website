@@ -2,11 +2,11 @@
 
 > The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy.
 
-*Source: <https://sgit.ai/vaults/deploy-docs.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/deploy-docs/index.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Vaults](index.md) / Deploy Docs
+[Home](../../../index.md) / [Vaults](../../../index.md) / Deploy Docs
 
 # Deploy Docs
 
@@ -23,7 +23,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 | Feature | How this vault uses it |
 |---|---|
-| Live markdown rendering | [the /deploy page](../deploy/index.md) decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy |
+| Live markdown rendering | [the /deploy page](../../../deploy/index.md) decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy |
 | Freshness window | the mutable HEAD pointer is checked at most once per 120 s; everything else is content-addressed and cached forever |
 | Two writers | written by two Claude Code sessions collaborating through the vault — the commit history shows the handoffs |
 | Debug panel | the page’s vault panel shows every encrypted object arriving and what it decrypts to |
@@ -34,9 +34,9 @@ Documentation that updates without a deploy pipeline, from any writer who holds 
 
 ## Derived facts
 
-17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/vaults/deploy-docs.html)*
+*[Site index for agents](../../../llms.txt) · [HTML version](https://sgit.ai/demos/vaults/deploy-docs/index.html)*

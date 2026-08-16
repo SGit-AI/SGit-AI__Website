@@ -1,5 +1,5 @@
 <main class="doc">
-  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Vaults</a> / Deploy Docs</p>
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../../../index.html">Vaults</a> / Deploy Docs</p>
   <h1>Deploy Docs</h1>
   <p class="lead">The living deployment documentation for sgit.ai itself — written by two Claude Code sessions, rendered live on the /deploy page.</p>
   <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
@@ -15,7 +15,7 @@
      page must survive being served from inside a vault, where declarative refs
      cannot be answered. Fetch + eval, same pattern as the deploy page. */
   (function () {
-    fetch('../assets/vault-ui-embed.js')
+    fetch('../../../assets/vault-ui-embed.js')
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then(function (t) { (0, eval)(t); })
       .catch(function (e) { console.error('[vaults] embed component failed to load:', e); });
@@ -25,7 +25,7 @@
   <h2>What this vault demonstrates</h2>
   <div class="tablewrap"><table>
     <tr><th>Feature</th><th>How this vault uses it</th></tr>
-    <tr><td>Live markdown rendering</td><td><a href="../deploy/index.html">the /deploy page</a> decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy</td></tr>
+    <tr><td>Live markdown rendering</td><td><a href="../../../deploy/index.html">the /deploy page</a> decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy</td></tr>
     <tr><td>Freshness window</td><td>the mutable HEAD pointer is checked at most once per 120 s; everything else is content-addressed and cached forever</td></tr>
     <tr><td>Two writers</td><td>written by two Claude Code sessions collaborating through the vault — the commit history shows the handoffs</td></tr>
     <tr><td>Debug panel</td><td>the page’s vault panel shows every encrypted object arriving and what it decrypts to</td></tr>
@@ -34,5 +34,5 @@
   <p>Documentation that updates without a deploy pipeline, from any writer who holds the vault key, to any reader who holds the read key. The natural shape for runbooks, guides and anything agents co-author.</p>
 
   <h2>Derived facts</h2>
-  <p>17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by <code>admin/build/catalogue_derive.py</code> — the same derivation that populates <a href="../catalogue/index.html">the catalogue</a>, where this vault also has an entry.</p>
+  <p>17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by <code>admin/build/catalogue_derive.py</code> — the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>, where this vault also has an entry.</p>
 </main>

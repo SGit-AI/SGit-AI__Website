@@ -2,7 +2,7 @@
 
 > What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims.
 
-*Source: <https://sgit.ai/use-cases/health-regulated.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/health-regulated.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -49,6 +49,23 @@ $ sgit vault rekey                          # rotation — see the exposed-key r
 ```
 
 **Self-host if the storage layer is itself in scope.** The [deployment guidance](../deploy/index.md) covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.
+
+## A worked example you can open right now
+
+The abstract version of this page is "the host cannot read it". The concrete version is a vault you can open in your browser in the next ten seconds: [**the Supplement Stack vault**](../demos/vaults/supplement-stack/index.md) — a real, patient-held health record, published with a read key.
+
+It is worth reading because it answers the questions this page raises in the specific rather than the general:
+
+| The question | How that vault answers it |
+|---|---|
+| Who holds the data? | The patient. The vault is theirs; the write key never leaves them |
+| How is it shared with a clinician? | By handing over a **read key** — no account on anyone's platform, no PDF emailed into permanent circulation. The reader sees everything and can change nothing |
+| What stops the app doing more than it should? | `app.json` grants write over `adherence/` and nothing else. The record-keeping app cannot alter the record it reports on — least authority, declared in the vault |
+| Where does AI fit without being dangerous? | A model does the fuzzy work (reading amounts off a label photograph, each value traceable back to its image); **code** does the exact work (summing them). Every fuzzy step is checkable against its source |
+| Does it give medical advice? | No — and that is designed in. It computes the total nobody else computes and produces a *briefing for somebody qualified*, with the open questions listed. It never concludes |
+| Whose reference values? | UK RNIs and EFSA upper limits, named and dated, explicitly not US Daily Values — because comparing a UK intake against US references without saying so is a quiet error |
+
+It is a demonstration rather than a deployed clinical system, and it makes no compliance claim of any kind — but every mechanism above is running, readable, and open to inspection with the key on its page.
 
 ## Evidence status
 

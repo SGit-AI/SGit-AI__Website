@@ -1,0 +1,100 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Supplement Stack</p>
+  <h1>Supplement Stack</h1>
+  <p class="lead">A patient-held health record as a vault: a real supplement regimen, a photograph of every label the numbers were read from, deterministic totals against UK reference values — and an app permitted to write to exactly one folder and nothing else.</p>
+
+  <div class="note"><b>The idea it is built on, in one line.</b> Every label describes one product; <b>nothing describes the sum</b>. The missing artefact is the total per nutrient across everything a person is taking — so the model extracts (fuzzy, and traceable to a label photo), the code adds up (deterministic, and reproducible), and the output is a briefing for somebody qualified. <b>Never a verdict.</b> This is a record-keeping tool, not medical advice, and no compliance finding of any kind exists for this pattern.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477</code><br>
+  <span class="small dim">Published deliberately. It grants read, and only read — a write attempt is refused by the server's write gate.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="r7zes477" data-readkey="047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td><b>Scoped write permission</b></td><td><code>app.json</code> grants the app <code>read</code> over everything but <code>write</code> and <code>mkdir</code> over <code>adherence/</code> <em>only</em>. The app that records what you took each day cannot touch the regimen, the label photographs or the references — least authority, declared in the vault and enforced by the host</td></tr>
+    <tr><td>Source-mapped extraction</td><td>every amount in <code>regimen.json</code> carries a <code>label_image</code> pointing at the photograph it was read from, so a misread is <em>visible</em> rather than propagated — the same discipline a diff gives code</td></tr>
+    <tr><td>Deterministic analysis</td><td><code>scripts/totals.py</code> sums per nutrient with its rules stated in the open: topicals contribute nothing, as-needed items sit outside daily totals, and a null amount is <b>flagged, never guessed</b>. The in-app JavaScript does the same arithmetic, so two implementations can be checked against each other</td></tr>
+    <tr><td>Named, dated reference data</td><td>UK RNIs and EFSA upper limits, with sources and a transcription note — explicitly <em>not</em> US Daily Values, because comparing a UK intake to US references without saying so would be a quiet error</td></tr>
+    <tr><td>Honest incompleteness</td><td>one product's 27-nutrient panel is not yet captured, so the app labels the totals <b>INCOMPLETE</b> rather than showing a confident wrong number</td></tr>
+    <tr><td>The brief ships with the vault</td><td><code>briefs/</code> carries the architecture brief the whole thing was built from — the reasoning travels with the artefact</td></tr>
+  </table></div>
+
+  <h2>What is going on here, step by step</h2>
+  <p>The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the daily record</span>
+        <h3>What was actually taken, not what was intended</h3>
+        <p>The <b>Today</b> tab is a checklist of the day's regimen, grouped by timing. Ticking an item and pressing <b>Save today</b> writes one small JSON file — <code>adherence/2026-08-16.json</code> — into the vault.</p>
+  <p>That distinction is the point: a regimen file says what you <em>mean</em> to take; the adherence log says what you <em>did</em>. When the conversation with a professional finally happens, the second is the honest input.</p>
+      </div>
+      <figure class="shot" data-shot="today.webp" data-alt="The Today tab: per-item, per-timing, with a Save that writes into the vault."><figcaption>The Today tab: per-item, per-timing, with a Save that writes into the vault.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">traceable extraction</span>
+        <h3>Every number points back at the photograph it came from</h3>
+        <p>The <b>Stack</b> tab lists each product with its dose, timing, route — and the label photograph the amounts were read from. A model did that reading, which is a fuzzy step, so each value carries a <code>label_image</code> back to its source.</p>
+  <p>This is the source-map discipline applied to health data: a misreading stays <em>visible</em> and checkable against the picture, instead of quietly becoming a number in a total.</p>
+      </div>
+      <figure class="shot" data-shot="stack.webp" data-alt="The Stack: products, doses and the label photograph behind each set of numbers."><figcaption>The Stack: products, doses and the label photograph behind each set of numbers.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the missing artefact</span>
+        <h3>The sum nobody else computes</h3>
+        <p>This is the tab the whole vault exists for. Every label describes one product; <b>nothing describes the sum</b>. Here it is: total per nutrient per day, each against the UK RNI and the EFSA upper limit, with the contributing products named.</p>
+  <p>Two details matter more than the numbers. The reference set is <em>named and dated</em> (UK RNI + EFSA UL — deliberately not US Daily Values, for a regimen bought in the UK). And the amber banner says the totals are <b>incomplete</b>, listing exactly which amounts have not been captured: <em>"Nothing is guessed: a value that is not on a captured label is flagged, never estimated."</em></p>
+      </div>
+      <figure class="shot" data-shot="totals.webp" data-alt="Totals per nutrient with ×RNI and ×UL ratios — and an honest incompleteness banner."><figcaption>Totals per nutrient with ×RNI and ×UL ratios — and an honest incompleteness banner.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">never a verdict</span>
+        <h3>The output is a briefing, not a diagnosis</h3>
+        <p>The <b>Briefing</b> tab assembles everything into something to hand to a pharmacist or GP: the stack, the totals, the overlaps, the open questions — <em>"Three products target the knee — is that a sensible combination or redundant?"</em>, <em>"Do any of these interact with my other medication?"</em></p>
+  <p>The tool deliberately stops there. It does the arithmetic nobody had done and hands the result to somebody qualified. It never answers the questions itself, and the vault says so on its own About tab.</p>
+      </div>
+      <figure class="shot" data-shot="briefing.webp" data-alt="The Briefing: what to take to a professional, including the questions to ask."><figcaption>The Briefing: what to take to a professional, including the questions to ask.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">least authority</span>
+        <h3>The app may write to one folder — and nothing else</h3>
+        <p>Here is the vault's own <code>app.json</code>, read straight out of the store. The permission block grants <code>read</code> broadly but <code>write</code> and <code>mkdir</code> over <code>adherence/</code> <em>only</em>.</p>
+  <p>So the app that ticks off today's doses cannot alter the regimen, the label photographs, or the reference values — not by policy, but because the capability was never granted. This is what permissions look like when they are a property of the vault rather than a setting on a server, and it is the healthcare-shaped version of the whole argument.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-alt="app.json: read broadly, write only adherence/ — least authority, declared in the vault."><figcaption>app.json: read broadly, write only adherence/ — least authority, declared in the vault.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Why this shape matters beyond supplements</h2>
+  <p>This is the clearest <b>patient-held record</b> on the site. The data lives in a vault the person controls; sharing it with a professional is handing over a read key, not granting an account on someone's platform, and not emailing a PDF that is copied forever the moment it arrives. The write key never leaves the owner, so a reader can read <em>everything</em> and change <em>nothing</em>.</p>
+  <p>The division of labour is the transferable part: <b>a model does the fuzzy work</b> (reading amounts off a photograph), <b>code does the exact work</b> (adding them up), and every fuzzy step is traceable to its source so a human can check it. Any domain where an LLM reads documents and arithmetic must be right — expenses, lab results, invoices, dosing — can borrow that shape. See the <a href="../../../use-cases/health-regulated.html">healthcare use case</a> for where this fits.</p>
+
+  <h2>The audit, honestly</h2>
+  <p>Every vault is audited before its read key appears here. This one is <b>clean on credentials</b>: no tokens, no keys, no <code>.vault/</code> operational bookkeeping — and the scan for personal identifiers found none either (no name, address, contact details, date of birth or health-service number; the record describes its owner only as "UK-based adult male").</p>
+  <p>What it <em>does</em> publish is a real person's actual supplement regimen, and the health context that can be inferred from it — a knee, sport, sleep. That is the owner's own data, published on purpose, and it is worth stating the rule that goes with it: <b>revocation is not retroactive</b>. Anybody who fetches these objects keeps them. Rotating the key protects future commits and returns nothing already read. The regimen is published because a real record demonstrates the pattern in a way a fabricated one cannot — and because the alternative, a sanitised sample, is exactly the thing this vault argues against.</p>
+
+  <h2>Derived facts</h2>
+  <p>23 files · 2.3 MB · 5 commits · app entry <code>index.html</code> · twelve label photographs — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>.</p>
+</main>

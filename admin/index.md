@@ -2,7 +2,7 @@
 
 > How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
 
-*Source: <https://sgit.ai/admin/index.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/index.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

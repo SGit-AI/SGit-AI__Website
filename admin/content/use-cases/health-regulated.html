@@ -29,6 +29,20 @@
 <span class="p">$</span> <span class="cmd">sgit vault rekey</span>                          <span class="d"># rotation — see the exposed-key runbook</span></pre>
   <p><b>Self-host if the storage layer is itself in scope.</b> The <a href="../deploy/index.html">deployment guidance</a> covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.</p>
 
+  <h2>A worked example you can open right now</h2>
+  <p>The abstract version of this page is "the host cannot read it". The concrete version is a vault you can open in your browser in the next ten seconds: <a href="../demos/vaults/supplement-stack/index.html"><b>the Supplement Stack vault</b></a> — a real, patient-held health record, published with a read key.</p>
+  <p>It is worth reading because it answers the questions this page raises in the specific rather than the general:</p>
+  <div class="tablewrap"><table>
+    <tr><th>The question</th><th>How that vault answers it</th></tr>
+    <tr><td>Who holds the data?</td><td>The patient. The vault is theirs; the write key never leaves them</td></tr>
+    <tr><td>How is it shared with a clinician?</td><td>By handing over a <b>read key</b> — no account on anyone's platform, no PDF emailed into permanent circulation. The reader sees everything and can change nothing</td></tr>
+    <tr><td>What stops the app doing more than it should?</td><td><code>app.json</code> grants write over <code>adherence/</code> and nothing else. The record-keeping app cannot alter the record it reports on — least authority, declared in the vault</td></tr>
+    <tr><td>Where does AI fit without being dangerous?</td><td>A model does the fuzzy work (reading amounts off a label photograph, each value traceable back to its image); <b>code</b> does the exact work (summing them). Every fuzzy step is checkable against its source</td></tr>
+    <tr><td>Does it give medical advice?</td><td>No — and that is designed in. It computes the total nobody else computes and produces a <em>briefing for somebody qualified</em>, with the open questions listed. It never concludes</td></tr>
+    <tr><td>Whose reference values?</td><td>UK RNIs and EFSA upper limits, named and dated, explicitly not US Daily Values — because comparing a UK intake against US references without saying so is a quiet error</td></tr>
+  </table></div>
+  <p>It is a demonstration rather than a deployed clinical system, and it makes no compliance claim of any kind — but every mechanism above is running, readable, and open to inspection with the key on its page.</p>
+
   <h2>Evidence status</h2>
   <div class="evbox ev-warn"><span class="evtag">PATTERN — and the most caveated page here</span>
   <p>No published healthcare or regulated-industry deployment, no certification, and no audit of the implementation by a third party. What exists is: standard primitives (AES-256-GCM, PBKDF2-SHA256 at 600k, HKDF) with no custom cryptography, ~4,000 tests, byte-for-byte test vectors against the browser's Web Crypto, two independent implementations of the same wire format, and a <a href="../security/index.html">published threat model</a> that names its own side channels.</p>

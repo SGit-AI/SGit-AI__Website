@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.22'
+SITE_VERSION = 'v0.2.23'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.22', '2026-08-16', 'this release',
+    ('v0.2.23', '2026-08-16', 'this release',
+     "Structure for scale, and the most interesting vault yet. (1) Every published vault is now a self-contained folder — demos/vaults/<slug>/index.html with its screenshots in demos/vaults/<slug>/images/ — so adding the hundredth vault is adding a folder, and a vault's page and pictures move together. The old flat /vaults/ section is gone (URLs lived one day). Two engine changes made it possible: the root-prefix was computed as 'one ../ if nested at all', which silently pointed the nav, stylesheet and every asset at the wrong level once pages nested three deep — now it is ../ times the depth, the same formula the markdown twins already used; and the screenshot rig writes per-vault, with a --vault filter. Image paths in the walkthrough are page-relative for the same reason. (2) New vault: SUPPLEMENT STACK (r7zes477), and it is the strongest healthcare demonstration on the site. Its idea: every label describes one product, nothing describes the sum, so the model extracts (fuzzy, with every amount traceable to the label photograph it was read from) and the code adds up (deterministic, rules stated in the open, a missing value flagged and never guessed), producing a briefing for somebody qualified and never a verdict. It is also the first vault here to use SCOPED WRITE PERMISSIONS: app.json grants write over adherence/ only, so the app that logs what was taken cannot alter the regimen, the labels or the references — least authority as a property of the vault rather than a server setting. Five walkthrough rows captured from the live vault, including its app.json permission block. The healthcare use case now opens with this as a worked example: who holds the data, how it reaches a clinician (a read key, not an account or a PDF), where AI fits safely, and why the reference set is UK RNI/EFSA rather than US Daily Values. The published audit: clean on credentials, no personal identifiers found — but it publishes a real regimen and the health context inferable from it, deliberately, and revocation is not retroactive."),
+    ('v0.2.22', '2026-08-16', 'obj-cas-imm-b1d27e3295cf',
      "The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than <img src>, because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts."),
     ('v0.2.21', '2026-08-16', 'obj-cas-imm-10164a7a31ab',
      "Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks."),
@@ -163,7 +165,7 @@ def nav(p, here):
   <a class="{cls('try')}" href="{p}try/index.html">Try</a>
   <a class="{cls('demos')}" href="{p}demos/index.html">Demos</a>
   <a class="{cls('catalogue')}" href="{p}catalogue/index.html">Catalogue</a>
-  <a class="{cls('vaults')}" href="{p}vaults/index.html">Vaults</a>
+  <a class="{cls('vaults')}" href="{p}demos/vaults/index.html">Vaults</a>
   <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
@@ -269,7 +271,10 @@ def json_ld(path, title, desc):
 
 
 def page(path, title, desc, here, body):
-    p = '../' if '/' in path else ''
+    # Root prefix by DEPTH, not by "is nested at all" — pages now nest three deep
+    # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
+    # the stylesheet and every asset at the wrong level. Same formula write_md uses.
+    p = '../' * path.count('/')
     md_name = os.path.basename(path)[:-5] + '.md'
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">

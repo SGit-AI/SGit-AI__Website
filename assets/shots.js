@@ -15,10 +15,6 @@
 (function () {
   'use strict';
 
-  function root() {
-    return document.documentElement.getAttribute('data-root') || '';
-  }
-
   async function bytes(path) {
     var sg = window.sg || (window.parent && window.parent.sg);
     if (sg && sg.vfs && sg.vfs.read) {
@@ -33,7 +29,11 @@
     var name = fig.getAttribute('data-shot');
     if (!name || fig.dataset.loaded) return;
     fig.dataset.loaded = '1';
-    var path = root() + 'assets/shots/' + name;
+    // Images live beside the page, in the vault's own folder:
+    //   demos/vaults/<slug>/index.html  ->  demos/vaults/<slug>/images/<name>
+    // A page-relative path means a vault folder is self-contained: move it, and its
+    // pictures move with it.
+    var path = 'images/' + name;
     try {
       var data = await bytes(path);
       var url = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));

@@ -2,11 +2,11 @@
 
 > The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status.
 
-*Source: <https://sgit.ai/vaults/catalogue.html> · site v0.2.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/catalogue/index.html> · site v0.2.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Vaults](index.md) / The Vault Catalogue
+[Home](../../../index.md) / [Vaults](../../../index.md) / The Vault Catalogue
 
 # The Vault Catalogue
 
@@ -23,7 +23,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 | Feature | How this vault uses it |
 |---|---|
-| Recursion, usefully | an index of published vaults that is itself a published vault, listed in itself — [rendered live at /catalogue/](../catalogue/index.md) |
+| Recursion, usefully | an index of published vaults that is itself a published vault, listed in itself — [rendered live at /catalogue/](../../../catalogue/index.md) |
 | Submission queue | an entry costs a read key and one line; everything else is derived by an agent opening the vault |
 | Published to-do lists | `todo/awaiting-read-key.md` and `todo/awaiting-processing.md` are public, because a named gap gets filled |
 | First-class write-key status | every entry records whether the write key is escrowed or lost, because a frozen vault can never be corrected |
@@ -34,9 +34,9 @@ Machine-and-human-readable registries that update by pushing to a vault rather t
 
 ## Derived facts
 
-9 files · 11 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+9 files · 11 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 ---
 
-*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/vaults/catalogue.html)*
+*[Site index for agents](../../../llms.txt) · [HTML version](https://sgit.ai/demos/vaults/catalogue/index.html)*
