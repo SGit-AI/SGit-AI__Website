@@ -295,6 +295,13 @@ blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid
 .sgv-embed-frame{width:100%;height:600px;
   }
 .sgv-embed-frame.sgv-embed-tall{height:760px}
+/* The official-UI embed: a full working surface, so it breaks out of the text column.
+   Centered breakout via translate — no ancestor has overflow:hidden, and 94vw < 100vw
+   keeps the page free of horizontal scroll. Height tracks the viewport for big vault UXs. */
+.sgv-breakout{width:min(94vw,1680px);position:relative;left:50%;transform:translateX(-50%)}
+.sgv-btnrow{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.sgv-embed-frame.sgv-embed-ui{height:clamp(560px,78vh,1050px)}
+.sgv-embed-frame:fullscreen{width:100vw;height:100vh;border-radius:0;background:#0d1117}
 .sgv-embed-frame{border:1px solid var(--line2);border-radius:12px;
   background:#0e1116;box-shadow:var(--shadow)}
 
