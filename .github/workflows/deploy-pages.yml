@@ -102,8 +102,33 @@ jobs:
             fi
           fi
 
-          git push origin --tags
+          # The load-bearing push: THIS release's tag, at HEAD. GITHUB_TOKEN may
+          # tag the branch tip (same workflow blob as the branch), so this must
+          # succeed — fail the job if it does not.
+          git push origin "refs/tags/$TAG"
           echo "tagged HEAD as $TAG"
+
+          # Best-effort: the backfilled historical tags. GITHUB_TOKEN cannot
+          # push a ref to a commit whose tree carries a DIFFERENT
+          # .github/workflows blob — the `workflows` permission is not grantable
+          # to it — so releases predating a workflow change are rejected. Push
+          # what is accepted, report what is not; a single
+          # `git push origin --tags` from any workflows-scoped human credential
+          # completes the set, after which this loop is a chain of no-ops.
+          MISSED=0
+          for t in $(git tag --list 'v*'); do
+            [ "$t" = "$TAG" ] && continue
+            if git push origin "refs/tags/$t" >/dev/null 2>&1; then
+              echo "backfill ok: $t"
+            else
+              echo "::warning::could not push backfill tag $t (GITHUB_TOKEN workflow-file limit)"
+              MISSED=$((MISSED+1))
+            fi
+          done
+          if [ "$MISSED" -gt 0 ]; then
+            echo "::notice::$MISSED historical tag(s) still need a human push: git push origin --tags"
+          fi
+          true
 
   deploy:
     runs-on: ubuntu-latest
