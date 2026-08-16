@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.18'
+SITE_VERSION = 'v0.2.19'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.18', '2026-08-16', 'this release',
+    ('v0.2.19', '2026-08-16', 'this release',
+     "The site starts doing the thing it was building toward: publishing vaults. New /vaults/ section — an index of every read key this site has deliberately published, and one page per vault (five at launch: Field Notes, Strategy Maps, Deploy Docs, the Catalogue itself, and — new — Algarve · May 2026) with a real description, the features that vault exercises, what the shape is good for, the derived facts, the key as a copyable sgit_rk1_ credential with a CLI command and an open-in-the-official-UI link, and the vault RUNNING LIVE in the page via the reusable embed component (assets/vault-ui-embed.js — the two-surface embed-protocol host from the demo page, now attribute-driven; App Mode hidden for vaults without an app). Pages load the component contract-compliantly (fetch+eval, no script src — every page must survive being served from inside a vault). The Algarve vault is the first entry processed through the catalogue's submission queue as designed: read key supplied in chat, everything else derived — 71 files, 29 MB (60 WebP photos in originals/web/thumbs), 36 commits, auto-opening gallery app with a chaptered narrative. Its pre-publication audit is published on the page per the rules: one finding (a live delete_auth token in public-preview bookkeeping — narrow scope, the owner advised to rotate) and one counterpoint worth showcasing (the same vault's readonly-tokens bookkeeping decrypts to further ciphertext: owner secrets double-encrypted, the pattern that fixes the finding class). Catalogue vault updated in the same breath — new entry, trip-gallery-1 ticked off the awaiting list (7 remain) — and /catalogue/ picked it up with no site deploy, which is that design working."),
+    ('v0.2.18', '2026-08-16', 'obj-cas-imm-68578f7b1bf4',
      "The tag pipeline's first contact with a real GitHub rule, fixed within the hour. v0.2.17's run DID tag itself — the first CI-authored tag — but the historical backfill push was rejected wholesale: a workflow's GITHUB_TOKEN cannot push any ref pointing at a commit whose tree carries a different version of a workflow file, and the `workflows` permission that would allow it is not grantable to that token. Every pre-v0.2.17 release predates the current deploy-pages.yml, so all 33 backfill tags bounced — and because the tag job failed, the deploy was skipped and v0.2.17 never reached the live site (this release carries its changes out). The fix splits the pushes by what they are: THIS release's tag at HEAD is load-bearing and fails the job if rejected (it never should be — HEAD's workflow blob matches the branch, which is why v0.2.17's own tag went through); the historical backfill is best-effort per tag, warns per rejection, and emits one notice with the single human command that completes the set — `git push origin --tags` from any workflows-scoped credential. Once a human has done that once, the backfill loop becomes a chain of no-ops. Lesson recorded for the case-studies pile: the same both-remotes discipline that made CI verify-and-tag instead of commit-and-tag also meant the failure cost nothing but a skipped deploy — no bump commit was stranded on one side of the two-VCS split."),
     ('v0.2.17', '2026-08-16', 'obj-cas-imm-24876be44e37',
      "Two reader-driven fixes and the release pipeline grows tags. (1) Layout: the embed buttons and their status line sit back in the text column where they belong — only the vault surface itself breaks out wide, since it is the thing with the big UX. (2) CI tagging, ported from the VoiceDebrief website pipeline (validate → tag → publish, every push to dev a minor release tagged v{release}.{major}.{minor}) with one deliberate adaptation: the upstream OSBot action has CI commit a version-file bump, but this repo is simultaneously an sgit vault, and a CI-authored commit would exist only on the git side — breaking the both-remotes-in-sync invariant release.sh enforces. Here CI verifies-and-tags instead of owning: SITE_VERSION (bumped once per release by release.sh) must match the release commit's subject and be the next minor after the latest tag, then the commit is tagged. No CI commits, no drift, same discipline — and a forgotten bump now fails the pipeline loudly instead of shipping quietly. The first run backfills tags for every historical release by parsing the commit subjects, so the whole v0.1.9→now history becomes navigable by tag. Also: validate.js now runs in CI as the gate before tagging and publishing, which puts the key-leak tripwire on the deployment path as well as the release path. (Tags could not be pushed from the authoring session — the session's git proxy authorizes branch pushes only, which settled the design question of who owns tags: CI does.)"),
@@ -155,6 +157,7 @@ def nav(p, here):
   <a class="{cls('try')}" href="{p}try/index.html">Try</a>
   <a class="{cls('demos')}" href="{p}demos/index.html">Demos</a>
   <a class="{cls('catalogue')}" href="{p}catalogue/index.html">Catalogue</a>
+  <a class="{cls('vaults')}" href="{p}vaults/index.html">Vaults</a>
   <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
@@ -528,6 +531,7 @@ LLMS_SECTIONS = [
     ('why',       'Why this exists'),
     ('demos',     'Demos (live end-to-end examples with published read keys)'),
     ('catalogue', 'Catalogue (the index of published vaults — read keys, shapes, evidence and write-key status)'),
+    ('vaults', 'Published vaults (one page per vault: description, features, live embed, and the read key that opens it)'),
     ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
     ('docs',      'Docs'),

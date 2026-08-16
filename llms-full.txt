@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.18). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.19). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -202,7 +202,7 @@ Encrypted vaults. **Git workflows.** Zero knowledge.
 
 An index of published vaults, rendered live from a vault that indexes vaults — including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.
 
-**The design constraint, stated openly:** the bottleneck is one person with a backlog of vaults, so an entry costs **a read key and one line** — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault `kc67yhgw` directly — a push to it updates this page with no site deploy.
+**The design constraint, stated openly:** the bottleneck is one person with a backlog of vaults, so an entry costs **a read key and one line** — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault `kc67yhgw` directly — a push to it updates this page with no site deploy. The human companion is [the published-vaults gallery](../vaults/index.md): one page per vault, with the vault running live in it.
 
 opening the catalogue…
 
@@ -219,6 +219,233 @@ what you are looking at
 The **tree** objects are the reason a first visit reads more than one file: filenames are encrypted inside them, so building the navigation means reading every directory. That index is a pure function of the commit id, so it is memoised — after the first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
 
 [How this page works →](../case-studies/live-vault-docs.md) Architecture diagrams, the object model, the cache tiers, and how a page like this one reads a vault it holds only the read key to.
+
+
+
+==============================================================================
+# Published vaults — sgit.ai
+
+> Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
+>
+> Page: https://sgit.ai/vaults/index.html
+
+[Home](../index.md) / Vaults
+
+# Published vaults
+
+Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside the page. The keys below are the complete credential: no account, no token, and no write capability anywhere in them.
+
+**The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
+
+| Vault | Id | Shape | Contents | Published read key |  |
+|---|---|---|---|---|---|
+| [Field Notes](field-notes.md) | `4bshby5n` | application (vault app) | 4 files · 11 KB · 2 commits · app entry `index.html` | `sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n) |
+| [Strategy Maps](strategy-maps.md) | `ookq4mn4` | structured analysis (two apps, one vault) | 33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` | `sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4) |
+| [Deploy Docs](deploy-docs.md) | `fyofmkvr` | record-keeping (live markdown) | 17 files · 25 KB · 2 commits · markdown, no app | `sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1%3Afyofmkvr) |
+| [The Vault Catalogue](catalogue.md) | `kc67yhgw` | record-keeping (an index of vaults) | 9 files · 11 KB · 2 commits · markdown, no app | `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) |
+| [Algarve · May 2026](algarve-photos.md) | `3d04e6b9ca98` | gallery (photo story) | 71 files · 29 MB · 36 commits · app entry `index.html` | `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) |
+
+The machine-first version of this list is [the catalogue](../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../demos/vault-app-embed.md).
+
+
+
+==============================================================================
+# Field Notes — a published vault
+
+> The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.
+>
+> Page: https://sgit.ai/vaults/field-notes.html
+
+[Home](../index.md) / [Vaults](index.md) / Field Notes
+
+# Field Notes
+
+Six small studies — a note and a generative SVG drawing each — served as a self-contained vault app.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n) · From the CLI: `sgit clone sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the **R1 W0** badge you will see in the chrome).
+
+## See it live, here
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| Vault app (`app.json`) | one self-contained `index.html`, auto-opened; CSS and JS inlined per the authoring contract |
+| `sg.vfs` bridge | the app reads `content.json` over the bridge at runtime — the status line in the app proves it |
+| Generative SVG | the six drawings are code, not images — no binary assets to fetch |
+| Published read key | the first vault created specifically to be published; the complete walkthrough is on [the embed demo page](../demos/vault-app-embed.md) |
+
+## What this shape is for
+
+The minimum viable published vault: content plus a small app, one key, no server that can read any of it. Use this shape for anything you would put on a small static site — except the host serves only ciphertext, and unpublishing is deleting one credential from a page rather than tearing down a site.
+
+## Derived facts
+
+4 files · 11 KB · 2 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+
+
+
+==============================================================================
+# Strategy Maps — a published vault
+
+> The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary.
+>
+> Page: https://sgit.ai/vaults/strategy-maps.html
+
+[Home](../index.md) / [Vaults](index.md) / Strategy Maps
+
+# Strategy Maps
+
+The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis as a second app in the same encrypted store.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4) · From the CLI: `sgit clone sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the **R1 W0** badge you will see in the chrome).
+
+## See it live, here
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| Two app entry points | `index.html` (the strategy essay, eight Wardley map PNGs) and `sgit-maps.html` (six inline-SVG maps) — one encrypted store, two front doors |
+| Vault-path images | the essay’s PNGs travel as ciphertext and are swapped in as `blob:` URLs after decryption |
+| Republish pattern | this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — [the audit is public](../demos/strategy-maps.md) |
+| Cross-app links | the two apps link to each other and the links survive embedding |
+
+## What this shape is for
+
+Published analysis with real assets: strategy documents, briefs, decks. The two-entry-point trick means one vault can carry a family of related documents that share content, history and a single published key.
+
+## Derived facts
+
+33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+
+
+
+==============================================================================
+# Deploy Docs — a published vault
+
+> The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy.
+>
+> Page: https://sgit.ai/vaults/deploy-docs.html
+
+[Home](../index.md) / [Vaults](index.md) / Deploy Docs
+
+# Deploy Docs
+
+The living deployment documentation for sgit.ai itself — written by two Claude Code sessions, rendered live on the /deploy page.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1%3Afyofmkvr) · From the CLI: `sgit clone sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the **R1 W0** badge you will see in the chrome).
+
+## See it live, here
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| Live markdown rendering | [the /deploy page](../deploy/index.md) decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy |
+| Freshness window | the mutable HEAD pointer is checked at most once per 120 s; everything else is content-addressed and cached forever |
+| Two writers | written by two Claude Code sessions collaborating through the vault — the commit history shows the handoffs |
+| Debug panel | the page’s vault panel shows every encrypted object arriving and what it decrypts to |
+
+## What this shape is for
+
+Documentation that updates without a deploy pipeline, from any writer who holds the vault key, to any reader who holds the read key. The natural shape for runbooks, guides and anything agents co-author.
+
+## Derived facts
+
+17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+
+
+
+==============================================================================
+# The Vault Catalogue — a published vault
+
+> The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status.
+>
+> Page: https://sgit.ai/vaults/catalogue.html
+
+[Home](../index.md) / [Vaults](index.md) / The Vault Catalogue
+
+# The Vault Catalogue
+
+The index of published vaults — itself a vault, published with a read key, and listed in itself.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) · From the CLI: `sgit clone sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the **R1 W0** badge you will see in the chrome).
+
+## See it live, here
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| Recursion, usefully | an index of published vaults that is itself a published vault, listed in itself — [rendered live at /catalogue/](../catalogue/index.md) |
+| Submission queue | an entry costs a read key and one line; everything else is derived by an agent opening the vault |
+| Published to-do lists | `todo/awaiting-read-key.md` and `todo/awaiting-processing.md` are public, because a named gap gets filled |
+| First-class write-key status | every entry records whether the write key is escrowed or lost, because a frozen vault can never be corrected |
+
+## What this shape is for
+
+Machine-and-human-readable registries that update by pushing to a vault rather than deploying a site. The schema here is deliberately the first instance of what a vault hub would need.
+
+## Derived facts
+
+9 files · 11 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+
+
+
+==============================================================================
+# Algarve · May 2026 — a published vault
+
+> A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page.
+>
+> Page: https://sgit.ai/vaults/algarve-photos.html
+
+[Home](../index.md) / [Vaults](index.md) / Algarve · May 2026
+
+# Algarve · May 2026
+
+A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative, and a gallery app that opens automatically.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) · From the CLI: `sgit clone sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the **R1 W0** badge you will see in the chrome).
+
+## See it live, here
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| Real binary payload | 60 WebP photographs in three sizes (originals ≈29 MB total, web ≈1600px, thumbnails) — every byte stored and served as ciphertext |
+| Auto-opening gallery app | `app.json` sets `auto_open` with a minimal HUD; the app is an editorial photo story with chapters and a lightbox, driven by `gallery.json` |
+| Content + narrative | `NARRATIVE.md` carries the written week; `gallery.json` carries per-photo titles, captions, chapters — edit the JSON, push, and the gallery updates |
+| Deep history | 36 commits of organising, captioning and re-cutting — open the SGIT view above and read the story of the story |
+| Owner secrets done right | `.vault/owner/readonly-tokens.json` decrypts to *further ciphertext* — owner bookkeeping is double-encrypted under a key the read key cannot reach |
+
+## The audit, honestly
+
+Every vault gets an audit before its read key is published here, and this one has a finding worth stating plainly: the server-side bookkeeping file for a public preview (`.vault/owner/public-previews/…`) carries a live `delete_auth` token, readable by anyone holding this read key. Its scope is narrow — it permits deleting or replacing that one *public preview*, not writing to the vault, whose write gate remains closed — and the owner has been advised to rotate it. It stays on this page because the finding class is the lesson: bookkeeping written into vault content travels with the read key forever. The newer pattern — owner secrets double-encrypted, as the row above shows this same vault doing for its read-only tokens — is the fix.
+
+## What this shape is for
+
+Photo albums, trip diaries, family archives, portfolio galleries — anything where the pictures should not sit plaintext on someone else’s server, but a single shareable key should open the whole experience, chapters and captions included. This is the first of several galleries in [the catalogue’s](../catalogue/index.md) awaiting list.
+
+## Derived facts
+
+71 files · 29 MB · 36 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
 
 
 
@@ -2814,11 +3041,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.18**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.19**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.18 | 2026-08-16 | this release | The tag pipeline's first contact with a real GitHub rule, fixed within the hour. v0.2.17's run DID tag itself — the first CI-authored tag — but the historical backfill push was rejected wholesale: a workflow's GITHUB_TOKEN cannot push any ref pointing at a commit whose tree carries a different version of a workflow file, and the `workflows` permission that would allow it is not grantable to that token. Every pre-v0.2.17 release predates the current deploy-pages.yml, so all 33 backfill tags bounced — and because the tag job failed, the deploy was skipped and v0.2.17 never reached the live site (this release carries its changes out). The fix splits the pushes by what they are: THIS release's tag at HEAD is load-bearing and fails the job if rejected (it never should be — HEAD's workflow blob matches the branch, which is why v0.2.17's own tag went through); the historical backfill is best-effort per tag, warns per rejection, and emits one notice with the single human command that completes the set — `git push origin --tags` from any workflows-scoped credential. Once a human has done that once, the backfill loop becomes a chain of no-ops. Lesson recorded for the case-studies pile: the same both-remotes discipline that made CI verify-and-tag instead of commit-and-tag also meant the failure cost nothing but a skipped deploy — no bump commit was stranded on one side of the two-VCS split. |
+| v0.2.19 | 2026-08-16 | this release | The site starts doing the thing it was building toward: publishing vaults. New /vaults/ section — an index of every read key this site has deliberately published, and one page per vault (five at launch: Field Notes, Strategy Maps, Deploy Docs, the Catalogue itself, and — new — Algarve · May 2026) with a real description, the features that vault exercises, what the shape is good for, the derived facts, the key as a copyable sgit_rk1_ credential with a CLI command and an open-in-the-official-UI link, and the vault RUNNING LIVE in the page via the reusable embed component (assets/vault-ui-embed.js — the two-surface embed-protocol host from the demo page, now attribute-driven; App Mode hidden for vaults without an app). Pages load the component contract-compliantly (fetch+eval, no script src — every page must survive being served from inside a vault). The Algarve vault is the first entry processed through the catalogue's submission queue as designed: read key supplied in chat, everything else derived — 71 files, 29 MB (60 WebP photos in originals/web/thumbs), 36 commits, auto-opening gallery app with a chaptered narrative. Its pre-publication audit is published on the page per the rules: one finding (a live delete_auth token in public-preview bookkeeping — narrow scope, the owner advised to rotate) and one counterpoint worth showcasing (the same vault's readonly-tokens bookkeeping decrypts to further ciphertext: owner secrets double-encrypted, the pattern that fixes the finding class). Catalogue vault updated in the same breath — new entry, trip-gallery-1 ticked off the awaiting list (7 remain) — and /catalogue/ picked it up with no site deploy, which is that design working. |
+| v0.2.18 | 2026-08-16 | obj-cas-imm-68578f7b1bf4 | The tag pipeline's first contact with a real GitHub rule, fixed within the hour. v0.2.17's run DID tag itself — the first CI-authored tag — but the historical backfill push was rejected wholesale: a workflow's GITHUB_TOKEN cannot push any ref pointing at a commit whose tree carries a different version of a workflow file, and the `workflows` permission that would allow it is not grantable to that token. Every pre-v0.2.17 release predates the current deploy-pages.yml, so all 33 backfill tags bounced — and because the tag job failed, the deploy was skipped and v0.2.17 never reached the live site (this release carries its changes out). The fix splits the pushes by what they are: THIS release's tag at HEAD is load-bearing and fails the job if rejected (it never should be — HEAD's workflow blob matches the branch, which is why v0.2.17's own tag went through); the historical backfill is best-effort per tag, warns per rejection, and emits one notice with the single human command that completes the set — `git push origin --tags` from any workflows-scoped credential. Once a human has done that once, the backfill loop becomes a chain of no-ops. Lesson recorded for the case-studies pile: the same both-remotes discipline that made CI verify-and-tag instead of commit-and-tag also meant the failure cost nothing but a skipped deploy — no bump commit was stranded on one side of the two-VCS split. |
 | v0.2.17 | 2026-08-16 | obj-cas-imm-24876be44e37 | Two reader-driven fixes and the release pipeline grows tags. (1) Layout: the embed buttons and their status line sit back in the text column where they belong — only the vault surface itself breaks out wide, since it is the thing with the big UX. (2) CI tagging, ported from the VoiceDebrief website pipeline (validate → tag → publish, every push to dev a minor release tagged v{release}.{major}.{minor}) with one deliberate adaptation: the upstream OSBot action has CI commit a version-file bump, but this repo is simultaneously an sgit vault, and a CI-authored commit would exist only on the git side — breaking the both-remotes-in-sync invariant release.sh enforces. Here CI verifies-and-tags instead of owning: SITE_VERSION (bumped once per release by release.sh) must match the release commit's subject and be the next minor after the latest tag, then the commit is tagged. No CI commits, no drift, same discipline — and a forgotten bump now fails the pipeline loudly instead of shipping quietly. The first run backfills tags for every historical release by parsing the commit subjects, so the whole v0.1.9→now history becomes navigable by tag. Also: validate.js now runs in CI as the gate before tagging and publishing, which puts the key-leak tripwire on the deployment path as well as the release path. (Tags could not be pushed from the authoring session — the session's git proxy authorizes branch pushes only, which settled the design question of who owns tags: CI does.) |
 | v0.2.16 | 2026-08-16 | obj-cas-imm-34ed83dd03e6 | The embed grows up: both official surfaces, one click each, over the UI's new embed protocol. Reading the deployed bundle found what the addendum's Phase 3 had shipped — embed-protocol.js and a shared embed-receiver on BOTH shells: the host page loads ?embed=1&parent=, the frame proves itself with vault-embed-ready, and only then is the key sent by postMessage with the targetOrigin pinned. Strictly better than the URL-fragment flow shipped yesterday: the key never appears in any URL, is never written to the frame's storage (verified — sessionStorage and localStorage empty after open, memory-only as the protocol promises), and the host gets structured vault-ready/vault-error events instead of guessing from load timings. The demo page now has two buttons: App Mode, and — new — the vault browser with the FILES/SGIT/SETTINGS rail, which previously needed a two-step trick because /en-gb/vault deliberately strips URL hashes and root is the only inbox. Headless-verified both: App Mode ready in 2.7s, browser in 9.7s, rail present, R1 W0 badge, no horizontal scroll. The embed area breaks out of the text column (94vw up to 1680px, height tracking the viewport) because the vault browser is a full working surface, plus a full-screen button — both asked for by a reader with big-UX vaults. What is still not possible is stated precisely on the page: vault-open carries {key, mode, deepLink} where deepLink is a file path, so a host can select a SURFACE but not a VIEW — SGIT and SETTINGS remain in-page events. The briefing gains an addendum thanking the UI team, recording the verification, and sharpening the last ask to one optional field: view:'files'|'sgit'|'settings' on vault-open, applied after mount. Also fixes a stale paragraph v0.2.15 left behind (a silent curly-quote replace failure) — the page no longer promises a swap that already happened. |
 | v0.2.15 | 2026-08-15 | obj-cas-imm-576ba8a1a09f | The gap closed: the official SG/Vault interface now opens from a published read key, and this site embeds it. Our v0.2.7 experiment had isolated the blocker to exactly one thing — the loader documented a read-only credential but rejected it, and the CLI shorthand was parsed as a passphrase and PBKDF2'd into the wrong ref id. The UI team shipped the fix: a read-key credential is now its own format (<64-hex>:, the shape sgit clone already accepted) and is tested BEFORE the passphrase formats, which was the precise ordering bug; canonical CLI key prefixes are stripped first. Re-running the same experiment against the deployed build, read key only, no vault key anywhere: all three credential forms parse; App Mode boots the Field Notes demo under full chrome with its six studies rendered and the bridge live; the vault browser opens with the FILES/SGIT/SETTINGS rail over the real decrypted tree; and the SGit view lists both commits with real object ids — all inside a cross-origin iframe, with an explicit R1 W0 / Read-only badge. So /demos/vault-app-embed.html now carries TWO hosts and keeps both on purpose: the ~170-line minimal host that shows the protocol with nothing hidden, and the official UI opened with the same published key. One ask stays open and is stated as such — no URL selects a view, so the SGit inspector cannot yet be framed in isolation. Also: the release tripwire learned the CLI's canonical WRITE-key prefix (its read-only sibling is deliberately exempt — we publish one), proven by making it fail before trusting it; it promptly caught this very release note's first draft, which had spelled the banned prefix out while explaining it. The hub capability audit is updated with verified evidence — row 1, the entry point for everything, flips from partial to present, which settles the spec's assembly-not-construction question for the forge's read-only tier. |

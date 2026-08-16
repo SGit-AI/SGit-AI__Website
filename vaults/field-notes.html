@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Field Notes — a published vault</title>
+<meta name="description" content="The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.">
+<link rel="canonical" href="https://sgit.ai/vaults/field-notes.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/vaults/field-notes.html">
+<meta property="og:title" content="Field Notes — a published vault">
+<meta property="og:description" content="The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="field-notes.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Field Notes — a published vault", "headline": "Field Notes — a published vault", "description": "The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.", "url": "https://sgit.ai/vaults/field-notes.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.19</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
+  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl" href="../catalogue/index.html">Catalogue</a>
+  <a class="nl here" href="../vaults/index.html">Vaults</a>
+  <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Vaults</a> / Field Notes</p>
+  <h1>Field Notes</h1>
+  <p class="lead">Six small studies — a note and a generative SVG drawing each — served as a self-contained vault app.</p>
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n</code><br>
+  <span class="small dim">Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the <b>R1 W0</b> badge you will see in the chrome).</span></div>
+
+  <h2>See it live, here</h2>
+  <div class="sgv-uiembed" data-vault="4bshby5n" data-readkey="2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81" data-app="1"></div>
+  <script>
+  /* Contract-compliant loader: no <script src> anywhere on this site, because every
+     page must survive being served from inside a vault, where declarative refs
+     cannot be answered. Fetch + eval, same pattern as the deploy page. */
+  (function () {
+    fetch('../assets/vault-ui-embed.js')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (t) { (0, eval)(t); })
+      .catch(function (e) { console.error('[vaults] embed component failed to load:', e); });
+  }());
+  </script>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td>Vault app (<code>app.json</code>)</td><td>one self-contained <code>index.html</code>, auto-opened; CSS and JS inlined per the authoring contract</td></tr>
+    <tr><td><code>sg.vfs</code> bridge</td><td>the app reads <code>content.json</code> over the bridge at runtime — the status line in the app proves it</td></tr>
+    <tr><td>Generative SVG</td><td>the six drawings are code, not images — no binary assets to fetch</td></tr>
+    <tr><td>Published read key</td><td>the first vault created specifically to be published; the complete walkthrough is on <a href="../demos/vault-app-embed.html">the embed demo page</a></td></tr>
+  </table></div>
+  <h2>What this shape is for</h2>
+  <p>The minimum viable published vault: content plus a small app, one key, no server that can read any of it. Use this shape for anything you would put on a small static site — except the host serves only ciphertext, and unpublishing is deleting one credential from a page rather than tearing down a site.</p>
+
+  <h2>Derived facts</h2>
+  <p>4 files · 11 KB · 2 commits · app entry <code>index.html</code> · derived from the read key alone by <code>admin/build/catalogue_derive.py</code> — the same derivation that populates <a href="../catalogue/index.html">the catalogue</a>, where this vault also has an entry.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.19</a> · <a href="../admin/index.html">engineering</a> · <a href="field-notes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

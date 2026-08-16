@@ -1,237 +1,273 @@
 [
-  {
-    "path": "index.html",
-    "section": "home",
-    "title": "sgit — the encrypted git for humans and AI agents",
-    "desc": "sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data."
-  },
-  {
-    "path": "catalogue/index.html",
-    "section": "catalogue",
-    "title": "The vault catalogue — sgit.ai",
-    "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
-  },
-  {
-    "path": "demos/index.html",
-    "section": "demos",
-    "title": "Demos — sgit.ai",
-    "desc": "Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key."
-  },
-  {
-    "path": "demos/vault-app-embed.html",
-    "section": "demos",
-    "title": "A vault app, live inside this page — sgit.ai demos",
-    "desc": "The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge."
-  },
-  {
-    "path": "demos/strategy-maps.html",
-    "section": "demos",
-    "title": "The Strategy in Seven Maps — a real document republished from a vault — sgit.ai demos",
-    "desc": "The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it."
-  },
-  {
-    "path": "demos/sgit-maps.html",
-    "section": "demos",
-    "title": "sgit, on a Wardley Map — sgit.ai demos",
-    "desc": "Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key."
-  },
-  {
-    "path": "use-cases/index.html",
-    "section": "use-cases",
-    "title": "Use cases — sgit",
-    "desc": "Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows."
-  },
-  {
-    "path": "use-cases/serialised-pull-request.html",
-    "section": "use-cases",
-    "title": "The serialised pull request — sgit use cases",
-    "desc": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table."
-  },
-  {
-    "path": "use-cases/ai-agents.html",
-    "section": "use-cases",
-    "title": "Agent state that isn't the vendor's to read — sgit use cases",
-    "desc": "Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website)."
-  },
-  {
-    "path": "use-cases/professional-services.html",
-    "section": "use-cases",
-    "title": "Working documents with clients — sgit use cases",
-    "desc": "Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key."
-  },
-  {
-    "path": "use-cases/security-teams.html",
-    "section": "use-cases",
-    "title": "Findings about your own weaknesses — sgit use cases",
-    "desc": "Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way."
-  },
-  {
-    "path": "use-cases/health-regulated.html",
-    "section": "use-cases",
-    "title": "Data that changes what is permissible — sgit use cases",
-    "desc": "What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims."
-  },
-  {
-    "path": "case-studies/index.html",
-    "section": "case-studies",
-    "title": "Case studies — sgit.ai",
-    "desc": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it."
-  },
-  {
-    "path": "case-studies/one-tree-two-remotes.html",
-    "section": "case-studies",
-    "title": "One working tree, two version control systems — sgit.ai case study",
-    "desc": "How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync."
-  },
-  {
-    "path": "security/index.html",
-    "section": "security",
-    "title": "Security model — sgit",
-    "desc": "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process."
-  },
-  {
-    "path": "why/index.html",
-    "section": "why",
-    "title": "Why does this exist? — sgit.ai",
-    "desc": "A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions."
-  },
-  {
-    "path": "deploy/index.html",
-    "section": "deploy",
-    "title": "Run your own SG/Send server — sgit.ai",
-    "desc": "Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site."
-  },
-  {
-    "path": "case-studies/live-vault-docs.html",
-    "section": "case-studies",
-    "title": "A live site whose host cannot read it — sgit.ai case study",
-    "desc": "A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path."
-  },
-  {
-    "path": "try/index.html",
-    "section": "try",
-    "title": "Try sgit in your browser — sgit.ai",
-    "desc": "The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page."
-  },
-  {
-    "path": "skills/index.html",
-    "section": "skills",
-    "title": "Skills for AI agents — sgit",
-    "desc": "Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content."
-  },
-  {
-    "path": "docs/index.html",
-    "section": "docs",
-    "title": "Documentation — sgit",
-    "desc": "sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page."
-  },
-  {
-    "path": "docs/what-is-sgit.html",
-    "section": "docs",
-    "title": "What is sgit — Docs",
-    "desc": "sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it."
-  },
-  {
-    "path": "docs/installation.html",
-    "section": "docs",
-    "title": "Installation — sgit Docs",
-    "desc": "Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies."
-  },
-  {
-    "path": "docs/quickstart.html",
-    "section": "docs",
-    "title": "Quickstart — sgit Docs",
-    "desc": "From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull."
-  },
-  {
-    "path": "docs/sgit-for-git-users.html",
-    "section": "docs",
-    "title": "sgit for git users — Docs",
-    "desc": "The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences."
-  },
-  {
-    "path": "docs/two-branch-model.html",
-    "section": "docs",
-    "title": "The two-branch model — sgit Docs",
-    "desc": "sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing."
-  },
-  {
-    "path": "docs/agents.html",
-    "section": "docs",
-    "title": "Working with AI agents — sgit Docs",
-    "desc": "The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration."
-  },
-  {
-    "path": "docs/limitations.html",
-    "section": "docs",
-    "title": "When NOT to use sgit — Docs",
-    "desc": "The honest page: sgit's edges, stated plainly, plus the current roadmap gaps."
-  },
-  {
-    "path": "case-studies/exposed-vault-key.html",
-    "section": "case-studies",
-    "title": "The day we leaked our own vault key — sgit.ai case study",
-    "desc": "The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website."
-  },
-  {
-    "path": "briefs/index.html",
-    "section": "briefs",
-    "title": "Cross-team briefs — sgit.ai",
-    "desc": "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings."
-  },
-  {
-    "path": "vault/index.html",
-    "section": "vault",
-    "title": "SG/Vault & the vault platform — sgit.ai",
-    "desc": "The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps."
-  },
-  {
-    "path": "vault/vault-apps.html",
-    "section": "vault",
-    "title": "Building vault apps — SG/Vault",
-    "desc": "How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push."
-  },
-  {
-    "path": "vault/sg-bridge.html",
-    "section": "vault",
-    "title": "The window.sg bridge — SG/Vault",
-    "desc": "The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free."
-  },
-  {
-    "path": "vault/content-authoring.html",
-    "section": "vault",
-    "title": "Content authoring — SG/Vault",
-    "desc": "Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types."
-  },
-  {
-    "path": "vault/sub-vaults.html",
-    "section": "vault",
-    "title": "Sub-vaults — SG/Vault",
-    "desc": "Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow."
-  },
-  {
-    "path": "vault/git-and-vaults.html",
-    "section": "vault",
-    "title": "Git repos inside vaults — SG/Vault",
-    "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview."
-  },
-  {
-    "path": "vault/static-hosting.html",
-    "section": "vault",
-    "title": "Static hosting on GitHub Pages — SG/Vault",
-    "desc": "Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation."
-  },
-  {
-    "path": "admin/index.html",
-    "section": "admin",
-    "title": "Admin & engineering — sgit.ai",
-    "desc": "How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline."
-  },
-  {
-    "path": "admin/versions.html",
-    "section": "admin",
-    "title": "Release history — sgit.ai",
-    "desc": "Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.",
-    "dynamic": "versions"
-  }
+ {
+  "path": "index.html",
+  "section": "home",
+  "title": "sgit — the encrypted git for humans and AI agents",
+  "desc": "sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data."
+ },
+ {
+  "path": "catalogue/index.html",
+  "section": "catalogue",
+  "title": "The vault catalogue — sgit.ai",
+  "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
+ },
+ {
+  "path": "vaults/index.html",
+  "section": "vaults",
+  "title": "Published vaults — sgit.ai",
+  "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability."
+ },
+ {
+  "path": "vaults/field-notes.html",
+  "section": "vaults",
+  "title": "Field Notes — a published vault",
+  "desc": "The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key."
+ },
+ {
+  "path": "vaults/strategy-maps.html",
+  "section": "vaults",
+  "title": "Strategy Maps — a published vault",
+  "desc": "The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary."
+ },
+ {
+  "path": "vaults/deploy-docs.html",
+  "section": "vaults",
+  "title": "Deploy Docs — a published vault",
+  "desc": "The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy."
+ },
+ {
+  "path": "vaults/catalogue.html",
+  "section": "vaults",
+  "title": "The Vault Catalogue — a published vault",
+  "desc": "The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status."
+ },
+ {
+  "path": "vaults/algarve-photos.html",
+  "section": "vaults",
+  "title": "Algarve · May 2026 — a published vault",
+  "desc": "A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page."
+ },
+ {
+  "path": "demos/index.html",
+  "section": "demos",
+  "title": "Demos — sgit.ai",
+  "desc": "Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key."
+ },
+ {
+  "path": "demos/vault-app-embed.html",
+  "section": "demos",
+  "title": "A vault app, live inside this page — sgit.ai demos",
+  "desc": "The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge."
+ },
+ {
+  "path": "demos/strategy-maps.html",
+  "section": "demos",
+  "title": "The Strategy in Seven Maps — a real document republished from a vault — sgit.ai demos",
+  "desc": "The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it."
+ },
+ {
+  "path": "demos/sgit-maps.html",
+  "section": "demos",
+  "title": "sgit, on a Wardley Map — sgit.ai demos",
+  "desc": "Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key."
+ },
+ {
+  "path": "use-cases/index.html",
+  "section": "use-cases",
+  "title": "Use cases — sgit",
+  "desc": "Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows."
+ },
+ {
+  "path": "use-cases/serialised-pull-request.html",
+  "section": "use-cases",
+  "title": "The serialised pull request — sgit use cases",
+  "desc": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table."
+ },
+ {
+  "path": "use-cases/ai-agents.html",
+  "section": "use-cases",
+  "title": "Agent state that isn't the vendor's to read — sgit use cases",
+  "desc": "Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website)."
+ },
+ {
+  "path": "use-cases/professional-services.html",
+  "section": "use-cases",
+  "title": "Working documents with clients — sgit use cases",
+  "desc": "Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key."
+ },
+ {
+  "path": "use-cases/security-teams.html",
+  "section": "use-cases",
+  "title": "Findings about your own weaknesses — sgit use cases",
+  "desc": "Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way."
+ },
+ {
+  "path": "use-cases/health-regulated.html",
+  "section": "use-cases",
+  "title": "Data that changes what is permissible — sgit use cases",
+  "desc": "What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims."
+ },
+ {
+  "path": "case-studies/index.html",
+  "section": "case-studies",
+  "title": "Case studies — sgit.ai",
+  "desc": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it."
+ },
+ {
+  "path": "case-studies/one-tree-two-remotes.html",
+  "section": "case-studies",
+  "title": "One working tree, two version control systems — sgit.ai case study",
+  "desc": "How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync."
+ },
+ {
+  "path": "security/index.html",
+  "section": "security",
+  "title": "Security model — sgit",
+  "desc": "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process."
+ },
+ {
+  "path": "why/index.html",
+  "section": "why",
+  "title": "Why does this exist? — sgit.ai",
+  "desc": "A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions."
+ },
+ {
+  "path": "deploy/index.html",
+  "section": "deploy",
+  "title": "Run your own SG/Send server — sgit.ai",
+  "desc": "Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site."
+ },
+ {
+  "path": "case-studies/live-vault-docs.html",
+  "section": "case-studies",
+  "title": "A live site whose host cannot read it — sgit.ai case study",
+  "desc": "A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path."
+ },
+ {
+  "path": "try/index.html",
+  "section": "try",
+  "title": "Try sgit in your browser — sgit.ai",
+  "desc": "The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page."
+ },
+ {
+  "path": "skills/index.html",
+  "section": "skills",
+  "title": "Skills for AI agents — sgit",
+  "desc": "Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content."
+ },
+ {
+  "path": "docs/index.html",
+  "section": "docs",
+  "title": "Documentation — sgit",
+  "desc": "sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page."
+ },
+ {
+  "path": "docs/what-is-sgit.html",
+  "section": "docs",
+  "title": "What is sgit — Docs",
+  "desc": "sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it."
+ },
+ {
+  "path": "docs/installation.html",
+  "section": "docs",
+  "title": "Installation — sgit Docs",
+  "desc": "Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies."
+ },
+ {
+  "path": "docs/quickstart.html",
+  "section": "docs",
+  "title": "Quickstart — sgit Docs",
+  "desc": "From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull."
+ },
+ {
+  "path": "docs/sgit-for-git-users.html",
+  "section": "docs",
+  "title": "sgit for git users — Docs",
+  "desc": "The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences."
+ },
+ {
+  "path": "docs/two-branch-model.html",
+  "section": "docs",
+  "title": "The two-branch model — sgit Docs",
+  "desc": "sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing."
+ },
+ {
+  "path": "docs/agents.html",
+  "section": "docs",
+  "title": "Working with AI agents — sgit Docs",
+  "desc": "The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration."
+ },
+ {
+  "path": "docs/limitations.html",
+  "section": "docs",
+  "title": "When NOT to use sgit — Docs",
+  "desc": "The honest page: sgit's edges, stated plainly, plus the current roadmap gaps."
+ },
+ {
+  "path": "case-studies/exposed-vault-key.html",
+  "section": "case-studies",
+  "title": "The day we leaked our own vault key — sgit.ai case study",
+  "desc": "The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website."
+ },
+ {
+  "path": "briefs/index.html",
+  "section": "briefs",
+  "title": "Cross-team briefs — sgit.ai",
+  "desc": "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings."
+ },
+ {
+  "path": "vault/index.html",
+  "section": "vault",
+  "title": "SG/Vault & the vault platform — sgit.ai",
+  "desc": "The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps."
+ },
+ {
+  "path": "vault/vault-apps.html",
+  "section": "vault",
+  "title": "Building vault apps — SG/Vault",
+  "desc": "How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push."
+ },
+ {
+  "path": "vault/sg-bridge.html",
+  "section": "vault",
+  "title": "The window.sg bridge — SG/Vault",
+  "desc": "The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free."
+ },
+ {
+  "path": "vault/content-authoring.html",
+  "section": "vault",
+  "title": "Content authoring — SG/Vault",
+  "desc": "Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types."
+ },
+ {
+  "path": "vault/sub-vaults.html",
+  "section": "vault",
+  "title": "Sub-vaults — SG/Vault",
+  "desc": "Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow."
+ },
+ {
+  "path": "vault/git-and-vaults.html",
+  "section": "vault",
+  "title": "Git repos inside vaults — SG/Vault",
+  "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview."
+ },
+ {
+  "path": "vault/static-hosting.html",
+  "section": "vault",
+  "title": "Static hosting on GitHub Pages — SG/Vault",
+  "desc": "Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation."
+ },
+ {
+  "path": "admin/index.html",
+  "section": "admin",
+  "title": "Admin & engineering — sgit.ai",
+  "desc": "How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline."
+ },
+ {
+  "path": "admin/versions.html",
+  "section": "admin",
+  "title": "Release history — sgit.ai",
+  "desc": "Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.",
+  "dynamic": "versions"
+ }
 ]
