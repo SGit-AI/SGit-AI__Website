@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.22). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.23). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -202,7 +202,7 @@ Encrypted vaults. **Git workflows.** Zero knowledge.
 
 An index of published vaults, rendered live from a vault that indexes vaults — including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.
 
-**The design constraint, stated openly:** the bottleneck is one person with a backlog of vaults, so an entry costs **a read key and one line** — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault `kc67yhgw` directly — a push to it updates this page with no site deploy. The human companion is [the published-vaults gallery](../vaults/index.md): one page per vault, with the vault running live in it.
+**The design constraint, stated openly:** the bottleneck is one person with a backlog of vaults, so an entry costs **a read key and one line** — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault `kc67yhgw` directly — a push to it updates this page with no site deploy. The human companion is [the published-vaults gallery](../demos/vaults/index.md): one page per vault, with the vault running live in it.
 
 opening the catalogue…
 
@@ -227,9 +227,9 @@ The **tree** objects are the reason a first visit reads more than one file: file
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 >
-> Page: https://sgit.ai/vaults/index.html
+> Page: https://sgit.ai/demos/vaults/index.html
 
-[Home](../index.md) / Vaults
+[Home](../../index.md) / Vaults
 
 # Published vaults
 
@@ -239,13 +239,14 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | Vault | Id | Shape | Contents | Published read key |  |
 |---|---|---|---|---|---|
-| [Field Notes](field-notes.md) | `4bshby5n` | application (vault app) | 4 files · 11 KB · 2 commits · app entry `index.html` | `sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n) |
-| [Strategy Maps](strategy-maps.md) | `ookq4mn4` | structured analysis (two apps, one vault) | 33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` | `sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4) |
-| [Deploy Docs](deploy-docs.md) | `fyofmkvr` | record-keeping (live markdown) | 17 files · 25 KB · 2 commits · markdown, no app | `sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1%3Afyofmkvr) |
-| [The Vault Catalogue](catalogue.md) | `kc67yhgw` | record-keeping (an index of vaults) | 9 files · 11 KB · 2 commits · markdown, no app | `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) |
-| [Algarve · May 2026](algarve-photos.md) | `3d04e6b9ca98` | gallery (photo story) | 71 files · 29 MB · 36 commits · app entry `index.html` | `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) |
+| [Field Notes](field-notes/index.md) | `4bshby5n` | application (vault app) | 4 files · 11 KB · 2 commits · app entry `index.html` | `sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n) |
+| [Strategy Maps](strategy-maps/index.md) | `ookq4mn4` | structured analysis (two apps, one vault) | 33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` | `sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4) |
+| [Deploy Docs](deploy-docs/index.md) | `fyofmkvr` | record-keeping (live markdown) | 17 files · 25 KB · 2 commits · markdown, no app | `sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1%3Afyofmkvr) |
+| [The Vault Catalogue](catalogue/index.md) | `kc67yhgw` | record-keeping (an index of vaults) | 9 files · 11 KB · 2 commits · markdown, no app | `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) |
+| [Algarve · May 2026](algarve-may-2026/index.md) | `3d04e6b9ca98` | gallery (photo story) | 71 files · 29 MB · 36 commits · app entry `index.html` | `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) |
+| [Supplement Stack](supplement-stack/index.md) | `r7zes477` | record-keeping (patient-held health record) | 23 files · 2.3 MB · 5 commits · app entry `index.html` | `sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477) |
 
-The machine-first version of this list is [the catalogue](../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../demos/vault-app-embed.md).
+The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
 
 
@@ -254,9 +255,9 @@ The machine-first version of this list is [the catalogue](../catalogue/index.md)
 
 > The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key.
 >
-> Page: https://sgit.ai/vaults/field-notes.html
+> Page: https://sgit.ai/demos/vaults/field-notes/index.html
 
-[Home](../index.md) / [Vaults](index.md) / Field Notes
+[Home](../../../index.md) / [Vaults](../../../index.md) / Field Notes
 
 # Field Notes
 
@@ -276,7 +277,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 | Vault app (`app.json`) | one self-contained `index.html`, auto-opened; CSS and JS inlined per the authoring contract |
 | `sg.vfs` bridge | the app reads `content.json` over the bridge at runtime — the status line in the app proves it |
 | Generative SVG | the six drawings are code, not images — no binary assets to fetch |
-| Published read key | the first vault created specifically to be published; the complete walkthrough is on [the embed demo page](../demos/vault-app-embed.md) |
+| Published read key | the first vault created specifically to be published; the complete walkthrough is on [the embed demo page](../../vault-app-embed.md) |
 
 ## What this shape is for
 
@@ -284,7 +285,7 @@ The minimum viable published vault: content plus a small app, one key, no server
 
 ## Derived facts
 
-4 files · 11 KB · 2 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+4 files · 11 KB · 2 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 
@@ -293,9 +294,9 @@ The minimum viable published vault: content plus a small app, one key, no server
 
 > The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary.
 >
-> Page: https://sgit.ai/vaults/strategy-maps.html
+> Page: https://sgit.ai/demos/vaults/strategy-maps/index.html
 
-[Home](../index.md) / [Vaults](index.md) / Strategy Maps
+[Home](../../../index.md) / [Vaults](../../../index.md) / Strategy Maps
 
 # Strategy Maps
 
@@ -314,7 +315,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 |---|---|
 | Two app entry points | `index.html` (the strategy essay, eight Wardley map PNGs) and `sgit-maps.html` (six inline-SVG maps) — one encrypted store, two front doors |
 | Vault-path images | the essay’s PNGs travel as ciphertext and are swapped in as `blob:` URLs after decryption |
-| Republish pattern | this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — [the audit is public](../demos/strategy-maps.md) |
+| Republish pattern | this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — [the audit is public](../../strategy-maps.md) |
 | Cross-app links | the two apps link to each other and the links survive embedding |
 
 ## What this shape is for
@@ -323,7 +324,7 @@ Published analysis with real assets: strategy documents, briefs, decks. The two-
 
 ## Derived facts
 
-33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 
@@ -332,9 +333,9 @@ Published analysis with real assets: strategy documents, briefs, decks. The two-
 
 > The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy.
 >
-> Page: https://sgit.ai/vaults/deploy-docs.html
+> Page: https://sgit.ai/demos/vaults/deploy-docs/index.html
 
-[Home](../index.md) / [Vaults](index.md) / Deploy Docs
+[Home](../../../index.md) / [Vaults](../../../index.md) / Deploy Docs
 
 # Deploy Docs
 
@@ -351,7 +352,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 | Feature | How this vault uses it |
 |---|---|
-| Live markdown rendering | [the /deploy page](../deploy/index.md) decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy |
+| Live markdown rendering | [the /deploy page](../../../deploy/index.md) decrypts and renders this vault in the visitor’s browser — a push here updates that page with no site deploy |
 | Freshness window | the mutable HEAD pointer is checked at most once per 120 s; everything else is content-addressed and cached forever |
 | Two writers | written by two Claude Code sessions collaborating through the vault — the commit history shows the handoffs |
 | Debug panel | the page’s vault panel shows every encrypted object arriving and what it decrypts to |
@@ -362,7 +363,7 @@ Documentation that updates without a deploy pipeline, from any writer who holds 
 
 ## Derived facts
 
-17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+17 files · 25 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 
@@ -371,9 +372,9 @@ Documentation that updates without a deploy pipeline, from any writer who holds 
 
 > The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status.
 >
-> Page: https://sgit.ai/vaults/catalogue.html
+> Page: https://sgit.ai/demos/vaults/catalogue/index.html
 
-[Home](../index.md) / [Vaults](index.md) / The Vault Catalogue
+[Home](../../../index.md) / [Vaults](../../../index.md) / The Vault Catalogue
 
 # The Vault Catalogue
 
@@ -390,7 +391,7 @@ Published deliberately. It grants read, and only read — a write attempt is ref
 
 | Feature | How this vault uses it |
 |---|---|
-| Recursion, usefully | an index of published vaults that is itself a published vault, listed in itself — [rendered live at /catalogue/](../catalogue/index.md) |
+| Recursion, usefully | an index of published vaults that is itself a published vault, listed in itself — [rendered live at /catalogue/](../../../catalogue/index.md) |
 | Submission queue | an entry costs a read key and one line; everything else is derived by an agent opening the vault |
 | Published to-do lists | `todo/awaiting-read-key.md` and `todo/awaiting-processing.md` are public, because a named gap gets filled |
 | First-class write-key status | every entry records whether the write key is escrowed or lost, because a frozen vault can never be corrected |
@@ -401,7 +402,114 @@ Machine-and-human-readable registries that update by pushing to a vault rather t
 
 ## Derived facts
 
-9 files · 11 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+9 files · 11 KB · 2 commits · markdown, no app · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
+
+
+
+==============================================================================
+# Supplement Stack — a published vault
+
+> A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key.
+>
+> Page: https://sgit.ai/demos/vaults/supplement-stack/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Supplement Stack
+
+# Supplement Stack
+
+A patient-held health record as a vault: a real supplement regimen, a photograph of every label the numbers were read from, deterministic totals against UK reference values — and an app permitted to write to exactly one folder and nothing else.
+
+**The idea it is built on, in one line.** Every label describes one product; **nothing describes the sum**. The missing artefact is the total per nutrient across everything a person is taking — so the model extracts (fuzzy, and traceable to a label photo), the code adds up (deterministic, and reproducible), and the output is a briefing for somebody qualified. **Never a verdict.** This is a record-keeping tool, not medical advice, and no compliance finding of any kind exists for this pattern.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477) · From the CLI: `sgit clone sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477`
+Published deliberately. It grants read, and only read — a write attempt is refused by the server's write gate.
+
+## See it live, here
+
+Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477).
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| **Scoped write permission** | `app.json` grants the app `read` over everything but `write` and `mkdir` over `adherence/`*only*. The app that records what you took each day cannot touch the regimen, the label photographs or the references — least authority, declared in the vault and enforced by the host |
+| Source-mapped extraction | every amount in `regimen.json` carries a `label_image` pointing at the photograph it was read from, so a misread is *visible* rather than propagated — the same discipline a diff gives code |
+| Deterministic analysis | `scripts/totals.py` sums per nutrient with its rules stated in the open: topicals contribute nothing, as-needed items sit outside daily totals, and a null amount is **flagged, never guessed**. The in-app JavaScript does the same arithmetic, so two implementations can be checked against each other |
+| Named, dated reference data | UK RNIs and EFSA upper limits, with sources and a transcription note — explicitly *not* US Daily Values, because comparing a UK intake to US references without saying so would be a quiet error |
+| Honest incompleteness | one product's 27-nutrient panel is not yet captured, so the app labels the totals **INCOMPLETE** rather than showing a confident wrong number |
+| The brief ships with the vault | `briefs/` carries the architecture brief the whole thing was built from — the reasoning travels with the artefact |
+
+## What is going on here, step by step
+
+The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.
+
+the daily record
+
+### What was actually taken, not what was intended
+
+The **Today** tab is a checklist of the day's regimen, grouped by timing. Ticking an item and pressing **Save today** writes one small JSON file — `adherence/2026-08-16.json` — into the vault.
+
+That distinction is the point: a regimen file says what you *mean* to take; the adherence log says what you *did*. When the conversation with a professional finally happens, the second is the honest input.
+
+The Today tab: per-item, per-timing, with a Save that writes into the vault.
+
+traceable extraction
+
+### Every number points back at the photograph it came from
+
+The **Stack** tab lists each product with its dose, timing, route — and the label photograph the amounts were read from. A model did that reading, which is a fuzzy step, so each value carries a `label_image` back to its source.
+
+This is the source-map discipline applied to health data: a misreading stays *visible* and checkable against the picture, instead of quietly becoming a number in a total.
+
+The Stack: products, doses and the label photograph behind each set of numbers.
+
+the missing artefact
+
+### The sum nobody else computes
+
+This is the tab the whole vault exists for. Every label describes one product; **nothing describes the sum**. Here it is: total per nutrient per day, each against the UK RNI and the EFSA upper limit, with the contributing products named.
+
+Two details matter more than the numbers. The reference set is *named and dated* (UK RNI + EFSA UL — deliberately not US Daily Values, for a regimen bought in the UK). And the amber banner says the totals are **incomplete**, listing exactly which amounts have not been captured: *"Nothing is guessed: a value that is not on a captured label is flagged, never estimated."*
+
+Totals per nutrient with ×RNI and ×UL ratios — and an honest incompleteness banner.
+
+never a verdict
+
+### The output is a briefing, not a diagnosis
+
+The **Briefing** tab assembles everything into something to hand to a pharmacist or GP: the stack, the totals, the overlaps, the open questions — *"Three products target the knee — is that a sensible combination or redundant?"*, *"Do any of these interact with my other medication?"*
+
+The tool deliberately stops there. It does the arithmetic nobody had done and hands the result to somebody qualified. It never answers the questions itself, and the vault says so on its own About tab.
+
+The Briefing: what to take to a professional, including the questions to ask.
+
+least authority
+
+### The app may write to one folder — and nothing else
+
+Here is the vault's own `app.json`, read straight out of the store. The permission block grants `read` broadly but `write` and `mkdir` over `adherence/` *only*.
+
+So the app that ticks off today's doses cannot alter the regimen, the label photographs, or the reference values — not by policy, but because the capability was never granted. This is what permissions look like when they are a property of the vault rather than a setting on a server, and it is the healthcare-shaped version of the whole argument.
+
+app.json: read broadly, write only adherence/ — least authority, declared in the vault.
+
+## Why this shape matters beyond supplements
+
+This is the clearest **patient-held record** on the site. The data lives in a vault the person controls; sharing it with a professional is handing over a read key, not granting an account on someone's platform, and not emailing a PDF that is copied forever the moment it arrives. The write key never leaves the owner, so a reader can read *everything* and change *nothing*.
+
+The division of labour is the transferable part: **a model does the fuzzy work** (reading amounts off a photograph), **code does the exact work** (adding them up), and every fuzzy step is traceable to its source so a human can check it. Any domain where an LLM reads documents and arithmetic must be right — expenses, lab results, invoices, dosing — can borrow that shape. See the [healthcare use case](../../../use-cases/health-regulated.md) for where this fits.
+
+## The audit, honestly
+
+Every vault is audited before its read key appears here. This one is **clean on credentials**: no tokens, no keys, no `.vault/` operational bookkeeping — and the scan for personal identifiers found none either (no name, address, contact details, date of birth or health-service number; the record describes its owner only as "UK-based adult male").
+
+What it *does* publish is a real person's actual supplement regimen, and the health context that can be inferred from it — a knee, sport, sleep. That is the owner's own data, published on purpose, and it is worth stating the rule that goes with it: **revocation is not retroactive**. Anybody who fetches these objects keeps them. Rotating the key protects future commits and returns nothing already read. The regimen is published because a real record demonstrates the pattern in a way a fabricated one cannot — and because the alternative, a sanitised sample, is exactly the thing this vault argues against.
+
+## Derived facts
+
+23 files · 2.3 MB · 5 commits · app entry `index.html` · twelve label photographs — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md).
 
 
 
@@ -410,9 +518,9 @@ Machine-and-human-readable registries that update by pushing to a vault rather t
 
 > A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page.
 >
-> Page: https://sgit.ai/vaults/algarve-photos.html
+> Page: https://sgit.ai/demos/vaults/algarve-may-2026/index.html
 
-[Home](../index.md) / [Vaults](index.md) / Algarve · May 2026
+[Home](../../../index.md) / [Vaults](../../../index.md) / Algarve · May 2026
 
 # Algarve · May 2026
 
@@ -509,11 +617,11 @@ Every vault gets an audit before its read key is published here, and this one ha
 
 ## What this shape is for
 
-Photo albums, trip diaries, family archives, portfolio galleries — anything where the pictures should not sit plaintext on someone else’s server, but a single shareable key should open the whole experience, chapters and captions included. This is the first of several galleries in [the catalogue’s](../catalogue/index.md) awaiting list.
+Photo albums, trip diaries, family archives, portfolio galleries — anything where the pictures should not sit plaintext on someone else’s server, but a single shareable key should open the whole experience, chapters and captions included. This is the first of several galleries in [the catalogue’s](../../../catalogue/index.md) awaiting list.
 
 ## Derived facts
 
-71 files · 29 MB · 36 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../catalogue/index.md), where this vault also has an entry.
+71 files · 29 MB · 36 commits · app entry `index.html` · derived from the read key alone by `admin/build/catalogue_derive.py` — the same derivation that populates [the catalogue](../../../catalogue/index.md), where this vault also has an entry.
 
 
 
@@ -1261,6 +1369,23 @@ $ sgit vault rekey                          # rotation — see the exposed-key r
 ```
 
 **Self-host if the storage layer is itself in scope.** The [deployment guidance](../deploy/index.md) covers Docker, AWS, GCP and a static host — and is itself served from an encrypted vault, which is a small demonstration of the property.
+
+## A worked example you can open right now
+
+The abstract version of this page is "the host cannot read it". The concrete version is a vault you can open in your browser in the next ten seconds: [**the Supplement Stack vault**](../demos/vaults/supplement-stack/index.md) — a real, patient-held health record, published with a read key.
+
+It is worth reading because it answers the questions this page raises in the specific rather than the general:
+
+| The question | How that vault answers it |
+|---|---|
+| Who holds the data? | The patient. The vault is theirs; the write key never leaves them |
+| How is it shared with a clinician? | By handing over a **read key** — no account on anyone's platform, no PDF emailed into permanent circulation. The reader sees everything and can change nothing |
+| What stops the app doing more than it should? | `app.json` grants write over `adherence/` and nothing else. The record-keeping app cannot alter the record it reports on — least authority, declared in the vault |
+| Where does AI fit without being dangerous? | A model does the fuzzy work (reading amounts off a label photograph, each value traceable back to its image); **code** does the exact work (summing them). Every fuzzy step is checkable against its source |
+| Does it give medical advice? | No — and that is designed in. It computes the total nobody else computes and produces a *briefing for somebody qualified*, with the open questions listed. It never concludes |
+| Whose reference values? | UK RNIs and EFSA upper limits, named and dated, explicitly not US Daily Values — because comparing a UK intake against US references without saying so is a quiet error |
+
+It is a demonstration rather than a deployed clinical system, and it makes no compliance claim of any kind — but every mechanism above is running, readable, and open to inspection with the key on its page.
 
 ## Evidence status
 
@@ -3109,11 +3234,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.22**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.23**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.22 | 2026-08-16 | this release | The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than , because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts. |
+| v0.2.23 | 2026-08-16 | this release | Structure for scale, and the most interesting vault yet. (1) Every published vault is now a self-contained folder — demos/vaults//index.html with its screenshots in demos/vaults//images/ — so adding the hundredth vault is adding a folder, and a vault's page and pictures move together. The old flat /vaults/ section is gone (URLs lived one day). Two engine changes made it possible: the root-prefix was computed as 'one ../ if nested at all', which silently pointed the nav, stylesheet and every asset at the wrong level once pages nested three deep — now it is ../ times the depth, the same formula the markdown twins already used; and the screenshot rig writes per-vault, with a --vault filter. Image paths in the walkthrough are page-relative for the same reason. (2) New vault: SUPPLEMENT STACK (r7zes477), and it is the strongest healthcare demonstration on the site. Its idea: every label describes one product, nothing describes the sum, so the model extracts (fuzzy, with every amount traceable to the label photograph it was read from) and the code adds up (deterministic, rules stated in the open, a missing value flagged and never guessed), producing a briefing for somebody qualified and never a verdict. It is also the first vault here to use SCOPED WRITE PERMISSIONS: app.json grants write over adherence/ only, so the app that logs what was taken cannot alter the regimen, the labels or the references — least authority as a property of the vault rather than a server setting. Five walkthrough rows captured from the live vault, including its app.json permission block. The healthcare use case now opens with this as a worked example: who holds the data, how it reaches a clinician (a read key, not an account or a PDF), where AI fits safely, and why the reference set is UK RNI/EFSA rather than US Daily Values. The published audit: clean on credentials, no personal identifiers found — but it publishes a real regimen and the health context inferable from it, deliberately, and revocation is not retroactive. |
+| v0.2.22 | 2026-08-16 | obj-cas-imm-b1d27e3295cf | The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than , because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts. |
 | v0.2.21 | 2026-08-16 | obj-cas-imm-10164a7a31ab | Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks. |
 | v0.2.20 | 2026-08-16 | obj-cas-imm-23e6ea08a77d | Both surfaces at once, reader-requested: on the vault pages, App Mode and the vault browser now each open in their OWN frame, stacked — the app first, the FILES/SGIT/SETTINGS browser under it — instead of one frame the buttons fought over. The second open is fast by design and the component says so: the encrypted objects are already in the client's cache from the first surface, so the second mostly decrypts rather than fetches — the caching story demonstrating itself. Each frame carries its own status line from its own handshake (one listener, replies routed by which frame sent them). The Full screen button is gone from these pages — with each surface getting a full-width, viewport-height frame of its own, it earned nothing. Verified headless: both surfaces open (5.0s through the slow test mirror, faster live), app above browser, two independent vault-ready events. |
 | v0.2.19 | 2026-08-16 | obj-cas-imm-2773e0dfba35 | The site starts doing the thing it was building toward: publishing vaults. New /vaults/ section — an index of every read key this site has deliberately published, and one page per vault (five at launch: Field Notes, Strategy Maps, Deploy Docs, the Catalogue itself, and — new — Algarve · May 2026) with a real description, the features that vault exercises, what the shape is good for, the derived facts, the key as a copyable sgit_rk1_ credential with a CLI command and an open-in-the-official-UI link, and the vault RUNNING LIVE in the page via the reusable embed component (assets/vault-ui-embed.js — the two-surface embed-protocol host from the demo page, now attribute-driven; App Mode hidden for vaults without an app). Pages load the component contract-compliantly (fetch+eval, no script src — every page must survive being served from inside a vault). The Algarve vault is the first entry processed through the catalogue's submission queue as designed: read key supplied in chat, everything else derived — 71 files, 29 MB (60 WebP photos in originals/web/thumbs), 36 commits, auto-opening gallery app with a chaptered narrative. Its pre-publication audit is published on the page per the rules: one finding (a live delete_auth token in public-preview bookkeeping — narrow scope, the owner advised to rotate) and one counterpoint worth showcasing (the same vault's readonly-tokens bookkeeping decrypts to further ciphertext: owner secrets double-encrypted, the pattern that fixes the finding class). Catalogue vault updated in the same breath — new entry, trip-gallery-1 ticked off the awaiting list (7 remain) — and /catalogue/ picked it up with no site deploy, which is that design working. |

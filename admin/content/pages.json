@@ -12,37 +12,43 @@
   "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
  },
  {
-  "path": "vaults/index.html",
+  "path": "demos/vaults/index.html",
   "section": "vaults",
   "title": "Published vaults — sgit.ai",
   "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability."
  },
  {
-  "path": "vaults/field-notes.html",
+  "path": "demos/vaults/field-notes/index.html",
   "section": "vaults",
   "title": "Field Notes — a published vault",
   "desc": "The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key."
  },
  {
-  "path": "vaults/strategy-maps.html",
+  "path": "demos/vaults/strategy-maps/index.html",
   "section": "vaults",
   "title": "Strategy Maps — a published vault",
   "desc": "The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary."
  },
  {
-  "path": "vaults/deploy-docs.html",
+  "path": "demos/vaults/deploy-docs/index.html",
   "section": "vaults",
   "title": "Deploy Docs — a published vault",
   "desc": "The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy."
  },
  {
-  "path": "vaults/catalogue.html",
+  "path": "demos/vaults/catalogue/index.html",
   "section": "vaults",
   "title": "The Vault Catalogue — a published vault",
   "desc": "The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status."
  },
  {
-  "path": "vaults/algarve-photos.html",
+  "path": "demos/vaults/supplement-stack/index.html",
+  "section": "vaults",
+  "title": "Supplement Stack — a published vault",
+  "desc": "A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key."
+ },
+ {
+  "path": "demos/vaults/algarve-may-2026/index.html",
   "section": "vaults",
   "title": "Algarve · May 2026 — a published vault",
   "desc": "A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page."

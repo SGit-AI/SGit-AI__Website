@@ -1,0 +1,38 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../../../index.html">Vaults</a> / Strategy Maps</p>
+  <h1>Strategy Maps</h1>
+  <p class="lead">The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis as a second app in the same encrypted store.</p>
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4</code><br>
+  <span class="small dim">Published deliberately. It grants read, and only read — a write attempt is refused by the server’s write gate (the <b>R1 W0</b> badge you will see in the chrome).</span></div>
+
+  <h2>See it live, here</h2>
+  <div class="sgv-uiembed" data-vault="ookq4mn4" data-readkey="451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b" data-app="1"></div>
+  <script>
+  /* Contract-compliant loader: no <script src> anywhere on this site, because every
+     page must survive being served from inside a vault, where declarative refs
+     cannot be answered. Fetch + eval, same pattern as the deploy page. */
+  (function () {
+    fetch('../../../assets/vault-ui-embed.js')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (t) { (0, eval)(t); })
+      .catch(function (e) { console.error('[vaults] embed component failed to load:', e); });
+  }());
+  </script>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td>Two app entry points</td><td><code>index.html</code> (the strategy essay, eight Wardley map PNGs) and <code>sgit-maps.html</code> (six inline-SVG maps) — one encrypted store, two front doors</td></tr>
+    <tr><td>Vault-path images</td><td>the essay’s PNGs travel as ciphertext and are swapped in as <code>blob:</code> URLs after decryption</td></tr>
+    <tr><td>Republish pattern</td><td>this vault is a sanitised republish: the original could not publish its key because a write credential was inside its content — <a href="../../strategy-maps.html">the audit is public</a></td></tr>
+    <tr><td>Cross-app links</td><td>the two apps link to each other and the links survive embedding</td></tr>
+  </table></div>
+  <h2>What this shape is for</h2>
+  <p>Published analysis with real assets: strategy documents, briefs, decks. The two-entry-point trick means one vault can carry a family of related documents that share content, history and a single published key.</p>
+
+  <h2>Derived facts</h2>
+  <p>33 files · 830 KB · 3 commits · app entries <code>index.html</code> and <code>sgit-maps.html</code> · derived from the read key alone by <code>admin/build/catalogue_derive.py</code> — the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>, where this vault also has an entry.</p>
+</main>
