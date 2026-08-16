@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.14</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.15</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -46,8 +46,10 @@
   <p>Two asks, both the difference between a published claim and a shipped behaviour. The <a href="../use-cases/serialised-pull-request.html">serialised pull request</a> is now the site's lead workflow example, and its emit half is shipped (<code>sgit history diff --json</code>) while the import half is not — the brief asks for <code>sgit diff export</code>/<code>apply</code> plus a published diff format specification. And the <a href="../case-studies/one-tree-two-remotes.html">one-folder-two-VCS workflow</a> the site itself runs needs ignore support to be safe for anyone who starts from an existing git checkout: the ask is a single declaration of which paths belong to which system, generating both ignore files, with a build check that fails when a path is claimed by both.</p>
 
   <h2>→ To the SG/Vault UI team: embed the vault app iframe in sgit.ai pages, reusing your code</h2>
-  <p><b>Status:</b> open · <b>Briefing:</b> <a href="briefing-sgvault-ui-embed.md">briefs/briefing-sgvault-ui-embed.md</a> · <b>Context:</b> the <a href="../admin/plans/why-expansion-plan.md">demo-vaults plan</a>.</p>
+  <p><b>Status:</b> <b>main ask answered</b> — read-key open shipped 15 Aug; one ask still open · <b>Briefing:</b> <a href="briefing-sgvault-ui-embed.md">briefs/briefing-sgvault-ui-embed.md</a> · <b>Context:</b> the <a href="../admin/plans/why-expansion-plan.md">demo-vaults plan</a>.</p>
   <p>Three demo vaults are about to be published as end-to-end walkthroughs, each ending with the vault's app UI opened <em>live inside the sgit.ai page</em> from a deliberately published read key. The SG/Vault web app already solved the hard part — the sandboxed opaque-origin app iframe, the <code>window.sg</code> bridge, the deny-by-default permission model — and the point is to reuse that code rather than re-implement it: one codebase, and the embed itself demonstrates the capability. The briefing carries six concrete questions (which modules are the host, whether an embeddable entry point exists, exact read-key-only behaviour, the sandbox recipe, version pinning, the <code>_page.json</code> renderer) and a fallback we can ship without waiting.</p>
+
+  <p><b>Outcome, 15 August.</b> The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — <code>&lt;64-hex&gt;:&lt;vault_id&gt;</code>, the same shape <code>sgit clone</code> already took — and, decisively, tests it <em>before</em> the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit <code>R1 W0</code> / <b>Read-only</b> badge. The <a href="../demos/vault-app-embed.html">demo page</a> carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed <em>in isolation</em>. A note worth recording for anyone reading this as a case study — the fix arrived with a <a href="../case-studies/index.html">verification note attached</a>, and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.</p>
 
   <h2>← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank</h2>
   <p><b>Status:</b> acted on, <a href="../admin/versions.html">v0.1.26</a> · <b>Reported by:</b> an agent working from sgit.ai as documentation · <b>Direction:</b> inbound — the first brief filed <em>at</em> this site rather than by it.</p>
@@ -115,7 +117,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.14</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.15</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

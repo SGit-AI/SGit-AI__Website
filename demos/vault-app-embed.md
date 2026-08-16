@@ -2,7 +2,7 @@
 
 > The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
 
-*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -69,18 +69,23 @@ Anyone can take those three lines and read this vault — from the CLI (`sgit cl
 | any mutation (`sg.fs.*`, `sg.vault.*`, …) | impossible | the page holds only a read key — there is no write capability to misuse, not even by a bug in the host |
 | reach this page, cookies, storage, top navigation | blocked | `sandbox="allow-scripts"` and an opaque origin; the only channel is postMessage |
 
-## Embedding the full SG/Vault UI — what we found
+## Embedding the full SG/Vault UI — the gap closed
 
-The embed above is our minimal host. The obvious next step is embedding the *real* SG/Vault interface — the App-Mode chrome, or the vault browser with its FILES / SGIT / SETTINGS rail — so we ran the experiment against the live UI, framed inside a page like this one. Results, honestly:
+The embed above is our minimal host: ~170 lines, enough bridge for a read-only app. The obvious next step was embedding the *real* SG/Vault interface — App-Mode chrome, or the vault browser with its FILES / SGIT / SETTINGS rail. When we first ran that experiment it worked in every respect but one: the credential. The loader documented a read-only format but the client rejected it, and the CLI's `64hex:vault_id` shorthand was parsed as a passphrase, PBKDF2'd, and derived the wrong file ids (we measured `abfd8ea0f1a2` where the vault's real ref id is `11ea50e81f4d` — hence "Vault not found"). We filed both as asks.
+
+**They landed.** The deployed loader now detects a read-key credential as **format 6** — `<64-hex read_key>:<vault_id>`, matching what `sgit clone` already accepted — and, critically, *checks it before the passphrase formats*, which is exactly the ordering bug we hit. It also strips the sgit CLI's canonical key prefixes before detection, so a key pasted straight from new CLI output is understood — including `sgit_rk1_`, the read-only one, which is the form we publish. (Its write-credential sibling is the prefix our own build refuses to let onto this site at all: the release validator treats that string as a leak and fails the build, which is why you will not find it written out here.) Re-running the same experiment against the live build:
 
 | Question | Answer | Evidence |
 |---|---|---|
 | Can the vault UI be iframed at all? | **Yes** | no `X-Frame-Options`, no `frame-ancestors` |
-| Does App Mode work inside a cross-origin iframe? | **Yes — fully** | with a valid credential, `app-shell` booted this same Field Notes app under the complete HUD: toolbar, URL bar, read/write badges |
-| Can it open with *only the read key*? | **Not yet** | the loader's format catalogue documents a read-only credential (`<vault_id> <64-hex read_key>`), but the client rejects it — and the CLI's `64hex:vault_id` shorthand gets treated as a passphrase and derives the wrong file ids |
-| Can the SGit view be embedded in isolation? | **No URL for it** | view switching is an in-page event; there is no deep-link that selects a view |
+| Does App Mode work inside a cross-origin iframe? | **Yes — fully** | the complete HUD: toolbar, URL bar, read/write badges |
+| Can it open with *only the read key*? | **Yes — now** | all three forms parse in the deployed loader (`hex:id`, `sgit_rk1_hex:id`, and the legacy `id hex`); App Mode booted this Field Notes app from the published read key alone, six SVG studies rendered, the app's own status line reading `content.json` over the bridge |
+| Does the vault browser open read-only? | **Yes** | `vault-shell` with the FILES / SGIT / SETTINGS rail, the real decrypted tree (4 files, 10.6 KB), and an explicit `R1 W0` + **Read-only** badge in the chrome |
+| Is the SGit view reachable? | **Yes — but still no deep-link** | driving the nav reaches HISTORY / REFS / TREE / BRANCHES / STATUS / REPAIR with both real commits listed; no URL selects a view, so a host page cannot frame the SGit view *in isolation*. The one ask still open. |
 
-So the one thing between this page and embedding the official UI is the credential format — everything downstream of it already works. Both gaps are now precise asks in [the briefing to the SG/Vault UI team](../briefs/briefing-sgvault-ui-embed.md): honour the documented read-only format end to end, and add a `|view:sgit` deep-link so the commit/ref/tree inspector — the best possible "look inside the encrypted store" demo — can be a page of its own. The moment the first ask lands, this page gains a second embed: the real UI, opened with the same published read key you see above.
+So the credential gap is closed, and the consequence is the point of this whole page: **a published read key is now enough to embed the official interface** — no account, no token, no write capability anywhere in the chain. Below is exactly that, opened with the same key printed further up this page. It loads on click, because it pulls the full UI from another origin.
+
+Loads `dev.vault.sgraph.ai` in an iframe, credential in the fragment. Nothing on sgit.ai sees it.
 
 ## Honest scope
 

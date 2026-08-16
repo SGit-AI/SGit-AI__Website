@@ -2,7 +2,7 @@
 
 > Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 
-*Source: <https://sgit.ai/briefs/index.html> · site v0.2.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/briefs/index.html> · site v0.2.15 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,9 +20,11 @@ Two asks, both the difference between a published claim and a shipped behaviour.
 
 ## → To the SG/Vault UI team: embed the vault app iframe in sgit.ai pages, reusing your code
 
-**Status:** open · **Briefing:** [briefs/briefing-sgvault-ui-embed.md](briefing-sgvault-ui-embed.md) · **Context:** the [demo-vaults plan](../admin/plans/why-expansion-plan.md).
+**Status:** **main ask answered** — read-key open shipped 15 Aug; one ask still open · **Briefing:** [briefs/briefing-sgvault-ui-embed.md](briefing-sgvault-ui-embed.md) · **Context:** the [demo-vaults plan](../admin/plans/why-expansion-plan.md).
 
 Three demo vaults are about to be published as end-to-end walkthroughs, each ending with the vault's app UI opened *live inside the sgit.ai page* from a deliberately published read key. The SG/Vault web app already solved the hard part — the sandboxed opaque-origin app iframe, the `window.sg` bridge, the deny-by-default permission model — and the point is to reuse that code rather than re-implement it: one codebase, and the embed itself demonstrates the capability. The briefing carries six concrete questions (which modules are the host, whether an embeddable entry point exists, exact read-key-only behaviour, the sandbox recipe, version pinning, the `_page.json` renderer) and a fallback we can ship without waiting.
+
+**Outcome, 15 August.** The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — `<64-hex>:<vault_id>`, the same shape `sgit clone` already took — and, decisively, tests it *before* the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit `R1 W0` / **Read-only** badge. The [demo page](../demos/vault-app-embed.md) carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed *in isolation*. A note worth recording for anyone reading this as a case study — the fix arrived with a [verification note attached](../case-studies/index.md), and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.
 
 ## ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
 
