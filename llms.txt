@@ -62,6 +62,9 @@ Quick answers (so you do not need a second request for the common questions):
 - [Supplement Stack](/demos/vaults/supplement-stack/index.md): A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key.
 - [Algarve · May 2026](/demos/vaults/algarve-may-2026/index.md): A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page.
 
+## Comparisons run as reproducible tests (the entry format, the privilege vocabulary, and the rows where vaults lose)
+- [Comparisons, as tests you can re-run](/compare/index.md): What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.
+
 ## Use cases (task-shaped guidance: recipe, evidence status, agent brief)
 - [Use cases](/use-cases/index.md): Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
 - [The serialised pull request](/use-cases/serialised-pull-request.md): An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.
