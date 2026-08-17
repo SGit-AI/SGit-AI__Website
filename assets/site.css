@@ -411,3 +411,79 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
 .vdbg-objs .m{color:#d2a8ff}
 .vdbg-objs .t{color:#d29922}
 .ttlpill{color:#d29922;background:#2a2110;border:1px solid #3a2a12;border-radius:4px;padding:0 .3rem;white-space:nowrap}
+
+/* ---------- print / save-as-PDF ----------
+   These pages get read as documents at least as often as they get browsed, and Cmd-P
+   is how one ends up in a meeting. Two real defects were found by exporting the seven
+   views page and looking at what came out:
+
+   1. nav.site is position:sticky. Chrome paints a sticky/fixed box ONCE, wherever it
+      happens to land in the paginated flow — which put the entire nav across the
+      middle of page 2, over the prose, translucent enough that the text showed
+      through it. Static in print: it flows normally, once, at the top of page 1.
+   2. figure.shot starts at opacity:0 and its <img> is only created when an
+      IntersectionObserver fires. Print without scrolling to the foot of the page
+      first and every figure below the fold exports blank. That one had not been hit
+      yet only because the export was taken after reading the whole page. shots.js
+      now prefetches on idle and sweeps again on beforeprint; this half makes the
+      figures visible regardless.
+
+   Chrome honours @page margin when the user leaves Layout > Margins on "Default",
+   which is what people leave it on. Picking Custom or None overrides us, correctly. */
+@page{margin:14mm}
+.print-src,.print-hint{display:none}
+@media print{
+  /* Chrome drops background colours unless asked, and on this site the tints carry
+     meaning — amber for exposure, green for assurance, teal for a section tag. */
+  html{print-color-adjust:exact;-webkit-print-color-adjust:exact;background:#fff}
+  /* 10pt with tighter leading is not cosmetic: at 10.5pt the longest walkthrough row
+     overflowed an A4 landscape page by about two lines, and break-inside:avoid can only
+     keep a row whole if the row actually fits one. */
+  body{background:#fff;font-size:10pt;line-height:1.5}
+
+  /* 1. nothing sticky or fixed survives pagination. The nav keeps its brand and
+     version as a masthead; thirteen dead links are noise on paper. */
+  nav.site{position:static;background:none;backdrop-filter:none}
+  nav.site a.nl,nav.site .gh{display:none}
+  .vdocs-nav{position:static;border-right:0;padding-right:0}
+  .vdbg,.vdbg-toggle{display:none!important}
+
+  /* 2. every screenshot present and visible, scrolled to or not */
+  figure.shot{opacity:1!important;transition:none}
+  figure.shot img{box-shadow:none;width:auto;max-width:100%;max-height:10cm;margin:0 auto}
+  .wt-row{padding:1rem 0}
+  .wt-text p{margin:.42rem 0}
+
+  /* Keep a walkthrough row whole. Tag, prose, screenshot and caption are one unit;
+     splitting them strands a caption on the page after its picture, which is exactly
+     what pages 2->3 of the first export did. */
+  .wt-row,figure.shot,.note,pre,table,details.faq,.cmp-banner,blockquote,.vtranscript{break-inside:avoid}
+  h1,h2,h3,h4{break-after:avoid}
+  p,li{orphans:3;widows:3}
+  .page-break{break-before:page}
+
+  /* A live surface cannot print — an iframe exports as an empty box, and .sgv-breakout
+     is a viewport-width transform that overflows the page box on the way out. */
+  .sgv-embed-frame,.sgv-embed-load,.sgv-embed-loading,.sgv-btnrow{display:none!important}
+  .sgv-uiembed-label::after{content:" — live surface; open this page online to use it";
+    font-weight:400;color:var(--dim)}
+
+  /* The PDF says where it came from even when Chrome's own headers/footers are off,
+     which is the default in a lot of setups and always the case when printing from
+     an app rather than a browser chrome. */
+  .print-src{display:block;font-family:var(--mono);font-size:.68rem;color:var(--dim);
+    margin:0 0 .3rem;padding:0 1.1rem}
+  /* Walkthrough rows are prose beside a screenshot, alternating side down the page —
+     two columns above the 820px breakpoint, one below it. A4 portrait lands at 688px
+     of usable width, so it collapses; landscape lands above 1000px and keeps the
+     alternation that is the point of the design. @page{size:A4 landscape} does NOT
+     fix this: Chrome applies it to the paper and still lays out at portrait width,
+     which exports a narrow column on a wide sheet. So: ask the reader, in print only. */
+  .print-hint{display:block;font-family:var(--mono);font-size:.68rem;color:var(--dim);
+    margin:0 0 1.4rem;padding:0 1.1rem}
+}
+/* ...and it is advice, so it disappears once it has been taken. Unlike `width`, the
+   `orientation` feature does resolve against the real print job (verified: a landscape
+   job reports orientation:landscape and width>=1000; a portrait job reports portrait
+   and width<=820 — which is also why the 820px breakpoint gets this right by itself). */
+@media print and (orientation:landscape){.print-hint{display:none}}

@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.29'
+SITE_VERSION = 'v0.2.30'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.29', '2026-08-17', 'this release',
+    ('v0.2.30', '2026-08-17', 'this release',
+     "Print and save-as-PDF, prompted by an export of the seven views page that came out wrong. "
+     "TWO DEFECTS, one reported and one found while looking at it. (1) The top nav is position:sticky; "
+     "Chrome paints a sticky box ONCE, wherever it happens to fall in the paginated flow, so the whole "
+     "nav landed across the middle of page 2 — translucent, with the prose showing through it. It is "
+     "static in print now and flows once, at the top of page 1, as a masthead with the link list dropped. "
+     "(2) WORSE, AND NOT REPORTED: screenshots are lazy — a figure starts at opacity:0 and its img is "
+     "only created when an IntersectionObserver fires — so printing a page without first scrolling to "
+     "the foot of it exported blank gaps where the pictures should be. Nothing errored; the img simply "
+     "never existed. beforeprint cannot fix that alone (it is synchronous and will not wait for a fetch "
+     "and decode), so the figures are now prefetched once the page goes idle, with beforeprint kept as "
+     "the backstop. The export that prompted this was only correct by luck: it was taken after reading "
+     "the whole page. Beyond the fixes: @page margins so Chrome's Default is ours rather than its own; "
+     "print-color-adjust:exact, because on this site the tints carry meaning (amber exposure, green "
+     "assurance) and Chrome drops backgrounds unless asked; break-inside:avoid on walkthrough rows, "
+     "figures, notes, tables and transcripts, which fixes captions stranded on the page after their "
+     "picture; orphan/widow control; live vault embeds hidden and labelled rather than exported as "
+     "empty boxes; and a print-only source line carrying the canonical URL, since Chrome's own "
+     "header and footer are frequently switched off. Finally, any page containing walkthrough rows "
+     "now asks for LANDSCAPE — in portrait the two-column grid falls below the 820px breakpoint and "
+     "collapses, which loses the alternating left-right rhythm that is the entire design of those "
+     "pages. The reader can still override it. None of this was tested before; all of it is now."),
+    ('v0.2.29', '2026-08-17', 'obj-cas-imm-8a68f249bd9f',
      "The first vault to get depth rather than a page. Risk Graph Explorer now has three: the overview, THE SEVEN VIEWS EXPLAINED, and THE AUTHOR'S WALKTHROUGHS. The views page captures each of the seven tabs from the live vault under the Exposed preset — the estate, context, role risk map, risk chains, the register, acceptance, what happens next — and explains the mechanism behind each, matched to how the author describes it in his own recorded demos. Highlights the screenshots alone would not carry: 'assigned' versus 'through' on the role map (what you personally hold, versus what arrives because the graph says it must), so that no risk is orphaned and every path terminates at the board; risk chains running inherent-to-corporate left to right, clickable in both directions ('leads to' navigates up, 'led by' walks back to the answers that caused it), with cycles drawn as dashed edges because the cycles are real; and acceptance as the place where the register stops being a document — with the author on camera disagreeing with his own tool, which resolves into WHICH FACT IS WRONG rather than whose judgement wins. Also captures the same organisation under the Typical and Governed presets, because that comparison is the whole argument: the org chart does not change, only what is true about the agent. The walkthroughs page carries all three videos with FULL TRANSCRIPTS — a video is invisible to a search engine, to llms-full.txt and to any agent reading this site as documentation, so the transcript is the content and the video is one rendering of it. Tooling: the shots component gained a data-dir override so deeper pages under a vault share ONE image folder; the site now runs to 53 pages. Three bugs caught by testing rather than assumption — a malformed selector expression that silently created no images at all, escape sequences leaking as literal text, and a page that never loaded the component it depended on."),
     ('v0.2.28', '2026-08-17', 'obj-cas-imm-6008b0bdfe27',
      "Seventh vault, and the method written down. RISK GRAPH EXPLORER (3simlnqe) is the fact-to-risk explorer extracted out of the risk-mandate work into a vault of its own — answer questions on the left, seven views recompute on the right, nothing leaves the page. Its argument is visible in two screenshots: empty at 0 facts / 0 risks, then 18 / 37 / 14 under the Exposed preset, because a register that produces the same output for a scratch service and a payments platform is a checklist, not a register. Unanswered relationships are drawn as ghosts — recording absence as information rather than as an implicit pass. It is the first vault here PUBLIC BY DESIGN: it carries its own PUBLIC.md whose three rules its build enforces — nothing private committed (the gate scans every file, not just the artefact), no write token, and NO METERED CAPABILITY, because a published read key in front of an LLM config is an open tab on somebody else's budget. That third rule is not in our guidance and is the one to adopt. It also sent us back to re-audit ourselves: risk-mandate does carry an LLM config, so we took its sealed credential and attempted to open it with the read key we had published — AES-GCM refused (InvalidTag), so no budget was exposed; the rule is satisfied there by sealing and here, more conservatively, by absence. Checked rather than assumed, and recorded either way. Its app.json is `permissions: {}` — the floor of a scale the catalogue now spans end to end. Zero audit findings, the cleanest yet. NEW PAGE: /demos/vaults/publishing.html — the seven steps behind every vault published here, written to be followed by another site's agent: classify the credential before it touches anything, derive rather than refuse, audit with the read key across every file, derive the facts, capture evidence by driving the real product, write the page (describe, show, then admit), and record what outlives it. It names the five tools and, more usefully, the five mistakes that produced each rule."),
@@ -289,6 +311,16 @@ def page(path, title, desc, here, body):
     # the stylesheet and every asset at the wrong level. Same formula write_md uses.
     p = '../' * path.count('/')
     md_name = os.path.basename(path)[:-5] + '.md'
+    # A walkthrough page is prose beside a screenshot, alternating side down the page.
+    # It wants landscape, and the obvious way to ask — @page{size:A4 landscape} — was
+    # tried and rejected on evidence: Chrome applies it to the PAPER but keeps laying
+    # out at portrait width, so the export came back as a narrow single column
+    # stranded on a wide sheet (measured: a print probe reported width<=820 and
+    # orientation:portrait while the sheet came out 297mm wide). The existing 820px
+    # breakpoint already does the right thing once the reader picks Landscape — two
+    # columns there, one column in portrait — so the page just says so, in print only.
+    page_hint = ('<p class="print-hint">Best exported in landscape '
+                 '(Layout &rsaquo; Landscape).</p>') if 'class="wt"' in body else ''
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
 <head>
@@ -310,6 +342,8 @@ def page(path, title, desc, here, body):
 <body>
 
 {nav(p, here)}
+
+<p class="print-src">sgit.ai &middot; https://sgit.ai/{path}</p>{page_hint}
 
 {body}
 
