@@ -25,6 +25,8 @@
   }());
   </script>
 
+  <div class="note"><b>Going deeper.</b> This vault has more in it than one page holds. <a href="views/index.html"><b>The seven views, explained</b></a> walks each view with a screenshot of the live vault and the mechanism behind it. <a href="videos/index.html"><b>The author’s walkthroughs</b></a> carries three recorded demos with full transcripts — the reasoning that the screenshots cannot show.</div>
+
   <h2>What is going on here, step by step</h2>
   <div class="wt">
     <div class="wt-row">
@@ -52,7 +54,7 @@
         <p>Most vaults here were audited by us before their key went out. This one arrived with the audit already written into it: <code>PUBLIC.md</code> states that <b>every byte committed is already public</b>, and its build refuses if any of three rules is broken — nothing private committed (the gate scans <em>every file</em>, not just the built artefact), no write token, and <b>no metered capability</b>.</p>
   <p>That third rule is the one worth borrowing, and we had not written it down: <em>"a published read key in front of an LLM config is an open tab on somebody else's budget, and a spend cap is a rate limiter on the fun, not a control."</em> It sent us back to re-check a vault we had already published — see the note below.</p>
       </div>
-      <figure class="shot" data-shot="public-md.webp" data-alt="PUBLIC.md: three rules, enforced by the vault\u2019s own build."><figcaption>PUBLIC.md: three rules, enforced by the vault\u2019s own build.</figcaption></figure>
+      <figure class="shot" data-shot="public-md.webp" data-alt="PUBLIC.md: three rules, enforced by the vault’s own build."><figcaption>PUBLIC.md: three rules, enforced by the vault’s own build.</figcaption></figure>
     </div>
     <div class="wt-row wt-alt">
       <div class="wt-text">

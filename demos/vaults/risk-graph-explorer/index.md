@@ -2,7 +2,7 @@
 
 > A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.
 
-*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/index.html> · site v0.2.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/index.html> · site v0.2.29 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,6 +22,8 @@ Published deliberately, and **derived**: the owner supplied a vault key, our int
 ## See it live, here
 
 Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) — try the presets, then change one answer and watch the register move.
+
+**Going deeper.** This vault has more in it than one page holds. [**The seven views, explained**](views/index.md) walks each view with a screenshot of the live vault and the mechanism behind it. [**The author’s walkthroughs**](videos/index.md) carries three recorded demos with full transcripts — the reasoning that the screenshots cannot show.
 
 ## What is going on here, step by step
 
@@ -53,7 +55,7 @@ Most vaults here were audited by us before their key went out. This one arrived 
 
 That third rule is the one worth borrowing, and we had not written it down: *"a published read key in front of an LLM config is an open tab on somebody else's budget, and a spend cap is a rate limiter on the fun, not a control."* It sent us back to re-check a vault we had already published — see the note below.
 
-PUBLIC.md: three rules, enforced by the vault\u2019s own build.
+PUBLIC.md: three rules, enforced by the vault’s own build.
 
 the floor
 

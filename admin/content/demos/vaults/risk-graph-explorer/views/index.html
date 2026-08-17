@@ -1,0 +1,122 @@
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../../../index.html">Home</a> / <a href="../../index.html">Vaults</a> / <a href="../index.html">Risk Graph Explorer</a> / The seven views</p>
+  <h1>The seven views, explained</h1>
+  <p class="lead">One set of answers, seen from seven altitudes. This page walks each view of the <a href="../index.html">Risk Graph Explorer</a> with a screenshot of the live vault and an explanation grounded in <a href="../videos/index.html">the author’s own walkthroughs</a> — because the reasoning behind a view is rarely visible in a picture of it.</p>
+
+  <div class="note"><b>The spine, in one line.</b> An answer becomes a <b>fact</b>; facts combine into <b>risks</b>; risks are <b>assigned</b> to a role and <b>chain</b> upward to the corporate register; a role <b>accepts</b> what it holds; acceptance produces <b>what happens next</b>. Every view below is that same spine, cut at a different angle — which is why changing one answer moves all seven.</div>
+
+  <p class="small dim">Screenshots are of the live vault under the <b>Exposed</b> preset, captured with the published read key. Open it yourself from <a href="../index.html">the vault page</a> and follow along.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">1 · The estate</span>
+        <h3>Every answer becomes a fact, and the graph is the evidence</h3>
+        <p>This is where answering happens, and the first thing to notice is that <b>a "no" is still information</b>. From the walkthrough: <em>"if you don't have an agent, then we only have one piece of information here — but this is a fact."</em></p>
+  <p>The questions walk a deliberate path: what the agent is, what data is in its reach, whether its output decides about a person, what it can do with that data (<em>cannot see it · reads it · reads and changes it</em>), whether it can change production, how it is stopped, who may stop it, how long stopping takes, whether stopping was ever tested, what it can reach if it misbehaves, whether it has outbound access, whether the damage is reversible, whether there is a written procedure, whether the actions could be reconstructed, and whose account it acts under.</p>
+  <p>Each answer lands as an <code>F-nn</code> fact chip, and the graph draws the relationships between them — amber for exposure, green for assurance, <b>ghosted for nobody has said either way</b>. That last one matters: an unanswered question is drawn as an absence rather than silently treated as a pass.</p>
+      </div>
+      <figure class="shot" data-shot="view-estate.webp" data-dir="../images/" data-alt="The estate: answers on the left, the fact graph they build on the right."><figcaption>The estate: answers on the left, the fact graph they build on the right.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">2 · Context</span>
+        <h3>The same technical answers, weighed against what is at stake</h3>
+        <p>Context is the view that makes the app's core claim enforceable. The technical answers can be as alarming as you like; if nothing is behind them, little follows. The header carries the verdict in plain language — <em>decides about a person · in production · at stake</em> — and those three phrases are what turn a list of facts into a register worth reading.</p>
+  <p>This is the difference between a risk tool and a checklist: a checklist scores the agent, this weighs the agent <em>against the estate it runs in</em>.</p>
+      </div>
+      <figure class="shot" data-shot="view-context.webp" data-dir="../images/" data-alt="Context: what is at stake, and where it runs, applied to the same answers."><figcaption>Context: what is at stake, and where it runs, applied to the same answers.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">3 · Role risk map</span>
+        <h3>The org chart, with risks flowing up it</h3>
+        <p>The view the author calls <em>"crazy powerful"</em>, and the header states its invariant outright: <b>every risk is assigned to somebody, and every risk reaches the board</b>.</p>
+  <p>Read the counts under each role and you can see the two modes the walkthrough describes. The CISO shows <code>14 assigned · 14 through</code>; the CTO <code>4 assigned · 25 through</code>; the board simply <code>37 arrive here</code>. <b>Assigned</b> is what you personally hold. <b>Through</b> is what arrives because the risk graph says it must — <em>"he arrives because of the risk graph says so"</em>. The SRE holds a set; the platform owner inherits those and adds its own; the CTO inherits everything below and adds its own; the CEO connects the dots.</p>
+  <p>The consequence is the one worth quoting: <em>"no risk then becomes orphaned, because every risk will flow upwards, and that's super important."</em> An owner cannot be surprised at the top by something nobody carried up.</p>
+      </div>
+      <figure class="shot" data-shot="view-role-risk-map.webp" data-dir="../images/" data-alt="Role risk map: assigned vs through, with every path terminating at the board."><figcaption>Role risk map: assigned vs through, with every path terminating at the board.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">4 · Risk chains</span>
+        <h3>Risks that cause risks, and the ability to walk it backwards</h3>
+        <p>The second graph, and a different question: not <em>who holds this</em> but <em>what produced it</em>. Columns are levels — inherent at the left, operational rising by causal depth, and the <b>corporate register pinned to the right, because that is where the question stops</b>.</p>
+  <p>Click any entry and it colours what produced it (<b>upstream</b>) and what it produces (<b>downstream</b>). The walkthrough uses it in both directions: <em>"if you go to 'led by' at the bottom, you arrive at the bottom of the risk; if you go 'leads to', you're navigating upwards."</em> So a corporate-level entry can be interrogated — <em>"why is it? It's because we have that one, and that one, and this one"</em> — until you reach the specific answers that caused it.</p>
+  <p>One detail that only an honest tool ships: <b>a dashed edge is a cycle, and the cycles are real</b>. Rather than hiding a loop that the model does not like, it draws it.</p>
+      </div>
+      <figure class="shot" data-shot="view-risk-chains.webp" data-dir="../images/" data-alt="Risk chains: inherent to corporate, left to right, with upstream and downstream colouring."><figcaption>Risk chains: inherent to corporate, left to right, with upstream and downstream colouring.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">5 · The register</span>
+        <h3>The familiar artefact — with its provenance attached</h3>
+        <p>This is the output most organisations already recognise: a risk register. What is different is that every row carries where it came from. Per the walkthrough: <em>"for every risk that you have here, you can see who's assigned, who causes it, and who leads to, and how does it connect."</em></p>
+  <p>A conventional register is a list of assertions someone typed. This one is a <b>projection of the graph</b> — which means it cannot contain a risk that nothing produced, and it cannot lose a risk that something did.</p>
+      </div>
+      <figure class="shot" data-shot="view-register.webp" data-dir="../images/" data-alt="The register: the conventional artefact, generated rather than authored."><figcaption>The register: the conventional artefact, generated rather than authored.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">6 · Acceptance</span>
+        <h3>Nobody can accept on anybody else’s behalf</h3>
+        <p>Acceptance is where the register stops being a document and becomes a decision. Each role holds what it holds and must accept it personally — and the author is explicit that this is where the value shows up: <em>"everybody that is going to accept it is going to push back."</em></p>
+  <p>That pushback is the feature. The walkthrough contains a live example of the author disagreeing with his own tool — <em>"I actually don't agree with these risks… I don't buy that"</em> — and the point is what happens next: because every risk is fact-derived, the disagreement resolves into <em>which fact is wrong</em> rather than whose opinion is louder. <em>"The cool thing is that we start to have the evidence to show exactly why we are saying this."</em></p>
+      </div>
+      <figure class="shot" data-shot="view-acceptance.webp" data-dir="../images/" data-alt="Acceptance: per role, per risk, with no delegation and no deny button."><figcaption>Acceptance: per role, per risk, with no delegation and no deny button.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">7 · What happens next</span>
+        <h3>Decisions become incidents and projects</h3>
+        <p>The last view closes the loop. Acceptance is not the end of a risk; it is a commitment that produces consequences — the things that will happen if the exposure materialises, and the work that would change it.</p>
+  <p>In the parent vault this is where a board refusal <em>funds a project</em> that flips the whole graph to the safer option. Here it is the same mechanism in miniature: the register does not merely describe a position, it names what follows from holding it.</p>
+      </div>
+      <figure class="shot" data-shot="view-what-next.webp" data-dir="../images/" data-alt="What happens next: the consequences and the work that would change them."><figcaption>What happens next: the consequences and the work that would change them.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The same estate, at three settings</h2>
+  <p>The presets are the fastest way to feel what the tool actually does. These are the <b>role risk map</b> for the same organisation under three different sets of answers — nothing about the org chart changed, only what is true about the agent.</p>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">typical</span>
+        <h3>A typical deployment</h3>
+        <p>An agent is present and the estate is ordinary. Risks exist, they are held, and they reach the board — but the shape is contained.</p>
+      </div>
+      <figure class="shot" data-shot="role-map-typical.webp" data-dir="../images/" data-alt="Role risk map under the Typical preset"><figcaption>Typical: risks present, shape contained.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">governed</span>
+        <h3>The same estate, governed</h3>
+        <p>Approvals, a tested stop, a named authority, bounded reach. From the walkthrough: <em>"you have the govern, we can see it's a much cleaner sort of flow of events."</em> The risks do not vanish — they arrive with far less weight, and by shorter paths.</p>
+        <p><b>This is the argument the whole tool exists to make.</b> The register is not a verdict on whether you should run an agent; it is a picture of what you are carrying, which changes when the controls change.</p>
+      </div>
+      <figure class="shot" data-shot="role-map-governed.webp" data-dir="../images/" data-alt="Role risk map under the Governed preset"><figcaption>Governed: same organisation, cleaner flow.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Why this workflow is powerful</h2>
+  <div class="tablewrap"><table>
+    <tr><th>What it does</th><th>Why it matters</th></tr>
+    <tr><td><b>Answers are facts, and facts are cited</b></td><td>Every risk traces to the specific answers that produced it. Disagreement becomes "which fact is wrong", not "whose judgement wins"</td></tr>
+    <tr><td><b>No risk is orphaned</b></td><td>Every risk is assigned and every path terminates at the board. Nothing can sit in a register held by nobody</td></tr>
+    <tr><td><b>Assigned is distinguished from inherited</b></td><td>A role sees what it personally holds and what merely passes through it — two very different conversations</td></tr>
+    <tr><td><b>Acceptance is personal and cannot be delegated</b></td><td>The register becomes a set of decisions with names on them, and the pushback that follows is the point rather than a failure</td></tr>
+    <tr><td><b>Cycles are drawn, not hidden</b></td><td>A model that shows its own loops is one you can argue with</td></tr>
+    <tr><td><b>Nothing is at stake ⇒ a short register</b></td><td>The output scales with exposure, which is what separates a register from a checklist</td></tr>
+    <tr><td><b>It runs in a vault, in your browser</b></td><td>No account, no upload, no network call. The answers you give about your estate never leave the page</td></tr>
+  </table></div>
+
+  <p>The last row is what makes the rest publishable. A tool that asks these questions is asking for an unusually candid description of your weakest controls — and this one can be handed to somebody as <a href="../index.html">a read key</a> that carries the whole application, with nothing to send anywhere.</p>
+</main>
+<script>
+(function () {
+  fetch('../../../../assets/shots.js')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[views] shots component failed to load:', e); });
+}());
+</script>

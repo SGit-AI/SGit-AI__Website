@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.28). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.29). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -968,6 +968,8 @@ Published deliberately, and **derived**: the owner supplied a vault key, our int
 
 Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) — try the presets, then change one answer and watch the register move.
 
+**Going deeper.** This vault has more in it than one page holds. [**The seven views, explained**](views/index.md) walks each view with a screenshot of the live vault and the mechanism behind it. [**The author’s walkthroughs**](videos/index.md) carries three recorded demos with full transcripts — the reasoning that the screenshots cannot show.
+
 ## What is going on here, step by step
 
 the argument
@@ -998,7 +1000,7 @@ Most vaults here were audited by us before their key went out. This one arrived 
 
 That third rule is the one worth borrowing, and we had not written it down: *"a published read key in front of an LLM config is an open tab on somebody else's budget, and a spend cap is a rate limiter on the fun, not a control."* It sent us back to re-check a vault we had already published — see the note below.
 
-PUBLIC.md: three rules, enforced by the vault\u2019s own build.
+PUBLIC.md: three rules, enforced by the vault’s own build.
 
 the floor
 
@@ -1027,6 +1029,231 @@ As always: revocation is not retroactive. Anyone who fetches these objects keeps
 ## Derived facts
 
 33 files · 428 KB · 7 commits · one app entry · last updated 2026-08-10 — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md).
+
+
+
+==============================================================================
+# The seven views, explained — Risk Graph Explorer
+
+> A deep walk through each view of the risk graph explorer — the estate, context, role risk map, risk chains, the register, acceptance and what happens next — with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs.
+>
+> Page: https://sgit.ai/demos/vaults/risk-graph-explorer/views/index.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Risk Graph Explorer](../index.md) / The seven views
+
+# The seven views, explained
+
+One set of answers, seen from seven altitudes. This page walks each view of the [Risk Graph Explorer](../index.md) with a screenshot of the live vault and an explanation grounded in [the author’s own walkthroughs](../videos/index.md) — because the reasoning behind a view is rarely visible in a picture of it.
+
+**The spine, in one line.** An answer becomes a **fact**; facts combine into **risks**; risks are **assigned** to a role and **chain** upward to the corporate register; a role **accepts** what it holds; acceptance produces **what happens next**. Every view below is that same spine, cut at a different angle — which is why changing one answer moves all seven.
+
+Screenshots are of the live vault under the **Exposed** preset, captured with the published read key. Open it yourself from [the vault page](../index.md) and follow along.
+
+1 · The estate
+
+### Every answer becomes a fact, and the graph is the evidence
+
+This is where answering happens, and the first thing to notice is that **a "no" is still information**. From the walkthrough: *"if you don't have an agent, then we only have one piece of information here — but this is a fact."*
+
+The questions walk a deliberate path: what the agent is, what data is in its reach, whether its output decides about a person, what it can do with that data (*cannot see it · reads it · reads and changes it*), whether it can change production, how it is stopped, who may stop it, how long stopping takes, whether stopping was ever tested, what it can reach if it misbehaves, whether it has outbound access, whether the damage is reversible, whether there is a written procedure, whether the actions could be reconstructed, and whose account it acts under.
+
+Each answer lands as an `F-nn` fact chip, and the graph draws the relationships between them — amber for exposure, green for assurance, **ghosted for nobody has said either way**. That last one matters: an unanswered question is drawn as an absence rather than silently treated as a pass.
+
+The estate: answers on the left, the fact graph they build on the right.
+
+2 · Context
+
+### The same technical answers, weighed against what is at stake
+
+Context is the view that makes the app's core claim enforceable. The technical answers can be as alarming as you like; if nothing is behind them, little follows. The header carries the verdict in plain language — *decides about a person · in production · at stake* — and those three phrases are what turn a list of facts into a register worth reading.
+
+This is the difference between a risk tool and a checklist: a checklist scores the agent, this weighs the agent *against the estate it runs in*.
+
+Context: what is at stake, and where it runs, applied to the same answers.
+
+3 · Role risk map
+
+### The org chart, with risks flowing up it
+
+The view the author calls *"crazy powerful"*, and the header states its invariant outright: **every risk is assigned to somebody, and every risk reaches the board**.
+
+Read the counts under each role and you can see the two modes the walkthrough describes. The CISO shows `14 assigned · 14 through`; the CTO `4 assigned · 25 through`; the board simply `37 arrive here`. **Assigned** is what you personally hold. **Through** is what arrives because the risk graph says it must — *"he arrives because of the risk graph says so"*. The SRE holds a set; the platform owner inherits those and adds its own; the CTO inherits everything below and adds its own; the CEO connects the dots.
+
+The consequence is the one worth quoting: *"no risk then becomes orphaned, because every risk will flow upwards, and that's super important."* An owner cannot be surprised at the top by something nobody carried up.
+
+Role risk map: assigned vs through, with every path terminating at the board.
+
+4 · Risk chains
+
+### Risks that cause risks, and the ability to walk it backwards
+
+The second graph, and a different question: not *who holds this* but *what produced it*. Columns are levels — inherent at the left, operational rising by causal depth, and the **corporate register pinned to the right, because that is where the question stops**.
+
+Click any entry and it colours what produced it (**upstream**) and what it produces (**downstream**). The walkthrough uses it in both directions: *"if you go to 'led by' at the bottom, you arrive at the bottom of the risk; if you go 'leads to', you're navigating upwards."* So a corporate-level entry can be interrogated — *"why is it? It's because we have that one, and that one, and this one"* — until you reach the specific answers that caused it.
+
+One detail that only an honest tool ships: **a dashed edge is a cycle, and the cycles are real**. Rather than hiding a loop that the model does not like, it draws it.
+
+Risk chains: inherent to corporate, left to right, with upstream and downstream colouring.
+
+5 · The register
+
+### The familiar artefact — with its provenance attached
+
+This is the output most organisations already recognise: a risk register. What is different is that every row carries where it came from. Per the walkthrough: *"for every risk that you have here, you can see who's assigned, who causes it, and who leads to, and how does it connect."*
+
+A conventional register is a list of assertions someone typed. This one is a **projection of the graph** — which means it cannot contain a risk that nothing produced, and it cannot lose a risk that something did.
+
+The register: the conventional artefact, generated rather than authored.
+
+6 · Acceptance
+
+### Nobody can accept on anybody else’s behalf
+
+Acceptance is where the register stops being a document and becomes a decision. Each role holds what it holds and must accept it personally — and the author is explicit that this is where the value shows up: *"everybody that is going to accept it is going to push back."*
+
+That pushback is the feature. The walkthrough contains a live example of the author disagreeing with his own tool — *"I actually don't agree with these risks… I don't buy that"* — and the point is what happens next: because every risk is fact-derived, the disagreement resolves into *which fact is wrong* rather than whose opinion is louder. *"The cool thing is that we start to have the evidence to show exactly why we are saying this."*
+
+Acceptance: per role, per risk, with no delegation and no deny button.
+
+7 · What happens next
+
+### Decisions become incidents and projects
+
+The last view closes the loop. Acceptance is not the end of a risk; it is a commitment that produces consequences — the things that will happen if the exposure materialises, and the work that would change it.
+
+In the parent vault this is where a board refusal *funds a project* that flips the whole graph to the safer option. Here it is the same mechanism in miniature: the register does not merely describe a position, it names what follows from holding it.
+
+What happens next: the consequences and the work that would change them.
+
+## The same estate, at three settings
+
+The presets are the fastest way to feel what the tool actually does. These are the **role risk map** for the same organisation under three different sets of answers — nothing about the org chart changed, only what is true about the agent.
+
+typical
+
+### A typical deployment
+
+An agent is present and the estate is ordinary. Risks exist, they are held, and they reach the board — but the shape is contained.
+
+Typical: risks present, shape contained.
+
+governed
+
+### The same estate, governed
+
+Approvals, a tested stop, a named authority, bounded reach. From the walkthrough: *"you have the govern, we can see it's a much cleaner sort of flow of events."* The risks do not vanish — they arrive with far less weight, and by shorter paths.
+
+**This is the argument the whole tool exists to make.** The register is not a verdict on whether you should run an agent; it is a picture of what you are carrying, which changes when the controls change.
+
+Governed: same organisation, cleaner flow.
+
+## Why this workflow is powerful
+
+| What it does | Why it matters |
+|---|---|
+| **Answers are facts, and facts are cited** | Every risk traces to the specific answers that produced it. Disagreement becomes "which fact is wrong", not "whose judgement wins" |
+| **No risk is orphaned** | Every risk is assigned and every path terminates at the board. Nothing can sit in a register held by nobody |
+| **Assigned is distinguished from inherited** | A role sees what it personally holds and what merely passes through it — two very different conversations |
+| **Acceptance is personal and cannot be delegated** | The register becomes a set of decisions with names on them, and the pushback that follows is the point rather than a failure |
+| **Cycles are drawn, not hidden** | A model that shows its own loops is one you can argue with |
+| **Nothing is at stake ⇒ a short register** | The output scales with exposure, which is what separates a register from a checklist |
+| **It runs in a vault, in your browser** | No account, no upload, no network call. The answers you give about your estate never leave the page |
+
+The last row is what makes the rest publishable. A tool that asks these questions is asking for an unusually candid description of your weakest controls — and this one can be handed to somebody as [a read key](../index.md) that carries the whole application, with nothing to send anywhere.
+
+
+
+==============================================================================
+# The author’s walkthroughs — Risk Graph Explorer
+
+> Three recorded walkthroughs of the risk graph explorer with full transcripts: the graph browser, risk chains, and the role risk map — the designer explaining why the tool is shaped as it is.
+>
+> Page: https://sgit.ai/demos/vaults/risk-graph-explorer/videos/index.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Risk Graph Explorer](../index.md) / Walkthroughs
+
+# The author’s walkthroughs
+
+Three recorded walkthroughs of this vault, with full transcripts. They are the best explanation of *why* the tool is shaped as it is — the reasoning behind a view is rarely visible in a picture of it, and these are the designer thinking aloud while using it.
+
+**Why the transcripts are here in full.** A video is invisible to a search engine, to [llms-full.txt](../../../../llms-full.txt), and to any agent reading this site as documentation. The transcript is the content; the video is one rendering of it. Lightly cleaned for filler words, otherwise unedited — including the moment the author disagrees with his own tool, which is the most useful passage in all three.
+
+## Graph Browser · 4:21 · 5 Aug 2026
+
+How answering the questions builds the fact graph — and why a "no" is still information.
+
+**Watch:** [youtu.be/PP6zsrC0KEg ↗](https://youtu.be/PP6zsrC0KEg) · **Shows:** [The estate](../views/index.md)
+
+**What it establishes**
+
+- A vault with no agent still produces a fact; absence is recorded, not skipped.
+- The question path walks reach → capability → change → stop → authority → blast radius → egress → reversibility → procedure → reconstruction → account ownership.
+- Different edge types are drawn for different relationships, so the graph is evidence rather than decoration.
+- "This is a great way to almost in one day capture all the data."
+
+### Transcript
+
+Okay, so I want to just talk about this graph explorer that we pushed as an MVP, which is I think ridiculously powerful as a way to present. So what we have here now is how the questions we originally talked about in the demo. But it's in a weird way, we start with the first question, right? Do you have an agent and where does it run? Because if you don't have an agent, then we only have one piece of information here, which is — and but this is a fact, right? So this here captures the facts and information. So you could see that you have both the operation state or the test environment. And it's interesting because the risk will be very similar.
+
+The only question is whether it's live, so in a way that there's a risk level that is probably going to be there, right? So let's say you have one, right? And now you can see what kind of data is enriched. Let's say I got personal data. And what's cool about this is you can see that what's happening is this graph is now going to be populated with the data that we collected. So you can think of this graph as the evidence piece, right? So look, there's the output of facts and decision. Okay, it informs decisions.
+
+So you can see that what's cool about it is that we actually have different, in a way, almost different edges depending of what it is. And then, what can do with the data, right? It cannot see it, or reads it, or reads and changes. So this is a typical example of you have a production system, right, that touches personal data, accounts, contact details, it informs the decision, you know, of the there, and it reads and changes. So it's a typical agent, right? And now you got it. So now you talk about the information of this.
+
+You know, can the agent change things, right? Can you read and report? Can changes? Can change on its own? So you start to map, you know, for example, how it's done, right? With a person approval or change. So that so this is where you take that to the next level. So it changes on its own, right? So how do you stop it? Let's say you have an action to stop, or eventually can stop, or we don't know how to stop it. And how long should we stop it? Is it minutes? An hour? Don't know. So you start to see again, you know, the stop control now we map stop in many actions, never, time for, an hour, minutes, right? And then, have you actually stopped it? Yes, we have, only in test, never, right? Do you know the effects of stopping it? Have we mapped it? Is it partially? Etc.
+
+So this is an interesting one because this is connected to the stop control. So you can actually see that this is here depends on that one. So it's in a way now a next line up, like down, sorry, of the flow. Is there a named person? Do you have a named person or not? So this is the stop authority, right? The team, you know, if it really is, you know, misbehavior for full speed, could, you know, what could you reach, right? Internal only, customer facing? Don't know. So this would be customer only.
+
+So you could now start to see again, you know, what's the damage, that it can acts, you know, can you reach anything outside the network? This means that does it have internet access or not. So again, you can see here, outbound access, right? For example, no egress. Could, you know, could you undo the damage, right? So let's say you have fully reversible versus not, or some change are forever, which is important, right? Is there a written procedure for how you pull the plug? You tested it, you've written, you don't have it. Could you reconstruct what you did, for example, every day, right? Or, you know, do you have, you know, fully or partially or not, right? Cuz sometimes you have backups, but they do not allow you to restore specific things, and whose account it is, right? A service account, a named person, a team, right? So, you know, what is actually the, for example, the flow that happens. And then this is great, like because you can look at it.
+
+This is — I love this, right, because it's a great way to almost in one day capture all the data. Just for reference, we then capture the context. We have now these really cool road map with all the risks that flow forward. We also have these risk chains, which I go in more detail in others, but that means that every risk that is then connected connects to the top level, right? And then we even have a risk register, right? And for every risk that you have here, you can see who's assigned, who causes it, and who leads to, and how does it connect, right? So it's pretty cool.
+
+## Risk Chains · 4:18 · 5 Aug 2026
+
+Risks that cause risks — and why being able to disagree with the register is the feature.
+
+**Watch:** [youtu.be/kWip3QnuN1I ↗](https://youtu.be/kWip3QnuN1I) · **Shows:** [Risk chains](../views/index.md)
+
+**What it establishes**
+
+- Every risk should arrive at the corporate register at the top; the chain is how it gets there.
+- "Leads to" navigates upward, "led by" walks back down to the answers that caused it.
+- The author disagrees with his own tool on camera — and resolves it by pointing at facts.
+- "When you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this."
+
+### Transcript
+
+...to go through this UI which I think is starting to really show the idea of connecting the risks upstream. So what you have here to show you, this is part of the UI that we have that you know, you can basically see the multiple workflows that we have from a typical, non-exposed, one that's actually quite governed. What I really like is this, let's look at the exposed first, this sort of chain, and let's consolidate this here. So the idea here is that the risks connect from one element to the other. So if you look at this guy here, for example, you have risk 6.
+
+"The production can be changed by an agent." This is now connected to that risk. "Organization acts to the system that acts for a person", who then creates this risk, right? "Organization asks to, Tech to be changed." And then hits the top two risk register. So the logic here, this is the corporate risk register, so you can see that that particular risk will arrive there, and when I click here, I can also see the reverse. So I can see, if we say we have a risk of this, why is it? It's because we have that one, and we have that one, and we have this one, and that one. And I could also see it here, what actually happens.
+
+You can see, for example, this particular risk, corporate 2, who is assigned to, and then to the CEO, to what, you know, is reduced by this particular choices, touches GDPR, and then leads to this. So, so actually, so this is a good example, so you can see that this guy here, this risk leads to these two, and is led by that and that. So you can see that, you know, and again I can click on it and see the risk, right? So, so if you, if you go to "led by" at the bottom, you arrive at the bottom of the, the risk. If you go "leads to", you're basically navigating upwards the risk through. And the idea is that every risk should arrive at the corporate, at the top, right? So, so this now becomes a very powerful way to start to understand connections, and then we map the risks to the correct one, and I'll do a separate one to show how again, we connect all these risks to the particular CEO, CFO, you know, stakeholder, right? Now, the cool thing about this is you could see that the risks that you have go from zero, we don't have anything, to yes, you have an agent, bang, you got some risk.
+
+So as we start to add basically these answers, you see that we basically start to populate and start to add the risks and they start to interconnect, which is really cool, right? So, the idea is that the changes here impact the risks that exist and how the risk register almost looks like and the evidence that we have, right? So, and what's interesting about this, is if you look for example at "governed", actually this is there because of, I was actually, when I was explaining Claude about how to do this, I was saying just the fact they have an agent, you're going to have risks, but I actually don't agree with these risks because, see even that loss of control, I would argue that's not the risk that I have by having an agent, right? So the logic here is like if I have an agent in production and I have a lot of these values which are pretty good, I don't buy that at the moment I have this, right? Because we said in this one that we already have some of these. So, I think this is a good example of why when you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this. So, I think that in this particular case, it has more to do with the fact that the agent touches EU act, so suddenly we are in compliance with the EU AI act, or we might be compliant with it, and we now have an agent in the mix, and then the organization, and we have, and even though here we say we can stop within a minute, right? There is still some disruption to production, right? Which is interesting, right? So we should capture that operation, right? Because the system, like that one's a good one, you know, stopping the agent might have an interruption. So, again, we need to capture these nuances.
+
+The cool thing is this is all now fact-driven, which is super powerful.
+
+## Role risk map (the risk org chart) · 3:15 · 5 Aug 2026
+
+The org chart with risks flowing up it — and the two ways a risk arrives at a person.
+
+**Watch:** [youtu.be/yqQgff4RWuE ↗](https://youtu.be/yqQgff4RWuE) · **Shows:** [Role risk map](../views/index.md)
+
+**What it establishes**
+
+- Two modes: risks assigned directly to a role, and risks that arrive through the chain.
+- A role inherits everything held below it and adds its own — the CTO carries the SRE’s set plus its own.
+- Presets change the shape: nothing, typical, exposed, governed.
+- "No risk then becomes orphaned, because every risk will flow upwards, and that’s super important."
+
+### Transcript
+
+Okay, so this next video shows another super powerful capability that we had here to our risk graph explorer, which is the org chart, and how we have, in this case, the board, we have the CEO, we have three direct reports, and we have then the kind of the team, where the platform owner, to the CTO, to the CEO, to the board, and you can actually see, you know, it's quite nice, the chain, right, the chief product officer, you know, has a customer service owner who connects to the board, who responds to the CEO and the board, right? And we can kind of see the sequence of events, right? So, what we're going to see here is how as we add risks to the organization, right? You start to have risks that are flowing to here, right? Which is pretty cool, so you could see that as we add, basically, and we provide answers, you basically start to see the, fundamentally, the risks changing. And what's cool about it is you could see how they arrive, and one of the things that's quite interesting is that we have two modes already, because you could see that the CEO, in this case, or the board, right, receive all these risks, so the CEO, in this case, is assigned his three corporate risk registers directly to him, but you also have these risks that arrive from the risk chain, and that's very important. Right? So you basically could see that because somebody, you know, a senior, holds, he arrives because of the risk graph says so, right? So that means that these particular risks that exist there, which for example, come from here, so you could see that this risk here, so let's say, the SRE is holding risk 2, risk 6, risk 9, risk 21, and risk 31, and that risk is also now going to exist — same risks are going to be connected to the platform owner, who now has a couple more risks of itself, and now the CTO has a couple risks of itself but also inherits all the risks that we mentioned below all the way up. So it's pretty cool, right? Because again, same thing, right? So the DPO is assigned a couple of risks, and then, you know, that he has, right? And then, you know, it also arrives from the risk chain, and then you got the CFO, the same thing, right? And then the CEO, you know, connects the dots. So this is a really powerful capability because it's how you connect all the dots, right? So if you look at the different scenarios, if you have no agent, you have nothing, if you have a typical kind of agent deployment, you have this kind of shape, if you have a lot of exposure, you get a much bigger set of responsibilities, and you have the govern, we can see it's a much cleaner sort of flow of events.
+
+And now we can start to challenge, you know, is those risks in the right place because everybody that is going to accept it is going to push back. But this is crazy powerful because now we start to see the relationships, and we see that no risk then becomes orphaned, because every risk will flow upwards, and that's super important.
+
+## Where the ideas landed
+
+Each walkthrough is matched to a screenshot of the live vault, with the mechanism explained, on [**the seven views page**](../views/index.md). The vault itself, with its read key and both live surfaces, is on [the vault page](../index.md).
 
 
 
@@ -3761,11 +3988,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.28**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.29**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.28 | 2026-08-17 | this release | Seventh vault, and the method written down. RISK GRAPH EXPLORER (3simlnqe) is the fact-to-risk explorer extracted out of the risk-mandate work into a vault of its own — answer questions on the left, seven views recompute on the right, nothing leaves the page. Its argument is visible in two screenshots: empty at 0 facts / 0 risks, then 18 / 37 / 14 under the Exposed preset, because a register that produces the same output for a scratch service and a payments platform is a checklist, not a register. Unanswered relationships are drawn as ghosts — recording absence as information rather than as an implicit pass. It is the first vault here PUBLIC BY DESIGN: it carries its own PUBLIC.md whose three rules its build enforces — nothing private committed (the gate scans every file, not just the artefact), no write token, and NO METERED CAPABILITY, because a published read key in front of an LLM config is an open tab on somebody else's budget. That third rule is not in our guidance and is the one to adopt. It also sent us back to re-audit ourselves: risk-mandate does carry an LLM config, so we took its sealed credential and attempted to open it with the read key we had published — AES-GCM refused (InvalidTag), so no budget was exposed; the rule is satisfied there by sealing and here, more conservatively, by absence. Checked rather than assumed, and recorded either way. Its app.json is `permissions: {}` — the floor of a scale the catalogue now spans end to end. Zero audit findings, the cleanest yet. NEW PAGE: /demos/vaults/publishing.html — the seven steps behind every vault published here, written to be followed by another site's agent: classify the credential before it touches anything, derive rather than refuse, audit with the read key across every file, derive the facts, capture evidence by driving the real product, write the page (describe, show, then admit), and record what outlives it. It names the five tools and, more usefully, the five mistakes that produced each rule. |
+| v0.2.29 | 2026-08-17 | this release | The first vault to get depth rather than a page. Risk Graph Explorer now has three: the overview, THE SEVEN VIEWS EXPLAINED, and THE AUTHOR'S WALKTHROUGHS. The views page captures each of the seven tabs from the live vault under the Exposed preset — the estate, context, role risk map, risk chains, the register, acceptance, what happens next — and explains the mechanism behind each, matched to how the author describes it in his own recorded demos. Highlights the screenshots alone would not carry: 'assigned' versus 'through' on the role map (what you personally hold, versus what arrives because the graph says it must), so that no risk is orphaned and every path terminates at the board; risk chains running inherent-to-corporate left to right, clickable in both directions ('leads to' navigates up, 'led by' walks back to the answers that caused it), with cycles drawn as dashed edges because the cycles are real; and acceptance as the place where the register stops being a document — with the author on camera disagreeing with his own tool, which resolves into WHICH FACT IS WRONG rather than whose judgement wins. Also captures the same organisation under the Typical and Governed presets, because that comparison is the whole argument: the org chart does not change, only what is true about the agent. The walkthroughs page carries all three videos with FULL TRANSCRIPTS — a video is invisible to a search engine, to llms-full.txt and to any agent reading this site as documentation, so the transcript is the content and the video is one rendering of it. Tooling: the shots component gained a data-dir override so deeper pages under a vault share ONE image folder; the site now runs to 53 pages. Three bugs caught by testing rather than assumption — a malformed selector expression that silently created no images at all, escape sequences leaking as literal text, and a page that never loaded the component it depended on. |
+| v0.2.28 | 2026-08-17 | obj-cas-imm-6008b0bdfe27 | Seventh vault, and the method written down. RISK GRAPH EXPLORER (3simlnqe) is the fact-to-risk explorer extracted out of the risk-mandate work into a vault of its own — answer questions on the left, seven views recompute on the right, nothing leaves the page. Its argument is visible in two screenshots: empty at 0 facts / 0 risks, then 18 / 37 / 14 under the Exposed preset, because a register that produces the same output for a scratch service and a payments platform is a checklist, not a register. Unanswered relationships are drawn as ghosts — recording absence as information rather than as an implicit pass. It is the first vault here PUBLIC BY DESIGN: it carries its own PUBLIC.md whose three rules its build enforces — nothing private committed (the gate scans every file, not just the artefact), no write token, and NO METERED CAPABILITY, because a published read key in front of an LLM config is an open tab on somebody else's budget. That third rule is not in our guidance and is the one to adopt. It also sent us back to re-audit ourselves: risk-mandate does carry an LLM config, so we took its sealed credential and attempted to open it with the read key we had published — AES-GCM refused (InvalidTag), so no budget was exposed; the rule is satisfied there by sealing and here, more conservatively, by absence. Checked rather than assumed, and recorded either way. Its app.json is `permissions: {}` — the floor of a scale the catalogue now spans end to end. Zero audit findings, the cleanest yet. NEW PAGE: /demos/vaults/publishing.html — the seven steps behind every vault published here, written to be followed by another site's agent: classify the credential before it touches anything, derive rather than refuse, audit with the read key across every file, derive the facts, capture evidence by driving the real product, write the page (describe, show, then admit), and record what outlives it. It names the five tools and, more usefully, the five mistakes that produced each rule. |
 | v0.2.27 | 2026-08-17 | obj-cas-imm-6f1decd85ad3 | Sixth vault: AGENTIC BROWSER ISOLATION (0610gsp9) — a living risk graph for one decision, does an AI agent browse inside the user's browser with their logged-in sessions, or inside an isolated browser with a scoped identity of its own. It is this site's own ambient-authority argument made by somebody else and in much more detail, so it is linked from the AI-agents use case. Seventeen app entry points, the most in the catalogue: a numbered narrative spine, one page per stakeholder altitude (IT · CISO · DPO · CFO · COO · CEO · Board), an explorer, two graph views and the raw data, over ~70 JSON files with RDF tooling vendored in so graph exploration works offline. The mechanism is the part worth copying: every altitude has one named owner, a risk stays PENDING until that owner accepts it personally, only an accepted risk escalates, and there is no deny button — the screenshots show IT holding five pending while every altitude above reads 'waiting', because nothing has been passed up. Its app.json declares fs.write: [] — an app that requests no write capability at all, which with supplement-stack (one folder) and risk-mandate (LLM use without the key) gives the catalogue three distinct points on the permissions scale, each declared in the vault rather than configured on a server. The intake check earned its keep on arrival: the submitted credential was again a vault key, refused for publication by shape, and only the one-way derivation published. Audit clean across 104 files — the six scanner hits were all digit runs inside a minified RDF library matching a phone-number pattern, recorded because ruling hits out by reading them is what an audit actually is. Also: upgraded the CLI to v0.15.0 (latest) specifically to re-test the prefix gap; it still derives the wrong ref from the canonical read-key prefix while the bare form clones correctly on the same binary, so the brief now says 'confirmed on latest' rather than 'may be a stale install' — and the machine-verified check updated its own evidence from v0.14.27 to v0.15.0 with nobody editing the claim. |
 | v0.2.26 | 2026-08-17 | obj-cas-imm-6958c20644d8 | Credential intake becomes a check rather than a habit, prompted by yesterday's near-miss: a vault key was submitted for publication described as a read key, caught by shape, and only its derived read key published. The catch depended on somebody looking. New admin/build/check_credential.py classifies a credential BEFORE it touches a page, a catalogue entry or a commit — exit 0 means read-only and publishable, exit 1 means a write credential and stop. It works two ways because the problem has two eras: by PREFIX for vaults new enough to emit one (the canonical write prefix, which is exactly the change being rolled out, and the reason it is worth rolling out), and by SHAPE for everything older, where a read key is 64 hex characters and anything else before the colon is a passphrase. Verified against all eight real forms we have handled, including the actual key from yesterday, which it refuses with no prefix to help it. If a submission IS a vault key the entry is not blocked — the documented one-way derivation is printed instead. The rule is now in the catalogue vault's SCHEMA, so it renders on /catalogue/ with no site deploy, and summarised on the vaults index. Also: the release tripwire got more precise rather than more strict. Banning the bare write prefix outright had caught its own author three times, each time writing it in prose — and guidance that cannot show a reader what a write credential looks like cannot teach them to spot one. It now fires on the prefix followed by a CREDENTIAL character, so documentation may name it while every real key still fails the build; the bare passphrase:vault_id shape catches the body independently. Both directions proven before shipping (\S was tried first and failed, because in documentation the prefix is followed by markup). |
 | v0.2.25 | 2026-08-17 | obj-cas-imm-8b39926aadb1 | Risk Mandate joins the catalogue — the most complete project ever published here, and the first to demonstrate CAPABILITY WITHOUT CREDENTIAL. It is a Black Hat field demo (hand someone an iPad, answer eight questions, a risk register assembles) built AS a vault app: 124 files, 98 commits, eight entry points, a test suite, build tooling, releases pinned to commit ids and offered as a live selector in the app chrome, and offline operation after one cached load. Its app.json grants llm:chat/models/usage/listen and fs.write over field/workspace/ and nothing else — while the OpenRouter credential itself is SEALED under the vault key in .vault/llm/config.json, so the host decrypts and calls and the app frame is handed results, never a secret. Auditing with the published read key, that field is ciphertext we cannot open, which is the claim demonstrating itself. The /compare/ privilege vocabulary gains the shape this revealed: ops and bearer come apart, so ops:llm-chat can be granted while bearer of the key is withheld — something most sharing models cannot express, because handing over the capability and handing over the credential are the same act. IMPORTANT PROCESS NOTE: the credential submitted for this vault was a VAULT KEY (format 3, passphrase:vault_id), not a read key — it matched this site's own banned-shape tripwire exactly. It was not published. It was stored in the gitignored local tier and the read key was derived from it one-way via the library's own Vault__Crypto.derive_read_key; only that derivation appears on the site, in the catalogue, and in the capture rig. The independent audit across all 124 files was clean, with two findings of the good kind recorded publicly: the sealed LLM key, and a single secret-scanner hit that turned out to be a deliberately fake sk-test- key inside a test asserting that a reachable API key IS caught. |
