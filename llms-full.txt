@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.24). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.25). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -281,6 +281,8 @@ Every entry answers the same eight things. Anything that cannot be filled in hon
 
 Written compactly, a published read key is: `scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none`. Three of those seven are **worse** than a mainstream sharing link, and saying so is the point of having a vocabulary.
 
+**One shape the vocabulary above could not express, until a vault demonstrated it.** An app can be granted the *use* of a credential without being given the credential: the [Risk Mandate vault](../demos/vaults/risk-mandate/index.md) seals its OpenRouter key under the vault key, and the host makes the call on the app's behalf. So `ops` and `bearer` come apart — `ops:llm-chat` is granted while `bearer` of the key is not, and a read-key holder auditing the vault (as we did) finds ciphertext where the secret would be. Most sharing models cannot say this, because handing over the capability and handing over the credential are the same act.
+
 ## The entries
 
 Three to start with, chosen to be different: one small and verifiable in seconds, one we lose, one that is the actual differentiator. More arrive as they are tested — not as they are thought of.
@@ -370,6 +372,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [The Vault Catalogue](catalogue/index.md) | `kc67yhgw` | record-keeping (an index of vaults) | 9 files · 11 KB · 2 commits · markdown, no app | `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) |
 | [Algarve · May 2026](algarve-may-2026/index.md) | `3d04e6b9ca98` | gallery (photo story) | 71 files · 29 MB · 36 commits · app entry `index.html` | `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) |
 | [Supplement Stack](supplement-stack/index.md) | `r7zes477` | record-keeping (patient-held health record) | 23 files · 2.3 MB · 5 commits · app entry `index.html` | `sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477) |
+| [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -635,6 +638,94 @@ What it *does* publish is a real person's actual supplement regimen, and the hea
 ## Derived facts
 
 23 files · 2.3 MB · 5 commits · app entry `index.html` · twelve label photographs — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md).
+
+
+
+==============================================================================
+# Risk Mandate — a published vault
+
+> A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key.
+>
+> Page: https://sgit.ai/demos/vaults/risk-mandate/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Risk Mandate
+
+# Risk Mandate
+
+A field demo built to be handed to a stranger on an iPad — and, underneath it, the most complete software project published here: 124 files, 98 commits, eight entry points, a test suite, build tooling and pinned releases, all inside one encrypted vault.
+
+**Why this one matters.** It answers the question the other demos leave open: *can you actually build something real in a vault?* This is a working application with a release history, developed in the vault, delivered by the vault, and running offline once cached. It also does the thing that is hardest to do safely — **it uses an LLM without ever holding the API key**.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) · From the CLI: `sgit clone sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z`
+Published deliberately, and **derived** — this read key is a one-way derivation of the vault key, which stays with its owner. It grants read, and only read.
+
+## See it live, here
+
+Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) — it is more fun full size.
+
+## What is going on here, step by step
+
+Three things this vault does that the others do not. Every screenshot is of this vault, driven by a script holding nothing but the published read key.
+
+the app
+
+### A real application, delivered as a vault
+
+This is **Risk Mandate**, a field demo built to be handed to someone on an iPad: pick a scenario, answer eight questions, and a risk register assembles beside you — readable as an operator, a CISO or a board.
+
+It is one `index.html` with everything inlined, and it opens straight from the vault. Note the chrome: a **release selector** ("Live (latest)"), a sealed-secret badge, and **Read-only** — you are looking at a published build, not a preview.
+
+The line under the button is the part worth reading twice: *"Nothing leaves this device."* On the stand it runs with the network off — one cached load, then flight mode all day.
+
+The app as it opens from the published read key: scenarios, presets, and a version chip.
+
+the privilege claim
+
+### It uses an LLM. It never holds the API key.
+
+The whole argument of this vault is in its `app.json`. It grants the app `llm: chat, models, usage, listen` — and `fs.write` over `field/workspace/` and nothing else.
+
+What is *not* granted is the credential. `.vault/llm/config.json` carries `keySealed: {iv, ct}` — the OpenRouter key encrypted under the vault key. The host decrypts it and makes the outbound call; the frame is handed a result, never a secret. Opening this vault with the published read key, that field is ciphertext we cannot decrypt — which is the point, and we checked.
+
+In the [privilege vocabulary](../../../compare/index.md): the app gets `ops:llm-chat` without ever getting `bearer` of the key. That distinction is usually impossible to express, let alone enforce.
+
+app.json: LLM use granted, the key withheld, and write scoped to one folder.
+
+version control, seriously
+
+### Ninety-eight commits, and releases pinned to them
+
+This is not a document that happens to live in a vault — it is a software project developed in one. **98 commits**, a test suite, build tooling, and `.vault/releases.json` pinning named releases (`v0.15.5`, `v0.10.3`, `v0.7.7`…) to specific commit ids, which is what the release selector in the app chrome is reading.
+
+Its build script is the detail we enjoyed most: `tools/build.mjs` fails the build on any declarative external reference *and* on any credential-shaped string. They arrived at the same tripwire this site runs on its own releases, independently, for the same reason.
+
+The SGit view: 98 commits of a real project, read with a published read key.
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| **AI without the credential** | Sealed OpenRouter key in `.vault/llm/config.json`; the host decrypts and calls, the app frame receives results only. Read-key holders — including us — see ciphertext in that field |
+| **Scoped permissions, two kinds** | `llm` capabilities enumerated (chat, models, usage, listen) and `fs.write` limited to `field/workspace/` |
+| Eight entry points | `index.html`, plus a board, a takeaway page, talking points, a build-history page and three proofs-of-concept — one vault, many front doors |
+| Pinned releases | `.vault/releases.json` maps names to commit ids; the app chrome offers them as a live selector |
+| Offline by design | One cached load, then it runs with the network off — the demo survives conference wifi |
+| A build that enforces the contract | `tools/build.mjs` exits non-zero on declarative external references *and* on credential-shaped strings — their own version of this site's release tripwire |
+| Shareable results without a server | `takeaway.html` rebuilds a saved register from the link alone |
+
+## The audit, honestly
+
+Audited independently before this key was published, across all 124 files. **Clean:** no credentials, no personal data, and the vault's own key does not appear in its content — the failure that forced a republish in [an earlier case](../strategy-maps/index.md).
+
+Two findings worth publishing because they are the *good* kind. The OpenRouter credential is present but **sealed**: encrypted under the vault key, so a read-key holder gets ciphertext. And the one match our secret scanner produced was `sk-test-abcdefghijklmnop` in `tests/suites/40-llm.mjs` — a deliberately fake key in a test that asserts a reachable API key *is caught*. A scanner hit that turns out to be a security test is a good sign about a codebase.
+
+As always: revocation is not retroactive. Anyone who fetches these objects keeps them.
+
+## Derived facts
+
+124 files · 1.9 MB · 98 commits · eight app entries · last updated 2026-08-06 — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md).
 
 
 
@@ -3367,11 +3458,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.24**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.25**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.24 | 2026-08-17 | this release | Comparisons, built as reproducible tests rather than as claims — the concrete proposal answering the 16 Aug comparison brief. New /compare/ section carrying (1) the entry format: task, steps, prerequisites, privileges granted, where it runs, survives-the-vendor, verified date, and how to re-run; (2) a PRIVILEGE VOCABULARY, which is the part most likely to be argued with and the reason it is published first — seven properties that make two grants comparable (scope, operations, bearer, mediation, duration, withdrawal, observability), under which a published read key reads scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none, three of them WORSE than a mainstream sharing link; (3) three worked entries — printing a markdown file (small, checkable in a minute, we win), taking access back after sharing (WE LOSE, plainly: rotation protects future commits and reaches nothing already fetched, while a server-mediated platform simply refuses the next request), and letting a program record data without letting it alter records (the differentiator, where step counts tie and privileges separate). Behind it: admin/build/compare_tests.py executes the our-side claims against the live service with published read keys only, and writes compare/results.json — six checks, each stating what would make it FAIL. Five hold; one records an ABSENT capability and is kept until it stops reproducing: the installed CLI v0.14.27 does not strip the canonical sgit_rk1_ prefix the web loader now accepts, deriving the wrong ref id, while the bare form works on the same version — now also filed as a brief to the CLI team. The freshness mechanism is real rather than a date in small print: results carry an expiry threshold and a past-threshold result renders as UNVERIFIED instead of as fact, proven by forcing the dates old and watching all six rows flip. The page states its own asymmetry up front — our rows are machine-verified, rows about anyone else's product are hand-checked on a date — and lists what is deliberately absent, including the deployment comparison, which waits until our own portable-artefact/hosted-viewer caveat is resolved. |
+| v0.2.25 | 2026-08-17 | this release | Risk Mandate joins the catalogue — the most complete project ever published here, and the first to demonstrate CAPABILITY WITHOUT CREDENTIAL. It is a Black Hat field demo (hand someone an iPad, answer eight questions, a risk register assembles) built AS a vault app: 124 files, 98 commits, eight entry points, a test suite, build tooling, releases pinned to commit ids and offered as a live selector in the app chrome, and offline operation after one cached load. Its app.json grants llm:chat/models/usage/listen and fs.write over field/workspace/ and nothing else — while the OpenRouter credential itself is SEALED under the vault key in .vault/llm/config.json, so the host decrypts and calls and the app frame is handed results, never a secret. Auditing with the published read key, that field is ciphertext we cannot open, which is the claim demonstrating itself. The /compare/ privilege vocabulary gains the shape this revealed: ops and bearer come apart, so ops:llm-chat can be granted while bearer of the key is withheld — something most sharing models cannot express, because handing over the capability and handing over the credential are the same act. IMPORTANT PROCESS NOTE: the credential submitted for this vault was a VAULT KEY (format 3, passphrase:vault_id), not a read key — it matched this site's own banned-shape tripwire exactly. It was not published. It was stored in the gitignored local tier and the read key was derived from it one-way via the library's own Vault__Crypto.derive_read_key; only that derivation appears on the site, in the catalogue, and in the capture rig. The independent audit across all 124 files was clean, with two findings of the good kind recorded publicly: the sealed LLM key, and a single secret-scanner hit that turned out to be a deliberately fake sk-test- key inside a test asserting that a reachable API key IS caught. |
+| v0.2.24 | 2026-08-17 | obj-cas-imm-244c5ecdeecf | Comparisons, built as reproducible tests rather than as claims — the concrete proposal answering the 16 Aug comparison brief. New /compare/ section carrying (1) the entry format: task, steps, prerequisites, privileges granted, where it runs, survives-the-vendor, verified date, and how to re-run; (2) a PRIVILEGE VOCABULARY, which is the part most likely to be argued with and the reason it is published first — seven properties that make two grants comparable (scope, operations, bearer, mediation, duration, withdrawal, observability), under which a published read key reads scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none, three of them WORSE than a mainstream sharing link; (3) three worked entries — printing a markdown file (small, checkable in a minute, we win), taking access back after sharing (WE LOSE, plainly: rotation protects future commits and reaches nothing already fetched, while a server-mediated platform simply refuses the next request), and letting a program record data without letting it alter records (the differentiator, where step counts tie and privileges separate). Behind it: admin/build/compare_tests.py executes the our-side claims against the live service with published read keys only, and writes compare/results.json — six checks, each stating what would make it FAIL. Five hold; one records an ABSENT capability and is kept until it stops reproducing: the installed CLI v0.14.27 does not strip the canonical sgit_rk1_ prefix the web loader now accepts, deriving the wrong ref id, while the bare form works on the same version — now also filed as a brief to the CLI team. The freshness mechanism is real rather than a date in small print: results carry an expiry threshold and a past-threshold result renders as UNVERIFIED instead of as fact, proven by forcing the dates old and watching all six rows flip. The page states its own asymmetry up front — our rows are machine-verified, rows about anyone else's product are hand-checked on a date — and lists what is deliberately absent, including the deployment comparison, which waits until our own portable-artefact/hosted-viewer caveat is resolved. |
 | v0.2.23 | 2026-08-16 | obj-cas-imm-8af209891454 | Structure for scale, and the most interesting vault yet. (1) Every published vault is now a self-contained folder — demos/vaults//index.html with its screenshots in demos/vaults//images/ — so adding the hundredth vault is adding a folder, and a vault's page and pictures move together. The old flat /vaults/ section is gone (URLs lived one day). Two engine changes made it possible: the root-prefix was computed as 'one ../ if nested at all', which silently pointed the nav, stylesheet and every asset at the wrong level once pages nested three deep — now it is ../ times the depth, the same formula the markdown twins already used; and the screenshot rig writes per-vault, with a --vault filter. Image paths in the walkthrough are page-relative for the same reason. (2) New vault: SUPPLEMENT STACK (r7zes477), and it is the strongest healthcare demonstration on the site. Its idea: every label describes one product, nothing describes the sum, so the model extracts (fuzzy, with every amount traceable to the label photograph it was read from) and the code adds up (deterministic, rules stated in the open, a missing value flagged and never guessed), producing a briefing for somebody qualified and never a verdict. It is also the first vault here to use SCOPED WRITE PERMISSIONS: app.json grants write over adherence/ only, so the app that logs what was taken cannot alter the regimen, the labels or the references — least authority as a property of the vault rather than a server setting. Five walkthrough rows captured from the live vault, including its app.json permission block. The healthcare use case now opens with this as a worked example: who holds the data, how it reaches a clinician (a read key, not an account or a PDF), where AI fits safely, and why the reference set is UK RNI/EFSA rather than US Daily Values. The published audit: clean on credentials, no personal identifiers found — but it publishes a real regimen and the health context inferable from it, deliberately, and revocation is not retroactive. |
 | v0.2.22 | 2026-08-16 | obj-cas-imm-b1d27e3295cf | The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than , because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts. |
 | v0.2.21 | 2026-08-16 | obj-cas-imm-10164a7a31ab | Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks. |

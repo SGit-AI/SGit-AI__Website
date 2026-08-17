@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Risk Mandate — a published vault</title>
+<meta name="description" content="A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/risk-mandate/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/risk-mandate/index.html">
+<meta property="og:title" content="Risk Mandate — a published vault">
+<meta property="og:description" content="A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Risk Mandate — a published vault", "headline": "Risk Mandate — a published vault", "description": "A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key.", "url": "https://sgit.ai/demos/vaults/risk-mandate/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.25</a>
+  <a class="nl" href="../../../why/index.html">Why</a>
+  <a class="nl" href="../../../try/index.html">Try</a>
+  <a class="nl" href="../../../demos/index.html">Demos</a>
+  <a class="nl" href="../../../catalogue/index.html">Catalogue</a>
+  <a class="nl here" href="../../../demos/vaults/index.html">Vaults</a>
+  <a class="nl" href="../../../compare/index.html">Compare</a>
+  <a class="nl" href="../../../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../../../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../../../docs/index.html">Docs</a>
+  <a class="nl" href="../../../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../../../deploy/index.html">Deploy</a>
+  <a class="nl" href="../../../skills/index.html">Skills</a>
+  <a class="nl" href="../../../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Risk Mandate</p>
+  <h1>Risk Mandate</h1>
+  <p class="lead">A field demo built to be handed to a stranger on an iPad — and, underneath it, the most complete software project published here: 124 files, 98 commits, eight entry points, a test suite, build tooling and pinned releases, all inside one encrypted vault.</p>
+
+  <div class="note"><b>Why this one matters.</b> It answers the question the other demos leave open: <em>can you actually build something real in a vault?</em> This is a working application with a release history, developed in the vault, delivered by the vault, and running offline once cached. It also does the thing that is hardest to do safely — <b>it uses an LLM without ever holding the API key</b>.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> — this read key is a one-way derivation of the vault key, which stays with its owner. It grants read, and only read.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a> — it is more fun full size.</p>
+  <div class="sgv-uiembed" data-vault="4zf6pf2z" data-readkey="a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is going on here, step by step</h2>
+  <p>Three things this vault does that the others do not. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the app</span>
+        <h3>A real application, delivered as a vault</h3>
+        <p>This is <b>Risk Mandate</b>, a field demo built to be handed to someone on an iPad: pick a scenario, answer eight questions, and a risk register assembles beside you — readable as an operator, a CISO or a board.</p>
+  <p>It is one <code>index.html</code> with everything inlined, and it opens straight from the vault. Note the chrome: a <b>release selector</b> ("Live (latest)"), a sealed-secret badge, and <b>Read-only</b> — you are looking at a published build, not a preview.</p>
+  <p>The line under the button is the part worth reading twice: <em>"Nothing leaves this device."</em> On the stand it runs with the network off — one cached load, then flight mode all day.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-alt="The app as it opens from the published read key: scenarios, presets, and a version chip."><figcaption>The app as it opens from the published read key: scenarios, presets, and a version chip.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the privilege claim</span>
+        <h3>It uses an LLM. It never holds the API key.</h3>
+        <p>The whole argument of this vault is in its <code>app.json</code>. It grants the app <code>llm: chat, models, usage, listen</code> — and <code>fs.write</code> over <code>field/workspace/</code> and nothing else.</p>
+  <p>What is <em>not</em> granted is the credential. <code>.vault/llm/config.json</code> carries <code>keySealed: {iv, ct}</code> — the OpenRouter key encrypted under the vault key. The host decrypts it and makes the outbound call; the frame is handed a result, never a secret. Opening this vault with the published read key, that field is ciphertext we cannot decrypt — which is the point, and we checked.</p>
+  <p>In the <a href="../../../compare/index.html">privilege vocabulary</a>: the app gets <code>ops:llm-chat</code> without ever getting <code>bearer</code> of the key. That distinction is usually impossible to express, let alone enforce.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-alt="app.json: LLM use granted, the key withheld, and write scoped to one folder."><figcaption>app.json: LLM use granted, the key withheld, and write scoped to one folder.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">version control, seriously</span>
+        <h3>Ninety-eight commits, and releases pinned to them</h3>
+        <p>This is not a document that happens to live in a vault — it is a software project developed in one. <b>98 commits</b>, a test suite, build tooling, and <code>.vault/releases.json</code> pinning named releases (<code>v0.15.5</code>, <code>v0.10.3</code>, <code>v0.7.7</code>…) to specific commit ids, which is what the release selector in the app chrome is reading.</p>
+  <p>Its build script is the detail we enjoyed most: <code>tools/build.mjs</code> fails the build on any declarative external reference <em>and</em> on any credential-shaped string. They arrived at the same tripwire this site runs on its own releases, independently, for the same reason.</p>
+      </div>
+      <figure class="shot" data-shot="history.webp" data-alt="The SGit view: 98 commits of a real project, read with a published read key."><figcaption>The SGit view: 98 commits of a real project, read with a published read key.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td><b>AI without the credential</b></td><td>Sealed OpenRouter key in <code>.vault/llm/config.json</code>; the host decrypts and calls, the app frame receives results only. Read-key holders — including us — see ciphertext in that field</td></tr>
+    <tr><td><b>Scoped permissions, two kinds</b></td><td><code>llm</code> capabilities enumerated (chat, models, usage, listen) and <code>fs.write</code> limited to <code>field/workspace/</code></td></tr>
+    <tr><td>Eight entry points</td><td><code>index.html</code>, plus a board, a takeaway page, talking points, a build-history page and three proofs-of-concept — one vault, many front doors</td></tr>
+    <tr><td>Pinned releases</td><td><code>.vault/releases.json</code> maps names to commit ids; the app chrome offers them as a live selector</td></tr>
+    <tr><td>Offline by design</td><td>One cached load, then it runs with the network off — the demo survives conference wifi</td></tr>
+    <tr><td>A build that enforces the contract</td><td><code>tools/build.mjs</code> exits non-zero on declarative external references <em>and</em> on credential-shaped strings — their own version of this site's release tripwire</td></tr>
+    <tr><td>Shareable results without a server</td><td><code>takeaway.html</code> rebuilds a saved register from the link alone</td></tr>
+  </table></div>
+
+  <h2>The audit, honestly</h2>
+  <p>Audited independently before this key was published, across all 124 files. <b>Clean:</b> no credentials, no personal data, and the vault's own key does not appear in its content — the failure that forced a republish in <a href="../strategy-maps/index.html">an earlier case</a>.</p>
+  <p>Two findings worth publishing because they are the <em>good</em> kind. The OpenRouter credential is present but <b>sealed</b>: encrypted under the vault key, so a read-key holder gets ciphertext. And the one match our secret scanner produced was <code>sk-test-abcdefghijklmnop</code> in <code>tests/suites/40-llm.mjs</code> — a deliberately fake key in a test that asserts a reachable API key <em>is caught</em>. A scanner hit that turns out to be a security test is a good sign about a codebase.</p>
+  <p>As always: revocation is not retroactive. Anyone who fetches these objects keeps them.</p>
+
+  <h2>Derived facts</h2>
+  <p>124 files · 1.9 MB · 98 commits · eight app entries · last updated 2026-08-06 — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.25</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
