@@ -2,7 +2,7 @@
 
 > What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.
 
-*Source: <https://sgit.ai/compare/index.html> · site v0.2.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/compare/index.html> · site v0.2.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -57,6 +57,8 @@ Every entry answers the same eight things. Anything that cannot be filled in hon
 | **observability** | per-reader-log · aggregate · none | Can you see who read what? |
 
 Written compactly, a published read key is: `scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none`. Three of those seven are **worse** than a mainstream sharing link, and saying so is the point of having a vocabulary.
+
+**One shape the vocabulary above could not express, until a vault demonstrated it.** An app can be granted the *use* of a credential without being given the credential: the [Risk Mandate vault](../demos/vaults/risk-mandate/index.md) seals its OpenRouter key under the vault key, and the host makes the call on the app's behalf. So `ops` and `bearer` come apart — `ops:llm-chat` is granted while `bearer` of the key is not, and a read-key holder auditing the vault (as we did) finds ciphertext where the secret would be. Most sharing models cannot say this, because handing over the capability and handing over the credential are the same act.
 
 ## The entries
 

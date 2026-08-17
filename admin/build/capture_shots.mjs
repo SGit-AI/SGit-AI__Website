@@ -35,6 +35,8 @@ const HOSTS    = new Set(['dev.vault.sgraph.ai', 'dev.send.sgraph.ai', 'dev.sgra
 // The Algarve gallery vault — read key published on /vaults/algarve-photos.html.
 const ALGARVE = 'sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98';
 
+const RISK = 'sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z';
+
 const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
 /* Each shot: which surface to open, what to do, and what to crop.
@@ -90,6 +92,21 @@ const SHOTS = [
   { name: 'briefing', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'app', viewport: [1500, 1100],
     steps: [{ appClickText: ['button', 'Briefing'], frameHas: '#p-briefing' }, { wait: 2000 }],
     target: 'app', sel: '#p-briefing', trim: 0.6 },
+
+  // ---- Risk Mandate (4zf6pf2z) — a software project built inside a vault ----
+  { name: 'app-open', vault: 'risk-mandate', cred: RISK, surface: 'app', viewport: [1500, 1000],
+    steps: [{ wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1500, 1000] },
+
+  // The whole privilege claim in one file: LLM use granted, key never granted,
+  // and write scoped to one workspace folder.
+  { name: 'permissions', vault: 'risk-mandate', cred: RISK, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1700, 820] },
+
+  { name: 'history', vault: 'risk-mandate', cred: RISK, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2000 }, { navView: 'sgit' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
 
   // The scoped-write claim, shown in the vault's own app.json rather than asserted.
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],

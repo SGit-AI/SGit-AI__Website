@@ -54,6 +54,12 @@
   "desc": "A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key."
  },
  {
+  "path": "demos/vaults/risk-mandate/index.html",
+  "section": "vaults",
+  "title": "Risk Mandate — a published vault",
+  "desc": "A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key."
+ },
+ {
   "path": "demos/vaults/algarve-may-2026/index.html",
   "section": "vaults",
   "title": "Algarve · May 2026 — a published vault",
