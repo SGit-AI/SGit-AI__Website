@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.26</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.27</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -55,8 +55,8 @@
 
   <h2>→ To the CLI team: the canonical read-key prefix is accepted by the web loader and not by the installed CLI</h2>
   <p><b>Status:</b> open · <b>Found by:</b> <a href="../compare/index.html">the comparison test suite</a>, which runs this check on every release.</p>
-  <p>The key-prefix contract defines <code>sgit_rk1_</code> as the canonical read-key form, and the deployed web loader strips it before format detection — we verified that the day it shipped. The CLI installed here (<b>v0.14.27</b>) does not: given <code>sgit_rk1_&lt;64-hex&gt;:&lt;vault_id&gt;</code> it derives ref <code>afdb9d843131</code> instead of the correct <code>11ea50e81f4d</code> and fails with "this vault has no branch index and no named ref". The <em>bare</em> <code>&lt;64-hex&gt;:&lt;vault_id&gt;</code> form works correctly on the same version, and prints "detected 64-hex read key → routing to read-only clone" — so this is prefix handling specifically, not read-key support.</p>
-  <p>The consequence is small but sharp: the form the contract tells people to publish is the form that fails on the CLI, so a user copying a published key from a page into a terminal gets an error that blames their key. It may already be fixed in a version newer than the one installed here — the check stays in the suite and will flip to <b>holds</b> on its own when it stops reproducing. Re-run: <code>python3 admin/build/compare_tests.py</code>.</p>
+  <p>The key-prefix contract defines <code>sgit_rk1_</code> as the canonical read-key form, and the deployed web loader strips it before format detection — we verified that the day it shipped. The CLI does not — and this was re-tested on <b>v0.15.0</b>, the latest published version, after first being found on v0.14.27, so it is not a stale install: given <code>sgit_rk1_&lt;64-hex&gt;:&lt;vault_id&gt;</code> it derives ref <code>afdb9d843131</code> instead of the correct <code>11ea50e81f4d</code> and fails with "this vault has no branch index and no named ref". The <em>bare</em> <code>&lt;64-hex&gt;:&lt;vault_id&gt;</code> form works correctly on the same version, and prints "detected 64-hex read key → routing to read-only clone" — so this is prefix handling specifically, not read-key support.</p>
+  <p><b>Confirmed on latest (17 Aug).</b> We upgraded specifically to check, and the prefixed form still derives the wrong ref on v0.15.0 while the bare form clones correctly on the same binary. The consequence is small but sharp: the form the contract tells people to publish is the form that fails on the CLI, so a user copying a published key from a page into a terminal gets an error that blames their key. The check stays in the suite and will flip to <b>holds</b> on its own when it stops reproducing — it already updated itself from v0.14.27 to v0.15.0 without anyone editing the claim. Re-run: <code>python3 admin/build/compare_tests.py</code>.</p>
 
   <h2>← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank</h2>
   <p><b>Status:</b> acted on, <a href="../admin/versions.html">v0.1.26</a> · <b>Reported by:</b> an agent working from sgit.ai as documentation · <b>Direction:</b> inbound — the first brief filed <em>at</em> this site rather than by it.</p>
@@ -124,7 +124,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.26</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.27</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

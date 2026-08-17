@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.26</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.27</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -42,6 +42,8 @@
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / AI agents</p>
   <h1>Agent state that isn't the vendor's to read</h1>
   <p class="lead">An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.</p>
+
+  <div class="note"><b>A worked example, opened with a read key.</b> The question this page circles — an agent acting with a human's ambient authority because that is the only credential on offer — has a published vault devoted to it: <a href="../demos/vaults/agentic-browser-isolation/index.html">Agentic Browser Isolation</a>, a living risk graph asking whether an agent browses inside <em>your</em> browser with <em>your</em> logged-in sessions, or an isolated one with a scoped identity. It is vendor-neutral, it cites its evidence outward, and its mechanism is worth borrowing: every altitude has one named owner, a risk stays pending until that owner accepts it personally, and only an accepted risk escalates.</div>
 
   <h2>The problem</h2>
   <p>Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor's memory feature — all of which the provider can read.</p>
@@ -104,7 +106,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.26</a> · <a href="../admin/index.html">engineering</a> · <a href="ai-agents.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.27</a> · <a href="../admin/index.html">engineering</a> · <a href="ai-agents.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

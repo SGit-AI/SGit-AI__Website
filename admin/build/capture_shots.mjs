@@ -37,6 +37,8 @@ const ALGARVE = 'sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca27
 
 const RISK = 'sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z';
 
+const RISKGRAPH = 'sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9';
+
 const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
 /* Each shot: which surface to open, what to do, and what to crop.
@@ -107,6 +109,23 @@ const SHOTS = [
   { name: 'history', vault: 'risk-mandate', cred: RISK, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2000 }, { navView: 'sgit' }, { wait: 4000 }],
     target: 'clip', clip: [0, 0, 1700, 1000] },
+
+  // ---- Agentic Browser Isolation (0610gsp9) — a living risk graph ----
+  { name: 'app-open', vault: 'agentic-browser-isolation', cred: RISKGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'stakeholders', vault: 'agentic-browser-isolation', cred: RISKGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4000 }, { appClickLink: 'people.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'graph', vault: 'agentic-browser-isolation', cred: RISKGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4000 }, { appClickLink: 'graphviz.html' }, { wait: 6000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'permissions', vault: 'agentic-browser-isolation', cred: RISKGRAPH, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1700, 780] },
 
   // The scoped-write claim, shown in the vault's own app.json rather than asserted.
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],
@@ -192,6 +211,17 @@ async function runStep(page, step) {
       if (!el) throw new Error('no control "' + t + '"');
       el.click();
     }, [sel, text]);
+  }
+
+  if (step.appClickLink) {
+    const f = await appFrame(page, step.frameHas || null);
+    if (!f) throw new Error('app frame not found');
+    await f.evaluate(h => {
+      const a = [...document.querySelectorAll('a[href]')].find(x => (x.getAttribute('href') || '').endsWith(h));
+      if (!a) throw new Error('no link ending ' + h);
+      a.click();
+    }, step.appClickLink);
+    return;
   }
 
   if (step.shadowClick) {
