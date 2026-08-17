@@ -2,6 +2,8 @@
   <p class="crumb"><a href="../../index.html">Home</a> / Vaults</p>
   <h1>Published vaults</h1>
   <p class="lead">Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside the page. The keys below are the complete credential: no account, no token, and no write capability anywhere in them.</p>
+  <div class="note"><b>Intake, since it nearly went wrong.</b> A credential submitted for publication here was once a <b>vault key</b> described as a read key — a legacy <code>passphrase:vault_id</code> form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through <code>admin/build/check_credential.py</code> first, which refuses a write credential by <b>prefix</b> (<code>sgit_vk1_</code>, which new vaults emit) or, for anything older, by <b>shape</b> — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them.</div>
+
   <div class="note"><b>The two rules, applied to every row.</b> Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.</div>
   <div class="tablewrap"><table>
     <tr><th>Vault</th><th>Id</th><th>Shape</th><th>Contents</th><th>Published read key</th><th></th></tr>

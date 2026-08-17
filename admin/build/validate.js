@@ -141,11 +141,18 @@ const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, 
   // against). The live vault's own passphrase is caught by the derived scan below.
   /\b[a-z0-9]{24}:[a-z0-9]{4,24}\b/,
   // the sgit CLI's canonical WRITE-credential prefix. New CLI output prints keys prefixed, so
-  // a pasted key now arrives self-labelled — which makes this a cheap, high-signal tripwire:
-  // sgit_vk1_ marks a vault key by construction and must never reach a tracked file.
-  // Its read-only sibling sgit_rk1_ is deliberately NOT banned — we publish one on the demos
-  // page, because a read key is a capability we hand out on purpose.
-  /sgit_vk1_/];
+  // a pasted key arrives self-labelled — a cheap, high-signal tripwire.
+  //
+  // Note the trailing [A-Za-z0-9]. The bare prefix is a NAME, not a key, and the site has to be
+  // able to print it: guidance that cannot show readers what a write credential looks like
+  // cannot teach them to spot one. A real key always carries its passphrase, so requiring one
+  // following CREDENTIAL character catches every actual leak while letting documentation write
+  // the prefix — where it is followed by markup (</code>, a backtick) rather than a secret.
+  // (\S was tried first and failed for exactly that reason. This rule has caught its own author
+  // three times, each time writing the prefix in prose, which is what prompted the precision.)
+  // Belt and braces: the bare passphrase:vault_id shape above catches the body independently.
+  // Its read-only sibling sgit_rk1_ is deliberately NOT banned: we publish those on purpose.
+  /sgit_vk1_[A-Za-z0-9]/];
 
 // 5b. the passphrase tripwire, done safely: read the secret from the gitignored local/ tier
 // (never present it in this tracked file) and scan the tree for it. Skips when local/ is absent
