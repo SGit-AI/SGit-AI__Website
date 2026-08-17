@@ -2,7 +2,7 @@
 
 > The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it.
 
-*Source: <https://sgit.ai/demos/strategy-maps.html> · site v0.2.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/strategy-maps.html> · site v0.2.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

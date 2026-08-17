@@ -2,7 +2,7 @@
 
 > The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy.
 
-*Source: <https://sgit.ai/demos/vaults/deploy-docs/index.html> · site v0.2.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/deploy-docs/index.html> · site v0.2.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

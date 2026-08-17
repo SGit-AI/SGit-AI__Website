@@ -1,6 +1,6 @@
 {
  "_comment": "Written by admin/build/compare_tests.py. Each entry is one executed check against the live service using a published read key. Re-run the script to refresh.",
- "generated": "2026-08-17 00:03 UTC",
+ "generated": "2026-08-17 09:10 UTC",
  "expiry_days": 30,
  "tests": [
   {
@@ -47,7 +47,7 @@
    "id": "cli-accepts-prefixed-key",
    "claim": "The CLI accepts the canonical sgit_rk1_ prefix the web loader accepts",
    "outcome": "absent",
-   "evidence": "sgit-ai v0.14.27: prefixed clone failed \u2014 derived ref afdb9d843131 instead of 11ea50e81f4d; the bare <64hex>:<vault_id> form works on the same version",
+   "evidence": "sgit-ai v0.15.0: prefixed clone failed \u2014 derived ref afdb9d843131 instead of 11ea50e81f4d; the bare <64hex>:<vault_id> form works on the same version",
    "fails_if": "the prefixed form derives a ref id different from the bare form",
    "checked": "2026-08-17"
   }

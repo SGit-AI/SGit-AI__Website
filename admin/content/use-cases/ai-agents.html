@@ -3,6 +3,8 @@
   <h1>Agent state that isn't the vendor's to read</h1>
   <p class="lead">An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.</p>
 
+  <div class="note"><b>A worked example, opened with a read key.</b> The question this page circles — an agent acting with a human's ambient authority because that is the only credential on offer — has a published vault devoted to it: <a href="../demos/vaults/agentic-browser-isolation/index.html">Agentic Browser Isolation</a>, a living risk graph asking whether an agent browses inside <em>your</em> browser with <em>your</em> logged-in sessions, or an isolated one with a scoped identity. It is vendor-neutral, it cites its evidence outward, and its mechanism is worth borrowing: every altitude has one named owner, a risk stays pending until that owner accepts it personally, and only an accepted risk escalates.</div>
+
   <h2>The problem</h2>
   <p>Every durable-agent design needs somewhere to put state between sessions: notes, intermediate findings, drafts, the record of what was already tried. In practice that is a database, a repo, or a vendor's memory feature — all of which the provider can read.</p>
   <p>That is fine while the state is "which step am I on". It stops being fine the moment the state contains the client's documents, the security findings, the unreleased code, the personal data. At that point the question is no longer about engineering: it is whether you are permitted to put that material there at all, and the answer often arrives from someone who does not care how good the access controls are.</p>

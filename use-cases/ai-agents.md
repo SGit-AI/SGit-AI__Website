@@ -2,7 +2,7 @@
 
 > Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
 
-*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.2.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.2.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # Agent state that isn't the vendor's to read
 
 An agent's context window ends; its work shouldn't. Where that work goes is a storage decision that quietly becomes a disclosure decision.
+
+**A worked example, opened with a read key.** The question this page circles — an agent acting with a human's ambient authority because that is the only credential on offer — has a published vault devoted to it: [Agentic Browser Isolation](../demos/vaults/agentic-browser-isolation/index.md), a living risk graph asking whether an agent browses inside *your* browser with *your* logged-in sessions, or an isolated one with a scoped identity. It is vendor-neutral, it cites its evidence outward, and its mechanism is worth borrowing: every altitude has one named owner, a risk stays pending until that owner accepts it personally, and only an accepted risk escalates.
 
 ## The problem
 

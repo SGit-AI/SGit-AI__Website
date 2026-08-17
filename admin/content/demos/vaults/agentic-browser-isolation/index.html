@@ -1,0 +1,87 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Agentic Browser Isolation</p>
+  <h1>Agentic Browser Isolation</h1>
+  <p class="lead">A living risk graph for one narrow, consequential question: when an AI agent browses and acts on the web, does it run <b>inside your browser with your logged-in sessions</b>, or inside an isolated browser with a scoped identity of its own?</p>
+
+  <div class="note"><b>Why this one is here.</b> It is the site's own argument, made by somebody else and in far more detail: this is the ambient-authority problem the <a href="../../../use-cases/serialised-pull-request.html">serialised change proposal</a> and the <a href="../../../use-cases/ai-agents.html">agent use case</a> circle around — an agent borrowing a human's whole session because that is the only credential on offer. Here it is a register with owners, evidence and an escalation mechanism, and it is vendor-neutral: any isolation product is an <em>instance of</em> the control, and its own self-created risks go on the register like everything else.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b>: the owner supplied a vault key, our intake check refused it for publication, and only this one-way derivation appears here.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a> — with ten pages to walk, it is worth the room.</p>
+  <div class="sgv-uiembed" data-vault="0610gsp9" data-readkey="92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is going on here, step by step</h2>
+  <p>Four things worth stopping on. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">ten front doors</span>
+        <h3>One vault, seventeen entry points</h3>
+        <p>The app opens on <b>Facts</b> and carries a numbered spine across the top: your reality, the two designs, the chain, how it unfolds, stakeholders, an explorer, two graph views and the raw data. Seventeen HTML entry points in one vault, each a real page.</p>
+  <p>The evidence is cited outward, too — the facts link to Brave's prompt-injection write-up, an arXiv paper on credential exposure, independent testing. A risk register that names its sources is one you can argue with.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-alt="The app on open: a ten-step spine, and the decision stated at the top."><figcaption>The app on open: a ten-step spine, and the decision stated at the top.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the mechanism</span>
+        <h3>The same exposure, in seven languages</h3>
+        <p>This is the idea worth stealing. Every altitude has <b>one named owner</b> — L1 IT, L2 CISO, L3 DPO/CFO/COO, L4 CEO, L5 Board — and each owns the risk <em>in their own language</em>.</p>
+  <p>A risk is never assigned automatically. It sits <b>pending</b> until that owner accepts it personally, and <em>only an accepted risk escalates to the altitude above</em>. Look at the counts in the picture: IT has 5 risks pending; everyone above is <code>waiting</code>, with nothing yet arrived — because nothing has been passed up. There is <b>no deny button</b>: accept, mitigate, or ask for more data.</p>
+      </div>
+      <figure class="shot" data-shot="stakeholders.webp" data-alt="Seven stakeholder altitudes, each with its own pending/accepted counts."><figcaption>Seven stakeholder altitudes, each with its own pending/accepted counts.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">a graph, not a document</span>
+        <h3>The register is data, and you can see it as one</h3>
+        <p>Seventy JSON files hold the register — risks, controls, evidence, owners, acceptances — and the app offers them as an explorer, a rendered graph, and a queryable graph database, with RDF tooling vendored into the vault so none of it needs the network.</p>
+  <p>That is the shape argument for vaults holding structured analysis rather than prose: the same encrypted objects serve a narrative page, a stakeholder view and a graph query, because the underlying thing is data.</p>
+      </div>
+      <figure class="shot" data-shot="graph.webp" data-alt="The graph view, rendered in the browser from the vault\u2019s own JSON."><figcaption>The graph view, rendered in the browser from the vault\u2019s own JSON.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">read-only by declaration</span>
+        <h3>An app that asks for nothing</h3>
+        <p>Its <code>app.json</code> declares <code>fs.read: true</code> and <code>fs.write: []</code> — an <b>empty</b> write list. Compare the <a href="../supplement-stack/index.html">Supplement Stack</a>, which writes to one folder, and <a href="../risk-mandate/index.html">Risk Mandate</a>, which uses an LLM without holding its key.</p>
+  <p>Three vaults, three points on the same scale, each declared in the vault rather than configured on a server. The footer states the consequence plainly: <em>your changes are device-local; the vault baseline is never modified</em>.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-alt="app.json: read true, write [] — the app requests no write capability at all."><figcaption>app.json: read true, write [] — the app requests no write capability at all.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td><b>Seventeen entry points</b></td><td>The most in the catalogue: a narrative spine, a page per stakeholder altitude, an explorer, two graph views and the raw data — one encrypted store, many front doors</td></tr>
+    <tr><td><b>Zero write capability</b></td><td><code>fs.write: []</code>. The app reads and renders; edits stay device-local and the vault baseline is untouched</td></tr>
+    <tr><td>Structured analysis, not prose</td><td>~70 JSON files hold risks, controls, evidence and acceptances; the pages are views over that data</td></tr>
+    <tr><td>Graph tooling inside the vault</td><td>RDF libraries vendored in, so the explorer and graph database work with no network and no CDN — the authoring contract making offline the default</td></tr>
+    <tr><td>Cited evidence</td><td>Facts link out to primary sources; the register can be checked rather than believed</td></tr>
+    <tr><td>A mechanism, not a spreadsheet</td><td>Acceptance-gated escalation with named owners and no deny button — the part most worth copying</td></tr>
+  </table></div>
+
+  <h2>The audit, honestly</h2>
+  <p>Audited across all 104 files before the key was published. <b>Clean:</b> no credentials, no personal data, no operational bookkeeping, and the vault's own key does not appear in its content.</p>
+  <p>The scan produced six hits and all six were false positives — digit runs like <code>0123456789</code> inside a minified RDF library, matching a phone-number pattern. Worth recording because it is what a real audit looks like: the interesting output of a secret scanner is usually the part you have to rule out by reading it.</p>
+  <p>As always: revocation is not retroactive. Anyone who fetches these objects keeps them.</p>
+
+  <h2>Derived facts</h2>
+  <p>104 files · 2.4 MB · 4 commits · seventeen app entries · last updated 2026-07-18 — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>.</p>
+</main>
