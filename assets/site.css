@@ -431,7 +431,6 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
    Chrome honours @page margin when the user leaves Layout > Margins on "Default",
    which is what people leave it on. Picking Custom or None overrides us, correctly. */
 @page{margin:14mm}
-.print-src,.print-hint{display:none}
 @media print{
   /* Chrome drops background colours unless asked, and on this site the tints carry
      meaning — amber for exposure, green for assurance, teal for a section tag. */
@@ -468,22 +467,4 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
   .sgv-uiembed-label::after{content:" — live surface; open this page online to use it";
     font-weight:400;color:var(--dim)}
 
-  /* The PDF says where it came from even when Chrome's own headers/footers are off,
-     which is the default in a lot of setups and always the case when printing from
-     an app rather than a browser chrome. */
-  .print-src{display:block;font-family:var(--mono);font-size:.68rem;color:var(--dim);
-    margin:0 0 .3rem;padding:0 1.1rem}
-  /* Walkthrough rows are prose beside a screenshot, alternating side down the page —
-     two columns above the 820px breakpoint, one below it. A4 portrait lands at 688px
-     of usable width, so it collapses; landscape lands above 1000px and keeps the
-     alternation that is the point of the design. @page{size:A4 landscape} does NOT
-     fix this: Chrome applies it to the paper and still lays out at portrait width,
-     which exports a narrow column on a wide sheet. So: ask the reader, in print only. */
-  .print-hint{display:block;font-family:var(--mono);font-size:.68rem;color:var(--dim);
-    margin:0 0 1.4rem;padding:0 1.1rem}
 }
-/* ...and it is advice, so it disappears once it has been taken. Unlike `width`, the
-   `orientation` feature does resolve against the real print job (verified: a landscape
-   job reports orientation:landscape and width>=1000; a portrait job reports portrait
-   and width<=820 — which is also why the 820px breakpoint gets this right by itself). */
-@media print and (orientation:landscape){.print-hint{display:none}}

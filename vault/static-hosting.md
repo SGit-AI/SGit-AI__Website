@@ -2,7 +2,7 @@
 
 > Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 
-*Source: <https://sgit.ai/vault/static-hosting.html> · site v0.2.30 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/static-hosting.html> · site v0.2.31 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
