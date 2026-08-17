@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.32'
+SITE_VERSION = 'v0.2.33'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.32', '2026-08-17', 'this release',
+    ('v0.2.33', '2026-08-17', 'this release',
+     "A release now ends by asking the live site what version it is serving, because "
+     "'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both "
+     "pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages "
+     "failed to deploy them because codeload returned 429 (Too Many Requests) for "
+     "actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a "
+     "single step. Validation passed, tagging passed, the push was verified against both "
+     "remotes — and the site served a two-release-old page for forty minutes, which is how "
+     "long it took a human on a phone to notice the version pill still said v0.2.30. The "
+     "failure was invisible to every check the release ran, because it happened in a job "
+     "neither remote knows about. So release.sh gained a sixth step: poll the live URL with "
+     "a cache-buster until the version pill matches this release, up to eight minutes, and "
+     "ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the "
+     "action download is transient and just needs a re-run. The cost is up to eight minutes "
+     "of waiting per release. The alternative, demonstrated twice in one afternoon, is "
+     "telling somebody a fix is live when it is not. Same principle as the orphan-page rule "
+     "and the llms.txt guard: a page nothing links to, a page the index omits, and a page "
+     "the deploy never published are all equally unpublished, so the build refuses all "
+     "three. Ships the content of v0.2.31 and v0.2.32, which had been written but never "
+     "served."),
+    ('v0.2.32', '2026-08-17', 'obj-cas-imm-7f84b9ee6727',
      "The walkthroughs page becomes a document rather than a list of links. Each of the three "
      "videos now carries the recording at the top and THE SAME SESSION READ BACK underneath it: "
      "fifteen moments, each one a timestamp that deep-links into the video, the frame the screen "
