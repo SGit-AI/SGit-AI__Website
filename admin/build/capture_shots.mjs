@@ -189,6 +189,55 @@ const SHOTS = [
             { appClickText: ['button.tab', 'Role risk map'] }, { wait: 3000 }],
     target: 'clip', clip: [0, 0, 1600, 1080] },
 
+  // ---- walkthrough moments: the states the author narrates in the videos ----
+  // Node shapes were found with appProbe rather than guessed: chain entries are
+  // g.cnode (.inh inherent, .corp corporate register), roles are g.role (.board),
+  // estate twins are g.tw (.stake at stake, .ghost nobody has said).
+
+  // "if you look at this guy here, for example, you have risk 6" — the exact node the
+  // Risk Chains walkthrough names, selected so its upstream and downstream colour.
+  { name: 'chain-r6', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Exposed'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Risk chains'] }, { wait: 3500 },
+            { appClickMatch: ['g.cnode', 'R6 '] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // "this particular risk, corporate 2, who is assigned to, and then to the CEO" —
+  // the top of the chain, interrogated backwards.
+  { name: 'chain-corp2', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Exposed'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Risk chains'] }, { wait: 3500 },
+            { appClickMatch: ['g.cnode.corp', 'CORP-2'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // "if you have the govern, we can see it's a much cleaner sort of flow of events."
+  { name: 'chain-governed', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Governed'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Risk chains'] }, { wait: 3500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // "if you have no agent, you have nothing" — the org chart before any answer.
+  { name: 'role-map-new', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'New'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Role risk map'] }, { wait: 3500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // "the CTO has a couple risks of itself but also inherits all the risks below" —
+  // the clearest instance of assigned versus through.
+  { name: 'role-cto', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Exposed'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Role risk map'] }, { wait: 3500 },
+            { appClickMatch: ['g.role', 'CTO'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // "the SRE is holding risk 2, risk 6, risk 9, risk 21, and risk 31" — the bottom of
+  // the same chain, where the risks the CTO inherits are actually held.
+  { name: 'role-sre', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1600, 1080],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Exposed'] }, { wait: 3000 },
+            { appClickText: ['button.tab', 'Role risk map'] }, { wait: 3500 },
+            { appClickMatch: ['g.role', 'SRE'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1600, 1080] },
+
   // The scoped-write claim, shown in the vault's own app.json rather than asserted.
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
@@ -306,6 +355,42 @@ async function runStep(page, step) {
       if (!b) throw new Error('no tab ' + t);
       b.click();
     }, [host, sel, text]);
+  }
+
+  if (step.appClickMatch) {
+    // appClickText needs an EXACT textContent match, which is unusable for the graph
+    // views: a node's text is its whole label ("CTO4 assigned · 25 through"). This
+    // matches a substring instead, and dispatches a real MouseEvent rather than
+    // calling .click() — the risk and role nodes are SVG <g> elements, where the
+    // app listens for the event rather than relying on the HTMLElement method.
+    const [sel, text] = step.appClickMatch;
+    const f = await appFrame(page, step.frameHas || null);
+    if (!f) throw new Error('app frame not found');
+    return f.evaluate(([s, t]) => {
+      const el = [...document.querySelectorAll(s)].find(x => (x.textContent || '').includes(t));
+      if (!el) throw new Error('no element matching "' + t + '" for ' + s);
+      el.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+    }, [sel, text]);
+  }
+
+  if (step.appProbe) {
+    // Selector reconnaissance. Every new vault costs a round of "what is this element
+    // called?", and guessing burns a full capture run per guess. This asks the app
+    // directly and prints the answer, so the next step can be written from fact.
+    //   { appProbe: '.chain-node' }  ->  count, and the first few trimmed textContents
+    const f = await appFrame(page, step.frameHas || null);
+    if (!f) throw new Error('app frame not found');
+    const out = await f.evaluate(s => {
+      const els = [...document.querySelectorAll(s)];
+      const seen = new Set();
+      els.forEach(e => seen.add(e.tagName.toLowerCase() + '.' + [...e.classList].join('.')));
+      return { count: els.length, shapes: [...seen].slice(0, 10),
+               sample: els.slice(0, 8).map(e => (e.textContent || '').trim().slice(0, 50)) };
+    }, step.appProbe);
+    console.log('  probe', step.appProbe, '->', out.count);
+    console.log('    shapes', JSON.stringify(out.shapes));
+    console.log('    text  ', JSON.stringify(out.sample));
+    return;
   }
 
   if (step.replType) {

@@ -1,70 +1,90 @@
 /* shots.js — fill walkthrough figures with their screenshots at runtime.
 
-   The site's authoring contract forbids declarative <img src> (a page must survive
-   being served from inside a vault, where the host answers reads over the bridge
-   rather than serving declarative fetches). So the markup carries placeholders:
+   The site's authoring contract forbids declarative <img src> in the page source (a
+   page must survive being served from inside a vault, where the host answers reads
+   over the bridge rather than serving declarative fetches). So the markup carries
+   placeholders:
 
      <figure class="shot" data-shot="lightbox.webp" data-cap="…"></figure>
 
-   and this fills them in. Two paths, in order of preference:
-     1. sg.vfs.read — when the page is itself running inside a vault app
-     2. plain fetch of assets/shots/<name> — the ordinary web case
+   and this fills them in. Two paths, and the difference between them matters more
+   than it looks:
 
-   Loading is lazy (IntersectionObserver): the walkthrough sits at the foot of a
-   long page, so its images cost nothing until the reader arrives. */
+     1. INSIDE A VAULT — sg.vfs.read gives us bytes, which become a blob: URL. This
+        is unavoidably asynchronous: we have to have the bytes before there is
+        anything for an <img> to point at.
+     2. THE ORDINARY WEB — we set img.src to the path and stop. No fetch, no blob.
+        The browser owns the load, which means it is an ordinary pending document
+        resource, which means the PRINT pipeline knows to wait for it. Going through
+        fetch() here would be pure loss: same bytes, but invisible to the printer.
+
+   Loading is lazy (IntersectionObserver): a walkthrough page carries most of a
+   megabyte of WebP below the fold, and a reader who never scrolls should never pay
+   for it. Print is the one exception, and it is handled ON PRINT rather than by
+   pre-loading for everybody — see printPrep. */
 (function () {
   'use strict';
 
-  async function bytes(path) {
+  function vaultHost() {
     var sg = window.sg || (window.parent && window.parent.sg);
-    if (sg && sg.vfs && sg.vfs.read) {
-      try { return await sg.vfs.read(path); } catch (e) { /* fall through to fetch */ }
-    }
-    var r = await fetch(path);
-    if (!r.ok) throw new Error(r.status + ' ' + path);
-    return new Uint8Array(await r.arrayBuffer());
+    return (sg && sg.vfs && sg.vfs.read) ? sg : null;
   }
 
-  async function fill(fig, eager) {
+  // Images live in the vault's own folder:
+  //   demos/vaults/<slug>/index.html  ->  demos/vaults/<slug>/images/<name>
+  // A page-relative path means a vault folder is self-contained: move it and its
+  // pictures move with it. Deeper pages under the same vault (views/, videos/) point
+  // back up with data-dir, so one vault keeps ONE image folder however many pages
+  // describe it.
+  function pathOf(fig) {
+    return (fig.getAttribute('data-dir') || 'images/') + fig.getAttribute('data-shot');
+  }
+
+  function failed(fig, name) {
+    fig.classList.add('shot--failed');
+    var p = document.createElement('p');
+    p.className = 'small dim';
+    p.textContent = 'screenshot unavailable (' + name + ')';
+    fig.insertBefore(p, fig.firstChild);
+  }
+
+  // eager=true is the print path: no awaiting anywhere on the web branch, and
+  // loading="eager" so the browser does not defer the DECODE of an image that is far
+  // below the viewport. That deferral is what used to export blank gaps — the <img>
+  // existed and had fetched, but sat at naturalWidth 0 because it had never been
+  // scrolled into view.
+  function fill(fig, eager) {
     var name = fig.getAttribute('data-shot');
     if (!name) return;
     if (fig.dataset.loaded) {
-      // Already has an <img>, but it may be one the observer created with
-      // loading="lazy" that has not decoded yet. Promote it — see below.
       if (eager) [].forEach.call(fig.querySelectorAll('img'), function (i) { i.loading = 'eager'; });
       return;
     }
     fig.dataset.loaded = '1';
-    // Images live in the vault's own folder:
-    //   demos/vaults/<slug>/index.html  ->  demos/vaults/<slug>/images/<name>
-    // A page-relative path means a vault folder is self-contained: move it, and its
-    // pictures move with it. Deeper pages under the same vault (views/, videos/)
-    // point back up with data-dir, so one vault keeps ONE image folder.
-    // Deeper pages under the same vault (views/, videos/) point back up with data-dir,
-    // so one vault keeps ONE image folder no matter how many pages describe it.
-    var path = (fig.getAttribute('data-dir') || 'images/') + name;
-    try {
-      var data = await bytes(path);
-      var url = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));
-      var img = document.createElement('img');
-      img.alt = fig.getAttribute('data-alt') || '';
-      // loading="lazy" defers the DECODE, not just the fetch, for an image far below
-      // the viewport — and a page that is never scrolled never brings it into view, so
-      // the element sat there complete:false, naturalWidth:0 and printed as a blank
-      // gap. (Measured: the last three figures of the seven-views page, every time.)
-      // It is only correct on the observer path, where the figure is by definition
-      // about to be on screen; the prefetch and print paths must ask for eager.
-      img.loading = eager ? 'eager' : 'lazy';
-      img.addEventListener('load', function () { fig.classList.add('shot--in'); });
-      img.src = url;
-      fig.insertBefore(img, fig.firstChild);
-    } catch (e) {
-      fig.classList.add('shot--failed');
-      var p = document.createElement('p');
-      p.className = 'small dim';
-      p.textContent = 'screenshot unavailable (' + name + ')';
-      fig.insertBefore(p, fig.firstChild);
+    var path = pathOf(fig);
+    var img  = document.createElement('img');
+    img.alt = fig.getAttribute('data-alt') || '';
+    img.loading = eager ? 'eager' : 'lazy';
+    if (eager) {
+      // Print is a deadline, not a scroll. Ask for the bytes ahead of anything else on
+      // the page, and for a synchronous decode so the image is presentable the moment
+      // it lands rather than a frame later — the paginator does not wait for a frame.
+      img.decoding = 'sync';
+      try { img.fetchPriority = 'high'; } catch (e) { /* not in every engine */ }
     }
+    img.addEventListener('load', function () { fig.classList.add('shot--in'); });
+    img.addEventListener('error', function () { failed(fig, name); });
+
+    var sg = vaultHost();
+    if (!sg) {                       // the ordinary web: hand the URL straight over
+      img.src = path;
+      fig.insertBefore(img, fig.firstChild);
+      return;
+    }
+    sg.vfs.read(path).then(function (data) {
+      img.src = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));
+      fig.insertBefore(img, fig.firstChild);
+    }, function () { failed(fig, name); });
   }
 
   function all() {
@@ -82,29 +102,33 @@
     }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { io.unobserve(e.target); fill(e.target); }
+        if (e.isIntersecting) { io.unobserve(e.target); fill(e.target, false); }
       });
     }, { rootMargin: '400px' });
     figs.forEach(function (f) { io.observe(f); });
 
-    // Printing needs EVERY figure, not just the ones the reader scrolled past. A page
-    // exported straight from the top used to come out with blank gaps where the
-    // unscrolled screenshots were — nothing errored, the <img> simply never existed.
-    //
-    // beforeprint alone cannot fix it: it is synchronous, and Chrome will not wait for
-    // an async fetch + decode before paginating. So the real fix is the prefetch —
-    // once the page is idle, quietly pull the rest so the bytes are already in cache
-    // by the time anyone reaches for Cmd-P. A walkthrough page is well under a
-    // megabyte of WebP in total, and it costs nothing on the critical path.
-    // beforeprint stays as the backstop for a print fired before idle.
-    var eager = function () { io.disconnect(); all().forEach(function (f) { fill(f, true); }); };
-    if ('requestIdleCallback' in window) requestIdleCallback(eager, { timeout: 4000 });
-    else setTimeout(eager, 2500);
-    window.addEventListener('beforeprint', eager);
+    // Print needs every figure; ordinary reading does not. So the bypass fires only
+    // when a print is actually starting — nobody pays for it by scrolling past.
+    // It works because the web branch of fill() is synchronous: by the time this
+    // handler returns, the <img> elements are in the document with loads pending,
+    // and Chrome's print pipeline waits for pending image loads before it paginates.
+    var printPrep = function () {
+      io.disconnect();
+      all().forEach(function (f) { fill(f, true); });
+    };
+    window.addEventListener('beforeprint', printPrep);
     if (window.matchMedia) {                       // Safari fires no beforeprint
       var mq = window.matchMedia('print');
-      if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) eager(); });
+      if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) printPrep(); });
     }
+    // Cmd/Ctrl-P lands a few hundred milliseconds BEFORE beforeprint — the dialog has
+    // to open first. Same user action, same "only on print" rule, but the images get a
+    // head start on the download instead of racing the paginator from a standing stop.
+    // (Measured: with zero grace after beforeprint, 1 of 9 images made the PDF; with
+    // any real grace, 9 of 9. This is what buys the grace on a cold page.)
+    window.addEventListener('keydown', function (e) {
+      if ((e.metaKey || e.ctrlKey) && !e.altKey && (e.key === 'p' || e.key === 'P')) printPrep();
+    }, true);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);

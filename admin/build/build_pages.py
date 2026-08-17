@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.30'
+SITE_VERSION = 'v0.2.31'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.30', '2026-08-17', 'this release',
+    ('v0.2.31', '2026-08-17', 'this release',
+     "Corrects v0.2.30 on three counts, two of them reported and one of them the reason the "
+     "report was possible at all. (1) THE LAZY-LOAD BYPASS IS NOW ONLY ON PRINT. v0.2.30 "
+     "prefetched every screenshot once the page went idle, which fixed printing by making "
+     "every reader pay for images they never scrolled to — the wrong trade, and correctly "
+     "rejected. It is now driven entirely by the print itself, and it works because of a "
+     "change one layer down: on the ordinary web the loader no longer fetches bytes and "
+     "builds a blob: URL, it just sets img.src. That makes each screenshot an ordinary "
+     "pending document resource, which the print pipeline knows to wait for, where a "
+     "fetch-and-blob is invisible to it. Cmd/Ctrl-P is caught on keydown as well as "
+     "beforeprint, because the keystroke lands a few hundred milliseconds before the "
+     "dialog does and that head start is what removes the race. Measured on a page that "
+     "was never scrolled: 1 image loaded while reading, 9 of 9 in the PDF. The blob path "
+     "remains for pages served from inside a vault, where it is the only option. "
+     "(2) THE PRINT-ONLY SOURCE LINE AND LANDSCAPE HINT ARE GONE — printing these pages is "
+     "an uncommon case and did not warrant instructions on the page. (3) ASSETS ARE NOW "
+     "CACHE-BUSTED PER RELEASE. GitHub Pages serves them with max-age=600, and the "
+     "bootstrap fetched them by bare path, so for ten minutes after every release a "
+     "returning reader ran the NEW html against the OLD css and js. That is not a "
+     "hypothetical: it is exactly what produced the v0.2.30 bug report — new markup whose "
+     "print-only elements the cached stylesheet did not know to hide, and a cached loader "
+     "without the print handler. Every fetched asset now carries ?v=<site version>; the "
+     "in-vault sg.vfs path stays unversioned, since a vault lookup is by path, not URL."),
+    ('v0.2.30', '2026-08-17', 'obj-cas-imm-81dc22613ddf',
      "Print and save-as-PDF, prompted by an export of the seven views page that came out wrong. "
      "TWO DEFECTS, one reported and one found while looking at it. (1) The top nav is position:sticky; "
      "Chrome paints a sticky box ONCE, wherever it happens to fall in the paginated flow, so the whole "
@@ -166,15 +189,17 @@ ROOT  = find_vault_root()
 ADMIN = os.path.join(ROOT, 'admin')
 
 BOOT = """<script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + SITE_VERSION_TOKEN;var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
-function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
 async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
 async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
 var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>"""
+
+BOOT = BOOT.replace('SITE_VERSION_TOKEN', "'" + SITE_VERSION + "'")
 
 # The fade-in hides the unstyled flash while site.css is bridge-loaded. It must never be able
 # to leave the page invisible: a crawler that applies CSS but does not run our bootstrap would
@@ -311,16 +336,9 @@ def page(path, title, desc, here, body):
     # the stylesheet and every asset at the wrong level. Same formula write_md uses.
     p = '../' * path.count('/')
     md_name = os.path.basename(path)[:-5] + '.md'
-    # A walkthrough page is prose beside a screenshot, alternating side down the page.
-    # It wants landscape, and the obvious way to ask — @page{size:A4 landscape} — was
-    # tried and rejected on evidence: Chrome applies it to the PAPER but keeps laying
-    # out at portrait width, so the export came back as a narrow single column
-    # stranded on a wide sheet (measured: a print probe reported width<=820 and
-    # orientation:portrait while the sheet came out 297mm wide). The existing 820px
-    # breakpoint already does the right thing once the reader picks Landscape — two
-    # columns there, one column in portrait — so the page just says so, in print only.
-    page_hint = ('<p class="print-hint">Best exported in landscape '
-                 '(Layout &rsaquo; Landscape).</p>') if 'class="wt"' in body else ''
+    # Same cache-busting as the bootstrap, applied to the components a page body
+    # fetches for itself. Done here so no content file has to remember it.
+    body = re.sub(r"(assets/[a-z-]+\.js)'", r"\1?v=" + SITE_VERSION + "'", body)
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
 <head>
@@ -342,8 +360,6 @@ def page(path, title, desc, here, body):
 <body>
 
 {nav(p, here)}
-
-<p class="print-src">sgit.ai &middot; https://sgit.ai/{path}</p>{page_hint}
 
 {body}
 
