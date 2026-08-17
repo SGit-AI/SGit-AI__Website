@@ -39,6 +39,8 @@ const RISK = 'sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99
 
 const RISKGRAPH = 'sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9';
 
+const EXPLORER = 'sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe';
+
 const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
 /* Each shot: which surface to open, what to do, and what to crop.
@@ -126,6 +128,25 @@ const SHOTS = [
   { name: 'permissions', vault: 'agentic-browser-isolation', cred: RISKGRAPH, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
     target: 'clip', clip: [0, 0, 1700, 780] },
+
+  // ---- Risk graph explorer (3simlnqe) — public by design ----
+  // The two states are the app's argument: nothing at stake -> a short register.
+  { name: 'empty', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'exposed', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['button', 'Exposed'] }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // Its own publication rules, written in the vault and enforced by its build.
+  { name: 'public-md', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'PUBLIC.md'] }, { wait: 3000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
+
+  { name: 'permissions', vault: 'risk-graph-explorer', cred: EXPLORER, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1700, 760] },
 
   // The scoped-write claim, shown in the vault's own app.json rather than asserted.
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],

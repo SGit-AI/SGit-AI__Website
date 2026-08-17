@@ -1,0 +1,83 @@
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Vaults</a> / Publishing a vault</p>
+  <h1>Publishing a vault: the method</h1>
+  <p class="lead">Every vault in this section went through the same seven steps. This page is that method written down so another site — or another agent — can follow it. It is deliberately specific: the commands are real, the tools are in this repo, and the rules are the ones learned by nearly getting them wrong.</p>
+
+  <div class="note"><b>Who this is for.</b> An agent maintaining a site that publishes vaults. Read the <a href="publishing.md">markdown twin</a> if you are one. The tooling referenced lives in <code>admin/build/</code> of the sgit.ai repository and is small enough to copy rather than depend on.</div>
+
+  <h2>The two rules everything else serves</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Rule</th><th>Why it is absolute</th></tr>
+    <tr><td><b>Read keys yes, vault keys never</b></td><td>A read key is a capability handed out on purpose and cannot become write access. A vault key is read <em>and</em> write; publishing one hands the vault to anybody</td></tr>
+    <tr><td><b>Audit before the key, not after</b></td><td>Revocation is not retroactive. Anyone who fetches the objects keeps them, so an audit that happens after publication has not happened</td></tr>
+  </table></div>
+
+  <h2>1 · Classify the credential before it touches anything</h2>
+  <p>Do this first, before the credential is pasted into a page, a script or a commit. Credentials arrive mislabelled — it has happened three times here, each time a vault key described as a read key.</p>
+  <pre class="shell">python3 admin/build/check_credential.py '&lt;credential&gt;'
+<span class="d"># exit 0 → read-only, safe to publish
+# exit 1 → write credential (or unrecognised) — stop</span></pre>
+  <p>It classifies two ways, because the problem has two eras: by <b>prefix</b> for vaults new enough to emit one, and by <b>shape</b> for everything older — a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.</p>
+
+  <h2>2 · If it is a vault key, derive rather than refuse</h2>
+  <p>A vault key does not block publication; it changes what you publish. Store it where the repository cannot commit it, then derive:</p>
+  <pre class="shell"><span class="d"># the gitignored tier — the release tripwire then scans every tracked file for it</span>
+printf '%s' "$VAULT_KEY" > .sg_vault/local/demo-keys/&lt;name&gt;-vault-key
+
+python3 - &lt;&lt;'PY'
+from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
+c = Vault__Crypto()
+pw, vault_id = c.parse_vault_key(open('.sg_vault/local/demo-keys/&lt;name&gt;-vault-key').read().strip())
+print(c.derive_keys(pw, vault_id)['read_key'])     <span class="d"># publish only this</span>
+PY</pre>
+  <p>The derivation is one-way: a published read key cannot be turned back into the vault key. Never print the write key; never let the vault key reach a tracked file.</p>
+
+  <h2>3 · Audit with the read key, across every file</h2>
+  <p>Open the vault with the <em>read</em> key — the credential your readers will have — and scan every text file. Look for: the vault's own key (this has really happened, and forced a republish), API keys, tokens and <code>delete_auth</code> values, private-key blocks, personal data, and operational bookkeeping under <code>.vault/</code>.</p>
+  <div class="note"><b>Ruling hits out is the work.</b> Scanners produce false positives and that is normal: a phone-number pattern matching <code>0123456789</code> inside a minified library; an <code>sk-test-…</code> string that turns out to be a fixture in a test asserting a leaked key <em>is</em> caught. Read every hit. Publish the interesting ones — a finding explained is worth more than a clean sheet asserted.</div>
+
+  <h2>4 · Derive the facts rather than describing them</h2>
+  <pre class="shell">python3 admin/build/catalogue_derive.py &lt;vault_id&gt; &lt;read_key&gt;</pre>
+  <p>File count, size, commit depth, HEAD, top-level layout, file types, app entry points and browser-renderability — all from the read key, no token and no clone. A human supplies only what a human knows: what it is for, and whether it is production or a sketch.</p>
+
+  <h2>5 · Capture evidence by driving the real product</h2>
+  <p>Screenshots should be of the actual vault, produced by a script that opens it with the published read key and performs the navigation being described. Mock-ups age into lies; a capture script re-runs.</p>
+  <pre class="shell">node admin/build/capture_shots.mjs --vault &lt;slug&gt;</pre>
+  <p>Each shot declares a surface (the app, or the vault browser), the steps, and the crop. Steps can click in the app frame, drive shadow-DOM controls, type into the debug REPL, expand folders or switch views. Store the images beside the page — <code>demos/vaults/&lt;slug&gt;/images/</code> — so a vault's folder is self-contained.</p>
+
+  <h2>6 · Write the page: describe, then show, then admit</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Section</th><th>What goes in it</th></tr>
+    <tr><td>Lead + why this one</td><td>What the vault is, and the one thing it demonstrates that others do not</td></tr>
+    <tr><td>The credential, in the open</td><td>The read key, a CLI command, and a link that opens it in the official UI. Say plainly that it grants read and only read</td></tr>
+    <tr><td>Live embed</td><td>Both surfaces, opened over the embed protocol so the key never enters a URL or the frame's storage</td></tr>
+    <tr><td>Walkthrough rows</td><td>Alternating prose and screenshot, one row per non-obvious thing. This is where a reader learns what a live embed cannot tell them</td></tr>
+    <tr><td>What it demonstrates</td><td>A feature table naming the mechanism, not the marketing</td></tr>
+    <tr><td><b>The audit, honestly</b></td><td>What was scanned, what was found, and what it means. Findings included</td></tr>
+    <tr><td>Derived facts</td><td>Step 4's output, with the tool named so it can be re-run</td></tr>
+  </table></div>
+
+  <h2>7 · Record the things that outlive the page</h2>
+  <p>Per entry: the <b>shape</b> (the workflow it resembles, not its domain), the <b>evidence status</b> (production, demonstration, or sketch), whether it is a copy or a live reference, and the <b>write-key status</b> — escrowed or lost. A vault whose write key is lost is frozen: readable forever, never correctable. Say so where a reader will see it.</p>
+
+  <h2>What we got wrong, so you do not have to</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Mistake</th><th>The rule that came out of it</th></tr>
+    <tr><td>A vault published its own write credential inside its content</td><td><b>Republish, don't retrofit.</b> A sanitised copy into a fresh vault also sheds the history you cannot publish</td></tr>
+    <tr><td>A vault key submitted as a read key, three times</td><td>Classification is a check, not a habit — step 1</td></tr>
+    <tr><td>A test reported a refusal that was really a truncated clone</td><td>Re-run before recording. A result you cannot reproduce is not evidence</td></tr>
+    <tr><td>Our own tripwire banned the string we needed in order to teach people to recognise it</td><td>Make the rule <em>precise</em>, not stricter: fire on the prefix plus a credential character, so documentation can name it</td></tr>
+    <tr><td>A read key was published in front of a vault carrying an LLM config</td><td>Check, do not assume: we attempted to unseal it with the published read key, and AES-GCM refused. State the result either way</td></tr>
+  </table></div>
+  <p>The best statement of the vault-side rules is not ours: the <a href="risk-graph-explorer/index.html">Risk Graph Explorer</a> carries a <code>PUBLIC.md</code> whose three build-enforced rules — nothing private committed, no write token, <b>no metered capability</b> — are the version to copy if you are building a vault intended for publication.</p>
+
+  <h2>The tools, in one list</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Tool</th><th>Does</th></tr>
+    <tr><td><code>admin/build/check_credential.py</code></td><td>Classifies a credential; exit code says publish or stop</td></tr>
+    <tr><td><code>admin/build/catalogue_derive.py</code></td><td>Read key → the facts, read-only and no token</td></tr>
+    <tr><td><code>admin/build/capture_shots.mjs</code></td><td>Drives the live vault and crops evidence screenshots</td></tr>
+    <tr><td><code>admin/build/validate.js</code></td><td>The release gate, including the key-leak tripwire</td></tr>
+    <tr><td><code>admin/build/compare_tests.py</code></td><td>Executes the claims that can be executed, with dates</td></tr>
+  </table></div>
+</main>

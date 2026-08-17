@@ -2,7 +2,7 @@
 
 > A living risk graph for whether an AI agent browses with your logged-in sessions or an isolated identity: seventeen entry points, a page per stakeholder altitude, acceptance-gated escalation, cited evidence, and an app that requests no write capability at all.
 
-*Source: <https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html> · site v0.2.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agentic-browser-isolation/index.html> · site v0.2.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
