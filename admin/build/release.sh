@@ -53,7 +53,41 @@ done
   || die "git HEAD != origin/$BRANCH after push"
 echo "   git: HEAD == origin/$BRANCH"
 
-step "5/5 release complete"
+step "5/6 verify the deploy actually published"
+# "Both remotes in sync" is NOT the same as "live", and on 17 August that gap cost
+# two releases. v0.2.31 and v0.2.32 both pushed cleanly and both reported success
+# here, while GitHub Pages failed to deploy either one: codeload returned 429 (Too
+# Many Requests) for actions/configure-pages@v5 and the deploy job died in "Set up
+# job", before running a step. The site served a two-release-old page for forty
+# minutes and nothing noticed — the failure was in a job neither remote knows about.
+#
+# So the last thing a release does is ask the live site what version it is serving.
+# The cost is up to eight minutes of waiting; the alternative is telling somebody a
+# fix is live when it is not, which happened twice in one afternoon.
+VER="$(sed -n "s/^SITE_VERSION = '\(.*\)'\$/\1/p" admin/build/build_pages.py)"
+[ -n "$VER" ] || die "could not read SITE_VERSION from admin/build/build_pages.py"
+echo "   waiting for $VER to appear at https://sgit.ai/ (up to 8 min)"
+LIVE=""
+for i in $(seq 1 32); do
+  sleep 15
+  # cache-buster: GitHub Pages serves max-age=600, and we want the origin's answer
+  LIVE="$(curl -sS "https://sgit.ai/index.html?deploycheck=$i" 2>/dev/null \
+          | grep -o 'v0\.[0-9]\+\.[0-9]\+' | head -1 || true)"
+  [ "$LIVE" = "$VER" ] && break
+  printf '.'
+done
+echo
+if [ "$LIVE" = "$VER" ]; then
+  echo "   live: sgit.ai is serving $VER"
+else
+  echo "   live: sgit.ai is still serving ${LIVE:-<unknown>}, expected $VER" >&2
+  echo "   the push succeeded — this is the GitHub Pages deploy, not the content." >&2
+  echo "   check:  https://github.com/SGit-AI/SGit-AI__Website/actions" >&2
+  echo "   a 429 downloading actions/configure-pages is transient; re-run the job." >&2
+  die "pushed but NOT published — do not report this release as live"
+fi
+
+step "6/6 release complete"
 # Because sgit pushed before git committed, the tree should end clean — the git
 # mirror includes the exact ref that push wrote. A dirty ref here means the
 # ordering was violated somewhere; it is tolerated (a rewritten ref can decrypt
