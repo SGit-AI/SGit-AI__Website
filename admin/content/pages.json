@@ -24,6 +24,12 @@
   "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability."
  },
  {
+  "path": "demos/vaults/publishing.html",
+  "section": "vaults",
+  "title": "Publishing a vault: the method — sgit.ai",
+  "desc": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule."
+ },
+ {
   "path": "demos/vaults/field-notes/index.html",
   "section": "vaults",
   "title": "Field Notes — a published vault",
@@ -64,6 +70,12 @@
   "section": "vaults",
   "title": "Agentic Browser Isolation — a published vault",
   "desc": "A living risk graph for whether an AI agent browses with your logged-in sessions or an isolated identity: seventeen entry points, a page per stakeholder altitude, acceptance-gated escalation, cited evidence, and an app that requests no write capability at all."
+ },
+ {
+  "path": "demos/vaults/risk-graph-explorer/index.html",
+  "section": "vaults",
+  "title": "Risk Graph Explorer — a published vault",
+  "desc": "A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all."
  },
  {
   "path": "demos/vaults/algarve-may-2026/index.html",

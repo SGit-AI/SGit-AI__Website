@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Risk Graph Explorer — a published vault</title>
+<meta name="description" content="A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/risk-graph-explorer/index.html">
+<meta property="og:title" content="Risk Graph Explorer — a published vault">
+<meta property="og:description" content="A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Risk Graph Explorer — a published vault", "headline": "Risk Graph Explorer — a published vault", "description": "A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.", "url": "https://sgit.ai/demos/vaults/risk-graph-explorer/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.28</a>
+  <a class="nl" href="../../../why/index.html">Why</a>
+  <a class="nl" href="../../../try/index.html">Try</a>
+  <a class="nl" href="../../../demos/index.html">Demos</a>
+  <a class="nl" href="../../../catalogue/index.html">Catalogue</a>
+  <a class="nl here" href="../../../demos/vaults/index.html">Vaults</a>
+  <a class="nl" href="../../../compare/index.html">Compare</a>
+  <a class="nl" href="../../../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../../../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../../../docs/index.html">Docs</a>
+  <a class="nl" href="../../../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../../../deploy/index.html">Deploy</a>
+  <a class="nl" href="../../../skills/index.html">Skills</a>
+  <a class="nl" href="../../../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Risk Graph Explorer</p>
+  <h1>Risk Graph Explorer</h1>
+  <p class="lead">The graph explorer from <a href="../agentic-browser-isolation/index.html">the risk-mandate work</a>, refactored out into a vault of its own — and the first vault published here that was <b>designed to be public from the start</b>, with its own publication rules enforced by its own build.</p>
+
+  <div class="note"><b>Answer the questions; the register assembles.</b> Seven views recompute as you go, including acceptance (who holds what) and what happens next (how decisions become incidents and projects). Nothing you answer leaves the page: no network call, no storage, no account. It is destined for riskmandate.ai, and the vault is how it will be served.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b>: the owner supplied a vault key, our intake check refused it for publication, and only this one-way derivation appears here.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a> — try the presets, then change one answer and watch the register move.</p>
+  <div class="sgv-uiembed" data-vault="3simlnqe" data-readkey="1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is going on here, step by step</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the argument</span>
+        <h3>An empty register is a correct answer</h3>
+        <p>It opens at zero: <b>0 facts, 0 risks, 0 provisions</b>, and a prompt to answer the first question. Nothing is assumed about your estate until you say something about it.</p>
+  <p>That is the claim the whole app is built to make, and its README states it plainly: <em>"the technical answers can be as bad as you like — if nothing is at stake behind them, the register is short, and that is the correct answer."</em> A tool that produces the same output for a scratch service and a payments platform is a checklist, not a risk register.</p>
+      </div>
+      <figure class="shot" data-shot="empty.webp" data-alt="The explorer at zero: no answers, so no register."><figcaption>The explorer at zero: no answers, so no register.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">context decides</span>
+        <h3>Answer differently and the graph changes shape</h3>
+        <p>Load the <b>Exposed</b> preset and the same questions produce 18 facts, 37 risks and 14 provisions, with a header that reads <em>decides about a person · in production · at stake</em>. Seven views recompute together: the estate graph, context, a role risk map, risk chains, the register, acceptance, and what happens next.</p>
+  <p>Look at the graph itself — amber edges are exposure facts, green are assurance, and <b>ghosted means nobody has said either way</b>. Recording that absence as information, rather than as an implicit pass, is the detail that makes this a graph rather than a form.</p>
+      </div>
+      <figure class="shot" data-shot="exposed.webp" data-alt="The Exposed preset: 18 facts, 37 risks, and unanswered relationships drawn as ghosts."><figcaption>The Exposed preset: 18 facts, 37 risks, and unanswered relationships drawn as ghosts.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">published on purpose</span>
+        <h3>A vault that carries its own publication rules</h3>
+        <p>Most vaults here were audited by us before their key went out. This one arrived with the audit already written into it: <code>PUBLIC.md</code> states that <b>every byte committed is already public</b>, and its build refuses if any of three rules is broken — nothing private committed (the gate scans <em>every file</em>, not just the built artefact), no write token, and <b>no metered capability</b>.</p>
+  <p>That third rule is the one worth borrowing, and we had not written it down: <em>"a published read key in front of an LLM config is an open tab on somebody else's budget, and a spend cap is a rate limiter on the fun, not a control."</em> It sent us back to re-check a vault we had already published — see the note below.</p>
+      </div>
+      <figure class="shot" data-shot="public-md.webp" data-alt="PUBLIC.md: three rules, enforced by the vault\u2019s own build."><figcaption>PUBLIC.md: three rules, enforced by the vault\u2019s own build.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the floor</span>
+        <h3>permissions: {}</h3>
+        <p>An empty permissions object. Not a scoped write, not a withheld credential — <b>nothing requested at all</b>. The app answers questions in the page: no network call, no storage, no account, as its README says.</p>
+  <p>The catalogue now spans the full range, each declared in the vault rather than configured on a server: <a href="../risk-mandate/index.html">Risk Mandate</a> uses an LLM without holding its key, <a href="../supplement-stack/index.html">Supplement Stack</a> writes to one folder, <a href="../agentic-browser-isolation/index.html">Agentic Browser Isolation</a> declares <code>write: []</code>, and this one asks for nothing.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-alt="app.json with an empty permissions object — the floor of the scale."><figcaption>app.json with an empty permissions object — the floor of the scale.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Extraction as a pattern</h2>
+  <p>This vault began as a section of a larger one. Pulling it out gave it a smaller audience surface, a shorter history, its own release cadence and — decisively — <b>its own permission posture</b>: the parent could plausibly want a model; this one may never have one, and says so.</p>
+  <p>That is worth naming as a technique. Vault boundaries are permission boundaries, so the question <em>"should this be its own vault?"</em> is usually the question <em>"should this have a different key, a different audience, or a different set of capabilities?"</em> Here the answer was all three, and the split made the public version safe to publish in a way the parent could not have been.</p>
+
+  <h2>The audit, honestly</h2>
+  <p>Clean: <b>zero</b> hits across every text file — no credentials, no personal data, no operational bookkeeping, and the vault's own key absent from its content. The tidiest audit of any vault published here, which is what you would expect of one built to be public.</p>
+  <p><b>It also caused us to re-audit ourselves.</b> Its third rule — no metered capability behind a published read key — applies to <a href="../risk-mandate/index.html">Risk Mandate</a>, which does carry an LLM config. So we checked rather than assumed: taking the sealed credential from that vault and attempting to open it with the read key we published, AES-GCM refuses (<code>InvalidTag</code>). The seal is under a key a read-key holder does not hold, so publishing that read key did not expose anybody's budget. Rule satisfied there by sealing; satisfied here, more conservatively, by absence.</p>
+  <p>As always: revocation is not retroactive. Anyone who fetches these objects keeps them.</p>
+
+  <h2>Derived facts</h2>
+  <p>33 files · 428 KB · 7 commits · one app entry · last updated 2026-08-10 — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.28</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.27 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.28 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # Published vaults
 
 Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside the page. The keys below are the complete credential: no account, no token, and no write capability anywhere in them.
+
+**Publishing one of your own?** [**The method is written down**](publishing.md) — the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
 
 **Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them.
 
@@ -26,6 +28,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Supplement Stack](supplement-stack/index.md) | `r7zes477` | record-keeping (patient-held health record) | 23 files · 2.3 MB · 5 commits · app entry `index.html` | `sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477) |
 | [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
 | [Agentic Browser Isolation](agentic-browser-isolation/index.md) | `0610gsp9` | structured analysis (a living risk graph) | 104 files · 2.4 MB · 4 commits · 17 app entries | `sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9) |
+| [Risk Graph Explorer](risk-graph-explorer/index.md) | `3simlnqe` | application (public by design) | 33 files · 428 KB · 7 commits · 1 app entry | `sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
