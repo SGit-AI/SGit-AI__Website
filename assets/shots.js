@@ -29,11 +29,14 @@
     var name = fig.getAttribute('data-shot');
     if (!name || fig.dataset.loaded) return;
     fig.dataset.loaded = '1';
-    // Images live beside the page, in the vault's own folder:
+    // Images live in the vault's own folder:
     //   demos/vaults/<slug>/index.html  ->  demos/vaults/<slug>/images/<name>
     // A page-relative path means a vault folder is self-contained: move it, and its
-    // pictures move with it.
-    var path = 'images/' + name;
+    // pictures move with it. Deeper pages under the same vault (views/, videos/)
+    // point back up with data-dir, so one vault keeps ONE image folder.
+    // Deeper pages under the same vault (views/, videos/) point back up with data-dir,
+    // so one vault keeps ONE image folder no matter how many pages describe it.
+    var path = (fig.getAttribute('data-dir') || 'images/') + name;
     try {
       var data = await bytes(path);
       var url = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));

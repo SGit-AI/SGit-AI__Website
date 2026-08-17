@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.28</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.29</a>
   <a class="nl" href="../../../why/index.html">Why</a>
   <a class="nl" href="../../../try/index.html">Try</a>
   <a class="nl" href="../../../demos/index.html">Demos</a>
@@ -65,6 +65,8 @@
   }());
   </script>
 
+  <div class="note"><b>Going deeper.</b> This vault has more in it than one page holds. <a href="views/index.html"><b>The seven views, explained</b></a> walks each view with a screenshot of the live vault and the mechanism behind it. <a href="videos/index.html"><b>The author’s walkthroughs</b></a> carries three recorded demos with full transcripts — the reasoning that the screenshots cannot show.</div>
+
   <h2>What is going on here, step by step</h2>
   <div class="wt">
     <div class="wt-row">
@@ -92,7 +94,7 @@
         <p>Most vaults here were audited by us before their key went out. This one arrived with the audit already written into it: <code>PUBLIC.md</code> states that <b>every byte committed is already public</b>, and its build refuses if any of three rules is broken — nothing private committed (the gate scans <em>every file</em>, not just the built artefact), no write token, and <b>no metered capability</b>.</p>
   <p>That third rule is the one worth borrowing, and we had not written it down: <em>"a published read key in front of an LLM config is an open tab on somebody else's budget, and a spend cap is a rate limiter on the fun, not a control."</em> It sent us back to re-check a vault we had already published — see the note below.</p>
       </div>
-      <figure class="shot" data-shot="public-md.webp" data-alt="PUBLIC.md: three rules, enforced by the vault\u2019s own build."><figcaption>PUBLIC.md: three rules, enforced by the vault\u2019s own build.</figcaption></figure>
+      <figure class="shot" data-shot="public-md.webp" data-alt="PUBLIC.md: three rules, enforced by the vault’s own build."><figcaption>PUBLIC.md: three rules, enforced by the vault’s own build.</figcaption></figure>
     </div>
     <div class="wt-row wt-alt">
       <div class="wt-text">
@@ -123,7 +125,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.28</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.29</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>

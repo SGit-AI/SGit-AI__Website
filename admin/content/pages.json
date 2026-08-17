@@ -78,6 +78,18 @@
   "desc": "A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all."
  },
  {
+  "path": "demos/vaults/risk-graph-explorer/views/index.html",
+  "section": "vaults",
+  "title": "The seven views, explained — Risk Graph Explorer",
+  "desc": "A deep walk through each view of the risk graph explorer — the estate, context, role risk map, risk chains, the register, acceptance and what happens next — with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs."
+ },
+ {
+  "path": "demos/vaults/risk-graph-explorer/videos/index.html",
+  "section": "vaults",
+  "title": "The author’s walkthroughs — Risk Graph Explorer",
+  "desc": "Three recorded walkthroughs of the risk graph explorer with full transcripts: the graph browser, risk chains, and the role risk map — the designer explaining why the tool is shaped as it is."
+ },
+ {
   "path": "demos/vaults/algarve-may-2026/index.html",
   "section": "vaults",
   "title": "Algarve · May 2026 — a published vault",
