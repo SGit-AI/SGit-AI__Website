@@ -412,6 +412,21 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
 .vdbg-objs .t{color:#d29922}
 .ttlpill{color:#d29922;background:#2a2110;border:1px solid #3a2a12;border-radius:4px;padding:0 .3rem;white-space:nowrap}
 
+/* Walkthrough videos: the recording on top, the session as a document underneath.
+   A fixed 16:9 box because a YouTube iframe has no intrinsic size — without one it
+   collapses to the HTML default of 150px and the video arrives as a letterbox slot. */
+.vembed{position:relative;width:100%;max-width:900px;margin:1rem 0 .4rem;
+  aspect-ratio:16/9;border:1px solid var(--line2);border-radius:12px;overflow:hidden;
+  background:#0d1117;box-shadow:var(--shadow)}
+.vembed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* What the author actually said at that moment, as opposed to what it means — kept
+   visually distinct so the quotation is never mistaken for our own description. */
+.msaid{border-left:3px solid var(--line2);padding:.1rem 0 .1rem .85rem;margin:.7rem 0 .2rem;
+  color:var(--dim);font-style:italic}
+.msaid b{font-style:normal;color:var(--fg)}
+.wt-tag a{color:inherit}
+.wt-tag a:hover{text-decoration:underline}
+
 /* ---------- print / save-as-PDF ----------
    These pages get read as documents at least as often as they get browsed, and Cmd-P
    is how one ends up in a meeting. Two real defects were found by exporting the seven
@@ -463,7 +478,9 @@ details.faq p{margin:0;padding:0 1rem 1rem 2.4rem;font-size:.9rem;color:#34363c;
 
   /* A live surface cannot print — an iframe exports as an empty box, and .sgv-breakout
      is a viewport-width transform that overflows the page box on the way out. */
-  .sgv-embed-frame,.sgv-embed-load,.sgv-embed-loading,.sgv-btnrow{display:none!important}
+  .sgv-embed-frame,.sgv-embed-load,.sgv-embed-loading,.sgv-btnrow,.vembed{display:none!important}
+  details.faq{display:block}
+  details.faq > summary{font-weight:700;list-style:none}
   .sgv-uiembed-label::after{content:" — live surface; open this page online to use it";
     font-weight:400;color:var(--dim)}
 

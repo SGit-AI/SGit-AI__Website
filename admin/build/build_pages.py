@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.31'
+SITE_VERSION = 'v0.2.32'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.31', '2026-08-17', 'this release',
+    ('v0.2.32', '2026-08-17', 'this release',
+     "The walkthroughs page becomes a document rather than a list of links. Each of the three "
+     "videos now carries the recording at the top and THE SAME SESSION READ BACK underneath it: "
+     "fifteen moments, each one a timestamp that deep-links into the video, the frame the screen "
+     "was showing at that moment, and an explanation of what is happening in it. The transcripts "
+     "are still there, folded away at the foot of each. The reason for the format is the one "
+     "thing a transcript structurally cannot do: these recordings are full of 'this guy here' and "
+     "'look at this', and the words alone name neither end of what is being pointed at. Pairing "
+     "each phrase with its frame is what makes the argument survive being read instead of "
+     "watched. TWO SOURCES OF FRAMES, and the page says which is which. The Graph Browser "
+     "moments are frames of the recording, from a narrated-review export the author produced "
+     "with tools.sgraph.ai — nine timestamped stills paired with the narration spoken over each. "
+     "Risk Chains and Role risk map have no such export, so their six frames were captured from "
+     "the LIVE VAULT with the published read key, driven to the exact state being described — "
+     "including the entry he names out loud ('you have risk 6'). What the frames turned up is "
+     "most of the value, because none of it is audible: negative answers produce NAMED EDGES "
+     "(never-exercised-on, never-timed-for, absent-for) rather than silence; 'no egress' draws "
+     "a single assurance-coloured edge in a field of amber, so a good answer is a finding rather "
+     "than the absence of one; one selection can carry two fact ids; and every risk ships with a "
+     "CEASES WHEN ANY OF THESE HOLD list — its own falsification condition, cited to facts. The "
+     "role dashboard also separates three arrival routes where the video describes two: held, "
+     "arrives by the risk chain, and arrives by the org chart. TOOLING: the capture rig gained "
+     "appProbe (ask the running app what its elements are called instead of guessing and burning "
+     "a capture run per guess — it found g.cnode for chain entries and g.role for roles) and "
+     "appClickMatch (substring match plus a real MouseEvent, because the graph nodes are SVG). "
+     "Videos print with the player hidden and the moments intact."),
+    ('v0.2.31', '2026-08-17', 'obj-cas-imm-17f0b2693daf',
      "Corrects v0.2.30 on three counts, two of them reported and one of them the reason the "
      "report was possible at all. (1) THE LAZY-LOAD BYPASS IS NOW ONLY ON PRINT. v0.2.30 "
      "prefetched every screenshot once the page went idle, which fixed printing by making "
