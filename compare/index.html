@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comparisons, as tests you can re-run — sgit.ai</title>
+<meta name="description" content="What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.">
+<link rel="canonical" href="https://sgit.ai/compare/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/compare/index.html">
+<meta property="og:title" content="Comparisons, as tests you can re-run — sgit.ai">
+<meta property="og:description" content="What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Comparisons, as tests you can re-run — sgit.ai", "headline": "Comparisons, as tests you can re-run — sgit.ai", "description": "What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.", "url": "https://sgit.ai/compare/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.24</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
+  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl" href="../catalogue/index.html">Catalogue</a>
+  <a class="nl" href="../demos/vaults/index.html">Vaults</a>
+  <a class="nl here" href="../compare/index.html">Compare</a>
+  <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../index.html">Home</a> / Comparisons</p>
+  <h1>Comparisons, as tests you can re-run</h1>
+  <p class="lead">What a task costs with vaults, and without them. This page is not unbiased — it is published by a participant, and nobody should read it as neutral. It is built to be <b>challengeable</b> instead: every entry states the exact steps attempted, the date, what happened, and how to run it yourself.</p>
+
+  <div class="note"><b>Why not "unbiased".</b> A comparison published by one of the parties is not a neutral instrument, and claiming otherwise would be the least credible thing on this site. The achievable and stronger property is reproducibility: <b>an assertion that is wrong gets screenshotted; an experiment that is wrong gets corrected.</b> If an entry here is out of date or simply mistaken, the fix is a re-run, and the correction improves the page rather than discrediting it. <a href="mailto:">Tell us</a> or open an issue on <a href="https://github.com/SGit-AI/SGit-AI__CLI" rel="noopener">GitHub</a>.</div>
+
+  <h2>The asymmetry, stated up front</h2>
+  <p>Our rows can be <b>executed</b>. A script opens a published vault, tries the operation and records what happened — it runs on demand and fails loudly when reality moves. Rows about anybody else's product cannot work that way: there is no API for "how many steps does this take in a desktop app", and automating someone's product against their terms is not something we will do. Those rows are <b>checked by hand, by a person, on a stated date</b>.</p>
+  <p>So the two kinds of row carry different badges, and you should trust them differently:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Badge</th><th>Means</th><th>Ages</th></tr>
+    <tr><td><b>machine-verified</b></td><td>An automated check against the live service, in <code>admin/build/compare_tests.py</code>. The evidence below each claim is its actual output</td><td>Re-run any time; the date is the last run</td></tr>
+    <tr><td><b>hand-checked</b></td><td>A person performed the steps on the date shown and wrote down what happened</td><td>Decays. Past the expiry it renders as <b>unverified</b>, not as fact</td></tr>
+  </table></div>
+  <div id="cmp-freshness" class="small dim">Loading verification status…</div>
+
+  <h2>The entry format</h2>
+  <p>Every entry answers the same eight things. Anything that cannot be filled in honestly does not get published.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Field</th><th>Why it is there</th></tr>
+    <tr><td><b>Task</b></td><td>Stated concretely enough that somebody can attempt it</td></tr>
+    <tr><td><b>Steps</b></td><td>Countable and disputable on facts. The number is a <em>summary</em>; the transcript below it is the evidence, because step counts are gamed by where you start counting</td></tr>
+    <tr><td><b>Prerequisites</b></td><td>Accounts, subscriptions, installs. This is where cost actually lands</td></tr>
+    <tr><td><b>Privileges granted</b></td><td>What the counterparty can now reach. The column that usually decides the answer — see the vocabulary below</td></tr>
+    <tr><td><b>Where it runs</b></td><td>Your machine, or theirs</td></tr>
+    <tr><td><b>Survives the vendor</b></td><td>Whether the artefact still works if the service stops</td></tr>
+    <tr><td><b>Verified</b></td><td>The date, and whether by machine or by hand</td></tr>
+    <tr><td><b>Re-run it</b></td><td>The command or the steps, so the claim is auditable rather than trusted</td></tr>
+  </table></div>
+
+  <h2>The privilege vocabulary</h2>
+  <p>"Share it with them" hides the entire question. These seven properties make two grants comparable, and each is a fact rather than a judgement. This vocabulary is the part of this page most likely to be wrong at first — it is offered to be argued with.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Property</th><th>Values</th><th>What it answers</th></tr>
+    <tr><td><b>scope</b></td><td>file · folder · vault · account · all-vaults</td><td>How much does the grant reach?</td></tr>
+    <tr><td><b>operations</b></td><td>read · write · delete · administer</td><td>What can be done with it?</td></tr>
+    <tr><td><b>bearer</b></td><td>person · program-on-their-machine · vendor-server · any-holder</td><td>Who actually holds it? "any-holder" means the grant is a string: whoever has it, has it</td></tr>
+    <tr><td><b>mediation</b></td><td>server-enforced · key-enforced</td><td>Who says no? A server can refuse and can log. A key cannot refuse — possession <em>is</em> access</td></tr>
+    <tr><td><b>duration</b></td><td>session · until-withdrawn · forever</td><td>When does it lapse on its own?</td></tr>
+    <tr><td><b>withdrawal</b></td><td>effective · future-only · none</td><td>Can you take it back — and does taking it back reach what they already have?</td></tr>
+    <tr><td><b>observability</b></td><td>per-reader-log · aggregate · none</td><td>Can you see who read what?</td></tr>
+  </table></div>
+  <p>Written compactly, a published read key is: <code>scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none</code>. Three of those seven are <b>worse</b> than a mainstream sharing link, and saying so is the point of having a vocabulary.</p>
+
+  <h2 id="entries">The entries</h2>
+  <p>Three to start with, chosen to be different: one small and verifiable in seconds, one we lose, one that is the actual differentiator. More arrive as they are tested — not as they are thought of.</p>
+
+  <div class="cmp" id="cmp-print">
+    <h3>1 · Print a markdown file that somebody sent you</h3>
+    <p class="small dim">Small, universally understood, checkable in under a minute — the kind of entry that earns the credibility the larger claims spend.</p>
+    <div class="tablewrap"><table>
+      <tr><th></th><th>A markdown file in a vault</th><th>A markdown file on your disk</th></tr>
+      <tr><td><b>Steps</b></td><td><b>2</b> — open the file in the vault UI (it renders), press <b>Print</b></td><td><b>3–5</b>, depending on what you already have: many editors render markdown but print the <em>source</em>; the common workarounds are convert-to-HTML, paste into a browser, or install something</td></tr>
+      <tr><td><b>Prerequisites</b></td><td>A browser</td><td>An editor that both renders <em>and</em> prints, or a converter, or an online tool</td></tr>
+      <tr><td><b>Privileges granted</b></td><td>None beyond the key you already hold</td><td>None — <em>unless</em> you use an online converter, which is <code>scope:file · ops:read · bearer:vendor-server · withdrawal:none</code>. Uploading a document to a stranger to reformat it is a privilege grant that does not feel like one</td></tr>
+      <tr><td><b>Where it runs</b></td><td>Your browser; the print component renders locally</td><td>Your machine, or a stranger's</td></tr>
+      <tr><td><b>Verified</b></td><td colspan="2"><b>hand-checked, 2026-08-16</b> — the vault UI exposes a <b>Print</b> control on an open markdown file, backed by <code>SgPrint.printMarkdown</code>; confirmed present and reachable in a browser driven with a published read key</td></tr>
+      <tr><td><b>Re-run it</b></td><td colspan="2">Open <code>https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98</code>, go to the vault browser, click <code>README.md</code>, look for <b>Print</b>. For the other column, take any <code>.md</code> file and try to produce a formatted page with whatever you already have installed — count what it takes</td></tr>
+    </table></div>
+    <p class="small"><b>What would change this entry:</b> an editor that renders and prints markdown in one action, which several are close to. If you know one, that column's step count should drop and this entry should say so.</p>
+  </div>
+
+  <div class="cmp" id="cmp-withdraw">
+    <h3>2 · Take access back after you have shared something <span class="cmp-lose">we lose this one</span></h3>
+    <p class="small dim">A comparison where our column always wins is discounted on sight, so here is one where the mainstream answer is straightforwardly better.</p>
+    <div class="tablewrap"><table>
+      <tr><th></th><th>A vault, shared by read key</th><th>A hosted document, shared by link</th></tr>
+      <tr><td><b>Steps to withdraw</b></td><td><b>Rotate the key and re-publish.</b> Future commits are protected</td><td><b>1–2</b> — remove the share; the next request is refused</td></tr>
+      <tr><td><b>Does it reach what they already have?</b></td><td><b>No.</b> Anything already fetched stays readable forever, with no way to reach it</td><td><b>Largely yes</b> — unless they exported or screenshotted, the server stops serving it</td></tr>
+      <tr><td><b>privileges</b></td><td><code>withdrawal:future-only · mediation:key · observability:none</code></td><td><code>withdrawal:effective · mediation:server-enforced · observability:per-reader-log</code></td></tr>
+      <tr><td><b>Why</b></td><td colspan="2">Possession of a key <em>is</em> access, so there is no server in the loop to refuse a later request. The objects are content-addressed and immutable — the same id returns the same bytes forever, which is exactly what makes an already-taken copy permanent</td></tr>
+      <tr><td><b>Verified</b></td><td colspan="2"><b>machine-verified</b> — the immutability that causes this is checked automatically (<code>objects-immutable</code> below). The hosted-side behaviour is <b>hand-checked, 2026-08-16</b>, and is the ordinary documented behaviour of mainstream sharing</td></tr>
+      <tr><td><b>Re-run it</b></td><td colspan="2"><code>python3 admin/build/compare_tests.py</code> — the immutability check fetches one object twice and compares bytes</td></tr>
+    </table></div>
+    <p class="small"><b>The honest summary:</b> if the ability to revoke access after the fact matters more to you than the host being unable to read your content, a server-mediated platform is the better tool and you should use one. Vaults trade revocation for the host knowing nothing. That is a real trade, not a free win.</p>
+  </div>
+
+  <div class="cmp" id="cmp-scoped">
+    <h3>3 · Let a program record data for you without letting it change your records</h3>
+    <p class="small dim">The differentiator. Note that the step counts are similar — it is the privileges column that separates these, which is why it is the column to lead with.</p>
+    <div class="tablewrap"><table>
+      <tr><th></th><th>A vault app</th><th>An assistant with folder access</th></tr>
+      <tr><td><b>Steps</b></td><td>Declare the grant in <code>app.json</code> and open the vault</td><td>Grant access to the folder, then run it</td></tr>
+      <tr><td><b>Privileges granted</b></td><td><code>scope:folder(adherence/) · ops:write,mkdir · mediation:key+host</code> — read broadly, but write to <b>one folder</b>. The app cannot alter the records it reports on</td><td>Typically <code>scope:folder · ops:read,write · bearer:vendor-server</code> for the whole shared folder — the granularity available is the folder you shared</td></tr>
+      <tr><td><b>Where it runs</b></td><td>Your browser, in a sandboxed frame with an opaque origin</td><td>Usually the vendor's infrastructure, with your files sent to it</td></tr>
+      <tr><td><b>Survives the vendor</b></td><td>The data is files with a documented layout; the reader is replaceable (we wrote a ~170-line one to prove it)</td><td>The conversation and any generated artefacts live where the vendor put them</td></tr>
+      <tr><td><b>Verified</b></td><td colspan="2"><b>machine-verified</b> — <code>scoped-write-declared</code> below reads the live vault's <code>app.json</code> and asserts the write scope is exactly <code>["adherence/"]</code>. The comparison column is <b>hand-checked, 2026-08-16</b> and describes the general shape of folder-level sharing, which varies by product — corrections welcome, per-product rows to follow</td></tr>
+      <tr><td><b>Re-run it</b></td><td colspan="2">Open the <a href="../demos/vaults/supplement-stack/index.html">Supplement Stack vault</a> and read its <code>app.json</code>, or run <code>python3 admin/build/compare_tests.py</code></td></tr>
+    </table></div>
+    <p class="small"><b>The caveat that keeps this honest:</b> read granularity is coarser than write granularity here. A read key opens the <em>whole vault</em>, not one file. Finer read boundaries mean separate vaults with separate keys, decided in advance — granularity costs structure. If you need per-file read control without pre-planning the shape, this is not yet the tool.</p>
+  </div>
+
+  <h2 id="checks">The checks behind the machine-verified rows</h2>
+  <p>These run against the live service using only published read keys, and each states what would make it fail — a test that cannot fail is not evidence.</p>
+  <div id="cmp-results" class="small dim">Loading results…</div>
+
+  <h2>What is deliberately not here</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Not here</th><th>Why</th></tr>
+    <tr><td>Anything we plan to ship</td><td>A comparison page is exactly where planned capability must not sit beside shipped capability. One unshipped row and a reader re-reads every other row as marketing</td></tr>
+    <tr><td>Ease-of-use scores</td><td>A judgement published by a participant is the thing this page cannot defend. Steps, prerequisites and privileges are facts</td></tr>
+    <tr><td>A deployment-features comparison</td><td>It would be the most linked and the fastest to rot, and our own story has a caveat worth resolving first: a vault's files are portable, but the polished viewer is currently one hosted implementation</td></tr>
+    <tr><td>A maturity model</td><td>Those score an organisation's practice over time. This scores a task against a tool stack on a date — a different instrument</td></tr>
+  </table></div>
+</main>
+<script>
+(function () {
+  fetch('../assets/compare.js')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[compare] renderer failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.24</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

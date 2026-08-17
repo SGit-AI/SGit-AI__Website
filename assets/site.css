@@ -306,6 +306,25 @@ blockquote.challenge{margin:1.6rem 0;padding:1.1rem 1.3rem;border-left:4px solid
 .sgv-breakout{width:min(94vw,1680px);position:relative;left:50%;transform:translateX(-50%)}
 .sgv-btnrow{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
 .sgv-uiembed-label{font-family:var(--mono);font-size:.85rem;font-weight:600;color:#0f766e;margin:1.4rem 0 0}
+/* Comparison entries + the freshness states */
+.cmp{border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;margin:1.4rem 0;background:var(--panel)}
+.cmp h3{margin:0 0 .2rem}
+.cmp-lose{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:#9a3412;
+  border:1px solid rgba(154,52,18,.3);background:rgba(154,52,18,.07);border-radius:99px;padding:.12rem .5rem;margin-left:.5rem;vertical-align:middle}
+.cmp-check{border-left:3px solid var(--line2);padding:.6rem .85rem;margin:.6rem 0;background:var(--panel2);border-radius:0 8px 8px 0}
+.cmp-check.cmp-fresh{border-left-color:#0f766e}
+.cmp-check.cmp-stale{border-left-color:#b45309;background:rgba(180,83,9,.06)}
+.cmp-check.cmp-fail{border-left-color:#b91c1c;background:rgba(185,28,28,.06)}
+.cmp-check-h{display:flex;gap:.6rem;align-items:baseline;justify-content:space-between;flex-wrap:wrap;font-size:.86rem}
+.cmp-badge{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;border-radius:99px;padding:.1rem .5rem;white-space:nowrap}
+.cmp-b-pass{color:#0f766e;border:1px solid rgba(15,118,110,.35);background:rgba(15,118,110,.08)}
+.cmp-b-absent{color:#b45309;border:1px solid rgba(180,83,9,.35);background:rgba(180,83,9,.08)}
+.cmp-b-fail{color:#b91c1c;border:1px solid rgba(185,28,28,.35);background:rgba(185,28,28,.08)}
+.cmp-ev{font-family:var(--mono);font-size:.73rem;color:var(--fg);margin:.35rem 0 .2rem;line-height:1.55;word-break:break-word}
+.cmp-meta{font-size:.71rem;color:var(--dim);line-height:1.5}
+.cmp-banner{border-radius:8px;padding:.5rem .8rem;margin:.8rem 0}
+.cmp-banner.cmp-fresh{border:1px solid rgba(15,118,110,.3);background:rgba(15,118,110,.06);color:var(--fg)}
+.cmp-banner.cmp-stale{border:1px solid rgba(180,83,9,.4);background:rgba(180,83,9,.08);color:var(--fg)}
 /* Walkthrough rows: prose and a screenshot side by side, the side alternating down
    the page. One column on narrow screens, where the picture always follows its text
    (source order), so the explanation is never orphaned from what it explains. */

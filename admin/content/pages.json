@@ -12,6 +12,12 @@
   "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
  },
  {
+  "path": "compare/index.html",
+  "section": "compare",
+  "title": "Comparisons, as tests you can re-run — sgit.ai",
+  "desc": "What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose."
+ },
+ {
   "path": "demos/vaults/index.html",
   "section": "vaults",
   "title": "Published vaults — sgit.ai",

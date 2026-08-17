@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.23). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.24). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -219,6 +219,131 @@ what you are looking at
 The **tree** objects are the reason a first visit reads more than one file: filenames are encrypted inside them, so building the navigation means reading every directory. That index is a pure function of the commit id, so it is memoised — after the first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
 
 [How this page works →](../case-studies/live-vault-docs.md) Architecture diagrams, the object model, the cache tiers, and how a page like this one reads a vault it holds only the read key to.
+
+
+
+==============================================================================
+# Comparisons, as tests you can re-run — sgit.ai
+
+> What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose.
+>
+> Page: https://sgit.ai/compare/index.html
+
+[Home](../index.md) / Comparisons
+
+# Comparisons, as tests you can re-run
+
+What a task costs with vaults, and without them. This page is not unbiased — it is published by a participant, and nobody should read it as neutral. It is built to be **challengeable** instead: every entry states the exact steps attempted, the date, what happened, and how to run it yourself.
+
+**Why not "unbiased".** A comparison published by one of the parties is not a neutral instrument, and claiming otherwise would be the least credible thing on this site. The achievable and stronger property is reproducibility: **an assertion that is wrong gets screenshotted; an experiment that is wrong gets corrected.** If an entry here is out of date or simply mistaken, the fix is a re-run, and the correction improves the page rather than discrediting it. [Tell us](mailto:) or open an issue on [GitHub](https://github.com/SGit-AI/SGit-AI__CLI).
+
+## The asymmetry, stated up front
+
+Our rows can be **executed**. A script opens a published vault, tries the operation and records what happened — it runs on demand and fails loudly when reality moves. Rows about anybody else's product cannot work that way: there is no API for "how many steps does this take in a desktop app", and automating someone's product against their terms is not something we will do. Those rows are **checked by hand, by a person, on a stated date**.
+
+So the two kinds of row carry different badges, and you should trust them differently:
+
+| Badge | Means | Ages |
+|---|---|---|
+| **machine-verified** | An automated check against the live service, in `admin/build/compare_tests.py`. The evidence below each claim is its actual output | Re-run any time; the date is the last run |
+| **hand-checked** | A person performed the steps on the date shown and wrote down what happened | Decays. Past the expiry it renders as **unverified**, not as fact |
+
+Loading verification status…
+
+## The entry format
+
+Every entry answers the same eight things. Anything that cannot be filled in honestly does not get published.
+
+| Field | Why it is there |
+|---|---|
+| **Task** | Stated concretely enough that somebody can attempt it |
+| **Steps** | Countable and disputable on facts. The number is a *summary*; the transcript below it is the evidence, because step counts are gamed by where you start counting |
+| **Prerequisites** | Accounts, subscriptions, installs. This is where cost actually lands |
+| **Privileges granted** | What the counterparty can now reach. The column that usually decides the answer — see the vocabulary below |
+| **Where it runs** | Your machine, or theirs |
+| **Survives the vendor** | Whether the artefact still works if the service stops |
+| **Verified** | The date, and whether by machine or by hand |
+| **Re-run it** | The command or the steps, so the claim is auditable rather than trusted |
+
+## The privilege vocabulary
+
+"Share it with them" hides the entire question. These seven properties make two grants comparable, and each is a fact rather than a judgement. This vocabulary is the part of this page most likely to be wrong at first — it is offered to be argued with.
+
+| Property | Values | What it answers |
+|---|---|---|
+| **scope** | file · folder · vault · account · all-vaults | How much does the grant reach? |
+| **operations** | read · write · delete · administer | What can be done with it? |
+| **bearer** | person · program-on-their-machine · vendor-server · any-holder | Who actually holds it? "any-holder" means the grant is a string: whoever has it, has it |
+| **mediation** | server-enforced · key-enforced | Who says no? A server can refuse and can log. A key cannot refuse — possession *is* access |
+| **duration** | session · until-withdrawn · forever | When does it lapse on its own? |
+| **withdrawal** | effective · future-only · none | Can you take it back — and does taking it back reach what they already have? |
+| **observability** | per-reader-log · aggregate · none | Can you see who read what? |
+
+Written compactly, a published read key is: `scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none`. Three of those seven are **worse** than a mainstream sharing link, and saying so is the point of having a vocabulary.
+
+## The entries
+
+Three to start with, chosen to be different: one small and verifiable in seconds, one we lose, one that is the actual differentiator. More arrive as they are tested — not as they are thought of.
+
+### 1 · Print a markdown file that somebody sent you
+
+Small, universally understood, checkable in under a minute — the kind of entry that earns the credibility the larger claims spend.
+
+|  | A markdown file in a vault | A markdown file on your disk |
+|---|---|---|
+| **Steps** | **2** — open the file in the vault UI (it renders), press **Print** | **3–5**, depending on what you already have: many editors render markdown but print the *source*; the common workarounds are convert-to-HTML, paste into a browser, or install something |
+| **Prerequisites** | A browser | An editor that both renders *and* prints, or a converter, or an online tool |
+| **Privileges granted** | None beyond the key you already hold | None — *unless* you use an online converter, which is `scope:file · ops:read · bearer:vendor-server · withdrawal:none`. Uploading a document to a stranger to reformat it is a privilege grant that does not feel like one |
+| **Where it runs** | Your browser; the print component renders locally | Your machine, or a stranger's |
+| **Verified** | **hand-checked, 2026-08-16** — the vault UI exposes a **Print** control on an open markdown file, backed by `SgPrint.printMarkdown`; confirmed present and reachable in a browser driven with a published read key |
+| **Re-run it** | Open `https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98`, go to the vault browser, click `README.md`, look for **Print**. For the other column, take any `.md` file and try to produce a formatted page with whatever you already have installed — count what it takes |
+
+**What would change this entry:** an editor that renders and prints markdown in one action, which several are close to. If you know one, that column's step count should drop and this entry should say so.
+
+### 2 · Take access back after you have shared something we lose this one
+
+A comparison where our column always wins is discounted on sight, so here is one where the mainstream answer is straightforwardly better.
+
+|  | A vault, shared by read key | A hosted document, shared by link |
+|---|---|---|
+| **Steps to withdraw** | **Rotate the key and re-publish.** Future commits are protected | **1–2** — remove the share; the next request is refused |
+| **Does it reach what they already have?** | **No.** Anything already fetched stays readable forever, with no way to reach it | **Largely yes** — unless they exported or screenshotted, the server stops serving it |
+| **privileges** | `withdrawal:future-only · mediation:key · observability:none` | `withdrawal:effective · mediation:server-enforced · observability:per-reader-log` |
+| **Why** | Possession of a key *is* access, so there is no server in the loop to refuse a later request. The objects are content-addressed and immutable — the same id returns the same bytes forever, which is exactly what makes an already-taken copy permanent |
+| **Verified** | **machine-verified** — the immutability that causes this is checked automatically (`objects-immutable` below). The hosted-side behaviour is **hand-checked, 2026-08-16**, and is the ordinary documented behaviour of mainstream sharing |
+| **Re-run it** | `python3 admin/build/compare_tests.py` — the immutability check fetches one object twice and compares bytes |
+
+**The honest summary:** if the ability to revoke access after the fact matters more to you than the host being unable to read your content, a server-mediated platform is the better tool and you should use one. Vaults trade revocation for the host knowing nothing. That is a real trade, not a free win.
+
+### 3 · Let a program record data for you without letting it change your records
+
+The differentiator. Note that the step counts are similar — it is the privileges column that separates these, which is why it is the column to lead with.
+
+|  | A vault app | An assistant with folder access |
+|---|---|---|
+| **Steps** | Declare the grant in `app.json` and open the vault | Grant access to the folder, then run it |
+| **Privileges granted** | `scope:folder(adherence/) · ops:write,mkdir · mediation:key+host` — read broadly, but write to **one folder**. The app cannot alter the records it reports on | Typically `scope:folder · ops:read,write · bearer:vendor-server` for the whole shared folder — the granularity available is the folder you shared |
+| **Where it runs** | Your browser, in a sandboxed frame with an opaque origin | Usually the vendor's infrastructure, with your files sent to it |
+| **Survives the vendor** | The data is files with a documented layout; the reader is replaceable (we wrote a ~170-line one to prove it) | The conversation and any generated artefacts live where the vendor put them |
+| **Verified** | **machine-verified** — `scoped-write-declared` below reads the live vault's `app.json` and asserts the write scope is exactly `["adherence/"]`. The comparison column is **hand-checked, 2026-08-16** and describes the general shape of folder-level sharing, which varies by product — corrections welcome, per-product rows to follow |
+| **Re-run it** | Open the [Supplement Stack vault](../demos/vaults/supplement-stack/index.md) and read its `app.json`, or run `python3 admin/build/compare_tests.py` |
+
+**The caveat that keeps this honest:** read granularity is coarser than write granularity here. A read key opens the *whole vault*, not one file. Finer read boundaries mean separate vaults with separate keys, decided in advance — granularity costs structure. If you need per-file read control without pre-planning the shape, this is not yet the tool.
+
+## The checks behind the machine-verified rows
+
+These run against the live service using only published read keys, and each states what would make it fail — a test that cannot fail is not evidence.
+
+Loading results…
+
+## What is deliberately not here
+
+| Not here | Why |
+|---|---|
+| Anything we plan to ship | A comparison page is exactly where planned capability must not sit beside shipped capability. One unshipped row and a reader re-reads every other row as marketing |
+| Ease-of-use scores | A judgement published by a participant is the thing this page cannot defend. Steps, prerequisites and privileges are facts |
+| A deployment-features comparison | It would be the most linked and the fastest to rot, and our own story has a caveat worth resolving first: a vault's files are portable, but the polished viewer is currently one hosted implementation |
+| A maturity model | Those score an organisation's practice over time. This scores a task against a tool stack on a date — a different instrument |
 
 
 
@@ -2585,6 +2710,14 @@ Three demo vaults are about to be published as end-to-end walkthroughs, each end
 
 **Outcome, 15 August.** The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — `<64-hex>:<vault_id>`, the same shape `sgit clone` already took — and, decisively, tests it *before* the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit `R1 W0` / **Read-only** badge. The [demo page](../demos/vault-app-embed.md) carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed *in isolation*. A note worth recording for anyone reading this as a case study — the fix arrived with a [verification note attached](../case-studies/index.md), and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.
 
+## → To the CLI team: the canonical read-key prefix is accepted by the web loader and not by the installed CLI
+
+**Status:** open · **Found by:** [the comparison test suite](../compare/index.md), which runs this check on every release.
+
+The key-prefix contract defines `sgit_rk1_` as the canonical read-key form, and the deployed web loader strips it before format detection — we verified that the day it shipped. The CLI installed here (**v0.14.27**) does not: given `sgit_rk1_<64-hex>:<vault_id>` it derives ref `afdb9d843131` instead of the correct `11ea50e81f4d` and fails with "this vault has no branch index and no named ref". The *bare* `<64-hex>:<vault_id>` form works correctly on the same version, and prints "detected 64-hex read key → routing to read-only clone" — so this is prefix handling specifically, not read-key support.
+
+The consequence is small but sharp: the form the contract tells people to publish is the form that fails on the CLI, so a user copying a published key from a page into a terminal gets an error that blames their key. It may already be fixed in a version newer than the one installed here — the check stays in the suite and will flip to **holds** on its own when it stops reproducing. Re-run: `python3 admin/build/compare_tests.py`.
+
 ## ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
 
 **Status:** acted on, [v0.1.26](../admin/versions.md) · **Reported by:** an agent working from sgit.ai as documentation · **Direction:** inbound — the first brief filed *at* this site rather than by it.
@@ -3234,11 +3367,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.23**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.24**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.23 | 2026-08-16 | this release | Structure for scale, and the most interesting vault yet. (1) Every published vault is now a self-contained folder — demos/vaults//index.html with its screenshots in demos/vaults//images/ — so adding the hundredth vault is adding a folder, and a vault's page and pictures move together. The old flat /vaults/ section is gone (URLs lived one day). Two engine changes made it possible: the root-prefix was computed as 'one ../ if nested at all', which silently pointed the nav, stylesheet and every asset at the wrong level once pages nested three deep — now it is ../ times the depth, the same formula the markdown twins already used; and the screenshot rig writes per-vault, with a --vault filter. Image paths in the walkthrough are page-relative for the same reason. (2) New vault: SUPPLEMENT STACK (r7zes477), and it is the strongest healthcare demonstration on the site. Its idea: every label describes one product, nothing describes the sum, so the model extracts (fuzzy, with every amount traceable to the label photograph it was read from) and the code adds up (deterministic, rules stated in the open, a missing value flagged and never guessed), producing a briefing for somebody qualified and never a verdict. It is also the first vault here to use SCOPED WRITE PERMISSIONS: app.json grants write over adherence/ only, so the app that logs what was taken cannot alter the regimen, the labels or the references — least authority as a property of the vault rather than a server setting. Five walkthrough rows captured from the live vault, including its app.json permission block. The healthcare use case now opens with this as a worked example: who holds the data, how it reaches a clinician (a read key, not an account or a PDF), where AI fits safely, and why the reference set is UK RNI/EFSA rather than US Daily Values. The published audit: clean on credentials, no personal identifiers found — but it publishes a real regimen and the health context inferable from it, deliberately, and revocation is not retroactive. |
+| v0.2.24 | 2026-08-17 | this release | Comparisons, built as reproducible tests rather than as claims — the concrete proposal answering the 16 Aug comparison brief. New /compare/ section carrying (1) the entry format: task, steps, prerequisites, privileges granted, where it runs, survives-the-vendor, verified date, and how to re-run; (2) a PRIVILEGE VOCABULARY, which is the part most likely to be argued with and the reason it is published first — seven properties that make two grants comparable (scope, operations, bearer, mediation, duration, withdrawal, observability), under which a published read key reads scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none, three of them WORSE than a mainstream sharing link; (3) three worked entries — printing a markdown file (small, checkable in a minute, we win), taking access back after sharing (WE LOSE, plainly: rotation protects future commits and reaches nothing already fetched, while a server-mediated platform simply refuses the next request), and letting a program record data without letting it alter records (the differentiator, where step counts tie and privileges separate). Behind it: admin/build/compare_tests.py executes the our-side claims against the live service with published read keys only, and writes compare/results.json — six checks, each stating what would make it FAIL. Five hold; one records an ABSENT capability and is kept until it stops reproducing: the installed CLI v0.14.27 does not strip the canonical sgit_rk1_ prefix the web loader now accepts, deriving the wrong ref id, while the bare form works on the same version — now also filed as a brief to the CLI team. The freshness mechanism is real rather than a date in small print: results carry an expiry threshold and a past-threshold result renders as UNVERIFIED instead of as fact, proven by forcing the dates old and watching all six rows flip. The page states its own asymmetry up front — our rows are machine-verified, rows about anyone else's product are hand-checked on a date — and lists what is deliberately absent, including the deployment comparison, which waits until our own portable-artefact/hosted-viewer caveat is resolved. |
+| v0.2.23 | 2026-08-16 | obj-cas-imm-8af209891454 | Structure for scale, and the most interesting vault yet. (1) Every published vault is now a self-contained folder — demos/vaults//index.html with its screenshots in demos/vaults//images/ — so adding the hundredth vault is adding a folder, and a vault's page and pictures move together. The old flat /vaults/ section is gone (URLs lived one day). Two engine changes made it possible: the root-prefix was computed as 'one ../ if nested at all', which silently pointed the nav, stylesheet and every asset at the wrong level once pages nested three deep — now it is ../ times the depth, the same formula the markdown twins already used; and the screenshot rig writes per-vault, with a --vault filter. Image paths in the walkthrough are page-relative for the same reason. (2) New vault: SUPPLEMENT STACK (r7zes477), and it is the strongest healthcare demonstration on the site. Its idea: every label describes one product, nothing describes the sum, so the model extracts (fuzzy, with every amount traceable to the label photograph it was read from) and the code adds up (deterministic, rules stated in the open, a missing value flagged and never guessed), producing a briefing for somebody qualified and never a verdict. It is also the first vault here to use SCOPED WRITE PERMISSIONS: app.json grants write over adherence/ only, so the app that logs what was taken cannot alter the regimen, the labels or the references — least authority as a property of the vault rather than a server setting. Five walkthrough rows captured from the live vault, including its app.json permission block. The healthcare use case now opens with this as a worked example: who holds the data, how it reaches a clinician (a read key, not an account or a PDF), where AI fits safely, and why the reference set is UK RNI/EFSA rather than US Daily Values. The published audit: clean on credentials, no personal identifiers found — but it publishes a real regimen and the health context inferable from it, deliberately, and revocation is not retroactive. |
 | v0.2.22 | 2026-08-16 | obj-cas-imm-b1d27e3295cf | The walkthrough: six alternating rows at the foot of the Algarve page that explain what a live embed cannot say for itself — the app is real HTML (not a viewer template); clicking a photo opens the vault's own lightbox with captions from gallery.json; the debug pane's Vault tab times the decryption step by step; its REPL tab is a console over the sg.* bridge where vfs.write is refused because no write capability exists in a read key; the vault browser shows photos/originals and the app's own SOURCE; and the SGit tab carries 36 commits, because the history IS the storage. New tool behind it: admin/build/capture_shots.mjs drives the real product with only a published read key, performs each row's navigation (scroll to a chapter, click a photograph, open the debug pane through the HUD's shadow root, type vfs.list into the REPL, expand a folder, switch to the SGit view), crops the result and writes WebP — so the pictures are of the actual vault and regenerate when it changes. Getting there needed four fixes worth recording: the app frame must be identified by a selector it contains (the shell frame also has text and was winning the race), the REPL input sits two shadow roots deep and is reached with a shadow-piercing locator typed into for real, the file tree rows are .sb-tree__folder-name, and the slow test mirror needs navigation timeouts well past the 30s default. Images load through assets/shots.js — lazily, and via fetch-or-sg.vfs rather than , because the authoring contract forbids declarative refs so every page survives being served from inside a vault. Also adds a direct 'open the gallery app in its own window' link using the read-key fragment the UI now accepts. |
 | v0.2.21 | 2026-08-16 | obj-cas-imm-10164a7a31ab | Two reader reports from an iPhone, both fixed with the cause named. (1) The vault pages now open both surfaces ON LOAD — the reader lands on the vault, not on a row of buttons. The opens are sequential by design: the browser surface starts once App Mode reports vault-ready (grace-capped), so its objects come out of the client's encrypted-object cache and the second open mostly decrypts rather than fetches — the caching architecture demonstrating itself on every page view. Buttons are gone; each frame carries a label and its own status line, and a failed handshake leaves a retry control instead of a dead page. (2) The landscape-iPhone report — site and iframe not using the full width after a pinch-zoom — was hunted down empirically rather than guessed at: one unbreakable 702px token (the sgit clone command with its 90-character credential) on a 393px viewport made the page 743px wide, which drops Safari's fit-to-width scale below 1; pinch out and the entire site sits narrow with a white gutter. Fixed with overflow-wrap:anywhere on inline code (breaks only when a token would overflow) plus the html canvas painted the site colour so any zoomed-out or overscrolled area reads as the site rather than as white margin. Verified at iPhone viewports: every checked page now measures exactly the viewport width, and the auto-open completes with zero clicks. |
 | v0.2.20 | 2026-08-16 | obj-cas-imm-23e6ea08a77d | Both surfaces at once, reader-requested: on the vault pages, App Mode and the vault browser now each open in their OWN frame, stacked — the app first, the FILES/SGIT/SETTINGS browser under it — instead of one frame the buttons fought over. The second open is fast by design and the component says so: the encrypted objects are already in the client's cache from the first surface, so the second mostly decrypts rather than fetches — the caching story demonstrating itself. Each frame carries its own status line from its own handshake (one listener, replies routed by which frame sent them). The Full screen button is gone from these pages — with each surface getting a full-width, viewport-height frame of its own, it earned nothing. Verified headless: both surfaces open (5.0s through the slow test mirror, faster live), app above browser, two independent vault-ready events. |
