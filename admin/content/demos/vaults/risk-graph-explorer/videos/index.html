@@ -1,72 +1,232 @@
-<main class="doc">
+<main class="doc" style="max-width:var(--wide)">
   <p class="crumb"><a href="../../../../index.html">Home</a> / <a href="../../index.html">Vaults</a> / <a href="../index.html">Risk Graph Explorer</a> / Walkthroughs</p>
   <h1>The author’s walkthroughs</h1>
-  <p class="lead">Three recorded walkthroughs of this vault, with full transcripts. They are the best explanation of <em>why</em> the tool is shaped as it is — the reasoning behind a view is rarely visible in a picture of it, and these are the designer thinking aloud while using it.</p>
+  <p class="lead">Three recorded walkthroughs of this vault — each one played, then read. Under every video is the same session as a document: the moments that matter, the frame the screen was showing at that moment, and what is actually happening in it. The full transcript is at the foot of each.</p>
 
-  <div class="note"><b>Why the transcripts are here in full.</b> A video is invisible to a search engine, to <a href="../../../../llms-full.txt">llms-full.txt</a>, and to any agent reading this site as documentation. The transcript is the content; the video is one rendering of it. Lightly cleaned for filler words, otherwise unedited — including the moment the author disagrees with his own tool, which is the most useful passage in all three.</div>
+  <div class="note"><b>Why a video is not enough on its own.</b> A recording is invisible to a search engine, to <a href="../../../../llms-full.txt">llms-full.txt</a>, and to any agent reading this site as documentation. It is also full of <em>“this guy here”</em> and <em>“look at this”</em> — pointing that a transcript cannot resolve. So each moment below pairs the words with the picture they were pointing at, which is the only form in which the argument survives being read rather than watched.</div>
 
-  <div class="cmp" id="v-PP6zsrC0KEg">
-    <h2>Graph Browser <span class="small dim">· 4:21 · 5 Aug 2026</span></h2>
-    <p class="lead" style="font-size:1rem">How answering the questions builds the fact graph — and why a "no" is still information.</p>
-    <p><b>Watch:</b> <a href="https://youtu.be/PP6zsrC0KEg" rel="noopener" target="_blank">youtu.be/PP6zsrC0KEg ↗</a> · <b>Shows:</b> <a href="../views/index.html">The estate</a></p>
-    <p><b>What it establishes</b></p>
-    <ul>
-      <li>A vault with no agent still produces a fact; absence is recorded, not skipped.</li>
-      <li>The question path walks reach → capability → change → stop → authority → blast radius → egress → reversibility → procedure → reconstruction → account ownership.</li>
-      <li>Different edge types are drawn for different relationships, so the graph is evidence rather than decoration.</li>
-      <li>"This is a great way to almost in one day capture all the data."</li>
-    </ul>
-    <h3>Transcript</h3>
-    <div class="vtranscript">
-      <p>Okay, so I want to just talk about this graph explorer that we pushed as an MVP, which is I think ridiculously powerful as a way to present. So what we have here now is how the questions we originally talked about in the demo. But it&#x27;s in a weird way, we start with the first question, right? Do you have an agent and where does it run? Because if you don&#x27;t have an agent, then we only have one piece of information here, which is — and but this is a fact, right? So this here captures the facts and information. So you could see that you have both the operation state or the test environment. And it&#x27;s interesting because the risk will be very similar.</p>
-      <p>The only question is whether it&#x27;s live, so in a way that there&#x27;s a risk level that is probably going to be there, right? So let&#x27;s say you have one, right? And now you can see what kind of data is enriched. Let&#x27;s say I got personal data. And what&#x27;s cool about this is you can see that what&#x27;s happening is this graph is now going to be populated with the data that we collected. So you can think of this graph as the evidence piece, right? So look, there&#x27;s the output of facts and decision. Okay, it informs decisions.</p>
-      <p>So you can see that what&#x27;s cool about it is that we actually have different, in a way, almost different edges depending of what it is. And then, what can do with the data, right? It cannot see it, or reads it, or reads and changes. So this is a typical example of you have a production system, right, that touches personal data, accounts, contact details, it informs the decision, you know, of the there, and it reads and changes. So it&#x27;s a typical agent, right? And now you got it. So now you talk about the information of this.</p>
-      <p>You know, can the agent change things, right? Can you read and report? Can changes? Can change on its own? So you start to map, you know, for example, how it&#x27;s done, right? With a person approval or change. So that so this is where you take that to the next level. So it changes on its own, right? So how do you stop it? Let&#x27;s say you have an action to stop, or eventually can stop, or we don&#x27;t know how to stop it. And how long should we stop it? Is it minutes? An hour? Don&#x27;t know. So you start to see again, you know, the stop control now we map stop in many actions, never, time for, an hour, minutes, right? And then, have you actually stopped it? Yes, we have, only in test, never, right? Do you know the effects of stopping it? Have we mapped it? Is it partially? Etc.</p>
-      <p>So this is an interesting one because this is connected to the stop control. So you can actually see that this is here depends on that one. So it&#x27;s in a way now a next line up, like down, sorry, of the flow. Is there a named person? Do you have a named person or not? So this is the stop authority, right? The team, you know, if it really is, you know, misbehavior for full speed, could, you know, what could you reach, right? Internal only, customer facing? Don&#x27;t know. So this would be customer only.</p>
-      <p>So you could now start to see again, you know, what&#x27;s the damage, that it can acts, you know, can you reach anything outside the network? This means that does it have internet access or not. So again, you can see here, outbound access, right? For example, no egress. Could, you know, could you undo the damage, right? So let&#x27;s say you have fully reversible versus not, or some change are forever, which is important, right? Is there a written procedure for how you pull the plug? You tested it, you&#x27;ve written, you don&#x27;t have it. Could you reconstruct what you did, for example, every day, right? Or, you know, do you have, you know, fully or partially or not, right? Cuz sometimes you have backups, but they do not allow you to restore specific things, and whose account it is, right? A service account, a named person, a team, right? So, you know, what is actually the, for example, the flow that happens. And then this is great, like because you can look at it.</p>
-      <p>This is — I love this, right, because it&#x27;s a great way to almost in one day capture all the data. Just for reference, we then capture the context. We have now these really cool road map with all the risks that flow forward. We also have these risk chains, which I go in more detail in others, but that means that every risk that is then connected connects to the top level, right? And then we even have a risk register, right? And for every risk that you have here, you can see who&#x27;s assigned, who causes it, and who leads to, and how does it connect, right? So it&#x27;s pretty cool.</p>
+  <p class="small dim">Timestamps link into the video at that point. The <b>Graph Browser</b> moments are frames of the recording itself; the <b>Risk Chains</b> and <b>Role risk map</b> moments are captured from the live vault with the published read key, driven to the state being described.</p>
+
+  <!-- ============================================================ 1 -->
+  <h2 id="v-PP6zsrC0KEg">1 · Graph Browser <span class="small dim">· 4:21 · 5 Aug 2026</span></h2>
+  <p class="lead" style="font-size:1rem">How answering the questions builds the fact graph — and why a “no” is still information.</p>
+  <div class="vembed"><iframe src="https://www.youtube-nocookie.com/embed/PP6zsrC0KEg" title="Graph Browser walkthrough" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+  <p class="small dim"><b>Note on what you are looking at.</b> This walkthrough was recorded inside <a href="../../risk-mandate/index.html">Risk Mandate</a>, the field demo the explorer was later extracted from — so the chrome says <em>Risk Mandate — field demo</em> and the tab strip is shorter than today’s. The mechanism is the same one running in <a href="../index.html">this vault</a>.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=0" rel="noopener" target="_blank">00:00</a></span>
+        <h3>Five ready-made estates, before a single question</h3>
+        <p>The video opens on the field demo’s front door — <b>“Eight questions about the agents you run”</b> — and the row of prepared examples underneath it: <em>a typical estate</em>, <em>a rough day</em>, <em>a well-run estate</em>, <em>a coding agent in CI</em>, <em>a support agent on accounts</em>. One tap loads a populated register.</p>
+        <p>That row is a design position, not a convenience. A tool that only shows you your own answers cannot show you what a different answer would have produced — and the argument here is entirely about difference.</p>
+        <p class="msaid">“I want to just talk about this graph explorer that we pushed as an MVP, which is, I think, ridiculously powerful as a way to present.”</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-01.webp" data-dir="../images/" data-alt="The field demo landing page with five ready-made example estates."><figcaption>00:00 — the entry point, with five prepared estates to open instead of answering.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=31" rel="noopener" target="_blank">00:31</a></span>
+        <h3>One answer, one edge — and the counters start moving</h3>
+        <p>The first question is answered: <em>“Yes, in production”</em>, which lands as <code>F-1</code>. Watch the header. It reads <b>1 fact · 4 risks · 5 provisions</b>, <em>where it runs: in production</em> — and <b>at stake: —</b>, because nothing has yet been said about data.</p>
+        <p>In the graph, exactly one edge is drawn: <code>runs-in</code>, from <b>The agent</b> to <b>The production estate</b>. Every other twin is ghosted and carries its own tally — <code>0/3 said</code>, <code>0/2 said</code> — which is the tool stating, per node, how much of what it wants to know it does not have.</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-02.webp" data-dir="../images/" data-alt="One answer given: a single runs-in edge, everything else ghosted."><figcaption>00:31 — 1 fact, one edge, and “at stake” still empty.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=59" rel="noopener" target="_blank">00:59</a></span>
+        <h3>Edges are named, and the names carry the meaning</h3>
+        <p>Personal data is selected (<code>F-36</code>) and the header flips: <b>personal data at stake</b>. <b>The data in its reach</b> lights amber with <em>Personal data</em> written beneath it, and <b>Decisions its output…</b> gains the note <em>Its output informs a person w…</em>.</p>
+        <p>This is the moment the deixis in the transcript resolves. He says the edges differ — and they do, by <em>name</em>: <code>runs-in</code>, <code>can-read</code>, <code>can-change</code>, <code>informed-by</code>. Not a generic line with a thickness, a labelled relation. That is what makes the picture evidence rather than decoration.</p>
+        <p class="msaid">“We actually have different, in a way, almost, different edges depending of what it is. And then, what it can do with the data, right? It cannot see it, or reads it, or reads and changes it.”</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-03.webp" data-dir="../images/" data-alt="Personal data selected; named edges appear between the agent and the twins."><figcaption>00:59 — the data node lights, and the edges arrive with names on them.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=90" rel="noopener" target="_blank">01:30</a></span>
+        <h3>One answer can be two facts</h3>
+        <p><em>“Reads and changes it”</em> is selected — and its chip reads <code>F-33 F-34</code>. Two fact identifiers for one click, because the answer asserts two separable things, and each has to be independently citable later when a risk points back at what produced it.</p>
+        <p>The graph gains <code>can-read</code> and <code>can-modify</code> as distinct edges. Below, the questions have moved on to whether it can change production, whether it can be stopped, and how long stopping would take — the path from <em>capability</em> to <em>control</em>.</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-04.webp" data-dir="../images/" data-alt="Reads and changes it, carrying two fact ids F-33 and F-34."><figcaption>01:30 — one selection, two facts, two edges.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=121" rel="noopener" target="_blank">02:01</a></span>
+        <h3>“This is here, depends on that one” — the sentence a transcript cannot carry</h3>
+        <p>Here is the clearest case for reading the video rather than only listening to it. He says two risks are connected and points; the words alone name neither end.</p>
+        <p>The frame answers it. <em>“Yes, eventually”</em> is selected under <b>q3 — if you had to stop it right now, could you?</b> (<code>F-12</code>), and an edge labelled <code>stops-in-many-actions</code> runs from the agent down to <b>The stop control</b>, which now shows <code>4/12 said</code>. The dependency he is pointing at is a named edge with a counted endpoint.</p>
+        <p class="msaid">“This is an interesting one because this is connected to the stop control. So, you can actually see that this is here, depends on that one.”</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-05.webp" data-dir="../images/" data-alt="Yes, eventually selected; a stops-in-many-actions edge to the stop control."><figcaption>02:01 — the referent of “this depends on that one”, named.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=150" rel="noopener" target="_blank">02:30</a></span>
+        <h3>Saying “never” draws an edge too</h3>
+        <p>Two negative answers land: <em>never</em> actually stopped it (<code>F-19</code>), and <em>no</em>, the side effects of stopping are not known (<code>F-22</code>). A checklist would score these as gaps and move on.</p>
+        <p>Instead the graph grows <code>never-exercised-on</code>, <code>never-timed-for</code> and <code>absent-for</code> — negative relations, drawn and labelled exactly like the positive ones. This is the mechanism behind the claim that a “no” is information: the answer produces a fact with a name, so a risk downstream can cite it. <b>11 facts · 20 risks</b>, and the shape is filling in.</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-06.webp" data-dir="../images/" data-alt="Negative answers producing named edges: never-exercised-on, never-timed-for, absent-for."><figcaption>02:30 — “never” and “no” arrive as named edges, not as silence.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=180" rel="noopener" target="_blank">03:00</a></span>
+        <h3>The one green edge</h3>
+        <p>Reach is answered <em>customer-facing</em> (<code>F-24</code>) and egress <em>no egress</em> (<code>F-47</code>) — and <code>cannot-reach</code>, running from the agent to <b>Outbound network access</b>, is drawn in the assurance colour rather than the exposure colour. In a field of amber it is the single teal line.</p>
+        <p>That is the whole two-colour scheme doing its job in one frame: amber is something true that costs you, teal is something true that helps you, and both are the same kind of object — a stated fact with an edge. A good answer is not the absence of a finding; it is a finding.</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-07.webp" data-dir="../images/" data-alt="A cannot-reach edge drawn in the assurance colour among amber exposure edges."><figcaption>03:00 — “no egress” draws an edge too, in the other colour.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=210" rel="noopener" target="_blank">03:30</a></span>
+        <h3>Seventeen facts, and the question of whose account it acts under</h3>
+        <p>By now the graph is dense with named relations — <code>cannot-reconstruct</code>, <code>held-by-a-group-for</code>, <code>irreversible-by</code>, <code>never-timed-for</code>, <code>absent-for</code> — and the header reads <b>17 facts · 30 risks · 11 provisions</b>. The agent node shows <code>15/43 said</code>: fifteen of the forty-three things the model would like to know have been said.</p>
+        <p>The last question is the sharpest, and it is deliberately last: <b>whose account does it act under</b> — <em>a named person’s · a team’s · a service account nobody owns</em>. Everything before it describes what the agent can do. This one asks who will be standing there when it does it.</p>
+        <p class="msaid">“It’s a great way to almost in one day capture all the data.”</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-08.webp" data-dir="../images/" data-alt="A dense fact graph at 17 facts, with the account-ownership question open."><figcaption>03:30 — 17 facts in, and the account question still to answer.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/PP6zsrC0KEg?t=241" rel="noopener" target="_blank">04:01</a></span>
+        <h3>The other views, in one sweep — and a risk with an owner</h3>
+        <p>He closes by touring what the same answers become elsewhere, landing on <b>Risk chains</b> with <b>RISK-22</b> selected: <em>“Some changes the agent makes cannot be reversed by the operator”</em>, marked <b>OPERATIONAL · HOLDS NOW</b>, assigned to <em>SRE / platform on-call</em> and <em>Platform owner</em>, with a <b>blast radius</b> drawn from its own facts.</p>
+        <p>That panel is the payoff of everything above it. The risk was not typed by anybody. It exists because certain answers were given, it is owned because the org chart says who holds that class of thing, and it can be argued with by going back to the facts underneath — which is what the next walkthrough is about.</p>
+      </div>
+      <figure class="shot" data-shot="gb-moment-09.webp" data-dir="../images/" data-alt="Risk chains with RISK-22 selected, showing assignment and blast radius."><figcaption>04:01 — a generated risk, with an owner and a blast radius.</figcaption></figure>
     </div>
   </div>
 
-  <div class="cmp" id="v-kWip3QnuN1I">
-    <h2>Risk Chains <span class="small dim">· 4:18 · 5 Aug 2026</span></h2>
-    <p class="lead" style="font-size:1rem">Risks that cause risks — and why being able to disagree with the register is the feature.</p>
-    <p><b>Watch:</b> <a href="https://youtu.be/kWip3QnuN1I" rel="noopener" target="_blank">youtu.be/kWip3QnuN1I ↗</a> · <b>Shows:</b> <a href="../views/index.html">Risk chains</a></p>
-    <p><b>What it establishes</b></p>
-    <ul>
-      <li>Every risk should arrive at the corporate register at the top; the chain is how it gets there.</li>
-      <li>"Leads to" navigates upward, "led by" walks back down to the answers that caused it.</li>
-      <li>The author disagrees with his own tool on camera — and resolves it by pointing at facts.</li>
-      <li>"When you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this."</li>
-    </ul>
-    <h3>Transcript</h3>
-    <div class="vtranscript">
-      <p>...to go through this UI which I think is starting to really show the idea of connecting the risks upstream. So what you have here to show you, this is part of the UI that we have that you know, you can basically see the multiple workflows that we have from a typical, non-exposed, one that&#x27;s actually quite governed. What I really like is this, let&#x27;s look at the exposed first, this sort of chain, and let&#x27;s consolidate this here. So the idea here is that the risks connect from one element to the other. So if you look at this guy here, for example, you have risk 6.</p>
-      <p>&quot;The production can be changed by an agent.&quot; This is now connected to that risk. &quot;Organization acts to the system that acts for a person&quot;, who then creates this risk, right? &quot;Organization asks to, Tech to be changed.&quot; And then hits the top two risk register. So the logic here, this is the corporate risk register, so you can see that that particular risk will arrive there, and when I click here, I can also see the reverse. So I can see, if we say we have a risk of this, why is it? It&#x27;s because we have that one, and we have that one, and we have this one, and that one. And I could also see it here, what actually happens.</p>
-      <p>You can see, for example, this particular risk, corporate 2, who is assigned to, and then to the CEO, to what, you know, is reduced by this particular choices, touches GDPR, and then leads to this. So, so actually, so this is a good example, so you can see that this guy here, this risk leads to these two, and is led by that and that. So you can see that, you know, and again I can click on it and see the risk, right? So, so if you, if you go to &quot;led by&quot; at the bottom, you arrive at the bottom of the, the risk. If you go &quot;leads to&quot;, you&#x27;re basically navigating upwards the risk through. And the idea is that every risk should arrive at the corporate, at the top, right? So, so this now becomes a very powerful way to start to understand connections, and then we map the risks to the correct one, and I&#x27;ll do a separate one to show how again, we connect all these risks to the particular CEO, CFO, you know, stakeholder, right? Now, the cool thing about this is you could see that the risks that you have go from zero, we don&#x27;t have anything, to yes, you have an agent, bang, you got some risk.</p>
-      <p>So as we start to add basically these answers, you see that we basically start to populate and start to add the risks and they start to interconnect, which is really cool, right? So, the idea is that the changes here impact the risks that exist and how the risk register almost looks like and the evidence that we have, right? So, and what&#x27;s interesting about this, is if you look for example at &quot;governed&quot;, actually this is there because of, I was actually, when I was explaining Claude about how to do this, I was saying just the fact they have an agent, you&#x27;re going to have risks, but I actually don&#x27;t agree with these risks because, see even that loss of control, I would argue that&#x27;s not the risk that I have by having an agent, right? So the logic here is like if I have an agent in production and I have a lot of these values which are pretty good, I don&#x27;t buy that at the moment I have this, right? Because we said in this one that we already have some of these. So, I think this is a good example of why when you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this. So, I think that in this particular case, it has more to do with the fact that the agent touches EU act, so suddenly we are in compliance with the EU AI act, or we might be compliant with it, and we now have an agent in the mix, and then the organization, and we have, and even though here we say we can stop within a minute, right? There is still some disruption to production, right? Which is interesting, right? So we should capture that operation, right? Because the system, like that one&#x27;s a good one, you know, stopping the agent might have an interruption. So, again, we need to capture these nuances.</p>
-      <p>The cool thing is this is all now fact-driven, which is super powerful.</p>
+  <details class="faq"><summary>Full transcript — Graph Browser</summary>
+  <div class="vtranscript">
+    <p>Okay, so I want to just talk about this graph explorer that we pushed as an MVP, which is I think ridiculously powerful as a way to present. So what we have here now is how the questions we originally talked about in the demo. But it&#x27;s in a weird way, we start with the first question, right? Do you have an agent and where does it run? Because if you don&#x27;t have an agent, then we only have one piece of information here, which is — and but this is a fact, right? So this here captures the facts and information. So you could see that you have both the operation state or the test environment. And it&#x27;s interesting because the risk will be very similar.</p>
+    <p>The only question is whether it&#x27;s live, so in a way that there&#x27;s a risk level that is probably going to be there, right? So let&#x27;s say you have one, right? And now you can see what kind of data is enriched. Let&#x27;s say I got personal data. And what&#x27;s cool about this is you can see that what&#x27;s happening is this graph is now going to be populated with the data that we collected. So you can think of this graph as the evidence piece, right? So look, there&#x27;s the output of facts and decision. Okay, it informs decisions.</p>
+    <p>So you can see that what&#x27;s cool about it is that we actually have different, in a way, almost different edges depending of what it is. And then, what can do with the data, right? It cannot see it, or reads it, or reads and changes. So this is a typical example of you have a production system, right, that touches personal data, accounts, contact details, it informs the decision, you know, of the there, and it reads and changes. So it&#x27;s a typical agent, right? And now you got it. So now you talk about the information of this.</p>
+    <p>You know, can the agent change things, right? Can you read and report? Can changes? Can change on its own? So you start to map, you know, for example, how it&#x27;s done, right? With a person approval or change. So that so this is where you take that to the next level. So it changes on its own, right? So how do you stop it? Let&#x27;s say you have an action to stop, or eventually can stop, or we don&#x27;t know how to stop it. And how long should we stop it? Is it minutes? An hour? Don&#x27;t know. So you start to see again, you know, the stop control now we map stop in many actions, never, time for, an hour, minutes, right? And then, have you actually stopped it? Yes, we have, only in test, never, right? Do you know the effects of stopping it? Have we mapped it? Is it partially? Etc.</p>
+    <p>So this is an interesting one because this is connected to the stop control. So you can actually see that this is here depends on that one. So it&#x27;s in a way now a next line up, like down, sorry, of the flow. Is there a named person? Do you have a named person or not? So this is the stop authority, right? The team, you know, if it really is, you know, misbehavior for full speed, could, you know, what could you reach, right? Internal only, customer facing? Don&#x27;t know. So this would be customer only.</p>
+    <p>So you could now start to see again, you know, what&#x27;s the damage, that it can acts, you know, can you reach anything outside the network? This means that does it have internet access or not. So again, you can see here, outbound access, right? For example, no egress. Could, you know, could you undo the damage, right? So let&#x27;s say you have fully reversible versus not, or some change are forever, which is important, right? Is there a written procedure for how you pull the plug? You tested it, you&#x27;ve written, you don&#x27;t have it. Could you reconstruct what you did, for example, every day, right? Or, you know, do you have, you know, fully or partially or not, right? Cuz sometimes you have backups, but they do not allow you to restore specific things, and whose account it is, right? A service account, a named person, a team, right? So, you know, what is actually the, for example, the flow that happens. And then this is great, like because you can look at it.</p>
+    <p>This is — I love this, right, because it&#x27;s a great way to almost in one day capture all the data. Just for reference, we then capture the context. We have now these really cool road map with all the risks that flow forward. We also have these risk chains, which I go in more detail in others, but that means that every risk that is then connected connects to the top level, right? And then we even have a risk register, right? And for every risk that you have here, you can see who&#x27;s assigned, who causes it, and who leads to, and how does it connect, right? So it&#x27;s pretty cool.</p>
+  </div>
+  </details>
+
+  <!-- ============================================================ 2 -->
+  <h2 id="v-kWip3QnuN1I">2 · Risk Chains <span class="small dim">· 4:18 · 5 Aug 2026</span></h2>
+  <p class="lead" style="font-size:1rem">Risks that cause risks — and why being able to disagree with the register is the feature.</p>
+  <div class="vembed"><iframe src="https://www.youtube-nocookie.com/embed/kWip3QnuN1I" title="Risk Chains walkthrough" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/kWip3QnuN1I?t=45" rel="noopener" target="_blank">“risk 6”</a></span>
+        <h3>Every risk carries the condition under which it would stop being true</h3>
+        <p>He names one entry — <em>“if you look at this guy here, for example, you have risk 6”</em> — so this is that entry, selected in the live vault. <b>RISK-6 — the production estate can be changed by an agent</b>, with the app’s own one-line gloss: <em>“They hold the estate. A change they did not make can still be one they must live with.”</em></p>
+        <p>The dashboard is where the design shows. <b>Established by</b>: <code>F-5</code>, the agent <code>can-change</code> the production estate — one fact, cited. <b>Ceases when any of these hold</b>: <code>F-4</code> reads-only-from, or <code>F-3</code> absent-from. That second list is unusual and worth stopping on: <b>the risk ships with its own falsification condition</b>. It is not a judgement to be argued down, it is a claim with stated exit criteria.</p>
+        <p>Then <b>reduced by — but not retired</b>: <em>narrowing what it may change</em>, <em>staging changes behind a gate</em>. Mitigation is recorded as reduction, never as removal. And <b>touches</b>: EU AI Act Art. 12, Art. 26.</p>
+      </div>
+      <figure class="shot" data-shot="chain-r6.webp" data-dir="../images/" data-alt="RISK-6 selected, showing established-by, ceases-when, reduced-by and touches."><figcaption>The entry he names, opened: one fact establishes it, two would end it.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/kWip3QnuN1I?t=110" rel="noopener" target="_blank">“corporate 2”</a></span>
+        <h3>Walking it backwards: “why is it? Because we have that one, and that one”</h3>
+        <p>The same view from the other end. <b>CORP-2 — customer harm</b>, assigned to the Chief Product Officer and the CEO, and the panel answers his question literally. <b>Established by</b>: <em>“Nothing directly. It holds because the entries below it do.”</em> <b>Leads to</b>: <em>“Nothing recorded”</em> — this is the top, which is where the question stops.</p>
+        <p>Underneath, <b>led by</b> enumerates the causes, and each carries a reason in the tool’s own words: RISK-5 <em>“← a person on the other end is what customer harm means”</em>; RISK-26 <em>“← the record is somebody’s”</em>; RISK-27 <em>“← this is what customer harm looks like in practice”</em>.</p>
+        <p>Note the colour: tracing upstream lights the path in the assurance tone rather than the exposure tone, so <em>what caused this</em> and <em>what this causes</em> are visually distinct operations on the same graph. And the corporate entry <b>touches no twin directly</b> — it is entirely a consequence, which is exactly why it cannot be edited into existence.</p>
+      </div>
+      <figure class="shot" data-shot="chain-corp2.webp" data-dir="../images/" data-alt="CORP-2 selected, showing led-by with per-cause reasons and nothing leading out."><figcaption>The top of a chain, interrogated backwards — with a reason attached to each cause.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/kWip3QnuN1I?t=200" rel="noopener" target="_blank">governed</a></span>
+        <h3>The same organisation with controls in place</h3>
+        <p>Switching the preset to <b>Governed</b> re-derives every chain from a different set of answers: approvals in the path, a tested stop, a named authority, bounded reach. Fewer entries, shorter routes to the register — <em>“a much cleaner sort of flow of events.”</em></p>
+        <p>The comparison is the argument. Nothing about the organisation changed between this frame and the last; only what is true about the agent did. A register that produced the same output either way would be measuring the questionnaire, not the estate.</p>
+      </div>
+      <figure class="shot" data-shot="chain-governed.webp" data-dir="../images/" data-alt="Risk chains under the Governed preset: fewer entries and shorter routes."><figcaption>Governed: same organisation, same graph, fewer and shorter chains.</figcaption></figure>
     </div>
   </div>
 
-  <div class="cmp" id="v-yqQgff4RWuE">
-    <h2>Role risk map (the risk org chart) <span class="small dim">· 3:15 · 5 Aug 2026</span></h2>
-    <p class="lead" style="font-size:1rem">The org chart with risks flowing up it — and the two ways a risk arrives at a person.</p>
-    <p><b>Watch:</b> <a href="https://youtu.be/yqQgff4RWuE" rel="noopener" target="_blank">youtu.be/yqQgff4RWuE ↗</a> · <b>Shows:</b> <a href="../views/index.html">Role risk map</a></p>
-    <p><b>What it establishes</b></p>
-    <ul>
-      <li>Two modes: risks assigned directly to a role, and risks that arrive through the chain.</li>
-      <li>A role inherits everything held below it and adds its own — the CTO carries the SRE’s set plus its own.</li>
-      <li>Presets change the shape: nothing, typical, exposed, governed.</li>
-      <li>"No risk then becomes orphaned, because every risk will flow upwards, and that’s super important."</li>
-    </ul>
-    <h3>Transcript</h3>
-    <div class="vtranscript">
-      <p>Okay, so this next video shows another super powerful capability that we had here to our risk graph explorer, which is the org chart, and how we have, in this case, the board, we have the CEO, we have three direct reports, and we have then the kind of the team, where the platform owner, to the CTO, to the CEO, to the board, and you can actually see, you know, it&#x27;s quite nice, the chain, right, the chief product officer, you know, has a customer service owner who connects to the board, who responds to the CEO and the board, right? And we can kind of see the sequence of events, right? So, what we&#x27;re going to see here is how as we add risks to the organization, right? You start to have risks that are flowing to here, right? Which is pretty cool, so you could see that as we add, basically, and we provide answers, you basically start to see the, fundamentally, the risks changing. And what&#x27;s cool about it is you could see how they arrive, and one of the things that&#x27;s quite interesting is that we have two modes already, because you could see that the CEO, in this case, or the board, right, receive all these risks, so the CEO, in this case, is assigned his three corporate risk registers directly to him, but you also have these risks that arrive from the risk chain, and that&#x27;s very important. Right? So you basically could see that because somebody, you know, a senior, holds, he arrives because of the risk graph says so, right? So that means that these particular risks that exist there, which for example, come from here, so you could see that this risk here, so let&#x27;s say, the SRE is holding risk 2, risk 6, risk 9, risk 21, and risk 31, and that risk is also now going to exist — same risks are going to be connected to the platform owner, who now has a couple more risks of itself, and now the CTO has a couple risks of itself but also inherits all the risks that we mentioned below all the way up. So it&#x27;s pretty cool, right? Because again, same thing, right? So the DPO is assigned a couple of risks, and then, you know, that he has, right? And then, you know, it also arrives from the risk chain, and then you got the CFO, the same thing, right? And then the CEO, you know, connects the dots. So this is a really powerful capability because it&#x27;s how you connect all the dots, right? So if you look at the different scenarios, if you have no agent, you have nothing, if you have a typical kind of agent deployment, you have this kind of shape, if you have a lot of exposure, you get a much bigger set of responsibilities, and you have the govern, we can see it&#x27;s a much cleaner sort of flow of events.</p>
-      <p>And now we can start to challenge, you know, is those risks in the right place because everybody that is going to accept it is going to push back. But this is crazy powerful because now we start to see the relationships, and we see that no risk then becomes orphaned, because every risk will flow upwards, and that&#x27;s super important.</p>
+  <div class="note"><b>The most useful thirty seconds in all three videos</b> is the author disagreeing with his own tool. <em>“I actually don’t agree with these risks… I don’t buy that at the moment.”</em> He then works out what he does think is true — that the exposure is really about the agent touching EU AI Act obligations, and that stopping it would itself disrupt production — and says <em>“so we should capture that.”</em> The disagreement does not resolve into whose judgement wins. It resolves into <b>which fact is wrong or missing</b>, and then the register re-derives. That is the difference between a document you argue about and a model you correct. <em>“When you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this.”</em></div>
+
+  <details class="faq"><summary>Full transcript — Risk Chains</summary>
+  <div class="vtranscript">
+    <p>...to go through this UI which I think is starting to really show the idea of connecting the risks upstream. So what you have here to show you, this is part of the UI that we have that you know, you can basically see the multiple workflows that we have from a typical, non-exposed, one that&#x27;s actually quite governed. What I really like is this, let&#x27;s look at the exposed first, this sort of chain, and let&#x27;s consolidate this here. So the idea here is that the risks connect from one element to the other. So if you look at this guy here, for example, you have risk 6.</p>
+    <p>&quot;The production can be changed by an agent.&quot; This is now connected to that risk. &quot;Organization acts to the system that acts for a person&quot;, who then creates this risk, right? &quot;Organization asks to, Tech to be changed.&quot; And then hits the top two risk register. So the logic here, this is the corporate risk register, so you can see that that particular risk will arrive there, and when I click here, I can also see the reverse. So I can see, if we say we have a risk of this, why is it? It&#x27;s because we have that one, and we have that one, and we have this one, and that one. And I could also see it here, what actually happens.</p>
+    <p>You can see, for example, this particular risk, corporate 2, who is assigned to, and then to the CEO, to what, you know, is reduced by this particular choices, touches GDPR, and then leads to this. So, so actually, so this is a good example, so you can see that this guy here, this risk leads to these two, and is led by that and that. So you can see that, you know, and again I can click on it and see the risk, right? So, so if you, if you go to &quot;led by&quot; at the bottom, you arrive at the bottom of the, the risk. If you go &quot;leads to&quot;, you&#x27;re basically navigating upwards the risk through. And the idea is that every risk should arrive at the corporate, at the top, right? So, so this now becomes a very powerful way to start to understand connections, and then we map the risks to the correct one, and I&#x27;ll do a separate one to show how again, we connect all these risks to the particular CEO, CFO, you know, stakeholder, right? Now, the cool thing about this is you could see that the risks that you have go from zero, we don&#x27;t have anything, to yes, you have an agent, bang, you got some risk.</p>
+    <p>So as we start to add basically these answers, you see that we basically start to populate and start to add the risks and they start to interconnect, which is really cool, right? So, the idea is that the changes here impact the risks that exist and how the risk register almost looks like and the evidence that we have, right? So, and what&#x27;s interesting about this, is if you look for example at &quot;governed&quot;, actually this is there because of, I was actually, when I was explaining Claude about how to do this, I was saying just the fact they have an agent, you&#x27;re going to have risks, but I actually don&#x27;t agree with these risks because, see even that loss of control, I would argue that&#x27;s not the risk that I have by having an agent, right? So the logic here is like if I have an agent in production and I have a lot of these values which are pretty good, I don&#x27;t buy that at the moment I have this, right? Because we said in this one that we already have some of these. So, I think this is a good example of why when you go and push your risk to be approved, the stakeholder is going to challenge you really hard. The cool thing is that we start to have the evidence to show exactly why we are saying this. So, I think that in this particular case, it has more to do with the fact that the agent touches EU act, so suddenly we are in compliance with the EU AI act, or we might be compliant with it, and we now have an agent in the mix, and then the organization, and we have, and even though here we say we can stop within a minute, right? There is still some disruption to production, right? Which is interesting, right? So we should capture that operation, right? Because the system, like that one&#x27;s a good one, you know, stopping the agent might have an interruption. So, again, we need to capture these nuances.</p>
+    <p>The cool thing is this is all now fact-driven, which is super powerful.</p>
+  </div>
+  </details>
+
+  <!-- ============================================================ 3 -->
+  <h2 id="v-yqQgff4RWuE">3 · Role risk map <span class="small dim">· 3:15 · 5 Aug 2026</span></h2>
+  <p class="lead" style="font-size:1rem">The org chart with risks flowing up it — and the ways a risk arrives at a person.</p>
+  <div class="vembed"><iframe src="https://www.youtube-nocookie.com/embed/yqQgff4RWuE" title="Role risk map walkthrough" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/yqQgff4RWuE?t=160" rel="noopener" target="_blank">“no agent”</a></span>
+        <h3>The org chart exists before any risk does</h3>
+        <p>Under the <b>New</b> preset the structure is already there — board, CEO, CTO, CISO, CFO, DPO, chief product officer, platform owner, customer-facing service owner, SRE — and nothing is flowing through it.</p>
+        <p>That ordering matters. The organisation is not derived from the risks; the risks are routed onto an organisation that was described first. Which is why the same estate can be re-answered all day and the chart underneath never moves.</p>
+        <p class="msaid">“If you have no agent, you have nothing.”</p>
+      </div>
+      <figure class="shot" data-shot="role-map-new.webp" data-dir="../images/" data-alt="The role risk map under the New preset: the org chart with no risks on it."><figcaption>Nothing answered: the structure, carrying nothing.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/yqQgff4RWuE?t=95" rel="noopener" target="_blank">the CTO</a></span>
+        <h3>Held, versus arrived — and the tool separates them explicitly</h3>
+        <p>Selecting the CTO lights the path <em>Board → CEO → CTO → Platform owner / CISO</em> and splits what the role carries into named sections. <b>Holds — 4</b>: <em>“Assigned to this role. Its own to deal with.”</em> <b>Arrives by the risk chain — 16</b>, with the tool’s own explanation of why that category exists:</p>
+        <p class="msaid">“It arrives because the <b>risk graph</b> says so, not because anybody reports here — which is how a board entry ends up with an unexercised runbook underneath it.”</p>
+        <p>That sentence is the whole feature. An owner is not surprised at the top by something nobody carried up, because arrival is computed rather than reported. On the chart itself each role is labelled in the same two terms — the CTO reads <code>4 assigned · 25 through</code>, and the board simply <code>37 arrive here</code>.</p>
+      </div>
+      <figure class="shot" data-shot="role-cto.webp" data-dir="../images/" data-alt="CTO selected: holds 4, arrives by the risk chain 16, with the path to the board lit."><figcaption>The CTO: four of its own, sixteen that arrive because the graph says they must.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag"><a href="https://youtu.be/yqQgff4RWuE?t=130" rel="noopener" target="_blank">the SRE</a></span>
+        <h3>At the bottom, a third category — and it is empty</h3>
+        <p>The SRE / platform on-call is the leaf, <em>reports to Platform owner → CTO → CEO → Board</em>, and it <b>holds 9</b> — RISK-2, 6, 10, 11, 12, 13, 19, 22, 35 — the operational set the walkthrough describes as travelling upward from here.</p>
+        <p>The panel here reveals something the video only implies: there are <b>three</b> ways a risk reaches a role, not two. <b>Arrives by the risk chain — 2</b>, and <b>arrives by the org chart — 0</b>, glossed <em>“Held by somebody who reports here”</em>, answered <em>“Nothing below.”</em> Inheritance through the reporting line and causation through the risk graph are counted separately, which is what lets you ask a manager <em>why</em> they hold something and get a structural answer rather than a list.</p>
+        <p class="msaid">“No risk then becomes orphaned, because every risk will flow upwards, and that’s super important.”</p>
+      </div>
+      <figure class="shot" data-shot="role-sre.webp" data-dir="../images/" data-alt="SRE selected: holds 9, arrives by risk chain 2, arrives by org chart 0 — nothing below."><figcaption>The leaf of the chart: nine held, two caused, nothing inherited — because there is nothing below it.</figcaption></figure>
     </div>
   </div>
 
-  <h2>Where the ideas landed</h2>
-  <p>Each walkthrough is matched to a screenshot of the live vault, with the mechanism explained, on <a href="../views/index.html"><b>the seven views page</b></a>. The vault itself, with its read key and both live surfaces, is on <a href="../index.html">the vault page</a>.</p>
+  <details class="faq"><summary>Full transcript — Role risk map</summary>
+  <div class="vtranscript">
+    <p>Okay, so this next video shows another super powerful capability that we had here to our risk graph explorer, which is the org chart, and how we have, in this case, the board, we have the CEO, we have three direct reports, and we have then the kind of the team, where the platform owner, to the CTO, to the CEO, to the board, and you can actually see, you know, it&#x27;s quite nice, the chain, right, the chief product officer, you know, has a customer service owner who connects to the board, who responds to the CEO and the board, right? And we can kind of see the sequence of events, right? So, what we&#x27;re going to see here is how as we add risks to the organization, right? You start to have risks that are flowing to here, right? Which is pretty cool, so you could see that as we add, basically, and we provide answers, you basically start to see the, fundamentally, the risks changing. And what&#x27;s cool about it is you could see how they arrive, and one of the things that&#x27;s quite interesting is that we have two modes already, because you could see that the CEO, in this case, or the board, right, receive all these risks, so the CEO, in this case, is assigned his three corporate risk registers directly to him, but you also have these risks that arrive from the risk chain, and that&#x27;s very important. Right? So you basically could see that because somebody, you know, a senior, holds, he arrives because of the risk graph says so, right? So that means that these particular risks that exist there, which for example, come from here, so you could see that this risk here, so let&#x27;s say, the SRE is holding risk 2, risk 6, risk 9, risk 21, and risk 31, and that risk is also now going to exist — same risks are going to be connected to the platform owner, who now has a couple more risks of itself, and now the CTO has a couple risks of itself but also inherits all the risks that we mentioned below all the way up. So it&#x27;s pretty cool, right? Because again, same thing, right? So the DPO is assigned a couple of risks, and then, you know, that he has, right? And then, you know, it also arrives from the risk chain, and then you got the CFO, the same thing, right? And then the CEO, you know, connects the dots. So this is a really powerful capability because it&#x27;s how you connect all the dots, right? So if you look at the different scenarios, if you have no agent, you have nothing, if you have a typical kind of agent deployment, you have this kind of shape, if you have a lot of exposure, you get a much bigger set of responsibilities, and you have the govern, we can see it&#x27;s a much cleaner sort of flow of events.</p>
+    <p>And now we can start to challenge, you know, is those risks in the right place because everybody that is going to accept it is going to push back. But this is crazy powerful because now we start to see the relationships, and we see that no risk then becomes orphaned, because every risk will flow upwards, and that&#x27;s super important.</p>
+  </div>
+  </details>
+
+  <h2>Where to go next</h2>
+  <p>Each view gets a systematic treatment, screenshot by screenshot, on <a href="../views/index.html"><b>the seven views page</b></a>. The vault itself — its read key, both live surfaces, and the publication rules it enforces on its own build — is on <a href="../index.html">the vault page</a>.</p>
 </main>
+<script>
+(function () {
+  fetch('../../../../assets/shots.js')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[videos] shots component failed to load:', e); });
+}());
+</script>
