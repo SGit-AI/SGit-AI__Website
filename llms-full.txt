@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.34). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.35). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -4171,11 +4171,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.34**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.35**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.34 | 2026-08-18 | this release | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
+| v0.2.35 | 2026-08-19 | this release | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
+| v0.2.34 | 2026-08-18 | obj-cas-imm-97c957112852 | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
 | v0.2.33 | 2026-08-17 | obj-cas-imm-ab458fd8611d | A release now ends by asking the live site what version it is serving, because 'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages failed to deploy them because codeload returned 429 (Too Many Requests) for actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a single step. Validation passed, tagging passed, the push was verified against both remotes — and the site served a two-release-old page for forty minutes, which is how long it took a human on a phone to notice the version pill still said v0.2.30. The failure was invisible to every check the release ran, because it happened in a job neither remote knows about. So release.sh gained a sixth step: poll the live URL with a cache-buster until the version pill matches this release, up to eight minutes, and ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the action download is transient and just needs a re-run. The cost is up to eight minutes of waiting per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not. Same principle as the orphan-page rule and the llms.txt guard: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished, so the build refuses all three. Ships the content of v0.2.31 and v0.2.32, which had been written but never served. |
 | v0.2.32 | 2026-08-17 | obj-cas-imm-7f84b9ee6727 | The walkthroughs page becomes a document rather than a list of links. Each of the three videos now carries the recording at the top and THE SAME SESSION READ BACK underneath it: fifteen moments, each one a timestamp that deep-links into the video, the frame the screen was showing at that moment, and an explanation of what is happening in it. The transcripts are still there, folded away at the foot of each. The reason for the format is the one thing a transcript structurally cannot do: these recordings are full of 'this guy here' and 'look at this', and the words alone name neither end of what is being pointed at. Pairing each phrase with its frame is what makes the argument survive being read instead of watched. TWO SOURCES OF FRAMES, and the page says which is which. The Graph Browser moments are frames of the recording, from a narrated-review export the author produced with tools.sgraph.ai — nine timestamped stills paired with the narration spoken over each. Risk Chains and Role risk map have no such export, so their six frames were captured from the LIVE VAULT with the published read key, driven to the exact state being described — including the entry he names out loud ('you have risk 6'). What the frames turned up is most of the value, because none of it is audible: negative answers produce NAMED EDGES (never-exercised-on, never-timed-for, absent-for) rather than silence; 'no egress' draws a single assurance-coloured edge in a field of amber, so a good answer is a finding rather than the absence of one; one selection can carry two fact ids; and every risk ships with a CEASES WHEN ANY OF THESE HOLD list — its own falsification condition, cited to facts. The role dashboard also separates three arrival routes where the video describes two: held, arrives by the risk chain, and arrives by the org chart. TOOLING: the capture rig gained appProbe (ask the running app what its elements are called instead of guessing and burning a capture run per guess — it found g.cnode for chain entries and g.role for roles) and appClickMatch (substring match plus a real MouseEvent, because the graph nodes are SVG). Videos print with the player hidden and the moments intact. |
 | v0.2.31 | 2026-08-17 | obj-cas-imm-17f0b2693daf | Corrects v0.2.30 on three counts, two of them reported and one of them the reason the report was possible at all. (1) THE LAZY-LOAD BYPASS IS NOW ONLY ON PRINT. v0.2.30 prefetched every screenshot once the page went idle, which fixed printing by making every reader pay for images they never scrolled to — the wrong trade, and correctly rejected. It is now driven entirely by the print itself, and it works because of a change one layer down: on the ordinary web the loader no longer fetches bytes and builds a blob: URL, it just sets img.src. That makes each screenshot an ordinary pending document resource, which the print pipeline knows to wait for, where a fetch-and-blob is invisible to it. Cmd/Ctrl-P is caught on keydown as well as beforeprint, because the keystroke lands a few hundred milliseconds before the dialog does and that head start is what removes the race. Measured on a page that was never scrolled: 1 image loaded while reading, 9 of 9 in the PDF. The blob path remains for pages served from inside a vault, where it is the only option. (2) THE PRINT-ONLY SOURCE LINE AND LANDSCAPE HINT ARE GONE — printing these pages is an uncommon case and did not warrant instructions on the page. (3) ASSETS ARE NOW CACHE-BUSTED PER RELEASE. GitHub Pages serves them with max-age=600, and the bootstrap fetched them by bare path, so for ten minutes after every release a returning reader ran the NEW html against the OLD css and js. That is not a hypothetical: it is exactly what produced the v0.2.30 bug report — new markup whose print-only elements the cached stylesheet did not know to hide, and a cached loader without the print handler. Every fetched asset now carries ?v=; the in-vault sg.vfs path stays unversioned, since a vault lookup is by path, not URL. |
@@ -4848,3 +4849,321 @@ Signing and encrypting files is useful on its own. The larger use is [**vault-to
 - **Signing and encryption are separate keys.** Passing the wrong fingerprint to the wrong verb fails; it does not fall back.
 
 Honest edges belong on [the limitations page](limitations.md) too, and these are listed there.
+
+
+
+==============================================================================
+# Updates — sgit.ai
+
+> What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
+>
+> Page: https://sgit.ai/updates/index.html
+
+# Updates
+
+What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
+
+Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-08-18
+
+### [Verify the fix pack, not just the bug](#verify-the-fix-pack-not-just-the-bug) [v0.2.34](../admin/versions.md)
+
+processpkiaccuracy
+
+The documentation gap above arrived as a well-built fix pack from the SG/API team: a gap analysis, code-verified source material, and a draft of the missing page. The most valuable line in it was its own instruction to check the claims before publishing. **Three did not survive.**
+
+- **"The security page actively denies PKI."** It did not. A sweep for *symmetric*, *asymmetric*, *public key*, *PKI* and *keypair* returned zero occurrences. The page was silent, not wrong — and publishing a correction for a claim we never made would have put a false statement in our own changelog.
+- **"Search the site for stale `inbox` naming."** There is none. Two hits, both ordinary English; no `/api/vault/inbox/*` path anywhere.
+- **"Seal to the recipient's X25519 key."** Not what ships. Running `sgit pki keygen` prints **RSA-OAEP 4096-bit** and **ECDSA P-256**. Publishing the draft as written would have told integrators to build against the wrong primitive.
+
+Two more corrections came from running the CLI rather than reading about it: `sgit pki export` emits a **JSON bundle** of two PEM blocks, not the `.pem` file the draft redirected into — so the draft's `sha256sum public-key.pem` derivation of a lane address is not well defined — and `keygen` requires a passphrase, which no draft step mentioned.
+
+The whole exchange, including what we got wrong, is on [the briefs page](../briefs/index.md).
+
+### [The API reference we did not have](#the-api-reference-we-did-not-have) [v0.2.34](../admin/versions.md)
+
+apimessagingdocs
+
+An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier.
+
+The diagnosis was uncomfortable and simple: **we documented both halves and never wrote the sentence that joins them.** The transport was on one page as `sg.append`, the crypto on another as `sgit pki`, and neither referenced the other. There was also no HTTP API reference anywhere — awkward for a project whose whole argument is that the API *is* the surface.
+
+- **[Sending messages between vaults](../docs/vault-messaging.md)** is the page that was missing: append lanes composed with keypairs, worked end to end in CLI, curl and `sg.append`.
+- **[An /api/ section](../api/index.md)** now exists — [authentication](../api/authentication.md), [vault objects](../api/vault-objects.md), [append lanes](../api/append-lanes.md) and [errors](../api/errors.md).
+- **[The PKI page](../docs/pki.md)** documents the keypair lifecycle, run against the shipped CLI rather than recalled.
+- **[The security page](../security/index.md#pki)** gained the asymmetric layer it never mentioned. It never claimed sgit had no public-key layer — it simply said nothing, and on a page like that one, silence reads as denial.
+
+The one step that is not wired end to end is labelled **PROPOSED** with an interim recipe, rather than quietly documented as working.
+
+## 2026-08-17
+
+### [Three walkthroughs, read back as documents](#three-walkthroughs-read-back-as-documents) [v0.2.32](../admin/versions.md)
+
+vaultsvideorisk-graph-explorer
+
+A video is invisible to a search engine, to `llms-full.txt`, and to any agent reading this site as documentation. It is also full of *"this guy here"* and *"look at this"* — pointing that a transcript cannot resolve.
+
+So [the Risk Graph Explorer walkthroughs](../demos/vaults/risk-graph-explorer/videos/index.md) now carry the player at the top and **the same session read back underneath**: fifteen moments, each a timestamp that deep-links into the video, the frame the screen was showing then, and what is actually happening in it.
+
+- Nine frames come from a narrated-review export; the other six were captured from the **live vault** with its published read key, driven to the exact state being described.
+- What the frames turned up is most of the value, because none of it is audible: negative answers draw **named edges** (`never-exercised-on`, `absent-for`) rather than silence; "no egress" draws a single assurance-coloured edge in a field of amber; and every risk ships with a **"ceases when any of these hold"** list — its own falsification condition, cited to facts.
+
+The [seven views page](../demos/vaults/risk-graph-explorer/views/index.md) covers the same vault view by view.
+
+### [Printing stopped costing every reader](#printing-stopped-costing-every-reader) [v0.2.31](../admin/versions.md)
+
+printperformance
+
+Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted **across the middle of page 2**, translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap.
+
+The first was a sticky header: Chrome paints a sticky box once, wherever it happens to fall in the paginated flow. The second was subtler. Screenshots load lazily, and `loading="lazy"` defers the **decode**, not just the download — so an image far below the viewport sat there fetched, at zero width, and printed as nothing.
+
+- The first fix made every reader pay: it pre-loaded all the images so printing would work. That was the wrong trade and it was rejected.
+- **The bypass now fires only on print** — on `beforeprint`, and on the Cmd/Ctrl-P keystroke, which lands a few hundred milliseconds earlier and buys the images a head start.
+- Measured on a page nobody scrolled: **1 image loaded while reading, 9 of 9 in the PDF.**
+
+Also in this release: `@page` margins, colour preservation so the amber/green distinction survives, `break-inside` rules so a caption is never stranded on the page after its picture, and per-release cache-busting on assets — because for ten minutes after every release, returning readers were running new HTML against old CSS.
+
+### [Green does not mean live](#green-does-not-mean-live) [v0.2.33](../admin/versions.md)
+
+cideployprocess
+
+Two consecutive releases pushed cleanly, reported success, and **never reached the site.** A human noticed on a phone, forty minutes later, because the version badge still showed the old number.
+
+The release script verified that both remotes were in sync — and they were. The failure was in a job neither remote knows about: GitHub Pages could not download `actions/configure-pages`, got a **429 Too Many Requests**, and the deploy died in "Set up job" before running a single step. Validation passed. Tagging passed. The site served a two-release-old page.
+
+- **A release now ends by asking the live site what version it is serving**, polling with a cache-buster until the badge matches — and **aborting loudly** if it never does.
+- The cost is up to eight minutes per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not.
+- Same principle as the rules already in the build: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished.
+
+There is a longer account of this one in [Green does not mean live](../articles/green-does-not-mean-live.md).
+
+
+
+==============================================================================
+# Articles — sgit.ai
+
+> Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them.
+>
+> Page: https://sgit.ai/articles/index.html
+
+# Articles
+
+Longer pieces that make an argument across several pages — what a thing means, why it is shaped that way, and what it cost to find out. Shorter, dated notes on individual changes are in [updates](../updates/index.md).
+
+**Two rules keep these from going stale.** An article never restates a fact it does not own — it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
+
+[**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+
+
+
+==============================================================================
+# Seven vaults, one method — sgit.ai
+
+> Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.
+>
+> Page: https://sgit.ai/articles/seven-vaults-one-method.html
+
+[Home](../index.md) / [Articles](index.md) / Seven vaults, one method
+
+# Seven vaults, one method
+
+2026-08-19 · vaultspublishingmethod
+
+Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.
+
+Between 14 and 18 August this site published seven vaults. Each one is a real encrypted vault you can open in a browser from a read key printed on its page: [a photo gallery](../demos/vaults/algarve-may-2026/index.md), [field notes](../demos/vaults/field-notes/index.md), [a patient-held supplement record](../demos/vaults/supplement-stack/index.md), [a risk register](../demos/vaults/risk-mandate/index.md), [a browser-isolation risk graph](../demos/vaults/agentic-browser-isolation/index.md), [a fact-to-risk explorer](../demos/vaults/risk-graph-explorer/index.md), and [the catalogue that indexes them](../catalogue/index.md) — itself a vault.
+
+By the third one it was obvious that we were repeating ourselves badly. By the seventh there was a method, and every rule in it exists because something went wrong first.
+
+## The rule that matters most
+
+**Classify the credential before it touches anything.**
+
+Three of the seven vaults arrived as a *vault key* described as a read key. A vault key is write access. Publishing one would have handed anybody who read the page the ability to rewrite the vault — and because a vault key is also the address and the encryption root, there is no revocation, no rotation, and no undo.
+
+They were caught by shape. A read key is 64 hex characters; a vault key is a generated passphrase, which is 24 lowercase alphanumerics. That catch depended on somebody looking, which is not a control. So it became [a script](../demos/vaults/publishing.md):
+
+```
+
+$ python3 admin/build/check_credential.py '<credential>'
+  form      : vault key (legacy passphrase:vault_id)
+  publish?  : NO
+  why       : 24 characters before the colon and not 64 hex, so it is a
+              passphrase — a WRITE credential
+
+```
+
+Exit 0 means publishable. Exit 1 means stop. It never echoes what it was given.
+
+Behind it sits a second line: the release validator scans every tracked file for any key-shaped string and for the actual passphrases, read at build time from a gitignored tier. That tripwire has caught its own author three times — each time writing the prefix in prose, in documentation explaining what a write credential looks like. Which is the point: a rule that only catches other people is not a rule.
+
+## Derive rather than refuse
+
+The interesting part of the vault-key catch is what happens next. A read key is **derived one-way** from a vault key, so a submission that cannot be published can still become one that can:
+
+```
+
+c = Vault__Crypto()
+pw, vid  = c.parse_vault_key(vault_key)
+read_key = c.derive_keys(pw, vid)['read_key']
+
+```
+
+The vault key goes into a gitignored tier that the tripwire then scans for. The derived read key gets published. It is one-way: nobody can turn it back.
+
+That is the whole shape of the thing this project is about — a capability you can hand over that is *strictly less* than the one you hold, with the reduction enforced by mathematics rather than by policy. The seven vaults span the range deliberately, from one that requests no permissions at all to one that can write a single folder.
+
+## Audit with the key you are about to publish
+
+Not with the vault key. With **exactly the credential a reader will have**, across every file.
+
+This caught a real problem. One vault carried a sealed LLM credential, and a published read key in front of a metered capability is an open tab on somebody else's budget. Rather than reasoning about whether the sealing was sound, we took the published read key and attempted to open the credential with it. AES-GCM refused — `InvalidTag` — so no budget was exposed. Checked rather than assumed, and recorded either way.
+
+That rule did not come from us. It came from the sixth vault, [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md), which is the first one here that was **public by design**: it carries its own `PUBLIC.md` whose three rules its build enforces, and the third — *no metered capability behind a published read key* — was not in our guidance. It is now.
+
+## Capture evidence by driving the real product
+
+Every screenshot on a vault page is taken by opening the actual vault in a real browser with the published read key, performing the navigation, and cropping the result. No mock-ups.
+
+This is slower than it sounds and worth every minute, because it repeatedly disagreed with what we were about to write. The rig grew a `appProbe` step for exactly that reason — ask the running app what its elements are called instead of guessing and burning a capture run per guess:
+
+```
+
+probe [class*=node] -> 37
+  shapes ["g.cnode.inh","g.cnode","g.cnode.corp"]
+  text   ["R1 An autonomous system operates in the es","R2 Stopping the agent is itself…"]
+
+```
+
+The alternative is a page that describes a product as its author remembers it.
+
+## Describe, show, then admit
+
+Every vault page ends with what the vault does *not* do. Not as a disclaimer at the bottom in small type — as a section with the same weight as the features.
+
+This is the part that is tempting to skip and never should be. A published vault is an argument that this way of working is sound; an argument that omits its own edges is a brochure. The [limitations page](../docs/limitations.md) is the same instinct at site level, and the [comparison pages](../compare/index.md) go further still — they include rows where vaults lose.
+
+## What it cost, and what it bought
+
+Seven vaults, roughly four days of work, and the method is now [written down as a playbook](../demos/vaults/publishing.md) aimed at another site's agent rather than at us — which was the real test of whether it was a method or just a habit.
+
+The honest ledger:
+
+- **Three vault keys caught.** None published. Each would have been unrecoverable.
+- **One budget exposure checked and cleared**, by attempting the attack rather than reasoning about it.
+- **One upstream rule adopted** from a vault that was stricter than our guidance.
+- **Three bugs found by testing rather than assumption** on a single page — a malformed selector that silently produced no images at all, escape sequences leaking as literal text, and a page that never loaded the component it depended on. All three would have shipped.
+
+The last line is the one to keep. Every rule above is short and specific because it was learned by getting something wrong, in public, and writing down what it cost.
+
+*The full method, step by step, is on [the publishing playbook](../demos/vaults/publishing.md). The vaults themselves are in [the catalogue](../catalogue/index.md), each with the read key that opens it.*
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# Green does not mean live — sgit.ai
+
+> Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
+>
+> Page: https://sgit.ai/articles/green-does-not-mean-live.html
+
+[Home](../index.md) / [Articles](index.md) / Green does not mean live
+
+# Green does not mean live
+
+2026-08-17 · [v0.2.33](../admin/versions.md) · cideployverification
+
+Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
+
+Two consecutive releases of this site pushed cleanly, verified themselves against both remotes, printed **"both remotes in sync — done"**, and never reached anybody. The site served a two-release-old page for forty minutes. It was noticed by a human on a phone, who looked at the version badge and said *"is this the latest version?"*
+
+Everything about that sentence is worth sitting with. The checks were not weak. They were **checking the wrong boundary**.
+
+## What the release actually verified
+
+The release script does five things, and four of them are good:
+
+1. Build the site from source.
+2. Run the validator — structure, links, markdown twins, orphan pages, and a tripwire that scans every tracked file for a vault key.
+3. Commit and push the encrypted vault; confirm `sgit status` reports in sync.
+4. Commit and push the git mirror; confirm `HEAD == origin/dev`.
+
+Step 4 is where the confidence came from, and it is genuinely a strong check — it compares hashes, not hopes. The problem is what it means. It means **the bytes arrived at GitHub**. It does not mean anybody can read them.
+
+## The gap, named
+
+Publishing this site has three boundaries, and we were verifying two:
+
+```
+
+  source  ──▶  git remote  ──▶  Pages deploy  ──▶  the reader
+            ↑               ↑                  ↑
+        verified        verified           NOT VERIFIED
+
+```
+
+Between the second and third arrows sits a GitHub Actions job. It has its own failure modes, it reports into a system neither remote knows about, and nothing in our release looked at it.
+
+## What actually failed
+
+Not our code. Not the content. The deploy job died in **"Set up job"** — before running a single step of its own:
+
+```
+
+Download action repository 'actions/configure-pages@v5'
+##[warning] Failed to download ... Error: 429 (Too Many Requests)
+##[warning] Back off 12.459 seconds before retry.
+##[warning] Failed to download ... Error: 429 (Too Many Requests)
+##[warning] Back off 26.597 seconds before retry.
+##[error]  Failed to download archive after 3 attempts.
+
+```
+
+`codeload.github.com` rate-limited the download of a third-party action. The `validate` job passed. The `tag-release` job passed. The one job that puts bytes in front of readers could not fetch its own dependency.
+
+This is worth stating plainly because it is the ordinary case, not an exotic one: **the most likely thing to break in a deploy is not your code.** It is a piece of shared infrastructure you do not run, on a day you were not thinking about it.
+
+## The fix is one question, asked at the end
+
+A release now finishes by asking the live site what version it is serving:
+
+```
+
+== 5/6 verify the deploy actually published
+   waiting for v0.2.34 to appear at https://sgit.ai/ (up to 8 min)
+   ......
+   live: sgit.ai is serving v0.2.34
+
+```
+
+It polls with a cache-buster, because the origin's own answer is the only one that counts. If the version never appears it **aborts loudly**, names the Actions page, and says that a 429 on the action download is transient and needs a re-run.
+
+The cost is real: up to eight minutes of waiting on every release. We took it, because the alternative had already been demonstrated twice in one afternoon — telling somebody a fix was live when it was not, twice, in writing.
+
+## The rule underneath
+
+This site already had two rules of exactly this shape, and adding the third made the pattern obvious:
+
+- **A page nothing links to is unpublished.** The build fails on an orphan page — it happened once, a brief that was written, built and pushed while nothing linked to it.
+- **A page the machine index omits is unpublished.** The build fails if any page would be missing from `llms.txt` — that happened too, a whole section silently absent.
+- **A page the deploy never served is unpublished.** Now the release fails on it.
+
+All three are the same claim: *shipped* is a fact about the reader, not about your repository. Every one of them was learned by getting it wrong first, which is the only reason the list is short and specific rather than long and aspirational.
+
+## What this does not fix
+
+Being honest about the edges, since that is the house rule:
+
+- It detects a failed deploy; it does not repair one. A 429 still needs a human or a re-run.
+- It checks the home page's version badge, not every page. A partial deploy that published some files would pass.
+- It adds up to eight minutes to a release, which is a real tax on small fixes.
+
+All three are acceptable against the failure they replace. The first one to bite will get its own entry.
+
+*The release script is [in the repository](https://github.com/SGit-AI/SGit-AI__CLI); the releases described here are [v0.2.31 to v0.2.33](../admin/versions.md).*
+
+[← All articles](index.md)

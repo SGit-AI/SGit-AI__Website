@@ -9,9 +9,11 @@ Release process (see admin/index.html):
 import os
 import re
 import json
+
+from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.34'
+SITE_VERSION = 'v0.2.35'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +26,36 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.34', '2026-08-18', 'this release',
+    ('v0.2.35', '2026-08-19', 'this release',
+     "Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both "
+     "built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting "
+     "verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no "
+     "decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all "
+     "derived. That is not tidiness, it is the property that makes an unattended journalist agent "
+     "safe: two agents publishing on the same day touch two different files and cannot conflict. "
+     "Frontmatter is flat key: value with no YAML parser, the folder path must agree with the "
+     "date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their "
+     "contract: they author root-relative links because their site sits at a domain root; ours "
+     "must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes "
+     "the app — so posts are still authored root-relative and the build rewrites each to a "
+     "depth-relative path. Authors keep the simple rule; the vault still works. Updates are one "
+     "entry per STORY rather than per release, which is the whole reason this is not the version "
+     "log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded "
+     "from recent releases; the version log stays the complete technical record behind them. "
+     "Articles carry two anti-rot rules stated on the page: never restate a fact you do not own "
+     "(link to the page that does, so it cannot start lying when the fact changes), and link the "
+     "test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that "
+     "reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD "
+     "on what publishing seven vaults taught — including the three vault keys submitted as read "
+     "keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to "
+     "THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. "
+     "Every group label is itself a link to that section's index, so nothing is reachable only by "
+     "opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses "
+     "behind one button. The first mobile attempt made every submenu inline and measured 498px of "
+     "navigation before the content — worse than what it replaced — so it was rebuilt as a "
+     "collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, "
+     "the first machine surfaces here aimed at a human follower rather than an agent."),
+    ('v0.2.34', '2026-08-18', 'obj-cas-imm-97c957112852',
      "Acts on an inbound fix pack from the SG/API team, who audited this site against their route "
      "tables at v0.33.54 after an agent asked how to send a message between vaults and could not "
      "find the answer here. Their central finding was right: the site documented the TRANSPORT "
@@ -289,28 +320,65 @@ CRITICAL = ("<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;col
             "@keyframes sg-reveal{to{opacity:1}}</style>"
             "<noscript><style>body{opacity:1;animation:none}</style></noscript>")
 
+# Two levels, because one was failing. The flat nav reached FOURTEEN items and wrapped
+# to three rows on an iPhone before the page content began — measured on a real
+# screenshot, not guessed. Grouping is by what a reader is trying to do, and every
+# group's own label is a real link, so nothing is reachable only by hovering.
+NAV = [
+    ('why',   'Why',       'why/index.html',      []),
+    ('try',   'Try',       'try/index.html',      []),
+    ('docs',  'Docs',      'docs/index.html',     [
+        ('docs',   'Documentation',   'docs/index.html'),
+        ('api',    'HTTP API',        'api/index.html'),
+        ('vault',  'SG/Vault',        'vault/index.html'),
+        ('deploy', 'Deploy',          'deploy/index.html'),
+        ('skills', 'Skills',          'skills/index.html'),
+    ]),
+    ('vaults', 'Vaults',   'demos/vaults/index.html', [
+        ('vaults',    'Published vaults', 'demos/vaults/index.html'),
+        ('catalogue', 'Catalogue',        'catalogue/index.html'),
+        ('demos',     'Demos',            'demos/index.html'),
+    ]),
+    ('evidence', 'Evidence', 'compare/index.html', [
+        ('compare',      'Comparisons',  'compare/index.html'),
+        ('case-studies', 'Case studies', 'case-studies/index.html'),
+        ('use-cases',    'Use cases',    'use-cases/index.html'),
+        ('briefs',       'Briefs',       'briefs/index.html'),
+    ]),
+    ('updates', 'Updates', 'updates/index.html', [
+        ('updates',  'Updates',    'updates/index.html'),
+        ('articles', 'Articles',   'articles/index.html'),
+        ('admin',    'Version log', 'admin/versions.html'),
+    ]),
+    ('security', 'Security', 'security/index.html', []),
+]
+
+
 def nav(p, here):
-    def cls(k):
-        return 'nl here' if k == here else 'nl'
+    items = []
+    for key, label, href, children in NAV:
+        keys = {key} | {c[0] for c in children}
+        on = ' here' if here in keys else ''
+        if not children:
+            items.append(f'  <div class="ni"><a class="nl{on}" href="{p}{href}">{label}</a></div>')
+            continue
+        subs = '\n'.join(
+            f'      <a class="sl{" here" if here == ck else ""}" href="{p}{chref}">{clabel}</a>'
+            for ck, clabel, chref in children)
+        items.append(
+            f'  <div class="ni ni-has">\n'
+            f'    <a class="nl{on}" href="{p}{href}">{label}<span class="caret">&#9662;</span></a>\n'
+            f'    <div class="sub">\n{subs}\n    </div>\n'
+            f'  </div>')
     return f"""<nav class="site"><div class="row">
   <a class="brand" href="{p}index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
   <a class="ver" href="{p}admin/versions.html" title="Site release history">{SITE_VERSION}</a>
-  <a class="{cls('why')}" href="{p}why/index.html">Why</a>
-  <a class="{cls('try')}" href="{p}try/index.html">Try</a>
-  <a class="{cls('demos')}" href="{p}demos/index.html">Demos</a>
-  <a class="{cls('catalogue')}" href="{p}catalogue/index.html">Catalogue</a>
-  <a class="{cls('vaults')}" href="{p}demos/vaults/index.html">Vaults</a>
-  <a class="{cls('compare')}" href="{p}compare/index.html">Compare</a>
-  <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
-  <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
-  <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
-  <a class="{cls('api')}" href="{p}api/index.html">API</a>
-  <a class="{cls('vault')}" href="{p}vault/index.html">SG/Vault</a>
-  <a class="{cls('deploy')}" href="{p}deploy/index.html">Deploy</a>
-  <a class="{cls('skills')}" href="{p}skills/index.html">Skills</a>
-  <a class="{cls('security')}" href="{p}security/index.html">Security</a>
-  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+{chr(10).join(items)}
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>"""
 
 def footer(p, md=''):
@@ -706,6 +774,8 @@ LLMS_SECTIONS = [
     ('try',       'Try it'),
     ('skills',    'Skills (packaged instructions for AI agents)'),
     ('briefs',    'Cross-team briefs'),
+    ('updates',   'Updates (dated posts: what changed, one entry per story)'),
+    ('articles',  'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('home',      'Optional'),
     ('security',  'Optional'),
     ('admin',     'Optional'),
@@ -853,11 +923,104 @@ def load_pages():
     for r in rows:
         if r.get('dynamic') == 'versions':
             body = versions_body()
+        elif r.get('dynamic') == 'updates':
+            body = updates_body()
+        elif r.get('dynamic') == 'articles':
+            body = articles_index_body()
         else:
             with open(os.path.join(ADMIN, 'content', r['path'])) as f:
                 body = f.read().rstrip('\n')
         pages.append((r['path'], r['title'], r['desc'], r['section'], body))
+    # One page per article, derived — an article is published by adding its markdown
+    # file and nothing else, so it must not need a manifest row either.
+    for a in ARTICLES:
+        pages.append((f'articles/{a["slug"]}.html',
+                      f'{a["title"]} — sgit.ai', a['summary'], 'articles', article_body(a)))
     return pages
+
+
+# ============================================================ updates & articles
+# Markdown content types. The rule, adopted from the VoiceDebrief journalist pipeline:
+# PUBLISHING IS ADDING ONE FILE. The index below, the feed, the manifest and every
+# permalink are derived — so two agents publishing on the same day touch two different
+# files and cannot conflict. That property is what makes an unattended journalist safe.
+
+LOADER   = Content_Loader(os.path.join(ADMIN, 'content'))
+UPDATES  = [u for u in LOADER.load_updates()  if u['status'] == 'published']
+ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
+
+
+def _chips(tags):
+    return ''.join(f'<span class="chip">{t}</span>' for t in tags)
+
+
+def updates_body():
+    """One page, newest first, each post with a #slug permalink. Posts are short by
+    design — a release with three stories in it gets three of them, which is the whole
+    reason this is not just the version log with a nicer stylesheet."""
+    if not UPDATES:
+        return '<main class="doc"><h1>Updates</h1><p>Nothing published yet.</p></main>'
+    out = ['<main class="doc">',
+           '  <h1>Updates</h1>',
+           '  <p class="lead">What changed on sgit and on this site, as it happens — one entry per '
+           'story rather than per release. The <a href="../admin/versions.html">version log</a> is '
+           'the complete technical record; this is the readable one.</p>',
+           '  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; '
+           '<a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>']
+    last_date = None
+    for u in UPDATES:
+        if u['date'] != last_date:
+            out.append(f'  <h2 class="upd-date">{u["date"]}</h2>')
+            last_date = u['date']
+        ver = (f'<a class="upd-ver" href="../admin/versions.html">{u["version"]}</a>'
+               if u['version'] else '')
+        out.append(f'  <article class="upd" id="{u["slug"]}">')
+        out.append(f'    <h3><a href="#{u["slug"]}">{u["title"]}</a> {ver}</h3>')
+        if u['tags']:
+            out.append(f'    <p class="chips">{_chips(u["tags"])}</p>')
+        out.append(LOADER.md_to_html(u['body'], depth=1, where=u['where']))
+        out.append('  </article>')
+    out.append('</main>')
+    return '\n'.join(out)
+
+
+def articles_index_body():
+    out = ['<main class="doc">',
+           '  <h1>Articles</h1>',
+           '  <p class="lead">Longer pieces that make an argument across several pages — what a '
+           'thing means, why it is shaped that way, and what it cost to find out. Shorter, dated '
+           'notes on individual changes are in <a href="../updates/index.html">updates</a>.</p>',
+           '  <div class="note"><b>Two rules keep these from going stale.</b> An article never '
+           'restates a fact it does not own — it links to the page that does, so when the fact '
+           'changes the article does not start lying. And an article that makes a testable claim '
+           'links to the test, the same way <a href="../compare/index.html">the comparison '
+           'pages</a> do.</div>',
+           '  <div class="artlist">']
+    for a in ARTICLES:
+        out.append(f'    <a class="art" href="{a["slug"]}.html">'
+                   f'<b>{a["title"]}</b>'
+                   f'<span class="art-date">{a["date"]}</span>'
+                   f'<span class="art-sum">{a["summary"]}</span>'
+                   + (f'<span class="chips">{_chips(a["tags"])}</span>' if a['tags'] else '')
+                   + '</a>')
+    out.append('  </div>')
+    out.append('</main>')
+    return '\n'.join(out)
+
+
+def article_body(a):
+    ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
+    return ('<main class="doc">\n'
+            f'  <p class="crumb"><a href="../index.html">Home</a> / '
+            f'<a href="index.html">Articles</a> / {a["title"]}</p>\n'
+            f'  <h1>{a["title"]}</h1>\n'
+            f'  <p class="small dim">{a["date"]}{ver}'
+            + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
+            f'  <p class="lead">{a["summary"]}</p>\n'
+            + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
+            + '\n  <p class="small dim" style="margin-top:2rem">'
+              '<a href="index.html">&larr; All articles</a></p>\n'
+            '</main>')
 
 
 PAGES = load_pages()
@@ -871,4 +1034,21 @@ print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
 print('wrote robots.txt (%d bytes)' % len(write_robots()))
 print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))
+
+# The feed and the manifest: derived, never hand-edited — the same rule as the index.
+os.makedirs(os.path.join(ROOT, 'updates'), exist_ok=True)
+with open(os.path.join(ROOT, 'updates', 'feed.xml'), 'w') as f:
+    feed = LOADER.render_feed(UPDATES); f.write(feed)
+print(f'wrote updates/feed.xml ({len(feed)} bytes, {min(len(UPDATES), 20)} items)')
+manifest = json.dumps({
+    'site': 'https://sgit.ai', 'generated': BUILD_DATE, 'site_version': SITE_VERSION,
+    'updates':  [{k: u[k] for k in ('slug', 'title', 'date', 'version', 'tags', 'summary')}
+                 for u in UPDATES],
+    'articles': [{k: a[k] for k in ('slug', 'title', 'date', 'version', 'tags', 'summary')}
+                 for a in ARTICLES],
+}, indent=2, ensure_ascii=False)
+with open(os.path.join(ROOT, 'updates', 'updates.json'), 'w') as f:
+    f.write(manifest)
+print(f'wrote updates/updates.json ({len(manifest)} bytes)')
+print(f'content: {len(UPDATES)} updates, {len(ARTICLES)} articles')
 print('done:', len(PAGES), 'pages —', SITE_VERSION)

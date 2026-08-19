@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seven vaults, one method — sgit.ai</title>
+<meta name="description" content="Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.">
+<link rel="canonical" href="https://sgit.ai/articles/seven-vaults-one-method.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/seven-vaults-one-method.html">
+<meta property="og:title" content="Seven vaults, one method — sgit.ai">
+<meta property="og:description" content="Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="seven-vaults-one-method.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Seven vaults, one method — sgit.ai", "headline": "Seven vaults, one method — sgit.ai", "description": "Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.", "url": "https://sgit.ai/articles/seven-vaults-one-method.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.35</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl here" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Seven vaults, one method</p>
+  <h1>Seven vaults, one method</h1>
+  <p class="small dim">2026-08-19 &middot; <span class="chip">vaults</span><span class="chip">publishing</span><span class="chip">method</span></p>
+  <p class="lead">Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.</p>
+<p>Between 14 and 18 August this site published seven vaults. Each one is a real encrypted vault you can open in a browser from a read key printed on its page: <a href="../demos/vaults/algarve-may-2026/index.html">a photo gallery</a>, <a href="../demos/vaults/field-notes/index.html">field notes</a>, <a href="../demos/vaults/supplement-stack/index.html">a patient-held supplement record</a>, <a href="../demos/vaults/risk-mandate/index.html">a risk register</a>, <a href="../demos/vaults/agentic-browser-isolation/index.html">a browser-isolation risk graph</a>, <a href="../demos/vaults/risk-graph-explorer/index.html">a fact-to-risk explorer</a>, and <a href="../catalogue/index.html">the catalogue that indexes them</a> — itself a vault.</p>
+<p>By the third one it was obvious that we were repeating ourselves badly. By the seventh there was a method, and every rule in it exists because something went wrong first.</p>
+<h2>The rule that matters most</h2>
+<p><b>Classify the credential before it touches anything.</b></p>
+<p>Three of the seven vaults arrived as a <em>vault key</em> described as a read key. A vault key is write access. Publishing one would have handed anybody who read the page the ability to rewrite the vault — and because a vault key is also the address and the encryption root, there is no revocation, no rotation, and no undo.</p>
+<p>They were caught by shape. A read key is 64 hex characters; a vault key is a generated passphrase, which is 24 lowercase alphanumerics. That catch depended on somebody looking, which is not a control. So it became <a href="../demos/vaults/publishing.html">a script</a>:</p>
+<pre class="shell">
+$ python3 admin/build/check_credential.py '&lt;credential&gt;'
+  form      : vault key (legacy passphrase:vault_id)
+  publish?  : NO
+  why       : 24 characters before the colon and not 64 hex, so it is a
+              passphrase — a WRITE credential
+</pre>
+<p>Exit 0 means publishable. Exit 1 means stop. It never echoes what it was given.</p>
+<p>Behind it sits a second line: the release validator scans every tracked file for any key-shaped string and for the actual passphrases, read at build time from a gitignored tier. That tripwire has caught its own author three times — each time writing the prefix in prose, in documentation explaining what a write credential looks like. Which is the point: a rule that only catches other people is not a rule.</p>
+<h2>Derive rather than refuse</h2>
+<p>The interesting part of the vault-key catch is what happens next. A read key is <b>derived one-way</b> from a vault key, so a submission that cannot be published can still become one that can:</p>
+<pre class="shell">
+c = Vault__Crypto()
+pw, vid  = c.parse_vault_key(vault_key)
+read_key = c.derive_keys(pw, vid)['read_key']
+</pre>
+<p>The vault key goes into a gitignored tier that the tripwire then scans for. The derived read key gets published. It is one-way: nobody can turn it back.</p>
+<p>That is the whole shape of the thing this project is about — a capability you can hand over that is <em>strictly less</em> than the one you hold, with the reduction enforced by mathematics rather than by policy. The seven vaults span the range deliberately, from one that requests no permissions at all to one that can write a single folder.</p>
+<h2>Audit with the key you are about to publish</h2>
+<p>Not with the vault key. With <b>exactly the credential a reader will have</b>, across every file.</p>
+<p>This caught a real problem. One vault carried a sealed LLM credential, and a published read key in front of a metered capability is an open tab on somebody else's budget. Rather than reasoning about whether the sealing was sound, we took the published read key and attempted to open the credential with it. AES-GCM refused — <code>InvalidTag</code> — so no budget was exposed. Checked rather than assumed, and recorded either way.</p>
+<p>That rule did not come from us. It came from the sixth vault, <a href="../demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a>, which is the first one here that was <b>public by design</b>: it carries its own <code>PUBLIC.md</code> whose three rules its build enforces, and the third — <em>no metered capability behind a published read key</em> — was not in our guidance. It is now.</p>
+<h2>Capture evidence by driving the real product</h2>
+<p>Every screenshot on a vault page is taken by opening the actual vault in a real browser with the published read key, performing the navigation, and cropping the result. No mock-ups.</p>
+<p>This is slower than it sounds and worth every minute, because it repeatedly disagreed with what we were about to write. The rig grew a <code>appProbe</code> step for exactly that reason — ask the running app what its elements are called instead of guessing and burning a capture run per guess:</p>
+<pre class="shell">
+probe [class*=node] -&gt; 37
+  shapes ["g.cnode.inh","g.cnode","g.cnode.corp"]
+  text   ["R1 An autonomous system operates in the es","R2 Stopping the agent is itself…"]
+</pre>
+<p>The alternative is a page that describes a product as its author remembers it.</p>
+<h2>Describe, show, then admit</h2>
+<p>Every vault page ends with what the vault does <em>not</em> do. Not as a disclaimer at the bottom in small type — as a section with the same weight as the features.</p>
+<p>This is the part that is tempting to skip and never should be. A published vault is an argument that this way of working is sound; an argument that omits its own edges is a brochure. The <a href="../docs/limitations.html">limitations page</a> is the same instinct at site level, and the <a href="../compare/index.html">comparison pages</a> go further still — they include rows where vaults lose.</p>
+<h2>What it cost, and what it bought</h2>
+<p>Seven vaults, roughly four days of work, and the method is now <a href="../demos/vaults/publishing.html">written down as a playbook</a> aimed at another site's agent rather than at us — which was the real test of whether it was a method or just a habit.</p>
+<p>The honest ledger:</p>
+<ul>
+<li><b>Three vault keys caught.</b> None published. Each would have been unrecoverable.</li>
+<li><b>One budget exposure checked and cleared</b>, by attempting the attack rather than reasoning about it.</li>
+<li><b>One upstream rule adopted</b> from a vault that was stricter than our guidance.</li>
+<li><b>Three bugs found by testing rather than assumption</b> on a single page — a malformed selector that silently produced no images at all, escape sequences leaking as literal text, and a page that never loaded the component it depended on. All three would have shipped.</li>
+</ul>
+<p>The last line is the one to keep. Every rule above is short and specific because it was learned by getting something wrong, in public, and writing down what it cost.</p>
+<hr>
+<p><em>The full method, step by step, is on <a href="../demos/vaults/publishing.html">the publishing playbook</a>. The vaults themselves are in <a href="../catalogue/index.html">the catalogue</a>, each with the read key that opens it.</em></p>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.35</a> · <a href="../admin/index.html">engineering</a> · <a href="seven-vaults-one-method.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

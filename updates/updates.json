@@ -1,0 +1,92 @@
+{
+  "site": "https://sgit.ai",
+  "generated": "2026-08-15",
+  "site_version": "v0.2.35",
+  "updates": [
+    {
+      "slug": "verify-the-fix-pack-not-just-the-bug",
+      "title": "Verify the fix pack, not just the bug",
+      "date": "2026-08-18",
+      "version": "v0.2.34",
+      "tags": [
+        "process",
+        "pki",
+        "accuracy"
+      ],
+      "summary": "The documentation gap above arrived as a well built fix pack from the SG/API team: a gap analysis, code verified source material, and a draft of the missing page. The most valuable line in it was its own instruction to check the claims before publishing. Three…"
+    },
+    {
+      "slug": "the-api-reference-we-did-not-have",
+      "title": "The API reference we did not have",
+      "date": "2026-08-18",
+      "version": "v0.2.34",
+      "tags": [
+        "api",
+        "messaging",
+        "docs"
+      ],
+      "summary": "An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier. The diagnosis was uncomfortable and simple: we documented both halves and never wrote the sentence that…"
+    },
+    {
+      "slug": "three-walkthroughs-read-back-as-documents",
+      "title": "Three walkthroughs, read back as documents",
+      "date": "2026-08-17",
+      "version": "v0.2.32",
+      "tags": [
+        "vaults",
+        "video",
+        "risk-graph-explorer"
+      ],
+      "summary": "A video is invisible to a search engine, to llms full.txt , and to any agent reading this site as documentation. It is also full of \"this guy here\" and \"look at this\" — pointing that a transcript cannot resolve. So the Risk Graph Explorer walkthroughs now carr…"
+    },
+    {
+      "slug": "printing-stopped-costing-every-reader",
+      "title": "Printing stopped costing every reader",
+      "date": "2026-08-17",
+      "version": "v0.2.31",
+      "tags": [
+        "print",
+        "performance"
+      ],
+      "summary": "Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted across the middle of page 2 , translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap. The fir…"
+    },
+    {
+      "slug": "green-does-not-mean-live",
+      "title": "Green does not mean live",
+      "date": "2026-08-17",
+      "version": "v0.2.33",
+      "tags": [
+        "ci",
+        "deploy",
+        "process"
+      ],
+      "summary": "Two consecutive releases pushed cleanly, reported success, and never reached the site. A human noticed on a phone, forty minutes later, because the version badge still showed the old number. The release script verified that both remotes were in sync — and they…"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "seven-vaults-one-method",
+      "title": "Seven vaults, one method",
+      "date": "2026-08-19",
+      "version": "",
+      "tags": [
+        "vaults",
+        "publishing",
+        "method"
+      ],
+      "summary": "Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access."
+    },
+    {
+      "slug": "green-does-not-mean-live",
+      "title": "Green does not mean live",
+      "date": "2026-08-17",
+      "version": "v0.2.33",
+      "tags": [
+        "ci",
+        "deploy",
+        "verification"
+      ],
+      "summary": "Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it."
+    }
+  ]
+}

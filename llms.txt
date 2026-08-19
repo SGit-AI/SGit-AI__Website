@@ -141,6 +141,14 @@ Quick answers (so you do not need a second request for the common questions):
 ## Cross-team briefs
 - [Cross-team briefs](/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 
+## Updates (dated posts: what changed, one entry per story)
+- [Updates](/updates/index.md): What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
+
+## Articles (longer pieces that argue across pages, with the evidence linked)
+- [Articles](/articles/index.md): Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them.
+- [Seven vaults, one method](/articles/seven-vaults-one-method.md): Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.
+- [Green does not mean live](/articles/green-does-not-mean-live.md): Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
+
 ## Optional
 - [sgit](/index.md): sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
 - [Security model](/security/index.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>sgit.ai — updates</title>
+    <link>https://sgit.ai/updates/index.html</link>
+    <description>What changed on sgit and on this site, as it happens.</description>
+    <item>
+      <title>Verify the fix pack, not just the bug</title>
+      <link>https://sgit.ai/updates/index.html#verify-the-fix-pack-not-just-the-bug</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#verify-the-fix-pack-not-just-the-bug</guid>
+      <pubDate>2026-08-18</pubDate>
+      <description>The documentation gap above arrived as a well built fix pack from the SG/API team: a gap analysis, code verified source material, and a draft of the missing page. The most valuable line in it was its own instruction to check the claims before publishing. Three…</description>
+    </item>
+    <item>
+      <title>The API reference we did not have</title>
+      <link>https://sgit.ai/updates/index.html#the-api-reference-we-did-not-have</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-api-reference-we-did-not-have</guid>
+      <pubDate>2026-08-18</pubDate>
+      <description>An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier. The diagnosis was uncomfortable and simple: we documented both halves and never wrote the sentence that…</description>
+    </item>
+    <item>
+      <title>Three walkthroughs, read back as documents</title>
+      <link>https://sgit.ai/updates/index.html#three-walkthroughs-read-back-as-documents</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#three-walkthroughs-read-back-as-documents</guid>
+      <pubDate>2026-08-17</pubDate>
+      <description>A video is invisible to a search engine, to llms full.txt , and to any agent reading this site as documentation. It is also full of &quot;this guy here&quot; and &quot;look at this&quot; — pointing that a transcript cannot resolve. So the Risk Graph Explorer walkthroughs now carr…</description>
+    </item>
+    <item>
+      <title>Printing stopped costing every reader</title>
+      <link>https://sgit.ai/updates/index.html#printing-stopped-costing-every-reader</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#printing-stopped-costing-every-reader</guid>
+      <pubDate>2026-08-17</pubDate>
+      <description>Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted across the middle of page 2 , translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap. The fir…</description>
+    </item>
+    <item>
+      <title>Green does not mean live</title>
+      <link>https://sgit.ai/updates/index.html#green-does-not-mean-live</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#green-does-not-mean-live</guid>
+      <pubDate>2026-08-17</pubDate>
+      <description>Two consecutive releases pushed cleanly, reported success, and never reached the site. A human noticed on a phone, forty minutes later, because the version badge still showed the old number. The release script verified that both remotes were in sync — and they…</description>
+    </item>
+  </channel>
+</rss>
