@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Keys, signatures and encrypting to someone else — sgit.ai</title>
+<meta name="description" content="The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.">
+<link rel="canonical" href="https://sgit.ai/docs/pki.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/pki.html">
+<meta property="og:title" content="Keys, signatures and encrypting to someone else — sgit.ai">
+<meta property="og:description" content="The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="pki.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Keys, signatures and encrypting to someone else — sgit.ai", "headline": "Keys, signatures and encrypting to someone else — sgit.ai", "description": "The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.", "url": "https://sgit.ai/docs/pki.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.34</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
+  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl" href="../catalogue/index.html">Catalogue</a>
+  <a class="nl" href="../demos/vaults/index.html">Vaults</a>
+  <a class="nl" href="../compare/index.html">Compare</a>
+  <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
+  <a class="nl here" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../api/index.html">API</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / PKI</p>
+  <h1>Keys, signatures and encrypting to someone else</h1>
+  <p class="lead">The vault key is symmetric and opens the whole vault. A keypair does the two things it cannot: prove <em>who</em> wrote something, and encrypt to somebody who holds no vault key at all. This page is the lifecycle, run end to end on the shipped CLI.</p>
+
+  <div class="note"><b>Everything below was executed, not recalled.</b> Every command, every output shape and every construction on this page came from running <code>sgit pki</code> on <b>v0.15.0</b> in a throwaway home directory. Where the behaviour differs from what you might expect — and in two places it does — the page says so.</div>
+
+  <h2 id="constructions">What sgit actually generates</h2>
+  <p><code>sgit pki keygen</code> creates <b>two</b> pairs at once, and prints two fingerprints:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Purpose</th><th>Construction</th><th>Identifier</th></tr>
+    <tr><td>Encryption</td><td><b>RSA-OAEP, 4096-bit</b></td><td><code>fingerprint</code></td></tr>
+    <tr><td>Signing</td><td><b>ECDSA P-256</b></td><td><code>signing_fingerprint</code></td></tr>
+  </table></div>
+  <p>Encryption is <b>hybrid</b>, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault — the keypair only changes how the content key gets to the recipient.</p>
+  <p class="small dim">Note for anyone integrating against a spec rather than the binary: this is <b>RSA-OAEP and ECDSA</b>, not X25519/Ed25519. Draft material describing an X25519 sealing layer describes a design, not what v0.15.0 ships.</p>
+
+  <h2 id="lifecycle">The lifecycle</h2>
+
+  <h3>1 · Generate</h3>
+  <pre class="shell">$ sgit pki keygen --label "My Vault Identity"
+Enter passphrase to protect private keys:
+
+Generating RSA-4096 encryption key... done
+
+Key pair created:
+  Label:                My Vault Identity
+  Encryption:           RSA-OAEP 4096-bit
+  Signing:              ECDSA P-256
+  Fingerprint:          sha256:a4615402a0bc23ac
+  Signing fingerprint:  sha256:69d9b4835ccf790c</pre>
+  <p><b>Keygen prompts for a passphrase</b> and will not proceed without one — private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an <code>EOFError</code> rather than silently generating an unprotected key, which is the right failure.</p>
+  <p>RSA-4096 generation is not instant. Expect a pause.</p>
+
+  <h3>2 · Publish the public half</h3>
+  <pre class="shell">$ sgit pki list
+  sha256:a4615402a0bc23ac  My Vault Identity  (RSA-OAEP 4096)
+
+$ sgit pki export sha256:a4615402a0bc23ac > my-identity.json</pre>
+  <p><b>Export produces a JSON bundle, not a PEM file.</b> It carries both public keys, both fingerprints and the label:</p>
+  <pre class="shell">{
+  "v": 1,
+  "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkq…",
+  "sign":    "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQ…",
+  "label":   "My Vault Identity",
+  "fingerprint":         "sha256:a4615402a0bc23ac",
+  "signing_fingerprint": "sha256:69d9b4835ccf790c"
+}</pre>
+  <p>The bundle contains no private material. Publish it, mail it, commit it, put it on your website.</p>
+
+  <h3>3 · Import someone else’s</h3>
+  <pre class="shell">$ sgit pki import their-identity.json
+Imported contact: Their Label
+  Fingerprint: sha256:…
+
+$ sgit pki contacts
+  sha256:…  Their Label</pre>
+
+  <h3>4 · Encrypt to them, and decrypt what they send you</h3>
+  <pre class="shell">$ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
+Encrypted to message.txt.enc
+
+$ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
+Enter passphrase:
+Decrypted to message.txt</pre>
+  <p>Round trip verified. Two argument details that will bite you once each: <code>encrypt</code> takes <code>--recipient</code> (a contact’s fingerprint) and an optional <code>--fingerprint</code> for <em>your</em> signing key; <code>decrypt</code> requires <code>--fingerprint</code> — it will not guess which of your keys to try.</p>
+
+  <h3>5 · Sign and verify</h3>
+  <pre class="shell">$ sgit pki sign report.pdf --fingerprint sha256:69d9b4835ccf790c
+$ sgit pki verify report.pdf report.pdf.sig</pre>
+  <p>Detached signatures, so the signed file is unchanged. Signing uses the <em>signing</em> fingerprint, which is the second one keygen printed.</p>
+
+  <h2 id="envelope">The envelope on the wire</h2>
+  <p>An encrypted file is base64 over a small JSON object — worth knowing if you are writing an interoperable client:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Field</th><th>Contents</th><th>Observed size</th></tr>
+    <tr><td><code>v</code></td><td>Envelope version — <code>2</code> on v0.15.0</td><td>—</td></tr>
+    <tr><td><code>w</code></td><td>The AES content key, wrapped with RSA-OAEP to the recipient</td><td>512 bytes (4096-bit)</td></tr>
+    <tr><td><code>i</code></td><td>AES-GCM IV</td><td>12 bytes</td></tr>
+    <tr><td><code>c</code></td><td>Ciphertext with its GCM tag</td><td>plaintext + 16</td></tr>
+  </table></div>
+  <p>A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.</p>
+
+  <h2 id="where">Where public keys live in a vault</h2>
+  <p>Vaults carry public PKI keys as immutable objects at <code>bare/keys/key-rnd-imm-*</code>, alongside the content store at <code>bare/data/obj-cas-imm-*</code>. They are public by construction, so nothing there needs protecting — which is exactly why a lane addressed by a public key can be written to by a stranger.</p>
+
+  <h2 id="messaging">What this is for</h2>
+  <p>Signing and encrypting files is useful on its own. The larger use is <a href="vault-messaging.html"><b>vault-to-vault messaging</b></a>: your public key becomes an address a stranger can write to, and your private key is the only thing that can read what arrives. That page composes this one with <a href="../api/append-lanes.html">append lanes</a>.</p>
+
+  <h2 id="limits">What this does not do yet</h2>
+  <ul>
+    <li><b>No key revocation or rotation workflow.</b> There is no CRL, no expiry, no <code>sgit pki revoke</code>. If a private key is compromised, you generate a new pair and redistribute the bundle out of band.</li>
+    <li><b>No web of trust and no directory.</b> Fingerprint verification is your problem — compare out of band, exactly as with SSH host keys.</li>
+    <li><b>Fingerprints carry a <code>sha256:</code> prefix.</b> That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the <a href="vault-messaging.html#addressing">addressing note</a> — it is a live source of confusion.</li>
+    <li><b>Signing and encryption are separate keys.</b> Passing the wrong fingerprint to the wrong verb fails; it does not fall back.</li>
+  </ul>
+  <p>Honest edges belong on <a href="limitations.html">the limitations page</a> too, and these are listed there.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.34</a> · <a href="../admin/index.html">engineering</a> · <a href="pki.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

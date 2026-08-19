@@ -1,0 +1,59 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Append lanes</p>
+  <h1>Append lanes</h1>
+  <p class="lead">A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> and behind <a href="../vault/sg-bridge.html"><code>sg.append</code></a> in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.</p>
+
+  <div class="note"><b>Naming.</b> This API was called <b>inbox</b> before v0.32.7. Every <code>/api/vault/inbox/*</code> URL is gone, and <code>purge</code> takes <code>folder:"pending"</code> or <code>"processed"</code> — the old <code>"inbox"</code> value returns <b>400</b>. If you are reading older material, translate.</div>
+
+  <h2 id="endpoints">The six endpoints</h2>
+  <p>All <b>POST</b>, all under <code>/api/vault/append/</code>.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Path</th><th>Gate</th><th>Does</th></tr>
+    <tr><td><code>configure/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Registers <code>append_anchors</code> — hashes of accepted senders — and <code>enum_key_hash</code></td></tr>
+    <tr><td><code>write/{vault_id}</code></td><td><code>append_token</code> <b>in the body</b></td><td>Appends a payload. <b>Account-less</b>: no access token required</td></tr>
+    <tr><td><code>list/{vault_id}</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>Paginated listing, optionally with inline content</td></tr>
+    <tr><td><code>fetch/{vault_id}</code></td><td>enum key</td><td>Fetch specific file IDs, batched</td></tr>
+    <tr><td><code>mark-processed/{vault_id}</code></td><td>enum key</td><td>Moves pending → processed. Idempotent</td></tr>
+    <tr><td><code>purge/{vault_id}</code></td><td>write key</td><td>Deletes. <code>folder: "pending" | "processed"</code></td></tr>
+  </table></div>
+
+  <h2 id="separation">Why the gates are split this way</h2>
+  <p>Four capabilities, and the split is the whole design:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Capability</th><th>Holder</th><th>Can</th><th>Cannot</th></tr>
+    <tr><td><code>append_token</code></td><td>the sender</td><td>write</td><td>list, fetch, read anything</td></tr>
+    <tr><td><code>enum_key</code></td><td>the vault owner</td><td>list, fetch, mark-processed</td><td>write, purge</td></tr>
+    <tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td>—</td></tr>
+    <tr><td>private key</td><td>the vault owner</td><td><b>decrypt</b></td><td><em>never sent to the server</em></td></tr>
+  </table></div>
+  <p>A sender can put something into your vault and learn nothing at all — not the contents, not the volume, not whether anyone else writes there. The server stores <code>SHA-256</code> of the first three capabilities and compares hashes; the fourth it never sees.</p>
+
+  <h2 id="contracts">Four contracts worth relying on</h2>
+  <ul>
+    <li><b>The write response is blind.</b> <code>/write</code> returns exactly <code>{"ok": true}</code> — no file ID, no count, no metadata. This is a security property, not an oversight: a returned ID would leak lane state to a party who is only allowed to write.</li>
+    <li><b>Filenames are server-assigned</b> as <code>{epoch_ms:013d}_{24-hex}.enc</code>. Being chronologically sortable is what makes cursor pagination stable — pass the last file ID you saw as <code>after_file_id</code>.</li>
+    <li><b>Metadata-only listing is free.</b> <code>include_content: false</code> reads <b>zero</b> payloads. Poll with it, then fetch on demand; polling with content is the common way to hit the 3 MB ceiling for no reason.</li>
+    <li><b>mark-processed is idempotent.</b> An already-moved file comes back in <code>missing</code> rather than as an error, so retrying a batch after a timeout is safe.</li>
+  </ul>
+
+  <h2 id="senders">Several senders on one vault</h2>
+  <p>Register several <code>append_anchors</code> and each sender writes into their own lane, distinguished by their token. A listing can be scoped to one lane, so one correspondent flooding you does not bury another — and revoking one sender is removing one anchor, with no effect on the rest.</p>
+
+  <h2 id="limits">Limits and codes</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Limit</th><th>Value</th><th>On breach</th></tr>
+    <tr><td>Payload per write</td><td>5 MB</td><td>413</td></tr>
+    <tr><td>Pending files per token</td><td>1000</td><td>507</td></tr>
+    <tr><td>File IDs per batch</td><td>100</td><td>400</td></tr>
+    <tr><td>Inline content when listing</td><td>3 MB cumulative</td><td>413</td></tr>
+    <tr><td>Page size</td><td>50 default, 200 max</td><td>clamped silently</td></tr>
+  </table></div>
+  <p>The <code>append_token</code> pattern is <code>^[0-9a-f]{16,128}$</code> — hex only. A prefixed token returns <b>400</b>, not 403; see <a href="errors.html">errors</a> for why that distinction saves time.</p>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="../docs/vault-messaging.html">Vault messaging</a> — this API composed with PKI into a worked example</li>
+    <li><a href="../vault/sg-bridge.html"><code>sg.append</code></a> — the same six operations from a vault app</li>
+    <li><a href="errors.html">Errors and limits</a></li>
+  </ul>
+</main>

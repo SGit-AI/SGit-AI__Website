@@ -2,7 +2,7 @@
 
 > sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
 
-*Source: <https://sgit.ai/docs/two-branch-model.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/two-branch-model.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

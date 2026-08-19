@@ -2,7 +2,7 @@
 
 > A deep walk through each view of the risk graph explorer — the estate, context, role risk map, risk chains, the register, acceptance and what happens next — with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs.
 
-*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/views/index.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/views/index.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

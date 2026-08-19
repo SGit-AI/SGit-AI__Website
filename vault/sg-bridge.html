@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.33</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.34</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -31,6 +31,7 @@
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
   <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../api/index.html">API</a>
   <a class="nl here" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
   <a class="nl" href="../skills/index.html">Skills</a>
@@ -56,7 +57,7 @@
     <tr><td><code>sg.ui</code></td><td>Host toasts (<code>message</code>), quick-look <code>preview</code> (incl. PDFs — in-frame PDF rendering is sandbox-blocked), <code>requestPermission</code></td><td>no</td></tr>
     <tr><td><code>sg.state</code></td><td>Device-local prefs (64&nbsp;KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit")</td><td>no</td></tr>
     <tr><td><code>sg.llm</code></td><td><code>available</code> / <code>models</code> / <code>chat</code> (streaming, cancel, image parts) / <code>usage</code> / voice <code>listen</code> — the vault's LLM key stays in the host; your frame never sees it</td><td><code>llm.chat</code> / <code>llm.listen</code> / …</td></tr>
-    <tr><td><code>sg.append</code></td><td>Append-only transport (write verb is <code>write</code>): <code>configure</code>, <code>write</code>, <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code>. Lives outside the commit tree</td><td><code>append.*</code></td></tr>
+    <tr><td><code>sg.append</code></td><td><b>Append lanes — the vault-to-vault message transport.</b> <code>configure</code>, <code>write</code>, <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code>. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: <a href="../docs/vault-messaging.html">sending messages between vaults</a></td><td><code>append.*</code></td></tr>
     <tr><td><code>sg.on</code> / <code>sg.off</code></td><td>Host events pushed to the app (e.g. <code>append.new-messages</code> on tab focus — the kernel checks; your app does not poll)</td><td><code>host_events</code> allowlist (top-level key)</td></tr>
     <tr><td><code>sg.app</code></td><td>Read-only context: <code>writable</code>, <code>selfPath</code>, <code>vaultName</code>, <code>vaultId</code>, <code>context</code></td><td>no</td></tr>
   </table></div>
@@ -108,7 +109,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.33</a> · <a href="../admin/index.html">engineering</a> · <a href="sg-bridge.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.34</a> · <a href="../admin/index.html">engineering</a> · <a href="sg-bridge.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -147,7 +148,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.33';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -1,0 +1,35 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Authentication</p>
+  <h1>Authentication</h1>
+  <p class="lead">Six headers exist. Which apply depends on the endpoint and on how the server is deployed. None of them is a password, and none of them is stored: the server keeps <code>SHA-256</code> hashes and compares.</p>
+
+  <h2 id="headers">The headers</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Header</th><th>What it gates</th></tr>
+    <tr><td><code>x-sgraph-access-token</code></td><td>The SGraph account or deployment. In a <b>single-key self-hosted deployment</b> this gates <em>every</em> route, including reads</td></tr>
+    <tr><td><code>x-sgraph-vault-write-key</code></td><td>Vault write capability: writes, deletes, destroy, and append <code>configure</code> / <code>purge</code></td></tr>
+    <tr><td><code>x-sgraph-vault-enum-key</code></td><td>Append lane enumeration: <code>list</code>, <code>fetch</code>, <code>mark-processed</code></td></tr>
+    <tr><td><code>x-vault-read-key</code></td><td>Read key, for public-vault routing</td></tr>
+    <tr><td><code>x-vault-public</code></td><td>Public-vault routing flag</td></tr>
+    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td>Transfer deletion — SG/Send transfers, not vaults</td></tr>
+  </table></div>
+  <p>One capability is <b>not</b> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate — see <a href="append-lanes.html">append lanes</a>.</p>
+
+  <h2 id="model">The hash-comparison model</h2>
+  <p>The server never stores a capability key. It stores <code>SHA-256(key)</code> and, on each request, hashes what you presented and compares. Two consequences worth designing around:</p>
+  <ul>
+    <li><b>A server compromise yields hashes and ciphertext</b>, not keys and not plaintext. An attacker with the whole database still cannot read a vault.</li>
+    <li><b>There is no recovery path.</b> The server cannot email you your key, because it has never had it. Same property as the vault key itself, for the same reason.</li>
+  </ul>
+
+  <h2 id="reads">Why reads are open by default</h2>
+  <p><code>GET /api/vault/read/{vault_id}/{file_id}</code> requires no authentication on the shared host, which surprises people. It follows from the encryption model rather than being a gap in it: the bytes are AES-256-GCM ciphertext under a key the server has never seen, and the file IDs are HMAC-derived opaque identifiers that reveal no filename. Serving them to an anonymous caller discloses nothing a reader could use.</p>
+  <p>It is also the property that makes a <a href="../demos/vaults/index.html">published read key</a> work at all, and what lets vault content sit behind an ordinary CDN. If that trade is wrong for your deployment, run in single-key mode, where the access token gates reads too.</p>
+  <p class="small dim">What an unauthenticated reader <em>can</em> learn is covered honestly on the <a href="../security/index.html#server-sees">security page</a>: object sizes, timing, and approximate activity volume.</p>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="errors.html">Errors</a> — what a 403 means as against a 400</li>
+    <li><a href="../security/index.html">Security model</a> — the crypto these capabilities sit on</li>
+  </ul>
+</main>

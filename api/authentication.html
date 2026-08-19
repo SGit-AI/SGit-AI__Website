@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>API authentication — sgit.ai</title>
+<meta name="description" content="The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.">
+<link rel="canonical" href="https://sgit.ai/api/authentication.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/api/authentication.html">
+<meta property="og:title" content="API authentication — sgit.ai">
+<meta property="og:description" content="The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="authentication.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "API authentication — sgit.ai", "headline": "API authentication — sgit.ai", "description": "The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.", "url": "https://sgit.ai/api/authentication.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.34</a>
+  <a class="nl" href="../why/index.html">Why</a>
+  <a class="nl" href="../try/index.html">Try</a>
+  <a class="nl" href="../demos/index.html">Demos</a>
+  <a class="nl" href="../catalogue/index.html">Catalogue</a>
+  <a class="nl" href="../demos/vaults/index.html">Vaults</a>
+  <a class="nl" href="../compare/index.html">Compare</a>
+  <a class="nl" href="../use-cases/index.html">Use Cases</a>
+  <a class="nl" href="../case-studies/index.html">Case Studies</a>
+  <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl here" href="../api/index.html">API</a>
+  <a class="nl" href="../vault/index.html">SG/Vault</a>
+  <a class="nl" href="../deploy/index.html">Deploy</a>
+  <a class="nl" href="../skills/index.html">Skills</a>
+  <a class="nl" href="../security/index.html">Security</a>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Authentication</p>
+  <h1>Authentication</h1>
+  <p class="lead">Six headers exist. Which apply depends on the endpoint and on how the server is deployed. None of them is a password, and none of them is stored: the server keeps <code>SHA-256</code> hashes and compares.</p>
+
+  <h2 id="headers">The headers</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Header</th><th>What it gates</th></tr>
+    <tr><td><code>x-sgraph-access-token</code></td><td>The SGraph account or deployment. In a <b>single-key self-hosted deployment</b> this gates <em>every</em> route, including reads</td></tr>
+    <tr><td><code>x-sgraph-vault-write-key</code></td><td>Vault write capability: writes, deletes, destroy, and append <code>configure</code> / <code>purge</code></td></tr>
+    <tr><td><code>x-sgraph-vault-enum-key</code></td><td>Append lane enumeration: <code>list</code>, <code>fetch</code>, <code>mark-processed</code></td></tr>
+    <tr><td><code>x-vault-read-key</code></td><td>Read key, for public-vault routing</td></tr>
+    <tr><td><code>x-vault-public</code></td><td>Public-vault routing flag</td></tr>
+    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td>Transfer deletion — SG/Send transfers, not vaults</td></tr>
+  </table></div>
+  <p>One capability is <b>not</b> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate — see <a href="append-lanes.html">append lanes</a>.</p>
+
+  <h2 id="model">The hash-comparison model</h2>
+  <p>The server never stores a capability key. It stores <code>SHA-256(key)</code> and, on each request, hashes what you presented and compares. Two consequences worth designing around:</p>
+  <ul>
+    <li><b>A server compromise yields hashes and ciphertext</b>, not keys and not plaintext. An attacker with the whole database still cannot read a vault.</li>
+    <li><b>There is no recovery path.</b> The server cannot email you your key, because it has never had it. Same property as the vault key itself, for the same reason.</li>
+  </ul>
+
+  <h2 id="reads">Why reads are open by default</h2>
+  <p><code>GET /api/vault/read/{vault_id}/{file_id}</code> requires no authentication on the shared host, which surprises people. It follows from the encryption model rather than being a gap in it: the bytes are AES-256-GCM ciphertext under a key the server has never seen, and the file IDs are HMAC-derived opaque identifiers that reveal no filename. Serving them to an anonymous caller discloses nothing a reader could use.</p>
+  <p>It is also the property that makes a <a href="../demos/vaults/index.html">published read key</a> work at all, and what lets vault content sit behind an ordinary CDN. If that trade is wrong for your deployment, run in single-key mode, where the access token gates reads too.</p>
+  <p class="small dim">What an unauthenticated reader <em>can</em> learn is covered honestly on the <a href="../security/index.html#server-sees">security page</a>: object sizes, timing, and approximate activity volume.</p>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="errors.html">Errors</a> — what a 403 means as against a 400</li>
+    <li><a href="../security/index.html">Security model</a> — the crypto these capabilities sit on</li>
+  </ul>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.34</a> · <a href="../admin/index.html">engineering</a> · <a href="authentication.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

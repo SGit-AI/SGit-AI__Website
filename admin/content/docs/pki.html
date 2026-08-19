@@ -1,0 +1,98 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / PKI</p>
+  <h1>Keys, signatures and encrypting to someone else</h1>
+  <p class="lead">The vault key is symmetric and opens the whole vault. A keypair does the two things it cannot: prove <em>who</em> wrote something, and encrypt to somebody who holds no vault key at all. This page is the lifecycle, run end to end on the shipped CLI.</p>
+
+  <div class="note"><b>Everything below was executed, not recalled.</b> Every command, every output shape and every construction on this page came from running <code>sgit pki</code> on <b>v0.15.0</b> in a throwaway home directory. Where the behaviour differs from what you might expect — and in two places it does — the page says so.</div>
+
+  <h2 id="constructions">What sgit actually generates</h2>
+  <p><code>sgit pki keygen</code> creates <b>two</b> pairs at once, and prints two fingerprints:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Purpose</th><th>Construction</th><th>Identifier</th></tr>
+    <tr><td>Encryption</td><td><b>RSA-OAEP, 4096-bit</b></td><td><code>fingerprint</code></td></tr>
+    <tr><td>Signing</td><td><b>ECDSA P-256</b></td><td><code>signing_fingerprint</code></td></tr>
+  </table></div>
+  <p>Encryption is <b>hybrid</b>, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault — the keypair only changes how the content key gets to the recipient.</p>
+  <p class="small dim">Note for anyone integrating against a spec rather than the binary: this is <b>RSA-OAEP and ECDSA</b>, not X25519/Ed25519. Draft material describing an X25519 sealing layer describes a design, not what v0.15.0 ships.</p>
+
+  <h2 id="lifecycle">The lifecycle</h2>
+
+  <h3>1 · Generate</h3>
+  <pre class="shell">$ sgit pki keygen --label "My Vault Identity"
+Enter passphrase to protect private keys:
+
+Generating RSA-4096 encryption key... done
+
+Key pair created:
+  Label:                My Vault Identity
+  Encryption:           RSA-OAEP 4096-bit
+  Signing:              ECDSA P-256
+  Fingerprint:          sha256:a4615402a0bc23ac
+  Signing fingerprint:  sha256:69d9b4835ccf790c</pre>
+  <p><b>Keygen prompts for a passphrase</b> and will not proceed without one — private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an <code>EOFError</code> rather than silently generating an unprotected key, which is the right failure.</p>
+  <p>RSA-4096 generation is not instant. Expect a pause.</p>
+
+  <h3>2 · Publish the public half</h3>
+  <pre class="shell">$ sgit pki list
+  sha256:a4615402a0bc23ac  My Vault Identity  (RSA-OAEP 4096)
+
+$ sgit pki export sha256:a4615402a0bc23ac > my-identity.json</pre>
+  <p><b>Export produces a JSON bundle, not a PEM file.</b> It carries both public keys, both fingerprints and the label:</p>
+  <pre class="shell">{
+  "v": 1,
+  "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkq…",
+  "sign":    "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQ…",
+  "label":   "My Vault Identity",
+  "fingerprint":         "sha256:a4615402a0bc23ac",
+  "signing_fingerprint": "sha256:69d9b4835ccf790c"
+}</pre>
+  <p>The bundle contains no private material. Publish it, mail it, commit it, put it on your website.</p>
+
+  <h3>3 · Import someone else’s</h3>
+  <pre class="shell">$ sgit pki import their-identity.json
+Imported contact: Their Label
+  Fingerprint: sha256:…
+
+$ sgit pki contacts
+  sha256:…  Their Label</pre>
+
+  <h3>4 · Encrypt to them, and decrypt what they send you</h3>
+  <pre class="shell">$ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
+Encrypted to message.txt.enc
+
+$ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
+Enter passphrase:
+Decrypted to message.txt</pre>
+  <p>Round trip verified. Two argument details that will bite you once each: <code>encrypt</code> takes <code>--recipient</code> (a contact’s fingerprint) and an optional <code>--fingerprint</code> for <em>your</em> signing key; <code>decrypt</code> requires <code>--fingerprint</code> — it will not guess which of your keys to try.</p>
+
+  <h3>5 · Sign and verify</h3>
+  <pre class="shell">$ sgit pki sign report.pdf --fingerprint sha256:69d9b4835ccf790c
+$ sgit pki verify report.pdf report.pdf.sig</pre>
+  <p>Detached signatures, so the signed file is unchanged. Signing uses the <em>signing</em> fingerprint, which is the second one keygen printed.</p>
+
+  <h2 id="envelope">The envelope on the wire</h2>
+  <p>An encrypted file is base64 over a small JSON object — worth knowing if you are writing an interoperable client:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Field</th><th>Contents</th><th>Observed size</th></tr>
+    <tr><td><code>v</code></td><td>Envelope version — <code>2</code> on v0.15.0</td><td>—</td></tr>
+    <tr><td><code>w</code></td><td>The AES content key, wrapped with RSA-OAEP to the recipient</td><td>512 bytes (4096-bit)</td></tr>
+    <tr><td><code>i</code></td><td>AES-GCM IV</td><td>12 bytes</td></tr>
+    <tr><td><code>c</code></td><td>Ciphertext with its GCM tag</td><td>plaintext + 16</td></tr>
+  </table></div>
+  <p>A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.</p>
+
+  <h2 id="where">Where public keys live in a vault</h2>
+  <p>Vaults carry public PKI keys as immutable objects at <code>bare/keys/key-rnd-imm-*</code>, alongside the content store at <code>bare/data/obj-cas-imm-*</code>. They are public by construction, so nothing there needs protecting — which is exactly why a lane addressed by a public key can be written to by a stranger.</p>
+
+  <h2 id="messaging">What this is for</h2>
+  <p>Signing and encrypting files is useful on its own. The larger use is <a href="vault-messaging.html"><b>vault-to-vault messaging</b></a>: your public key becomes an address a stranger can write to, and your private key is the only thing that can read what arrives. That page composes this one with <a href="../api/append-lanes.html">append lanes</a>.</p>
+
+  <h2 id="limits">What this does not do yet</h2>
+  <ul>
+    <li><b>No key revocation or rotation workflow.</b> There is no CRL, no expiry, no <code>sgit pki revoke</code>. If a private key is compromised, you generate a new pair and redistribute the bundle out of band.</li>
+    <li><b>No web of trust and no directory.</b> Fingerprint verification is your problem — compare out of band, exactly as with SSH host keys.</li>
+    <li><b>Fingerprints carry a <code>sha256:</code> prefix.</b> That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the <a href="vault-messaging.html#addressing">addressing note</a> — it is a live source of confusion.</li>
+    <li><b>Signing and encryption are separate keys.</b> Passing the wrong fingerprint to the wrong verb fails; it does not fall back.</li>
+  </ul>
+  <p>Honest edges belong on <a href="limitations.html">the limitations page</a> too, and these are listed there.</p>
+</main>

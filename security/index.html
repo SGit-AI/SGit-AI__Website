@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.33</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.34</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -31,6 +31,7 @@
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
   <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../api/index.html">API</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
   <a class="nl" href="../skills/index.html">Skills</a>
@@ -63,6 +64,20 @@
   </table></div>
   <p>One precision note, because precision beats marketing: the key hierarchy derives a <em>structure key</em> (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key — activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.</p>
 
+  <h2 id="pki">Two key systems, and where each applies</h2>
+  <p>Everything above describes the <b>symmetric</b> half, and it is the half that matters most: the vault key is symmetric, it is the root of the storage hierarchy, and every object in a vault is encrypted under a key derived one-way from it. If you only ever use sgit to sync your own files across your own machines, that is the whole system.</p>
+  <p>There is a second half. Layered on top is a <b>public-key</b> system, for the two things a shared symmetric key cannot express: <b>proving who wrote something</b>, and <b>encrypting to somebody who does not hold your vault key</b>. It is what makes <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> possible — a sender can encrypt to your published public key and drop the result into your vault without ever being able to read it.</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Vault key (symmetric)</th><th>Keypair (asymmetric)</th></tr>
+    <tr><td>What it is</td><td>One generated string: address, credential and encryption root</td><td>An encryption pair and a signing pair, generated locally</td></tr>
+    <tr><td>What it protects</td><td>Every object in the vault</td><td>Individual files addressed to a recipient, and signatures over them</td></tr>
+    <tr><td>Who holds it</td><td>Everyone who can open the vault</td><td>Private half: you alone. Public half: publish it freely</td></tr>
+    <tr><td>Answers</td><td>“Can this person open the vault?”</td><td>“Who wrote this?” and “Can only <em>they</em> read it?”</td></tr>
+    <tr><td>Where it lives on the server</td><td>Never — the server holds ciphertext only</td><td>Public keys at <code>bare/keys/key-rnd-imm-*</code>. Private keys never leave your machine</td></tr>
+  </table></div>
+  <p>The constructions, read out of <code>sgit pki keygen</code> on v0.15.0 rather than recalled: <b>RSA-OAEP 4096-bit</b> for encryption and <b>ECDSA P-256</b> for signing, with a hybrid envelope — RSA-OAEP wraps a per-message AES-256-GCM content key. Private keys are passphrase-protected at rest. The full lifecycle is on <a href="../docs/pki.html">the PKI page</a>.</p>
+  <div class="note"><b>This section is new, and its absence had a cost.</b> Until now this page described the symmetric design and simply did not mention asymmetric cryptography — it never claimed PKI was absent, but it never said it was present either. An agent researching how to send a message between vaults read this page, concluded there was no public-key layer, and stopped looking. The capability had shipped; the sentence that would have pointed at it had not been written. Silence on a page like this one reads as denial.</div>
+
   <h2 id="keys">Key strength</h2>
   <p>Vault keys are generated, not chosen. A generated passphrase is 24 characters over a 36-symbol alphabet — about <b>124 bits of entropy</b> (36<sup>24</sup> ≈ 2<sup>124</sup>), far beyond brute-force reach — before key derivation adds 600,000 rounds of PBKDF2-SHA256 on top. The key never travels to the server: it is the address, the credential, and the root of the encryption hierarchy in one string, and it stays on your machines.</p>
   <div class="warnbox"><b>Consequence you should want:</b> there is no password reset. If you lose the vault key, nobody — including us — can recover the contents. Keep it in a password manager, and use <code>sgit vault backup</code> for belt-and-braces.</div>
@@ -90,7 +105,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.33</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.34</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -129,7 +144,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.33';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

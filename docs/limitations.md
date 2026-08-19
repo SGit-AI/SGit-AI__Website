@@ -2,7 +2,7 @@
 
 > The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 
-*Source: <https://sgit.ai/docs/limitations.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/limitations.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,6 +27,17 @@ Every tool earns trust faster by stating its edges. Here are sgit's, plainly.
 - **Merge drivers** are whole-file three-way. Structured merges (JSON-aware, union) are designed but not yet shipped.
 - **Bare clones** (`clone --bare`) are incomplete.
 - **The full CLI reference** on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).
+
+## What PKI does not do yet
+
+[Keypairs](pki.md) ship and work — keygen, export, import, sign, verify, encrypt, decrypt all round-trip on v0.15.0. The layer around them is thinner than the primitives:
+
+- **No revocation, expiry or rotation workflow.** No CRL, no `sgit pki revoke`. A compromised private key means generating a new pair and redistributing the bundle out of band, by hand.
+- **No directory and no web of trust.** Verifying that a fingerprint belongs to who you think is entirely your problem — compare out of band, as with SSH host keys.
+- **Lane addressing is not wired end to end.** The intended model is `append_token = H(public key)`, so a sender derives your [message lane](vault-messaging.md) address from the key you published. The server side ships; no shipped command emits that token, so today you agree one out of band. Details and the interim recipe are in the [addressing note](vault-messaging.md#addressing).
+- **Only the first mode is built.** Signing and encrypting files, plus the append transport. The richer modes — group addressing, key discovery, delegated capability — are designs, not code.
+
+Said plainly because the alternative is worse: an agent that reads an over-claiming page will build on a step that does not exist, and only find out at runtime.
 
 If one of these gaps blocks you, say so on [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — real usage reports move the roadmap.
 

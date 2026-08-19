@@ -1,0 +1,48 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Vault objects</p>
+  <h1>Vault objects</h1>
+  <p class="lead">The pointer store: the ciphertext objects a vault is made of, addressed by opaque identifiers the server cannot interpret. This is what <code>sgit push</code> and <code>sgit pull</code> are doing underneath.</p>
+
+  <h2 id="endpoints">Endpoints</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Method</th><th>Path</th><th>Auth</th><th>Notes</th></tr>
+    <tr><td>PUT</td><td><code>/api/vault/write/{vault_id}/{file_id}</code></td><td>access token + write key</td><td>Body is raw ciphertext</td></tr>
+    <tr><td>GET</td><td><code>/api/vault/read/{vault_id}/{file_id}</code></td><td>none</td><td>Raw bytes. <a href="authentication.html#reads">Reads are public by default</a> on the shared host</td></tr>
+    <tr><td>GET</td><td><code>/api/vault/read-base64/{vault_id}/{file_id}</code></td><td>none</td><td>Base64 in JSON — MCP-safe. Around 3.75 MB ceiling</td></tr>
+    <tr><td>DELETE</td><td><code>/api/vault/delete/{vault_id}/{file_id}</code></td><td>access token + write key</td><td></td></tr>
+    <tr><td>POST</td><td><code>/api/vault/batch/{vault_id}</code></td><td>per operation</td><td>Mixed reads and writes, <b>max 100</b> per request</td></tr>
+    <tr><td>POST</td><td><code>/api/vault/list/{vault_id}</code></td><td>—</td><td></td></tr>
+    <tr><td>GET</td><td><code>/api/vault/health/{vault_id}</code></td><td>—</td><td></td></tr>
+    <tr><td>GET</td><td><code>/api/vault/public-info/{vault_id}</code></td><td>—</td><td></td></tr>
+    <tr><td>DELETE</td><td><code>/api/vault/destroy/{vault_id}</code></td><td>write key</td><td>Body <code>{vault_id, purge?}</code>. Without <code>purge</code> it writes a tombstone that blocks reuse of the ID</td></tr>
+  </table></div>
+  <p>Large blobs go through presigned URLs rather than the request body: <code>POST /api/vault/presigned/initiate|complete|cancel/{vault_id}</code> and <code>GET /api/vault/presigned/read-url/{vault_id}/{file_id}</code>.</p>
+  <p class="small dim"><code>GET /api/vault/zip/{vault_id}</code> is registered in the route table but marked PROPOSED upstream. It is deliberately <a href="index.html#unresolved">not documented</a> until that is reconciled.</p>
+
+  <h2 id="tombstone">Destroy, and why the tombstone matters</h2>
+  <p><code>destroy</code> without <code>purge:true</code> leaves a tombstone that prevents the vault ID being registered again. That is a security property, not bookkeeping: vault IDs are short and a released ID is a squattable namespace. If somebody still holds a read key pointing at that ID, a new vault claiming it would be answering reads meant for the old one. <code>purge:true</code> skips the tombstone and frees the ID — use it only when you are sure no credential survives.</p>
+
+  <h2 id="caching">The caching contract</h2>
+  <p>Anyone writing a client needs this, and getting it wrong produces a bug that looks like corruption:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Object</th><th>Response header</th></tr>
+    <tr><td>File ID containing <code>-imm-</code> — immutable, content-addressed</td><td><code>Cache-Control: public, max-age=31536000, immutable</code></td></tr>
+    <tr><td>Refs and indexes — mutable</td><td><code>Cache-Control: no-store</code></td></tr>
+  </table></div>
+  <p>Immutable objects are content-addressed, so their bytes can never change and a year-long cache is safe — which is what lets a vault sit behind a CDN. Mutable refs must never be cached: a stale ref renders a previous commit’s tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees the wrong version of the vault.</p>
+
+  <h2 id="layout">Storage layout</h2>
+  <pre class="shell">bare/data/obj-cas-imm-{hex}     blobs, trees, commits — content-addressed, immutable
+bare/keys/key-rnd-imm-{hex}     PKI public keys — immutable
+bare/refs/                      branch refs — mutable
+bare/indexes/                   branch index — mutable
+bare/append/                    append lanes — managed, outside the commit DAG</pre>
+  <p>The prefixes are load-bearing. <code>obj-cas-imm-</code> is SHA-256 over the <em>ciphertext</em>, which gives deduplication without the server knowing any plaintext, and makes the caching rule above derivable from the ID alone. Append lanes sit outside the commit DAG on purpose — a message arriving does not rewrite your history.</p>
+  <p class="small dim">This site is itself served from a vault, so these are the objects behind the page you are reading. The <a href="../case-studies/live-vault-docs.html">live-vault case study</a> shows the fetch sequence.</p>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="append-lanes.html">Append lanes</a> — the write-only channel that does not touch the commit tree</li>
+    <li><a href="errors.html">Errors and limits</a></li>
+  </ul>
+</main>
