@@ -21,22 +21,49 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../../admin/versions.html" title="Site release history">v0.2.34</a>
-  <a class="nl" href="../../../../why/index.html">Why</a>
-  <a class="nl" href="../../../../try/index.html">Try</a>
-  <a class="nl" href="../../../../demos/index.html">Demos</a>
-  <a class="nl" href="../../../../catalogue/index.html">Catalogue</a>
-  <a class="nl here" href="../../../../demos/vaults/index.html">Vaults</a>
-  <a class="nl" href="../../../../compare/index.html">Compare</a>
-  <a class="nl" href="../../../../use-cases/index.html">Use Cases</a>
-  <a class="nl" href="../../../../case-studies/index.html">Case Studies</a>
-  <a class="nl" href="../../../../docs/index.html">Docs</a>
-  <a class="nl" href="../../../../api/index.html">API</a>
-  <a class="nl" href="../../../../vault/index.html">SG/Vault</a>
-  <a class="nl" href="../../../../deploy/index.html">Deploy</a>
-  <a class="nl" href="../../../../skills/index.html">Skills</a>
-  <a class="nl" href="../../../../security/index.html">Security</a>
-  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">★ GitHub</a>
+  <a class="ver" href="../../../../admin/versions.html" title="Site release history">v0.2.35</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
 <main class="doc" style="max-width:var(--wide)">
@@ -155,7 +182,7 @@
 </main>
 <script>
 (function () {
-  fetch('../../../../assets/shots.js?v=v0.2.34')
+  fetch('../../../../assets/shots.js?v=v0.2.35')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[views] shots component failed to load:', e); });
@@ -167,7 +194,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../../../admin/versions.html">v0.2.34</a> · <a href="../../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../../admin/versions.html">v0.2.35</a> · <a href="../../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -206,7 +233,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Updates — sgit.ai</title>
+<meta name="description" content="What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.">
+<link rel="canonical" href="https://sgit.ai/updates/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/updates/index.html">
+<meta property="og:title" content="Updates — sgit.ai">
+<meta property="og:description" content="What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Updates — sgit.ai", "headline": "Updates — sgit.ai", "description": "What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.", "url": "https://sgit.ai/updates/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.35</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../updates/index.html">Updates</a>
+      <a class="sl" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <h1>Updates</h1>
+  <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
+  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-08-18</h2>
+  <article class="upd" id="verify-the-fix-pack-not-just-the-bug">
+    <h3><a href="#verify-the-fix-pack-not-just-the-bug">Verify the fix pack, not just the bug</a> <a class="upd-ver" href="../admin/versions.html">v0.2.34</a></h3>
+    <p class="chips"><span class="chip">process</span><span class="chip">pki</span><span class="chip">accuracy</span></p>
+<p>The documentation gap above arrived as a well-built fix pack from the SG/API team: a gap analysis, code-verified source material, and a draft of the missing page. The most valuable line in it was its own instruction to check the claims before publishing. <b>Three did not survive.</b></p>
+<ul>
+<li><b>"The security page actively denies PKI."</b> It did not. A sweep for <em>symmetric</em>, <em>asymmetric</em>, <em>public key</em>, <em>PKI</em> and <em>keypair</em> returned zero occurrences. The page was silent, not wrong — and publishing a correction for a claim we never made would have put a false statement in our own changelog.</li>
+<li><b>"Search the site for stale <code>inbox</code> naming."</b> There is none. Two hits, both ordinary English; no <code>/api/vault/inbox/*</code> path anywhere.</li>
+<li><b>"Seal to the recipient's X25519 key."</b> Not what ships. Running <code>sgit pki keygen</code> prints <b>RSA-OAEP 4096-bit</b> and <b>ECDSA P-256</b>. Publishing the draft as written would have told integrators to build against the wrong primitive.</li>
+</ul>
+<p>Two more corrections came from running the CLI rather than reading about it: <code>sgit pki export</code> emits a <b>JSON bundle</b> of two PEM blocks, not the <code>.pem</code> file the draft redirected into — so the draft's <code>sha256sum public-key.pem</code> derivation of a lane address is not well defined — and <code>keygen</code> requires a passphrase, which no draft step mentioned.</p>
+<p>The whole exchange, including what we got wrong, is on <a href="../briefs/index.html">the briefs page</a>.</p>
+  </article>
+  <article class="upd" id="the-api-reference-we-did-not-have">
+    <h3><a href="#the-api-reference-we-did-not-have">The API reference we did not have</a> <a class="upd-ver" href="../admin/versions.html">v0.2.34</a></h3>
+    <p class="chips"><span class="chip">api</span><span class="chip">messaging</span><span class="chip">docs</span></p>
+<p>An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier.</p>
+<p>The diagnosis was uncomfortable and simple: <b>we documented both halves and never wrote the sentence that joins them.</b> The transport was on one page as <code>sg.append</code>, the crypto on another as <code>sgit pki</code>, and neither referenced the other. There was also no HTTP API reference anywhere — awkward for a project whose whole argument is that the API <em>is</em> the surface.</p>
+<ul>
+<li><b><a href="../docs/vault-messaging.html">Sending messages between vaults</a></b> is the page that was missing: append lanes composed with keypairs, worked end to end in CLI, curl and <code>sg.append</code>.</li>
+<li><b><a href="../api/index.html">An /api/ section</a></b> now exists — <a href="../api/authentication.html">authentication</a>, <a href="../api/vault-objects.html">vault objects</a>, <a href="../api/append-lanes.html">append lanes</a> and <a href="../api/errors.html">errors</a>.</li>
+<li><b><a href="../docs/pki.html">The PKI page</a></b> documents the keypair lifecycle, run against the shipped CLI rather than recalled.</li>
+<li><b><a href="../security/index.html#pki">The security page</a></b> gained the asymmetric layer it never mentioned. It never claimed sgit had no public-key layer — it simply said nothing, and on a page like that one, silence reads as denial.</li>
+</ul>
+<p>The one step that is not wired end to end is labelled <b>PROPOSED</b> with an interim recipe, rather than quietly documented as working.</p>
+  </article>
+  <h2 class="upd-date">2026-08-17</h2>
+  <article class="upd" id="three-walkthroughs-read-back-as-documents">
+    <h3><a href="#three-walkthroughs-read-back-as-documents">Three walkthroughs, read back as documents</a> <a class="upd-ver" href="../admin/versions.html">v0.2.32</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">video</span><span class="chip">risk-graph-explorer</span></p>
+<p>A video is invisible to a search engine, to <code>llms-full.txt</code>, and to any agent reading this site as documentation. It is also full of <em>"this guy here"</em> and <em>"look at this"</em> — pointing that a transcript cannot resolve.</p>
+<p>So <a href="../demos/vaults/risk-graph-explorer/videos/index.html">the Risk Graph Explorer walkthroughs</a> now carry the player at the top and <b>the same session read back underneath</b>: fifteen moments, each a timestamp that deep-links into the video, the frame the screen was showing then, and what is actually happening in it.</p>
+<ul>
+<li>Nine frames come from a narrated-review export; the other six were captured from the <b>live vault</b> with its published read key, driven to the exact state being described.</li>
+<li>What the frames turned up is most of the value, because none of it is audible: negative answers draw <b>named edges</b> (<code>never-exercised-on</code>, <code>absent-for</code>) rather than silence; "no egress" draws a single assurance-coloured edge in a field of amber; and every risk ships with a <b>"ceases when any of these hold"</b> list — its own falsification condition, cited to facts.</li>
+</ul>
+<p>The <a href="../demos/vaults/risk-graph-explorer/views/index.html">seven views page</a> covers the same vault view by view.</p>
+  </article>
+  <article class="upd" id="printing-stopped-costing-every-reader">
+    <h3><a href="#printing-stopped-costing-every-reader">Printing stopped costing every reader</a> <a class="upd-ver" href="../admin/versions.html">v0.2.31</a></h3>
+    <p class="chips"><span class="chip">print</span><span class="chip">performance</span></p>
+<p>Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted <b>across the middle of page 2</b>, translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap.</p>
+<p>The first was a sticky header: Chrome paints a sticky box once, wherever it happens to fall in the paginated flow. The second was subtler. Screenshots load lazily, and <code>loading="lazy"</code> defers the <b>decode</b>, not just the download — so an image far below the viewport sat there fetched, at zero width, and printed as nothing.</p>
+<ul>
+<li>The first fix made every reader pay: it pre-loaded all the images so printing would work. That was the wrong trade and it was rejected.</li>
+<li><b>The bypass now fires only on print</b> — on <code>beforeprint</code>, and on the Cmd/Ctrl-P keystroke, which lands a few hundred milliseconds earlier and buys the images a head start.</li>
+<li>Measured on a page nobody scrolled: <b>1 image loaded while reading, 9 of 9 in the PDF.</b></li>
+</ul>
+<p>Also in this release: <code>@page</code> margins, colour preservation so the amber/green distinction survives, <code>break-inside</code> rules so a caption is never stranded on the page after its picture, and per-release cache-busting on assets — because for ten minutes after every release, returning readers were running new HTML against old CSS.</p>
+  </article>
+  <article class="upd" id="green-does-not-mean-live">
+    <h3><a href="#green-does-not-mean-live">Green does not mean live</a> <a class="upd-ver" href="../admin/versions.html">v0.2.33</a></h3>
+    <p class="chips"><span class="chip">ci</span><span class="chip">deploy</span><span class="chip">process</span></p>
+<p>Two consecutive releases pushed cleanly, reported success, and <b>never reached the site.</b> A human noticed on a phone, forty minutes later, because the version badge still showed the old number.</p>
+<p>The release script verified that both remotes were in sync — and they were. The failure was in a job neither remote knows about: GitHub Pages could not download <code>actions/configure-pages</code>, got a <b>429 Too Many Requests</b>, and the deploy died in "Set up job" before running a single step. Validation passed. Tagging passed. The site served a two-release-old page.</p>
+<ul>
+<li><b>A release now ends by asking the live site what version it is serving</b>, polling with a cache-buster until the badge matches — and <b>aborting loudly</b> if it never does.</li>
+<li>The cost is up to eight minutes per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not.</li>
+<li>Same principle as the rules already in the build: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished.</li>
+</ul>
+<p>There is a longer account of this one in <a href="../articles/green-does-not-mean-live.html">Green does not mean live</a>.</p>
+  </article>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.35</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
