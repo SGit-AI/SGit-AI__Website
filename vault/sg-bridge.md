@@ -2,7 +2,7 @@
 
 > The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
 
-*Source: <https://sgit.ai/vault/sg-bridge.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/sg-bridge.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ Inside App Mode, the host injects a bridge object — `window.sg` — that gives
 | `sg.ui` | Host toasts (`message`), quick-look `preview` (incl. PDFs — in-frame PDF rendering is sandbox-blocked), `requestPermission` | no |
 | `sg.state` | Device-local prefs (64 KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit") | no |
 | `sg.llm` | `available` / `models` / `chat` (streaming, cancel, image parts) / `usage` / voice `listen` — the vault's LLM key stays in the host; your frame never sees it | `llm.chat` / `llm.listen` / … |
-| `sg.append` | Append-only transport (write verb is `write`): `configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. Lives outside the commit tree | `append.*` |
+| `sg.append` | **Append lanes — the vault-to-vault message transport.**`configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: [sending messages between vaults](../docs/vault-messaging.md) | `append.*` |
 | `sg.on` / `sg.off` | Host events pushed to the app (e.g. `append.new-messages` on tab focus — the kernel checks; your app does not poll) | `host_events` allowlist (top-level key) |
 | `sg.app` | Read-only context: `writable`, `selfPath`, `vaultName`, `vaultId`, `context` | no |
 

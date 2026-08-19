@@ -1,0 +1,51 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / API</p>
+  <h1>The HTTP API</h1>
+  <p class="lead">Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit.</p>
+
+  <div class="note"><b>Where this came from, and how far to trust it.</b> This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at <b>v0.33.54</b> rather than recalled. It is <em>their</em> verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled <b>PROPOSED</b> and you should not build on it yet. Same rule as the rest of this site — if it is not verified, it says so.</p></div>
+
+  <h2 id="base">Base URL</h2>
+  <p><code>https://send.sgraph.ai</code> for the hosted service, or your own host if you <a href="../deploy/index.html">run it yourself</a>. All request and response bodies are JSON unless stated otherwise.</p>
+
+  <h2 id="model">The one idea worth reading first</h2>
+  <p>The server is a <b>capability-checked ciphertext store</b>, and every access-control decision it makes is a hash comparison. It stores <code>SHA-256</code> of each capability key and checks <code>H(presented) == stored</code>. It never holds a raw key, and it never holds a private key at all.</p>
+  <p>That is what makes the rest of the design possible: a vault ID is an address rather than an account, reads are public by default because the bytes are useless without a key, and a stranger can write to your vault without ever having a credential on the platform.</p>
+
+  <h2 id="pages">The reference</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Page</th><th>What is in it</th></tr>
+    <tr><td><a href="authentication.html">Authentication</a></td><td>The six headers, what each gates, and the hash-comparison model</td></tr>
+    <tr><td><a href="vault-objects.html">Vault objects</a></td><td>The pointer store — read, write, batch, destroy — plus the caching contract and storage layout</td></tr>
+    <tr><td><a href="append-lanes.html">Append lanes</a></td><td>The six append endpoints: the vault-to-vault message transport</td></tr>
+    <tr><td><a href="errors.html">Errors and limits</a></td><td>400, 403, 413, 507 — what each actually means, and the ceilings that produce them</td></tr>
+  </table></div>
+
+  <h2 id="capabilities">Four capabilities</h2>
+  <p>Most of the API surface is one of four capability tiers. They are separated so that holding one tells you nothing about the others:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Capability</th><th>Presented as</th><th>Grants</th></tr>
+    <tr><td><code>append_token</code></td><td>a field in the request body</td><td>Write to one append lane. Nothing else — not even listing it</td></tr>
+    <tr><td><code>enum_key</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>List, fetch and mark-processed on append lanes</td></tr>
+    <tr><td><code>write_key</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Write and delete objects; configure and purge lanes</td></tr>
+    <tr><td>private key</td><td><em>never presented</em></td><td>Decryption, client-side only</td></tr>
+  </table></div>
+  <p>The fourth row is the point of the design rather than a footnote: the server cannot decrypt anything it stores, so the strongest capability in the system is the one it never sees.</p>
+
+  <h2 id="start">Where to start</h2>
+  <ul>
+    <li>Sending an encrypted message between two vaults → <a href="../docs/vault-messaging.html">Vault messaging</a>, which composes <a href="append-lanes.html">append lanes</a> with <a href="../docs/pki.html">PKI</a>.</li>
+    <li>Reading or writing files → <a href="vault-objects.html">Vault objects</a>.</li>
+    <li>Building a vault app in the browser → the <a href="../vault/sg-bridge.html">SG bridge</a> wraps this API so you never write HTTP.</li>
+    <li>Using the CLI instead → <a href="../docs/quickstart.html">Quickstart</a>.</li>
+  </ul>
+
+  <h2 id="unresolved">Open questions we will not guess at</h2>
+  <p>Three items came through the audit unresolved. They are listed rather than documented, because a confident page about an endpoint that does not exist is worse than no page:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td><code>GET /api/vault/zip/{vault_id}</code></td><td><b>UNRESOLVED</b> — registered in the route table, marked PROPOSED in the team’s reality document. Not documented either way until that is reconciled</td></tr>
+    <tr><td><code>/join/*</code></td><td><b>UNRESOLVED</b> — the reality document lists three live endpoints, but the routes are not registered in the deployed app. Not documented</td></tr>
+    <tr><td>Client-side lane addressing</td><td><b>PROPOSED</b> — <code>append_token = H(public key)</code> is the intended model; no shipped command emits it. See the <a href="../docs/vault-messaging.html#addressing">addressing note</a> for what to do meanwhile</td></tr>
+  </table></div>
+</main>

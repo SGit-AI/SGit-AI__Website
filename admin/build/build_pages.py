@@ -11,7 +11,7 @@ import re
 import json
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.33'
+SITE_VERSION = 'v0.2.34'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -24,7 +24,37 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.33', '2026-08-17', 'this release',
+    ('v0.2.34', '2026-08-18', 'this release',
+     "Acts on an inbound fix pack from the SG/API team, who audited this site against their route "
+     "tables at v0.33.54 after an agent asked how to send a message between vaults and could not "
+     "find the answer here. Their central finding was right: the site documented the TRANSPORT "
+     "(sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never "
+     "wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP "
+     "API reference anywhere, which is awkward for a project whose argument is that the API is the "
+     "whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed "
+     "with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a "
+     "/api/ section: index, authentication, vault-objects, append-lanes, errors. The security page "
+     "gains the asymmetric layer it never had; sg.append is retitled as the message transport and "
+     "cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped "
+     "agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE "
+     "CHECKING, which is the part worth recording. (1) It reported that the security page 'actively "
+     "denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair "
+     "returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim "
+     "we never made would have put a false statement in this log. (2) It asked us to hunt stale "
+     "'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* "
+     "path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 "
+     "prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told "
+     "integrators to build against the wrong primitive. Two further corrections came from running "
+     "the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem "
+     "file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and "
+     "keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step "
+     "— append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than "
+     "quietly documented as working, and the two endpoints their audit could not resolve "
+     "(/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own "
+     "acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message "
+     "from vault A to vault B — now passes, including the lane-address fact and its PROPOSED "
+     "caveat, answered in the preamble so it survives an agent that cannot follow a link."),
+    ('v0.2.33', '2026-08-17', 'obj-cas-imm-ab458fd8611d',
      "A release now ends by asking the live site what version it is serving, because "
      "'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both "
      "pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages "
@@ -275,6 +305,7 @@ def nav(p, here):
   <a class="{cls('use-cases')}" href="{p}use-cases/index.html">Use Cases</a>
   <a class="{cls('case-studies')}" href="{p}case-studies/index.html">Case Studies</a>
   <a class="{cls('docs')}" href="{p}docs/index.html">Docs</a>
+  <a class="{cls('api')}" href="{p}api/index.html">API</a>
   <a class="{cls('vault')}" href="{p}vault/index.html">SG/Vault</a>
   <a class="{cls('deploy')}" href="{p}deploy/index.html">Deploy</a>
   <a class="{cls('skills')}" href="{p}skills/index.html">Skills</a>
@@ -644,6 +675,19 @@ Quick answers (so you do not need a second request for the common questions):
   access, works against any server holding the ciphertext. This site publishes one.
 - Crypto: AES-256-GCM, PBKDF2-HMAC-SHA256 at 600k iterations, HKDF-SHA256. No custom
   primitives; output matches the browser Web Crypto API byte for byte.
+- Can two vaults SEND MESSAGES to each other? Yes. The transport is an APPEND LANE: a
+  write-only channel on the recipient's vault, gated by a hex `append_token` the sender holds.
+  The sender POSTs to /api/vault/append/write/{vault_id} with NO account and NO access token;
+  the response is blind (`{"ok":true}` — no id, no count). The recipient lists and fetches with
+  `x-sgraph-vault-enum-key` and decrypts client-side. Encrypt with `sgit pki encrypt --recipient`
+  (RSA-OAEP 4096 + AES-256-GCM). Full worked example: /docs/vault-messaging.md
+- The intended lane address is `append_token = H(recipient public key)`, so a sender can derive
+  it from a published key. That derivation is PROPOSED — no shipped command emits it — so today
+  you agree the token out of band. The server side is shipped. Do not code against the derivation.
+- PKI exists. `sgit pki keygen/list/export/import/contacts/sign/verify/encrypt/decrypt`. The vault
+  key is symmetric and roots the storage hierarchy; keypairs layer on top for identity and
+  recipient-addressed encryption. /docs/pki.md · /security.md#pki
+- The HTTP API is the whole surface — the CLI and the browser bridge are both clients. /api/index.md
 - sgit is beta; it has no compliance certification of any kind.
 """
 
@@ -656,6 +700,7 @@ LLMS_SECTIONS = [
     ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
     ('docs',      'Docs'),
+    ('api',       'HTTP API (the protocol surface: endpoints, auth headers, capability gates, limits)'),
     ('vault',     'SG/Vault platform'),
     ('deploy',    'Deploy (rendered live from an encrypted vault)'),
     ('try',       'Try it'),
@@ -667,6 +712,13 @@ LLMS_SECTIONS = [
 ]
 
 LLMS_FACTS = {
+    'docs/vault-messaging.html': 'Two vaults exchange encrypted messages over an APPEND LANE: a write-only channel on the recipient vault. The sender holds an append_token (hex, ^[0-9a-f]{16,128}$) and POSTs to /api/vault/append/write/{vault_id} with no account and no access token; the response is blind ({"ok":true}, no id, no count). The recipient lists/fetches with x-sgraph-vault-enum-key and decrypts locally. The intended lane address is append_token = H(recipient public key), but no shipped command emits it — PROPOSED; today agree the token out of band.',
+    'docs/pki.html': 'sgit pki keygen makes TWO pairs: RSA-OAEP 4096 for encryption and ECDSA P-256 for signing (not X25519/Ed25519), passphrase-protected. export emits a JSON bundle {v,encrypt,sign,label,fingerprint,signing_fingerprint} of PEM blocks, not a bare PEM. encrypt --recipient <fingerprint>; decrypt --fingerprint <fingerprint> (required). Envelope v2 is base64 JSON {v,w,i,c}: RSA-OAEP wraps an AES-256-GCM content key. No revocation, no directory.',
+    'api/index.html': 'The HTTP API is the whole surface; the CLI and the browser bridge are clients. The server is a capability-checked ciphertext store: it holds SHA-256 of each capability key and compares hashes, never a raw key and never a private key. Four capabilities: append_token (write one lane), enum_key (list/fetch/mark), write_key (configure/purge/write objects), private key (decrypt, client-side only).',
+    'api/append-lanes.html': 'Six POST endpoints under /api/vault/append/: configure (write key), write (append_token in body, account-less), list (enum key), fetch, mark-processed (idempotent), purge (folder: pending|processed). Renamed from inbox in v0.32.7 — /api/vault/inbox/* is gone. Limits: 5MB payload (413), 1000 pending per token (507), 100 file_ids per batch (400), 3MB inline content (413), page 50/200.',
+    'api/errors.html': '400 = malformed input, rejected before any gate; 403 = well-formed but wrong capability. A prefixed token (tok_..., or a CLI fingerprint sha256:...) returns 400, NOT 403 — append_token is hex only. 413 = too large, 507 = lane full at 1000 pending.',
+    'api/authentication.html': 'Six headers: x-sgraph-access-token, x-sgraph-vault-write-key, x-sgraph-vault-enum-key, x-vault-read-key, x-vault-public, x-sgraph-transfer-delete-auth. append_token is NOT a header — it goes in the body. Vault reads need no auth on the shared host because the bytes are ciphertext under a key the server never had.',
+    'api/vault-objects.html': 'Pointer store endpoints plus the caching contract: file ids containing -imm- are content-addressed and immutable (Cache-Control max-age=31536000, immutable); refs and indexes are mutable and no-store. Caching a ref renders a previous commit from valid ciphertext, so nothing errors and the reader silently sees the wrong version.',
     'docs/sgit-for-git-users.html': 'The three differences: no staging area; private clone branch per machine or agent with explicit publishing; the vault key is address + credential + encryption key in one string.',
     'docs/limitations.html':        'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
     'docs/two-branch-model.html':   'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',

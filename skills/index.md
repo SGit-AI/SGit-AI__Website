@@ -2,7 +2,7 @@
 
 > Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.
 
-*Source: <https://sgit.ai/skills/index.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/skills/index.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -23,6 +23,8 @@ A skill is a packaged set of instructions an AI agent loads to do a job well: th
 ## Author
 
 [create vault contentStructured content without code: the full _page.json schema (embedded — no repo clone needed) and vault markdown authoring, with checklists and copy-paste templates.](create-vault-content__SKILL.md)
+
+**Not yet in the skills: vault-to-vault messaging.** These three files ship verbatim from upstream and this site does not edit them. As of the current versions, the operate skill documents `sgit pki` as file signing and encryption, and does not mention [append lanes](../api/append-lanes.md) — so an agent reading only the skill has both halves of the messaging mechanism and no statement that they combine. That is exactly the failure that produced [the messaging page](../docs/vault-messaging.md): an agent asked how to send a message between vaults and could not get there. Until the skill catches up, point agents at [/docs/vault-messaging](../docs/vault-messaging.md) alongside it.
 
 ## Installing a skill
 

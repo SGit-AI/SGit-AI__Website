@@ -23,6 +23,11 @@ a:hover{text-decoration:underline}
 h1,h2,h3{line-height:1.2;letter-spacing:-.015em}
 code,pre,kbd{font-family:var(--mono)}
 p code,li code,td code,.note code,.doc code{overflow-wrap:anywhere;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:.08em .35em;font-size:.84em;color:#24343f}
+/* ...but never inside a block. `.doc code` matches <code> nested in a <pre>, which gave every
+   line of an ASCII diagram its own bordered chip — the block rendered as horizontal stripes.
+   The house convention is <pre class="shell"> with no inner <code>; this is the guard for
+   when somebody reasonably writes <pre><code> anyway. */
+pre code{background:none;border:0;border-radius:0;padding:0;font-size:inherit;color:inherit}
 .inner{max-width:var(--measure);margin:0 auto;padding:0 1.1rem}
 .inner-wide{max-width:var(--wide);margin:0 auto;padding:0 1.1rem}
 .dim{color:var(--dim)} .small{font-size:.85rem}

@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.33). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.34). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -2479,6 +2479,24 @@ We state the right-hand column deliberately. Traffic analysis of sizes and timin
 
 One precision note, because precision beats marketing: the key hierarchy derives a *structure key* (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key — activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.
 
+## Two key systems, and where each applies
+
+Everything above describes the **symmetric** half, and it is the half that matters most: the vault key is symmetric, it is the root of the storage hierarchy, and every object in a vault is encrypted under a key derived one-way from it. If you only ever use sgit to sync your own files across your own machines, that is the whole system.
+
+There is a second half. Layered on top is a **public-key** system, for the two things a shared symmetric key cannot express: **proving who wrote something**, and **encrypting to somebody who does not hold your vault key**. It is what makes [vault-to-vault messaging](../docs/vault-messaging.md) possible — a sender can encrypt to your published public key and drop the result into your vault without ever being able to read it.
+
+|  | Vault key (symmetric) | Keypair (asymmetric) |
+|---|---|---|
+| What it is | One generated string: address, credential and encryption root | An encryption pair and a signing pair, generated locally |
+| What it protects | Every object in the vault | Individual files addressed to a recipient, and signatures over them |
+| Who holds it | Everyone who can open the vault | Private half: you alone. Public half: publish it freely |
+| Answers | “Can this person open the vault?” | “Who wrote this?” and “Can only *they* read it?” |
+| Where it lives on the server | Never — the server holds ciphertext only | Public keys at `bare/keys/key-rnd-imm-*`. Private keys never leave your machine |
+
+The constructions, read out of `sgit pki keygen` on v0.15.0 rather than recalled: **RSA-OAEP 4096-bit** for encryption and **ECDSA P-256** for signing, with a hybrid envelope — RSA-OAEP wraps a per-message AES-256-GCM content key. Private keys are passphrase-protected at rest. The full lifecycle is on [the PKI page](../docs/pki.md).
+
+**This section is new, and its absence had a cost.** Until now this page described the symmetric design and simply did not mention asymmetric cryptography — it never claimed PKI was absent, but it never said it was present either. An agent researching how to send a message between vaults read this page, concluded there was no public-key layer, and stopped looking. The capability had shipped; the sentence that would have pointed at it had not been written. Silence on a page like this one reads as denial.
+
 ## Key strength
 
 Vault keys are generated, not chosen. A generated passphrase is 24 characters over a 36-symbol alphabet — about **124 bits of entropy** (3624 ≈ 2124), far beyond brute-force reach — before key derivation adds 600,000 rounds of PBKDF2-SHA256 on top. The key never travels to the server: it is the address, the credential, and the root of the encryption hierarchy in one string, and it stays on your machines.
@@ -2931,6 +2949,8 @@ A skill is a packaged set of instructions an AI agent loads to do a job well: th
 
 [create vault contentStructured content without code: the full _page.json schema (embedded — no repo clone needed) and vault markdown authoring, with checklists and copy-paste templates.](create-vault-content__SKILL.md)
 
+**Not yet in the skills: vault-to-vault messaging.** These three files ship verbatim from upstream and this site does not edit them. As of the current versions, the operate skill documents `sgit pki` as file signing and encryption, and does not mention [append lanes](../api/append-lanes.md) — so an agent reading only the skill has both halves of the messaging mechanism and no statement that they combine. That is exactly the failure that produced [the messaging page](../docs/vault-messaging.md): an agent asked how to send a message between vaults and could not get there. Until the skill catches up, point agents at [/docs/vault-messaging](../docs/vault-messaging.md) alongside it.
+
 ## Installing a skill
 
 For Claude Code and compatible agents: drop the skill file into your skills directory (e.g. `~/.claude/skills/<name>/SKILL.md`) or paste it into the session as context. The skill's own description tells the agent when to trigger it. A minimal bootstrap for a fresh session is one line:
@@ -2965,7 +2985,11 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Concepts
 
-[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md)
+[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md) [Keys and signaturesEncrypting to someone who holds no vault key](pki.md)
+
+## Messaging & the API
+
+[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
 
 ## Guides
 
@@ -3355,6 +3379,17 @@ Every tool earns trust faster by stating its edges. Here are sgit's, plainly.
 - **Bare clones** (`clone --bare`) are incomplete.
 - **The full CLI reference** on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).
 
+## What PKI does not do yet
+
+[Keypairs](pki.md) ship and work — keygen, export, import, sign, verify, encrypt, decrypt all round-trip on v0.15.0. The layer around them is thinner than the primitives:
+
+- **No revocation, expiry or rotation workflow.** No CRL, no `sgit pki revoke`. A compromised private key means generating a new pair and redistributing the bundle out of band, by hand.
+- **No directory and no web of trust.** Verifying that a fingerprint belongs to who you think is entirely your problem — compare out of band, as with SSH host keys.
+- **Lane addressing is not wired end to end.** The intended model is `append_token = H(public key)`, so a sender derives your [message lane](vault-messaging.md) address from the key you published. The server side ships; no shipped command emits that token, so today you agree one out of band. Details and the interim recipe are in the [addressing note](vault-messaging.md#addressing).
+- **Only the first mode is built.** Signing and encrypting files, plus the append transport. The richer modes — group addressing, key discovery, delegated capability — are designs, not code.
+
+Said plainly because the alternative is worse: an agent that reads an over-claiming page will build on a step that does not exist, and only find out at runtime.
+
 If one of these gaps blocks you, say so on [GitHub](https://github.com/SGit-AI/SGit-AI__CLI/issues) — real usage reports move the roadmap.
 
 [← Working with AI agents](agents.md)
@@ -3448,6 +3483,22 @@ This page exists because it happened here, to the vault that serves this site.
 This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.
 
 **For the agent reading this:** each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL (`sgit.ai/briefs.html`).
+
+## ← Inbound, from the SG/API team: the API reference was missing, and three of their findings did not survive checking
+
+**Status:** acted on, [v0.2.34](../admin/versions.md) · **Trigger:** an agent was asked how to send a message between vaults and could not find the answer here · **Direction:** inbound.
+
+The SG/API team audited this site against their route tables at v0.33.54 and sent a fix pack: a gap analysis, code-verified source material for an API reference, and a draft of the page they judged missing. Their central finding was right and is now fixed — the site documented the [transport](../vault/sg-bridge.md) and the [crypto](../docs/pki.md) on pages that never referenced each other, and never wrote the sentence saying they combine into [vault-to-vault messaging](../docs/vault-messaging.md). There was also no [HTTP API reference](../api/index.md) at all. Seven pages now exist that did not.
+
+The pack itself asked for its claims to be verified before publishing, which turned out to be the most valuable line in it. **Three did not survive:**
+
+- **“The security page actively denies PKI.”** It did not. Swept for *symmetric*, *asymmetric*, *public key*, *PKI*, *keypair*: zero occurrences. The page said nothing about asymmetric cryptography either way. That is an *omission*, and the distinction matters — publishing a correction for a claim we never made would have put a false statement in the changelog. The remedy was the same and the [section now exists](../security/index.md#pki); the framing was not.
+- **“Search the site for stale `inbox` naming.”** There is none. Two hits, both ordinary English — a changelog line about URL routing, and a demo vault described as a “two-agent inbox”. No `/api/vault/inbox/*` path appears anywhere on the site. Nothing to fix.
+- **“Seal to the recipient’s X25519 key.”** Not what ships. Running `sgit pki keygen` on v0.15.0 prints **RSA-OAEP 4096-bit** for encryption and **ECDSA P-256** for signing. Had the draft been published as written, this site would have told integrators to build against the wrong primitive.
+
+Two more corrections came out of running the CLI rather than reading about it. `sgit pki export` emits a **JSON bundle** of two PEM blocks and two fingerprints, not the `.pem` file the draft redirected into — so the draft’s `sha256sum public-key.pem` derivation of the lane address is not well defined, since field order and whitespace would change the answer. And `keygen` requires a passphrase, which no draft step mentioned.
+
+The pack’s own [acceptance test](../llms.txt) — give a fresh agent only `llms.txt` and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and the caveat that its derivation is **PROPOSED** rather than shipped. Two endpoints their audit flagged as unresolved (`/api/vault/zip`, `/join/*`) are [listed as unresolved rather than documented](../api/index.md#unresolved), which is what we would want done to us.
 
 ## → To the sgit CLI team: first-class serialised diffs, and ignore support
 
@@ -3714,7 +3765,7 @@ Inside App Mode, the host injects a bridge object — `window.sg` — that gives
 | `sg.ui` | Host toasts (`message`), quick-look `preview` (incl. PDFs — in-frame PDF rendering is sandbox-blocked), `requestPermission` | no |
 | `sg.state` | Device-local prefs (64 KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit") | no |
 | `sg.llm` | `available` / `models` / `chat` (streaming, cancel, image parts) / `usage` / voice `listen` — the vault's LLM key stays in the host; your frame never sees it | `llm.chat` / `llm.listen` / … |
-| `sg.append` | Append-only transport (write verb is `write`): `configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. Lives outside the commit tree | `append.*` |
+| `sg.append` | **Append lanes — the vault-to-vault message transport.**`configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: [sending messages between vaults](../docs/vault-messaging.md) | `append.*` |
 | `sg.on` / `sg.off` | Host events pushed to the app (e.g. `append.new-messages` on tab focus — the kernel checks; your app does not poll) | `host_events` allowlist (top-level key) |
 | `sg.app` | Read-only context: `writable`, `selfPath`, `vaultName`, `vaultId`, `context` | no |
 
@@ -4120,11 +4171,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.33**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.34**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.33 | 2026-08-17 | this release | A release now ends by asking the live site what version it is serving, because 'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages failed to deploy them because codeload returned 429 (Too Many Requests) for actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a single step. Validation passed, tagging passed, the push was verified against both remotes — and the site served a two-release-old page for forty minutes, which is how long it took a human on a phone to notice the version pill still said v0.2.30. The failure was invisible to every check the release ran, because it happened in a job neither remote knows about. So release.sh gained a sixth step: poll the live URL with a cache-buster until the version pill matches this release, up to eight minutes, and ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the action download is transient and just needs a re-run. The cost is up to eight minutes of waiting per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not. Same principle as the orphan-page rule and the llms.txt guard: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished, so the build refuses all three. Ships the content of v0.2.31 and v0.2.32, which had been written but never served. |
+| v0.2.34 | 2026-08-18 | this release | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
+| v0.2.33 | 2026-08-17 | obj-cas-imm-ab458fd8611d | A release now ends by asking the live site what version it is serving, because 'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages failed to deploy them because codeload returned 429 (Too Many Requests) for actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a single step. Validation passed, tagging passed, the push was verified against both remotes — and the site served a two-release-old page for forty minutes, which is how long it took a human on a phone to notice the version pill still said v0.2.30. The failure was invisible to every check the release ran, because it happened in a job neither remote knows about. So release.sh gained a sixth step: poll the live URL with a cache-buster until the version pill matches this release, up to eight minutes, and ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the action download is transient and just needs a re-run. The cost is up to eight minutes of waiting per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not. Same principle as the orphan-page rule and the llms.txt guard: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished, so the build refuses all three. Ships the content of v0.2.31 and v0.2.32, which had been written but never served. |
 | v0.2.32 | 2026-08-17 | obj-cas-imm-7f84b9ee6727 | The walkthroughs page becomes a document rather than a list of links. Each of the three videos now carries the recording at the top and THE SAME SESSION READ BACK underneath it: fifteen moments, each one a timestamp that deep-links into the video, the frame the screen was showing at that moment, and an explanation of what is happening in it. The transcripts are still there, folded away at the foot of each. The reason for the format is the one thing a transcript structurally cannot do: these recordings are full of 'this guy here' and 'look at this', and the words alone name neither end of what is being pointed at. Pairing each phrase with its frame is what makes the argument survive being read instead of watched. TWO SOURCES OF FRAMES, and the page says which is which. The Graph Browser moments are frames of the recording, from a narrated-review export the author produced with tools.sgraph.ai — nine timestamped stills paired with the narration spoken over each. Risk Chains and Role risk map have no such export, so their six frames were captured from the LIVE VAULT with the published read key, driven to the exact state being described — including the entry he names out loud ('you have risk 6'). What the frames turned up is most of the value, because none of it is audible: negative answers produce NAMED EDGES (never-exercised-on, never-timed-for, absent-for) rather than silence; 'no egress' draws a single assurance-coloured edge in a field of amber, so a good answer is a finding rather than the absence of one; one selection can carry two fact ids; and every risk ships with a CEASES WHEN ANY OF THESE HOLD list — its own falsification condition, cited to facts. The role dashboard also separates three arrival routes where the video describes two: held, arrives by the risk chain, and arrives by the org chart. TOOLING: the capture rig gained appProbe (ask the running app what its elements are called instead of guessing and burning a capture run per guess — it found g.cnode for chain entries and g.role for roles) and appClickMatch (substring match plus a real MouseEvent, because the graph nodes are SVG). Videos print with the player hidden and the moments intact. |
 | v0.2.31 | 2026-08-17 | obj-cas-imm-17f0b2693daf | Corrects v0.2.30 on three counts, two of them reported and one of them the reason the report was possible at all. (1) THE LAZY-LOAD BYPASS IS NOW ONLY ON PRINT. v0.2.30 prefetched every screenshot once the page went idle, which fixed printing by making every reader pay for images they never scrolled to — the wrong trade, and correctly rejected. It is now driven entirely by the print itself, and it works because of a change one layer down: on the ordinary web the loader no longer fetches bytes and builds a blob: URL, it just sets img.src. That makes each screenshot an ordinary pending document resource, which the print pipeline knows to wait for, where a fetch-and-blob is invisible to it. Cmd/Ctrl-P is caught on keydown as well as beforeprint, because the keystroke lands a few hundred milliseconds before the dialog does and that head start is what removes the race. Measured on a page that was never scrolled: 1 image loaded while reading, 9 of 9 in the PDF. The blob path remains for pages served from inside a vault, where it is the only option. (2) THE PRINT-ONLY SOURCE LINE AND LANDSCAPE HINT ARE GONE — printing these pages is an uncommon case and did not warrant instructions on the page. (3) ASSETS ARE NOW CACHE-BUSTED PER RELEASE. GitHub Pages serves them with max-age=600, and the bootstrap fetched them by bare path, so for ten minutes after every release a returning reader ran the NEW html against the OLD css and js. That is not a hypothetical: it is exactly what produced the v0.2.30 bug report — new markup whose print-only elements the cached stylesheet did not know to hide, and a cached loader without the print handler. Every fetched asset now carries ?v=; the in-vault sg.vfs path stays unversioned, since a vault lookup is by path, not URL. |
 | v0.2.30 | 2026-08-17 | obj-cas-imm-81dc22613ddf | Print and save-as-PDF, prompted by an export of the seven views page that came out wrong. TWO DEFECTS, one reported and one found while looking at it. (1) The top nav is position:sticky; Chrome paints a sticky box ONCE, wherever it happens to fall in the paginated flow, so the whole nav landed across the middle of page 2 — translucent, with the prose showing through it. It is static in print now and flows once, at the top of page 1, as a masthead with the link list dropped. (2) WORSE, AND NOT REPORTED: screenshots are lazy — a figure starts at opacity:0 and its img is only created when an IntersectionObserver fires — so printing a page without first scrolling to the foot of it exported blank gaps where the pictures should be. Nothing errored; the img simply never existed. beforeprint cannot fix that alone (it is synchronous and will not wait for a fetch and decode), so the figures are now prefetched once the page goes idle, with beforeprint kept as the backstop. The export that prompted this was only correct by luck: it was taken after reading the whole page. Beyond the fixes: @page margins so Chrome's Default is ours rather than its own; print-color-adjust:exact, because on this site the tints carry meaning (amber exposure, green assurance) and Chrome drops backgrounds unless asked; break-inside:avoid on walkthrough rows, figures, notes, tables and transcripts, which fixes captions stranded on the page after their picture; orphan/widow control; live vault embeds hidden and labelled rather than exported as empty boxes; and a print-only source line carrying the canonical URL, since Chrome's own header and footer are frequently switched off. Finally, any page containing walkthrough rows now asks for LANDSCAPE — in portrait the two-column grid falls below the 820px breakpoint and collapses, which loses the alternating left-right rhythm that is the entire design of those pages. The reader can still override it. None of this was tested before; all of it is now. |
@@ -4189,3 +4241,610 @@ This site ships by pushing its vault, and the site version — **v0.2.33**, show
 Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The "vault commit" of the newest row reads "this release" because the commit ID only exists once the release is committed — it is recorded here retroactively by the next release.
 
 [← Admin & engineering](index.md)
+
+
+
+==============================================================================
+# The HTTP API — sgit.ai
+
+> The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at.
+>
+> Page: https://sgit.ai/api/index.html
+
+[Home](../index.md) / API
+
+# The HTTP API
+
+Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit.
+
+**Where this came from, and how far to trust it.** This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at **v0.33.54** rather than recalled. It is *their* verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled **PROPOSED** and you should not build on it yet. Same rule as the rest of this site — if it is not verified, it says so.
+
+## Base URL
+
+`https://send.sgraph.ai` for the hosted service, or your own host if you [run it yourself](../deploy/index.md). All request and response bodies are JSON unless stated otherwise.
+
+## The one idea worth reading first
+
+The server is a **capability-checked ciphertext store**, and every access-control decision it makes is a hash comparison. It stores `SHA-256` of each capability key and checks `H(presented) == stored`. It never holds a raw key, and it never holds a private key at all.
+
+That is what makes the rest of the design possible: a vault ID is an address rather than an account, reads are public by default because the bytes are useless without a key, and a stranger can write to your vault without ever having a credential on the platform.
+
+## The reference
+
+| Page | What is in it |
+|---|---|
+| [Authentication](authentication.md) | The six headers, what each gates, and the hash-comparison model |
+| [Vault objects](vault-objects.md) | The pointer store — read, write, batch, destroy — plus the caching contract and storage layout |
+| [Append lanes](append-lanes.md) | The six append endpoints: the vault-to-vault message transport |
+| [Errors and limits](errors.md) | 400, 403, 413, 507 — what each actually means, and the ceilings that produce them |
+
+## Four capabilities
+
+Most of the API surface is one of four capability tiers. They are separated so that holding one tells you nothing about the others:
+
+| Capability | Presented as | Grants |
+|---|---|---|
+| `append_token` | a field in the request body | Write to one append lane. Nothing else — not even listing it |
+| `enum_key` | `x-sgraph-vault-enum-key` | List, fetch and mark-processed on append lanes |
+| `write_key` | `x-sgraph-vault-write-key` | Write and delete objects; configure and purge lanes |
+| private key | *never presented* | Decryption, client-side only |
+
+The fourth row is the point of the design rather than a footnote: the server cannot decrypt anything it stores, so the strongest capability in the system is the one it never sees.
+
+## Where to start
+
+- Sending an encrypted message between two vaults → [Vault messaging](../docs/vault-messaging.md), which composes [append lanes](append-lanes.md) with [PKI](../docs/pki.md).
+- Reading or writing files → [Vault objects](vault-objects.md).
+- Building a vault app in the browser → the [SG bridge](../vault/sg-bridge.md) wraps this API so you never write HTTP.
+- Using the CLI instead → [Quickstart](../docs/quickstart.md).
+
+## Open questions we will not guess at
+
+Three items came through the audit unresolved. They are listed rather than documented, because a confident page about an endpoint that does not exist is worse than no page:
+
+| Item | Status |
+|---|---|
+| `GET /api/vault/zip/{vault_id}` | **UNRESOLVED** — registered in the route table, marked PROPOSED in the team’s reality document. Not documented either way until that is reconciled |
+| `/join/*` | **UNRESOLVED** — the reality document lists three live endpoints, but the routes are not registered in the deployed app. Not documented |
+| Client-side lane addressing | **PROPOSED** — `append_token = H(public key)` is the intended model; no shipped command emits it. See the [addressing note](../docs/vault-messaging.md#addressing) for what to do meanwhile |
+
+
+
+==============================================================================
+# API authentication — sgit.ai
+
+> The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.
+>
+> Page: https://sgit.ai/api/authentication.html
+
+[Home](../index.md) / [API](index.md) / Authentication
+
+# Authentication
+
+Six headers exist. Which apply depends on the endpoint and on how the server is deployed. None of them is a password, and none of them is stored: the server keeps `SHA-256` hashes and compares.
+
+## The headers
+
+| Header | What it gates |
+|---|---|
+| `x-sgraph-access-token` | The SGraph account or deployment. In a **single-key self-hosted deployment** this gates *every* route, including reads |
+| `x-sgraph-vault-write-key` | Vault write capability: writes, deletes, destroy, and append `configure` / `purge` |
+| `x-sgraph-vault-enum-key` | Append lane enumeration: `list`, `fetch`, `mark-processed` |
+| `x-vault-read-key` | Read key, for public-vault routing |
+| `x-vault-public` | Public-vault routing flag |
+| `x-sgraph-transfer-delete-auth` | Transfer deletion — SG/Send transfers, not vaults |
+
+One capability is **not** a header: `append_token` travels in the request body of `/append/write`. That is deliberate — see [append lanes](append-lanes.md).
+
+## The hash-comparison model
+
+The server never stores a capability key. It stores `SHA-256(key)` and, on each request, hashes what you presented and compares. Two consequences worth designing around:
+
+- **A server compromise yields hashes and ciphertext**, not keys and not plaintext. An attacker with the whole database still cannot read a vault.
+- **There is no recovery path.** The server cannot email you your key, because it has never had it. Same property as the vault key itself, for the same reason.
+
+## Why reads are open by default
+
+`GET /api/vault/read/{vault_id}/{file_id}` requires no authentication on the shared host, which surprises people. It follows from the encryption model rather than being a gap in it: the bytes are AES-256-GCM ciphertext under a key the server has never seen, and the file IDs are HMAC-derived opaque identifiers that reveal no filename. Serving them to an anonymous caller discloses nothing a reader could use.
+
+It is also the property that makes a [published read key](../demos/vaults/index.md) work at all, and what lets vault content sit behind an ordinary CDN. If that trade is wrong for your deployment, run in single-key mode, where the access token gates reads too.
+
+What an unauthenticated reader *can* learn is covered honestly on the [security page](../security/index.md#server-sees): object sizes, timing, and approximate activity volume.
+
+## See also
+
+- [Errors](errors.md) — what a 403 means as against a 400
+- [Security model](../security/index.md) — the crypto these capabilities sit on
+
+
+
+==============================================================================
+# API: vault objects — sgit.ai
+
+> The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault.
+>
+> Page: https://sgit.ai/api/vault-objects.html
+
+[Home](../index.md) / [API](index.md) / Vault objects
+
+# Vault objects
+
+The pointer store: the ciphertext objects a vault is made of, addressed by opaque identifiers the server cannot interpret. This is what `sgit push` and `sgit pull` are doing underneath.
+
+## Endpoints
+
+| Method | Path | Auth | Notes |
+|---|---|---|---|
+| PUT | `/api/vault/write/{vault_id}/{file_id}` | access token + write key | Body is raw ciphertext |
+| GET | `/api/vault/read/{vault_id}/{file_id}` | none | Raw bytes. [Reads are public by default](authentication.md#reads) on the shared host |
+| GET | `/api/vault/read-base64/{vault_id}/{file_id}` | none | Base64 in JSON — MCP-safe. Around 3.75 MB ceiling |
+| DELETE | `/api/vault/delete/{vault_id}/{file_id}` | access token + write key |  |
+| POST | `/api/vault/batch/{vault_id}` | per operation | Mixed reads and writes, **max 100** per request |
+| POST | `/api/vault/list/{vault_id}` | — |  |
+| GET | `/api/vault/health/{vault_id}` | — |  |
+| GET | `/api/vault/public-info/{vault_id}` | — |  |
+| DELETE | `/api/vault/destroy/{vault_id}` | write key | Body `{vault_id, purge?}`. Without `purge` it writes a tombstone that blocks reuse of the ID |
+
+Large blobs go through presigned URLs rather than the request body: `POST /api/vault/presigned/initiate|complete|cancel/{vault_id}` and `GET /api/vault/presigned/read-url/{vault_id}/{file_id}`.
+
+`GET /api/vault/zip/{vault_id}` is registered in the route table but marked PROPOSED upstream. It is deliberately [not documented](index.md#unresolved) until that is reconciled.
+
+## Destroy, and why the tombstone matters
+
+`destroy` without `purge:true` leaves a tombstone that prevents the vault ID being registered again. That is a security property, not bookkeeping: vault IDs are short and a released ID is a squattable namespace. If somebody still holds a read key pointing at that ID, a new vault claiming it would be answering reads meant for the old one. `purge:true` skips the tombstone and frees the ID — use it only when you are sure no credential survives.
+
+## The caching contract
+
+Anyone writing a client needs this, and getting it wrong produces a bug that looks like corruption:
+
+| Object | Response header |
+|---|---|
+| File ID containing `-imm-` — immutable, content-addressed | `Cache-Control: public, max-age=31536000, immutable` |
+| Refs and indexes — mutable | `Cache-Control: no-store` |
+
+Immutable objects are content-addressed, so their bytes can never change and a year-long cache is safe — which is what lets a vault sit behind a CDN. Mutable refs must never be cached: a stale ref renders a previous commit’s tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees the wrong version of the vault.
+
+## Storage layout
+
+```
+bare/data/obj-cas-imm-{hex}     blobs, trees, commits — content-addressed, immutable
+bare/keys/key-rnd-imm-{hex}     PKI public keys — immutable
+bare/refs/                      branch refs — mutable
+bare/indexes/                   branch index — mutable
+bare/append/                    append lanes — managed, outside the commit DAG
+```
+
+The prefixes are load-bearing. `obj-cas-imm-` is SHA-256 over the *ciphertext*, which gives deduplication without the server knowing any plaintext, and makes the caching rule above derivable from the ID alone. Append lanes sit outside the commit DAG on purpose — a message arriving does not rewrite your history.
+
+This site is itself served from a vault, so these are the objects behind the page you are reading. The [live-vault case study](../case-studies/live-vault-docs.md) shows the fetch sequence.
+
+## See also
+
+- [Append lanes](append-lanes.md) — the write-only channel that does not touch the commit tree
+- [Errors and limits](errors.md)
+
+
+
+==============================================================================
+# API: append lanes — sgit.ai
+
+> The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
+>
+> Page: https://sgit.ai/api/append-lanes.html
+
+[Home](../index.md) / [API](index.md) / Append lanes
+
+# Append lanes
+
+A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind [vault-to-vault messaging](../docs/vault-messaging.md) and behind [`sg.append`](../vault/sg-bridge.md) in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.
+
+**Naming.** This API was called **inbox** before v0.32.7. Every `/api/vault/inbox/*` URL is gone, and `purge` takes `folder:"pending"` or `"processed"` — the old `"inbox"` value returns **400**. If you are reading older material, translate.
+
+## The six endpoints
+
+All **POST**, all under `/api/vault/append/`.
+
+| Path | Gate | Does |
+|---|---|---|
+| `configure/{vault_id}` | `x-sgraph-vault-write-key` | Registers `append_anchors` — hashes of accepted senders — and `enum_key_hash` |
+| `write/{vault_id}` | `append_token`**in the body** | Appends a payload. **Account-less**: no access token required |
+| `list/{vault_id}` | `x-sgraph-vault-enum-key` | Paginated listing, optionally with inline content |
+| `fetch/{vault_id}` | enum key | Fetch specific file IDs, batched |
+| `mark-processed/{vault_id}` | enum key | Moves pending → processed. Idempotent |
+| `purge/{vault_id}` | write key | Deletes. `folder: "pending" | "processed"` |
+
+## Why the gates are split this way
+
+Four capabilities, and the split is the whole design:
+
+| Capability | Holder | Can | Cannot |
+|---|---|---|---|
+| `append_token` | the sender | write | list, fetch, read anything |
+| `enum_key` | the vault owner | list, fetch, mark-processed | write, purge |
+| `write_key` | the vault owner | configure, purge | — |
+| private key | the vault owner | **decrypt** | *never sent to the server* |
+
+A sender can put something into your vault and learn nothing at all — not the contents, not the volume, not whether anyone else writes there. The server stores `SHA-256` of the first three capabilities and compares hashes; the fourth it never sees.
+
+## Four contracts worth relying on
+
+- **The write response is blind.** `/write` returns exactly `{"ok": true}` — no file ID, no count, no metadata. This is a security property, not an oversight: a returned ID would leak lane state to a party who is only allowed to write.
+- **Filenames are server-assigned** as `{epoch_ms:013d}_{24-hex}.enc`. Being chronologically sortable is what makes cursor pagination stable — pass the last file ID you saw as `after_file_id`.
+- **Metadata-only listing is free.** `include_content: false` reads **zero** payloads. Poll with it, then fetch on demand; polling with content is the common way to hit the 3 MB ceiling for no reason.
+- **mark-processed is idempotent.** An already-moved file comes back in `missing` rather than as an error, so retrying a batch after a timeout is safe.
+
+## Several senders on one vault
+
+Register several `append_anchors` and each sender writes into their own lane, distinguished by their token. A listing can be scoped to one lane, so one correspondent flooding you does not bury another — and revoking one sender is removing one anchor, with no effect on the rest.
+
+## Limits and codes
+
+| Limit | Value | On breach |
+|---|---|---|
+| Payload per write | 5 MB | 413 |
+| Pending files per token | 1000 | 507 |
+| File IDs per batch | 100 | 400 |
+| Inline content when listing | 3 MB cumulative | 413 |
+| Page size | 50 default, 200 max | clamped silently |
+
+The `append_token` pattern is `^[0-9a-f]{16,128}$` — hex only. A prefixed token returns **400**, not 403; see [errors](errors.md) for why that distinction saves time.
+
+## See also
+
+- [Vault messaging](../docs/vault-messaging.md) — this API composed with PKI into a worked example
+- [`sg.append`](../vault/sg-bridge.md) — the same six operations from a vault app
+- [Errors and limits](errors.md)
+
+
+
+==============================================================================
+# API errors and limits — sgit.ai
+
+> 400, 403, 413 and 507: what each means, why a malformed token returns 400 rather than 403, the input patterns enforced before storage is reached, and every documented ceiling.
+>
+> Page: https://sgit.ai/api/errors.html
+
+[Home](../index.md) / [API](index.md) / Errors and limits
+
+# Errors and limits
+
+Four status codes carry almost all the failures, and telling them apart saves real debugging time — particularly 400 versus 403, which fail for opposite reasons.
+
+## Status codes
+
+| Code | Means | What to do |
+|---|---|---|
+| **400** | Invalid input — the value never reached a gate. Malformed token, malformed file ID, batch too large, unknown `folder` value | Fix the *shape* of what you sent. Your credential may be perfectly valid |
+| **403** | Gate failure — well-formed input, wrong capability | Fix the *credential*. The request shape was fine |
+| **413** | Too large — payload over 5 MB, or an inline-content listing over the 3 MB ceiling | Split the payload, or list without inline content and fetch on demand |
+| **507** | Lane full — 1000 pending files for that token | Fetch and `mark-processed`, then `purge` the processed folder |
+
+**The 400 that looks like a 403.** Path and token components are validated by typed primitives *before* they reach storage, which is how path traversal is blocked at the type level. A prefixed token such as `tok_abc…` — or a CLI fingerprint pasted straight in, `sha256:a461…` — fails the hex-only pattern and returns **400**. It reads like a rejected credential; it is a rejected string. Use raw hex.
+
+## Input patterns
+
+| Input | Pattern |
+|---|---|
+| `append_token` | `^[0-9a-f]{16,128}$` — hex only, no prefix |
+| `file_id` (append) | `^\d{13}_[0-9a-f]{24}\.enc$` — server-assigned, so you should be echoing one back |
+| `vault_id` | lowercase alphanumeric, 8–24 characters, no hyphens |
+
+## Limits
+
+| Limit | Value | On breach |
+|---|---|---|
+| Payload per append write | 5 MB | 413 |
+| Pending files per append token | 1000 | 507 |
+| File IDs per batch (fetch / mark / purge) | 100 | 400 |
+| Operations per `/vault/batch` request | 100 | 400 |
+| Inline content when listing | 3 MB cumulative | 413 |
+| Append list page size | 50 default, 200 max | clamped silently |
+| `read-base64` response | ~3.75 MB | use [presigned reads](vault-objects.md) above this |
+
+The page-size clamp is silent: ask for 500 and you get 200 with no warning. Page with `after_file_id` rather than assuming your requested size was honoured.
+
+
+
+==============================================================================
+# Sending messages between vaults — sgit.ai
+
+> How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
+>
+> Page: https://sgit.ai/docs/vault-messaging.html
+
+[Home](../index.md) / [Docs](index.md) / Vault messaging
+
+# Sending messages between vaults
+
+Two vaults can exchange encrypted messages without sharing a vault key, without the sender having an account, and without the server ever being able to read anything. The mechanism is an **append lane**: a write-only channel attached to a vault, addressed by the hash of a public key.
+
+**Why this page exists.** Both halves of this capability were already documented — the transport as [`sg.append`](../vault/sg-bridge.md), the crypto as [`sgit pki`](pki.md) — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.
+
+## The shape of it
+
+```
+   SENDER                        SERVER                      RECIPIENT
+   ──────                        ──────                      ─────────
+   has: your public key          stores: ciphertext          has: private key
+                                         + hashes of keys          + enum_key
+
+   encrypt(msg, your_pubkey)
+   append_token = H(pubkey)
+        │
+        │  POST /api/vault/append/write/{vault_id}
+        │  { append_token, payload }
+        ├────────────────────────▶  gate: H(append_token) ∈ append_anchors?
+        ◀────────────────────────  { "ok": true }   ← blind: no id, no count
+                                          │
+                                          │   POST /append/list      (enum_key)
+                                          ◀──────────────────────────┤
+                                          │   POST /append/fetch     │
+                                          ├─────────────────────────▶│ decrypt locally
+                                          │   POST /append/mark-processed
+                                          ◀──────────────────────────┤
+```
+
+**What the server can see:** that a lane received something, how big it was, and when. **What it cannot see:** the content, or the recipient’s private key, which never leaves their machine.
+
+## Four capabilities, deliberately separated
+
+This is the part worth understanding, because it is why a sender cannot read the lane they write to:
+
+| Capability | Who holds it | Can | Cannot |
+|---|---|---|---|
+| `append_token` | the sender | write | list, fetch, read anything |
+| `enum_key` | the vault owner | list, fetch, mark-processed | write, purge |
+| `write_key` | the vault owner | configure, purge | — |
+| private key | the vault owner | **decrypt** | *never sent to the server* |
+
+The server stores `SHA-256` hashes of the first three and checks `H(presented) == stored`. It never holds a raw capability key, and never holds a private key at all. Compromising the server yields hashes and ciphertext.
+
+Read in the [privilege vocabulary](../compare/index.md) the comparison pages use: the sender’s capability is **scoped** to one operation on one lane, **bearer**-held, and **observable** to the owner but not to the sender. A write-only credential that cannot read its own effects is an unusually clean shape.
+
+## Setting up a lane — recipient, one-time
+
+Have a keypair and publish the public half ([full lifecycle here](pki.md)):
+
+```
+$ sgit pki keygen --label "My Vault Identity"
+$ sgit pki export sha256:a4615402a0bc23ac > my-identity.json
+```
+
+Then register, against your vault, the hash of the sender’s lane address and the hash of your enumeration key:
+
+```
+$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{"append_anchors":["<sha256 of the append_token>"],
+         "enum_key_hash":"<sha256 of your enum_key>"}'
+```
+
+`configure` patches an existing vault manifest — it does not create a vault. A 403 means the vault ID or the write key is wrong.
+
+## Deriving the lane address — read this before writing code
+
+**This step is not yet wired end to end, and the gap is worth stating precisely.**
+ The design is `append_token = H(recipient public key)`, so a sender can compute your lane address from the public bundle you gave them, with no extra coordination. That is an elegant property and it is the intended model.
+
+ What ships today on **sgit v0.15.0**: `sgit pki export` emits a **JSON bundle** containing two PEM blocks, a label and two fingerprints — *not* a bare public key. No shipped command emits the append token, and hashing the bundle file is not a defined derivation (field order and whitespace would change the answer). The **server** side of append lanes is code-verified and shipped; the **client** derivation that turns a public key into a lane address is **PROPOSED**.
+
+**What to do meanwhile:** treat `append_token` as an opaque 64-hex secret you agree out of band — generate one, hand it to your sender, register its SHA-256 as an `append_anchor`. Everything else on this page works today. When the derivation lands, the token stops needing to be exchanged; nothing else changes.
+
+Two format rules that cause avoidable failures:
+
+- The token pattern is `^[0-9a-f]{16,128}$` — **hex only**. A prefixed token like `tok_abc…` returns **400**, not 403, because it fails input validation before it reaches any gate.
+- CLI fingerprints are printed as `sha256:a4615402a0bc23ac`. That `sha256:` prefix is part of the CLI identifier and is **not** part of a token. Pasting a fingerprint straight in is the most likely way to hit that 400.
+
+## Sending
+
+```
+# 1. encrypt to the recipient's public key (RSA-OAEP 4096 + AES-256-GCM, client-side)
+$ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
+Encrypted to message.txt.enc
+
+# 2. append it to their lane
+$ curl -X POST https://send.sgraph.ai/api/vault/append/write/$THEIR_VAULT_ID \
+    -H "Content-Type: application/json" \
+    -d '{"append_token":"'$APPEND_TOKEN'","payload":"'$(base64 -w0 message.txt.enc)'"}'
+{"ok": true}
+```
+
+**No account is needed to send.** The write endpoint requires no access token — the `append_token` is the whole gate. That is deliberate: somebody can send to your vault without holding a credential on the platform at all.
+
+The response is **blind by design**: exactly `{"ok": true}`, with no file ID, no count and no metadata. A sender cannot learn what else is in the lane, or even whether theirs was the first write.
+
+## Receiving
+
+Poll cheaply first — a metadata-only listing reads **zero** payloads:
+
+```
+$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$VAULT_ID \
+    -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{"include_content": false}'
+```
+
+Filenames are server-assigned as `{epoch_ms}_{24-hex}.enc`, so they sort chronologically — which is what makes cursor pagination stable. Page with `after_file_id` set to the last ID you saw.
+
+```
+$ curl -X POST .../append/fetch/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
+    -d '{"file_ids":["1755302400000_a3f8….enc"]}'
+
+$ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
+
+$ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
+    -d '{"file_ids":["1755302400000_a3f8….enc"]}'
+```
+
+`mark-processed` is idempotent — a file already moved comes back in `missing` rather than as an error, so a retried batch is safe.
+
+## From inside a vault app
+
+The same transport through the browser bridge, with no HTTP of your own (see [`sg.append`](../vault/sg-bridge.md)):
+
+```
+await sg.append.configure({ appendAnchors: [anchorHash], enumKeyHash });
+await sg.append.write({ appendToken, payload });            // blind
+const { entries } = await sg.append.list({ includeContent: false });
+const { files }   = await sg.append.fetch({ fileIds });
+await sg.append.markProcessed({ fileIds });
+await sg.append.purge({ folder: 'processed' });
+```
+
+## Practical notes
+
+- **Limits.** 5 MB per message (**413**) · 1000 pending files per token (**507**) · 100 file IDs per batch (**400**) · 3 MB inline-content ceiling when listing with content (**413**) · list page size 50 by default, 200 max, clamped silently.
+- **Several senders.** Register several `append_anchors`. Each sender writes to their own lane, so a listing can be scoped to one of them.
+- **Housekeeping.** `purge` with `folder:"processed"` and no file IDs clears a whole lane’s processed set in one call. It takes `"pending"` or `"processed"` — the older `"inbox"` value now returns 400.
+- **The API was renamed.** `inbox` became `append` in v0.32.7; any `/api/vault/inbox/*` URL is gone.
+
+## What this is not
+
+Not a chat protocol, not a queue with delivery guarantees, and not anonymous — the server sees lane activity and timing even though it cannot read content. It is a **generic append-only transport**: the same primitive carries logs, signals, control messages and state flows between agents. The client decides what the bytes mean.
+
+## See also
+
+- [API — append lanes](../api/append-lanes.md): the six endpoints, gates, limits and status codes
+- [PKI](pki.md): keypair lifecycle, verified against the shipped CLI
+- [`sg.append`](../vault/sg-bridge.md): the same transport from a vault app
+- [Security model](../security/index.md#pki): where the keypair sits relative to the symmetric vault key
+
+
+
+==============================================================================
+# Keys, signatures and encrypting to someone else — sgit.ai
+
+> The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.
+>
+> Page: https://sgit.ai/docs/pki.html
+
+[Home](../index.md) / [Docs](index.md) / PKI
+
+# Keys, signatures and encrypting to someone else
+
+The vault key is symmetric and opens the whole vault. A keypair does the two things it cannot: prove *who* wrote something, and encrypt to somebody who holds no vault key at all. This page is the lifecycle, run end to end on the shipped CLI.
+
+**Everything below was executed, not recalled.** Every command, every output shape and every construction on this page came from running `sgit pki` on **v0.15.0** in a throwaway home directory. Where the behaviour differs from what you might expect — and in two places it does — the page says so.
+
+## What sgit actually generates
+
+`sgit pki keygen` creates **two** pairs at once, and prints two fingerprints:
+
+| Purpose | Construction | Identifier |
+|---|---|---|
+| Encryption | **RSA-OAEP, 4096-bit** | `fingerprint` |
+| Signing | **ECDSA P-256** | `signing_fingerprint` |
+
+Encryption is **hybrid**, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault — the keypair only changes how the content key gets to the recipient.
+
+Note for anyone integrating against a spec rather than the binary: this is **RSA-OAEP and ECDSA**, not X25519/Ed25519. Draft material describing an X25519 sealing layer describes a design, not what v0.15.0 ships.
+
+## The lifecycle
+
+### 1 · Generate
+
+```
+$ sgit pki keygen --label "My Vault Identity"
+Enter passphrase to protect private keys:
+
+Generating RSA-4096 encryption key... done
+
+Key pair created:
+  Label:                My Vault Identity
+  Encryption:           RSA-OAEP 4096-bit
+  Signing:              ECDSA P-256
+  Fingerprint:          sha256:a4615402a0bc23ac
+  Signing fingerprint:  sha256:69d9b4835ccf790c
+```
+
+**Keygen prompts for a passphrase** and will not proceed without one — private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an `EOFError` rather than silently generating an unprotected key, which is the right failure.
+
+RSA-4096 generation is not instant. Expect a pause.
+
+### 2 · Publish the public half
+
+```
+$ sgit pki list
+  sha256:a4615402a0bc23ac  My Vault Identity  (RSA-OAEP 4096)
+
+$ sgit pki export sha256:a4615402a0bc23ac > my-identity.json
+```
+
+**Export produces a JSON bundle, not a PEM file.** It carries both public keys, both fingerprints and the label:
+
+```
+{
+  "v": 1,
+  "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkq…",
+  "sign":    "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQ…",
+  "label":   "My Vault Identity",
+  "fingerprint":         "sha256:a4615402a0bc23ac",
+  "signing_fingerprint": "sha256:69d9b4835ccf790c"
+}
+```
+
+The bundle contains no private material. Publish it, mail it, commit it, put it on your website.
+
+### 3 · Import someone else’s
+
+```
+$ sgit pki import their-identity.json
+Imported contact: Their Label
+  Fingerprint: sha256:…
+
+$ sgit pki contacts
+  sha256:…  Their Label
+```
+
+### 4 · Encrypt to them, and decrypt what they send you
+
+```
+$ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
+Encrypted to message.txt.enc
+
+$ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
+Enter passphrase:
+Decrypted to message.txt
+```
+
+Round trip verified. Two argument details that will bite you once each: `encrypt` takes `--recipient` (a contact’s fingerprint) and an optional `--fingerprint` for *your* signing key; `decrypt` requires `--fingerprint` — it will not guess which of your keys to try.
+
+### 5 · Sign and verify
+
+```
+$ sgit pki sign report.pdf --fingerprint sha256:69d9b4835ccf790c
+$ sgit pki verify report.pdf report.pdf.sig
+```
+
+Detached signatures, so the signed file is unchanged. Signing uses the *signing* fingerprint, which is the second one keygen printed.
+
+## The envelope on the wire
+
+An encrypted file is base64 over a small JSON object — worth knowing if you are writing an interoperable client:
+
+| Field | Contents | Observed size |
+|---|---|---|
+| `v` | Envelope version — `2` on v0.15.0 | — |
+| `w` | The AES content key, wrapped with RSA-OAEP to the recipient | 512 bytes (4096-bit) |
+| `i` | AES-GCM IV | 12 bytes |
+| `c` | Ciphertext with its GCM tag | plaintext + 16 |
+
+A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.
+
+## Where public keys live in a vault
+
+Vaults carry public PKI keys as immutable objects at `bare/keys/key-rnd-imm-*`, alongside the content store at `bare/data/obj-cas-imm-*`. They are public by construction, so nothing there needs protecting — which is exactly why a lane addressed by a public key can be written to by a stranger.
+
+## What this is for
+
+Signing and encrypting files is useful on its own. The larger use is [**vault-to-vault messaging**](vault-messaging.md): your public key becomes an address a stranger can write to, and your private key is the only thing that can read what arrives. That page composes this one with [append lanes](../api/append-lanes.md).
+
+## What this does not do yet
+
+- **No key revocation or rotation workflow.** There is no CRL, no expiry, no `sgit pki revoke`. If a private key is compromised, you generate a new pair and redistribute the bundle out of band.
+- **No web of trust and no directory.** Fingerprint verification is your problem — compare out of band, exactly as with SSH host keys.
+- **Fingerprints carry a `sha256:` prefix.** That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the [addressing note](vault-messaging.md#addressing) — it is a live source of confusion.
+- **Signing and encryption are separate keys.** Passing the wrong fingerprint to the wrong verb fails; it does not fall back.
+
+Honest edges belong on [the limitations page](limitations.md) too, and these are listed there.

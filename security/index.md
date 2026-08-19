@@ -2,7 +2,7 @@
 
 > sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.
 
-*Source: <https://sgit.ai/security/index.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/security/index.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -32,6 +32,24 @@ We state the right-hand column deliberately. Traffic analysis of sizes and timin
 | Object identity | Content-addressed: `obj-cas-imm-<sha256-prefix>` over ciphertext, enabling dedup without plaintext knowledge |
 
 One precision note, because precision beats marketing: the key hierarchy derives a *structure key* (one-way from the read key) designed to separate access to vault metadata from access to file contents. Today, vault objects are encrypted under the read key — activating the structure-key split across structural objects is an in-progress, reviewed design change, and this page will say so when it lands, not before.
+
+## Two key systems, and where each applies
+
+Everything above describes the **symmetric** half, and it is the half that matters most: the vault key is symmetric, it is the root of the storage hierarchy, and every object in a vault is encrypted under a key derived one-way from it. If you only ever use sgit to sync your own files across your own machines, that is the whole system.
+
+There is a second half. Layered on top is a **public-key** system, for the two things a shared symmetric key cannot express: **proving who wrote something**, and **encrypting to somebody who does not hold your vault key**. It is what makes [vault-to-vault messaging](../docs/vault-messaging.md) possible — a sender can encrypt to your published public key and drop the result into your vault without ever being able to read it.
+
+|  | Vault key (symmetric) | Keypair (asymmetric) |
+|---|---|---|
+| What it is | One generated string: address, credential and encryption root | An encryption pair and a signing pair, generated locally |
+| What it protects | Every object in the vault | Individual files addressed to a recipient, and signatures over them |
+| Who holds it | Everyone who can open the vault | Private half: you alone. Public half: publish it freely |
+| Answers | “Can this person open the vault?” | “Who wrote this?” and “Can only *they* read it?” |
+| Where it lives on the server | Never — the server holds ciphertext only | Public keys at `bare/keys/key-rnd-imm-*`. Private keys never leave your machine |
+
+The constructions, read out of `sgit pki keygen` on v0.15.0 rather than recalled: **RSA-OAEP 4096-bit** for encryption and **ECDSA P-256** for signing, with a hybrid envelope — RSA-OAEP wraps a per-message AES-256-GCM content key. Private keys are passphrase-protected at rest. The full lifecycle is on [the PKI page](../docs/pki.md).
+
+**This section is new, and its absence had a cost.** Until now this page described the symmetric design and simply did not mention asymmetric cryptography — it never claimed PKI was absent, but it never said it was present either. An agent researching how to send a message between vaults read this page, concluded there was no public-key layer, and stopped looking. The capability had shipped; the sentence that would have pointed at it had not been written. Silence on a page like this one reads as denial.
 
 ## Key strength
 

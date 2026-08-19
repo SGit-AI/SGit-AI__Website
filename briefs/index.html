@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.33</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.34</a>
   <a class="nl" href="../why/index.html">Why</a>
   <a class="nl" href="../try/index.html">Try</a>
   <a class="nl" href="../demos/index.html">Demos</a>
@@ -31,6 +31,7 @@
   <a class="nl" href="../use-cases/index.html">Use Cases</a>
   <a class="nl" href="../case-studies/index.html">Case Studies</a>
   <a class="nl" href="../docs/index.html">Docs</a>
+  <a class="nl" href="../api/index.html">API</a>
   <a class="nl" href="../vault/index.html">SG/Vault</a>
   <a class="nl" href="../deploy/index.html">Deploy</a>
   <a class="nl" href="../skills/index.html">Skills</a>
@@ -42,6 +43,18 @@
   <h1>Cross-team briefs</h1>
   <p class="lead">This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.</p>
   <div class="note"><b>For the agent reading this:</b> each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the <a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a> repo under <code>team/humans/dinis_cruz/claude-code-web/</code>; this page is the human-readable index and the shareable URL (<code>sgit.ai/briefs.html</code>).</div>
+
+  <h2>← Inbound, from the SG/API team: the API reference was missing, and three of their findings did not survive checking</h2>
+  <p><b>Status:</b> acted on, <a href="../admin/versions.html">v0.2.34</a> · <b>Trigger:</b> an agent was asked how to send a message between vaults and could not find the answer here · <b>Direction:</b> inbound.</p>
+  <p>The SG/API team audited this site against their route tables at v0.33.54 and sent a fix pack: a gap analysis, code-verified source material for an API reference, and a draft of the page they judged missing. Their central finding was right and is now fixed — the site documented the <a href="../vault/sg-bridge.html">transport</a> and the <a href="../docs/pki.html">crypto</a> on pages that never referenced each other, and never wrote the sentence saying they combine into <a href="../docs/vault-messaging.html">vault-to-vault messaging</a>. There was also no <a href="../api/index.html">HTTP API reference</a> at all. Seven pages now exist that did not.</p>
+  <p>The pack itself asked for its claims to be verified before publishing, which turned out to be the most valuable line in it. <b>Three did not survive:</b></p>
+  <ul>
+    <li><b>“The security page actively denies PKI.”</b> It did not. Swept for <em>symmetric</em>, <em>asymmetric</em>, <em>public key</em>, <em>PKI</em>, <em>keypair</em>: zero occurrences. The page said nothing about asymmetric cryptography either way. That is an <em>omission</em>, and the distinction matters — publishing a correction for a claim we never made would have put a false statement in the changelog. The remedy was the same and the <a href="../security/index.html#pki">section now exists</a>; the framing was not.</li>
+    <li><b>“Search the site for stale <code>inbox</code> naming.”</b> There is none. Two hits, both ordinary English — a changelog line about URL routing, and a demo vault described as a “two-agent inbox”. No <code>/api/vault/inbox/*</code> path appears anywhere on the site. Nothing to fix.</li>
+    <li><b>“Seal to the recipient’s X25519 key.”</b> Not what ships. Running <code>sgit pki keygen</code> on v0.15.0 prints <b>RSA-OAEP 4096-bit</b> for encryption and <b>ECDSA P-256</b> for signing. Had the draft been published as written, this site would have told integrators to build against the wrong primitive.</li>
+  </ul>
+  <p>Two more corrections came out of running the CLI rather than reading about it. <code>sgit pki export</code> emits a <b>JSON bundle</b> of two PEM blocks and two fingerprints, not the <code>.pem</code> file the draft redirected into — so the draft’s <code>sha256sum public-key.pem</code> derivation of the lane address is not well defined, since field order and whitespace would change the answer. And <code>keygen</code> requires a passphrase, which no draft step mentioned.</p>
+  <p>The pack’s own <a href="../llms.txt">acceptance test</a> — give a fresh agent only <code>llms.txt</code> and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and the caveat that its derivation is <b>PROPOSED</b> rather than shipped. Two endpoints their audit flagged as unresolved (<code>/api/vault/zip</code>, <code>/join/*</code>) are <a href="../api/index.html#unresolved">listed as unresolved rather than documented</a>, which is what we would want done to us.</p>
 
   <h2>→ To the sgit CLI team: first-class serialised diffs, and ignore support</h2>
   <p><b>Status:</b> open · <b>Brief:</b> <a href="brief-serialised-diff-and-ignore.md">briefs/brief-serialised-diff-and-ignore.md</a></p>
@@ -124,7 +137,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.33</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.34</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -163,7 +176,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.33';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.34';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

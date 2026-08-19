@@ -18,6 +18,8 @@
     </div>
   </div>
 
+  <div class="note"><b>Not yet in the skills: vault-to-vault messaging.</b> These three files ship verbatim from upstream and this site does not edit them. As of the current versions, the operate skill documents <code>sgit pki</code> as file signing and encryption, and does not mention <a href="../api/append-lanes.html">append lanes</a> — so an agent reading only the skill has both halves of the messaging mechanism and no statement that they combine. That is exactly the failure that produced <a href="../docs/vault-messaging.html">the messaging page</a>: an agent asked how to send a message between vaults and could not get there. Until the skill catches up, point agents at <a href="../docs/vault-messaging.html">/docs/vault-messaging</a> alongside it.</div>
+
   <h2>Installing a skill</h2>
   <p>For Claude Code and compatible agents: drop the skill file into your skills directory (e.g. <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>) or paste it into the session as context. The skill's own description tells the agent when to trigger it. A minimal bootstrap for a fresh session is one line:</p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai &amp;&amp; sgit clone &lt;vault-key&gt; workspace</span>

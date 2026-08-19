@@ -21,6 +21,16 @@
     <li><b>The full CLI reference</b> on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).</li>
   </ul>
 
+  <h2>What PKI does not do yet</h2>
+  <p><a href="pki.html">Keypairs</a> ship and work — keygen, export, import, sign, verify, encrypt, decrypt all round-trip on v0.15.0. The layer around them is thinner than the primitives:</p>
+  <ul>
+    <li><b>No revocation, expiry or rotation workflow.</b> No CRL, no <code>sgit pki revoke</code>. A compromised private key means generating a new pair and redistributing the bundle out of band, by hand.</li>
+    <li><b>No directory and no web of trust.</b> Verifying that a fingerprint belongs to who you think is entirely your problem — compare out of band, as with SSH host keys.</li>
+    <li><b>Lane addressing is not wired end to end.</b> The intended model is <code>append_token = H(public key)</code>, so a sender derives your <a href="vault-messaging.html">message lane</a> address from the key you published. The server side ships; no shipped command emits that token, so today you agree one out of band. Details and the interim recipe are in the <a href="vault-messaging.html#addressing">addressing note</a>.</li>
+    <li><b>Only the first mode is built.</b> Signing and encrypting files, plus the append transport. The richer modes — group addressing, key discovery, delegated capability — are designs, not code.</li>
+  </ul>
+  <p>Said plainly because the alternative is worse: an agent that reads an over-claiming page will build on a step that does not exist, and only find out at runtime.</p>
+
   <p>If one of these gaps blocks you, say so on <a href="https://github.com/SGit-AI/SGit-AI__CLI/issues">GitHub</a> — real usage reports move the roadmap.</p>
 
   <div class="pagenav"><a href="agents.html">← Working with AI agents</a><span></span></div>

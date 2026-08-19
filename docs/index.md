@@ -2,7 +2,7 @@
 
 > sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 
-*Source: <https://sgit.ai/docs/index.html> · site v0.2.33 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/index.html> · site v0.2.34 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,11 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Concepts
 
-[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md)
+[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md) [Keys and signaturesEncrypting to someone who holds no vault key](pki.md)
+
+## Messaging & the API
+
+[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
 
 ## Guides
 
