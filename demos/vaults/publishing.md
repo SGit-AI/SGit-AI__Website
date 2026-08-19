@@ -2,7 +2,7 @@
 
 > The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.
 
-*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.35 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

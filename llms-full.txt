@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.35). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.36). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -4171,11 +4171,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.35**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.36**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.35 | 2026-08-19 | this release | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
+| v0.2.36 | 2026-08-19 | this release | A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents an identity' splits into agents you RUN and agents you RENT, and that the industry answers only the first — SPIFFE for workloads you can attest, an open feature request for the agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver failure and publishes four rules BEFORE the registry exists, reaching a resolution worth borrowing: append-only is safe when a writer appends only to objects it owns and fatal when anyone may append to somebody else's, so the rule to carry is not 'append-only' but 'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots captured from the live sites through the curl mirror the sandbox needs, since Chromium cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the index, the cards and the per-site page are derived, same contract as updates and articles. Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT AUTOMATICALLY for any page containing figures — a markdown author has no place to put a script tag, and the views page had already shipped once with figures and no loader, which errors nowhere and simply shows nothing. The first version of that check matched on 'figure class="shot"' and missed 'class="shot net-shot"', leaving the new index in exactly the state the check existed to prevent; it now matches on data-shot=, the attribute the component actually selects on. Detect on what the consumer looks for, not on how it happened to be written. |
+| v0.2.35 | 2026-08-19 | obj-cas-imm-1f3ce8d32a28 | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
 | v0.2.34 | 2026-08-18 | obj-cas-imm-97c957112852 | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
 | v0.2.33 | 2026-08-17 | obj-cas-imm-ab458fd8611d | A release now ends by asking the live site what version it is serving, because 'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages failed to deploy them because codeload returned 429 (Too Many Requests) for actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a single step. Validation passed, tagging passed, the push was verified against both remotes — and the site served a two-release-old page for forty minutes, which is how long it took a human on a phone to notice the version pill still said v0.2.30. The failure was invisible to every check the release ran, because it happened in a job neither remote knows about. So release.sh gained a sixth step: poll the live URL with a cache-buster until the version pill matches this release, up to eight minutes, and ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the action download is transient and just needs a re-run. The cost is up to eight minutes of waiting per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not. Same principle as the orphan-page rule and the llms.txt guard: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished, so the build refuses all three. Ships the content of v0.2.31 and v0.2.32, which had been written but never served. |
 | v0.2.32 | 2026-08-17 | obj-cas-imm-7f84b9ee6727 | The walkthroughs page becomes a document rather than a list of links. Each of the three videos now carries the recording at the top and THE SAME SESSION READ BACK underneath it: fifteen moments, each one a timestamp that deep-links into the video, the frame the screen was showing at that moment, and an explanation of what is happening in it. The transcripts are still there, folded away at the foot of each. The reason for the format is the one thing a transcript structurally cannot do: these recordings are full of 'this guy here' and 'look at this', and the words alone name neither end of what is being pointed at. Pairing each phrase with its frame is what makes the argument survive being read instead of watched. TWO SOURCES OF FRAMES, and the page says which is which. The Graph Browser moments are frames of the recording, from a narrated-review export the author produced with tools.sgraph.ai — nine timestamped stills paired with the narration spoken over each. Risk Chains and Role risk map have no such export, so their six frames were captured from the LIVE VAULT with the published read key, driven to the exact state being described — including the entry he names out loud ('you have risk 6'). What the frames turned up is most of the value, because none of it is audible: negative answers produce NAMED EDGES (never-exercised-on, never-timed-for, absent-for) rather than silence; 'no egress' draws a single assurance-coloured edge in a field of amber, so a good answer is a finding rather than the absence of one; one selection can carry two fact ids; and every risk ships with a CEASES WHEN ANY OF THESE HOLD list — its own falsification condition, cited to facts. The role dashboard also separates three arrival routes where the video describes two: held, arrives by the risk chain, and arrives by the org chart. TOOLING: the capture rig gained appProbe (ask the running app what its elements are called instead of guessing and burning a capture run per guess — it found g.cnode for chain entries and g.role for roles) and appClickMatch (substring match plus a real MouseEvent, because the graph nodes are SVG). Videos print with the player hidden and the moments intact. |
@@ -4865,6 +4866,21 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
+## 2026-08-19
+
+### [The first two sibling sites, with screenshots](#the-first-two-sibling-sites) [v0.2.36](../admin/versions.md)
+
+networkidentitypki
+
+Two focused sites now run on `*.sgit.ai` subdomains, and [a network section](../network/index.md) covers both — what each argues, why it is relevant here, and screenshots of the real pages.
+
+- **[nhi.sgit.ai](../network/nhi.md)** splits "how do I give my agents an identity?" into **agents you run** and **agents you rent**, and shows that everything on the market answers only the first. For rented agents — the ones in Claude, Codex, behind an API — the honest current answer is to hand over a broad credential and hope. Its sharpest idea is that **the real authorization is the closure**: inbox access is every account resettable by email.
+- **[pki.sgit.ai](../network/pki.md)** designs a key registry from the 2019 keyserver catastrophe, publishing four rules **before the registry exists** so they stay checkable. The resolution it reaches is worth borrowing: append-only is safe when a writer appends only to objects it *owns*, and fatal when anyone may append to somebody else's. The rule to carry forward is not "append-only" — it is *the writer owns what it writes*.
+
+Both connect directly to work here. Read keys and [append lanes](../api/append-lanes.md) are credentials with a provably bounded closure, which is the nhi problem stated as a mechanism; and an append lane is owner-configured, which is pki's rule 1 already shipped in another corner of the system.
+
+More subdomains are coming. Adding one to this site is now writing a single markdown file and capturing its screenshots — the index, the cards and the page are all derived.
+
 ## 2026-08-18
 
 ### [Verify the fix pack, not just the bug](#verify-the-fix-pack-not-just-the-bug) [v0.2.34](../admin/versions.md)
@@ -4955,6 +4971,31 @@ Longer pieces that make an argument across several pages — what a thing means,
 **Two rules keep these from going stale.** An article never restates a fact it does not own — it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
 
 [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+
+
+
+==============================================================================
+# The sgit.ai network — sibling sites
+
+> Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
+>
+> Page: https://sgit.ai/network/index.html
+
+# The sgit.ai network
+
+Focused sites on `*.sgit.ai` subdomains, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, stated status, honest edges — and they publish their arguments before the things they describe exist, so the commitments stay checkable.
+
+2 live. Screenshots are of the real sites, captured on the date each entry gives.
+
+[**nhi.sgit.ai**Agents you run, agents you rent, and the identity gapThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
+identityagentssecurity[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
+
+[**pki.sgit.ai**A key registry for agents, designed from a documented failureGood public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.](pki.md)
+pkiregistryhistory[What it argues →](pki.md) · [Open pki.sgit.ai ↗](https://pki.sgit.ai)
+
+## Why they are separate sites
+
+Each one is an argument that needs room and a reader who arrived for it. Splitting them out keeps this site about sgit while letting each question be pursued properly — and gives each its own version history, release cadence and repository. They are built from the same generator and hold to the same rules, so a reader moving between them is not changing register.
 
 
 
@@ -5167,3 +5208,123 @@ All three are acceptable against the failure they replace. The first one to bite
 *The release script is [in the repository](https://github.com/SGit-AI/SGit-AI__CLI); the releases described here are [v0.2.31 to v0.2.33](../admin/versions.md).*
 
 [← All articles](index.md)
+
+
+
+==============================================================================
+# nhi.sgit.ai — Agents you run, agents you rent, and the identity gap — sgit.ai
+
+> The question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.
+>
+> Page: https://sgit.ai/network/nhi.html
+
+[Home](../index.md) / [Network](index.md) / nhi.sgit.ai
+
+# nhi.sgit.ai
+
+Agents you run, agents you rent, and the identity gap
+
+Screenshots captured 2026-08-19 · `v0.1.14` when captured · [SGit-AI__Website__NHI ↗](https://github.com/SGit-AI/SGit-AI__Website__NHI)
+
+[Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
+
+## The distinction the whole site turns on
+
+**Agents you run** execute on your infrastructure. You can attest the workload, install an identity agent, and control everything. An open standard — SPIFFE — issues short-lived cryptographic identities on exactly that basis.
+
+**Agents you rent** execute on somebody else's. You cannot attest the workload, cannot install anything, and the only thing you control is the credential you hand over.
+
+The site puts the two side by side and lets the table make the argument:
+
+The home page, with the two-population comparison directly under the thesis.
+
+The last row is the one that lands: for agents you run, the industry answer is *"mature — and expensive"*. For agents you rent, it is *"none"*. SPIFFE is described by practitioners as a multi-year engineering project needing a dedicated team; for rented agents, the equivalent capability is an open feature request.
+
+## "Hope is not a control"
+
+The site names the current practice rather than describing it politely. When you hand an agent a broad credential you are making **two hopes** — that it will not misuse what it holds, and that it will not discover the rest of what that credential actually reaches. Neither hope changes your accountability, which runs to the board.
+
+The second hope is the one most people have not costed. The site's framing is that **the real authorization is the closure**: inbox access is every account resettable by email; desktop access is every stored credential. The grant is not the words in it — it is everything reachable from them.
+
+The thesis page: the argument with citations, rather than assertion.
+
+## Why it is relevant here
+
+This is the problem sgit's [read keys](../demos/vaults/index.md) and [append lanes](../api/append-lanes.md) are shaped against. A published read key is a credential whose closure is *provably* bounded — it opens one vault, cannot write, and cannot be turned back into write access. An append token can write to one lane and cannot read it.
+
+The [comparison pages](../compare/index.md) use a privilege vocabulary — scope, operations, bearer, mediation, duration, withdrawal, observability — that is the same question asked in a different register.
+
+## Sections
+
+- **Thesis** — the two populations, with citations
+- **Hope** — why the current workflow is hope-driven, and what the two hopes cost
+- **Method** — from hope to controls: enumerate, bound, observe, contain, account
+- **Options, Industry, Collection** — what exists, what it costs, and the open questions
+
+[← All network sites](index.md)
+
+
+
+==============================================================================
+# pki.sgit.ai — A key registry for agents, designed from a documented failure — sgit.ai
+
+> Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.
+>
+> Page: https://sgit.ai/network/pki.html
+
+[Home](../index.md) / [Network](index.md) / pki.sgit.ai
+
+# pki.sgit.ai
+
+A key registry for agents, designed from a documented failure
+
+Screenshots captured 2026-08-19 · `v0.1.2` when captured · [SGit-AI__Website__PKI ↗](https://github.com/SGit-AI/SGit-AI__Website__PKI)
+
+[Open pki.sgit.ai ↗](https://pki.sgit.ai)
+
+## Publishing the design before the implementation
+
+The premise is unusual and worth stating plainly: **this site describes a registry that does not exist.** That is deliberate. Publishing the rules now is cheap; claiming them afterwards is impossible. If something ships that breaks one of them, the site is the evidence.
+
+The home page. The claim is historical before it is technical.
+
+## The failure it is designed from
+
+In 2019 the global keyserver network was flooded with garbage signatures until importing a poisoned certificate would break your installation. Its own maintainer called it **unsalvageable**. The cause was not a bug — it was a design goal stated at the outset.
+
+That design goal was **append-only**. And append-only is a pattern this project relies on in five places, which is exactly why a shrug would not do. The site's resolution is a precise one, and it is the most useful idea on the page:
+
+- **Append-only, owner-writes** — only the record's owner may write to it. Every entry is attributable because the owner signed it; a record grows slowly, in one hand; something can be withdrawn by a signed append that supersedes it.
+- **Append-only, anyone-writes** — anybody may grow anybody's record, without limit, and garbage is indistinguishable from signal. Nothing can ever be withdrawn, by design. This destroyed the network.
+
+The rule to carry forward is **not** "append-only". It is *the writer owns what it writes*.
+
+## The four rules
+
+Each one turns around a specific property the 2019 attack abused:
+
+Each rule states the property it turns around, so it can be checked rather than trusted.
+
+1. **Only the owner writes to their own record** — turns around *anyone may append to anybody's certificate*.
+2. **Revocation is a signed append, not a deletion** — signed by the key being revoked, so it is self-authenticating, the record stays append-only, and what a key said before revocation stays checkable.
+3. **Records are size-bounded** — one poisoned key reached about 150,000 signatures because certificates had no limit. The bound is a stated parameter, with the honest cost that it will one day reject a legitimate record.
+4. **Every entry is signed** — so nothing anonymous can accumulate.
+
+Rule 2 is the one to notice. Deletion and append-only are usually treated as incompatible; making revocation a *signed statement appended by the revoked key itself* resolves the contradiction without weakening either property.
+
+The history, in five minutes — sourced rather than summarised from memory.
+
+## Why it is relevant here
+
+sgit's own [PKI](../docs/pki.md) ships keypairs today — RSA-OAEP 4096 for encryption, ECDSA P-256 for signing — and has **no revocation, no directory and no web of trust**, which [the limitations page](../docs/limitations.md) says plainly. This site is the design work for what a directory would have to be before it could responsibly exist.
+
+The connection to [append lanes](../api/append-lanes.md) is direct: a lane is append-only and *owner-configured* — a sender writes only to a lane the owner registered for them. That is rule 1, already shipped, in a different corner of the system.
+
+## Sections
+
+- **The failure** — 2019, with sources
+- **The rules** — four commitments, each tied to the property it turns around
+- **Mandate** — what a registry would be for
+- **Build order** — private before public, and why
+
+[← All network sites](index.md)

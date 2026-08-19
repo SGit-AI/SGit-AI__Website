@@ -149,6 +149,11 @@ Quick answers (so you do not need a second request for the common questions):
 - [Seven vaults, one method](/articles/seven-vaults-one-method.md): Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.
 - [Green does not mean live](/articles/green-does-not-mean-live.md): Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 
+## The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)
+- [The sgit.ai network](/network/index.md): Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
+- [nhi.sgit.ai](/network/nhi.md): The question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.
+- [pki.sgit.ai](/network/pki.md): Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.
+
 ## Optional
 - [sgit](/index.md): sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
 - [Security model](/security/index.md): sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process.

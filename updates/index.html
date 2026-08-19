@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.35</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.36</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -58,6 +58,7 @@
     <div class="sub">
       <a class="sl here" href="../updates/index.html">Updates</a>
       <a class="sl" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../network/index.html">Network</a>
       <a class="sl" href="../admin/versions.html">Version log</a>
     </div>
   </div>
@@ -70,6 +71,18 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-08-19</h2>
+  <article class="upd" id="the-first-two-sibling-sites">
+    <h3><a href="#the-first-two-sibling-sites">The first two sibling sites, with screenshots</a> <a class="upd-ver" href="../admin/versions.html">v0.2.36</a></h3>
+    <p class="chips"><span class="chip">network</span><span class="chip">identity</span><span class="chip">pki</span></p>
+<p>Two focused sites now run on <code>*.sgit.ai</code> subdomains, and <a href="../network/index.html">a network section</a> covers both — what each argues, why it is relevant here, and screenshots of the real pages.</p>
+<ul>
+<li><b><a href="../network/nhi.html">nhi.sgit.ai</a></b> splits "how do I give my agents an identity?" into <b>agents you run</b> and <b>agents you rent</b>, and shows that everything on the market answers only the first. For rented agents — the ones in Claude, Codex, behind an API — the honest current answer is to hand over a broad credential and hope. Its sharpest idea is that <b>the real authorization is the closure</b>: inbox access is every account resettable by email.</li>
+<li><b><a href="../network/pki.html">pki.sgit.ai</a></b> designs a key registry from the 2019 keyserver catastrophe, publishing four rules <b>before the registry exists</b> so they stay checkable. The resolution it reaches is worth borrowing: append-only is safe when a writer appends only to objects it <em>owns</em>, and fatal when anyone may append to somebody else's. The rule to carry forward is not "append-only" — it is <em>the writer owns what it writes</em>.</li>
+</ul>
+<p>Both connect directly to work here. Read keys and <a href="../api/append-lanes.html">append lanes</a> are credentials with a provably bounded closure, which is the nhi problem stated as a mechanism; and an append lane is owner-configured, which is pki's rule 1 already shipped in another corner of the system.</p>
+<p>More subdomains are coming. Adding one to this site is now writing a single markdown file and capturing its screenshots — the index, the cards and the page are all derived.</p>
+  </article>
   <h2 class="upd-date">2026-08-18</h2>
   <article class="upd" id="verify-the-fix-pack-not-just-the-bug">
     <h3><a href="#verify-the-fix-pack-not-just-the-bug">Verify the fix pack, not just the bug</a> <a class="upd-ver" href="../admin/versions.html">v0.2.34</a></h3>
@@ -139,7 +152,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.35</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.36</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -178,7 +191,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.36';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
