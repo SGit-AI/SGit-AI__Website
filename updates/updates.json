@@ -1,8 +1,20 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.35",
+  "site_version": "v0.2.36",
   "updates": [
+    {
+      "slug": "the-first-two-sibling-sites",
+      "title": "The first two sibling sites, with screenshots",
+      "date": "2026-08-19",
+      "version": "v0.2.36",
+      "tags": [
+        "network",
+        "identity",
+        "pki"
+      ],
+      "summary": "Two focused sites now run on .sgit.ai subdomains, and a network section covers both — what each argues, why it is relevant here, and screenshots of the real pages. nhi.sgit.ai splits \"how do I give my agents an identity?\" into agents you run and agents you ren…"
+    },
     {
       "slug": "verify-the-fix-pack-not-just-the-bug",
       "title": "Verify the fix pack, not just the bug",

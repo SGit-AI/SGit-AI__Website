@@ -258,6 +258,35 @@ class Content_Loader:
         arts.sort(key=lambda a: a['date'], reverse=True)
         return arts
 
+    def load_sites(self):
+        """admin/content/sites/<slug>.md — one sibling site per file.
+
+        There will be many of these. Adding one is writing this file and capturing
+        its screenshots; the index, the cards and the page are all derived."""
+        base = os.path.join(self.root, 'sites')
+        sites = []
+        if not os.path.isdir(base):
+            return sites
+        for fn in sorted(os.listdir(base)):
+            if not fn.endswith('.md'):
+                continue
+            where = f'sites/{fn}'
+            meta, body = self.parse_frontmatter(open(os.path.join(base, fn)).read(), where)
+            self._require(meta, ['title', 'domain', 'tagline', 'summary', 'observed'], where)
+            if not self.RE_DATE.match(meta['observed']):
+                raise Content_Error(f'{where}: observed must be YYYY-MM-DD')
+            sites.append({
+                'slug': fn[:-3], 'title': meta['title'], 'domain': meta['domain'],
+                'tagline': meta['tagline'], 'summary': meta['summary'],
+                'observed': meta['observed'], 'repo': meta.get('repo', ''),
+                'seen_version': meta.get('seen_version', ''),
+                'hero': meta.get('hero', ''), 'tags': meta.get('tags', []),
+                'status': meta.get('status', 'published'),
+                'body': body, 'where': where,
+            })
+        sites.sort(key=lambda x: x['domain'])
+        return sites
+
     # ---------------------------------------------------------------- feed
 
     def render_feed(self, posts, site='https://sgit.ai'):

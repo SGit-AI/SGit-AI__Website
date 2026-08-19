@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.35'
+SITE_VERSION = 'v0.2.36'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.35', '2026-08-19', 'this release',
+    ('v0.2.36', '2026-08-19', 'this release',
+     "A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as "
+     "two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents "
+     "an identity' splits into agents you RUN and agents you RENT, and that the industry answers "
+     "only the first — SPIFFE for workloads you can attest, an open feature request for the "
+     "agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver "
+     "failure and publishes four rules BEFORE the registry exists, reaching a resolution worth "
+     "borrowing: append-only is safe when a writer appends only to objects it owns and fatal "
+     "when anyone may append to somebody else's, so the rule to carry is not 'append-only' but "
+     "'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots "
+     "captured from the live sites through the curl mirror the sandbox needs, since Chromium "
+     "cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the "
+     "index, the cards and the per-site page are derived, same contract as updates and articles. "
+     "Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT "
+     "AUTOMATICALLY for any page containing figures — a markdown author has no place to put a "
+     "script tag, and the views page had already shipped once with figures and no loader, which "
+     "errors nowhere and simply shows nothing. The first version of that check matched on "
+     "'figure class=\"shot\"' and missed 'class=\"shot net-shot\"', leaving the new index in "
+     "exactly the state the check existed to prevent; it now matches on data-shot=, the attribute "
+     "the component actually selects on. Detect on what the consumer looks for, not on how it "
+     "happened to be written."),
+    ('v0.2.35', '2026-08-19', 'obj-cas-imm-1f3ce8d32a28',
      "Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both "
      "built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting "
      "verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no "
@@ -346,8 +367,9 @@ NAV = [
         ('briefs',       'Briefs',       'briefs/index.html'),
     ]),
     ('updates', 'Updates', 'updates/index.html', [
-        ('updates',  'Updates',    'updates/index.html'),
-        ('articles', 'Articles',   'articles/index.html'),
+        ('updates',  'Updates',     'updates/index.html'),
+        ('articles', 'Articles',    'articles/index.html'),
+        ('network',  'Network',     'network/index.html'),
         ('admin',    'Version log', 'admin/versions.html'),
     ]),
     ('security', 'Security', 'security/index.html', []),
@@ -484,6 +506,22 @@ def page(path, title, desc, here, body):
     # Same cache-busting as the bootstrap, applied to the components a page body
     # fetches for itself. Done here so no content file has to remember it.
     body = re.sub(r"(assets/[a-z-]+\.js)'", r"\1?v=" + SITE_VERSION + "'", body)
+    # A page with walkthrough figures needs the component that fills them. Markdown
+    # content types emit those figures from a `!shot` line, and a markdown author has
+    # no place to put a script tag — so the engine notices and wires it, rather than
+    # every content file having to remember. (The views page shipped once with the
+    # figures and without the loader: nothing errored, and no images appeared.)
+    # Match on data-shot= — the attribute shots.js actually selects on. Matching the
+    # class string instead missed `class="shot net-shot"` and silently left an index
+    # page with figures and no loader, which is the same failure this block exists to
+    # prevent. Detect on the thing the consumer looks for, not on how it was written.
+    if 'data-shot="' in body and 'assets/shots.js' not in body:
+        body += (f'\n<script>\n(function () {{\n'
+                 f"  fetch('{p}assets/shots.js?v={SITE_VERSION}')\n"
+                 '    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
+                 '    .then(function (t) { (0, eval)(t); })\n'
+                 "    .catch(function (e) { console.error('[shots] component failed to load:', e); });\n"
+                 '}());\n</script>')
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
 <head>
@@ -776,6 +814,7 @@ LLMS_SECTIONS = [
     ('briefs',    'Cross-team briefs'),
     ('updates',   'Updates (dated posts: what changed, one entry per story)'),
     ('articles',  'Articles (longer pieces that argue across pages, with the evidence linked)'),
+    ('network',   'The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)'),
     ('home',      'Optional'),
     ('security',  'Optional'),
     ('admin',     'Optional'),
@@ -927,6 +966,8 @@ def load_pages():
             body = updates_body()
         elif r.get('dynamic') == 'articles':
             body = articles_index_body()
+        elif r.get('dynamic') == 'network':
+            body = network_index_body()
         else:
             with open(os.path.join(ADMIN, 'content', r['path'])) as f:
                 body = f.read().rstrip('\n')
@@ -936,6 +977,10 @@ def load_pages():
     for a in ARTICLES:
         pages.append((f'articles/{a["slug"]}.html',
                       f'{a["title"]} — sgit.ai', a['summary'], 'articles', article_body(a)))
+    for x in SITES:
+        pages.append((f'network/{x["slug"]}.html',
+                      f'{x["domain"]} — {x["tagline"]} — sgit.ai', x['summary'],
+                      'network', site_body(x)))
     return pages
 
 
@@ -948,6 +993,7 @@ def load_pages():
 LOADER   = Content_Loader(os.path.join(ADMIN, 'content'))
 UPDATES  = [u for u in LOADER.load_updates()  if u['status'] == 'published']
 ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
+SITES    = [x for x in LOADER.load_sites()    if x['status'] == 'published']
 
 
 def _chips(tags):
@@ -982,6 +1028,63 @@ def updates_body():
         out.append('  </article>')
     out.append('</main>')
     return '\n'.join(out)
+
+
+def network_index_body():
+    """The sibling *.sgit.ai sites. There will be many — adding one is writing one
+    markdown file and capturing its screenshots; this list is derived."""
+    out = ['<main class="doc">',
+           '  <h1>The sgit.ai network</h1>',
+           '  <p class="lead">Focused sites on <code>*.sgit.ai</code> subdomains, each taking one '
+           'question further than a section here could. They share this site\'s design and its '
+           'discipline — sourced claims, stated status, honest edges — and they publish their '
+           'arguments before the things they describe exist, so the commitments stay checkable.</p>',
+           f'  <p class="small dim">{len(SITES)} live. Screenshots are of the real sites, captured '
+           'on the date each entry gives.</p>',
+           '  <div class="netlist">']
+    for x in SITES:
+        shot = (f'<figure class="shot net-shot" data-shot="{x["hero"]}" data-dir="images/" '
+                f'data-alt="{x["title"]}"></figure>') if x['hero'] else ''
+        out.append(
+            f'    <div class="netcard">\n'
+            f'      <a class="net-main" href="{x["slug"]}.html">\n'
+            f'        <b>{x["domain"]}</b>\n'
+            f'        <span class="net-tag">{x["tagline"]}</span>\n'
+            f'        <span class="net-sum">{x["summary"]}</span>\n'
+            f'      </a>\n'
+            f'      {shot}\n'
+            f'      <p class="small dim">' + (_chips(x['tags']) if x['tags'] else '') +
+            f' <a href="{x["slug"]}.html">What it argues &rarr;</a> &middot; '
+            f'<a href="https://{x["domain"]}" rel="noopener" target="_blank">'
+            f'Open {x["domain"]} &#8599;</a></p>\n'
+            f'    </div>')
+    out += ['  </div>',
+            '  <h2>Why they are separate sites</h2>',
+            '  <p>Each one is an argument that needs room and a reader who arrived for it. Splitting '
+            'them out keeps this site about sgit while letting each question be pursued properly — '
+            'and gives each its own version history, release cadence and repository. They are built '
+            'from the same generator and hold to the same rules, so a reader moving between them is '
+            'not changing register.</p>',
+            '</main>']
+    return '\n'.join(out)
+
+
+def site_body(x):
+    ver = f' &middot; <code>{x["seen_version"]}</code> when captured' if x['seen_version'] else ''
+    repo = (f' &middot; <a href="https://github.com/SGit-AI/{x["repo"]}" rel="noopener" '
+            f'target="_blank">{x["repo"]} &#8599;</a>') if x['repo'] else ''
+    return ('<main class="doc">\n'
+            f'  <p class="crumb"><a href="../index.html">Home</a> / '
+            f'<a href="index.html">Network</a> / {x["domain"]}</p>\n'
+            f'  <h1>{x["domain"]}</h1>\n'
+            f'  <p class="lead">{x["tagline"]}</p>\n'
+            f'  <p class="small dim">Screenshots captured {x["observed"]}{ver}{repo}</p>\n'
+            f'  <p><a class="btn" href="https://{x["domain"]}" rel="noopener" target="_blank">'
+            f'Open {x["domain"]} &#8599;</a></p>\n'
+            + LOADER.md_to_html(x['body'], depth=1, where=x['where'])
+            + '\n  <p class="small dim" style="margin-top:2rem">'
+              '<a href="index.html">&larr; All network sites</a></p>\n'
+            '</main>')
 
 
 def articles_index_body():
