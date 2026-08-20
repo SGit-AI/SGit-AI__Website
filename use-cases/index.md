@@ -2,7 +2,7 @@
 
 > Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows.
 
-*Source: <https://sgit.ai/use-cases/index.html> · site v0.2.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/index.html> · site v0.2.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.36'
+SITE_VERSION = 'v0.2.37'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,34 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.36', '2026-08-19', 'this release',
+    ('v0.2.37', '2026-08-20', 'this release',
+     "REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose "
+     "publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from "
+     "official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, "
+     "500 paragraphs, 180 recitals, 68 definitions, resolving to 1,523 nodes and 1,944 edges "
+     "across eleven views — browse, Cytoscape citation graph, in-browser SQLite over sql.js, RDF "
+     "via rdflib, concepts, external instruments, and an experimental Art 9 lab as the declared "
+     "entry point. WHAT HAPPENED: the submitted credential was a VAULT KEY, not a read key — the "
+     "fourth time, caught by the intake check. The read key was derived and the audit run with "
+     "it across 204 text files, which is when it found a LIVE VAULT KEY IN PLAINTEXT inside a "
+     "handoff document, granting write access to a DIFFERENT vault. Publishing our read key would "
+     "have handed that away. No page was written; the finding was reported first. Deleting the "
+     "file would not have been enough, because vault objects are content-addressed and immutable, "
+     "so a credential committed once may stay reachable from history — the only clean remedy is "
+     "history that never held it. So this is a REDACTED REPUBLICATION into a new vault: same 206 "
+     "files, two credentials replaced in place with visible <VAULT-KEY-REMOVED> and "
+     "<READ-KEY-REMOVED> markers rather than silent deletions, a PUBLIC.md stating the rules and "
+     "the removals, and a re-audit from a fresh read-key clone: 205 files, zero findings. The "
+     "second removal was a judgement call — a read key is publishable by its OWNER, and that one "
+     "belonged to a third vault, so it goes and the decision stays with a human. RULE 3 VERIFIED "
+     "RATHER THAN ASSUMED: the Graph REPL is an LLM chat, and repl.js looks for an OpenRouter key "
+     "at /key.json INSIDE THE VAULT before falling back to device storage, so a shipped key would "
+     "be an open tab on somebody else's budget. No key.json exists, confirmed in the read-key "
+     "clone rather than in our working copy. The 370-plus bare 64-hex strings the scan flagged "
+     "were all sha256 provenance hashes, checked individually — a scan that never produces a "
+     "false positive is not scanning hard enough. The rule that caught all of this came from Risk "
+     "Graph Explorer's own PUBLIC.md, not from us; it has now paid for itself."),
+    ('v0.2.36', '2026-08-19', 'obj-cas-imm-18bcdab6db5d',
      "A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as "
      "two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents "
      "an identity' splits into agents you RUN and agents you RENT, and that the industry answers "

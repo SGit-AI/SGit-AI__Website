@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Regulation Graph — a published vault</title>
+<meta name="description" content="The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/regulation-graph/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/regulation-graph/index.html">
+<meta property="og:title" content="Regulation Graph — a published vault">
+<meta property="og:description" content="The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Regulation Graph — a published vault", "headline": "Regulation Graph — a published vault", "description": "The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original.", "url": "https://sgit.ai/demos/vaults/regulation-graph/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.37</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../network/index.html">Network</a>
+      <a class="sl" href="../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Regulation Graph</p>
+  <h1>Regulation Graph</h1>
+  <p class="lead">The EU AI Act as a graph you can cite. Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified against the bytes it came from, and served as an <b>evidence layer</b>: a risk in a register points at a named obligation in a real instrument instead of being asserted.</p>
+
+  <div class="warnbox"><b>This vault exists because the first one could not be published.</b> The original carried a live vault key in plaintext — write access to a <em>different</em> vault — inside a handoff document. Our audit found it before anything shipped. Deleting the file would not have been enough: vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history. This is a <b>redacted republication with new history</b>, and the vault says so itself in its own <a href="#public">PUBLIC.md</a>.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a> — the entry point is the Art 9 lab; the back-link top-left reaches the other ten views.</p>
+  <div class="sgv-uiembed" data-vault="73heuprz" data-readkey="c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the overview</span>
+        <h3>Every number traces back to source bytes</h3>
+        <p>The landing view states the shape of the graph in counts: <b>113 articles</b>, <b>500 paragraphs</b>, <b>417 points</b>, <b>180 recitals</b>, <b>13 annexes</b>, <b>68 definitions</b> — resolving to <b>1,523 nodes</b> and <b>1,944 edges</b>.</p>
+        <p>Underneath, the part that makes it evidence rather than a summary: two instruments composed into one view, each with its CELEX identifier and the <b>SHA-256 of the retrieved bytes</b>. Regulation 2024/1689 is shown as <em>amended by 2026/1744, no official consolidation yet — this graph composes</em>. That sentence is a factual claim about the state of EU law, and it is checkable.</p>
+        <p>Application dates are treated as <b>versioned properties, never bare facts</b>: superseded pre-Omnibus dates are struck through rather than overwritten, each carrying its basis (<code>Article 113(a) as amended</code>) and an as-of date.</p>
+      </div>
+      <figure class="shot" data-shot="overview.webp" data-dir="images/" data-alt="The overview: counts, both instruments with CELEX and source-byte hashes, and versioned application dates."><figcaption>Built from Formex XML retrieved from CELLAR, hash-verified, parsed deterministically.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">browse the act</span>
+        <h3>The instrument itself, structure first</h3>
+        <p>The full Act, navigable by its own structure, with a provenance footer on every node and search across the text. This is the view that makes the rest defensible: when a risk cites Article 9(2)(a), you can go and read Article 9(2)(a) — in the text that was parsed, not a paraphrase of it.</p>
+      </div>
+      <figure class="shot" data-shot="browse.webp" data-dir="images/" data-alt="Browsing the Act by its own structure, with per-node provenance."><figcaption>Per-node provenance footers, and search over the parsed text.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the graph</span>
+        <h3>Article-level relationships, with amendment halos</h3>
+        <p>The citation graph at article level, drawn with Cytoscape, showing amendment halos and aggregated citations. Eleven views in total sit behind the top nav — including <b>SQL</b> (SQLite over sql.js, in memory, preset and free queries), <b>RDF</b> (rdflib, partition-separated predicates, Turtle export), <b>Concepts</b> (the Act's 68 defined terms with every usage linked) and <b>External refs</b> (every other EU instrument the Act cites, as an in-vault citation graph).</p>
+        <p>All of it runs client-side over the SG bridge. The vault is never written by the app.</p>
+      </div>
+      <figure class="shot" data-shot="graphviz.webp" data-dir="images/" data-alt="The article-level citation graph rendered with Cytoscape."><figcaption>Article-level graph; ten sibling views cover SQL, RDF, concepts and external citations.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the art 9 lab</span>
+        <h3>The entry point is an experiment, deliberately</h3>
+        <p><code>app.json</code> sets <code>entry</code> to <code>lab/index.html</code>, so opening the vault lands in the <b>Art 9 lab</b> — paragraph universes, a web-component folder explorer, provision graphs with reach profiles, and a <b>Graph REPL</b>: an LLM chat whose read-only tools drive the canvas.</p>
+        <p>The lab is marked <em>experimental</em> and has no main nav of its own; the back-link top-left returns to the other views. Landing a reader in the newest, least finished thing is an unusual choice and an honest one.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="The Art 9 lab, the vault's declared entry point."><figcaption>Opening the vault lands here: the Art 9 lab, marked experimental.</figcaption></figure>
+    </div>
+
+    <div class="wt-row" id="public">
+      <div class="wt-text">
+        <span class="wt-tag">public.md</span>
+        <h3>The vault states its own publication rules</h3>
+        <p>Following <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a>, this vault carries a <code>PUBLIC.md</code> declaring what it holds to — and, unusually, what was removed to make publication possible. The removals are visible to any reader as <code>&lt;VAULT-KEY-REMOVED&gt;</code> and <code>&lt;READ-KEY-REMOVED&gt;</code> markers rather than silently deleted lines.</p>
+        <p><b>Rule 3 was verified rather than assumed.</b> The Graph REPL reads an OpenRouter key, and <code>lab/app/repl.js</code> looks for one at <code>/key.json</code> <em>inside the vault</em> before falling back to device storage. So we checked: no <code>key.json</code> exists — confirmed in a clone made with the published read key, which is what a reader actually gets. The REPL is bring-your-own-key, and nothing metered ships behind the published credential.</p>
+      </div>
+      <figure class="shot" data-shot="public-md.webp" data-dir="images/" data-alt="PUBLIC.md open in the vault browser, stating the rules and the removals."><figcaption>The rules, and the two removals, in the vault rather than only on this page.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What it is for</h2>
+  <p>The README states the purpose in one line: <em>"a risk in a register points at a named obligation in a real instrument instead of being asserted."</em> It is the evidence layer beneath the <a href="../risk-mandate/index.html">Risk Mandate</a> work — where <a href="../risk-graph-explorer/views/index.html">a risk chain</a> ends in <code>touches: EU AI Act Art. 12</code>, this is the vault that can say what Article 12 actually says and prove the bytes.</p>
+  <p>Its eight hard rules are worth reading in full, and two are worth quoting here:</p>
+  <ul>
+    <li><b>Evidence, not compliance.</b> Never a claim that an organisation passes or fails. Not legal advice.</li>
+    <li><b>Provenance chain end to end:</b> claim → graph node → vault file → commit → official source (CELEX/ELI plus SHA-256 of retrieved bytes).</li>
+  </ul>
+  <p>The second is the one this site keeps arriving at from other directions. It is the same instinct as <a href="../../../compare/index.html">running comparisons as tests</a> and as <a href="../../../articles/green-does-not-mean-live.html">refusing to call a release live until the site serves it</a>: a claim is worth what its chain of custody is worth.</p>
+
+  <h2>What it does not do</h2>
+  <ul>
+    <li><b>Only Article 9 is built out in depth.</b> Rule 4 is <em>"partial connection is sufficient — build only what the register cites"</em>, so the lab covers Art 9 and the rest of the Act is present as structure and citations rather than fully annotated.</li>
+    <li><b>The Graph REPL needs your own OpenRouter key.</b> Nothing is supplied, deliberately. Without one the REPL pane is inert — which is the correct behaviour, not a fault.</li>
+    <li><b>No consolidated text exists.</b> 2024/1689 is amended by 2026/1744 with no official consolidation yet; this graph composes the two, and says so rather than presenting a merged text as authoritative.</li>
+    <li><b>External research is marked UNVERIFIED.</b> The research report under <code>docs/research/</code> carries external claims the vault has not itself checked, and labels them.</li>
+  </ul>
+
+  <h2>How it was published</h2>
+  <p>This vault is the clearest worked example of <a href="../publishing.html">the publishing method</a>, because it is the first one where the audit <b>stopped</b> a publication instead of clearing it:</p>
+  <ol>
+    <li><b>Classify the credential.</b> The submitted credential was a vault key, not a read key. The intake check refused it — the fourth time.</li>
+    <li><b>Derive rather than refuse.</b> The read key was derived one-way; the vault key went to the gitignored tier the release tripwire scans for.</li>
+    <li><b>Audit with the key about to be published.</b> 204 text files, read-key clone. One finding: a plaintext vault key for another vault.</li>
+    <li><b>Stop.</b> No page was written. The finding was reported before anything else happened.</li>
+    <li><b>Republish clean.</b> A new vault, new history, two credentials redacted in place with visible markers, a <code>PUBLIC.md</code> stating what changed, and a re-audit from a fresh read-key clone: <b>205 files, zero findings</b>.</li>
+  </ol>
+  <p class="small dim">The 370-plus bare 64-hex strings the audit flagged on the way through were all <code>sha256</code> provenance hashes — checked, not waved away. A scan that never produces a false positive is not scanning hard enough.</p>
+</main>
+<script>
+(function () {
+  fetch('../../../assets/shots.js?v=v0.2.37')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.37</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.37';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

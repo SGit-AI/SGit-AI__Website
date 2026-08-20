@@ -2,7 +2,7 @@
 
 > The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault.
 
-*Source: <https://sgit.ai/api/vault-objects.html> · site v0.2.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/vault-objects.html> · site v0.2.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
