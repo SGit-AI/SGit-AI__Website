@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.37</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.38</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -84,6 +84,19 @@
 </ul>
 <p>One rule got verified rather than assumed. The vault's Graph REPL is an LLM chat, and its code looks for an OpenRouter key at <code>/key.json</code> <em>inside the vault</em> before falling back to device storage — so a shipped key would be an open tab on somebody else's budget. There is no <code>key.json</code>, confirmed in the read-key clone. Bring your own key; nothing metered ships.</p>
 <p>The rule that caught all of this came from the <a href="../demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a> vault's own <code>PUBLIC.md</code>, not from us. It has now paid for itself.</p>
+  </article>
+  <article class="upd" id="a-third-sibling-site-that-says-it-does-not-exist">
+    <h3><a href="#a-third-sibling-site-that-says-it-does-not-exist">A third sibling site — one that says, at the top of every page, that it does not exist</a> <a class="upd-ver" href="../admin/versions.html">v0.2.38</a></h3>
+    <p class="chips"><span class="chip">network</span><span class="chip">edge</span><span class="chip">security</span></p>
+<p><a href="../network/sg-sentinel.html">sg-sentinel.sgit.ai</a> joins <a href="../network/index.html">the network</a>. It is a design for an app-coupled edge guard that replaces rented AWS WAF plus CloudWatch and Firehose with a layer you own — and its status pill reads <code>NOT BUILT</code> where its siblings read <code>MVP DRAFT</code>.</p>
+<ul>
+<li><b>The inversion is the idea.</b> A generic WAF is blind to the app it protects, so it denylists known-bad and passes the rest. If you control both client and server, the edge knows the valid request space — so it can <b>allowlist</b>, and no invalid request reaches the origin.</li>
+<li><b>One correction reshaped the design</b>, and it is stated as a governing constraint: <em>"Layer 1 never acts and never writes — it only decides and signals. Layer 2 is the sole actor and the sole I/O owner."</em> The reason is physical: a CloudFront Function has no network and no filesystem. The site names the earlier version — where L1 blocked inline — as a category error of its own making.</li>
+<li><b>Rules are the engine, not configuration on it.</b> Six deterministic rules, each a pure function, each mapped to an ATT&amp;CK technique, run in order with first-block-wins. The prototype ran the same engine across three targets with a parity matrix asserting identical decisions.</li>
+<li><b>And it bounds its own evidence.</b> The prototype's testing manual reports 149 passing tests; the site immediately says <em>"not deployed anywhere, not in production use, not maintained, and not packaged for you to install."</em></li>
+</ul>
+<p>It is the third site here to publish a design <b>before</b> the thing exists — after <a href="../network/pki.html">pki.sgit.ai</a>'s four registry rules. Same wager: publishing the design now is cheap, claiming it afterwards is impossible.</p>
+<p>Adding it took one markdown file and three screenshots. The renderer gained pipe-table support on the way, since the six-rule core wanted a table and got a paragraph of vertical bars instead.</p>
   </article>
   <h2 class="upd-date">2026-08-19</h2>
   <article class="upd" id="the-first-two-sibling-sites">
@@ -166,7 +179,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.37</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.38</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -205,7 +218,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.37';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.38';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

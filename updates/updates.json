@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.37",
+  "site_version": "v0.2.38",
   "updates": [
     {
       "slug": "the-audit-that-stopped-a-publication",
@@ -14,6 +14,18 @@
         "publishing"
       ],
       "summary": "A vault arrived for publication: the EU AI Act as a citable graph — 113 articles, 1,523 nodes, 1,944 edges, every node traced to hash verified source bytes. Good demo, obvious yes. It did not ship. The audit step — open every file with the exact credential you…"
+    },
+    {
+      "slug": "a-third-sibling-site-that-says-it-does-not-exist",
+      "title": "A third sibling site — one that says, at the top of every page, that it does not exist",
+      "date": "2026-08-20",
+      "version": "v0.2.38",
+      "tags": [
+        "network",
+        "edge",
+        "security"
+      ],
+      "summary": "sg sentinel.sgit.ai joins the network. It is a design for an app coupled edge guard that replaces rented AWS WAF plus CloudWatch and Firehose with a layer you own — and its status pill reads NOT BUILT where its siblings read MVP DRAFT . The inversion is the id…"
     },
     {
       "slug": "the-first-two-sibling-sites",

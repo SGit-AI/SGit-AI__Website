@@ -103,7 +103,11 @@ class Content_Loader:
                 out.append(f'</{lst}>')
                 lst = None
 
-        for raw in md.split('\n'):
+        lines = md.split('\n')
+        i = -1
+        while i + 1 < len(lines):
+            i += 1
+            raw = lines[i]
             line = raw.rstrip()
 
             if fence is not None:
@@ -135,6 +139,25 @@ class Content_Loader:
                     f'data-dir="{html.escape(sdir, quote=True)}" '
                     f'data-alt="{html.escape(cap, quote=True)}">'
                     f'<figcaption>{self.inline(cap, depth, where)}</figcaption></figure>')
+                continue
+
+            if line.startswith('|') and i + 1 < len(lines) \
+                    and re.match(r'^\|[\s:|-]+\|$', lines[i + 1].strip()):
+                flush_para(); flush_list()
+
+                def cells(row):
+                    return [c.strip() for c in row.strip().strip('|').split('|')]
+
+                head = cells(line)
+                out.append('<div class="tablewrap"><table>')
+                out.append('<tr>' + ''.join(
+                    f'<th>{self.inline(c, depth, where)}</th>' for c in head) + '</tr>')
+                i += 1                                    # consume the separator
+                while i + 1 < len(lines) and lines[i + 1].strip().startswith('|'):
+                    i += 1
+                    out.append('<tr>' + ''.join(
+                        f'<td>{self.inline(c, depth, where)}</td>' for c in cells(lines[i])) + '</tr>')
+                out.append('</table></div>')
                 continue
 
             m = re.match(r'^(#{2,4})\s+(.*)$', line)
