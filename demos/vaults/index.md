@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,6 +29,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
 | [Agentic Browser Isolation](agentic-browser-isolation/index.md) | `0610gsp9` | structured analysis (a living risk graph) | 104 files · 2.4 MB · 4 commits · 17 app entries | `sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9) |
 | [Risk Graph Explorer](risk-graph-explorer/index.md) | `3simlnqe` | application (public by design) | 33 files · 428 KB · 7 commits · 1 app entry | `sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) |
+| [Regulation Graph](regulation-graph/index.md) | `73heuprz` | reference data (regulation as an evidence graph) | 207 files · 14.9 MB · 2 commits · 11 app views | `sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 

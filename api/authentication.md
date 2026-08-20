@@ -2,7 +2,7 @@
 
 > The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.
 
-*Source: <https://sgit.ai/api/authentication.html> · site v0.2.36 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/authentication.html> · site v0.2.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

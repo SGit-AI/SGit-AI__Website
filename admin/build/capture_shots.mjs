@@ -41,6 +41,8 @@ const RISKGRAPH = 'sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa
 
 const EXPLORER = 'sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe';
 
+const REGGRAPH = 'sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz';
+
 const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
 /* Each shot: which surface to open, what to do, and what to crop.
@@ -237,6 +239,34 @@ const SHOTS = [
             { appClickText: ['button.tab', 'Role risk map'] }, { wait: 3500 },
             { appClickMatch: ['g.role', 'SRE'] }, { wait: 2500 }],
     target: 'clip', clip: [0, 0, 1600, 1080] },
+
+  // ---- Regulation Graph (73heuprz) — the EU AI Act as an evidence layer ----
+  // app.json's entry is lab/index.html, so opening the vault lands in the Art 9 lab,
+  // which is deliberately its own area with no main nav. Everything else is reached
+  // through the lab's `a.home` back-link ("← Regulation Graph") — found by probing the
+  // running app rather than guessed, after browse.html was not linked from the entry.
+  { name: 'app-open', vault: 'regulation-graph', cred: REGGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'overview', vault: 'regulation-graph', cred: REGGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickMatch: ['a.home', 'Regulation Graph'] }, { wait: 7000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'browse', vault: 'regulation-graph', cred: REGGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickMatch: ['a.home', 'Regulation Graph'] }, { wait: 6000 },
+            { appClickLink: 'browse.html' }, { wait: 7000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'graphviz', vault: 'regulation-graph', cred: REGGRAPH, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickMatch: ['a.home', 'Regulation Graph'] }, { wait: 6000 },
+            { appClickLink: 'graphviz.html' }, { wait: 9000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // Its publication rules, in the vault itself rather than asserted on our page.
+  { name: 'public-md', vault: 'regulation-graph', cred: REGGRAPH, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 3000 }, { clickText: ['.sb-tree__file-name', 'PUBLIC.md'] }, { wait: 3500 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
 
   // The scoped-write claim, shown in the vault's own app.json rather than asserted.
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],

@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.36). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.37). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -379,6 +379,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
 | [Agentic Browser Isolation](agentic-browser-isolation/index.md) | `0610gsp9` | structured analysis (a living risk graph) | 104 files · 2.4 MB · 4 commits · 17 app entries | `sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9) |
 | [Risk Graph Explorer](risk-graph-explorer/index.md) | `3simlnqe` | application (public by design) | 33 files · 428 KB · 7 commits · 1 app entry | `sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) |
+| [Regulation Graph](regulation-graph/index.md) | `73heuprz` | reference data (regulation as an evidence graph) | 207 files · 14.9 MB · 2 commits · 11 app views | `sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -4171,11 +4172,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.36**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.37**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.36 | 2026-08-19 | this release | A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents an identity' splits into agents you RUN and agents you RENT, and that the industry answers only the first — SPIFFE for workloads you can attest, an open feature request for the agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver failure and publishes four rules BEFORE the registry exists, reaching a resolution worth borrowing: append-only is safe when a writer appends only to objects it owns and fatal when anyone may append to somebody else's, so the rule to carry is not 'append-only' but 'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots captured from the live sites through the curl mirror the sandbox needs, since Chromium cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the index, the cards and the per-site page are derived, same contract as updates and articles. Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT AUTOMATICALLY for any page containing figures — a markdown author has no place to put a script tag, and the views page had already shipped once with figures and no loader, which errors nowhere and simply shows nothing. The first version of that check matched on 'figure class="shot"' and missed 'class="shot net-shot"', leaving the new index in exactly the state the check existed to prevent; it now matches on data-shot=, the attribute the component actually selects on. Detect on what the consumer looks for, not on how it happened to be written. |
+| v0.2.37 | 2026-08-20 | this release | REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, 500 paragraphs, 180 recitals, 68 definitions, resolving to 1,523 nodes and 1,944 edges across eleven views — browse, Cytoscape citation graph, in-browser SQLite over sql.js, RDF via rdflib, concepts, external instruments, and an experimental Art 9 lab as the declared entry point. WHAT HAPPENED: the submitted credential was a VAULT KEY, not a read key — the fourth time, caught by the intake check. The read key was derived and the audit run with it across 204 text files, which is when it found a LIVE VAULT KEY IN PLAINTEXT inside a handoff document, granting write access to a DIFFERENT vault. Publishing our read key would have handed that away. No page was written; the finding was reported first. Deleting the file would not have been enough, because vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history — the only clean remedy is history that never held it. So this is a REDACTED REPUBLICATION into a new vault: same 206 files, two credentials replaced in place with visible and markers rather than silent deletions, a PUBLIC.md stating the rules and the removals, and a re-audit from a fresh read-key clone: 205 files, zero findings. The second removal was a judgement call — a read key is publishable by its OWNER, and that one belonged to a third vault, so it goes and the decision stays with a human. RULE 3 VERIFIED RATHER THAN ASSUMED: the Graph REPL is an LLM chat, and repl.js looks for an OpenRouter key at /key.json INSIDE THE VAULT before falling back to device storage, so a shipped key would be an open tab on somebody else's budget. No key.json exists, confirmed in the read-key clone rather than in our working copy. The 370-plus bare 64-hex strings the scan flagged were all sha256 provenance hashes, checked individually — a scan that never produces a false positive is not scanning hard enough. The rule that caught all of this came from Risk Graph Explorer's own PUBLIC.md, not from us; it has now paid for itself. |
+| v0.2.36 | 2026-08-19 | obj-cas-imm-18bcdab6db5d | A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents an identity' splits into agents you RUN and agents you RENT, and that the industry answers only the first — SPIFFE for workloads you can attest, an open feature request for the agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver failure and publishes four rules BEFORE the registry exists, reaching a resolution worth borrowing: append-only is safe when a writer appends only to objects it owns and fatal when anyone may append to somebody else's, so the rule to carry is not 'append-only' but 'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots captured from the live sites through the curl mirror the sandbox needs, since Chromium cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the index, the cards and the per-site page are derived, same contract as updates and articles. Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT AUTOMATICALLY for any page containing figures — a markdown author has no place to put a script tag, and the views page had already shipped once with figures and no loader, which errors nowhere and simply shows nothing. The first version of that check matched on 'figure class="shot"' and missed 'class="shot net-shot"', leaving the new index in exactly the state the check existed to prevent; it now matches on data-shot=, the attribute the component actually selects on. Detect on what the consumer looks for, not on how it happened to be written. |
 | v0.2.35 | 2026-08-19 | obj-cas-imm-1f3ce8d32a28 | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
 | v0.2.34 | 2026-08-18 | obj-cas-imm-97c957112852 | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
 | v0.2.33 | 2026-08-17 | obj-cas-imm-ab458fd8611d | A release now ends by asking the live site what version it is serving, because 'both remotes in sync' turned out not to mean 'published'. v0.2.31 and v0.2.32 both pushed cleanly, both reported success, and NEITHER reached sgit.ai: GitHub Pages failed to deploy them because codeload returned 429 (Too Many Requests) for actions/configure-pages@v5, and the deploy job died in 'Set up job' before running a single step. Validation passed, tagging passed, the push was verified against both remotes — and the site served a two-release-old page for forty minutes, which is how long it took a human on a phone to notice the version pill still said v0.2.30. The failure was invisible to every check the release ran, because it happened in a job neither remote knows about. So release.sh gained a sixth step: poll the live URL with a cache-buster until the version pill matches this release, up to eight minutes, and ABORT LOUDLY if it does not — naming the Actions page and the fact that a 429 on the action download is transient and just needs a re-run. The cost is up to eight minutes of waiting per release. The alternative, demonstrated twice in one afternoon, is telling somebody a fix is live when it is not. Same principle as the orphan-page rule and the llms.txt guard: a page nothing links to, a page the index omits, and a page the deploy never published are all equally unpublished, so the build refuses all three. Ships the content of v0.2.31 and v0.2.32, which had been written but never served. |
@@ -4866,6 +4868,24 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
+## 2026-08-20
+
+### [The audit that stopped a publication — and the vault we built instead](#the-audit-that-stopped-a-publication) [v0.2.37](../admin/versions.md)
+
+vaultssecuritypublishing
+
+A vault arrived for publication: the **EU AI Act as a citable graph** — 113 articles, 1,523 nodes, 1,944 edges, every node traced to hash-verified source bytes. Good demo, obvious yes.
+
+It did not ship. The audit step — *open every file with the exact credential you are about to publish* — found a **live vault key in plaintext**, inside a handoff document, granting write access to a **different** vault. Publishing the read key would have handed that away to anyone who read the page.
+
+- **Deleting the file would not have been enough.** Vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history. The only clean remedy is history that never contained it.
+- **So there is a new vault.** Same 206 files, two credentials redacted in place with visible `<VAULT-KEY-REMOVED>` markers rather than silent deletions, plus a `PUBLIC.md` stating what changed and why.
+- **Re-audited from a fresh read-key clone**: 205 text files, zero findings. That is [Regulation Graph](../demos/vaults/regulation-graph/index.md), and it is live.
+
+One rule got verified rather than assumed. The vault's Graph REPL is an LLM chat, and its code looks for an OpenRouter key at `/key.json` *inside the vault* before falling back to device storage — so a shipped key would be an open tab on somebody else's budget. There is no `key.json`, confirmed in the read-key clone. Bring your own key; nothing metered ships.
+
+The rule that caught all of this came from the [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) vault's own `PUBLIC.md`, not from us. It has now paid for itself.
+
 ## 2026-08-19
 
 ### [The first two sibling sites, with screenshots](#the-first-two-sibling-sites) [v0.2.36](../admin/versions.md)
@@ -4996,6 +5016,114 @@ pkiregistryhistory[What it argues →](pki.md) · [Open pki.sgit.ai ↗](https:/
 ## Why they are separate sites
 
 Each one is an argument that needs room and a reader who arrived for it. Splitting them out keeps this site about sgit while letting each question be pursued properly — and gives each its own version history, release cadence and repository. They are built from the same generator and hold to the same rules, so a reader moving between them is not changing register.
+
+
+
+==============================================================================
+# Regulation Graph — a published vault
+
+> The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original.
+>
+> Page: https://sgit.ai/demos/vaults/regulation-graph/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Regulation Graph
+
+# Regulation Graph
+
+The EU AI Act as a graph you can cite. Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified against the bytes it came from, and served as an **evidence layer**: a risk in a register points at a named obligation in a real instrument instead of being asserted.
+
+**This vault exists because the first one could not be published.** The original carried a live vault key in plaintext — write access to a *different* vault — inside a handoff document. Our audit found it before anything shipped. Deleting the file would not have been enough: vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history. This is a **redacted republication with new history**, and the vault says so itself in its own [PUBLIC.md](#public).
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) · From the CLI: `sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz`
+Published deliberately, and **derived** one-way from a vault key that is not published and never will be.
+
+## See it live, here
+
+Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) — the entry point is the Art 9 lab; the back-link top-left reaches the other ten views.
+
+## What is in it
+
+the overview
+
+### Every number traces back to source bytes
+
+The landing view states the shape of the graph in counts: **113 articles**, **500 paragraphs**, **417 points**, **180 recitals**, **13 annexes**, **68 definitions** — resolving to **1,523 nodes** and **1,944 edges**.
+
+Underneath, the part that makes it evidence rather than a summary: two instruments composed into one view, each with its CELEX identifier and the **SHA-256 of the retrieved bytes**. Regulation 2024/1689 is shown as *amended by 2026/1744, no official consolidation yet — this graph composes*. That sentence is a factual claim about the state of EU law, and it is checkable.
+
+Application dates are treated as **versioned properties, never bare facts**: superseded pre-Omnibus dates are struck through rather than overwritten, each carrying its basis (`Article 113(a) as amended`) and an as-of date.
+
+Built from Formex XML retrieved from CELLAR, hash-verified, parsed deterministically.
+
+browse the act
+
+### The instrument itself, structure first
+
+The full Act, navigable by its own structure, with a provenance footer on every node and search across the text. This is the view that makes the rest defensible: when a risk cites Article 9(2)(a), you can go and read Article 9(2)(a) — in the text that was parsed, not a paraphrase of it.
+
+Per-node provenance footers, and search over the parsed text.
+
+the graph
+
+### Article-level relationships, with amendment halos
+
+The citation graph at article level, drawn with Cytoscape, showing amendment halos and aggregated citations. Eleven views in total sit behind the top nav — including **SQL** (SQLite over sql.js, in memory, preset and free queries), **RDF** (rdflib, partition-separated predicates, Turtle export), **Concepts** (the Act's 68 defined terms with every usage linked) and **External refs** (every other EU instrument the Act cites, as an in-vault citation graph).
+
+All of it runs client-side over the SG bridge. The vault is never written by the app.
+
+Article-level graph; ten sibling views cover SQL, RDF, concepts and external citations.
+
+the art 9 lab
+
+### The entry point is an experiment, deliberately
+
+`app.json` sets `entry` to `lab/index.html`, so opening the vault lands in the **Art 9 lab** — paragraph universes, a web-component folder explorer, provision graphs with reach profiles, and a **Graph REPL**: an LLM chat whose read-only tools drive the canvas.
+
+The lab is marked *experimental* and has no main nav of its own; the back-link top-left returns to the other views. Landing a reader in the newest, least finished thing is an unusual choice and an honest one.
+
+Opening the vault lands here: the Art 9 lab, marked experimental.
+
+public.md
+
+### The vault states its own publication rules
+
+Following [Risk Graph Explorer](../risk-graph-explorer/index.md), this vault carries a `PUBLIC.md` declaring what it holds to — and, unusually, what was removed to make publication possible. The removals are visible to any reader as `<VAULT-KEY-REMOVED>` and `<READ-KEY-REMOVED>` markers rather than silently deleted lines.
+
+**Rule 3 was verified rather than assumed.** The Graph REPL reads an OpenRouter key, and `lab/app/repl.js` looks for one at `/key.json` *inside the vault* before falling back to device storage. So we checked: no `key.json` exists — confirmed in a clone made with the published read key, which is what a reader actually gets. The REPL is bring-your-own-key, and nothing metered ships behind the published credential.
+
+The rules, and the two removals, in the vault rather than only on this page.
+
+## What it is for
+
+The README states the purpose in one line: *"a risk in a register points at a named obligation in a real instrument instead of being asserted."* It is the evidence layer beneath the [Risk Mandate](../risk-mandate/index.md) work — where [a risk chain](../risk-graph-explorer/views/index.md) ends in `touches: EU AI Act Art. 12`, this is the vault that can say what Article 12 actually says and prove the bytes.
+
+Its eight hard rules are worth reading in full, and two are worth quoting here:
+
+- **Evidence, not compliance.** Never a claim that an organisation passes or fails. Not legal advice.
+- **Provenance chain end to end:** claim → graph node → vault file → commit → official source (CELEX/ELI plus SHA-256 of retrieved bytes).
+
+The second is the one this site keeps arriving at from other directions. It is the same instinct as [running comparisons as tests](../../../compare/index.md) and as [refusing to call a release live until the site serves it](../../../articles/green-does-not-mean-live.md): a claim is worth what its chain of custody is worth.
+
+## What it does not do
+
+- **Only Article 9 is built out in depth.** Rule 4 is *"partial connection is sufficient — build only what the register cites"*, so the lab covers Art 9 and the rest of the Act is present as structure and citations rather than fully annotated.
+- **The Graph REPL needs your own OpenRouter key.** Nothing is supplied, deliberately. Without one the REPL pane is inert — which is the correct behaviour, not a fault.
+- **No consolidated text exists.** 2024/1689 is amended by 2026/1744 with no official consolidation yet; this graph composes the two, and says so rather than presenting a merged text as authoritative.
+- **External research is marked UNVERIFIED.** The research report under `docs/research/` carries external claims the vault has not itself checked, and labels them.
+
+## How it was published
+
+This vault is the clearest worked example of [the publishing method](../publishing.md), because it is the first one where the audit **stopped** a publication instead of clearing it:
+
+1. **Classify the credential.** The submitted credential was a vault key, not a read key. The intake check refused it — the fourth time.
+2. **Derive rather than refuse.** The read key was derived one-way; the vault key went to the gitignored tier the release tripwire scans for.
+3. **Audit with the key about to be published.** 204 text files, read-key clone. One finding: a plaintext vault key for another vault.
+4. **Stop.** No page was written. The finding was reported before anything else happened.
+5. **Republish clean.** A new vault, new history, two credentials redacted in place with visible markers, a `PUBLIC.md` stating what changed, and a re-audit from a fresh read-key clone: **205 files, zero findings**.
+
+The 370-plus bare 64-hex strings the audit flagged on the way through were all `sha256` provenance hashes — checked, not waved away. A scan that never produces a false positive is not scanning hard enough.
 
 
 
