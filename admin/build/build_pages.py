@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.37'
+SITE_VERSION = 'v0.2.38'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.37', '2026-08-20', 'this release',
+    ('v0.2.38', '2026-08-20', 'this release',
+     "Third site in the network: SG-SENTINEL.SGIT.AI, a design for an app-coupled edge guard "
+     "replacing rented AWS WAF + CloudWatch/Firehose with a layer you own. Its central inversion "
+     "is that a generic WAF is blind to the app it protects and must denylist, whereas an edge "
+     "that knows the valid request space can ALLOWLIST — no invalid request reaches the origin. "
+     "Two things make it worth a page rather than a link. First, a governing correction stated as "
+     "a constraint: 'Layer 1 never acts and never writes — it only decides and signals; Layer 2 is "
+     "the sole actor and the sole I/O owner', because a CloudFront Function physically has no "
+     "network and no filesystem — and the site names its own earlier design, where L1 blocked "
+     "inline, as a category error. Second, rules are the engine rather than configuration on it: "
+     "six deterministic rules, each a pure function mapped to an ATT&CK technique, run "
+     "first-block-wins, with a prototype exercise running the same engine across three targets "
+     "under a parity matrix asserting identical decisions. It also carries the most honest status "
+     "language on the network — the pill reads NOT BUILT, and where the prototype's 149 passing "
+     "tests are cited the site immediately bounds them as 'not deployed anywhere, not in "
+     "production use, not maintained, not packaged for you to install'. Adding it cost one "
+     "markdown file and three screenshots, which is what the content type was built for. One "
+     "engine gap surfaced doing it: the markdown renderer had no TABLE support, so the six-rule "
+     "core rendered as a paragraph of vertical bars. Pipe tables now parse — header, separator, "
+     "body — and emit into the site's own .tablewrap, so they scroll on a phone and survive print "
+     "like every other table here. Caught by looking at the output rather than trusting the "
+     "validator, which had nothing to object to: badly rendered markdown is still valid HTML."),
+    ('v0.2.37', '2026-08-20', 'obj-cas-imm-1b229ee71709',
      "REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose "
      "publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from "
      "official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, "

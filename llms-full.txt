@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.37). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.38). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -4172,11 +4172,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.37**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.38**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.37 | 2026-08-20 | this release | REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, 500 paragraphs, 180 recitals, 68 definitions, resolving to 1,523 nodes and 1,944 edges across eleven views — browse, Cytoscape citation graph, in-browser SQLite over sql.js, RDF via rdflib, concepts, external instruments, and an experimental Art 9 lab as the declared entry point. WHAT HAPPENED: the submitted credential was a VAULT KEY, not a read key — the fourth time, caught by the intake check. The read key was derived and the audit run with it across 204 text files, which is when it found a LIVE VAULT KEY IN PLAINTEXT inside a handoff document, granting write access to a DIFFERENT vault. Publishing our read key would have handed that away. No page was written; the finding was reported first. Deleting the file would not have been enough, because vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history — the only clean remedy is history that never held it. So this is a REDACTED REPUBLICATION into a new vault: same 206 files, two credentials replaced in place with visible and markers rather than silent deletions, a PUBLIC.md stating the rules and the removals, and a re-audit from a fresh read-key clone: 205 files, zero findings. The second removal was a judgement call — a read key is publishable by its OWNER, and that one belonged to a third vault, so it goes and the decision stays with a human. RULE 3 VERIFIED RATHER THAN ASSUMED: the Graph REPL is an LLM chat, and repl.js looks for an OpenRouter key at /key.json INSIDE THE VAULT before falling back to device storage, so a shipped key would be an open tab on somebody else's budget. No key.json exists, confirmed in the read-key clone rather than in our working copy. The 370-plus bare 64-hex strings the scan flagged were all sha256 provenance hashes, checked individually — a scan that never produces a false positive is not scanning hard enough. The rule that caught all of this came from Risk Graph Explorer's own PUBLIC.md, not from us; it has now paid for itself. |
+| v0.2.38 | 2026-08-20 | this release | Third site in the network: SG-SENTINEL.SGIT.AI, a design for an app-coupled edge guard replacing rented AWS WAF + CloudWatch/Firehose with a layer you own. Its central inversion is that a generic WAF is blind to the app it protects and must denylist, whereas an edge that knows the valid request space can ALLOWLIST — no invalid request reaches the origin. Two things make it worth a page rather than a link. First, a governing correction stated as a constraint: 'Layer 1 never acts and never writes — it only decides and signals; Layer 2 is the sole actor and the sole I/O owner', because a CloudFront Function physically has no network and no filesystem — and the site names its own earlier design, where L1 blocked inline, as a category error. Second, rules are the engine rather than configuration on it: six deterministic rules, each a pure function mapped to an ATT&CK technique, run first-block-wins, with a prototype exercise running the same engine across three targets under a parity matrix asserting identical decisions. It also carries the most honest status language on the network — the pill reads NOT BUILT, and where the prototype's 149 passing tests are cited the site immediately bounds them as 'not deployed anywhere, not in production use, not maintained, not packaged for you to install'. Adding it cost one markdown file and three screenshots, which is what the content type was built for. One engine gap surfaced doing it: the markdown renderer had no TABLE support, so the six-rule core rendered as a paragraph of vertical bars. Pipe tables now parse — header, separator, body — and emit into the site's own .tablewrap, so they scroll on a phone and survive print like every other table here. Caught by looking at the output rather than trusting the validator, which had nothing to object to: badly rendered markdown is still valid HTML. |
+| v0.2.37 | 2026-08-20 | obj-cas-imm-1b229ee71709 | REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, 500 paragraphs, 180 recitals, 68 definitions, resolving to 1,523 nodes and 1,944 edges across eleven views — browse, Cytoscape citation graph, in-browser SQLite over sql.js, RDF via rdflib, concepts, external instruments, and an experimental Art 9 lab as the declared entry point. WHAT HAPPENED: the submitted credential was a VAULT KEY, not a read key — the fourth time, caught by the intake check. The read key was derived and the audit run with it across 204 text files, which is when it found a LIVE VAULT KEY IN PLAINTEXT inside a handoff document, granting write access to a DIFFERENT vault. Publishing our read key would have handed that away. No page was written; the finding was reported first. Deleting the file would not have been enough, because vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history — the only clean remedy is history that never held it. So this is a REDACTED REPUBLICATION into a new vault: same 206 files, two credentials replaced in place with visible and markers rather than silent deletions, a PUBLIC.md stating the rules and the removals, and a re-audit from a fresh read-key clone: 205 files, zero findings. The second removal was a judgement call — a read key is publishable by its OWNER, and that one belonged to a third vault, so it goes and the decision stays with a human. RULE 3 VERIFIED RATHER THAN ASSUMED: the Graph REPL is an LLM chat, and repl.js looks for an OpenRouter key at /key.json INSIDE THE VAULT before falling back to device storage, so a shipped key would be an open tab on somebody else's budget. No key.json exists, confirmed in the read-key clone rather than in our working copy. The 370-plus bare 64-hex strings the scan flagged were all sha256 provenance hashes, checked individually — a scan that never produces a false positive is not scanning hard enough. The rule that caught all of this came from Risk Graph Explorer's own PUBLIC.md, not from us; it has now paid for itself. |
 | v0.2.36 | 2026-08-19 | obj-cas-imm-18bcdab6db5d | A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents an identity' splits into agents you RUN and agents you RENT, and that the industry answers only the first — SPIFFE for workloads you can attest, an open feature request for the agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver failure and publishes four rules BEFORE the registry exists, reaching a resolution worth borrowing: append-only is safe when a writer appends only to objects it owns and fatal when anyone may append to somebody else's, so the rule to carry is not 'append-only' but 'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots captured from the live sites through the curl mirror the sandbox needs, since Chromium cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the index, the cards and the per-site page are derived, same contract as updates and articles. Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT AUTOMATICALLY for any page containing figures — a markdown author has no place to put a script tag, and the views page had already shipped once with figures and no loader, which errors nowhere and simply shows nothing. The first version of that check matched on 'figure class="shot"' and missed 'class="shot net-shot"', leaving the new index in exactly the state the check existed to prevent; it now matches on data-shot=, the attribute the component actually selects on. Detect on what the consumer looks for, not on how it happened to be written. |
 | v0.2.35 | 2026-08-19 | obj-cas-imm-1f3ce8d32a28 | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
 | v0.2.34 | 2026-08-18 | obj-cas-imm-97c957112852 | Acts on an inbound fix pack from the SG/API team, who audited this site against their route tables at v0.33.54 after an agent asked how to send a message between vaults and could not find the answer here. Their central finding was right: the site documented the TRANSPORT (sg.append) and the CRYPTO (sgit pki) on pages that never referenced each other, and never wrote the sentence saying they compose into vault-to-vault messaging. There was also no HTTP API reference anywhere, which is awkward for a project whose argument is that the API is the whole surface. SEVEN NEW PAGES: /docs/vault-messaging (the keystone — append lanes composed with PKI, worked end to end in CLI, curl and sg.append), /docs/pki (keypair lifecycle), and a /api/ section: index, authentication, vault-objects, append-lanes, errors. The security page gains the asymmetric layer it never had; sg.append is retitled as the message transport and cross-linked; limitations gains what PKI does NOT do; the skills page flags that the shipped agent skill still has both halves and no join. THREE OF THE PACK'S FINDINGS DID NOT SURVIVE CHECKING, which is the part worth recording. (1) It reported that the security page 'actively denies PKI'. It did not — a sweep for symmetric, asymmetric, public key, PKI and keypair returned zero occurrences. The page was SILENT, not wrong; publishing a correction for a claim we never made would have put a false statement in this log. (2) It asked us to hunt stale 'inbox' naming; there is none — two hits, both ordinary English, and no /api/vault/inbox/* path anywhere. (3) It described X25519 sealing throughout. Running sgit pki keygen on v0.15.0 prints RSA-OAEP 4096 and ECDSA P-256. Publishing the draft as written would have told integrators to build against the wrong primitive. Two further corrections came from running the CLI rather than reading about it: export emits a JSON BUNDLE of two PEM blocks, not a .pem file, so the draft's sha256sum-the-pem derivation of the lane address is not well defined; and keygen requires a passphrase, which no draft step mentioned. The one genuinely unshipped step — append_token = H(public key) — is labelled PROPOSED with an interim recipe rather than quietly documented as working, and the two endpoints their audit could not resolve (/api/vault/zip, /join/*) are listed as unresolved rather than described. The pack's own acceptance test — give a fresh agent only llms.txt and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and its PROPOSED caveat, answered in the preamble so it survives an agent that cannot follow a link. |
@@ -4886,6 +4887,21 @@ One rule got verified rather than assumed. The vault's Graph REPL is an LLM chat
 
 The rule that caught all of this came from the [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) vault's own `PUBLIC.md`, not from us. It has now paid for itself.
 
+### [A third sibling site — one that says, at the top of every page, that it does not exist](#a-third-sibling-site-that-says-it-does-not-exist) [v0.2.38](../admin/versions.md)
+
+networkedgesecurity
+
+[sg-sentinel.sgit.ai](../network/sg-sentinel.md) joins [the network](../network/index.md). It is a design for an app-coupled edge guard that replaces rented AWS WAF plus CloudWatch and Firehose with a layer you own — and its status pill reads `NOT BUILT` where its siblings read `MVP DRAFT`.
+
+- **The inversion is the idea.** A generic WAF is blind to the app it protects, so it denylists known-bad and passes the rest. If you control both client and server, the edge knows the valid request space — so it can **allowlist**, and no invalid request reaches the origin.
+- **One correction reshaped the design**, and it is stated as a governing constraint: *"Layer 1 never acts and never writes — it only decides and signals. Layer 2 is the sole actor and the sole I/O owner."* The reason is physical: a CloudFront Function has no network and no filesystem. The site names the earlier version — where L1 blocked inline — as a category error of its own making.
+- **Rules are the engine, not configuration on it.** Six deterministic rules, each a pure function, each mapped to an ATT&CK technique, run in order with first-block-wins. The prototype ran the same engine across three targets with a parity matrix asserting identical decisions.
+- **And it bounds its own evidence.** The prototype's testing manual reports 149 passing tests; the site immediately says *"not deployed anywhere, not in production use, not maintained, and not packaged for you to install."*
+
+It is the third site here to publish a design **before** the thing exists — after [pki.sgit.ai](../network/pki.md)'s four registry rules. Same wager: publishing the design now is cheap, claiming it afterwards is impossible.
+
+Adding it took one markdown file and three screenshots. The renderer gained pipe-table support on the way, since the six-rule core wanted a table and got a paragraph of vertical bars instead.
+
 ## 2026-08-19
 
 ### [The first two sibling sites, with screenshots](#the-first-two-sibling-sites) [v0.2.36](../admin/versions.md)
@@ -5005,13 +5021,16 @@ Longer pieces that make an argument across several pages — what a thing means,
 
 Focused sites on `*.sgit.ai` subdomains, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, stated status, honest edges — and they publish their arguments before the things they describe exist, so the commitments stay checkable.
 
-2 live. Screenshots are of the real sites, captured on the date each entry gives.
+3 live. Screenshots are of the real sites, captured on the date each entry gives.
 
 [**nhi.sgit.ai**Agents you run, agents you rent, and the identity gapThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
 identityagentssecurity[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
 
 [**pki.sgit.ai**A key registry for agents, designed from a documented failureGood public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.](pki.md)
 pkiregistryhistory[What it argues →](pki.md) · [Open pki.sgit.ai ↗](https://pki.sgit.ai)
+
+[**sg-sentinel.sgit.ai**An app-coupled edge guard — Layer 1 decides, Layer 2 actsA design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.](sg-sentinel.md)
+edgesecuritydesign[What it argues →](sg-sentinel.md) · [Open sg-sentinel.sgit.ai ↗](https://sg-sentinel.sgit.ai)
 
 ## Why they are separate sites
 
@@ -5454,5 +5473,90 @@ The connection to [append lanes](../api/append-lanes.md) is direct: a lane is ap
 - **The rules** — four commitments, each tied to the property it turns around
 - **Mandate** — what a registry would be for
 - **Build order** — private before public, and why
+
+[← All network sites](index.md)
+
+
+
+==============================================================================
+# sg-sentinel.sgit.ai — An app-coupled edge guard — Layer 1 decides, Layer 2 acts — sgit.ai
+
+> A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.
+>
+> Page: https://sgit.ai/network/sg-sentinel.html
+
+[Home](../index.md) / [Network](index.md) / sg-sentinel.sgit.ai
+
+# sg-sentinel.sgit.ai
+
+An app-coupled edge guard — Layer 1 decides, Layer 2 acts
+
+Screenshots captured 2026-08-20 · `v0.1.1` when captured · [SGit-AI__Website__SG_Sentinel ↗](https://github.com/SGit-AI/SGit-AI__Website__SG_Sentinel)
+
+[Open sg-sentinel.sgit.ai ↗](https://sg-sentinel.sgit.ai)
+
+## It says, at the top of every page, that it does not exist
+
+This is the most unusual thing on the network and the reason to read it. A banner sits above every page:
+
+**Not built.** SG/Sentinel is a published design from May 2026 — *"this is how I would build it"* — not a product. No plans to build it unless somebody funds it.
+
+The status pill reads `NOT BUILT` where its siblings read `MVP DRAFT`. And the note goes further than a disclaimer usually does: the design exercise produced an agent-built prototype whose testing manual reports **149 passing tests**, and the site immediately bounds what that means — *"not deployed anywhere, not in production use, not maintained, and not packaged for you to install. Every 'built' or 'proven' on this site refers to that prototype exercise, nothing more."*
+
+That paragraph is the whole house style in one place: publish the work, then say precisely what it is worth.
+
+The home page, with the not-built banner above the thesis and the full status note below it.
+
+## The problem, and the inversion
+
+Edge security and logging today means renting AWS WAF plus CloudWatch and Kinesis Firehose. The site names three costs — no real-time view of your own traffic, logging priced per gigabyte for a job that is *"write a clean record to S3"*, and a WAF you cannot reason about — and one origin story underneath them: *a single client-side bug once caused runaway redirect traffic, and nothing at the edge would catch the next one before the bill did.*
+
+The inversion is the good idea. A generic WAF is blind to the application it protects, so it **denylists** known-bad and passes everything else. But if you control both client and server, the edge knows the valid request space — so it can **allowlist**, and no invalid request reaches the origin at all.
+
+## One correction that reshaped the design
+
+The architecture page opens with a governing constraint, and it is a genuinely instructive piece of engineering writing:
+
+**Layer 1 never acts and never writes — it only decides and signals. Layer 2 is the sole actor and the sole I/O owner.**
+
+The reason is physical, not stylistic: a CloudFront Function has no network and no filesystem, so it *cannot* write to S3 and must not enforce. L1's whole job is to assign a request ID, evaluate deterministic rules, and emit a structured signal. Blocking, deflecting and logging are **actions**, and actions belong to the layer that can perform I/O. L1 can only *recommend* a block.
+
+The site is explicit that this corrected an earlier version of its own design in which L1 blocked inline — a category error, named as such.
+
+The layer model: one actor, one I/O owner, and both use cases flowing through a single path.
+
+## Rules are the engine, not configuration on it
+
+The second inversion: *"rules are not configuration on top of a fixed engine — rules are the engine."* The core is a small stable machine for executing them, and every block, allow and log action is a rule. Each is a pure function `(captured) → {verdict, reason, rule_id, action} | null`, run in order, first block wins.
+
+The MVP core is deliberately tiny — six deterministic rules, each mapped to an ATT&CK technique:
+
+| Rule | Catches | Action |
+|---|---|---|
+| `capture-all` | every request; pure observation and the allow fallthrough | pass |
+| `banned-ip` | source IP in the embedded list | `drop_403` |
+| `malformed-request` | no method, no path, path not starting `/` | `drop_403` |
+| `path-never-valid` | `/etc/passwd`, path traversal | `drop_403` |
+| `hidden-file-probe` | `/.env`, `/.git/…` | `deflect_404` |
+| `wp-scan-on-static` | `/wp-login.php`, `/xmlrpc.php` on a static site | `deflect_404` |
+
+Rules are data, versioned in git, carrying their own metadata. The prototype exercise ran the same engine across **three targets** with a parity matrix asserting identical decisions — which is what makes "rules are data" a testable claim rather than a slogan.
+
+The six rules of the tiny core, each with what it catches, its ATT&CK mapping and its action.
+
+## Why it is relevant here
+
+Two connections, and the second is the sharper one.
+
+**Rules as versioned data** is what sgit is for. A rule set that must be auditable, diffable and attributable — but whose contents may reveal exactly what you are watching for — is a natural fit for a vault: git semantics over content the host cannot read.
+
+**And it is the third site here to publish a design before the thing exists.** [pki.sgit.ai](../network/pki.md) publishes four registry rules before the registry; this one publishes an entire architecture and then declines to build it. Both rest on the same wager: *publishing the design now is cheap, and claiming it afterwards is impossible.* If somebody does build this, the parity matrix and the six rules are already on the record.
+
+## Sections
+
+- **Architecture** — the layer model, the signal spine, the three targets
+- **Rules** — rules as data, the six-rule core, and where the graph goes
+- **Research** — 68 days of design, tabletop-tested
+- **Try it · Code · Roadmap** — the prototype snapshot and what would come next
 
 [← All network sites](index.md)

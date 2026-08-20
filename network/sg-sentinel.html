@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>sg-sentinel.sgit.ai — An app-coupled edge guard — Layer 1 decides, Layer 2 acts — sgit.ai</title>
+<meta name="description" content="A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.">
+<link rel="canonical" href="https://sgit.ai/network/sg-sentinel.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/network/sg-sentinel.html">
+<meta property="og:title" content="sg-sentinel.sgit.ai — An app-coupled edge guard — Layer 1 decides, Layer 2 acts — sgit.ai">
+<meta property="og:description" content="A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="sg-sentinel.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "sg-sentinel.sgit.ai — An app-coupled edge guard — Layer 1 decides, Layer 2 acts — sgit.ai", "headline": "sg-sentinel.sgit.ai — An app-coupled edge guard — Layer 1 decides, Layer 2 acts — sgit.ai", "description": "A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.", "url": "https://sgit.ai/network/sg-sentinel.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.38</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl" href="../articles/index.html">Articles</a>
+      <a class="sl here" href="../network/index.html">Network</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Network</a> / sg-sentinel.sgit.ai</p>
+  <h1>sg-sentinel.sgit.ai</h1>
+  <p class="lead">An app-coupled edge guard — Layer 1 decides, Layer 2 acts</p>
+  <p class="small dim">Screenshots captured 2026-08-20 &middot; <code>v0.1.1</code> when captured &middot; <a href="https://github.com/SGit-AI/SGit-AI__Website__SG_Sentinel" rel="noopener" target="_blank">SGit-AI__Website__SG_Sentinel &#8599;</a></p>
+  <p><a class="btn" href="https://sg-sentinel.sgit.ai" rel="noopener" target="_blank">Open sg-sentinel.sgit.ai &#8599;</a></p>
+<h2>It says, at the top of every page, that it does not exist</h2>
+<p>This is the most unusual thing on the network and the reason to read it. A banner sits above every page:</p>
+<div class="note"><b>Not built.</b> SG/Sentinel is a published design from May 2026 — <em>"this is how I would build it"</em> — not a product. No plans to build it unless somebody funds it.</div>
+<p>The status pill reads <code>NOT BUILT</code> where its siblings read <code>MVP DRAFT</code>. And the note goes further than a disclaimer usually does: the design exercise produced an agent-built prototype whose testing manual reports <b>149 passing tests</b>, and the site immediately bounds what that means — <em>"not deployed anywhere, not in production use, not maintained, and not packaged for you to install. Every 'built' or 'proven' on this site refers to that prototype exercise, nothing more."</em></p>
+<p>That paragraph is the whole house style in one place: publish the work, then say precisely what it is worth.</p>
+<figure class="shot" data-shot="sentinel-home.webp" data-dir="images/" data-alt="The home page, with the not-built banner above the thesis and the full status note below it."><figcaption>The home page, with the not-built banner above the thesis and the full status note below it.</figcaption></figure>
+<h2>The problem, and the inversion</h2>
+<p>Edge security and logging today means renting AWS WAF plus CloudWatch and Kinesis Firehose. The site names three costs — no real-time view of your own traffic, logging priced per gigabyte for a job that is <em>"write a clean record to S3"</em>, and a WAF you cannot reason about — and one origin story underneath them: <em>a single client-side bug once caused runaway redirect traffic, and nothing at the edge would catch the next one before the bill did.</em></p>
+<p>The inversion is the good idea. A generic WAF is blind to the application it protects, so it <b>denylists</b> known-bad and passes everything else. But if you control both client and server, the edge knows the valid request space — so it can <b>allowlist</b>, and no invalid request reaches the origin at all.</p>
+<h2>One correction that reshaped the design</h2>
+<p>The architecture page opens with a governing constraint, and it is a genuinely instructive piece of engineering writing:</p>
+<div class="note"><b>Layer 1 never acts and never writes — it only decides and signals. Layer 2 is the sole actor and the sole I/O owner.</b></div>
+<p>The reason is physical, not stylistic: a CloudFront Function has no network and no filesystem, so it <em>cannot</em> write to S3 and must not enforce. L1's whole job is to assign a request ID, evaluate deterministic rules, and emit a structured signal. Blocking, deflecting and logging are <b>actions</b>, and actions belong to the layer that can perform I/O. L1 can only <em>recommend</em> a block.</p>
+<p>The site is explicit that this corrected an earlier version of its own design in which L1 blocked inline — a category error, named as such.</p>
+<figure class="shot" data-shot="sentinel-arch.webp" data-dir="images/" data-alt="The layer model: one actor, one I/O owner, and both use cases flowing through a single path."><figcaption>The layer model: one actor, one I/O owner, and both use cases flowing through a single path.</figcaption></figure>
+<h2>Rules are the engine, not configuration on it</h2>
+<p>The second inversion: <em>"rules are not configuration on top of a fixed engine — rules are the engine."</em> The core is a small stable machine for executing them, and every block, allow and log action is a rule. Each is a pure function <code>(captured) → {verdict, reason, rule_id, action} | null</code>, run in order, first block wins.</p>
+<p>The MVP core is deliberately tiny — six deterministic rules, each mapped to an ATT&amp;CK technique:</p>
+<div class="tablewrap"><table>
+<tr><th>Rule</th><th>Catches</th><th>Action</th></tr>
+<tr><td><code>capture-all</code></td><td>every request; pure observation and the allow fallthrough</td><td>pass</td></tr>
+<tr><td><code>banned-ip</code></td><td>source IP in the embedded list</td><td><code>drop_403</code></td></tr>
+<tr><td><code>malformed-request</code></td><td>no method, no path, path not starting <code>/</code></td><td><code>drop_403</code></td></tr>
+<tr><td><code>path-never-valid</code></td><td><code>/etc/passwd</code>, path traversal</td><td><code>drop_403</code></td></tr>
+<tr><td><code>hidden-file-probe</code></td><td><code>/.env</code>, <code>/.git/…</code></td><td><code>deflect_404</code></td></tr>
+<tr><td><code>wp-scan-on-static</code></td><td><code>/wp-login.php</code>, <code>/xmlrpc.php</code> on a static site</td><td><code>deflect_404</code></td></tr>
+</table></div>
+<p>Rules are data, versioned in git, carrying their own metadata. The prototype exercise ran the same engine across <b>three targets</b> with a parity matrix asserting identical decisions — which is what makes "rules are data" a testable claim rather than a slogan.</p>
+<figure class="shot" data-shot="sentinel-rules.webp" data-dir="images/" data-alt="The six rules of the tiny core, each with what it catches, its ATT&amp;CK mapping and its action."><figcaption>The six rules of the tiny core, each with what it catches, its ATT&amp;CK mapping and its action.</figcaption></figure>
+<h2>Why it is relevant here</h2>
+<p>Two connections, and the second is the sharper one.</p>
+<p><b>Rules as versioned data</b> is what sgit is for. A rule set that must be auditable, diffable and attributable — but whose contents may reveal exactly what you are watching for — is a natural fit for a vault: git semantics over content the host cannot read.</p>
+<p><b>And it is the third site here to publish a design before the thing exists.</b> <a href="../network/pki.html">pki.sgit.ai</a> publishes four registry rules before the registry; this one publishes an entire architecture and then declines to build it. Both rest on the same wager: <em>publishing the design now is cheap, and claiming it afterwards is impossible.</em> If somebody does build this, the parity matrix and the six rules are already on the record.</p>
+<h2>Sections</h2>
+<ul>
+<li><b>Architecture</b> — the layer model, the signal spine, the three targets</li>
+<li><b>Rules</b> — rules as data, the six-rule core, and where the graph goes</li>
+<li><b>Research</b> — 68 days of design, tabletop-tested</li>
+<li><b>Try it · Code · Roadmap</b> — the prototype snapshot and what would come next</li>
+</ul>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All network sites</a></p>
+</main>
+<script>
+(function () {
+  fetch('../assets/shots.js?v=v0.2.38')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.38</a> · <a href="../admin/index.html">engineering</a> · <a href="sg-sentinel.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.38';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

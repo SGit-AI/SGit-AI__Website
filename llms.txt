@@ -154,6 +154,7 @@ Quick answers (so you do not need a second request for the common questions):
 - [The sgit.ai network](/network/index.md): Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
 - [nhi.sgit.ai](/network/nhi.md): The question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.
 - [pki.sgit.ai](/network/pki.md): Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.
+- [sg-sentinel.sgit.ai](/network/sg-sentinel.md): A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.
 
 ## Optional
 - [sgit](/index.md): sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
