@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.38'
+SITE_VERSION = 'v0.2.39'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,35 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.38', '2026-08-20', 'this release',
+    ('v0.2.39', '2026-08-21', 'this release',
+     "Fourth site in the network: GRAPHS.SGIT.AI, a grammar for semantic graphs argued in "
+     "increasing depth — five rules you can apply tomorrow, a working edge set with numbered "
+     "gaps, then a full positioning against schemas and vector search. Its opening move is to "
+     "disown the category a reader arrives expecting: 'this is not a graph database pitch… there "
+     "is no graph database anywhere in the work behind this site'. The thesis is that two nodes "
+     "both holding 8080 differ not in the value but in the connectivity, and the strongest "
+     "argument on the site needs no technical background at all: 10,000 hours was an AVERAGE in "
+     "a 1993 violinist study, not a threshold, half the top group had not reached it, and the "
+     "author spent his career correcting the popularisation — but the correction never attached, "
+     "because by then the claim had been carried through 242 papers and 200,000+ citation paths. "
+     "A document cannot fix that; a graph can mark a claim superseded and turn 'what did we build "
+     "on this?' into a query. Grammar highlights: every edge is a verb with a distinct inverse, "
+     "the test being 'would a person in this business say this sentence?', and relates-to is "
+     "BANNED for a mechanical reason — an edge with no verb carries no constraint, so it cannot "
+     "narrow a traversal; it costs fan-out and buys nothing. Relevant here because the one "
+     "indisputably shipped item on that site is sgit's own object model: a content-addressed "
+     "commit DAG (SHA-256 over CIPHERTEXT, multi-parent, wave-BFS merge-base) plus *.link.json "
+     "commit-pinned cross-vault edges and the sg.history read-only query API exposed to untrusted "
+     "sandboxed apps. The grammar argument and the vault are not neighbours by theme; they share "
+     "a data structure. It is also the FIRST SIBLING WITH A RECIPROCAL LINK — an '↗ part of "
+     "sgit.ai' chip in its nav and a footer pointing back at /network/ — so the index stops being "
+     "one-way. Engine change: a site entry may now carry a `url:` that differs from its `domain:`. "
+     "graphs.sgit.ai does not resolve yet (verified: no DNS), and a finished site should be linked "
+     "at the address that answers rather than held back for a CNAME, so the page states which one "
+     "it is instead of shipping a dead link and needing a rewrite later. The network audit also "
+     "found a broken link on the new site itself: it points at sentinel.sgit.ai, which does not "
+     "resolve — the site is sg-sentinel.sgit.ai. Recorded on the entry for upstream."),
+    ('v0.2.38', '2026-08-20', 'obj-cas-imm-b270f3424691',
      "Third site in the network: SG-SENTINEL.SGIT.AI, a design for an app-coupled edge guard "
      "replacing rented AWS WAF + CloudWatch/Firehose with a layer you own. Its central inversion "
      "is that a generic WAF is blind to the app it protects and must denylist, whereas an edge "
@@ -1104,8 +1132,10 @@ def network_index_body():
             f'      {shot}\n'
             f'      <p class="small dim">' + (_chips(x['tags']) if x['tags'] else '') +
             f' <a href="{x["slug"]}.html">What it argues &rarr;</a> &middot; '
-            f'<a href="https://{x["domain"]}" rel="noopener" target="_blank">'
-            f'Open {x["domain"]} &#8599;</a></p>\n'
+            f'<a href="{x["url"]}" rel="noopener" target="_blank">'
+            f'Open {_site_host(x)} &#8599;</a>'
+            + ('' if _site_live(x) else ' <span class="chip">DNS pending</span>')
+            + '</p>\n'
             f'    </div>')
     out += ['  </div>',
             '  <h2>Why they are separate sites</h2>',
@@ -1118,18 +1148,35 @@ def network_index_body():
     return '\n'.join(out)
 
 
+def _site_host(x):
+    return x['url'].split('://', 1)[-1].rstrip('/')
+
+
+def _site_live(x):
+    """True once the site answers on its own subdomain."""
+    return x['url'].rstrip('/') == f'https://{x["domain"]}'
+
+
 def site_body(x):
     ver = f' &middot; <code>{x["seen_version"]}</code> when captured' if x['seen_version'] else ''
     repo = (f' &middot; <a href="https://github.com/SGit-AI/{x["repo"]}" rel="noopener" '
             f'target="_blank">{x["repo"]} &#8599;</a>') if x['repo'] else ''
+    # A site can be finished before its subdomain resolves. Say which address works
+    # rather than shipping a link that fails, and keep the intended one visible so the
+    # entry does not need rewriting when DNS lands.
+    pending = ('' if _site_live(x) else
+               f'  <div class="note"><b><code>{x["domain"]}</code> does not resolve yet.</b> '
+               f'The site is live and complete at its origin, linked below; the subdomain is '
+               f'being pointed at it. Everything on this page was read there.</div>\n')
     return ('<main class="doc">\n'
             f'  <p class="crumb"><a href="../index.html">Home</a> / '
             f'<a href="index.html">Network</a> / {x["domain"]}</p>\n'
             f'  <h1>{x["domain"]}</h1>\n'
             f'  <p class="lead">{x["tagline"]}</p>\n'
             f'  <p class="small dim">Screenshots captured {x["observed"]}{ver}{repo}</p>\n'
-            f'  <p><a class="btn" href="https://{x["domain"]}" rel="noopener" target="_blank">'
-            f'Open {x["domain"]} &#8599;</a></p>\n'
+            + pending +
+            f'  <p><a class="btn" href="{x["url"]}" rel="noopener" target="_blank">'
+            f'Open {_site_host(x)} &#8599;</a></p>\n'
             + LOADER.md_to_html(x['body'], depth=1, where=x['where'])
             + '\n  <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All network sites</a></p>\n'
