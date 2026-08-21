@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.38</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.39</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -71,6 +71,20 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-08-21</h2>
+  <article class="upd" id="the-first-sibling-that-links-back">
+    <h3><a href="#the-first-sibling-that-links-back">A fourth sibling site — and the first one that links back</a> <a class="upd-ver" href="../admin/versions.html">v0.2.39</a></h3>
+    <p class="chips"><span class="chip">network</span><span class="chip">graphs</span><span class="chip">method</span></p>
+<p><a href="../network/graphs.html">graphs.sgit.ai</a> joins <a href="../network/index.html">the network</a>. It argues for a grammar of semantic graphs, from five rules you can apply tomorrow up to a full positioning against schemas and vector search — and it opens by disowning the product category a reader arrives expecting: <em>"this is not a graph database pitch… there is no graph database anywhere in the work behind this site."</em></p>
+<ul>
+<li><b>The thesis fits in two sentences.</b> Two nodes both hold <code>8080</code>. One is connected to a type, to a library, to a version; the other to nothing. <em>"The difference is not in the value. The difference is in the connectivity."</em></li>
+<li><b>The best argument needs no background.</b> 10,000 hours came from a 1993 violinist study where it was an <em>average</em>, not a threshold — and half the top group had not reached it. The corrections never attached: by then the claim had been carried through 242 papers and 200,000+ citation paths. A document cannot fix that. A graph can mark a claim superseded and make <em>"what did we build on this?"</em> a query.</li>
+<li><b><code>relates-to</code> is banned</b>, for a mechanical reason rather than a stylistic one: an edge with no verb carries no constraint, so it cannot narrow a traversal. It costs fan-out and buys nothing.</li>
+<li><b>It separates ships from argues, and concedes the harder half</b> — <em>"this site's subject matter is almost entirely design"</em> — then lists what is running: the vault commit DAG, <code>*.link.json</code> cross-vault edges, the read-only query API handed to untrusted sandboxed apps, and a live typed property graph of 71 nodes and 141 edges across 107 issue files.</li>
+</ul>
+<p><b>It is the first sibling with a reciprocal link.</b> Its nav carries an <code>↗ part of sgit.ai</code> chip and its footer points back at this network page. Until now <code>/network/</code> was a one-way index.</p>
+<p>Two build changes came with it. A site entry can now carry a <code>url:</code> that differs from its <code>domain:</code> — <code>graphs.sgit.ai</code> does not resolve yet, and an entry should link to the address that works rather than wait for the CNAME, so the page says which one it is instead of shipping a dead link. And the audit that comes with every network entry found one: the graphs site links to <code>sentinel.sgit.ai</code>, which does not exist. The site is <code>sg-sentinel.sgit.ai</code>; the <code>sg-</code> prefix is load-bearing.</p>
+  </article>
   <h2 class="upd-date">2026-08-20</h2>
   <article class="upd" id="the-audit-that-stopped-a-publication">
     <h3><a href="#the-audit-that-stopped-a-publication">The audit that stopped a publication — and the vault we built instead</a> <a class="upd-ver" href="../admin/versions.html">v0.2.37</a></h3>
@@ -179,7 +193,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.38</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.39</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -218,7 +232,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.38';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.39';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.38). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.39). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -4172,11 +4172,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.38**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.39**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.38 | 2026-08-20 | this release | Third site in the network: SG-SENTINEL.SGIT.AI, a design for an app-coupled edge guard replacing rented AWS WAF + CloudWatch/Firehose with a layer you own. Its central inversion is that a generic WAF is blind to the app it protects and must denylist, whereas an edge that knows the valid request space can ALLOWLIST — no invalid request reaches the origin. Two things make it worth a page rather than a link. First, a governing correction stated as a constraint: 'Layer 1 never acts and never writes — it only decides and signals; Layer 2 is the sole actor and the sole I/O owner', because a CloudFront Function physically has no network and no filesystem — and the site names its own earlier design, where L1 blocked inline, as a category error. Second, rules are the engine rather than configuration on it: six deterministic rules, each a pure function mapped to an ATT&CK technique, run first-block-wins, with a prototype exercise running the same engine across three targets under a parity matrix asserting identical decisions. It also carries the most honest status language on the network — the pill reads NOT BUILT, and where the prototype's 149 passing tests are cited the site immediately bounds them as 'not deployed anywhere, not in production use, not maintained, not packaged for you to install'. Adding it cost one markdown file and three screenshots, which is what the content type was built for. One engine gap surfaced doing it: the markdown renderer had no TABLE support, so the six-rule core rendered as a paragraph of vertical bars. Pipe tables now parse — header, separator, body — and emit into the site's own .tablewrap, so they scroll on a phone and survive print like every other table here. Caught by looking at the output rather than trusting the validator, which had nothing to object to: badly rendered markdown is still valid HTML. |
+| v0.2.39 | 2026-08-21 | this release | Fourth site in the network: GRAPHS.SGIT.AI, a grammar for semantic graphs argued in increasing depth — five rules you can apply tomorrow, a working edge set with numbered gaps, then a full positioning against schemas and vector search. Its opening move is to disown the category a reader arrives expecting: 'this is not a graph database pitch… there is no graph database anywhere in the work behind this site'. The thesis is that two nodes both holding 8080 differ not in the value but in the connectivity, and the strongest argument on the site needs no technical background at all: 10,000 hours was an AVERAGE in a 1993 violinist study, not a threshold, half the top group had not reached it, and the author spent his career correcting the popularisation — but the correction never attached, because by then the claim had been carried through 242 papers and 200,000+ citation paths. A document cannot fix that; a graph can mark a claim superseded and turn 'what did we build on this?' into a query. Grammar highlights: every edge is a verb with a distinct inverse, the test being 'would a person in this business say this sentence?', and relates-to is BANNED for a mechanical reason — an edge with no verb carries no constraint, so it cannot narrow a traversal; it costs fan-out and buys nothing. Relevant here because the one indisputably shipped item on that site is sgit's own object model: a content-addressed commit DAG (SHA-256 over CIPHERTEXT, multi-parent, wave-BFS merge-base) plus *.link.json commit-pinned cross-vault edges and the sg.history read-only query API exposed to untrusted sandboxed apps. The grammar argument and the vault are not neighbours by theme; they share a data structure. It is also the FIRST SIBLING WITH A RECIPROCAL LINK — an '↗ part of sgit.ai' chip in its nav and a footer pointing back at /network/ — so the index stops being one-way. Engine change: a site entry may now carry a `url:` that differs from its `domain:`. graphs.sgit.ai does not resolve yet (verified: no DNS), and a finished site should be linked at the address that answers rather than held back for a CNAME, so the page states which one it is instead of shipping a dead link and needing a rewrite later. The network audit also found a broken link on the new site itself: it points at sentinel.sgit.ai, which does not resolve — the site is sg-sentinel.sgit.ai. Recorded on the entry for upstream. |
+| v0.2.38 | 2026-08-20 | obj-cas-imm-b270f3424691 | Third site in the network: SG-SENTINEL.SGIT.AI, a design for an app-coupled edge guard replacing rented AWS WAF + CloudWatch/Firehose with a layer you own. Its central inversion is that a generic WAF is blind to the app it protects and must denylist, whereas an edge that knows the valid request space can ALLOWLIST — no invalid request reaches the origin. Two things make it worth a page rather than a link. First, a governing correction stated as a constraint: 'Layer 1 never acts and never writes — it only decides and signals; Layer 2 is the sole actor and the sole I/O owner', because a CloudFront Function physically has no network and no filesystem — and the site names its own earlier design, where L1 blocked inline, as a category error. Second, rules are the engine rather than configuration on it: six deterministic rules, each a pure function mapped to an ATT&CK technique, run first-block-wins, with a prototype exercise running the same engine across three targets under a parity matrix asserting identical decisions. It also carries the most honest status language on the network — the pill reads NOT BUILT, and where the prototype's 149 passing tests are cited the site immediately bounds them as 'not deployed anywhere, not in production use, not maintained, not packaged for you to install'. Adding it cost one markdown file and three screenshots, which is what the content type was built for. One engine gap surfaced doing it: the markdown renderer had no TABLE support, so the six-rule core rendered as a paragraph of vertical bars. Pipe tables now parse — header, separator, body — and emit into the site's own .tablewrap, so they scroll on a phone and survive print like every other table here. Caught by looking at the output rather than trusting the validator, which had nothing to object to: badly rendered markdown is still valid HTML. |
 | v0.2.37 | 2026-08-20 | obj-cas-imm-1b229ee71709 | REGULATION GRAPH — the EU AI Act as a citable graph, and the first vault here whose publication the audit STOPPED rather than cleared. Regulation (EU) 2024/1689 parsed from official Formex XML retrieved from CELLAR, hash-verified to the source bytes: 113 articles, 500 paragraphs, 180 recitals, 68 definitions, resolving to 1,523 nodes and 1,944 edges across eleven views — browse, Cytoscape citation graph, in-browser SQLite over sql.js, RDF via rdflib, concepts, external instruments, and an experimental Art 9 lab as the declared entry point. WHAT HAPPENED: the submitted credential was a VAULT KEY, not a read key — the fourth time, caught by the intake check. The read key was derived and the audit run with it across 204 text files, which is when it found a LIVE VAULT KEY IN PLAINTEXT inside a handoff document, granting write access to a DIFFERENT vault. Publishing our read key would have handed that away. No page was written; the finding was reported first. Deleting the file would not have been enough, because vault objects are content-addressed and immutable, so a credential committed once may stay reachable from history — the only clean remedy is history that never held it. So this is a REDACTED REPUBLICATION into a new vault: same 206 files, two credentials replaced in place with visible and markers rather than silent deletions, a PUBLIC.md stating the rules and the removals, and a re-audit from a fresh read-key clone: 205 files, zero findings. The second removal was a judgement call — a read key is publishable by its OWNER, and that one belonged to a third vault, so it goes and the decision stays with a human. RULE 3 VERIFIED RATHER THAN ASSUMED: the Graph REPL is an LLM chat, and repl.js looks for an OpenRouter key at /key.json INSIDE THE VAULT before falling back to device storage, so a shipped key would be an open tab on somebody else's budget. No key.json exists, confirmed in the read-key clone rather than in our working copy. The 370-plus bare 64-hex strings the scan flagged were all sha256 provenance hashes, checked individually — a scan that never produces a false positive is not scanning hard enough. The rule that caught all of this came from Risk Graph Explorer's own PUBLIC.md, not from us; it has now paid for itself. |
 | v0.2.36 | 2026-08-19 | obj-cas-imm-18bcdab6db5d | A NETWORK section for the sibling *.sgit.ai sites, built as a content type rather than as two pages, because many more are coming. nhi.sgit.ai argues that 'how do I give my agents an identity' splits into agents you RUN and agents you RENT, and that the industry answers only the first — SPIFFE for workloads you can attest, an open feature request for the agents anyone actually names. pki.sgit.ai designs a key registry from the 2019 keyserver failure and publishes four rules BEFORE the registry exists, reaching a resolution worth borrowing: append-only is safe when a writer appends only to objects it owns and fatal when anyone may append to somebody else's, so the rule to carry is not 'append-only' but 'the writer owns what it writes' — which is append lanes, already shipped. Six screenshots captured from the live sites through the curl mirror the sandbox needs, since Chromium cannot egress here. Adding the next site is ONE markdown file plus its screenshots: the index, the cards and the per-site page are derived, same contract as updates and articles. Two engine fixes fell out of building it. The generator now WIRES THE SCREENSHOT COMPONENT AUTOMATICALLY for any page containing figures — a markdown author has no place to put a script tag, and the views page had already shipped once with figures and no loader, which errors nowhere and simply shows nothing. The first version of that check matched on 'figure class="shot"' and missed 'class="shot net-shot"', leaving the new index in exactly the state the check existed to prevent; it now matches on data-shot=, the attribute the component actually selects on. Detect on what the consumer looks for, not on how it happened to be written. |
 | v0.2.35 | 2026-08-19 | obj-cas-imm-1f3ce8d32a28 | Two new sections and the navigation restructure they forced. UPDATES and ARTICLES, both built on the VoiceDebrief journalist pipeline's central rule, which was worth adopting verbatim: PUBLISHING IS ADDING ONE FILE. No index to update, no manifest to hand-edit, no decision about where a post goes — ordering, permalinks, updates.json and feed.xml are all derived. That is not tidiness, it is the property that makes an unattended journalist agent safe: two agents publishing on the same day touch two different files and cannot conflict. Frontmatter is flat key: value with no YAML parser, the folder path must agree with the date, and slugs must be unique or the build fails. ONE DELIBERATE DIVERGENCE from their contract: they author root-relative links because their site sits at a domain root; ours must also render INSIDE A VAULT at an arbitrary mount path, where a leading slash escapes the app — so posts are still authored root-relative and the build rewrites each to a depth-relative path. Authors keep the simple rule; the vault still works. Updates are one entry per STORY rather than per release, which is the whole reason this is not the version log with a nicer stylesheet — v0.2.31 alone carried three separate stories. Five seeded from recent releases; the version log stays the complete technical record behind them. Articles carry two anti-rot rules stated on the page: never restate a fact you do not own (link to the page that does, so it cannot start lying when the fact changes), and link the test behind any testable claim. Two to open: GREEN DOES NOT MEAN LIVE on the deploy that reported success twice while serving a two-release-old page, and SEVEN VAULTS, ONE METHOD on what publishing seven vaults taught — including the three vault keys submitted as read keys. NAVIGATION: 14 flat items became 7 groups with a second level. The old bar wrapped to THREE ROWS on an iPhone before the page began — measured on a real screenshot, not guessed. Every group label is itself a link to that section's index, so nothing is reachable only by opening a menu. Desktop opens on hover and :focus-within in CSS alone; the phone collapses behind one button. The first mobile attempt made every submenu inline and measured 498px of navigation before the content — worse than what it replaced — so it was rebuilt as a collapsed menu: 91px, against 54px on desktop. Also adds an RSS feed and a JSON manifest, the first machine surfaces here aimed at a human follower rather than an agent. |
@@ -4869,6 +4870,23 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
+## 2026-08-21
+
+### [A fourth sibling site — and the first one that links back](#the-first-sibling-that-links-back) [v0.2.39](../admin/versions.md)
+
+networkgraphsmethod
+
+[graphs.sgit.ai](../network/graphs.md) joins [the network](../network/index.md). It argues for a grammar of semantic graphs, from five rules you can apply tomorrow up to a full positioning against schemas and vector search — and it opens by disowning the product category a reader arrives expecting: *"this is not a graph database pitch… there is no graph database anywhere in the work behind this site."*
+
+- **The thesis fits in two sentences.** Two nodes both hold `8080`. One is connected to a type, to a library, to a version; the other to nothing. *"The difference is not in the value. The difference is in the connectivity."*
+- **The best argument needs no background.** 10,000 hours came from a 1993 violinist study where it was an *average*, not a threshold — and half the top group had not reached it. The corrections never attached: by then the claim had been carried through 242 papers and 200,000+ citation paths. A document cannot fix that. A graph can mark a claim superseded and make *"what did we build on this?"* a query.
+- **`relates-to` is banned**, for a mechanical reason rather than a stylistic one: an edge with no verb carries no constraint, so it cannot narrow a traversal. It costs fan-out and buys nothing.
+- **It separates ships from argues, and concedes the harder half** — *"this site's subject matter is almost entirely design"* — then lists what is running: the vault commit DAG, `*.link.json` cross-vault edges, the read-only query API handed to untrusted sandboxed apps, and a live typed property graph of 71 nodes and 141 edges across 107 issue files.
+
+**It is the first sibling with a reciprocal link.** Its nav carries an `↗ part of sgit.ai` chip and its footer points back at this network page. Until now `/network/` was a one-way index.
+
+Two build changes came with it. A site entry can now carry a `url:` that differs from its `domain:` — `graphs.sgit.ai` does not resolve yet, and an entry should link to the address that works rather than wait for the CNAME, so the page says which one it is instead of shipping a dead link. And the audit that comes with every network entry found one: the graphs site links to `sentinel.sgit.ai`, which does not exist. The site is `sg-sentinel.sgit.ai`; the `sg-` prefix is load-bearing.
+
 ## 2026-08-20
 
 ### [The audit that stopped a publication — and the vault we built instead](#the-audit-that-stopped-a-publication) [v0.2.37](../admin/versions.md)
@@ -5021,7 +5039,10 @@ Longer pieces that make an argument across several pages — what a thing means,
 
 Focused sites on `*.sgit.ai` subdomains, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, stated status, honest edges — and they publish their arguments before the things they describe exist, so the commitments stay checkable.
 
-3 live. Screenshots are of the real sites, captured on the date each entry gives.
+4 live. Screenshots are of the real sites, captured on the date each entry gives.
+
+[**graphs.sgit.ai**A node is just a node — meaning lives in the edgesA grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.](graphs.md)
+graphssemanticsmethod[What it argues →](graphs.md) · [Open sgit-ai.github.io/SGit-AI__Website__Graphs ↗](https://sgit-ai.github.io/SGit-AI__Website__Graphs/) DNS pending
 
 [**nhi.sgit.ai**Agents you run, agents you rent, and the identity gapThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
 identityagentssecurity[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
@@ -5355,6 +5376,128 @@ All three are acceptable against the failure they replace. The first one to bite
 *The release script is [in the repository](https://github.com/SGit-AI/SGit-AI__CLI); the releases described here are [v0.2.31 to v0.2.33](../admin/versions.md).*
 
 [← All articles](index.md)
+
+
+
+==============================================================================
+# graphs.sgit.ai — A node is just a node — meaning lives in the edges — sgit.ai
+
+> A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.
+>
+> Page: https://sgit.ai/network/graphs.html
+
+[Home](../index.md) / [Network](index.md) / graphs.sgit.ai
+
+# graphs.sgit.ai
+
+A node is just a node — meaning lives in the edges
+
+Screenshots captured 2026-08-21 · `v0.1.0` when captured · [SGit-AI__Website__Graphs ↗](https://github.com/SGit-AI/SGit-AI__Website__Graphs)
+
+**`graphs.sgit.ai` does not resolve yet.** The site is live and complete at its origin, linked below; the subdomain is being pointed at it. Everything on this page was read there.
+
+[Open sgit-ai.github.io/SGit-AI__Website__Graphs ↗](https://sgit-ai.github.io/SGit-AI__Website__Graphs/)
+
+## The claim is about edges, not storage
+
+The hero states the whole thesis in two sentences and then proves it with the smallest possible example. Two nodes both hold the value `8080`. One is connected to a type, which is connected to a library, which is connected to a version; the other is connected to nothing.
+
+**The difference is not in the value. The difference is in the connectivity.**
+
+The source formulation is dated and attributed, as everything on that site is:
+
+*"in our graph we do not use properties, because properties do not have meaning, they are just words; we capture meaning through connectivity."* — Dinis Cruz, 26 June 2026, in an architecture brief about digital twins
+
+The home page: the thesis, the sourced quote, and the disclaimer immediately under it.
+
+**And then, before anything else, a disclaimer** — which is the reason this entry leads with it rather than with the grammar:
+
+**Read this before you read anything else: this is not a graph database pitch.** The claim is that one grammar is the interface at every boundary — *not* that we store things in a graph. There is no graph database anywhere in the work behind this site, and we say so on its own page.
+
+A site about graphs whose first move is to disown the product category a reader expects to be sold is doing the same thing [sg-sentinel.sgit.ai](../network/sg-sentinel.md) does with its `NOT BUILT` banner. The house rule holds: publish the work, then say precisely what it is worth.
+
+## The story that needs no background
+
+The best argument on the site needs no security or graph knowledge at all.
+
+Everyone knows expertise takes **10,000 hours**. The number comes from a 1993 study of violinists, where it was an *average* — not a threshold — and half the top group had not reached it. The original author spent much of his career correcting the popularisation.
+
+**None of the corrections ever attached to the claim.** By then it had been carried through a citation graph of 242 papers and 200,000+ citation paths, every one of them leading back to a reading the source never supported. A document cannot fix that: the correction is a new document, and nothing connects it to the thousands that already rest on the error.
+
+A graph can. Mark the claim superseded, and every path that rested on it becomes a query — *what did we build on this?* — rather than an archaeology project. That is the concrete thing a graph does that a document cannot, and it is why the depth pages insist on **supersede, never delete**.
+
+## Five rules, and one banned edge
+
+`/grammar/` is the page to keep open while drawing a graph — and, explicitly, *"the page an agent should be given before it starts emitting one."* Every edge is a verb, stated in both directions, and both directions get a name worth saying out loud:
+
+| Edge | Its inverse | Reads as |
+|---|---|---|
+| `owned_by` | `owns` | this system is owned by this team · this team owns this system |
+| `gives_rise_to` | `arises_from` | this vulnerability gives rise to this risk · this risk arises from this vulnerability |
+| `backed_by` | `evidences` | this fact is backed by this evidence · this evidence evidences this fact |
+| `grants` | `granted_by` | this role grants this permission · this permission is granted by this role |
+
+The test for an edge is not "is this technically the reverse?" but **"would a person in this business say this sentence?"**
+
+And `relates-to` is banned outright:
+
+*"You can never have relates-to, because relates-to is meaningless, two things always relate to each other. The more granular the edge, the better the query you can write."*
+
+The reason given is mechanical rather than aesthetic: an edge with no verb carries no constraint, so it cannot narrow a traversal — it costs fan-out and buys nothing. **The granularity of the verb is the precision of the query.** The remaining rules: rich nodes are good (solve the picture at query time, never by removing relationships), and never render the whole graph — render the result of a query.
+
+The grammar page: the one-screen version, the verb/inverse table, and the ban on `relates-to`.
+
+`/grammar/edge-set.html` carries the working set — 15 established edges, proposed inverses labelled as proposed, and a numbered gap (`G5`) where a glossary the corpus cites does not actually exist in the repository. The site also records that **the project breaks its own rule** in its own shipped configuration, and names where.
+
+## What ships, what is argued
+
+`/shipped/index.html` is the page to read first if you are deciding whether to trust the rest, and it says so. Its opening concession is the sharp one: *"this site's subject matter is almost entirely design."*
+
+What is running, and checkable by opening the repository:
+
+| What | The detail that makes it checkable |
+|---|---|
+| The vault commit DAG | Content-addressed objects — the identifier is a SHA-256 of the **ciphertext** — with multi-parent commits, a tree per directory, HMAC-derived deterministic refs, wave-BFS merge-base over all parents, and three-way merge |
+| A graph of graphs | Typed `*.link.json` edges between vaults, optionally pinned to a commit in the target's history — a cross-graph edge that cannot silently follow a moving target |
+| A read-only query API over the DAG | `sg.history.log / list / read / readText / readBlob`, exposed to *untrusted sandboxed apps* |
+| A live typed property graph | The issue tracker's own data: 12 node types, 10 verb/inverse edge types with domain and range constraints, **71 nodes and 141 edges across 107 issue files** |
+| Three published vaults | The regulation graph, the Risk Graph Explorer, agentic browser isolation |
+
+Every number on the site is labelled live or parsed-from-a-design-document, and the two are never mixed. The line that ties it back to us is the project's own description of the shipped layer: *"what we've built is not fundamentally an encryption system. It is a content-addressed, portable, storage-agnostic version control protocol."* A commit DAG is a graph — and it is the one graph on that site that has been running for months.
+
+The reality page: the ships-versus-argued table, with the absence of a graph database stated at the top.
+
+## Where it says it loses
+
+`/about/participant.html` is the most unusual page, and worth the click. It opens by applying the site's own thesis to itself — *"provenance should be traversable and the interested party should be a visible node; that applies to us"* — states the conflict plainly (*"if the argument on this site is right, the products we build are more valuable"*), and then lists **four situations where this approach is the wrong one**:
+
+1. **Everyone already agrees, and always will.** One team, one codebase, one jurisdiction, stable vocabulary, no external party — a schema is simpler and faster. *"No boundary, no benefit."*
+2. **You need the answer enforced, not computed.** "This field must never be null" is a validator's job. Some systems need a gate, and a gate is a schema.
+3. **The graph would be empty.** Edges are work somebody has to do; where nobody has done it, similarity search wins outright.
+4. **You want to buy it rather than build it.** The semantic layer is designed, not shipped.
+
+## Why it is relevant here
+
+Three connections, and the third is the one to watch.
+
+**The commit DAG is already a graph.** The one indisputably shipped item on that site is sgit's own object model — content-addressed over ciphertext, multi-parent, with a real merge-base. The grammar argument and the vault are not neighbours by theme; they share a data structure.
+
+**The query API is the vault's read model.** `sg.history.log/list/read` handed to untrusted sandboxed code is exactly the surface the [vault demos](../demos/index.md) run on. A graph query interface that an app you do not trust may call is a zero-knowledge story as much as a graph one.
+
+**It is the first sibling that links back.** Its nav carries an `↗ part of sgit.ai` chip, and its footer links to this network page directly. Until now the network was a one-way index; this is the first entry that closes the loop.
+
+**One correction to pass upstream.** The graphs site's footer links to `sentinel.sgit.ai`, which does not resolve. The site is at [`sg-sentinel.sgit.ai`](../network/sg-sentinel.md) — the `sg-` prefix is load-bearing. Checked 2026-08-21.
+
+## Sections
+
+- **Start here** — the five-minute version, why graphs at all, glossary
+- **The grammar** — the five rules, and the working edge set with its numbered gaps
+- **Depth** — the full argument, and a graph at every boundary
+- **Examples** — browser isolation, the 2FA graph, Article 26(5) end to end, Wardley maps as graphs
+- **Reality** — what ships and what is argued
+- **Site** — the source documents in full, release history, and the participant disclosure
+
+[← All network sites](index.md)
 
 
 

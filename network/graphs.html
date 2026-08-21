@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>graphs.sgit.ai — A node is just a node — meaning lives in the edges — sgit.ai</title>
+<meta name="description" content="A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.">
+<link rel="canonical" href="https://sgit.ai/network/graphs.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/network/graphs.html">
+<meta property="og:title" content="graphs.sgit.ai — A node is just a node — meaning lives in the edges — sgit.ai">
+<meta property="og:description" content="A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="graphs.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "graphs.sgit.ai — A node is just a node — meaning lives in the edges — sgit.ai", "headline": "graphs.sgit.ai — A node is just a node — meaning lives in the edges — sgit.ai", "description": "A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.", "url": "https://sgit.ai/network/graphs.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.39</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl" href="../articles/index.html">Articles</a>
+      <a class="sl here" href="../network/index.html">Network</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Network</a> / graphs.sgit.ai</p>
+  <h1>graphs.sgit.ai</h1>
+  <p class="lead">A node is just a node — meaning lives in the edges</p>
+  <p class="small dim">Screenshots captured 2026-08-21 &middot; <code>v0.1.0</code> when captured &middot; <a href="https://github.com/SGit-AI/SGit-AI__Website__Graphs" rel="noopener" target="_blank">SGit-AI__Website__Graphs &#8599;</a></p>
+  <div class="note"><b><code>graphs.sgit.ai</code> does not resolve yet.</b> The site is live and complete at its origin, linked below; the subdomain is being pointed at it. Everything on this page was read there.</div>
+  <p><a class="btn" href="https://sgit-ai.github.io/SGit-AI__Website__Graphs/" rel="noopener" target="_blank">Open sgit-ai.github.io/SGit-AI__Website__Graphs &#8599;</a></p>
+<h2>The claim is about edges, not storage</h2>
+<p>The hero states the whole thesis in two sentences and then proves it with the smallest possible example. Two nodes both hold the value <code>8080</code>. One is connected to a type, which is connected to a library, which is connected to a version; the other is connected to nothing.</p>
+<div class="note"><b>The difference is not in the value. The difference is in the connectivity.</b></div>
+<p>The source formulation is dated and attributed, as everything on that site is:</p>
+<div class="note"><em>"in our graph we do not use properties, because properties do not have meaning, they are just words; we capture meaning through connectivity."</em> — Dinis Cruz, 26 June 2026, in an architecture brief about digital twins</div>
+<figure class="shot" data-shot="graphs-home.webp" data-dir="images/" data-alt="The home page: the thesis, the sourced quote, and the disclaimer immediately under it."><figcaption>The home page: the thesis, the sourced quote, and the disclaimer immediately under it.</figcaption></figure>
+<p><b>And then, before anything else, a disclaimer</b> — which is the reason this entry leads with it rather than with the grammar:</p>
+<div class="note"><b>Read this before you read anything else: this is not a graph database pitch.</b> The claim is that one grammar is the interface at every boundary — <em>not</em> that we store things in a graph. There is no graph database anywhere in the work behind this site, and we say so on its own page.</div>
+<p>A site about graphs whose first move is to disown the product category a reader expects to be sold is doing the same thing <a href="../network/sg-sentinel.html">sg-sentinel.sgit.ai</a> does with its <code>NOT BUILT</code> banner. The house rule holds: publish the work, then say precisely what it is worth.</p>
+<h2>The story that needs no background</h2>
+<p>The best argument on the site needs no security or graph knowledge at all.</p>
+<p>Everyone knows expertise takes <b>10,000 hours</b>. The number comes from a 1993 study of violinists, where it was an <em>average</em> — not a threshold — and half the top group had not reached it. The original author spent much of his career correcting the popularisation.</p>
+<p><b>None of the corrections ever attached to the claim.</b> By then it had been carried through a citation graph of 242 papers and 200,000+ citation paths, every one of them leading back to a reading the source never supported. A document cannot fix that: the correction is a new document, and nothing connects it to the thousands that already rest on the error.</p>
+<p>A graph can. Mark the claim superseded, and every path that rested on it becomes a query — <em>what did we build on this?</em> — rather than an archaeology project. That is the concrete thing a graph does that a document cannot, and it is why the depth pages insist on <b>supersede, never delete</b>.</p>
+<h2>Five rules, and one banned edge</h2>
+<p><code>/grammar/</code> is the page to keep open while drawing a graph — and, explicitly, <em>"the page an agent should be given before it starts emitting one."</em> Every edge is a verb, stated in both directions, and both directions get a name worth saying out loud:</p>
+<div class="tablewrap"><table>
+<tr><th>Edge</th><th>Its inverse</th><th>Reads as</th></tr>
+<tr><td><code>owned_by</code></td><td><code>owns</code></td><td>this system is owned by this team · this team owns this system</td></tr>
+<tr><td><code>gives_rise_to</code></td><td><code>arises_from</code></td><td>this vulnerability gives rise to this risk · this risk arises from this vulnerability</td></tr>
+<tr><td><code>backed_by</code></td><td><code>evidences</code></td><td>this fact is backed by this evidence · this evidence evidences this fact</td></tr>
+<tr><td><code>grants</code></td><td><code>granted_by</code></td><td>this role grants this permission · this permission is granted by this role</td></tr>
+</table></div>
+<p>The test for an edge is not "is this technically the reverse?" but <b>"would a person in this business say this sentence?"</b></p>
+<p>And <code>relates-to</code> is banned outright:</p>
+<div class="note"><em>"You can never have relates-to, because relates-to is meaningless, two things always relate to each other. The more granular the edge, the better the query you can write."</em></div>
+<p>The reason given is mechanical rather than aesthetic: an edge with no verb carries no constraint, so it cannot narrow a traversal — it costs fan-out and buys nothing. <b>The granularity of the verb is the precision of the query.</b> The remaining rules: rich nodes are good (solve the picture at query time, never by removing relationships), and never render the whole graph — render the result of a query.</p>
+<figure class="shot" data-shot="graphs-grammar.webp" data-dir="images/" data-alt="The grammar page: the one-screen version, the verb/inverse table, and the ban on `relates-to`."><figcaption>The grammar page: the one-screen version, the verb/inverse table, and the ban on <code>relates-to</code>.</figcaption></figure>
+<p><code>/grammar/edge-set.html</code> carries the working set — 15 established edges, proposed inverses labelled as proposed, and a numbered gap (<code>G5</code>) where a glossary the corpus cites does not actually exist in the repository. The site also records that <b>the project breaks its own rule</b> in its own shipped configuration, and names where.</p>
+<h2>What ships, what is argued</h2>
+<p><code>/shipped/index.html</code> is the page to read first if you are deciding whether to trust the rest, and it says so. Its opening concession is the sharp one: <em>"this site's subject matter is almost entirely design."</em></p>
+<p>What is running, and checkable by opening the repository:</p>
+<div class="tablewrap"><table>
+<tr><th>What</th><th>The detail that makes it checkable</th></tr>
+<tr><td>The vault commit DAG</td><td>Content-addressed objects — the identifier is a SHA-256 of the <b>ciphertext</b> — with multi-parent commits, a tree per directory, HMAC-derived deterministic refs, wave-BFS merge-base over all parents, and three-way merge</td></tr>
+<tr><td>A graph of graphs</td><td>Typed <code>*.link.json</code> edges between vaults, optionally pinned to a commit in the target's history — a cross-graph edge that cannot silently follow a moving target</td></tr>
+<tr><td>A read-only query API over the DAG</td><td><code>sg.history.log / list / read / readText / readBlob</code>, exposed to <em>untrusted sandboxed apps</em></td></tr>
+<tr><td>A live typed property graph</td><td>The issue tracker's own data: 12 node types, 10 verb/inverse edge types with domain and range constraints, <b>71 nodes and 141 edges across 107 issue files</b></td></tr>
+<tr><td>Three published vaults</td><td>The regulation graph, the Risk Graph Explorer, agentic browser isolation</td></tr>
+</table></div>
+<p>Every number on the site is labelled live or parsed-from-a-design-document, and the two are never mixed. The line that ties it back to us is the project's own description of the shipped layer: <em>"what we've built is not fundamentally an encryption system. It is a content-addressed, portable, storage-agnostic version control protocol."</em> A commit DAG is a graph — and it is the one graph on that site that has been running for months.</p>
+<figure class="shot" data-shot="graphs-shipped.webp" data-dir="images/" data-alt="The reality page: the ships-versus-argued table, with the absence of a graph database stated at the top."><figcaption>The reality page: the ships-versus-argued table, with the absence of a graph database stated at the top.</figcaption></figure>
+<h2>Where it says it loses</h2>
+<p><code>/about/participant.html</code> is the most unusual page, and worth the click. It opens by applying the site's own thesis to itself — <em>"provenance should be traversable and the interested party should be a visible node; that applies to us"</em> — states the conflict plainly (<em>"if the argument on this site is right, the products we build are more valuable"</em>), and then lists <b>four situations where this approach is the wrong one</b>:</p>
+<ol>
+<li><b>Everyone already agrees, and always will.</b> One team, one codebase, one jurisdiction, stable vocabulary, no external party — a schema is simpler and faster. <em>"No boundary, no benefit."</em></li>
+<li><b>You need the answer enforced, not computed.</b> "This field must never be null" is a validator's job. Some systems need a gate, and a gate is a schema.</li>
+<li><b>The graph would be empty.</b> Edges are work somebody has to do; where nobody has done it, similarity search wins outright.</li>
+<li><b>You want to buy it rather than build it.</b> The semantic layer is designed, not shipped.</li>
+</ol>
+<h2>Why it is relevant here</h2>
+<p>Three connections, and the third is the one to watch.</p>
+<p><b>The commit DAG is already a graph.</b> The one indisputably shipped item on that site is sgit's own object model — content-addressed over ciphertext, multi-parent, with a real merge-base. The grammar argument and the vault are not neighbours by theme; they share a data structure.</p>
+<p><b>The query API is the vault's read model.</b> <code>sg.history.log/list/read</code> handed to untrusted sandboxed code is exactly the surface the <a href="../demos/index.html">vault demos</a> run on. A graph query interface that an app you do not trust may call is a zero-knowledge story as much as a graph one.</p>
+<p><b>It is the first sibling that links back.</b> Its nav carries an <code>↗ part of sgit.ai</code> chip, and its footer links to this network page directly. Until now the network was a one-way index; this is the first entry that closes the loop.</p>
+<div class="note"><b>One correction to pass upstream.</b> The graphs site's footer links to <code>sentinel.sgit.ai</code>, which does not resolve. The site is at <a href="../network/sg-sentinel.html"><code>sg-sentinel.sgit.ai</code></a> — the <code>sg-</code> prefix is load-bearing. Checked 2026-08-21.</div>
+<h2>Sections</h2>
+<ul>
+<li><b>Start here</b> — the five-minute version, why graphs at all, glossary</li>
+<li><b>The grammar</b> — the five rules, and the working edge set with its numbered gaps</li>
+<li><b>Depth</b> — the full argument, and a graph at every boundary</li>
+<li><b>Examples</b> — browser isolation, the 2FA graph, Article 26(5) end to end, Wardley maps as graphs</li>
+<li><b>Reality</b> — what ships and what is argued</li>
+<li><b>Site</b> — the source documents in full, release history, and the participant disclosure</li>
+</ul>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All network sites</a></p>
+</main>
+<script>
+(function () {
+  fetch('../assets/shots.js?v=v0.2.39')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.39</a> · <a href="../admin/index.html">engineering</a> · <a href="graphs.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.39';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

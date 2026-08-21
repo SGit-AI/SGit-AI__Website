@@ -302,6 +302,11 @@ class Content_Loader:
                 'slug': fn[:-3], 'title': meta['title'], 'domain': meta['domain'],
                 'tagline': meta['tagline'], 'summary': meta['summary'],
                 'observed': meta['observed'], 'repo': meta.get('repo', ''),
+                # `url` is where the site actually answers today. It defaults to the
+                # domain, and differs only while DNS is still being pointed — a site
+                # can be finished and readable before its subdomain resolves, and the
+                # entry should link to what works rather than wait for the CNAME.
+                'url': meta.get('url', '') or f'https://{meta["domain"]}',
                 'seen_version': meta.get('seen_version', ''),
                 'hero': meta.get('hero', ''), 'tags': meta.get('tags', []),
                 'status': meta.get('status', 'published'),

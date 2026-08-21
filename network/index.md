@@ -2,7 +2,7 @@
 
 > Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
 
-*Source: <https://sgit.ai/network/index.html> · site v0.2.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/network/index.html> · site v0.2.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,10 @@
 
 Focused sites on `*.sgit.ai` subdomains, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, stated status, honest edges — and they publish their arguments before the things they describe exist, so the commitments stay checkable.
 
-3 live. Screenshots are of the real sites, captured on the date each entry gives.
+4 live. Screenshots are of the real sites, captured on the date each entry gives.
+
+[**graphs.sgit.ai**A node is just a node — meaning lives in the edgesA grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.](graphs.md)
+graphssemanticsmethod[What it argues →](graphs.md) · [Open sgit-ai.github.io/SGit-AI__Website__Graphs ↗](https://sgit-ai.github.io/SGit-AI__Website__Graphs/) DNS pending
 
 [**nhi.sgit.ai**Agents you run, agents you rent, and the identity gapThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
 identityagentssecurity[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
