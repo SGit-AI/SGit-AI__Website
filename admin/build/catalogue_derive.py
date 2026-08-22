@@ -27,6 +27,7 @@ class ReadOnlyVault:
         self.key = bytes.fromhex(read_key_hex)
         self.endpoint = endpoint.rstrip('/')
         self.aes = AESGCM(self.key)
+        self.blobs = {}
 
     def file_id(self, domain):
         return hmac.new(self.key, domain.encode(), hashlib.sha256).hexdigest()[:12]
@@ -64,6 +65,7 @@ class ReadOnlyVault:
             else:
                 size = self.dec_b64(e.get('size_enc')) or '0'
                 out[full] = int(size) if size.isdigit() else 0
+                self.blobs[full] = e.get('blob_id')
         return out
 
     def history_depth(self, limit=200):
@@ -91,9 +93,23 @@ def derive(vault_id, read_key, endpoint='https://dev.send.sgraph.ai'):
     for p in files:
         ext = ('.' + p.rsplit('.', 1)[1].lower()) if '.' in p.split('/')[-1] else '(none)'
         exts[ext] = exts.get(ext, 0) + 1
+    # An app entry is whatever app.json declares, at whatever depth — not every
+    # vault app lives at the root. Fall back to any HTML only when app.json is
+    # present but declares nothing parsable.
     entries = []
     if 'app.json' in files:
-        entries = [p for p in files if p.endswith('.html') and '/' not in p]
+        try:
+            app = json.loads(v.obj(v.blobs['app.json']))
+        except Exception:
+            app = {}
+        declared = app.get('entry')
+        entries = [declared] if isinstance(declared, str) else []
+        for extra in (app.get('entries') or app.get('views') or []):
+            path = extra.get('entry') if isinstance(extra, dict) else extra
+            if isinstance(path, str) and path not in entries:
+                entries.append(path)
+        if not entries:
+            entries = sorted(p for p in files if p.endswith('.html'))
     updated = datetime.fromtimestamp(v.commit['timestamp_ms'] / 1000, tz=timezone.utc)
 
     lines = [

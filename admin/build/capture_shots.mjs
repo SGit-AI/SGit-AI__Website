@@ -45,6 +45,8 @@ const REGGRAPH = 'sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b
 
 const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
+const VOICEDEBRIEF = 'sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d';
+
 /* Each shot: which surface to open, what to do, and what to crop.
    target: 'app'   → an element inside the vault app's own frame
            'page'  → an element (or shadow path) on the SG/App or SG/Vault page
@@ -272,6 +274,58 @@ const SHOTS = [
   { name: 'permissions', vault: 'supplement-stack', cred: SUPPLEMENT, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
     target: 'clip', clip: [0, 0, 1700, 760] },
+
+  // ---- VoiceDebrief · Fractal Semantic Graphs (k6xy9z4d) ----
+  // Seven views over one legal paragraph. The tabs are `div.tab` whose textContent is
+  // exactly the label (read from part-4/app/app.js), so appClickText matches exactly.
+  { name: 'app-open', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // The annotation layers, where the finding is an absence: the actors layer is empty
+  // because no duty-holder appears anywhere in Article 9(2).
+  { name: 'paragraph', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'The paragraph'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // Compression that stays lossless while the links hold: intent → five words →
+  // sentence → paragraph → notation → text.
+  { name: 'altitudes', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'Altitudes'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'concepts', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'Concepts'] }, { wait: 3000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'grammar', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'Grammar'] }, { wait: 3000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'bow-tie', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'Bow-tie'] }, { wait: 3000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // The join: a cyber scenario whose obligations attach at the same nodes.
+  { name: 'cyber-instance', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickText: ['div.tab', 'Cyber instance'] }, { wait: 3000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // Least privilege in the vault's own manifest: the app declares read on part-4/
+  // only, and requests no write anywhere.
+  { name: 'permissions', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1700, 760] },
+
+  // The reference layer that makes the vault a record rather than a demo: the packs
+  // it was built against, kept beside the work.
+  { name: 'tree', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 3000 }, { clickText: ['.sb-tree__folder-name', 'briefings'] }, { wait: 2000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
+
+  { name: 'history', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { navView: 'sgit' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
 ];
 
 async function route(ctx) {

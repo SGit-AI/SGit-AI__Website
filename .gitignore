@@ -20,6 +20,7 @@
 .git/
 
 # Build/OS noise.
+node_modules/
 __pycache__/
 *.pyc
 .DS_Store
