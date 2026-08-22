@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,43 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-08-22
+
+### [The ninth published vault — four apps in one tree, and a reader that asked for nothing it did not need](#the-ninth-vault-four-apps-in-one-tree) [v0.2.40](../admin/versions.md)
+
+vaultsgraphspermissions
+
+[VoiceDebrief](../demos/vaults/voice-debrief/index.md) joins [the published vaults](../demos/vaults/index.md). Four apps in one encrypted vault, lifting meaning out of text — from fictional voice notes to Article 9(2) of the EU AI Act — into typed semantic graphs.
+
+*Written up from the vault and the release that published it; the page itself is the primary record.*
+
+- **The claim in one line.** A paragraph is not a string, it is a **graph** — and so is the paragraph next to it. Lift both into typed nodes and the two join *node-to-node* through an intermediate layer, never paragraph-to-paragraph. Part 4 works that end to end against one real legal provision. Parts 1–3 run on a **fictional** corpus, and the vault says so in its own README.
+- **Read over one folder, write over nothing.** `app.json` declares `fs.read` on `part-4/` and nothing else — no write, no mkdir, at any path. The host's own chrome renders the result as `R3 W0`. A capability never requested cannot be misused.
+- **Lineage kept rather than overwritten.** `part-2/` and `part-3/` hold frozen app snapshots at the state they shipped in, with a shared nav linking all three — so the earlier thinking stays openable instead of surviving only as a commit message.
+- **A nested entry point**, `part-4/index.html`, which is what lets one vault hold four apps without one of them having to own the root.
+- **The credential is derived.** It arrived as a vault key, was classified as a write credential before it touched anything, and only the one-way read key is published.
+
+Ten screenshots, captured by driving the live vault from that published read key — no mock-ups.
+
+It was written and pushed a day before it appeared here: [the tag gate](../updates/#an-ordinary-commit-should-not-be-able-to-take-the-site-down) had the deploy blocked.
+
+### [An ordinary commit should not be able to take the site down](#an-ordinary-commit-should-not-be-able-to-take-the-site-down) [v0.2.40](../admin/versions.md)
+
+cideployrelease
+
+Two good commits landed on `dev` after v0.2.39 and sgit.ai served neither for a day. Nothing was wrong with either of them. The CI tag gate failed, and the deploy is gated on the tag gate.
+
+- **What the error said, and what was actually true.** The job read `SITE_VERSION`, found `v0.2.39` already tagged on the *earlier* commit, and failed with *"SITE_VERSION was not bumped for this release."* But this was not a release — it was an ordinary commit on top of one. The message described a discipline failure where the real event was a category mistake in the check.
+- **Why it became an outage rather than a warning.** The deploy job runs when `tag-release` is `success` **or** `skipped`. A *failure* is neither. So a missing tag — bookkeeping — silently became an unpublished site. Re-running could not help: the check is deterministic, and it failed identically on the second attempt.
+- **The fix is to ask the right question.** What makes a push a release is now its **commit subject**, which is where `release.sh` already writes the version. No `site vR.M.N:` subject means an ordinary push: tagged nothing, published anyway.
+- **And a commit that does claim a version is held to more than before.** The subject and `SITE_VERSION` must agree — previously that was only ever inferred, from whether the backfill loop had happened to produce the tag. The version must not already have shipped, and it must still be the next minor.
+
+The asymmetry is the point, and it is written into the workflow so the next person changing it knows why: **a missing tag is a bookkeeping gap, a blocked deploy is an outage.**
+
+Checked before shipping rather than after, by extracting the job's own script and running it over five cases in a throwaway clone: the exact commit that failed today now exits 0, a proper release tags, and subject/`SITE_VERSION` disagreement, a reused version and a skipped minor all still fail — each with a message that names what is actually wrong.
+
+There was a quieter second consequence, and it is the one worth remembering. Those commits went to git only, so the vault remote never received them: `sgit status` showed all fifteen new files as uncommitted. Both stores are meant to move together, which is exactly [why CI does not author commits itself](../case-studies/one-tree-two-remotes.md) — a CI-written commit would exist on the git side alone. This release carries them across.
 
 ## 2026-08-21
 

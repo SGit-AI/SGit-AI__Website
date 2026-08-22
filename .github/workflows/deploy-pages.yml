@@ -4,8 +4,13 @@
 #   1. validate     — the same gate release.sh runs locally, including the
 #                     key-leak tripwire. A failure stops the release: no tag,
 #                     no publish.
-#   2. tag-release  — every push to dev is a minor release and ends tagged
-#                     v{release}.{major}.{minor}. Adapted from the VoiceDebrief
+#   2. tag-release  — a RELEASE push to dev ends tagged v{release}.{major}.{minor}.
+#                     What makes a push a release is its commit subject: release.sh
+#                     writes "site vR.M.N: ..." there and bumps SITE_VERSION, and
+#                     the two must agree. An ordinary commit carries neither, so it
+#                     is tagged nothing and published anyway — a missing tag is a
+#                     bookkeeping gap, a blocked deploy is an outage, and the deploy
+#                     job below is gated on this one. Adapted from the VoiceDebrief
 #                     workflow (OSBot git__increment-tag) with one deliberate
 #                     difference: CI does NOT commit a version file, because this
 #                     repo is simultaneously an sgit vault and a CI-authored
@@ -75,23 +80,43 @@ jobs:
             fi
           done
 
-          # The version of THIS release, from the file that owns it.
+          # Is THIS push a release? release.sh writes the version in two places —
+          # SITE_VERSION and the commit subject — so the subject is what declares
+          # intent. A commit carrying neither is an ordinary push.
+          HEAD_VER=$(git log -1 --format='%s' | grep -oP '^site v\K[0-9]+\.[0-9]+\.[0-9]+(?=:)' || true)
           VER=$(grep -oP "SITE_VERSION = 'v\K[0-9]+\.[0-9]+\.[0-9]+" admin/build/build_pages.py)
-          TAG="v$VER"
-          echo "SITE_VERSION says $TAG"
+          echo "SITE_VERSION says v$VER; HEAD's subject says ${HEAD_VER:-<not a release>}"
 
-          # The release commit's subject must agree (release.sh writes both).
-          if ! git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
-            echo "::error::HEAD's subject does not carry $TAG — SITE_VERSION and the release commit disagree"
+          # Not a release: nothing to tag, and the site still publishes.
+          #
+          # This branch exists because the old code tagged unconditionally and the
+          # deploy job is gated on this one succeeding — so an ordinary commit on
+          # top of a release (SITE_VERSION unchanged, its tag already sitting on
+          # the earlier commit) failed here and took the whole publish down with
+          # it. That happened for real: two good commits landed after v0.2.39 and
+          # sgit.ai served neither, with an error that said "SITE_VERSION was not
+          # bumped for this release" when the truth was that this was not one.
+          # A missing tag is a bookkeeping gap; a blocked deploy is an outage.
+          if [ -z "$HEAD_VER" ]; then
+            AT=$(git rev-parse --short "refs/tags/v$VER^{commit}" 2>/dev/null || echo 'untagged')
+            echo "::notice::HEAD is not a release commit — skipping tag, publishing anyway (v$VER is at $AT)"
+            exit 0
+          fi
+
+          TAG="v$HEAD_VER"
+
+          # A commit that DOES claim a version is held to the full contract.
+          if [ "$HEAD_VER" != "$VER" ]; then
+            echo "::error::HEAD's subject says $TAG but SITE_VERSION says v$VER — release.sh writes both, so they must agree"
             exit 1
           fi
           if [ "$(git rev-parse "refs/tags/$TAG^{commit}")" != "$(git rev-parse HEAD)" ]; then
-            echo "::error::$TAG already exists on another commit — SITE_VERSION was not bumped for this release"
+            echo "::error::$TAG already exists on another commit — this release reuses a version that has already shipped"
             exit 1
           fi
 
-          # Every push to dev is a minor: the new tag must be the next minor
-          # after the previous latest (or a deliberate major/release bump to .0).
+          # A release is a minor: the new tag must be the next minor after the
+          # previous latest (or a deliberate major/release bump to .0).
           PREV=$(git tag --list 'v*' | grep -v "^$TAG$" | sort -V | tail -1)
           if [ -n "$PREV" ]; then
             NEXT_MINOR=$(echo "$PREV" | awk -F. '{printf "%s.%s.%d", $1, $2, $3+1}')
