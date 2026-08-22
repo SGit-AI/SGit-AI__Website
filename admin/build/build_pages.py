@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.40'
+SITE_VERSION = 'v0.2.41'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.40', '2026-08-22', 'this release',
+    ('v0.2.41', '2026-08-22', 'this release',
+     "GRAPHS.SGIT.AI RESOLVES — the CNAME landed hours after v0.2.39 shipped the entry, so the "
+     "`url:` override comes back out and the card links the subdomain directly. Deleting one "
+     "frontmatter line was the entire change, which was the point of adding the field: a site "
+     "finished before its DNS should be linked at the address that answers, and should not need "
+     "rewriting when the real one starts working. The DNS-pending chip and the note both "
+     "disappear on their own because they were derived from url != domain rather than written "
+     "into the page. Verified before and after: graphs.sgit.ai returned nothing from a resolver "
+     "on 21 August and answers 200 today. The sentinel.sgit.ai correction on that entry was "
+     "re-checked rather than carried forward on trust and still stands — the graphs site links "
+     "to a host that does not resolve, and the site is sg-sentinel.sgit.ai. Also settled this "
+     "release, for the record: the 34 historical tags CI could never push (v0.1.9-v0.2.16, "
+     "blocked because GITHUB_TOKEN cannot push a ref at a commit carrying a different workflow "
+     "blob) are now on the remote, pushed from a workflows-scoped credential. The first attempt "
+     "was a plain `git push --tags`, which reported 'Everything up-to-date' and did nothing: the "
+     "tags only ever existed inside destroyed CI runners, so no clone had them to push. They had "
+     "to be recreated locally from the commit subjects first. All 58 release commits are now "
+     "tagged, each verified to point at the commit whose subject names it, and the backfill loop "
+     "is a no-op from here."),
+    ('v0.2.40', '2026-08-22', 'obj-cas-imm-550fd7d8bac2',
      "THE TAG GATE TOOK THE SITE DOWN, and this release fixes the gate and publishes what it "
      "held back. Two good commits landed on dev after v0.2.39 — the VoiceDebrief vault (the ninth "
      "published vault, ten screenshots driven from its published read key) and a check_credential "
