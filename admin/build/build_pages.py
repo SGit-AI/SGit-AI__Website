@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.39'
+SITE_VERSION = 'v0.2.40'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,36 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.39', '2026-08-21', 'this release',
+    ('v0.2.40', '2026-08-22', 'this release',
+     "THE TAG GATE TOOK THE SITE DOWN, and this release fixes the gate and publishes what it "
+     "held back. Two good commits landed on dev after v0.2.39 — the VoiceDebrief vault (the ninth "
+     "published vault, ten screenshots driven from its published read key) and a check_credential "
+     "fix — and sgit.ai served neither for a day. Nothing was wrong with either commit. The CI "
+     "tag job read SITE_VERSION, found v0.2.39 already tagged on the EARLIER commit, and failed "
+     "with 'SITE_VERSION was not bumped for this release' — when the truth was that this was not "
+     "a release at all. Because the deploy job needs tag-release to be success OR skipped, and a "
+     "FAILURE is neither, the publish never ran. Re-running could not help: the check is "
+     "deterministic, and attempt 2 failed identically. THE FIX: what makes a push a release is "
+     "now its commit subject, which is where release.sh already writes the version. A commit "
+     "carrying no 'site vR.M.N:' subject is an ordinary push — tagged nothing, published anyway. "
+     "A commit that DOES claim a version is held to the full contract, and to a stricter one than "
+     "before: the subject and SITE_VERSION must agree (previously only inferred, via whether the "
+     "backfill loop had produced the tag), the version must not already have shipped, and it must "
+     "be the next minor. The reasoning behind the asymmetry is recorded in the workflow: a "
+     "missing tag is a bookkeeping gap, a blocked deploy is an outage. Verified before shipping "
+     "by extracting the job's script and running it over five cases in a throwaway clone — the "
+     "exact commit that failed today now exits 0; a proper release tags; subject/SITE_VERSION "
+     "disagreement, a reused version and a skipped minor all still fail, each with a message that "
+     "names what is actually wrong. SECOND CONSEQUENCE, less visible and worth recording: those "
+     "commits went to git only, so the vault remote never received them and the two stores had "
+     "drifted — sgit status showed all fifteen VoiceDebrief files as uncommitted. That is the "
+     "invariant release.sh exists to hold and the reason CI does not author commits itself. This "
+     "release carries them across. Also in: the VoiceDebrief vault page goes live, "
+     "check_credential now recognises sgit_private_vault_/sgit_private_read_ (the prefixes the "
+     "CLI actually prints on init and clone, where the classifier previously called a good read "
+     "key 'unrecognised' — fail-closed, but the kind of refusal that tempts an operator to reach "
+     "for the vault key instead), and validate.js skips node_modules."),
+    ('v0.2.39', '2026-08-21', 'obj-cas-imm-3d8cf0d26b96',
      "Fourth site in the network: GRAPHS.SGIT.AI, a grammar for semantic graphs argued in "
      "increasing depth — five rules you can apply tomorrow, a working edge set with numbered "
      "gaps, then a full positioning against schemas and vector search. Its opening move is to "
