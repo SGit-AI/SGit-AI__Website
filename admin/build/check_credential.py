@@ -28,6 +28,13 @@ This script never prints the credential it was given.
 """
 import re, sys
 
+# Two generations of prefix, both still in circulation: sgit_vk1_/sgit_rk1_, and the
+# sgit_private_vault_/sgit_private_read_ pair that the CLI itself prints on `init` and
+# `clone`. Missing the latter classified a perfectly good read key as "unrecognised",
+# which is fail-closed but sends the operator looking for a way around the check.
+WRITE_PREFIXES = ('sgit_vk1_', 'sgit_private_vault_')
+READ_PREFIXES  = ('sgit_rk1_', 'sgit_private_read_')
+
 RE_READ_KEY_BARE = re.compile(r'^[a-f0-9]{64}:[a-z0-9]{4,24}$')
 RE_READ_KEY_ONLY = re.compile(r'^[a-f0-9]{64}$')
 RE_VAULT_ID      = re.compile(r'^[a-z0-9]{4,24}$')
@@ -43,17 +50,19 @@ class Credential_Check:
         if not s:
             return 'empty', False, 'nothing supplied'
 
-        if s.startswith('sgit_vk1_'):
-            return ('vault key (prefixed)', False,
-                    'the sgit_vk1_ prefix marks a WRITE credential. Derive the read key and '
-                    'publish only that; keep this one in the gitignored local tier')
-        if s.startswith('sgit_rk1_'):
-            body = s[len('sgit_rk1_'):]
-            if RE_READ_KEY_BARE.match(body) or RE_READ_KEY_ONLY.match(body):
-                return 'read key (prefixed)', True, 'read-only by construction — safe to publish'
-            return ('prefixed but malformed', False,
-                    'carries the read prefix but does not match <64-hex>[:<vault_id>] — do not '
-                    'publish until it is explained')
+        for prefix in WRITE_PREFIXES:
+            if s.startswith(prefix):
+                return ('vault key (prefixed)', False,
+                        f'the {prefix} prefix marks a WRITE credential. Derive the read key and '
+                        'publish only that; keep this one in the gitignored local tier')
+        for prefix in READ_PREFIXES:
+            if s.startswith(prefix):
+                body = s[len(prefix):]
+                if RE_READ_KEY_BARE.match(body) or RE_READ_KEY_ONLY.match(body):
+                    return 'read key (prefixed)', True, 'read-only by construction — safe to publish'
+                return ('prefixed but malformed', False,
+                        'carries the read prefix but does not match <64-hex>[:<vault_id>] — do not '
+                        'publish until it is explained')
 
         if RE_READ_KEY_BARE.match(s) or RE_READ_KEY_ONLY.match(s):
             return 'read key (bare)', True, 'read-only by construction — safe to publish'
