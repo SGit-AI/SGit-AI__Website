@@ -2,7 +2,7 @@
 
 > A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential.
 
-*Source: <https://sgit.ai/demos/vaults/health-score/index.html> · site v0.2.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/health-score/index.html> · site v0.2.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
