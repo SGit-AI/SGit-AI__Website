@@ -47,6 +47,11 @@ const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5
 
 const VOICEDEBRIEF = 'sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d';
 
+// Health Score — the SANITISED republication (zc6abngv). The original vault published
+// its own write credential in home/index.html, so its read key was never publishable
+// and this is a fresh vault, not a retrofit. Never point this at the old vault id.
+const HEALTHSCORE = 'sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv';
+
 /* Each shot: which surface to open, what to do, and what to crop.
    target: 'app'   → an element inside the vault app's own frame
            'page'  → an element (or shadow path) on the SG/App or SG/Vault page
@@ -324,6 +329,48 @@ const SHOTS = [
     target: 'clip', clip: [0, 0, 1700, 1000] },
 
   { name: 'history', vault: 'voice-debrief', cred: VOICEDEBRIEF, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { navView: 'sgit' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
+
+  // ---- Health Score (zc6abngv) — the sanitised republication ----
+  // Captured as an element inside the app frame, not as a viewport clip: a top-level
+  // clip of this hub comes back an empty dark rectangle even once .hero-title exists
+  // in the frame, so the frame-element screenshot is the one that reflects reality.
+  { name: 'app-open', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    frameHas: '.hero-title', steps: [{ wait: 16000 }],
+    target: 'app', sel: '.hero' },
+
+  // The three-credential model as the vault itself explains it — and the card that
+  // used to carry a live write key, now showing the SHAPE instead.
+  { name: 'key-cards', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }],
+    target: 'app', sel: '.arch-keys' },
+
+  { name: 'patient', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickLink: 'patient/index.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'explainability', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickLink: 'shared/explainability.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // The hub links the two worked reviews, not a bare review.html — read from the page
+  // rather than guessed, after the guess cost a capture run.
+  { name: 'doctor', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    frameHas: '.hero-title', steps: [{ wait: 7000 }, { appClickLink: 'doctor/review-sam.html' }, { wait: 6000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'standard', vault: 'health-score', cred: HEALTHSCORE, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 4500 }, { appClickLink: 'shared/standard-viewer.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'permissions', vault: 'health-score', cred: HEALTHSCORE, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 2500 }, { clickText: ['.sb-tree__file-name', 'app.json'] }, { wait: 2500 }],
+    target: 'clip', clip: [0, 0, 1700, 760] },
+
+  // Two commits, both dated today: the visible evidence that this is a fresh vault
+  // rather than the original with its history rewritten.
+  { name: 'history', vault: 'health-score', cred: HEALTHSCORE, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2500 }, { navView: 'sgit' }, { wait: 4000 }],
     target: 'clip', clip: [0, 0, 1700, 1000] },
 ];
