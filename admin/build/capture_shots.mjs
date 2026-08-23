@@ -52,6 +52,11 @@ const VOICEDEBRIEF = 'sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5
 // and this is a fresh vault, not a retrofit. Never point this at the old vault id.
 const HEALTHSCORE = 'sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv';
 
+// Vault App Mode POCs — republished as xth1xt78. The vault this content came from
+// had a RANDOM ref file id, which a read key cannot derive, so its read key could
+// decrypt everything and still never find HEAD. Never point this at the old id.
+const POCS = 'sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78';
+
 /* Each shot: which surface to open, what to do, and what to crop.
    target: 'app'   → an element inside the vault app's own frame
            'page'  → an element (or shadow path) on the SG/App or SG/Vault page
@@ -372,6 +377,73 @@ const SHOTS = [
   // rather than the original with its history rewritten.
   { name: 'history', vault: 'health-score', cred: HEALTHSCORE, surface: 'vault', viewport: [1700, 1000],
     steps: [{ wait: 2500 }, { navView: 'sgit' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1700, 1000] },
+
+  // ---- Vault App Mode POCs (xth1xt78) — one feature per shot ----
+  // The hub links each POC as ../poc-NN-.../index.html, so appClickLink matches on
+  // the full path; every POC ends in index.html and a basename match picks the first.
+  { name: 'hub', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1100],
+    frameHas: '.hub-hero, .step-card', steps: [{ wait: 8000 }],
+    target: 'clip', clip: [0, 0, 1500, 1100] },
+
+  { name: 'poc-01-inline', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-01-inline/index.html' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'poc-02-css', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-02-simple-css/index.html' }, { wait: 4000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'poc-04-deps', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 9000 }, { appClickLink: 'poc-04-multiple-js/index.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'poc-05-data', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-05-data-fetch/index.html' }, { wait: 4500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'poc-07-read', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-07-read-data/index.html' }, { wait: 4500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'poc-08-write', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1100],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-08-write-data/index.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1100] },
+
+  // The diagnostic harness: 15 graded sg.vfs operations plus an environment readout.
+  { name: 'poc-09-lab', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1100],
+    steps: [{ wait: 6000 }, { appClickLink: 'poc-09-vfs-lab/index.html' }, { wait: 6000 }],
+    target: 'clip', clip: [0, 0, 1500, 1100] },
+
+  // The demo, reachable only because the hub card was added.
+  { name: 'cities-hub', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'demo-cities/hub.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'cities-chart', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'demo-cities/hub.html' }, { wait: 4500 },
+            { appClickLink: 'index.html' }, { wait: 4500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  { name: 'cities-map', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1050],
+    steps: [{ wait: 6000 }, { appClickLink: 'demo-cities/hub.html' }, { wait: 4500 },
+            { appClickLink: 'map.html' }, { wait: 4500 }],
+    target: 'clip', clip: [0, 0, 1500, 1050] },
+
+  // Both survey pages were unstyled with a dead back-link until the path fix.
+  { name: 'cities-survey', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1100],
+    steps: [{ wait: 6000 }, { appClickLink: 'demo-cities/hub.html' }, { wait: 4500 },
+            { appClickLink: 'survey/survey.html' }, { wait: 5000 }],
+    target: 'clip', clip: [0, 0, 1500, 1100] },
+
+  // Shows the deliberate escaping test rendering as text rather than as markup.
+  { name: 'cities-responses', vault: 'vault-app-pocs', cred: POCS, surface: 'app', viewport: [1500, 1100],
+    steps: [{ wait: 6000 }, { appClickLink: 'demo-cities/hub.html' }, { wait: 4500 },
+            { appClickLink: 'survey/responses.html' }, { wait: 6000 }],
+    target: 'clip', clip: [0, 0, 1500, 1100] },
+
+  { name: 'tree', vault: 'vault-app-pocs', cred: POCS, surface: 'vault', viewport: [1700, 1000],
+    steps: [{ wait: 3000 }, { clickText: ['.sb-tree__folder-name', 'demo-cities'] }, { wait: 2000 }],
     target: 'clip', clip: [0, 0, 1700, 1000] },
 ];
 
