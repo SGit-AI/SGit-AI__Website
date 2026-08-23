@@ -1,7 +1,6 @@
 ---
 title: graphs.sgit.ai
 domain: graphs.sgit.ai
-url: https://sgit-ai.github.io/SGit-AI__Website__Graphs/
 tagline: A node is just a node — meaning lives in the edges
 summary: A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.
 observed: 2026-08-21

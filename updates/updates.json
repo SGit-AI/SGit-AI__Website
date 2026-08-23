@@ -1,8 +1,32 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.39",
+  "site_version": "v0.2.41",
   "updates": [
+    {
+      "slug": "the-ninth-vault-four-apps-in-one-tree",
+      "title": "The ninth published vault — four apps in one tree, and a reader that asked for nothing it did not need",
+      "date": "2026-08-22",
+      "version": "v0.2.40",
+      "tags": [
+        "vaults",
+        "graphs",
+        "permissions"
+      ],
+      "summary": "VoiceDebrief joins the published vaults. Four apps in one encrypted vault, lifting meaning out of text — from fictional voice notes to Article 9(2) of the EU AI Act — into typed semantic graphs. Written up from the vault and the release that published it; the…"
+    },
+    {
+      "slug": "an-ordinary-commit-should-not-be-able-to-take-the-site-down",
+      "title": "An ordinary commit should not be able to take the site down",
+      "date": "2026-08-22",
+      "version": "v0.2.40",
+      "tags": [
+        "ci",
+        "deploy",
+        "release"
+      ],
+      "summary": "Two good commits landed on dev after v0.2.39 and sgit.ai served neither for a day. Nothing was wrong with either of them. The CI tag gate failed, and the deploy is gated on the tag gate. What the error said, and what was actually true. The job read SITE VERSIO…"
+    },
     {
       "slug": "the-first-sibling-that-links-back",
       "title": "A fourth sibling site — and the first one that links back",
