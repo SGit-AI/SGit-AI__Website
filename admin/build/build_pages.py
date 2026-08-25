@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.41'
+SITE_VERSION = 'v0.2.42'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.41', '2026-08-22', 'this release',
+    ('v0.2.42', '2026-08-25', 'this release',
+     "AN INTRODUCTION ARTICLE, and the first CLI imagery on the site. /articles/what-sgit-is.html "
+     "is the piece to hand somebody who has never heard of this: the category of file that has "
+     "nowhere good to live, the vault key as address+auth+encryption in one string, the one-way "
+     "read key that makes sharing possible, and then the proof rather than the claim. Two new "
+     "terminal screenshots carry that proof and are the first of their kind here — every one of "
+     "the 73 existing screenshots was of a browser. Both were captured from real runs, not "
+     "mocked: a clone of the published EU AI Act vault (273 objects, 207 files) and the same "
+     "vault's stored object rendered as a hexdump, 786 bytes of AES-256-GCM ciphertext whose "
+     "name is a SHA-256 of those encrypted bytes. Also written up: apps in vaults running under "
+     "permissions {} — capability without credential — and the four-site network. VERIFIED "
+     "BEFORE PUBLISHING: all eleven published read keys were cloned from scratch, 781 files "
+     "total, zero failures. That check first reported the opposite. Every clone failed with 'no "
+     "named ref on the server', which looked like every vault page on this site instructing "
+     "readers to run a command that could not work — and the real cause was a stale CLI in the "
+     "authoring container, v0.15.0, where sgit clone cannot reach these vaults. v0.16.0 clones "
+     "all eleven. The finding was retracted rather than shipped, which is the whole reason the "
+     "check exists: an intro article is exactly the page that must not repeat an instruction "
+     "nobody re-ran. A LinkedIn-newsletter edition of the same piece was produced alongside it "
+     "as plain text with image placement markers, since that editor renders no markdown and "
+     "asterisks would paste literally."),
+    ('v0.2.41', '2026-08-22', 'obj-cas-imm-f401ef7115e0',
      "GRAPHS.SGIT.AI RESOLVES — the CNAME landed hours after v0.2.39 shipped the entry, so the "
      "`url:` override comes back out and the card links the subdomain directly. Deleting one "
      "frontmatter line was the entire change, which was the point of adding the field: a site "
