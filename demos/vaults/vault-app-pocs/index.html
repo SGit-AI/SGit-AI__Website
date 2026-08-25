@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vault App Mode — a published vault</title>
+<meta name="description" content="Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/vault-app-pocs/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/vault-app-pocs/index.html">
+<meta property="og:title" content="Vault App Mode — a published vault">
+<meta property="og:description" content="Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Vault App Mode — a published vault", "headline": "Vault App Mode — a published vault", "description": "Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all.", "url": "https://sgit.ai/demos/vaults/vault-app-pocs/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.41</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../network/index.html">Network</a>
+      <a class="sl" href="../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Vault App Mode</p>
+  <h1>Vault App Mode — nine POCs and a demo</h1>
+  <p class="lead">The simplest vault on this site, and the one to read first if you are going to build one. Nine proof-of-concepts climb from a single inline HTML file to a fifteen-test diagnostic harness over the vault filesystem, then a small four-page app puts the lot together. It answers one question end to end: how do you load CSS, JavaScript and data when your files live in an encrypted vault instead of on a web server?</p>
+
+  <div class="note"><b>The one problem everything here solves.</b> The HTML parser fires requests for <code>&lt;link&gt;</code> and <code>&lt;script src&gt;</code> the moment it meets them — before the vault bridge has patched <code>fetch</code>. Those requests hit the iframe's blob origin, where no files exist, and 404. So vault pages load their resources at <em>runtime</em>, with <code>sg.loadCss()</code> and <code>sg.loadJs()</code>. Every POC in this vault is a consequence of that one race.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78</code><br>
+  <span class="small dim">Published deliberately. It grants read, and only read. This is a republication — the vault this content was authored in could not be opened by a read key at all, for a reason worth reading in the audit below.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="xth1xt78" data-readkey="05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td><b>Runtime resource loading</b></td><td><code>sg.loadCss()</code> and <code>sg.loadJs()</code> fetch vault files through the bridge and inject them, because declarative tags lose the race against the parser. POC-02 and POC-03 isolate each one; POC-04 shows dependency order between modules</td></tr>
+    <tr><td>The filesystem, read and written</td><td><code>sg.vfs.readText()</code> in POC-07, <code>sg.vfs.write()</code> in POC-08 — which persists a real JSON file into the vault and lists it back. Writes are <b>local-first</b>: they live in the working copy until an <code>sgit push</code>, and the POC says so rather than implying instant durability</td></tr>
+    <tr><td><b>A test harness for the platform itself</b></td><td>POC-09 is the unusual one: fifteen graded operations over <code>sg.vfs</code> — read, write, list, nested folders, binary round-trips, deliberate error cases, path-variant comparison — each showing the exact call, the raw result, per-assertion pass/fail and timing. It exists because guessing at the API's behaviour cost a session; instrumenting it settled the question</td></tr>
+    <tr><td>Paths, the thing that actually bites</td><td><code>sg.vfs</code> takes <b>vault-absolute</b> paths, and a page's own folder is knowable only from <code>sg.app.selfPath</code> — <code>location.pathname</code> is always <code>/</code> inside the iframe. The vault documents this as its most important rule, and POC-09's environment readout prints the ground truth</td></tr>
+    <tr><td>FOUC handled deliberately</td><td>pages hide the body until their CSS resolves, then reveal by <b>removing a class</b>. The distinction matters: clearing an inline style cannot override a stylesheet rule, which is exactly the bug this vault was carrying when it arrived (see the audit)</td></tr>
+    <tr><td>Its own failure modes, on a page</td><td>the survey ships a <b>Try the failure modes</b> panel that attempts writes which <em>should</em> be rejected — path traversal, URL-encoded traversal, a protected <code>.vault-settings.json</code>, a null byte, a 1500-character path — so the guards are demonstrated rather than asserted</td></tr>
+    <tr><td>The reasoning ships with it</td><td><code>_docs/</code> carries a field guide (the canonical page skeleton and path rules), a gotchas manual written by symptom, and a debrief explaining why the code looks the way it does. It is the best-documented vault on this site for its size</td></tr>
+  </table></div>
+
+  <h2>What is going on here, step by step</h2>
+  <p>The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">what opens</span>
+        <h3>A contents page, not a file listing</h3>
+        <p>Opening the read key lands on the POC hub — <code>app.json</code> sets <code>entry</code> to <code>_poc-hub/index.html</code>. The steps are numbered like a magazine contents page, each card tagged with the API it exercises and a difficulty level, with the diagnostic lab and the demo as full-width cards beneath.</p>
+        <p>It is worth noticing what this <em>is</em>: a static HTML file in an encrypted store, rendering as a navigable site, with no server anywhere in the path.</p>
+      </div>
+      <figure class="shot" data-shot="hub.webp" data-alt="The POC hub: a numbered step grid, each card tagged with the sg API it exercises."><figcaption>The hub — nine numbered steps, tagged by the API each one exercises.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the baseline</span>
+        <h3>POC-01: everything inline, so nothing can fail</h3>
+        <p>The first step deliberately has no external files at all — CSS in a <code>&lt;style&gt;</code> block, JS in a <code>&lt;script&gt;</code> block. It is the control case: if this renders, the vault is serving your HTML correctly and anything that breaks later is about <em>resource loading</em>, not about the vault.</p>
+        <p>It is also the one page that does not use the shared stylesheet, because loading one would contradict the point it is making.</p>
+      </div>
+      <figure class="shot" data-shot="poc-01-inline.webp" data-alt="POC-01: a page with all CSS and JS inline, marked STEP 01 / BASELINE."><figcaption>The control case — no external files, so nothing can 404.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the fix, isolated</span>
+        <h3>POC-02: one CSS file, loaded at runtime</h3>
+        <p>The smallest possible demonstration of the pattern. One <code>sg.loadCss()</code> call in a head script, and the FOUC guard around it: the body starts hidden and is revealed when the promise settles — <em>including</em> when it rejects, so a failed load leaves a readable page rather than a permanently invisible one.</p>
+        <p>The status pill on the page reports the load lifecycle as it happens, which makes the async step visible instead of theoretical.</p>
+      </div>
+      <figure class="shot" data-shot="poc-02-css.webp" data-alt="POC-02: a single sg.loadCss call with a status pill reporting the load lifecycle."><figcaption>One <code>sg.loadCss()</code>, with the reveal guarded on both outcomes.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">order matters</span>
+        <h3>POC-04: two modules, and the dependency between them</h3>
+        <p>Once JavaScript arrives at runtime, load order becomes yours to manage. <code>utils.js</code> must execute before <code>app.js</code> can call into it, so the POC awaits them in sequence and logs each step with a <code>[poc-04]</code> prefix.</p>
+        <p>The parallel case is covered too: independent resources go through <code>Promise.all</code>, because serialising things that do not depend on each other is just a slower page.</p>
+      </div>
+      <figure class="shot" data-shot="poc-04-deps.webp" data-alt="POC-04: two JavaScript modules loaded in dependency order with console logging."><figcaption>Sequential where there is a dependency, parallel where there is not.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">data</span>
+        <h3>POC-05: <code>fetch()</code> works, because the bridge intercepts it</h3>
+        <p>Once the bridge is installed, an ordinary <code>fetch('data.json')</code> resolves against the vault. No special API, no rewriting of your data layer — the call you would already have written works, which is the point of intercepting <code>fetch</code> rather than replacing it.</p>
+        <p>This is the step where a vault app stops looking exotic and starts looking like a normal front end that happens to have an encrypted origin.</p>
+      </div>
+      <figure class="shot" data-shot="poc-05-data.webp" data-alt="POC-05: fetching and rendering a JSON file from the vault."><figcaption>An ordinary <code>fetch()</code>, resolved against encrypted storage.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">writing</span>
+        <h3>POC-08: a form that puts a real file in the vault</h3>
+        <p>Submitting writes <code>responses/poc-08-&lt;timestamp&gt;.json</code> through <code>sg.vfs.write()</code>, then the page lists what is there and lets you edit or delete it. The delete control only appears if <code>sg.vfs.delete</code> actually exists — capability-checked rather than assumed.</p>
+        <p>The callout that matters is the honest one: writes are <b>local-first</b>. They live in the working copy until someone runs <code>sgit push</code>, which the vault demonstrated the hard way — a submission made in one browser session was gone from a fresh one until the push happened.</p>
+      </div>
+      <figure class="shot" data-shot="poc-08-write.webp" data-alt="POC-08: a form writing JSON into the vault, with a local-first warning."><figcaption>A real write, with the local-first caveat stated rather than glossed.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the interesting one</span>
+        <h3>POC-09: testing the platform instead of trusting it</h3>
+        <p>Fifteen graded tests over <code>sg.vfs</code>, each card showing the exact call with its resolved arguments, the raw result, a live progress log, per-assertion pass/fail and a runtime in milliseconds. Above them, an environment readout printing <code>location.href</code>, <code>location.pathname</code>, <code>sg.app.selfPath</code> and the keys actually present on <code>sg.vfs</code> and <code>sg.app</code>.</p>
+        <p>It was built mid-project when path bugs kept multiplying, on the reasoning that the API should be measured rather than guessed at. It is the most transferable idea in the vault: when a platform surprises you, instrument it and keep the instrument.</p>
+      </div>
+      <figure class="shot" data-shot="poc-09-lab.webp" data-alt="POC-09: the VFS lab, a fifteen-test harness with an environment readout panel."><figcaption>A test harness for the vault filesystem, kept as part of the vault.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">all together</span>
+        <h3>The cities demo: four pages, one data file</h3>
+        <p>The demo hub offers a bar chart, a world map, a survey and a responses viewer — each tagged <b>READ-ONLY</b> or <b>WRITES</b> so you know what it will do before you click. The chart and the map read the same <code>cities.json</code> and render it two ways; editing that one file in the vault browser changes both.</p>
+        <p>This hub could not be reached at all before publication — see the audit. It is now linked from the POC hub, which is how you get here.</p>
+      </div>
+      <figure class="shot" data-shot="cities-hub.webp" data-alt="The cities demo hub: four cards tagged READ-ONLY or WRITES."><figcaption>Four pages over one data file, each labelled with what it will do.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">read and render</span>
+        <h3>The same data, drawn two ways</h3>
+        <p>The bar chart reads <code>cities.json</code> through the bridge and draws from it directly. The map projects the same records onto an equirectangular world and doubles as a navigation test — proving that same-vault <code>&lt;a href&gt;</code> links resolve correctly between pages.</p>
+        <p>Nothing here is fetched from the network. The data, the code and the styling are all objects in the encrypted store, decrypted in the reader's browser.</p>
+      </div>
+      <figure class="shot" data-shot="cities-chart.webp" data-alt="The cities bar chart, rendered from cities.json read through the vault bridge."><figcaption>One <code>cities.json</code>, rendered by two pages that never touch the network.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">write, then read back</span>
+        <h3>The survey, and its own failure modes</h3>
+        <p>The form writes a JSON file per submission and offers two submit buttons — the canonical <code>sg.vfs.write()</code> and the <code>window.sgVault.writeFile</code> alias — so you can confirm both produce identical commits.</p>
+        <p>Underneath is the panel worth the visit: <b>Try the failure modes</b>, six buttons that attempt writes which must be refused. Path traversal, URL-encoded traversal, the protected settings file, a null byte, a path past the length cap. A demo that shows you its guards working is a stronger claim than one that tells you they exist.</p>
+      </div>
+      <figure class="shot" data-shot="cities-survey.webp" data-alt="The survey form with a Try the failure modes panel of six rejected-write tests."><figcaption>Two write paths, and six writes that are supposed to be refused.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">list, read, aggregate</span>
+        <h3>The viewer — including the response that is trying to attack it</h3>
+        <p><code>sg.vfs.list()</code> enumerates the responses folder, <code>sg.vfs.readText()</code> reads each file, and the page aggregates live: total responses, average excitement, top role, total bytes. A <b>View raw</b> control dumps the unprocessed listing so you can see what the API actually returned.</p>
+        <p>The first card is deliberate. One stored response carries <code>&lt;img src=x onerror=alert(1)&gt;</code> in its name field, and the viewer renders it as <em>visible text</em>. It is a standing escaping test, kept in the data so that a regression on either render path would be obvious on sight — which matters, because that is a bug this vault actually had.</p>
+      </div>
+      <figure class="shot" data-shot="cities-responses.webp" data-alt="The responses viewer with three responses, live aggregates, and an XSS payload rendered as visible text."><figcaption>Three responses, aggregates computed live — and a payload rendered, correctly, as text.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the source</span>
+        <h3>Everything is readable, including the parts that explain it</h3>
+        <p>The vault browser shows the whole tree under the same read key: nine POC folders, the shared stylesheet, the demo, and <code>_docs/</code> — a field guide, a gotchas manual organised by symptom, and a project debrief.</p>
+        <p>That last folder is why this vault is worth copying as a pattern. The code demonstrates the technique; the docs record what went wrong on the way, which is the part that usually evaporates when a project ends.</p>
+      </div>
+      <figure class="shot" data-shot="tree.webp" data-alt="The vault browser showing the POC folders, the shared stylesheet, the demo and the docs folder."><figcaption>The tree under one read key — including the write-up of its own mistakes.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The audit, honestly</h2>
+  <p>This vault was reviewed before its key was published, and the review changed both the vault and what got published. Findings first.</p>
+
+  <p><b>The submitted vault could not be opened by a read key at all.</b> Its read key decrypted every object correctly — verified by decrypting its HEAD ref by hand — but the reader could never <em>find</em> HEAD. sgit has two ways of assigning a vault's ref file id: <code>Vault__Crypto</code> derives it from the read key and vault id, while <code>Vault__Branch_Manager</code> falls back to <code>'ref-pid-muw-' + secrets.token_hex(6)</code> — a random value. This vault got a random one. Browser readers derive the id, so they looked in the right place for a file stored under a name nothing could compute. The CLI worked throughout, because it resolves HEAD through the branch index instead. sgit's own tooling states the consequence plainly: <em>"write_key, ref_file_id, and branch_index_file_id are not derivable from a read_key alone."</em> A read key published for that vault would have been a credential that decrypts everything and opens nothing — so the content was republished into a new vault, <code>xth1xt78</code>, created through the deriving path.</p>
+
+  <p><b>The whole cities demo rendered blank.</b> Four pages set <code>body { display: none }</code> in a stylesheet and cleared it with <code>document.body.style.display = ''</code>. That clears an <em>inline</em> property which was never set; the stylesheet rule kept applying and the pages stayed invisible. The host said so out loud — <em>"App loaded but is showing nothing — hidden (display:none)"</em> — for the hub, the map, the survey and the responses viewer. Only the bar chart, which has no such script, was unaffected. Fixed by hiding through a class and removing it, which is the pattern the POCs already used and the vault's own gotchas file documents.</p>
+
+  <p><b>The demo was unreachable.</b> <code>app.json</code> opens the POC hub; the hub linked only the nine POCs; and the demo's own hub linked back to it. A one-way door, with a third of the vault behind it. The hub now carries a card for it.</p>
+
+  <p><b>Two survey pages pointed at files that were not there.</b> Both live in <code>demo-cities/survey/</code> but named <code>style.css</code> and <code>hub.html</code> as though they sat a level up, so each had a missing stylesheet and a dead back-link. Separately, both used relative paths for <code>sg.vfs</code> — <code>list('responses/')</code> returned <em>"No such path"</em> — which is precisely the gotcha this vault's own documentation warns about. They now derive the folder from <code>sg.app.selfPath</code>, the way POC-09 does, and normalise <code>entry.path</code> to absolute before reading, which was doubling the prefix.</p>
+
+  <p><b>A stored-XSS gap on the error path.</b> The responses viewer escaped every field it rendered on the success path, and interpolated the filename and error text raw on its two failure paths. The vault contained an unlabelled XSS payload in a leftover test response, so someone had clearly probed this and fixed only the half that showed. Both paths now escape, and the payload has been kept deliberately — rewritten as a labelled escaping test, so the property stays visible in the UI rather than living in a comment.</p>
+
+  <p><b>Removed, not fixed:</b> an empty zero-byte <code>check-undefined.html</code> referenced by nothing, and <code>POC_STRUCTURE.md</code>, whose guidance had been superseded by <code>_docs/</code> and whose structure diagram described a six-POC vault under a former name. <code>README.md</code> was rewritten for the same reason — it named the wrong entry point and omitted three POCs. Both files remain in the vault's history.</p>
+
+  <p><b>The credential finding.</b> The vault's own documentation recorded the project's push token in plain text, three times, as part of the workflow instructions. Publishing a read key would have handed that out with the content. The token has been replaced with a placeholder; the instructions still read correctly. The vault is otherwise clean on credentials — no vault key inside its own files, no <code>sgit_vk1_</code> or <code>sgit_private_vault_</code> string, no <code>delete_auth</code>, no API keys or private-key blocks. All 57 files were fetched back after publication <em>using only the read key above</em> and re-scanned.</p>
+
+  <p>On data: the survey responses are the only personal-shaped content, and all three are invented for the demo. The rest is code, styling and documentation. The rule that goes with any published key applies here too: <b>revocation is not retroactive</b> — anybody who fetches these objects keeps them.</p>
+
+  <h2>Derived facts</h2>
+  <p>57 files · 251 KB · 8 commits · HEAD <code>obj-cas-imm-4517bfe1735d</code> · app entry <code>_poc-hub/index.html</code> · 15 HTML, 12 JSON, 12 CSS, 10 JS, 6 markdown — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>, with no token and no clone.</p>
+</main>
+<script>
+(function () {
+  fetch('../../../assets/shots.js?v=v0.2.41')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.41</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.41';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

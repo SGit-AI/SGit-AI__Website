@@ -382,6 +382,18 @@
     "desc": "Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant."
   },
   {
+    "path": "demos/vaults/vault-app-pocs/index.html",
+    "section": "vaults",
+    "title": "Vault App Mode — a published vault",
+    "desc": "Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all."
+  },
+  {
+    "path": "demos/vaults/health-score/index.html",
+    "section": "vaults",
+    "title": "Private Health Score — a published vault",
+    "desc": "A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential."
+  },
+  {
     "path": "demos/vaults/voice-debrief/index.html",
     "section": "vaults",
     "title": "VoiceDebrief — a published vault",

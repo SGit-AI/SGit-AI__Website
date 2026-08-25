@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Private Health Score — a published vault</title>
+<meta name="description" content="A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/health-score/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/health-score/index.html">
+<meta property="og:title" content="Private Health Score — a published vault">
+<meta property="og:description" content="A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Private Health Score — a published vault", "headline": "Private Health Score — a published vault", "description": "A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential.", "url": "https://sgit.ai/demos/vaults/health-score/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.41</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../network/index.html">Network</a>
+      <a class="sl" href="../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Private Health Score</p>
+  <h1>Private Health Score</h1>
+  <p class="lead">A complete clinical workflow in one vault — adaptive questionnaire, a versioned scoring framework, an explainability layer that traces every recommendation back to an answer, and a clinician review screen — running entirely client-side. It is published here as a <b>sanitised republication</b>, because the vault it was built from carried its own write credential in its home page and could never have had its key published.</p>
+
+  <div class="note"><b>The idea it is built on, in one line.</b> The framework, not the model, produces the recommendations. A versioned JSON standard — five dimensions, five bands, eight scoring rules — is loaded from the vault at runtime and does the scoring deterministically; the LLM writes the narrative on top and is labelled as such, with its model and cost on the page. <b>Never a diagnosis.</b> This is a proof of concept on synthetic profiles, and no compliance finding of any kind exists for it.</div>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv</code><br>
+  <span class="small dim">This key opens vault <code>zc6abngv</code>, the sanitised republication — <b>not</b> the vault this content was authored in, whose key was never published and never will be. See the audit below.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv" rel="noopener" target="_blank"><b>open the app in its own window ↗</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="zc6abngv" data-readkey="a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>How this vault uses it</th></tr>
+    <tr><td><b>One vault, three audiences</b></td><td><code>patient/</code>, <code>doctor/</code> and <code>shared/</code> split the same record by <em>who is reading it</em>, not by copying it. The patient fills in the questionnaire, the clinician opens a review of the same answers, and the framework and analysis both sides rely on sit in <code>shared/</code>. One credential, one copy, three views</td></tr>
+    <tr><td>The rules are data, and versioned</td><td><code>shared/health-score-standard.json</code> is the scoring framework as a file — 5 dimensions with explicit weights (cardiovascular 25%, metabolic 20%, lifestyle 20%, wellbeing 20%, preventive care 15%), 5 bands and 8 rules, stamped <code>v1.0</code>. The viewer labels it <em>"loaded from vault at runtime"</em>, and a <b>Reveal JSON</b> button shows the source behind the rendering</td></tr>
+    <tr><td>Deterministic score, generated prose</td><td>the number comes from the framework; the LLM writes the narrative around it. The clinician screen states the provenance in the open — <em>AI-generated · estimated cost $0.024 · claude-sonnet-4</em> — and <code>llm-analysis.json</code> carries <code>status: pending_clinician_review</code>. The model's output is a draft for a human, and the file says so</td></tr>
+    <tr><td>Every recommendation traced to an answer</td><td>the explainability layer lists what helped and what hurt with the rule that decided it: <em>"Last Blood Test: over 2 years — scored 50/100, affects your Preventive Care score."</em> Its own note draws the line: <em>"The framework — not the AI — produced these. The AI analysis adds nuance; these are the foundations"</em></td></tr>
+    <tr><td>Severity-ranked clinical actions</td><td>the review screen sorts suggested actions <b>URGENT → HIGH → MEDIUM → LOW</b> rather than presenting a flat list, and pairs them with the dimension scores that triggered them — plus an <em>adaptive risk gates</em> section showing which branches the questionnaire opened because of earlier answers</td></tr>
+    <tr><td>No account anywhere in the flow</td><td>sharing the record with a clinician is handing over a derived read key. There is no clinician login, no tenant, and no server-side copy — the vault's own architecture section states the three-credential model, and the read key you are holding is the proof</td></tr>
+    <tr><td class="dim">Permissions left undeclared</td><td class="dim">honest gap rather than a feature: <code>app.json</code> declares <code>entry</code>, <code>auto_open</code>, <code>present</code> and a HUD block, and <b>no permission block at all</b> — compare <a href="../voice-debrief/index.html">VoiceDebrief</a>, which scopes <code>fs.read</code> to one folder. An app that never states what it needs cannot demonstrate least authority, and will need a grant declared when the platform's deny-by-default lands</td></tr>
+  </table></div>
+
+  <h2>What is going on here, step by step</h2>
+  <p>The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">what opens</span>
+        <h3>Two demo profiles, chosen to disagree</h3>
+        <p>The vault opens on a hub built around two synthetic profiles that are deliberately not alike: <b>Alex, 34</b> — BMI 25.9, good lifestyle, scoring <b>74 · Good</b> — and <b>Sam, 47</b> — BMI 33.8, multiple risk factors, scoring <b>38 · Needs Attention</b>.</p>
+        <p>One profile would demonstrate the rendering. Two that land in different bands demonstrate the <em>framework</em>, because every screen after this one can be read twice and compared.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-alt="The hub hero: 'Your health data, completely private', with demo profiles Alex 74 Good and Sam 38 Needs Attention."><figcaption>Two profiles, two bands — so every later screen can be read twice.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the patient side</span>
+        <h3>A ten-step questionnaire that branches on what you answer</h3>
+        <p>The patient app is a ten-section flow — welcome, about you, lifestyle, health, history, concerns, score, AI analysis, vault save, complete — with a demo bar across the top that can drive each step or run the whole thing.</p>
+        <p>The two steps worth noticing are the last two. <b>Vault save</b> is where the record is encrypted and written, and <b>complete</b> is the final record — the flow ends by producing an artefact the person keeps, not a result page that disappears.</p>
+      </div>
+      <figure class="shot" data-shot="patient.webp" data-alt="The patient questionnaire: ten labelled steps with a demo control bar, and an introduction listing privacy, AI assistance, score and sharing."><figcaption>Ten sections, adaptive, ending in a saved encrypted record.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the rules, as a file</span>
+        <h3>The framework is versioned, readable and separate from the code</h3>
+        <p>This is the part that makes the rest auditable. The scoring standard is a JSON file in the vault, rendered here as a document: five bands from <b>At Risk (0–29)</b> to <b>Excellent (85–100)</b>, and five weighted dimensions shown as a radar with the weights stated numerically beside it.</p>
+        <p>Because it is data rather than logic buried in a function, it can be versioned (<code>v1.0</code>), diffed between commits, and disagreed with. <b>Reveal JSON</b> shows the source that produced the page you are reading — the rendering and the rules are the same object.</p>
+      </div>
+      <figure class="shot" data-shot="standard.webp" data-alt="The Health Score Standard viewer: five score bands, five weighted dimensions on a radar, version 1.0, with a Reveal JSON control."><figcaption>The scoring framework as a versioned document, not as code.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">explainability</span>
+        <h3>Each number carries the answer that produced it</h3>
+        <p>Alex's 74 breaks into heart health 78, lifestyle 76, wellbeing 72 — and then into the individual answers behind them. <em>"Smoking: never — scored 100/100 in the framework."</em> <em>"Alcohol: light — 90/100."</em> Against him: <em>"Last blood test: over 2 years — 50/100, affects your Preventive Care score. Framework flag: book routine blood panel."</em></p>
+        <p>Three tabs sit above it — <b>Your Health Story</b>, <b>Score Breakdown</b>, <b>Evidence Map</b> — the same result at three depths. The layer's own caveat is the important sentence: the recommendations come from the framework, and the model only adds nuance on top.</p>
+      </div>
+      <figure class="shot" data-shot="explainability.webp" data-alt="The explainability view: score 74 broken into three dimensions, then into individual answers with the framework score each contributed."><figcaption>Score → dimension → the specific answer and its framework rule.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the clinician side</span>
+        <h3>The same record, arranged for someone qualified to act on it</h3>
+        <p>Sam's review puts the record on the left — dimension scores with the reasoning under each, then the full profile — and the AI analysis on the right, as suggested actions ranked by urgency: two <b>URGENT</b> (a GP appointment for cardiac symptoms, and a specific blood panel), three <b>HIGH</b>, then medium and low.</p>
+        <p>Two things make this more than a dashboard. The analysis is labelled <em>AI-generated</em> with its model and cost, so a clinician knows what they are reading. And beneath it is a <b>clinical notes</b> block for the reviewer's own observations — the tool expects to be corrected, and keeps the correction next to what it corrected.</p>
+      </div>
+      <figure class="shot" data-shot="doctor.webp" data-alt="The clinician review for Sam: dimension scores, patient profile, and AI-suggested actions ranked URGENT through LOW, with a clinical notes block."><figcaption>Ranked actions, provenance stated, and room for the clinician to disagree.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">the fix, visible</span>
+        <h3>The card that used to hold a live write key</h3>
+        <p>The vault explains its own credential model in three cards: the vault key (full read/write, kept private), the derived read-only share token for the clinician, and the data location (client device only). The model is right, and it is the argument the whole demo makes.</p>
+        <p>In the original vault, the first card contained an <b>actual working vault key</b> — the real credential for the vault you were reading it in. Here it shows the <em>shape</em>, <code>&#10216;passphrase&#10217;:&#10216;vault-id&#10217;</code>, with the reason attached: a write credential is never written into the vault's own content. The teaching value survives; the credential does not.</p>
+      </div>
+      <figure class="shot" data-shot="key-cards.webp" data-alt="The three credential cards, with the vault key card now showing the placeholder shape rather than a real key."><figcaption>The same three-credential explanation, with the live key removed.</figcaption></figure>
+    </div>
+
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">a fresh vault, not a rewrite</span>
+        <h3>Two commits, both from the day it was republished</h3>
+        <p>The SGit view is the evidence for the claim in the audit below. This vault's history begins on <b>22 August 2026</b> with <code>init</code>, followed by the sanitising commit. The original's 61 commits are not here, and neither is anything they contained.</p>
+        <p>That is deliberate and it is the whole point of republishing rather than patching. A read key hands over <em>every</em> commit, so deleting a credential from the current files would have left it sitting in history, reachable by anyone holding the key that was supposed to be safe to publish.</p>
+      </div>
+      <figure class="shot" data-shot="history.webp" data-alt="The SGit history: two commits dated 22 August 2026 — init, and the sanitised republication."><figcaption>A history that starts at the republication, because the old one could not be published.</figcaption></figure>
+    </div>
+
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">what it asks for</span>
+        <h3>A manifest that declares no permissions at all</h3>
+        <p>145 bytes: an entry point, <code>auto_open</code>, <code>present</code>, and a HUD configuration that hides the vault name. There is no permission block.</p>
+        <p>Included because it is the honest weak point of an otherwise careful vault. Silence is not least authority — it is an absence of a statement, and it reads as one next to <a href="../voice-debrief/index.html">VoiceDebrief</a>'s scoped <code>fs.read</code> or <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a>'s deliberate empty grant. When deny-by-default lands, an app that never said what it needs is the one that stops working.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-alt="app.json in the vault browser: entry, auto_open, present and a hud block, with no permissions declared."><figcaption><code>app.json</code>: an entry point, a HUD, and nothing said about permissions.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Why this shape matters beyond health</h2>
+  <p>The transferable pattern is <b>the rules as a versioned file, the model on top, and the trace between them</b>. Anywhere a decision has to be explainable — lending, eligibility, triage, grading — the same split applies: put the criteria in a document that can be versioned and argued with, compute deterministically against it, let the model write the part humans read, and label which is which. The failure mode this avoids is the one where nobody can say afterwards whether the number came from a rule or from a sentence a model produced.</p>
+  <p>The vault-shaped part is that sharing with a professional is <b>handing over a derived read key</b>, not creating them an account. The nearest thing on this site is <a href="../supplement-stack/index.html">Supplement Stack</a>, which does the same for a patient-held supplement record with real data; this one covers the fuller workflow, on synthetic profiles, and adds the clinician's side.</p>
+
+  <h2>The audit, honestly</h2>
+  <p>This is the vault whose audit stopped a publication, so the finding comes first.</p>
+  <p><b>The original vault published its own write credential.</b> <code>home/index.html</code> rendered a card labelled <em>"Patient vault key (write access) — full read/write, patient keeps this private"</em>, and the value in it was the <b>real, working vault key for that vault</b>. Anyone given the read key — the credential this page exists to hand out — could have read that card and gained write access to everything in it. The read key was therefore never publishable, and was never published.</p>
+  <p><b>Why a fresh vault and not a fix.</b> Removing the card from the current files would not have been enough: a read key grants every commit, and the credential would have remained readable in the history. So the working tree was copied, sanitised, and committed into a <em>new</em> vault (<code>zc6abngv</code>) with a new key. The original's 61 commits were left behind. This is the site's own rule — <a href="../publishing.html">republish, don't retrofit</a> — applied to the case that produced it.</p>
+  <p><b>What was verified, and how.</b> After publishing, all 35 files were fetched back <em>using only the read key above</em> — the exact credential a reader holds — and scanned. No occurrence of the original passphrase, the new passphrase, the old vault id, or any <code>sgit_vk1_</code> / <code>sgit_private_vault_</code> / <code>delete_auth</code> string. The broad secret scan across API-key, bearer-token and private-key patterns is clean too.</p>
+  <p><b>On the data.</b> Both profiles are synthetic and say so in their own files: <code>profile_id: demo-alex</code>, <code>vault_commit: "simulated"</code>, first names only, and a postcode <em>area</em> (SW1, M1) rather than a postcode. The test-lab submissions are labelled <em>Test Patient (lab)</em>, age 99. No real person's health data is published here — which is the difference between this vault and Supplement Stack, and worth stating rather than leaving to be assumed.</p>
+  <p><b>One defect found, and it is not ours.</b> The patient app throws <code>Uncaught ReferenceError: loadStandard is not defined</code> on load: <code>patient/app/data.js</code> calls it at line 116, while <code>patient/app/app.js</code> defines it at line 9 — a load-order race. It is pre-existing, not introduced by the sanitising: <code>patient/index.html</code> is byte-identical between the original clone and this republication. The app still renders and runs, and the error is left as found rather than quietly patched, because this page publishes someone else's vault and the fix is theirs to make.</p>
+  <p>The rule that goes with any published key applies here too: <b>revocation is not retroactive.</b> Anybody who fetches these objects keeps them, and rotating the key protects future commits only.</p>
+
+  <h2>Derived facts</h2>
+  <p>35 files · 1,224 KB · 3 commits · HEAD <code>obj-cas-imm-4c5c2c178517</code> · app entry <code>home/index.html</code> · 12 JSON, 9 HTML, 9 JS, 3 markdown, 2 CSS — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>, with no token and no clone.</p>
+</main>
+<script>
+(function () {
+  fetch('../../../assets/shots.js?v=v0.2.41')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.41</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.41';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
