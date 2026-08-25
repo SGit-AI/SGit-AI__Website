@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.41",
+  "site_version": "v0.2.42",
   "updates": [
     {
       "slug": "the-ninth-vault-four-apps-in-one-tree",
@@ -136,6 +136,19 @@
     }
   ],
   "articles": [
+    {
+      "slug": "what-sgit-is",
+      "title": "Git for things you cannot put on GitHub",
+      "date": "2026-08-25",
+      "version": "v0.2.42",
+      "tags": [
+        "intro",
+        "zero-knowledge",
+        "vaults",
+        "agents"
+      ],
+      "summary": "An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte."
+    },
     {
       "slug": "seven-vaults-one-method",
       "title": "Seven vaults, one method",

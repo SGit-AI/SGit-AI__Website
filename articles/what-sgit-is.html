@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Git for things you cannot put on GitHub — sgit.ai</title>
+<meta name="description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.">
+<link rel="canonical" href="https://sgit.ai/articles/what-sgit-is.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/what-sgit-is.html">
+<meta property="og:title" content="Git for things you cannot put on GitHub — sgit.ai">
+<meta property="og:description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="what-sgit-is.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Git for things you cannot put on GitHub — sgit.ai", "headline": "Git for things you cannot put on GitHub — sgit.ai", "description": "An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.", "url": "https://sgit.ai/articles/what-sgit-is.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.42</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl here" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../network/index.html">Network</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Git for things you cannot put on GitHub</p>
+  <h1>Git for things you cannot put on GitHub</h1>
+  <p class="small dim">2026-08-25 &middot; <a href="../admin/versions.html">v0.2.42</a> &middot; <span class="chip">intro</span><span class="chip">zero-knowledge</span><span class="chip">vaults</span><span class="chip">agents</span></p>
+  <p class="lead">An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.</p>
+<p>There is a category of file that has nowhere good to live.</p>
+<p>A risk register with real system names in it. A regulatory analysis you are still arguing about internally. The working memory of an AI agent that has been reading your codebase for a month. Client material under NDA. Anything a lawyer would want to see before it went near a third party.</p>
+<p>All of it wants exactly what git gives you — history, branches, diffs, the ability to hand somebody a link and know what they will see. And all of it is the reason people say <em>"we can't put that in GitHub."</em> So it ends up in a shared drive, an email thread, or a Notion page nobody can diff, and the version history that mattered is gone.</p>
+<p><b>sgit is git for those files.</b> Encrypted before they leave your machine, versioned exactly like git, stored on a server that cannot read a single byte.</p>
+<figure class="shot" data-shot="site-home.webp" data-dir="images/" data-alt="sgit.ai — `pip install sgit-ai`. Pure Python, two runtime dependencies, Apache-2.0."><figcaption>sgit.ai — <code>pip install sgit-ai</code>. Pure Python, two runtime dependencies, Apache-2.0.</figcaption></figure>
+<h2>The part that is easy to say and hard to build</h2>
+<p>Zero knowledge is a claim people make loosely, so here is the precise version: <b>the server holds ciphertext and nothing else.</b> Not your filenames, not your directory structure, not your commit messages. Encryption and decryption happen on your machine. There is no key escrow, no admin override, no support engineer who can recover it for you — and that last part is a feature with a real cost, which is worth being honest about up front.</p>
+<p>What makes it work is a single string:</p>
+<pre class="shell">
+&lt;24-char passphrase&gt;:&lt;vault-id&gt;
+</pre>
+<p>That is the <b>vault key</b>, and it is three things at once — the address of the vault, the authorisation to write to it, and the key that decrypts it. Lose it and the data is gone. Leak it and someone can rewrite your history.</p>
+<p>From it you can derive, one way, a <b>read key</b>: same vault, read-only, safe to publish. That asymmetry is the whole sharing model. Every vault linked from sgit.ai is published as a read key, and no vault key has ever been published — a rule enforced by a tripwire in the release pipeline that scans every file before either remote is touched.</p>
+<h2>Ten seconds of proof</h2>
+<p>The read key is the entire credential. No account, no login, no access request:</p>
+<figure class="shot" data-shot="cli-clone.webp" data-dir="images/" data-alt="A real clone of the published EU AI Act vault. 273 objects, 207 files."><figcaption>A real clone of the published EU AI Act vault. 273 objects, 207 files.</figcaption></figure>
+<p>Now the same vault, as the machine storing it sees it:</p>
+<figure class="shot" data-shot="cli-ciphertext.webp" data-dir="images/" data-alt="786 bytes of AES-256-GCM ciphertext. The object&#x27;s name is a SHA-256 of the encrypted bytes."><figcaption>786 bytes of AES-256-GCM ciphertext. The object's name is a SHA-256 of the encrypted bytes.</figcaption></figure>
+<p>That second screenshot is the argument. The object is <b>content-addressed over its ciphertext</b>, which means the host can deduplicate it, cache it for a year, and serve it from a CDN — while remaining unable to tell you what it is. You get the operational benefits of a normal object store without granting it the usual price of admission.</p>
+<p>Underneath, it is a real version control system rather than a sync folder: multi-parent commits, a tree per directory, deterministic refs derived by HMAC, a genuine merge-base computation across all parents, and three-way merge. Branches, diffs and history all work, on content the server cannot interpret.</p>
+<h2>Eleven vaults you can open right now</h2>
+<p>The best way to understand a vault is to open one. <b>Every vault on sgit.ai is live</b> — the screenshots are of real vaults, opened with the read keys published beside them.</p>
+<figure class="shot" data-shot="site-vaults.webp" data-dir="images/" data-alt="The published vaults. Each one carries its read key on the page."><figcaption>The published vaults. Each one carries its read key on the page.</figcaption></figure>
+<p>They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all eleven from their published keys: <b>781 files, no failures.</b></p>
+<h2>The part that surprises people</h2>
+<p>A vault can contain an <em>application</em>, not just documents — and that application runs against the vault without ever being handed a credential.</p>
+<figure class="shot" data-shot="permissions.webp" data-dir="../demos/vaults/risk-graph-explorer/images/" data-alt="`&quot;permissions&quot;: {}` — the app requests nothing, and is granted nothing."><figcaption><code>"permissions": {}</code> — the app requests nothing, and is granted nothing.</figcaption></figure>
+<p>Look at <code>"permissions": {}</code> in that file. The app asks for no filesystem access at all. It still renders the whole risk graph, because the host reads the vault and passes results in. The app never sees a key. <b>Capability without credential</b> — and it means you can run code you did not write against data you care about, with the blast radius set by a config file you can read in one screen.</p>
+<h2>Why there is a network of sites</h2>
+<p>sgit.ai is one of several sites on <code>*.sgit.ai</code>, each taking one question further than a section could.</p>
+<figure class="shot" data-shot="site-network.webp" data-dir="images/" data-alt="Four sites so far. More are coming."><figcaption>Four sites so far. More are coming.</figcaption></figure>
+<ul>
+<li><a href="../network/graphs.html"><b>graphs.sgit.ai</b></a> — a grammar for semantic graphs. <em>"A node is just a node. Meaning lives in the edges."</em></li>
+<li><a href="../network/nhi.html"><b>nhi.sgit.ai</b></a> — identity for non-human actors: agents you run versus agents you rent.</li>
+<li><a href="../network/pki.html"><b>pki.sgit.ai</b></a> — key distribution, with four registry rules published before the registry.</li>
+<li><a href="../network/sg-sentinel.html"><b>sg-sentinel.sgit.ai</b></a> — an edge guard design that says <code>NOT BUILT</code> at the top of every page.</li>
+</ul>
+<p>That last one is the house style in miniature. Each site publishes its argument <b>before</b> the thing exists, and states plainly what has shipped and what has not. graphs.sgit.ai devotes a page to <a href="https://graphs.sgit.ai/about/participant.html">where its own approach loses</a>. We would rather be checkable than impressive.</p>
+<h2>Try it</h2>
+<pre class="shell">
+pip install sgit-ai
+sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz
+</pre>
+<p>That is the EU AI Act vault — 207 files on your disk in under a minute, from a key printed on a public web page, with no account anywhere.</p>
+<p>If you would rather not install anything, <a href="../demos/vaults/index.html">every vault opens in the browser</a> from the same key.</p>
+<div class="note"><b>Status, plainly.</b> sgit is beta and says so on every page. The CLI is <code>pip install sgit-ai</code>, Apache-2.0, pure Python. The site you are reading is itself served from a vault, released 59 times, and each release is <a href="../admin/versions.html">logged in full</a> — including the ones that broke something.</div>
+<p><em>Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0 — reuse it, quote it, argue with it.</em></p>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+  fetch('../assets/shots.js?v=v0.2.42')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.42</a> · <a href="../admin/index.html">engineering</a> · <a href="what-sgit-is.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.42';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
