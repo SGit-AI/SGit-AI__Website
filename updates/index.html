@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.42</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.43</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -71,6 +71,22 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-08-25</h2>
+  <article class="upd" id="six-vaults-published-three-held-back">
+    <h3><a href="#six-vaults-published-three-held-back">Six vaults published, three held back — and the check that nearly missed one</a> <a class="upd-ver" href="../admin/versions.html">v0.2.43</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">audit</span><span class="chip">security</span></p>
+<p>Nine vaults were submitted for publication. <b>Six are now live</b>, <a href="../demos/vaults/index.html">in the gallery</a>. Three were held, and the third one is the reason this post exists.</p>
+<ul>
+<li><b><a href="../demos/vaults/pentest-report/index.html">Penetration Test Report</a></b> — a pentest delivered as a vault instead of a PDF. Eight audience-specific views over one engagement, and every finding ships a retest script that exits <code>0</code> if it is fixed and <code>1</code> if it is not. Entirely fictional, with a <code>SIMULATED DEMO</code> badge on its own front page.</li>
+<li><b><a href="../demos/vaults/standards-atlas-gdpr/index.html">Standards Atlas — GDPR</a></b> — <em>"the standard is the graph."</em> Rulings, regulator guidance and per-country variation as first-class nodes over the articles they bend, with corrections written back into <code>feedback/</code> and nowhere else.</li>
+<li><b><a href="../demos/vaults/riskmandate-file-security/index.html">RiskMandate · File security</a></b> — risk acceptance moved from a rubber stamp at the end to the centre of the flow, over versioned JSON queried live by SQLite in the browser.</li>
+<li><b><a href="../demos/vaults/content-transformation-proxy/index.html">Content-Transformation Proxy</a></b>, <b><a href="../demos/vaults/commercialisation/index.html">SG Commercialisation</a></b> and the <b><a href="../demos/vaults/payments-brief-pack/index.html">SG/Payments Brief Pack</a></b> complete the six.</li>
+</ul>
+<p><b>Two were held for carrying credentials.</b> One contained two live vault keys in plaintext — including <b>its own write key</b>, which would have turned a published read key into full write access. The other is a private working log that was never meant to be public.</p>
+<p><b>The third is the one worth recording.</b> A vault whose app reads an LLM key from a file scored <em>clean</em> on the first credential pass — and then a screenshot of it showed a chip reading <code>key: vault key.json</code>. The file held a live OpenRouter API key. The scan had looked for vault-key shapes, <code>sgit_</code> prefixes, private-key blocks and the string <code>api_key</code>; the field was named <code>openrouter_key</code>, so nothing matched.</p>
+<p>That is a real gap, not a near miss reframed as a win. The credential tooling here was built to protect <em>sgit</em> credentials and does that well; it had no opinion about third-party API keys, which are just as costly to leak and far more common. A broader sweep — OpenAI, Anthropic, GitHub, AWS, Google, Slack and JWT shapes, with placeholders filtered out — now runs over every candidate, and it found exactly one other hit: a forged <code>alg:none</code> token in the pentest vault, which <em>is</em> the finding it documents.</p>
+<p>The lesson is the cheap one to state and the easy one to skip: <b>a scan that has never surprised you is not evidence that you are clean.</b> It was a screenshot, not the scanner, that caught this.</p>
+  </article>
   <h2 class="upd-date">2026-08-22</h2>
   <article class="upd" id="the-ninth-vault-four-apps-in-one-tree">
     <h3><a href="#the-ninth-vault-four-apps-in-one-tree">The ninth published vault — four apps in one tree, and a reader that asked for nothing it did not need</a> <a class="upd-ver" href="../admin/versions.html">v0.2.40</a></h3>
@@ -223,7 +239,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.42</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.43</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -262,7 +278,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.42';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.43';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

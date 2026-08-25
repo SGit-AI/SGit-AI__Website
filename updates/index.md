@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,27 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-08-25
+
+### [Six vaults published, three held back — and the check that nearly missed one](#six-vaults-published-three-held-back) [v0.2.43](../admin/versions.md)
+
+vaultsauditsecurity
+
+Nine vaults were submitted for publication. **Six are now live**, [in the gallery](../demos/vaults/index.md). Three were held, and the third one is the reason this post exists.
+
+- **[Penetration Test Report](../demos/vaults/pentest-report/index.md)** — a pentest delivered as a vault instead of a PDF. Eight audience-specific views over one engagement, and every finding ships a retest script that exits `0` if it is fixed and `1` if it is not. Entirely fictional, with a `SIMULATED DEMO` badge on its own front page.
+- **[Standards Atlas — GDPR](../demos/vaults/standards-atlas-gdpr/index.md)** — *"the standard is the graph."* Rulings, regulator guidance and per-country variation as first-class nodes over the articles they bend, with corrections written back into `feedback/` and nowhere else.
+- **[RiskMandate · File security](../demos/vaults/riskmandate-file-security/index.md)** — risk acceptance moved from a rubber stamp at the end to the centre of the flow, over versioned JSON queried live by SQLite in the browser.
+- **[Content-Transformation Proxy](../demos/vaults/content-transformation-proxy/index.md)**, **[SG Commercialisation](../demos/vaults/commercialisation/index.md)** and the **[SG/Payments Brief Pack](../demos/vaults/payments-brief-pack/index.md)** complete the six.
+
+**Two were held for carrying credentials.** One contained two live vault keys in plaintext — including **its own write key**, which would have turned a published read key into full write access. The other is a private working log that was never meant to be public.
+
+**The third is the one worth recording.** A vault whose app reads an LLM key from a file scored *clean* on the first credential pass — and then a screenshot of it showed a chip reading `key: vault key.json`. The file held a live OpenRouter API key. The scan had looked for vault-key shapes, `sgit_` prefixes, private-key blocks and the string `api_key`; the field was named `openrouter_key`, so nothing matched.
+
+That is a real gap, not a near miss reframed as a win. The credential tooling here was built to protect *sgit* credentials and does that well; it had no opinion about third-party API keys, which are just as costly to leak and far more common. A broader sweep — OpenAI, Anthropic, GitHub, AWS, Google, Slack and JWT shapes, with placeholders filtered out — now runs over every candidate, and it found exactly one other hit: a forged `alg:none` token in the pentest vault, which *is* the finding it documents.
+
+The lesson is the cheap one to state and the easy one to skip: **a scan that has never surprised you is not evidence that you are clean.** It was a screenshot, not the scanner, that caught this.
 
 ## 2026-08-22
 

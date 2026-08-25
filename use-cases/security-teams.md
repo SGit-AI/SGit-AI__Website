@@ -2,7 +2,7 @@
 
 > Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way.
 
-*Source: <https://sgit.ai/use-cases/security-teams.html> · site v0.2.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/security-teams.html> · site v0.2.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
