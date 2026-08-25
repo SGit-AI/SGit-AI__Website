@@ -379,6 +379,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
 | [Agentic Browser Isolation](agentic-browser-isolation/index.md) | `0610gsp9` | structured analysis (a living risk graph) | 104 files · 2.4 MB · 4 commits · 17 app entries | `sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9) |
 | [Risk Graph Explorer](risk-graph-explorer/index.md) | `3simlnqe` | application (public by design) | 33 files · 428 KB · 7 commits · 1 app entry | `sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) |
+| [Vault App Mode](vault-app-pocs/index.md) | `xth1xt78` | developer reference (nine POCs and a demo) | 57 files · 251 KB · 8 commits · app entry `_poc-hub/index.html` | `sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78) |
+| [Private Health Score](health-score/index.md) | `zc6abngv` | application (a clinical workflow, sanitised republication) | 35 files · 1.2 MB · 3 commits · app entry `home/index.html` | `sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv) |
 | [VoiceDebrief](voice-debrief/index.md) | `k6xy9z4d` | structured analysis (four apps, one vault) | 92 files · 1.2 MB · 18 commits · app entry `part-4/index.html` | `sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1%3Ak6xy9z4d) |
 | [Regulation Graph](regulation-graph/index.md) | `73heuprz` | reference data (regulation as an evidence graph) | 207 files · 14.9 MB · 2 commits · 11 app views | `sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) |
 
@@ -5097,6 +5099,340 @@ edgesecuritydesign[What it argues →](sg-sentinel.md) · [Open sg-sentinel.sgit
 ## Why they are separate sites
 
 Each one is an argument that needs room and a reader who arrived for it. Splitting them out keeps this site about sgit while letting each question be pursued properly — and gives each its own version history, release cadence and repository. They are built from the same generator and hold to the same rules, so a reader moving between them is not changing register.
+
+
+
+==============================================================================
+# Vault App Mode — a published vault
+
+> Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all.
+>
+> Page: https://sgit.ai/demos/vaults/vault-app-pocs/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Vault App Mode
+
+# Vault App Mode — nine POCs and a demo
+
+The simplest vault on this site, and the one to read first if you are going to build one. Nine proof-of-concepts climb from a single inline HTML file to a fifteen-test diagnostic harness over the vault filesystem, then a small four-page app puts the lot together. It answers one question end to end: how do you load CSS, JavaScript and data when your files live in an encrypted vault instead of on a web server?
+
+**The one problem everything here solves.** The HTML parser fires requests for `<link>` and `<script src>` the moment it meets them — before the vault bridge has patched `fetch`. Those requests hit the iframe's blob origin, where no files exist, and 404. So vault pages load their resources at *runtime*, with `sg.loadCss()` and `sg.loadJs()`. Every POC in this vault is a consequence of that one race.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78) · From the CLI: `sgit clone sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78`
+Published deliberately. It grants read, and only read. This is a republication — the vault this content was authored in could not be opened by a read key at all, for a reason worth reading in the audit below.
+
+## See it live, here
+
+Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78).
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| **Runtime resource loading** | `sg.loadCss()` and `sg.loadJs()` fetch vault files through the bridge and inject them, because declarative tags lose the race against the parser. POC-02 and POC-03 isolate each one; POC-04 shows dependency order between modules |
+| The filesystem, read and written | `sg.vfs.readText()` in POC-07, `sg.vfs.write()` in POC-08 — which persists a real JSON file into the vault and lists it back. Writes are **local-first**: they live in the working copy until an `sgit push`, and the POC says so rather than implying instant durability |
+| **A test harness for the platform itself** | POC-09 is the unusual one: fifteen graded operations over `sg.vfs` — read, write, list, nested folders, binary round-trips, deliberate error cases, path-variant comparison — each showing the exact call, the raw result, per-assertion pass/fail and timing. It exists because guessing at the API's behaviour cost a session; instrumenting it settled the question |
+| Paths, the thing that actually bites | `sg.vfs` takes **vault-absolute** paths, and a page's own folder is knowable only from `sg.app.selfPath` — `location.pathname` is always `/` inside the iframe. The vault documents this as its most important rule, and POC-09's environment readout prints the ground truth |
+| FOUC handled deliberately | pages hide the body until their CSS resolves, then reveal by **removing a class**. The distinction matters: clearing an inline style cannot override a stylesheet rule, which is exactly the bug this vault was carrying when it arrived (see the audit) |
+| Its own failure modes, on a page | the survey ships a **Try the failure modes** panel that attempts writes which *should* be rejected — path traversal, URL-encoded traversal, a protected `.vault-settings.json`, a null byte, a 1500-character path — so the guards are demonstrated rather than asserted |
+| The reasoning ships with it | `_docs/` carries a field guide (the canonical page skeleton and path rules), a gotchas manual written by symptom, and a debrief explaining why the code looks the way it does. It is the best-documented vault on this site for its size |
+
+## What is going on here, step by step
+
+The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.
+
+what opens
+
+### A contents page, not a file listing
+
+Opening the read key lands on the POC hub — `app.json` sets `entry` to `_poc-hub/index.html`. The steps are numbered like a magazine contents page, each card tagged with the API it exercises and a difficulty level, with the diagnostic lab and the demo as full-width cards beneath.
+
+It is worth noticing what this *is*: a static HTML file in an encrypted store, rendering as a navigable site, with no server anywhere in the path.
+
+The hub — nine numbered steps, tagged by the API each one exercises.
+
+the baseline
+
+### POC-01: everything inline, so nothing can fail
+
+The first step deliberately has no external files at all — CSS in a `<style>` block, JS in a `<script>` block. It is the control case: if this renders, the vault is serving your HTML correctly and anything that breaks later is about *resource loading*, not about the vault.
+
+It is also the one page that does not use the shared stylesheet, because loading one would contradict the point it is making.
+
+The control case — no external files, so nothing can 404.
+
+the fix, isolated
+
+### POC-02: one CSS file, loaded at runtime
+
+The smallest possible demonstration of the pattern. One `sg.loadCss()` call in a head script, and the FOUC guard around it: the body starts hidden and is revealed when the promise settles — *including* when it rejects, so a failed load leaves a readable page rather than a permanently invisible one.
+
+The status pill on the page reports the load lifecycle as it happens, which makes the async step visible instead of theoretical.
+
+One `sg.loadCss()`, with the reveal guarded on both outcomes.
+
+order matters
+
+### POC-04: two modules, and the dependency between them
+
+Once JavaScript arrives at runtime, load order becomes yours to manage. `utils.js` must execute before `app.js` can call into it, so the POC awaits them in sequence and logs each step with a `[poc-04]` prefix.
+
+The parallel case is covered too: independent resources go through `Promise.all`, because serialising things that do not depend on each other is just a slower page.
+
+Sequential where there is a dependency, parallel where there is not.
+
+data
+
+### POC-05: `fetch()` works, because the bridge intercepts it
+
+Once the bridge is installed, an ordinary `fetch('data.json')` resolves against the vault. No special API, no rewriting of your data layer — the call you would already have written works, which is the point of intercepting `fetch` rather than replacing it.
+
+This is the step where a vault app stops looking exotic and starts looking like a normal front end that happens to have an encrypted origin.
+
+An ordinary `fetch()`, resolved against encrypted storage.
+
+writing
+
+### POC-08: a form that puts a real file in the vault
+
+Submitting writes `responses/poc-08-<timestamp>.json` through `sg.vfs.write()`, then the page lists what is there and lets you edit or delete it. The delete control only appears if `sg.vfs.delete` actually exists — capability-checked rather than assumed.
+
+The callout that matters is the honest one: writes are **local-first**. They live in the working copy until someone runs `sgit push`, which the vault demonstrated the hard way — a submission made in one browser session was gone from a fresh one until the push happened.
+
+A real write, with the local-first caveat stated rather than glossed.
+
+the interesting one
+
+### POC-09: testing the platform instead of trusting it
+
+Fifteen graded tests over `sg.vfs`, each card showing the exact call with its resolved arguments, the raw result, a live progress log, per-assertion pass/fail and a runtime in milliseconds. Above them, an environment readout printing `location.href`, `location.pathname`, `sg.app.selfPath` and the keys actually present on `sg.vfs` and `sg.app`.
+
+It was built mid-project when path bugs kept multiplying, on the reasoning that the API should be measured rather than guessed at. It is the most transferable idea in the vault: when a platform surprises you, instrument it and keep the instrument.
+
+A test harness for the vault filesystem, kept as part of the vault.
+
+all together
+
+### The cities demo: four pages, one data file
+
+The demo hub offers a bar chart, a world map, a survey and a responses viewer — each tagged **READ-ONLY** or **WRITES** so you know what it will do before you click. The chart and the map read the same `cities.json` and render it two ways; editing that one file in the vault browser changes both.
+
+This hub could not be reached at all before publication — see the audit. It is now linked from the POC hub, which is how you get here.
+
+Four pages over one data file, each labelled with what it will do.
+
+read and render
+
+### The same data, drawn two ways
+
+The bar chart reads `cities.json` through the bridge and draws from it directly. The map projects the same records onto an equirectangular world and doubles as a navigation test — proving that same-vault `<a href>` links resolve correctly between pages.
+
+Nothing here is fetched from the network. The data, the code and the styling are all objects in the encrypted store, decrypted in the reader's browser.
+
+One `cities.json`, rendered by two pages that never touch the network.
+
+write, then read back
+
+### The survey, and its own failure modes
+
+The form writes a JSON file per submission and offers two submit buttons — the canonical `sg.vfs.write()` and the `window.sgVault.writeFile` alias — so you can confirm both produce identical commits.
+
+Underneath is the panel worth the visit: **Try the failure modes**, six buttons that attempt writes which must be refused. Path traversal, URL-encoded traversal, the protected settings file, a null byte, a path past the length cap. A demo that shows you its guards working is a stronger claim than one that tells you they exist.
+
+Two write paths, and six writes that are supposed to be refused.
+
+list, read, aggregate
+
+### The viewer — including the response that is trying to attack it
+
+`sg.vfs.list()` enumerates the responses folder, `sg.vfs.readText()` reads each file, and the page aggregates live: total responses, average excitement, top role, total bytes. A **View raw** control dumps the unprocessed listing so you can see what the API actually returned.
+
+The first card is deliberate. One stored response carries `<img src=x onerror=alert(1)>` in its name field, and the viewer renders it as *visible text*. It is a standing escaping test, kept in the data so that a regression on either render path would be obvious on sight — which matters, because that is a bug this vault actually had.
+
+Three responses, aggregates computed live — and a payload rendered, correctly, as text.
+
+the source
+
+### Everything is readable, including the parts that explain it
+
+The vault browser shows the whole tree under the same read key: nine POC folders, the shared stylesheet, the demo, and `_docs/` — a field guide, a gotchas manual organised by symptom, and a project debrief.
+
+That last folder is why this vault is worth copying as a pattern. The code demonstrates the technique; the docs record what went wrong on the way, which is the part that usually evaporates when a project ends.
+
+The tree under one read key — including the write-up of its own mistakes.
+
+## The audit, honestly
+
+This vault was reviewed before its key was published, and the review changed both the vault and what got published. Findings first.
+
+**The submitted vault could not be opened by a read key at all.** Its read key decrypted every object correctly — verified by decrypting its HEAD ref by hand — but the reader could never *find* HEAD. sgit has two ways of assigning a vault's ref file id: `Vault__Crypto` derives it from the read key and vault id, while `Vault__Branch_Manager` falls back to `'ref-pid-muw-' + secrets.token_hex(6)` — a random value. This vault got a random one. Browser readers derive the id, so they looked in the right place for a file stored under a name nothing could compute. The CLI worked throughout, because it resolves HEAD through the branch index instead. sgit's own tooling states the consequence plainly: *"write_key, ref_file_id, and branch_index_file_id are not derivable from a read_key alone."* A read key published for that vault would have been a credential that decrypts everything and opens nothing — so the content was republished into a new vault, `xth1xt78`, created through the deriving path.
+
+**The whole cities demo rendered blank.** Four pages set `body { display: none }` in a stylesheet and cleared it with `document.body.style.display = ''`. That clears an *inline* property which was never set; the stylesheet rule kept applying and the pages stayed invisible. The host said so out loud — *"App loaded but is showing nothing — hidden (display:none)"* — for the hub, the map, the survey and the responses viewer. Only the bar chart, which has no such script, was unaffected. Fixed by hiding through a class and removing it, which is the pattern the POCs already used and the vault's own gotchas file documents.
+
+**The demo was unreachable.** `app.json` opens the POC hub; the hub linked only the nine POCs; and the demo's own hub linked back to it. A one-way door, with a third of the vault behind it. The hub now carries a card for it.
+
+**Two survey pages pointed at files that were not there.** Both live in `demo-cities/survey/` but named `style.css` and `hub.html` as though they sat a level up, so each had a missing stylesheet and a dead back-link. Separately, both used relative paths for `sg.vfs` — `list('responses/')` returned *"No such path"* — which is precisely the gotcha this vault's own documentation warns about. They now derive the folder from `sg.app.selfPath`, the way POC-09 does, and normalise `entry.path` to absolute before reading, which was doubling the prefix.
+
+**A stored-XSS gap on the error path.** The responses viewer escaped every field it rendered on the success path, and interpolated the filename and error text raw on its two failure paths. The vault contained an unlabelled XSS payload in a leftover test response, so someone had clearly probed this and fixed only the half that showed. Both paths now escape, and the payload has been kept deliberately — rewritten as a labelled escaping test, so the property stays visible in the UI rather than living in a comment.
+
+**Removed, not fixed:** an empty zero-byte `check-undefined.html` referenced by nothing, and `POC_STRUCTURE.md`, whose guidance had been superseded by `_docs/` and whose structure diagram described a six-POC vault under a former name. `README.md` was rewritten for the same reason — it named the wrong entry point and omitted three POCs. Both files remain in the vault's history.
+
+**The credential finding.** The vault's own documentation recorded the project's push token in plain text, three times, as part of the workflow instructions. Publishing a read key would have handed that out with the content. The token has been replaced with a placeholder; the instructions still read correctly. The vault is otherwise clean on credentials — no vault key inside its own files, no `sgit_vk1_` or `sgit_private_vault_` string, no `delete_auth`, no API keys or private-key blocks. All 57 files were fetched back after publication *using only the read key above* and re-scanned.
+
+On data: the survey responses are the only personal-shaped content, and all three are invented for the demo. The rest is code, styling and documentation. The rule that goes with any published key applies here too: **revocation is not retroactive** — anybody who fetches these objects keeps them.
+
+## Derived facts
+
+57 files · 251 KB · 8 commits · HEAD `obj-cas-imm-4517bfe1735d` · app entry `_poc-hub/index.html` · 15 HTML, 12 JSON, 12 CSS, 10 JS, 6 markdown — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md), with no token and no clone.
+
+
+
+==============================================================================
+# Private Health Score — a published vault
+
+> A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential.
+>
+> Page: https://sgit.ai/demos/vaults/health-score/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Private Health Score
+
+# Private Health Score
+
+A complete clinical workflow in one vault — adaptive questionnaire, a versioned scoring framework, an explainability layer that traces every recommendation back to an answer, and a clinician review screen — running entirely client-side. It is published here as a **sanitised republication**, because the vault it was built from carried its own write credential in its home page and could never have had its key published.
+
+**The idea it is built on, in one line.** The framework, not the model, produces the recommendations. A versioned JSON standard — five dimensions, five bands, eight scoring rules — is loaded from the vault at runtime and does the scoring deterministically; the LLM writes the narrative on top and is labelled as such, with its model and cost on the page. **Never a diagnosis.** This is a proof of concept on synthetic profiles, and no compliance finding of any kind exists for it.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv) · From the CLI: `sgit clone sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv`
+This key opens vault `zc6abngv`, the sanitised republication — **not** the vault this content was authored in, whose key was never published and never will be. See the audit below.
+
+## See it live, here
+
+Both surfaces open automatically below. You can also [**open the app in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv).
+
+## What this vault demonstrates
+
+| Feature | How this vault uses it |
+|---|---|
+| **One vault, three audiences** | `patient/`, `doctor/` and `shared/` split the same record by *who is reading it*, not by copying it. The patient fills in the questionnaire, the clinician opens a review of the same answers, and the framework and analysis both sides rely on sit in `shared/`. One credential, one copy, three views |
+| The rules are data, and versioned | `shared/health-score-standard.json` is the scoring framework as a file — 5 dimensions with explicit weights (cardiovascular 25%, metabolic 20%, lifestyle 20%, wellbeing 20%, preventive care 15%), 5 bands and 8 rules, stamped `v1.0`. The viewer labels it *"loaded from vault at runtime"*, and a **Reveal JSON** button shows the source behind the rendering |
+| Deterministic score, generated prose | the number comes from the framework; the LLM writes the narrative around it. The clinician screen states the provenance in the open — *AI-generated · estimated cost $0.024 · claude-sonnet-4* — and `llm-analysis.json` carries `status: pending_clinician_review`. The model's output is a draft for a human, and the file says so |
+| Every recommendation traced to an answer | the explainability layer lists what helped and what hurt with the rule that decided it: *"Last Blood Test: over 2 years — scored 50/100, affects your Preventive Care score."* Its own note draws the line: *"The framework — not the AI — produced these. The AI analysis adds nuance; these are the foundations"* |
+| Severity-ranked clinical actions | the review screen sorts suggested actions **URGENT → HIGH → MEDIUM → LOW** rather than presenting a flat list, and pairs them with the dimension scores that triggered them — plus an *adaptive risk gates* section showing which branches the questionnaire opened because of earlier answers |
+| No account anywhere in the flow | sharing the record with a clinician is handing over a derived read key. There is no clinician login, no tenant, and no server-side copy — the vault's own architecture section states the three-credential model, and the read key you are holding is the proof |
+| Permissions left undeclared | honest gap rather than a feature: `app.json` declares `entry`, `auto_open`, `present` and a HUD block, and **no permission block at all** — compare [VoiceDebrief](../voice-debrief/index.md), which scopes `fs.read` to one folder. An app that never states what it needs cannot demonstrate least authority, and will need a grant declared when the platform's deny-by-default lands |
+
+## What is going on here, step by step
+
+The embeds above are the real vault, which makes it easy to scroll past the parts that matter. Each row points at one of them. Every screenshot is of this vault, driven by a script holding nothing but the published read key.
+
+what opens
+
+### Two demo profiles, chosen to disagree
+
+The vault opens on a hub built around two synthetic profiles that are deliberately not alike: **Alex, 34** — BMI 25.9, good lifestyle, scoring **74 · Good** — and **Sam, 47** — BMI 33.8, multiple risk factors, scoring **38 · Needs Attention**.
+
+One profile would demonstrate the rendering. Two that land in different bands demonstrate the *framework*, because every screen after this one can be read twice and compared.
+
+Two profiles, two bands — so every later screen can be read twice.
+
+the patient side
+
+### A ten-step questionnaire that branches on what you answer
+
+The patient app is a ten-section flow — welcome, about you, lifestyle, health, history, concerns, score, AI analysis, vault save, complete — with a demo bar across the top that can drive each step or run the whole thing.
+
+The two steps worth noticing are the last two. **Vault save** is where the record is encrypted and written, and **complete** is the final record — the flow ends by producing an artefact the person keeps, not a result page that disappears.
+
+Ten sections, adaptive, ending in a saved encrypted record.
+
+the rules, as a file
+
+### The framework is versioned, readable and separate from the code
+
+This is the part that makes the rest auditable. The scoring standard is a JSON file in the vault, rendered here as a document: five bands from **At Risk (0–29)** to **Excellent (85–100)**, and five weighted dimensions shown as a radar with the weights stated numerically beside it.
+
+Because it is data rather than logic buried in a function, it can be versioned (`v1.0`), diffed between commits, and disagreed with. **Reveal JSON** shows the source that produced the page you are reading — the rendering and the rules are the same object.
+
+The scoring framework as a versioned document, not as code.
+
+explainability
+
+### Each number carries the answer that produced it
+
+Alex's 74 breaks into heart health 78, lifestyle 76, wellbeing 72 — and then into the individual answers behind them. *"Smoking: never — scored 100/100 in the framework."* *"Alcohol: light — 90/100."* Against him: *"Last blood test: over 2 years — 50/100, affects your Preventive Care score. Framework flag: book routine blood panel."*
+
+Three tabs sit above it — **Your Health Story**, **Score Breakdown**, **Evidence Map** — the same result at three depths. The layer's own caveat is the important sentence: the recommendations come from the framework, and the model only adds nuance on top.
+
+Score → dimension → the specific answer and its framework rule.
+
+the clinician side
+
+### The same record, arranged for someone qualified to act on it
+
+Sam's review puts the record on the left — dimension scores with the reasoning under each, then the full profile — and the AI analysis on the right, as suggested actions ranked by urgency: two **URGENT** (a GP appointment for cardiac symptoms, and a specific blood panel), three **HIGH**, then medium and low.
+
+Two things make this more than a dashboard. The analysis is labelled *AI-generated* with its model and cost, so a clinician knows what they are reading. And beneath it is a **clinical notes** block for the reviewer's own observations — the tool expects to be corrected, and keeps the correction next to what it corrected.
+
+Ranked actions, provenance stated, and room for the clinician to disagree.
+
+the fix, visible
+
+### The card that used to hold a live write key
+
+The vault explains its own credential model in three cards: the vault key (full read/write, kept private), the derived read-only share token for the clinician, and the data location (client device only). The model is right, and it is the argument the whole demo makes.
+
+In the original vault, the first card contained an **actual working vault key** — the real credential for the vault you were reading it in. Here it shows the *shape*, `⟨passphrase⟩:⟨vault-id⟩`, with the reason attached: a write credential is never written into the vault's own content. The teaching value survives; the credential does not.
+
+The same three-credential explanation, with the live key removed.
+
+a fresh vault, not a rewrite
+
+### Two commits, both from the day it was republished
+
+The SGit view is the evidence for the claim in the audit below. This vault's history begins on **22 August 2026** with `init`, followed by the sanitising commit. The original's 61 commits are not here, and neither is anything they contained.
+
+That is deliberate and it is the whole point of republishing rather than patching. A read key hands over *every* commit, so deleting a credential from the current files would have left it sitting in history, reachable by anyone holding the key that was supposed to be safe to publish.
+
+A history that starts at the republication, because the old one could not be published.
+
+what it asks for
+
+### A manifest that declares no permissions at all
+
+145 bytes: an entry point, `auto_open`, `present`, and a HUD configuration that hides the vault name. There is no permission block.
+
+Included because it is the honest weak point of an otherwise careful vault. Silence is not least authority — it is an absence of a statement, and it reads as one next to [VoiceDebrief](../voice-debrief/index.md)'s scoped `fs.read` or [Risk Graph Explorer](../risk-graph-explorer/index.md)'s deliberate empty grant. When deny-by-default lands, an app that never said what it needs is the one that stops working.
+
+`app.json`: an entry point, a HUD, and nothing said about permissions.
+
+## Why this shape matters beyond health
+
+The transferable pattern is **the rules as a versioned file, the model on top, and the trace between them**. Anywhere a decision has to be explainable — lending, eligibility, triage, grading — the same split applies: put the criteria in a document that can be versioned and argued with, compute deterministically against it, let the model write the part humans read, and label which is which. The failure mode this avoids is the one where nobody can say afterwards whether the number came from a rule or from a sentence a model produced.
+
+The vault-shaped part is that sharing with a professional is **handing over a derived read key**, not creating them an account. The nearest thing on this site is [Supplement Stack](../supplement-stack/index.md), which does the same for a patient-held supplement record with real data; this one covers the fuller workflow, on synthetic profiles, and adds the clinician's side.
+
+## The audit, honestly
+
+This is the vault whose audit stopped a publication, so the finding comes first.
+
+**The original vault published its own write credential.** `home/index.html` rendered a card labelled *"Patient vault key (write access) — full read/write, patient keeps this private"*, and the value in it was the **real, working vault key for that vault**. Anyone given the read key — the credential this page exists to hand out — could have read that card and gained write access to everything in it. The read key was therefore never publishable, and was never published.
+
+**Why a fresh vault and not a fix.** Removing the card from the current files would not have been enough: a read key grants every commit, and the credential would have remained readable in the history. So the working tree was copied, sanitised, and committed into a *new* vault (`zc6abngv`) with a new key. The original's 61 commits were left behind. This is the site's own rule — [republish, don't retrofit](../publishing.md) — applied to the case that produced it.
+
+**What was verified, and how.** After publishing, all 35 files were fetched back *using only the read key above* — the exact credential a reader holds — and scanned. No occurrence of the original passphrase, the new passphrase, the old vault id, or any `sgit_vk1_` / `sgit_private_vault_` / `delete_auth` string. The broad secret scan across API-key, bearer-token and private-key patterns is clean too.
+
+**On the data.** Both profiles are synthetic and say so in their own files: `profile_id: demo-alex`, `vault_commit: "simulated"`, first names only, and a postcode *area* (SW1, M1) rather than a postcode. The test-lab submissions are labelled *Test Patient (lab)*, age 99. No real person's health data is published here — which is the difference between this vault and Supplement Stack, and worth stating rather than leaving to be assumed.
+
+**One defect found, and it is not ours.** The patient app throws `Uncaught ReferenceError: loadStandard is not defined` on load: `patient/app/data.js` calls it at line 116, while `patient/app/app.js` defines it at line 9 — a load-order race. It is pre-existing, not introduced by the sanitising: `patient/index.html` is byte-identical between the original clone and this republication. The app still renders and runs, and the error is left as found rather than quietly patched, because this page publishes someone else's vault and the fix is theirs to make.
+
+The rule that goes with any published key applies here too: **revocation is not retroactive.** Anybody who fetches these objects keeps them, and rotating the key protects future commits only.
+
+## Derived facts
+
+35 files · 1,224 KB · 3 commits · HEAD `obj-cas-imm-4c5c2c178517` · app entry `home/index.html` · 12 JSON, 9 HTML, 9 JS, 3 markdown, 2 CSS — derived from the read key alone by `admin/build/catalogue_derive.py`, the same derivation that populates [the catalogue](../../../catalogue/index.md), with no token and no clone.
 
 
 
