@@ -404,5 +404,41 @@
     "section": "vaults",
     "title": "Regulation Graph — a published vault",
     "desc": "The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original."
+  },
+  {
+    "path": "demos/vaults/payments-brief-pack/index.html",
+    "section": "vaults",
+    "title": "SG/Payments Brief Pack — a published vault",
+    "desc": "A ten-document briefing pack for a payments and metering platform, published as a vault while every word of it is still PROPOSED — the status is stamped on the pack index, not buried in a footnote."
+  },
+  {
+    "path": "demos/vaults/commercialisation/index.html",
+    "section": "vaults",
+    "title": "SG Commercialisation — a published vault",
+    "desc": "A commercial operating model published in the open: nine tools to productise, eight agentic roles, the engagement procedure and every template — with the live engagement register deliberately empty."
+  },
+  {
+    "path": "demos/vaults/riskmandate-file-security/index.html",
+    "section": "vaults",
+    "title": "RiskMandate: File security — a published vault",
+    "desc": "A risk-acceptance walk in eleven steps over one evolving register, where the browser becomes the database: versioned JSON in the vault is the source of truth, queried live through SQLite compiled to WebAssembly."
+  },
+  {
+    "path": "demos/vaults/standards-atlas-gdpr/index.html",
+    "section": "vaults",
+    "title": "Standards Atlas: GDPR — a published vault",
+    "desc": "The General Data Protection Regulation as a navigable semantic graph, where CJEU rulings, regulator guidance and per-country variation are first-class nodes layered over the articles they bend — with a validation surface that writes corrections back into the vault."
+  },
+  {
+    "path": "demos/vaults/content-transformation-proxy/index.html",
+    "section": "vaults",
+    "title": "Content-Transformation Proxy — a published vault",
+    "desc": "A three-part as-built engineering brief published as a documentation site inside a vault: ten authored slides, a diagram library and the source PDFs, all served from one read key."
+  },
+  {
+    "path": "demos/vaults/pentest-report/index.html",
+    "section": "vaults",
+    "title": "Penetration Test Report — a published vault",
+    "desc": "A complete penetration test delivered as a vault instead of a PDF: eight audience-specific views over one engagement, evidence per finding, and a retest script that re-runs each check and exits 0 or 1. Entirely fictional, and it says so on its own front page."
   }
 ]

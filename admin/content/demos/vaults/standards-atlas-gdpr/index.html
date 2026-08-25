@@ -1,0 +1,50 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Standards Atlas — GDPR</p>
+  <h1>Standards Atlas — GDPR</h1>
+  <p class="lead"><b>"The standard is the graph."</b> GDPR cannot be read at face value: its operative meaning lives in the rulings, the regulators' guidance, and the per-country variation the text never mentions. This vault makes those first-class nodes layered over the articles they bend — and it is one of the earliest experiments here in shipping a graph as a vault.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c%3A4zv4bvmu" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c%3A4zv4bvmu" rel="noopener" target="_blank"><b>open the app in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="4zv4bvmu" data-readkey="439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the claim</span>
+        <h3>Read the text at face value and you miss most of it</h3>
+        <p>The vault holds the whole workshop rather than a finished artefact: the raw Regulation (EU) 2016/679, a normalised form, the graph that connects it, the visualisations rendered from that graph, and the provenance that makes each claim auditable. Nine views run from <b>The text</b> through <b>Structure</b>, <b>The graph</b>, <b>Beyond the text</b>, <b>Sources</b>, <b>Validate</b> and <b>Provenance</b>.</p><p>Its sources are public record and named as such — CJEU proceedings including <em>Meta Platforms Inc. v Bundeskartellamt</em>, regulator material from the German federal DPA, and enforcement decisions. Nothing private is in it, by construction.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="The overview: the standard as a graph, with the not-legal-advice banner above it and the source instrument below."><figcaption>The overview: the standard as a graph, with the not-legal-advice banner above it and the source instrument below.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the honesty</span>
+        <h3>A banner across every page, and a seed that says it is a seed</h3>
+        <p>Above every view sits <code>SEED PASS — NOT LEGAL ADVICE</code>, and the overview repeats it in full: <em>"a structural and educational artefact, not legal advice. The rulings/guidance/per-country overlays are a web-verified seed (30 May 2026), illustrative and not exhaustive, and must be validated before they are relied upon."</em></p><p>That is why the <b>Validate</b> view matters. Corrections are written from inside the vault to <code>/feedback/</code>, gated on the <code>fs.write: ["feedback/"]</code> grant — so a read-only reader records changes in the page only, while the seed graph stays immutable and reviewers layer validated provenance on top.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-dir="images/" data-alt="The vault browser: the graph, its sources and provenance, and the narrow write grant behind Validate."><figcaption>The vault browser: the graph, its sources and provenance, and the narrow write grant behind Validate.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Notes</h2>
+  <p><b>The narrowest interesting grant on the site.</b> Most vaults here request read and no write. This one requests <code>fs.write</code> and <code>fs.mkdir</code> on exactly one path — <code>feedback/</code> — which is how it accepts corrections without ever letting a reviewer alter the graph they are reviewing.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

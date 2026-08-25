@@ -1,0 +1,50 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / RiskMandate — File security</p>
+  <h1>RiskMandate — File security</h1>
+  <p class="lead">A worked risk decision, structured as an <b>eleven-step walk</b> over one shared, evolving register. Its argument is a process one: risk acceptance belongs at the <b>centre</b> of the flow, not rubber-stamped at the end — and when the facts change, the risks and their owners change with them.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77:wu365g94</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77%3Awu365g94" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77:wu365g94</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77%3Awu365g94" rel="noopener" target="_blank"><b>open the app in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="wu365g94" data-readkey="e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the inversion</span>
+        <h3>Risk acceptance, moved to the centre</h3>
+        <p>The comparison is made on the page itself. Traditional: <code>Build → Ship → Run →</code> then a <s>Sign-off</s> — described as <em>"a rubber-stamp after the fact — blind spots, low accountability, and stale by the time it's signed."</em></p><p>RiskMandate: <code>Facts → Risks → Accept &amp; own → Propagate ↻ recalibrate</code>. The dashboard tracks two competing costs at once — <b>detect-only residual</b> against <b>control cost &amp; friction</b> — so choosing a control is visibly a trade, not a free win. There is no <em>deny</em> fork: each risk is accepted, mitigated, or awaiting data, and someone owns the choice.</p><p>The discipline it sets itself is <em>"Grounded, not FUD — facts first."</em> Each fact walks to its evidence and its source before any decision is offered.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="Step 1 of the walk: the counters, the two competing costs, and risk acceptance moved to the centre."><figcaption>Step 1 of the walk: the counters, the two competing costs, and risk acceptance moved to the centre.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the pattern</span>
+        <h3>The browser is the database</h3>
+        <p>The vault holds the issues as <b>versioned JSON files</b> — that is the source of truth. On load the app copies those nodes and edges into a real database running in the browser, and every read the UI performs is a query against it.</p><p>The vault's own note puts it plainly: this is the ordinary shape of a database system — a durable store plus a working engine — <em>except the durable store is a zero-knowledge, git-versioned file tree</em>. Steps 7 through 11 expose the layers directly: Data, Database, Graph DB, Graph viz, Explorer.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-dir="images/" data-alt="The vault browser: issues as versioned JSON, and the grant behind the walk."><figcaption>The vault browser: issues as versioned JSON, and the grant behind the walk.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Notes</h2>
+  <p><b>On the permission line.</b> <code>app.json</code> requests <code>fs.read</code> and an explicitly empty <code>fs.write: []</code> — the write array is present and empty rather than absent, which states the intent instead of leaving it to be inferred.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

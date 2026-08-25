@@ -2,7 +2,7 @@
 
 > The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original.
 
-*Source: <https://sgit.ai/demos/vaults/regulation-graph/index.html> · site v0.2.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/regulation-graph/index.html> · site v0.2.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

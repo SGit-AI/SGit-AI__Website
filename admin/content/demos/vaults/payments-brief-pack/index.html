@@ -1,0 +1,50 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / SG/Payments Brief Pack</p>
+  <h1>SG/Payments Brief Pack</h1>
+  <p class="lead">A briefing pack for a team that has not started building yet. Ten documents, a stated reading order, and a status pill that says <b>PROPOSED</b> — because nothing in the pack exists as code. It is the clearest example on the site of a vault used as the <b>unit of handover</b>: one credential moves the whole pack, its reading order and its provenance together.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8:o3m0sz3q</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8%3Ao3m0sz3q" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8:o3m0sz3q</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Both surfaces open automatically below. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8%3Ao3m0sz3q" rel="noopener" target="_blank"><b>open the app in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="o3m0sz3q" data-readkey="cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the pack</span>
+        <h3>A reading order, and a status that refuses to flatter itself</h3>
+        <p>The index opens with <b>Status: PROPOSED — nothing in this pack exists as code yet</b>, then a numbered reading order through ten documents: overview and principles, platform grounding, a review of three human architecture briefs, target architecture, gateway spec, ledger and credentials, vault integration, build plan, open decisions, and a pattern audit.</p><p>The separation that makes it useful is between <b>01 · Platform Grounding — What Exists Today (code-verified)</b> and everything downstream of it. One document is what the code does; the rest is what somebody proposes to build on top. The pack keeps them apart on purpose.</p><p class="small dim">The footer of the app states its own delivery mechanism: <em>rendered from an encrypted SG/Vault — the link-holder holds the key; the server sees only ciphertext.</em></p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="The pack index: PROPOSED status, the reading order, and the target named up front."><figcaption>The pack index: PROPOSED status, the reading order, and the target named up front.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the grant</span>
+        <h3>Nothing requested, nothing granted</h3>
+        <p><code>app.json</code> declares <code>"permissions": {}</code>. A pack of documents needs no filesystem access, so it asks for none — the same posture as the <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a>.</p><p>It is worth seeing on a document pack precisely because nothing here is dangerous. The habit is what generalises: the grant is written down, it is short enough to read, and it is visible to anyone holding the read key.</p>
+      </div>
+      <figure class="shot" data-shot="permissions.webp" data-dir="images/" data-alt="The vault browser: the pack as files, and the empty permission grant."><figcaption>The vault browser: the pack as files, and the empty permission grant.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Notes</h2>
+  <p><b>Why this one is interesting beyond payments.</b> The grounding document records the substrate in terms this site documents elsewhere: PBKDF2 at 600k iterations deriving independent read and write keys, ref file <em>locations</em> themselves HMAC-derived from the read key, and the server storing only <code>SHA-256(write_key)</code> while reads stay tokenless. It is an outside-in description of the same design the <a href="../../../api/index.html">API pages</a> describe from the inside.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

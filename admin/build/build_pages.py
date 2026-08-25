@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.42'
+SITE_VERSION = 'v0.2.43'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,39 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.42', '2026-08-25', 'this release',
+    ('v0.2.43', '2026-08-25', 'this release',
+     "SIX VAULTS PUBLISHED, THREE HELD, and one audit gap found the hard way. Nine credentials "
+     "were submitted; intake classified seven as WRITE keys and two as read keys, the seven read "
+     "keys were derived one-way, and all nine were cloned and audited with the credential that "
+     "would actually appear on the page. New pages: PENETRATION TEST REPORT (a pentest as a vault "
+     "not a PDF — eight audience-specific views over one engagement, and a retest script per "
+     "finding that exits 0 if fixed and 1 if not; entirely fictional and badged SIMULATED DEMO on "
+     "its own front page), STANDARDS ATLAS GDPR ('the standard is the graph' — rulings, guidance "
+     "and per-country variation as first-class nodes, corrections scoped to feedback/ so a "
+     "reviewer can never alter the graph under review), RISKMANDATE FILE SECURITY (risk "
+     "acceptance moved from end-of-flow rubber stamp to the centre, over versioned JSON queried "
+     "live by SQLite in the browser), CONTENT-TRANSFORMATION PROXY, SG COMMERCIALISATION (whose "
+     "most credible artefact is an engagement register with no rows) and the SG/PAYMENTS BRIEF "
+     "PACK (ten documents stamped PROPOSED). HELD: one vault carrying two live vault keys in "
+     "plaintext INCLUDING ITS OWN WRITE KEY — publishing its read key would have handed out write "
+     "access, defeating the entire read/write split — and one private working log. THE THIRD HOLD "
+     "IS THE FINDING: a vault whose app reads an LLM key from a file passed the first credential "
+     "pass CLEAN, and was caught only because a screenshot of it showed a chip reading 'key: vault "
+     "key.json'. The file held a live OpenRouter API key. The scan had looked for vault-key "
+     "shapes, sgit_ prefixes, PRIVATE KEY blocks and the literal string api_key; the field was "
+     "named openrouter_key and matched none of them. This is a genuine gap in the tooling, not a "
+     "near miss to be reframed — the credential checks were built for sgit credentials and had no "
+     "opinion about third-party API keys, which leak just as expensively. A broader sweep "
+     "(OpenAI/Anthropic/GitHub/AWS/Google/Slack/JWT shapes, placeholders filtered) now runs over "
+     "every candidate; across all nine it found exactly one further hit, a forged alg:none token "
+     "in the pentest vault that IS the finding it documents. Content checks answered two specific "
+     "questions asked at submission: the commercialisation vault holds no real data (empty "
+     "register, no emails, no rates, and its 'team' files are agent role definitions, not people), "
+     "and the proxy vault names no external company or project — verified in text and BY EYE "
+     "across 120 slide and diagram images a text scan cannot read. The GDPR atlas does name real "
+     "companies, and correctly so: they are published CJEU and FTC case records. Article updated: "
+     "nineteen vaults, 1,389 files re-cloned and verified, plus the LinkedIn republication link."),
+    ('v0.2.42', '2026-08-25', 'obj-cas-imm-75af1686df3e',
      "AN INTRODUCTION ARTICLE, and the first CLI imagery on the site. /articles/what-sgit-is.html "
      "is the piece to hand somebody who has never heard of this: the category of file that has "
      "nowhere good to live, the vault key as address+auth+encryption in one string, the one-way "
