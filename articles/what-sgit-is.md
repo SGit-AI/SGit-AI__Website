@@ -1,6 +1,6 @@
 # Git for things you cannot put on GitHub — sgit.ai
 
-> An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.
+> An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.
 
 *Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.2.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
@@ -12,7 +12,7 @@
 
 2026-08-25 · [v0.2.42](../admin/versions.md) · introzero-knowledgevaultsagents
 
-An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.
+An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.
 
 There is a category of file that has nowhere good to live.
 
@@ -54,13 +54,13 @@ That second screenshot is the argument. The object is **content-addressed over i
 
 Underneath, it is a real version control system rather than a sync folder: multi-parent commits, a tree per directory, deterministic refs derived by HMAC, a genuine merge-base computation across all parents, and three-way merge. Branches, diffs and history all work, on content the server cannot interpret.
 
-## Eleven vaults you can open right now
+## Thirteen vaults you can open right now
 
 The best way to understand a vault is to open one. **Every vault on sgit.ai is live** — the screenshots are of real vaults, opened with the read keys published beside them.
 
 The published vaults. Each one carries its read key on the page.
 
-They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all eleven from their published keys: **781 files, no failures.**
+They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all thirteen from their published keys: **873 files, no failures.**
 
 ## The part that surprises people
 

@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Git for things you cannot put on GitHub — sgit.ai</title>
-<meta name="description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.">
+<meta name="description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.">
 <link rel="canonical" href="https://sgit.ai/articles/what-sgit-is.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/articles/what-sgit-is.html">
 <meta property="og:title" content="Git for things you cannot put on GitHub — sgit.ai">
-<meta property="og:description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.">
+<meta property="og:description" content="An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="what-sgit-is.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Git for things you cannot put on GitHub — sgit.ai", "headline": "Git for things you cannot put on GitHub — sgit.ai", "description": "An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.", "url": "https://sgit.ai/articles/what-sgit-is.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Git for things you cannot put on GitHub — sgit.ai", "headline": "Git for things you cannot put on GitHub — sgit.ai", "description": "An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.", "url": "https://sgit.ai/articles/what-sgit-is.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -71,7 +71,7 @@
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Git for things you cannot put on GitHub</p>
   <h1>Git for things you cannot put on GitHub</h1>
   <p class="small dim">2026-08-25 &middot; <a href="../admin/versions.html">v0.2.42</a> &middot; <span class="chip">intro</span><span class="chip">zero-knowledge</span><span class="chip">vaults</span><span class="chip">agents</span></p>
-  <p class="lead">An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what eleven published vaults look like when the server storing them cannot read a byte.</p>
+  <p class="lead">An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what thirteen published vaults look like when the server storing them cannot read a byte.</p>
 <p>There is a category of file that has nowhere good to live.</p>
 <p>A risk register with real system names in it. A regulatory analysis you are still arguing about internally. The working memory of an AI agent that has been reading your codebase for a month. Client material under NDA. Anything a lawyer would want to see before it went near a third party.</p>
 <p>All of it wants exactly what git gives you — history, branches, diffs, the ability to hand somebody a link and know what they will see. And all of it is the reason people say <em>"we can't put that in GitHub."</em> So it ends up in a shared drive, an email thread, or a Notion page nobody can diff, and the version history that mattered is gone.</p>
@@ -92,10 +92,10 @@
 <figure class="shot" data-shot="cli-ciphertext.webp" data-dir="images/" data-alt="786 bytes of AES-256-GCM ciphertext. The object&#x27;s name is a SHA-256 of the encrypted bytes."><figcaption>786 bytes of AES-256-GCM ciphertext. The object's name is a SHA-256 of the encrypted bytes.</figcaption></figure>
 <p>That second screenshot is the argument. The object is <b>content-addressed over its ciphertext</b>, which means the host can deduplicate it, cache it for a year, and serve it from a CDN — while remaining unable to tell you what it is. You get the operational benefits of a normal object store without granting it the usual price of admission.</p>
 <p>Underneath, it is a real version control system rather than a sync folder: multi-parent commits, a tree per directory, deterministic refs derived by HMAC, a genuine merge-base computation across all parents, and three-way merge. Branches, diffs and history all work, on content the server cannot interpret.</p>
-<h2>Eleven vaults you can open right now</h2>
+<h2>Thirteen vaults you can open right now</h2>
 <p>The best way to understand a vault is to open one. <b>Every vault on sgit.ai is live</b> — the screenshots are of real vaults, opened with the read keys published beside them.</p>
 <figure class="shot" data-shot="site-vaults.webp" data-dir="images/" data-alt="The published vaults. Each one carries its read key on the page."><figcaption>The published vaults. Each one carries its read key on the page.</figcaption></figure>
-<p>They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all eleven from their published keys: <b>781 files, no failures.</b></p>
+<p>They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all thirteen from their published keys: <b>873 files, no failures.</b></p>
 <h2>The part that surprises people</h2>
 <p>A vault can contain an <em>application</em>, not just documents — and that application runs against the vault without ever being handed a credential.</p>
 <figure class="shot" data-shot="permissions.webp" data-dir="../demos/vaults/risk-graph-explorer/images/" data-alt="`&quot;permissions&quot;: {}` — the app requests nothing, and is granted nothing."><figcaption><code>"permissions": {}</code> — the app requests nothing, and is granted nothing.</figcaption></figure>
