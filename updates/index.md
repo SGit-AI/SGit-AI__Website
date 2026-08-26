@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,24 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-08-26
+
+### [Nineteen sibling sites, and a way to find the one that is yours](#nineteen-sites-and-a-way-to-find-yours) [v0.2.44](../admin/versions.md)
+
+networknavigationrefactor
+
+[The network](../network/index.md) was four sites. It is **nineteen** — seventeen live, two with the repository and subdomain in place but nothing published yet. That is no longer a footnote on this site; it is where most of the writing now lives.
+
+- **The page now starts with a question, not a list.** Seventeen lines, each one something somebody actually arrives with — *"I need to give an AI agent an identity"*, *"I have to sign off a risk and I do not want to rubber-stamp it"*, *"my app has to call an LLM and I do not want it holding an API key"* — and the site that takes it seriously. At four siblings a list was fine. At nineteen, a list is a directory you have to read before it helps you.
+- **Grouped by area** — Agents &amp; AI, Risk &amp; governance, Graphs &amp; method, Security &amp; infrastructure, Business &amp; publishing — with a full scannable table underneath for anyone who would rather see all nineteen at once.
+- **Every thesis is the site's own words**, quoted from its H1 or lede rather than summarised here, so an entry cannot drift into describing a site that no longer says that.
+- **Network moved to the top-level navigation.** It had been the third child of Updates, which was a reasonable filing decision at four entries and a bad one at nineteen.
+- **And the homepage says it out loud**, with five doors in by area — because a reader who does not yet know these sites cannot pick one from a list of domains.
+
+Two sites appear with no screenshot and no link to a live page: `skills.sgit.ai` and `influences.sgit.ai` have DNS and a repository but GitHub Pages has not published them. They are listed as *not published yet*, pointing at their repositories, rather than quietly left out — the same reason a missing tag is preferable to a missing page.
+
+This is the refactor it looks like from the outside. Material that would have made this site sprawl has a better home; this page is the index back into it. Adding the twentieth site is writing one markdown file.
 
 ## 2026-08-25
 

@@ -3,6 +3,8 @@ title: nhi.sgit.ai
 domain: nhi.sgit.ai
 tagline: Agents you run, agents you rent, and the identity gap
 summary: The question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.
+category: Agents & AI
+thesis: The question splits into two populations, and the industry only answers one
 observed: 2026-08-19
 seen_version: v0.1.14
 repo: SGit-AI__Website__NHI
