@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
 
-*Source: <https://sgit.ai/index.html> · site v0.2.43 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -171,6 +171,14 @@ Think of it as
 The zero-knowledge storage service both clients speak to — the same server the integration tests run against.
 
 [Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
+
+## Nineteen sites, one question each
+
+Most of the thinking behind sgit no longer lives on this site. It moved out to **`*.sgit.ai`** — a family of focused sites, each taking one question further than a section here could, each with its own version history and repository. This site stayed about sgit.
+
+[**Agents & AI**identity for agents · calling an LLM with no API key · how the code is written](network/index.md#agents-ai) [**Risk & governance**you cannot deny a risk · cite the provision · the requirements nobody writes down](network/index.md#risk-governance) [**Graphs & method**meaning lives in the edges · issues as files · maps are claims](network/index.md#graphs-method) [**Security & infrastructure**a key registry for agents · an edge guard · ephemeral environments](network/index.md#security-infrastructure) [**Business & publishing**open source is a strategy · subscriptions are not rent · provenance as the product](network/index.md#business-publishing)
+
+[Find the one that answers your question →](network/index.md)
 
 Encrypted vaults. **Git workflows.** Zero knowledge.
 

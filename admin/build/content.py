@@ -309,6 +309,14 @@ class Content_Loader:
                 'url': meta.get('url', '') or f'https://{meta["domain"]}',
                 'seen_version': meta.get('seen_version', ''),
                 'hero': meta.get('hero', ''), 'tags': meta.get('tags', []),
+                # The family outgrew one-page-per-site: 19 siblings, most of which a reader
+                # wants to *find* rather than read a review of. `listing: true` means the
+                # entry appears in the directory and gets no page of its own; the ones with
+                # a body still get the full write-up.
+                'listing': meta.get('listing', '').lower() in ('true', 'yes', '1'),
+                'category': meta.get('category', 'Other'),
+                'stage': meta.get('stage', ''),      # the site's own status pill, quoted
+                'thesis': meta.get('thesis', ''),    # its own headline claim, in its words
                 'status': meta.get('status', 'published'),
                 'body': body, 'where': where,
             })

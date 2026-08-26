@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.43</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.44</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -58,8 +58,17 @@
     <div class="sub">
       <a class="sl" href="../updates/index.html">Updates</a>
       <a class="sl here" href="../articles/index.html">Articles</a>
-      <a class="sl" href="../network/index.html">Network</a>
       <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../network/index.html">All sites</a>
+      <a class="sl" href="../network/nhi.html">nhi</a>
+      <a class="sl" href="../network/pki.html">pki</a>
+      <a class="sl" href="../network/graphs.html">graphs</a>
+      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
     </div>
   </div>
   <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
@@ -101,14 +110,18 @@
 <figure class="shot" data-shot="permissions.webp" data-dir="../demos/vaults/risk-graph-explorer/images/" data-alt="`&quot;permissions&quot;: {}` — the app requests nothing, and is granted nothing."><figcaption><code>"permissions": {}</code> — the app requests nothing, and is granted nothing.</figcaption></figure>
 <p>Look at <code>"permissions": {}</code> in that file. The app asks for no filesystem access at all. It still renders the whole risk graph, because the host reads the vault and passes results in. The app never sees a key. <b>Capability without credential</b> — and it means you can run code you did not write against data you care about, with the blast radius set by a config file you can read in one screen.</p>
 <h2>Why there is a network of sites</h2>
-<p>sgit.ai is one of several sites on <code>*.sgit.ai</code>, each taking one question further than a section could.</p>
-<figure class="shot" data-shot="site-network.webp" data-dir="images/" data-alt="Four sites so far. More are coming."><figcaption>Four sites so far. More are coming.</figcaption></figure>
+<p>sgit.ai is one of <b>nineteen</b> sites on <code>*.sgit.ai</code>, each taking one question further than a section could. Most of the thinking behind sgit now lives out there rather than here.</p>
+<figure class="shot" data-shot="site-network.webp" data-dir="images/" data-alt="The network directory: start from the question you arrived with."><figcaption>The network directory: start from the question you arrived with.</figcaption></figure>
+<p>A few of them, to give the range:</p>
 <ul>
-<li><a href="../network/graphs.html"><b>graphs.sgit.ai</b></a> — a grammar for semantic graphs. <em>"A node is just a node. Meaning lives in the edges."</em></li>
-<li><a href="../network/nhi.html"><b>nhi.sgit.ai</b></a> — identity for non-human actors: agents you run versus agents you rent.</li>
-<li><a href="../network/pki.html"><b>pki.sgit.ai</b></a> — key distribution, with four registry rules published before the registry.</li>
+<li><a href="../network/graphs.html"><b>graphs.sgit.ai</b></a> — <em>"A node is just a node. Meaning lives in the edges."</em></li>
+<li><a href="../network/index.html#risk-governance"><b>risks.sgit.ai</b></a> — <em>"You cannot deny a risk. You can only say how long you accept it."</em></li>
+<li><a href="../network/index.html#agents-ai"><b>llms.sgit.ai</b></a> — your app calls a language model without ever holding an API key.</li>
+<li><a href="../network/index.html#graphs-method"><b>issues-fs.sgit.ai</b></a> — the issues are files, and the files are a graph.</li>
+<li><a href="../network/index.html#business-publishing"><b>open-source.sgit.ai</b></a> — <em>"Open source is a strategy. It is not a charity."</em></li>
 <li><a href="../network/sg-sentinel.html"><b>sg-sentinel.sgit.ai</b></a> — an edge guard design that says <code>NOT BUILT</code> at the top of every page.</li>
 </ul>
+<p>The <a href="../network/index.html">network directory</a> starts from the question you arrived with rather than the list of domains.</p>
 <p>That last one is the house style in miniature. Each site publishes its argument <b>before</b> the thing exists, and states plainly what has shipped and what has not. graphs.sgit.ai devotes a page to <a href="https://graphs.sgit.ai/about/participant.html">where its own approach loses</a>. We would rather be checkable than impressive.</p>
 <h2>Try it</h2>
 <pre class="shell">
@@ -124,7 +137,7 @@ sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b0680116
 </main>
 <script>
 (function () {
-  fetch('../assets/shots.js?v=v0.2.43')
+  fetch('../assets/shots.js?v=v0.2.44')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -136,7 +149,7 @@ sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b0680116
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.43</a> · <a href="../admin/index.html">engineering</a> · <a href="what-sgit-is.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.44</a> · <a href="../admin/index.html">engineering</a> · <a href="what-sgit-is.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -175,7 +188,7 @@ sgit clone sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b0680116
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.43';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.44';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

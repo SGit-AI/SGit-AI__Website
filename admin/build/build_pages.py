@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.43'
+SITE_VERSION = 'v0.2.44'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.43', '2026-08-25', 'this release',
+    ('v0.2.44', '2026-08-26', 'this release',
+     "THE NETWORK BECOMES A DIRECTORY. The sibling-site section was built for four entries "
+     "and there are now NINETEEN — 17 live, 2 with repository and DNS in place but GitHub Pages "
+     "not yet published (skills, influences), enumerated from the SGit-AI org and probed one by "
+     "one for DNS, HTTP status and their own stated thesis. At four, a list of cards was the "
+     "right shape; at nineteen it is a directory a reader has to read before it helps them. So "
+     "the page now LEADS WITH THE QUESTION: seventeen lines, each one something somebody "
+     "actually arrives with ('I need to give an AI agent an identity', 'I have to sign off a risk "
+     "and I do not want to rubber-stamp it', 'I want an issue tracker with no database'), mapped "
+     "to the site that takes it seriously. Under it, five thematic groups — Agents & AI, Risk & "
+     "governance, Graphs & method, Security & infrastructure, Business & publishing — then a full "
+     "scannable table of all nineteen. Every thesis is the SITE'S OWN WORDS, quoted from its H1 "
+     "or lede rather than paraphrased here, so an entry cannot drift into describing a site that "
+     "no longer says that. Engine: the sites content type gained `listing: true` (a directory row "
+     "with no page of its own), plus `category`, `stage` and `thesis`; the four sites with a full "
+     "write-up keep their pages and the other fifteen are one short markdown file each. Network "
+     "promoted from the third child of Updates to a top-level nav group, and the homepage gained "
+     "a network band with five doors in by area — a reader who does not know these sites cannot "
+     "pick one from a list of domains. Thirteen new hero screenshots captured from the live sites "
+     "through the local mirror. The two unpublished sites are listed AS unpublished, linking their "
+     "repositories, rather than omitted. One engine bug found and fixed on the way: the first "
+     "attempt to add the new fields landed in load_articles instead of load_sites, because the "
+     "`'status': ...` + `'body': body` pair appears in both loaders and the articles one matched "
+     "first — caught immediately by a KeyError at build, which is the argument for the build "
+     "failing loudly rather than defaulting a missing field."),
+    ('v0.2.43', '2026-08-25', 'obj-cas-imm-48fd5df1d329',
      "SIX VAULTS PUBLISHED, THREE HELD, and one audit gap found the hard way. Nine credentials "
      "were submitted; intake classified seven as WRITE keys and two as read keys, the seven read "
      "keys were derived one-way, and all nine were cloned and audited with the credential that "
@@ -523,6 +548,47 @@ CRITICAL = ("<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;col
 # to three rows on an iPhone before the page content began — measured on a real
 # screenshot, not guessed. Grouping is by what a reader is trying to do, and every
 # group's own label is a real link, so nothing is reachable only by hovering.
+# The network chooser. One line per question a reader actually arrives with, mapped to
+# the site that takes it seriously — because at nineteen siblings the useful question is
+# not "what exists" but "which of these is mine".
+ASK = [
+ ('I need to give an AI agent an identity', 'nhi.sgit.ai',
+  'agents you run vs agents you rent, and why only one is answered'),
+ ('My app has to call an LLM and I do not want it holding an API key', 'llms.sgit.ai',
+  'the bridge that lets it call one without a credential'),
+ ('I have to sign off a risk and I do not want to rubber-stamp it', 'risks.sgit.ai',
+  'there is no deny button — only how long you accept it'),
+ ('I need to cite a regulation precisely, not paraphrase it', 'standards.sgit.ai',
+  'point at the provision, or you are asserting'),
+ ('I want to distribute public keys without a central authority', 'pki.sgit.ai',
+  'a key registry for agents, designed from a directory that was destroyed'),
+ ('I am drawing a graph and want to get the edges right', 'graphs.sgit.ai',
+  'five rules, and why relates-to is banned'),
+ ('I want an issue tracker with no database', 'issues-fs.sgit.ai',
+  'the issues are files and the files are a graph'),
+ ('I need somewhere disposable to run an agent', 'sg-compute.sgit.ai',
+  'ephemeral AWS environments, one command away'),
+ ('I am deciding how to license and sustain an open-source project', 'open-source.sgit.ai',
+  'open source is a strategy, not a charity'),
+ ('I keep being asked what a digital twin actually is', 'twins.sgit.ai',
+  'an interface to reality, not a simulation of it'),
+ ('I want to protect an app at the edge without renting a WAF', 'sg-sentinel.sgit.ai',
+  'an app-coupled edge guard — published as a design, not built'),
+ ('I want to map a strategy without drawing a pretty picture', 'wardley-maps.sgit.ai',
+  'maps are claims, not pictures'),
+ ('I need the requirements nobody writes down until they break', 'nfrs.sgit.ai',
+  'resilience, budgets and backups, from the inside'),
+ ('I want to know how this code is actually written', 'coding.sgit.ai',
+  'the style guide that measured itself'),
+ ('I am pricing something and rent feels wrong', 'subscriptions.sgit.ai',
+  'a subscription is a discount for regular use, not rent'),
+ ('I care where a published fact came from', 'newsroom.sgit.ai',
+  'the story is a graph; the article is a projection'),
+ ('I just want the picture', 'infographics.sgit.ai',
+  'every rendered brief in one catalogue'),
+]
+
+
 NAV = [
     ('why',   'Why',       'why/index.html',      []),
     ('try',   'Try',       'try/index.html',      []),
@@ -547,8 +613,14 @@ NAV = [
     ('updates', 'Updates', 'updates/index.html', [
         ('updates',  'Updates',     'updates/index.html'),
         ('articles', 'Articles',    'articles/index.html'),
-        ('network',  'Network',     'network/index.html'),
         ('admin',    'Version log', 'admin/versions.html'),
+    ]),
+    ('network', 'Network', 'network/index.html', [
+        ('network',  'All sites',   'network/index.html'),
+        ('nhi',      'nhi',         'network/nhi.html'),
+        ('pki',      'pki',         'network/pki.html'),
+        ('graphs',   'graphs',      'network/graphs.html'),
+        ('sg-sentinel', 'sg-sentinel', 'network/sg-sentinel.html'),
     ]),
     ('security', 'Security', 'security/index.html', []),
 ]
@@ -1156,6 +1228,8 @@ def load_pages():
         pages.append((f'articles/{a["slug"]}.html',
                       f'{a["title"]} — sgit.ai', a['summary'], 'articles', article_body(a)))
     for x in SITES:
+        if x['listing']:
+            continue
         pages.append((f'network/{x["slug"]}.html',
                       f'{x["domain"]} — {x["tagline"]} — sgit.ai', x['summary'],
                       'network', site_body(x)))
@@ -1209,42 +1283,113 @@ def updates_body():
 
 
 def network_index_body():
-    """The sibling *.sgit.ai sites. There will be many — adding one is writing one
-    markdown file and capturing its screenshots; this list is derived."""
+    """The sibling *.sgit.ai sites — a directory, not a list.
+
+    This started at two entries and is now nineteen, which changes what the page is
+    for: a reader arriving here does not want to read nineteen reviews, they want to
+    be sent to the one that answers their question. So the page leads with questions,
+    groups by what a site is *about*, and keeps the full table underneath for scanning.
+    Everything below is derived from admin/content/sites/*.md."""
+    live    = [x for x in SITES if _site_live(x)]
+    pending = [x for x in SITES if not _site_live(x)]
+    deep    = [x for x in SITES if not x['listing']]
+
     out = ['<main class="doc">',
            '  <h1>The sgit.ai network</h1>',
-           '  <p class="lead">Focused sites on <code>*.sgit.ai</code> subdomains, each taking one '
+           '  <p class="lead">Nineteen focused sites on <code>*.sgit.ai</code>, each taking one '
            'question further than a section here could. They share this site\'s design and its '
-           'discipline — sourced claims, stated status, honest edges — and they publish their '
-           'arguments before the things they describe exist, so the commitments stay checkable.</p>',
-           f'  <p class="small dim">{len(SITES)} live. Screenshots are of the real sites, captured '
-           'on the date each entry gives.</p>',
-           '  <div class="netlist">']
-    for x in SITES:
-        shot = (f'<figure class="shot net-shot" data-shot="{x["hero"]}" data-dir="images/" '
-                f'data-alt="{x["title"]}"></figure>') if x['hero'] else ''
-        out.append(
-            f'    <div class="netcard">\n'
-            f'      <a class="net-main" href="{x["slug"]}.html">\n'
-            f'        <b>{x["domain"]}</b>\n'
-            f'        <span class="net-tag">{x["tagline"]}</span>\n'
-            f'        <span class="net-sum">{x["summary"]}</span>\n'
-            f'      </a>\n'
-            f'      {shot}\n'
-            f'      <p class="small dim">' + (_chips(x['tags']) if x['tags'] else '') +
-            f' <a href="{x["slug"]}.html">What it argues &rarr;</a> &middot; '
-            f'<a href="{x["url"]}" rel="noopener" target="_blank">'
-            f'Open {_site_host(x)} &#8599;</a>'
-            + ('' if _site_live(x) else ' <span class="chip">DNS pending</span>')
-            + '</p>\n'
-            f'    </div>')
-    out += ['  </div>',
-            '  <h2>Why they are separate sites</h2>',
-            '  <p>Each one is an argument that needs room and a reader who arrived for it. Splitting '
-            'them out keeps this site about sgit while letting each question be pursued properly — '
-            'and gives each its own version history, release cadence and repository. They are built '
-            'from the same generator and hold to the same rules, so a reader moving between them is '
-            'not changing register.</p>',
+           'discipline — sourced claims, a stated status, honest edges — and they publish their '
+           'arguments <b>before</b> the things they describe exist, so the commitments stay '
+           'checkable afterwards.</p>',
+           f'  <p class="small dim">{len(live)} live, {len(pending)} with the repository and '
+           'subdomain in place but nothing published yet. Screenshots are of the real sites, '
+           'captured on the date each entry gives.</p>']
+
+    # ---- the chooser. The point of the page: a question, and where it is answered.
+    out += ['  <h2 id="start">Start from what you need</h2>',
+            '  <p>Each line is a question somebody actually arrives with, and the site that '
+            'takes it seriously.</p>',
+            '  <div class="chooser">']
+    for q, dom, why in ASK:
+        site = next((x for x in SITES if x['domain'] == dom), None)
+        if not site:
+            continue
+        href = f'{site["slug"]}.html' if not site['listing'] else site['url']
+        ext  = '' if not site['listing'] else ' rel="noopener" target="_blank"'
+        arrow = '' if not site['listing'] else ' &#8599;'
+        out.append(f'    <a class="ask" href="{href}"{ext}>'
+                   f'<span class="ask-q">{q}</span>'
+                   f'<span class="ask-a"><b>{dom}</b>{arrow} &middot; {why}</span></a>')
+    out.append('  </div>')
+
+    # ---- grouped cards
+    order = ['Agents & AI', 'Risk & governance', 'Graphs & method',
+             'Security & infrastructure', 'Business & publishing', 'Other']
+    for cat in order:
+        group = [x for x in SITES if x['category'] == cat]
+        if not group:
+            continue
+        out.append(f'  <h2 id="{re.sub(chr(92) + "W+", "-", cat.lower()).strip("-")}">{cat}</h2>')
+        out.append('  <div class="netlist">')
+        for x in sorted(group, key=lambda y: (not _site_live(y), y['domain'])):
+            shot = (f'<figure class="shot net-shot" data-shot="{x["hero"]}" data-dir="images/" '
+                    f'data-alt="{x["title"]}"></figure>') if x['hero'] else ''
+            stage = f'<span class="chip">{x["stage"]}</span>' if x['stage'] else ''
+            ver   = f'<span class="chip">{x["seen_version"]}</span>' if x['seen_version'] else ''
+            body  = (f'<a class="net-main" href="{x["slug"]}.html">' if not x['listing']
+                     else f'<a class="net-main" href="{x["url"]}" rel="noopener" target="_blank">')
+            thesis = x['thesis'] or x['tagline']
+            deeplink = (f' <a href="{x["slug"]}.html">What it argues &rarr;</a> &middot;'
+                        if not x['listing'] else '')
+            openlink = (f'<a href="{x["url"]}" rel="noopener" target="_blank">'
+                        f'Open {_site_host(x)} &#8599;</a>' if _site_live(x)
+                        else '<span class="dim">not published yet</span> &middot; '
+                             f'<a href="{x["url"]}" rel="noopener" target="_blank">repo &#8599;</a>')
+            out.append(
+                f'    <div class="netcard">\n'
+                f'      {body}\n'
+                f'        <b>{x["domain"]}</b>\n'
+                f'        <span class="net-tag">{thesis}</span>\n'
+                f'        <span class="net-sum">{x["summary"]}</span>\n'
+                f'      </a>\n'
+                f'      {shot}\n'
+                f'      <p class="small dim">{stage}{ver}{deeplink} {openlink}</p>\n'
+                f'    </div>')
+        out.append('  </div>')
+
+    # ---- the whole family, scannable
+    out += ['  <h2 id="all">Every site, at a glance</h2>',
+            '  <div class="tablewrap"><table>',
+            '    <tr><th>Site</th><th>What it argues</th><th>Area</th><th>Status</th><th></th></tr>']
+    for x in sorted(SITES, key=lambda y: (not _site_live(y), y['domain'])):
+        st = x['stage'] or ('live' if _site_live(x) else 'not published yet')
+        v  = f' &middot; <code>{x["seen_version"]}</code>' if x['seen_version'] else ''
+        link = (f'<a href="{x["url"]}" rel="noopener" target="_blank">open &#8599;</a>'
+                if _site_live(x) else
+                f'<a href="{x["url"]}" rel="noopener" target="_blank">repo &#8599;</a>')
+        name = (f'<a href="{x["slug"]}.html">{x["domain"]}</a>' if not x['listing']
+                else f'<b>{x["domain"]}</b>')
+        out.append(f'    <tr><td>{name}</td><td>{x["thesis"] or x["tagline"]}</td>'
+                   f'<td class="small">{x["category"]}</td><td class="small">{st}{v}</td>'
+                   f'<td>{link}</td></tr>')
+    out += ['  </table></div>']
+
+    out += [f'  <h2>Read one in full</h2>',
+            '  <p>Four have a full write-up here — what the site argues, where it is honest '
+            'about its limits, and why it is relevant to sgit:</p>',
+            '  <ul>'] + [
+            f'    <li><a href="{x["slug"]}.html"><b>{x["domain"]}</b></a> — {x["tagline"]}</li>'
+            for x in sorted(deep, key=lambda y: y['domain'])] + ['  </ul>']
+
+    out += ['  <h2>Why they are separate sites</h2>',
+            '  <p>Each one is an argument that needs room and a reader who arrived for it. '
+            'Splitting them out keeps this site about sgit while letting each question be '
+            'pursued properly — and gives each its own version history, release cadence and '
+            'repository. They are built from the same generator and hold to the same rules, so '
+            'a reader moving between them is not changing register.</p>',
+            '  <p class="small dim">This is also the refactor it looks like: material that '
+            'would have made sgit.ai sprawl now has a better home, and this page is the index '
+            'back into it. Adding the twentieth site is writing one markdown file.</p>',
             '</main>']
     return '\n'.join(out)
 

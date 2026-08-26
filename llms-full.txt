@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.43). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.44). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -182,6 +182,14 @@ Think of it as
 The zero-knowledge storage service both clients speak to — the same server the integration tests run against.
 
 [Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
+
+## Nineteen sites, one question each
+
+Most of the thinking behind sgit no longer lives on this site. It moved out to **`*.sgit.ai`** — a family of focused sites, each taking one question further than a section here could, each with its own version history and repository. This site stayed about sgit.
+
+[**Agents & AI**identity for agents · calling an LLM with no API key · how the code is written](network/index.md#agents-ai) [**Risk & governance**you cannot deny a risk · cite the provision · the requirements nobody writes down](network/index.md#risk-governance) [**Graphs & method**meaning lives in the edges · issues as files · maps are claims](network/index.md#graphs-method) [**Security & infrastructure**a key registry for agents · an edge guard · ephemeral environments](network/index.md#security-infrastructure) [**Business & publishing**open source is a strategy · subscriptions are not rent · provenance as the product](network/index.md#business-publishing)
+
+[Find the one that answers your question →](network/index.md)
 
 Encrypted vaults. **Git workflows.** Zero knowledge.
 
@@ -4181,11 +4189,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.43**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.44**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.43 | 2026-08-25 | this release | SIX VAULTS PUBLISHED, THREE HELD, and one audit gap found the hard way. Nine credentials were submitted; intake classified seven as WRITE keys and two as read keys, the seven read keys were derived one-way, and all nine were cloned and audited with the credential that would actually appear on the page. New pages: PENETRATION TEST REPORT (a pentest as a vault not a PDF — eight audience-specific views over one engagement, and a retest script per finding that exits 0 if fixed and 1 if not; entirely fictional and badged SIMULATED DEMO on its own front page), STANDARDS ATLAS GDPR ('the standard is the graph' — rulings, guidance and per-country variation as first-class nodes, corrections scoped to feedback/ so a reviewer can never alter the graph under review), RISKMANDATE FILE SECURITY (risk acceptance moved from end-of-flow rubber stamp to the centre, over versioned JSON queried live by SQLite in the browser), CONTENT-TRANSFORMATION PROXY, SG COMMERCIALISATION (whose most credible artefact is an engagement register with no rows) and the SG/PAYMENTS BRIEF PACK (ten documents stamped PROPOSED). HELD: one vault carrying two live vault keys in plaintext INCLUDING ITS OWN WRITE KEY — publishing its read key would have handed out write access, defeating the entire read/write split — and one private working log. THE THIRD HOLD IS THE FINDING: a vault whose app reads an LLM key from a file passed the first credential pass CLEAN, and was caught only because a screenshot of it showed a chip reading 'key: vault key.json'. The file held a live OpenRouter API key. The scan had looked for vault-key shapes, sgit_ prefixes, PRIVATE KEY blocks and the literal string api_key; the field was named openrouter_key and matched none of them. This is a genuine gap in the tooling, not a near miss to be reframed — the credential checks were built for sgit credentials and had no opinion about third-party API keys, which leak just as expensively. A broader sweep (OpenAI/Anthropic/GitHub/AWS/Google/Slack/JWT shapes, placeholders filtered) now runs over every candidate; across all nine it found exactly one further hit, a forged alg:none token in the pentest vault that IS the finding it documents. Content checks answered two specific questions asked at submission: the commercialisation vault holds no real data (empty register, no emails, no rates, and its 'team' files are agent role definitions, not people), and the proxy vault names no external company or project — verified in text and BY EYE across 120 slide and diagram images a text scan cannot read. The GDPR atlas does name real companies, and correctly so: they are published CJEU and FTC case records. Article updated: nineteen vaults, 1,389 files re-cloned and verified, plus the LinkedIn republication link. |
+| v0.2.44 | 2026-08-26 | this release | THE NETWORK BECOMES A DIRECTORY. The sibling-site section was built for four entries and there are now NINETEEN — 17 live, 2 with repository and DNS in place but GitHub Pages not yet published (skills, influences), enumerated from the SGit-AI org and probed one by one for DNS, HTTP status and their own stated thesis. At four, a list of cards was the right shape; at nineteen it is a directory a reader has to read before it helps them. So the page now LEADS WITH THE QUESTION: seventeen lines, each one something somebody actually arrives with ('I need to give an AI agent an identity', 'I have to sign off a risk and I do not want to rubber-stamp it', 'I want an issue tracker with no database'), mapped to the site that takes it seriously. Under it, five thematic groups — Agents & AI, Risk & governance, Graphs & method, Security & infrastructure, Business & publishing — then a full scannable table of all nineteen. Every thesis is the SITE'S OWN WORDS, quoted from its H1 or lede rather than paraphrased here, so an entry cannot drift into describing a site that no longer says that. Engine: the sites content type gained `listing: true` (a directory row with no page of its own), plus `category`, `stage` and `thesis`; the four sites with a full write-up keep their pages and the other fifteen are one short markdown file each. Network promoted from the third child of Updates to a top-level nav group, and the homepage gained a network band with five doors in by area — a reader who does not know these sites cannot pick one from a list of domains. Thirteen new hero screenshots captured from the live sites through the local mirror. The two unpublished sites are listed AS unpublished, linking their repositories, rather than omitted. One engine bug found and fixed on the way: the first attempt to add the new fields landed in load_articles instead of load_sites, because the `'status': ...` + `'body': body` pair appears in both loaders and the articles one matched first — caught immediately by a KeyError at build, which is the argument for the build failing loudly rather than defaulting a missing field. |
+| v0.2.43 | 2026-08-25 | obj-cas-imm-48fd5df1d329 | SIX VAULTS PUBLISHED, THREE HELD, and one audit gap found the hard way. Nine credentials were submitted; intake classified seven as WRITE keys and two as read keys, the seven read keys were derived one-way, and all nine were cloned and audited with the credential that would actually appear on the page. New pages: PENETRATION TEST REPORT (a pentest as a vault not a PDF — eight audience-specific views over one engagement, and a retest script per finding that exits 0 if fixed and 1 if not; entirely fictional and badged SIMULATED DEMO on its own front page), STANDARDS ATLAS GDPR ('the standard is the graph' — rulings, guidance and per-country variation as first-class nodes, corrections scoped to feedback/ so a reviewer can never alter the graph under review), RISKMANDATE FILE SECURITY (risk acceptance moved from end-of-flow rubber stamp to the centre, over versioned JSON queried live by SQLite in the browser), CONTENT-TRANSFORMATION PROXY, SG COMMERCIALISATION (whose most credible artefact is an engagement register with no rows) and the SG/PAYMENTS BRIEF PACK (ten documents stamped PROPOSED). HELD: one vault carrying two live vault keys in plaintext INCLUDING ITS OWN WRITE KEY — publishing its read key would have handed out write access, defeating the entire read/write split — and one private working log. THE THIRD HOLD IS THE FINDING: a vault whose app reads an LLM key from a file passed the first credential pass CLEAN, and was caught only because a screenshot of it showed a chip reading 'key: vault key.json'. The file held a live OpenRouter API key. The scan had looked for vault-key shapes, sgit_ prefixes, PRIVATE KEY blocks and the literal string api_key; the field was named openrouter_key and matched none of them. This is a genuine gap in the tooling, not a near miss to be reframed — the credential checks were built for sgit credentials and had no opinion about third-party API keys, which leak just as expensively. A broader sweep (OpenAI/Anthropic/GitHub/AWS/Google/Slack/JWT shapes, placeholders filtered) now runs over every candidate; across all nine it found exactly one further hit, a forged alg:none token in the pentest vault that IS the finding it documents. Content checks answered two specific questions asked at submission: the commercialisation vault holds no real data (empty register, no emails, no rates, and its 'team' files are agent role definitions, not people), and the proxy vault names no external company or project — verified in text and BY EYE across 120 slide and diagram images a text scan cannot read. The GDPR atlas does name real companies, and correctly so: they are published CJEU and FTC case records. Article updated: nineteen vaults, 1,389 files re-cloned and verified, plus the LinkedIn republication link. |
 | v0.2.42 | 2026-08-25 | obj-cas-imm-75af1686df3e | AN INTRODUCTION ARTICLE, and the first CLI imagery on the site. /articles/what-sgit-is.html is the piece to hand somebody who has never heard of this: the category of file that has nowhere good to live, the vault key as address+auth+encryption in one string, the one-way read key that makes sharing possible, and then the proof rather than the claim. Two new terminal screenshots carry that proof and are the first of their kind here — every one of the 73 existing screenshots was of a browser. Both were captured from real runs, not mocked: a clone of the published EU AI Act vault (273 objects, 207 files) and the same vault's stored object rendered as a hexdump, 786 bytes of AES-256-GCM ciphertext whose name is a SHA-256 of those encrypted bytes. Also written up: apps in vaults running under permissions {} — capability without credential — and the four-site network. VERIFIED BEFORE PUBLISHING: all eleven published read keys were cloned from scratch, 781 files total, zero failures. That check first reported the opposite. Every clone failed with 'no named ref on the server', which looked like every vault page on this site instructing readers to run a command that could not work — and the real cause was a stale CLI in the authoring container, v0.15.0, where sgit clone cannot reach these vaults. v0.16.0 clones all eleven. The finding was retracted rather than shipped, which is the whole reason the check exists: an intro article is exactly the page that must not repeat an instruction nobody re-ran. A LinkedIn-newsletter edition of the same piece was produced alongside it as plain text with image placement markers, since that editor renders no markdown and asterisks would paste literally. |
 | v0.2.41 | 2026-08-22 | obj-cas-imm-f401ef7115e0 | GRAPHS.SGIT.AI RESOLVES — the CNAME landed hours after v0.2.39 shipped the entry, so the `url:` override comes back out and the card links the subdomain directly. Deleting one frontmatter line was the entire change, which was the point of adding the field: a site finished before its DNS should be linked at the address that answers, and should not need rewriting when the real one starts working. The DNS-pending chip and the note both disappear on their own because they were derived from url != domain rather than written into the page. Verified before and after: graphs.sgit.ai returned nothing from a resolver on 21 August and answers 200 today. The sentinel.sgit.ai correction on that entry was re-checked rather than carried forward on trust and still stands — the graphs site links to a host that does not resolve, and the site is sg-sentinel.sgit.ai. Also settled this release, for the record: the 34 historical tags CI could never push (v0.1.9-v0.2.16, blocked because GITHUB_TOKEN cannot push a ref at a commit carrying a different workflow blob) are now on the remote, pushed from a workflows-scoped credential. The first attempt was a plain `git push --tags`, which reported 'Everything up-to-date' and did nothing: the tags only ever existed inside destroyed CI runners, so no clone had them to push. They had to be recreated locally from the commit subjects first. All 58 release commits are now tagged, each verified to point at the commit whose subject names it, and the backfill loop is a no-op from here. |
 | v0.2.40 | 2026-08-22 | obj-cas-imm-550fd7d8bac2 | THE TAG GATE TOOK THE SITE DOWN, and this release fixes the gate and publishes what it held back. Two good commits landed on dev after v0.2.39 — the VoiceDebrief vault (the ninth published vault, ten screenshots driven from its published read key) and a check_credential fix — and sgit.ai served neither for a day. Nothing was wrong with either commit. The CI tag job read SITE_VERSION, found v0.2.39 already tagged on the EARLIER commit, and failed with 'SITE_VERSION was not bumped for this release' — when the truth was that this was not a release at all. Because the deploy job needs tag-release to be success OR skipped, and a FAILURE is neither, the publish never ran. Re-running could not help: the check is deterministic, and attempt 2 failed identically. THE FIX: what makes a push a release is now its commit subject, which is where release.sh already writes the version. A commit carrying no 'site vR.M.N:' subject is an ordinary push — tagged nothing, published anyway. A commit that DOES claim a version is held to the full contract, and to a stricter one than before: the subject and SITE_VERSION must agree (previously only inferred, via whether the backfill loop had produced the tag), the version must not already have shipped, and it must be the next minor. The reasoning behind the asymmetry is recorded in the workflow: a missing tag is a bookkeeping gap, a blocked deploy is an outage. Verified before shipping by extracting the job's script and running it over five cases in a throwaway clone — the exact commit that failed today now exits 0; a proper release tags; subject/SITE_VERSION disagreement, a reused version and a skipped minor all still fail, each with a message that names what is actually wrong. SECOND CONSEQUENCE, less visible and worth recording: those commits went to git only, so the vault remote never received them and the two stores had drifted — sgit status showed all fifteen VoiceDebrief files as uncommitted. That is the invariant release.sh exists to hold and the reason CI does not author commits itself. This release carries them across. Also in: the VoiceDebrief vault page goes live, check_credential now recognises sgit_private_vault_/sgit_private_read_ (the prefixes the CLI actually prints on init and clone, where the classifier previously called a good read key 'unrecognised' — fail-closed, but the kind of refusal that tempts an operator to reach for the vault key instead), and validate.js skips node_modules. |
@@ -4883,6 +4892,24 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
+## 2026-08-26
+
+### [Nineteen sibling sites, and a way to find the one that is yours](#nineteen-sites-and-a-way-to-find-yours) [v0.2.44](../admin/versions.md)
+
+networknavigationrefactor
+
+[The network](../network/index.md) was four sites. It is **nineteen** — seventeen live, two with the repository and subdomain in place but nothing published yet. That is no longer a footnote on this site; it is where most of the writing now lives.
+
+- **The page now starts with a question, not a list.** Seventeen lines, each one something somebody actually arrives with — *"I need to give an AI agent an identity"*, *"I have to sign off a risk and I do not want to rubber-stamp it"*, *"my app has to call an LLM and I do not want it holding an API key"* — and the site that takes it seriously. At four siblings a list was fine. At nineteen, a list is a directory you have to read before it helps you.
+- **Grouped by area** — Agents &amp; AI, Risk &amp; governance, Graphs &amp; method, Security &amp; infrastructure, Business &amp; publishing — with a full scannable table underneath for anyone who would rather see all nineteen at once.
+- **Every thesis is the site's own words**, quoted from its H1 or lede rather than summarised here, so an entry cannot drift into describing a site that no longer says that.
+- **Network moved to the top-level navigation.** It had been the third child of Updates, which was a reasonable filing decision at four entries and a bad one at nineteen.
+- **And the homepage says it out loud**, with five doors in by area — because a reader who does not yet know these sites cannot pick one from a list of domains.
+
+Two sites appear with no screenshot and no link to a live page: `skills.sgit.ai` and `influences.sgit.ai` have DNS and a repository but GitHub Pages has not published them. They are listed as *not published yet*, pointing at their repositories, rather than quietly left out — the same reason a missing tag is preferable to a missing page.
+
+This is the refactor it looks like from the outside. Material that would have made this site sprawl has a better home; this page is the index back into it. Adding the twentieth site is writing one markdown file.
+
 ## 2026-08-25
 
 ### [Six vaults published, three held back — and the check that nearly missed one](#six-vaults-published-three-held-back) [v0.2.43](../admin/versions.md)
@@ -5108,25 +5135,121 @@ Longer pieces that make an argument across several pages — what a thing means,
 
 # The sgit.ai network
 
-Focused sites on `*.sgit.ai` subdomains, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, stated status, honest edges — and they publish their arguments before the things they describe exist, so the commitments stay checkable.
+Nineteen focused sites on `*.sgit.ai`, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, a stated status, honest edges — and they publish their arguments **before** the things they describe exist, so the commitments stay checkable afterwards.
 
-4 live. Screenshots are of the real sites, captured on the date each entry gives.
+17 live, 2 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
 
-[**graphs.sgit.ai**A node is just a node — meaning lives in the edgesA grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.](graphs.md)
-graphssemanticsmethod[What it argues →](graphs.md) · [Open graphs.sgit.ai ↗](https://graphs.sgit.ai)
+## Start from what you need
 
-[**nhi.sgit.ai**Agents you run, agents you rent, and the identity gapThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
-identityagentssecurity[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
+Each line is a question somebody actually arrives with, and the site that takes it seriously.
 
-[**pki.sgit.ai**A key registry for agents, designed from a documented failureGood public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.](pki.md)
-pkiregistryhistory[What it argues →](pki.md) · [Open pki.sgit.ai ↗](https://pki.sgit.ai)
+[I need to give an AI agent an identity**nhi.sgit.ai** · agents you run vs agents you rent, and why only one is answered](nhi.md) [My app has to call an LLM and I do not want it holding an API key**llms.sgit.ai** ↗ · the bridge that lets it call one without a credential](https://llms.sgit.ai) [I have to sign off a risk and I do not want to rubber-stamp it**risks.sgit.ai** ↗ · there is no deny button — only how long you accept it](https://risks.sgit.ai) [I need to cite a regulation precisely, not paraphrase it**standards.sgit.ai** ↗ · point at the provision, or you are asserting](https://standards.sgit.ai) [I want to distribute public keys without a central authority**pki.sgit.ai** · a key registry for agents, designed from a directory that was destroyed](pki.md) [I am drawing a graph and want to get the edges right**graphs.sgit.ai** · five rules, and why relates-to is banned](graphs.md) [I want an issue tracker with no database**issues-fs.sgit.ai** ↗ · the issues are files and the files are a graph](https://issues-fs.sgit.ai) [I need somewhere disposable to run an agent**sg-compute.sgit.ai** ↗ · ephemeral AWS environments, one command away](https://sg-compute.sgit.ai) [I am deciding how to license and sustain an open-source project**open-source.sgit.ai** ↗ · open source is a strategy, not a charity](https://open-source.sgit.ai) [I keep being asked what a digital twin actually is**twins.sgit.ai** ↗ · an interface to reality, not a simulation of it](https://twins.sgit.ai) [I want to protect an app at the edge without renting a WAF**sg-sentinel.sgit.ai** · an app-coupled edge guard — published as a design, not built](sg-sentinel.md) [I want to map a strategy without drawing a pretty picture**wardley-maps.sgit.ai** ↗ · maps are claims, not pictures](https://wardley-maps.sgit.ai) [I need the requirements nobody writes down until they break**nfrs.sgit.ai** ↗ · resilience, budgets and backups, from the inside](https://nfrs.sgit.ai) [I want to know how this code is actually written**coding.sgit.ai** ↗ · the style guide that measured itself](https://coding.sgit.ai) [I am pricing something and rent feels wrong**subscriptions.sgit.ai** ↗ · a subscription is a discount for regular use, not rent](https://subscriptions.sgit.ai) [I care where a published fact came from**newsroom.sgit.ai** ↗ · the story is a graph; the article is a projection](https://newsroom.sgit.ai) [I just want the picture**infographics.sgit.ai** ↗ · every rendered brief in one catalogue](https://infographics.sgit.ai)
 
-[**sg-sentinel.sgit.ai**An app-coupled edge guard — Layer 1 decides, Layer 2 actsA design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.](sg-sentinel.md)
-edgesecuritydesign[What it argues →](sg-sentinel.md) · [Open sg-sentinel.sgit.ai ↗](https://sg-sentinel.sgit.ai)
+## Agents & AI
+
+[**coding.sgit.ai**The style guide that measured itself.How software actually gets written across this family: the rules, the compliance measurement against them, which rules are machine-enforced and which are explicitly not, and the open tensions. Includes a section on writing code for agents to read.](https://coding.sgit.ai)
+v0.2.0[Open coding.sgit.ai ↗](https://coding.sgit.ai)
+
+[**llms.sgit.ai**Your app calls a language model without ever holding an API key.The sg.llm.* bridge: how an app running inside a vault reaches a model with no credential of its own. The reference, the traps, a four-layer security ladder, the attached-file question, and a pre-ship checklist.](https://llms.sgit.ai)
+reference draftv0.2.0[Open llms.sgit.ai ↗](https://llms.sgit.ai)
+
+[**nhi.sgit.ai**The question splits into two populations, and the industry only answers oneThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
+v0.1.14[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
+
+[**skills.sgit.ai**published soonThe skills site. The repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address.](https://github.com/SGit-AI/SGit-AI__Website__Skills)
+not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills)
+
+## Risk & governance
+
+[**nfrs.sgit.ai**The non-functional requirements, from the inside.The requirements nobody writes down until they are violated — resilience, budgets, project management, backups — treated as a reality system rather than a checklist. Includes an honest column: a scorecard, and a page naming backups as a gap.](https://nfrs.sgit.ai)
+v0.1.2[Open nfrs.sgit.ai ↗](https://nfrs.sgit.ai)
+
+[**risks.sgit.ai**You cannot deny a risk. You can only say how long you accept it.Risk management inverted: a named human underwrites an exposure that already exists, insurance-style, with personal liability attached. There is no deny button — the only choice is how long, and the interval is the decision. 42 concepts, a six-rung interval ladder, and a stated zero lines of code implementing any of it.](https://risks.sgit.ai)
+research sitev0.1.0[Open risks.sgit.ai ↗](https://risks.sgit.ai)
+
+[**standards.sgit.ai**Point at the provision, or you are asserting.Laws, standards and frameworks as addressable graphs rather than PDFs to paraphrase. A citation scheme, a grounding ladder, and worked instruments — the EU AI Act, GDPR, ISO/IEC 27001, ISO 31000 — with a subset method for handing an agent only the part that applies.](https://standards.sgit.ai)
+v0.1.4[Open standards.sgit.ai ↗](https://standards.sgit.ai)
+
+## Graphs & method
+
+[**graphs.sgit.ai**A node is just a node. Meaning lives in the edges.A grammar for semantic graphs, argued in increasing depth from five rules you can apply tomorrow to a full positioning against schemas and vector search. It opens by insisting it is not a graph database pitch, and it publishes the four situations in which its own argument is the wrong one.](graphs.md)
+v0.1.0[What it argues →](graphs.md) · [Open graphs.sgit.ai ↗](https://graphs.sgit.ai)
+
+[**infographics.sgit.ai**The brief is the argument. The infographic is one picture of it.A catalogue, not a generator: every rendered brief across the sgit.ai family in one place, each picture kept next to the argument it came from rather than circulating on its own.](https://infographics.sgit.ai)
+v0.1.0[Open infographics.sgit.ai ↗](https://infographics.sgit.ai)
+
+[**issues-fs.sgit.ai**The issues are files. The files are a graph.An issue tracker with no database: nodes, edges and labels on disk, a small DSL, and a live graph derived from the repository itself. Ships a five-minutes-no-install lite mode for agents alongside the full model.](https://issues-fs.sgit.ai)
+reference draftv0.1.2[Open issues-fs.sgit.ai ↗](https://issues-fs.sgit.ai)
+
+[**twins.sgit.ai**A digital twin is an interface to reality, not a simulation of it.Twins as actors rather than models: what a working twin actually is, what was built versus designed, the simulation layer, and an execution broker. Carries its own gaps-and-open-questions page and a where-we-lose section.](https://twins.sgit.ai)
+v0.1.0[Open twins.sgit.ai ↗](https://twins.sgit.ai)
+
+[**wardley-maps.sgit.ai**Maps are claims, not pictures.Wardley mapping treated as graphs with position, so a map becomes something you can disagree with precisely. A 40-record doctrine assessment, the custom-axis verdict, the broken middle, and all 34 resources verified with dead links marked.](https://wardley-maps.sgit.ai)
+PROPOSEDv0.1.2[Open wardley-maps.sgit.ai ↗](https://wardley-maps.sgit.ai)
+
+## Security & infrastructure
+
+[**pki.sgit.ai**Good public key repositories existed, and were destroyedGood public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.](pki.md)
+v0.1.2[What it argues →](pki.md) · [Open pki.sgit.ai ↗](https://pki.sgit.ai)
+
+[**sg-compute.sgit.ai**Ephemeral environments in AWS, one command away.A serverless environment for agents: the machine surface, isolation and the one trade-off it makes, measured numbers rather than claims, and a clear what-ships-today line against the roadmap.](https://sg-compute.sgit.ai)
+v0.2.0[Open sg-compute.sgit.ai ↗](https://sg-compute.sgit.ai)
+
+[**sg-sentinel.sgit.ai**Layer 1 decides and signals. Layer 2 acts and writes.A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.](sg-sentinel.md)
+v0.1.1[What it argues →](sg-sentinel.md) · [Open sg-sentinel.sgit.ai ↗](https://sg-sentinel.sgit.ai)
+
+## Business & publishing
+
+[**newsroom.sgit.ai**The story is a graph. The article is a projection.Provenance as the product: a worked story costed at £8.40, payment rails to the fact creator, micro and nano payments, CC-Signed content rights, and the roles an operating newsroom would need. A published design, not a running newsroom.](https://newsroom.sgit.ai)
+not builtv0.2.5[Open newsroom.sgit.ai ↗](https://newsroom.sgit.ai)
+
+[**open-source.sgit.ai**Open source is a strategy. It is not a charity.Survivability as the test rather than licence purity: a stress test, a self-audit, six recorded corrections, six success stories with numbers, three licences compared, and why Apache-2.0 rather than MIT here.](https://open-source.sgit.ai)
+draftv0.1.1[Open open-source.sgit.ai ↗](https://open-source.sgit.ai)
+
+[**subscriptions.sgit.ai**A subscription is a discount for regular use, not rent on something you ignore.The commercial model stated as a position: a register of what you actually hold, governance and schema, an exit-path method, and the law behind it — with the service itself marked as later, not now.](https://subscriptions.sgit.ai)
+draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
+
+[**influences.sgit.ai**published soonThe influences site. The repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address.](https://github.com/SGit-AI/SGit-AI__Website__Influences)
+not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Influences)
+
+## Every site, at a glance
+
+| Site | What it argues | Area | Status |  |
+|---|---|---|---|---|
+| **coding.sgit.ai** | The style guide that measured itself. | Agents & AI | live · `v0.2.0` | [open ↗](https://coding.sgit.ai) |
+| [graphs.sgit.ai](graphs.md) | A node is just a node. Meaning lives in the edges. | Graphs & method | live · `v0.1.0` | [open ↗](https://graphs.sgit.ai) |
+| **infographics.sgit.ai** | The brief is the argument. The infographic is one picture of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://infographics.sgit.ai) |
+| **issues-fs.sgit.ai** | The issues are files. The files are a graph. | Graphs & method | reference draft · `v0.1.2` | [open ↗](https://issues-fs.sgit.ai) |
+| **llms.sgit.ai** | Your app calls a language model without ever holding an API key. | Agents & AI | reference draft · `v0.2.0` | [open ↗](https://llms.sgit.ai) |
+| **newsroom.sgit.ai** | The story is a graph. The article is a projection. | Business & publishing | not built · `v0.2.5` | [open ↗](https://newsroom.sgit.ai) |
+| **nfrs.sgit.ai** | The non-functional requirements, from the inside. | Risk & governance | live · `v0.1.2` | [open ↗](https://nfrs.sgit.ai) |
+| [nhi.sgit.ai](nhi.md) | The question splits into two populations, and the industry only answers one | Agents & AI | live · `v0.1.14` | [open ↗](https://nhi.sgit.ai) |
+| **open-source.sgit.ai** | Open source is a strategy. It is not a charity. | Business & publishing | draft · `v0.1.1` | [open ↗](https://open-source.sgit.ai) |
+| [pki.sgit.ai](pki.md) | Good public key repositories existed, and were destroyed | Security & infrastructure | live · `v0.1.2` | [open ↗](https://pki.sgit.ai) |
+| **risks.sgit.ai** | You cannot deny a risk. You can only say how long you accept it. | Risk & governance | research site · `v0.1.0` | [open ↗](https://risks.sgit.ai) |
+| **sg-compute.sgit.ai** | Ephemeral environments in AWS, one command away. | Security & infrastructure | live · `v0.2.0` | [open ↗](https://sg-compute.sgit.ai) |
+| [sg-sentinel.sgit.ai](sg-sentinel.md) | Layer 1 decides and signals. Layer 2 acts and writes. | Security & infrastructure | live · `v0.1.1` | [open ↗](https://sg-sentinel.sgit.ai) |
+| **standards.sgit.ai** | Point at the provision, or you are asserting. | Risk & governance | live · `v0.1.4` | [open ↗](https://standards.sgit.ai) |
+| **subscriptions.sgit.ai** | A subscription is a discount for regular use, not rent on something you ignore. | Business & publishing | draft · `v0.1.0` | [open ↗](https://subscriptions.sgit.ai) |
+| **twins.sgit.ai** | A digital twin is an interface to reality, not a simulation of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://twins.sgit.ai) |
+| **wardley-maps.sgit.ai** | Maps are claims, not pictures. | Graphs & method | PROPOSED · `v0.1.2` | [open ↗](https://wardley-maps.sgit.ai) |
+| **influences.sgit.ai** | published soon | Business & publishing | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Influences) |
+| **skills.sgit.ai** | published soon | Agents & AI | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills) |
+
+## Read one in full
+
+Four have a full write-up here — what the site argues, where it is honest about its limits, and why it is relevant to sgit:
+
+- [**graphs.sgit.ai**](graphs.md) — A node is just a node — meaning lives in the edges
+- [**nhi.sgit.ai**](nhi.md) — Agents you run, agents you rent, and the identity gap
+- [**pki.sgit.ai**](pki.md) — A key registry for agents, designed from a documented failure
+- [**sg-sentinel.sgit.ai**](sg-sentinel.md) — An app-coupled edge guard — Layer 1 decides, Layer 2 acts
 
 ## Why they are separate sites
 
 Each one is an argument that needs room and a reader who arrived for it. Splitting them out keeps this site about sgit while letting each question be pursued properly — and gives each its own version history, release cadence and repository. They are built from the same generator and hold to the same rules, so a reader moving between them is not changing register.
+
+This is also the refactor it looks like: material that would have made sgit.ai sprawl now has a better home, and this page is the index back into it. Adding the twentieth site is writing one markdown file.
 
 
 
@@ -6130,14 +6253,20 @@ Look at `"permissions": {}` in that file. The app asks for no filesystem access 
 
 ## Why there is a network of sites
 
-sgit.ai is one of several sites on `*.sgit.ai`, each taking one question further than a section could.
+sgit.ai is one of **nineteen** sites on `*.sgit.ai`, each taking one question further than a section could. Most of the thinking behind sgit now lives out there rather than here.
 
-Four sites so far. More are coming.
+The network directory: start from the question you arrived with.
 
-- [**graphs.sgit.ai**](../network/graphs.md) — a grammar for semantic graphs. *"A node is just a node. Meaning lives in the edges."*
-- [**nhi.sgit.ai**](../network/nhi.md) — identity for non-human actors: agents you run versus agents you rent.
-- [**pki.sgit.ai**](../network/pki.md) — key distribution, with four registry rules published before the registry.
+A few of them, to give the range:
+
+- [**graphs.sgit.ai**](../network/graphs.md) — *"A node is just a node. Meaning lives in the edges."*
+- [**risks.sgit.ai**](../network/index.md#risk-governance) — *"You cannot deny a risk. You can only say how long you accept it."*
+- [**llms.sgit.ai**](../network/index.md#agents-ai) — your app calls a language model without ever holding an API key.
+- [**issues-fs.sgit.ai**](../network/index.md#graphs-method) — the issues are files, and the files are a graph.
+- [**open-source.sgit.ai**](../network/index.md#business-publishing) — *"Open source is a strategy. It is not a charity."*
 - [**sg-sentinel.sgit.ai**](../network/sg-sentinel.md) — an edge guard design that says `NOT BUILT` at the top of every page.
+
+The [network directory](../network/index.md) starts from the question you arrived with rather than the list of domains.
 
 That last one is the house style in miniature. Each site publishes its argument **before** the thing exists, and states plainly what has shipped and what has not. graphs.sgit.ai devotes a page to [where its own approach loses](https://graphs.sgit.ai/about/participant.html). We would rather be checkable than impressive.
 

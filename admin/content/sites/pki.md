@@ -3,6 +3,8 @@ title: pki.sgit.ai
 domain: pki.sgit.ai
 tagline: A key registry for agents, designed from a documented failure
 summary: Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.
+category: Security & infrastructure
+thesis: Good public key repositories existed, and were destroyed
 observed: 2026-08-19
 seen_version: v0.1.2
 repo: SGit-AI__Website__PKI

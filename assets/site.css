@@ -575,3 +575,27 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
 .btn{display:inline-block;background:var(--accent);color:#fff;border-radius:8px;
   padding:.5rem 1rem;font-weight:600;font-size:.9rem}
 .btn:hover{background:var(--accent-dk);text-decoration:none;color:#fff}
+
+/* The network chooser — question-led entry into nineteen sibling sites. A reader
+   arriving at the directory wants sending somewhere, not a list to read; each row is
+   a question they might actually have, with the answer's address underneath it. */
+.chooser{display:grid;gap:.5rem;margin:1.1rem 0 1.8rem}
+.ask{display:grid;gap:.15rem;padding:.7rem .85rem;border:1px solid var(--line);
+     border-radius:8px;text-decoration:none;background:var(--card);transition:border-color .12s,transform .12s}
+.ask:hover{border-color:var(--accent);transform:translateX(2px)}
+.ask-q{font-weight:600;color:var(--fg)}
+.ask-q::before{content:"\201C";opacity:.45;margin-right:.15rem}
+.ask-q::after{content:"\201D";opacity:.45;margin-left:.15rem}
+.ask-a{font-size:.88rem;color:var(--dim)}
+.ask-a b{color:var(--accent);font-family:var(--mono,ui-monospace,monospace);font-size:.86rem}
+@media (max-width:640px){.ask{padding:.6rem .7rem}.ask-a{font-size:.82rem}}
+@media print{.ask{break-inside:avoid}}
+
+/* Homepage network band — five doors into the family, by area rather than by name,
+   because a reader who does not yet know the sites cannot pick one from a list of domains. */
+.netpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:.6rem;margin-top:1.1rem}
+.netpick a{display:grid;gap:.2rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:8px;
+           background:var(--card);text-decoration:none;transition:border-color .12s,transform .12s}
+.netpick a:hover{border-color:var(--accent);transform:translateY(-1px)}
+.netpick b{color:var(--fg)}
+.netpick span{font-size:.84rem;color:var(--dim);line-height:1.45}

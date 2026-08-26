@@ -63,14 +63,20 @@ Look at `"permissions": {}` in that file. The app asks for no filesystem access 
 
 ## Why there is a network of sites
 
-sgit.ai is one of several sites on `*.sgit.ai`, each taking one question further than a section could.
+sgit.ai is one of **nineteen** sites on `*.sgit.ai`, each taking one question further than a section could. Most of the thinking behind sgit now lives out there rather than here.
 
-!shot site-network.webp | images/ | Four sites so far. More are coming.
+!shot site-network.webp | images/ | The network directory: start from the question you arrived with.
 
-- [**graphs.sgit.ai**](/network/graphs.html) — a grammar for semantic graphs. *"A node is just a node. Meaning lives in the edges."*
-- [**nhi.sgit.ai**](/network/nhi.html) — identity for non-human actors: agents you run versus agents you rent.
-- [**pki.sgit.ai**](/network/pki.html) — key distribution, with four registry rules published before the registry.
+A few of them, to give the range:
+
+- [**graphs.sgit.ai**](/network/graphs.html) — *"A node is just a node. Meaning lives in the edges."*
+- [**risks.sgit.ai**](/network/index.html#risk-governance) — *"You cannot deny a risk. You can only say how long you accept it."*
+- [**llms.sgit.ai**](/network/index.html#agents-ai) — your app calls a language model without ever holding an API key.
+- [**issues-fs.sgit.ai**](/network/index.html#graphs-method) — the issues are files, and the files are a graph.
+- [**open-source.sgit.ai**](/network/index.html#business-publishing) — *"Open source is a strategy. It is not a charity."*
 - [**sg-sentinel.sgit.ai**](/network/sg-sentinel.html) — an edge guard design that says `NOT BUILT` at the top of every page.
+
+The [network directory](/network/index.html) starts from the question you arrived with rather than the list of domains.
 
 That last one is the house style in miniature. Each site publishes its argument **before** the thing exists, and states plainly what has shipped and what has not. graphs.sgit.ai devotes a page to [where its own approach loses](https://graphs.sgit.ai/about/participant.html). We would rather be checkable than impressive.
 
