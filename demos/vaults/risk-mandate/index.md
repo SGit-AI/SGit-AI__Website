@@ -2,7 +2,7 @@
 
 > A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key.
 
-*Source: <https://sgit.ai/demos/vaults/risk-mandate/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/risk-mandate/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

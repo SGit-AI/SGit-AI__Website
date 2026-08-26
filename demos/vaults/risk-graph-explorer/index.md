@@ -2,7 +2,7 @@
 
 > A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all.
 
-*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/risk-graph-explorer/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

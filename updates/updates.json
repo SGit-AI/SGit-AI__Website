@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.44",
+  "site_version": "v0.2.45",
   "updates": [
     {
       "slug": "nineteen-sites-and-a-way-to-find-yours",
@@ -14,6 +14,18 @@
         "refactor"
       ],
       "summary": "The network was four sites. It is nineteen — seventeen live, two with the repository and subdomain in place but nothing published yet. That is no longer a footnote on this site; it is where most of the writing now lives. The page now starts with a question, no…"
+    },
+    {
+      "slug": "articles-get-a-home-and-a-band-gets-its-width-back",
+      "title": "Articles get a place on the homepage, and a band gets its width back",
+      "date": "2026-08-26",
+      "version": "v0.2.45",
+      "tags": [
+        "articles",
+        "homepage",
+        "layout"
+      ],
+      "summary": "Three changes, one of them a bug I shipped yesterday. The network band ran the full viewport width. The homepage bands each carry their own measure — .eco has max width:1100px on the component itself, not on a wrapper — and the band added in v0.2.44 simply had…"
     },
     {
       "slug": "six-vaults-published-three-held-back",
@@ -160,6 +172,18 @@
     }
   ],
   "articles": [
+    {
+      "slug": "nineteen-sites",
+      "title": "Twenty sites in fifteen days, and what that did to the writing",
+      "date": "2026-08-26",
+      "version": "v0.2.45",
+      "tags": [
+        "network",
+        "publishing",
+        "method"
+      ],
+      "summary": "The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list."
+    },
     {
       "slug": "what-sgit-is",
       "title": "Git for things you cannot put on GitHub",

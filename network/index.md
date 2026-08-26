@@ -2,7 +2,7 @@
 
 > Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
 
-*Source: <https://sgit.ai/network/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/network/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 Nineteen focused sites on `*.sgit.ai`, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, a stated status, honest edges — and they publish their arguments **before** the things they describe exist, so the commitments stay checkable afterwards.
 
-17 live, 2 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
+18 live, 1 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
 
 ## Start from what you need
 
@@ -73,6 +73,9 @@ v0.1.1[What it argues →](sg-sentinel.md) · [Open sg-sentinel.sgit.ai ↗](htt
 
 ## Business & publishing
 
+[**influences.sgit.ai**Where the thinking came from.The sources behind this body of work, registered rather than gestured at — an influence map in three tiers, a register format, a changelog recording when a source moves between tiers, and a distinction between what was designed and what was discovered then confirmed.](https://influences.sgit.ai)
+v0.2.0[Open influences.sgit.ai ↗](https://influences.sgit.ai)
+
 [**newsroom.sgit.ai**The story is a graph. The article is a projection.Provenance as the product: a worked story costed at £8.40, payment rails to the fact creator, micro and nano payments, CC-Signed content rights, and the roles an operating newsroom would need. A published design, not a running newsroom.](https://newsroom.sgit.ai)
 not builtv0.2.5[Open newsroom.sgit.ai ↗](https://newsroom.sgit.ai)
 
@@ -82,15 +85,13 @@ draftv0.1.1[Open open-source.sgit.ai ↗](https://open-source.sgit.ai)
 [**subscriptions.sgit.ai**A subscription is a discount for regular use, not rent on something you ignore.The commercial model stated as a position: a register of what you actually hold, governance and schema, an exit-path method, and the law behind it — with the service itself marked as later, not now.](https://subscriptions.sgit.ai)
 draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
 
-[**influences.sgit.ai**published soonThe influences site. The repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address.](https://github.com/SGit-AI/SGit-AI__Website__Influences)
-not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Influences)
-
 ## Every site, at a glance
 
 | Site | What it argues | Area | Status |  |
 |---|---|---|---|---|
 | **coding.sgit.ai** | The style guide that measured itself. | Agents & AI | live · `v0.2.0` | [open ↗](https://coding.sgit.ai) |
 | [graphs.sgit.ai](graphs.md) | A node is just a node. Meaning lives in the edges. | Graphs & method | live · `v0.1.0` | [open ↗](https://graphs.sgit.ai) |
+| **influences.sgit.ai** | Where the thinking came from. | Business & publishing | live · `v0.2.0` | [open ↗](https://influences.sgit.ai) |
 | **infographics.sgit.ai** | The brief is the argument. The infographic is one picture of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://infographics.sgit.ai) |
 | **issues-fs.sgit.ai** | The issues are files. The files are a graph. | Graphs & method | reference draft · `v0.1.2` | [open ↗](https://issues-fs.sgit.ai) |
 | **llms.sgit.ai** | Your app calls a language model without ever holding an API key. | Agents & AI | reference draft · `v0.2.0` | [open ↗](https://llms.sgit.ai) |
@@ -106,7 +107,6 @@ not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Inf
 | **subscriptions.sgit.ai** | A subscription is a discount for regular use, not rent on something you ignore. | Business & publishing | draft · `v0.1.0` | [open ↗](https://subscriptions.sgit.ai) |
 | **twins.sgit.ai** | A digital twin is an interface to reality, not a simulation of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://twins.sgit.ai) |
 | **wardley-maps.sgit.ai** | Maps are claims, not pictures. | Graphs & method | PROPOSED · `v0.1.2` | [open ↗](https://wardley-maps.sgit.ai) |
-| **influences.sgit.ai** | published soon | Business & publishing | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Influences) |
 | **skills.sgit.ai** | published soon | Agents & AI | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills) |
 
 ## Read one in full

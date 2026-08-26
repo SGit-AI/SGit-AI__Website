@@ -593,9 +593,28 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
 
 /* Homepage network band — five doors into the family, by area rather than by name,
    because a reader who does not yet know the sites cannot pick one from a list of domains. */
-.netpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:.6rem;margin-top:1.1rem}
+/* Constrained like .eco above it — the homepage bands carry their own max-width
+   rather than relying on a wrapper, and this one shipped without it and ran the full
+   viewport width. */
+.netpick{max-width:1100px;margin:1.1rem auto 0;padding:0 1.1rem;display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:.6rem}
+.bandlede{max-width:760px;margin:0 auto;padding:0 1.1rem;text-align:center;color:var(--dim);font-size:.95rem}
+.bandcta{max-width:1100px;margin:1rem auto 0;padding:0 1.1rem;text-align:center}
 .netpick a{display:grid;gap:.2rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:8px;
            background:var(--card);text-decoration:none;transition:border-color .12s,transform .12s}
 .netpick a:hover{border-color:var(--accent);transform:translateY(-1px)}
 .netpick b{color:var(--fg)}
 .netpick span{font-size:.84rem;color:var(--dim);line-height:1.45}
+
+/* Homepage articles band. Same 1100px measure as .eco and .netpick — the bands here
+   carry their own width rather than relying on a wrapper. */
+.artcards{max-width:1100px;margin:1.2rem auto 0;padding:0 1.1rem;display:grid;
+          grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.7rem}
+.artcard{display:grid;gap:.3rem;align-content:start;padding:1rem 1.15rem;border:1px solid var(--line);
+         border-radius:12px;background:var(--panel);text-decoration:none;box-shadow:var(--shadow);
+         transition:border-color .12s,transform .12s}
+.artcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.artcard-date{font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--yellow)}
+.artcard b{font-family:var(--serif);font-size:1.06rem;color:#101114;line-height:1.3}
+.artcard-sum{font-size:.82rem;color:var(--dim);line-height:1.55}
+.artcard-go{font-size:.8rem;color:var(--accent);font-weight:600;margin-top:.2rem}

@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
 
-*Source: <https://sgit.ai/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -179,6 +179,14 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 [**Agents & AI**identity for agents · calling an LLM with no API key · how the code is written](network/index.md#agents-ai) [**Risk & governance**you cannot deny a risk · cite the provision · the requirements nobody writes down](network/index.md#risk-governance) [**Graphs & method**meaning lives in the edges · issues as files · maps are claims](network/index.md#graphs-method) [**Security & infrastructure**a key registry for agents · an edge guard · ephemeral environments](network/index.md#security-infrastructure) [**Business & publishing**open source is a strategy · subscriptions are not rent · provenance as the product](network/index.md#business-publishing)
 
 [Find the one that answers your question →](network/index.md)
+
+## Start with an argument, not a menu
+
+The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
+
+[2026-08-26**Twenty sites in fifteen days, and what that did to the writing**The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list.Read it →](articles/nineteen-sites.md) [2026-08-25**Git for things you cannot put on GitHub**An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.Read it →](articles/what-sgit-is.md) [2026-08-19**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.Read it →](articles/seven-vaults-one-method.md)
+
+[All articles →](articles/index.md)
 
 Encrypted vaults. **Git workflows.** Zero knowledge.
 
