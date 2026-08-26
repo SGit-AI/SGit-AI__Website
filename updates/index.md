@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,6 +29,18 @@ networknavigationrefactor
 Two sites appear with no screenshot and no link to a live page: `skills.sgit.ai` and `influences.sgit.ai` have DNS and a repository but GitHub Pages has not published them. They are listed as *not published yet*, pointing at their repositories, rather than quietly left out — the same reason a missing tag is preferable to a missing page.
 
 This is the refactor it looks like from the outside. Material that would have made this site sprawl has a better home; this page is the index back into it. Adding the twentieth site is writing one markdown file.
+
+### [Articles get a place on the homepage, and a band gets its width back](#articles-get-a-home-and-a-band-gets-its-width-back) [v0.2.45](../admin/versions.md)
+
+articleshomepagelayout
+
+Three changes, one of them a bug I shipped yesterday.
+
+- **The network band ran the full viewport width.** The homepage bands each carry their own measure — `.eco` has `max-width:1100px` on the component itself, not on a wrapper — and the band added in v0.2.44 simply had none, so it stretched edge to edge on a wide screen while everything above it stayed in the column. Measured after the fix: `.eco`, `.netpick` and the new `.artcards` all report exactly **1100px**, with no horizontal overflow. The five area cards also now lay out 3+2 rather than 4+1, which stops the last card sitting alone.
+- **[A new article](../articles/nineteen-sites.md)** on what the split actually was: twenty repositories in fifteen days, fifteen of them in the last five, and what that did to the writing — what forced it, what it cost (discovery got worse before it got better), and why the directory now opens with a question rather than an inventory.
+- **Articles now have a place on the homepage.** They turned out to be the readable surface over all of this — a reader who will not work through a docs tree will read one argued page. The band is **derived from the articles list**, so a new article appears there by being written. No list to maintain, same rule as everywhere else here.
+
+Also: [influences.sgit.ai](../network/index.md#business-publishing) went live and is now a full entry with its screenshot — *"where the thinking came from"*, an influence map in three tiers with a changelog recording when a source moves between them. That leaves **eighteen of nineteen live**; `skills.sgit.ai` still has DNS and a repository and nothing published, and is still listed as such rather than hidden.
 
 ## 2026-08-25
 

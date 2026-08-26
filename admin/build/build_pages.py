@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.44'
+SITE_VERSION = 'v0.2.45'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.44', '2026-08-26', 'this release',
+    ('v0.2.45', '2026-08-26', 'this release',
+     "ARTICLES GET A HOMEPAGE BAND, A NEW ARTICLE ON THE SPLIT, AND A LAYOUT BUG FIXED FROM "
+     "YESTERDAY. The network band shipped in v0.2.44 ran the FULL VIEWPORT WIDTH: the homepage "
+     "bands each carry their own measure on the component (.eco is max-width:1100px itself, there "
+     "is no wrapper convention here) and the new band had none, so it stretched edge to edge on a "
+     "wide screen while every other band stayed in the column. Reported from a screenshot rather "
+     "than caught by the validator, which has no opinion about layout. Fixed and MEASURED: .eco, "
+     ".netpick and the new .artcards all report exactly 1100px at a 1440px viewport with "
+     "scrollWidth == innerWidth, and the five area cards now lay out 3+2 instead of 4+1 so the "
+     "last card does not sit alone. NEW ARTICLE, 'Twenty sites in fifteen days, and what that did "
+     "to the writing': the repositories were created between 11 and 26 August, fifteen of the "
+     "twenty in the final five days, and the piece is about what that did to the writing rather "
+     "than the count — what forced the split (an argument needs its own version history; nineteen "
+     "arguments through one changelog produces a record nobody can read), what it cost (discovery "
+     "got worse before it got better; consistency became discipline rather than construction; "
+     "cross-site links became claims that can rot, as the sentinel.sgit.ai typo showed), and why "
+     "the directory now opens with a question. ARTICLES BAND on the homepage, DERIVED from the "
+     "articles list via an <!--ARTICLES--> marker the build fills — a new article appears there "
+     "by being written, no list to maintain, the same one-file rule as updates and sites. Also: "
+     "influences.sgit.ai went live mid-session and is now a full entry with its hero screenshot, "
+     "taking the family to 18 live of 19; skills.sgit.ai still has DNS and a repository with "
+     "nothing published and is still listed as such."),
+    ('v0.2.44', '2026-08-26', 'obj-cas-imm-d629c8d66421',
      "THE NETWORK BECOMES A DIRECTORY. The sibling-site section was built for four entries "
      "and there are now NINETEEN — 17 live, 2 with repository and DNS in place but GitHub Pages "
      "not yet published (skills, influences), enumerated from the SGit-AI org and probed one by "
@@ -1221,6 +1243,9 @@ def load_pages():
         else:
             with open(os.path.join(ADMIN, 'content', r['path'])) as f:
                 body = f.read().rstrip('\n')
+            # the homepage articles band is derived, not hand-listed
+            if '<!--ARTICLES-->' in body:
+                body = body.replace('<!--ARTICLES-->', home_articles_band())
         pages.append((r['path'], r['title'], r['desc'], r['section'], body))
     # One page per article, derived — an article is published by adding its markdown
     # file and nothing else, so it must not need a manifest row either.
@@ -1280,6 +1305,32 @@ def updates_body():
         out.append('  </article>')
     out.append('</main>')
     return '\n'.join(out)
+
+
+def home_articles_band():
+    """The articles band on the homepage, derived from ARTICLES.
+
+    Articles turned out to be the readable surface over all of this — a reader who will
+    not work through a docs tree will read one argued page. So they get a place on the
+    homepage, and it is generated rather than hand-listed so a new article appears there
+    by being written, which is the same rule as everywhere else here."""
+    cards = []
+    for a in ARTICLES[:3]:
+        cards.append(
+            f'    <a class="artcard" href="articles/{a["slug"]}.html">\n'
+            f'      <span class="artcard-date">{a["date"]}</span>\n'
+            f'      <b>{a["title"]}</b>\n'
+            f'      <span class="artcard-sum">{a["summary"]}</span>\n'
+            f'      <span class="artcard-go">Read it &rarr;</span>\n'
+            f'    </a>')
+    return ('<section class="band alt" id="articles">\n'
+            '  <h2>Start with an argument, not a menu</h2>\n'
+            '  <p class="bandlede">The articles are the readable way in: one page, one argument, '
+            'with the screenshots and the links to check it. If you only read one thing here, '
+            'read one of these.</p>\n'
+            '  <div class="artcards">\n' + '\n'.join(cards) + '\n  </div>\n'
+            '  <p class="bandcta"><a class="cta2" href="articles/index.html">All articles &rarr;</a></p>\n'
+            '</section>')
 
 
 def network_index_body():

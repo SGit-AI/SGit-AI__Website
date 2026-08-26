@@ -2,7 +2,7 @@
 
 > A risk-acceptance walk in eleven steps over one evolving register, where the browser becomes the database: versioned JSON in the vault is the source of truth, queried live through SQLite compiled to WebAssembly.
 
-*Source: <https://sgit.ai/demos/vaults/riskmandate-file-security/index.html> · site v0.2.44 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/riskmandate-file-security/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
