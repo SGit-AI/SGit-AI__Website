@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.45</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.46</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -105,6 +105,19 @@
 <li><b>Articles now have a place on the homepage.</b> They turned out to be the readable surface over all of this — a reader who will not work through a docs tree will read one argued page. The band is <b>derived from the articles list</b>, so a new article appears there by being written. No list to maintain, same rule as everywhere else here.</li>
 </ul>
 <p>Also: <a href="../network/index.html#business-publishing">influences.sgit.ai</a> went live and is now a full entry with its screenshot — <em>"where the thinking came from"</em>, an influence map in three tiers with a changelog recording when a source moves between them. That leaves <b>eighteen of nineteen live</b>; <code>skills.sgit.ai</code> still has DNS and a repository and nothing published, and is still listed as such rather than hidden.</p>
+  </article>
+  <article class="upd" id="a-conference-keynote-as-a-vault">
+    <h3><a href="#a-conference-keynote-as-a-vault">A conference keynote as a vault — the deck, its exports, and the research it came from</a> <a class="upd-ver" href="../admin/versions.html">v0.2.46</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">presentation</span><span class="chip">provenance</span></p>
+<p><a href="../demos/vaults/blackhat-eu-2025/index.html">AI vs. AI — Black Hat Europe 2025</a> joins the published vaults. It is the twentieth, and the first that is a <b>talk</b> rather than a document set or an app.</p>
+<ul>
+<li><b>The whole chain, one credential.</b> The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the eight research papers it was built from, and the slide system's own source at ten versions — all in one vault, opened with one read key.</li>
+<li><b>The slide content is data, not markup.</b> <code>deck/blackhat-eu-2025.json</code> is read through the vault bridge at load time, so changing a slide is a commit rather than a rebuild. That separation is why the vault can carry ten versions of the renderer beside one deck without either owning the other.</li>
+<li><b>It asks for nothing.</b> <code>"permissions": {}</code> with <code>present: true</code> — the deck opens full-screen and never touches the filesystem.</li>
+</ul>
+<p>The argument is worth the click on its own. It opens by conceding the ground — <em>security's four pillars, all broken</em> — then lands on four publicly documented outages that were <b>not</b> attacks: a timing bug that wiped a global database, a config inconsistency that detonated worldwide, a routine change that halted traffic, and a faulty update that bricked 8.5 million machines. The turn is one line: <em>"These weren't sophisticated attacks — they were minor glitches that cascaded. Now imagine if they were deliberate."</em></p>
+<p>Several of its later slides describe things this site now demonstrates rather than proposes — <em>assume compromise, contain blast radius</em>, <em>version control everything</em>, <em>identity graphs for least privilege</em>. Those threads have their own homes in <a href="../network/index.html">the network</a> now.</p>
+<p>Audited clean before publishing: no sgit credentials, no third-party API keys, no private keys, no emails, no client named. The organisations that appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for public incidents, which is what the slide is about. The deck uses Black Hat Europe's official speaker template because it is a talk that was given there; the page says plainly that it is published as the speaker's own material, not as anything endorsed by or affiliated with the conference.</p>
   </article>
   <h2 class="upd-date">2026-08-25</h2>
   <article class="upd" id="six-vaults-published-three-held-back">
@@ -274,7 +287,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.45</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.46</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -313,7 +326,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.45';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.46';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

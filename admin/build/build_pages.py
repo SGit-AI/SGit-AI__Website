@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.45'
+SITE_VERSION = 'v0.2.46'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,34 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.45', '2026-08-26', 'this release',
+    ('v0.2.46', '2026-08-26', 'this release',
+     "A CONFERENCE KEYNOTE AS A VAULT — the twentieth published vault and the first that is a "
+     "TALK rather than a document set or an app. AI vs. AI: Building Resilient Enterprises in the "
+     "Age of Autonomous Threats, Black Hat Europe 2025, AI Security Summit, ExCeL London, 9 "
+     "December 2025. What makes it a good demonstration is that the whole chain travels together "
+     "under one credential: the deck as presented (26 slides, ~976 KB self-contained app), six "
+     "PDF exports v0.1.1 to v0.2.0, the eight research papers the talk was built from, and the "
+     "slide system's own source at ten versions v0.1.0 to v0.1.9. A deck emailed as a PDF is a "
+     "snapshot with its working removed; this is the working. The load-bearing design detail is "
+     "that SLIDE CONTENT IS DATA: deck/blackhat-eu-2025.json is read through the vault bridge at "
+     "load time, so editing a slide is a commit and needs no rebuild — which is also why ten "
+     "renderer versions can sit beside one deck without either owning the other. permissions {} "
+     "with present:true. INTAKE: the submitted credential carried the sgit_private_vault_ prefix "
+     "and was refused as a WRITE credential by the classifier — the prefix family added in the "
+     "v0.2.40 batch, working as intended on its first real submission since. Read key derived "
+     "one-way, vault key to the gitignored tier. AUDIT clean across all four passes: no sgit "
+     "credentials, no third-party API keys (the broadened sweep added after the OpenRouter miss), "
+     "no private keys, no emails, no external company or client. AWS, Azure, Cloudflare and "
+     "CrowdStrike appear cited for publicly documented outages, which is the subject of the "
+     "slide. One judgement recorded rather than buried: the deck uses Black Hat Europe's OFFICIAL "
+     "SPEAKER TEMPLATE, logo and trademark included, because it is a talk that was given there — "
+     "published as the speaker's own material with the page stating plainly that it is not "
+     "endorsed by or affiliated with the conference. Screenshots were captured by serving the "
+     "cloned vault locally and driving the deck with its own arrow-key bindings, after keypresses "
+     "sent to the hosted surface failed to reach the deck through the shadow DOM; the first three "
+     "captures were also named one slide out of step with what they showed and were renamed to "
+     "match rather than shipped with captions that did not describe the picture."),
+    ('v0.2.45', '2026-08-26', 'obj-cas-imm-598b21e85f91',
      "ARTICLES GET A HOMEPAGE BAND, A NEW ARTICLE ON THE SPLIT, AND A LAYOUT BUG FIXED FROM "
      "YESTERDAY. The network band shipped in v0.2.44 ran the FULL VIEWPORT WIDTH: the homepage "
      "bands each carry their own measure on the component (.eco is max-width:1100px itself, there "
