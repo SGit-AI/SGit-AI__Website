@@ -3,6 +3,7 @@ title: twins.sgit.ai
 domain: twins.sgit.ai
 tagline: A digital twin is an interface to reality, not a simulation of it.
 summary: Twins as actors rather than models: what a working twin actually is, what was built versus designed, the simulation layer, and an execution broker. Carries its own gaps-and-open-questions page and a where-we-lose section.
+aliases: twin twins digital simulation model reality mirror representation
 observed: 2026-08-26
 category: Graphs & method
 listing: true

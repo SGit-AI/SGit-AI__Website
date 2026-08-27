@@ -2,7 +2,7 @@
 
 > A three-part as-built engineering brief published as a documentation site inside a vault: ten authored slides, a diagram library and the source PDFs, all served from one read key.
 
-*Source: <https://sgit.ai/demos/vaults/content-transformation-proxy/index.html> · site v0.2.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/content-transformation-proxy/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

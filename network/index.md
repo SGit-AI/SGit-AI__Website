@@ -2,7 +2,7 @@
 
 > Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
 
-*Source: <https://sgit.ai/network/index.html> · site v0.2.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/network/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,14 @@
 Nineteen focused sites on `*.sgit.ai`, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, a stated status, honest edges — and they publish their arguments **before** the things they describe exist, so the commitments stay checkable afterwards.
 
 18 live, 1 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
+
+**Which of these is mine?**instant match · no key, no network
+
+Describe what you are trying to do and I will point at the site that takes it seriously. This runs in your browser against the catalogue on this page — no key needed, nothing sent anywhere.
+
+Optional. Answers get more conversational; the matching does not get more correct.
+
+**Bring your own key (OpenRouter).** It is stored in this browser only and sent only to `openrouter.ai` — never to sgit.ai, which is a static site with no server to send it to. **This page cannot protect it the way a vault app can**: with no host there is no permission floor, so the key lives in this page's origin. [llms.sgit.ai ↗](https://llms.sgit.ai) explains the difference, and [the plan](../articles/chat-on-a-static-site.md) explains how we intend to remove the trade-off.
 
 ## Start from what you need
 

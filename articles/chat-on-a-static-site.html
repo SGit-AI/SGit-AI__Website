@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A chat box on a site with no server — the plan, and the trade it makes — sgit.ai</title>
+<meta name="description" content="Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.">
+<link rel="canonical" href="https://sgit.ai/articles/chat-on-a-static-site.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/chat-on-a-static-site.html">
+<meta property="og:title" content="A chat box on a site with no server — the plan, and the trade it makes — sgit.ai">
+<meta property="og:description" content="Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="chat-on-a-static-site.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "A chat box on a site with no server — the plan, and the trade it makes — sgit.ai", "headline": "A chat box on a site with no server — the plan, and the trade it makes — sgit.ai", "description": "Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.", "url": "https://sgit.ai/articles/chat-on-a-static-site.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.47</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl here" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../network/index.html">All sites</a>
+      <a class="sl" href="../network/nhi.html">nhi</a>
+      <a class="sl" href="../network/pki.html">pki</a>
+      <a class="sl" href="../network/graphs.html">graphs</a>
+      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A chat box on a site with no server — the plan, and the trade it makes</p>
+  <h1>A chat box on a site with no server — the plan, and the trade it makes</h1>
+  <p class="small dim">2026-08-27 &middot; <a href="../admin/versions.html">v0.2.47</a> &middot; <span class="chip">chat</span><span class="chip">llm</span><span class="chip">byok</span><span class="chip">plan</span></p>
+  <p class="lead">Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.</p>
+<p>The <a href="../network/index.html">network directory</a> now has a chat box. It answers one question — <em>which of these nineteen sites is mine?</em> — and it works with no key, no account and no network call.</p>
+<p>That last part took the most thought, so this is the plan behind it: what shipped, what it costs, and what would remove the cost.</p>
+<figure class="shot" data-shot="netchat.webp" data-dir="images/" data-alt="The panel on the directory. The default tier is a local matcher; the key is opt-in and clearly labelled."><figcaption>The panel on the directory. The default tier is a local matcher; the key is opt-in and clearly labelled.</figcaption></figure>
+<h2>The constraint nobody can design around</h2>
+<p><code>sgit.ai</code> is a static site on GitHub Pages. There is no server, no session, no place to keep a secret. Every sibling on <code>*.sgit.ai</code> is the same.</p>
+<p>That matters because the usual way to put a chat box on a website is to call a model from a backend that holds the API key. There is no backend here to hold one. So the real options are only three, and it is worth being blunt about which is which.</p>
+<h2>The three tiers</h2>
+<p><b>Tier 0 — match. Shipped, on by default, needs nothing.</b></p>
+<p>A deterministic scorer runs in the browser against the catalogue of all nineteen sites, emitted at build time from the same data the cards and the table are built from. Type <em>"I have to sign off a risk"</em> and it points at <a href="../network/index.html#risk-governance">risks.sgit.ai</a>, and shows you which words it matched on.</p>
+<p>It is not clever. It is instant, free, private, works offline, and — the part that made it the default — <b>it tells you why it chose</b>. An LLM answer does not give you that. The scorer weights a hit in a site's thesis or domain above one in its summary, and stops there.</p>
+<p>The important property: a reader should never have to hold a credential to use an index.</p>
+<p><b>Tier 1 — bring your own key. Shipped, opt-in, and it costs you something.</b></p>
+<p>Paste an OpenRouter key and the browser calls <code>https://openrouter.ai/api/v1/chat/completions</code> directly, streaming, with the catalogue as the system prompt. This is not a new pattern here — the <a href="../demos/vaults/index.html">SG/Vault workbench vault</a> already does exactly this, using the same endpoint and the versioned <code>sg-llm-request</code> module served from <code>dev.tools.sgraph.ai</code>, so this reuses a proven client rather than inventing one.</p>
+<p>The cost is real and the UI states it rather than burying it: <b>with no host, there is no permission floor, so the key lives in this page's origin.</b> It goes into <code>localStorage</code> and into a <code>fetch</code> to <code>openrouter.ai</code>. It is never sent to sgit.ai — there is no server here to send it to — but the page cannot protect it the way a vault app can. That is a trust decision, and it belongs to the reader, so it is presented as one.</p>
+<p>When the model call fails, the panel falls back to Tier 0 and says so. Degrading to something that works beats an error message.</p>
+<p><b>Tier 2 — the bridge. Not built, and the one that removes the trade.</b></p>
+<p>Serve the directory as a <b>vault app</b> and the problem disappears. <a href="../network/index.html#agents-ai">llms.sgit.ai</a> documents the contract: the key lives in <code>.vault/llm/config.json</code>, <em>below the permission floor</em>, the host makes the call, and the app never sees the credential. Its API is <code>sg.llm.available / chat / cancel / models / usage</code>, with grants defaulting to deny.</p>
+<p>The striking detail in that documentation is that there are <b>three</b> chat surfaces, and two of them need no application code at all — the vault chat panel, and the same panel beside any running app. <em>"Every existing vault app gets this without being changed."</em></p>
+<p>The qualification has to travel with the claim, and llms.sgit.ai insists on this in its own words: <em>"The bridge protects your key; it is not yet a boundary that prevents all egress."</em> It protects the credential you trusted it with. It does not yet stop a malicious app calling a provider with a credential of its own.</p>
+<h2>What would need building</h2>
+<p>Tier 2 is not a rewrite, but it is not free either. Honestly scoped:</p>
+<div class="tablewrap"><table>
+<tr><th>Piece</th><th>State</th><th>Note</th></tr>
+<tr><td>The catalogue</td><td><b>Done</b></td><td>Emitted at build from <code>admin/content/sites/*.md</code>; nineteen entries</td></tr>
+<tr><td>Tier 0 matcher</td><td><b>Done</b></td><td><code>assets/network-chat.js</code>, no dependencies</td></tr>
+<tr><td>BYOK client</td><td><b>Done</b></td><td>Streams from OpenRouter; the workbench vault's proven pattern</td></tr>
+<tr><td>A vault build of the directory</td><td><b>Not started</b></td><td>The generator already emits a <code>.md</code> twin of every page; a vault app is a different target, not a different site</td></tr>
+<tr><td><code>sg.llm</code> detection</td><td><b>Not started</b></td><td>The panel should prefer the bridge when it exists and fall back when it does not — the same shape as the Tier 1 → Tier 0 fallback already in the file</td></tr>
+<tr><td>Shared component</td><td><b>Not started</b></td><td>Nineteen sites want this panel, not one. It should end up a versioned module on <code>dev.tools.sgraph.ai</code> beside <code>sg-llm-request</code>, not nineteen copies</td></tr>
+</table></div>
+<p>That last row is the one that decides whether this was worth doing. A chat box on one site is a feature. The same panel on all nineteen, reading each site's own catalogue, is the thing that makes a network of nineteen sites navigable — and it is why the catalogue is generated rather than written.</p>
+<h2>What it does not do</h2>
+<p>It does not answer questions <em>about</em> the subjects. Ask it how to threat-model a payment gateway and it will point you at a site, not teach you. The scope is routing, deliberately: the sites already contain the arguments, and a summary that drifts from them is worse than a link that does not.</p>
+<p>It also does not know anything that is not in the catalogue. Nineteen theses, nineteen summaries, nineteen categories — all quoted from each site's own words rather than paraphrased, which is the same rule the <a href="../network/index.html">directory</a> follows.</p>
+<p><em>Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.</em></p>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+  fetch('../assets/shots.js?v=v0.2.47')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.47</a> · <a href="../admin/index.html">engineering</a> · <a href="chat-on-a-static-site.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.47';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

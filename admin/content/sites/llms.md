@@ -3,6 +3,7 @@ title: llms.sgit.ai
 domain: llms.sgit.ai
 tagline: Your app calls a language model without ever holding an API key.
 summary: The sg.llm.* bridge: how an app running inside a vault reaches a model with no credential of its own. The reference, the traps, a four-layer security ladder, the attached-file question, and a pre-ship checklist.
+aliases: llm model openai anthropic openrouter apikey api key chat prompt token inference bring your own key byok
 observed: 2026-08-26
 category: Agents & AI
 listing: true

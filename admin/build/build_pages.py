@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.46'
+SITE_VERSION = 'v0.2.47'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,41 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.46', '2026-08-26', 'this release',
+    ('v0.2.47', '2026-08-27', 'this release',
+     "THE DIRECTORY ANSWERS QUESTIONS, and a second conference vault. Nineteen sibling sites is "
+     "past the point where a list helps, so /network/ now carries a chat panel whose only job is "
+     "routing: which of these is mine. THE DEFAULT TIER NEEDS NO KEY, NO ACCOUNT AND NO NETWORK "
+     "CALL — a deterministic scorer running in the browser over a catalogue emitted at build time "
+     "from admin/content/sites/*.md, the same data the cards and the table are built from, so the "
+     "answers cannot drift from the directory underneath them. It also SHOWS ITS WORKING: a hit in "
+     "a site's thesis or domain outweighs one in its summary, and the reply names the matched "
+     "terms, which an LLM answer does not give you. Tier 1 is opt-in BYOK against OpenRouter, "
+     "streaming, reusing the pattern already proven in the SG/Vault workbench vault (same "
+     "endpoint, same versioned sg-llm-request module on dev.tools.sgraph.ai) rather than "
+     "inventing a client; on failure it falls back to the local matcher and says so. The cost is "
+     "stated on the panel, not buried: with no host there is no permission floor, so the key sits "
+     "in the page's origin — never sent to sgit.ai, which has no server to send it to. Tier 2 (the "
+     "vault-app build, where sg.llm.chat keeps the credential in .vault/llm/config.json below the "
+     "permission floor) is NOT BUILT and is scoped in a new article including the rows that are "
+     "not started. ONE REAL MISS FIXED: the matcher routed 'I need to cite a regulation precisely' "
+     "to wardley-maps, because it knew only each site's own vocabulary — standards.sgit.ai says "
+     "'provision' and the reader types 'regulation'. Site entries gained an `aliases` field for the "
+     "words readers actually arrive with; five real questions now give five correct first hits, and "
+     "nonsense still returns nothing rather than a confident wrong answer. TWO BUILD RULES CAUGHT "
+     "ME on the way, both correctly: the validator refused a forward link to the unwritten plan "
+     "article, and then refused a script tag with a src attribute outright — these pages must also render inside a "
+     "vault on a blob: origin where a relative src does not resolve, so the loader is fetch+eval "
+     "like every other component here. ALSO PUBLISHED: ThreatModCon 2025 Barcelona, 'Scaling "
+     "Threat Modeling with Semantic Knowledge Graphs' — eleven linked threat models from customer "
+     "to compute instance (51 nodes, 179 threats, 3 critical), five interactive views and five "
+     "Wardley walkthroughs, libraries inlined at identical versions so no page touches the "
+     "network. Two of its layer files are INVALID JSON UPSTREAM and are repaired in the vault, "
+     "with the repair expressed as a proof rather than a changelog entry: four stray closing "
+     "brackets removed, one `],` added, multiset of content lines unchanged, originals kept "
+     "alongside. Its explorer screenshot was CAPTURED AND THEN DISCARDED — outside the vault host "
+     "there is no sg.vfs.readText() to answer it, so the page sits on a loading spinner, and a "
+     "screenshot of a spinner would have misrepresented the vault."),
+    ('v0.2.46', '2026-08-26', 'obj-cas-imm-057b0451154a',
      "A CONFERENCE KEYNOTE AS A VAULT — the twentieth published vault and the first that is a "
      "TALK rather than a document set or an app. AI vs. AI: Building Resilient Enterprises in the "
      "Age of Autonomous Threats, Black Hat Europe 2025, AI Security Summit, ExCeL London, 9 "
@@ -1360,6 +1394,76 @@ def home_articles_band():
             '</section>')
 
 
+def network_chat_block():
+    """The 'which of these is mine?' panel, and the catalogue it runs on.
+
+    The catalogue is emitted from SITES — the same data the cards and the table are
+    built from — so the answers cannot drift from the directory underneath them. The
+    default tier needs no key and no network; see assets/network-chat.js for why."""
+    cat = []
+    for x in SITES:
+        href = f'{x["slug"]}.html' if not x['listing'] else x['url']
+        cat.append({
+            'domain': x['domain'],
+            'thesis': x['thesis'] or x['tagline'],
+            'category': x['category'],
+            'href': href,
+            'external': bool(x['listing']),
+            # one lowercase blob per site for the matcher to score against
+            'hay': ' '.join([x['domain'].replace('.', ' '), x['thesis'], x['tagline'],
+                             x['summary'], x['category'], ' '.join(x['tags']),
+                             x['aliases']]),
+        })
+    egs = ['I have to sign off a risk',
+           'my app needs to call an LLM safely',
+           'I am drawing a graph',
+           'how should I license my open source project']
+    btns = ''.join(f'<button type="button" class="nc-eg">{e}</button>' for e in egs)
+    return (
+        '  <div class="netchat" id="netchat">\n'
+        '    <div class="nc-head"><b>Which of these is mine?</b>'
+        '<span class="nc-mode">instant match &middot; no key, no network</span></div>\n'
+        '    <div class="nc-log"><div class="nc-msg nc-bot"><p>Describe what you are trying to '
+        'do and I will point at the site that takes it seriously. This runs in your browser '
+        'against the catalogue on this page &mdash; no key needed, nothing sent anywhere.</p>'
+        f'<div class="nc-egs">{btns}</div></div></div>\n'
+        '    <form class="nc-form">\n'
+        '      <input class="nc-input" type="text" autocomplete="off" '
+        'placeholder="e.g. I need to give an AI agent an identity">\n'
+        '      <button class="nc-send" type="submit">Ask</button>\n'
+        '    </form>\n'
+        '    <div class="nc-foot">\n'
+        '      <button type="button" class="nc-keytoggle">Use my own LLM key</button>\n'
+        '      <span class="small dim">Optional. Answers get more conversational; the matching '
+        'does not get more correct.</span>\n'
+        '    </div>\n'
+        '    <div class="nc-keypanel" hidden>\n'
+        '      <p class="small"><b>Bring your own key (OpenRouter).</b> It is stored in this '
+        'browser only and sent only to <code>openrouter.ai</code> &mdash; never to sgit.ai, which '
+        'is a static site with no server to send it to. <b>This page cannot protect it the way a '
+        'vault app can</b>: with no host there is no permission floor, so the key lives in this '
+        'page\'s origin. <a href="https://llms.sgit.ai" rel="noopener" target="_blank">llms.sgit.ai '
+        '&#8599;</a> explains the difference, and <a href="../articles/chat-on-a-static-site.html">'
+        'the plan</a> explains how we intend to remove the trade-off.</p>\n'
+        '      <div class="nc-keyrow">\n'
+        '        <input class="nc-key" type="password" autocomplete="off" placeholder="sk-or-v1-...">\n'
+        '        <button type="button" class="nc-keysave">Save in this browser</button>\n'
+        '      </div>\n'
+        '    </div>\n'
+        '  </div>\n'
+        f'  <script>window.__SGIT_SITES__ = {json.dumps(cat, ensure_ascii=False)};</script>\n'
+        # Fetched and evaluated rather than <script src>: these pages also render inside a
+        # vault, on a blob: origin where a relative script src does not resolve. The
+        # validator enforces this — see the contract check.
+        '  <script>\n'
+        '  fetch("../assets/network-chat.js")\n'
+        '    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
+        '    .then(function (t) { (0, eval)(t); })\n'
+        '    .catch(function (e) { console.error("[network] chat failed to load:", e); });\n'
+        '  </script>'
+    )
+
+
 def network_index_body():
     """The sibling *.sgit.ai sites — a directory, not a list.
 
@@ -1382,6 +1486,8 @@ def network_index_body():
            f'  <p class="small dim">{len(live)} live, {len(pending)} with the repository and '
            'subdomain in place but nothing published yet. Screenshots are of the real sites, '
            'captured on the date each entry gives.</p>']
+
+    out.append(network_chat_block())
 
     # ---- the chooser. The point of the page: a question, and where it is answered.
     out += ['  <h2 id="start">Start from what you need</h2>',

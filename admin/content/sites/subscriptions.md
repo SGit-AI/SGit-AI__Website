@@ -3,6 +3,7 @@ title: subscriptions.sgit.ai
 domain: subscriptions.sgit.ai
 tagline: A subscription is a discount for regular use, not rent on something you ignore.
 summary: The commercial model stated as a position: a register of what you actually hold, governance and schema, an exit-path method, and the law behind it — with the service itself marked as later, not now.
+aliases: subscription subscriptions pricing rent billing saas renewal commercial contract
 observed: 2026-08-26
 category: Business & publishing
 listing: true

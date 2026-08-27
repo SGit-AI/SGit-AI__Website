@@ -317,6 +317,10 @@ class Content_Loader:
                 'category': meta.get('category', 'Other'),
                 'stage': meta.get('stage', ''),      # the site's own status pill, quoted
                 'thesis': meta.get('thesis', ''),    # its own headline claim, in its words
+                # The vocabulary a READER arrives with, which is often not the
+                # vocabulary the site uses about itself: standards.sgit.ai says
+                # 'provision', the reader types 'regulation'. Matcher-only.
+                'aliases': meta.get('aliases', ''),
                 'status': meta.get('status', 'published'),
                 'body': body, 'where': where,
             })

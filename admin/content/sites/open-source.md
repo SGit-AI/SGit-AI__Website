@@ -3,6 +3,7 @@ title: open-source.sgit.ai
 domain: open-source.sgit.ai
 tagline: Open source is a strategy. It is not a charity.
 summary: Survivability as the test rather than licence purity: a stress test, a self-audit, six recorded corrections, six success stories with numbers, three licences compared, and why Apache-2.0 rather than MIT here.
+aliases: licence license licensing apache mit gpl opensource community sustainability funding contributor
 observed: 2026-08-26
 category: Business & publishing
 listing: true

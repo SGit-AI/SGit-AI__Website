@@ -5,6 +5,7 @@ tagline: An app-coupled edge guard — Layer 1 decides, Layer 2 acts
 summary: A design for an edge security and logging layer you own rather than rent, built on the observation that your own app already knows what a valid request looks like — so the edge can allowlist rather than denylist. Published as a complete design that has deliberately not been built.
 category: Security & infrastructure
 thesis: Layer 1 decides and signals. Layer 2 acts and writes.
+aliases: waf edge firewall proxy cloudfront blocking logging siem detection allowlist denylist
 observed: 2026-08-20
 seen_version: v0.1.1
 repo: SGit-AI__Website__SG_Sentinel

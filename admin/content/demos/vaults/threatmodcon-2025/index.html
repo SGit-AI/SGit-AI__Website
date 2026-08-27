@@ -1,0 +1,86 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / ThreatModCon 2025</p>
+  <h1>Scaling Threat Modeling with Semantic Knowledge Graphs</h1>
+  <p class="lead">ThreatModCon 2025, Barcelona. Eleven linked threat models stacked from the customer at the top to the compute instance at the bottom &mdash; <b>a graph of graphs</b>, so a vulnerability in a single line of code can be traced up to the revenue it puts at risk. Five interactive views and five Wardley map walkthroughs, all running inside the vault with no network.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">Opens on the hub; every visualisation below it runs from the vault. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="0ict6flm" data-readkey="23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the thesis</span>
+        <h3>A threat model of one system tells you very little</h3>
+        <p>The hub states the argument and then quantifies it: <b>11 readable layers, 51 nodes, 179 threats, 3 critical</b>. The zoom ladder runs Customer &rarr; Business &rarr; Application &rarr; Component &rarr; Package &rarr; Class &rarr; Method &rarr; Source Code &rarr; Environment &rarr; Runtime &rarr; Compute, each layer carrying its own node and threat counts.</p>
+        <p>The point of stacking them is traversal, not tidiness. One model answers <em>what could go wrong here</em>. Eleven linked models answer <em>what does this line of code put at risk</em>, which is a different question and the one an executive is actually asking.</p>
+      </div>
+      <figure class="shot" data-shot="hub.webp" data-dir="images/" data-alt="The hub: the thesis, and the zoom ladder with per-layer node and threat counts."><figcaption>Eleven layers, counted. Everything below the fold is live and runs offline.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the same fact, four audiences</span>
+        <h3>One SQL injection, four different messages</h3>
+        <p>The fifth Wardley walkthrough takes a single critical finding in a payment gateway and writes the message four ways &mdash; <b>Board Member</b>, <b>CISO</b>, <b>CTO</b>, <b>Developer</b> &mdash; each with guidance on how to communicate and a message ready to send.</p>
+        <p>It is the same instinct as the <a href="../pentest-report/index.html">pentest report vault</a>: the finding does not change, the framing does, and both are derived from one underlying model rather than written four times by hand.</p>
+      </div>
+      <figure class="shot" data-shot="wardley-personas.webp" data-dir="images/" data-alt="One vulnerability, four stakeholder framings with tailored messages."><figcaption>Board, CISO, CTO and Developer &mdash; one finding, four framings.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the maps</span>
+        <h3>From graph to Wardley map, in five steps</h3>
+        <p>The Wardley set walks from a plain graph to a positioned map, through evolution stages, to security prioritisation &mdash; <em>from "everything is critical" to risk-based decisions</em> &mdash; and ends on the multi-persona cost view.</p>
+        <p>It pairs naturally with <a href="../../../network/index.html#graphs-method">wardley-maps.sgit.ai</a>, whose argument is that <em>maps are claims, not pictures</em>. These are the claims, drawn.</p>
+      </div>
+      <figure class="shot" data-shot="wardley-evolution.webp" data-dir="images/" data-alt="Security prioritisation: from everything-is-critical to risk-based decisions."><figcaption>Step 3 of 5: evolution stages applied to security prioritisation.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the flat view</span>
+        <h3>The whole estate on one screen</h3>
+        <p>Alongside the layered explorer there is a flat view of the same data &mdash; end customer, payment processing, user authentication, order fulfilment &mdash; for when you want the shape of the system rather than a path through it.</p>
+      </div>
+      <figure class="shot" data-shot="flat-view.webp" data-dir="images/" data-alt="The flat view: the whole modelled estate on one screen."><figcaption>The same eleven layers, flattened.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Two upstream data files were broken, and both were repaired in the open</h2>
+  <p>This is the part worth reading even if threat modelling is not your subject. <code>tm-6-class-layer.json</code> and <code>tm-11-compute-layer.json</code> <b>are not valid JSON in the source repository</b>, so the class and compute layers do not load there at all. Both are fixed in this vault, and the vault documents the repair rather than quietly shipping it:</p>
+  <div class="note"><b>Every change moves existing text or closes a bracket. No field was edited and nothing was invented.</b> The untouched originals are kept alongside, in <code>source/threat-models-data/</code>.</div>
+  <p>And the fix is stated as something you can check rather than trust: comparing original against repaired line by line, the only differences are <b>four stray closing brackets removed and one <code>],</code> added</b> &mdash; the multiset of all content lines is unchanged. That is a repair expressed as a proof, which is a good deal rarer than a repair expressed as a changelog entry.</p>
+
+  <h2>Making a presentation survive inside a vault</h2>
+  <p>The pages were already standalone HTML. The work was making them run on a <code>blob:</code> origin with no reliable network:</p>
+  <ul>
+    <li><b>Libraries inlined at identical versions</b> — d3 7.8.5, three.js r128, tween.js 18.6.4, taken from each library's npm dist. No page touches the network.</li>
+    <li><b>Data repointed.</b> The explorer used to fetch its layers from an origin bucket. It now tries the vault's own copy through <code>sg.vfs.readText()</code> first, keeps the bucket as a second chance, and falls back to a snapshot inlined at build time — and <b>reports failure on screen instead of silently rendering nothing</b>.</li>
+    <li><b>A host handshake per page.</b> Every page posts <code>sg-app-ready</code>, because each one becomes the iframe document when you navigate to it.</li>
+  </ul>
+  <p>Verified before publishing: a contract scan of all eleven pages for vault-relative references and surviving CDN links, <code>node --check</code> on every inline script block, hub links resolved against the filesystem, and a jsdom render of each page asserting that d3, THREE and TWEEN initialise and the SVG actually builds.</p>
+  <p class="small dim">One class of jsdom error is filtered from that test — and the vault records that it was <b>checked against the untouched original first</b>, which produces the same error. Filtering a failure you have not first reproduced on a known-good input is how a test quietly stops testing.</p>
+
+  <h2>Notes</h2>
+  <p><b>It asks for nothing.</b> <code>app.json</code> declares <code>"permissions": {}</code> with <code>present: true</code>.</p>
+  <p><b>Audited before publishing.</b> No sgit credentials, no third-party API keys, no private keys, no emails, no external company or client named. The modelled estate is a worked example, not a real customer.</p>
+  <p><b>One thing you will only see inside the vault.</b> The threat-model explorer loads its eleven layers through <code>sg.vfs.readText()</code>. Open the file straight off disk and it sits on a loading spinner, because there is no vault bridge to answer it — which is the clearest small demonstration on this site of what the bridge actually does.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
