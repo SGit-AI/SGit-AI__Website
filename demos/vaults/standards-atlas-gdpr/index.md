@@ -2,7 +2,7 @@
 
 > The General Data Protection Regulation as a navigable semantic graph, where CJEU rulings, regulator guidance and per-country variation are first-class nodes layered over the articles they bend — with a validation surface that writes corrections back into the vault.
 
-*Source: <https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

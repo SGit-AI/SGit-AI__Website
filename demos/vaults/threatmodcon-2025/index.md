@@ -2,7 +2,7 @@
 
 > ThreatModCon 2025, Barcelona: eleven linked threat models from customer to compute instance, five interactive views and five Wardley map walkthroughs, running offline inside the vault — with two upstream-broken data files repaired and the repair proved as a pure block move.
 
-*Source: <https://sgit.ai/demos/vaults/threatmodcon-2025/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/threatmodcon-2025/index.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,6 +66,8 @@ The same eleven layers, flattened.
 This is the part worth reading even if threat modelling is not your subject. `tm-6-class-layer.json` and `tm-11-compute-layer.json` **are not valid JSON in the source repository**, so the class and compute layers do not load there at all. Both are fixed in this vault, and the vault documents the repair rather than quietly shipping it:
 
 **Every change moves existing text or closes a bracket. No field was edited and nothing was invented.** The untouched originals are kept alongside, in `source/threat-models-data/`.
+
+The upstream being public is what makes the repair auditable rather than merely asserted: the broken originals are at [DinisCruz/Presentation-Threat-Mod-Con-2025 ↗](https://github.com/DinisCruz/Presentation-Threat-Mod-Con-2025), and the vault keeps its own untouched copies beside the repaired ones.
 
 And the fix is stated as something you can check rather than trust: comparing original against repaired line by line, the only differences are **four stray closing brackets removed and one `],` added** — the multiset of all content lines is unchanged. That is a repair expressed as a proof, which is a good deal rarer than a repair expressed as a changelog entry.
 
