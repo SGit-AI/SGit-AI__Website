@@ -2,7 +2,7 @@
 
 > A conference keynote shipped as a vault: the deck as presented, six PDF exports, eight research papers and the full source history of the slide system that renders it — all behind one read key, with the slide content as data the app reads at load time.
 
-*Source: <https://sgit.ai/demos/vaults/blackhat-eu-2025/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/blackhat-eu-2025/index.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -82,6 +82,8 @@ The whole chain in one tree — and `"permissions": {}` behind it.
 **Audited before publishing.** No sgit credentials, no third-party API keys, no private keys, no email addresses, and no external company or client named. The organisations that do appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for their publicly documented outages, which is what the slide is about.
 
 **The conference branding is the real thing.** The deck uses Black Hat Europe's official speaker template, because it is a talk that was given there. It is published here as the speaker's own material, not as anything endorsed by or affiliated with Black Hat.
+
+**The source is public too.** This vault republishes material that already sits in the open at [the-cyber-boardroom/Presentation__BlackHat-EU__Dec-2025 ↗](https://github.com/the-cyber-boardroom/Presentation__BlackHat-EU__Dec-2025), so nothing here is first exposed by the vault — this is a second, addressable copy that travels as one object.
 
 [← All published vaults](../index.md)
 

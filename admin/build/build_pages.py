@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.47'
+SITE_VERSION = 'v0.2.48'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.47', '2026-08-27', 'this release',
+    ('v0.2.48', '2026-08-27', 'this release',
+     "BOTH PRESENTATION VAULTS NOW LINK THEIR PUBLIC SOURCE. Confirmed by the author that "
+     "the-cyber-boardroom/Presentation__BlackHat-EU__Dec-2025 and "
+     "DinisCruz/Presentation-Threat-Mod-Con-2025 are public repositories. This settles a question "
+     "left open when the Black Hat vault shipped: the branding note was written without being "
+     "able to establish whether the material was already in the open, because github.com returns "
+     "403 to this container's proxy for any repo outside the session's scope — the same 403 for "
+     "both repos, which is a proxy behaviour and not a signal about either. The consequence is "
+     "worth stating precisely: the vault is a SECOND copy of material that already sits in public, "
+     "not the thing that first exposes it, and the Black Hat speaker-template assets in "
+     "particular are therefore not published here for the first time. The branding note itself is "
+     "unchanged and still stands — the deck uses the official template because it is a talk that "
+     "was given there, published as the speaker's own material and not as anything endorsed by or "
+     "affiliated with the conference. On the ThreatModCon page the link earns its place for a "
+     "different reason: that vault repairs two upstream files that are invalid JSON, and a repair "
+     "expressed as a proof (four stray brackets removed, one `],` added, multiset of content lines "
+     "unchanged) is only auditable if a reader can fetch the broken originals — so the link sits "
+     "in the repair section rather than in a footer. Both URLs were taken verbatim from each "
+     "vault's own README rather than retyped."),
+    ('v0.2.47', '2026-08-27', 'obj-cas-imm-dac438a3ef81',
      "THE DIRECTORY ANSWERS QUESTIONS, and a second conference vault. Nineteen sibling sites is "
      "past the point where a list helps, so /network/ now carries a chat panel whose only job is "
      "routing: which of these is mine. THE DEFAULT TIER NEEDS NO KEY, NO ACCOUNT AND NO NETWORK "

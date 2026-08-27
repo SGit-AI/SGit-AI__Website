@@ -65,6 +65,7 @@
   <h2>Two upstream data files were broken, and both were repaired in the open</h2>
   <p>This is the part worth reading even if threat modelling is not your subject. <code>tm-6-class-layer.json</code> and <code>tm-11-compute-layer.json</code> <b>are not valid JSON in the source repository</b>, so the class and compute layers do not load there at all. Both are fixed in this vault, and the vault documents the repair rather than quietly shipping it:</p>
   <div class="note"><b>Every change moves existing text or closes a bracket. No field was edited and nothing was invented.</b> The untouched originals are kept alongside, in <code>source/threat-models-data/</code>.</div>
+  <p>The upstream being public is what makes the repair auditable rather than merely asserted: the broken originals are at <a href="https://github.com/DinisCruz/Presentation-Threat-Mod-Con-2025" rel="noopener" target="_blank">DinisCruz/Presentation-Threat-Mod-Con-2025 &#8599;</a>, and the vault keeps its own untouched copies beside the repaired ones.</p>
   <p>And the fix is stated as something you can check rather than trust: comparing original against repaired line by line, the only differences are <b>four stray closing brackets removed and one <code>],</code> added</b> &mdash; the multiset of all content lines is unchanged. That is a repair expressed as a proof, which is a good deal rarer than a repair expressed as a changelog entry.</p>
 
   <h2>Making a presentation survive inside a vault</h2>
