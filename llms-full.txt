@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.45). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.46). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -405,6 +405,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Standards Atlas — GDPR](standards-atlas-gdpr/index.md) | `4zv4bvmu` | standard as a semantic graph | 116 files · 6.3 MB · writes scoped to `feedback/` | `sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c%3A4zv4bvmu) |
 | [Content-Transformation Proxy](content-transformation-proxy/index.md) | `3c90c2bff2b1` | as-built engineering brief | 140 files · 63 MB · slides, diagrams and source PDFs | `sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839:3c90c2bff2b1` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839%3A3c90c2bff2b1) |
 | [Penetration Test Report](pentest-report/index.md) | `o4lrwx02` | security report (fictional) | 93 files · 6.4 MB · retest script per finding | `sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02) |
+| [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md) | `k1izvg7e` | conference keynote | 87 files · 20 MB · 26 slides, 6 PDF exports, 8 research papers | `sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -4197,11 +4198,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.45**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.46**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.45 | 2026-08-26 | this release | ARTICLES GET A HOMEPAGE BAND, A NEW ARTICLE ON THE SPLIT, AND A LAYOUT BUG FIXED FROM YESTERDAY. The network band shipped in v0.2.44 ran the FULL VIEWPORT WIDTH: the homepage bands each carry their own measure on the component (.eco is max-width:1100px itself, there is no wrapper convention here) and the new band had none, so it stretched edge to edge on a wide screen while every other band stayed in the column. Reported from a screenshot rather than caught by the validator, which has no opinion about layout. Fixed and MEASURED: .eco, .netpick and the new .artcards all report exactly 1100px at a 1440px viewport with scrollWidth == innerWidth, and the five area cards now lay out 3+2 instead of 4+1 so the last card does not sit alone. NEW ARTICLE, 'Twenty sites in fifteen days, and what that did to the writing': the repositories were created between 11 and 26 August, fifteen of the twenty in the final five days, and the piece is about what that did to the writing rather than the count — what forced the split (an argument needs its own version history; nineteen arguments through one changelog produces a record nobody can read), what it cost (discovery got worse before it got better; consistency became discipline rather than construction; cross-site links became claims that can rot, as the sentinel.sgit.ai typo showed), and why the directory now opens with a question. ARTICLES BAND on the homepage, DERIVED from the articles list via an marker the build fills — a new article appears there by being written, no list to maintain, the same one-file rule as updates and sites. Also: influences.sgit.ai went live mid-session and is now a full entry with its hero screenshot, taking the family to 18 live of 19; skills.sgit.ai still has DNS and a repository with nothing published and is still listed as such. |
+| v0.2.46 | 2026-08-26 | this release | A CONFERENCE KEYNOTE AS A VAULT — the twentieth published vault and the first that is a TALK rather than a document set or an app. AI vs. AI: Building Resilient Enterprises in the Age of Autonomous Threats, Black Hat Europe 2025, AI Security Summit, ExCeL London, 9 December 2025. What makes it a good demonstration is that the whole chain travels together under one credential: the deck as presented (26 slides, ~976 KB self-contained app), six PDF exports v0.1.1 to v0.2.0, the eight research papers the talk was built from, and the slide system's own source at ten versions v0.1.0 to v0.1.9. A deck emailed as a PDF is a snapshot with its working removed; this is the working. The load-bearing design detail is that SLIDE CONTENT IS DATA: deck/blackhat-eu-2025.json is read through the vault bridge at load time, so editing a slide is a commit and needs no rebuild — which is also why ten renderer versions can sit beside one deck without either owning the other. permissions {} with present:true. INTAKE: the submitted credential carried the sgit_private_vault_ prefix and was refused as a WRITE credential by the classifier — the prefix family added in the v0.2.40 batch, working as intended on its first real submission since. Read key derived one-way, vault key to the gitignored tier. AUDIT clean across all four passes: no sgit credentials, no third-party API keys (the broadened sweep added after the OpenRouter miss), no private keys, no emails, no external company or client. AWS, Azure, Cloudflare and CrowdStrike appear cited for publicly documented outages, which is the subject of the slide. One judgement recorded rather than buried: the deck uses Black Hat Europe's OFFICIAL SPEAKER TEMPLATE, logo and trademark included, because it is a talk that was given there — published as the speaker's own material with the page stating plainly that it is not endorsed by or affiliated with the conference. Screenshots were captured by serving the cloned vault locally and driving the deck with its own arrow-key bindings, after keypresses sent to the hosted surface failed to reach the deck through the shadow DOM; the first three captures were also named one slide out of step with what they showed and were renamed to match rather than shipped with captions that did not describe the picture. |
+| v0.2.45 | 2026-08-26 | obj-cas-imm-598b21e85f91 | ARTICLES GET A HOMEPAGE BAND, A NEW ARTICLE ON THE SPLIT, AND A LAYOUT BUG FIXED FROM YESTERDAY. The network band shipped in v0.2.44 ran the FULL VIEWPORT WIDTH: the homepage bands each carry their own measure on the component (.eco is max-width:1100px itself, there is no wrapper convention here) and the new band had none, so it stretched edge to edge on a wide screen while every other band stayed in the column. Reported from a screenshot rather than caught by the validator, which has no opinion about layout. Fixed and MEASURED: .eco, .netpick and the new .artcards all report exactly 1100px at a 1440px viewport with scrollWidth == innerWidth, and the five area cards now lay out 3+2 instead of 4+1 so the last card does not sit alone. NEW ARTICLE, 'Twenty sites in fifteen days, and what that did to the writing': the repositories were created between 11 and 26 August, fifteen of the twenty in the final five days, and the piece is about what that did to the writing rather than the count — what forced the split (an argument needs its own version history; nineteen arguments through one changelog produces a record nobody can read), what it cost (discovery got worse before it got better; consistency became discipline rather than construction; cross-site links became claims that can rot, as the sentinel.sgit.ai typo showed), and why the directory now opens with a question. ARTICLES BAND on the homepage, DERIVED from the articles list via an marker the build fills — a new article appears there by being written, no list to maintain, the same one-file rule as updates and sites. Also: influences.sgit.ai went live mid-session and is now a full entry with its hero screenshot, taking the family to 18 live of 19; skills.sgit.ai still has DNS and a repository with nothing published and is still listed as such. |
 | v0.2.44 | 2026-08-26 | obj-cas-imm-d629c8d66421 | THE NETWORK BECOMES A DIRECTORY. The sibling-site section was built for four entries and there are now NINETEEN — 17 live, 2 with repository and DNS in place but GitHub Pages not yet published (skills, influences), enumerated from the SGit-AI org and probed one by one for DNS, HTTP status and their own stated thesis. At four, a list of cards was the right shape; at nineteen it is a directory a reader has to read before it helps them. So the page now LEADS WITH THE QUESTION: seventeen lines, each one something somebody actually arrives with ('I need to give an AI agent an identity', 'I have to sign off a risk and I do not want to rubber-stamp it', 'I want an issue tracker with no database'), mapped to the site that takes it seriously. Under it, five thematic groups — Agents & AI, Risk & governance, Graphs & method, Security & infrastructure, Business & publishing — then a full scannable table of all nineteen. Every thesis is the SITE'S OWN WORDS, quoted from its H1 or lede rather than paraphrased here, so an entry cannot drift into describing a site that no longer says that. Engine: the sites content type gained `listing: true` (a directory row with no page of its own), plus `category`, `stage` and `thesis`; the four sites with a full write-up keep their pages and the other fifteen are one short markdown file each. Network promoted from the third child of Updates to a top-level nav group, and the homepage gained a network band with five doors in by area — a reader who does not know these sites cannot pick one from a list of domains. Thirteen new hero screenshots captured from the live sites through the local mirror. The two unpublished sites are listed AS unpublished, linking their repositories, rather than omitted. One engine bug found and fixed on the way: the first attempt to add the new fields landed in load_articles instead of load_sites, because the `'status': ...` + `'body': body` pair appears in both loaders and the articles one matched first — caught immediately by a KeyError at build, which is the argument for the build failing loudly rather than defaulting a missing field. |
 | v0.2.43 | 2026-08-25 | obj-cas-imm-48fd5df1d329 | SIX VAULTS PUBLISHED, THREE HELD, and one audit gap found the hard way. Nine credentials were submitted; intake classified seven as WRITE keys and two as read keys, the seven read keys were derived one-way, and all nine were cloned and audited with the credential that would actually appear on the page. New pages: PENETRATION TEST REPORT (a pentest as a vault not a PDF — eight audience-specific views over one engagement, and a retest script per finding that exits 0 if fixed and 1 if not; entirely fictional and badged SIMULATED DEMO on its own front page), STANDARDS ATLAS GDPR ('the standard is the graph' — rulings, guidance and per-country variation as first-class nodes, corrections scoped to feedback/ so a reviewer can never alter the graph under review), RISKMANDATE FILE SECURITY (risk acceptance moved from end-of-flow rubber stamp to the centre, over versioned JSON queried live by SQLite in the browser), CONTENT-TRANSFORMATION PROXY, SG COMMERCIALISATION (whose most credible artefact is an engagement register with no rows) and the SG/PAYMENTS BRIEF PACK (ten documents stamped PROPOSED). HELD: one vault carrying two live vault keys in plaintext INCLUDING ITS OWN WRITE KEY — publishing its read key would have handed out write access, defeating the entire read/write split — and one private working log. THE THIRD HOLD IS THE FINDING: a vault whose app reads an LLM key from a file passed the first credential pass CLEAN, and was caught only because a screenshot of it showed a chip reading 'key: vault key.json'. The file held a live OpenRouter API key. The scan had looked for vault-key shapes, sgit_ prefixes, PRIVATE KEY blocks and the literal string api_key; the field was named openrouter_key and matched none of them. This is a genuine gap in the tooling, not a near miss to be reframed — the credential checks were built for sgit credentials and had no opinion about third-party API keys, which leak just as expensively. A broader sweep (OpenAI/Anthropic/GitHub/AWS/Google/Slack/JWT shapes, placeholders filtered) now runs over every candidate; across all nine it found exactly one further hit, a forged alg:none token in the pentest vault that IS the finding it documents. Content checks answered two specific questions asked at submission: the commercialisation vault holds no real data (empty register, no emails, no rates, and its 'team' files are agent role definitions, not people), and the proxy vault names no external company or project — verified in text and BY EYE across 120 slide and diagram images a text scan cannot read. The GDPR atlas does name real companies, and correctly so: they are published CJEU and FTC case records. Article updated: nineteen vaults, 1,389 files re-cloned and verified, plus the LinkedIn republication link. |
 | v0.2.42 | 2026-08-25 | obj-cas-imm-75af1686df3e | AN INTRODUCTION ARTICLE, and the first CLI imagery on the site. /articles/what-sgit-is.html is the piece to hand somebody who has never heard of this: the category of file that has nowhere good to live, the vault key as address+auth+encryption in one string, the one-way read key that makes sharing possible, and then the proof rather than the claim. Two new terminal screenshots carry that proof and are the first of their kind here — every one of the 73 existing screenshots was of a browser. Both were captured from real runs, not mocked: a clone of the published EU AI Act vault (273 objects, 207 files) and the same vault's stored object rendered as a hexdump, 786 bytes of AES-256-GCM ciphertext whose name is a SHA-256 of those encrypted bytes. Also written up: apps in vaults running under permissions {} — capability without credential — and the four-site network. VERIFIED BEFORE PUBLISHING: all eleven published read keys were cloned from scratch, 781 files total, zero failures. That check first reported the opposite. Every clone failed with 'no named ref on the server', which looked like every vault page on this site instructing readers to run a command that could not work — and the real cause was a stale CLI in the authoring container, v0.15.0, where sgit clone cannot reach these vaults. v0.16.0 clones all eleven. The finding was retracted rather than shipped, which is the whole reason the check exists: an intro article is exactly the page that must not repeat an instruction nobody re-ran. A LinkedIn-newsletter edition of the same piece was produced alongside it as plain text with image placement markers, since that editor renders no markdown and asterisks would paste literally. |
@@ -4930,6 +4932,22 @@ Three changes, one of them a bug I shipped yesterday.
 - **Articles now have a place on the homepage.** They turned out to be the readable surface over all of this — a reader who will not work through a docs tree will read one argued page. The band is **derived from the articles list**, so a new article appears there by being written. No list to maintain, same rule as everywhere else here.
 
 Also: [influences.sgit.ai](../network/index.md#business-publishing) went live and is now a full entry with its screenshot — *"where the thinking came from"*, an influence map in three tiers with a changelog recording when a source moves between them. That leaves **eighteen of nineteen live**; `skills.sgit.ai` still has DNS and a repository and nothing published, and is still listed as such rather than hidden.
+
+### [A conference keynote as a vault — the deck, its exports, and the research it came from](#a-conference-keynote-as-a-vault) [v0.2.46](../admin/versions.md)
+
+vaultspresentationprovenance
+
+[AI vs. AI — Black Hat Europe 2025](../demos/vaults/blackhat-eu-2025/index.md) joins the published vaults. It is the twentieth, and the first that is a **talk** rather than a document set or an app.
+
+- **The whole chain, one credential.** The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the eight research papers it was built from, and the slide system's own source at ten versions — all in one vault, opened with one read key.
+- **The slide content is data, not markup.** `deck/blackhat-eu-2025.json` is read through the vault bridge at load time, so changing a slide is a commit rather than a rebuild. That separation is why the vault can carry ten versions of the renderer beside one deck without either owning the other.
+- **It asks for nothing.** `"permissions": {}` with `present: true` — the deck opens full-screen and never touches the filesystem.
+
+The argument is worth the click on its own. It opens by conceding the ground — *security's four pillars, all broken* — then lands on four publicly documented outages that were **not** attacks: a timing bug that wiped a global database, a config inconsistency that detonated worldwide, a routine change that halted traffic, and a faulty update that bricked 8.5 million machines. The turn is one line: *"These weren't sophisticated attacks — they were minor glitches that cascaded. Now imagine if they were deliberate."*
+
+Several of its later slides describe things this site now demonstrates rather than proposes — *assume compromise, contain blast radius*, *version control everything*, *identity graphs for least privilege*. Those threads have their own homes in [the network](../network/index.md) now.
+
+Audited clean before publishing: no sgit credentials, no third-party API keys, no private keys, no emails, no client named. The organisations that appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for public incidents, which is what the slide is about. The deck uses Black Hat Europe's official speaker template because it is a talk that was given there; the page says plainly that it is published as the speaker's own material, not as anything endorsed by or affiliated with the conference.
 
 ## 2026-08-25
 
@@ -6196,6 +6214,94 @@ The vault browser: retest scripts, evidence and exports beside the report that c
 ## Notes
 
 **Entirely fictional, and it says so first.** A `SIMULATED DEMO` badge sits next to the engagement id on the front page, and the vault states it in its own text: *"Everything here is fictional — the company (Northwind Provisions), the app…"*. The audit confirmed it: every host is a reserved `.example` domain, every address an `@example.com`, and the only public IP is `169.254.169.254` — the cloud metadata address any SSRF finding cites. The consulting firm and its named team are invented, with no contact details attached.
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# AI vs. AI — Black Hat Europe 2025 — a published vault
+
+> A conference keynote shipped as a vault: the deck as presented, six PDF exports, eight research papers and the full source history of the slide system that renders it — all behind one read key, with the slide content as data the app reads at load time.
+>
+> Page: https://sgit.ai/demos/vaults/blackhat-eu-2025/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Black Hat EU 2025
+
+# AI vs. AI — Black Hat Europe 2025
+
+A conference keynote shipped as a vault: the deck that was presented, the six PDF exports it went through, the eight research papers it was built from, and the entire source history of the slide system that renders it — behind one read key. Opening the vault launches the deck full-screen.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e) · From the CLI: `sgit clone sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e`
+Published deliberately, and **derived** one-way from a vault key that is not published and never will be.
+
+## See it live, here
+
+The deck opens automatically below and is driven with the arrow keys — `→` next, `←` previous, `F` for fullscreen. You can also [**open it in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e).
+
+## The talk
+
+**AI vs. AI: Building Resilient Enterprises in the Age of Autonomous Threats** — Dinis Cruz, AI Security Summit, Black Hat Europe 2025, ExCeL London, 9 December 2025. Twenty-six slides.
+
+the setup
+
+### Four pillars, and an admission
+
+The argument opens by conceding the ground rather than claiming it. **Security's four pillars — all broken**, followed immediately by the more uncomfortable slide: **we've been getting away with it.**
+
+The evidence there is four publicly documented outages, none of them attacks: a timing bug that wiped out a global database, a config inconsistency that propagated silently and then detonated worldwide, a routine config change that halted traffic, and a faulty update that bricked 8.5 million Windows machines.
+
+The turn is one line at the bottom of the slide: *"These weren't sophisticated attacks — they were minor glitches that cascaded. Now imagine if they were deliberate, coordinated attacks."*
+
+Slide 6 of 26. Four cascading failures, and the question underneath them.
+
+the threat model
+
+### The new insiders
+
+The middle of the deck reframes agents as an insider-threat problem and then draws the comparison directly: human insiders have **natural limitations on skill and time** and rarely act at machine speed; AI agents have neither constraint.
+
+From there it separates **three categories of AI-driven threat** and asks why enterprises are not ready — arriving at *fragile by default* as the diagnosis rather than a lack of tooling.
+
+The insider comparison the rest of the talk builds on.
+
+the answer
+
+### The defender's edge
+
+The second half is constructive, and several of its slides describe things this site now demonstrates: **assume compromise, contain blast radius**, **version control everything**, **identity graphs for least privilege at scale**, and **knowledge graphs** as the mechanism.
+
+It also argues for funding non-functional requirements at unprecedented scale, treats *vibe coding* as the new spreadsheets — a governance problem rather than a fad — and ends on **don't become the department of 'no'**.
+
+Those threads have their own homes now: [risks](../../../network/index.md#risk-governance) and [nfrs](../../../network/index.md#risk-governance), [graphs](../../../network/graphs.md), [nhi](../../../network/nhi.md) for agent identity, and [coding](../../../network/index.md#agents-ai).
+
+The concession the talk opens with, before any solution is offered.
+
+## Why it is a good vault
+
+A deck emailed as a PDF is a snapshot with its working removed. This one ships the whole chain in a single object, addressed by one credential:
+
+| Path | What it is |
+|---|---|
+| `index.html` | The deck as a self-contained vault app — 26 slides, ~976 KB |
+| `deck/blackhat-eu-2025.json` | The slide content. Edit this, commit, push — the app reads it through the vault bridge at load time, so a content change needs no rebuild |
+| `pdf/` | Six exports, v0.1.1 through v0.2.0 — the deck as it looked at each stage |
+| `research/` | Eight background papers the talk was built from, Parts 1 through 7 |
+| `source/v0/v0.1/` | The slide system itself at ten versions, v0.1.0 to v0.1.9, unmodified |
+
+The separation worth noticing is the third row. **Content is data, not markup.** The deck is a JSON file the app reads at load time, so changing a slide is a commit rather than a rebuild — which is also why the vault can carry ten versions of the renderer beside one deck without either owning the other.
+
+The whole chain in one tree — and `"permissions": {}` behind it.
+
+## Notes
+
+**It asks for nothing.** `app.json` declares `"permissions": {}` with `present: true`. A deck needs no filesystem access, so it requests none — the same posture as the [Risk Graph Explorer](../risk-graph-explorer/index.md).
+
+**Audited before publishing.** No sgit credentials, no third-party API keys, no private keys, no email addresses, and no external company or client named. The organisations that do appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for their publicly documented outages, which is what the slide is about.
+
+**The conference branding is the real thing.** The deck uses Black Hat Europe's official speaker template, because it is a talk that was given there. It is published here as the speaker's own material, not as anything endorsed by or affiliated with Black Hat.
 
 [← All published vaults](../index.md)
 

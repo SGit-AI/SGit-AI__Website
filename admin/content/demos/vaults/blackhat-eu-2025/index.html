@@ -1,0 +1,81 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Black Hat EU 2025</p>
+  <h1>AI vs. AI — Black Hat Europe 2025</h1>
+  <p class="lead">A conference keynote shipped as a vault: the deck that was presented, the six PDF exports it went through, the eight research papers it was built from, and the entire source history of the slide system that renders it — behind one read key. Opening the vault launches the deck full-screen.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e</code><br>
+  <span class="small dim">Published deliberately, and <b>derived</b> one-way from a vault key that is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The deck opens automatically below and is driven with the arrow keys — <code>&rarr;</code> next, <code>&larr;</code> previous, <code>F</code> for fullscreen. You can also <a href="https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="k1izvg7e" data-readkey="147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The talk</h2>
+  <p><b>AI vs. AI: Building Resilient Enterprises in the Age of Autonomous Threats</b> — Dinis Cruz, AI Security Summit, Black Hat Europe 2025, ExCeL London, 9 December 2025. Twenty-six slides.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the setup</span>
+        <h3>Four pillars, and an admission</h3>
+        <p>The argument opens by conceding the ground rather than claiming it. <b>Security's four pillars — all broken</b>, followed immediately by the more uncomfortable slide: <b>we've been getting away with it.</b></p>
+        <p>The evidence there is four publicly documented outages, none of them attacks: a timing bug that wiped out a global database, a config inconsistency that propagated silently and then detonated worldwide, a routine config change that halted traffic, and a faulty update that bricked 8.5 million Windows machines.</p>
+        <p>The turn is one line at the bottom of the slide: <em>"These weren't sophisticated attacks — they were minor glitches that cascaded. Now imagine if they were deliberate, coordinated attacks."</em></p>
+      </div>
+      <figure class="shot" data-shot="slide-getting-away.webp" data-dir="images/" data-alt="Four public incidents, none of them attacks, and the line that turns them into the argument."><figcaption>Slide 6 of 26. Four cascading failures, and the question underneath them.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the threat model</span>
+        <h3>The new insiders</h3>
+        <p>The middle of the deck reframes agents as an insider-threat problem and then draws the comparison directly: human insiders have <b>natural limitations on skill and time</b> and rarely act at machine speed; AI agents have neither constraint.</p>
+        <p>From there it separates <b>three categories of AI-driven threat</b> and asks why enterprises are not ready — arriving at <em>fragile by default</em> as the diagnosis rather than a lack of tooling.</p>
+      </div>
+      <figure class="shot" data-shot="slide-insiders.webp" data-dir="images/" data-alt="Human insiders versus AI agents, compared on skill, time and speed."><figcaption>The insider comparison the rest of the talk builds on.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the answer</span>
+        <h3>The defender's edge</h3>
+        <p>The second half is constructive, and several of its slides describe things this site now demonstrates: <b>assume compromise, contain blast radius</b>, <b>version control everything</b>, <b>identity graphs for least privilege at scale</b>, and <b>knowledge graphs</b> as the mechanism.</p>
+        <p>It also argues for funding non-functional requirements at unprecedented scale, treats <em>vibe coding</em> as the new spreadsheets — a governance problem rather than a fad — and ends on <b>don't become the department of 'no'</b>.</p>
+        <p class="small dim">Those threads have their own homes now: <a href="../../../network/index.html#risk-governance">risks</a> and <a href="../../../network/index.html#risk-governance">nfrs</a>, <a href="../../../network/graphs.html">graphs</a>, <a href="../../../network/nhi.html">nhi</a> for agent identity, and <a href="../../../network/index.html#agents-ai">coding</a>.</p>
+      </div>
+      <figure class="shot" data-shot="slide-pillars.webp" data-dir="images/" data-alt="Security's four pillars, each named and each conceded as broken."><figcaption>The concession the talk opens with, before any solution is offered.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Why it is a good vault</h2>
+  <p>A deck emailed as a PDF is a snapshot with its working removed. This one ships the whole chain in a single object, addressed by one credential:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Path</th><th>What it is</th></tr>
+    <tr><td><code>index.html</code></td><td>The deck as a self-contained vault app — 26 slides, ~976 KB</td></tr>
+    <tr><td><code>deck/blackhat-eu-2025.json</code></td><td>The slide content. Edit this, commit, push — the app reads it through the vault bridge at load time, so a content change needs no rebuild</td></tr>
+    <tr><td><code>pdf/</code></td><td>Six exports, v0.1.1 through v0.2.0 — the deck as it looked at each stage</td></tr>
+    <tr><td><code>research/</code></td><td>Eight background papers the talk was built from, Parts 1 through 7</td></tr>
+    <tr><td><code>source/v0/v0.1/</code></td><td>The slide system itself at ten versions, v0.1.0 to v0.1.9, unmodified</td></tr>
+  </table></div>
+  <p>The separation worth noticing is the third row. <b>Content is data, not markup.</b> The deck is a JSON file the app reads at load time, so changing a slide is a commit rather than a rebuild — which is also why the vault can carry ten versions of the renderer beside one deck without either owning the other.</p>
+
+  <figure class="shot" data-shot="permissions.webp" data-dir="images/" data-alt="The vault browser: the deck, its PDFs, the research and the full source history."><figcaption>The whole chain in one tree — and <code>"permissions": {}</code> behind it.</figcaption></figure>
+
+  <h2>Notes</h2>
+  <p><b>It asks for nothing.</b> <code>app.json</code> declares <code>"permissions": {}</code> with <code>present: true</code>. A deck needs no filesystem access, so it requests none — the same posture as the <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a>.</p>
+  <p><b>Audited before publishing.</b> No sgit credentials, no third-party API keys, no private keys, no email addresses, and no external company or client named. The organisations that do appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for their publicly documented outages, which is what the slide is about.</p>
+  <p><b>The conference branding is the real thing.</b> The deck uses Black Hat Europe's official speaker template, because it is a talk that was given there. It is published here as the speaker's own material, not as anything endorsed by or affiliated with Black Hat.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

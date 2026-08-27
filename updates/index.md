@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.45 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,6 +41,22 @@ Three changes, one of them a bug I shipped yesterday.
 - **Articles now have a place on the homepage.** They turned out to be the readable surface over all of this — a reader who will not work through a docs tree will read one argued page. The band is **derived from the articles list**, so a new article appears there by being written. No list to maintain, same rule as everywhere else here.
 
 Also: [influences.sgit.ai](../network/index.md#business-publishing) went live and is now a full entry with its screenshot — *"where the thinking came from"*, an influence map in three tiers with a changelog recording when a source moves between them. That leaves **eighteen of nineteen live**; `skills.sgit.ai` still has DNS and a repository and nothing published, and is still listed as such rather than hidden.
+
+### [A conference keynote as a vault — the deck, its exports, and the research it came from](#a-conference-keynote-as-a-vault) [v0.2.46](../admin/versions.md)
+
+vaultspresentationprovenance
+
+[AI vs. AI — Black Hat Europe 2025](../demos/vaults/blackhat-eu-2025/index.md) joins the published vaults. It is the twentieth, and the first that is a **talk** rather than a document set or an app.
+
+- **The whole chain, one credential.** The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the eight research papers it was built from, and the slide system's own source at ten versions — all in one vault, opened with one read key.
+- **The slide content is data, not markup.** `deck/blackhat-eu-2025.json` is read through the vault bridge at load time, so changing a slide is a commit rather than a rebuild. That separation is why the vault can carry ten versions of the renderer beside one deck without either owning the other.
+- **It asks for nothing.** `"permissions": {}` with `present: true` — the deck opens full-screen and never touches the filesystem.
+
+The argument is worth the click on its own. It opens by conceding the ground — *security's four pillars, all broken* — then lands on four publicly documented outages that were **not** attacks: a timing bug that wiped a global database, a config inconsistency that detonated worldwide, a routine change that halted traffic, and a faulty update that bricked 8.5 million machines. The turn is one line: *"These weren't sophisticated attacks — they were minor glitches that cascaded. Now imagine if they were deliberate."*
+
+Several of its later slides describe things this site now demonstrates rather than proposes — *assume compromise, contain blast radius*, *version control everything*, *identity graphs for least privilege*. Those threads have their own homes in [the network](../network/index.md) now.
+
+Audited clean before publishing: no sgit credentials, no third-party API keys, no private keys, no emails, no client named. The organisations that appear — AWS, Azure, Cloudflare, CrowdStrike — are cited for public incidents, which is what the slide is about. The deck uses Black Hat Europe's official speaker template because it is a talk that was given there; the page says plainly that it is published as the speaker's own material, not as anything endorsed by or affiliated with the conference.
 
 ## 2026-08-25
 

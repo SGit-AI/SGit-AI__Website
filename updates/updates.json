@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.45",
+  "site_version": "v0.2.46",
   "updates": [
     {
       "slug": "nineteen-sites-and-a-way-to-find-yours",
@@ -26,6 +26,18 @@
         "layout"
       ],
       "summary": "Three changes, one of them a bug I shipped yesterday. The network band ran the full viewport width. The homepage bands each carry their own measure — .eco has max width:1100px on the component itself, not on a wrapper — and the band added in v0.2.44 simply had…"
+    },
+    {
+      "slug": "a-conference-keynote-as-a-vault",
+      "title": "A conference keynote as a vault — the deck, its exports, and the research it came from",
+      "date": "2026-08-26",
+      "version": "v0.2.46",
+      "tags": [
+        "vaults",
+        "presentation",
+        "provenance"
+      ],
+      "summary": "AI vs. AI — Black Hat Europe 2025 joins the published vaults. It is the twentieth, and the first that is a talk rather than a document set or an app. The whole chain, one credential. The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the…"
     },
     {
       "slug": "six-vaults-published-three-held-back",

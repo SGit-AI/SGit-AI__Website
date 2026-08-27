@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.45</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.46</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../../why/index.html">Why</a></div>
@@ -106,6 +106,7 @@
     <tr><td><a href="standards-atlas-gdpr/index.html">Standards Atlas &mdash; GDPR</a></td><td><code>4zv4bvmu</code></td><td>standard as a semantic graph</td><td>116 files &middot; 6.3 MB &middot; writes scoped to <code>feedback/</code></td><td><code style="word-break:break-all;font-size:.72rem">sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu</code></td><td><a href="https://dev.vault.sgraph.ai/#sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c%3A4zv4bvmu" rel="noopener" target="_blank">open live &#8599;</a></td></tr>
     <tr><td><a href="content-transformation-proxy/index.html">Content-Transformation Proxy</a></td><td><code>3c90c2bff2b1</code></td><td>as-built engineering brief</td><td>140 files &middot; 63 MB &middot; slides, diagrams and source PDFs</td><td><code style="word-break:break-all;font-size:.72rem">sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839:3c90c2bff2b1</code></td><td><a href="https://dev.vault.sgraph.ai/#sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839%3A3c90c2bff2b1" rel="noopener" target="_blank">open live &#8599;</a></td></tr>
     <tr><td><a href="pentest-report/index.html">Penetration Test Report</a></td><td><code>o4lrwx02</code></td><td>security report (fictional)</td><td>93 files &middot; 6.4 MB &middot; retest script per finding</td><td><code style="word-break:break-all;font-size:.72rem">sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02</code></td><td><a href="https://dev.vault.sgraph.ai/#sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02" rel="noopener" target="_blank">open live &#8599;</a></td></tr>
+    <tr><td><a href="blackhat-eu-2025/index.html">AI vs. AI &mdash; Black Hat EU 2025</a></td><td><code>k1izvg7e</code></td><td>conference keynote</td><td>87 files &middot; 20 MB &middot; 26 slides, 6 PDF exports, 8 research papers</td><td><code style="word-break:break-all;font-size:.72rem">sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e</code></td><td><a href="https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e" rel="noopener" target="_blank">open live &#8599;</a></td></tr>
   </table></div>
   <p>The machine-first version of this list is <a href="../../catalogue/index.html">the catalogue</a> — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on <a href="../vault-app-embed.html">the embed demo page</a>.</p>
 </main>
@@ -115,7 +116,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.45</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.46</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -154,7 +155,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.45';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.46';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
