@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -40,6 +40,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Content-Transformation Proxy](content-transformation-proxy/index.md) | `3c90c2bff2b1` | as-built engineering brief | 140 files · 63 MB · slides, diagrams and source PDFs | `sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839:3c90c2bff2b1` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839%3A3c90c2bff2b1) |
 | [Penetration Test Report](pentest-report/index.md) | `o4lrwx02` | security report (fictional) | 93 files · 6.4 MB · retest script per finding | `sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02) |
 | [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md) | `k1izvg7e` | conference keynote | 87 files · 20 MB · 26 slides, 6 PDF exports, 8 research papers | `sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e) |
+| [Scaling Threat Modeling](threatmodcon-2025/index.md) | `0ict6flm` | conference session | 53 files · 4.1 MB · 11 layers, 51 nodes, 179 threats | `sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 

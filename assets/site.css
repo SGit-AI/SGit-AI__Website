@@ -618,3 +618,51 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
 .artcard b{font-family:var(--serif);font-size:1.06rem;color:#101114;line-height:1.3}
 .artcard-sum{font-size:.82rem;color:var(--dim);line-height:1.55}
 .artcard-go{font-size:.8rem;color:var(--accent);font-weight:600;margin-top:.2rem}
+
+/* ---- network chat: "which of these is mine?" ------------------------------
+   Default tier is a local matcher, so this must look usable with no key at all.
+   The key panel is deliberately not pretty — it is a trust decision, not a feature. */
+.netchat{max-width:var(--measure);margin:1.4rem auto 2rem;border:1px solid var(--line);
+         border-radius:12px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+.nc-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;padding:.7rem .95rem;
+         border-bottom:1px solid var(--line);background:var(--panel2)}
+.nc-head b{font-size:.95rem;color:var(--fg)}
+.nc-mode{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);
+         border:1px solid var(--line);border-radius:999px;padding:.1rem .5rem}
+.nc-mode.on{color:var(--accent);border-color:var(--accent)}
+.nc-log{max-height:340px;overflow-y:auto;padding:.9rem .95rem;display:grid;gap:.75rem}
+.nc-msg p{margin:0 0 .4rem;font-size:.88rem;line-height:1.6}
+.nc-msg p:last-child{margin-bottom:0}
+.nc-you{justify-self:end;max-width:85%;background:var(--panel2);border:1px solid var(--line);
+        border-radius:10px 10px 2px 10px;padding:.45rem .7rem}
+.nc-you p{font-weight:600}
+.nc-bot{max-width:95%}
+.nc-egs{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.55rem}
+.nc-eg{font:inherit;font-size:.78rem;color:var(--accent);background:transparent;cursor:pointer;
+       border:1px solid var(--line);border-radius:999px;padding:.22rem .6rem}
+.nc-eg:hover{border-color:var(--accent)}
+.nc-hits{display:grid;gap:.4rem;margin-top:.5rem}
+.nc-hit{display:grid;gap:.12rem;padding:.5rem .7rem;border:1px solid var(--line);border-radius:8px;
+        text-decoration:none;background:var(--panel2)}
+.nc-hit:hover{border-color:var(--accent)}
+.nc-hit b{font-family:var(--mono,ui-monospace,monospace);font-size:.82rem;color:var(--accent)}
+.nc-hit-thesis{font-size:.82rem;color:var(--fg);line-height:1.45}
+.nc-hit-why{font-size:.7rem;color:var(--dim)}
+.nc-err{color:var(--yellow)}
+.nc-form{display:flex;gap:.5rem;padding:.7rem .95rem;border-top:1px solid var(--line)}
+.nc-input{flex:1;font:inherit;font-size:.88rem;padding:.45rem .65rem;border:1px solid var(--line);
+          border-radius:8px;background:var(--bg);color:var(--fg)}
+.nc-input:focus{outline:none;border-color:var(--accent)}
+.nc-send{font:inherit;font-size:.85rem;font-weight:600;padding:.45rem 1rem;border-radius:8px;
+         border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+.nc-foot{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding:.15rem .95rem .8rem}
+.nc-keytoggle{font:inherit;font-size:.78rem;color:var(--accent);background:transparent;
+              border:0;padding:0;cursor:pointer;text-decoration:underline}
+.nc-keypanel{padding:.2rem .95rem .95rem;border-top:1px dashed var(--line)}
+.nc-keypanel p{margin:.6rem 0}
+.nc-keyrow{display:flex;gap:.5rem;flex-wrap:wrap}
+.nc-key{flex:1;min-width:200px;font:inherit;font-size:.85rem;padding:.4rem .6rem;
+        border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.nc-keysave{font:inherit;font-size:.8rem;padding:.4rem .8rem;border-radius:8px;
+            border:1px solid var(--line2);background:var(--panel2);color:var(--fg);cursor:pointer}
+@media print{.netchat{display:none}}

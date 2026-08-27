@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.46",
+  "site_version": "v0.2.47",
   "updates": [
+    {
+      "slug": "the-directory-answers-questions-now",
+      "title": "The directory answers questions now — and the default tier needs no key",
+      "date": "2026-08-27",
+      "version": "v0.2.47",
+      "tags": [
+        "chat",
+        "llm",
+        "network",
+        "vaults"
+      ],
+      "summary": "Two things: the network directory grew a chat box, and a second conference vault went up. Ask it which of the nineteen sites is yours. Type \"I have to sign off a risk\" and it points at risks.sgit.ai — and shows you the words it matched on. It runs in your brow…"
+    },
     {
       "slug": "nineteen-sites-and-a-way-to-find-yours",
       "title": "Nineteen sibling sites, and a way to find the one that is yours",
@@ -184,6 +197,19 @@
     }
   ],
   "articles": [
+    {
+      "slug": "chat-on-a-static-site",
+      "title": "A chat box on a site with no server — the plan, and the trade it makes",
+      "date": "2026-08-27",
+      "version": "v0.2.47",
+      "tags": [
+        "chat",
+        "llm",
+        "byok",
+        "plan"
+      ],
+      "summary": "Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free."
+    },
     {
       "slug": "nineteen-sites",
       "title": "Twenty sites in fifteen days, and what that did to the writing",

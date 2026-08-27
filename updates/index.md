@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.46 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,25 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-08-27
+
+### [The directory answers questions now — and the default tier needs no key](#the-directory-answers-questions-now) [v0.2.47](../admin/versions.md)
+
+chatllmnetworkvaults
+
+Two things: [the network directory](../network/index.md) grew a chat box, and a second conference vault went up.
+
+**Ask it which of the nineteen sites is yours.** Type *"I have to sign off a risk"* and it points at risks.sgit.ai — and shows you the words it matched on. It runs in your browser against the catalogue generated from the same files the cards and the table come from, so it cannot drift from the directory underneath it.
+
+- **No key, no account, no network call** in the default tier. A reader should not have to hold a credential to use an index.
+- **It tells you why it chose.** A hit in a site's thesis or domain outweighs one in its summary, and the answer names the matched terms. An LLM answer does not give you that for free.
+- **Bring your own key if you want prose.** Opt-in, OpenRouter, streaming — reusing the pattern already proven in the workbench vault. The cost is stated on the panel rather than buried: with no host there is no permission floor, so the key lives in the page's origin. If the call fails it falls back to the local matcher and says so.
+- **[The plan](../articles/chat-on-a-static-site.md)** covers the third tier — serving the directory as a vault app, where `sg.llm.chat` keeps the key below the permission floor and the app never sees it. Not built; scoped honestly, including the parts that are not started.
+
+One fix worth recording. The matcher first sent *"I need to cite a regulation precisely"* to **wardley-maps**, because it only knew each site's own vocabulary — standards.sgit.ai says *provision*, and the reader typed *regulation*. Site entries now carry an `aliases` field holding the words readers actually arrive with. Five real questions, five correct first hits; nonsense still returns nothing rather than a confident wrong answer.
+
+Also live: **[Scaling Threat Modeling with Semantic Knowledge Graphs](../demos/vaults/threatmodcon-2025/index.md)** — ThreatModCon 2025, Barcelona. Eleven linked threat models from customer to compute instance, so a vulnerability in a line of code traces up to the revenue it risks. 51 nodes, 179 threats, five interactive views and five Wardley walkthroughs, all running offline in the vault. Two of its data files are **invalid JSON upstream** and are repaired here, with the repair proved rather than asserted: the only differences are four stray brackets removed and one `],` added, and the multiset of content lines is unchanged.
 
 ## 2026-08-26
 
