@@ -2,7 +2,7 @@
 
 > Good public key repositories existed and were destroyed. This site is the 2019 keyserver catastrophe, the four registry rules it produces, and the build order — all published before the registry exists, so the commitments are checkable against whatever eventually ships.
 
-*Source: <https://sgit.ai/network/pki.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/network/pki.html> · site v0.2.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

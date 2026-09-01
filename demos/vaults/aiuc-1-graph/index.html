@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIUC-1, as a graph you can cite — a published vault</title>
+<meta name="description" content="An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/aiuc-1-graph/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/aiuc-1-graph/index.html">
+<meta property="og:title" content="AIUC-1, as a graph you can cite — a published vault">
+<meta property="og:description" content="An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "AIUC-1, as a graph you can cite — a published vault", "headline": "AIUC-1, as a graph you can cite — a published vault", "description": "An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.", "url": "https://sgit.ai/demos/vaults/aiuc-1-graph/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.49</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../network/index.html">All sites</a>
+      <a class="sl" href="../../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../../network/pki.html">pki</a>
+      <a class="sl" href="../../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / AIUC-1 graph</p>
+  <h1>AIUC-1, as a graph you can cite</h1>
+
+  <div class="warnbox"><b>Unofficial and derivative. Read this first.</b> This vault is a machine-readable catalog of the public AIUC-1 agent standard, built by the sgit.ai graph estate. In its own words: <em>"It is <b>not</b> approved, certified, endorsed or reviewed by AIUC. It is <b>not</b> an official AIUC API, export or data feed. It is <b>not</b> a substitute for the standard."</em> The canonical sources are <a href="https://www.aiuc-1.com/" rel="noopener" target="_blank">aiuc-1.com &#8599;</a> and the <a href="https://github.com/aiunderwriting/AIUC-1-Changelog" rel="noopener" target="_blank">official changelog repository &#8599;</a>. <b>Where anything here disagrees with those, those are right and this is wrong.</b> It makes no compliance, certification, underwriting, insurance, legal or security claim about anybody, and cannot be used to make one.</div>
+
+  <p class="lead">A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph &mdash; where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. <b>53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges</b>, over five releases.</p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu</code><br>
+  <span class="small dim">Published as a read key. The vault key is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <div class="sgv-uiembed" data-vault="hq21tlqu" data-readkey="4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">a control, in edges</span>
+        <h3>The graph is the point, not the list</h3>
+        <p>Open any control and the app draws what it <em>is</em> in terms of its relationships: <code>has_requirement</code>, <code>maps_to</code>, <code>evidenced_by</code>, <code>includes</code>, <code>applies_to_capability</code>, <code>tagged</code>. Control A001 alone resolves to 1 domain, 3 requirements, 20 crosswalks, 4 sources, 4 releases, 1 capability and 3 keywords.</p>
+        <p>That is <a href="../../../network/graphs.html">graphs.sgit.ai</a>'s argument applied to a compliance standard: a verb-per-edge vocabulary rather than a bag of properties, so <em>"what does this control map to"</em> is a traversal instead of a search.</p>
+        <p>Every control carries its official page URL, so a reader can leave for the source in one click.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="Control A001 decomposed into its edges, with the official page link and the disclaimer banner above."><figcaption>The disclaimer sits above every view, in the app itself.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the evidence</span>
+        <h3>Eighty-two pages, each with the hash of what was received</h3>
+        <p>The Evidence tab is one row per captured page: the URL, the HTTP status, the retrieval timestamp, <b>the SHA-256 of the bytes</b>, and the path to the retained gzipped snapshot inside the vault. As it puts it: <em>"any claim above can be checked against the bytes it was read from rather than against this catalog's word for it."</em></p>
+        <p>It also publishes <b>where its two sources disagree</b> &mdash; five reconciliation findings where the website and the official repository differ on guidance formatting or bullet order, each classified as presentation rather than meaning. And then the line that makes the whole thing trustworthy:</p>
+      </div>
+      <figure class="shot" data-shot="evidence.webp" data-dir="images/" data-alt="82 source observations with hashes and snapshots, and the five source disagreements."><figcaption>Validation, reconciliation and drift, each with its own counter.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="note"><b>"None of these is resolved here. Resolving one means choosing a source, and that is not this build's to choose."</b></div>
+  <p>That is the discipline the rest of the catalog rests on. A derived artefact that silently picks a winner when its sources conflict has stopped being derived and started being an opinion &mdash; and the reader cannot tell which. This one preserves both readings, classifies the difference, and stops a release being marked <code>validated</code> if a difference changes meaning.</p>
+
+  <h2>Five releases, one of them deliberately unbuilt</h2>
+  <p>The catalog covers 2025-10-01, 2026-01-15, 2026-04-15 and 2026-07-15. A fifth &mdash; 2025-07-22 &mdash; is <b>named by AIUC but carries no commit</b>, so it could not be built, and it is recorded as unbuilt rather than quietly dropped. That is the same instinct as listing an unpublished site in <a href="../../../network/index.html">the network directory</a> instead of omitting it: an absence somebody can see is worth more than a tidy list.</p>
+  <p>Alongside the releases sit <b>194 derived change events</b> from release-to-release differences, kept separate from the <b>104 change rows AIUC publishes itself</b> &mdash; derived and official never mixed.</p>
+
+  <h2>How it was collected</h2>
+  <p>The source policy is unusually explicit, and worth quoting because most scrapers do not write one:</p>
+  <ul>
+    <li>An identifying user agent naming the build and where to complain.</li>
+    <li><b>At most one request per second</b> per host.</li>
+    <li><code>robots.txt</code> fetched before any page. It returned 404 at capture time, so there were no directives &mdash; and <em>the manifest records that observation verbatim rather than the conclusion alone</em>.</li>
+    <li>No authentication, no private endpoints, no slug guessing: <b>every page fetched was linked from a page already fetched</b>.</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>It asks for nothing.</b> <code>app.json</code> declares <code>"permissions": {}</code> with <code>present: true</code>.</p>
+  <p><b>Audited before publishing.</b> No sgit credentials, no third-party API keys, no private keys.</p>
+  <p><b>One open question, which the vault raises itself and we are not hiding.</b> Its <code>NOTICE.md</code> and <code>docs/source-policy.md</code> record that <b>reuse rights for the full AIUC-1 control text have not been confirmed with AIUC</b>, and that anyone republishing the catalog publicly should confirm them first. Publishing this read key is exactly that kind of republication. It is here at the author's decision, with the vault's own disclaimers reproduced above rather than summarised away. The vault also states the remedy plainly: <em>"If you are AIUC and want something here changed or removed, the fastest route is the sgit.ai project behind graphs.sgit.ai. Removal will be honoured."</em> That undertaking is repeated here and applies to this page too.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
+<script>
+(function () {
+  fetch('../../../assets/shots.js?v=v0.2.49')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.49</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.49';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
