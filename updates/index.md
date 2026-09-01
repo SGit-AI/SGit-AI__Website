@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -30,6 +30,27 @@ Two things: [the network directory](../network/index.md) grew a chat box, and a 
 One fix worth recording. The matcher first sent *"I need to cite a regulation precisely"* to **wardley-maps**, because it only knew each site's own vocabulary — standards.sgit.ai says *provision*, and the reader typed *regulation*. Site entries now carry an `aliases` field holding the words readers actually arrive with. Five real questions, five correct first hits; nonsense still returns nothing rather than a confident wrong answer.
 
 Also live: **[Scaling Threat Modeling with Semantic Knowledge Graphs](../demos/vaults/threatmodcon-2025/index.md)** — ThreatModCon 2025, Barcelona. Eleven linked threat models from customer to compute instance, so a vulnerability in a line of code traces up to the revenue it risks. 51 nodes, 179 threats, five interactive views and five Wardley walkthroughs, all running offline in the vault. Two of its data files are **invalid JSON upstream** and are repaired here, with the repair proved rather than asserted: the only differences are four stray brackets removed and one `],` added, and the multiset of content lines is unchanged.
+
+### [A standard as a graph, and the one line that makes it trustworthy](#a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy) [v0.2.49](../admin/versions.md)
+
+vaultsgraphsprovenancestandards
+
+[AIUC-1, as a graph you can cite](../demos/vaults/aiuc-1-graph/index.md) joins the published vaults — an **unofficial, derivative** machine-readable catalog of the public AIUC-1 agent standard. It is not approved, certified or endorsed by AIUC, and the page carries that in a box above everything else rather than in a footnote.
+
+- **53 controls, 144 requirements, 1,126 crosswalks** to 13 external frameworks, resolving to 1,238 nodes and 3,526 edges across five releases.
+- **Every field names its source.** Each control carries the official page it was read from; each of the 82 captured pages carries its HTTP status, retrieval timestamp, the **SHA-256 of the bytes**, and the retained gzipped snapshot inside the vault.
+- **A control is drawn as its edges** — `has_requirement`, `maps_to`, `evidenced_by`, `applies_to_capability` — which is [graphs.sgit.ai](../network/graphs.md)'s argument applied to a compliance standard.
+- **A release that could not be built is recorded as unbuilt.** AIUC names a 2025-07-22 release that carries no commit, so the catalog says so rather than dropping it.
+
+The best thing in it is a refusal. It publishes the five places where the official website and the official changelog repository disagree, classifies each as presentation rather than meaning, and then declines to pick:
+
+**"None of these is resolved here. Resolving one means choosing a source, and that is not this build's to choose."**
+
+A derived artefact that silently picks a winner when its sources conflict has stopped being derived and become an opinion — and the reader cannot tell which. This one preserves both readings and stops a release being marked `validated` if a difference changes meaning.
+
+Its collection policy is worth copying too: an identifying user agent, one request per second, no authentication, no slug guessing, every page reached from a page already fetched — and `robots.txt` fetched first, returning 404 at capture time, **with the manifest recording that observation verbatim rather than the conclusion alone**.
+
+One thing stated plainly rather than buried: the vault's own `NOTICE.md` records that **reuse rights for the full AIUC-1 control text have not been confirmed with AIUC**, and that anyone republishing publicly should confirm first. Publishing this read key is that kind of republication, and it is here at the author's decision with the vault's disclaimers reproduced rather than summarised. The vault's undertaking — *"If you are AIUC and want something here changed or removed… removal will be honoured"* — is repeated on the page and applies to it too.
 
 ## 2026-08-26
 

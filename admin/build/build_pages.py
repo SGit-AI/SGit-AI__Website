@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.48'
+SITE_VERSION = 'v0.2.49'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,36 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.48', '2026-08-27', 'this release',
+    ('v0.2.49', '2026-08-27', 'this release',
+     "AIUC-1 AS A CITABLE GRAPH — an unofficial, derivative machine-readable catalog of the public "
+     "AIUC-1 agent standard, and the twenty-second published vault. 53 controls, 144 requirements, "
+     "1,126 crosswalks to 13 external frameworks, 1,238 nodes and 3,526 edges over five releases, "
+     "with every field naming the official page or commit it was read from, the SHA-256 of the "
+     "retrieved bytes and the retrieval time. A control renders as its EDGES rather than a "
+     "property bag — has_requirement, maps_to, evidenced_by, applies_to_capability — which is the "
+     "graphs.sgit.ai grammar applied to a compliance standard. THE BEST THING IN IT IS A REFUSAL: "
+     "it publishes the five places where the official website and the official changelog "
+     "repository disagree, classifies each as presentation rather than meaning, and declines to "
+     "resolve them — 'resolving one means choosing a source, and that is not this build's to "
+     "choose'. A derived artefact that silently picks a winner has stopped being derived and "
+     "become an opinion the reader cannot detect. Also: a release AIUC names but which carries no "
+     "commit is recorded as UNBUILT rather than dropped, and 194 derived change events are kept "
+     "separate from the 104 change rows AIUC publishes itself. Collection policy is explicit and "
+     "worth copying — identifying user agent, one request per second, no auth, no slug guessing, "
+     "every page reached from a page already fetched, and robots.txt fetched first (404 at capture "
+     "time, with the manifest recording that observation verbatim rather than the conclusion "
+     "alone). INTAKE NOTE: the credential arrived as a sgit_private_read_ READ key inside a vault "
+     "URL — the first submission in that form since the classifier learned the prefix, and it "
+     "classified correctly as publishable rather than coming back 'unrecognised'. Nothing had to "
+     "be derived. THE HOLD THAT WAS RAISED AND THEN CLEARED BY THE AUTHOR: the vault's own "
+     "NOTICE.md and docs/source-policy.md state that reuse rights for the full AIUC-1 control text "
+     "have NOT been confirmed with AIUC and that anyone republishing publicly should confirm them "
+     "first. Publishing a read key is exactly that republication, so the work stopped and asked "
+     "rather than proceeding past a warning the vault carries about itself; the author chose to "
+     "publish as-is. The page therefore reproduces the vault's disclaimers in full above the fold "
+     "instead of summarising them away, and repeats its removal undertaking. Audit otherwise "
+     "clean: no sgit credentials, no third-party API keys, no private keys; permissions {}."),
+    ('v0.2.48', '2026-08-27', 'obj-cas-imm-2d922c5fe406',
      "BOTH PRESENTATION VAULTS NOW LINK THEIR PUBLIC SOURCE. Confirmed by the author that "
      "the-cyber-boardroom/Presentation__BlackHat-EU__Dec-2025 and "
      "DinisCruz/Presentation-Threat-Mod-Con-2025 are public repositories. This settles a question "

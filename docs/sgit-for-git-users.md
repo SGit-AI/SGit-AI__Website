@@ -2,7 +2,7 @@
 
 > The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
 
-*Source: <https://sgit.ai/docs/sgit-for-git-users.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/sgit-for-git-users.html> · site v0.2.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

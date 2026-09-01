@@ -2,7 +2,7 @@
 
 > Four apps in one encrypted vault: lifting meaning from fictional voice notes to Article 9(2) of the EU AI Act into typed semantic graphs — with read scoped to one folder, write nowhere, and the briefings it was built from shipped beside the work.
 
-*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
