@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.49'
+SITE_VERSION = 'v0.2.50'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,21 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.49', '2026-08-27', 'this release',
+    ('v0.2.50', '2026-08-27', 'this release',
+     "OPEN THE VAULT IN A NEW TAB, and a path that sent a reader to a 404. The AIUC-1 catalog is a "
+     "full application and has far more room in its own tab than in the embedded frame, so the "
+     "page now carries a prominent button at the three points where a reader is actually deciding "
+     "whether to leave: under the lead, at the embed, and at the end. All three open in a new tab "
+     "with rel=noopener, verified in a browser rather than assumed. THE 404: the page referred to "
+     "`NOTICE.md` and `docs/source-policy.md` as bare filenames, and a reader reasonably went "
+     "looking for them in a GitHub repository, where they do not exist — checked, the CLI repo has "
+     "no docs/ directory at all and zero matches for source-policy. Those files live INSIDE THE "
+     "VAULT and nowhere else, which is the whole point of the vault, and the page now says so at "
+     "the point of reference. Worth recording because the site itself was not at fault: sgit.ai "
+     "renders both as plain <code>, never as links, in the HTML and in the .md twin — the failure "
+     "was that a filename with no stated home invites a reader to guess one, and a guess against a "
+     "repository is the obvious guess. Naming the container is part of naming the file."),
+    ('v0.2.49', '2026-08-27', 'obj-cas-imm-133059705000',
      "AIUC-1 AS A CITABLE GRAPH — an unofficial, derivative machine-readable catalog of the public "
      "AIUC-1 agent standard, and the twenty-second published vault. 53 controls, 144 requirements, "
      "1,126 crosswalks to 13 external frameworks, 1,238 nodes and 3,526 edges over five releases, "
