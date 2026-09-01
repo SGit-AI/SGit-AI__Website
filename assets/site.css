@@ -666,3 +666,9 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
 .nc-keysave{font:inherit;font-size:.8rem;padding:.4rem .8rem;border-radius:8px;
             border:1px solid var(--line2);background:var(--panel2);color:var(--fg);cursor:pointer}
 @media print{.netchat{display:none}}
+
+/* "Open the vault in a new tab" — these vault apps are full applications and have far
+   more room in their own tab than in the embedded frame, so the button is repeated at
+   the points where a reader is deciding: the top, the embed, and the end. */
+.openrow{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:1rem 0}
+.btn-open{font-size:.95rem;font-weight:600;padding:.6rem 1.15rem}

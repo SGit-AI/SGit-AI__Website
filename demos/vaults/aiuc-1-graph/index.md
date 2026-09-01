@@ -2,7 +2,7 @@
 
 > An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,12 +14,16 @@
 
 A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph — where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. **53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges**, over five releases.
 
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)It is a full application — it has a lot more room in its own tab than in the frame below.
+
 **Open it yourself — the key is the whole credential.**
  Read key: `sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
 Published as a read key. The vault key is not published and never will be.
 
 ## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)Or read it in the frame below.
 
 ## What is in it
 
@@ -70,7 +74,9 @@ The source policy is unusually explicit, and worth quoting because most scrapers
 
 **Audited before publishing.** No sgit credentials, no third-party API keys, no private keys.
 
-**One open question, which the vault raises itself and we are not hiding.** Its `NOTICE.md` and `docs/source-policy.md` record that **reuse rights for the full AIUC-1 control text have not been confirmed with AIUC**, and that anyone republishing the catalog publicly should confirm them first. Publishing this read key is exactly that kind of republication. It is here at the author's decision, with the vault's own disclaimers reproduced above rather than summarised away. The vault also states the remedy plainly: *"If you are AIUC and want something here changed or removed, the fastest route is the sgit.ai project behind graphs.sgit.ai. Removal will be honoured."* That undertaking is repeated here and applies to this page too.
+**One open question, which the vault raises itself and we are not hiding.** Its `NOTICE.md` and `docs/source-policy.md` — both of which are files **inside the vault**, readable by opening it above rather than in any GitHub repository — record that **reuse rights for the full AIUC-1 control text have not been confirmed with AIUC**, and that anyone republishing the catalog publicly should confirm them first. Publishing this read key is exactly that kind of republication. It is here at the author's decision, with the vault's own disclaimers reproduced above rather than summarised away. The vault also states the remedy plainly: *"If you are AIUC and want something here changed or removed, the fastest route is the sgit.ai project behind graphs.sgit.ai. Removal will be honoured."* That undertaking is repeated here and applies to this page too.
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)
 
 [← All published vaults](../index.md)
 
