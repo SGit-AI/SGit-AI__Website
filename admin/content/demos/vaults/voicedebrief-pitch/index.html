@@ -1,0 +1,64 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / VoiceDebrief pitch</p>
+  <h1>A three-minute pitch, delivered from a vault</h1>
+  <p class="lead">The VoiceDebrief pitch to Founder Institute, 2 September 2026 &mdash; not a deck <em>about</em> a vault but a deck <b>presented from</b> one. Twelve slides and five backup slides, speaker notes, a three-minute countdown, PDF and PPTX exports, and every source the pitch was built from, all behind one read key.</p>
+
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">It is a presenter app &mdash; arrow keys, <code>N</code> notes, <code>T</code> countdown, <code>F</code> fullscreen.</span></p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone 23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd</code><br>
+  <span class="small dim">Published as a read key. The vault key is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Or read it in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="95i2xqrd" data-readkey="23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the app</span>
+        <h3>A presenter, not a PDF</h3>
+        <p>The vault opens straight into the deck: a slide index down the left with <b>per-slide target timings</b> (0:00, 0:15, 0:30 &hellip; 2:50), a live 3:00 countdown, speaker notes on <code>N</code>, Focus, Fullscreen, and a Materials view listing everything else in the vault.</p>
+        <p>Twelve slides run from <em>"The buried action"</em> and <em>"Audio is everywhere, meaning is not"</em> through the product, the market, the money and the ask. Five backup slides sit below them for Q&amp;A &mdash; including one titled <em>"WhatsApp / ChatGPT already does this"</em>, which is the objection answered rather than avoided, and a 60-second version of the whole pitch.</p>
+        <p class="small dim">The footer says where it is running from: <em>delivered from an encrypted SG/Vault</em>.</p>
+      </div>
+      <figure class="shot" data-shot="slide-cost.webp" data-dir="images/" data-alt="The presenter app: timed slide index, countdown, notes and materials controls."><figcaption>Slide 7 of 12, with the timing ladder and the backup Q&amp;A set below it.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the working</span>
+        <h3>The sources ship with the pitch</h3>
+        <p>What makes this a vault rather than an export is everything <em>underneath</em> the slides: the approved outline with its claims-to-keep-exact list, the spoken script per slide with timings, the fifteen-part pitch pack, the event and research notes, the original product screenshots, and the PDF and PPTX exports of the same twelve slides.</p>
+        <p>A deck emailed as a PDF is the conclusion with the working removed. Here the argument and the evidence for it travel as one object, and the deck itself is built from <code>deck/src/deck.template.html</code> by a script in the vault &mdash; so the slides are generated, not hand-maintained.</p>
+      </div>
+      <figure class="shot" data-shot="slide-model.webp" data-dir="images/" data-alt="A content slide from the deck."><figcaption>Every claim on a slide has a script line and a source behind it in the same vault.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The first vault here that asks for anything</h2>
+  <p>Every other vault on this site declares <code>"permissions": {}</code>. This one is the exception, and it is a useful one:</p>
+  <pre class="shell">"permissions": { "downloads": true, "externalLinks": true }</pre>
+  <p>It offers PDF and PPTX buttons, so it asks for <b>downloads</b>. It links out to the live product, so it asks for <b>external links</b>. And that is the entire request &mdash; <b>no filesystem access at all</b>, not read, not write, at any path.</p>
+  <p>That is the permission model doing exactly what it is for. The grant is short enough to read in one line, it maps one-to-one onto two things you can see in the interface, and anything not on that line is not available to the app no matter what its code tries. Compare it with the <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a>'s empty grant and the difference is legible at a glance.</p>
+
+  <h2>Notes</h2>
+  <p><b>Audited before publishing.</b> No sgit credentials, no third-party API keys, no private keys.</p>
+  <p><b>What becomes public with it,</b> all of it apparently by design, but worth naming: the <b>unit economics and commercial terms</b> (measured &asymp;&pound;0.003 for a 42-second note, under &pound;0.20 for three minutes, a &pound;5 minimum top-up, and a 75/25 split on the key), the author's contact address on the closing slide, and the <b>three named judges</b> of the Founder Institute session with their affiliations. Those three appear as names, roles and affiliations only &mdash; there are no tactical notes about them anywhere in the vault.</p>
+  <p><b>It is a pitch, so it is arguing a case.</b> Read the numbers as a founder's stated plan rather than as audited results; the vault's own ground truth for product claims is the live site at <a href="https://voicedebrief.ai" rel="noopener" target="_blank">voicedebrief.ai &#8599;</a>, which it names as canonical over the deck.</p>
+
+  <p class="openrow" style="margin-top:1.6rem"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a></p>
+  <p class="small dim"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

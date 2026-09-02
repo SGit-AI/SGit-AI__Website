@@ -2,7 +2,7 @@
 
 > A commercial operating model published in the open: nine tools to productise, eight agentic roles, the engagement procedure and every template — with the live engagement register deliberately empty.
 
-*Source: <https://sgit.ai/demos/vaults/commercialisation/index.html> · site v0.2.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/commercialisation/index.html> · site v0.2.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

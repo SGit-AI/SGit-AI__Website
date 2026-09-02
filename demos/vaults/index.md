@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,6 +42,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md) | `k1izvg7e` | conference keynote | 87 files · 20 MB · 26 slides, 6 PDF exports, 8 research papers | `sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e) |
 | [Scaling Threat Modeling](threatmodcon-2025/index.md) | `0ict6flm` | conference session | 53 files · 4.1 MB · 11 layers, 51 nodes, 179 threats | `sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm) |
 | [AIUC-1 catalog & graph](aiuc-1-graph/index.md) | `hq21tlqu` | derived standard catalog (unofficial) | 135 files · 18 MB · 53 controls, 1,238 nodes, 82 source observations | `sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) |
+| [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md) | `95i2xqrd` | investor pitch, as a presenter app | 48 files · 17 MB · 12 slides + 5 backup, script and sources | `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd` | [open live ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
