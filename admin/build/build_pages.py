@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.50'
+SITE_VERSION = 'v0.2.51'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.50', '2026-08-27', 'this release',
+    ('v0.2.51', '2026-08-27', 'this release',
+     "A PITCH DELIVERED FROM A VAULT, and the first non-empty permission grant on the site. The "
+     "VoiceDebrief pitch to Founder Institute (2 Sep 2026) is the 23rd published vault and the "
+     "first that is a live presentation rather than a document set: opening it launches a "
+     "presenter app with twelve timed slides, a 3:00 countdown, speaker notes, Focus and "
+     "Fullscreen, five backup Q&A slides — one of which is titled 'WhatsApp / ChatGPT already "
+     "does this', the obvious objection answered rather than avoided — and a Materials view over "
+     "everything else. What makes it a vault rather than an export is that the WORKING ships with "
+     "the conclusion: the approved outline and its claims-to-keep-exact list, the spoken script "
+     "per slide with timings, the fifteen-part pitch pack, the research notes, the product "
+     "screenshots and the PDF/PPTX exports, with the deck itself generated from "
+     "deck/src/deck.template.html by a script in the vault rather than hand-maintained. THE "
+     "PERMISSION STORY IS THE REASON IT EARNS A PAGE: every other vault here declares "
+     "permissions {}, and this one declares downloads:true and externalLinks:true — it offers PDF "
+     "and PPTX buttons so it asks for downloads, it links to the live product so it asks for "
+     "external links, and that is the entire request, with NO FILESYSTEM ACCESS AT ALL at any "
+     "path. One readable line that maps one-to-one onto two visible affordances is the permission "
+     "model working as intended, and it reads better against the Risk Graph Explorer's empty "
+     "grant than any amount of explanation. AUDIT: credentials and third-party secrets clean. "
+     "Three disclosures are named on the page rather than left to be found, since a fundraising "
+     "deck is a different category from the rest of the estate — the unit economics and "
+     "commercial terms, the author's contact address on the closing slide, and the THREE NAMED "
+     "JUDGES of the session with their affiliations. That last one was checked before publishing "
+     "rather than after: the sources were read for tactical notes about the named individuals and "
+     "contain none, only names, roles and affiliations, which is the difference between "
+     "publishing a fact about a public event and publishing research about people."),
+    ('v0.2.50', '2026-08-27', 'obj-cas-imm-2de78eaae20b',
      "OPEN THE VAULT IN A NEW TAB, and a path that sent a reader to a 404. The AIUC-1 catalog is a "
      "full application and has far more room in its own tab than in the embedded frame, so the "
      "page now carries a prominent button at the three points where a reader is actually deciding "

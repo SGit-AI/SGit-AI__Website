@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -51,6 +51,27 @@ A derived artefact that silently picks a winner when its sources conflict has st
 Its collection policy is worth copying too: an identifying user agent, one request per second, no authentication, no slug guessing, every page reached from a page already fetched — and `robots.txt` fetched first, returning 404 at capture time, **with the manifest recording that observation verbatim rather than the conclusion alone**.
 
 One thing stated plainly rather than buried: the vault's own `NOTICE.md` records that **reuse rights for the full AIUC-1 control text have not been confirmed with AIUC**, and that anyone republishing publicly should confirm first. Publishing this read key is that kind of republication, and it is here at the author's decision with the vault's disclaimers reproduced rather than summarised. The vault's undertaking — *"If you are AIUC and want something here changed or removed… removal will be honoured"* — is repeated on the page and applies to it too.
+
+### [A three-minute pitch, delivered from a vault — and the first grant that is not empty](#a-pitch-delivered-from-a-vault) [v0.2.51](../admin/versions.md)
+
+vaultspermissionspresentation
+
+[The VoiceDebrief pitch to Founder Institute](../demos/vaults/voicedebrief-pitch/index.md) joins the published vaults — the 23rd, and not a deck *about* a vault but a deck **presented from** one.
+
+- **A presenter, not a PDF.** Twelve slides with per-slide target timings, a live 3:00 countdown, speaker notes, Focus and Fullscreen — plus five backup slides for Q&A, one of them titled *"WhatsApp / ChatGPT already does this"*, which is the obvious objection answered rather than avoided.
+- **The working ships with the conclusion.** The approved outline and its claims-to-keep-exact list, the spoken script per slide, the fifteen-part pitch pack, the research notes, the screenshots, and the PDF and PPTX exports — all in the same object as the slides. The deck is generated from a template by a script inside the vault, so the slides are built, not hand-maintained.
+
+**It is also the first vault here that asks for anything.** Every other one declares `"permissions": {}`. This one declares:
+
+```
+
+"permissions": { "downloads": true, "externalLinks": true }
+
+```
+
+It offers PDF and PPTX buttons, so it asks for downloads. It links to the live product, so it asks for external links. That is the whole request — **no filesystem access at all**, not read, not write, at any path. The grant is one line, it maps onto two things you can point at in the interface, and nothing outside it is reachable however the app is written. Set beside the [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md)'s empty grant, the difference is legible without reading any code.
+
+Audited clean on credentials. Three things become public with it, all apparently by design and all named on the page rather than left to be discovered: the unit economics and commercial terms, the author's contact address on the closing slide, and the three named judges of the session with their affiliations — names and roles only, with no tactical notes about them anywhere in the vault.
 
 ## 2026-08-26
 
