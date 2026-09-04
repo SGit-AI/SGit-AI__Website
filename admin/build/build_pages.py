@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.52'
+SITE_VERSION = 'v0.2.53'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,25 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.52', '2026-08-27', 'this release',
+    ('v0.2.53', '2026-08-27', 'this release',
+     "ONE OPEN BUTTON PER VAULT PAGE, NOT THREE. Reported from a phone, which is where it "
+     "actually hurt: the three pages carrying the open-in-a-new-tab button (AIUC-1, VoiceDebrief "
+     "pitch, Licence to Operate) placed one under the lead, one above the embed and one at the "
+     "foot. On a narrow viewport the first two sat within a single scroll, separated only by the "
+     "read-key note — two identical full-width buttons doing the same thing, which reads as a "
+     "layout bug rather than an offer. Reduced to ONE per page, positioned immediately above the "
+     "embed, because that is the only point where the reader is genuinely choosing between the "
+     "frame and a tab; the caption there now carries the REASON that had been sitting on the "
+     "button removed above it ('a full application', 'a presenter app', 'an interactive "
+     "simulation'), so nothing was lost by deleting two thirds of the buttons. The early exit is "
+     "still available and always was: all 24 vault pages carry 'open it read-only in a new tab' "
+     "as a text link inside the read-key note, which is what made the button under the lead "
+     "redundant twice over. Verified at 390x844 with a mobile user agent rather than by "
+     "eyeballing a desktop render: one button per page, no horizontal overflow, text link "
+     "present. The general lesson, since this will recur as more vaults arrive: repeating a "
+     "call to action is only helpful when the repetitions are far enough apart that a reader has "
+     "forgotten the first one — at one scroll's distance it is just clutter."),
+    ('v0.2.52', '2026-08-27', 'obj-cas-imm-618e386c76b0',
      "LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published "
      "vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 "
      "capabilities), the mandate is what the user expects and the only thing the policy insures "
