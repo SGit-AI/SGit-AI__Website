@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -30,6 +30,26 @@ Two things: [the network directory](../network/index.md) grew a chat box, and a 
 One fix worth recording. The matcher first sent *"I need to cite a regulation precisely"* to **wardley-maps**, because it only knew each site's own vocabulary — standards.sgit.ai says *provision*, and the reader typed *regulation*. Site entries now carry an `aliases` field holding the words readers actually arrive with. Five real questions, five correct first hits; nonsense still returns nothing rather than a confident wrong answer.
 
 Also live: **[Scaling Threat Modeling with Semantic Knowledge Graphs](../demos/vaults/threatmodcon-2025/index.md)** — ThreatModCon 2025, Barcelona. Eleven linked threat models from customer to compute instance, so a vulnerability in a line of code traces up to the revenue it risks. 51 nodes, 179 threats, five interactive views and five Wardley walkthroughs, all running offline in the vault. Two of its data files are **invalid JSON upstream** and are repaired here, with the repair proved rather than asserted: the only differences are four stray brackets removed and one `],` added, and the multiset of content lines is unchanged.
+
+### [An insurance policy for an agent — and the delta is the risk](#the-delta-is-the-risk) [v0.2.52](../admin/versions.md)
+
+vaultsagentspermissionsrisk
+
+[Licence to Operate](../demos/vaults/licence-to-operate/index.md) joins the published vaults — one agent, its policy, and a simulated conversation where every reply carries its price.
+
+**The idea worth stealing is the delta.** Three sets:
+
+- **CAN DO** — the grant. 12 capabilities.
+- **MAY DO** — the mandate. 4, and the only thing the policy insures: `crm:read`, `kb:search`, `llm:generate`, `mail:draft`.
+- **THE DELTA** — 8 capabilities inside the agent's reach and outside its authority, including `crm:write`, `crm:export`, `mail:send` and `shell:exec`. **No policy covers these.**
+
+The mandate is *"answer a customer's question from their own record and the help centre, and draft — never send — a reply."* The grant includes `shell:exec`. Nobody asked for it, nothing insures it, and the agent can reach it. That is [nhi.sgit.ai](../network/nhi.md)'s blast-radius argument made countable, and here the gap is priced rather than described.
+
+The simulation makes you spend it: a customer cannot log in, and each of three replies shows its cost before you commit — 1,400 tokens in band, 4,800 tokens and three records which *claims*, or a password reset that is `mail:send` and outside the mandate entirely. Underneath is a live rate table with a normal band, an ask-above threshold, a pool with an untouchable reserve, and customer records marked *uninsurable above 20*.
+
+**The permission grant proves the architecture rather than asserting it.** The vault holds the terms; your browser holds the run. And `app.json` requests `fs.read` and `downloads` — **read, no write, at any path**. An app that simulates spending against a policy is structurally incapable of editing the policy it spends against; not because it behaves, but because it never asked for the grant that would let it.
+
+One process note. The agent that built this vault supplied its own audit of all 16 commits, and it was accurate — but it was checked rather than accepted. Re-verified against a fresh read-key clone: no credentials anywhere, the `/home/claude/` build paths baked into the PDF are gone (zero occurrences), and the one full-length credential in the vault is the vault's **own** read key — confirmed by deriving it independently and matching byte for byte, rather than by trusting the label on it.
 
 ### [A standard as a graph, and the one line that makes it trustworthy](#a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy) [v0.2.49](../admin/versions.md)
 

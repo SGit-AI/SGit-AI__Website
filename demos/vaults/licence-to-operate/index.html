@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-root="../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Licence to Operate — an insurance policy for an agent, simulated — a published vault</title>
+<meta name="description" content="One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/licence-to-operate/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/licence-to-operate/index.html">
+<meta property="og:title" content="Licence to Operate — an insurance policy for an agent, simulated — a published vault">
+<meta property="og:description" content="One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Licence to Operate — an insurance policy for an agent, simulated — a published vault", "headline": "Licence to Operate — an insurance policy for an agent, simulated — a published vault", "description": "One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.", "url": "https://sgit.ai/demos/vaults/licence-to-operate/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.52</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../../../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../skills/index.html">Skills</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+      <a class="sl" href="../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../network/index.html">All sites</a>
+      <a class="sl" href="../../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../../network/pki.html">pki</a>
+      <a class="sl" href="../../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Licence to Operate</p>
+  <h1>Licence to Operate — an insurance policy for an agent, simulated</h1>
+  <p class="lead">One agent, its grant, its mandate, and the policy insuring that mandate &mdash; with a simulated support conversation where every turn offers three replies: <b>one inside the band, one that draws on the pool, one outside cover</b>. It answers <em>does this agent have the licence to operate</em> by letting you spend it.</p>
+
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">It is an interactive simulation &mdash; far better in its own tab.</span></p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3</code><br>
+  <span class="small dim">Derived one-way from a vault key that is not published and never will be. This vault also carries this same read key in its own <code>try-it/</code> folder &mdash; it is self-describing.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Or read it in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="posrhzp3" data-readkey="d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The idea worth stealing: the delta</h2>
+  <p>Three sets, and the gap between two of them is the whole argument:</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>What it is</th><th>In the demo</th></tr>
+    <tr><td><b>CAN DO</b> &mdash; the grant</td><td>Everything the agent is technically able to do</td><td><b>12 capabilities</b></td></tr>
+    <tr><td><b>MAY DO</b> &mdash; the mandate</td><td>What the user actually expects, and the only thing the policy insures</td><td><b>4</b> &mdash; <code>crm:read</code>, <code>kb:search</code>, <code>llm:generate</code>, <code>mail:draft</code></td></tr>
+    <tr><td><b>THE DELTA</b></td><td>Inside the agent's reach, outside its authority. <b>No policy covers these</b></td><td><b>8</b> &mdash; including <code>crm:write</code>, <code>crm:export</code>, <code>mail:send</code>, <code>shell:exec</code></td></tr>
+  </table></div>
+  <p>Written out like that, the risk stops being abstract. The mandate is <em>"answer a customer's question from their own record and the help centre, and draft &mdash; never send &mdash; a reply."</em> The grant includes <code>mail:send</code> and <code>shell:exec</code>. Nobody asked for those; nothing insures them; and the agent can reach them.</p>
+  <p>That is <a href="../../../network/nhi.html">nhi.sgit.ai</a>'s blast-radius argument made countable, and it is the same instinct as the <code>"permissions": {}</code> line this site keeps pointing at &mdash; except here the cost of the gap is priced.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the simulation</span>
+        <h3>Three replies, and each one has a price</h3>
+        <p>A customer cannot log in. You are <code>agent:concierge</code>, and you pick the reply. Each option carries its cost before you commit: <em>look up her record</em> (1,400 tokens, 1 record, in band), <em>read her record plus two linked accounts and write a long answer</em> (4,800 tokens, 3 records &mdash; <b>claims</b>), or <em>send a password reset right now</em> (<code>mail:send</code> &mdash; outside the mandate entirely).</p>
+        <p>Underneath sits the policy as a rate table: a normal band, an ask-above threshold, a per-action ceiling, a pool with an untouchable reserve, and a premium per interval. Customer records are marked <b>uninsurable above 20</b>. Scope is checked before an action; cost sometimes only after.</p>
+        <p>You can lapse the policy, reinstate it, or trigger a repricing event and watch the board move.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="The conversation, the workflow spine, the grant/mandate/delta board and the policy rate table."><figcaption>Licence held, mandate in force, policy paid, inside cover — all four asserted at the top, and all four losable.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Two stores, and the split is the architecture</h2>
+  <p>The vault's files hold the <b>terms</b>: the grant, the mandate, the policy, the scenarios, the rate table, the fixtures, the captions &mdash; version-controlled, changed only by commit. Your browser holds the <b>run</b>: every event, request, decision and premium movement your clicks produce.</p>
+  <p>And the permission grant proves the claim rather than asserting it:</p>
+  <pre class="shell">"permissions": { "fs": { "read": true }, "downloads": true }</pre>
+  <p><b>Read, and no write, at any path.</b> The app that simulates spending against a policy is structurally incapable of editing the policy it is spending against. Nothing you do in the simulation touches the vault &mdash; not because the app is well-behaved, but because it never asked for the grant that would let it.</p>
+
+  <h2>Notes</h2>
+  <p><b>Audited independently, and the author's own audit checked rather than taken on trust.</b> The agent that built this vault supplied a written audit of all 16 commits. Its three substantive claims were re-verified here against a fresh read-key clone: no credentials or third-party secrets anywhere (confirmed); the <code>/home/claude/</code> build paths baked into the PDF are gone (confirmed &mdash; zero occurrences, fixed in v0.3.1); and the only full-length credential in the vault is <b>this vault's own read key</b>, which was confirmed by deriving it independently and matching it byte for byte. The Risk Graph Explorer's key appears elided to <code>sgit_rk1_1c1b95f5&hellip;</code> and is not usable.</p>
+  <p class="small dim">One small addition to that audit: the self-referencing read key appears in <code>tryit.html</code> as well as the <code>try-it/</code> prompt the audit named. Deliberate in both places, and correct &mdash; a vault that tells you how to re-open it is doing the right thing.</p>
+  <p><b>Simulated, and it says so on the surface.</b> The banner in the conversation reads: <em>"Simulated — the terms are real files in this vault; the replies are scripted; the numbers are made up."</em> The unit of account is <code>cr</code>, and the app states plainly that it is not money.</p>
+
+  <p class="openrow" style="margin-top:1.6rem"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a></p>
+  <p class="small dim"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
+<script>
+(function () {
+  fetch('../../../assets/shots.js?v=v0.2.52')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.52</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../docs/installation.html">Installation</a>
+    <a href="../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../security/index.html">Security</a>
+    <a href="../../../why/index.html">Why does this exist?</a>
+    <a href="../../../use-cases/index.html">Use cases</a>
+    <a href="../../../case-studies/index.html">Case studies</a>
+    <a href="../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../llms.txt">llms.txt</a>
+    <a href="../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.52';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

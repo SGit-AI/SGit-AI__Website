@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.51</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.52</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -94,6 +94,21 @@
 </ul>
 <p>One fix worth recording. The matcher first sent <em>"I need to cite a regulation precisely"</em> to <b>wardley-maps</b>, because it only knew each site's own vocabulary — standards.sgit.ai says <em>provision</em>, and the reader typed <em>regulation</em>. Site entries now carry an <code>aliases</code> field holding the words readers actually arrive with. Five real questions, five correct first hits; nonsense still returns nothing rather than a confident wrong answer.</p>
 <p>Also live: <b><a href="../demos/vaults/threatmodcon-2025/index.html">Scaling Threat Modeling with Semantic Knowledge Graphs</a></b> — ThreatModCon 2025, Barcelona. Eleven linked threat models from customer to compute instance, so a vulnerability in a line of code traces up to the revenue it risks. 51 nodes, 179 threats, five interactive views and five Wardley walkthroughs, all running offline in the vault. Two of its data files are <b>invalid JSON upstream</b> and are repaired here, with the repair proved rather than asserted: the only differences are four stray brackets removed and one <code>],</code> added, and the multiset of content lines is unchanged.</p>
+  </article>
+  <article class="upd" id="the-delta-is-the-risk">
+    <h3><a href="#the-delta-is-the-risk">An insurance policy for an agent — and the delta is the risk</a> <a class="upd-ver" href="../admin/versions.html">v0.2.52</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">agents</span><span class="chip">permissions</span><span class="chip">risk</span></p>
+<p><a href="../demos/vaults/licence-to-operate/index.html">Licence to Operate</a> joins the published vaults — one agent, its policy, and a simulated conversation where every reply carries its price.</p>
+<p><b>The idea worth stealing is the delta.</b> Three sets:</p>
+<ul>
+<li><b>CAN DO</b> — the grant. 12 capabilities.</li>
+<li><b>MAY DO</b> — the mandate. 4, and the only thing the policy insures: <code>crm:read</code>, <code>kb:search</code>, <code>llm:generate</code>, <code>mail:draft</code>.</li>
+<li><b>THE DELTA</b> — 8 capabilities inside the agent's reach and outside its authority, including <code>crm:write</code>, <code>crm:export</code>, <code>mail:send</code> and <code>shell:exec</code>. <b>No policy covers these.</b></li>
+</ul>
+<p>The mandate is <em>"answer a customer's question from their own record and the help centre, and draft — never send — a reply."</em> The grant includes <code>shell:exec</code>. Nobody asked for it, nothing insures it, and the agent can reach it. That is <a href="../network/nhi.html">nhi.sgit.ai</a>'s blast-radius argument made countable, and here the gap is priced rather than described.</p>
+<p>The simulation makes you spend it: a customer cannot log in, and each of three replies shows its cost before you commit — 1,400 tokens in band, 4,800 tokens and three records which <em>claims</em>, or a password reset that is <code>mail:send</code> and outside the mandate entirely. Underneath is a live rate table with a normal band, an ask-above threshold, a pool with an untouchable reserve, and customer records marked <em>uninsurable above 20</em>.</p>
+<p><b>The permission grant proves the architecture rather than asserting it.</b> The vault holds the terms; your browser holds the run. And <code>app.json</code> requests <code>fs.read</code> and <code>downloads</code> — <b>read, no write, at any path</b>. An app that simulates spending against a policy is structurally incapable of editing the policy it spends against; not because it behaves, but because it never asked for the grant that would let it.</p>
+<p>One process note. The agent that built this vault supplied its own audit of all 16 commits, and it was accurate — but it was checked rather than accepted. Re-verified against a fresh read-key clone: no credentials anywhere, the <code>/home/claude/</code> build paths baked into the PDF are gone (zero occurrences), and the one full-length credential in the vault is the vault's <b>own</b> read key — confirmed by deriving it independently and matching byte for byte, rather than by trusting the label on it.</p>
   </article>
   <article class="upd" id="a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy">
     <h3><a href="#a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy">A standard as a graph, and the one line that makes it trustworthy</a> <a class="upd-ver" href="../admin/versions.html">v0.2.49</a></h3>
@@ -333,7 +348,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.51</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.52</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -372,7 +387,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.51';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.52';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
