@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.51'
+SITE_VERSION = 'v0.2.52'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,34 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.51', '2026-08-27', 'this release',
+    ('v0.2.52', '2026-08-27', 'this release',
+     "LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published "
+     "vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 "
+     "capabilities), the mandate is what the user expects and the only thing the policy insures "
+     "(4 — crm:read, kb:search, llm:generate, mail:draft), and the delta is the 8 that sit inside "
+     "the agent's reach and outside its authority with no policy covering them, including "
+     "crm:write, crm:export, mail:send and shell:exec. The mandate is 'answer a customer's "
+     "question from their own record and the help centre, and draft — never send — a reply'; the "
+     "grant includes shell:exec. That is nhi.sgit.ai's blast-radius argument made COUNTABLE, and "
+     "priced rather than described. The simulation makes a reader spend it: three replies per "
+     "turn, each showing its cost before commitment — in band, claims against the pool, or "
+     "outside cover — over a live rate table with a normal band, an ask-above threshold, an "
+     "untouchable reserve and customer records marked uninsurable above 20. ARCHITECTURE PROVED "
+     "BY THE GRANT: the vault holds the terms and the browser holds the run, and app.json "
+     "requests fs.read plus downloads — READ, NO WRITE, AT ANY PATH — so an app that simulates "
+     "spending against a policy is structurally incapable of editing the policy it spends "
+     "against. INTAKE: the credential submitted was a VAULT KEY in the legacy passphrase form, "
+     "not the read key the handover was written for — the classifier refused it, the read key was "
+     "derived, and only that is published. PROCESS NOTE WORTH KEEPING: the authoring agent "
+     "supplied its own audit of all 16 commits, and it was accurate — but it was CHECKED rather "
+     "than accepted. Three claims re-verified against a fresh read-key clone: no credentials or "
+     "third-party secrets (confirmed), the /home/claude/ build paths baked into the PDF are gone "
+     "(confirmed, zero occurrences, fixed upstream in v0.3.1), and the single full-length "
+     "credential in the vault is the vault's OWN read key — established by deriving it "
+     "independently and matching it byte for byte rather than by trusting the label on it. That "
+     "check briefly looked like a finding, which is the argument for running it: a supplied audit "
+     "is evidence, not a substitute for the check."),
+    ('v0.2.51', '2026-08-27', 'obj-cas-imm-a13b6654c800',
      "A PITCH DELIVERED FROM A VAULT, and the first non-empty permission grant on the site. The "
      "VoiceDebrief pitch to Founder Institute (2 Sep 2026) is the 23rd published vault and the "
      "first that is a live presentation rather than a document set: opening it launches a "

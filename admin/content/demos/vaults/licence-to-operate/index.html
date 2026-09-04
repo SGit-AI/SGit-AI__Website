@@ -1,0 +1,65 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Licence to Operate</p>
+  <h1>Licence to Operate — an insurance policy for an agent, simulated</h1>
+  <p class="lead">One agent, its grant, its mandate, and the policy insuring that mandate &mdash; with a simulated support conversation where every turn offers three replies: <b>one inside the band, one that draws on the pool, one outside cover</b>. It answers <em>does this agent have the licence to operate</em> by letting you spend it.</p>
+
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">It is an interactive simulation &mdash; far better in its own tab.</span></p>
+
+  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3</code><br>
+  <span class="small dim">Derived one-way from a vault key that is not published and never will be. This vault also carries this same read key in its own <code>try-it/</code> folder &mdash; it is self-describing.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Or read it in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="posrhzp3" data-readkey="d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The idea worth stealing: the delta</h2>
+  <p>Three sets, and the gap between two of them is the whole argument:</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>What it is</th><th>In the demo</th></tr>
+    <tr><td><b>CAN DO</b> &mdash; the grant</td><td>Everything the agent is technically able to do</td><td><b>12 capabilities</b></td></tr>
+    <tr><td><b>MAY DO</b> &mdash; the mandate</td><td>What the user actually expects, and the only thing the policy insures</td><td><b>4</b> &mdash; <code>crm:read</code>, <code>kb:search</code>, <code>llm:generate</code>, <code>mail:draft</code></td></tr>
+    <tr><td><b>THE DELTA</b></td><td>Inside the agent's reach, outside its authority. <b>No policy covers these</b></td><td><b>8</b> &mdash; including <code>crm:write</code>, <code>crm:export</code>, <code>mail:send</code>, <code>shell:exec</code></td></tr>
+  </table></div>
+  <p>Written out like that, the risk stops being abstract. The mandate is <em>"answer a customer's question from their own record and the help centre, and draft &mdash; never send &mdash; a reply."</em> The grant includes <code>mail:send</code> and <code>shell:exec</code>. Nobody asked for those; nothing insures them; and the agent can reach them.</p>
+  <p>That is <a href="../../../network/nhi.html">nhi.sgit.ai</a>'s blast-radius argument made countable, and it is the same instinct as the <code>"permissions": {}</code> line this site keeps pointing at &mdash; except here the cost of the gap is priced.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the simulation</span>
+        <h3>Three replies, and each one has a price</h3>
+        <p>A customer cannot log in. You are <code>agent:concierge</code>, and you pick the reply. Each option carries its cost before you commit: <em>look up her record</em> (1,400 tokens, 1 record, in band), <em>read her record plus two linked accounts and write a long answer</em> (4,800 tokens, 3 records &mdash; <b>claims</b>), or <em>send a password reset right now</em> (<code>mail:send</code> &mdash; outside the mandate entirely).</p>
+        <p>Underneath sits the policy as a rate table: a normal band, an ask-above threshold, a per-action ceiling, a pool with an untouchable reserve, and a premium per interval. Customer records are marked <b>uninsurable above 20</b>. Scope is checked before an action; cost sometimes only after.</p>
+        <p>You can lapse the policy, reinstate it, or trigger a repricing event and watch the board move.</p>
+      </div>
+      <figure class="shot" data-shot="app-open.webp" data-dir="images/" data-alt="The conversation, the workflow spine, the grant/mandate/delta board and the policy rate table."><figcaption>Licence held, mandate in force, policy paid, inside cover — all four asserted at the top, and all four losable.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Two stores, and the split is the architecture</h2>
+  <p>The vault's files hold the <b>terms</b>: the grant, the mandate, the policy, the scenarios, the rate table, the fixtures, the captions &mdash; version-controlled, changed only by commit. Your browser holds the <b>run</b>: every event, request, decision and premium movement your clicks produce.</p>
+  <p>And the permission grant proves the claim rather than asserting it:</p>
+  <pre class="shell">"permissions": { "fs": { "read": true }, "downloads": true }</pre>
+  <p><b>Read, and no write, at any path.</b> The app that simulates spending against a policy is structurally incapable of editing the policy it is spending against. Nothing you do in the simulation touches the vault &mdash; not because the app is well-behaved, but because it never asked for the grant that would let it.</p>
+
+  <h2>Notes</h2>
+  <p><b>Audited independently, and the author's own audit checked rather than taken on trust.</b> The agent that built this vault supplied a written audit of all 16 commits. Its three substantive claims were re-verified here against a fresh read-key clone: no credentials or third-party secrets anywhere (confirmed); the <code>/home/claude/</code> build paths baked into the PDF are gone (confirmed &mdash; zero occurrences, fixed in v0.3.1); and the only full-length credential in the vault is <b>this vault's own read key</b>, which was confirmed by deriving it independently and matching it byte for byte. The Risk Graph Explorer's key appears elided to <code>sgit_rk1_1c1b95f5&hellip;</code> and is not usable.</p>
+  <p class="small dim">One small addition to that audit: the self-referencing read key appears in <code>tryit.html</code> as well as the <code>try-it/</code> prompt the audit named. Deliberate in both places, and correct &mdash; a vault that tells you how to re-open it is doing the right thing.</p>
+  <p><b>Simulated, and it says so on the surface.</b> The banner in the conversation reads: <em>"Simulated — the terms are real files in this vault; the replies are scripted; the numbers are made up."</em> The unit of account is <code>cr</code>, and the app states plainly that it is not money.</p>
+
+  <p class="openrow" style="margin-top:1.6rem"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a></p>
+  <p class="small dim"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

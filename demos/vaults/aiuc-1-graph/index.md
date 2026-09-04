@@ -2,7 +2,7 @@
 
 > An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
