@@ -2,7 +2,7 @@
 
 > A conference keynote shipped as a vault: the deck as presented, six PDF exports, eight research papers and the full source history of the slide system that renders it — all behind one read key, with the slide content as data the app reads at load time.
 
-*Source: <https://sgit.ai/demos/vaults/blackhat-eu-2025/index.html> · site v0.2.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/blackhat-eu-2025/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

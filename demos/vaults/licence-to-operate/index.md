@@ -2,7 +2,7 @@
 
 > One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,8 +12,6 @@
 
 One agent, its grant, its mandate, and the policy insuring that mandate — with a simulated support conversation where every turn offers three replies: **one inside the band, one that draws on the pool, one outside cover**. It answers *does this agent have the licence to operate* by letting you spend it.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)It is an interactive simulation — far better in its own tab.
-
 **Open it yourself — the key is the whole credential.**
  Read key: `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) · From the CLI: `sgit clone d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
@@ -21,7 +19,7 @@ Derived one-way from a vault key that is not published and never will be. This v
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)Or read it in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)An interactive simulation — far better in its own tab than in the frame below.
 
 ## The idea worth stealing: the delta
 
@@ -68,8 +66,6 @@ And the permission grant proves the claim rather than asserting it:
 One small addition to that audit: the self-referencing read key appears in `tryit.html` as well as the `try-it/` prompt the audit named. Deliberate in both places, and correct — a vault that tells you how to re-open it is doing the right thing.
 
 **Simulated, and it says so on the surface.** The banner in the conversation reads: *"Simulated — the terms are real files in this vault; the replies are scripted; the numbers are made up."* The unit of account is `cr`, and the app states plainly that it is not money.
-
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)
 
 [← All published vaults](../index.md)
 

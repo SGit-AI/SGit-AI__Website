@@ -2,7 +2,7 @@
 
 > The VoiceDebrief pitch to Founder Institute: a presenter app with timed slides, speaker notes and a countdown, shipped with the outline, script, research and exports it was built from — and the first vault here that asks for any permission at all.
 
-*Source: <https://sgit.ai/demos/vaults/voicedebrief-pitch/index.html> · site v0.2.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/voicedebrief-pitch/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,8 +12,6 @@
 
 The VoiceDebrief pitch to Founder Institute, 2 September 2026 — not a deck *about* a vault but a deck **presented from** one. Twelve slides and five backup slides, speaker notes, a three-minute countdown, PDF and PPTX exports, and every source the pitch was built from, all behind one read key.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)It is a presenter app — arrow keys, `N` notes, `T` countdown, `F` fullscreen.
-
 **Open it yourself — the key is the whole credential.**
  Read key: `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) · From the CLI: `sgit clone 23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd`
@@ -21,7 +19,7 @@ Published as a read key. The vault key is not published and never will be.
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)Or read it in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)A presenter app — arrow keys, `N` notes, `T` countdown. Much better in its own tab.
 
 ## What is in it
 
@@ -66,8 +64,6 @@ That is the permission model doing exactly what it is for. The grant is short en
 **What becomes public with it,** all of it apparently by design, but worth naming: the **unit economics and commercial terms** (measured ≈£0.003 for a 42-second note, under £0.20 for three minutes, a £5 minimum top-up, and a 75/25 split on the key), the author's contact address on the closing slide, and the **three named judges** of the Founder Institute session with their affiliations. Those three appear as names, roles and affiliations only — there are no tactical notes about them anywhere in the vault.
 
 **It is a pitch, so it is arguing a case.** Read the numbers as a founder's stated plan rather than as audited results; the vault's own ground truth for product claims is the live site at [voicedebrief.ai ↗](https://voicedebrief.ai), which it names as canonical over the deck.
-
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)
 
 [← All published vaults](../index.md)
 

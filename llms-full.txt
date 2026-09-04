@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.52). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.53). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -4202,11 +4202,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.52**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.53**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.52 | 2026-08-27 | this release | LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 capabilities), the mandate is what the user expects and the only thing the policy insures (4 — crm:read, kb:search, llm:generate, mail:draft), and the delta is the 8 that sit inside the agent's reach and outside its authority with no policy covering them, including crm:write, crm:export, mail:send and shell:exec. The mandate is 'answer a customer's question from their own record and the help centre, and draft — never send — a reply'; the grant includes shell:exec. That is nhi.sgit.ai's blast-radius argument made COUNTABLE, and priced rather than described. The simulation makes a reader spend it: three replies per turn, each showing its cost before commitment — in band, claims against the pool, or outside cover — over a live rate table with a normal band, an ask-above threshold, an untouchable reserve and customer records marked uninsurable above 20. ARCHITECTURE PROVED BY THE GRANT: the vault holds the terms and the browser holds the run, and app.json requests fs.read plus downloads — READ, NO WRITE, AT ANY PATH — so an app that simulates spending against a policy is structurally incapable of editing the policy it spends against. INTAKE: the credential submitted was a VAULT KEY in the legacy passphrase form, not the read key the handover was written for — the classifier refused it, the read key was derived, and only that is published. PROCESS NOTE WORTH KEEPING: the authoring agent supplied its own audit of all 16 commits, and it was accurate — but it was CHECKED rather than accepted. Three claims re-verified against a fresh read-key clone: no credentials or third-party secrets (confirmed), the /home/claude/ build paths baked into the PDF are gone (confirmed, zero occurrences, fixed upstream in v0.3.1), and the single full-length credential in the vault is the vault's OWN read key — established by deriving it independently and matching it byte for byte rather than by trusting the label on it. That check briefly looked like a finding, which is the argument for running it: a supplied audit is evidence, not a substitute for the check. |
+| v0.2.53 | 2026-08-27 | this release | ONE OPEN BUTTON PER VAULT PAGE, NOT THREE. Reported from a phone, which is where it actually hurt: the three pages carrying the open-in-a-new-tab button (AIUC-1, VoiceDebrief pitch, Licence to Operate) placed one under the lead, one above the embed and one at the foot. On a narrow viewport the first two sat within a single scroll, separated only by the read-key note — two identical full-width buttons doing the same thing, which reads as a layout bug rather than an offer. Reduced to ONE per page, positioned immediately above the embed, because that is the only point where the reader is genuinely choosing between the frame and a tab; the caption there now carries the REASON that had been sitting on the button removed above it ('a full application', 'a presenter app', 'an interactive simulation'), so nothing was lost by deleting two thirds of the buttons. The early exit is still available and always was: all 24 vault pages carry 'open it read-only in a new tab' as a text link inside the read-key note, which is what made the button under the lead redundant twice over. Verified at 390x844 with a mobile user agent rather than by eyeballing a desktop render: one button per page, no horizontal overflow, text link present. The general lesson, since this will recur as more vaults arrive: repeating a call to action is only helpful when the repetitions are far enough apart that a reader has forgotten the first one — at one scroll's distance it is just clutter. |
+| v0.2.52 | 2026-08-27 | obj-cas-imm-618e386c76b0 | LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 capabilities), the mandate is what the user expects and the only thing the policy insures (4 — crm:read, kb:search, llm:generate, mail:draft), and the delta is the 8 that sit inside the agent's reach and outside its authority with no policy covering them, including crm:write, crm:export, mail:send and shell:exec. The mandate is 'answer a customer's question from their own record and the help centre, and draft — never send — a reply'; the grant includes shell:exec. That is nhi.sgit.ai's blast-radius argument made COUNTABLE, and priced rather than described. The simulation makes a reader spend it: three replies per turn, each showing its cost before commitment — in band, claims against the pool, or outside cover — over a live rate table with a normal band, an ask-above threshold, an untouchable reserve and customer records marked uninsurable above 20. ARCHITECTURE PROVED BY THE GRANT: the vault holds the terms and the browser holds the run, and app.json requests fs.read plus downloads — READ, NO WRITE, AT ANY PATH — so an app that simulates spending against a policy is structurally incapable of editing the policy it spends against. INTAKE: the credential submitted was a VAULT KEY in the legacy passphrase form, not the read key the handover was written for — the classifier refused it, the read key was derived, and only that is published. PROCESS NOTE WORTH KEEPING: the authoring agent supplied its own audit of all 16 commits, and it was accurate — but it was CHECKED rather than accepted. Three claims re-verified against a fresh read-key clone: no credentials or third-party secrets (confirmed), the /home/claude/ build paths baked into the PDF are gone (confirmed, zero occurrences, fixed upstream in v0.3.1), and the single full-length credential in the vault is the vault's OWN read key — established by deriving it independently and matching it byte for byte rather than by trusting the label on it. That check briefly looked like a finding, which is the argument for running it: a supplied audit is evidence, not a substitute for the check. |
 | v0.2.51 | 2026-08-27 | obj-cas-imm-a13b6654c800 | A PITCH DELIVERED FROM A VAULT, and the first non-empty permission grant on the site. The VoiceDebrief pitch to Founder Institute (2 Sep 2026) is the 23rd published vault and the first that is a live presentation rather than a document set: opening it launches a presenter app with twelve timed slides, a 3:00 countdown, speaker notes, Focus and Fullscreen, five backup Q&A slides — one of which is titled 'WhatsApp / ChatGPT already does this', the obvious objection answered rather than avoided — and a Materials view over everything else. What makes it a vault rather than an export is that the WORKING ships with the conclusion: the approved outline and its claims-to-keep-exact list, the spoken script per slide with timings, the fifteen-part pitch pack, the research notes, the product screenshots and the PDF/PPTX exports, with the deck itself generated from deck/src/deck.template.html by a script in the vault rather than hand-maintained. THE PERMISSION STORY IS THE REASON IT EARNS A PAGE: every other vault here declares permissions {}, and this one declares downloads:true and externalLinks:true — it offers PDF and PPTX buttons so it asks for downloads, it links to the live product so it asks for external links, and that is the entire request, with NO FILESYSTEM ACCESS AT ALL at any path. One readable line that maps one-to-one onto two visible affordances is the permission model working as intended, and it reads better against the Risk Graph Explorer's empty grant than any amount of explanation. AUDIT: credentials and third-party secrets clean. Three disclosures are named on the page rather than left to be found, since a fundraising deck is a different category from the rest of the estate — the unit economics and commercial terms, the author's contact address on the closing slide, and the THREE NAMED JUDGES of the session with their affiliations. That last one was checked before publishing rather than after: the sources were read for tactical notes about the named individuals and contain none, only names, roles and affiliations, which is the difference between publishing a fact about a public event and publishing research about people. |
 | v0.2.50 | 2026-08-27 | obj-cas-imm-2de78eaae20b | OPEN THE VAULT IN A NEW TAB, and a path that sent a reader to a 404. The AIUC-1 catalog is a full application and has far more room in its own tab than in the embedded frame, so the page now carries a prominent button at the three points where a reader is actually deciding whether to leave: under the lead, at the embed, and at the end. All three open in a new tab with rel=noopener, verified in a browser rather than assumed. THE 404: the page referred to `NOTICE.md` and `docs/source-policy.md` as bare filenames, and a reader reasonably went looking for them in a GitHub repository, where they do not exist — checked, the CLI repo has no docs/ directory at all and zero matches for source-policy. Those files live INSIDE THE VAULT and nowhere else, which is the whole point of the vault, and the page now says so at the point of reference. Worth recording because the site itself was not at fault: sgit.ai renders both as plain `, never as links, in the HTML and in the .md twin — the failure was that a filename with no stated home invites a reader to guess one, and a guess against a repository is the obvious guess. Naming the container is part of naming the file. |
 | v0.2.49 | 2026-08-27 | obj-cas-imm-133059705000 | AIUC-1 AS A CITABLE GRAPH — an unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard, and the twenty-second published vault. 53 controls, 144 requirements, 1,126 crosswalks to 13 external frameworks, 1,238 nodes and 3,526 edges over five releases, with every field naming the official page or commit it was read from, the SHA-256 of the retrieved bytes and the retrieval time. A control renders as its EDGES rather than a property bag — has_requirement, maps_to, evidenced_by, applies_to_capability — which is the graphs.sgit.ai grammar applied to a compliance standard. THE BEST THING IN IT IS A REFUSAL: it publishes the five places where the official website and the official changelog repository disagree, classifies each as presentation rather than meaning, and declines to resolve them — 'resolving one means choosing a source, and that is not this build's to choose'. A derived artefact that silently picks a winner has stopped being derived and become an opinion the reader cannot detect. Also: a release AIUC names but which carries no commit is recorded as UNBUILT rather than dropped, and 194 derived change events are kept separate from the 104 change rows AIUC publishes itself. Collection policy is explicit and worth copying — identifying user agent, one request per second, no auth, no slug guessing, every page reached from a page already fetched, and robots.txt fetched first (404 at capture time, with the manifest recording that observation verbatim rather than the conclusion alone). INTAKE NOTE: the credential arrived as a sgit_private_read_ READ key inside a vault URL — the first submission in that form since the classifier learned the prefix, and it classified correctly as publishable rather than coming back 'unrecognised'. Nothing had to be derived. THE HOLD THAT WAS RAISED AND THEN CLEARED BY THE AUTHOR: the vault's own NOTICE.md and docs/source-policy.md state that reuse rights for the full AIUC-1 control text have NOT been confirmed with AIUC and that anyone republishing publicly should confirm them first. Publishing a read key is exactly that republication, so the work stopped and asked rather than proceeding past a warning the vault carries about itself; the author chose to publish as-is. The page therefore reproduces the vault's disclaimers in full above the fold instead of summarising them away, and repeats its removal undertaking. Audit otherwise clean: no sgit credentials, no third-party API keys, no private keys; permissions {}. |
@@ -6519,8 +6520,6 @@ One class of jsdom error is filtered from that test — and the vault records th
 
 A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph — where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. **53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges**, over five releases.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)It is a full application — it has a lot more room in its own tab than in the frame below.
-
 **Open it yourself — the key is the whole credential.**
  Read key: `sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
@@ -6528,7 +6527,7 @@ Published as a read key. The vault key is not published and never will be.
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)Or read it in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)A full application — it has far more room in its own tab than in the frame below.
 
 ## What is in it
 
@@ -6581,8 +6580,6 @@ The source policy is unusually explicit, and worth quoting because most scrapers
 
 **One open question, which the vault raises itself and we are not hiding.** Its `NOTICE.md` and `docs/source-policy.md` — both of which are files **inside the vault**, readable by opening it above rather than in any GitHub repository — record that **reuse rights for the full AIUC-1 control text have not been confirmed with AIUC**, and that anyone republishing the catalog publicly should confirm them first. Publishing this read key is exactly that kind of republication. It is here at the author's decision, with the vault's own disclaimers reproduced above rather than summarised away. The vault also states the remedy plainly: *"If you are AIUC and want something here changed or removed, the fastest route is the sgit.ai project behind graphs.sgit.ai. Removal will be honoured."* That undertaking is repeated here and applies to this page too.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)
-
 [← All published vaults](../index.md)
 
 
@@ -6600,8 +6597,6 @@ The source policy is unusually explicit, and worth quoting because most scrapers
 
 The VoiceDebrief pitch to Founder Institute, 2 September 2026 — not a deck *about* a vault but a deck **presented from** one. Twelve slides and five backup slides, speaker notes, a three-minute countdown, PDF and PPTX exports, and every source the pitch was built from, all behind one read key.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)It is a presenter app — arrow keys, `N` notes, `T` countdown, `F` fullscreen.
-
 **Open it yourself — the key is the whole credential.**
  Read key: `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) · From the CLI: `sgit clone 23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd`
@@ -6609,7 +6604,7 @@ Published as a read key. The vault key is not published and never will be.
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)Or read it in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)A presenter app — arrow keys, `N` notes, `T` countdown. Much better in its own tab.
 
 ## What is in it
 
@@ -6655,8 +6650,6 @@ That is the permission model doing exactly what it is for. The grant is short en
 
 **It is a pitch, so it is arguing a case.** Read the numbers as a founder's stated plan rather than as audited results; the vault's own ground truth for product claims is the live site at [voicedebrief.ai ↗](https://voicedebrief.ai), which it names as canonical over the deck.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd)
-
 [← All published vaults](../index.md)
 
 
@@ -6674,8 +6667,6 @@ That is the permission model doing exactly what it is for. The grant is short en
 
 One agent, its grant, its mandate, and the policy insuring that mandate — with a simulated support conversation where every turn offers three replies: **one inside the band, one that draws on the pool, one outside cover**. It answers *does this agent have the licence to operate* by letting you spend it.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)It is an interactive simulation — far better in its own tab.
-
 **Open it yourself — the key is the whole credential.**
  Read key: `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) · From the CLI: `sgit clone d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
@@ -6683,7 +6674,7 @@ Derived one-way from a vault key that is not published and never will be. This v
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)Or read it in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)An interactive simulation — far better in its own tab than in the frame below.
 
 ## The idea worth stealing: the delta
 
@@ -6730,8 +6721,6 @@ And the permission grant proves the claim rather than asserting it:
 One small addition to that audit: the self-referencing read key appears in `tryit.html` as well as the `try-it/` prompt the audit named. Deliberate in both places, and correct — a vault that tells you how to re-open it is doing the right thing.
 
 **Simulated, and it says so on the surface.** The banner in the conversation reads: *"Simulated — the terms are real files in this vault; the replies are scripted; the numbers are made up."* The unit of account is `cr`, and the app states plainly that it is not money.
-
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)
 
 [← All published vaults](../index.md)
 
