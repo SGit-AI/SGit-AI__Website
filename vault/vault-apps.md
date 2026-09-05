@@ -2,7 +2,7 @@
 
 > How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
 
-*Source: <https://sgit.ai/vault/vault-apps.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/vault-apps.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

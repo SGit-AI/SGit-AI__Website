@@ -2,7 +2,7 @@
 
 > The VoiceDebrief pitch to Founder Institute: a presenter app with timed slides, speaker notes and a countdown, shipped with the outline, script, research and exports it was built from — and the first vault here that asks for any permission at all.
 
-*Source: <https://sgit.ai/demos/vaults/voicedebrief-pitch/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/voicedebrief-pitch/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,0 +1,110 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / AIUC-1 conformance layer</p>
+  <h1>Provenance is not conformance</h1>
+
+  <div class="warnbox"><b>Unofficial and derivative. Read this first.</b> This vault is a copy of the <a href="../aiuc-1-graph/index.html">AIUC-1 catalogue vault</a> with one directory added. It inherits that vault's <code>NOTICE.md</code> whole: it is <b>not</b> approved, certified, endorsed or reviewed by AIUC, <b>not</b> an official AIUC API or data feed, and <b>not</b> a substitute for the standard. The canonical sources are <a href="https://www.aiuc-1.com/" rel="noopener" target="_blank">aiuc-1.com &#8599;</a> and the <a href="https://github.com/aiunderwriting/AIUC-1-Changelog" rel="noopener" target="_blank">official changelog repository &#8599;</a>; <b>where anything here disagrees with those, those are right and this is wrong.</b> The added layer carries a second disclaimer of its own, in its own words: <em>"It records what is evidenced and what is not; it certifies nobody, maps nothing officially, and makes no underwriting decision."</em> Nothing here is a compliance, certification, underwriting, insurance, legal or security claim about anybody, including the subjects it names &mdash; which are invented for the purpose.</div>
+
+  <p class="lead">A standard tells you what good looks like. It cannot tell you whether <em>you</em> do it. This vault keeps those two questions apart with two edges that are never allowed to touch &mdash; <code>evidenced_by</code>, <em>does the standard say this?</em>, and <code>attested_by</code>, <em>does this subject do this?</em> &mdash; and then asks the question the second edge makes possible: <b>given what is actually evidenced, on this date, what would be insurable?</b></p>
+
+  <div class="note"><b>Open it yourself &mdash; the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7</code><br>
+  From the CLI: <code>sgit clone sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7</code><br>
+  <span class="small dim">Published as a read key. The vault key is not published and never will be.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Thirteen tabs and a graph canvas &mdash; it has far more room in its own tab than in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="2wzct4k7" data-readkey="0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>A fork, and what a fork is allowed to change</h2>
+  <p>The <a href="../aiuc-1-graph/index.html">AIUC-1 catalogue</a> is still published here, unchanged, and it is still the thing to read if what you want is the standard as data. <b>This vault contains all of it.</b> Not a summary of it, not a re-derivation &mdash; the same bytes:</p>
+  <blockquote>&ldquo;<code>README.md</code>, <code>NOTICE.md</code>, <code>graph/</code>, <code>catalog/</code>, <code>sources/</code> and <code>evidence/</code> are byte-identical to the original, and the catalogue's own 21 tests still pass, including the one that rebuilds every source document to the word.&rdquo;</blockquote>
+  <p>That claim is checkable rather than decorative, and checking it is the first thing we did on the clone: <code>tests/run.py</code> reports <b>21/21 passed</b>, and the added layer's own <code>tests/test_conformance.py</code> reports <b>19 tests, 0 failed</b>. Neither opens the network.</p>
+  <p>It is the discipline that makes the fork readable at all. A derived artefact that quietly edits its source while adding to it leaves the reader unable to tell which parts are the standard and which are the opinion. Here the boundary is a directory: everything new is under <code>conformance/</code>, and stripping the extension returns the catalogue's app byte for byte &mdash; asserted by a test.</p>
+
+  <h2>The one rule the whole thing rests on</h2>
+  <p>Two verbs, in two graphs, that are never traversed in one query without the query naming which it used:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Edge</th><th>Lives in</th><th>Answers</th><th>Absent means</th></tr>
+    <tr><td><code>evidenced_by</code></td><td>the catalogue's <code>graph/edges.json</code></td><td>does the standard say this?</td><td>a build defect</td></tr>
+    <tr><td><code>attested_by</code></td><td>the layer's <code>conformance/graph/edges.json</code></td><td>does <em>this subject</em> do this?</td><td><b>the control is unevidenced &mdash; which is the finding</b></td></tr>
+  </table></div>
+  <p>The rule is enforced rather than described: <em>"<code>tests/test_conformance.py::test_two_edge_rule</code> is red if a layer edge ever reaches a <code>source_observation</code>."</em> In the explorer the two are drawn in different colours, under different legend headings, and never share a row.</p>
+  <p>The second row of that table is the interesting one. <b>Unevidenced is a state, and it is the default.</b> Every control in scope gets a row whether or not anyone has looked at it, so an absent row is never quietly read as compliance. The first build of one subject across all 53 controls comes out <b>2 evidenced, 48 unevidenced, 3 contradicted</b> &mdash; and that is the designed answer, not a failure to finish.</p>
+
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the layer, per control</span>
+        <h3>53 rows, a level out of five, and the date it expires</h3>
+        <p>Each row is a <code>conformance/v1</code> object: a state, a level from 0 to 5 derived from the requirements the control already has, the attestations behind it with their tier, and a <code>valid_until</code>. Levels are computed, not asserted &mdash; 1 is a core requirement evidenced, 2 is every core, 5 is all of them at the observed or third-party tier.</p>
+        <p>Two consequences of computing them fall straight out. Fourteen controls have no supplemental requirement and so skip level 3. And <b>six controls whose only requirement is third-party testing cannot leave level 0 on a self-report</b>, whatever the self-report says. A ladder you cannot climb by asserting things about yourself is a different object from a checklist.</p>
+      </div>
+      <figure class="shot" data-shot="conformance.webp" data-dir="images/" data-alt="The Conformance tab: subject and as_of date selectors, six counters, and the per-control table showing state, level and attestations."><figcaption>Pick a subject and a date; every one of the 53 controls has a row, and most of them say <code>unevidenced</code>.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">insurability</span>
+        <h3>The policy is a query, and time is what breaks it</h3>
+        <p>The layer composes with the <a href="../licence-to-operate/index.html">Licence to Operate</a> vault's instrument: the conformance state of each control becomes a <b>condition</b> or an <b>exclusion</b> on a <code>policy/v1</code>, and the bow ties decide which consequences are covered. At build time the answer is <b>1 condition met, 52 exclusions, 0 of 5 consequences covered</b> &mdash; every exclusion carrying its reason in the control's own words.</p>
+        <p>Then move the date. At 2027-01-15, <b>with nothing edited by anybody</b>, the single condition has expired and the policy has 53 exclusions. The vault states the point plainly: conditions become exclusions <em>"because the attestations behind them expire &mdash; which is the real-timeliness arriving as a consequence rather than as a feature."</em></p>
+        <p>And then it declines to overreach. The policy object carries a <code>does_not_prove</code> field, and what it says it does not prove is <em>"that any control is in place: it proves what was attested, at what tier, and when it expires"</em> &mdash; and <em>"that the underwriter would write it."</em></p>
+      </div>
+      <figure class="shot" data-shot="insurability.webp" data-dir="images/" data-alt="The insurability view: one condition met, 52 exclusions, zero of five consequences covered, with the reason for each in the control's own words."><figcaption>Coverage by consequence, with <em>why not</em> spelled out for each: <q>no preventive barrier is evidenced at the required level</q>.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">two graphs, one canvas</span>
+        <h3>The crosswalk becomes a join, and the join finds a problem</h3>
+        <p>AIUC-1 publishes 1,126 crosswalks to external frameworks as text. This layer resolves the EU AI Act ones into node ids in the published <a href="../regulation-graph/index.html">regulation graph vault</a> &mdash; with CELEX and a hash on each edge &mdash; so a crosswalk stops being a string and becomes a traversal between two vaults.</p>
+        <p><b>62 of the 1,126 resolve</b>, at article level, onto 27 articles. The remaining 1,064 target twelve frameworks with no published graph here, and are <em>reported unresolved rather than forced</em>. Then the join returns something neither vault knew alone: <b>8 of those 27 articles are amended by Regulation (EU) 2026/1744</b>, so the crosswalk was published against the text before amendment. That is a finding you cannot reach with a document.</p>
+      </div>
+      <figure class="shot" data-shot="graph.webp" data-dir="images/" data-alt="The rebuilt graph tab, with both graphs loaded as one and packs including 'The AI Act, by article (vault 73heuprz)'."><figcaption>The explorer, rebuilt on <a href="../../../network/graphs.html">graphs.sgit.ai</a>'s universe techniques &mdash; and one of its packs is <em>another vault</em>.</figcaption></figure>
+    </div>
+  </div>
+
+  <p>The explorer states its own arithmetic in the header: <em>"Both graphs are loaded &mdash; the catalogue's 2788 nodes and 11610 edges, and the conformance layer's 182 and 414 &mdash; as one, and the canvas draws the neighbourhood you ask for, not all of it."</em> A verb register covers all <b>41 edge types across both graphs</b>, each with a unique inverse, so a link reads correctly from whichever end you stand at; <b>595 anchors</b> tie nodes to the exact bytes they came from, verified at build and again in the browser.</p>
+
+  <h2>What it is honest about</h2>
+  <p>The layer publishes <b>17 findings</b> about itself, and the sharpest of them are the ones that undercut the ambition it was built with. The brief that specified it hoped the agent-to-standard join would be automatic; the finding records that it is not: <em>"the join needs an authored class map &mdash; it is not hand-free as the brief hoped."</em> Others record that the crosswalks resolve only at article level where the regulation graph has paragraphs, and that AIUC-1 has no recovery-barrier class at all, which is what stops several consequences from being coverable.</p>
+  <p>It also treats a stale acceptance as a first-class result. All three recorded acceptances, signed on 1 September, come back <b>stale</b> &mdash; not because anyone withdrew them, but because attestations written afterwards moved the barriers they were signed against. An acceptance is never edited here; its basis is captured at the moment of the decision and is allowed to go out of date on its own.</p>
+
+  <h2>Fourteen versions, seven of them a reconstruction</h2>
+  <p>The Versions tab is this vault's own history, and it makes the fork's provenance the first thing you see: <code>hq21tlqu</code> named as the original, <code>2wzct4k7</code> as this one. Fourteen versions, seven with a real commit &mdash; and seven marked <b>reconstructed, no commit</b>, because everything the original catalogue ships was generated in a single run and nothing records it being built in stages.</p>
+  <p>Those seven carry <code>reconstructed: true</code> and a <code>basis[]</code> naming the files that make each stage a distinct thing. It would have been easier to write seven plausible commits. Labelling them as a reconstruction is the same instinct as leaving the unbuilt release in the catalogue: <b>a named absence is worth more than a tidy one.</b></p>
+
+  <figure class="shot" data-shot="versions.webp" data-dir="images/" data-alt="The Versions tab: current version v0.12.1, 14 versions, 7 with a real commit, 7 reconstructed, and both vault ids named."><figcaption>Both vault ids, stated at the top of the history: what was copied, and what this is.</figcaption></figure>
+
+  <h2>The first vault here that asks to write</h2>
+  <p>The <a href="../aiuc-1-graph/index.html">catalogue</a> it was forked from declares <code>"permissions": {}</code>. Two vaults published here have asked for something before &mdash; <a href="../voicedebrief-pitch/index.html">the pitch</a> for downloads and external links, <a href="../licence-to-operate/index.html">licence to operate</a> for filesystem <em>read</em> &mdash; but this is the first to ask for a write grant, and the first to ask for the model bridge:</p>
+  <pre class="shell">"permissions": {
+  "fs":  { "read": true,
+           "write":  ["chat/"],
+           "mkdir":  ["chat/"],
+           "delete": ["chat/"] },
+  "llm": { "chat": true, "models": true, "usage": true }
+}</pre>
+  <p>The <b>Chat</b> tab threads with the vault's own model through <code>sg.llm.*</code>, grounded by tools that can read any file in the vault, query both graphs, and drive the tabs. This is the bridge that <a href="../../../network/index.html#agents-ai">llms.sgit.ai</a> documents and that <a href="../../../articles/chat-on-a-static-site.html">our own chat panel</a> could not use: the key lives below the permission floor in the host, and the app never sees it.</p>
+  <p>The write grant is the part to notice. It is <code>["chat/"]</code> and nothing else &mdash; so the conversation is stored in the vault, versioned like everything else, while <code>conformance/terms/</code>, the authored inputs the whole query depends on, <b>cannot be written by the app at all</b>. The host refuses. As the vault puts it: <em>"the vault holds the terms and the browser holds the run; the app never writes the terms."</em> A read-key visitor cannot write anywhere regardless; the grant matters to whoever holds the write key.</p>
+
+  <h2>It reads this estate, and hashes what it reads</h2>
+  <p>The References tab is unusual enough to call out. It names the sites and vaults this build drew on &mdash; <a href="../../../network/graphs.html">graphs.sgit.ai</a> for the explorer's techniques, <a href="../../../network/index.html#risk-governance">risks.sgit.ai</a> for the acceptance model, <a href="../../../network/pki.html">pki.sgit.ai</a> for the <code>policy/v1</code> object, <a href="../../../network/index.html#agents-ai">coding.sgit.ai</a> for the testing practice, and five published vaults including this site's own <a href="../regulation-graph/index.html">regulation graph</a> and <a href="../licence-to-operate/index.html">licence to operate</a> &mdash; and then copies the source documents into <code>references/documents/</code> <b>with a SHA-256 for each</b>.</p>
+  <p>It is the first vault published here that treats the rest of the network as a citable source rather than as background, and the first to record <em>where each idea it borrowed lands in its own files</em>. If the argument on <a href="../../../network/index.html">the network page</a> is that these twenty sites are one body of work, this is the first artefact that demonstrates it from the inside.</p>
+
+  <h2>Notes</h2>
+  <p><b>649 files, 43 MB</b> &mdash; against the catalogue's 135 files and 18 MB. The added weight is the layer, the rebuilt explorer, three decks with PDF exports, and the copied reference documents.</p>
+  <p><b>Audited before publishing.</b> No sgit vault keys, no third-party API keys, no private keys, no personal data. Two sgit read keys appear inside it, both by design and both already public: the <a href="../regulation-graph/index.html">regulation graph</a> it resolves crosswalks into, and the <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a> it inherits the acceptance model from.</p>
+  <p><b>The subjects are invented.</b> <code>team:support</code> and <code>agent:concierge</code> are constructed for the demonstration. Nothing on the Conformance tab is a statement about a real organisation's controls, and the conformance object exists to show the shape of the question, not to answer it about anybody.</p>
+  <p><b>The open question from the catalogue applies here too, doubled.</b> Its <code>NOTICE.md</code> records that reuse rights for the full AIUC-1 control text have not been confirmed with AIUC, and that anyone republishing it publicly should confirm them first. This vault republishes that text and adds a layer on top of it. It is here at the author's decision, with the disclaimers reproduced rather than summarised away, and the vault's own remedy stands: <em>"If you are AIUC and want something here changed or removed, the fastest route is the sgit.ai project behind graphs.sgit.ai. Removal will be honoured."</em> That undertaking is repeated here and applies to this page and to the <a href="../aiuc-1-graph/index.html">catalogue page</a> alike.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../aiuc-1-graph/index.html">&larr; The AIUC-1 catalogue this was forked from</a> &middot; <a href="../index.html">All published vaults</a></p>
+</main>

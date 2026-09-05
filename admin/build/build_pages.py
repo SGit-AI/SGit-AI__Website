@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.53'
+SITE_VERSION = 'v0.2.54'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.53', '2026-08-27', 'this release',
+    ('v0.2.54', '2026-09-05', 'this release',
+     "THE AIUC-1 VAULT, FORKED AND LAYERED — AND TWO PAGES FOR TWO ARTEFACTS, ONE ROW ON THE "
+     "LIST. Vault 2wzct4k7 arrived as an updated version of the AIUC-1 catalogue (hq21tlqu) and "
+     "the first instinct was to replace the page. Reading its own CONFORMANCE.md changed the "
+     "shape: it copies every byte of the catalogue and adds one directory above it, answering a "
+     "DIFFERENT question — not 'what does the standard say' (evidenced_by) but 'does this "
+     "subject do it' (attested_by), and then what would be insurable on a given date. Two "
+     "artefacts, not two versions. So the catalogue page stays exactly as it was, carrying a "
+     "note that names the fork; the fork gets its own page; and the vaults table carries ONE row "
+     "— the fork — whose description links back to the catalogue page, because a table of "
+     "published vaults is a list of things to open, not a changelog. VERIFIED RATHER THAN "
+     "REPEATED: the fork's claim is that it did not edit what it copied, so before publishing we "
+     "ran both suites in the clone — the catalogue's tests/run.py reports 21/21 passed, "
+     "including the one that rebuilds every source document to the word, and the layer's "
+     "tests/test_conformance.py reports 19 tests, 0 failed. Neither opens the network. That is "
+     "the difference between quoting a vault's self-description and checking it. Audit clean: no "
+     "vault keys, no third-party secrets, no personal data; the two sgit read keys inside it are "
+     "both already published here by design (regulation graph, Risk Graph Explorer). Four "
+     "screenshots captured against a local clone rather than the live host. One correction to a "
+     "claim we nearly made: this is NOT the first vault here to ask for a permission — the "
+     "VoiceDebrief pitch and Licence to Operate got there first — but it IS the first to ask for "
+     "a WRITE grant (fs.write scoped to chat/ and nothing else) and the first to ask for the "
+     "sg.llm bridge, which is the more interesting claim anyway."),
+    ('v0.2.53', '2026-08-27', 'obj-cas-imm-d889737f4500',
      "ONE OPEN BUTTON PER VAULT PAGE, NOT THREE. Reported from a phone, which is where it "
      "actually hurt: the three pages carrying the open-in-a-new-tab button (AIUC-1, VoiceDebrief "
      "pitch, Licence to Operate) placed one under the lead, one above the embed and one at the "
