@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,30 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-05
+
+### [Provenance is not conformance — the AIUC-1 vault, forked and layered](#provenance-is-not-conformance) [v0.2.54](../admin/versions.md)
+
+vaultsstandardsconformancegraphspermissions
+
+[Provenance is not conformance](../demos/vaults/aiuc-1-conformance/index.md) joins the published vaults. It is a **fork** of the [AIUC-1 catalogue vault](../demos/vaults/aiuc-1-graph/index.md) that keeps every byte of it and adds one directory above it — 649 files against the catalogue's 135. Both vaults stay published, and the catalogue page now says what it is and links to the fork.
+
+The distinction the whole thing rests on is two edges that are never allowed to touch:
+
+| edge | answers | absent means |
+|---|---|---|
+| `evidenced_by` | does the standard say this? | a build defect |
+| `attested_by` | does **this subject** do this? | the control is unevidenced — **which is the finding** |
+
+- **Unevidenced is a state, and it is the default.** Every control in scope gets a row whether or not anybody has looked at it, so an absent row is never read as compliance. The first build across all 53 controls comes out 2 evidenced, 48 unevidenced, 3 contradicted — the designed answer, not an unfinished one.
+- **Insurability is computed, not asserted.** Conformance states become conditions and exclusions on a `policy/v1`: 1 condition met, 52 exclusions, 0 of 5 consequences covered. Move the `as_of` date to 2027-01-15 with nothing edited by anybody and the condition has expired, leaving 53 exclusions.
+- **A crosswalk becomes a join between two vaults.** 62 of AIUC-1's 1,126 crosswalks resolve into article nodes in the published [regulation graph](../demos/vaults/regulation-graph/index.md), with CELEX and a hash on each edge; the other 1,064 are reported unresolved rather than forced. The join then finds something neither vault knew alone: **8 of the 27 target articles are amended by Regulation (EU) 2026/1744**, so the crosswalk was published against the text before amendment.
+- **The first vault here to ask for a write grant** — `fs.write` scoped to `["chat/"]` and nothing else, plus `sg.llm.*`. The chat is stored in the vault; the authored terms the query depends on cannot be written by the app at all.
+
+The claim that makes a fork readable is that it did not edit what it copied, and that claim is checkable rather than decorative. Run from the clone before publishing: the catalogue's own tests report **21/21 passed**, including the one that rebuilds every source document to the word, and the added layer's report **19 tests, 0 failed**.
+
+It remains unofficial and derivative — not approved, certified, endorsed or reviewed by AIUC, and not a substitute for the standard. The subjects it measures are invented for the demonstration. The catalogue's open question about reuse rights applies here too, doubled, and is stated on the page rather than tidied away.
 
 ## 2026-08-27
 

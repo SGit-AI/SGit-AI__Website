@@ -2,7 +2,7 @@
 
 > Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all.
 
-*Source: <https://sgit.ai/demos/vaults/vault-app-pocs/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/vault-app-pocs/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

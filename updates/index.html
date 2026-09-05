@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.53</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.54</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -80,6 +80,26 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-05</h2>
+  <article class="upd" id="provenance-is-not-conformance">
+    <h3><a href="#provenance-is-not-conformance">Provenance is not conformance — the AIUC-1 vault, forked and layered</a> <a class="upd-ver" href="../admin/versions.html">v0.2.54</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">standards</span><span class="chip">conformance</span><span class="chip">graphs</span><span class="chip">permissions</span></p>
+<p><a href="../demos/vaults/aiuc-1-conformance/index.html">Provenance is not conformance</a> joins the published vaults. It is a <b>fork</b> of the <a href="../demos/vaults/aiuc-1-graph/index.html">AIUC-1 catalogue vault</a> that keeps every byte of it and adds one directory above it — 649 files against the catalogue's 135. Both vaults stay published, and the catalogue page now says what it is and links to the fork.</p>
+<p>The distinction the whole thing rests on is two edges that are never allowed to touch:</p>
+<div class="tablewrap"><table>
+<tr><th>edge</th><th>answers</th><th>absent means</th></tr>
+<tr><td><code>evidenced_by</code></td><td>does the standard say this?</td><td>a build defect</td></tr>
+<tr><td><code>attested_by</code></td><td>does <b>this subject</b> do this?</td><td>the control is unevidenced — <b>which is the finding</b></td></tr>
+</table></div>
+<ul>
+<li><b>Unevidenced is a state, and it is the default.</b> Every control in scope gets a row whether or not anybody has looked at it, so an absent row is never read as compliance. The first build across all 53 controls comes out 2 evidenced, 48 unevidenced, 3 contradicted — the designed answer, not an unfinished one.</li>
+<li><b>Insurability is computed, not asserted.</b> Conformance states become conditions and exclusions on a <code>policy/v1</code>: 1 condition met, 52 exclusions, 0 of 5 consequences covered. Move the <code>as_of</code> date to 2027-01-15 with nothing edited by anybody and the condition has expired, leaving 53 exclusions.</li>
+<li><b>A crosswalk becomes a join between two vaults.</b> 62 of AIUC-1's 1,126 crosswalks resolve into article nodes in the published <a href="../demos/vaults/regulation-graph/index.html">regulation graph</a>, with CELEX and a hash on each edge; the other 1,064 are reported unresolved rather than forced. The join then finds something neither vault knew alone: <b>8 of the 27 target articles are amended by Regulation (EU) 2026/1744</b>, so the crosswalk was published against the text before amendment.</li>
+<li><b>The first vault here to ask for a write grant</b> — <code>fs.write</code> scoped to <code>["chat/"]</code> and nothing else, plus <code>sg.llm.*</code>. The chat is stored in the vault; the authored terms the query depends on cannot be written by the app at all.</li>
+</ul>
+<p>The claim that makes a fork readable is that it did not edit what it copied, and that claim is checkable rather than decorative. Run from the clone before publishing: the catalogue's own tests report <b>21/21 passed</b>, including the one that rebuilds every source document to the word, and the added layer's report <b>19 tests, 0 failed</b>.</p>
+<p>It remains unofficial and derivative — not approved, certified, endorsed or reviewed by AIUC, and not a substitute for the standard. The subjects it measures are invented for the demonstration. The catalogue's open question about reuse rights applies here too, doubled, and is stated on the page rather than tidied away.</p>
+  </article>
   <h2 class="upd-date">2026-08-27</h2>
   <article class="upd" id="the-directory-answers-questions-now">
     <h3><a href="#the-directory-answers-questions-now">The directory answers questions now — and the default tier needs no key</a> <a class="upd-ver" href="../admin/versions.html">v0.2.47</a></h3>
@@ -348,7 +368,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.53</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.54</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -387,7 +407,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.53';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.54';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -1,8 +1,22 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.53",
+  "site_version": "v0.2.54",
   "updates": [
+    {
+      "slug": "provenance-is-not-conformance",
+      "title": "Provenance is not conformance — the AIUC-1 vault, forked and layered",
+      "date": "2026-09-05",
+      "version": "v0.2.54",
+      "tags": [
+        "vaults",
+        "standards",
+        "conformance",
+        "graphs",
+        "permissions"
+      ],
+      "summary": "Provenance is not conformance joins the published vaults. It is a fork of the AIUC 1 catalogue vault that keeps every byte of it and adds one directory above it — 649 files against the catalogue's 135. Both vaults stay published, and the catalogue page now say…"
+    },
     {
       "slug": "the-directory-answers-questions-now",
       "title": "The directory answers questions now — and the default tier needs no key",

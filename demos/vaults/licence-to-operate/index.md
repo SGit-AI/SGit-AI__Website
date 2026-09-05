@@ -2,7 +2,7 @@
 
 > One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -457,7 +457,13 @@
     "path": "demos/vaults/aiuc-1-graph/index.html",
     "section": "vaults",
     "title": "AIUC-1, as a graph you can cite — a published vault",
-    "desc": "An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC."
+    "desc": "An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC. Forked, byte for byte, into the conformance layer vault."
+  },
+  {
+    "path": "demos/vaults/aiuc-1-conformance/index.html",
+    "section": "vaults",
+    "title": "Provenance is not conformance — a published vault",
+    "desc": "A fork of the AIUC-1 catalogue vault that keeps every byte of it and adds one directory: attested_by kept permanently apart from evidenced_by, 53 conformance rows for a named subject where unevidenced is the default, and insurability computed as a query that turns into 53 exclusions when the date moves. Unofficial and derivative; not approved or endorsed by AIUC."
   },
   {
     "path": "demos/vaults/voicedebrief-pitch/index.html",

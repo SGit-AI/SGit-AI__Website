@@ -2,7 +2,7 @@
 
 > From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.
 
-*Source: <https://sgit.ai/docs/quickstart.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/quickstart.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

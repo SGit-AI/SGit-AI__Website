@@ -1,8 +1,8 @@
 # AIUC-1, as a graph you can cite — a published vault
 
-> An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC.
+> An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC. Forked, byte for byte, into the conformance layer vault.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # AIUC-1, as a graph you can cite
 
 **Unofficial and derivative. Read this first.** This vault is a machine-readable catalog of the public AIUC-1 agent standard, built by the sgit.ai graph estate. In its own words: *"It is **not** approved, certified, endorsed or reviewed by AIUC. It is **not** an official AIUC API, export or data feed. It is **not** a substitute for the standard."* The canonical sources are [aiuc-1.com ↗](https://www.aiuc-1.com/) and the [official changelog repository ↗](https://github.com/aiunderwriting/AIUC-1-Changelog). **Where anything here disagrees with those, those are right and this is wrong.** It makes no compliance, certification, underwriting, insurance, legal or security claim about anybody, and cannot be used to make one.
+
+**This is the earlier vault, and it is kept exactly as it was.** A fork of it — [**the AIUC-1 conformance layer**](../aiuc-1-conformance/index.md), vault `2wzct4k7` — copies every file here byte for byte and adds one directory above it, answering a different question: not *what does the standard say*, but *does a given subject do it*, and what would be insurable on a given date. Both are published. This page is the catalogue on its own; the fork's page is the layer. Nothing on this page changed when the fork was made, and the fork's tests confirm the copy is byte-identical.
 
 A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph — where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. **53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges**, over five releases.
 
