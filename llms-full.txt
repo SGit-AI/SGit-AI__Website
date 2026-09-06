@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.54). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.55). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -3513,9 +3513,20 @@ This page exists because it happened here, to the vault that serves this site.
 
 This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.
 
-**For the agent reading this:** each brief below is a concrete, scoped request with evidence. The canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL (`sgit.ai/briefs.html`).
+**For the agent reading this:** the canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL. Every page on this site also has a `.md` twin and appears in [llms.txt](../llms.txt) and [llms-full.txt](../llms-full.txt), so a brief here is machine-readable without anyone doing extra work.
 
-## ← Inbound, from the SG/API team: the API reference was missing, and three of their findings did not survive checking
+**Two kinds live here, and they behave differently.** A **cross-team ask** is addressed to another team, carries a status, and closes when it is answered — it is a record of a conversation. A **build brief** is a durable reference written to be executed by an agent: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
+
+## Build briefs — written to be executed
+
+| Brief | What it is for |
+|---|---|
+| [**Telemetry from a published vault**](vault-telemetry-append-lanes.md) | How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder |
+| [**Publishing a vault**](../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
+
+## Cross-team asks — addressed, and status-tracked
+
+### ← Inbound, from the SG/API team: the API reference was missing, and three of their findings did not survive checking
 
 **Status:** acted on, [v0.2.34](../admin/versions.md) · **Trigger:** an agent was asked how to send a message between vaults and could not find the answer here · **Direction:** inbound.
 
@@ -3531,13 +3542,13 @@ Two more corrections came out of running the CLI rather than reading about it. `
 
 The pack’s own [acceptance test](../llms.txt) — give a fresh agent only `llms.txt` and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and the caveat that its derivation is **PROPOSED** rather than shipped. Two endpoints their audit flagged as unresolved (`/api/vault/zip`, `/join/*`) are [listed as unresolved rather than documented](../api/index.md#unresolved), which is what we would want done to us.
 
-## → To the sgit CLI team: first-class serialised diffs, and ignore support
+### → To the sgit CLI team: first-class serialised diffs, and ignore support
 
 **Status:** open · **Brief:** [briefs/brief-serialised-diff-and-ignore.md](brief-serialised-diff-and-ignore.md)
 
 Two asks, both the difference between a published claim and a shipped behaviour. The [serialised pull request](../use-cases/serialised-pull-request.md) is now the site's lead workflow example, and its emit half is shipped (`sgit history diff --json`) while the import half is not — the brief asks for `sgit diff export`/`apply` plus a published diff format specification. And the [one-folder-two-VCS workflow](../case-studies/one-tree-two-remotes.md) the site itself runs needs ignore support to be safe for anyone who starts from an existing git checkout: the ask is a single declaration of which paths belong to which system, generating both ignore files, with a build check that fails when a path is claimed by both.
 
-## → To the SG/Vault UI team: embed the vault app iframe in sgit.ai pages, reusing your code
+### → To the SG/Vault UI team: embed the vault app iframe in sgit.ai pages, reusing your code
 
 **Status:** **main ask answered** — read-key open shipped 15 Aug; one ask still open · **Briefing:** [briefs/briefing-sgvault-ui-embed.md](briefing-sgvault-ui-embed.md) · **Context:** the [demo-vaults plan](../admin/plans/why-expansion-plan.md).
 
@@ -3545,7 +3556,7 @@ Three demo vaults are about to be published as end-to-end walkthroughs, each end
 
 **Outcome, 15 August.** The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — `<64-hex>:<vault_id>`, the same shape `sgit clone` already took — and, decisively, tests it *before* the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit `R1 W0` / **Read-only** badge. The [demo page](../demos/vault-app-embed.md) carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed *in isolation*. A note worth recording for anyone reading this as a case study — the fix arrived with a [verification note attached](../case-studies/index.md), and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.
 
-## → To the CLI team: the canonical read-key prefix is accepted by the web loader and not by the installed CLI
+### → To the CLI team: the canonical read-key prefix is accepted by the web loader and not by the installed CLI
 
 **Status:** open · **Found by:** [the comparison test suite](../compare/index.md), which runs this check on every release.
 
@@ -3553,7 +3564,7 @@ The key-prefix contract defines `sgit_rk1_` as the canonical read-key form, and 
 
 **Confirmed on latest (17 Aug).** We upgraded specifically to check, and the prefixed form still derives the wrong ref on v0.15.0 while the bare form clones correctly on the same binary. The consequence is small but sharp: the form the contract tells people to publish is the form that fails on the CLI, so a user copying a published key from a page into a terminal gets an error that blames their key. The check stays in the suite and will flip to **holds** on its own when it stops reproducing — it already updated itself from v0.14.27 to v0.15.0 without anyone editing the claim. Re-run: `python3 admin/build/compare_tests.py`.
 
-## ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
+### ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
 
 **Status:** acted on, [v0.1.26](../admin/versions.md) · **Reported by:** an agent working from sgit.ai as documentation · **Direction:** inbound — the first brief filed *at* this site rather than by it.
 
@@ -3576,7 +3587,7 @@ The report was precise about whose fault each part was, which is what made it us
 
 Worth naming what this is: an agent read the documentation, failed, wrote up the failure with the fault lines drawn correctly, and the site changed. That is the same loop as the outbound briefs below, running in the other direction.
 
-## → To the sgit CLI team: serial transfer mode for Pyodide/WASM
+### → To the sgit CLI team: serial transfer mode for Pyodide/WASM
 
 **Status:** open · **Discovered:** live, during the first in-browser clone from the SG/Send servers.
 
@@ -3592,7 +3603,7 @@ SERIAL_TRANSFERS = (sys.platform == 'emscripten') or bool(os.environ.get('SGIT_S
 
 **Evidence it's correct:** validated natively against the live dev server with thread creation disabled and the executor swapped for a serial one — a full clone of this site's own vault (13 commits, 59 trees, **225 blobs**) produced a byte-correct working copy. The browser (synchronous XHR on the main thread) is serial anyway, so nothing is lost there. The website already ships this exact shim client-side (`assets/try-setup.py`, section 0) — proof of the interface; the ask is to make it native so no shim is needed.
 
-## → To the sgit CLI team: preserve history across a rekey
+### → To the sgit CLI team: preserve history across a rekey
 
 **Status:** open · **Discovered:** live, rotating this site's own vault key after an exposure (see the [case study](../case-studies/exposed-vault-key.md)).
 
@@ -3609,16 +3620,16 @@ It is a full graph rewrite with an ID remap table, not a new crypto design — t
 
 **One honest limit to document alongside it:** a rotation cannot un-publish what a mirror already holds. Ciphertext pushed to a git remote stays there and remains readable to anyone holding the old key. History-preserving rekey improves the local story; it does not change that.
 
-## → To the SG/Send API team: two browser-transport findings
+### → To the SG/Send API team: two browser-transport findings
 
 - **CORS allow-list is missing `x-api-key`.** sgit sends its token on both `x-sgraph-access-token` (allowed) and `X-API-Key` (not allowed). A single disallowed header fails the whole browser preflight — Starlette returns `400 Disallowed CORS headers` — which is what blocked the first in-browser clone. Either add `x-api-key` to the CORS middleware's `allow_headers`, or treat the second header as native-CLI-only. (The website's browser transport currently drops `X-API-Key` client-side as a workaround.)
 - **The presigned-S3 fallback dodges transport patching.** `_presigned_read_fallback` (large blobs) uses a function-local `urlopen` import, invisible to a monkey-patched transport and untested under CORS from a browser origin. Worth a look before large-blob vaults meet the browser.
 
-## → Roadmap note: a Web-Worker async transport
+### → Roadmap note: a Web-Worker async transport
 
 The in-browser terminal uses *synchronous* XHR, so the tab freezes during a network command and output appears only on completion. Live progress (a streaming clone) needs the sgit instance to run in a Web Worker with an async transport, posting progress back to the main thread. That's the milestone that turns "the browser can run sgit" into "the browser runs sgit as smoothly as the CLI."
 
-## The collaboration log so far
+### The collaboration log so far
 
 Other briefs this site's agent has produced and handed off (in the CLI repo):
 
@@ -3629,6 +3640,157 @@ Other briefs this site's agent has produced and handed off (in the CLI repo):
 This is what "the encrypted git for humans and AI agents" looks like from the inside: agents doing real work, filing real bugs, handing off with receipts.
 
 [← Home](../index.md)[Admin & engineering →](../admin/index.md)
+
+
+
+==============================================================================
+# Telemetry from a published vault — a build brief
+
+> How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
+>
+> Page: https://sgit.ai/briefs/vault-telemetry-append-lanes.html
+
+[Home](../index.md) / [Briefs](index.md) / Telemetry from a published vault
+
+# Telemetry from a published vault
+
+A build brief, written to be handed to the agent that will build the thing. The problem: a vault is about to be published with a **read key**, so every visitor can read every file in it — and it still needs to report anonymous usage back to its author. The answer is an **append lane**, and it works for one reason that is worth understanding before you write any code.
+
+**What a build brief is, and how it differs from the asks below it.** The [cross-team briefs](index.md) are requests addressed to another team, with a status, that close when answered. This is the other kind: a durable reference an agent executes. It carries the mechanism, the traps, the things to verify first, and — at the bottom — [the prompt to hand the builder](#prompt), written to be pasted rather than paraphrased.
+
+## What to read first
+
+| Page | What it gives you |
+|---|---|
+| [Vault messaging](../docs/vault-messaging.md) | The worked example: two vaults exchanging encrypted messages, end to end, with curl |
+| [API — append lanes](../api/append-lanes.md) | The six endpoints, the gates, the limits and the status codes |
+| [`sg.append`](../vault/sg-bridge.md) | The same transport from inside a vault app, plus the `sg.on` event push |
+| [PKI](../docs/pki.md) | Keypair lifecycle — `sgit pki keygen / export / encrypt / decrypt` |
+| [Sub-vaults](../vault/sub-vaults.md) | The *other* cross-vault mechanism — `*.link.json`, for reading across rather than writing |
+
+**One signpost, so you do not go looking.** The [Private Health Score vault](../demos/vaults/health-score/index.md) looks like the two-party case study and is not one: it is a single vault with three audiences — `patient/`, `doctor/` and `shared/` — split by *who is reading* rather than by copying, where sharing with the clinician means handing over a derived read key. There is no second vault and no message passing in it.
+
+## The mechanism: four capabilities, deliberately split
+
+| Capability | Holder | Can | Cannot |
+|---|---|---|---|
+| `append_token` | the sender | **write** | list, fetch, read anything |
+| `enum_key` | the vault owner | list, fetch, mark-processed | write, purge |
+| `write_key` | the vault owner | configure, purge | — |
+| private key | the vault owner | **decrypt** | *never sent to the server* |
+
+The server stores `SHA-256` of the first three and compares hashes. It never holds a raw capability key and never holds a private key at all. Two consequences decide the whole design:
+
+- **The write response is blind** — exactly `{"ok": true}`. No file ID, no count, no metadata. A sender cannot learn what else is in the lane, or whether theirs was the first write.
+- **No account is needed to send.** `POST /api/vault/append/write/{vault_id}` requires no access token; the `append_token` in the body is the entire gate.
+
+## The shape of it
+
+```
+   PUBLISHED VAULT (read key public)          TELEMETRY VAULT (private, yours)
+   ───────────────────────────────           ──────────────────────────────────
+   holds: append_token                       holds: enum_key, write_key,
+          + telemetry vault_id                      private key
+          + your PUBLIC key
+
+   a reader reaches step 4
+        │  encrypt(event, your_public_key)
+        │  POST /api/vault/append/write/{telemetry_vault_id}
+        ├────────────────────────────────▶  gate: H(append_token) ∈ append_anchors?
+        ◀────────────────────────────────   {"ok": true}   ← blind
+                                                  │
+                                            you: list (free) → fetch → decrypt locally
+```
+
+## Why publishing the token is acceptable — and where it stops being
+
+Every visitor holds the published vault's read key, so **every visitor can read the `append_token` out of it.** That is not avoidable, and it is not the mistake it looks like: an append token grants *write only*. A visitor who extracts it cannot list the lane, cannot fetch anything, cannot read another reader's events — and because the write response is blind, cannot even tell whether the lane holds anything at all.
+
+This is the one credential shape that survives being published inside a public vault. A vault key would not. A read key to a private vault would not: a read key decrypts **everything**, which is exactly the finding that has held two vaults back from publication here.
+
+**What you do not get is authenticity.** Anything the browser holds, the visitor holds.
+
+**Events can be forged.** Treat every row as an untrusted claim about what happened, never as fact. Encrypting to your public key gives you confidentiality, not proof of origin — the public key ships in the published vault, so anyone can produce a well-formed payload.
+
+**The lane can be flooded.** The cap is **1000 pending files per token → 507**, at which point your real telemetry stops arriving. *This* is the failure mode to design against, not the confidentiality one.
+
+Mitigations, in the order they matter: register **several `append_anchors`** so one flooded lane does not bury the others and revoking a sender is removing one anchor; drain aggressively (`list` → `fetch` → `mark-processed`, then `purge` with `folder:"processed"`); rotate the token by re-`configure`-ing and shipping a new vault release; and rate-limit client-side so honest readers never approach the cap.
+
+## Three things to verify before building
+
+Do not assume any of them. In order of how badly they break the design:
+
+1. **Does `sg.append.write` work from a read-only session?** Your entire audience opens the vault with a *read* key. The authoring guide says read-only sessions fail closed, and the static-hosting notes list `sg.append.*` as rejected with `EREADONLY` in read-only contexts. If that holds in the hosted viewer, **the bridge path is unavailable to your readers**.
+**The fallback is better anyway:** a direct `fetch()` POST to `/api/vault/append/write/{vault_id}`. That endpoint is account-less by design — no bridge, no permission grant, no writable session. The authoring guide is explicit that `fetch()` may be used for absolute `https://` URLs; those leave the vault and behave like any web request.
+2. **Does the vault frame's CSP allow `connect-src` to the API host?** If the sandbox blocks the origin, neither path works and the answer is a host change, not an app change.
+3. **Token format.** `^[0-9a-f]{16,128}$` — **hex only**. A prefixed token returns **400**, not 403, because it fails input validation before reaching any gate. Do not paste a `sha256:` CLI fingerprint in as a token; that is the most likely way to hit it.
+
+**And one gap to design around.** The intended model is `append_token = H(recipient public key)`, so a sender could compute the lane address from a public bundle with no coordination. No shipped command emits the token — that derivation is **PROPOSED**, not shipped. Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.
+
+Checked against the shipped CLI while writing this: `sgit pki` ships `keygen`, `export`, `encrypt`, `decrypt`, `sign` and `verify`. There is **no append-lane command in the CLI at all**, so the transport is HTTP or the browser bridge — nothing else.
+
+## Setting it up
+
+```
+# once, on the telemetry vault
+$ sgit pki keygen --label "Telemetry"
+$ sgit pki export sha256:FINGERPRINT > telemetry-identity.json
+
+$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "Content-Type: application/json" \
+    -d '{"append_anchors":["<sha256 of the append_token>"],
+         "enum_key_hash":"<sha256 of your enum_key>"}'
+
+# reading — metadata-only listing reads ZERO payloads, so poll with this
+$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-enum-key: $ENUM_KEY" -d '{"include_content": false}'
+```
+
+Filenames are server-assigned as `{epoch_ms}_{24-hex}.enc`, so they sort chronologically — which is what makes cursor pagination stable. Page with `after_file_id`. `mark-processed` is idempotent: an already-moved file comes back in `missing` rather than as an error, so a retried batch is safe.
+
+## “Real time”, precisely
+
+On the receiving side the kernel pushes `sg.on('append.new-messages', …)` on **tab focus and app open** — a dashboard app does not poll, it declares `"host_events": ["append.new-messages", "append.error"]` in `app.json` and reacts.
+
+That means real time *while you are looking at it*, not a live stream. For anything closer, poll `list` with `include_content: false`; it is free.
+
+## What you can and cannot learn
+
+**Can:** that the vault was opened, which screens were reached, how far a reader got, event ordering and timing, and a session journey via a random per-session id the app mints in memory.
+
+**Cannot: who.** There is no identity in this system and no login. Every reader is anonymous by construction — which is usually the point, but it does mean *“who opened the vault”* is not an answerable question. Only *how many*.
+
+Two disclosure points, and neither should be skipped:
+
+- **The platform's own default is that opening a vault never phones home.** External embeds are [click-to-load](../vault/sub-vaults.md) precisely so that it does not. A telemetry beacon breaks that expectation, so the vault should say so **visibly, in the vault** — not in a footnote. That is the same house rule every published vault page here follows: publish the work, then say exactly what it is and what it costs.
+- **The server sees lane activity, size and timing** regardless of encryption, and it sees the requesting IP. *“The server cannot read the content”* is true. *“The traffic is invisible”* is not.
+
+## The prompt to hand the builder agent
+
+Written to be pasted as-is. Substitute the vault ids.
+
+>
+
+Build a vault app for *THE THING*. It will be published with a **read key**, so assume every visitor can read every file in it, including any credential it carries.
+
+Emit anonymous usage events to a separate telemetry vault over an **append lane**. Read `https://sgit.ai/docs/vault-messaging.html` and `https://sgit.ai/api/append-lanes.html` first.
+
+Constraints:
+
+- Events go to `POST /api/vault/append/write/{TELEMETRY_VAULT_ID}` with the `append_token` in the body. **Verify first** whether `sg.append.write` is available in a read-only session; if it returns `EREADONLY`, use a direct `fetch()` to the account-less endpoint instead.
+- Encrypt each payload to the telemetry vault's public key before sending. The public key ships in the published vault; that is fine, public keys are publishable.
+- Never put a vault key, a read key to any other vault, or any other credential in this vault. The append token is the only credential that may appear, and only because it is write-only.
+- Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that identifies a person. Anonymous is the design, not a setting.
+- Rate-limit client-side. The lane caps at 1000 pending files per token and returns 507 after that.
+- Fail silently and never block on telemetry — if the POST fails, the reader must not notice.
+- Put a visible, plain-English notice in the vault saying that anonymous usage events are sent and what they contain. Opening a vault does not normally phone home; this one does, so say so.
+- Treat every received event as an untrusted claim. Anyone holding the read key can forge or flood the lane; the data is directional, not evidential.
+
+Deliverables: the app, the event schema, the telemetry vault's `configure` call, and a dashboard app in the telemetry vault that subscribes to `sg.on('append.new-messages')` and renders the funnel.
+
+The canonical markdown copy lives in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`, which is where every brief on this page is filed.
+
+[← Briefs](index.md)[Publishing a vault →](../demos/vaults/publishing.md)
 
 
 
@@ -4202,11 +4364,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.54**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.55**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.54 | 2026-09-05 | this release | THE AIUC-1 VAULT, FORKED AND LAYERED — AND TWO PAGES FOR TWO ARTEFACTS, ONE ROW ON THE LIST. Vault 2wzct4k7 arrived as an updated version of the AIUC-1 catalogue (hq21tlqu) and the first instinct was to replace the page. Reading its own CONFORMANCE.md changed the shape: it copies every byte of the catalogue and adds one directory above it, answering a DIFFERENT question — not 'what does the standard say' (evidenced_by) but 'does this subject do it' (attested_by), and then what would be insurable on a given date. Two artefacts, not two versions. So the catalogue page stays exactly as it was, carrying a note that names the fork; the fork gets its own page; and the vaults table carries ONE row — the fork — whose description links back to the catalogue page, because a table of published vaults is a list of things to open, not a changelog. VERIFIED RATHER THAN REPEATED: the fork's claim is that it did not edit what it copied, so before publishing we ran both suites in the clone — the catalogue's tests/run.py reports 21/21 passed, including the one that rebuilds every source document to the word, and the layer's tests/test_conformance.py reports 19 tests, 0 failed. Neither opens the network. That is the difference between quoting a vault's self-description and checking it. Audit clean: no vault keys, no third-party secrets, no personal data; the two sgit read keys inside it are both already published here by design (regulation graph, Risk Graph Explorer). Four screenshots captured against a local clone rather than the live host. One correction to a claim we nearly made: this is NOT the first vault here to ask for a permission — the VoiceDebrief pitch and Licence to Operate got there first — but it IS the first to ask for a WRITE grant (fs.write scoped to chat/ and nothing else) and the first to ask for the sg.llm bridge, which is the more interesting claim anyway. |
+| v0.2.55 | 2026-09-06 | this release | BRIEFS BECOMES A SECTION WITH TWO KINDS IN IT, AND MOVES FROM EVIDENCE TO DOCS. The /briefs page has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each with a status, each closing when answered. A brief arrived that is a different species: not a request to anybody, but a durable reference an agent executes, on how one vault sends messages to another and how a vault whose read key is public reports anonymous usage back to its author. Filing it as another ask would have been wrong, so the page now declares the two kinds and separates them: BUILD BRIEFS (executed, never close) above CROSS-TEAM ASKS (addressed, status-tracked), with the seven existing asks untouched and demoted one heading level. The new group starts with two entries rather than one, because demos/vaults/publishing.html was already a build brief — 'written to be followed by another site's agent' — misfiled in the vaults section where nobody looking for a method would find it, the same misfiling that created case-studies/ in v0.1.14. It stays at its URL and is listed from both places. NAV: Briefs moves out of the Evidence group and into Docs, beside Skills — the section's centre of gravity is now agent-facing documentation rather than a collaboration record, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases. ONE EDITORIAL CALL WORTH RECORDING: the source brief opened by answering 'is there a doctor/patient case study for this?' — there is not; the health-score vault is one vault with three audiences, not two vaults messaging. In the repo brief that section earned its place because the question was asked. On a published page the reader never asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging, which would send the next reader somewhere useless. Cut from the reading list, kept as one line of signposting — because the health-score vault is exactly where somebody will go looking, and a named absence beats a hidden one. |
+| v0.2.54 | 2026-09-05 | obj-cas-imm-f56c7c51361e | THE AIUC-1 VAULT, FORKED AND LAYERED — AND TWO PAGES FOR TWO ARTEFACTS, ONE ROW ON THE LIST. Vault 2wzct4k7 arrived as an updated version of the AIUC-1 catalogue (hq21tlqu) and the first instinct was to replace the page. Reading its own CONFORMANCE.md changed the shape: it copies every byte of the catalogue and adds one directory above it, answering a DIFFERENT question — not 'what does the standard say' (evidenced_by) but 'does this subject do it' (attested_by), and then what would be insurable on a given date. Two artefacts, not two versions. So the catalogue page stays exactly as it was, carrying a note that names the fork; the fork gets its own page; and the vaults table carries ONE row — the fork — whose description links back to the catalogue page, because a table of published vaults is a list of things to open, not a changelog. VERIFIED RATHER THAN REPEATED: the fork's claim is that it did not edit what it copied, so before publishing we ran both suites in the clone — the catalogue's tests/run.py reports 21/21 passed, including the one that rebuilds every source document to the word, and the layer's tests/test_conformance.py reports 19 tests, 0 failed. Neither opens the network. That is the difference between quoting a vault's self-description and checking it. Audit clean: no vault keys, no third-party secrets, no personal data; the two sgit read keys inside it are both already published here by design (regulation graph, Risk Graph Explorer). Four screenshots captured against a local clone rather than the live host. One correction to a claim we nearly made: this is NOT the first vault here to ask for a permission — the VoiceDebrief pitch and Licence to Operate got there first — but it IS the first to ask for a WRITE grant (fs.write scoped to chat/ and nothing else) and the first to ask for the sg.llm bridge, which is the more interesting claim anyway. |
 | v0.2.53 | 2026-08-27 | obj-cas-imm-d889737f4500 | ONE OPEN BUTTON PER VAULT PAGE, NOT THREE. Reported from a phone, which is where it actually hurt: the three pages carrying the open-in-a-new-tab button (AIUC-1, VoiceDebrief pitch, Licence to Operate) placed one under the lead, one above the embed and one at the foot. On a narrow viewport the first two sat within a single scroll, separated only by the read-key note — two identical full-width buttons doing the same thing, which reads as a layout bug rather than an offer. Reduced to ONE per page, positioned immediately above the embed, because that is the only point where the reader is genuinely choosing between the frame and a tab; the caption there now carries the REASON that had been sitting on the button removed above it ('a full application', 'a presenter app', 'an interactive simulation'), so nothing was lost by deleting two thirds of the buttons. The early exit is still available and always was: all 24 vault pages carry 'open it read-only in a new tab' as a text link inside the read-key note, which is what made the button under the lead redundant twice over. Verified at 390x844 with a mobile user agent rather than by eyeballing a desktop render: one button per page, no horizontal overflow, text link present. The general lesson, since this will recur as more vaults arrive: repeating a call to action is only helpful when the repetitions are far enough apart that a reader has forgotten the first one — at one scroll's distance it is just clutter. |
 | v0.2.52 | 2026-08-27 | obj-cas-imm-618e386c76b0 | LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 capabilities), the mandate is what the user expects and the only thing the policy insures (4 — crm:read, kb:search, llm:generate, mail:draft), and the delta is the 8 that sit inside the agent's reach and outside its authority with no policy covering them, including crm:write, crm:export, mail:send and shell:exec. The mandate is 'answer a customer's question from their own record and the help centre, and draft — never send — a reply'; the grant includes shell:exec. That is nhi.sgit.ai's blast-radius argument made COUNTABLE, and priced rather than described. The simulation makes a reader spend it: three replies per turn, each showing its cost before commitment — in band, claims against the pool, or outside cover — over a live rate table with a normal band, an ask-above threshold, an untouchable reserve and customer records marked uninsurable above 20. ARCHITECTURE PROVED BY THE GRANT: the vault holds the terms and the browser holds the run, and app.json requests fs.read plus downloads — READ, NO WRITE, AT ANY PATH — so an app that simulates spending against a policy is structurally incapable of editing the policy it spends against. INTAKE: the credential submitted was a VAULT KEY in the legacy passphrase form, not the read key the handover was written for — the classifier refused it, the read key was derived, and only that is published. PROCESS NOTE WORTH KEEPING: the authoring agent supplied its own audit of all 16 commits, and it was accurate — but it was CHECKED rather than accepted. Three claims re-verified against a fresh read-key clone: no credentials or third-party secrets (confirmed), the /home/claude/ build paths baked into the PDF are gone (confirmed, zero occurrences, fixed upstream in v0.3.1), and the single full-length credential in the vault is the vault's OWN read key — established by deriving it independently and matching it byte for byte rather than by trusting the label on it. That check briefly looked like a finding, which is the argument for running it: a supplied audit is evidence, not a substitute for the check. |
 | v0.2.51 | 2026-08-27 | obj-cas-imm-a13b6654c800 | A PITCH DELIVERED FROM A VAULT, and the first non-empty permission grant on the site. The VoiceDebrief pitch to Founder Institute (2 Sep 2026) is the 23rd published vault and the first that is a live presentation rather than a document set: opening it launches a presenter app with twelve timed slides, a 3:00 countdown, speaker notes, Focus and Fullscreen, five backup Q&A slides — one of which is titled 'WhatsApp / ChatGPT already does this', the obvious objection answered rather than avoided — and a Materials view over everything else. What makes it a vault rather than an export is that the WORKING ships with the conclusion: the approved outline and its claims-to-keep-exact list, the spoken script per slide with timings, the fifteen-part pitch pack, the research notes, the product screenshots and the PDF/PPTX exports, with the deck itself generated from deck/src/deck.template.html by a script in the vault rather than hand-maintained. THE PERMISSION STORY IS THE REASON IT EARNS A PAGE: every other vault here declares permissions {}, and this one declares downloads:true and externalLinks:true — it offers PDF and PPTX buttons so it asks for downloads, it links to the live product so it asks for external links, and that is the entire request, with NO FILESYSTEM ACCESS AT ALL at any path. One readable line that maps one-to-one onto two visible affordances is the permission model working as intended, and it reads better against the Risk Graph Explorer's empty grant than any amount of explanation. AUDIT: credentials and third-party secrets clean. Three disclosures are named on the page rather than left to be found, since a fundraising deck is a different category from the rest of the estate — the unit economics and commercial terms, the author's contact address on the closing slide, and the THREE NAMED JUDGES of the session with their affiliations. That last one was checked before publishing rather than after: the sources were read for tactical notes about the named individuals and contain none, only names, roles and affiliations, which is the difference between publishing a fact about a public event and publishing research about people. |
@@ -4914,6 +5077,27 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-06
+
+### [Briefs gets a second kind — references written to be executed, not asks waiting on a reply](#briefs-gets-a-second-kind) [v0.2.55](../admin/versions.md)
+
+briefsagentsdocsmulti-agent
+
+[Briefs](../briefs/index.md) has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.
+
+- **Build briefs** — a durable reference an agent executes: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
+- **Cross-team asks** — the seven that were already there, untouched, addressed to the sgit CLI, SG/Send API and SG/Vault UI teams.
+
+The first build brief is [**telemetry from a published vault**](../briefs/vault-telemetry-append-lanes.md): how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an **append lane**, and it works for one reason worth stating plainly — the sender's `append_token` grants **write only**. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly `{"ok": true}`.
+
+It is the only credential shape that survives being published inside a public vault. What it does not buy is authenticity: events can be forged, and the real failure mode is **1000 pending files per token → 507**, not a confidentiality breach.
+
+The new group starts with two entries rather than one, because [publishing a vault](../demos/vaults/publishing.md) was already a build brief — *"written to be followed by another site's agent"* — filed in the vaults section where nobody looking for a method would find it. That is the same misfiling that created `case-studies/` in v0.1.14.
+
+**Briefs also moves in the nav**, out of Evidence and into Docs beside Skills. The section's centre of gravity is now agent-facing documentation rather than a record of conversations, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases.
+
+One editorial call, recorded because it went the other way from the obvious. The source brief opened by answering *"is there a doctor/patient case study for this?"* — there is not; the [health-score vault](../demos/vaults/health-score/index.md) is one vault with three audiences, not two vaults exchanging messages. In the repo copy that section earned its place because the question was asked. On a published page nobody asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging. So it is cut from the reading list and kept as a single line of signposting — because that vault is exactly where the next reader will go looking, and a named absence beats a hidden one.
 
 ## 2026-09-05
 

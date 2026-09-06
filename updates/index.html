@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.54</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.55</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -34,6 +34,7 @@
       <a class="sl" href="../vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
       <a class="sl" href="../skills/index.html">Skills</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -50,7 +51,6 @@
       <a class="sl" href="../compare/index.html">Comparisons</a>
       <a class="sl" href="../case-studies/index.html">Case studies</a>
       <a class="sl" href="../use-cases/index.html">Use cases</a>
-      <a class="sl" href="../briefs/index.html">Briefs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -80,6 +80,21 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-06</h2>
+  <article class="upd" id="briefs-gets-a-second-kind">
+    <h3><a href="#briefs-gets-a-second-kind">Briefs gets a second kind — references written to be executed, not asks waiting on a reply</a> <a class="upd-ver" href="../admin/versions.html">v0.2.55</a></h3>
+    <p class="chips"><span class="chip">briefs</span><span class="chip">agents</span><span class="chip">docs</span><span class="chip">multi-agent</span></p>
+<p><a href="../briefs/index.html">Briefs</a> has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.</p>
+<ul>
+<li><b>Build briefs</b> — a durable reference an agent executes: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.</li>
+<li><b>Cross-team asks</b> — the seven that were already there, untouched, addressed to the sgit CLI, SG/Send API and SG/Vault UI teams.</li>
+</ul>
+<p>The first build brief is <a href="../briefs/vault-telemetry-append-lanes.html"><b>telemetry from a published vault</b></a>: how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an <b>append lane</b>, and it works for one reason worth stating plainly — the sender's <code>append_token</code> grants <b>write only</b>. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly <code>{"ok": true}</code>.</p>
+<p>It is the only credential shape that survives being published inside a public vault. What it does not buy is authenticity: events can be forged, and the real failure mode is <b>1000 pending files per token → 507</b>, not a confidentiality breach.</p>
+<p>The new group starts with two entries rather than one, because <a href="../demos/vaults/publishing.html">publishing a vault</a> was already a build brief — <em>"written to be followed by another site's agent"</em> — filed in the vaults section where nobody looking for a method would find it. That is the same misfiling that created <code>case-studies/</code> in v0.1.14.</p>
+<p><b>Briefs also moves in the nav</b>, out of Evidence and into Docs beside Skills. The section's centre of gravity is now agent-facing documentation rather than a record of conversations, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases.</p>
+<p>One editorial call, recorded because it went the other way from the obvious. The source brief opened by answering <em>"is there a doctor/patient case study for this?"</em> — there is not; the <a href="../demos/vaults/health-score/index.html">health-score vault</a> is one vault with three audiences, not two vaults exchanging messages. In the repo copy that section earned its place because the question was asked. On a published page nobody asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging. So it is cut from the reading list and kept as a single line of signposting — because that vault is exactly where the next reader will go looking, and a named absence beats a hidden one.</p>
+  </article>
   <h2 class="upd-date">2026-09-05</h2>
   <article class="upd" id="provenance-is-not-conformance">
     <h3><a href="#provenance-is-not-conformance">Provenance is not conformance — the AIUC-1 vault, forked and layered</a> <a class="upd-ver" href="../admin/versions.html">v0.2.54</a></h3>
@@ -368,7 +383,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.54</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.55</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -407,7 +422,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.54';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.55';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

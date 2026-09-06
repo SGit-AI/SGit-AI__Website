@@ -156,6 +156,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Cross-team briefs
 - [Cross-team briefs](/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+- [Telemetry from a published vault](/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 
 ## Updates (dated posts: what changed, one entry per story)
 - [Updates](/updates/index.md): What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
