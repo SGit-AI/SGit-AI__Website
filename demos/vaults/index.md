@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Published vaults
 
-Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside the page. The keys below are the complete credential: no account, no token, and no write capability anywhere in them.
+Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside that page — where you will also find its read key and a link that opens it. A read key is the complete credential: no account, no token, and no write capability anywhere in it.
 
 **Publishing one of your own?** [**The method is written down**](publishing.md) — the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
 
@@ -18,33 +18,60 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-| Vault | Id | Shape | Contents | Published read key |  |
-|---|---|---|---|---|---|
-| [Field Notes](field-notes/index.md) | `4bshby5n` | application (vault app) | 4 files · 11 KB · 2 commits · app entry `index.html` | `sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81:4bshby5n` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81%3A4bshby5n) |
-| [Strategy Maps](strategy-maps/index.md) | `ookq4mn4` | structured analysis (two apps, one vault) | 33 files · 830 KB · 3 commits · app entries `index.html` and `sgit-maps.html` | `sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b:ookq4mn4` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_451c4c1e28fbb24a7f350bb3f107b2c103d69ed363167029ef9c9000ff76c07b%3Aookq4mn4) |
-| [Deploy Docs](deploy-docs/index.md) | `fyofmkvr` | record-keeping (live markdown) | 17 files · 25 KB · 2 commits · markdown, no app | `sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1:fyofmkvr` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_8d01421290efc3fa03205eced0534335a06ae209d627555b3dde136b878e3de1%3Afyofmkvr) |
-| [The Vault Catalogue](catalogue/index.md) | `kc67yhgw` | record-keeping (an index of vaults) | 9 files · 11 KB · 2 commits · markdown, no app | `sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280:kc67yhgw` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_fd71e4bde7232498e43a5da869b1501260d9d403031b20af87b5bc801bdf6280%3Akc67yhgw) |
-| [Algarve · May 2026](algarve-may-2026/index.md) | `3d04e6b9ca98` | gallery (photo story) | 71 files · 29 MB · 36 commits · app entry `index.html` | `sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15%3A3d04e6b9ca98) |
-| [Supplement Stack](supplement-stack/index.md) | `r7zes477` | record-keeping (patient-held health record) | 23 files · 2.3 MB · 5 commits · app entry `index.html` | `sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee%3Ar7zes477) |
-| [Risk Mandate](risk-mandate/index.md) | `4zf6pf2z` | application (a software project in a vault) | 124 files · 1.9 MB · 98 commits · 8 app entries | `sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae%3A4zf6pf2z) |
-| [Agentic Browser Isolation](agentic-browser-isolation/index.md) | `0610gsp9` | structured analysis (a living risk graph) | 104 files · 2.4 MB · 4 commits · 17 app entries | `sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e%3A0610gsp9) |
-| [Risk Graph Explorer](risk-graph-explorer/index.md) | `3simlnqe` | application (public by design) | 33 files · 428 KB · 7 commits · 1 app entry | `sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638%3A3simlnqe) |
-| [Vault App Mode](vault-app-pocs/index.md) | `xth1xt78` | developer reference (nine POCs and a demo) | 57 files · 251 KB · 8 commits · app entry `_poc-hub/index.html` | `sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8%3Axth1xt78) |
-| [Private Health Score](health-score/index.md) | `zc6abngv` | application (a clinical workflow, sanitised republication) | 35 files · 1.2 MB · 3 commits · app entry `home/index.html` | `sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40%3Azc6abngv) |
-| [VoiceDebrief](voice-debrief/index.md) | `k6xy9z4d` | structured analysis (four apps, one vault) | 92 files · 1.2 MB · 18 commits · app entry `part-4/index.html` | `sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1%3Ak6xy9z4d) |
-| [Regulation Graph](regulation-graph/index.md) | `73heuprz` | reference data (regulation as an evidence graph) | 207 files · 14.9 MB · 2 commits · 11 app views | `sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9%3A73heuprz) |
-| [SG/Payments Brief Pack](payments-brief-pack/index.md) | `o3m0sz3q` | briefing pack (PROPOSED) | 18 files · 224 KB · app entry `index.html` | `sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8:o3m0sz3q` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8%3Ao3m0sz3q) |
-| [SG Commercialisation](commercialisation/index.md) | `haeu7p1e` | commercial operating model | 78 files · 536 KB · register deliberately empty | `sgit_rk1_3c8cba7edd2f14e63d0b0f0da4d513430e3eea06f364baefaf8b22d85e151da6:haeu7p1e` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_3c8cba7edd2f14e63d0b0f0da4d513430e3eea06f364baefaf8b22d85e151da6%3Ahaeu7p1e) |
-| [RiskMandate · File security](riskmandate-file-security/index.md) | `wu365g94` | risk-acceptance walk (11 steps) | 71 files · 2.7 MB · SQLite in the browser | `sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77:wu365g94` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_e8a1e664b9f984b0d8df442f463231077d455d7cbaa3e336610b14f9a1e1dc77%3Awu365g94) |
-| [Standards Atlas — GDPR](standards-atlas-gdpr/index.md) | `4zv4bvmu` | standard as a semantic graph | 116 files · 6.3 MB · writes scoped to `feedback/` | `sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c:4zv4bvmu` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_439ca57ab9e53b4edfa67e99da1b70948c297d323376c890292dc2f0876aa15c%3A4zv4bvmu) |
-| [Content-Transformation Proxy](content-transformation-proxy/index.md) | `3c90c2bff2b1` | as-built engineering brief | 140 files · 63 MB · slides, diagrams and source PDFs | `sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839:3c90c2bff2b1` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_18bf8b2aa558fec879edb39c79ee66d6b9594ada2dff71039b3f66f5b14e4839%3A3c90c2bff2b1) |
-| [Penetration Test Report](pentest-report/index.md) | `o4lrwx02` | security report (fictional) | 93 files · 6.4 MB · retest script per finding | `sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025:o4lrwx02` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_14042259ecbec2d0c7c4e68963695c4ceeeeb652767d25b777024a4f05ccd025%3Ao4lrwx02) |
-| [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md) | `k1izvg7e` | conference keynote | 87 files · 20 MB · 26 slides, 6 PDF exports, 8 research papers | `sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac:k1izvg7e` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_147fa50d3c491aeea3e700d60ef21ea2897884e263700d95765dc8f624dc59ac%3Ak1izvg7e) |
-| [Scaling Threat Modeling](threatmodcon-2025/index.md) | `0ict6flm` | conference session | 53 files · 4.1 MB · 11 layers, 51 nodes, 179 threats | `sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm) |
-| [AIUC-1 conformance layer](aiuc-1-conformance/index.md) | `2wzct4k7` | derived standard catalog + conformance (unofficial) | 649 files · 43 MB · the whole [AIUC-1 catalogue vault](aiuc-1-graph/index.md) (`hq21tlqu`) byte for byte, plus a layer: 53 conformance rows, insurability as a query, both graphs on one canvas | `sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7) |
-| [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md) | `95i2xqrd` | investor pitch, as a presenter app | 48 files · 17 MB · 12 slides + 5 backup, script and sources | `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd` | [open live ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) |
-| [Agent permission games](agent-permission-games/index.md) | `4evnlwrj` | two games — and the first vault here that **phones home** | 68 files · 2.6 MB · v0.8.1 · anonymous usage events over an append lane, disclosed on every page with a pause switch | `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj` | [open live ↗](https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj) |
-| [Licence to Operate](licence-to-operate/index.md) | `posrhzp3` | agent insurance, simulated | 121 files · 13 MB · grant 12 / mandate 4 / delta 8 | `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3` | [open live ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) |
+**25 published vaults** — 5 analysis, 5 application, 4 reference, 3 briefing, 3 presentation, 3 record, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+
+| # | Vault | What it is | Category | Files | Size | Published |
+|---|---|---|---|---|---|---|
+
+| 1 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates — the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
+
+| 2 | [AIUC-1 conformance layer](aiuc-1-conformance/index.md)`2wzct4k7` | The AIUC-1 standard as a graph, plus a conformance layer that computes insurability | Reference | 649 | 43 MB | 2026-09-05 |
+
+| 3 | [Licence to Operate](licence-to-operate/index.md)`posrhzp3` | An insurance policy for an agent, simulated: grant, mandate, and the delta nothing covers | Analysis | 121 | 13 MB | 2026-09-04 |
+
+| 4 | [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md)`95i2xqrd` | A three-minute investor pitch as a presenter app, with script, timings and sources | Presentation | 48 | 17 MB | 2026-09-02 |
+
+| 5 | [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md)`k1izvg7e` | The Black Hat EU 2025 keynote, with its PDF exports and eight research papers | Presentation | 87 | 20 MB | 2026-08-27 |
+
+| 6 | [Scaling Threat Modeling](threatmodcon-2025/index.md)`0ict6flm` | ThreatModCon 2025: eleven linked threat models across 51 nodes and 179 threats | Presentation | 53 | 4.1 MB | 2026-08-27 |
+
+| 7 | [SG/Payments Brief Pack](payments-brief-pack/index.md)`o3m0sz3q` | A payments briefing pack, marked PROPOSED rather than dressed as decided | Briefing | 18 | 224 KB | 2026-08-25 |
+
+| 8 | [SG Commercialisation](commercialisation/index.md)`haeu7p1e` | A commercial operating model — with its customer register deliberately left empty | Briefing | 78 | 536 KB | 2026-08-25 |
+
+| 9 | [RiskMandate · File security](riskmandate-file-security/index.md)`wu365g94` | An eleven-step risk-acceptance walk, running SQLite in the browser | Analysis | 71 | 2.7 MB | 2026-08-25 |
+
+| 10 | [Standards Atlas — GDPR](standards-atlas-gdpr/index.md)`4zv4bvmu` | GDPR as a semantic graph, with writes scoped to a feedback folder | Reference | 116 | 6.3 MB | 2026-08-25 |
+
+| 11 | [Content-Transformation Proxy](content-transformation-proxy/index.md)`3c90c2bff2b1` | An as-built engineering brief, shipped with its slides, diagrams and source PDFs | Briefing | 140 | 63 MB | 2026-08-25 |
+
+| 12 | [Penetration Test Report](pentest-report/index.md)`o4lrwx02` | A penetration test report (fictional) with a re-test script per finding | Report | 93 | 6.4 MB | 2026-08-25 |
+
+| 13 | [Vault App Mode](vault-app-pocs/index.md)`xth1xt78` | Nine proofs of concept for vault app mode, with a hub that runs them | Reference | 57 | 251 KB | 2026-08-23 |
+
+| 14 | [Private Health Score](health-score/index.md)`zc6abngv` | A clinical questionnaire scored by a versioned framework, with a clinician review screen | Application | 35 | 1.2 MB | 2026-08-23 |
+
+| 15 | [VoiceDebrief](voice-debrief/index.md)`k6xy9z4d` | Four apps in one vault, from raw recording to structured debrief | Analysis | 92 | 1.2 MB | 2026-08-22 |
+
+| 16 | [Regulation Graph](regulation-graph/index.md)`73heuprz` | The EU AI Act parsed from Formex into an evidence graph, article by article | Reference | 207 | 14.9 MB | 2026-08-20 |
+
+| 17 | [Risk Mandate](risk-mandate/index.md)`4zf6pf2z` | A working software project delivered as a vault — and it calls an LLM holding no API key | Application | 124 | 1.9 MB | 2026-08-17 |
+
+| 18 | [Agentic Browser Isolation](agentic-browser-isolation/index.md)`0610gsp9` | Should an agent browse with your logged-in sessions? A living risk graph, per stakeholder | Analysis | 104 | 2.4 MB | 2026-08-17 |
+
+| 19 | [Risk Graph Explorer](risk-graph-explorer/index.md)`3simlnqe` | A fact-to-risk graph explorer, built to be public: its app.json requests nothing | Application | 33 | 428 KB | 2026-08-17 |
+
+| 20 | [Field Notes](field-notes/index.md)`4bshby5n` | Six studies with generative SVG art — the smallest complete vault app | Application | 4 | 11 KB | 2026-08-16 |
+
+| 21 | [Strategy Maps](strategy-maps/index.md)`ookq4mn4` | The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis | Analysis | 33 | 830 KB | 2026-08-16 |
+
+| 22 | [Deploy Docs](deploy-docs/index.md)`fyofmkvr` | Living deployment documentation, updated by an sgit push with no site deploy | Record | 17 | 25 KB | 2026-08-16 |
+
+| 23 | [The Vault Catalogue](catalogue/index.md)`kc67yhgw` | An index of published vaults that is itself a vault, and lists itself | Record | 9 | 11 KB | 2026-08-16 |
+
+| 24 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
+
+| 25 | [Supplement Stack](supplement-stack/index.md)`r7zes477` | A patient-held health record: a real regimen, label photos, totals against UK RNIs | Record | 23 | 2.3 MB | 2026-08-16 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 

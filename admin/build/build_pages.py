@@ -9,11 +9,12 @@ Release process (see admin/index.html):
 import os
 import re
 import json
+from collections import Counter
 
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.56'
+SITE_VERSION = 'v0.2.57'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +27,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.56', '2026-09-06', 'this release',
+    ('v0.2.57', '2026-09-06', 'this release',
+     "THE VAULTS TABLE STOPS BEING A KEY DUMP AND BECOMES SOMETHING YOU CAN SORT. Reported from "
+     "an iPad, where the failure was obvious in a way it never is on a desktop: the read-key "
+     "column is a 64-hex string, and giving it room squeezed the vault id down to ONE CHARACTER "
+     "PER LINE — 'ookq4mn4' rendered as a vertical stack. The fix was not narrower columns, it "
+     "was noticing that the two widest columns were the two nobody needs on an index: the read "
+     "key and the 'open live' link are both already on each vault's own page, one click away. So "
+     "the index now answers 'which of these do I want' and the vault page answers 'how do I open "
+     "it'. GONE: read key, open live, and the dense contents blob. NEW: a # column, a one-line "
+     "WHAT IT IS, a CATEGORY pill (8 categories over 25 vaults), files and size as separate "
+     "numeric columns, and a PUBLISHED date. CLICK ANY HEADING TO SORT, default newest-first "
+     "because the recent ones are the interesting ones. The count line states the total and the "
+     "category breakdown, which is worth seeing on its own. GENERATED, NOT HAND-WRITTEN: 25 hand-written table "
+     "rows could not be sorted, counted or kept consistent, so the table comes from "
+     "admin/content/vaults.json through a VAULTS comment marker, the same mechanism the homepage "
+     "articles band uses. The published date is NOT a date anybody typed — it is the commit date "
+     "on which each vault's page first appeared in git, recovered with git log --diff-filter=A, "
+     "after two weaker sources were tried and rejected: update posts missed ten vaults and "
+     "false-matched health-score against a later release that merely mentioned it, and the "
+     "version log had no line for two of them at all. SORTING IS PROGRESSIVE ENHANCEMENT: rows "
+     "ship newest-first in the HTML, so with JavaScript off the table is still correct and still "
+     "in the most useful order; the headings are keyboard-operable. On a narrow viewport the "
+     "'what it is' column drops out rather than wrapping to nothing, because that sentence is on "
+     "the vault's page too. Verified at 1280 and 390 wide: 25 rows, zero 64-hex strings on the "
+     "page, zero 'open live' links, no horizontal overflow, and sorting checked by asserting the "
+     "order actually flips."),
+    ('v0.2.56', '2026-09-06', 'obj-cas-imm-dd4f74725ece',
      "THE BRIEF CAME BACK AS A VAULT — AND IT IS THE FIRST ONE PUBLISHED HERE THAT PHONES HOME. "
      "Two days after v0.2.55 published the build brief on telemetry from a published vault, "
      "another agent read it and shipped the thing: two deterministic games about grants, "
@@ -810,6 +837,15 @@ VERSION_LOG = [
      'Initial vault app: the positioning & messaging proposal microsite with an embedded landing-page prototype.'),
 ]
 
+# A literal table tag in a note lands inside the version table's own cell and derails the
+# markdown emitter with an opaque IndexError three files away — <tr> opens a row, then the
+# text after it has no cell to go in. Learned the hard way in v0.2.57; now it fails here,
+# by name, at the line that caused it.
+for _v, _d, _c, _note in VERSION_LOG:
+    for _bad in ('<tr', '<td', '<th', '<table'):
+        assert _bad not in _note, (
+            f'VERSION_LOG {_v}: write {_bad!r} as prose, not markup — it breaks the .md twin')
+
 ROOT  = find_vault_root()
 ADMIN = os.path.join(ROOT, 'admin')
 
@@ -1518,6 +1554,10 @@ def load_pages():
             # the homepage articles band is derived, not hand-listed
             if '<!--ARTICLES-->' in body:
                 body = body.replace('<!--ARTICLES-->', home_articles_band())
+            # ditto the vaults table — 25 rows of hand-written <tr> could not be sorted,
+            # counted or kept consistent, so it comes from admin/content/vaults.json
+            if '<!--VAULTS-->' in body:
+                body = body.replace('<!--VAULTS-->', vaults_table())
         pages.append((r['path'], r['title'], r['desc'], r['section'], body))
     # One page per article, derived — an article is published by adding its markdown
     # file and nothing else, so it must not need a manifest row either.
@@ -1577,6 +1617,75 @@ def updates_body():
         out.append('  </article>')
     out.append('</main>')
     return '\n'.join(out)
+
+
+def vaults_table():
+    """The published-vaults table, generated from admin/content/vaults.json.
+
+    It was 25 hand-written <tr> rows carrying the read key and an 'open live' link on
+    every one. Three problems with that, all reported from a phone: the read key is a
+    64-hex string that forces the vault id column down to one character per line; the
+    key and the live link are both already on each vault's own page, one click away, so
+    the widest two columns were the two nobody needed here; and a hand-written table
+    cannot be sorted, counted, or kept consistent as it grows.
+
+    So the index answers 'which of these do I want' — name, what it is, category, size,
+    when it was published — and the vault's page answers 'how do I open it'. Sorting is
+    progressive enhancement: the rows ship newest-first in the HTML, so with no
+    JavaScript the table is still correct and still in the most useful order.
+
+    published: the date the vault's page first appeared in git, not a date anybody typed.
+    """
+    rows = json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
+    trs = '\n'.join(
+        f'    <tr><td class="vt-n">{i}</td>'
+        f'<td><a href="{v["slug"]}/index.html">{v["name"]}</a>'
+        f'<div class="vt-id"><code>{v["vault_id"]}</code></div></td>'
+        f'<td>{v["what"]}</td>'
+        f'<td><span class="vt-cat">{v["category"]}</span></td>'
+        f'<td class="vt-num" data-sort="{v["files"]}">{v["files"]:,}</td>'
+        f'<td class="vt-num" data-sort="{v["bytes"]}">{v["size"]}</td>'
+        f'<td class="vt-num" data-sort="{v["published"]}">{v["published"]}</td></tr>'
+        for i, v in enumerate(rows, 1))
+    cats = ', '.join(f'{n}&nbsp;{c.lower()}' for c, n in
+                     sorted(Counter(v['category'] for v in rows).items(),
+                            key=lambda kv: (-kv[1], kv[0])))
+    return f"""<p class="vt-count"><b>{len(rows)} published vaults</b> &mdash; {cats}.
+  Newest first; <b>click any heading to sort</b>. Every read key and the live link are on the vault's own page.</p>
+  <div class="tablewrap"><table class="vt" id="vaults">
+    <tr><th class="vt-n">#</th><th>Vault</th><th>What it is</th><th>Category</th><th class="vt-num">Files</th><th class="vt-num">Size</th><th class="vt-num">Published</th></tr>
+{trs}
+  </table></div>
+  <script>
+  (function () {{
+    var t = document.getElementById('vaults'); if (!t) return;
+    var ths = t.rows[0].cells, dir = {{}};
+    for (var i = 0; i < ths.length; i++) (function (col) {{
+      var th = ths[col];
+      th.tabIndex = 0; th.setAttribute('role', 'button'); th.classList.add('vt-sortable');
+      function sort() {{
+        var body = Array.prototype.slice.call(t.rows, 1);
+        var d = dir[col] = !dir[col];
+        body.sort(function (a, b) {{
+          var x = a.cells[col], y = b.cells[col];
+          var xv = x.getAttribute('data-sort'), yv = y.getAttribute('data-sort');
+          if (xv !== null && yv !== null) {{
+            var nx = parseFloat(xv), ny = parseFloat(yv);
+            if (!isNaN(nx) && !isNaN(ny)) return d ? nx - ny : ny - nx;
+            return d ? (xv > yv ? 1 : xv < yv ? -1 : 0) : (yv > xv ? 1 : yv < xv ? -1 : 0);
+          }}
+          var a1 = x.textContent.trim().toLowerCase(), b1 = y.textContent.trim().toLowerCase();
+          return d ? (a1 > b1 ? 1 : a1 < b1 ? -1 : 0) : (b1 > a1 ? 1 : b1 < a1 ? -1 : 0);
+        }});
+        for (var k = 0; k < ths.length; k++) ths[k].removeAttribute('data-dir');
+        th.setAttribute('data-dir', d ? 'asc' : 'desc');
+        body.forEach(function (r, n) {{ t.tBodies[0].appendChild(r); r.cells[0].textContent = n + 1; }});
+      }}
+      th.addEventListener('click', sort);
+      th.addEventListener('keydown', function (e) {{ if (e.key === 'Enter' || e.key === ' ') {{ e.preventDefault(); sort(); }} }});
+    }})(i);
+  }}());
+  </script>"""
 
 
 def home_articles_band():
