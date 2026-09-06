@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>The vaults table stops being a key dump — sortable, categorised, newest first</title>
+      <link>https://sgit.ai/updates/index.html#the-vaults-table-you-can-sort</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-vaults-table-you-can-sort</guid>
+      <pubDate>2026-09-06</pubDate>
+      <description>Reported from an iPad, where the failure was obvious in a way it never is on a desktop. The read key is a 64 hex string; giving it room squeezed the vault id down to one character per line — ookq4mn4 rendered as a vertical stack. The fix was not narrower colum…</description>
+    </item>
+    <item>
       <title>The brief came back as a vault — and it is the first one here that phones home</title>
       <link>https://sgit.ai/updates/index.html#the-brief-came-back-as-a-vault</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-brief-came-back-as-a-vault</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-api-reference-we-did-not-have</guid>
       <pubDate>2026-08-18</pubDate>
       <description>An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier. The diagnosis was uncomfortable and simple: we documented both halves and never wrote the sentence that…</description>
-    </item>
-    <item>
-      <title>Three walkthroughs, read back as documents</title>
-      <link>https://sgit.ai/updates/index.html#three-walkthroughs-read-back-as-documents</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#three-walkthroughs-read-back-as-documents</guid>
-      <pubDate>2026-08-17</pubDate>
-      <description>A video is invisible to a search engine, to llms full.txt , and to any agent reading this site as documentation. It is also full of &quot;this guy here&quot; and &quot;look at this&quot; — pointing that a transcript cannot resolve. So the Risk Graph Explorer walkthroughs now carr…</description>
     </item>
   </channel>
 </rss>

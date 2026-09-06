@@ -672,3 +672,23 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
    the points where a reader is deciding: the top, the embed, and the end. */
 .openrow{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:1rem 0}
 .btn-open{font-size:.95rem;font-weight:600;padding:.6rem 1.15rem}
+
+/* ---------- published-vaults table (generated from admin/content/vaults.json) ---------- */
+.vt-count{margin:.2rem 0 .9rem;font-size:.86rem;color:var(--dim)}
+.vt{font-size:.83rem}
+.vt td{vertical-align:top}
+.vt-n{width:2.2rem;text-align:right;color:var(--dim);font-variant-numeric:tabular-nums}
+.vt-num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.vt-id{margin-top:.15rem}
+.vt-id code{font-size:.7rem;color:var(--dim);background:none;border:0;padding:0}
+.vt-cat{display:inline-block;white-space:nowrap;font-size:.72rem;font-weight:600;
+  padding:.12rem .5rem;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--dim)}
+th.vt-sortable{cursor:pointer;user-select:none;position:relative}
+th.vt-sortable:hover{color:#101114}
+th.vt-sortable::after{content:'';opacity:.35;font-size:.7rem;margin-left:.3rem}
+th.vt-sortable[data-dir="asc"]::after{content:'\2191';opacity:1}
+th.vt-sortable[data-dir="desc"]::after{content:'\2193';opacity:1}
+@media (max-width:720px){
+  .vt{font-size:.79rem}
+  .vt td:nth-child(3),.vt th:nth-child(3){display:none}   /* 'what it is' — the page has it */
+}

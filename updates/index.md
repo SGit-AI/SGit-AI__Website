@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,24 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-06
+
+### [The vaults table stops being a key dump — sortable, categorised, newest first](#the-vaults-table-you-can-sort) [v0.2.57](../admin/versions.md)
+
+vaultsuxmobile
+
+Reported from an iPad, where the failure was obvious in a way it never is on a desktop. The read key is a 64-hex string; giving it room squeezed the vault id down to **one character per line** — `ookq4mn4` rendered as a vertical stack.
+
+The fix was not narrower columns. It was noticing that the two widest columns were the two nobody needs on an index: the read key and the *open live* link are both already on each vault's own page, one click away. So [the index](../demos/vaults/index.md) now answers *which of these do I want*, and the vault's page answers *how do I open it*.
+
+**Gone:** the read key, the open-live link, and the dense contents blob. **New:** a `#` column, a one-line **what it is**, a **category** pill, files and size as separate numeric columns, and a **published** date. **Click any heading to sort** — default newest first, because the recent ones tend to be the interesting ones. The count line carries the total and the breakdown: 25 vaults across 8 categories.
+
+**Generated, not hand-written.** Twenty-five hand-written table rows could not be sorted, counted, or kept consistent, so the table now comes from `admin/content/vaults.json` through a `VAULTS` comment marker — the same mechanism the homepage articles band uses.
+
+**The published date is not a date anybody typed.** It is the commit on which each vault's page first appeared in git, recovered with `git log --diff-filter=A`. Two weaker sources were tried and rejected first: update posts missed ten vaults and false-matched `health-score` against a later release that merely mentioned it in passing, and the version log had no line for two of them at all.
+
+**Sorting is progressive enhancement.** The rows ship newest-first in the HTML, so with JavaScript off the table is still correct and still in the most useful order; the headings are keyboard-operable. On a narrow viewport the *what it is* column drops out rather than wrapping to nothing, since that sentence is on the vault's page anyway.
+
+Verified at 1280 and 390 wide: 25 rows, **zero** 64-hex strings on the page, zero open-live links, no horizontal overflow — and the sorting checked by asserting the order actually flips rather than by looking at it.
 
 ### [The brief came back as a vault — and it is the first one here that phones home](#the-brief-came-back-as-a-vault) [v0.2.56](../admin/versions.md)
 
