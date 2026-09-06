@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.54'
+SITE_VERSION = 'v0.2.55'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,31 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.54', '2026-09-05', 'this release',
+    ('v0.2.55', '2026-09-06', 'this release',
+     "BRIEFS BECOMES A SECTION WITH TWO KINDS IN IT, AND MOVES FROM EVIDENCE TO DOCS. The /briefs "
+     "page has been a single scroll of cross-team asks since v0.1.13 — each addressed to another "
+     "team, each with a status, each closing when answered. A brief arrived that is a different "
+     "species: not a request to anybody, but a durable reference an agent executes, on how one "
+     "vault sends messages to another and how a vault whose read key is public reports anonymous "
+     "usage back to its author. Filing it as another ask would have been wrong, so the page now "
+     "declares the two kinds and separates them: BUILD BRIEFS (executed, never close) above "
+     "CROSS-TEAM ASKS (addressed, status-tracked), with the seven existing asks untouched and "
+     "demoted one heading level. The new group starts with two entries rather than one, because "
+     "demos/vaults/publishing.html was already a build brief — 'written to be followed by another "
+     "site's agent' — misfiled in the vaults section where nobody looking for a method would find "
+     "it, the same misfiling that created case-studies/ in v0.1.14. It stays at its URL and is "
+     "listed from both places. NAV: Briefs moves out of the Evidence group and into Docs, beside "
+     "Skills — the section's centre of gravity is now agent-facing documentation rather than a "
+     "collaboration record, and Docs is where an agent looks. Evidence keeps comparisons, case "
+     "studies and use cases. ONE EDITORIAL CALL WORTH RECORDING: the source brief opened by "
+     "answering 'is there a doctor/patient case study for this?' — there is not; the health-score "
+     "vault is one vault with three audiences, not two vaults messaging. In the repo brief that "
+     "section earned its place because the question was asked. On a published page the reader "
+     "never asked it, and listing that vault among the pages to read implies it is a source for "
+     "cross-vault messaging, which would send the next reader somewhere useless. Cut from the "
+     "reading list, kept as one line of signposting — because the health-score vault is exactly "
+     "where somebody will go looking, and a named absence beats a hidden one."),
+    ('v0.2.54', '2026-09-05', 'obj-cas-imm-f56c7c51361e',
      "THE AIUC-1 VAULT, FORKED AND LAYERED — AND TWO PAGES FOR TWO ARTEFACTS, ONE ROW ON THE "
      "LIST. Vault 2wzct4k7 arrived as an updated version of the AIUC-1 catalogue (hq21tlqu) and "
      "the first instinct was to replace the page. Reading its own CONFORMANCE.md changed the "
@@ -837,6 +861,7 @@ NAV = [
         ('vault',  'SG/Vault',        'vault/index.html'),
         ('deploy', 'Deploy',          'deploy/index.html'),
         ('skills', 'Skills',          'skills/index.html'),
+        ('briefs', 'Briefs',          'briefs/index.html'),
     ]),
     ('vaults', 'Vaults',   'demos/vaults/index.html', [
         ('vaults',    'Published vaults', 'demos/vaults/index.html'),
@@ -847,7 +872,6 @@ NAV = [
         ('compare',      'Comparisons',  'compare/index.html'),
         ('case-studies', 'Case studies', 'case-studies/index.html'),
         ('use-cases',    'Use cases',    'use-cases/index.html'),
-        ('briefs',       'Briefs',       'briefs/index.html'),
     ]),
     ('updates', 'Updates', 'updates/index.html', [
         ('updates',  'Updates',     'updates/index.html'),

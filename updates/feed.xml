@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>Briefs gets a second kind — references written to be executed, not asks waiting on a reply</title>
+      <link>https://sgit.ai/updates/index.html#briefs-gets-a-second-kind</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#briefs-gets-a-second-kind</guid>
+      <pubDate>2026-09-06</pubDate>
+      <description>Briefs has been a single scroll of cross team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them. Buil…</description>
+    </item>
+    <item>
       <title>Provenance is not conformance — the AIUC-1 vault, forked and layered</title>
       <link>https://sgit.ai/updates/index.html#provenance-is-not-conformance</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#provenance-is-not-conformance</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#printing-stopped-costing-every-reader</guid>
       <pubDate>2026-08-17</pubDate>
       <description>Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted across the middle of page 2 , translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap. The fir…</description>
-    </item>
-    <item>
-      <title>Green does not mean live</title>
-      <link>https://sgit.ai/updates/index.html#green-does-not-mean-live</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#green-does-not-mean-live</guid>
-      <pubDate>2026-08-17</pubDate>
-      <description>Two consecutive releases pushed cleanly, reported success, and never reached the site. A human noticed on a phone, forty minutes later, because the version badge still showed the old number. The release script verified that both remotes were in sync — and they…</description>
     </item>
   </channel>
 </rss>

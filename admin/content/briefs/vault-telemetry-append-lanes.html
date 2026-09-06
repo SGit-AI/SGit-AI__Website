@@ -1,0 +1,117 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Briefs</a> / Telemetry from a published vault</p>
+  <h1>Telemetry from a published vault</h1>
+  <p class="lead">A build brief, written to be handed to the agent that will build the thing. The problem: a vault is about to be published with a <b>read key</b>, so every visitor can read every file in it — and it still needs to report anonymous usage back to its author. The answer is an <b>append lane</b>, and it works for one reason that is worth understanding before you write any code.</p>
+
+  <div class="note"><b>What a build brief is, and how it differs from the asks below it.</b> The <a href="index.html">cross-team briefs</a> are requests addressed to another team, with a status, that close when answered. This is the other kind: a durable reference an agent executes. It carries the mechanism, the traps, the things to verify first, and — at the bottom — <a href="#prompt">the prompt to hand the builder</a>, written to be pasted rather than paraphrased.</div>
+
+  <h2 id="reading">What to read first</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Page</th><th>What it gives you</th></tr>
+    <tr><td><a href="../docs/vault-messaging.html">Vault messaging</a></td><td>The worked example: two vaults exchanging encrypted messages, end to end, with curl</td></tr>
+    <tr><td><a href="../api/append-lanes.html">API — append lanes</a></td><td>The six endpoints, the gates, the limits and the status codes</td></tr>
+    <tr><td><a href="../vault/sg-bridge.html"><code>sg.append</code></a></td><td>The same transport from inside a vault app, plus the <code>sg.on</code> event push</td></tr>
+    <tr><td><a href="../docs/pki.html">PKI</a></td><td>Keypair lifecycle — <code>sgit pki keygen / export / encrypt / decrypt</code></td></tr>
+    <tr><td><a href="../vault/sub-vaults.html">Sub-vaults</a></td><td>The <em>other</em> cross-vault mechanism — <code>*.link.json</code>, for reading across rather than writing</td></tr>
+  </table></div>
+  <p class="small dim"><b>One signpost, so you do not go looking.</b> The <a href="../demos/vaults/health-score/index.html">Private Health Score vault</a> looks like the two-party case study and is not one: it is a single vault with three audiences — <code>patient/</code>, <code>doctor/</code> and <code>shared/</code> — split by <em>who is reading</em> rather than by copying, where sharing with the clinician means handing over a derived read key. There is no second vault and no message passing in it.</p>
+
+  <h2 id="mechanism">The mechanism: four capabilities, deliberately split</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Capability</th><th>Holder</th><th>Can</th><th>Cannot</th></tr>
+    <tr><td><code>append_token</code></td><td>the sender</td><td><b>write</b></td><td>list, fetch, read anything</td></tr>
+    <tr><td><code>enum_key</code></td><td>the vault owner</td><td>list, fetch, mark-processed</td><td>write, purge</td></tr>
+    <tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td>&mdash;</td></tr>
+    <tr><td>private key</td><td>the vault owner</td><td><b>decrypt</b></td><td><em>never sent to the server</em></td></tr>
+  </table></div>
+  <p>The server stores <code>SHA-256</code> of the first three and compares hashes. It never holds a raw capability key and never holds a private key at all. Two consequences decide the whole design:</p>
+  <ul>
+    <li><b>The write response is blind</b> — exactly <code>{"ok": true}</code>. No file ID, no count, no metadata. A sender cannot learn what else is in the lane, or whether theirs was the first write.</li>
+    <li><b>No account is needed to send.</b> <code>POST /api/vault/append/write/{vault_id}</code> requires no access token; the <code>append_token</code> in the body is the entire gate.</li>
+  </ul>
+
+  <h2 id="shape">The shape of it</h2>
+  <pre class="shell">   PUBLISHED VAULT <span class="d">(read key public)</span>          TELEMETRY VAULT <span class="d">(private, yours)</span>
+   ───────────────────────────────           ──────────────────────────────────
+   holds: append_token                       holds: enum_key, write_key,
+          + telemetry vault_id                      private key
+          + your PUBLIC key
+
+   a reader reaches step 4
+        │  encrypt(event, your_public_key)
+        │  POST /api/vault/append/write/{telemetry_vault_id}
+        ├────────────────────────────────▶  gate: H(append_token) ∈ append_anchors?
+        ◀────────────────────────────────   {"ok": true}   <span class="d">← blind</span>
+                                                  │
+                                            you: list <span class="d">(free)</span> → fetch → decrypt locally</pre>
+
+  <h2 id="why-safe">Why publishing the token is acceptable &mdash; and where it stops being</h2>
+  <p>Every visitor holds the published vault's read key, so <b>every visitor can read the <code>append_token</code> out of it.</b> That is not avoidable, and it is not the mistake it looks like: an append token grants <em>write only</em>. A visitor who extracts it cannot list the lane, cannot fetch anything, cannot read another reader's events &mdash; and because the write response is blind, cannot even tell whether the lane holds anything at all.</p>
+  <p>This is the one credential shape that survives being published inside a public vault. A vault key would not. A read key to a private vault would not: a read key decrypts <b>everything</b>, which is exactly the finding that has held two vaults back from publication here.</p>
+  <div class="warnbox"><b>What you do not get is authenticity.</b> Anything the browser holds, the visitor holds.<br><br>
+  <b>Events can be forged.</b> Treat every row as an untrusted claim about what happened, never as fact. Encrypting to your public key gives you confidentiality, not proof of origin &mdash; the public key ships in the published vault, so anyone can produce a well-formed payload.<br><br>
+  <b>The lane can be flooded.</b> The cap is <b>1000 pending files per token &rarr; 507</b>, at which point your real telemetry stops arriving. <em>This</em> is the failure mode to design against, not the confidentiality one.</div>
+  <p>Mitigations, in the order they matter: register <b>several <code>append_anchors</code></b> so one flooded lane does not bury the others and revoking a sender is removing one anchor; drain aggressively (<code>list</code> &rarr; <code>fetch</code> &rarr; <code>mark-processed</code>, then <code>purge</code> with <code>folder:"processed"</code>); rotate the token by re-<code>configure</code>-ing and shipping a new vault release; and rate-limit client-side so honest readers never approach the cap.</p>
+
+  <h2 id="verify">Three things to verify before building</h2>
+  <p>Do not assume any of them. In order of how badly they break the design:</p>
+  <ol>
+    <li><b>Does <code>sg.append.write</code> work from a read-only session?</b> Your entire audience opens the vault with a <em>read</em> key. The authoring guide says read-only sessions fail closed, and the static-hosting notes list <code>sg.append.*</code> as rejected with <code>EREADONLY</code> in read-only contexts. If that holds in the hosted viewer, <b>the bridge path is unavailable to your readers</b>.<br>
+    <b>The fallback is better anyway:</b> a direct <code>fetch()</code> POST to <code>/api/vault/append/write/{vault_id}</code>. That endpoint is account-less by design &mdash; no bridge, no permission grant, no writable session. The authoring guide is explicit that <code>fetch()</code> may be used for absolute <code>https://</code> URLs; those leave the vault and behave like any web request.</li>
+    <li><b>Does the vault frame's CSP allow <code>connect-src</code> to the API host?</b> If the sandbox blocks the origin, neither path works and the answer is a host change, not an app change.</li>
+    <li><b>Token format.</b> <code>^[0-9a-f]{16,128}$</code> &mdash; <b>hex only</b>. A prefixed token returns <b>400</b>, not 403, because it fails input validation before reaching any gate. Do not paste a <code>sha256:</code> CLI fingerprint in as a token; that is the most likely way to hit it.</li>
+  </ol>
+  <p><b>And one gap to design around.</b> The intended model is <code>append_token = H(recipient public key)</code>, so a sender could compute the lane address from a public bundle with no coordination. No shipped command emits the token &mdash; that derivation is <b>PROPOSED</b>, not shipped. Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.</p>
+  <p class="small dim">Checked against the shipped CLI while writing this: <code>sgit pki</code> ships <code>keygen</code>, <code>export</code>, <code>encrypt</code>, <code>decrypt</code>, <code>sign</code> and <code>verify</code>. There is <b>no append-lane command in the CLI at all</b>, so the transport is HTTP or the browser bridge &mdash; nothing else.</p>
+
+  <h2 id="setup">Setting it up</h2>
+  <pre class="shell"><span class="d"># once, on the telemetry vault</span>
+$ sgit pki keygen --label "Telemetry"
+$ sgit pki export sha256:FINGERPRINT &gt; telemetry-identity.json
+
+$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "Content-Type: application/json" \
+    -d '{"append_anchors":["&lt;sha256 of the append_token&gt;"],
+         "enum_key_hash":"&lt;sha256 of your enum_key&gt;"}'
+
+<span class="d"># reading — metadata-only listing reads ZERO payloads, so poll with this</span>
+$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-enum-key: $ENUM_KEY" -d '{"include_content": false}'</pre>
+  <p>Filenames are server-assigned as <code>{epoch_ms}_{24-hex}.enc</code>, so they sort chronologically &mdash; which is what makes cursor pagination stable. Page with <code>after_file_id</code>. <code>mark-processed</code> is idempotent: an already-moved file comes back in <code>missing</code> rather than as an error, so a retried batch is safe.</p>
+
+  <h2 id="realtime">&ldquo;Real time&rdquo;, precisely</h2>
+  <p>On the receiving side the kernel pushes <code>sg.on('append.new-messages', …)</code> on <b>tab focus and app open</b> &mdash; a dashboard app does not poll, it declares <code>"host_events": ["append.new-messages", "append.error"]</code> in <code>app.json</code> and reacts.</p>
+  <p>That means real time <em>while you are looking at it</em>, not a live stream. For anything closer, poll <code>list</code> with <code>include_content: false</code>; it is free.</p>
+
+  <h2 id="limits">What you can and cannot learn</h2>
+  <p><b>Can:</b> that the vault was opened, which screens were reached, how far a reader got, event ordering and timing, and a session journey via a random per-session id the app mints in memory.</p>
+  <p><b>Cannot: who.</b> There is no identity in this system and no login. Every reader is anonymous by construction &mdash; which is usually the point, but it does mean <em>&ldquo;who opened the vault&rdquo;</em> is not an answerable question. Only <em>how many</em>.</p>
+  <p>Two disclosure points, and neither should be skipped:</p>
+  <ul>
+    <li><b>The platform's own default is that opening a vault never phones home.</b> External embeds are <a href="../vault/sub-vaults.html">click-to-load</a> precisely so that it does not. A telemetry beacon breaks that expectation, so the vault should say so <b>visibly, in the vault</b> &mdash; not in a footnote. That is the same house rule every published vault page here follows: publish the work, then say exactly what it is and what it costs.</li>
+    <li><b>The server sees lane activity, size and timing</b> regardless of encryption, and it sees the requesting IP. <em>&ldquo;The server cannot read the content&rdquo;</em> is true. <em>&ldquo;The traffic is invisible&rdquo;</em> is not.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to hand the builder agent</h2>
+  <p>Written to be pasted as-is. Substitute the vault ids.</p>
+  <blockquote>
+    <p>Build a vault app for <em>THE THING</em>. It will be published with a <b>read key</b>, so assume every visitor can read every file in it, including any credential it carries.</p>
+    <p>Emit anonymous usage events to a separate telemetry vault over an <b>append lane</b>. Read <code>https://sgit.ai/docs/vault-messaging.html</code> and <code>https://sgit.ai/api/append-lanes.html</code> first.</p>
+    <p>Constraints:</p>
+    <ul>
+      <li>Events go to <code>POST /api/vault/append/write/{TELEMETRY_VAULT_ID}</code> with the <code>append_token</code> in the body. <b>Verify first</b> whether <code>sg.append.write</code> is available in a read-only session; if it returns <code>EREADONLY</code>, use a direct <code>fetch()</code> to the account-less endpoint instead.</li>
+      <li>Encrypt each payload to the telemetry vault's public key before sending. The public key ships in the published vault; that is fine, public keys are publishable.</li>
+      <li>Never put a vault key, a read key to any other vault, or any other credential in this vault. The append token is the only credential that may appear, and only because it is write-only.</li>
+      <li>Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that identifies a person. Anonymous is the design, not a setting.</li>
+      <li>Rate-limit client-side. The lane caps at 1000 pending files per token and returns 507 after that.</li>
+      <li>Fail silently and never block on telemetry &mdash; if the POST fails, the reader must not notice.</li>
+      <li>Put a visible, plain-English notice in the vault saying that anonymous usage events are sent and what they contain. Opening a vault does not normally phone home; this one does, so say so.</li>
+      <li>Treat every received event as an untrusted claim. Anyone holding the read key can forge or flood the lane; the data is directional, not evidential.</li>
+    </ul>
+    <p>Deliverables: the app, the event schema, the telemetry vault's <code>configure</code> call, and a dashboard app in the telemetry vault that subscribes to <code>sg.on('append.new-messages')</code> and renders the funnel.</p>
+  </blockquote>
+
+  <p class="small dim" style="margin-top:2rem">The canonical markdown copy lives in the <a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a> repo under <code>team/humans/dinis_cruz/claude-code-web/</code>, which is where every brief on this page is filed.</p>
+
+  <div class="pagenav"><a href="index.html">&larr; Briefs</a><a href="../demos/vaults/publishing.html">Publishing a vault &rarr;</a></div>
+</main>

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,27 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-06
+
+### [Briefs gets a second kind — references written to be executed, not asks waiting on a reply](#briefs-gets-a-second-kind) [v0.2.55](../admin/versions.md)
+
+briefsagentsdocsmulti-agent
+
+[Briefs](../briefs/index.md) has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.
+
+- **Build briefs** — a durable reference an agent executes: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
+- **Cross-team asks** — the seven that were already there, untouched, addressed to the sgit CLI, SG/Send API and SG/Vault UI teams.
+
+The first build brief is [**telemetry from a published vault**](../briefs/vault-telemetry-append-lanes.md): how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an **append lane**, and it works for one reason worth stating plainly — the sender's `append_token` grants **write only**. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly `{"ok": true}`.
+
+It is the only credential shape that survives being published inside a public vault. What it does not buy is authenticity: events can be forged, and the real failure mode is **1000 pending files per token → 507**, not a confidentiality breach.
+
+The new group starts with two entries rather than one, because [publishing a vault](../demos/vaults/publishing.md) was already a build brief — *"written to be followed by another site's agent"* — filed in the vaults section where nobody looking for a method would find it. That is the same misfiling that created `case-studies/` in v0.1.14.
+
+**Briefs also moves in the nav**, out of Evidence and into Docs beside Skills. The section's centre of gravity is now agent-facing documentation rather than a record of conversations, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases.
+
+One editorial call, recorded because it went the other way from the obvious. The source brief opened by answering *"is there a doctor/patient case study for this?"* — there is not; the [health-score vault](../demos/vaults/health-score/index.md) is one vault with three audiences, not two vaults exchanging messages. In the repo copy that section earned its place because the question was asked. On a published page nobody asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging. So it is cut from the reading list and kept as a single line of signposting — because that vault is exactly where the next reader will go looking, and a named absence beats a hidden one.
 
 ## 2026-09-05
 

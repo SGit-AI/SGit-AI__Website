@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.54",
+  "site_version": "v0.2.55",
   "updates": [
+    {
+      "slug": "briefs-gets-a-second-kind",
+      "title": "Briefs gets a second kind — references written to be executed, not asks waiting on a reply",
+      "date": "2026-09-06",
+      "version": "v0.2.55",
+      "tags": [
+        "briefs",
+        "agents",
+        "docs",
+        "multi-agent"
+      ],
+      "summary": "Briefs has been a single scroll of cross team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them. Buil…"
+    },
     {
       "slug": "provenance-is-not-conformance",
       "title": "Provenance is not conformance — the AIUC-1 vault, forked and layered",
