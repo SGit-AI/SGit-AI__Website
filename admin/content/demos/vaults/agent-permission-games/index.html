@@ -1,0 +1,92 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Two games about agent permissions</p>
+  <h1>Two games about what an agent can do &mdash; and the first vault here that phones home</h1>
+
+  <p class="lead">Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that <b>sends anything anywhere</b>, and it was built by another agent from <a href="../../../briefs/vault-telemetry-append-lanes.html">the build brief on this site</a> &mdash; which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.</p>
+
+  <div class="note"><b>Open it yourself &mdash; the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj</code><br>
+  <span class="small dim">Published as a read key, derived from the write credential that was submitted. The vault key is not published and never will be.</span></div>
+
+  <div class="warnbox"><b>This vault phones home, and you should know that before you open it.</b> Opening a vault does not normally send anything anywhere &mdash; that is the platform default, and every other vault published here honours it. This one sends <b>anonymous usage events</b> while you play: which screens you reach, the answers you give, your score. No name, no id, no fingerprint, no URL, no referrer. Every page carries a notice and a <b>pause sending</b> switch, and <code>telemetry.html</code> inside the vault states exactly what leaves. We publish it <em>because</em> it does this, not despite it &mdash; but the warning belongs above the fold rather than in a footnote.</div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Two games with a full-width board &mdash; they have far more room in their own tab than in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="4evnlwrj" data-readkey="f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The two games</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">which agent is it?</span>
+        <h3>A floor plan, and the wings you think it can enter</h3>
+        <p>You think of an agent; cheap questions narrow the field; you chalk which wings of the building it can reach. Then the doors open and the <b>prediction gap</b> is shown per capability.</p>
+        <p>The board is the interesting part. Capabilities are drawn as rooms grouped into wings &mdash; filesystem, identity, process, code, network, communication, schedule, money, browser &mdash; and the legend distinguishes <b>chalk</b> (asserted, you drew it), <b>pencil hatching</b> (inferred, the plan says), <b>dotted</b> (possible, still consistent) and plain (no visitor above 5% holds a key). A belief column ranks nine public profiles by likelihood as you answer.</p>
+        <p>It is careful about what a drawing is: <em>"a room is a rendering choice, not a place &mdash; rooms are not ordered, sized or adjacent by anything in the data."</em></p>
+      </div>
+      <figure class="shot" data-shot="wai-question.webp" data-dir="images/" data-alt="The floor plan with capability rooms grouped into wings, a belief column ranking nine agent profiles, and a discriminating question below."><figcaption>Mid-game: the plan, the belief column, and a question labelled <code>IDENTIFIES</code> that <em>&ldquo;identifies and measures nothing&rdquo;</em> &mdash; it never counts toward the gap.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">what can it do?</span>
+        <h3>Two questions per capability: can it, and do you want it to</h3>
+        <p>Name the agent and where you run it, and the board asks capability by capability <em>can it?</em> &mdash; with a confidence &mdash; and <em>do you want it to?</em> The end screen hands you <b>the mandate you assembled without meaning to</b>, the delta against the grant, and one thing to change.</p>
+        <p>The scoring is the argument. A wrong answer costs <b>&minus;50</b> against <b>+30</b> for a right one and <b>0</b> for <em>don't know</em>, and the page says why: <em>"real grants are wider than people expect, so saying yes to everything would otherwise win."</em> Under the hood a yes is scored as 75% sure and a no as 25%, points are the squared-error rule, and the headline figure is calibration rather than score.</p>
+        <p>And <b>two fifths of the questions are above the ceiling</b> &mdash; things no agent anywhere can do &mdash; so the game measures over-crediting as well as underestimating. That is the mechanism that stops it being a quiz about vendor features.</p>
+      </div>
+      <figure class="shot" data-shot="wcid-entry.webp" data-dir="images/" data-alt="The entry screen: pick Claude, ChatGPT, GitHub Actions or something else, with the scoring panel explaining why a wrong answer costs more than a right one earns."><figcaption>The scoring panel, stated before you play &mdash; and the telemetry notice line sitting under it with a live <code>0 sent</code> counter.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The disclosure page is the best thing in it</h2>
+  <p><code>telemetry.html</code> is reachable from every page, and it is the model for how this should be done. It opens by naming the default it is breaking &mdash; <em>"Opening a vault does not normally send anything anywhere. This one does"</em> &mdash; then says what is sent, how, and what it proves. The last part is the one most analytics pages never write:</p>
+  <blockquote><b>What it proves.</b> Nothing about anyone. Anyone holding this vault's read key holds that token and could forge or flood the lane, so the receiving end treats every event as a claim.</blockquote>
+  <p>The schema is published in the same place: one batch per flush, at most every 4 seconds and at most 40 times a session, carrying a 16-hex session id <em>minted in memory when the page opened and gone when the tab closes</em>. The events are named and tabulated, per game. <code>ua</code> carries a coarse form factor, a language and a host &mdash; and the schema states what is deliberately absent: no user-agent string, no screen size, no URL, no referrer, no IP.</p>
+  <figure class="shot" data-shot="telemetry.webp" data-dir="images/" data-alt="The telemetry disclosure page: the short version, how it is sent, what it proves, and the published event schema."><figcaption>Reachable from every page in the vault, and it names the platform default it is breaking in its first sentence.</figcaption></figure>
+
+  <h2>The credential audit &mdash; the whole point of the exercise</h2>
+  <p>A vault that phones home must carry a credential to phone home <em>with</em>, and it is published with a read key, so that credential is public. This is exactly the case the <a href="../../../briefs/vault-telemetry-append-lanes.html">build brief</a> was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Check</th><th>Result</th></tr>
+    <tr><td>Private key material anywhere</td><td><b>none</b></td></tr>
+    <tr><td><code>enum_key</code>, <code>write_key</code>, <code>vault_key</code>, <code>read_key</code> fields</td><td><b>none</b></td></tr>
+    <tr><td>Vault-key shapes, <code>sgit_vk1_</code> / <code>sgit_private_vault_</code> prefixes</td><td><b>none</b></td></tr>
+    <tr><td>Third-party provider keys (OpenAI, Anthropic, GitHub, AWS, Google, Slack, JWT)</td><td><b>none</b></td></tr>
+    <tr><td>Email addresses, personal data</td><td><b>none</b></td></tr>
+    <tr><td><b>64-hex strings in the entire vault</b></td><td><b>exactly one</b> &mdash; the append token, in five places</td></tr>
+  </table></div>
+  <p>That last row is the finding. One credential exists in this vault and it is the write-only one, which is the only shape that survives publication behind a read key.</p>
+  <p><b>And the token was tested, not taken on trust</b>, because an append token and a read key are <em>both</em> 64 hex and a mistake between them would be invisible. Cloning the telemetry vault with it produces no <code>clone_mode.json</code> and decrypts nothing &mdash; and a control run with an all-zeros key behaves identically, which is what makes the test mean anything. It is not a read key for the vault it names.</p>
+
+  <h2>It took the fallback path, which is the right one</h2>
+  <p>The brief said to verify whether <code>sg.append.write</code> works from a read-only session before building on it, since every player opens the vault with a read key and the authoring guide says read-only sessions fail closed. The implementation does not use the bridge at all:</p>
+  <pre class="shell">const url = cfg.api.replace(/\/$/, '') + '/api/vault/append/write/' + cfg.telemetry_vault_id;
+await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
+                   mode: 'cors', credentials: 'omit' });</pre>
+  <p>A direct <code>fetch</code> to the account-less write endpoint, with <code>credentials: 'omit'</code> so no ambient cookie rides along and <code>keepalive</code> on the final flush so the last batch survives the tab closing. The payload is the <code>sgit pki</code> v2 envelope &mdash; RSA-OAEP-SHA256 wrapping AES-256-GCM &mdash; built with Web Crypto in the browser, so the same <code>sgit pki decrypt</code> reads it on the other side. If there is no secure context there is no Web Crypto, and the sender disables itself rather than falling back to plaintext.</p>
+  <p><b>Consistent with this:</b> <code>app.json</code> declares no <code>permissions</code> key at all. The vault asks the host for nothing, because it does not need the host for this.</p>
+
+  <h2>Two findings, published rather than filed</h2>
+  <div class="warnbox"><b>1. Two of the four pages still tell the player nothing is sent.</b> <code>what-can-it-do</code> gets it right &mdash; its footer says <em>"in this tab, no model, no server, nothing <b>stored</b>"</em>, with the sending notice above it. But the home page still reads <em>"no model, no server, nothing <b>sent</b>, nothing stored"</em>, and <code>which-agent-is-it</code> carries <em>"No model, no server, nothing sent"</em> in its footer <b>on the same screen as</b> the notice saying events are sent. That game also describes its run tuple as <em>"shown, never sent"</em> with <em>"no send button"</em> &mdash; true of the button, but its <code>question</code> and <code>reveal</code> events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.</div>
+  <p><b>2. We could not confirm the write endpoint from here, and are not going to claim otherwise.</b> <code>/api/vault/append/write/</code> returns 404 from this container on both <code>dev.send.sgraph.ai</code> and <code>send.sgraph.ai</code>, as does the older <code>/api/vault/inbox/write/</code>. One route does answer &mdash; <code>/api/vault/inbox/list/</code> returns <b>403</b> on production, meaning it exists and rejected the credential &mdash; which is interesting given <a href="../../../api/append-lanes.html">our own API page</a> states every <code>/api/vault/inbox/*</code> URL is gone. That is one data point, not a conclusion: the likeliest explanation is that the telemetry vault lives on a host these routes are not reachable on from this network. It is recorded as unresolved, which is what <a href="../../../api/index.html#unresolved">the API reference does</a> with endpoints it cannot pin down.</p>
+
+  <h2>Notes</h2>
+  <p><b>68 files, 2.6 MB, version 0.8.1 across 9 releases</b>, with a version badge on every page and a release history at <code>version.html</code>. Both games ship their readable source beside the built page &mdash; engine as an ES module, <code>selftest.json</code>, the data snapshot, the build script &mdash; each with a README carrying a rules table and a <em>does-not-prove</em> list.</p>
+  <p><b>The data is vendored, and says so.</b> Both games run on a copy of the profiles, capability primitives, reach mesh and reductions from <a href="../../../network/pki.html">pki.sgit.ai</a>, taken 2026-09-06 and inlined, with the date shown in the header of every screen.</p>
+  <p><b>Screenshots were captured with the telemetry blocked at the network layer</b>, so driving the games to photograph them did not put a run into somebody's real lane.</p>
+  <p><b>Nine public profiles, not a directory of anybody's setup.</b> <code>profile</code> in an event is which <em>public</em> profile a player picked from a list; the scoring is arithmetic over that public profile. The schema is blunt about the limits: <em>"Not a count of people (sessions are tabs). Not evidence."</em></p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../../../briefs/vault-telemetry-append-lanes.html">&larr; The build brief this was built from</a> &middot; <a href="../index.html">All published vaults</a></p>
+</main>

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-06
+
+### [The brief came back as a vault — and it is the first one here that phones home](#the-brief-came-back-as-a-vault) [v0.2.56](../admin/versions.md)
+
+vaultstelemetryagentsauditbriefs
+
+v0.2.55 published a [build brief](../briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so [two games about agent permissions](../demos/vaults/agent-permission-games/index.md) now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.
+
+It is the first vault published here that **sends anything anywhere**, and the first end-to-end test of whether a brief written for an agent produces what it describes.
+
+- **It took the fallback path**, which is the part the brief was least sure about. Not `sg.append` through the bridge — a direct `fetch` to the account-less write endpoint, `credentials: 'omit'`, `keepalive` on the final flush, payload in the `sgit pki` v2 envelope. `app.json` declares no `permissions` key at all, which is consistent: it does not need the host for this.
+- **Exactly one 64-hex string exists in the whole vault** — the append token, in five places. No private keys, no enum/write/vault/read key fields, no third-party secrets, no personal data. One credential, and it is the write-only one.
+- **The disclosure page is the model.** `telemetry.html` opens by naming the default it breaks — *"Opening a vault does not normally send anything anywhere. This one does"* — publishes the event schema, and then writes the sentence most analytics pages never do: *"What it proves. Nothing about anyone. Anyone holding this vault's read key holds that token and could forge or flood the lane."*
+
+**A method correction that cost nothing only because the control was run.** The first version of the token test called a leak on the strength of `sgit clone` creating a directory. Then an all-zeros key produced the identical result — the directory is created regardless, and the test discriminated nothing. The marker that actually works is `.sg_vault/local/clone_mode.json`. A credential test with no negative control is not a test, and that now belongs in [the publishing method](../demos/vaults/publishing.md).
+
+**Two findings, published rather than filed.** Two of the four pages still tell the player *"nothing sent"* — `what-can-it-do` was corrected to *"nothing stored"*, the home page and `which-agent-is-it` were missed, and the latter contradicts itself on a single screen. Nothing leaks; but the subject of this vault is informed consent, which raises the stakes on leftover copy. And the write endpoint could not be confirmed from this container — 404 on both hosts under both names — so that is recorded as unresolved rather than dressed up as a conclusion.
 
 ### [Briefs gets a second kind — references written to be executed, not asks waiting on a reply](#briefs-gets-a-second-kind) [v0.2.55](../admin/versions.md)
 

@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -43,6 +43,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Scaling Threat Modeling](threatmodcon-2025/index.md) | `0ict6flm` | conference session | 53 files · 4.1 MB · 11 layers, 51 nodes, 179 threats | `sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm) |
 | [AIUC-1 conformance layer](aiuc-1-conformance/index.md) | `2wzct4k7` | derived standard catalog + conformance (unofficial) | 649 files · 43 MB · the whole [AIUC-1 catalogue vault](aiuc-1-graph/index.md) (`hq21tlqu`) byte for byte, plus a layer: 53 conformance rows, insurability as a query, both graphs on one canvas | `sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7) |
 | [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md) | `95i2xqrd` | investor pitch, as a presenter app | 48 files · 17 MB · 12 slides + 5 backup, script and sources | `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd` | [open live ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) |
+| [Agent permission games](agent-permission-games/index.md) | `4evnlwrj` | two games — and the first vault here that **phones home** | 68 files · 2.6 MB · v0.8.1 · anonymous usage events over an append lane, disclosed on every page with a pause switch | `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj` | [open live ↗](https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj) |
 | [Licence to Operate](licence-to-operate/index.md) | `posrhzp3` | agent insurance, simulated | 121 files · 13 MB · grant 12 / mandate 4 / delta 8 | `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3` | [open live ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).

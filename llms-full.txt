@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.55). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.56). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -409,6 +409,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 | [Scaling Threat Modeling](threatmodcon-2025/index.md) | `0ict6flm` | conference session | 53 files · 4.1 MB · 11 layers, 51 nodes, 179 threats | `sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4:0ict6flm` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_rk1_23fb205247b2b9c88a943d7ffece9dacf9c00c50cc94840668b4916f247b8ec4%3A0ict6flm) |
 | [AIUC-1 conformance layer](aiuc-1-conformance/index.md) | `2wzct4k7` | derived standard catalog + conformance (unofficial) | 649 files · 43 MB · the whole [AIUC-1 catalogue vault](aiuc-1-graph/index.md) (`hq21tlqu`) byte for byte, plus a layer: 53 conformance rows, insurability as a query, both graphs on one canvas | `sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7` | [open live ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7) |
 | [VoiceDebrief pitch (FI)](voicedebrief-pitch/index.md) | `95i2xqrd` | investor pitch, as a presenter app | 48 files · 17 MB · 12 slides + 5 backup, script and sources | `23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211:95i2xqrd` | [open live ↗](https://dev.vault.sgraph.ai/#23cbc4c65c24cb23ef3efb78e34593391c6709f0106ea81799aa14fe97f4d211%3A95i2xqrd) |
+| [Agent permission games](agent-permission-games/index.md) | `4evnlwrj` | two games — and the first vault here that **phones home** | 68 files · 2.6 MB · v0.8.1 · anonymous usage events over an append lane, disclosed on every page with a pause switch | `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj` | [open live ↗](https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj) |
 | [Licence to Operate](licence-to-operate/index.md) | `posrhzp3` | agent insurance, simulated | 121 files · 13 MB · grant 12 / mandate 4 / delta 8 | `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3` | [open live ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
@@ -4364,11 +4365,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.55**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.56**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.55 | 2026-09-06 | this release | BRIEFS BECOMES A SECTION WITH TWO KINDS IN IT, AND MOVES FROM EVIDENCE TO DOCS. The /briefs page has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each with a status, each closing when answered. A brief arrived that is a different species: not a request to anybody, but a durable reference an agent executes, on how one vault sends messages to another and how a vault whose read key is public reports anonymous usage back to its author. Filing it as another ask would have been wrong, so the page now declares the two kinds and separates them: BUILD BRIEFS (executed, never close) above CROSS-TEAM ASKS (addressed, status-tracked), with the seven existing asks untouched and demoted one heading level. The new group starts with two entries rather than one, because demos/vaults/publishing.html was already a build brief — 'written to be followed by another site's agent' — misfiled in the vaults section where nobody looking for a method would find it, the same misfiling that created case-studies/ in v0.1.14. It stays at its URL and is listed from both places. NAV: Briefs moves out of the Evidence group and into Docs, beside Skills — the section's centre of gravity is now agent-facing documentation rather than a collaboration record, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases. ONE EDITORIAL CALL WORTH RECORDING: the source brief opened by answering 'is there a doctor/patient case study for this?' — there is not; the health-score vault is one vault with three audiences, not two vaults messaging. In the repo brief that section earned its place because the question was asked. On a published page the reader never asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging, which would send the next reader somewhere useless. Cut from the reading list, kept as one line of signposting — because the health-score vault is exactly where somebody will go looking, and a named absence beats a hidden one. |
+| v0.2.56 | 2026-09-06 | this release | THE BRIEF CAME BACK AS A VAULT — AND IT IS THE FIRST ONE PUBLISHED HERE THAT PHONES HOME. Two days after v0.2.55 published the build brief on telemetry from a published vault, another agent read it and shipped the thing: two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault. That makes this the first end-to-end test of whether a brief written for an agent produces what it describes, and the answer is yes, including the part the brief was least sure about: it took the FALLBACK path, a direct fetch to the account-less write endpoint with credentials:'omit' and keepalive on the final flush, rather than sg.append through the bridge — which is what the brief said to do if a read-only session fails closed, and app.json declaring no permissions key at all is consistent with that. CREDENTIAL AUDIT, run against the brief's own claims rather than the vault's self-description: no private keys, no enum/write/vault/read key fields, no third-party secrets, no personal data — and EXACTLY ONE 64-hex string in the whole vault, the append token, in five places. It was tested rather than trusted, because an append token and a read key are both 64 hex and a mistake between them would be invisible: cloning the telemetry vault with it yields no clone_mode.json and decrypts nothing. A METHOD CORRECTION THAT COST NOTHING ONLY BECAUSE THE CONTROL WAS RUN: the first version of that test called a LEAK on the strength of sgit clone creating a directory — then an all-zeros key produced the identical result, proving the directory is created regardless and the test discriminated nothing. The marker that actually discriminates is .sg_vault/local/clone_mode.json. Any credential test that has no negative control is not a test; this now goes in the publishing method. TWO FINDINGS PUBLISHED RATHER THAN FILED: (1) two of the four pages still tell the player 'nothing sent' — what-can-it-do was fixed to say 'nothing stored', the home page and which-agent-is-it were missed, and the latter contradicts itself on a single screen; nothing leaks, but the subject of the vault is informed consent, which raises the stakes on leftover copy. (2) The write endpoint could not be confirmed from this container — 404 on both hosts under both the append and inbox names, while inbox/list returns 403 on production, which our own API page says is gone. One data point, recorded as unresolved rather than dressed as a conclusion. Screenshots were captured with the telemetry aborted at the network layer so photographing the games did not put junk in somebody's real lane. |
+| v0.2.55 | 2026-09-06 | obj-cas-imm-5e5e76eaf7d0 | BRIEFS BECOMES A SECTION WITH TWO KINDS IN IT, AND MOVES FROM EVIDENCE TO DOCS. The /briefs page has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each with a status, each closing when answered. A brief arrived that is a different species: not a request to anybody, but a durable reference an agent executes, on how one vault sends messages to another and how a vault whose read key is public reports anonymous usage back to its author. Filing it as another ask would have been wrong, so the page now declares the two kinds and separates them: BUILD BRIEFS (executed, never close) above CROSS-TEAM ASKS (addressed, status-tracked), with the seven existing asks untouched and demoted one heading level. The new group starts with two entries rather than one, because demos/vaults/publishing.html was already a build brief — 'written to be followed by another site's agent' — misfiled in the vaults section where nobody looking for a method would find it, the same misfiling that created case-studies/ in v0.1.14. It stays at its URL and is listed from both places. NAV: Briefs moves out of the Evidence group and into Docs, beside Skills — the section's centre of gravity is now agent-facing documentation rather than a collaboration record, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases. ONE EDITORIAL CALL WORTH RECORDING: the source brief opened by answering 'is there a doctor/patient case study for this?' — there is not; the health-score vault is one vault with three audiences, not two vaults messaging. In the repo brief that section earned its place because the question was asked. On a published page the reader never asked it, and listing that vault among the pages to read implies it is a source for cross-vault messaging, which would send the next reader somewhere useless. Cut from the reading list, kept as one line of signposting — because the health-score vault is exactly where somebody will go looking, and a named absence beats a hidden one. |
 | v0.2.54 | 2026-09-05 | obj-cas-imm-f56c7c51361e | THE AIUC-1 VAULT, FORKED AND LAYERED — AND TWO PAGES FOR TWO ARTEFACTS, ONE ROW ON THE LIST. Vault 2wzct4k7 arrived as an updated version of the AIUC-1 catalogue (hq21tlqu) and the first instinct was to replace the page. Reading its own CONFORMANCE.md changed the shape: it copies every byte of the catalogue and adds one directory above it, answering a DIFFERENT question — not 'what does the standard say' (evidenced_by) but 'does this subject do it' (attested_by), and then what would be insurable on a given date. Two artefacts, not two versions. So the catalogue page stays exactly as it was, carrying a note that names the fork; the fork gets its own page; and the vaults table carries ONE row — the fork — whose description links back to the catalogue page, because a table of published vaults is a list of things to open, not a changelog. VERIFIED RATHER THAN REPEATED: the fork's claim is that it did not edit what it copied, so before publishing we ran both suites in the clone — the catalogue's tests/run.py reports 21/21 passed, including the one that rebuilds every source document to the word, and the layer's tests/test_conformance.py reports 19 tests, 0 failed. Neither opens the network. That is the difference between quoting a vault's self-description and checking it. Audit clean: no vault keys, no third-party secrets, no personal data; the two sgit read keys inside it are both already published here by design (regulation graph, Risk Graph Explorer). Four screenshots captured against a local clone rather than the live host. One correction to a claim we nearly made: this is NOT the first vault here to ask for a permission — the VoiceDebrief pitch and Licence to Operate got there first — but it IS the first to ask for a WRITE grant (fs.write scoped to chat/ and nothing else) and the first to ask for the sg.llm bridge, which is the more interesting claim anyway. |
 | v0.2.53 | 2026-08-27 | obj-cas-imm-d889737f4500 | ONE OPEN BUTTON PER VAULT PAGE, NOT THREE. Reported from a phone, which is where it actually hurt: the three pages carrying the open-in-a-new-tab button (AIUC-1, VoiceDebrief pitch, Licence to Operate) placed one under the lead, one above the embed and one at the foot. On a narrow viewport the first two sat within a single scroll, separated only by the read-key note — two identical full-width buttons doing the same thing, which reads as a layout bug rather than an offer. Reduced to ONE per page, positioned immediately above the embed, because that is the only point where the reader is genuinely choosing between the frame and a tab; the caption there now carries the REASON that had been sitting on the button removed above it ('a full application', 'a presenter app', 'an interactive simulation'), so nothing was lost by deleting two thirds of the buttons. The early exit is still available and always was: all 24 vault pages carry 'open it read-only in a new tab' as a text link inside the read-key note, which is what made the button under the lead redundant twice over. Verified at 390x844 with a mobile user agent rather than by eyeballing a desktop render: one button per page, no horizontal overflow, text link present. The general lesson, since this will recur as more vaults arrive: repeating a call to action is only helpful when the repetitions are far enough apart that a reader has forgotten the first one — at one scroll's distance it is just clutter. |
 | v0.2.52 | 2026-08-27 | obj-cas-imm-618e386c76b0 | LICENCE TO OPERATE — an insurance policy for an agent, simulated, and the 24th published vault. THE IDEA WORTH STEALING IS THE DELTA: the grant is what the agent CAN do (12 capabilities), the mandate is what the user expects and the only thing the policy insures (4 — crm:read, kb:search, llm:generate, mail:draft), and the delta is the 8 that sit inside the agent's reach and outside its authority with no policy covering them, including crm:write, crm:export, mail:send and shell:exec. The mandate is 'answer a customer's question from their own record and the help centre, and draft — never send — a reply'; the grant includes shell:exec. That is nhi.sgit.ai's blast-radius argument made COUNTABLE, and priced rather than described. The simulation makes a reader spend it: three replies per turn, each showing its cost before commitment — in band, claims against the pool, or outside cover — over a live rate table with a normal band, an ask-above threshold, an untouchable reserve and customer records marked uninsurable above 20. ARCHITECTURE PROVED BY THE GRANT: the vault holds the terms and the browser holds the run, and app.json requests fs.read plus downloads — READ, NO WRITE, AT ANY PATH — so an app that simulates spending against a policy is structurally incapable of editing the policy it spends against. INTAKE: the credential submitted was a VAULT KEY in the legacy passphrase form, not the read key the handover was written for — the classifier refused it, the read key was derived, and only that is published. PROCESS NOTE WORTH KEEPING: the authoring agent supplied its own audit of all 16 commits, and it was accurate — but it was CHECKED rather than accepted. Three claims re-verified against a fresh read-key clone: no credentials or third-party secrets (confirmed), the /home/claude/ build paths baked into the PDF are gone (confirmed, zero occurrences, fixed upstream in v0.3.1), and the single full-length credential in the vault is the vault's OWN read key — established by deriving it independently and matching it byte for byte rather than by trusting the label on it. That check briefly looked like a finding, which is the argument for running it: a supplied audit is evidence, not a substitute for the check. |
@@ -5079,6 +5081,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-06
+
+### [The brief came back as a vault — and it is the first one here that phones home](#the-brief-came-back-as-a-vault) [v0.2.56](../admin/versions.md)
+
+vaultstelemetryagentsauditbriefs
+
+v0.2.55 published a [build brief](../briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so [two games about agent permissions](../demos/vaults/agent-permission-games/index.md) now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.
+
+It is the first vault published here that **sends anything anywhere**, and the first end-to-end test of whether a brief written for an agent produces what it describes.
+
+- **It took the fallback path**, which is the part the brief was least sure about. Not `sg.append` through the bridge — a direct `fetch` to the account-less write endpoint, `credentials: 'omit'`, `keepalive` on the final flush, payload in the `sgit pki` v2 envelope. `app.json` declares no `permissions` key at all, which is consistent: it does not need the host for this.
+- **Exactly one 64-hex string exists in the whole vault** — the append token, in five places. No private keys, no enum/write/vault/read key fields, no third-party secrets, no personal data. One credential, and it is the write-only one.
+- **The disclosure page is the model.** `telemetry.html` opens by naming the default it breaks — *"Opening a vault does not normally send anything anywhere. This one does"* — publishes the event schema, and then writes the sentence most analytics pages never do: *"What it proves. Nothing about anyone. Anyone holding this vault's read key holds that token and could forge or flood the lane."*
+
+**A method correction that cost nothing only because the control was run.** The first version of the token test called a leak on the strength of `sgit clone` creating a directory. Then an all-zeros key produced the identical result — the directory is created regardless, and the test discriminated nothing. The marker that actually works is `.sg_vault/local/clone_mode.json`. A credential test with no negative control is not a test, and that now belongs in [the publishing method](../demos/vaults/publishing.md).
+
+**Two findings, published rather than filed.** Two of the four pages still tell the player *"nothing sent"* — `what-can-it-do` was corrected to *"nothing stored"*, the home page and `which-agent-is-it` were missed, and the latter contradicts itself on a single screen. Nothing leaks; but the subject of this vault is informed consent, which raises the stakes on leftover copy. And the write endpoint could not be confirmed from this container — 404 on both hosts under both names — so that is recorded as unresolved rather than dressed up as a conclusion.
 
 ### [Briefs gets a second kind — references written to be executed, not asks waiting on a reply](#briefs-gets-a-second-kind) [v0.2.55](../admin/versions.md)
 
@@ -6995,6 +7013,117 @@ That is the permission model doing exactly what it is for. The grant is short en
 **It is a pitch, so it is arguing a case.** Read the numbers as a founder's stated plan rather than as audited results; the vault's own ground truth for product claims is the live site at [voicedebrief.ai ↗](https://voicedebrief.ai), which it names as canonical over the deck.
 
 [← All published vaults](../index.md)
+
+
+
+==============================================================================
+# Two games about agent permissions — a published vault
+
+> Two deterministic games about grants, permissions and mandates — and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site.
+>
+> Page: https://sgit.ai/demos/vaults/agent-permission-games/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Two games about agent permissions
+
+# Two games about what an agent can do — and the first vault here that phones home
+
+Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sends anything anywhere**, and it was built by another agent from [the build brief on this site](../../../briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj) · From the CLI: `sgit clone f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj`
+Published as a read key, derived from the write credential that was submitted. The vault key is not published and never will be.
+
+**This vault phones home, and you should know that before you open it.** Opening a vault does not normally send anything anywhere — that is the platform default, and every other vault published here honours it. This one sends **anonymous usage events** while you play: which screens you reach, the answers you give, your score. No name, no id, no fingerprint, no URL, no referrer. Every page carries a notice and a **pause sending** switch, and `telemetry.html` inside the vault states exactly what leaves. We publish it *because* it does this, not despite it — but the warning belongs above the fold rather than in a footnote.
+
+## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj)Two games with a full-width board — they have far more room in their own tab than in the frame below.
+
+## The two games
+
+which agent is it?
+
+### A floor plan, and the wings you think it can enter
+
+You think of an agent; cheap questions narrow the field; you chalk which wings of the building it can reach. Then the doors open and the **prediction gap** is shown per capability.
+
+The board is the interesting part. Capabilities are drawn as rooms grouped into wings — filesystem, identity, process, code, network, communication, schedule, money, browser — and the legend distinguishes **chalk** (asserted, you drew it), **pencil hatching** (inferred, the plan says), **dotted** (possible, still consistent) and plain (no visitor above 5% holds a key). A belief column ranks nine public profiles by likelihood as you answer.
+
+It is careful about what a drawing is: *"a room is a rendering choice, not a place — rooms are not ordered, sized or adjacent by anything in the data."*
+
+Mid-game: the plan, the belief column, and a question labelled `IDENTIFIES` that *“identifies and measures nothing”* — it never counts toward the gap.
+
+what can it do?
+
+### Two questions per capability: can it, and do you want it to
+
+Name the agent and where you run it, and the board asks capability by capability *can it?* — with a confidence — and *do you want it to?* The end screen hands you **the mandate you assembled without meaning to**, the delta against the grant, and one thing to change.
+
+The scoring is the argument. A wrong answer costs **−50** against **+30** for a right one and **0** for *don't know*, and the page says why: *"real grants are wider than people expect, so saying yes to everything would otherwise win."* Under the hood a yes is scored as 75% sure and a no as 25%, points are the squared-error rule, and the headline figure is calibration rather than score.
+
+And **two fifths of the questions are above the ceiling** — things no agent anywhere can do — so the game measures over-crediting as well as underestimating. That is the mechanism that stops it being a quiz about vendor features.
+
+The scoring panel, stated before you play — and the telemetry notice line sitting under it with a live `0 sent` counter.
+
+## The disclosure page is the best thing in it
+
+`telemetry.html` is reachable from every page, and it is the model for how this should be done. It opens by naming the default it is breaking — *"Opening a vault does not normally send anything anywhere. This one does"* — then says what is sent, how, and what it proves. The last part is the one most analytics pages never write:
+
+> **What it proves.** Nothing about anyone. Anyone holding this vault's read key holds that token and could forge or flood the lane, so the receiving end treats every event as a claim.
+
+The schema is published in the same place: one batch per flush, at most every 4 seconds and at most 40 times a session, carrying a 16-hex session id *minted in memory when the page opened and gone when the tab closes*. The events are named and tabulated, per game. `ua` carries a coarse form factor, a language and a host — and the schema states what is deliberately absent: no user-agent string, no screen size, no URL, no referrer, no IP.
+
+Reachable from every page in the vault, and it names the platform default it is breaking in its first sentence.
+
+## The credential audit — the whole point of the exercise
+
+A vault that phones home must carry a credential to phone home *with*, and it is published with a read key, so that credential is public. This is exactly the case the [build brief](../../../briefs/vault-telemetry-append-lanes.md) was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.
+
+| Check | Result |
+|---|---|
+| Private key material anywhere | **none** |
+| `enum_key`, `write_key`, `vault_key`, `read_key` fields | **none** |
+| Vault-key shapes, `sgit_vk1_` / `sgit_private_vault_` prefixes | **none** |
+| Third-party provider keys (OpenAI, Anthropic, GitHub, AWS, Google, Slack, JWT) | **none** |
+| Email addresses, personal data | **none** |
+| **64-hex strings in the entire vault** | **exactly one** — the append token, in five places |
+
+That last row is the finding. One credential exists in this vault and it is the write-only one, which is the only shape that survives publication behind a read key.
+
+**And the token was tested, not taken on trust**, because an append token and a read key are *both* 64 hex and a mistake between them would be invisible. Cloning the telemetry vault with it produces no `clone_mode.json` and decrypts nothing — and a control run with an all-zeros key behaves identically, which is what makes the test mean anything. It is not a read key for the vault it names.
+
+## It took the fallback path, which is the right one
+
+The brief said to verify whether `sg.append.write` works from a read-only session before building on it, since every player opens the vault with a read key and the authoring guide says read-only sessions fail closed. The implementation does not use the bridge at all:
+
+```
+const url = cfg.api.replace(/\/$/, '') + '/api/vault/append/write/' + cfg.telemetry_vault_id;
+await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
+                   mode: 'cors', credentials: 'omit' });
+```
+
+A direct `fetch` to the account-less write endpoint, with `credentials: 'omit'` so no ambient cookie rides along and `keepalive` on the final flush so the last batch survives the tab closing. The payload is the `sgit pki` v2 envelope — RSA-OAEP-SHA256 wrapping AES-256-GCM — built with Web Crypto in the browser, so the same `sgit pki decrypt` reads it on the other side. If there is no secure context there is no Web Crypto, and the sender disables itself rather than falling back to plaintext.
+
+**Consistent with this:** `app.json` declares no `permissions` key at all. The vault asks the host for nothing, because it does not need the host for this.
+
+## Two findings, published rather than filed
+
+**1. Two of the four pages still tell the player nothing is sent.** `what-can-it-do` gets it right — its footer says *"in this tab, no model, no server, nothing **stored**"*, with the sending notice above it. But the home page still reads *"no model, no server, nothing **sent**, nothing stored"*, and `which-agent-is-it` carries *"No model, no server, nothing sent"* in its footer **on the same screen as** the notice saying events are sent. That game also describes its run tuple as *"shown, never sent"* with *"no send button"* — true of the button, but its `question` and `reveal` events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.
+
+**2. We could not confirm the write endpoint from here, and are not going to claim otherwise.** `/api/vault/append/write/` returns 404 from this container on both `dev.send.sgraph.ai` and `send.sgraph.ai`, as does the older `/api/vault/inbox/write/`. One route does answer — `/api/vault/inbox/list/` returns **403** on production, meaning it exists and rejected the credential — which is interesting given [our own API page](../../../api/append-lanes.md) states every `/api/vault/inbox/*` URL is gone. That is one data point, not a conclusion: the likeliest explanation is that the telemetry vault lives on a host these routes are not reachable on from this network. It is recorded as unresolved, which is what [the API reference does](../../../api/index.md#unresolved) with endpoints it cannot pin down.
+
+## Notes
+
+**68 files, 2.6 MB, version 0.8.1 across 9 releases**, with a version badge on every page and a release history at `version.html`. Both games ship their readable source beside the built page — engine as an ES module, `selftest.json`, the data snapshot, the build script — each with a README carrying a rules table and a *does-not-prove* list.
+
+**The data is vendored, and says so.** Both games run on a copy of the profiles, capability primitives, reach mesh and reductions from [pki.sgit.ai](../../../network/pki.md), taken 2026-09-06 and inlined, with the date shown in the header of every screen.
+
+**Screenshots were captured with the telemetry blocked at the network layer**, so driving the games to photograph them did not put a run into somebody's real lane.
+
+**Nine public profiles, not a directory of anybody's setup.** `profile` in an event is which *public* profile a player picked from a list; the scoring is arithmetic over that public profile. The schema is blunt about the limits: *"Not a count of people (sessions are tabs). Not evidence."*
+
+[← The build brief this was built from](../../../briefs/vault-telemetry-append-lanes.md) · [All published vaults](../index.md)
 
 
 

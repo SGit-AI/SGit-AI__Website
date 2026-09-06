@@ -13,7 +13,7 @@ import json
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.55'
+SITE_VERSION = 'v0.2.56'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -26,7 +26,38 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.55', '2026-09-06', 'this release',
+    ('v0.2.56', '2026-09-06', 'this release',
+     "THE BRIEF CAME BACK AS A VAULT — AND IT IS THE FIRST ONE PUBLISHED HERE THAT PHONES HOME. "
+     "Two days after v0.2.55 published the build brief on telemetry from a published vault, "
+     "another agent read it and shipped the thing: two deterministic games about grants, "
+     "permissions and mandates, sending anonymous usage events over an append lane to a separate "
+     "private vault. That makes this the first end-to-end test of whether a brief written for an "
+     "agent produces what it describes, and the answer is yes, including the part the brief was "
+     "least sure about: it took the FALLBACK path, a direct fetch to the account-less write "
+     "endpoint with credentials:'omit' and keepalive on the final flush, rather than sg.append "
+     "through the bridge — which is what the brief said to do if a read-only session fails "
+     "closed, and app.json declaring no permissions key at all is consistent with that. "
+     "CREDENTIAL AUDIT, run against the brief's own claims rather than the vault's self-"
+     "description: no private keys, no enum/write/vault/read key fields, no third-party secrets, "
+     "no personal data — and EXACTLY ONE 64-hex string in the whole vault, the append token, in "
+     "five places. It was tested rather than trusted, because an append token and a read key are "
+     "both 64 hex and a mistake between them would be invisible: cloning the telemetry vault with "
+     "it yields no clone_mode.json and decrypts nothing. A METHOD CORRECTION THAT COST NOTHING "
+     "ONLY BECAUSE THE CONTROL WAS RUN: the first version of that test called a LEAK on the "
+     "strength of sgit clone creating a directory — then an all-zeros key produced the identical "
+     "result, proving the directory is created regardless and the test discriminated nothing. The "
+     "marker that actually discriminates is .sg_vault/local/clone_mode.json. Any credential test "
+     "that has no negative control is not a test; this now goes in the publishing method. TWO "
+     "FINDINGS PUBLISHED RATHER THAN FILED: (1) two of the four pages still tell the player "
+     "'nothing sent' — what-can-it-do was fixed to say 'nothing stored', the home page and "
+     "which-agent-is-it were missed, and the latter contradicts itself on a single screen; "
+     "nothing leaks, but the subject of the vault is informed consent, which raises the stakes on "
+     "leftover copy. (2) The write endpoint could not be confirmed from this container — 404 on "
+     "both hosts under both the append and inbox names, while inbox/list returns 403 on "
+     "production, which our own API page says is gone. One data point, recorded as unresolved "
+     "rather than dressed as a conclusion. Screenshots were captured with the telemetry aborted "
+     "at the network layer so photographing the games did not put junk in somebody's real lane."),
+    ('v0.2.55', '2026-09-06', 'obj-cas-imm-5e5e76eaf7d0',
      "BRIEFS BECOMES A SECTION WITH TWO KINDS IN IT, AND MOVES FROM EVIDENCE TO DOCS. The /briefs "
      "page has been a single scroll of cross-team asks since v0.1.13 — each addressed to another "
      "team, each with a status, each closing when answered. A brief arrived that is a different "

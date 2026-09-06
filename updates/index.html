@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.55</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.56</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -81,6 +81,19 @@
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
   <h2 class="upd-date">2026-09-06</h2>
+  <article class="upd" id="the-brief-came-back-as-a-vault">
+    <h3><a href="#the-brief-came-back-as-a-vault">The brief came back as a vault — and it is the first one here that phones home</a> <a class="upd-ver" href="../admin/versions.html">v0.2.56</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">telemetry</span><span class="chip">agents</span><span class="chip">audit</span><span class="chip">briefs</span></p>
+<p>v0.2.55 published a <a href="../briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so <a href="../demos/vaults/agent-permission-games/index.html">two games about agent permissions</a> now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.</p>
+<p>It is the first vault published here that <b>sends anything anywhere</b>, and the first end-to-end test of whether a brief written for an agent produces what it describes.</p>
+<ul>
+<li><b>It took the fallback path</b>, which is the part the brief was least sure about. Not <code>sg.append</code> through the bridge — a direct <code>fetch</code> to the account-less write endpoint, <code>credentials: 'omit'</code>, <code>keepalive</code> on the final flush, payload in the <code>sgit pki</code> v2 envelope. <code>app.json</code> declares no <code>permissions</code> key at all, which is consistent: it does not need the host for this.</li>
+<li><b>Exactly one 64-hex string exists in the whole vault</b> — the append token, in five places. No private keys, no enum/write/vault/read key fields, no third-party secrets, no personal data. One credential, and it is the write-only one.</li>
+<li><b>The disclosure page is the model.</b> <code>telemetry.html</code> opens by naming the default it breaks — <em>"Opening a vault does not normally send anything anywhere. This one does"</em> — publishes the event schema, and then writes the sentence most analytics pages never do: <em>"What it proves. Nothing about anyone. Anyone holding this vault's read key holds that token and could forge or flood the lane."</em></li>
+</ul>
+<p><b>A method correction that cost nothing only because the control was run.</b> The first version of the token test called a leak on the strength of <code>sgit clone</code> creating a directory. Then an all-zeros key produced the identical result — the directory is created regardless, and the test discriminated nothing. The marker that actually works is <code>.sg_vault/local/clone_mode.json</code>. A credential test with no negative control is not a test, and that now belongs in <a href="../demos/vaults/publishing.html">the publishing method</a>.</p>
+<p><b>Two findings, published rather than filed.</b> Two of the four pages still tell the player <em>"nothing sent"</em> — <code>what-can-it-do</code> was corrected to <em>"nothing stored"</em>, the home page and <code>which-agent-is-it</code> were missed, and the latter contradicts itself on a single screen. Nothing leaks; but the subject of this vault is informed consent, which raises the stakes on leftover copy. And the write endpoint could not be confirmed from this container — 404 on both hosts under both names — so that is recorded as unresolved rather than dressed up as a conclusion.</p>
+  </article>
   <article class="upd" id="briefs-gets-a-second-kind">
     <h3><a href="#briefs-gets-a-second-kind">Briefs gets a second kind — references written to be executed, not asks waiting on a reply</a> <a class="upd-ver" href="../admin/versions.html">v0.2.55</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">agents</span><span class="chip">docs</span><span class="chip">multi-agent</span></p>
@@ -383,7 +396,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.55</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.56</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -422,7 +435,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.55';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.56';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

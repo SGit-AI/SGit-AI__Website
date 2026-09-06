@@ -1,8 +1,22 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.55",
+  "site_version": "v0.2.56",
   "updates": [
+    {
+      "slug": "the-brief-came-back-as-a-vault",
+      "title": "The brief came back as a vault — and it is the first one here that phones home",
+      "date": "2026-09-06",
+      "version": "v0.2.56",
+      "tags": [
+        "vaults",
+        "telemetry",
+        "agents",
+        "audit",
+        "briefs"
+      ],
+      "summary": "v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so two games about agent permissions now joins the published vaults — two deterministic games about grants, permissions a…"
+    },
     {
       "slug": "briefs-gets-a-second-kind",
       "title": "Briefs gets a second kind — references written to be executed, not asks waiting on a reply",
