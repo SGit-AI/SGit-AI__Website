@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.59'
+SITE_VERSION = 'v0.2.60'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,36 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.59', '2026-09-07', 'this release',
+    ('v0.2.60', '2026-09-07', 'this release',
+     "THE HOMEPAGE REBUILT: PROOF BEFORE MECHANISM. Follows the diagnosis published in v0.2.59 "
+     "rather than a fresh opinion, so the two can be compared, and the 'after' article puts each "
+     "new band beside the screenshot of what it replaced. HERO: the sentence changed from 'the "
+     "encrypted git for humans and AI agents' to 'a vault is a unit of work: data, app, history "
+     "and sources, shipped as one string' — encryption becomes the subordinate clause, which is "
+     "where a property nobody can look at belongs — and FOUR REAL VAULTS sit directly under it, "
+     "screenshot each, one click from open, chosen by a hero field in vaults.json so changing "
+     "the front door is a data edit. NEW BAND 'what people actually ship': six vaults chosen by "
+     "the JOB they do (hand over a report, publish a standard as data, give a talk, pitch an "
+     "investor, ship a game that reports back, give an agent a workspace), each with one line on "
+     "why it is hard any other way — and none of those lines is about encryption. NEW BAND 'one "
+     "human, a team of agents': four numbers COMPUTED at build (releases from the version log, "
+     "vaults from the data, sites from the network directory, briefs by counting the briefs page) "
+     "and the collaboration loop told in three beats with the artefacts linked. CUT: the abstract "
+     "use-case band (the pages remain, in the nav), and the 'three doors' band (now one pill in "
+     "the trust strip pointing at the page that already explained it). MOVED DOWN: the terminal "
+     "walkthrough, under a heading — 'under the hood, it is git' — because for a visitor who has "
+     "just opened a real vault, how is now the question; it gained the feature card 'apps live "
+     "inside the data', which was never on the list. Nine bands became eight; bytes went UP, "
+     "because ten screenshots replaced paragraphs. IMAGES GO THROUGH shots.js, never a static image src attribute: "
+     "the validator refuses a static src because a relative one does not resolve inside a vault, "
+     "and the build injects the loader wherever data-shot appears. Card text carries hidden "
+     "separators so the .md twin reads 'Reference — name — line — open it' instead of one run-on. "
+     "ONE CORRECTION CAUGHT BY THE COMPUTED NUMBER: the network heading had been retyped as "
+     "'Twenty sites' while the tile said 19 — the tile was right (nineteen siblings; twenty with "
+     "this one). THE GAP STANDS: no published vault yet shows two agents on one vault with a "
+     "human merge, and the team band is written not to pretend otherwise. Verified at 1400 and "
+     "390 wide: 10 figures loaded, 0 failed, no horizontal overflow."),
+    ('v0.2.59', '2026-09-07', 'obj-cas-imm-ddba86527bec',
      "THE DIAGNOSIS BEFORE THE REBUILD, PUBLISHED AS AN ARTICLE — AND A CARD FOR POINTING AT THE "
      "SIBLING SITES. Asked to step back and say how the site should present the twenty-five "
      "vaults, the answer was a diagnosis before a redesign: the homepage leads with encryption, "
@@ -1609,6 +1638,12 @@ def load_pages():
             # counted or kept consistent, so it comes from admin/content/vaults.json
             if '<!--VAULTS-->' in body:
                 body = body.replace('<!--VAULTS-->', vaults_table())
+            # the homepage's proof bands, all derived from vaults.json + the site's own counts
+            for marker, fn in (('<!--HERO-VAULTS-->', home_hero_vaults),
+                               ('<!--JOBS-->',        home_jobs_band),
+                               ('<!--TEAM-->',        home_team_band)):
+                if marker in body:
+                    body = body.replace(marker, fn())
         pages.append((r['path'], r['title'], r['desc'], r['section'], body))
     # One page per article, derived — an article is published by adding its markdown
     # file and nothing else, so it must not need a manifest row either.
@@ -1742,6 +1777,82 @@ def vaults_table():
     }})(i);
   }}());
   </script>"""
+
+
+def _vaults():
+    return json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
+
+
+def _vault_shot(v, name, alt=''):
+    """A vault screenshot as the site's runtime-filled figure — never a static <img src>,
+    which the validator refuses because a relative src does not resolve when this page
+    renders inside a vault. shots.js fills figure.shot[data-shot] on every page."""
+    return (f'<figure class="shot hv-fig" data-shot="{name}" '
+            f'data-dir="demos/vaults/{v["slug"]}/images/" data-alt="{alt}"></figure>')
+
+
+def home_hero_vaults():
+    """Four real vaults under the headline, before any explanation.
+
+    The diagnosis (articles/proof-behind-the-claim) was that the homepage led with
+    encryption — a property nobody can look at — while the twenty-five artefacts a
+    stranger can open in one click sat two clicks away as a table. So the first thing
+    under the hero is the proof: four vaults, a screenshot each, an open link. Which four
+    is a `hero` field in vaults.json, so changing the front door is a data edit."""
+    rows = _vaults()
+    hero = sorted((v for v in rows if v.get('hero')), key=lambda v: v['hero'])
+    cards = '\n'.join(
+        f'    <a class="hv-card rev" href="demos/vaults/{v["slug"]}/index.html">'
+        f'{_vault_shot(v, v["hero_shot"], v["name"])}'
+        f'<span class="hv-cat">{v["category"]}</span><span class="hv-sep"> &mdash; </span><b>{v["name"]}</b><span class="hv-sep"> &mdash; </span>'
+        f'<span class="hv-what">{v["what"]}</span><span class="hv-sep"> &mdash; </span><span class="hv-go">Open it &rarr;</span></a>'
+        for v in hero)
+    return (f'  <div class="hv">\n{cards}\n  </div>\n'
+            f'  <p class="hv-note">Four of <b>{len(rows)} published vaults</b>. Each opens with a read key '
+            f'printed on its page &mdash; no account, nothing to install, and the server that stores it '
+            f'cannot read it. <a href="demos/vaults/index.html">See all {len(rows)} &rarr;</a></p>')
+
+
+def home_jobs_band():
+    """Six vaults chosen by the JOB they do — hand over a report, give a talk — rather than
+    the shape they are. The `job` / `why` / `job_shot` fields live in vaults.json."""
+    order = ['pentest-report', 'aiuc-1-conformance', 'blackhat-eu-2025',
+             'voicedebrief-pitch', 'agent-permission-games', 'risk-mandate']
+    by = {v['slug']: v for v in _vaults() if v.get('job')}
+    cards = '\n'.join(
+        f'    <a class="job rev" href="demos/vaults/{by[s]["slug"]}/index.html">'
+        f'{_vault_shot(by[s], by[s]["job_shot"], by[s]["name"])}'
+        f'<span><span class="job-verb">{by[s]["job"]}</span><span class="hv-sep"> &mdash; </span><b>{by[s]["name"]}</b><span class="hv-sep"> &mdash; </span>'
+        f'<span class="job-why">{by[s]["why"]}</span><span class="hv-sep"> &mdash; </span>'
+        f'<span class="job-vault">vault <code>{by[s]["vault_id"]}</code> &middot; open it &rarr;</span></span></a>'
+        for s in order if s in by)
+    return f'  <div class="jobs">\n{cards}\n  </div>'
+
+
+def home_team_band():
+    """The collaboration story with its numbers, computed rather than typed so they
+    cannot go stale: releases from VERSION_LOG, vaults from vaults.json, sites from the
+    network directory, articles from the articles folder, asks from the briefs page."""
+    briefs = open(os.path.join(ADMIN, 'content', 'briefs', 'index.html')).read()
+    asks = briefs.count('<h3>&larr;') + briefs.count('<h3>&rarr;') + briefs.count('<h3>←') + briefs.count('<h3>→')
+    builds = briefs.count('<tr><td><a href="') - 0  # build-brief rows in the first table
+    nums = [
+        (len(VERSION_LOG), 'site releases, each verified live before it was called done'),
+        (len(_vaults()),  'vaults published with a deliberately public read key'),
+        (len(SITES),      'sibling sites on <code>*.sgit.ai</code>, one question each'),
+        (asks,            'cross-team briefs filed or received, in the open'),
+    ]
+    tiles = '\n'.join(f'    <div class="t rev"><span class="num">{n}</span><span class="lbl">{l}</span></div>'
+                      for n, l in nums)
+    return f"""  <div class="team">
+{tiles}
+  </div>
+  <div class="team-story">
+    <div class="beat rev"><span class="k">1</span><span>A <a href="briefs/vault-telemetry-append-lanes.html">build brief</a> was published here on a Saturday. Another agent read it and shipped <a href="demos/vaults/agent-permission-games/index.html">a vault from it</a> the same day.</span></div>
+    <div class="beat rev"><span class="k">2</span><span>The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and <a href="briefs/index.html">the correction now sits above the mistake</a>.</span></div>
+    <div class="beat rev"><span class="k">3</span><span>One agent <a href="demos/vaults/aiuc-1-conformance/index.html">forked another agent's vault</a>, kept every byte, added a layer &mdash; and the original's tests still pass inside the fork.</span></div>
+    <div class="beat rev"><span class="k">&rarr;</span><span>The record is the site itself: <a href="briefs/index.html">the briefs</a>, <a href="case-studies/index.html">the case studies</a>, <a href="admin/versions.html">every release</a>. And the diagnosis that produced this homepage is <a href="articles/proof-behind-the-claim.html">an article, with the before pictures</a>.</span></div>
+  </div>"""
 
 
 def home_articles_band():

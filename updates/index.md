@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,24 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-07
+
+### [The proof moved up — the homepage, rebuilt to show vaults before it explains them](#the-proof-moved-up) [v0.2.60](../admin/versions.md)
+
+homepagepositioningvaultsagents
+
+The homepage is rebuilt, following [the diagnosis published this morning](../articles/proof-behind-the-claim.md) rather than a fresh opinion — and [the "after" article](../articles/proof-moved-up.md) puts each new band beside a screenshot of what it replaced, so the comparison is honest rather than flattering.
+
+**The first screen now shows vaults.** The headline changed from *"the encrypted git for humans and AI agents"* to *"a vault is a unit of work: data, app, history and sources, shipped as one string."* Encryption did not leave — it became the subordinate clause, which is where a property nobody can look at belongs. Under it: **four real published vaults**, a screenshot each, one click from open. Which four is a field in the vault data, so changing the front door is a data edit.
+
+**The use cases became things.** A new band, *what people actually ship*, replaces five category cards with six vaults chosen by the job they do — hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace — each with one line on why it is hard any other way. None of those lines is about encryption.
+
+**The collaboration story got a front door.** *One human, a team of agents*: four numbers computed at build time — 87 releases, 25 vaults, 19 sibling sites, 10 cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed; if one is wrong, the site is wrong somewhere else too.
+
+**Cut:** the abstract use-case band (the pages remain, in the nav) and the *three doors* band (now one pill in the trust strip). **Moved down:** the terminal walkthrough, under *Under the hood, it is git*, because for a visitor who has just opened a real vault, *how* is now the question. Nine bands became eight; the page got longer in bytes, because ten screenshots replaced paragraphs.
+
+**One thing the computed number caught.** The network heading had been retyped as "Twenty sites" while the tile beside it said 19. The tile was right — nineteen siblings, twenty with this one — and it is the tile that cannot drift.
+
+**The gap stands.** No published vault yet shows two agents on one vault with a human merging their branches. The band tells the story of agents building *for* each other, which is evidenced, and is written so as not to pretend it shows more.
 
 ### [The diagnosis before the rebuild — and a card for pointing at the sibling sites](#the-diagnosis-before-the-rebuild) [v0.2.59](../admin/versions.md)
 

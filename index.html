@@ -4,17 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>sgit — the encrypted git for humans and AI agents</title>
-<meta name="description" content="sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.">
+<meta name="description" content="sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.">
 <link rel="canonical" href="https://sgit.ai/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/index.html">
 <meta property="og:title" content="sgit — the encrypted git for humans and AI agents">
-<meta property="og:description" content="sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.">
+<meta property="og:description" content="sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "sgit", "alternateName": ["sgit-ai", "sgit CLI"], "applicationCategory": "DeveloperApplication", "applicationSubCategory": "Version control", "operatingSystem": "macOS, Linux, Windows", "url": "https://sgit.ai", "downloadUrl": "https://pypi.org/project/sgit-ai/", "installUrl": "https://pypi.org/project/sgit-ai/", "softwareHelp": "https://sgit.ai/docs/", "license": "https://www.apache.org/licenses/LICENSE-2.0", "programmingLanguage": "Python", "softwareRequirements": "Python >= 3.11", "description": "git for encrypted vaults: clone, commit, branch and merge files that are encrypted client-side with AES-256-GCM before they leave your machine. The server stores ciphertext under opaque ids and never sees filenames, contents or commit messages.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "sameAs": ["https://pypi.org/project/sgit-ai/", "https://github.com/SGit-AI/SGit-AI__CLI", "https://github.com/SGit-AI/SGit-AI__Website"], "disambiguatingDescription": "Distinct from SGit, the Android Git client, and from SGIT, the Dr. Samuel George Institute of Engineering and Technology. This is the encrypted-vault CLI published to PyPI as sgit-ai."}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "sgit — the encrypted git for humans and AI agents", "headline": "sgit — the encrypted git for humans and AI agents", "description": "sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.", "url": "https://sgit.ai/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "sgit — the encrypted git for humans and AI agents", "headline": "sgit — the encrypted git for humans and AI agents", "description": "sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.", "url": "https://sgit.ai/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -22,7 +22,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="admin/versions.html" title="Site release history">v0.2.59</a>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.2.60</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="why/index.html">Why</a></div>
@@ -78,19 +78,66 @@
 </div></nav>
 
 <header class="hero">
-  <div class="eyebrow">Agents need private, versioned state</div>
-  <h1>The encrypted git for<br>humans and AI agents</h1>
-  <p class="sub">Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.</p>
+  <div class="eyebrow">Git for encrypted vaults — for humans and AI agents</div>
+  <h1>A vault is a unit of work:<br>data, app, history and sources, shipped as one string</h1>
+  <p class="sub">Version it like git. Hand it over with a single read key — no account, no hosting, no install for the reader. And the server that stores it cannot read it.</p>
   <div class="ctas">
+    <a class="cta2" href="demos/vaults/index.html"><b>Open a real vault →</b></a>
     <button class="pipbtn" type="button" data-copy="pip install sgit-ai">$ pip install sgit-ai <span class="cp">copy</span></button>
-    <a class="cta2" href="try/index.html">Or try it in your browser →</a>
     <a class="cta2" href="docs/quickstart.html">5-minute quickstart →</a>
   </div>
-  <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0</p>
+  <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0 · <a href="try/index.html">or try it in your browser</a></p>
 </header>
 
-<!-- terminal walkthrough -->
-<section class="band" id="demo">
+<!-- four real vaults, before a single paragraph of explanation. Derived from
+     admin/content/vaults.json (the entries carrying `hero`); nothing here is hand-listed. -->
+<section class="band" id="proof">
+  <div class="hv">
+    <a class="hv-card rev" href="demos/vaults/aiuc-1-conformance/index.html"><figure class="shot hv-fig" data-shot="insurability.webp" data-dir="demos/vaults/aiuc-1-conformance/images/" data-alt="AIUC-1 conformance layer"></figure><span class="hv-cat">Reference</span><span class="hv-sep"> &mdash; </span><b>AIUC-1 conformance layer</b><span class="hv-sep"> &mdash; </span><span class="hv-what">The AIUC-1 standard as a graph, plus a conformance layer that computes insurability</span><span class="hv-sep"> &mdash; </span><span class="hv-go">Open it &rarr;</span></a>
+    <a class="hv-card rev" href="demos/vaults/agent-permission-games/index.html"><figure class="shot hv-fig" data-shot="wai-question.webp" data-dir="demos/vaults/agent-permission-games/images/" data-alt="Agent permission games"></figure><span class="hv-cat">Application</span><span class="hv-sep"> &mdash; </span><b>Agent permission games</b><span class="hv-sep"> &mdash; </span><span class="hv-what">Two games about grants and mandates — the first vault here that phones home</span><span class="hv-sep"> &mdash; </span><span class="hv-go">Open it &rarr;</span></a>
+    <a class="hv-card rev" href="demos/vaults/blackhat-eu-2025/index.html"><figure class="shot hv-fig" data-shot="slide-pillars.webp" data-dir="demos/vaults/blackhat-eu-2025/images/" data-alt="AI vs. AI — Black Hat EU 2025"></figure><span class="hv-cat">Presentation</span><span class="hv-sep"> &mdash; </span><b>AI vs. AI — Black Hat EU 2025</b><span class="hv-sep"> &mdash; </span><span class="hv-what">The Black Hat EU 2025 keynote, with its PDF exports and eight research papers</span><span class="hv-sep"> &mdash; </span><span class="hv-go">Open it &rarr;</span></a>
+    <a class="hv-card rev" href="demos/vaults/pentest-report/index.html"><figure class="shot hv-fig" data-shot="app-open.webp" data-dir="demos/vaults/pentest-report/images/" data-alt="Penetration Test Report"></figure><span class="hv-cat">Report</span><span class="hv-sep"> &mdash; </span><b>Penetration Test Report</b><span class="hv-sep"> &mdash; </span><span class="hv-what">A penetration test report (fictional) with a re-test script per finding</span><span class="hv-sep"> &mdash; </span><span class="hv-go">Open it &rarr;</span></a>
+  </div>
+  <p class="hv-note">Four of <b>25 published vaults</b>. Each opens with a read key printed on its page &mdash; no account, nothing to install, and the server that stores it cannot read it. <a href="demos/vaults/index.html">See all 25 &rarr;</a></p>
+</section>
+
+<!-- six vaults chosen by the JOB they do, not the shape they are. Also derived. -->
+<section class="band alt" id="ship">
+  <h2>What people actually ship</h2>
+  <p class="bandlede">Not categories — things. Each one is a real vault you can open, and each is hard to make any other way, for a reason that has little to do with encryption.</p>
+  <div class="jobs">
+    <a class="job rev" href="demos/vaults/pentest-report/index.html"><figure class="shot hv-fig" data-shot="app-open.webp" data-dir="demos/vaults/pentest-report/images/" data-alt="Penetration Test Report"></figure><span><span class="job-verb">Hand over a report</span><span class="hv-sep"> &mdash; </span><b>Penetration Test Report</b><span class="hv-sep"> &mdash; </span><span class="job-why">Findings, evidence and a retest script per finding travel as one unit. The client opens it with one string and can re-run the tests themselves.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>o4lrwx02</code> &middot; open it &rarr;</span></span></a>
+    <a class="job rev" href="demos/vaults/aiuc-1-conformance/index.html"><figure class="shot hv-fig" data-shot="conformance.webp" data-dir="demos/vaults/aiuc-1-conformance/images/" data-alt="AIUC-1 conformance layer"></figure><span><span class="job-verb">Publish a standard as data</span><span class="hv-sep"> &mdash; </span><b>AIUC-1 conformance layer</b><span class="hv-sep"> &mdash; </span><span class="job-why">53 controls as a graph you can cite, 82 hashed source snapshots — and a fork that added a conformance layer without changing a byte of the original.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>2wzct4k7</code> &middot; open it &rarr;</span></span></a>
+    <a class="job rev" href="demos/vaults/blackhat-eu-2025/index.html"><figure class="shot hv-fig" data-shot="slide-insiders.webp" data-dir="demos/vaults/blackhat-eu-2025/images/" data-alt="AI vs. AI — Black Hat EU 2025"></figure><span><span class="job-verb">Give a talk</span><span class="hv-sep"> &mdash; </span><b>AI vs. AI — Black Hat EU 2025</b><span class="hv-sep"> &mdash; </span><span class="job-why">26 slides, six PDF exports and the eight papers the talk cites, in the vault it was presented from. The deck and its sources never separate.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>k1izvg7e</code> &middot; open it &rarr;</span></span></a>
+    <a class="job rev" href="demos/vaults/voicedebrief-pitch/index.html"><figure class="shot hv-fig" data-shot="slide-title.webp" data-dir="demos/vaults/voicedebrief-pitch/images/" data-alt="VoiceDebrief pitch (FI)"></figure><span><span class="job-verb">Pitch an investor</span><span class="hv-sep"> &mdash; </span><b>VoiceDebrief pitch (FI)</b><span class="hv-sep"> &mdash; </span><span class="job-why">A presenter app with timings and speaker notes, shipped with the script, the research and the exports it was built from.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>95i2xqrd</code> &middot; open it &rarr;</span></span></a>
+    <a class="job rev" href="demos/vaults/agent-permission-games/index.html"><figure class="shot hv-fig" data-shot="wcid-entry.webp" data-dir="demos/vaults/agent-permission-games/images/" data-alt="Agent permission games"></figure><span><span class="job-verb">Ship a game that reports back</span><span class="hv-sep"> &mdash; </span><b>Agent permission games</b><span class="hv-sep"> &mdash; </span><span class="job-why">Anonymous telemetry over a write-only lane — the one credential shape that survives being published with a read key.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>4evnlwrj</code> &middot; open it &rarr;</span></span></a>
+    <a class="job rev" href="demos/vaults/risk-mandate/index.html"><figure class="shot hv-fig" data-shot="app-open.webp" data-dir="demos/vaults/risk-mandate/images/" data-alt="Risk Mandate"></figure><span><span class="job-verb">Give an agent a workspace</span><span class="hv-sep"> &mdash; </span><b>Risk Mandate</b><span class="hv-sep"> &mdash; </span><span class="job-why">124 files, 98 commits, eight entry points: a software project delivered as a vault — that calls an LLM without ever holding the API key.</span><span class="hv-sep"> &mdash; </span><span class="job-vault">vault <code>4zf6pf2z</code> &middot; open it &rarr;</span></span></a>
+  </div>
+  <p class="bandcta"><a class="cta2" href="demos/vaults/index.html">All published vaults, sortable →</a></p>
+</section>
+
+<!-- the story the whole site rests on, told as a story rather than filed as a log -->
+<section class="band" id="team">
+  <h2>One human, a team of agents</h2>
+  <p class="bandlede">This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.</p>
+  <div class="team">
+    <div class="t rev"><span class="num">88</span><span class="lbl">site releases, each verified live before it was called done</span></div>
+    <div class="t rev"><span class="num">25</span><span class="lbl">vaults published with a deliberately public read key</span></div>
+    <div class="t rev"><span class="num">19</span><span class="lbl">sibling sites on <code>*.sgit.ai</code>, one question each</span></div>
+    <div class="t rev"><span class="num">10</span><span class="lbl">cross-team briefs filed or received, in the open</span></div>
+  </div>
+  <div class="team-story">
+    <div class="beat rev"><span class="k">1</span><span>A <a href="briefs/vault-telemetry-append-lanes.html">build brief</a> was published here on a Saturday. Another agent read it and shipped <a href="demos/vaults/agent-permission-games/index.html">a vault from it</a> the same day.</span></div>
+    <div class="beat rev"><span class="k">2</span><span>The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and <a href="briefs/index.html">the correction now sits above the mistake</a>.</span></div>
+    <div class="beat rev"><span class="k">3</span><span>One agent <a href="demos/vaults/aiuc-1-conformance/index.html">forked another agent's vault</a>, kept every byte, added a layer &mdash; and the original's tests still pass inside the fork.</span></div>
+    <div class="beat rev"><span class="k">&rarr;</span><span>The record is the site itself: <a href="briefs/index.html">the briefs</a>, <a href="case-studies/index.html">the case studies</a>, <a href="admin/versions.html">every release</a>. And the diagnosis that produced this homepage is <a href="articles/proof-behind-the-claim.html">an article, with the before pictures</a>.</span></div>
+  </div>
+</section>
+
+<!-- how: the terminal walkthrough, for the developer who is now interested -->
+<section class="band alt" id="demo">
+  <h2>Under the hood, it is git</h2>
+  <p class="bandlede">Same muscle memory. Files are encrypted before they leave your machine; the server stores ciphertext and hashes, nothing else.</p>
   <div class="term">
     <div class="ttabs">
       <button class="ttab active" data-pane="t1" data-cap="The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe." type="button"><span class="n">1</span>Create</button>
@@ -151,18 +198,12 @@
     </div>
     <p class="tcap" id="tcap">The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.</p>
   </div>
-</section>
-
-<!-- durable identity + features -->
-<section class="band alt" id="features">
-  <h2>Git workflows. Encrypted vaults. Zero knowledge.</h2>
-  <p class="blurb">sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine.</p>
-  <div class="feat">
+  <div class="feat" style="margin-top:1.4rem">
     <div class="f rev"><b>Git-like version control</b><span>commit, branch, merge, diff, log, stash, revert your encrypted files</span></div>
     <div class="f rev"><b>Client-side encryption</b><span>AES-256-GCM before upload; keys derived from your vault key, never sent to the server</span></div>
     <div class="f rev"><b>Real three-way merge</b><span>conflict files plus a base/ours/theirs <code>resolve --show</code> view</span></div>
     <div class="f rev"><b>The two-branch model</b><span>a private clone branch per machine or agent; shared named branches for collaboration</span></div>
-    <div class="f rev"><b>Sparse &amp; thin clones</b><span>structure now, content on demand — for agents on a time budget</span></div>
+    <div class="f rev"><b>Apps live inside the data</b><span>a vault can carry its own sandboxed app, with the permissions it asks for declared in a file</span></div>
     <div class="f rev"><b>Browser interop</b><span>open the same vault in SG/Vault on the web — CLI and browser speak one wire format</span></div>
   </div>
 </section>
@@ -209,23 +250,11 @@
     <div class="card rev"><span class="tag">Multi-agent, human-merged</span><h3>A branch per agent</h3><p>Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge — in the terminal or in the SG/Vault browser.</p></div>
     <div class="card rev"><span class="tag">Agent-grade plumbing</span><h3>Machine-readable everything</h3><p><code>sgit write</code> for surgical single-call commits, <code>--json</code> on every read path, <code>cat --id</code> with zero network calls, sparse clones for fast cold starts.</p></div>
   </div>
-  <p class="blurb" style="margin-top:1.6rem;margin-bottom:0"><a href="docs/agents.html">Read the agent guide →</a> &nbsp;·&nbsp; <a href="skills/index.html">Install the skills →</a> &nbsp;·&nbsp; <a href="llms.txt">llms.txt</a></p>
-</section>
-
-<!-- use cases -->
-<section class="band" id="use-cases">
-  <h2>What people use it for</h2>
-  <div class="cards">
-    <a class="card rev" href="use-cases/index.html#ai-agents"><span class="tag">Use case</span><h3>Private memory for AI agents</h3><p>Durable, versioned state between sessions — encrypted end to end.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#multi-agent"><span class="tag">Use case</span><h3>Multi-agent collaboration</h3><p>Agents on their own branches, humans reviewing the merge.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#human-ai"><span class="tag">Use case</span><h3>Human ↔ agent workspaces</h3><p>You in the SG/Vault browser, the agent in the CLI — same vault.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#encrypted-backup"><span class="tag">Use case</span><h3>Encrypted folders with history</h3><p>A shared folder the hosting provider cannot read, with rollback.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#secure-file-exchange"><span class="tag">Use case</span><h3>Signed &amp; encrypted exchange</h3><p>PKI: sign, verify, encrypt and decrypt files for named recipients.</p><span class="go">Read →</span></a>
-  </div>
+  <p class="blurb" style="margin-top:1.6rem;margin-bottom:0"><a href="docs/agents.html">Read the agent guide →</a> &nbsp;·&nbsp; <a href="skills/index.html">Install the skills →</a> &nbsp;·&nbsp; <a href="use-cases/index.html">Use cases →</a> &nbsp;·&nbsp; <a href="llms.txt">llms.txt</a></p>
 </section>
 
 <!-- trust -->
-<section class="band alt" id="trust">
+<section class="band" id="trust">
   <h2>In production — and honest about it</h2>
   <p class="blurb">sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when <em>not</em> to use it.</p>
   <div class="trust">
@@ -237,22 +266,12 @@
     <span><a href="security/index.html"><b>security model</b> published</a></span>
     <span><a href="docs/limitations.html"><b>when NOT</b> to use sgit</a></span>
     <span><a href="why/index.html"><b>why</b> does this exist?</a></span>
+    <span><a href="docs/what-is-sgit.html"><b>sgit · SG/Vault · SG/Send</b> — the three doors</a></span>
   </div>
 </section>
 
-<!-- ecosystem -->
-<section class="band" id="ecosystem">
-  <h2>One vault, three doors</h2>
-  <div class="eco">
-    <div class="e rev"><div class="think">Think of it as</div><b>sgit</b> <span class="as">— git, for encrypted vaults</span><p>Open source CLI. Free. Apache-2.0. <code>pip install sgit-ai</code></p></div>
-    <div class="e rev"><div class="think">Think of it as</div><b>SG/Vault</b> <span class="as">— the web app for your vaults</span><p>Browse, edit and review the same vaults in the browser — an independent implementation of the same wire format.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
-    <div class="e rev"><div class="think">Think of it as</div><b>SG/Send</b> <span class="as">— the transfer API underneath</span><p>The zero-knowledge storage service both clients speak to — the same server the integration tests run against.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
-  </div>
-</section>
-
-<!-- the network. Nineteen sibling sites is no longer a footnote: it is where most of
-     the writing now lives, and the homepage has to say so. -->
-<section class="band" id="network">
+<!-- the network -->
+<section class="band alt" id="network">
   <h2>Nineteen sites, one question each</h2>
   <p class="bandlede">Most of the thinking behind sgit no longer lives on this site. It moved out to
   <b><code>*.sgit.ai</code></b> — a family of focused sites, each taking one question further than a
@@ -277,16 +296,16 @@
       <span class="artcard-sum">Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.</span>
       <span class="artcard-go">Read it &rarr;</span>
     </a>
+    <a class="artcard" href="articles/proof-moved-up.html">
+      <span class="artcard-date">2026-09-07</span>
+      <b>The proof moved up — the homepage after the rebuild, next to the before pictures</b>
+      <span class="artcard-sum">The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.</span>
+      <span class="artcard-go">Read it &rarr;</span>
+    </a>
     <a class="artcard" href="articles/chat-on-a-static-site.html">
       <span class="artcard-date">2026-08-27</span>
       <b>A chat box on a site with no server — the plan, and the trade it makes</b>
       <span class="artcard-sum">Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.</span>
-      <span class="artcard-go">Read it &rarr;</span>
-    </a>
-    <a class="artcard" href="articles/nineteen-sites.html">
-      <span class="artcard-date">2026-08-26</span>
-      <b>Twenty sites in fifteen days, and what that did to the writing</b>
-      <span class="artcard-sum">The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list.</span>
       <span class="artcard-go">Read it &rarr;</span>
     </a>
   </div>
@@ -302,13 +321,21 @@
     <a class="cta2" href="https://github.com/SGit-AI/SGit-AI__CLI">Star on GitHub →</a>
   </div>
 </section>
+<script>
+(function () {
+  fetch('assets/shots.js?v=v0.2.60')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
 
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="admin/versions.html">v0.2.59</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="admin/versions.html">v0.2.60</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -347,7 +374,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.59';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.60';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

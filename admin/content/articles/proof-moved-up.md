@@ -1,0 +1,64 @@
+---
+title: The proof moved up — the homepage after the rebuild, next to the before pictures
+date: 2026-09-07
+summary: The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.
+version: v0.2.60
+tags: homepage, positioning, vaults, agents
+status: published
+---
+
+[The previous article](/articles/proof-behind-the-claim.html) made a diagnosis and a promise: the homepage led with a property nobody can look at, the proof sat two clicks away as a table, and the rebuild would be put next to those screenshots so the comparison could be made honestly. This is that comparison.
+
+## The first screen
+
+Before: a claim about encryption, a `pip install`, and a terminal walkthrough of four commands every git user has seen.
+
+!shot before-hero.webp | images/ | Before. The word "vault" appears three times and the visitor is shown none.
+
+After: one reframed sentence, and four real vaults under it.
+
+!shot after-hero.webp | images/ | After. Four published vaults with their screenshots, each one click from open. `pip install` is still there — second.
+
+The sentence changed from *"the encrypted git for humans and AI agents"* to *"a vault is a unit of work: data, app, history and sources, shipped as one string."* Encryption did not leave; it became the subordinate clause — *and the server that stores it cannot read it* — which is where a property you cannot see belongs. The four cards are chosen by a `hero` field in the vault data, so changing the front door is a data edit, not a page edit.
+
+## The use cases became things
+
+Before: five cards, each a category.
+
+!shot before-usecases.webp | images/ | Before. "Multi-agent collaboration — agents on their own branches, humans reviewing the merge." True, and not something you can open.
+
+After: six vaults chosen by the job they do.
+
+!shot after-ship.webp | images/ | After. Hand over a report. Publish a standard as data. Give a talk. Pitch an investor. Ship a game that reports back. Give an agent a workspace. Each is a real vault, with one line on why it is hard to make any other way.
+
+The distinction the band is built on: none of those six lines is about encryption. A pentest report whose retest scripts travel with the findings; a talk whose cited papers never separate from the deck; a game whose telemetry uses the one credential shape that survives being published. Those are properties of *a vault as a unit*, and they are what a newcomer can actually feel.
+
+## The collaboration story got a front door
+
+Before: a log, filed under Docs.
+
+!shot before-briefs.webp | images/ | Before. The cross-team briefs — the record of agents working with each other and with the human — three levels from the homepage, written as a log.
+
+After: a band with the numbers and the story.
+
+!shot after-team.webp | images/ | After. Four numbers computed at build time — releases, vaults, sibling sites, briefs — and the loop told in three beats with the artefacts linked.
+
+The numbers are not typed. Releases come from the version log, vaults from the vault data, sites from the network directory, briefs from counting the entries on the briefs page. If a number on that band is wrong, the site is wrong somewhere else too, and that is the right dependency.
+
+## What was cut
+
+- **The abstract use-case band.** The five categories still exist as pages, still in the nav under Evidence; they are no longer the homepage's answer to "what is this for".
+- **"One vault, three doors."** The sgit / SG/Vault / SG/Send explanation was a full band. It is a single pill in the trust strip now, pointing at the page that already explained it.
+- **Nothing from the terminal walkthrough.** It moved down and gained a heading — *Under the hood, it is git* — because for the visitor who has just opened a real vault, *how* is now the question. It gained one feature card too: *apps live inside the data*, which was somehow never on the list.
+
+Nine bands became eight, and the page is now longer in bytes rather than shorter, because it carries ten screenshots. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.
+
+## What it cannot show yet
+
+The previous article named a gap, and the rebuild did not close it: **no published vault demonstrates two agents on one vault** — their branches, and a human merging them. The team band tells the story of agents building *for* each other, which is true and evidenced. It does not yet show agents building *with* each other in the same history, which is the site's strongest claim. The band is written so that it does not pretend otherwise. When that vault exists, it goes in the hero.
+
+## What it is generated from
+
+One file, `admin/content/vaults.json`, now drives the hero cards, the six jobs, the sortable table and the vault count on the team band. Adding a vault is adding a row; promoting one to the front door is setting a field. The homepage stopped being a page somebody edits and became a view over the site's own data, which is the same rule the articles band, the network directory and the update feed already followed. It just took the homepage longest to get there.
+
+*Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*

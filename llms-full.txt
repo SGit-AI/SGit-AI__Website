@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.59). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.60). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -13,20 +13,56 @@
 ==============================================================================
 # sgit — the encrypted git for humans and AI agents
 
-> sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted before they leave your machine. Zero knowledge — the server stores ciphertext, not your data.
+> sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 >
 > Page: https://sgit.ai/index.html
 
-Agents need private, versioned state
+Git for encrypted vaults — for humans and AI agents
 
-# The encrypted git for
-humans and AI agents
+# A vault is a unit of work:
+data, app, history and sources, shipped as one string
 
-Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.
+Version it like git. Hand it over with a single read key — no account, no hosting, no install for the reader. And the server that stores it cannot read it.
 
-[Or try it in your browser →](try/index.md) [5-minute quickstart →](docs/quickstart.md)
+[**Open a real vault →**](demos/vaults/index.md) [5-minute quickstart →](docs/quickstart.md)
 
-Pure Python · two runtime dependencies · Apache-2.0
+Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your browser](try/index.md)
+
+[Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
+
+Four of **25 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 25 →](demos/vaults/index.md)
+
+## What people actually ship
+
+Not categories — things. Each one is a real vault you can open, and each is hard to make any other way, for a reason that has little to do with encryption.
+
+[Hand over a report — **Penetration Test Report** — Findings, evidence and a retest script per finding travel as one unit. The client opens it with one string and can re-run the tests themselves. — vault `o4lrwx02` · open it →](demos/vaults/pentest-report/index.md) [Publish a standard as data — **AIUC-1 conformance layer** — 53 controls as a graph you can cite, 82 hashed source snapshots — and a fork that added a conformance layer without changing a byte of the original. — vault `2wzct4k7` · open it →](demos/vaults/aiuc-1-conformance/index.md) [Give a talk — **AI vs. AI — Black Hat EU 2025** — 26 slides, six PDF exports and the eight papers the talk cites, in the vault it was presented from. The deck and its sources never separate. — vault `k1izvg7e` · open it →](demos/vaults/blackhat-eu-2025/index.md) [Pitch an investor — **VoiceDebrief pitch (FI)** — A presenter app with timings and speaker notes, shipped with the script, the research and the exports it was built from. — vault `95i2xqrd` · open it →](demos/vaults/voicedebrief-pitch/index.md) [Ship a game that reports back — **Agent permission games** — Anonymous telemetry over a write-only lane — the one credential shape that survives being published with a read key. — vault `4evnlwrj` · open it →](demos/vaults/agent-permission-games/index.md) [Give an agent a workspace — **Risk Mandate** — 124 files, 98 commits, eight entry points: a software project delivered as a vault — that calls an LLM without ever holding the API key. — vault `4zf6pf2z` · open it →](demos/vaults/risk-mandate/index.md)
+
+[All published vaults, sortable →](demos/vaults/index.md)
+
+## One human, a team of agents
+
+This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
+
+88site releases, each verified live before it was called done
+
+25vaults published with a deliberately public read key
+
+19sibling sites on `*.sgit.ai`, one question each
+
+10cross-team briefs filed or received, in the open
+
+1A [build brief](briefs/vault-telemetry-append-lanes.md) was published here on a Saturday. Another agent read it and shipped [a vault from it](demos/vaults/agent-permission-games/index.md) the same day.
+
+2The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and [the correction now sits above the mistake](briefs/index.md).
+
+3One agent [forked another agent's vault](demos/vaults/aiuc-1-conformance/index.md), kept every byte, added a layer — and the original's tests still pass inside the fork.
+
+→The record is the site itself: [the briefs](briefs/index.md), [the case studies](case-studies/index.md), [every release](admin/versions.md). And the diagnosis that produced this homepage is [an article, with the before pictures](articles/proof-behind-the-claim.md).
+
+## Under the hood, it is git
+
+Same muscle memory. Files are encrypted before they leave your machine; the server stores ciphertext and hashes, nothing else.
 
 $sgit create my-vault
 ✓ Vault created and registered
@@ -79,10 +115,6 @@ $sgit write notes/finding.md --file result.md \
 
 The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.
 
-## Git workflows. Encrypted vaults. Zero knowledge.
-
-sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine.
-
 **Git-like version control**commit, branch, merge, diff, log, stash, revert your encrypted files
 
 **Client-side encryption**AES-256-GCM before upload; keys derived from your vault key, never sent to the server
@@ -91,7 +123,7 @@ sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders 
 
 **The two-branch model**a private clone branch per machine or agent; shared named branches for collaboration
 
-**Sparse & thin clones**structure now, content on demand — for agents on a time budget
+**Apps live inside the data**a vault can carry its own sandboxed app, with the permissions it asks for declared in a file
 
 **Browser interop**open the same vault in SG/Vault on the web — CLI and browser speak one wire format
 
@@ -139,49 +171,13 @@ Agent-grade plumbing
 
 `sgit write` for surgical single-call commits, `--json` on every read path, `cat --id` with zero network calls, sparse clones for fast cold starts.
 
-[Read the agent guide →](docs/agents.md) · [Install the skills →](skills/index.md) · [llms.txt](llms.txt)
-
-## What people use it for
-
-[Use case### Private memory for AI agentsDurable, versioned state between sessions — encrypted end to end.Read →](use-cases/index.md#ai-agents)
-
-[Use case### Multi-agent collaborationAgents on their own branches, humans reviewing the merge.Read →](use-cases/index.md#multi-agent)
-
-[Use case### Human ↔ agent workspacesYou in the SG/Vault browser, the agent in the CLI — same vault.Read →](use-cases/index.md#human-ai)
-
-[Use case### Encrypted folders with historyA shared folder the hosting provider cannot read, with rollback.Read →](use-cases/index.md#encrypted-backup)
-
-[Use case### Signed & encrypted exchangePKI: sign, verify, encrypt and decrypt files for named recipients.Read →](use-cases/index.md#secure-file-exchange)
+[Read the agent guide →](docs/agents.md) · [Install the skills →](skills/index.md) · [Use cases →](use-cases/index.md) · [llms.txt](llms.txt)
 
 ## In production — and honest about it
 
 sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when *not* to use it.
 
-**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security/index.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why/index.md)
-
-## One vault, three doors
-
-Think of it as
-
-**sgit** — git, for encrypted vaults
-
-Open source CLI. Free. Apache-2.0. `pip install sgit-ai`
-
-Think of it as
-
-**SG/Vault** — the web app for your vaults
-
-Browse, edit and review the same vaults in the browser — an independent implementation of the same wire format.
-
-[Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
-
-Think of it as
-
-**SG/Send** — the transfer API underneath
-
-The zero-knowledge storage service both clients speak to — the same server the integration tests run against.
-
-[Platform docs →](vault/index.md) · [sgraph.ai](https://sgraph.ai)
+**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security/index.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why/index.md) [**sgit · SG/Vault · SG/Send** — the three doors](docs/what-is-sgit.md)
 
 ## Nineteen sites, one question each
 
@@ -195,7 +191,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-07**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-08-27**A chat box on a site with no server — the plan, and the trade it makes**Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.Read it →](articles/chat-on-a-static-site.md) [2026-08-26**Twenty sites in fifteen days, and what that did to the writing**The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list.Read it →](articles/nineteen-sites.md)
+[2026-09-07**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up — the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md) [2026-08-27**A chat box on a site with no server — the plan, and the trade it makes**Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.Read it →](articles/chat-on-a-static-site.md)
 
 [All articles →](articles/index.md)
 
@@ -4419,11 +4415,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.59**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.60**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.59 | 2026-09-07 | this release | THE DIAGNOSIS BEFORE THE REBUILD, PUBLISHED AS AN ARTICLE — AND A CARD FOR POINTING AT THE SIBLING SITES. Asked to step back and say how the site should present the twenty-five vaults, the answer was a diagnosis before a redesign: the homepage leads with encryption, which cannot be looked at, and a terminal walkthrough of commands every git user has seen; the twenty-five artefacts a stranger can open in one click sit two clicks away as a table; the use cases are categories while concrete examples of each exist one level down; and the strongest story — agents building for agents, a brief published here turned into a vault the same day and reviewed by the team that owns the API — is filed under Docs as a log. One gap named plainly: the homepage's strongest multi-agent claim, a branch per agent and a human merge, has NO published vault behind it. The article carries the evidence as screenshots of the current site, captured before anything changed so the 'after' article can be compared against them honestly, and sets out the fix in order: proof before mechanism, reorder and cut rather than add. NEW DIRECTIVE, !site — a card for referencing a page on another *.sgit.ai site. Author writes host | path | title [| line]; the card pulls that site's category and thesis from its entry in the network directory, so it describes the site the way the site describes itself, and carries a 'part of the sgit.ai network' cue a bare link cannot. The whole card is the pointer target via the title anchor's ::after, so the markup stays a plain link for the .md twin and for screen readers. Debuts in the article pointing at open-source.sgit.ai/about, which is also the decision recorded there: this site gets an About page about sgit, and links to the fuller record rather than duplicating it. An unknown host degrades to host + title with no lookup. |
+| v0.2.60 | 2026-09-07 | this release | THE HOMEPAGE REBUILT: PROOF BEFORE MECHANISM. Follows the diagnosis published in v0.2.59 rather than a fresh opinion, so the two can be compared, and the 'after' article puts each new band beside the screenshot of what it replaced. HERO: the sentence changed from 'the encrypted git for humans and AI agents' to 'a vault is a unit of work: data, app, history and sources, shipped as one string' — encryption becomes the subordinate clause, which is where a property nobody can look at belongs — and FOUR REAL VAULTS sit directly under it, screenshot each, one click from open, chosen by a hero field in vaults.json so changing the front door is a data edit. NEW BAND 'what people actually ship': six vaults chosen by the JOB they do (hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace), each with one line on why it is hard any other way — and none of those lines is about encryption. NEW BAND 'one human, a team of agents': four numbers COMPUTED at build (releases from the version log, vaults from the data, sites from the network directory, briefs by counting the briefs page) and the collaboration loop told in three beats with the artefacts linked. CUT: the abstract use-case band (the pages remain, in the nav), and the 'three doors' band (now one pill in the trust strip pointing at the page that already explained it). MOVED DOWN: the terminal walkthrough, under a heading — 'under the hood, it is git' — because for a visitor who has just opened a real vault, how is now the question; it gained the feature card 'apps live inside the data', which was never on the list. Nine bands became eight; bytes went UP, because ten screenshots replaced paragraphs. IMAGES GO THROUGH shots.js, never a static image src attribute: the validator refuses a static src because a relative one does not resolve inside a vault, and the build injects the loader wherever data-shot appears. Card text carries hidden separators so the .md twin reads 'Reference — name — line — open it' instead of one run-on. ONE CORRECTION CAUGHT BY THE COMPUTED NUMBER: the network heading had been retyped as 'Twenty sites' while the tile said 19 — the tile was right (nineteen siblings; twenty with this one). THE GAP STANDS: no published vault yet shows two agents on one vault with a human merge, and the team band is written not to pretend otherwise. Verified at 1400 and 390 wide: 10 figures loaded, 0 failed, no horizontal overflow. |
+| v0.2.59 | 2026-09-07 | obj-cas-imm-ddba86527bec | THE DIAGNOSIS BEFORE THE REBUILD, PUBLISHED AS AN ARTICLE — AND A CARD FOR POINTING AT THE SIBLING SITES. Asked to step back and say how the site should present the twenty-five vaults, the answer was a diagnosis before a redesign: the homepage leads with encryption, which cannot be looked at, and a terminal walkthrough of commands every git user has seen; the twenty-five artefacts a stranger can open in one click sit two clicks away as a table; the use cases are categories while concrete examples of each exist one level down; and the strongest story — agents building for agents, a brief published here turned into a vault the same day and reviewed by the team that owns the API — is filed under Docs as a log. One gap named plainly: the homepage's strongest multi-agent claim, a branch per agent and a human merge, has NO published vault behind it. The article carries the evidence as screenshots of the current site, captured before anything changed so the 'after' article can be compared against them honestly, and sets out the fix in order: proof before mechanism, reorder and cut rather than add. NEW DIRECTIVE, !site — a card for referencing a page on another *.sgit.ai site. Author writes host | path | title [| line]; the card pulls that site's category and thesis from its entry in the network directory, so it describes the site the way the site describes itself, and carries a 'part of the sgit.ai network' cue a bare link cannot. The whole card is the pointer target via the title anchor's ::after, so the markup stays a plain link for the .md twin and for screen readers. Debuts in the article pointing at open-source.sgit.ai/about, which is also the decision recorded there: this site gets an About page about sgit, and links to the fuller record rather than duplicating it. An unknown host degrades to host + title with no lookup. |
 | v0.2.58 | 2026-09-07 | obj-cas-imm-b61899966f9d | THE SG/API TEAM REVIEWED OUR BUILD BRIEF AND FOUND IT WRONG — SO THE CORRECTION IS NOW MORE PROMINENT THAN THE MISTAKE. Two days after v0.2.55 published the telemetry brief, an agent built the games vault from it and could not get events out. The team that owns the append code read it against the brief and returned a line-referenced review. Both of the things this brief told a builder to VERIFY, it had already answered wrongly. (1) We said sg.append.write fails closed in a read-only session: it does not, there is NO read-only gate on append anywhere, and permissions.append.write is the entire requirement. (2) We steered to a direct fetch instead — which is blocked by the frame's default connect-src blob: data:, escapable only by permissions.network, which the reviewer notes appears 'zero times' in the authoring guide and zero times here, and which is the WRONG fix because it reopens every egress from a frame holding decrypted vault content. The brief now recommends the bridge, carries the correction in a box above the original section, and its hand-to-the-builder prompt is reversed. THIS RESOLVED AN OPEN FINDING: the games vault's telemetry is built and never sent, because its app.json declares no permissions at all — which matches the author's report that nothing arrived, and replaces the 'unresolved' note we published rather than guess. Its page now leads with that status instead of claiming it phones home. THREE FACTS THAT EXISTED NOWHERE PUBLIC are now on the API reference: only write takes a vault_id while the other five verbs bind to the currently open vault, so cross-vault listing is impossible by design; fetch maps to append.read, not append.fetch; and the inbox field in a listing is the lane folder, which today is the raw append token while config stores its hash. A follow-up of seven questions went back — which hosts serve the append routes, whether the enum-key derivation is stable enough to publish as a spec, and whether any non-destructive way exists to tell an append token from a read key, since they are the same shape and confusing them would be a serious leak. THE # COLUMN IS NOW AN IDENTITY, NOT A ROW POSITION: it was renumbering 1..25 on every sort, which said nothing. It is a permanent publication ordinal — 1 is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date. Asserted in the check rather than eyeballed. |
 | v0.2.57 | 2026-09-06 | obj-cas-imm-27f13ad369ff | THE VAULTS TABLE STOPS BEING A KEY DUMP AND BECOMES SOMETHING YOU CAN SORT. Reported from an iPad, where the failure was obvious in a way it never is on a desktop: the read-key column is a 64-hex string, and giving it room squeezed the vault id down to ONE CHARACTER PER LINE — 'ookq4mn4' rendered as a vertical stack. The fix was not narrower columns, it was noticing that the two widest columns were the two nobody needs on an index: the read key and the 'open live' link are both already on each vault's own page, one click away. So the index now answers 'which of these do I want' and the vault page answers 'how do I open it'. GONE: read key, open live, and the dense contents blob. NEW: a # column, a one-line WHAT IT IS, a CATEGORY pill (8 categories over 25 vaults), files and size as separate numeric columns, and a PUBLISHED date. CLICK ANY HEADING TO SORT, default newest-first because the recent ones are the interesting ones. The count line states the total and the category breakdown, which is worth seeing on its own. GENERATED, NOT HAND-WRITTEN: 25 hand-written table rows could not be sorted, counted or kept consistent, so the table comes from admin/content/vaults.json through a VAULTS comment marker, the same mechanism the homepage articles band uses. The published date is NOT a date anybody typed — it is the commit date on which each vault's page first appeared in git, recovered with git log --diff-filter=A, after two weaker sources were tried and rejected: update posts missed ten vaults and false-matched health-score against a later release that merely mentioned it, and the version log had no line for two of them at all. SORTING IS PROGRESSIVE ENHANCEMENT: rows ship newest-first in the HTML, so with JavaScript off the table is still correct and still in the most useful order; the headings are keyboard-operable. On a narrow viewport the 'what it is' column drops out rather than wrapping to nothing, because that sentence is on the vault's page too. Verified at 1280 and 390 wide: 25 rows, zero 64-hex strings on the page, zero 'open live' links, no horizontal overflow, and sorting checked by asserting the order actually flips. |
 | v0.2.56 | 2026-09-06 | obj-cas-imm-dd4f74725ece | THE BRIEF CAME BACK AS A VAULT — AND IT IS THE FIRST ONE PUBLISHED HERE THAT PHONES HOME. Two days after v0.2.55 published the build brief on telemetry from a published vault, another agent read it and shipped the thing: two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault. That makes this the first end-to-end test of whether a brief written for an agent produces what it describes, and the answer is yes, including the part the brief was least sure about: it took the FALLBACK path, a direct fetch to the account-less write endpoint with credentials:'omit' and keepalive on the final flush, rather than sg.append through the bridge — which is what the brief said to do if a read-only session fails closed, and app.json declaring no permissions key at all is consistent with that. CREDENTIAL AUDIT, run against the brief's own claims rather than the vault's self-description: no private keys, no enum/write/vault/read key fields, no third-party secrets, no personal data — and EXACTLY ONE 64-hex string in the whole vault, the append token, in five places. It was tested rather than trusted, because an append token and a read key are both 64 hex and a mistake between them would be invisible: cloning the telemetry vault with it yields no clone_mode.json and decrypts nothing. A METHOD CORRECTION THAT COST NOTHING ONLY BECAUSE THE CONTROL WAS RUN: the first version of that test called a LEAK on the strength of sgit clone creating a directory — then an all-zeros key produced the identical result, proving the directory is created regardless and the test discriminated nothing. The marker that actually discriminates is .sg_vault/local/clone_mode.json. Any credential test that has no negative control is not a test; this now goes in the publishing method. TWO FINDINGS PUBLISHED RATHER THAN FILED: (1) two of the four pages still tell the player 'nothing sent' — what-can-it-do was fixed to say 'nothing stored', the home page and which-agent-is-it were missed, and the latter contradicts itself on a single screen; nothing leaks, but the subject of the vault is informed consent, which raises the stakes on leftover copy. (2) The write endpoint could not be confirmed from this container — 404 on both hosts under both the append and inbox names, while inbox/list returns 403 on production, which our own API page says is gone. One data point, recorded as unresolved rather than dressed as a conclusion. Screenshots were captured with the telemetry aborted at the network layer so photographing the games did not put junk in somebody's real lane. |
@@ -5164,6 +5161,24 @@ Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the 
 
 ## 2026-09-07
 
+### [The proof moved up — the homepage, rebuilt to show vaults before it explains them](#the-proof-moved-up) [v0.2.60](../admin/versions.md)
+
+homepagepositioningvaultsagents
+
+The homepage is rebuilt, following [the diagnosis published this morning](../articles/proof-behind-the-claim.md) rather than a fresh opinion — and [the "after" article](../articles/proof-moved-up.md) puts each new band beside a screenshot of what it replaced, so the comparison is honest rather than flattering.
+
+**The first screen now shows vaults.** The headline changed from *"the encrypted git for humans and AI agents"* to *"a vault is a unit of work: data, app, history and sources, shipped as one string."* Encryption did not leave — it became the subordinate clause, which is where a property nobody can look at belongs. Under it: **four real published vaults**, a screenshot each, one click from open. Which four is a field in the vault data, so changing the front door is a data edit.
+
+**The use cases became things.** A new band, *what people actually ship*, replaces five category cards with six vaults chosen by the job they do — hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace — each with one line on why it is hard any other way. None of those lines is about encryption.
+
+**The collaboration story got a front door.** *One human, a team of agents*: four numbers computed at build time — 87 releases, 25 vaults, 19 sibling sites, 10 cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed; if one is wrong, the site is wrong somewhere else too.
+
+**Cut:** the abstract use-case band (the pages remain, in the nav) and the *three doors* band (now one pill in the trust strip). **Moved down:** the terminal walkthrough, under *Under the hood, it is git*, because for a visitor who has just opened a real vault, *how* is now the question. Nine bands became eight; the page got longer in bytes, because ten screenshots replaced paragraphs.
+
+**One thing the computed number caught.** The network heading had been retyped as "Twenty sites" while the tile beside it said 19. The tile was right — nineteen siblings, twenty with this one — and it is the tile that cannot drift.
+
+**The gap stands.** No published vault yet shows two agents on one vault with a human merging their branches. The band tells the story of agents building *for* each other, which is evidenced, and is written so as not to pretend it shows more.
+
 ### [The diagnosis before the rebuild — and a card for pointing at the sibling sites](#the-diagnosis-before-the-rebuild) [v0.2.59](../admin/versions.md)
 
 homepagearticlesnetworkmethod
@@ -5622,7 +5637,7 @@ Longer pieces that make an argument across several pages — what a thing means,
 
 **Two rules keep these from going stale.** An article never restates a fact it does not own — it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
 
-[**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**A chat box on a site with no server — the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+[**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up — the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server — the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
 
 
 
@@ -7447,6 +7462,81 @@ That card is new as of this article. The `*.sgit.ai` sites exist so each topic c
 ## What happens next
 
 The rebuild is the next release. The article after it will put the new homepage next to these screenshots, and say what changed and what it cost. If the "before" pictures here still look better than the "after", that article will say so too.
+
+*Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# The proof moved up — the homepage after the rebuild, next to the before pictures — sgit.ai
+
+> The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.
+>
+> Page: https://sgit.ai/articles/proof-moved-up.html
+
+[Home](../index.md) / [Articles](index.md) / The proof moved up — the homepage after the rebuild, next to the before pictures
+
+# The proof moved up — the homepage after the rebuild, next to the before pictures
+
+2026-09-07 · [v0.2.60](../admin/versions.md) · homepagepositioningvaultsagents
+
+The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.
+
+[The previous article](../articles/proof-behind-the-claim.md) made a diagnosis and a promise: the homepage led with a property nobody can look at, the proof sat two clicks away as a table, and the rebuild would be put next to those screenshots so the comparison could be made honestly. This is that comparison.
+
+## The first screen
+
+Before: a claim about encryption, a `pip install`, and a terminal walkthrough of four commands every git user has seen.
+
+Before. The word "vault" appears three times and the visitor is shown none.
+
+After: one reframed sentence, and four real vaults under it.
+
+After. Four published vaults with their screenshots, each one click from open. `pip install` is still there — second.
+
+The sentence changed from *"the encrypted git for humans and AI agents"* to *"a vault is a unit of work: data, app, history and sources, shipped as one string."* Encryption did not leave; it became the subordinate clause — *and the server that stores it cannot read it* — which is where a property you cannot see belongs. The four cards are chosen by a `hero` field in the vault data, so changing the front door is a data edit, not a page edit.
+
+## The use cases became things
+
+Before: five cards, each a category.
+
+Before. "Multi-agent collaboration — agents on their own branches, humans reviewing the merge." True, and not something you can open.
+
+After: six vaults chosen by the job they do.
+
+After. Hand over a report. Publish a standard as data. Give a talk. Pitch an investor. Ship a game that reports back. Give an agent a workspace. Each is a real vault, with one line on why it is hard to make any other way.
+
+The distinction the band is built on: none of those six lines is about encryption. A pentest report whose retest scripts travel with the findings; a talk whose cited papers never separate from the deck; a game whose telemetry uses the one credential shape that survives being published. Those are properties of *a vault as a unit*, and they are what a newcomer can actually feel.
+
+## The collaboration story got a front door
+
+Before: a log, filed under Docs.
+
+Before. The cross-team briefs — the record of agents working with each other and with the human — three levels from the homepage, written as a log.
+
+After: a band with the numbers and the story.
+
+After. Four numbers computed at build time — releases, vaults, sibling sites, briefs — and the loop told in three beats with the artefacts linked.
+
+The numbers are not typed. Releases come from the version log, vaults from the vault data, sites from the network directory, briefs from counting the entries on the briefs page. If a number on that band is wrong, the site is wrong somewhere else too, and that is the right dependency.
+
+## What was cut
+
+- **The abstract use-case band.** The five categories still exist as pages, still in the nav under Evidence; they are no longer the homepage's answer to "what is this for".
+- **"One vault, three doors."** The sgit / SG/Vault / SG/Send explanation was a full band. It is a single pill in the trust strip now, pointing at the page that already explained it.
+- **Nothing from the terminal walkthrough.** It moved down and gained a heading — *Under the hood, it is git* — because for the visitor who has just opened a real vault, *how* is now the question. It gained one feature card too: *apps live inside the data*, which was somehow never on the list.
+
+Nine bands became eight, and the page is now longer in bytes rather than shorter, because it carries ten screenshots. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.
+
+## What it cannot show yet
+
+The previous article named a gap, and the rebuild did not close it: **no published vault demonstrates two agents on one vault** — their branches, and a human merging them. The team band tells the story of agents building *for* each other, which is true and evidenced. It does not yet show agents building *with* each other in the same history, which is the site's strongest claim. The band is written so that it does not pretend otherwise. When that vault exists, it goes in the hero.
+
+## What it is generated from
+
+One file, `admin/content/vaults.json`, now drives the hero cards, the six jobs, the sortable table and the vault count on the team band. Adding a vault is adding a row; promoting one to the front door is setting a field. The homepage stopped being a page somebody edits and became a view over the site's own data, which is the same rule the articles band, the network directory and the update feed already followed. It just took the homepage longest to get there.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
 
