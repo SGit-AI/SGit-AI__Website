@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.57</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.58</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -131,14 +131,28 @@
   <b>The lane can be flooded.</b> The cap is <b>1000 pending files per token &rarr; 507</b>, at which point your real telemetry stops arriving. <em>This</em> is the failure mode to design against, not the confidentiality one.</div>
   <p>Mitigations, in the order they matter: register <b>several <code>append_anchors</code></b> so one flooded lane does not bury the others and revoking a sender is removing one anchor; drain aggressively (<code>list</code> &rarr; <code>fetch</code> &rarr; <code>mark-processed</code>, then <code>purge</code> with <code>folder:"processed"</code>); rotate the token by re-<code>configure</code>-ing and shipping a new vault release; and rate-limit client-side so honest readers never approach the cap.</p>
 
-  <h2 id="verify">Three things to verify before building</h2>
-  <p>Do not assume any of them. In order of how badly they break the design:</p>
+  <h2 id="verify">Answered: the two questions this brief told you to verify</h2>
+
+  <div class="warnbox"><b>Corrected 7 September 2026, and the correction matters more than the original.</b> This brief said to check whether <code>sg.append.write</code> survives a read-only session, warned that the bridge path was probably unavailable, and steered you to a direct <code>fetch</code> instead. <b>That was wrong, and it sent the first agent who followed it down the harder road.</b> The SG/API team reviewed the append code against this page and reported back; what follows is their answer, and it reverses this brief's recommendation. Their review is quoted below with permission &mdash; it is published CC&nbsp;BY&nbsp;4.0.</div>
+
   <ol>
-    <li><b>Does <code>sg.append.write</code> work from a read-only session?</b> Your entire audience opens the vault with a <em>read</em> key. The authoring guide says read-only sessions fail closed, and the static-hosting notes list <code>sg.append.*</code> as rejected with <code>EREADONLY</code> in read-only contexts. If that holds in the hosted viewer, <b>the bridge path is unavailable to your readers</b>.<br>
-    <b>The fallback is better anyway:</b> a direct <code>fetch()</code> POST to <code>/api/vault/append/write/{vault_id}</code>. That endpoint is account-less by design &mdash; no bridge, no permission grant, no writable session. The authoring guide is explicit that <code>fetch()</code> may be used for absolute <code>https://</code> URLs; those leave the vault and behave like any web request.</li>
-    <li><b>Does the vault frame's CSP allow <code>connect-src</code> to the API host?</b> If the sandbox blocks the origin, neither path works and the answer is a host change, not an app change.</li>
+    <li><b>Does <code>sg.append.write</code> work from a read-only session? &mdash; YES. There is no read-only gate on append at all.</b><br>
+    The bridge checks exactly one thing, a permission grant: <code>perm.append.write === true</code>. In the reviewer's words, <em>"there is <b>no</b> <code>writable</code> check, <b>no</b> consent gate, and no read-only branch anywhere in the append handler"</em>, and <code>sg.app.writable</code> <em>"is irrelevant to append"</em>. So the grant is the whole story:
+    <pre class="shell">{ "permissions": { "append": { "write": true } } }</pre>
+    Nothing else is required. The <code>EREADONLY</code> this brief cited belongs to <code>sg.vfs.write</code>, which fails at the data-source layer on a different code path &mdash; but <b>both deny with the same string, <code>'Permission denied'</code></b>, which is precisely how the misdiagnosis happened. Do not use one to probe the other.</li>
+
+    <li><b>Does the frame's CSP allow <code>connect-src</code> to the API host? &mdash; NO, not by default. And this is the trap.</b><br>
+    The frame is served with <code>connect-src blob: data:</code>, so a direct <code>fetch</code> to the API is blocked before it leaves. The escape hatch is <code>"permissions": {"network": true}</code>, which omits the CSP meta entirely &mdash; and which, as the reviewer puts it, appears <em>"zero times"</em> in the authoring guide and zero times in the first version of this page. <b>It is discoverable only by reading the source.</b><br>
+    <b>Prefer the bridge anyway.</b> <code>network: true</code> is all-or-nothing: it reopens <em>every</em> egress from a frame that is holding decrypted vault content, which is a poor trade for a telemetry beacon. The reviewer's verdict on the tempting shortcut is worth keeping: <em>"Not recommended: loosening the default CSP, or adding a read-only bypass for append."</em></li>
+
+    <li><b>Only <code>write</code> crosses vaults. Every other verb is bound to the vault that is open.</b><br>
+    The bridge builds one client bound to the currently open vault, with the enum key derived from <em>that</em> vault's read key. <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code> and <code>configure</code> therefore always act on the open vault; <b><code>write</code> is the sole verb that takes an explicit <code>vault_id</code></b>, which is exactly what cross-vault telemetry needs and the only thing that makes it possible.<br>
+    This is a design boundary, not a gap: listing a remote lane would need the recipient's enum key, and putting that in a published app <em>"would give every visitor read access to the whole lane."</em> Drain where the enum key legitimately lives &mdash; the receiving vault's own dashboard, or the CLI.</li>
+
     <li><b>Token format.</b> <code>^[0-9a-f]{16,128}$</code> &mdash; <b>hex only</b>. A prefixed token returns <b>400</b>, not 403, because it fails input validation before reaching any gate. Do not paste a <code>sha256:</code> CLI fingerprint in as a token; that is the most likely way to hit it.</li>
   </ol>
+
+  <div class="note"><b>If a grant you added seems to be ignored, the manifest is the first suspect, not the gate.</b> Two causes, both silent: a <b>release pin</b> (<code>.vault/releases.json</code>) means <code>app.json</code> is read from that commit rather than HEAD, so a pushed manifest is simply not seen &mdash; and a pin also forces read-only for everyone, owner included; and a <b>folder-level <code>app.json</code></b> beside a deep-linked entry page <b>replaces</b> the root manifest wholesale rather than merging with it, so root grants vanish without a warning.</div>
   <p><b>And one gap to design around.</b> The intended model is <code>append_token = H(recipient public key)</code>, so a sender could compute the lane address from a public bundle with no coordination. No shipped command emits the token &mdash; that derivation is <b>PROPOSED</b>, not shipped. Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.</p>
   <p class="small dim">Checked against the shipped CLI while writing this: <code>sgit pki</code> ships <code>keygen</code>, <code>export</code>, <code>encrypt</code>, <code>decrypt</code>, <code>sign</code> and <code>verify</code>. There is <b>no append-lane command in the CLI at all</b>, so the transport is HTTP or the browser bridge &mdash; nothing else.</p>
 
@@ -177,7 +191,8 @@ $ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID 
     <p>Emit anonymous usage events to a separate telemetry vault over an <b>append lane</b>. Read <code>https://sgit.ai/docs/vault-messaging.html</code> and <code>https://sgit.ai/api/append-lanes.html</code> first.</p>
     <p>Constraints:</p>
     <ul>
-      <li>Events go to <code>POST /api/vault/append/write/{TELEMETRY_VAULT_ID}</code> with the <code>append_token</code> in the body. <b>Verify first</b> whether <code>sg.append.write</code> is available in a read-only session; if it returns <code>EREADONLY</code>, use a direct <code>fetch()</code> to the account-less endpoint instead.</li>
+      <li>Send through the <b>bridge</b>: <code>sg.append.write({ vault_id, append_token, payload })</code>, with <code>{"permissions": {"append": {"write": true}}}</code> in <code>app.json</code>. That grant is the only requirement &mdash; a read-only session does <b>not</b> block it, and <code>write</code> is the one verb that takes another vault's id.</li>
+      <li><b>Do not</b> reach for a direct <code>fetch()</code> to the endpoint. The frame's CSP is <code>connect-src blob: data:</code> and will block it silently; the only way round is <code>permissions.network: true</code>, which reopens every egress from a frame holding decrypted vault content. If a grant appears to be ignored, check for a release pin or a folder-level <code>app.json</code> before you change approach.</li>
       <li>Encrypt each payload to the telemetry vault's public key before sending. The public key ships in the published vault; that is fine, public keys are publishable.</li>
       <li>Never put a vault key, a read key to any other vault, or any other credential in this vault. The append token is the only credential that may appear, and only because it is write-only.</li>
       <li>Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that identifies a person. Anonymous is the design, not a setting.</li>
@@ -199,7 +214,7 @@ $ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID 
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.57</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-telemetry-append-lanes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.58</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-telemetry-append-lanes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -238,7 +253,7 @@ $ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID 
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.57';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.58';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

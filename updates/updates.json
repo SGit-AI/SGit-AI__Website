@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.57",
+  "site_version": "v0.2.58",
   "updates": [
+    {
+      "slug": "our-brief-was-wrong-and-the-team-that-owns-the-code-said-so",
+      "title": "Our build brief was wrong, and the team that owns the code said so precisely",
+      "date": "2026-09-07",
+      "version": "v0.2.58",
+      "tags": [
+        "briefs",
+        "api",
+        "correction",
+        "agents"
+      ],
+      "summary": "Two days ago v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. An agent built a vault from it and could not get events out. The SG/API team read the append lane code against our page and returned a line referenced re…"
+    },
     {
       "slug": "the-vaults-table-you-can-sort",
       "title": "The vaults table stops being a key dump — sortable, categorised, newest first",

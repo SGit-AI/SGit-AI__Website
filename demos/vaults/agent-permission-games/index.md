@@ -2,7 +2,7 @@
 
 > Two deterministic games about grants, permissions and mandates — and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site.
 
-*Source: <https://sgit.ai/demos/vaults/agent-permission-games/index.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agent-permission-games/index.html> · site v0.2.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Two games about what an agent can do — and the first vault here that phones home
 
-Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sends anything anywhere**, and it was built by another agent from [the build brief on this site](../../../briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
+Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sets out to send anything anywhere** (it is not yet succeeding — see the status note below), and it was built by another agent from [the build brief on this site](../../../briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
 
 **Open it yourself — the key is the whole credential.**
  Read key: `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj`
@@ -18,6 +18,8 @@ Two deterministic games about grants, permissions and mandates, in one vault. Wh
 Published as a read key, derived from the write credential that was submitted. The vault key is not published and never will be.
 
 **This vault phones home, and you should know that before you open it.** Opening a vault does not normally send anything anywhere — that is the platform default, and every other vault published here honours it. This one sends **anonymous usage events** while you play: which screens you reach, the answers you give, your score. No name, no id, no fingerprint, no URL, no referrer. Every page carries a notice and a **pause sending** switch, and `telemetry.html` inside the vault states exactly what leaves. We publish it *because* it does this, not despite it — but the warning belongs above the fold rather than in a footnote.
+
+**Status, 7 September:** as published, the events are *built and never sent* — the frame's content-security policy blocks the call, for reasons [set out below](#findings). Treat this box as describing what the vault is designed to do and will do once one line of its manifest changes, not what is reaching anyone today.
 
 ## See it live, here
 
@@ -94,7 +96,13 @@ A direct `fetch` to the account-less write endpoint, with `credentials: 'omit'` 
 
 **1. Two of the four pages still tell the player nothing is sent.** `what-can-it-do` gets it right — its footer says *"in this tab, no model, no server, nothing **stored**"*, with the sending notice above it. But the home page still reads *"no model, no server, nothing **sent**, nothing stored"*, and `which-agent-is-it` carries *"No model, no server, nothing sent"* in its footer **on the same screen as** the notice saying events are sent. That game also describes its run tuple as *"shown, never sent"* with *"no send button"* — true of the button, but its `question` and `reveal` events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.
 
-**2. We could not confirm the write endpoint from here, and are not going to claim otherwise.** `/api/vault/append/write/` returns 404 from this container on both `dev.send.sgraph.ai` and `send.sgraph.ai`, as does the older `/api/vault/inbox/write/`. One route does answer — `/api/vault/inbox/list/` returns **403** on production, meaning it exists and rejected the credential — which is interesting given [our own API page](../../../api/append-lanes.md) states every `/api/vault/inbox/*` URL is gone. That is one data point, not a conclusion: the likeliest explanation is that the telemetry vault lives on a host these routes are not reachable on from this network. It is recorded as unresolved, which is what [the API reference does](../../../api/index.md#unresolved) with endpoints it cannot pin down.
+**2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.** When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against [our brief](../../../briefs/vault-telemetry-append-lanes.md) and supplied the answer.
+
+ A vault app's frame is served with `connect-src blob: data:`. A **direct `fetch`** to the API is therefore blocked before it leaves, unless the app declares `permissions.network: true` — and `app.json` here declares **no permissions at all**. So the sender is well built and cannot fire. That matches what the author reports: no events have arrived.
+
+**The fix is not `network: true`.** That reopens every egress from a frame holding decrypted vault content. The bridge is the right path, and the reason our brief steered away from it was **our error**: we said `sg.append.write` fails closed in a read-only session, and the review found there is no read-only gate on append at all. One grant does it — `{"permissions": {"append": {"write": true}}}` — and `write` is the one verb that takes another vault's id.
+
+Two more things the review settles for anyone reading this as a worked example. A grant that appears to be ignored is usually a **manifest** problem rather than a gate: a release pin makes `app.json` come from a pinned commit rather than HEAD (and forces read-only for everyone, owner included), and a folder-level `app.json` replaces the root one wholesale. And `append.new-messages` would never have fired here whatever was declared — the checker only ever watches the *open* vault's own lane, so it belongs in the telemetry vault's dashboard, not in the games.
 
 ## Notes
 

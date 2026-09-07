@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.57'
+SITE_VERSION = 'v0.2.58'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,36 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.57', '2026-09-06', 'this release',
+    ('v0.2.58', '2026-09-07', 'this release',
+     "THE SG/API TEAM REVIEWED OUR BUILD BRIEF AND FOUND IT WRONG — SO THE CORRECTION IS NOW MORE "
+     "PROMINENT THAN THE MISTAKE. Two days after v0.2.55 published the telemetry brief, an agent "
+     "built the games vault from it and could not get events out. The team that owns the append "
+     "code read it against the brief and returned a line-referenced review. Both of the things "
+     "this brief told a builder to VERIFY, it had already answered wrongly. (1) We said "
+     "sg.append.write fails closed in a read-only session: it does not, there is NO read-only "
+     "gate on append anywhere, and permissions.append.write is the entire requirement. (2) We "
+     "steered to a direct fetch instead — which is blocked by the frame's default "
+     "connect-src blob: data:, escapable only by permissions.network, which the reviewer notes "
+     "appears 'zero times' in the authoring guide and zero times here, and which is the WRONG fix "
+     "because it reopens every egress from a frame holding decrypted vault content. The brief now "
+     "recommends the bridge, carries the correction in a box above the original section, and its "
+     "hand-to-the-builder prompt is reversed. THIS RESOLVED AN OPEN FINDING: the games vault's "
+     "telemetry is built and never sent, because its app.json declares no permissions at all — "
+     "which matches the author's report that nothing arrived, and replaces the 'unresolved' note "
+     "we published rather than guess. Its page now leads with that status instead of claiming it "
+     "phones home. THREE FACTS THAT EXISTED NOWHERE PUBLIC are now on the API reference: only "
+     "write takes a vault_id while the other five verbs bind to the currently open vault, so "
+     "cross-vault listing is impossible by design; fetch maps to append.read, not append.fetch; "
+     "and the inbox field in a listing is the lane folder, which today is the raw append token "
+     "while config stores its hash. A follow-up of seven questions went back — which hosts serve "
+     "the append routes, whether the enum-key derivation is stable enough to publish as a spec, "
+     "and whether any non-destructive way exists to tell an append token from a read key, since "
+     "they are the same shape and confusing them would be a serious leak. THE # COLUMN IS NOW AN "
+     "IDENTITY, NOT A ROW POSITION: it was renumbering 1..25 on every sort, which said nothing. "
+     "It is a permanent publication ordinal — 1 is the first vault ever published here — so it "
+     "never changes, and sorting by it is by construction the same order as sorting by date. "
+     "Asserted in the check rather than eyeballed."),
+    ('v0.2.57', '2026-09-06', 'obj-cas-imm-27f13ad369ff',
      "THE VAULTS TABLE STOPS BEING A KEY DUMP AND BECOMES SOMETHING YOU CAN SORT. Reported from "
      "an iPad, where the failure was obvious in a way it never is on a desktop: the read-key "
      "column is a 64-hex string, and giving it room squeezed the vault id down to ONE CHARACTER "
@@ -1635,10 +1664,15 @@ def vaults_table():
     JavaScript the table is still correct and still in the most useful order.
 
     published: the date the vault's page first appeared in git, not a date anybody typed.
+
+    The # column is a PERMANENT publication ordinal — #1 is the first vault ever published
+    here, #25 the newest — not the row's position on screen. It therefore does not change
+    when the table is re-sorted, and sorting by # is by construction the same ordering as
+    sorting by published date. A number that renumbered on every sort said nothing at all.
     """
     rows = json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
     trs = '\n'.join(
-        f'    <tr><td class="vt-n">{i}</td>'
+        f'    <tr><td class="vt-n" data-sort="{v["n"]}">{v["n"]}</td>'
         f'<td><a href="{v["slug"]}/index.html">{v["name"]}</a>'
         f'<div class="vt-id"><code>{v["vault_id"]}</code></div></td>'
         f'<td>{v["what"]}</td>'
@@ -1646,7 +1680,7 @@ def vaults_table():
         f'<td class="vt-num" data-sort="{v["files"]}">{v["files"]:,}</td>'
         f'<td class="vt-num" data-sort="{v["bytes"]}">{v["size"]}</td>'
         f'<td class="vt-num" data-sort="{v["published"]}">{v["published"]}</td></tr>'
-        for i, v in enumerate(rows, 1))
+        for v in rows)
     cats = ', '.join(f'{n}&nbsp;{c.lower()}' for c, n in
                      sorted(Counter(v['category'] for v in rows).items(),
                             key=lambda kv: (-kv[1], kv[0])))
@@ -1679,7 +1713,7 @@ def vaults_table():
         }});
         for (var k = 0; k < ths.length; k++) ths[k].removeAttribute('data-dir');
         th.setAttribute('data-dir', d ? 'asc' : 'desc');
-        body.forEach(function (r, n) {{ t.tBodies[0].appendChild(r); r.cells[0].textContent = n + 1; }});
+        body.forEach(function (r) {{ t.tBodies[0].appendChild(r); }});
       }}
       th.addEventListener('click', sort);
       th.addEventListener('keydown', function (e) {{ if (e.key === 'Enter' || e.key === ' ') {{ e.preventDefault(); sort(); }} }});

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,29 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-07
+
+### [Our build brief was wrong, and the team that owns the code said so precisely](#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so) [v0.2.58](../admin/versions.md)
+
+briefsapicorrectionagents
+
+Two days ago v0.2.55 published a [build brief](../briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. An agent [built a vault from it](../demos/vaults/agent-permission-games/index.md) and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.
+
+**Both of the things the brief told a builder to *verify*, it had already answered wrongly.**
+
+- We said `sg.append.write` fails closed in a read-only session. **It does not.** There is no read-only gate on append anywhere; `permissions.append.write: true` is the entire requirement, and `sg.app.writable` is irrelevant to it. The `EREADONLY` we cited belongs to `sg.vfs.write` — a different code path that happens to deny with the same string, which is exactly how the misdiagnosis propagated.
+- We steered readers to a direct `fetch` instead. That path is **blocked by default**: the frame ships `connect-src blob: data:`. The escape hatch is `permissions.network: true`, which the reviewer notes appears *"zero times"* in the authoring guide and zero times on our page — *"discoverable only by reading `app-permissions.js`."* It is also the wrong fix, since it reopens every egress from a frame holding decrypted vault content.
+
+The brief now recommends the bridge, and the correction sits in a box **above** the section it corrects rather than being edited in quietly. The prompt at the bottom — the part written to be pasted to a builder — is reversed.
+
+**It also resolved an open finding.** When the games vault was published we could not confirm the write endpoint and said so rather than guessing. The answer is that its telemetry is *built and never sent*: the vault declares no permissions at all, so the CSP blocks its sender. That matches the author's report that nothing arrived, and [its page](../demos/vaults/agent-permission-games/index.md) now leads with that status instead of claiming it phones home.
+
+**Three facts that existed nowhere public** are now on [the API reference](../api/append-lanes.md): only `write` takes a `vault_id` while the other five verbs bind to the currently open vault, so listing a remote lane is impossible by design; `fetch` maps to `append.read`, not `append.fetch`; and the `inbox` field in a listing is the lane folder, which today is the **raw append token** while config stores only its hash.
+
+Seven questions went back, including the two we most want to publish: whether the enum-key derivation is stable enough to document as a spec, and whether any non-destructive way exists to tell an append token from a read key — they are the same 64-hex shape, and confusing them would be a serious leak.
+
+Also in this release: the `#` column on [the vaults table](../demos/vaults/index.md) was renumbering 1–25 on every sort, which said nothing. It is now a permanent publication ordinal — `#1` is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date.
 
 ## 2026-09-06
 

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.57</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.58</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -80,6 +80,22 @@
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-07</h2>
+  <article class="upd" id="our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">
+    <h3><a href="#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">Our build brief was wrong, and the team that owns the code said so precisely</a> <a class="upd-ver" href="../admin/versions.html">v0.2.58</a></h3>
+    <p class="chips"><span class="chip">briefs</span><span class="chip">api</span><span class="chip">correction</span><span class="chip">agents</span></p>
+<p>Two days ago v0.2.55 published a <a href="../briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. An agent <a href="../demos/vaults/agent-permission-games/index.html">built a vault from it</a> and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.</p>
+<p>**Both of the things the brief told a builder to <em>verify</em>, it had already answered wrongly.**</p>
+<ul>
+<li>We said <code>sg.append.write</code> fails closed in a read-only session. <b>It does not.</b> There is no read-only gate on append anywhere; <code>permissions.append.write: true</code> is the entire requirement, and <code>sg.app.writable</code> is irrelevant to it. The <code>EREADONLY</code> we cited belongs to <code>sg.vfs.write</code> — a different code path that happens to deny with the same string, which is exactly how the misdiagnosis propagated.</li>
+<li>We steered readers to a direct <code>fetch</code> instead. That path is <b>blocked by default</b>: the frame ships <code>connect-src blob: data:</code>. The escape hatch is <code>permissions.network: true</code>, which the reviewer notes appears <em>"zero times"</em> in the authoring guide and zero times on our page — <em>"discoverable only by reading <code>app-permissions.js</code>."</em> It is also the wrong fix, since it reopens every egress from a frame holding decrypted vault content.</li>
+</ul>
+<p>The brief now recommends the bridge, and the correction sits in a box <b>above</b> the section it corrects rather than being edited in quietly. The prompt at the bottom — the part written to be pasted to a builder — is reversed.</p>
+<p><b>It also resolved an open finding.</b> When the games vault was published we could not confirm the write endpoint and said so rather than guessing. The answer is that its telemetry is <em>built and never sent</em>: the vault declares no permissions at all, so the CSP blocks its sender. That matches the author's report that nothing arrived, and <a href="../demos/vaults/agent-permission-games/index.html">its page</a> now leads with that status instead of claiming it phones home.</p>
+<p><b>Three facts that existed nowhere public</b> are now on <a href="../api/append-lanes.html">the API reference</a>: only <code>write</code> takes a <code>vault_id</code> while the other five verbs bind to the currently open vault, so listing a remote lane is impossible by design; <code>fetch</code> maps to <code>append.read</code>, not <code>append.fetch</code>; and the <code>inbox</code> field in a listing is the lane folder, which today is the <b>raw append token</b> while config stores only its hash.</p>
+<p>Seven questions went back, including the two we most want to publish: whether the enum-key derivation is stable enough to document as a spec, and whether any non-destructive way exists to tell an append token from a read key — they are the same 64-hex shape, and confusing them would be a serious leak.</p>
+<p>Also in this release: the <code>#</code> column on <a href="../demos/vaults/index.html">the vaults table</a> was renumbering 1–25 on every sort, which said nothing. It is now a permanent publication ordinal — <code>#1</code> is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date.</p>
+  </article>
   <h2 class="upd-date">2026-09-06</h2>
   <article class="upd" id="the-vaults-table-you-can-sort">
     <h3><a href="#the-vaults-table-you-can-sort">The vaults table stops being a key dump — sortable, categorised, newest first</a> <a class="upd-ver" href="../admin/versions.html">v0.2.57</a></h3>
@@ -407,7 +423,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.57</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.58</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -446,7 +462,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.57';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.58';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
