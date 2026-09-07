@@ -9,7 +9,12 @@
     "bytes": 2726297,
     "size": "2.6 MB",
     "published": "2026-09-06",
-    "n": 25
+    "n": 25,
+    "hero": 2,
+    "hero_shot": "wai-question.webp",
+    "job": "Ship a game that reports back",
+    "why": "Anonymous telemetry over a write-only lane — the one credential shape that survives being published with a read key.",
+    "job_shot": "wcid-entry.webp"
   },
   {
     "slug": "aiuc-1-conformance",
@@ -21,7 +26,12 @@
     "bytes": 45088768,
     "size": "43 MB",
     "published": "2026-09-05",
-    "n": 24
+    "n": 24,
+    "hero": 1,
+    "hero_shot": "insurability.webp",
+    "job": "Publish a standard as data",
+    "why": "53 controls as a graph you can cite, 82 hashed source snapshots — and a fork that added a conformance layer without changing a byte of the original.",
+    "job_shot": "conformance.webp"
   },
   {
     "slug": "licence-to-operate",
@@ -45,7 +55,10 @@
     "bytes": 17825792,
     "size": "17 MB",
     "published": "2026-09-02",
-    "n": 22
+    "n": 22,
+    "job": "Pitch an investor",
+    "why": "A presenter app with timings and speaker notes, shipped with the script, the research and the exports it was built from.",
+    "job_shot": "slide-title.webp"
   },
   {
     "slug": "threatmodcon-2025",
@@ -69,7 +82,12 @@
     "bytes": 20971520,
     "size": "20 MB",
     "published": "2026-08-27",
-    "n": 20
+    "n": 20,
+    "hero": 3,
+    "hero_shot": "slide-pillars.webp",
+    "job": "Give a talk",
+    "why": "26 slides, six PDF exports and the eight papers the talk cites, in the vault it was presented from. The deck and its sources never separate.",
+    "job_shot": "slide-insiders.webp"
   },
   {
     "slug": "standards-atlas-gdpr",
@@ -105,7 +123,12 @@
     "bytes": 6710886,
     "size": "6.4 MB",
     "published": "2026-08-25",
-    "n": 17
+    "n": 17,
+    "hero": 4,
+    "hero_shot": "app-open.webp",
+    "job": "Hand over a report",
+    "why": "Findings, evidence and a retest script per finding travel as one unit. The client opens it with one string and can re-run the tests themselves.",
+    "job_shot": "app-open.webp"
   },
   {
     "slug": "payments-brief-pack",
@@ -201,7 +224,10 @@
     "bytes": 1992294,
     "size": "1.9 MB",
     "published": "2026-08-17",
-    "n": 9
+    "n": 9,
+    "job": "Give an agent a workspace",
+    "why": "124 files, 98 commits, eight entry points: a software project delivered as a vault — that calls an LLM without ever holding the API key.",
+    "job_shot": "app-open.webp"
   },
   {
     "slug": "risk-graph-explorer",

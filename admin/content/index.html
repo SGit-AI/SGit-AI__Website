@@ -1,17 +1,40 @@
 <header class="hero">
-  <div class="eyebrow">Agents need private, versioned state</div>
-  <h1>The encrypted git for<br>humans and AI agents</h1>
-  <p class="sub">Version, branch, and share vaults of files that are encrypted before they leave your machine. Zero knowledge: the server stores ciphertext, not your data.</p>
+  <div class="eyebrow">Git for encrypted vaults — for humans and AI agents</div>
+  <h1>A vault is a unit of work:<br>data, app, history and sources, shipped as one string</h1>
+  <p class="sub">Version it like git. Hand it over with a single read key — no account, no hosting, no install for the reader. And the server that stores it cannot read it.</p>
   <div class="ctas">
+    <a class="cta2" href="demos/vaults/index.html"><b>Open a real vault →</b></a>
     <button class="pipbtn" type="button" data-copy="pip install sgit-ai">$ pip install sgit-ai <span class="cp">copy</span></button>
-    <a class="cta2" href="try/index.html">Or try it in your browser →</a>
     <a class="cta2" href="docs/quickstart.html">5-minute quickstart →</a>
   </div>
-  <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0</p>
+  <p class="install-note">Pure Python · two runtime dependencies · Apache-2.0 · <a href="try/index.html">or try it in your browser</a></p>
 </header>
 
-<!-- terminal walkthrough -->
-<section class="band" id="demo">
+<!-- four real vaults, before a single paragraph of explanation. Derived from
+     admin/content/vaults.json (the entries carrying `hero`); nothing here is hand-listed. -->
+<section class="band" id="proof">
+<!--HERO-VAULTS-->
+</section>
+
+<!-- six vaults chosen by the JOB they do, not the shape they are. Also derived. -->
+<section class="band alt" id="ship">
+  <h2>What people actually ship</h2>
+  <p class="bandlede">Not categories — things. Each one is a real vault you can open, and each is hard to make any other way, for a reason that has little to do with encryption.</p>
+<!--JOBS-->
+  <p class="bandcta"><a class="cta2" href="demos/vaults/index.html">All published vaults, sortable →</a></p>
+</section>
+
+<!-- the story the whole site rests on, told as a story rather than filed as a log -->
+<section class="band" id="team">
+  <h2>One human, a team of agents</h2>
+  <p class="bandlede">This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.</p>
+<!--TEAM-->
+</section>
+
+<!-- how: the terminal walkthrough, for the developer who is now interested -->
+<section class="band alt" id="demo">
+  <h2>Under the hood, it is git</h2>
+  <p class="bandlede">Same muscle memory. Files are encrypted before they leave your machine; the server stores ciphertext and hashes, nothing else.</p>
   <div class="term">
     <div class="ttabs">
       <button class="ttab active" data-pane="t1" data-cap="The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe." type="button"><span class="n">1</span>Create</button>
@@ -72,18 +95,12 @@
     </div>
     <p class="tcap" id="tcap">The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.</p>
   </div>
-</section>
-
-<!-- durable identity + features -->
-<section class="band alt" id="features">
-  <h2>Git workflows. Encrypted vaults. Zero knowledge.</h2>
-  <p class="blurb">sgit is git for encrypted vaults: clone, commit, branch, diff and merge folders of files that are encrypted with AES-256-GCM before they leave your machine.</p>
-  <div class="feat">
+  <div class="feat" style="margin-top:1.4rem">
     <div class="f rev"><b>Git-like version control</b><span>commit, branch, merge, diff, log, stash, revert your encrypted files</span></div>
     <div class="f rev"><b>Client-side encryption</b><span>AES-256-GCM before upload; keys derived from your vault key, never sent to the server</span></div>
     <div class="f rev"><b>Real three-way merge</b><span>conflict files plus a base/ours/theirs <code>resolve --show</code> view</span></div>
     <div class="f rev"><b>The two-branch model</b><span>a private clone branch per machine or agent; shared named branches for collaboration</span></div>
-    <div class="f rev"><b>Sparse &amp; thin clones</b><span>structure now, content on demand — for agents on a time budget</span></div>
+    <div class="f rev"><b>Apps live inside the data</b><span>a vault can carry its own sandboxed app, with the permissions it asks for declared in a file</span></div>
     <div class="f rev"><b>Browser interop</b><span>open the same vault in SG/Vault on the web — CLI and browser speak one wire format</span></div>
   </div>
 </section>
@@ -130,23 +147,11 @@
     <div class="card rev"><span class="tag">Multi-agent, human-merged</span><h3>A branch per agent</h3><p>Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge — in the terminal or in the SG/Vault browser.</p></div>
     <div class="card rev"><span class="tag">Agent-grade plumbing</span><h3>Machine-readable everything</h3><p><code>sgit write</code> for surgical single-call commits, <code>--json</code> on every read path, <code>cat --id</code> with zero network calls, sparse clones for fast cold starts.</p></div>
   </div>
-  <p class="blurb" style="margin-top:1.6rem;margin-bottom:0"><a href="docs/agents.html">Read the agent guide →</a> &nbsp;·&nbsp; <a href="skills/index.html">Install the skills →</a> &nbsp;·&nbsp; <a href="llms.txt">llms.txt</a></p>
-</section>
-
-<!-- use cases -->
-<section class="band" id="use-cases">
-  <h2>What people use it for</h2>
-  <div class="cards">
-    <a class="card rev" href="use-cases/index.html#ai-agents"><span class="tag">Use case</span><h3>Private memory for AI agents</h3><p>Durable, versioned state between sessions — encrypted end to end.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#multi-agent"><span class="tag">Use case</span><h3>Multi-agent collaboration</h3><p>Agents on their own branches, humans reviewing the merge.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#human-ai"><span class="tag">Use case</span><h3>Human ↔ agent workspaces</h3><p>You in the SG/Vault browser, the agent in the CLI — same vault.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#encrypted-backup"><span class="tag">Use case</span><h3>Encrypted folders with history</h3><p>A shared folder the hosting provider cannot read, with rollback.</p><span class="go">Read →</span></a>
-    <a class="card rev" href="use-cases/index.html#secure-file-exchange"><span class="tag">Use case</span><h3>Signed &amp; encrypted exchange</h3><p>PKI: sign, verify, encrypt and decrypt files for named recipients.</p><span class="go">Read →</span></a>
-  </div>
+  <p class="blurb" style="margin-top:1.6rem;margin-bottom:0"><a href="docs/agents.html">Read the agent guide →</a> &nbsp;·&nbsp; <a href="skills/index.html">Install the skills →</a> &nbsp;·&nbsp; <a href="use-cases/index.html">Use cases →</a> &nbsp;·&nbsp; <a href="llms.txt">llms.txt</a></p>
 </section>
 
 <!-- trust -->
-<section class="band alt" id="trust">
+<section class="band" id="trust">
   <h2>In production — and honest about it</h2>
   <p class="blurb">sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when <em>not</em> to use it.</p>
   <div class="trust">
@@ -158,22 +163,12 @@
     <span><a href="security/index.html"><b>security model</b> published</a></span>
     <span><a href="docs/limitations.html"><b>when NOT</b> to use sgit</a></span>
     <span><a href="why/index.html"><b>why</b> does this exist?</a></span>
+    <span><a href="docs/what-is-sgit.html"><b>sgit · SG/Vault · SG/Send</b> — the three doors</a></span>
   </div>
 </section>
 
-<!-- ecosystem -->
-<section class="band" id="ecosystem">
-  <h2>One vault, three doors</h2>
-  <div class="eco">
-    <div class="e rev"><div class="think">Think of it as</div><b>sgit</b> <span class="as">— git, for encrypted vaults</span><p>Open source CLI. Free. Apache-2.0. <code>pip install sgit-ai</code></p></div>
-    <div class="e rev"><div class="think">Think of it as</div><b>SG/Vault</b> <span class="as">— the web app for your vaults</span><p>Browse, edit and review the same vaults in the browser — an independent implementation of the same wire format.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
-    <div class="e rev"><div class="think">Think of it as</div><b>SG/Send</b> <span class="as">— the transfer API underneath</span><p>The zero-knowledge storage service both clients speak to — the same server the integration tests run against.</p><p><a href="vault/index.html">Platform docs →</a> · <a href="https://sgraph.ai">sgraph.ai</a></p></div>
-  </div>
-</section>
-
-<!-- the network. Nineteen sibling sites is no longer a footnote: it is where most of
-     the writing now lives, and the homepage has to say so. -->
-<section class="band" id="network">
+<!-- the network -->
+<section class="band alt" id="network">
   <h2>Nineteen sites, one question each</h2>
   <p class="bandlede">Most of the thinking behind sgit no longer lives on this site. It moved out to
   <b><code>*.sgit.ai</code></b> — a family of focused sites, each taking one question further than a
