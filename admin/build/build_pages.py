@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.60'
+SITE_VERSION = 'v0.2.61'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.60', '2026-09-07', 'this release',
+    ('v0.2.61', '2026-09-07', 'this release',
+     "A CORRECTION TO THE RELEASE BEFORE IT, CAUGHT BY COUNTING. v0.2.60's article, its update post "
+     "and its version-log entry all said the homepage went from nine bands to eight. It did not: "
+     "git show of the previous content file counts nine sections, the new one counts nine — three "
+     "were cut (features folded into the walkthrough, the abstract use cases, the three doors) and "
+     "three were added (the hero vaults, what people ship, the team). What changed is the ORDER "
+     "and the first screen, not the length; words went 1,370 to 1,332. The claim was written from "
+     "memory of the plan rather than from the file, which is exactly the failure this site says "
+     "it does not permit, so all three places now carry the corrected count and the article says "
+     "in its own text that it was corrected and why. Second catch, same class: the update post restated the "
+     "team band's four numbers in prose and was off by one within the hour, because a release had "
+     "happened; the prose now names the numbers without repeating them. Nothing else changes."),
+    ('v0.2.60', '2026-09-07', 'obj-cas-imm-19a2bbeb1375',
      "THE HOMEPAGE REBUILT: PROOF BEFORE MECHANISM. Follows the diagnosis published in v0.2.59 "
      "rather than a fresh opinion, so the two can be compared, and the 'after' article puts each "
      "new band beside the screenshot of what it replaced. HERO: the sentence changed from 'the "
@@ -46,8 +58,10 @@ VERSION_LOG = [
      "the trust strip pointing at the page that already explained it). MOVED DOWN: the terminal "
      "walkthrough, under a heading — 'under the hood, it is git' — because for a visitor who has "
      "just opened a real vault, how is now the question; it gained the feature card 'apps live "
-     "inside the data', which was never on the list. Nine bands became eight; bytes went UP, "
-     "because ten screenshots replaced paragraphs. IMAGES GO THROUGH shots.js, never a static image src attribute: "
+     "inside the data', which was never on the list. The band count did NOT change — nine before, "
+     "nine after; three cut, three added — so what changed is the order and the first screen, not "
+     "the length; bytes went UP because ten screenshots replaced paragraphs, words went down 1,370 "
+     "to 1,332. IMAGES GO THROUGH shots.js, never a static image src attribute: "
      "the validator refuses a static src because a relative one does not resolve inside a vault, "
      "and the build injects the loader wherever data-shot appears. Card text carries hidden "
      "separators so the .md twin reads 'Reference — name — line — open it' instead of one run-on. "

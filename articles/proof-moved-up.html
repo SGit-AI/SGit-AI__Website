@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.60</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.61</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -106,7 +106,7 @@
 <li><b>"One vault, three doors."</b> The sgit / SG/Vault / SG/Send explanation was a full band. It is a single pill in the trust strip now, pointing at the page that already explained it.</li>
 <li><b>Nothing from the terminal walkthrough.</b> It moved down and gained a heading — <em>Under the hood, it is git</em> — because for the visitor who has just opened a real vault, <em>how</em> is now the question. It gained one feature card too: <em>apps live inside the data</em>, which was somehow never on the list.</li>
 </ul>
-<p>Nine bands became eight, and the page is now longer in bytes rather than shorter, because it carries ten screenshots. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.</p>
+<p>The band count did not change — nine before, nine after: three were cut and three were added, so what changed is the order and what comes first, not the length. (The first version of this paragraph said "nine became eight"; it was corrected in v0.2.61 after counting rather than remembering.) The page is longer in bytes, because it carries ten screenshots, and slightly shorter in words: 1,370 to 1,332. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.</p>
 <h2>What it cannot show yet</h2>
 <p>The previous article named a gap, and the rebuild did not close it: <b>no published vault demonstrates two agents on one vault</b> — their branches, and a human merging them. The team band tells the story of agents building <em>for</em> each other, which is true and evidenced. It does not yet show agents building <em>with</em> each other in the same history, which is the site's strongest claim. The band is written so that it does not pretend otherwise. When that vault exists, it goes in the hero.</p>
 <h2>What it is generated from</h2>
@@ -116,7 +116,7 @@
 </main>
 <script>
 (function () {
-  fetch('../assets/shots.js?v=v0.2.60')
+  fetch('../assets/shots.js?v=v0.2.61')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -128,7 +128,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.60</a> · <a href="../admin/index.html">engineering</a> · <a href="proof-moved-up.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.61</a> · <a href="../admin/index.html">engineering</a> · <a href="proof-moved-up.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -167,7 +167,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.60';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.61';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

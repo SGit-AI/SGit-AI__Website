@@ -2,7 +2,7 @@
 
 > The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.
 
-*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.2.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.2.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -58,7 +58,7 @@ The numbers are not typed. Releases come from the version log, vaults from the v
 - **"One vault, three doors."** The sgit / SG/Vault / SG/Send explanation was a full band. It is a single pill in the trust strip now, pointing at the page that already explained it.
 - **Nothing from the terminal walkthrough.** It moved down and gained a heading — *Under the hood, it is git* — because for the visitor who has just opened a real vault, *how* is now the question. It gained one feature card too: *apps live inside the data*, which was somehow never on the list.
 
-Nine bands became eight, and the page is now longer in bytes rather than shorter, because it carries ten screenshots. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.
+The band count did not change — nine before, nine after: three were cut and three were added, so what changed is the order and what comes first, not the length. (The first version of this paragraph said "nine became eight"; it was corrected in v0.2.61 after counting rather than remembering.) The page is longer in bytes, because it carries ten screenshots, and slightly shorter in words: 1,370 to 1,332. That is the trade: pictures of real things instead of paragraphs about them. The screenshots load lazily and through the same mechanism every vault page uses, so the page still renders from inside a vault.
 
 ## What it cannot show yet
 
