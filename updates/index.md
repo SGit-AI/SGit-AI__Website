@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,9 +24,9 @@ The homepage is rebuilt, following [the diagnosis published this morning](../art
 
 **The use cases became things.** A new band, *what people actually ship*, replaces five category cards with six vaults chosen by the job they do — hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace — each with one line on why it is hard any other way. None of those lines is about encryption.
 
-**The collaboration story got a front door.** *One human, a team of agents*: four numbers computed at build time — 87 releases, 25 vaults, 19 sibling sites, 10 cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed; if one is wrong, the site is wrong somewhere else too.
+**The collaboration story got a front door.** *One human, a team of agents*: four numbers computed at build time — releases, vaults, sibling sites, cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed here or on the page, and this sentence deliberately does not repeat them: the first draft did, and was off by one within the hour because a release had happened. The tile cannot drift; prose can.
 
-**Cut:** the abstract use-case band (the pages remain, in the nav) and the *three doors* band (now one pill in the trust strip). **Moved down:** the terminal walkthrough, under *Under the hood, it is git*, because for a visitor who has just opened a real vault, *how* is now the question. Nine bands became eight; the page got longer in bytes, because ten screenshots replaced paragraphs.
+**Cut:** the abstract use-case band (the pages remain, in the nav) and the *three doors* band (now one pill in the trust strip). **Moved down:** the terminal walkthrough, under *Under the hood, it is git*, because for a visitor who has just opened a real vault, *how* is now the question. The band count is unchanged — nine before, nine after; three cut, three added — so what changed is the order and the first screen. The page got longer in bytes, because ten screenshots replaced paragraphs, and shorter in words.
 
 **One thing the computed number caught.** The network heading had been retyped as "Twenty sites" while the tile beside it said 19. The tile was right — nineteen siblings, twenty with this one — and it is the tile that cannot drift.
 

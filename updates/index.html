@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.60</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.61</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -87,8 +87,8 @@
 <p>The homepage is rebuilt, following <a href="../articles/proof-behind-the-claim.html">the diagnosis published this morning</a> rather than a fresh opinion — and <a href="../articles/proof-moved-up.html">the "after" article</a> puts each new band beside a screenshot of what it replaced, so the comparison is honest rather than flattering.</p>
 <p><b>The first screen now shows vaults.</b> The headline changed from <em>"the encrypted git for humans and AI agents"</em> to <em>"a vault is a unit of work: data, app, history and sources, shipped as one string."</em> Encryption did not leave — it became the subordinate clause, which is where a property nobody can look at belongs. Under it: <b>four real published vaults</b>, a screenshot each, one click from open. Which four is a field in the vault data, so changing the front door is a data edit.</p>
 <p><b>The use cases became things.</b> A new band, <em>what people actually ship</em>, replaces five category cards with six vaults chosen by the job they do — hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace — each with one line on why it is hard any other way. None of those lines is about encryption.</p>
-<p><b>The collaboration story got a front door.</b> <em>One human, a team of agents</em>: four numbers computed at build time — 87 releases, 25 vaults, 19 sibling sites, 10 cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed; if one is wrong, the site is wrong somewhere else too.</p>
-<p><b>Cut:</b> the abstract use-case band (the pages remain, in the nav) and the <em>three doors</em> band (now one pill in the trust strip). <b>Moved down:</b> the terminal walkthrough, under <em>Under the hood, it is git</em>, because for a visitor who has just opened a real vault, <em>how</em> is now the question. Nine bands became eight; the page got longer in bytes, because ten screenshots replaced paragraphs.</p>
+<p><b>The collaboration story got a front door.</b> <em>One human, a team of agents</em>: four numbers computed at build time — releases, vaults, sibling sites, cross-team briefs — and the loop told in three beats with the artefacts linked. The numbers are not typed here or on the page, and this sentence deliberately does not repeat them: the first draft did, and was off by one within the hour because a release had happened. The tile cannot drift; prose can.</p>
+<p><b>Cut:</b> the abstract use-case band (the pages remain, in the nav) and the <em>three doors</em> band (now one pill in the trust strip). <b>Moved down:</b> the terminal walkthrough, under <em>Under the hood, it is git</em>, because for a visitor who has just opened a real vault, <em>how</em> is now the question. The band count is unchanged — nine before, nine after; three cut, three added — so what changed is the order and the first screen. The page got longer in bytes, because ten screenshots replaced paragraphs, and shorter in words.</p>
 <p><b>One thing the computed number caught.</b> The network heading had been retyped as "Twenty sites" while the tile beside it said 19. The tile was right — nineteen siblings, twenty with this one — and it is the tile that cannot drift.</p>
 <p><b>The gap stands.</b> No published vault yet shows two agents on one vault with a human merging their branches. The band tells the story of agents building <em>for</em> each other, which is evidenced, and is written so as not to pretend it shows more.</p>
   </article>
@@ -449,7 +449,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.60</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.61</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -488,7 +488,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.60';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.61';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
