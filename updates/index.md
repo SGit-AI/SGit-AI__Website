@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,25 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-07
+
+### [The diagnosis before the rebuild — and a card for pointing at the sibling sites](#the-diagnosis-before-the-rebuild) [v0.2.59](../admin/versions.md)
+
+homepagearticlesnetworkmethod
+
+Asked to step back and say how this site should present its twenty-five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as [an article with screenshots of the current site](../articles/proof-behind-the-claim.md), so the rebuild that follows can be compared against it honestly.
+
+The short version: **the proof is two clicks behind the claim.**
+
+- The homepage leads with encryption, which cannot be looked at, and a terminal walkthrough of `create`, `commit`, `history` and `clone` — commands every git user has watched a thousand times. The word *vault* appears three times in the hero and the visitor is never shown one.
+- The twenty-five artefacts a stranger can open in one click, with no account, sit under a dropdown as a table. A good table now — but a table is the right shape for *finding* a vault and the wrong shape for being *convinced* by one.
+- The use-case cards are categories. Concrete examples of every one of them exist one level down.
+- The strongest story — agents building for agents; a brief published here turned into a vault the same day, then reviewed by the team that owns the API — is filed under Docs, as a log.
+
+One gap named plainly: the homepage's strongest multi-agent claim, *a branch per agent and a human reviews the merge*, has **no published vault behind it**. Every vault here was built by one agent, or by one agent on another's finished work.
+
+The fix is set out in order — proof before mechanism; reorder and cut rather than add — and is the next release.
+
+**Also new: a card for pointing at the sibling sites.** The `*.sgit.ai` sites exist so each topic gets the depth a section here could not give it, which only pays off if this site points at them constantly — and a bare link does not say *this continues elsewhere, on purpose*. A one-line `!site` directive now renders a card that pulls the target site's own category and thesis from the network directory, so it describes that site the way the site describes itself. It debuts in the article pointing at [open-source.sgit.ai/about](https://open-source.sgit.ai/about/index.html), which is also a decision recorded there: this site will get an About page about **sgit**, and link to the fuller record rather than duplicate it.
 
 ### [Our build brief was wrong, and the team that owns the code said so precisely](#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so) [v0.2.58](../admin/versions.md)
 

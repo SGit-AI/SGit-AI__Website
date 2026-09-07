@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.58</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.59</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
@@ -81,6 +81,21 @@
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
   <h2 class="upd-date">2026-09-07</h2>
+  <article class="upd" id="the-diagnosis-before-the-rebuild">
+    <h3><a href="#the-diagnosis-before-the-rebuild">The diagnosis before the rebuild — and a card for pointing at the sibling sites</a> <a class="upd-ver" href="../admin/versions.html">v0.2.59</a></h3>
+    <p class="chips"><span class="chip">homepage</span><span class="chip">articles</span><span class="chip">network</span><span class="chip">method</span></p>
+<p>Asked to step back and say how this site should present its twenty-five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as <a href="../articles/proof-behind-the-claim.html">an article with screenshots of the current site</a>, so the rebuild that follows can be compared against it honestly.</p>
+<p>The short version: <b>the proof is two clicks behind the claim.</b></p>
+<ul>
+<li>The homepage leads with encryption, which cannot be looked at, and a terminal walkthrough of <code>create</code>, <code>commit</code>, <code>history</code> and <code>clone</code> — commands every git user has watched a thousand times. The word <em>vault</em> appears three times in the hero and the visitor is never shown one.</li>
+<li>The twenty-five artefacts a stranger can open in one click, with no account, sit under a dropdown as a table. A good table now — but a table is the right shape for <em>finding</em> a vault and the wrong shape for being <em>convinced</em> by one.</li>
+<li>The use-case cards are categories. Concrete examples of every one of them exist one level down.</li>
+<li>The strongest story — agents building for agents; a brief published here turned into a vault the same day, then reviewed by the team that owns the API — is filed under Docs, as a log.</li>
+</ul>
+<p>One gap named plainly: the homepage's strongest multi-agent claim, <em>a branch per agent and a human reviews the merge</em>, has <b>no published vault behind it</b>. Every vault here was built by one agent, or by one agent on another's finished work.</p>
+<p>The fix is set out in order — proof before mechanism; reorder and cut rather than add — and is the next release.</p>
+<p><b>Also new: a card for pointing at the sibling sites.</b> The <code><em>.sgit.ai</code> sites exist so each topic gets the depth a section here could not give it, which only pays off if this site points at them constantly — and a bare link does not say </em>this continues elsewhere, on purpose*. A one-line <code>!site</code> directive now renders a card that pulls the target site's own category and thesis from the network directory, so it describes that site the way the site describes itself. It debuts in the article pointing at <a href="https://open-source.sgit.ai/about/index.html">open-source.sgit.ai/about</a>, which is also a decision recorded there: this site will get an About page about <b>sgit</b>, and link to the fuller record rather than duplicate it.</p>
+  </article>
   <article class="upd" id="our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">
     <h3><a href="#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">Our build brief was wrong, and the team that owns the code said so precisely</a> <a class="upd-ver" href="../admin/versions.html">v0.2.58</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">api</span><span class="chip">correction</span><span class="chip">agents</span></p>
@@ -423,7 +438,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.58</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.59</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -462,7 +477,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.58';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.59';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

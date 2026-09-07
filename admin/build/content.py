@@ -127,6 +127,43 @@ class Content_Loader:
                 flush_para(); flush_list()
                 continue
 
+            # !site host | path | title | description   — a card pointing at a sibling site
+            #
+            # The *.sgit.ai sites exist so each topic gets the depth a section here could
+            # not give it, which only pays off if this site points at them constantly. A
+            # bare link does not signal "this continues elsewhere, on purpose"; the card
+            # does. Author gives host + path + title (+ an optional line); the site's own
+            # category and thesis come from admin/content/sites/<slug>.md when it has one,
+            # so the card stays true to how that site describes itself.
+            if line.startswith('!site '):
+                flush_para(); flush_list()
+                parts = [p.strip() for p in line[6:].split('|')]
+                if len(parts) < 3:
+                    raise Content_Error(f'{where}: !site needs host | path | title [| description]')
+                host, path, title = parts[0], parts[1], parts[2]
+                desc = parts[3] if len(parts) > 3 else ''
+                meta = self.site_meta(host)
+                href = f'https://{host}{path if path.startswith("/") else "/" + path}'
+                cat = f'<span class="sib-cat">{html.escape(meta["category"])}</span>' if meta else ''
+                thesis = (f'<span class="sib-thesis">&ldquo;{html.escape(meta["thesis"])}&rdquo;</span>'
+                          if meta and meta.get('thesis') else '')
+                # The separators are real text hidden by CSS: the .md twin and screen readers
+                # then get "host · category — title — line — thesis — network" as one clean
+                # line instead of six spans run together.
+                sep = '<span class="sib-sep"> &mdash; </span>'
+                out.append(
+                    f'<div class="sib">'
+                    f'<span class="sib-host">{html.escape(host)}'
+                    + (f'<span class="sib-sep"> &middot; </span>{cat}' if cat else '')
+                    + f'</span>{sep}'
+                    f'<a class="sib-title" href="{html.escape(href, quote=True)}" rel="noopener" target="_blank">'
+                    f'{self.inline(title, depth, where)} &#8599;</a>'
+                    + (f'{sep}<span class="sib-desc">{self.inline(desc, depth, where)}</span>' if desc else '')
+                    + (f'{sep}{thesis}' if thesis else '')
+                    + f'{sep}<span class="sib-net">part of the sgit.ai network</span>'
+                    f'</div>')
+                continue
+
             # !shot filename.webp | dir | caption   — a walkthrough figure
             if line.startswith('!shot '):
                 flush_para(); flush_list()
@@ -201,9 +238,19 @@ class Content_Loader:
             raise Content_Error(f'{where}: unclosed ``` fence')
         return '\n'.join(out)
 
+    def site_meta(self, host):
+        """The sibling-site entry for a host, from admin/content/sites/*.md, or None.
+        Cached: the card directive can appear many times on one page."""
+        if not hasattr(self, '_sites_by_host'):
+            try:
+                self._sites_by_host = {s['domain']: s for s in self.load_sites()}
+            except Exception:
+                self._sites_by_host = {}
+        return self._sites_by_host.get(host)
+
     def md_to_text(self, md, limit=260):
         """Plain-text summary for the manifest and the feed."""
-        t = re.sub(r'!shot .*', '', md)
+        t = re.sub(r'!(shot|site) .*', '', md)
         t = re.sub(r'```.*?```', '', t, flags=re.S)
         t = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', t)
         t = re.sub(r'[#>*`_-]', ' ', t)

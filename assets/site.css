@@ -692,3 +692,26 @@ th.vt-sortable[data-dir="desc"]::after{content:'\2193';opacity:1}
   .vt{font-size:.79rem}
   .vt td:nth-child(3),.vt th:nth-child(3){display:none}   /* 'what it is' — the page has it */
 }
+
+/* ---------- sibling-site card (!site directive) ---------- */
+/* Points at a page on another *.sgit.ai site and says so. The whole card is the link:
+   the title anchor's ::after covers the card, so the markup stays a plain <a> for the
+   markdown twin and screen readers while the pointer target is the full box. */
+.sib{position:relative;display:block;margin:1.2rem 0;padding:.95rem 1.1rem .85rem;
+  border:1px solid var(--line);border-left:4px solid #2f6fed;border-radius:10px;
+  background:var(--panel);box-shadow:var(--shadow);transition:border-color .15s,transform .15s}
+.sib:hover{border-color:#2f6fed;transform:translateY(-1px)}
+.sib-host{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;font-family:var(--mono);
+  font-size:.74rem;color:#2f6fed;letter-spacing:.01em}
+.sib-cat{font-family:inherit;font-size:.68rem;font-weight:600;color:var(--dim);
+  padding:.08rem .45rem;border:1px solid var(--line);border-radius:999px;background:#fff}
+.sib-title{display:block;margin:.3rem 0 .15rem;font-size:1.02rem;font-weight:700;
+  color:#101114;text-decoration:none;line-height:1.35}
+.sib-title::after{content:'';position:absolute;inset:0}
+.sib-title:hover{text-decoration:underline}
+.sib-desc{display:block;font-size:.9rem;color:#2a2c33;line-height:1.5}
+.sib-thesis{display:block;margin-top:.45rem;font-size:.84rem;font-style:italic;color:var(--dim)}
+.sib-net{display:block;margin-top:.55rem;font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--dim)}
+.sib-net::before{content:'\21D7  ';color:#2f6fed}
+.sib-sep{display:none}

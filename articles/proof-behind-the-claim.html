@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The proof is two clicks behind the claim — what the homepage gets wrong, and the fix — sgit.ai</title>
+<meta name="description" content="Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.">
+<link rel="canonical" href="https://sgit.ai/articles/proof-behind-the-claim.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/proof-behind-the-claim.html">
+<meta property="og:title" content="The proof is two clicks behind the claim — what the homepage gets wrong, and the fix — sgit.ai">
+<meta property="og:description" content="Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="proof-behind-the-claim.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The proof is two clicks behind the claim — what the homepage gets wrong, and the fix — sgit.ai", "headline": "The proof is two clicks behind the claim — what the homepage gets wrong, and the fix — sgit.ai", "description": "Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.", "url": "https://sgit.ai/articles/proof-behind-the-claim.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.59</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
+  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+      <a class="sl" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl here" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../network/index.html">All sites</a>
+      <a class="sl" href="../network/nhi.html">nhi</a>
+      <a class="sl" href="../network/pki.html">pki</a>
+      <a class="sl" href="../network/graphs.html">graphs</a>
+      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / The proof is two clicks behind the claim — what the homepage gets wrong, and the fix</p>
+  <h1>The proof is two clicks behind the claim — what the homepage gets wrong, and the fix</h1>
+  <p class="small dim">2026-09-07 &middot; <a href="../admin/versions.html">v0.2.59</a> &middot; <span class="chip">homepage</span><span class="chip">positioning</span><span class="chip">vaults</span><span class="chip">agents</span></p>
+  <p class="lead">Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.</p>
+<p>Three weeks ago this site had four published vaults. Today it has twenty-five, built by several agents working with one human, and the collection now includes things that are genuinely hard to make without sgit: a penetration test report that ships with a retest script per finding, a conference keynote that carries its eight cited papers, a compliance standard rebuilt as a citable graph with 82 hashed source snapshots, a game that reports anonymous telemetry through a write-only channel.</p>
+<p>None of that is visible from the homepage. This article is the diagnosis of why, written before the rebuild rather than after, so the two can be compared honestly.</p>
+<h2>The homepage leads with the thing you cannot see</h2>
+<p>Here is the first screen a visitor gets:</p>
+<figure class="shot" data-shot="before-hero.webp" data-dir="images/" data-alt="The hero today: a claim about encryption, a pip install, and a terminal walkthrough of create, commit, history and clone."><figcaption>The hero today: a claim about encryption, a pip install, and a terminal walkthrough of create, commit, history and clone.</figcaption></figure>
+<p>Every word of it is true, and almost none of it is <em>persuasive</em>, for one reason: <b>encryption is a property you cannot look at.</b> Zero knowledge is a property you cannot look at. The visitor is asked to take the value on faith before being shown anything — and the first thing they are then shown is a terminal walking through <code>create</code>, <code>commit</code>, <code>history</code> and <code>clone</code>, which any git user has watched a thousand times. The walkthrough demonstrates <em>familiarity</em>, which is a virtue, but not <em>power</em>.</p>
+<p>The word "vault" appears in the hero three times and the visitor is never shown one.</p>
+<h2>The use cases are abstract while twenty-five concrete ones sit one level down</h2>
+<p>Scroll on and the site tells you what people use it for:</p>
+<figure class="shot" data-shot="before-usecases.webp" data-dir="images/" data-alt="Five use-case cards, each a category rather than a thing: private memory, multi-agent collaboration, workspaces, encrypted folders, signed exchange."><figcaption>Five use-case cards, each a category rather than a thing: private memory, multi-agent collaboration, workspaces, encrypted folders, signed exchange.</figcaption></figure>
+<p>These are categories, not examples. <em>"Multi-agent collaboration — agents on their own branches, humans reviewing the merge"</em> is a description of a capability. Meanwhile, one level down, there is a vault where one agent copied another agent's entire catalogue byte for byte and built a conformance layer on top of it, and the tests that prove the copy is exact still pass. That is the same idea, except you can open it.</p>
+<p>The homepage has the abstraction. The proof is elsewhere.</p>
+<h2>The proof is a table, two clicks away</h2>
+<p>Where is it? Under a dropdown:</p>
+<figure class="shot" data-shot="before-nav.webp" data-dir="images/" data-alt="Vaults → Published vaults. Two clicks from the hero to the most persuasive page on the site."><figcaption>Vaults → Published vaults. Two clicks from the hero to the most persuasive page on the site.</figcaption></figure>
+<p>And when you get there, it is a table:</p>
+<figure class="shot" data-shot="before-vaults-table.webp" data-dir="images/" data-alt="The published vaults, as of this week: sortable, categorised, and still a table — the right shape for finding a vault, the wrong shape for being convinced by one."><figcaption>The published vaults, as of this week: sortable, categorised, and still a table — the right shape for finding a vault, the wrong shape for being convinced by one.</figcaption></figure>
+<p>To be fair to the table, it was rebuilt this week and it is now a good table — sortable, categorised, newest first, with the read keys moved off it because they were squeezing the vault id to one character per line. But a table is the right shape for <em>finding</em> a vault and the wrong shape for being <em>convinced</em> by one. It answers "which of these do I want" for a visitor who already wants one.</p>
+<p>Here is what the visitor could have been looking at one second after arriving, with no account and no install:</p>
+<figure class="shot" data-shot="proof-insurability.webp" data-dir="images/" data-alt="A real vault, open: the AIUC-1 conformance layer computing insurability for a named subject as of a date — one condition met, 52 exclusions, zero of five consequences covered, each with the reason in the control&#x27;s own words."><figcaption>A real vault, open: the AIUC-1 conformance layer computing insurability for a named subject as of a date — one condition met, 52 exclusions, zero of five consequences covered, each with the reason in the control's own words.</figcaption></figure>
+<figure class="shot" data-shot="proof-game.webp" data-dir="images/" data-alt="Another: a game about which wings of the building an agent can enter, drawn as a floor plan, with a belief column ranking nine public agent profiles as you answer."><figcaption>Another: a game about which wings of the building an agent can enter, drawn as a floor plan, with a belief column ranking nine public agent profiles as you answer.</figcaption></figure>
+<p>Both of these are opened by one string. Both run entirely in the browser. Both ship with their data, their sources and their tests inside the same encrypted unit. The second one built its own telemetry from a brief published on this site. <b>None of this requires the visitor to understand encryption first.</b> It requires them to click.</p>
+<h2>The strongest story has no front door</h2>
+<p>The thing that most distinguishes how this site is made is that it is built by one person and a team of agents, and the agents build for each other. The evidence is real and specific:</p>
+<ul>
+<li>A brief published here on 6 September was read by another agent, who built a vault from it the same day.</li>
+<li>That vault was reviewed by the team that owns the API it uses, who found the brief had been wrong in two places — and the correction is now published above the mistake.</li>
+<li>One agent forked another agent's vault, kept every byte, added a layer, and shipped a fourteen-version history that labels seven of the versions as <em>reconstructed</em> rather than inventing commits.</li>
+</ul>
+<p>Where does a visitor learn this? Here:</p>
+<figure class="shot" data-shot="before-briefs.webp" data-dir="images/" data-alt="The briefs page — the cross-team collaboration log — filed under Docs, three levels from the homepage, and written as a log rather than a story."><figcaption>The briefs page — the cross-team collaboration log — filed under Docs, three levels from the homepage, and written as a log rather than a story.</figcaption></figure>
+<p>It is filed under Docs. It is written as a log, which is the right format for the record and the wrong one for a first-time reader. The productivity claim that the whole site rests on — <em>this is what working with agents looks like when the state is versioned and shareable</em> — has no page that tells it end to end.</p>
+<h2>One gap worth naming</h2>
+<p>The homepage says <em>"a branch per agent; work meets on named branches; a human reviews the merge."</em> It is the site's strongest claim about multi-agent work, and <b>no published vault demonstrates it.</b> Every vault here was built by one agent, or by one agent on top of another's finished work. None shows two agents' branches and a human merge in its history.</p>
+<p>If such a vault exists, publishing it is the single highest-value addition to the site. If it does not, the next multi-agent build should be run so that its history shows it. A claim on a homepage with no artefact behind it is exactly what this site says it does not do.</p>
+<h2>The fix, in order</h2>
+<p>Not more bands. The homepage already has nine, and 1,370 words. The fix is to reorder so proof comes before mechanism, and to cut.</p>
+<ol>
+<li><b>The hero shows vaults.</b> One reframed sentence — a vault is a unit of work: data, app, history and sources, shipped as one string, and the server cannot read it — with <b>four real vaults as cards</b> under it, each with a screenshot and an <em>open it</em> link. The visitor is inside an artefact before they have read a paragraph. <code>pip install</code> stays, second.</li>
+<li><b>"What people actually ship"</b> — six vaults chosen by <em>job</em> rather than by shape: hand over a report, publish a standard as data, give a talk, pitch an investor, run a game, give an agent a workspace. Each with one line on why it is hard without this. Generated from the same data as the table, so it never goes stale.</li>
+<li><b>"One human, a team of agents"</b> — the collaboration story told as a story, with the numbers, and a single page behind it that walks the loop end to end.</li>
+<li>Then the terminal walkthrough and the zero-knowledge explanation, for the developer who is <em>now</em> interested in how.</li>
+<li>The honesty band and the network band stay. The "three doors" band moves to the docs.</li>
+</ol>
+<h2>And a page that says who is behind it</h2>
+<p>A beta tool that asks people to publish their read keys on it is asking for trust, and this site has no page saying who is asking. There will be one. It will be about <b>sgit</b> — who builds it, honestly including the agents; why; the commercial line — and it will borrow two sections that fit this site's culture exactly, <em>Interests declared</em> and <em>Reach me, or correct me</em>, from the fuller record that already exists on a sibling site:</p>
+<div class="sib"><span class="sib-host">open-source.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Business &amp; publishing</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://open-source.sgit.ai/about/index.html" rel="noopener" target="_blank">About the author — Dinis Cruz &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">The record across four companies, built in the open including the parts most companies keep closed, and the interests declared.</span><span class="sib-sep"> &mdash; </span><span class="sib-thesis">&ldquo;Open source is a strategy. It is not a charity.&rdquo;</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+<p>That card is new as of this article. The <code><em>.sgit.ai</code> sites exist so each topic can get the depth a section here could not give it — which only pays off if this site points at them constantly, and a bare link does not say </em>this continues elsewhere, on purpose*. The card does. Authors write one line; the site's own category and thesis come from its entry in the network directory, so the card describes that site the way it describes itself.</p>
+<h2>What happens next</h2>
+<p>The rebuild is the next release. The article after it will put the new homepage next to these screenshots, and say what changed and what it cost. If the "before" pictures here still look better than the "after", that article will say so too.</p>
+<p><em>Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.</em></p>
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+  fetch('../assets/shots.js?v=v0.2.59')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (t) { (0, eval)(t); })
+    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.59</a> · <a href="../admin/index.html">engineering</a> · <a href="proof-behind-the-claim.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.59';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
