@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.58'
+SITE_VERSION = 'v0.2.59'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.58', '2026-09-07', 'this release',
+    ('v0.2.59', '2026-09-07', 'this release',
+     "THE DIAGNOSIS BEFORE THE REBUILD, PUBLISHED AS AN ARTICLE — AND A CARD FOR POINTING AT THE "
+     "SIBLING SITES. Asked to step back and say how the site should present the twenty-five "
+     "vaults, the answer was a diagnosis before a redesign: the homepage leads with encryption, "
+     "which cannot be looked at, and a terminal walkthrough of commands every git user has seen; "
+     "the twenty-five artefacts a stranger can open in one click sit two clicks away as a table; "
+     "the use cases are categories while concrete examples of each exist one level down; and the "
+     "strongest story — agents building for agents, a brief published here turned into a vault "
+     "the same day and reviewed by the team that owns the API — is filed under Docs as a log. "
+     "One gap named plainly: the homepage's strongest multi-agent claim, a branch per agent and a "
+     "human merge, has NO published vault behind it. The article carries the evidence as "
+     "screenshots of the current site, captured before anything changed so the 'after' article "
+     "can be compared against them honestly, and sets out the fix in order: proof before "
+     "mechanism, reorder and cut rather than add. NEW DIRECTIVE, !site — a card for referencing a "
+     "page on another *.sgit.ai site. Author writes host | path | title [| line]; the card pulls "
+     "that site's category and thesis from its entry in the network directory, so it describes "
+     "the site the way the site describes itself, and carries a 'part of the sgit.ai network' "
+     "cue a bare link cannot. The whole card is the pointer target via the title anchor's "
+     "::after, so the markup stays a plain link for the .md twin and for screen readers. Debuts "
+     "in the article pointing at open-source.sgit.ai/about, which is also the decision recorded "
+     "there: this site gets an About page about sgit, and links to the fuller record rather than "
+     "duplicating it. An unknown host degrades to host + title with no lookup."),
+    ('v0.2.58', '2026-09-07', 'obj-cas-imm-b61899966f9d',
      "THE SG/API TEAM REVIEWED OUR BUILD BRIEF AND FOUND IT WRONG — SO THE CORRECTION IS NOW MORE "
      "PROMINENT THAN THE MISTAKE. Two days after v0.2.55 published the telemetry brief, an agent "
      "built the games vault from it and could not get events out. The team that owns the append "

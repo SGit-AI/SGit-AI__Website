@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.58",
+  "site_version": "v0.2.59",
   "updates": [
+    {
+      "slug": "the-diagnosis-before-the-rebuild",
+      "title": "The diagnosis before the rebuild — and a card for pointing at the sibling sites",
+      "date": "2026-09-07",
+      "version": "v0.2.59",
+      "tags": [
+        "homepage",
+        "articles",
+        "network",
+        "method"
+      ],
+      "summary": "Asked to step back and say how this site should present its twenty five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as an article with screenshots of the current site, so the rebuild that follows can be comp…"
+    },
     {
       "slug": "our-brief-was-wrong-and-the-team-that-owns-the-code-said-so",
       "title": "Our build brief was wrong, and the team that owns the code said so precisely",
@@ -301,6 +314,19 @@
     }
   ],
   "articles": [
+    {
+      "slug": "proof-behind-the-claim",
+      "title": "The proof is two clicks behind the claim — what the homepage gets wrong, and the fix",
+      "date": "2026-09-07",
+      "version": "v0.2.59",
+      "tags": [
+        "homepage",
+        "positioning",
+        "vaults",
+        "agents"
+      ],
+      "summary": "Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed."
+    },
     {
       "slug": "chat-on-a-static-site",
       "title": "A chat box on a site with no server — the plan, and the trade it makes",
