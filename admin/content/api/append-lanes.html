@@ -36,6 +36,25 @@
     <li><b>mark-processed is idempotent.</b> An already-moved file comes back in <code>missing</code> rather than as an error, so retrying a batch after a timeout is safe.</li>
   </ul>
 
+  <h2 id="from-an-app">From a vault app: one verb crosses vaults, five do not</h2>
+  <p>This is the constraint to understand before designing anything that spans two vaults, and it was undocumented until the SG/API team's review of 6 September 2026 (quoted here CC&nbsp;BY&nbsp;4.0). The bridge builds <b>one</b> client bound to the <b>currently open vault</b>, with the enum key derived from that vault's read key. So:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Verb</th><th>Which vault it acts on</th><th>Bridge permission</th></tr>
+    <tr><td><code>write</code></td><td><b>Any</b> &mdash; it takes an explicit <code>vault_id</code> and posts with no headers at all</td><td><code>append.write</code></td></tr>
+    <tr><td><code>list</code></td><td rowspan="5">Always the open vault. There is no way to address a remote vault with these from an app</td><td><code>append.list</code></td></tr>
+    <tr><td><code>fetch</code></td><td><code>append.read</code> &mdash; <b>not</b> <code>append.fetch</code></td></tr>
+    <tr><td><code>markProcessed</code></td><td><code>append.markProcessed</code></td></tr>
+    <tr><td><code>purge</code></td><td><code>append.purge</code></td></tr>
+    <tr><td><code>configure</code></td><td><code>append.configure</code></td></tr>
+  </table></div>
+  <p>All six are plain booleans, <b>default-deny</b>, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app <em>"would give every visitor read access to the whole lane."</em></p>
+  <div class="note"><b>Two things that are <em>not</em> gates on <code>append</code>, despite appearances.</b> There is <b>no read-only check</b> anywhere in the append handler &mdash; <code>sg.app.writable</code> is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships <code>connect-src blob: data:</code>, so a <em>direct</em> <code>fetch</code> to these endpoints is blocked unless the app declares <code>permissions.network: true</code>, which reopens all egress and is the worse choice. Use the bridge. See <a href="../briefs/vault-telemetry-append-lanes.html">the build brief</a>, which had both of these wrong until the review corrected it.</div>
+
+  <h2 id="lane-id">The <code>inbox</code> field is the lane id &mdash; and today it is the token</h2>
+  <p>A <code>list</code> response labels each entry with an <code>inbox</code> value. That value is the storage folder name, and the folder is named by the <b>raw append token</b>, byte for byte &mdash; while <code>config.append_anchors</code> stores <code>sha256(token)</code>. So the design hashes the token in config and then writes the plaintext token into the object key.</p>
+  <p>The disclosure is bounded: <code>list</code> is gated by the enum key, so it reaches only the vault owner, who already holds every credential in play; and the token is a <b>write-only lane address</b>, closer to an email address than a password. The residual risk is storage rather than API &mdash; the raw token becomes an object key, so it lands in access logs, inventory reports and backups, <em>"surfaces with a very different audience from the enum-key holder."</em> The team intends to fold the folder name to <code>sha256(token)</code>, which is a breaking change needing a migration. <b>Documented here now so that nobody has to discover it from a debrief.</b></p>
+  <p>Lanes live at <code>bare/append/{token}/pending/</code> and <code>…/processed/</code>, <b>outside the version-controlled commit tree</b> — appends never touch a branch and never conflict with a push.</p>
+
   <h2 id="senders">Several senders on one vault</h2>
   <p>Register several <code>append_anchors</code> and each sender writes into their own lane, distinguished by their token. A listing can be scoped to one lane, so one correspondent flooding you does not bury another — and revoking one sender is removing one anchor, with no effect on the rest.</p>
 

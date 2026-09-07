@@ -2,7 +2,7 @@
 
 > How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 
-*Source: <https://sgit.ai/briefs/vault-telemetry-append-lanes.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/briefs/vault-telemetry-append-lanes.html> · site v0.2.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -72,14 +72,27 @@ This is the one credential shape that survives being published inside a public v
 
 Mitigations, in the order they matter: register **several `append_anchors`** so one flooded lane does not bury the others and revoking a sender is removing one anchor; drain aggressively (`list` → `fetch` → `mark-processed`, then `purge` with `folder:"processed"`); rotate the token by re-`configure`-ing and shipping a new vault release; and rate-limit client-side so honest readers never approach the cap.
 
-## Three things to verify before building
+## Answered: the two questions this brief told you to verify
 
-Do not assume any of them. In order of how badly they break the design:
+**Corrected 7 September 2026, and the correction matters more than the original.** This brief said to check whether `sg.append.write` survives a read-only session, warned that the bridge path was probably unavailable, and steered you to a direct `fetch` instead. **That was wrong, and it sent the first agent who followed it down the harder road.** The SG/API team reviewed the append code against this page and reported back; what follows is their answer, and it reverses this brief's recommendation. Their review is quoted below with permission — it is published CC BY 4.0.
 
-1. **Does `sg.append.write` work from a read-only session?** Your entire audience opens the vault with a *read* key. The authoring guide says read-only sessions fail closed, and the static-hosting notes list `sg.append.*` as rejected with `EREADONLY` in read-only contexts. If that holds in the hosted viewer, **the bridge path is unavailable to your readers**.
-**The fallback is better anyway:** a direct `fetch()` POST to `/api/vault/append/write/{vault_id}`. That endpoint is account-less by design — no bridge, no permission grant, no writable session. The authoring guide is explicit that `fetch()` may be used for absolute `https://` URLs; those leave the vault and behave like any web request.
-2. **Does the vault frame's CSP allow `connect-src` to the API host?** If the sandbox blocks the origin, neither path works and the answer is a host change, not an app change.
-3. **Token format.** `^[0-9a-f]{16,128}$` — **hex only**. A prefixed token returns **400**, not 403, because it fails input validation before reaching any gate. Do not paste a `sha256:` CLI fingerprint in as a token; that is the most likely way to hit it.
+1. **Does `sg.append.write` work from a read-only session? — YES. There is no read-only gate on append at all.**
+ The bridge checks exactly one thing, a permission grant: `perm.append.write === true`. In the reviewer's words, *"there is **no** `writable` check, **no** consent gate, and no read-only branch anywhere in the append handler"*, and `sg.app.writable` *"is irrelevant to append"*. So the grant is the whole story:
+
+```
+{ "permissions": { "append": { "write": true } } }
+```
+
+ Nothing else is required. The `EREADONLY` this brief cited belongs to `sg.vfs.write`, which fails at the data-source layer on a different code path — but **both deny with the same string, `'Permission denied'`**, which is precisely how the misdiagnosis happened. Do not use one to probe the other.
+2. **Does the frame's CSP allow `connect-src` to the API host? — NO, not by default. And this is the trap.**
+ The frame is served with `connect-src blob: data:`, so a direct `fetch` to the API is blocked before it leaves. The escape hatch is `"permissions": {"network": true}`, which omits the CSP meta entirely — and which, as the reviewer puts it, appears *"zero times"* in the authoring guide and zero times in the first version of this page. **It is discoverable only by reading the source.**
+**Prefer the bridge anyway.** `network: true` is all-or-nothing: it reopens *every* egress from a frame that is holding decrypted vault content, which is a poor trade for a telemetry beacon. The reviewer's verdict on the tempting shortcut is worth keeping: *"Not recommended: loosening the default CSP, or adding a read-only bypass for append."*
+3. **Only `write` crosses vaults. Every other verb is bound to the vault that is open.**
+ The bridge builds one client bound to the currently open vault, with the enum key derived from *that* vault's read key. `list`, `fetch`, `markProcessed`, `purge` and `configure` therefore always act on the open vault; **`write` is the sole verb that takes an explicit `vault_id`**, which is exactly what cross-vault telemetry needs and the only thing that makes it possible.
+ This is a design boundary, not a gap: listing a remote lane would need the recipient's enum key, and putting that in a published app *"would give every visitor read access to the whole lane."* Drain where the enum key legitimately lives — the receiving vault's own dashboard, or the CLI.
+4. **Token format.** `^[0-9a-f]{16,128}$` — **hex only**. A prefixed token returns **400**, not 403, because it fails input validation before reaching any gate. Do not paste a `sha256:` CLI fingerprint in as a token; that is the most likely way to hit it.
+
+**If a grant you added seems to be ignored, the manifest is the first suspect, not the gate.** Two causes, both silent: a **release pin** (`.vault/releases.json`) means `app.json` is read from that commit rather than HEAD, so a pushed manifest is simply not seen — and a pin also forces read-only for everyone, owner included; and a **folder-level `app.json`** beside a deep-linked entry page **replaces** the root manifest wholesale rather than merging with it, so root grants vanish without a warning.
 
 **And one gap to design around.** The intended model is `append_token = H(recipient public key)`, so a sender could compute the lane address from a public bundle with no coordination. No shipped command emits the token — that derivation is **PROPOSED**, not shipped. Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.
 
@@ -133,7 +146,8 @@ Emit anonymous usage events to a separate telemetry vault over an **append lane*
 
 Constraints:
 
-- Events go to `POST /api/vault/append/write/{TELEMETRY_VAULT_ID}` with the `append_token` in the body. **Verify first** whether `sg.append.write` is available in a read-only session; if it returns `EREADONLY`, use a direct `fetch()` to the account-less endpoint instead.
+- Send through the **bridge**: `sg.append.write({ vault_id, append_token, payload })`, with `{"permissions": {"append": {"write": true}}}` in `app.json`. That grant is the only requirement — a read-only session does **not** block it, and `write` is the one verb that takes another vault's id.
+- **Do not** reach for a direct `fetch()` to the endpoint. The frame's CSP is `connect-src blob: data:` and will block it silently; the only way round is `permissions.network: true`, which reopens every egress from a frame holding decrypted vault content. If a grant appears to be ignored, check for a release pin or a folder-level `app.json` before you change approach.
 - Encrypt each payload to the telemetry vault's public key before sending. The public key ships in the published vault; that is fine, public keys are publishable.
 - Never put a vault key, a read key to any other vault, or any other credential in this vault. The append token is the only credential that may appear, and only because it is write-only.
 - Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that identifies a person. Anonymous is the design, not a setting.

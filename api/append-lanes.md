@@ -2,7 +2,7 @@
 
 > The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
 
-*Source: <https://sgit.ai/api/append-lanes.html> · site v0.2.57 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/append-lanes.html> · site v0.2.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,6 +46,31 @@ A sender can put something into your vault and learn nothing at all — not the 
 - **Filenames are server-assigned** as `{epoch_ms:013d}_{24-hex}.enc`. Being chronologically sortable is what makes cursor pagination stable — pass the last file ID you saw as `after_file_id`.
 - **Metadata-only listing is free.** `include_content: false` reads **zero** payloads. Poll with it, then fetch on demand; polling with content is the common way to hit the 3 MB ceiling for no reason.
 - **mark-processed is idempotent.** An already-moved file comes back in `missing` rather than as an error, so retrying a batch after a timeout is safe.
+
+## From a vault app: one verb crosses vaults, five do not
+
+This is the constraint to understand before designing anything that spans two vaults, and it was undocumented until the SG/API team's review of 6 September 2026 (quoted here CC BY 4.0). The bridge builds **one** client bound to the **currently open vault**, with the enum key derived from that vault's read key. So:
+
+| Verb | Which vault it acts on | Bridge permission |
+|---|---|---|
+| `write` | **Any** — it takes an explicit `vault_id` and posts with no headers at all | `append.write` |
+| `list` | Always the open vault. There is no way to address a remote vault with these from an app | `append.list` |
+| `fetch` | `append.read` — **not**`append.fetch` |
+| `markProcessed` | `append.markProcessed` |
+| `purge` | `append.purge` |
+| `configure` | `append.configure` |
+
+All six are plain booleans, **default-deny**, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app *"would give every visitor read access to the whole lane."*
+
+**Two things that are *not* gates on `append`, despite appearances.** There is **no read-only check** anywhere in the append handler — `sg.app.writable` is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships `connect-src blob: data:`, so a *direct* `fetch` to these endpoints is blocked unless the app declares `permissions.network: true`, which reopens all egress and is the worse choice. Use the bridge. See [the build brief](../briefs/vault-telemetry-append-lanes.md), which had both of these wrong until the review corrected it.
+
+## The `inbox` field is the lane id — and today it is the token
+
+A `list` response labels each entry with an `inbox` value. That value is the storage folder name, and the folder is named by the **raw append token**, byte for byte — while `config.append_anchors` stores `sha256(token)`. So the design hashes the token in config and then writes the plaintext token into the object key.
+
+The disclosure is bounded: `list` is gated by the enum key, so it reaches only the vault owner, who already holds every credential in play; and the token is a **write-only lane address**, closer to an email address than a password. The residual risk is storage rather than API — the raw token becomes an object key, so it lands in access logs, inventory reports and backups, *"surfaces with a very different audience from the enum-key holder."* The team intends to fold the folder name to `sha256(token)`, which is a breaking change needing a migration. **Documented here now so that nobody has to discover it from a debrief.**
+
+Lanes live at `bare/append/{token}/pending/` and `…/processed/`, **outside the version-controlled commit tree** — appends never touch a branch and never conflict with a push.
 
 ## Several senders on one vault
 

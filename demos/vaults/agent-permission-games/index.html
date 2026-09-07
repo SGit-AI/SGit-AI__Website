@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.57</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.58</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni"><a class="nl" href="../../../why/index.html">Why</a></div>
@@ -80,7 +80,7 @@
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Two games about agent permissions</p>
   <h1>Two games about what an agent can do &mdash; and the first vault here that phones home</h1>
 
-  <p class="lead">Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that <b>sends anything anywhere</b>, and it was built by another agent from <a href="../../../briefs/vault-telemetry-append-lanes.html">the build brief on this site</a> &mdash; which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.</p>
+  <p class="lead">Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that <b>sets out to send anything anywhere</b> (it is not yet succeeding &mdash; see the status note below), and it was built by another agent from <a href="../../../briefs/vault-telemetry-append-lanes.html">the build brief on this site</a> &mdash; which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.</p>
 
   <div class="note"><b>Open it yourself &mdash; the key is the whole credential.</b><br>
   Read key: <code style="word-break:break-all">f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj</code><br>
@@ -88,7 +88,8 @@
   From the CLI: <code>sgit clone f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj</code><br>
   <span class="small dim">Published as a read key, derived from the write credential that was submitted. The vault key is not published and never will be.</span></div>
 
-  <div class="warnbox"><b>This vault phones home, and you should know that before you open it.</b> Opening a vault does not normally send anything anywhere &mdash; that is the platform default, and every other vault published here honours it. This one sends <b>anonymous usage events</b> while you play: which screens you reach, the answers you give, your score. No name, no id, no fingerprint, no URL, no referrer. Every page carries a notice and a <b>pause sending</b> switch, and <code>telemetry.html</code> inside the vault states exactly what leaves. We publish it <em>because</em> it does this, not despite it &mdash; but the warning belongs above the fold rather than in a footnote.</div>
+  <div class="warnbox"><b>This vault phones home, and you should know that before you open it.</b> Opening a vault does not normally send anything anywhere &mdash; that is the platform default, and every other vault published here honours it. This one sends <b>anonymous usage events</b> while you play: which screens you reach, the answers you give, your score. No name, no id, no fingerprint, no URL, no referrer. Every page carries a notice and a <b>pause sending</b> switch, and <code>telemetry.html</code> inside the vault states exactly what leaves. We publish it <em>because</em> it does this, not despite it &mdash; but the warning belongs above the fold rather than in a footnote.<br><br>
+  <b>Status, 7 September:</b> as published, the events are <em>built and never sent</em> &mdash; the frame's content-security policy blocks the call, for reasons <a href="#findings">set out below</a>. Treat this box as describing what the vault is designed to do and will do once one line of its manifest changes, not what is reaching anyone today.</div>
 
   <h2>See it live, here</h2>
   <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118%3A4evnlwrj" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Two games with a full-width board &mdash; they have far more room in their own tab than in the frame below.</span></p>
@@ -156,9 +157,12 @@ await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
   <p>A direct <code>fetch</code> to the account-less write endpoint, with <code>credentials: 'omit'</code> so no ambient cookie rides along and <code>keepalive</code> on the final flush so the last batch survives the tab closing. The payload is the <code>sgit pki</code> v2 envelope &mdash; RSA-OAEP-SHA256 wrapping AES-256-GCM &mdash; built with Web Crypto in the browser, so the same <code>sgit pki decrypt</code> reads it on the other side. If there is no secure context there is no Web Crypto, and the sender disables itself rather than falling back to plaintext.</p>
   <p><b>Consistent with this:</b> <code>app.json</code> declares no <code>permissions</code> key at all. The vault asks the host for nothing, because it does not need the host for this.</p>
 
-  <h2>Two findings, published rather than filed</h2>
+  <h2 id="findings">Two findings, published rather than filed</h2>
   <div class="warnbox"><b>1. Two of the four pages still tell the player nothing is sent.</b> <code>what-can-it-do</code> gets it right &mdash; its footer says <em>"in this tab, no model, no server, nothing <b>stored</b>"</em>, with the sending notice above it. But the home page still reads <em>"no model, no server, nothing <b>sent</b>, nothing stored"</em>, and <code>which-agent-is-it</code> carries <em>"No model, no server, nothing sent"</em> in its footer <b>on the same screen as</b> the notice saying events are sent. That game also describes its run tuple as <em>"shown, never sent"</em> with <em>"no send button"</em> &mdash; true of the button, but its <code>question</code> and <code>reveal</code> events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.</div>
-  <p><b>2. We could not confirm the write endpoint from here, and are not going to claim otherwise.</b> <code>/api/vault/append/write/</code> returns 404 from this container on both <code>dev.send.sgraph.ai</code> and <code>send.sgraph.ai</code>, as does the older <code>/api/vault/inbox/write/</code>. One route does answer &mdash; <code>/api/vault/inbox/list/</code> returns <b>403</b> on production, meaning it exists and rejected the credential &mdash; which is interesting given <a href="../../../api/append-lanes.html">our own API page</a> states every <code>/api/vault/inbox/*</code> URL is gone. That is one data point, not a conclusion: the likeliest explanation is that the telemetry vault lives on a host these routes are not reachable on from this network. It is recorded as unresolved, which is what <a href="../../../api/index.html#unresolved">the API reference does</a> with endpoints it cannot pin down.</p>
+  <div class="warnbox"><b>2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.</b> When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against <a href="../../../briefs/vault-telemetry-append-lanes.html">our brief</a> and supplied the answer.<br><br>
+  A vault app's frame is served with <code>connect-src blob: data:</code>. A <b>direct <code>fetch</code></b> to the API is therefore blocked before it leaves, unless the app declares <code>permissions.network: true</code> &mdash; and <code>app.json</code> here declares <b>no permissions at all</b>. So the sender is well built and cannot fire. That matches what the author reports: no events have arrived.<br><br>
+  <b>The fix is not <code>network: true</code>.</b> That reopens every egress from a frame holding decrypted vault content. The bridge is the right path, and the reason our brief steered away from it was <b>our error</b>: we said <code>sg.append.write</code> fails closed in a read-only session, and the review found there is no read-only gate on append at all. One grant does it &mdash; <code>{"permissions": {"append": {"write": true}}}</code> &mdash; and <code>write</code> is the one verb that takes another vault's id.</div>
+  <p class="small dim">Two more things the review settles for anyone reading this as a worked example. A grant that appears to be ignored is usually a <b>manifest</b> problem rather than a gate: a release pin makes <code>app.json</code> come from a pinned commit rather than HEAD (and forces read-only for everyone, owner included), and a folder-level <code>app.json</code> replaces the root one wholesale. And <code>append.new-messages</code> would never have fired here whatever was declared &mdash; the checker only ever watches the <em>open</em> vault's own lane, so it belongs in the telemetry vault's dashboard, not in the games.</p>
 
   <h2>Notes</h2>
   <p><b>68 files, 2.6 MB, version 0.8.1 across 9 releases</b>, with a version badge on every page and a release history at <code>version.html</code>. Both games ship their readable source beside the built page &mdash; engine as an ES module, <code>selftest.json</code>, the data snapshot, the build script &mdash; each with a README carrying a rules table and a <em>does-not-prove</em> list.</p>
@@ -170,7 +174,7 @@ await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.57')
+  fetch('../../../assets/shots.js?v=v0.2.58')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -182,7 +186,7 @@ await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.57</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.58</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -221,7 +225,7 @@ await fetch(url, { method: 'POST', headers: {…}, body, keepalive: !!final,
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.57';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.58';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

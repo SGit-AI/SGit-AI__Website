@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>Our build brief was wrong, and the team that owns the code said so precisely</title>
+      <link>https://sgit.ai/updates/index.html#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so</guid>
+      <pubDate>2026-09-07</pubDate>
+      <description>Two days ago v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. An agent built a vault from it and could not get events out. The SG/API team read the append lane code against our page and returned a line referenced re…</description>
+    </item>
+    <item>
       <title>The vaults table stops being a key dump — sortable, categorised, newest first</title>
       <link>https://sgit.ai/updates/index.html#the-vaults-table-you-can-sort</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-vaults-table-you-can-sort</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#verify-the-fix-pack-not-just-the-bug</guid>
       <pubDate>2026-08-18</pubDate>
       <description>The documentation gap above arrived as a well built fix pack from the SG/API team: a gap analysis, code verified source material, and a draft of the missing page. The most valuable line in it was its own instruction to check the claims before publishing. Three…</description>
-    </item>
-    <item>
-      <title>The API reference we did not have</title>
-      <link>https://sgit.ai/updates/index.html#the-api-reference-we-did-not-have</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-api-reference-we-did-not-have</guid>
-      <pubDate>2026-08-18</pubDate>
-      <description>An agent was asked how to send an encrypted message between two vaults. It read this site and could not find out. The capability had shipped months earlier. The diagnosis was uncomfortable and simple: we documented both halves and never wrote the sentence that…</description>
     </item>
   </channel>
 </rss>
