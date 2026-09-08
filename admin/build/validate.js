@@ -133,6 +133,10 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
 }
 
 // 4. shared JS must parse
+for (const js of ['assets/site.js', 'assets/site-chat.js', 'assets/network-chat.js']) {
+  try { new vm.Script(fs.readFileSync(path.join(root, js), 'utf8')); }
+  catch (e) { fails++; console.log('JS FAIL', js, e.message); }
+}
 try { new vm.Script(fs.readFileSync(path.join(root, 'assets/site.js'), 'utf8')); }
 catch (e) { fails++; console.log('JS FAIL assets/site.js', e.message); }
 

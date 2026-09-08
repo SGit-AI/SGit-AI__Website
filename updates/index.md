@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -92,6 +92,30 @@ The brief now recommends the bridge, and the correction sits in a box **above** 
 Seven questions went back, including the two we most want to publish: whether the enum-key derivation is stable enough to document as a spec, and whether any non-destructive way exists to tell an append token from a read key — they are the same 64-hex shape, and confusing them would be a serious leak.
 
 Also in this release: the `#` column on [the vaults table](../demos/vaults/index.md) was renumbering 1–25 on every sort, which said nothing. It is now a permanent publication ordinal — `#1` is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date.
+
+### [Ask this site — a pane on every page whose model calls tools over the site's own content](#ask-this-site) [v0.2.63](../admin/versions.md)
+
+chatllmtoolsbyokagents
+
+Every page now carries a pane, bottom right: **Ask this site**. It follows the three tiers the [network chooser](../articles/chat-on-a-static-site.md) set out, with one difference that matters — the model does not read a catalogue pasted into its prompt. It is given **seven tools** and calls them.
+
+| Tool | What it does |
+|---|---|
+| `search_site` | keyword search over pages, vaults, sibling sites, release notes, articles, roles and board cards |
+| `read_page` | the markdown twin of any page, up to 6,000 characters — so the model quotes rather than paraphrases |
+| `list_vaults` · `list_sites` | the vaults table and the network directory, filterable by category |
+| `latest_updates` · `get_board` | the feed and the kanban |
+| `current_page` | what the reader is looking at, for "this page" questions |
+
+- **No key:** the tools run directly. Type words to search everything, or `/vaults`, `/sites`, `/updates`, `/board`, `/read PATH`, `/here`. Instant, private, no network once the index has loaded.
+- **Your own OpenRouter key:** the model gets the seven tools as function definitions, calls them, and **every call is shown** as a trace line above the answer. Each call executes in the page over a build-emitted index and the `.md` twins, so the model can only say what a tool returned. It ends with the paths it used, as links.
+- **Inside a vault:** the host could hold the key below the permission floor through `sg.llm`. Not wired yet — blocked on whether the bridge's chat contract carries tool calls — and on [the board as T11](../team/board.md#T11).
+
+The index the tools read, `assets/site-index.json`, is written beside `llms.txt` from the same data as the vaults table, the directory, the feed and the board. One derived file: an answer given in the pane is an answer the site already gives somewhere.
+
+The key goes to openrouter.ai and nowhere else — sgit.ai has no server to send it to — and the pane says so in the same words the chooser uses. Model output is escaped, and links are allowed only to `http(s)` or to paths on this site.
+
+The [chat article](../articles/chat-on-a-static-site.md) gains an addendum, and its *shared component: not started* row becomes *partly*: this is one site's copy, not yet the versioned module the other eighteen could load.
 
 ## 2026-09-06
 

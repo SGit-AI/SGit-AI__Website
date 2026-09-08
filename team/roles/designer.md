@@ -2,7 +2,7 @@
 
 > Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible.
 
-*Source: <https://sgit.ai/team/roles/designer.html> · site v0.2.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/designer.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -43,6 +43,7 @@ A new component when content outgrows a table · the phone check on every releas
 
 ## On the board for this role
 
+- **T11** · [The chat pane inside a vault: route through sg.llm instead of a pasted key](../board.md#T11) (backlog, medium)
 - **T3** · [Investors page: print stylesheet and a one-page PDF export](../board.md#T3) (backlog, medium)
 
 Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)

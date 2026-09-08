@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.62'
+SITE_VERSION = 'v0.2.63'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.62', '2026-09-07', 'this release',
+    ('v0.2.63', '2026-09-07', 'this release',
+     "A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the "
+     "pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right "
+     "of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly "
+     "in the page — type words to search everything (pages, vaults, sibling sites, release notes, "
+     "board cards), or /vaults, /sites, /updates, /board, /read PATH, /here — instant, private, no "
+     "network after the index loads. TIER 1, bring-your-own OpenRouter key: the model is handed the "
+     "same seven tools as OpenAI-style function definitions (search_site, read_page, list_vaults, "
+     "list_sites, latest_updates, get_board, current_page) and calls them; every call executes "
+     "HERE over the build-emitted index and the .md twin of any page, so the model can only say "
+     "what a tool returned, and THE PANE SHOWS EVERY CALL IT MADE as a trace line. Up to six tool "
+     "rounds, then a plain-prose answer ending in the paths it used, as links. TIER 2, sg.llm inside "
+     "a vault, is detected-not-wired and on the board as T11, blocked on one fact about the bridge's "
+     "tool contract. THE INDEX is assets/site-index.json, written beside llms.txt from the same data "
+     "as the vaults table, the network directory, the feed and the board — one derived file, so an "
+     "answer in the pane is an answer the site already gives somewhere. LOADED THROUGH THE BOOT "
+     "BLOCK after site.js, by the same vfs-or-fetch loader, with the loader exposed as "
+     "window.__sgitBoot so the module resolves the index and the twins the same way on a blob: "
+     "origin; never a script src. The key goes to openrouter.ai and nowhere else and the pane says "
+     "so in the same words the chooser uses. Model output is escaped and links are allowed only to "
+     "http(s) or paths on this site. The validator now parses the chat modules too. The chat-on-a-"
+     "static-site article gains an addendum and its 'shared component: not started' row becomes "
+     "'partly': one site's copy, not yet the versioned module the other eighteen could load."),
+    ('v0.2.62', '2026-09-07', 'obj-cas-imm-e27526f11c99',
      "TWO SECTIONS: THE TEAM, FOR THE AGENTS; AND INVESTORS, IN THE OPEN. Asked for a full agentic "
      "section briefing agents on how to work on this site, with roles and pages like the sibling "
      "sites, a board like the ones done before, and the starting prompts for the regular work — "
@@ -978,9 +1001,9 @@ BOOT = """<script>
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
-async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
 async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
-var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>"""
 
@@ -1562,6 +1585,33 @@ LLMS_EXTRA = {
                '- [create vault apps](/skills/create-vault-apps__SKILL.md): build an app that lives inside a vault',
                '- [create vault content](/skills/create-vault-content__SKILL.md): author _page.json layouts and vault markdown'],
 }
+
+
+def write_site_index(pages):
+    """assets/site-index.json — what the chat pane's tools search. One derived file over the
+    same data as llms.txt, the vaults table, the network directory, the updates feed and the
+    board, so an answer given in the pane is an answer the site already gives somewhere."""
+    ix = {
+        'site': 'https://sgit.ai', 'version': SITE_VERSION,
+        'pages': [{'path': p, 'title': t, 'desc': d, 'section': sec} for p, t, d, sec, _ in pages],
+        'vaults': [{'n': v['n'], 'name': v['name'], 'vault_id': v['vault_id'], 'category': v['category'],
+                    'what': v['what'], 'files': v['files'], 'size': v['size'], 'published': v['published'],
+                    'path': f'demos/vaults/{v["slug"]}/index.html'} for v in _vaults()],
+        'sites': [{'domain': x['domain'], 'category': x.get('category', ''), 'thesis': x.get('thesis', ''),
+                   'tagline': x.get('tagline', ''), 'aliases': x.get('aliases', ''), 'url': x['url'],
+                   'live': bool(_site_live(x)), 'path': (None if x['listing'] else f'network/{x["slug"]}.html')} for x in SITES],
+        'updates': [{'title': u['title'], 'date': u['date'], 'version': u.get('version', ''),
+                     'path': f'updates/index.html#{u["slug"]}'} for u in UPDATES[:30]],
+        'articles': [{'title': a['title'], 'date': a['date'], 'summary': a['summary'],
+                      'path': f'articles/{a["slug"]}.html'} for a in ARTICLES],
+        'roles': [{'title': r['title'], 'mission': r['mission'], 'path': f'team/roles/{r["slug"]}.html'} for r in ROLES],
+        'issues': [{'id': i['id'], 'title': i['title'], 'status': i['status'], 'role': i['role'],
+                    'priority': i['priority'], 'path': f'team/board.html#{i["id"]}'} for i in ISSUES],
+    }
+    text = json.dumps(ix, ensure_ascii=False, separators=(',', ':'))
+    with open(os.path.join(ROOT, 'assets', 'site-index.json'), 'w') as f:
+        f.write(text)
+    print(f'wrote assets/site-index.json ({len(text)} bytes, {len(ix["pages"])} pages, {len(ix["vaults"])} vaults, {len(ix["sites"])} sites)')
 
 
 def write_llms(pages):
@@ -2295,6 +2345,7 @@ for path, title, desc, here, body in PAGES:
     md_total += write_md(path, title, desc, body)
 print(f'wrote {len(PAGES)} markdown mirrors ({md_total} bytes)')
 print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
+write_site_index(PAGES)
 print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
 print('wrote robots.txt (%d bytes)' % len(write_robots()))
 print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))

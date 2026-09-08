@@ -56,9 +56,13 @@ Tier 2 is not a rewrite, but it is not free either. Honestly scoped:
 | BYOK client | **Done** | Streams from OpenRouter; the workbench vault's proven pattern |
 | A vault build of the directory | **Not started** | The generator already emits a `.md` twin of every page; a vault app is a different target, not a different site |
 | `sg.llm` detection | **Not started** | The panel should prefer the bridge when it exists and fall back when it does not — the same shape as the Tier 1 → Tier 0 fallback already in the file |
-| Shared component | **Not started** | Nineteen sites want this panel, not one. It should end up a versioned module on `dev.tools.sgraph.ai` beside `sg-llm-request`, not nineteen copies |
+| Shared component | **Partly, 7 September** | A site-wide pane now sits on every page here, and its model can *call tools* over the site's own index and markdown twins (v0.2.63). Still one site's copy rather than a versioned module the other eighteen can load |
 
 That last row is the one that decides whether this was worth doing. A chat box on one site is a feature. The same panel on all nineteen, reading each site's own catalogue, is the thing that makes a network of nineteen sites navigable — and it is why the catalogue is generated rather than written.
+
+## Addendum, 7 September — the pane grew tools
+
+The directory chooser above answers one question. Ten days later every page carries a pane — *Ask this site*, bottom right — whose model does not read a catalogue pasted into its prompt. It is given **seven tools** as function definitions: `search_site`, `read_page`, `list_vaults`, `list_sites`, `latest_updates`, `get_board`, `current_page`. Each call runs in the page, over an index the build emits from the same data as `llms.txt`, the vaults table, the network directory, the feed and the board — and the pane shows every call it made. With no key, the same tools run directly: type words to search, or `/vaults`, `/board`, `/read PATH`. The three tiers are unchanged; Tier 2 is still not wired, and is now on the board as T11.
 
 ## What it does not do
 
