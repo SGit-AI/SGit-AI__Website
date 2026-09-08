@@ -2,7 +2,7 @@
 
 > Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
 
-*Source: <https://sgit.ai/team/board.html> · site v0.2.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/board.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 The open work on this site, as a kanban. Each card is a markdown file under `admin/content/team/issues/` with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md). Nothing runs — the board versions with the site, and its `.md` twin is the same board without a browser.
 
-**16 items** — 13 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
+**17 items** — 14 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
 
 ### Needs — only the author can supply 6
 
@@ -40,7 +40,7 @@ N6 — **Republish the two held vaults clean, or retire them** — [Auditor](rol
 
 `bite-coil` (a live provider key in `key.json`, since rotated) and `6kdhnpfx` are held on audit findings. Both are republishable via a fresh vault with the offending file removed. A decision either way closes them. Unblocks: the vaults count telling the whole story.
 
-### Backlog 5
+### Backlog 6
 
 T1 — **An About page about sgit, linking to the fuller record** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
 
@@ -49,6 +49,10 @@ Agreed direction: who builds it (one human and the roles on this page), why, the
 T2 — **Re-verify the 21 published read keys with the marker that actually discriminates** — [Auditor](roles/auditor.md) · high · 2026-09-07
 
 The earlier 24-key sweep used the presence of `.sg_vault/` as success, which an all-zeros key also produces. Three vaults were verified properly by decrypting content; the other 21 were not. Re-run with `clone_mode.json` as the marker and a negative control.
+
+T11 — **The chat pane inside a vault: route through sg.llm instead of a pasted key** — [Designer](roles/designer.md) · medium · 2026-09-07
+
+The pane (`assets/site-chat.js`) has three tiers and the third is not wired: when a page renders inside a vault, `sg.llm.chat` would let the host hold the key below the permission floor. Blocked on one fact — whether the bridge's chat contract accepts OpenAI-style `tools` and returns `tool_calls`. Ask llms.sgit.ai's owners; until then the pane falls back to the key-in-page tier with the warning it already carries.
 
 T3 — **Investors page: print stylesheet and a one-page PDF export** — [Designer](roles/designer.md) · medium · 2026-09-07
 

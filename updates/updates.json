@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.62",
+  "site_version": "v0.2.63",
   "updates": [
     {
       "slug": "the-team-for-the-agents-and-investors-in-the-open",
@@ -55,6 +55,20 @@
         "agents"
       ],
       "summary": "Two days ago v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. An agent built a vault from it and could not get events out. The SG/API team read the append lane code against our page and returned a line referenced re…"
+    },
+    {
+      "slug": "ask-this-site",
+      "title": "Ask this site — a pane on every page whose model calls tools over the site's own content",
+      "date": "2026-09-07",
+      "version": "v0.2.63",
+      "tags": [
+        "chat",
+        "llm",
+        "tools",
+        "byok",
+        "agents"
+      ],
+      "summary": "Every page now carries a pane, bottom right: Ask this site . It follows the three tiers the network chooser set out, with one difference that matters — the model does not read a catalogue pasted into its prompt. It is given seven tools and calls them. | Tool |…"
     },
     {
       "slug": "the-vaults-table-you-can-sort",

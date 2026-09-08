@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.62</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.63</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -154,6 +154,27 @@
 <p><b>Three facts that existed nowhere public</b> are now on <a href="../api/append-lanes.html">the API reference</a>: only <code>write</code> takes a <code>vault_id</code> while the other five verbs bind to the currently open vault, so listing a remote lane is impossible by design; <code>fetch</code> maps to <code>append.read</code>, not <code>append.fetch</code>; and the <code>inbox</code> field in a listing is the lane folder, which today is the <b>raw append token</b> while config stores only its hash.</p>
 <p>Seven questions went back, including the two we most want to publish: whether the enum-key derivation is stable enough to document as a spec, and whether any non-destructive way exists to tell an append token from a read key — they are the same 64-hex shape, and confusing them would be a serious leak.</p>
 <p>Also in this release: the <code>#</code> column on <a href="../demos/vaults/index.html">the vaults table</a> was renumbering 1–25 on every sort, which said nothing. It is now a permanent publication ordinal — <code>#1</code> is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date.</p>
+  </article>
+  <article class="upd" id="ask-this-site">
+    <h3><a href="#ask-this-site">Ask this site — a pane on every page whose model calls tools over the site's own content</a> <a class="upd-ver" href="../admin/versions.html">v0.2.63</a></h3>
+    <p class="chips"><span class="chip">chat</span><span class="chip">llm</span><span class="chip">tools</span><span class="chip">byok</span><span class="chip">agents</span></p>
+<p>Every page now carries a pane, bottom right: <b>Ask this site</b>. It follows the three tiers the <a href="../articles/chat-on-a-static-site.html">network chooser</a> set out, with one difference that matters — the model does not read a catalogue pasted into its prompt. It is given <b>seven tools</b> and calls them.</p>
+<div class="tablewrap"><table>
+<tr><th>Tool</th><th>What it does</th></tr>
+<tr><td><code>search_site</code></td><td>keyword search over pages, vaults, sibling sites, release notes, articles, roles and board cards</td></tr>
+<tr><td><code>read_page</code></td><td>the markdown twin of any page, up to 6,000 characters — so the model quotes rather than paraphrases</td></tr>
+<tr><td><code>list_vaults</code> · <code>list_sites</code></td><td>the vaults table and the network directory, filterable by category</td></tr>
+<tr><td><code>latest_updates</code> · <code>get_board</code></td><td>the feed and the kanban</td></tr>
+<tr><td><code>current_page</code></td><td>what the reader is looking at, for "this page" questions</td></tr>
+</table></div>
+<ul>
+<li><b>No key:</b> the tools run directly. Type words to search everything, or <code>/vaults</code>, <code>/sites</code>, <code>/updates</code>, <code>/board</code>, <code>/read PATH</code>, <code>/here</code>. Instant, private, no network once the index has loaded.</li>
+<li><b>Your own OpenRouter key:</b> the model gets the seven tools as function definitions, calls them, and <b>every call is shown</b> as a trace line above the answer. Each call executes in the page over a build-emitted index and the <code>.md</code> twins, so the model can only say what a tool returned. It ends with the paths it used, as links.</li>
+<li><b>Inside a vault:</b> the host could hold the key below the permission floor through <code>sg.llm</code>. Not wired yet — blocked on whether the bridge's chat contract carries tool calls — and on <a href="../team/board.html#T11">the board as T11</a>.</li>
+</ul>
+<p>The index the tools read, <code>assets/site-index.json</code>, is written beside <code>llms.txt</code> from the same data as the vaults table, the directory, the feed and the board. One derived file: an answer given in the pane is an answer the site already gives somewhere.</p>
+<p>The key goes to openrouter.ai and nowhere else — sgit.ai has no server to send it to — and the pane says so in the same words the chooser uses. Model output is escaped, and links are allowed only to <code>http(s)</code> or to paths on this site.</p>
+<p>The <a href="../articles/chat-on-a-static-site.html">chat article</a> gains an addendum, and its <em>shared component: not started</em> row becomes <em>partly</em>: this is one site's copy, not yet the versioned module the other eighteen could load.</p>
   </article>
   <h2 class="upd-date">2026-09-06</h2>
   <article class="upd" id="the-vaults-table-you-can-sort">
@@ -482,7 +503,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.62</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.63</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -521,13 +542,13 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.62';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.63';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
-async function js(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.js';if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',e)}return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
 async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
-var sg=inVault?await wait(2500):null;await css(sg);await js(sg);document.documentElement.classList.add('ready');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
 </script>
 </body>

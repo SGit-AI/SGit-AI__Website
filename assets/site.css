@@ -800,3 +800,32 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 .inv-ask{border:2px dashed var(--warm);border-radius:12px;padding:1rem 1.2rem;background:#fff9f1;margin:1.2rem 0}
 .inv-ask b.tag{display:block;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--warm);margin-bottom:.35rem}
 @media print{.inv-ask{border-style:solid}.kanban{grid-template-columns:repeat(5,1fr)}}
+
+/* ---------- the site chat pane (assets/site-chat.js) ---------- */
+.sc-launch{position:fixed;right:18px;bottom:18px;z-index:60;font:inherit;font-size:.82rem;font-weight:700;letter-spacing:.02em;
+  padding:.6rem 1rem;border-radius:999px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;
+  box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.sc-launch:hover{filter:brightness(1.05)}
+.sc-launch::before{content:'\2726  '}
+.sc-open .sc-launch{display:none}
+.sc-pane{position:fixed;top:0;right:0;bottom:0;z-index:70;width:min(440px,100vw);display:flex;flex-direction:column;
+  background:var(--bg,#faf9f6);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(0,0,0,.12)}
+.sc-head{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;padding:.7rem .9rem;border-bottom:1px solid var(--line);background:var(--panel)}
+.sc-head b{font-size:.95rem;margin-right:auto}
+.sc-close{font:inherit;font-size:1.3rem;line-height:1;background:none;border:0;color:var(--dim);cursor:pointer;padding:0 .2rem}
+.sc-keypanel{padding:.7rem .9rem;border-bottom:1px solid var(--line);display:grid;gap:.4rem;background:#fff9f1}
+.sc-keypanel input{font:inherit;font-size:.82rem;padding:.4rem .55rem;border:1px solid var(--line);border-radius:6px;width:100%}
+.sc-log{flex:1;max-height:none;overflow-y:auto;padding:.9rem;display:grid;gap:.75rem;align-content:start}
+.sc-form{display:flex;gap:.4rem;padding:.7rem .9rem;border-top:1px solid var(--line);background:var(--panel)}
+.sc-input{flex:1;font:inherit;font-size:.9rem;padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px}
+.sc-send{font:inherit;font-weight:700;padding:.55rem .9rem;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+.sc-foot{padding:.4rem .9rem .6rem;font-size:.68rem;border-top:1px solid var(--line)}
+.sc-trace{font-family:var(--mono);font-size:.72rem;color:var(--dim);margin:.15rem 0}
+.sc-trace summary{cursor:default;list-style:none}
+.sc-pre{font-size:.74rem;line-height:1.5;white-space:pre-wrap;max-height:260px;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.6rem .7rem;margin:.3rem 0}
+.sc-answer p{font-size:.9rem;line-height:1.6;margin:0 0 .5rem}
+.sc-answer p:last-child{margin-bottom:0}
+@media (max-width:600px){.sc-pane{width:100vw}.sc-launch{bottom:14px;right:14px;font-size:.78rem}}
+@media print{.sc-launch,.sc-pane{display:none}}
+/* author display rules would otherwise beat the UA's [hidden]{display:none} — the pane showed on load */
+.sc-pane[hidden],.sc-keypanel[hidden]{display:none}
