@@ -1,0 +1,101 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>sgit.ai board</title>
+<style>
+  :root{--line:#e3e1da;--dim:#6b6f76;--panel:#fff;--bg:#faf9f6;--fg:#1d1f24;--accent:#0f6b5c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{padding:1rem 1.2rem .6rem;border-bottom:1px solid var(--line);background:var(--panel)}
+  h1{margin:0;font-size:1.25rem}
+  .lede{margin:.3rem 0 0;font-size:.85rem;color:var(--dim)}
+  .lede code{font-size:.8em;background:#f1efe9;padding:.05em .35em;border-radius:4px}
+  .count{padding:.6rem 1.2rem;font-size:.85rem;color:var(--dim)}
+  .kanban{display:grid;gap:.8rem;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;padding:0 1.2rem 2rem}
+  .kcol{background:#f1efe9;border:1px solid var(--line);border-radius:12px;padding:.7rem;min-height:6rem}
+  .kcol h3{margin:.2rem .2rem .7rem;font-size:.82rem;display:flex;justify-content:space-between;align-items:center}
+  .kcount{font:.7rem ui-monospace,monospace;color:var(--dim);background:#fff;border:1px solid var(--line);border-radius:999px;padding:.05rem .45rem}
+  .kcol-needs{background:#fbf3e6}.kcol-done{background:#eef4ef}
+  .kcard{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:9px;padding:.65rem .75rem;margin:0 0 .6rem;font-size:.82rem}
+  .pr-high{border-left-color:#c8503a}.pr-medium{border-left-color:#d79a2b}.pr-low{border-left-color:#9aa3ad}
+  .kid{font:.68rem ui-monospace,monospace;color:var(--dim)}
+  .kcard b{display:block;margin:.15rem 0 .25rem;font-size:.86rem;line-height:1.35}
+  .kmeta{display:block;font-size:.7rem;color:var(--dim);margin-bottom:.35rem}
+  .kbody{font-size:.78rem;color:#2a2c33;line-height:1.5}
+  .kbody a{color:var(--accent)}
+  .empty{color:var(--dim);font-size:.8rem}
+  .err{margin:1rem 1.2rem;padding:.8rem 1rem;border:1px solid #d79a2b;border-radius:8px;background:#fff9f1;font-size:.85rem}
+  footer{padding:.6rem 1.2rem 1.4rem;font-size:.75rem;color:var(--dim);border-top:1px solid var(--line)}
+  @media (max-width:1100px){.kanban{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:560px){.kanban{grid-template-columns:1fr}}
+</style>
+<header>
+  <h1>sgit.ai board</h1>
+  <p class="lede">The open work on sgit.ai, as files. Each card is <code>issues/&lt;id&gt;-&lt;slug&gt;.md</code>; moving a card is editing its <code>status</code> line and pushing. This app requests no permissions.</p>
+</header>
+<div class="count" id="count">loading…</div>
+<div class="kanban" id="board"></div>
+<footer>Source of truth for <a href="https://sgit.ai/team/board.html">sgit.ai/team/board</a>, which renders a snapshot at each site release. Read key published there. CC BY 4.0.</footer>
+<script>
+(function () {
+  var COLS = [['needs', 'Needs — only the author can supply'], ['backlog', 'Backlog'], ['doing', 'Doing'], ['review', 'Review'], ['done', 'Done']];
+  var PR = { high: 0, medium: 1, low: 2 };
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function md(s) {   // the small inline set the cards use: bold, code, links (root-relative → sgit.ai)
+    s = esc(s).replace(/`([^`]+)`/g, '<code>$1</code>').replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>')
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, function (m, t, u) {
+        if (!/^(https?:\/\/|\/)/.test(u)) return t;
+        var h = u.charAt(0) === '/' ? 'https://sgit.ai' + u : u;
+        return '<a href="' + h + '" target="_blank" rel="noopener">' + t + '</a>';
+      });
+    return s.split(/\n{2,}/).map(function (p) { return '<p>' + p.replace(/\n/g, '<br>') + '</p>'; }).join('');
+  }
+  function parse(text, file) {
+    var m = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    if (!m) return null;
+    var meta = { file: file, body: m[2].trim() };
+    m[1].split('\n').forEach(function (l) { var i = l.indexOf(':'); if (i > 0) meta[l.slice(0, i).trim()] = l.slice(i + 1).trim(); });
+    return meta;
+  }
+  function render(cards) {
+    cards.sort(function (a, b) { return (PR[a.priority] - PR[b.priority]) || (a.opened < b.opened ? -1 : a.opened > b.opened ? 1 : 0) || (a.id < b.id ? -1 : 1); });
+    var open = cards.filter(function (c) { return c.status !== 'done'; }).length;
+    var needs = cards.filter(function (c) { return c.kind === 'need' && c.status !== 'done'; }).length;
+    document.getElementById('count').innerHTML = '<b>' + cards.length + ' cards</b> — ' + open + ' open, ' + needs + ' waiting on the author.';
+    var board = document.getElementById('board'); board.innerHTML = '';
+    COLS.forEach(function (c) {
+      var items = cards.filter(function (x) { return x.status === c[0]; });
+      var col = document.createElement('section'); col.className = 'kcol kcol-' + c[0];
+      col.innerHTML = '<h3>' + esc(c[1]) + ' <span class="kcount">' + items.length + '</span></h3>'
+        + (items.length ? items.map(function (x) {
+          return '<article class="kcard pr-' + esc(x.priority) + '" id="' + esc(x.id) + '"><span class="kid">' + esc(x.id) + '</span><b>' + esc(x.title) + '</b>'
+            + '<span class="kmeta">' + esc(x.role) + ' · ' + esc(x.priority) + ' · ' + esc(x.opened) + '</span><div class="kbody">' + md(x.body) + '</div></article>';
+        }).join('') : '<p class="empty">empty</p>');
+      board.appendChild(col);
+    });
+  }
+  function fail(msg) { var e = document.createElement('div'); e.className = 'err'; e.textContent = msg; document.body.insertBefore(e, document.getElementById('board')); document.getElementById('count').textContent = ''; }
+
+  async function load() {
+    var sg = window.sg;
+    if (sg && sg.vfs && sg.vfs.list && sg.vfs.readText) {
+      // inside a vault host: the files are the truth, no index needed
+      try {
+        var entries = await sg.vfs.list('issues');
+        var files = (entries || []).map(function (e) { return e.path || e.name || e; }).filter(function (p) { return /\.md$/.test(p); });
+        var cards = [];
+        for (var i = 0; i < files.length; i++) {
+          var p = files[i]; if (p.indexOf('issues/') !== 0) p = 'issues/' + p;
+          var c = parse(await sg.vfs.readText(p), p); if (c) cards.push(c);
+        }
+        return render(cards);
+      } catch (e) { /* fall through to the index */ }
+    }
+    try {
+      var r = await fetch('issues/index.json'); if (!r.ok) throw new Error(r.status);
+      render(await r.json());
+    } catch (e) { fail('Could not read the cards: open this vault in SG/Vault (sg.vfs), or serve the folder so issues/index.json is reachable. ' + e.message); }
+  }
+  if (window.sg) load(); else { var t = Date.now(); (function w() { if (window.sg || Date.now() - t > 1500) return load(); setTimeout(w, 60); }()); }
+}());
+</script>

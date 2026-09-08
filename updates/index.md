@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -71,6 +71,21 @@ One gap named plainly: the homepage's strongest multi-agent claim, *a branch per
 The fix is set out in order — proof before mechanism; reorder and cut rather than add — and is the next release.
 
 **Also new: a card for pointing at the sibling sites.** The `*.sgit.ai` sites exist so each topic gets the depth a section here could not give it, which only pays off if this site points at them constantly — and a bare link does not say *this continues elsewhere, on purpose*. A one-line `!site` directive now renders a card that pulls the target site's own category and thesis from the network directory, so it describes that site the way the site describes itself. It debuts in the article pointing at [open-source.sgit.ai/about](https://open-source.sgit.ai/about/index.html), which is also a decision recorded there: this site will get an About page about **sgit**, and link to the fuller record rather than duplicate it.
+
+### [The board moves into a vault of its own — and its read key is published](#the-board-moves-into-a-vault) [v0.2.64](../admin/versions.md)
+
+boardvaultsteammethod
+
+Two releases after [the board](../team/board.md) appeared as files in the site repository, the shape was right and the home was wrong: moving a card from *review* to *done* cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.
+
+So the cards moved into [a vault of their own](../demos/vaults/board/index.md), `pdulwi6i`, and its read key is published — because every task, bug and need on it is public, and a read key is the complete credential for reading them.
+
+- **The vault is the truth; the site is a reader.** The release script pulls the vault before it builds, and the columns on the board page are labelled as a snapshot at the site version. Between releases the vault is ahead, and opening it shows the live board.
+- **Moving a card is `sgit push`.** Edit one `status` line, regenerate the index, commit, push. No site release.
+- **A board app that asks for nothing.** `index.html` lists `issues/` through `sg.vfs` and draws five columns; `app.json` declares `permissions: {}`. Served outside a vault host it falls back to `issues/index.json`, so it can be screenshotted, tested and read from a script — a board that only renders inside one host is a board nobody can check.
+- **Cloned in place.** The site's `admin/content/team/issues/` *is* the vault's working tree: its encrypted store is gitignored, its card files are tracked as the build's input. If the two ever disagree, the vault is right.
+
+Published as row #26 on the [vaults table](../demos/vaults/index.md), following the method: write key escrowed, audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's [board prompt](../team/prompts.md#board) now ends with a push rather than a build.
 
 ### [Our build brief was wrong, and the team that owns the code said so precisely](#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so) [v0.2.58](../admin/versions.md)
 

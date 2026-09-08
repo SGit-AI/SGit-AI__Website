@@ -2,7 +2,7 @@
 
 > sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
 
-*Source: <https://sgit.ai/team/index.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/index.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -43,7 +43,8 @@ Each role is a file under `admin/content/team/roles/`; this grid and each page d
 | An update, an article | `admin/content/updates/YYYY/MM/DD/`, `admin/content/articles/` | Journalist |
 | A sibling site | `admin/content/sites/<slug>.md` | Cartographer |
 | The homepage bands | `admin/content/index.html` + fields in `vaults.json` | Ambassador / Designer |
-| A role, a card | `admin/content/team/roles/`, `admin/content/team/issues/` | Sherpa |
+| A role | `admin/content/team/roles/` | Sherpa |
+| A card | [the board vault](../demos/vaults/board/index.md) (`pdulwi6i`), cloned at `admin/content/team/issues/`; the release pulls it first | Sherpa |
 | The version log | `VERSION_LOG` in `admin/build/build_pages.py` | Historian |
 | The release | `admin/build/release.sh` | Release engineer |
 | Credentials | `.sg_vault/local/` — gitignored, scanned by the tripwire | Auditor |
@@ -54,7 +55,7 @@ Roles as files with a `ROLE.md` each, and issues as files that version with the 
 
 issues-fs.sgit.ai · Graphs & method — [A git-native issue tracker where the issues are files and the files are a graph ↗](https://issues-fs.sgit.ai/) — Nothing runs — no server, no database — so the tracker lives inside the repository it tracks and can be read by `cat`, `grep` and `find`. Eleven agentic roles, each with its own `ROLE.md` and its own `.issues/`. — part of the sgit.ai network
 
-This site's board is the same idea at the smallest useful size: markdown files with a `status` line, rendered into columns at build time, with a markdown twin so an agent can read the board without a browser.
+This site's board is the same idea at the smallest useful size: markdown files with a `status` line, [in a vault of their own](../demos/vaults/board/index.md) with a published read key, rendered into columns both by the vault's app and by the site at each release — with a markdown twin so an agent can read the board without a browser.
 
 [The starting prompts →](prompts.md) [The board →](board.md)
 

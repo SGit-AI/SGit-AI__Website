@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.63'
+SITE_VERSION = 'v0.2.64'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.63', '2026-09-07', 'this release',
+    ('v0.2.64', '2026-09-07', 'this release',
+     "THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the "
+     "board appeared as files in the site repository, it was clear the shape was right and the home "
+     "was wrong: moving a card from review to done cost a full site release. So the seventeen cards "
+     "moved into vault pdulwi6i — issues/<id>-<slug>.md, a README with the card format, a "
+     "five-column board app (index.html, permissions {}) that lists issues/ through sg.vfs and "
+     "falls back to issues/index.json when served outside a host, and tools/reindex.py to "
+     "regenerate that index. THE VAULT IS THE TRUTH; THE SITE IS A READER: release.sh now pulls "
+     "the vault before it builds (step 0), the loader reads admin/content/team/issues/issues/ — "
+     "which IS the vault's working tree, cloned in place with its encrypted store gitignored and its "
+     "card files tracked as the build's input — and the board page labels its columns as a "
+     "snapshot at the site version, with the read key and one open-live button above them. Moving "
+     "a card is now sgit push, and the board is live the moment it lands; the site catches up at "
+     "its next release. PUBLISHED AS ROW #26 on the vaults table with its own page, following the "
+     "method: the write key escrowed in the gitignored tier, the audit run (nothing secret-shaped "
+     "beyond the read key in its own README), the app screenshotted by driving it, permissions "
+     "stated. The Sherpa's board prompt and the team page's 'where things are' now point at the "
+     "vault. One design note: the app works in two places on purpose — under a vault host it reads "
+     "the files directly and needs no index, served flat it reads the index — because a board that "
+     "only renders inside one host is a board nobody can screenshot, test or read from a script."),
+    ('v0.2.63', '2026-09-07', 'obj-cas-imm-d523226f4c7a',
      "A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the "
      "pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right "
      "of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly "
@@ -1744,6 +1764,7 @@ def load_pages():
                 body = body.replace('<!--ARTICLES-->', home_articles_band())
             # ditto the vaults table — 25 rows of hand-written <tr> could not be sorted,
             # counted or kept consistent, so it comes from admin/content/vaults.json
+            body = body.replace('{VERSION}', SITE_VERSION)
             if '<!--VAULTS-->' in body:
                 body = body.replace('<!--VAULTS-->', vaults_table())
             # the homepage's proof bands, all derived from vaults.json + the site's own counts

@@ -25,3 +25,7 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# the board vault, cloned in place: its encrypted store and its own credential tier are not
+# the site's to carry. The cards (issues/*.md) ARE tracked — they are the build's input.
+admin/content/team/issues/.sg_vault/

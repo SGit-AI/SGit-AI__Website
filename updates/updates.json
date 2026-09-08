@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.63",
+  "site_version": "v0.2.64",
   "updates": [
     {
       "slug": "the-team-for-the-agents-and-investors-in-the-open",
@@ -42,6 +42,19 @@
         "method"
       ],
       "summary": "Asked to step back and say how this site should present its twenty five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as an article with screenshots of the current site, so the rebuild that follows can be comp…"
+    },
+    {
+      "slug": "the-board-moves-into-a-vault",
+      "title": "The board moves into a vault of its own — and its read key is published",
+      "date": "2026-09-07",
+      "version": "v0.2.64",
+      "tags": [
+        "board",
+        "vaults",
+        "team",
+        "method"
+      ],
+      "summary": "Two releases after the board appeared as files in the site repository, the shape was right and the home was wrong: moving a card from review to done cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be…"
     },
     {
       "slug": "our-brief-was-wrong-and-the-team-that-owns-the-code-said-so",

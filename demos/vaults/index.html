@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.63</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.64</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -100,10 +100,11 @@
   <div class="note"><b>Intake, since it nearly went wrong.</b> A credential submitted for publication here was once a <b>vault key</b> described as a read key — a legacy <code>passphrase:vault_id</code> form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through <code>admin/build/check_credential.py</code> first, which refuses a write credential by <b>prefix</b> (<code>sgit_vk1_</code>, which new vaults emit) or, for anything older, by <b>shape</b> — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them.</div>
 
   <div class="note"><b>The two rules, applied to every row.</b> Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.</div>
-  <p class="vt-count"><b>25 published vaults</b> &mdash; 5&nbsp;analysis, 5&nbsp;application, 4&nbsp;reference, 3&nbsp;briefing, 3&nbsp;presentation, 3&nbsp;record, 1&nbsp;gallery, 1&nbsp;report.
+  <p class="vt-count"><b>26 published vaults</b> &mdash; 5&nbsp;analysis, 5&nbsp;application, 4&nbsp;record, 4&nbsp;reference, 3&nbsp;briefing, 3&nbsp;presentation, 1&nbsp;gallery, 1&nbsp;report.
   Newest first; <b>click any heading to sort</b>. Every read key and the live link are on the vault's own page.</p>
   <div class="tablewrap"><table class="vt" id="vaults">
     <tr><th class="vt-n">#</th><th>Vault</th><th>What it is</th><th>Category</th><th class="vt-num">Files</th><th class="vt-num">Size</th><th class="vt-num">Published</th></tr>
+    <tr><td class="vt-n" data-sort="26">26</td><td><a href="board/index.html">The sgit.ai board</a><div class="vt-id"><code>pdulwi6i</code></div></td><td>The site's own task board as a vault — cards as files, five columns as an app, the source of truth the site renders from</td><td><span class="vt-cat">Record</span></td><td class="vt-num" data-sort="21">21</td><td class="vt-num" data-sort="40000">40 KB</td><td class="vt-num" data-sort="2026-09-07">2026-09-07</td></tr>
     <tr><td class="vt-n" data-sort="25">25</td><td><a href="agent-permission-games/index.html">Agent permission games</a><div class="vt-id"><code>4evnlwrj</code></div></td><td>Two games about grants and mandates — the first vault here that phones home</td><td><span class="vt-cat">Application</span></td><td class="vt-num" data-sort="68">68</td><td class="vt-num" data-sort="2726297">2.6 MB</td><td class="vt-num" data-sort="2026-09-06">2026-09-06</td></tr>
     <tr><td class="vt-n" data-sort="24">24</td><td><a href="aiuc-1-conformance/index.html">AIUC-1 conformance layer</a><div class="vt-id"><code>2wzct4k7</code></div></td><td>The AIUC-1 standard as a graph, plus a conformance layer that computes insurability</td><td><span class="vt-cat">Reference</span></td><td class="vt-num" data-sort="649">649</td><td class="vt-num" data-sort="45088768">43 MB</td><td class="vt-num" data-sort="2026-09-05">2026-09-05</td></tr>
     <tr><td class="vt-n" data-sort="23">23</td><td><a href="licence-to-operate/index.html">Licence to Operate</a><div class="vt-id"><code>posrhzp3</code></div></td><td>An insurance policy for an agent, simulated: grant, mandate, and the delta nothing covers</td><td><span class="vt-cat">Analysis</span></td><td class="vt-num" data-sort="121">121</td><td class="vt-num" data-sort="13631488">13 MB</td><td class="vt-num" data-sort="2026-09-04">2026-09-04</td></tr>
@@ -168,7 +169,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.63</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.64</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -207,7 +208,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.63';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.64';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

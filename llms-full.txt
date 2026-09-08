@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.63). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.64). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **25 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 25 →](demos/vaults/index.md)
+Four of **26 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 26 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -44,9 +44,9 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-91site releases, each verified live before it was called done
+92site releases, each verified live before it was called done
 
-25vaults published with a deliberately public read key
+26vaults published with a deliberately public read key
 
 19sibling sites on `*.sgit.ai`, one question each
 
@@ -380,10 +380,12 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**25 published vaults** — 5 analysis, 5 application, 4 reference, 3 briefing, 3 presentation, 3 record, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**26 published vaults** — 5 analysis, 5 application, 4 record, 4 reference, 3 briefing, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault — cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
 
 | 25 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates — the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
 
@@ -552,6 +554,75 @@ The best statement of the vault-side rules is not ours: the [Risk Graph Explorer
 | `admin/build/capture_shots.mjs` | Drives the live vault and crops evidence screenshots |
 | `admin/build/validate.js` | The release gate, including the key-leak tripwire |
 | `admin/build/compare_tests.py` | Executes the claims that can be executed, with dates |
+
+
+
+==============================================================================
+# The sgit.ai board — a published vault
+
+> The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key — because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them.
+>
+> Page: https://sgit.ai/demos/vaults/board/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / The sgit.ai board
+
+# The site's own board, as a vault
+
+Two days after [the board](../../../team/board.md) appeared as files in the site repository, it moved out into a vault of its own. Every card is a markdown file; a five-column board app renders them and asks the host for nothing; and the read key is published, because every task, bug and need on it is public. The vault is the source of truth — **moving a card is `sgit push`, with no site release** — and the site renders a snapshot from a clone each time it ships.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i) · From the CLI: `sgit clone f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+Published as a read key, derived from the vault key at creation. The vault key is held by the site's release engineer and is not published.
+
+## See it live, here
+
+[Open the board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns wide — it has more room in its own tab than in the frame below.
+
+## Why a vault, and not the repository
+
+The cards started as files in the site repository, which was already the right shape — issues-fs.sgit.ai's argument that a tracker should be files that version with the thing they track. But it tied every board change to a site release: to move a card from *review* to *done*, an agent had to build, validate, push two remotes and wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.
+
+So the files moved into a vault. Now the site is a **reader** of the board rather than its home: the release script pulls the vault before it builds, and the columns on [the board page](../../../team/board.md) are a snapshot as of that release, labelled as such. Between releases, the vault is ahead of the site, and opening it shows the truth.
+
+## What is in it
+
+the app
+
+### Five columns, from the files, asking for nothing
+
+`index.html` lists `issues/` through `sg.vfs`, parses each card's frontmatter, and draws the columns. `app.json` declares `"permissions": {}` — the app reads the vault it is in and touches nothing else. Served outside a vault host, it falls back to `issues/index.json`, which `tools/reindex.py` regenerates from the same files.
+
+Needs — the things only the author can supply — keep their own column and their own colour, so they are never discovered late.
+
+The app, rendered from the files. Moving a card is editing one line and pushing.
+
+## The card format
+
+```
+---
+title: The ask: round size, instrument, and what it buys
+id: N1
+kind: need          # need = only the author can supply it · task = an agent can pick it up
+status: needs       # needs | backlog | doing | review | done
+role: ambassador    # the sgit.ai team role that owns it
+priority: high
+opened: 2026-09-07
+---
+What it is, and what it unblocks.
+```
+
+Ids are `N<n>` for needs and `T<n>` for tasks, never reused. A card that names a need is closed only by the author's answer. Corrections to published claims are not cards: they are version-log entries on the site, so the record of a mistake is never tidied away.
+
+## Notes
+
+**Audited before publishing**, briefly, because there is nothing to find: the vault holds card text, a README, one app and one tool. No credentials of any kind, no personal data. Every link in a card is root-relative to sgit.ai and resolves.
+
+**The write key is escrowed** in the site's gitignored credential tier, the same place every other published vault's write key lives, so the board can be corrected by the release engineer and by nobody who holds only the read key.
+
+**The site's clone is a mirror, not a fork.** `admin/content/team/issues/` in the site repository is this vault's working tree; its encrypted store is gitignored, its card files are tracked as the build's input. If the two ever disagree, the vault is right.
+
+[← The board, as the site renders it](../../../team/board.md) · [All published vaults](../index.md)
 
 
 
@@ -3724,7 +3795,8 @@ Each role is a file under `admin/content/team/roles/`; this grid and each page d
 | An update, an article | `admin/content/updates/YYYY/MM/DD/`, `admin/content/articles/` | Journalist |
 | A sibling site | `admin/content/sites/<slug>.md` | Cartographer |
 | The homepage bands | `admin/content/index.html` + fields in `vaults.json` | Ambassador / Designer |
-| A role, a card | `admin/content/team/roles/`, `admin/content/team/issues/` | Sherpa |
+| A role | `admin/content/team/roles/` | Sherpa |
+| A card | [the board vault](../demos/vaults/board/index.md) (`pdulwi6i`), cloned at `admin/content/team/issues/`; the release pulls it first | Sherpa |
 | The version log | `VERSION_LOG` in `admin/build/build_pages.py` | Historian |
 | The release | `admin/build/release.sh` | Release engineer |
 | Credentials | `.sg_vault/local/` — gitignored, scanned by the tripwire | Auditor |
@@ -3735,7 +3807,7 @@ Roles as files with a `ROLE.md` each, and issues as files that version with the 
 
 issues-fs.sgit.ai · Graphs & method — [A git-native issue tracker where the issues are files and the files are a graph ↗](https://issues-fs.sgit.ai/) — Nothing runs — no server, no database — so the tracker lives inside the repository it tracks and can be read by `cat`, `grep` and `find`. Eleven agentic roles, each with its own `ROLE.md` and its own `.issues/`. — part of the sgit.ai network
 
-This site's board is the same idea at the smallest useful size: markdown files with a `status` line, rendered into columns at build time, with a markdown twin so an agent can read the board without a browser.
+This site's board is the same idea at the smallest useful size: markdown files with a `status` line, [in a vault of their own](../demos/vaults/board/index.md) with a published read key, rendered into columns both by the vault's app and by the site at each release — with a markdown twin so an agent can read the board without a browser.
 
 [The starting prompts →](prompts.md) [The board →](board.md)
 
@@ -3820,7 +3892,7 @@ You are the Historian for sgit.ai. The claim "`CLAIM`" on `PAGE` is wrong; the e
 
 Sherpa
 
-You are the Sherpa for sgit.ai. Read team/board.md. For each card under admin/content/team/issues/: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add a card: id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Build; confirm the counts on team/board.html changed as expected. Do not close a Need without the author's answer.
+You are the Sherpa for sgit.ai. The board is a vault (id pdulwi6i) cloned at admin/content/team/issues/; its cards are issues/*.md. Run sgit pull there first. For each card: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add issues/ID-slug.md with id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Run python3 tools/reindex.py, then sgit commit -m "board: …" and sgit push in that folder — the board is live the moment it pushes; the site catches up at its next release. Do not close a Need without the author's answer.
 
 ## 12. Re-verify the published read keys
 
@@ -3843,7 +3915,12 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 # The board
 
-The open work on this site, as a kanban. Each card is a markdown file under `admin/content/team/issues/` with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md). Nothing runs — the board versions with the site, and its `.md` twin is the same board without a browser.
+The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
+
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.64, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+`f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+
+[Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
 
 **17 items** — 14 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
 
@@ -3927,7 +4004,7 @@ T10 — **A card for pointing at the sibling sites (!site)** — [Cartographer](
 
 Shipped in v0.2.59. One line in markdown; the card pulls the target site's own category and thesis from `sites/*.md`.
 
-**Moving a card** is editing one line. **Adding one** is adding one file with `id`, `title`, `kind` (need | task), `status`, `role`, `priority`, `opened` and a body that says what it unblocks. A card that names a Need is closed only by the author's answer. Corrections to published claims are not cards; they are [version-log entries](../admin/versions.md), so the record of the mistake is never tidied away.
+**Moving a card** is editing one line in the vault and pushing; the site picks it up at its next release. **Adding one** is adding one file with `id`, `title`, `kind` (need | task), `status`, `role`, `priority`, `opened` and a body that says what it unblocks, then `python3 tools/reindex.py` so the app can read it outside a host. A card that names a Need is closed only by the author's answer. Corrections to published claims are not cards; they are [version-log entries](../admin/versions.md), so the record of the mistake is never tidied away.
 
 [← How the site is run](index.md) · [Starting prompts](prompts.md)
 
@@ -3975,16 +4052,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-91**site releases since 14 August**
+92**site releases since 14 August**
 each verified live before it was called done
 
-25**vaults published with a public read key**
+26**vaults published with a public read key**
 every one audited first; findings on the page
 
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-35**articles and release notes**
+36**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4777,11 +4854,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.63**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.64**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.63 | 2026-09-07 | this release | A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly in the page — type words to search everything (pages, vaults, sibling sites, release notes, board cards), or /vaults, /sites, /updates, /board, /read PATH, /here — instant, private, no network after the index loads. TIER 1, bring-your-own OpenRouter key: the model is handed the same seven tools as OpenAI-style function definitions (search_site, read_page, list_vaults, list_sites, latest_updates, get_board, current_page) and calls them; every call executes HERE over the build-emitted index and the .md twin of any page, so the model can only say what a tool returned, and THE PANE SHOWS EVERY CALL IT MADE as a trace line. Up to six tool rounds, then a plain-prose answer ending in the paths it used, as links. TIER 2, sg.llm inside a vault, is detected-not-wired and on the board as T11, blocked on one fact about the bridge's tool contract. THE INDEX is assets/site-index.json, written beside llms.txt from the same data as the vaults table, the network directory, the feed and the board — one derived file, so an answer in the pane is an answer the site already gives somewhere. LOADED THROUGH THE BOOT BLOCK after site.js, by the same vfs-or-fetch loader, with the loader exposed as window.__sgitBoot so the module resolves the index and the twins the same way on a blob: origin; never a script src. The key goes to openrouter.ai and nowhere else and the pane says so in the same words the chooser uses. Model output is escaped and links are allowed only to http(s) or paths on this site. The validator now parses the chat modules too. The chat-on-a-static-site article gains an addendum and its 'shared component: not started' row becomes 'partly': one site's copy, not yet the versioned module the other eighteen could load. |
+| v0.2.64 | 2026-09-07 | this release | THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the board appeared as files in the site repository, it was clear the shape was right and the home was wrong: moving a card from review to done cost a full site release. So the seventeen cards moved into vault pdulwi6i — issues/-.md, a README with the card format, a five-column board app (index.html, permissions {}) that lists issues/ through sg.vfs and falls back to issues/index.json when served outside a host, and tools/reindex.py to regenerate that index. THE VAULT IS THE TRUTH; THE SITE IS A READER: release.sh now pulls the vault before it builds (step 0), the loader reads admin/content/team/issues/issues/ — which IS the vault's working tree, cloned in place with its encrypted store gitignored and its card files tracked as the build's input — and the board page labels its columns as a snapshot at the site version, with the read key and one open-live button above them. Moving a card is now sgit push, and the board is live the moment it lands; the site catches up at its next release. PUBLISHED AS ROW #26 on the vaults table with its own page, following the method: the write key escrowed in the gitignored tier, the audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's board prompt and the team page's 'where things are' now point at the vault. One design note: the app works in two places on purpose — under a vault host it reads the files directly and needs no index, served flat it reads the index — because a board that only renders inside one host is a board nobody can screenshot, test or read from a script. |
+| v0.2.63 | 2026-09-07 | obj-cas-imm-d523226f4c7a | A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly in the page — type words to search everything (pages, vaults, sibling sites, release notes, board cards), or /vaults, /sites, /updates, /board, /read PATH, /here — instant, private, no network after the index loads. TIER 1, bring-your-own OpenRouter key: the model is handed the same seven tools as OpenAI-style function definitions (search_site, read_page, list_vaults, list_sites, latest_updates, get_board, current_page) and calls them; every call executes HERE over the build-emitted index and the .md twin of any page, so the model can only say what a tool returned, and THE PANE SHOWS EVERY CALL IT MADE as a trace line. Up to six tool rounds, then a plain-prose answer ending in the paths it used, as links. TIER 2, sg.llm inside a vault, is detected-not-wired and on the board as T11, blocked on one fact about the bridge's tool contract. THE INDEX is assets/site-index.json, written beside llms.txt from the same data as the vaults table, the network directory, the feed and the board — one derived file, so an answer in the pane is an answer the site already gives somewhere. LOADED THROUGH THE BOOT BLOCK after site.js, by the same vfs-or-fetch loader, with the loader exposed as window.__sgitBoot so the module resolves the index and the twins the same way on a blob: origin; never a script src. The key goes to openrouter.ai and nowhere else and the pane says so in the same words the chooser uses. Model output is escaped and links are allowed only to http(s) or paths on this site. The validator now parses the chat modules too. The chat-on-a-static-site article gains an addendum and its 'shared component: not started' row becomes 'partly': one site's copy, not yet the versioned module the other eighteen could load. |
 | v0.2.62 | 2026-09-07 | obj-cas-imm-e27526f11c99 | TWO SECTIONS: THE TEAM, FOR THE AGENTS; AND INVESTORS, IN THE OPEN. Asked for a full agentic section briefing agents on how to work on this site, with roles and pages like the sibling sites, a board like the ones done before, and the starting prompts for the regular work — plus an investor section on the same open-materials model the founder's other companies use, for an event next week. THE TEAM (team/): nine roles, each a file under admin/content/team/roles/ with mission, what it owns, what it must not touch, the files it works in, the checks it runs, the rules it enforces WITH THE MISTAKE THAT PRODUCED EACH, and a starting prompt; the grid and the nine pages derive. The roles mirror the Explorer team in the CLI repo, specialised for running a site: Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — the Publisher and Auditor exist because this site publishes read keys on purpose. TWELVE STARTING PROMPTS (team/prompts.html) for the work that recurs — publish, audit, update, article, sibling site, inbound brief, release, phone bug, markup-to-data, correction, board, read-key sweep — each written to be pasted into a fresh agent, each ending before the release step on purpose. THE BOARD (team/board.html): issues as files under admin/content/team/issues/, five columns rendered from a status line, Needs (only the author can supply) kept apart from Tasks, in the spirit of issues-fs.sgit.ai and the comms board on open-source.sgit.ai; seeded with sixteen real items including the six things only the author can answer. INVESTORS (investors/): the structure of investor.myfeeds.ai — problem, what it is, architecture, traction, business model, market, the ask, use of funds, what could go wrong, materials — with traction COMPUTED from the site and THE ASK LEFT VISIBLY OPEN in a dashed box tracked as board item N1, because nothing on that page may be a number the founder has not supplied; the business-model section quotes the founder's published open-source position through a sibling-site card rather than restating it. NAV: Try folds into Docs; Why becomes a group (Why, Investors); Team is a new group (overview, roles, prompts, board) — eight top-level items, as before. TWO BUILD LESSONS: the content loader gained a generic one-file-per-thing reader (roles and issues are three lines each); and angle-bracket placeholders inside code spans broke the markdown twin twice while being regex-wrapped, so the whole team section uses UPPERCASE placeholders with no angle brackets — one convention, every renderer. Verified: 105 pages, validator clean, no overflow at 390 on any new page. |
 | v0.2.61 | 2026-09-07 | obj-cas-imm-595486afe042 | A CORRECTION TO THE RELEASE BEFORE IT, CAUGHT BY COUNTING. v0.2.60's article, its update post and its version-log entry all said the homepage went from nine bands to eight. It did not: git show of the previous content file counts nine sections, the new one counts nine — three were cut (features folded into the walkthrough, the abstract use cases, the three doors) and three were added (the hero vaults, what people ship, the team). What changed is the ORDER and the first screen, not the length; words went 1,370 to 1,332. The claim was written from memory of the plan rather than from the file, which is exactly the failure this site says it does not permit, so all three places now carry the corrected count and the article says in its own text that it was corrected and why. Second catch, same class: the update post restated the team band's four numbers in prose and was off by one within the hour, because a release had happened; the prose now names the numbers without repeating them. Nothing else changes. |
 | v0.2.60 | 2026-09-07 | obj-cas-imm-19a2bbeb1375 | THE HOMEPAGE REBUILT: PROOF BEFORE MECHANISM. Follows the diagnosis published in v0.2.59 rather than a fresh opinion, so the two can be compared, and the 'after' article puts each new band beside the screenshot of what it replaced. HERO: the sentence changed from 'the encrypted git for humans and AI agents' to 'a vault is a unit of work: data, app, history and sources, shipped as one string' — encryption becomes the subordinate clause, which is where a property nobody can look at belongs — and FOUR REAL VAULTS sit directly under it, screenshot each, one click from open, chosen by a hero field in vaults.json so changing the front door is a data edit. NEW BAND 'what people actually ship': six vaults chosen by the JOB they do (hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace), each with one line on why it is hard any other way — and none of those lines is about encryption. NEW BAND 'one human, a team of agents': four numbers COMPUTED at build (releases from the version log, vaults from the data, sites from the network directory, briefs by counting the briefs page) and the collaboration loop told in three beats with the artefacts linked. CUT: the abstract use-case band (the pages remain, in the nav), and the 'three doors' band (now one pill in the trust strip pointing at the page that already explained it). MOVED DOWN: the terminal walkthrough, under a heading — 'under the hood, it is git' — because for a visitor who has just opened a real vault, how is now the question; it gained the feature card 'apps live inside the data', which was never on the list. The band count did NOT change — nine before, nine after; three cut, three added — so what changed is the order and the first screen, not the length; bytes went UP because ten screenshots replaced paragraphs, words went down 1,370 to 1,332. IMAGES GO THROUGH shots.js, never a static image src attribute: the validator refuses a static src because a relative one does not resolve inside a vault, and the build injects the loader wherever data-shot appears. Card text carries hidden separators so the .md twin reads 'Reference — name — line — open it' instead of one run-on. ONE CORRECTION CAUGHT BY THE COMPUTED NUMBER: the network heading had been retyped as 'Twenty sites' while the tile said 19 — the tile was right (nineteen siblings; twenty with this one). THE GAP STANDS: no published vault yet shows two agents on one vault with a human merge, and the team band is written not to pretend otherwise. Verified at 1400 and 390 wide: 10 figures loaded, 0 failed, no horizontal overflow. |
@@ -5583,6 +5661,21 @@ One gap named plainly: the homepage's strongest multi-agent claim, *a branch per
 The fix is set out in order — proof before mechanism; reorder and cut rather than add — and is the next release.
 
 **Also new: a card for pointing at the sibling sites.** The `*.sgit.ai` sites exist so each topic gets the depth a section here could not give it, which only pays off if this site points at them constantly — and a bare link does not say *this continues elsewhere, on purpose*. A one-line `!site` directive now renders a card that pulls the target site's own category and thesis from the network directory, so it describes that site the way the site describes itself. It debuts in the article pointing at [open-source.sgit.ai/about](https://open-source.sgit.ai/about/index.html), which is also a decision recorded there: this site will get an About page about **sgit**, and link to the fuller record rather than duplicate it.
+
+### [The board moves into a vault of its own — and its read key is published](#the-board-moves-into-a-vault) [v0.2.64](../admin/versions.md)
+
+boardvaultsteammethod
+
+Two releases after [the board](../team/board.md) appeared as files in the site repository, the shape was right and the home was wrong: moving a card from *review* to *done* cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.
+
+So the cards moved into [a vault of their own](../demos/vaults/board/index.md), `pdulwi6i`, and its read key is published — because every task, bug and need on it is public, and a read key is the complete credential for reading them.
+
+- **The vault is the truth; the site is a reader.** The release script pulls the vault before it builds, and the columns on the board page are labelled as a snapshot at the site version. Between releases the vault is ahead, and opening it shows the live board.
+- **Moving a card is `sgit push`.** Edit one `status` line, regenerate the index, commit, push. No site release.
+- **A board app that asks for nothing.** `index.html` lists `issues/` through `sg.vfs` and draws five columns; `app.json` declares `permissions: {}`. Served outside a vault host it falls back to `issues/index.json`, so it can be screenshotted, tested and read from a script — a board that only renders inside one host is a board nobody can check.
+- **Cloned in place.** The site's `admin/content/team/issues/` *is* the vault's working tree: its encrypted store is gitignored, its card files are tracked as the build's input. If the two ever disagree, the vault is right.
+
+Published as row #26 on the [vaults table](../demos/vaults/index.md), following the method: write key escrowed, audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's [board prompt](../team/prompts.md#board) now ends with a push rather than a build.
 
 ### [Our build brief was wrong, and the team that owns the code said so precisely](#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so) [v0.2.58](../admin/versions.md)
 

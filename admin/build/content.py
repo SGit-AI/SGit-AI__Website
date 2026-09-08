@@ -361,7 +361,10 @@ class Content_Loader:
         spirit of issues-fs.sgit.ai: nothing runs, the tracker versions with the site.
         `kind` is need (only the author can supply it) or task (work the site can do);
         `status` is one of needs|backlog|doing|review|done."""
-        issues = self._load_md_dir('team/issues', ['title', 'id', 'kind', 'status', 'role', 'priority', 'opened'], 'team/issues')
+        # The cards live in a separate vault (read key published on the board page), cloned into
+        # admin/content/team/issues/ — its issues/ folder is what we read. The vault is the source
+        # of truth; the site renders a snapshot at each release, after release.sh pulls it.
+        issues = self._load_md_dir('team/issues/issues', ['title', 'id', 'kind', 'status', 'role', 'priority', 'opened'], 'team/issues/issues')
         ok_status = {'needs', 'backlog', 'doing', 'review', 'done'}
         for i in issues:
             if i['status'] not in ok_status:

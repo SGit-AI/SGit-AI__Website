@@ -30,6 +30,12 @@
     "desc": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule."
   },
   {
+    "path": "demos/vaults/board/index.html",
+    "section": "vaults",
+    "title": "The sgit.ai board — a published vault",
+    "desc": "The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key — because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them."
+  },
+  {
     "path": "demos/vaults/field-notes/index.html",
     "section": "vaults",
     "title": "Field Notes — a published vault",

@@ -24,6 +24,14 @@ die()  { printf '\033[31mRELEASE ABORTED: %s\033[0m\n' "$*" >&2; exit 1; }
 [ -f app.json ] || die "not at the vault root (no app.json)"
 [ -d .git ] && [ -d .sg_vault ] || die "expected both .git and .sg_vault here"
 
+step "0/5 pull the board vault"
+# The board is a separate vault (source of truth for team/board.html), cloned under
+# admin/content/team/issues/. Pull it so the snapshot this release renders is current.
+if [ -d admin/content/team/issues/.sg_vault ]; then
+  (cd admin/content/team/issues && sgit pull >/dev/null 2>&1) && echo "   board vault: pulled" \
+    || echo "   board vault: pull failed — rendering the last local copy" >&2
+fi
+
 step "1/5 build"
 python3 admin/build/build_pages.py || die "build failed"
 

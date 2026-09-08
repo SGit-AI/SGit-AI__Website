@@ -26,6 +26,13 @@
       <description>Asked to step back and say how this site should present its twenty five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as an article with screenshots of the current site, so the rebuild that follows can be comp…</description>
     </item>
     <item>
+      <title>The board moves into a vault of its own — and its read key is published</title>
+      <link>https://sgit.ai/updates/index.html#the-board-moves-into-a-vault</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-board-moves-into-a-vault</guid>
+      <pubDate>2026-09-07</pubDate>
+      <description>Two releases after the board appeared as files in the site repository, the shape was right and the home was wrong: moving a card from review to done cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be…</description>
+    </item>
+    <item>
       <title>Our build brief was wrong, and the team that owns the code said so precisely</title>
       <link>https://sgit.ai/updates/index.html#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#an-ordinary-commit-should-not-be-able-to-take-the-site-down</guid>
       <pubDate>2026-08-22</pubDate>
       <description>Two good commits landed on dev after v0.2.39 and sgit.ai served neither for a day. Nothing was wrong with either of them. The CI tag gate failed, and the deploy is gated on the tag gate. What the error said, and what was actually true. The job read SITE VERSIO…</description>
-    </item>
-    <item>
-      <title>A fourth sibling site — and the first one that links back</title>
-      <link>https://sgit.ai/updates/index.html#the-first-sibling-that-links-back</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-first-sibling-that-links-back</guid>
-      <pubDate>2026-08-21</pubDate>
-      <description>graphs.sgit.ai joins the network. It argues for a grammar of semantic graphs, from five rules you can apply tomorrow up to a full positioning against schemas and vector search — and it opens by disowning the product category a reader arrives expecting: &quot;this i…</description>
     </item>
   </channel>
 </rss>
