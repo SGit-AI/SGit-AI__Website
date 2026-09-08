@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,27 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-07
+
+### [Two new sections — the team, written for the agents; and investors, in the open](#the-team-for-the-agents-and-investors-in-the-open) [v0.2.62](../admin/versions.md)
+
+teamagentsinvestorsboardmethod
+
+**[The team](../team/index.md)** is the agentic section: how this site is run by one person and a team of AI agents, written for the agents. A new agent should be able to read that page and one role page and begin.
+
+- **Nine roles, each a file.** Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — mirroring the Explorer team in the CLI repository, specialised for running a site rather than building a tool. Each page carries the role's mission, what it owns and must not touch, the files it works in, the checks it runs, **the rules it enforces with the mistake that produced each one**, and the prompt that starts it from nothing. The Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.
+- **[Twelve starting prompts](../team/prompts.md)** for the work that recurs — publish a vault, audit it, write the update, write an article, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys. Each is written to be pasted into a fresh agent, and each ends before the release step on purpose: the release engineer's prompt is the one that ships, and the Sherpa decides when it runs.
+- **[The board](../team/board.md)** is a kanban of files. Each card is a markdown file with a `status` line; the five columns are those lines rendered. **Needs** — items only the author can supply — are kept apart from tasks and never discovered late. This follows issues-fs.sgit.ai's *issues are files* and the open comms board on open-source.sgit.ai. It is seeded with the real open work, including six things only the author can answer.
+
+**[Investors](../investors/index.md)** follows the founder's practice of publishing investor material in the open, and the structure of the pitch his other companies publish: the problem, what it is, the open-source zero-knowledge architecture, traction, business model, the beachhead market, what could go wrong, and the materials. Two rules hold it honest:
+
+- **Traction is computed from the site**, with the same generator the homepage team band uses. If a number is wrong, the site is wrong somewhere else too.
+- **The ask is left visibly open.** Round size, instrument and use of funds are the founder's to state; the page has a dashed box saying so and tracks it as board item N1 — rather than a number nobody supplied.
+
+The business-model section does not restate the founder's position on open source; it points at it through the new sibling-site card, so the argument is read in its own words.
+
+**Nav:** *Try* folds into Docs; *Why* becomes a group with Investors; *Team* is new. Eight top-level items, as before.
+
+One build lesson, recorded because it bit twice: angle-bracket placeholders inside code spans broke the markdown twin while being regex-wrapped. The whole team section now uses `UPPERCASE` placeholders with no angle brackets — one convention that survives every renderer this site has.
 
 ### [The proof moved up — the homepage, rebuilt to show vaults before it explains them](#the-proof-moved-up) [v0.2.60](../admin/versions.md)
 

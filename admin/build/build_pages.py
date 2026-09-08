@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.61'
+SITE_VERSION = 'v0.2.62'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,37 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.61', '2026-09-07', 'this release',
+    ('v0.2.62', '2026-09-07', 'this release',
+     "TWO SECTIONS: THE TEAM, FOR THE AGENTS; AND INVESTORS, IN THE OPEN. Asked for a full agentic "
+     "section briefing agents on how to work on this site, with roles and pages like the sibling "
+     "sites, a board like the ones done before, and the starting prompts for the regular work — "
+     "plus an investor section on the same open-materials model the founder's other companies use, "
+     "for an event next week. THE TEAM (team/): nine roles, each a file under "
+     "admin/content/team/roles/ with mission, what it owns, what it must not touch, the files it "
+     "works in, the checks it runs, the rules it enforces WITH THE MISTAKE THAT PRODUCED EACH, and a "
+     "starting prompt; the grid and the nine pages derive. The roles mirror the Explorer team in the "
+     "CLI repo, specialised for running a site: Sherpa, Publisher, Auditor, Journalist, Cartographer, "
+     "Ambassador, Designer, Release engineer, Historian — the Publisher and Auditor exist because "
+     "this site publishes read keys on purpose. TWELVE STARTING PROMPTS (team/prompts.html) for the "
+     "work that recurs — publish, audit, update, article, sibling site, inbound brief, release, phone "
+     "bug, markup-to-data, correction, board, read-key sweep — each written to be pasted into a fresh "
+     "agent, each ending before the release step on purpose. THE BOARD (team/board.html): issues as "
+     "files under admin/content/team/issues/, five columns rendered from a status line, Needs (only "
+     "the author can supply) kept apart from Tasks, in the spirit of issues-fs.sgit.ai and the comms "
+     "board on open-source.sgit.ai; seeded with sixteen real items including the six things only "
+     "the author can answer. INVESTORS (investors/): the structure of investor.myfeeds.ai — problem, "
+     "what it is, architecture, traction, business model, market, the ask, use of funds, what could "
+     "go wrong, materials — with traction COMPUTED from the site and THE ASK LEFT VISIBLY OPEN in a "
+     "dashed box tracked as board item N1, because nothing on that page may be a number the founder "
+     "has not supplied; the business-model section quotes the founder's published open-source "
+     "position through a sibling-site card rather than restating it. NAV: Try folds into Docs; Why "
+     "becomes a group (Why, Investors); Team is a new group (overview, roles, prompts, board) — eight "
+     "top-level items, as before. TWO BUILD LESSONS: the content loader gained a generic "
+     "one-file-per-thing reader (roles and issues are three lines each); and angle-bracket "
+     "placeholders inside code spans broke the markdown twin twice while being regex-wrapped, so "
+     "the whole team section uses UPPERCASE placeholders with no angle brackets — one convention, "
+     "every renderer. Verified: 105 pages, validator clean, no overflow at 390 on any new page."),
+    ('v0.2.61', '2026-09-07', 'obj-cas-imm-595486afe042',
      "A CORRECTION TO THE RELEASE BEFORE IT, CAUGHT BY COUNTING. v0.2.60's article, its update post "
      "and its version-log entry all said the homepage went from nine bands to eight. It did not: "
      "git show of the previous content file counts nine sections, the new one counts nine — three "
@@ -1014,10 +1044,13 @@ ASK = [
 
 
 NAV = [
-    ('why',   'Why',       'why/index.html',      []),
-    ('try',   'Try',       'try/index.html',      []),
+    ('why',   'Why',       'why/index.html',      [
+        ('why',       'Why sgit exists', 'why/index.html'),
+        ('investors', 'Investors',       'investors/index.html'),
+    ]),
     ('docs',  'Docs',      'docs/index.html',     [
         ('docs',   'Documentation',   'docs/index.html'),
+        ('try',    'Try it in the browser', 'try/index.html'),
         ('api',    'HTTP API',        'api/index.html'),
         ('vault',  'SG/Vault',        'vault/index.html'),
         ('deploy', 'Deploy',          'deploy/index.html'),
@@ -1038,6 +1071,12 @@ NAV = [
         ('updates',  'Updates',     'updates/index.html'),
         ('articles', 'Articles',    'articles/index.html'),
         ('admin',    'Version log', 'admin/versions.html'),
+    ]),
+    ('team', 'Team', 'team/index.html', [
+        ('team',    'How the site is run', 'team/index.html'),
+        ('roles',   'Roles',               'team/index.html#roles'),
+        ('prompts', 'Starting prompts',    'team/prompts.html'),
+        ('board',   'The board',           'team/board.html'),
     ]),
     ('network', 'Network', 'network/index.html', [
         ('network',  'All sites',   'network/index.html'),
@@ -1486,6 +1525,11 @@ LLMS_SECTIONS = [
     ('try',       'Try it'),
     ('skills',    'Skills (packaged instructions for AI agents)'),
     ('briefs',    'Cross-team briefs'),
+    ('team',      'The team (how the site is run by one human and a team of agents — start here if you are an agent)'),
+    ('roles',     'Roles (one page per agentic role: mission, what it owns, the rules it enforces, its starting prompt)'),
+    ('prompts',   'Starting prompts (the regular tasks, each as a prompt to paste into a fresh agent)'),
+    ('board',     'The board (open work as a kanban of files; Needs only the author can supply, Tasks an agent can pick up)'),
+    ('investors', 'Investors (the pitch in the open: architecture, computed traction, business model, and the ask left open until stated)'),
     ('updates',   'Updates (dated posts: what changed, one entry per story)'),
     ('articles',  'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('network',   'The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)'),
@@ -1655,7 +1699,10 @@ def load_pages():
             # the homepage's proof bands, all derived from vaults.json + the site's own counts
             for marker, fn in (('<!--HERO-VAULTS-->', home_hero_vaults),
                                ('<!--JOBS-->',        home_jobs_band),
-                               ('<!--TEAM-->',        home_team_band)):
+                               ('<!--TEAM-->',        home_team_band),
+                               ('<!--ROLES-->',       team_roles_cards),
+                               ('<!--BOARD-->',       team_board),
+                               ('<!--TRACTION-->',    investors_traction)):
                 if marker in body:
                     body = body.replace(marker, fn())
         pages.append((r['path'], r['title'], r['desc'], r['section'], body))
@@ -1664,6 +1711,10 @@ def load_pages():
     for a in ARTICLES:
         pages.append((f'articles/{a["slug"]}.html',
                       f'{a["title"]} — sgit.ai', a['summary'], 'articles', article_body(a)))
+    # One page per agentic role, derived — a role is added by writing its file.
+    for r in ROLES:
+        pages.append((f'team/roles/{r["slug"]}.html',
+                      f'{r["title"]} — an agentic role on sgit.ai', r['mission'], 'roles', role_body(r)))
     for x in SITES:
         if x['listing']:
             continue
@@ -1683,6 +1734,8 @@ LOADER   = Content_Loader(os.path.join(ADMIN, 'content'))
 UPDATES  = [u for u in LOADER.load_updates()  if u['status'] == 'published']
 ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
 SITES    = [x for x in LOADER.load_sites()    if x['status'] == 'published']
+ROLES    = LOADER.load_roles()
+ISSUES   = LOADER.load_issues()
 
 
 def _chips(tags):
@@ -1867,6 +1920,87 @@ def home_team_band():
     <div class="beat rev"><span class="k">3</span><span>One agent <a href="demos/vaults/aiuc-1-conformance/index.html">forked another agent's vault</a>, kept every byte, added a layer &mdash; and the original's tests still pass inside the fork.</span></div>
     <div class="beat rev"><span class="k">&rarr;</span><span>The record is the site itself: <a href="briefs/index.html">the briefs</a>, <a href="case-studies/index.html">the case studies</a>, <a href="admin/versions.html">every release</a>. And the diagnosis that produced this homepage is <a href="articles/proof-behind-the-claim.html">an article, with the before pictures</a>.</span></div>
   </div>"""
+
+
+# ---------------------------------------------------------------- team section
+STATUS_LABEL = {'needs': 'Needs — only the author can supply', 'backlog': 'Backlog',
+                'doing': 'Doing', 'review': 'Review', 'done': 'Done'}
+
+def _role_by_slug():
+    return {r['slug']: r for r in ROLES}
+
+def team_roles_cards():
+    """The roles grid on the team page, from admin/content/team/roles/*.md."""
+    cards = '\n'.join(
+        f'    <a class="rolecard rev" href="roles/{r["slug"]}.html">'
+        f'<span class="role-n">{r["order"]}</span><b>{r["title"]}</b>'
+        f'<span class="hv-sep"> &mdash; </span><span class="role-mission">{r["mission"]}</span>'
+        f'<span class="hv-sep"> &mdash; </span><span class="role-owns"><b>Owns</b> {r["owns"]}</span></a>'
+        for r in ROLES)
+    return f'  <div class="roles">\n{cards}\n  </div>'
+
+def role_body(r):
+    """One role page: identity table, then the file's own markdown."""
+    by = _role_by_slug()
+    others = ' &middot; '.join(f'<a href="{o["slug"]}.html">{o["title"]}</a>' for o in ROLES if o is not r)
+    rows = [('Mission', r['mission']), ('Owns', r['owns']), ('Not responsible for', r['not'])]
+    if r.get('files'):  rows.append(('Works in', ' &middot; '.join(f'<code>{f.strip().replace("<","&lt;").replace(">","&gt;")}</code>' for f in r['files'].split(','))))
+    if r.get('checks'): rows.append(('Checks it runs', r['checks']))
+    ident = '\n'.join(f'    <tr><th>{k}</th><td>{v}</td></tr>' for k, v in rows)
+    mine = [i for i in ISSUES if i['role'] == r['slug'] and i['status'] != 'done']
+    open_items = ('\n'.join(f'<li><b>{i["id"]}</b> &middot; <a href="../board.html#{i["id"]}">{i["title"]}</a> '
+                            f'<span class="small dim">({i["status"]}, {i["priority"]})</span></li>' for i in mine)
+                  or '<li class="dim">nothing open</li>')
+    return f"""<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Team</a> / {r['title']}</p>
+  <p class="eyebrow">Agentic role &middot; {r['order']} of {len(ROLES)}</p>
+  <h1>{r['title']}</h1>
+  <div class="tablewrap"><table class="ident">
+{ident}
+  </table></div>
+{LOADER.md_to_html(r['body'], depth=2, where=r['where'])}
+  <h2 id="open">On the board for this role</h2>
+  <ul>{open_items}</ul>
+  <p class="small dim" style="margin-top:2rem">Other roles: {others} &middot; <a href="../prompts.html">Starting prompts</a> &middot; <a href="../board.html">The board</a></p>
+</main>"""
+
+def team_board():
+    """The kanban, from admin/content/team/issues/*.md. Five columns; a card is a file."""
+    by = _role_by_slug()
+    cols = []
+    for st in ('needs', 'backlog', 'doing', 'review', 'done'):
+        items = [i for i in ISSUES if i['status'] == st]
+        cards = '\n'.join(
+            f'      <article class="kcard pr-{i["priority"]}" id="{i["id"]}">'
+            f'<span class="kid">{i["id"]}</span><span class="hv-sep"> &mdash; </span>'
+            f'<b>{i["title"]}</b><span class="hv-sep"> &mdash; </span>'
+            f'<span class="kmeta"><a href="roles/{i["role"]}.html">{by.get(i["role"], {}).get("title", i["role"])}</a>'
+            f' &middot; {i["priority"]} &middot; {i["opened"]}</span>'
+            f'<div class="kbody">{LOADER.md_to_html(i["body"], depth=1, where=i["where"])}</div></article>'
+            for i in items) or '      <p class="dim small">empty</p>'
+        cols.append(f'    <section class="kcol kcol-{st}"><h3>{STATUS_LABEL[st]} <span class="kcount">{len(items)}</span></h3>\n{cards}\n    </section>')
+    n_open = sum(1 for i in ISSUES if i['status'] not in ('done',))
+    return (f'  <p class="vt-count"><b>{len(ISSUES)} items</b> &mdash; {n_open} open, '
+            f'{sum(1 for i in ISSUES if i["kind"] == "need" and i["status"] != "done")} of them waiting on the author. '
+            f'Each card is a file under <code>admin/content/team/issues/</code>; moving a card is editing its <code>status</code> line.</p>\n'
+            f'  <div class="kanban">\n' + '\n'.join(cols) + '\n  </div>')
+
+def investors_traction():
+    """Traction numbers computed from the site itself — the same rule as the team band:
+    if a number here is wrong, the site is wrong somewhere else too."""
+    briefs = open(os.path.join(ADMIN, 'content', 'briefs', 'index.html')).read()
+    asks = briefs.count('<h3>&larr;') + briefs.count('<h3>&rarr;') + briefs.count('<h3>←') + briefs.count('<h3>→')
+    nums = [
+        (len(VERSION_LOG), 'site releases since 14 August', 'each verified live before it was called done'),
+        (len(_vaults()),   'vaults published with a public read key', 'every one audited first; findings on the page'),
+        (len(SITES),       'sibling sites on *.sgit.ai', 'one question each, own repo, own history'),
+        (len(ARTICLES) + len(UPDATES), 'articles and release notes', 'all with a markdown twin and an RSS feed'),
+        (asks,             'cross-team briefs, in the open', 'two of them corrected this site'),
+        ('~4,000',         'tests in the CLI, mutation-tested in CI', 'against a real server, no mocks'),
+    ]
+    tiles = '\n'.join(f'    <div class="t rev"><span class="num">{n}</span><span class="lbl"><b>{l}</b><br>{d}</span></div>'
+                      for n, l, d in nums)
+    return f'  <div class="team inv-nums">\n{tiles}\n  </div>'
 
 
 def home_articles_band():

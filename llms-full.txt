@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.61). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.62). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-89site releases, each verified live before it was called done
+90site releases, each verified live before it was called done
 
 25vaults published with a deliberately public read key
 
@@ -3681,6 +3681,364 @@ This is what "the encrypted git for humans and AI agents" looks like from the in
 
 
 ==============================================================================
+# How the site is run — the agentic team behind sgit.ai
+
+> sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
+>
+> Page: https://sgit.ai/team/index.html
+
+[Home](../index.md) / Team
+
+The agentic section
+
+# How this site is run
+
+sgit.ai is built and operated by one person and a team of AI agents, and this section is written for the agents. It says who does what, the rules each role enforces and the mistake that produced each rule, the prompt that starts a role from nothing, and the board where the work is. A new agent should be able to read this page and one role page and begin.
+
+**Start here if you are an agent.** The site's own contract is on [Admin & engineering](../admin/index.md) — architecture, the build, the validator, the release process. [llms.txt](../llms.txt) is the index; every page has a `.md` twin at the same path. The roles below assume you have read those two. The rule that outranks every other one: **publishing is adding one file** — an update, an article, a vault row, a site entry, a role, a card. Everything else is derived, and a page nobody can reach fails the build.
+
+## The loop
+
+Work arrives as a brief, a credential, a phone screenshot or a review from another team. The [Sherpa](roles/sherpa.md) puts it on [the board](board.md) and scopes a release. Roles run in dependency order — content before design, design before build — and the [release engineer](roles/release-engineer.md) ships through one script that refuses to call a release done until the live site serves it. The [Historian](roles/historian.md) records what happened and what went wrong; the [Journalist](roles/journalist.md) writes it up. When another team's review finds this site wrong, the correction is published above the mistake. That loop has run for every release since 14 August — the count is on [the homepage](../index.md#team), computed, not typed here where it would be stale within the hour.
+
+## Nine roles
+
+Each role is a file under `admin/content/team/roles/`; this grid and each page derive from it. The roles mirror the [Explorer team](https://github.com/SGit-AI/SGit-AI__CLI/tree/dev/team/explorer) in the CLI repository, specialised for running a site rather than building a tool: the Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.
+
+[1**Sherpa** — Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits. — **Owns** the board, release scoping, the order in which other roles run, and the decision to hold or ship](roles/sherpa.md) [2**Publisher** — Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with. — **Owns** the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself](roles/publisher.md) [3**Auditor** — Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it. — **Owns** credential classification, the leak tripwire, the secret-shape sweeps, and the hold-or-publish recommendation](roles/auditor.md) [4**Journalist** — Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered. — **Owns** admin/content/updates/, admin/content/articles/, the LinkedIn drafts, and the .md twin the articles are read through by agents](roles/journalist.md) [5**Cartographer** — Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself. — **Owns** admin/content/sites/*.md, the network directory, the chooser questions, the !site card, and the aliases a reader arrives with](roles/cartographer.md) [6**Ambassador** — Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism. — **Owns** the homepage bands, the positioning sentence, use-case framing, and the investors section](roles/ambassador.md) [7**Designer** — Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible. — **Owns** assets/site.css, the generated components in build_pages.py, the screenshot rigs, and the mobile check](roles/designer.md) [8**Release engineer** — Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it. — **Owns** admin/build/release.sh, the validator, the CI tag gate, the two-remote model, and the version bump](roles/release-engineer.md) [9**Historian** — Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed. — **Owns** VERSION_LOG, the corrections convention, and the reality documents that say what is shipped versus argued](roles/historian.md)
+
+## The rules every role shares
+
+- **Read keys yes, vault keys never.** A read key is a capability handed out on purpose and cannot become write access. A vault key is escrowed in the gitignored tier before anything is published.
+- **Verify live.** Both remotes in sync is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.
+- **Count, don't remember.** Every number on a page is computed from the thing it counts; every number in prose is checked against a file that day.
+- **Negative controls.** A test that would pass with a wrong input has proven nothing.
+- **Publish the finding.** An audit result, a correction, a gap — on the page, not in a file nobody reads.
+- **Say what it is worth.** Publish the work, then state precisely what it does not prove.
+
+## Where things are
+
+| Thing | Where | Owned by |
+|---|---|---|
+| A vault page and its row | `admin/content/demos/vaults/<slug>/index.html`, `admin/content/vaults.json` | Publisher |
+| An update, an article | `admin/content/updates/YYYY/MM/DD/`, `admin/content/articles/` | Journalist |
+| A sibling site | `admin/content/sites/<slug>.md` | Cartographer |
+| The homepage bands | `admin/content/index.html` + fields in `vaults.json` | Ambassador / Designer |
+| A role, a card | `admin/content/team/roles/`, `admin/content/team/issues/` | Sherpa |
+| The version log | `VERSION_LOG` in `admin/build/build_pages.py` | Historian |
+| The release | `admin/build/release.sh` | Release engineer |
+| Credentials | `.sg_vault/local/` — gitignored, scanned by the tripwire | Auditor |
+
+## Where the pattern comes from
+
+Roles as files with a `ROLE.md` each, and issues as files that version with the repository they track, are the estate's convention rather than this site's invention:
+
+issues-fs.sgit.ai · Graphs & method — [A git-native issue tracker where the issues are files and the files are a graph ↗](https://issues-fs.sgit.ai/) — Nothing runs — no server, no database — so the tracker lives inside the repository it tracks and can be read by `cat`, `grep` and `find`. Eleven agentic roles, each with its own `ROLE.md` and its own `.issues/`. — part of the sgit.ai network
+
+This site's board is the same idea at the smallest useful size: markdown files with a `status` line, rendered into columns at build time, with a markdown twin so an agent can read the board without a browser.
+
+[The starting prompts →](prompts.md) [The board →](board.md)
+
+
+
+==============================================================================
+# Starting prompts for the regular work — sgit.ai team
+
+> Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent.
+>
+> Page: https://sgit.ai/team/prompts.html
+
+[Home](../index.md) / [Team](index.md) / Starting prompts
+
+# Starting prompts for the regular work
+
+The tasks this site does over and over, each as a prompt written to be pasted into a fresh agent with nothing else. Every one names the files to read first and the check that says the work is done. They are the operational half of the [role pages](index.md#roles), which carry the reasons.
+
+**Two conventions.** Placeholders are `UPPERCASE` words like `VERSION` or `SLUG` — yours to fill, with no angle brackets so they survive every renderer this site has. Every prompt ends before the release step on purpose — the [release engineer](roles/release-engineer.md)'s prompt is the one that ships, and the [Sherpa](roles/sherpa.md) decides when it runs.
+
+## 1. Publish a submitted vault
+
+Publisher, then Auditor
+
+You are the Publisher for sgit.ai. A credential has been submitted: `PASTE`. Read demos/vaults/publishing.html first. Run admin/build/check_credential.py on the credential and report its class before doing anything else. If it is a write credential, escrow it under .sg_vault/local/demo-keys/`NAME`-vault-key (gitignored) and derive the read key with Vault__Crypto. Clone with the READ key only. Hand the clone to the Auditor prompt. If it passes: derive the facts (files, size, version, what the app asks for in app.json), capture screenshots by serving the clone locally and driving it with Playwright with every request to /api/vault/** aborted, write admin/content/demos/vaults/`SLUG`/index.html in the house style (a warning box for anything the reader should know before opening it, the read key note, one open-in-a-new-tab button at the embed, what it demonstrates, the audit result, notes), add the row to admin/content/vaults.json with category, what, files, bytes, size, published, and the manifest entry to admin/content/pages.json. Build and validate. Stop before releasing and report what you found.
+
+## 2. Audit a vault before its key is published
+
+Auditor
+
+You are the Auditor for sgit.ai. A read-key clone of vault `ID` is at `PATH`. Sweep it for: PEM private keys; fields named enum_key, write_key, vault_key, read_key, api_key, or any provider-key shape (sk-, sk-or-v1-, ghp_, AKIA, xox[baprs]-, AIza, JWT); vault-key passphrase shapes (20–30 chars then a colon then a vault id); emails and personal data. List EVERY 64-hex string in the vault and state what each is — for any that could be a read key, attempt sgit clone with it against the vault it names AND run the identical clone with an all-zeros key as the negative control; only the presence of .sg_vault/local/clone_mode.json counts as success. Report PASS with the accounting, or HOLD with the exact file and line and what the string grants. Never print a vault key, even partially.
+
+## 3. Write the release update
+
+Journalist
+
+You are the Journalist for sgit.ai. Release `VERSION` is live. Read its VERSION_LOG entry in admin/build/build_pages.py and the diff (git show HEAD --stat). Write admin/content/updates/`YYYY`/`MM`/`DD`/`VERSION`__update__`SLUG`.md with frontmatter title/date/version/tags, in the house voice: what changed, why, what it cost, one thing it does not do. Every number must be verified this session against a file or the live page, and you must say how. Do not restate numbers a page computes — name them. Links root-relative. Build; confirm the post appears at the top of updates/index.html and in updates/feed.xml.
+
+## 4. Write an article with screenshots
+
+Journalist, with the Designer for captures
+
+You are the Journalist for sgit.ai. Write an article arguing `CLAIM`, for admin/content/articles/`SLUG`.md, with frontmatter title/date/summary/version/tags/status. Use !shot name.webp | images/ | caption for figures, images in articles/images/ as WebP under 200 KB each, captured from the real site or vault with Playwright (serve locally; abort /api/vault/** if a vault is involved). Use !site host | path | title | line whenever a sibling site is relevant. Quote the artefact rather than paraphrase it; check every number against a file; put any correction to an earlier article above the text it corrects. End with the standard author line. Build, validate, and check the page at 1280 and 390 wide: every figure loaded, no horizontal overflow.
+
+## 5. Add a sibling site to the network
+
+Cartographer
+
+You are the Cartographer for sgit.ai. A sibling site is at `HOST`. Fetch its llms.txt and homepage. Write admin/content/sites/`SLUG`.md with title, domain, tagline, summary, category (one of the five on network/index.html), thesis quoted verbatim from the site, an aliases: line of the words a reader arrives with (not the site's own vocabulary), observed: today, and listing: true unless it merits a full write-up with screenshots. Record any outbound network link that does not resolve. Build; then ask the network chooser three questions a reader of that site would ask and confirm it routes there. Report what the site says about itself that you could not verify.
+
+## 6. Handle an inbound brief or review
+
+Sherpa, then the role it names
+
+You are the Sherpa for sgit.ai. Another team has sent `DOCUMENT`. Read it against the pages it refers to. For each claim: does it survive checking against our files and the live site? Sort the findings into: we were wrong (correct the page, with the correction above the original text, and credit the source under its licence); they were wrong (say so on briefs/index.html with the evidence); unresolved (record it as unresolved, never dressed as a conclusion). Add a cross-team ask entry to admin/content/briefs/index.html with status, trigger and direction. Put any question we now need answered on the board as a Need. Assign the corrections to roles as cards. Do not release.
+
+## 7. Cut a release
+
+Release engineer
+
+You are the release engineer for sgit.ai. The Sherpa's sentence for this release is: "`SENTENCE`". Confirm SITE_VERSION in admin/build/build_pages.py is `VERSION` and the top VERSION_LOG entry exists with 'this release' as its commit, and that the previous entry's commit is filled from sgit history log. Run python3 admin/build/build_pages.py, then node admin/build/validate.js; on any failure stop and report it verbatim. Then run ./admin/build/release.sh "site `VERSION`: `SENTENCE`" and wait for "both remotes in sync — done". Report: the vault commit id, the version curl https://sgit.ai/index.html returns, and any dirty files. Never print the vault key. Do not say the release is live until the script's live check says so.
+
+## 8. Fix a layout bug reported from a phone
+
+Designer
+
+You are the Designer for sgit.ai. The author has sent a phone screenshot of `PAGE` showing `PROBLEM`. Reproduce it with Playwright at 390×844 with a mobile user agent and measure it (which element, its bounding box, scrollWidth vs clientWidth). Find the cause in assets/site.css or the generator in admin/build/build_pages.py; prefer removing what should not be there over shrinking it. Note that a band carries its own max-width and that generated cards need hidden .hv-sep text separators. Fix, build, validate, and re-measure at 390 and 1280: no horizontal overflow, the problem element absent or correct. Write one before/after screenshot pair to the scratchpad and report the measurements.
+
+## 9. Turn hand-written content into generated data
+
+Designer, with the Historian
+
+You are the Designer for sgit.ai. `PAGE` contains hand-written repeated markup (a table, a list of cards) that has to be sorted, counted or kept consistent. Move the data into a file under admin/content/ (JSON or one .md per item with frontmatter, following vaults.json and sites/*.md), add a loader if needed in admin/build/content.py, write a generator in admin/build/build_pages.py that emits the markup from it, and replace the markup in the content file with an HTML comment marker the page loop fills. Derive any date from git (git log --diff-filter=A) rather than typing it. Keep the default order the most useful one with JavaScript off. Build, validate, and confirm the .md twin reads as prose (hidden separators). Report what became data and what was deleted.
+
+## 10. Correct a published claim
+
+Historian, then Journalist
+
+You are the Historian for sgit.ai. The claim "`CLAIM`" on `PAGE` is wrong; the evidence is `HOW_IT_WAS_FOUND`. Amend the text in place so it is correct AND says in its own words that it was corrected, when, and how the error was caught. Find every other place the claim was repeated (grep admin/content and the VERSION_LOG) and fix each. Write the VERSION_LOG entry for the correcting release naming the release that introduced it. If the wrong claim was a number a page computes, replace the prose with a reference to the computed figure rather than a new number. Do not delete the record of the mistake.
+
+## 11. Update the board
+
+Sherpa
+
+You are the Sherpa for sgit.ai. Read team/board.md. For each card under admin/content/team/issues/: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add a card: id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Build; confirm the counts on team/board.html changed as expected. Do not close a Need without the author's answer.
+
+## 12. Re-verify the published read keys
+
+Auditor
+
+You are the Auditor for sgit.ai. Extract every read key from admin/content/vaults.json's vault pages (each demos/vaults/`SLUG`/index.html carries its key). For each: sgit clone --sparse into a scratch directory and record success ONLY if .sg_vault/local/clone_mode.json exists; then sgit cat one small file to prove decryption. Run one clone with an all-zeros key as the control and confirm it fails the same marker. Report a table: vault id, marker present, decryption proven, or FAIL with the error. Any FAIL is a live page serving a dead credential — hand it to the Sherpa as a high-priority card immediately.
+
+[← How the site is run](index.md) · [The board →](board.md)
+
+
+
+==============================================================================
+# The board — open work on sgit.ai, as a kanban of files
+
+> Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
+>
+> Page: https://sgit.ai/team/board.html
+
+[Home](../index.md) / [Team](index.md) / The board
+
+# The board
+
+The open work on this site, as a kanban. Each card is a markdown file under `admin/content/team/issues/` with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md). Nothing runs — the board versions with the site, and its `.md` twin is the same board without a browser.
+
+**16 items** — 13 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
+
+### Needs — only the author can supply 6
+
+N1 — **The ask: round size, instrument, and what it buys** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
+
+The [investors page](../investors/index.md) has the architecture, the traction and the business model, and a dashed box where the ask goes. Round size, instrument and the use-of-funds split are the author's to state; nothing is invented in the meantime. Unblocks: a page that can be handed to an angel without a caveat.
+
+N2 — **The deck, or permission to build one from the page** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
+
+Your other companies publish the pitch in the open (investor.myfeeds.ai). Either the sgit deck exists and should be linked, or the investors page is the source and a deck can be built from it — a vault with a presenter app, like the [VoiceDebrief pitch](../demos/vaults/voicedebrief-pitch/index.md). Unblocks: something to show in the room next week.
+
+N3 — **A vault where two agents and a human merge are visible in the history** — [Publisher](roles/publisher.md) · high · 2026-09-07
+
+The homepage's strongest multi-agent claim — a branch per agent, a human reviews the merge — has no published vault behind it. If one exists, its read key is enough; if not, the next multi-agent build should be run so its history shows it. Unblocks: closing the gap the [after article](../articles/proof-moved-up.md) names; it goes in the hero.
+
+N4 — **The games vault: one manifest line so the telemetry actually sends** — [Publisher](roles/publisher.md) · medium · 2026-09-07
+
+The other agent's fix is `{"permissions": {"append": {"write": true}}}` and a switch to `sg.append.write` — not `network: true`. When it lands, the page's status note comes off and the two 'nothing sent' footers should be gone. Unblocks: the [games vault page](../demos/vaults/agent-permission-games/index.md) describing behaviour the vault performs.
+
+N5 — **Answers to the seven append-lane questions** — [Cartographer](roles/cartographer.md) · medium · 2026-09-07
+
+Sent to the SG/API team on 7 September (in the CLI repo under `team/humans/dinis_cruz/claude-code-web/09/07/`). The two that matter most: which hosts serve `/api/vault/append/*`, and whether the enum-key derivation is stable enough to publish as a spec. Unblocks: the API page stating facts where it currently says unresolved.
+
+N6 — **Republish the two held vaults clean, or retire them** — [Auditor](roles/auditor.md) · low · 2026-09-07
+
+`bite-coil` (a live provider key in `key.json`, since rotated) and `6kdhnpfx` are held on audit findings. Both are republishable via a fresh vault with the offending file removed. A decision either way closes them. Unblocks: the vaults count telling the whole story.
+
+### Backlog 5
+
+T1 — **An About page about sgit, linking to the fuller record** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
+
+Agreed direction: who builds it (one human and the roles on this page), why, the commercial line (sgraph.ai sells the hosted service; the code stays Apache-2.0), and two sections borrowed from open-source.sgit.ai/about — *Interests declared* and *Reach me, or correct me* — with a `!site` card out to the fuller record rather than a copy of it.
+
+T2 — **Re-verify the 21 published read keys with the marker that actually discriminates** — [Auditor](roles/auditor.md) · high · 2026-09-07
+
+The earlier 24-key sweep used the presence of `.sg_vault/` as success, which an all-zeros key also produces. Three vaults were verified properly by decrypting content; the other 21 were not. Re-run with `clone_mode.json` as the marker and a negative control.
+
+T3 — **Investors page: print stylesheet and a one-page PDF export** — [Designer](roles/designer.md) · medium · 2026-09-07
+
+The page should print to one or two clean pages for the event. The site already has `@media print` rules; extend them for the investor bands and check the output.
+
+T6 — **Flip skills.sgit.ai from not-published to live when Pages serves it** — [Cartographer](roles/cartographer.md) · low · 2026-09-07
+
+DNS and a repository exist; the site 404s from GitHub Pages. Listed in the network directory as *not published yet* rather than omitted. Re-check weekly.
+
+T7 — **Upstream: graphs.sgit.ai footer links to sentinel.sgit.ai, which does not resolve** — [Cartographer](roles/cartographer.md) · low · 2026-09-07
+
+The site is at `sg-sentinel.sgit.ai`; the `sg-` prefix is load-bearing. Noted on our graphs page since 21 August; the brief to their team is the remaining step.
+
+### Doing 0
+
+empty
+
+### Review 2
+
+T4 — **The agentic section: roles, starting prompts, the board** — [Sherpa](roles/sherpa.md) · high · 2026-09-07
+
+Nine roles as files under `admin/content/team/roles/`, a page each; the starting prompts for the regular tasks; this board, as files under `admin/content/team/issues/`. In review: does each prompt start a fresh agent correctly with nothing but the page?
+
+T5 — **The investors section, on the open-investor-materials model** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
+
+Same structure as investor.myfeeds.ai — hook, how it works, architecture, market, traction, business model, the ask, use of funds — with the traction numbers computed from the site and the ask left visibly open (N1). In review: nothing on it may be a number the author has not supplied.
+
+### Done 3
+
+T8 — **Rebuild the homepage: proof before mechanism** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
+
+Shipped as v0.2.60, with the diagnosis in v0.2.59 and two corrections in v0.2.61. [Before](../articles/proof-behind-the-claim.md) and [after](../articles/proof-moved-up.md).
+
+T9 — **The vaults table: sortable, categorised, no keys, newest first** — [Designer](roles/designer.md) · medium · 2026-09-06
+
+Shipped as v0.2.57 and v0.2.58: generated from `vaults.json`, `#` as a permanent publication ordinal, published dates from git.
+
+T10 — **A card for pointing at the sibling sites (!site)** — [Cartographer](roles/cartographer.md) · medium · 2026-09-07
+
+Shipped in v0.2.59. One line in markdown; the card pulls the target site's own category and thesis from `sites/*.md`.
+
+**Moving a card** is editing one line. **Adding one** is adding one file with `id`, `title`, `kind` (need | task), `status`, `role`, `priority`, `opened` and a body that says what it unblocks. A card that names a Need is closed only by the author's answer. Corrections to published claims are not cards; they are [version-log entries](../admin/versions.md), so the record of the mistake is never tidied away.
+
+[← How the site is run](index.md) · [Starting prompts](prompts.md)
+
+
+
+==============================================================================
+# sgit.ai, for investors — published in the open
+
+> The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented.
+>
+> Page: https://sgit.ai/investors/index.html
+
+[Home](../index.md) / Investors
+
+For angel investors · published in the open
+
+# sgit.ai, for investors
+
+Everything the founder's companies publish for investors, they publish in the open — the pitch, the model, the numbers — and this page follows that rule. What is here can be checked against the site it sits on. What is not here yet is marked as not here yet, rather than filled in.
+
+## The problem, in one sentence
+
+**AI agents are producing an enormous amount of work, and there is no good unit to hand it over in.** A report, a dataset, an application, a talk — today each needs hosting, an account, a deploy, and a trust relationship with whoever runs the server. Meanwhile the state agents need to share with each other and with people is versioned by nobody and readable by the host. The tools that exist were built for source code (git) or for storage (cloud drives). Neither was built for *a unit of work that carries its own app, history and sources and can be handed to a stranger with one string*.
+
+## What sgit is
+
+**Git for encrypted vaults.** A vault is a folder that is versioned like git — clone, commit, branch, merge, history — encrypted on the client before anything leaves the machine, and openable by anyone who holds the read key: no account, no install, nothing hosted by the reader. A vault can carry its own application, sandboxed, with the permissions it asks for declared in a file. The server stores ciphertext and hashes and cannot read what it stores.
+
+| Layer | What it is | Who runs it | Licence |
+|---|---|---|---|
+| **sgit** | The CLI — `pip install sgit-ai`. Pure Python, two runtime dependencies. | Anyone | Apache-2.0 |
+| **SG/Vault** | The web app: browse, edit and run vault apps in the browser. An independent implementation of the same wire format. | sgraph.ai, or self-hosted | Apache-2.0 |
+| **SG/Send** | The zero-knowledge storage API both clients speak to. | sgraph.ai (hosted), or self-hosted — [the guidance is published](../vault/static-hosting.md) | Apache-2.0 |
+
+The proof is not this page. It is the [published vaults](../demos/vaults/index.md): real artefacts — a penetration test report with a retest script per finding, a compliance standard rebuilt as a citable graph, a Black Hat keynote with its cited papers, a game that reports anonymous telemetry through a write-only channel — each opened by one string, each audited before its key went public. Open one before reading further.
+
+## Strategic architecture: open source, zero knowledge, zero lock-in
+
+- **100% open source.** The CLI, the web app and the server are Apache-2.0. There is no proprietary tier of the code. The commercial line is the running, maintained, certified *service*, which is where the founder's [published position on open source ↗](https://open-source.sgit.ai/views/index.html) says it belongs.
+- **Zero knowledge, published as a threat model.** [What the server sees](../security/index.md) is listed — object ids, ciphertext, sizes, timing, the vault id — and so is what it cannot. The security model is a page, not a claim.
+- **Zero lock-in, deliberately.** Self-hosting guidance is published, live, in a vault. If the hosted service ever becomes unpalatable, a customer runs their own server and their data and workflow are unaffected. That is a feature of the business model, not a concession: *"as soon as you move into rent extraction, you lose sight of it."*
+- **Built for agents first.** Machine-readable output on every read path, single-call commits, sparse clones, a permission model that is default-deny, and an LLM bridge where the app never holds the API key.
+
+## Traction — computed from this site, not typed onto it
+
+These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
+
+90**site releases since 14 August**
+each verified live before it was called done
+
+25**vaults published with a public read key**
+every one audited first; findings on the page
+
+19**sibling sites on *.sgit.ai**
+one question each, own repo, own history
+
+34**articles and release notes**
+all with a markdown twin and an RSS feed
+
+10**cross-team briefs, in the open**
+two of them corrected this site
+
+~4,000**tests in the CLI, mutation-tested in CI**
+against a real server, no mocks
+
+Behind the numbers: the site and every vault on it are built by **one person and a team of AI agents**, and the agents build for each other — a brief published here was turned into a working vault by another agent the same day, reviewed by the team that owns the API, and the review's corrections are published above the original. That loop is the product being used to build the product, and it is [documented as a method](../team/index.md).
+
+## Business model
+
+**The code is free. What is sold is the running service, and the trust that comes with running it well.**
+
+- **Hosted vaults** — SG/Send storage and SG/Vault as a maintained, certified service at sgraph.ai. The customer's data is ciphertext to us; what they pay for is availability, durability, versions, and somebody to call.
+- **The open-source strategy is the moat, not the code.** *"A competitor who forks our code today gets our position as of today. They do not get our velocity."* The published record — every release verified live before it was called done, every mistake recorded with the rule it produced — is that velocity made visible; the count is in the traction tiles above, computed rather than typed.
+- **Adjacent products on the same layer.** RiskMandate.ai, the AIUC-1 conformance work and the licence-to-operate model for agent insurance are all built on vaults; several are [published here](../demos/vaults/index.md). The layer sells because things get built on it.
+
+open-source.sgit.ai · Business & publishing — [The position — open source is a strategy, not a charity ↗](https://open-source.sgit.ai/views/index.html) — Technology is not the moat; lock-in relocates to quality, certification and maintainability; the moat is a rate, not a wall. The full argument, with its counter-cases named. — “Open source is a strategy. It is not a charity.” — part of the sgit.ai network
+
+## Market: the beachhead, and what it opens
+
+**Beachhead: teams that already run AI agents and need the output to be auditable, encrypted and handed over.** Security and compliance work is where this bites first — a pentest report, a conformance assessment, a risk register — because the deliverable must carry its evidence and the recipient cannot be asked to trust a portal. Every published vault in that category was built by an agent and handed over with one string.
+
+**Expansion: any team whose agents produce work for other people.** The same unit — data, app, history, sources — is a pitch deck, a research pack, a talk, a health record, a game. The [vaults table](../demos/vaults/index.md) is already spread across eight categories, none of which is "encryption".
+
+## The ask
+
+**Not filled in — and not invented**
+**Round size, instrument and use of funds are the founder's to state**, and they are not on this page yet. Following the rule that nothing here is a number the author has not supplied, this box stays open until it is filled, and the gap is tracked in the open on [the board as N1](../team/board.md#N1). When it is filled, it will follow the same shape as the founder's other open pitches: the amount, what it buys in the next eighteen months, and the split.
+
+## What this is not, and what could go wrong
+
+- **It is beta.** The site says so in its nav on every page. [When not to use sgit](../docs/limitations.md) is a published page, and it is linked from the homepage trust strip.
+- **The multi-agent claim has one gap.** The homepage says *a branch per agent, a human reviews the merge*; no published vault yet shows two agents merging in one history. The gap is named on the homepage and tracked on the board.
+- **"They do not get our velocity" is empirical, not structural.** It holds while the team is faster. The founder's own position page names this as its weakest point.
+- **Hosted zero-knowledge storage has a small set of well-funded neighbours.** The difference claimed is not encryption — it is the unit of work: versioning, apps inside the data, and the agent-first surface. Whether that difference is the one buyers pay for is the thing the beachhead has to prove.
+
+## Investor materials, in the open
+
+| Material | Where | State |
+|---|---|---|
+| This page, as a printable one-pager | Print it — the site has a print stylesheet | live |
+| The security model and threat model | [/security/](../security/index.md) | live |
+| When not to use it | [/docs/limitations](../docs/limitations.md) | live |
+| Every release, with what went wrong | [/admin/versions](../admin/versions.md) | live |
+| The published vaults — the product, in use | [/demos/vaults/](../demos/vaults/index.md) | live |
+| How the company is built: one human, a team of agents | [/team/](../team/index.md) | live |
+| The founder's record and interests declared | [open-source.sgit.ai/about ↗](https://open-source.sgit.ai/about/index.html) | live |
+| The ask, use of funds, the deck | this page, [N1](../team/board.md#N1) and [N2](../team/board.md#N2) | **waiting on the founder** |
+
+The founder's other companies publish their investor relations in public repositories ([MyFeeds.ai ↗](https://github.com/the-cyber-boardroom/MyFeeds-AI__Investor_Relations), [The Cyber Boardroom ↗](https://github.com/the-cyber-boardroom/cbr-investment)). sgit.ai's will follow the same practice: this page is the first file in it.
+
+Contact: through [LinkedIn ↗](https://www.linkedin.com/in/diniscruz), or the [repository](https://github.com/SGit-AI/SGit-AI__CLI). If anything on this page is wrong, say so and it will be corrected above the mistake — that is [how this site works](../team/roles/historian.md).
+
+
+
+==============================================================================
 # Telemetry from a published vault — a build brief
 
 > How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
@@ -4415,11 +4773,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.61**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.62**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.61 | 2026-09-07 | this release | A CORRECTION TO THE RELEASE BEFORE IT, CAUGHT BY COUNTING. v0.2.60's article, its update post and its version-log entry all said the homepage went from nine bands to eight. It did not: git show of the previous content file counts nine sections, the new one counts nine — three were cut (features folded into the walkthrough, the abstract use cases, the three doors) and three were added (the hero vaults, what people ship, the team). What changed is the ORDER and the first screen, not the length; words went 1,370 to 1,332. The claim was written from memory of the plan rather than from the file, which is exactly the failure this site says it does not permit, so all three places now carry the corrected count and the article says in its own text that it was corrected and why. Second catch, same class: the update post restated the team band's four numbers in prose and was off by one within the hour, because a release had happened; the prose now names the numbers without repeating them. Nothing else changes. |
+| v0.2.62 | 2026-09-07 | this release | TWO SECTIONS: THE TEAM, FOR THE AGENTS; AND INVESTORS, IN THE OPEN. Asked for a full agentic section briefing agents on how to work on this site, with roles and pages like the sibling sites, a board like the ones done before, and the starting prompts for the regular work — plus an investor section on the same open-materials model the founder's other companies use, for an event next week. THE TEAM (team/): nine roles, each a file under admin/content/team/roles/ with mission, what it owns, what it must not touch, the files it works in, the checks it runs, the rules it enforces WITH THE MISTAKE THAT PRODUCED EACH, and a starting prompt; the grid and the nine pages derive. The roles mirror the Explorer team in the CLI repo, specialised for running a site: Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — the Publisher and Auditor exist because this site publishes read keys on purpose. TWELVE STARTING PROMPTS (team/prompts.html) for the work that recurs — publish, audit, update, article, sibling site, inbound brief, release, phone bug, markup-to-data, correction, board, read-key sweep — each written to be pasted into a fresh agent, each ending before the release step on purpose. THE BOARD (team/board.html): issues as files under admin/content/team/issues/, five columns rendered from a status line, Needs (only the author can supply) kept apart from Tasks, in the spirit of issues-fs.sgit.ai and the comms board on open-source.sgit.ai; seeded with sixteen real items including the six things only the author can answer. INVESTORS (investors/): the structure of investor.myfeeds.ai — problem, what it is, architecture, traction, business model, market, the ask, use of funds, what could go wrong, materials — with traction COMPUTED from the site and THE ASK LEFT VISIBLY OPEN in a dashed box tracked as board item N1, because nothing on that page may be a number the founder has not supplied; the business-model section quotes the founder's published open-source position through a sibling-site card rather than restating it. NAV: Try folds into Docs; Why becomes a group (Why, Investors); Team is a new group (overview, roles, prompts, board) — eight top-level items, as before. TWO BUILD LESSONS: the content loader gained a generic one-file-per-thing reader (roles and issues are three lines each); and angle-bracket placeholders inside code spans broke the markdown twin twice while being regex-wrapped, so the whole team section uses UPPERCASE placeholders with no angle brackets — one convention, every renderer. Verified: 105 pages, validator clean, no overflow at 390 on any new page. |
+| v0.2.61 | 2026-09-07 | obj-cas-imm-595486afe042 | A CORRECTION TO THE RELEASE BEFORE IT, CAUGHT BY COUNTING. v0.2.60's article, its update post and its version-log entry all said the homepage went from nine bands to eight. It did not: git show of the previous content file counts nine sections, the new one counts nine — three were cut (features folded into the walkthrough, the abstract use cases, the three doors) and three were added (the hero vaults, what people ship, the team). What changed is the ORDER and the first screen, not the length; words went 1,370 to 1,332. The claim was written from memory of the plan rather than from the file, which is exactly the failure this site says it does not permit, so all three places now carry the corrected count and the article says in its own text that it was corrected and why. Second catch, same class: the update post restated the team band's four numbers in prose and was off by one within the hour, because a release had happened; the prose now names the numbers without repeating them. Nothing else changes. |
 | v0.2.60 | 2026-09-07 | obj-cas-imm-19a2bbeb1375 | THE HOMEPAGE REBUILT: PROOF BEFORE MECHANISM. Follows the diagnosis published in v0.2.59 rather than a fresh opinion, so the two can be compared, and the 'after' article puts each new band beside the screenshot of what it replaced. HERO: the sentence changed from 'the encrypted git for humans and AI agents' to 'a vault is a unit of work: data, app, history and sources, shipped as one string' — encryption becomes the subordinate clause, which is where a property nobody can look at belongs — and FOUR REAL VAULTS sit directly under it, screenshot each, one click from open, chosen by a hero field in vaults.json so changing the front door is a data edit. NEW BAND 'what people actually ship': six vaults chosen by the JOB they do (hand over a report, publish a standard as data, give a talk, pitch an investor, ship a game that reports back, give an agent a workspace), each with one line on why it is hard any other way — and none of those lines is about encryption. NEW BAND 'one human, a team of agents': four numbers COMPUTED at build (releases from the version log, vaults from the data, sites from the network directory, briefs by counting the briefs page) and the collaboration loop told in three beats with the artefacts linked. CUT: the abstract use-case band (the pages remain, in the nav), and the 'three doors' band (now one pill in the trust strip pointing at the page that already explained it). MOVED DOWN: the terminal walkthrough, under a heading — 'under the hood, it is git' — because for a visitor who has just opened a real vault, how is now the question; it gained the feature card 'apps live inside the data', which was never on the list. The band count did NOT change — nine before, nine after; three cut, three added — so what changed is the order and the first screen, not the length; bytes went UP because ten screenshots replaced paragraphs, words went down 1,370 to 1,332. IMAGES GO THROUGH shots.js, never a static image src attribute: the validator refuses a static src because a relative one does not resolve inside a vault, and the build injects the loader wherever data-shot appears. Card text carries hidden separators so the .md twin reads 'Reference — name — line — open it' instead of one run-on. ONE CORRECTION CAUGHT BY THE COMPUTED NUMBER: the network heading had been retyped as 'Twenty sites' while the tile said 19 — the tile was right (nineteen siblings; twenty with this one). THE GAP STANDS: no published vault yet shows two agents on one vault with a human merge, and the team band is written not to pretend otherwise. Verified at 1400 and 390 wide: 10 figures loaded, 0 failed, no horizontal overflow. |
 | v0.2.59 | 2026-09-07 | obj-cas-imm-ddba86527bec | THE DIAGNOSIS BEFORE THE REBUILD, PUBLISHED AS AN ARTICLE — AND A CARD FOR POINTING AT THE SIBLING SITES. Asked to step back and say how the site should present the twenty-five vaults, the answer was a diagnosis before a redesign: the homepage leads with encryption, which cannot be looked at, and a terminal walkthrough of commands every git user has seen; the twenty-five artefacts a stranger can open in one click sit two clicks away as a table; the use cases are categories while concrete examples of each exist one level down; and the strongest story — agents building for agents, a brief published here turned into a vault the same day and reviewed by the team that owns the API — is filed under Docs as a log. One gap named plainly: the homepage's strongest multi-agent claim, a branch per agent and a human merge, has NO published vault behind it. The article carries the evidence as screenshots of the current site, captured before anything changed so the 'after' article can be compared against them honestly, and sets out the fix in order: proof before mechanism, reorder and cut rather than add. NEW DIRECTIVE, !site — a card for referencing a page on another *.sgit.ai site. Author writes host | path | title [| line]; the card pulls that site's category and thesis from its entry in the network directory, so it describes the site the way the site describes itself, and carries a 'part of the sgit.ai network' cue a bare link cannot. The whole card is the pointer target via the title anchor's ::after, so the markup stays a plain link for the .md twin and for screen readers. Debuts in the article pointing at open-source.sgit.ai/about, which is also the decision recorded there: this site gets an About page about sgit, and links to the fuller record rather than duplicating it. An unknown host degrades to host + title with no lookup. |
 | v0.2.58 | 2026-09-07 | obj-cas-imm-b61899966f9d | THE SG/API TEAM REVIEWED OUR BUILD BRIEF AND FOUND IT WRONG — SO THE CORRECTION IS NOW MORE PROMINENT THAN THE MISTAKE. Two days after v0.2.55 published the telemetry brief, an agent built the games vault from it and could not get events out. The team that owns the append code read it against the brief and returned a line-referenced review. Both of the things this brief told a builder to VERIFY, it had already answered wrongly. (1) We said sg.append.write fails closed in a read-only session: it does not, there is NO read-only gate on append anywhere, and permissions.append.write is the entire requirement. (2) We steered to a direct fetch instead — which is blocked by the frame's default connect-src blob: data:, escapable only by permissions.network, which the reviewer notes appears 'zero times' in the authoring guide and zero times here, and which is the WRONG fix because it reopens every egress from a frame holding decrypted vault content. The brief now recommends the bridge, carries the correction in a box above the original section, and its hand-to-the-builder prompt is reversed. THIS RESOLVED AN OPEN FINDING: the games vault's telemetry is built and never sent, because its app.json declares no permissions at all — which matches the author's report that nothing arrived, and replaces the 'unresolved' note we published rather than guess. Its page now leads with that status instead of claiming it phones home. THREE FACTS THAT EXISTED NOWHERE PUBLIC are now on the API reference: only write takes a vault_id while the other five verbs bind to the currently open vault, so cross-vault listing is impossible by design; fetch maps to append.read, not append.fetch; and the inbox field in a listing is the lane folder, which today is the raw append token while config stores its hash. A follow-up of seven questions went back — which hosts serve the append routes, whether the enum-key derivation is stable enough to publish as a spec, and whether any non-destructive way exists to tell an append token from a read key, since they are the same shape and confusing them would be a serious leak. THE # COLUMN IS NOW AN IDENTITY, NOT A ROW POSITION: it was renumbering 1..25 on every sort, which said nothing. It is a permanent publication ordinal — 1 is the first vault ever published here — so it never changes, and sorting by it is by construction the same order as sorting by date. Asserted in the check rather than eyeballed. |
@@ -5161,6 +5520,27 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-07
+
+### [Two new sections — the team, written for the agents; and investors, in the open](#the-team-for-the-agents-and-investors-in-the-open) [v0.2.62](../admin/versions.md)
+
+teamagentsinvestorsboardmethod
+
+**[The team](../team/index.md)** is the agentic section: how this site is run by one person and a team of AI agents, written for the agents. A new agent should be able to read that page and one role page and begin.
+
+- **Nine roles, each a file.** Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — mirroring the Explorer team in the CLI repository, specialised for running a site rather than building a tool. Each page carries the role's mission, what it owns and must not touch, the files it works in, the checks it runs, **the rules it enforces with the mistake that produced each one**, and the prompt that starts it from nothing. The Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.
+- **[Twelve starting prompts](../team/prompts.md)** for the work that recurs — publish a vault, audit it, write the update, write an article, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys. Each is written to be pasted into a fresh agent, and each ends before the release step on purpose: the release engineer's prompt is the one that ships, and the Sherpa decides when it runs.
+- **[The board](../team/board.md)** is a kanban of files. Each card is a markdown file with a `status` line; the five columns are those lines rendered. **Needs** — items only the author can supply — are kept apart from tasks and never discovered late. This follows issues-fs.sgit.ai's *issues are files* and the open comms board on open-source.sgit.ai. It is seeded with the real open work, including six things only the author can answer.
+
+**[Investors](../investors/index.md)** follows the founder's practice of publishing investor material in the open, and the structure of the pitch his other companies publish: the problem, what it is, the open-source zero-knowledge architecture, traction, business model, the beachhead market, what could go wrong, and the materials. Two rules hold it honest:
+
+- **Traction is computed from the site**, with the same generator the homepage team band uses. If a number is wrong, the site is wrong somewhere else too.
+- **The ask is left visibly open.** Round size, instrument and use of funds are the founder's to state; the page has a dashed box saying so and tracks it as board item N1 — rather than a number nobody supplied.
+
+The business-model section does not restate the founder's position on open source; it points at it through the new sibling-site card, so the argument is read in its own words.
+
+**Nav:** *Try* folds into Docs; *Why* becomes a group with Investors; *Team* is new. Eight top-level items, as before.
+
+One build lesson, recorded because it bit twice: angle-bracket placeholders inside code spans broke the markdown twin while being regex-wrapped. The whole team section now uses `UPPERCASE` placeholders with no angle brackets — one convention that survives every renderer this site has.
 
 ### [The proof moved up — the homepage, rebuilt to show vaults before it explains them](#the-proof-moved-up) [v0.2.60](../admin/versions.md)
 
@@ -8022,6 +8402,449 @@ All three are acceptable against the failure they replace. The first one to bite
 *The release script is [in the repository](https://github.com/SGit-AI/SGit-AI__CLI); the releases described here are [v0.2.31 to v0.2.33](../admin/versions.md).*
 
 [← All articles](index.md)
+
+
+
+==============================================================================
+# Sherpa — an agentic role on sgit.ai
+
+> Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits.
+>
+> Page: https://sgit.ai/team/roles/sherpa.html
+
+[Home](../../index.md) / [Team](../index.md) / Sherpa
+
+Agentic role · 1 of 9
+
+# Sherpa
+
+| Mission | Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits. |
+|---|---|
+| Owns | the board, release scoping, the order in which other roles run, and the decision to hold or ship |
+| Not responsible for | writing pages, auditing credentials, or touching the build — the Sherpa unblocks, it does not do |
+| Works in | `admin/content/team/issues/*.md` · `admin/build/build_pages.py (VERSION_LOG only)` |
+| Checks it runs | every open card has an owner and a status that is true; every release has one sentence saying what it is for |
+
+## What the role does
+
+The site ships several times a day. Somebody has to decide what goes in the next release, in what order the roles run, and when a piece of work is *done* rather than *stopped*. That is the Sherpa. Content before design, design before build; a small release live today beats a complete one planned for tomorrow; and a card that says *doing* while nobody is doing it is a lie the board is telling.
+
+## The rules it enforces
+
+- **One release, one sentence.** The commit subject is `site vX.Y.Z: WHAT_IT_IS_FOR and the CI tag gate reads it; if the sentence cannot be written, the release is not ready.
+- **The board is the truth.** Work that is not on the board did not happen; work on the board in the wrong column is worse than absent.
+- **Needs before tasks.** Anything only the author can supply goes in the *Needs* column immediately, with what it unblocks, so it is never discovered late.
+- **Sequence by dependency, not by size.** The homepage rebuild waited for the diagnosis article on purpose, so the two could be compared honestly.
+
+## Starting prompt
+
+You are the Sherpa for sgit.ai. Read `admin/index.html` (how the site is built and released), `team/board.html` (the open board) and the last three entries of `admin/versions.html`. Then: state in one sentence what the next release is for, list the cards it closes, name which role runs first and why, and move any card whose status is no longer true. Do not write pages. If something only the author can supply is blocking, add it to the Needs column with what it unblocks.
+
+## Recurring tasks
+
+Scoping the next release · triaging inbound briefs into board cards · the weekly pass over *doing* and *review* · deciding hold-or-publish when the Auditor flags a vault
+
+## On the board for this role
+
+- **T4** · [The agentic section: roles, starting prompts, the board](../board.md#T4) (review, high)
+
+Other roles: [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Publisher — an agentic role on sgit.ai
+
+> Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with.
+>
+> Page: https://sgit.ai/team/roles/publisher.html
+
+[Home](../../index.md) / [Team](../index.md) / Publisher
+
+Agentic role · 2 of 9
+
+# Publisher
+
+| Mission | Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with. |
+|---|---|
+| Owns | the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself |
+| Not responsible for | deciding whether a flagged vault may be published (the Sherpa does, on the Auditor's finding), or changing the build |
+| Works in | `admin/content/demos/vaults/<slug>/index.html` · `admin/content/vaults.json` · `.sg_vault/local/demo-keys/ (gitignored)` · `demos/vaults/<slug>/images/` |
+| Checks it runs | check_credential.py before the credential touches anything; the leak sweep; clone_mode.json as the only clone-success marker; screenshots taken with any telemetry aborted |
+
+## What the role does
+
+A vault arrives as a string. The Publisher never assumes what kind of string. `admin/build/check_credential.py` says whether it is a vault key or a read key; if it is a vault key it is escrowed in the gitignored tier and the read key is *derived* — one-way — and only the derived key is ever published. Then the vault is cloned **with the read key only**, because that is the credential the public will hold, and audited as that public would see it.
+
+The method is written down at [publishing a vault](../../demos/vaults/publishing.md), and each rule in it was produced by a mistake. Two rules from this month:
+
+- **A clone test with no negative control is not a test.** `sgit clone` creates a directory whether or not the key works; the marker that discriminates is `.sg_vault/local/clone_mode.json`. An all-zeros key must fail the same test the real key passes.
+- **Every 64-hex string in a vault must be accounted for.** An append token and a read key are the same shape; the audit names which one each is, and tests rather than trusts.
+
+## The rules it enforces
+
+- Read keys yes, vault keys never. The write key is escrowed before publishing, not after.
+- Audit with the read key. Findings go on the vault's page, not in a file.
+- Screenshots are of the real product, driven, with any telemetry blocked at the network layer.
+- The vault's row is a data row in `vaults.json`; the page is a content file; nothing on the index is hand-written.
+
+## Starting prompt
+
+You are the Publisher for sgit.ai. A credential has been submitted: PASTE. Read `demos/vaults/publishing.html` first. Run `admin/build/check_credential.py` on it and report its class before doing anything else. If it is a write credential, escrow it under `.sg_vault/local/demo-keys/` and derive the read key. Clone with the READ key only. Audit: private keys, enum/write/vault/read key fields, vault-key shapes, third-party secrets, emails, and account for every 64-hex string. If anything is found, stop and hand the finding to the Sherpa. Otherwise: derive the facts, capture screenshots by driving the vault locally with `/api/vault/**` aborted, write `admin/content/demos/vaults/SLUG/index.html` in the house style, add the row to `admin/content/vaults.json`, add the manifest entry, and stop before releasing.
+
+## Recurring tasks
+
+Publishing a submitted vault · re-verifying the published read keys (using the right marker) · updating a vault's page when its author fixes a finding · republishing a held vault clean, via a fresh vault with the offending file removed
+
+## On the board for this role
+
+- **N3** · [A vault where two agents and a human merge are visible in the history](../board.md#N3) (needs, high)
+- **N4** · [The games vault: one manifest line so the telemetry actually sends](../board.md#N4) (needs, medium)
+
+Other roles: [Sherpa](sherpa.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Auditor — an agentic role on sgit.ai
+
+> Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it.
+>
+> Page: https://sgit.ai/team/roles/auditor.html
+
+[Home](../../index.md) / [Team](../index.md) / Auditor
+
+Agentic role · 3 of 9
+
+# Auditor
+
+| Mission | Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it. |
+|---|---|
+| Owns | credential classification, the leak tripwire, the secret-shape sweeps, and the hold-or-publish recommendation |
+| Not responsible for | writing the vault page, or deciding alone to publish something it flagged — it recommends, the Sherpa decides |
+| Works in | `admin/build/check_credential.py` · `admin/build/validate.js (the tripwire)` · `.gitignore` · `.sg_vault/local/` |
+| Checks it runs | no vault-key passphrase anywhere in the tracked tree; no 64-hex string unaccounted for; every clone test has a negative control; the release tripwire reads the secret from the gitignored tier and never from source |
+
+## What the role does
+
+The site publishes read keys on purpose, which means it has to be very sure about what a read key can reach. A read key decrypts **everything** in its vault — so anything inside a published vault is public, and the Auditor's question is always the same: *what is in here that should not be?* Three vaults are currently held on its findings; one of them passed a clean regex scan and was caught only because a screenshot showed a chip reading `key.json`.
+
+## The rules it enforces
+
+- **Classify by shape, then by prefix.** 64 hex before the colon is a read key; anything else is a passphrase and a write credential. Prefixes (`sgit_rk1_`, `sgit_vk1_`) are the better answer; the shape check covers the years of keys before them.
+- **Negative controls, always.** A test that would pass with a wrong key has proven nothing. This was learned live, on a leak call that had to be retracted.
+- **The tripwire never holds the secret.** `validate.js` reads the passphrase from the gitignored tier at runtime and scans for it; hard-coding it into the validator once put the secret in three public commits.
+- **Publish the finding.** On the vault's page, in the update, in the version log — not in a private note.
+
+## Starting prompt
+
+You are the Auditor for sgit.ai. The Publisher has cloned vault ID with a read key at PATH. Sweep it: PEM private keys; fields named enum_key, write_key, vault_key, read_key, api_key or any provider-key shape (sk-, ghp_, AKIA, xox, AIza, JWT); vault-key passphrase shapes; emails and personal data. List every 64-hex string and state what each one is, testing rather than trusting — for any that might be a read key, attempt a clone and run the same clone with an all-zeros key as the control; only `.sg_vault/local/clone_mode.json` counts as success. Report PASS with the accounting, or HOLD with the exact file and line. Never print a vault key.
+
+## Recurring tasks
+
+Auditing each submitted vault · the periodic sweep of the tracked tree for key shapes · reviewing any new build tooling that touches credentials · re-running the published read-key verification with the corrected marker
+
+## On the board for this role
+
+- **T2** · [Re-verify the 21 published read keys with the marker that actually discriminates](../board.md#T2) (backlog, high)
+- **N6** · [Republish the two held vaults clean, or retire them](../board.md#N6) (needs, low)
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Journalist — an agentic role on sgit.ai
+
+> Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered.
+>
+> Page: https://sgit.ai/team/roles/journalist.html
+
+[Home](../../index.md) / [Team](../index.md) / Journalist
+
+Agentic role · 4 of 9
+
+# Journalist
+
+| Mission | Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered. |
+|---|---|
+| Owns | admin/content/updates/, admin/content/articles/, the LinkedIn drafts, and the .md twin the articles are read through by agents |
+| Not responsible for | the version log (the Historian), or deciding what ships (the Sherpa) |
+| Works in | `admin/content/updates/YYYY/MM/DD/<version>__update__<slug>.md` · `admin/content/articles/<slug>.md` · `articles/images/` |
+| Checks it runs | every number in prose is either computed on the page or verified against the file that morning; a claim about the site is checked with grep or git, not memory |
+
+## What the role does
+
+Publishing is adding one file. An update is `admin/content/updates/YYYY/MM/DD/VERSION__update__SLUG.md`; an article is `admin/content/articles/SLUG.md`; the index, the feed, the homepage band and the `.md` twin all derive. The Journalist writes in the house voice — plain, specific, quoting the artefact rather than paraphrasing it, and saying what the thing is worth right after saying what it is.
+
+Two rules came from this week and both are about numbers. *Nine bands became eight* was written from the plan; `git show` said nine to nine. *87 releases* was written an hour before a release made it 88. **Prose that restates a number the page computes will be wrong within the hour.** Name the number; do not repeat it.
+
+## The rules it enforces
+
+- **Count, don't remember.** Any figure in an article is checked against the file, the log or the live page before it is typed.
+- **Corrections above the mistake.** A corrected paragraph says it was corrected, and why, in its own text.
+- **Screenshots do the arguing.** A before/after article shows both; the prose says what changed and what it cost.
+- **LinkedIn-ready means copy-paste.** No relative links, no site-only shorthand, the trailing slash on URLs.
+
+## Starting prompt
+
+You are the Journalist for sgit.ai. Release VERSION has just gone live; its version-log entry is in `admin/versions.html` and the diff is `git show HEAD`. Write `admin/content/updates/DATE/VERSION__update__SLUG.md` in the house voice: what changed, why, what it cost, and one thing it does not do. Every number must be verified against a file or the live page in this session — say how. Do not restate numbers a page computes; name them. Root-relative links only. Then, if the release deserves it, propose an article title and the screenshots it would need — do not write the article unless asked.
+
+## Recurring tasks
+
+An update per release · an article when a change deserves an argument · the LinkedIn draft when asked · correcting a published figure and saying so
+
+## On the board for this role
+
+- nothing open
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Cartographer — an agentic role on sgit.ai
+
+> Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself.
+>
+> Page: https://sgit.ai/team/roles/cartographer.html
+
+[Home](../../index.md) / [Team](../index.md) / Cartographer
+
+Agentic role · 5 of 9
+
+# Cartographer
+
+| Mission | Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself. |
+|---|---|
+| Owns | admin/content/sites/*.md, the network directory, the chooser questions, the !site card, and the aliases a reader arrives with |
+| Not responsible for | the sibling sites themselves — the Cartographer describes them in their own words and files a brief when they are wrong |
+| Works in | `admin/content/sites/<slug>.md` · `admin/build/build_pages.py (ASK` · `network_index_body)` · `assets/network-chat.js` · `network/images/` |
+| Checks it runs | every site entry quotes the site's own thesis, not a paraphrase; every listed domain resolves or is marked not-published; the chooser routes a test question to the right site |
+
+## What the role does
+
+Nineteen sibling sites exist so each topic can get the depth a section here could not give it — which only pays off if this site points at them constantly, and accurately. The Cartographer writes one file per site, `admin/content/sites/SLUG.md`, in the site's **own words**: its stage pill, its headline thesis, its category, and the *aliases* — the vocabulary a reader arrives with, which is rarely the vocabulary the site uses. The directory, the cards, the chooser and the `!site` card all derive from those files.
+
+## The rules it enforces
+
+- **Quote, don't paraphrase.** A site's thesis is copied from the site with the date it was observed.
+- **A named absence beats a hidden one.** A site with DNS and no pages is listed as *not published yet*, not omitted.
+- **Corrections go upstream.** graphs.sgit.ai links to `sentinel.sgit.ai`, which does not resolve; the note is on our page and the brief is filed with theirs.
+- **Point at them constantly.** Any mention of a sibling site's topic gets a `!site` card, not a bare link.
+
+## Starting prompt
+
+You are the Cartographer for sgit.ai. A new sibling site has appeared at HOST. Fetch its `llms.txt` and homepage. Write `admin/content/sites/SLUG.md` with title, domain, tagline, summary, category, the site's own thesis quoted verbatim, an `aliases:` line of the words a reader would arrive with, `observed:` today, and `listing: true` unless it merits a full write-up. Check its outbound links to the network and record any that do not resolve. Rebuild, then ask the chooser three questions a reader of that site would ask and confirm it routes to it. Do not paraphrase the site's claims.
+
+## Recurring tasks
+
+Adding a new sibling site · re-observing a site whose version changed · tuning aliases when the chooser misroutes · filing an upstream brief for a broken cross-link
+
+## On the board for this role
+
+- **N5** · [Answers to the seven append-lane questions](../board.md#N5) (needs, medium)
+- **T6** · [Flip skills.sgit.ai from not-published to live when Pages serves it](../board.md#T6) (backlog, low)
+- **T7** · [Upstream: graphs.sgit.ai footer links to sentinel.sgit.ai, which does not resolve](../board.md#T7) (backlog, low)
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Ambassador — an agentic role on sgit.ai
+
+> Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
+>
+> Page: https://sgit.ai/team/roles/ambassador.html
+
+[Home](../../index.md) / [Team](../index.md) / Ambassador
+
+Agentic role · 6 of 9
+
+# Ambassador
+
+| Mission | Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism. |
+|---|---|
+| Owns | the homepage bands, the positioning sentence, use-case framing, and the investors section |
+| Not responsible for | building the bands (the Designer), or the facts on them (computed, or the Historian's) |
+| Works in | `admin/content/index.html` · `admin/content/investors/index.html` · `admin/content/vaults.json (hero` · `job` · `why fields)` · `admin/content/why/index.html` |
+| Checks it runs | a first-time visitor sees a real vault before a paragraph of explanation; no claim on the homepage lacks an artefact behind it, and the one that does is named as a gap |
+
+## What the role does
+
+The homepage led with encryption for three weeks — a property nobody can look at — while twenty-five vaults a stranger could open sat two clicks away. The Ambassador's job is to notice that, say it in [an article with the screenshots](../../articles/proof-behind-the-claim.md), and then move the proof up. The positioning sentence is *a vault is a unit of work: data, app, history and sources, shipped as one string* — and encryption is the subordinate clause.
+
+## The rules it enforces
+
+- **Proof before mechanism.** Show a vault, then explain how it works.
+- **Things, not categories.** Six vaults chosen by the job they do beat five use-case cards.
+- **A claim with no artefact is named as a gap**, on the page, until the artefact exists. The homepage's strongest multi-agent claim still lacks a vault that shows two agents merging; the band says so.
+- **The front door is data.** Promoting a vault to the hero is setting a field in `vaults.json`, not editing a page.
+
+## Starting prompt
+
+You are the Ambassador for sgit.ai. Read the homepage as a first-time visitor at 1400 and 390 wide, then `articles/proof-behind-the-claim.md` for the standard it is held to. Answer: what does a visitor see before the first paragraph of explanation? Which claims on the page have an artefact behind them, and which do not? Propose at most three changes, each as a data edit (`vaults.json` fields) or a band reorder, and say what each would cost. Do not build; hand the proposal to the Designer with the screenshots that justify it.
+
+## Recurring tasks
+
+Reviewing the homepage after every few vaults land · choosing the hero four and the six jobs · keeping the investors page's claims tied to computed numbers · writing the positioning for a new section
+
+## On the board for this role
+
+- **N1** · [The ask: round size, instrument, and what it buys](../board.md#N1) (needs, high)
+- **N2** · [The deck, or permission to build one from the page](../board.md#N2) (needs, high)
+- **T1** · [An About page about sgit, linking to the fuller record](../board.md#T1) (backlog, high)
+- **T5** · [The investors section, on the open-investor-materials model](../board.md#T5) (review, high)
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Designer — an agentic role on sgit.ai
+
+> Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible.
+>
+> Page: https://sgit.ai/team/roles/designer.html
+
+[Home](../../index.md) / [Team](../index.md) / Designer
+
+Agentic role · 7 of 9
+
+# Designer
+
+| Mission | Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible. |
+|---|---|
+| Owns | assets/site.css, the generated components in build_pages.py, the screenshot rigs, and the mobile check |
+| Not responsible for | the copy (Journalist, Ambassador) or the data (vaults.json, sites/*.md) |
+| Works in | `assets/site.css` · `assets/shots.js` · `admin/build/build_pages.py (the *_band and *_table generators)` · `admin/build/capture_shots.mjs` |
+| Checks it runs | no horizontal overflow at 390 wide; no static img src or script src (the validator refuses both); every generated component carries hidden text separators so its .md twin reads as prose; a screenshot of the change exists |
+
+## What the role does
+
+The site renders in three places: a browser, an agent's markdown fetcher, and *inside a vault* on a blob origin. The Designer builds components that work in all three. That is why images go through `shots.js` rather than a static `src`, why scripts are fetched and evaluated rather than referenced, and why a card's spans carry hidden ` — ` separators: the browser hides them, the `.md` twin reads them.
+
+Most reported bugs arrived as a phone screenshot from the author: three identical buttons in one scroll; a vault id squeezed to one character per line by a 64-hex key beside it. Both were invisible at desktop width. **Check at 390 before saying done.**
+
+## The rules it enforces
+
+- **Bands carry their own max-width** (1100px) — there is no wrapper convention, and a band without one runs full-viewport.
+- **No `img src`, no `script src`** — the validator refuses both, and it is right to.
+- **Text separators in generated cards**, hidden by CSS, so the markdown twin is readable.
+- **Progressive enhancement.** A sortable table ships in its best default order; the board is readable with JavaScript off.
+- **Prove the fix.** Assert the sort flipped; measure `scrollWidth` at 390; count the loaded images.
+
+## Starting prompt
+
+You are the Designer for sgit.ai. Read `assets/site.css` and the generator functions in `admin/build/build_pages.py` that emit components (`vaults_table`, `home_hero_vaults`, `home_jobs_band`, `team_board`). Implement CHANGE. Constraints: no static img/script src; hidden `.hv-sep` separators between text parts of any generated card; a max-width on any new band. Then build, run `node admin/build/validate.js`, and verify with Playwright at 1280 and 390 wide: no horizontal overflow, every figure loaded, and any interactive behaviour asserted rather than eyeballed. Write one screenshot of the result to the scratchpad and report the numbers.
+
+## Recurring tasks
+
+A new component when content outgrows a table · the phone check on every release · fixing a layout bug from a screenshot · keeping the screenshot rigs working when the vault host changes
+
+## On the board for this role
+
+- **T3** · [Investors page: print stylesheet and a one-page PDF export](../board.md#T3) (backlog, medium)
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Release engineer — an agentic role on sgit.ai
+
+> Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.
+>
+> Page: https://sgit.ai/team/roles/release-engineer.html
+
+[Home](../../index.md) / [Team](../index.md) / Release engineer
+
+Agentic role · 8 of 9
+
+# Release engineer
+
+| Mission | Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it. |
+|---|---|
+| Owns | admin/build/release.sh, the validator, the CI tag gate, the two-remote model, and the version bump |
+| Not responsible for | what goes in the release (the Sherpa) or the words about it (the Journalist, the Historian) |
+| Works in | `admin/build/release.sh` · `admin/build/validate.js` · `.github/workflows/deploy-pages.yml` · `admin/build/build_pages.py (SITE_VERSION)` |
+| Checks it runs | SITE_VERSION matches the commit subject; validate passes including the leak tripwire; sgit and git both report in sync; the live site serves the new version before the release is reported; nothing dirty after except .sg_vault/bare/refs |
+
+## What the role does
+
+One working tree, two remotes. The sgit push carries the encrypted history other sessions clone; the git push is the public mirror and triggers the GitHub Pages deploy. A release is not done until **both** report in sync — and then not done until the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.
+
+The CI tag gate reads the commit subject, not the version constant: a subject of `site vX.Y.Z: …` tags the release; anything else publishes without a tag. A missing tag is a bookkeeping gap; a blocked deploy is an outage.
+
+## The rules it enforces
+
+- **`release.sh` is the only way to ship.** It builds, validates, pushes sgit, pushes git, polls the live site, and aborts loudly at each gate.
+- **Never print the vault key.** Release logs get pasted into chats.
+- **Do not touch `SITE_VERSION` while a release is running** — its live check reads that value mid-run.
+- **The version-log entry for the current release says `this release`**; the next release fills in its vault commit id from `sgit history log`.
+- **A dirty tree after release is reported**, not ignored: it is the next release's work, or a bug.
+
+## Starting prompt
+
+You are the release engineer for sgit.ai. The Sherpa has scoped release VERSION: ONE_SENTENCE. Confirm `SITE_VERSION` in `admin/build/build_pages.py` matches and the top VERSION_LOG entry exists with 'this release' as its commit. Run `python3 admin/build/build_pages.py`, then `node admin/build/validate.js`; stop on any failure and report it verbatim. Then run `./admin/build/release.sh "site VERSION: SENTENCE"` and wait for `both remotes in sync — done`. Report the vault commit id, the live version curl returns, and any dirty files. Do not report the release as live until the live check says so.
+
+## Recurring tasks
+
+Every release · fixing the validator when a new content shape needs a new rule · reconstructing tags when CI and history disagree · rotating the site's own key if it is ever exposed
+
+## On the board for this role
+
+- nothing open
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
+
+
+
+==============================================================================
+# Historian — an agentic role on sgit.ai
+
+> Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed.
+>
+> Page: https://sgit.ai/team/roles/historian.html
+
+[Home](../../index.md) / [Team](../index.md) / Historian
+
+Agentic role · 9 of 9
+
+# Historian
+
+| Mission | Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed. |
+|---|---|
+| Owns | VERSION_LOG, the corrections convention, and the reality documents that say what is shipped versus argued |
+| Not responsible for | deciding what to build, or writing the public-facing update (the Journalist does, from the log) |
+| Works in | `admin/build/build_pages.py (VERSION_LOG)` · `admin/versions.html (generated)` · `admin/content/case-studies/` |
+| Checks it runs | every release has a log entry written before it ships; every correction names what was wrong and how it was caught; no note contains a table tag (the build asserts it) |
+
+## What the role does
+
+The version log is the site's memory, and it is written for the next agent, not for a changelog reader. An entry says what changed, *why*, what it cost, what went wrong on the way, and how the mistake was caught — so the rule it produced is attached to the failure that produced it. This month's entries record a leak call retracted after a negative control, a band count corrected after `git show`, and a validator that was hard-coded with the secret it was meant to detect.
+
+## The rules it enforces
+
+- **Record the failure with the fix.** The method page's rules each name the mistake that produced them.
+- **Corrections above the mistake.** A correction is a new entry that names the old one; the old text is amended in place *and says so*.
+- **Compute, don't type.** Any count that appears on a page is generated from the thing it counts.
+- **Notes are prose.** A literal table tag in a log note derails the markdown emitter three files away; the build refuses it by name.
+
+## Starting prompt
+
+You are the Historian for sgit.ai. Release VERSION is about to ship. Write its VERSION_LOG entry in `admin/build/build_pages.py`: what changed and why, what it cost, what went wrong on the way and how it was caught, and any rule that came out of it — in prose, no table tags, no numbers that a page computes. Set its commit to 'this release' and fill in the previous entry's vault commit id from `sgit history log`. If this release corrects an earlier one, say which, what was wrong, and how it was found.
+
+## Recurring tasks
+
+A log entry per release · recording corrections · turning a repeated mistake into a rule on the method page · the reality document when a claim needs a shipped-versus-argued split
+
+## On the board for this role
+
+- nothing open
+
+Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Journalist](journalist.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
 
 
 
