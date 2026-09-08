@@ -159,6 +159,29 @@ Quick answers (so you do not need a second request for the common questions):
 - [Cross-team briefs](/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 - [Telemetry from a published vault](/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 
+## The team (how the site is run by one human and a team of agents — start here if you are an agent)
+- [How the site is run](/team/index.md): sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
+
+## Roles (one page per agentic role: mission, what it owns, the rules it enforces, its starting prompt)
+- [Sherpa](/team/roles/sherpa.md): Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits.
+- [Publisher](/team/roles/publisher.md): Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with.
+- [Auditor](/team/roles/auditor.md): Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it.
+- [Journalist](/team/roles/journalist.md): Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered.
+- [Cartographer](/team/roles/cartographer.md): Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself.
+- [Ambassador](/team/roles/ambassador.md): Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
+- [Designer](/team/roles/designer.md): Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible.
+- [Release engineer](/team/roles/release-engineer.md): Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.
+- [Historian](/team/roles/historian.md): Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed.
+
+## Starting prompts (the regular tasks, each as a prompt to paste into a fresh agent)
+- [Starting prompts for the regular work](/team/prompts.md): Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent.
+
+## The board (open work as a kanban of files; Needs only the author can supply, Tasks an agent can pick up)
+- [The board](/team/board.md): Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
+
+## Investors (the pitch in the open: architecture, computed traction, business model, and the ask left open until stated)
+- [sgit.ai, for investors](/investors/index.md): The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented.
+
 ## Updates (dated posts: what changed, one entry per story)
 - [Updates](/updates/index.md): What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 

@@ -264,6 +264,30 @@
     "desc": "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings."
   },
   {
+    "path": "team/index.html",
+    "section": "team",
+    "title": "How the site is run — the agentic team behind sgit.ai",
+    "desc": "sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is."
+  },
+  {
+    "path": "team/prompts.html",
+    "section": "prompts",
+    "title": "Starting prompts for the regular work — sgit.ai team",
+    "desc": "Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent."
+  },
+  {
+    "path": "team/board.html",
+    "section": "board",
+    "title": "The board — open work on sgit.ai, as a kanban of files",
+    "desc": "Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site."
+  },
+  {
+    "path": "investors/index.html",
+    "section": "investors",
+    "title": "sgit.ai, for investors — published in the open",
+    "desc": "The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented."
+  },
+  {
     "path": "briefs/vault-telemetry-append-lanes.html",
     "section": "briefs",
     "title": "Telemetry from a published vault — a build brief",

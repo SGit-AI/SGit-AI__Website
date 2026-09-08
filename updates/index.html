@@ -21,15 +21,21 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.61</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.62</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni"><a class="nl" href="../why/index.html">Why</a></div>
-  <div class="ni"><a class="nl" href="../try/index.html">Try</a></div>
+  <div class="ni ni-has">
+    <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../investors/index.html">Investors</a>
+    </div>
+  </div>
   <div class="ni ni-has">
     <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
     <div class="sub">
       <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../try/index.html">Try it in the browser</a>
       <a class="sl" href="../api/index.html">HTTP API</a>
       <a class="sl" href="../vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
@@ -62,6 +68,15 @@
     </div>
   </div>
   <div class="ni ni-has">
+    <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../team/index.html">How the site is run</a>
+      <a class="sl" href="../team/index.html#roles">Roles</a>
+      <a class="sl" href="../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
     <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
     <div class="sub">
       <a class="sl" href="../network/index.html">All sites</a>
@@ -81,6 +96,24 @@
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
   <h2 class="upd-date">2026-09-07</h2>
+  <article class="upd" id="the-team-for-the-agents-and-investors-in-the-open">
+    <h3><a href="#the-team-for-the-agents-and-investors-in-the-open">Two new sections — the team, written for the agents; and investors, in the open</a> <a class="upd-ver" href="../admin/versions.html">v0.2.62</a></h3>
+    <p class="chips"><span class="chip">team</span><span class="chip">agents</span><span class="chip">investors</span><span class="chip">board</span><span class="chip">method</span></p>
+<p><b><a href="../team/index.html">The team</a></b> is the agentic section: how this site is run by one person and a team of AI agents, written for the agents. A new agent should be able to read that page and one role page and begin.</p>
+<ul>
+<li><b>Nine roles, each a file.</b> Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — mirroring the Explorer team in the CLI repository, specialised for running a site rather than building a tool. Each page carries the role's mission, what it owns and must not touch, the files it works in, the checks it runs, <b>the rules it enforces with the mistake that produced each one</b>, and the prompt that starts it from nothing. The Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.</li>
+<li><b><a href="../team/prompts.html">Twelve starting prompts</a></b> for the work that recurs — publish a vault, audit it, write the update, write an article, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys. Each is written to be pasted into a fresh agent, and each ends before the release step on purpose: the release engineer's prompt is the one that ships, and the Sherpa decides when it runs.</li>
+<li><b><a href="../team/board.html">The board</a></b> is a kanban of files. Each card is a markdown file with a <code>status</code> line; the five columns are those lines rendered. <b>Needs</b> — items only the author can supply — are kept apart from tasks and never discovered late. This follows issues-fs.sgit.ai's <em>issues are files</em> and the open comms board on open-source.sgit.ai. It is seeded with the real open work, including six things only the author can answer.</li>
+</ul>
+<p><b><a href="../investors/index.html">Investors</a></b> follows the founder's practice of publishing investor material in the open, and the structure of the pitch his other companies publish: the problem, what it is, the open-source zero-knowledge architecture, traction, business model, the beachhead market, what could go wrong, and the materials. Two rules hold it honest:</p>
+<ul>
+<li><b>Traction is computed from the site</b>, with the same generator the homepage team band uses. If a number is wrong, the site is wrong somewhere else too.</li>
+<li><b>The ask is left visibly open.</b> Round size, instrument and use of funds are the founder's to state; the page has a dashed box saying so and tracks it as board item N1 — rather than a number nobody supplied.</li>
+</ul>
+<p>The business-model section does not restate the founder's position on open source; it points at it through the new sibling-site card, so the argument is read in its own words.</p>
+<p><b>Nav:</b> <em>Try</em> folds into Docs; <em>Why</em> becomes a group with Investors; <em>Team</em> is new. Eight top-level items, as before.</p>
+<p>One build lesson, recorded because it bit twice: angle-bracket placeholders inside code spans broke the markdown twin while being regex-wrapped. The whole team section now uses <code>UPPERCASE</code> placeholders with no angle brackets — one convention that survives every renderer this site has.</p>
+  </article>
   <article class="upd" id="the-proof-moved-up">
     <h3><a href="#the-proof-moved-up">The proof moved up — the homepage, rebuilt to show vaults before it explains them</a> <a class="upd-ver" href="../admin/versions.html">v0.2.60</a></h3>
     <p class="chips"><span class="chip">homepage</span><span class="chip">positioning</span><span class="chip">vaults</span><span class="chip">agents</span></p>
@@ -449,7 +482,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.61</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.62</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -488,7 +521,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.61';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.62';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

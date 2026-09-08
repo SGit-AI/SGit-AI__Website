@@ -328,6 +328,52 @@ class Content_Loader:
         arts.sort(key=lambda a: a['date'], reverse=True)
         return arts
 
+    def _load_md_dir(self, subdir, required, where_prefix):
+        """One file per thing, frontmatter + markdown body — the shape every content
+        type here already has. Returns dicts with slug/body/where plus every
+        frontmatter key, so callers add nothing but validation."""
+        base = os.path.join(self.root, subdir)
+        out = []
+        if not os.path.isdir(base):
+            return out
+        for fn in sorted(os.listdir(base)):
+            if not fn.endswith('.md'):
+                continue
+            where = f'{where_prefix}/{fn}'
+            meta, body = self.parse_frontmatter(open(os.path.join(base, fn)).read(), where)
+            self._require(meta, required, where)
+            d = dict(meta); d.update({'slug': fn[:-3], 'body': body, 'where': where})
+            out.append(d)
+        return out
+
+    def load_roles(self):
+        """admin/content/team/roles/<slug>.md — one agentic role per file: what it owns,
+        what it must not touch, the files it works in, the checks it runs, and the
+        prompt that starts it. The team page and every role page derive from these."""
+        roles = self._load_md_dir('team/roles', ['title', 'mission', 'owns', 'not', 'order'], 'team/roles')
+        for r in roles:
+            r['order'] = int(r['order'])
+        roles.sort(key=lambda r: r['order'])
+        return roles
+
+    def load_issues(self):
+        """admin/content/team/issues/<slug>.md — the open board, issues as files, in the
+        spirit of issues-fs.sgit.ai: nothing runs, the tracker versions with the site.
+        `kind` is need (only the author can supply it) or task (work the site can do);
+        `status` is one of needs|backlog|doing|review|done."""
+        issues = self._load_md_dir('team/issues', ['title', 'id', 'kind', 'status', 'role', 'priority', 'opened'], 'team/issues')
+        ok_status = {'needs', 'backlog', 'doing', 'review', 'done'}
+        for i in issues:
+            if i['status'] not in ok_status:
+                raise Content_Error(f'{i["where"]}: status must be one of {sorted(ok_status)}, got {i["status"]!r}')
+            if i['kind'] not in ('need', 'task'):
+                raise Content_Error(f'{i["where"]}: kind must be need or task')
+            if not self.RE_DATE.match(i['opened']):
+                raise Content_Error(f'{i["where"]}: opened must be YYYY-MM-DD')
+        pr = {'high': 0, 'medium': 1, 'low': 2}
+        issues.sort(key=lambda i: (pr.get(i['priority'], 9), i['opened'], i['id']))
+        return issues
+
     def load_sites(self):
         """admin/content/sites/<slug>.md — one sibling site per file.
 

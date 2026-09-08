@@ -1,0 +1,74 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Investors</p>
+  <p class="eyebrow">For angel investors &middot; published in the open</p>
+  <h1>sgit.ai, for investors</h1>
+  <p class="lead">Everything the founder's companies publish for investors, they publish in the open &mdash; the pitch, the model, the numbers &mdash; and this page follows that rule. What is here can be checked against the site it sits on. What is not here yet is marked as not here yet, rather than filled in.</p>
+
+  <h2 id="problem">The problem, in one sentence</h2>
+  <p><b>AI agents are producing an enormous amount of work, and there is no good unit to hand it over in.</b> A report, a dataset, an application, a talk &mdash; today each needs hosting, an account, a deploy, and a trust relationship with whoever runs the server. Meanwhile the state agents need to share with each other and with people is versioned by nobody and readable by the host. The tools that exist were built for source code (git) or for storage (cloud drives). Neither was built for <em>a unit of work that carries its own app, history and sources and can be handed to a stranger with one string</em>.</p>
+
+  <h2 id="what">What sgit is</h2>
+  <p><b>Git for encrypted vaults.</b> A vault is a folder that is versioned like git &mdash; clone, commit, branch, merge, history &mdash; encrypted on the client before anything leaves the machine, and openable by anyone who holds the read key: no account, no install, nothing hosted by the reader. A vault can carry its own application, sandboxed, with the permissions it asks for declared in a file. The server stores ciphertext and hashes and cannot read what it stores.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Layer</th><th>What it is</th><th>Who runs it</th><th>Licence</th></tr>
+    <tr><td><b>sgit</b></td><td>The CLI &mdash; <code>pip install sgit-ai</code>. Pure Python, two runtime dependencies.</td><td>Anyone</td><td>Apache-2.0</td></tr>
+    <tr><td><b>SG/Vault</b></td><td>The web app: browse, edit and run vault apps in the browser. An independent implementation of the same wire format.</td><td>sgraph.ai, or self-hosted</td><td>Apache-2.0</td></tr>
+    <tr><td><b>SG/Send</b></td><td>The zero-knowledge storage API both clients speak to.</td><td>sgraph.ai (hosted), or self-hosted &mdash; <a href="../vault/static-hosting.html">the guidance is published</a></td><td>Apache-2.0</td></tr>
+  </table></div>
+  <p>The proof is not this page. It is the <a href="../demos/vaults/index.html">published vaults</a>: real artefacts &mdash; a penetration test report with a retest script per finding, a compliance standard rebuilt as a citable graph, a Black Hat keynote with its cited papers, a game that reports anonymous telemetry through a write-only channel &mdash; each opened by one string, each audited before its key went public. Open one before reading further.</p>
+
+  <h2 id="architecture">Strategic architecture: open source, zero knowledge, zero lock-in</h2>
+  <ul>
+    <li><b>100% open source.</b> The CLI, the web app and the server are Apache-2.0. There is no proprietary tier of the code. The commercial line is the running, maintained, certified <em>service</em>, which is where the founder's <a href="https://open-source.sgit.ai/views/index.html" rel="noopener" target="_blank">published position on open source &#8599;</a> says it belongs.</li>
+    <li><b>Zero knowledge, published as a threat model.</b> <a href="../security/index.html">What the server sees</a> is listed &mdash; object ids, ciphertext, sizes, timing, the vault id &mdash; and so is what it cannot. The security model is a page, not a claim.</li>
+    <li><b>Zero lock-in, deliberately.</b> Self-hosting guidance is published, live, in a vault. If the hosted service ever becomes unpalatable, a customer runs their own server and their data and workflow are unaffected. That is a feature of the business model, not a concession: <em>"as soon as you move into rent extraction, you lose sight of it."</em></li>
+    <li><b>Built for agents first.</b> Machine-readable output on every read path, single-call commits, sparse clones, a permission model that is default-deny, and an LLM bridge where the app never holds the API key.</li>
+  </ul>
+
+  <h2 id="traction">Traction &mdash; computed from this site, not typed onto it</h2>
+  <p>These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.</p>
+<!--TRACTION-->
+  <p>Behind the numbers: the site and every vault on it are built by <b>one person and a team of AI agents</b>, and the agents build for each other &mdash; a brief published here was turned into a working vault by another agent the same day, reviewed by the team that owns the API, and the review's corrections are published above the original. That loop is the product being used to build the product, and it is <a href="../team/index.html">documented as a method</a>.</p>
+
+  <h2 id="model">Business model</h2>
+  <p><b>The code is free. What is sold is the running service, and the trust that comes with running it well.</b></p>
+  <ul>
+    <li><b>Hosted vaults</b> &mdash; SG/Send storage and SG/Vault as a maintained, certified service at sgraph.ai. The customer's data is ciphertext to us; what they pay for is availability, durability, versions, and somebody to call.</li>
+    <li><b>The open-source strategy is the moat, not the code.</b> <em>"A competitor who forks our code today gets our position as of today. They do not get our velocity."</em> The published record &mdash; every release verified live before it was called done, every mistake recorded with the rule it produced &mdash; is that velocity made visible; the count is in the traction tiles above, computed rather than typed.</li>
+    <li><b>Adjacent products on the same layer.</b> RiskMandate.ai, the AIUC-1 conformance work and the licence-to-operate model for agent insurance are all built on vaults; several are <a href="../demos/vaults/index.html">published here</a>. The layer sells because things get built on it.</li>
+  </ul>
+  <div class="sib"><span class="sib-host">open-source.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Business &amp; publishing</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://open-source.sgit.ai/views/index.html" rel="noopener" target="_blank">The position &mdash; open source is a strategy, not a charity &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">Technology is not the moat; lock-in relocates to quality, certification and maintainability; the moat is a rate, not a wall. The full argument, with its counter-cases named.</span><span class="sib-sep"> &mdash; </span><span class="sib-thesis">&ldquo;Open source is a strategy. It is not a charity.&rdquo;</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+
+  <h2 id="market">Market: the beachhead, and what it opens</h2>
+  <p><b>Beachhead: teams that already run AI agents and need the output to be auditable, encrypted and handed over.</b> Security and compliance work is where this bites first &mdash; a pentest report, a conformance assessment, a risk register &mdash; because the deliverable must carry its evidence and the recipient cannot be asked to trust a portal. Every published vault in that category was built by an agent and handed over with one string.</p>
+  <p><b>Expansion: any team whose agents produce work for other people.</b> The same unit &mdash; data, app, history, sources &mdash; is a pitch deck, a research pack, a talk, a health record, a game. The <a href="../demos/vaults/index.html">vaults table</a> is already spread across eight categories, none of which is "encryption".</p>
+
+  <h2 id="ask">The ask</h2>
+  <div class="inv-ask"><b class="tag">Not filled in &mdash; and not invented</b>
+    <p><b>Round size, instrument and use of funds are the founder's to state</b>, and they are not on this page yet. Following the rule that nothing here is a number the author has not supplied, this box stays open until it is filled, and the gap is tracked in the open on <a href="../team/board.html#N1">the board as N1</a>. When it is filled, it will follow the same shape as the founder's other open pitches: the amount, what it buys in the next eighteen months, and the split.</p>
+  </div>
+
+  <h2 id="honest">What this is not, and what could go wrong</h2>
+  <ul>
+    <li><b>It is beta.</b> The site says so in its nav on every page. <a href="../docs/limitations.html">When not to use sgit</a> is a published page, and it is linked from the homepage trust strip.</li>
+    <li><b>The multi-agent claim has one gap.</b> The homepage says <em>a branch per agent, a human reviews the merge</em>; no published vault yet shows two agents merging in one history. The gap is named on the homepage and tracked on the board.</li>
+    <li><b>"They do not get our velocity" is empirical, not structural.</b> It holds while the team is faster. The founder's own position page names this as its weakest point.</li>
+    <li><b>Hosted zero-knowledge storage has a small set of well-funded neighbours.</b> The difference claimed is not encryption &mdash; it is the unit of work: versioning, apps inside the data, and the agent-first surface. Whether that difference is the one buyers pay for is the thing the beachhead has to prove.</li>
+  </ul>
+
+  <h2 id="materials">Investor materials, in the open</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Material</th><th>Where</th><th>State</th></tr>
+    <tr><td>This page, as a printable one-pager</td><td>Print it &mdash; the site has a print stylesheet</td><td>live</td></tr>
+    <tr><td>The security model and threat model</td><td><a href="../security/index.html">/security/</a></td><td>live</td></tr>
+    <tr><td>When not to use it</td><td><a href="../docs/limitations.html">/docs/limitations</a></td><td>live</td></tr>
+    <tr><td>Every release, with what went wrong</td><td><a href="../admin/versions.html">/admin/versions</a></td><td>live</td></tr>
+    <tr><td>The published vaults &mdash; the product, in use</td><td><a href="../demos/vaults/index.html">/demos/vaults/</a></td><td>live</td></tr>
+    <tr><td>How the company is built: one human, a team of agents</td><td><a href="../team/index.html">/team/</a></td><td>live</td></tr>
+    <tr><td>The founder's record and interests declared</td><td><a href="https://open-source.sgit.ai/about/index.html" rel="noopener" target="_blank">open-source.sgit.ai/about &#8599;</a></td><td>live</td></tr>
+    <tr><td>The ask, use of funds, the deck</td><td>this page, <a href="../team/board.html#N1">N1</a> and <a href="../team/board.html#N2">N2</a></td><td><b>waiting on the founder</b></td></tr>
+  </table></div>
+  <p class="small dim">The founder's other companies publish their investor relations in public repositories (<a href="https://github.com/the-cyber-boardroom/MyFeeds-AI__Investor_Relations" rel="noopener" target="_blank">MyFeeds.ai &#8599;</a>, <a href="https://github.com/the-cyber-boardroom/cbr-investment" rel="noopener" target="_blank">The Cyber Boardroom &#8599;</a>). sgit.ai's will follow the same practice: this page is the first file in it.</p>
+
+  <p class="small dim" style="margin-top:2rem">Contact: through <a href="https://www.linkedin.com/in/diniscruz" rel="noopener" target="_blank">LinkedIn &#8599;</a>, or the <a href="https://github.com/SGit-AI/SGit-AI__CLI">repository</a>. If anything on this page is wrong, say so and it will be corrected above the mistake &mdash; that is <a href="../team/roles/historian.html">how this site works</a>.</p>
+</main>

@@ -1,0 +1,45 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Team</p>
+  <p class="eyebrow">The agentic section</p>
+  <h1>How this site is run</h1>
+  <p class="lead">sgit.ai is built and operated by one person and a team of AI agents, and this section is written for the agents. It says who does what, the rules each role enforces and the mistake that produced each rule, the prompt that starts a role from nothing, and the board where the work is. A new agent should be able to read this page and one role page and begin.</p>
+
+  <div class="note"><b>Start here if you are an agent.</b> The site's own contract is on <a href="../admin/index.html">Admin &amp; engineering</a> — architecture, the build, the validator, the release process. <a href="../llms.txt">llms.txt</a> is the index; every page has a <code>.md</code> twin at the same path. The roles below assume you have read those two. The rule that outranks every other one: <b>publishing is adding one file</b> — an update, an article, a vault row, a site entry, a role, a card. Everything else is derived, and a page nobody can reach fails the build.</div>
+
+  <h2 id="loop">The loop</h2>
+  <p>Work arrives as a brief, a credential, a phone screenshot or a review from another team. The <a href="roles/sherpa.html">Sherpa</a> puts it on <a href="board.html">the board</a> and scopes a release. Roles run in dependency order &mdash; content before design, design before build &mdash; and the <a href="roles/release-engineer.html">release engineer</a> ships through one script that refuses to call a release done until the live site serves it. The <a href="roles/historian.html">Historian</a> records what happened and what went wrong; the <a href="roles/journalist.html">Journalist</a> writes it up. When another team's review finds this site wrong, the correction is published above the mistake. That loop has run for every release since 14 August &mdash; the count is on <a href="../index.html#team">the homepage</a>, computed, not typed here where it would be stale within the hour.</p>
+
+  <h2 id="roles">Nine roles</h2>
+  <p>Each role is a file under <code>admin/content/team/roles/</code>; this grid and each page derive from it. The roles mirror the <a href="https://github.com/SGit-AI/SGit-AI__CLI/tree/dev/team/explorer">Explorer team</a> in the CLI repository, specialised for running a site rather than building a tool: the Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.</p>
+<!--ROLES-->
+
+  <h2 id="rules">The rules every role shares</h2>
+  <ul>
+    <li><b>Read keys yes, vault keys never.</b> A read key is a capability handed out on purpose and cannot become write access. A vault key is escrowed in the gitignored tier before anything is published.</li>
+    <li><b>Verify live.</b> Both remotes in sync is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.</li>
+    <li><b>Count, don't remember.</b> Every number on a page is computed from the thing it counts; every number in prose is checked against a file that day.</li>
+    <li><b>Negative controls.</b> A test that would pass with a wrong input has proven nothing.</li>
+    <li><b>Publish the finding.</b> An audit result, a correction, a gap &mdash; on the page, not in a file nobody reads.</li>
+    <li><b>Say what it is worth.</b> Publish the work, then state precisely what it does not prove.</li>
+  </ul>
+
+  <h2 id="where">Where things are</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Thing</th><th>Where</th><th>Owned by</th></tr>
+    <tr><td>A vault page and its row</td><td><code>admin/content/demos/vaults/&lt;slug&gt;/index.html</code>, <code>admin/content/vaults.json</code></td><td>Publisher</td></tr>
+    <tr><td>An update, an article</td><td><code>admin/content/updates/YYYY/MM/DD/</code>, <code>admin/content/articles/</code></td><td>Journalist</td></tr>
+    <tr><td>A sibling site</td><td><code>admin/content/sites/&lt;slug&gt;.md</code></td><td>Cartographer</td></tr>
+    <tr><td>The homepage bands</td><td><code>admin/content/index.html</code> + fields in <code>vaults.json</code></td><td>Ambassador / Designer</td></tr>
+    <tr><td>A role, a card</td><td><code>admin/content/team/roles/</code>, <code>admin/content/team/issues/</code></td><td>Sherpa</td></tr>
+    <tr><td>The version log</td><td><code>VERSION_LOG</code> in <code>admin/build/build_pages.py</code></td><td>Historian</td></tr>
+    <tr><td>The release</td><td><code>admin/build/release.sh</code></td><td>Release engineer</td></tr>
+    <tr><td>Credentials</td><td><code>.sg_vault/local/</code> &mdash; gitignored, scanned by the tripwire</td><td>Auditor</td></tr>
+  </table></div>
+
+  <h2 id="pattern">Where the pattern comes from</h2>
+  <p>Roles as files with a <code>ROLE.md</code> each, and issues as files that version with the repository they track, are the estate's convention rather than this site's invention:</p>
+  <div class="sib"><span class="sib-host">issues-fs.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Graphs &amp; method</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://issues-fs.sgit.ai/" rel="noopener" target="_blank">A git-native issue tracker where the issues are files and the files are a graph &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">Nothing runs &mdash; no server, no database &mdash; so the tracker lives inside the repository it tracks and can be read by <code>cat</code>, <code>grep</code> and <code>find</code>. Eleven agentic roles, each with its own <code>ROLE.md</code> and its own <code>.issues/</code>.</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+  <p>This site's board is the same idea at the smallest useful size: markdown files with a <code>status</code> line, rendered into columns at build time, with a markdown twin so an agent can read the board without a browser.</p>
+
+  <p class="bandcta" style="text-align:left;padding:0"><a class="cta2" href="prompts.html">The starting prompts &rarr;</a> &nbsp; <a class="cta2" href="board.html">The board &rarr;</a></p>
+</main>
