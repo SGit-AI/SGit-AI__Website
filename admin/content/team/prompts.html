@@ -46,7 +46,7 @@
 
   <h2 id="board">11. Update the board</h2>
   <span class="prompt-role">Sherpa</span>
-  <div class="prompt">You are the Sherpa for sgit.ai. Read team/board.md. For each card under admin/content/team/issues/: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add a card: id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Build; confirm the counts on team/board.html changed as expected. Do not close a Need without the author's answer.</div>
+  <div class="prompt">You are the Sherpa for sgit.ai. The board is a vault (id pdulwi6i) cloned at admin/content/team/issues/; its cards are issues/*.md. Run sgit pull there first. For each card: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add issues/ID-slug.md with id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Run python3 tools/reindex.py, then sgit commit -m "board: …" and sgit push in that folder — the board is live the moment it pushes; the site catches up at its next release. Do not close a Need without the author's answer.</div>
 
   <h2 id="readkeys">12. Re-verify the published read keys</h2>
   <span class="prompt-role">Auditor</span>

@@ -1,0 +1,63 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / The sgit.ai board</p>
+  <h1>The site's own board, as a vault</h1>
+
+  <p class="lead">Two days after <a href="../../../team/board.html">the board</a> appeared as files in the site repository, it moved out into a vault of its own. Every card is a markdown file; a five-column board app renders them and asks the host for nothing; and the read key is published, because every task, bug and need on it is public. The vault is the source of truth &mdash; <b>moving a card is <code>sgit push</code>, with no site release</b> &mdash; and the site renders a snapshot from a clone each time it ships.</p>
+
+  <div class="note"><b>Open it yourself &mdash; the key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i</code><br>
+  <span class="small dim">Published as a read key, derived from the vault key at creation. The vault key is held by the site's release engineer and is not published.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i" rel="noopener" target="_blank">Open the board in a new tab &#8599;</a><span class="small dim">Five columns wide &mdash; it has more room in its own tab than in the frame below.</span></p>
+  <div class="sgv-uiembed" data-vault="pdulwi6i" data-readkey="f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f)
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (t) { (0, eval)(t); })
+        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>Why a vault, and not the repository</h2>
+  <p>The cards started as files in the site repository, which was already the right shape &mdash; issues-fs.sgit.ai's argument that a tracker should be files that version with the thing they track. But it tied every board change to a site release: to move a card from <em>review</em> to <em>done</em>, an agent had to build, validate, push two remotes and wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.</p>
+  <p>So the files moved into a vault. Now the site is a <b>reader</b> of the board rather than its home: the release script pulls the vault before it builds, and the columns on <a href="../../../team/board.html">the board page</a> are a snapshot as of that release, labelled as such. Between releases, the vault is ahead of the site, and opening it shows the truth.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the app</span>
+        <h3>Five columns, from the files, asking for nothing</h3>
+        <p><code>index.html</code> lists <code>issues/</code> through <code>sg.vfs</code>, parses each card's frontmatter, and draws the columns. <code>app.json</code> declares <code>"permissions": {}</code> &mdash; the app reads the vault it is in and touches nothing else. Served outside a vault host, it falls back to <code>issues/index.json</code>, which <code>tools/reindex.py</code> regenerates from the same files.</p>
+        <p>Needs &mdash; the things only the author can supply &mdash; keep their own column and their own colour, so they are never discovered late.</p>
+      </div>
+      <figure class="shot" data-shot="board-app.webp" data-dir="images/" data-alt="The board app: five columns — Needs, Backlog, Doing, Review, Done — rendered from the card files, with priority colours on the left edge of each card."><figcaption>The app, rendered from the files. Moving a card is editing one line and pushing.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The card format</h2>
+  <pre class="shell">---
+title: The ask: round size, instrument, and what it buys
+id: N1
+kind: need          <span class="d"># need = only the author can supply it · task = an agent can pick it up</span>
+status: needs       <span class="d"># needs | backlog | doing | review | done</span>
+role: ambassador    <span class="d"># the sgit.ai team role that owns it</span>
+priority: high
+opened: 2026-09-07
+---
+What it is, and what it unblocks.</pre>
+  <p>Ids are <code>N&lt;n&gt;</code> for needs and <code>T&lt;n&gt;</code> for tasks, never reused. A card that names a need is closed only by the author's answer. Corrections to published claims are not cards: they are version-log entries on the site, so the record of a mistake is never tidied away.</p>
+
+  <h2>Notes</h2>
+  <p><b>Audited before publishing</b>, briefly, because there is nothing to find: the vault holds card text, a README, one app and one tool. No credentials of any kind, no personal data. Every link in a card is root-relative to sgit.ai and resolves.</p>
+  <p><b>The write key is escrowed</b> in the site's gitignored credential tier, the same place every other published vault's write key lives, so the board can be corrected by the release engineer and by nobody who holds only the read key.</p>
+  <p><b>The site's clone is a mirror, not a fork.</b> <code>admin/content/team/issues/</code> in the site repository is this vault's working tree; its encrypted store is gitignored, its card files are tracked as the build's input. If the two ever disagree, the vault is right.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../../../team/board.html">&larr; The board, as the site renders it</a> &middot; <a href="../index.html">All published vaults</a></p>
+</main>

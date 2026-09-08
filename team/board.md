@@ -2,7 +2,7 @@
 
 > Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
 
-*Source: <https://sgit.ai/team/board.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/board.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,12 @@
 
 # The board
 
-The open work on this site, as a kanban. Each card is a markdown file under `admin/content/team/issues/` with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md). Nothing runs — the board versions with the site, and its `.md` twin is the same board without a browser.
+The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
+
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.64, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+`f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+
+[Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
 
 **17 items** — 14 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
 
@@ -94,7 +99,7 @@ T10 — **A card for pointing at the sibling sites (!site)** — [Cartographer](
 
 Shipped in v0.2.59. One line in markdown; the card pulls the target site's own category and thesis from `sites/*.md`.
 
-**Moving a card** is editing one line. **Adding one** is adding one file with `id`, `title`, `kind` (need | task), `status`, `role`, `priority`, `opened` and a body that says what it unblocks. A card that names a Need is closed only by the author's answer. Corrections to published claims are not cards; they are [version-log entries](../admin/versions.md), so the record of the mistake is never tidied away.
+**Moving a card** is editing one line in the vault and pushing; the site picks it up at its next release. **Adding one** is adding one file with `id`, `title`, `kind` (need | task), `status`, `role`, `priority`, `opened` and a body that says what it unblocks, then `python3 tools/reindex.py` so the app can read it outside a host. A card that names a Need is closed only by the author's answer. Corrections to published claims are not cards; they are [version-log entries](../admin/versions.md), so the record of the mistake is never tidied away.
 
 [← How the site is run](index.md) · [Starting prompts](prompts.md)
 

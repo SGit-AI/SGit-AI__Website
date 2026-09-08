@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,10 +18,12 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**25 published vaults** — 5 analysis, 5 application, 4 reference, 3 briefing, 3 presentation, 3 record, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**26 published vaults** — 5 analysis, 5 application, 4 record, 4 reference, 3 briefing, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault — cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
 
 | 25 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates — the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
 

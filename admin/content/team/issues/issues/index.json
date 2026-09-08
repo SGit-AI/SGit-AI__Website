@@ -1,0 +1,189 @@
+[
+ {
+  "id": "N1",
+  "title": "The ask: round size, instrument, and what it buys",
+  "kind": "need",
+  "status": "needs",
+  "role": "ambassador",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "n1-investor-ask.md",
+  "body": "The [investors page](/investors/index.html) has the architecture, the traction and the business model, and a dashed box where the ask goes. Round size, instrument and the use-of-funds split are the author's to state; nothing is invented in the meantime. Unblocks: a page that can be handed to an angel without a caveat."
+ },
+ {
+  "id": "N2",
+  "title": "The deck, or permission to build one from the page",
+  "kind": "need",
+  "status": "needs",
+  "role": "ambassador",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "n2-investor-deck.md",
+  "body": "Your other companies publish the pitch in the open (investor.myfeeds.ai). Either the sgit deck exists and should be linked, or the investors page is the source and a deck can be built from it — a vault with a presenter app, like the [VoiceDebrief pitch](/demos/vaults/voicedebrief-pitch/index.html). Unblocks: something to show in the room next week."
+ },
+ {
+  "id": "N3",
+  "title": "A vault where two agents and a human merge are visible in the history",
+  "kind": "need",
+  "status": "needs",
+  "role": "publisher",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "n3-two-agents-one-vault.md",
+  "body": "The homepage's strongest multi-agent claim — a branch per agent, a human reviews the merge — has no published vault behind it. If one exists, its read key is enough; if not, the next multi-agent build should be run so its history shows it. Unblocks: closing the gap the [after article](/articles/proof-moved-up.html) names; it goes in the hero."
+ },
+ {
+  "id": "N4",
+  "title": "The games vault: one manifest line so the telemetry actually sends",
+  "kind": "need",
+  "status": "needs",
+  "role": "publisher",
+  "priority": "medium",
+  "opened": "2026-09-07",
+  "file": "n4-games-vault-manifest.md",
+  "body": "The other agent's fix is `{\"permissions\": {\"append\": {\"write\": true}}}` and a switch to `sg.append.write` — not `network: true`. When it lands, the page's status note comes off and the two 'nothing sent' footers should be gone. Unblocks: the [games vault page](/demos/vaults/agent-permission-games/index.html) describing behaviour the vault performs."
+ },
+ {
+  "id": "N5",
+  "title": "Answers to the seven append-lane questions",
+  "kind": "need",
+  "status": "needs",
+  "role": "cartographer",
+  "priority": "medium",
+  "opened": "2026-09-07",
+  "file": "n5-append-lane-answers.md",
+  "body": "Sent to the SG/API team on 7 September (in the CLI repo under `team/humans/dinis_cruz/claude-code-web/09/07/`). The two that matter most: which hosts serve `/api/vault/append/*`, and whether the enum-key derivation is stable enough to publish as a spec. Unblocks: the API page stating facts where it currently says unresolved."
+ },
+ {
+  "id": "N6",
+  "title": "Republish the two held vaults clean, or retire them",
+  "kind": "need",
+  "status": "needs",
+  "role": "auditor",
+  "priority": "low",
+  "opened": "2026-09-07",
+  "file": "n6-held-vaults.md",
+  "body": "`bite-coil` (a live provider key in `key.json`, since rotated) and `6kdhnpfx` are held on audit findings. Both are republishable via a fresh vault with the offending file removed. A decision either way closes them. Unblocks: the vaults count telling the whole story."
+ },
+ {
+  "id": "T1",
+  "title": "An About page about sgit, linking to the fuller record",
+  "kind": "task",
+  "status": "backlog",
+  "role": "ambassador",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "t1-about-page.md",
+  "body": "Agreed direction: who builds it (one human and the roles on this page), why, the commercial line (sgraph.ai sells the hosted service; the code stays Apache-2.0), and two sections borrowed from open-source.sgit.ai/about — *Interests declared* and *Reach me, or correct me* — with a `!site` card out to the fuller record rather than a copy of it."
+ },
+ {
+  "id": "T10",
+  "title": "A card for pointing at the sibling sites (!site)",
+  "kind": "task",
+  "status": "done",
+  "role": "cartographer",
+  "priority": "medium",
+  "opened": "2026-09-07",
+  "file": "t10-sibling-card.md",
+  "body": "Shipped in v0.2.59. One line in markdown; the card pulls the target site's own category and thesis from `sites/*.md`."
+ },
+ {
+  "title": "The chat pane inside a vault: route through sg.llm instead of a pasted key",
+  "id": "T11",
+  "kind": "task",
+  "status": "backlog",
+  "role": "designer",
+  "priority": "medium",
+  "opened": "2026-09-07",
+  "file": "t11-chat-tier2.md",
+  "body": "The pane (`assets/site-chat.js`) has three tiers and the third is not wired: when a page renders inside a vault, `sg.llm.chat` would let the host hold the key below the permission floor. Blocked on one fact — whether the bridge's chat contract accepts OpenAI-style `tools` and returns `tool_calls`. Ask llms.sgit.ai's owners; until then the pane falls back to the key-in-page tier with the warning it already carries."
+ },
+ {
+  "id": "T2",
+  "title": "Re-verify the 21 published read keys with the marker that actually discriminates",
+  "kind": "task",
+  "status": "backlog",
+  "role": "auditor",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "t2-readkey-sweep.md",
+  "body": "The earlier 24-key sweep used the presence of `.sg_vault/` as success, which an all-zeros key also produces. Three vaults were verified properly by decrypting content; the other 21 were not. Re-run with `clone_mode.json` as the marker and a negative control."
+ },
+ {
+  "id": "T3",
+  "title": "Investors page: print stylesheet and a one-page PDF export",
+  "kind": "task",
+  "status": "backlog",
+  "role": "designer",
+  "priority": "medium",
+  "opened": "2026-09-07",
+  "file": "t3-investors-print.md",
+  "body": "The page should print to one or two clean pages for the event. The site already has `@media print` rules; extend them for the investor bands and check the output."
+ },
+ {
+  "id": "T4",
+  "title": "The agentic section: roles, starting prompts, the board",
+  "kind": "task",
+  "status": "review",
+  "role": "sherpa",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "t4-team-section.md",
+  "body": "Nine roles as files under `admin/content/team/roles/`, a page each; the starting prompts for the regular tasks; this board, as files under `admin/content/team/issues/`. In review: does each prompt start a fresh agent correctly with nothing but the page?"
+ },
+ {
+  "id": "T5",
+  "title": "The investors section, on the open-investor-materials model",
+  "kind": "task",
+  "status": "review",
+  "role": "ambassador",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "t5-investors-page.md",
+  "body": "Same structure as investor.myfeeds.ai — hook, how it works, architecture, market, traction, business model, the ask, use of funds — with the traction numbers computed from the site and the ask left visibly open (N1). In review: nothing on it may be a number the author has not supplied."
+ },
+ {
+  "id": "T6",
+  "title": "Flip skills.sgit.ai from not-published to live when Pages serves it",
+  "kind": "task",
+  "status": "backlog",
+  "role": "cartographer",
+  "priority": "low",
+  "opened": "2026-09-07",
+  "file": "t6-skills-site.md",
+  "body": "DNS and a repository exist; the site 404s from GitHub Pages. Listed in the network directory as *not published yet* rather than omitted. Re-check weekly."
+ },
+ {
+  "id": "T7",
+  "title": "Upstream: graphs.sgit.ai footer links to sentinel.sgit.ai, which does not resolve",
+  "kind": "task",
+  "status": "backlog",
+  "role": "cartographer",
+  "priority": "low",
+  "opened": "2026-09-07",
+  "file": "t7-sentinel-link.md",
+  "body": "The site is at `sg-sentinel.sgit.ai`; the `sg-` prefix is load-bearing. Noted on our graphs page since 21 August; the brief to their team is the remaining step."
+ },
+ {
+  "id": "T8",
+  "title": "Rebuild the homepage: proof before mechanism",
+  "kind": "task",
+  "status": "done",
+  "role": "ambassador",
+  "priority": "high",
+  "opened": "2026-09-07",
+  "file": "t8-homepage-rebuild.md",
+  "body": "Shipped as v0.2.60, with the diagnosis in v0.2.59 and two corrections in v0.2.61. [Before](/articles/proof-behind-the-claim.html) and [after](/articles/proof-moved-up.html)."
+ },
+ {
+  "id": "T9",
+  "title": "The vaults table: sortable, categorised, no keys, newest first",
+  "kind": "task",
+  "status": "done",
+  "role": "designer",
+  "priority": "medium",
+  "opened": "2026-09-06",
+  "file": "t9-vaults-table.md",
+  "body": "Shipped as v0.2.57 and v0.2.58: generated from `vaults.json`, `#` as a permanent publication ordinal, published dates from git."
+ }
+]

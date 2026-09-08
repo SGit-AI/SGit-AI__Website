@@ -30,7 +30,8 @@
     <tr><td>An update, an article</td><td><code>admin/content/updates/YYYY/MM/DD/</code>, <code>admin/content/articles/</code></td><td>Journalist</td></tr>
     <tr><td>A sibling site</td><td><code>admin/content/sites/&lt;slug&gt;.md</code></td><td>Cartographer</td></tr>
     <tr><td>The homepage bands</td><td><code>admin/content/index.html</code> + fields in <code>vaults.json</code></td><td>Ambassador / Designer</td></tr>
-    <tr><td>A role, a card</td><td><code>admin/content/team/roles/</code>, <code>admin/content/team/issues/</code></td><td>Sherpa</td></tr>
+    <tr><td>A role</td><td><code>admin/content/team/roles/</code></td><td>Sherpa</td></tr>
+    <tr><td>A card</td><td><a href="../demos/vaults/board/index.html">the board vault</a> (<code>pdulwi6i</code>), cloned at <code>admin/content/team/issues/</code>; the release pulls it first</td><td>Sherpa</td></tr>
     <tr><td>The version log</td><td><code>VERSION_LOG</code> in <code>admin/build/build_pages.py</code></td><td>Historian</td></tr>
     <tr><td>The release</td><td><code>admin/build/release.sh</code></td><td>Release engineer</td></tr>
     <tr><td>Credentials</td><td><code>.sg_vault/local/</code> &mdash; gitignored, scanned by the tripwire</td><td>Auditor</td></tr>
@@ -39,7 +40,7 @@
   <h2 id="pattern">Where the pattern comes from</h2>
   <p>Roles as files with a <code>ROLE.md</code> each, and issues as files that version with the repository they track, are the estate's convention rather than this site's invention:</p>
   <div class="sib"><span class="sib-host">issues-fs.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Graphs &amp; method</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://issues-fs.sgit.ai/" rel="noopener" target="_blank">A git-native issue tracker where the issues are files and the files are a graph &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">Nothing runs &mdash; no server, no database &mdash; so the tracker lives inside the repository it tracks and can be read by <code>cat</code>, <code>grep</code> and <code>find</code>. Eleven agentic roles, each with its own <code>ROLE.md</code> and its own <code>.issues/</code>.</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
-  <p>This site's board is the same idea at the smallest useful size: markdown files with a <code>status</code> line, rendered into columns at build time, with a markdown twin so an agent can read the board without a browser.</p>
+  <p>This site's board is the same idea at the smallest useful size: markdown files with a <code>status</code> line, <a href="../demos/vaults/board/index.html">in a vault of their own</a> with a published read key, rendered into columns both by the vault's app and by the site at each release &mdash; with a markdown twin so an agent can read the board without a browser.</p>
 
   <p class="bandcta" style="text-align:left;padding:0"><a class="cta2" href="prompts.html">The starting prompts &rarr;</a> &nbsp; <a class="cta2" href="board.html">The board &rarr;</a></p>
 </main>

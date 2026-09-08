@@ -2,7 +2,7 @@
 
 > Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent.
 
-*Source: <https://sgit.ai/team/prompts.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/prompts.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -78,7 +78,7 @@ You are the Historian for sgit.ai. The claim "`CLAIM`" on `PAGE` is wrong; the e
 
 Sherpa
 
-You are the Sherpa for sgit.ai. Read team/board.md. For each card under admin/content/team/issues/: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add a card: id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Build; confirm the counts on team/board.html changed as expected. Do not close a Need without the author's answer.
+You are the Sherpa for sgit.ai. The board is a vault (id pdulwi6i) cloned at admin/content/team/issues/; its cards are issues/*.md. Run sgit pull there first. For each card: is its status still true? Move any that is not by editing the status: line (needs | backlog | doing | review | done). For anything that happened this session and is not on the board, add issues/ID-slug.md with id (next N or T number), title, kind (need if only the author can supply it, else task), status, role, priority, opened (today), and a body that says what it unblocks. Run python3 tools/reindex.py, then sgit commit -m "board: …" and sgit push in that folder — the board is live the moment it pushes; the site catches up at its next release. Do not close a Need without the author's answer.
 
 ## 12. Re-verify the published read keys
 

@@ -2,7 +2,7 @@
 
 > Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
 
-*Source: <https://sgit.ai/team/roles/ambassador.html> · site v0.2.63 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/ambassador.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

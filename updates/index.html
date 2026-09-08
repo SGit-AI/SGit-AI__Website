@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.63</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.64</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -139,6 +139,19 @@
 <p>One gap named plainly: the homepage's strongest multi-agent claim, <em>a branch per agent and a human reviews the merge</em>, has <b>no published vault behind it</b>. Every vault here was built by one agent, or by one agent on another's finished work.</p>
 <p>The fix is set out in order — proof before mechanism; reorder and cut rather than add — and is the next release.</p>
 <p><b>Also new: a card for pointing at the sibling sites.</b> The <code><em>.sgit.ai</code> sites exist so each topic gets the depth a section here could not give it, which only pays off if this site points at them constantly — and a bare link does not say </em>this continues elsewhere, on purpose*. A one-line <code>!site</code> directive now renders a card that pulls the target site's own category and thesis from the network directory, so it describes that site the way the site describes itself. It debuts in the article pointing at <a href="https://open-source.sgit.ai/about/index.html">open-source.sgit.ai/about</a>, which is also a decision recorded there: this site will get an About page about <b>sgit</b>, and link to the fuller record rather than duplicate it.</p>
+  </article>
+  <article class="upd" id="the-board-moves-into-a-vault">
+    <h3><a href="#the-board-moves-into-a-vault">The board moves into a vault of its own — and its read key is published</a> <a class="upd-ver" href="../admin/versions.html">v0.2.64</a></h3>
+    <p class="chips"><span class="chip">board</span><span class="chip">vaults</span><span class="chip">team</span><span class="chip">method</span></p>
+<p>Two releases after <a href="../team/board.html">the board</a> appeared as files in the site repository, the shape was right and the home was wrong: moving a card from <em>review</em> to <em>done</em> cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.</p>
+<p>So the cards moved into <a href="../demos/vaults/board/index.html">a vault of their own</a>, <code>pdulwi6i</code>, and its read key is published — because every task, bug and need on it is public, and a read key is the complete credential for reading them.</p>
+<ul>
+<li><b>The vault is the truth; the site is a reader.</b> The release script pulls the vault before it builds, and the columns on the board page are labelled as a snapshot at the site version. Between releases the vault is ahead, and opening it shows the live board.</li>
+<li><b>Moving a card is <code>sgit push</code>.</b> Edit one <code>status</code> line, regenerate the index, commit, push. No site release.</li>
+<li><b>A board app that asks for nothing.</b> <code>index.html</code> lists <code>issues/</code> through <code>sg.vfs</code> and draws five columns; <code>app.json</code> declares <code>permissions: {}</code>. Served outside a vault host it falls back to <code>issues/index.json</code>, so it can be screenshotted, tested and read from a script — a board that only renders inside one host is a board nobody can check.</li>
+<li><b>Cloned in place.</b> The site's <code>admin/content/team/issues/</code> <em>is</em> the vault's working tree: its encrypted store is gitignored, its card files are tracked as the build's input. If the two ever disagree, the vault is right.</li>
+</ul>
+<p>Published as row #26 on the <a href="../demos/vaults/index.html">vaults table</a>, following the method: write key escrowed, audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's <a href="../team/prompts.html#board">board prompt</a> now ends with a push rather than a build.</p>
   </article>
   <article class="upd" id="our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">
     <h3><a href="#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">Our build brief was wrong, and the team that owns the code said so precisely</a> <a class="upd-ver" href="../admin/versions.html">v0.2.58</a></h3>
@@ -503,7 +516,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.63</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.64</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -542,7 +555,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.63';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.64';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
