@@ -2,7 +2,7 @@
 
 > The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
 
-*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Working on a vault: start here
 
-The first page to read before building, publishing or changing a vault — human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
+The first page to read before building, publishing or changing a vault — human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/docs/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
 
 **The one-minute version.** Pick your [surface](../surfaces.md) first — it changes every other answer. **Do not build what the platform already has**: markdown, file trees and page layouts are free. **Publish a read key, never a vault key.** **Version everything and show the version**, linked to what changed. **Anything rendered stays one click from the bytes it was rendered from.**
 
@@ -94,7 +94,7 @@ So this page does not restate the guidance that lives elsewhere, and it should n
 - **Indexes are generated from the data they index.** [The vault catalogue](../../demos/vaults/llms.txt) comes from the same file the human-readable table does, so the two cannot disagree. An index maintained by hand becomes a lie on a schedule.
 - **Scope by domain, link across.** Each site says one thing properly and points at the others rather than summarising them badly. The edge is the answer; the summary would be a worse copy.
 
-If something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](../briefs/vault-telemetry-append-lanes.md). [/guidance/llms.txt](llms.txt) · [All briefs](../briefs/index.md) · [The network](../../network/index.md)
+If something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](../briefs/vault-telemetry-append-lanes.md). [/docs/guidance/llms.txt](llms.txt) · [All briefs](../briefs/index.md) · [The network](../../network/index.md)
 
 
 ---

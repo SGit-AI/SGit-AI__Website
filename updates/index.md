@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,6 +29,22 @@ Both are gone from the first screen. In their place, in the order a cold visitor
 **The transcript gap is not hidden, it is right-sized.** It is still stated, in one sentence in the footer, and [board card T12](../team/board.md) is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.
 
 Nothing changed about the seven videos, their order, or the three movements they fall into.
+
+### [The llms.txt stops being a URL you have to guess](#the-llms-txt-stops-being-a-url-you-guess) [v0.2.73](../admin/versions.md)
+
+llmsdocsagentsmethod
+
+Six `llms.txt` files are published across this site — [the site-wide map](../llms.txt), [the vault catalogue](../demos/vaults/llms.txt), [the guidance entry point](../docs/guidance/llms.txt), and one each for [`/docs`](../docs/llms.txt), [`/docs/vault`](../docs/vault/llms.txt) and [`/api`](../api/llms.txt). Until now the only way to find one was to type it onto the end of an address and hope.
+
+**Every page now carries a chip above its title** naming the one that covers it: *for agents*, the path, and the version and date it was generated.
+
+Resolution is deepest-folder-wins. A page under `/docs/vault/` points at that section's index rather than at `/docs/llms.txt`; a page with no closer index falls back to the site-wide one. So every page has exactly one, and it is always the most specific one that exists.
+
+**The stamp is the point, not decoration.** These files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch. An agent editing a page can see at a glance whether the index has caught up with the page — if the page changed and the stamp did not, it has not.
+
+Two details worth recording. The chip is **chrome, not content** — emitted between the nav and the page body — so it never reaches the markdown twins and cannot drift from them. And a **build assertion** now fails the build if the chip ever points at a folder no generator actually writes, which is precisely the failure this feature would otherwise have introduced quietly.
+
+**Caught by building it.** The guidance page still *said* `/guidance/llms.txt` in two places, because [yesterday's move](../updates/index.md) relocated the file to `/docs/guidance/` and the rewriter fixed the `href` but not the prose around it. The page linked correctly while displaying a path that 404s. Fixed — and a reminder that a link rewriter fixes links, not sentences.
 
 ### [The build brief for putting a vault's decks on a website](#the-build-brief-for-decks-on-a-site) [v0.2.69](../admin/versions.md)
 

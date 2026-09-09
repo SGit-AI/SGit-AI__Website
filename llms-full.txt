@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.72). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.73). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-100site releases, each verified live before it was called done
+101site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3926,7 +3926,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.72, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.73, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4065,7 +4065,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-100**site releases since 14 August**
+101**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4074,7 +4074,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-44**articles and release notes**
+45**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4308,7 +4308,7 @@ The canonical markdown copy lives in the [SGit-AI__CLI](https://github.com/SGit-
 
 # Working on a vault: start here
 
-The first page to read before building, publishing or changing a vault — human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
+The first page to read before building, publishing or changing a vault — human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/docs/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
 
 **The one-minute version.** Pick your [surface](../surfaces.md) first — it changes every other answer. **Do not build what the platform already has**: markdown, file trees and page layouts are free. **Publish a read key, never a vault key.** **Version everything and show the version**, linked to what changed. **Anything rendered stays one click from the bytes it was rendered from.**
 
@@ -4392,7 +4392,7 @@ So this page does not restate the guidance that lives elsewhere, and it should n
 - **Indexes are generated from the data they index.** [The vault catalogue](../../demos/vaults/llms.txt) comes from the same file the human-readable table does, so the two cannot disagree. An index maintained by hand becomes a lie on a schedule.
 - **Scope by domain, link across.** Each site says one thing properly and points at the others rather than summarising them badly. The edge is the answer; the summary would be a worse copy.
 
-If something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](../briefs/vault-telemetry-append-lanes.md). [/guidance/llms.txt](llms.txt) · [All briefs](../briefs/index.md) · [The network](../../network/index.md)
+If something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](../briefs/vault-telemetry-append-lanes.md). [/docs/guidance/llms.txt](llms.txt) · [All briefs](../briefs/index.md) · [The network](../../network/index.md)
 
 
 
@@ -5474,11 +5474,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.72**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.73**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.72 | 2026-09-09 | this release | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
+| v0.2.73 | 2026-09-09 | this release | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
+| v0.2.72 | 2026-09-09 | obj-cas-imm-92130ad84859 | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
 | v0.2.71 | 2026-09-09 | obj-cas-imm-771aa698c057 | GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The guidance on this site had been organised by TASK — decks, markdown, file viewers — which hid the fact that every one of those questions has three different right answers depending on where the code runs. THREE SURFACES is the new router: _page.json inside a vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every vault host, compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and — the row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes are untrusted input arriving in your origin. A second table does the same job across the three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you, which only one surface does at all. READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs with NO AUTH HEADER from any origin, which the server can afford because it returns ciphertext under a key it never held — so no proxy and no backend. It says do not write the reader and names the four house files to copy instead, states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails silently by rendering an older commit from valid ciphertext, and says what should NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED with the surface they apply to, so the distinction is visible where someone lands rather than only on the router. |
 | v0.2.70 | 2026-09-09 | obj-cas-imm-0a8b264f2c4e | THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw views — already exist in the platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. The brief is therefore a DECISION rather than a syntax reference: a four-rung ladder (publish .md and stop; add a _page.json if you need a designed page rather than a document; build an app only when a view must COMPUTE something the host cannot know; build a site viewer only when the content must live outside a vault host) with the instruction to stop at the first rung that works. It names the three surfaces that render markdown natively, and the rules that actually catch people rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through folder/README.md because a bare folder link resolves by sort order, nested and task lists are unsupported. THE RAW-VIEW CONTRACT, taken from a vault that already lives by it: the AIUC-1 conformance vault's own source says 'raw is the point — a catalog that asks to be trusted has to be readable in the form it was written', and the brief adopts that whole — raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest, files fetched on click. Generalised as the estate's habit: anything rendered should be one click from the thing it was rendered from. CORRECTED WHILE CHECKING THE SCHEMA: the content-authoring page said ELEVEN component types and then listed twelve. It says twelve. |
 | v0.2.69 | 2026-09-09 | obj-cas-imm-d896dff05cc1 | THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was nothing telling another agent how to do this to THEIR vault. There is now: a build brief in the same shape as the telemetry one, which is the shape that worked when another team's agent built from it. It states the decks/v2 contract a vault must publish (the manifest and where it may live, deck sources pushing t/notes/html onto S, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs), the rule that governs the whole design — A VAULT MUST BE ABLE TO CHANGE WHAT IS SHOWN AND NEVER WHAT THE PAGE DOES — the two sandboxed frames with their exact CSPs, why the deck source must be handed over by postMessage rather than baked into a srcdoc, and why a decrypted PDF cannot go in an iframe at all. It publishes BOTH BUGS we hit rather than only the finished design: the image-name pattern that excluded underscores and failed silently on fifteen slides, and the unscoped closest() that killed every button on the single-deck pages. It ends with a done-means checklist and a prompt to hand the builder. The reference page now points at the brief for anyone who arrived wanting instructions rather than an explanation. Caught in review: the .md twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build — rewritten to the site's uppercase-placeholder convention, which is the third time that rule has earned its keep. |
@@ -6247,6 +6248,22 @@ Both are gone from the first screen. In their place, in the order a cold visitor
 **The transcript gap is not hidden, it is right-sized.** It is still stated, in one sentence in the footer, and [board card T12](../team/board.md) is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.
 
 Nothing changed about the seven videos, their order, or the three movements they fall into.
+
+### [The llms.txt stops being a URL you have to guess](#the-llms-txt-stops-being-a-url-you-guess) [v0.2.73](../admin/versions.md)
+
+llmsdocsagentsmethod
+
+Six `llms.txt` files are published across this site — [the site-wide map](../llms.txt), [the vault catalogue](../demos/vaults/llms.txt), [the guidance entry point](../docs/guidance/llms.txt), and one each for [`/docs`](../docs/llms.txt), [`/docs/vault`](../docs/vault/llms.txt) and [`/api`](../api/llms.txt). Until now the only way to find one was to type it onto the end of an address and hope.
+
+**Every page now carries a chip above its title** naming the one that covers it: *for agents*, the path, and the version and date it was generated.
+
+Resolution is deepest-folder-wins. A page under `/docs/vault/` points at that section's index rather than at `/docs/llms.txt`; a page with no closer index falls back to the site-wide one. So every page has exactly one, and it is always the most specific one that exists.
+
+**The stamp is the point, not decoration.** These files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch. An agent editing a page can see at a glance whether the index has caught up with the page — if the page changed and the stamp did not, it has not.
+
+Two details worth recording. The chip is **chrome, not content** — emitted between the nav and the page body — so it never reaches the markdown twins and cannot drift from them. And a **build assertion** now fails the build if the chip ever points at a folder no generator actually writes, which is precisely the failure this feature would otherwise have introduced quietly.
+
+**Caught by building it.** The guidance page still *said* `/guidance/llms.txt` in two places, because [yesterday's move](../updates/index.md) relocated the file to `/docs/guidance/` and the rewriter fixed the `href` but not the prose around it. The page linked correctly while displaying a path that 404s. Fixed — and a reminder that a link rewriter fixes links, not sentences.
 
 ### [The build brief for putting a vault's decks on a website](#the-build-brief-for-decks-on-a-site) [v0.2.69](../admin/versions.md)
 

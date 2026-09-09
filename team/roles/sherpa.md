@@ -2,7 +2,7 @@
 
 > Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits.
 
-*Source: <https://sgit.ai/team/roles/sherpa.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/sherpa.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
