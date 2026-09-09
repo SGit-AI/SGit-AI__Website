@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,6 +29,25 @@ Both are gone from the first screen. In their place, in the order a cold visitor
 **The transcript gap is not hidden, it is right-sized.** It is still stated, in one sentence in the footer, and [board card T12](../team/board.md) is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.
 
 Nothing changed about the seven videos, their order, or the three movements they fall into.
+
+### [The build brief for putting a vault's decks on a website](#the-build-brief-for-decks-on-a-site) [v0.2.69](../admin/versions.md)
+
+briefsvaultsdecksagents
+
+Two releases documented this from the inside: [reading one file out of a vault](../vault/reading-a-vault-file.md) explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to *their* vault. [**That brief now exists.**](../briefs/vault-decks-on-a-site.md)
+
+It follows the shape of [the telemetry brief](../briefs/vault-telemetry-append-lanes.md) — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.
+
+- **The contract a vault must publish.** Where the manifest may live, deck sources pushing `t` / `notes` / `html` onto `S`, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs. Plus the fallback for a vault that published only its built decks.
+- **The rule that governs the design**, stated as a test anyone can apply: *a vault must be able to change what is shown and never what the page does.* If a vault can add a button, change where a link goes, or read anything belonging to the host page, the split is wrong.
+- **The two frames, with their exact CSPs** — and the detail that a deck source must be handed to the parse frame over `postMessage` rather than baked into a `srcdoc`, or a deck containing the characters that close a script tag breaks out of the bootstrap running it.
+- **Why a decrypted PDF cannot go in an iframe at all**, with the console message Chrome actually emits.
+
+**It publishes both bugs, not just the finished design.** The image-name pattern that excluded underscores and failed silently on fifteen slides; the unscoped `closest()` that killed every button on exactly the pages it was written for. A brief that only describes the working version teaches less than one that names the two places a careful implementer will still go wrong.
+
+It ends with a done-means checklist — walk every slide and assert zero unresolved images, byte-count a downloaded PDF against the vault, grep the built site for vault-key shapes — and a prompt to hand the builder agent.
+
+One thing caught in review, worth recording because it is the third time: the `.md` twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build. Rewritten to the site's uppercase-placeholder convention.
 
 ### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
 

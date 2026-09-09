@@ -2,7 +2,7 @@
 
 > The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 
-*Source: <https://sgit.ai/vault/reading-a-vault-file.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/reading-a-vault-file.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -62,6 +62,8 @@ A download is triggered from the page rather than from inside a frame for the sa
 A deck builds its slides by *running* — it is JavaScript that calls `S.push({t, notes, html})` — so it has to execute somewhere. It executes in a scripted, opaque-origin frame with `default-src 'none'`, which posts back a plain array; the site never evaluates it. Each slide's markup then goes into a second frame with scripting off. The stage is 1600×900 because that is the size the deck's own CSS was written against, and the *element* is scaled rather than the document, so a slide looks the same at any column width with no reflow.
 
 Two published shapes are handled, because vaults differ in what they chose to publish: one ships its deck sources (small, screenshots fetched only when a slide uses one), the other ships only the built decks (large, screenshots already inline). The reader prefers the source and falls back to the built file, truncated at the point where the vault's own viewer starts.
+
+**Doing this yourself?** This page explains the mechanism. [**The build brief**](../briefs/vault-decks-on-a-site.md) is the instructions — the contract a vault must publish, the checks that mean it is done, and a prompt to hand the agent who will build it.
 
 ## What this costs a reader
 

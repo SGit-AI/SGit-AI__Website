@@ -300,6 +300,12 @@
     "desc": "How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent."
   },
   {
+    "path": "briefs/vault-decks-on-a-site.html",
+    "section": "briefs",
+    "title": "Publishing a vault’s decks onto a website — build brief",
+    "desc": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder."
+  },
+  {
     "path": "vault/index.html",
     "section": "vault",
     "title": "SG/Vault & the vault platform — sgit.ai",

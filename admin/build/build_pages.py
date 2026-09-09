@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.68'
+SITE_VERSION = 'v0.2.69'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.68', '2026-09-09', 'this release',
+    ('v0.2.69', '2026-09-09', 'this release',
+     "THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the "
+     "MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was "
+     "nothing telling another agent how to do this to THEIR vault. There is now: a build brief "
+     "in the same shape as the telemetry one, which is the shape that worked when another "
+     "team's agent built from it. It states the decks/v2 contract a vault must publish (the "
+     "manifest and where it may live, deck sources pushing t/notes/html onto S, screenshots "
+     "named symbolically rather than pathed, the CSS in the shell's style block, the PDFs), the "
+     "rule that governs the whole design — A VAULT MUST BE ABLE TO CHANGE WHAT IS SHOWN AND "
+     "NEVER WHAT THE PAGE DOES — the two sandboxed frames with their exact CSPs, why the deck "
+     "source must be handed over by postMessage rather than baked into a srcdoc, and why a "
+     "decrypted PDF cannot go in an iframe at all. It publishes BOTH BUGS we hit rather than "
+     "only the finished design: the image-name pattern that excluded underscores and failed "
+     "silently on fifteen slides, and the unscoped closest() that killed every button on the "
+     "single-deck pages. It ends with a done-means checklist and a prompt to hand the builder. "
+     "The reference page now points at the brief for anyone who arrived wanting instructions "
+     "rather than an explanation. Caught in review: the .md twin rule strips inline code spans "
+     "but not fenced blocks, so tag names inside the prompt failed the build — rewritten to the "
+     "site's uppercase-placeholder convention, which is the third time that rule has earned its "
+     "keep.",
+     ),
+    ('v0.2.68', '2026-09-09', 'obj-cas-imm-b7b0f80752be',
      "A PAGE PER DECK, A FOCUS MODE, AND SCOPED LLMS.TXT FILES. Eleven new pages: each of the "
      "nine published decks now has one of its own — four under the AIUC-1 conformance vault, "
      "five under Licence to Operate — plus an index for each vault. A deck page opens that deck "

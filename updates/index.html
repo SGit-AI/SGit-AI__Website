@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.68</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.69</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -108,6 +108,21 @@
 </ul>
 <p><b>The transcript gap is not hidden, it is right-sized.</b> It is still stated, in one sentence in the footer, and <a href="../team/board.html">board card T12</a> is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.</p>
 <p>Nothing changed about the seven videos, their order, or the three movements they fall into.</p>
+  </article>
+  <article class="upd" id="the-build-brief-for-decks-on-a-site">
+    <h3><a href="#the-build-brief-for-decks-on-a-site">The build brief for putting a vault's decks on a website</a> <a class="upd-ver" href="../admin/versions.html">v0.2.69</a></h3>
+    <p class="chips"><span class="chip">briefs</span><span class="chip">vaults</span><span class="chip">decks</span><span class="chip">agents</span></p>
+<p>Two releases documented this from the inside: <a href="../vault/reading-a-vault-file.html">reading one file out of a vault</a> explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to <em>their</em> vault. <a href="../briefs/vault-decks-on-a-site.html"><b>That brief now exists.</b></a></p>
+<p>It follows the shape of <a href="../briefs/vault-telemetry-append-lanes.html">the telemetry brief</a> — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.</p>
+<ul>
+<li><b>The contract a vault must publish.</b> Where the manifest may live, deck sources pushing <code>t</code> / <code>notes</code> / <code>html</code> onto <code>S</code>, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs. Plus the fallback for a vault that published only its built decks.</li>
+<li><b>The rule that governs the design</b>, stated as a test anyone can apply: <em>a vault must be able to change what is shown and never what the page does.</em> If a vault can add a button, change where a link goes, or read anything belonging to the host page, the split is wrong.</li>
+<li><b>The two frames, with their exact CSPs</b> — and the detail that a deck source must be handed to the parse frame over <code>postMessage</code> rather than baked into a <code>srcdoc</code>, or a deck containing the characters that close a script tag breaks out of the bootstrap running it.</li>
+<li><b>Why a decrypted PDF cannot go in an iframe at all</b>, with the console message Chrome actually emits.</li>
+</ul>
+<p><b>It publishes both bugs, not just the finished design.</b> The image-name pattern that excluded underscores and failed silently on fifteen slides; the unscoped <code>closest()</code> that killed every button on exactly the pages it was written for. A brief that only describes the working version teaches less than one that names the two places a careful implementer will still go wrong.</p>
+<p>It ends with a done-means checklist — walk every slide and assert zero unresolved images, byte-count a downloaded PDF against the vault, grep the built site for vault-key shapes — and a prompt to hand the builder agent.</p>
+<p>One thing caught in review, worth recording because it is the third time: the <code>.md</code> twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build. Rewritten to the site's uppercase-placeholder convention.</p>
   </article>
   <article class="upd" id="seven-shorts-on-the-licence-to-operate">
     <h3><a href="#seven-shorts-on-the-licence-to-operate">Seven shorts on the Licence to Operate vault — indexed, and put in the right order</a> <a class="upd-ver" href="../admin/versions.html">v0.2.65</a></h3>
@@ -569,7 +584,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.68</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.69</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -609,7 +624,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.68';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.69';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

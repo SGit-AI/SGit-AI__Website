@@ -2,7 +2,7 @@
 
 > 4 decks published inside vault 2wzct4k7, each on its own page, with the slides read live out of the vault using its published read key.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/index.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/index.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
