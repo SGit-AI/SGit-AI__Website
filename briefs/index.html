@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.70</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.71</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -98,10 +98,13 @@
 
   <p><b>Two kinds live here, and they behave differently.</b> A <b>cross-team ask</b> is addressed to another team, carries a status, and closes when it is answered — it is a record of a conversation. A <b>build brief</b> is a durable reference written to be executed by an agent: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.</p>
 
+  <div class="note"><b>Which surface are you building for?</b> The guidance below splits three ways &mdash; <code>_page.json</code> inside a vault, an HTML vault app, and a page on a <code>*.sgit.ai</code> site. They have different capabilities and <em>opposite trust directions</em>. <a href="../docs/surfaces.html"><b>Start with the surface &rarr;</b></a> Every guidance page in the estate is labelled with the one it applies to.</div>
+
   <h2 id="build">Build briefs <span class="small dim">— written to be executed</span></h2>
   <div class="tablewrap"><table>
     <tr><th>Brief</th><th>What it is for</th></tr>
     <tr><td><a href="vault-telemetry-append-lanes.html"><b>Telemetry from a published vault</b></a></td><td>How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder</td></tr>
+    <tr><td><a href="sgit-ai-site-pages.html"><b>Reading a vault from a site page</b></a></td><td>For devs coding the <code>*.sgit.ai</code> sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent</td></tr>
     <tr><td><a href="markdown-and-file-viewers.html"><b>Markdown and file viewers: what not to build</b></a></td><td>The two most common vault asks are already solved by the platform. The ladder from zero code to a full app, the markdown rules that catch people (stripped HTML, pipe image sizing, folder links), the raw-always contract if you do build a file explorer, and the prompt to hand the builder</td></tr>
     <tr><td><a href="vault-decks-on-a-site.html"><b>Decks from a vault, on a site</b></a></td><td>How to make the presentations inside a vault play on a web page, read live with a published read key. The <code>decks/v2</code> contract a vault must publish, the two sandboxed frames the host renders them in, why a decrypted PDF cannot go in an iframe, the two bugs we hit building it, and the prompt to hand the builder</td></tr>
     <tr><td><a href="../demos/vaults/publishing.html"><b>Publishing a vault</b></a></td><td>The seven steps behind every row of the <a href="../demos/vaults/index.html">published vaults</a> table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent</td></tr>
@@ -212,7 +215,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.70</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.71</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -252,7 +255,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.70';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.71';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

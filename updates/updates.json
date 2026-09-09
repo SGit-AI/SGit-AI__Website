@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.70",
+  "site_version": "v0.2.71",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -54,6 +54,19 @@
         "method"
       ],
       "summary": "Two of the most common things an agent is asked to add to a vault are a markdown viewer and a file/folder browser with raw views . Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writ…"
+    },
+    {
+      "slug": "guidance-splits-by-surface",
+      "title": "Guidance now splits by surface — and the third surface finally has its own brief",
+      "date": "2026-09-09",
+      "version": "v0.2.71",
+      "tags": [
+        "briefs",
+        "docs",
+        "vaults",
+        "method"
+      ],
+      "summary": "The guidance here had been organised by task — decks, markdown, file viewers. That hid something: every one of those questions has three different right answers depending on where the code runs . Three surfaces is the router. page.json inside a vault, an HTML…"
     },
     {
       "slug": "decks-read-straight-out-of-a-vault",

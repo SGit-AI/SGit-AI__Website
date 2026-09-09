@@ -1,0 +1,52 @@
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / Three surfaces</p>
+  <h1>Three surfaces: which one are you building for?</h1>
+  <p class="lead">Almost every question about &ldquo;how do I show this&rdquo; has three different right answers, because there are three places code runs in this estate &mdash; <b><code>_page.json</code></b> inside a vault, an <b>HTML vault app</b> inside a vault, and a page on a <b><code>*.sgit.ai</code> site</b> outside every vault. They have different capabilities, different credentials and, most importantly, <b>opposite trust directions</b>. Pick the surface first; the rest of the guidance follows from it.</p>
+
+  <div class="note"><b>The short version.</b> Publishing a document? <code>_page.json</code> or plain markdown, and write no code. Need to <em>compute</em> something over the vault's own data, for someone who already has the vault open? A vault app. Need it on the public web, indexed, linkable, with no key-holding required of the reader? A <code>*.sgit.ai</code> site page &mdash; and there <b>you</b> become the one who has to distrust the vault.</div>
+
+  <h2 id="table">The three, side by side</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th><code>_page.json</code></th><th>HTML vault app</th><th><code>*.sgit.ai</code> site page</th></tr>
+    <tr><td><b>Where it runs</b></td><td>The vault browse view</td><td>A sandboxed frame inside the vault host</td><td>A normal public web page, any origin</td></tr>
+    <tr><td><b>Who reads the vault</b></td><td>The host</td><td>The host, answering <code>window.sg</code> calls</td><td><b>You do</b> &mdash; a CORS <code>GET</code> plus Web Crypto</td></tr>
+    <tr><td><b>The credential</b></td><td>The reader already opened the vault</td><td>Same &mdash; the app never holds a key</td><td>A published <b>read key, printed in your page</b></td></tr>
+    <tr><td><b>What the reader needs</b></td><td>The vault link or key</td><td>The vault link or key</td><td><b>Nothing.</b> It is a URL</td></tr>
+    <tr><td><b>Search engines and agents</b></td><td>Invisible</td><td>Invisible</td><td><b>Indexed</b>, linkable, quotable</td></tr>
+    <tr><td><b>You write</b></td><td>JSON</td><td>HTML, CSS, JS + <code>app.json</code></td><td>Whatever your site is built from</td></tr>
+    <tr><td><b>Trust direction</b></td><td>Host renders your content</td><td>Host distrusts <em>your app</em> and sandboxes it</td><td><b>You distrust the vault</b> and sandbox <em>it</em></td></tr>
+    <tr><td><b>Ships when</b></td><td><code>sgit push</code></td><td><code>sgit push</code></td><td>Your site's release</td></tr>
+  </table></div>
+  <p>The last two rows are the ones people get wrong. Inside a vault host, <b>the host is the one doing the protecting</b> &mdash; it sandboxes the app, gates permissions and keeps the sovereignty rail. On your own site there is no host: <b>you</b> are the host, and vault bytes are untrusted input arriving in your origin.</p>
+
+  <h2 id="capabilities">The same job, on each surface</h2>
+  <div class="tablewrap"><table>
+    <tr><th>You want to&hellip;</th><th><code>_page.json</code></th><th>Vault app</th><th>Site page</th></tr>
+    <tr><td><b>Show a markdown document</b></td><td>Native &mdash; the <code>markdown</code> component, or just publish the <code>.md</code></td><td><code>sg.vfs.readText</code>, then render</td><td>Fetch, decrypt, render &mdash; or write the prose as a page and keep a <code>.md</code> twin</td></tr>
+    <tr><td><b>Browse files and folders</b></td><td>Native &mdash; the host's tree is the browser</td><td>Build one from a build-time manifest; raw always available</td><td>Same, with the manifest read out of the vault</td></tr>
+    <tr><td><b>Show a deck</b></td><td><code>slides</code> or <code>gallery</code> components</td><td>Your own viewer, or the vault's <code>decks/v2</code> shell</td><td><a href="../briefs/vault-decks-on-a-site.html">The deck-viewer pattern</a> &mdash; parse frame plus render frame</td></tr>
+    <tr><td><b>Show a PDF</b></td><td>The <code>pdf</code> component</td><td><code>sg.ui.preview</code></td><td><b>Download only.</b> A sandboxed frame cannot render one</td></tr>
+    <tr><td><b>Compute over the data</b></td><td>Not possible &mdash; it is a layout format</td><td>Yes, this is the reason apps exist</td><td>Yes, in your own code</td></tr>
+    <tr><td><b>Be found by someone who has never heard of you</b></td><td>No</td><td>No</td><td><b>Yes</b> &mdash; the only surface that does this</td></tr>
+  </table></div>
+
+  <h2 id="guidance">Where the guidance lives</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Surface</th><th>Read</th></tr>
+    <tr><td><b><code>_page.json</code> and markdown</b></td><td><a href="../vault/content-authoring.html">Publishing content without code</a> &mdash; the syntax. <a href="../briefs/markdown-and-file-viewers.html">Markdown and file viewers: what not to build</a> &mdash; the decision</td></tr>
+    <tr><td><b>HTML vault apps</b></td><td><a href="../vault/vault-apps.html">Building vault apps</a> &mdash; the project shape and <code>app.json</code>. <a href="../vault/sg-bridge.html">The window.sg bridge</a> &mdash; the runtime and its permission model</td></tr>
+    <tr><td><b><code>*.sgit.ai</code> site pages</b></td><td><a href="../briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a> &mdash; the brief. <a href="../vault/reading-a-vault-file.html">Reading one file out of a vault</a> &mdash; the primitive. <a href="../briefs/vault-decks-on-a-site.html">Decks from a vault, on a site</a> &mdash; a worked example</td></tr>
+    <tr><td><b>All three</b></td><td><a href="../demos/vaults/publishing.html">Publishing a vault: the method</a> &mdash; read keys are publishable, vault keys never are, whichever surface you are on</td></tr>
+  </table></div>
+
+  <h2 id="mixing">They combine, and the combination is usually right</h2>
+  <p>These are not alternatives to choose between once. The vaults on this site do all three at the same time, and that is the intended shape:</p>
+  <ul>
+    <li><b>The vault holds the content</b> &mdash; markdown, data, images, decks &mdash; authored once.</li>
+    <li><b>A vault app computes over it</b> for anyone who opens the vault directly, with the full file tree beside it.</li>
+    <li><b>A site page publishes a view of it</b> for everyone else: indexed, linkable, and readable without a key or an account.</li>
+  </ul>
+  <p><a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> is the clearest example &mdash; a fourteen-tab app inside the vault, and <a href="../demos/vaults/aiuc-1-conformance/decks/index.html">deck pages on this site</a> reading the same files. One set of content; three ways in. <b>What must never be duplicated is the content itself</b>: if a paragraph exists in the vault and again in a site page, they will disagree, and the vault is the one that is right.</p>
+
+  <p class="small dim" style="margin-top:2rem">Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. <a href="../briefs/index.html">All briefs</a> &middot; <a href="index.html">Docs</a> &middot; <a href="../vault/index.html">SG/Vault</a></p>
+</main>

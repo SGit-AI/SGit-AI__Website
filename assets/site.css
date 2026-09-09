@@ -886,3 +886,5 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 .vdk.focus .vdk-body{grid-template-columns:minmax(0,1fr)}
 .vdk.focus .vdk-list{display:none}
 .vdk-tabs[hidden]{display:none}
+.surface{margin:0 0 .4rem;font-size:.8rem;color:var(--dim);letter-spacing:.01em}
+.surface b{color:var(--fg)}

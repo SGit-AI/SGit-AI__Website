@@ -2,11 +2,13 @@
 
 > The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 
-*Source: <https://sgit.ai/vault/reading-a-vault-file.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/reading-a-vault-file.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Docs](../docs/index.md) / Reading one file out of a vault
+
+**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other surfaces →](../docs/surfaces.md)
 
 # Reading one file out of a vault, from any web page
 

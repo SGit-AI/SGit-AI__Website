@@ -300,6 +300,18 @@
     "desc": "How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent."
   },
   {
+    "path": "docs/surfaces.html",
+    "section": "docs",
+    "title": "Three surfaces: which one are you building for? — sgit.ai",
+    "desc": "_page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them — plus the same job done on all three, and where each surface’s guidance lives."
+  },
+  {
+    "path": "briefs/sgit-ai-site-pages.html",
+    "section": "briefs",
+    "title": "Reading a vault from a *.sgit.ai site page — build brief",
+    "desc": "For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent."
+  },
+  {
     "path": "briefs/vault-decks-on-a-site.html",
     "section": "briefs",
     "title": "Publishing a vault’s decks onto a website — build brief",

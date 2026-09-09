@@ -2,11 +2,13 @@
 
 > Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
 
-*Source: <https://sgit.ai/briefs/markdown-and-file-viewers.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/briefs/markdown-and-file-viewers.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Briefs](index.md) / Markdown and file viewers
+
+**Surface:** inside a vault — `_page.json`, markdown, or a vault app. [The other surfaces →](../docs/surfaces.md)
 
 # Markdown and file viewers in a vault: what not to build
 
