@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.67</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.68</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -137,6 +137,16 @@
 <p><b>A real bug, found by walking everything.</b> The first pattern for image names excluded underscores. Fifteen slides in the Licence to Operate decks therefore rendered with a silently missing screenshot: no error in the console, no gap in the layout, just an absence nobody would notice by clicking through a few slides. The browser test now walks all 113 slides across all nine decks and counts missing images; the count is zero.</p>
 <p>Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.</p>
 <p>New page: <a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a>, which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.</p>
+  </article>
+  <article class="upd" id="a-page-per-deck-and-a-catalogue-agents-can-read">
+    <h3><a href="#a-page-per-deck-and-a-catalogue-agents-can-read">A page per deck, a focus mode, and a vault catalogue an agent can read</a> <a class="upd-ver" href="../admin/versions.html">v0.2.68</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">decks</span><span class="chip">llms</span><span class="chip">method</span></p>
+<p>Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them.</p>
+<p><b>A page per deck.</b> Each of the nine published decks now has one — <a href="../demos/vaults/aiuc-1-conformance/decks/index.html">four under the AIUC-1 conformance vault</a>, <a href="../demos/vaults/licence-to-operate/decks/index.html">five under Licence to Operate</a>. A deck page opens that deck alone, tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on, and which deck picks that question up. Each also has a <b>Notes on this deck</b> section that is deliberately empty and says so — that room is the whole reason a deck deserves a page rather than a tab, and it is where a narrated recording will be linked once one is mapped to a deck.</p>
+<p><b>Focus.</b> A button that drops the slide list so the stage takes the full width — for presenting, and for recording a screen capture where the chrome is just noise. The stage is re-fitted rather than merely revealed, so the slide actually gets bigger.</p>
+<p><b>A bug the new pages exposed within a minute of existing.</b> The mount element carries <code>data-deck</code> on a single-deck page, and the click router used an unscoped <code>closest('[data-deck]')</code> — so it matched the mount element for every click inside the viewer and returned early. Prev, next, notes, focus and the PDF button were all silently dead, on exactly the pages just built. Nothing threw; the buttons simply did nothing. Scoped to the tab strip, and caught because the browser test asserts on the <em>effect</em> of clicking rather than on the click landing.</p>
+<p><b>A catalogue an agent can read.</b> <a href="../demos/vaults/llms.txt"><code>/demos/vaults/llms.txt</code></a> is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from <code>vaults.json</code> — the same file <a href="../demos/vaults/index.html">the vaults table</a> is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.</p>
+<p>Three more sections got their own: <a href="../vault/llms.txt"><code>/vault/llms.txt</code></a>, <a href="../api/llms.txt"><code>/api/llms.txt</code></a> and <a href="../docs/llms.txt"><code>/docs/llms.txt</code></a>. An agent pointed at one part of the site now gets that part's index instead of the whole map.</p>
   </article>
   <h2 class="upd-date">2026-09-07</h2>
   <article class="upd" id="the-team-for-the-agents-and-investors-in-the-open">
@@ -559,7 +569,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.67</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.68</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -599,7 +609,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.67';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.68';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

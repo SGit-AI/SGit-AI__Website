@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.67'
+SITE_VERSION = 'v0.2.68'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.67', '2026-09-09', 'this release',
+    ('v0.2.68', '2026-09-09', 'this release',
+     "A PAGE PER DECK, A FOCUS MODE, AND SCOPED LLMS.TXT FILES. Eleven new pages: each of the "
+     "nine published decks now has one of its own — four under the AIUC-1 conformance vault, "
+     "five under Licence to Operate — plus an index for each vault. A deck page opens that deck "
+     "alone, with the tab strip gone, and carries what the slides cannot: the level it answers, "
+     "the vocabulary it introduces, who it is for, where it deliberately stops, the question it "
+     "ends on and which deck picks that question up. Each has a NOTES ON THIS DECK section that "
+     "is deliberately empty and says so — that room is the reason a deck deserves a page rather "
+     "than a tab. FOCUS drops the slide list so the stage takes the full width, for presenting "
+     "and for screen recording, and the stage is re-fitted rather than merely revealed. A BUG "
+     "THE PER-DECK PAGES EXPOSED IMMEDIATELY: the mount element carries data-deck on a "
+     "single-deck page, and the click router used an unscoped closest('[data-deck]'), so it "
+     "matched the mount for every click inside the viewer — prev, next, notes, focus and the "
+     "PDF button were all silently dead on exactly the pages just built. Scoped to the tab "
+     "strip. SCOPED LLMS.TXT: /demos/vaults/llms.txt is the catalogue as an agent index — all "
+     "26 vaults with id, category, published date, size, file count and published read key — "
+     "generated from vaults.json, the same file the table on that page is built from, with each "
+     "read key lifted from the vault's own page rather than kept in a second list that could "
+     "disagree. Vault keys appear nowhere, as always. Three more sections got one: /vault, /api "
+     "and /docs.",
+     ),
+    ('v0.2.67', '2026-09-09', 'obj-cas-imm-daf0dde2fed2',
      "DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults "
      "publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — "
      "and until now the only way to see them was to open the vault's own app. They now play on "
@@ -1703,6 +1724,19 @@ def write_site_index(pages):
     print(f'wrote assets/site-index.json ({len(text)} bytes, {len(ix["pages"])} pages, {len(ix["vaults"])} vaults, {len(ix["sites"])} sites)')
 
 
+SCOPED_LLMS = [
+    ('vault', 'The vault format and how to serve it',
+     'Everything on this site about what a vault IS and how to host, read and embed one — '
+     'the storage layout, static hosting with no backend, and reading a single file out of a '
+     'vault from a web page.'),
+    ('api', 'The HTTP API',
+     'The protocol surface behind sgit: vault objects, append lanes, authentication and errors.'),
+    ('docs', 'Using sgit',
+     'The CLI and the model behind it — installation, quickstart, the two-branch model, '
+     'messaging between vaults, and what sgit does not do.'),
+]
+
+
 def write_llms(pages):
     out, seen, optional = [LLMS_PREAMBLE], set(), []
     for key, heading in LLMS_SECTIONS:
@@ -1776,6 +1810,90 @@ def write_sitemap(pages, today):
     with open(os.path.join(ROOT, 'sitemap.xml'), 'w') as f:
         f.write(text)
     return text
+
+
+
+def write_scoped_llms(pages):
+    """Section-scoped llms.txt files, so an agent pointed at one part of the site gets that
+    part's index rather than the whole map.
+
+    /demos/vaults/llms.txt is the one that matters: it is generated from vaults.json, which is
+    what the vaults table itself is generated from, so the catalogue an agent reads and the
+    table a human reads cannot disagree. Read keys appear because they are published on the
+    pages already and are the whole credential for reading; vault keys never appear anywhere.
+    """
+    written = []
+
+    # ---- the published vaults, from the same data the table is built from
+    vs = sorted(json.load(open(os.path.join(ADMIN, 'content', 'vaults.json'))),
+                key=lambda v: -int(v.get('n', 0)))
+    # The read key is not in vaults.json — it is printed on each vault's own page, which is the
+    # one copy. Lift it from there rather than keeping a second list that could disagree.
+    for v in vs:
+        try:
+            src = open(os.path.join(ADMIN, 'content', 'demos', 'vaults', v['slug'], 'index.html')).read()
+            m = re.search(r'((?:sgit_(?:rk1_|private_read_))?[0-9a-f]{64}:' + re.escape(v['vault_id']) + r')', src)
+            if m:
+                v['read_key'] = m.group(1)
+        except OSError:
+            pass
+    rows = []
+    for v in vs:
+        bits = [f"id `{v['vault_id']}`", v.get('category', '')]
+        if v.get('published'): bits.append(f"published {v['published']}")
+        if v.get('size'):      bits.append(v['size'])
+        if v.get('files'):     bits.append(f"{v['files']} files")
+        line = (f"- **#{v.get('n')} {v['name']}** — {v.get('what', '')}\n"
+                f"  - page: /demos/vaults/{v['slug']}/index.md\n"
+                f"  - {' · '.join(b for b in bits if b)}")
+        if v.get('read_key'):
+            line += f"\n  - read key: `{v['read_key']}`"
+        rows.append(line)
+    text = (f"""# Published vaults on sgit.ai
+
+> The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
+> generated at build time ({SITE_VERSION}) from the same file the table on that page is built
+> from — so this list and that table cannot drift apart.
+>
+> Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
+> one-way from a vault key that is never published. A read key is the complete credential —
+> no account, no token, nothing to install. `sgit clone <read key>` from the CLI, or open it at
+> https://dev.vault.sgraph.ai/#<read key with the colon percent-encoded>.
+>
+> The server stores ciphertext under opaque ids and cannot read any of this. How a browser
+> reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
+
+## The vaults ({len(vs)})
+""" + '\n'.join(rows) + """
+
+## How these were published
+- [Publishing a vault: the method](/demos/vaults/publishing.md) — the seven steps behind every row above.
+- [The vault catalogue](/catalogue/index.md) — the same index, rendered live from a vault that indexes vaults.
+- [Reading one file out of a vault](/vault/reading-a-vault-file.md) — the primitive under every live embed here.
+""")
+    d = os.path.join(ROOT, 'demos', 'vaults')
+    os.makedirs(d, exist_ok=True)
+    with open(os.path.join(d, 'llms.txt'), 'w') as f:
+        f.write(text)
+    written.append(('demos/vaults/llms.txt', len(text), len(vs)))
+
+    # ---- one per section directory that owns a real folder on disk
+    for folder, heading, blurb in SCOPED_LLMS:
+        rows = [f'- [{t.split(" — ")[0].split(" | ")[0]}](/{pp[:-5]}.md): {de}'
+                for pp, t, de, _here, _ in pages if pp.startswith(folder + '/')]
+        if not rows:
+            continue
+        body = (f"# {heading} — sgit.ai\n\n> {blurb} Generated at build time ({SITE_VERSION}).\n"
+                f"> The whole-site map is /llms.txt; every page here also exists as `.md`.\n\n"
+                f"## Pages ({len(rows)})\n" + '\n'.join(rows) + '\n')
+        dd = os.path.join(ROOT, folder)
+        os.makedirs(dd, exist_ok=True)
+        with open(os.path.join(dd, 'llms.txt'), 'w') as f:
+            f.write(body)
+        written.append((folder + '/llms.txt', len(body), len(rows)))
+    for name, n, c in written:
+        print(f'wrote {name} ({n} bytes, {c} entries)')
+    return written
 
 
 def write_llms_full(pages):
@@ -2436,6 +2554,7 @@ for path, title, desc, here, body in PAGES:
 print(f'wrote {len(PAGES)} markdown mirrors ({md_total} bytes)')
 print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 write_site_index(PAGES)
+write_scoped_llms(PAGES)
 print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
 print('wrote robots.txt (%d bytes)' % len(write_robots()))
 print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))

@@ -2,7 +2,7 @@
 
 > Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
 
-*Source: <https://sgit.ai/team/board.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/board.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.67, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.68, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.

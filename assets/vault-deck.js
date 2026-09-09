@@ -155,6 +155,11 @@
     }
     if (!manifest) throw new Error('no deck manifest — looked for ' + tried.join(' and '));
     this.decks = (manifest.decks || []).filter(function (d) { return d && d.id; });
+    // A page dedicated to one deck names it, and the tab strip is then noise.
+    if (cfg.only) {
+      this.decks = this.decks.filter(function (d) { return d.id === cfg.only; });
+      if (!this.decks.length) throw new Error('no deck "' + cfg.only + '" in the manifest');
+    }
     if (!this.decks.length) throw new Error('no decks in the manifest');
 
     // The deck's own look, taken as CSS and never as script: the vault's script IS the vault's
@@ -226,6 +231,7 @@
           '<button class="vdk-b" data-a="prev" type="button">&larr; prev</button>' +
           '<button class="vdk-b" data-a="next" type="button">next &rarr;</button>' +
           '<button class="vdk-b" data-a="notes" type="button">notes</button>' +
+          '<button class="vdk-b" data-a="focus" type="button" title="hide the slide list — for presenting and recording">focus</button>' +
           '<button class="vdk-b vdk-pdf" data-a="pdf" type="button">PDF &darr;</button>' +
         '</div>' +
         '<div class="vdk-body">' +
@@ -236,6 +242,7 @@
         '<p class="vdk-status"></p>' +
       '</div>';
 
+    if (this.cfg.only) this.el.querySelector('.vdk-tabs').hidden = true;
     this.el.querySelector('.vdk-tabs').innerHTML = this.decks.map(function (d) {
       return '<button class="vdk-tab" type="button" data-deck="' + esc(d.id) + '">' +
              esc(d.short || d.title || d.id) +
@@ -243,7 +250,10 @@
     }).join('');
 
     this.el.addEventListener('click', function (ev) {
-      var t = ev.target.closest('[data-deck]');
+      // Scoped to the tab strip on purpose: the mount element itself carries data-deck on a
+      // single-deck page, so an unscoped closest() matched it for every click in the viewer
+      // and swallowed prev, next, notes, focus and the PDF button.
+      var t = ev.target.closest('.vdk-tab');
       if (t) return self.showDeck(t.getAttribute('data-deck'), 0);
       var s = ev.target.closest('[data-slide]');
       if (s) return self.show(parseInt(s.getAttribute('data-slide'), 10));
@@ -253,6 +263,7 @@
       if (a === 'prev')  self.show(self.i - 1);
       if (a === 'next')  self.show(self.i + 1);
       if (a === 'notes') self.toggleNotes();
+      if (a === 'focus') self.toggleFocus();
       if (a === 'pdf')   self.pdf();
     });
   };
@@ -371,13 +382,25 @@
     // Keep the slide list the same height as the stage beside it, so a long deck scrolls
     // instead of stretching the row and leaving a dead strip under the slide.
     var list = this.el.querySelector('.vdk-list');
-    if (list && w > 760) list.style.maxHeight = h + 'px';
+    if (list && w > 760 && !this.focusOn) list.style.maxHeight = h + 'px';
   };
 
   Deck.prototype.toggleNotes = function () {
     this.notesOn = !this.notesOn;
     this.el.querySelector('.vdk-notes').hidden = !this.notesOn;
     this.el.querySelectorAll('[data-a="notes"]').forEach(function (b) { b.classList.toggle('on', this.notesOn); }.bind(this));
+  };
+
+  // Focus drops the slide list so the stage takes the full width — for presenting, and for
+  // recording a screen capture where the chrome is just noise. The stage is re-fitted after,
+  // because the column it scales against has just changed size.
+  Deck.prototype.toggleFocus = function () {
+    this.focusOn = !this.focusOn;
+    this.el.querySelector('.vdk').classList.toggle('focus', this.focusOn);
+    this.el.querySelectorAll('[data-a="focus"]').forEach(function (b) {
+      b.classList.toggle('on', this.focusOn);
+    }.bind(this));
+    this.fit();
   };
 
   Deck.prototype.hash = function () {
@@ -428,7 +451,8 @@
       vault_id: el.getAttribute('data-vault'),
       read_key: el.getAttribute('data-readkey'),
       // No default here: leaving it unset is what lets boot() try both published shapes.
-      manifest: el.getAttribute('data-manifest') || undefined
+      manifest: el.getAttribute('data-manifest') || undefined,
+      only:     el.getAttribute('data-deck') || undefined
     }).catch(function () {});
   });
 })();

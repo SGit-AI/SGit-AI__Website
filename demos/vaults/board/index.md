@@ -2,7 +2,7 @@
 
 > The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key — because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them.
 
-*Source: <https://sgit.ai/demos/vaults/board/index.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/board/index.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-root="../../../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The problem — Licence to Operate decks</title>
+<meta name="description" content="Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.">
+<link rel="canonical" href="https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html">
+<meta property="og:title" content="The problem — Licence to Operate decks">
+<meta property="og:description" content="Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="problem.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The problem — Licence to Operate decks", "headline": "The problem — Licence to Operate decks", "description": "Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.", "url": "https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../../../admin/versions.html" title="Site release history">v0.2.68</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../../../../investors/index.html">Investors</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../../../try/index.html">Try it in the browser</a>
+      <a class="sl" href="../../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../../../skills/index.html">Skills</a>
+      <a class="sl" href="../../../../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../../../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../updates/index.html">Updates</a>
+      <a class="sl" href="../../../../articles/index.html">Articles</a>
+      <a class="sl" href="../../../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../team/index.html">How the site is run</a>
+      <a class="sl" href="../../../../team/index.html#roles">Roles</a>
+      <a class="sl" href="../../../../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../../../../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../../../network/index.html">All sites</a>
+      <a class="sl" href="../../../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../../../network/pki.html">pki</a>
+      <a class="sl" href="../../../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../../../index.html">Home</a> / <a href="../../index.html">Vaults</a> / <a href="../index.html">Licence to Operate</a> / <a href="index.html">Decks</a> / The problem</p>
+  <h1>The problem</h1>
+  <p class="lead">Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.</p>
+
+  <div class="sgv-deck" data-vault="posrhzp3" data-readkey="d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29" data-deck="problem"></div>
+  <p class="small dim">Read live out of vault <code>posrhzp3</code> with its published read key. Use <b>focus</b> to drop the slide list when presenting, and <b>PDF</b> to download <code>Licence-to-Operate__The-Problem.pdf</code> &mdash; decrypted in your browser, not fetched from a file server. <a href="../../../../vault/reading-a-vault-file.html">How this works &rarr;</a></p>
+  <script>
+  (function () {
+    ['vault-embed.js', 'vault-deck.js'].reduce(function (chain, f) {
+      return chain.then(function () {
+        return fetch('../../../../assets/' + f)
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (t) { (0, eval)(t); });
+      });
+    }, Promise.resolve()).catch(function (e) { console.error('[decks] failed to load:', e); });
+  }());
+  </script>
+
+  <h2 id="about">What this deck is doing</h2>
+  <div class="tablewrap"><table>
+    <tr><td><b>The problem it starts from</b></td><td>I do not know what my agents are doing</td></tr>
+    <tr><td><b>What it answers</b></td><td>Observation: records of what they did, passive mode, a status block</td></tr>
+    <tr><td><b>Vocabulary it introduces</b></td><td>the record · grant · mandate · delta</td></tr>
+    <tr><td><b>Who it is for</b></td><td>a first conversation: the person who owns the risk, or the person who owns the agents</td></tr>
+    <tr><td><b>Roughly</b></td><td>12 minutes</td></tr>
+    <tr><td><b>Where it deliberately stops</b></td><td>bands, limits, refusals, pools, premiums, price — none of it appears</td></tr>
+  </table></div>
+  <p>It ends on the question it does not answer &mdash; <b>&ldquo;The delta is enormous. What do I do about it?&rdquo;</b> &mdash; which is where <a href="map.html">The map</a> picks up.</p>
+
+  <h2 id="more">Notes on this deck</h2>
+  <p class="small dim">Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry &mdash; where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.</p>
+
+  <h2 id="video">On video</h2>
+  <p>The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, <a href="../videos/index.html">the seven shorts</a> are the narrated material.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="index.html">All Licence to Operate decks</a> &middot; <a href="map.html">The map &rarr;</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../../../admin/versions.html">v0.2.68</a> · <a href="../../../../admin/index.html">engineering</a> · <a href="problem.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../../../docs/installation.html">Installation</a>
+    <a href="../../../../docs/quickstart.html">Quickstart</a>
+    <a href="../../../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../../../docs/agents.html">Working with AI agents</a>
+    <a href="../../../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../../../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../../../vault/vault-apps.html">Building vault apps</a>
+    <a href="../../../../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../../../vault/content-authoring.html">Content authoring</a>
+    <a href="../../../../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../../vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../../../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../../../security/index.html">Security</a>
+    <a href="../../../../why/index.html">Why does this exist?</a>
+    <a href="../../../../use-cases/index.html">Use cases</a>
+    <a href="../../../../case-studies/index.html">Case studies</a>
+    <a href="../../../../skills/index.html">Skills for AI agents</a>
+    <a href="../../../../briefs/index.html">Cross-team briefs</a>
+    <a href="../../../../llms.txt">llms.txt</a>
+    <a href="../../../../llms-full.txt">llms-full.txt</a>
+    <a href="../../../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.68';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

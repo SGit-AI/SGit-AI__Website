@@ -883,3 +883,6 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 .vdk-status{margin:0;padding:.55rem 1.1rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--dim)}
 .vdk-status.bad{color:var(--stop,#a8321f)}
 @media (max-width:760px){.vdk-body{grid-template-columns:1fr}.vdk-list{max-height:150px;border-right:0;border-bottom:1px solid var(--line)}}
+.vdk.focus .vdk-body{grid-template-columns:minmax(0,1fr)}
+.vdk.focus .vdk-list{display:none}
+.vdk-tabs[hidden]{display:none}

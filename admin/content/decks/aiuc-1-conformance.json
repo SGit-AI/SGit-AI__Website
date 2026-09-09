@@ -1,0 +1,96 @@
+{
+ "_what_this_is": "The presentations in this vault, in the licence-to-operate vault's frame (decks/v2): a deck finds a level, answers that level's question, and ends on the question that opens the next one, never answering it. decks/<id>.js holds a deck's slides as S.push({t, notes, html}); src/decks_build.py assembles deck-<id>.html from decks/shell.html with the screenshots under deck/img/ embedded, writes decks.html, and prints each deck to deck/<file>.pdf. Every screenshot is the running app.",
+ "type": "decks/v2",
+ "frame": {
+  "name": "levels",
+  "rules": [
+   "Find the level. Answer that level's question. End on the question that opens the next one, with no answer on the slide.",
+   "Introduce one term per level, always in the same words, so the vocabulary accumulates instead of arriving at once.",
+   "Everything on a slide is in the vault: a number is the build's, a screenshot is the app's, and a claim names its file."
+  ]
+ },
+ "levels": [
+  {
+   "n": 1,
+   "problem": "I am told to be AIUC-1 compliant and I do not know what that means",
+   "answers": "The standard, read from its own pages: what it contains and what it does not",
+   "opens": "How would anyone know whether we do these things?",
+   "introduces": "the control, the requirement, the crosswalk"
+  },
+  {
+   "n": 2,
+   "problem": "I have the list and no way to see whether we do any of it",
+   "answers": "The vault: the catalogue as data, the graph, the conformance layer, the query",
+   "opens": "Who carries the risk of the ones we do not do, and for how long?",
+   "introduces": "the attestation, the two edges, the trail"
+  },
+  {
+   "n": 3,
+   "problem": "I can see the gaps and nobody owns them",
+   "answers": "The insurance model: grant, mandate, delta, the policy, the licence — with the standard as its vocabulary",
+   "opens": "What would have to be true to write one policy, for one agent, for one month?",
+   "introduces": "the barrier, the condition, the exclusion"
+  },
+  {
+   "n": 4,
+   "problem": "A control passes and I cannot tell whether the pass means anything",
+   "answers": "One control zoomed in: the bytes, the states with their granularity, the grant per tool, the policy it becomes, a simulation that runs",
+   "opens": "Does the correspondence hold for B006 and D004, and who measures from outside?",
+   "introduces": "granularity, the vacuous pass, outside-only, the grant per tool"
+  }
+ ],
+ "decks": [
+  {
+   "id": "aiuc1",
+   "level": 1,
+   "through": 1,
+   "file": "deck-aiuc1.html",
+   "pdf": "deck/AIUC-1__What-It-Is.pdf",
+   "short": "What AIUC-1 is",
+   "title": "What AIUC-1 is",
+   "one_line": "The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say",
+   "footer": "What AIUC-1 is · AIUC-1, as a graph you can cite",
+   "introduces": "the control, the requirement, the crosswalk",
+   "ends_on": "How would anyone know whether we do these things?"
+  },
+  {
+   "id": "vault",
+   "level": 2,
+   "through": 2,
+   "file": "deck-vault.html",
+   "pdf": "deck/AIUC-1__The-Vault.pdf",
+   "short": "The vault",
+   "title": "The vault: files, graphs, and the query",
+   "one_line": "A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it",
+   "footer": "The vault · AIUC-1, as a graph you can cite",
+   "introduces": "the attestation, the two edges, the trail",
+   "ends_on": "Who carries the risk of the ones we do not do, and for how long?"
+  },
+  {
+   "id": "insurance",
+   "level": 3,
+   "through": 3,
+   "file": "deck-insurance.html",
+   "pdf": "deck/AIUC-1__The-Insurance-Model.pdf",
+   "short": "The insurance model",
+   "title": "How RiskMandate.ai's insurance model works with AIUC-1",
+   "one_line": "Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes",
+   "footer": "The insurance model · RiskMandate.ai · AIUC-1, as a graph you can cite",
+   "introduces": "the barrier, the condition, the exclusion",
+   "ends_on": "What would have to be true to write one policy, for one agent, for one month?"
+  },
+  {
+   "id": "d003",
+   "level": 4,
+   "through": 4,
+   "file": "deck-d003.html",
+   "pdf": "deck/AIUC-1__Zoom-In-D003.pdf",
+   "short": "Zoom in: D003",
+   "title": "Zoom in: D003 — one control, to the byte, measured, and run",
+   "one_line": "One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs",
+   "footer": "Zoom in: D003 · AIUC-1, as a graph you can cite",
+   "introduces": "granularity, the vacuous pass, outside-only, the grant per tool",
+   "ends_on": "Does the correspondence hold for B006 and D004, and who measures from outside?"
+  }
+ ]
+}
