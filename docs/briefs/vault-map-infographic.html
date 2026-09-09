@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>An infographic of the published vaults — build brief</title>
+<meta name="description" content="A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/vault-map-infographic.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/vault-map-infographic.html">
+<meta property="og:title" content="An infographic of the published vaults — build brief">
+<meta property="og:description" content="A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="vault-map-infographic.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "An infographic of the published vaults — build brief", "headline": "An infographic of the published vaults — build brief", "description": "A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.", "url": "https://sgit.ai/docs/briefs/vault-map-infographic.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.75</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni ni-has">
+    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../../investors/index.html">Investors</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+      <a class="sl" href="../../try/index.html">Try it in the browser</a>
+      <a class="sl" href="../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../skills/index.html">Skills</a>
+      <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../updates/index.html">Updates</a>
+      <a class="sl" href="../../articles/index.html">Articles</a>
+      <a class="sl" href="../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../team/index.html">How the site is run</a>
+      <a class="sl" href="../../team/index.html#roles">Roles</a>
+      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../network/index.html">All sites</a>
+      <a class="sl" href="../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../network/pki.html">pki</a>
+      <a class="sl" href="../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.2.75 &middot; 9 Sep 2026</span></a></div>
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / <a href="index.html">Briefs</a> / The vault map infographic</p>
+  <p class="surface"><b>Surface:</b> a published image, and the data behind it. <a href="../surfaces.html">The three code surfaces &rarr;</a></p>
+  <h1>An infographic of the published vaults, grouped by use case and industry</h1>
+  <p class="lead">A brief for producing a companion to the network infographic: the same treatment applied to the <b>26 published vaults</b> rather than to the sites, grouped by <b>what someone is trying to do</b> and <b>the industry they are in</b>. It is written to be executed, and it opens with the two things that will otherwise sink it &mdash; the groupings do not exist as data yet, and an infographic is a snapshot that rots.</p>
+
+  <div class="note"><b>Do not start with the picture.</b> Two blockers below are upstream of any image being generated. Fix them first and the infographic becomes a rendering job; skip them and an image model will invent the groupings, which is the one failure nobody will notice until a customer reads it back to us.</div>
+
+  <h2 id="rot">Blocker one: the network infographic is already wrong</h2>
+  <p>The companion image this one is modelled on carries a footer reading <b>&ldquo;19 sites &middot; 18 published &middot; 1 forthcoming&rdquo;</b>, and lists <code>skills.sgit.ai</code> as <em>Forthcoming</em>. Both were true when it was generated. Today <a href="../../network/index.html">the network</a> lists <b>27 sites</b> and skills.sgit.ai has been live for some time &mdash; so a picture that is roughly a week old is now wrong in its headline number and in one of its cells.</p>
+  <p>That is not an argument against making it. It is the constraint the work has to be designed around:</p>
+  <ul>
+    <li><b>Every count in the image must be computed from the data at generation time</b> and pasted in, never estimated, never carried over from a previous version.</li>
+    <li><b>The image carries the version and date it was generated</b>, in the footer, in the same way <a href="../guidance/index.html#versions">every vault app carries its version</a>. A picture with a stamp is a snapshot; one without is a claim.</li>
+    <li><b>The page that publishes it links to the live list beside it</b>, so a reader who wants today's answer has one click to it. The infographic is the overview; <a href="../../demos/vaults/index.html">the table</a> is the truth.</li>
+    <li><b>Regenerating is a scheduled chore, not an event.</b> Add it to the release checklist as a diff: if the vault count changed, the image is stale.</li>
+  </ul>
+
+  <h2 id="data">Blocker two: neither requested grouping exists yet</h2>
+  <p>The brief asks for <b>use case</b> and <b>industry</b>. Checked against <code>admin/content/vaults.json</code>, which is what the vaults table and <a href="../../demos/vaults/llms.txt">the catalogue</a> are generated from, the fields today are:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Field</th><th>Coverage</th><th>What it actually is</th></tr>
+    <tr><td><code>category</code></td><td><b>26 of 26</b></td><td>The vault's <em>shape</em>, not its use case &mdash; Application (5), Analysis (5), Record (4), Reference (4), Presentation (3), Briefing (3), Report (1), Gallery (1). Useful, and not what was asked for</td></tr>
+    <tr><td><code>job</code></td><td><b>6 of 26</b></td><td>The closest thing to a use case that exists (&ldquo;Publish a standard as data&rdquo;, &ldquo;Pitch an investor&rdquo;, &ldquo;Hand over a report&rdquo;) &mdash; but it was added for the homepage bands and covers under a quarter of them</td></tr>
+    <tr><td><code>industry</code></td><td><b>0 of 26</b></td><td>Does not exist</td></tr>
+  </table></div>
+  <p><b>So the first deliverable is not an image, it is two fields.</b> Add <code>use_case</code> and <code>industry</code> to every entry in <code>vaults.json</code>, and the infographic becomes a view over data the site already publishes &mdash; which is the rule the rest of this estate runs on: <em>indexes are generated from the data they index, because an index maintained by hand becomes a lie on a schedule.</em></p>
+  <ul>
+    <li><b>Write both fields from the vault, not from its title.</b> Open each one, read what it does, and say what job it does for whom. The pages under <a href="../../demos/vaults/index.html">Published vaults</a> already contain that judgement in prose &mdash; this is turning it into data.</li>
+    <li><b>Keep the vocabularies small and closed.</b> Six to eight use cases and six to eight industries, reused; a taxonomy where most values appear once is not a taxonomy. Write the allowed values down in the file and have the build fail on an unknown one.</li>
+    <li><b>Be honest where a vault has no industry.</b> Several are method demonstrations that belong to no sector. <code>"industry": "cross-industry"</code> is a real answer; inventing &ldquo;FinTech&rdquo; because a vault mentions money is not.</li>
+    <li><b>Do not delete <code>category</code>.</b> Shape and use case are different questions and the table uses shape. Add, do not replace.</li>
+  </ul>
+
+  <h2 id="picture">What the picture has to show</h2>
+  <p>Match the network infographic so the two read as a pair: dark ground, one luminous shared foundation at the top, numbered columns beneath it, a footer of counts, and a horizontal band of cross-links near the bottom.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Element</th><th>Content</th></tr>
+    <tr><td><b>The foundation</b></td><td>What every vault shares: encrypted files, version history, and a published read key that is the whole credential. The network image put &ldquo;sgit.ai vaults&rdquo; here; this one can say <b>one vault format</b></td></tr>
+    <tr><td><b>Primary grouping &mdash; columns</b></td><td><b>Use case.</b> Each column is a job somebody is trying to do, with the vaults that do it listed as cells: name plus one short line, exactly as the sites image does</td></tr>
+    <tr><td><b>Secondary grouping &mdash; a mark on each cell</b></td><td><b>Industry</b>, as a small tag or colour key rather than a second set of columns. Two nested column systems in one image is unreadable; a legend is not</td></tr>
+    <tr><td><b>The band</b></td><td>Genuine relationships between vaults &mdash; the conformance layer forking the catalogue, the Risk Graph Explorer sharing the licence-to-operate acceptance model. <b>Carry the same disclaimer the sites image carries</b>: illustrative links, not deployed integrations</td></tr>
+    <tr><td><b>The footer</b></td><td>The computed counts, the site version and the date. Nothing typed by hand</td></tr>
+  </table></div>
+
+  <h2 id="accuracy">The accuracy rules, because an image model will not follow them on its own</h2>
+  <p>An image model renders text as shapes. It will misspell a domain, drop a hyphen, invent a plausible vault that does not exist, and produce a confident number that came from nowhere &mdash; and none of that throws an error.</p>
+  <ol>
+    <li><b>Generate the caption text from the data first</b>, as a list, and treat the image as a rendering of that list. If the list and the image disagree, the image is wrong.</li>
+    <li><b>Read every string in the output back against <code>vaults.json</code></b> &mdash; every vault name, every count, every label. Character by character on the names.</li>
+    <li><b>Count the cells.</b> If the data says 26 vaults and the picture shows 24, it dropped two, and it will not tell you which.</li>
+    <li><b>No vault appears that is not in the file.</b> A generated name that reads plausibly is the most dangerous output this process can produce.</li>
+    <li><b>If the model cannot render the text reliably, render the text separately.</b> Generating the artwork and setting the labels as real text over it is a legitimate and more honest answer than fighting the model.</li>
+  </ol>
+
+  <h2 id="publish">Publishing it on this site</h2>
+  <ul>
+    <li><b>The validator bans <code>&lt;img src=&gt;</code>.</b> Images here go through the <code>data-shot</code> mechanism that <code>assets/shots.js</code> fills, because a declarative image reference cannot be served when a page is rendered inside a vault. Use the existing pipeline; do not add an exception for this one.</li>
+    <li><b>Write real alt text</b>, and treat it as the accessible equivalent rather than a caption: an infographic whose content exists only as pixels is invisible to a search engine, to <code>llms-full.txt</code> and to any agent reading this site &mdash; which is the same gap the video pages had to state.</li>
+    <li><b>Put the grouped list on the page in HTML too</b>, under or beside the image. Then the picture is the overview and the text is the content, and the <code>.md</code> twin carries the substance rather than a broken reference to a picture.</li>
+    <li><b>State how it was made.</b> The network image was generated by an image model; say so on the page. This site's whole method is that a reader can check the provenance of what it publishes.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to hand the agent</h2>
+  <pre><code>Produce a vault map infographic for sgit.ai, as a companion to the existing
+network infographic, grouping the published vaults by USE CASE and INDUSTRY.
+
+Read https://sgit.ai/docs/briefs/vault-map-infographic.md first. Do the two
+upstream steps before generating any image.
+
+STEP 1 — the data. admin/content/vaults.json has category on all 26 vaults, job
+on 6, and no industry field at all. Neither requested grouping exists yet. Add
+use_case and industry to every entry, written from the vault itself and not from
+its title, using a closed vocabulary of 6-8 values each, declared in the file,
+with the build failing on an unknown value. Keep category — shape and use case
+are different questions. Use "cross-industry" where a vault genuinely serves no
+sector; do not invent one.
+
+STEP 2 — the caption list. Generate the full text of the infographic from
+vaults.json as a plain list: every column heading, every cell, every count.
+This list is the source of truth; the image is a rendering of it.
+
+STEP 3 — the image. Match the network infographic: dark ground, one shared
+foundation at the top, numbered columns for use cases, industry as a tag or
+colour key rather than a second column system, a cross-links band carrying the
+same "illustrative, not deployed integrations" disclaimer, and a footer with the
+computed counts plus the site version and date.
+
+STEP 4 — check it. Read every string in the image back against vaults.json,
+character by character on the names. Count the cells against the vault count. No
+vault may appear that is not in the file. If the model cannot render text
+reliably, render the artwork and set the labels as real text over it.
+
+STEP 5 — publish it. Use the data-shot pipeline, never an img src, which the
+validator bans. Write real alt text. Put the grouped list on the page as HTML as
+well, so the markdown twin carries the substance. Say on the page that the image
+was generated by an image model.
+
+Report: the two vocabularies you chose, how many vaults landed in each value,
+and any vault whose use case or industry you could not determine from its
+contents.</code></pre>
+
+  <p class="small dim" style="margin-top:2rem">The companion piece is the network infographic, which is what this one should look like and also what it should learn from &mdash; it is a good picture with a footer that has already gone stale. <a href="index.html">All briefs</a> &middot; <a href="../guidance/index.html">Working on a vault: start here</a> &middot; <a href="../../demos/vaults/index.html">The published vaults</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.75</a> · <a href="../../admin/index.html">engineering</a> · <a href="vault-map-infographic.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.75';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

@@ -324,6 +324,12 @@
     "desc": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder."
   },
   {
+    "path": "docs/briefs/vault-map-infographic.html",
+    "section": "briefs",
+    "title": "An infographic of the published vaults — build brief",
+    "desc": "A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count."
+  },
+  {
     "path": "docs/briefs/markdown-and-file-viewers.html",
     "section": "briefs",
     "title": "Markdown and file viewers in a vault: what not to build — build brief",

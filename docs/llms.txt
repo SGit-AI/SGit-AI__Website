@@ -1,9 +1,9 @@
 # Using sgit — sgit.ai
 
-> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.74).
+> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.75).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (25)
+## Pages (26)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -18,6 +18,7 @@
 - [Three surfaces: which one are you building for?](/docs/surfaces.md): _page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them — plus the same job done on all three, and where each surface’s guidance lives.
 - [Reading a vault from a *.sgit.ai site page](/docs/briefs/sgit-ai-site-pages.md): For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent.
 - [Publishing a vault’s decks onto a website](/docs/briefs/vault-decks-on-a-site.md): A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
+- [An infographic of the published vaults](/docs/briefs/vault-map-infographic.md): A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.
 - [Markdown and file viewers in a vault: what not to build](/docs/briefs/markdown-and-file-viewers.md): Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
 - [SG/Vault & the vault platform](/docs/vault/index.md): The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
 - [Building vault apps](/docs/vault/vault-apps.md): How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.

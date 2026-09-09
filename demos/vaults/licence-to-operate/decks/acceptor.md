@@ -2,7 +2,7 @@
 
 > The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/acceptor.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/acceptor.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.74</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.75</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,7 +92,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.74 &middot; 9 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.75 &middot; 9 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -231,6 +231,17 @@
 <p><b>A bug the new pages exposed within a minute of existing.</b> The mount element carries <code>data-deck</code> on a single-deck page, and the click router used an unscoped <code>closest('[data-deck]')</code> — so it matched the mount element for every click inside the viewer and returned early. Prev, next, notes, focus and the PDF button were all silently dead, on exactly the pages just built. Nothing threw; the buttons simply did nothing. Scoped to the tab strip, and caught because the browser test asserts on the <em>effect</em> of clicking rather than on the click landing.</p>
 <p><b>A catalogue an agent can read.</b> <a href="../demos/vaults/llms.txt"><code>/demos/vaults/llms.txt</code></a> is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from <code>vaults.json</code> — the same file <a href="../demos/vaults/index.html">the vaults table</a> is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.</p>
 <p>Three more sections got their own: <a href="../docs/vault/llms.txt"><code>/vault/llms.txt</code></a>, <a href="../api/llms.txt"><code>/api/llms.txt</code></a> and <a href="../docs/llms.txt"><code>/docs/llms.txt</code></a>. An agent pointed at one part of the site now gets that part's index instead of the whole map.</p>
+  </article>
+  <article class="upd" id="a-brief-for-the-vault-map-infographic">
+    <h3><a href="#a-brief-for-the-vault-map-infographic">A brief for the vault map infographic, which spends its first half on why not to start with the picture</a> <a class="upd-ver" href="../admin/versions.html">v0.2.75</a></h3>
+    <p class="chips"><span class="chip">briefs</span><span class="chip">vaults</span><span class="chip">design</span><span class="chip">method</span></p>
+<p>An image model produced an infographic of the <code>*.sgit.ai</code> sites — one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the <b>26 published vaults</b>, grouped by use case and industry. <a href="../docs/briefs/vault-map-infographic.html">The brief now exists</a>, and it leads with the two things that sit upstream of any image being generated at all.</p>
+<p><b>The picture it copies has already gone stale.</b> The network infographic's footer reads <em>"19 sites · 18 published · 1 forthcoming"</em>, and its cell for <code>skills.sgit.ai</code> says <em>Forthcoming</em>. <a href="../network/index.html">The network</a> now lists <b>27</b>, and skills.sgit.ai has been live for some time. A picture roughly a week old is wrong in its headline number and in one of its cells.</p>
+<p>That is not an argument against making one — it is the constraint to design around. So: every count computed from the data at generation time; the image stamped with the version and date, the same way <a href="../docs/guidance/index.html#versions">every vault app should carry its version</a>; the live table linked beside it, because the infographic is the overview and <a href="../demos/vaults/index.html">the table</a> is the truth; and regeneration on the release checklist as a diff — if the vault count changed, the image is stale.</p>
+<p><b>Neither requested grouping exists in the data.</b> Checked rather than assumed: <code>vaults.json</code> carries <code>category</code> on all 26 — but that is the vault's <em>shape</em> (Application, Analysis, Record, Reference…), not its use case — <code>job</code> on only <b>6 of 26</b>, and <b>no <code>industry</code> field at all</b>. So the first deliverable is two fields, not an image: <code>use_case</code> and <code>industry</code>, written from each vault rather than from its title, with closed vocabularies the build enforces, and <code>cross-industry</code> treated as a real answer rather than a sector invented because a vault mentions money.</p>
+<p>That is the same rule the rest of the estate runs on — indexes are generated from the data they index, because one maintained by hand becomes a lie on a schedule.</p>
+<p><b>Then the rules for a model that renders text as shapes.</b> Generate the caption list from the data first and treat the image as a rendering of it; read every string back against <code>vaults.json</code>, character by character on the names; count the cells; and let no vault appear that is not in the file — a plausible invented name is the most dangerous output this process can produce, because nothing throws.</p>
+<p>And the publishing rules this site already imposes: the validator bans <code>img src</code>, so the <code>data-shot</code> pipeline applies; alt text is the accessible equivalent, not a caption; and the grouped list goes on the page as HTML beside the picture, so the markdown twin carries the substance instead of a reference to pixels.</p>
   </article>
   <h2 class="upd-date">2026-09-07</h2>
   <article class="upd" id="the-team-for-the-agents-and-investors-in-the-open">
@@ -653,7 +664,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.74</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.75</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -695,7 +706,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.74';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.75';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

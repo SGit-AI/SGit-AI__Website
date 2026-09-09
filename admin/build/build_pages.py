@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.74'
+SITE_VERSION = 'v0.2.75'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.74', '2026-09-09', 'this release',
+    ('v0.2.75', '2026-09-09', 'this release',
+     "A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH "
+     "THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a "
+     "companion covering the 26 published vaults, grouped by use case and industry. Two blockers "
+     "sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS "
+     "ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 "
+     "forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and "
+     "skills has been live for some time, so a picture about a week old is wrong in its headline "
+     "number and in one of its cells. The brief turns that into design constraints rather than an "
+     "objection: every count computed at generation time, the image stamped with the version and "
+     "date the way a vault app is, the live table linked beside it, and regeneration on the "
+     "release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: "
+     "vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job "
+     "on only 6, and no industry field at all. So the first deliverable is two fields, not an "
+     "image, with closed vocabularies the build enforces and 'cross-industry' as a real answer "
+     "rather than a fabricated sector. Then the accuracy rules for a model that renders text as "
+     "shapes: generate the caption list from the data first and treat the image as a rendering of "
+     "it, read every string back character by character, count the cells, and let no vault appear "
+     "that is not in the file — a plausible invented name being the most dangerous output the "
+     "process can produce. Plus the publishing rules this site already imposes: the validator bans "
+     "img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML "
+     "beside the picture so the markdown twin carries substance rather than a reference to pixels.",
+     ),
+    ('v0.2.74', '2026-09-09', 'obj-cas-imm-0f820c930549',
      "THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt "
      "chip shipped last release as three loose fragments — a pill, a boxed path and a long "
      "sentence — floating in dead space between the nav and the breadcrumb, belonging to "

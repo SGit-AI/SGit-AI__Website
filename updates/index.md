@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -205,6 +205,24 @@ Yesterday's release put the decks on the vault pages. Three things were missing,
 **A catalogue an agent can read.** [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from `vaults.json` — the same file [the vaults table](../demos/vaults/index.md) is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.
 
 Three more sections got their own: [`/vault/llms.txt`](../docs/vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
+
+### [A brief for the vault map infographic, which spends its first half on why not to start with the picture](#a-brief-for-the-vault-map-infographic) [v0.2.75](../admin/versions.md)
+
+briefsvaultsdesignmethod
+
+An image model produced an infographic of the `*.sgit.ai` sites — one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the **26 published vaults**, grouped by use case and industry. [The brief now exists](../docs/briefs/vault-map-infographic.md), and it leads with the two things that sit upstream of any image being generated at all.
+
+**The picture it copies has already gone stale.** The network infographic's footer reads *"19 sites · 18 published · 1 forthcoming"*, and its cell for `skills.sgit.ai` says *Forthcoming*. [The network](../network/index.md) now lists **27**, and skills.sgit.ai has been live for some time. A picture roughly a week old is wrong in its headline number and in one of its cells.
+
+That is not an argument against making one — it is the constraint to design around. So: every count computed from the data at generation time; the image stamped with the version and date, the same way [every vault app should carry its version](../docs/guidance/index.md#versions); the live table linked beside it, because the infographic is the overview and [the table](../demos/vaults/index.md) is the truth; and regeneration on the release checklist as a diff — if the vault count changed, the image is stale.
+
+**Neither requested grouping exists in the data.** Checked rather than assumed: `vaults.json` carries `category` on all 26 — but that is the vault's *shape* (Application, Analysis, Record, Reference…), not its use case — `job` on only **6 of 26**, and **no `industry` field at all**. So the first deliverable is two fields, not an image: `use_case` and `industry`, written from each vault rather than from its title, with closed vocabularies the build enforces, and `cross-industry` treated as a real answer rather than a sector invented because a vault mentions money.
+
+That is the same rule the rest of the estate runs on — indexes are generated from the data they index, because one maintained by hand becomes a lie on a schedule.
+
+**Then the rules for a model that renders text as shapes.** Generate the caption list from the data first and treat the image as a rendering of it; read every string back against `vaults.json`, character by character on the names; count the cells; and let no vault appear that is not in the file — a plausible invented name is the most dangerous output this process can produce, because nothing throws.
+
+And the publishing rules this site already imposes: the validator bans `img src`, so the `data-shot` pipeline applies; alt text is the accessible equivalent, not a caption; and the grouped list goes on the page as HTML beside the picture, so the markdown twin carries the substance instead of a reference to pixels.
 
 ## 2026-09-07
 
