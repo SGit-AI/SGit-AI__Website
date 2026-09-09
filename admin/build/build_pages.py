@@ -9,12 +9,13 @@ Release process (see admin/index.html):
 import os
 import re
 import json
+import datetime
 from collections import Counter
 
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.72'
+SITE_VERSION = 'v0.2.73'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +28,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.72', '2026-09-09', 'this release',
+    ('v0.2.73', '2026-09-09', 'this release',
+     "THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across "
+     "this site and the only way to find one was to type it onto the end of an address. Every "
+     "page now carries a small chip above its title naming the one that covers it — FOR AGENTS, "
+     "the path, and the version and date it was generated. Resolution is deepest-folder-wins, so "
+     "a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and "
+     "a page with no closer index falls back to the site-wide one; every page therefore has "
+     "exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, "
+     "not decoration: these files are regenerated on every release, so the chip says which "
+     "release produced the index a reader is about to fetch — and an agent editing a page can "
+     "see at a glance whether the index has caught up with it. The chip is chrome rather than "
+     "content, emitted between the nav and the page body, so it does not reach the markdown "
+     "twins and cannot drift from them. A build assertion now fails the build if the chip ever "
+     "points at a folder no generator actually writes, which is the failure this feature would "
+     "otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID "
+     "/guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — "
+     "the href had been rewritten by the move script, the prose had not, so the page displayed "
+     "a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes "
+     "links and not the sentences around them.",
+     ),
+    ('v0.2.72', '2026-09-09', 'obj-cas-imm-92130ad84859',
      "ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had "
      "accumulated across three top-level folders — /briefs, /vault and a new /guidance — which "
      "is three places to look for one kind of thing. Everything readable now lives under /docs/: "
@@ -1486,6 +1507,7 @@ def page(path, title, desc, here, body):
 
 {nav(p, here)}
 
+{llms_chip(path)}
 {body}
 
 {footer(p, os.path.basename(path)[:-5] + '.md')}
@@ -1833,6 +1855,43 @@ SCOPED_LLMS = [
 ]
 
 
+
+# Folders that end up holding an llms.txt. Kept beside write_scoped_llms so the two cannot
+# drift; the build asserts at the end that every folder named here actually got a file.
+def llms_dirs():
+    return [''] + ['demos/vaults', 'docs/guidance'] + [f for f, _h, _b in SCOPED_LLMS]
+
+
+def llms_chip(path):
+    """The link an agent wants, on the page a human is reading.
+
+    Shown on every page that sits inside a folder with an llms.txt — deepest wins, so a page
+    under /docs/vault/ points at that section's file rather than at /docs/llms.txt. It carries
+    the version and date the file was generated, which is the release that produced it: if this
+    page changed and that stamp did not, the index has not caught up with the page.
+    """
+    page_dir = os.path.dirname(path)
+    best = None
+    for d in llms_dirs():
+        if d == '' or path.startswith(d + '/'):
+            if best is None or len(d) > len(best):
+                best = d
+    if best is None:
+        return ''
+    target = (best + '/llms.txt') if best else 'llms.txt'
+    href   = os.path.relpath(target, page_dir) if page_dir else target
+    ver, date = VERSION_LOG[0][0], VERSION_LOG[0][1]
+    try:
+        pretty = datetime.date.fromisoformat(date).strftime('%-d %b %Y')
+    except Exception:
+        pretty = date
+    return (f'<p class="llmschip"><span class="llmschip-k">for agents</span>'
+            f'<a href="{href}"><code>/{target}</code></a>'
+            f'<span class="llmschip-m">generated {ver} &middot; {pretty} &mdash; '
+            f'regenerated every release, so if this page changed and that stamp did not, '
+            f'the index has not caught up</span></p>')
+
+
 def write_llms(pages):
     out, seen, optional = [LLMS_PREAMBLE], set(), []
     for key, heading in LLMS_SECTIONS:
@@ -2065,6 +2124,10 @@ links out instead of summarising the rest badly.
         with open(os.path.join(dd, 'llms.txt'), 'w') as f:
             f.write(body)
         written.append((folder + '/llms.txt', len(body), len(rows)))
+    got = {name for name, _n, _c in written} | {'llms.txt'}
+    for d in llms_dirs():
+        want = (d + '/llms.txt') if d else 'llms.txt'
+        assert want in got, f'llms_chip() points at {want}, which no generator writes'
     for name, n, c in written:
         print(f'wrote {name} ({n} bytes, {c} entries)')
     return written

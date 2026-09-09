@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.72</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.73</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,6 +92,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
+<p class="llmschip"><span class="llmschip-k">for agents</span><a href="../llms.txt"><code>/llms.txt</code></a><span class="llmschip-m">generated v0.2.73 &middot; 9 Sep 2026 &mdash; regenerated every release, so if this page changed and that stamp did not, the index has not caught up</span></p>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -109,6 +110,16 @@
 </ul>
 <p><b>The transcript gap is not hidden, it is right-sized.</b> It is still stated, in one sentence in the footer, and <a href="../team/board.html">board card T12</a> is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.</p>
 <p>Nothing changed about the seven videos, their order, or the three movements they fall into.</p>
+  </article>
+  <article class="upd" id="the-llms-txt-stops-being-a-url-you-guess">
+    <h3><a href="#the-llms-txt-stops-being-a-url-you-guess">The llms.txt stops being a URL you have to guess</a> <a class="upd-ver" href="../admin/versions.html">v0.2.73</a></h3>
+    <p class="chips"><span class="chip">llms</span><span class="chip">docs</span><span class="chip">agents</span><span class="chip">method</span></p>
+<p>Six <code>llms.txt</code> files are published across this site — <a href="../llms.txt">the site-wide map</a>, <a href="../demos/vaults/llms.txt">the vault catalogue</a>, <a href="../docs/guidance/llms.txt">the guidance entry point</a>, and one each for <a href="../docs/llms.txt"><code>/docs</code></a>, <a href="../docs/vault/llms.txt"><code>/docs/vault</code></a> and <a href="../api/llms.txt"><code>/api</code></a>. Until now the only way to find one was to type it onto the end of an address and hope.</p>
+<p><b>Every page now carries a chip above its title</b> naming the one that covers it: <em>for agents</em>, the path, and the version and date it was generated.</p>
+<p>Resolution is deepest-folder-wins. A page under <code>/docs/vault/</code> points at that section's index rather than at <code>/docs/llms.txt</code>; a page with no closer index falls back to the site-wide one. So every page has exactly one, and it is always the most specific one that exists.</p>
+<p><b>The stamp is the point, not decoration.</b> These files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch. An agent editing a page can see at a glance whether the index has caught up with the page — if the page changed and the stamp did not, it has not.</p>
+<p>Two details worth recording. The chip is <b>chrome, not content</b> — emitted between the nav and the page body — so it never reaches the markdown twins and cannot drift from them. And a <b>build assertion</b> now fails the build if the chip ever points at a folder no generator actually writes, which is precisely the failure this feature would otherwise have introduced quietly.</p>
+<p><b>Caught by building it.</b> The guidance page still <em>said</em> <code>/guidance/llms.txt</code> in two places, because <a href="../updates/index.html">yesterday's move</a> relocated the file to <code>/docs/guidance/</code> and the rewriter fixed the <code>href</code> but not the prose around it. The page linked correctly while displaying a path that 404s. Fixed — and a reminder that a link rewriter fixes links, not sentences.</p>
   </article>
   <article class="upd" id="the-build-brief-for-decks-on-a-site">
     <h3><a href="#the-build-brief-for-decks-on-a-site">The build brief for putting a vault's decks on a website</a> <a class="upd-ver" href="../admin/versions.html">v0.2.69</a></h3>
@@ -629,7 +640,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.72</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.73</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -671,7 +682,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.73';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
