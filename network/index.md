@@ -2,7 +2,7 @@
 
 > Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
 
-*Source: <https://sgit.ai/network/index.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/network/index.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 Nineteen focused sites on `*.sgit.ai`, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, a stated status, honest edges — and they publish their arguments **before** the things they describe exist, so the commitments stay checkable afterwards.
 
-18 live, 1 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
+27 live, 0 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
 
 **Which of these is mine?**instant match · no key, no network
 
@@ -28,8 +28,17 @@ Each line is a question somebody actually arrives with, and the site that takes 
 
 ## Agents & AI
 
+[**chrome-extensions.sgit.ai**The expensive bugs do not throw.Guidance and worked examples for building Chrome extensions, written for the agent that reads them before writing one — from five weeks building a Manifest V3 recorder against a changing, undocumented target: the method, the architecture and the failure modes.](https://chrome-extensions.sgit.ai)
+v0.1.0[Open chrome-extensions.sgit.ai ↗](https://chrome-extensions.sgit.ai)
+
 [**coding.sgit.ai**The style guide that measured itself.How software actually gets written across this family: the rules, the compliance measurement against them, which rules are machine-enforced and which are explicitly not, and the open tensions. Includes a section on writing code for agents to read.](https://coding.sgit.ai)
 v0.2.0[Open coding.sgit.ai ↗](https://coding.sgit.ai)
+
+[**elevenlabs.providers.sgit.ai**What it cost on a named workload, on a named date.An independent report on the ElevenLabs API: what it cost on a named workload on a named date, what broke, and which of four client-side credential patterns the product can actually support.](https://elevenlabs.providers.sgit.ai)
+v0.3.0[Open elevenlabs.providers.sgit.ai ↗](https://elevenlabs.providers.sgit.ai)
+
+[**games.sgit.ai**A game makes you say what you think, before you are told.Why this family builds games: a game is the only artefact that makes somebody state a belief before they are told the answer. The catalogue, the method, and how to build one as a vault.](https://games.sgit.ai)
+v0.4.1[Open games.sgit.ai ↗](https://games.sgit.ai)
 
 [**llms.sgit.ai**Your app calls a language model without ever holding an API key.The sg.llm.* bridge: how an app running inside a vault reaches a model with no credential of its own. The reference, the traps, a four-layer security ladder, the attached-file question, and a pre-ship checklist.](https://llms.sgit.ai)
 reference draftv0.2.0[Open llms.sgit.ai ↗](https://llms.sgit.ai)
@@ -37,8 +46,20 @@ reference draftv0.2.0[Open llms.sgit.ai ↗](https://llms.sgit.ai)
 [**nhi.sgit.ai**The question splits into two populations, and the industry only answers oneThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
 v0.1.14[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
 
-[**skills.sgit.ai**published soonThe skills site. The repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address.](https://github.com/SGit-AI/SGit-AI__Website__Skills)
-not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills)
+[**providers.sgit.ai**Where the key goes.The hub of the *.providers.sgit.ai family: four credential patterns, one page contract, and one site per provider reporting what it cost on a named workload, what broke, and where the key has to live.](https://providers.sgit.ai)
+v0.1.1[Open providers.sgit.ai ↗](https://providers.sgit.ai)
+
+[**skills.sgit.ai**Skills are software packages, and here is the proof.Eight skills shipped, generated from their own frontmatter; 25 briefs and 60,782 words of theory a long way ahead of them; and the diverging duplicate that is the thesis failing, live, on the estate's own skills.](https://skills.sgit.ai)
+v0.1.0[Open skills.sgit.ai ↗](https://skills.sgit.ai)
+
+[**teams.sgit.ai**Roles are boundaries. The Conductor never does the work.The reference for setting up agentic teams with more than one role, measured from 39 ROLE.md files across four team instantiations.](https://teams.sgit.ai)
+v0.1.0[Open teams.sgit.ai ↗](https://teams.sgit.ai)
+
+[**ungovr.providers.sgit.ai**One derivable hop away.An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 — and a join between them that is one derivable hop away.](https://ungovr.providers.sgit.ai)
+v0.1.14[Open ungovr.providers.sgit.ai ↗](https://ungovr.providers.sgit.ai)
+
+[**what-can-it-do.games.sgit.ai**You score for how well you know what you know.A five-minute game: name the AI assistant you use, answer forty questions about what it can do and whether you wanted it to, and score for how well you know what you know. Free, no sign-up.](https://what-can-it-do.games.sgit.ai)
+v0.6.0[Open what-can-it-do.games.sgit.ai ↗](https://what-can-it-do.games.sgit.ai)
 
 ## Risk & governance
 
@@ -50,6 +71,9 @@ research sitev0.1.0[Open risks.sgit.ai ↗](https://risks.sgit.ai)
 
 [**standards.sgit.ai**Point at the provision, or you are asserting.Laws, standards and frameworks as addressable graphs rather than PDFs to paraphrase. A citation scheme, a grounding ladder, and worked instruments — the EU AI Act, GDPR, ISO/IEC 27001, ISO 31000 — with a subset method for handing an agent only the part that applies.](https://standards.sgit.ai)
 v0.1.4[Open standards.sgit.ai ↗](https://standards.sgit.ai)
+
+[**threat-modeling.sgit.ai**A threat model is a claim you can check.A threat model is a claim about a system, and this site's job is to show claims being checked: the ThreatModCon 2025 vault, a threat model validated against the code, seven white papers, and the redacted method behind them.](https://threat-modeling.sgit.ai)
+[Open threat-modeling.sgit.ai ↗](https://threat-modeling.sgit.ai)
 
 ## Graphs & method
 
@@ -97,7 +121,10 @@ draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
 
 | Site | What it argues | Area | Status |  |
 |---|---|---|---|---|
+| **chrome-extensions.sgit.ai** | The expensive bugs do not throw. | Agents & AI | live · `v0.1.0` | [open ↗](https://chrome-extensions.sgit.ai) |
 | **coding.sgit.ai** | The style guide that measured itself. | Agents & AI | live · `v0.2.0` | [open ↗](https://coding.sgit.ai) |
+| **elevenlabs.providers.sgit.ai** | What it cost on a named workload, on a named date. | Agents & AI | live · `v0.3.0` | [open ↗](https://elevenlabs.providers.sgit.ai) |
+| **games.sgit.ai** | A game makes you say what you think, before you are told. | Agents & AI | live · `v0.4.1` | [open ↗](https://games.sgit.ai) |
 | [graphs.sgit.ai](graphs.md) | A node is just a node. Meaning lives in the edges. | Graphs & method | live · `v0.1.0` | [open ↗](https://graphs.sgit.ai) |
 | **influences.sgit.ai** | Where the thinking came from. | Business & publishing | live · `v0.2.0` | [open ↗](https://influences.sgit.ai) |
 | **infographics.sgit.ai** | The brief is the argument. The infographic is one picture of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://infographics.sgit.ai) |
@@ -108,14 +135,19 @@ draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
 | [nhi.sgit.ai](nhi.md) | The question splits into two populations, and the industry only answers one | Agents & AI | live · `v0.1.14` | [open ↗](https://nhi.sgit.ai) |
 | **open-source.sgit.ai** | Open source is a strategy. It is not a charity. | Business & publishing | draft · `v0.1.1` | [open ↗](https://open-source.sgit.ai) |
 | [pki.sgit.ai](pki.md) | Good public key repositories existed, and were destroyed | Security & infrastructure | live · `v0.1.2` | [open ↗](https://pki.sgit.ai) |
+| **providers.sgit.ai** | Where the key goes. | Agents & AI | live · `v0.1.1` | [open ↗](https://providers.sgit.ai) |
 | **risks.sgit.ai** | You cannot deny a risk. You can only say how long you accept it. | Risk & governance | research site · `v0.1.0` | [open ↗](https://risks.sgit.ai) |
 | **sg-compute.sgit.ai** | Ephemeral environments in AWS, one command away. | Security & infrastructure | live · `v0.2.0` | [open ↗](https://sg-compute.sgit.ai) |
 | [sg-sentinel.sgit.ai](sg-sentinel.md) | Layer 1 decides and signals. Layer 2 acts and writes. | Security & infrastructure | live · `v0.1.1` | [open ↗](https://sg-sentinel.sgit.ai) |
+| **skills.sgit.ai** | Skills are software packages, and here is the proof. | Agents & AI | live · `v0.1.0` | [open ↗](https://skills.sgit.ai) |
 | **standards.sgit.ai** | Point at the provision, or you are asserting. | Risk & governance | live · `v0.1.4` | [open ↗](https://standards.sgit.ai) |
 | **subscriptions.sgit.ai** | A subscription is a discount for regular use, not rent on something you ignore. | Business & publishing | draft · `v0.1.0` | [open ↗](https://subscriptions.sgit.ai) |
+| **teams.sgit.ai** | Roles are boundaries. The Conductor never does the work. | Agents & AI | live · `v0.1.0` | [open ↗](https://teams.sgit.ai) |
+| **threat-modeling.sgit.ai** | A threat model is a claim you can check. | Risk & governance | live | [open ↗](https://threat-modeling.sgit.ai) |
 | **twins.sgit.ai** | A digital twin is an interface to reality, not a simulation of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://twins.sgit.ai) |
+| **ungovr.providers.sgit.ai** | One derivable hop away. | Agents & AI | live · `v0.1.14` | [open ↗](https://ungovr.providers.sgit.ai) |
 | **wardley-maps.sgit.ai** | Maps are claims, not pictures. | Graphs & method | PROPOSED · `v0.1.2` | [open ↗](https://wardley-maps.sgit.ai) |
-| **skills.sgit.ai** | published soon | Agents & AI | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills) |
+| **what-can-it-do.games.sgit.ai** | You score for how well you know what you know. | Agents & AI | live · `v0.6.0` | [open ↗](https://what-can-it-do.games.sgit.ai) |
 
 ## Read one in full
 

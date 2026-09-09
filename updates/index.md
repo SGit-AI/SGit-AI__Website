@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -64,6 +64,23 @@ It follows the shape of [the telemetry brief](../docs/briefs/vault-telemetry-app
 It ends with a done-means checklist — walk every slide and assert zero unresolved images, byte-count a downloaded PDF against the vault, grep the built site for vault-key shapes — and a prompt to hand the builder agent.
 
 One thing caught in review, worth recording because it is the third time: the `.md` twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build. Rewritten to the site's uppercase-placeholder convention.
+
+### [The agent chip becomes one object, and the network list catches up with the org](#the-agent-chip-and-the-network-catches-up) [v0.2.74](../admin/versions.md)
+
+designnetworkllmsagents
+
+**The chip.** [Last release](../updates/index.md) put an `llms.txt` link on every page, and it worked but looked like three loose fragments — a pill, a boxed path, and a long sentence — floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's own tokens and one was chosen: **a single bordered control** with a tinted *for agents* cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It now reads as one thing you can click rather than three things you cannot.
+
+The always-on sentence moved into the link's tooltip. It renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site — the stamp beside it already carries the point.
+
+**The network list was eight sites behind.** Checked against the organisation's 31 repositories rather than against memory: **games**, **what-can-it-do.games**, **providers**, **ungovr.providers**, **elevenlabs.providers**, **teams**, **threat-modeling** and **chrome-extensions** all had repositories, all answered 200, and none of them was listed here. Each new entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess about what it probably contains. [The network](../network/index.md) now lists 27.
+
+Two corrections fell out of the same check:
+
+- **skills.sgit.ai** was still described here as *"the repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address."* It has been live for some time. The entry now carries its real thesis — *skills are software packages, and here is the proof* — and its version.
+- **The ElevenLabs repository describes its domain as `elevenlabs.provider.sgit.ai`**, singular. That does not resolve; the live host is `elevenlabs.providers.sgit.ai`, plural. The listing uses the one that answers.
+
+A list of sites maintained by hand drifts from the sites that exist. This one drifted by eight in about a week — worth a check against the org on every release rather than when somebody notices.
 
 ### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
 

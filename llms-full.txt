@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.73). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.74). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,11 +44,11 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-101site releases, each verified live before it was called done
+102site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
-19sibling sites on `*.sgit.ai`, one question each
+27sibling sites on `*.sgit.ai`, one question each
 
 10cross-team briefs filed or received, in the open
 
@@ -3926,7 +3926,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.73, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.74, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4065,16 +4065,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-101**site releases since 14 August**
+102**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
 every one audited first; findings on the page
 
-19**sibling sites on *.sgit.ai**
+27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-45**articles and release notes**
+46**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5474,11 +5474,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.73**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.74**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.73 | 2026-09-09 | this release | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
+| v0.2.74 | 2026-09-09 | this release | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
+| v0.2.73 | 2026-09-09 | obj-cas-imm-5569e595ea36 | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
 | v0.2.72 | 2026-09-09 | obj-cas-imm-92130ad84859 | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
 | v0.2.71 | 2026-09-09 | obj-cas-imm-771aa698c057 | GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The guidance on this site had been organised by TASK — decks, markdown, file viewers — which hid the fact that every one of those questions has three different right answers depending on where the code runs. THREE SURFACES is the new router: _page.json inside a vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every vault host, compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and — the row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes are untrusted input arriving in your origin. A second table does the same job across the three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you, which only one surface does at all. READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs with NO AUTH HEADER from any origin, which the server can afford because it returns ciphertext under a key it never held — so no proxy and no backend. It says do not write the reader and names the four house files to copy instead, states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails silently by rendering an older commit from valid ciphertext, and says what should NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED with the surface they apply to, so the distinction is visible where someone lands rather than only on the router. |
 | v0.2.70 | 2026-09-09 | obj-cas-imm-0a8b264f2c4e | THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw views — already exist in the platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. The brief is therefore a DECISION rather than a syntax reference: a four-rung ladder (publish .md and stop; add a _page.json if you need a designed page rather than a document; build an app only when a view must COMPUTE something the host cannot know; build a site viewer only when the content must live outside a vault host) with the instruction to stop at the first rung that works. It names the three surfaces that render markdown natively, and the rules that actually catch people rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through folder/README.md because a bare folder link resolves by sort order, nested and task lists are unsupported. THE RAW-VIEW CONTRACT, taken from a vault that already lives by it: the AIUC-1 conformance vault's own source says 'raw is the point — a catalog that asks to be trusted has to be readable in the form it was written', and the brief adopts that whole — raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest, files fetched on click. Generalised as the estate's habit: anything rendered should be one click from the thing it was rendered from. CORRECTED WHILE CHECKING THE SCHEMA: the content-authoring page said ELEVEN component types and then listed twelve. It says twelve. |
@@ -6284,6 +6285,23 @@ It ends with a done-means checklist — walk every slide and assert zero unresol
 
 One thing caught in review, worth recording because it is the third time: the `.md` twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build. Rewritten to the site's uppercase-placeholder convention.
 
+### [The agent chip becomes one object, and the network list catches up with the org](#the-agent-chip-and-the-network-catches-up) [v0.2.74](../admin/versions.md)
+
+designnetworkllmsagents
+
+**The chip.** [Last release](../updates/index.md) put an `llms.txt` link on every page, and it worked but looked like three loose fragments — a pill, a boxed path, and a long sentence — floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's own tokens and one was chosen: **a single bordered control** with a tinted *for agents* cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It now reads as one thing you can click rather than three things you cannot.
+
+The always-on sentence moved into the link's tooltip. It renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site — the stamp beside it already carries the point.
+
+**The network list was eight sites behind.** Checked against the organisation's 31 repositories rather than against memory: **games**, **what-can-it-do.games**, **providers**, **ungovr.providers**, **elevenlabs.providers**, **teams**, **threat-modeling** and **chrome-extensions** all had repositories, all answered 200, and none of them was listed here. Each new entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess about what it probably contains. [The network](../network/index.md) now lists 27.
+
+Two corrections fell out of the same check:
+
+- **skills.sgit.ai** was still described here as *"the repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address."* It has been live for some time. The entry now carries its real thesis — *skills are software packages, and here is the proof* — and its version.
+- **The ElevenLabs repository describes its domain as `elevenlabs.provider.sgit.ai`**, singular. That does not resolve; the live host is `elevenlabs.providers.sgit.ai`, plural. The listing uses the one that answers.
+
+A list of sites maintained by hand drifts from the sites that exist. This one drifted by eight in about a week — worth a check against the org on every release rather than when somebody notices.
+
 ### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
 
 vaultsvideoagentsrisk
@@ -6961,7 +6979,7 @@ Longer pieces that make an argument across several pages — what a thing means,
 
 Nineteen focused sites on `*.sgit.ai`, each taking one question further than a section here could. They share this site's design and its discipline — sourced claims, a stated status, honest edges — and they publish their arguments **before** the things they describe exist, so the commitments stay checkable afterwards.
 
-18 live, 1 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
+27 live, 0 with the repository and subdomain in place but nothing published yet. Screenshots are of the real sites, captured on the date each entry gives.
 
 **Which of these is mine?**instant match · no key, no network
 
@@ -6979,8 +6997,17 @@ Each line is a question somebody actually arrives with, and the site that takes 
 
 ## Agents & AI
 
+[**chrome-extensions.sgit.ai**The expensive bugs do not throw.Guidance and worked examples for building Chrome extensions, written for the agent that reads them before writing one — from five weeks building a Manifest V3 recorder against a changing, undocumented target: the method, the architecture and the failure modes.](https://chrome-extensions.sgit.ai)
+v0.1.0[Open chrome-extensions.sgit.ai ↗](https://chrome-extensions.sgit.ai)
+
 [**coding.sgit.ai**The style guide that measured itself.How software actually gets written across this family: the rules, the compliance measurement against them, which rules are machine-enforced and which are explicitly not, and the open tensions. Includes a section on writing code for agents to read.](https://coding.sgit.ai)
 v0.2.0[Open coding.sgit.ai ↗](https://coding.sgit.ai)
+
+[**elevenlabs.providers.sgit.ai**What it cost on a named workload, on a named date.An independent report on the ElevenLabs API: what it cost on a named workload on a named date, what broke, and which of four client-side credential patterns the product can actually support.](https://elevenlabs.providers.sgit.ai)
+v0.3.0[Open elevenlabs.providers.sgit.ai ↗](https://elevenlabs.providers.sgit.ai)
+
+[**games.sgit.ai**A game makes you say what you think, before you are told.Why this family builds games: a game is the only artefact that makes somebody state a belief before they are told the answer. The catalogue, the method, and how to build one as a vault.](https://games.sgit.ai)
+v0.4.1[Open games.sgit.ai ↗](https://games.sgit.ai)
 
 [**llms.sgit.ai**Your app calls a language model without ever holding an API key.The sg.llm.* bridge: how an app running inside a vault reaches a model with no credential of its own. The reference, the traps, a four-layer security ladder, the attached-file question, and a pre-ship checklist.](https://llms.sgit.ai)
 reference draftv0.2.0[Open llms.sgit.ai ↗](https://llms.sgit.ai)
@@ -6988,8 +7015,20 @@ reference draftv0.2.0[Open llms.sgit.ai ↗](https://llms.sgit.ai)
 [**nhi.sgit.ai**The question splits into two populations, and the industry only answers oneThe question of how to give an AI agent an identity splits into two populations, and every product on the market answers only the first. For the agents you actually name — the ones running in Claude, Codex or behind an API — the honest current answer is to hand over a broad credential and hope.](nhi.md)
 v0.1.14[What it argues →](nhi.md) · [Open nhi.sgit.ai ↗](https://nhi.sgit.ai)
 
-[**skills.sgit.ai**published soonThe skills site. The repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address.](https://github.com/SGit-AI/SGit-AI__Website__Skills)
-not published yet · [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills)
+[**providers.sgit.ai**Where the key goes.The hub of the *.providers.sgit.ai family: four credential patterns, one page contract, and one site per provider reporting what it cost on a named workload, what broke, and where the key has to live.](https://providers.sgit.ai)
+v0.1.1[Open providers.sgit.ai ↗](https://providers.sgit.ai)
+
+[**skills.sgit.ai**Skills are software packages, and here is the proof.Eight skills shipped, generated from their own frontmatter; 25 briefs and 60,782 words of theory a long way ahead of them; and the diverging duplicate that is the thesis failing, live, on the estate's own skills.](https://skills.sgit.ai)
+v0.1.0[Open skills.sgit.ai ↗](https://skills.sgit.ai)
+
+[**teams.sgit.ai**Roles are boundaries. The Conductor never does the work.The reference for setting up agentic teams with more than one role, measured from 39 ROLE.md files across four team instantiations.](https://teams.sgit.ai)
+v0.1.0[Open teams.sgit.ai ↗](https://teams.sgit.ai)
+
+[**ungovr.providers.sgit.ai**One derivable hop away.An independent report on the UnGovr Open Data API: 327,138 government entities, 398 open-records laws, free under CC BY 4.0 — and a join between them that is one derivable hop away.](https://ungovr.providers.sgit.ai)
+v0.1.14[Open ungovr.providers.sgit.ai ↗](https://ungovr.providers.sgit.ai)
+
+[**what-can-it-do.games.sgit.ai**You score for how well you know what you know.A five-minute game: name the AI assistant you use, answer forty questions about what it can do and whether you wanted it to, and score for how well you know what you know. Free, no sign-up.](https://what-can-it-do.games.sgit.ai)
+v0.6.0[Open what-can-it-do.games.sgit.ai ↗](https://what-can-it-do.games.sgit.ai)
 
 ## Risk & governance
 
@@ -7001,6 +7040,9 @@ research sitev0.1.0[Open risks.sgit.ai ↗](https://risks.sgit.ai)
 
 [**standards.sgit.ai**Point at the provision, or you are asserting.Laws, standards and frameworks as addressable graphs rather than PDFs to paraphrase. A citation scheme, a grounding ladder, and worked instruments — the EU AI Act, GDPR, ISO/IEC 27001, ISO 31000 — with a subset method for handing an agent only the part that applies.](https://standards.sgit.ai)
 v0.1.4[Open standards.sgit.ai ↗](https://standards.sgit.ai)
+
+[**threat-modeling.sgit.ai**A threat model is a claim you can check.A threat model is a claim about a system, and this site's job is to show claims being checked: the ThreatModCon 2025 vault, a threat model validated against the code, seven white papers, and the redacted method behind them.](https://threat-modeling.sgit.ai)
+[Open threat-modeling.sgit.ai ↗](https://threat-modeling.sgit.ai)
 
 ## Graphs & method
 
@@ -7048,7 +7090,10 @@ draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
 
 | Site | What it argues | Area | Status |  |
 |---|---|---|---|---|
+| **chrome-extensions.sgit.ai** | The expensive bugs do not throw. | Agents & AI | live · `v0.1.0` | [open ↗](https://chrome-extensions.sgit.ai) |
 | **coding.sgit.ai** | The style guide that measured itself. | Agents & AI | live · `v0.2.0` | [open ↗](https://coding.sgit.ai) |
+| **elevenlabs.providers.sgit.ai** | What it cost on a named workload, on a named date. | Agents & AI | live · `v0.3.0` | [open ↗](https://elevenlabs.providers.sgit.ai) |
+| **games.sgit.ai** | A game makes you say what you think, before you are told. | Agents & AI | live · `v0.4.1` | [open ↗](https://games.sgit.ai) |
 | [graphs.sgit.ai](graphs.md) | A node is just a node. Meaning lives in the edges. | Graphs & method | live · `v0.1.0` | [open ↗](https://graphs.sgit.ai) |
 | **influences.sgit.ai** | Where the thinking came from. | Business & publishing | live · `v0.2.0` | [open ↗](https://influences.sgit.ai) |
 | **infographics.sgit.ai** | The brief is the argument. The infographic is one picture of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://infographics.sgit.ai) |
@@ -7059,14 +7104,19 @@ draftv0.1.0[Open subscriptions.sgit.ai ↗](https://subscriptions.sgit.ai)
 | [nhi.sgit.ai](nhi.md) | The question splits into two populations, and the industry only answers one | Agents & AI | live · `v0.1.14` | [open ↗](https://nhi.sgit.ai) |
 | **open-source.sgit.ai** | Open source is a strategy. It is not a charity. | Business & publishing | draft · `v0.1.1` | [open ↗](https://open-source.sgit.ai) |
 | [pki.sgit.ai](pki.md) | Good public key repositories existed, and were destroyed | Security & infrastructure | live · `v0.1.2` | [open ↗](https://pki.sgit.ai) |
+| **providers.sgit.ai** | Where the key goes. | Agents & AI | live · `v0.1.1` | [open ↗](https://providers.sgit.ai) |
 | **risks.sgit.ai** | You cannot deny a risk. You can only say how long you accept it. | Risk & governance | research site · `v0.1.0` | [open ↗](https://risks.sgit.ai) |
 | **sg-compute.sgit.ai** | Ephemeral environments in AWS, one command away. | Security & infrastructure | live · `v0.2.0` | [open ↗](https://sg-compute.sgit.ai) |
 | [sg-sentinel.sgit.ai](sg-sentinel.md) | Layer 1 decides and signals. Layer 2 acts and writes. | Security & infrastructure | live · `v0.1.1` | [open ↗](https://sg-sentinel.sgit.ai) |
+| **skills.sgit.ai** | Skills are software packages, and here is the proof. | Agents & AI | live · `v0.1.0` | [open ↗](https://skills.sgit.ai) |
 | **standards.sgit.ai** | Point at the provision, or you are asserting. | Risk & governance | live · `v0.1.4` | [open ↗](https://standards.sgit.ai) |
 | **subscriptions.sgit.ai** | A subscription is a discount for regular use, not rent on something you ignore. | Business & publishing | draft · `v0.1.0` | [open ↗](https://subscriptions.sgit.ai) |
+| **teams.sgit.ai** | Roles are boundaries. The Conductor never does the work. | Agents & AI | live · `v0.1.0` | [open ↗](https://teams.sgit.ai) |
+| **threat-modeling.sgit.ai** | A threat model is a claim you can check. | Risk & governance | live | [open ↗](https://threat-modeling.sgit.ai) |
 | **twins.sgit.ai** | A digital twin is an interface to reality, not a simulation of it. | Graphs & method | live · `v0.1.0` | [open ↗](https://twins.sgit.ai) |
+| **ungovr.providers.sgit.ai** | One derivable hop away. | Agents & AI | live · `v0.1.14` | [open ↗](https://ungovr.providers.sgit.ai) |
 | **wardley-maps.sgit.ai** | Maps are claims, not pictures. | Graphs & method | PROPOSED · `v0.1.2` | [open ↗](https://wardley-maps.sgit.ai) |
-| **skills.sgit.ai** | published soon | Agents & AI | not published yet | [repo ↗](https://github.com/SGit-AI/SGit-AI__Website__Skills) |
+| **what-can-it-do.games.sgit.ai** | You score for how well you know what you know. | Agents & AI | live · `v0.6.0` | [open ↗](https://what-can-it-do.games.sgit.ai) |
 
 ## Read one in full
 

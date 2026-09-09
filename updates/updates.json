@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.73",
+  "site_version": "v0.2.74",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -41,6 +41,19 @@
         "agents"
       ],
       "summary": "Two releases documented this from the inside: reading one file out of a vault explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to their vault. That brief now exists. It follows the shape of the telemetry brief…"
+    },
+    {
+      "slug": "the-agent-chip-and-the-network-catches-up",
+      "title": "The agent chip becomes one object, and the network list catches up with the org",
+      "date": "2026-09-09",
+      "version": "v0.2.74",
+      "tags": [
+        "design",
+        "network",
+        "llms",
+        "agents"
+      ],
+      "summary": "The chip. Last release put an llms.txt link on every page, and it worked but looked like three loose fragments — a pill, a boxed path, and a long sentence — floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions we…"
     },
     {
       "slug": "seven-shorts-on-the-licence-to-operate",

@@ -889,13 +889,21 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 .surface{margin:0 0 .4rem;font-size:.8rem;color:var(--dim);letter-spacing:.01em}
 .surface b{color:var(--fg)}
 
-/* ---- the llms.txt chip: the agent-shaped twin of the page you are reading */
-.llmschip{max-width:var(--wide);margin:.9rem auto -.4rem;padding:0 var(--pad);
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem;font-size:.74rem;color:var(--dim)}
-.llmschip-k{text-transform:uppercase;letter-spacing:.1em;font-size:.64rem;font-weight:700;
-  color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:.16rem .5rem}
-.llmschip a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line)}
-.llmschip a:hover{border-color:var(--fg)}
-.llmschip code{font-size:.74rem}
-.llmschip-m{color:var(--dim)}
-@media (max-width:700px){.llmschip-m{display:none}}
+/* ---- the llms.txt chip: one object, not three loose fragments.
+   Renders on every page, so weight is the whole constraint — it must be findable without
+   ever competing with the headline under it. The long explanation is a title tooltip. */
+.llmschip{max-width:var(--wide);margin:.9rem auto .1rem;padding:0 var(--pad)}
+.llmschip a{display:inline-flex;align-items:stretch;border:1px solid var(--line2);border-radius:7px;
+  overflow:hidden;background:var(--panel);box-shadow:0 1px 2px rgba(28,29,33,.04);
+  text-decoration:none;color:inherit;transition:border-color .12s ease,box-shadow .12s ease}
+.llmschip a:hover{border-color:var(--dim2);box-shadow:0 1px 3px rgba(28,29,33,.08)}
+.llmschip-k{display:flex;align-items:center;gap:.4rem;padding:.34rem .6rem;
+  background:var(--panel2);border-right:1px solid var(--line);
+  font:700 .62rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.llmschip-k svg{width:12px;height:12px;flex:none}
+.llmschip-p{display:flex;align-items:center;padding:.34rem .6rem;
+  font-family:var(--mono);font-size:.74rem;color:var(--fg)}
+.llmschip a:hover .llmschip-p{color:var(--accent)}
+.llmschip-m{display:flex;align-items:center;padding:.34rem .6rem;border-left:1px dashed var(--line);
+  font-family:var(--mono);font-size:.68rem;color:var(--dim2);white-space:nowrap}
+@media (max-width:640px){.llmschip-m{display:none}}

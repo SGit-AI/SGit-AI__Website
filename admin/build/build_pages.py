@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.73'
+SITE_VERSION = 'v0.2.74'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.73', '2026-09-09', 'this release',
+    ('v0.2.74', '2026-09-09', 'this release',
+     "THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt "
+     "chip shipped last release as three loose fragments — a pill, a boxed path and a long "
+     "sentence — floating in dead space between the nav and the breadcrumb, belonging to "
+     "neither. Four directions were drawn against the site's real tokens and one was chosen: a "
+     "SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only "
+     "emphasised element, and the version and date behind a dashed rule. It reads as one thing "
+     "you can click rather than three things you cannot. The always-on sentence moved into the "
+     "link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise "
+     "sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked "
+     "against the organisation's 31 repositories rather than against memory: games, "
+     "what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, "
+     "threat-modeling and chrome-extensions all had repositories, all answered 200, and none was "
+     "listed. Each entry is written from what that site says about itself — its own title, "
+     "description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF "
+     "THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, "
+     "so there is nothing to read at the address', and it has been live for some time — the "
+     "entry now carries its real thesis and version; and the ElevenLabs repository describes its "
+     "domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is "
+     "elevenlabs.providers.sgit.ai. The site list is 27.",
+     ),
+    ('v0.2.73', '2026-09-09', 'obj-cas-imm-5569e595ea36',
      "THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across "
      "this site and the only way to find one was to type it onto the end of an address. Every "
      "page now carries a small chip above its title naming the one that covers it — FOR AGENTS, "
@@ -1885,11 +1906,23 @@ def llms_chip(path):
         pretty = datetime.date.fromisoformat(date).strftime('%-d %b %Y')
     except Exception:
         pretty = date
-    return (f'<p class="llmschip"><span class="llmschip-k">for agents</span>'
-            f'<a href="{href}"><code>/{target}</code></a>'
-            f'<span class="llmschip-m">generated {ver} &middot; {pretty} &mdash; '
-            f'regenerated every release, so if this page changed and that stamp did not, '
-            f'the index has not caught up</span></p>')
+    ver, date = VERSION_LOG[0][0], VERSION_LOG[0][1]
+    try:
+        pretty = datetime.date.fromisoformat(date).strftime('%-d %b %Y')
+    except Exception:
+        pretty = date
+    icon = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+            '<path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>')
+    # The long form lives in the tooltip, not on the page: this chip renders on every page,
+    # and as always-on text it was instruction noise sitting above the headline.
+    tip = ('Regenerated on every release. If this page changed and that stamp did not, '
+           'the index has not caught up.')
+    return (f'<div class="llmschip"><a href="{href}" title="{tip}">'
+            f'<span class="llmschip-k">{icon}for agents</span>'
+            f'<span class="llmschip-p">/{target}</span>'
+            f'<span class="llmschip-m">{ver} &middot; {pretty}</span>'
+            f'</a></div>')
 
 
 def write_llms(pages):
