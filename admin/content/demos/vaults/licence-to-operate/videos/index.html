@@ -3,7 +3,22 @@
   <h1>Seven shorts on the licence to operate</h1>
   <p class="lead">The author recorded seven vertical videos walking through <a href="../index.html">the Licence to Operate vault</a> &mdash; the mechanism first, then how to open it yourself, then the model behind it. They are collected here in order, with what each one covers and which part of the vault it is demonstrating, so the series is readable as one argument rather than seven unconnected clips in a feed.</p>
 
-  <div class="note"><b>What this page is, and what it is not.</b> Under each video is the <b>author's own description of it</b>, lightly edited for consistency &mdash; not a transcript. <b>These videos have no caption track</b>, auto-generated or otherwise: all four of YouTube's <code>timedtext</code> endpoints return empty for every one of the seven. So the words actually spoken are <em>not</em> on this site, and that is a real gap by this site's own standard &mdash; the <a href="../../risk-graph-explorer/videos/index.html">walkthroughs page</a> exists precisely because <em>"a recording is invisible to a search engine, to <a href="../../../../llms-full.txt">llms-full.txt</a>, and to any agent reading this site."</em> Transcribing these is <a href="../../../../team/board.html">on the board</a>; until it is done, this page is an index with the author's summaries, and says so.</div>
+  <h2 id="concepts">Four words, and the gap between two of them</h2>
+  <p>If you arrived here from a feed with no context, this is the entire model in four terms. Every one of the seven videos is about one of them, or about what happens when one of them is wrong. The numbers in the last column are the ones in the demo you can open below.</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>What it means</th><th>In the vault</th></tr>
+    <tr><td><b>Grant</b></td><td>Everything the agent <em>can</em> do &mdash; the union of every tool, key and permission it actually holds</td><td><b>12 capabilities</b></td></tr>
+    <tr><td><b>Mandate</b></td><td>What it <em>may</em> do &mdash; the specific job you asked for, and the only thing the policy insures</td><td><b>4</b> &mdash; <code>crm:read</code>, <code>kb:search</code>, <code>llm:generate</code>, <code>mail:draft</code></td></tr>
+    <tr><td><b>The delta</b></td><td>The gap between them: inside the agent's reach, outside its authority. <b>Nothing covers these</b></td><td><b>8</b> &mdash; including <code>crm:export</code>, <code>mail:send</code>, <code>shell:exec</code></td></tr>
+    <tr><td><b>Licence to operate</b></td><td>A policy over the mandate, with a normal band, an overflow pool and named people accepting each risk in advance. Exceed it and the licence is withdrawn</td><td>Priced per turn in a live simulation</td></tr>
+  </table></div>
+  <p>The claim the series makes is that the delta is where agent risk actually lives &mdash; not in the model, not in the prompt, but in the distance between the capability you handed over and the job you asked for. Nobody asked for <code>shell:exec</code>; nothing insures it; the agent can still reach it. Write the two sets down side by side and the risk stops being a discussion and becomes a number.</p>
+
+  <div class="note"><b>Open the thing the videos are showing.</b> It runs in a browser, read-only, with no account and nothing to install &mdash; the read key below is the whole credential.<br>
+  Read key: <code style="word-break:break-all">d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3</code><br>
+  <a href="../index.html"><b>The Licence to Operate vault on this site &rarr;</b></a> &middot; <a href="https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3" rel="noopener" target="_blank">open it directly in the vault UI &#8599;</a></div>
+
+  <div class="note"><b>Where this goes commercially: <a href="https://riskmandate.ai/" rel="noopener" target="_blank">RiskMandate.ai &#8599;</a></b> &mdash; the business risk layer for autonomous systems: every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision &mdash; <b>accept, fund, or fix</b>. What you are about to watch is that model made concrete for a single agent. The vault is the demonstration; RiskMandate is the product it is a demonstration <em>of</em>, and <a href="../../risk-graph-explorer/index.html">the Risk Graph Explorer</a> is the same engine already published as a vault.</div>
 
   <h2 id="arc">The order they are meant to be watched in</h2>
   <p>The series has three movements, and they are not in the order a viewer arriving from a feed would guess:</p>
@@ -13,7 +28,6 @@
     <tr><td><b>The artefact</b></td><td>4</td><td>How to find and open the vault on this site &mdash; the shortest one, and the one to send someone who wants to poke at it themselves</td></tr>
     <tr><td><b>The model</b></td><td>5 &middot; 6 &middot; 7</td><td>Why the grant/mandate gap is where risk lives, the insurance framing that governs it, and the policy, claim and premium mechanics underneath</td></tr>
   </table></div>
-  <p class="small dim">A note on the numbering, since it is the kind of thing that rots: video 4 sends the viewer to <b>&ldquo;Vault #23&rdquo;</b> on the published vaults table. Checked against the table today &mdash; Licence to Operate is <b>still #23</b>, and it always will be: that number is a permanent publication ordinal, assigned in order of first publication and never reused, so a video that names it cannot go stale. <a href="../../../../articles/proof-moved-up.html">That was the point of making it an identity</a> rather than a row position.</p>
 
   <div class="shorts">
 
@@ -153,5 +167,5 @@
     <li><b>The acceptance model it inherits.</b> <a href="../../risk-graph-explorer/index.html">The Risk Graph Explorer</a>, and <a href="../../risk-graph-explorer/videos/index.html">its three walkthroughs</a> &mdash; which are transcribed, and are the standard this page is not yet meeting.</li>
   </ul>
 
-  <p class="small dim" style="margin-top:2rem">All seven videos are on <a href="https://www.youtube.com/@diniscruz-ai" rel="noopener" target="_blank">the author's channel &#8599;</a>. Embedded through <code>youtube-nocookie.com</code>, and lazily &mdash; opening this page sets no YouTube cookie until you press play on one. <a href="../index.html">&larr; The vault</a> &middot; <a href="../../index.html">All published vaults</a></p>
+  <p class="small dim" style="margin-top:2rem">All seven videos are on <a href="https://www.youtube.com/@diniscruz-ai" rel="noopener" target="_blank">the author's channel &#8599;</a>. Embedded through <code>youtube-nocookie.com</code>, and lazily &mdash; opening this page sets no YouTube cookie until you press play on one. The text under each video is the author's own description, not a transcript: these seven carry no caption track, so the spoken words are not on this site yet and <a href="../../../../team/board.html">transcribing them is on the board</a>. <a href="../index.html">&larr; The vault</a> &middot; <a href="../../index.html">All published vaults</a></p>
 </main>

@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.65). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.66). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-93site releases, each verified live before it was called done
+94site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3917,7 +3917,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.65, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.66, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4056,7 +4056,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-93**site releases since 14 August**
+94**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4065,7 +4065,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-37**articles and release notes**
+38**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4858,11 +4858,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.65**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.66**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.65 | 2026-09-09 | this release | SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a vertical-video series walking through vault posrhzp3; none of the seven was on the site. They now have a page under the vault, collected in the order they are meant to be watched rather than the order a feed would show them: THE MECHANISM (1-3: grant against mandate, what a block looks like, who in the organisation accepts which risk), THE ARTEFACT (4: how to find and open the vault — the one to send someone who wants to poke at it), THE MODEL (5-7: the gap as the place risk lives, the insurance framing, then policies, claims and premiums). Each carries the author's own description, lightly edited, plus a line mapping it to what it demonstrates in the vault or the estate — the delta for 5, the AIUC-1 conformance layer's insurability query for 6, risks.sgit.ai's no-deny-button position for 7. WHAT THE PAGE REFUSES TO PRETEND: these are descriptions, NOT transcripts. All four of YouTube's timedtext endpoints return empty for every one of the seven, so there is no caption track to pull and the words spoken are absent from the site, from llms-full.txt and from the chat pane's read_page tool. That is the exact failure the risk-graph-explorer walkthroughs page was built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and opened as board card T12. A NUMBER THAT CANNOT ROT, DEMONSTRATED: video 4 tells the viewer to look for 'Vault #23'. Checked — Licence to Operate is still #23 and always will be, because v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been stale within a day; naming an identity is safe. Embeds go through youtube-nocookie.com with loading=lazy, so opening the page sets no YouTube cookie until somebody presses play. New portrait 9:16 player CSS, since the existing .vembed is a 16:9 box and a Short in it is two black pillars. |
+| v0.2.66 | 2026-09-09 | this release | THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing page whether or not it was designed as one: traffic comes from a feed, lands on it directly, and has never seen the vault, the site or the argument. What sat above the seven players was an apology about missing transcripts and a note explaining why a row number in the table could not go stale — two pieces of internal housekeeping addressed to readers who already knew everything the page had to sell. Both are gone from the top. In their place: FOUR WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per turn), so the whole model is legible before a single video plays. Then two calls to action, in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the whole credential and both routes offered (its page here, or straight into the vault UI); and RISKMANDATE.AI, named as where this goes commercially — the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner and driven to a time-bound decision: accept, fund, or fix. The vault is the demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, their order, or the three movements. |
+| v0.2.65 | 2026-09-09 | obj-cas-imm-9407711950c8 | SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a vertical-video series walking through vault posrhzp3; none of the seven was on the site. They now have a page under the vault, collected in the order they are meant to be watched rather than the order a feed would show them: THE MECHANISM (1-3: grant against mandate, what a block looks like, who in the organisation accepts which risk), THE ARTEFACT (4: how to find and open the vault — the one to send someone who wants to poke at it), THE MODEL (5-7: the gap as the place risk lives, the insurance framing, then policies, claims and premiums). Each carries the author's own description, lightly edited, plus a line mapping it to what it demonstrates in the vault or the estate — the delta for 5, the AIUC-1 conformance layer's insurability query for 6, risks.sgit.ai's no-deny-button position for 7. WHAT THE PAGE REFUSES TO PRETEND: these are descriptions, NOT transcripts. All four of YouTube's timedtext endpoints return empty for every one of the seven, so there is no caption track to pull and the words spoken are absent from the site, from llms-full.txt and from the chat pane's read_page tool. That is the exact failure the risk-graph-explorer walkthroughs page was built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and opened as board card T12. A NUMBER THAT CANNOT ROT, DEMONSTRATED: video 4 tells the viewer to look for 'Vault #23'. Checked — Licence to Operate is still #23 and always will be, because v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been stale within a day; naming an identity is safe. Embeds go through youtube-nocookie.com with loading=lazy, so opening the page sets no YouTube cookie until somebody presses play. New portrait 9:16 player CSS, since the existing .vembed is a 16:9 box and a Short in it is two black pillars. |
 | v0.2.64 | 2026-09-07 | obj-cas-imm-80636cf90122 | THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the board appeared as files in the site repository, it was clear the shape was right and the home was wrong: moving a card from review to done cost a full site release. So the seventeen cards moved into vault pdulwi6i — issues/-.md, a README with the card format, a five-column board app (index.html, permissions {}) that lists issues/ through sg.vfs and falls back to issues/index.json when served outside a host, and tools/reindex.py to regenerate that index. THE VAULT IS THE TRUTH; THE SITE IS A READER: release.sh now pulls the vault before it builds (step 0), the loader reads admin/content/team/issues/issues/ — which IS the vault's working tree, cloned in place with its encrypted store gitignored and its card files tracked as the build's input — and the board page labels its columns as a snapshot at the site version, with the read key and one open-live button above them. Moving a card is now sgit push, and the board is live the moment it lands; the site catches up at its next release. PUBLISHED AS ROW #26 on the vaults table with its own page, following the method: the write key escrowed in the gitignored tier, the audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's board prompt and the team page's 'where things are' now point at the vault. One design note: the app works in two places on purpose — under a vault host it reads the files directly and needs no index, served flat it reads the index — because a board that only renders inside one host is a board nobody can screenshot, test or read from a script. |
 | v0.2.63 | 2026-09-07 | obj-cas-imm-d523226f4c7a | A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly in the page — type words to search everything (pages, vaults, sibling sites, release notes, board cards), or /vaults, /sites, /updates, /board, /read PATH, /here — instant, private, no network after the index loads. TIER 1, bring-your-own OpenRouter key: the model is handed the same seven tools as OpenAI-style function definitions (search_site, read_page, list_vaults, list_sites, latest_updates, get_board, current_page) and calls them; every call executes HERE over the build-emitted index and the .md twin of any page, so the model can only say what a tool returned, and THE PANE SHOWS EVERY CALL IT MADE as a trace line. Up to six tool rounds, then a plain-prose answer ending in the paths it used, as links. TIER 2, sg.llm inside a vault, is detected-not-wired and on the board as T11, blocked on one fact about the bridge's tool contract. THE INDEX is assets/site-index.json, written beside llms.txt from the same data as the vaults table, the network directory, the feed and the board — one derived file, so an answer in the pane is an answer the site already gives somewhere. LOADED THROUGH THE BOOT BLOCK after site.js, by the same vfs-or-fetch loader, with the loader exposed as window.__sgitBoot so the module resolves the index and the twins the same way on a blob: origin; never a script src. The key goes to openrouter.ai and nowhere else and the pane says so in the same words the chooser uses. Model output is escaped and links are allowed only to http(s) or paths on this site. The validator now parses the chat modules too. The chat-on-a-static-site article gains an addendum and its 'shared component: not started' row becomes 'partly': one site's copy, not yet the versioned module the other eighteen could load. |
 | v0.2.62 | 2026-09-07 | obj-cas-imm-e27526f11c99 | TWO SECTIONS: THE TEAM, FOR THE AGENTS; AND INVESTORS, IN THE OPEN. Asked for a full agentic section briefing agents on how to work on this site, with roles and pages like the sibling sites, a board like the ones done before, and the starting prompts for the regular work — plus an investor section on the same open-materials model the founder's other companies use, for an event next week. THE TEAM (team/): nine roles, each a file under admin/content/team/roles/ with mission, what it owns, what it must not touch, the files it works in, the checks it runs, the rules it enforces WITH THE MISTAKE THAT PRODUCED EACH, and a starting prompt; the grid and the nine pages derive. The roles mirror the Explorer team in the CLI repo, specialised for running a site: Sherpa, Publisher, Auditor, Journalist, Cartographer, Ambassador, Designer, Release engineer, Historian — the Publisher and Auditor exist because this site publishes read keys on purpose. TWELVE STARTING PROMPTS (team/prompts.html) for the work that recurs — publish, audit, update, article, sibling site, inbound brief, release, phone bug, markup-to-data, correction, board, read-key sweep — each written to be pasted into a fresh agent, each ending before the release step on purpose. THE BOARD (team/board.html): issues as files under admin/content/team/issues/, five columns rendered from a status line, Needs (only the author can supply) kept apart from Tasks, in the spirit of issues-fs.sgit.ai and the comms board on open-source.sgit.ai; seeded with sixteen real items including the six things only the author can answer. INVESTORS (investors/): the structure of investor.myfeeds.ai — problem, what it is, architecture, traction, business model, market, the ask, use of funds, what could go wrong, materials — with traction COMPUTED from the site and THE ASK LEFT VISIBLY OPEN in a dashed box tracked as board item N1, because nothing on that page may be a number the founder has not supplied; the business-model section quotes the founder's published open-source position through a sibling-site card rather than restating it. NAV: Try folds into Docs; Why becomes a group (Why, Investors); Team is a new group (overview, roles, prompts, board) — eight top-level items, as before. TWO BUILD LESSONS: the content loader gained a generic one-file-per-thing reader (roles and issues are three lines each); and angle-bracket placeholders inside code spans broke the markdown twin twice while being regex-wrapped, so the whole team section uses UPPERCASE placeholders with no angle brackets — one convention, every renderer. Verified: 105 pages, validator clean, no overflow at 390 on any new page. |
@@ -5608,6 +5609,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-09
+
+### [The shorts page rewritten for someone who arrives with no context](#the-shorts-page-rewritten-for-a-cold-arrival) [v0.2.66](../admin/versions.md)
+
+vaultsvideoriskmandatemethod
+
+A page of videos is a landing page whether or not it was designed as one. Traffic reaches [the seven shorts](../demos/vaults/licence-to-operate/videos/index.md) from a feed, lands on it directly, and has never seen the vault, this site, or the argument. What sat above the seven players yesterday was an apology about missing transcripts and a note explaining why a row number in the vaults table could not go stale — two pieces of internal housekeeping, both written for a reader who already knew everything the page had to sell.
+
+Both are gone from the first screen. In their place, in the order a cold visitor needs them:
+
+- **Four words, and the gap between two of them.** Grant, mandate, delta, licence to operate — defined in a table with the counts from the demo beside each: **12** capabilities in the grant, **4** in the mandate, **8** in the delta, and a licence priced per turn. The whole model is now legible before a single video plays.
+- **Open the thing the videos are showing.** [The Licence to Operate vault](../demos/vaults/licence-to-operate/index.md), with its read key printed as the complete credential and both routes offered — its page here, or straight into the vault UI.
+- **Where this goes commercially.** [RiskMandate.ai](https://riskmandate.ai/) named on the page: the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision — *accept, fund, or fix*. The vault is the demonstration; RiskMandate is the product it demonstrates; [the Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) is the same engine already published as a vault.
+
+**The transcript gap is not hidden, it is right-sized.** It is still stated, in one sentence in the footer, and [board card T12](../team/board.md) is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.
+
+Nothing changed about the seven videos, their order, or the three movements they fall into.
 
 ### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
 
@@ -7907,7 +7924,24 @@ One small addition to that audit: the self-referencing read key appears in `tryi
 
 The author recorded seven vertical videos walking through [the Licence to Operate vault](../index.md) — the mechanism first, then how to open it yourself, then the model behind it. They are collected here in order, with what each one covers and which part of the vault it is demonstrating, so the series is readable as one argument rather than seven unconnected clips in a feed.
 
-**What this page is, and what it is not.** Under each video is the **author's own description of it**, lightly edited for consistency — not a transcript. **These videos have no caption track**, auto-generated or otherwise: all four of YouTube's `timedtext` endpoints return empty for every one of the seven. So the words actually spoken are *not* on this site, and that is a real gap by this site's own standard — the [walkthroughs page](../../risk-graph-explorer/videos/index.md) exists precisely because *"a recording is invisible to a search engine, to [llms-full.txt](../../../../llms-full.txt), and to any agent reading this site."* Transcribing these is [on the board](../../../../team/board.md); until it is done, this page is an index with the author's summaries, and says so.
+## Four words, and the gap between two of them
+
+If you arrived here from a feed with no context, this is the entire model in four terms. Every one of the seven videos is about one of them, or about what happens when one of them is wrong. The numbers in the last column are the ones in the demo you can open below.
+
+|  | What it means | In the vault |
+|---|---|---|
+| **Grant** | Everything the agent *can* do — the union of every tool, key and permission it actually holds | **12 capabilities** |
+| **Mandate** | What it *may* do — the specific job you asked for, and the only thing the policy insures | **4** — `crm:read`, `kb:search`, `llm:generate`, `mail:draft` |
+| **The delta** | The gap between them: inside the agent's reach, outside its authority. **Nothing covers these** | **8** — including `crm:export`, `mail:send`, `shell:exec` |
+| **Licence to operate** | A policy over the mandate, with a normal band, an overflow pool and named people accepting each risk in advance. Exceed it and the licence is withdrawn | Priced per turn in a live simulation |
+
+The claim the series makes is that the delta is where agent risk actually lives — not in the model, not in the prompt, but in the distance between the capability you handed over and the job you asked for. Nobody asked for `shell:exec`; nothing insures it; the agent can still reach it. Write the two sets down side by side and the risk stops being a discussion and becomes a number.
+
+**Open the thing the videos are showing.** It runs in a browser, read-only, with no account and nothing to install — the read key below is the whole credential.
+ Read key: `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
+[**The Licence to Operate vault on this site →**](../index.md) · [open it directly in the vault UI ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)
+
+**Where this goes commercially: [RiskMandate.ai ↗](https://riskmandate.ai/)** — the business risk layer for autonomous systems: every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision — **accept, fund, or fix**. What you are about to watch is that model made concrete for a single agent. The vault is the demonstration; RiskMandate is the product it is a demonstration *of*, and [the Risk Graph Explorer](../../risk-graph-explorer/index.md) is the same engine already published as a vault.
 
 ## The order they are meant to be watched in
 
@@ -7918,8 +7952,6 @@ The series has three movements, and they are not in the order a viewer arriving 
 | **The mechanism** | 1 · 2 · 3 | Grant against mandate, what a block looks like when an agent exceeds its mandate, and who in the organisation accepts which risk |
 | **The artefact** | 4 | How to find and open the vault on this site — the shortest one, and the one to send someone who wants to poke at it themselves |
 | **The model** | 5 · 6 · 7 | Why the grant/mandate gap is where risk lives, the insurance framing that governs it, and the policy, claim and premium mechanics underneath |
-
-A note on the numbering, since it is the kind of thing that rots: video 4 sends the viewer to **“Vault #23”** on the published vaults table. Checked against the table today — Licence to Operate is **still #23**, and it always will be: that number is a permanent publication ordinal, assigned in order of first publication and never reused, so a video that names it cannot go stale. [That was the point of making it an identity](../../../../articles/proof-moved-up.md) rather than a row position.
 
 Short 1 · the mechanism
 
@@ -8026,7 +8058,7 @@ A deep dive into the insurance model powering the MVP: how policies (licences) a
 - **The insurance model, computed.** [The AIUC-1 conformance layer](../../aiuc-1-conformance/index.md) turns this framing into a query: conformance states become conditions and exclusions on a policy, and moving the date forward turns conditions into exclusions with nobody editing anything.
 - **The acceptance model it inherits.** [The Risk Graph Explorer](../../risk-graph-explorer/index.md), and [its three walkthroughs](../../risk-graph-explorer/videos/index.md) — which are transcribed, and are the standard this page is not yet meeting.
 
-All seven videos are on [the author's channel ↗](https://www.youtube.com/@diniscruz-ai). Embedded through `youtube-nocookie.com`, and lazily — opening this page sets no YouTube cookie until you press play on one. [← The vault](../index.md) · [All published vaults](../../index.md)
+All seven videos are on [the author's channel ↗](https://www.youtube.com/@diniscruz-ai). Embedded through `youtube-nocookie.com`, and lazily — opening this page sets no YouTube cookie until you press play on one. The text under each video is the author's own description, not a transcript: these seven carry no caption track, so the spoken words are not on this site yet and [transcribing them is on the board](../../../../team/board.md). [← The vault](../index.md) · [All published vaults](../../index.md)
 
 
 
