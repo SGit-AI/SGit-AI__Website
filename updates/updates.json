@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.71",
+  "site_version": "v0.2.72",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -41,6 +41,19 @@
         "risk"
       ],
       "summary": "The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3) — grant…"
+    },
+    {
+      "slug": "one-front-door-for-vault-guidance",
+      "title": "One front door for vault guidance — and every document moved under /docs/",
+      "date": "2026-09-09",
+      "version": "v0.2.72",
+      "tags": [
+        "docs",
+        "guidance",
+        "vaults",
+        "method"
+      ],
+      "summary": "The guidance here had accumulated across three top level folders — /briefs , /vault , and a /guidance page written this morning. That is three places to look for one kind of thing. Everything readable now lives under /docs/ : /docs/briefs , /docs/vault , /docs…"
     },
     {
       "slug": "markdown-and-file-viewers-what-not-to-build",

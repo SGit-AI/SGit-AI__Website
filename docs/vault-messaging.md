@@ -2,7 +2,7 @@
 
 > How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
 
-*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 Two vaults can exchange encrypted messages without sharing a vault key, without the sender having an account, and without the server ever being able to read anything. The mechanism is an **append lane**: a write-only channel attached to a vault, addressed by the hash of a public key.
 
-**Why this page exists.** Both halves of this capability were already documented — the transport as [`sg.append`](../vault/sg-bridge.md), the crypto as [`sgit pki`](pki.md) — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.
+**Why this page exists.** Both halves of this capability were already documented — the transport as [`sg.append`](vault/sg-bridge.md), the crypto as [`sgit pki`](pki.md) — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.
 
 ## The shape of it
 
@@ -135,7 +135,7 @@ $ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: 
 
 ## From inside a vault app
 
-The same transport through the browser bridge, with no HTTP of your own (see [`sg.append`](../vault/sg-bridge.md)):
+The same transport through the browser bridge, with no HTTP of your own (see [`sg.append`](vault/sg-bridge.md)):
 
 ```
 await sg.append.configure({ appendAnchors: [anchorHash], enumKeyHash });
@@ -161,7 +161,7 @@ Not a chat protocol, not a queue with delivery guarantees, and not anonymous —
 
 - [API — append lanes](../api/append-lanes.md): the six endpoints, gates, limits and status codes
 - [PKI](pki.md): keypair lifecycle, verified against the shipped CLI
-- [`sg.append`](../vault/sg-bridge.md): the same transport from a vault app
+- [`sg.append`](vault/sg-bridge.md): the same transport from a vault app
 - [Security model](../security/index.md#pki): where the keypair sits relative to the symmetric vault key
 
 

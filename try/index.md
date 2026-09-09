@@ -2,7 +2,7 @@
 
 > The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page.
 
-*Source: <https://sgit.ai/try/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/try/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -36,7 +36,7 @@ The full `sgit_ai` package is importable. The last expression's value is printed
 
 from sgit_ai.crypto.Vault__Crypto import Vault__Crypto vc = Vault__Crypto() vc.derive_keys('my-passphrase', 'DEMO-VAULT')
 
-How this works: [the same site](../vault/static-hosting.md) serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.
+How this works: [the same site](../docs/vault/static-hosting.md) serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.
 
 
 ---

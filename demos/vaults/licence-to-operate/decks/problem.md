@@ -2,7 +2,7 @@
 
 > Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Problem.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Problem.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 

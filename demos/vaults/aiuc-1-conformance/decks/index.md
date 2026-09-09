@@ -2,7 +2,7 @@
 
 > 4 decks published inside vault 2wzct4k7, each on its own page, with the slides read live out of the vault using its published read key.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,7 +19,7 @@
 | **[How RiskMandate.ai's insurance model works with AIUC-1](insurance.md)** | L3 | Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes |
 | **[Zoom in: D003 — one control, to the byte, measured, and run](d003.md)** | L4 | One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs |
 
-[← The AIUC-1 conformance layer vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+[← The AIUC-1 conformance layer vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../docs/vault/reading-a-vault-file.md)
 
 
 ---

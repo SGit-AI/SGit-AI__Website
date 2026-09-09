@@ -2,7 +2,7 @@
 
 > Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
 
-*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -37,7 +37,7 @@ The incident write-up is the template for the uncomfortable kind. It names the a
 ## Related
 
 - [Use cases](../use-cases/index.md) — the patterns, each with an explicit evidence status
-- [Cross-team briefs](../briefs/index.md) — what this site's agent hands to other teams, and what they hand back
+- [Cross-team briefs](../docs/briefs/index.md) — what this site's agent hands to other teams, and what they hand back
 - [Release history](../admin/versions.md) — every change to this site, with the vault commit that carried it
 
 [← Home](../index.md)[Use cases →](../use-cases/index.md)

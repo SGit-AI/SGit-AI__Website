@@ -2,7 +2,7 @@
 
 > The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
 
-*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vault-app-embed.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,7 +22,7 @@ Loads ~10 encrypted objects from `dev.send.sgraph.ai` and decrypts them here. No
 
 ## How this vault was made, end to end
 
-**1 — Write the app.** A vault app is one self-contained `index.html` — CSS and JS inlined, content in `content.json`, generative SVG instead of image files — plus an `app.json` that auto-launches it. It follows the [authoring contract](../vault/vault-apps.md): no `<link href>`, `<script src>` or `<img src>` against vault paths, content read via `sg.vfs.readText` with an inlined fallback, and `sg-app-ready` posted when rendered.
+**1 — Write the app.** A vault app is one self-contained `index.html` — CSS and JS inlined, content in `content.json`, generative SVG instead of image files — plus an `app.json` that auto-launches it. It follows the [authoring contract](../docs/vault/vault-apps.md): no `<link href>`, `<script src>` or `<img src>` against vault paths, content read via `sg.vfs.readText` with an inlined fallback, and `sg-app-ready` posted when rendered.
 
 ```
 demo-vault-gallery/
@@ -89,7 +89,7 @@ Below is exactly that — both surfaces, opened with the same published key prin
 
 Loads `dev.vault.sgraph.ai` in an iframe and completes the embed handshake. Nothing on sgit.ai ever sees more than the published read key it already prints.
 
-**What is still not possible — precisely.** The two buttons above select a *surface* (App Mode or the vault browser). They cannot select a *view* inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only `{key, mode, deepLink}` where `deepLink` is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and [the briefing](../briefs/briefing-sgvault-ui-embed.md) now states exactly that ask: an optional `view` field on `vault-open`, applied after mount. Everything else on this page works today.
+**What is still not possible — precisely.** The two buttons above select a *surface* (App Mode or the vault browser). They cannot select a *view* inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only `{key, mode, deepLink}` where `deepLink` is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and [the briefing](../docs/briefs/briefing-sgvault-ui-embed.md) now states exactly that ask: an optional `view` field on `vault-open`, applied after mount. Everything else on this page works today.
 
 ## Honest scope
 
@@ -101,12 +101,12 @@ Two hosts now run on this page, and keeping both is deliberate. The **minimal** 
 
 ## Related
 
-- [Building vault apps](../vault/vault-apps.md) — the authoring contract this app follows
+- [Building vault apps](../docs/vault/vault-apps.md) — the authoring contract this app follows
 - [A live site whose host cannot read it](../case-studies/live-vault-docs.md) — the same read path rendering markdown docs
-- [Sub-vaults](../vault/sub-vaults.md) — vault-in-vault, the pattern this embed mirrors
+- [Sub-vaults](../docs/vault/sub-vaults.md) — vault-in-vault, the pattern this embed mirrors
 - [The plan](../admin/plans/why-expansion-plan.md) — two more demo vaults (a report, a two-agent inbox) follow this template
 
-[← Demos](index.md)[Building vault apps →](../vault/vault-apps.md)
+[← Demos](index.md)[Building vault apps →](../docs/vault/vault-apps.md)
 
 
 ---

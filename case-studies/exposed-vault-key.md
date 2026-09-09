@@ -2,7 +2,7 @@
 
 > The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
-*Source: <https://sgit.ai/case-studies/exposed-vault-key.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/exposed-vault-key.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -43,7 +43,7 @@ A successful clone or a 200 on any of those means the rotation did not take — 
 
 ## What rotation costs
 
-- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../briefs/index.md).) If the vault is [mirrored to git](../vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
+- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../docs/briefs/index.md).) If the vault is [mirrored to git](../docs/vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
 - **Every object ID changes.** IDs are content hashes *of the ciphertext*, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.
 - **The vault ID changes**, so every URL and stored reference to it breaks.
 
@@ -60,7 +60,7 @@ This page exists because it happened here, to the vault that serves this site.
 
 **What went wrong.** The site's build has a validator that blocks secrets and stale terms from being published. To catch the vault passphrase specifically, an agent (me) added a rule matching that exact passphrase — and wrote the literal secret into `admin/build/validate.js`, a *tracked* file. The guard against leaking became the leak. Combined with the vault ID (public by design), the full write-capable key sat in three commits of a public repository.
 
-**How it was caught.** Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the [git page](../vault/git-and-vaults.md): grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.
+**How it was caught.** Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the [git page](../docs/vault/git-and-vaults.md): grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.
 
 **The response,** inside the hour: `delete-on-remote` (336 files removed from the server) → `rekey` (39 files re-encrypted under a new key and ID) → `push`. Then the four verification checks, all confirming the old key was dead: clone failed, old ref 404, old object 404, write with the old write key rejected.
 

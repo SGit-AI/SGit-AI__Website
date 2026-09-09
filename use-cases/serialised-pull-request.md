@@ -2,7 +2,7 @@
 
 > An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.
 
-*Source: <https://sgit.ai/use-cases/serialised-pull-request.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/serialised-pull-request.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -53,7 +53,7 @@ What is shipped versus what is pattern, checked against the CLI rather than asse
 | Credential-free clone of a public vault (read key only) | **Shipped** — `sgit clone --read-key`; this site publishes working read keys on its [demo pages](../demos/index.md) |
 | Private-branch commits that cannot touch the shared branch | **Shipped** — the [two-branch model](../docs/two-branch-model.md) |
 | Emit the diff as a machine-readable artefact | **Shipped** — `sgit history diff --json` |
-| First-class import: `sgit diff apply` | **Not shipped.** The workflow was performed, but the import half was review-and-merge by hand. A [brief to the CLI team](../briefs/brief-serialised-diff-and-ignore.md) asks for `sgit diff export` / `sgit diff apply` as first-class commands |
+| First-class import: `sgit diff apply` | **Not shipped.** The workflow was performed, but the import half was review-and-merge by hand. A [brief to the CLI team](../docs/briefs/brief-serialised-diff-and-ignore.md) asks for `sgit diff export` / `sgit diff apply` as first-class commands |
 | A published specification of the diff format | **Not published.** If this is the headline workflow, its artefact needs a spec a third party can implement — same brief |
 
 ## Evidence status

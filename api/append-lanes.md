@@ -2,7 +2,7 @@
 
 > The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
 
-*Source: <https://sgit.ai/api/append-lanes.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/append-lanes.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Append lanes
 
-A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind [vault-to-vault messaging](../docs/vault-messaging.md) and behind [`sg.append`](../vault/sg-bridge.md) in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.
+A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind [vault-to-vault messaging](../docs/vault-messaging.md) and behind [`sg.append`](../docs/vault/sg-bridge.md) in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.
 
 **Naming.** This API was called **inbox** before v0.32.7. Every `/api/vault/inbox/*` URL is gone, and `purge` takes `folder:"pending"` or `"processed"` — the old `"inbox"` value returns **400**. If you are reading older material, translate.
 
@@ -62,7 +62,7 @@ This is the constraint to understand before designing anything that spans two va
 
 All six are plain booleans, **default-deny**, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app *"would give every visitor read access to the whole lane."*
 
-**Two things that are *not* gates on `append`, despite appearances.** There is **no read-only check** anywhere in the append handler — `sg.app.writable` is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships `connect-src blob: data:`, so a *direct* `fetch` to these endpoints is blocked unless the app declares `permissions.network: true`, which reopens all egress and is the worse choice. Use the bridge. See [the build brief](../briefs/vault-telemetry-append-lanes.md), which had both of these wrong until the review corrected it.
+**Two things that are *not* gates on `append`, despite appearances.** There is **no read-only check** anywhere in the append handler — `sg.app.writable` is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships `connect-src blob: data:`, so a *direct* `fetch` to these endpoints is blocked unless the app declares `permissions.network: true`, which reopens all egress and is the worse choice. Use the bridge. See [the build brief](../docs/briefs/vault-telemetry-append-lanes.md), which had both of these wrong until the review corrected it.
 
 ## The `inbox` field is the lane id — and today it is the token
 
@@ -91,7 +91,7 @@ The `append_token` pattern is `^[0-9a-f]{16,128}$` — hex only. A prefixed toke
 ## See also
 
 - [Vault messaging](../docs/vault-messaging.md) — this API composed with PKI into a worked example
-- [`sg.append`](../vault/sg-bridge.md) — the same six operations from a vault app
+- [`sg.append`](../docs/vault/sg-bridge.md) — the same six operations from a vault app
 - [Errors and limits](errors.md)
 
 

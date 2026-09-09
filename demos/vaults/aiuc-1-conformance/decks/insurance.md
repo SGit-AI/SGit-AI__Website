@@ -2,7 +2,7 @@
 
 > Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/insurance.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/insurance.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Insurance-Model.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Insurance-Model.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 

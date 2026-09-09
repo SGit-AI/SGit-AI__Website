@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.71</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.72</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -35,12 +35,13 @@
     <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
     <div class="sub">
       <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
       <a class="sl" href="../try/index.html">Try it in the browser</a>
       <a class="sl" href="../api/index.html">HTTP API</a>
-      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
       <a class="sl" href="../skills/index.html">Skills</a>
-      <a class="sl" href="../briefs/index.html">Briefs</a>
+      <a class="sl" href="../docs/briefs/index.html">Briefs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -112,8 +113,8 @@
   <article class="upd" id="the-build-brief-for-decks-on-a-site">
     <h3><a href="#the-build-brief-for-decks-on-a-site">The build brief for putting a vault's decks on a website</a> <a class="upd-ver" href="../admin/versions.html">v0.2.69</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">vaults</span><span class="chip">decks</span><span class="chip">agents</span></p>
-<p>Two releases documented this from the inside: <a href="../vault/reading-a-vault-file.html">reading one file out of a vault</a> explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to <em>their</em> vault. <a href="../briefs/vault-decks-on-a-site.html"><b>That brief now exists.</b></a></p>
-<p>It follows the shape of <a href="../briefs/vault-telemetry-append-lanes.html">the telemetry brief</a> — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.</p>
+<p>Two releases documented this from the inside: <a href="../docs/vault/reading-a-vault-file.html">reading one file out of a vault</a> explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to <em>their</em> vault. <a href="../docs/briefs/vault-decks-on-a-site.html"><b>That brief now exists.</b></a></p>
+<p>It follows the shape of <a href="../docs/briefs/vault-telemetry-append-lanes.html">the telemetry brief</a> — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.</p>
 <ul>
 <li><b>The contract a vault must publish.</b> Where the manifest may live, deck sources pushing <code>t</code> / <code>notes</code> / <code>html</code> onto <code>S</code>, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs. Plus the fallback for a vault that published only its built decks.</li>
 <li><b>The rule that governs the design</b>, stated as a test anyone can apply: <em>a vault must be able to change what is shown and never what the page does.</em> If a vault can add a button, change where a link goes, or read anything belonging to the host page, the split is wrong.</li>
@@ -138,16 +139,32 @@
 <p><b>A number that cannot rot, demonstrated by accident.</b> Video 4 tells the viewer to look for <em>"Vault #23"</em>. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.</p>
 <p>Embeds go through <code>youtube-nocookie.com</code> with <code>loading="lazy"</code>, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.</p>
   </article>
+  <article class="upd" id="one-front-door-for-vault-guidance">
+    <h3><a href="#one-front-door-for-vault-guidance">One front door for vault guidance — and every document moved under /docs/</a> <a class="upd-ver" href="../admin/versions.html">v0.2.72</a></h3>
+    <p class="chips"><span class="chip">docs</span><span class="chip">guidance</span><span class="chip">vaults</span><span class="chip">method</span></p>
+<p>The guidance here had accumulated across three top-level folders — <code>/briefs</code>, <code>/vault</code>, and a <code>/guidance</code> page written this morning. That is three places to look for one kind of thing. <b>Everything readable now lives under <code>/docs/</code></b>: <a href="../docs/briefs/index.html"><code>/docs/briefs</code></a>, <a href="../docs/vault/index.html"><code>/docs/vault</code></a>, <a href="../docs/guidance/index.html"><code>/docs/guidance</code></a>, beside the CLI docs that were already there.</p>
+<p>Fourteen pages moved. The links were rewritten by resolving each one through the move map rather than by prefixing <code>../</code> — a blanket prefix would have broken every link that stayed <em>inside</em> the moved subtree, which was most of them. No redirects, by instruction: the estate is in flux and has few external users. One thing nearly went missing: two hand-written <code>.md</code> briefs live only in the built output and not in the content tree, so the cleanup deleted them; they were restored from git into the new location before anything was pushed.</p>
+<h2>The front door</h2>
+<p><a href="../docs/guidance/index.html"><b>Working on a vault: start here</b></a> is the page that did not exist. The first thing on it is the guidance that gets repeated to agents more than any other:</p>
+<div class="note"><b>Version everything, show the version, link what changed.</b></div>
+<p>The number belongs in the app chrome — small, always visible, not in a footer or an About box — and it must link to <em>that version's own details</em>, not to a generic changelog. A reader who clicks <code>v0.1.7</code> wants to know what v0.1.7 was. Versions live in the vault as <code>versions/index.json</code> plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. <a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> is named as the reference implementation, because it already does exactly this.</p>
+<p>Seven more practices follow, each stated with the failure that produced it — including the one about negative controls, which exists because <code>sgit clone</code> creates a directory whether or not the key is valid, and we once called a leak on a directory an all-zeros key produced identically.</p>
+<h2>The agent-shaped twin</h2>
+<p><a href="../docs/guidance/llms.txt"><code>/docs/guidance/llms.txt</code></a> is the same thing for an agent: five rules, a reading order, the briefs, and reference implementations to go and check rather than take our word for. It ends with edges out to <b>coding.sgit.ai</b>, <b>nfrs.sgit.ai</b> and <b>graphs.sgit.ai</b> — because a page about vaults should not also try to be the style guide, the resilience argument, or the grammar of semantic graphs. Each of those has a site with room to do it properly, and an agent that stops at this domain gives a worse answer than one that follows the edge.</p>
+<p>The page closes by saying why it is mostly links, which is graphs.sgit.ai's own thesis applied to the thing you are reading:</p>
+<div class="note">"A node is just a node. <b>Meaning lives in the edges.</b>"</div>
+<p>Three properties keep that working, and they are worth preserving in anything built here: every page is reachable and has a <code>.md</code> twin, with the build failing on an orphan; indexes are generated from the data they index, so <a href="../demos/vaults/llms.txt">the vault catalogue</a> cannot disagree with the table it comes from; and each site says one thing properly and links out rather than summarising the rest badly.</p>
+  </article>
   <article class="upd" id="markdown-and-file-viewers-what-not-to-build">
     <h3><a href="#markdown-and-file-viewers-what-not-to-build">The second build brief, and it mostly says don't build it</a> <a class="upd-ver" href="../admin/versions.html">v0.2.70</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">vaults</span><span class="chip">agents</span><span class="chip">method</span></p>
-<p>Two of the most common things an agent is asked to add to a vault are a <b>markdown viewer</b> and a <b>file/folder browser with raw views</b>. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. <a href="../briefs/markdown-and-file-viewers.html"><b>The brief now says so.</b></a></p>
-<p>It is a decision rather than a syntax reference — <a href="../vault/content-authoring.html">the syntax reference already existed</a>. A four-rung ladder, with the instruction to stop at the first rung that works:</p>
+<p>Two of the most common things an agent is asked to add to a vault are a <b>markdown viewer</b> and a <b>file/folder browser with raw views</b>. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. <a href="../docs/briefs/markdown-and-file-viewers.html"><b>The brief now says so.</b></a></p>
+<p>It is a decision rather than a syntax reference — <a href="../docs/vault/content-authoring.html">the syntax reference already existed</a>. A four-rung ladder, with the instruction to stop at the first rung that works:</p>
 <ol>
 <li><b>Publish <code>.md</code> files.</b> The browse view renders them and its file tree <em>is</em> the folder viewer.</li>
 <li><b>Add a <code>_page.json</code></b> if you need a designed page rather than a document — and use its <code>markdown</code> component to pull in the <code>.md</code> files you already wrote, so the prose exists once.</li>
 <li><b>Build an app</b> only when a view has to <em>compute</em> something the host cannot know.</li>
-<li><b>Build a site viewer</b> only when the content must live outside a vault host — <a href="../briefs/vault-decks-on-a-site.html">the decks brief</a> covers that case.</li>
+<li><b>Build a site viewer</b> only when the content must live outside a vault host — <a href="../docs/briefs/vault-decks-on-a-site.html">the decks brief</a> covers that case.</li>
 </ol>
 <p>It names the markdown rules that actually catch people, rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through <code>folder/README.md</code> because a bare folder link resolves by sort order, and nested and task lists are unsupported.</p>
 <p><b>The raw-view contract comes from a vault that already lives by it.</b> <a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> has a file explorer, and its own source states the principle better than a brief could:</p>
@@ -162,7 +179,7 @@
 <p><a href="../docs/surfaces.html"><b>Three surfaces</b></a> is the router. <code>_page.json</code> inside a vault, an HTML vault app inside a vault, and a page on a <code>*.sgit.ai</code> site outside every vault host — compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and the row people get wrong:</p>
 <p><b>Trust direction.</b> Inside a vault host, the host protects the reader: it sandboxes the app, gates permissions, keeps a sovereignty rail the app cannot suppress. On a site page there is no host — <em>you</em> are the host, and vault bytes are untrusted input arriving in your origin. The same content, the opposite posture.</p>
 <p>A second table does the same job the other way round: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you — which only one of the three surfaces does at all.</p>
-<p><b><a href="../briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a></b> is the brief that did not exist, for whoever is coding the estate's sites. It leads with the enabling fact, which is easy to miss: the vault API answers <b>plain CORS GETs with no auth header, from any origin</b>. The server can afford that because what it returns is ciphertext under a key it has never held — so a page on <code>graphs.sgit.ai</code> or <code>risks.sgit.ai</code> reads a published vault directly, with no proxy and no backend.</p>
+<p><b><a href="../docs/briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a></b> is the brief that did not exist, for whoever is coding the estate's sites. It leads with the enabling fact, which is easy to miss: the vault API answers <b>plain CORS GETs with no auth header, from any origin</b>. The server can afford that because what it returns is ciphertext under a key it has never held — so a page on <code>graphs.sgit.ai</code> or <code>risks.sgit.ai</code> reads a published vault directly, with no proxy and no backend.</p>
 <p>It then says <b>do not write the reader</b> and names the four house files to copy instead — <code>vault-embed.js</code> exports the reader so nothing has to reimplement the derivations, <code>vault-docs.js</code> is the instrumented version, <code>vault-deck.js</code> a worked viewer, <code>vault-ui-embed.js</code> frames the official UI. It states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails <em>silently</em> by rendering an older commit from perfectly valid ciphertext, and says what should not go on a site page at all: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault.</p>
 <p>Six guidance pages now carry a <b>surface label</b> above their title, so the distinction is visible where someone actually lands rather than only on the router. Unlabelled pages apply to all three.</p>
   </article>
@@ -179,7 +196,7 @@
 <p><b>Why the PDF is a download and not an embed — measured, not assumed.</b> The obvious move is to decrypt the PDF, wrap it in a blob and point a sandboxed iframe at it. Chrome refuses, in every sandbox combination tested: <em>"failed to load as a plugin, because the frame into which the plugin is loading is sandboxed."</em> The browser's PDF viewer is a plugin and plugins do not run in sandboxed frames. Dropping the sandbox would work and would hand vault bytes this origin, which is the one thing the design exists to prevent. So the bytes are decrypted in the page and handed to the browser's own download instead — a 2.1 MB deck arrives byte-identical — while the slides, the thing anyone actually wants to read on a web page, render live.</p>
 <p><b>A real bug, found by walking everything.</b> The first pattern for image names excluded underscores. Fifteen slides in the Licence to Operate decks therefore rendered with a silently missing screenshot: no error in the console, no gap in the layout, just an absence nobody would notice by clicking through a few slides. The browser test now walks all 113 slides across all nine decks and counts missing images; the count is zero.</p>
 <p>Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.</p>
-<p>New page: <a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a>, which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.</p>
+<p>New page: <a href="../docs/vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a>, which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.</p>
   </article>
   <article class="upd" id="a-page-per-deck-and-a-catalogue-agents-can-read">
     <h3><a href="#a-page-per-deck-and-a-catalogue-agents-can-read">A page per deck, a focus mode, and a vault catalogue an agent can read</a> <a class="upd-ver" href="../admin/versions.html">v0.2.68</a></h3>
@@ -189,7 +206,7 @@
 <p><b>Focus.</b> A button that drops the slide list so the stage takes the full width — for presenting, and for recording a screen capture where the chrome is just noise. The stage is re-fitted rather than merely revealed, so the slide actually gets bigger.</p>
 <p><b>A bug the new pages exposed within a minute of existing.</b> The mount element carries <code>data-deck</code> on a single-deck page, and the click router used an unscoped <code>closest('[data-deck]')</code> — so it matched the mount element for every click inside the viewer and returned early. Prev, next, notes, focus and the PDF button were all silently dead, on exactly the pages just built. Nothing threw; the buttons simply did nothing. Scoped to the tab strip, and caught because the browser test asserts on the <em>effect</em> of clicking rather than on the click landing.</p>
 <p><b>A catalogue an agent can read.</b> <a href="../demos/vaults/llms.txt"><code>/demos/vaults/llms.txt</code></a> is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from <code>vaults.json</code> — the same file <a href="../demos/vaults/index.html">the vaults table</a> is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.</p>
-<p>Three more sections got their own: <a href="../vault/llms.txt"><code>/vault/llms.txt</code></a>, <a href="../api/llms.txt"><code>/api/llms.txt</code></a> and <a href="../docs/llms.txt"><code>/docs/llms.txt</code></a>. An agent pointed at one part of the site now gets that part's index instead of the whole map.</p>
+<p>Three more sections got their own: <a href="../docs/vault/llms.txt"><code>/vault/llms.txt</code></a>, <a href="../api/llms.txt"><code>/api/llms.txt</code></a> and <a href="../docs/llms.txt"><code>/docs/llms.txt</code></a>. An agent pointed at one part of the site now gets that part's index instead of the whole map.</p>
   </article>
   <h2 class="upd-date">2026-09-07</h2>
   <article class="upd" id="the-team-for-the-agents-and-investors-in-the-open">
@@ -252,7 +269,7 @@
   <article class="upd" id="our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">
     <h3><a href="#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">Our build brief was wrong, and the team that owns the code said so precisely</a> <a class="upd-ver" href="../admin/versions.html">v0.2.58</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">api</span><span class="chip">correction</span><span class="chip">agents</span></p>
-<p>Two days ago v0.2.55 published a <a href="../briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. An agent <a href="../demos/vaults/agent-permission-games/index.html">built a vault from it</a> and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.</p>
+<p>Two days ago v0.2.55 published a <a href="../docs/briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. An agent <a href="../demos/vaults/agent-permission-games/index.html">built a vault from it</a> and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.</p>
 <p>**Both of the things the brief told a builder to <em>verify</em>, it had already answered wrongly.**</p>
 <ul>
 <li>We said <code>sg.append.write</code> fails closed in a read-only session. <b>It does not.</b> There is no read-only gate on append anywhere; <code>permissions.append.write: true</code> is the entire requirement, and <code>sg.app.writable</code> is irrelevant to it. The <code>EREADONLY</code> we cited belongs to <code>sg.vfs.write</code> — a different code path that happens to deny with the same string, which is exactly how the misdiagnosis propagated.</li>
@@ -300,7 +317,7 @@
   <article class="upd" id="the-brief-came-back-as-a-vault">
     <h3><a href="#the-brief-came-back-as-a-vault">The brief came back as a vault — and it is the first one here that phones home</a> <a class="upd-ver" href="../admin/versions.html">v0.2.56</a></h3>
     <p class="chips"><span class="chip">vaults</span><span class="chip">telemetry</span><span class="chip">agents</span><span class="chip">audit</span><span class="chip">briefs</span></p>
-<p>v0.2.55 published a <a href="../briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so <a href="../demos/vaults/agent-permission-games/index.html">two games about agent permissions</a> now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.</p>
+<p>v0.2.55 published a <a href="../docs/briefs/vault-telemetry-append-lanes.html">build brief</a> on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so <a href="../demos/vaults/agent-permission-games/index.html">two games about agent permissions</a> now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.</p>
 <p>It is the first vault published here that <b>sends anything anywhere</b>, and the first end-to-end test of whether a brief written for an agent produces what it describes.</p>
 <ul>
 <li><b>It took the fallback path</b>, which is the part the brief was least sure about. Not <code>sg.append</code> through the bridge — a direct <code>fetch</code> to the account-less write endpoint, <code>credentials: 'omit'</code>, <code>keepalive</code> on the final flush, payload in the <code>sgit pki</code> v2 envelope. <code>app.json</code> declares no <code>permissions</code> key at all, which is consistent: it does not need the host for this.</li>
@@ -313,12 +330,12 @@
   <article class="upd" id="briefs-gets-a-second-kind">
     <h3><a href="#briefs-gets-a-second-kind">Briefs gets a second kind — references written to be executed, not asks waiting on a reply</a> <a class="upd-ver" href="../admin/versions.html">v0.2.55</a></h3>
     <p class="chips"><span class="chip">briefs</span><span class="chip">agents</span><span class="chip">docs</span><span class="chip">multi-agent</span></p>
-<p><a href="../briefs/index.html">Briefs</a> has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.</p>
+<p><a href="../docs/briefs/index.html">Briefs</a> has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.</p>
 <ul>
 <li><b>Build briefs</b> — a durable reference an agent executes: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.</li>
 <li><b>Cross-team asks</b> — the seven that were already there, untouched, addressed to the sgit CLI, SG/Send API and SG/Vault UI teams.</li>
 </ul>
-<p>The first build brief is <a href="../briefs/vault-telemetry-append-lanes.html"><b>telemetry from a published vault</b></a>: how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an <b>append lane</b>, and it works for one reason worth stating plainly — the sender's <code>append_token</code> grants <b>write only</b>. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly <code>{"ok": true}</code>.</p>
+<p>The first build brief is <a href="../docs/briefs/vault-telemetry-append-lanes.html"><b>telemetry from a published vault</b></a>: how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an <b>append lane</b>, and it works for one reason worth stating plainly — the sender's <code>append_token</code> grants <b>write only</b>. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly <code>{"ok": true}</code>.</p>
 <p>It is the only credential shape that survives being published inside a public vault. What it does not buy is authenticity: events can be forged, and the real failure mode is <b>1000 pending files per token → 507</b>, not a confidentiality breach.</p>
 <p>The new group starts with two entries rather than one, because <a href="../demos/vaults/publishing.html">publishing a vault</a> was already a build brief — <em>"written to be followed by another site's agent"</em> — filed in the vaults section where nobody looking for a method would find it. That is the same misfiling that created <code>case-studies/</code> in v0.1.14.</p>
 <p><b>Briefs also moves in the nav</b>, out of Evidence and into Docs beside Skills. The section's centre of gravity is now agent-facing documentation rather than a record of conversations, and Docs is where an agent looks. Evidence keeps comparisons, case studies and use cases.</p>
@@ -554,7 +571,7 @@
 <li><b>"Seal to the recipient's X25519 key."</b> Not what ships. Running <code>sgit pki keygen</code> prints <b>RSA-OAEP 4096-bit</b> and <b>ECDSA P-256</b>. Publishing the draft as written would have told integrators to build against the wrong primitive.</li>
 </ul>
 <p>Two more corrections came from running the CLI rather than reading about it: <code>sgit pki export</code> emits a <b>JSON bundle</b> of two PEM blocks, not the <code>.pem</code> file the draft redirected into — so the draft's <code>sha256sum public-key.pem</code> derivation of a lane address is not well defined — and <code>keygen</code> requires a passphrase, which no draft step mentioned.</p>
-<p>The whole exchange, including what we got wrong, is on <a href="../briefs/index.html">the briefs page</a>.</p>
+<p>The whole exchange, including what we got wrong, is on <a href="../docs/briefs/index.html">the briefs page</a>.</p>
   </article>
   <article class="upd" id="the-api-reference-we-did-not-have">
     <h3><a href="#the-api-reference-we-did-not-have">The API reference we did not have</a> <a class="upd-ver" href="../admin/versions.html">v0.2.34</a></h3>
@@ -612,11 +629,13 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.71</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.72</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
     <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
     <a href="../docs/installation.html">Installation</a>
     <a href="../docs/quickstart.html">Quickstart</a>
     <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
@@ -625,14 +644,14 @@
   </div>
   <div>
     <h4>SG/Vault platform</h4>
-    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
-    <a href="../vault/vault-apps.html">Building vault apps</a>
-    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
-    <a href="../vault/content-authoring.html">Content authoring</a>
-    <a href="../vault/sub-vaults.html">Sub-vaults</a>
-    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
-    <a href="../vault/reading-a-vault-file.html">Reading a vault file</a>
-    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
   <div>
@@ -643,7 +662,7 @@
     <a href="../use-cases/index.html">Use cases</a>
     <a href="../case-studies/index.html">Case studies</a>
     <a href="../skills/index.html">Skills for AI agents</a>
-    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>
@@ -652,7 +671,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.71';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -2,7 +2,7 @@
 
 > Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content.
 
-*Source: <https://sgit.ai/skills/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/skills/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -39,7 +39,7 @@ The skills above are the canonical current versions, verified against sgit-ai v0
 
 **Also for agents:** this site ships an [llms.txt](../llms.txt) at the vault root — the standard machine-readable index. Inside the vault it is encrypted like everything else (agents holding the key read it via `sgit cat llms.txt`); on a static deployment it becomes a plain public llms.txt. Same file, two trust contexts.
 
-[← Working with AI agents](../docs/agents.md)[The SG/Vault platform →](../vault/index.md)
+[← Working with AI agents](../docs/agents.md)[The SG/Vault platform →](../docs/vault/index.md)
 
 
 ---

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.71</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.72</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -35,12 +35,13 @@
     <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
     <div class="sub">
       <a class="sl here" href="../docs/index.html">Documentation</a>
+      <a class="sl here" href="../docs/guidance/index.html">Vault guidance</a>
       <a class="sl" href="../try/index.html">Try it in the browser</a>
       <a class="sl" href="../api/index.html">HTTP API</a>
-      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
       <a class="sl" href="../skills/index.html">Skills</a>
-      <a class="sl" href="../briefs/index.html">Briefs</a>
+      <a class="sl" href="../docs/briefs/index.html">Briefs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -96,7 +97,7 @@
   <h1>Sending messages between vaults</h1>
   <p class="lead">Two vaults can exchange encrypted messages without sharing a vault key, without the sender having an account, and without the server ever being able to read anything. The mechanism is an <b>append lane</b>: a write-only channel attached to a vault, addressed by the hash of a public key.</p>
 
-  <div class="note"><b>Why this page exists.</b> Both halves of this capability were already documented — the transport as <a href="../vault/sg-bridge.html"><code>sg.append</code></a>, the crypto as <a href="pki.html"><code>sgit pki</code></a> — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.</div>
+  <div class="note"><b>Why this page exists.</b> Both halves of this capability were already documented — the transport as <a href="vault/sg-bridge.html"><code>sg.append</code></a>, the crypto as <a href="pki.html"><code>sgit pki</code></a> — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.</div>
 
   <h2 id="shape">The shape of it</h2>
   <pre class="shell">   SENDER                        SERVER                      RECIPIENT
@@ -185,7 +186,7 @@ $ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: 
   <p><code>mark-processed</code> is idempotent — a file already moved comes back in <code>missing</code> rather than as an error, so a retried batch is safe.</p>
 
   <h2 id="bridge">From inside a vault app</h2>
-  <p>The same transport through the browser bridge, with no HTTP of your own (see <a href="../vault/sg-bridge.html"><code>sg.append</code></a>):</p>
+  <p>The same transport through the browser bridge, with no HTTP of your own (see <a href="vault/sg-bridge.html"><code>sg.append</code></a>):</p>
   <pre class="shell">await sg.append.configure({ appendAnchors: [anchorHash], enumKeyHash });
 await sg.append.write({ appendToken, payload });            // blind
 const { entries } = await sg.append.list({ includeContent: false });
@@ -208,7 +209,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
   <ul>
     <li><a href="../api/append-lanes.html">API — append lanes</a>: the six endpoints, gates, limits and status codes</li>
     <li><a href="pki.html">PKI</a>: keypair lifecycle, verified against the shipped CLI</li>
-    <li><a href="../vault/sg-bridge.html"><code>sg.append</code></a>: the same transport from a vault app</li>
+    <li><a href="vault/sg-bridge.html"><code>sg.append</code></a>: the same transport from a vault app</li>
     <li><a href="../security/index.html#pki">Security model</a>: where the keypair sits relative to the symmetric vault key</li>
   </ul>
 </main>
@@ -218,11 +219,13 @@ await sg.append.purge({ folder: 'processed' });</pre>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.71</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-messaging.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.72</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-messaging.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
     <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
     <a href="../docs/installation.html">Installation</a>
     <a href="../docs/quickstart.html">Quickstart</a>
     <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
@@ -231,14 +234,14 @@ await sg.append.purge({ folder: 'processed' });</pre>
   </div>
   <div>
     <h4>SG/Vault platform</h4>
-    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
-    <a href="../vault/vault-apps.html">Building vault apps</a>
-    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
-    <a href="../vault/content-authoring.html">Content authoring</a>
-    <a href="../vault/sub-vaults.html">Sub-vaults</a>
-    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
-    <a href="../vault/reading-a-vault-file.html">Reading a vault file</a>
-    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
   <div>
@@ -249,7 +252,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
     <a href="../use-cases/index.html">Use cases</a>
     <a href="../case-studies/index.html">Case studies</a>
     <a href="../skills/index.html">Skills for AI agents</a>
-    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>
@@ -258,7 +261,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.71';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

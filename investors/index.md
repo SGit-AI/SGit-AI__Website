@@ -2,7 +2,7 @@
 
 > The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented.
 
-*Source: <https://sgit.ai/investors/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/investors/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,7 +26,7 @@ Everything the founder's companies publish for investors, they publish in the op
 |---|---|---|---|
 | **sgit** | The CLI — `pip install sgit-ai`. Pure Python, two runtime dependencies. | Anyone | Apache-2.0 |
 | **SG/Vault** | The web app: browse, edit and run vault apps in the browser. An independent implementation of the same wire format. | sgraph.ai, or self-hosted | Apache-2.0 |
-| **SG/Send** | The zero-knowledge storage API both clients speak to. | sgraph.ai (hosted), or self-hosted — [the guidance is published](../vault/static-hosting.md) | Apache-2.0 |
+| **SG/Send** | The zero-knowledge storage API both clients speak to. | sgraph.ai (hosted), or self-hosted — [the guidance is published](../docs/vault/static-hosting.md) | Apache-2.0 |
 
 The proof is not this page. It is the [published vaults](../demos/vaults/index.md): real artefacts — a penetration test report with a retest script per finding, a compliance standard rebuilt as a citable graph, a Black Hat keynote with its cited papers, a game that reports anonymous telemetry through a write-only channel — each opened by one string, each audited before its key went public. Open one before reading further.
 
@@ -41,7 +41,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-99**site releases since 14 August**
+100**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -50,7 +50,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-43**articles and release notes**
+44**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**

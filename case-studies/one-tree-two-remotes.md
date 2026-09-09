@@ -2,7 +2,7 @@
 
 > How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
 
-*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,7 +42,7 @@ The entire pattern rests on one file: `.gitignore`. Everything encrypted **is** 
 *.pem
 ```
 
-That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../vault/git-and-vaults.md) page covers which side of that line a given project is on.
+That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../docs/vault/git-and-vaults.md) page covers which side of that line a given project is on.
 
 Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
 
@@ -93,12 +93,12 @@ The ordering inside the script is the rule above, made unforgettable: sgit pushe
 
 ## Related
 
-- [Git repos inside vaults](../vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
+- [Git repos inside vaults](../docs/vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
 - [The day we leaked our own vault key](exposed-vault-key.md) — why the tripwire exists
 - [A live site whose host cannot read it](live-vault-docs.md) — what the sgit push feeds
 - [Admin & engineering](../admin/index.md) — the build system this script belongs to
 
-[← Case studies](index.md)[Git repos inside vaults →](../vault/git-and-vaults.md)
+[← Case studies](index.md)[Git repos inside vaults →](../docs/vault/git-and-vaults.md)
 
 
 ---

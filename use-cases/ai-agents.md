@@ -2,7 +2,7 @@
 
 > Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website).
 
-*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/ai-agents.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -68,7 +68,7 @@ PROVEN
 **This website is the evidence.** It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:
 
 - The [Deploy section](../deploy/index.md) is maintained by a *different* team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.
-- The [cross-team briefs](../briefs/index.md) and the [key-leak incident](../case-studies/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
+- The [cross-team briefs](../docs/briefs/index.md) and the [key-leak incident](../case-studies/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
 
 Honest limit: n is small, and the agents are supervised by the people who wrote the tool.
 

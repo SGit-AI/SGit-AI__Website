@@ -2,7 +2,7 @@
 
 > Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered.
 
-*Source: <https://sgit.ai/team/roles/journalist.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/journalist.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

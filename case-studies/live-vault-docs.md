@@ -2,7 +2,7 @@
 
 > A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
 
-*Source: <https://sgit.ai/case-studies/live-vault-docs.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/live-vault-docs.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -91,7 +91,7 @@ The read key is deliberately public — it is *read-only by construction*, deriv
 - **The server can't help.** No server-side search, no previews, no summaries — everything is opaque to it. That is the point, and it is also a limitation.
 - **Diagrams are hand-drawn SVG, not a diagramming library.** This site is also served *from inside a vault*, where external resources are blocked by the app authoring contract — so importing a renderer from a CDN would break the very demonstration this page describes. The constraint chose the implementation.
 
-[← The deployment docs](../deploy/index.md)[Git and vaults →](../vault/git-and-vaults.md)
+[← The deployment docs](../deploy/index.md)[Git and vaults →](../docs/vault/git-and-vaults.md)
 
 
 ---

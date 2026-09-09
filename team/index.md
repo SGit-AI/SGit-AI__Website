@@ -2,7 +2,7 @@
 
 > sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
 
-*Source: <https://sgit.ai/team/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
