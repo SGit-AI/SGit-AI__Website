@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.65</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.66</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -96,6 +96,19 @@
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
   <h2 class="upd-date">2026-09-09</h2>
+  <article class="upd" id="the-shorts-page-rewritten-for-a-cold-arrival">
+    <h3><a href="#the-shorts-page-rewritten-for-a-cold-arrival">The shorts page rewritten for someone who arrives with no context</a> <a class="upd-ver" href="../admin/versions.html">v0.2.66</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">video</span><span class="chip">riskmandate</span><span class="chip">method</span></p>
+<p>A page of videos is a landing page whether or not it was designed as one. Traffic reaches <a href="../demos/vaults/licence-to-operate/videos/index.html">the seven shorts</a> from a feed, lands on it directly, and has never seen the vault, this site, or the argument. What sat above the seven players yesterday was an apology about missing transcripts and a note explaining why a row number in the vaults table could not go stale — two pieces of internal housekeeping, both written for a reader who already knew everything the page had to sell.</p>
+<p>Both are gone from the first screen. In their place, in the order a cold visitor needs them:</p>
+<ul>
+<li><b>Four words, and the gap between two of them.</b> Grant, mandate, delta, licence to operate — defined in a table with the counts from the demo beside each: <b>12</b> capabilities in the grant, <b>4</b> in the mandate, <b>8</b> in the delta, and a licence priced per turn. The whole model is now legible before a single video plays.</li>
+<li><b>Open the thing the videos are showing.</b> <a href="../demos/vaults/licence-to-operate/index.html">The Licence to Operate vault</a>, with its read key printed as the complete credential and both routes offered — its page here, or straight into the vault UI.</li>
+<li><b>Where this goes commercially.</b> <a href="https://riskmandate.ai/">RiskMandate.ai</a> named on the page: the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision — <em>accept, fund, or fix</em>. The vault is the demonstration; RiskMandate is the product it demonstrates; <a href="../demos/vaults/risk-graph-explorer/index.html">the Risk Graph Explorer</a> is the same engine already published as a vault.</li>
+</ul>
+<p><b>The transcript gap is not hidden, it is right-sized.</b> It is still stated, in one sentence in the footer, and <a href="../team/board.html">board card T12</a> is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.</p>
+<p>Nothing changed about the seven videos, their order, or the three movements they fall into.</p>
+  </article>
   <article class="upd" id="seven-shorts-on-the-licence-to-operate">
     <h3><a href="#seven-shorts-on-the-licence-to-operate">Seven shorts on the Licence to Operate vault — indexed, and put in the right order</a> <a class="upd-ver" href="../admin/versions.html">v0.2.65</a></h3>
     <p class="chips"><span class="chip">vaults</span><span class="chip">video</span><span class="chip">agents</span><span class="chip">risk</span></p>
@@ -531,7 +544,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.65</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.66</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -570,7 +583,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.65';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.66';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

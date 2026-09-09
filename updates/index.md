@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-09
+
+### [The shorts page rewritten for someone who arrives with no context](#the-shorts-page-rewritten-for-a-cold-arrival) [v0.2.66](../admin/versions.md)
+
+vaultsvideoriskmandatemethod
+
+A page of videos is a landing page whether or not it was designed as one. Traffic reaches [the seven shorts](../demos/vaults/licence-to-operate/videos/index.md) from a feed, lands on it directly, and has never seen the vault, this site, or the argument. What sat above the seven players yesterday was an apology about missing transcripts and a note explaining why a row number in the vaults table could not go stale — two pieces of internal housekeeping, both written for a reader who already knew everything the page had to sell.
+
+Both are gone from the first screen. In their place, in the order a cold visitor needs them:
+
+- **Four words, and the gap between two of them.** Grant, mandate, delta, licence to operate — defined in a table with the counts from the demo beside each: **12** capabilities in the grant, **4** in the mandate, **8** in the delta, and a licence priced per turn. The whole model is now legible before a single video plays.
+- **Open the thing the videos are showing.** [The Licence to Operate vault](../demos/vaults/licence-to-operate/index.md), with its read key printed as the complete credential and both routes offered — its page here, or straight into the vault UI.
+- **Where this goes commercially.** [RiskMandate.ai](https://riskmandate.ai/) named on the page: the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision — *accept, fund, or fix*. The vault is the demonstration; RiskMandate is the product it demonstrates; [the Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) is the same engine already published as a vault.
+
+**The transcript gap is not hidden, it is right-sized.** It is still stated, in one sentence in the footer, and [board card T12](../team/board.md) is still open. A gap worth disclosing was not worth the first screen — the page was leading with what it lacks instead of what it shows.
+
+Nothing changed about the seven videos, their order, or the three movements they fall into.
 
 ### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
 

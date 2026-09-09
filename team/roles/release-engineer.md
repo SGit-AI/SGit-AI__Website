@@ -2,7 +2,7 @@
 
 > Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.
 
-*Source: <https://sgit.ai/team/roles/release-engineer.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/release-engineer.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

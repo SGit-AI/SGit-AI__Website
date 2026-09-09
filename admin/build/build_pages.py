@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.65'
+SITE_VERSION = 'v0.2.66'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.65', '2026-09-09', 'this release',
+    ('v0.2.66', '2026-09-09', 'this release',
+     "THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing "
+     "page whether or not it was designed as one: traffic comes from a feed, lands on it directly, "
+     "and has never seen the vault, the site or the argument. What sat above the seven players was "
+     "an apology about missing transcripts and a note explaining why a row number in the table "
+     "could not go stale — two pieces of internal housekeeping addressed to readers who already "
+     "knew everything the page had to sell. Both are gone from the top. In their place: FOUR "
+     "WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined "
+     "in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per "
+     "turn), so the whole model is legible before a single video plays. Then two calls to action, "
+     "in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the "
+     "whole credential and both routes offered (its page here, or straight into the vault UI); and "
+     "RISKMANDATE.AI, named as where this goes commercially — the business risk layer for "
+     "autonomous systems, every autonomous system mapped to its blast radius, given a business "
+     "owner and driven to a time-bound decision: accept, fund, or fix. The vault is the "
+     "demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is "
+     "the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS "
+     "RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A "
+     "gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, "
+     "their order, or the three movements."),
+    ('v0.2.65', '2026-09-09', 'obj-cas-imm-9407711950c8',
      "SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a "
      "vertical-video series walking through vault posrhzp3; none of the seven was on the site. They "
      "now have a page under the vault, collected in the order they are meant to be watched rather "

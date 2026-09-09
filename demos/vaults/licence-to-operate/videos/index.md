@@ -2,7 +2,7 @@
 
 > Seven vertical videos walking through the Licence to Operate vault, collected in the order they are meant to be watched: the mechanism (grant against mandate, blocking, who accepts which risk), how to find and open the vault, and the insurance model behind it — each with what it covers and which part of the vault it demonstrates.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/videos/index.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/videos/index.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,24 @@
 
 The author recorded seven vertical videos walking through [the Licence to Operate vault](../index.md) — the mechanism first, then how to open it yourself, then the model behind it. They are collected here in order, with what each one covers and which part of the vault it is demonstrating, so the series is readable as one argument rather than seven unconnected clips in a feed.
 
-**What this page is, and what it is not.** Under each video is the **author's own description of it**, lightly edited for consistency — not a transcript. **These videos have no caption track**, auto-generated or otherwise: all four of YouTube's `timedtext` endpoints return empty for every one of the seven. So the words actually spoken are *not* on this site, and that is a real gap by this site's own standard — the [walkthroughs page](../../risk-graph-explorer/videos/index.md) exists precisely because *"a recording is invisible to a search engine, to [llms-full.txt](../../../../llms-full.txt), and to any agent reading this site."* Transcribing these is [on the board](../../../../team/board.md); until it is done, this page is an index with the author's summaries, and says so.
+## Four words, and the gap between two of them
+
+If you arrived here from a feed with no context, this is the entire model in four terms. Every one of the seven videos is about one of them, or about what happens when one of them is wrong. The numbers in the last column are the ones in the demo you can open below.
+
+|  | What it means | In the vault |
+|---|---|---|
+| **Grant** | Everything the agent *can* do — the union of every tool, key and permission it actually holds | **12 capabilities** |
+| **Mandate** | What it *may* do — the specific job you asked for, and the only thing the policy insures | **4** — `crm:read`, `kb:search`, `llm:generate`, `mail:draft` |
+| **The delta** | The gap between them: inside the agent's reach, outside its authority. **Nothing covers these** | **8** — including `crm:export`, `mail:send`, `shell:exec` |
+| **Licence to operate** | A policy over the mandate, with a normal band, an overflow pool and named people accepting each risk in advance. Exceed it and the licence is withdrawn | Priced per turn in a live simulation |
+
+The claim the series makes is that the delta is where agent risk actually lives — not in the model, not in the prompt, but in the distance between the capability you handed over and the job you asked for. Nobody asked for `shell:exec`; nothing insures it; the agent can still reach it. Write the two sets down side by side and the risk stops being a discussion and becomes a number.
+
+**Open the thing the videos are showing.** It runs in a browser, read-only, with no account and nothing to install — the read key below is the whole credential.
+ Read key: `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
+[**The Licence to Operate vault on this site →**](../index.md) · [open it directly in the vault UI ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)
+
+**Where this goes commercially: [RiskMandate.ai ↗](https://riskmandate.ai/)** — the business risk layer for autonomous systems: every autonomous system mapped to its blast radius, given a business owner, and driven to a time-bound decision — **accept, fund, or fix**. What you are about to watch is that model made concrete for a single agent. The vault is the demonstration; RiskMandate is the product it is a demonstration *of*, and [the Risk Graph Explorer](../../risk-graph-explorer/index.md) is the same engine already published as a vault.
 
 ## The order they are meant to be watched in
 
@@ -23,8 +40,6 @@ The series has three movements, and they are not in the order a viewer arriving 
 | **The mechanism** | 1 · 2 · 3 | Grant against mandate, what a block looks like when an agent exceeds its mandate, and who in the organisation accepts which risk |
 | **The artefact** | 4 | How to find and open the vault on this site — the shortest one, and the one to send someone who wants to poke at it themselves |
 | **The model** | 5 · 6 · 7 | Why the grant/mandate gap is where risk lives, the insurance framing that governs it, and the policy, claim and premium mechanics underneath |
-
-A note on the numbering, since it is the kind of thing that rots: video 4 sends the viewer to **“Vault #23”** on the published vaults table. Checked against the table today — Licence to Operate is **still #23**, and it always will be: that number is a permanent publication ordinal, assigned in order of first publication and never reused, so a video that names it cannot go stale. [That was the point of making it an identity](../../../../articles/proof-moved-up.md) rather than a row position.
 
 Short 1 · the mechanism
 
@@ -131,7 +146,7 @@ A deep dive into the insurance model powering the MVP: how policies (licences) a
 - **The insurance model, computed.** [The AIUC-1 conformance layer](../../aiuc-1-conformance/index.md) turns this framing into a query: conformance states become conditions and exclusions on a policy, and moving the date forward turns conditions into exclusions with nobody editing anything.
 - **The acceptance model it inherits.** [The Risk Graph Explorer](../../risk-graph-explorer/index.md), and [its three walkthroughs](../../risk-graph-explorer/videos/index.md) — which are transcribed, and are the standard this page is not yet meeting.
 
-All seven videos are on [the author's channel ↗](https://www.youtube.com/@diniscruz-ai). Embedded through `youtube-nocookie.com`, and lazily — opening this page sets no YouTube cookie until you press play on one. [← The vault](../index.md) · [All published vaults](../../index.md)
+All seven videos are on [the author's channel ↗](https://www.youtube.com/@diniscruz-ai). Embedded through `youtube-nocookie.com`, and lazily — opening this page sets no YouTube cookie until you press play on one. The text under each video is the author's own description, not a transcript: these seven carry no caption track, so the spoken words are not on this site yet and [transcribing them is on the board](../../../../team/board.md). [← The vault](../index.md) · [All published vaults](../../index.md)
 
 
 ---
