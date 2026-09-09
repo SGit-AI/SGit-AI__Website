@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.66'
+SITE_VERSION = 'v0.2.67'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.66', '2026-09-09', 'this release',
+    ('v0.2.67', '2026-09-09', 'this release',
+     "DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults "
+     "publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — "
+     "and until now the only way to see them was to open the vault's own app. They now play on "
+     "the vault pages themselves, fetched as ciphertext with the read key already printed at the "
+     "top of each page and decrypted in the reader's browser. THE SPLIT IS THE POINT: from the "
+     "vault come the manifest, the slide sources, the speaker notes, the screenshots and the "
+     "printed PDF; from the site come every control you can click — deck tabs, slide list, prev "
+     "and next, notes, the PDF button, the deep links — so a vault decides what is SHOWN and "
+     "never what the page DOES. Vault content reaches the page through two opaque-origin frames: "
+     "a deck builds its slides by running JavaScript, so it runs in a sandboxed frame with "
+     "default-src none and posts back a plain array, and the slide markup then renders in a "
+     "second frame with scripting switched off entirely. WHY THE PDF IS A DOWNLOAD, MEASURED "
+     "RATHER THAN ASSUMED: Chrome refuses to render a PDF in a sandboxed frame at all — 'failed "
+     "to load as a plugin, because the frame into which the plugin is loading is sandboxed' — "
+     "tested across every sandbox combination, so an inline PDF would mean handing vault bytes "
+     "this origin. The bytes are decrypted in the page and handed to the browser's own download "
+     "instead; a 2.1 MB PDF arrives byte-identical. Two published deck shapes are handled, "
+     "because the two vaults differ: one shipped its sources, the other only its built decks. "
+     "A REAL BUG FOUND BY WALKING EVERYTHING: the first image-name pattern excluded underscores, "
+     "so fifteen slides rendered with a silently missing screenshot and no error anywhere — all "
+     "113 slides across the nine decks are now walked in the browser test, and the count of "
+     "missing images is zero. New page: READING ONE FILE OUT OF A VAULT, the primitive under "
+     "every live embed here, written down on its own with the sandbox rules for what comes back.'"
+     ),
+    ('v0.2.66', '2026-09-09', 'obj-cas-imm-d2f92005581d',
      "THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing "
      "page whether or not it was designed as one: traffic comes from a feed, lands on it directly, "
      "and has never seen the vault, the site or the argument. What sat above the seven players was "
@@ -1227,6 +1252,7 @@ def footer(p, md=''):
     <a href="{p}vault/content-authoring.html">Content authoring</a>
     <a href="{p}vault/sub-vaults.html">Sub-vaults</a>
     <a href="{p}vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="{p}vault/reading-a-vault-file.html">Reading a vault file</a>
     <a href="{p}vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>

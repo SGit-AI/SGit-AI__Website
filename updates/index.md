@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -47,6 +47,27 @@ Each carries the author's own description plus a line mapping it to what it demo
 **A number that cannot rot, demonstrated by accident.** Video 4 tells the viewer to look for *"Vault #23"*. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.
 
 Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
+
+### [Decks and PDFs read straight out of a vault — with the viewer owned by the site](#decks-read-straight-out-of-a-vault) [v0.2.67](../admin/versions.md)
+
+vaultsdeckssecuritymethod
+
+The vaults publish presentations. Four of them sit in [the AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md#decks) and five in [Licence to Operate](../demos/vaults/licence-to-operate/index.md#decks), and until this release the only way to see one was to open the vault's own app and drive it. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser.
+
+**The split is the whole point.** From the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF. From the site comes every control you can click — the deck tabs, the slide list, prev and next, the notes toggle, the PDF button, the deep links. A vault decides what is *shown*; it never decides what the page *does*.
+
+That matters because a read key is public, but the bytes behind it were written by whoever holds the write key — so vault content arriving in a page is untrusted input. It reaches these pages through two opaque-origin frames and nothing else:
+
+- **A deck has to run.** It builds its slides by calling `S.push({t, notes, html})`, so it executes in a sandboxed frame with `default-src 'none'` and posts back a plain array. The site never evaluates it.
+- **A slide does not.** Its markup renders in a second frame with `allow-scripts` withheld entirely and a CSP whose only permitted load is a `data:` image the host decrypted itself. Nothing in a slide can phone home.
+
+**Why the PDF is a download and not an embed — measured, not assumed.** The obvious move is to decrypt the PDF, wrap it in a blob and point a sandboxed iframe at it. Chrome refuses, in every sandbox combination tested: *"failed to load as a plugin, because the frame into which the plugin is loading is sandboxed."* The browser's PDF viewer is a plugin and plugins do not run in sandboxed frames. Dropping the sandbox would work and would hand vault bytes this origin, which is the one thing the design exists to prevent. So the bytes are decrypted in the page and handed to the browser's own download instead — a 2.1 MB deck arrives byte-identical — while the slides, the thing anyone actually wants to read on a web page, render live.
+
+**A real bug, found by walking everything.** The first pattern for image names excluded underscores. Fifteen slides in the Licence to Operate decks therefore rendered with a silently missing screenshot: no error in the console, no gap in the layout, just an absence nobody would notice by clicking through a few slides. The browser test now walks all 113 slides across all nine decks and counts missing images; the count is zero.
+
+Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.
+
+New page: [**Reading one file out of a vault**](../vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
 
 ## 2026-09-07
 

@@ -336,6 +336,12 @@
     "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview."
   },
   {
+    "path": "vault/reading-a-vault-file.html",
+    "section": "vault",
+    "title": "Reading one file out of a vault — SG/Vault",
+    "desc": "The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed."
+  },
+  {
     "path": "vault/static-hosting.html",
     "section": "vault",
     "title": "Static hosting on GitHub Pages — SG/Vault",

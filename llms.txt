@@ -143,6 +143,7 @@ Quick answers (so you do not need a second request for the common questions):
 - [Content authoring](/vault/content-authoring.md): Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
 - [Sub-vaults](/vault/sub-vaults.md): Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.
 - [Git repos inside vaults](/vault/git-and-vaults.md): Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
+- [Reading one file out of a vault](/vault/reading-a-vault-file.md): The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 - [Static hosting on GitHub Pages](/vault/static-hosting.md): Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 
 ## Deploy (rendered live from an encrypted vault)

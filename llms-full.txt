@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.66). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.67). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-94site releases, each verified live before it was called done
+95site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3917,7 +3917,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.66, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.67, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4056,7 +4056,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-94**site releases since 14 August**
+95**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4065,7 +4065,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-38**articles and release notes**
+39**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4702,6 +4702,78 @@ This section exists because it happened here: the passphrase for this site's own
 
 
 ==============================================================================
+# Reading one file out of a vault — SG/Vault
+
+> The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
+>
+> Page: https://sgit.ai/vault/reading-a-vault-file.html
+
+[Home](../index.md) / [Docs](../docs/index.md) / Reading one file out of a vault
+
+# Reading one file out of a vault, from any web page
+
+A published read key plus four browser APIs is enough to pull a single named file — a JSON manifest, a slide source, a screenshot, a PDF — out of an encrypted vault and use it on a page that has no backend, no build step and no copy of the file. This is the primitive underneath [the app embed](../demos/vault-app-embed.md), [the live docs reader](../case-studies/live-vault-docs.md) and [the deck viewer](../demos/vaults/aiuc-1-conformance/index.md#decks), written down on its own because all three are built on it.
+
+**The one-sentence version.** The vault's HTTP API serves ciphertext at a URL you can *compute* from the read key, so a page fetches bytes the server cannot read and decrypts them itself — which means **publishing a file to a web page is the same act as pushing it to the vault**, with nothing in between.
+
+## The four steps
+
+Everything below runs in the browser. The read key is a 64-character hex string and a vault id, and it is the whole credential — there is no account, no token and no session.
+
+|  | What happens | Which API |
+|---|---|---|
+| **1 · Import the key** | The same 32 bytes are imported twice: once as an AES-GCM key for decryption, once as an HMAC-SHA256 key for deriving ids | `crypto.subtle.importKey` |
+| **2 · Derive the address** | HEAD lives at `ref-pid-muw-` plus the first 12 hex characters of `HMAC(key, "sg-vault-v1:file-id:ref:" + vault_id)`. The server never told you this — you computed it | `crypto.subtle.sign` |
+| **3 · Fetch the ciphertext** | `GET /api/vault/read/<vault_id>/bare/refs/<id>`, then `bare/data/<object id>`. Plain CORS GETs, no auth header: the bytes are useless without the key | `fetch` |
+| **4 · Decrypt and walk** | First 12 bytes are the IV, the rest is the AES-GCM body. Ref → commit → tree → blob; filenames are encrypted inside the trees, so the path index is itself something you decrypt | `crypto.subtle.decrypt` |
+
+The reader that does this is about 90 lines and is on this site twice, deliberately in the open: [`assets/vault-embed.js`](../admin/index.md) exports it, and `assets/vault-docs.js` is the instrumented version that shows its own cache accounting.
+
+## What may be cached, and the one thing that may not
+
+The object model decides this, not a policy. An id containing `-imm-` is content-addressed and therefore immutable, so it can be cached forever. The ref is the single mutable pointer, and caching it is the one mistake that fails silently — a stale ref renders an *older commit from perfectly valid ciphertext*, so nothing errors and the page is simply wrong. The readers here keep a short freshness window on the ref instead, which is also the worst case delay before a new push is noticed. [The caching contract is part of the API reference.](../api/vault-objects.md)
+
+## Vault content is not your page's content
+
+A read key lets anyone read the vault, so the interesting question is the other direction: **the vault's bytes arriving in your page are untrusted input**, authored by whoever holds the write key. Rendering them into your own document hands a vault author your origin — your cookies, your storage, your DOM. The rule this site follows is that **the viewer comes from the site and only the data comes from the vault**, and that the data is rendered inside an opaque origin.
+
+| Vault content | Where it is allowed to run | Why |
+|---|---|---|
+| Static markup — a slide, a document | `<iframe sandbox>` with **no**`allow-scripts`, CSP `default-src 'none'; img-src data:` | It never needed scripting, so scripting is switched off rather than contained. Nothing in it can make a request |
+| Executable — an app, a deck that builds its slides in JavaScript | `<iframe sandbox="allow-scripts">`, reads served over `postMessage` | Opaque origin: no cookies, no storage, no reach into the host page. It asks the host for bytes and gets only bytes |
+| Images | Decrypted by the host, handed in as `data:` URIs, or blob URLs minted *inside* the frame | A vault path in a `src` resolves against an opaque origin and 404s, so the bytes have to be carried in |
+| PDFs | Downloaded, not embedded | Measured, not assumed — see below |
+
+## Why a PDF is a download and not an embed
+
+The obvious move is to decrypt the PDF, wrap it in a blob and point a sandboxed iframe at it. **Chrome refuses.** Tested across every sandbox combination, the console says the same thing each time:
+
+> `Failed to load 'blob:…' as a plugin, because the frame into which the plugin is loading is sandboxed.`
+
+The browser's PDF viewer is a plugin, and plugins do not run in sandboxed frames. That leaves two honest options and one dishonest one. Dropping the sandbox works — and gives vault bytes your origin, which is the thing this whole page is about not doing. Shipping a JavaScript PDF renderer works and costs a megabyte of vendored dependency. **Handing the bytes to the browser's own download works, costs nothing, and is what this site does**: the file is decrypted in the page, wrapped in a blob, and offered through a normal download — while the slides, which are the thing anyone actually wants to read on a web page, are rendered live and are searchable, linkable and legible to an agent in a way a PDF never is.
+
+A download is triggered from the page rather than from inside a frame for the same reason: a sandbox without `allow-downloads` blocks it, and adding that permission to untrusted content would be the wrong way round.
+
+## The worked example: decks
+
+[Four decks on the AIUC-1 page](../demos/vaults/aiuc-1-conformance/index.md#decks) and [five on the Licence to Operate page](../demos/vaults/licence-to-operate/index.md#decks) are read this way. The split, concretely:
+
+- **From the vault:** the manifest, each deck's slide source, the speaker notes, the screenshots and the printed PDF.
+- **From the site:** the deck tabs, the slide list, prev and next, the notes toggle, the PDF button, the deep links, and the sandbox policy the whole thing runs under.
+
+A deck builds its slides by *running* — it is JavaScript that calls `S.push({t, notes, html})` — so it has to execute somewhere. It executes in a scripted, opaque-origin frame with `default-src 'none'`, which posts back a plain array; the site never evaluates it. Each slide's markup then goes into a second frame with scripting off. The stage is 1600×900 because that is the size the deck's own CSS was written against, and the *element* is scaled rather than the document, so a slide looks the same at any column width with no reflow.
+
+Two published shapes are handled, because vaults differ in what they chose to publish: one ships its deck sources (small, screenshots fetched only when a slide uses one), the other ships only the built decks (large, screenshots already inline). The reader prefers the source and falls back to the built file, truncated at the point where the vault's own viewer starts.
+
+## What this costs a reader
+
+Nothing is installed and nothing is signed into. The first slide of a deck costs the ref, the commit, the trees, the manifest and one slide source; every later slide in that deck is already decrypted; a screenshot is fetched once and reused. The server sees requests for opaque ids and returns ciphertext, which is the entire point: **it is serving a presentation it cannot read.**
+
+The credential on those pages is a read key, derived one-way from a vault key that is not published. Read keys can be handed out; vault keys never are. [The publishing method](../demos/vaults/publishing.md) · [API: vault objects](../api/vault-objects.md) · [Static hosting](static-hosting.md)
+
+
+
+==============================================================================
 # Static hosting on GitHub Pages — SG/Vault
 
 > Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
@@ -4858,11 +4930,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.66**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.67**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.66 | 2026-09-09 | this release | THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing page whether or not it was designed as one: traffic comes from a feed, lands on it directly, and has never seen the vault, the site or the argument. What sat above the seven players was an apology about missing transcripts and a note explaining why a row number in the table could not go stale — two pieces of internal housekeeping addressed to readers who already knew everything the page had to sell. Both are gone from the top. In their place: FOUR WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per turn), so the whole model is legible before a single video plays. Then two calls to action, in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the whole credential and both routes offered (its page here, or straight into the vault UI); and RISKMANDATE.AI, named as where this goes commercially — the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner and driven to a time-bound decision: accept, fund, or fix. The vault is the demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, their order, or the three movements. |
+| v0.2.67 | 2026-09-09 | this release | DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — and until now the only way to see them was to open the vault's own app. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser. THE SPLIT IS THE POINT: from the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF; from the site come every control you can click — deck tabs, slide list, prev and next, notes, the PDF button, the deep links — so a vault decides what is SHOWN and never what the page DOES. Vault content reaches the page through two opaque-origin frames: a deck builds its slides by running JavaScript, so it runs in a sandboxed frame with default-src none and posts back a plain array, and the slide markup then renders in a second frame with scripting switched off entirely. WHY THE PDF IS A DOWNLOAD, MEASURED RATHER THAN ASSUMED: Chrome refuses to render a PDF in a sandboxed frame at all — 'failed to load as a plugin, because the frame into which the plugin is loading is sandboxed' — tested across every sandbox combination, so an inline PDF would mean handing vault bytes this origin. The bytes are decrypted in the page and handed to the browser's own download instead; a 2.1 MB PDF arrives byte-identical. Two published deck shapes are handled, because the two vaults differ: one shipped its sources, the other only its built decks. A REAL BUG FOUND BY WALKING EVERYTHING: the first image-name pattern excluded underscores, so fifteen slides rendered with a silently missing screenshot and no error anywhere — all 113 slides across the nine decks are now walked in the browser test, and the count of missing images is zero. New page: READING ONE FILE OUT OF A VAULT, the primitive under every live embed here, written down on its own with the sandbox rules for what comes back.' |
+| v0.2.66 | 2026-09-09 | obj-cas-imm-d2f92005581d | THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing page whether or not it was designed as one: traffic comes from a feed, lands on it directly, and has never seen the vault, the site or the argument. What sat above the seven players was an apology about missing transcripts and a note explaining why a row number in the table could not go stale — two pieces of internal housekeeping addressed to readers who already knew everything the page had to sell. Both are gone from the top. In their place: FOUR WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per turn), so the whole model is legible before a single video plays. Then two calls to action, in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the whole credential and both routes offered (its page here, or straight into the vault UI); and RISKMANDATE.AI, named as where this goes commercially — the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner and driven to a time-bound decision: accept, fund, or fix. The vault is the demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, their order, or the three movements. |
 | v0.2.65 | 2026-09-09 | obj-cas-imm-9407711950c8 | SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a vertical-video series walking through vault posrhzp3; none of the seven was on the site. They now have a page under the vault, collected in the order they are meant to be watched rather than the order a feed would show them: THE MECHANISM (1-3: grant against mandate, what a block looks like, who in the organisation accepts which risk), THE ARTEFACT (4: how to find and open the vault — the one to send someone who wants to poke at it), THE MODEL (5-7: the gap as the place risk lives, the insurance framing, then policies, claims and premiums). Each carries the author's own description, lightly edited, plus a line mapping it to what it demonstrates in the vault or the estate — the delta for 5, the AIUC-1 conformance layer's insurability query for 6, risks.sgit.ai's no-deny-button position for 7. WHAT THE PAGE REFUSES TO PRETEND: these are descriptions, NOT transcripts. All four of YouTube's timedtext endpoints return empty for every one of the seven, so there is no caption track to pull and the words spoken are absent from the site, from llms-full.txt and from the chat pane's read_page tool. That is the exact failure the risk-graph-explorer walkthroughs page was built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and opened as board card T12. A NUMBER THAT CANNOT ROT, DEMONSTRATED: video 4 tells the viewer to look for 'Vault #23'. Checked — Licence to Operate is still #23 and always will be, because v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been stale within a day; naming an identity is safe. Embeds go through youtube-nocookie.com with loading=lazy, so opening the page sets no YouTube cookie until somebody presses play. New portrait 9:16 player CSS, since the existing .vembed is a 16:9 box and a Short in it is two black pillars. |
 | v0.2.64 | 2026-09-07 | obj-cas-imm-80636cf90122 | THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the board appeared as files in the site repository, it was clear the shape was right and the home was wrong: moving a card from review to done cost a full site release. So the seventeen cards moved into vault pdulwi6i — issues/-.md, a README with the card format, a five-column board app (index.html, permissions {}) that lists issues/ through sg.vfs and falls back to issues/index.json when served outside a host, and tools/reindex.py to regenerate that index. THE VAULT IS THE TRUTH; THE SITE IS A READER: release.sh now pulls the vault before it builds (step 0), the loader reads admin/content/team/issues/issues/ — which IS the vault's working tree, cloned in place with its encrypted store gitignored and its card files tracked as the build's input — and the board page labels its columns as a snapshot at the site version, with the read key and one open-live button above them. Moving a card is now sgit push, and the board is live the moment it lands; the site catches up at its next release. PUBLISHED AS ROW #26 on the vaults table with its own page, following the method: the write key escrowed in the gitignored tier, the audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's board prompt and the team page's 'where things are' now point at the vault. One design note: the app works in two places on purpose — under a vault host it reads the files directly and needs no index, served flat it reads the index — because a board that only renders inside one host is a board nobody can screenshot, test or read from a script. |
 | v0.2.63 | 2026-09-07 | obj-cas-imm-d523226f4c7a | A CHAT PANE ON EVERY PAGE WHOSE MODEL CALLS TOOLS OVER THIS SITE'S OWN CONTENT. Asked for the pane the sibling sites have; built the stronger version of it. 'Ask this site', bottom right of every page, three tiers like the network chooser. TIER 0, no key: seven tools run directly in the page — type words to search everything (pages, vaults, sibling sites, release notes, board cards), or /vaults, /sites, /updates, /board, /read PATH, /here — instant, private, no network after the index loads. TIER 1, bring-your-own OpenRouter key: the model is handed the same seven tools as OpenAI-style function definitions (search_site, read_page, list_vaults, list_sites, latest_updates, get_board, current_page) and calls them; every call executes HERE over the build-emitted index and the .md twin of any page, so the model can only say what a tool returned, and THE PANE SHOWS EVERY CALL IT MADE as a trace line. Up to six tool rounds, then a plain-prose answer ending in the paths it used, as links. TIER 2, sg.llm inside a vault, is detected-not-wired and on the board as T11, blocked on one fact about the bridge's tool contract. THE INDEX is assets/site-index.json, written beside llms.txt from the same data as the vaults table, the network directory, the feed and the board — one derived file, so an answer in the pane is an answer the site already gives somewhere. LOADED THROUGH THE BOOT BLOCK after site.js, by the same vfs-or-fetch loader, with the loader exposed as window.__sgitBoot so the module resolves the index and the twins the same way on a blob: origin; never a script src. The key goes to openrouter.ai and nowhere else and the pane says so in the same words the chooser uses. Model output is escaped and links are allowed only to http(s) or paths on this site. The validator now parses the chat modules too. The chat-on-a-static-site article gains an addendum and its 'shared component: not started' row becomes 'partly': one site's copy, not yet the versioned module the other eighteen could load. |
@@ -5643,6 +5716,27 @@ Each carries the author's own description plus a line mapping it to what it demo
 **A number that cannot rot, demonstrated by accident.** Video 4 tells the viewer to look for *"Vault #23"*. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.
 
 Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
+
+### [Decks and PDFs read straight out of a vault — with the viewer owned by the site](#decks-read-straight-out-of-a-vault) [v0.2.67](../admin/versions.md)
+
+vaultsdeckssecuritymethod
+
+The vaults publish presentations. Four of them sit in [the AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md#decks) and five in [Licence to Operate](../demos/vaults/licence-to-operate/index.md#decks), and until this release the only way to see one was to open the vault's own app and drive it. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser.
+
+**The split is the whole point.** From the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF. From the site comes every control you can click — the deck tabs, the slide list, prev and next, the notes toggle, the PDF button, the deep links. A vault decides what is *shown*; it never decides what the page *does*.
+
+That matters because a read key is public, but the bytes behind it were written by whoever holds the write key — so vault content arriving in a page is untrusted input. It reaches these pages through two opaque-origin frames and nothing else:
+
+- **A deck has to run.** It builds its slides by calling `S.push({t, notes, html})`, so it executes in a sandboxed frame with `default-src 'none'` and posts back a plain array. The site never evaluates it.
+- **A slide does not.** Its markup renders in a second frame with `allow-scripts` withheld entirely and a CSP whose only permitted load is a `data:` image the host decrypted itself. Nothing in a slide can phone home.
+
+**Why the PDF is a download and not an embed — measured, not assumed.** The obvious move is to decrypt the PDF, wrap it in a blob and point a sandboxed iframe at it. Chrome refuses, in every sandbox combination tested: *"failed to load as a plugin, because the frame into which the plugin is loading is sandboxed."* The browser's PDF viewer is a plugin and plugins do not run in sandboxed frames. Dropping the sandbox would work and would hand vault bytes this origin, which is the one thing the design exists to prevent. So the bytes are decrypted in the page and handed to the browser's own download instead — a 2.1 MB deck arrives byte-identical — while the slides, the thing anyone actually wants to read on a web page, render live.
+
+**A real bug, found by walking everything.** The first pattern for image names excluded underscores. Fifteen slides in the Licence to Operate decks therefore rendered with a silently missing screenshot: no error in the console, no gap in the layout, just an absence nobody would notice by clicking through a few slides. The browser test now walks all 113 slides across all nine decks and counts missing images; the count is zero.
+
+Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.
+
+New page: [**Reading one file out of a vault**](../vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
 
 ## 2026-09-07
 
@@ -7539,6 +7633,12 @@ Published as a read key. The vault key is not published and never will be.
 
 [Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7)Thirteen tabs and a graph canvas — it has far more room in its own tab than in the frame below.
 
+## The decks, read straight out of the vault
+
+Four decks climb the same four levels the vault does — what the standard is, the vault, the insurance model, and one control zoomed in. They are not screenshots of a deck and not a PDF sitting on a web server: the slides are read out of vault `2wzct4k7` as you click, with the same read key printed at the top of this page.
+
+**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
+
 ## A fork, and what a fork is allowed to change
 
 The [AIUC-1 catalogue](../aiuc-1-graph/index.md) is still published here, unchanged, and it is still the thing to read if what you want is the standard as data. **This vault contains all of it.** Not a summary of it, not a re-derivation — the same bytes:
@@ -7860,6 +7960,12 @@ Derived one-way from a vault key that is not published and never will be. This v
 ## See it live, here
 
 [Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)An interactive simulation — far better in its own tab than in the frame below.
+
+## The decks, read straight out of the vault
+
+Five decks, in the order the argument is meant to land: the problem, the map, bounding it, who says yes, and the insurance model. They are read out of vault `posrhzp3` live, with the read key printed at the top of this page — and each one can be downloaded as the PDF the author printed from it.
+
+**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
 
 ## The idea worth stealing: the delta
 

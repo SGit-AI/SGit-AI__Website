@@ -204,5 +204,7 @@
     return { reader: reader, frame: frame, files: Object.keys(reader.files) };
   }
 
-  window.SGVaultEmbed = { mount: mount };
+  // Reader is exported so other site-owned viewers can read a vault without a third copy of
+  // the derivations. assets/vault-deck.js uses it: same reads, different thing built on top.
+  window.SGVaultEmbed = { mount: mount, Reader: Reader };
 })();

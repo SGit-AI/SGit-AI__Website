@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.66",
+  "site_version": "v0.2.67",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -28,6 +28,19 @@
         "risk"
       ],
       "summary": "The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3) — grant…"
+    },
+    {
+      "slug": "decks-read-straight-out-of-a-vault",
+      "title": "Decks and PDFs read straight out of a vault — with the viewer owned by the site",
+      "date": "2026-09-09",
+      "version": "v0.2.67",
+      "tags": [
+        "vaults",
+        "decks",
+        "security",
+        "method"
+      ],
+      "summary": "The vaults publish presentations. Four of them sit in the AIUC 1 conformance vault and five in Licence to Operate, and until this release the only way to see one was to open the vault's own app and drive it. They now play on the vault pages themselves, fetched…"
     },
     {
       "slug": "the-team-for-the-agents-and-investors-in-the-open",
