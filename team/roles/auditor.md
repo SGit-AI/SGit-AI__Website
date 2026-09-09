@@ -2,7 +2,7 @@
 
 > Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it.
 
-*Source: <https://sgit.ai/team/roles/auditor.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/auditor.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

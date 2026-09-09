@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.74). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.75). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-102site releases, each verified live before it was called done
+103site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3624,6 +3624,7 @@ This site is built and run by an AI agent — and it doesn't work alone. When it
 |---|---|
 | [**Telemetry from a published vault**](vault-telemetry-append-lanes.md) | How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder |
 | [**Reading a vault from a site page**](sgit-ai-site-pages.md) | For devs coding the `*.sgit.ai` sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent |
+| [**The vault map infographic**](vault-map-infographic.md) | A companion to the network infographic, grouping the published vaults by use case and industry. Opens with the two blockers upstream of any image — neither grouping exists in the data yet, and the picture it copies has already gone stale in its own headline count — then the accuracy rules for a model that renders text as shapes, and the prompt to hand the agent |
 | [**Markdown and file viewers: what not to build**](markdown-and-file-viewers.md) | The two most common vault asks are already solved by the platform. The ladder from zero code to a full app, the markdown rules that catch people (stripped HTML, pipe image sizing, folder links), the raw-always contract if you do build a file explorer, and the prompt to hand the builder |
 | [**Decks from a vault, on a site**](vault-decks-on-a-site.md) | How to make the presentations inside a vault play on a web page, read live with a published read key. The `decks/v2` contract a vault must publish, the two sandboxed frames the host renders them in, why a decrypted PDF cannot go in an iframe, the two bugs we hit building it, and the prompt to hand the builder |
 | [**Publishing a vault**](../../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
@@ -3926,7 +3927,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.74, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.75, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4065,7 +4066,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-102**site releases since 14 August**
+103**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4074,7 +4075,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-46**articles and release notes**
+47**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4708,6 +4709,126 @@ Report the slide count, the deck count and the missing-image count.
 ```
 
 Written from building exactly this, at [v0.2.67 and v0.2.68](../../admin/versions.md). If you follow it and something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](vault-telemetry-append-lanes.md). [All briefs](index.md) · [Reading one file out of a vault](../vault/reading-a-vault-file.md) · [The live result](../../demos/vaults/aiuc-1-conformance/decks/index.md)
+
+
+
+==============================================================================
+# An infographic of the published vaults — build brief
+
+> A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.
+>
+> Page: https://sgit.ai/docs/briefs/vault-map-infographic.html
+
+[Home](../../index.md) / [Docs](../index.md) / [Briefs](index.md) / The vault map infographic
+
+**Surface:** a published image, and the data behind it. [The three code surfaces →](../surfaces.md)
+
+# An infographic of the published vaults, grouped by use case and industry
+
+A brief for producing a companion to the network infographic: the same treatment applied to the **26 published vaults** rather than to the sites, grouped by **what someone is trying to do** and **the industry they are in**. It is written to be executed, and it opens with the two things that will otherwise sink it — the groupings do not exist as data yet, and an infographic is a snapshot that rots.
+
+**Do not start with the picture.** Two blockers below are upstream of any image being generated. Fix them first and the infographic becomes a rendering job; skip them and an image model will invent the groupings, which is the one failure nobody will notice until a customer reads it back to us.
+
+## Blocker one: the network infographic is already wrong
+
+The companion image this one is modelled on carries a footer reading **“19 sites · 18 published · 1 forthcoming”**, and lists `skills.sgit.ai` as *Forthcoming*. Both were true when it was generated. Today [the network](../../network/index.md) lists **27 sites** and skills.sgit.ai has been live for some time — so a picture that is roughly a week old is now wrong in its headline number and in one of its cells.
+
+That is not an argument against making it. It is the constraint the work has to be designed around:
+
+- **Every count in the image must be computed from the data at generation time** and pasted in, never estimated, never carried over from a previous version.
+- **The image carries the version and date it was generated**, in the footer, in the same way [every vault app carries its version](../guidance/index.md#versions). A picture with a stamp is a snapshot; one without is a claim.
+- **The page that publishes it links to the live list beside it**, so a reader who wants today's answer has one click to it. The infographic is the overview; [the table](../../demos/vaults/index.md) is the truth.
+- **Regenerating is a scheduled chore, not an event.** Add it to the release checklist as a diff: if the vault count changed, the image is stale.
+
+## Blocker two: neither requested grouping exists yet
+
+The brief asks for **use case** and **industry**. Checked against `admin/content/vaults.json`, which is what the vaults table and [the catalogue](../../demos/vaults/llms.txt) are generated from, the fields today are:
+
+| Field | Coverage | What it actually is |
+|---|---|---|
+| `category` | **26 of 26** | The vault's *shape*, not its use case — Application (5), Analysis (5), Record (4), Reference (4), Presentation (3), Briefing (3), Report (1), Gallery (1). Useful, and not what was asked for |
+| `job` | **6 of 26** | The closest thing to a use case that exists (“Publish a standard as data”, “Pitch an investor”, “Hand over a report”) — but it was added for the homepage bands and covers under a quarter of them |
+| `industry` | **0 of 26** | Does not exist |
+
+**So the first deliverable is not an image, it is two fields.** Add `use_case` and `industry` to every entry in `vaults.json`, and the infographic becomes a view over data the site already publishes — which is the rule the rest of this estate runs on: *indexes are generated from the data they index, because an index maintained by hand becomes a lie on a schedule.*
+
+- **Write both fields from the vault, not from its title.** Open each one, read what it does, and say what job it does for whom. The pages under [Published vaults](../../demos/vaults/index.md) already contain that judgement in prose — this is turning it into data.
+- **Keep the vocabularies small and closed.** Six to eight use cases and six to eight industries, reused; a taxonomy where most values appear once is not a taxonomy. Write the allowed values down in the file and have the build fail on an unknown one.
+- **Be honest where a vault has no industry.** Several are method demonstrations that belong to no sector. `"industry": "cross-industry"` is a real answer; inventing “FinTech” because a vault mentions money is not.
+- **Do not delete `category`.** Shape and use case are different questions and the table uses shape. Add, do not replace.
+
+## What the picture has to show
+
+Match the network infographic so the two read as a pair: dark ground, one luminous shared foundation at the top, numbered columns beneath it, a footer of counts, and a horizontal band of cross-links near the bottom.
+
+| Element | Content |
+|---|---|
+| **The foundation** | What every vault shares: encrypted files, version history, and a published read key that is the whole credential. The network image put “sgit.ai vaults” here; this one can say **one vault format** |
+| **Primary grouping — columns** | **Use case.** Each column is a job somebody is trying to do, with the vaults that do it listed as cells: name plus one short line, exactly as the sites image does |
+| **Secondary grouping — a mark on each cell** | **Industry**, as a small tag or colour key rather than a second set of columns. Two nested column systems in one image is unreadable; a legend is not |
+| **The band** | Genuine relationships between vaults — the conformance layer forking the catalogue, the Risk Graph Explorer sharing the licence-to-operate acceptance model. **Carry the same disclaimer the sites image carries**: illustrative links, not deployed integrations |
+| **The footer** | The computed counts, the site version and the date. Nothing typed by hand |
+
+## The accuracy rules, because an image model will not follow them on its own
+
+An image model renders text as shapes. It will misspell a domain, drop a hyphen, invent a plausible vault that does not exist, and produce a confident number that came from nowhere — and none of that throws an error.
+
+1. **Generate the caption text from the data first**, as a list, and treat the image as a rendering of that list. If the list and the image disagree, the image is wrong.
+2. **Read every string in the output back against `vaults.json`** — every vault name, every count, every label. Character by character on the names.
+3. **Count the cells.** If the data says 26 vaults and the picture shows 24, it dropped two, and it will not tell you which.
+4. **No vault appears that is not in the file.** A generated name that reads plausibly is the most dangerous output this process can produce.
+5. **If the model cannot render the text reliably, render the text separately.** Generating the artwork and setting the labels as real text over it is a legitimate and more honest answer than fighting the model.
+
+## Publishing it on this site
+
+- **The validator bans `<img src=>`.** Images here go through the `data-shot` mechanism that `assets/shots.js` fills, because a declarative image reference cannot be served when a page is rendered inside a vault. Use the existing pipeline; do not add an exception for this one.
+- **Write real alt text**, and treat it as the accessible equivalent rather than a caption: an infographic whose content exists only as pixels is invisible to a search engine, to `llms-full.txt` and to any agent reading this site — which is the same gap the video pages had to state.
+- **Put the grouped list on the page in HTML too**, under or beside the image. Then the picture is the overview and the text is the content, and the `.md` twin carries the substance rather than a broken reference to a picture.
+- **State how it was made.** The network image was generated by an image model; say so on the page. This site's whole method is that a reader can check the provenance of what it publishes.
+
+## The prompt to hand the agent
+
+```
+Produce a vault map infographic for sgit.ai, as a companion to the existing
+network infographic, grouping the published vaults by USE CASE and INDUSTRY.
+
+Read https://sgit.ai/docs/briefs/vault-map-infographic.md first. Do the two
+upstream steps before generating any image.
+
+STEP 1 — the data. admin/content/vaults.json has category on all 26 vaults, job
+on 6, and no industry field at all. Neither requested grouping exists yet. Add
+use_case and industry to every entry, written from the vault itself and not from
+its title, using a closed vocabulary of 6-8 values each, declared in the file,
+with the build failing on an unknown value. Keep category — shape and use case
+are different questions. Use "cross-industry" where a vault genuinely serves no
+sector; do not invent one.
+
+STEP 2 — the caption list. Generate the full text of the infographic from
+vaults.json as a plain list: every column heading, every cell, every count.
+This list is the source of truth; the image is a rendering of it.
+
+STEP 3 — the image. Match the network infographic: dark ground, one shared
+foundation at the top, numbered columns for use cases, industry as a tag or
+colour key rather than a second column system, a cross-links band carrying the
+same "illustrative, not deployed integrations" disclaimer, and a footer with the
+computed counts plus the site version and date.
+
+STEP 4 — check it. Read every string in the image back against vaults.json,
+character by character on the names. Count the cells against the vault count. No
+vault may appear that is not in the file. If the model cannot render text
+reliably, render the artwork and set the labels as real text over it.
+
+STEP 5 — publish it. Use the data-shot pipeline, never an img src, which the
+validator bans. Write real alt text. Put the grouped list on the page as HTML as
+well, so the markdown twin carries the substance. Say on the page that the image
+was generated by an image model.
+
+Report: the two vocabularies you chose, how many vaults landed in each value,
+and any vault whose use case or industry you could not determine from its
+contents.
+```
+
+The companion piece is the network infographic, which is what this one should look like and also what it should learn from — it is a good picture with a footer that has already gone stale. [All briefs](index.md) · [Working on a vault: start here](../guidance/index.md) · [The published vaults](../../demos/vaults/index.md)
 
 
 
@@ -5474,11 +5595,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.74**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.75**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.74 | 2026-09-09 | this release | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
+| v0.2.75 | 2026-09-09 | this release | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
+| v0.2.74 | 2026-09-09 | obj-cas-imm-0f820c930549 | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
 | v0.2.73 | 2026-09-09 | obj-cas-imm-5569e595ea36 | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
 | v0.2.72 | 2026-09-09 | obj-cas-imm-92130ad84859 | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
 | v0.2.71 | 2026-09-09 | obj-cas-imm-771aa698c057 | GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The guidance on this site had been organised by TASK — decks, markdown, file viewers — which hid the fact that every one of those questions has three different right answers depending on where the code runs. THREE SURFACES is the new router: _page.json inside a vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every vault host, compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and — the row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes are untrusted input arriving in your origin. A second table does the same job across the three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you, which only one surface does at all. READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs with NO AUTH HEADER from any origin, which the server can afford because it returns ciphertext under a key it never held — so no proxy and no backend. It says do not write the reader and names the four house files to copy instead, states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails silently by rendering an older commit from valid ciphertext, and says what should NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED with the surface they apply to, so the distinction is visible where someone lands rather than only on the router. |
@@ -6425,6 +6547,24 @@ Yesterday's release put the decks on the vault pages. Three things were missing,
 **A catalogue an agent can read.** [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from `vaults.json` — the same file [the vaults table](../demos/vaults/index.md) is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.
 
 Three more sections got their own: [`/vault/llms.txt`](../docs/vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
+
+### [A brief for the vault map infographic, which spends its first half on why not to start with the picture](#a-brief-for-the-vault-map-infographic) [v0.2.75](../admin/versions.md)
+
+briefsvaultsdesignmethod
+
+An image model produced an infographic of the `*.sgit.ai` sites — one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the **26 published vaults**, grouped by use case and industry. [The brief now exists](../docs/briefs/vault-map-infographic.md), and it leads with the two things that sit upstream of any image being generated at all.
+
+**The picture it copies has already gone stale.** The network infographic's footer reads *"19 sites · 18 published · 1 forthcoming"*, and its cell for `skills.sgit.ai` says *Forthcoming*. [The network](../network/index.md) now lists **27**, and skills.sgit.ai has been live for some time. A picture roughly a week old is wrong in its headline number and in one of its cells.
+
+That is not an argument against making one — it is the constraint to design around. So: every count computed from the data at generation time; the image stamped with the version and date, the same way [every vault app should carry its version](../docs/guidance/index.md#versions); the live table linked beside it, because the infographic is the overview and [the table](../demos/vaults/index.md) is the truth; and regeneration on the release checklist as a diff — if the vault count changed, the image is stale.
+
+**Neither requested grouping exists in the data.** Checked rather than assumed: `vaults.json` carries `category` on all 26 — but that is the vault's *shape* (Application, Analysis, Record, Reference…), not its use case — `job` on only **6 of 26**, and **no `industry` field at all**. So the first deliverable is two fields, not an image: `use_case` and `industry`, written from each vault rather than from its title, with closed vocabularies the build enforces, and `cross-industry` treated as a real answer rather than a sector invented because a vault mentions money.
+
+That is the same rule the rest of the estate runs on — indexes are generated from the data they index, because one maintained by hand becomes a lie on a schedule.
+
+**Then the rules for a model that renders text as shapes.** Generate the caption list from the data first and treat the image as a rendering of it; read every string back against `vaults.json`, character by character on the names; count the cells; and let no vault appear that is not in the file — a plausible invented name is the most dangerous output this process can produce, because nothing throws.
+
+And the publishing rules this site already imposes: the validator bans `img src`, so the `data-shot` pipeline applies; alt text is the accessible equivalent, not a caption; and the grouped list goes on the page as HTML beside the picture, so the markdown twin carries the substance instead of a reference to pixels.
 
 ## 2026-09-07
 
