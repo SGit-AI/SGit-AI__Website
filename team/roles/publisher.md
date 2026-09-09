@@ -2,7 +2,7 @@
 
 > Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with.
 
-*Source: <https://sgit.ai/team/roles/publisher.html> · site v0.2.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/publisher.html> · site v0.2.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.73</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.74</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,7 +92,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<p class="llmschip"><span class="llmschip-k">for agents</span><a href="../llms.txt"><code>/llms.txt</code></a><span class="llmschip-m">generated v0.2.73 &middot; 9 Sep 2026 &mdash; regenerated every release, so if this page changed and that stamp did not, the index has not caught up</span></p>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.74 &middot; 9 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -135,6 +135,19 @@
 <p><b>It publishes both bugs, not just the finished design.</b> The image-name pattern that excluded underscores and failed silently on fifteen slides; the unscoped <code>closest()</code> that killed every button on exactly the pages it was written for. A brief that only describes the working version teaches less than one that names the two places a careful implementer will still go wrong.</p>
 <p>It ends with a done-means checklist — walk every slide and assert zero unresolved images, byte-count a downloaded PDF against the vault, grep the built site for vault-key shapes — and a prompt to hand the builder agent.</p>
 <p>One thing caught in review, worth recording because it is the third time: the <code>.md</code> twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build. Rewritten to the site's uppercase-placeholder convention.</p>
+  </article>
+  <article class="upd" id="the-agent-chip-and-the-network-catches-up">
+    <h3><a href="#the-agent-chip-and-the-network-catches-up">The agent chip becomes one object, and the network list catches up with the org</a> <a class="upd-ver" href="../admin/versions.html">v0.2.74</a></h3>
+    <p class="chips"><span class="chip">design</span><span class="chip">network</span><span class="chip">llms</span><span class="chip">agents</span></p>
+<p><b>The chip.</b> <a href="../updates/index.html">Last release</a> put an <code>llms.txt</code> link on every page, and it worked but looked like three loose fragments — a pill, a boxed path, and a long sentence — floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's own tokens and one was chosen: <b>a single bordered control</b> with a tinted <em>for agents</em> cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It now reads as one thing you can click rather than three things you cannot.</p>
+<p>The always-on sentence moved into the link's tooltip. It renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site — the stamp beside it already carries the point.</p>
+<p><b>The network list was eight sites behind.</b> Checked against the organisation's 31 repositories rather than against memory: <b>games</b>, <b>what-can-it-do.games</b>, <b>providers</b>, <b>ungovr.providers</b>, <b>elevenlabs.providers</b>, <b>teams</b>, <b>threat-modeling</b> and <b>chrome-extensions</b> all had repositories, all answered 200, and none of them was listed here. Each new entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess about what it probably contains. <a href="../network/index.html">The network</a> now lists 27.</p>
+<p>Two corrections fell out of the same check:</p>
+<ul>
+<li><b>skills.sgit.ai</b> was still described here as <em>"the repository and subdomain exist; GitHub Pages has not published yet, so there is nothing to read at the address."</em> It has been live for some time. The entry now carries its real thesis — <em>skills are software packages, and here is the proof</em> — and its version.</li>
+<li><b>The ElevenLabs repository describes its domain as <code>elevenlabs.provider.sgit.ai</code></b>, singular. That does not resolve; the live host is <code>elevenlabs.providers.sgit.ai</code>, plural. The listing uses the one that answers.</li>
+</ul>
+<p>A list of sites maintained by hand drifts from the sites that exist. This one drifted by eight in about a week — worth a check against the org on every release rather than when somebody notices.</p>
   </article>
   <article class="upd" id="seven-shorts-on-the-licence-to-operate">
     <h3><a href="#seven-shorts-on-the-licence-to-operate">Seven shorts on the Licence to Operate vault — indexed, and put in the right order</a> <a class="upd-ver" href="../admin/versions.html">v0.2.65</a></h3>
@@ -640,7 +653,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.73</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.74</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -682,7 +695,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.73';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.74';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
