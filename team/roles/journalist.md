@@ -2,7 +2,7 @@
 
 > Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered.
 
-*Source: <https://sgit.ai/team/roles/journalist.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/journalist.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,7 +42,7 @@ An update per release · an article when a change deserves an argument · the Li
 
 ## On the board for this role
 
-- nothing open
+- **T12** · [Transcribe the seven Licence to Operate shorts](../board.md#T12) (backlog, medium)
 
 Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](auditor.md) · [Cartographer](cartographer.md) · [Ambassador](ambassador.md) · [Designer](designer.md) · [Release engineer](release-engineer.md) · [Historian](historian.md) · [Starting prompts](../prompts.md) · [The board](../board.md)
 

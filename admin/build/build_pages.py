@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.64'
+SITE_VERSION = 'v0.2.65'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.64', '2026-09-07', 'this release',
+    ('v0.2.65', '2026-09-09', 'this release',
+     "SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a "
+     "vertical-video series walking through vault posrhzp3; none of the seven was on the site. They "
+     "now have a page under the vault, collected in the order they are meant to be watched rather "
+     "than the order a feed would show them: THE MECHANISM (1-3: grant against mandate, what a "
+     "block looks like, who in the organisation accepts which risk), THE ARTEFACT (4: how to find "
+     "and open the vault — the one to send someone who wants to poke at it), THE MODEL (5-7: the "
+     "gap as the place risk lives, the insurance framing, then policies, claims and premiums). "
+     "Each carries the author's own description, lightly edited, plus a line mapping it to what it "
+     "demonstrates in the vault or the estate — the delta for 5, the AIUC-1 conformance layer's "
+     "insurability query for 6, risks.sgit.ai's no-deny-button position for 7. WHAT THE PAGE "
+     "REFUSES TO PRETEND: these are descriptions, NOT transcripts. All four of YouTube's timedtext "
+     "endpoints return empty for every one of the seven, so there is no caption track to pull and "
+     "the words spoken are absent from the site, from llms-full.txt and from the chat pane's "
+     "read_page tool. That is the exact failure the risk-graph-explorer walkthroughs page was "
+     "built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and "
+     "opened as board card T12. A NUMBER THAT CANNOT ROT, DEMONSTRATED: video 4 tells the viewer "
+     "to look for 'Vault #23'. Checked — Licence to Operate is still #23 and always will be, "
+     "because v0.2.58 made that column a permanent publication ordinal rather than a row position. "
+     "A recorded video naming a row number would have been stale within a day; naming an identity "
+     "is safe. Embeds go through youtube-nocookie.com with loading=lazy, so opening the page sets "
+     "no YouTube cookie until somebody presses play. New portrait 9:16 player CSS, since the "
+     "existing .vembed is a 16:9 box and a Short in it is two black pillars."),
+    ('v0.2.64', '2026-09-07', 'obj-cas-imm-80636cf90122',
      "THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the "
      "board appeared as files in the site repository, it was clear the shape was right and the home "
      "was wrong: moving a card from review to done cost a full site release. So the seventeen cards "

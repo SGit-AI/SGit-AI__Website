@@ -1,0 +1,157 @@
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../../../index.html">Home</a> / <a href="../../index.html">Vaults</a> / <a href="../index.html">Licence to Operate</a> / The seven shorts</p>
+  <h1>Seven shorts on the licence to operate</h1>
+  <p class="lead">The author recorded seven vertical videos walking through <a href="../index.html">the Licence to Operate vault</a> &mdash; the mechanism first, then how to open it yourself, then the model behind it. They are collected here in order, with what each one covers and which part of the vault it is demonstrating, so the series is readable as one argument rather than seven unconnected clips in a feed.</p>
+
+  <div class="note"><b>What this page is, and what it is not.</b> Under each video is the <b>author's own description of it</b>, lightly edited for consistency &mdash; not a transcript. <b>These videos have no caption track</b>, auto-generated or otherwise: all four of YouTube's <code>timedtext</code> endpoints return empty for every one of the seven. So the words actually spoken are <em>not</em> on this site, and that is a real gap by this site's own standard &mdash; the <a href="../../risk-graph-explorer/videos/index.html">walkthroughs page</a> exists precisely because <em>"a recording is invisible to a search engine, to <a href="../../../../llms-full.txt">llms-full.txt</a>, and to any agent reading this site."</em> Transcribing these is <a href="../../../../team/board.html">on the board</a>; until it is done, this page is an index with the author's summaries, and says so.</div>
+
+  <h2 id="arc">The order they are meant to be watched in</h2>
+  <p>The series has three movements, and they are not in the order a viewer arriving from a feed would guess:</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Videos</th><th>What they establish</th></tr>
+    <tr><td><b>The mechanism</b></td><td>1 &middot; 2 &middot; 3</td><td>Grant against mandate, what a block looks like when an agent exceeds its mandate, and who in the organisation accepts which risk</td></tr>
+    <tr><td><b>The artefact</b></td><td>4</td><td>How to find and open the vault on this site &mdash; the shortest one, and the one to send someone who wants to poke at it themselves</td></tr>
+    <tr><td><b>The model</b></td><td>5 &middot; 6 &middot; 7</td><td>Why the grant/mandate gap is where risk lives, the insurance framing that governs it, and the policy, claim and premium mechanics underneath</td></tr>
+  </table></div>
+  <p class="small dim">A note on the numbering, since it is the kind of thing that rots: video 4 sends the viewer to <b>&ldquo;Vault #23&rdquo;</b> on the published vaults table. Checked against the table today &mdash; Licence to Operate is <b>still #23</b>, and it always will be: that number is a permanent publication ordinal, assigned in order of first publication and never reused, so a video that names it cannot go stale. <a href="../../../../articles/proof-moved-up.html">That was the point of making it an identity</a> rather than a row position.</p>
+
+  <div class="shorts">
+
+    <!-- ============================================================ 1 -->
+    <div class="short" id="v1">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/iM1uqb3Trpc" title="Licence to Operate MVP #1: Grants, Mandates &amp; Token Policies in AI Agent Workflows" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 1 &middot; the mechanism</span>
+        <h3>Grants, mandates &amp; token policies in AI agent workflows</h3>
+        <p>A walkthrough of the MVP, demonstrating how agents are governed through a clear separation of what an agent <em>can</em> do (the grant) versus what it <em>should</em> do (the mandate).</p>
+        <ul>
+          <li><b>Grant against mandate</b> &mdash; permitted actions versus expected behaviour</li>
+          <li><b>Token-based policy enforcement</b>, with normal-use thresholds and overflow pools</li>
+          <li>A live demo of normal insurance and CRM flows <b>staying within policy</b></li>
+          <li>What happens when token budgets are exhausted &mdash; <b>automatic escalation</b></li>
+          <li>Blocking behaviour when an agent attempts an action <b>outside its allowed scope</b></li>
+        </ul>
+        <p class="short-maps"><b>In the vault:</b> the grant of 12 capabilities and the mandate of 4, and the simulated conversation where every reply carries its cost against a live policy.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 2 -->
+    <div class="short" id="v2">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/ydyNgrEL2xE" title="Licence to Operate MVP #2: Blocking AI Agents That Exceed Their Mandate" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 2 &middot; the mechanism</span>
+        <h3>Blocking AI agents that exceed their mandate</h3>
+        <p>What happens when an agent attempts an action that is <b>technically within its system privileges but outside its defined mandate</b>.</p>
+        <ul>
+          <li>An agent blocked when it tries to send a password reset email <b>without being mandated to</b></li>
+          <li>The difference between what an agent <em>can</em> do (grant, privileges) and what it <em>should</em> do (mandate)</li>
+          <li>How an agent <b>loses its licence to operate</b> when it steps outside its approved scope</li>
+          <li>A second example: a CRM data export it has access to but is not authorised to perform</li>
+          <li><b>Pre-action checks (ideal) versus post-action detection (problematic)</b></li>
+        </ul>
+        <p class="short-maps"><b>The distinction that carries the series:</b> a privilege the agent holds is not a permission to use it. That last bullet &mdash; catching it before rather than after &mdash; returns in short 6 as the sharpest version of the argument.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 3 -->
+    <div class="short" id="v3">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/-am-4zv4xzo" title="Licence to Operate MVP #3: Risk Acceptance Flow — Who Accepts What &amp; Why" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 3 &middot; the mechanism</span>
+        <h3>Risk acceptance flow &mdash; who accepts what, and why</h3>
+        <p>The risk-acceptance side of the framework: how risks cascade upward through an organisation, from the support team to the C-suite.</p>
+        <ul>
+          <li>Risks linked upward through the layers &mdash; <b>support team &rarr; SRE &rarr; platform owner &rarr; CTO &rarr; CPO &rarr; CFO</b></li>
+          <li>What each stakeholder actually accepts: token and rate limits, mandate overruns, database change risk, cost and premium exposure</li>
+          <li>Why the <b>platform owner</b> must accept that an agent can act outside its mandate, because of capabilities like a mail client, a shell and export tools</li>
+          <li>A <b>withdrawn licence</b>, simulated out of band, automatically enforcing policy and restricting the agent</li>
+          <li>Pre-defining the rules of the game, so agents operate <b>only when a valid policy exists</b></li>
+        </ul>
+        <p class="short-maps"><b>In the estate:</b> this is <a href="../../../../network/index.html#risk-governance">risks.sgit.ai</a>'s acceptance model applied to an agent &mdash; a risk cannot be denied, only accepted by a named person for a stated interval. The same model the <a href="../../risk-graph-explorer/index.html">Risk Graph Explorer</a> vault publishes.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 4 -->
+    <div class="short" id="v4">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/5pZfHRrG6Wg" title="Licence to Operate MVP #4: How to Find &amp; Open the Licence to Operate Vault on sgit.ai" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 4 &middot; the artefact &mdash; start here if you want to poke at it</span>
+        <h3>How to find and open the vault on sgit.ai</h3>
+        <p>Exactly where the vault is on this site, and how to open it in your browser. No account, nothing to install.</p>
+        <ul>
+          <li>Navigating to <a href="../../index.html">Published Vaults</a> on sgit.ai</li>
+          <li>Locating <b>vault #23</b> &mdash; the Licence to Operate vault</li>
+          <li>Exploring the contents: decks, docs, grants, mandates, policies, risks and more</li>
+          <li>Opening the vault in a new window to interact with it</li>
+          <li>The vault structure &mdash; <code>app.json</code> as the entry point, and <code>index.html</code></li>
+        </ul>
+        <p class="short-maps"><b>The shortest route:</b> the vault's read key is on <a href="../index.html">its page</a>, and it is the whole credential &mdash; the same string the video walks you to.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 5 -->
+    <div class="short" id="v5">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/2z0vEXCSKl4" title="Licence to Operate MVP #5: Managing AI Agents — Understanding the Grant vs. Mandate Gap" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 5 &middot; the model</span>
+        <h3>The grant against mandate gap &mdash; where risk lives</h3>
+        <p>When you deploy an agent you typically give it far more capability than it needs. <b>The gap between the two is where risk lives.</b> An agent might have full access to your email account while your mandate only requires it to write drafts, never to send. Making that gap explicit is the first step to controlling it.</p>
+        <ul>
+          <li>The <b>grant</b>: the union of all actions an agent is authorised to perform</li>
+          <li>The <b>mandate</b>: the specific tasks you actually expect it to do</li>
+          <li>Why the gap is a security and governance concern rather than an accounting detail</li>
+          <li>How capabilities <b>expand over time</b> &mdash; new tools, environment changes, prompt updates</li>
+          <li>How visualising the gap helps you monitor, contain and manage agents</li>
+        </ul>
+        <p class="short-maps"><b>In the vault:</b> the <b>delta</b> &mdash; the 8 capabilities in the grant that no policy covers. The vault page calls this the idea worth stealing, and this is the video that explains why.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 6 -->
+    <div class="short" id="v6">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/W7ymVQ9IqHY" title="Licence to Operate MVP #6: An Insurance Model for Governing AI Agents" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 6 &middot; the model</span>
+        <h3>An insurance model for governing AI agents</h3>
+        <p>What if every agent had to <b>prove it has a licence to operate</b> &mdash; as licensed professionals do in regulated industries? An insurance-based operating model that governs agents through defined mandates, scoped policies and risk underwriting.</p>
+        <ul>
+          <li><b>Licence to operate</b> &mdash; why every agent needs a mandate, not just a badge</li>
+          <li><b>Grant, mandate, delta</b> &mdash; mapping what an agent can do against what it should</li>
+          <li><b>The normal band of operation</b> &mdash; token and record thresholds that limit exposure at scale</li>
+          <li><b>Claims, must-ask and refused tiers</b> &mdash; controlling thousands of agents with a tiered policy</li>
+          <li><b>Three ways to lose your licence</b> &mdash; overuse, out-of-scope action, or pool lapse</li>
+          <li><b>Pre-check versus post-check</b>, and why post-check is far riskier</li>
+        </ul>
+        <p class="short-maps"><b>Why this is the one to watch if you watch one:</b> it is the whole framework in a single pass, and it is the video that connects the vault to <a href="../../aiuc-1-conformance/index.html">the AIUC-1 conformance layer</a>, which computes insurability as a query into a <code>policy/v1</code> object.</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ 7 -->
+    <div class="short" id="v7">
+      <div class="short-player"><iframe src="https://www.youtube-nocookie.com/embed/dPNOk-OQLEk" title="Licence to Operate MVP #7: Agent Insurance Model — Policies, Claims &amp; Risk Acceptance" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe></div>
+      <div class="short-body">
+        <span class="short-n">Short 7 &middot; the model</span>
+        <h3>Policies, claims and risk acceptance</h3>
+        <p>A deep dive into the insurance model powering the MVP: how policies (licences) are sold to agent owners, how claims are triggered when token thresholds are exceeded, and how a credit balance tracks the flow between premiums and claims.</p>
+        <ul>
+          <li>Selling policies to business owners as <b>a cost model for running agents</b></li>
+          <li>Token-based claim triggers, and the <b>balance and credit pool</b> mechanism</li>
+          <li>Mapping <b>facts &rarr; risks &rarr; roles &rarr; the corporate risk register</b></li>
+          <li>Why risks <b>cannot be denied</b> &mdash; only accepted in advance</li>
+          <li>How pre-accepted risks streamline the human in the loop, and enable scale</li>
+        </ul>
+        <p class="short-maps"><b>The line that ties the series to the rest of the estate:</b> <em>risks cannot be denied, only accepted in advance.</em> That is the position <a href="../../../../network/index.html#risk-governance">risks.sgit.ai</a> argues from first principles, and the reason there is no deny button anywhere in this model.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 id="next">Where to go next</h2>
+  <ul>
+    <li><b>Open the thing itself.</b> <a href="../index.html">The Licence to Operate vault</a> &mdash; the read key is on the page, and the vault runs live inside it.</li>
+    <li><b>The insurance model, computed.</b> <a href="../../aiuc-1-conformance/index.html">The AIUC-1 conformance layer</a> turns this framing into a query: conformance states become conditions and exclusions on a policy, and moving the date forward turns conditions into exclusions with nobody editing anything.</li>
+    <li><b>The acceptance model it inherits.</b> <a href="../../risk-graph-explorer/index.html">The Risk Graph Explorer</a>, and <a href="../../risk-graph-explorer/videos/index.html">its three walkthroughs</a> &mdash; which are transcribed, and are the standard this page is not yet meeting.</li>
+  </ul>
+
+  <p class="small dim" style="margin-top:2rem">All seven videos are on <a href="https://www.youtube.com/@diniscruz-ai" rel="noopener" target="_blank">the author's channel &#8599;</a>. Embedded through <code>youtube-nocookie.com</code>, and lazily &mdash; opening this page sets no YouTube cookie until you press play on one. <a href="../index.html">&larr; The vault</a> &middot; <a href="../../index.html">All published vaults</a></p>
+</main>

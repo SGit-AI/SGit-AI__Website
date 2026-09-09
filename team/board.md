@@ -2,7 +2,7 @@
 
 > Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site.
 
-*Source: <https://sgit.ai/team/board.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/board.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,12 +12,12 @@
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.64, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.65, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
 
-**17 items** — 14 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
+**18 items** — 15 open, 6 of them waiting on the author. Each card is a file under `admin/content/team/issues/`; moving a card is editing its `status` line.
 
 ### Needs — only the author can supply 6
 
@@ -45,7 +45,7 @@ N6 — **Republish the two held vaults clean, or retire them** — [Auditor](rol
 
 `bite-coil` (a live provider key in `key.json`, since rotated) and `6kdhnpfx` are held on audit findings. Both are republishable via a fresh vault with the offending file removed. A decision either way closes them. Unblocks: the vaults count telling the whole story.
 
-### Backlog 6
+### Backlog 7
 
 T1 — **An About page about sgit, linking to the fuller record** — [Ambassador](roles/ambassador.md) · high · 2026-09-07
 
@@ -62,6 +62,10 @@ The pane (`assets/site-chat.js`) has three tiers and the third is not wired: whe
 T3 — **Investors page: print stylesheet and a one-page PDF export** — [Designer](roles/designer.md) · medium · 2026-09-07
 
 The page should print to one or two clean pages for the event. The site already has `@media print` rules; extend them for the investor bands and check the output.
+
+T12 — **Transcribe the seven Licence to Operate shorts** — [Journalist](roles/journalist.md) · medium · 2026-09-09
+
+The [seven shorts](../demos/vaults/licence-to-operate/videos/index.md) are indexed with the author's own descriptions, but **not transcribed** — YouTube returns no caption track for any of them, on any of the four `timedtext` endpoints. So the words spoken are absent from the site, from `llms-full.txt` and from the chat pane's `read_page` tool, which is exactly the failure the [Risk Graph Explorer walkthroughs](../demos/vaults/risk-graph-explorer/videos/index.md) page was built to avoid. Needs the author's transcripts from YouTube Studio (auto-transcript works even when the public track is absent), then the same treatment as the walkthroughs: timestamped moments that deep-link into the video, and captured frames.
 
 T6 — **Flip skills.sgit.ai from not-published to live when Pages serves it** — [Cartographer](roles/cartographer.md) · low · 2026-09-07
 
