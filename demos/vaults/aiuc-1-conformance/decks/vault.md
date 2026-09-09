@@ -2,7 +2,7 @@
 
 > A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/vault.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/vault.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

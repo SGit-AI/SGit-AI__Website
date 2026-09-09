@@ -2,7 +2,7 @@
 
 > Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed.
 
-*Source: <https://sgit.ai/team/roles/historian.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/historian.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

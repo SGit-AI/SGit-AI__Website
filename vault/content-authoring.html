@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.69</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.70</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -118,7 +118,7 @@
   ]
 }</pre>
   <ul>
-    <li><b>Eleven component types:</b> <code>hero</code>, <code>section</code> (the only container — everything else nests in its <code>children</code>), <code>text</code>, <code>bullet-points</code>, <code>title</code>, <code>image</code>, <code>gallery</code> (click-to-lightbox), <code>slides</code>, <code>pdf</code>, <code>markdown</code>, <code>cards</code>, <code>columns</code>.</li>
+    <li><b>Twelve component types:</b> <code>hero</code>, <code>section</code> (the only container — everything else nests in its <code>children</code>), <code>text</code>, <code>bullet-points</code>, <code>title</code>, <code>image</code>, <code>gallery</code> (click-to-lightbox), <code>slides</code>, <code>pdf</code>, <code>markdown</code>, <code>cards</code>, <code>columns</code>.</li>
     <li><b>Themes:</b> <code>dark</code>/<code>light</code> shorthand or a full block (mode, accent, font, density, background); six named schemes exist, and all but the dark deck are print-safe.</li>
     <li><b>Paths are vault-relative to the folder holding <code>_page.json</code></b> — <code>../</code> allowed but never outside the vault, and <b>no external URLs</b>: vault files only, so a page never phones home.</li>
     <li><b>Live edit preview:</b> the browse view has a split JSON-editor with a debounced preview — but it <b>cannot save</b>; you copy the JSON out and push it with sgit. (The intended loop, verbatim from the internal skill: paste in JSON suggested by an AI, preview it immediately, then commit.)</li>
@@ -133,6 +133,8 @@
     <li><b>The traps:</b> raw HTML is stripped and shows as escaped text; nested lists, task lists, footnotes and anchor-id headings are not supported. Write flat, plain markdown.</li>
   </ul>
 
+  <div class="note"><b>Building this for someone else?</b> <a href="../briefs/markdown-and-file-viewers.html"><b>The build brief</b></a> is the decision rather than the syntax &mdash; the ladder from zero code to a full app, the markdown rules that actually catch people, the raw-view contract for a file explorer, and a prompt to hand the builder agent.</div>
+
   <div class="note"><b>The agent angle:</b> both formats are plain JSON and plain text — which makes them ideal surfaces for AI agents to author. An agent writes <code>_page.json</code> or markdown into a vault with <code>sgit write --json</code>, a human previews it in the browser, and the whole loop stays end-to-end encrypted.</div>
 
   <div class="pagenav"><a href="sg-bridge.html">← The window.sg bridge</a><a href="sub-vaults.html">Sub-vaults →</a></div>
@@ -143,7 +145,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.69</a> · <a href="../admin/index.html">engineering</a> · <a href="content-authoring.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.70</a> · <a href="../admin/index.html">engineering</a> · <a href="content-authoring.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -183,7 +185,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.69';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.70';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

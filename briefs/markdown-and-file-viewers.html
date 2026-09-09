@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Markdown and file viewers in a vault: what not to build — build brief</title>
+<meta name="description" content="Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.">
+<link rel="canonical" href="https://sgit.ai/briefs/markdown-and-file-viewers.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/briefs/markdown-and-file-viewers.html">
+<meta property="og:title" content="Markdown and file viewers in a vault: what not to build — build brief">
+<meta property="og:description" content="Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="markdown-and-file-viewers.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Markdown and file viewers in a vault: what not to build — build brief", "headline": "Markdown and file viewers in a vault: what not to build — build brief", "description": "Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.", "url": "https://sgit.ai/briefs/markdown-and-file-viewers.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.70</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni ni-has">
+    <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../investors/index.html">Investors</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../try/index.html">Try it in the browser</a>
+      <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../deploy/index.html">Deploy</a>
+      <a class="sl" href="../skills/index.html">Skills</a>
+      <a class="sl here" href="../briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../compare/index.html">Comparisons</a>
+      <a class="sl" href="../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../updates/index.html">Updates</a>
+      <a class="sl" href="../articles/index.html">Articles</a>
+      <a class="sl" href="../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../team/index.html">How the site is run</a>
+      <a class="sl" href="../team/index.html#roles">Roles</a>
+      <a class="sl" href="../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../network/index.html">All sites</a>
+      <a class="sl" href="../network/nhi.html">nhi</a>
+      <a class="sl" href="../network/pki.html">pki</a>
+      <a class="sl" href="../network/graphs.html">graphs</a>
+      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Briefs</a> / Markdown and file viewers</p>
+  <h1>Markdown and file viewers in a vault: what not to build</h1>
+  <p class="lead">Two of the most common things an agent is asked to add to a vault &mdash; <b>a markdown viewer</b> and <b>a file/folder browser with raw views</b> &mdash; already exist in the vault platform. Most requests for them are answered by publishing files in the right shape and writing no code at all. This brief says which surface renders what, gives the ladder from zero code to a full app, and states the one contract to honour if you do build your own.</p>
+
+  <div class="note"><b>Read this first, and you may be finished.</b> The browse view already renders every <code>.md</code> file in a vault, and the file tree on its left <em>is</em> the folder viewer. If an agent is about to write a markdown parser or a file explorer into a vault app, it is almost certainly solving a problem the host solved already &mdash; and the version it writes will be worse, bigger, and will not match the rest of the estate.</div>
+
+  <h2 id="ladder">The ladder: stop at the first rung that works</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>You write</th><th>You get</th><th>Reach for it when</th></tr>
+    <tr><td><b>0 &middot; Nothing</b></td><td><code>.md</code> files</td><td>Rendered markdown, a file tree, tabbed previews, internal links that open as tabs, print</td><td>Prose: articles, reports, specs, notes, READMEs. <b>Start here every time</b></td></tr>
+    <tr><td><b>1 &middot; A layout</b></td><td><code>_page.json</code></td><td>Hero, sections, galleries, slideshows, card hubs, embedded PDFs, themes &mdash; and a <code>markdown</code> component that renders one of your <code>.md</code> files inside the layout</td><td>You want a designed page rather than a document, or a hub that navigates to folders</td></tr>
+    <tr><td><b>2 &middot; An app</b></td><td><code>index.html</code> + <code>app.json</code></td><td>Anything &mdash; computed views, filters, queries over your own data</td><td>Only when the answer depends on <em>computing</em> something the host cannot know</td></tr>
+    <tr><td><b>3 &middot; A site viewer</b></td><td>A viewer on your website</td><td>Vault content on a public web page, outside any vault host</td><td>The content must live on a normal site. See <a href="vault-decks-on-a-site.html">the decks brief</a></td></tr>
+  </table></div>
+  <p>The reference for rungs 0 and 1 is <a href="../vault/content-authoring.html"><b>Publishing content without code</b></a>; for rung 2 it is <a href="../vault/vault-apps.html">Building vault apps</a> and <a href="../vault/sg-bridge.html">the window.sg bridge</a>. This page is the decision, not the syntax.</p>
+
+  <h2 id="markdown">Pattern one: the markdown viewer you do not write</h2>
+  <p>Markdown is rendered natively on <b>three</b> surfaces, and none of them requires code:</p>
+  <ul>
+    <li><b>Any <code>.md</code> file in the browse view</b> &mdash; click it in the tree, it opens as a rendered tab. Nothing to register.</li>
+    <li><b>The <code>markdown</code> component in <code>_page.json</code></b> &mdash; <code>{"type":"markdown","props":{"file":"overview.md"}}</code> drops a rendered document into a designed page, or <code>"text"</code> for an inline string. This is how you get prose <em>inside</em> a layout without duplicating it.</li>
+    <li><b>A markdown file as the vault's front door</b> &mdash; the browse view auto-opens the alphabetically first file, so name the entry point <code>README.md</code> or <code>00-INDEX.md</code>. A root <code>_page.json</code> takes priority over both.</li>
+  </ul>
+
+  <h3 id="md-rules">The rules that actually catch people</h3>
+  <ul>
+    <li><b>Raw HTML is stripped and shows as escaped text.</b> This is the single most common failure. Write flat markdown; do not reach for a <code>div</code> when a heading will do.</li>
+    <li><b>Size images with the pipe syntax, not HTML</b> &mdash; <code>![caption|400](img.png)</code>, <code>|60%</code>, <code>|800x600</code>. It lives inside the alt text, so the URL stays clean and the file still renders in any other markdown tool.</li>
+    <li><b>Link a folder through its file, not the folder</b> &mdash; <code>folder/README.md</code>, never <code>folder/</code>. Which file a bare folder link opens depends on sort order, and that is not a contract.</li>
+    <li><b>Nested lists and task lists are not supported.</b> Neither is HTML. Plan the document around that rather than discovering it after a push.</li>
+    <li><b>Image paths are relative to the <code>.md</code> file</b>, not to the vault root.</li>
+    <li><b>No external URLs for vault assets.</b> Vault files only &mdash; which is what makes a published document unable to phone home, and is a feature rather than a limitation.</li>
+  </ul>
+  <p>Front matter adds print control: a <code>---</code>-delimited block at the very top can set <code>page_break_before</code> and carry a literal <code>print_css</code> block, so a document prints as a document. That plus the theme options is usually the whole gap between &ldquo;a markdown file&rdquo; and &ldquo;a deliverable somebody can hand to a client&rdquo;.</p>
+
+  <h2 id="files">Pattern two: the file and folder viewer, and the raw view</h2>
+  <p>The browse view is already a two-pane explorer: tree on the left, tabbed preview on the right, with <code>_page.json</code> pages carrying a <code>{ } Source</code> toggle that flips the rendered layout back to its JSON. <b>If that is enough, you are done.</b></p>
+  <p>You need your own explorer only when the vault's files mean something the host cannot know &mdash; when a <code>.json</code> file is not just JSON but a control, a policy, a graph node, and you want to render it <em>as</em> that. <a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> does exactly this, and states the principle in its own source:</p>
+  <blockquote>&ldquo;A manifest generated at build time, files fetched on click, raw always available and a data view where the build understands the file. <b>Raw is the point &mdash; a catalog that asks to be trusted has to be readable in the form it was written.</b>&rdquo;</blockquote>
+  <p>That is the contract, and it is worth adopting whole:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Rule</th><th>Why</th></tr>
+    <tr><td><b>Raw is always available, for every file</b></td><td>A reader that can only show you its own interpretation is asking to be trusted. One that shows you the bytes is offering to be checked. Never let a rendered view be the only way to see a file</td></tr>
+    <tr><td><b>A reader is an addition, never a replacement</b></td><td>Files the build understands get a view <em>as well as</em> raw. Files it does not understand still open &mdash; a file explorer that hides what it cannot parse is hiding the interesting cases</td></tr>
+    <tr><td><b>Drive the tree from a manifest built at build time</b></td><td>Walking the vault at runtime to list files is slow and re-derives on every load what the build already knew. Generate the folder/file manifest when you build, ship it as data</td></tr>
+    <tr><td><b>Fetch a file on click, not up front</b></td><td>A vault can be tens of megabytes. The tree costs the manifest; a file costs that file</td></tr>
+    <tr><td><b>The empty state tells the reader the deal</b></td><td>AIUC-1's says it in one line: <em>&ldquo;Pick a file on the left. Raw is always there; files the build understands also get their own view.&rdquo;</em></td></tr>
+  </table></div>
+  <p class="small dim">The same instinct runs through the rest of the estate: <code>_page.json</code> has <code>{ } Source</code>, every page on this website has a <code>.md</code> twin, and the deck viewer offers the printed PDF beside the rendered slides. <b>Anything rendered should be one click from the thing it was rendered from.</b></p>
+
+  <h2 id="checklist">Before you call it done</h2>
+  <ul>
+    <li>Did you actually need to build anything? If the answer is markdown in a tree, rung 0 was the answer and the app is a liability.</li>
+    <li>Open every <code>.md</code> file in the browse view and look for escaped HTML &mdash; that is stripped markup, and it means the document was authored against the wrong renderer.</li>
+    <li>Every folder link goes to a file, not a folder.</li>
+    <li>If you built an explorer: every file opens, including the ones with no reader, and raw is reachable for all of them.</li>
+    <li>Check what you published. <a href="../demos/vaults/publishing.html">The publishing method</a> applies here as much as anywhere &mdash; read keys are publishable, vault keys never are, and a scan for sgit credential shapes will not catch an unrelated API key sitting in a vault file.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to hand the builder agent</h2>
+  <pre><code>Make the documents in vault VAULT_ID readable.
+
+Read https://sgit.ai/briefs/markdown-and-file-viewers.md first, then
+https://sgit.ai/vault/content-authoring.md for the syntax.
+
+DO NOT WRITE A MARKDOWN RENDERER OR A FILE EXPLORER. Both exist in the vault
+platform already. Climb this ladder and stop at the first rung that works:
+
+  0. Publish .md files. The browse view renders them and its file tree is the
+     folder viewer. Name the entry point README.md or 00-INDEX.md.
+  1. Add a _page.json if you need a designed page rather than a document. Use
+     its markdown component to pull in the .md files you already wrote, so the
+     prose exists once.
+  2. Only build an app if a view has to COMPUTE something the host cannot know.
+
+Markdown rules that will bite you: raw HTML is stripped and shows as escaped
+text; size images with the pipe syntax inside the alt text; link folders through
+folder/README.md and never folder/; nested lists and task lists are unsupported;
+image paths are relative to the .md file; no external URLs.
+
+If you do build a file view, raw is always available for every file, a reader is
+an addition and never a replacement, the tree is driven by a manifest generated
+at build time, and files are fetched on click.
+
+Report which rung you stopped at and why the rung below it was not enough.</code></pre>
+
+  <p class="small dim" style="margin-top:2rem">Written from the two patterns as they are actually published across the vaults on this site. The syntax reference is <a href="../vault/content-authoring.html">Publishing content without code</a>; the sibling brief for putting vault content on a public website is <a href="vault-decks-on-a-site.html">Decks from a vault, on a site</a>. <a href="index.html">All briefs</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.70</a> · <a href="../admin/index.html">engineering</a> · <a href="markdown-and-file-viewers.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../vault/vault-apps.html">Building vault apps</a>
+    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../vault/content-authoring.html">Content authoring</a>
+    <a href="../vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.70';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

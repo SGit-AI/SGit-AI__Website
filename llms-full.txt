@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.69). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.70). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-97site releases, each verified live before it was called done
+98site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3619,6 +3619,7 @@ This site is built and run by an AI agent — and it doesn't work alone. When it
 | Brief | What it is for |
 |---|---|
 | [**Telemetry from a published vault**](vault-telemetry-append-lanes.md) | How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder |
+| [**Markdown and file viewers: what not to build**](markdown-and-file-viewers.md) | The two most common vault asks are already solved by the platform. The ladder from zero code to a full app, the markdown rules that catch people (stripped HTML, pipe image sizing, folder links), the raw-always contract if you do build a file explorer, and the prompt to hand the builder |
 | [**Decks from a vault, on a site**](vault-decks-on-a-site.md) | How to make the presentations inside a vault play on a web page, read live with a published read key. The `decks/v2` contract a vault must publish, the two sandboxed frames the host renders them in, why a decrypted PDF cannot go in an iframe, the two bugs we hit building it, and the prompt to hand the builder |
 | [**Publishing a vault**](../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
 
@@ -3920,7 +3921,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.69, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.70, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4059,7 +4060,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-97**site releases since 14 August**
+98**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4068,7 +4069,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-41**articles and release notes**
+42**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4426,6 +4427,113 @@ Written from building exactly this, at [v0.2.67 and v0.2.68](../admin/versions.m
 
 
 ==============================================================================
+# Markdown and file viewers in a vault: what not to build — build brief
+
+> Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
+>
+> Page: https://sgit.ai/briefs/markdown-and-file-viewers.html
+
+[Home](../index.md) / [Briefs](index.md) / Markdown and file viewers
+
+# Markdown and file viewers in a vault: what not to build
+
+Two of the most common things an agent is asked to add to a vault — **a markdown viewer** and **a file/folder browser with raw views** — already exist in the vault platform. Most requests for them are answered by publishing files in the right shape and writing no code at all. This brief says which surface renders what, gives the ladder from zero code to a full app, and states the one contract to honour if you do build your own.
+
+**Read this first, and you may be finished.** The browse view already renders every `.md` file in a vault, and the file tree on its left *is* the folder viewer. If an agent is about to write a markdown parser or a file explorer into a vault app, it is almost certainly solving a problem the host solved already — and the version it writes will be worse, bigger, and will not match the rest of the estate.
+
+## The ladder: stop at the first rung that works
+
+|  | You write | You get | Reach for it when |
+|---|---|---|---|
+| **0 · Nothing** | `.md` files | Rendered markdown, a file tree, tabbed previews, internal links that open as tabs, print | Prose: articles, reports, specs, notes, READMEs. **Start here every time** |
+| **1 · A layout** | `_page.json` | Hero, sections, galleries, slideshows, card hubs, embedded PDFs, themes — and a `markdown` component that renders one of your `.md` files inside the layout | You want a designed page rather than a document, or a hub that navigates to folders |
+| **2 · An app** | `index.html` + `app.json` | Anything — computed views, filters, queries over your own data | Only when the answer depends on *computing* something the host cannot know |
+| **3 · A site viewer** | A viewer on your website | Vault content on a public web page, outside any vault host | The content must live on a normal site. See [the decks brief](vault-decks-on-a-site.md) |
+
+The reference for rungs 0 and 1 is [**Publishing content without code**](../vault/content-authoring.md); for rung 2 it is [Building vault apps](../vault/vault-apps.md) and [the window.sg bridge](../vault/sg-bridge.md). This page is the decision, not the syntax.
+
+## Pattern one: the markdown viewer you do not write
+
+Markdown is rendered natively on **three** surfaces, and none of them requires code:
+
+- **Any `.md` file in the browse view** — click it in the tree, it opens as a rendered tab. Nothing to register.
+- **The `markdown` component in `_page.json`** — `{"type":"markdown","props":{"file":"overview.md"}}` drops a rendered document into a designed page, or `"text"` for an inline string. This is how you get prose *inside* a layout without duplicating it.
+- **A markdown file as the vault's front door** — the browse view auto-opens the alphabetically first file, so name the entry point `README.md` or `00-INDEX.md`. A root `_page.json` takes priority over both.
+
+### The rules that actually catch people
+
+- **Raw HTML is stripped and shows as escaped text.** This is the single most common failure. Write flat markdown; do not reach for a `div` when a heading will do.
+- **Size images with the pipe syntax, not HTML** — `![caption|400](img.png)`, `|60%`, `|800x600`. It lives inside the alt text, so the URL stays clean and the file still renders in any other markdown tool.
+- **Link a folder through its file, not the folder** — `folder/README.md`, never `folder/`. Which file a bare folder link opens depends on sort order, and that is not a contract.
+- **Nested lists and task lists are not supported.** Neither is HTML. Plan the document around that rather than discovering it after a push.
+- **Image paths are relative to the `.md` file**, not to the vault root.
+- **No external URLs for vault assets.** Vault files only — which is what makes a published document unable to phone home, and is a feature rather than a limitation.
+
+Front matter adds print control: a `---`-delimited block at the very top can set `page_break_before` and carry a literal `print_css` block, so a document prints as a document. That plus the theme options is usually the whole gap between “a markdown file” and “a deliverable somebody can hand to a client”.
+
+## Pattern two: the file and folder viewer, and the raw view
+
+The browse view is already a two-pane explorer: tree on the left, tabbed preview on the right, with `_page.json` pages carrying a `{ } Source` toggle that flips the rendered layout back to its JSON. **If that is enough, you are done.**
+
+You need your own explorer only when the vault's files mean something the host cannot know — when a `.json` file is not just JSON but a control, a policy, a graph node, and you want to render it *as* that. [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) does exactly this, and states the principle in its own source:
+
+> “A manifest generated at build time, files fetched on click, raw always available and a data view where the build understands the file. **Raw is the point — a catalog that asks to be trusted has to be readable in the form it was written.**”
+
+That is the contract, and it is worth adopting whole:
+
+| Rule | Why |
+|---|---|
+| **Raw is always available, for every file** | A reader that can only show you its own interpretation is asking to be trusted. One that shows you the bytes is offering to be checked. Never let a rendered view be the only way to see a file |
+| **A reader is an addition, never a replacement** | Files the build understands get a view *as well as* raw. Files it does not understand still open — a file explorer that hides what it cannot parse is hiding the interesting cases |
+| **Drive the tree from a manifest built at build time** | Walking the vault at runtime to list files is slow and re-derives on every load what the build already knew. Generate the folder/file manifest when you build, ship it as data |
+| **Fetch a file on click, not up front** | A vault can be tens of megabytes. The tree costs the manifest; a file costs that file |
+| **The empty state tells the reader the deal** | AIUC-1's says it in one line: *“Pick a file on the left. Raw is always there; files the build understands also get their own view.”* |
+
+The same instinct runs through the rest of the estate: `_page.json` has `{ } Source`, every page on this website has a `.md` twin, and the deck viewer offers the printed PDF beside the rendered slides. **Anything rendered should be one click from the thing it was rendered from.**
+
+## Before you call it done
+
+- Did you actually need to build anything? If the answer is markdown in a tree, rung 0 was the answer and the app is a liability.
+- Open every `.md` file in the browse view and look for escaped HTML — that is stripped markup, and it means the document was authored against the wrong renderer.
+- Every folder link goes to a file, not a folder.
+- If you built an explorer: every file opens, including the ones with no reader, and raw is reachable for all of them.
+- Check what you published. [The publishing method](../demos/vaults/publishing.md) applies here as much as anywhere — read keys are publishable, vault keys never are, and a scan for sgit credential shapes will not catch an unrelated API key sitting in a vault file.
+
+## The prompt to hand the builder agent
+
+```
+Make the documents in vault VAULT_ID readable.
+
+Read https://sgit.ai/briefs/markdown-and-file-viewers.md first, then
+https://sgit.ai/vault/content-authoring.md for the syntax.
+
+DO NOT WRITE A MARKDOWN RENDERER OR A FILE EXPLORER. Both exist in the vault
+platform already. Climb this ladder and stop at the first rung that works:
+
+0. Publish .md files. The browse view renders them and its file tree is the
+     folder viewer. Name the entry point README.md or 00-INDEX.md.
+1. Add a _page.json if you need a designed page rather than a document. Use
+     its markdown component to pull in the .md files you already wrote, so the
+     prose exists once.
+2. Only build an app if a view has to COMPUTE something the host cannot know.
+
+Markdown rules that will bite you: raw HTML is stripped and shows as escaped
+text; size images with the pipe syntax inside the alt text; link folders through
+folder/README.md and never folder/; nested lists and task lists are unsupported;
+image paths are relative to the .md file; no external URLs.
+
+If you do build a file view, raw is always available for every file, a reader is
+an addition and never a replacement, the tree is driven by a manifest generated
+at build time, and files are fetched on click.
+
+Report which rung you stopped at and why the rung below it was not enough.
+```
+
+Written from the two patterns as they are actually published across the vaults on this site. The syntax reference is [Publishing content without code](../vault/content-authoring.md); the sibling brief for putting vault content on a public website is [Decks from a vault, on a site](vault-decks-on-a-site.md). [All briefs](index.md)
+
+
+
+==============================================================================
 # SG/Vault & the vault platform — sgit.ai
 
 > The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
@@ -4680,7 +4788,7 @@ Both can coexist in one folder — `_page.json` takes priority in the browse vie
 }
 ```
 
-- **Eleven component types:** `hero`, `section` (the only container — everything else nests in its `children`), `text`, `bullet-points`, `title`, `image`, `gallery` (click-to-lightbox), `slides`, `pdf`, `markdown`, `cards`, `columns`.
+- **Twelve component types:** `hero`, `section` (the only container — everything else nests in its `children`), `text`, `bullet-points`, `title`, `image`, `gallery` (click-to-lightbox), `slides`, `pdf`, `markdown`, `cards`, `columns`.
 - **Themes:** `dark`/`light` shorthand or a full block (mode, accent, font, density, background); six named schemes exist, and all but the dark deck are print-safe.
 - **Paths are vault-relative to the folder holding `_page.json`** — `../` allowed but never outside the vault, and **no external URLs**: vault files only, so a page never phones home.
 - **Live edit preview:** the browse view has a split JSON-editor with a debounced preview — but it **cannot save**; you copy the JSON out and push it with sgit. (The intended loop, verbatim from the internal skill: paste in JSON suggested by an AI, preview it immediately, then commit.)
@@ -4692,6 +4800,8 @@ Both can coexist in one folder — `_page.json` takes priority in the browse vie
 - **Internal links open as tabs**, with extension fallbacks; link folders via `folder/README.md`, not `folder/`. The browse view auto-opens the alphabetically first file — name your entry `README.md` or `00-INDEX.md`, or add a root `_page.json`.
 - **Editing saves** — unlike the `_page.json` editor, the markdown split-editor persists to the vault (writable vaults only).
 - **The traps:** raw HTML is stripped and shows as escaped text; nested lists, task lists, footnotes and anchor-id headings are not supported. Write flat, plain markdown.
+
+**Building this for someone else?** [**The build brief**](../briefs/markdown-and-file-viewers.md) is the decision rather than the syntax — the ladder from zero code to a full app, the markdown rules that actually catch people, the raw-view contract for a file explorer, and a prompt to hand the builder agent.
 
 **The agent angle:** both formats are plain JSON and plain text — which makes them ideal surfaces for AI agents to author. An agent writes `_page.json` or markdown into a vault with `sgit write --json`, a human previews it in the browser, and the whole loop stays end-to-end encrypted.
 
@@ -5069,11 +5179,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.69**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.70**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.69 | 2026-09-09 | this release | THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was nothing telling another agent how to do this to THEIR vault. There is now: a build brief in the same shape as the telemetry one, which is the shape that worked when another team's agent built from it. It states the decks/v2 contract a vault must publish (the manifest and where it may live, deck sources pushing t/notes/html onto S, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs), the rule that governs the whole design — A VAULT MUST BE ABLE TO CHANGE WHAT IS SHOWN AND NEVER WHAT THE PAGE DOES — the two sandboxed frames with their exact CSPs, why the deck source must be handed over by postMessage rather than baked into a srcdoc, and why a decrypted PDF cannot go in an iframe at all. It publishes BOTH BUGS we hit rather than only the finished design: the image-name pattern that excluded underscores and failed silently on fifteen slides, and the unscoped closest() that killed every button on the single-deck pages. It ends with a done-means checklist and a prompt to hand the builder. The reference page now points at the brief for anyone who arrived wanting instructions rather than an explanation. Caught in review: the .md twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build — rewritten to the site's uppercase-placeholder convention, which is the third time that rule has earned its keep. |
+| v0.2.70 | 2026-09-09 | this release | THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw views — already exist in the platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. The brief is therefore a DECISION rather than a syntax reference: a four-rung ladder (publish .md and stop; add a _page.json if you need a designed page rather than a document; build an app only when a view must COMPUTE something the host cannot know; build a site viewer only when the content must live outside a vault host) with the instruction to stop at the first rung that works. It names the three surfaces that render markdown natively, and the rules that actually catch people rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through folder/README.md because a bare folder link resolves by sort order, nested and task lists are unsupported. THE RAW-VIEW CONTRACT, taken from a vault that already lives by it: the AIUC-1 conformance vault's own source says 'raw is the point — a catalog that asks to be trusted has to be readable in the form it was written', and the brief adopts that whole — raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest, files fetched on click. Generalised as the estate's habit: anything rendered should be one click from the thing it was rendered from. CORRECTED WHILE CHECKING THE SCHEMA: the content-authoring page said ELEVEN component types and then listed twelve. It says twelve. |
+| v0.2.69 | 2026-09-09 | obj-cas-imm-d896dff05cc1 | THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was nothing telling another agent how to do this to THEIR vault. There is now: a build brief in the same shape as the telemetry one, which is the shape that worked when another team's agent built from it. It states the decks/v2 contract a vault must publish (the manifest and where it may live, deck sources pushing t/notes/html onto S, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs), the rule that governs the whole design — A VAULT MUST BE ABLE TO CHANGE WHAT IS SHOWN AND NEVER WHAT THE PAGE DOES — the two sandboxed frames with their exact CSPs, why the deck source must be handed over by postMessage rather than baked into a srcdoc, and why a decrypted PDF cannot go in an iframe at all. It publishes BOTH BUGS we hit rather than only the finished design: the image-name pattern that excluded underscores and failed silently on fifteen slides, and the unscoped closest() that killed every button on the single-deck pages. It ends with a done-means checklist and a prompt to hand the builder. The reference page now points at the brief for anyone who arrived wanting instructions rather than an explanation. Caught in review: the .md twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build — rewritten to the site's uppercase-placeholder convention, which is the third time that rule has earned its keep. |
 | v0.2.68 | 2026-09-09 | obj-cas-imm-b7b0f80752be | A PAGE PER DECK, A FOCUS MODE, AND SCOPED LLMS.TXT FILES. Eleven new pages: each of the nine published decks now has one of its own — four under the AIUC-1 conformance vault, five under Licence to Operate — plus an index for each vault. A deck page opens that deck alone, with the tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on and which deck picks that question up. Each has a NOTES ON THIS DECK section that is deliberately empty and says so — that room is the reason a deck deserves a page rather than a tab. FOCUS drops the slide list so the stage takes the full width, for presenting and for screen recording, and the stage is re-fitted rather than merely revealed. A BUG THE PER-DECK PAGES EXPOSED IMMEDIATELY: the mount element carries data-deck on a single-deck page, and the click router used an unscoped closest('[data-deck]'), so it matched the mount for every click inside the viewer — prev, next, notes, focus and the PDF button were all silently dead on exactly the pages just built. Scoped to the tab strip. SCOPED LLMS.TXT: /demos/vaults/llms.txt is the catalogue as an agent index — all 26 vaults with id, category, published date, size, file count and published read key — generated from vaults.json, the same file the table on that page is built from, with each read key lifted from the vault's own page rather than kept in a second list that could disagree. Vault keys appear nowhere, as always. Three more sections got one: /vault, /api and /docs. |
 | v0.2.67 | 2026-09-09 | obj-cas-imm-daf0dde2fed2 | DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — and until now the only way to see them was to open the vault's own app. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser. THE SPLIT IS THE POINT: from the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF; from the site come every control you can click — deck tabs, slide list, prev and next, notes, the PDF button, the deep links — so a vault decides what is SHOWN and never what the page DOES. Vault content reaches the page through two opaque-origin frames: a deck builds its slides by running JavaScript, so it runs in a sandboxed frame with default-src none and posts back a plain array, and the slide markup then renders in a second frame with scripting switched off entirely. WHY THE PDF IS A DOWNLOAD, MEASURED RATHER THAN ASSUMED: Chrome refuses to render a PDF in a sandboxed frame at all — 'failed to load as a plugin, because the frame into which the plugin is loading is sandboxed' — tested across every sandbox combination, so an inline PDF would mean handing vault bytes this origin. The bytes are decrypted in the page and handed to the browser's own download instead; a 2.1 MB PDF arrives byte-identical. Two published deck shapes are handled, because the two vaults differ: one shipped its sources, the other only its built decks. A REAL BUG FOUND BY WALKING EVERYTHING: the first image-name pattern excluded underscores, so fifteen slides rendered with a silently missing screenshot and no error anywhere — all 113 slides across the nine decks are now walked in the browser test, and the count of missing images is zero. New page: READING ONE FILE OUT OF A VAULT, the primitive under every live embed here, written down on its own with the sandbox rules for what comes back.' |
 | v0.2.66 | 2026-09-09 | obj-cas-imm-d2f92005581d | THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing page whether or not it was designed as one: traffic comes from a feed, lands on it directly, and has never seen the vault, the site or the argument. What sat above the seven players was an apology about missing transcripts and a note explaining why a row number in the table could not go stale — two pieces of internal housekeeping addressed to readers who already knew everything the page had to sell. Both are gone from the top. In their place: FOUR WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per turn), so the whole model is legible before a single video plays. Then two calls to action, in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the whole credential and both routes offered (its page here, or straight into the vault UI); and RISKMANDATE.AI, named as where this goes commercially — the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner and driven to a time-bound decision: accept, fund, or fix. The vault is the demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, their order, or the three movements. |
@@ -5876,6 +5987,29 @@ Each carries the author's own description plus a line mapping it to what it demo
 **A number that cannot rot, demonstrated by accident.** Video 4 tells the viewer to look for *"Vault #23"*. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.
 
 Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
+
+### [The second build brief, and it mostly says don't build it](#markdown-and-file-viewers-what-not-to-build) [v0.2.70](../admin/versions.md)
+
+briefsvaultsagentsmethod
+
+Two of the most common things an agent is asked to add to a vault are a **markdown viewer** and a **file/folder browser with raw views**. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. [**The brief now says so.**](../briefs/markdown-and-file-viewers.md)
+
+It is a decision rather than a syntax reference — [the syntax reference already existed](../vault/content-authoring.md). A four-rung ladder, with the instruction to stop at the first rung that works:
+
+1. **Publish `.md` files.** The browse view renders them and its file tree *is* the folder viewer.
+2. **Add a `_page.json`** if you need a designed page rather than a document — and use its `markdown` component to pull in the `.md` files you already wrote, so the prose exists once.
+3. **Build an app** only when a view has to *compute* something the host cannot know.
+4. **Build a site viewer** only when the content must live outside a vault host — [the decks brief](../briefs/vault-decks-on-a-site.md) covers that case.
+
+It names the markdown rules that actually catch people, rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through `folder/README.md` because a bare folder link resolves by sort order, and nested and task lists are unsupported.
+
+**The raw-view contract comes from a vault that already lives by it.** [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) has a file explorer, and its own source states the principle better than a brief could:
+
+"Raw is the point — a catalog that asks to be trusted has to be readable in the form it was written."
+
+The brief adopts that whole: raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest rather than a runtime walk, files fetched on click. Generalised, it is a habit that runs through the whole estate — `_page.json` has its `{ } Source` toggle, every page on this website has a `.md` twin, the deck viewer offers the printed PDF beside the rendered slides. **Anything rendered should be one click from the thing it was rendered from.**
+
+One correction made while checking the schema: the content-authoring page said *eleven* component types and then listed twelve. It says twelve.
 
 ### [Decks and PDFs read straight out of a vault — with the viewer owned by the site](#decks-read-straight-out-of-a-vault) [v0.2.67](../admin/versions.md)
 

@@ -2,7 +2,7 @@
 
 > Seven vertical videos walking through the Licence to Operate vault, collected in the order they are meant to be watched: the mechanism (grant against mandate, blocking, who accepts which risk), how to find and open the vault, and the insurance model behind it — each with what it covers and which part of the vault it demonstrates.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/videos/index.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/videos/index.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
