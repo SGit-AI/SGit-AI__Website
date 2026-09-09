@@ -2,7 +2,7 @@
 
 > A fork of the AIUC-1 catalogue vault that keeps every byte of it and adds one directory: attested_by kept permanently apart from evidenced_by, 53 conformance rows for a named subject where unevidenced is the default, and insurability computed as a query that turns into 53 exclusions when the date moves. Unofficial and derivative; not approved or endorsed by AIUC.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/index.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/index.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -28,6 +28,8 @@ Published as a read key. The vault key is not published and never will be.
 Four decks climb the same four levels the vault does — what the standard is, the vault, the insurance model, and one control zoomed in. They are not screenshots of a deck and not a PDF sitting on a web server: the slides are read out of vault `2wzct4k7` as you click, with the same read key printed at the top of this page.
 
 **What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
+
+**Each deck also has a page of its own** — the same slides, plus room for what the slides cannot carry. [All four decks, one page each →](decks/index.md)
 
 ## A fork, and what a fork is allowed to change
 

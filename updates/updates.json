@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.67",
+  "site_version": "v0.2.68",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -41,6 +41,19 @@
         "method"
       ],
       "summary": "The vaults publish presentations. Four of them sit in the AIUC 1 conformance vault and five in Licence to Operate, and until this release the only way to see one was to open the vault's own app and drive it. They now play on the vault pages themselves, fetched…"
+    },
+    {
+      "slug": "a-page-per-deck-and-a-catalogue-agents-can-read",
+      "title": "A page per deck, a focus mode, and a vault catalogue an agent can read",
+      "date": "2026-09-09",
+      "version": "v0.2.68",
+      "tags": [
+        "vaults",
+        "decks",
+        "llms",
+        "method"
+      ],
+      "summary": "Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them. A page per deck. Each of the nine published decks now has one — four under the AIUC 1 conformance vault, five under Licence to Operate. A deck page ope…"
     },
     {
       "slug": "the-team-for-the-agents-and-investors-in-the-open",

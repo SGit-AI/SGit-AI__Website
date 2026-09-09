@@ -1,0 +1,38 @@
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../../../index.html">Home</a> / <a href="../../index.html">Vaults</a> / <a href="../index.html">Licence to Operate</a> / <a href="index.html">Decks</a> / Insurance model</p>
+  <h1>The insurance model</h1>
+  <p class="lead">The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation.</p>
+
+  <div class="sgv-deck" data-vault="posrhzp3" data-readkey="d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29" data-deck="insurance"></div>
+  <p class="small dim">Read live out of vault <code>posrhzp3</code> with its published read key. Use <b>focus</b> to drop the slide list when presenting, and <b>PDF</b> to download <code>Licence-to-Operate__RiskMandate-MVP.pdf</code> &mdash; decrypted in your browser, not fetched from a file server. <a href="../../../../vault/reading-a-vault-file.html">How this works &rarr;</a></p>
+  <script>
+  (function () {
+    ['vault-embed.js', 'vault-deck.js'].reduce(function (chain, f) {
+      return chain.then(function () {
+        return fetch('../../../../assets/' + f)
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (t) { (0, eval)(t); });
+      });
+    }, Promise.resolve()).catch(function (e) { console.error('[decks] failed to load:', e); });
+  }());
+  </script>
+
+  <h2 id="about">What this deck is doing</h2>
+  <div class="tablewrap"><table>
+    <tr><td><b>The problem it starts from</b></td><td>The pool is shared and mispriced</td></tr>
+    <tr><td><b>What it answers</b></td><td>Premium, experience rating, repricing, the captive</td></tr>
+    <tr><td><b>Vocabulary it introduces</b></td><td>the draw · the acceptor · the premium</td></tr>
+    <tr><td><b>Who it is for</b></td><td>design partners and builders — and anybody who has reached the pool and the price on their own</td></tr>
+    <tr><td><b>Roughly</b></td><td>25 minutes</td></tr>
+    <tr><td><b>Where it deliberately stops</b></td><td>nothing. This is the deep one and it should stay as deep as it is — it should be reached, not simplified</td></tr>
+  </table></div>
+  <p>It ends on the question it does not answer &mdash; <b>&ldquo;What would have to be true to run one policy, on one agent, for one week?&rdquo;</b>.</p>
+
+  <h2 id="more">Notes on this deck</h2>
+  <p class="small dim">Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry &mdash; where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.</p>
+
+  <h2 id="video">On video</h2>
+  <p>The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, <a href="../videos/index.html">the seven shorts</a> are the narrated material.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="acceptor.html">&larr; Who says yes</a> &middot; <a href="index.html">All Licence to Operate decks</a></p>
+</main>

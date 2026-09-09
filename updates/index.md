@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -68,6 +68,22 @@ That matters because a read key is public, but the bytes behind it were written 
 Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.
 
 New page: [**Reading one file out of a vault**](../vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
+
+### [A page per deck, a focus mode, and a vault catalogue an agent can read](#a-page-per-deck-and-a-catalogue-agents-can-read) [v0.2.68](../admin/versions.md)
+
+vaultsdecksllmsmethod
+
+Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them.
+
+**A page per deck.** Each of the nine published decks now has one — [four under the AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/decks/index.md), [five under Licence to Operate](../demos/vaults/licence-to-operate/decks/index.md). A deck page opens that deck alone, tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on, and which deck picks that question up. Each also has a **Notes on this deck** section that is deliberately empty and says so — that room is the whole reason a deck deserves a page rather than a tab, and it is where a narrated recording will be linked once one is mapped to a deck.
+
+**Focus.** A button that drops the slide list so the stage takes the full width — for presenting, and for recording a screen capture where the chrome is just noise. The stage is re-fitted rather than merely revealed, so the slide actually gets bigger.
+
+**A bug the new pages exposed within a minute of existing.** The mount element carries `data-deck` on a single-deck page, and the click router used an unscoped `closest('[data-deck]')` — so it matched the mount element for every click inside the viewer and returned early. Prev, next, notes, focus and the PDF button were all silently dead, on exactly the pages just built. Nothing threw; the buttons simply did nothing. Scoped to the tab strip, and caught because the browser test asserts on the *effect* of clicking rather than on the click landing.
+
+**A catalogue an agent can read.** [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from `vaults.json` — the same file [the vaults table](../demos/vaults/index.md) is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.
+
+Three more sections got their own: [`/vault/llms.txt`](../vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
 
 ## 2026-09-07
 

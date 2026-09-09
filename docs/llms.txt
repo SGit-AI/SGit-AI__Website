@@ -1,0 +1,16 @@
+# Using sgit — sgit.ai
+
+> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.68).
+> The whole-site map is /llms.txt; every page here also exists as `.md`.
+
+## Pages (10)
+- [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
+- [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
+- [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
+- [Quickstart](/docs/quickstart.md): From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull.
+- [sgit for git users](/docs/sgit-for-git-users.md): The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
+- [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
+- [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
+- [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
+- [Sending messages between vaults](/docs/vault-messaging.md): How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
+- [Keys, signatures and encrypting to someone else](/docs/pki.md): The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.

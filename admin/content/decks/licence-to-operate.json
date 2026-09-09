@@ -1,0 +1,152 @@
+{
+ "_what_this_is": "The presentations in this vault, arranged by LEVEL. A level is not a depth of explanation, it is a different problem: somebody who does not know what their agents are doing is not looking for a simpler account of premium calculation, they are looking for a list of what their agents did. Each level's solution creates the next level's question, which is what makes the sequence a narrative rather than a menu. So a deck finds the level, answers that level's question, and ends on the question that opens the next one — never answering it, because answering a question nobody has asked is what produces 'this is too much'. Every level now has a deck. tools/decks/<id>.js is a deck's slides, tools/build.py assembles the page, decks.html renders this file.",
+ "type": "decks/v2",
+ "frame": {
+  "name": "levels",
+  "replaces": "altitudes",
+  "note": "This replaced an 'altitude' frame on 4 September. Altitudes said the audience needed a shallower version of the same explanation; levels say the audience has a different problem. The second is right, and only one frame should be in use — this one.",
+  "rules": [
+   "Find the level. Answer that level's question. End on the question that opens the next one, with no answer on the slide.",
+   "The customer arrives at each question on their own: the deck's job is to recognise the question, never to plant it.",
+   "The value at each level stands alone. Somebody who stops at level 1 has gained something, not bought part of something.",
+   "Introduce one term per level, always in the same words, so the vocabulary accumulates instead of arriving at once.",
+   "Concepts are introduced in order of attrition, not in order of logic — which is why the policy object comes late even though everything refers to it."
+  ]
+ },
+ "levels": [
+  {
+   "n": 1,
+   "problem": "I do not know what my agents are doing",
+   "answers": "Observation: records of what they did, passive mode, a status block",
+   "opens": "Some of this looks wrong, and I cannot say why",
+   "introduces": "the record",
+   "attrition": "none — nobody argues against visibility, and it changes nothing",
+   "customer_words": "understand what the agents are doing"
+  },
+  {
+   "n": 2,
+   "problem": "I can see it and I cannot say what wrong means",
+   "answers": "The grant measured, the mandate written, the delta rendered",
+   "opens": "The delta is enormous. What do I do about it?",
+   "introduces": "grant · mandate · delta",
+   "attrition": "some — somebody has to state what they expected, and a written expectation can be wrong in public",
+   "customer_words": "understand the risks"
+  },
+  {
+   "n": 3,
+   "problem": "The delta is enormous and I cannot close all of it",
+   "answers": "Bound the parts that matter: bands, limits, refusals",
+   "opens": "Refusing stops work. Who says yes when somebody needs more?",
+   "introduces": "the band · the limit · the refusal",
+   "attrition": "real — it stops work, and the people it stops have a strong voice",
+   "customer_words": "control what they are doing"
+  },
+  {
+   "n": 4,
+   "problem": "A refusal needs a decision and a budget behind it",
+   "answers": "Draws, a named acceptor, a shared pool",
+   "opens": "Whose budget is this, and is the price right?",
+   "introduces": "the draw · the acceptor",
+   "attrition": "high — a person's name goes on a decision about risk. This is the politically charged one",
+   "customer_words": "be sure they are operating within bounds"
+  },
+  {
+   "n": 5,
+   "problem": "The pool is shared and mispriced",
+   "answers": "Premium, experience rating, repricing, the captive",
+   "opens": "What would have to be true to run one policy, on one agent, for one week?",
+   "introduces": "the premium",
+   "attrition": "highest — it moves money between teams, which is the thing organisations argue about most",
+   "customer_words": "know what it costs, and what it costs when it goes wrong"
+  }
+ ],
+ "gaps": [],
+ "decks": [
+  {
+   "id": "problem",
+   "file": "deck-problem.html",
+   "slides": "tools/decks/problem.js",
+   "pdf": "deck/Licence-to-Operate__The-Problem.pdf",
+   "title": "The problem",
+   "short": "The problem",
+   "level": 1,
+   "through": 2,
+   "minutes": 12,
+   "audience": "a first conversation: the person who owns the risk, or the person who owns the agents",
+   "one_line": "Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.",
+   "ends_on": "The delta is enormous. What do I do about it?",
+   "introduces": "the record · grant · mandate · delta",
+   "stops_before": "bands, limits, refusals, pools, premiums, price — none of it appears",
+   "footer": "The problem · RiskMandate.ai · level 1 → 2"
+  },
+  {
+   "id": "map",
+   "file": "deck-map.html",
+   "slides": "tools/decks/map.js",
+   "pdf": "deck/Licence-to-Operate__The-Map.pdf",
+   "title": "The map",
+   "short": "The map",
+   "level": 2,
+   "through": 3,
+   "minutes": 15,
+   "audience": "somebody who has accepted the problem and wants to know what it would take in the estate they actually have",
+   "one_line": "A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.",
+   "ends_on": "Which rung are you pointing at, and what would it take to stand on it?",
+   "introduces": "the band · the limit · the refusal",
+   "stops_before": "our roadmap; the last slide is their table, filled in",
+   "footer": "The map · RiskMandate.ai · a companion to levels 2–3",
+   "companion": true
+  },
+  {
+   "id": "bounding",
+   "file": "deck-bounding.html",
+   "slides": "tools/decks/bounding.js",
+   "pdf": "deck/Licence-to-Operate__Bounding-It.pdf",
+   "title": "Bounding it",
+   "short": "Bounding it",
+   "level": 3,
+   "through": 3,
+   "minutes": 15,
+   "audience": "somebody who has seen the delta, tried to close it, and found that some of it is load-bearing",
+   "one_line": "Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying.",
+   "ends_on": "Refusing stops work. Who says yes when somebody needs more?",
+   "introduces": "the band · the limit · the refusal",
+   "stops_before": "pools, draws, acceptors, budgets, price — a bound needs none of them",
+   "footer": "Bounding it · RiskMandate.ai · level 3"
+  },
+  {
+   "id": "acceptor",
+   "file": "deck-acceptor.html",
+   "slides": "tools/decks/acceptor.js",
+   "pdf": "deck/Licence-to-Operate__Who-Says-Yes.pdf",
+   "title": "Who says yes",
+   "short": "Who says yes",
+   "level": 4,
+   "through": 4,
+   "minutes": 20,
+   "audience": "somebody whose bounds work and who now has a queue — and the roles whose names would go on the answers",
+   "one_line": "The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops.",
+   "ends_on": "Whose budget is this, and is the price right?",
+   "introduces": "the draw · the acceptor",
+   "stops_before": "the premium, experience rating and repricing — pricing is level 5",
+   "footer": "Who says yes · RiskMandate.ai · level 4"
+  },
+  {
+   "id": "insurance",
+   "file": "deck.html",
+   "slides": "tools/decks/insurance.js",
+   "pdf": "deck/Licence-to-Operate__RiskMandate-MVP.pdf",
+   "title": "The insurance model",
+   "short": "Insurance model",
+   "level": 5,
+   "through": 5,
+   "minutes": 25,
+   "audience": "design partners and builders — and anybody who has reached the pool and the price on their own",
+   "one_line": "The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation.",
+   "ends_on": "What would have to be true to run one policy, on one agent, for one week?",
+   "introduces": "the draw · the acceptor · the premium",
+   "stops_before": "nothing. This is the deep one and it should stay as deep as it is — it should be reached, not simplified",
+   "footer": "Licence to Operate · RiskMandate.ai · level 5 · delivered from an SG/Vault, terms in the vault, run in your browser"
+  }
+ ]
+}

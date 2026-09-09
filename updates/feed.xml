@@ -26,6 +26,13 @@
       <description>The vaults publish presentations. Four of them sit in the AIUC 1 conformance vault and five in Licence to Operate, and until this release the only way to see one was to open the vault&#x27;s own app and drive it. They now play on the vault pages themselves, fetched…</description>
     </item>
     <item>
+      <title>A page per deck, a focus mode, and a vault catalogue an agent can read</title>
+      <link>https://sgit.ai/updates/index.html#a-page-per-deck-and-a-catalogue-agents-can-read</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-page-per-deck-and-a-catalogue-agents-can-read</guid>
+      <pubDate>2026-09-09</pubDate>
+      <description>Yesterday&#x27;s release put the decks on the vault pages. Three things were missing, and this release adds them. A page per deck. Each of the nine published decks now has one — four under the AIUC 1 conformance vault, five under Licence to Operate. A deck page ope…</description>
+    </item>
+    <item>
       <title>Two new sections — the team, written for the agents; and investors, in the open</title>
       <link>https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#articles-get-a-home-and-a-band-gets-its-width-back</guid>
       <pubDate>2026-08-26</pubDate>
       <description>Three changes, one of them a bug I shipped yesterday. The network band ran the full viewport width. The homepage bands each carry their own measure — .eco has max width:1100px on the component itself, not on a wrapper — and the band added in v0.2.44 simply had…</description>
-    </item>
-    <item>
-      <title>A conference keynote as a vault — the deck, its exports, and the research it came from</title>
-      <link>https://sgit.ai/updates/index.html#a-conference-keynote-as-a-vault</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-conference-keynote-as-a-vault</guid>
-      <pubDate>2026-08-26</pubDate>
-      <description>AI vs. AI — Black Hat Europe 2025 joins the published vaults. It is the twentieth, and the first that is a talk rather than a document set or an app. The whole chain, one credential. The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the…</description>
     </item>
   </channel>
 </rss>

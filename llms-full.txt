@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.67). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.68). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-95site releases, each verified live before it was called done
+96site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -438,6 +438,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
+
+Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt) — every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
 
 
 
@@ -3917,7 +3919,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.67, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.68, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4056,7 +4058,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-95**site releases since 14 August**
+96**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4065,7 +4067,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-39**articles and release notes**
+40**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4930,11 +4932,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.67**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.68**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.67 | 2026-09-09 | this release | DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — and until now the only way to see them was to open the vault's own app. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser. THE SPLIT IS THE POINT: from the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF; from the site come every control you can click — deck tabs, slide list, prev and next, notes, the PDF button, the deep links — so a vault decides what is SHOWN and never what the page DOES. Vault content reaches the page through two opaque-origin frames: a deck builds its slides by running JavaScript, so it runs in a sandboxed frame with default-src none and posts back a plain array, and the slide markup then renders in a second frame with scripting switched off entirely. WHY THE PDF IS A DOWNLOAD, MEASURED RATHER THAN ASSUMED: Chrome refuses to render a PDF in a sandboxed frame at all — 'failed to load as a plugin, because the frame into which the plugin is loading is sandboxed' — tested across every sandbox combination, so an inline PDF would mean handing vault bytes this origin. The bytes are decrypted in the page and handed to the browser's own download instead; a 2.1 MB PDF arrives byte-identical. Two published deck shapes are handled, because the two vaults differ: one shipped its sources, the other only its built decks. A REAL BUG FOUND BY WALKING EVERYTHING: the first image-name pattern excluded underscores, so fifteen slides rendered with a silently missing screenshot and no error anywhere — all 113 slides across the nine decks are now walked in the browser test, and the count of missing images is zero. New page: READING ONE FILE OUT OF A VAULT, the primitive under every live embed here, written down on its own with the sandbox rules for what comes back.' |
+| v0.2.68 | 2026-09-09 | this release | A PAGE PER DECK, A FOCUS MODE, AND SCOPED LLMS.TXT FILES. Eleven new pages: each of the nine published decks now has one of its own — four under the AIUC-1 conformance vault, five under Licence to Operate — plus an index for each vault. A deck page opens that deck alone, with the tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on and which deck picks that question up. Each has a NOTES ON THIS DECK section that is deliberately empty and says so — that room is the reason a deck deserves a page rather than a tab. FOCUS drops the slide list so the stage takes the full width, for presenting and for screen recording, and the stage is re-fitted rather than merely revealed. A BUG THE PER-DECK PAGES EXPOSED IMMEDIATELY: the mount element carries data-deck on a single-deck page, and the click router used an unscoped closest('[data-deck]'), so it matched the mount for every click inside the viewer — prev, next, notes, focus and the PDF button were all silently dead on exactly the pages just built. Scoped to the tab strip. SCOPED LLMS.TXT: /demos/vaults/llms.txt is the catalogue as an agent index — all 26 vaults with id, category, published date, size, file count and published read key — generated from vaults.json, the same file the table on that page is built from, with each read key lifted from the vault's own page rather than kept in a second list that could disagree. Vault keys appear nowhere, as always. Three more sections got one: /vault, /api and /docs. |
+| v0.2.67 | 2026-09-09 | obj-cas-imm-daf0dde2fed2 | DECKS AND PDFS READ STRAIGHT OUT OF A VAULT, WITH THE VIEWER OWNED BY THE SITE. The vaults publish presentations — four on the AIUC-1 conformance page, five on Licence to Operate — and until now the only way to see them was to open the vault's own app. They now play on the vault pages themselves, fetched as ciphertext with the read key already printed at the top of each page and decrypted in the reader's browser. THE SPLIT IS THE POINT: from the vault come the manifest, the slide sources, the speaker notes, the screenshots and the printed PDF; from the site come every control you can click — deck tabs, slide list, prev and next, notes, the PDF button, the deep links — so a vault decides what is SHOWN and never what the page DOES. Vault content reaches the page through two opaque-origin frames: a deck builds its slides by running JavaScript, so it runs in a sandboxed frame with default-src none and posts back a plain array, and the slide markup then renders in a second frame with scripting switched off entirely. WHY THE PDF IS A DOWNLOAD, MEASURED RATHER THAN ASSUMED: Chrome refuses to render a PDF in a sandboxed frame at all — 'failed to load as a plugin, because the frame into which the plugin is loading is sandboxed' — tested across every sandbox combination, so an inline PDF would mean handing vault bytes this origin. The bytes are decrypted in the page and handed to the browser's own download instead; a 2.1 MB PDF arrives byte-identical. Two published deck shapes are handled, because the two vaults differ: one shipped its sources, the other only its built decks. A REAL BUG FOUND BY WALKING EVERYTHING: the first image-name pattern excluded underscores, so fifteen slides rendered with a silently missing screenshot and no error anywhere — all 113 slides across the nine decks are now walked in the browser test, and the count of missing images is zero. New page: READING ONE FILE OUT OF A VAULT, the primitive under every live embed here, written down on its own with the sandbox rules for what comes back.' |
 | v0.2.66 | 2026-09-09 | obj-cas-imm-d2f92005581d | THE SHORTS PAGE REWRITTEN FOR SOMEONE WHO ARRIVES WITH NO CONTEXT. A video page is a landing page whether or not it was designed as one: traffic comes from a feed, lands on it directly, and has never seen the vault, the site or the argument. What sat above the seven players was an apology about missing transcripts and a note explaining why a row number in the table could not go stale — two pieces of internal housekeeping addressed to readers who already knew everything the page had to sell. Both are gone from the top. In their place: FOUR WORDS, AND THE GAP BETWEEN TWO OF THEM — grant, mandate, delta, licence to operate, defined in a table with the counts from the demo beside each (12 capabilities, 4, 8, priced per turn), so the whole model is legible before a single video plays. Then two calls to action, in the order a cold visitor needs them: OPEN THE VAULT, with its read key printed as the whole credential and both routes offered (its page here, or straight into the vault UI); and RISKMANDATE.AI, named as where this goes commercially — the business risk layer for autonomous systems, every autonomous system mapped to its blast radius, given a business owner and driven to a time-bound decision: accept, fund, or fix. The vault is the demonstration; RiskMandate is the product it demonstrates, and the Risk Graph Explorer is the same engine already published as a vault. THE TRANSCRIPT GAP IS NOT HIDDEN, IT IS RIGHT-SIZED: still stated in the footer, in one sentence, with the board card still open. A gap worth disclosing was not worth the first screen. Nothing changed about the seven videos, their order, or the three movements. |
 | v0.2.65 | 2026-09-09 | obj-cas-imm-9407711950c8 | SEVEN SHORTS ON THE LICENCE TO OPERATE VAULT, INDEXED AND PUT IN ORDER. The author recorded a vertical-video series walking through vault posrhzp3; none of the seven was on the site. They now have a page under the vault, collected in the order they are meant to be watched rather than the order a feed would show them: THE MECHANISM (1-3: grant against mandate, what a block looks like, who in the organisation accepts which risk), THE ARTEFACT (4: how to find and open the vault — the one to send someone who wants to poke at it), THE MODEL (5-7: the gap as the place risk lives, the insurance framing, then policies, claims and premiums). Each carries the author's own description, lightly edited, plus a line mapping it to what it demonstrates in the vault or the estate — the delta for 5, the AIUC-1 conformance layer's insurability query for 6, risks.sgit.ai's no-deny-button position for 7. WHAT THE PAGE REFUSES TO PRETEND: these are descriptions, NOT transcripts. All four of YouTube's timedtext endpoints return empty for every one of the seven, so there is no caption track to pull and the words spoken are absent from the site, from llms-full.txt and from the chat pane's read_page tool. That is the exact failure the risk-graph-explorer walkthroughs page was built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and opened as board card T12. A NUMBER THAT CANNOT ROT, DEMONSTRATED: video 4 tells the viewer to look for 'Vault #23'. Checked — Licence to Operate is still #23 and always will be, because v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been stale within a day; naming an identity is safe. Embeds go through youtube-nocookie.com with loading=lazy, so opening the page sets no YouTube cookie until somebody presses play. New portrait 9:16 player CSS, since the existing .vembed is a 16:9 box and a Short in it is two black pillars. |
 | v0.2.64 | 2026-09-07 | obj-cas-imm-80636cf90122 | THE BOARD MOVES INTO A VAULT OF ITS OWN, AND ITS READ KEY IS PUBLISHED. Two releases after the board appeared as files in the site repository, it was clear the shape was right and the home was wrong: moving a card from review to done cost a full site release. So the seventeen cards moved into vault pdulwi6i — issues/-.md, a README with the card format, a five-column board app (index.html, permissions {}) that lists issues/ through sg.vfs and falls back to issues/index.json when served outside a host, and tools/reindex.py to regenerate that index. THE VAULT IS THE TRUTH; THE SITE IS A READER: release.sh now pulls the vault before it builds (step 0), the loader reads admin/content/team/issues/issues/ — which IS the vault's working tree, cloned in place with its encrypted store gitignored and its card files tracked as the build's input — and the board page labels its columns as a snapshot at the site version, with the read key and one open-live button above them. Moving a card is now sgit push, and the board is live the moment it lands; the site catches up at its next release. PUBLISHED AS ROW #26 on the vaults table with its own page, following the method: the write key escrowed in the gitignored tier, the audit run (nothing secret-shaped beyond the read key in its own README), the app screenshotted by driving it, permissions stated. The Sherpa's board prompt and the team page's 'where things are' now point at the vault. One design note: the app works in two places on purpose — under a vault host it reads the files directly and needs no index, served flat it reads the index — because a board that only renders inside one host is a board nobody can screenshot, test or read from a script. |
@@ -5737,6 +5740,22 @@ That matters because a read key is public, but the bytes behind it were written 
 Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.
 
 New page: [**Reading one file out of a vault**](../vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
+
+### [A page per deck, a focus mode, and a vault catalogue an agent can read](#a-page-per-deck-and-a-catalogue-agents-can-read) [v0.2.68](../admin/versions.md)
+
+vaultsdecksllmsmethod
+
+Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them.
+
+**A page per deck.** Each of the nine published decks now has one — [four under the AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/decks/index.md), [five under Licence to Operate](../demos/vaults/licence-to-operate/decks/index.md). A deck page opens that deck alone, tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on, and which deck picks that question up. Each also has a **Notes on this deck** section that is deliberately empty and says so — that room is the whole reason a deck deserves a page rather than a tab, and it is where a narrated recording will be linked once one is mapped to a deck.
+
+**Focus.** A button that drops the slide list so the stage takes the full width — for presenting, and for recording a screen capture where the chrome is just noise. The stage is re-fitted rather than merely revealed, so the slide actually gets bigger.
+
+**A bug the new pages exposed within a minute of existing.** The mount element carries `data-deck` on a single-deck page, and the click router used an unscoped `closest('[data-deck]')` — so it matched the mount element for every click inside the viewer and returned early. Prev, next, notes, focus and the PDF button were all silently dead, on exactly the pages just built. Nothing threw; the buttons simply did nothing. Scoped to the tab strip, and caught because the browser test asserts on the *effect* of clicking rather than on the click landing.
+
+**A catalogue an agent can read.** [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from `vaults.json` — the same file [the vaults table](../demos/vaults/index.md) is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.
+
+Three more sections got their own: [`/vault/llms.txt`](../vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
 
 ## 2026-09-07
 
@@ -7639,6 +7658,8 @@ Four decks climb the same four levels the vault does — what the standard is, t
 
 **What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
 
+**Each deck also has a page of its own** — the same slides, plus room for what the slides cannot carry. [All four decks, one page each →](decks/index.md)
+
 ## A fork, and what a fork is allowed to change
 
 The [AIUC-1 catalogue](../aiuc-1-graph/index.md) is still published here, unchanged, and it is still the thing to read if what you want is the standard as data. **This vault contains all of it.** Not a summary of it, not a re-derivation — the same bytes:
@@ -7967,6 +7988,8 @@ Five decks, in the order the argument is meant to land: the problem, the map, bo
 
 **What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
 
+**Each deck also has a page of its own** — the same slides, plus room for what the slides cannot carry. [All five decks, one page each →](decks/index.md)
+
 ## The idea worth stealing: the delta
 
 Three sets, and the gap between two of them is the whole argument:
@@ -8165,6 +8188,380 @@ A deep dive into the insurance model powering the MVP: how policies (licences) a
 - **The acceptance model it inherits.** [The Risk Graph Explorer](../../risk-graph-explorer/index.md), and [its three walkthroughs](../../risk-graph-explorer/videos/index.md) — which are transcribed, and are the standard this page is not yet meeting.
 
 All seven videos are on [the author's channel ↗](https://www.youtube.com/@diniscruz-ai). Embedded through `youtube-nocookie.com`, and lazily — opening this page sets no YouTube cookie until you press play on one. The text under each video is the author's own description, not a transcript: these seven carry no caption track, so the spoken words are not on this site yet and [transcribing them is on the board](../../../../team/board.md). [← The vault](../index.md) · [All published vaults](../../index.md)
+
+
+
+==============================================================================
+# The AIUC-1 conformance layer decks — sgit.ai
+
+> 4 decks published inside vault 2wzct4k7, each on its own page, with the slides read live out of the vault using its published read key.
+>
+> Page: https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/index.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [AIUC-1 conformance layer](../index.md) / Decks
+
+# The AIUC-1 conformance layer decks
+
+4 presentations published inside vault `2wzct4k7`, each with a page of its own. The slides are read live out of the vault with its published read key — the viewer is this site's, the content is the vault's. They climb in order: a deck finds its level, answers that level's question, and ends on the question that opens the next one.
+
+| Deck | Level | What it answers |
+|---|---|---|
+| **[What AIUC-1 is](aiuc1.md)** | L1 | The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say |
+| **[The vault: files, graphs, and the query](vault.md)** | L2 | A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it |
+| **[How RiskMandate.ai's insurance model works with AIUC-1](insurance.md)** | L3 | Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes |
+| **[Zoom in: D003 — one control, to the byte, measured, and run](d003.md)** | L4 | One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs |
+
+[← The AIUC-1 conformance layer vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+
+
+
+==============================================================================
+# What AIUC-1 is — AIUC-1 conformance layer decks
+
+> The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say
+>
+> Page: https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/aiuc1.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [AIUC-1 conformance layer](../index.md) / [Decks](index.md) / What AIUC-1 is
+
+# What AIUC-1 is
+
+The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say
+
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__What-It-Is.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | I am told to be AIUC-1 compliant and I do not know what that means |
+|---|---|
+| **What it answers** | The standard, read from its own pages: what it contains and what it does not |
+| **Vocabulary it introduces** | the control, the requirement, the crosswalk |
+
+It ends on the question it does not answer — **“How would anyone know whether we do these things?”** — which is where [The vault: files, graphs, and the query](vault.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+[All AIUC-1 conformance layer decks](index.md) · [The vault: files, graphs, and the query →](vault.md)
+
+
+
+==============================================================================
+# The vault: files, graphs, and the query — AIUC-1 conformance layer decks
+
+> A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
+>
+> Page: https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/vault.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [AIUC-1 conformance layer](../index.md) / [Decks](index.md) / The vault
+
+# The vault: files, graphs, and the query
+
+A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
+
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Vault.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | I have the list and no way to see whether we do any of it |
+|---|---|
+| **What it answers** | The vault: the catalogue as data, the graph, the conformance layer, the query |
+| **Vocabulary it introduces** | the attestation, the two edges, the trail |
+
+It ends on the question it does not answer — **“Who carries the risk of the ones we do not do, and for how long?”** — which is where [How RiskMandate.ai's insurance model works with AIUC-1](insurance.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+[← What AIUC-1 is](aiuc1.md) · [All AIUC-1 conformance layer decks](index.md) · [How RiskMandate.ai's insurance model works with AIUC-1 →](insurance.md)
+
+
+
+==============================================================================
+# How RiskMandate.ai's insurance model works with AIUC-1 — AIUC-1 conformance layer decks
+
+> Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes
+>
+> Page: https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/insurance.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [AIUC-1 conformance layer](../index.md) / [Decks](index.md) / The insurance model
+
+# How RiskMandate.ai's insurance model works with AIUC-1
+
+Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes
+
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Insurance-Model.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | I can see the gaps and nobody owns them |
+|---|---|
+| **What it answers** | The insurance model: grant, mandate, delta, the policy, the licence — with the standard as its vocabulary |
+| **Vocabulary it introduces** | the barrier, the condition, the exclusion |
+
+It ends on the question it does not answer — **“What would have to be true to write one policy, for one agent, for one month?”** — which is where [Zoom in: D003 — one control, to the byte, measured, and run](d003.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+[← The vault: files, graphs, and the query](vault.md) · [All AIUC-1 conformance layer decks](index.md) · [Zoom in: D003 — one control, to the byte, measured, and run →](d003.md)
+
+
+
+==============================================================================
+# Zoom in: D003 — one control, to the byte, measured, and run — AIUC-1 conformance layer decks
+
+> One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs
+>
+> Page: https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/d003.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [AIUC-1 conformance layer](../index.md) / [Decks](index.md) / Zoom in: D003
+
+# Zoom in: D003 — one control, to the byte, measured, and run
+
+One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs
+
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__Zoom-In-D003.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | A control passes and I cannot tell whether the pass means anything |
+|---|---|
+| **What it answers** | One control zoomed in: the bytes, the states with their granularity, the grant per tool, the policy it becomes, a simulation that runs |
+| **Vocabulary it introduces** | granularity, the vacuous pass, outside-only, the grant per tool |
+
+It ends on the question it does not answer — **“Does the correspondence hold for B006 and D004, and who measures from outside?”**.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+[← How RiskMandate.ai's insurance model works with AIUC-1](insurance.md) · [All AIUC-1 conformance layer decks](index.md)
+
+
+
+==============================================================================
+# The Licence to Operate decks — sgit.ai
+
+> 5 decks published inside vault posrhzp3, each on its own page, with the slides read live out of the vault using its published read key.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/index.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / Decks
+
+# The Licence to Operate decks
+
+5 presentations published inside vault `posrhzp3`, each with a page of its own. The slides are read live out of the vault with its published read key — the viewer is this site's, the content is the vault's. They climb in order: a deck finds its level, answers that level's question, and ends on the question that opens the next one.
+
+| Deck | Level | What it answers |
+|---|---|---|
+| **[The problem](problem.md)** | L1 | Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there. |
+| **[The map](map.md)** | L2 | A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly. |
+| **[Bounding it](bounding.md)** | L3 | Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying. |
+| **[Who says yes](acceptor.md)** | L4 | The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops. |
+| **[The insurance model](insurance.md)** | L5 | The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation. |
+
+**There are videos on this vault too.** The author recorded a series walking through it — some of them narrate this material directly. [**The seven shorts →**](../videos/index.md)
+
+[← The Licence to Operate vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+
+
+
+==============================================================================
+# The problem — Licence to Operate decks
+
+> Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/problem.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / [Decks](index.md) / The problem
+
+# The problem
+
+Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.
+
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Problem.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | I do not know what my agents are doing |
+|---|---|
+| **What it answers** | Observation: records of what they did, passive mode, a status block |
+| **Vocabulary it introduces** | the record · grant · mandate · delta |
+| **Who it is for** | a first conversation: the person who owns the risk, or the person who owns the agents |
+| **Roughly** | 12 minutes |
+| **Where it deliberately stops** | bands, limits, refusals, pools, premiums, price — none of it appears |
+
+It ends on the question it does not answer — **“The delta is enormous. What do I do about it?”** — which is where [The map](map.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+## On video
+
+The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
+
+[All Licence to Operate decks](index.md) · [The map →](map.md)
+
+
+
+==============================================================================
+# The map — Licence to Operate decks
+
+> A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/map.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / [Decks](index.md) / The map
+
+# The map
+
+A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
+
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Map.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | I can see it and I cannot say what wrong means |
+|---|---|
+| **What it answers** | The grant measured, the mandate written, the delta rendered |
+| **Vocabulary it introduces** | the band · the limit · the refusal |
+| **Who it is for** | somebody who has accepted the problem and wants to know what it would take in the estate they actually have |
+| **Roughly** | 15 minutes |
+| **Where it deliberately stops** | our roadmap; the last slide is their table, filled in |
+
+It ends on the question it does not answer — **“Which rung are you pointing at, and what would it take to stand on it?”** — which is where [Bounding it](bounding.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+## On video
+
+The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
+
+[← The problem](problem.md) · [All Licence to Operate decks](index.md) · [Bounding it →](bounding.md)
+
+
+
+==============================================================================
+# Bounding it — Licence to Operate decks
+
+> Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/bounding.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / [Decks](index.md) / Bounding it
+
+# Bounding it
+
+Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying.
+
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Bounding-It.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | The delta is enormous and I cannot close all of it |
+|---|---|
+| **What it answers** | Bound the parts that matter: bands, limits, refusals |
+| **Vocabulary it introduces** | the band · the limit · the refusal |
+| **Who it is for** | somebody who has seen the delta, tried to close it, and found that some of it is load-bearing |
+| **Roughly** | 15 minutes |
+| **Where it deliberately stops** | pools, draws, acceptors, budgets, price — a bound needs none of them |
+
+It ends on the question it does not answer — **“Refusing stops work. Who says yes when somebody needs more?”** — which is where [Who says yes](acceptor.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+## On video
+
+The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
+
+[← The map](map.md) · [All Licence to Operate decks](index.md) · [Who says yes →](acceptor.md)
+
+
+
+==============================================================================
+# Who says yes — Licence to Operate decks
+
+> The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/acceptor.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / [Decks](index.md) / Who says yes
+
+# Who says yes
+
+The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops.
+
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Who-Says-Yes.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | A refusal needs a decision and a budget behind it |
+|---|---|
+| **What it answers** | Draws, a named acceptor, a shared pool |
+| **Vocabulary it introduces** | the draw · the acceptor |
+| **Who it is for** | somebody whose bounds work and who now has a queue — and the roles whose names would go on the answers |
+| **Roughly** | 20 minutes |
+| **Where it deliberately stops** | the premium, experience rating and repricing — pricing is level 5 |
+
+It ends on the question it does not answer — **“Whose budget is this, and is the price right?”** — which is where [The insurance model](insurance.md) picks up.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+## On video
+
+The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
+
+[← Bounding it](bounding.md) · [All Licence to Operate decks](index.md) · [The insurance model →](insurance.md)
+
+
+
+==============================================================================
+# The insurance model — Licence to Operate decks
+
+> The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation.
+>
+> Page: https://sgit.ai/demos/vaults/licence-to-operate/decks/insurance.html
+
+[Home](../../../../index.md) / [Vaults](../../index.md) / [Licence to Operate](../index.md) / [Decks](index.md) / Insurance model
+
+# The insurance model
+
+The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation.
+
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__RiskMandate-MVP.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+
+## What this deck is doing
+
+| **The problem it starts from** | The pool is shared and mispriced |
+|---|---|
+| **What it answers** | Premium, experience rating, repricing, the captive |
+| **Vocabulary it introduces** | the draw · the acceptor · the premium |
+| **Who it is for** | design partners and builders — and anybody who has reached the pool and the price on their own |
+| **Roughly** | 25 minutes |
+| **Where it deliberately stops** | nothing. This is the deep one and it should stay as deep as it is — it should be reached, not simplified |
+
+It ends on the question it does not answer — **“What would have to be true to run one policy, on one agent, for one week?”**.
+
+## Notes on this deck
+
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+
+## On video
+
+The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
+
+[← Who says yes](acceptor.md) · [All Licence to Operate decks](index.md)
 
 
 
