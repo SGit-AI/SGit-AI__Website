@@ -1,0 +1,109 @@
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Briefs</a> / Decks from a vault, on a site</p>
+  <h1>Publishing a vault's decks onto a website</h1>
+  <p class="lead">A build brief for an agent who has a vault containing presentations and wants them to <em>play on a web page</em> &mdash; not as screenshots, not as a PDF on a file server, but read out of the encrypted vault as the reader clicks. It states the contract a vault must satisfy, the split that keeps it safe, the two mistakes we made building it, and the prompt to hand the agent who will do the work.</p>
+
+  <div class="note"><b>What this produces.</b> A page like <a href="../demos/vaults/aiuc-1-conformance/decks/aiuc1.html">this one</a>: slide list, prev and next, speaker notes, a focus mode for presenting, a PDF download, and a deep link to a single slide &mdash; over slides that live in vault <code>2wzct4k7</code> and are fetched and decrypted in the reader's browser. No account, nothing installed, and the server serving the bytes cannot read them.</div>
+
+  <h2 id="reading">What to read first</h2>
+  <ul>
+    <li><a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a> &mdash; the primitive underneath all of this: derive the address from a read key, fetch ciphertext over CORS, decrypt with Web Crypto. If you only read one thing, read this.</li>
+    <li><a href="../demos/vaults/publishing.html"><b>Publishing a vault: the method</b></a> &mdash; how a vault gets a published read key in the first place, including escrowing the write key <em>before</em> publishing.</li>
+    <li>The working implementation, ~380 lines, which you may copy: <code>assets/vault-deck.js</code> on this site, with the reader it builds on in <code>assets/vault-embed.js</code>.</li>
+  </ul>
+
+  <h2 id="split">The one rule: the viewer is the site's, the data is the vault's</h2>
+  <p>A read key is public, so anyone can read the vault. The risk runs the other way: <b>the bytes coming out of the vault were written by whoever holds the write key, and they are untrusted input to your page.</b> Rendering them into your own document hands a vault author your origin &mdash; your cookies, your storage, your DOM, your users.</p>
+  <div class="tablewrap"><table>
+    <tr><th>From the vault</th><th>From the site</th></tr>
+    <tr><td>The deck manifest, each deck's slides, the speaker notes, the screenshots, the printed PDF</td><td>The deck tabs, the slide list, prev and next, the notes toggle, focus, the PDF button, the deep links, and the sandbox policy the whole thing runs under</td></tr>
+  </table></div>
+  <p>Stated as a test you can apply to any design: <b>a vault must be able to change what is shown and never what the page does.</b> If a vault can add a button, change where a link goes, or read anything belonging to the host page, the split is wrong.</p>
+
+  <h2 id="contract">The contract: what the vault must publish</h2>
+  <p>This is the <code>decks/v2</code> layout, as published by the two vaults on this site. A viewer written to it will render any vault that follows it.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Path</th><th>Required</th><th>What it holds</th></tr>
+    <tr><td><code>decks/decks.json</code><br><span class="small dim">or <code>decks.json</code> at the root</span></td><td><b>Yes</b></td><td>The manifest. <code>type: "decks/v2"</code>, an optional <code>levels</code> array, and a <code>decks</code> array</td></tr>
+    <tr><td><code>decks/&lt;id&gt;.js</code></td><td>Preferred</td><td>One deck's slides as source. Tens of KB, because screenshots are not in it</td></tr>
+    <tr><td><code>decks/shell.html</code></td><td>Preferred</td><td>Its <code>&lt;style&gt;</code> block is the deck's look. Its <code>&lt;script&gt;</code> is the vault's own viewer and is never read by the host</td></tr>
+    <tr><td><code>deck/img/&lt;name&gt;.jpg</code></td><td>If slides use images</td><td>One file per screenshot, named exactly as the slide references it</td></tr>
+    <tr><td><code>deck/&lt;file&gt;.pdf</code></td><td>Optional</td><td>The printed deck, offered as a download</td></tr>
+  </table></div>
+  <p>Each entry in <code>decks</code> needs <code>id</code> and <code>title</code>. Everything else is optional but earns its keep, because a host can build a page around it rather than around prose somebody has to write twice: <code>short</code> (a tab label), <code>level</code>, <code>one_line</code>, <code>pdf</code>, <code>file</code>, <code>introduces</code>, <code>ends_on</code>, <code>audience</code>, <code>minutes</code>, <code>stops_before</code>. The deck pages on this site are generated from exactly those fields.</p>
+
+  <h3 id="slides">The slide contract</h3>
+  <p>A deck source is a classic script that pushes onto a global <code>S</code>:</p>
+  <pre><code>S.push({ t: 'What AIUC-1 is', notes: `the speaker notes`, html: `…the slide markup…` });</code></pre>
+  <p class="small dim">Three keys, and only three: <code>t</code> is the title the slide list shows, <code>notes</code> are the speaker notes, and <code>html</code> is the slide's markup as a string.</p>
+  <ul>
+    <li><b>The stage is 1600&times;900.</b> Slide CSS is written against that viewport and nothing else. A host should size its frame to exactly that and scale the <em>element</em>, not the document &mdash; then a slide looks identical at any column width, with no reflow and no script inside the frame.</li>
+    <li><b>Images are named, never pathed.</b> The helper <code>img(name, style)</code> emits <code>&lt;img data-img="name"&gt;</code> with no <code>src</code>. This is the single most important detail in the whole contract: because a slide names an image instead of pointing at a URL, the host can resolve it to decrypted bytes without the slide ever being able to make a network request. <b>Do not put a URL in a slide.</b></li>
+    <li><b>Slides are static markup.</b> The deck's <em>build</em> runs JavaScript; a rendered slide must not need any.</li>
+  </ul>
+
+  <h3 id="built">If your vault published only its built decks</h3>
+  <p>One of the two vaults here shipped <code>decks/</code> sources; the other shipped only the assembled <code>deck-&lt;id&gt;.html</code> files, with screenshots already base64 inside them. Both work, and a host should handle both: prefer the source, and fall back to the built file <b>truncated at the literal comment <code>/* ---------- shell */</code></b>, which is where the vault's own viewer begins and the declarations end. The cost of the fallback is size &mdash; hundreds of KB per deck rather than tens.</p>
+
+  <h2 id="host">The host side: two frames, and why</h2>
+  <p>A deck cannot simply be inserted into the page, and it cannot simply be trusted. Two sandboxed, opaque-origin iframes, each with its own CSP:</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Sandbox</th><th>CSP</th><th>Job</th></tr>
+    <tr><td><b>Parse frame</b></td><td><code>allow-scripts</code></td><td><code>default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'</code></td><td>A deck builds its slides by running, so it runs here &mdash; no origin, no network &mdash; and posts back a plain array. <b>The site never evals vault code.</b></td></tr>
+    <tr><td><b>Render frame</b></td><td><code>sandbox=""</code> &mdash; no <code>allow-scripts</code> at all</td><td><code>default-src 'none'; img-src data:; style-src 'unsafe-inline'</code></td><td>Slide markup, with images already resolved to <code>data:</code> URIs by the host. Nothing in a slide can phone home</td></tr>
+  </table></div>
+  <p>Hand the deck source to the parse frame <b>over <code>postMessage</code>, not baked into the <code>srcdoc</code></b> &mdash; otherwise a deck containing the characters <code>&lt;/script&gt;</code> breaks out of the bootstrap that runs it.</p>
+
+  <h3 id="pdf">The PDF is a download, and this is not a preference</h3>
+  <p>The obvious move &mdash; decrypt the PDF, wrap it in a blob, point a sandboxed iframe at it &mdash; does not work. Chrome refuses, in every sandbox combination:</p>
+  <blockquote><code>Failed to load 'blob:&hellip;' as a plugin, because the frame into which the plugin is loading is sandboxed.</code></blockquote>
+  <p>The browser's PDF viewer is a plugin, and plugins do not run in sandboxed frames. Your three options are: drop the sandbox (gives vault bytes your origin &mdash; do not), ship a JavaScript PDF renderer (works, costs about a megabyte of vendored dependency), or <b>decrypt in the page and hand the bytes to the browser's own download</b>, which is what this site does. Trigger the download from the page and not from inside a frame: a sandbox without <code>allow-downloads</code> blocks it, and granting that to untrusted content is the wrong way round.</p>
+
+  <h2 id="mistakes">Two mistakes we made, so you do not</h2>
+  <ol>
+    <li><b>An image-name pattern that excluded underscores.</b> Fifteen slides rendered with a silently missing screenshot &mdash; no console error, no gap in the layout, nothing to notice by clicking through a few slides. Accept <code>[A-Za-z0-9_.-]</code> in image names, and <b>assert that the count of unresolved images is zero</b> rather than trusting the page to look right.</li>
+    <li><b>An unscoped <code>closest('[data-deck]')</code> in the click router.</b> On a page dedicated to one deck the mount element itself carries <code>data-deck</code>, so every click inside the viewer matched it and returned early: prev, next, notes, focus and the PDF button were all dead, on exactly the pages just built, with nothing thrown. Scope event delegation to the control you mean &mdash; and <b>test the effect of a click, not that the click landed</b>.</li>
+  </ol>
+
+  <h2 id="checklist">Before you call it done</h2>
+  <ul>
+    <li>Walk <b>every slide of every deck</b> in a real browser and assert zero unresolved images. Ours is 113 slides across 9 decks; the walk takes under a minute and found the bug above.</li>
+    <li>Confirm the render frame has <b>no</b> <code>allow-scripts</code>, and that the parse frame has <b>no</b> <code>allow-same-origin</code>.</li>
+    <li>Download a PDF and check the byte count against the file in the vault. Ours matches exactly at 2,220,725 bytes.</li>
+    <li>Check that a deep link to a slide restores that deck and that slide.</li>
+    <li><b>Check what you published.</b> Read keys on the page are fine and are the point; a vault key on a page is a catastrophe, because it is write access. Grep the built site for vault-key shapes before every release &mdash; and note that a scan built for <em>sgit</em> credential shapes will not catch an unrelated API key sitting in a vault file, which is how we once nearly published an OpenRouter key.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to hand the builder agent</h2>
+  <p>Copy this, replace the uppercase placeholders, and give it to the agent that owns the site:</p>
+  <pre><code>Add a deck viewer to SITE so the presentations in vault VAULT_ID play on the page,
+read live with the published read key READ_KEY.
+
+Read https://sgit.ai/briefs/vault-decks-on-a-site.md and
+https://sgit.ai/vault/reading-a-vault-file.md first. A working implementation is
+assets/vault-deck.js and assets/vault-embed.js on sgit.ai; copying it is expected.
+
+The rule that governs the design: the viewer is the site's and the data is the
+vault's. Every control belongs to the site. Vault content renders only inside
+sandboxed opaque-origin iframes — the deck source in one with allow-scripts and
+default-src 'none', the slide markup in one with scripting off entirely and only
+data: images permitted. Never eval vault code in the page origin. Never put a
+decrypted PDF in an iframe; decrypt it in the page and hand it to the browser's
+own download.
+
+The vault publishes decks/v2: a manifest at decks/decks.json or decks.json, deck
+sources at decks/DECK_ID.js pushing {t, notes, html} onto S, screenshots at
+deck/img/NAME.jpg referenced symbolically by a data-img attribute, the deck's CSS
+in the style block of decks/shell.html, and PDFs at deck/FILE.pdf. If the vault
+published only built decks, take the largest script block out of the deck's HTML
+file and truncate it at the comment /* ---------- shell */.
+
+The stage is 1600x900: size the frame to that and scale the element.
+
+Done means: every slide of every deck walked in a browser with zero unresolved
+images asserted, a PDF downloaded and byte-count-checked against the vault, deep
+links restoring deck and slide, and the built site grepped for vault-key shapes.
+Report the slide count, the deck count and the missing-image count.</code></pre>
+
+  <p class="small dim" style="margin-top:2rem">Written from building exactly this, at <a href="../admin/versions.html">v0.2.67 and v0.2.68</a>. If you follow it and something here is wrong, that is worth telling us &mdash; the last brief on this site was corrected by the team that read it, and <a href="vault-telemetry-append-lanes.html">the correction sits above the mistake</a>. <a href="index.html">All briefs</a> &middot; <a href="../vault/reading-a-vault-file.html">Reading one file out of a vault</a> &middot; <a href="../demos/vaults/aiuc-1-conformance/decks/index.html">The live result</a></p>
+</main>

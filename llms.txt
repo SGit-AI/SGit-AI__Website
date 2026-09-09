@@ -172,6 +172,7 @@ Quick answers (so you do not need a second request for the common questions):
 ## Cross-team briefs
 - [Cross-team briefs](/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 - [Telemetry from a published vault](/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
+- [Publishing a vault’s decks onto a website](/briefs/vault-decks-on-a-site.md): A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
 
 ## The team (how the site is run by one human and a team of agents — start here if you are an agent)
 - [How the site is run](/team/index.md): sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
