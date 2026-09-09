@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.69'
+SITE_VERSION = 'v0.2.70'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.69', '2026-09-09', 'this release',
+    ('v0.2.70', '2026-09-09', 'this release',
+     "THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things "
+     "an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw "
+     "views — already exist in the platform, and most requests for them are answered by "
+     "publishing files in the right shape and writing no code at all. The brief is therefore a "
+     "DECISION rather than a syntax reference: a four-rung ladder (publish .md and stop; add a "
+     "_page.json if you need a designed page rather than a document; build an app only when a "
+     "view must COMPUTE something the host cannot know; build a site viewer only when the "
+     "content must live outside a vault host) with the instruction to stop at the first rung "
+     "that works. It names the three surfaces that render markdown natively, and the rules that "
+     "actually catch people rather than the full syntax: raw HTML is stripped and shows as "
+     "escaped text, images size through the pipe syntax inside the alt text, folder links must "
+     "go through folder/README.md because a bare folder link resolves by sort order, nested and "
+     "task lists are unsupported. THE RAW-VIEW CONTRACT, taken from a vault that already lives "
+     "by it: the AIUC-1 conformance vault's own source says 'raw is the point — a catalog that "
+     "asks to be trusted has to be readable in the form it was written', and the brief adopts "
+     "that whole — raw always available for every file, a reader as an addition and never a "
+     "replacement, the tree driven by a build-time manifest, files fetched on click. Generalised "
+     "as the estate's habit: anything rendered should be one click from the thing it was "
+     "rendered from. CORRECTED WHILE CHECKING THE SCHEMA: the content-authoring page said "
+     "ELEVEN component types and then listed twelve. It says twelve.",
+     ),
+    ('v0.2.69', '2026-09-09', 'obj-cas-imm-d896dff05cc1',
      "THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the "
      "MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was "
      "nothing telling another agent how to do this to THEIR vault. There is now: a build brief "

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,6 +66,29 @@ Each carries the author's own description plus a line mapping it to what it demo
 **A number that cannot rot, demonstrated by accident.** Video 4 tells the viewer to look for *"Vault #23"*. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.
 
 Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
+
+### [The second build brief, and it mostly says don't build it](#markdown-and-file-viewers-what-not-to-build) [v0.2.70](../admin/versions.md)
+
+briefsvaultsagentsmethod
+
+Two of the most common things an agent is asked to add to a vault are a **markdown viewer** and a **file/folder browser with raw views**. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. [**The brief now says so.**](../briefs/markdown-and-file-viewers.md)
+
+It is a decision rather than a syntax reference — [the syntax reference already existed](../vault/content-authoring.md). A four-rung ladder, with the instruction to stop at the first rung that works:
+
+1. **Publish `.md` files.** The browse view renders them and its file tree *is* the folder viewer.
+2. **Add a `_page.json`** if you need a designed page rather than a document — and use its `markdown` component to pull in the `.md` files you already wrote, so the prose exists once.
+3. **Build an app** only when a view has to *compute* something the host cannot know.
+4. **Build a site viewer** only when the content must live outside a vault host — [the decks brief](../briefs/vault-decks-on-a-site.md) covers that case.
+
+It names the markdown rules that actually catch people, rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through `folder/README.md` because a bare folder link resolves by sort order, and nested and task lists are unsupported.
+
+**The raw-view contract comes from a vault that already lives by it.** [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) has a file explorer, and its own source states the principle better than a brief could:
+
+"Raw is the point — a catalog that asks to be trusted has to be readable in the form it was written."
+
+The brief adopts that whole: raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest rather than a runtime walk, files fetched on click. Generalised, it is a habit that runs through the whole estate — `_page.json` has its `{ } Source` toggle, every page on this website has a `.md` twin, the deck viewer offers the printed PDF beside the rendered slides. **Anything rendered should be one click from the thing it was rendered from.**
+
+One correction made while checking the schema: the content-authoring page said *eleven* component types and then listed twelve. It says twelve.
 
 ### [Decks and PDFs read straight out of a vault — with the viewer owned by the site](#decks-read-straight-out-of-a-vault) [v0.2.67](../admin/versions.md)
 

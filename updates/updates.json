@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.69",
+  "site_version": "v0.2.70",
   "updates": [
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
@@ -41,6 +41,19 @@
         "risk"
       ],
       "summary": "The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3) — grant…"
+    },
+    {
+      "slug": "markdown-and-file-viewers-what-not-to-build",
+      "title": "The second build brief, and it mostly says don't build it",
+      "date": "2026-09-09",
+      "version": "v0.2.70",
+      "tags": [
+        "briefs",
+        "vaults",
+        "agents",
+        "method"
+      ],
+      "summary": "Two of the most common things an agent is asked to add to a vault are a markdown viewer and a file/folder browser with raw views . Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writ…"
     },
     {
       "slug": "decks-read-straight-out-of-a-vault",

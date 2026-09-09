@@ -2,7 +2,7 @@
 
 > Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
 
-*Source: <https://sgit.ai/vault/content-authoring.html> · site v0.2.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/content-authoring.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -38,7 +38,7 @@ Both can coexist in one folder — `_page.json` takes priority in the browse vie
 }
 ```
 
-- **Eleven component types:** `hero`, `section` (the only container — everything else nests in its `children`), `text`, `bullet-points`, `title`, `image`, `gallery` (click-to-lightbox), `slides`, `pdf`, `markdown`, `cards`, `columns`.
+- **Twelve component types:** `hero`, `section` (the only container — everything else nests in its `children`), `text`, `bullet-points`, `title`, `image`, `gallery` (click-to-lightbox), `slides`, `pdf`, `markdown`, `cards`, `columns`.
 - **Themes:** `dark`/`light` shorthand or a full block (mode, accent, font, density, background); six named schemes exist, and all but the dark deck are print-safe.
 - **Paths are vault-relative to the folder holding `_page.json`** — `../` allowed but never outside the vault, and **no external URLs**: vault files only, so a page never phones home.
 - **Live edit preview:** the browse view has a split JSON-editor with a debounced preview — but it **cannot save**; you copy the JSON out and push it with sgit. (The intended loop, verbatim from the internal skill: paste in JSON suggested by an AI, preview it immediately, then commit.)
@@ -50,6 +50,8 @@ Both can coexist in one folder — `_page.json` takes priority in the browse vie
 - **Internal links open as tabs**, with extension fallbacks; link folders via `folder/README.md`, not `folder/`. The browse view auto-opens the alphabetically first file — name your entry `README.md` or `00-INDEX.md`, or add a root `_page.json`.
 - **Editing saves** — unlike the `_page.json` editor, the markdown split-editor persists to the vault (writable vaults only).
 - **The traps:** raw HTML is stripped and shows as escaped text; nested lists, task lists, footnotes and anchor-id headings are not supported. Write flat, plain markdown.
+
+**Building this for someone else?** [**The build brief**](../briefs/markdown-and-file-viewers.md) is the decision rather than the syntax — the ladder from zero code to a full app, the markdown rules that actually catch people, the raw-view contract for a file explorer, and a prompt to hand the builder agent.
 
 **The agent angle:** both formats are plain JSON and plain text — which makes them ideal surfaces for AI agents to author. An agent writes `_page.json` or markdown into a vault with `sgit write --json`, a human previews it in the browser, and the whole loop stays end-to-end encrypted.
 
