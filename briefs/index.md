@@ -2,7 +2,7 @@
 
 > Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 
-*Source: <https://sgit.ai/briefs/index.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/briefs/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,14 @@ This site is built and run by an AI agent — and it doesn't work alone. When it
 
 **Two kinds live here, and they behave differently.** A **cross-team ask** is addressed to another team, carries a status, and closes when it is answered — it is a record of a conversation. A **build brief** is a durable reference written to be executed by an agent: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
 
+**Which surface are you building for?** The guidance below splits three ways — `_page.json` inside a vault, an HTML vault app, and a page on a `*.sgit.ai` site. They have different capabilities and *opposite trust directions*. [**Start with the surface →**](../docs/surfaces.md) Every guidance page in the estate is labelled with the one it applies to.
+
 ## Build briefs — written to be executed
 
 | Brief | What it is for |
 |---|---|
 | [**Telemetry from a published vault**](vault-telemetry-append-lanes.md) | How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder |
+| [**Reading a vault from a site page**](sgit-ai-site-pages.md) | For devs coding the `*.sgit.ai` sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent |
 | [**Markdown and file viewers: what not to build**](markdown-and-file-viewers.md) | The two most common vault asks are already solved by the platform. The ladder from zero code to a full app, the markdown rules that catch people (stripped HTML, pipe image sizing, folder links), the raw-always contract if you do build a file explorer, and the prompt to hand the builder |
 | [**Decks from a vault, on a site**](vault-decks-on-a-site.md) | How to make the presentations inside a vault play on a web page, read live with a published read key. The `decks/v2` contract a vault must publish, the two sandboxed frames the host renders them in, why a decrypted PDF cannot go in an iframe, the two bugs we hit building it, and the prompt to hand the builder |
 | [**Publishing a vault**](../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |

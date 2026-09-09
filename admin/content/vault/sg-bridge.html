@@ -1,5 +1,6 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">SG/Vault</a> / The bridge</p>
+  <p class="surface"><b>Surface:</b> an HTML vault app, inside a vault. <a href="../docs/surfaces.html">The other surfaces &rarr;</a></p>
   <h1>The <code>window.sg</code> bridge</h1>
   <p class="lead">Inside App Mode, the host injects a bridge object — <code>window.sg</code> — that gives your page mediated access to the vault and to host capabilities. It installs synchronously while <code>&lt;head&gt;</code> parses, so any inline script can use it. The app frame never holds the vault key: every operation goes through the host, which owns the crypto and the consent UI.</p>
 

@@ -2,11 +2,13 @@
 
 > The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
 
-*Source: <https://sgit.ai/vault/sg-bridge.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/sg-bridge.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [SG/Vault](index.md) / The bridge
+
+**Surface:** an HTML vault app, inside a vault. [The other surfaces →](../docs/surfaces.md)
 
 # The `window.sg` bridge
 

@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.70'
+SITE_VERSION = 'v0.2.71'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.70', '2026-09-09', 'this release',
+    ('v0.2.71', '2026-09-09', 'this release',
+     "GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The "
+     "guidance on this site had been organised by TASK — decks, markdown, file viewers — which "
+     "hid the fact that every one of those questions has three different right answers "
+     "depending on where the code runs. THREE SURFACES is the new router: _page.json inside a "
+     "vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every "
+     "vault host, compared on where they run, who reads the vault, which credential is used, "
+     "what the reader needs, whether search engines and agents can see them at all, and — the "
+     "row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader "
+     "and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes "
+     "are untrusted input arriving in your origin. A second table does the same job across the "
+     "three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being "
+     "findable by someone who has never heard of you, which only one surface does at all. "
+     "READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the "
+     "estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs "
+     "with NO AUTH HEADER from any origin, which the server can afford because it returns "
+     "ciphertext under a key it never held — so no proxy and no backend. It says do not write "
+     "the reader and names the four house files to copy instead, states the inverted trust rule "
+     "with a table of how to render each kind of vault content, covers the ref-caching trap that "
+     "fails silently by rendering an older commit from valid ciphertext, and says what should "
+     "NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement "
+     "where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED "
+     "with the surface they apply to, so the distinction is visible where someone lands rather "
+     "than only on the router.",
+     ),
+    ('v0.2.70', '2026-09-09', 'obj-cas-imm-0a8b264f2c4e',
      "THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things "
      "an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw "
      "views — already exist in the platform, and most requests for them are answered by "

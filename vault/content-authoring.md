@@ -2,11 +2,13 @@
 
 > Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
 
-*Source: <https://sgit.ai/vault/content-authoring.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/vault/content-authoring.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [SG/Vault](index.md) / Content authoring
+
+**Surface:** `_page.json` and markdown, inside a vault. [The other surfaces →](../docs/surfaces.md)
 
 # Publishing content without code
 

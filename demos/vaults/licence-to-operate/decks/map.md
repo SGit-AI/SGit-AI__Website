@@ -2,7 +2,7 @@
 
 > A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/map.html> · site v0.2.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/map.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
