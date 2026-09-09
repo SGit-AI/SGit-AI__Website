@@ -2,7 +2,7 @@
 
 > One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,6 +22,12 @@ Derived one-way from a vault key that is not published and never will be. This v
 ## See it live, here
 
 [Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3)An interactive simulation — far better in its own tab than in the frame below.
+
+## The decks, read straight out of the vault
+
+Five decks, in the order the argument is meant to land: the problem, the map, bounding it, who says yes, and the insurance model. They are read out of vault `posrhzp3` live, with the read key printed at the top of this page — and each one can be downloaded as the PDF the author printed from it.
+
+**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
 
 ## The idea worth stealing: the delta
 

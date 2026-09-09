@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.66</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.67</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -118,6 +118,24 @@
   }());
   </script>
 
+  <h2 id="decks">The decks, read straight out of the vault</h2>
+  <p>Five decks, in the order the argument is meant to land: the problem, the map, bounding it, who says yes, and the insurance model. They are read out of vault <code>posrhzp3</code> live, with the read key printed at the top of this page &mdash; and each one can be downloaded as the PDF the author printed from it.</p>
+  <div class="sgv-deck" data-vault="posrhzp3" data-readkey="d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29"></div>
+  <p class="small dim"><b>What came from where.</b> The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it &mdash; the tabs, the slide list, prev and next, the notes toggle, the PDF button &mdash; is this site's, so the vault decides what is <em>shown</em> and never what this page <em>does</em>. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. <a href="../../../vault/reading-a-vault-file.html">How this works, and why the PDF is a download rather than an embed &rarr;</a></p>
+  <script>
+  (function () {
+    // Order matters here: vault-deck.js uses the reader that vault-embed.js exports, so these
+    // load in sequence rather than through the parallel loader above.
+    ['vault-embed.js', 'vault-deck.js'].reduce(function (chain, f) {
+      return chain.then(function () {
+        return fetch('../../../assets/' + f)
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+          .then(function (t) { (0, eval)(t); });
+      });
+    }, Promise.resolve()).catch(function (e) { console.error('[decks] failed to load:', e); });
+  }());
+  </script>
+
   <h2>The idea worth stealing: the delta</h2>
   <p>Three sets, and the gap between two of them is the whole argument:</p>
   <div class="tablewrap"><table>
@@ -157,7 +175,7 @@
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.66')
+  fetch('../../../assets/shots.js?v=v0.2.67')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -169,7 +187,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.66</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.67</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -188,6 +206,7 @@
     <a href="../../../vault/content-authoring.html">Content authoring</a>
     <a href="../../../vault/sub-vaults.html">Sub-vaults</a>
     <a href="../../../vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../../vault/reading-a-vault-file.html">Reading a vault file</a>
     <a href="../../../vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
@@ -208,7 +227,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.66';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.67';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

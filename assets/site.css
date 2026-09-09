@@ -849,3 +849,37 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 @media (max-width:720px){.short{grid-template-columns:1fr}
   .short-player{max-width:280px;margin:0 auto}}
 @media print{.short-player{display:none}.short{grid-template-columns:1fr}}
+
+/* ---- vault decks (assets/vault-deck.js): site-owned chrome around two sandboxed frames */
+.vdk{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card,#fff);margin:1.4rem 0}
+.vdk-boot{padding:1.2rem;color:var(--dim);font-size:.92rem}
+.vdk-boot.bad{color:var(--stop,#a8321f)}
+.vdk-tabs{display:flex;flex-wrap:wrap;gap:2px;padding:6px;background:var(--ink,#1c1b18)}
+.vdk-tab{font:600 12.5px/1 inherit;color:rgba(255,255,255,.72);background:none;border:0;border-radius:6px;
+  padding:7px 11px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.vdk-tab:hover{background:rgba(255,255,255,.12);color:#fff}
+.vdk-tab.on{background:rgba(255,255,255,.2);color:#fff}
+.vdk-lv{font-size:10px;opacity:.7;font-family:var(--mono,monospace)}
+.vdk-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
+  background:var(--bg,#f6f4ee);font-size:.86rem;flex-wrap:wrap}
+.vdk-title{font-weight:700}
+.vdk-count{color:var(--dim);font-family:var(--mono,monospace);font-size:.8rem}
+.vdk-sp{flex:1}
+.vdk-b{font:600 12.5px/1 inherit;color:var(--ink,#1c1b18);background:var(--card,#fff);border:1px solid var(--line);
+  border-radius:7px;padding:8px 11px;cursor:pointer;white-space:nowrap}
+.vdk-b:hover{border-color:var(--ink,#1c1b18)}
+.vdk-b.on,.vdk-pdf{background:var(--ink,#1c1b18);color:var(--bg,#f6f4ee);border-color:var(--ink,#1c1b18)}
+.vdk-body{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:0}
+.vdk-list{border-right:1px solid var(--line);max-height:520px;overflow:auto;padding:6px;background:var(--bg,#f6f4ee)}
+.vdk-it{display:flex;gap:8px;align-items:center;width:100%;text-align:left;font:inherit;font-size:.82rem;
+  color:var(--dim);background:none;border:0;border-radius:7px;padding:7px 9px;cursor:pointer}
+.vdk-it:hover{background:rgba(0,0,0,.05);color:var(--fg)}
+.vdk-it.on{background:var(--ink,#1c1b18);color:var(--bg,#f6f4ee)}
+.vdk-n{font-family:var(--mono,monospace);font-size:10px;opacity:.7}
+.vdk-stagewrap{overflow:hidden;background:#fff}
+.vdk-scaler{position:relative;overflow:hidden}
+.vdk-notes{padding:.9rem 1.1rem;border-top:1px solid var(--line);background:var(--bg,#f6f4ee);
+  font-size:.88rem;line-height:1.55;color:var(--fg)}
+.vdk-status{margin:0;padding:.55rem 1.1rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--dim)}
+.vdk-status.bad{color:var(--stop,#a8321f)}
+@media (max-width:760px){.vdk-body{grid-template-columns:1fr}.vdk-list{max-height:150px;border-right:0;border-bottom:1px solid var(--line)}}

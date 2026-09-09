@@ -2,7 +2,7 @@
 
 > Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself.
 
-*Source: <https://sgit.ai/team/roles/cartographer.html> · site v0.2.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/cartographer.html> · site v0.2.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
