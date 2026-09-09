@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,26 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-09
+
+### [Seven shorts on the Licence to Operate vault — indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate) [v0.2.65](../admin/versions.md)
+
+vaultsvideoagentsrisk
+
+The author recorded seven vertical videos walking through [the Licence to Operate vault](../demos/vaults/licence-to-operate/index.md). None of them was on the site. [They now have a page](../demos/vaults/licence-to-operate/videos/index.md), collected in the order they are meant to be watched rather than the order a feed shows them:
+
+- **The mechanism** (1–3) — grant against mandate, what a block looks like when an agent exceeds its mandate, and how risk cascades from the support team to the CFO.
+- **The artefact** (4) — how to find and open the vault. The shortest one, and the one to send someone who wants to poke at it themselves.
+- **The model** (5–7) — why the grant/mandate gap is where risk lives, the insurance framing that governs it, and the policy, claim and premium mechanics underneath.
+
+Each carries the author's own description plus a line mapping it to what it demonstrates: the **delta** for 5, [the AIUC-1 conformance layer's](../demos/vaults/aiuc-1-conformance/index.md) insurability query for 6, and risks.sgit.ai's *there is no deny button* for 7.
+
+**What the page refuses to pretend.** These are descriptions, **not transcripts**. All four of YouTube's `timedtext` endpoints return empty for every one of the seven, so there is no caption track to pull — and the words actually spoken are absent from this site, from `llms-full.txt`, and from the chat pane's `read_page` tool. That is precisely the failure [the Risk Graph Explorer walkthroughs](../demos/vaults/risk-graph-explorer/videos/index.md) page was built to avoid, so the gap is stated in a box at the top, measured rather than guessed, and opened as board card T12.
+
+**A number that cannot rot, demonstrated by accident.** Video 4 tells the viewer to look for *"Vault #23"*. Checked against the table: Licence to Operate is still #23, and always will be — v0.2.58 made that column a permanent publication ordinal rather than a row position. A recorded video naming a row number would have been wrong within a day. Naming an identity is safe, and this is the first time that decision has paid for itself.
+
+Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
 
 ## 2026-09-07
 

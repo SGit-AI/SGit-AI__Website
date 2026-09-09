@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>Seven shorts on the Licence to Operate vault — indexed, and put in the right order</title>
+      <link>https://sgit.ai/updates/index.html#seven-shorts-on-the-licence-to-operate</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#seven-shorts-on-the-licence-to-operate</guid>
+      <pubDate>2026-09-09</pubDate>
+      <description>The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3) — grant…</description>
+    </item>
+    <item>
       <title>Two new sections — the team, written for the agents; and investors, in the open</title>
       <link>https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-ninth-vault-four-apps-in-one-tree</guid>
       <pubDate>2026-08-22</pubDate>
       <description>VoiceDebrief joins the published vaults. Four apps in one encrypted vault, lifting meaning out of text — from fictional voice notes to Article 9(2) of the EU AI Act — into typed semantic graphs. Written up from the vault and the release that published it; the…</description>
-    </item>
-    <item>
-      <title>An ordinary commit should not be able to take the site down</title>
-      <link>https://sgit.ai/updates/index.html#an-ordinary-commit-should-not-be-able-to-take-the-site-down</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#an-ordinary-commit-should-not-be-able-to-take-the-site-down</guid>
-      <pubDate>2026-08-22</pubDate>
-      <description>Two good commits landed on dev after v0.2.39 and sgit.ai served neither for a day. Nothing was wrong with either of them. The CI tag gate failed, and the deploy is gated on the tag gate. What the error said, and what was actually true. The job read SITE VERSIO…</description>
     </item>
   </channel>
 </rss>

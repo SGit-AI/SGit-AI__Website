@@ -2,7 +2,7 @@
 
 > One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/index.html> · site v0.2.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,6 +16,8 @@ One agent, its grant, its mandate, and the policy insuring that mandate — with
  Read key: `d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29%3Aposrhzp3) · From the CLI: `sgit clone d990a52efb9af32c8463e2962f3ca5ccf92b3b6e8ea788e55009073c29b4da29:posrhzp3`
 Derived one-way from a vault key that is not published and never will be. This vault also carries this same read key in its own `try-it/` folder — it is self-describing.
+
+**Seven short videos walk through this vault.** The author recorded a series on it — the mechanism (grant against mandate, what a block looks like, who accepts which risk), how to find and open the vault, and the insurance model behind it. [**Watch the series, in order →**](videos/index.md)
 
 ## See it live, here
 
