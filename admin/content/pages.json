@@ -264,7 +264,7 @@
     "desc": "The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website."
   },
   {
-    "path": "briefs/index.html",
+    "path": "docs/briefs/index.html",
     "section": "briefs",
     "title": "Cross-team briefs — sgit.ai",
     "desc": "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings."
@@ -294,10 +294,16 @@
     "desc": "The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented."
   },
   {
-    "path": "briefs/vault-telemetry-append-lanes.html",
+    "path": "docs/briefs/vault-telemetry-append-lanes.html",
     "section": "briefs",
     "title": "Telemetry from a published vault — a build brief",
     "desc": "How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent."
+  },
+  {
+    "path": "docs/guidance/index.html",
+    "section": "docs",
+    "title": "Working on a vault: start here — guidance",
+    "desc": "The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai."
   },
   {
     "path": "docs/surfaces.html",
@@ -306,67 +312,67 @@
     "desc": "_page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them — plus the same job done on all three, and where each surface’s guidance lives."
   },
   {
-    "path": "briefs/sgit-ai-site-pages.html",
+    "path": "docs/briefs/sgit-ai-site-pages.html",
     "section": "briefs",
     "title": "Reading a vault from a *.sgit.ai site page — build brief",
     "desc": "For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent."
   },
   {
-    "path": "briefs/vault-decks-on-a-site.html",
+    "path": "docs/briefs/vault-decks-on-a-site.html",
     "section": "briefs",
     "title": "Publishing a vault’s decks onto a website — build brief",
     "desc": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder."
   },
   {
-    "path": "briefs/markdown-and-file-viewers.html",
+    "path": "docs/briefs/markdown-and-file-viewers.html",
     "section": "briefs",
     "title": "Markdown and file viewers in a vault: what not to build — build brief",
     "desc": "Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder."
   },
   {
-    "path": "vault/index.html",
+    "path": "docs/vault/index.html",
     "section": "vault",
     "title": "SG/Vault & the vault platform — sgit.ai",
     "desc": "The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps."
   },
   {
-    "path": "vault/vault-apps.html",
+    "path": "docs/vault/vault-apps.html",
     "section": "vault",
     "title": "Building vault apps — SG/Vault",
     "desc": "How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push."
   },
   {
-    "path": "vault/sg-bridge.html",
+    "path": "docs/vault/sg-bridge.html",
     "section": "vault",
     "title": "The window.sg bridge — SG/Vault",
     "desc": "The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free."
   },
   {
-    "path": "vault/content-authoring.html",
+    "path": "docs/vault/content-authoring.html",
     "section": "vault",
     "title": "Content authoring — SG/Vault",
     "desc": "Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types."
   },
   {
-    "path": "vault/sub-vaults.html",
+    "path": "docs/vault/sub-vaults.html",
     "section": "vault",
     "title": "Sub-vaults — SG/Vault",
     "desc": "Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow."
   },
   {
-    "path": "vault/git-and-vaults.html",
+    "path": "docs/vault/git-and-vaults.html",
     "section": "vault",
     "title": "Git repos inside vaults — SG/Vault",
     "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview."
   },
   {
-    "path": "vault/reading-a-vault-file.html",
+    "path": "docs/vault/reading-a-vault-file.html",
     "section": "vault",
     "title": "Reading one file out of a vault — SG/Vault",
     "desc": "The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed."
   },
   {
-    "path": "vault/static-hosting.html",
+    "path": "docs/vault/static-hosting.html",
     "section": "vault",
     "title": "Static hosting on GitHub Pages — SG/Vault",
     "desc": "Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation."

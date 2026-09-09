@@ -2,7 +2,7 @@
 
 > The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/aiuc1.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/aiuc1.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__What-It-Is.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__What-It-Is.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 

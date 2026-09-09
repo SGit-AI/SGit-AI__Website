@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Telemetry from a published vault — a build brief</title>
+<meta name="description" content="How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html">
+<meta property="og:title" content="Telemetry from a published vault — a build brief">
+<meta property="og:description" content="How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="vault-telemetry-append-lanes.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Telemetry from a published vault — a build brief", "headline": "Telemetry from a published vault — a build brief", "description": "How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.", "url": "https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.72</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni ni-has">
+    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../../investors/index.html">Investors</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../docs/index.html">Documentation</a>
+      <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+      <a class="sl" href="../../try/index.html">Try it in the browser</a>
+      <a class="sl" href="../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../skills/index.html">Skills</a>
+      <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../updates/index.html">Updates</a>
+      <a class="sl" href="../../articles/index.html">Articles</a>
+      <a class="sl" href="../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../team/index.html">How the site is run</a>
+      <a class="sl" href="../../team/index.html#roles">Roles</a>
+      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../network/index.html">All sites</a>
+      <a class="sl" href="../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../network/pki.html">pki</a>
+      <a class="sl" href="../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / Telemetry from a published vault</p>
+  <h1>Telemetry from a published vault</h1>
+  <p class="lead">A build brief, written to be handed to the agent that will build the thing. The problem: a vault is about to be published with a <b>read key</b>, so every visitor can read every file in it — and it still needs to report anonymous usage back to its author. The answer is an <b>append lane</b>, and it works for one reason that is worth understanding before you write any code.</p>
+
+  <div class="note"><b>What a build brief is, and how it differs from the asks below it.</b> The <a href="index.html">cross-team briefs</a> are requests addressed to another team, with a status, that close when answered. This is the other kind: a durable reference an agent executes. It carries the mechanism, the traps, the things to verify first, and — at the bottom — <a href="#prompt">the prompt to hand the builder</a>, written to be pasted rather than paraphrased.</div>
+
+  <h2 id="reading">What to read first</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Page</th><th>What it gives you</th></tr>
+    <tr><td><a href="../vault-messaging.html">Vault messaging</a></td><td>The worked example: two vaults exchanging encrypted messages, end to end, with curl</td></tr>
+    <tr><td><a href="../../api/append-lanes.html">API — append lanes</a></td><td>The six endpoints, the gates, the limits and the status codes</td></tr>
+    <tr><td><a href="../vault/sg-bridge.html"><code>sg.append</code></a></td><td>The same transport from inside a vault app, plus the <code>sg.on</code> event push</td></tr>
+    <tr><td><a href="../pki.html">PKI</a></td><td>Keypair lifecycle — <code>sgit pki keygen / export / encrypt / decrypt</code></td></tr>
+    <tr><td><a href="../vault/sub-vaults.html">Sub-vaults</a></td><td>The <em>other</em> cross-vault mechanism — <code>*.link.json</code>, for reading across rather than writing</td></tr>
+  </table></div>
+  <p class="small dim"><b>One signpost, so you do not go looking.</b> The <a href="../../demos/vaults/health-score/index.html">Private Health Score vault</a> looks like the two-party case study and is not one: it is a single vault with three audiences — <code>patient/</code>, <code>doctor/</code> and <code>shared/</code> — split by <em>who is reading</em> rather than by copying, where sharing with the clinician means handing over a derived read key. There is no second vault and no message passing in it.</p>
+
+  <h2 id="mechanism">The mechanism: four capabilities, deliberately split</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Capability</th><th>Holder</th><th>Can</th><th>Cannot</th></tr>
+    <tr><td><code>append_token</code></td><td>the sender</td><td><b>write</b></td><td>list, fetch, read anything</td></tr>
+    <tr><td><code>enum_key</code></td><td>the vault owner</td><td>list, fetch, mark-processed</td><td>write, purge</td></tr>
+    <tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td>&mdash;</td></tr>
+    <tr><td>private key</td><td>the vault owner</td><td><b>decrypt</b></td><td><em>never sent to the server</em></td></tr>
+  </table></div>
+  <p>The server stores <code>SHA-256</code> of the first three and compares hashes. It never holds a raw capability key and never holds a private key at all. Two consequences decide the whole design:</p>
+  <ul>
+    <li><b>The write response is blind</b> — exactly <code>{"ok": true}</code>. No file ID, no count, no metadata. A sender cannot learn what else is in the lane, or whether theirs was the first write.</li>
+    <li><b>No account is needed to send.</b> <code>POST /api/vault/append/write/{vault_id}</code> requires no access token; the <code>append_token</code> in the body is the entire gate.</li>
+  </ul>
+
+  <h2 id="shape">The shape of it</h2>
+  <pre class="shell">   PUBLISHED VAULT <span class="d">(read key public)</span>          TELEMETRY VAULT <span class="d">(private, yours)</span>
+   ───────────────────────────────           ──────────────────────────────────
+   holds: append_token                       holds: enum_key, write_key,
+          + telemetry vault_id                      private key
+          + your PUBLIC key
+
+   a reader reaches step 4
+        │  encrypt(event, your_public_key)
+        │  POST /api/vault/append/write/{telemetry_vault_id}
+        ├────────────────────────────────▶  gate: H(append_token) ∈ append_anchors?
+        ◀────────────────────────────────   {"ok": true}   <span class="d">← blind</span>
+                                                  │
+                                            you: list <span class="d">(free)</span> → fetch → decrypt locally</pre>
+
+  <h2 id="why-safe">Why publishing the token is acceptable &mdash; and where it stops being</h2>
+  <p>Every visitor holds the published vault's read key, so <b>every visitor can read the <code>append_token</code> out of it.</b> That is not avoidable, and it is not the mistake it looks like: an append token grants <em>write only</em>. A visitor who extracts it cannot list the lane, cannot fetch anything, cannot read another reader's events &mdash; and because the write response is blind, cannot even tell whether the lane holds anything at all.</p>
+  <p>This is the one credential shape that survives being published inside a public vault. A vault key would not. A read key to a private vault would not: a read key decrypts <b>everything</b>, which is exactly the finding that has held two vaults back from publication here.</p>
+  <div class="warnbox"><b>What you do not get is authenticity.</b> Anything the browser holds, the visitor holds.<br><br>
+  <b>Events can be forged.</b> Treat every row as an untrusted claim about what happened, never as fact. Encrypting to your public key gives you confidentiality, not proof of origin &mdash; the public key ships in the published vault, so anyone can produce a well-formed payload.<br><br>
+  <b>The lane can be flooded.</b> The cap is <b>1000 pending files per token &rarr; 507</b>, at which point your real telemetry stops arriving. <em>This</em> is the failure mode to design against, not the confidentiality one.</div>
+  <p>Mitigations, in the order they matter: register <b>several <code>append_anchors</code></b> so one flooded lane does not bury the others and revoking a sender is removing one anchor; drain aggressively (<code>list</code> &rarr; <code>fetch</code> &rarr; <code>mark-processed</code>, then <code>purge</code> with <code>folder:"processed"</code>); rotate the token by re-<code>configure</code>-ing and shipping a new vault release; and rate-limit client-side so honest readers never approach the cap.</p>
+
+  <h2 id="verify">Answered: the two questions this brief told you to verify</h2>
+
+  <div class="warnbox"><b>Corrected 7 September 2026, and the correction matters more than the original.</b> This brief said to check whether <code>sg.append.write</code> survives a read-only session, warned that the bridge path was probably unavailable, and steered you to a direct <code>fetch</code> instead. <b>That was wrong, and it sent the first agent who followed it down the harder road.</b> The SG/API team reviewed the append code against this page and reported back; what follows is their answer, and it reverses this brief's recommendation. Their review is quoted below with permission &mdash; it is published CC&nbsp;BY&nbsp;4.0.</div>
+
+  <ol>
+    <li><b>Does <code>sg.append.write</code> work from a read-only session? &mdash; YES. There is no read-only gate on append at all.</b><br>
+    The bridge checks exactly one thing, a permission grant: <code>perm.append.write === true</code>. In the reviewer's words, <em>"there is <b>no</b> <code>writable</code> check, <b>no</b> consent gate, and no read-only branch anywhere in the append handler"</em>, and <code>sg.app.writable</code> <em>"is irrelevant to append"</em>. So the grant is the whole story:
+    <pre class="shell">{ "permissions": { "append": { "write": true } } }</pre>
+    Nothing else is required. The <code>EREADONLY</code> this brief cited belongs to <code>sg.vfs.write</code>, which fails at the data-source layer on a different code path &mdash; but <b>both deny with the same string, <code>'Permission denied'</code></b>, which is precisely how the misdiagnosis happened. Do not use one to probe the other.</li>
+
+    <li><b>Does the frame's CSP allow <code>connect-src</code> to the API host? &mdash; NO, not by default. And this is the trap.</b><br>
+    The frame is served with <code>connect-src blob: data:</code>, so a direct <code>fetch</code> to the API is blocked before it leaves. The escape hatch is <code>"permissions": {"network": true}</code>, which omits the CSP meta entirely &mdash; and which, as the reviewer puts it, appears <em>"zero times"</em> in the authoring guide and zero times in the first version of this page. <b>It is discoverable only by reading the source.</b><br>
+    <b>Prefer the bridge anyway.</b> <code>network: true</code> is all-or-nothing: it reopens <em>every</em> egress from a frame that is holding decrypted vault content, which is a poor trade for a telemetry beacon. The reviewer's verdict on the tempting shortcut is worth keeping: <em>"Not recommended: loosening the default CSP, or adding a read-only bypass for append."</em></li>
+
+    <li><b>Only <code>write</code> crosses vaults. Every other verb is bound to the vault that is open.</b><br>
+    The bridge builds one client bound to the currently open vault, with the enum key derived from <em>that</em> vault's read key. <code>list</code>, <code>fetch</code>, <code>markProcessed</code>, <code>purge</code> and <code>configure</code> therefore always act on the open vault; <b><code>write</code> is the sole verb that takes an explicit <code>vault_id</code></b>, which is exactly what cross-vault telemetry needs and the only thing that makes it possible.<br>
+    This is a design boundary, not a gap: listing a remote lane would need the recipient's enum key, and putting that in a published app <em>"would give every visitor read access to the whole lane."</em> Drain where the enum key legitimately lives &mdash; the receiving vault's own dashboard, or the CLI.</li>
+
+    <li><b>Token format.</b> <code>^[0-9a-f]{16,128}$</code> &mdash; <b>hex only</b>. A prefixed token returns <b>400</b>, not 403, because it fails input validation before reaching any gate. Do not paste a <code>sha256:</code> CLI fingerprint in as a token; that is the most likely way to hit it.</li>
+  </ol>
+
+  <div class="note"><b>If a grant you added seems to be ignored, the manifest is the first suspect, not the gate.</b> Two causes, both silent: a <b>release pin</b> (<code>.vault/releases.json</code>) means <code>app.json</code> is read from that commit rather than HEAD, so a pushed manifest is simply not seen &mdash; and a pin also forces read-only for everyone, owner included; and a <b>folder-level <code>app.json</code></b> beside a deep-linked entry page <b>replaces</b> the root manifest wholesale rather than merging with it, so root grants vanish without a warning.</div>
+  <p><b>And one gap to design around.</b> The intended model is <code>append_token = H(recipient public key)</code>, so a sender could compute the lane address from a public bundle with no coordination. No shipped command emits the token &mdash; that derivation is <b>PROPOSED</b>, not shipped. Until it lands, treat the token as an opaque 64-hex secret you generate and register yourself.</p>
+  <p class="small dim">Checked against the shipped CLI while writing this: <code>sgit pki</code> ships <code>keygen</code>, <code>export</code>, <code>encrypt</code>, <code>decrypt</code>, <code>sign</code> and <code>verify</code>. There is <b>no append-lane command in the CLI at all</b>, so the transport is HTTP or the browser bridge &mdash; nothing else.</p>
+
+  <h2 id="setup">Setting it up</h2>
+  <pre class="shell"><span class="d"># once, on the telemetry vault</span>
+$ sgit pki keygen --label "Telemetry"
+$ sgit pki export sha256:FINGERPRINT &gt; telemetry-identity.json
+
+$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "Content-Type: application/json" \
+    -d '{"append_anchors":["&lt;sha256 of the append_token&gt;"],
+         "enum_key_hash":"&lt;sha256 of your enum_key&gt;"}'
+
+<span class="d"># reading — metadata-only listing reads ZERO payloads, so poll with this</span>
+$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-enum-key: $ENUM_KEY" -d '{"include_content": false}'</pre>
+  <p>Filenames are server-assigned as <code>{epoch_ms}_{24-hex}.enc</code>, so they sort chronologically &mdash; which is what makes cursor pagination stable. Page with <code>after_file_id</code>. <code>mark-processed</code> is idempotent: an already-moved file comes back in <code>missing</code> rather than as an error, so a retried batch is safe.</p>
+
+  <h2 id="realtime">&ldquo;Real time&rdquo;, precisely</h2>
+  <p>On the receiving side the kernel pushes <code>sg.on('append.new-messages', …)</code> on <b>tab focus and app open</b> &mdash; a dashboard app does not poll, it declares <code>"host_events": ["append.new-messages", "append.error"]</code> in <code>app.json</code> and reacts.</p>
+  <p>That means real time <em>while you are looking at it</em>, not a live stream. For anything closer, poll <code>list</code> with <code>include_content: false</code>; it is free.</p>
+
+  <h2 id="limits">What you can and cannot learn</h2>
+  <p><b>Can:</b> that the vault was opened, which screens were reached, how far a reader got, event ordering and timing, and a session journey via a random per-session id the app mints in memory.</p>
+  <p><b>Cannot: who.</b> There is no identity in this system and no login. Every reader is anonymous by construction &mdash; which is usually the point, but it does mean <em>&ldquo;who opened the vault&rdquo;</em> is not an answerable question. Only <em>how many</em>.</p>
+  <p>Two disclosure points, and neither should be skipped:</p>
+  <ul>
+    <li><b>The platform's own default is that opening a vault never phones home.</b> External embeds are <a href="../vault/sub-vaults.html">click-to-load</a> precisely so that it does not. A telemetry beacon breaks that expectation, so the vault should say so <b>visibly, in the vault</b> &mdash; not in a footnote. That is the same house rule every published vault page here follows: publish the work, then say exactly what it is and what it costs.</li>
+    <li><b>The server sees lane activity, size and timing</b> regardless of encryption, and it sees the requesting IP. <em>&ldquo;The server cannot read the content&rdquo;</em> is true. <em>&ldquo;The traffic is invisible&rdquo;</em> is not.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to hand the builder agent</h2>
+  <p>Written to be pasted as-is. Substitute the vault ids.</p>
+  <blockquote>
+    <p>Build a vault app for <em>THE THING</em>. It will be published with a <b>read key</b>, so assume every visitor can read every file in it, including any credential it carries.</p>
+    <p>Emit anonymous usage events to a separate telemetry vault over an <b>append lane</b>. Read <code>https://sgit.ai/docs/vault-messaging.html</code> and <code>https://sgit.ai/api/append-lanes.html</code> first.</p>
+    <p>Constraints:</p>
+    <ul>
+      <li>Send through the <b>bridge</b>: <code>sg.append.write({ vault_id, append_token, payload })</code>, with <code>{"permissions": {"append": {"write": true}}}</code> in <code>app.json</code>. That grant is the only requirement &mdash; a read-only session does <b>not</b> block it, and <code>write</code> is the one verb that takes another vault's id.</li>
+      <li><b>Do not</b> reach for a direct <code>fetch()</code> to the endpoint. The frame's CSP is <code>connect-src blob: data:</code> and will block it silently; the only way round is <code>permissions.network: true</code>, which reopens every egress from a frame holding decrypted vault content. If a grant appears to be ignored, check for a release pin or a folder-level <code>app.json</code> before you change approach.</li>
+      <li>Encrypt each payload to the telemetry vault's public key before sending. The public key ships in the published vault; that is fine, public keys are publishable.</li>
+      <li>Never put a vault key, a read key to any other vault, or any other credential in this vault. The append token is the only credential that may appear, and only because it is write-only.</li>
+      <li>Mint a random per-session id in memory. No names, no emails, no fingerprinting, nothing that identifies a person. Anonymous is the design, not a setting.</li>
+      <li>Rate-limit client-side. The lane caps at 1000 pending files per token and returns 507 after that.</li>
+      <li>Fail silently and never block on telemetry &mdash; if the POST fails, the reader must not notice.</li>
+      <li>Put a visible, plain-English notice in the vault saying that anonymous usage events are sent and what they contain. Opening a vault does not normally phone home; this one does, so say so.</li>
+      <li>Treat every received event as an untrusted claim. Anyone holding the read key can forge or flood the lane; the data is directional, not evidential.</li>
+    </ul>
+    <p>Deliverables: the app, the event schema, the telemetry vault's <code>configure</code> call, and a dashboard app in the telemetry vault that subscribes to <code>sg.on('append.new-messages')</code> and renders the funnel.</p>
+  </blockquote>
+
+  <p class="small dim" style="margin-top:2rem">The canonical markdown copy lives in the <a href="https://github.com/SGit-AI/SGit-AI__CLI">SGit-AI__CLI</a> repo under <code>team/humans/dinis_cruz/claude-code-web/</code>, which is where every brief on this page is filed.</p>
+
+  <div class="pagenav"><a href="index.html">&larr; Briefs</a><a href="../../demos/vaults/publishing.html">Publishing a vault &rarr;</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.72</a> · <a href="../../admin/index.html">engineering</a> · <a href="vault-telemetry-append-lanes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

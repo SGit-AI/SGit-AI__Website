@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.71). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.72). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-99site releases, each verified live before it was called done
+100site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -52,13 +52,13 @@ This site, and every vault on it, is built by one person working with several AI
 
 10cross-team briefs filed or received, in the open
 
-1A [build brief](briefs/vault-telemetry-append-lanes.md) was published here on a Saturday. Another agent read it and shipped [a vault from it](demos/vaults/agent-permission-games/index.md) the same day.
+1A [build brief](docs/briefs/vault-telemetry-append-lanes.md) was published here on a Saturday. Another agent read it and shipped [a vault from it](demos/vaults/agent-permission-games/index.md) the same day.
 
-2The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and [the correction now sits above the mistake](briefs/index.md).
+2The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and [the correction now sits above the mistake](docs/briefs/index.md).
 
 3One agent [forked another agent's vault](demos/vaults/aiuc-1-conformance/index.md), kept every byte, added a layer — and the original's tests still pass inside the fork.
 
-→The record is the site itself: [the briefs](briefs/index.md), [the case studies](case-studies/index.md), [every release](admin/versions.md). And the diagnosis that produced this homepage is [an article, with the before pictures](articles/proof-behind-the-claim.md).
+→The record is the site itself: [the briefs](docs/briefs/index.md), [the case studies](case-studies/index.md), [every release](admin/versions.md). And the diagnosis that produced this homepage is [an article, with the before pictures](articles/proof-behind-the-claim.md).
 
 ## Under the hood, it is git
 
@@ -1683,7 +1683,7 @@ Loads ~10 encrypted objects from `dev.send.sgraph.ai` and decrypts them here. No
 
 ## How this vault was made, end to end
 
-**1 — Write the app.** A vault app is one self-contained `index.html` — CSS and JS inlined, content in `content.json`, generative SVG instead of image files — plus an `app.json` that auto-launches it. It follows the [authoring contract](../vault/vault-apps.md): no `<link href>`, `<script src>` or `<img src>` against vault paths, content read via `sg.vfs.readText` with an inlined fallback, and `sg-app-ready` posted when rendered.
+**1 — Write the app.** A vault app is one self-contained `index.html` — CSS and JS inlined, content in `content.json`, generative SVG instead of image files — plus an `app.json` that auto-launches it. It follows the [authoring contract](../docs/vault/vault-apps.md): no `<link href>`, `<script src>` or `<img src>` against vault paths, content read via `sg.vfs.readText` with an inlined fallback, and `sg-app-ready` posted when rendered.
 
 ```
 demo-vault-gallery/
@@ -1750,7 +1750,7 @@ Below is exactly that — both surfaces, opened with the same published key prin
 
 Loads `dev.vault.sgraph.ai` in an iframe and completes the embed handshake. Nothing on sgit.ai ever sees more than the published read key it already prints.
 
-**What is still not possible — precisely.** The two buttons above select a *surface* (App Mode or the vault browser). They cannot select a *view* inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only `{key, mode, deepLink}` where `deepLink` is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and [the briefing](../briefs/briefing-sgvault-ui-embed.md) now states exactly that ask: an optional `view` field on `vault-open`, applied after mount. Everything else on this page works today.
+**What is still not possible — precisely.** The two buttons above select a *surface* (App Mode or the vault browser). They cannot select a *view* inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only `{key, mode, deepLink}` where `deepLink` is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and [the briefing](../docs/briefs/briefing-sgvault-ui-embed.md) now states exactly that ask: an optional `view` field on `vault-open`, applied after mount. Everything else on this page works today.
 
 ## Honest scope
 
@@ -1762,12 +1762,12 @@ Two hosts now run on this page, and keeping both is deliberate. The **minimal** 
 
 ## Related
 
-- [Building vault apps](../vault/vault-apps.md) — the authoring contract this app follows
+- [Building vault apps](../docs/vault/vault-apps.md) — the authoring contract this app follows
 - [A live site whose host cannot read it](../case-studies/live-vault-docs.md) — the same read path rendering markdown docs
-- [Sub-vaults](../vault/sub-vaults.md) — vault-in-vault, the pattern this embed mirrors
+- [Sub-vaults](../docs/vault/sub-vaults.md) — vault-in-vault, the pattern this embed mirrors
 - [The plan](../admin/plans/why-expansion-plan.md) — two more demo vaults (a report, a two-agent inbox) follow this template
 
-[← Demos](index.md)[Building vault apps →](../vault/vault-apps.md)
+[← Demos](index.md)[Building vault apps →](../docs/vault/vault-apps.md)
 
 
 
@@ -1832,7 +1832,7 @@ The [first demo](vault-app-embed.md) was built without image files. This app loa
 
 - [The first demo](vault-app-embed.md) — the walkthrough of the embed mechanism itself
 - [The day we leaked our own vault key](../case-studies/exposed-vault-key.md) — the incident behind the audit habits used here
-- [Briefing to the SG/Vault UI team](../briefs/briefing-sgvault-ui-embed.md) — the path to embedding the official UI instead of our minimal host
+- [Briefing to the SG/Vault UI team](../docs/briefs/briefing-sgvault-ui-embed.md) — the path to embedding the official UI instead of our minimal host
 
 [← First demo](vault-app-embed.md)[All demos →](index.md)
 
@@ -2026,7 +2026,7 @@ What is shipped versus what is pattern, checked against the CLI rather than asse
 | Credential-free clone of a public vault (read key only) | **Shipped** — `sgit clone --read-key`; this site publishes working read keys on its [demo pages](../demos/index.md) |
 | Private-branch commits that cannot touch the shared branch | **Shipped** — the [two-branch model](../docs/two-branch-model.md) |
 | Emit the diff as a machine-readable artefact | **Shipped** — `sgit history diff --json` |
-| First-class import: `sgit diff apply` | **Not shipped.** The workflow was performed, but the import half was review-and-merge by hand. A [brief to the CLI team](../briefs/brief-serialised-diff-and-ignore.md) asks for `sgit diff export` / `sgit diff apply` as first-class commands |
+| First-class import: `sgit diff apply` | **Not shipped.** The workflow was performed, but the import half was review-and-merge by hand. A [brief to the CLI team](../docs/briefs/brief-serialised-diff-and-ignore.md) asks for `sgit diff export` / `sgit diff apply` as first-class commands |
 | A published specification of the diff format | **Not published.** If this is the headline workflow, its artefact needs a spec a third party can implement — same brief |
 
 ## Evidence status
@@ -2122,7 +2122,7 @@ PROVEN
 **This website is the evidence.** It is built and published by Claude Code sessions that share state through a vault; the site you are reading was deployed by pushing that vault. Two independent details are worth more than the claim:
 
 - The [Deploy section](../deploy/index.md) is maintained by a *different* team's agent, in a different vault, and rendered here by decrypting it in your browser. Neither agent has access to the other's repository.
-- The [cross-team briefs](../briefs/index.md) and the [key-leak incident](../case-studies/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
+- The [cross-team briefs](../docs/briefs/index.md) and the [key-leak incident](../case-studies/exposed-vault-key.md) were written by one agent for another team to act on — including the incident where this agent leaked a key into a public commit, which is the sort of thing a marketing page omits.
 
 Honest limit: n is small, and the agents are supervised by the people who wrote the tool.
 
@@ -2235,7 +2235,7 @@ That last sentence matters. We have a [write-up of the day we got it wrong](../c
 ## Related
 
 - [When NOT to use sgit](../docs/limitations.md) — read this before committing a client engagement to it
-- [SG/Vault](../vault/index.md) — the browser app, so a client can read without installing anything
+- [SG/Vault](../docs/vault/index.md) — the browser app, so a client can read without installing anything
 - [Security model](../security/index.md) — precisely what the server can and cannot see
 
 [← AI agents](ai-agents.md)[Security teams →](security-teams.md)
@@ -2463,7 +2463,7 @@ The incident write-up is the template for the uncomfortable kind. It names the a
 ## Related
 
 - [Use cases](../use-cases/index.md) — the patterns, each with an explicit evidence status
-- [Cross-team briefs](../briefs/index.md) — what this site's agent hands to other teams, and what they hand back
+- [Cross-team briefs](../docs/briefs/index.md) — what this site's agent hands to other teams, and what they hand back
 - [Release history](../admin/versions.md) — every change to this site, with the vault commit that carried it
 
 [← Home](../index.md)[Use cases →](../use-cases/index.md)
@@ -2513,7 +2513,7 @@ The entire pattern rests on one file: `.gitignore`. Everything encrypted **is** 
 *.pem
 ```
 
-That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../vault/git-and-vaults.md) page covers which side of that line a given project is on.
+That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../docs/vault/git-and-vaults.md) page covers which side of that line a given project is on.
 
 Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
 
@@ -2564,12 +2564,12 @@ The ordering inside the script is the rule above, made unforgettable: sgit pushe
 
 ## Related
 
-- [Git repos inside vaults](../vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
+- [Git repos inside vaults](../docs/vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
 - [The day we leaked our own vault key](exposed-vault-key.md) — why the tripwire exists
 - [A live site whose host cannot read it](live-vault-docs.md) — what the sgit push feeds
 - [Admin & engineering](../admin/index.md) — the build system this script belongs to
 
-[← Case studies](index.md)[Git repos inside vaults →](../vault/git-and-vaults.md)
+[← Case studies](index.md)[Git repos inside vaults →](../docs/vault/git-and-vaults.md)
 
 
 
@@ -2683,7 +2683,7 @@ The honest framing is not "sgit instead of git". It is two tools with different 
 | **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
 | **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
 
-**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
+**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../docs/vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
 
 ## The boundary, precisely
 
@@ -2876,7 +2876,7 @@ You may be right. It costs nothing to be wrong about this in our direction: the 
 
 ## An invitation, meant literally
 
-You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](../case-studies/exposed-vault-key.md) and the [open briefs](../briefs/index.md) got written.
+You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](../case-studies/exposed-vault-key.md) and the [open briefs](../docs/briefs/index.md) got written.
 
 [← Home](../index.md)[When NOT to use sgit →](../docs/limitations.md)
 
@@ -3007,7 +3007,7 @@ The read key is deliberately public — it is *read-only by construction*, deriv
 - **The server can't help.** No server-side search, no previews, no summaries — everything is opaque to it. That is the point, and it is also a limitation.
 - **Diagrams are hand-drawn SVG, not a diagramming library.** This site is also served *from inside a vault*, where external resources are blocked by the app authoring contract — so importing a renderer from a CDN would break the very demonstration this page describes. The constraint chose the implementation.
 
-[← The deployment docs](../deploy/index.md)[Git and vaults →](../vault/git-and-vaults.md)
+[← The deployment docs](../deploy/index.md)[Git and vaults →](../docs/vault/git-and-vaults.md)
 
 
 
@@ -3048,7 +3048,7 @@ The full `sgit_ai` package is importable. The last expression's value is printed
 
 from sgit_ai.crypto.Vault__Crypto import Vault__Crypto vc = Vault__Crypto() vc.derive_keys('my-passphrase', 'DEMO-VAULT')
 
-How this works: [the same site](../vault/static-hosting.md) serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.
+How this works: [the same site](../docs/vault/static-hosting.md) serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.
 
 
 
@@ -3092,7 +3092,7 @@ The skills above are the canonical current versions, verified against sgit-ai v0
 
 **Also for agents:** this site ships an [llms.txt](../llms.txt) at the vault root — the standard machine-readable index. Inside the vault it is encrypted like everything else (agents holding the key read it via `sgit cat llms.txt`); on a static deployment it becomes a plain public llms.txt. Same file, two trust contexts.
 
-[← Working with AI agents](../docs/agents.md)[The SG/Vault platform →](../vault/index.md)
+[← Working with AI agents](../docs/agents.md)[The SG/Vault platform →](../docs/vault/index.md)
 
 
 
@@ -3121,11 +3121,11 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Guides
 
-[Three surfaces_page.json, a vault app, or a site page — pick this first](surfaces.md) [Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](../vault/index.md)
+[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page — pick this first](surfaces.md) [Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
 
 ## Project
 
-[When NOT to use sgitThe honest page](limitations.md) [Why does this exist?Answering the no-market criticism, plus a FAQ](../why/index.md) [If a vault key is exposedThe rotation runbook, with a real case study](../case-studies/exposed-vault-key.md) [Cross-team briefsOpen asks to the CLI and API teams](../briefs/index.md) [Admin & engineeringHow this site is built and released](../admin/index.md) [GitHubSource, issues, changelog](https://github.com/SGit-AI/SGit-AI__CLI)
+[When NOT to use sgitThe honest page](limitations.md) [Why does this exist?Answering the no-market criticism, plus a FAQ](../why/index.md) [If a vault key is exposedThe rotation runbook, with a real case study](../case-studies/exposed-vault-key.md) [Cross-team briefsOpen asks to the CLI and API teams](briefs/index.md) [Admin & engineeringHow this site is built and released](../admin/index.md) [GitHubSource, issues, changelog](https://github.com/SGit-AI/SGit-AI__CLI)
 
 **Coming next:** a full per-command CLI reference, generated directly from the CLI's own argument parser on every release — so the reference can never drift from the shipped tool.
 
@@ -3568,7 +3568,7 @@ A successful clone or a 200 on any of those means the rotation did not take — 
 
 ## What rotation costs
 
-- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../briefs/index.md).) If the vault is [mirrored to git](../vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
+- **Vault history resets to a single commit.** Rekey re-encrypts your current files, not the object graph. (A history-preserving rotation is [proposed to the CLI team](../docs/briefs/index.md).) If the vault is [mirrored to git](../docs/vault/git-and-vaults.md), the content history survives there — which is one of the better arguments for running the two side by side.
 - **Every object ID changes.** IDs are content hashes *of the ciphertext*, so identical plaintext under a new key produces an entirely new store — zero overlap with the old one. In a git mirror that lands as one large commit swapping the whole encrypted tree.
 - **The vault ID changes**, so every URL and stored reference to it breaks.
 
@@ -3585,7 +3585,7 @@ This page exists because it happened here, to the vault that serves this site.
 
 **What went wrong.** The site's build has a validator that blocks secrets and stale terms from being published. To catch the vault passphrase specifically, an agent (me) added a rule matching that exact passphrase — and wrote the literal secret into `admin/build/validate.js`, a *tracked* file. The guard against leaking became the leak. Combined with the vault ID (public by design), the full write-capable key sat in three commits of a public repository.
 
-**How it was caught.** Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the [git page](../vault/git-and-vaults.md): grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.
+**How it was caught.** Not by tooling — by a question. The vault owner asked "you haven't leaked that key, right?", which triggered the audit documented on the [git page](../docs/vault/git-and-vaults.md): grep the working tree and every commit for the passphrase, for private-key headers, and for readable content in the encrypted store. The first two checks passed. The history grep found it.
 
 **The response,** inside the hour: `delete-on-remote` (336 files removed from the server) → `rekey` (39 files re-encrypted under a new key and ID) → `push`. Then the four verification checks, all confirming the old key was dead: clone failed, old ref 404, old object 404, write with the old write key rejected.
 
@@ -3604,17 +3604,19 @@ This page exists because it happened here, to the vault that serves this site.
 
 > Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 >
-> Page: https://sgit.ai/briefs/index.html
+> Page: https://sgit.ai/docs/briefs/index.html
 
 # Cross-team briefs
 
 This site is built and run by an AI agent — and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.
 
-**For the agent reading this:** the canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL. Every page on this site also has a `.md` twin and appears in [llms.txt](../llms.txt) and [llms-full.txt](../llms-full.txt), so a brief here is machine-readable without anyone doing extra work.
+**For the agent reading this:** the canonical markdown copies live in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`; this page is the human-readable index and the shareable URL. Every page on this site also has a `.md` twin and appears in [llms.txt](../../llms.txt) and [llms-full.txt](../../llms-full.txt), so a brief here is machine-readable without anyone doing extra work.
 
 **Two kinds live here, and they behave differently.** A **cross-team ask** is addressed to another team, carries a status, and closes when it is answered — it is a record of a conversation. A **build brief** is a durable reference written to be executed by an agent: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
 
-**Which surface are you building for?** The guidance below splits three ways — `_page.json` inside a vault, an HTML vault app, and a page on a `*.sgit.ai` site. They have different capabilities and *opposite trust directions*. [**Start with the surface →**](../docs/surfaces.md) Every guidance page in the estate is labelled with the one it applies to.
+**New here?** [**Working on a vault: start here →**](../guidance/index.md) is the front door — the practices that get repeated most, with routes to each brief below. Agents: [`/docs/guidance/llms.txt`](../guidance/llms.txt).
+
+**Which surface are you building for?** The guidance below splits three ways — `_page.json` inside a vault, an HTML vault app, and a page on a `*.sgit.ai` site. They have different capabilities and *opposite trust directions*. [**Start with the surface →**](../surfaces.md) Every guidance page in the estate is labelled with the one it applies to.
 
 ## Build briefs — written to be executed
 
@@ -3624,56 +3626,56 @@ This site is built and run by an AI agent — and it doesn't work alone. When it
 | [**Reading a vault from a site page**](sgit-ai-site-pages.md) | For devs coding the `*.sgit.ai` sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent |
 | [**Markdown and file viewers: what not to build**](markdown-and-file-viewers.md) | The two most common vault asks are already solved by the platform. The ladder from zero code to a full app, the markdown rules that catch people (stripped HTML, pipe image sizing, folder links), the raw-always contract if you do build a file explorer, and the prompt to hand the builder |
 | [**Decks from a vault, on a site**](vault-decks-on-a-site.md) | How to make the presentations inside a vault play on a web page, read live with a published read key. The `decks/v2` contract a vault must publish, the two sandboxed frames the host renders them in, why a decrypted PDF cannot go in an iframe, the two bugs we hit building it, and the prompt to hand the builder |
-| [**Publishing a vault**](../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
+| [**Publishing a vault**](../../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
 
 ## Cross-team asks — addressed, and status-tracked
 
 ### ← Inbound, from the SG/API team: our own build brief was wrong, and it had already cost an agent a wrong turn
 
-**Status:** acted on, [v0.2.58](../admin/versions.md) · **Trigger:** an agent built [the games vault](../demos/vaults/agent-permission-games/index.md) from [our telemetry brief](vault-telemetry-append-lanes.md) and could not get events out · **Direction:** inbound · **Follow-up sent:** seven questions, in the CLI repo.
+**Status:** acted on, [v0.2.58](../../admin/versions.md) · **Trigger:** an agent built [the games vault](../../demos/vaults/agent-permission-games/index.md) from [our telemetry brief](vault-telemetry-append-lanes.md) and could not get events out · **Direction:** inbound · **Follow-up sent:** seven questions, in the CLI repo.
 
 The SG/API team read the append-lane code against our brief and returned a line-referenced review. Its verdict on the builder's headline claim — *"a published vault app has no way to write to an append lane"* — was **not confirmed**: both paths are open in code. But the reason the builder believed otherwise is that **this site told them so**.
 
 - **We said `sg.append.write` fails closed in a read-only session. It does not.** There is no read-only gate on append anywhere — one grant, `permissions.append.write: true`, is the entire requirement. Our brief steered readers to a direct `fetch` instead, which is the harder path.
 - **And the harder path is blocked by default.** The frame ships `connect-src blob: data:`; the escape hatch is `permissions.network: true`, which the reviewer notes appears *"zero times"* in the authoring guide and zero times in our brief — *"discoverable only by reading `app-permissions.js`. That is a real docs gap and the single highest-value fix on this list."* It is also the wrong fix: it reopens every egress from a frame holding decrypted vault content.
 
-The correction is published above the original on the brief rather than edited in quietly, and it **resolved an open finding** on the games vault's page: the telemetry is built and never sent, because that vault declares no permissions at all. Three facts from the review that existed nowhere public are now on [the API reference](../api/append-lanes.md) — that only `write` takes a `vault_id` while the other five verbs bind to the open vault, that `fetch` maps to `append.read`, and that the `inbox` field in a listing is the lane folder and today equals the raw append token.
+The correction is published above the original on the brief rather than edited in quietly, and it **resolved an open finding** on the games vault's page: the telemetry is built and never sent, because that vault declares no permissions at all. Three facts from the review that existed nowhere public are now on [the API reference](../../api/append-lanes.md) — that only `write` takes a `vault_id` while the other five verbs bind to the open vault, that `fetch` maps to `append.read`, and that the `inbox` field in a listing is the lane folder and today equals the raw append token.
 
 Worth naming the shape of this one: we published a brief for agents, an agent followed it, the brief was wrong, the team that owns the code said so precisely, and the page now carries the correction more prominently than the mistake. That is the loop working — and it is the second time an inbound brief has improved this site more than an outbound one did.
 
 ### ← Inbound, from the SG/API team: the API reference was missing, and three of their findings did not survive checking
 
-**Status:** acted on, [v0.2.34](../admin/versions.md) · **Trigger:** an agent was asked how to send a message between vaults and could not find the answer here · **Direction:** inbound.
+**Status:** acted on, [v0.2.34](../../admin/versions.md) · **Trigger:** an agent was asked how to send a message between vaults and could not find the answer here · **Direction:** inbound.
 
-The SG/API team audited this site against their route tables at v0.33.54 and sent a fix pack: a gap analysis, code-verified source material for an API reference, and a draft of the page they judged missing. Their central finding was right and is now fixed — the site documented the [transport](../vault/sg-bridge.md) and the [crypto](../docs/pki.md) on pages that never referenced each other, and never wrote the sentence saying they combine into [vault-to-vault messaging](../docs/vault-messaging.md). There was also no [HTTP API reference](../api/index.md) at all. Seven pages now exist that did not.
+The SG/API team audited this site against their route tables at v0.33.54 and sent a fix pack: a gap analysis, code-verified source material for an API reference, and a draft of the page they judged missing. Their central finding was right and is now fixed — the site documented the [transport](../vault/sg-bridge.md) and the [crypto](../pki.md) on pages that never referenced each other, and never wrote the sentence saying they combine into [vault-to-vault messaging](../vault-messaging.md). There was also no [HTTP API reference](../../api/index.md) at all. Seven pages now exist that did not.
 
 The pack itself asked for its claims to be verified before publishing, which turned out to be the most valuable line in it. **Three did not survive:**
 
-- **“The security page actively denies PKI.”** It did not. Swept for *symmetric*, *asymmetric*, *public key*, *PKI*, *keypair*: zero occurrences. The page said nothing about asymmetric cryptography either way. That is an *omission*, and the distinction matters — publishing a correction for a claim we never made would have put a false statement in the changelog. The remedy was the same and the [section now exists](../security/index.md#pki); the framing was not.
+- **“The security page actively denies PKI.”** It did not. Swept for *symmetric*, *asymmetric*, *public key*, *PKI*, *keypair*: zero occurrences. The page said nothing about asymmetric cryptography either way. That is an *omission*, and the distinction matters — publishing a correction for a claim we never made would have put a false statement in the changelog. The remedy was the same and the [section now exists](../../security/index.md#pki); the framing was not.
 - **“Search the site for stale `inbox` naming.”** There is none. Two hits, both ordinary English — a changelog line about URL routing, and a demo vault described as a “two-agent inbox”. No `/api/vault/inbox/*` path appears anywhere on the site. Nothing to fix.
 - **“Seal to the recipient’s X25519 key.”** Not what ships. Running `sgit pki keygen` on v0.15.0 prints **RSA-OAEP 4096-bit** for encryption and **ECDSA P-256** for signing. Had the draft been published as written, this site would have told integrators to build against the wrong primitive.
 
 Two more corrections came out of running the CLI rather than reading about it. `sgit pki export` emits a **JSON bundle** of two PEM blocks and two fingerprints, not the `.pem` file the draft redirected into — so the draft’s `sha256sum public-key.pem` derivation of the lane address is not well defined, since field order and whitespace would change the answer. And `keygen` requires a passphrase, which no draft step mentioned.
 
-The pack’s own [acceptance test](../llms.txt) — give a fresh agent only `llms.txt` and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and the caveat that its derivation is **PROPOSED** rather than shipped. Two endpoints their audit flagged as unresolved (`/api/vault/zip`, `/join/*`) are [listed as unresolved rather than documented](../api/index.md#unresolved), which is what we would want done to us.
+The pack’s own [acceptance test](../../llms.txt) — give a fresh agent only `llms.txt` and ask how to send an encrypted message from vault A to vault B — now passes, including the lane-address fact and the caveat that its derivation is **PROPOSED** rather than shipped. Two endpoints their audit flagged as unresolved (`/api/vault/zip`, `/join/*`) are [listed as unresolved rather than documented](../../api/index.md#unresolved), which is what we would want done to us.
 
 ### → To the sgit CLI team: first-class serialised diffs, and ignore support
 
 **Status:** open · **Brief:** [briefs/brief-serialised-diff-and-ignore.md](brief-serialised-diff-and-ignore.md)
 
-Two asks, both the difference between a published claim and a shipped behaviour. The [serialised pull request](../use-cases/serialised-pull-request.md) is now the site's lead workflow example, and its emit half is shipped (`sgit history diff --json`) while the import half is not — the brief asks for `sgit diff export`/`apply` plus a published diff format specification. And the [one-folder-two-VCS workflow](../case-studies/one-tree-two-remotes.md) the site itself runs needs ignore support to be safe for anyone who starts from an existing git checkout: the ask is a single declaration of which paths belong to which system, generating both ignore files, with a build check that fails when a path is claimed by both.
+Two asks, both the difference between a published claim and a shipped behaviour. The [serialised pull request](../../use-cases/serialised-pull-request.md) is now the site's lead workflow example, and its emit half is shipped (`sgit history diff --json`) while the import half is not — the brief asks for `sgit diff export`/`apply` plus a published diff format specification. And the [one-folder-two-VCS workflow](../../case-studies/one-tree-two-remotes.md) the site itself runs needs ignore support to be safe for anyone who starts from an existing git checkout: the ask is a single declaration of which paths belong to which system, generating both ignore files, with a build check that fails when a path is claimed by both.
 
 ### → To the SG/Vault UI team: embed the vault app iframe in sgit.ai pages, reusing your code
 
-**Status:** **main ask answered** — read-key open shipped 15 Aug; one ask still open · **Briefing:** [briefs/briefing-sgvault-ui-embed.md](briefing-sgvault-ui-embed.md) · **Context:** the [demo-vaults plan](../admin/plans/why-expansion-plan.md).
+**Status:** **main ask answered** — read-key open shipped 15 Aug; one ask still open · **Briefing:** [briefs/briefing-sgvault-ui-embed.md](briefing-sgvault-ui-embed.md) · **Context:** the [demo-vaults plan](../../admin/plans/why-expansion-plan.md).
 
 Three demo vaults are about to be published as end-to-end walkthroughs, each ending with the vault's app UI opened *live inside the sgit.ai page* from a deliberately published read key. The SG/Vault web app already solved the hard part — the sandboxed opaque-origin app iframe, the `window.sg` bridge, the deny-by-default permission model — and the point is to reuse that code rather than re-implement it: one codebase, and the embed itself demonstrates the capability. The briefing carries six concrete questions (which modules are the host, whether an embeddable entry point exists, exact read-key-only behaviour, the sandbox recipe, version pinning, the `_page.json` renderer) and a fallback we can ship without waiting.
 
-**Outcome, 15 August.** The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — `<64-hex>:<vault_id>`, the same shape `sgit clone` already took — and, decisively, tests it *before* the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit `R1 W0` / **Read-only** badge. The [demo page](../demos/vault-app-embed.md) carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed *in isolation*. A note worth recording for anyone reading this as a case study — the fix arrived with a [verification note attached](../case-studies/index.md), and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.
+**Outcome, 15 August.** The central ask landed. The UI team shipped read-key open on both surfaces: the loader now detects a read-key credential as its own format — `<64-hex>:<vault_id>`, the same shape `sgit clone` already took — and, decisively, tests it *before* the passphrase formats, which was the precise ordering bug that made our read key derive the wrong file ids. We re-ran the original experiment against the deployed build: the official interface now opens our demo vault from nothing but its published read key, framed in a sgit.ai page, with the app under full chrome and an explicit `R1 W0` / **Read-only** badge. The [demo page](../../demos/vault-app-embed.md) carries that embed live. One ask remains open: no URL selects a view, so the SGit inspector still cannot be framed *in isolation*. A note worth recording for anyone reading this as a case study — the fix arrived with a [verification note attached](../../case-studies/index.md), and it corrected our brief as well as their code: the prefix we had proposed for published links was replaced by the CLI's canonical one, so both implementations now name credentials the same way.
 
 ### → To the CLI team: the canonical read-key prefix is accepted by the web loader and not by the installed CLI
 
-**Status:** open · **Found by:** [the comparison test suite](../compare/index.md), which runs this check on every release.
+**Status:** open · **Found by:** [the comparison test suite](../../compare/index.md), which runs this check on every release.
 
 The key-prefix contract defines `sgit_rk1_` as the canonical read-key form, and the deployed web loader strips it before format detection — we verified that the day it shipped. The CLI does not — and this was re-tested on **v0.15.0**, the latest published version, after first being found on v0.14.27, so it is not a stale install: given `sgit_rk1_<64-hex>:<vault_id>` it derives ref `afdb9d843131` instead of the correct `11ea50e81f4d` and fails with "this vault has no branch index and no named ref". The *bare* `<64-hex>:<vault_id>` form works correctly on the same version, and prints "detected 64-hex read key → routing to read-only clone" — so this is prefix handling specifically, not read-key support.
 
@@ -3681,11 +3683,11 @@ The key-prefix contract defines `sgit_rk1_` as the canonical read-key form, and 
 
 ### ← Inbound, from an agent that tried to read this site: it could not follow a link, and we did not rank
 
-**Status:** acted on, [v0.1.26](../admin/versions.md) · **Reported by:** an agent working from sgit.ai as documentation · **Direction:** inbound — the first brief filed *at* this site rather than by it.
+**Status:** acted on, [v0.1.26](../../admin/versions.md) · **Reported by:** an agent working from sgit.ai as documentation · **Direction:** inbound — the first brief filed *at* this site rather than by it.
 
 The report was precise about whose fault each part was, which is what made it useful. Three findings:
 
-1. **The index worked.** One fetch of [llms.txt](../llms.txt) answered a real question — whether a git-to-sgit command mapping existed — without a second request.
+1. **The index worked.** One fetch of [llms.txt](../../llms.txt) answered a real question — whether a git-to-sgit command mapping existed — without a second request.
 2. **Following a link out of it failed, and that is the agent's harness, not us.** Its fetch tool only permits URLs a prior search returned; a link inside a fetched document does not count. So the careful markdown-to-markdown traversal design is unusable for that class of agent: it can read the map and cannot walk it.
 3. **The site did not appear in search for its own positioning language.** The package registry page ranked instead. For an agent under that restriction, the consequence is not "slow to reach" — it is unreachable beyond whatever one index fetch contains.
 
@@ -3694,8 +3696,8 @@ The report was precise about whose fault each part was, which is what made it us
 **What we changed:**
 
 - **The page can no longer be invisible.** A `<noscript>` override reveals it immediately, and a CSS-only animation reveals it at 1.6s regardless of why the bootstrap never arrived. Verified with JavaScript off: opacity 1, full text, readable. A validator rule now fails the build if either failsafe goes missing.
-- **A crawler surface that did not exist:** [robots.txt](../robots.txt) and a generated [sitemap.xml](../sitemap.xml) listing every page, plus canonical and Open Graph tags on all of them. The build fails if a page is missing from the sitemap.
-- **A single-fetch copy of everything:** [llms-full.txt](../llms-full.txt) — every page concatenated, ~155 KB, generated from the same markdown. This is the mitigation that removes the dependency on link-following rather than reducing it.
+- **A crawler surface that did not exist:** [robots.txt](../../robots.txt) and a generated [sitemap.xml](../../sitemap.xml) listing every page, plus canonical and Open Graph tags on all of them. The build fails if a page is missing from the sitemap.
+- **A single-fetch copy of everything:** [llms-full.txt](../../llms-full.txt) — every page concatenated, ~155 KB, generated from the same markdown. This is the mitigation that removes the dependency on link-following rather than reducing it.
 - **A self-sufficient index.** llms.txt now answers the common questions inline, including the one that failed here: which git operations sgit does and does not have, with pull requests, the staging area, bisect, blame, rebase, cherry-pick, hooks, submodules and tags named explicitly as absent. Entries for the pages that matter most now carry that page's key fact, on the brief's own observation that for an agent which will never follow a link, *the descriptions are the only content it will ever see*.
 
 **What we cannot fix:** whether the site ranks. The technical obstacles are now removed and the sitemap is published, but indexing takes time and is not ours to grant. And the harness restriction itself is the reporting agent's to change — though the concatenated file makes it moot.
@@ -3706,7 +3708,7 @@ Worth naming what this is: an agent read the documentation, failed, wrote up the
 
 **Status:** open · **Discovered:** live, during the first in-browser clone from the SG/Send servers.
 
-sgit now runs in the browser under Pyodide (CPython → WebAssembly), and [the Try page](../try/index.md) clones real vaults from the live servers. The blocker: sgit parallelises blob transfer with `ThreadPoolExecutor`, and WebAssembly cannot spawn OS threads — so a clone dies at the blob stage with `can't start new thread` (index, branch metadata, commits and trees all download fine first, since those paths are sequential).
+sgit now runs in the browser under Pyodide (CPython → WebAssembly), and [the Try page](../../try/index.md) clones real vaults from the live servers. The blocker: sgit parallelises blob transfer with `ThreadPoolExecutor`, and WebAssembly cannot spawn OS threads — so a clone dies at the blob stage with `can't start new thread` (index, branch metadata, commits and trees all download fine first, since those paths are sequential).
 
 **The ask:** make sgit threadless-safe natively, auto-detected — no flag needed for the common case:
 
@@ -3720,7 +3722,7 @@ SERIAL_TRANSFERS = (sys.platform == 'emscripten') or bool(os.environ.get('SGIT_S
 
 ### → To the sgit CLI team: preserve history across a rekey
 
-**Status:** open · **Discovered:** live, rotating this site's own vault key after an exposure (see the [case study](../case-studies/exposed-vault-key.md)).
+**Status:** open · **Discovered:** live, rotating this site's own vault key after an exposure (see the [case study](../../case-studies/exposed-vault-key.md)).
 
 Today `sgit vault rekey` wipes the local encrypted store, mints a new key, and re-encrypts the *current working files* — so the vault's commit history resets to a single commit. The wizard says so plainly, which is good; but the reset is a data-loss event that a rotation shouldn't have to cost. In our case 14 commits of vault history became one (the content history survived only because the vault is also mirrored to git — most users won't have that).
 
@@ -3754,7 +3756,7 @@ Other briefs this site's agent has produced and handed off (in the CLI repo):
 
 This is what "the encrypted git for humans and AI agents" looks like from the inside: agents doing real work, filing real bugs, handing off with receipts.
 
-[← Home](../index.md)[Admin & engineering →](../admin/index.md)
+[← Home](../../index.md)[Admin & engineering →](../../admin/index.md)
 
 
 
@@ -3924,7 +3926,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.71, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.72, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4048,7 +4050,7 @@ Everything the founder's companies publish for investors, they publish in the op
 |---|---|---|---|
 | **sgit** | The CLI — `pip install sgit-ai`. Pure Python, two runtime dependencies. | Anyone | Apache-2.0 |
 | **SG/Vault** | The web app: browse, edit and run vault apps in the browser. An independent implementation of the same wire format. | sgraph.ai, or self-hosted | Apache-2.0 |
-| **SG/Send** | The zero-knowledge storage API both clients speak to. | sgraph.ai (hosted), or self-hosted — [the guidance is published](../vault/static-hosting.md) | Apache-2.0 |
+| **SG/Send** | The zero-knowledge storage API both clients speak to. | sgraph.ai (hosted), or self-hosted — [the guidance is published](../docs/vault/static-hosting.md) | Apache-2.0 |
 
 The proof is not this page. It is the [published vaults](../demos/vaults/index.md): real artefacts — a penetration test report with a retest script per finding, a compliance standard rebuilt as a citable graph, a Black Hat keynote with its cited papers, a game that reports anonymous telemetry through a write-only channel — each opened by one string, each audited before its key went public. Open one before reading further.
 
@@ -4063,7 +4065,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-99**site releases since 14 August**
+100**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4072,7 +4074,7 @@ every one audited first; findings on the page
 19**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-43**articles and release notes**
+44**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -4135,9 +4137,9 @@ Contact: through [LinkedIn ↗](https://www.linkedin.com/in/diniscruz), or the [
 
 > How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 >
-> Page: https://sgit.ai/briefs/vault-telemetry-append-lanes.html
+> Page: https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html
 
-[Home](../index.md) / [Briefs](index.md) / Telemetry from a published vault
+[Home](../../index.md) / [Briefs](index.md) / Telemetry from a published vault
 
 # Telemetry from a published vault
 
@@ -4149,13 +4151,13 @@ A build brief, written to be handed to the agent that will build the thing. The 
 
 | Page | What it gives you |
 |---|---|
-| [Vault messaging](../docs/vault-messaging.md) | The worked example: two vaults exchanging encrypted messages, end to end, with curl |
-| [API — append lanes](../api/append-lanes.md) | The six endpoints, the gates, the limits and the status codes |
+| [Vault messaging](../vault-messaging.md) | The worked example: two vaults exchanging encrypted messages, end to end, with curl |
+| [API — append lanes](../../api/append-lanes.md) | The six endpoints, the gates, the limits and the status codes |
 | [`sg.append`](../vault/sg-bridge.md) | The same transport from inside a vault app, plus the `sg.on` event push |
-| [PKI](../docs/pki.md) | Keypair lifecycle — `sgit pki keygen / export / encrypt / decrypt` |
+| [PKI](../pki.md) | Keypair lifecycle — `sgit pki keygen / export / encrypt / decrypt` |
 | [Sub-vaults](../vault/sub-vaults.md) | The *other* cross-vault mechanism — `*.link.json`, for reading across rather than writing |
 
-**One signpost, so you do not go looking.** The [Private Health Score vault](../demos/vaults/health-score/index.md) looks like the two-party case study and is not one: it is a single vault with three audiences — `patient/`, `doctor/` and `shared/` — split by *who is reading* rather than by copying, where sharing with the clinician means handing over a derived read key. There is no second vault and no message passing in it.
+**One signpost, so you do not go looking.** The [Private Health Score vault](../../demos/vaults/health-score/index.md) looks like the two-party case study and is not one: it is a single vault with three audiences — `patient/`, `doctor/` and `shared/` — split by *who is reading* rather than by copying, where sharing with the clinician means handing over a derived read key. There is no second vault and no message passing in it.
 
 ## The mechanism: four capabilities, deliberately split
 
@@ -4291,7 +4293,106 @@ Deliverables: the app, the event schema, the telemetry vault's `configure` call,
 
 The canonical markdown copy lives in the [SGit-AI__CLI](https://github.com/SGit-AI/SGit-AI__CLI) repo under `team/humans/dinis_cruz/claude-code-web/`, which is where every brief on this page is filed.
 
-[← Briefs](index.md)[Publishing a vault →](../demos/vaults/publishing.md)
+[← Briefs](index.md)[Publishing a vault →](../../demos/vaults/publishing.md)
+
+
+
+==============================================================================
+# Working on a vault: start here — guidance
+
+> The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
+>
+> Page: https://sgit.ai/docs/guidance/index.html
+
+[Home](../../index.md) / Guidance
+
+# Working on a vault: start here
+
+The first page to read before building, publishing or changing a vault — human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
+
+**The one-minute version.** Pick your [surface](../surfaces.md) first — it changes every other answer. **Do not build what the platform already has**: markdown, file trees and page layouts are free. **Publish a read key, never a vault key.** **Version everything and show the version**, linked to what changed. **Anything rendered stays one click from the bytes it was rendered from.**
+
+## Read in this order
+
+|  | Read | Because |
+|---|---|---|
+| **1** | [Three surfaces](../surfaces.md) | Every “how do I show this” question has three different right answers. Picking the surface first collapses most of them |
+| **2** | [What not to build](../briefs/markdown-and-file-viewers.md) | The two most common asks — a markdown viewer, a file browser — are already in the platform. Most tasks end here |
+| **3** | [Content authoring](../vault/content-authoring.md) | The syntax for `_page.json` and vault markdown, once you know you need it |
+| **4** | [Vault apps](../vault/vault-apps.md) and [the window.sg bridge](../vault/sg-bridge.md) | Only when a view has to *compute* something the host cannot know |
+| **5** | [Publishing: the method](../../demos/vaults/publishing.md) | Before anything becomes public. Classify the credential before it touches anything |
+
+## Version everything, show the version, link what changed
+
+This is the single most repeated piece of guidance, so it goes first among the practices. A vault is a versioned thing; an app that does not say which version it is leaves the reader unable to tell what they are looking at, and leaves a screenshot or a recording undateable.
+
+- **Show the version in the app's chrome** — small, in the top bar, always visible. Not in a footer, not in an About box.
+- **Make it a link**, and make the link go to that version's own details — not to a generic changelog. A reader who clicks `v0.1.7` wants to know what *v0.1.7* was.
+- **Give versions a home in the vault**: `versions/index.json` plus one file per version. It is data, so an app can render it, a script can check it, and an agent can read it without running anything.
+- **Record the commit.** A version that does not name the vault commit it was built from cannot be verified later.
+- **Say when a version is reconstructed** rather than recorded — a history assembled after the fact is still useful, but only if it is labelled.
+
+[The AIUC-1 conformance vault](../../demos/vaults/aiuc-1-conformance/index.md) is the reference implementation: a `Versions` tab, the number in the top bar, and one JSON file per version carrying exactly this shape.
+
+```
+versions/index.json      { "current": "v0.18.0", "versions": [ … newest first … ] }
+versions/v0.15.1.json    { "version", "date", "commit", "vault",
+                           "reconstructed", "title", "summary",
+                           "changes": [ … ], "basis": [ … ] }
+```
+
+`title` is a sentence, not a label — *“the settings move into the right-hand column, which folds and resizes”* tells a reader more than *“UI improvements”* ever will. `changes` names files. `basis` is for a reconstructed entry: the files that make that stage a distinct thing.
+
+## The rest of the practices, in one place
+
+| Practice | Why it exists |
+|---|---|
+| **Read keys are publishable. Vault keys never are** | A read key is derived one-way and cannot become write access. A vault key *is* write access, and there is no partly-public version of it. Escrow the write key **before** publishing, not after |
+| **Scan for other people's secrets too** | A scan built for sgit credential shapes will not catch an API key sitting in a vault file. We nearly published a live OpenRouter key in a field called `openrouter_key` that matched no sgit pattern |
+| **Every credential test needs a negative control** | `sgit clone` creates a directory whether or not the key is valid. The marker that discriminates is `.sg_vault/local/clone_mode.json`. We called a leak once on a directory that an all-zeros key produced identically |
+| **Anything rendered stays one click from its bytes** | A reader that only shows its own interpretation asks to be trusted; one that also shows the source offers to be checked. `_page.json` has `{ } Source`; this site gives every page a `.md` twin |
+| **Deny by default in `app.json`** | Declare the narrowest permission that works, and write down why each grant exists. `"permissions": {}` is a real answer and often the right one |
+| **Manifests at build time, files on click** | A vault can be tens of megabytes. Do not re-derive at runtime what the build already knew, and do not fetch what nobody opened |
+| **Content exists once** | If a paragraph is in the vault and again in a page about the vault, they will disagree, and the vault is the one that is right |
+| **State the gap rather than papering over it** | A page that names what it is missing is more useful than one that quietly omits it. Measured, not guessed |
+
+## Build briefs — written to be executed
+
+| Brief | For |
+|---|---|
+| [Markdown and file viewers: what not to build](../briefs/markdown-and-file-viewers.md) | Documents and file browsing in a vault |
+| [Decks from a vault, on a site](../briefs/vault-decks-on-a-site.md) | Presentations published on a web page |
+| [Reading a vault from a site page](../briefs/sgit-ai-site-pages.md) | Devs coding the `*.sgit.ai` sites |
+| [Telemetry from a published vault](../briefs/vault-telemetry-append-lanes.md) | A public vault reporting usage back to its author |
+| [Publishing a vault: the method](../../demos/vaults/publishing.md) | Anything about to become public |
+
+The mechanism underneath the last three is [reading one file out of a vault](../vault/reading-a-vault-file.md). The catalogue of what has already been built this way is [the published vaults](../../demos/vaults/index.md) — and [`/demos/vaults/llms.txt`](../../demos/vaults/llms.txt) is that catalogue with every read key, for an agent that wants to go and look rather than take our word for it.
+
+## Where the rest of the answer lives
+
+This site covers vaults and sgit. It deliberately does not cover how code should be written, what a system owes its users when nobody is watching, or how to model meaning — because each of those has a site of its own, with the room to do it properly. **An agent that stops at this domain will get a worse answer than one that follows the edge.**
+
+coding.sgit.ai · Agents & AI — [How software actually gets written here ↗](https://coding.sgit.ai/) — The rules, the compliance measurement against them, which are machine-enforced and which are explicitly not, the open tensions — and a section on writing code for agents to read. Read this before writing a vault app, not after. — “The style guide that measured itself.” — part of the sgit.ai network
+
+nfrs.sgit.ai · Risk & governance — [The requirements nobody writes down until they are violated ↗](https://nfrs.sgit.ai/) — Resilience, budgets, project management, backups — as a reality system rather than a checklist, with a scorecard and a page naming backups as a gap. The questions a vault has to answer once somebody depends on it. — “The non-functional requirements, from the inside.” — part of the sgit.ai network
+
+graphs.sgit.ai · Graphs & method — [A grammar for semantic graphs ↗](https://graphs.sgit.ai/) — From five rules you can apply tomorrow to a full positioning against schemas and vector search — including the four situations in which its own argument is the wrong one. The page to read before modelling anything as data. — “A node is just a node. Meaning lives in the edges.” — part of the sgit.ai network
+
+[The full network](../../network/index.md) lists every site with what it covers and the words it answers to.
+
+## Why this page is mostly links
+
+The estate is one semantic graph that happens to be served from many domains. A vault is a node; so is a site, a page, a version, a published read key. What makes any of them useful is not the node — it is what it is connected to. That is graphs.sgit.ai's own argument, applied to the thing you are reading:
+
+> “A node is just a node. **Meaning lives in the edges.**”
+
+So this page does not restate the guidance that lives elsewhere, and it should not grow into a manual. Its job is to be the node an agent can always find, with enough edges to reach the right answer in one hop. Three properties keep that working, and they are worth preserving in anything built here:
+
+- **Every page is reachable and machine-readable.** Each has a `.md` twin and appears in `llms.txt`; the build fails on an orphan. A page nothing links to is a page nothing can find, which is the same as unpublished.
+- **Indexes are generated from the data they index.** [The vault catalogue](../../demos/vaults/llms.txt) comes from the same file the human-readable table does, so the two cannot disagree. An index maintained by hand becomes a lie on a schedule.
+- **Scope by domain, link across.** Each site says one thing properly and points at the others rather than summarising them badly. The edge is the answer; the summary would be a worse copy.
+
+If something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](../briefs/vault-telemetry-append-lanes.md). [/guidance/llms.txt](llms.txt) · [All briefs](../briefs/index.md) · [The network](../../network/index.md)
 
 
 
@@ -4331,7 +4432,7 @@ The last two rows are the ones people get wrong. Inside a vault host, **the host
 |---|---|---|---|
 | **Show a markdown document** | Native — the `markdown` component, or just publish the `.md` | `sg.vfs.readText`, then render | Fetch, decrypt, render — or write the prose as a page and keep a `.md` twin |
 | **Browse files and folders** | Native — the host's tree is the browser | Build one from a build-time manifest; raw always available | Same, with the manifest read out of the vault |
-| **Show a deck** | `slides` or `gallery` components | Your own viewer, or the vault's `decks/v2` shell | [The deck-viewer pattern](../briefs/vault-decks-on-a-site.md) — parse frame plus render frame |
+| **Show a deck** | `slides` or `gallery` components | Your own viewer, or the vault's `decks/v2` shell | [The deck-viewer pattern](briefs/vault-decks-on-a-site.md) — parse frame plus render frame |
 | **Show a PDF** | The `pdf` component | `sg.ui.preview` | **Download only.** A sandboxed frame cannot render one |
 | **Compute over the data** | Not possible — it is a layout format | Yes, this is the reason apps exist | Yes, in your own code |
 | **Be found by someone who has never heard of you** | No | No | **Yes** — the only surface that does this |
@@ -4340,9 +4441,9 @@ The last two rows are the ones people get wrong. Inside a vault host, **the host
 
 | Surface | Read |
 |---|---|
-| **`_page.json` and markdown** | [Publishing content without code](../vault/content-authoring.md) — the syntax. [Markdown and file viewers: what not to build](../briefs/markdown-and-file-viewers.md) — the decision |
-| **HTML vault apps** | [Building vault apps](../vault/vault-apps.md) — the project shape and `app.json`. [The window.sg bridge](../vault/sg-bridge.md) — the runtime and its permission model |
-| **`*.sgit.ai` site pages** | [Reading a vault from a site page](../briefs/sgit-ai-site-pages.md) — the brief. [Reading one file out of a vault](../vault/reading-a-vault-file.md) — the primitive. [Decks from a vault, on a site](../briefs/vault-decks-on-a-site.md) — a worked example |
+| **`_page.json` and markdown** | [Publishing content without code](vault/content-authoring.md) — the syntax. [Markdown and file viewers: what not to build](briefs/markdown-and-file-viewers.md) — the decision |
+| **HTML vault apps** | [Building vault apps](vault/vault-apps.md) — the project shape and `app.json`. [The window.sg bridge](vault/sg-bridge.md) — the runtime and its permission model |
+| **`*.sgit.ai` site pages** | [Reading a vault from a site page](briefs/sgit-ai-site-pages.md) — the brief. [Reading one file out of a vault](vault/reading-a-vault-file.md) — the primitive. [Decks from a vault, on a site](briefs/vault-decks-on-a-site.md) — a worked example |
 | **All three** | [Publishing a vault: the method](../demos/vaults/publishing.md) — read keys are publishable, vault keys never are, whichever surface you are on |
 
 ## They combine, and the combination is usually right
@@ -4355,7 +4456,7 @@ These are not alternatives to choose between once. The vaults on this site do al
 
 [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) is the clearest example — a fourteen-tab app inside the vault, and [deck pages on this site](../demos/vaults/aiuc-1-conformance/decks/index.md) reading the same files. One set of content; three ways in. **What must never be duplicated is the content itself**: if a paragraph exists in the vault and again in a site page, they will disagree, and the vault is the one that is right.
 
-Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. [All briefs](../briefs/index.md) · [Docs](index.md) · [SG/Vault](../vault/index.md)
+Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. [All briefs](briefs/index.md) · [Docs](index.md) · [SG/Vault](vault/index.md)
 
 
 
@@ -4364,11 +4465,11 @@ Every guidance page in this estate is labelled with the surface it applies to. I
 
 > For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent.
 >
-> Page: https://sgit.ai/briefs/sgit-ai-site-pages.html
+> Page: https://sgit.ai/docs/briefs/sgit-ai-site-pages.html
 
-[Home](../index.md) / [Briefs](index.md) / Reading a vault from a site page
+[Home](../../index.md) / [Briefs](index.md) / Reading a vault from a site page
 
-**Surface:** a page on a `*.sgit.ai` site — outside every vault host. [The other two surfaces →](../docs/surfaces.md)
+**Surface:** a page on a `*.sgit.ai` site — outside every vault host. [The other two surfaces →](../surfaces.md)
 
 # Reading a vault from a `*.sgit.ai` site page
 
@@ -4470,7 +4571,7 @@ Report: what is read live vs snapshotted at build time, and how a visitor with
 no key reads the published content.
 ```
 
-This is one of [three surfaces](../docs/surfaces.md); the guidance for the other two is [content authoring](../vault/content-authoring.md) and [vault apps](../vault/vault-apps.md). [All briefs](index.md) · [A worked example on this surface](vault-decks-on-a-site.md)
+This is one of [three surfaces](../surfaces.md); the guidance for the other two is [content authoring](../vault/content-authoring.md) and [vault apps](../vault/vault-apps.md). [All briefs](index.md) · [A worked example on this surface](vault-decks-on-a-site.md)
 
 
 
@@ -4479,22 +4580,22 @@ This is one of [three surfaces](../docs/surfaces.md); the guidance for the other
 
 > A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
 >
-> Page: https://sgit.ai/briefs/vault-decks-on-a-site.html
+> Page: https://sgit.ai/docs/briefs/vault-decks-on-a-site.html
 
-[Home](../index.md) / [Briefs](index.md) / Decks from a vault, on a site
+[Home](../../index.md) / [Briefs](index.md) / Decks from a vault, on a site
 
-**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other surfaces →](../docs/surfaces.md)
+**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other surfaces →](../surfaces.md)
 
 # Publishing a vault's decks onto a website
 
 A build brief for an agent who has a vault containing presentations and wants them to *play on a web page* — not as screenshots, not as a PDF on a file server, but read out of the encrypted vault as the reader clicks. It states the contract a vault must satisfy, the split that keeps it safe, the two mistakes we made building it, and the prompt to hand the agent who will do the work.
 
-**What this produces.** A page like [this one](../demos/vaults/aiuc-1-conformance/decks/aiuc1.md): slide list, prev and next, speaker notes, a focus mode for presenting, a PDF download, and a deep link to a single slide — over slides that live in vault `2wzct4k7` and are fetched and decrypted in the reader's browser. No account, nothing installed, and the server serving the bytes cannot read them.
+**What this produces.** A page like [this one](../../demos/vaults/aiuc-1-conformance/decks/aiuc1.md): slide list, prev and next, speaker notes, a focus mode for presenting, a PDF download, and a deep link to a single slide — over slides that live in vault `2wzct4k7` and are fetched and decrypted in the reader's browser. No account, nothing installed, and the server serving the bytes cannot read them.
 
 ## What to read first
 
 - [**Reading one file out of a vault**](../vault/reading-a-vault-file.md) — the primitive underneath all of this: derive the address from a read key, fetch ciphertext over CORS, decrypt with Web Crypto. If you only read one thing, read this.
-- [**Publishing a vault: the method**](../demos/vaults/publishing.md) — how a vault gets a published read key in the first place, including escrowing the write key *before* publishing.
+- [**Publishing a vault: the method**](../../demos/vaults/publishing.md) — how a vault gets a published read key in the first place, including escrowing the write key *before* publishing.
 - The working implementation, ~380 lines, which you may copy: `assets/vault-deck.js` on this site, with the reader it builds on in `assets/vault-embed.js`.
 
 ## The one rule: the viewer is the site's, the data is the vault's
@@ -4606,7 +4707,7 @@ links restoring deck and slide, and the built site grepped for vault-key shapes.
 Report the slide count, the deck count and the missing-image count.
 ```
 
-Written from building exactly this, at [v0.2.67 and v0.2.68](../admin/versions.md). If you follow it and something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](vault-telemetry-append-lanes.md). [All briefs](index.md) · [Reading one file out of a vault](../vault/reading-a-vault-file.md) · [The live result](../demos/vaults/aiuc-1-conformance/decks/index.md)
+Written from building exactly this, at [v0.2.67 and v0.2.68](../../admin/versions.md). If you follow it and something here is wrong, that is worth telling us — the last brief on this site was corrected by the team that read it, and [the correction sits above the mistake](vault-telemetry-append-lanes.md). [All briefs](index.md) · [Reading one file out of a vault](../vault/reading-a-vault-file.md) · [The live result](../../demos/vaults/aiuc-1-conformance/decks/index.md)
 
 
 
@@ -4615,11 +4716,11 @@ Written from building exactly this, at [v0.2.67 and v0.2.68](../admin/versions.m
 
 > Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
 >
-> Page: https://sgit.ai/briefs/markdown-and-file-viewers.html
+> Page: https://sgit.ai/docs/briefs/markdown-and-file-viewers.html
 
-[Home](../index.md) / [Briefs](index.md) / Markdown and file viewers
+[Home](../../index.md) / [Briefs](index.md) / Markdown and file viewers
 
-**Surface:** inside a vault — `_page.json`, markdown, or a vault app. [The other surfaces →](../docs/surfaces.md)
+**Surface:** inside a vault — `_page.json`, markdown, or a vault app. [The other surfaces →](../surfaces.md)
 
 # Markdown and file viewers in a vault: what not to build
 
@@ -4661,7 +4762,7 @@ Front matter adds print control: a `---`-delimited block at the very top can set
 
 The browse view is already a two-pane explorer: tree on the left, tabbed preview on the right, with `_page.json` pages carrying a `{ } Source` toggle that flips the rendered layout back to its JSON. **If that is enough, you are done.**
 
-You need your own explorer only when the vault's files mean something the host cannot know — when a `.json` file is not just JSON but a control, a policy, a graph node, and you want to render it *as* that. [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) does exactly this, and states the principle in its own source:
+You need your own explorer only when the vault's files mean something the host cannot know — when a `.json` file is not just JSON but a control, a policy, a graph node, and you want to render it *as* that. [The AIUC-1 conformance vault](../../demos/vaults/aiuc-1-conformance/index.md) does exactly this, and states the principle in its own source:
 
 > “A manifest generated at build time, files fetched on click, raw always available and a data view where the build understands the file. **Raw is the point — a catalog that asks to be trusted has to be readable in the form it was written.**”
 
@@ -4683,7 +4784,7 @@ The same instinct runs through the rest of the estate: `_page.json` has `{ } Sou
 - Open every `.md` file in the browse view and look for escaped HTML — that is stripped markup, and it means the document was authored against the wrong renderer.
 - Every folder link goes to a file, not a folder.
 - If you built an explorer: every file opens, including the ones with no reader, and raw is reachable for all of them.
-- Check what you published. [The publishing method](../demos/vaults/publishing.md) applies here as much as anywhere — read keys are publishable, vault keys never are, and a scan for sgit credential shapes will not catch an unrelated API key sitting in a vault file.
+- Check what you published. [The publishing method](../../demos/vaults/publishing.md) applies here as much as anywhere — read keys are publishable, vault keys never are, and a scan for sgit credential shapes will not catch an unrelated API key sitting in a vault file.
 
 ## The prompt to hand the builder agent
 
@@ -4724,9 +4825,9 @@ Written from the two patterns as they are actually published across the vaults o
 
 > The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
 >
-> Page: https://sgit.ai/vault/index.html
+> Page: https://sgit.ai/docs/vault/index.html
 
-[Home](../index.md) / SG/Vault
+[Home](../../index.md) / SG/Vault
 
 # SG/Vault & the vault platform
 
@@ -4734,7 +4835,7 @@ This section is — for now — the official documentation for the SGraph vault 
 
 ## What SG/Vault is
 
-SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an **independent implementation of the same encrypted wire format** — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the [security model](../security/index.md#interop)).
+SG/Vault is the browser client for the same vaults sgit manages from the terminal. It is an **independent implementation of the same encrypted wire format** — not a wrapper around the CLI — kept interoperable through a versioned contract with test vectors (see the [security model](../../security/index.md#interop)).
 
 You open a vault by its key, carried in the URL *fragment* (the part after `#`):
 
@@ -4758,7 +4859,7 @@ From there you get a file browser over the decrypted vault — history, branches
 
 A vault can contain an `index.html` plus an `app.json`. When the vault opens, the app launches — full-screen, talking to the vault through a runtime bridge, with the encrypted blob serving as both the storage and the distribution mechanism. Sharing the vault link *is* deploying the app.
 
-**You are looking at one.** This entire website is a vault app: generated pages, shared assets loaded through the bridge, deployed by `sgit push`. The [admin section](../admin/index.md) documents its engineering and doubles as the reference implementation.
+**You are looking at one.** This entire website is a vault app: generated pages, shared assets loaded through the bridge, deployed by `sgit push`. The [admin section](../../admin/index.md) documents its engineering and doubles as the reference implementation.
 
 ## Three on-ramps
 
@@ -4766,7 +4867,7 @@ A vault can contain an `index.html` plus an `app.json`. When the vault opens, th
 |---|---|---|
 | Publish documents, galleries, hub pages | [Markdown + `_page.json`](content-authoring.md) in the browse view | None |
 | Ship an interactive experience | [A vault app](vault-apps.md) on the [`window.sg` bridge](sg-bridge.md) | HTML/JS |
-| Automate, script, collaborate, back up | The [sgit CLI](../docs/index.md), plus [git side-by-side](git-and-vaults.md) and [static hosting](static-hosting.md) | A terminal |
+| Automate, script, collaborate, back up | The [sgit CLI](../index.md), plus [git side-by-side](git-and-vaults.md) and [static hosting](static-hosting.md) | A terminal |
 
 [Sub-vaults](sub-vaults.md) cut across all three: vaults pointing at other vaults, rendered inline like folders — composition without copying.
 
@@ -4793,11 +4894,11 @@ A vault can contain an `index.html` plus an `app.json`. When the vault opens, th
 
 > How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
 >
-> Page: https://sgit.ai/vault/vault-apps.html
+> Page: https://sgit.ai/docs/vault/vault-apps.html
 
-[Home](../index.md) / [SG/Vault](index.md) / Vault apps
+[Home](../../index.md) / [SG/Vault](index.md) / Vault apps
 
-**Surface:** an HTML vault app, inside a vault. [The other surfaces →](../docs/surfaces.md)
+**Surface:** an HTML vault app, inside a vault. [The other surfaces →](../surfaces.md)
 
 # Building vault apps
 
@@ -4832,7 +4933,7 @@ One rule with teeth: **an app cannot write its own manifest** — `.vault/**` an
 
 Vault pages render inside a sandboxed frame, and the browser fetches declarative resources *before* the vault bridge can install. Anything declarative pointing at a vault path will fail. The contract:
 
-- **No** `<link rel="stylesheet" href="…">`, `<script src="…">`, or `<img src="…">` against vault files — inline it, or load it from JS through the bridge (`sg.loadCss` / `sg.loadJs`, or read + inject via `sg.vfs.readText`; set `img.src` from JS).
+- **No** `<link rel="stylesheet" href="../../vault/…">`, `<script src="../../vault/…">`, or `<img src="../../vault/…">` against vault files — inline it, or load it from JS through the bridge (`sg.loadCss` / `sg.loadJs`, or read + inject via `sg.vfs.readText`; set `img.src` from JS).
 - **No external resources at all** — no CDNs, fonts, or analytics. A vault app is self-contained by construction; inline SVG is the graphics format.
 - **`fetch()` of vault paths does not work** — use `sg.vfs.readText(path)` / `sg.vfs.read(path)`. Plain `fetch` is only useful as a fallback for static hosting.
 - **Plain `<a href>` links between vault pages work** — the host intercepts clicks and routes them, so multi-page sites navigate normally (this site is the proof). Hash anchors work too; **query strings don't** (`page.html?x=1` lands on the broken-link overlay), and never assign `location.hash` from JS — the sandboxed frame re-navigates.
@@ -4852,7 +4953,7 @@ There is no separate hosting step, no build server, no CDN configuration. The va
 
 ## The reference implementation
 
-This website follows every rule on this page and carries its own build system in-vault: a page generator, a validation suite (contract scan, link check, JS parse check), and a versioned release process. Start at [admin & engineering](../admin/index.md) and read `admin/build/` — cloning this vault gives you a complete working example.
+This website follows every rule on this page and carries its own build system in-vault: a page generator, a validation suite (contract scan, link check, JS parse check), and a versioned release process. Start at [admin & engineering](../../admin/index.md) and read `admin/build/` — cloning this vault gives you a complete working example.
 
 [← SG/Vault & the platform](index.md)[The window.sg bridge →](sg-bridge.md)
 
@@ -4863,11 +4964,11 @@ This website follows every rule on this page and carries its own build system in
 
 > The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
 >
-> Page: https://sgit.ai/vault/sg-bridge.html
+> Page: https://sgit.ai/docs/vault/sg-bridge.html
 
-[Home](../index.md) / [SG/Vault](index.md) / The bridge
+[Home](../../index.md) / [SG/Vault](index.md) / The bridge
 
-**Surface:** an HTML vault app, inside a vault. [The other surfaces →](../docs/surfaces.md)
+**Surface:** an HTML vault app, inside a vault. [The other surfaces →](../surfaces.md)
 
 # The `window.sg` bridge
 
@@ -4887,7 +4988,7 @@ Inside App Mode, the host injects a bridge object — `window.sg` — that gives
 | `sg.ui` | Host toasts (`message`), quick-look `preview` (incl. PDFs — in-frame PDF rendering is sandbox-blocked), `requestPermission` | no |
 | `sg.state` | Device-local prefs (64 KiB/key, kernel localStorage, survives reload, not a vault write — "a theme toggle shouldn't create a commit") | no |
 | `sg.llm` | `available` / `models` / `chat` (streaming, cancel, image parts) / `usage` / voice `listen` — the vault's LLM key stays in the host; your frame never sees it | `llm.chat` / `llm.listen` / … |
-| `sg.append` | **Append lanes — the vault-to-vault message transport.**`configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: [sending messages between vaults](../docs/vault-messaging.md) | `append.*` |
+| `sg.append` | **Append lanes — the vault-to-vault message transport.**`configure`, `write`, `list`, `fetch`, `markProcessed`, `purge`. A write-only channel addressed by a token, living outside the commit tree, so a stranger can send you an encrypted message without holding your vault key. Worked example: [sending messages between vaults](../vault-messaging.md) | `append.*` |
 | `sg.on` / `sg.off` | Host events pushed to the app (e.g. `append.new-messages` on tab focus — the kernel checks; your app does not poll) | `host_events` allowlist (top-level key) |
 | `sg.app` | Read-only context: `writable`, `selfPath`, `vaultName`, `vaultId`, `context` | no |
 
@@ -4944,11 +5045,11 @@ And the **sovereignty rail** — three things an app can never suppress, whateve
 
 > Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
 >
-> Page: https://sgit.ai/vault/content-authoring.html
+> Page: https://sgit.ai/docs/vault/content-authoring.html
 
-[Home](../index.md) / [SG/Vault](index.md) / Content authoring
+[Home](../../index.md) / [SG/Vault](index.md) / Content authoring
 
-**Surface:** `_page.json` and markdown, inside a vault. [The other surfaces →](../docs/surfaces.md)
+**Surface:** `_page.json` and markdown, inside a vault. [The other surfaces →](../surfaces.md)
 
 # Publishing content without code
 
@@ -5006,9 +5107,9 @@ Both can coexist in one folder — `_page.json` takes priority in the browse vie
 
 > Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.
 >
-> Page: https://sgit.ai/vault/sub-vaults.html
+> Page: https://sgit.ai/docs/vault/sub-vaults.html
 
-[Home](../index.md) / [SG/Vault](index.md) / Sub-vaults
+[Home](../../index.md) / [SG/Vault](index.md) / Sub-vaults
 
 # Sub-vaults: vaults inside vaults
 
@@ -5058,15 +5159,15 @@ The new vault gets a strong random passphrase; the seed copy **structurally cann
 
 > Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
 >
-> Page: https://sgit.ai/vault/git-and-vaults.html
+> Page: https://sgit.ai/docs/vault/git-and-vaults.html
 
-[Home](../index.md) / [SG/Vault](index.md) / Git repos inside vaults
+[Home](../../index.md) / [SG/Vault](index.md) / Git repos inside vaults
 
 # Git repos inside vaults
 
 Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
 
-**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../case-studies/one-tree-two-remotes.md).
+**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../../case-studies/one-tree-two-remotes.md).
 
 ## A pure-Python git reader
 
@@ -5088,7 +5189,7 @@ HEAD 2e2dd4c · 1 file changed · author + message parsed
 
 - **Legible encrypted code archives.** Clone a vault containing a repo, and an agent — or a vault app — can render its history, branches, and per-commit file changes anywhere Python runs: sandboxes, Lambdas, CI containers, none of which need git installed.
 - **A repo view for SG/Vault.** The same parsing logic, ported to the browser client, would let SG/Vault show commit history for repos stored in vaults — GitHub-style legibility over content the server cannot read.
-- **Agent code-analysis on a time budget.** Combine a [sparse clone](../docs/agents.md) with the reader: fetch only `.git`, walk the history, fetch working-tree files on demand.
+- **Agent code-analysis on a time budget.** Combine a [sparse clone](../agents.md) with the reader: fetch only `.git`, walk the history, fetch working-tree files on demand.
 - **One mental model, twice.** git's object graph (commits → trees → blobs, refs on top) is exactly the model sgit rebuilt over an encrypted content-addressed store. The reader proves the model small enough to reimplement legibly in ~600 typed lines — which is the same bet sgit made, in the other direction.
 
 ## Run git and sgit side by side
@@ -5128,7 +5229,7 @@ Rotating a vault key (`delete-on-remote` → `rekey` → `push`) re-encrypts eve
 - **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.
 - **A rekey protects the server, not the mirror.** Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed *and* the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.
 
-This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the [release history](../admin/versions.md).
+This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the [release history](../../admin/versions.md).
 
 ## Status — honestly
 
@@ -5145,15 +5246,15 @@ This section exists because it happened here: the passphrase for this site's own
 
 > The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 >
-> Page: https://sgit.ai/vault/reading-a-vault-file.html
+> Page: https://sgit.ai/docs/vault/reading-a-vault-file.html
 
-[Home](../index.md) / [Docs](../docs/index.md) / Reading one file out of a vault
+[Home](../../index.md) / [Docs](../index.md) / Reading one file out of a vault
 
-**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other surfaces →](../docs/surfaces.md)
+**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other surfaces →](../surfaces.md)
 
 # Reading one file out of a vault, from any web page
 
-A published read key plus four browser APIs is enough to pull a single named file — a JSON manifest, a slide source, a screenshot, a PDF — out of an encrypted vault and use it on a page that has no backend, no build step and no copy of the file. This is the primitive underneath [the app embed](../demos/vault-app-embed.md), [the live docs reader](../case-studies/live-vault-docs.md) and [the deck viewer](../demos/vaults/aiuc-1-conformance/index.md#decks), written down on its own because all three are built on it.
+A published read key plus four browser APIs is enough to pull a single named file — a JSON manifest, a slide source, a screenshot, a PDF — out of an encrypted vault and use it on a page that has no backend, no build step and no copy of the file. This is the primitive underneath [the app embed](../../demos/vault-app-embed.md), [the live docs reader](../../case-studies/live-vault-docs.md) and [the deck viewer](../../demos/vaults/aiuc-1-conformance/index.md#decks), written down on its own because all three are built on it.
 
 **The one-sentence version.** The vault's HTTP API serves ciphertext at a URL you can *compute* from the read key, so a page fetches bytes the server cannot read and decrypts them itself — which means **publishing a file to a web page is the same act as pushing it to the vault**, with nothing in between.
 
@@ -5168,11 +5269,11 @@ Everything below runs in the browser. The read key is a 64-character hex string 
 | **3 · Fetch the ciphertext** | `GET /api/vault/read/<vault_id>/bare/refs/<id>`, then `bare/data/<object id>`. Plain CORS GETs, no auth header: the bytes are useless without the key | `fetch` |
 | **4 · Decrypt and walk** | First 12 bytes are the IV, the rest is the AES-GCM body. Ref → commit → tree → blob; filenames are encrypted inside the trees, so the path index is itself something you decrypt | `crypto.subtle.decrypt` |
 
-The reader that does this is about 90 lines and is on this site twice, deliberately in the open: [`assets/vault-embed.js`](../admin/index.md) exports it, and `assets/vault-docs.js` is the instrumented version that shows its own cache accounting.
+The reader that does this is about 90 lines and is on this site twice, deliberately in the open: [`assets/vault-embed.js`](../../admin/index.md) exports it, and `assets/vault-docs.js` is the instrumented version that shows its own cache accounting.
 
 ## What may be cached, and the one thing that may not
 
-The object model decides this, not a policy. An id containing `-imm-` is content-addressed and therefore immutable, so it can be cached forever. The ref is the single mutable pointer, and caching it is the one mistake that fails silently — a stale ref renders an *older commit from perfectly valid ciphertext*, so nothing errors and the page is simply wrong. The readers here keep a short freshness window on the ref instead, which is also the worst case delay before a new push is noticed. [The caching contract is part of the API reference.](../api/vault-objects.md)
+The object model decides this, not a policy. An id containing `-imm-` is content-addressed and therefore immutable, so it can be cached forever. The ref is the single mutable pointer, and caching it is the one mistake that fails silently — a stale ref renders an *older commit from perfectly valid ciphertext*, so nothing errors and the page is simply wrong. The readers here keep a short freshness window on the ref instead, which is also the worst case delay before a new push is noticed. [The caching contract is part of the API reference.](../../api/vault-objects.md)
 
 ## Vault content is not your page's content
 
@@ -5197,7 +5298,7 @@ A download is triggered from the page rather than from inside a frame for the sa
 
 ## The worked example: decks
 
-[Four decks on the AIUC-1 page](../demos/vaults/aiuc-1-conformance/index.md#decks) and [five on the Licence to Operate page](../demos/vaults/licence-to-operate/index.md#decks) are read this way. The split, concretely:
+[Four decks on the AIUC-1 page](../../demos/vaults/aiuc-1-conformance/index.md#decks) and [five on the Licence to Operate page](../../demos/vaults/licence-to-operate/index.md#decks) are read this way. The split, concretely:
 
 - **From the vault:** the manifest, each deck's slide source, the speaker notes, the screenshots and the printed PDF.
 - **From the site:** the deck tabs, the slide list, prev and next, the notes toggle, the PDF button, the deep links, and the sandbox policy the whole thing runs under.
@@ -5212,7 +5313,7 @@ Two published shapes are handled, because vaults differ in what they chose to pu
 
 Nothing is installed and nothing is signed into. The first slide of a deck costs the ref, the commit, the trees, the manifest and one slide source; every later slide in that deck is already decrypted; a screenshot is fetched once and reused. The server sees requests for opaque ids and returns ciphertext, which is the entire point: **it is serving a presentation it cannot read.**
 
-The credential on those pages is a read key, derived one-way from a vault key that is not published. Read keys can be handed out; vault keys never are. [The publishing method](../demos/vaults/publishing.md) · [API: vault objects](../api/vault-objects.md) · [Static hosting](static-hosting.md)
+The credential on those pages is a read key, derived one-way from a vault key that is not published. Read keys can be handed out; vault keys never are. [The publishing method](../../demos/vaults/publishing.md) · [API: vault objects](../../api/vault-objects.md) · [Static hosting](static-hosting.md)
 
 
 
@@ -5221,9 +5322,9 @@ The credential on those pages is a read key, derived one-way from a vault key th
 
 > Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 >
-> Page: https://sgit.ai/vault/static-hosting.html
+> Page: https://sgit.ai/docs/vault/static-hosting.html
 
-[Home](../index.md) / [SG/Vault](index.md) / Static hosting
+[Home](../../index.md) / [SG/Vault](index.md) / Static hosting
 
 # Static hosting — GitHub Pages / S3
 
@@ -5373,11 +5474,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.71**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.72**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.71 | 2026-09-09 | this release | GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The guidance on this site had been organised by TASK — decks, markdown, file viewers — which hid the fact that every one of those questions has three different right answers depending on where the code runs. THREE SURFACES is the new router: _page.json inside a vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every vault host, compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and — the row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes are untrusted input arriving in your origin. A second table does the same job across the three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you, which only one surface does at all. READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs with NO AUTH HEADER from any origin, which the server can afford because it returns ciphertext under a key it never held — so no proxy and no backend. It says do not write the reader and names the four house files to copy instead, states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails silently by rendering an older commit from valid ciphertext, and says what should NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED with the surface they apply to, so the distinction is visible where someone lands rather than only on the router. |
+| v0.2.72 | 2026-09-09 | this release | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
+| v0.2.71 | 2026-09-09 | obj-cas-imm-771aa698c057 | GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The guidance on this site had been organised by TASK — decks, markdown, file viewers — which hid the fact that every one of those questions has three different right answers depending on where the code runs. THREE SURFACES is the new router: _page.json inside a vault, an HTML vault app inside a vault, and a page on a *.sgit.ai site outside every vault host, compared on where they run, who reads the vault, which credential is used, what the reader needs, whether search engines and agents can see them at all, and — the row people get wrong — TRUST DIRECTION. Inside a vault host the host protects the reader and sandboxes the app; on a site page there is no host, you ARE the host, and vault bytes are untrusted input arriving in your origin. A second table does the same job across the three surfaces: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you, which only one surface does at all. READING A VAULT FROM A SITE PAGE is the brief that did not exist, for the devs coding the estate's sites. It leads with the enabling fact: the vault API answers plain CORS GETs with NO AUTH HEADER from any origin, which the server can afford because it returns ciphertext under a key it never held — so no proxy and no backend. It says do not write the reader and names the four house files to copy instead, states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails silently by rendering an older commit from valid ciphertext, and says what should NOT go on a site page: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault. SIX GUIDANCE PAGES ARE NOW LABELLED with the surface they apply to, so the distinction is visible where someone lands rather than only on the router. |
 | v0.2.70 | 2026-09-09 | obj-cas-imm-0a8b264f2c4e | THE SECOND BUILD BRIEF, AND IT MOSTLY SAYS DO NOT BUILD IT. Two of the most common things an agent is asked to add to a vault — a markdown viewer and a file/folder browser with raw views — already exist in the platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. The brief is therefore a DECISION rather than a syntax reference: a four-rung ladder (publish .md and stop; add a _page.json if you need a designed page rather than a document; build an app only when a view must COMPUTE something the host cannot know; build a site viewer only when the content must live outside a vault host) with the instruction to stop at the first rung that works. It names the three surfaces that render markdown natively, and the rules that actually catch people rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through folder/README.md because a bare folder link resolves by sort order, nested and task lists are unsupported. THE RAW-VIEW CONTRACT, taken from a vault that already lives by it: the AIUC-1 conformance vault's own source says 'raw is the point — a catalog that asks to be trusted has to be readable in the form it was written', and the brief adopts that whole — raw always available for every file, a reader as an addition and never a replacement, the tree driven by a build-time manifest, files fetched on click. Generalised as the estate's habit: anything rendered should be one click from the thing it was rendered from. CORRECTED WHILE CHECKING THE SCHEMA: the content-authoring page said ELEVEN component types and then listed twelve. It says twelve. |
 | v0.2.69 | 2026-09-09 | obj-cas-imm-d896dff05cc1 | THE BUILD BRIEF FOR PUTTING A VAULT'S DECKS ON A WEBSITE. v0.2.67 documented the MECHANISM — reading one file out of a vault — and v0.2.68 built the pages, but there was nothing telling another agent how to do this to THEIR vault. There is now: a build brief in the same shape as the telemetry one, which is the shape that worked when another team's agent built from it. It states the decks/v2 contract a vault must publish (the manifest and where it may live, deck sources pushing t/notes/html onto S, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs), the rule that governs the whole design — A VAULT MUST BE ABLE TO CHANGE WHAT IS SHOWN AND NEVER WHAT THE PAGE DOES — the two sandboxed frames with their exact CSPs, why the deck source must be handed over by postMessage rather than baked into a srcdoc, and why a decrypted PDF cannot go in an iframe at all. It publishes BOTH BUGS we hit rather than only the finished design: the image-name pattern that excluded underscores and failed silently on fifteen slides, and the unscoped closest() that killed every button on the single-deck pages. It ends with a done-means checklist and a prompt to hand the builder. The reference page now points at the brief for anyone who arrived wanting instructions rather than an explanation. Caught in review: the .md twin rule strips inline code spans but not fenced blocks, so tag names inside the prompt failed the build — rewritten to the site's uppercase-placeholder convention, which is the third time that rule has earned its keep. |
 | v0.2.68 | 2026-09-09 | obj-cas-imm-b7b0f80752be | A PAGE PER DECK, A FOCUS MODE, AND SCOPED LLMS.TXT FILES. Eleven new pages: each of the nine published decks now has one of its own — four under the AIUC-1 conformance vault, five under Licence to Operate — plus an index for each vault. A deck page opens that deck alone, with the tab strip gone, and carries what the slides cannot: the level it answers, the vocabulary it introduces, who it is for, where it deliberately stops, the question it ends on and which deck picks that question up. Each has a NOTES ON THIS DECK section that is deliberately empty and says so — that room is the reason a deck deserves a page rather than a tab. FOCUS drops the slide list so the stage takes the full width, for presenting and for screen recording, and the stage is re-fitted rather than merely revealed. A BUG THE PER-DECK PAGES EXPOSED IMMEDIATELY: the mount element carries data-deck on a single-deck page, and the click router used an unscoped closest('[data-deck]'), so it matched the mount for every click inside the viewer — prev, next, notes, focus and the PDF button were all silently dead on exactly the pages just built. Scoped to the tab strip. SCOPED LLMS.TXT: /demos/vaults/llms.txt is the catalogue as an agent index — all 26 vaults with id, category, published date, size, file count and published read key — generated from vaults.json, the same file the table on that page is built from, with each read key lifted from the vault's own page rather than kept in a second list that could disagree. Vault keys appear nowhere, as always. Three more sections got one: /vault, /api and /docs. |
@@ -5534,7 +5636,7 @@ The fourth row is the point of the design rather than a footnote: the server can
 
 - Sending an encrypted message between two vaults → [Vault messaging](../docs/vault-messaging.md), which composes [append lanes](append-lanes.md) with [PKI](../docs/pki.md).
 - Reading or writing files → [Vault objects](vault-objects.md).
-- Building a vault app in the browser → the [SG bridge](../vault/sg-bridge.md) wraps this API so you never write HTTP.
+- Building a vault app in the browser → the [SG bridge](../docs/vault/sg-bridge.md) wraps this API so you never write HTTP.
 - Using the CLI instead → [Quickstart](../docs/quickstart.md).
 
 ## Open questions we will not guess at
@@ -5675,7 +5777,7 @@ This site is itself served from a vault, so these are the objects behind the pag
 
 # Append lanes
 
-A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind [vault-to-vault messaging](../docs/vault-messaging.md) and behind [`sg.append`](../vault/sg-bridge.md) in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.
+A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind [vault-to-vault messaging](../docs/vault-messaging.md) and behind [`sg.append`](../docs/vault/sg-bridge.md) in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.
 
 **Naming.** This API was called **inbox** before v0.32.7. Every `/api/vault/inbox/*` URL is gone, and `purge` takes `folder:"pending"` or `"processed"` — the old `"inbox"` value returns **400**. If you are reading older material, translate.
 
@@ -5727,7 +5829,7 @@ This is the constraint to understand before designing anything that spans two va
 
 All six are plain booleans, **default-deny**, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app *"would give every visitor read access to the whole lane."*
 
-**Two things that are *not* gates on `append`, despite appearances.** There is **no read-only check** anywhere in the append handler — `sg.app.writable` is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships `connect-src blob: data:`, so a *direct* `fetch` to these endpoints is blocked unless the app declares `permissions.network: true`, which reopens all egress and is the worse choice. Use the bridge. See [the build brief](../briefs/vault-telemetry-append-lanes.md), which had both of these wrong until the review corrected it.
+**Two things that are *not* gates on `append`, despite appearances.** There is **no read-only check** anywhere in the append handler — `sg.app.writable` is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships `connect-src blob: data:`, so a *direct* `fetch` to these endpoints is blocked unless the app declares `permissions.network: true`, which reopens all egress and is the worse choice. Use the bridge. See [the build brief](../docs/briefs/vault-telemetry-append-lanes.md), which had both of these wrong until the review corrected it.
 
 ## The `inbox` field is the lane id — and today it is the token
 
@@ -5756,7 +5858,7 @@ The `append_token` pattern is `^[0-9a-f]{16,128}$` — hex only. A prefixed toke
 ## See also
 
 - [Vault messaging](../docs/vault-messaging.md) — this API composed with PKI into a worked example
-- [`sg.append`](../vault/sg-bridge.md) — the same six operations from a vault app
+- [`sg.append`](../docs/vault/sg-bridge.md) — the same six operations from a vault app
 - [Errors and limits](errors.md)
 
 
@@ -5822,7 +5924,7 @@ The page-size clamp is silent: ask for 500 and you get 200 with no warning. Page
 
 Two vaults can exchange encrypted messages without sharing a vault key, without the sender having an account, and without the server ever being able to read anything. The mechanism is an **append lane**: a write-only channel attached to a vault, addressed by the hash of a public key.
 
-**Why this page exists.** Both halves of this capability were already documented — the transport as [`sg.append`](../vault/sg-bridge.md), the crypto as [`sgit pki`](pki.md) — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.
+**Why this page exists.** Both halves of this capability were already documented — the transport as [`sg.append`](vault/sg-bridge.md), the crypto as [`sgit pki`](pki.md) — on pages that never referenced each other. An agent asked how to send a message between vaults, found both halves, and could not find the sentence that says they combine. This is that sentence, written out.
 
 ## The shape of it
 
@@ -5945,7 +6047,7 @@ $ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: 
 
 ## From inside a vault app
 
-The same transport through the browser bridge, with no HTTP of your own (see [`sg.append`](../vault/sg-bridge.md)):
+The same transport through the browser bridge, with no HTTP of your own (see [`sg.append`](vault/sg-bridge.md)):
 
 ```
 await sg.append.configure({ appendAnchors: [anchorHash], enumKeyHash });
@@ -5971,7 +6073,7 @@ Not a chat protocol, not a queue with delivery guarantees, and not anonymous —
 
 - [API — append lanes](../api/append-lanes.md): the six endpoints, gates, limits and status codes
 - [PKI](pki.md): keypair lifecycle, verified against the shipped CLI
-- [`sg.append`](../vault/sg-bridge.md): the same transport from a vault app
+- [`sg.append`](vault/sg-bridge.md): the same transport from a vault app
 - [Security model](../security/index.md#pki): where the keypair sits relative to the symmetric vault key
 
 
@@ -6150,9 +6252,9 @@ Nothing changed about the seven videos, their order, or the three movements they
 
 briefsvaultsdecksagents
 
-Two releases documented this from the inside: [reading one file out of a vault](../vault/reading-a-vault-file.md) explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to *their* vault. [**That brief now exists.**](../briefs/vault-decks-on-a-site.md)
+Two releases documented this from the inside: [reading one file out of a vault](../docs/vault/reading-a-vault-file.md) explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to *their* vault. [**That brief now exists.**](../docs/briefs/vault-decks-on-a-site.md)
 
-It follows the shape of [the telemetry brief](../briefs/vault-telemetry-append-lanes.md) — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.
+It follows the shape of [the telemetry brief](../docs/briefs/vault-telemetry-append-lanes.md) — the shape that worked, because another team's agent built a vault from it and then sent back a review that corrected it.
 
 - **The contract a vault must publish.** Where the manifest may live, deck sources pushing `t` / `notes` / `html` onto `S`, screenshots named symbolically rather than pathed, the CSS in the shell's style block, the PDFs. Plus the fallback for a vault that published only its built decks.
 - **The rule that governs the design**, stated as a test anyone can apply: *a vault must be able to change what is shown and never what the page does.* If a vault can add a button, change where a link goes, or read anything belonging to the host page, the split is wrong.
@@ -6183,18 +6285,46 @@ Each carries the author's own description plus a line mapping it to what it demo
 
 Embeds go through `youtube-nocookie.com` with `loading="lazy"`, so opening the page sets no YouTube cookie until somebody presses play. The players needed new 9:16 CSS — the existing embed box is 16:9, and a Short in it is two black pillars.
 
+### [One front door for vault guidance — and every document moved under /docs/](#one-front-door-for-vault-guidance) [v0.2.72](../admin/versions.md)
+
+docsguidancevaultsmethod
+
+The guidance here had accumulated across three top-level folders — `/briefs`, `/vault`, and a `/guidance` page written this morning. That is three places to look for one kind of thing. **Everything readable now lives under `/docs/`**: [`/docs/briefs`](../docs/briefs/index.md), [`/docs/vault`](../docs/vault/index.md), [`/docs/guidance`](../docs/guidance/index.md), beside the CLI docs that were already there.
+
+Fourteen pages moved. The links were rewritten by resolving each one through the move map rather than by prefixing `../` — a blanket prefix would have broken every link that stayed *inside* the moved subtree, which was most of them. No redirects, by instruction: the estate is in flux and has few external users. One thing nearly went missing: two hand-written `.md` briefs live only in the built output and not in the content tree, so the cleanup deleted them; they were restored from git into the new location before anything was pushed.
+
+## The front door
+
+[**Working on a vault: start here**](../docs/guidance/index.md) is the page that did not exist. The first thing on it is the guidance that gets repeated to agents more than any other:
+
+**Version everything, show the version, link what changed.**
+
+The number belongs in the app chrome — small, always visible, not in a footer or an About box — and it must link to *that version's own details*, not to a generic changelog. A reader who clicks `v0.1.7` wants to know what v0.1.7 was. Versions live in the vault as `versions/index.json` plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) is named as the reference implementation, because it already does exactly this.
+
+Seven more practices follow, each stated with the failure that produced it — including the one about negative controls, which exists because `sgit clone` creates a directory whether or not the key is valid, and we once called a leak on a directory an all-zeros key produced identically.
+
+## The agent-shaped twin
+
+[`/docs/guidance/llms.txt`](../docs/guidance/llms.txt) is the same thing for an agent: five rules, a reading order, the briefs, and reference implementations to go and check rather than take our word for. It ends with edges out to **coding.sgit.ai**, **nfrs.sgit.ai** and **graphs.sgit.ai** — because a page about vaults should not also try to be the style guide, the resilience argument, or the grammar of semantic graphs. Each of those has a site with room to do it properly, and an agent that stops at this domain gives a worse answer than one that follows the edge.
+
+The page closes by saying why it is mostly links, which is graphs.sgit.ai's own thesis applied to the thing you are reading:
+
+"A node is just a node. **Meaning lives in the edges.**"
+
+Three properties keep that working, and they are worth preserving in anything built here: every page is reachable and has a `.md` twin, with the build failing on an orphan; indexes are generated from the data they index, so [the vault catalogue](../demos/vaults/llms.txt) cannot disagree with the table it comes from; and each site says one thing properly and links out rather than summarising the rest badly.
+
 ### [The second build brief, and it mostly says don't build it](#markdown-and-file-viewers-what-not-to-build) [v0.2.70](../admin/versions.md)
 
 briefsvaultsagentsmethod
 
-Two of the most common things an agent is asked to add to a vault are a **markdown viewer** and a **file/folder browser with raw views**. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. [**The brief now says so.**](../briefs/markdown-and-file-viewers.md)
+Two of the most common things an agent is asked to add to a vault are a **markdown viewer** and a **file/folder browser with raw views**. Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writing no code at all. [**The brief now says so.**](../docs/briefs/markdown-and-file-viewers.md)
 
-It is a decision rather than a syntax reference — [the syntax reference already existed](../vault/content-authoring.md). A four-rung ladder, with the instruction to stop at the first rung that works:
+It is a decision rather than a syntax reference — [the syntax reference already existed](../docs/vault/content-authoring.md). A four-rung ladder, with the instruction to stop at the first rung that works:
 
 1. **Publish `.md` files.** The browse view renders them and its file tree *is* the folder viewer.
 2. **Add a `_page.json`** if you need a designed page rather than a document — and use its `markdown` component to pull in the `.md` files you already wrote, so the prose exists once.
 3. **Build an app** only when a view has to *compute* something the host cannot know.
-4. **Build a site viewer** only when the content must live outside a vault host — [the decks brief](../briefs/vault-decks-on-a-site.md) covers that case.
+4. **Build a site viewer** only when the content must live outside a vault host — [the decks brief](../docs/briefs/vault-decks-on-a-site.md) covers that case.
 
 It names the markdown rules that actually catch people, rather than the full syntax: raw HTML is stripped and shows as escaped text, images size through the pipe syntax inside the alt text, folder links must go through `folder/README.md` because a bare folder link resolves by sort order, and nested and task lists are unsupported.
 
@@ -6218,7 +6348,7 @@ The guidance here had been organised by **task** — decks, markdown, file viewe
 
 A second table does the same job the other way round: markdown, file browsing, decks, PDFs, computing over data, and being findable by someone who has never heard of you — which only one of the three surfaces does at all.
 
-**[Reading a vault from a site page](../briefs/sgit-ai-site-pages.md)** is the brief that did not exist, for whoever is coding the estate's sites. It leads with the enabling fact, which is easy to miss: the vault API answers **plain CORS GETs with no auth header, from any origin**. The server can afford that because what it returns is ciphertext under a key it has never held — so a page on `graphs.sgit.ai` or `risks.sgit.ai` reads a published vault directly, with no proxy and no backend.
+**[Reading a vault from a site page](../docs/briefs/sgit-ai-site-pages.md)** is the brief that did not exist, for whoever is coding the estate's sites. It leads with the enabling fact, which is easy to miss: the vault API answers **plain CORS GETs with no auth header, from any origin**. The server can afford that because what it returns is ciphertext under a key it has never held — so a page on `graphs.sgit.ai` or `risks.sgit.ai` reads a published vault directly, with no proxy and no backend.
 
 It then says **do not write the reader** and names the four house files to copy instead — `vault-embed.js` exports the reader so nothing has to reimplement the derivations, `vault-docs.js` is the instrumented version, `vault-deck.js` a worked viewer, `vault-ui-embed.js` frames the official UI. It states the inverted trust rule with a table of how to render each kind of vault content, covers the ref-caching trap that fails *silently* by rendering an older commit from perfectly valid ciphertext, and says what should not go on a site page at all: duplicated vault prose, a rebuilt vault app, and any arrangement where the site is the only way to read the vault.
 
@@ -6243,7 +6373,7 @@ That matters because a read key is public, but the bytes behind it were written 
 
 Two published deck shapes are handled, because the two vaults genuinely differ — one shipped its deck sources, the other only its built decks — so the reader prefers the source and falls back to the built file, truncated where the vault's own viewer begins.
 
-New page: [**Reading one file out of a vault**](../vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
+New page: [**Reading one file out of a vault**](../docs/vault/reading-a-vault-file.md), which is the primitive underneath every live embed on this site, written down on its own for the first time, with the sandbox rules for what comes back.
 
 ### [A page per deck, a focus mode, and a vault catalogue an agent can read](#a-page-per-deck-and-a-catalogue-agents-can-read) [v0.2.68](../admin/versions.md)
 
@@ -6259,7 +6389,7 @@ Yesterday's release put the decks on the vault pages. Three things were missing,
 
 **A catalogue an agent can read.** [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) is the published-vault catalogue as an agent index: all 26 vaults with id, category, published date, size, file count and published read key. It is generated from `vaults.json` — the same file [the vaults table](../demos/vaults/index.md) is built from — and each read key is lifted from the vault's own page rather than kept in a second list that could disagree with the first. Read keys are the whole credential for reading and are published deliberately; vault keys appear nowhere, here or anywhere else.
 
-Three more sections got their own: [`/vault/llms.txt`](../vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
+Three more sections got their own: [`/vault/llms.txt`](../docs/vault/llms.txt), [`/api/llms.txt`](../api/llms.txt) and [`/docs/llms.txt`](../docs/llms.txt). An agent pointed at one part of the site now gets that part's index instead of the whole map.
 
 ## 2026-09-07
 
@@ -6340,7 +6470,7 @@ Published as row #26 on the [vaults table](../demos/vaults/index.md), following 
 
 briefsapicorrectionagents
 
-Two days ago v0.2.55 published a [build brief](../briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. An agent [built a vault from it](../demos/vaults/agent-permission-games/index.md) and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.
+Two days ago v0.2.55 published a [build brief](../docs/briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. An agent [built a vault from it](../demos/vaults/agent-permission-games/index.md) and could not get events out. The SG/API team read the append-lane code against our page and returned a line-referenced review.
 
 **Both of the things the brief told a builder to *verify*, it had already answered wrongly.**
 
@@ -6405,7 +6535,7 @@ Verified at 1280 and 390 wide: 25 rows, **zero** 64-hex strings on the page, zer
 
 vaultstelemetryagentsauditbriefs
 
-v0.2.55 published a [build brief](../briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so [two games about agent permissions](../demos/vaults/agent-permission-games/index.md) now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.
+v0.2.55 published a [build brief](../docs/briefs/vault-telemetry-append-lanes.md) on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so [two games about agent permissions](../demos/vaults/agent-permission-games/index.md) now joins the published vaults — two deterministic games about grants, permissions and mandates, sending anonymous usage events over an append lane to a separate private vault.
 
 It is the first vault published here that **sends anything anywhere**, and the first end-to-end test of whether a brief written for an agent produces what it describes.
 
@@ -6421,12 +6551,12 @@ It is the first vault published here that **sends anything anywhere**, and the f
 
 briefsagentsdocsmulti-agent
 
-[Briefs](../briefs/index.md) has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.
+[Briefs](../docs/briefs/index.md) has been a single scroll of cross-team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them.
 
 - **Build briefs** — a durable reference an agent executes: the mechanism, the traps, what to verify first, and the prompt to paste. It never closes.
 - **Cross-team asks** — the seven that were already there, untouched, addressed to the sgit CLI, SG/Send API and SG/Vault UI teams.
 
-The first build brief is [**telemetry from a published vault**](../briefs/vault-telemetry-append-lanes.md): how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an **append lane**, and it works for one reason worth stating plainly — the sender's `append_token` grants **write only**. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly `{"ok": true}`.
+The first build brief is [**telemetry from a published vault**](../docs/briefs/vault-telemetry-append-lanes.md): how one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The mechanism is an **append lane**, and it works for one reason worth stating plainly — the sender's `append_token` grants **write only**. A visitor who extracts it from the published vault (and they can, because a read key decrypts everything) cannot list the lane, cannot fetch anything, and cannot read another reader's events. The write response is blind by design: exactly `{"ok": true}`.
 
 It is the only credential shape that survives being published inside a public vault. What it does not buy is authenticity: events can be forged, and the real failure mode is **1000 pending files per token → 507**, not a confidentiality breach.
 
@@ -6724,7 +6854,7 @@ The documentation gap above arrived as a well-built fix pack from the SG/API tea
 
 Two more corrections came from running the CLI rather than reading about it: `sgit pki export` emits a **JSON bundle** of two PEM blocks, not the `.pem` file the draft redirected into — so the draft's `sha256sum public-key.pem` derivation of a lane address is not well defined — and `keygen` requires a passphrase, which no draft step mentioned.
 
-The whole exchange, including what we got wrong, is on [the briefs page](../briefs/index.md).
+The whole exchange, including what we got wrong, is on [the briefs page](../docs/briefs/index.md).
 
 ### [The API reference we did not have](#the-api-reference-we-did-not-have) [v0.2.34](../admin/versions.md)
 
@@ -8160,7 +8290,7 @@ Published as a read key. The vault key is not published and never will be.
 
 Four decks climb the same four levels the vault does — what the standard is, the vault, the insurance model, and one control zoomed in. They are not screenshots of a deck and not a PDF sitting on a web server: the slides are read out of vault `2wzct4k7` as you click, with the same read key printed at the top of this page.
 
-**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
+**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../docs/vault/reading-a-vault-file.md)
 
 **Each deck also has a page of its own** — the same slides, plus room for what the slides cannot carry. [All four decks, one page each →](decks/index.md)
 
@@ -8354,7 +8484,7 @@ That is the permission model doing exactly what it is for. The grant is short en
 
 # Two games about what an agent can do — and the first vault here that phones home
 
-Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sets out to send anything anywhere** (it is not yet succeeding — see the status note below), and it was built by another agent from [the build brief on this site](../../../briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
+Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sets out to send anything anywhere** (it is not yet succeeding — see the status note below), and it was built by another agent from [the build brief on this site](../../../docs/briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
 
 **Open it yourself — the key is the whole credential.**
  Read key: `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj`
@@ -8407,7 +8537,7 @@ Reachable from every page in the vault, and it names the platform default it is 
 
 ## The credential audit — the whole point of the exercise
 
-A vault that phones home must carry a credential to phone home *with*, and it is published with a read key, so that credential is public. This is exactly the case the [build brief](../../../briefs/vault-telemetry-append-lanes.md) was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.
+A vault that phones home must carry a credential to phone home *with*, and it is published with a read key, so that credential is public. This is exactly the case the [build brief](../../../docs/briefs/vault-telemetry-append-lanes.md) was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.
 
 | Check | Result |
 |---|---|
@@ -8440,7 +8570,7 @@ A direct `fetch` to the account-less write endpoint, with `credentials: 'omit'` 
 
 **1. Two of the four pages still tell the player nothing is sent.** `what-can-it-do` gets it right — its footer says *"in this tab, no model, no server, nothing **stored**"*, with the sending notice above it. But the home page still reads *"no model, no server, nothing **sent**, nothing stored"*, and `which-agent-is-it` carries *"No model, no server, nothing sent"* in its footer **on the same screen as** the notice saying events are sent. That game also describes its run tuple as *"shown, never sent"* with *"no send button"* — true of the button, but its `question` and `reveal` events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.
 
-**2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.** When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against [our brief](../../../briefs/vault-telemetry-append-lanes.md) and supplied the answer.
+**2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.** When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against [our brief](../../../docs/briefs/vault-telemetry-append-lanes.md) and supplied the answer.
 
  A vault app's frame is served with `connect-src blob: data:`. A **direct `fetch`** to the API is therefore blocked before it leaves, unless the app declares `permissions.network: true` — and `app.json` here declares **no permissions at all**. So the sender is well built and cannot fire. That matches what the author reports: no events have arrived.
 
@@ -8458,7 +8588,7 @@ Two more things the review settles for anyone reading this as a worked example. 
 
 **Nine public profiles, not a directory of anybody's setup.** `profile` in an event is which *public* profile a player picked from a list; the scoring is arithmetic over that public profile. The schema is blunt about the limits: *"Not a count of people (sessions are tabs). Not evidence."*
 
-[← The build brief this was built from](../../../briefs/vault-telemetry-append-lanes.md) · [All published vaults](../index.md)
+[← The build brief this was built from](../../../docs/briefs/vault-telemetry-append-lanes.md) · [All published vaults](../index.md)
 
 
 
@@ -8490,7 +8620,7 @@ Derived one-way from a vault key that is not published and never will be. This v
 
 Five decks, in the order the argument is meant to land: the problem, the map, bounding it, who says yes, and the insurance model. They are read out of vault `posrhzp3` live, with the read key printed at the top of this page — and each one can be downloaded as the PDF the author printed from it.
 
-**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../vault/reading-a-vault-file.md)
+**What came from where.** The slides, the speaker notes, the screenshots and the PDF are vault files, fetched as ciphertext with the published read key and decrypted in your browser. Every control above it — the tabs, the slide list, prev and next, the notes toggle, the PDF button — is this site's, so the vault decides what is *shown* and never what this page *does*. The deck's own code runs in a sandboxed frame with no origin and no network; the slide you are looking at renders in a second one with scripting switched off entirely. [How this works, and why the PDF is a download rather than an embed →](../../../docs/vault/reading-a-vault-file.md)
 
 **Each deck also has a page of its own** — the same slides, plus room for what the slides cannot carry. [All five decks, one page each →](decks/index.md)
 
@@ -8715,7 +8845,7 @@ All seven videos are on [the author's channel ↗](https://www.youtube.com/@dini
 | **[How RiskMandate.ai's insurance model works with AIUC-1](insurance.md)** | L3 | Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes |
 | **[Zoom in: D003 — one control, to the byte, measured, and run](d003.md)** | L4 | One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs |
 
-[← The AIUC-1 conformance layer vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+[← The AIUC-1 conformance layer vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../docs/vault/reading-a-vault-file.md)
 
 
 
@@ -8732,7 +8862,7 @@ All seven videos are on [the author's channel ↗](https://www.youtube.com/@dini
 
 The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__What-It-Is.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__What-It-Is.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8764,7 +8894,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Vault.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Vault.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8796,7 +8926,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Insurance-Model.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Insurance-Model.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8828,7 +8958,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__Zoom-In-D003.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__Zoom-In-D003.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8870,7 +9000,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 **There are videos on this vault too.** The author recorded a series walking through it — some of them narrate this material directly. [**The seven shorts →**](../videos/index.md)
 
-[← The Licence to Operate vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+[← The Licence to Operate vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../docs/vault/reading-a-vault-file.md)
 
 
 
@@ -8887,7 +9017,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Problem.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Problem.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8926,7 +9056,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Map.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Map.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -8965,7 +9095,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Bounding-It.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Bounding-It.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -9004,7 +9134,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Who-Says-Yes.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__Who-Says-Yes.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -9043,7 +9173,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__RiskMandate-MVP.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__RiskMandate-MVP.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 

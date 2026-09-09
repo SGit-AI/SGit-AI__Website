@@ -2,7 +2,7 @@
 
 > Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key.
 
-*Source: <https://sgit.ai/use-cases/professional-services.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/use-cases/professional-services.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -84,7 +84,7 @@ That last sentence matters. We have a [write-up of the day we got it wrong](../c
 ## Related
 
 - [When NOT to use sgit](../docs/limitations.md) — read this before committing a client engagement to it
-- [SG/Vault](../vault/index.md) — the browser app, so a client can read without installing anything
+- [SG/Vault](../docs/vault/index.md) — the browser app, so a client can read without installing anything
 - [Security model](../security/index.md) — precisely what the server can and cannot see
 
 [← AI agents](ai-agents.md)[Security teams →](security-teams.md)

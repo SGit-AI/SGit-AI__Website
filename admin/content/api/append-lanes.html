@@ -1,7 +1,7 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Append lanes</p>
   <h1>Append lanes</h1>
-  <p class="lead">A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> and behind <a href="../vault/sg-bridge.html"><code>sg.append</code></a> in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.</p>
+  <p class="lead">A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> and behind <a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a> in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.</p>
 
   <div class="note"><b>Naming.</b> This API was called <b>inbox</b> before v0.32.7. Every <code>/api/vault/inbox/*</code> URL is gone, and <code>purge</code> takes <code>folder:"pending"</code> or <code>"processed"</code> — the old <code>"inbox"</code> value returns <b>400</b>. If you are reading older material, translate.</div>
 
@@ -48,7 +48,7 @@
     <tr><td><code>configure</code></td><td><code>append.configure</code></td></tr>
   </table></div>
   <p>All six are plain booleans, <b>default-deny</b>, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app <em>"would give every visitor read access to the whole lane."</em></p>
-  <div class="note"><b>Two things that are <em>not</em> gates on <code>append</code>, despite appearances.</b> There is <b>no read-only check</b> anywhere in the append handler &mdash; <code>sg.app.writable</code> is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships <code>connect-src blob: data:</code>, so a <em>direct</em> <code>fetch</code> to these endpoints is blocked unless the app declares <code>permissions.network: true</code>, which reopens all egress and is the worse choice. Use the bridge. See <a href="../briefs/vault-telemetry-append-lanes.html">the build brief</a>, which had both of these wrong until the review corrected it.</div>
+  <div class="note"><b>Two things that are <em>not</em> gates on <code>append</code>, despite appearances.</b> There is <b>no read-only check</b> anywhere in the append handler &mdash; <code>sg.app.writable</code> is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships <code>connect-src blob: data:</code>, so a <em>direct</em> <code>fetch</code> to these endpoints is blocked unless the app declares <code>permissions.network: true</code>, which reopens all egress and is the worse choice. Use the bridge. See <a href="../docs/briefs/vault-telemetry-append-lanes.html">the build brief</a>, which had both of these wrong until the review corrected it.</div>
 
   <h2 id="lane-id">The <code>inbox</code> field is the lane id &mdash; and today it is the token</h2>
   <p>A <code>list</code> response labels each entry with an <code>inbox</code> value. That value is the storage folder name, and the folder is named by the <b>raw append token</b>, byte for byte &mdash; while <code>config.append_anchors</code> stores <code>sha256(token)</code>. So the design hashes the token in config and then writes the plaintext token into the object key.</p>
@@ -72,7 +72,7 @@
   <h2>See also</h2>
   <ul>
     <li><a href="../docs/vault-messaging.html">Vault messaging</a> — this API composed with PKI into a worked example</li>
-    <li><a href="../vault/sg-bridge.html"><code>sg.append</code></a> — the same six operations from a vault app</li>
+    <li><a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a> — the same six operations from a vault app</li>
     <li><a href="errors.html">Errors and limits</a></li>
   </ul>
 </main>

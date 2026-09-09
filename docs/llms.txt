@@ -1,9 +1,9 @@
 # Using sgit — sgit.ai
 
-> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.71).
+> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.72).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (11)
+## Pages (25)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -12,6 +12,20 @@
 - [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
+- [Cross-team briefs](/docs/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+- [Telemetry from a published vault](/docs/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
+- [Working on a vault: start here](/docs/guidance/index.md): The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
 - [Three surfaces: which one are you building for?](/docs/surfaces.md): _page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them — plus the same job done on all three, and where each surface’s guidance lives.
+- [Reading a vault from a *.sgit.ai site page](/docs/briefs/sgit-ai-site-pages.md): For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent.
+- [Publishing a vault’s decks onto a website](/docs/briefs/vault-decks-on-a-site.md): A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
+- [Markdown and file viewers in a vault: what not to build](/docs/briefs/markdown-and-file-viewers.md): Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
+- [SG/Vault & the vault platform](/docs/vault/index.md): The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
+- [Building vault apps](/docs/vault/vault-apps.md): How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
+- [The window.sg bridge](/docs/vault/sg-bridge.md): The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
+- [Content authoring](/docs/vault/content-authoring.md): Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types.
+- [Sub-vaults](/docs/vault/sub-vaults.md): Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow.
+- [Git repos inside vaults](/docs/vault/git-and-vaults.md): Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
+- [Reading one file out of a vault](/docs/vault/reading-a-vault-file.md): The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
+- [Static hosting on GitHub Pages](/docs/vault/static-hosting.md): Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 - [Sending messages between vaults](/docs/vault-messaging.md): How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
 - [Keys, signatures and encrypting to someone else](/docs/pki.md): The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.

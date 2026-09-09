@@ -2,7 +2,7 @@
 
 > 5 decks published inside vault posrhzp3, each on its own page, with the slides read live out of the vault using its published read key.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,7 +22,7 @@
 
 **There are videos on this vault too.** The author recorded a series walking through it — some of them narrate this material directly. [**The seven shorts →**](../videos/index.md)
 
-[← The Licence to Operate vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../vault/reading-a-vault-file.md)
+[← The Licence to Operate vault](../index.md) · [All published vaults](../../index.md) · [How the slides are read out of the vault](../../../../docs/vault/reading-a-vault-file.md)
 
 
 ---

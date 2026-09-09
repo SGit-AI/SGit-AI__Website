@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Working on a vault: start here — guidance</title>
+<meta name="description" content="The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.">
+<link rel="canonical" href="https://sgit.ai/docs/guidance/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/guidance/index.html">
+<meta property="og:title" content="Working on a vault: start here — guidance">
+<meta property="og:description" content="The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Working on a vault: start here — guidance", "headline": "Working on a vault: start here — guidance", "description": "The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.", "url": "https://sgit.ai/docs/guidance/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.72</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+  <div class="ni ni-has">
+    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../why/index.html">Why sgit exists</a>
+      <a class="sl" href="../../investors/index.html">Investors</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl here" href="../../docs/index.html">Documentation</a>
+      <a class="sl here" href="../../docs/guidance/index.html">Vault guidance</a>
+      <a class="sl" href="../../try/index.html">Try it in the browser</a>
+      <a class="sl" href="../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+      <a class="sl" href="../../deploy/index.html">Deploy</a>
+      <a class="sl" href="../../skills/index.html">Skills</a>
+      <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+      <a class="sl" href="../../demos/index.html">Demos</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../compare/index.html">Comparisons</a>
+      <a class="sl" href="../../case-studies/index.html">Case studies</a>
+      <a class="sl" href="../../use-cases/index.html">Use cases</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../updates/index.html">Updates</a>
+      <a class="sl" href="../../articles/index.html">Articles</a>
+      <a class="sl" href="../../admin/versions.html">Version log</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../team/index.html">How the site is run</a>
+      <a class="sl" href="../../team/index.html#roles">Roles</a>
+      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+      <a class="sl" href="../../team/board.html">The board</a>
+    </div>
+  </div>
+  <div class="ni ni-has">
+    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+    <div class="sub">
+      <a class="sl" href="../../network/index.html">All sites</a>
+      <a class="sl" href="../../network/nhi.html">nhi</a>
+      <a class="sl" href="../../network/pki.html">pki</a>
+      <a class="sl" href="../../network/graphs.html">graphs</a>
+      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+    </div>
+  </div>
+  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../index.html">Home</a> / Guidance</p>
+  <h1>Working on a vault: start here</h1>
+  <p class="lead">The first page to read before building, publishing or changing a vault &mdash; human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch <a href="llms.txt"><code>/guidance/llms.txt</code></a>, which is this page in the form you prefer.</p>
+
+  <div class="note"><b>The one-minute version.</b> Pick your <a href="../surfaces.html">surface</a> first &mdash; it changes every other answer. <b>Do not build what the platform already has</b>: markdown, file trees and page layouts are free. <b>Publish a read key, never a vault key.</b> <b>Version everything and show the version</b>, linked to what changed. <b>Anything rendered stays one click from the bytes it was rendered from.</b></div>
+
+  <h2 id="order">Read in this order</h2>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Read</th><th>Because</th></tr>
+    <tr><td><b>1</b></td><td><a href="../surfaces.html">Three surfaces</a></td><td>Every &ldquo;how do I show this&rdquo; question has three different right answers. Picking the surface first collapses most of them</td></tr>
+    <tr><td><b>2</b></td><td><a href="../briefs/markdown-and-file-viewers.html">What not to build</a></td><td>The two most common asks &mdash; a markdown viewer, a file browser &mdash; are already in the platform. Most tasks end here</td></tr>
+    <tr><td><b>3</b></td><td><a href="../vault/content-authoring.html">Content authoring</a></td><td>The syntax for <code>_page.json</code> and vault markdown, once you know you need it</td></tr>
+    <tr><td><b>4</b></td><td><a href="../vault/vault-apps.html">Vault apps</a> and <a href="../vault/sg-bridge.html">the window.sg bridge</a></td><td>Only when a view has to <em>compute</em> something the host cannot know</td></tr>
+    <tr><td><b>5</b></td><td><a href="../../demos/vaults/publishing.html">Publishing: the method</a></td><td>Before anything becomes public. Classify the credential before it touches anything</td></tr>
+  </table></div>
+
+  <h2 id="versions">Version everything, show the version, link what changed</h2>
+  <p>This is the single most repeated piece of guidance, so it goes first among the practices. A vault is a versioned thing; an app that does not say which version it is leaves the reader unable to tell what they are looking at, and leaves a screenshot or a recording undateable.</p>
+  <ul>
+    <li><b>Show the version in the app's chrome</b> &mdash; small, in the top bar, always visible. Not in a footer, not in an About box.</li>
+    <li><b>Make it a link</b>, and make the link go to that version's own details &mdash; not to a generic changelog. A reader who clicks <code>v0.1.7</code> wants to know what <em>v0.1.7</em> was.</li>
+    <li><b>Give versions a home in the vault</b>: <code>versions/index.json</code> plus one file per version. It is data, so an app can render it, a script can check it, and an agent can read it without running anything.</li>
+    <li><b>Record the commit.</b> A version that does not name the vault commit it was built from cannot be verified later.</li>
+    <li><b>Say when a version is reconstructed</b> rather than recorded &mdash; a history assembled after the fact is still useful, but only if it is labelled.</li>
+  </ul>
+  <p><a href="../../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> is the reference implementation: a <code>Versions</code> tab, the number in the top bar, and one JSON file per version carrying exactly this shape.</p>
+<pre class="shell">versions/index.json      { "current": "v0.18.0", "versions": [ … newest first … ] }
+versions/v0.15.1.json    { "version", "date", "commit", "vault",
+                           "reconstructed", "title", "summary",
+                           "changes": [ … ], "basis": [ … ] }</pre>
+  <p class="small dim"><code>title</code> is a sentence, not a label &mdash; <em>&ldquo;the settings move into the right-hand column, which folds and resizes&rdquo;</em> tells a reader more than <em>&ldquo;UI improvements&rdquo;</em> ever will. <code>changes</code> names files. <code>basis</code> is for a reconstructed entry: the files that make that stage a distinct thing.</p>
+
+  <h2 id="practices">The rest of the practices, in one place</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Practice</th><th>Why it exists</th></tr>
+    <tr><td><b>Read keys are publishable. Vault keys never are</b></td><td>A read key is derived one-way and cannot become write access. A vault key <em>is</em> write access, and there is no partly-public version of it. Escrow the write key <b>before</b> publishing, not after</td></tr>
+    <tr><td><b>Scan for other people's secrets too</b></td><td>A scan built for sgit credential shapes will not catch an API key sitting in a vault file. We nearly published a live OpenRouter key in a field called <code>openrouter_key</code> that matched no sgit pattern</td></tr>
+    <tr><td><b>Every credential test needs a negative control</b></td><td><code>sgit clone</code> creates a directory whether or not the key is valid. The marker that discriminates is <code>.sg_vault/local/clone_mode.json</code>. We called a leak once on a directory that an all-zeros key produced identically</td></tr>
+    <tr><td><b>Anything rendered stays one click from its bytes</b></td><td>A reader that only shows its own interpretation asks to be trusted; one that also shows the source offers to be checked. <code>_page.json</code> has <code>{ } Source</code>; this site gives every page a <code>.md</code> twin</td></tr>
+    <tr><td><b>Deny by default in <code>app.json</code></b></td><td>Declare the narrowest permission that works, and write down why each grant exists. <code>"permissions": {}</code> is a real answer and often the right one</td></tr>
+    <tr><td><b>Manifests at build time, files on click</b></td><td>A vault can be tens of megabytes. Do not re-derive at runtime what the build already knew, and do not fetch what nobody opened</td></tr>
+    <tr><td><b>Content exists once</b></td><td>If a paragraph is in the vault and again in a page about the vault, they will disagree, and the vault is the one that is right</td></tr>
+    <tr><td><b>State the gap rather than papering over it</b></td><td>A page that names what it is missing is more useful than one that quietly omits it. Measured, not guessed</td></tr>
+  </table></div>
+
+  <h2 id="briefs">Build briefs &mdash; written to be executed</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Brief</th><th>For</th></tr>
+    <tr><td><a href="../briefs/markdown-and-file-viewers.html">Markdown and file viewers: what not to build</a></td><td>Documents and file browsing in a vault</td></tr>
+    <tr><td><a href="../briefs/vault-decks-on-a-site.html">Decks from a vault, on a site</a></td><td>Presentations published on a web page</td></tr>
+    <tr><td><a href="../briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a></td><td>Devs coding the <code>*.sgit.ai</code> sites</td></tr>
+    <tr><td><a href="../briefs/vault-telemetry-append-lanes.html">Telemetry from a published vault</a></td><td>A public vault reporting usage back to its author</td></tr>
+    <tr><td><a href="../../demos/vaults/publishing.html">Publishing a vault: the method</a></td><td>Anything about to become public</td></tr>
+  </table></div>
+  <p>The mechanism underneath the last three is <a href="../vault/reading-a-vault-file.html">reading one file out of a vault</a>. The catalogue of what has already been built this way is <a href="../../demos/vaults/index.html">the published vaults</a> &mdash; and <a href="../../demos/vaults/llms.txt"><code>/demos/vaults/llms.txt</code></a> is that catalogue with every read key, for an agent that wants to go and look rather than take our word for it.</p>
+
+  <h2 id="network">Where the rest of the answer lives</h2>
+  <p>This site covers vaults and sgit. It deliberately does not cover how code should be written, what a system owes its users when nobody is watching, or how to model meaning &mdash; because each of those has a site of its own, with the room to do it properly. <b>An agent that stops at this domain will get a worse answer than one that follows the edge.</b></p>
+
+  <div class="sib"><span class="sib-host">coding.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Agents &amp; AI</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://coding.sgit.ai/" rel="noopener" target="_blank">How software actually gets written here &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">The rules, the compliance measurement against them, which are machine-enforced and which are explicitly not, the open tensions &mdash; and a section on writing code for agents to read. Read this before writing a vault app, not after.</span><span class="sib-sep"> &mdash; </span><span class="sib-thesis">&ldquo;The style guide that measured itself.&rdquo;</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+
+  <div class="sib"><span class="sib-host">nfrs.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Risk &amp; governance</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://nfrs.sgit.ai/" rel="noopener" target="_blank">The requirements nobody writes down until they are violated &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">Resilience, budgets, project management, backups &mdash; as a reality system rather than a checklist, with a scorecard and a page naming backups as a gap. The questions a vault has to answer once somebody depends on it.</span><span class="sib-sep"> &mdash; </span><span class="sib-thesis">&ldquo;The non-functional requirements, from the inside.&rdquo;</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+
+  <div class="sib"><span class="sib-host">graphs.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Graphs &amp; method</span></span><span class="sib-sep"> &mdash; </span><a class="sib-title" href="https://graphs.sgit.ai/" rel="noopener" target="_blank">A grammar for semantic graphs &#8599;</a><span class="sib-sep"> &mdash; </span><span class="sib-desc">From five rules you can apply tomorrow to a full positioning against schemas and vector search &mdash; including the four situations in which its own argument is the wrong one. The page to read before modelling anything as data.</span><span class="sib-sep"> &mdash; </span><span class="sib-thesis">&ldquo;A node is just a node. Meaning lives in the edges.&rdquo;</span><span class="sib-sep"> &mdash; </span><span class="sib-net">part of the sgit.ai network</span></div>
+
+  <p><a href="../../network/index.html">The full network</a> lists every site with what it covers and the words it answers to.</p>
+
+  <h2 id="fractal">Why this page is mostly links</h2>
+  <p>The estate is one semantic graph that happens to be served from many domains. A vault is a node; so is a site, a page, a version, a published read key. What makes any of them useful is not the node &mdash; it is what it is connected to. That is graphs.sgit.ai's own argument, applied to the thing you are reading:</p>
+  <blockquote>&ldquo;A node is just a node. <b>Meaning lives in the edges.</b>&rdquo;</blockquote>
+  <p>So this page does not restate the guidance that lives elsewhere, and it should not grow into a manual. Its job is to be the node an agent can always find, with enough edges to reach the right answer in one hop. Three properties keep that working, and they are worth preserving in anything built here:</p>
+  <ul>
+    <li><b>Every page is reachable and machine-readable.</b> Each has a <code>.md</code> twin and appears in <a ../../llms.txt><code>llms.txt</code></a>; the build fails on an orphan. A page nothing links to is a page nothing can find, which is the same as unpublished.</li>
+    <li><b>Indexes are generated from the data they index.</b> <a href="../../demos/vaults/llms.txt">The vault catalogue</a> comes from the same file the human-readable table does, so the two cannot disagree. An index maintained by hand becomes a lie on a schedule.</li>
+    <li><b>Scope by domain, link across.</b> Each site says one thing properly and points at the others rather than summarising them badly. The edge is the answer; the summary would be a worse copy.</li>
+  </ul>
+
+  <p class="small dim" style="margin-top:2rem">If something here is wrong, that is worth telling us &mdash; the last brief on this site was corrected by the team that read it, and <a href="../briefs/vault-telemetry-append-lanes.html">the correction sits above the mistake</a>. <a href="llms.txt">/guidance/llms.txt</a> &middot; <a href="../briefs/index.html">All briefs</a> &middot; <a href="../../network/index.html">The network</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.72</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

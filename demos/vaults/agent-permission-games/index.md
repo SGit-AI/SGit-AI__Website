@@ -2,7 +2,7 @@
 
 > Two deterministic games about grants, permissions and mandates — and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site.
 
-*Source: <https://sgit.ai/demos/vaults/agent-permission-games/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agent-permission-games/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Two games about what an agent can do — and the first vault here that phones home
 
-Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sets out to send anything anywhere** (it is not yet succeeding — see the status note below), and it was built by another agent from [the build brief on this site](../../../briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
+Two deterministic games about grants, permissions and mandates, in one vault. What makes it worth a page beyond the games: it is the first vault published here that **sets out to send anything anywhere** (it is not yet succeeding — see the status note below), and it was built by another agent from [the build brief on this site](../../../docs/briefs/vault-telemetry-append-lanes.md) — which makes it the first end-to-end test of whether a brief written for an agent actually produces the thing it describes.
 
 **Open it yourself — the key is the whole credential.**
  Read key: `f94c8b1d42352d95703ac3d39032735d9b4e388d16ab5b87c948928d8e111118:4evnlwrj`
@@ -63,7 +63,7 @@ Reachable from every page in the vault, and it names the platform default it is 
 
 ## The credential audit — the whole point of the exercise
 
-A vault that phones home must carry a credential to phone home *with*, and it is published with a read key, so that credential is public. This is exactly the case the [build brief](../../../briefs/vault-telemetry-append-lanes.md) was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.
+A vault that phones home must carry a credential to phone home *with*, and it is published with a read key, so that credential is public. This is exactly the case the [build brief](../../../docs/briefs/vault-telemetry-append-lanes.md) was written for, so the audit was run against the brief's own claims rather than the vault's description of itself.
 
 | Check | Result |
 |---|---|
@@ -96,7 +96,7 @@ A direct `fetch` to the account-less write endpoint, with `credentials: 'omit'` 
 
 **1. Two of the four pages still tell the player nothing is sent.** `what-can-it-do` gets it right — its footer says *"in this tab, no model, no server, nothing **stored**"*, with the sending notice above it. But the home page still reads *"no model, no server, nothing **sent**, nothing stored"*, and `which-agent-is-it` carries *"No model, no server, nothing sent"* in its footer **on the same screen as** the notice saying events are sent. That game also describes its run tuple as *"shown, never sent"* with *"no send button"* — true of the button, but its `question` and `reveal` events carry substantially the same answers automatically. The pattern says the wording was fixed in one game and missed in the other two. Nothing leaks; the disclosure is simply contradicted by leftover copy, which matters more than usual in a vault whose subject is informed consent.
 
-**2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.** When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against [our brief](../../../briefs/vault-telemetry-append-lanes.md) and supplied the answer.
+**2. RESOLVED, 7 September: the telemetry does not currently leave the browser, and the reason is a CSP this vault cannot satisfy.** When this page first went up we could not confirm the write endpoint and recorded it as unresolved. The SG/API team then reviewed the append code against [our brief](../../../docs/briefs/vault-telemetry-append-lanes.md) and supplied the answer.
 
  A vault app's frame is served with `connect-src blob: data:`. A **direct `fetch`** to the API is therefore blocked before it leaves, unless the app declares `permissions.network: true` — and `app.json` here declares **no permissions at all**. So the sender is well built and cannot fire. That matches what the author reports: no events have arrived.
 
@@ -114,7 +114,7 @@ Two more things the review settles for anyone reading this as a worked example. 
 
 **Nine public profiles, not a directory of anybody's setup.** `profile` in an event is which *public* profile a player picked from a list; the scoring is arithmetic over that public profile. The schema is blunt about the limits: *"Not a count of people (sessions are tabs). Not evidence."*
 
-[← The build brief this was built from](../../../briefs/vault-telemetry-append-lanes.md) · [All published vaults](../index.md)
+[← The build brief this was built from](../../../docs/briefs/vault-telemetry-append-lanes.md) · [All published vaults](../index.md)
 
 
 ---

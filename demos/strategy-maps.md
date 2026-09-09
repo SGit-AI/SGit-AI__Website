@@ -2,7 +2,7 @@
 
 > The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it.
 
-*Source: <https://sgit.ai/demos/strategy-maps.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/strategy-maps.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -60,7 +60,7 @@ The [first demo](vault-app-embed.md) was built without image files. This app loa
 
 - [The first demo](vault-app-embed.md) — the walkthrough of the embed mechanism itself
 - [The day we leaked our own vault key](../case-studies/exposed-vault-key.md) — the incident behind the audit habits used here
-- [Briefing to the SG/Vault UI team](../briefs/briefing-sgvault-ui-embed.md) — the path to embedding the official UI instead of our minimal host
+- [Briefing to the SG/Vault UI team](../docs/briefs/briefing-sgvault-ui-embed.md) — the path to embedding the official UI instead of our minimal host
 
 [← First demo](vault-app-embed.md)[All demos →](index.md)
 

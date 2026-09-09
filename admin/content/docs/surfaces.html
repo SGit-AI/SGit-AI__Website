@@ -24,7 +24,7 @@
     <tr><th>You want to&hellip;</th><th><code>_page.json</code></th><th>Vault app</th><th>Site page</th></tr>
     <tr><td><b>Show a markdown document</b></td><td>Native &mdash; the <code>markdown</code> component, or just publish the <code>.md</code></td><td><code>sg.vfs.readText</code>, then render</td><td>Fetch, decrypt, render &mdash; or write the prose as a page and keep a <code>.md</code> twin</td></tr>
     <tr><td><b>Browse files and folders</b></td><td>Native &mdash; the host's tree is the browser</td><td>Build one from a build-time manifest; raw always available</td><td>Same, with the manifest read out of the vault</td></tr>
-    <tr><td><b>Show a deck</b></td><td><code>slides</code> or <code>gallery</code> components</td><td>Your own viewer, or the vault's <code>decks/v2</code> shell</td><td><a href="../briefs/vault-decks-on-a-site.html">The deck-viewer pattern</a> &mdash; parse frame plus render frame</td></tr>
+    <tr><td><b>Show a deck</b></td><td><code>slides</code> or <code>gallery</code> components</td><td>Your own viewer, or the vault's <code>decks/v2</code> shell</td><td><a href="briefs/vault-decks-on-a-site.html">The deck-viewer pattern</a> &mdash; parse frame plus render frame</td></tr>
     <tr><td><b>Show a PDF</b></td><td>The <code>pdf</code> component</td><td><code>sg.ui.preview</code></td><td><b>Download only.</b> A sandboxed frame cannot render one</td></tr>
     <tr><td><b>Compute over the data</b></td><td>Not possible &mdash; it is a layout format</td><td>Yes, this is the reason apps exist</td><td>Yes, in your own code</td></tr>
     <tr><td><b>Be found by someone who has never heard of you</b></td><td>No</td><td>No</td><td><b>Yes</b> &mdash; the only surface that does this</td></tr>
@@ -33,9 +33,9 @@
   <h2 id="guidance">Where the guidance lives</h2>
   <div class="tablewrap"><table>
     <tr><th>Surface</th><th>Read</th></tr>
-    <tr><td><b><code>_page.json</code> and markdown</b></td><td><a href="../vault/content-authoring.html">Publishing content without code</a> &mdash; the syntax. <a href="../briefs/markdown-and-file-viewers.html">Markdown and file viewers: what not to build</a> &mdash; the decision</td></tr>
-    <tr><td><b>HTML vault apps</b></td><td><a href="../vault/vault-apps.html">Building vault apps</a> &mdash; the project shape and <code>app.json</code>. <a href="../vault/sg-bridge.html">The window.sg bridge</a> &mdash; the runtime and its permission model</td></tr>
-    <tr><td><b><code>*.sgit.ai</code> site pages</b></td><td><a href="../briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a> &mdash; the brief. <a href="../vault/reading-a-vault-file.html">Reading one file out of a vault</a> &mdash; the primitive. <a href="../briefs/vault-decks-on-a-site.html">Decks from a vault, on a site</a> &mdash; a worked example</td></tr>
+    <tr><td><b><code>_page.json</code> and markdown</b></td><td><a href="vault/content-authoring.html">Publishing content without code</a> &mdash; the syntax. <a href="briefs/markdown-and-file-viewers.html">Markdown and file viewers: what not to build</a> &mdash; the decision</td></tr>
+    <tr><td><b>HTML vault apps</b></td><td><a href="vault/vault-apps.html">Building vault apps</a> &mdash; the project shape and <code>app.json</code>. <a href="vault/sg-bridge.html">The window.sg bridge</a> &mdash; the runtime and its permission model</td></tr>
+    <tr><td><b><code>*.sgit.ai</code> site pages</b></td><td><a href="briefs/sgit-ai-site-pages.html">Reading a vault from a site page</a> &mdash; the brief. <a href="vault/reading-a-vault-file.html">Reading one file out of a vault</a> &mdash; the primitive. <a href="briefs/vault-decks-on-a-site.html">Decks from a vault, on a site</a> &mdash; a worked example</td></tr>
     <tr><td><b>All three</b></td><td><a href="../demos/vaults/publishing.html">Publishing a vault: the method</a> &mdash; read keys are publishable, vault keys never are, whichever surface you are on</td></tr>
   </table></div>
 
@@ -48,5 +48,5 @@
   </ul>
   <p><a href="../demos/vaults/aiuc-1-conformance/index.html">The AIUC-1 conformance vault</a> is the clearest example &mdash; a fourteen-tab app inside the vault, and <a href="../demos/vaults/aiuc-1-conformance/decks/index.html">deck pages on this site</a> reading the same files. One set of content; three ways in. <b>What must never be duplicated is the content itself</b>: if a paragraph exists in the vault and again in a site page, they will disagree, and the vault is the one that is right.</p>
 
-  <p class="small dim" style="margin-top:2rem">Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. <a href="../briefs/index.html">All briefs</a> &middot; <a href="index.html">Docs</a> &middot; <a href="../vault/index.html">SG/Vault</a></p>
+  <p class="small dim" style="margin-top:2rem">Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. <a href="briefs/index.html">All briefs</a> &middot; <a href="index.html">Docs</a> &middot; <a href="vault/index.html">SG/Vault</a></p>
 </main>

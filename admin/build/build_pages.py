@@ -14,7 +14,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.71'
+SITE_VERSION = 'v0.2.72'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -27,7 +27,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.71', '2026-09-09', 'this release',
+    ('v0.2.72', '2026-09-09', 'this release',
+     "ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had "
+     "accumulated across three top-level folders — /briefs, /vault and a new /guidance — which "
+     "is three places to look for one kind of thing. Everything readable now lives under /docs/: "
+     "/docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages "
+     "moved, links rewritten by resolving each one through the move map rather than by prefixing "
+     "— a blanket prefix would have broken every link that stayed inside the moved subtree. No "
+     "redirects, by instruction: the estate is in flux and has few external users. Two "
+     "hand-written .md briefs that live only in the built output, not in the content tree, were "
+     "nearly lost to the cleanup and were restored from git into the new location. WORKING ON A "
+     "VAULT: START HERE is the front door that did not exist, and the first thing on it is the "
+     "guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, "
+     "LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it "
+     "must link to that version's OWN details rather than a generic changelog; versions live in "
+     "the vault as versions/index.json plus one file per version, each naming the commit it was "
+     "built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance "
+     "vault is named as the reference implementation because it already does exactly this. Seven "
+     "more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is "
+     "the same thing shaped for an agent: five rules, a reading order, the briefs, reference "
+     "implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and "
+     "graphs.sgit.ai — because a page about vaults should not try to also be the style guide, "
+     "the resilience argument or the grammar of semantic graphs. The page closes by saying why "
+     "it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, "
+     "meaning lives in the edges.",
+     ),
+    ('v0.2.71', '2026-09-09', 'obj-cas-imm-771aa698c057',
      "GUIDANCE NOW SPLITS BY SURFACE, AND THE THIRD SURFACE FINALLY HAS ITS OWN BRIEF. The "
      "guidance on this site had been organised by TASK — decks, markdown, file viewers — which "
      "hid the fact that every one of those questions has three different right answers "
@@ -1250,12 +1275,13 @@ NAV = [
     ]),
     ('docs',  'Docs',      'docs/index.html',     [
         ('docs',   'Documentation',   'docs/index.html'),
+        ('docs',   'Vault guidance',  'docs/guidance/index.html'),
         ('try',    'Try it in the browser', 'try/index.html'),
         ('api',    'HTTP API',        'api/index.html'),
-        ('vault',  'SG/Vault',        'vault/index.html'),
+        ('vault',  'SG/Vault',        'docs/vault/index.html'),
         ('deploy', 'Deploy',          'deploy/index.html'),
         ('skills', 'Skills',          'skills/index.html'),
-        ('briefs', 'Briefs',          'briefs/index.html'),
+        ('briefs', 'Briefs',          'docs/briefs/index.html'),
     ]),
     ('vaults', 'Vaults',   'demos/vaults/index.html', [
         ('vaults',    'Published vaults', 'demos/vaults/index.html'),
@@ -1327,6 +1353,8 @@ def footer(p, md=''):
   <div>
     <h4>Docs</h4>
     <a href="{p}docs/what-is-sgit.html">What is sgit</a>
+    <a href="{p}docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="{p}docs/surfaces.html">Three surfaces</a>
     <a href="{p}docs/installation.html">Installation</a>
     <a href="{p}docs/quickstart.html">Quickstart</a>
     <a href="{p}docs/sgit-for-git-users.html">sgit for git users</a>
@@ -1335,14 +1363,14 @@ def footer(p, md=''):
   </div>
   <div>
     <h4>SG/Vault platform</h4>
-    <a href="{p}vault/index.html">SG/Vault &amp; the platform</a>
-    <a href="{p}vault/vault-apps.html">Building vault apps</a>
-    <a href="{p}vault/sg-bridge.html">The window.sg bridge</a>
-    <a href="{p}vault/content-authoring.html">Content authoring</a>
-    <a href="{p}vault/sub-vaults.html">Sub-vaults</a>
-    <a href="{p}vault/git-and-vaults.html">Git repos inside vaults</a>
-    <a href="{p}vault/reading-a-vault-file.html">Reading a vault file</a>
-    <a href="{p}vault/static-hosting.html">Static hosting</a>
+    <a href="{p}docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="{p}docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="{p}docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="{p}docs/vault/content-authoring.html">Content authoring</a>
+    <a href="{p}docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="{p}docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="{p}docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="{p}docs/vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
   <div>
@@ -1353,7 +1381,7 @@ def footer(p, md=''):
     <a href="{p}use-cases/index.html">Use cases</a>
     <a href="{p}case-studies/index.html">Case studies</a>
     <a href="{p}skills/index.html">Skills for AI agents</a>
-    <a href="{p}briefs/index.html">Cross-team briefs</a>
+    <a href="{p}docs/briefs/index.html">Cross-team briefs</a>
     <a href="{p}llms.txt">llms.txt</a>
     <a href="{p}llms-full.txt">llms-full.txt</a>
     <a href="{p}admin/index.html">Admin &amp; engineering</a>
@@ -1793,7 +1821,7 @@ def write_site_index(pages):
 
 
 SCOPED_LLMS = [
-    ('vault', 'The vault format and how to serve it',
+    ('docs/vault', 'The vault format and how to serve it',
      'Everything on this site about what a vault IS and how to host, read and embed one — '
      'the storage layout, static hosting with no backend, and reading a single file out of a '
      'vault from a web page.'),
@@ -1944,6 +1972,84 @@ def write_scoped_llms(pages):
     with open(os.path.join(d, 'llms.txt'), 'w') as f:
         f.write(text)
     written.append(('demos/vaults/llms.txt', len(text), len(vs)))
+
+
+    # ---- the guidance entry point: the one file to hand an agent before it touches a vault.
+    # Hand-shaped rather than a page listing, because its job is to route — it is a node whose
+    # whole value is its edges, which is graphs.sgit.ai's argument applied to itself.
+    sites = []
+    for host, why in [
+        ('coding.sgit.ai', 'how code is written here, measured against its own rules — read before writing a vault app'),
+        ('nfrs.sgit.ai',   'resilience, budgets, backups: what a vault owes anyone who comes to depend on it'),
+        ('graphs.sgit.ai', 'the grammar of semantic graphs — read before modelling anything as data'),
+    ]:
+        slug   = host.split('.')[0]
+        meta   = next((x for x in SITES if x.get('slug') == slug), {})
+        thesis = (meta.get('thesis') or '').rstrip('.')
+        sites.append(f'- **https://{host}/** — {why}.' + (f' *"{thesis}"*' if thesis else ''))
+
+    g = f"""# Working on a vault — start here
+
+> The entry point for any agent about to build, publish or change a vault ({SITE_VERSION}).
+> Short on purpose: this is a router, not a manual. Every line below is an edge to the page
+> that actually answers the question. Human-readable twin: /docs/guidance/index.md
+
+## The five rules that get repeated most
+1. **Pick the surface first.** _page.json inside a vault, an HTML vault app inside a vault, or
+   a page on a *.sgit.ai site. It changes every other answer — including who distrusts whom.
+   /docs/surfaces.md
+2. **Do not build what the platform already has.** Markdown rendering, file trees and page
+   layouts are free. Most tasks end here. /docs/briefs/markdown-and-file-viewers.md
+3. **Publish a read key. Never a vault key.** A read key is derived one-way and cannot become
+   write access; a vault key IS write access. Escrow the write key BEFORE publishing.
+   /demos/vaults/publishing.md
+4. **Version everything, show the version, link what changed.** The number belongs in the app
+   chrome and must link to that version's own details, not a generic changelog. Keep
+   versions/index.json plus one file per version, each naming the commit it was built from.
+   /docs/guidance/index.md#versions
+5. **Anything rendered stays one click from the bytes it was rendered from.** A reader that
+   only shows its own interpretation is asking to be trusted.
+
+## Read in this order
+- [Three surfaces](/docs/surfaces.md) — pick where the code runs before anything else.
+- [What not to build](/docs/briefs/markdown-and-file-viewers.md) — the ladder, rung 0 upward.
+- [Content authoring](/docs/vault/content-authoring.md) — _page.json and vault markdown syntax.
+- [Vault apps](/docs/vault/vault-apps.md) and [the window.sg bridge](/docs/vault/sg-bridge.md) — only when a view must compute.
+- [Publishing: the method](/demos/vaults/publishing.md) — before anything becomes public.
+
+## Build briefs, written to be executed
+- [Markdown and file viewers: what not to build](/docs/briefs/markdown-and-file-viewers.md)
+- [Decks from a vault, on a site](/docs/briefs/vault-decks-on-a-site.md)
+- [Reading a vault from a *.sgit.ai site page](/docs/briefs/sgit-ai-site-pages.md)
+- [Telemetry from a published vault](/docs/briefs/vault-telemetry-append-lanes.md)
+- [Reading one file out of a vault](/docs/vault/reading-a-vault-file.md) — the primitive under the last three.
+
+## Reference implementations — go and look rather than take our word
+- [The published vaults](/demos/vaults/index.md), and [the same catalogue with every read key](/demos/vaults/llms.txt).
+- Version convention, done properly: the AIUC-1 conformance vault (2wzct4k7) — a Versions tab,
+  the number in the top bar, one JSON file per version. /demos/vaults/aiuc-1-conformance/index.md
+- A file explorer with raw always available, in the same vault: "raw is the point — a catalog
+  that asks to be trusted has to be readable in the form it was written."
+- Decks read live out of a vault onto a site: /demos/vaults/aiuc-1-conformance/decks/index.md
+
+## Follow the edge — the answer is often on another domain
+This site covers vaults and sgit, and deliberately stops there. An agent that stops at this
+domain will give a worse answer than one that follows the edge.
+{chr(10).join(sites)}
+The full map of sites, with the words each answers to: /network/index.md
+
+## Why this file is mostly links
+The estate is one semantic graph served from many domains. A vault is a node; so is a site, a
+page, a version, a published read key. What makes any of them useful is not the node but what
+it is connected to. So: every page is reachable and has a .md twin, indexes are generated from
+the data they index rather than maintained by hand, and each site says one thing properly and
+links out instead of summarising the rest badly.
+"""
+    d = os.path.join(ROOT, 'docs', 'guidance')
+    os.makedirs(d, exist_ok=True)
+    with open(os.path.join(d, 'llms.txt'), 'w') as f:
+        f.write(g)
+    written.append(('docs/guidance/llms.txt', len(g), 5))
 
     # ---- one per section directory that owns a real folder on disk
     for folder, heading, blurb in SCOPED_LLMS:
@@ -2226,7 +2332,7 @@ def home_team_band():
     """The collaboration story with its numbers, computed rather than typed so they
     cannot go stale: releases from VERSION_LOG, vaults from vaults.json, sites from the
     network directory, articles from the articles folder, asks from the briefs page."""
-    briefs = open(os.path.join(ADMIN, 'content', 'briefs', 'index.html')).read()
+    briefs = open(os.path.join(ADMIN, 'content', 'docs', 'briefs', 'index.html')).read()
     asks = briefs.count('<h3>&larr;') + briefs.count('<h3>&rarr;') + briefs.count('<h3>←') + briefs.count('<h3>→')
     builds = briefs.count('<tr><td><a href="') - 0  # build-brief rows in the first table
     nums = [
@@ -2241,10 +2347,10 @@ def home_team_band():
 {tiles}
   </div>
   <div class="team-story">
-    <div class="beat rev"><span class="k">1</span><span>A <a href="briefs/vault-telemetry-append-lanes.html">build brief</a> was published here on a Saturday. Another agent read it and shipped <a href="demos/vaults/agent-permission-games/index.html">a vault from it</a> the same day.</span></div>
-    <div class="beat rev"><span class="k">2</span><span>The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and <a href="briefs/index.html">the correction now sits above the mistake</a>.</span></div>
+    <div class="beat rev"><span class="k">1</span><span>A <a href="docs/briefs/vault-telemetry-append-lanes.html">build brief</a> was published here on a Saturday. Another agent read it and shipped <a href="demos/vaults/agent-permission-games/index.html">a vault from it</a> the same day.</span></div>
+    <div class="beat rev"><span class="k">2</span><span>The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and <a href="docs/briefs/index.html">the correction now sits above the mistake</a>.</span></div>
     <div class="beat rev"><span class="k">3</span><span>One agent <a href="demos/vaults/aiuc-1-conformance/index.html">forked another agent's vault</a>, kept every byte, added a layer &mdash; and the original's tests still pass inside the fork.</span></div>
-    <div class="beat rev"><span class="k">&rarr;</span><span>The record is the site itself: <a href="briefs/index.html">the briefs</a>, <a href="case-studies/index.html">the case studies</a>, <a href="admin/versions.html">every release</a>. And the diagnosis that produced this homepage is <a href="articles/proof-behind-the-claim.html">an article, with the before pictures</a>.</span></div>
+    <div class="beat rev"><span class="k">&rarr;</span><span>The record is the site itself: <a href="docs/briefs/index.html">the briefs</a>, <a href="case-studies/index.html">the case studies</a>, <a href="admin/versions.html">every release</a>. And the diagnosis that produced this homepage is <a href="articles/proof-behind-the-claim.html">an article, with the before pictures</a>.</span></div>
   </div>"""
 
 
@@ -2314,7 +2420,7 @@ def team_board():
 def investors_traction():
     """Traction numbers computed from the site itself — the same rule as the team band:
     if a number here is wrong, the site is wrong somewhere else too."""
-    briefs = open(os.path.join(ADMIN, 'content', 'briefs', 'index.html')).read()
+    briefs = open(os.path.join(ADMIN, 'content', 'docs', 'briefs', 'index.html')).read()
     asks = briefs.count('<h3>&larr;') + briefs.count('<h3>&rarr;') + briefs.count('<h3>←') + briefs.count('<h3>→')
     nums = [
         (len(VERSION_LOG), 'site releases since 14 August', 'each verified live before it was called done'),

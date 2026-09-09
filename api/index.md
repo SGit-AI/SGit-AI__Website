@@ -2,7 +2,7 @@
 
 > The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at.
 
-*Source: <https://sgit.ai/api/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -50,7 +50,7 @@ The fourth row is the point of the design rather than a footnote: the server can
 
 - Sending an encrypted message between two vaults → [Vault messaging](../docs/vault-messaging.md), which composes [append lanes](append-lanes.md) with [PKI](../docs/pki.md).
 - Reading or writing files → [Vault objects](vault-objects.md).
-- Building a vault app in the browser → the [SG bridge](../vault/sg-bridge.md) wraps this API so you never write HTTP.
+- Building a vault app in the browser → the [SG bridge](../docs/vault/sg-bridge.md) wraps this API so you never write HTTP.
 - Using the CLI instead → [Quickstart](../docs/quickstart.md).
 
 ## Open questions we will not guess at

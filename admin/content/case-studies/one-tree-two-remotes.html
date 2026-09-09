@@ -19,7 +19,7 @@
 <pre class="shell">.sg_vault/local/     <span class="d"># vault key, access token, private PEM — plaintext, never committed</span>
 .sg_vault/work/      <span class="d"># scratch state</span>
 *.pem</pre>
-  <p>That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site like this one</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
+  <p>That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site like this one</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../docs/vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
   <p>Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored <code>local/</code> tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of <a href="exposed-vault-key.html">the day it actually happened</a>: an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.</p>
 
   <h2>The one ordering rule: sgit first, then git</h2>
@@ -58,10 +58,10 @@
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../vault/git-and-vaults.html">Git repos inside vaults</a> — the general pattern, including the confidential-vault caution</li>
+    <li><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a> — the general pattern, including the confidential-vault caution</li>
     <li><a href="exposed-vault-key.html">The day we leaked our own vault key</a> — why the tripwire exists</li>
     <li><a href="live-vault-docs.html">A live site whose host cannot read it</a> — what the sgit push feeds</li>
     <li><a href="../admin/index.html">Admin &amp; engineering</a> — the build system this script belongs to</li>
   </ul>
-  <div class="pagenav"><a href="index.html">← Case studies</a><a href="../vault/git-and-vaults.html">Git repos inside vaults →</a></div>
+  <div class="pagenav"><a href="index.html">← Case studies</a><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults →</a></div>
 </main>

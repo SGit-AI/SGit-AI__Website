@@ -1,0 +1,58 @@
+# Working on a vault — start here
+
+> The entry point for any agent about to build, publish or change a vault (v0.2.72).
+> Short on purpose: this is a router, not a manual. Every line below is an edge to the page
+> that actually answers the question. Human-readable twin: /docs/guidance/index.md
+
+## The five rules that get repeated most
+1. **Pick the surface first.** _page.json inside a vault, an HTML vault app inside a vault, or
+   a page on a *.sgit.ai site. It changes every other answer — including who distrusts whom.
+   /docs/surfaces.md
+2. **Do not build what the platform already has.** Markdown rendering, file trees and page
+   layouts are free. Most tasks end here. /docs/briefs/markdown-and-file-viewers.md
+3. **Publish a read key. Never a vault key.** A read key is derived one-way and cannot become
+   write access; a vault key IS write access. Escrow the write key BEFORE publishing.
+   /demos/vaults/publishing.md
+4. **Version everything, show the version, link what changed.** The number belongs in the app
+   chrome and must link to that version's own details, not a generic changelog. Keep
+   versions/index.json plus one file per version, each naming the commit it was built from.
+   /docs/guidance/index.md#versions
+5. **Anything rendered stays one click from the bytes it was rendered from.** A reader that
+   only shows its own interpretation is asking to be trusted.
+
+## Read in this order
+- [Three surfaces](/docs/surfaces.md) — pick where the code runs before anything else.
+- [What not to build](/docs/briefs/markdown-and-file-viewers.md) — the ladder, rung 0 upward.
+- [Content authoring](/docs/vault/content-authoring.md) — _page.json and vault markdown syntax.
+- [Vault apps](/docs/vault/vault-apps.md) and [the window.sg bridge](/docs/vault/sg-bridge.md) — only when a view must compute.
+- [Publishing: the method](/demos/vaults/publishing.md) — before anything becomes public.
+
+## Build briefs, written to be executed
+- [Markdown and file viewers: what not to build](/docs/briefs/markdown-and-file-viewers.md)
+- [Decks from a vault, on a site](/docs/briefs/vault-decks-on-a-site.md)
+- [Reading a vault from a *.sgit.ai site page](/docs/briefs/sgit-ai-site-pages.md)
+- [Telemetry from a published vault](/docs/briefs/vault-telemetry-append-lanes.md)
+- [Reading one file out of a vault](/docs/vault/reading-a-vault-file.md) — the primitive under the last three.
+
+## Reference implementations — go and look rather than take our word
+- [The published vaults](/demos/vaults/index.md), and [the same catalogue with every read key](/demos/vaults/llms.txt).
+- Version convention, done properly: the AIUC-1 conformance vault (2wzct4k7) — a Versions tab,
+  the number in the top bar, one JSON file per version. /demos/vaults/aiuc-1-conformance/index.md
+- A file explorer with raw always available, in the same vault: "raw is the point — a catalog
+  that asks to be trusted has to be readable in the form it was written."
+- Decks read live out of a vault onto a site: /demos/vaults/aiuc-1-conformance/decks/index.md
+
+## Follow the edge — the answer is often on another domain
+This site covers vaults and sgit, and deliberately stops there. An agent that stops at this
+domain will give a worse answer than one that follows the edge.
+- **https://coding.sgit.ai/** — how code is written here, measured against its own rules — read before writing a vault app. *"The style guide that measured itself"*
+- **https://nfrs.sgit.ai/** — resilience, budgets, backups: what a vault owes anyone who comes to depend on it. *"The non-functional requirements, from the inside"*
+- **https://graphs.sgit.ai/** — the grammar of semantic graphs — read before modelling anything as data. *"A node is just a node. Meaning lives in the edges"*
+The full map of sites, with the words each answers to: /network/index.md
+
+## Why this file is mostly links
+The estate is one semantic graph served from many domains. A vault is a node; so is a site, a
+page, a version, a published read key. What makes any of them useful is not the node but what
+it is connected to. So: every page is reachable and has a .md twin, indexes are generated from
+the data they index rather than maintained by hand, and each site says one thing properly and
+links out instead of summarising the rest badly.

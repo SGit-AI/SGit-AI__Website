@@ -15,7 +15,7 @@
   </div>
 
   <h2>How this vault was made, end to end</h2>
-  <p><b>1 — Write the app.</b> A vault app is one self-contained <code>index.html</code> — CSS and JS inlined, content in <code>content.json</code>, generative SVG instead of image files — plus an <code>app.json</code> that auto-launches it. It follows the <a href="../vault/vault-apps.html">authoring contract</a>: no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code> or <code>&lt;img src&gt;</code> against vault paths, content read via <code>sg.vfs.readText</code> with an inlined fallback, and <code>sg-app-ready</code> posted when rendered.</p>
+  <p><b>1 — Write the app.</b> A vault app is one self-contained <code>index.html</code> — CSS and JS inlined, content in <code>content.json</code>, generative SVG instead of image files — plus an <code>app.json</code> that auto-launches it. It follows the <a href="../docs/vault/vault-apps.html">authoring contract</a>: no <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code> or <code>&lt;img src&gt;</code> against vault paths, content read via <code>sg.vfs.readText</code> with an inlined fallback, and <code>sg-app-ready</code> posted when rendered.</p>
 <pre class="shell">demo-vault-gallery/
 ├── index.html      <span class="d"># the app — one file, contract-compliant</span>
 ├── content.json    <span class="d"># the editable content the app reads over the bridge</span>
@@ -119,7 +119,7 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
   }());
   </script>
 
-  <p><b>What is still not possible — precisely.</b> The two buttons above select a <em>surface</em> (App Mode or the vault browser). They cannot select a <em>view</em> inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only <code>{key, mode, deepLink}</code> where <code>deepLink</code> is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and <a href="../briefs/briefing-sgvault-ui-embed.md">the briefing</a> now states exactly that ask: an optional <code>view</code> field on <code>vault-open</code>, applied after mount. Everything else on this page works today.</p>
+  <p><b>What is still not possible — precisely.</b> The two buttons above select a <em>surface</em> (App Mode or the vault browser). They cannot select a <em>view</em> inside the browser: the SGIT inspector and SETTINGS panels are one click away on the left rail, but the embed message carries only <code>{key, mode, deepLink}</code> where <code>deepLink</code> is a file path — there is no field that names a view, and view switching stays an in-page event. So "open straight onto the commit history" is still one small protocol field away, and <a href="../docs/briefs/briefing-sgvault-ui-embed.md">the briefing</a> now states exactly that ask: an optional <code>view</code> field on <code>vault-open</code>, applied after mount. Everything else on this page works today.</p>
 
   <h2>Honest scope</h2>
   <p>Two hosts now run on this page, and keeping both is deliberate. The <b>minimal</b> host is ~170 lines and shows the protocol with nothing hidden: derive, fetch, decrypt, answer <code>sg.vfs</code> over postMessage. The <b>official</b> host is the real product — full <code>window.sg</code> surface, permissions, HUD chrome, and now an embed handshake that keeps the key out of URLs and storage. Read the small one to understand the mechanism; use the big one to see what a product built on it feels like. Everything above is live and reproducible from the commands on this page.</p>
@@ -130,12 +130,12 @@ read key : 2848993a68c02a33ea5582902c391901191e53680d35b36c0e76185d4107ad81</pre
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../vault/vault-apps.html">Building vault apps</a> — the authoring contract this app follows</li>
+    <li><a href="../docs/vault/vault-apps.html">Building vault apps</a> — the authoring contract this app follows</li>
     <li><a href="../case-studies/live-vault-docs.html">A live site whose host cannot read it</a> — the same read path rendering markdown docs</li>
-    <li><a href="../vault/sub-vaults.html">Sub-vaults</a> — vault-in-vault, the pattern this embed mirrors</li>
+    <li><a href="../docs/vault/sub-vaults.html">Sub-vaults</a> — vault-in-vault, the pattern this embed mirrors</li>
     <li><a href="../admin/plans/why-expansion-plan.md">The plan</a> — two more demo vaults (a report, a two-agent inbox) follow this template</li>
   </ul>
-  <div class="pagenav"><a href="index.html">← Demos</a><a href="../vault/vault-apps.html">Building vault apps →</a></div>
+  <div class="pagenav"><a href="index.html">← Demos</a><a href="../docs/vault/vault-apps.html">Building vault apps →</a></div>
 </main>
 
 <script>

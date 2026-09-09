@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.71</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.72</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -35,12 +35,13 @@
     <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
     <div class="sub">
       <a class="sl" href="../docs/index.html">Documentation</a>
+      <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
       <a class="sl" href="../try/index.html">Try it in the browser</a>
       <a class="sl" href="../api/index.html">HTTP API</a>
-      <a class="sl" href="../vault/index.html">SG/Vault</a>
+      <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
       <a class="sl" href="../skills/index.html">Skills</a>
-      <a class="sl" href="../briefs/index.html">Briefs</a>
+      <a class="sl" href="../docs/briefs/index.html">Briefs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -112,7 +113,7 @@
 <pre class="shell">.sg_vault/local/     <span class="d"># vault key, access token, private PEM — plaintext, never committed</span>
 .sg_vault/work/      <span class="d"># scratch state</span>
 *.pem</pre>
-  <p>That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site like this one</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
+  <p>That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site like this one</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../docs/vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
   <p>Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored <code>local/</code> tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of <a href="exposed-vault-key.html">the day it actually happened</a>: an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.</p>
 
   <h2>The one ordering rule: sgit first, then git</h2>
@@ -151,12 +152,12 @@
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../vault/git-and-vaults.html">Git repos inside vaults</a> — the general pattern, including the confidential-vault caution</li>
+    <li><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a> — the general pattern, including the confidential-vault caution</li>
     <li><a href="exposed-vault-key.html">The day we leaked our own vault key</a> — why the tripwire exists</li>
     <li><a href="live-vault-docs.html">A live site whose host cannot read it</a> — what the sgit push feeds</li>
     <li><a href="../admin/index.html">Admin &amp; engineering</a> — the build system this script belongs to</li>
   </ul>
-  <div class="pagenav"><a href="index.html">← Case studies</a><a href="../vault/git-and-vaults.html">Git repos inside vaults →</a></div>
+  <div class="pagenav"><a href="index.html">← Case studies</a><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults →</a></div>
 </main>
 
 <footer class="site"><div class="cols">
@@ -164,11 +165,13 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.71</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.72</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
     <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
     <a href="../docs/installation.html">Installation</a>
     <a href="../docs/quickstart.html">Quickstart</a>
     <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
@@ -177,14 +180,14 @@
   </div>
   <div>
     <h4>SG/Vault platform</h4>
-    <a href="../vault/index.html">SG/Vault &amp; the platform</a>
-    <a href="../vault/vault-apps.html">Building vault apps</a>
-    <a href="../vault/sg-bridge.html">The window.sg bridge</a>
-    <a href="../vault/content-authoring.html">Content authoring</a>
-    <a href="../vault/sub-vaults.html">Sub-vaults</a>
-    <a href="../vault/git-and-vaults.html">Git repos inside vaults</a>
-    <a href="../vault/reading-a-vault-file.html">Reading a vault file</a>
-    <a href="../vault/static-hosting.html">Static hosting</a>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
     <a href="https://sgraph.ai">More at sgraph.ai</a>
   </div>
   <div>
@@ -195,7 +198,7 @@
     <a href="../use-cases/index.html">Use cases</a>
     <a href="../case-studies/index.html">Case studies</a>
     <a href="../skills/index.html">Skills for AI agents</a>
-    <a href="../briefs/index.html">Cross-team briefs</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>
@@ -204,7 +207,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.71';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.72';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

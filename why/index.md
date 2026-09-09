@@ -2,7 +2,7 @@
 
 > A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
-*Source: <https://sgit.ai/why/index.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/why/index.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -31,7 +31,7 @@ The honest framing is not "sgit instead of git". It is two tools with different 
 | **If the host is breached** | Your content is in the breach | Opaque ids, ciphertext, object sizes and timing |
 | **Recovery when you lose the credential** | Reset your password; the repo is unaffected | Nothing. No reset, no recovery — the direct cost of the row above |
 
-**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
+**So the split, concretely:** source code, issues, CI config and anything you would be happy to open-source belong in git — it is better at them and always will be. The material where "who can read the store" is the binding constraint belongs in a vault. Plenty of projects have both, and there is no reason to choose: the two live in one directory, ignore each other, and are pushed separately. The [side-by-side setup](../docs/vault/git-and-vaults.md) — what to commit, what to keep out of git, and the `.gitattributes` that stops git trying to diff ciphertext — is documented, because it is how this site is developed.
 
 ## The boundary, precisely
 
@@ -224,7 +224,7 @@ You may be right. It costs nothing to be wrong about this in our direction: the 
 
 ## An invitation, meant literally
 
-You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](../case-studies/exposed-vault-key.md) and the [open briefs](../briefs/index.md) got written.
+You said you'd come back with many follow-up questions. Please do — [in the open, on the issue tracker](https://github.com/SGit-AI/SGit-AI__CLI/issues). Sharp questions from someone who doesn't buy the premise are worth more than agreement, and if any of them don't have a good answer, that's a finding: it goes on this page, or it changes the roadmap. That's the same way the [key-leak incident](../case-studies/exposed-vault-key.md) and the [open briefs](../docs/briefs/index.md) got written.
 
 [← Home](../index.md)[When NOT to use sgit →](../docs/limitations.md)
 

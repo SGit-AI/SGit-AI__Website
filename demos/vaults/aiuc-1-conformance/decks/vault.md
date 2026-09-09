@@ -2,7 +2,7 @@
 
 > A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/vault.html> · site v0.2.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/decks/vault.html> · site v0.2.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
 
-Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Vault.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../vault/reading-a-vault-file.md)
+Read live out of vault `2wzct4k7` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `AIUC-1__The-Vault.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
