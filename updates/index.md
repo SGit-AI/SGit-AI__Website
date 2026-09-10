@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,36 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-10
+
+### [The transfer API gets documented, and a dangling reference closes](#the-transfer-api-gets-documented) [v0.2.76](../admin/versions.md)
+
+apitransferssecuritymethod
+
+The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page.
+
+**The reference named a header for an API it never described.** [The authentication page](../api/authentication.md) has always listed `x-sgraph-transfer-delete-auth` among its six headers — *"transfer deletion — SG/Send transfers, not vaults"* — while the API section documented **zero transfer endpoints**. And the section's own lead called it *"the protocol surface"* while covering one of the two families that share this host. A reader following that header had nowhere to go, and a reader trusting that lead was being told something untrue.
+
+[**The transfers page now exists**](../api/transfers.md), the header links to it, and the lead says plainly that two families share the host.
+
+## What was taken, and what was not
+
+The protocol is canonical and belongs here:
+
+- **The two secrets that must never be confused.** An *access key* authorises **you to upload** and lives in a header. A *decryption key* authorises **anyone to read** and lives in the URL fragment — everything after `#`, which no browser sends to the server. They are unrelated values, and that distinction is the whole reason a share link can be both shareable and private.
+- **The SGMETA envelope**, which exists so the filename never reaches the server: magic bytes, a big-endian length, the metadata JSON, then the file — wrapped *before* encryption, because the other order produces a corrupt download with no name.
+- **The two traps in the create body**: `expires_at` is in **milliseconds**, not seconds; and `max_downloads: 0` means **unlimited**, not none.
+- **The `download_url` that returns 404.** `complete` hands back `/d/{id}`, which is not a live route — build the share link yourself.
+- **Revocation is opt-in at create time and impossible afterwards.** No `delete_auth_hash` when the transfer was created means that transfer can never be deleted.
+
+The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. It is good material; it is not protocol.
+
+## The editorial contribution is knowing when not to use a vault
+
+The page opens with a **transfer or vault** decision table, because restating someone else's endpoints adds nothing. What this site can usefully say is the other thing: a transfer has no history, hands over the whole payload or nothing, expires, and can be revoked. **A vault is the wrong answer for a handover that happens once** — and the API team reached the same conclusion independently for their own flow, which is worth more than either of us asserting it alone.
+
+**Their verification is attributed, not adopted.** Every status code on that page was executed by them against production on 9 September 2026. We have not re-run it, the page says so, and the date is the thing to check it against.
 
 ## 2026-09-09
 

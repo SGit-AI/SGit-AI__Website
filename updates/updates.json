@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.75",
+  "site_version": "v0.2.76",
   "updates": [
+    {
+      "slug": "the-transfer-api-gets-documented",
+      "title": "The transfer API gets documented, and a dangling reference closes",
+      "date": "2026-09-10",
+      "version": "v0.2.76",
+      "tags": [
+        "api",
+        "transfers",
+        "security",
+        "method"
+      ],
+      "summary": "The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page. The refere…"
+    },
     {
       "slug": "the-shorts-page-rewritten-for-a-cold-arrival",
       "title": "The shorts page rewritten for someone who arrives with no context",

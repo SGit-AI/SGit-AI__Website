@@ -421,6 +421,12 @@
     "desc": "The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits."
   },
   {
+    "path": "api/transfers.html",
+    "section": "api",
+    "title": "API: transfers — one encrypted handover, one link",
+    "desc": "The other API family on this host: a single encrypted payload uploaded once and shared as one link. The two secrets that must not be confused, the SGMETA envelope that keeps the filename off the server, the three calls, revocation that is opt-in at create time only, and when a transfer beats a vault."
+  },
+  {
     "path": "api/errors.html",
     "section": "api",
     "title": "API errors and limits — sgit.ai",

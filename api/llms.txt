@@ -1,11 +1,12 @@
 # The HTTP API — sgit.ai
 
-> The protocol surface behind sgit: vault objects, append lanes, authentication and errors. Generated at build time (v0.2.75).
+> The protocol surface behind sgit: vault objects, append lanes, authentication and errors. Generated at build time (v0.2.76).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (5)
+## Pages (6)
 - [The HTTP API](/api/index.md): The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at.
 - [API authentication](/api/authentication.md): The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.
 - [API: vault objects](/api/vault-objects.md): The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault.
 - [API: append lanes](/api/append-lanes.md): The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
+- [API: transfers](/api/transfers.md): The other API family on this host: a single encrypted payload uploaded once and shared as one link. The two secrets that must not be confused, the SGMETA envelope that keeps the filename off the server, the three calls, revocation that is opt-in at create time only, and when a transfer beats a vault.
 - [API errors and limits](/api/errors.md): 400, 403, 413 and 507: what each means, why a malformed token returns 400 rather than 403, the input patterns enforced before storage is reached, and every documented ceiling.

@@ -2,7 +2,7 @@
 
 > The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at.
 
-*Source: <https://sgit.ai/api/index.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/index.html> · site v0.2.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The HTTP API
 
-Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit.
+Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit. **Two families share this host**: [vaults](vault-objects.md), which are versioned trees you clone and push, and [transfers](transfers.md), which are single encrypted handovers.
 
 **Where this came from, and how far to trust it.** This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at **v0.33.54** rather than recalled. It is *their* verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled **PROPOSED** and you should not build on it yet. Same rule as the rest of this site — if it is not verified, it says so.
 
@@ -31,6 +31,7 @@ That is what makes the rest of the design possible: a vault ID is an address rat
 | [Authentication](authentication.md) | The six headers, what each gates, and the hash-comparison model |
 | [Vault objects](vault-objects.md) | The pointer store — read, write, batch, destroy — plus the caching contract and storage layout |
 | [Append lanes](append-lanes.md) | The six append endpoints: the vault-to-vault message transport |
+| [Transfers](transfers.md) | The other family on this host: one encrypted payload, uploaded once, handed over as a single link — the SGMETA envelope, the three calls, and when to reach for this instead of a vault |
 | [Errors and limits](errors.md) | 400, 403, 413, 507 — what each actually means, and the ceilings that produce them |
 
 ## Four capabilities
