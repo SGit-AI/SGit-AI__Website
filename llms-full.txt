@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.75). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.76). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-103site releases, each verified live before it was called done
+104site releases, each verified live before it was called done
 
 26vaults published with a deliberately public read key
 
@@ -3927,7 +3927,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.75, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.76, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4066,7 +4066,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-103**site releases since 14 August**
+104**site releases since 14 August**
 each verified live before it was called done
 
 26**vaults published with a public read key**
@@ -4075,7 +4075,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-47**articles and release notes**
+48**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5595,11 +5595,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.75**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.76**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.75 | 2026-09-09 | this release | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
+| v0.2.76 | 2026-09-10 | this release | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
+| v0.2.75 | 2026-09-09 | obj-cas-imm-f21130f2246b | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
 | v0.2.74 | 2026-09-09 | obj-cas-imm-0f820c930549 | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
 | v0.2.73 | 2026-09-09 | obj-cas-imm-5569e595ea36 | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
 | v0.2.72 | 2026-09-09 | obj-cas-imm-92130ad84859 | ONE FRONT DOOR FOR VAULT GUIDANCE, AND EVERY DOCUMENT MOVED UNDER /docs/. The guidance had accumulated across three top-level folders — /briefs, /vault and a new /guidance — which is three places to look for one kind of thing. Everything readable now lives under /docs/: /docs/briefs, /docs/vault, /docs/guidance, alongside the existing CLI docs. Fourteen pages moved, links rewritten by resolving each one through the move map rather than by prefixing — a blanket prefix would have broken every link that stayed inside the moved subtree. No redirects, by instruction: the estate is in flux and has few external users. Two hand-written .md briefs that live only in the built output, not in the content tree, were nearly lost to the cleanup and were restored from git into the new location. WORKING ON A VAULT: START HERE is the front door that did not exist, and the first thing on it is the guidance that gets repeated to agents most often: VERSION EVERYTHING, SHOW THE VERSION, LINK WHAT CHANGED. The number belongs in the app chrome, small and always visible, and it must link to that version's OWN details rather than a generic changelog; versions live in the vault as versions/index.json plus one file per version, each naming the commit it was built from and saying whether it was recorded or reconstructed. The AIUC-1 conformance vault is named as the reference implementation because it already does exactly this. Seven more practices follow, each with the failure that produced it. /docs/guidance/llms.txt is the same thing shaped for an agent: five rules, a reading order, the briefs, reference implementations to go and check, and edges out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai — because a page about vaults should not try to also be the style guide, the resilience argument or the grammar of semantic graphs. The page closes by saying why it is mostly links, quoting graphs.sgit.ai's thesis back at itself: a node is just a node, meaning lives in the edges. |
@@ -5720,7 +5721,7 @@ Numbering: v0.1.n while the site is in its first structure; the middle digit wil
 
 # The HTTP API
 
-Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit.
+Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit. **Two families share this host**: [vaults](vault-objects.md), which are versioned trees you clone and push, and [transfers](transfers.md), which are single encrypted handovers.
 
 **Where this came from, and how far to trust it.** This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at **v0.33.54** rather than recalled. It is *their* verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled **PROPOSED** and you should not build on it yet. Same rule as the rest of this site — if it is not verified, it says so.
 
@@ -5741,6 +5742,7 @@ That is what makes the rest of the design possible: a vault ID is an address rat
 | [Authentication](authentication.md) | The six headers, what each gates, and the hash-comparison model |
 | [Vault objects](vault-objects.md) | The pointer store — read, write, batch, destroy — plus the caching contract and storage layout |
 | [Append lanes](append-lanes.md) | The six append endpoints: the vault-to-vault message transport |
+| [Transfers](transfers.md) | The other family on this host: one encrypted payload, uploaded once, handed over as a single link — the SGMETA envelope, the three calls, and when to reach for this instead of a vault |
 | [Errors and limits](errors.md) | 400, 403, 413, 507 — what each actually means, and the ceilings that produce them |
 
 ## Four capabilities
@@ -5797,7 +5799,7 @@ Six headers exist. Which apply depends on the endpoint and on how the server is 
 | `x-sgraph-vault-enum-key` | Append lane enumeration: `list`, `fetch`, `mark-processed` |
 | `x-vault-read-key` | Read key, for public-vault routing |
 | `x-vault-public` | Public-vault routing flag |
-| `x-sgraph-transfer-delete-auth` | Transfer deletion — SG/Send transfers, not vaults |
+| `x-sgraph-transfer-delete-auth` | [Transfer deletion](transfers.md) — SG/Send transfers, not vaults. Carries the *secret*, never the hash, and only works if a `delete_auth_hash` was set at create time |
 
 One capability is **not** a header: `append_token` travels in the request body of `/append/write`. That is deliberate — see [append lanes](append-lanes.md).
 
@@ -5984,6 +5986,149 @@ The `append_token` pattern is `^[0-9a-f]{16,128}$` — hex only. A prefixed toke
 - [Vault messaging](../docs/vault-messaging.md) — this API composed with PKI into a worked example
 - [`sg.append`](../docs/vault/sg-bridge.md) — the same six operations from a vault app
 - [Errors and limits](errors.md)
+
+
+
+==============================================================================
+# API: transfers — one encrypted handover, one link
+
+> The other API family on this host: a single encrypted payload uploaded once and shared as one link. The two secrets that must not be confused, the SGMETA envelope that keeps the filename off the server, the three calls, revocation that is opt-in at create time only, and when a transfer beats a vault.
+>
+> Page: https://sgit.ai/api/transfers.html
+
+[Home](../index.md) / [HTTP API](index.md) / Transfers
+
+# The transfer API — one encrypted handover, one link
+
+The other half of the API on this host. A **vault** is a versioned encrypted tree you clone, pull and push; a **transfer** is a single encrypted payload uploaded once and handed over as one link. Same server, same zero-knowledge property, different job — and until now this site documented a transfer *header* without documenting a single transfer *endpoint*.
+
+**Provenance.** This page is derived from an integration guide written by the team that owns the SG/Send API, who executed **every request, response, status code and byte layout in it against the production user API on 9 September 2026**. That run is theirs, not ours — we have not re-executed it here, and the date is the one to check it against. Their guide is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## Transfer or vault?
+
+Pick this first; it decides everything after it.
+
+|  | Transfer | [Vault](vault-objects.md) |
+|---|---|---|
+| **Shape** | One payload, uploaded once | A versioned tree of files |
+| **History** | None. There is no second version | Commits, branches, merges |
+| **The reader gets** | The whole payload, or nothing | Any single file, without fetching the rest |
+| **Lifecycle** | Expires, caps downloads, can be revoked | Lives until you delete it |
+| **The credential** | A decryption key in the URL fragment | A [read key](../docs/vault/reading-a-vault-file.md), derived one-way |
+| **Reach for it when** | An agent finishes a job and hands the result over **once** — a bundle, a report, a dated export | The thing is read repeatedly, browsed, updated, or rendered as an app |
+
+The SG/API team's own guidance, for a workflow that ships one bundle per voice memo, is that the transfer API is *“the simpler and better fit”*. That is the right instinct in general: **a vault is the wrong answer for a handover that happens once.**
+
+## Two secrets that must never be confused
+
+This is the part that goes wrong first, and it goes wrong silently — a leaked access key does not throw.
+
+|  | What it authorises | Where it goes |
+|---|---|---|
+| **The access key** `x-sgraph-access-token` | *You*, to upload | A request **header**. Never a URL, never a share link, never a log |
+| **The decryption key** | *Anyone*, to read | The URL **fragment** — everything after `#`, which no browser sends to the server |
+
+They are unrelated values. The fragment is what makes a share link both shareable and private: the key reaches the recipient's client and never the origin serving the page. The API also accepts `?access_token=` as a query fallback and it works — **do not use it**; query strings land in proxy logs, browser history and workflow execution records.
+
+What the server can see: ciphertext size, a hashed sender IP, a creation timestamp, and the `content_type_hint` you supply. What it cannot see: the filename, the contents, or the key.
+
+## The payload format — two layers, in this order
+
+The filename must not reach the server, so it is wrapped *inside* the plaintext before encryption. Getting the order wrong produces a corrupt download with no name.
+
+**Inner — the SGMETA envelope:**
+
+```
+"SGMETA\0"          7 bytes    53 47 4D 45 54 41 00
+meta_len            4 bytes    uint32, big-endian
+metadata JSON       meta_len   {"filename":"…"}  UTF-8
+file bytes          rest       your payload
+```
+
+**Outer — AES-256-GCM over that whole buffer:**
+
+```
+IV                 12 bytes    random, fresh per upload, prepended
+ciphertext + tag   rest        GCM appends its own 16-byte tag
+```
+
+- **Key:** 32 random bytes, shared as **base64url, unpadded** — 43 characters.
+- **IV:** 12 random bytes, never reused with the same key.
+- **Overhead:** the uploaded payload is exactly **28 bytes larger** than the plaintext (12 + 16).
+
+Same primitive as everything else here: AES-256-GCM, done client-side, with the server holding ciphertext under a key it never had. [The security page](../security/index.md) covers why that is the whole product rather than a feature of it.
+
+## The three calls
+
+| Call | Endpoint | Notes |
+|---|---|---|
+| **1 · create** | `POST /api/transfers/create` | Returns `transfer_id`. Body carries `file_size_bytes` (the *plaintext* length, display metadata only), `content_type_hint` (stored in the clear — keep it generic), `max_downloads`, `auto_delete`, `expires_at` |
+| **2 · upload** | `POST /api/transfers/upload/{id}` | **Raw bytes** — not base64, not multipart. `Content-Type: application/octet-stream` |
+| **3 · complete** | `POST /api/transfers/complete/{id}` | Nothing is downloadable until this call lands |
+
+Only those three need the access key. `info` and `download` are **public by design** — the decryption key is the gate, which is exactly why a share link works for someone with no account.
+
+**Two traps in the create body.** `expires_at` is in **milliseconds** since epoch, not seconds; `0` means never. And `max_downloads: 0` means *unlimited*, not zero — once a finite allowance is exhausted, downloads return **410**.
+
+### Build the share link yourself
+
+`complete` returns a `download_url` of `/d/{id}`. **Ignore it** — verified as a 404; it is not a live route. The link to hand out is:
+
+```
+https://send.sgraph.ai/en-gb/download/#{transfer_id}/{key_base64url}
+```
+
+Omit `/{key}` for a link-only form when the key travels through a second channel. The fragment parser splits on the **first** `/` and truncates at a `|`, so `|` is reserved — base64url never produces one, so following the format above keeps you clear.
+
+## What a receiving agent has to do
+
+This is the payoff, and it is two calls with no account and no browser: `GET /api/transfers/download/{id}` needs no auth, and the key from the fragment does the rest — split the IV off the first 12 bytes, AES-GCM decrypt, check the `SGMETA\0` magic, read the big-endian length, and the filename and payload fall out. For a JSON-only transport such as an MCP tool, `GET /api/transfers/download-base64/{id}` returns the same bytes wrapped in JSON.
+
+**Downloads are counted.** An agent retrying a failed run burns the allowance. For agent-facing links prefer `max_downloads: 0` with a short `expires_at` — time-bounded rather than attempt-bounded, because a retry is not a reader.
+
+## Expiry, caps and revocation
+
+Revocation is opt-in **at create time and only then**: set `delete_auth_hash` to `sha256(secret)` in hex and store the secret beside the transfer id. Without it, deletion is disabled for that transfer forever. To revoke, `DELETE /api/transfers/delete/{id}` carrying the access key and `x-sgraph-transfer-delete-auth: <the secret, not the hash>` — the one header [the authentication page](authentication.md) already listed before this page existed to explain it.
+
+**410 and 404 are both normal end states, not errors to retry:** 410 is gone-as-expected (expired or exhausted), 404 is never-existed-or-deleted.
+
+## Size
+
+| Path | Ceiling | When |
+|---|---|---|
+| **Direct upload** | keep the encrypted payload under **~4 MB** | The normal case |
+| Multipart / presigned | Larger | Needs the S3 backend — check `GET /api/presigned/capabilities` first |
+
+The ~4 MB figure is a working limit rather than a published one: the Lambda URL caps a request body at 6 MB and the browser client switches to presigned at 5 MB. Text bundles compress far below it; **audio does not**, and is usually the most sensitive part of a bundle as well as the largest.
+
+## Verified behaviour
+
+The SG/API team's run, 9 September 2026, reproduced here as they reported it:
+
+| Case | Result |
+|---|---|
+| Header `x-sgraph-access-token` | **200** |
+| Header `x-sgraph-send-access-token` | **401** — that name does not work |
+| No token, or a wrong one | **401** |
+| `download` / `info` with no token | **200** — public by design |
+| Round trip: wrap → encrypt → create → upload → complete → download → decrypt → unwrap | **Byte-identical** payload recovered, filename intact |
+| Download #3 against `max_downloads: 2` | **410** |
+| Download of an expired transfer | **410** |
+| `DELETE` with wrong / correct delete-auth | **403** / **200**, then **404** |
+| `GET /d/{transfer_id}` | **404** — not a route |
+| Key length | 32 bytes → 43 base64url characters |
+| Encrypted payload overhead | plaintext + 28 bytes |
+
+## The rules worth holding to
+
+1. **Never log or return the decryption key** outside the share link. It is not an identifier — anyone holding it reads the payload. In a workflow engine that means keeping it out of node output that gets persisted.
+2. **Never put the access key in a URL.** Header only.
+3. **Never reuse an IV.** Twelve fresh random bytes per upload.
+4. **Keep the filename inside the envelope.** `content_type_hint` is in the clear; the name is not, and that is the reason the envelope exists.
+5. **Always set an expiry.** A link pasted into a chat lives as long as the chat does; the transfer should not.
+6. **Bundle for a reader who is an agent** — a `manifest.json` saying what each file is, and an `llms.txt`, cost nothing and are the difference between a payload that can be used and one that has to be opened by a person first.
+
+Adapted with attribution from the SG/API team's integration guide of 9 September 2026 (CC BY 4.0); the workflow-specific half of that document — credential wiring, node shapes, the bundle layout for one product — stays with the product it was written for. [API reference](index.md) · [Vault objects](vault-objects.md) · [Append lanes](append-lanes.md) · [Working on a vault](../docs/guidance/index.md)
 
 
 
@@ -6353,6 +6498,36 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-10
+
+### [The transfer API gets documented, and a dangling reference closes](#the-transfer-api-gets-documented) [v0.2.76](../admin/versions.md)
+
+apitransferssecuritymethod
+
+The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page.
+
+**The reference named a header for an API it never described.** [The authentication page](../api/authentication.md) has always listed `x-sgraph-transfer-delete-auth` among its six headers — *"transfer deletion — SG/Send transfers, not vaults"* — while the API section documented **zero transfer endpoints**. And the section's own lead called it *"the protocol surface"* while covering one of the two families that share this host. A reader following that header had nowhere to go, and a reader trusting that lead was being told something untrue.
+
+[**The transfers page now exists**](../api/transfers.md), the header links to it, and the lead says plainly that two families share the host.
+
+## What was taken, and what was not
+
+The protocol is canonical and belongs here:
+
+- **The two secrets that must never be confused.** An *access key* authorises **you to upload** and lives in a header. A *decryption key* authorises **anyone to read** and lives in the URL fragment — everything after `#`, which no browser sends to the server. They are unrelated values, and that distinction is the whole reason a share link can be both shareable and private.
+- **The SGMETA envelope**, which exists so the filename never reaches the server: magic bytes, a big-endian length, the metadata JSON, then the file — wrapped *before* encryption, because the other order produces a corrupt download with no name.
+- **The two traps in the create body**: `expires_at` is in **milliseconds**, not seconds; and `max_downloads: 0` means **unlimited**, not none.
+- **The `download_url` that returns 404.** `complete` hands back `/d/{id}`, which is not a live route — build the share link yourself.
+- **Revocation is opt-in at create time and impossible afterwards.** No `delete_auth_hash` when the transfer was created means that transfer can never be deleted.
+
+The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. It is good material; it is not protocol.
+
+## The editorial contribution is knowing when not to use a vault
+
+The page opens with a **transfer or vault** decision table, because restating someone else's endpoints adds nothing. What this site can usefully say is the other thing: a transfer has no history, hands over the whole payload or nothing, expires, and can be revoked. **A vault is the wrong answer for a handover that happens once** — and the API team reached the same conclusion independently for their own flow, which is worth more than either of us asserting it alone.
+
+**Their verification is attributed, not adopted.** Every status code on that page was executed by them against production on 9 September 2026. We have not re-run it, the page says so, and the date is the thing to check it against.
 
 ## 2026-09-09
 

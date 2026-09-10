@@ -11,7 +11,7 @@
     <tr><td><code>x-sgraph-vault-enum-key</code></td><td>Append lane enumeration: <code>list</code>, <code>fetch</code>, <code>mark-processed</code></td></tr>
     <tr><td><code>x-vault-read-key</code></td><td>Read key, for public-vault routing</td></tr>
     <tr><td><code>x-vault-public</code></td><td>Public-vault routing flag</td></tr>
-    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td>Transfer deletion — SG/Send transfers, not vaults</td></tr>
+    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td><a href="transfers.html">Transfer deletion</a> — SG/Send transfers, not vaults. Carries the <em>secret</em>, never the hash, and only works if a <code>delete_auth_hash</code> was set at create time</td></tr>
   </table></div>
   <p>One capability is <b>not</b> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate — see <a href="append-lanes.html">append lanes</a>.</p>
 

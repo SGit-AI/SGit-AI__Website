@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>The transfer API gets documented, and a dangling reference closes</title>
+      <link>https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</guid>
+      <pubDate>2026-09-10</pubDate>
+      <description>The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page. The refere…</description>
+    </item>
+    <item>
       <title>The shorts page rewritten for someone who arrives with no context</title>
       <link>https://sgit.ai/updates/index.html#the-shorts-page-rewritten-for-a-cold-arrival</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-shorts-page-rewritten-for-a-cold-arrival</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-brief-came-back-as-a-vault</guid>
       <pubDate>2026-09-06</pubDate>
       <description>v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so two games about agent permissions now joins the published vaults — two deterministic games about grants, permissions a…</description>
-    </item>
-    <item>
-      <title>Briefs gets a second kind — references written to be executed, not asks waiting on a reply</title>
-      <link>https://sgit.ai/updates/index.html#briefs-gets-a-second-kind</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#briefs-gets-a-second-kind</guid>
-      <pubDate>2026-09-06</pubDate>
-      <description>Briefs has been a single scroll of cross team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them. Buil…</description>
     </item>
   </channel>
 </rss>

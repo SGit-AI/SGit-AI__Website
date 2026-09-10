@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.75</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.76</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,11 +92,32 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.75 &middot; 9 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.76 &middot; 10 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-10</h2>
+  <article class="upd" id="the-transfer-api-gets-documented">
+    <h3><a href="#the-transfer-api-gets-documented">The transfer API gets documented, and a dangling reference closes</a> <a class="upd-ver" href="../admin/versions.html">v0.2.76</a></h3>
+    <p class="chips"><span class="chip">api</span><span class="chip">transfers</span><span class="chip">security</span><span class="chip">method</span></p>
+<p>The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page.</p>
+<p><b>The reference named a header for an API it never described.</b> <a href="../api/authentication.html">The authentication page</a> has always listed <code>x-sgraph-transfer-delete-auth</code> among its six headers — <em>"transfer deletion — SG/Send transfers, not vaults"</em> — while the API section documented <b>zero transfer endpoints</b>. And the section's own lead called it <em>"the protocol surface"</em> while covering one of the two families that share this host. A reader following that header had nowhere to go, and a reader trusting that lead was being told something untrue.</p>
+<p><a href="../api/transfers.html"><b>The transfers page now exists</b></a>, the header links to it, and the lead says plainly that two families share the host.</p>
+<h2>What was taken, and what was not</h2>
+<p>The protocol is canonical and belongs here:</p>
+<ul>
+<li><b>The two secrets that must never be confused.</b> An <em>access key</em> authorises <b>you to upload</b> and lives in a header. A <em>decryption key</em> authorises <b>anyone to read</b> and lives in the URL fragment — everything after <code>#</code>, which no browser sends to the server. They are unrelated values, and that distinction is the whole reason a share link can be both shareable and private.</li>
+<li><b>The SGMETA envelope</b>, which exists so the filename never reaches the server: magic bytes, a big-endian length, the metadata JSON, then the file — wrapped <em>before</em> encryption, because the other order produces a corrupt download with no name.</li>
+<li><b>The two traps in the create body</b>: <code>expires_at</code> is in <b>milliseconds</b>, not seconds; and <code>max_downloads: 0</code> means <b>unlimited</b>, not none.</li>
+<li><b>The <code>download_url</code> that returns 404.</b> <code>complete</code> hands back <code>/d/{id}</code>, which is not a live route — build the share link yourself.</li>
+<li><b>Revocation is opt-in at create time and impossible afterwards.</b> No <code>delete_auth_hash</code> when the transfer was created means that transfer can never be deleted.</li>
+</ul>
+<p>The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. It is good material; it is not protocol.</p>
+<h2>The editorial contribution is knowing when not to use a vault</h2>
+<p>The page opens with a <b>transfer or vault</b> decision table, because restating someone else's endpoints adds nothing. What this site can usefully say is the other thing: a transfer has no history, hands over the whole payload or nothing, expires, and can be revoked. <b>A vault is the wrong answer for a handover that happens once</b> — and the API team reached the same conclusion independently for their own flow, which is worth more than either of us asserting it alone.</p>
+<p><b>Their verification is attributed, not adopted.</b> Every status code on that page was executed by them against production on 9 September 2026. We have not re-run it, the page says so, and the date is the thing to check it against.</p>
+  </article>
   <h2 class="upd-date">2026-09-09</h2>
   <article class="upd" id="the-shorts-page-rewritten-for-a-cold-arrival">
     <h3><a href="#the-shorts-page-rewritten-for-a-cold-arrival">The shorts page rewritten for someone who arrives with no context</a> <a class="upd-ver" href="../admin/versions.html">v0.2.66</a></h3>
@@ -664,7 +685,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.75</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.76</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -706,7 +727,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.75';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.76';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

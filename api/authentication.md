@@ -2,7 +2,7 @@
 
 > The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default.
 
-*Source: <https://sgit.ai/api/authentication.html> · site v0.2.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/authentication.html> · site v0.2.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -21,7 +21,7 @@ Six headers exist. Which apply depends on the endpoint and on how the server is 
 | `x-sgraph-vault-enum-key` | Append lane enumeration: `list`, `fetch`, `mark-processed` |
 | `x-vault-read-key` | Read key, for public-vault routing |
 | `x-vault-public` | Public-vault routing flag |
-| `x-sgraph-transfer-delete-auth` | Transfer deletion — SG/Send transfers, not vaults |
+| `x-sgraph-transfer-delete-auth` | [Transfer deletion](transfers.md) — SG/Send transfers, not vaults. Carries the *secret*, never the hash, and only works if a `delete_auth_hash` was set at create time |
 
 One capability is **not** a header: `append_token` travels in the request body of `/append/write`. That is deliberate — see [append lanes](append-lanes.md).
 

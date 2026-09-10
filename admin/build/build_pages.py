@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.75'
+SITE_VERSION = 'v0.2.76'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.75', '2026-09-09', 'this release',
+    ('v0.2.76', '2026-09-10', 'this release',
+     "THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an "
+     "integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged "
+     "here. Checking rather than assuming turned up something worse than a missing page: the "
+     "authentication reference already listed x-sgraph-transfer-delete-auth as one of its six "
+     "headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the "
+     "API section documented ZERO transfer endpoints. The reference named a header for an API it "
+     "never described, and the index's lead claimed the section was 'the protocol surface' while "
+     "covering one of the two families on this host. Both are fixed: a transfers page now exists "
+     "and the header links to it, and the lead says plainly that two families share the host. "
+     "WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two "
+     "secrets that must never be confused (an access key authorises YOU to upload and lives in a "
+     "header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no "
+     "browser sends to the server), the SGMETA envelope that keeps the filename off the server, "
+     "the three calls, the two traps in the create body (expires_at is MILLISECONDS, and "
+     "max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you "
+     "build the link yourself, revocation that is opt-in at create time and impossible after, and "
+     "the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, "
+     "node shapes, one product's bundle layout — stays with the product it was written for. The "
+     "page opens with a TRANSFER OR VAULT decision table, because the useful editorial "
+     "contribution is not restating their endpoints but saying when not to reach for a vault: a "
+     "vault is the wrong answer for a handover that happens once. Their verification is "
+     "attributed rather than adopted — every status code on the page was executed by them against "
+     "production on 9 September 2026, and we have not re-run it.",
+     ),
+    ('v0.2.75', '2026-09-09', 'obj-cas-imm-f21130f2246b',
      "A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH "
      "THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a "
      "companion covering the 26 published vaults, grouped by use case and industry. Two blockers "
