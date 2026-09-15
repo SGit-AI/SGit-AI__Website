@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>Synthetic users — five people who do not exist, shopping</title>
+      <link>https://sgit.ai/updates/index.html#synthetic-users</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#synthetic-users</guid>
+      <pubDate>2026-09-15</pubDate>
+      <description>The 27th vault is the most useful one published here that contains no real data at all. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the…</description>
+    </item>
+    <item>
       <title>The transfer API gets documented, and a dangling reference closes</title>
       <link>https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-vaults-table-you-can-sort</guid>
       <pubDate>2026-09-06</pubDate>
       <description>Reported from an iPad, where the failure was obvious in a way it never is on a desktop. The read key is a 64 hex string; giving it room squeezed the vault id down to one character per line — ookq4mn4 rendered as a vertical stack. The fix was not narrower colum…</description>
-    </item>
-    <item>
-      <title>The brief came back as a vault — and it is the first one here that phones home</title>
-      <link>https://sgit.ai/updates/index.html#the-brief-came-back-as-a-vault</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-brief-came-back-as-a-vault</guid>
-      <pubDate>2026-09-06</pubDate>
-      <description>v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so two games about agent permissions now joins the published vaults — two deterministic games about grants, permissions a…</description>
     </item>
   </channel>
 </rss>
