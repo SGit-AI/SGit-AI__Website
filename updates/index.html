@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.76</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.77</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,11 +92,23 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.76 &middot; 10 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.77 &middot; 15 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-15</h2>
+  <article class="upd" id="synthetic-users">
+    <h3><a href="#synthetic-users">Synthetic users — five people who do not exist, shopping</a> <a class="upd-ver" href="../admin/versions.html">v0.2.77</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">testing</span><span class="chip">agents</span><span class="chip">method</span></p>
+<p><a href="../demos/vaults/synthetic-users/index.html">The 27th vault</a> is the most useful one published here that contains no real data at all. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: <b>43 steps, 15 questions the site did not answer, 10 recorded confusions, and 18 findings — three of them costing a sale.</b></p>
+<p><b>The idea worth stealing is a deliberate handicap.</b> The agent is handed the <em>screenshot</em>, never the DOM, and the vault says why in one sentence: <em>"an agent that drives a store by reading the DOM finds the buy button every time, and therefore finds no confusion — which is the only thing worth running this for."</em> Competence at finding the button is the thing standing between you and the finding, so it is removed on purpose.</p>
+<p>Three more things make it a method rather than an anecdote. The protocol is published <b>inside</b> the vault, so two runs a month apart are comparable rather than merely sequential. <em>Where did you guess</em> is a required field. And a run with no confusion anywhere is treated as a run done badly, not a site that passed.</p>
+<p><b>Read the viewport column.</b> The persona carrying the largest decision a single person makes alone on that site did the whole thing on a <b>390-wide phone</b> — and produced the most questions and the most confusion of anyone. The vault never states that. It falls out of the table once all five runs are counted in one place, which is the argument for putting runs in a vault instead of a document.</p>
+<p>Zero page errors across all five runs, which is worth saying because it means none of the confusion was a bug in the store's code. It was the copy.</p>
+<p><b>Four findings are already marked fixed and kept rather than deleted</b>, on the stated grounds that <em>"a findings list that loses the fixed ones cannot be compared with the next set of runs."</em> The best of those fixes answered a request for a number with a disclosure instead: the page now says the time from a buyer's reply has never run for a paying buyer, so there is no measurement to quote. A synthetic user asked for a figure and got the harder, more honest answer.</p>
+<p><b>On the credential.</b> What was submitted was a <b>vault key</b>, not a read key. It was classified before it touched anything, the read key was derived one-way from it, and only the derived key is published — the vault key is not on this site and will not be. The derivation was proved rather than assumed: the derived key produced 67 files and a <code>clone_mode.json</code>, and an all-zeros key against the same vault id produced an empty directory. <a href="../demos/vaults/publishing.html">That control exists</a> because we once called a leak on a directory an invalid key had created identically.</p>
+  </article>
   <h2 class="upd-date">2026-09-10</h2>
   <article class="upd" id="the-transfer-api-gets-documented">
     <h3><a href="#the-transfer-api-gets-documented">The transfer API gets documented, and a dangling reference closes</a> <a class="upd-ver" href="../admin/versions.html">v0.2.76</a></h3>
@@ -685,7 +697,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.76</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.77</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -727,7 +739,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.76';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.77';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

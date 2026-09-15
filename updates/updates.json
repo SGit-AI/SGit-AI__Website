@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.76",
+  "site_version": "v0.2.77",
   "updates": [
+    {
+      "slug": "synthetic-users",
+      "title": "Synthetic users — five people who do not exist, shopping",
+      "date": "2026-09-15",
+      "version": "v0.2.77",
+      "tags": [
+        "vaults",
+        "testing",
+        "agents",
+        "method"
+      ],
+      "summary": "The 27th vault is the most useful one published here that contains no real data at all. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the…"
+    },
     {
       "slug": "the-transfer-api-gets-documented",
       "title": "The transfer API gets documented, and a dangling reference closes",

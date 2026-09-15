@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.76'
+SITE_VERSION = 'v0.2.77'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.76', '2026-09-10', 'this release',
+    ('v0.2.77', '2026-09-15', 'this release',
+     "SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. "
+     "Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what "
+     "they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did "
+     "not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA "
+     "WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, "
+     "because an agent reading the DOM finds the buy button every time and therefore finds no "
+     "confusion, which is the only thing the exercise is for. The protocol is published inside the "
+     "vault so two runs a month apart are comparable rather than merely sequential, 'where did you "
+     "guess' is a required field, and a run with no confusion anywhere is treated as a run done "
+     "badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the "
+     "largest decision one person makes alone on that site did the whole thing on a 390-wide "
+     "phone, and produced the most questions and the most confusion of anyone — a finding the "
+     "vault never states, which falls out of the table once the five runs are counted in one "
+     "place. Zero page errors across all five runs, so none of the confusion was a bug; it was the "
+     "copy. Four findings are already marked FIXED and kept rather than deleted, on the stated "
+     "grounds that a findings list that loses the fixed ones cannot be compared with the next set "
+     "of runs — and the best fix answered a request for a number with a disclosure instead, saying "
+     "the duration has never run for a paying buyer so there is no measurement to quote. "
+     "CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified "
+     "before it touched anything, the read key was derived one-way, only the derived key is "
+     "published, and the derivation was proved with an all-zeros negative control that produced an "
+     "empty directory against the same vault id. The one credential-shaped string in the vault is "
+     "a discount code the store publishes itself.",
+     ),
+    ('v0.2.76', '2026-09-10', 'PREV_UNFILLED',
      "THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an "
      "integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged "
      "here. Checking rather than assuming turned up something worse than a missing page: the "
