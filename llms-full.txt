@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.77). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.78). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **27 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 27 →](demos/vaults/index.md)
+Four of **28 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 28 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -44,9 +44,9 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-105site releases, each verified live before it was called done
+106site releases, each verified live before it was called done
 
-27vaults published with a deliberately public read key
+28vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -380,7 +380,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**27 published vaults** — 6 analysis, 5 application, 4 record, 4 reference, 3 briefing, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**28 published vaults** — 7 analysis, 5 application, 4 record, 4 reference, 3 briefing, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
@@ -438,6 +438,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
 
 | 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
+
+| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -558,6 +560,110 @@ The best statement of the vault-side rules is not ours: the [Risk Graph Explorer
 | `admin/build/capture_shots.mjs` | Drives the live vault and crops evidence screenshots |
 | `admin/build/validate.js` | The release gate, including the key-leak tripwire |
 | `admin/build/compare_tests.py` | Executes the claims that can be executed, with dates |
+
+
+
+==============================================================================
+# Synthetic users, second run — five people who do not exist, reading riskmandate.ai
+
+> The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale — and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.
+>
+> Page: https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Synthetic users · riskmandate.ai
+
+# Synthetic users, second run — five people who do not exist, reading riskmandate.ai
+
+The same method as [vault #27](../synthetic-users/index.md), pointed at a different product one day later. That is the interesting part: one run is an anecdote, two sites is a method. And the second run produced a **different class of finding** than the first — it measured rather than narrated, and it caught a bug that every existing test had passed over.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/en-gb/#a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr) · From the CLI: `sgit clone a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr`
+Submitted as a read key and published as one — nothing was derived, and no vault key was involved.
+
+**Everybody in it is invented**, and the vault says so above the fold, as the first one did. The personas and their words are a language model's. What is evidence is what a browser produced: the screenshots, the URLs, the scroll positions, **the word counts**, and the JavaScript errors the first pass recorded — all captured by driving a real browser against the deployed bytes at `v1.20.1`.
+
+## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/en-gb/#a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr)Same app as vault #27, same five-across rail.
+
+Five runs, six steps each, 30 screenshots. Two of the five would have paid; neither could.
+
+## What the second run did that the first did not
+
+It would have been easy for this to be the same vault with different names in it. It is not, and the difference is worth naming:
+
+|  | [#27 — store.sgit.ai](../synthetic-users/index.md) | This one — riskmandate.ai |
+|---|---|---|
+| **What the findings are made of** | What a persona said, in their voice | **Counted things.** Words above the fold, character offsets, scroll positions in pixels and screens |
+| **Shape of the headline** | A page missing a fact a buyer needed | A product **never named where it is sold** |
+| **Runs** | 5 · 43 steps · 15 questions · 10 confusions | 5 · 30 steps · 11 questions · **12 confusions** |
+| **Page errors** | Zero, on every run | **On every page visited** — and they had shipped |
+| **Findings** | 18, three blocking | 12, two blocking |
+
+More confusion from fewer steps is the number to look at. The first site lost people slowly; this one lost them on the first screen.
+
+## The headline: the product is not named where it is sold
+
+Above the fold, the home page says *policy* six times, *insure* three times and *underwriters* once, shows a price of **£5** — and never once says **Agent Behaviour Policy**, which is what it sells. The name first appears **58% of the way down the page**.
+
+The consequence is not subtle. **Two of the five read “Buy one, from £5” as buying an insurance policy for five pounds.** The persona who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary, and therefore the most confidently wrong:
+
+> “So: insurable, insurance, underwriters, and a policy you can buy for five pounds. On my reading of those words, **this is a product that places cover**.” — Claire Buckley, step 1
+
+She understood the product only on the third page. The founder resolved it by accident, from a button caption. The vault also notes that the hero card is captioned *“A REAL POLICY · TEMPLATE”* beside a headline about insurability — and is the one caption on the page with room to say the product's actual name.
+
+The reader best equipped to recognise the words was the one the words misled furthest.
+
+### We re-measured it, and the structural numbers reproduce exactly
+
+A claim this specific is checkable, so it was checked — the live page fetched today, rendered at the same 1440×900, and measured independently of the vault:
+
+| Claim | The vault | Re-measured |
+|---|---|---|
+| Page text length | 9,270 chars | **9,270** — exact |
+| First “Agent Behaviour Policy” | char 5,387 · 58% down | **char 5,387 · 58%** — exact |
+| Whole page height | 6,481px · 7.2 screens | **6,481px · 7.2 screens** — exact |
+| “Agent Behaviour Policy” / “ABP” above the fold | 0 and 0 | **0 and 0** |
+| *underwriters* above the fold | 1 | **1** |
+| *policy* / *insur** above the fold | 6 and 3 | 7 and 5 — **a counting-rule difference, not a discrepancy** |
+
+The last row: our `insur*` pattern also catches *insurance*, where the vault counted *insurable / insure / insurability* specifically; the *policy* count differs by one at the fold boundary. Every structural number — the ones the argument rests on — matches to the character.
+
+## The bug that every test had passed over
+
+The single most useful thing in this vault is not a persona's opinion. The first pass recorded a JavaScript error on **every page it visited** — `Unexpected token '}'` on the home page, `Unexpected end of input` on the insurance page. Both had shipped. The insurance page had been broken **since it launched**.
+
+> “Every existing test passed, because the HTML still rendered and only the console knew.”
+
+It was fixed in the same session, and — the right response — **a test was added that parses every inline script on every page and fails the build if one does not**. A synthetic-user run justified by its qualitative output paid for itself on a defect that has nothing to do with users at all, because the method happens to require driving a real browser and recording what it throws.
+
+## What it says worked, which is the harder half to write
+
+Three things were named unprompted by more than one persona, and are the reason two of the five would buy:
+
+- **Sourced quotes.** The connector-scope section quotes vendors' own documentation with dates — *“the first page I have read on this subject that quotes the publisher instead of paraphrasing them.”*
+- **The admissions.** That levels 3 and 4 have never run for a paying buyer; that the payment rails are not built; that one rung is still a design. *“Nobody oversells and then volunteers that.”*
+- **The card.** Four numbers on a real vault were the only thing on the first screen that made the engineer stay. **The card is doing the work the headline is not.**
+
+Both blocked sales were blocked by something that is not a price: **no duration anywhere**, and **no way to pay**. One founder would have paid £500 from his phone; one buyer would have paid £1,500 the same day against a deal worth more than her runway. The site correctly says the rails are not built — the honesty is right, and the consequence is that the highest-intent reader in the study had nowhere to go but an email address.
+
+Twelve findings, tagged by what they cost rather than by severity words — *closes a segment*, *loses a channel*, *costs reach*.
+
+## One persona walked both sites
+
+**Priya Raghavan** — a staff engineer who pays on her own card — appears in [vault #27](../synthetic-users/index.md) and in this one. She bought on the store; on riskmandate.ai she would buy level 1. A persona reused across products is what turns two separate studies into a comparison, and it costs nothing but the discipline of keeping the records in the same shape.
+
+## Shape, and the audit
+
+| **Vault** | `o3q6zhtr` · 53 files · 3.5 MB · 30 PNG screenshots |
+|---|---|
+| **Permissions** | `app.json` declares **none** |
+| **Credential** | Submitted as a **read key** and published unchanged. Verified with an all-zeros negative control: the real key produced 53 files and a `clone_mode.json`; the control produced an empty directory |
+| **Secrets** | None. No tokens, keys or credentials in the contents |
+| **Screenshots here** | Taken by driving the vault's own app, served from the clone at 1440×1000 on a 2× display |
+
+Published as row #28. The first application of this method is [vault #27](../synthetic-users/index.md); the product it reads is [riskmandate.ai ↗](https://riskmandate.ai/), which this site points at from [the Licence to Operate vault](../licence-to-operate/index.md). [← All published vaults](../index.md)
 
 
 
@@ -4060,7 +4166,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.77, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.78, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4199,16 +4305,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-105**site releases since 14 August**
+106**site releases since 14 August**
 each verified live before it was called done
 
-27**vaults published with a public read key**
+28**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-49**articles and release notes**
+50**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5728,11 +5834,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.77**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.78**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.77 | 2026-09-15 | this release | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
+| v0.2.78 | 2026-09-16 | this release | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
+| v0.2.77 | 2026-09-15 | PREV_UNFILLED | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
 | v0.2.76 | 2026-09-10 | PREV_UNFILLED | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
 | v0.2.75 | 2026-09-09 | obj-cas-imm-f21130f2246b | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
 | v0.2.74 | 2026-09-09 | obj-cas-imm-0f820c930549 | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
@@ -6632,6 +6739,26 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-16
+
+### [The synthetic-user method runs a second time, and the second run is the better argument](#synthetic-users-second-run) [v0.2.78](../admin/versions.md)
+
+vaultstestingagentsmethod
+
+[Vault #28](../demos/vaults/synthetic-users-riskmandate/index.md) applies [#27's method](../demos/vaults/synthetic-users/index.md) to riskmandate.ai, one day later. That is the point: **one run is an anecdote, two sites is a method.**
+
+It is not a repeat. The first vault **narrated**; this one **measures** — words above the fold, character offsets, scroll positions in pixels and screens. And more confusion from fewer steps (12 from 30, against 10 from 43) is the number to look at: the first site lost people slowly, this one lost them on the first screen.
+
+**The headline finding is that the product is never named where it is sold.** Above the fold the home page says *policy* six times, *insure* three times and *underwriters* once, shows a £5 price — and never says **Agent Behaviour Policy**, which first appears **58% of the way down**. Two of the five read *"Buy one, from £5"* as buying an insurance policy for five pounds. The one who held that reading longest was the insurance professional: the reader best equipped to recognise the vocabulary, and therefore the most confidently wrong.
+
+**A claim that specific is checkable, so it was checked.** The live page was fetched, rendered at the same 1440×900, and measured independently of the vault. Every structural number reproduces to the character: 9,270 characters of page text, first mention at 5,387, 6,481px and 7.2 screens, zero mentions of the product's name above the fold. Two count lines differ — and the page says *why* rather than hiding it: a broader `insur*` pattern that also catches "insurance", and one word at the fold boundary.
+
+**The most useful finding in it is not an opinion.** The first pass recorded a JavaScript error on *every page it visited*. Both had shipped; the insurance page had been broken since it launched. As the vault puts it: *"every existing test passed, because the HTML still rendered and only the console knew."* Fixed in the same session, with a test added that parses every inline script on every page and fails the build if one does not. A study justified by its qualitative output paid for itself on a defect that has nothing to do with users — because the method happens to require driving a real browser and recording what it throws.
+
+One persona, **Priya Raghavan**, walks both vaults. A persona reused across products is what turns two separate studies into a comparison, and it costs nothing but keeping the records in the same shape.
+
+**Noted, not fixed:** the site's sgit vault mirror is behind its git mirror. The container holding the write key was recycled, `.sg_vault/local/` is gitignored by design, and the last two releases have gone out over git alone — which is what deploys the site, so the live pages are correct. The vault copy needs one `sgit push` from someone holding the key.
 
 ## 2026-09-15
 

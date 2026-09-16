@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.2.77) from the same file the table on that page is built
+> generated at build time (v0.2.78) from the same file the table on that page is built
 > from — so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (27)
+## The vaults (28)
+- **#28 Synthetic users · riskmandate.ai** — The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over
+  - page: /demos/vaults/synthetic-users-riskmandate/index.md
+  - id `o3q6zhtr` · Analysis · published 2026-09-16 · 3.5 MB · 53 files
+  - read key: `a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr`
 - **#27 Synthetic users** — Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale
   - page: /demos/vaults/synthetic-users/index.md
   - id `g2hei4u6` · Analysis · published 2026-09-15 · 6.4 MB · 67 files
