@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.77'
+SITE_VERSION = 'v0.2.78'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.77', '2026-09-15', 'this release',
+    ('v0.2.78', '2026-09-16', 'this release',
+     "THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS "
+     "THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which "
+     "matters because one run is an anecdote and two sites is a method. It is not a repeat: the "
+     "first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll "
+     "positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS "
+     "SOLD: above the fold the home page says policy six times, insure three times and "
+     "underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first "
+     "appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an "
+     "insurance policy for five pounds, and the one who held that reading longest was the "
+     "insurance professional — the reader best equipped to recognise the vocabulary and therefore "
+     "the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page "
+     "was fetched, rendered at the same viewport and measured independently, and every structural "
+     "number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and "
+     "7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they "
+     "differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST "
+     "USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page "
+     "visited, both shipped, the insurance page broken since launch, and every existing test "
+     "passed because the HTML still rendered and only the console knew — fixed the same session "
+     "with a test added that parses every inline script and fails the build. One persona, Priya "
+     "Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT "
+     "FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the "
+     "write key was recycled, .sg_vault/local is gitignored by design, and these releases have "
+     "gone out over git alone.",
+     ),
+    ('v0.2.77', '2026-09-15', 'PREV_UNFILLED',
      "SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. "
      "Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what "
      "they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did "

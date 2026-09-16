@@ -350,5 +350,17 @@
   "n": 27,
   "job": "Test a site with users who do not exist",
   "why": "The agent is handed the screenshot, not the DOM — because an agent that reads the DOM finds the buy button every time and therefore finds no confusion."
+ },
+ {
+  "slug": "synthetic-users-riskmandate",
+  "name": "Synthetic users · riskmandate.ai",
+  "vault_id": "o3q6zhtr",
+  "category": "Analysis",
+  "what": "The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over",
+  "files": 53,
+  "bytes": 3670016,
+  "size": "3.5 MB",
+  "published": "2026-09-16",
+  "n": 28
  }
 ]
