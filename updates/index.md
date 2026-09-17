@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,30 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-17
+
+### [A job application as a vault — and the privacy audit published beside it](#a-job-application-as-a-vault) [v0.2.79](../admin/versions.md)
+
+vaultsmethodprivacy
+
+[Vault #29](../demos/vaults/interim-ciso-pack/index.md) is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email.
+
+**The idea worth stealing is that the pack is the evidence for its own claim.** It says the candidate works with a team of AI agents and ships encrypted, versioned artefacts — and it *is* one. A reviewer does not have to believe the claim; the thing in their hands is the test of it. That idea is portable and has nothing to do with hiring.
+
+Three structural choices are worth copying:
+
+- **Split at the front door, not inside the document.** The recruiter gets a submission summary to copy and answers to screening questions — the things they actually have to paste into a form. The company gets eleven sections, two of them *Before signing* and *Tensions*. Anyone else gets the skills map and the history. Three readers, three routes, none of them a compromise.
+- **Ship the machine-readable copy beside the human one.** Each of the four documents exists as PDF, Word, Markdown **and JSON**. The JSON is the one that matters: a CV as structured data, so a machine reading the pack gets fields rather than a page to parse. Same instinct as an `llms.txt`.
+- **Let the build enforce the contract.** The pipeline fails if the page declares a vault resource, uses `fetch()`, writes `location.hash`, references a missing file, or contains a JavaScript syntax error — the last being exactly the check that [caught a shipped bug on riskmandate.ai](../demos/vaults/synthetic-users-riskmandate/index.md) the day before.
+
+## The audit is on the page, not merely performed
+
+The pack was submitted with a stated position: nothing sensitive, the company not identified, material already public. That is exactly the kind of claim that should be checked rather than accepted, so it was — and **it holds**.
+
+The client is not named anywhere, described only as a FTSE 250 company, with regulatory applicability raised as open questions rather than answered. Day rates and the off-payroll analysis are absent, removed before publication — and the removal is **disclosed in the brief's own editor's note**, which is the harder and better choice. No phone, no address, one long-public email, no credentials. The read key was verified against an all-zeros negative control.
+
+One point is stated rather than waved through: **thirteen named third parties** appear in the recommendations with their 2019 job titles. They are public twice over — LinkedIn recommendations, republished in the candidate's own CC BY-SA 2019 deck, which ships inside the vault so the source can be checked. They are labelled `title_2019` throughout. This site quotes the pack's own framing and does not reproduce the individual recommendations, which stay where their provenance is stated.
 
 ## 2026-09-16
 

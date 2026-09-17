@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.2.78) from the same file the table on that page is built
+> generated at build time (v0.2.79) from the same file the table on that page is built
 > from — so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (28)
+## The vaults (29)
+- **#29 Interim CISO application pack** — A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere
+  - page: /demos/vaults/interim-ciso-pack/index.md
+  - id `8brojsem` · Briefing · published 2026-09-17 · 17 MB · 56 files
+  - read key: `sgit_rk1_699401f6cb3bdb1d6e19bfa690d8e0006a5379070ff320b5a8ae2fc21968f5c9:8brojsem`
 - **#28 Synthetic users · riskmandate.ai** — The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over
   - page: /demos/vaults/synthetic-users-riskmandate/index.md
   - id `o3q6zhtr` · Analysis · published 2026-09-16 · 3.5 MB · 53 files

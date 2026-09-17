@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.78</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.79</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,11 +92,28 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.78 &middot; 16 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.79 &middot; 17 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-17</h2>
+  <article class="upd" id="a-job-application-as-a-vault">
+    <h3><a href="#a-job-application-as-a-vault">A job application as a vault — and the privacy audit published beside it</a> <a class="upd-ver" href="../admin/versions.html">v0.2.79</a></h3>
+    <p class="chips"><span class="chip">vaults</span><span class="chip">method</span><span class="chip">privacy</span></p>
+<p><a href="../demos/vaults/interim-ciso-pack/index.html">Vault #29</a> is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email.</p>
+<p><b>The idea worth stealing is that the pack is the evidence for its own claim.</b> It says the candidate works with a team of AI agents and ships encrypted, versioned artefacts — and it <em>is</em> one. A reviewer does not have to believe the claim; the thing in their hands is the test of it. That idea is portable and has nothing to do with hiring.</p>
+<p>Three structural choices are worth copying:</p>
+<ul>
+<li><b>Split at the front door, not inside the document.</b> The recruiter gets a submission summary to copy and answers to screening questions — the things they actually have to paste into a form. The company gets eleven sections, two of them <em>Before signing</em> and <em>Tensions</em>. Anyone else gets the skills map and the history. Three readers, three routes, none of them a compromise.</li>
+<li><b>Ship the machine-readable copy beside the human one.</b> Each of the four documents exists as PDF, Word, Markdown <b>and JSON</b>. The JSON is the one that matters: a CV as structured data, so a machine reading the pack gets fields rather than a page to parse. Same instinct as an <code>llms.txt</code>.</li>
+<li><b>Let the build enforce the contract.</b> The pipeline fails if the page declares a vault resource, uses <code>fetch()</code>, writes <code>location.hash</code>, references a missing file, or contains a JavaScript syntax error — the last being exactly the check that <a href="../demos/vaults/synthetic-users-riskmandate/index.html">caught a shipped bug on riskmandate.ai</a> the day before.</li>
+</ul>
+<h2>The audit is on the page, not merely performed</h2>
+<p>The pack was submitted with a stated position: nothing sensitive, the company not identified, material already public. That is exactly the kind of claim that should be checked rather than accepted, so it was — and <b>it holds</b>.</p>
+<p>The client is not named anywhere, described only as a FTSE 250 company, with regulatory applicability raised as open questions rather than answered. Day rates and the off-payroll analysis are absent, removed before publication — and the removal is <b>disclosed in the brief's own editor's note</b>, which is the harder and better choice. No phone, no address, one long-public email, no credentials. The read key was verified against an all-zeros negative control.</p>
+<p>One point is stated rather than waved through: <b>thirteen named third parties</b> appear in the recommendations with their 2019 job titles. They are public twice over — LinkedIn recommendations, republished in the candidate's own CC BY-SA 2019 deck, which ships inside the vault so the source can be checked. They are labelled <code>title_2019</code> throughout. This site quotes the pack's own framing and does not reproduce the individual recommendations, which stay where their provenance is stated.</p>
+  </article>
   <h2 class="upd-date">2026-09-16</h2>
   <article class="upd" id="synthetic-users-second-run">
     <h3><a href="#synthetic-users-second-run">The synthetic-user method runs a second time, and the second run is the better argument</a> <a class="upd-ver" href="../admin/versions.html">v0.2.78</a></h3>
@@ -709,7 +726,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.78</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.79</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -751,7 +768,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.78';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.79';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

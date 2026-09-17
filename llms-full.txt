@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.78). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.79). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **28 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 28 →](demos/vaults/index.md)
+Four of **29 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 29 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -44,9 +44,9 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-106site releases, each verified live before it was called done
+107site releases, each verified live before it was called done
 
-28vaults published with a deliberately public read key
+29vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -380,7 +380,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**28 published vaults** — 7 analysis, 5 application, 4 record, 4 reference, 3 briefing, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**29 published vaults** — 7 analysis, 5 application, 4 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
@@ -440,6 +440,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
 
 | 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
+
+| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -560,6 +562,109 @@ The best statement of the vault-side rules is not ours: the [Risk Graph Explorer
 | `admin/build/capture_shots.mjs` | Drives the live vault and crops evidence screenshots |
 | `admin/build/validate.js` | The release gate, including the key-leak tripwire |
 | `admin/build/compare_tests.py` | Executes the claims that can be executed, with dates |
+
+
+
+==============================================================================
+# An application for a job, as a vault — interim CISO pack
+
+> A candidate pack delivered as an encrypted vault instead of a CV on an email: three routes for three readers, four documents each in PDF, Word, Markdown and JSON, a disclosed redaction, and a client named nowhere — with the pre-publication privacy audit stated in full.
+>
+> Page: https://sgit.ai/demos/vaults/interim-ciso-pack/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Interim CISO application pack
+
+# An application for a job, as a vault
+
+A candidate pack for an interim CISO role, delivered as an encrypted vault instead of a CV attached to an email. **Three routes through one artefact** — the recruiter, the hiring company, and anyone curious — over four documents that each exist as PDF, Word, Markdown *and* JSON. The claim it makes about how the candidate works is the same claim the artefact demonstrates by existing.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_699401f6cb3bdb1d6e19bfa690d8e0006a5379070ff320b5a8ae2fc21968f5c9:8brojsem`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_699401f6cb3bdb1d6e19bfa690d8e0006a5379070ff320b5a8ae2fc21968f5c9%3A8brojsem) · From the CLI: `sgit clone sgit_rk1_699401f6cb3bdb1d6e19bfa690d8e0006a5379070ff320b5a8ae2fc21968f5c9:8brojsem`
+Submitted as a read key and published unchanged. **The hiring company is not named anywhere in the vault** — see the audit below.
+
+## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_rk1_699401f6cb3bdb1d6e19bfa690d8e0006a5379070ff320b5a8ae2fc21968f5c9%3A8brojsem)The document viewer needs room — better in its own tab than in the frame.
+
+One artefact, three declared readers, and a front page that tells you which one you are.
+
+## The idea worth stealing: the pack is the evidence
+
+Every candidate pack asserts something about how the candidate works. This one is constructed so that the assertion and the demonstration are the same object. Its own front page says it plainly:
+
+> “This pack is itself an example of how he works: a voice memo became a brief, a team of AI agents researched and built the material, and it is delivered as an encrypted, versioned vault.”
+
+A claim to work with agents, made in a document that agents built. A claim about handling sensitive material, made in an artefact whose server cannot read it. The reviewer does not have to believe the claim — the thing in their hands is the test of it.
+
+## Three routes, because three people read a CV for different reasons
+
+The interesting structural choice: rather than one document that compromises between audiences, the pack splits at the front door and lets each route stand alone.
+
+| Route | For | What is behind it |
+|---|---|---|
+| **Recruiter** | The person putting the candidate forward | An embedded document viewer, four documents in four formats each, **a submission summary to copy**, key facts, and answers to screening questions — the things a recruiter has to paste into a form |
+| **Company** | The hiring organisation | The mandate, the shape of the function, the regulatory calendar, a four-stage plan, a typical week, **what to settle before signing**, a conflict disclosure and a section titled *honest tensions* |
+| **About** | Anyone | A skills map, a career timeline, thirteen recommendations, the agentic team and its rules, and how the pack was built |
+
+A recruiter needs text to paste; a hiring manager needs an argument; a curious reader needs context. Those are genuinely different documents, and the vault holds all three without any of them being a compromise.
+
+The company route runs to eleven sections — and two of them are *Before signing* and *Tensions*.
+
+## Four formats, and the fourth is the interesting one
+
+Each of the four documents — short CV, full CV, the one-page case, the recommendations — exists as **PDF, Word, Markdown and JSON**, generated from one source by the pack's own build.
+
+PDF is for the human. Word is because recruiters still ask for it. Markdown is for whoever pastes it somewhere. **JSON is the one that matters**: a CV as structured data, so a machine reading the pack gets fields rather than a page it has to parse. It is the same instinct as this site's [`llms.txt`](../../../llms.txt) — publish the thing, and publish it again in the shape a machine wants.
+
+Page counts and byte sizes are computed at build time and recorded with SHA-256 hashes, so the sidebar cannot describe a file it did not produce.
+
+## The build refuses what the authoring contract refuses
+
+The pack's own pipeline fails if the page declares a vault resource with `<link href>`, `<script src>` or `<img src>`, uses `fetch()`, writes `location.hash`, references a missing file, or contains a JavaScript syntax error. That is [the vault authoring contract](../../../docs/vault/vault-apps.md) enforced by the artefact's own build rather than discovered after a push — and the last of those checks is the one that [caught a shipped bug on riskmandate.ai](../synthetic-users-riskmandate/index.md) the day before.
+
+The viewer degrades honestly too: inside a vault host it loads PDF.js through `sg.loadJs` and reads bytes through `sg.vfs.read`, with `isEvalSupported: false`; where PDF.js cannot run, it falls back to page images rendered at build time. `app.json` asks for exactly one permission — `downloads` — so files save without a prompt each time, and the app never writes to the vault.
+
+## What it refuses to do, which is the part to copy
+
+- **It does not name the client.** The role is described as an interim CISO position at a FTSE 250 company and nothing further; one line in the strategy brief states outright that *“nothing here characterises the client, which is not named.”*
+- **It discloses its own redaction rather than hiding it.** The strategy brief carries an editor's note saying which sections were removed for publication — the off-payroll analysis, pricing, and two contract items on status and rate — and that nothing else changed. The brief keeps its original date.
+- **It states its limits inside the argument.** The same note records that this is not legal or tax advice, that several paragraph numbers could not be read at the primary source and are marked, that one tribunal outcome comes from commentary rather than the decision, and that no reported case was found on one question — *“reported as a gap rather than as comfort.”*
+- **It includes a conflict disclosure and a section called *Tensions*** in the material written for the people deciding whether to hire.
+- **The recommendations are dated and sourced.** Thirteen of them, each carrying its 2019 job title and relationship, attributed to the candidate's own 2019 deck (CC BY-SA), which ships in the vault's `archive/` so the source can be checked rather than taken on trust.
+
+## The pre-publication audit
+
+Run against a full clone with the published read key, before this page existed. The submitter's position was that the vault holds no sensitive data, does not identify the company, and reuses material that was already public. **Checked, and it holds** — with one point worth a reader knowing:
+
+| Checked | Result |
+|---|---|
+| Client identification | **Not named.** Described only as FTSE 250, with regulatory applicability raised as open questions rather than answered |
+| Day rates, IR35, pricing | **Absent.** The only monetary figures in the vault are statutory penalty amounts. The removal is disclosed in the brief itself |
+| Contact details | **None** — no phone, no address. One email address, the candidate's own long-public OWASP one |
+| Credentials and secrets | **None.** No keys, tokens or credential-shaped strings |
+| Named third parties | **Thirteen**, in the recommendations, with their 2019 job titles and employers. Public twice over — LinkedIn recommendations, republished in the candidate's own CC BY-SA 2019 deck, which is in the vault. Labelled `title_2019` throughout, with the provenance stated |
+| Read key | Verified with an all-zeros negative control against the same vault id: the real key produced 56 files, the control an empty directory |
+
+This page quotes the candidate and the pack's own framing; it does not reproduce the individual recommendations, which stay where their provenance is stated.
+
+## What to take from it
+
+- **Split at the front door, not inside the document.** If three people read a thing for three reasons, three routes beat one compromise.
+- **Ship the machine-readable copy beside the human one.** A CV as JSON costs one build step and changes what a machine can do with it.
+- **Put the redaction note in the artefact.** A document that says what was removed is more trustworthy than one that reads as though nothing was.
+- **Let the artefact be the proof of the claim it makes.** This is the most portable idea here and it is not about hiring.
+
+## Shape
+
+| **Vault** | `8brojsem` · 56 files · 17 MB |
+|---|---|
+| **App** | `index.html` with CSS, JS and a fallback copy of `content.json` inlined |
+| **Permissions** | `downloads: true`, and nothing else. No writes |
+| **Documents** | Four, each as PDF, Word, Markdown and JSON, with sizes and SHA-256 hashes recorded at build time |
+| **Licence** | Content CC BY 4.0; the 2019 decks and recommendation slides CC BY-SA as originally published; PDF.js Apache-2.0 |
+
+Published as row #29. [← All published vaults](../index.md) · [The publishing method](../publishing.md)
 
 
 
@@ -4166,7 +4271,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.78, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.79, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4305,16 +4410,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-106**site releases since 14 August**
+107**site releases since 14 August**
 each verified live before it was called done
 
-28**vaults published with a public read key**
+29**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-50**articles and release notes**
+51**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5834,11 +5939,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.78**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.79**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.78 | 2026-09-16 | this release | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
+| v0.2.79 | 2026-09-17 | this release | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
+| v0.2.78 | 2026-09-16 | PREV_UNFILLED | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
 | v0.2.77 | 2026-09-15 | PREV_UNFILLED | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
 | v0.2.76 | 2026-09-10 | PREV_UNFILLED | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
 | v0.2.75 | 2026-09-09 | obj-cas-imm-f21130f2246b | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
@@ -6739,6 +6845,30 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-17
+
+### [A job application as a vault — and the privacy audit published beside it](#a-job-application-as-a-vault) [v0.2.79](../admin/versions.md)
+
+vaultsmethodprivacy
+
+[Vault #29](../demos/vaults/interim-ciso-pack/index.md) is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email.
+
+**The idea worth stealing is that the pack is the evidence for its own claim.** It says the candidate works with a team of AI agents and ships encrypted, versioned artefacts — and it *is* one. A reviewer does not have to believe the claim; the thing in their hands is the test of it. That idea is portable and has nothing to do with hiring.
+
+Three structural choices are worth copying:
+
+- **Split at the front door, not inside the document.** The recruiter gets a submission summary to copy and answers to screening questions — the things they actually have to paste into a form. The company gets eleven sections, two of them *Before signing* and *Tensions*. Anyone else gets the skills map and the history. Three readers, three routes, none of them a compromise.
+- **Ship the machine-readable copy beside the human one.** Each of the four documents exists as PDF, Word, Markdown **and JSON**. The JSON is the one that matters: a CV as structured data, so a machine reading the pack gets fields rather than a page to parse. Same instinct as an `llms.txt`.
+- **Let the build enforce the contract.** The pipeline fails if the page declares a vault resource, uses `fetch()`, writes `location.hash`, references a missing file, or contains a JavaScript syntax error — the last being exactly the check that [caught a shipped bug on riskmandate.ai](../demos/vaults/synthetic-users-riskmandate/index.md) the day before.
+
+## The audit is on the page, not merely performed
+
+The pack was submitted with a stated position: nothing sensitive, the company not identified, material already public. That is exactly the kind of claim that should be checked rather than accepted, so it was — and **it holds**.
+
+The client is not named anywhere, described only as a FTSE 250 company, with regulatory applicability raised as open questions rather than answered. Day rates and the off-payroll analysis are absent, removed before publication — and the removal is **disclosed in the brief's own editor's note**, which is the harder and better choice. No phone, no address, one long-public email, no credentials. The read key was verified against an all-zeros negative control.
+
+One point is stated rather than waved through: **thirteen named third parties** appear in the recommendations with their 2019 job titles. They are public twice over — LinkedIn recommendations, republished in the candidate's own CC BY-SA 2019 deck, which ships inside the vault so the source can be checked. They are labelled `title_2019` throughout. This site quotes the pack's own framing and does not reproduce the individual recommendations, which stay where their provenance is stated.
 
 ## 2026-09-16
 
