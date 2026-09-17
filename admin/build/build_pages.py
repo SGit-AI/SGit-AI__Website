@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.79'
+SITE_VERSION = 'v0.2.80'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.79', '2026-09-17', 'this release',
+    ('v0.2.80', '2026-09-17', 'this release',
+     "THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience "
+     "sheets — founders, startups, investors, corporate — written for a startup summit and "
+     "published here with a parent page, one page each, the capability table rendered as real "
+     "HTML, and the PDF both embedded and downloadable. THE PDF IS THE DOWNLOAD, NOT THE PAGE, "
+     "for the reason this site keeps giving: a PDF is invisible to a search engine, to "
+     "llms-full.txt and to any agent reading the site, so the content is HTML and the handout is "
+     "an artefact beside it. What makes them worth publishing rather than filing is the WHAT "
+     "EXISTS TODAY column, which is unflattering on purpose — 'no payment link', 'not yet packaged "
+     "as its own product', 'research design; implementation not claimed', 'write-only intake "
+     "built, never sold'. A capability sheet that cannot say which rows are unfinished is a "
+     "brochure. TWO THINGS THE CHECK TURNED UP, both while the sheets were being handed out: the "
+     "PDFs are named RiskMandate.ai while every page inside them is branded sgit.ai and every "
+     "footer points at sgit.ai/network — the copies here are renamed to match their contents; and "
+     "the printed line '26 public vaults' is now 29, because three vaults were published during "
+     "the week of the summit. The pages here do not restate the number and link the live table "
+     "instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A "
+     "COMPUTED ONE FOR ANYTHING THAT MOVES.",
+     ),
+    ('v0.2.79', '2026-09-17', 'PREV_UNFILLED',
      "A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an "
      "interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an "
      "email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says "

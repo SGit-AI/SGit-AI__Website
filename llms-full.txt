@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.79). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.80). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-107site releases, each verified live before it was called done
+108site releases, each verified live before it was called done
 
 29vaults published with a deliberately public read key
 
@@ -4271,7 +4271,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.79, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.80, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4369,6 +4369,228 @@ Shipped in v0.2.59. One line in markdown; the card pulls the target site's own c
 
 
 ==============================================================================
+# Four sheets, four audiences, one stack — the Lisbon summit handouts
+
+> The September 2026 startup-summit handouts: the same capabilities framed for founders, startups, investors and corporate buyers, each as a page and as the PDF that was handed out — with a 'what exists today' column that is unflattering on purpose.
+>
+> Page: https://sgit.ai/summit/index.html
+
+[Home](../index.md) / Summit sheets
+
+# Four sheets, four audiences, one stack
+
+The handouts from the Lisbon startup summit, September 2026. The same capabilities, framed four ways — because a founder, a startup, an investor and a corporate buyer are reading for four different reasons. Each sheet is here as a page *and* as the PDF that was handed out.
+
+**What makes these worth publishing rather than filing.** Every row carries a **what exists today** column, and that column is unflattering on purpose: *“no payment link”*, *“not yet packaged as its own product”*, *“research design; implementation not claimed”*, *“write-only intake built, never sold”*. A capability sheet that cannot say which rows are not finished is a brochure.
+
+|  | Sheet |  | Handout |
+|---|---|---|---|
+| 01 | **[Founders](founders.md)** Open source technology that works today | 7 rows | [PDF ↓](pdf/sgit-ai__01-founders.pdf) |
+| 02 | **[Startups](startups.md)** Let’s build together | 9 rows | [PDF ↓](pdf/sgit-ai__02-startups.pdf) |
+| 03 | **[Investors](investors.md)** How does your firm share data with its portfolio? | 6 rows | [PDF ↓](pdf/sgit-ai__03-investors.pdf) |
+| 04 | **[Corporate users](corporate.md)** Services available now | 8 rows | [PDF ↓](pdf/sgit-ai__04-corporate.pdf) |
+
+## Why four, and not one
+
+The rows underneath are largely the same. What changes is the question each reader arrives with — *can I build a company on this*, *can I build on top of it*, *how does my firm share data and what are my portfolio's agents doing*, *how do I govern the agents already running*. Splitting at the front door rather than compromising inside one document is the same choice [the interim CISO pack](../demos/vaults/interim-ciso-pack/index.md) makes, and the same one [three surfaces](../docs/surfaces.md) argues for.
+
+## One number in the PDFs is already out of date
+
+The printed sheets say **“26 public vaults”**. At the time of printing that was right; [the table](../demos/vaults/index.md) now lists **29**, because three were published in the week the sheets were being handed out. The pages here do not repeat the number, and link to the live table instead — which is the general fix: **a printed artefact should point at a computed one for anything that moves.**
+
+Proof 02 · 14 September 2026 · fact set: brief v0.33.70. Code: permissive software licence. Documents: CC BY 4.0. [The network](../network/index.md) · [Published vaults](../demos/vaults/index.md)
+
+
+
+==============================================================================
+# Founders — open source technology that works today
+
+> Seven capabilities with an MVP or a live example behind each, and two ways to build a company on them: on your own, or with the author on one of three rungs — direct hire, revenue share, or a company.
+>
+> Page: https://sgit.ai/summit/founders.html
+
+[Home](../index.md) / [Summit sheets](index.md) / Founders
+
+**Sheet 01 of 04** — written for founders. [The other three →](index.md)
+
+# Founders — Open source technology that works today
+
+Build a company on it. Every row has an MVP or a live example — further along than most startups begin, and all of it open source: take a row and run with it.
+
+This is working technology, not a pitch. It is all open source: take a row and run with it. **You do not need me to.**
+
+[Download the PDF ↓](pdf/sgit-ai__01-founders.pdf)The sheet as handed out in Lisbon. The table below is the same content, in a form a search engine and an agent can read.
+
+## What exists
+
+|  | The capability | What exists today |
+|---|---|---|
+| 02 | **Share files the host cannot read, with history and a write-only upload link.** Powered by sgit, transfer protocol & browser vault | Live. CLI in beta; write-only intake built, never sold. |
+| 03 | **Manage and distribute sensitive data — healthcare is the worked example.** Powered by Vaults on the same runtime | An MVP is built on it. |
+| 04 | **Deliver a security report as a vault: evidence per finding, retest scripts, views per audience.** Powered by Report vault on the vault runtime | Designed 26 May. Deliverable shape built; demo specified. |
+| 05 | **Explain a specialist domain to a board at its own altitude.** Powered by Boardroom, agent rooms & persona machinery | Original product existed. Agent rooms specified in March; persona generator built in August. |
+| 06 | **Briefings for your role, with the evidence behind every line.** Powered by Role-aware briefings on semantic graphs | Live; commercial state not verified in the brief. |
+| 07 | **Know what your agents can actually do, and give each one a licence to operate.** Powered by Risk product & free behaviour-policy library | Site v1.10, library and store live. No payment link. |
+| 01 | **Turn voice into a debrief — wherever the voice already is.** Powered by Voice Debrief + WhatsApp, file & agent integrations | Live, earning, run with a partner under a signed profit share. |
+
+## Two ways to build a company on it
+
+**On your own.** Instead of *join and work on my thing* — build your thing on top of what is already built. The code is permissive and the documents are CC BY.
+
+**With me, on one of three rungs:**
+
+- **One · Direct hire.** Cash per mini project. Lowest commitment, both ways.
+- **Two · Revenue share.** Time-boxed, no entity. Voice Debrief runs this way: 90 days; a quarter on net receipts; an even split of what remains. Either party may continue or fork on exit.
+- **Three · A company.** Shares and equity. Highest commitment, both ways.
+
+Everything is open, so there is almost nothing to protect: **the agreement collapses to the split, the term, and a short list of sensitive items.**
+
+**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+
+## The sheet itself
+
+**Proof 02 · 14 September 2026.** Fact set: brief v0.33.70, 13 September 2026, revised with the 14 September comments. Code: permissive software licence. Documents: CC BY 4.0. [← All four sheets](index.md) · [Explore the network](../network/index.md)
+
+
+
+==============================================================================
+# Startups — it is open source, and it is built to be built on
+
+> Nine capabilities to reuse, each naming what it runs on and how far along it is, including the ones that are still a design and say so.
+>
+> Page: https://sgit.ai/summit/startups.html
+
+[Home](../index.md) / [Summit sheets](index.md) / Startups
+
+**Sheet 02 of 04** — written for startups. [The other three →](index.md)
+
+# Startups — Let’s build together
+
+It is open source, and it is built to be built on. Start with the capability, reuse the component, and check the status — some of it is still a design, and it says so.
+
+The stack was built to be collaborative. **Some of it is still a design, and it says so.**
+
+[Download the PDF ↓](pdf/sgit-ai__02-startups.pdf)The sheet as handed out in Lisbon. The table below is the same content, in a form a search engine and an agent can read.
+
+## What exists
+
+|  | The capability | What exists today |
+|---|---|---|
+| 01 | **Storage the host cannot read, with history.** Powered by sgit, transfer protocol & browser vault | — |
+| 02 | **Versioned data with a clonable past.** Powered by sgit, transfer protocol & browser vault | — |
+| 03 | **Managing and distributing sensitive data.** Powered by Vaults on the same runtime | Healthcare is the worked example; an MVP is built on it. |
+| 04 | **Voice into debriefs, wherever the voice already is.** Powered by Voice Debrief + WhatsApp, file & agent integrations | WhatsApp, files and agents are already wired in. |
+| 05 | **A chat in your app that never holds a model key.** Powered by Model call layer | — |
+| 06 | **Translation to executives, in any specialist domain.** Powered by Boardroom, agent rooms & persona machinery | — |
+| 07 | **Knowing what your agents are doing, and describing it.** Powered by Risk product & free behaviour-policy library | — |
+| 08 | **Scalable risk management.** Powered by Risk acceptance framework | A risk is accepted for a stated period. Research design; implementation not claimed. |
+| 09 | **Facilitating due diligence on your product.** Powered by Write-only intake + seven-criterion evaluation framework | Use the scorecard for honest self-assessment: what their diligence will find, before it runs. |
+
+## Build on the stack
+
+The infographic generator runs today, is used by a number of people, and **has no way to pay for it**. Seven further companies are written up in full and given away under attribution licensing.
+
+```
+pip install sgit-ai
+```
+
+**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+
+## The sheet itself
+
+**Proof 02 · 14 September 2026.** Fact set: brief v0.33.70, 13 September 2026, revised with the 14 September comments. Code: permissive software licence. Documents: CC BY 4.0. [← All four sheets](index.md) · [Explore the network](../network/index.md)
+
+
+
+==============================================================================
+# Investors — how does your firm share data with its portfolio?
+
+> Six capabilities for investor operations — vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk.
+>
+> Page: https://sgit.ai/summit/investors.html
+
+[Home](../index.md) / [Summit sheets](index.md) / Investors
+
+**Sheet 03 of 04** — written for investors. [The other three →](index.md)
+
+# Investors — How does your firm share data with its portfolio?
+
+Most of the data investors share is insecure — decks, data rooms, updates, diligence files, sent in the clear. Vaults fix that, and the same stack gives you something new to ask of every company you back.
+
+A licence to operate for each agent a portfolio company runs — **before it becomes your risk.**
+
+[Download the PDF ↓](pdf/sgit-ai__03-investors.pdf)The sheet as handed out in Lisbon. The table below is the same content, in a form a search engine and an agent can read.
+
+## What exists
+
+|  | The capability | What exists today |
+|---|---|---|
+| 02 | **Share deal data, documents and updates in vaults the host cannot read — with full history, and a write-only link for founders to send you material.** Powered by sgit, transfer protocol & browser vault | Live. CLI in beta; write-only intake built, never sold. |
+| 07 | **Behaviour policies for the agents your portfolio companies already run.** Powered by Risk product & free behaviour-policy library | Site v1.10, library and store live. No payment link. |
+| 04 | **A security review of a company you back, delivered as a vault rather than a PDF.** Powered by Report vault on the vault runtime | Designed 26 May. Deliverable shape built; demo specified. |
+| 05 | **Explain a specialist domain to a board in its own words and at its own altitude.** Powered by Boardroom, agent rooms & persona machinery | Original product existed. Persona generator built in August. |
+| 06 | **Briefings for your role, with the evidence behind every line.** Powered by Role-aware briefings on semantic graphs | Live; commercial state not verified in the brief. |
+| 03 | **Manage and distribute sensitive portfolio data with per-recipient access.** Powered by Vaults on the same runtime | An MVP is built on it. |
+
+## One product to discuss
+
+A security review of a company you are backing, **scored against a published framework, signed by a named professional, at a fixed price, delivered as a vault.** Apply the scorecard during due diligence, with particular attention to business context and model survivability.
+
+Also: companies to fund somebody to build — the rows on the founders sheet, plus seven company seeds written up in full and given away under attribution licensing.
+
+**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+
+## The sheet itself
+
+**Proof 02 · 14 September 2026.** Fact set: brief v0.33.70, 13 September 2026, revised with the 14 September comments. Code: permissive software licence. Documents: CC BY 4.0. [← All four sheets](index.md) · [Explore the network](../network/index.md)
+
+
+
+==============================================================================
+# Corporate users — services available now
+
+> Eight services for governing the agents already running, each stating what it is, what it runs on, and how far along it is — some live products, some designs delivered as engagements.
+>
+> Page: https://sgit.ai/summit/corporate.html
+
+[Home](../index.md) / [Summit sheets](index.md) / Corporate users
+
+**Sheet 04 of 04** — written for corporate users. [The other three →](index.md)
+
+# Corporate users — Services available now
+
+How do I manage, contain, monitor and ensure compliance of the agents already running? These are services you can engage now — some are live products, some are designs delivered as engagements.
+
+Each row states what it is, what it runs on, and **how far along it is.**
+
+[Download the PDF ↓](pdf/sgit-ai__04-corporate.pdf)The sheet as handed out in Lisbon. The table below is the same content, in a form a search engine and an agent can read.
+
+## What exists
+
+|  | The capability | What exists today |
+|---|---|---|
+| 07 | **A licence to operate for each agent you already run.** Powered by Risk product & free behaviour-policy library | Site v1.10, library and store live. No payment link; entry-tier application not located. |
+| 08 | **Third-party and supply-chain management: what your vendors, and their agents, do with your data.** Powered by Vaults plus behaviour policies | Runs on the live vault runtime and the policy library. Not yet packaged as its own product. |
+| 02 | **A folder with history for anything you send out of the building.** Powered by sgit, transfer protocol & browser vault | Live. CLI in beta; write-only intake built, never sold. |
+| 03 | **Manage and distribute sensitive data — healthcare is the worked example.** Powered by Vaults on the same runtime | An MVP is built on it. |
+| 04 | **Ask your next security vendor for the report as a vault rather than a PDF.** Powered by Report vault on the vault runtime | Designed 26 May. Deliverable shape built; demo specified. |
+| 05 | **The board conversation, in the language and detail each executive needs.** Powered by Boardroom, agent rooms & persona machinery | Original product existed. Persona generator built in August. |
+| 06 | **Briefings by role, with evidence behind every line.** Powered by Role-aware briefings on semantic graphs | Live; commercial state not verified in the brief. |
+| 01 | **Debriefs from voice notes, wherever the voice already is.** Powered by Voice Debrief + WhatsApp, file & agent integrations | Live, earning, and run with a partner under a signed profit share. |
+
+## Start with an agent you already run
+
+**Bring one agent you already run.** You leave with a draft policy for it, corrected, as a file you keep. The library is free; the rows above state what is live and what is delivered as an engagement.
+
+**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+
+## The sheet itself
+
+**Proof 02 · 14 September 2026.** Fact set: brief v0.33.70, 13 September 2026, revised with the 14 September comments. Code: permissive software licence. Documents: CC BY 4.0. [← All four sheets](index.md) · [Explore the network](../network/index.md)
+
+
+
+==============================================================================
 # sgit.ai, for investors — published in the open
 
 > The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented.
@@ -4410,7 +4632,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-107**site releases since 14 August**
+108**site releases since 14 August**
 each verified live before it was called done
 
 29**vaults published with a public read key**
@@ -4419,7 +4641,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-51**articles and release notes**
+52**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5939,11 +6161,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.79**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.80**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.79 | 2026-09-17 | this release | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
+| v0.2.80 | 2026-09-17 | this release | THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience sheets — founders, startups, investors, corporate — written for a startup summit and published here with a parent page, one page each, the capability table rendered as real HTML, and the PDF both embedded and downloadable. THE PDF IS THE DOWNLOAD, NOT THE PAGE, for the reason this site keeps giving: a PDF is invisible to a search engine, to llms-full.txt and to any agent reading the site, so the content is HTML and the handout is an artefact beside it. What makes them worth publishing rather than filing is the WHAT EXISTS TODAY column, which is unflattering on purpose — 'no payment link', 'not yet packaged as its own product', 'research design; implementation not claimed', 'write-only intake built, never sold'. A capability sheet that cannot say which rows are unfinished is a brochure. TWO THINGS THE CHECK TURNED UP, both while the sheets were being handed out: the PDFs are named RiskMandate.ai while every page inside them is branded sgit.ai and every footer points at sgit.ai/network — the copies here are renamed to match their contents; and the printed line '26 public vaults' is now 29, because three vaults were published during the week of the summit. The pages here do not restate the number and link the live table instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A COMPUTED ONE FOR ANYTHING THAT MOVES. |
+| v0.2.79 | 2026-09-17 | PREV_UNFILLED | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
 | v0.2.78 | 2026-09-16 | PREV_UNFILLED | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
 | v0.2.77 | 2026-09-15 | PREV_UNFILLED | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
 | v0.2.76 | 2026-09-10 | PREV_UNFILLED | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
@@ -6847,6 +7070,23 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-17
+
+### [The Lisbon summit sheets — as pages, and as the PDFs they were handed out as](#the-lisbon-summit-sheets) [v0.2.80](../admin/versions.md)
+
+publishingmethodnetwork
+
+Four audience sheets written for a startup summit in Lisbon — [founders](../summit/founders.md), [startups](../summit/startups.md), [investors](../summit/investors.md), [corporate](../summit/corporate.md) — are now [on the site](../summit/index.md), with a parent page, one page each, and the PDF both embedded and downloadable.
+
+**The PDF is the download, not the page.** The capability table is rendered as real HTML, because a PDF is invisible to a search engine, to `llms-full.txt` and to any agent reading this site — the same argument [the deck viewer](../docs/briefs/vault-decks-on-a-site.md) makes. The handout stays a handout; the content is a page.
+
+**What makes them worth publishing rather than filing** is the *what exists today* column, which is unflattering on purpose: *"no payment link"*, *"not yet packaged as its own product"*, *"research design; implementation not claimed"*, *"write-only intake built, never sold"*. A capability sheet that cannot say which rows are unfinished is a brochure.
+
+Two things the check turned up, both while the sheets were still being handed out:
+
+- **The filenames say RiskMandate.ai; the contents say sgit.ai.** Every page inside is branded sgit.ai and every footer points at `sgit.ai/network`. The copies here are renamed to match what is in them.
+- **"26 public vaults" is now 29.** True when printed; three vaults were published during the week of the summit. The pages here do not restate the number and link [the live table](../demos/vaults/index.md) instead.
+
+Which is the rule worth extracting from a stale line on a printed sheet: **a printed artefact should point at a computed one for anything that moves.**
 
 ### [A job application as a vault — and the privacy audit published beside it](#a-job-application-as-a-vault) [v0.2.79](../admin/versions.md)
 
