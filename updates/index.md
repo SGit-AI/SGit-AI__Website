@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,23 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-17
+
+### [The Lisbon summit sheets — as pages, and as the PDFs they were handed out as](#the-lisbon-summit-sheets) [v0.2.80](../admin/versions.md)
+
+publishingmethodnetwork
+
+Four audience sheets written for a startup summit in Lisbon — [founders](../summit/founders.md), [startups](../summit/startups.md), [investors](../summit/investors.md), [corporate](../summit/corporate.md) — are now [on the site](../summit/index.md), with a parent page, one page each, and the PDF both embedded and downloadable.
+
+**The PDF is the download, not the page.** The capability table is rendered as real HTML, because a PDF is invisible to a search engine, to `llms-full.txt` and to any agent reading this site — the same argument [the deck viewer](../docs/briefs/vault-decks-on-a-site.md) makes. The handout stays a handout; the content is a page.
+
+**What makes them worth publishing rather than filing** is the *what exists today* column, which is unflattering on purpose: *"no payment link"*, *"not yet packaged as its own product"*, *"research design; implementation not claimed"*, *"write-only intake built, never sold"*. A capability sheet that cannot say which rows are unfinished is a brochure.
+
+Two things the check turned up, both while the sheets were still being handed out:
+
+- **The filenames say RiskMandate.ai; the contents say sgit.ai.** Every page inside is branded sgit.ai and every footer points at `sgit.ai/network`. The copies here are renamed to match what is in them.
+- **"26 public vaults" is now 29.** True when printed; three vaults were published during the week of the summit. The pages here do not restate the number and link [the live table](../demos/vaults/index.md) instead.
+
+Which is the rule worth extracting from a stale line on a printed sheet: **a printed artefact should point at a computed one for anything that moves.**
 
 ### [A job application as a vault — and the privacy audit published beside it](#a-job-application-as-a-vault) [v0.2.79](../admin/versions.md)
 
