@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.78'
+SITE_VERSION = 'v0.2.79'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.78', '2026-09-16', 'this release',
+    ('v0.2.79', '2026-09-17', 'this release',
+     "A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an "
+     "interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an "
+     "email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says "
+     "the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS "
+     "one, so a reviewer does not have to believe the claim — the thing in their hands is the test "
+     "of it. Three routes split at the front door rather than one document compromising between "
+     "audiences: the recruiter gets a submission summary to copy and answers to screening "
+     "questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure "
+     "and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each "
+     "exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as "
+     "structured data so a machine reading the pack gets fields rather than a page to parse. The "
+     "pack's own build refuses what the vault authoring contract refuses, including a JavaScript "
+     "syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai "
+     "the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was "
+     "that the vault holds nothing sensitive, does not identify the company and reuses public "
+     "material. Checked and it holds — client not named anywhere and described only as FTSE 250, "
+     "no day rates or off-payroll analysis (removed before publication, with the removal disclosed "
+     "in the brief's own editor's note), no phone or address, one long-public email, no "
+     "credentials, read key verified against an all-zeros control. One point stated rather than "
+     "waved through: thirteen named third parties appear in the recommendations with their 2019 "
+     "titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which "
+     "ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing "
+     "rather than reproducing the individual recommendations.",
+     ),
+    ('v0.2.78', '2026-09-16', 'PREV_UNFILLED',
      "THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS "
      "THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which "
      "matters because one run is an anecdote and two sites is a method. It is not a repeat: the "

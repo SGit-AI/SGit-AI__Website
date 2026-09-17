@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>A job application as a vault — and the privacy audit published beside it</title>
+      <link>https://sgit.ai/updates/index.html#a-job-application-as-a-vault</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-job-application-as-a-vault</guid>
+      <pubDate>2026-09-17</pubDate>
+      <description>Vault 29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. The idea worth stealing is that the pack is the evidence for its own claim. It says the candidate works with a team of AI agents and ships encrypte…</description>
+    </item>
+    <item>
       <title>The synthetic-user method runs a second time, and the second run is the better argument</title>
       <link>https://sgit.ai/updates/index.html#synthetic-users-second-run</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#synthetic-users-second-run</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so</guid>
       <pubDate>2026-09-07</pubDate>
       <description>Two days ago v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. An agent built a vault from it and could not get events out. The SG/API team read the append lane code against our page and returned a line referenced re…</description>
-    </item>
-    <item>
-      <title>Ask this site — a pane on every page whose model calls tools over the site&#x27;s own content</title>
-      <link>https://sgit.ai/updates/index.html#ask-this-site</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#ask-this-site</guid>
-      <pubDate>2026-09-07</pubDate>
-      <description>Every page now carries a pane, bottom right: Ask this site . It follows the three tiers the network chooser set out, with one difference that matters — the model does not read a catalogue pasted into its prompt. It is given seven tools and calls them. | Tool |…</description>
     </item>
   </channel>
 </rss>

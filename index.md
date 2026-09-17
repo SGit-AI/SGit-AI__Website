@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.2.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.2.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,7 +19,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **28 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 28 →](demos/vaults/index.md)
+Four of **29 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 29 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -33,9 +33,9 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-106site releases, each verified live before it was called done
+107site releases, each verified live before it was called done
 
-28vaults published with a deliberately public read key
+29vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
