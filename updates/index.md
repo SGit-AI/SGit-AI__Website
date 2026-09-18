@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,18 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-18
+
+### [The summit sheets get a preview grid, and their numbers are dated rather than corrected](#summit-sheets-preview-grid) [v0.2.81](../admin/versions.md)
+
+publishingmethod
+
+[The four Lisbon handouts](../summit/index.md) now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build time and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download.
+
+**The author's call on the stale vault count.** Yesterday's release made a point of *"26 public vaults"* having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed. So the correction became a dating note: the figures are those that were true when printed, [the live table](../demos/vaults/index.md) is the current answer, and the sheets are the historical one.
+
+That is the right call, and the reason is worth writing down: **a printed artefact that gets silently re-edited to match today stops being a record of anything.** Date it, keep it, and point at the computed thing beside it.
 
 ## 2026-09-17
 
