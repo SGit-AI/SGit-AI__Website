@@ -2,7 +2,7 @@
 
 > Five invented buyers walked through store.sgit.ai one screenshot at a time, asked what they made of each screen and interviewed at the end: 43 screenshots, 15 questions the site did not answer, 10 confusions and 18 findings — three of them costing a sale, four already fixed and kept rather than deleted.
 
-*Source: <https://sgit.ai/demos/vaults/synthetic-users/index.html> · site v0.2.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/synthetic-users/index.html> · site v0.2.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

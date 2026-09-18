@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,7 +18,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**29 published vaults** — 7 analysis, 5 application, 4 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**30 published vaults** — 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
@@ -80,6 +80,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
 
 | 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
+
+| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 

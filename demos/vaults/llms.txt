@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.2.81) from the same file the table on that page is built
+> generated at build time (v0.2.82) from the same file the table on that page is built
 > from — so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (29)
+## The vaults (30)
+- **#30 Fractional CISO application pack** — The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not
+  - page: /demos/vaults/fractional-ciso-pack/index.md
+  - id `eaba68j5` · Briefing · published 2026-09-18 · 19 MB · 72 files
+  - read key: `sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5`
 - **#29 Interim CISO application pack** — A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere
   - page: /demos/vaults/interim-ciso-pack/index.md
   - id `8brojsem` · Briefing · published 2026-09-17 · 17 MB · 56 files

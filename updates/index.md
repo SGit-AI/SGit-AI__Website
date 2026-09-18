@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-18
+
+### [Vault #30 — the same pack, written for an archetype instead of a company](#the-same-pack-for-an-archetype) [v0.2.82](../admin/versions.md)
+
+vaultsmethodprivacy
+
+[Vault #30](../demos/vaults/fractional-ciso-pack/index.md) is a sibling of [#29](../demos/vaults/interim-ciso-pack/index.md) from the same generator, one day later — a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem.
+
+**#29 described a real role and withheld the company.** That meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. **#30 describes a type of company instead** — six rows derived from public sources: what it does, who buys it, where the risk sits, what it already has, what it usually lacks, who governs it — and everything after follows from the archetype. There is nothing to redact, because nothing was ever about an instance.
+
+The rule that generalises past hiring: **a document written for a class can be published; a document written for an instance has to be scrubbed.**
+
+Three things are new. An **engagement document** with the monthly rhythm, a twelve-month map, and a section headed *what two days a month is not* — not cover, not a DPO, not delivery, not an audit, and not a substitute for a full-time CISO once the company needs one, *"part of the job is saying when that point arrives."* A **one-page infographic** rendered from `content.json` rather than drawn separately, which is the page's hero because it is the pitch on one sheet. And the three 2019 decks, now rendered in the viewer rather than only archived.
+
+The *Honest tensions* section does something a sales document rarely does — it names how the offer could be misused against the buyer: a fractional CISO is cheaper than a permanent one, *"and that same economy can be used to defer a hire the company genuinely needs. Naming the trigger early is the only honest defence."*
+
+Audit run and stated on the page: no company named or implied, no rate or tax status (*retainer* appears as a word with no figure attached), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair — the same machinery giving two answers to *how do you publish a document about a job*.
 
 ### [The summit sheets get a preview grid, and their numbers are dated rather than corrected](#summit-sheets-preview-grid) [v0.2.81](../admin/versions.md)
 

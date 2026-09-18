@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.81). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.82). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **29 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 29 →](demos/vaults/index.md)
+Four of **30 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 30 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -44,9 +44,9 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-109site releases, each verified live before it was called done
+110site releases, each verified live before it was called done
 
-29vaults published with a deliberately public read key
+30vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -380,7 +380,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**29 published vaults** — 7 analysis, 5 application, 4 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**30 published vaults** — 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
@@ -442,6 +442,8 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
 
 | 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
+
+| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
 The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
 
@@ -562,6 +564,89 @@ The best statement of the vault-side rules is not ours: the [Risk Graph Explorer
 | `admin/build/capture_shots.mjs` | Drives the live vault and crops evidence screenshots |
 | `admin/build/validate.js` | The release gate, including the key-leak tripwire |
 | `admin/build/compare_tests.py` | Executes the claims that can be executed, with dates |
+
+
+
+==============================================================================
+# The same pack, written for an archetype instead of a company — fractional CISO pack
+
+> Sibling of vault #29 from the same generator: a fractional CISO pack that solves the publication problem by describing a type of company rather than withholding a real one. Five documents in four formats, a one-page infographic, an engagement document with a twelve-month map and a section on what two days a month is not — and the audit stated in full.
+>
+> Page: https://sgit.ai/demos/vaults/fractional-ciso-pack/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Fractional CISO application pack
+
+# The same pack, written for an archetype instead of a company
+
+A sibling of [vault #29](../interim-ciso-pack/index.md) from the same generator, one day later — and the interesting difference is how it solves the privacy problem. That pack described a real role and *withheld* the company. This one describes **a type of company**, derived from public sources, so there is nothing to withhold. Same three routes, same thirteen recommendations, a different argument: two days a month, on a retainer, for a business that is already certified.
+
+**Open it yourself — the key is the whole credential.**
+ Read key: `sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5) · From the CLI: `sgit clone sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5`
+Submitted as a read key and published unchanged. No company is named anywhere in the vault, and none is implied — see the audit below.
+
+The pack's own one-pager. Everything on it is also in the vault as data — the infographic is a rendering of `content.json`, not a separate document.
+
+## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5)The document viewer wants the room.
+
+## The idea worth stealing: describe the category, not the company
+
+Vault #29 had to be audited for whether an unnamed FTSE 250 client could be inferred from what was said about it. This pack removes the question. Its company route opens with the sentence *“this pack is written for a type of company rather than a named one”*, and then describes the type in six rows — what it does, who buys it, where the risk sits, what it already has, what it usually lacks, who governs it:
+
+> “A venture-backed UK software company, post-Series A, somewhere between 40 and 100 people, whose product processes other people's most sensitive personal data.”
+
+Everything after that *follows from the archetype* — third-party and sub-processor risk as the highest-value work, assurance as a revenue lever, data minimisation as a decision rather than a project. The pack says so itself: *“if the company you have in mind is different in any of these respects, the engagement below changes shape, and that conversation is a better first meeting than a pitch.”*
+
+That is a better answer to the publication problem than redaction, and it generalises: **a document written for a class can be published; a document written for an instance has to be scrubbed.**
+
+The company route leads with the archetype. Fourteen sections follow it — including *What it is not*, *Conflict* and *Tensions*.
+
+## What changed from #29, precisely
+
+|  | [#29 — Interim](../interim-ciso-pack/index.md) | #30 — Fractional |
+|---|---|---|
+| **The role** | Six months, near full-time, a dated regulatory deliverable | Two days a month, ongoing, a board advisory retainer |
+| **The reader** | A specific FTSE 250 company, withheld | **An archetype**, described in six rows from public sources |
+| **The company folder** | A strategy brief with a disclosed redaction | `company-archetype.md` — nothing to redact |
+| **Documents** | Four, in four formats | **Five** in four formats, plus an infographic as PNG and PDF, plus the three 2019 decks rendered in the viewer |
+| **New document** | — | *The engagement*: the monthly rhythm, a twelve-month map, and a section headed *What two days a month is not* |
+| **Shared** | The generator, the CV facts, the thirteen recommendations, the three routes, the agentic team, and the deliberate absence of any rate or tax status |
+
+The README states the relationship in one paragraph and ends it with the line that matters for both: *“Rates and tax status are deliberately absent from both.”*
+
+## The section to read first is the one that says no
+
+The engagement document's strongest passage is a list of what two days a month *is not*. Not cover — *“if something goes wrong at three in the morning, a fractional advisor is not the incident manager.”* Not a Data Protection Officer. Not delivery. Not an audit. And not a substitute for a full-time CISO once the company needs one — *“part of the job is saying when that point arrives.”*
+
+The *Honest tensions* section goes further and names the economic one: a fractional CISO is cheaper than a permanent one, *“and that same economy can be used to defer a hire the company genuinely needs. Naming the trigger early is the only honest defence.”* A sales document that identifies how it could be misused against the buyer is rare enough to be worth pointing at.
+
+Five documents, each as PDF, Word, Markdown and JSON; the infographic as PNG and PDF; and the 2019 decks now rendered in the viewer rather than only archived.
+
+## The pre-publication audit
+
+Run against a full clone with the published read key. The pack's own claim — *“no company is named anywhere in this pack … nothing here depends on inside knowledge, which is why it can be published”* — checked rather than accepted:
+
+| Checked | Result |
+|---|---|
+| Company identification | **None, and none implied.** The reader is an archetype in six rows. The only company names in the vault are the candidate's past employers, from a public CV |
+| Rates, fees, tax status | **Absent.***Retainer* appears as a word with no figure attached; the only monetary values are statutory penalty amounts |
+| Contact details | One email address, the candidate's long-public OWASP one; the infographic adds public LinkedIn and GitHub handles. No phone, no address |
+| Credentials and secrets | **None** |
+| Named third parties | The same thirteen recommendations as #29, from the candidate's own 2019 CC BY-SA deck, labelled with their 2019 titles. Not reproduced on this page |
+| Read key | Verified with an all-zeros negative control against the same vault id: real key 72 files, control an empty directory |
+
+## Shape
+
+| **Vault** | `eaba68j5` · 72 files · 19 MB |
+|---|---|
+| **App** | `index.html` with CSS, JS and a fallback copy of `content.json` inlined; PDF.js loaded through `sg.loadJs` inside a host, page images as the fallback |
+| **Permissions** | `downloads: true`, and nothing else. No writes. The HUD hides the vault name and shows the app title |
+| **Documents** | Six distinct: two CVs, the case, the recommendations, *the engagement*, and the infographic — 21 recruiter files across the formats, 18 pre-rendered page images |
+| **Licence** | Content CC BY 4.0; the 2019 decks and recommendation slides CC BY-SA as originally published; PDF.js Apache-2.0 |
+
+Published as row #30. Its sibling is [#29](../interim-ciso-pack/index.md); the two are worth reading as a pair, because they are the same machinery giving two different answers to *how do you publish a document about a job*. [← All published vaults](../index.md) · [The publishing method](../publishing.md)
 
 
 
@@ -4271,7 +4356,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.81, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.82, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4634,16 +4719,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-109**site releases since 14 August**
+110**site releases since 14 August**
 each verified live before it was called done
 
-29**vaults published with a public read key**
+30**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-53**articles and release notes**
+54**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -6163,11 +6248,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.81**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+This site ships by pushing its vault, and the site version — **v0.2.82**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Vault commit | Changes |
 |---|---|---|---|
-| v0.2.81 | 2026-09-18 | this release | THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download. THE AUTHOR'S CALL ON THE STALE VAULT COUNT: the previous release made a point of '26 public vaults' having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed, so the correction became a dating note — the figures are those that were true when printed, the live table is the current answer, and the sheets are the historical one. Which is the right call: a printed artefact that gets silently re-edited to match today stops being a record of anything. |
+| v0.2.82 | 2026-09-18 | this release | VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 from the same generator one day later — a fractional CISO pack, two days a month on a retainer for a company that is already certified — and the interesting thing is how it solves the publication problem. #29 described a real role and WITHHELD the company, which meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. #30 describes A TYPE OF COMPANY in six rows derived from public sources — what it does, who buys it, where the risk sits, what it has, what it lacks, who governs it — and everything after follows from the archetype, so there is nothing to redact. The rule that generalises: a document written for a class can be published; a document written for an instance has to be scrubbed. New in this one: an ENGAGEMENT document with the monthly rhythm, a twelve-month map, and a section headed 'what two days a month is not' — not cover, not a DPO, not delivery, not an audit, not a substitute for a full-time hire; a one-page INFOGRAPHIC rendered from content.json rather than drawn separately, which is the page's hero because it is the pitch on one sheet; and the three 2019 decks rendered in the viewer rather than only archived. The HONEST TENSIONS section names how the offer could be misused against the buyer — cheaper than a permanent hire, and that economy can defer a hire the company needs — which a sales document rarely does. Audit run and stated: no company named or implied, no rate or tax status ('retainer' appears as a word with no figure), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair: the same machinery giving two answers to how you publish a document about a job. |
+| v0.2.81 | 2026-09-18 | PREV_UNFILLED | THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download. THE AUTHOR'S CALL ON THE STALE VAULT COUNT: the previous release made a point of '26 public vaults' having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed, so the correction became a dating note — the figures are those that were true when printed, the live table is the current answer, and the sheets are the historical one. Which is the right call: a printed artefact that gets silently re-edited to match today stops being a record of anything. |
 | v0.2.80 | 2026-09-17 | PREV_UNFILLED | THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience sheets — founders, startups, investors, corporate — written for a startup summit and published here with a parent page, one page each, the capability table rendered as real HTML, and the PDF both embedded and downloadable. THE PDF IS THE DOWNLOAD, NOT THE PAGE, for the reason this site keeps giving: a PDF is invisible to a search engine, to llms-full.txt and to any agent reading the site, so the content is HTML and the handout is an artefact beside it. What makes them worth publishing rather than filing is the WHAT EXISTS TODAY column, which is unflattering on purpose — 'no payment link', 'not yet packaged as its own product', 'research design; implementation not claimed', 'write-only intake built, never sold'. A capability sheet that cannot say which rows are unfinished is a brochure. TWO THINGS THE CHECK TURNED UP, both while the sheets were being handed out: the PDFs are named RiskMandate.ai while every page inside them is branded sgit.ai and every footer points at sgit.ai/network — the copies here are renamed to match their contents; and the printed line '26 public vaults' is now 29, because three vaults were published during the week of the summit. The pages here do not restate the number and link the live table instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A COMPUTED ONE FOR ANYTHING THAT MOVES. |
 | v0.2.79 | 2026-09-17 | PREV_UNFILLED | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
 | v0.2.78 | 2026-09-16 | PREV_UNFILLED | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
@@ -7073,6 +7159,22 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-18
+
+### [Vault #30 — the same pack, written for an archetype instead of a company](#the-same-pack-for-an-archetype) [v0.2.82](../admin/versions.md)
+
+vaultsmethodprivacy
+
+[Vault #30](../demos/vaults/fractional-ciso-pack/index.md) is a sibling of [#29](../demos/vaults/interim-ciso-pack/index.md) from the same generator, one day later — a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem.
+
+**#29 described a real role and withheld the company.** That meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. **#30 describes a type of company instead** — six rows derived from public sources: what it does, who buys it, where the risk sits, what it already has, what it usually lacks, who governs it — and everything after follows from the archetype. There is nothing to redact, because nothing was ever about an instance.
+
+The rule that generalises past hiring: **a document written for a class can be published; a document written for an instance has to be scrubbed.**
+
+Three things are new. An **engagement document** with the monthly rhythm, a twelve-month map, and a section headed *what two days a month is not* — not cover, not a DPO, not delivery, not an audit, and not a substitute for a full-time CISO once the company needs one, *"part of the job is saying when that point arrives."* A **one-page infographic** rendered from `content.json` rather than drawn separately, which is the page's hero because it is the pitch on one sheet. And the three 2019 decks, now rendered in the viewer rather than only archived.
+
+The *Honest tensions* section does something a sales document rarely does — it names how the offer could be misused against the buyer: a fractional CISO is cheaper than a permanent one, *"and that same economy can be used to defer a hire the company genuinely needs. Naming the trigger early is the only honest defence."*
+
+Audit run and stated on the page: no company named or implied, no rate or tax status (*retainer* appears as a word with no figure attached), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair — the same machinery giving two answers to *how do you publish a document about a job*.
 
 ### [The summit sheets get a preview grid, and their numbers are dated rather than corrected](#summit-sheets-preview-grid) [v0.2.81](../admin/versions.md)
 
