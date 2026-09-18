@@ -1,8 +1,19 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.80",
+  "site_version": "v0.2.81",
   "updates": [
+    {
+      "slug": "summit-sheets-preview-grid",
+      "title": "The summit sheets get a preview grid, and their numbers are dated rather than corrected",
+      "date": "2026-09-18",
+      "version": "v0.2.81",
+      "tags": [
+        "publishing",
+        "method"
+      ],
+      "summary": "The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build time and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embe…"
+    },
     {
       "slug": "the-lisbon-summit-sheets",
       "title": "The Lisbon summit sheets — as pages, and as the PDFs they were handed out as",

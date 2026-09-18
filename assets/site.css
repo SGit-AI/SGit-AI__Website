@@ -907,3 +907,8 @@ table.ident th{width:11rem;text-align:left;vertical-align:top;color:var(--dim);f
 .llmschip-m{display:flex;align-items:center;padding:.34rem .6rem;border-left:1px dashed var(--line);
   font-family:var(--mono);font-size:.68rem;color:var(--dim2);white-space:nowrap}
 @media (max-width:640px){.llmschip-m{display:none}}
+
+/* ---- summit sheets: A4 previews as cards */
+.hv.sheets{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:1.2rem}
+.sheet-card figure{aspect-ratio:210/297;background:var(--panel)}
+.sheet-card figure img{object-fit:cover;object-position:top center}

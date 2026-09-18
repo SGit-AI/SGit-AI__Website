@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.80'
+SITE_VERSION = 'v0.2.81'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.80', '2026-09-17', 'this release',
+    ('v0.2.81', '2026-09-18', 'this release',
+     "THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. "
+     "The four Lisbon handouts now appear on the parent page as four A4 previews — page one of "
+     "each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees "
+     "all four at a glance and clicks through to the page with the table, the embed and the "
+     "download. THE AUTHOR'S CALL ON THE STALE VAULT COUNT: the previous release made a point of "
+     "'26 public vaults' having become 29 during summit week. The author's instruction is that "
+     "the sheets are a dated record of what was said in September 2026 and should be kept as "
+     "printed, so the correction became a dating note — the figures are those that were true when "
+     "printed, the live table is the current answer, and the sheets are the historical one. Which "
+     "is the right call: a printed artefact that gets silently re-edited to match today stops "
+     "being a record of anything.",
+     ),
+    ('v0.2.80', '2026-09-17', 'PREV_UNFILLED',
      "THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience "
      "sheets — founders, startups, investors, corporate — written for a startup summit and "
      "published here with a parent page, one page each, the capability table rendered as real "

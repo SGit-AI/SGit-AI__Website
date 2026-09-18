@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.80</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.81</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,11 +92,19 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.80 &middot; 17 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.81 &middot; 18 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-18</h2>
+  <article class="upd" id="summit-sheets-preview-grid">
+    <h3><a href="#summit-sheets-preview-grid">The summit sheets get a preview grid, and their numbers are dated rather than corrected</a> <a class="upd-ver" href="../admin/versions.html">v0.2.81</a></h3>
+    <p class="chips"><span class="chip">publishing</span><span class="chip">method</span></p>
+<p><a href="../summit/index.html">The four Lisbon handouts</a> now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build time and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download.</p>
+<p><b>The author's call on the stale vault count.</b> Yesterday's release made a point of <em>"26 public vaults"</em> having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed. So the correction became a dating note: the figures are those that were true when printed, <a href="../demos/vaults/index.html">the live table</a> is the current answer, and the sheets are the historical one.</p>
+<p>That is the right call, and the reason is worth writing down: <b>a printed artefact that gets silently re-edited to match today stops being a record of anything.</b> Date it, keep it, and point at the computed thing beside it.</p>
+  </article>
   <h2 class="upd-date">2026-09-17</h2>
   <article class="upd" id="the-lisbon-summit-sheets">
     <h3><a href="#the-lisbon-summit-sheets">The Lisbon summit sheets — as pages, and as the PDFs they were handed out as</a> <a class="upd-ver" href="../admin/versions.html">v0.2.80</a></h3>
@@ -739,7 +747,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.80</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.81</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -781,7 +789,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.80';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.81';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
