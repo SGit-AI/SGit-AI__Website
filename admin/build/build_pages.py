@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.81'
+SITE_VERSION = 'v0.2.82'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.81', '2026-09-18', 'this release',
+    ('v0.2.82', '2026-09-18', 'this release',
+     "VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 "
+     "from the same generator one day later — a fractional CISO pack, two days a month on a "
+     "retainer for a company that is already certified — and the interesting thing is how it "
+     "solves the publication problem. #29 described a real role and WITHHELD the company, which "
+     "meant auditing whether an unnamed FTSE 250 client could be inferred from what was said "
+     "about it. #30 describes A TYPE OF COMPANY in six rows derived from public sources — what it "
+     "does, who buys it, where the risk sits, what it has, what it lacks, who governs it — and "
+     "everything after follows from the archetype, so there is nothing to redact. The rule that "
+     "generalises: a document written for a class can be published; a document written for an "
+     "instance has to be scrubbed. New in this one: an ENGAGEMENT document with the monthly "
+     "rhythm, a twelve-month map, and a section headed 'what two days a month is not' — not "
+     "cover, not a DPO, not delivery, not an audit, not a substitute for a full-time hire; a "
+     "one-page INFOGRAPHIC rendered from content.json rather than drawn separately, which is the "
+     "page's hero because it is the pitch on one sheet; and the three 2019 decks rendered in the "
+     "viewer rather than only archived. The HONEST TENSIONS section names how the offer could be "
+     "misused against the buyer — cheaper than a permanent hire, and that economy can defer a hire "
+     "the company needs — which a sales document rarely does. Audit run and stated: no company "
+     "named or implied, no rate or tax status ('retainer' appears as a word with no figure), one "
+     "public email, no secrets, read key verified against an all-zeros control. The two packs are "
+     "worth reading as a pair: the same machinery giving two answers to how you publish a document "
+     "about a job.",
+     ),
+    ('v0.2.81', '2026-09-18', 'PREV_UNFILLED',
      "THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. "
      "The four Lisbon handouts now appear on the parent page as four A4 previews — page one of "
      "each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees "
