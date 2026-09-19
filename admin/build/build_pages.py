@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.87'
+SITE_VERSION = 'v0.2.88'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.87', '2026-09-19', 'this release',
+    ('v0.2.88', '2026-09-19', 'this release',
+     "THE LADDER'S RIGHT COLUMN LOOKED LIKE LINKS AND WAS NOT. Second read of the fractal graphs "
+     "page: the 'why this page exists' note (the LinkedIn back-story) is gone — the page stands "
+     "without it; and the ladder diagram's right-hand column was long blue monospace text that "
+     "read as a row of links nobody could click. It is now two lines per rung: the vault's name "
+     "as a real link (an SVG anchor, underlined, taking you to that vault's page and its read "
+     "key — the Acceptance rung points at the seven-views page, the Agent rung at abp.sgit.ai) "
+     "and the detail beneath it in plain grey. Twelve links, each tested by clicking it in a "
+     "browser and checking the URL it landed on. The rule it re-learns: if it is blue, it must "
+     "be clickable; if it is not clickable, it must not be blue.",
+     ),
+    ('v0.2.87', '2026-09-19', 'git bcabde64',
      "THE FRACTAL GRAPHS PAGE NOW LEADS WITH THE DEFINITION. The author's first read of v0.2.85 "
      "made three points: the title should be Fractal Semantic Graphs, since 'how far down does "
      "the graph go' is a section; the page must start by defining and visualising the term and "

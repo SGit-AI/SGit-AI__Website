@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.87",
+  "site_version": "v0.2.88",
   "updates": [
     {
       "slug": "the-mirror-is-gone",
@@ -28,6 +28,17 @@
         "method"
       ],
       "summary": "Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…"
+    },
+    {
+      "slug": "ladder-links",
+      "title": "The ladder's right column looked like links and was not — now it is",
+      "date": "2026-09-19",
+      "version": "v0.2.88",
+      "tags": [
+        "graphs",
+        "design"
+      ],
+      "summary": "Second read of Fractal Semantic Graphs, two fixes. The why this page exists note — the LinkedIn back story — is gone. The page stands without it. The ladder diagram's right hand column was long blue monospace text that read as a row of links nobody could click…"
     },
     {
       "slug": "how-far-down-does-the-graph-go",

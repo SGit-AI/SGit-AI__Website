@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is — every node is itself a semantic graph by the same rules, at every altitude, down to the word — why connecting everything with everything works when every edge is a verb, and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,11 +46,9 @@ The one discipline that makes “everything with everything” useful rather tha
 
 All the way. The same grammar runs from the text of a regulation, through a standard's controls, through a risk and the person who accepts it, down to a threat in one line of code on one compute instance. The rest of this page is the evidence: **seven published vaults and three sibling sites**, each a live fractal semantic graph at a different altitude, every one openable with the read key printed on its page.
 
-**Why this section exists.** Asked on LinkedIn whether we had *“defined the dimensions/layers needed to map this all the way down to say the EA and system configurations”*, the answer given was three bare URLs. That was the right answer and a poor way to give it. So here is the same answer with the pictures, the counts, the rule that makes it work, and — at the end — the altitudes that are still modelled rather than imported. Everything below is checkable: the vaults are live, the screenshots are of the vaults, and the numbers are theirs.
-
 ## The ladder, and who covers which rung
 
-Eleven altitudes, one grammar. The left column is the level of the world being described; the right column is the published vault in which that level is a graph you can open. No rung needs a different format from the one above it, which is the test for the word set out at the top of this page.
+Eleven altitudes, one grammar. The left column is the level of the world being described; the right column names the published vault in which that level is a live graph — each name is a link to that vault's page, where its read key is. No rung needs a different format from the one above it, which is the test for the word set out at the top of this page.
 
 *[diagram]*
 

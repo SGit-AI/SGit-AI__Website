@@ -19,6 +19,13 @@
       <description>Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…</description>
     </item>
     <item>
+      <title>The ladder&#x27;s right column looked like links and was not — now it is</title>
+      <link>https://sgit.ai/updates/index.html#ladder-links</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#ladder-links</guid>
+      <pubDate>2026-09-19</pubDate>
+      <description>Second read of Fractal Semantic Graphs, two fixes. The why this page exists note — the LinkedIn back story — is gone. The page stands without it. The ladder diagram&#x27;s right hand column was long blue monospace text that read as a row of links nobody could click…</description>
+    </item>
+    <item>
       <title>How far down does the graph go? A page for the question that got three bare URLs</title>
       <link>https://sgit.ai/updates/index.html#how-far-down-does-the-graph-go</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#how-far-down-does-the-graph-go</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#markdown-and-file-viewers-what-not-to-build</guid>
       <pubDate>2026-09-09</pubDate>
       <description>Two of the most common things an agent is asked to add to a vault are a markdown viewer and a file/folder browser with raw views . Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writ…</description>
-    </item>
-    <item>
-      <title>Guidance now splits by surface — and the third surface finally has its own brief</title>
-      <link>https://sgit.ai/updates/index.html#guidance-splits-by-surface</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#guidance-splits-by-surface</guid>
-      <pubDate>2026-09-09</pubDate>
-      <description>The guidance here had been organised by task — decks, markdown, file viewers. That hid something: every one of those questions has three different right answers depending on where the code runs . Three surfaces is the router. page.json inside a vault, an HTML…</description>
     </item>
   </channel>
 </rss>

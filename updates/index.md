@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,6 +66,16 @@ That page is at `/case-studies/exposed-vault-key.md`. The advice about the costl
 Both were 404 on the live site, and the site's own validator had never looked — it checks links *inside pages*, and `llms.txt` is not a page. A file that exists to be read by machines had never been link-checked by one.
 
 **Also corrected:** the preamble claimed this site *"is itself served from an encrypted vault."* The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot.
+
+### [The ladder's right column looked like links and was not — now it is](#ladder-links) [v0.2.88](../admin/versions.md)
+
+graphsdesign
+
+Second read of [Fractal Semantic Graphs](../demos/fractal-graphs/index.md), two fixes.
+
+The *why this page exists* note — the LinkedIn back-story — is gone. The page stands without it.
+
+The ladder diagram's right-hand column was long blue monospace text that read as a row of links nobody could click. Each rung now has two lines: the vault's name as a **real link** to that vault's page, where its read key is, and the detail beneath it in plain grey. Twelve links, each tested by clicking it in a browser and checking where it landed. The rule it re-learns: if it is blue, it must be clickable; if it is not clickable, it must not be blue.
 
 ### [How far down does the graph go? A page for the question that got three bare URLs](#how-far-down-does-the-graph-go) [v0.2.85](../admin/versions.md)
 
