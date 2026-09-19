@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,6 +42,18 @@ The tooling followed. `release.sh` no longer requires `.sg_vault` or pushes sgit
 - The gallery's footer stopped calling the catalogue the place *new entries start*, because for twenty-one of them it was not.
 
 **The rule that came out of it:** give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.
+
+### [The jump — what the fractal property actually adds](#the-jump) [v0.2.95](../admin/versions.md)
+
+graphsmethodcorrection
+
+The Fractal Semantic Graphs page said that in a hierarchy *depth gives you more detail but no new meaning, because the only verb is "contains"*. The author's objection came in four parts, and all four are right.
+
+A single layer's ontology can have a very large number of verbs, each carrying meaning. As long as the links make sense inside that ontology, knowledge is gained one link at a time, and it is a great deal of knowledge; a risk register with ten thousand well-named edges is not a hierarchy and not yet a fractal. **What the fractal architecture adds is the ability, on one of those links, to jump into another universe** with its own rules and definitions. And what makes that fractal is that every such self-contained world is built from the same blocks: nodes, edges, ontologies, taxonomies, triplets, provenance.
+
+[The test section](../demos/fractal-graphs/index.md#what) is rewritten on the worked example he gave: a risk register whose incident fact jumps into security operations (alerts, signals, ATT&CK techniques, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every request the resolvers logged, possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Four worlds, four ontologies, one path of named edges. A third diagram draws it.
+
+Two consequences follow, in his words. **Every connection you follow should teach you something**, even when the answer is *nothing to see here*; whether a link added value is for the observer, or the query, to decide. And **more granularity means a better representation of reality**, chosen per context, with custom views on top of the whole being what makes it scale. It also runs upward: all four worlds are one node in a bigger graph, and the schema itself can be fractal in the Mandelbrot sense.
 
 ### [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing) [v0.2.83](../admin/versions.md)
 

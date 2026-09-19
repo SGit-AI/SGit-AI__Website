@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.94",
+  "site_version": "v0.2.95",
   "updates": [
     {
       "slug": "the-mirror-is-gone",
@@ -15,6 +15,18 @@
         "vaults"
       ],
       "summary": "For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…"
+    },
+    {
+      "slug": "the-jump",
+      "title": "The jump — what the fractal property actually adds",
+      "date": "2026-09-19",
+      "version": "v0.2.95",
+      "tags": [
+        "graphs",
+        "method",
+        "correction"
+      ],
+      "summary": "The Fractal Semantic Graphs page said that in a hierarchy depth gives you more detail but no new meaning, because the only verb is \"contains\" . The author's objection came in four parts, and all four are right. A single layer's ontology can have a very large n…"
     },
     {
       "slug": "llms-txt-routing",

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.94</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.95</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.94 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.95 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="../vaults/index.html">Vaults</a> / Fractal Semantic Graphs</p>
   <h1>Fractal Semantic Graphs</h1>
@@ -165,9 +165,94 @@
     <text x="500" y="386" class="fz-c" style="text-anchor:middle;font-weight:600;fill:#101114">The grammar never changes; the ontology does. Each zoom is a new world, joined by an edge to the one above.</text>
   </svg>
   </div>
-  <p>The test for the word is what happens when you zoom. <b>If every level has the same node types, the same verbs and the same rules, you are in a hierarchy</b>. A folder tree is the clean example: folders inside folders inside folders, one schema all the way down. Depth gives you more detail but no new meaning, because there is only ever one verb, <code>contains</code>, and nothing at level ten can relate to anything at level three except by sitting inside it. <b>It becomes fractal at the moment zooming in lands you somewhere different</b>: a node whose inside has its own types, its own verbs, its own taxonomy, a new format or a special case. That new world is still joined by an edge to the one you came from. Now <b>the deeper you go, the more you learn</b>: every altitude brings its own vocabulary of relationships, every node can connect to nodes in any other world, and the connectivity compounds instead of merely nesting. Graphs of graphs, ontologies of ontologies: the plural is the point. A document can contain a paragraph that is a whole mini-world of its own, with more definition than the document around it, because somebody needed that granularity there and nowhere else.</p>
-  <p>Put precisely, the cross-domain behaviour means one thing: <b>the core meaning of a node is supplied by the ontology at the altitude where it sits</b>, and that ontology is free to change from one altitude to the next. <em>Article 9</em> means one thing in a graph of instruments (a provision that binds), another inside the regulation (a container of paragraphs and points), another to the paragraph that cites it (a source of definitions). The node is the same; the meaning is the edges around it at that level. Nature is built this way and nobody finds it strange: the universe is a graph of galaxies, a galaxy of stars, a star system of planets, a planet of ecosystems, an ecosystem of organisms, an organism of cells, a cell of molecules, a molecule of atoms, an atom of particles. At every altitude the vocabulary changes completely, from cosmology to geology to biology to chemistry to physics, while each level stays connected to the one above and below. No single schema describes a galaxy and a cell. A single grammar, things and the named relationships between them, describes both.</p>
-  <p>Two things follow. <b>Nobody is forced to conform.</b> An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. <a href="https://graphs.sgit.ai/v1/depth/index.html" rel="noopener" target="_blank">graphs.sgit.ai</a> puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them. And <b>granularity is a decision, per situation.</b> The same topic can carry a paragraph's worth of definition in one place and a word-by-word graph in another; you load as much as the question needs, and the two remain connected.</p>
+  <p>The test for the word is what happens at a link. Start inside one world, a risk register. It is already a rich semantic graph with a large vocabulary of verbs, each carrying meaning: a fact <code>gives_rise_to</code> a risk, a risk <code>is_owned_by</code> a role, a person <code>reports_to</code> a person, a control <code>mitigates</code> a risk, evidence <code>backs</code> a fact. Every link that makes sense inside that ontology teaches you something, and the knowledge accumulates one link at a time; a register with ten thousand well-named edges is a great deal of knowledge. Nothing about it is fractal yet. It is one graph, however large and however deeply it nests, in one vocabulary. A system that never lets you leave that vocabulary is a single graph, or a hierarchy, and not a fractal.</p>
+  <p><b>The fractal property is that on one of those links you can jump into another universe.</b> Follow the register's <em>fact</em> node for an incident and you land in the security operations world: alerts, signals, the systems that were touched, ATT&amp;CK techniques, attack trees, its own verbs and its own taxonomy, none of them borrowed from the register. In that world you meet a DNS entry that looks like command-and-control; follow it and you are in the DNS estate: zones, records, parents, values, every request the resolvers logged, a dataset perhaps millions of nodes large and quite possibly served through an abstraction layer over a SQL database, a graph database or a GraphQL endpoint rather than held as files. Follow one record to the traffic it produced and you are reading network captures, flows and a single TCP packet, in yet another vocabulary. Four worlds, four ontologies, four taxonomies, and one continuous path of named edges between them.</p>
+  <div class="figure">
+  <svg viewBox="0 0 1000 360" role="img" aria-label="Four worlds in a row: a risk register, security operations, the DNS estate and a network capture, each a small graph with its own vocabulary, joined by jump links on one node each; a bracket above reads that all of it is one node in a bigger graph.">
+    <style>
+      .hj-h{font:600 12.5px/1 system-ui,sans-serif;fill:#101114;text-anchor:middle}
+      .hj-n{font:10.5px/1 system-ui,sans-serif;fill:#101114;text-anchor:middle}
+      .hj-v{font:10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#5b6170;text-anchor:middle}
+      .hj-j{font:600 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+      .hj-c{font:12px/1.35 system-ui,sans-serif;fill:#5b6170;text-anchor:middle}
+      .hj-world{fill:#f4f6fb;stroke:#2f6fed;stroke-width:1.3;stroke-dasharray:4 4}
+      .hj-node{fill:#fff;stroke:#101114;stroke-width:1.3}
+      .hj-hot{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2}
+      .hj-edge{stroke:#9aa3b5;stroke-width:1.1}
+      .hj-jump{stroke:#2f6fed;stroke-width:2;fill:none}
+      .hj-br{stroke:#8b909c;stroke-width:1.2;fill:none}
+    </style>
+    <path d="M40 46 L40 34 L960 34 L960 46" class="hj-br"/>
+    <text x="500" y="26" class="hj-c" style="fill:#101114;font-weight:600">…and all four together are one node in a bigger graph that analyses them, and that graph in another</text>
+    <circle cx="130" cy="180" r="92" class="hj-world"/>
+    <text x="130" y="78" class="hj-h">Risk register</text>
+    <line x1="130" y1="180" x2="90" y2="150" class="hj-edge"/>
+    <line x1="130" y1="180" x2="135" y2="135" class="hj-edge"/>
+    <line x1="130" y1="180" x2="95" y2="215" class="hj-edge"/>
+    <line x1="130" y1="180" x2="150" y2="220" class="hj-edge"/>
+    <line x1="130" y1="180" x2="188" y2="185" class="hj-edge"/>
+    <circle cx="130" cy="180" r="4" class="hj-node"/>
+    <circle cx="90" cy="150" r="4" class="hj-node"/><text x="90" y="142" class="hj-n">risk</text>
+    <circle cx="135" cy="135" r="4" class="hj-node"/><text x="135" y="127" class="hj-n">role</text>
+    <circle cx="95" cy="215" r="4" class="hj-node"/><text x="95" y="207" class="hj-n">system</text>
+    <circle cx="150" cy="220" r="4" class="hj-node"/><text x="150" y="212" class="hj-n">fact</text>
+    <circle cx="188" cy="185" r="6" class="hj-hot"/><text x="188" y="203" class="hj-j">incident</text>
+    <path d="M195 185 C 248 115, 238 110, 288 160" class="hj-jump"/>
+    <path d="M279 152 L288 160 L278 163" class="hj-jump"/>
+    <text x="242" y="122" class="hj-j">jump</text>
+    <text x="130" y="294" class="hj-v">gives_rise_to · owned_by</text><text x="130" y="309" class="hj-v">reports_to · mitigates</text>
+    <circle cx="380" cy="180" r="92" class="hj-world"/>
+    <text x="380" y="78" class="hj-h">Security operations</text>
+    <line x1="380" y1="180" x2="340" y2="150" class="hj-edge"/>
+    <line x1="380" y1="180" x2="385" y2="135" class="hj-edge"/>
+    <line x1="380" y1="180" x2="345" y2="215" class="hj-edge"/>
+    <line x1="380" y1="180" x2="400" y2="220" class="hj-edge"/>
+    <line x1="380" y1="180" x2="438" y2="185" class="hj-edge"/>
+    <circle cx="380" cy="180" r="4" class="hj-node"/>
+    <circle cx="340" cy="150" r="4" class="hj-node"/><text x="340" y="142" class="hj-n">alert</text>
+    <circle cx="385" cy="135" r="4" class="hj-node"/><text x="385" y="127" class="hj-n">signal</text>
+    <circle cx="345" cy="215" r="4" class="hj-node"/><text x="345" y="207" class="hj-n">ATT&amp;CK</text>
+    <circle cx="400" cy="220" r="4" class="hj-node"/><text x="400" y="212" class="hj-n">attack tree</text>
+    <circle cx="438" cy="185" r="6" class="hj-hot"/><text x="438" y="203" class="hj-j">DNS entry</text>
+    <path d="M445 185 C 498 115, 488 110, 538 160" class="hj-jump"/>
+    <path d="M529 152 L538 160 L528 163" class="hj-jump"/>
+    <text x="492" y="122" class="hj-j">jump</text>
+    <text x="380" y="294" class="hj-v">detected_by · touched</text><text x="380" y="309" class="hj-v">maps_to · precedes</text>
+    <circle cx="630" cy="180" r="92" class="hj-world"/>
+    <text x="630" y="78" class="hj-h">DNS estate</text>
+    <line x1="630" y1="180" x2="590" y2="150" class="hj-edge"/>
+    <line x1="630" y1="180" x2="635" y2="135" class="hj-edge"/>
+    <line x1="630" y1="180" x2="595" y2="215" class="hj-edge"/>
+    <line x1="630" y1="180" x2="650" y2="220" class="hj-edge"/>
+    <line x1="630" y1="180" x2="688" y2="185" class="hj-edge"/>
+    <circle cx="630" cy="180" r="4" class="hj-node"/>
+    <circle cx="590" cy="150" r="4" class="hj-node"/><text x="590" y="142" class="hj-n">zone</text>
+    <circle cx="635" cy="135" r="4" class="hj-node"/><text x="635" y="127" class="hj-n">record</text>
+    <circle cx="595" cy="215" r="4" class="hj-node"/><text x="595" y="207" class="hj-n">parent</text>
+    <circle cx="650" cy="220" r="4" class="hj-node"/><text x="650" y="212" class="hj-n">request</text>
+    <circle cx="688" cy="185" r="6" class="hj-hot"/><text x="688" y="203" class="hj-j">one record</text>
+    <path d="M695 185 C 748 115, 738 110, 788 160" class="hj-jump"/>
+    <path d="M779 152 L788 160 L778 163" class="hj-jump"/>
+    <text x="742" y="122" class="hj-j">jump</text>
+    <text x="630" y="294" class="hj-v">resolves_to · queried_by</text><text x="630" y="309" class="hj-v">served over SQL or a graph DB</text>
+    <circle cx="880" cy="180" r="92" class="hj-world"/>
+    <text x="880" y="78" class="hj-h">Network capture</text>
+    <line x1="880" y1="180" x2="840" y2="150" class="hj-edge"/>
+    <line x1="880" y1="180" x2="885" y2="135" class="hj-edge"/>
+    <line x1="880" y1="180" x2="845" y2="215" class="hj-edge"/>
+    <line x1="880" y1="180" x2="900" y2="220" class="hj-edge"/>
+    <circle cx="880" cy="180" r="4" class="hj-node"/>
+    <circle cx="840" cy="150" r="4" class="hj-node"/><text x="840" y="142" class="hj-n">flow</text>
+    <circle cx="885" cy="135" r="4" class="hj-node"/><text x="885" y="127" class="hj-n">TCP packet</text>
+    <circle cx="845" cy="215" r="4" class="hj-node"/><text x="845" y="207" class="hj-n">bytes</text>
+    <circle cx="900" cy="220" r="4" class="hj-node"/><text x="900" y="212" class="hj-n">host</text>
+    <text x="880" y="294" class="hj-v">carried · sent_to</text><text x="880" y="309" class="hj-v">one packet, own taxonomy</text>
+    <text x="500" y="348" class="hj-c" style="fill:#101114;font-weight:600">Four worlds, four ontologies, one path of named edges. In each you find the same building blocks: nodes, verbs, a taxonomy, provenance.</text>
+  </svg>
+  </div>
+  <p><b>What makes it fractal rather than merely linked</b> is that in every one of those self-contained worlds you find the same building blocks: nodes, edges with verbs and inverses, an ontology, a taxonomy, triplets, provenance. The grammar is what lets the jump work, in either direction, without an adapter. And it runs upward as well as down: everything just described can itself be one node in a larger graph that analyses it, next to graphs of behaviour, of agentic actions, of agendas, of funding. Even the schema can be fractal, in the way the Mandelbrot set is one formula whose structure repeats at every zoom: graphs composed from graphs, with properties of their own, treated as a graph all the way up.</p>
+  <p><b>Every connection you follow should teach you something.</b> Even when the answer is <em>nothing to see here</em>, you now know that door was empty, and that is knowledge too. Whether a link added value is for the observer, or the query, to decide; the graph's job is to make the link available and keep its provenance. The more granularity you can reach, the better your representation of reality and the better the decisions and the understanding built on it. But granularity is chosen per context: you load as much as this question needs and no more, because the rest stays one edge away. Custom views built on top of the whole, each showing one context at one granularity, are what make all of this scale.</p>
+  <p><b>Nobody is forced to conform.</b> An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. <a href="https://graphs.sgit.ai/v1/depth/index.html" rel="noopener" target="_blank">graphs.sgit.ai</a> puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them.</p>
 
   <h2 id="everything">Why connect everything with everything</h2>
   <p>Because in our world <b>everything is already a graph, and so is every file format.</b> A regulation is a graph of articles; a PDF of that regulation is a graph of pages, blocks, lines and glyphs; a spreadsheet is a graph of sheets, rows, cells and formulas; a codebase is a graph of packages, classes, methods and tokens; a JSON document is a tree, which is a graph with one verb. None of them needs to be <em>converted into</em> a graph; each only needs its edges named. Once they are, the boundaries between formats stop mattering, and four things become possible that no document can do:</p>
@@ -454,7 +539,7 @@
 </main>
 <script>
 (function () {
-  fetch('../../assets/shots.js?v=v0.2.94')
+  fetch('../../assets/shots.js?v=v0.2.95')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -466,7 +551,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.94</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.95</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -508,7 +593,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.94';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.95';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

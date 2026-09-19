@@ -2,7 +2,7 @@
 
 > A brief for the agent maintaining graphs.sgit.ai: the fractal claim on its boundaries page has the invariant backwards (grammar survives every zoom, the ontology is free to change), the name Fractal Semantic Graphs and its lineage, six places to link the sgit.ai page, four graph vaults missing from its evidence estate, a second cross-vault finding, three small corrections, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.2.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 # Fractal Semantic Graphs: what graphs.sgit.ai should take from the sgit.ai page
 
-A brief for the agent that maintains [graphs.sgit.ai](https://graphs.sgit.ai/). On 19 September 2026 sgit.ai published [**Fractal Semantic Graphs**](../../demos/fractal-graphs/index.md): a definition of the term, two diagrams, and seven live vaults walked as one ladder from the text of a law to a threat on a compute instance. It is now the fullest worked application of that site's two theses, *meaning through connectivity* and *thinking in graphs*, and it corrects one sentence that site currently has backwards. This brief lists what to change, what to link, what to reuse, and what to leave alone. Checked against graphs.sgit.ai v0.6.20 and its `llms.txt` on the date above.
+A brief for the agent that maintains [graphs.sgit.ai](https://graphs.sgit.ai/). On 19 September 2026 sgit.ai published [**Fractal Semantic Graphs**](../../demos/fractal-graphs/index.md): a definition of the term, three diagrams, and seven live vaults walked as one ladder from the text of a law to a threat on a compute instance. It is now the fullest worked application of that site's two theses, *meaning through connectivity* and *thinking in graphs*, and it corrects one sentence that site currently has backwards. This brief lists what to change, what to link, what to reuse, and what to leave alone. Checked against graphs.sgit.ai v0.6.20 and its `llms.txt` on the date above.
 
 **The one-line version.** Where graphs.sgit.ai says *identical rules at every altitude*, it should say *the same grammar at every altitude, and a different ontology at each*. Everything else in this brief follows from that distinction.
 
@@ -50,7 +50,7 @@ Four things on the sgit.ai page are stated more sharply than anywhere on graphs.
 
 - **The name and its lineage.** The term is *Fractal Semantic Graphs*. The author's earlier names, *graphs of graphs of graphs* and *ontologies of ontologies of ontologies*, should be recorded as the lineage, because visitors arrive knowing the older phrases. Review r001 already lists the retitle as an agreed item with state *commented; nothing changed yet*. This brief is the input for doing it.
 - **Where a node's meaning comes from.** *Meaning through connectivity* is the site's thesis. The sgit.ai page makes it precise for the fractal case: the core meaning of a node is supplied by the ontology at the altitude where it sits, and the same node means different things at different altitudes. Article 9 is a binding provision in a graph of instruments, a container of paragraphs inside the regulation, and a source of definitions to the paragraph that cites it. Same node, different edges around it at each level. That sentence should sit next to the thesis on the home page.
-- **The deeper you go, the more you learn.** In a hierarchy depth adds detail and no meaning, because the only verb is `contains`. In a fractal semantic graph every altitude brings its own vocabulary of relationships, so connectivity compounds instead of nesting. This is the plain-language reason the fractal property matters and the site does not currently say it.
+- **Every connection should teach you something, and one of them is a jump.** Inside one ontology, knowledge accrues one well-named link at a time; a risk register with ten thousand edges is a great deal of knowledge and not yet fractal. The fractal property is the link on which you jump into another universe with its own rules: from the register's incident fact into security operations, from a suspicious DNS entry into the DNS estate, from one record into a packet capture. In each world the same building blocks appear (nodes, verbs, taxonomy, provenance), and the whole can be one node in a bigger graph. The sgit.ai page walks that example and draws it; the site does not currently say it, and it is the plainest statement of why the fractal property matters.
 - **Nobody is forced to conform.** The site's *don't merge vocabularies, bridge them* argument (depth page, three layers: shared facts, per-party formulas, declared bridges) is the mechanism; the sgit.ai page states the consequence: an organisation, a division, a team, a person or a regulator can each define their own world and connect by declaring edges. Granularity becomes a decision per situation, so a paragraph can be a mini-world with more definition than the document around it. The two pages should point at each other.
 
 Two smaller items worth lifting: the four-word table (graph, semantic graph, ontology, fractal semantic graph, with what each adds and where it stops), which does the cold-visitor orientation the site's *start here* altitude is for; and the nature analogy (universe, galaxy, star system, planet, ecosystem, organism, cell, molecule, atom, particle: the vocabulary changes completely at every altitude while each level stays connected to its neighbours; no schema describes a galaxy and a cell, one grammar describes both), which is the example nobody argues with.
@@ -60,7 +60,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 | graphs.sgit.ai page | Link to add | Why there |
 |---|---|---|
 | Home, beside the thesis | `https://sgit.ai/demos/fractal-graphs/` | It is the fullest worked application of the thesis: seven live graphs, one grammar, eleven ontologies |
-| `/v1/depth/boundaries.html`, the fractal section | Same, anchored `#what` | The definition and the two diagrams, right where the corrected claim lives |
+| `/v1/depth/boundaries.html`, the fractal section | Same, anchored `#what` | The definition and the diagrams, right where the corrected claim lives |
 | `/v1/examples/index.html` | Same, anchored `#how-far` | The ladder is *a graph at every boundary*, demonstrated across seven vaults rather than argued |
 | `/v1/vaults/index.html` | The seven vault pages listed in section 4 | The evidence estate is missing four of the seven graph vaults |
 | `/v1/depth/index.html`, the don't-merge argument | Same, anchored `#everything` | The consequence of the argument, stated for a reader |
@@ -68,7 +68,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 
 ## 4. What to reuse, and the evidence estate to refresh
 
-**The diagrams.** Both are inline SVG in the page source, same author, same project, free to lift. The first (`class="fz-*"`) is the three-panel zoom: a four-node semantic graph, the Law node opened into a legal ontology, a paragraph opened into a lexical one, footer *the grammar never changes; the ontology does*. The second (`class="lad-*"`) is the eleven-rung ladder with a real link per rung. Every text in both is measured against its viewBox in the build, so they can be embedded at any width without overflow.
+**The diagrams.** All three are inline SVG in the page source, same author, same project, free to lift. The first (`class="fz-*"`) is the three-panel zoom: a four-node semantic graph, the Law node opened into a legal ontology, a paragraph opened into a lexical one, footer *the grammar never changes; the ontology does*. The second (`class="hj-*"`) is the jump: four worlds in a row, risk register, security operations, DNS estate, network capture, each a small graph in its own vocabulary, joined by a jump link on one node each, with a bracket above saying all four are one node in a bigger graph. The third (`class="lad-*"`) is the eleven-rung ladder with a real link per rung. Every text in all three is measured against its viewBox in the build, so they can be embedded at any width without overflow.
 
 **The screenshots.** Under `https://sgit.ai/demos/vaults/<slug>/images/`, taken from the vaults with their published read keys. The Standards Atlas set (`graph.webp`, `graph-alt1.webp`, `beyond.webp`) was captured on 19 September from a read-key clone served behind a shim implementing `sg.vfs` over fetch, since the app refuses to run outside a vault host; the panel text *You are at the top of the fractal* is the vault's own.
 
@@ -108,7 +108,7 @@ You maintain graphs.sgit.ai. Read this brief first:
 and then the page it is about, which is now the fullest worked application of this
 site's two theses (meaning through connectivity, thinking in graphs):
   https://sgit.ai/demos/fractal-graphs/index.md   (markdown twin)
-  https://sgit.ai/demos/fractal-graphs/            (the page, with the two diagrams)
+  https://sgit.ai/demos/fractal-graphs/            (the page, with the three diagrams)
 
 Do these, in this order, as one release with a review entry in the site's own
 reviews workflow (the retitle is already item 1 of r001, state "commented"):
@@ -140,8 +140,8 @@ reviews workflow (the retitle is already item 1 of r001, state "commented"):
    format, and record the AIUC-1 crosswalk join (62 resolved, 8 amended articles found)
    as the site's second cross-vault finding.
 
-6. Reuse the two inline SVG diagrams from the sgit.ai page source where they help
-   (class prefixes fz- and lad-), and the Standards Atlas screenshots, with a line
+6. Reuse the three inline SVG diagrams from the sgit.ai page source where they help
+   (class prefixes fz-, hj- and lad-), and the Standards Atlas screenshots, with a line
    saying where they came from.
 
 7. Fix the small items in section 5: five versus seven stakeholder altitudes,
@@ -154,7 +154,7 @@ write it, and say the date. Report what you changed, what you left, and anything
 the brief you disagree with, before pushing.
 ```
 
-Written 19 September 2026 against graphs.sgit.ai v0.6.20. The sgit.ai page it refers to was at site v0.2.94; its version and date are in the chip at the top of the page.
+Written 19 September 2026 against graphs.sgit.ai v0.6.20. The sgit.ai page it refers to was at site v0.2.95; its version and date are in the chip at the top of the page.
 
 [← Briefs](index.md)[Fractal Semantic Graphs →](../../demos/fractal-graphs/index.md)
 

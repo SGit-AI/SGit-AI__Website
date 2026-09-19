@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.94'
+SITE_VERSION = 'v0.2.95'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.94', '2026-09-19', 'this release',
+    ('v0.2.95', '2026-09-19', 'this release',
+     "THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you "
+     "more detail but no new meaning, because the only verb is contains'. The author's objection, "
+     "in four parts: a single layer's ontology can have a very large number of verbs, each carrying "
+     "meaning; as long as the links make sense inside that ontology, knowledge is gained one link "
+     "at a time and it is massive; what the fractal architecture adds is the ability, on one of "
+     "those links, to jump into another universe with its own rules and definitions; and what "
+     "makes that fractal is that every such self-contained world is built from the same blocks — "
+     "nodes, edges, ontologies, taxonomies, triplets. The test section is rewritten on his worked "
+     "example, given as a voice memo: a risk register (its own rich verbs: gives_rise_to, "
+     "owned_by, reports_to, mitigates, backs) whose incident fact jumps into security operations "
+     "(alerts, signals, ATT&CK, attack trees), whose suspicious DNS entry jumps into the DNS "
+     "estate (zones, records, every logged request; possibly millions of nodes served through an "
+     "abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a "
+     "packet capture. Then the two consequences he drew: every connection followed should teach "
+     "you something, even 'nothing to see here', with the observer or the query deciding whether "
+     "value was added; and more granularity means a better representation of reality, chosen per "
+     "context, with custom views on top being what makes it scale. Plus the upward direction "
+     "(all of it one node in a bigger graph, graphs composed from graphs treated as a graph all "
+     "the way up, the schema itself fractal in the Mandelbrot sense). A THIRD DIAGRAM draws the "
+     "jump: four worlds in a row, each a small graph in its own vocabulary, joined by a jump link "
+     "on one node each, a bracket above for the bigger graph. Its texts are measured against the "
+     "viewBox like the other two. The graphs.sgit.ai brief's corresponding bullet and its "
+     "diagram count are updated to match.",
+     ),
+    ('v0.2.94', '2026-09-19', 'git f3476af0',
      "A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small "
      "'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having "
      "the fractal test backwards. The author asked for it to go, and for a proper brief instead, "

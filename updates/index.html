@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.94</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.95</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.94 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.95 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -121,6 +121,14 @@
 <li>The gallery's footer stopped calling the catalogue the place <em>new entries start</em>, because for twenty-one of them it was not.</li>
 </ul>
 <p><b>The rule that came out of it:</b> give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.</p>
+  </article>
+  <article class="upd" id="the-jump">
+    <h3><a href="#the-jump">The jump — what the fractal property actually adds</a> <a class="upd-ver" href="../admin/versions.html">v0.2.95</a></h3>
+    <p class="chips"><span class="chip">graphs</span><span class="chip">method</span><span class="chip">correction</span></p>
+<p>The Fractal Semantic Graphs page said that in a hierarchy <em>depth gives you more detail but no new meaning, because the only verb is "contains"</em>. The author's objection came in four parts, and all four are right.</p>
+<p>A single layer's ontology can have a very large number of verbs, each carrying meaning. As long as the links make sense inside that ontology, knowledge is gained one link at a time, and it is a great deal of knowledge; a risk register with ten thousand well-named edges is not a hierarchy and not yet a fractal. <b>What the fractal architecture adds is the ability, on one of those links, to jump into another universe</b> with its own rules and definitions. And what makes that fractal is that every such self-contained world is built from the same blocks: nodes, edges, ontologies, taxonomies, triplets, provenance.</p>
+<p><a href="../demos/fractal-graphs/index.html#what">The test section</a> is rewritten on the worked example he gave: a risk register whose incident fact jumps into security operations (alerts, signals, ATT&amp;CK techniques, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every request the resolvers logged, possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Four worlds, four ontologies, one path of named edges. A third diagram draws it.</p>
+<p>Two consequences follow, in his words. <b>Every connection you follow should teach you something</b>, even when the answer is <em>nothing to see here</em>; whether a link added value is for the observer, or the query, to decide. And <b>more granularity means a better representation of reality</b>, chosen per context, with custom views on top of the whole being what makes it scale. It also runs upward: all four worlds are one node in a bigger graph, and the schema itself can be fractal in the Mandelbrot sense.</p>
   </article>
   <article class="upd" id="llms-txt-routing">
     <h3><a href="#llms-txt-routing">The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with</a> <a class="upd-ver" href="../admin/versions.html">v0.2.83</a></h3>
@@ -852,7 +860,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.94</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.95</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -894,7 +902,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.94';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.95';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

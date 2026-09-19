@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.94). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.95). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-122site releases, each verified live before it was called done
+123site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -2128,11 +2128,17 @@ Most visitors here already know three of the four words. A **graph** is nodes an
 
 *[diagram]*
 
-The test for the word is what happens when you zoom. **If every level has the same node types, the same verbs and the same rules, you are in a hierarchy**. A folder tree is the clean example: folders inside folders inside folders, one schema all the way down. Depth gives you more detail but no new meaning, because there is only ever one verb, `contains`, and nothing at level ten can relate to anything at level three except by sitting inside it. **It becomes fractal at the moment zooming in lands you somewhere different**: a node whose inside has its own types, its own verbs, its own taxonomy, a new format or a special case. That new world is still joined by an edge to the one you came from. Now **the deeper you go, the more you learn**: every altitude brings its own vocabulary of relationships, every node can connect to nodes in any other world, and the connectivity compounds instead of merely nesting. Graphs of graphs, ontologies of ontologies: the plural is the point. A document can contain a paragraph that is a whole mini-world of its own, with more definition than the document around it, because somebody needed that granularity there and nowhere else.
+The test for the word is what happens at a link. Start inside one world, a risk register. It is already a rich semantic graph with a large vocabulary of verbs, each carrying meaning: a fact `gives_rise_to` a risk, a risk `is_owned_by` a role, a person `reports_to` a person, a control `mitigates` a risk, evidence `backs` a fact. Every link that makes sense inside that ontology teaches you something, and the knowledge accumulates one link at a time; a register with ten thousand well-named edges is a great deal of knowledge. Nothing about it is fractal yet. It is one graph, however large and however deeply it nests, in one vocabulary. A system that never lets you leave that vocabulary is a single graph, or a hierarchy, and not a fractal.
 
-Put precisely, the cross-domain behaviour means one thing: **the core meaning of a node is supplied by the ontology at the altitude where it sits**, and that ontology is free to change from one altitude to the next. *Article 9* means one thing in a graph of instruments (a provision that binds), another inside the regulation (a container of paragraphs and points), another to the paragraph that cites it (a source of definitions). The node is the same; the meaning is the edges around it at that level. Nature is built this way and nobody finds it strange: the universe is a graph of galaxies, a galaxy of stars, a star system of planets, a planet of ecosystems, an ecosystem of organisms, an organism of cells, a cell of molecules, a molecule of atoms, an atom of particles. At every altitude the vocabulary changes completely, from cosmology to geology to biology to chemistry to physics, while each level stays connected to the one above and below. No single schema describes a galaxy and a cell. A single grammar, things and the named relationships between them, describes both.
+**The fractal property is that on one of those links you can jump into another universe.** Follow the register's *fact* node for an incident and you land in the security operations world: alerts, signals, the systems that were touched, ATT&CK techniques, attack trees, its own verbs and its own taxonomy, none of them borrowed from the register. In that world you meet a DNS entry that looks like command-and-control; follow it and you are in the DNS estate: zones, records, parents, values, every request the resolvers logged, a dataset perhaps millions of nodes large and quite possibly served through an abstraction layer over a SQL database, a graph database or a GraphQL endpoint rather than held as files. Follow one record to the traffic it produced and you are reading network captures, flows and a single TCP packet, in yet another vocabulary. Four worlds, four ontologies, four taxonomies, and one continuous path of named edges between them.
 
-Two things follow. **Nobody is forced to conform.** An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/index.html) puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them. And **granularity is a decision, per situation.** The same topic can carry a paragraph's worth of definition in one place and a word-by-word graph in another; you load as much as the question needs, and the two remain connected.
+*[diagram]*
+
+**What makes it fractal rather than merely linked** is that in every one of those self-contained worlds you find the same building blocks: nodes, edges with verbs and inverses, an ontology, a taxonomy, triplets, provenance. The grammar is what lets the jump work, in either direction, without an adapter. And it runs upward as well as down: everything just described can itself be one node in a larger graph that analyses it, next to graphs of behaviour, of agentic actions, of agendas, of funding. Even the schema can be fractal, in the way the Mandelbrot set is one formula whose structure repeats at every zoom: graphs composed from graphs, with properties of their own, treated as a graph all the way up.
+
+**Every connection you follow should teach you something.** Even when the answer is *nothing to see here*, you now know that door was empty, and that is knowledge too. Whether a link added value is for the observer, or the query, to decide; the graph's job is to make the link available and keep its provenance. The more granularity you can reach, the better your representation of reality and the better the decisions and the understanding built on it. But granularity is chosen per context: you load as much as this question needs and no more, because the rest stays one edge away. Custom views built on top of the whole, each showing one context at one granularity, are what make all of this scale.
+
+**Nobody is forced to conform.** An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/index.html) puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them.
 
 ## Why connect everything with everything
 
@@ -4794,7 +4800,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.94, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.95, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5157,7 +5163,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-122**site releases since 14 August**
+123**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**
@@ -5166,7 +5172,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-62**articles and release notes**
+63**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5816,7 +5822,7 @@ Written from building exactly this, at [v0.2.67 and v0.2.68](../../admin/version
 
 # Fractal Semantic Graphs: what graphs.sgit.ai should take from the sgit.ai page
 
-A brief for the agent that maintains [graphs.sgit.ai](https://graphs.sgit.ai/). On 19 September 2026 sgit.ai published [**Fractal Semantic Graphs**](../../demos/fractal-graphs/index.md): a definition of the term, two diagrams, and seven live vaults walked as one ladder from the text of a law to a threat on a compute instance. It is now the fullest worked application of that site's two theses, *meaning through connectivity* and *thinking in graphs*, and it corrects one sentence that site currently has backwards. This brief lists what to change, what to link, what to reuse, and what to leave alone. Checked against graphs.sgit.ai v0.6.20 and its `llms.txt` on the date above.
+A brief for the agent that maintains [graphs.sgit.ai](https://graphs.sgit.ai/). On 19 September 2026 sgit.ai published [**Fractal Semantic Graphs**](../../demos/fractal-graphs/index.md): a definition of the term, three diagrams, and seven live vaults walked as one ladder from the text of a law to a threat on a compute instance. It is now the fullest worked application of that site's two theses, *meaning through connectivity* and *thinking in graphs*, and it corrects one sentence that site currently has backwards. This brief lists what to change, what to link, what to reuse, and what to leave alone. Checked against graphs.sgit.ai v0.6.20 and its `llms.txt` on the date above.
 
 **The one-line version.** Where graphs.sgit.ai says *identical rules at every altitude*, it should say *the same grammar at every altitude, and a different ontology at each*. Everything else in this brief follows from that distinction.
 
@@ -5854,7 +5860,7 @@ Four things on the sgit.ai page are stated more sharply than anywhere on graphs.
 
 - **The name and its lineage.** The term is *Fractal Semantic Graphs*. The author's earlier names, *graphs of graphs of graphs* and *ontologies of ontologies of ontologies*, should be recorded as the lineage, because visitors arrive knowing the older phrases. Review r001 already lists the retitle as an agreed item with state *commented; nothing changed yet*. This brief is the input for doing it.
 - **Where a node's meaning comes from.** *Meaning through connectivity* is the site's thesis. The sgit.ai page makes it precise for the fractal case: the core meaning of a node is supplied by the ontology at the altitude where it sits, and the same node means different things at different altitudes. Article 9 is a binding provision in a graph of instruments, a container of paragraphs inside the regulation, and a source of definitions to the paragraph that cites it. Same node, different edges around it at each level. That sentence should sit next to the thesis on the home page.
-- **The deeper you go, the more you learn.** In a hierarchy depth adds detail and no meaning, because the only verb is `contains`. In a fractal semantic graph every altitude brings its own vocabulary of relationships, so connectivity compounds instead of nesting. This is the plain-language reason the fractal property matters and the site does not currently say it.
+- **Every connection should teach you something, and one of them is a jump.** Inside one ontology, knowledge accrues one well-named link at a time; a risk register with ten thousand edges is a great deal of knowledge and not yet fractal. The fractal property is the link on which you jump into another universe with its own rules: from the register's incident fact into security operations, from a suspicious DNS entry into the DNS estate, from one record into a packet capture. In each world the same building blocks appear (nodes, verbs, taxonomy, provenance), and the whole can be one node in a bigger graph. The sgit.ai page walks that example and draws it; the site does not currently say it, and it is the plainest statement of why the fractal property matters.
 - **Nobody is forced to conform.** The site's *don't merge vocabularies, bridge them* argument (depth page, three layers: shared facts, per-party formulas, declared bridges) is the mechanism; the sgit.ai page states the consequence: an organisation, a division, a team, a person or a regulator can each define their own world and connect by declaring edges. Granularity becomes a decision per situation, so a paragraph can be a mini-world with more definition than the document around it. The two pages should point at each other.
 
 Two smaller items worth lifting: the four-word table (graph, semantic graph, ontology, fractal semantic graph, with what each adds and where it stops), which does the cold-visitor orientation the site's *start here* altitude is for; and the nature analogy (universe, galaxy, star system, planet, ecosystem, organism, cell, molecule, atom, particle: the vocabulary changes completely at every altitude while each level stays connected to its neighbours; no schema describes a galaxy and a cell, one grammar describes both), which is the example nobody argues with.
@@ -5864,7 +5870,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 | graphs.sgit.ai page | Link to add | Why there |
 |---|---|---|
 | Home, beside the thesis | `https://sgit.ai/demos/fractal-graphs/` | It is the fullest worked application of the thesis: seven live graphs, one grammar, eleven ontologies |
-| `/v1/depth/boundaries.html`, the fractal section | Same, anchored `#what` | The definition and the two diagrams, right where the corrected claim lives |
+| `/v1/depth/boundaries.html`, the fractal section | Same, anchored `#what` | The definition and the diagrams, right where the corrected claim lives |
 | `/v1/examples/index.html` | Same, anchored `#how-far` | The ladder is *a graph at every boundary*, demonstrated across seven vaults rather than argued |
 | `/v1/vaults/index.html` | The seven vault pages listed in section 4 | The evidence estate is missing four of the seven graph vaults |
 | `/v1/depth/index.html`, the don't-merge argument | Same, anchored `#everything` | The consequence of the argument, stated for a reader |
@@ -5872,7 +5878,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 
 ## 4. What to reuse, and the evidence estate to refresh
 
-**The diagrams.** Both are inline SVG in the page source, same author, same project, free to lift. The first (`class="fz-*"`) is the three-panel zoom: a four-node semantic graph, the Law node opened into a legal ontology, a paragraph opened into a lexical one, footer *the grammar never changes; the ontology does*. The second (`class="lad-*"`) is the eleven-rung ladder with a real link per rung. Every text in both is measured against its viewBox in the build, so they can be embedded at any width without overflow.
+**The diagrams.** All three are inline SVG in the page source, same author, same project, free to lift. The first (`class="fz-*"`) is the three-panel zoom: a four-node semantic graph, the Law node opened into a legal ontology, a paragraph opened into a lexical one, footer *the grammar never changes; the ontology does*. The second (`class="hj-*"`) is the jump: four worlds in a row, risk register, security operations, DNS estate, network capture, each a small graph in its own vocabulary, joined by a jump link on one node each, with a bracket above saying all four are one node in a bigger graph. The third (`class="lad-*"`) is the eleven-rung ladder with a real link per rung. Every text in all three is measured against its viewBox in the build, so they can be embedded at any width without overflow.
 
 **The screenshots.** Under `https://sgit.ai/demos/vaults/<slug>/images/`, taken from the vaults with their published read keys. The Standards Atlas set (`graph.webp`, `graph-alt1.webp`, `beyond.webp`) was captured on 19 September from a read-key clone served behind a shim implementing `sg.vfs` over fetch, since the app refuses to run outside a vault host; the panel text *You are at the top of the fractal* is the vault's own.
 
@@ -5912,7 +5918,7 @@ You maintain graphs.sgit.ai. Read this brief first:
 and then the page it is about, which is now the fullest worked application of this
 site's two theses (meaning through connectivity, thinking in graphs):
   https://sgit.ai/demos/fractal-graphs/index.md   (markdown twin)
-  https://sgit.ai/demos/fractal-graphs/            (the page, with the two diagrams)
+  https://sgit.ai/demos/fractal-graphs/            (the page, with the three diagrams)
 
 Do these, in this order, as one release with a review entry in the site's own
 reviews workflow (the retitle is already item 1 of r001, state "commented"):
@@ -5944,8 +5950,8 @@ reviews workflow (the retitle is already item 1 of r001, state "commented"):
    format, and record the AIUC-1 crosswalk join (62 resolved, 8 amended articles found)
    as the site's second cross-vault finding.
 
-6. Reuse the two inline SVG diagrams from the sgit.ai page source where they help
-   (class prefixes fz- and lad-), and the Standards Atlas screenshots, with a line
+6. Reuse the three inline SVG diagrams from the sgit.ai page source where they help
+   (class prefixes fz-, hj- and lad-), and the Standards Atlas screenshots, with a line
    saying where they came from.
 
 7. Fix the small items in section 5: five versus seven stakeholder altitudes,
@@ -5958,7 +5964,7 @@ write it, and say the date. Report what you changed, what you left, and anything
 the brief you disagree with, before pushing.
 ```
 
-Written 19 September 2026 against graphs.sgit.ai v0.6.20. The sgit.ai page it refers to was at site v0.2.94; its version and date are in the chip at the top of the page.
+Written 19 September 2026 against graphs.sgit.ai v0.6.20. The sgit.ai page it refers to was at site v0.2.95; its version and date are in the chip at the top of the page.
 
 [← Briefs](index.md)[Fractal Semantic Graphs →](../../demos/fractal-graphs/index.md)
 
@@ -6847,11 +6853,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version — **v0.2.94**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version — **v0.2.95**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.2.94 | 2026-09-19 | this release | A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small 'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having the fractal test backwards. The author asked for it to go, and for a proper brief instead, since the sgit.ai page is now the fullest worked application of that site's two theses. The paragraph is gone; /docs/briefs/graphs-sgit-ai-fractal-semantic-graphs/ is the brief. It quotes the boundaries page's four-row table and shows that the page contradicts itself: the Recursion row says 'identical rules, no new format, no special case' while the author's own quote two paragraphs below says an article may be 'so meaty that it requires its own ontology and taxonomy, and that's the power of the fractal element'. Replacement text for the table, the test and llms.txt's sentence nine separates grammar (invariant) from ontology (free). Then: adopt the name and its lineage (already item 1 of their review r001, state 'commented'); lift the precise form of meaning-through-connectivity for the fractal case, 'the deeper you go the more you learn', and 'nobody is forced to conform'; six places to link the page; the two SVG diagrams and the Standards Atlas screenshots to reuse; the four graph vaults their evidence estate does not yet analyse (Standards Atlas GDPR, AIUC-1 conformance, Licence to Operate, ThreatModCon) and the AIUC-1 crosswalk join as a second cross-vault finding; three small corrections found on the way (5 versus 7 stakeholder altitudes in their llms.txt, sentinel.sgit.ai still named where sg-sentinel is the host, the vault count); a section on what not to change; and the prompt to paste, verbatim, at the end. No em-dashes in the brief. |
+| v0.2.95 | 2026-09-19 | this release | THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you more detail but no new meaning, because the only verb is contains'. The author's objection, in four parts: a single layer's ontology can have a very large number of verbs, each carrying meaning; as long as the links make sense inside that ontology, knowledge is gained one link at a time and it is massive; what the fractal architecture adds is the ability, on one of those links, to jump into another universe with its own rules and definitions; and what makes that fractal is that every such self-contained world is built from the same blocks — nodes, edges, ontologies, taxonomies, triplets. The test section is rewritten on his worked example, given as a voice memo: a risk register (its own rich verbs: gives_rise_to, owned_by, reports_to, mitigates, backs) whose incident fact jumps into security operations (alerts, signals, ATT&CK, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every logged request; possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Then the two consequences he drew: every connection followed should teach you something, even 'nothing to see here', with the observer or the query deciding whether value was added; and more granularity means a better representation of reality, chosen per context, with custom views on top being what makes it scale. Plus the upward direction (all of it one node in a bigger graph, graphs composed from graphs treated as a graph all the way up, the schema itself fractal in the Mandelbrot sense). A THIRD DIAGRAM draws the jump: four worlds in a row, each a small graph in its own vocabulary, joined by a jump link on one node each, a bracket above for the bigger graph. Its texts are measured against the viewBox like the other two. The graphs.sgit.ai brief's corresponding bullet and its diagram count are updated to match. |
+| v0.2.94 | 2026-09-19 | git f3476af0 | A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small 'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having the fractal test backwards. The author asked for it to go, and for a proper brief instead, since the sgit.ai page is now the fullest worked application of that site's two theses. The paragraph is gone; /docs/briefs/graphs-sgit-ai-fractal-semantic-graphs/ is the brief. It quotes the boundaries page's four-row table and shows that the page contradicts itself: the Recursion row says 'identical rules, no new format, no special case' while the author's own quote two paragraphs below says an article may be 'so meaty that it requires its own ontology and taxonomy, and that's the power of the fractal element'. Replacement text for the table, the test and llms.txt's sentence nine separates grammar (invariant) from ontology (free). Then: adopt the name and its lineage (already item 1 of their review r001, state 'commented'); lift the precise form of meaning-through-connectivity for the fractal case, 'the deeper you go the more you learn', and 'nobody is forced to conform'; six places to link the page; the two SVG diagrams and the Standards Atlas screenshots to reuse; the four graph vaults their evidence estate does not yet analyse (Standards Atlas GDPR, AIUC-1 conformance, Licence to Operate, ThreatModCon) and the AIUC-1 crosswalk join as a second cross-vault finding; three small corrections found on the way (5 versus 7 stakeholder altitudes in their llms.txt, sentinel.sgit.ai still named where sg-sentinel is the host, the vault count); a section on what not to change; and the prompt to paste, verbatim, at the end. No em-dashes in the brief. |
 | v0.2.93 | 2026-09-19 | git 96afb763 | The fractal graphs page description, which the markdown twin prints as its blockquote, had one em-dash left; a colon now. The ' — sgit.ai' suffix on every page title is a site-wide convention and stays until the site-wide pass is decided. |
 | v0.2.92 | 2026-09-19 | git 44f819a2 | NO EM-DASHES ON THE FRACTAL GRAPHS PAGE. The author asked for the dash to go, since a good many readers now find it off-putting. Eighty-two of them on forty-six lines, each rewritten by hand rather than by substitution: a parenthetical pair becomes commas or brackets, a dash before an explanation becomes a colon, a dash before a new thought becomes a full stop, the section headings go 'Altitude 0: the law', the diagram headers take a colon, and the ladder's header takes a middle dot. The one table cell that was a bare dash now says 'not measured'. Site-wide there are about 3,300 more across 212 source files; that pass is a separate decision and has not been made here. |
 | v0.2.91 | 2026-09-19 | git 318e41d6 | 'THE DEEPER YOU GO THE LESS YOU LEARN' WAS WRONG, OR AT LEAST WRONG ENOUGH TO CONFUSE. The author read the folder-tree sentence in the fractal graphs test and asked whether it should not be the MORE you learn, since depth brings connectivity. It should, for a fractal graph — and the sentence was trying to say something narrower about hierarchies: depth adds detail but no new meaning when the only verb is 'contains'. Rewritten to say exactly that for the hierarchy, and then to state the fractal case outright: the deeper you go the more you learn, because every altitude brings its own vocabulary of relationships and connectivity compounds instead of nesting. A new paragraph puts the cross-domain behaviour precisely, in the author's words — it means one thing: the core meaning of a node is supplied by the ontology at the altitude where it sits, and that ontology is free to change between altitudes (Article 9 is a binding provision, a container of paragraphs, and a source of definitions, depending on the level you read it from) — and closes with nature as the example nobody finds strange: universe, galaxy, star system, planet, ecosystem, organism, cell, molecule, atom, particle, the vocabulary changing completely at every altitude while each level stays connected to its neighbours. No schema describes a galaxy and a cell; one grammar describes both. |
@@ -7799,6 +7806,18 @@ The tooling followed. `release.sh` no longer requires `.sg_vault` or pushes sgit
 - The gallery's footer stopped calling the catalogue the place *new entries start*, because for twenty-one of them it was not.
 
 **The rule that came out of it:** give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.
+
+### [The jump — what the fractal property actually adds](#the-jump) [v0.2.95](../admin/versions.md)
+
+graphsmethodcorrection
+
+The Fractal Semantic Graphs page said that in a hierarchy *depth gives you more detail but no new meaning, because the only verb is "contains"*. The author's objection came in four parts, and all four are right.
+
+A single layer's ontology can have a very large number of verbs, each carrying meaning. As long as the links make sense inside that ontology, knowledge is gained one link at a time, and it is a great deal of knowledge; a risk register with ten thousand well-named edges is not a hierarchy and not yet a fractal. **What the fractal architecture adds is the ability, on one of those links, to jump into another universe** with its own rules and definitions. And what makes that fractal is that every such self-contained world is built from the same blocks: nodes, edges, ontologies, taxonomies, triplets, provenance.
+
+[The test section](../demos/fractal-graphs/index.md#what) is rewritten on the worked example he gave: a risk register whose incident fact jumps into security operations (alerts, signals, ATT&CK techniques, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every request the resolvers logged, possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Four worlds, four ontologies, one path of named edges. A third diagram draws it.
+
+Two consequences follow, in his words. **Every connection you follow should teach you something**, even when the answer is *nothing to see here*; whether a link added value is for the observer, or the query, to decide. And **more granularity means a better representation of reality**, chosen per context, with custom views on top of the whole being what makes it scale. It also runs upward: all four worlds are one node in a bigger graph, and the schema itself can be fractal in the Mandelbrot sense.
 
 ### [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing) [v0.2.83](../admin/versions.md)
 
