@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.92'
+SITE_VERSION = 'v0.2.93'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.92', '2026-09-19', 'this release',
+    ('v0.2.93', '2026-09-19', 'this release',
+     "The fractal graphs page description, which the markdown twin prints as its blockquote, "
+     "had one em-dash left; a colon now. The ' — sgit.ai' suffix on every page title is a "
+     "site-wide convention and stays until the site-wide pass is decided.",
+     ),
+    ('v0.2.92', '2026-09-19', 'git 44f819a2',
      "NO EM-DASHES ON THE FRACTAL GRAPHS PAGE. The author asked for the dash to go, since a good "
      "many readers now find it off-putting. Eighty-two of them on forty-six lines, each rewritten "
      "by hand rather than by substitution: a parenthetical pair becomes commas or brackets, a "

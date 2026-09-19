@@ -2,7 +2,7 @@
 
 > Eight services for governing the agents already running, each stating what it is, what it runs on, and how far along it is — some live products, some designs delivered as engagements.
 
-*Source: <https://sgit.ai/summit/corporate.html> · site v0.2.92 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/corporate.html> · site v0.2.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
