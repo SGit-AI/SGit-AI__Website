@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.88'
+SITE_VERSION = 'v0.2.89'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.88', '2026-09-19', 'this release',
+    ('v0.2.89', '2026-09-19', 'this release',
+     "THE DEFINITION HAD THE WORD BACKWARDS. v0.2.87 defined a fractal semantic graph as one where "
+     "'every node is itself a semantic graph built by the same rules', and stated the test as "
+     "'if zooming into a node needs a new format or a special case, the system is hierarchical'. "
+     "The author's reading of the page caught it: same types, same verbs, same rules at every "
+     "level IS a hierarchy — a folder tree, one schema all the way down. It becomes fractal at "
+     "the moment zooming in lands you somewhere different: a node whose inside has its own node "
+     "types, verbs and taxonomy — a new format, a special case — and that new world is still "
+     "joined by an edge to the one above. Graphs of graphs, ontologies of ontologies; the plural "
+     "is the point. What stays constant is the GRAMMAR (edges are verbs with inverses, meaning in "
+     "connectivity, provenance kept), never the schema — and that is exactly what lets everything "
+     "connect to everything without anyone being forced to conform: an organisation, a division, "
+     "a person, a regulator each define their own world and connect by declared edges, not a "
+     "merged schema; granularity is a per-situation decision, so a paragraph can be a mini-world "
+     "with more definition than the document around it. REWRITTEN ACCORDINGLY: the lead, the "
+     "'what it is' paragraph, the three-panel diagram's captions (panel 2 is now labelled a legal "
+     "ontology, panel 3 a lexical one, and the footer reads 'the grammar never changes; the "
+     "ontology does'), the test paragraph, a new bullet under 'why connect everything' on every "
+     "unit keeping its own world, the four-word table, the how-far lead, the ladder intro "
+     "('eleven altitudes, eleven ontologies, one grammar'), and the rule section's heading and "
+     "consequence paragraph. ONE WORDING TO PASS UPSTREAM: graphs.sgit.ai's boundaries page "
+     "states the test with the word 'format'; read as 'stops being a semantic graph' it agrees "
+     "with this page, read as 'schema' it says the opposite, and this page read it the wrong way "
+     "first. It should say 'grammar'. Recorded on the page with the date rather than silently "
+     "corrected.",
+     ),
+    ('v0.2.88', '2026-09-19', 'git e8edf935',
      "THE LADDER'S RIGHT COLUMN LOOKED LIKE LINKS AND WAS NOT. Second read of the fractal graphs "
      "page: the 'why this page exists' note (the LinkedIn back-story) is gone — the page stands "
      "without it; and the ladder diagram's right-hand column was long blue monospace text that "
@@ -2070,8 +2096,8 @@ so these are the entry points that are worth more than their position in it sugg
 - **Looking for a worked example?** /demos/vaults/llms.txt is the catalogue of every
   published vault with its read key, generated from the same file the human-readable table
   is, so the two cannot disagree.
-- **Fractal Semantic Graphs?** /demos/fractal-graphs/index.md defines the term (every node is
-  itself a semantic graph by the same rules, down to the word) and then walks one grammar from
+- **Fractal Semantic Graphs?** /demos/fractal-graphs/index.md defines the term (every node opens
+  into a semantic graph with its own ontology, down to the word; only the grammar is shared) and then walks one grammar from
   the text of a law to a threat in one method on one compute instance, across seven published
   vaults, with the rungs that are still modelled rather than imported stated plainly.
 

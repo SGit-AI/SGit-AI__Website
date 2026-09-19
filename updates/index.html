@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.88</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.89</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.88 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.89 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -164,6 +164,15 @@
 <p><b>The diagram.</b> Three panels of inline SVG: a four-node semantic graph; the Law node zoomed into articles and paragraphs, with an amendment drawn as an edge rather than a footnote; one paragraph zoomed into the terms it uses, each one edge from the article that defines it. The rules are the same in all three, which is the whole point, and the test for the word follows: <em>if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal.</em></p>
 <p><b>Why connect everything with everything.</b> Because every file format is already a graph — a PDF, a spreadsheet, a codebase, a JSON document — and only needs its edges named. Then questions cross formats without a join table, a correction propagates instead of being republished, the smallest node is whatever the question needs rather than what the format offers, and provenance comes free when the leaf is a word tied to a byte range and a hash. The discipline that keeps this from being noise: the edge has to be a verb.</p>
 <p>A four-word table closes the opening — graph, semantic graph, ontology, fractal semantic graph — with what each adds and where it stops. Everything from <em>How far down does the graph go?</em> onward is unchanged.</p>
+  </article>
+  <article class="upd" id="fractal-means-different-not-same">
+    <h3><a href="#fractal-means-different-not-same">Fractal means the inside is different, not the same — the definition had it backwards</a> <a class="upd-ver" href="../admin/versions.html">v0.2.89</a></h3>
+    <p class="chips"><span class="chip">graphs</span><span class="chip">method</span><span class="chip">correction</span></p>
+<p>Two releases ago <a href="../demos/fractal-graphs/index.html">Fractal Semantic Graphs</a> defined the term as a graph where <em>every node is itself a semantic graph built by the same rules</em>, and gave the test as <em>if zooming into a node needs a new format or a special case, the system is hierarchical</em>. The author's read of the page caught that this is the wrong way round.</p>
+<p><b>Same types, same verbs, same rules at every level is a hierarchy.</b> A folder tree is the clean case: folders inside folders inside folders, one schema all the way down, and the deeper you go the less you learn. <b>It becomes fractal at the moment zooming in lands you somewhere different</b> — a node whose inside has its own node types, its own verbs, its own taxonomy, a new format or a special case — and that new world is still joined by an edge to the one above. Graphs of graphs, ontologies of ontologies. The plural is the point.</p>
+<p>What stays constant is the <b>grammar</b>, never the schema: edges are verbs with named inverses, meaning lives in connectivity, every claim keeps its provenance. That is exactly what lets everything connect to everything without anyone being forced to conform. An organisation, a division, a single person, a regulator can each define their own world in their own vocabulary and connect to everyone else's by declaring edges — not by adopting a shared schema. And granularity becomes a decision per situation: a paragraph can be a mini-world with more definition than the document around it, because somebody needed it there and nowhere else.</p>
+<p>The page is rewritten accordingly — lead, definition, the diagram's captions (panel two is now a legal ontology, panel three a lexical one, and the footer reads <em>the grammar never changes; the ontology does</em>), the test, the four-word table, and the ladder's intro: <em>eleven altitudes, eleven ontologies, one grammar.</em></p>
+<p><b>One wording to pass upstream.</b> graphs.sgit.ai's boundaries page states the test with the word <em>format</em>. Read as "stops being a semantic graph and becomes JSON-plus-prose" it agrees with this page; read as "schema" it says the opposite, and this page read it the wrong way first. It should say <em>grammar</em>. Recorded on the page with the date rather than silently corrected.</p>
   </article>
   <article class="upd" id="deleting-files-from-history">
     <h3><a href="#deleting-files-from-history">Deleting files from git history — the exact scenario, drawn out</a> <a class="upd-ver" href="../admin/versions.html">v0.2.86</a></h3>
@@ -836,7 +845,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.88</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.89</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -878,7 +887,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.88';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.89';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

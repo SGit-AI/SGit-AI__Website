@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.88",
+  "site_version": "v0.2.89",
   "updates": [
     {
       "slug": "the-mirror-is-gone",
@@ -64,6 +64,18 @@
         "docs"
       ],
       "summary": "The author's first read of yesterday's page made three points, and all three were right. How far down does the graph go? is a section, not a title. The page must start by defining and visualising the term. And the first screens must work for a visitor who know…"
+    },
+    {
+      "slug": "fractal-means-different-not-same",
+      "title": "Fractal means the inside is different, not the same — the definition had it backwards",
+      "date": "2026-09-19",
+      "version": "v0.2.89",
+      "tags": [
+        "graphs",
+        "method",
+        "correction"
+      ],
+      "summary": "Two releases ago Fractal Semantic Graphs defined the term as a graph where every node is itself a semantic graph built by the same rules , and gave the test as if zooming into a node needs a new format or a special case, the system is hierarchical . The author…"
     },
     {
       "slug": "deleting-files-from-history",

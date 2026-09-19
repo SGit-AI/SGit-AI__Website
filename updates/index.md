@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -112,6 +112,20 @@ The author's first read of yesterday's page made three points, and all three wer
 **Why connect everything with everything.** Because every file format is already a graph — a PDF, a spreadsheet, a codebase, a JSON document — and only needs its edges named. Then questions cross formats without a join table, a correction propagates instead of being republished, the smallest node is whatever the question needs rather than what the format offers, and provenance comes free when the leaf is a word tied to a byte range and a hash. The discipline that keeps this from being noise: the edge has to be a verb.
 
 A four-word table closes the opening — graph, semantic graph, ontology, fractal semantic graph — with what each adds and where it stops. Everything from *How far down does the graph go?* onward is unchanged.
+
+### [Fractal means the inside is different, not the same — the definition had it backwards](#fractal-means-different-not-same) [v0.2.89](../admin/versions.md)
+
+graphsmethodcorrection
+
+Two releases ago [Fractal Semantic Graphs](../demos/fractal-graphs/index.md) defined the term as a graph where *every node is itself a semantic graph built by the same rules*, and gave the test as *if zooming into a node needs a new format or a special case, the system is hierarchical*. The author's read of the page caught that this is the wrong way round.
+
+**Same types, same verbs, same rules at every level is a hierarchy.** A folder tree is the clean case: folders inside folders inside folders, one schema all the way down, and the deeper you go the less you learn. **It becomes fractal at the moment zooming in lands you somewhere different** — a node whose inside has its own node types, its own verbs, its own taxonomy, a new format or a special case — and that new world is still joined by an edge to the one above. Graphs of graphs, ontologies of ontologies. The plural is the point.
+
+What stays constant is the **grammar**, never the schema: edges are verbs with named inverses, meaning lives in connectivity, every claim keeps its provenance. That is exactly what lets everything connect to everything without anyone being forced to conform. An organisation, a division, a single person, a regulator can each define their own world in their own vocabulary and connect to everyone else's by declaring edges — not by adopting a shared schema. And granularity becomes a decision per situation: a paragraph can be a mini-world with more definition than the document around it, because somebody needed it there and nowhere else.
+
+The page is rewritten accordingly — lead, definition, the diagram's captions (panel two is now a legal ontology, panel three a lexical one, and the footer reads *the grammar never changes; the ontology does*), the test, the four-word table, and the ladder's intro: *eleven altitudes, eleven ontologies, one grammar.*
+
+**One wording to pass upstream.** graphs.sgit.ai's boundaries page states the test with the word *format*. Read as "stops being a semantic graph and becomes JSON-plus-prose" it agrees with this page; read as "schema" it says the opposite, and this page read it the wrong way first. It should say *grammar*. Recorded on the page with the date rather than silently corrected.
 
 ### [Deleting files from git history — the exact scenario, drawn out](#deleting-files-from-history) [v0.2.86](../admin/versions.md)
 

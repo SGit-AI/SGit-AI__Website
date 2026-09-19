@@ -40,6 +40,13 @@
       <description>The author&#x27;s first read of yesterday&#x27;s page made three points, and all three were right. How far down does the graph go? is a section, not a title. The page must start by defining and visualising the term. And the first screens must work for a visitor who know…</description>
     </item>
     <item>
+      <title>Fractal means the inside is different, not the same — the definition had it backwards</title>
+      <link>https://sgit.ai/updates/index.html#fractal-means-different-not-same</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#fractal-means-different-not-same</guid>
+      <pubDate>2026-09-19</pubDate>
+      <description>Two releases ago Fractal Semantic Graphs defined the term as a graph where every node is itself a semantic graph built by the same rules , and gave the test as if zooming into a node needs a new format or a special case, the system is hierarchical . The author…</description>
+    </item>
+    <item>
       <title>Deleting files from git history — the exact scenario, drawn out</title>
       <link>https://sgit.ai/updates/index.html#deleting-files-from-history</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#deleting-files-from-history</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#one-front-door-for-vault-guidance</guid>
       <pubDate>2026-09-09</pubDate>
       <description>The guidance here had accumulated across three top level folders — /briefs , /vault , and a /guidance page written this morning. That is three places to look for one kind of thing. Everything readable now lives under /docs/ : /docs/briefs , /docs/vault , /docs…</description>
-    </item>
-    <item>
-      <title>The second build brief, and it mostly says don&#x27;t build it</title>
-      <link>https://sgit.ai/updates/index.html#markdown-and-file-viewers-what-not-to-build</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#markdown-and-file-viewers-what-not-to-build</guid>
-      <pubDate>2026-09-09</pubDate>
-      <description>Two of the most common things an agent is asked to add to a vault are a markdown viewer and a file/folder browser with raw views . Both already exist in the vault platform, and most requests for them are answered by publishing files in the right shape and writ…</description>
     </item>
   </channel>
 </rss>
