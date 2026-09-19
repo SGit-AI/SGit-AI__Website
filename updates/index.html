@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.84</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.85</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -50,6 +50,7 @@
       <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
       <a class="sl" href="../catalogue/index.html">Catalogue</a>
       <a class="sl" href="../demos/index.html">Demos</a>
+      <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -92,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.84 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.85 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -134,6 +135,19 @@
 <p>That page is at <code>/case-studies/exposed-vault-key.md</code>. The advice about the costliest mistake in the product had been pointing at a 404. Widening the guard to every section then caught <code>/security.md</code>, referenced twice, where the page is <code>/security/index.md</code>.</p>
 <p>Both were 404 on the live site, and the site's own validator had never looked — it checks links <em>inside pages</em>, and <code>llms.txt</code> is not a page. A file that exists to be read by machines had never been link-checked by one.</p>
 <p><b>Also corrected:</b> the preamble claimed this site <em>"is itself served from an encrypted vault."</em> The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot.</p>
+  </article>
+  <article class="upd" id="how-far-down-does-the-graph-go">
+    <h3><a href="#how-far-down-does-the-graph-go">How far down does the graph go? A page for the question that got three bare URLs</a> <a class="upd-ver" href="../admin/versions.html">v0.2.85</a></h3>
+    <p class="chips"><span class="chip">graphs</span><span class="chip">vaults</span><span class="chip">method</span><span class="chip">network</span></p>
+<p>Asked on LinkedIn whether we had <em>"defined the dimensions/layers needed to map this all the way down to say the EA and system configurations"</em>, the author answered with three links. The answer was right and the form was poor. <a href="../demos/fractal-graphs/index.html">How far down does the graph go?</a> is the same answer with the pictures.</p>
+<p><b>The ladder.</b> Eleven altitudes from the text of a law to a compute instance, drawn as one diagram, each rung mapped to the published vault where that altitude is a live graph you can open: the <a href="../demos/vaults/regulation-graph/index.html">Regulation Graph</a> for the law, the <a href="../demos/vaults/standards-atlas-gdpr/index.html">Standards Atlas</a> for the layer the text omits, the <a href="../demos/vaults/aiuc-1-conformance/index.html">AIUC-1 conformance layer</a> for the standard, its evidence and the policy it computes, the <a href="../demos/vaults/risk-graph-explorer/index.html">Risk Graph Explorer</a> and <a href="../demos/vaults/agentic-browser-isolation/index.html">Agentic Browser Isolation</a> for fact, risk, owner and acceptance, and <a href="../demos/vaults/threatmodcon-2025/index.html">ThreatModCon 2025</a> for the eleven linked threat models that reach a method, a source file and a runtime.</p>
+<p><b>The rule.</b> One grammar at every rung — every edge a verb with a named inverse, <code>relates-to</code> banned, properties carrying data and never meaning, supersede rather than delete — which is what makes <em>fractal</em> a testable claim rather than an adjective. The GDPR atlas says it in its own graph view: <em>"You are at the top of the fractal."</em></p>
+<h2>The screenshots are new, and real</h2>
+<p>The atlas refuses to run outside a vault host. So a read-key clone was served locally behind a shim that implements <code>sg.vfs</code> over <code>fetch</code>, and its graph view was captured at three altitudes: the Regulation and its eight domains, then <em>Principles</em> and Article 5's seven, then one principle with its provenance. Nothing about the rendering changes between the levels; only the question does. <a href="../demos/vaults/standards-atlas-gdpr/index.html">The vault's page</a> gained those views too.</p>
+<h2>The honest section</h2>
+<p>The bottom four rungs — environment, runtime, compute — are modelled layers, not imports from a CMDB or an infrastructure repository. No published vault holds an enterprise-architecture repository as a graph joined upward to obligations; that is the rung the page cannot yet point at. The AIUC-1 crosswalks resolve at article level only. The GDPR atlas is a dated seed pass and uses the banned <code>relates</code> edge six times, counted from its own <code>graph/edges.json</code>. standards.sgit.ai models one instrument and has zero crosswalks. abp.sgit.ai's 23 capability primitives are the right shape to attach to a real permission set, and nothing published yet does. Named gaps get filled.</p>
+<h2>Also fixed</h2>
+<p>The footer on every page still read <em>"this site is itself served from an encrypted SG/Send vault."</em> It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.</p>
   </article>
   <h2 class="upd-date">2026-09-18</h2>
   <article class="upd" id="the-same-pack-for-an-archetype">
@@ -794,8 +808,8 @@
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.84</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.85</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -837,7 +851,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.84';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.85';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

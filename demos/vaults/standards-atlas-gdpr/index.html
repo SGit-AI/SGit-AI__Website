@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.84</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.85</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -50,6 +50,7 @@
       <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
       <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
       <a class="sl" href="../../../demos/index.html">Demos</a>
+      <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
     </div>
   </div>
   <div class="ni ni-has">
@@ -92,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.84 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.85 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Standards Atlas — GDPR</p>
   <h1>Standards Atlas — GDPR</h1>
@@ -138,6 +139,28 @@
     </div>
   </div>
 
+  <h2 id="fractal">The graph view, by altitude</h2>
+  <p>Added 19 September 2026, captured from a read-key clone of the vault with a local host bridge. The graph view is navigated <em>by altitude</em>, and the panel says so in its own words: <em>&ldquo;You are at the top of the fractal. Each domain is its own ontology that connects up to the GDPR root and down to concepts and articles.&rdquo;</em> Descend into a domain and the ring becomes its concepts; descend into a concept and it shows its provenance and the article it anchors to. The rendering does not change between altitudes &mdash; only the question does. This vault is one rung of <a href="../../fractal-graphs/index.html">the ladder that runs from the law to the compute instance</a>.</p>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">altitude 0 → 1</span>
+        <h3>The Regulation, then one of its eight domains</h3>
+        <p>At the top: GDPR and eight domains on a ring, one per group of chapters. Pick <em>Principles</em> and the ring is Article 5's seven principles &mdash; <em>&ldquo;the spine the whole graph hangs from&rdquo;</em> &mdash; seven concepts, one article. The layout is computed from the graph, not drawn.</p>
+        <p><b>An honest count:</b> the graph holds 165 nodes and 227 edges, and six of those edges are typed <code>relates</code> &mdash; the one verb <a href="https://graphs.sgit.ai/v1/grammar/index.html" rel="noopener" target="_blank">the grammar</a> bans, because it constrains nothing. This vault predates the rule. Recorded rather than fixed, since the seed graph is deliberately immutable and corrections go to <code>feedback/</code>.</p>
+      </div>
+      <figure class="shot" data-shot="graph-alt1.webp" data-dir="images/" data-alt="The graph view at altitude 1: Principles at the centre, the seven Article 5 principles on a ring, and a panel listing the concepts and the one article they anchor to."><figcaption>Altitude 1: <em>Principles</em>, its seven concepts, and Article 5.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">beyond the text</span>
+        <h3>One unchanged article, five rulings</h3>
+        <p>Article 45 has not changed a word since 2016; what it permits has flipped repeatedly &mdash; Safe Harbour, Schrems I, Privacy Shield, Schrems II, the Data Privacy Framework, an appeal pending. The view draws the rulings as a timeline over the article node, which is the case for the second layer in one picture: <em>&ldquo;this is why a static PDF of GDPR is misleading and a versioned graph is not.&rdquo;</em></p>
+      </div>
+      <figure class="shot" data-shot="beyond.webp" data-dir="images/" data-alt="Beyond the Text: a timeline from Safe Harbour in 2000 through Schrems I and II to the Data Privacy Framework and a pending CJEU appeal."><figcaption>The moving target: international transfers, as ruling nodes over one constant article.</figcaption></figure>
+    </div>
+  </div>
+
   <h2>Notes</h2>
   <p><b>The narrowest interesting grant on the site.</b> Most vaults here request read and no write. This one requests <code>fs.write</code> and <code>fs.mkdir</code> on exactly one path — <code>feedback/</code> — which is how it accepts corrections without ever letting a reviewer alter the graph they are reviewing.</p>
 
@@ -145,7 +168,7 @@
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.84')
+  fetch('../../../assets/shots.js?v=v0.2.85')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -156,8 +179,8 @@
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.84</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.85</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -199,7 +222,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.84';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.85';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

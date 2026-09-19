@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,6 +66,28 @@ That page is at `/case-studies/exposed-vault-key.md`. The advice about the costl
 Both were 404 on the live site, and the site's own validator had never looked — it checks links *inside pages*, and `llms.txt` is not a page. A file that exists to be read by machines had never been link-checked by one.
 
 **Also corrected:** the preamble claimed this site *"is itself served from an encrypted vault."* The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot.
+
+### [How far down does the graph go? A page for the question that got three bare URLs](#how-far-down-does-the-graph-go) [v0.2.85](../admin/versions.md)
+
+graphsvaultsmethodnetwork
+
+Asked on LinkedIn whether we had *"defined the dimensions/layers needed to map this all the way down to say the EA and system configurations"*, the author answered with three links. The answer was right and the form was poor. [How far down does the graph go?](../demos/fractal-graphs/index.md) is the same answer with the pictures.
+
+**The ladder.** Eleven altitudes from the text of a law to a compute instance, drawn as one diagram, each rung mapped to the published vault where that altitude is a live graph you can open: the [Regulation Graph](../demos/vaults/regulation-graph/index.md) for the law, the [Standards Atlas](../demos/vaults/standards-atlas-gdpr/index.md) for the layer the text omits, the [AIUC-1 conformance layer](../demos/vaults/aiuc-1-conformance/index.md) for the standard, its evidence and the policy it computes, the [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) and [Agentic Browser Isolation](../demos/vaults/agentic-browser-isolation/index.md) for fact, risk, owner and acceptance, and [ThreatModCon 2025](../demos/vaults/threatmodcon-2025/index.md) for the eleven linked threat models that reach a method, a source file and a runtime.
+
+**The rule.** One grammar at every rung — every edge a verb with a named inverse, `relates-to` banned, properties carrying data and never meaning, supersede rather than delete — which is what makes *fractal* a testable claim rather than an adjective. The GDPR atlas says it in its own graph view: *"You are at the top of the fractal."*
+
+## The screenshots are new, and real
+
+The atlas refuses to run outside a vault host. So a read-key clone was served locally behind a shim that implements `sg.vfs` over `fetch`, and its graph view was captured at three altitudes: the Regulation and its eight domains, then *Principles* and Article 5's seven, then one principle with its provenance. Nothing about the rendering changes between the levels; only the question does. [The vault's page](../demos/vaults/standards-atlas-gdpr/index.md) gained those views too.
+
+## The honest section
+
+The bottom four rungs — environment, runtime, compute — are modelled layers, not imports from a CMDB or an infrastructure repository. No published vault holds an enterprise-architecture repository as a graph joined upward to obligations; that is the rung the page cannot yet point at. The AIUC-1 crosswalks resolve at article level only. The GDPR atlas is a dated seed pass and uses the banned `relates` edge six times, counted from its own `graph/edges.json`. standards.sgit.ai models one instrument and has zero crosswalks. abp.sgit.ai's 23 capability primitives are the right shape to attach to a real permission set, and nothing published yet does. Named gaps get filled.
+
+## Also fixed
+
+The footer on every page still read *"this site is itself served from an encrypted SG/Send vault."* It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.
 
 ## 2026-09-18
 

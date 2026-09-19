@@ -43,6 +43,28 @@
     </div>
   </div>
 
+  <h2 id="fractal">The graph view, by altitude</h2>
+  <p>Added 19 September 2026, captured from a read-key clone of the vault with a local host bridge. The graph view is navigated <em>by altitude</em>, and the panel says so in its own words: <em>&ldquo;You are at the top of the fractal. Each domain is its own ontology that connects up to the GDPR root and down to concepts and articles.&rdquo;</em> Descend into a domain and the ring becomes its concepts; descend into a concept and it shows its provenance and the article it anchors to. The rendering does not change between altitudes &mdash; only the question does. This vault is one rung of <a href="../../fractal-graphs/index.html">the ladder that runs from the law to the compute instance</a>.</p>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">altitude 0 → 1</span>
+        <h3>The Regulation, then one of its eight domains</h3>
+        <p>At the top: GDPR and eight domains on a ring, one per group of chapters. Pick <em>Principles</em> and the ring is Article 5's seven principles &mdash; <em>&ldquo;the spine the whole graph hangs from&rdquo;</em> &mdash; seven concepts, one article. The layout is computed from the graph, not drawn.</p>
+        <p><b>An honest count:</b> the graph holds 165 nodes and 227 edges, and six of those edges are typed <code>relates</code> &mdash; the one verb <a href="https://graphs.sgit.ai/v1/grammar/index.html" rel="noopener" target="_blank">the grammar</a> bans, because it constrains nothing. This vault predates the rule. Recorded rather than fixed, since the seed graph is deliberately immutable and corrections go to <code>feedback/</code>.</p>
+      </div>
+      <figure class="shot" data-shot="graph-alt1.webp" data-dir="images/" data-alt="The graph view at altitude 1: Principles at the centre, the seven Article 5 principles on a ring, and a panel listing the concepts and the one article they anchor to."><figcaption>Altitude 1: <em>Principles</em>, its seven concepts, and Article 5.</figcaption></figure>
+    </div>
+    <div class="wt-row wt-alt">
+      <div class="wt-text">
+        <span class="wt-tag">beyond the text</span>
+        <h3>One unchanged article, five rulings</h3>
+        <p>Article 45 has not changed a word since 2016; what it permits has flipped repeatedly &mdash; Safe Harbour, Schrems I, Privacy Shield, Schrems II, the Data Privacy Framework, an appeal pending. The view draws the rulings as a timeline over the article node, which is the case for the second layer in one picture: <em>&ldquo;this is why a static PDF of GDPR is misleading and a versioned graph is not.&rdquo;</em></p>
+      </div>
+      <figure class="shot" data-shot="beyond.webp" data-dir="images/" data-alt="Beyond the Text: a timeline from Safe Harbour in 2000 through Schrems I and II to the Data Privacy Framework and a pending CJEU appeal."><figcaption>The moving target: international transfers, as ruling nodes over one constant article.</figcaption></figure>
+    </div>
+  </div>
+
   <h2>Notes</h2>
   <p><b>The narrowest interesting grant on the site.</b> Most vaults here request read and no write. This one requests <code>fs.write</code> and <code>fs.mkdir</code> on exactly one path — <code>feedback/</code> — which is how it accepts corrections without ever letting a reviewer alter the graph they are reviewing.</p>
 

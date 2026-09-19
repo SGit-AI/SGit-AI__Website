@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.84",
+  "site_version": "v0.2.85",
   "updates": [
     {
       "slug": "the-mirror-is-gone",
@@ -28,6 +28,19 @@
         "method"
       ],
       "summary": "Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…"
+    },
+    {
+      "slug": "how-far-down-does-the-graph-go",
+      "title": "How far down does the graph go? A page for the question that got three bare URLs",
+      "date": "2026-09-19",
+      "version": "v0.2.85",
+      "tags": [
+        "graphs",
+        "vaults",
+        "method",
+        "network"
+      ],
+      "summary": "Asked on LinkedIn whether we had \"defined the dimensions/layers needed to map this all the way down to say the EA and system configurations\" , the author answered with three links. The answer was right and the form was poor. How far down does the graph go? is…"
     },
     {
       "slug": "the-same-pack-for-an-archetype",

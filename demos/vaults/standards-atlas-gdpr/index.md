@@ -2,7 +2,7 @@
 
 > The General Data Protection Regulation as a navigable semantic graph, where CJEU rulings, regulator guidance and per-country variation are first-class nodes layered over the articles they bend — with a validation surface that writes corrections back into the vault.
 
-*Source: <https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/standards-atlas-gdpr/index.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,6 +42,28 @@ Above every view sits `SEED PASS — NOT LEGAL ADVICE`, and the overview repeats
 That is why the **Validate** view matters. Corrections are written from inside the vault to `/feedback/`, gated on the `fs.write: ["feedback/"]` grant — so a read-only reader records changes in the page only, while the seed graph stays immutable and reviewers layer validated provenance on top.
 
 The vault browser: the graph, its sources and provenance, and the narrow write grant behind Validate.
+
+## The graph view, by altitude
+
+Added 19 September 2026, captured from a read-key clone of the vault with a local host bridge. The graph view is navigated *by altitude*, and the panel says so in its own words: *“You are at the top of the fractal. Each domain is its own ontology that connects up to the GDPR root and down to concepts and articles.”* Descend into a domain and the ring becomes its concepts; descend into a concept and it shows its provenance and the article it anchors to. The rendering does not change between altitudes — only the question does. This vault is one rung of [the ladder that runs from the law to the compute instance](../../fractal-graphs/index.md).
+
+altitude 0 → 1
+
+### The Regulation, then one of its eight domains
+
+At the top: GDPR and eight domains on a ring, one per group of chapters. Pick *Principles* and the ring is Article 5's seven principles — *“the spine the whole graph hangs from”* — seven concepts, one article. The layout is computed from the graph, not drawn.
+
+**An honest count:** the graph holds 165 nodes and 227 edges, and six of those edges are typed `relates` — the one verb [the grammar](https://graphs.sgit.ai/v1/grammar/index.html) bans, because it constrains nothing. This vault predates the rule. Recorded rather than fixed, since the seed graph is deliberately immutable and corrections go to `feedback/`.
+
+Altitude 1: *Principles*, its seven concepts, and Article 5.
+
+beyond the text
+
+### One unchanged article, five rulings
+
+Article 45 has not changed a word since 2016; what it permits has flipped repeatedly — Safe Harbour, Schrems I, Privacy Shield, Schrems II, the Data Privacy Framework, an appeal pending. The view draws the rulings as a timeline over the article node, which is the case for the second layer in one picture: *“this is why a static PDF of GDPR is misleading and a versioned graph is not.”*
+
+The moving target: international transfers, as ruling nodes over one constant article.
 
 ## Notes
 

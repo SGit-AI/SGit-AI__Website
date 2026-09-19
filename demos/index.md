@@ -2,7 +2,7 @@
 
 > Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
 
-*Source: <https://sgit.ai/demos/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/index.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -21,6 +21,8 @@ The demos outgrew this page. Every vault whose read key this site publishes now 
 [Gallery · 30 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
+
+[Showcase · 7 vaults### How far down does the graph go?Fractal semantic graphs, altitude by altitude: the law, the standard, the evidence, the risk, the owner, the policy, and a threat in one line of code — each a live graph in a published vault, with the pictures and the counts.Walk the ladder →](fractal-graphs/index.md)
 
 [Index · live from a vault### The catalogueAn index of vaults that is itself a vault, rendered live on this site with a published read key. The machine-first companion to the gallery.Open the catalogue →](../catalogue/index.md)
 

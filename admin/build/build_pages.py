@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.84'
+SITE_VERSION = 'v0.2.85'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,35 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.84', '2026-09-19', 'this release',
+    ('v0.2.85', '2026-09-19', 'this release',
+     "HOW FAR DOWN DOES THE GRAPH GO? A DEDICATED PAGE FOR THE QUESTION THAT GOT THREE BARE URLS "
+     "ON LINKEDIN. Asked whether the dimensions and layers had been defined 'all the way down to "
+     "the EA and system configurations', the author answered with links to three vaults. The "
+     "answer was right and the form was poor, so /demos/fractal-graphs/ now gives it properly: an "
+     "eleven-rung ladder drawn as inline SVG from law to compute instance, each rung mapped to the "
+     "published vault where that altitude is a live graph; the one grammar (every edge a verb with "
+     "an inverse, relates-to banned, properties never carry meaning, supersede never delete) that "
+     "makes the word fractal a testable claim; and walkthrough rows for seven vaults with their "
+     "own screenshots and counts — Regulation Graph, Standards Atlas GDPR, AIUC-1 conformance, "
+     "Risk Graph Explorer, Agentic Browser Isolation, Licence to Operate, ThreatModCon 2025 — plus "
+     "sibling cards for graphs.sgit.ai, standards.sgit.ai and abp.sgit.ai. THE NEW SCREENSHOTS ARE "
+     "REAL: the GDPR atlas refuses to run outside a vault host, so a read-key clone was served "
+     "locally behind a shim implementing sg.vfs over fetch, and its graph view was captured at "
+     "three altitudes; the panel's own text — 'You are at the top of the fractal' — is the page's "
+     "epigraph. The vault's page gained those views too. THE HONEST SECTION IS THE POINT: the "
+     "bottom four rungs (environment, runtime, compute) are modelled layers rather than imports "
+     "from a CMDB or IaC; no published vault holds an enterprise-architecture repository as a "
+     "graph; AIUC-1 crosswalks resolve at article level only; the GDPR atlas is a dated seed pass "
+     "and uses the banned relates edge six times (counted from graph/edges.json: 6 of 227); "
+     "standards.sgit.ai models one instrument and has zero crosswalks; abp.sgit.ai's capability "
+     "grammar is a vocabulary not yet joined to a real grant. Named gaps get filled. ALSO FIXED, "
+     "FOUND WHILE PURGING THE MIRROR: the footer on every page still said 'this site is itself "
+     "served from an encrypted SG/Send vault' — false since v0.2.76 and in fact never true of the "
+     "deployed pages, which GitHub Pages has always served. It now says what is true: thirty "
+     "vaults open in your browser with published read keys; the pages describing them are static "
+     "files. Nav: Fractal graphs added under Vaults; llms.txt START HERE block points at the page.",
+     ),
+    ('v0.2.84', '2026-09-19', 'git b5ae665d',
      "THE SITE'S OWN VAULT MIRROR IS GONE — DELETED FROM THE TREE, PURGED FROM EVERY COMMIT, AND "
      "THE BRANCH FORCE-PUSHED. Asked whether the mirror was still needed, the answer at v0.2.83 "
      "was no: it had no reader (every session that built the site cloned it from GitHub), no "
@@ -1561,6 +1589,7 @@ NAV = [
         ('vaults',    'Published vaults', 'demos/vaults/index.html'),
         ('catalogue', 'Catalogue',        'catalogue/index.html'),
         ('demos',     'Demos',            'demos/index.html'),
+        ('fractal',   'Fractal graphs',   'demos/fractal-graphs/index.html'),
     ]),
     ('evidence', 'Evidence', 'compare/index.html', [
         ('compare',      'Comparisons',  'compare/index.html'),
@@ -1621,7 +1650,7 @@ def footer(p, md=''):
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
     <p class="verline">site <a href="{p}admin/versions.html">{SITE_VERSION}</a> · <a href="{p}admin/index.html">engineering</a> · <a href="{md}" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
@@ -1984,6 +2013,9 @@ so these are the entry points that are worth more than their position in it sugg
 - **Looking for a worked example?** /demos/vaults/llms.txt is the catalogue of every
   published vault with its read key, generated from the same file the human-readable table
   is, so the two cannot disagree.
+- **Asked how far down the graph goes?** /demos/fractal-graphs/index.md walks one grammar from
+  the text of a law to a threat in one method on one compute instance, across seven published
+  vaults, with the rungs that are still modelled rather than imported stated plainly.
 
 SCOPED INDEXES — each covers one part of this site and is regenerated on every release:
 /llms.txt (this file, everything) · /docs/llms.txt · /docs/guidance/llms.txt ·
