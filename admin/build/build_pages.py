@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.89'
+SITE_VERSION = 'v0.2.90'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.89', '2026-09-19', 'this release',
+    ('v0.2.90', '2026-09-19', 'this release',
+     "Captions on the zoom diagram shortened: panels two and three overran their columns after "
+     "the v0.2.89 rewording, and the footer line was a pixel from the edge. Checked by rendering "
+     "the SVG at two widths, not by eye on the source.",
+     ),
+    ('v0.2.89', '2026-09-19', 'git e733f91a',
      "THE DEFINITION HAD THE WORD BACKWARDS. v0.2.87 defined a fractal semantic graph as one where "
      "'every node is itself a semantic graph built by the same rules', and stated the test as "
      "'if zooming into a node needs a new format or a special case, the system is hierarchical'. "
