@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,32 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-19
+
+### [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing) [v0.2.83](../admin/versions.md)
+
+llmsagentsdocsmethod
+
+Asked to check that an agent reading [`/llms.txt`](../llms.txt) finds the newest guidance, the answer was that **coverage was complete and routing was broken**.
+
+Everything was in the file — the generator adds every page. But [the guidance front door](../docs/guidance/index.md) sat at line 149 of 239, as page entry 83 of 138, indistinguishable from `installation.md`. Meanwhile the orientation block at the top still said *"task-shaped guidance with recipes and agent briefs lives under /use-cases/"* — which is where that guidance lived **before** it moved to `/docs/guidance/` and `/docs/briefs/`. And none of the six scoped `llms.txt` files were advertised, so an agent reading the root had no way to learn that `/docs/guidance/llms.txt` or `/demos/vaults/llms.txt` exist.
+
+Fixed with a **START HERE, BY WHAT YOU ARE DOING** block before the page list: four entry points by intent — building a vault, choosing a surface, writing a viewer, looking for a worked example — plus the list of scoped indexes.
+
+## Two broken links, found by the guard rather than by reading
+
+The routing block is hand-written prose naming generated files, which is exactly the drift this site keeps warning about. So the build now asserts that **every path the preamble points at is a file the build actually produces.**
+
+It failed on the first run — and on the most important line in the file:
+
+*"Never write a vault key into a tracked file. See `/docs/exposed-vault-key.md` for what that costs."*
+
+That page is at `/case-studies/exposed-vault-key.md`. The advice about the costliest mistake in the product had been pointing at a 404. Widening the guard to every section then caught `/security.md`, referenced twice, where the page is `/security/index.md`.
+
+Both were 404 on the live site, and the site's own validator had never looked — it checks links *inside pages*, and `llms.txt` is not a page. A file that exists to be read by machines had never been link-checked by one.
+
+**Also corrected:** the preamble claimed this site *"is itself served from an encrypted vault."* The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot.
 
 ## 2026-09-18
 

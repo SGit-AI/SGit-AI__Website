@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.82'
+SITE_VERSION = 'v0.2.83'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.82', '2026-09-18', 'this release',
+    ('v0.2.83', '2026-09-19', 'this release',
+     "THE ROOT LLMS.TXT WAS POINTING AGENTS AT TWO 404s, AND BURYING THE GUIDANCE IT SHOULD LEAD "
+     "WITH. Asked to check that an agent reading /llms.txt finds the newest guidance, the answer "
+     "was that COVERAGE was complete and ROUTING was broken. The guidance front door sat at line "
+     "149 of 239, as page entry 83 of 138, indistinguishable from installation.md — while the "
+     "orientation block at the top still sent agents to /use-cases/ for 'task-shaped guidance and "
+     "agent briefs', which is where that guidance lived before it moved to /docs/guidance/ and "
+     "/docs/briefs/. None of the six scoped llms.txt files were advertised at all, so an agent "
+     "reading the root had no way to learn that /docs/guidance/llms.txt or /demos/vaults/llms.txt "
+     "exist. Fixed with a START HERE, BY WHAT YOU ARE DOING block before the page list — four "
+     "entry points by intent, plus the list of scoped indexes — and the stale /use-cases/ pointer "
+     "corrected. TWO BROKEN LINKS FOUND BY THE GUARD, NOT BY READING: the routing block is "
+     "hand-written prose naming generated files, which is the exact drift this site warns about, "
+     "so the build now asserts that every path the preamble points at is a file the build "
+     "produces. It failed immediately on /docs/exposed-vault-key.md — the line telling agents "
+     "never to write a vault key into a tracked file, pointing at a 404 for six months; the page "
+     "is at /case-studies/exposed-vault-key.md. Widening the guard to every section then caught "
+     "/security.md, referenced twice, where the page is /security/index.md. Both were 404 on the "
+     "live site and the site's own validator had never looked, because it checks links inside "
+     "pages and llms.txt is not a page. ALSO CORRECTED: the preamble claimed this site 'is itself "
+     "served from an encrypted vault'. The vault mirror last moved at v0.2.76 and six releases "
+     "have gone out over git alone, so the claim came out rather than being left to rot.",
+     ),
+    ('v0.2.82', '2026-09-18', 'PREV_UNFILLED',
      "VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 "
      "from the same generator one day later — a fractional CISO pack, two days a month on a "
      "retainer for a company that is already certified — and the interesting thing is how it "
@@ -1909,21 +1932,43 @@ LLMS_PREAMBLE = """# sgit.ai
 > encrypted client-side (AES-256-GCM) before they leave your machine. The server stores
 > ciphertext under opaque IDs — it never sees filenames, contents, or commit messages.
 > This site is the official documentation for sgit and the SGraph vault platform
-> (SG/Vault, SG/Send) — and is itself served from an encrypted vault.
+> (SG/Vault, SG/Send).
 
 Every page below is markdown, generated from the same source as the HTML page at the
 same path (swap `.md` for `.html`). Links inside the markdown point at markdown, so you
 can traverse the entire site without parsing HTML.
 
+START HERE, BY WHAT YOU ARE DOING — the page list below is exhaustive and therefore flat,
+so these are the entry points that are worth more than their position in it suggests:
+
+- **About to build, publish or change a vault?** /docs/guidance/index.md is the front door:
+  the practices that get repeated most, and a route to the page that answers each question.
+  Its agent-shaped twin is /docs/guidance/llms.txt — five rules, a reading order, the briefs,
+  and reference implementations to go and check.
+- **Deciding WHERE your code should run?** /docs/surfaces.md first. `_page.json` inside a
+  vault, an HTML vault app, or a page on a *.sgit.ai site are three different answers to
+  almost every question, and they have opposite trust directions.
+- **Writing a viewer, an app or a page against a vault?** /docs/briefs/ — build briefs
+  written to be executed, each ending in a prompt to hand a builder agent.
+- **Looking for a worked example?** /demos/vaults/llms.txt is the catalogue of every
+  published vault with its read key, generated from the same file the human-readable table
+  is, so the two cannot disagree.
+
+SCOPED INDEXES — each covers one part of this site and is regenerated on every release:
+/llms.txt (this file, everything) · /docs/llms.txt · /docs/guidance/llms.txt ·
+/docs/vault/llms.txt · /api/llms.txt · /demos/vaults/llms.txt
+
 Notes for agents:
 - sgit is in beta and powers production workflows. Honest edges: /docs/limitations.md
 - Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
 - Vault keys are full-strength generated keys (`passphrase:vault_id`). No password reset exists.
-- Never write a vault key into a tracked file. See /docs/exposed-vault-key.md for what that costs.
+- Never write a vault key into a tracked file. See /case-studies/exposed-vault-key.md for
+  what that costs, and /docs/guidance/index.md for the practice that prevents it.
 - The agent-facing command is `sgit write <path> --file <f> --message <m> --push --json`;
   every read path has a --json flag.
 - Cross-session state pattern: clone/pull at session start, commit + push at session end.
-- Task-shaped guidance with recipes and agent briefs lives under /use-cases/.
+- Task-shaped recipes by industry live under /use-cases/; the guidance for working ON a
+  vault moved to /docs/guidance/ and the build briefs to /docs/briefs/.
 
 If your tooling cannot follow links out of this file, fetch /llms-full.txt — every page of
 this site concatenated into one document (~155 KB). One request gets the complete set.
@@ -1939,7 +1984,7 @@ Quick answers (so you do not need a second request for the common questions):
   private branch and publishing to a shared branch is explicit; the vault key is address,
   credential and encryption key in one string.
 - What the server can see: the vault ID, the size of each encrypted object, and request
-  timing. Never filenames, contents, or commit messages. /security.md
+  timing. Never filenames, contents, or commit messages. /security/index.md
 - Read access is a separate, one-way-derived key: publishable, cannot be turned into write
   access, works against any server holding the ciphertext. This site publishes one.
 - Crypto: AES-256-GCM, PBKDF2-HMAC-SHA256 at 600k iterations, HKDF-SHA256. No custom
@@ -1955,7 +2000,7 @@ Quick answers (so you do not need a second request for the common questions):
   you agree the token out of band. The server side is shipped. Do not code against the derivation.
 - PKI exists. `sgit pki keygen/list/export/import/contacts/sign/verify/encrypt/decrypt`. The vault
   key is symmetric and roots the storage hierarchy; keypairs layer on top for identity and
-  recipient-addressed encryption. /docs/pki.md · /security.md#pki
+  recipient-addressed encryption. /docs/pki.md · /security/index.md#pki
 - The HTTP API is the whole surface — the CLI and the browser bridge are both clients. /api/index.md
 - sgit is beta; it has no compliance certification of any kind.
 """
@@ -2339,6 +2384,15 @@ links out instead of summarising the rest badly.
     for d in llms_dirs():
         want = (d + '/llms.txt') if d else 'llms.txt'
         assert want in got, f'llms_chip() points at {want}, which no generator writes'
+    # The routing block at the top of llms.txt is hand-written prose naming generated
+    # files. That is exactly the drift this site warns about, so the build checks it:
+    # every path the preamble points an agent at must actually have been written.
+    import re as _re
+    for _m in _re.finditer(r'(?<![\w.])/([A-Za-z0-9][A-Za-z0-9/_-]*\.(?:md|txt))', LLMS_PREAMBLE):
+        _want = _m.group(1)
+        _disk = _want if _want.endswith('.txt') else _want[:-3] + '.html'
+        assert os.path.exists(os.path.join(ROOT, _disk)), (
+            f'llms.txt routing block points at /{_want}, which the build does not produce')
     for name, n, c in written:
         print(f'wrote {name} ({n} bytes, {c} entries)')
     return written
