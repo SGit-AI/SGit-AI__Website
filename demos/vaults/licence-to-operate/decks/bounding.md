@@ -2,7 +2,7 @@
 
 > Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/bounding.html> · site v0.2.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/bounding.html> · site v0.2.91 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.90'
+SITE_VERSION = 'v0.2.91'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,25 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.90', '2026-09-19', 'this release',
+    ('v0.2.91', '2026-09-19', 'this release',
+     "'THE DEEPER YOU GO THE LESS YOU LEARN' WAS WRONG, OR AT LEAST WRONG ENOUGH TO CONFUSE. The "
+     "author read the folder-tree sentence in the fractal graphs test and asked whether it should "
+     "not be the MORE you learn, since depth brings connectivity. It should, for a fractal graph — "
+     "and the sentence was trying to say something narrower about hierarchies: depth adds detail "
+     "but no new meaning when the only verb is 'contains'. Rewritten to say exactly that for the "
+     "hierarchy, and then to state the fractal case outright: the deeper you go the more you "
+     "learn, because every altitude brings its own vocabulary of relationships and connectivity "
+     "compounds instead of nesting. A new paragraph puts the cross-domain behaviour precisely, in "
+     "the author's words — it means one thing: the core meaning of a node is supplied by the "
+     "ontology at the altitude where it sits, and that ontology is free to change between "
+     "altitudes (Article 9 is a binding provision, a container of paragraphs, and a source of "
+     "definitions, depending on the level you read it from) — and closes with nature as the "
+     "example nobody finds strange: universe, galaxy, star system, planet, ecosystem, organism, "
+     "cell, molecule, atom, particle, the vocabulary changing completely at every altitude while "
+     "each level stays connected to its neighbours. No schema describes a galaxy and a cell; one "
+     "grammar describes both.",
+     ),
+    ('v0.2.90', '2026-09-19', 'git 05c3286d',
      "Captions on the zoom diagram shortened: panels two and three overran their columns after "
      "the v0.2.89 rewording, and the footer line was a pixel from the edge. Checked by rendering "
      "the SVG at two widths, not by eye on the source.",
