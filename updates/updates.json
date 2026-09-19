@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.82",
+  "site_version": "v0.2.83",
   "updates": [
+    {
+      "slug": "llms-txt-routing",
+      "title": "The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with",
+      "date": "2026-09-19",
+      "version": "v0.2.83",
+      "tags": [
+        "llms",
+        "agents",
+        "docs",
+        "method"
+      ],
+      "summary": "Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…"
+    },
     {
       "slug": "the-same-pack-for-an-archetype",
       "title": "Vault #30 — the same pack, written for an archetype instead of a company",

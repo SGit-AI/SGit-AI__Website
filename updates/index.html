@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.82</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.83</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,11 +92,26 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.82 &middot; 18 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.83 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+  <h2 class="upd-date">2026-09-19</h2>
+  <article class="upd" id="llms-txt-routing">
+    <h3><a href="#llms-txt-routing">The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with</a> <a class="upd-ver" href="../admin/versions.html">v0.2.83</a></h3>
+    <p class="chips"><span class="chip">llms</span><span class="chip">agents</span><span class="chip">docs</span><span class="chip">method</span></p>
+<p>Asked to check that an agent reading <a href="../llms.txt"><code>/llms.txt</code></a> finds the newest guidance, the answer was that <b>coverage was complete and routing was broken</b>.</p>
+<p>Everything was in the file — the generator adds every page. But <a href="../docs/guidance/index.html">the guidance front door</a> sat at line 149 of 239, as page entry 83 of 138, indistinguishable from <code>installation.md</code>. Meanwhile the orientation block at the top still said <em>"task-shaped guidance with recipes and agent briefs lives under /use-cases/"</em> — which is where that guidance lived <b>before</b> it moved to <code>/docs/guidance/</code> and <code>/docs/briefs/</code>. And none of the six scoped <code>llms.txt</code> files were advertised, so an agent reading the root had no way to learn that <code>/docs/guidance/llms.txt</code> or <code>/demos/vaults/llms.txt</code> exist.</p>
+<p>Fixed with a <b>START HERE, BY WHAT YOU ARE DOING</b> block before the page list: four entry points by intent — building a vault, choosing a surface, writing a viewer, looking for a worked example — plus the list of scoped indexes.</p>
+<h2>Two broken links, found by the guard rather than by reading</h2>
+<p>The routing block is hand-written prose naming generated files, which is exactly the drift this site keeps warning about. So the build now asserts that <b>every path the preamble points at is a file the build actually produces.</b></p>
+<p>It failed on the first run — and on the most important line in the file:</p>
+<div class="note"><em>"Never write a vault key into a tracked file. See <code>/docs/exposed-vault-key.md</code> for what that costs."</em></div>
+<p>That page is at <code>/case-studies/exposed-vault-key.md</code>. The advice about the costliest mistake in the product had been pointing at a 404. Widening the guard to every section then caught <code>/security.md</code>, referenced twice, where the page is <code>/security/index.md</code>.</p>
+<p>Both were 404 on the live site, and the site's own validator had never looked — it checks links <em>inside pages</em>, and <code>llms.txt</code> is not a page. A file that exists to be read by machines had never been link-checked by one.</p>
+<p><b>Also corrected:</b> the preamble claimed this site <em>"is itself served from an encrypted vault."</em> The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot.</p>
+  </article>
   <h2 class="upd-date">2026-09-18</h2>
   <article class="upd" id="the-same-pack-for-an-archetype">
     <h3><a href="#the-same-pack-for-an-archetype">Vault #30 — the same pack, written for an archetype instead of a company</a> <a class="upd-ver" href="../admin/versions.html">v0.2.82</a></h3>
@@ -757,7 +772,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.82</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.83</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -799,7 +814,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.82';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.83';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
