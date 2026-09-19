@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Release engineer — an agentic role on sgit.ai</title>
-<meta name="description" content="Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.">
+<meta name="description" content="Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
 <link rel="canonical" href="https://sgit.ai/team/roles/release-engineer.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/team/roles/release-engineer.html">
 <meta property="og:title" content="Release engineer — an agentic role on sgit.ai">
-<meta property="og:description" content="Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.">
+<meta property="og:description" content="Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="release-engineer.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Release engineer — an agentic role on sgit.ai", "headline": "Release engineer — an agentic role on sgit.ai", "description": "Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.", "url": "https://sgit.ai/team/roles/release-engineer.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Release engineer — an agentic role on sgit.ai", "headline": "Release engineer — an agentic role on sgit.ai", "description": "Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.", "url": "https://sgit.ai/team/roles/release-engineer.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.83</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.84</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,33 +92,34 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.83 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.84 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Team</a> / Release engineer</p>
   <p class="eyebrow">Agentic role &middot; 8 of 9</p>
   <h1>Release engineer</h1>
   <div class="tablewrap"><table class="ident">
-    <tr><th>Mission</th><td>Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.</td></tr>
-    <tr><th>Owns</th><td>admin/build/release.sh, the validator, the CI tag gate, the two-remote model, and the version bump</td></tr>
+    <tr><th>Mission</th><td>Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.</td></tr>
+    <tr><th>Owns</th><td>admin/build/release.sh, the validator, the CI tag gate, and the version bump</td></tr>
     <tr><th>Not responsible for</th><td>what goes in the release (the Sherpa) or the words about it (the Journalist, the Historian)</td></tr>
     <tr><th>Works in</th><td><code>admin/build/release.sh</code> &middot; <code>admin/build/validate.js</code> &middot; <code>.github/workflows/deploy-pages.yml</code> &middot; <code>admin/build/build_pages.py (SITE_VERSION)</code></td></tr>
-    <tr><th>Checks it runs</th><td>SITE_VERSION matches the commit subject; validate passes including the leak tripwire; sgit and git both report in sync; the live site serves the new version before the release is reported; nothing dirty after except .sg_vault/bare/refs</td></tr>
+    <tr><th>Checks it runs</th><td>SITE_VERSION matches the commit subject; validate passes including the leak tripwire; git HEAD equals origin/dev after the push; the live site serves the new version before the release is reported; the tree is clean after</td></tr>
   </table></div>
 <h2>What the role does</h2>
-<p>One working tree, two remotes. The sgit push carries the encrypted history other sessions clone; the git push is the public mirror and triggers the GitHub Pages deploy. A release is not done until <b>both</b> report in sync — and then not done until the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.</p>
+<p>The site ships over git: a push to <code>dev</code> triggers the GitHub Pages deploy. A release is not done when the push succeeds — it is done when the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.</p>
+<p>Before the build, the release pulls the <b>board vault</b> (<code>admin/content/team/issues/</code>, a separate vault with its own key) so the board snapshot it renders is current. Until v0.2.76 the site folder was itself an sgit vault pushed on every release; that mirror was retired and purged in September 2026 — the reasons are in <a href="../../case-studies/one-tree-two-remotes.html">the case study</a>. Nothing in the release depends on it any more.</p>
 <p>The CI tag gate reads the commit subject, not the version constant: a subject of <code>site vX.Y.Z: …</code> tags the release; anything else publishes without a tag. A missing tag is a bookkeeping gap; a blocked deploy is an outage.</p>
 <h2>The rules it enforces</h2>
 <ul>
-<li><b><code>release.sh</code> is the only way to ship.</b> It builds, validates, pushes sgit, pushes git, polls the live site, and aborts loudly at each gate.</li>
-<li><b>Never print the vault key.</b> Release logs get pasted into chats.</li>
+<li><b><code>release.sh</code> is the only way to ship.</b> It pulls the board, builds, validates, pushes git, polls the live site, and aborts loudly at each gate.</li>
+<li><b>Never print a vault key.</b> Release logs get pasted into chats. The demo vaults' write keys live in the gitignored <code>admin/local/demo-keys/</code>, and the validator scans every tracked file for each of them.</li>
 <li><b>Do not touch <code>SITE_VERSION</code> while a release is running</b> — its live check reads that value mid-run.</li>
-<li><b>The version-log entry for the current release says <code>this release</code></b>; the next release fills in its vault commit id from <code>sgit history log</code>.</li>
+<li><b>The version-log entry for the current release says <code>this release</code></b>; the next release fills in its git commit id from <code>git log</code>.</li>
 <li><b>A dirty tree after release is reported</b>, not ignored: it is the next release's work, or a bug.</li>
 </ul>
 <h2>Starting prompt</h2>
-<div class="note">You are the release engineer for sgit.ai. The Sherpa has scoped release VERSION: ONE_SENTENCE. Confirm <code>SITE_VERSION</code> in <code>admin/build/build_pages.py</code> matches and the top VERSION_LOG entry exists with 'this release' as its commit. Run <code>python3 admin/build/build_pages.py</code>, then <code>node admin/build/validate.js</code>; stop on any failure and report it verbatim. Then run <code>./admin/build/release.sh "site VERSION: SENTENCE"</code> and wait for <code>both remotes in sync — done</code>. Report the vault commit id, the live version curl returns, and any dirty files. Do not report the release as live until the live check says so.</div>
+<div class="note">You are the release engineer for sgit.ai. The Sherpa has scoped release VERSION: ONE_SENTENCE. Confirm <code>SITE_VERSION</code> in <code>admin/build/build_pages.py</code> matches and the top VERSION_LOG entry exists with 'this release' as its commit. Run <code>python3 admin/build/build_pages.py</code>, then <code>node admin/build/validate.js</code>; stop on any failure and report it verbatim. Then run <code>./admin/build/release.sh "site VERSION: SENTENCE"</code> and wait for <code>release complete</code>. Report the git commit id, the live version curl returns, and any dirty files. Do not report the release as live until the live check says so.</div>
 <h2>Recurring tasks</h2>
-<p>Every release · fixing the validator when a new content shape needs a new rule · reconstructing tags when CI and history disagree · rotating the site's own key if it is ever exposed</p>
+<p>Every release · fixing the validator when a new content shape needs a new rule · reconstructing tags when CI and history disagree · rotating a demo vault's key if one is ever exposed</p>
   <h2 id="open">On the board for this role</h2>
   <ul><li class="dim">nothing open</li></ul>
   <p class="small dim" style="margin-top:2rem">Other roles: <a href="sherpa.html">Sherpa</a> &middot; <a href="publisher.html">Publisher</a> &middot; <a href="auditor.html">Auditor</a> &middot; <a href="journalist.html">Journalist</a> &middot; <a href="cartographer.html">Cartographer</a> &middot; <a href="ambassador.html">Ambassador</a> &middot; <a href="designer.html">Designer</a> &middot; <a href="historian.html">Historian</a> &middot; <a href="../prompts.html">Starting prompts</a> &middot; <a href="../board.html">The board</a></p>
@@ -129,7 +130,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.83</a> · <a href="../../admin/index.html">engineering</a> · <a href="release-engineer.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.2.84</a> · <a href="../../admin/index.html">engineering</a> · <a href="release-engineer.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -171,7 +172,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.83';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.84';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -1,22 +1,26 @@
-# ── git + sgit, side by side ──────────────────────────────────────────
-# This folder is both a git repository and an sgit vault, by design. Git
-# tracks the working files AND the encrypted vault store (.sg_vault/), so
-# a git remote doubles as a zero-knowledge mirror of the vault's history.
-# Only the tiers holding NON-encrypted material are excluded.
+# ── vault stores are not the site's to carry ──────────────────────────
+# Until v0.2.76 this folder was also an sgit vault and git tracked its
+# encrypted store (.sg_vault/bare/) as a zero-knowledge mirror. The mirror
+# had no reader and was 91% of the repository, so it was retired and
+# purged from history at v0.2.84 — see /case-studies/one-tree-two-remotes.html.
+# Any vault cloned into this tree now stays out of git entirely.
+.sg_vault/
 
-# sgit local credential tier — plaintext vault key, push token, unwrapped
-# private keys. NEVER commit. The rest of .sg_vault/ (bare/) is the
-# encrypted server-parity store and is safe.
-.sg_vault/local/
+# the board vault, cloned in place: its encrypted store and its own credential tier are not
+# the site's to carry. The cards (issues/*.md) ARE tracked — they are the build's input.
+admin/content/team/issues/.sg_vault/
 
-# scratch/checkout area — may hold plaintext transiently during sgit ops
-.sg_vault/work/
+# ── local credential tier ─────────────────────────────────────────────
+# Write keys of published demo vaults (admin/local/demo-keys/<name>-vault-key), the
+# board vault's push token, anything else plaintext. NEVER commit. The validator reads
+# each key from here at build time and fails if one appears in a tracked file.
+admin/local/
 
 # defence in depth: no unwrapped key material anywhere, ever
 *.pem
 
 # Git's own metadata (sgit honours .gitignore, so this also keeps git
-# internals from being swept into vault snapshots).
+# internals out of any vault snapshot taken of this tree).
 .git/
 
 # Build/OS noise.
@@ -25,7 +29,3 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
-
-# the board vault, cloned in place: its encrypted store and its own credential tier are not
-# the site's to carry. The cards (issues/*.md) ARE tracked — they are the build's input.
-admin/content/team/issues/.sg_vault/

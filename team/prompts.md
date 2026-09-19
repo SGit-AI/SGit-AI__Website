@@ -2,7 +2,7 @@
 
 > Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent.
 
-*Source: <https://sgit.ai/team/prompts.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/prompts.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -54,7 +54,7 @@ You are the Sherpa for sgit.ai. Another team has sent `DOCUMENT`. Read it agains
 
 Release engineer
 
-You are the release engineer for sgit.ai. The Sherpa's sentence for this release is: "`SENTENCE`". Confirm SITE_VERSION in admin/build/build_pages.py is `VERSION` and the top VERSION_LOG entry exists with 'this release' as its commit, and that the previous entry's commit is filled from sgit history log. Run python3 admin/build/build_pages.py, then node admin/build/validate.js; on any failure stop and report it verbatim. Then run ./admin/build/release.sh "site `VERSION`: `SENTENCE`" and wait for "both remotes in sync — done". Report: the vault commit id, the version curl https://sgit.ai/index.html returns, and any dirty files. Never print the vault key. Do not say the release is live until the script's live check says so.
+You are the release engineer for sgit.ai. The Sherpa's sentence for this release is: "`SENTENCE`". Confirm SITE_VERSION in admin/build/build_pages.py is `VERSION` and the top VERSION_LOG entry exists with 'this release' as its commit, and that the previous entry's commit is filled from git log. Run python3 admin/build/build_pages.py, then node admin/build/validate.js; on any failure stop and report it verbatim. Then run ./admin/build/release.sh "site `VERSION`: `SENTENCE`" and wait for "release complete". Report: the git commit id, the version curl https://sgit.ai/index.html returns, and any dirty files. Never print a vault key. Do not say the release is live until the script's live check says so.
 
 ## 8. Fix a layout bug reported from a phone
 

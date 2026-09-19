@@ -2,7 +2,7 @@
 
 > A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions.
 
-*Source: <https://sgit.ai/why/index.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/why/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -15,7 +15,7 @@ Everything below is a consequence of that sentence. If it doesn't describe a pro
 
 ## git and sgit, side by side
 
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site runs both at once** — one working tree, two remotes: the encrypted vault is pushed with `sgit push`, and the same directory is pushed to GitHub with `git push`, which is what builds and deploys it. Neither is a fallback for the other.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases — one working tree, two remotes — and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The thirty vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
 
 |  | git | sgit |
 |---|---|---|

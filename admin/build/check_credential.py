@@ -91,7 +91,7 @@ class Credential_Check:
         print(f'  why       : {note}')
         if not publishable and 'vault key' in kind:
             print()
-            print('  next step : store it in .sg_vault/local/demo-keys/<name>-vault-key (gitignored,')
+            print('  next step : store it in admin/local/demo-keys/<name>-vault-key (gitignored,')
             print('              and the release tripwire then scans every tracked file for it), then:')
             print('                from sgit_ai.crypto.Vault__Crypto import Vault__Crypto')
             print('                c = Vault__Crypto(); pw, vid = c.parse_vault_key(vault_key)')

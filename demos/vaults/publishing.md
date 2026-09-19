@@ -2,7 +2,7 @@
 
 > The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.
 
-*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -39,12 +39,12 @@ A vault key does not block publication; it changes what you publish. Store it wh
 
 ```
 # the gitignored tier — the release tripwire then scans every tracked file for it
-printf '%s' "$VAULT_KEY" > .sg_vault/local/demo-keys/<name>-vault-key
+printf '%s' "$VAULT_KEY" > admin/local/demo-keys/<name>-vault-key
 
 python3 - <<'PY'
 from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
 c = Vault__Crypto()
-pw, vault_id = c.parse_vault_key(open('.sg_vault/local/demo-keys/<name>-vault-key').read().strip())
+pw, vault_id = c.parse_vault_key(open('admin/local/demo-keys/<name>-vault-key').read().strip())
 print(c.derive_keys(pw, vault_id)['read_key'])     # publish only this
 PY
 ```

@@ -16,7 +16,7 @@
   <h2 id="rules">The rules every role shares</h2>
   <ul>
     <li><b>Read keys yes, vault keys never.</b> A read key is a capability handed out on purpose and cannot become write access. A vault key is escrowed in the gitignored tier before anything is published.</li>
-    <li><b>Verify live.</b> Both remotes in sync is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.</li>
+    <li><b>Verify live.</b> A clean push is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.</li>
     <li><b>Count, don't remember.</b> Every number on a page is computed from the thing it counts; every number in prose is checked against a file that day.</li>
     <li><b>Negative controls.</b> A test that would pass with a wrong input has proven nothing.</li>
     <li><b>Publish the finding.</b> An audit result, a correction, a gap &mdash; on the page, not in a file nobody reads.</li>

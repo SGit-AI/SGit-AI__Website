@@ -2,7 +2,7 @@
 
 > Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview.
 
-*Source: <https://sgit.ai/docs/vault/git-and-vaults.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault/git-and-vaults.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
 
-**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../../case-studies/one-tree-two-remotes.md).
+**Worked example, including the ending:** this website ran exactly this way for 76 releases — one folder, both systems, two pushes per release — and then retired the vault mirror in September 2026 because it had no reader and was 91% of the repository. The case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the reasons for stopping, is at [one working tree, two remotes](../../case-studies/one-tree-two-remotes.md). The pattern below is still the right one when something actually reads the mirror.
 
 ## A pure-Python git reader
 
@@ -60,18 +60,18 @@ Because the working tree is real files, the flow runs both ways. Edit a file in 
 
 ### Before first publication: audit, then keep the discipline
 
-- **Run the leak audit from the vault root** before the first `git add`: the vault-key secret must not appear in the working tree, no `BEGIN PRIVATE KEY` outside `local/`, and `bare/` must contain no greppable filenames or content. (The vault serving this site passed all checks before its dotfiles shipped.)
+- **Run the leak audit from the vault root** before the first `git add`: the vault-key secret must not appear in the working tree, no `BEGIN PRIVATE KEY` outside `local/`, and `bare/` must contain no greppable filenames or content. (This site's own vault passed all checks before its dotfiles shipped, and the audit is what later caught [the leak](../../case-studies/exposed-vault-key.md).)
 - **Write the protection files before the first `git add -A`** — once `local/` is in a commit it is in history, and removing it later means a history rewrite plus key rotation.
 - **For CI**, the vault key goes in GitHub Actions Secrets (and a password manager) — never in files, commit messages, issues or workflow YAML.
 - **Disaster recovery comes free:** a git clone of the repo plus the key reconstitutes everything — content, sgit history, all branches — even if the sync server is gone. Do one restore drill before you need it in anger.
 
-The vault serving this site ships the full `.gitignore` / `.gitattributes` pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see [static hosting on GitHub Pages](static-hosting.md).
+The `.gitignore` / `.gitattributes` pair is reproduced in full on [the case study](../../case-studies/one-tree-two-remotes.md). And once the vault is on GitHub, the same repo can serve the app itself: see [static hosting on GitHub Pages](static-hosting.md).
 
 ### What a key rotation does to the mirror
 
 Rotating a vault key (`delete-on-remote` → `rekey` → `push`) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the `.gitattributes` binary rule means no diff churn), but two consequences are worth knowing before you rotate:
 
-- **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.
+- **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap. (For this site that mirror has since been purged; the point stands for any vault whose mirror somebody reads.)
 - **A rekey protects the server, not the mirror.** Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed *and* the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.
 
 This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the [release history](../../admin/versions.md).

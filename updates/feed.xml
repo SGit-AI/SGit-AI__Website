@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>The site&#x27;s own vault mirror is gone — deleted, purged from history, force-pushed</title>
+      <link>https://sgit.ai/updates/index.html#the-mirror-is-gone</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-mirror-is-gone</guid>
+      <pubDate>2026-09-19</pubDate>
+      <description>For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…</description>
+    </item>
+    <item>
       <title>The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with</title>
       <link>https://sgit.ai/updates/index.html#llms-txt-routing</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#llms-txt-routing</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-brief-for-the-vault-map-infographic</guid>
       <pubDate>2026-09-09</pubDate>
       <description>An image model produced an infographic of the .sgit.ai sites — one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the 26 published vaults , grouped by use case and indu…</description>
-    </item>
-    <item>
-      <title>Two new sections — the team, written for the agents; and investors, in the open</title>
-      <link>https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-team-for-the-agents-and-investors-in-the-open</guid>
-      <pubDate>2026-09-07</pubDate>
-      <description>The team is the agentic section: how this site is run by one person and a team of AI agents, written for the agents. A new agent should be able to read that page and one role page and begin. Nine roles, each a file. Sherpa, Publisher, Auditor, Journalist, Cart…</description>
     </item>
   </channel>
 </rss>

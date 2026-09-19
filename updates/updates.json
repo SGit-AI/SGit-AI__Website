@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.83",
+  "site_version": "v0.2.84",
   "updates": [
+    {
+      "slug": "the-mirror-is-gone",
+      "title": "The site's own vault mirror is gone — deleted, purged from history, force-pushed",
+      "date": "2026-09-19",
+      "version": "v0.2.84",
+      "tags": [
+        "workflow",
+        "git",
+        "method",
+        "vaults"
+      ],
+      "summary": "For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…"
+    },
     {
       "slug": "llms-txt-routing",
       "title": "The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with",

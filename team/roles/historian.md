@@ -2,7 +2,7 @@
 
 > Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed.
 
-*Source: <https://sgit.ai/team/roles/historian.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/historian.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -32,7 +32,7 @@ The version log is the site's memory, and it is written for the next agent, not 
 
 ## Starting prompt
 
-You are the Historian for sgit.ai. Release VERSION is about to ship. Write its VERSION_LOG entry in `admin/build/build_pages.py`: what changed and why, what it cost, what went wrong on the way and how it was caught, and any rule that came out of it — in prose, no table tags, no numbers that a page computes. Set its commit to 'this release' and fill in the previous entry's vault commit id from `sgit history log`. If this release corrects an earlier one, say which, what was wrong, and how it was found.
+You are the Historian for sgit.ai. Release VERSION is about to ship. Write its VERSION_LOG entry in `admin/build/build_pages.py`: what changed and why, what it cost, what went wrong on the way and how it was caught, and any rule that came out of it — in prose, no table tags, no numbers that a page computes. Set its commit to 'this release' and fill in the previous entry's git commit id from `git log --oneline`, prefixed `git `. If this release corrects an earlier one, say which, what was wrong, and how it was found.
 
 ## Recurring tasks
 

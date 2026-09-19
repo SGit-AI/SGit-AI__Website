@@ -48,11 +48,11 @@
 <pre class="shell"><span class="d"># 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row</span>
 <span class="d"># 2. regenerate + validate</span>
 <span class="p">$</span> <span class="cmd">python3 admin/build/build_pages.py &amp;&amp; node admin/build/validate.js</span>
-<span class="d"># 3. ship to the vault — the encrypted deployment</span>
-<span class="p">$</span> <span class="cmd">sgit commit -m "site vX.Y.Z: …" &amp;&amp; sgit push</span>
-<span class="d"># 4. ship to git — same folder, second remote; GitHub Pages deploys from it</span>
-<span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit -m "site vX.Y.Z" &amp;&amp; git push origin dev</span></pre>
-  <p>One folder, one source of truth, two remotes: the same working tree is an sgit vault <em>and</em> a git repository (<code>SGit-AI/SGit-AI__Website</code>). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See <a href="versions.html">release history</a>.</p>
+<span class="d"># 3. ship — GitHub Pages deploys from the dev branch</span>
+<span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit -m "site vX.Y.Z: …" &amp;&amp; git push origin dev</span>
+<span class="d"># 4. verify live — the release is not done until sgit.ai serves the new version</span>
+<span class="p">$</span> <span class="cmd">curl -s https://sgit.ai/index.html | grep -o 'v0\.[0-9]*\.[0-9]*' | head -1</span></pre>
+  <p>All four steps are one script, <code>admin/build/release.sh</code>, which also pulls the <a href="../demos/vaults/board/index.html">board vault</a> first so the snapshot the release renders is current, and refuses to push until the validator &mdash; including the vault-key leak tripwire &mdash; has passed. The repository is <code>SGit-AI/SGit-AI__Website</code>; until v0.2.76 the same folder was also an sgit vault pushed on every release, a pattern retired and written up in <a href="../case-studies/one-tree-two-remotes.html">one tree, two remotes</a>. See <a href="versions.html">release history</a>.</p>
 
   <h2>Design &amp; contributions</h2>
   <p>A standing brief for Claude Code sessions proposing design improvements lives at <a href="brief-design-improvements.md">admin/brief-design-improvements.md</a> — it carries the constraints (authoring contract, self-contained assets, validation suite, version bump) that any change must respect.</p>

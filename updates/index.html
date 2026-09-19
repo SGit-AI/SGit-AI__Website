@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.83</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.84</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,12 +92,35 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.83 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.84 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
   <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
   <h2 class="upd-date">2026-09-19</h2>
+  <article class="upd" id="the-mirror-is-gone">
+    <h3><a href="#the-mirror-is-gone">The site's own vault mirror is gone — deleted, purged from history, force-pushed</a> <a class="upd-ver" href="../admin/versions.html">v0.2.84</a></h3>
+    <p class="chips"><span class="chip">workflow</span><span class="chip">git</span><span class="chip">method</span><span class="chip">vaults</span></p>
+<p>For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was <b>removed from the tree, purged from all 112 commits with <code>git filter-repo</code>, and the branch force-pushed.</b> The repository went from 276 MB to 21 MB.</p>
+<p>The question that led here was asked at v0.2.83: <em>do we still need it?</em> The honest answer was no, on four counts.</p>
+<ul>
+<li><b>It had no reader.</b> Every session that built the site cloned it from GitHub. Not one release was ever produced from a vault clone.</li>
+<li><b>It had no published read key.</b> The site publishes read keys for thirty vaults; its own was the one nobody could open. A zero-knowledge mirror of public content that nobody can read is storage, not publication.</li>
+<li><b>It had been dead since v0.2.76, and nothing noticed.</b> The container holding the write key was recycled, <code>.sg_vault/local/</code> is gitignored by design, and seven releases went out over git alone with the live site correct throughout.</li>
+<li><b>It was 91% of the repository.</b> 258 MB in 15,933 files, against 24 MB of content in about 750.</li>
+</ul>
+<p>The purge is safe for the same reason the mirror was: everything removed was ciphertext under a key that was never in the repository. The vault itself, on the server, is untouched.</p>
+<h2>What changed on the site</h2>
+<p><a href="../case-studies/one-tree-two-remotes.html">The case study</a> is now a retrospective — the workflow as it ran, the boundary that made it safe, the ordering rule, and a <em>why we stopped</em> section with the numbers. Every other page that described the pattern as current was rewritten: <a href="../why/index.html">why</a>, <a href="../admin/index.html">admin</a>, the <a href="../docs/vault/git-and-vaults.html">git-and-vaults</a> note, the release-engineer role and prompt. Historical release notes stay as the dated records they are.</p>
+<p>The tooling followed. <code>release.sh</code> no longer requires <code>.sg_vault</code> or pushes sgit — it still pulls the board vault first, and still refuses to call a release done until sgit.ai serves the new version. The key-leak tripwire now reads demo vault write keys from a gitignored <code>admin/local/demo-keys/</code> folder instead of the dead vault's local tier. And the <a href="../admin/versions.html">release history</a> switches its commit column to git ids from v0.2.77 onward, which filled the seven rows the missing key had left blank.</p>
+<h2>The three Vaults-menu pages were stale too</h2>
+<ul>
+<li><a href="../demos/index.html">Demos</a> listed three vaults as <em>published</em> when there were thirty, and its <em>coming next</em> pointed at a plan already delivered. It now leads with the gallery and keeps the three original walkthroughs as what they are.</li>
+<li><a href="../catalogue/index.html">The catalogue</a> renders a vault live — and that vault holds <b>nine</b> entries against the gallery's thirty. The page now says so, with the date, and names <a href="../demos/vaults/index.html">the gallery</a> as the complete list until the catalogue's key holder catches up. This is a write-key problem, not a publishing one: the twenty-one missing vaults are live on their own pages.</li>
+<li>The gallery's footer stopped calling the catalogue the place <em>new entries start</em>, because for twenty-one of them it was not.</li>
+</ul>
+<p><b>The rule that came out of it:</b> give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.</p>
+  </article>
   <article class="upd" id="llms-txt-routing">
     <h3><a href="#llms-txt-routing">The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with</a> <a class="upd-ver" href="../admin/versions.html">v0.2.83</a></h3>
     <p class="chips"><span class="chip">llms</span><span class="chip">agents</span><span class="chip">docs</span><span class="chip">method</span></p>
@@ -772,7 +795,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.83</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.84</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -814,7 +837,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.83';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.84';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

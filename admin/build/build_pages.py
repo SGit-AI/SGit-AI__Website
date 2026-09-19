@@ -4,7 +4,7 @@
 Release process (see admin/index.html):
   1. bump SITE_VERSION below (v0.1.n — n increases on every push)
   2. add a row to VERSION_LOG
-  3. run this script, run the validation suite, sgit commit + push
+  3. run this script, run the validation suite, git commit + push (or ./admin/build/release.sh)
 """
 import os
 import re
@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.83'
+SITE_VERSION = 'v0.2.84'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,38 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.83', '2026-09-19', 'this release',
+    ('v0.2.84', '2026-09-19', 'this release',
+     "THE SITE'S OWN VAULT MIRROR IS GONE — DELETED FROM THE TREE, PURGED FROM EVERY COMMIT, AND "
+     "THE BRANCH FORCE-PUSHED. Asked whether the mirror was still needed, the answer at v0.2.83 "
+     "was no: it had no reader (every session that built the site cloned it from GitHub), no "
+     "published read key (the one vault on this site nobody could open), and it had been dead "
+     "since v0.2.76 without the site noticing — seven releases went out over git alone and the "
+     "live pages were correct throughout. It was also 258 MB in 15,933 files against 24 MB of "
+     "content in about 750: 91% of the repository. The author's call was delete, with a forced "
+     "push authorised. Done with git filter-repo over all 112 commits; the pack went from 276 MB "
+     "to 21 MB, and the one other remote branch (fully merged, dated August) was removed so no "
+     "ref kept the old objects reachable. The purge is safe for the same reason the mirror was: "
+     "everything removed was ciphertext under a key that was never in the repository, and the "
+     "vault itself on the server is untouched. EVERY PAGE THAT DESCRIBED THE PATTERN AS CURRENT "
+     "WAS REWRITTEN: the one-tree-two-remotes case study is now a retrospective with a 'why we "
+     "stopped' section and the numbers; the why page, the admin page, the git-and-vaults note, "
+     "the release-engineer role and the release prompt no longer say 'both remotes'. Historical "
+     "release notes were left as the dated records they are. THE TOOLING FOLLOWED: release.sh "
+     "no longer requires .sg_vault or pushes sgit (it still pulls the board vault and still "
+     "refuses to finish until sgit.ai serves the new version); the key-leak tripwire now reads "
+     "demo vault write keys from a gitignored admin/local/demo-keys/ folder instead of the dead "
+     "vault's local tier, and check_credential.py and the publishing method point there too. "
+     "The release history's commit column switches from vault commit ids to git ids from "
+     "v0.2.77 on, which also filled the seven PREV_UNFILLED rows the missing key had left. THE "
+     "THREE PAGES IN THE VAULTS MENU WERE STALE: the demos page listed three vaults as "
+     "'published' when there were thirty, and pointed at a plan already delivered — it now leads "
+     "with the gallery and keeps the three walkthroughs as walkthroughs; the catalogue, which "
+     "renders a vault, turned out to hold nine entries against the gallery's thirty, so the page "
+     "now says so with the date and names the gallery as the complete list until the catalogue's "
+     "key holder catches up; the gallery's footer stopped calling the catalogue the place where "
+     "new entries start, because for twenty-one of them it was not.",
+     ),
+    ('v0.2.83', '2026-09-19', 'git 45b99758',
      "THE ROOT LLMS.TXT WAS POINTING AGENTS AT TWO 404s, AND BURYING THE GUIDANCE IT SHOULD LEAD "
      "WITH. Asked to check that an agent reading /llms.txt finds the newest guidance, the answer "
      "was that COVERAGE was complete and ROUTING was broken. The guidance front door sat at line "
@@ -51,7 +82,7 @@ VERSION_LOG = [
      "served from an encrypted vault'. The vault mirror last moved at v0.2.76 and six releases "
      "have gone out over git alone, so the claim came out rather than being left to rot.",
      ),
-    ('v0.2.82', '2026-09-18', 'PREV_UNFILLED',
+    ('v0.2.82', '2026-09-18', 'git bd8300e2',
      "VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 "
      "from the same generator one day later — a fractional CISO pack, two days a month on a "
      "retainer for a company that is already certified — and the interesting thing is how it "
@@ -74,7 +105,7 @@ VERSION_LOG = [
      "worth reading as a pair: the same machinery giving two answers to how you publish a document "
      "about a job.",
      ),
-    ('v0.2.81', '2026-09-18', 'PREV_UNFILLED',
+    ('v0.2.81', '2026-09-18', 'git 866c39dc',
      "THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. "
      "The four Lisbon handouts now appear on the parent page as four A4 previews — page one of "
      "each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees "
@@ -87,7 +118,7 @@ VERSION_LOG = [
      "is the right call: a printed artefact that gets silently re-edited to match today stops "
      "being a record of anything.",
      ),
-    ('v0.2.80', '2026-09-17', 'PREV_UNFILLED',
+    ('v0.2.80', '2026-09-17', 'git 0817be5b',
      "THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience "
      "sheets — founders, startups, investors, corporate — written for a startup summit and "
      "published here with a parent page, one page each, the capability table rendered as real "
@@ -106,7 +137,7 @@ VERSION_LOG = [
      "instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A "
      "COMPUTED ONE FOR ANYTHING THAT MOVES.",
      ),
-    ('v0.2.79', '2026-09-17', 'PREV_UNFILLED',
+    ('v0.2.79', '2026-09-17', 'git 368d47d8',
      "A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an "
      "interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an "
      "email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says "
@@ -131,7 +162,7 @@ VERSION_LOG = [
      "ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing "
      "rather than reproducing the individual recommendations.",
      ),
-    ('v0.2.78', '2026-09-16', 'PREV_UNFILLED',
+    ('v0.2.78', '2026-09-16', 'git f4e330f6',
      "THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS "
      "THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which "
      "matters because one run is an anecdote and two sites is a method. It is not a repeat: the "
@@ -156,7 +187,7 @@ VERSION_LOG = [
      "write key was recycled, .sg_vault/local is gitignored by design, and these releases have "
      "gone out over git alone.",
      ),
-    ('v0.2.77', '2026-09-15', 'PREV_UNFILLED',
+    ('v0.2.77', '2026-09-15', 'git 44323549',
      "SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. "
      "Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what "
      "they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did "
@@ -181,7 +212,7 @@ VERSION_LOG = [
      "empty directory against the same vault id. The one credential-shaped string in the vault is "
      "a discount code the store publishes itself.",
      ),
-    ('v0.2.76', '2026-09-10', 'PREV_UNFILLED',
+    ('v0.2.76', '2026-09-10', 'git 005361e8',
      "THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an "
      "integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged "
      "here. Checking rather than assuming turned up something worse than a missing page: the "
@@ -1752,12 +1783,12 @@ def versions_body():
     return f"""<main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">This site ships by pushing its vault, and the site version — <b>{SITE_VERSION}</b>, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own <code>sgit history log</code> is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">The site version — <b>{SITE_VERSION}</b>, shown in the nav of every page — increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
   <div class="tablewrap"><table class="vers">
-    <tr><th>Version</th><th>Date</th><th>Vault commit</th><th>Changes</th></tr>
+    <tr><th>Version</th><th>Date</th><th>Commit</th><th>Changes</th></tr>
 {rows}
   </table></div>
-  <p class="small dim">Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The "vault commit" of the newest row reads "this release" because the commit ID only exists once the release is committed — it is recorded here retroactively by the next release.</p>
+  <p class="small dim">Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The commit of the newest row reads "this release" because the id only exists once the release is committed — it is recorded here retroactively by the next release. Rows up to v0.2.76 carry the id of the sgit commit in the site's own vault, which was pushed alongside git until the mirror was <a href="../case-studies/one-tree-two-remotes.html">retired</a>; from v0.2.77 the id is the git commit, prefixed <code>git</code>. Commit ids before v0.2.84 are those of the history as rewritten on 19 September 2026 to purge the mirror.</p>
   <div class="pagenav"><a href="index.html">← Admin &amp; engineering</a><span></span></div>
 </main>"""
 

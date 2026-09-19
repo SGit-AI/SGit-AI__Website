@@ -2,7 +2,7 @@
 
 > How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline.
 
-*Source: <https://sgit.ai/admin/index.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,13 +66,13 @@ Every page is generated from a single Python script holding one shared template 
 # 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row
 # 2. regenerate + validate
 $ python3 admin/build/build_pages.py && node admin/build/validate.js
-# 3. ship to the vault — the encrypted deployment
-$ sgit commit -m "site vX.Y.Z: …" && sgit push
-# 4. ship to git — same folder, second remote; GitHub Pages deploys from it
-$ git add -A && git commit -m "site vX.Y.Z" && git push origin dev
+# 3. ship — GitHub Pages deploys from the dev branch
+$ git add -A && git commit -m "site vX.Y.Z: …" && git push origin dev
+# 4. verify live — the release is not done until sgit.ai serves the new version
+$ curl -s https://sgit.ai/index.html | grep -o 'v0\.[0-9]*\.[0-9]*' | head -1
 ```
 
-One folder, one source of truth, two remotes: the same working tree is an sgit vault *and* a git repository (`SGit-AI/SGit-AI__Website`). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See [release history](versions.md).
+All four steps are one script, `admin/build/release.sh`, which also pulls the [board vault](../demos/vaults/board/index.md) first so the snapshot the release renders is current, and refuses to push until the validator — including the vault-key leak tripwire — has passed. The repository is `SGit-AI/SGit-AI__Website`; until v0.2.76 the same folder was also an sgit vault pushed on every release, a pattern retired and written up in [one tree, two remotes](../case-studies/one-tree-two-remotes.md). See [release history](versions.md).
 
 ## Design & contributions
 

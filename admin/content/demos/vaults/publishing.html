@@ -22,12 +22,12 @@
   <h2>2 · If it is a vault key, derive rather than refuse</h2>
   <p>A vault key does not block publication; it changes what you publish. Store it where the repository cannot commit it, then derive:</p>
   <pre class="shell"><span class="d"># the gitignored tier — the release tripwire then scans every tracked file for it</span>
-printf '%s' "$VAULT_KEY" > .sg_vault/local/demo-keys/&lt;name&gt;-vault-key
+printf '%s' "$VAULT_KEY" > admin/local/demo-keys/&lt;name&gt;-vault-key
 
 python3 - &lt;&lt;'PY'
 from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
 c = Vault__Crypto()
-pw, vault_id = c.parse_vault_key(open('.sg_vault/local/demo-keys/&lt;name&gt;-vault-key').read().strip())
+pw, vault_id = c.parse_vault_key(open('admin/local/demo-keys/&lt;name&gt;-vault-key').read().strip())
 print(c.derive_keys(pw, vault_id)['read_key'])     <span class="d"># publish only this</span>
 PY</pre>
   <p>The derivation is one-way: a published read key cannot be turned back into the vault key. Never print the write key; never let the vault key reach a tracked file.</p>

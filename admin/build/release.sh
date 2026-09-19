@@ -3,15 +3,17 @@
 #
 #   ./admin/build/release.sh "site v0.2.2: what changed"
 #
-# One working tree, two remotes (see /case-studies/one-tree-two-remotes.html):
-# the sgit push carries the encrypted history other sessions clone; the git push
-# is the public mirror and triggers the GitHub Pages deploy. A release is not
-# done until BOTH remotes report in sync, and nothing is pushed anywhere until
-# the validator — including the vault-key leak tripwire — has passed.
+# The site ships over git: a push to dev triggers the GitHub Pages deploy. Nothing is
+# pushed until the validator — including the vault-key leak tripwire — has passed, and
+# a release is not done until https://sgit.ai/ is actually serving the new version.
 #
-# This script never prints the vault key. Do not add calls to commands that
-# echo it (e.g. `sgit vault info`, `sgit vault show-key`): release logs get
-# pasted into issues, chats and CI output, which is exactly how keys leak.
+# Until v0.2.76 this folder was also an sgit vault and every release pushed it too
+# (see /case-studies/one-tree-two-remotes.html). That mirror was retired and purged at
+# v0.2.84; the only vault this script touches now is the board, which it PULLS (step 0).
+#
+# This script never prints a vault key. Do not add calls to commands that echo one
+# (e.g. `sgit vault info`, `sgit vault show-key`): release logs get pasted into issues,
+# chats and CI output, which is exactly how keys leak.
 set -euo pipefail
 
 MSG="${1:?usage: release.sh \"commit message\"}"
@@ -21,8 +23,9 @@ cd "$ROOT"
 step() { printf '\n\033[1m== %s\033[0m\n' "$*"; }
 die()  { printf '\033[31mRELEASE ABORTED: %s\033[0m\n' "$*" >&2; exit 1; }
 
-[ -f app.json ] || die "not at the vault root (no app.json)"
-[ -d .git ] && [ -d .sg_vault ] || die "expected both .git and .sg_vault here"
+[ -f app.json ] || die "not at the site root (no app.json)"
+[ -d .git ] || die "expected a .git here"
+[ ! -e .sg_vault ] || die ".sg_vault is present at the site root — the mirror was retired; remove it (it is gitignored, but it should not be here)"
 
 step "0/5 pull the board vault"
 # The board is a separate vault (source of truth for team/board.html), cloned under
@@ -30,25 +33,20 @@ step "0/5 pull the board vault"
 if [ -d admin/content/team/issues/.sg_vault ]; then
   (cd admin/content/team/issues && sgit pull >/dev/null 2>&1) && echo "   board vault: pulled" \
     || echo "   board vault: pull failed — rendering the last local copy" >&2
+else
+  echo "   board vault: not cloned here — rendering the tracked cards as they are"
 fi
 
 step "1/5 build"
 python3 admin/build/build_pages.py || die "build failed"
 
 step "2/5 validate (includes the key-leak tripwire)"
-# validate.js reads the passphrase from the gitignored .sg_vault/local/ tier at
-# runtime and scans every tracked file for it — a key in the tree fails here,
-# before either remote can be touched.
+# validate.js reads every demo vault's write key from the gitignored admin/local/demo-keys/
+# folder at runtime and scans every tracked file for each — a key in the tree fails here,
+# before anything is pushed.
 node admin/build/validate.js || die "validation failed — nothing was pushed"
 
-step "3/5 sgit: commit + push the vault"
-sgit commit -m "$MSG" >/dev/null || true          # "nothing to commit" is fine
-sgit push || die "sgit push failed"
-sgit status 2>&1 | grep -q "in sync with remote" \
-  || die "sgit reports the vault is NOT in sync after push"
-echo "   vault: in sync with remote"
-
-step "4/5 git: commit + push the mirror"
+step "3/5 git: commit + push"
 git add -A
 git diff --cached --quiet || git commit -q -m "$MSG"
 BRANCH="$(git branch --show-current)"
@@ -59,15 +57,14 @@ until git push -u origin "$BRANCH"; do
 done
 [ "$(git rev-parse HEAD)" = "$(git rev-parse "origin/$BRANCH")" ] \
   || die "git HEAD != origin/$BRANCH after push"
-echo "   git: HEAD == origin/$BRANCH"
+echo "   git: HEAD == origin/$BRANCH ($(git rev-parse --short HEAD))"
 
-step "5/6 verify the deploy actually published"
-# "Both remotes in sync" is NOT the same as "live", and on 17 August that gap cost
-# two releases. v0.2.31 and v0.2.32 both pushed cleanly and both reported success
-# here, while GitHub Pages failed to deploy either one: codeload returned 429 (Too
-# Many Requests) for actions/configure-pages@v5 and the deploy job died in "Set up
-# job", before running a step. The site served a two-release-old page for forty
-# minutes and nothing noticed — the failure was in a job neither remote knows about.
+step "4/5 verify the deploy actually published"
+# A clean push is NOT the same as "live", and on 17 August that gap cost two releases.
+# v0.2.31 and v0.2.32 both pushed cleanly and both reported success here, while GitHub
+# Pages failed to deploy either one: codeload returned 429 (Too Many Requests) for
+# actions/configure-pages@v5 and the deploy job died in "Set up job", before running a
+# step. The site served a two-release-old page for forty minutes and nothing noticed.
 #
 # So the last thing a release does is ask the live site what version it is serving.
 # The cost is up to eight minutes of waiting; the alternative is telling somebody a
@@ -95,12 +92,7 @@ else
   die "pushed but NOT published — do not report this release as live"
 fi
 
-step "6/6 release complete"
-# Because sgit pushed before git committed, the tree should end clean — the git
-# mirror includes the exact ref that push wrote. A dirty ref here means the
-# ordering was violated somewhere; it is tolerated (a rewritten ref can decrypt
-# to the same commit — fresh AES-GCM IV per write) but anything else dirty is a
-# real problem and gets reported.
-LEFTOVER="$(git status --porcelain | grep -v '\.sg_vault/bare/refs/' || true)"
+step "5/5 release complete"
+LEFTOVER="$(git status --porcelain || true)"
 [ -z "$LEFTOVER" ] || { echo "note: unexpected dirty files after release:"; echo "$LEFTOVER"; }
-echo "both remotes in sync — done."
+echo "release complete — $VER is live."

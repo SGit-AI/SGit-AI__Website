@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.83). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.84). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-111site releases, each verified live before it was called done
+112site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -215,6 +215,8 @@ Encrypted vaults. **Git workflows.** Zero knowledge.
 An index of published vaults, rendered live from a vault that indexes vaults — including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.
 
 **The design constraint, stated openly:** the bottleneck is one person with a backlog of vaults, so an entry costs **a read key and one line** — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault `kc67yhgw` directly — a push to it updates this page with no site deploy. The human companion is [the published-vaults gallery](../demos/vaults/index.md): one page per vault, with the vault running live in it.
+
+**Where it stands, checked 19 September 2026.** The catalogue vault holds **nine** entries and was last pushed when the site had nine published vaults; the gallery now has **thirty**. The twenty-one missing rows are not a queue problem — those vaults are published, audited and live on their own pages — they are a write-key problem: the catalogue can only be updated by whoever holds its key, and that is not the site's build. Until it catches up, [the gallery](../demos/vaults/index.md) and [its machine-readable twin](../demos/vaults/llms.txt) are the complete list, generated from one file on every release. What this page adds is the shape taxonomy, the evidence and write-key status per entry, and the proof that an index of vaults can itself be a vault.
 
 opening the catalogue…
 
@@ -445,7 +447,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
-The machine-first version of this list is [the catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy. New entries start there: a read key and one line, the rest derived. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is on [the embed demo page](../vault-app-embed.md).
+This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy — carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
 
 Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt) — every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
 
@@ -491,12 +493,12 @@ A vault key does not block publication; it changes what you publish. Store it wh
 
 ```
 # the gitignored tier — the release tripwire then scans every tracked file for it
-printf '%s' "$VAULT_KEY" > .sg_vault/local/demo-keys/<name>-vault-key
+printf '%s' "$VAULT_KEY" > admin/local/demo-keys/<name>-vault-key
 
 python3 - <<'PY'
 from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
 c = Vault__Crypto()
-pw, vault_id = c.parse_vault_key(open('.sg_vault/local/demo-keys/<name>-vault-key').read().strip())
+pw, vault_id = c.parse_vault_key(open('admin/local/demo-keys/<name>-vault-key').read().strip())
 print(c.derive_keys(pw, vault_id)['read_key'])     # publish only this
 PY
 ```
@@ -2073,19 +2075,31 @@ Live, end-to-end demonstrations — each one a vault that was actually created, 
 
 **The rule every demo follows:** the vault's *read key* is published on purpose — it is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
 
-## Published
+## Thirty vaults, one page each
 
-[Gallery · live### A vault app, live inside this pageField Notes: a self-contained vault app created from scratch, pushed, and opened inside sgit.ai with a published read key — sandboxed iframe, postMessage bridge, every byte decrypted in your browser.Open the walkthrough →](vault-app-embed.md)
+The demos outgrew this page. Every vault whose read key this site publishes now has its own page under [**Published vaults**](vaults/index.md) — what it does, which features it uses, the audit that ran before the key was published, and the vault itself running live in the page. Thirty at the last count, from a regulation parsed into a graph to a job application delivered as a vault, and the table there is generated from the same file as [the machine-readable list](vaults/llms.txt), so the two cannot drift.
+
+[Gallery · 30 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
+
+[Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
+
+[Index · live from a vault### The catalogueAn index of vaults that is itself a vault, rendered live on this site with a published read key. The machine-first companion to the gallery.Open the catalogue →](../catalogue/index.md)
+
+## The three walkthroughs
+
+These were the first demos, and they are still the pages to read if you want to see *how* a vault ends up inside a page — the sandboxed iframe, the postMessage bridge, the republish pattern when an original vault cannot publish its key, and two apps served from one store.
+
+[Walkthrough · live### A vault app, live inside this pageField Notes: a self-contained vault app created from scratch, pushed, and opened inside sgit.ai with a published read key — sandboxed iframe, postMessage bridge, every byte decrypted in your browser.Open the walkthrough →](vault-app-embed.md)
 
 [Report · real### The Strategy in Seven MapsNot demo content: the actual SG/Send strategy, published on LinkedIn in May 2026, served live from a vault with a published read key — plus the audit that shows why the original vault could not publish its key, and the republish pattern that fixed it.Open the walkthrough →](strategy-maps.md)
 
 [Analysis · live### sgit, on a Wardley MapSix maps of sgit's own positioning — where git wins, where the boundary falls, the agent as the new user — drawn as inline SVG and served as a **second app from the same vault** as the strategy essay: one store, two entry points, one read key.Open the analysis →](sgit-maps.md)
 
-## Coming next
+## Reading a vault from a site, without the vault supplying the viewer
 
-Two more shapes from [the plan](../admin/plans/why-expansion-plan.md), on the same template: a **two-agent inbox** vault (produced by actually running two sessions against it), which gets the full transcript, its own published read key, and a live embed.
+The newer pattern, used by the deck and document pages under the gallery, is the reverse of the embed: the site owns the viewer, the vault supplies only data, and the two meet in an iframe with no origin. It is written up for other sites' agents in [the deck brief](../docs/briefs/vault-decks-on-a-site.md), [the markdown and file-viewer brief](../docs/briefs/markdown-and-file-viewers.md), and [reading a single file out of a vault](../docs/vault/reading-a-vault-file.md).
 
-[← Home](../index.md)[The first demo →](vault-app-embed.md)
+[← Home](../index.md)[Published vaults →](vaults/index.md)
 
 
 
@@ -2873,7 +2887,7 @@ Things that actually happened, written up while the details were still checkable
 
 [Incident### The day we leaked our own vault keyAn agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.Read the incident →](exposed-vault-key.md)
 
-[Workflow### One working tree, two version control systemsThis site's own development model: one folder that is both an sgit vault and a git repository, two pushes per release, the one-file boundary that makes it safe, and the ordering rule that keeps the git mirror true to the vault.Read the workflow →](one-tree-two-remotes.md)
+[Workflow### One working tree, two version control systems — and why we stoppedFor 76 releases this site was one folder that was both an sgit vault and a git repository. The workflow, the one-file boundary that made it safe, the ordering rule — and the numbers behind retiring it: a 258 MB mirror that was 91% of the repository, had no reader, and went dead for seven releases without the site noticing.Read the retrospective →](one-tree-two-remotes.md)
 
 [Architecture### A live site whose host cannot read itTwo Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.Read the architecture →](live-vault-docs.md)
 
@@ -2900,21 +2914,23 @@ The incident write-up is the template for the uncomfortable kind. It names the a
 
 
 ==============================================================================
-# One working tree, two version control systems — sgit.ai case study
+# One working tree, two version control systems, and why we stopped — sgit.ai case study
 
-> How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
+> How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.
 >
 > Page: https://sgit.ai/case-studies/one-tree-two-remotes.html
 
 [Home](../index.md) / [Case studies](index.md) / One tree, two remotes
 
-# One working tree, two version control systems
+# One working tree, two version control systems — and why we stopped
 
-This site is developed in a single folder that is simultaneously an sgit vault and a git repository. Every release pushes both. This page is the workflow, the boundary that makes it safe, the one ordering rule that keeps the mirror true, and the script that enforces it.
+For seventy-six releases this site was developed in a single folder that was simultaneously an sgit vault and a git repository, and every release pushed both. On 19 September 2026 the vault mirror was removed from the repository and purged from its history. This page keeps the workflow as it ran, the boundary that made it safe, and the ordering rule that kept the mirror true — and then records, with the numbers, why a pattern that was correct stopped being worth carrying.
 
-## What happened
+**Status: retired at v0.2.84.** The site now ships over git alone. The [git-and-vaults](../docs/vault/git-and-vaults.md) pattern this page demonstrated is still right for the cases described there; what changed is that this site stopped being one of them. The reasons are in [the last section](#stopped).
 
-The folder that holds this site has two version control directories side by side:
+## What we ran
+
+The folder that held this site had two version control directories side by side:
 
 ```
 sgit-ai-website/
@@ -2923,18 +2939,18 @@ sgit-ai-website/
 └── index.html, why/, case-studies/, admin/ …         ← the same files, once
 ```
 
-They are not two copies kept in agreement. They are two version control systems pointed at **one directory** — `git status` and `sgit status` describe the same bytes. There is no synchronisation step because there is nothing to synchronise; a release is simply two pushes of the same tree:
+They were not two copies kept in agreement. They were two version control systems pointed at **one directory** — `git status` and `sgit status` described the same bytes. There was no synchronisation step because there was nothing to synchronise; a release was simply two pushes of the same tree:
 
 ```
 $ sgit commit -m "site v0.2.1: …" && sgit push   # encrypted history → SG/Send
 $ git add -A && git commit && git push            # public mirror → GitHub → Pages
 ```
 
-Each remote does a different job. The git push is what deploys — a GitHub Action publishes the tree to GitHub Pages (excluding `.sg_vault/`, which the public site does not need). The sgit push is what other agents read — this site's vault is cloned and pulled by the Claude Code sessions that build it, and the encrypted store in the git repo doubles as a full off-site mirror of the vault.
+Each remote did a different job. The git push was what deployed — a GitHub Action publishes the tree to GitHub Pages. The sgit push was meant to be what other agents read: the plan was that Claude Code sessions building the site would clone and pull the vault, and that the encrypted store committed to git would double as a full off-site mirror of it.
 
-## The boundary that makes it safe
+## The boundary that made it safe
 
-The entire pattern rests on one file: `.gitignore`. Everything encrypted **is** committed to git — 900+ objects under `.sg_vault/bare/`, all ciphertext under opaque ids. What is excluded is exactly the plaintext tier:
+The entire pattern rested on one file: `.gitignore`. Everything encrypted **was** committed to git — ciphertext objects under `.sg_vault/bare/`, all under opaque ids. What was excluded was exactly the plaintext tier:
 
 ```
 .sg_vault/local/     # vault key, access token, private PEM — plaintext, never committed
@@ -2942,61 +2958,62 @@ The entire pattern rests on one file: `.gitignore`. Everything encrypted **is** 
 *.pem
 ```
 
-That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site like this one*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../docs/vault/git-and-vaults.md) page covers which side of that line a given project is on.
+That was the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right *for a public site*, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad `.gitignore` edit away from publishing the plaintext tree. The [git repos inside vaults](../docs/vault/git-and-vaults.md) page covers which side of that line a given project is on.
 
-Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored `local/` tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.
+Because the boundary was one file, it got a machine check, not a convention. The build's validator read the vault passphrase from the gitignored `local/` tier at runtime and scanned every tracked file for it — so a key that reached the tree failed the build by construction. That check exists because of [the day it actually happened](exposed-vault-key.md): an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. **The tripwire outlived the mirror.** It now reads the write keys of published demo vaults from a gitignored `admin/local/demo-keys/` folder and scans for those instead; the mechanism is unchanged, only the folder moved.
 
 ## The one ordering rule: sgit first, then git
 
-Almost everything in the shared store is content-addressed — an object's name is the hash of its ciphertext, so it never changes under its id and the two systems can never disagree about it. Exactly one file is mutable: the vault's HEAD pointer, the **ref**. Every real `sgit push` rewrites it, and that makes the order of the two pushes matter:
+Almost everything in the shared store is content-addressed — an object's name is the hash of its ciphertext, so it never changes under its id and the two systems can never disagree about it. Exactly one file is mutable: the vault's HEAD pointer, the **ref**. Every real `sgit push` rewrites it, and that made the order of the two pushes matter:
 
 ```
 ✓ sgit commit && sgit push     # 1st — writes the new ref
 ✓ git add -A && git commit && git push   # 2nd — captures that exact ref
 ```
 
-Done in this order, the git mirror always carries the ref the push just wrote, and a clean `git status` is the normal end state of every release — reads and no-op operations (`ls`, `history`, `status`, `pull`, `fetch`) do not rewrite the ref, so nothing drifts between releases. We verified both claims by testing them.
+Done in this order, the git mirror always carried the ref the push had just written, and a clean `git status` was the normal end state of every release. Reverse the order and the failure was quiet: the mirror carried the *previous* ref — in sync by bytes, one commit behind in meaning.
 
-Reverse the order and the failure is quiet: commit git first and the mirror carries the *previous* ref — in sync by bytes, one commit behind in meaning. Push sgit without a following git commit and the ref shows as modified in `git status`.
+One property worth keeping from this: **the ref's bytes carry no information about staleness.** AES-GCM encrypts with a fresh random IV on every write, so a rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit id. "Dirty" did not mean stale, and byte-equality would not have meant current — the only real answers were decrypting the ref or asking `sgit status`. This is also why `.gitattributes` marked the store `binary -diff -merge`: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
 
-One property to know when reading that modified flag: **the ref's bytes carry no information about staleness.** AES-GCM encrypts with a fresh random IV on every write, so a rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit id. "Dirty" therefore does not mean the mirror is stale, and byte-equality would not mean it is current — the only real answers are decrypting the ref or asking `sgit status`. This is also why `.gitattributes` marks the store `binary -diff -merge`: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.
+## The release script, then and now
 
-## What changed: the release script
+Two pushes with no enforcement is an invitation to forget one, so the release was one script, [`admin/build/release.sh`](../admin/index.md), and it was strict: build, validate, sgit push and verify in sync, git push and verify HEAD equals origin, then poll the live site until it served the new version. The same script ships the site today with the sgit step removed. It still refuses to push until the validator — including the key-leak tripwire — has passed, and it still refuses to call a release done until `https://sgit.ai/` is serving the version it just pushed.
 
-Two pushes with no enforcement is an invitation to forget one — push only sgit and the site never deploys; push only git and the live vault (the one other sessions clone) falls behind. So the release is now one script, [`admin/build/release.sh`](../admin/index.md), and it is deliberately strict:
+## Why we stopped
 
-```
-$ ./admin/build/release.sh "site v0.2.2: describe the release"
-1. build     — regenerate every page, markdown twin, llms*.txt, sitemap
-2. validate  — 90+ file checks, including the key-leak tripwire; any failure aborts
-3. sgit      — commit + push the vault, verify "in sync with remote"
-4. git       — commit + push, verify local HEAD == origin
-5. confirm   — both remotes reported in sync, or exit 1 loudly
-```
+Nothing about the pattern broke. What happened is that its costs stayed and its benefits never arrived, and a container recycle made that impossible to ignore.
 
-The ordering inside the script is the rule above, made unforgettable: sgit pushes before git commits, and the expected end state of every release is a clean tree. Two further design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push *either* remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.
+- **The mirror had no reader.** The design assumed other sessions would `sgit clone` the site vault. In practice every session that built the site cloned it from GitHub, because that is where the deploy runs from and where the history is legible. Not one release was ever produced from a vault clone.
+- **The vault had no published read key.** Every other vault on this site is openable by anyone; the site's own vault was the one nobody could open. A zero-knowledge mirror of public content that nobody can read is storage, not publication.
+- **It went dead quietly, and the site did not notice.** The container holding the write key was recycled after **v0.2.76**. Because `.sg_vault/local/` is gitignored by design, no clone could push the vault again. Releases **v0.2.77 through v0.2.83** — seven of them — went out over git alone, and the live site was correct throughout. The mirror had been carrying nothing the deploy depended on.
+- **It was 91% of the repository.** The encrypted store was **258 MB in 15,933 files** against **24 MB of site content in about 750 files**. Every clone paid for it; every `git add -A` walked it.
+- **Two published pages had become false.** This one said "every release pushes both"; the site's `llms.txt` said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.
+
+So on 19 September 2026 the store was removed from the tree, the history was rewritten with `git filter-repo` to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.
 
 ## The numbers
 
 | What | Count |
 |---|---|
-| Files in the shared working tree | ~120 |
-| Encrypted objects committed to git under `.sg_vault/bare/` | 933 |
-| Plaintext files excluded from git (the `local/` tier) | 5 — key, token, PEM, config, base_url |
-| Mutable files in the store (the false-drift class) | 1 — the ref |
-| Releases shipped through this workflow so far | every version on the [release history](../admin/versions.md) |
+| Releases shipped with both pushes | 76 (through v0.2.76) |
+| Releases shipped over git alone while the mirror was unreachable | 7 (v0.2.77 – v0.2.83) |
+| Encrypted objects removed from git | 15,933 files, 258 MB |
+| Site content that remained | ~750 files, 24 MB |
+| Times the mirror was cloned to produce a release | 0 |
+| Plaintext ever in the purged history | none — the local/ tier was gitignored from the first commit |
 
-## What we still do not know
+## What we would do differently
 
-- **History depth differs and we accept it.** The vault was rekeyed after the key leak, which reset its history; git kept the full history across the rekey. The two histories agree from that point forward but are not equal before it. For this site that is fine; for an audit-grade deployment you would want the equivalence stated precisely.
-- **The IV churn is cosmetic but not free.** Every release commits a re-encrypted ref to git — a 69-byte file that changes on every push forever. Harmless at this scale; a vault with many mutable refs would want them out of git or normalised.
+- **Give the mirror a reader before giving it a remote.** If nobody clones the vault, do not build a release process around pushing it. The [board vault](../demos/vaults/board/index.md) is the pattern working: it is pulled by the release, rendered into a page, and updated by anyone holding its key — it earns its place because something reads it.
+- **A public site's vault should have a public read key, or not exist.** The site publishes read keys for thirty vaults. Withholding its own was an inconsistency, not a precaution.
+- **Measure the mirror against the content.** Ninety-one per cent of a repository is a number that should have been on this page from the start.
 
 ## Related
 
-- [Git repos inside vaults](../docs/vault/git-and-vaults.md) — the general pattern, including the confidential-vault caution
-- [The day we leaked our own vault key](exposed-vault-key.md) — why the tripwire exists
-- [A live site whose host cannot read it](live-vault-docs.md) — what the sgit push feeds
-- [Admin & engineering](../admin/index.md) — the build system this script belongs to
+- [Git repos inside vaults](../docs/vault/git-and-vaults.md) — the general pattern, and the confidential-vault caution, both still current
+- [The day we leaked our own vault key](exposed-vault-key.md) — why the tripwire exists, and why it stayed after the mirror went
+- [The board as a vault](../demos/vaults/board/index.md) — the vault this site still pulls at every release
+- [Admin & engineering](../admin/index.md) — the release process as it is now
 
 [← Case studies](index.md)[Git repos inside vaults →](../docs/vault/git-and-vaults.md)
 
@@ -3096,7 +3113,7 @@ Everything below is a consequence of that sentence. If it doesn't describe a pro
 
 ## git and sgit, side by side
 
-The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site runs both at once** — one working tree, two remotes: the encrypted vault is pushed with `sgit push`, and the same directory is pushed to GitHub with `git push`, which is what builds and deploys it. Neither is a fallback for the other.
+The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. **This site ran both at once** for its first 76 releases — one working tree, two remotes — and then [retired the vault mirror](../case-studies/one-tree-two-remotes.md), because git was doing the deploying and nothing was reading the vault. The thirty vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.
 
 |  | git | sgit |
 |---|---|---|
@@ -4215,12 +4232,12 @@ Work arrives as a brief, a credential, a phone screenshot or a review from anoth
 
 Each role is a file under `admin/content/team/roles/`; this grid and each page derive from it. The roles mirror the [Explorer team](https://github.com/SGit-AI/SGit-AI__CLI/tree/dev/team/explorer) in the CLI repository, specialised for running a site rather than building a tool: the Publisher and Auditor exist because this site publishes read keys on purpose and has to be certain what they reach.
 
-[1**Sherpa** — Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits. — **Owns** the board, release scoping, the order in which other roles run, and the decision to hold or ship](roles/sherpa.md) [2**Publisher** — Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with. — **Owns** the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself](roles/publisher.md) [3**Auditor** — Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it. — **Owns** credential classification, the leak tripwire, the secret-shape sweeps, and the hold-or-publish recommendation](roles/auditor.md) [4**Journalist** — Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered. — **Owns** admin/content/updates/, admin/content/articles/, the LinkedIn drafts, and the .md twin the articles are read through by agents](roles/journalist.md) [5**Cartographer** — Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself. — **Owns** admin/content/sites/*.md, the network directory, the chooser questions, the !site card, and the aliases a reader arrives with](roles/cartographer.md) [6**Ambassador** — Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism. — **Owns** the homepage bands, the positioning sentence, use-case framing, and the investors section](roles/ambassador.md) [7**Designer** — Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible. — **Owns** assets/site.css, the generated components in build_pages.py, the screenshot rigs, and the mobile check](roles/designer.md) [8**Release engineer** — Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it. — **Owns** admin/build/release.sh, the validator, the CI tag gate, the two-remote model, and the version bump](roles/release-engineer.md) [9**Historian** — Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed. — **Owns** VERSION_LOG, the corrections convention, and the reality documents that say what is shipped versus argued](roles/historian.md)
+[1**Sherpa** — Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits. — **Owns** the board, release scoping, the order in which other roles run, and the decision to hold or ship](roles/sherpa.md) [2**Publisher** — Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with. — **Owns** the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself](roles/publisher.md) [3**Auditor** — Decides whether something can be made public without leaking — credentials in vaults, keys in the tree, secrets in screenshots — and publishes what it finds rather than filing it. — **Owns** credential classification, the leak tripwire, the secret-shape sweeps, and the hold-or-publish recommendation](roles/auditor.md) [4**Journalist** — Writes what happened — the release note for every version, the articles that argue a point with screenshots, and the drafts that go to LinkedIn — with every number counted rather than remembered. — **Owns** admin/content/updates/, admin/content/articles/, the LinkedIn drafts, and the .md twin the articles are read through by agents](roles/journalist.md) [5**Cartographer** — Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself. — **Owns** admin/content/sites/*.md, the network directory, the chooser questions, the !site card, and the aliases a reader arrives with](roles/cartographer.md) [6**Ambassador** — Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism. — **Owns** the homepage bands, the positioning sentence, use-case framing, and the investors section](roles/ambassador.md) [7**Designer** — Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible. — **Owns** assets/site.css, the generated components in build_pages.py, the screenshot rigs, and the mobile check](roles/designer.md) [8**Release engineer** — Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it. — **Owns** admin/build/release.sh, the validator, the CI tag gate, and the version bump](roles/release-engineer.md) [9**Historian** — Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed. — **Owns** VERSION_LOG, the corrections convention, and the reality documents that say what is shipped versus argued](roles/historian.md)
 
 ## The rules every role shares
 
 - **Read keys yes, vault keys never.** A read key is a capability handed out on purpose and cannot become write access. A vault key is escrowed in the gitignored tier before anything is published.
-- **Verify live.** Both remotes in sync is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.
+- **Verify live.** A clean push is not the same as deployed. The release polls sgit.ai for the version and aborts if it never appears.
 - **Count, don't remember.** Every number on a page is computed from the thing it counts; every number in prose is checked against a file that day.
 - **Negative controls.** A test that would pass with a wrong input has proven nothing.
 - **Publish the finding.** An audit result, a correction, a gap — on the page, not in a file nobody reads.
@@ -4307,7 +4324,7 @@ You are the Sherpa for sgit.ai. Another team has sent `DOCUMENT`. Read it agains
 
 Release engineer
 
-You are the release engineer for sgit.ai. The Sherpa's sentence for this release is: "`SENTENCE`". Confirm SITE_VERSION in admin/build/build_pages.py is `VERSION` and the top VERSION_LOG entry exists with 'this release' as its commit, and that the previous entry's commit is filled from sgit history log. Run python3 admin/build/build_pages.py, then node admin/build/validate.js; on any failure stop and report it verbatim. Then run ./admin/build/release.sh "site `VERSION`: `SENTENCE`" and wait for "both remotes in sync — done". Report: the vault commit id, the version curl https://sgit.ai/index.html returns, and any dirty files. Never print the vault key. Do not say the release is live until the script's live check says so.
+You are the release engineer for sgit.ai. The Sherpa's sentence for this release is: "`SENTENCE`". Confirm SITE_VERSION in admin/build/build_pages.py is `VERSION` and the top VERSION_LOG entry exists with 'this release' as its commit, and that the previous entry's commit is filled from git log. Run python3 admin/build/build_pages.py, then node admin/build/validate.js; on any failure stop and report it verbatim. Then run ./admin/build/release.sh "site `VERSION`: `SENTENCE`" and wait for "release complete". Report: the git commit id, the version curl https://sgit.ai/index.html returns, and any dirty files. Never print a vault key. Do not say the release is live until the script's live check says so.
 
 ## 8. Fix a layout bug reported from a phone
 
@@ -4356,7 +4373,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.83, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.84, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4719,7 +4736,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-111**site releases since 14 August**
+112**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**
@@ -4728,7 +4745,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-55**articles and release notes**
+56**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5941,7 +5958,7 @@ The new vault gets a strong random passphrase; the seed copy **structurally cann
 
 Engineering preview. A git repository is, in the end, just files — which means a vault can hold a complete repo, `.git` folder included, giving you an end-to-end-encrypted remote for your full history. The missing piece is *legibility*: making that history readable wherever the vault lands, without assuming a git binary. That piece now exists.
 
-**Live example:** this website is built exactly this way — one folder, both systems, two pushes per release. The worked case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the release script that keeps both remotes honest, is at [one working tree, two remotes](../../case-studies/one-tree-two-remotes.md).
+**Worked example, including the ending:** this website ran exactly this way for 76 releases — one folder, both systems, two pushes per release — and then retired the vault mirror in September 2026 because it had no reader and was 91% of the repository. The case study, including the surprise (the encrypted ref always looks modified to git, because AES-GCM re-encrypts with a fresh IV on every write) and the reasons for stopping, is at [one working tree, two remotes](../../case-studies/one-tree-two-remotes.md). The pattern below is still the right one when something actually reads the mirror.
 
 ## A pure-Python git reader
 
@@ -5989,18 +6006,18 @@ Because the working tree is real files, the flow runs both ways. Edit a file in 
 
 ### Before first publication: audit, then keep the discipline
 
-- **Run the leak audit from the vault root** before the first `git add`: the vault-key secret must not appear in the working tree, no `BEGIN PRIVATE KEY` outside `local/`, and `bare/` must contain no greppable filenames or content. (The vault serving this site passed all checks before its dotfiles shipped.)
+- **Run the leak audit from the vault root** before the first `git add`: the vault-key secret must not appear in the working tree, no `BEGIN PRIVATE KEY` outside `local/`, and `bare/` must contain no greppable filenames or content. (This site's own vault passed all checks before its dotfiles shipped, and the audit is what later caught [the leak](../../case-studies/exposed-vault-key.md).)
 - **Write the protection files before the first `git add -A`** — once `local/` is in a commit it is in history, and removing it later means a history rewrite plus key rotation.
 - **For CI**, the vault key goes in GitHub Actions Secrets (and a password manager) — never in files, commit messages, issues or workflow YAML.
 - **Disaster recovery comes free:** a git clone of the repo plus the key reconstitutes everything — content, sgit history, all branches — even if the sync server is gone. Do one restore drill before you need it in anger.
 
-The vault serving this site ships the full `.gitignore` / `.gitattributes` pair — clone it for a working example. And once the vault is on GitHub, the same repo can serve the app itself: see [static hosting on GitHub Pages](static-hosting.md).
+The `.gitignore` / `.gitattributes` pair is reproduced in full on [the case study](../../case-studies/one-tree-two-remotes.md). And once the vault is on GitHub, the same repo can serve the app itself: see [static hosting on GitHub Pages](static-hosting.md).
 
 ### What a key rotation does to the mirror
 
 Rotating a vault key (`delete-on-remote` → `rekey` → `push`) re-encrypts every object under a new key, so every content-addressed ID changes and the entire store is replaced. In the git mirror that lands as one large commit — for this site, 336 objects deleted and a fresh set added. Nothing breaks (the `.gitattributes` binary rule means no diff churn), but two consequences are worth knowing before you rotate:
 
-- **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap.
+- **Git becomes the history.** A rekey resets the vault's own commit history to a single commit. The git mirror still holds every previous version — which is the side-by-side pattern earning its keep: each remote covers the other's gap. (For this site that mirror has since been purged; the point stands for any vault whose mirror somebody reads.)
 - **A rekey protects the server, not the mirror.** Old ciphertext already pushed to git stays in git history, and remains decryptable by the old key. If that key was ever exposed *and* the repo is public, rotating does not un-publish the old content — for public content (like this site) that is a non-issue, but for a private vault, treat a rotation as incomplete until the mirror's history is scrubbed too. Rotate first, then decide about history.
 
 This section exists because it happened here: the passphrase for this site's own vault was written into a tracked build file (an anti-leak regex that became the leak), reached three public commits, and was caught by the audit above. The key was rotated the same hour and the old vault deleted from the server; the exposed content was this public website. Recorded rather than quietly fixed — see the [release history](../../admin/versions.md).
@@ -6221,13 +6238,13 @@ Every page is generated from a single Python script holding one shared template 
 # 1. bump SITE_VERSION (v0.1.n — n increases on every push) + add a versions row
 # 2. regenerate + validate
 $ python3 admin/build/build_pages.py && node admin/build/validate.js
-# 3. ship to the vault — the encrypted deployment
-$ sgit commit -m "site vX.Y.Z: …" && sgit push
-# 4. ship to git — same folder, second remote; GitHub Pages deploys from it
-$ git add -A && git commit -m "site vX.Y.Z" && git push origin dev
+# 3. ship — GitHub Pages deploys from the dev branch
+$ git add -A && git commit -m "site vX.Y.Z: …" && git push origin dev
+# 4. verify live — the release is not done until sgit.ai serves the new version
+$ curl -s https://sgit.ai/index.html | grep -o 'v0\.[0-9]*\.[0-9]*' | head -1
 ```
 
-One folder, one source of truth, two remotes: the same working tree is an sgit vault *and* a git repository (`SGit-AI/SGit-AI__Website`). Every release pushes both — sgit carries the encrypted history; git carries the public mirror and triggers the GitHub Pages deployment. A release isn't done until both remotes report in sync. See [release history](versions.md).
+All four steps are one script, `admin/build/release.sh`, which also pulls the [board vault](../demos/vaults/board/index.md) first so the snapshot the release renders is current, and refuses to push until the validator — including the vault-key leak tripwire — has passed. The repository is `SGit-AI/SGit-AI__Website`; until v0.2.76 the same folder was also an sgit vault pushed on every release, a pattern retired and written up in [one tree, two remotes](../case-studies/one-tree-two-remotes.md). See [release history](versions.md).
 
 ## Design & contributions
 
@@ -6248,18 +6265,19 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-This site ships by pushing its vault, and the site version — **v0.2.83**, shown in the nav of every page — increments on every push. Each release is also an sgit commit, so the vault's own `sgit history log` is the authoritative audit trail; this page is the human-readable index of it.
+The site version — **v0.2.84**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
-| Version | Date | Vault commit | Changes |
+| Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.2.83 | 2026-09-19 | this release | THE ROOT LLMS.TXT WAS POINTING AGENTS AT TWO 404s, AND BURYING THE GUIDANCE IT SHOULD LEAD WITH. Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that COVERAGE was complete and ROUTING was broken. The guidance front door sat at line 149 of 239, as page entry 83 of 138, indistinguishable from installation.md — while the orientation block at the top still sent agents to /use-cases/ for 'task-shaped guidance and agent briefs', which is where that guidance lived before it moved to /docs/guidance/ and /docs/briefs/. None of the six scoped llms.txt files were advertised at all, so an agent reading the root had no way to learn that /docs/guidance/llms.txt or /demos/vaults/llms.txt exist. Fixed with a START HERE, BY WHAT YOU ARE DOING block before the page list — four entry points by intent, plus the list of scoped indexes — and the stale /use-cases/ pointer corrected. TWO BROKEN LINKS FOUND BY THE GUARD, NOT BY READING: the routing block is hand-written prose naming generated files, which is the exact drift this site warns about, so the build now asserts that every path the preamble points at is a file the build produces. It failed immediately on /docs/exposed-vault-key.md — the line telling agents never to write a vault key into a tracked file, pointing at a 404 for six months; the page is at /case-studies/exposed-vault-key.md. Widening the guard to every section then caught /security.md, referenced twice, where the page is /security/index.md. Both were 404 on the live site and the site's own validator had never looked, because it checks links inside pages and llms.txt is not a page. ALSO CORRECTED: the preamble claimed this site 'is itself served from an encrypted vault'. The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot. |
-| v0.2.82 | 2026-09-18 | PREV_UNFILLED | VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 from the same generator one day later — a fractional CISO pack, two days a month on a retainer for a company that is already certified — and the interesting thing is how it solves the publication problem. #29 described a real role and WITHHELD the company, which meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. #30 describes A TYPE OF COMPANY in six rows derived from public sources — what it does, who buys it, where the risk sits, what it has, what it lacks, who governs it — and everything after follows from the archetype, so there is nothing to redact. The rule that generalises: a document written for a class can be published; a document written for an instance has to be scrubbed. New in this one: an ENGAGEMENT document with the monthly rhythm, a twelve-month map, and a section headed 'what two days a month is not' — not cover, not a DPO, not delivery, not an audit, not a substitute for a full-time hire; a one-page INFOGRAPHIC rendered from content.json rather than drawn separately, which is the page's hero because it is the pitch on one sheet; and the three 2019 decks rendered in the viewer rather than only archived. The HONEST TENSIONS section names how the offer could be misused against the buyer — cheaper than a permanent hire, and that economy can defer a hire the company needs — which a sales document rarely does. Audit run and stated: no company named or implied, no rate or tax status ('retainer' appears as a word with no figure), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair: the same machinery giving two answers to how you publish a document about a job. |
-| v0.2.81 | 2026-09-18 | PREV_UNFILLED | THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download. THE AUTHOR'S CALL ON THE STALE VAULT COUNT: the previous release made a point of '26 public vaults' having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed, so the correction became a dating note — the figures are those that were true when printed, the live table is the current answer, and the sheets are the historical one. Which is the right call: a printed artefact that gets silently re-edited to match today stops being a record of anything. |
-| v0.2.80 | 2026-09-17 | PREV_UNFILLED | THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience sheets — founders, startups, investors, corporate — written for a startup summit and published here with a parent page, one page each, the capability table rendered as real HTML, and the PDF both embedded and downloadable. THE PDF IS THE DOWNLOAD, NOT THE PAGE, for the reason this site keeps giving: a PDF is invisible to a search engine, to llms-full.txt and to any agent reading the site, so the content is HTML and the handout is an artefact beside it. What makes them worth publishing rather than filing is the WHAT EXISTS TODAY column, which is unflattering on purpose — 'no payment link', 'not yet packaged as its own product', 'research design; implementation not claimed', 'write-only intake built, never sold'. A capability sheet that cannot say which rows are unfinished is a brochure. TWO THINGS THE CHECK TURNED UP, both while the sheets were being handed out: the PDFs are named RiskMandate.ai while every page inside them is branded sgit.ai and every footer points at sgit.ai/network — the copies here are renamed to match their contents; and the printed line '26 public vaults' is now 29, because three vaults were published during the week of the summit. The pages here do not restate the number and link the live table instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A COMPUTED ONE FOR ANYTHING THAT MOVES. |
-| v0.2.79 | 2026-09-17 | PREV_UNFILLED | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
-| v0.2.78 | 2026-09-16 | PREV_UNFILLED | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
-| v0.2.77 | 2026-09-15 | PREV_UNFILLED | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
-| v0.2.76 | 2026-09-10 | PREV_UNFILLED | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
+| v0.2.84 | 2026-09-19 | this release | THE SITE'S OWN VAULT MIRROR IS GONE — DELETED FROM THE TREE, PURGED FROM EVERY COMMIT, AND THE BRANCH FORCE-PUSHED. Asked whether the mirror was still needed, the answer at v0.2.83 was no: it had no reader (every session that built the site cloned it from GitHub), no published read key (the one vault on this site nobody could open), and it had been dead since v0.2.76 without the site noticing — seven releases went out over git alone and the live pages were correct throughout. It was also 258 MB in 15,933 files against 24 MB of content in about 750: 91% of the repository. The author's call was delete, with a forced push authorised. Done with git filter-repo over all 112 commits; the pack went from 276 MB to 21 MB, and the one other remote branch (fully merged, dated August) was removed so no ref kept the old objects reachable. The purge is safe for the same reason the mirror was: everything removed was ciphertext under a key that was never in the repository, and the vault itself on the server is untouched. EVERY PAGE THAT DESCRIBED THE PATTERN AS CURRENT WAS REWRITTEN: the one-tree-two-remotes case study is now a retrospective with a 'why we stopped' section and the numbers; the why page, the admin page, the git-and-vaults note, the release-engineer role and the release prompt no longer say 'both remotes'. Historical release notes were left as the dated records they are. THE TOOLING FOLLOWED: release.sh no longer requires .sg_vault or pushes sgit (it still pulls the board vault and still refuses to finish until sgit.ai serves the new version); the key-leak tripwire now reads demo vault write keys from a gitignored admin/local/demo-keys/ folder instead of the dead vault's local tier, and check_credential.py and the publishing method point there too. The release history's commit column switches from vault commit ids to git ids from v0.2.77 on, which also filled the seven PREV_UNFILLED rows the missing key had left. THE THREE PAGES IN THE VAULTS MENU WERE STALE: the demos page listed three vaults as 'published' when there were thirty, and pointed at a plan already delivered — it now leads with the gallery and keeps the three walkthroughs as walkthroughs; the catalogue, which renders a vault, turned out to hold nine entries against the gallery's thirty, so the page now says so with the date and names the gallery as the complete list until the catalogue's key holder catches up; the gallery's footer stopped calling the catalogue the place where new entries start, because for twenty-one of them it was not. |
+| v0.2.83 | 2026-09-19 | git 45b99758 | THE ROOT LLMS.TXT WAS POINTING AGENTS AT TWO 404s, AND BURYING THE GUIDANCE IT SHOULD LEAD WITH. Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that COVERAGE was complete and ROUTING was broken. The guidance front door sat at line 149 of 239, as page entry 83 of 138, indistinguishable from installation.md — while the orientation block at the top still sent agents to /use-cases/ for 'task-shaped guidance and agent briefs', which is where that guidance lived before it moved to /docs/guidance/ and /docs/briefs/. None of the six scoped llms.txt files were advertised at all, so an agent reading the root had no way to learn that /docs/guidance/llms.txt or /demos/vaults/llms.txt exist. Fixed with a START HERE, BY WHAT YOU ARE DOING block before the page list — four entry points by intent, plus the list of scoped indexes — and the stale /use-cases/ pointer corrected. TWO BROKEN LINKS FOUND BY THE GUARD, NOT BY READING: the routing block is hand-written prose naming generated files, which is the exact drift this site warns about, so the build now asserts that every path the preamble points at is a file the build produces. It failed immediately on /docs/exposed-vault-key.md — the line telling agents never to write a vault key into a tracked file, pointing at a 404 for six months; the page is at /case-studies/exposed-vault-key.md. Widening the guard to every section then caught /security.md, referenced twice, where the page is /security/index.md. Both were 404 on the live site and the site's own validator had never looked, because it checks links inside pages and llms.txt is not a page. ALSO CORRECTED: the preamble claimed this site 'is itself served from an encrypted vault'. The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot. |
+| v0.2.82 | 2026-09-18 | git bd8300e2 | VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 from the same generator one day later — a fractional CISO pack, two days a month on a retainer for a company that is already certified — and the interesting thing is how it solves the publication problem. #29 described a real role and WITHHELD the company, which meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. #30 describes A TYPE OF COMPANY in six rows derived from public sources — what it does, who buys it, where the risk sits, what it has, what it lacks, who governs it — and everything after follows from the archetype, so there is nothing to redact. The rule that generalises: a document written for a class can be published; a document written for an instance has to be scrubbed. New in this one: an ENGAGEMENT document with the monthly rhythm, a twelve-month map, and a section headed 'what two days a month is not' — not cover, not a DPO, not delivery, not an audit, not a substitute for a full-time hire; a one-page INFOGRAPHIC rendered from content.json rather than drawn separately, which is the page's hero because it is the pitch on one sheet; and the three 2019 decks rendered in the viewer rather than only archived. The HONEST TENSIONS section names how the offer could be misused against the buyer — cheaper than a permanent hire, and that economy can defer a hire the company needs — which a sales document rarely does. Audit run and stated: no company named or implied, no rate or tax status ('retainer' appears as a word with no figure), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair: the same machinery giving two answers to how you publish a document about a job. |
+| v0.2.81 | 2026-09-18 | git 866c39dc | THE SUMMIT SHEETS GET A PREVIEW GRID, AND THEIR NUMBERS ARE DATED RATHER THAN CORRECTED. The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embed and the download. THE AUTHOR'S CALL ON THE STALE VAULT COUNT: the previous release made a point of '26 public vaults' having become 29 during summit week. The author's instruction is that the sheets are a dated record of what was said in September 2026 and should be kept as printed, so the correction became a dating note — the figures are those that were true when printed, the live table is the current answer, and the sheets are the historical one. Which is the right call: a printed artefact that gets silently re-edited to match today stops being a record of anything. |
+| v0.2.80 | 2026-09-17 | git 0817be5b | THE LISBON SUMMIT SHEETS, AS PAGES AND AS THE PDFS THEY WERE HANDED OUT AS. Four audience sheets — founders, startups, investors, corporate — written for a startup summit and published here with a parent page, one page each, the capability table rendered as real HTML, and the PDF both embedded and downloadable. THE PDF IS THE DOWNLOAD, NOT THE PAGE, for the reason this site keeps giving: a PDF is invisible to a search engine, to llms-full.txt and to any agent reading the site, so the content is HTML and the handout is an artefact beside it. What makes them worth publishing rather than filing is the WHAT EXISTS TODAY column, which is unflattering on purpose — 'no payment link', 'not yet packaged as its own product', 'research design; implementation not claimed', 'write-only intake built, never sold'. A capability sheet that cannot say which rows are unfinished is a brochure. TWO THINGS THE CHECK TURNED UP, both while the sheets were being handed out: the PDFs are named RiskMandate.ai while every page inside them is branded sgit.ai and every footer points at sgit.ai/network — the copies here are renamed to match their contents; and the printed line '26 public vaults' is now 29, because three vaults were published during the week of the summit. The pages here do not restate the number and link the live table instead, which is the general rule worth extracting: A PRINTED ARTEFACT SHOULD POINT AT A COMPUTED ONE FOR ANYTHING THAT MOVES. |
+| v0.2.79 | 2026-09-17 | git 368d47d8 | A JOB APPLICATION AS A VAULT — AND THE PRIVACY AUDIT PUBLISHED BESIDE IT. Vault #29 is an interim CISO candidate pack delivered as an encrypted vault instead of a CV attached to an email. THE IDEA WORTH STEALING is that the pack is the evidence for its own claim: it says the candidate works with a team of agents and ships encrypted versioned artefacts, and it IS one, so a reviewer does not have to believe the claim — the thing in their hands is the test of it. Three routes split at the front door rather than one document compromising between audiences: the recruiter gets a submission summary to copy and answers to screening questions, the company gets eleven sections including BEFORE SIGNING, a conflict disclosure and one titled TENSIONS, and anyone gets the skills map and the history. Four documents each exist as PDF, Word, Markdown AND JSON — the fourth being the one that matters, a CV as structured data so a machine reading the pack gets fields rather than a page to parse. The pack's own build refuses what the vault authoring contract refuses, including a JavaScript syntax check of every inline script — the check that caught a shipped bug on riskmandate.ai the day before. THE AUDIT IS ON THE PAGE, not merely performed: the submitter's position was that the vault holds nothing sensitive, does not identify the company and reuses public material. Checked and it holds — client not named anywhere and described only as FTSE 250, no day rates or off-payroll analysis (removed before publication, with the removal disclosed in the brief's own editor's note), no phone or address, one long-public email, no credentials, read key verified against an all-zeros control. One point stated rather than waved through: thirteen named third parties appear in the recommendations with their 2019 titles, public twice over via LinkedIn and the candidate's own CC BY-SA 2019 deck which ships in the vault — labelled title_2019 throughout, and this site quotes the pack's framing rather than reproducing the individual recommendations. |
+| v0.2.78 | 2026-09-16 | git f4e330f6 | THE SYNTHETIC-USER METHOD RUNS A SECOND TIME, AGAINST A SECOND PRODUCT, AND THE SECOND RUN IS THE BETTER ARGUMENT. Vault #28 applies #27's method to riskmandate.ai one day later, which matters because one run is an anecdote and two sites is a method. It is not a repeat: the first vault NARRATED and this one MEASURES — words above the fold, character offsets, scroll positions in pixels and screens. Its headline is that THE PRODUCT IS NEVER NAMED WHERE IT IS SOLD: above the fold the home page says policy six times, insure three times and underwriters once, shows a 5 pound price, and never says Agent Behaviour Policy, which first appears 58% of the way down. Two of five read 'buy one, from 5 pounds' as buying an insurance policy for five pounds, and the one who held that reading longest was the insurance professional — the reader best equipped to recognise the vocabulary and therefore the most confidently wrong. THE CLAIM WAS RE-MEASURED RATHER THAN REPEATED: the live page was fetched, rendered at the same viewport and measured independently, and every structural number reproduces to the character — 9,270 characters, first mention at 5,387, 6,481px and 7.2 screens, zero mentions above the fold. Two count lines differ and the page says why they differ rather than hiding it: a broader insur* pattern and a fold-boundary word. THE MOST USEFUL FINDING IS NOT AN OPINION: the first pass recorded a JavaScript error on EVERY page visited, both shipped, the insurance page broken since launch, and every existing test passed because the HTML still rendered and only the console knew — fixed the same session with a test added that parses every inline script and fails the build. One persona, Priya Raghavan, walks both vaults, which is what turns two studies into a comparison. NOTED, NOT FIXED: the site's sgit vault mirror is behind its git mirror — the container holding the write key was recycled, .sg_vault/local is gitignored by design, and these releases have gone out over git alone. |
+| v0.2.77 | 2026-09-15 | git 44323549 | SYNTHETIC USERS — THE 27TH VAULT, AND THE MOST USEFUL ONE HERE THAT CONTAINS NO REAL DATA. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the site did not answer, 10 recorded confusions and 18 findings, THREE OF THEM COSTING A SALE. THE IDEA WORTH STEALING is a deliberate handicap — the agent is handed the SCREENSHOT, never the DOM, because an agent reading the DOM finds the buy button every time and therefore finds no confusion, which is the only thing the exercise is for. The protocol is published inside the vault so two runs a month apart are comparable rather than merely sequential, 'where did you guess' is a required field, and a run with no confusion anywhere is treated as a run done badly rather than a site that passed. READ THE VIEWPORT COLUMN: the persona carrying the largest decision one person makes alone on that site did the whole thing on a 390-wide phone, and produced the most questions and the most confusion of anyone — a finding the vault never states, which falls out of the table once the five runs are counted in one place. Zero page errors across all five runs, so none of the confusion was a bug; it was the copy. Four findings are already marked FIXED and kept rather than deleted, on the stated grounds that a findings list that loses the fixed ones cannot be compared with the next set of runs — and the best fix answered a request for a number with a disclosure instead, saying the duration has never run for a paying buyer so there is no measurement to quote. CREDENTIAL HANDLING: what was submitted was a VAULT KEY, not a read key. It was classified before it touched anything, the read key was derived one-way, only the derived key is published, and the derivation was proved with an all-zeros negative control that produced an empty directory against the same vault id. The one credential-shaped string in the vault is a discount code the store publishes itself. |
+| v0.2.76 | 2026-09-10 | git 005361e8 | THE TRANSFER API GETS DOCUMENTED, AND A DANGLING REFERENCE CLOSES. The SG/API team wrote an integration guide for sending an encrypted bundle to SG/Send and asked whether it belonged here. Checking rather than assuming turned up something worse than a missing page: the authentication reference already listed x-sgraph-transfer-delete-auth as one of its six headers, describing it as 'transfer deletion — SG/Send transfers, not vaults', while the API section documented ZERO transfer endpoints. The reference named a header for an API it never described, and the index's lead claimed the section was 'the protocol surface' while covering one of the two families on this host. Both are fixed: a transfers page now exists and the header links to it, and the lead says plainly that two families share the host. WHAT WAS TAKEN AND WHAT WAS NOT: the protocol is canonical and belongs here — the two secrets that must never be confused (an access key authorises YOU to upload and lives in a header; a decryption key authorises ANYONE to read and lives in the URL fragment, which no browser sends to the server), the SGMETA envelope that keeps the filename off the server, the three calls, the two traps in the create body (expires_at is MILLISECONDS, and max_downloads 0 means unlimited rather than none), the download_url that returns 404 so you build the link yourself, revocation that is opt-in at create time and impossible after, and the ~4 MB working limit with the reasoning behind it. The workflow half — credential wiring, node shapes, one product's bundle layout — stays with the product it was written for. The page opens with a TRANSFER OR VAULT decision table, because the useful editorial contribution is not restating their endpoints but saying when not to reach for a vault: a vault is the wrong answer for a handover that happens once. Their verification is attributed rather than adopted — every status code on the page was executed by them against production on 9 September 2026, and we have not re-run it. |
 | v0.2.75 | 2026-09-09 | obj-cas-imm-f21130f2246b | A BRIEF FOR THE VAULT MAP INFOGRAPHIC, WHICH SPENDS ITS FIRST HALF ON WHY NOT TO START WITH THE PICTURE. An image-model infographic of the sites was made and is good; the ask was for a companion covering the 26 published vaults, grouped by use case and industry. Two blockers sit upstream of any image, and the brief leads with both. FIRST, THE MODEL IT COPIES HAS ALREADY ROTTED: the network infographic's footer reads '19 sites, 18 published, 1 forthcoming' and its cell for skills.sgit.ai says Forthcoming — the network now lists 27 and skills has been live for some time, so a picture about a week old is wrong in its headline number and in one of its cells. The brief turns that into design constraints rather than an objection: every count computed at generation time, the image stamped with the version and date the way a vault app is, the live table linked beside it, and regeneration on the release checklist as a diff on the vault count. SECOND, NEITHER REQUESTED GROUPING EXISTS: vaults.json carries category on all 26 — which is the vault's SHAPE, not its use case — job on only 6, and no industry field at all. So the first deliverable is two fields, not an image, with closed vocabularies the build enforces and 'cross-industry' as a real answer rather than a fabricated sector. Then the accuracy rules for a model that renders text as shapes: generate the caption list from the data first and treat the image as a rendering of it, read every string back character by character, count the cells, and let no vault appear that is not in the file — a plausible invented name being the most dangerous output the process can produce. Plus the publishing rules this site already imposes: the validator bans img src, so the data-shot pipeline applies; real alt text; and the grouped list in HTML beside the picture so the markdown twin carries substance rather than a reference to pixels. |
 | v0.2.74 | 2026-09-09 | obj-cas-imm-0f820c930549 | THE AGENT CHIP BECOMES ONE OBJECT, AND THE NETWORK CATCHES UP WITH THE ORG. The llms.txt chip shipped last release as three loose fragments — a pill, a boxed path and a long sentence — floating in dead space between the nav and the breadcrumb, belonging to neither. Four directions were drawn against the site's real tokens and one was chosen: a SINGLE BORDERED CONTROL with a tinted FOR AGENTS cell, the path in mono as the only emphasised element, and the version and date behind a dashed rule. It reads as one thing you can click rather than three things you cannot. The always-on sentence moved into the link's tooltip — it renders on all 124 pages, and as visible text it was instruction noise sitting above every headline on the site. THE NETWORK LIST WAS EIGHT SITES BEHIND. Checked against the organisation's 31 repositories rather than against memory: games, what-can-it-do.games, providers, ungovr.providers, elevenlabs.providers, teams, threat-modeling and chrome-extensions all had repositories, all answered 200, and none was listed. Each entry is written from what that site says about itself — its own title, description and version, fetched — rather than from a guess. TWO CORRECTIONS FELL OUT OF THE CHECK: skills.sgit.ai was still described here as 'GitHub Pages has not published yet, so there is nothing to read at the address', and it has been live for some time — the entry now carries its real thesis and version; and the ElevenLabs repository describes its domain as elevenlabs.provider.sgit.ai, singular, which does not resolve — the live host is elevenlabs.providers.sgit.ai. The site list is 27. |
 | v0.2.73 | 2026-09-09 | obj-cas-imm-5569e595ea36 | THE LLMS.TXT STOPS BEING A URL YOU HAVE TO GUESS. Six llms.txt files are published across this site and the only way to find one was to type it onto the end of an address. Every page now carries a small chip above its title naming the one that covers it — FOR AGENTS, the path, and the version and date it was generated. Resolution is deepest-folder-wins, so a page under /docs/vault/ points at that section's index rather than at /docs/llms.txt, and a page with no closer index falls back to the site-wide one; every page therefore has exactly one, and it is always the most specific one that exists. THE STAMP IS THE POINT, not decoration: these files are regenerated on every release, so the chip says which release produced the index a reader is about to fetch — and an agent editing a page can see at a glance whether the index has caught up with it. The chip is chrome rather than content, emitted between the nav and the page body, so it does not reach the markdown twins and cannot drift from them. A build assertion now fails the build if the chip ever points at a folder no generator actually writes, which is the failure this feature would otherwise introduce quietly. CAUGHT BY BUILDING IT: the guidance page still SAID /guidance/llms.txt in two places after last release moved the file to /docs/guidance/ — the href had been rewritten by the move script, the prose had not, so the page displayed a path that 404s while linking correctly. Fixed. A reminder that a link rewriter fixes links and not the sentences around them. |
@@ -6364,7 +6382,7 @@ This site ships by pushing its vault, and the site version — **v0.2.83**, show
 | v0.1.2 | 2026-08-11 | obj-cas-imm-c3084abbba8c | Replaced the proposal app with the sgit.ai MVP site: 12 individually-navigable pages, shared CSS/JS loaded through the SG bridge, full-strength keys in all examples. |
 | v0.1.1 | 2026-08-11 | obj-cas-imm-7f1fbacf0485 | Initial vault app: the positioning & messaging proposal microsite with an embedded landing-page prototype. |
 
-Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The "vault commit" of the newest row reads "this release" because the commit ID only exists once the release is committed — it is recorded here retroactively by the next release.
+Numbering: v0.1.n while the site is in its first structure; the middle digit will bump on structural redesigns. The commit of the newest row reads "this release" because the id only exists once the release is committed — it is recorded here retroactively by the next release. Rows up to v0.2.76 carry the id of the sgit commit in the site's own vault, which was pushed alongside git until the mirror was [retired](../case-studies/one-tree-two-remotes.md); from v0.2.77 the id is the git commit, prefixed `git`. Commit ids before v0.2.84 are those of the history as rewritten on 19 September 2026 to purge the mirror.
 
 [← Admin & engineering](index.md)
 
@@ -7160,6 +7178,35 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-19
+
+### [The site's own vault mirror is gone — deleted, purged from history, force-pushed](#the-mirror-is-gone) [v0.2.84](../admin/versions.md)
+
+workflowgitmethodvaults
+
+For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was **removed from the tree, purged from all 112 commits with `git filter-repo`, and the branch force-pushed.** The repository went from 276 MB to 21 MB.
+
+The question that led here was asked at v0.2.83: *do we still need it?* The honest answer was no, on four counts.
+
+- **It had no reader.** Every session that built the site cloned it from GitHub. Not one release was ever produced from a vault clone.
+- **It had no published read key.** The site publishes read keys for thirty vaults; its own was the one nobody could open. A zero-knowledge mirror of public content that nobody can read is storage, not publication.
+- **It had been dead since v0.2.76, and nothing noticed.** The container holding the write key was recycled, `.sg_vault/local/` is gitignored by design, and seven releases went out over git alone with the live site correct throughout.
+- **It was 91% of the repository.** 258 MB in 15,933 files, against 24 MB of content in about 750.
+
+The purge is safe for the same reason the mirror was: everything removed was ciphertext under a key that was never in the repository. The vault itself, on the server, is untouched.
+
+## What changed on the site
+
+[The case study](../case-studies/one-tree-two-remotes.md) is now a retrospective — the workflow as it ran, the boundary that made it safe, the ordering rule, and a *why we stopped* section with the numbers. Every other page that described the pattern as current was rewritten: [why](../why/index.md), [admin](../admin/index.md), the [git-and-vaults](../docs/vault/git-and-vaults.md) note, the release-engineer role and prompt. Historical release notes stay as the dated records they are.
+
+The tooling followed. `release.sh` no longer requires `.sg_vault` or pushes sgit — it still pulls the board vault first, and still refuses to call a release done until sgit.ai serves the new version. The key-leak tripwire now reads demo vault write keys from a gitignored `admin/local/demo-keys/` folder instead of the dead vault's local tier. And the [release history](../admin/versions.md) switches its commit column to git ids from v0.2.77 onward, which filled the seven rows the missing key had left blank.
+
+## The three Vaults-menu pages were stale too
+
+- [Demos](../demos/index.md) listed three vaults as *published* when there were thirty, and its *coming next* pointed at a plan already delivered. It now leads with the gallery and keeps the three original walkthroughs as what they are.
+- [The catalogue](../catalogue/index.md) renders a vault live — and that vault holds **nine** entries against the gallery's thirty. The page now says so, with the date, and names [the gallery](../demos/vaults/index.md) as the complete list until the catalogue's key holder catches up. This is a write-key problem, not a publishing one: the twenty-one missing vaults are live on their own pages.
+- The gallery's footer stopped calling the catalogue the place *new entries start*, because for twenty-one of them it was not.
+
+**The rule that came out of it:** give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.
 
 ### [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing) [v0.2.83](../admin/versions.md)
 
@@ -11390,7 +11437,7 @@ Other roles: [Sherpa](sherpa.md) · [Publisher](publisher.md) · [Auditor](audit
 ==============================================================================
 # Release engineer — an agentic role on sgit.ai
 
-> Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.
+> Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.
 >
 > Page: https://sgit.ai/team/roles/release-engineer.html
 
@@ -11400,34 +11447,36 @@ Agentic role · 8 of 9
 
 # Release engineer
 
-| Mission | Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it. |
+| Mission | Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it. |
 |---|---|
-| Owns | admin/build/release.sh, the validator, the CI tag gate, the two-remote model, and the version bump |
+| Owns | admin/build/release.sh, the validator, the CI tag gate, and the version bump |
 | Not responsible for | what goes in the release (the Sherpa) or the words about it (the Journalist, the Historian) |
 | Works in | `admin/build/release.sh` · `admin/build/validate.js` · `.github/workflows/deploy-pages.yml` · `admin/build/build_pages.py (SITE_VERSION)` |
-| Checks it runs | SITE_VERSION matches the commit subject; validate passes including the leak tripwire; sgit and git both report in sync; the live site serves the new version before the release is reported; nothing dirty after except .sg_vault/bare/refs |
+| Checks it runs | SITE_VERSION matches the commit subject; validate passes including the leak tripwire; git HEAD equals origin/dev after the push; the live site serves the new version before the release is reported; the tree is clean after |
 
 ## What the role does
 
-One working tree, two remotes. The sgit push carries the encrypted history other sessions clone; the git push is the public mirror and triggers the GitHub Pages deploy. A release is not done until **both** report in sync — and then not done until the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.
+The site ships over git: a push to `dev` triggers the GitHub Pages deploy. A release is not done when the push succeeds — it is done when the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.
+
+Before the build, the release pulls the **board vault** (`admin/content/team/issues/`, a separate vault with its own key) so the board snapshot it renders is current. Until v0.2.76 the site folder was itself an sgit vault pushed on every release; that mirror was retired and purged in September 2026 — the reasons are in [the case study](../../case-studies/one-tree-two-remotes.md). Nothing in the release depends on it any more.
 
 The CI tag gate reads the commit subject, not the version constant: a subject of `site vX.Y.Z: …` tags the release; anything else publishes without a tag. A missing tag is a bookkeeping gap; a blocked deploy is an outage.
 
 ## The rules it enforces
 
-- **`release.sh` is the only way to ship.** It builds, validates, pushes sgit, pushes git, polls the live site, and aborts loudly at each gate.
-- **Never print the vault key.** Release logs get pasted into chats.
+- **`release.sh` is the only way to ship.** It pulls the board, builds, validates, pushes git, polls the live site, and aborts loudly at each gate.
+- **Never print a vault key.** Release logs get pasted into chats. The demo vaults' write keys live in the gitignored `admin/local/demo-keys/`, and the validator scans every tracked file for each of them.
 - **Do not touch `SITE_VERSION` while a release is running** — its live check reads that value mid-run.
-- **The version-log entry for the current release says `this release`**; the next release fills in its vault commit id from `sgit history log`.
+- **The version-log entry for the current release says `this release`**; the next release fills in its git commit id from `git log`.
 - **A dirty tree after release is reported**, not ignored: it is the next release's work, or a bug.
 
 ## Starting prompt
 
-You are the release engineer for sgit.ai. The Sherpa has scoped release VERSION: ONE_SENTENCE. Confirm `SITE_VERSION` in `admin/build/build_pages.py` matches and the top VERSION_LOG entry exists with 'this release' as its commit. Run `python3 admin/build/build_pages.py`, then `node admin/build/validate.js`; stop on any failure and report it verbatim. Then run `./admin/build/release.sh "site VERSION: SENTENCE"` and wait for `both remotes in sync — done`. Report the vault commit id, the live version curl returns, and any dirty files. Do not report the release as live until the live check says so.
+You are the release engineer for sgit.ai. The Sherpa has scoped release VERSION: ONE_SENTENCE. Confirm `SITE_VERSION` in `admin/build/build_pages.py` matches and the top VERSION_LOG entry exists with 'this release' as its commit. Run `python3 admin/build/build_pages.py`, then `node admin/build/validate.js`; stop on any failure and report it verbatim. Then run `./admin/build/release.sh "site VERSION: SENTENCE"` and wait for `release complete`. Report the git commit id, the live version curl returns, and any dirty files. Do not report the release as live until the live check says so.
 
 ## Recurring tasks
 
-Every release · fixing the validator when a new content shape needs a new rule · reconstructing tags when CI and history disagree · rotating the site's own key if it is ever exposed
+Every release · fixing the validator when a new content shape needs a new rule · reconstructing tags when CI and history disagree · rotating a demo vault's key if one is ever exposed
 
 ## On the board for this role
 
@@ -11470,7 +11519,7 @@ The version log is the site's memory, and it is written for the next agent, not 
 
 ## Starting prompt
 
-You are the Historian for sgit.ai. Release VERSION is about to ship. Write its VERSION_LOG entry in `admin/build/build_pages.py`: what changed and why, what it cost, what went wrong on the way and how it was caught, and any rule that came out of it — in prose, no table tags, no numbers that a page computes. Set its commit to 'this release' and fill in the previous entry's vault commit id from `sgit history log`. If this release corrects an earlier one, say which, what was wrong, and how it was found.
+You are the Historian for sgit.ai. Release VERSION is about to ship. Write its VERSION_LOG entry in `admin/build/build_pages.py`: what changed and why, what it cost, what went wrong on the way and how it was caught, and any rule that came out of it — in prose, no table tags, no numbers that a page computes. Set its commit to 'this release' and fill in the previous entry's git commit id from `git log --oneline`, prefixed `git `. If this release corrects an earlier one, say which, what was wrong, and how it was found.
 
 ## Recurring tasks
 

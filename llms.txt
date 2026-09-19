@@ -155,7 +155,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Case studies (worked accounts of what actually happened, with numbers)
 - [Case studies](/case-studies/index.md): Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.
-- [One working tree, two version control systems](/case-studies/one-tree-two-remotes.md): How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.
+- [One working tree, two version control systems, and why we stopped](/case-studies/one-tree-two-remotes.md): How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.
 - [A live site whose host cannot read it](/case-studies/live-vault-docs.md): A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path.
 - [The day we leaked our own vault key](/case-studies/exposed-vault-key.md): The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website.
 
@@ -222,7 +222,7 @@ Quick answers (so you do not need a second request for the common questions):
 - [Cartographer](/team/roles/cartographer.md): Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself.
 - [Ambassador](/team/roles/ambassador.md): Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
 - [Designer](/team/roles/designer.md): Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible.
-- [Release engineer](/team/roles/release-engineer.md): Ships the site — build, validate, push both remotes, and refuse to call a release done until sgit.ai is actually serving it.
+- [Release engineer](/team/roles/release-engineer.md): Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.
 - [Historian](/team/roles/historian.md): Keeps the record straight — the version log entry that says what a release did and what it got wrong, the corrections recorded above the mistakes, and the numbers that must be computed rather than typed.
 
 ## Starting prompts (the regular tasks, each as a prompt to paste into a fresh agent)

@@ -161,19 +161,16 @@ const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, 
   // Its read-only sibling sgit_rk1_ is deliberately NOT banned: we publish those on purpose.
   /sgit_vk1_[A-Za-z0-9]/];
 
-// 5b. the passphrase tripwire, done safely: read the secret from the gitignored local/ tier
-// (never present it in this tracked file) and scan the tree for it. Skips when local/ is absent
-// (e.g. CI without the key) — the structural check above still applies there.
+// 5b. the passphrase tripwire, done safely: read each secret from the gitignored admin/local/
+// tier (never present one in this tracked file) and scan the tree for it. Skips when the folder
+// is absent (e.g. CI without the keys) — the structural check above still applies there.
+// Until v0.2.83 the secrets came from .sg_vault/local/, the site's own vault; that vault mirror
+// was retired (see /case-studies/one-tree-two-remotes.html) and the folder moved here.
 const SECRETS = [];
-try {
-  const vk = fs.readFileSync(path.join(root, '.sg_vault/local/vault_key'), 'utf8').trim();
-  const pass = vk.split(':')[0];
-  if (pass && pass.length >= 12) SECRETS.push(pass);
-} catch (e) { /* local/ not present — structural check still covers key-shaped strings */ }
-// demo vaults: their write keys live in the same gitignored tier; every one is scanned for.
+// demo vaults: their write keys live in the gitignored tier; every one is scanned for.
 // (Read keys are deliberately published and are exempt by design — different shape entirely.)
 try {
-  const dk = path.join(root, '.sg_vault/local/demo-keys');
+  const dk = path.join(root, 'admin/local/demo-keys');
   for (const f of fs.readdirSync(dk)) {
     if (!/vault-key$/.test(f)) continue;
     const pass = fs.readFileSync(path.join(dk, f), 'utf8').trim().split(':')[0];

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,35 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-19
+
+### [The site's own vault mirror is gone — deleted, purged from history, force-pushed](#the-mirror-is-gone) [v0.2.84](../admin/versions.md)
+
+workflowgitmethodvaults
+
+For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was **removed from the tree, purged from all 112 commits with `git filter-repo`, and the branch force-pushed.** The repository went from 276 MB to 21 MB.
+
+The question that led here was asked at v0.2.83: *do we still need it?* The honest answer was no, on four counts.
+
+- **It had no reader.** Every session that built the site cloned it from GitHub. Not one release was ever produced from a vault clone.
+- **It had no published read key.** The site publishes read keys for thirty vaults; its own was the one nobody could open. A zero-knowledge mirror of public content that nobody can read is storage, not publication.
+- **It had been dead since v0.2.76, and nothing noticed.** The container holding the write key was recycled, `.sg_vault/local/` is gitignored by design, and seven releases went out over git alone with the live site correct throughout.
+- **It was 91% of the repository.** 258 MB in 15,933 files, against 24 MB of content in about 750.
+
+The purge is safe for the same reason the mirror was: everything removed was ciphertext under a key that was never in the repository. The vault itself, on the server, is untouched.
+
+## What changed on the site
+
+[The case study](../case-studies/one-tree-two-remotes.md) is now a retrospective — the workflow as it ran, the boundary that made it safe, the ordering rule, and a *why we stopped* section with the numbers. Every other page that described the pattern as current was rewritten: [why](../why/index.md), [admin](../admin/index.md), the [git-and-vaults](../docs/vault/git-and-vaults.md) note, the release-engineer role and prompt. Historical release notes stay as the dated records they are.
+
+The tooling followed. `release.sh` no longer requires `.sg_vault` or pushes sgit — it still pulls the board vault first, and still refuses to call a release done until sgit.ai serves the new version. The key-leak tripwire now reads demo vault write keys from a gitignored `admin/local/demo-keys/` folder instead of the dead vault's local tier. And the [release history](../admin/versions.md) switches its commit column to git ids from v0.2.77 onward, which filled the seven rows the missing key had left blank.
+
+## The three Vaults-menu pages were stale too
+
+- [Demos](../demos/index.md) listed three vaults as *published* when there were thirty, and its *coming next* pointed at a plan already delivered. It now leads with the gallery and keeps the three original walkthroughs as what they are.
+- [The catalogue](../catalogue/index.md) renders a vault live — and that vault holds **nine** entries against the gallery's thirty. The page now says so, with the date, and names [the gallery](../demos/vaults/index.md) as the complete list until the catalogue's key holder catches up. This is a write-key problem, not a publishing one: the twenty-one missing vaults are live on their own pages.
+- The gallery's footer stopped calling the catalogue the place *new entries start*, because for twenty-one of them it was not.
+
+**The rule that came out of it:** give a mirror a reader before giving it a remote. The board vault earns its place because the release pulls it and a page renders it. The site's own vault never did.
 
 ### [The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing) [v0.2.83](../admin/versions.md)
 

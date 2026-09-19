@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>One working tree, two version control systems — sgit.ai case study</title>
-<meta name="description" content="How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.">
+<title>One working tree, two version control systems, and why we stopped — sgit.ai case study</title>
+<meta name="description" content="How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.">
 <link rel="canonical" href="https://sgit.ai/case-studies/one-tree-two-remotes.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/case-studies/one-tree-two-remotes.html">
-<meta property="og:title" content="One working tree, two version control systems — sgit.ai case study">
-<meta property="og:description" content="How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.">
+<meta property="og:title" content="One working tree, two version control systems, and why we stopped — sgit.ai case study">
+<meta property="og:description" content="How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="one-tree-two-remotes.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "One working tree, two version control systems — sgit.ai case study", "headline": "One working tree, two version control systems — sgit.ai case study", "description": "How this site is developed in a single folder that is both an sgit vault and a git repository: what each remote carries, the .gitignore boundary that makes it safe, why the encrypted ref always looks dirty to git (fresh AES-GCM IVs), and the release script that refuses to finish until both remotes are in sync.", "url": "https://sgit.ai/case-studies/one-tree-two-remotes.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "One working tree, two version control systems, and why we stopped — sgit.ai case study", "headline": "One working tree, two version control systems, and why we stopped — sgit.ai case study", "description": "How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.", "url": "https://sgit.ai/case-studies/one-tree-two-remotes.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.83</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.84</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -92,71 +92,78 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.83 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.84 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Case studies</a> / One tree, two remotes</p>
-  <h1>One working tree, two version control systems</h1>
-  <p class="lead">This site is developed in a single folder that is simultaneously an sgit vault and a git repository. Every release pushes both. This page is the workflow, the boundary that makes it safe, the one ordering rule that keeps the mirror true, and the script that enforces it.</p>
+  <h1>One working tree, two version control systems &mdash; and why we stopped</h1>
+  <p class="lead">For seventy-six releases this site was developed in a single folder that was simultaneously an sgit vault and a git repository, and every release pushed both. On 19 September 2026 the vault mirror was removed from the repository and purged from its history. This page keeps the workflow as it ran, the boundary that made it safe, and the ordering rule that kept the mirror true &mdash; and then records, with the numbers, why a pattern that was correct stopped being worth carrying.</p>
 
-  <h2>What happened</h2>
-  <p>The folder that holds this site has two version control directories side by side:</p>
+  <div class="note"><b>Status: retired at v0.2.84.</b> The site now ships over git alone. The <a href="../docs/vault/git-and-vaults.html">git-and-vaults</a> pattern this page demonstrated is still right for the cases described there; what changed is that this site stopped being one of them. The reasons are in <a href="#stopped">the last section</a>.</div>
+
+  <h2>What we ran</h2>
+  <p>The folder that held this site had two version control directories side by side:</p>
 <pre class="shell">sgit-ai-website/
 ├── .git/          <span class="d">→ github.com/SGit-AI/SGit-AI__Website  (public mirror + Pages deploy)</span>
 ├── .sg_vault/     <span class="d">→ an SG/Send vault                     (encrypted history + live vault)</span>
 └── index.html, why/, case-studies/, admin/ …         <span class="d">← the same files, once</span></pre>
-  <p>They are not two copies kept in agreement. They are two version control systems pointed at <b>one directory</b> — <code>git status</code> and <code>sgit status</code> describe the same bytes. There is no synchronisation step because there is nothing to synchronise; a release is simply two pushes of the same tree:</p>
+  <p>They were not two copies kept in agreement. They were two version control systems pointed at <b>one directory</b> &mdash; <code>git status</code> and <code>sgit status</code> described the same bytes. There was no synchronisation step because there was nothing to synchronise; a release was simply two pushes of the same tree:</p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit commit -m "site v0.2.1: …" &amp;&amp; sgit push</span>   <span class="d"># encrypted history → SG/Send</span>
 <span class="p">$</span> <span class="cmd">git add -A &amp;&amp; git commit &amp;&amp; git push</span>            <span class="d"># public mirror → GitHub → Pages</span></pre>
-  <p>Each remote does a different job. The git push is what deploys — a GitHub Action publishes the tree to GitHub Pages (excluding <code>.sg_vault/</code>, which the public site does not need). The sgit push is what other agents read — this site's vault is cloned and pulled by the Claude Code sessions that build it, and the encrypted store in the git repo doubles as a full off-site mirror of the vault.</p>
+  <p>Each remote did a different job. The git push was what deployed &mdash; a GitHub Action publishes the tree to GitHub Pages. The sgit push was meant to be what other agents read: the plan was that Claude Code sessions building the site would clone and pull the vault, and that the encrypted store committed to git would double as a full off-site mirror of it.</p>
 
-  <h2>The boundary that makes it safe</h2>
-  <p>The entire pattern rests on one file: <code>.gitignore</code>. Everything encrypted <b>is</b> committed to git — 900+ objects under <code>.sg_vault/bare/</code>, all ciphertext under opaque ids. What is excluded is exactly the plaintext tier:</p>
+  <h2>The boundary that made it safe</h2>
+  <p>The entire pattern rested on one file: <code>.gitignore</code>. Everything encrypted <b>was</b> committed to git &mdash; ciphertext objects under <code>.sg_vault/bare/</code>, all under opaque ids. What was excluded was exactly the plaintext tier:</p>
 <pre class="shell">.sg_vault/local/     <span class="d"># vault key, access token, private PEM — plaintext, never committed</span>
 .sg_vault/work/      <span class="d"># scratch state</span>
 *.pem</pre>
-  <p>That is the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site like this one</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary — one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../docs/vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
-  <p>Because the boundary is one file, it gets a machine check, not a convention. The build's validator reads the vault passphrase from the gitignored <code>local/</code> tier at runtime and scans every tracked file for it — so a key that reaches the tree fails the build by construction. That check exists because of <a href="exposed-vault-key.html">the day it actually happened</a>: an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. The tripwire is the structural fix, and the release script below refuses to push unless it has run.</p>
+  <p>That was the whole rule, and it is worth stating as a condition rather than a pattern: committing ciphertext alongside plaintext is right <em>for a public site</em>, where the working tree is meant to be published anyway. For a confidential vault the same layout is a leak-audit boundary &mdash; one bad <code>.gitignore</code> edit away from publishing the plaintext tree. The <a href="../docs/vault/git-and-vaults.html">git repos inside vaults</a> page covers which side of that line a given project is on.</p>
+  <p>Because the boundary was one file, it got a machine check, not a convention. The build's validator read the vault passphrase from the gitignored <code>local/</code> tier at runtime and scanned every tracked file for it &mdash; so a key that reached the tree failed the build by construction. That check exists because of <a href="exposed-vault-key.html">the day it actually happened</a>: an agent hardcoded this site's passphrase into a tracked file, it survived three public commits, and the vault had to be rekeyed. <b>The tripwire outlived the mirror.</b> It now reads the write keys of published demo vaults from a gitignored <code>admin/local/demo-keys/</code> folder and scans for those instead; the mechanism is unchanged, only the folder moved.</p>
 
   <h2>The one ordering rule: sgit first, then git</h2>
-  <p>Almost everything in the shared store is content-addressed — an object's name is the hash of its ciphertext, so it never changes under its id and the two systems can never disagree about it. Exactly one file is mutable: the vault's HEAD pointer, the <b>ref</b>. Every real <code>sgit push</code> rewrites it, and that makes the order of the two pushes matter:</p>
+  <p>Almost everything in the shared store is content-addressed &mdash; an object's name is the hash of its ciphertext, so it never changes under its id and the two systems can never disagree about it. Exactly one file is mutable: the vault's HEAD pointer, the <b>ref</b>. Every real <code>sgit push</code> rewrites it, and that made the order of the two pushes matter:</p>
 <pre class="shell"><span class="g">✓</span> <span class="cmd">sgit commit &amp;&amp; sgit push</span>     <span class="d"># 1st — writes the new ref</span>
 <span class="g">✓</span> <span class="cmd">git add -A &amp;&amp; git commit &amp;&amp; git push</span>   <span class="d"># 2nd — captures that exact ref</span></pre>
-  <p>Done in this order, the git mirror always carries the ref the push just wrote, and a clean <code>git status</code> is the normal end state of every release — reads and no-op operations (<code>ls</code>, <code>history</code>, <code>status</code>, <code>pull</code>, <code>fetch</code>) do not rewrite the ref, so nothing drifts between releases. We verified both claims by testing them.</p>
-  <p>Reverse the order and the failure is quiet: commit git first and the mirror carries the <em>previous</em> ref — in sync by bytes, one commit behind in meaning. Push sgit without a following git commit and the ref shows as modified in <code>git status</code>.</p>
-  <p>One property to know when reading that modified flag: <b>the ref's bytes carry no information about staleness.</b> AES-GCM encrypts with a fresh random IV on every write, so a rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit id. "Dirty" therefore does not mean the mirror is stale, and byte-equality would not mean it is current — the only real answers are decrypting the ref or asking <code>sgit status</code>. This is also why <code>.gitattributes</code> marks the store <code>binary -diff -merge</code>: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.</p>
+  <p>Done in this order, the git mirror always carried the ref the push had just written, and a clean <code>git status</code> was the normal end state of every release. Reverse the order and the failure was quiet: the mirror carried the <em>previous</em> ref &mdash; in sync by bytes, one commit behind in meaning.</p>
+  <p>One property worth keeping from this: <b>the ref's bytes carry no information about staleness.</b> AES-GCM encrypts with a fresh random IV on every write, so a rewritten ref never byte-matches its previous encryption even when it decrypts to the same commit id. "Dirty" did not mean stale, and byte-equality would not have meant current &mdash; the only real answers were decrypting the ref or asking <code>sgit status</code>. This is also why <code>.gitattributes</code> marked the store <code>binary -diff -merge</code>: a textual diff of ciphertext is noise, and a git merge of two encrypted refs would produce garbage that decrypts to nothing.</p>
 
-  <h2>What changed: the release script</h2>
-  <p>Two pushes with no enforcement is an invitation to forget one — push only sgit and the site never deploys; push only git and the live vault (the one other sessions clone) falls behind. So the release is now one script, <a href="../admin/index.html"><code>admin/build/release.sh</code></a>, and it is deliberately strict:</p>
-<pre class="shell"><span class="p">$</span> <span class="cmd">./admin/build/release.sh "site v0.2.2: describe the release"</span>
-<span class="d">  1. build     — regenerate every page, markdown twin, llms*.txt, sitemap</span>
-<span class="d">  2. validate  — 90+ file checks, including the key-leak tripwire; any failure aborts</span>
-<span class="d">  3. sgit      — commit + push the vault, verify "in sync with remote"</span>
-<span class="d">  4. git       — commit + push, verify local HEAD == origin</span>
-<span class="d">  5. confirm   — both remotes reported in sync, or exit 1 loudly</span></pre>
-  <p>The ordering inside the script is the rule above, made unforgettable: sgit pushes before git commits, and the expected end state of every release is a clean tree. Two further design points. The script never prints the vault key — it deliberately avoids the commands that would (some sgit inspection commands echo it), because a release log is exactly the kind of artefact that ends up pasted somewhere public. And it will not push <em>either</em> remote until the validator has passed, so the key-leak scan and the structural checks gate both histories, not just the deployed one.</p>
+  <h2>The release script, then and now</h2>
+  <p>Two pushes with no enforcement is an invitation to forget one, so the release was one script, <a href="../admin/index.html"><code>admin/build/release.sh</code></a>, and it was strict: build, validate, sgit push and verify in sync, git push and verify HEAD equals origin, then poll the live site until it served the new version. The same script ships the site today with the sgit step removed. It still refuses to push until the validator &mdash; including the key-leak tripwire &mdash; has passed, and it still refuses to call a release done until <code>https://sgit.ai/</code> is serving the version it just pushed.</p>
+
+  <h2 id="stopped">Why we stopped</h2>
+  <p>Nothing about the pattern broke. What happened is that its costs stayed and its benefits never arrived, and a container recycle made that impossible to ignore.</p>
+  <ul>
+    <li><b>The mirror had no reader.</b> The design assumed other sessions would <code>sgit clone</code> the site vault. In practice every session that built the site cloned it from GitHub, because that is where the deploy runs from and where the history is legible. Not one release was ever produced from a vault clone.</li>
+    <li><b>The vault had no published read key.</b> Every other vault on this site is openable by anyone; the site's own vault was the one nobody could open. A zero-knowledge mirror of public content that nobody can read is storage, not publication.</li>
+    <li><b>It went dead quietly, and the site did not notice.</b> The container holding the write key was recycled after <b>v0.2.76</b>. Because <code>.sg_vault/local/</code> is gitignored by design, no clone could push the vault again. Releases <b>v0.2.77 through v0.2.83</b> &mdash; seven of them &mdash; went out over git alone, and the live site was correct throughout. The mirror had been carrying nothing the deploy depended on.</li>
+    <li><b>It was 91% of the repository.</b> The encrypted store was <b>258 MB in 15,933 files</b> against <b>24 MB of site content in about 750 files</b>. Every clone paid for it; every <code>git add -A</code> walked it.</li>
+    <li><b>Two published pages had become false.</b> This one said "every release pushes both"; the site's <code>llms.txt</code> said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.</li>
+  </ul>
+  <p>So on 19 September 2026 the store was removed from the tree, the history was rewritten with <code>git filter-repo</code> to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.</p>
 
   <h2>The numbers</h2>
   <div class="tablewrap"><table>
     <tr><th>What</th><th>Count</th></tr>
-    <tr><td>Files in the shared working tree</td><td>~120</td></tr>
-    <tr><td>Encrypted objects committed to git under <code>.sg_vault/bare/</code></td><td>933</td></tr>
-    <tr><td>Plaintext files excluded from git (the <code>local/</code> tier)</td><td>5 — key, token, PEM, config, base_url</td></tr>
-    <tr><td>Mutable files in the store (the false-drift class)</td><td>1 — the ref</td></tr>
-    <tr><td>Releases shipped through this workflow so far</td><td>every version on the <a href="../admin/versions.html">release history</a></td></tr>
+    <tr><td>Releases shipped with both pushes</td><td>76 (through v0.2.76)</td></tr>
+    <tr><td>Releases shipped over git alone while the mirror was unreachable</td><td>7 (v0.2.77 – v0.2.83)</td></tr>
+    <tr><td>Encrypted objects removed from git</td><td>15,933 files, 258 MB</td></tr>
+    <tr><td>Site content that remained</td><td>~750 files, 24 MB</td></tr>
+    <tr><td>Times the mirror was cloned to produce a release</td><td>0</td></tr>
+    <tr><td>Plaintext ever in the purged history</td><td>none &mdash; the local/ tier was gitignored from the first commit</td></tr>
   </table></div>
 
-  <h2>What we still do not know</h2>
+  <h2>What we would do differently</h2>
   <ul>
-    <li><b>History depth differs and we accept it.</b> The vault was rekeyed after the key leak, which reset its history; git kept the full history across the rekey. The two histories agree from that point forward but are not equal before it. For this site that is fine; for an audit-grade deployment you would want the equivalence stated precisely.</li>
-    <li><b>The IV churn is cosmetic but not free.</b> Every release commits a re-encrypted ref to git — a 69-byte file that changes on every push forever. Harmless at this scale; a vault with many mutable refs would want them out of git or normalised.</li>
+    <li><b>Give the mirror a reader before giving it a remote.</b> If nobody clones the vault, do not build a release process around pushing it. The <a href="../demos/vaults/board/index.html">board vault</a> is the pattern working: it is pulled by the release, rendered into a page, and updated by anyone holding its key &mdash; it earns its place because something reads it.</li>
+    <li><b>A public site's vault should have a public read key, or not exist.</b> The site publishes read keys for thirty vaults. Withholding its own was an inconsistency, not a precaution.</li>
+    <li><b>Measure the mirror against the content.</b> Ninety-one per cent of a repository is a number that should have been on this page from the start.</li>
   </ul>
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a> — the general pattern, including the confidential-vault caution</li>
-    <li><a href="exposed-vault-key.html">The day we leaked our own vault key</a> — why the tripwire exists</li>
-    <li><a href="live-vault-docs.html">A live site whose host cannot read it</a> — what the sgit push feeds</li>
-    <li><a href="../admin/index.html">Admin &amp; engineering</a> — the build system this script belongs to</li>
+    <li><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a> &mdash; the general pattern, and the confidential-vault caution, both still current</li>
+    <li><a href="exposed-vault-key.html">The day we leaked our own vault key</a> &mdash; why the tripwire exists, and why it stayed after the mirror went</li>
+    <li><a href="../demos/vaults/board/index.html">The board as a vault</a> &mdash; the vault this site still pulls at every release</li>
+    <li><a href="../admin/index.html">Admin &amp; engineering</a> &mdash; the release process as it is now</li>
   </ul>
   <div class="pagenav"><a href="index.html">← Case studies</a><a href="../docs/vault/git-and-vaults.html">Git repos inside vaults →</a></div>
 </main>
@@ -166,7 +173,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 This site is itself served from an encrypted SG/Send vault — the page you are reading was decrypted in your browser. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.83</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.84</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -208,7 +215,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.83';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.84';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
