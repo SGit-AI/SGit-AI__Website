@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,8 +25,6 @@ The test for the word is what happens when you zoom. **If every level has the sa
 Put precisely, the cross-domain behaviour means one thing: **the core meaning of a node is supplied by the ontology at the altitude where it sits**, and that ontology is free to change from one altitude to the next. *Article 9* means one thing in a graph of instruments (a provision that binds), another inside the regulation (a container of paragraphs and points), another to the paragraph that cites it (a source of definitions). The node is the same; the meaning is the edges around it at that level. Nature is built this way and nobody finds it strange: the universe is a graph of galaxies, a galaxy of stars, a star system of planets, a planet of ecosystems, an ecosystem of organisms, an organism of cells, a cell of molecules, a molecule of atoms, an atom of particles. At every altitude the vocabulary changes completely, from cosmology to geology to biology to chemistry to physics, while each level stays connected to the one above and below. No single schema describes a galaxy and a cell. A single grammar, things and the named relationships between them, describes both.
 
 Two things follow. **Nobody is forced to conform.** An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/index.html) puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them. And **granularity is a decision, per situation.** The same topic can carry a paragraph's worth of definition in one place and a word-by-word graph in another; you load as much as the question needs, and the two remain connected.
-
-One wording to pass upstream: the [boundaries page](https://graphs.sgit.ai/v1/depth/boundaries.html) on graphs.sgit.ai states the test as *“if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal”*. Read with *format* meaning “stops being a semantic graph and becomes JSON-plus-prose”, it is the same claim as this page: the grammar is what must survive the zoom. Read with *format* meaning “schema”, it says the opposite, and the first version of this page read it that way. The sentence should say *grammar*. Noted 19 September 2026.
 
 ## Why connect everything with everything
 

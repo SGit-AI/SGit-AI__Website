@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.93'
+SITE_VERSION = 'v0.2.94'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.93', '2026-09-19', 'this release',
+    ('v0.2.94', '2026-09-19', 'this release',
+     "A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small "
+     "'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having "
+     "the fractal test backwards. The author asked for it to go, and for a proper brief instead, "
+     "since the sgit.ai page is now the fullest worked application of that site's two theses. The "
+     "paragraph is gone; /docs/briefs/graphs-sgit-ai-fractal-semantic-graphs/ is the brief. It "
+     "quotes the boundaries page's four-row table and shows that the page contradicts itself: "
+     "the Recursion row says 'identical rules, no new format, no special case' while the author's "
+     "own quote two paragraphs below says an article may be 'so meaty that it requires its own "
+     "ontology and taxonomy, and that's the power of the fractal element'. Replacement text for "
+     "the table, the test and llms.txt's sentence nine separates grammar (invariant) from "
+     "ontology (free). Then: adopt the name and its lineage (already item 1 of their review "
+     "r001, state 'commented'); lift the precise form of meaning-through-connectivity for the "
+     "fractal case, 'the deeper you go the more you learn', and 'nobody is forced to conform'; "
+     "six places to link the page; the two SVG diagrams and the Standards Atlas screenshots to "
+     "reuse; the four graph vaults their evidence estate does not yet analyse (Standards Atlas "
+     "GDPR, AIUC-1 conformance, Licence to Operate, ThreatModCon) and the AIUC-1 crosswalk join "
+     "as a second cross-vault finding; three small corrections found on the way (5 versus 7 "
+     "stakeholder altitudes in their llms.txt, sentinel.sgit.ai still named where sg-sentinel is "
+     "the host, the vault count); a section on what not to change; and the prompt to paste, "
+     "verbatim, at the end. No em-dashes in the brief.",
+     ),
+    ('v0.2.93', '2026-09-19', 'git 96afb763',
      "The fractal graphs page description, which the markdown twin prints as its blockquote, "
      "had one em-dash left; a colon now. The ' — sgit.ai' suffix on every page title is a "
      "site-wide convention and stays until the site-wide pass is decided.",

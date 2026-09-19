@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -144,6 +144,16 @@ Git keeps every object reachable from *any* ref. The forgotten branch still poin
 **When the branch is deleted,** three things happen on three timescales: fresh clones stop receiving the chain immediately; old ids stop resolving when GitHub's garbage collection runs, on its schedule or on request to Support; and clones made before the deletion keep the objects forever. That last one is why a history rewrite is never the first step for a leaked secret. Rotate, then rewrite.
 
 **Recorded plainly:** the branch deletion was refused three times by the session's git proxy and is pending in the GitHub UI. Until it is done, the "still downloadable" section of the page is true as published. Everything purged was ciphertext under a key that was never in the repository, which is what makes this housekeeping rather than an incident.
+
+### [A brief for graphs.sgit.ai, in place of a footnote](#brief-for-graphs-sgit-ai) [v0.2.94](../admin/versions.md)
+
+graphsnetworkbriefs
+
+The Fractal Semantic Graphs page carried a small footnote saying that graphs.sgit.ai had the fractal test backwards. The author asked for the footnote to go and for a proper brief in its place, since the sgit.ai page is now the fullest worked application of that site's two theses, *meaning through connectivity* and *thinking in graphs*.
+
+[The brief](../docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.md) quotes the boundaries page's own table and shows it contradicts itself: the Recursion row says *identical rules, no new format, no special case*, while the author's quote two paragraphs below says an article may be *so meaty that it requires its own ontology and taxonomy, and that's the power of the fractal element*. The quote is the side to keep. Replacement text separates the grammar, which survives every zoom, from the ontology, which is free to change at each.
+
+It then lists what to adopt (the name and its lineage, the precise form of the thesis for the fractal case, *the deeper you go the more you learn*, *nobody is forced to conform*), where to link the page, what to reuse (both diagrams, the Standards Atlas screenshots), the four graph vaults missing from their evidence estate, a second cross-vault finding, three small corrections, and what not to change. The prompt to paste is at the end.
 
 ## 2026-09-18
 
