@@ -2,7 +2,7 @@
 
 > The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented.
 
-*Source: <https://sgit.ai/investors/index.html> · site v0.2.91 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/investors/index.html> · site v0.2.92 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,7 +41,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-119**site releases since 14 August**
+120**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**

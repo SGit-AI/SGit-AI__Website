@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.91'
+SITE_VERSION = 'v0.2.92'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.91', '2026-09-19', 'this release',
+    ('v0.2.92', '2026-09-19', 'this release',
+     "NO EM-DASHES ON THE FRACTAL GRAPHS PAGE. The author asked for the dash to go, since a good "
+     "many readers now find it off-putting. Eighty-two of them on forty-six lines, each rewritten "
+     "by hand rather than by substitution: a parenthetical pair becomes commas or brackets, a "
+     "dash before an explanation becomes a colon, a dash before a new thought becomes a full "
+     "stop, the section headings go 'Altitude 0: the law', the diagram headers take a colon, and "
+     "the ladder's header takes a middle dot. The one table cell that was a bare dash now says "
+     "'not measured'. Site-wide there are about 3,300 more across 212 source files; that pass is "
+     "a separate decision and has not been made here.",
+     ),
+    ('v0.2.91', '2026-09-19', 'git 318e41d6',
      "'THE DEEPER YOU GO THE LESS YOU LEARN' WAS WRONG, OR AT LEAST WRONG ENOUGH TO CONFUSE. The "
      "author read the folder-tree sentence in the fractal graphs test and asked whether it should "
      "not be the MORE you learn, since depth brings connectivity. It should, for a fractal graph — "
