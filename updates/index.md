@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -88,6 +88,20 @@ The bottom four rungs — environment, runtime, compute — are modelled layers,
 ## Also fixed
 
 The footer on every page still read *"this site is itself served from an encrypted SG/Send vault."* It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.
+
+### [Fractal Semantic Graphs — the page now leads with the definition](#fractal-semantic-graphs-defined) [v0.2.87](../admin/versions.md)
+
+graphsmethoddocs
+
+The author's first read of yesterday's page made three points, and all three were right. *How far down does the graph go?* is a section, not a title. The page must start by defining and visualising the term. And the first screens must work for a visitor who knows graphs, semantic graphs and ontologies but has never met the idea of a **Fractal Semantic Graph** — which for a while went by *graphs of graphs of graphs* and *ontologies of ontologies of ontologies*.
+
+[The page](../demos/fractal-graphs/index.md) is now titled **Fractal Semantic Graphs** and opens with the definition in three sentences: a semantic graph is nodes joined by verbs with named inverses; a fractal one is a graph where every node is itself a semantic graph built by the same rules, down to the smallest thing that still matters to the question — in most of our work a word, a number or a symbol.
+
+**The diagram.** Three panels of inline SVG: a four-node semantic graph; the Law node zoomed into articles and paragraphs, with an amendment drawn as an edge rather than a footnote; one paragraph zoomed into the terms it uses, each one edge from the article that defines it. The rules are the same in all three, which is the whole point, and the test for the word follows: *if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal.*
+
+**Why connect everything with everything.** Because every file format is already a graph — a PDF, a spreadsheet, a codebase, a JSON document — and only needs its edges named. Then questions cross formats without a join table, a correction propagates instead of being republished, the smallest node is whatever the question needs rather than what the format offers, and provenance comes free when the leaf is a word tied to a byte range and a hash. The discipline that keeps this from being noise: the edge has to be a verb.
+
+A four-word table closes the opening — graph, semantic graph, ontology, fractal semantic graph — with what each adds and where it stops. Everything from *How far down does the graph go?* onward is unchanged.
 
 ### [Deleting files from git history — the exact scenario, drawn out](#deleting-files-from-history) [v0.2.86](../admin/versions.md)
 

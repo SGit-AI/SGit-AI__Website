@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,7 +18,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**Seven of these vaults are graphs of the same shape at different altitudes** — a regulation, a standard, a risk register, a threat model down to the compute instance. [**How far down does the graph go?**](../fractal-graphs/index.md) walks them as one ladder, with screenshots.
+**Seven of these vaults are graphs of the same shape at different altitudes** — a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
 
 **30 published vaults** — 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 

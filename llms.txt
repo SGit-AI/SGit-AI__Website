@@ -25,7 +25,8 @@ so these are the entry points that are worth more than their position in it sugg
 - **Looking for a worked example?** /demos/vaults/llms.txt is the catalogue of every
   published vault with its read key, generated from the same file the human-readable table
   is, so the two cannot disagree.
-- **Asked how far down the graph goes?** /demos/fractal-graphs/index.md walks one grammar from
+- **Fractal Semantic Graphs?** /demos/fractal-graphs/index.md defines the term (every node is
+  itself a semantic graph by the same rules, down to the word) and then walks one grammar from
   the text of a law to a threat in one method on one compute instance, across seven published
   vaults, with the rungs that are still modelled rather than imported stated plainly.
 
@@ -89,7 +90,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 ## Demos (live end-to-end examples with published read keys)
 - [Demos](/demos/index.md): Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
-- [How far down does the graph go? Fractal semantic graphs across seven vaults](/demos/fractal-graphs/index.md): The answer to 'have you mapped this all the way down to system configuration': one grammar from the text of a regulation through a standard's controls, evidence, risk, owner, acceptance and policy, to a threat in one method on one compute instance — with the published vault where each altitude is a live graph, the screenshots, the counts, and the rungs that are still modelled rather than imported.
+- [Fractal Semantic Graphs](/demos/fractal-graphs/index.md): What a Fractal Semantic Graph is — every node is itself a semantic graph by the same rules, at every altitude, down to the word — why connecting everything with everything works when every edge is a verb, and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 - [A vault app, live inside this page](/demos/vault-app-embed.md): The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge.
 - [The Strategy in Seven Maps](/demos/strategy-maps.md): The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it.
 - [sgit, on a Wardley Map](/demos/sgit-maps.md): Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key.

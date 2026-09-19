@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.86</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.87</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.86 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.87 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -148,6 +148,15 @@
 <p>The bottom four rungs — environment, runtime, compute — are modelled layers, not imports from a CMDB or an infrastructure repository. No published vault holds an enterprise-architecture repository as a graph joined upward to obligations; that is the rung the page cannot yet point at. The AIUC-1 crosswalks resolve at article level only. The GDPR atlas is a dated seed pass and uses the banned <code>relates</code> edge six times, counted from its own <code>graph/edges.json</code>. standards.sgit.ai models one instrument and has zero crosswalks. abp.sgit.ai's 23 capability primitives are the right shape to attach to a real permission set, and nothing published yet does. Named gaps get filled.</p>
 <h2>Also fixed</h2>
 <p>The footer on every page still read <em>"this site is itself served from an encrypted SG/Send vault."</em> It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.</p>
+  </article>
+  <article class="upd" id="fractal-semantic-graphs-defined">
+    <h3><a href="#fractal-semantic-graphs-defined">Fractal Semantic Graphs — the page now leads with the definition</a> <a class="upd-ver" href="../admin/versions.html">v0.2.87</a></h3>
+    <p class="chips"><span class="chip">graphs</span><span class="chip">method</span><span class="chip">docs</span></p>
+<p>The author's first read of yesterday's page made three points, and all three were right. <em>How far down does the graph go?</em> is a section, not a title. The page must start by defining and visualising the term. And the first screens must work for a visitor who knows graphs, semantic graphs and ontologies but has never met the idea of a <b>Fractal Semantic Graph</b> — which for a while went by <em>graphs of graphs of graphs</em> and <em>ontologies of ontologies of ontologies</em>.</p>
+<p><a href="../demos/fractal-graphs/index.html">The page</a> is now titled <b>Fractal Semantic Graphs</b> and opens with the definition in three sentences: a semantic graph is nodes joined by verbs with named inverses; a fractal one is a graph where every node is itself a semantic graph built by the same rules, down to the smallest thing that still matters to the question — in most of our work a word, a number or a symbol.</p>
+<p><b>The diagram.</b> Three panels of inline SVG: a four-node semantic graph; the Law node zoomed into articles and paragraphs, with an amendment drawn as an edge rather than a footnote; one paragraph zoomed into the terms it uses, each one edge from the article that defines it. The rules are the same in all three, which is the whole point, and the test for the word follows: <em>if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal.</em></p>
+<p><b>Why connect everything with everything.</b> Because every file format is already a graph — a PDF, a spreadsheet, a codebase, a JSON document — and only needs its edges named. Then questions cross formats without a join table, a correction propagates instead of being republished, the smallest node is whatever the question needs rather than what the format offers, and provenance comes free when the leaf is a word tied to a byte range and a hash. The discipline that keeps this from being noise: the edge has to be a verb.</p>
+<p>A four-word table closes the opening — graph, semantic graph, ontology, fractal semantic graph — with what each adds and where it stops. Everything from <em>How far down does the graph go?</em> onward is unchanged.</p>
   </article>
   <article class="upd" id="deleting-files-from-history">
     <h3><a href="#deleting-files-from-history">Deleting files from git history — the exact scenario, drawn out</a> <a class="upd-ver" href="../admin/versions.html">v0.2.86</a></h3>
@@ -820,7 +829,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.86</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.87</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -862,7 +871,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.86';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.87';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

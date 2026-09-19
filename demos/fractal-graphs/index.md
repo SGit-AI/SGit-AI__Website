@@ -1,26 +1,60 @@
-# How far down does the graph go? Fractal semantic graphs across seven vaults — sgit.ai
+# Fractal Semantic Graphs — sgit.ai
 
-> The answer to 'have you mapped this all the way down to system configuration': one grammar from the text of a regulation through a standard's controls, evidence, risk, owner, acceptance and policy, to a threat in one method on one compute instance — with the published vault where each altitude is a live graph, the screenshots, the counts, and the rungs that are still modelled rather than imported.
+> What a Fractal Semantic Graph is — every node is itself a semantic graph by the same rules, at every altitude, down to the word — why connecting everything with everything works when every edge is a verb, and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../../index.md) / [Vaults](../vaults/index.md) / Fractal semantic graphs
+[Home](../../index.md) / [Vaults](../vaults/index.md) / Fractal Semantic Graphs
 
-# How far down does the graph go?
+# Fractal Semantic Graphs
 
-All the way. The same grammar — a node is just a node, meaning lives in the edges, every edge is a verb with a named inverse — runs from the text of a regulation, through a standard's controls, through a risk and the person who accepts it, down to a threat in one line of code on one compute instance. This page is the evidence: **seven published vaults and three sibling sites**, each a live graph at a different altitude, every one openable with the read key printed on its page.
+A **semantic graph** is nodes joined by edges that mean something — every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node is itself a semantic graph, built by the same rules**, and so is every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, and then proves it with seven published vaults you can open.
 
-**Why this page exists.** Asked on LinkedIn whether we had *“defined the dimensions/layers needed to map this all the way down to say the EA and system configurations”*, the answer given was three bare URLs. That was the right answer and a poor way to give it. So here is the same answer with the pictures, the counts, the rule that makes it work, and — at the end — the altitudes that are still modelled rather than imported. Everything below is checkable: the vaults are live, the screenshots are of the vaults, and the numbers are theirs.
+## What a Fractal Semantic Graph is
 
-## The ladder, and who covers which rung
+Most visitors here already know three of the four words. A **graph** is nodes and edges. A **semantic graph** gives the edges meaning: `arises_from`, `evidenced_by`, `owned_by`, each with a named inverse, so a link reads correctly from whichever end you stand at. An **ontology** is the agreed vocabulary of node types and verbs a graph is allowed to use. The fourth word is the new one.
 
-Eleven altitudes, one grammar. The left column is the level of the world being described; the right column is the published vault in which that level is a graph you can open. No rung needs a different format from the one above it — which is the test [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/boundaries.html) sets for the word *fractal*: *if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal.*
+**Fractal** means the graph has no privileged level. Zoom into any node and you find a graph obeying identical rules — not a property bag, not a document, not a different format. A regulation is a node; open it and it is a graph of articles; open an article and it is a graph of paragraphs and points; open a paragraph and it is a graph of the terms it uses, each term an edge away from the article that defines it. The same is true going the other way: the regulation is one node in a graph of instruments, which is one node in a graph of jurisdictions. There is no top and no bottom, only the altitude you happen to be looking from.
 
 *[diagram]*
 
-## The one rule that makes it fractal
+The test for the word is simple and it is borrowed from [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/boundaries.html): *if zooming into a node needs a new format or a special case, the system is hierarchical, not fractal.* A folder tree is hierarchical — a folder and a file are different kinds of thing. A fractal semantic graph has one kind of thing, at every scale.
+
+## Why connect everything with everything
+
+Because in our world **everything is already a graph, and so is every file format.** A regulation is a graph of articles; a PDF of that regulation is a graph of pages, blocks, lines and glyphs; a spreadsheet is a graph of sheets, rows, cells and formulas; a codebase is a graph of packages, classes, methods and tokens; a JSON document is a tree, which is a graph with one verb. None of them needs to be *converted into* a graph — each only needs its edges named. Once they are, the boundaries between formats stop mattering, and four things become possible that no document can do:
+
+- **A question can cross formats without a join table.** *Which method in our code implements the control that the crosswalk maps to the article the amendment changed?* is one traversal — word in a law, to control in a standard, to attestation, to method — because each step is an edge somebody named. The [AIUC-1 vault below](#standard) does exactly the first half of that walk, into a second vault, and finds eight amended articles nobody had noticed.
+- **A correction propagates instead of being republished.** Mark one node superseded and every path that rested on it becomes a query — *what did we build on this?* — rather than an archaeology project. A document cannot do this: the correction is a new document, and nothing connects it to the thousand that already cite the error.
+- **The smallest node is whatever your question needs, not what the format offers.** For a lawyer it is the defined term. For a threat model it is the method. For a conformance check it is the attestation and its expiry date. For the atlas below it is, literally, the word — and because every word is a node, *foreseeable* in Article 9(2) can be one edge from the ruling that decided what it means.
+- **Provenance comes free.** When the leaf is a word and the word is connected to the byte range it came from and the hash of the file that held it, every claim at every altitude above it is traceable to source without any additional machinery. The Regulation Graph below ends every provenance chain in a SHA-256 of the retrieved bytes for exactly this reason.
+
+The one discipline that makes “everything with everything” useful rather than noise is that **the edge has to be a verb**. `relates_to` is banned, because two things always relate; an edge with no verb constrains nothing and cannot narrow a query. The granularity of the verb is the precision of the question you can later ask.
+
+## Four words, one of them new
+
+| Word | What it adds | Where it stops |
+|---|---|---|
+| **Graph** | Nodes and edges | The edges mean nothing in particular |
+| **Semantic graph** | Every edge is a verb with a named inverse; meaning is in connectivity, not in properties | One level: the nodes are atoms |
+| **Ontology** | The agreed vocabulary of node types and verbs | One ontology per domain; joining two is a project |
+| **Fractal Semantic Graph** | Every node is itself a semantic graph by the same rules, at every altitude, down to the word — and every ontology is a node in an ontology of ontologies | Where somebody has not yet named the edges. That is a gap, and it is listed below |
+
+## How far down does the graph go?
+
+All the way. The same grammar runs from the text of a regulation, through a standard's controls, through a risk and the person who accepts it, down to a threat in one line of code on one compute instance. The rest of this page is the evidence: **seven published vaults and three sibling sites**, each a live fractal semantic graph at a different altitude, every one openable with the read key printed on its page.
+
+**Why this section exists.** Asked on LinkedIn whether we had *“defined the dimensions/layers needed to map this all the way down to say the EA and system configurations”*, the answer given was three bare URLs. That was the right answer and a poor way to give it. So here is the same answer with the pictures, the counts, the rule that makes it work, and — at the end — the altitudes that are still modelled rather than imported. Everything below is checkable: the vaults are live, the screenshots are of the vaults, and the numbers are theirs.
+
+## The ladder, and who covers which rung
+
+Eleven altitudes, one grammar. The left column is the level of the world being described; the right column is the published vault in which that level is a graph you can open. No rung needs a different format from the one above it, which is the test for the word set out at the top of this page.
+
+*[diagram]*
+
+## The one rule that makes it fractal, in full
 
 None of this works if each altitude gets its own schema. The grammar is published on [graphs.sgit.ai](https://graphs.sgit.ai/v1/grammar/index.html) and it is short: **every edge is a verb**, stated in both directions with an inverse a person in the business would actually say (`gives_rise_to` / `arises_from`, `evidenced_by` / `evidences`); **`relates-to` is banned**, because an edge with no verb carries no constraint and cannot narrow a query; **properties carry data, never meaning** — two nodes both holding `8080` differ only in what they are connected to; **supersede, never delete**, so a correction becomes a query over everything that rested on the error; and **never render the whole graph** — render the result of a question.
 

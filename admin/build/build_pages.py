@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.86'
+SITE_VERSION = 'v0.2.87'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.86', '2026-09-19', 'this release',
+    ('v0.2.87', '2026-09-19', 'this release',
+     "THE FRACTAL GRAPHS PAGE NOW LEADS WITH THE DEFINITION. The author's first read of v0.2.85 "
+     "made three points: the title should be Fractal Semantic Graphs, since 'how far down does "
+     "the graph go' is a section; the page must start by defining and visualising the term and "
+     "the power of connecting everything with everything, down to the smallest node that makes "
+     "sense for the use case (in most of ours a word, a number or a symbol); and the first "
+     "screens must work for a visitor who knows graphs, semantic graphs and ontologies but has "
+     "never met the FSG idea — which the author used to call 'graphs of graphs of graphs' and "
+     "'ontologies of ontologies of ontologies'. Done in that order: a lead that defines the term "
+     "in three sentences; a section on what it is, with a three-panel inline SVG that zooms from "
+     "a four-node semantic graph into the Law node (articles, paragraphs, an amendment as an "
+     "edge) and then into one paragraph (the terms it uses, each an edge from the article that "
+     "defines them), with the rules unchanged at every zoom; the hierarchical-versus-fractal test "
+     "borrowed from graphs.sgit.ai; a section on why connect everything with everything — every "
+     "file format is already a graph, so questions cross formats without a join table, "
+     "corrections propagate instead of being republished, the smallest node is whatever the "
+     "question needs, and provenance comes free when the leaf is a word tied to a byte range and "
+     "a hash — with the verb rule as the discipline that keeps it from being noise; and a "
+     "four-word table (graph, semantic graph, ontology, fractal semantic graph) saying what each "
+     "adds and where it stops. The former opening became the 'How far down does the graph go?' "
+     "section, unchanged below its heading. Title, description, nav card, gallery note and the "
+     "llms.txt START HERE line renamed to match.",
+     ),
+    ('v0.2.86', '2026-09-19', 'git c80e73cc',
      "THE HISTORY PURGE, DOCUMENTED AS THE SCENARIO IT WAS. Asked to confirm the force push had "
      "really happened (it had: '+ e70d582d...b5ae665d dev -> dev (forced update)') and to write "
      "down the exact situation — files we no longer want, in every commit, on a repository with "
@@ -2036,7 +2059,8 @@ so these are the entry points that are worth more than their position in it sugg
 - **Looking for a worked example?** /demos/vaults/llms.txt is the catalogue of every
   published vault with its read key, generated from the same file the human-readable table
   is, so the two cannot disagree.
-- **Asked how far down the graph goes?** /demos/fractal-graphs/index.md walks one grammar from
+- **Fractal Semantic Graphs?** /demos/fractal-graphs/index.md defines the term (every node is
+  itself a semantic graph by the same rules, down to the word) and then walks one grammar from
   the text of a law to a threat in one method on one compute instance, across seven published
   vaults, with the rungs that are still modelled rather than imported stated plainly.
 
