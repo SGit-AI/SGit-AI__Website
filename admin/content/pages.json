@@ -204,6 +204,12 @@
     "desc": "How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed."
   },
   {
+    "path": "case-studies/purging-history.html",
+    "section": "case-studies",
+    "title": "Deleting files from git history, and why they are still on GitHub afterwards — sgit.ai case study",
+    "desc": "How this repository dropped 15,933 files from every one of its 112 commits: the setup with two branches drawn out, why git rm is not deletion, what git filter-repo does to every commit id, why the push had to be forced and how the lease made it safe, why a forgotten merged branch kept the purged objects reachable and downloadable, what happens when it is deleted, and the order to do it in when the file is a secret."
+  },
+  {
     "path": "security/index.html",
     "section": "security",
     "title": "Security model — sgit",

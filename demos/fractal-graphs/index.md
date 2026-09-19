@@ -2,7 +2,7 @@
 
 > The answer to 'have you mapped this all the way down to system configuration': one grammar from the text of a regulation through a standard's controls, evidence, risk, owner, acceptance and policy, to a threat in one method on one compute instance — with the published vault where each altitude is a live graph, the screenshots, the counts, and the rungs that are still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.85</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.86</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.85 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.86 &middot; 19 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Case studies</a> / One tree, two remotes</p>
   <h1>One working tree, two version control systems &mdash; and why we stopped</h1>
@@ -139,7 +139,7 @@
     <li><b>It was 91% of the repository.</b> The encrypted store was <b>258 MB in 15,933 files</b> against <b>24 MB of site content in about 750 files</b>. Every clone paid for it; every <code>git add -A</code> walked it.</li>
     <li><b>Two published pages had become false.</b> This one said "every release pushes both"; the site's <code>llms.txt</code> said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.</li>
   </ul>
-  <p>So on 19 September 2026 the store was removed from the tree, the history was rewritten with <code>git filter-repo</code> to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.</p>
+  <p>So on 19 September 2026 the store was removed from the tree, the history was rewritten with <code>git filter-repo</code> to drop it from every commit, and the branch was force-pushed. The mechanics &mdash; and why the purged files were still downloadable from GitHub afterwards &mdash; are drawn out in <a href="purging-history.html">a page of their own</a>. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.</p>
 
   <h2>The numbers</h2>
   <div class="tablewrap"><table>
@@ -174,7 +174,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.85</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.86</a> · <a href="../admin/index.html">engineering</a> · <a href="one-tree-two-remotes.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -216,7 +216,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.85';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.86';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

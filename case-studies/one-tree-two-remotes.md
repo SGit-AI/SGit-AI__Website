@@ -2,7 +2,7 @@
 
 > How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.
 
-*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -75,7 +75,7 @@ Nothing about the pattern broke. What happened is that its costs stayed and its 
 - **It was 91% of the repository.** The encrypted store was **258 MB in 15,933 files** against **24 MB of site content in about 750 files**. Every clone paid for it; every `git add -A` walked it.
 - **Two published pages had become false.** This one said "every release pushes both"; the site's `llms.txt` said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.
 
-So on 19 September 2026 the store was removed from the tree, the history was rewritten with `git filter-repo` to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.
+So on 19 September 2026 the store was removed from the tree, the history was rewritten with `git filter-repo` to drop it from every commit, and the branch was force-pushed. The mechanics — and why the purged files were still downloadable from GitHub afterwards — are drawn out in [a page of their own](purging-history.md). The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.
 
 ## The numbers
 

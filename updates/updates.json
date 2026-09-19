@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.85",
+  "site_version": "v0.2.86",
   "updates": [
     {
       "slug": "the-mirror-is-gone",
@@ -41,6 +41,19 @@
         "network"
       ],
       "summary": "Asked on LinkedIn whether we had \"defined the dimensions/layers needed to map this all the way down to say the EA and system configurations\" , the author answered with three links. The answer was right and the form was poor. How far down does the graph go? is…"
+    },
+    {
+      "slug": "deleting-files-from-history",
+      "title": "Deleting files from git history — the exact scenario, drawn out",
+      "date": "2026-09-19",
+      "version": "v0.2.86",
+      "tags": [
+        "git",
+        "workflow",
+        "method",
+        "security"
+      ],
+      "summary": "Yesterday's purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did — git reported + e70d582d...b5ae665d dev dev (forced update) — and the new case study writes the whole scenario down with di…"
     },
     {
       "slug": "the-same-pack-for-an-archetype",

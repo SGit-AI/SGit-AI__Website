@@ -43,7 +43,7 @@
     <li><b>It was 91% of the repository.</b> The encrypted store was <b>258 MB in 15,933 files</b> against <b>24 MB of site content in about 750 files</b>. Every clone paid for it; every <code>git add -A</code> walked it.</li>
     <li><b>Two published pages had become false.</b> This one said "every release pushes both"; the site's <code>llms.txt</code> said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.</li>
   </ul>
-  <p>So on 19 September 2026 the store was removed from the tree, the history was rewritten with <code>git filter-repo</code> to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.</p>
+  <p>So on 19 September 2026 the store was removed from the tree, the history was rewritten with <code>git filter-repo</code> to drop it from every commit, and the branch was force-pushed. The mechanics &mdash; and why the purged files were still downloadable from GitHub afterwards &mdash; are drawn out in <a href="purging-history.html">a page of their own</a>. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.</p>
 
   <h2>The numbers</h2>
   <div class="tablewrap"><table>

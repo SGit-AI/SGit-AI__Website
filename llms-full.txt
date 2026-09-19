@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.85). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.86). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-113site releases, each verified live before it was called done
+114site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -3077,6 +3077,8 @@ Things that actually happened, written up while the details were still checkable
 
 [Workflow### One working tree, two version control systems — and why we stoppedFor 76 releases this site was one folder that was both an sgit vault and a git repository. The workflow, the one-file boundary that made it safe, the ordering rule — and the numbers behind retiring it: a 258 MB mirror that was 91% of the repository, had no reader, and went dead for seven releases without the site noticing.Read the retrospective →](one-tree-two-remotes.md)
 
+[Runbook### Deleting files from git history, and why they were still on GitHub afterwardsThe exact scenario, drawn out: two branches, 15,933 files, why `git rm` is not deletion, what a rewrite does to every commit id, why the push had to be forced, and why one forgotten merged branch kept the purged files downloadable until it was removed.Read the runbook →](purging-history.md)
+
 [Architecture### A live site whose host cannot read itTwo Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.Read the architecture →](live-vault-docs.md)
 
 ## How these are written
@@ -3177,7 +3179,7 @@ Nothing about the pattern broke. What happened is that its costs stayed and its 
 - **It was 91% of the repository.** The encrypted store was **258 MB in 15,933 files** against **24 MB of site content in about 750 files**. Every clone paid for it; every `git add -A` walked it.
 - **Two published pages had become false.** This one said "every release pushes both"; the site's `llms.txt` said the site "is itself served from an encrypted vault". Both statements were true when written and had stopped being true, which is a worse state for a case study than either honest answer.
 
-So on 19 September 2026 the store was removed from the tree, the history was rewritten with `git filter-repo` to drop it from every commit, and the branch was force-pushed. The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.
+So on 19 September 2026 the store was removed from the tree, the history was rewritten with `git filter-repo` to drop it from every commit, and the branch was force-pushed. The mechanics — and why the purged files were still downloadable from GitHub afterwards — are drawn out in [a page of their own](purging-history.md). The purge is safe for the same reason the mirror was safe: everything removed was ciphertext under a key that was never in the repository. What is gone from GitHub is a copy of the vault's encrypted history; the vault itself, on the SG/Send server, is untouched and still holds it.
 
 ## The numbers
 
@@ -3204,6 +3206,199 @@ So on 19 September 2026 the store was removed from the tree, the history was rew
 - [Admin & engineering](../admin/index.md) — the release process as it is now
 
 [← Case studies](index.md)[Git repos inside vaults →](../docs/vault/git-and-vaults.md)
+
+
+
+==============================================================================
+# Deleting files from git history, and why they are still on GitHub afterwards — sgit.ai case study
+
+> How this repository dropped 15,933 files from every one of its 112 commits: the setup with two branches drawn out, why git rm is not deletion, what git filter-repo does to every commit id, why the push had to be forced and how the lease made it safe, why a forgotten merged branch kept the purged objects reachable and downloadable, what happens when it is deleted, and the order to do it in when the file is a secret.
+>
+> Page: https://sgit.ai/case-studies/purging-history.html
+
+[Home](../index.md) / [Case studies](index.md) / Deleting files from git history
+
+# Deleting files from a repository's history, and why they are still on GitHub afterwards
+
+On 19 September 2026 this site's repository dropped 15,933 files it no longer wanted — not just from the current tree, but from every one of the 112 commits that had ever carried them — and force-pushed the result. This page is the exact scenario, drawn out: what the setup was, which branches were in play, what was deleted, why a plain `git rm` would not have done it, why the push had to be forced, and why the deleted files were **still downloadable from GitHub** after the force push landed, until one more branch was removed.
+
+**Read this before copying it.** Everything purged here was ciphertext under a key that was never in the repository, so the purge was housekeeping, not remediation. If the thing you want out of history is a *secret*, history rewriting is the second step and never the first: **rotate the secret, then rewrite**. A rewrite shrinks the window; it does not close it, for the reasons in [the section on why the files are still there](#still-there). The account of that situation is [the day we leaked our own vault key](exposed-vault-key.md).
+
+## The setup
+
+One working folder, two version control systems, one remote with two branches. The folder was both an sgit vault and a git repository ([the pattern and why it was retired](one-tree-two-remotes.md)), and git tracked the vault's encrypted store as a mirror.
+
+```
+LOCAL WORKING TREE                              GITHUB · SGit-AI/SGit-AI__Website
+sgit-ai-website/                                 ┌──────────────────────────────────────┐
+├── .git/            ← git metadata              │ refs/heads/dev            e70d582d  │ ── deploys ──▶ GitHub Pages
+├── .sg_vault/                                   │   112 commits, v0.1.0 … v0.2.83     │                sgit.ai
+│   ├── bare/        ← 15,933 encrypted files    │                                      │
+│   │   ├── data/       (258 MB)   TRACKED       │ refs/heads/claude/site-access-…      │
+│   │   ├── indexes/               TRACKED       │   9f9f7772 · 23 Aug · merged in dev  │
+│   │   ├── keys/                  TRACKED       └──────────────────────────────────────┘
+│   │   └── refs/                  TRACKED
+│   ├── local/       ← vault key, token   GITIGNORED (never committed)
+│   └── work/        ← scratch           GITIGNORED
+├── admin/, docs/, demos/ …   ← the site: ~750 files, 24 MB
+└── index.html
+```
+
+Two things to notice before anything is deleted. The plaintext credential tier under `.sg_vault/local/` was excluded from git from the very first commit, which is the single fact that made the rest of this page routine. And the remote had *two* branches: `dev`, which GitHub Pages deploys, and a working branch from August that had been fully merged into `dev` and then left behind. That second branch is the reason for the last two sections.
+
+## What we wanted gone
+
+Everything under `.sg_vault/`. It was 91% of the repository by size, had had no reader since it was created, and had been dead — unreachable for a push — since v0.2.76. The numbers:
+
+| What | Before | After |
+|---|---|---|
+| Tracked files | 16,679 | 746 |
+| Of which under `.sg_vault/` | 15,933 | 0 |
+| Size of `.sg_vault/` in the working tree | 258 MB | — (folder removed) |
+| Git pack (the whole history) | 276 MB | 21 MB |
+| Commits | 112 | 112 — same commits, every one rewritten |
+| Commits whose id survived unchanged | 0 |
+
+## Why `git rm` is not deletion
+
+Git does not store diffs. Every commit points at a complete snapshot — a tree of trees ending in blobs — and a blob stays in the repository for as long as *any* commit anywhere points at it. Removing a folder in a new commit produces a new snapshot without it. Every previous snapshot is untouched.
+
+```
+"git rm -r .sg_vault  →  git commit"  — the folder leaves the tip and nothing else:
+
+  v0.1.5 ──▶ v0.1.6 ──▶ … ──▶ v0.2.83 ──▶ v0.2.84 (new)
+    │          │                 │            │
+    ▼          ▼                 ▼            ▼
+  tree       tree              tree         tree
+  ├ site     ├ site            ├ site       ├ site        ← only this one lacks it
+  └ .sg_vault└ .sg_vault       └ .sg_vault
+
+  git clone  →  fetches ALL of these  →  258 MB arrives anyway.
+  git checkout v0.2.83  →  the folder is back, byte for byte.
+```
+
+So the tip would have been clean and the clone would have been the same size. For the mirror that was merely wasteful. For a leaked secret it is the failure mode that catches people every year: the file is gone from the branch, and `git log --all -- path/to/secret` still finds it in thirty seconds.
+
+## What a history rewrite does
+
+`git filter-repo` walks every commit, rebuilds its tree without the excluded paths, and writes a *new* commit. A commit's id is a hash of its content, including its tree and its parent's id, so removing a path from the first commit that carried it changes that commit's id, which changes its child's id, and so on to the tip. The old objects are left unreferenced and swept away by the repack that follows.
+
+```
+BEFORE  (the history GitHub had)
+  4c1d11d4 v0.2.76 ──▶ bb248b12 v0.2.77 ──▶ … ──▶ e70d582d v0.2.83
+  tree: site + .sg_vault   tree: site + .sg_vault         tree: site + .sg_vault
+
+        git filter-repo --path .sg_vault --invert-paths --force
+        (1.5 s to rewrite 112 commits; then a repack drops the orphaned blobs)
+
+AFTER   (a different history: same authors, dates, messages, site files; new ids)
+  005361e8 v0.2.76 ──▶ 44323549 v0.2.77 ──▶ … ──▶ 45b99758 v0.2.83 ──▶ b5ae665d v0.2.84
+  tree: site only          tree: site only                tree: site only    tree: site only
+
+  Not one id is shared between the two rows. They are two unrelated chains
+  that happen to contain the same site files at each step.
+```
+
+Three practical consequences. Every commit id anyone had written down — in the release history, in an issue, in a URL — now names a commit that exists only in the old chain. Any clone made before the rewrite is on the old chain and cannot fast-forward onto the new one; it has to be re-cloned or hard-reset. And the tool refuses to run on anything but a fresh clone unless told `--force`, and removes the `origin` remote when it finishes, precisely so that nobody pushes the rewrite by reflex.
+
+## Why the push had to be forced
+
+A normal push is a fast-forward: the remote accepts a new tip only if the tip it currently holds is an ancestor of it. After a rewrite that is never true.
+
+```
+remote refs/heads/dev  =  e70d582d   (old chain)
+local  refs/heads/dev  =  b5ae665d   (new chain)
+
+  is e70d582d an ancestor of b5ae665d?   NO — they share no commit at all
+  →  ordinary push is refused: "non-fast-forward"
+
+  git push --force-with-lease=dev:e70d582d origin dev
+                        └────────┬────────┘
+    "replace dev, but ONLY if it still points at e70d582d" — if anyone had
+    pushed to dev in the meantime, this fails instead of overwriting their work.
+
+  +  e70d582d...b5ae665d  dev -> dev  (forced update)
+```
+
+The lease is the important half. A bare `--force` overwrites whatever is there; `--force-with-lease` pinned to the id we started from turns the push into a compare-and-swap. On a branch with more than one contributor it is the difference between a rewrite and an accident.
+
+GitHub Pages then rebuilt from the new `dev` exactly as it does for any push. The deployed site never carried the mirror, so nothing visible changed — v0.2.84 appeared within ninety seconds.
+
+## Why the deleted files were still on GitHub, and downloadable
+
+This is the part that surprises people, and it comes back to the second branch in the first diagram.
+
+```
+GITHUB, one minute after the forced push
+
+  refs/heads/dev ──────────▶ b5ae665d ──▶ 45b99758 ──▶ … ──▶ 005361e8 ──▶ …   (NEW chain, no .sg_vault)
+
+  refs/heads/claude/site-access-branch-commit-6h2bix
+                 └─────────▶ 9f9f7772 ──▶ 82d5d1e3 ──▶ … ──▶ (68 commits)     (OLD chain)
+                              tree: site + .sg_vault  — 6,191 encrypted files at that point
+
+  Git keeps every object reachable from ANY ref. The old branch is a ref.
+  Everything it can reach — including every .sg_vault blob in those 68 commits —
+  is therefore still a live, first-class object in the repository on GitHub.
+```
+
+Reachability is the whole rule. Deleting a branch's content from *one* chain does nothing to objects that another ref can still walk to. The stale branch had been merged into `dev` in August and forgotten; it never had a reason to exist after that, but it kept the old chain alive.
+
+Concretely, while that branch exists:
+
+- **`git clone` brings the old objects down.** A clone fetches every branch by default. Anyone cloning after the force push gets the small new `dev` *and* the old branch with its 6,191 encrypted files — the clone is smaller than before, but the purge is not visible from the outside.
+- **Old commit URLs keep working.** `github.com/…/commit/9f9f7772` renders, its tree is browsable, and any file in it can be viewed or downloaded raw.
+- **`git fetch origin claude/site-access-…` re-imports the whole thing** into a clean clone in one command. We know, because verifying this page did exactly that.
+
+There are two further places the old objects can live that no branch deletion reaches, and both are worth knowing even though neither applied here. **Forks** share GitHub's object storage with the parent and keep their own refs, so a fork made before the rewrite holds the old chain regardless of what the parent does. And **pull request refs** (`refs/pull/N/head`) are kept by GitHub for closed and merged PRs; they are not listed as branches and cannot be deleted by the repository owner, but they pin the commits they point at. This repository had no forks and no pull requests carrying the mirror.
+
+## What happens when the branch is deleted
+
+```
+  git push origin --delete claude/site-access-branch-commit-6h2bix
+
+  refs/heads/dev ──▶ b5ae665d ──▶ … (new chain)             ← still reachable
+
+  (no ref) ·········▶ 9f9f7772 ──▶ … ──▶ .sg_vault blobs    ← UNREACHABLE
+                                                             nothing points here any more
+```
+
+Three things follow, on three timescales.
+
+1. **Immediately:** a fresh clone no longer receives the old chain. Clone size drops to the 21 MB pack. From the outside the purge is now complete.
+2. **Soon, but not instantly:** the old commit URLs stop rendering and raw-file downloads by old id stop working. Unreachable objects sit on GitHub's storage until its garbage collection runs, which is on its own schedule and not the owner's; anyone who already knows a full 40-character id can still address those objects until then. For a real secret exposure, GitHub Support will run that collection and purge cached views on request — the request is the step that turns "eventually" into "today".
+3. **Never, on its own:** every clone made *before* the deletion still holds the old objects, and nothing anyone does on GitHub changes that. This is why a purge is not a remediation for a secret, and why the case study on the leak rotated the key before it did anything else.
+
+Status as this page is written: the deletion was attempted three times from the session that did the rewrite and was refused by the session's git proxy, which permits pushes but not ref deletion. The branch is to be removed from the GitHub UI, and until it is, everything in the previous section holds. The paragraph will be updated when it has been.
+
+## The order we did it in
+
+Written as a recipe, because the order matters more than any single command.
+
+1. **Know what the deletion is for.** Housekeeping (this case) or secret exposure? If the latter, rotate first and treat the rest of this list as a size reduction, not as containment.
+2. **Get the whole history locally.** A shallow clone cannot be rewritten meaningfully; ours had to be unshallowed to all 112 commits first.
+3. **List every ref on the remote** with `git ls-remote --heads origin`, and for each branch you did not know about, find out whether it is merged and whether it carries the paths. The stale branch here was fully merged and did carry them.
+4. **Park uncommitted work.** The rewrite ends with a hard reset. We saved the pending edits as a patch, reset the tree, and re-applied afterwards.
+5. **Rewrite:** `git filter-repo --path .sg_vault --invert-paths --force`. Check the result before going further: file count, pack size, `git ls-files` for the path returning nothing.
+6. **Re-add the remote** the tool removed, and re-apply the parked edits.
+7. **Make the tree consistent** in the same release: `.gitignore` now excludes the path outright, every page that described the old state is rewritten, tooling that read from the path is re-pointed. Build and validate.
+8. **Force-push with a lease** pinned to the id the remote held when you started.
+9. **Delete every other ref that reaches the old chain** — branches you own, tags, and ask GitHub Support about anything you cannot delete yourself.
+10. **Tell every other clone.** Anyone with a checkout is now on a dead chain and must re-clone or hard-reset; a `git pull` will produce a confused merge of two unrelated histories.
+11. **Verify from the outside:** a fresh clone, its size, and that the paths appear in no ref.
+
+## What made this safe here
+
+Every object removed was ciphertext under a key that never entered the repository — the `local/` tier was gitignored from the first commit and the tripwire that scans for the passphrase has run on every release since [the one time it got in](exposed-vault-key.md). So the old chain surviving on a forgotten branch for a few hours is a storage anomaly, not an exposure. The same procedure applied to a repository where the plaintext tier *had* been committed would be the right mechanics in the wrong order: the rewrite would go through, the stale branch would keep the plaintext downloadable, existing clones would keep it forever, and the only thing that would actually have protected anyone is the rotation that should have come first.
+
+## Related
+
+- [One working tree, two version control systems — and why we stopped](one-tree-two-remotes.md) — why the mirror existed and why it was retired
+- [The day we leaked our own vault key](exposed-vault-key.md) — the same tools, in the order that matters when a secret is involved
+- [Git repos inside vaults](../docs/vault/git-and-vaults.md) — the pattern this repository used, still right when something reads the mirror
+- [Release history](../admin/versions.md) — where the commit column switches from the old chain's ids to the new one's
+
+[← One tree, two remotes](one-tree-two-remotes.md)[The exposed vault key →](exposed-vault-key.md)
 
 
 
@@ -4561,7 +4756,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.85, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.86, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -4924,7 +5119,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-113**site releases since 14 August**
+114**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**
@@ -4933,7 +5128,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-57**articles and release notes**
+58**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -6453,11 +6648,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version — **v0.2.85**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version — **v0.2.86**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.2.85 | 2026-09-19 | this release | HOW FAR DOWN DOES THE GRAPH GO? A DEDICATED PAGE FOR THE QUESTION THAT GOT THREE BARE URLS ON LINKEDIN. Asked whether the dimensions and layers had been defined 'all the way down to the EA and system configurations', the author answered with links to three vaults. The answer was right and the form was poor, so /demos/fractal-graphs/ now gives it properly: an eleven-rung ladder drawn as inline SVG from law to compute instance, each rung mapped to the published vault where that altitude is a live graph; the one grammar (every edge a verb with an inverse, relates-to banned, properties never carry meaning, supersede never delete) that makes the word fractal a testable claim; and walkthrough rows for seven vaults with their own screenshots and counts — Regulation Graph, Standards Atlas GDPR, AIUC-1 conformance, Risk Graph Explorer, Agentic Browser Isolation, Licence to Operate, ThreatModCon 2025 — plus sibling cards for graphs.sgit.ai, standards.sgit.ai and abp.sgit.ai. THE NEW SCREENSHOTS ARE REAL: the GDPR atlas refuses to run outside a vault host, so a read-key clone was served locally behind a shim implementing sg.vfs over fetch, and its graph view was captured at three altitudes; the panel's own text — 'You are at the top of the fractal' — is the page's epigraph. The vault's page gained those views too. THE HONEST SECTION IS THE POINT: the bottom four rungs (environment, runtime, compute) are modelled layers rather than imports from a CMDB or IaC; no published vault holds an enterprise-architecture repository as a graph; AIUC-1 crosswalks resolve at article level only; the GDPR atlas is a dated seed pass and uses the banned relates edge six times (counted from graph/edges.json: 6 of 227); standards.sgit.ai models one instrument and has zero crosswalks; abp.sgit.ai's capability grammar is a vocabulary not yet joined to a real grant. Named gaps get filled. ALSO FIXED, FOUND WHILE PURGING THE MIRROR: the footer on every page still said 'this site is itself served from an encrypted SG/Send vault' — false since v0.2.76 and in fact never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys; the pages describing them are static files. Nav: Fractal graphs added under Vaults; llms.txt START HERE block points at the page. |
+| v0.2.86 | 2026-09-19 | this release | THE HISTORY PURGE, DOCUMENTED AS THE SCENARIO IT WAS. Asked to confirm the force push had really happened (it had: '+ e70d582d...b5ae665d dev -> dev (forced update)') and to write down the exact situation — files we no longer want, in every commit, on a repository with more than one branch — a new case study draws it out in ASCII: the working tree with .git and .sg_vault side by side, the remote with dev and a forgotten August branch, the 15,933 files and the 276 MB to 21 MB pack, why git rm leaves every earlier snapshot intact, what filter-repo does to every commit id (not one of 112 survived), why the push is refused as non-fast-forward and how --force-with-lease pinned to the old id turns it into a compare-and-swap. THE PART PEOPLE MISS IS GIVEN ITS OWN SECTION: reachability. The stale branch was fully merged and dated 23 August, and it still pointed at the old chain — 68 commits, 6,191 encrypted files in its tree — so a fresh clone after the force push still downloaded the purged objects, old commit URLs still rendered, and one fetch re-imported the lot into a clean clone (verified by doing it). Forks and refs/pull/N/head are named as the two places a branch deletion does not reach. Then what deletion does on three timescales: clones stop receiving the chain immediately; GitHub's garbage collection makes old ids stop resolving on its own schedule, or on request to Support; clones made before keep the objects forever. Recorded plainly: the branch deletion was refused three times by the session's git proxy and is pending in the GitHub UI, so the 'still downloadable' section is true as published. The recipe is written in the order that matters, and the page opens with the rule that this was housekeeping because only ciphertext was purged — for a secret, rotate first, rewrite second. |
+| v0.2.85 | 2026-09-19 | git 5ebdd8af | HOW FAR DOWN DOES THE GRAPH GO? A DEDICATED PAGE FOR THE QUESTION THAT GOT THREE BARE URLS ON LINKEDIN. Asked whether the dimensions and layers had been defined 'all the way down to the EA and system configurations', the author answered with links to three vaults. The answer was right and the form was poor, so /demos/fractal-graphs/ now gives it properly: an eleven-rung ladder drawn as inline SVG from law to compute instance, each rung mapped to the published vault where that altitude is a live graph; the one grammar (every edge a verb with an inverse, relates-to banned, properties never carry meaning, supersede never delete) that makes the word fractal a testable claim; and walkthrough rows for seven vaults with their own screenshots and counts — Regulation Graph, Standards Atlas GDPR, AIUC-1 conformance, Risk Graph Explorer, Agentic Browser Isolation, Licence to Operate, ThreatModCon 2025 — plus sibling cards for graphs.sgit.ai, standards.sgit.ai and abp.sgit.ai. THE NEW SCREENSHOTS ARE REAL: the GDPR atlas refuses to run outside a vault host, so a read-key clone was served locally behind a shim implementing sg.vfs over fetch, and its graph view was captured at three altitudes; the panel's own text — 'You are at the top of the fractal' — is the page's epigraph. The vault's page gained those views too. THE HONEST SECTION IS THE POINT: the bottom four rungs (environment, runtime, compute) are modelled layers rather than imports from a CMDB or IaC; no published vault holds an enterprise-architecture repository as a graph; AIUC-1 crosswalks resolve at article level only; the GDPR atlas is a dated seed pass and uses the banned relates edge six times (counted from graph/edges.json: 6 of 227); standards.sgit.ai models one instrument and has zero crosswalks; abp.sgit.ai's capability grammar is a vocabulary not yet joined to a real grant. Named gaps get filled. ALSO FIXED, FOUND WHILE PURGING THE MIRROR: the footer on every page still said 'this site is itself served from an encrypted SG/Send vault' — false since v0.2.76 and in fact never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys; the pages describing them are static files. Nav: Fractal graphs added under Vaults; llms.txt START HERE block points at the page. |
 | v0.2.84 | 2026-09-19 | git b5ae665d | THE SITE'S OWN VAULT MIRROR IS GONE — DELETED FROM THE TREE, PURGED FROM EVERY COMMIT, AND THE BRANCH FORCE-PUSHED. Asked whether the mirror was still needed, the answer at v0.2.83 was no: it had no reader (every session that built the site cloned it from GitHub), no published read key (the one vault on this site nobody could open), and it had been dead since v0.2.76 without the site noticing — seven releases went out over git alone and the live pages were correct throughout. It was also 258 MB in 15,933 files against 24 MB of content in about 750: 91% of the repository. The author's call was delete, with a forced push authorised. Done with git filter-repo over all 112 commits; the pack went from 276 MB to 21 MB, and the one other remote branch (fully merged, dated August) was removed so no ref kept the old objects reachable. The purge is safe for the same reason the mirror was: everything removed was ciphertext under a key that was never in the repository, and the vault itself on the server is untouched. EVERY PAGE THAT DESCRIBED THE PATTERN AS CURRENT WAS REWRITTEN: the one-tree-two-remotes case study is now a retrospective with a 'why we stopped' section and the numbers; the why page, the admin page, the git-and-vaults note, the release-engineer role and the release prompt no longer say 'both remotes'. Historical release notes were left as the dated records they are. THE TOOLING FOLLOWED: release.sh no longer requires .sg_vault or pushes sgit (it still pulls the board vault and still refuses to finish until sgit.ai serves the new version); the key-leak tripwire now reads demo vault write keys from a gitignored admin/local/demo-keys/ folder instead of the dead vault's local tier, and check_credential.py and the publishing method point there too. The release history's commit column switches from vault commit ids to git ids from v0.2.77 on, which also filled the seven PREV_UNFILLED rows the missing key had left. THE THREE PAGES IN THE VAULTS MENU WERE STALE: the demos page listed three vaults as 'published' when there were thirty, and pointed at a plan already delivered — it now leads with the gallery and keeps the three walkthroughs as walkthroughs; the catalogue, which renders a vault, turned out to hold nine entries against the gallery's thirty, so the page now says so with the date and names the gallery as the complete list until the catalogue's key holder catches up; the gallery's footer stopped calling the catalogue the place where new entries start, because for twenty-one of them it was not. |
 | v0.2.83 | 2026-09-19 | git 45b99758 | THE ROOT LLMS.TXT WAS POINTING AGENTS AT TWO 404s, AND BURYING THE GUIDANCE IT SHOULD LEAD WITH. Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that COVERAGE was complete and ROUTING was broken. The guidance front door sat at line 149 of 239, as page entry 83 of 138, indistinguishable from installation.md — while the orientation block at the top still sent agents to /use-cases/ for 'task-shaped guidance and agent briefs', which is where that guidance lived before it moved to /docs/guidance/ and /docs/briefs/. None of the six scoped llms.txt files were advertised at all, so an agent reading the root had no way to learn that /docs/guidance/llms.txt or /demos/vaults/llms.txt exist. Fixed with a START HERE, BY WHAT YOU ARE DOING block before the page list — four entry points by intent, plus the list of scoped indexes — and the stale /use-cases/ pointer corrected. TWO BROKEN LINKS FOUND BY THE GUARD, NOT BY READING: the routing block is hand-written prose naming generated files, which is the exact drift this site warns about, so the build now asserts that every path the preamble points at is a file the build produces. It failed immediately on /docs/exposed-vault-key.md — the line telling agents never to write a vault key into a tracked file, pointing at a 404 for six months; the page is at /case-studies/exposed-vault-key.md. Widening the guard to every section then caught /security.md, referenced twice, where the page is /security/index.md. Both were 404 on the live site and the site's own validator had never looked, because it checks links inside pages and llms.txt is not a page. ALSO CORRECTED: the preamble claimed this site 'is itself served from an encrypted vault'. The vault mirror last moved at v0.2.76 and six releases have gone out over git alone, so the claim came out rather than being left to rot. |
 | v0.2.82 | 2026-09-18 | git bd8300e2 | VAULT #30: THE SAME PACK, WRITTEN FOR AN ARCHETYPE INSTEAD OF A COMPANY. A sibling of #29 from the same generator one day later — a fractional CISO pack, two days a month on a retainer for a company that is already certified — and the interesting thing is how it solves the publication problem. #29 described a real role and WITHHELD the company, which meant auditing whether an unnamed FTSE 250 client could be inferred from what was said about it. #30 describes A TYPE OF COMPANY in six rows derived from public sources — what it does, who buys it, where the risk sits, what it has, what it lacks, who governs it — and everything after follows from the archetype, so there is nothing to redact. The rule that generalises: a document written for a class can be published; a document written for an instance has to be scrubbed. New in this one: an ENGAGEMENT document with the monthly rhythm, a twelve-month map, and a section headed 'what two days a month is not' — not cover, not a DPO, not delivery, not an audit, not a substitute for a full-time hire; a one-page INFOGRAPHIC rendered from content.json rather than drawn separately, which is the page's hero because it is the pitch on one sheet; and the three 2019 decks rendered in the viewer rather than only archived. The HONEST TENSIONS section names how the offer could be misused against the buyer — cheaper than a permanent hire, and that economy can defer a hire the company needs — which a sales document rarely does. Audit run and stated: no company named or implied, no rate or tax status ('retainer' appears as a word with no figure), one public email, no secrets, read key verified against an all-zeros control. The two packs are worth reading as a pair: the same machinery giving two answers to how you publish a document about a job. |
@@ -7442,6 +7638,24 @@ The bottom four rungs — environment, runtime, compute — are modelled layers,
 ## Also fixed
 
 The footer on every page still read *"this site is itself served from an encrypted SG/Send vault."* It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.
+
+### [Deleting files from git history — the exact scenario, drawn out](#deleting-files-from-history) [v0.2.86](../admin/versions.md)
+
+gitworkflowmethodsecurity
+
+Yesterday's purge of the vault mirror raised the right question: *did the force push actually happen, and what exactly did it do?* It did — git reported `+ e70d582d...b5ae665d dev -> dev (forced update)` — and [the new case study](../case-studies/purging-history.md) writes the whole scenario down with diagrams.
+
+**The setup.** One folder that was both an sgit vault and a git repository; a remote with two branches, `dev` and a working branch from August that had been merged and forgotten. **What we wanted gone:** everything under `.sg_vault/` — 15,933 files, 91% of the repository, in every one of 112 commits.
+
+**Why `git rm` is not deletion.** Every commit is a full snapshot, and a blob lives as long as any commit points at it. Removing the folder at the tip leaves 111 snapshots that still carry it; a clone downloads them all. **What the rewrite does:** `git filter-repo` rebuilds every commit without the path, and because a commit's id hashes its tree and its parent, not one of the 112 ids survived. **Why the push had to be forced:** the remote's tip is not an ancestor of the new tip, so a normal push is refused; `--force-with-lease` pinned to the old id makes the overwrite a compare-and-swap rather than a stomp.
+
+## The part people miss
+
+Git keeps every object reachable from *any* ref. The forgotten branch still pointed at the old chain — 68 commits with 6,191 encrypted files in its tree — so after the force push a fresh clone still downloaded the purged objects, old commit URLs still rendered, and a single `git fetch` re-imported the lot into a clean clone. We verified that by doing it. Forks and `refs/pull/N/head` are the two places a branch deletion does not reach.
+
+**When the branch is deleted,** three things happen on three timescales: fresh clones stop receiving the chain immediately; old ids stop resolving when GitHub's garbage collection runs, on its schedule or on request to Support; and clones made before the deletion keep the objects forever. That last one is why a history rewrite is never the first step for a leaked secret. Rotate, then rewrite.
+
+**Recorded plainly:** the branch deletion was refused three times by the session's git proxy and is pending in the GitHub UI. Until it is done, the "still downloadable" section of the page is true as published. Everything purged was ciphertext under a key that was never in the repository, which is what makes this housekeeping rather than an incident.
 
 ## 2026-09-18
 

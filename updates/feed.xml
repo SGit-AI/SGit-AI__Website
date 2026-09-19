@@ -26,6 +26,13 @@
       <description>Asked on LinkedIn whether we had &quot;defined the dimensions/layers needed to map this all the way down to say the EA and system configurations&quot; , the author answered with three links. The answer was right and the form was poor. How far down does the graph go? is…</description>
     </item>
     <item>
+      <title>Deleting files from git history — the exact scenario, drawn out</title>
+      <link>https://sgit.ai/updates/index.html#deleting-files-from-history</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#deleting-files-from-history</guid>
+      <pubDate>2026-09-19</pubDate>
+      <description>Yesterday&#x27;s purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did — git reported + e70d582d...b5ae665d dev dev (forced update) — and the new case study writes the whole scenario down with di…</description>
+    </item>
+    <item>
       <title>Vault #30 — the same pack, written for an archetype instead of a company</title>
       <link>https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#decks-read-straight-out-of-a-vault</guid>
       <pubDate>2026-09-09</pubDate>
       <description>The vaults publish presentations. Four of them sit in the AIUC 1 conformance vault and five in Licence to Operate, and until this release the only way to see one was to open the vault&#x27;s own app and drive it. They now play on the vault pages themselves, fetched…</description>
-    </item>
-    <item>
-      <title>A page per deck, a focus mode, and a vault catalogue an agent can read</title>
-      <link>https://sgit.ai/updates/index.html#a-page-per-deck-and-a-catalogue-agents-can-read</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-page-per-deck-and-a-catalogue-agents-can-read</guid>
-      <pubDate>2026-09-09</pubDate>
-      <description>Yesterday&#x27;s release put the decks on the vault pages. Three things were missing, and this release adds them. A page per deck. Each of the nine published decks now has one — four under the AIUC 1 conformance vault, five under Licence to Operate. A deck page ope…</description>
     </item>
   </channel>
 </rss>

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -88,6 +88,24 @@ The bottom four rungs — environment, runtime, compute — are modelled layers,
 ## Also fixed
 
 The footer on every page still read *"this site is itself served from an encrypted SG/Send vault."* It has been false since the mirror died at v0.2.76 — and was never true of the deployed pages, which GitHub Pages has always served. It now says what is true: thirty vaults open in your browser with published read keys, and the pages that describe them are static files.
+
+### [Deleting files from git history — the exact scenario, drawn out](#deleting-files-from-history) [v0.2.86](../admin/versions.md)
+
+gitworkflowmethodsecurity
+
+Yesterday's purge of the vault mirror raised the right question: *did the force push actually happen, and what exactly did it do?* It did — git reported `+ e70d582d...b5ae665d dev -> dev (forced update)` — and [the new case study](../case-studies/purging-history.md) writes the whole scenario down with diagrams.
+
+**The setup.** One folder that was both an sgit vault and a git repository; a remote with two branches, `dev` and a working branch from August that had been merged and forgotten. **What we wanted gone:** everything under `.sg_vault/` — 15,933 files, 91% of the repository, in every one of 112 commits.
+
+**Why `git rm` is not deletion.** Every commit is a full snapshot, and a blob lives as long as any commit points at it. Removing the folder at the tip leaves 111 snapshots that still carry it; a clone downloads them all. **What the rewrite does:** `git filter-repo` rebuilds every commit without the path, and because a commit's id hashes its tree and its parent, not one of the 112 ids survived. **Why the push had to be forced:** the remote's tip is not an ancestor of the new tip, so a normal push is refused; `--force-with-lease` pinned to the old id makes the overwrite a compare-and-swap rather than a stomp.
+
+## The part people miss
+
+Git keeps every object reachable from *any* ref. The forgotten branch still pointed at the old chain — 68 commits with 6,191 encrypted files in its tree — so after the force push a fresh clone still downloaded the purged objects, old commit URLs still rendered, and a single `git fetch` re-imported the lot into a clean clone. We verified that by doing it. Forks and `refs/pull/N/head` are the two places a branch deletion does not reach.
+
+**When the branch is deleted,** three things happen on three timescales: fresh clones stop receiving the chain immediately; old ids stop resolving when GitHub's garbage collection runs, on its schedule or on request to Support; and clones made before the deletion keep the objects forever. That last one is why a history rewrite is never the first step for a leaked secret. Rotate, then rewrite.
+
+**Recorded plainly:** the branch deletion was refused three times by the session's git proxy and is pending in the GitHub UI. Until it is done, the "still downloadable" section of the page is true as published. Everything purged was ciphertext under a key that was never in the repository, which is what makes this housekeeping rather than an incident.
 
 ## 2026-09-18
 

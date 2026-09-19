@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.85'
+SITE_VERSION = 'v0.2.86'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.85', '2026-09-19', 'this release',
+    ('v0.2.86', '2026-09-19', 'this release',
+     "THE HISTORY PURGE, DOCUMENTED AS THE SCENARIO IT WAS. Asked to confirm the force push had "
+     "really happened (it had: '+ e70d582d...b5ae665d dev -> dev (forced update)') and to write "
+     "down the exact situation — files we no longer want, in every commit, on a repository with "
+     "more than one branch — a new case study draws it out in ASCII: the working tree with .git "
+     "and .sg_vault side by side, the remote with dev and a forgotten August branch, the 15,933 "
+     "files and the 276 MB to 21 MB pack, why git rm leaves every earlier snapshot intact, what "
+     "filter-repo does to every commit id (not one of 112 survived), why the push is refused as "
+     "non-fast-forward and how --force-with-lease pinned to the old id turns it into a "
+     "compare-and-swap. THE PART PEOPLE MISS IS GIVEN ITS OWN SECTION: reachability. The stale "
+     "branch was fully merged and dated 23 August, and it still pointed at the old chain — 68 "
+     "commits, 6,191 encrypted files in its tree — so a fresh clone after the force push still "
+     "downloaded the purged objects, old commit URLs still rendered, and one fetch re-imported "
+     "the lot into a clean clone (verified by doing it). Forks and refs/pull/N/head are named as "
+     "the two places a branch deletion does not reach. Then what deletion does on three "
+     "timescales: clones stop receiving the chain immediately; GitHub's garbage collection makes "
+     "old ids stop resolving on its own schedule, or on request to Support; clones made before "
+     "keep the objects forever. Recorded plainly: the branch deletion was refused three times by "
+     "the session's git proxy and is pending in the GitHub UI, so the 'still downloadable' "
+     "section is true as published. The recipe is written in the order that matters, and the "
+     "page opens with the rule that this was housekeeping because only ciphertext was purged — "
+     "for a secret, rotate first, rewrite second.",
+     ),
+    ('v0.2.85', '2026-09-19', 'git 5ebdd8af',
      "HOW FAR DOWN DOES THE GRAPH GO? A DEDICATED PAGE FOR THE QUESTION THAT GOT THREE BARE URLS "
      "ON LINKEDIN. Asked whether the dimensions and layers had been defined 'all the way down to "
      "the EA and system configurations', the author answered with links to three vaults. The "
