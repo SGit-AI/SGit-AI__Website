@@ -1,8 +1,20 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.98",
+  "site_version": "v0.2.99",
   "updates": [
+    {
+      "slug": "vault-table-order",
+      "title": "The newest vaults were at the bottom of the table, and at the top of the machine list",
+      "date": "2026-09-20",
+      "version": "v0.2.99",
+      "tags": [
+        "vaults",
+        "build",
+        "method"
+      ],
+      "summary": "The published vaults table opened at 26 and ended at 30. Three bugs behind one symptom. The table read file order. Its own docstring claimed \"the rows ship newest first in the HTML\" , but the generator loaded vaults.json directly and rendered it as written. Th…"
+    },
     {
       "slug": "the-vault-named-after-the-concept",
       "title": "The vault named after the concept was not on the concept's page",

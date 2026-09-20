@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.98'
+SITE_VERSION = 'v0.2.99'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.98', '2026-09-20', 'this release',
+    ('v0.2.99', '2026-09-20', 'this release',
+     "THE NEWEST FOUR VAULTS WERE AT THE BOTTOM OF THE TABLE, AND THE MACHINE LIST HAD THEM AT THE "
+     "TOP. The author asked for the order on the published-vaults page to be fixed. Three bugs "
+     "behind one symptom. (1) vaults_table() read vaults.json directly, in FILE order, while its "
+     "own docstring claimed 'the rows ship newest-first in the HTML'. Vaults 27 to 30 had been "
+     "appended to the end of the file rather than inserted at the top, so they rendered last: the "
+     "page opened at #26 and ended at #30. (2) The llms.txt generator sorted by ordinal and was "
+     "therefore correct, which means the human table and the machine list had DISAGREED for four "
+     "releases, on a page whose own footnote says the two are generated from the same file and "
+     "cannot drift. (3) Found on the way: the routine that lifts each read key out of its vault "
+     "page knew sgit_rk1_ and sgit_private_read_ but not sgit_public_read_, so the two keys "
+     "relabelled in v0.2.98 were being published in llms.txt stripped of the declaration they had "
+     "just been given. THE FIX IS ONE ORDER FOR THE WHOLE SITE: _vaults() now sorts newest-first "
+     "and everything reads it, and it asserts what makes that trustworthy — ordinals unique, "
+     "running 1..N with no gaps, and in the same order as the published dates. Both assertions "
+     "were tested by breaking the data on purpose: a duplicate ordinal and a date that contradicts "
+     "its number each fail the build by name. The homepage is untouched because its hero row and "
+     "its job bands use a hand-curated order, which is why this went unnoticed there.",
+     ),
+    ('v0.2.98', '2026-09-20', 'git 245934e7',
      "WE PUBLISHED READ KEYS UNDER A PREFIX THAT DECLARES THEM SECRET, AND AN AGENT CORRECTLY "
      "REFUSED TO OPEN THEM. The author sent a screenshot: another agent, asked to inspect the two "
      "AIUC-1 vaults, declined because their credentials were labelled private read, and said it "
@@ -2540,14 +2559,18 @@ def write_scoped_llms(pages):
     written = []
 
     # ---- the published vaults, from the same data the table is built from
-    vs = sorted(json.load(open(os.path.join(ADMIN, 'content', 'vaults.json'))),
-                key=lambda v: -int(v.get('n', 0)))
+    vs = _vaults()                       # newest first, the same order the table ships
     # The read key is not in vaults.json — it is printed on each vault's own page, which is the
     # one copy. Lift it from there rather than keeping a second list that could disagree.
     for v in vs:
         try:
             src = open(os.path.join(ADMIN, 'content', 'demos', 'vaults', v['slug'], 'index.html')).read()
-            m = re.search(r'((?:sgit_(?:rk1_|private_read_))?[0-9a-f]{64}:' + re.escape(v['vault_id']) + r')', src)
+            # Every read-key prefix the site may carry, longest-lived first. Missing one does not
+            # fail loudly: the optional group simply matches from the hex, and the key is published
+            # here stripped of the declaration it was given. sgit_public_read_ was missing for
+            # exactly one release after the relabel in v0.2.98.
+            m = re.search(r'((?:sgit_(?:rk1_|public_read_|private_read_))?[0-9a-f]{64}:'
+                          + re.escape(v['vault_id']) + r')', src)
             if m:
                 v['read_key'] = m.group(1)
         except OSError:
@@ -2851,6 +2874,10 @@ def vaults_table():
     progressive enhancement: the rows ship newest-first in the HTML, so with no
     JavaScript the table is still correct and still in the most useful order.
 
+    That last sentence was a claim rather than a fact until v0.2.99: this read the JSON
+    directly, in file order, and four vaults appended to the end of the file rendered at the
+    bottom of the table. It now reads _vaults(), which sorts and asserts.
+
     published: the date the vault's page first appeared in git, not a date anybody typed.
 
     The # column is a PERMANENT publication ordinal — #1 is the first vault ever published
@@ -2858,7 +2885,7 @@ def vaults_table():
     when the table is re-sorted, and sorting by # is by construction the same ordering as
     sorting by published date. A number that renumbered on every sort said nothing at all.
     """
-    rows = json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
+    rows = _vaults()                    # newest first, asserted there
     trs = '\n'.join(
         f'    <tr><td class="vt-n" data-sort="{v["n"]}">{v["n"]}</td>'
         f'<td><a href="{v["slug"]}/index.html">{v["name"]}</a>'
@@ -2911,7 +2938,31 @@ def vaults_table():
 
 
 def _vaults():
-    return json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
+    """Every published vault, NEWEST FIRST. The one ordering the whole site uses.
+
+    Sorting lives here rather than in each caller because it did not, once. The table on
+    /demos/vaults/ rendered the JSON's raw file order while /demos/vaults/llms.txt sorted by
+    ordinal, so four vaults added by appending to the file sat at the BOTTOM of the human
+    table and the TOP of the machine list — while that page claimed the two are generated
+    from the same file and therefore cannot drift. They had drifted for four releases.
+
+    `n` is a PERMANENT publication ordinal, not a row position: #1 is the first vault ever
+    published here. That is what makes it the sort key, and the assertions below are what
+    make it safe to rely on — they fail the build if the numbering stops being a total order
+    or stops agreeing with the dates, rather than letting the order quietly rot again.
+    """
+    rows = json.load(open(os.path.join(ADMIN, 'content', 'vaults.json')))
+    ns   = [int(v['n']) for v in rows]
+    dupes = sorted({n for n in ns if ns.count(n) > 1})
+    assert not dupes, f'vaults.json: duplicate publication ordinals {dupes}'
+    assert sorted(ns) == list(range(1, len(ns) + 1)), (
+        f'vaults.json: ordinals must run 1..{len(ns)} with no gaps; got {sorted(ns)}')
+    rows.sort(key=lambda v: -int(v['n']))
+    dates = [v['published'] for v in rows]
+    assert dates == sorted(dates, reverse=True), (
+        'vaults.json: the publication ordinals disagree with the published dates, so "newest '
+        'first" by # is not newest first by date. Renumber, or correct the date.')
+    return rows
 
 
 def _vault_shot(v, name, alt=''):

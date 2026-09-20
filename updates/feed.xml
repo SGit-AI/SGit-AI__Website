@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>The newest vaults were at the bottom of the table, and at the top of the machine list</title>
+      <link>https://sgit.ai/updates/index.html#vault-table-order</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#vault-table-order</guid>
+      <pubDate>2026-09-20</pubDate>
+      <description>The published vaults table opened at 26 and ended at 30. Three bugs behind one symptom. The table read file order. Its own docstring claimed &quot;the rows ship newest first in the HTML&quot; , but the generator loaded vaults.json directly and rendered it as written. Th…</description>
+    </item>
+    <item>
       <title>The vault named after the concept was not on the concept&#x27;s page</title>
       <link>https://sgit.ai/updates/index.html#the-vault-named-after-the-concept</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-vault-named-after-the-concept</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</guid>
       <pubDate>2026-09-10</pubDate>
       <description>The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page. The refere…</description>
-    </item>
-    <item>
-      <title>The shorts page rewritten for someone who arrives with no context</title>
-      <link>https://sgit.ai/updates/index.html#the-shorts-page-rewritten-for-a-cold-arrival</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-shorts-page-rewritten-for-a-cold-arrival</guid>
-      <pubDate>2026-09-09</pubDate>
-      <description>A page of videos is a landing page whether or not it was designed as one. Traffic reaches the seven shorts from a feed, lands on it directly, and has never seen the vault, this site, or the argument. What sat above the seven players yesterday was an apology ab…</description>
     </item>
   </channel>
 </rss>

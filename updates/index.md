@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,24 @@ What changed on sgit and on this site, as it happens — one entry per story rat
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-20
+
+### [The newest vaults were at the bottom of the table, and at the top of the machine list](#vault-table-order) [v0.2.99](../admin/versions.md)
+
+vaultsbuildmethod
+
+[The published-vaults table](../demos/vaults/index.md) opened at #26 and ended at #30. Three bugs behind one symptom.
+
+**The table read file order.** Its own docstring claimed *"the rows ship newest-first in the HTML"*, but the generator loaded `vaults.json` directly and rendered it as written. The four most recent vaults had been appended to the end of the file rather than inserted at the top, so they rendered last.
+
+**The machine list was right, which is worse.** The generator for [`/demos/vaults/llms.txt`](../demos/vaults/llms.txt) sorted by ordinal. So the human table and the machine list have disagreed for four releases, on a page whose own footnote says the two are generated from the same file and therefore cannot drift.
+
+**And one found on the way.** The routine that lifts each read key out of its vault page knew the legacy prefix and the private one, but not `sgit_public_read_`. The two keys [relabelled yesterday](../updates/index.md) were being republished in the machine list stripped of the declaration they had just been given.
+
+## One order for the whole site
+
+`_vaults()` now sorts newest-first and every caller reads it, so there is one ordering rather than one per consumer. It also asserts what makes the ordinal trustworthy as a sort key: unique, running 1 to N with no gaps, and in the same order as the published dates. Both assertions were tested by breaking the data on purpose, and each fails the build by name.
+
+The homepage is untouched: its hero row and its job bands use a hand-curated order, which is exactly why nobody noticed this there.
 
 ### [The vault named after the concept was not on the concept's page](#the-vault-named-after-the-concept) [v0.2.96](../admin/versions.md)
 

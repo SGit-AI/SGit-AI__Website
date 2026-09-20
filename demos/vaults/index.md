@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,6 +24,14 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
+
+| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
+
+| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
+
+| 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
 
 | 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault — cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
 
@@ -76,14 +84,6 @@ Every vault whose read key this site has deliberately published — with, for ea
 | 2 | [The Vault Catalogue](catalogue/index.md)`kc67yhgw` | An index of published vaults that is itself a vault, and lists itself | Record | 9 | 11 KB | 2026-08-16 |
 
 | 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
-
-| 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
-
-| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
-
-| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
-
-| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
 This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy — carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
 
