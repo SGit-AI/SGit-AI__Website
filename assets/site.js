@@ -1,4 +1,4 @@
-/* sgit.ai — shared behaviour (loaded via the SG bridge: sg.loadJs / sg.vfs.readText) */
+/* sgit.ai, shared behaviour (loaded via the SG bridge: sg.loadJs / sg.vfs.readText) */
 (function () {
   'use strict';
 
@@ -65,7 +65,7 @@
   }
   // On a touch screen the dropdown has no hover to open it: the first tap on a group
   // label opens the menu, a second follows the link. Only where a dropdown is actually
-  // drawn — in the collapsed phone menu the children are already visible.
+  // drawn, in the collapsed phone menu the children are already visible.
   document.addEventListener('click', function (e) {
     var link = e.target.closest && e.target.closest('nav.site .ni-has > .nl');
     var open = nav.querySelector('.ni-has.open');

@@ -1,15 +1,15 @@
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">API</a> / Append lanes</p>
   <h1>Append lanes</h1>
-  <p class="lead">A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> and behind <a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a> in the browser bridge — and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.</p>
+  <p class="lead">A write-only channel attached to a vault, gated by a token the writer holds and nothing else. This is the transport behind <a href="../docs/vault-messaging.html">vault-to-vault messaging</a> and behind <a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a> in the browser bridge, and it is deliberately generic: the same primitive carries messages, logs, signals, control messages and state flows.</p>
 
-  <div class="note"><b>Naming.</b> This API was called <b>inbox</b> before v0.32.7. Every <code>/api/vault/inbox/*</code> URL is gone, and <code>purge</code> takes <code>folder:"pending"</code> or <code>"processed"</code> — the old <code>"inbox"</code> value returns <b>400</b>. If you are reading older material, translate.</div>
+  <div class="note"><b>Naming.</b> This API was called <b>inbox</b> before v0.32.7. Every <code>/api/vault/inbox/*</code> URL is gone, and <code>purge</code> takes <code>folder:"pending"</code> or <code>"processed"</code>, the old <code>"inbox"</code> value returns <b>400</b>. If you are reading older material, translate.</div>
 
   <h2 id="endpoints">The six endpoints</h2>
   <p>All <b>POST</b>, all under <code>/api/vault/append/</code>.</p>
   <div class="tablewrap"><table>
     <tr><th>Path</th><th>Gate</th><th>Does</th></tr>
-    <tr><td><code>configure/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Registers <code>append_anchors</code> — hashes of accepted senders — and <code>enum_key_hash</code></td></tr>
+    <tr><td><code>configure/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Registers <code>append_anchors</code>, hashes of accepted senders, and <code>enum_key_hash</code></td></tr>
     <tr><td><code>write/{vault_id}</code></td><td><code>append_token</code> <b>in the body</b></td><td>Appends a payload. <b>Account-less</b>: no access token required</td></tr>
     <tr><td><code>list/{vault_id}</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>Paginated listing, optionally with inline content</td></tr>
     <tr><td><code>fetch/{vault_id}</code></td><td>enum key</td><td>Fetch specific file IDs, batched</td></tr>
@@ -23,15 +23,15 @@
     <tr><th>Capability</th><th>Holder</th><th>Can</th><th>Cannot</th></tr>
     <tr><td><code>append_token</code></td><td>the sender</td><td>write</td><td>list, fetch, read anything</td></tr>
     <tr><td><code>enum_key</code></td><td>the vault owner</td><td>list, fetch, mark-processed</td><td>write, purge</td></tr>
-    <tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td>—</td></tr>
+    <tr><td><code>write_key</code></td><td>the vault owner</td><td>configure, purge</td><td><span class="dim">none</span></td></tr>
     <tr><td>private key</td><td>the vault owner</td><td><b>decrypt</b></td><td><em>never sent to the server</em></td></tr>
   </table></div>
-  <p>A sender can put something into your vault and learn nothing at all — not the contents, not the volume, not whether anyone else writes there. The server stores <code>SHA-256</code> of the first three capabilities and compares hashes; the fourth it never sees.</p>
+  <p>A sender can put something into your vault and learn nothing at all, not the contents, not the volume, not whether anyone else writes there. The server stores <code>SHA-256</code> of the first three capabilities and compares hashes; the fourth it never sees.</p>
 
   <h2 id="contracts">Four contracts worth relying on</h2>
   <ul>
-    <li><b>The write response is blind.</b> <code>/write</code> returns exactly <code>{"ok": true}</code> — no file ID, no count, no metadata. This is a security property, not an oversight: a returned ID would leak lane state to a party who is only allowed to write.</li>
-    <li><b>Filenames are server-assigned</b> as <code>{epoch_ms:013d}_{24-hex}.enc</code>. Being chronologically sortable is what makes cursor pagination stable — pass the last file ID you saw as <code>after_file_id</code>.</li>
+    <li><b>The write response is blind.</b> <code>/write</code> returns exactly <code>{"ok": true}</code>, no file ID, no count, no metadata. This is a security property, not an oversight: a returned ID would leak lane state to a party who is only allowed to write.</li>
+    <li><b>Filenames are server-assigned</b> as <code>{epoch_ms:013d}_{24-hex}.enc</code>. Being chronologically sortable is what makes cursor pagination stable, pass the last file ID you saw as <code>after_file_id</code>.</li>
     <li><b>Metadata-only listing is free.</b> <code>include_content: false</code> reads <b>zero</b> payloads. Poll with it, then fetch on demand; polling with content is the common way to hit the 3 MB ceiling for no reason.</li>
     <li><b>mark-processed is idempotent.</b> An already-moved file comes back in <code>missing</code> rather than as an error, so retrying a batch after a timeout is safe.</li>
   </ul>
@@ -40,23 +40,23 @@
   <p>This is the constraint to understand before designing anything that spans two vaults, and it was undocumented until the SG/API team's review of 6 September 2026 (quoted here CC&nbsp;BY&nbsp;4.0). The bridge builds <b>one</b> client bound to the <b>currently open vault</b>, with the enum key derived from that vault's read key. So:</p>
   <div class="tablewrap"><table>
     <tr><th>Verb</th><th>Which vault it acts on</th><th>Bridge permission</th></tr>
-    <tr><td><code>write</code></td><td><b>Any</b> &mdash; it takes an explicit <code>vault_id</code> and posts with no headers at all</td><td><code>append.write</code></td></tr>
+    <tr><td><code>write</code></td><td><b>Any</b>: it takes an explicit <code>vault_id</code> and posts with no headers at all</td><td><code>append.write</code></td></tr>
     <tr><td><code>list</code></td><td rowspan="5">Always the open vault. There is no way to address a remote vault with these from an app</td><td><code>append.list</code></td></tr>
-    <tr><td><code>fetch</code></td><td><code>append.read</code> &mdash; <b>not</b> <code>append.fetch</code></td></tr>
+    <tr><td><code>fetch</code></td><td><code>append.read</code>, <b>not</b> <code>append.fetch</code></td></tr>
     <tr><td><code>markProcessed</code></td><td><code>append.markProcessed</code></td></tr>
     <tr><td><code>purge</code></td><td><code>append.purge</code></td></tr>
     <tr><td><code>configure</code></td><td><code>append.configure</code></td></tr>
   </table></div>
   <p>All six are plain booleans, <b>default-deny</b>, not path-scoped. The asymmetry is deliberate rather than a gap: listing a remote lane needs the recipient's enum key, and shipping that inside a published app <em>"would give every visitor read access to the whole lane."</em></p>
-  <div class="note"><b>Two things that are <em>not</em> gates on <code>append</code>, despite appearances.</b> There is <b>no read-only check</b> anywhere in the append handler &mdash; <code>sg.app.writable</code> is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships <code>connect-src blob: data:</code>, so a <em>direct</em> <code>fetch</code> to these endpoints is blocked unless the app declares <code>permissions.network: true</code>, which reopens all egress and is the worse choice. Use the bridge. See <a href="../docs/briefs/vault-telemetry-append-lanes.html">the build brief</a>, which had both of these wrong until the review corrected it.</div>
+  <div class="note"><b>Two things that are <em>not</em> gates on <code>append</code>, despite appearances.</b> There is <b>no read-only check</b> anywhere in the append handler, <code>sg.app.writable</code> is irrelevant to it, and a read-key session can write to a lane given the grant. And the CSP is not an append rule: the frame ships <code>connect-src blob: data:</code>, so a <em>direct</em> <code>fetch</code> to these endpoints is blocked unless the app declares <code>permissions.network: true</code>, which reopens all egress and is the worse choice. Use the bridge. See <a href="../docs/briefs/vault-telemetry-append-lanes.html">the build brief</a>, which had both of these wrong until the review corrected it.</div>
 
-  <h2 id="lane-id">The <code>inbox</code> field is the lane id &mdash; and today it is the token</h2>
-  <p>A <code>list</code> response labels each entry with an <code>inbox</code> value. That value is the storage folder name, and the folder is named by the <b>raw append token</b>, byte for byte &mdash; while <code>config.append_anchors</code> stores <code>sha256(token)</code>. So the design hashes the token in config and then writes the plaintext token into the object key.</p>
-  <p>The disclosure is bounded: <code>list</code> is gated by the enum key, so it reaches only the vault owner, who already holds every credential in play; and the token is a <b>write-only lane address</b>, closer to an email address than a password. The residual risk is storage rather than API &mdash; the raw token becomes an object key, so it lands in access logs, inventory reports and backups, <em>"surfaces with a very different audience from the enum-key holder."</em> The team intends to fold the folder name to <code>sha256(token)</code>, which is a breaking change needing a migration. <b>Documented here now so that nobody has to discover it from a debrief.</b></p>
-  <p>Lanes live at <code>bare/append/{token}/pending/</code> and <code>…/processed/</code>, <b>outside the version-controlled commit tree</b> — appends never touch a branch and never conflict with a push.</p>
+  <h2 id="lane-id">The <code>inbox</code> field is the lane id, and today it is the token</h2>
+  <p>A <code>list</code> response labels each entry with an <code>inbox</code> value. That value is the storage folder name, and the folder is named by the <b>raw append token</b>, byte for byte, while <code>config.append_anchors</code> stores <code>sha256(token)</code>. So the design hashes the token in config and then writes the plaintext token into the object key.</p>
+  <p>The disclosure is bounded: <code>list</code> is gated by the enum key, so it reaches only the vault owner, who already holds every credential in play; and the token is a <b>write-only lane address</b>, closer to an email address than a password. The residual risk is storage rather than API, the raw token becomes an object key, so it lands in access logs, inventory reports and backups, <em>"surfaces with a very different audience from the enum-key holder."</em> The team intends to fold the folder name to <code>sha256(token)</code>, which is a breaking change needing a migration. <b>Documented here now so that nobody has to discover it from a debrief.</b></p>
+  <p>Lanes live at <code>bare/append/{token}/pending/</code> and <code>…/processed/</code>, <b>outside the version-controlled commit tree</b>: appends never touch a branch and never conflict with a push.</p>
 
   <h2 id="senders">Several senders on one vault</h2>
-  <p>Register several <code>append_anchors</code> and each sender writes into their own lane, distinguished by their token. A listing can be scoped to one lane, so one correspondent flooding you does not bury another — and revoking one sender is removing one anchor, with no effect on the rest.</p>
+  <p>Register several <code>append_anchors</code> and each sender writes into their own lane, distinguished by their token. A listing can be scoped to one lane, so one correspondent flooding you does not bury another, and revoking one sender is removing one anchor, with no effect on the rest.</p>
 
   <h2 id="limits">Limits and codes</h2>
   <div class="tablewrap"><table>
@@ -67,12 +67,12 @@
     <tr><td>Inline content when listing</td><td>3 MB cumulative</td><td>413</td></tr>
     <tr><td>Page size</td><td>50 default, 200 max</td><td>clamped silently</td></tr>
   </table></div>
-  <p>The <code>append_token</code> pattern is <code>^[0-9a-f]{16,128}$</code> — hex only. A prefixed token returns <b>400</b>, not 403; see <a href="errors.html">errors</a> for why that distinction saves time.</p>
+  <p>The <code>append_token</code> pattern is <code>^[0-9a-f]{16,128}$</code>, hex only. A prefixed token returns <b>400</b>, not 403; see <a href="errors.html">errors</a> for why that distinction saves time.</p>
 
   <h2>See also</h2>
   <ul>
-    <li><a href="../docs/vault-messaging.html">Vault messaging</a> — this API composed with PKI into a worked example</li>
-    <li><a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a> — the same six operations from a vault app</li>
+    <li><a href="../docs/vault-messaging.html">Vault messaging</a>, this API composed with PKI into a worked example</li>
+    <li><a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a>, the same six operations from a vault app</li>
     <li><a href="errors.html">Errors and limits</a></li>
   </ul>
 </main>

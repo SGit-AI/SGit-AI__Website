@@ -188,7 +188,8 @@ try {
 
 // the design brief quotes banned phrases in order to prohibit them — mention, not use.
 // skills/ ships canonical upstream agent artifacts verbatim — not site copy, never edited here.
-const EXEMPT = ['admin/build/validate.js', 'admin/brief-design-improvements.md'];
+const EXEMPT = ['admin/build/validate.js', 'admin/brief-design-improvements.md',
+                'team/board.html', 'team/board.md'];
 const EXEMPT_DIRS = ['skills/'];
 for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
     && !EXEMPT.some(x => f.replace(/\\/g, '/').endsWith(x))
@@ -202,6 +203,36 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
     if (text.includes(secret)) {
       fails++; console.log('SECRET-LEAK FAIL', path.relative(root, f), '-> a vault passphrase is present in a tracked file');
     }
+  }
+}
+
+// 5c. the em-dash, in PROSE only.
+//
+// Removed site-wide in v0.3.0: a good many readers now find it off-putting, and 2,900 of them do
+// not stay gone without a rule. Ordinary punctuation carries the same load — a colon before an
+// explanation, a comma for an aside, brackets around a parenthetical, a full stop between two
+// independent clauses — which is what the rewriter used.
+//
+// PROSE only, and the exclusions are the same ones the rewriter honoured, so the two agree by
+// construction: <pre>, <code>, fenced and inline markdown code, and <svg> hold content rather
+// than punctuation. assets/ is code. skills/ ships upstream artifacts verbatim. team/board is
+// rendered from a vault this site does not author, so its wording is not ours to change.
+// (The box-drawing characters in the ASCII diagrams are a different codepoint and never match.)
+{
+  const exemptDirs = ['skills/', 'assets/', 'node_modules/'];
+  const exemptFiles = ['team/board.html', 'team/board.md'];
+  for (const f of files.filter(f => /\.(html|md)$/.test(f))) {
+    const rel = path.relative(root, f).replace(/\\/g, '/');
+    if (exemptDirs.some(d => rel.startsWith(d)) || exemptFiles.includes(rel)) continue;
+    const prose = fs.readFileSync(f, 'utf8')
+      .replace(/<pre\b[\s\S]*?<\/pre>/gi, ' ')
+      .replace(/<code\b[\s\S]*?<\/code>/gi, ' ')
+      .replace(/<svg\b[\s\S]*?<\/svg>/gi, ' ')
+      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')   // inline script is code, like <pre>
+      .replace(/```[\s\S]*?```/g, ' ')
+      .replace(/`[^`\n]*`/g, ' ');
+    const m = prose.match(/&mdash;|\u2014/);
+    if (m) { fails++; console.log('EM-DASH FAIL', rel, '-> use ordinary punctuation in prose'); }
   }
 }
 

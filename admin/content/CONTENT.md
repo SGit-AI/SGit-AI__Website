@@ -29,7 +29,7 @@ must be unique across all posts. The build fails if it is not.
 ## Frontmatter
 
 Flat `key: value` lines between `---` fences. Lists are comma-separated. No nesting, no
-YAML parser, nothing to get subtly wrong — and a malformed line names itself in the error.
+YAML parser, nothing to get subtly wrong, and a malformed line names itself in the error.
 
 ### An update
 
@@ -62,20 +62,20 @@ status: published
 ```
 
 Articles get their own page at `/articles/<slug>.html`, generated without a `pages.json`
-row — because an article must be publishable by adding one file too.
+row, because an article must be publishable by adding one file too.
 
 ## Rules the build enforces
 
 1. **The folder is the date.** `updates/2026/08/18/…` must carry `date: 2026-08-18`. A
    mismatch means one of them is a typo, and sorting a feed by a date the path disagrees
    with is how a post silently lands in the wrong place.
-2. **Internal links are root-relative** — `/docs/pki.html`, never `../docs/pki.html`. The
+2. **Internal links are root-relative**: `/docs/pki.html`, never `../docs/pki.html`. The
    build rewrites each to a depth-relative path for the page it lands on. This matters
    more here than on an ordinary site: these pages also render **inside a vault**, mounted
    at an arbitrary path, where a leading slash escapes the app entirely.
 3. **Slugs are unique.** A duplicate breaks a permalink somebody may already have shared.
 4. **Run the build before committing.** `python3 admin/build/build_pages.py` then
-   `node admin/build/validate.js` — the same checks the release runs. A bad file fails
+   `node admin/build/validate.js`, the same checks the release runs. A bad file fails
    the build rather than shipping a broken page.
 
 ## Markdown you can use
@@ -91,23 +91,23 @@ One site-specific block, for screenshots captured by `admin/build/capture_shots.
 ```
 
 `filename | directory | caption`. It emits the same lazy figure the walkthrough pages
-use, so an article gets the screenshot pipeline — including the print behaviour — free.
+use, so an article gets the screenshot pipeline, including the print behaviour, free.
 
 ## What belongs where
 
 | | |
 |---|---|
-| **Update** | One user-visible change worth telling somebody about. A release with three stories in it gets three posts — that is the point, and it is why this is not the version log with a nicer stylesheet. |
+| **Update** | One user-visible change worth telling somebody about. A release with three stories in it gets three posts. That is the point, and it is why this is not the version log with a nicer stylesheet. |
 | **Article** | An argument that crosses pages: what a thing means, why it is shaped that way, what it cost to find out. |
 | **Version log** (`VERSION_LOG` in `build_pages.py`) | The complete technical record, one entry per release. Still the source of truth; updates are the readable surface over it. |
 
-## Grounding — the rule that matters most
+## Grounding, the rule that matters most
 
 Every claim comes from the repository: `git log`, the tags, `VERSION_LOG`, the validator
 output, a command you actually ran. **If something is only proposed, say PROPOSED or leave
 it out.** Never describe behaviour you have not seen evidence of.
 
-An article that makes a testable claim should link to the test — the same discipline
+An article that makes a testable claim should link to the test, the same discipline
 `/compare/` already uses, where results carry an expiry and render as UNVERIFIED once
 stale. An article that only restates a fact another page owns should link to that page
 instead, so when the fact changes the article does not start lying.

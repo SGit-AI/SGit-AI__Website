@@ -1,9 +1,9 @@
 <main class="doc" style="max-width:var(--wide);padding-bottom:1rem">
   <p class="crumb"><a href="../index.html">Home</a> / Catalogue</p>
   <h1>The vault catalogue</h1>
-  <p class="lead">An index of published vaults, rendered live from a vault that indexes vaults — including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.</p>
-  <div class="note"><b>The design constraint, stated openly:</b> the bottleneck is one person with a backlog of vaults, so an entry costs <b>a read key and one line</b> — everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault <code>kc67yhgw</code> directly — a push to it updates this page with no site deploy. The human companion is <a href="../demos/vaults/index.html">the published-vaults gallery</a>: one page per vault, with the vault running live in it.</div>
-  <div class="note"><b>Where it stands, checked 19 September 2026.</b> The catalogue vault holds <b>nine</b> entries and was last pushed when the site had nine published vaults; the gallery now has <b>thirty</b>. The twenty-one missing rows are not a queue problem &mdash; those vaults are published, audited and live on their own pages &mdash; they are a write-key problem: the catalogue can only be updated by whoever holds its key, and that is not the site's build. Until it catches up, <a href="../demos/vaults/index.html">the gallery</a> and <a href="../demos/vaults/llms.txt">its machine-readable twin</a> are the complete list, generated from one file on every release. What this page adds is the shape taxonomy, the evidence and write-key status per entry, and the proof that an index of vaults can itself be a vault.</div>
+  <p class="lead">An index of published vaults, rendered live from a vault that indexes vaults, including itself. Every entry carries a deliberately published read key, an honest evidence status, and its write-key status, because a vault whose write key is lost can never be corrected and a reader deserves to know.</p>
+  <div class="note"><b>The design constraint, stated openly:</b> the bottleneck is one person with a backlog of vaults, so an entry costs <b>a read key and one line</b>: everything else (listing, sizes, commit count, whether an app is present) is derived by an agent opening the vault with the key it was just given. The two to-do queues are published in the catalogue itself: a named gap gets filled, an unnamed one does not. This page renders vault <code>kc67yhgw</code> directly, a push to it updates this page with no site deploy. The human companion is <a href="../demos/vaults/index.html">the published-vaults gallery</a>: one page per vault, with the vault running live in it.</div>
+  <div class="note"><b>Where it stands, checked 19 September 2026.</b> The catalogue vault holds <b>nine</b> entries and was last pushed when the site had nine published vaults; the gallery now has <b>thirty</b>. The twenty-one missing rows are not a queue problem (those vaults are published, audited and live on their own pages) they are a write-key problem: the catalogue can only be updated by whoever holds its key, and that is not the site's build. Until it catches up, <a href="../demos/vaults/index.html">the gallery</a> and <a href="../demos/vaults/llms.txt">its machine-readable twin</a> are the complete list, generated from one file on every release. What this page adds is the shape taxonomy, the evidence and write-key status per entry, and the proof that an index of vaults can itself be a vault.</div>
 </main>
 
 <div class="vdocs">
@@ -15,7 +15,7 @@
 <div class="vdbg vdbg-noanim" id="vdbg">
   <div class="vdbg-grip" id="vdbg-grip" title="drag to resize · double-click to reset"></div>
   <div class="vdbg-inner">
-  <h3>Vault debug <a class="vdbg-help" href="../case-studies/live-vault-docs.html" title="How this page works — architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
+  <h3>Vault debug <a class="vdbg-help" href="../case-studies/live-vault-docs.html" title="How this page works, architecture, object model, caching">how this works &rarr;</a> <button id="vdbg-close" style="background:none;border:none;color:#8b949e;cursor:pointer;font-size:1rem">✕</button></h3>
   <div id="vdbg-body"><span class="vdbg-dim">not open yet</span></div>
   <div class="vdbg-btns">
     <button id="vdbg-reset" type="button">clear list</button>
@@ -25,15 +25,15 @@
   <div id="vdbg-note"></div>
   <div class="vdbg-h">what you are looking at</div>
   <div class="vdbg-dim" style="line-height:1.6;white-space:normal;font-family:var(--sans);font-size:.72rem">
-    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally —
-    click one to see what it actually contains. Objects whose id contains <b>-imm-</b> are
+    Every row above is an encrypted object pulled from the SG/Send API and decrypted locally:
+    click one: click one to see what it actually contains. Objects whose id contains <b>-imm-</b> are
     content-addressed and therefore immutable, so they are cached permanently; the mutable
     <b>ref</b> is the one mutable object, so it is checked at most once per freshness window
-    (120s) rather than once per page — inside the window, reading the docs makes no requests
+    (120s) rather than once per page, inside the window, reading the docs makes no requests
     at all, and <b>check for new commit</b> forces one whenever you want it.
     <br><br>The <b>tree</b> objects are the reason a first visit reads more than one file:
     filenames are encrypted inside them, so building the navigation means reading every
-    directory. That index is a pure function of the commit id, so it is memoised — after the
+    directory. That index is a pure function of the commit id, so it is memoised, after the
     first visit, an unchanged commit reads no tree objects at all. Nothing here is stored on sgit.ai.
   </div>
   <div class="vdbg-more">
@@ -47,7 +47,7 @@
 /* Restore the panel's remembered width and open state synchronously, before the first paint.
    The reader script that owns the panel loads asynchronously, so doing this there meant the
    panel painted at its CSS default, then jumped width and slid open a second later. The
-   .vdbg-noanim class holds the slide transition off until the reader has settled — after
+   .vdbg-noanim class holds the slide transition off until the reader has settled, after
    which opening and closing by hand animates as before. */
 (function () {
   try {

@@ -1,8 +1,8 @@
-# The map — Licence to Operate decks
+# The map (Licence to Operate decks
 
-> A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
+> A companion rather than a step: the same ladder seen from our side) the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
 
-*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/map.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/licence-to-operate/decks/map.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,9 +10,9 @@
 
 # The map
 
-A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
+A companion rather than a step: the same ladder seen from our side, the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
 
-Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Map.pdf` — decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
+Read live out of vault `posrhzp3` with its published read key. Use **focus** to drop the slide list when presenting, and **PDF** to download `Licence-to-Operate__The-Map.pdf`, decrypted in your browser, not fetched from a file server. [How this works →](../../../../docs/vault/reading-a-vault-file.md)
 
 ## What this deck is doing
 
@@ -24,11 +24,11 @@ Read live out of vault `posrhzp3` with its published read key. Use **focus** to 
 | **Roughly** | 15 minutes |
 | **Where it deliberately stops** | our roadmap; the last slide is their table, filled in |
 
-It ends on the question it does not answer — **“Which rung are you pointing at, and what would it take to stand on it?”** — which is where [Bounding it](bounding.md) picks up.
+It ends on the question it does not answer (**“Which rung are you pointing at, and what would it take to stand on it?”**) which is where [Bounding it](bounding.md) picks up.
 
 ## Notes on this deck
 
-Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry — where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
+Nothing has been written here yet. This section is the reason each deck has a page of its own: room for what the slides cannot carry, where the argument came from, what changed since, what an audience pushed back on, and any recording that narrates it.
 
 ## On video
 

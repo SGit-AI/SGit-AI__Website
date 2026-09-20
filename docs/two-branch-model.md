@@ -1,8 +1,8 @@
-# The two-branch model — sgit Docs
+# The two-branch model, sgit Docs
 
 > sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
 
-*Source: <https://sgit.ai/docs/two-branch-model.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/two-branch-model.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,17 +22,17 @@ sgit's central architectural idea: every clone works on a private branch, and sh
   └───────────────────────┘        └───────────────────────────┘        └───────────────────────┘
 ```
 
-- **Named branches** (`main`, `feature-x`, …) are shared and live on the server — encrypted, like everything else.
+- **Named branches** (`main`, `feature-x`, …) are shared and live on the server, encrypted, like everything else.
 - **Clone branches** are created per clone. Their key is stored only in `.sg_vault/local/` and is never pushed. All your commits land here first.
 - `sgit push` re-encrypts your clone-branch commits with the named branch's key and forwards them. `sgit pull` brings named-branch commits down and merges them into your clone branch.
 
-Run `sgit status --explain` any time — it prints this model with your vault's actual branch names filled in.
+Run `sgit status --explain` any time, it prints this model with your vault's actual branch names filled in.
 
 ## Why it works this way
 
-- **Isolation by construction.** Two machines — or two agents — on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.
+- **Isolation by construction.** Two machines, or two agents, on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.
 - **Sharing is explicit.** Nothing you commit is visible to anyone until you `push`. An agent can iterate messily in private and publish only the result.
-- **Safe concurrent pushes.** Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering — pull, merge, push again.
+- **Safe concurrent pushes.** Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering, pull, merge, push again.
 
 ## Merging and conflicts
 

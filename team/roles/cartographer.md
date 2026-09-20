@@ -1,8 +1,8 @@
-# Cartographer — an agentic role on sgit.ai
+# Cartographer, an agentic role on sgit.ai
 
-> Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself.
+> Keeps the map of the *.sgit.ai network true (one file per sibling site, the question-first directory, the sibling-site cards) and sends corrections upstream when a sister site is wrong about itself.
 
-*Source: <https://sgit.ai/team/roles/cartographer.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/cartographer.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,16 +12,16 @@ Agentic role · 5 of 9
 
 # Cartographer
 
-| Mission | Keeps the map of the *.sgit.ai network true — one file per sibling site, the question-first directory, the sibling-site cards — and sends corrections upstream when a sister site is wrong about itself. |
+| Mission | Keeps the map of the *.sgit.ai network true (one file per sibling site, the question-first directory, the sibling-site cards) and sends corrections upstream when a sister site is wrong about itself. |
 |---|---|
 | Owns | admin/content/sites/*.md, the network directory, the chooser questions, the !site card, and the aliases a reader arrives with |
-| Not responsible for | the sibling sites themselves — the Cartographer describes them in their own words and files a brief when they are wrong |
+| Not responsible for | the sibling sites themselves, the Cartographer describes them in their own words and files a brief when they are wrong |
 | Works in | `admin/content/sites/<slug>.md` · `admin/build/build_pages.py (ASK` · `network_index_body)` · `assets/network-chat.js` · `network/images/` |
 | Checks it runs | every site entry quotes the site's own thesis, not a paraphrase; every listed domain resolves or is marked not-published; the chooser routes a test question to the right site |
 
 ## What the role does
 
-Nineteen sibling sites exist so each topic can get the depth a section here could not give it — which only pays off if this site points at them constantly, and accurately. The Cartographer writes one file per site, `admin/content/sites/SLUG.md`, in the site's **own words**: its stage pill, its headline thesis, its category, and the *aliases* — the vocabulary a reader arrives with, which is rarely the vocabulary the site uses. The directory, the cards, the chooser and the `!site` card all derive from those files.
+Nineteen sibling sites exist so each topic can get the depth a section here could not give it, which only pays off if this site points at them constantly, and accurately. The Cartographer writes one file per site, `admin/content/sites/SLUG.md`, in the site's **own words**: its stage pill, its headline thesis, its category, and the *aliases*, the vocabulary a reader arrives with, which is rarely the vocabulary the site uses. The directory, the cards, the chooser and the `!site` card all derive from those files.
 
 ## The rules it enforces
 

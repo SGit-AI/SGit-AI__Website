@@ -1,20 +1,20 @@
-# Reading a vault from a *.sgit.ai site page — build brief
+# Reading a vault from a *.sgit.ai site page, build brief
 
 > For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent.
 
-*Source: <https://sgit.ai/docs/briefs/sgit-ai-site-pages.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/sgit-ai-site-pages.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../../index.md) / [Briefs](index.md) / Reading a vault from a site page
 
-**Surface:** a page on a `*.sgit.ai` site — outside every vault host. [The other two surfaces →](../surfaces.md)
+**Surface:** a page on a `*.sgit.ai` site, outside every vault host. [The other two surfaces →](../surfaces.md)
 
 # Reading a vault from a `*.sgit.ai` site page
 
-A build brief for whoever is coding one of the sites in this estate. Vault content can be published on an ordinary web page — indexed, linkable, readable with no key and no account — because the vault API answers **cross-origin GETs** and the decryption happens in the visitor's browser. This is the surface with the most reach and the least protection, and the two facts are related.
+A build brief for whoever is coding one of the sites in this estate. Vault content can be published on an ordinary web page (indexed, linkable, readable with no key and no account) because the vault API answers **cross-origin GETs** and the decryption happens in the visitor's browser. This is the surface with the most reach and the least protection, and the two facts are related.
 
-**The enabling fact, in one line.** `GET /api/vault/read/<vault_id>/…` is a plain CORS request with **no auth header**, from any origin. The server can afford that because what it returns is ciphertext under a key it has never held — so `graphs.sgit.ai`, `risks.sgit.ai` or any other site can read a published vault directly, with no proxy, no backend and no build step.
+**The enabling fact, in one line.** `GET /api/vault/read/<vault_id>/…` is a plain CORS request with **no auth header**, from any origin. The server can afford that because what it returns is ciphertext under a key it has never held, so `graphs.sgit.ai`, `risks.sgit.ai` or any other site can read a published vault directly, with no proxy, no backend and no build step.
 
 ## Do not write the reader
 
@@ -22,10 +22,10 @@ It already exists, it is small, and it is deliberately in the open so you can co
 
 | File | What it gives you |
 |---|---|
-| `assets/vault-embed.js` | The reader, ~90 lines — import the key, derive the ref id, fetch, decrypt, walk commit → tree → blob, `readText` / `readBytes` by path. It exports `SGVaultEmbed.Reader` so nothing else has to copy the derivations. It also mounts a whole vault app in a sandboxed frame if that is what you want |
-| `assets/vault-docs.js` | The same reader with cache accounting and a markdown renderer — the instrumented version, useful when you want to show a reader what the page actually fetched |
+| `assets/vault-embed.js` | The reader, ~90 lines, import the key, derive the ref id, fetch, decrypt, walk commit → tree → blob, `readText` / `readBytes` by path. It exports `SGVaultEmbed.Reader` so nothing else has to copy the derivations. It also mounts a whole vault app in a sandboxed frame if that is what you want |
+| `assets/vault-docs.js` | The same reader with cache accounting and a markdown renderer, the instrumented version, useful when you want to show a reader what the page actually fetched |
 | `assets/vault-deck.js` | A worked viewer built on the reader: [decks and PDFs](vault-decks-on-a-site.md), with the sandbox policy already right |
-| `assets/vault-ui-embed.js` | Frames the official SG/Vault UI on your page, read-only, from a read key — when you want the whole product rather than a view of it |
+| `assets/vault-ui-embed.js` | Frames the official SG/Vault UI on your page, read-only, from a read key, when you want the whole product rather than a view of it |
 
 All four are on this site under `/assets/` and are MIT-spirited house code: copy them into your site, do not fetch them across origins at runtime. The mechanism they share is written up at [**Reading one file out of a vault**](../vault/reading-a-vault-file.md).
 
@@ -40,15 +40,15 @@ So the rule inverts, and it is the single most important thing on this page:
 | Vault content | How to render it |
 |---|---|
 | **Text and numbers** | Escape it. It is a string from a third party, and it belongs in `textContent`, never in `innerHTML` |
-| **Markup — a document, a slide** | `<iframe sandbox>` with **no**`allow-scripts`, plus a CSP of `default-src 'none'; img-src data:; style-src 'unsafe-inline'`. Static content does not need scripting, so switch it off rather than contain it |
-| **Anything that must run** | `<iframe sandbox="allow-scripts">` — opaque origin, no `allow-same-origin`, ever — and serve its reads over `postMessage`. **Never `eval` vault code in your page.** |
+| **Markup, a document, a slide** | `<iframe sandbox>` with **no**`allow-scripts`, plus a CSP of `default-src 'none'; img-src data:; style-src 'unsafe-inline'`. Static content does not need scripting, so switch it off rather than contain it |
+| **Anything that must run** | `<iframe sandbox="allow-scripts">` (opaque origin, no `allow-same-origin`, ever) and serve its reads over `postMessage`. **Never `eval` vault code in your page.** |
 | **Images** | Decrypt them yourself and pass `data:` URIs in, or mint blob URLs *inside* the frame. A vault path in a `src` resolves against an opaque origin and 404s |
 | **PDFs** | Download, never embed. Chrome refuses to render a PDF in a sandboxed frame, and un-sandboxing it to make the viewer work defeats the point |
 | **Links inside vault content** | Rewrite or restrict them. A link is a place a vault author can send your visitor |
 
 ## Keys, on a page anyone can view source on
 
-- **A read key belongs in the page.** That is what it is for — it is derived one-way, it cannot be turned into write access, and printing it is how a reader clones the vault themselves. Put it in the markup where a human can copy it, not only in a script.
+- **A read key belongs in the page.** That is what it is for. It is derived one-way, it cannot be turned into write access, and printing it is how a reader clones the vault themselves. Put it in the markup where a human can copy it, not only in a script.
 - **A vault key must never touch a site.** It is write access. There is no such thing as a partly-public vault key.
 - **Grep the built site before every release**, and make it a step that can fail the build rather than a habit. This site's release aborts on a key-shaped match.
 - **A credential scan built for sgit shapes will not catch other secrets.** We nearly published an OpenRouter key sitting in a vault file, in a field called `openrouter_key`, that matched none of the sgit patterns. Scan for what the vault holds, not only for what sgit issues.

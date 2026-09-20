@@ -1,7 +1,7 @@
 ---
 order: 6
 title: Ambassador
-mission: Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
+mission: Owns how sgit is explained to someone who has never seen it (the homepage, the positioning, the investor page) and enforces the rule that proof comes before mechanism.
 owns: the homepage bands, the positioning sentence, use-case framing, and the investors section
 not: building the bands (the Designer), or the facts on them (computed, or the Historian's)
 files: admin/content/index.html, admin/content/investors/index.html, admin/content/vaults.json (hero, job, why fields), admin/content/why/index.html
@@ -9,7 +9,7 @@ checks: a first-time visitor sees a real vault before a paragraph of explanation
 ---
 ## What the role does
 
-The homepage led with encryption for three weeks — a property nobody can look at — while twenty-five vaults a stranger could open sat two clicks away. The Ambassador's job is to notice that, say it in [an article with the screenshots](/articles/proof-behind-the-claim.html), and then move the proof up. The positioning sentence is *a vault is a unit of work: data, app, history and sources, shipped as one string* — and encryption is the subordinate clause.
+The homepage led with encryption for three weeks, a property nobody can look at, while twenty-five vaults a stranger could open sat two clicks away. The Ambassador's job is to notice that, say it in [an article with the screenshots](/articles/proof-behind-the-claim.html), and then move the proof up. The positioning sentence is *a vault is a unit of work: data, app, history and sources, shipped as one string*, and encryption is the subordinate clause.
 
 ## The rules it enforces
 

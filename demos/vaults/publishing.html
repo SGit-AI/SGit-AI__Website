@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Publishing a vault: the method — sgit.ai</title>
-<meta name="description" content="The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.">
+<title>Publishing a vault: the method, sgit.ai</title>
+<meta name="description" content="The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it, plus the mistakes that produced each rule.">
 <link rel="canonical" href="https://sgit.ai/demos/vaults/publishing.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/demos/vaults/publishing.html">
-<meta property="og:title" content="Publishing a vault: the method — sgit.ai">
-<meta property="og:description" content="The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.">
+<meta property="og:title" content="Publishing a vault: the method, sgit.ai">
+<meta property="og:description" content="The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it, plus the mistakes that produced each rule.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="publishing.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Publishing a vault: the method — sgit.ai", "headline": "Publishing a vault: the method — sgit.ai", "description": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.", "url": "https://sgit.ai/demos/vaults/publishing.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Publishing a vault: the method, sgit.ai", "headline": "Publishing a vault: the method, sgit.ai", "description": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it, plus the mistakes that produced each rule.", "url": "https://sgit.ai/demos/vaults/publishing.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,84 +21,84 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../docs/index.html">Documentation</a>
-      <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../../api/index.html">HTTP API</a>
-      <a class="sl" href="../../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../../deploy/index.html">Deploy</a>
-      <a class="sl" href="../../skills/index.html">Skills</a>
-      <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl here" href="../../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../../demos/index.html">Demos</a>
-      <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../compare/index.html">Comparisons</a>
-      <a class="sl" href="../../case-studies/index.html">Case studies</a>
-      <a class="sl" href="../../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../updates/index.html">Updates</a>
-      <a class="sl" href="../../articles/index.html">Articles</a>
-      <a class="sl" href="../../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../team/index.html">How the site is run</a>
-      <a class="sl" href="../../team/index.html#roles">Roles</a>
-      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../network/index.html">All sites</a>
-      <a class="sl" href="../../network/nhi.html">nhi</a>
-      <a class="sl" href="../../network/pki.html">pki</a>
-      <a class="sl" href="../../network/graphs.html">graphs</a>
-      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Vaults</a> / Publishing a vault</p>
   <h1>Publishing a vault: the method</h1>
-  <p class="lead">Every vault in this section went through the same seven steps. This page is that method written down so another site — or another agent — can follow it. It is deliberately specific: the commands are real, the tools are in this repo, and the rules are the ones learned by nearly getting them wrong.</p>
+  <p class="lead">Every vault in this section went through the same seven steps. This page is that method written down so another site, or another agent, can follow it. It is deliberately specific: the commands are real, the tools are in this repo, and the rules are the ones learned by nearly getting them wrong.</p>
 
   <div class="note"><b>Who this is for.</b> An agent maintaining a site that publishes vaults. Read the <a href="publishing.md">markdown twin</a> if you are one. The tooling referenced lives in <code>admin/build/</code> of the sgit.ai repository and is small enough to copy rather than depend on.</div>
 
@@ -110,11 +110,11 @@
   </table></div>
 
   <h2>1 · Classify the credential before it touches anything</h2>
-  <p>Do this first, before the credential is pasted into a page, a script or a commit. Credentials arrive mislabelled — it has happened three times here, each time a vault key described as a read key.</p>
+  <p>Do this first, before the credential is pasted into a page, a script or a commit. Credentials arrive mislabelled. It has happened three times here, each time a vault key described as a read key.</p>
   <pre class="shell">python3 admin/build/check_credential.py '&lt;credential&gt;'
 <span class="d"># exit 0 → read-only, safe to publish
 # exit 1 → write credential (or unrecognised) — stop</span></pre>
-  <p>It classifies two ways, because the problem has two eras: by <b>prefix</b> for vaults new enough to emit one, and by <b>shape</b> for everything older — a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.</p>
+  <p>It classifies two ways, because the problem has two eras: by <b>prefix</b> for vaults new enough to emit one, and by <b>shape</b> for everything older, a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.</p>
   <p><b>Publish it under the prefix that declares what you are doing.</b> <code>sgit_public_read_</code> is a read key meant to be published; <code>sgit_private_read_</code> is one meant to be kept secret. Same bytes, same access, opposite declaration, and the build now refuses the second in any tracked file. <a href="../../docs/credentials.html">The five prefixes and what each declares &rarr;</a></p>
 
   <h2>2 · If it is a vault key, derive rather than refuse</h2>
@@ -131,17 +131,17 @@ PY</pre>
   <p>The derivation is one-way: a published read key cannot be turned back into the vault key. Never print the write key; never let the vault key reach a tracked file.</p>
 
   <h2>3 · Audit with the read key, across every file</h2>
-  <p>Open the vault with the <em>read</em> key — the credential your readers will have — and scan every text file. Look for: the vault's own key (this has really happened, and forced a republish), API keys, tokens and <code>delete_auth</code> values, private-key blocks, personal data, and operational bookkeeping under <code>.vault/</code>.</p>
-  <div class="note"><b>Ruling hits out is the work.</b> Scanners produce false positives and that is normal: a phone-number pattern matching <code>0123456789</code> inside a minified library; an <code>sk-test-…</code> string that turns out to be a fixture in a test asserting a leaked key <em>is</em> caught. Read every hit. Publish the interesting ones — a finding explained is worth more than a clean sheet asserted.</div>
+  <p>Open the vault with the <em>read</em> key, the credential your readers will have, and scan every text file. Look for: the vault's own key (this has really happened, and forced a republish), API keys, tokens and <code>delete_auth</code> values, private-key blocks, personal data, and operational bookkeeping under <code>.vault/</code>.</p>
+  <div class="note"><b>Ruling hits out is the work.</b> Scanners produce false positives and that is normal: a phone-number pattern matching <code>0123456789</code> inside a minified library; an <code>sk-test-…</code> string that turns out to be a fixture in a test asserting a leaked key <em>is</em> caught. Read every hit. Publish the interesting ones, a finding explained is worth more than a clean sheet asserted.</div>
 
   <h2>4 · Derive the facts rather than describing them</h2>
   <pre class="shell">python3 admin/build/catalogue_derive.py &lt;vault_id&gt; &lt;read_key&gt;</pre>
-  <p>File count, size, commit depth, HEAD, top-level layout, file types, app entry points and browser-renderability — all from the read key, no token and no clone. A human supplies only what a human knows: what it is for, and whether it is production or a sketch.</p>
+  <p>File count, size, commit depth, HEAD, top-level layout, file types, app entry points and browser-renderability, all from the read key, no token and no clone. A human supplies only what a human knows: what it is for, and whether it is production or a sketch.</p>
 
   <h2>5 · Capture evidence by driving the real product</h2>
   <p>Screenshots should be of the actual vault, produced by a script that opens it with the published read key and performs the navigation being described. Mock-ups age into lies; a capture script re-runs.</p>
   <pre class="shell">node admin/build/capture_shots.mjs --vault &lt;slug&gt;</pre>
-  <p>Each shot declares a surface (the app, or the vault browser), the steps, and the crop. Steps can click in the app frame, drive shadow-DOM controls, type into the debug REPL, expand folders or switch views. Store the images beside the page — <code>demos/vaults/&lt;slug&gt;/images/</code> — so a vault's folder is self-contained.</p>
+  <p>Each shot declares a surface (the app, or the vault browser), the steps, and the crop. Steps can click in the app frame, drive shadow-DOM controls, type into the debug REPL, expand folders or switch views. Store the images beside the page (<code>demos/vaults/&lt;slug&gt;/images/</code>) so a vault's folder is self-contained.</p>
 
   <h2>6 · Write the page: describe, then show, then admit</h2>
   <div class="tablewrap"><table>
@@ -156,18 +156,18 @@ PY</pre>
   </table></div>
 
   <h2>7 · Record the things that outlive the page</h2>
-  <p>Per entry: the <b>shape</b> (the workflow it resembles, not its domain), the <b>evidence status</b> (production, demonstration, or sketch), whether it is a copy or a live reference, and the <b>write-key status</b> — escrowed or lost. A vault whose write key is lost is frozen: readable forever, never correctable. Say so where a reader will see it.</p>
+  <p>Per entry: the <b>shape</b> (the workflow it resembles, not its domain), the <b>evidence status</b> (production, demonstration, or sketch), whether it is a copy or a live reference, and the <b>write-key status</b>: escrowed or lost. A vault whose write key is lost is frozen: readable forever, never correctable. Say so where a reader will see it.</p>
 
   <h2>What we got wrong, so you do not have to</h2>
   <div class="tablewrap"><table>
     <tr><th>Mistake</th><th>The rule that came out of it</th></tr>
     <tr><td>A vault published its own write credential inside its content</td><td><b>Republish, don't retrofit.</b> A sanitised copy into a fresh vault also sheds the history you cannot publish</td></tr>
-    <tr><td>A vault key submitted as a read key, three times</td><td>Classification is a check, not a habit — step 1</td></tr>
+    <tr><td>A vault key submitted as a read key, three times</td><td>Classification is a check, not a habit, step 1</td></tr>
     <tr><td>A test reported a refusal that was really a truncated clone</td><td>Re-run before recording. A result you cannot reproduce is not evidence</td></tr>
     <tr><td>Our own tripwire banned the string we needed in order to teach people to recognise it</td><td>Make the rule <em>precise</em>, not stricter: fire on the prefix plus a credential character, so documentation can name it</td></tr>
     <tr><td>A read key was published in front of a vault carrying an LLM config</td><td>Check, do not assume: we attempted to unseal it with the published read key, and AES-GCM refused. State the result either way</td></tr>
   </table></div>
-  <p>The best statement of the vault-side rules is not ours: the <a href="risk-graph-explorer/index.html">Risk Graph Explorer</a> carries a <code>PUBLIC.md</code> whose three build-enforced rules — nothing private committed, no write token, <b>no metered capability</b> — are the version to copy if you are building a vault intended for publication.</p>
+  <p>The best statement of the vault-side rules is not ours: the <a href="risk-graph-explorer/index.html">Risk Graph Explorer</a> carries a <code>PUBLIC.md</code> whose three build-enforced rules (nothing private committed, no write token, <b>no metered capability</b>) are the version to copy if you are building a vault intended for publication.</p>
 
   <h2>The tools, in one list</h2>
   <div class="tablewrap"><table>
@@ -183,9 +183,9 @@ PY</pre>
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.99</a> · <a href="../../admin/index.html">engineering</a> · <a href="publishing.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.3.0</a> · <a href="../../admin/index.html">engineering</a> · <a href="publishing.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -227,7 +227,7 @@ PY</pre>
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

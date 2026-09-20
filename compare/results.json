@@ -1,6 +1,6 @@
 {
  "_comment": "Written by admin/build/compare_tests.py. Each entry is one executed check against the live service using a published read key. Re-run the script to refresh.",
- "generated": "2026-08-17 09:10 UTC",
+ "generated": "2026-09-20 23:37 UTC",
  "expiry_days": 30,
  "tests": [
   {
@@ -9,7 +9,7 @@
    "outcome": "pass",
    "evidence": "4 files listed from vault 4bshby5n; HEAD obj-cas-imm-abfb17bf6c21",
    "fails_if": "the ref cannot be derived, fetched or decrypted with the read key alone",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   },
   {
    "id": "server-serves-ciphertext",
@@ -17,7 +17,7 @@
    "outcome": "pass",
    "evidence": "489 raw bytes: not valid UTF-8; the same object decrypts to 461 bytes of JSON with the read key",
    "fails_if": "the raw response decodes as text without decryption",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   },
   {
    "id": "objects-immutable",
@@ -25,7 +25,7 @@
    "outcome": "pass",
    "evidence": "two fetches of obj-cas-imm-abfb17bf6c21 returned identical bytes (sha256 abfb17bf6c21472d\u2026) \u2014 which is why a copy already taken stays readable",
    "fails_if": "the same object id returns different bytes",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   },
   {
    "id": "scoped-write-declared",
@@ -33,7 +33,7 @@
    "outcome": "pass",
    "evidence": "r7zes477 app.json declares fs.write = [\"adherence/\"] (read = true)",
    "fails_if": "the declaration is missing or grants write beyond adherence/",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   },
   {
    "id": "read-key-refuses-write",
@@ -41,15 +41,15 @@
    "outcome": "pass",
    "evidence": "commit exit 1, push exit 1; no vault_key on disk; \"error: This vault was cloned read-only. To write, re-clone with the fu\"",
    "fails_if": "commit or push succeeds, or a write credential is present on disk",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   },
   {
    "id": "cli-accepts-prefixed-key",
    "claim": "The CLI accepts the canonical sgit_rk1_ prefix the web loader accepts",
-   "outcome": "absent",
-   "evidence": "sgit-ai v0.15.0: prefixed clone failed \u2014 derived ref afdb9d843131 instead of 11ea50e81f4d; the bare <64hex>:<vault_id> form works on the same version",
+   "outcome": "pass",
+   "evidence": "sgit-ai v0.16.2: prefixed clone succeeded",
    "fails_if": "the prefixed form derives a ref id different from the bare form",
-   "checked": "2026-08-17"
+   "checked": "2026-09-20"
   }
  ]
 }

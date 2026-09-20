@@ -1,56 +1,53 @@
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Fractional CISO application pack</p>
   <h1>The same pack, written for an archetype instead of a company</h1>
-  <p class="lead">A sibling of <a href="../interim-ciso-pack/index.html">vault #29</a> from the same generator, one day later &mdash; and the interesting difference is how it solves the privacy problem. That pack described a real role and <em>withheld</em> the company. This one describes <b>a type of company</b>, derived from public sources, so there is nothing to withhold. Same three routes, same thirteen recommendations, a different argument: two days a month, on a retainer, for a business that is already certified.</p>
+  <p class="lead">A sibling of <a href="../interim-ciso-pack/index.html">vault #29</a> from the same generator, one day later, and the interesting difference is how it solves the privacy problem. That pack described a real role and <em>withheld</em> the company. This one describes <b>a type of company</b>, derived from public sources, so there is nothing to withhold. Same three routes, same thirteen recommendations, a different argument: two days a month, on a retainer, for a business that is already certified.</p>
 
-  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
-  Read key: <code style="word-break:break-all">sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5</code><br>
-  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
-  From the CLI: <code>sgit clone sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5</code><br>
-  <span class="small dim">Submitted as a read key and published unchanged. No company is named anywhere in the vault, and none is implied &mdash; see the audit below.</span></div>
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
+  From the CLI: <code>sgit clone sgit_public_read_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e:eaba68j5</code><br>
+  <span class="small dim">Submitted as a read key and published unchanged. No company is named anywhere in the vault, and none is implied, see the audit below.</span></div>
 
-  <figure class="shot" data-shot="infographic.webp" data-dir="images/" data-alt="The one-page infographic from the pack: Dinis Cruz, Fractional CISO. Four tiles — 2 days per month, 3× CISO, 25+ years in security, ~15 AI agents behind him. Sections for what two days a month buys, how the month runs, a twelve-month map, where the value is for a company built on sensitive data, and a line stating what the role is not."><figcaption>The pack's own one-pager. Everything on it is also in the vault as data &mdash; the infographic is a rendering of <code>content.json</code>, not a separate document.</figcaption></figure>
+  <figure class="shot" data-shot="infographic.webp" data-dir="images/" data-alt="The one-page infographic from the pack: Dinis Cruz, Fractional CISO. Four tiles, 2 days per month, 3× CISO, 25+ years in security, ~15 AI agents behind him. Sections for what two days a month buys, how the month runs, a twelve-month map, where the value is for a company built on sensitive data, and a line stating what the role is not."><figcaption>The pack's own one-pager. Everything on it is also in the vault as data. The infographic is a rendering of <code>content.json</code>, not a separate document.</figcaption></figure>
 
   <h2>See it live, here</h2>
-  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">The document viewer wants the room.</span></p>
-  <div class="sgv-uiembed" data-vault="eaba68j5" data-readkey="sgit_rk1_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e" data-app="1"></div>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#sgit_public_read_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e%3Aeaba68j5" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">The document viewer wants the room.</span></p>
+  <div class="sgv-uiembed" data-vault="eaba68j5" data-readkey="sgit_public_read_7c84275ebcbbf312dbbec4713a00c83fb0dd8520b6a52b082d7ff81e3523c40e" data-app="1"></div>
   <script>
   (function () {
     ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
-      fetch('../../../assets/' + f)
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(function (t) { (0, eval)(t); })
-        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
     });
   }());
   </script>
 
   <h2 id="idea">The idea worth stealing: describe the category, not the company</h2>
-  <p>Vault #29 had to be audited for whether an unnamed FTSE 250 client could be inferred from what was said about it. This pack removes the question. Its company route opens with the sentence <em>&ldquo;this pack is written for a type of company rather than a named one&rdquo;</em>, and then describes the type in six rows &mdash; what it does, who buys it, where the risk sits, what it already has, what it usually lacks, who governs it:</p>
+  <p>Vault #29 had to be audited for whether an unnamed FTSE 250 client could be inferred from what was said about it. This pack removes the question. Its company route opens with the sentence <em>&ldquo;this pack is written for a type of company rather than a named one&rdquo;</em>, and then describes the type in six rows, what it does, who buys it, where the risk sits, what it already has, what it usually lacks, who governs it:</p>
   <blockquote>&ldquo;A venture-backed UK software company, post-Series A, somewhere between 40 and 100 people, whose product processes other people's most sensitive personal data.&rdquo;</blockquote>
-  <p>Everything after that <em>follows from the archetype</em> &mdash; third-party and sub-processor risk as the highest-value work, assurance as a revenue lever, data minimisation as a decision rather than a project. The pack says so itself: <em>&ldquo;if the company you have in mind is different in any of these respects, the engagement below changes shape, and that conversation is a better first meeting than a pitch.&rdquo;</em></p>
+  <p>Everything after that <em>follows from the archetype</em>: third-party and sub-processor risk as the highest-value work, assurance as a revenue lever, data minimisation as a decision rather than a project. The pack says so itself: <em>&ldquo;if the company you have in mind is different in any of these respects, the engagement below changes shape, and that conversation is a better first meeting than a pitch.&rdquo;</em></p>
   <p>That is a better answer to the publication problem than redaction, and it generalises: <b>a document written for a class can be published; a document written for an instance has to be scrubbed.</b></p>
-  <figure class="shot" data-shot="company.webp" data-dir="images/" data-alt="The Company route: headed 'What two days a month buys', with the line 'This pack is written for a type of company rather than a named one', a row of section chips, and the archetype table beginning with What it does and Who buys it."><figcaption>The company route leads with the archetype. Fourteen sections follow it &mdash; including <em>What it is not</em>, <em>Conflict</em> and <em>Tensions</em>.</figcaption></figure>
+  <figure class="shot" data-shot="company.webp" data-dir="images/" data-alt="The Company route: headed 'What two days a month buys', with the line 'This pack is written for a type of company rather than a named one', a row of section chips, and the archetype table beginning with What it does and Who buys it."><figcaption>The company route leads with the archetype. Fourteen sections follow it, including <em>What it is not</em>, <em>Conflict</em> and <em>Tensions</em>.</figcaption></figure>
 
   <h2 id="different">What changed from #29, precisely</h2>
   <div class="tablewrap"><table>
-    <tr><th></th><th><a href="../interim-ciso-pack/index.html">#29 &mdash; Interim</a></th><th>#30 &mdash; Fractional</th></tr>
+    <tr><th></th><th><a href="../interim-ciso-pack/index.html">#29, Interim</a></th><th>#30, Fractional</th></tr>
     <tr><td><b>The role</b></td><td>Six months, near full-time, a dated regulatory deliverable</td><td>Two days a month, ongoing, a board advisory retainer</td></tr>
     <tr><td><b>The reader</b></td><td>A specific FTSE 250 company, withheld</td><td><b>An archetype</b>, described in six rows from public sources</td></tr>
-    <tr><td><b>The company folder</b></td><td>A strategy brief with a disclosed redaction</td><td><code>company-archetype.md</code> &mdash; nothing to redact</td></tr>
+    <tr><td><b>The company folder</b></td><td>A strategy brief with a disclosed redaction</td><td><code>company-archetype.md</code>, nothing to redact</td></tr>
     <tr><td><b>Documents</b></td><td>Four, in four formats</td><td><b>Five</b> in four formats, plus an infographic as PNG and PDF, plus the three 2019 decks rendered in the viewer</td></tr>
-    <tr><td><b>New document</b></td><td>&mdash;</td><td><em>The engagement</em>: the monthly rhythm, a twelve-month map, and a section headed <em>What two days a month is not</em></td></tr>
+    <tr><td><b>New document</b></td><td><span class="dim">none</span></td><td><em>The engagement</em>: the monthly rhythm, a twelve-month map, and a section headed <em>What two days a month is not</em></td></tr>
     <tr><td><b>Shared</b></td><td colspan="2">The generator, the CV facts, the thirteen recommendations, the three routes, the agentic team, and the deliberate absence of any rate or tax status</td></tr>
   </table></div>
   <p>The README states the relationship in one paragraph and ends it with the line that matters for both: <em>&ldquo;Rates and tax status are deliberately absent from both.&rdquo;</em></p>
 
   <h2 id="not">The section to read first is the one that says no</h2>
-  <p>The engagement document's strongest passage is a list of what two days a month <em>is not</em>. Not cover &mdash; <em>&ldquo;if something goes wrong at three in the morning, a fractional advisor is not the incident manager.&rdquo;</em> Not a Data Protection Officer. Not delivery. Not an audit. And not a substitute for a full-time CISO once the company needs one &mdash; <em>&ldquo;part of the job is saying when that point arrives.&rdquo;</em></p>
+  <p>The engagement document's strongest passage is a list of what two days a month <em>is not</em>. Not cover, <em>&ldquo;if something goes wrong at three in the morning, a fractional advisor is not the incident manager.&rdquo;</em> Not a Data Protection Officer. Not delivery. Not an audit. And not a substitute for a full-time CISO once the company needs one, <em>&ldquo;part of the job is saying when that point arrives.&rdquo;</em></p>
   <p>The <em>Honest tensions</em> section goes further and names the economic one: a fractional CISO is cheaper than a permanent one, <em>&ldquo;and that same economy can be used to defer a hire the company genuinely needs. Naming the trigger early is the only honest defence.&rdquo;</em> A sales document that identifies how it could be misused against the buyer is rare enough to be worth pointing at.</p>
   <figure class="shot" data-shot="recruiter.webp" data-dir="images/" data-alt="The Recruiter route: a sidebar listing five documents with page counts and sizes, the infographic, and the three 2019 presentations, beside the embedded document viewer."><figcaption>Five documents, each as PDF, Word, Markdown and JSON; the infographic as PNG and PDF; and the 2019 decks now rendered in the viewer rather than only archived.</figcaption></figure>
 
   <h2 id="audit">The pre-publication audit</h2>
-  <p>Run against a full clone with the published read key. The pack's own claim &mdash; <em>&ldquo;no company is named anywhere in this pack &hellip; nothing here depends on inside knowledge, which is why it can be published&rdquo;</em> &mdash; checked rather than accepted:</p>
+  <p>Run against a full clone with the published read key. The pack's own claim, <em>&ldquo;no company is named anywhere in this pack &hellip; nothing here depends on inside knowledge, which is why it can be published&rdquo;</em>: checked rather than accepted:</p>
   <div class="tablewrap"><table>
     <tr><th>Checked</th><th>Result</th></tr>
     <tr><td>Company identification</td><td><b>None, and none implied.</b> The reader is an archetype in six rows. The only company names in the vault are the candidate's past employers, from a public CV</td></tr>
@@ -66,7 +63,7 @@
     <tr><td><b>Vault</b></td><td><code>eaba68j5</code> &middot; 72 files &middot; 19 MB</td></tr>
     <tr><td><b>App</b></td><td><code>index.html</code> with CSS, JS and a fallback copy of <code>content.json</code> inlined; PDF.js loaded through <code>sg.loadJs</code> inside a host, page images as the fallback</td></tr>
     <tr><td><b>Permissions</b></td><td><code>downloads: true</code>, and nothing else. No writes. The HUD hides the vault name and shows the app title</td></tr>
-    <tr><td><b>Documents</b></td><td>Six distinct: two CVs, the case, the recommendations, <em>the engagement</em>, and the infographic &mdash; 21 recruiter files across the formats, 18 pre-rendered page images</td></tr>
+    <tr><td><b>Documents</b></td><td>Six distinct: two CVs, the case, the recommendations, <em>the engagement</em>, and the infographic, 21 recruiter files across the formats, 18 pre-rendered page images</td></tr>
     <tr><td><b>Licence</b></td><td>Content CC BY 4.0; the 2019 decks and recommendation slides CC BY-SA as originally published; PDF.js Apache-2.0</td></tr>
   </table></div>
 

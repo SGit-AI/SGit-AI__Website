@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Case studies — sgit.ai</title>
+<title>Case studies, sgit.ai</title>
 <meta name="description" content="Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.">
 <link rel="canonical" href="https://sgit.ai/case-studies/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/case-studies/index.html">
-<meta property="og:title" content="Case studies — sgit.ai">
+<meta property="og:title" content="Case studies, sgit.ai">
 <meta property="og:description" content="Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Case studies — sgit.ai", "headline": "Case studies — sgit.ai", "description": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.", "url": "https://sgit.ai/case-studies/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Case studies, sgit.ai", "headline": "Case studies, sgit.ai", "description": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it.", "url": "https://sgit.ai/case-studies/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,91 +21,91 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../docs/index.html">Documentation</a>
-      <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../api/index.html">HTTP API</a>
-      <a class="sl" href="../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../deploy/index.html">Deploy</a>
-      <a class="sl" href="../skills/index.html">Skills</a>
-      <a class="sl" href="../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../demos/index.html">Demos</a>
-      <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../compare/index.html">Comparisons</a>
-      <a class="sl here" href="../case-studies/index.html">Case studies</a>
-      <a class="sl" href="../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../updates/index.html">Updates</a>
-      <a class="sl" href="../articles/index.html">Articles</a>
-      <a class="sl" href="../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../team/index.html">How the site is run</a>
-      <a class="sl" href="../team/index.html#roles">Roles</a>
-      <a class="sl" href="../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../network/index.html">All sites</a>
-      <a class="sl" href="../network/nhi.html">nhi</a>
-      <a class="sl" href="../network/pki.html">pki</a>
-      <a class="sl" href="../network/graphs.html">graphs</a>
-      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl here" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / Case studies</p>
   <h1>Case studies</h1>
-  <p class="lead">Things that actually happened, written up while the details were still checkable — including the ones that went wrong. Each is a worked account with the mechanism, the numbers, and what changed as a result.</p>
+  <p class="lead">Things that actually happened, written up while the details were still checkable, including the ones that went wrong. Each is a worked account with the mechanism, the numbers, and what changed as a result.</p>
 
-  <div class="note"><b>What counts as a case study here:</b> a specific event or system, with evidence a reader can verify — commands they can run, numbers we measured, or a live page they can open. Not a pattern, not a design we like the look of. Patterns live in <a href="../use-cases/index.html">use cases</a>, which label their evidence honestly; if a use case ever earns a real deployment, its write-up lands here and the two link to each other.</div>
+  <div class="note"><b>What counts as a case study here:</b> a specific event or system, with evidence a reader can verify, commands they can run, numbers we measured, or a live page they can open. Not a pattern, not a design we like the look of. Patterns live in <a href="../use-cases/index.html">use cases</a>, which label their evidence honestly; if a use case ever earns a real deployment, its write-up lands here and the two link to each other.</div>
 
   <h2>Published</h2>
   <div class="cards" style="max-width:none;padding:0">
-    <a class="card" href="exposed-vault-key.html"><span class="tag">Incident</span><h3>The day we leaked our own vault key</h3><p>An agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius — 336 objects out, 90 in, zero overlap — and the structural fix.</p><p class="cardgo">Read the incident &rarr;</p></a>
-    <a class="card" href="one-tree-two-remotes.html"><span class="tag">Workflow</span><h3>One working tree, two version control systems &mdash; and why we stopped</h3><p>For 76 releases this site was one folder that was both an sgit vault and a git repository. The workflow, the one-file boundary that made it safe, the ordering rule &mdash; and the numbers behind retiring it: a 258 MB mirror that was 91% of the repository, had no reader, and went dead for seven releases without the site noticing.</p><p class="cardgo">Read the retrospective &rarr;</p></a>
+    <a class="card" href="exposed-vault-key.html"><span class="tag">Incident</span><h3>The day we leaked our own vault key</h3><p>An agent hardcoded this site's vault passphrase into a tracked file as part of an anti-leak check. It reached three public commits and was caught only because someone asked. The runbook, the rekey, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix.</p><p class="cardgo">Read the incident &rarr;</p></a>
+    <a class="card" href="one-tree-two-remotes.html"><span class="tag">Workflow</span><h3>One working tree, two version control systems, and why we stopped</h3><p>For 76 releases this site was one folder that was both an sgit vault and a git repository. The workflow, the one-file boundary that made it safe, the ordering rule, and the numbers behind retiring it: a 258 MB mirror that was 91% of the repository, had no reader, and went dead for seven releases without the site noticing.</p><p class="cardgo">Read the retrospective &rarr;</p></a>
     <a class="card" href="purging-history.html"><span class="tag">Runbook</span><h3>Deleting files from git history, and why they were still on GitHub afterwards</h3><p>The exact scenario, drawn out: two branches, 15,933 files, why <code>git rm</code> is not deletion, what a rewrite does to every commit id, why the push had to be forced, and why one forgotten merged branch kept the purged files downloadable until it was removed.</p><p class="cardgo">Read the runbook &rarr;</p></a>
     <a class="card" href="live-vault-docs.html"><span class="tag">Architecture</span><h3>A live site whose host cannot read it</h3><p>Two Claude Code sessions, two encrypted vaults, one page: how the Deploy section is fetched as ciphertext from an SG/Send server and decrypted in your browser, with the object model, the cache tiers and the request timeline drawn out.</p><p class="cardgo">Read the architecture &rarr;</p></a>
   </div>
@@ -113,19 +113,19 @@
   <h2>How these are written</h2>
   <p>Same shape every time, so they stay comparable and so an agent can parse them:</p>
   <ul>
-    <li><b>What happened</b> — the sequence, in order, with timestamps or commit ids where they exist.</li>
-    <li><b>The mechanism</b> — why it happened, at the level of the object model or the code, not at the level of "human error".</li>
-    <li><b>The numbers</b> — measured, not estimated, and stated even when they are unflattering.</li>
-    <li><b>What changed</b> — the structural fix, and the check that stops it recurring. A write-up with no change attached is a story, not a case study.</li>
-    <li><b>What we still do not know</b> — stated rather than smoothed over.</li>
+    <li><b>What happened</b>: the sequence, in order, with timestamps or commit ids where they exist.</li>
+    <li><b>The mechanism</b>: why it happened, at the level of the object model or the code, not at the level of "human error".</li>
+    <li><b>The numbers</b>: measured, not estimated, and stated even when they are unflattering.</li>
+    <li><b>What changed</b>: the structural fix, and the check that stops it recurring. A write-up with no change attached is a story, not a case study.</li>
+    <li><b>What we still do not know</b>: stated rather than smoothed over.</li>
   </ul>
-  <p>The incident write-up is the template for the uncomfortable kind. It names the agent that made the mistake, the detection gap that let it survive three commits, and the cost of the fix — because a project that hides that class of mistake is the one to worry about.</p>
+  <p>The incident write-up is the template for the uncomfortable kind. It names the agent that made the mistake, the detection gap that let it survive three commits, and the cost of the fix, because a project that hides that class of mistake is the one to worry about.</p>
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../use-cases/index.html">Use cases</a> — the patterns, each with an explicit evidence status</li>
-    <li><a href="../docs/briefs/index.html">Cross-team briefs</a> — what this site's agent hands to other teams, and what they hand back</li>
-    <li><a href="../admin/versions.html">Release history</a> — every change to this site, with the vault commit that carried it</li>
+    <li><a href="../use-cases/index.html">Use cases</a>, the patterns, each with an explicit evidence status</li>
+    <li><a href="../docs/briefs/index.html">Cross-team briefs</a>, what this site's agent hands to other teams, and what they hand back</li>
+    <li><a href="../admin/versions.html">Release history</a>, every change to this site, with the vault commit that carried it</li>
   </ul>
   <div class="pagenav"><a href="../index.html">← Home</a><a href="../use-cases/index.html">Use cases →</a></div>
 </main>
@@ -133,9 +133,9 @@
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.99</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.0</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -177,7 +177,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

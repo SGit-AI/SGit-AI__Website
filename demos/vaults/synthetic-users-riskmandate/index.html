@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Synthetic users, second run — five people who do not exist, reading riskmandate.ai</title>
-<meta name="description" content="The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale — and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.">
+<title>Synthetic users, second run, five people who do not exist, reading riskmandate.ai</title>
+<meta name="description" content="The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale, and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.">
 <link rel="canonical" href="https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html">
-<meta property="og:title" content="Synthetic users, second run — five people who do not exist, reading riskmandate.ai">
-<meta property="og:description" content="The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale — and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.">
+<meta property="og:title" content="Synthetic users, second run, five people who do not exist, reading riskmandate.ai">
+<meta property="og:description" content="The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale, and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="index.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Synthetic users, second run — five people who do not exist, reading riskmandate.ai", "headline": "Synthetic users, second run — five people who do not exist, reading riskmandate.ai", "description": "The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale — and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.", "url": "https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Synthetic users, second run, five people who do not exist, reading riskmandate.ai", "headline": "Synthetic users, second run, five people who do not exist, reading riskmandate.ai", "description": "The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale, and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.", "url": "https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,158 +21,155 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../../../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../../../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../docs/index.html">Documentation</a>
-      <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../../../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../../../api/index.html">HTTP API</a>
-      <a class="sl" href="../../../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../../../deploy/index.html">Deploy</a>
-      <a class="sl" href="../../../skills/index.html">Skills</a>
-      <a class="sl" href="../../../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../../../demos/index.html">Demos</a>
-      <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../compare/index.html">Comparisons</a>
-      <a class="sl" href="../../../case-studies/index.html">Case studies</a>
-      <a class="sl" href="../../../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../updates/index.html">Updates</a>
-      <a class="sl" href="../../../articles/index.html">Articles</a>
-      <a class="sl" href="../../../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../team/index.html">How the site is run</a>
-      <a class="sl" href="../../../team/index.html#roles">Roles</a>
-      <a class="sl" href="../../../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../../../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../../network/index.html">All sites</a>
-      <a class="sl" href="../../../network/nhi.html">nhi</a>
-      <a class="sl" href="../../../network/pki.html">pki</a>
-      <a class="sl" href="../../../network/graphs.html">graphs</a>
-      <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../../skills/index.html">Skills</a>
+ <a class="sl" href="../../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../../demos/index.html">Demos</a>
+ <a class="sl" href="../../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../updates/index.html">Updates</a>
+ <a class="sl" href="../../../articles/index.html">Articles</a>
+ <a class="sl" href="../../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../../network/index.html">All sites</a>
+ <a class="sl" href="../../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../../network/pki.html">pki</a>
+ <a class="sl" href="../../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Synthetic users &middot; riskmandate.ai</p>
-  <h1>Synthetic users, second run &mdash; five people who do not exist, reading riskmandate.ai</h1>
-  <p class="lead">The same method as <a href="../synthetic-users/index.html">vault #27</a>, pointed at a different product one day later. That is the interesting part: one run is an anecdote, two sites is a method. And the second run produced a <b>different class of finding</b> than the first &mdash; it measured rather than narrated, and it caught a bug that every existing test had passed over.</p>
+  <h1>Synthetic users, second run, five people who do not exist, reading riskmandate.ai</h1>
+  <p class="lead">The same method as <a href="../synthetic-users/index.html">vault #27</a>, pointed at a different product one day later. That is the interesting part: one run is an anecdote, two sites is a method. And the second run produced a <b>different class of finding</b> than the first, it measured rather than narrated, and it caught a bug that every existing test had passed over.</p>
 
-  <div class="note"><b>Open it yourself — the key is the whole credential.</b><br>
-  Read key: <code style="word-break:break-all">a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr</code><br>
-  In the official UI: <a href="https://dev.vault.sgraph.ai/en-gb/#a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
-  From the CLI: <code>sgit clone a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr</code><br>
-  <span class="small dim">Submitted as a read key and published as one &mdash; nothing was derived, and no vault key was involved.</span></div>
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/en-gb/#sgit_public_read_a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
+  From the CLI: <code>sgit clone sgit_public_read_a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332:o3q6zhtr</code><br>
+  <span class="small dim">Submitted as a read key and published as one. Nothing was derived, and no vault key was involved.</span></div>
 
-  <div class="note"><b>Everybody in it is invented</b>, and the vault says so above the fold, as the first one did. The personas and their words are a language model's. What is evidence is what a browser produced: the screenshots, the URLs, the scroll positions, <b>the word counts</b>, and the JavaScript errors the first pass recorded &mdash; all captured by driving a real browser against the deployed bytes at <code>v1.20.1</code>.</div>
+  <div class="note"><b>Everybody in it is invented</b>, and the vault says so above the fold, as the first one did. The personas and their words are a language model's. What is evidence is what a browser produced: the screenshots, the URLs, the scroll positions, <b>the word counts</b>, and the JavaScript errors the first pass recorded, all captured by driving a real browser against the deployed bytes at <code>v1.20.1</code>.</div>
 
   <h2>See it live, here</h2>
-  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/en-gb/#a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Same app as vault #27, same five-across rail.</span></p>
+  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/en-gb/#sgit_public_read_a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332%3Ao3q6zhtr" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Same app as vault #27, same five-across rail.</span></p>
   <div class="sgv-uiembed" data-vault="o3q6zhtr" data-readkey="a41174009cf6f3019147040ef0c759b6c84c86ffa37eb54af06011c161a12332" data-app="1"></div>
   <script>
   (function () {
     ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
-      fetch('../../../assets/' + f)
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(function (t) { (0, eval)(t); })
-        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
     });
   }());
   </script>
 
-  <figure class="shot" data-shot="front.webp" data-dir="images/" data-alt="The app for the riskmandate.ai run: five personas in a left rail with outcome chips — would buy level 1, stalled, would buy blocked on timing, left, and left having understood it only on the third page — with counters reading 5 runs, 11 questions, 12 confusions, 12 findings, 2 blocking a sale."><figcaption>Five runs, six steps each, 30 screenshots. Two of the five would have paid; neither could.</figcaption></figure>
+  <figure class="shot" data-shot="front.webp" data-dir="images/" data-alt="The app for the riskmandate.ai run: five personas in a left rail with outcome chips (would buy level 1, stalled, would buy blocked on timing, left, and left having understood it only on the third page) with counters reading 5 runs, 11 questions, 12 confusions, 12 findings, 2 blocking a sale."><figcaption>Five runs, six steps each, 30 screenshots. Two of the five would have paid; neither could.</figcaption></figure>
 
   <h2 id="different">What the second run did that the first did not</h2>
   <p>It would have been easy for this to be the same vault with different names in it. It is not, and the difference is worth naming:</p>
   <div class="tablewrap"><table>
-    <tr><th></th><th><a href="../synthetic-users/index.html">#27 &mdash; store.sgit.ai</a></th><th>This one &mdash; riskmandate.ai</th></tr>
+    <tr><th></th><th><a href="../synthetic-users/index.html">#27, store.sgit.ai</a></th><th>This one, riskmandate.ai</th></tr>
     <tr><td><b>What the findings are made of</b></td><td>What a persona said, in their voice</td><td><b>Counted things.</b> Words above the fold, character offsets, scroll positions in pixels and screens</td></tr>
     <tr><td><b>Shape of the headline</b></td><td>A page missing a fact a buyer needed</td><td>A product <b>never named where it is sold</b></td></tr>
     <tr><td><b>Runs</b></td><td>5 &middot; 43 steps &middot; 15 questions &middot; 10 confusions</td><td>5 &middot; 30 steps &middot; 11 questions &middot; <b>12 confusions</b></td></tr>
-    <tr><td><b>Page errors</b></td><td>Zero, on every run</td><td><b>On every page visited</b> &mdash; and they had shipped</td></tr>
+    <tr><td><b>Page errors</b></td><td>Zero, on every run</td><td><b>On every page visited</b>, and they had shipped</td></tr>
     <tr><td><b>Findings</b></td><td>18, three blocking</td><td>12, two blocking</td></tr>
   </table></div>
   <p>More confusion from fewer steps is the number to look at. The first site lost people slowly; this one lost them on the first screen.</p>
 
   <h2 id="headline">The headline: the product is not named where it is sold</h2>
-  <p>Above the fold, the home page says <em>policy</em> six times, <em>insure</em> three times and <em>underwriters</em> once, shows a price of <b>&pound;5</b> &mdash; and never once says <b>Agent Behaviour Policy</b>, which is what it sells. The name first appears <b>58% of the way down the page</b>.</p>
-  <p>The consequence is not subtle. <b>Two of the five read &ldquo;Buy one, from &pound;5&rdquo; as buying an insurance policy for five pounds.</b> The persona who held that reading longest was the insurance professional &mdash; the reader best equipped to recognise the vocabulary, and therefore the most confidently wrong:</p>
-  <blockquote>&ldquo;So: insurable, insurance, underwriters, and a policy you can buy for five pounds. On my reading of those words, <b>this is a product that places cover</b>.&rdquo; &mdash; Claire Buckley, step 1</blockquote>
-  <p>She understood the product only on the third page. The founder resolved it by accident, from a button caption. The vault also notes that the hero card is captioned <em>&ldquo;A REAL POLICY &middot; TEMPLATE&rdquo;</em> beside a headline about insurability &mdash; and is the one caption on the page with room to say the product's actual name.</p>
+  <p>Above the fold, the home page says <em>policy</em> six times, <em>insure</em> three times and <em>underwriters</em> once, shows a price of <b>&pound;5</b>, and never once says <b>Agent Behaviour Policy</b>, which is what it sells. The name first appears <b>58% of the way down the page</b>.</p>
+  <p>The consequence is not subtle. <b>Two of the five read &ldquo;Buy one, from &pound;5&rdquo; as buying an insurance policy for five pounds.</b> The persona who held that reading longest was the insurance professional, the reader best equipped to recognise the vocabulary, and therefore the most confidently wrong:</p>
+  <blockquote>&ldquo;So: insurable, insurance, underwriters, and a policy you can buy for five pounds. On my reading of those words, <b>this is a product that places cover</b>.&rdquo;, Claire Buckley, step 1</blockquote>
+  <p>She understood the product only on the third page. The founder resolved it by accident, from a button caption. The vault also notes that the hero card is captioned <em>&ldquo;A REAL POLICY &middot; TEMPLATE&rdquo;</em> beside a headline about insurability, and is the one caption on the page with room to say the product's actual name.</p>
   <figure class="shot" data-shot="insurance.webp" data-dir="images/" data-alt="Claire Buckley's run: the insurance risk manager reading the home page and concluding from the vocabulary that the product places insurance cover."><figcaption>The reader best equipped to recognise the words was the one the words misled furthest.</figcaption></figure>
 
   <h3 id="checked">We re-measured it, and the structural numbers reproduce exactly</h3>
-  <p>A claim this specific is checkable, so it was checked &mdash; the live page fetched today, rendered at the same 1440&times;900, and measured independently of the vault:</p>
+  <p>A claim this specific is checkable, so it was checked, the live page fetched today, rendered at the same 1440&times;900, and measured independently of the vault:</p>
   <div class="tablewrap"><table>
     <tr><th>Claim</th><th>The vault</th><th>Re-measured</th></tr>
-    <tr><td>Page text length</td><td>9,270 chars</td><td><b>9,270</b> &mdash; exact</td></tr>
-    <tr><td>First &ldquo;Agent Behaviour Policy&rdquo;</td><td>char 5,387 &middot; 58% down</td><td><b>char 5,387 &middot; 58%</b> &mdash; exact</td></tr>
-    <tr><td>Whole page height</td><td>6,481px &middot; 7.2 screens</td><td><b>6,481px &middot; 7.2 screens</b> &mdash; exact</td></tr>
+    <tr><td>Page text length</td><td>9,270 chars</td><td><b>9,270</b>: exact</td></tr>
+    <tr><td>First &ldquo;Agent Behaviour Policy&rdquo;</td><td>char 5,387 &middot; 58% down</td><td><b>char 5,387 &middot; 58%</b>: exact</td></tr>
+    <tr><td>Whole page height</td><td>6,481px &middot; 7.2 screens</td><td><b>6,481px &middot; 7.2 screens</b>: exact</td></tr>
     <tr><td>&ldquo;Agent Behaviour Policy&rdquo; / &ldquo;ABP&rdquo; above the fold</td><td>0 and 0</td><td><b>0 and 0</b></td></tr>
     <tr><td><em>underwriters</em> above the fold</td><td>1</td><td><b>1</b></td></tr>
-    <tr><td><em>policy</em> / <em>insur*</em> above the fold</td><td>6 and 3</td><td>7 and 5 &mdash; <b>a counting-rule difference, not a discrepancy</b></td></tr>
+    <tr><td><em>policy</em> / <em>insur*</em> above the fold</td><td>6 and 3</td><td>7 and 5, <b>a counting-rule difference, not a discrepancy</b></td></tr>
   </table></div>
-  <p class="small dim">The last row: our <code>insur*</code> pattern also catches <em>insurance</em>, where the vault counted <em>insurable / insure / insurability</em> specifically; the <em>policy</em> count differs by one at the fold boundary. Every structural number &mdash; the ones the argument rests on &mdash; matches to the character.</p>
+  <p class="small dim">The last row: our <code>insur*</code> pattern also catches <em>insurance</em>, where the vault counted <em>insurable / insure / insurability</em> specifically; the <em>policy</em> count differs by one at the fold boundary. Every structural number, the ones the argument rests on, matches to the character.</p>
 
   <h2 id="bug">The bug that every test had passed over</h2>
-  <p>The single most useful thing in this vault is not a persona's opinion. The first pass recorded a JavaScript error on <b>every page it visited</b> &mdash; <code>Unexpected token '}'</code> on the home page, <code>Unexpected end of input</code> on the insurance page. Both had shipped. The insurance page had been broken <b>since it launched</b>.</p>
+  <p>The single most useful thing in this vault is not a persona's opinion. The first pass recorded a JavaScript error on <b>every page it visited</b>: <code>Unexpected token '}'</code> on the home page, <code>Unexpected end of input</code> on the insurance page. Both had shipped. The insurance page had been broken <b>since it launched</b>.</p>
   <blockquote>&ldquo;Every existing test passed, because the HTML still rendered and only the console knew.&rdquo;</blockquote>
-  <p>It was fixed in the same session, and &mdash; the right response &mdash; <b>a test was added that parses every inline script on every page and fails the build if one does not</b>. A synthetic-user run justified by its qualitative output paid for itself on a defect that has nothing to do with users at all, because the method happens to require driving a real browser and recording what it throws.</p>
+  <p>It was fixed in the same session, and, the right response, <b>a test was added that parses every inline script on every page and fails the build if one does not</b>. A synthetic-user run justified by its qualitative output paid for itself on a defect that has nothing to do with users at all, because the method happens to require driving a real browser and recording what it throws.</p>
 
   <h2 id="worked">What it says worked, which is the harder half to write</h2>
   <p>Three things were named unprompted by more than one persona, and are the reason two of the five would buy:</p>
   <ul>
-    <li><b>Sourced quotes.</b> The connector-scope section quotes vendors' own documentation with dates &mdash; <em>&ldquo;the first page I have read on this subject that quotes the publisher instead of paraphrasing them.&rdquo;</em></li>
+    <li><b>Sourced quotes.</b> The connector-scope section quotes vendors' own documentation with dates, <em>&ldquo;the first page I have read on this subject that quotes the publisher instead of paraphrasing them.&rdquo;</em></li>
     <li><b>The admissions.</b> That levels 3 and 4 have never run for a paying buyer; that the payment rails are not built; that one rung is still a design. <em>&ldquo;Nobody oversells and then volunteers that.&rdquo;</em></li>
     <li><b>The card.</b> Four numbers on a real vault were the only thing on the first screen that made the engineer stay. <b>The card is doing the work the headline is not.</b></li>
   </ul>
-  <p>Both blocked sales were blocked by something that is not a price: <b>no duration anywhere</b>, and <b>no way to pay</b>. One founder would have paid &pound;500 from his phone; one buyer would have paid &pound;1,500 the same day against a deal worth more than her runway. The site correctly says the rails are not built &mdash; the honesty is right, and the consequence is that the highest-intent reader in the study had nowhere to go but an email address.</p>
-  <figure class="shot" data-shot="findings.webp" data-dir="images/" data-alt="The findings view for the riskmandate.ai run, grouped by what each costs — two blocking a sale, then findings tagged 'loses readers who are the buyer', 'costs reach' and 'closes a segment', each naming a page and a measurement."><figcaption>Twelve findings, tagged by what they cost rather than by severity words &mdash; <em>closes a segment</em>, <em>loses a channel</em>, <em>costs reach</em>.</figcaption></figure>
+  <p>Both blocked sales were blocked by something that is not a price: <b>no duration anywhere</b>, and <b>no way to pay</b>. One founder would have paid &pound;500 from his phone; one buyer would have paid &pound;1,500 the same day against a deal worth more than her runway. The site correctly says the rails are not built. The honesty is right, and the consequence is that the highest-intent reader in the study had nowhere to go but an email address.</p>
+  <figure class="shot" data-shot="findings.webp" data-dir="images/" data-alt="The findings view for the riskmandate.ai run, grouped by what each costs, two blocking a sale, then findings tagged 'loses readers who are the buyer', 'costs reach' and 'closes a segment', each naming a page and a measurement."><figcaption>Twelve findings, tagged by what they cost rather than by severity words, <em>closes a segment</em>, <em>loses a channel</em>, <em>costs reach</em>.</figcaption></figure>
 
   <h2 id="persona">One persona walked both sites</h2>
-  <p><b>Priya Raghavan</b> &mdash; a staff engineer who pays on her own card &mdash; appears in <a href="../synthetic-users/index.html">vault #27</a> and in this one. She bought on the store; on riskmandate.ai she would buy level 1. A persona reused across products is what turns two separate studies into a comparison, and it costs nothing but the discipline of keeping the records in the same shape.</p>
+  <p><b>Priya Raghavan</b>, a staff engineer who pays on her own card, appears in <a href="../synthetic-users/index.html">vault #27</a> and in this one. She bought on the store; on riskmandate.ai she would buy level 1. A persona reused across products is what turns two separate studies into a comparison, and it costs nothing but the discipline of keeping the records in the same shape.</p>
 
   <h2 id="shape">Shape, and the audit</h2>
   <div class="tablewrap"><table>
@@ -187,19 +184,19 @@
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.99')
-    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-    .then(function (t) { (0, eval)(t); })
-    .catch(function (e) { console.error('[shots] component failed to load:', e); });
+ fetch('../../../assets/shots.js?v=v0.3.0')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
 }());
 </script>
 
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.99</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.3.0</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -241,7 +238,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

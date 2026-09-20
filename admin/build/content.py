@@ -150,7 +150,7 @@ class Content_Loader:
                 # The separators are real text hidden by CSS: the .md twin and screen readers
                 # then get "host · category — title — line — thesis — network" as one clean
                 # line instead of six spans run together.
-                sep = '<span class="sib-sep"> &mdash; </span>'
+                sep = '<span class="sib-sep"> · </span>'
                 out.append(
                     f'<div class="sib">'
                     f'<span class="sib-host">{html.escape(host)}'

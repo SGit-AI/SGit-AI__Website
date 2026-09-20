@@ -1,8 +1,8 @@
-# Published vaults — sgit.ai
+# Published vaults, sgit.ai
 
-> Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
+> Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential, no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,32 +10,32 @@
 
 # Published vaults
 
-Every vault whose read key this site has deliberately published — with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside that page — where you will also find its read key and a link that opens it. A read key is the complete credential: no account, no token, and no write capability anywhere in it.
+Every vault whose read key this site has deliberately published, with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside that page, where you will also find its read key and a link that opens it. A read key is the complete credential: no account, no token, and no write capability anywhere in it.
 
-**Publishing one of your own?** [**The method is written down**](publishing.md) — the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
+**Publishing one of your own?** [**The method is written down**](publishing.md), the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
 
-**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them. A prefix also declares *intent*: `sgit_public_read_` is a read key meant to be published, which is what every row below carries or is being moved to. [**What each credential can do, and what its prefix declares →**](../../docs/credentials.md)
+**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key, a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape**: a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them. A prefix also declares *intent*: `sgit_public_read_` is a read key meant to be published, which is what every row below carries or is being moved to. [**What each credential can do, and what its prefix declares →**](../../docs/credentials.md)
 
-**The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
+**The two rules, applied to every row.** Read keys yes, vault keys never, a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**Eight of these vaults are semantic graphs at different altitudes, each in its own ontology** — a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
+**Eight of these vaults are semantic graphs at different altitudes, each in its own ontology**: a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
 
-**30 published vaults** — 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**30 published vaults**: 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
 
-| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company — so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
+| 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
-| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault — three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
+| 29 | [Interim CISO application pack](interim-ciso-pack/index.md)`8brojsem` | A job application as a vault, three routes for three readers, four documents in four formats each, and the client named nowhere | Briefing | 56 | 17 MB | 2026-09-17 |
 
-| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product — and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
+| 28 | [Synthetic users · riskmandate.ai](synthetic-users-riskmandate/index.md)`o3q6zhtr` | The same method as #27 pointed at a second product, and it measured rather than narrated, catching a shipped bug every existing test had passed over | Analysis | 53 | 3.5 MB | 2026-09-16 |
 
-| 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time — 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
+| 27 | [Synthetic users](synthetic-users/index.md)`g2hei4u6` | Five invented buyers walked through store.sgit.ai one screenshot at a time, 43 steps, 15 unanswered questions, 18 findings, three costing a sale | Analysis | 67 | 6.4 MB | 2026-09-15 |
 
-| 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault — cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
+| 26 | [The sgit.ai board](board/index.md)`pdulwi6i` | The site's own task board as a vault, cards as files, five columns as an app, the source of truth the site renders from | Record | 21 | 40 KB | 2026-09-07 |
 
-| 25 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates — the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
+| 25 | [Agent permission games](agent-permission-games/index.md)`4evnlwrj` | Two games about grants and mandates, the first vault here that phones home | Application | 68 | 2.6 MB | 2026-09-06 |
 
 | 24 | [AIUC-1 conformance layer](aiuc-1-conformance/index.md)`2wzct4k7` | The AIUC-1 standard as a graph, plus a conformance layer that computes insurability | Reference | 649 | 43 MB | 2026-09-05 |
 
@@ -45,9 +45,9 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 21 | [Scaling Threat Modeling](threatmodcon-2025/index.md)`0ict6flm` | ThreatModCon 2025: eleven linked threat models across 51 nodes and 179 threats | Presentation | 53 | 4.1 MB | 2026-08-27 |
 
-| 20 | [AI vs. AI — Black Hat EU 2025](blackhat-eu-2025/index.md)`k1izvg7e` | The Black Hat EU 2025 keynote, with its PDF exports and eight research papers | Presentation | 87 | 20 MB | 2026-08-27 |
+| 20 | [AI vs. AI, Black Hat EU 2025](blackhat-eu-2025/index.md)`k1izvg7e` | The Black Hat EU 2025 keynote, with its PDF exports and eight research papers | Presentation | 87 | 20 MB | 2026-08-27 |
 
-| 19 | [Standards Atlas — GDPR](standards-atlas-gdpr/index.md)`4zv4bvmu` | GDPR as a semantic graph, with writes scoped to a feedback folder | Reference | 116 | 6.3 MB | 2026-08-25 |
+| 19 | [Standards Atlas, GDPR](standards-atlas-gdpr/index.md)`4zv4bvmu` | GDPR as a semantic graph, with writes scoped to a feedback folder | Reference | 116 | 6.3 MB | 2026-08-25 |
 
 | 18 | [RiskMandate · File security](riskmandate-file-security/index.md)`wu365g94` | An eleven-step risk-acceptance walk, running SQLite in the browser | Analysis | 71 | 2.7 MB | 2026-08-25 |
 
@@ -57,7 +57,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 15 | [Content-Transformation Proxy](content-transformation-proxy/index.md)`3c90c2bff2b1` | An as-built engineering brief, shipped with its slides, diagrams and source PDFs | Briefing | 140 | 63 MB | 2026-08-25 |
 
-| 14 | [SG Commercialisation](commercialisation/index.md)`haeu7p1e` | A commercial operating model — with its customer register deliberately left empty | Briefing | 78 | 536 KB | 2026-08-25 |
+| 14 | [SG Commercialisation](commercialisation/index.md)`haeu7p1e` | A commercial operating model, with its customer register deliberately left empty | Briefing | 78 | 536 KB | 2026-08-25 |
 
 | 13 | [Vault App Mode](vault-app-pocs/index.md)`xth1xt78` | Nine proofs of concept for vault app mode, with a hub that runs them | Reference | 57 | 251 KB | 2026-08-23 |
 
@@ -67,7 +67,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 10 | [Regulation Graph](regulation-graph/index.md)`73heuprz` | The EU AI Act parsed from Formex into an evidence graph, article by article | Reference | 207 | 14.9 MB | 2026-08-20 |
 
-| 9 | [Risk Mandate](risk-mandate/index.md)`4zf6pf2z` | A working software project delivered as a vault — and it calls an LLM holding no API key | Application | 124 | 1.9 MB | 2026-08-17 |
+| 9 | [Risk Mandate](risk-mandate/index.md)`4zf6pf2z` | A working software project delivered as a vault, and it calls an LLM holding no API key | Application | 124 | 1.9 MB | 2026-08-17 |
 
 | 8 | [Risk Graph Explorer](risk-graph-explorer/index.md)`3simlnqe` | A fact-to-risk graph explorer, built to be public: its app.json requests nothing | Application | 33 | 428 KB | 2026-08-17 |
 
@@ -77,7 +77,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 5 | [Strategy Maps](strategy-maps/index.md)`ookq4mn4` | The SG/Send strategy in seven Wardley maps, plus the sgit positioning analysis | Analysis | 33 | 830 KB | 2026-08-16 |
 
-| 4 | [Field Notes](field-notes/index.md)`4bshby5n` | Six studies with generative SVG art — the smallest complete vault app | Application | 4 | 11 KB | 2026-08-16 |
+| 4 | [Field Notes](field-notes/index.md)`4bshby5n` | Six studies with generative SVG art, the smallest complete vault app | Application | 4 | 11 KB | 2026-08-16 |
 
 | 3 | [Deploy Docs](deploy-docs/index.md)`fyofmkvr` | Living deployment documentation, updated by an sgit push with no site deploy | Record | 17 | 25 KB | 2026-08-16 |
 
@@ -85,9 +85,9 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 | 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
 
-This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) — an index of vaults that is itself a vault, updated by an sgit push with no site deploy — carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all — creation, audit, deliberate key publication, embed — is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
+This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) (an index of vaults that is itself a vault, updated by an sgit push with no site deploy) carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all (creation, audit, deliberate key publication, embed) is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
 
-Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt) — every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
+Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt), every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
 
 
 ---

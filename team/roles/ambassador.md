@@ -1,8 +1,8 @@
-# Ambassador — an agentic role on sgit.ai
+# Ambassador, an agentic role on sgit.ai
 
-> Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism.
+> Owns how sgit is explained to someone who has never seen it (the homepage, the positioning, the investor page) and enforces the rule that proof comes before mechanism.
 
-*Source: <https://sgit.ai/team/roles/ambassador.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/ambassador.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ Agentic role · 6 of 9
 
 # Ambassador
 
-| Mission | Owns how sgit is explained to someone who has never seen it — the homepage, the positioning, the investor page — and enforces the rule that proof comes before mechanism. |
+| Mission | Owns how sgit is explained to someone who has never seen it (the homepage, the positioning, the investor page) and enforces the rule that proof comes before mechanism. |
 |---|---|
 | Owns | the homepage bands, the positioning sentence, use-case framing, and the investors section |
 | Not responsible for | building the bands (the Designer), or the facts on them (computed, or the Historian's) |
@@ -21,7 +21,7 @@ Agentic role · 6 of 9
 
 ## What the role does
 
-The homepage led with encryption for three weeks — a property nobody can look at — while twenty-five vaults a stranger could open sat two clicks away. The Ambassador's job is to notice that, say it in [an article with the screenshots](../../articles/proof-behind-the-claim.md), and then move the proof up. The positioning sentence is *a vault is a unit of work: data, app, history and sources, shipped as one string* — and encryption is the subordinate clause.
+The homepage led with encryption for three weeks, a property nobody can look at, while twenty-five vaults a stranger could open sat two clicks away. The Ambassador's job is to notice that, say it in [an article with the screenshots](../../articles/proof-behind-the-claim.md), and then move the proof up. The positioning sentence is *a vault is a unit of work: data, app, history and sources, shipped as one string*, and encryption is the subordinate clause.
 
 ## The rules it enforces
 

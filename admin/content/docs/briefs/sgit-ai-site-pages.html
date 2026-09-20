@@ -1,19 +1,19 @@
 <main class="doc" style="max-width:var(--wide)">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / Reading a vault from a site page</p>
-  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site &mdash; outside every vault host. <a href="../surfaces.html">The other two surfaces &rarr;</a></p>
+  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site, outside every vault host. <a href="../surfaces.html">The other two surfaces &rarr;</a></p>
   <h1>Reading a vault from a <code>*.sgit.ai</code> site page</h1>
-  <p class="lead">A build brief for whoever is coding one of the sites in this estate. Vault content can be published on an ordinary web page &mdash; indexed, linkable, readable with no key and no account &mdash; because the vault API answers <b>cross-origin GETs</b> and the decryption happens in the visitor's browser. This is the surface with the most reach and the least protection, and the two facts are related.</p>
+  <p class="lead">A build brief for whoever is coding one of the sites in this estate. Vault content can be published on an ordinary web page (indexed, linkable, readable with no key and no account) because the vault API answers <b>cross-origin GETs</b> and the decryption happens in the visitor's browser. This is the surface with the most reach and the least protection, and the two facts are related.</p>
 
-  <div class="note"><b>The enabling fact, in one line.</b> <code>GET /api/vault/read/&lt;vault_id&gt;/&hellip;</code> is a plain CORS request with <b>no auth header</b>, from any origin. The server can afford that because what it returns is ciphertext under a key it has never held &mdash; so <code>graphs.sgit.ai</code>, <code>risks.sgit.ai</code> or any other site can read a published vault directly, with no proxy, no backend and no build step.</div>
+  <div class="note"><b>The enabling fact, in one line.</b> <code>GET /api/vault/read/&lt;vault_id&gt;/&hellip;</code> is a plain CORS request with <b>no auth header</b>, from any origin. The server can afford that because what it returns is ciphertext under a key it has never held, so <code>graphs.sgit.ai</code>, <code>risks.sgit.ai</code> or any other site can read a published vault directly, with no proxy, no backend and no build step.</div>
 
   <h2 id="first">Do not write the reader</h2>
   <p>It already exists, it is small, and it is deliberately in the open so you can copy it rather than reimplement the derivations:</p>
   <div class="tablewrap"><table>
     <tr><th>File</th><th>What it gives you</th></tr>
-    <tr><td><code>assets/vault-embed.js</code></td><td>The reader, ~90 lines &mdash; import the key, derive the ref id, fetch, decrypt, walk commit &rarr; tree &rarr; blob, <code>readText</code> / <code>readBytes</code> by path. It exports <code>SGVaultEmbed.Reader</code> so nothing else has to copy the derivations. It also mounts a whole vault app in a sandboxed frame if that is what you want</td></tr>
-    <tr><td><code>assets/vault-docs.js</code></td><td>The same reader with cache accounting and a markdown renderer &mdash; the instrumented version, useful when you want to show a reader what the page actually fetched</td></tr>
+    <tr><td><code>assets/vault-embed.js</code></td><td>The reader, ~90 lines, import the key, derive the ref id, fetch, decrypt, walk commit &rarr; tree &rarr; blob, <code>readText</code> / <code>readBytes</code> by path. It exports <code>SGVaultEmbed.Reader</code> so nothing else has to copy the derivations. It also mounts a whole vault app in a sandboxed frame if that is what you want</td></tr>
+    <tr><td><code>assets/vault-docs.js</code></td><td>The same reader with cache accounting and a markdown renderer, the instrumented version, useful when you want to show a reader what the page actually fetched</td></tr>
     <tr><td><code>assets/vault-deck.js</code></td><td>A worked viewer built on the reader: <a href="vault-decks-on-a-site.html">decks and PDFs</a>, with the sandbox policy already right</td></tr>
-    <tr><td><code>assets/vault-ui-embed.js</code></td><td>Frames the official SG/Vault UI on your page, read-only, from a read key &mdash; when you want the whole product rather than a view of it</td></tr>
+    <tr><td><code>assets/vault-ui-embed.js</code></td><td>Frames the official SG/Vault UI on your page, read-only, from a read key, when you want the whole product rather than a view of it</td></tr>
   </table></div>
   <p>All four are on this site under <code>/assets/</code> and are MIT-spirited house code: copy them into your site, do not fetch them across origins at runtime. The mechanism they share is written up at <a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a>.</p>
 
@@ -24,8 +24,8 @@
   <div class="tablewrap"><table>
     <tr><th>Vault content</th><th>How to render it</th></tr>
     <tr><td><b>Text and numbers</b></td><td>Escape it. It is a string from a third party, and it belongs in <code>textContent</code>, never in <code>innerHTML</code></td></tr>
-    <tr><td><b>Markup &mdash; a document, a slide</b></td><td><code>&lt;iframe sandbox&gt;</code> with <b>no</b> <code>allow-scripts</code>, plus a CSP of <code>default-src 'none'; img-src data:; style-src 'unsafe-inline'</code>. Static content does not need scripting, so switch it off rather than contain it</td></tr>
-    <tr><td><b>Anything that must run</b></td><td><code>&lt;iframe sandbox="allow-scripts"&gt;</code> &mdash; opaque origin, no <code>allow-same-origin</code>, ever &mdash; and serve its reads over <code>postMessage</code>. <b>Never <code>eval</code> vault code in your page.</b></td></tr>
+    <tr><td><b>Markup, a document, a slide</b></td><td><code>&lt;iframe sandbox&gt;</code> with <b>no</b> <code>allow-scripts</code>, plus a CSP of <code>default-src 'none'; img-src data:; style-src 'unsafe-inline'</code>. Static content does not need scripting, so switch it off rather than contain it</td></tr>
+    <tr><td><b>Anything that must run</b></td><td><code>&lt;iframe sandbox="allow-scripts"&gt;</code> (opaque origin, no <code>allow-same-origin</code>, ever) and serve its reads over <code>postMessage</code>. <b>Never <code>eval</code> vault code in your page.</b></td></tr>
     <tr><td><b>Images</b></td><td>Decrypt them yourself and pass <code>data:</code> URIs in, or mint blob URLs <em>inside</em> the frame. A vault path in a <code>src</code> resolves against an opaque origin and 404s</td></tr>
     <tr><td><b>PDFs</b></td><td>Download, never embed. Chrome refuses to render a PDF in a sandboxed frame, and un-sandboxing it to make the viewer work defeats the point</td></tr>
     <tr><td><b>Links inside vault content</b></td><td>Rewrite or restrict them. A link is a place a vault author can send your visitor</td></tr>
@@ -33,7 +33,7 @@
 
   <h2 id="keys">Keys, on a page anyone can view source on</h2>
   <ul>
-    <li><b>A read key belongs in the page.</b> That is what it is for &mdash; it is derived one-way, it cannot be turned into write access, and printing it is how a reader clones the vault themselves. Put it in the markup where a human can copy it, not only in a script.</li>
+    <li><b>A read key belongs in the page.</b> That is what it is for. It is derived one-way, it cannot be turned into write access, and printing it is how a reader clones the vault themselves. Put it in the markup where a human can copy it, not only in a script.</li>
     <li><b>A vault key must never touch a site.</b> It is write access. There is no such thing as a partly-public vault key.</li>
     <li><b>Grep the built site before every release</b>, and make it a step that can fail the build rather than a habit. This site's release aborts on a key-shaped match.</li>
     <li><b>A credential scan built for sgit shapes will not catch other secrets.</b> We nearly published an OpenRouter key sitting in a vault file, in a field called <code>openrouter_key</code>, that matched none of the sgit patterns. Scan for what the vault holds, not only for what sgit issues.</li>

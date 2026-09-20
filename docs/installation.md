@@ -1,8 +1,8 @@
-# Installation — sgit Docs
+# Installation, sgit Docs
 
 > Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
 
-*Source: <https://sgit.ai/docs/installation.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/installation.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -18,7 +18,7 @@ $ pip install sgit-ai
 $ pipx install sgit-ai
 ```
 
-This installs two entry points: `sgit` and `sgit-ai` (they are identical — use whichever you like).
+This installs two entry points: `sgit` and `sgit-ai` (they are identical, use whichever you like).
 
 ## Verify
 

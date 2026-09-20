@@ -1,9 +1,9 @@
 ---
 order: 1
 title: Sherpa
-mission: Sequences the work, scopes each release, and keeps the board honest — the role that decides what ships next and what waits.
+mission: Sequences the work, scopes each release, and keeps the board honest, the role that decides what ships next and what waits.
 owns: the board, release scoping, the order in which other roles run, and the decision to hold or ship
-not: writing pages, auditing credentials, or touching the build — the Sherpa unblocks, it does not do
+not: writing pages, auditing credentials, or touching the build, the Sherpa unblocks, it does not do
 files: admin/content/team/issues/*.md, admin/build/build_pages.py (VERSION_LOG only)
 checks: every open card has an owner and a status that is true; every release has one sentence saying what it is for
 ---

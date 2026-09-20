@@ -10,17 +10,17 @@
   │  key: local only ─────┼───────▶│   key: shared via vault   │◀───────┼─ key: local only      │
   └───────────────────────┘        └───────────────────────────┘        └───────────────────────┘</pre>
   <ul>
-    <li><b>Named branches</b> (<code>main</code>, <code>feature-x</code>, …) are shared and live on the server — encrypted, like everything else.</li>
+    <li><b>Named branches</b> (<code>main</code>, <code>feature-x</code>, …) are shared and live on the server, encrypted, like everything else.</li>
     <li><b>Clone branches</b> are created per clone. Their key is stored only in <code>.sg_vault/local/</code> and is never pushed. All your commits land here first.</li>
     <li><code>sgit push</code> re-encrypts your clone-branch commits with the named branch's key and forwards them. <code>sgit pull</code> brings named-branch commits down and merges them into your clone branch.</li>
   </ul>
-  <p>Run <code>sgit status --explain</code> any time — it prints this model with your vault's actual branch names filled in.</p>
+  <p>Run <code>sgit status --explain</code> any time, it prints this model with your vault's actual branch names filled in.</p>
 
   <h2>Why it works this way</h2>
   <ul>
-    <li><b>Isolation by construction.</b> Two machines — or two agents — on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.</li>
+    <li><b>Isolation by construction.</b> Two machines, or two agents, on the same vault physically cannot overwrite each other's uncommitted or unpushed work: they're on different branches with different keys.</li>
     <li><b>Sharing is explicit.</b> Nothing you commit is visible to anyone until you <code>push</code>. An agent can iterate messily in private and publish only the result.</li>
-    <li><b>Safe concurrent pushes.</b> Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering — pull, merge, push again.</li>
+    <li><b>Safe concurrent pushes.</b> Pushes use compare-and-swap on the server (atomic batch writes): if someone pushed before you, your push is rejected cleanly instead of silently clobbering, pull, merge, push again.</li>
   </ul>
 
   <h2>Merging and conflicts</h2>

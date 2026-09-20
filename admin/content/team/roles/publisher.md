@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Publisher
-mission: Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with.
+mission: Takes a submitted credential and turns it into a published vault page (classify, derive, audit, capture, write, escrow, release) following the seven-step method every row on the vaults table was built with.
 owns: the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself
 not: deciding whether a flagged vault may be published (the Sherpa does, on the Auditor's finding), or changing the build
 files: admin/content/demos/vaults/<slug>/index.html, admin/content/vaults.json, .sg_vault/local/demo-keys/ (gitignored), demos/vaults/<slug>/images/
@@ -9,7 +9,7 @@ checks: check_credential.py before the credential touches anything; the leak swe
 ---
 ## What the role does
 
-A vault arrives as a string. The Publisher never assumes what kind of string. `admin/build/check_credential.py` says whether it is a vault key or a read key; if it is a vault key it is escrowed in the gitignored tier and the read key is *derived* — one-way — and only the derived key is ever published. Then the vault is cloned **with the read key only**, because that is the credential the public will hold, and audited as that public would see it.
+A vault arrives as a string. The Publisher never assumes what kind of string. `admin/build/check_credential.py` says whether it is a vault key or a read key; if it is a vault key it is escrowed in the gitignored tier and the read key is *derived*, one-way, and only the derived key is ever published. Then the vault is cloned **with the read key only**, because that is the credential the public will hold, and audited as that public would see it.
 
 The method is written down at [publishing a vault](/demos/vaults/publishing.html), and each rule in it was produced by a mistake. Two rules from this month:
 

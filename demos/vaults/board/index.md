@@ -1,8 +1,8 @@
-# The sgit.ai board — a published vault
+# The sgit.ai board, a published vault
 
-> The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key — because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them.
+> The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key, because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them.
 
-*Source: <https://sgit.ai/demos/vaults/board/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/board/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,20 +10,20 @@
 
 # The site's own board, as a vault
 
-Two days after [the board](../../../team/board.md) appeared as files in the site repository, it moved out into a vault of its own. Every card is a markdown file; a five-column board app renders them and asks the host for nothing; and the read key is published, because every task, bug and need on it is public. The vault is the source of truth — **moving a card is `sgit push`, with no site release** — and the site renders a snapshot from a clone each time it ships.
+Two days after [the board](../../../team/board.md) appeared as files in the site repository, it moved out into a vault of its own. Every card is a markdown file; a five-column board app renders them and asks the host for nothing; and the read key is published, because every task, bug and need on it is public. The vault is the source of truth (**moving a card is `sgit push`, with no site release**) and the site renders a snapshot from a clone each time it ships.
 
-**Open it yourself — the key is the whole credential.**
- Read key: `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
- In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i) · From the CLI: `sgit clone f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i) · From the CLI: `sgit clone sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 Published as a read key, derived from the vault key at creation. The vault key is held by the site's release engineer and is not published.
 
 ## See it live, here
 
-[Open the board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns wide — it has more room in its own tab than in the frame below.
+[Open the board in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns wide. It has more room in its own tab than in the frame below.
 
 ## Why a vault, and not the repository
 
-The cards started as files in the site repository, which was already the right shape — issues-fs.sgit.ai's argument that a tracker should be files that version with the thing they track. But it tied every board change to a site release: to move a card from *review* to *done*, an agent had to build, validate, push two remotes and wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.
+The cards started as files in the site repository, which was already the right shape, issues-fs.sgit.ai's argument that a tracker should be files that version with the thing they track. But it tied every board change to a site release: to move a card from *review* to *done*, an agent had to build, validate, push two remotes and wait for the deploy to verify. A board should be cheaper to update than the thing it tracks.
 
 So the files moved into a vault. Now the site is a **reader** of the board rather than its home: the release script pulls the vault before it builds, and the columns on [the board page](../../../team/board.md) are a snapshot as of that release, labelled as such. Between releases, the vault is ahead of the site, and opening it shows the truth.
 
@@ -33,9 +33,9 @@ the app
 
 ### Five columns, from the files, asking for nothing
 
-`index.html` lists `issues/` through `sg.vfs`, parses each card's frontmatter, and draws the columns. `app.json` declares `"permissions": {}` — the app reads the vault it is in and touches nothing else. Served outside a vault host, it falls back to `issues/index.json`, which `tools/reindex.py` regenerates from the same files.
+`index.html` lists `issues/` through `sg.vfs`, parses each card's frontmatter, and draws the columns. `app.json` declares `"permissions": {}`. The app reads the vault it is in and touches nothing else. Served outside a vault host, it falls back to `issues/index.json`, which `tools/reindex.py` regenerates from the same files.
 
-Needs — the things only the author can supply — keep their own column and their own colour, so they are never discovered late.
+Needs, the things only the author can supply, keep their own column and their own colour, so they are never discovered late.
 
 The app, rendered from the files. Moving a card is editing one line and pushing.
 

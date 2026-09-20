@@ -26,6 +26,13 @@
       <description>An agent asked to inspect the two AIUC 1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction. It was right. Our label was wrong. The sgit CLI defin…</description>
     </item>
     <item>
+      <title>The em-dash is gone from the prose, and so is the legacy key prefix</title>
+      <link>https://sgit.ai/updates/index.html#no-more-em-dashes</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#no-more-em-dashes</guid>
+      <pubDate>2026-09-20</pubDate>
+      <description>Two site wide normalisations, each with a guard so they stay done. 3,200 em dashes, rewritten rather than deleted A good many readers now find the character off putting, so it is gone from every sentence on the site. This was not a find and replace. A rewriter…</description>
+    </item>
+    <item>
       <title>The article that introduces Fractal Semantic Graphs, published here with its pictures</title>
       <link>https://sgit.ai/updates/index.html#introducing-fsg-article</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#introducing-fsg-article</guid>
@@ -33,14 +40,14 @@
       <description>Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema is the introduction to the term, written for LinkedIn from the page that defines it. LinkedIn cannot carry the diagrams, so this is the canonical copy: the same text,…</description>
     </item>
     <item>
-      <title>The site&#x27;s own vault mirror is gone — deleted, purged from history, force-pushed</title>
+      <title>The site&#x27;s own vault mirror is gone, deleted, purged from history, force-pushed</title>
       <link>https://sgit.ai/updates/index.html#the-mirror-is-gone</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-mirror-is-gone</guid>
       <pubDate>2026-09-19</pubDate>
       <description>For 76 releases this site was one folder that was both an sgit vault and a git repository, and every release pushed both. Today the vault mirror was removed from the tree, purged from all 112 commits with git filter repo , and the branch force pushed. The repo…</description>
     </item>
     <item>
-      <title>The jump — what the fractal property actually adds</title>
+      <title>The jump, what the fractal property actually adds</title>
       <link>https://sgit.ai/updates/index.html#the-jump</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-jump</guid>
       <pubDate>2026-09-19</pubDate>
@@ -51,14 +58,14 @@
       <link>https://sgit.ai/updates/index.html#llms-txt-routing</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#llms-txt-routing</guid>
       <pubDate>2026-09-19</pubDate>
-      <description>Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…</description>
+      <description>Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file, the generator adds every page. But the guidance front door sat at line 149 of 239, as page…</description>
     </item>
     <item>
-      <title>The ladder&#x27;s right column looked like links and was not — now it is</title>
+      <title>The ladder&#x27;s right column looked like links and was not, now it is</title>
       <link>https://sgit.ai/updates/index.html#ladder-links</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#ladder-links</guid>
       <pubDate>2026-09-19</pubDate>
-      <description>Second read of Fractal Semantic Graphs, two fixes. The why this page exists note — the LinkedIn back story — is gone. The page stands without it. The ladder diagram&#x27;s right hand column was long blue monospace text that read as a row of links nobody could click…</description>
+      <description>Second read of Fractal Semantic Graphs, two fixes. The why this page exists note, the LinkedIn back story, is gone. The page stands without it. The ladder diagram&#x27;s right hand column was long blue monospace text that read as a row of links nobody could click.…</description>
     </item>
     <item>
       <title>How far down does the graph go? A page for the question that got three bare URLs</title>
@@ -68,25 +75,25 @@
       <description>Asked on LinkedIn whether we had &quot;defined the dimensions/layers needed to map this all the way down to say the EA and system configurations&quot; , the author answered with three links. The answer was right and the form was poor. How far down does the graph go? is…</description>
     </item>
     <item>
-      <title>Fractal Semantic Graphs — the page now leads with the definition</title>
+      <title>Fractal Semantic Graphs, the page now leads with the definition</title>
       <link>https://sgit.ai/updates/index.html#fractal-semantic-graphs-defined</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#fractal-semantic-graphs-defined</guid>
       <pubDate>2026-09-19</pubDate>
       <description>The author&#x27;s first read of yesterday&#x27;s page made three points, and all three were right. How far down does the graph go? is a section, not a title. The page must start by defining and visualising the term. And the first screens must work for a visitor who know…</description>
     </item>
     <item>
-      <title>Fractal means the inside is different, not the same — the definition had it backwards</title>
+      <title>Fractal means the inside is different, not the same. The definition had it backwards</title>
       <link>https://sgit.ai/updates/index.html#fractal-means-different-not-same</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#fractal-means-different-not-same</guid>
       <pubDate>2026-09-19</pubDate>
       <description>Two releases ago Fractal Semantic Graphs defined the term as a graph where every node is itself a semantic graph built by the same rules , and gave the test as if zooming into a node needs a new format or a special case, the system is hierarchical . The author…</description>
     </item>
     <item>
-      <title>Deleting files from git history — the exact scenario, drawn out</title>
+      <title>Deleting files from git history, the exact scenario, drawn out</title>
       <link>https://sgit.ai/updates/index.html#deleting-files-from-history</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#deleting-files-from-history</guid>
       <pubDate>2026-09-19</pubDate>
-      <description>Yesterday&#x27;s purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did — git reported + e70d582d...b5ae665d dev dev (forced update) — and the new case study writes the whole scenario down with di…</description>
+      <description>Yesterday&#x27;s purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did, git reported + e70d582d...b5ae665d dev dev (forced update) , and the new case study writes the whole scenario down with dia…</description>
     </item>
     <item>
       <title>A brief for graphs.sgit.ai, in place of a footnote</title>
@@ -96,28 +103,28 @@
       <description>The Fractal Semantic Graphs page carried a small footnote saying that graphs.sgit.ai had the fractal test backwards. The author asked for the footnote to go and for a proper brief in its place, since the sgit.ai page is now the fullest worked application of th…</description>
     </item>
     <item>
-      <title>Vault #30 — the same pack, written for an archetype instead of a company</title>
+      <title>Vault #30, the same pack, written for an archetype instead of a company</title>
       <link>https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</guid>
       <pubDate>2026-09-18</pubDate>
-      <description>Vault 30 is a sibling of 29 from the same generator, one day later — a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and…</description>
+      <description>Vault 30 is a sibling of 29 from the same generator, one day later, a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and w…</description>
     </item>
     <item>
       <title>The summit sheets get a preview grid, and their numbers are dated rather than corrected</title>
       <link>https://sgit.ai/updates/index.html#summit-sheets-preview-grid</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#summit-sheets-preview-grid</guid>
       <pubDate>2026-09-18</pubDate>
-      <description>The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build time and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embe…</description>
+      <description>The four Lisbon handouts now appear on the parent page as four A4 previews (page one of each printed sheet, rendered from the PDF at build time and shown as a card) so a reader sees all four at a glance and clicks through to the page with the table, the embed…</description>
     </item>
     <item>
-      <title>The Lisbon summit sheets — as pages, and as the PDFs they were handed out as</title>
+      <title>The Lisbon summit sheets, as pages, and as the PDFs they were handed out as</title>
       <link>https://sgit.ai/updates/index.html#the-lisbon-summit-sheets</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-lisbon-summit-sheets</guid>
       <pubDate>2026-09-17</pubDate>
-      <description>Four audience sheets written for a startup summit in Lisbon — founders, startups, investors, corporate — are now on the site, with a parent page, one page each, and the PDF both embedded and downloadable. The PDF is the download, not the page. The capability t…</description>
+      <description>Four audience sheets written for a startup summit in Lisbon, founders, startups, investors, corporate, are now on the site, with a parent page, one page each, and the PDF both embedded and downloadable. The PDF is the download, not the page. The capability tab…</description>
     </item>
     <item>
-      <title>A job application as a vault — and the privacy audit published beside it</title>
+      <title>A job application as a vault, and the privacy audit published beside it</title>
       <link>https://sgit.ai/updates/index.html#a-job-application-as-a-vault</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#a-job-application-as-a-vault</guid>
       <pubDate>2026-09-17</pubDate>
@@ -128,21 +135,14 @@
       <link>https://sgit.ai/updates/index.html#synthetic-users-second-run</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#synthetic-users-second-run</guid>
       <pubDate>2026-09-16</pubDate>
-      <description>Vault 28 applies 27&#x27;s method to riskmandate.ai, one day later. That is the point: one run is an anecdote, two sites is a method. It is not a repeat. The first vault narrated ; this one measures — words above the fold, character offsets, scroll positions in pix…</description>
+      <description>Vault 28 applies 27&#x27;s method to riskmandate.ai, one day later. That is the point: one run is an anecdote, two sites is a method. It is not a repeat. The first vault narrated ; this one measures : words above the fold, character offsets, scroll positions in pix…</description>
     </item>
     <item>
-      <title>Synthetic users — five people who do not exist, shopping</title>
+      <title>Synthetic users, five people who do not exist, shopping</title>
       <link>https://sgit.ai/updates/index.html#synthetic-users</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#synthetic-users</guid>
       <pubDate>2026-09-15</pubDate>
       <description>The 27th vault is the most useful one published here that contains no real data at all. Five invented buyers were walked through store.sgit.ai one screenshot at a time, asked what they made of each screen, and interviewed at the end: 43 steps, 15 questions the…</description>
-    </item>
-    <item>
-      <title>The transfer API gets documented, and a dangling reference closes</title>
-      <link>https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-transfer-api-gets-documented</guid>
-      <pubDate>2026-09-10</pubDate>
-      <description>The team that owns the SG/Send API wrote an integration guide for sending an encrypted bundle to SG/Send from an agent workflow, and asked whether it belonged on this site. Checking rather than assuming turned up something worse than a missing page. The refere…</description>
     </item>
   </channel>
 </rss>

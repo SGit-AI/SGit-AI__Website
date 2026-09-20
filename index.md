@@ -1,39 +1,39 @@
-# sgit — the encrypted git for humans and AI agents
+# sgit (the encrypted git for humans and AI agents
 
-> sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
+> sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Git for encrypted vaults — for humans and AI agents
+Git for encrypted vaults, for humans and AI agents
 
 # A vault is a unit of work:
 data, app, history and sources, shipped as one string
 
-Version it like git. Hand it over with a single read key — no account, no hosting, no install for the reader. And the server that stores it cannot read it.
+Version it like git. Hand it over with a single read key, no account, no hosting, no install for the reader. And the server that stores it cannot read it.
 
 [**Open a real vault →**](demos/vaults/index.md) [5-minute quickstart →](docs/quickstart.md)
 
 Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your browser](try/index.md)
 
-[Reference — **AIUC-1 conformance layer** — The AIUC-1 standard as a graph, plus a conformance layer that computes insurability — Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application — **Agent permission games** — Two games about grants and mandates — the first vault here that phones home — Open it →](demos/vaults/agent-permission-games/index.md) [Presentation — **AI vs. AI — Black Hat EU 2025** — The Black Hat EU 2025 keynote, with its PDF exports and eight research papers — Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report — **Penetration Test Report** — A penetration test report (fictional) with a re-test script per finding — Open it →](demos/vaults/pentest-report/index.md)
+[Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **30 published vaults**. Each opens with a read key printed on its page — no account, nothing to install, and the server that stores it cannot read it. [See all 30 →](demos/vaults/index.md)
+Four of **30 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 30 →](demos/vaults/index.md)
 
 ## What people actually ship
 
-Not categories — things. Each one is a real vault you can open, and each is hard to make any other way, for a reason that has little to do with encryption.
+Not categories, things. Each one is a real vault you can open, and each is hard to make any other way, for a reason that has little to do with encryption.
 
-[Hand over a report — **Penetration Test Report** — Findings, evidence and a retest script per finding travel as one unit. The client opens it with one string and can re-run the tests themselves. — vault `o4lrwx02` · open it →](demos/vaults/pentest-report/index.md) [Publish a standard as data — **AIUC-1 conformance layer** — 53 controls as a graph you can cite, 82 hashed source snapshots — and a fork that added a conformance layer without changing a byte of the original. — vault `2wzct4k7` · open it →](demos/vaults/aiuc-1-conformance/index.md) [Give a talk — **AI vs. AI — Black Hat EU 2025** — 26 slides, six PDF exports and the eight papers the talk cites, in the vault it was presented from. The deck and its sources never separate. — vault `k1izvg7e` · open it →](demos/vaults/blackhat-eu-2025/index.md) [Pitch an investor — **VoiceDebrief pitch (FI)** — A presenter app with timings and speaker notes, shipped with the script, the research and the exports it was built from. — vault `95i2xqrd` · open it →](demos/vaults/voicedebrief-pitch/index.md) [Ship a game that reports back — **Agent permission games** — Anonymous telemetry over a write-only lane — the one credential shape that survives being published with a read key. — vault `4evnlwrj` · open it →](demos/vaults/agent-permission-games/index.md) [Give an agent a workspace — **Risk Mandate** — 124 files, 98 commits, eight entry points: a software project delivered as a vault — that calls an LLM without ever holding the API key. — vault `4zf6pf2z` · open it →](demos/vaults/risk-mandate/index.md)
+[Hand over a report, **Penetration Test Report**, Findings, evidence and a retest script per finding travel as one unit. The client opens it with one string and can re-run the tests themselves., vault `o4lrwx02` · open it →](demos/vaults/pentest-report/index.md) [Publish a standard as data, **AIUC-1 conformance layer**, 53 controls as a graph you can cite, 82 hashed source snapshots, and a fork that added a conformance layer without changing a byte of the original., vault `2wzct4k7` · open it →](demos/vaults/aiuc-1-conformance/index.md) [Give a talk, **AI vs. AI, Black Hat EU 2025**, 26 slides, six PDF exports and the eight papers the talk cites, in the vault it was presented from. The deck and its sources never separate., vault `k1izvg7e` · open it →](demos/vaults/blackhat-eu-2025/index.md) [Pitch an investor, **VoiceDebrief pitch (FI)**, A presenter app with timings and speaker notes, shipped with the script, the research and the exports it was built from., vault `95i2xqrd` · open it →](demos/vaults/voicedebrief-pitch/index.md) [Ship a game that reports back, **Agent permission games**, Anonymous telemetry over a write-only lane, the one credential shape that survives being published with a read key., vault `4evnlwrj` · open it →](demos/vaults/agent-permission-games/index.md) [Give an agent a workspace, **Risk Mandate**, 124 files, 98 commits, eight entry points: a software project delivered as a vault, that calls an LLM without ever holding the API key., vault `4zf6pf2z` · open it →](demos/vaults/risk-mandate/index.md)
 
 [All published vaults, sortable →](demos/vaults/index.md)
 
 ## One human, a team of agents
 
-This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
+This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-127site releases, each verified live before it was called done
+128site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -45,7 +45,7 @@ This site, and every vault on it, is built by one person working with several AI
 
 2The team that owns the API reviewed that vault against the brief, found the brief wrong in two places, and [the correction now sits above the mistake](docs/briefs/index.md).
 
-3One agent [forked another agent's vault](demos/vaults/aiuc-1-conformance/index.md), kept every byte, added a layer — and the original's tests still pass inside the fork.
+3One agent [forked another agent's vault](demos/vaults/aiuc-1-conformance/index.md), kept every byte, added a layer, and the original's tests still pass inside the fork.
 
 →The record is the site itself: [the briefs](docs/briefs/index.md), [the case studies](case-studies/index.md), [every release](admin/versions.md). And the diagnosis that produced this homepage is [an article, with the before pictures](articles/proof-behind-the-claim.md).
 
@@ -59,9 +59,9 @@ $sgit create my-vault
 
  Vault key: <24-char-passphrase>:<vault-id>
 
-Keep this safe — it is the address, the auth, and the
-encryption key in one string. Without it, nobody — including
-the server — can read this vault.
+Keep this safe. It is the address, the auth, and the
+encryption key in one string. Without it, nobody, including
+the server, can read this vault.
 
 $vim notes/positioning.md
 $sgit status
@@ -70,7 +70,7 @@ modified: notes/positioning.md
 added: drafts/hero-copy.md
 
 $sgit commit -m "first draft of hero copy"
-✓ Committed 2 files (no staging area — commit snapshots the folder)
+✓ Committed 2 files (no staging area, commit snapshots the folder)
 
 $sgit history log --oneline
 c4e81a first draft of hero copy
@@ -83,7 +83,7 @@ $sgit history diff
 + sgit is git for encrypted vaults
 
 $sgit push
-✓ Pushed 2 objects (delta push — only changed, only ciphertext)
+✓ Pushed 2 objects (delta push, only changed, only ciphertext)
 
 # on another machine (or another agent)
 $sgit clone <vault-key>
@@ -92,7 +92,7 @@ $sgit clone <vault-key>
 $sgit pull
 ✓ Up to date
 
-# one call: encrypt, commit, push, machine-readable result —
+# one call: encrypt, commit, push, machine-readable result
 # no working-directory scan, no full clone needed
 $sgit write notes/finding.md --file result.md \
  --message "agent A: analysis" --push --json
@@ -102,7 +102,7 @@ $sgit write notes/finding.md --file result.md \
 "blob_id": "obj-cas-imm-9c2e41ab77d0"
  }
 
-The vault key is the address, the auth, and the encryption key — one high-entropy string. Keep it safe.
+The vault key is the address, the auth, and the encryption key, one high-entropy string. Keep it safe.
 
 **Git-like version control**commit, branch, merge, diff, log, stash, revert your encrypted files
 
@@ -114,7 +114,7 @@ The vault key is the address, the auth, and the encryption key — one high-entr
 
 **Apps live inside the data**a vault can carry its own sandboxed app, with the permissions it asks for declared in a file
 
-**Browser interop**open the same vault in SG/Vault on the web — CLI and browser speak one wire format
+**Browser interop**open the same vault in SG/Vault on the web, CLI and browser speak one wire format
 
 ## What the server sees
 
@@ -136,11 +136,11 @@ The vault key is the address, the auth, and the encryption key — one high-entr
 - object sizes · timestamps
 - the vault id
 
-That's the whole list — and we publish the threat model, including what the server *can* see (sizes, timing, vault ID). [Read the security model →](security/index.md)
+That's the whole list, and we publish the threat model, including what the server *can* see (sizes, timing, vault ID). [Read the security model →](security/index.md)
 
 ## Built for agents
 
-Agents need shared state. Shared state needs versioning — and privacy. sgit is the encrypted, versioned workspace for humans and AI agents.
+Agents need shared state. Shared state needs versioning, and privacy. sgit is the encrypted, versioned workspace for humans and AI agents.
 
 Persistent memory
 
@@ -152,7 +152,7 @@ Multi-agent, human-merged
 
 ### A branch per agent
 
-Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge — in the terminal or in the SG/Vault browser.
+Each agent gets its own private clone branch; work meets on named branches; a human reviews the merge, in the terminal or in the SG/Vault browser.
 
 Agent-grade plumbing
 
@@ -162,15 +162,15 @@ Agent-grade plumbing
 
 [Read the agent guide →](docs/agents.md) · [Install the skills →](skills/index.md) · [Use cases →](use-cases/index.md) · [llms.txt](llms.txt)
 
-## In production — and honest about it
+## In production, and honest about it
 
-sgit is in beta, powering production workflows daily. No superlatives — just the evidence, and a page that tells you when *not* to use it.
+sgit is in beta, powering production workflows daily. No superlatives, just the evidence, and a page that tells you when *not* to use it.
 
-**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security/index.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why/index.md) [**sgit · SG/Vault · SG/Send** — the three doors](docs/what-is-sgit.md)
+**~4,000** tests**mutation testing** in CI**integration tests** against a real server**2** runtime dependencies**Apache-2.0** [**security model** published](security/index.md) [**when NOT** to use sgit](docs/limitations.md) [**why** does this exist?](why/index.md) [**sgit · SG/Vault · SG/Send**: the three doors](docs/what-is-sgit.md)
 
 ## Nineteen sites, one question each
 
-Most of the thinking behind sgit no longer lives on this site. It moved out to **`*.sgit.ai`** — a family of focused sites, each taking one question further than a section here could, each with its own version history and repository. This site stayed about sgit.
+Most of the thinking behind sgit no longer lives on this site. It moved out to **`*.sgit.ai`**: a family of focused sites, each taking one question further than a section here could, each with its own version history and repository. This site stayed about sgit.
 
 [**Agents & AI**identity for agents · calling an LLM with no API key · how the code is written](network/index.md#agents-ai) [**Risk & governance**you cannot deny a risk · cite the provision · the requirements nobody writes down](network/index.md#risk-governance) [**Graphs & method**meaning lives in the edges · issues as files · maps are claims](network/index.md#graphs-method) [**Security & infrastructure**a key registry for agents · an edge guard · ephemeral environments](network/index.md#security-infrastructure) [**Business & publishing**open source is a strategy · subscriptions are not rent · provenance as the product](network/index.md#business-publishing)
 
@@ -180,7 +180,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md) [2026-09-07**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up — the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md)
+[2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md) [2026-09-07**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up, the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md)
 
 [All articles →](articles/index.md)
 

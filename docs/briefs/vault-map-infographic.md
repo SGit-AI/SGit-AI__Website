@@ -1,8 +1,8 @@
-# An infographic of the published vaults — build brief
+# An infographic of the published vaults, build brief
 
-> A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.
+> A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry, starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.
 
-*Source: <https://sgit.ai/docs/briefs/vault-map-infographic.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/vault-map-infographic.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,13 +12,13 @@
 
 # An infographic of the published vaults, grouped by use case and industry
 
-A brief for producing a companion to the network infographic: the same treatment applied to the **26 published vaults** rather than to the sites, grouped by **what someone is trying to do** and **the industry they are in**. It is written to be executed, and it opens with the two things that will otherwise sink it — the groupings do not exist as data yet, and an infographic is a snapshot that rots.
+A brief for producing a companion to the network infographic: the same treatment applied to the **26 published vaults** rather than to the sites, grouped by **what someone is trying to do** and **the industry they are in**. It is written to be executed, and it opens with the two things that will otherwise sink it. The groupings do not exist as data yet, and an infographic is a snapshot that rots.
 
 **Do not start with the picture.** Two blockers below are upstream of any image being generated. Fix them first and the infographic becomes a rendering job; skip them and an image model will invent the groupings, which is the one failure nobody will notice until a customer reads it back to us.
 
 ## Blocker one: the network infographic is already wrong
 
-The companion image this one is modelled on carries a footer reading **“19 sites · 18 published · 1 forthcoming”**, and lists `skills.sgit.ai` as *Forthcoming*. Both were true when it was generated. Today [the network](../../network/index.md) lists **27 sites** and skills.sgit.ai has been live for some time — so a picture that is roughly a week old is now wrong in its headline number and in one of its cells.
+The companion image this one is modelled on carries a footer reading **“19 sites · 18 published · 1 forthcoming”**, and lists `skills.sgit.ai` as *Forthcoming*. Both were true when it was generated. Today [the network](../../network/index.md) lists **27 sites** and skills.sgit.ai has been live for some time, so a picture that is roughly a week old is now wrong in its headline number and in one of its cells.
 
 That is not an argument against making it. It is the constraint the work has to be designed around:
 
@@ -33,13 +33,13 @@ The brief asks for **use case** and **industry**. Checked against `admin/content
 
 | Field | Coverage | What it actually is |
 |---|---|---|
-| `category` | **26 of 26** | The vault's *shape*, not its use case — Application (5), Analysis (5), Record (4), Reference (4), Presentation (3), Briefing (3), Report (1), Gallery (1). Useful, and not what was asked for |
-| `job` | **6 of 26** | The closest thing to a use case that exists (“Publish a standard as data”, “Pitch an investor”, “Hand over a report”) — but it was added for the homepage bands and covers under a quarter of them |
+| `category` | **26 of 26** | The vault's *shape*, not its use case, Application (5), Analysis (5), Record (4), Reference (4), Presentation (3), Briefing (3), Report (1), Gallery (1). Useful, and not what was asked for |
+| `job` | **6 of 26** | The closest thing to a use case that exists (“Publish a standard as data”, “Pitch an investor”, “Hand over a report”), but it was added for the homepage bands and covers under a quarter of them |
 | `industry` | **0 of 26** | Does not exist |
 
-**So the first deliverable is not an image, it is two fields.** Add `use_case` and `industry` to every entry in `vaults.json`, and the infographic becomes a view over data the site already publishes — which is the rule the rest of this estate runs on: *indexes are generated from the data they index, because an index maintained by hand becomes a lie on a schedule.*
+**So the first deliverable is not an image, it is two fields.** Add `use_case` and `industry` to every entry in `vaults.json`, and the infographic becomes a view over data the site already publishes, which is the rule the rest of this estate runs on: *indexes are generated from the data they index, because an index maintained by hand becomes a lie on a schedule.*
 
-- **Write both fields from the vault, not from its title.** Open each one, read what it does, and say what job it does for whom. The pages under [Published vaults](../../demos/vaults/index.md) already contain that judgement in prose — this is turning it into data.
+- **Write both fields from the vault, not from its title.** Open each one, read what it does, and say what job it does for whom. The pages under [Published vaults](../../demos/vaults/index.md) already contain that judgement in prose. This is turning it into data.
 - **Keep the vocabularies small and closed.** Six to eight use cases and six to eight industries, reused; a taxonomy where most values appear once is not a taxonomy. Write the allowed values down in the file and have the build fail on an unknown one.
 - **Be honest where a vault has no industry.** Several are method demonstrations that belong to no sector. `"industry": "cross-industry"` is a real answer; inventing “FinTech” because a vault mentions money is not.
 - **Do not delete `category`.** Shape and use case are different questions and the table uses shape. Add, do not replace.
@@ -51,17 +51,17 @@ Match the network infographic so the two read as a pair: dark ground, one lumino
 | Element | Content |
 |---|---|
 | **The foundation** | What every vault shares: encrypted files, version history, and a published read key that is the whole credential. The network image put “sgit.ai vaults” here; this one can say **one vault format** |
-| **Primary grouping — columns** | **Use case.** Each column is a job somebody is trying to do, with the vaults that do it listed as cells: name plus one short line, exactly as the sites image does |
-| **Secondary grouping — a mark on each cell** | **Industry**, as a small tag or colour key rather than a second set of columns. Two nested column systems in one image is unreadable; a legend is not |
-| **The band** | Genuine relationships between vaults — the conformance layer forking the catalogue, the Risk Graph Explorer sharing the licence-to-operate acceptance model. **Carry the same disclaimer the sites image carries**: illustrative links, not deployed integrations |
+| **Primary grouping, columns** | **Use case.** Each column is a job somebody is trying to do, with the vaults that do it listed as cells: name plus one short line, exactly as the sites image does |
+| **Secondary grouping, a mark on each cell** | **Industry**, as a small tag or colour key rather than a second set of columns. Two nested column systems in one image is unreadable; a legend is not |
+| **The band** | Genuine relationships between vaults, the conformance layer forking the catalogue, the Risk Graph Explorer sharing the licence-to-operate acceptance model. **Carry the same disclaimer the sites image carries**: illustrative links, not deployed integrations |
 | **The footer** | The computed counts, the site version and the date. Nothing typed by hand |
 
 ## The accuracy rules, because an image model will not follow them on its own
 
-An image model renders text as shapes. It will misspell a domain, drop a hyphen, invent a plausible vault that does not exist, and produce a confident number that came from nowhere — and none of that throws an error.
+An image model renders text as shapes. It will misspell a domain, drop a hyphen, invent a plausible vault that does not exist, and produce a confident number that came from nowhere, and none of that throws an error.
 
 1. **Generate the caption text from the data first**, as a list, and treat the image as a rendering of that list. If the list and the image disagree, the image is wrong.
-2. **Read every string in the output back against `vaults.json`** — every vault name, every count, every label. Character by character on the names.
+2. **Read every string in the output back against `vaults.json`**: every vault name, every count, every label. Character by character on the names.
 3. **Count the cells.** If the data says 26 vaults and the picture shows 24, it dropped two, and it will not tell you which.
 4. **No vault appears that is not in the file.** A generated name that reads plausibly is the most dangerous output this process can produce.
 5. **If the model cannot render the text reliably, render the text separately.** Generating the artwork and setting the labels as real text over it is a legitimate and more honest answer than fighting the model.
@@ -69,7 +69,7 @@ An image model renders text as shapes. It will misspell a domain, drop a hyphen,
 ## Publishing it on this site
 
 - **The validator bans `<img src=>`.** Images here go through the `data-shot` mechanism that `assets/shots.js` fills, because a declarative image reference cannot be served when a page is rendered inside a vault. Use the existing pipeline; do not add an exception for this one.
-- **Write real alt text**, and treat it as the accessible equivalent rather than a caption: an infographic whose content exists only as pixels is invisible to a search engine, to `llms-full.txt` and to any agent reading this site — which is the same gap the video pages had to state.
+- **Write real alt text**, and treat it as the accessible equivalent rather than a caption: an infographic whose content exists only as pixels is invisible to a search engine, to `llms-full.txt` and to any agent reading this site, which is the same gap the video pages had to state.
 - **Put the grouped list on the page in HTML too**, under or beside the image. Then the picture is the overview and the text is the content, and the `.md` twin carries the substance rather than a broken reference to a picture.
 - **State how it was made.** The network image was generated by an image model; say so on the page. This site's whole method is that a reader can check the provenance of what it publishes.
 
@@ -115,7 +115,7 @@ and any vault whose use case or industry you could not determine from its
 contents.
 ```
 
-The companion piece is the network infographic, which is what this one should look like and also what it should learn from — it is a good picture with a footer that has already gone stale. [All briefs](index.md) · [Working on a vault: start here](../guidance/index.md) · [The published vaults](../../demos/vaults/index.md)
+The companion piece is the network infographic, which is what this one should look like and also what it should learn from. It is a good picture with a footer that has already gone stale. [All briefs](index.md) · [Working on a vault: start here](../guidance/index.md) · [The published vaults](../../demos/vaults/index.md)
 
 
 ---

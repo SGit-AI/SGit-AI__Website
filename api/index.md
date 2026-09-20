@@ -1,8 +1,8 @@
-# The HTTP API — sgit.ai
+# The HTTP API, sgit.ai
 
 > The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at.
 
-*Source: <https://sgit.ai/api/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,9 +10,9 @@
 
 # The HTTP API
 
-Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface — endpoints, headers, gates, limits and the error codes you will actually hit. **Two families share this host**: [vaults](vault-objects.md), which are versioned trees you clone and push, and [transfers](transfers.md), which are single encrypted handovers.
+Everything sgit does, it does over this API. The CLI is a client; so is the browser bridge; so is anything you write. This section is the protocol surface, endpoints, headers, gates, limits and the error codes you will actually hit. **Two families share this host**: [vaults](vault-objects.md), which are versioned trees you clone and push, and [transfers](transfers.md), which are single encrypted handovers.
 
-**Where this came from, and how far to trust it.** This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at **v0.33.54** rather than recalled. It is *their* verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled **PROPOSED** and you should not build on it yet. Same rule as the rest of this site — if it is not verified, it says so.
+**Where this came from, and how far to trust it.** This section is built from a code-verified audit supplied by the SG/API team, read out of the route tables and constants at **v0.33.54** rather than recalled. It is *their* verification, not ours: this site has not independently exercised every endpoint. Where their audit and the shipped client disagreed we checked and said so; where something is registered but unconfirmed it is labelled **PROPOSED** and you should not build on it yet. Same rule as the rest of this site, if it is not verified, it says so.
 
 ## Base URL
 
@@ -29,10 +29,10 @@ That is what makes the rest of the design possible: a vault ID is an address rat
 | Page | What is in it |
 |---|---|
 | [Authentication](authentication.md) | The six headers, what each gates, and the hash-comparison model |
-| [Vault objects](vault-objects.md) | The pointer store — read, write, batch, destroy — plus the caching contract and storage layout |
+| [Vault objects](vault-objects.md) | The pointer store (read, write, batch, destroy) plus the caching contract and storage layout |
 | [Append lanes](append-lanes.md) | The six append endpoints: the vault-to-vault message transport |
-| [Transfers](transfers.md) | The other family on this host: one encrypted payload, uploaded once, handed over as a single link — the SGMETA envelope, the three calls, and when to reach for this instead of a vault |
-| [Errors and limits](errors.md) | 400, 403, 413, 507 — what each actually means, and the ceilings that produce them |
+| [Transfers](transfers.md) | The other family on this host: one encrypted payload, uploaded once, handed over as a single link, the SGMETA envelope, the three calls, and when to reach for this instead of a vault |
+| [Errors and limits](errors.md) | 400, 403, 413, 507, what each actually means, and the ceilings that produce them |
 
 ## Four capabilities
 
@@ -40,7 +40,7 @@ Most of the API surface is one of four capability tiers. They are separated so t
 
 | Capability | Presented as | Grants |
 |---|---|---|
-| `append_token` | a field in the request body | Write to one append lane. Nothing else — not even listing it |
+| `append_token` | a field in the request body | Write to one append lane. Nothing else, not even listing it |
 | `enum_key` | `x-sgraph-vault-enum-key` | List, fetch and mark-processed on append lanes |
 | `write_key` | `x-sgraph-vault-write-key` | Write and delete objects; configure and purge lanes |
 | private key | *never presented* | Decryption, client-side only |
@@ -60,9 +60,9 @@ Three items came through the audit unresolved. They are listed rather than docum
 
 | Item | Status |
 |---|---|
-| `GET /api/vault/zip/{vault_id}` | **UNRESOLVED** — registered in the route table, marked PROPOSED in the team’s reality document. Not documented either way until that is reconciled |
-| `/join/*` | **UNRESOLVED** — the reality document lists three live endpoints, but the routes are not registered in the deployed app. Not documented |
-| Client-side lane addressing | **PROPOSED** — `append_token = H(public key)` is the intended model; no shipped command emits it. See the [addressing note](../docs/vault-messaging.md#addressing) for what to do meanwhile |
+| `GET /api/vault/zip/{vault_id}` | **UNRESOLVED**: registered in the route table, marked PROPOSED in the team’s reality document. Not documented either way until that is reconciled |
+| `/join/*` | **UNRESOLVED**: the reality document lists three live endpoints, but the routes are not registered in the deployed app. Not documented |
+| Client-side lane addressing | **PROPOSED**: `append_token = H(public key)` is the intended model; no shipped command emits it. See the [addressing note](../docs/vault-messaging.md#addressing) for what to do meanwhile |
 
 
 ---

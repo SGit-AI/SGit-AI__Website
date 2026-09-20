@@ -2,391 +2,391 @@
   {
     "path": "index.html",
     "section": "home",
-    "title": "sgit — the encrypted git for humans and AI agents",
-    "desc": "sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open."
+    "title": "sgit (the encrypted git for humans and AI agents",
+    "desc": "sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open."
   },
   {
     "path": "catalogue/index.html",
     "section": "catalogue",
-    "title": "The vault catalogue — sgit.ai",
-    "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost — a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
+    "title": "The vault catalogue, sgit.ai",
+    "desc": "An index of published vaults rendered live from a vault that indexes vaults, including itself. Each entry: a deliberately published read key, shape, evidence status, copy-or-reference semantics, and write-key status (known-and-escrowed or lost, a frozen vault can never be corrected). Submitting a vault costs a read key and one line; the rest is derived."
   },
   {
     "path": "compare/index.html",
     "section": "compare",
-    "title": "Comparisons, as tests you can re-run — sgit.ai",
+    "title": "Comparisons, as tests you can re-run, sgit.ai",
     "desc": "What a task costs with vaults and without, published by a participant and built to be challenged: every entry states the steps, the date, the result and how to re-run it. Includes a privilege vocabulary, and one comparison vaults lose."
   },
   {
     "path": "demos/vaults/index.html",
     "section": "vaults",
-    "title": "Published vaults — sgit.ai",
-    "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability."
+    "title": "Published vaults, sgit.ai",
+    "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential, no account, no write capability."
   },
   {
     "path": "demos/vaults/publishing.html",
     "section": "vaults",
-    "title": "Publishing a vault: the method — sgit.ai",
-    "desc": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule."
+    "title": "Publishing a vault: the method, sgit.ai",
+    "desc": "The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it, plus the mistakes that produced each rule."
   },
   {
     "path": "demos/vaults/fractional-ciso-pack/index.html",
     "section": "vaults",
-    "title": "The same pack, written for an archetype instead of a company — fractional CISO pack",
-    "desc": "Sibling of vault #29 from the same generator: a fractional CISO pack that solves the publication problem by describing a type of company rather than withholding a real one. Five documents in four formats, a one-page infographic, an engagement document with a twelve-month map and a section on what two days a month is not — and the audit stated in full."
+    "title": "The same pack, written for an archetype instead of a company, fractional CISO pack",
+    "desc": "Sibling of vault #29 from the same generator: a fractional CISO pack that solves the publication problem by describing a type of company rather than withholding a real one. Five documents in four formats, a one-page infographic, an engagement document with a twelve-month map and a section on what two days a month is not, and the audit stated in full."
   },
   {
     "path": "demos/vaults/interim-ciso-pack/index.html",
     "section": "vaults",
-    "title": "An application for a job, as a vault — interim CISO pack",
-    "desc": "A candidate pack delivered as an encrypted vault instead of a CV on an email: three routes for three readers, four documents each in PDF, Word, Markdown and JSON, a disclosed redaction, and a client named nowhere — with the pre-publication privacy audit stated in full."
+    "title": "An application for a job, as a vault, interim CISO pack",
+    "desc": "A candidate pack delivered as an encrypted vault instead of a CV on an email: three routes for three readers, four documents each in PDF, Word, Markdown and JSON, a disclosed redaction, and a client named nowhere, with the pre-publication privacy audit stated in full."
   },
   {
     "path": "demos/vaults/synthetic-users-riskmandate/index.html",
     "section": "vaults",
-    "title": "Synthetic users, second run — five people who do not exist, reading riskmandate.ai",
-    "desc": "The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale — and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over."
+    "title": "Synthetic users, second run, five people who do not exist, reading riskmandate.ai",
+    "desc": "The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale, and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over."
   },
   {
     "path": "demos/vaults/synthetic-users/index.html",
     "section": "vaults",
-    "title": "Synthetic users — five people who do not exist, shopping",
-    "desc": "Five invented buyers walked through store.sgit.ai one screenshot at a time, asked what they made of each screen and interviewed at the end: 43 screenshots, 15 questions the site did not answer, 10 confusions and 18 findings — three of them costing a sale, four already fixed and kept rather than deleted."
+    "title": "Synthetic users, five people who do not exist, shopping",
+    "desc": "Five invented buyers walked through store.sgit.ai one screenshot at a time, asked what they made of each screen and interviewed at the end: 43 screenshots, 15 questions the site did not answer, 10 confusions and 18 findings, three of them costing a sale, four already fixed and kept rather than deleted."
   },
   {
     "path": "demos/vaults/board/index.html",
     "section": "vaults",
-    "title": "The sgit.ai board — a published vault",
-    "desc": "The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key — because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them."
+    "title": "The sgit.ai board, a published vault",
+    "desc": "The site's own task board, moved into a vault: every card a markdown file, a five-column board app that requests no permissions, and a published read key, because every task, bug and need on it is public. The site renders a snapshot at each release; the vault is the truth between them."
   },
   {
     "path": "demos/vaults/field-notes/index.html",
     "section": "vaults",
-    "title": "Field Notes — a published vault",
+    "title": "Field Notes, a published vault",
     "desc": "The minimum viable published vault: six studies with generative SVG art as a self-contained vault app, read over the sg.vfs bridge, opened by a single published read key."
   },
   {
     "path": "demos/vaults/strategy-maps/index.html",
     "section": "vaults",
-    "title": "Strategy Maps — a published vault",
-    "desc": "The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis — two app entry points in one encrypted vault, published after the audit that made a republish necessary."
+    "title": "Strategy Maps (a published vault",
+    "desc": "The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis) two app entry points in one encrypted vault, published after the audit that made a republish necessary."
   },
   {
     "path": "demos/vaults/deploy-docs/index.html",
     "section": "vaults",
-    "title": "Deploy Docs — a published vault",
+    "title": "Deploy Docs, a published vault",
     "desc": "The living deployment documentation for sgit.ai: markdown written by two Claude Code sessions, rendered live in the visitor’s browser, updated by an sgit push with no site deploy."
   },
   {
     "path": "demos/vaults/catalogue/index.html",
     "section": "vaults",
-    "title": "The Vault Catalogue — a published vault",
-    "desc": "The index of published vaults, itself a vault, listed in itself — a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status."
+    "title": "The Vault Catalogue (a published vault",
+    "desc": "The index of published vaults, itself a vault, listed in itself) a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status."
   },
   {
     "path": "demos/vaults/supplement-stack/index.html",
     "section": "vaults",
-    "title": "Supplement Stack — a published vault",
+    "title": "Supplement Stack, a published vault",
     "desc": "A patient-held health record as a vault: a real supplement regimen, label photographs every extracted value is traceable to, deterministic totals against UK RNIs and EFSA upper limits, and an adherence log the app may write to and nothing else. Shared with a professional by handing over a read key."
   },
   {
     "path": "demos/vaults/risk-mandate/index.html",
     "section": "vaults",
-    "title": "Risk Mandate — a published vault",
-    "desc": "A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable — and it calls an LLM without ever holding the API key, which is sealed under the vault key."
+    "title": "Risk Mandate, a published vault",
+    "desc": "A working application built and delivered as a vault: 124 files, 98 commits, eight entry points, pinned releases, offline capable, and it calls an LLM without ever holding the API key, which is sealed under the vault key."
   },
   {
     "path": "demos/vaults/agentic-browser-isolation/index.html",
     "section": "vaults",
-    "title": "Agentic Browser Isolation — a published vault",
+    "title": "Agentic Browser Isolation, a published vault",
     "desc": "A living risk graph for whether an AI agent browses with your logged-in sessions or an isolated identity: seventeen entry points, a page per stakeholder altitude, acceptance-gated escalation, cited evidence, and an app that requests no write capability at all."
   },
   {
     "path": "demos/vaults/risk-graph-explorer/index.html",
     "section": "vaults",
-    "title": "Risk Graph Explorer — a published vault",
+    "title": "Risk Graph Explorer, a published vault",
     "desc": "A fact-to-risk graph explorer extracted into its own vault and designed to be public: its PUBLIC.md states three rules its build enforces, including no metered capability behind a published read key, and its app.json requests no permissions at all."
   },
   {
     "path": "demos/vaults/risk-graph-explorer/views/index.html",
     "section": "vaults",
-    "title": "The seven views, explained — Risk Graph Explorer",
-    "desc": "A deep walk through each view of the risk graph explorer — the estate, context, role risk map, risk chains, the register, acceptance and what happens next — with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs."
+    "title": "The seven views, explained (Risk Graph Explorer",
+    "desc": "A deep walk through each view of the risk graph explorer) the estate, context, role risk map, risk chains, the register, acceptance and what happens next, with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs."
   },
   {
     "path": "demos/vaults/risk-graph-explorer/videos/index.html",
     "section": "vaults",
-    "title": "The author’s walkthroughs — Risk Graph Explorer",
-    "desc": "Three recorded walkthroughs of the risk graph explorer with full transcripts: the graph browser, risk chains, and the role risk map — the designer explaining why the tool is shaped as it is."
+    "title": "The author’s walkthroughs, Risk Graph Explorer",
+    "desc": "Three recorded walkthroughs of the risk graph explorer with full transcripts: the graph browser, risk chains, and the role risk map, the designer explaining why the tool is shaped as it is."
   },
   {
     "path": "demos/vaults/algarve-may-2026/index.html",
     "section": "vaults",
-    "title": "Algarve · May 2026 — a published vault",
-    "desc": "A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app — 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page."
+    "title": "Algarve · May 2026, a published vault",
+    "desc": "A travel diary as a vault: twenty photographs in three sizes, an eight-chapter narrative and an auto-opening gallery app, 29 MB of ciphertext opened by one published read key, with its pre-publication audit finding stated on the page."
   },
   {
     "path": "demos/index.html",
     "section": "demos",
-    "title": "Demos — sgit.ai",
+    "title": "Demos, sgit.ai",
     "desc": "Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key."
   },
   {
     "path": "demos/fractal-graphs/index.html",
     "section": "demos",
-    "title": "Fractal Semantic Graphs — sgit.ai",
+    "title": "Fractal Semantic Graphs, sgit.ai",
     "desc": "What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported."
   },
   {
     "path": "demos/vault-app-embed.html",
     "section": "demos",
-    "title": "A vault app, live inside this page — sgit.ai demos",
+    "title": "A vault app, live inside this page, sgit.ai demos",
     "desc": "The complete walkthrough: create a vault app, push it, derive and publish the read key, and open the app live inside a sgit.ai page in a sandboxed iframe with a postMessage window.sg bridge."
   },
   {
     "path": "demos/strategy-maps.html",
     "section": "demos",
-    "title": "The Strategy in Seven Maps — a real document republished from a vault — sgit.ai demos",
-    "desc": "The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key — plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it."
+    "title": "The Strategy in Seven Maps, a real document republished from a vault, sgit.ai demos",
+    "desc": "The actual SG/Send strategy (eight Wardley Maps, published on LinkedIn in May 2026) served live from an encrypted vault with a published read key, plus the audit that found the original vault could NOT publish its key (its own write credential was inside its content) and the republish pattern that fixed it."
   },
   {
     "path": "demos/sgit-maps.html",
     "section": "demos",
-    "title": "sgit, on a Wardley Map — sgit.ai demos",
-    "desc": "Six Wardley Maps analysing sgit's positioning — starting with where git wins — drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key."
+    "title": "sgit, on a Wardley Map (sgit.ai demos",
+    "desc": "Six Wardley Maps analysing sgit's positioning) starting with where git wins, drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key."
   },
   {
     "path": "use-cases/index.html",
     "section": "use-cases",
-    "title": "Use cases — sgit",
-    "desc": "Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data — plus the underlying workflows."
+    "title": "Use cases, sgit",
+    "desc": "Who has the problem sgit solves, with a working recipe and an honest evidence status for each: AI agents, professional services, security teams, health and regulated data, plus the underlying workflows."
   },
   {
     "path": "use-cases/serialised-pull-request.html",
     "section": "use-cases",
-    "title": "The serialised pull request — sgit use cases",
+    "title": "The serialised pull request, sgit use cases",
     "desc": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table."
   },
   {
     "path": "use-cases/ai-agents.html",
     "section": "use-cases",
-    "title": "Agent state that isn't the vendor's to read — sgit use cases",
+    "title": "Agent state that isn't the vendor's to read, sgit use cases",
     "desc": "Durable and shared memory for AI agents in a store that cannot read it: the session protocol, multi-agent branches, sparse clones, and the evidence (this website)."
   },
   {
     "path": "use-cases/professional-services.html",
     "section": "use-cases",
-    "title": "Working documents with clients — sgit use cases",
+    "title": "Working documents with clients, sgit use cases",
     "desc": "Engagement vaults for legal, M&A, audit and assessment work: versioned working notes, review as branches, and read-only handover with a published read key."
   },
   {
     "path": "use-cases/security-teams.html",
     "section": "use-cases",
-    "title": "Findings about your own weaknesses — sgit use cases",
-    "desc": "Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them — plus the key-hygiene rule we learned the hard way."
+    "title": "Findings about your own weaknesses, sgit use cases",
+    "desc": "Pentest and vulnerability findings with history, diffs and multi-person workflow, in a store that cannot read them, plus the key-hygiene rule we learned the hard way."
   },
   {
     "path": "use-cases/health-regulated.html",
     "section": "use-cases",
-    "title": "Data that changes what is permissible — sgit use cases",
+    "title": "Data that changes what is permissible, sgit use cases",
     "desc": "What client-side encryption does and does not change for regulated data, stated precisely and without compliance claims."
   },
   {
     "path": "case-studies/index.html",
     "section": "case-studies",
-    "title": "Case studies — sgit.ai",
+    "title": "Case studies, sgit.ai",
     "desc": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it."
   },
   {
     "path": "case-studies/one-tree-two-remotes.html",
     "section": "case-studies",
-    "title": "One working tree, two version control systems, and why we stopped — sgit.ai case study",
-    "desc": "How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository — the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule — and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed."
+    "title": "One working tree, two version control systems, and why we stopped, sgit.ai case study",
+    "desc": "How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository (the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule) and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed."
   },
   {
     "path": "case-studies/purging-history.html",
     "section": "case-studies",
-    "title": "Deleting files from git history, and why they are still on GitHub afterwards — sgit.ai case study",
+    "title": "Deleting files from git history, and why they are still on GitHub afterwards, sgit.ai case study",
     "desc": "How this repository dropped 15,933 files from every one of its 112 commits: the setup with two branches drawn out, why git rm is not deletion, what git filter-repo does to every commit id, why the push had to be forced and how the lease made it safe, why a forgotten merged branch kept the purged objects reachable and downloadable, what happens when it is deleted, and the order to do it in when the file is a secret."
   },
   {
     "path": "security/index.html",
     "section": "security",
-    "title": "Security model — sgit",
+    "title": "Security model, sgit",
     "desc": "sgit's zero-knowledge security model, precisely stated: the crypto stack, what the server can and cannot see, key strength, and the open security process."
   },
   {
     "path": "why/index.html",
     "section": "why",
-    "title": "Why does this exist? — sgit.ai",
+    "title": "Why does this exist?, sgit.ai",
     "desc": "A direct answer to the sharpest criticism we received: no market, no value. The use cases, why existing tools do not cover them, where the criticism is right, and a FAQ of the follow-up questions."
   },
   {
     "path": "deploy/index.html",
     "section": "deploy",
-    "title": "Run your own SG/Send server — sgit.ai",
-    "desc": "Deployment guidance for self-hosting a zero-knowledge SG/Send server — rendered live in your browser from an encrypted vault, with no copy stored on this site."
+    "title": "Run your own SG/Send server (sgit.ai",
+    "desc": "Deployment guidance for self-hosting a zero-knowledge SG/Send server) rendered live in your browser from an encrypted vault, with no copy stored on this site."
   },
   {
     "path": "case-studies/live-vault-docs.html",
     "section": "case-studies",
-    "title": "A live site whose host cannot read it — sgit.ai case study",
-    "desc": "A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page — with architecture diagrams of the publishing pipeline and the in-browser read path."
+    "title": "A live site whose host cannot read it, sgit.ai case study",
+    "desc": "A case study in the mechanism: two Claude Code sessions, two encrypted vaults, one page, with architecture diagrams of the publishing pipeline and the in-browser read path."
   },
   {
     "path": "try/index.html",
     "section": "try",
-    "title": "Try sgit in your browser — sgit.ai",
-    "desc": "The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console — nothing you type leaves the page."
+    "title": "Try sgit in your browser, sgit.ai",
+    "desc": "The real sgit-ai package running client-side under Pyodide: derive keys, encrypt, run an in-memory vault, and use a Python console, nothing you type leaves the page."
   },
   {
     "path": "skills/index.html",
     "section": "skills",
-    "title": "Skills for AI agents — sgit",
+    "title": "Skills for AI agents, sgit",
     "desc": "Packaged, versioned instructions that make any AI agent an effective sgit and vault user: operate the CLI, build vault apps, author vault content."
   },
   {
     "path": "docs/index.html",
     "section": "docs",
-    "title": "Documentation — sgit",
+    "title": "Documentation, sgit",
     "desc": "sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page."
   },
   {
     "path": "docs/what-is-sgit.html",
     "section": "docs",
-    "title": "What is sgit — Docs",
+    "title": "What is sgit, Docs",
     "desc": "sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it."
   },
   {
     "path": "docs/installation.html",
     "section": "docs",
-    "title": "Installation — sgit Docs",
+    "title": "Installation, sgit Docs",
     "desc": "Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies."
   },
   {
     "path": "docs/quickstart.html",
     "section": "docs",
-    "title": "Quickstart — sgit Docs",
+    "title": "Quickstart, sgit Docs",
     "desc": "From zero to a synced, encrypted, versioned vault in five minutes: create, commit, push, clone, pull."
   },
   {
     "path": "docs/sgit-for-git-users.html",
     "section": "docs",
-    "title": "sgit for git users — Docs",
+    "title": "sgit for git users, Docs",
     "desc": "The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences."
   },
   {
     "path": "docs/two-branch-model.html",
     "section": "docs",
-    "title": "The two-branch model — sgit Docs",
+    "title": "The two-branch model, sgit Docs",
     "desc": "sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing."
   },
   {
     "path": "docs/agents.html",
     "section": "docs",
-    "title": "Working with AI agents — sgit Docs",
+    "title": "Working with AI agents, sgit Docs",
     "desc": "The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration."
   },
   {
     "path": "docs/limitations.html",
     "section": "docs",
-    "title": "When NOT to use sgit — Docs",
+    "title": "When NOT to use sgit, Docs",
     "desc": "The honest page: sgit's edges, stated plainly, plus the current roadmap gaps."
   },
   {
     "path": "case-studies/exposed-vault-key.html",
     "section": "case-studies",
-    "title": "The day we leaked our own vault key — sgit.ai case study",
-    "desc": "The runbook for a leaked vault key — rotate, verify, re-point — plus a worked case study of the time it happened to this website."
+    "title": "The day we leaked our own vault key (sgit.ai case study",
+    "desc": "The runbook for a leaked vault key) rotate, verify, re-point, plus a worked case study of the time it happened to this website."
   },
   {
     "path": "docs/briefs/index.html",
     "section": "briefs",
-    "title": "Cross-team briefs — sgit.ai",
+    "title": "Cross-team briefs, sgit.ai",
     "desc": "Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings."
   },
   {
     "path": "team/index.html",
     "section": "team",
-    "title": "How the site is run — the agentic team behind sgit.ai",
+    "title": "How the site is run, the agentic team behind sgit.ai",
     "desc": "sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is."
   },
   {
     "path": "team/prompts.html",
     "section": "prompts",
-    "title": "Starting prompts for the regular work — sgit.ai team",
-    "desc": "Twelve prompts for the tasks this site does repeatedly — publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys — each written to be pasted into a fresh agent."
+    "title": "Starting prompts for the regular work (sgit.ai team",
+    "desc": "Twelve prompts for the tasks this site does repeatedly) publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys, each written to be pasted into a fresh agent."
   },
   {
     "path": "team/board.html",
     "section": "board",
-    "title": "The board — open work on sgit.ai, as a kanban of files",
+    "title": "The board, open work on sgit.ai, as a kanban of files",
     "desc": "Every card is a markdown file with a status line; the columns are those lines rendered. Needs are items only the author can supply; tasks are work an agent can pick up from its starting prompt. Nothing runs; the board versions with the site."
   },
   {
     "path": "summit/index.html",
     "section": "why",
-    "title": "Four sheets, four audiences, one stack — the Lisbon summit handouts",
-    "desc": "The September 2026 startup-summit handouts: the same capabilities framed for founders, startups, investors and corporate buyers, each as a page and as the PDF that was handed out — with a 'what exists today' column that is unflattering on purpose."
+    "title": "Four sheets, four audiences, one stack, the Lisbon summit handouts",
+    "desc": "The September 2026 startup-summit handouts: the same capabilities framed for founders, startups, investors and corporate buyers, each as a page and as the PDF that was handed out, with a 'what exists today' column that is unflattering on purpose."
   },
   {
     "path": "summit/founders.html",
     "section": "why",
-    "title": "Founders — open source technology that works today",
-    "desc": "Seven capabilities with an MVP or a live example behind each, and two ways to build a company on them: on your own, or with the author on one of three rungs — direct hire, revenue share, or a company."
+    "title": "Founders, open source technology that works today",
+    "desc": "Seven capabilities with an MVP or a live example behind each, and two ways to build a company on them: on your own, or with the author on one of three rungs, direct hire, revenue share, or a company."
   },
   {
     "path": "summit/startups.html",
     "section": "why",
-    "title": "Startups — it is open source, and it is built to be built on",
+    "title": "Startups. It is open source, and it is built to be built on",
     "desc": "Nine capabilities to reuse, each naming what it runs on and how far along it is, including the ones that are still a design and say so."
   },
   {
     "path": "summit/investors.html",
     "section": "why",
-    "title": "Investors — how does your firm share data with its portfolio?",
-    "desc": "Six capabilities for investor operations — vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk."
+    "title": "Investors (how does your firm share data with its portfolio?",
+    "desc": "Six capabilities for investor operations) vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk."
   },
   {
     "path": "summit/corporate.html",
     "section": "why",
-    "title": "Corporate users — services available now",
-    "desc": "Eight services for governing the agents already running, each stating what it is, what it runs on, and how far along it is — some live products, some designs delivered as engagements."
+    "title": "Corporate users, services available now",
+    "desc": "Eight services for governing the agents already running, each stating what it is, what it runs on, and how far along it is, some live products, some designs delivered as engagements."
   },
   {
     "path": "investors/index.html",
     "section": "investors",
-    "title": "sgit.ai, for investors — published in the open",
-    "desc": "The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong — and the ask, left visibly open until the founder states it rather than invented."
+    "title": "sgit.ai, for investors, published in the open",
+    "desc": "The problem, what sgit is, the open-source zero-knowledge architecture, traction computed from the site itself, the business model (the code is free; the running service is sold), the beachhead market, what could go wrong, and the ask, left visibly open until the founder states it rather than invented."
   },
   {
     "path": "docs/briefs/vault-telemetry-append-lanes.html",
     "section": "briefs",
-    "title": "Telemetry from a published vault — a build brief",
+    "title": "Telemetry from a published vault, a build brief",
     "desc": "How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent."
   },
   {
     "path": "docs/guidance/index.html",
     "section": "docs",
-    "title": "Working on a vault: start here — guidance",
-    "desc": "The first page to read before building, publishing or changing a vault. The practices that get repeated most — pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version — plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai."
+    "title": "Working on a vault: start here, guidance",
+    "desc": "The first page to read before building, publishing or changing a vault. The practices that get repeated most, pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version, plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai."
   },
   {
     "path": "docs/surfaces.html",
     "section": "docs",
-    "title": "Three surfaces: which one are you building for? — sgit.ai",
-    "desc": "_page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them — plus the same job done on all three, and where each surface’s guidance lives."
+    "title": "Three surfaces: which one are you building for?, sgit.ai",
+    "desc": "_page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them, plus the same job done on all three, and where each surface’s guidance lives."
   },
   {
     "path": "docs/briefs/sgit-ai-site-pages.html",
     "section": "briefs",
-    "title": "Reading a vault from a *.sgit.ai site page — build brief",
+    "title": "Reading a vault from a *.sgit.ai site page, build brief",
     "desc": "For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent."
   },
   {
     "path": "docs/briefs/vault-decks-on-a-site.html",
     "section": "briefs",
-    "title": "Publishing a vault’s decks onto a website — build brief",
+    "title": "Publishing a vault’s decks onto a website, build brief",
     "desc": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder."
   },
   {
@@ -398,323 +398,323 @@
   {
     "path": "docs/briefs/vault-map-infographic.html",
     "section": "briefs",
-    "title": "An infographic of the published vaults — build brief",
-    "desc": "A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry — starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count."
+    "title": "An infographic of the published vaults, build brief",
+    "desc": "A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry, starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count."
   },
   {
     "path": "docs/briefs/markdown-and-file-viewers.html",
     "section": "briefs",
-    "title": "Markdown and file viewers in a vault: what not to build — build brief",
-    "desc": "Two of the most common asks — a markdown viewer and a file/folder browser with raw views — are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder."
+    "title": "Markdown and file viewers in a vault: what not to build (build brief",
+    "desc": "Two of the most common asks) a markdown viewer and a file/folder browser with raw views, are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder."
   },
   {
     "path": "docs/vault/index.html",
     "section": "vault",
-    "title": "SG/Vault & the vault platform — sgit.ai",
+    "title": "SG/Vault & the vault platform, sgit.ai",
     "desc": "The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps."
   },
   {
     "path": "docs/vault/vault-apps.html",
     "section": "vault",
-    "title": "Building vault apps — SG/Vault",
+    "title": "Building vault apps, SG/Vault",
     "desc": "How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push."
   },
   {
     "path": "docs/vault/sg-bridge.html",
     "section": "vault",
-    "title": "The window.sg bridge — SG/Vault",
+    "title": "The window.sg bridge, SG/Vault",
     "desc": "The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free."
   },
   {
     "path": "docs/vault/content-authoring.html",
     "section": "vault",
-    "title": "Content authoring — SG/Vault",
+    "title": "Content authoring, SG/Vault",
     "desc": "Publish documents, galleries and hub pages from a vault with no code: markdown with print-aware extras, and _page.json layouts with eleven component types."
   },
   {
     "path": "docs/vault/sub-vaults.html",
     "section": "vault",
-    "title": "Sub-vaults — SG/Vault",
+    "title": "Sub-vaults, SG/Vault",
     "desc": "Vaults inside vaults: link files, owner records, read-only team access, click-to-load external embeds, and the extract-and-embed workflow."
   },
   {
     "path": "docs/vault/git-and-vaults.html",
     "section": "vault",
-    "title": "Git repos inside vaults — SG/Vault",
-    "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip — plus a pure-Python git reader preview."
+    "title": "Git repos inside vaults, SG/Vault",
+    "desc": "Run git and sgit side by side: the encrypted store in a git remote, the leak-audit boundary, the GitHub round trip, plus a pure-Python git reader preview."
   },
   {
     "path": "docs/vault/reading-a-vault-file.html",
     "section": "vault",
-    "title": "Reading one file out of a vault — SG/Vault",
-    "desc": "The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed."
+    "title": "Reading one file out of a vault, SG/Vault",
+    "desc": "The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser, and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed."
   },
   {
     "path": "docs/vault/static-hosting.html",
     "section": "vault",
-    "title": "Static hosting on GitHub Pages — SG/Vault",
+    "title": "Static hosting on GitHub Pages, SG/Vault",
     "desc": "Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation."
   },
   {
     "path": "admin/index.html",
     "section": "admin",
-    "title": "Admin & engineering — sgit.ai",
+    "title": "Admin & engineering, sgit.ai",
     "desc": "How the sgit.ai site is built: a vault app with generated pages, bridge-loaded assets, a validation suite, and sgit itself as the deployment pipeline."
   },
   {
     "path": "admin/versions.html",
     "section": "admin",
-    "title": "Release history — sgit.ai",
+    "title": "Release history, sgit.ai",
     "desc": "Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.",
     "dynamic": "versions"
   },
   {
     "path": "api/index.html",
     "section": "api",
-    "title": "The HTTP API — sgit.ai",
+    "title": "The HTTP API, sgit.ai",
     "desc": "The protocol surface behind sgit: base URL, the capability model, and the reference for vault objects, append lanes, authentication headers and error codes. Built from a code-verified audit at v0.33.54, with unresolved endpoints labelled rather than guessed at."
   },
   {
     "path": "api/authentication.html",
     "section": "api",
-    "title": "API authentication — sgit.ai",
+    "title": "API authentication, sgit.ai",
     "desc": "The six authentication headers, what each one gates, and the hash-comparison model: the server stores SHA-256 of every capability key and never holds a raw key or a private key. Includes why vault reads are open by default."
   },
   {
     "path": "api/vault-objects.html",
     "section": "api",
-    "title": "API: vault objects — sgit.ai",
+    "title": "API: vault objects, sgit.ai",
     "desc": "The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault."
   },
   {
     "path": "api/append-lanes.html",
     "section": "api",
-    "title": "API: append lanes — sgit.ai",
-    "desc": "The six append endpoints — the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits."
+    "title": "API: append lanes (sgit.ai",
+    "desc": "The six append endpoints) the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits."
   },
   {
     "path": "api/transfers.html",
     "section": "api",
-    "title": "API: transfers — one encrypted handover, one link",
+    "title": "API: transfers, one encrypted handover, one link",
     "desc": "The other API family on this host: a single encrypted payload uploaded once and shared as one link. The two secrets that must not be confused, the SGMETA envelope that keeps the filename off the server, the three calls, revocation that is opt-in at create time only, and when a transfer beats a vault."
   },
   {
     "path": "api/errors.html",
     "section": "api",
-    "title": "API errors and limits — sgit.ai",
+    "title": "API errors and limits, sgit.ai",
     "desc": "400, 403, 413 and 507: what each means, why a malformed token returns 400 rather than 403, the input patterns enforced before storage is reached, and every documented ceiling."
   },
   {
     "path": "docs/vault-messaging.html",
     "section": "docs",
-    "title": "Sending messages between vaults — sgit.ai",
+    "title": "Sending messages between vaults, sgit.ai",
     "desc": "How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED."
   },
   {
     "path": "docs/credentials.html",
     "section": "docs",
-    "title": "Vault credentials: what each one can do, and what its prefix declares — sgit.ai",
+    "title": "Vault credentials: what each one can do, and what its prefix declares, sgit.ai",
     "desc": "Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical."
   },
   {
     "path": "docs/pki.html",
     "section": "docs",
-    "title": "Keys, signatures and encrypting to someone else — sgit.ai",
+    "title": "Keys, signatures and encrypting to someone else, sgit.ai",
     "desc": "The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet."
   },
   {
     "path": "updates/index.html",
     "section": "updates",
     "dynamic": "updates",
-    "title": "Updates — sgit.ai",
-    "desc": "What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included."
+    "title": "Updates (sgit.ai",
+    "desc": "What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included."
   },
   {
     "path": "articles/index.html",
     "section": "articles",
     "dynamic": "articles",
-    "title": "Articles — sgit.ai",
+    "title": "Articles, sgit.ai",
     "desc": "Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them."
   },
   {
     "path": "network/index.html",
     "section": "network",
     "dynamic": "network",
-    "title": "The sgit.ai network — sibling sites",
+    "title": "The sgit.ai network, sibling sites",
     "desc": "Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant."
   },
   {
     "path": "demos/vaults/vault-app-pocs/index.html",
     "section": "vaults",
-    "title": "Vault App Mode — a published vault",
-    "desc": "Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault — including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all."
+    "title": "Vault App Mode, a published vault",
+    "desc": "Nine progressive proof-of-concepts and a four-page demo showing how to load CSS, JavaScript and data inside an encrypted vault, including a fifteen-test harness over the vault filesystem, and the audit that found the original could not be opened by a read key at all."
   },
   {
     "path": "demos/vaults/health-score/index.html",
     "section": "vaults",
-    "title": "Private Health Score — a published vault",
-    "desc": "A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review — published as a sanitised republication after an audit found the original vault carried its own write credential."
+    "title": "Private Health Score, a published vault",
+    "desc": "A complete clinical workflow as a vault: adaptive questionnaire, a versioned scoring framework loaded at runtime, explainability tracing every recommendation to an answer, and a clinician review, published as a sanitised republication after an audit found the original vault carried its own write credential."
   },
   {
     "path": "demos/vaults/voice-debrief/index.html",
     "section": "vaults",
-    "title": "VoiceDebrief — a published vault",
-    "desc": "Four apps in one encrypted vault: lifting meaning from fictional voice notes to Article 9(2) of the EU AI Act into typed semantic graphs — with read scoped to one folder, write nowhere, and the briefings it was built from shipped beside the work."
+    "title": "VoiceDebrief, a published vault",
+    "desc": "Four apps in one encrypted vault: lifting meaning from fictional voice notes to Article 9(2) of the EU AI Act into typed semantic graphs, with read scoped to one folder, write nowhere, and the briefings it was built from shipped beside the work."
   },
   {
     "path": "demos/vaults/regulation-graph/index.html",
     "section": "vaults",
-    "title": "Regulation Graph — a published vault",
+    "title": "Regulation Graph, a published vault",
     "desc": "The EU AI Act as a citable graph: Regulation (EU) 2024/1689 parsed from official Formex XML, hash-verified to source bytes, 1,523 nodes and 1,944 edges across eleven views. Published as a redacted republication after an audit found a plaintext vault key in the original."
   },
   {
     "path": "demos/vaults/payments-brief-pack/index.html",
     "section": "vaults",
-    "title": "SG/Payments Brief Pack — a published vault",
-    "desc": "A ten-document briefing pack for a payments and metering platform, published as a vault while every word of it is still PROPOSED — the status is stamped on the pack index, not buried in a footnote."
+    "title": "SG/Payments Brief Pack, a published vault",
+    "desc": "A ten-document briefing pack for a payments and metering platform, published as a vault while every word of it is still PROPOSED. The status is stamped on the pack index, not buried in a footnote."
   },
   {
     "path": "demos/vaults/commercialisation/index.html",
     "section": "vaults",
-    "title": "SG Commercialisation — a published vault",
-    "desc": "A commercial operating model published in the open: nine tools to productise, eight agentic roles, the engagement procedure and every template — with the live engagement register deliberately empty."
+    "title": "SG Commercialisation, a published vault",
+    "desc": "A commercial operating model published in the open: nine tools to productise, eight agentic roles, the engagement procedure and every template, with the live engagement register deliberately empty."
   },
   {
     "path": "demos/vaults/riskmandate-file-security/index.html",
     "section": "vaults",
-    "title": "RiskMandate: File security — a published vault",
+    "title": "RiskMandate: File security, a published vault",
     "desc": "A risk-acceptance walk in eleven steps over one evolving register, where the browser becomes the database: versioned JSON in the vault is the source of truth, queried live through SQLite compiled to WebAssembly."
   },
   {
     "path": "demos/vaults/standards-atlas-gdpr/index.html",
     "section": "vaults",
-    "title": "Standards Atlas: GDPR — a published vault",
-    "desc": "The General Data Protection Regulation as a navigable semantic graph, where CJEU rulings, regulator guidance and per-country variation are first-class nodes layered over the articles they bend — with a validation surface that writes corrections back into the vault."
+    "title": "Standards Atlas: GDPR, a published vault",
+    "desc": "The General Data Protection Regulation as a navigable semantic graph, where CJEU rulings, regulator guidance and per-country variation are first-class nodes layered over the articles they bend, with a validation surface that writes corrections back into the vault."
   },
   {
     "path": "demos/vaults/content-transformation-proxy/index.html",
     "section": "vaults",
-    "title": "Content-Transformation Proxy — a published vault",
+    "title": "Content-Transformation Proxy, a published vault",
     "desc": "A three-part as-built engineering brief published as a documentation site inside a vault: ten authored slides, a diagram library and the source PDFs, all served from one read key."
   },
   {
     "path": "demos/vaults/pentest-report/index.html",
     "section": "vaults",
-    "title": "Penetration Test Report — a published vault",
+    "title": "Penetration Test Report, a published vault",
     "desc": "A complete penetration test delivered as a vault instead of a PDF: eight audience-specific views over one engagement, evidence per finding, and a retest script that re-runs each check and exits 0 or 1. Entirely fictional, and it says so on its own front page."
   },
   {
     "path": "demos/vaults/blackhat-eu-2025/index.html",
     "section": "vaults",
-    "title": "AI vs. AI — Black Hat Europe 2025 — a published vault",
-    "desc": "A conference keynote shipped as a vault: the deck as presented, six PDF exports, eight research papers and the full source history of the slide system that renders it — all behind one read key, with the slide content as data the app reads at load time."
+    "title": "AI vs. AI, Black Hat Europe 2025, a published vault",
+    "desc": "A conference keynote shipped as a vault: the deck as presented, six PDF exports, eight research papers and the full source history of the slide system that renders it, all behind one read key, with the slide content as data the app reads at load time."
   },
   {
     "path": "demos/vaults/threatmodcon-2025/index.html",
     "section": "vaults",
-    "title": "Scaling Threat Modeling with Semantic Knowledge Graphs — a published vault",
-    "desc": "ThreatModCon 2025, Barcelona: eleven linked threat models from customer to compute instance, five interactive views and five Wardley map walkthroughs, running offline inside the vault — with two upstream-broken data files repaired and the repair proved as a pure block move."
+    "title": "Scaling Threat Modeling with Semantic Knowledge Graphs, a published vault",
+    "desc": "ThreatModCon 2025, Barcelona: eleven linked threat models from customer to compute instance, five interactive views and five Wardley map walkthroughs, running offline inside the vault, with two upstream-broken data files repaired and the repair proved as a pure block move."
   },
   {
     "path": "demos/vaults/aiuc-1-graph/index.html",
     "section": "vaults",
-    "title": "AIUC-1, as a graph you can cite — a published vault",
+    "title": "AIUC-1, as a graph you can cite, a published vault",
     "desc": "An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC. Forked, byte for byte, into the conformance layer vault."
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/index.html",
     "section": "vaults",
-    "title": "Provenance is not conformance — a published vault",
+    "title": "Provenance is not conformance, a published vault",
     "desc": "A fork of the AIUC-1 catalogue vault that keeps every byte of it and adds one directory: attested_by kept permanently apart from evidenced_by, 53 conformance rows for a named subject where unevidenced is the default, and insurability computed as a query that turns into 53 exclusions when the date moves. Unofficial and derivative; not approved or endorsed by AIUC."
   },
   {
     "path": "demos/vaults/voicedebrief-pitch/index.html",
     "section": "vaults",
-    "title": "A three-minute pitch, delivered from a vault — a published vault",
-    "desc": "The VoiceDebrief pitch to Founder Institute: a presenter app with timed slides, speaker notes and a countdown, shipped with the outline, script, research and exports it was built from — and the first vault here that asks for any permission at all."
+    "title": "A three-minute pitch, delivered from a vault, a published vault",
+    "desc": "The VoiceDebrief pitch to Founder Institute: a presenter app with timed slides, speaker notes and a countdown, shipped with the outline, script, research and exports it was built from, and the first vault here that asks for any permission at all."
   },
   {
     "path": "demos/vaults/agent-permission-games/index.html",
     "section": "vaults",
-    "title": "Two games about agent permissions — a published vault",
-    "desc": "Two deterministic games about grants, permissions and mandates — and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site."
+    "title": "Two games about agent permissions (a published vault",
+    "desc": "Two deterministic games about grants, permissions and mandates) and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site."
   },
   {
     "path": "demos/vaults/licence-to-operate/index.html",
     "section": "vaults",
-    "title": "Licence to Operate — an insurance policy for an agent, simulated — a published vault",
-    "desc": "One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers — with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run."
+    "title": "Licence to Operate (an insurance policy for an agent, simulated) a published vault",
+    "desc": "One agent, its grant of 12 capabilities, its mandate of 4, and the 8-capability delta no policy covers, with a simulated conversation where every reply carries its cost against a live policy. The vault holds the terms; your browser holds the run."
   },
   {
     "path": "demos/vaults/licence-to-operate/videos/index.html",
     "section": "vaults",
-    "title": "Seven shorts on the licence to operate — the author's walkthroughs",
-    "desc": "Seven vertical videos walking through the Licence to Operate vault, collected in the order they are meant to be watched: the mechanism (grant against mandate, blocking, who accepts which risk), how to find and open the vault, and the insurance model behind it — each with what it covers and which part of the vault it demonstrates."
+    "title": "Seven shorts on the licence to operate, the author's walkthroughs",
+    "desc": "Seven vertical videos walking through the Licence to Operate vault, collected in the order they are meant to be watched: the mechanism (grant against mandate, blocking, who accepts which risk), how to find and open the vault, and the insurance model behind it, each with what it covers and which part of the vault it demonstrates."
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/index.html",
     "section": "vaults",
-    "title": "The AIUC-1 conformance layer decks — sgit.ai",
+    "title": "The AIUC-1 conformance layer decks, sgit.ai",
     "desc": "4 decks published inside vault 2wzct4k7, each on its own page, with the slides read live out of the vault using its published read key."
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/aiuc1.html",
     "section": "vaults",
-    "title": "What AIUC-1 is — AIUC-1 conformance layer decks",
-    "desc": "The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks — and what it does not say"
+    "title": "What AIUC-1 is, AIUC-1 conformance layer decks",
+    "desc": "The agent standard, read from its own pages: six domains, 53 controls, 144 requirements, 1,126 crosswalks, and what it does not say"
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/vault.html",
     "section": "vaults",
-    "title": "The vault: files, graphs, and the query — AIUC-1 conformance layer decks",
-    "desc": "A walkthrough of what is here — the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it"
+    "title": "The vault: files, graphs, and the query (AIUC-1 conformance layer decks",
+    "desc": "A walkthrough of what is here) the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it"
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/insurance.html",
     "section": "vaults",
-    "title": "How RiskMandate.ai's insurance model works with AIUC-1 — AIUC-1 conformance layer decks",
-    "desc": "Grant, mandate, delta; the policy in metered units; the licence as a derived fact — and the standard as the vocabulary of what the policy covers and excludes"
+    "title": "How RiskMandate.ai's insurance model works with AIUC-1, AIUC-1 conformance layer decks",
+    "desc": "Grant, mandate, delta; the policy in metered units; the licence as a derived fact, and the standard as the vocabulary of what the policy covers and excludes"
   },
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/d003.html",
     "section": "vaults",
-    "title": "Zoom in: D003 — one control, to the byte, measured, and run — AIUC-1 conformance layer decks",
+    "title": "Zoom in: D003 (one control, to the byte, measured, and run) AIUC-1 conformance layer decks",
     "desc": "One control followed from the bytes of the standard to a session measured against it, to the words the layer needed (granularity, vacuous, outside-only), to the grant per tool, to the policy it becomes, to a simulation that runs"
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/index.html",
     "section": "vaults",
-    "title": "The Licence to Operate decks — sgit.ai",
+    "title": "The Licence to Operate decks, sgit.ai",
     "desc": "5 decks published inside vault posrhzp3, each on its own page, with the slides read live out of the vault using its published read key."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/problem.html",
     "section": "vaults",
-    "title": "The problem — Licence to Operate decks",
-    "desc": "Opens where almost everybody is standing — agents already running, and no way to say what wrong means — and lands on the delta. Stops there."
+    "title": "The problem (Licence to Operate decks",
+    "desc": "Opens where almost everybody is standing) agents already running, and no way to say what wrong means, and lands on the delta. Stops there."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/map.html",
     "section": "vaults",
-    "title": "The map — Licence to Operate decks",
-    "desc": "A companion rather than a step: the same ladder seen from our side — the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly."
+    "title": "The map (Licence to Operate decks",
+    "desc": "A companion rather than a step: the same ladder seen from our side) the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/bounding.html",
     "section": "vaults",
-    "title": "Bounding it — Licence to Operate decks",
-    "desc": "Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal — and where the check sits, which decides what you are actually buying."
+    "title": "Bounding it, Licence to Operate decks",
+    "desc": "Stop asking whether the agent may do a thing and start asking how much. The band, the limit, the refusal, and where the check sits, which decides what you are actually buying."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/acceptor.html",
     "section": "vaults",
-    "title": "Who says yes — Licence to Operate decks",
+    "title": "Who says yes, Licence to Operate decks",
     "desc": "The hardest one. A refusal is a question addressed to somebody: the draw, the acceptor, no deny button, whose name goes on it, and what is signed in advance so the ordinary day never stops."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/insurance.html",
     "section": "vaults",
-    "title": "The insurance model — Licence to Operate decks",
+    "title": "The insurance model, Licence to Operate decks",
     "desc": "The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation."
   }
 ]

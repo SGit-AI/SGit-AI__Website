@@ -1,8 +1,8 @@
-# sgit for git users — Docs
+# sgit for git users, Docs
 
 > The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
 
-*Source: <https://sgit.ai/docs/sgit-for-git-users.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/sgit-for-git-users.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # sgit for git users
 
-If you know git, you know most of sgit. Same verbs, same mental model — with three deliberate differences that exist because the payload is encrypted.
+If you know git, you know most of sgit. Same verbs, same mental model, with three deliberate differences that exist because the payload is encrypted.
 
 ## The Rosetta stone
 
@@ -19,11 +19,11 @@ If you know git, you know most of sgit. Same verbs, same mental model — with t
 | `git init` | `sgit init` | `--existing` vault-ifies a non-empty folder |
 | `git clone <url>` | `sgit clone <vault-key>` | the key is URL + auth + decryption in one |
 | `git status` | `sgit status` | `--explain` teaches the branch model |
-| `git commit -am` | `sgit commit -m` | always whole-folder — there is no staging area |
+| `git commit -am` | `sgit commit -m` | always whole-folder. There is no staging area |
 | `git push / pull / fetch` | `sgit push / pull / fetch` | push is delta + ciphertext only |
 | `git log` | `sgit history log` | `--oneline`, `--patch`, `--json`, ranges |
 | `git diff` | `sgit history diff` | `--remote`, `--commit`, `--files-only` |
-| `git show` | `sgit history show` | read-only — fetches missing objects without merging |
+| `git show` | `sgit history show` | read-only, fetches missing objects without merging |
 | `git revert / reset` | `sgit history revert / reset` |  |
 | `git stash` | `sgit vault stash` | `pop`, `list`, `drop` |
 | `git branch / checkout` | `sgit branch new / switch / checkout` |  |
@@ -39,7 +39,7 @@ Every commit snapshots the whole folder. This removes git's most confusing conce
 
 ### 2. The vault key is URL, auth, and encryption key in one
 
-`passphrase:vault-id`. There is no separate remote URL to configure, no separate credential to manage, and no password reset. Whoever holds the key holds the vault — treat it like the private key it is.
+`passphrase:vault-id`. There is no separate remote URL to configure, no separate credential to manage, and no password reset. Whoever holds the key holds the vault, treat it like the private key it is.
 
 ### 3. Two layers of branches
 

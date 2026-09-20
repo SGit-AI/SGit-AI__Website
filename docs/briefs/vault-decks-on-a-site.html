@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Publishing a vault’s decks onto a website — build brief</title>
+<title>Publishing a vault’s decks onto a website, build brief</title>
 <meta name="description" content="A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.">
 <link rel="canonical" href="https://sgit.ai/docs/briefs/vault-decks-on-a-site.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/docs/briefs/vault-decks-on-a-site.html">
-<meta property="og:title" content="Publishing a vault’s decks onto a website — build brief">
+<meta property="og:title" content="Publishing a vault’s decks onto a website, build brief">
 <meta property="og:description" content="A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="vault-decks-on-a-site.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Publishing a vault’s decks onto a website — build brief", "headline": "Publishing a vault’s decks onto a website — build brief", "description": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.", "url": "https://sgit.ai/docs/briefs/vault-decks-on-a-site.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Publishing a vault’s decks onto a website, build brief", "headline": "Publishing a vault’s decks onto a website, build brief", "description": "A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.", "url": "https://sgit.ai/docs/briefs/vault-decks-on-a-site.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,97 +21,97 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../docs/index.html">Documentation</a>
-      <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../../api/index.html">HTTP API</a>
-      <a class="sl" href="../../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../../deploy/index.html">Deploy</a>
-      <a class="sl" href="../../skills/index.html">Skills</a>
-      <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../../demos/index.html">Demos</a>
-      <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../compare/index.html">Comparisons</a>
-      <a class="sl" href="../../case-studies/index.html">Case studies</a>
-      <a class="sl" href="../../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../updates/index.html">Updates</a>
-      <a class="sl" href="../../articles/index.html">Articles</a>
-      <a class="sl" href="../../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../team/index.html">How the site is run</a>
-      <a class="sl" href="../../team/index.html#roles">Roles</a>
-      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../network/index.html">All sites</a>
-      <a class="sl" href="../../network/nhi.html">nhi</a>
-      <a class="sl" href="../../network/pki.html">pki</a>
-      <a class="sl" href="../../network/graphs.html">graphs</a>
-      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc" style="max-width:var(--wide)">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / Decks from a vault, on a site</p>
   <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site, outside every vault host. <a href="../surfaces.html">The other surfaces &rarr;</a></p>
   <h1>Publishing a vault's decks onto a website</h1>
-  <p class="lead">A build brief for an agent who has a vault containing presentations and wants them to <em>play on a web page</em> &mdash; not as screenshots, not as a PDF on a file server, but read out of the encrypted vault as the reader clicks. It states the contract a vault must satisfy, the split that keeps it safe, the two mistakes we made building it, and the prompt to hand the agent who will do the work.</p>
+  <p class="lead">A build brief for an agent who has a vault containing presentations and wants them to <em>play on a web page</em>: not as screenshots, not as a PDF on a file server, but read out of the encrypted vault as the reader clicks. It states the contract a vault must satisfy, the split that keeps it safe, the two mistakes we made building it, and the prompt to hand the agent who will do the work.</p>
 
-  <div class="note"><b>What this produces.</b> A page like <a href="../../demos/vaults/aiuc-1-conformance/decks/aiuc1.html">this one</a>: slide list, prev and next, speaker notes, a focus mode for presenting, a PDF download, and a deep link to a single slide &mdash; over slides that live in vault <code>2wzct4k7</code> and are fetched and decrypted in the reader's browser. No account, nothing installed, and the server serving the bytes cannot read them.</div>
+  <div class="note"><b>What this produces.</b> A page like <a href="../../demos/vaults/aiuc-1-conformance/decks/aiuc1.html">this one</a>: slide list, prev and next, speaker notes, a focus mode for presenting, a PDF download, and a deep link to a single slide, over slides that live in vault <code>2wzct4k7</code> and are fetched and decrypted in the reader's browser. No account, nothing installed, and the server serving the bytes cannot read them.</div>
 
   <h2 id="reading">What to read first</h2>
   <ul>
-    <li><a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a> &mdash; the primitive underneath all of this: derive the address from a read key, fetch ciphertext over CORS, decrypt with Web Crypto. If you only read one thing, read this.</li>
-    <li><a href="../../demos/vaults/publishing.html"><b>Publishing a vault: the method</b></a> &mdash; how a vault gets a published read key in the first place, including escrowing the write key <em>before</em> publishing.</li>
+    <li><a href="../vault/reading-a-vault-file.html"><b>Reading one file out of a vault</b></a>, the primitive underneath all of this: derive the address from a read key, fetch ciphertext over CORS, decrypt with Web Crypto. If you only read one thing, read this.</li>
+    <li><a href="../../demos/vaults/publishing.html"><b>Publishing a vault: the method</b></a>, how a vault gets a published read key in the first place, including escrowing the write key <em>before</em> publishing.</li>
     <li>The working implementation, ~380 lines, which you may copy: <code>assets/vault-deck.js</code> on this site, with the reader it builds on in <code>assets/vault-embed.js</code>.</li>
   </ul>
 
   <h2 id="split">The one rule: the viewer is the site's, the data is the vault's</h2>
-  <p>A read key is public, so anyone can read the vault. The risk runs the other way: <b>the bytes coming out of the vault were written by whoever holds the write key, and they are untrusted input to your page.</b> Rendering them into your own document hands a vault author your origin &mdash; your cookies, your storage, your DOM, your users.</p>
+  <p>A read key is public, so anyone can read the vault. The risk runs the other way: <b>the bytes coming out of the vault were written by whoever holds the write key, and they are untrusted input to your page.</b> Rendering them into your own document hands a vault author your origin, your cookies, your storage, your DOM, your users.</p>
   <div class="tablewrap"><table>
     <tr><th>From the vault</th><th>From the site</th></tr>
     <tr><td>The deck manifest, each deck's slides, the speaker notes, the screenshots, the printed PDF</td><td>The deck tabs, the slide list, prev and next, the notes toggle, focus, the PDF button, the deep links, and the sandbox policy the whole thing runs under</td></tr>
@@ -135,32 +135,32 @@
   <pre><code>S.push({ t: 'What AIUC-1 is', notes: `the speaker notes`, html: `…the slide markup…` });</code></pre>
   <p class="small dim">Three keys, and only three: <code>t</code> is the title the slide list shows, <code>notes</code> are the speaker notes, and <code>html</code> is the slide's markup as a string.</p>
   <ul>
-    <li><b>The stage is 1600&times;900.</b> Slide CSS is written against that viewport and nothing else. A host should size its frame to exactly that and scale the <em>element</em>, not the document &mdash; then a slide looks identical at any column width, with no reflow and no script inside the frame.</li>
-    <li><b>Images are named, never pathed.</b> The helper <code>img(name, style)</code> emits <code>&lt;img data-img="name"&gt;</code> with no <code>src</code>. This is the single most important detail in the whole contract: because a slide names an image instead of pointing at a URL, the host can resolve it to decrypted bytes without the slide ever being able to make a network request. <b>Do not put a URL in a slide.</b></li>
+    <li><b>The stage is 1600&times;900.</b> Slide CSS is written against that viewport and nothing else. A host should size its frame to exactly that and scale the <em>element</em>, not the document, then a slide looks identical at any column width, with no reflow and no script inside the frame.</li>
+    <li><b>Images are named, never pathed.</b> The helper <code>img(name, style)</code> emits <code>&lt;img data-img="name"&gt;</code> with no <code>src</code>. This is the single most important detail in the whole contract, because a slide names an image instead of pointing at a URL, the host can resolve it to decrypted bytes without the slide ever being able to make a network request. <b>Do not put a URL in a slide.</b></li>
     <li><b>Slides are static markup.</b> The deck's <em>build</em> runs JavaScript; a rendered slide must not need any.</li>
   </ul>
 
   <h3 id="built">If your vault published only its built decks</h3>
-  <p>One of the two vaults here shipped <code>decks/</code> sources; the other shipped only the assembled <code>deck-&lt;id&gt;.html</code> files, with screenshots already base64 inside them. Both work, and a host should handle both: prefer the source, and fall back to the built file <b>truncated at the literal comment <code>/* ---------- shell */</code></b>, which is where the vault's own viewer begins and the declarations end. The cost of the fallback is size &mdash; hundreds of KB per deck rather than tens.</p>
+  <p>One of the two vaults here shipped <code>decks/</code> sources; the other shipped only the assembled <code>deck-&lt;id&gt;.html</code> files, with screenshots already base64 inside them. Both work, and a host should handle both: prefer the source, and fall back to the built file <b>truncated at the literal comment <code>/* ---------- shell */</code></b>, which is where the vault's own viewer begins and the declarations end. The cost of the fallback is size, hundreds of KB per deck rather than tens.</p>
 
   <h2 id="host">The host side: two frames, and why</h2>
   <p>A deck cannot simply be inserted into the page, and it cannot simply be trusted. Two sandboxed, opaque-origin iframes, each with its own CSP:</p>
   <div class="tablewrap"><table>
     <tr><th></th><th>Sandbox</th><th>CSP</th><th>Job</th></tr>
-    <tr><td><b>Parse frame</b></td><td><code>allow-scripts</code></td><td><code>default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'</code></td><td>A deck builds its slides by running, so it runs here &mdash; no origin, no network &mdash; and posts back a plain array. <b>The site never evals vault code.</b></td></tr>
-    <tr><td><b>Render frame</b></td><td><code>sandbox=""</code> &mdash; no <code>allow-scripts</code> at all</td><td><code>default-src 'none'; img-src data:; style-src 'unsafe-inline'</code></td><td>Slide markup, with images already resolved to <code>data:</code> URIs by the host. Nothing in a slide can phone home</td></tr>
+    <tr><td><b>Parse frame</b></td><td><code>allow-scripts</code></td><td><code>default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval'</code></td><td>A deck builds its slides by running, so it runs here (no origin, no network) and posts back a plain array. <b>The site never evals vault code.</b></td></tr>
+    <tr><td><b>Render frame</b></td><td><code>sandbox=""</code>, no <code>allow-scripts</code> at all</td><td><code>default-src 'none'; img-src data:; style-src 'unsafe-inline'</code></td><td>Slide markup, with images already resolved to <code>data:</code> URIs by the host. Nothing in a slide can phone home</td></tr>
   </table></div>
-  <p>Hand the deck source to the parse frame <b>over <code>postMessage</code>, not baked into the <code>srcdoc</code></b> &mdash; otherwise a deck containing the characters <code>&lt;/script&gt;</code> breaks out of the bootstrap that runs it.</p>
+  <p>Hand the deck source to the parse frame <b>over <code>postMessage</code>, not baked into the <code>srcdoc</code></b>: otherwise a deck containing the characters <code>&lt;/script&gt;</code> breaks out of the bootstrap that runs it.</p>
 
   <h3 id="pdf">The PDF is a download, and this is not a preference</h3>
-  <p>The obvious move &mdash; decrypt the PDF, wrap it in a blob, point a sandboxed iframe at it &mdash; does not work. Chrome refuses, in every sandbox combination:</p>
+  <p>The obvious move (decrypt the PDF, wrap it in a blob, point a sandboxed iframe at it) does not work. Chrome refuses, in every sandbox combination:</p>
   <blockquote><code>Failed to load 'blob:&hellip;' as a plugin, because the frame into which the plugin is loading is sandboxed.</code></blockquote>
-  <p>The browser's PDF viewer is a plugin, and plugins do not run in sandboxed frames. Your three options are: drop the sandbox (gives vault bytes your origin &mdash; do not), ship a JavaScript PDF renderer (works, costs about a megabyte of vendored dependency), or <b>decrypt in the page and hand the bytes to the browser's own download</b>, which is what this site does. Trigger the download from the page and not from inside a frame: a sandbox without <code>allow-downloads</code> blocks it, and granting that to untrusted content is the wrong way round.</p>
+  <p>The browser's PDF viewer is a plugin, and plugins do not run in sandboxed frames. Your three options are: drop the sandbox (gives vault bytes your origin, do not), ship a JavaScript PDF renderer (works, costs about a megabyte of vendored dependency), or <b>decrypt in the page and hand the bytes to the browser's own download</b>, which is what this site does. Trigger the download from the page and not from inside a frame: a sandbox without <code>allow-downloads</code> blocks it, and granting that to untrusted content is the wrong way round.</p>
 
   <h2 id="mistakes">Two mistakes we made, so you do not</h2>
   <ol>
-    <li><b>An image-name pattern that excluded underscores.</b> Fifteen slides rendered with a silently missing screenshot &mdash; no console error, no gap in the layout, nothing to notice by clicking through a few slides. Accept <code>[A-Za-z0-9_.-]</code> in image names, and <b>assert that the count of unresolved images is zero</b> rather than trusting the page to look right.</li>
-    <li><b>An unscoped <code>closest('[data-deck]')</code> in the click router.</b> On a page dedicated to one deck the mount element itself carries <code>data-deck</code>, so every click inside the viewer matched it and returned early: prev, next, notes, focus and the PDF button were all dead, on exactly the pages just built, with nothing thrown. Scope event delegation to the control you mean &mdash; and <b>test the effect of a click, not that the click landed</b>.</li>
+    <li><b>An image-name pattern that excluded underscores.</b> Fifteen slides rendered with a silently missing screenshot, no console error, no gap in the layout, nothing to notice by clicking through a few slides. Accept <code>[A-Za-z0-9_.-]</code> in image names, and <b>assert that the count of unresolved images is zero</b> rather than trusting the page to look right.</li>
+    <li><b>An unscoped <code>closest('[data-deck]')</code> in the click router.</b> On a page dedicated to one deck the mount element itself carries <code>data-deck</code>, so every click inside the viewer matched it and returned early: prev, next, notes, focus and the PDF button were all dead, on exactly the pages just built, with nothing thrown. Scope event delegation to the control you mean, and <b>test the effect of a click, not that the click landed</b>.</li>
   </ol>
 
   <h2 id="checklist">Before you call it done</h2>
@@ -169,7 +169,7 @@
     <li>Confirm the render frame has <b>no</b> <code>allow-scripts</code>, and that the parse frame has <b>no</b> <code>allow-same-origin</code>.</li>
     <li>Download a PDF and check the byte count against the file in the vault. Ours matches exactly at 2,220,725 bytes.</li>
     <li>Check that a deep link to a slide restores that deck and that slide.</li>
-    <li><b>Check what you published.</b> Read keys on the page are fine and are the point; a vault key on a page is a catastrophe, because it is write access. Grep the built site for vault-key shapes before every release &mdash; and note that a scan built for <em>sgit</em> credential shapes will not catch an unrelated API key sitting in a vault file, which is how we once nearly published an OpenRouter key.</li>
+    <li><b>Check what you published.</b> Read keys on the page are fine and are the point; a vault key on a page is a catastrophe, because it is write access. Grep the built site for vault-key shapes before every release, and note that a scan built for <em>sgit</em> credential shapes will not catch an unrelated API key sitting in a vault file, which is how we once nearly published an OpenRouter key.</li>
   </ul>
 
   <h2 id="prompt">The prompt to hand the builder agent</h2>
@@ -203,15 +203,15 @@ images asserted, a PDF downloaded and byte-count-checked against the vault, deep
 links restoring deck and slide, and the built site grepped for vault-key shapes.
 Report the slide count, the deck count and the missing-image count.</code></pre>
 
-  <p class="small dim" style="margin-top:2rem">Written from building exactly this, at <a href="../../admin/versions.html">v0.2.67 and v0.2.68</a>. If you follow it and something here is wrong, that is worth telling us &mdash; the last brief on this site was corrected by the team that read it, and <a href="vault-telemetry-append-lanes.html">the correction sits above the mistake</a>. <a href="index.html">All briefs</a> &middot; <a href="../vault/reading-a-vault-file.html">Reading one file out of a vault</a> &middot; <a href="../../demos/vaults/aiuc-1-conformance/decks/index.html">The live result</a></p>
+  <p class="small dim" style="margin-top:2rem">Written from building exactly this, at <a href="../../admin/versions.html">v0.2.67 and v0.2.68</a>. If you follow it and something here is wrong, that is worth telling us, the last brief on this site was corrected by the team that read it, and <a href="vault-telemetry-append-lanes.html">the correction sits above the mistake</a>. <a href="index.html">All briefs</a> &middot; <a href="../vault/reading-a-vault-file.html">Reading one file out of a vault</a> &middot; <a href="../../demos/vaults/aiuc-1-conformance/decks/index.html">The live result</a></p>
 </main>
 
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.99</a> · <a href="../../admin/index.html">engineering</a> · <a href="vault-decks-on-a-site.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.3.0</a> · <a href="../../admin/index.html">engineering</a> · <a href="vault-decks-on-a-site.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -253,7 +253,7 @@ Report the slide count, the deck count and the missing-image count.</code></pre>
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

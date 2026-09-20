@@ -1,8 +1,8 @@
-# Documentation — sgit
+# Documentation, sgit
 
 > sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 
-*Source: <https://sgit.ai/docs/index.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Introduction
 
-[What is sgitThe pitch, the mechanism, the architecture](what-is-sgit.md) [Installationpip install, verify, upgrade](installation.md) [QuickstartCreate, commit, push, clone — in 5 minutes](quickstart.md)
+[What is sgitThe pitch, the mechanism, the architecture](what-is-sgit.md) [Installationpip install, verify, upgrade](installation.md) [QuickstartCreate, commit, push, clone, in 5 minutes](quickstart.md)
 
 ## Concepts
 
@@ -24,13 +24,13 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Guides
 
-[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page — pick this first](surfaces.md) [Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
+[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page, pick this first](surfaces.md) [Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
 
 ## Project
 
 [When NOT to use sgitThe honest page](limitations.md) [Why does this exist?Answering the no-market criticism, plus a FAQ](../why/index.md) [If a vault key is exposedThe rotation runbook, with a real case study](../case-studies/exposed-vault-key.md) [Cross-team briefsOpen asks to the CLI and API teams](briefs/index.md) [Admin & engineeringHow this site is built and released](../admin/index.md) [GitHubSource, issues, changelog](https://github.com/SGit-AI/SGit-AI__CLI)
 
-**Coming next:** a full per-command CLI reference, generated directly from the CLI's own argument parser on every release — so the reference can never drift from the shipped tool.
+**Coming next:** a full per-command CLI reference, generated directly from the CLI's own argument parser on every release, so the reference can never drift from the shipped tool.
 
 
 ---

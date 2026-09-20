@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.99",
+  "site_version": "v0.3.0",
   "updates": [
     {
       "slug": "vault-table-order",
@@ -41,6 +41,19 @@
       "summary": "An agent asked to inspect the two AIUC 1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction. It was right. Our label was wrong. The sgit CLI defin…"
     },
     {
+      "slug": "no-more-em-dashes",
+      "title": "The em-dash is gone from the prose, and so is the legacy key prefix",
+      "date": "2026-09-20",
+      "version": "v0.3.0",
+      "tags": [
+        "writing",
+        "keys",
+        "build",
+        "method"
+      ],
+      "summary": "Two site wide normalisations, each with a guard so they stay done. 3,200 em dashes, rewritten rather than deleted A good many readers now find the character off putting, so it is gone from every sentence on the site. This was not a find and replace. A rewriter…"
+    },
+    {
       "slug": "introducing-fsg-article",
       "title": "The article that introduces Fractal Semantic Graphs, published here with its pictures",
       "date": "2026-09-20",
@@ -54,7 +67,7 @@
     },
     {
       "slug": "the-mirror-is-gone",
-      "title": "The site's own vault mirror is gone — deleted, purged from history, force-pushed",
+      "title": "The site's own vault mirror is gone, deleted, purged from history, force-pushed",
       "date": "2026-09-19",
       "version": "v0.2.84",
       "tags": [
@@ -67,7 +80,7 @@
     },
     {
       "slug": "the-jump",
-      "title": "The jump — what the fractal property actually adds",
+      "title": "The jump, what the fractal property actually adds",
       "date": "2026-09-19",
       "version": "v0.2.95",
       "tags": [
@@ -88,18 +101,18 @@
         "docs",
         "method"
       ],
-      "summary": "Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file — the generator adds every page. But the guidance front door sat at line 149 of 239, as page…"
+      "summary": "Asked to check that an agent reading /llms.txt finds the newest guidance, the answer was that coverage was complete and routing was broken . Everything was in the file, the generator adds every page. But the guidance front door sat at line 149 of 239, as page…"
     },
     {
       "slug": "ladder-links",
-      "title": "The ladder's right column looked like links and was not — now it is",
+      "title": "The ladder's right column looked like links and was not, now it is",
       "date": "2026-09-19",
       "version": "v0.2.88",
       "tags": [
         "graphs",
         "design"
       ],
-      "summary": "Second read of Fractal Semantic Graphs, two fixes. The why this page exists note — the LinkedIn back story — is gone. The page stands without it. The ladder diagram's right hand column was long blue monospace text that read as a row of links nobody could click…"
+      "summary": "Second read of Fractal Semantic Graphs, two fixes. The why this page exists note, the LinkedIn back story, is gone. The page stands without it. The ladder diagram's right hand column was long blue monospace text that read as a row of links nobody could click.…"
     },
     {
       "slug": "how-far-down-does-the-graph-go",
@@ -116,7 +129,7 @@
     },
     {
       "slug": "fractal-semantic-graphs-defined",
-      "title": "Fractal Semantic Graphs — the page now leads with the definition",
+      "title": "Fractal Semantic Graphs, the page now leads with the definition",
       "date": "2026-09-19",
       "version": "v0.2.87",
       "tags": [
@@ -128,7 +141,7 @@
     },
     {
       "slug": "fractal-means-different-not-same",
-      "title": "Fractal means the inside is different, not the same — the definition had it backwards",
+      "title": "Fractal means the inside is different, not the same. The definition had it backwards",
       "date": "2026-09-19",
       "version": "v0.2.89",
       "tags": [
@@ -140,7 +153,7 @@
     },
     {
       "slug": "deleting-files-from-history",
-      "title": "Deleting files from git history — the exact scenario, drawn out",
+      "title": "Deleting files from git history, the exact scenario, drawn out",
       "date": "2026-09-19",
       "version": "v0.2.86",
       "tags": [
@@ -149,7 +162,7 @@
         "method",
         "security"
       ],
-      "summary": "Yesterday's purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did — git reported + e70d582d...b5ae665d dev dev (forced update) — and the new case study writes the whole scenario down with di…"
+      "summary": "Yesterday's purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did, git reported + e70d582d...b5ae665d dev dev (forced update) , and the new case study writes the whole scenario down with dia…"
     },
     {
       "slug": "brief-for-graphs-sgit-ai",
@@ -165,7 +178,7 @@
     },
     {
       "slug": "the-same-pack-for-an-archetype",
-      "title": "Vault #30 — the same pack, written for an archetype instead of a company",
+      "title": "Vault #30, the same pack, written for an archetype instead of a company",
       "date": "2026-09-18",
       "version": "v0.2.82",
       "tags": [
@@ -173,7 +186,7 @@
         "method",
         "privacy"
       ],
-      "summary": "Vault 30 is a sibling of 29 from the same generator, one day later — a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and…"
+      "summary": "Vault 30 is a sibling of 29 from the same generator, one day later, a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and w…"
     },
     {
       "slug": "summit-sheets-preview-grid",
@@ -184,11 +197,11 @@
         "publishing",
         "method"
       ],
-      "summary": "The four Lisbon handouts now appear on the parent page as four A4 previews — page one of each printed sheet, rendered from the PDF at build time and shown as a card — so a reader sees all four at a glance and clicks through to the page with the table, the embe…"
+      "summary": "The four Lisbon handouts now appear on the parent page as four A4 previews (page one of each printed sheet, rendered from the PDF at build time and shown as a card) so a reader sees all four at a glance and clicks through to the page with the table, the embed…"
     },
     {
       "slug": "the-lisbon-summit-sheets",
-      "title": "The Lisbon summit sheets — as pages, and as the PDFs they were handed out as",
+      "title": "The Lisbon summit sheets, as pages, and as the PDFs they were handed out as",
       "date": "2026-09-17",
       "version": "v0.2.80",
       "tags": [
@@ -196,11 +209,11 @@
         "method",
         "network"
       ],
-      "summary": "Four audience sheets written for a startup summit in Lisbon — founders, startups, investors, corporate — are now on the site, with a parent page, one page each, and the PDF both embedded and downloadable. The PDF is the download, not the page. The capability t…"
+      "summary": "Four audience sheets written for a startup summit in Lisbon, founders, startups, investors, corporate, are now on the site, with a parent page, one page each, and the PDF both embedded and downloadable. The PDF is the download, not the page. The capability tab…"
     },
     {
       "slug": "a-job-application-as-a-vault",
-      "title": "A job application as a vault — and the privacy audit published beside it",
+      "title": "A job application as a vault, and the privacy audit published beside it",
       "date": "2026-09-17",
       "version": "v0.2.79",
       "tags": [
@@ -221,11 +234,11 @@
         "agents",
         "method"
       ],
-      "summary": "Vault 28 applies 27's method to riskmandate.ai, one day later. That is the point: one run is an anecdote, two sites is a method. It is not a repeat. The first vault narrated ; this one measures — words above the fold, character offsets, scroll positions in pix…"
+      "summary": "Vault 28 applies 27's method to riskmandate.ai, one day later. That is the point: one run is an anecdote, two sites is a method. It is not a repeat. The first vault narrated ; this one measures : words above the fold, character offsets, scroll positions in pix…"
     },
     {
       "slug": "synthetic-users",
-      "title": "Synthetic users — five people who do not exist, shopping",
+      "title": "Synthetic users, five people who do not exist, shopping",
       "date": "2026-09-15",
       "version": "v0.2.77",
       "tags": [
@@ -273,7 +286,7 @@
         "agents",
         "method"
       ],
-      "summary": "Six llms.txt files are published across this site — the site wide map, the vault catalogue, the guidance entry point, and one each for /docs , /docs/vault and /api . Until now the only way to find one was to type it onto the end of an address and hope. Every p…"
+      "summary": "Six llms.txt files are published across this site, the site wide map, the vault catalogue, the guidance entry point, and one each for /docs , /docs/vault and /api . Until now the only way to find one was to type it onto the end of an address and hope. Every pa…"
     },
     {
       "slug": "the-build-brief-for-decks-on-a-site",
@@ -286,7 +299,7 @@
         "decks",
         "agents"
       ],
-      "summary": "Two releases documented this from the inside: reading one file out of a vault explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to their vault. That brief now exists. It follows the shape of the telemetry brief…"
+      "summary": "Two releases documented this from the inside: reading one file out of a vault explains the mechanism, and the deck pages demonstrate it. Neither told another agent how to do it to their vault. That brief now exists. It follows the shape of the telemetry brief,…"
     },
     {
       "slug": "the-agent-chip-and-the-network-catches-up",
@@ -299,11 +312,11 @@
         "llms",
         "agents"
       ],
-      "summary": "The chip. Last release put an llms.txt link on every page, and it worked but looked like three loose fragments — a pill, a boxed path, and a long sentence — floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions we…"
+      "summary": "The chip. Last release put an llms.txt link on every page, and it worked but looked like three loose fragments (a pill, a boxed path, and a long sentence) floating in the dead space between the nav and the breadcrumb, belonging to neither. Four directions were…"
     },
     {
       "slug": "seven-shorts-on-the-licence-to-operate",
-      "title": "Seven shorts on the Licence to Operate vault — indexed, and put in the right order",
+      "title": "Seven shorts on the Licence to Operate vault, indexed, and put in the right order",
       "date": "2026-09-09",
       "version": "v0.2.65",
       "tags": [
@@ -312,11 +325,11 @@
         "agents",
         "risk"
       ],
-      "summary": "The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3) — grant…"
+      "summary": "The author recorded seven vertical videos walking through the Licence to Operate vault. None of them was on the site. They now have a page, collected in the order they are meant to be watched rather than the order a feed shows them: The mechanism (1–3), grant…"
     },
     {
       "slug": "one-front-door-for-vault-guidance",
-      "title": "One front door for vault guidance — and every document moved under /docs/",
+      "title": "One front door for vault guidance, and every document moved under /docs/",
       "date": "2026-09-09",
       "version": "v0.2.72",
       "tags": [
@@ -325,7 +338,7 @@
         "vaults",
         "method"
       ],
-      "summary": "The guidance here had accumulated across three top level folders — /briefs , /vault , and a /guidance page written this morning. That is three places to look for one kind of thing. Everything readable now lives under /docs/ : /docs/briefs , /docs/vault , /docs…"
+      "summary": "The guidance here had accumulated across three top level folders, /briefs , /vault , and a /guidance page written this morning. That is three places to look for one kind of thing. Everything readable now lives under /docs/ : /docs/briefs , /docs/vault , /docs/…"
     },
     {
       "slug": "markdown-and-file-viewers-what-not-to-build",
@@ -342,7 +355,7 @@
     },
     {
       "slug": "guidance-splits-by-surface",
-      "title": "Guidance now splits by surface — and the third surface finally has its own brief",
+      "title": "Guidance now splits by surface, and the third surface finally has its own brief",
       "date": "2026-09-09",
       "version": "v0.2.71",
       "tags": [
@@ -351,11 +364,11 @@
         "vaults",
         "method"
       ],
-      "summary": "The guidance here had been organised by task — decks, markdown, file viewers. That hid something: every one of those questions has three different right answers depending on where the code runs . Three surfaces is the router. page.json inside a vault, an HTML…"
+      "summary": "The guidance here had been organised by task : decks, markdown, file viewers. That hid something: every one of those questions has three different right answers depending on where the code runs . Three surfaces is the router. page.json inside a vault, an HTML…"
     },
     {
       "slug": "decks-read-straight-out-of-a-vault",
-      "title": "Decks and PDFs read straight out of a vault — with the viewer owned by the site",
+      "title": "Decks and PDFs read straight out of a vault, with the viewer owned by the site",
       "date": "2026-09-09",
       "version": "v0.2.67",
       "tags": [
@@ -377,7 +390,7 @@
         "llms",
         "method"
       ],
-      "summary": "Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them. A page per deck. Each of the nine published decks now has one — four under the AIUC 1 conformance vault, five under Licence to Operate. A deck page ope…"
+      "summary": "Yesterday's release put the decks on the vault pages. Three things were missing, and this release adds them. A page per deck. Each of the nine published decks now has one, four under the AIUC 1 conformance vault, five under Licence to Operate. A deck page open…"
     },
     {
       "slug": "a-brief-for-the-vault-map-infographic",
@@ -390,11 +403,11 @@
         "design",
         "method"
       ],
-      "summary": "An image model produced an infographic of the .sgit.ai sites — one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the 26 published vaults , grouped by use case and indu…"
+      "summary": "An image model produced an infographic of the .sgit.ai sites, one shared foundation, five numbered columns, a band of conceptual links, a footer of counts. It is good. The ask was for a companion covering the 26 published vaults , grouped by use case and indus…"
     },
     {
       "slug": "the-team-for-the-agents-and-investors-in-the-open",
-      "title": "Two new sections — the team, written for the agents; and investors, in the open",
+      "title": "Two new sections, the team, written for the agents; and investors, in the open",
       "date": "2026-09-07",
       "version": "v0.2.62",
       "tags": [
@@ -408,7 +421,7 @@
     },
     {
       "slug": "the-proof-moved-up",
-      "title": "The proof moved up — the homepage, rebuilt to show vaults before it explains them",
+      "title": "The proof moved up, the homepage, rebuilt to show vaults before it explains them",
       "date": "2026-09-07",
       "version": "v0.2.60",
       "tags": [
@@ -417,11 +430,11 @@
         "vaults",
         "agents"
       ],
-      "summary": "The homepage is rebuilt, following the diagnosis published this morning rather than a fresh opinion — and the \"after\" article puts each new band beside a screenshot of what it replaced, so the comparison is honest rather than flattering. The first screen now s…"
+      "summary": "The homepage is rebuilt, following the diagnosis published this morning rather than a fresh opinion, and the \"after\" article puts each new band beside a screenshot of what it replaced, so the comparison is honest rather than flattering. The first screen now sh…"
     },
     {
       "slug": "the-diagnosis-before-the-rebuild",
-      "title": "The diagnosis before the rebuild — and a card for pointing at the sibling sites",
+      "title": "The diagnosis before the rebuild, and a card for pointing at the sibling sites",
       "date": "2026-09-07",
       "version": "v0.2.59",
       "tags": [
@@ -430,11 +443,11 @@
         "network",
         "method"
       ],
-      "summary": "Asked to step back and say how this site should present its twenty five published vaults, the answer was a diagnosis rather than a redesign — and it is published first, as an article with screenshots of the current site, so the rebuild that follows can be comp…"
+      "summary": "Asked to step back and say how this site should present its twenty five published vaults, the answer was a diagnosis rather than a redesign, and it is published first, as an article with screenshots of the current site, so the rebuild that follows can be compa…"
     },
     {
       "slug": "the-board-moves-into-a-vault",
-      "title": "The board moves into a vault of its own — and its read key is published",
+      "title": "The board moves into a vault of its own, and its read key is published",
       "date": "2026-09-07",
       "version": "v0.2.64",
       "tags": [
@@ -443,7 +456,7 @@
         "team",
         "method"
       ],
-      "summary": "Two releases after the board appeared as files in the site repository, the shape was right and the home was wrong: moving a card from review to done cost a full site release — build, validate, two pushes, and a wait for the deploy to verify. A board should be…"
+      "summary": "Two releases after the board appeared as files in the site repository, the shape was right and the home was wrong: moving a card from review to done cost a full site release, build, validate, two pushes, and a wait for the deploy to verify. A board should be c…"
     },
     {
       "slug": "our-brief-was-wrong-and-the-team-that-owns-the-code-said-so",
@@ -460,7 +473,7 @@
     },
     {
       "slug": "ask-this-site",
-      "title": "Ask this site — a pane on every page whose model calls tools over the site's own content",
+      "title": "Ask this site, a pane on every page whose model calls tools over the site's own content",
       "date": "2026-09-07",
       "version": "v0.2.63",
       "tags": [
@@ -470,11 +483,11 @@
         "byok",
         "agents"
       ],
-      "summary": "Every page now carries a pane, bottom right: Ask this site . It follows the three tiers the network chooser set out, with one difference that matters — the model does not read a catalogue pasted into its prompt. It is given seven tools and calls them. | Tool |…"
+      "summary": "Every page now carries a pane, bottom right: Ask this site . It follows the three tiers the network chooser set out, with one difference that matters. The model does not read a catalogue pasted into its prompt. It is given seven tools and calls them. | Tool |…"
     },
     {
       "slug": "the-vaults-table-you-can-sort",
-      "title": "The vaults table stops being a key dump — sortable, categorised, newest first",
+      "title": "The vaults table stops being a key dump, sortable, categorised, newest first",
       "date": "2026-09-06",
       "version": "v0.2.57",
       "tags": [
@@ -482,11 +495,11 @@
         "ux",
         "mobile"
       ],
-      "summary": "Reported from an iPad, where the failure was obvious in a way it never is on a desktop. The read key is a 64 hex string; giving it room squeezed the vault id down to one character per line — ookq4mn4 rendered as a vertical stack. The fix was not narrower colum…"
+      "summary": "Reported from an iPad, where the failure was obvious in a way it never is on a desktop. The read key is a 64 hex string; giving it room squeezed the vault id down to one character per line : ookq4mn4 rendered as a vertical stack. The fix was not narrower colum…"
     },
     {
       "slug": "the-brief-came-back-as-a-vault",
-      "title": "The brief came back as a vault — and it is the first one here that phones home",
+      "title": "The brief came back as a vault, and it is the first one here that phones home",
       "date": "2026-09-06",
       "version": "v0.2.56",
       "tags": [
@@ -496,11 +509,11 @@
         "audit",
         "briefs"
       ],
-      "summary": "v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so two games about agent permissions now joins the published vaults — two deterministic games about grants, permissions a…"
+      "summary": "v0.2.55 published a build brief on getting telemetry out of a vault whose read key is public. Another agent read it and shipped the thing, so two games about agent permissions now joins the published vaults, two deterministic games about grants, permissions an…"
     },
     {
       "slug": "briefs-gets-a-second-kind",
-      "title": "Briefs gets a second kind — references written to be executed, not asks waiting on a reply",
+      "title": "Briefs gets a second kind, references written to be executed, not asks waiting on a reply",
       "date": "2026-09-06",
       "version": "v0.2.55",
       "tags": [
@@ -509,11 +522,11 @@
         "docs",
         "multi-agent"
       ],
-      "summary": "Briefs has been a single scroll of cross team asks since v0.1.13 — each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them. Buil…"
+      "summary": "Briefs has been a single scroll of cross team asks since v0.1.13, each addressed to another team, each carrying a status, each closing when it is answered. A brief arrived this week that is a different species, so the page now says so and separates them. Build…"
     },
     {
       "slug": "provenance-is-not-conformance",
-      "title": "Provenance is not conformance — the AIUC-1 vault, forked and layered",
+      "title": "Provenance is not conformance, the AIUC-1 vault, forked and layered",
       "date": "2026-09-05",
       "version": "v0.2.54",
       "tags": [
@@ -523,11 +536,11 @@
         "graphs",
         "permissions"
       ],
-      "summary": "Provenance is not conformance joins the published vaults. It is a fork of the AIUC 1 catalogue vault that keeps every byte of it and adds one directory above it — 649 files against the catalogue's 135. Both vaults stay published, and the catalogue page now say…"
+      "summary": "Provenance is not conformance joins the published vaults. It is a fork of the AIUC 1 catalogue vault that keeps every byte of it and adds one directory above it, 649 files against the catalogue's 135. Both vaults stay published, and the catalogue page now says…"
     },
     {
       "slug": "the-directory-answers-questions-now",
-      "title": "The directory answers questions now — and the default tier needs no key",
+      "title": "The directory answers questions now, and the default tier needs no key",
       "date": "2026-08-27",
       "version": "v0.2.47",
       "tags": [
@@ -536,11 +549,11 @@
         "network",
         "vaults"
       ],
-      "summary": "Two things: the network directory grew a chat box, and a second conference vault went up. Ask it which of the nineteen sites is yours. Type \"I have to sign off a risk\" and it points at risks.sgit.ai — and shows you the words it matched on. It runs in your brow…"
+      "summary": "Two things: the network directory grew a chat box, and a second conference vault went up. Ask it which of the nineteen sites is yours. Type \"I have to sign off a risk\" and it points at risks.sgit.ai, and shows you the words it matched on. It runs in your brows…"
     },
     {
       "slug": "the-delta-is-the-risk",
-      "title": "An insurance policy for an agent — and the delta is the risk",
+      "title": "An insurance policy for an agent, and the delta is the risk",
       "date": "2026-08-27",
       "version": "v0.2.52",
       "tags": [
@@ -549,7 +562,7 @@
         "permissions",
         "risk"
       ],
-      "summary": "Licence to Operate joins the published vaults — one agent, its policy, and a simulated conversation where every reply carries its price. The idea worth stealing is the delta. Three sets: CAN DO — the grant. 12 capabilities. MAY DO — the mandate. 4, and the onl…"
+      "summary": "Licence to Operate joins the published vaults, one agent, its policy, and a simulated conversation where every reply carries its price. The idea worth stealing is the delta. Three sets: CAN DO : the grant. 12 capabilities. MAY DO : the mandate. 4, and the only…"
     },
     {
       "slug": "a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy",
@@ -562,11 +575,11 @@
         "provenance",
         "standards"
       ],
-      "summary": "AIUC 1, as a graph you can cite joins the published vaults — an unofficial, derivative machine readable catalog of the public AIUC 1 agent standard. It is not approved, certified or endorsed by AIUC, and the page carries that in a box above everything else rat…"
+      "summary": "AIUC 1, as a graph you can cite joins the published vaults, an unofficial, derivative machine readable catalog of the public AIUC 1 agent standard. It is not approved, certified or endorsed by AIUC, and the page carries that in a box above everything else rath…"
     },
     {
       "slug": "a-pitch-delivered-from-a-vault",
-      "title": "A three-minute pitch, delivered from a vault — and the first grant that is not empty",
+      "title": "A three-minute pitch, delivered from a vault, and the first grant that is not empty",
       "date": "2026-08-27",
       "version": "v0.2.51",
       "tags": [
@@ -574,7 +587,7 @@
         "permissions",
         "presentation"
       ],
-      "summary": "The VoiceDebrief pitch to Founder Institute joins the published vaults — the 23rd, and not a deck about a vault but a deck presented from one. A presenter, not a PDF. Twelve slides with per slide target timings, a live 3:00 countdown, speaker notes, Focus and…"
+      "summary": "The VoiceDebrief pitch to Founder Institute joins the published vaults, the 23rd, and not a deck about a vault but a deck presented from one. A presenter, not a PDF. Twelve slides with per slide target timings, a live 3:00 countdown, speaker notes, Focus and F…"
     },
     {
       "slug": "nineteen-sites-and-a-way-to-find-yours",
@@ -586,7 +599,7 @@
         "navigation",
         "refactor"
       ],
-      "summary": "The network was four sites. It is nineteen — seventeen live, two with the repository and subdomain in place but nothing published yet. That is no longer a footnote on this site; it is where most of the writing now lives. The page now starts with a question, no…"
+      "summary": "The network was four sites. It is nineteen : seventeen live, two with the repository and subdomain in place but nothing published yet. That is no longer a footnote on this site; it is where most of the writing now lives. The page now starts with a question, no…"
     },
     {
       "slug": "articles-get-a-home-and-a-band-gets-its-width-back",
@@ -598,11 +611,11 @@
         "homepage",
         "layout"
       ],
-      "summary": "Three changes, one of them a bug I shipped yesterday. The network band ran the full viewport width. The homepage bands each carry their own measure — .eco has max width:1100px on the component itself, not on a wrapper — and the band added in v0.2.44 simply had…"
+      "summary": "Three changes, one of them a bug I shipped yesterday. The network band ran the full viewport width. The homepage bands each carry their own measure ( .eco has max width:1100px on the component itself, not on a wrapper) and the band added in v0.2.44 simply had…"
     },
     {
       "slug": "a-conference-keynote-as-a-vault",
-      "title": "A conference keynote as a vault — the deck, its exports, and the research it came from",
+      "title": "A conference keynote as a vault, the deck, its exports, and the research it came from",
       "date": "2026-08-26",
       "version": "v0.2.46",
       "tags": [
@@ -610,11 +623,11 @@
         "presentation",
         "provenance"
       ],
-      "summary": "AI vs. AI — Black Hat Europe 2025 joins the published vaults. It is the twentieth, and the first that is a talk rather than a document set or an app. The whole chain, one credential. The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the…"
+      "summary": "AI vs. AI, Black Hat Europe 2025 joins the published vaults. It is the twentieth, and the first that is a talk rather than a document set or an app. The whole chain, one credential. The deck as presented (26 slides), six PDF exports from v0.1.1 to v0.2.0, the…"
     },
     {
       "slug": "six-vaults-published-three-held-back",
-      "title": "Six vaults published, three held back — and the check that nearly missed one",
+      "title": "Six vaults published, three held back, and the check that nearly missed one",
       "date": "2026-08-25",
       "version": "v0.2.43",
       "tags": [
@@ -622,11 +635,11 @@
         "audit",
         "security"
       ],
-      "summary": "Nine vaults were submitted for publication. Six are now live , in the gallery. Three were held, and the third one is the reason this post exists. Penetration Test Report — a pentest delivered as a vault instead of a PDF. Eight audience specific views over one…"
+      "summary": "Nine vaults were submitted for publication. Six are now live , in the gallery. Three were held, and the third one is the reason this post exists. Penetration Test Report : a pentest delivered as a vault instead of a PDF. Eight audience specific views over one…"
     },
     {
       "slug": "the-ninth-vault-four-apps-in-one-tree",
-      "title": "The ninth published vault — four apps in one tree, and a reader that asked for nothing it did not need",
+      "title": "The ninth published vault, four apps in one tree, and a reader that asked for nothing it did not need",
       "date": "2026-08-22",
       "version": "v0.2.40",
       "tags": [
@@ -634,7 +647,7 @@
         "graphs",
         "permissions"
       ],
-      "summary": "VoiceDebrief joins the published vaults. Four apps in one encrypted vault, lifting meaning out of text — from fictional voice notes to Article 9(2) of the EU AI Act — into typed semantic graphs. Written up from the vault and the release that published it; the…"
+      "summary": "VoiceDebrief joins the published vaults. Four apps in one encrypted vault, lifting meaning out of text, from fictional voice notes to Article 9(2) of the EU AI Act, into typed semantic graphs. Written up from the vault and the release that published it; the pa…"
     },
     {
       "slug": "an-ordinary-commit-should-not-be-able-to-take-the-site-down",
@@ -650,7 +663,7 @@
     },
     {
       "slug": "the-first-sibling-that-links-back",
-      "title": "A fourth sibling site — and the first one that links back",
+      "title": "A fourth sibling site, and the first one that links back",
       "date": "2026-08-21",
       "version": "v0.2.39",
       "tags": [
@@ -658,11 +671,11 @@
         "graphs",
         "method"
       ],
-      "summary": "graphs.sgit.ai joins the network. It argues for a grammar of semantic graphs, from five rules you can apply tomorrow up to a full positioning against schemas and vector search — and it opens by disowning the product category a reader arrives expecting: \"this i…"
+      "summary": "graphs.sgit.ai joins the network. It argues for a grammar of semantic graphs, from five rules you can apply tomorrow up to a full positioning against schemas and vector search, and it opens by disowning the product category a reader arrives expecting: \"this is…"
     },
     {
       "slug": "the-audit-that-stopped-a-publication",
-      "title": "The audit that stopped a publication — and the vault we built instead",
+      "title": "The audit that stopped a publication, and the vault we built instead",
       "date": "2026-08-20",
       "version": "v0.2.37",
       "tags": [
@@ -670,11 +683,11 @@
         "security",
         "publishing"
       ],
-      "summary": "A vault arrived for publication: the EU AI Act as a citable graph — 113 articles, 1,523 nodes, 1,944 edges, every node traced to hash verified source bytes. Good demo, obvious yes. It did not ship. The audit step — open every file with the exact credential you…"
+      "summary": "A vault arrived for publication: the EU AI Act as a citable graph : 113 articles, 1,523 nodes, 1,944 edges, every node traced to hash verified source bytes. Good demo, obvious yes. It did not ship. The audit step, open every file with the exact credential you…"
     },
     {
       "slug": "a-third-sibling-site-that-says-it-does-not-exist",
-      "title": "A third sibling site — one that says, at the top of every page, that it does not exist",
+      "title": "A third sibling site, one that says, at the top of every page, that it does not exist",
       "date": "2026-08-20",
       "version": "v0.2.38",
       "tags": [
@@ -682,7 +695,7 @@
         "edge",
         "security"
       ],
-      "summary": "sg sentinel.sgit.ai joins the network. It is a design for an app coupled edge guard that replaces rented AWS WAF plus CloudWatch and Firehose with a layer you own — and its status pill reads NOT BUILT where its siblings read MVP DRAFT . The inversion is the id…"
+      "summary": "sg sentinel.sgit.ai joins the network. It is a design for an app coupled edge guard that replaces rented AWS WAF plus CloudWatch and Firehose with a layer you own, and its status pill reads NOT BUILT where its siblings read MVP DRAFT . The inversion is the ide…"
     },
     {
       "slug": "the-first-two-sibling-sites",
@@ -694,7 +707,7 @@
         "identity",
         "pki"
       ],
-      "summary": "Two focused sites now run on .sgit.ai subdomains, and a network section covers both — what each argues, why it is relevant here, and screenshots of the real pages. nhi.sgit.ai splits \"how do I give my agents an identity?\" into agents you run and agents you ren…"
+      "summary": "Two focused sites now run on .sgit.ai subdomains, and a network section covers both, what each argues, why it is relevant here, and screenshots of the real pages. nhi.sgit.ai splits \"how do I give my agents an identity?\" into agents you run and agents you rent…"
     },
     {
       "slug": "verify-the-fix-pack-not-just-the-bug",
@@ -730,7 +743,7 @@
         "video",
         "risk-graph-explorer"
       ],
-      "summary": "A video is invisible to a search engine, to llms full.txt , and to any agent reading this site as documentation. It is also full of \"this guy here\" and \"look at this\" — pointing that a transcript cannot resolve. So the Risk Graph Explorer walkthroughs now carr…"
+      "summary": "A video is invisible to a search engine, to llms full.txt , and to any agent reading this site as documentation. It is also full of \"this guy here\" and \"look at this\" , pointing that a transcript cannot resolve. So the Risk Graph Explorer walkthroughs now carr…"
     },
     {
       "slug": "printing-stopped-costing-every-reader",
@@ -741,7 +754,7 @@
         "print",
         "performance"
       ],
-      "summary": "Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted across the middle of page 2 , translucent, with the prose showing through it — and any screenshot you had not scrolled past exported as a blank gap. The fir…"
+      "summary": "Save a walkthrough page as a PDF and it used to come out wrong in two ways: the site navigation painted across the middle of page 2 , translucent, with the prose showing through it, and any screenshot you had not scrolled past exported as a blank gap. The firs…"
     },
     {
       "slug": "green-does-not-mean-live",
@@ -753,7 +766,7 @@
         "deploy",
         "process"
       ],
-      "summary": "Two consecutive releases pushed cleanly, reported success, and never reached the site. A human noticed on a phone, forty minutes later, because the version badge still showed the old number. The release script verified that both remotes were in sync — and they…"
+      "summary": "Two consecutive releases pushed cleanly, reported success, and never reached the site. A human noticed on a phone, forty minutes later, because the version badge still showed the old number. The release script verified that both remotes were in sync, and they…"
     }
   ],
   "articles": [
@@ -772,7 +785,7 @@
     },
     {
       "slug": "proof-behind-the-claim",
-      "title": "The proof is two clicks behind the claim — what the homepage gets wrong, and the fix",
+      "title": "The proof is two clicks behind the claim, what the homepage gets wrong, and the fix",
       "date": "2026-09-07",
       "version": "v0.2.59",
       "tags": [
@@ -781,11 +794,11 @@
         "vaults",
         "agents"
       ],
-      "summary": "Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed."
+      "summary": "Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed."
     },
     {
       "slug": "proof-moved-up",
-      "title": "The proof moved up — the homepage after the rebuild, next to the before pictures",
+      "title": "The proof moved up, the homepage after the rebuild, next to the before pictures",
       "date": "2026-09-07",
       "version": "v0.2.60",
       "tags": [
@@ -794,11 +807,11 @@
         "vaults",
         "agents"
       ],
-      "summary": "The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show."
+      "summary": "The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show."
     },
     {
       "slug": "chat-on-a-static-site",
-      "title": "A chat box on a site with no server — the plan, and the trade it makes",
+      "title": "A chat box on a site with no server, the plan, and the trade it makes",
       "date": "2026-08-27",
       "version": "v0.2.47",
       "tags": [
@@ -807,7 +820,7 @@
         "byok",
         "plan"
       ],
-      "summary": "Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free."
+      "summary": "Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free."
     },
     {
       "slug": "nineteen-sites",
@@ -819,7 +832,7 @@
         "publishing",
         "method"
       ],
-      "summary": "The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai — what forced the split, what it cost, and why the index into them now starts with a question instead of a list."
+      "summary": "The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list."
     },
     {
       "slug": "what-sgit-is",
@@ -832,7 +845,7 @@
         "vaults",
         "agents"
       ],
-      "summary": "An introduction to sgit and sgit.ai — what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte."
+      "summary": "An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte."
     },
     {
       "slug": "seven-vaults-one-method",
@@ -844,7 +857,7 @@
         "publishing",
         "method"
       ],
-      "summary": "Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first — including three vault keys submitted for publication that would have handed the world write access."
+      "summary": "Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access."
     },
     {
       "slug": "green-does-not-mean-live",

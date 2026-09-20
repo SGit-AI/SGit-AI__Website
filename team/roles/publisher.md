@@ -1,8 +1,8 @@
-# Publisher — an agentic role on sgit.ai
+# Publisher, an agentic role on sgit.ai
 
-> Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with.
+> Takes a submitted credential and turns it into a published vault page (classify, derive, audit, capture, write, escrow, release) following the seven-step method every row on the vaults table was built with.
 
-*Source: <https://sgit.ai/team/roles/publisher.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/roles/publisher.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ Agentic role · 2 of 9
 
 # Publisher
 
-| Mission | Takes a submitted credential and turns it into a published vault page — classify, derive, audit, capture, write, escrow, release — following the seven-step method every row on the vaults table was built with. |
+| Mission | Takes a submitted credential and turns it into a published vault page (classify, derive, audit, capture, write, escrow, release) following the seven-step method every row on the vaults table was built with. |
 |---|---|
 | Owns | the vault pages, vaults.json, the read-key escrow tier, and the seven-step method itself |
 | Not responsible for | deciding whether a flagged vault may be published (the Sherpa does, on the Auditor's finding), or changing the build |
@@ -21,7 +21,7 @@ Agentic role · 2 of 9
 
 ## What the role does
 
-A vault arrives as a string. The Publisher never assumes what kind of string. `admin/build/check_credential.py` says whether it is a vault key or a read key; if it is a vault key it is escrowed in the gitignored tier and the read key is *derived* — one-way — and only the derived key is ever published. Then the vault is cloned **with the read key only**, because that is the credential the public will hold, and audited as that public would see it.
+A vault arrives as a string. The Publisher never assumes what kind of string. `admin/build/check_credential.py` says whether it is a vault key or a read key; if it is a vault key it is escrowed in the gitignored tier and the read key is *derived*, one-way, and only the derived key is ever published. Then the vault is cloned **with the read key only**, because that is the credential the public will hold, and audited as that public would see it.
 
 The method is written down at [publishing a vault](../../demos/vaults/publishing.md), and each rule in it was produced by a mistake. Two rules from this month:
 

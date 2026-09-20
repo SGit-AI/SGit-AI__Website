@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Release engineer — an agentic role on sgit.ai</title>
-<meta name="description" content="Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
+<title>Release engineer, an agentic role on sgit.ai</title>
+<meta name="description" content="Ships the site, build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
 <link rel="canonical" href="https://sgit.ai/team/roles/release-engineer.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/team/roles/release-engineer.html">
-<meta property="og:title" content="Release engineer — an agentic role on sgit.ai">
-<meta property="og:description" content="Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
+<meta property="og:title" content="Release engineer, an agentic role on sgit.ai">
+<meta property="og:description" content="Ships the site, build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="release-engineer.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Release engineer — an agentic role on sgit.ai", "headline": "Release engineer — an agentic role on sgit.ai", "description": "Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.", "url": "https://sgit.ai/team/roles/release-engineer.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Release engineer, an agentic role on sgit.ai", "headline": "Release engineer, an agentic role on sgit.ai", "description": "Ships the site, build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.", "url": "https://sgit.ai/team/roles/release-engineer.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,100 +21,100 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../docs/index.html">Documentation</a>
-      <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../../api/index.html">HTTP API</a>
-      <a class="sl" href="../../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../../deploy/index.html">Deploy</a>
-      <a class="sl" href="../../skills/index.html">Skills</a>
-      <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../../demos/index.html">Demos</a>
-      <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../compare/index.html">Comparisons</a>
-      <a class="sl" href="../../case-studies/index.html">Case studies</a>
-      <a class="sl" href="../../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../updates/index.html">Updates</a>
-      <a class="sl" href="../../articles/index.html">Articles</a>
-      <a class="sl" href="../../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../team/index.html">How the site is run</a>
-      <a class="sl here" href="../../team/index.html#roles">Roles</a>
-      <a class="sl" href="../../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../../network/index.html">All sites</a>
-      <a class="sl" href="../../network/nhi.html">nhi</a>
-      <a class="sl" href="../../network/pki.html">pki</a>
-      <a class="sl" href="../../network/graphs.html">graphs</a>
-      <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl here" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Team</a> / Release engineer</p>
   <p class="eyebrow">Agentic role &middot; 8 of 9</p>
   <h1>Release engineer</h1>
   <div class="tablewrap"><table class="ident">
-    <tr><th>Mission</th><td>Ships the site — build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.</td></tr>
-    <tr><th>Owns</th><td>admin/build/release.sh, the validator, the CI tag gate, and the version bump</td></tr>
-    <tr><th>Not responsible for</th><td>what goes in the release (the Sherpa) or the words about it (the Journalist, the Historian)</td></tr>
-    <tr><th>Works in</th><td><code>admin/build/release.sh</code> &middot; <code>admin/build/validate.js</code> &middot; <code>.github/workflows/deploy-pages.yml</code> &middot; <code>admin/build/build_pages.py (SITE_VERSION)</code></td></tr>
-    <tr><th>Checks it runs</th><td>SITE_VERSION matches the commit subject; validate passes including the leak tripwire; git HEAD equals origin/dev after the push; the live site serves the new version before the release is reported; the tree is clean after</td></tr>
+ <tr><th>Mission</th><td>Ships the site, build, validate, push, and refuse to call a release done until sgit.ai is actually serving it.</td></tr>
+ <tr><th>Owns</th><td>admin/build/release.sh, the validator, the CI tag gate, and the version bump</td></tr>
+ <tr><th>Not responsible for</th><td>what goes in the release (the Sherpa) or the words about it (the Journalist, the Historian)</td></tr>
+ <tr><th>Works in</th><td><code>admin/build/release.sh</code> &middot; <code>admin/build/validate.js</code> &middot; <code>.github/workflows/deploy-pages.yml</code> &middot; <code>admin/build/build_pages.py (SITE_VERSION)</code></td></tr>
+ <tr><th>Checks it runs</th><td>SITE_VERSION matches the commit subject; validate passes including the leak tripwire; git HEAD equals origin/dev after the push; the live site serves the new version before the release is reported; the tree is clean after</td></tr>
   </table></div>
 <h2>What the role does</h2>
-<p>The site ships over git: a push to <code>dev</code> triggers the GitHub Pages deploy. A release is not done when the push succeeds — it is done when the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.</p>
-<p>Before the build, the release pulls the <b>board vault</b> (<code>admin/content/team/issues/</code>, a separate vault with its own key) so the board snapshot it renders is current. Until v0.2.76 the site folder was itself an sgit vault pushed on every release; that mirror was retired and purged in September 2026 — the reasons are in <a href="../../case-studies/one-tree-two-remotes.html">the case study</a>. Nothing in the release depends on it any more.</p>
+<p>The site ships over git: a push to <code>dev</code> triggers the GitHub Pages deploy. A release is not done when the push succeeds. It is done when the live site is polled and serves the new version, because two releases in August pushed cleanly and never deployed, and nobody noticed for forty minutes.</p>
+<p>Before the build, the release pulls the <b>board vault</b> (<code>admin/content/team/issues/</code>, a separate vault with its own key) so the board snapshot it renders is current. Until v0.2.76 the site folder was itself an sgit vault pushed on every release; that mirror was retired and purged in September 2026. The reasons are in <a href="../../case-studies/one-tree-two-remotes.html">the case study</a>. Nothing in the release depends on it any more.</p>
 <p>The CI tag gate reads the commit subject, not the version constant: a subject of <code>site vX.Y.Z: …</code> tags the release; anything else publishes without a tag. A missing tag is a bookkeeping gap; a blocked deploy is an outage.</p>
 <h2>The rules it enforces</h2>
 <ul>
 <li><b><code>release.sh</code> is the only way to ship.</b> It pulls the board, builds, validates, pushes git, polls the live site, and aborts loudly at each gate.</li>
 <li><b>Never print a vault key.</b> Release logs get pasted into chats. The demo vaults' write keys live in the gitignored <code>admin/local/demo-keys/</code>, and the validator scans every tracked file for each of them.</li>
-<li><b>Do not touch <code>SITE_VERSION</code> while a release is running</b> — its live check reads that value mid-run.</li>
+<li><b>Do not touch <code>SITE_VERSION</code> while a release is running</b>: its live check reads that value mid-run.</li>
 <li><b>The version-log entry for the current release says <code>this release</code></b>; the next release fills in its git commit id from <code>git log</code>.</li>
 <li><b>A dirty tree after release is reported</b>, not ignored: it is the next release's work, or a bug.</li>
 </ul>
@@ -130,9 +130,9 @@
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.2.99</a> · <a href="../../admin/index.html">engineering</a> · <a href="release-engineer.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.3.0</a> · <a href="../../admin/index.html">engineering</a> · <a href="release-engineer.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -174,7 +174,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

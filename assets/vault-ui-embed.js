@@ -1,4 +1,4 @@
-/* vault-ui-embed.js — the official SG/Vault interface, embedded via its embed
+/* vault-ui-embed.js, the official SG/Vault interface, embedded via its embed
    protocol, as a reusable component.
 
    Usage (one div per embed):
@@ -6,11 +6,11 @@
           data-app="1"></div>
    data-app="0" hides the App Mode surface (vaults without an app.json).
 
-   Both surfaces open ON PAGE LOAD, stacked — App Mode first, the vault browser
-   under it — so the reader lands on the vault, not on a row of buttons. The
+   Both surfaces open ON PAGE LOAD, stacked (App Mode first, the vault browser
+   under it) so the reader lands on the vault, not on a row of buttons. The
    opens are SEQUENTIAL by design: the browser surface starts once the app
    reports vault-ready (or after a short grace period), so its objects come out
-   of the client's encrypted-object cache — the second surface mostly decrypts
+   of the client's encrypted-object cache, the second surface mostly decrypts
    rather than fetches, which is the caching story demonstrating itself.
 
    The handshake (see the UI's embed-protocol.js): load ?embed=1&parent=<origin>,
@@ -31,13 +31,13 @@
   function mount(el) {
     var vaultId = el.getAttribute('data-vault');
     var readKey = el.getAttribute('data-readkey');
-    var hasApp  = el.getAttribute('data-app') !== '0';
+    var hasApp = el.getAttribute('data-app') !== '0';
     if (!vaultId || !readKey) return;
     var cred = 'sgit_rk1_' + readKey + ':' + vaultId;
 
     var sections = [];
-    if (hasApp) sections.push(section(el, cred, 'app', '▶ App Mode — the vault’s own app'));
-    sections.push(section(el, cred, 'vault', '▤ Vault browser — FILES / SGIT / SETTINGS'));
+    if (hasApp) sections.push(section(el, cred, 'app', '▶ App Mode (the vault’s own app'));
+    sections.push(section(el, cred, 'vault', '▤ Vault browser) FILES / SGIT / SETTINGS'));
 
     // One listener for the mount; route replies by which frame sent them.
     window.addEventListener('message', function (e) {
@@ -49,9 +49,9 @@
         if (d.sg === 'vault-embed-ready' && s.armed) {
           clearTimeout(s.fallbackT);
           e.source.postMessage({ sg: 'vault-open', key: cred, mode: s.mode }, ORIGIN);
-          s.note.textContent = 'Handshake complete — key handed over postMessage, opening…';
+          s.note.textContent = 'Handshake complete, key handed over postMessage, opening…';
         } else if (d.sg === 'vault-ready') {
-          s.note.innerHTML = 'Opened <b>read-only</b> over the embed protocol — the key never appeared in a URL and was never written to the frame’s storage' +
+          s.note.innerHTML = 'Opened <b>read-only</b> over the embed protocol, the key never appeared in a URL and was never written to the frame’s storage' +
             (d.fileCount ? '; ' + d.fileCount + ' files decrypted in the frame' : '') + '.';
           if (s.onReady) { s.onReady(); s.onReady = null; }
         } else if (d.sg === 'vault-error') {

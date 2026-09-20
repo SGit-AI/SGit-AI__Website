@@ -1,8 +1,8 @@
-# Green does not mean live — sgit.ai
+# Green does not mean live (sgit.ai
 
 > Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 
-*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@
 
 Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 
-Two consecutive releases of this site pushed cleanly, verified themselves against both remotes, printed **"both remotes in sync — done"**, and never reached anybody. The site served a two-release-old page for forty minutes. It was noticed by a human on a phone, who looked at the version badge and said *"is this the latest version?"*
+Two consecutive releases of this site pushed cleanly, verified themselves against both remotes, printed **"both remotes in sync, done"**, and never reached anybody. The site served a two-release-old page for forty minutes. It was noticed by a human on a phone, who looked at the version badge and said *"is this the latest version?"*
 
 Everything about that sentence is worth sitting with. The checks were not weak. They were **checking the wrong boundary**.
 
@@ -23,11 +23,11 @@ Everything about that sentence is worth sitting with. The checks were not weak. 
 The release script does five things, and four of them are good:
 
 1. Build the site from source.
-2. Run the validator — structure, links, markdown twins, orphan pages, and a tripwire that scans every tracked file for a vault key.
+2. Run the validator, structure, links, markdown twins, orphan pages, and a tripwire that scans every tracked file for a vault key.
 3. Commit and push the encrypted vault; confirm `sgit status` reports in sync.
 4. Commit and push the git mirror; confirm `HEAD == origin/dev`.
 
-Step 4 is where the confidence came from, and it is genuinely a strong check — it compares hashes, not hopes. The problem is what it means. It means **the bytes arrived at GitHub**. It does not mean anybody can read them.
+Step 4 is where the confidence came from, and it is genuinely a strong check, it compares hashes, not hopes. The problem is what it means. It means **the bytes arrived at GitHub**. It does not mean anybody can read them.
 
 ## The gap, named
 
@@ -45,7 +45,7 @@ Between the second and third arrows sits a GitHub Actions job. It has its own fa
 
 ## What actually failed
 
-Not our code. Not the content. The deploy job died in **"Set up job"** — before running a single step of its own:
+Not our code. Not the content. The deploy job died in **"Set up job"**: before running a single step of its own:
 
 ```
 
@@ -77,14 +77,14 @@ A release now finishes by asking the live site what version it is serving:
 
 It polls with a cache-buster, because the origin's own answer is the only one that counts. If the version never appears it **aborts loudly**, names the Actions page, and says that a 429 on the action download is transient and needs a re-run.
 
-The cost is real: up to eight minutes of waiting on every release. We took it, because the alternative had already been demonstrated twice in one afternoon — telling somebody a fix was live when it was not, twice, in writing.
+The cost is real: up to eight minutes of waiting on every release. We took it, because the alternative had already been demonstrated twice in one afternoon, telling somebody a fix was live when it was not, twice, in writing.
 
 ## The rule underneath
 
 This site already had two rules of exactly this shape, and adding the third made the pattern obvious:
 
-- **A page nothing links to is unpublished.** The build fails on an orphan page — it happened once, a brief that was written, built and pushed while nothing linked to it.
-- **A page the machine index omits is unpublished.** The build fails if any page would be missing from `llms.txt` — that happened too, a whole section silently absent.
+- **A page nothing links to is unpublished.** The build fails on an orphan page, it happened once, a brief that was written, built and pushed while nothing linked to it.
+- **A page the machine index omits is unpublished.** The build fails if any page would be missing from `llms.txt`, that happened too, a whole section silently absent.
 - **A page the deploy never served is unpublished.** Now the release fails on it.
 
 All three are the same claim: *shipped* is a fact about the reader, not about your repository. Every one of them was learned by getting it wrong first, which is the only reason the list is short and specific rather than long and aspirational.

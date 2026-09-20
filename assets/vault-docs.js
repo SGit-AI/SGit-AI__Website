@@ -1,4 +1,4 @@
-/* sgit.ai — live vault docs reader.
+/* sgit.ai, live vault docs reader.
  *
  * Reads an encrypted SG/Send vault directly from the browser using a published
  * READ key: derive the ref file id (HMAC-SHA256), GET the ciphertext over CORS,
@@ -6,13 +6,13 @@
  * side, no build step: publishing is `sgit push`, and the next page load has it.
  *
  * Cache tiers, mirroring what the object model allows:
- *   mem    — decrypted objects for this page session
- *   Cache  — ciphertext for obj-cas-imm-* (content-addressed ⇒ immutable ⇒ forever)
- *   TTL    — the ref (mutable HEAD pointer) is the one object that can change, so it is the
- *            only thing that must be refetched — but only once per freshness window
- *            (ref_ttl_s, default 120s), not once per page view. Inside that window,
- *            navigating the docs costs zero network requests; the window is also the
- *            worst-case delay before a new commit is noticed.
+ * mem , decrypted objects for this page session
+ * Cache , ciphertext for obj-cas-imm-* (content-addressed ⇒ immutable ⇒ forever)
+ * TTL , the ref (mutable HEAD pointer) is the one object that can change, so it is the
+ * only thing that must be refetched, but only once per freshness window
+ * (ref_ttl_s, default 120s), not once per page view. Inside that window,
+ * navigating the docs costs zero network requests; the window is also the
+ * worst-case delay before a new commit is noticed.
  */
 (function () {
   'use strict';
@@ -37,10 +37,10 @@
   function kindOf(plain, fallback) {
     try {
       var o = JSON.parse(dec.decode(plain));
-      if (o.schema === 'commit_v1')       return 'commit';
-      if (o.schema === 'tree_v1')         return 'tree';
+      if (o.schema === 'commit_v1') return 'commit';
+      if (o.schema === 'tree_v1') return 'tree';
       if (o.schema === 'branch_index_v1') return 'branch index';
-      if (o.commit_id)                    return 'ref';
+      if (o.commit_id) return 'ref';
       return 'json';
     } catch (e) { return fallback || 'blob'; }
   }
@@ -54,22 +54,22 @@
   // ---------------------------------------------------------------- reader
   function VaultReader(cfg) {
     this.endpoint = cfg.endpoint.replace(/\/$/, '');
-    this.vaultId  = cfg.vault_id;
-    this.readKey  = cfg.read_key;
-    this.mem      = new Map();
+    this.vaultId = cfg.vault_id;
+    this.readKey = cfg.read_key;
+    this.mem = new Map();
     this.refTtlMs = (cfg.ref_ttl_s == null ? 120 : cfg.ref_ttl_s) * 1000;
-    this.stats    = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
+    this.stats = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
                       decrypts: 0, ms: 0, oldestCache: null, newestCache: null };
-    this.log      = [];
+    this.log = [];
   }
 
   VaultReader.prototype.init = async function () {
     if (!(window.crypto && window.crypto.subtle)) {
-      throw new Error('Web Crypto is unavailable — this page must be served over HTTPS (or localhost). ' +
+      throw new Error('Web Crypto is unavailable, this page must be served over HTTPS (or localhost). ' +
                       'Decryption happens in your browser, so a secure context is required.');
     }
     var raw = hexToBytes(this.readKey);
-    this.aesKey  = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
+    this.aesKey = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['decrypt']);
     this.hmacKey = await crypto.subtle.importKey('raw', raw, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
     try { this.cache = await caches.open('sgit-vault-docs-v1'); } catch (e) { this.cache = null; }
     return this;
@@ -89,16 +89,16 @@
     this.stats.decrypts++;
     return new Uint8Array(pt);
   };
-  VaultReader.prototype.decryptText   = async function (bytes) { return dec.decode(await this.decrypt(bytes)); };
-  VaultReader.prototype.decryptB64    = async function (b64)   { return b64 ? this.decryptText(b64ToBytes(b64)) : ''; };
+  VaultReader.prototype.decryptText = async function (bytes) { return dec.decode(await this.decrypt(bytes)); };
+  VaultReader.prototype.decryptB64 = async function (b64) { return b64 ? this.decryptText(b64ToBytes(b64)): ''; };
 
   // fetch raw ciphertext for a vault path, with the cache policy the id implies
   VaultReader.prototype.raw = async function (vaultPath, meta) {
     meta = meta || {};
-    var url        = this.endpoint + '/api/vault/read/' + this.vaultId + '/' + vaultPath;
-    var immutable  = vaultPath.indexOf('-imm-') !== -1;
-    var t0         = performance.now();
-    var entry      = { path: vaultPath.split('/').pop(), src: 'net', bytes: 0, ms: 0,
+    var url = this.endpoint + '/api/vault/read/' + this.vaultId + '/' + vaultPath;
+    var immutable = vaultPath.indexOf('-imm-') !== -1;
+    var t0 = performance.now();
+    var entry = { path: vaultPath.split('/').pop(), src: 'net', bytes: 0, ms: 0,
                        kind: meta.kind || '?', reason: meta.reason || '' };
     this._lastEntry = entry;
 
@@ -106,11 +106,11 @@
       var hit = await this.cache.match(url);
       if (hit) {
         var stamp = parseInt(hit.headers.get('x-sg-cached-at') || '0', 10) || null;
-        var bufC  = new Uint8Array(await hit.arrayBuffer());
+        var bufC = new Uint8Array(await hit.arrayBuffer());
         this.stats.cacheHit++; this.stats.bytesCache += bufC.length;
         if (stamp) {
-          this.stats.oldestCache = this.stats.oldestCache ? Math.min(this.stats.oldestCache, stamp) : stamp;
-          this.stats.newestCache = this.stats.newestCache ? Math.max(this.stats.newestCache, stamp) : stamp;
+          this.stats.oldestCache = this.stats.oldestCache ? Math.min(this.stats.oldestCache, stamp): stamp;
+          this.stats.newestCache = this.stats.newestCache ? Math.max(this.stats.newestCache, stamp): stamp;
         }
         entry.src = 'cache'; entry.bytes = bufC.length; entry.ms = performance.now() - t0; entry.cachedAt = stamp;
         this.log.push(entry); this.stats.ms += entry.ms;
@@ -124,7 +124,7 @@
     if (immutable && this.cache) {
       try {
         await this.cache.put(url, new Response(buf, { headers: { 'x-sg-cached-at': String(Date.now()) } }));
-        entry.cachedAt = Date.now();          // stored now, on this very request
+        entry.cachedAt = Date.now(); // stored now, on this very request
       } catch (e) {}
     }
 
@@ -140,7 +140,7 @@
     if (this.mem.has(objId)) {
       this.stats.memHit++;
       this.log.push({ path: objId, src: 'mem', bytes: this.mem.get(objId).length, ms: 0,
-                      kind: meta.kind || 'object', reason: (meta.reason || '') + ' — already decrypted this session',
+                      kind: meta.kind || 'object', reason: (meta.reason || '') + ', already decrypted this session',
                       preview: previewOf(this.mem.get(objId)) });
       return this.mem.get(objId);
     }
@@ -156,7 +156,7 @@
   };
 
   // The ref is the only object that can change, so it is the only thing that has to be
-  // refetched — but it does not have to be refetched on *every* page view. Within a freshness
+  // refetched, but it does not have to be refetched on *every* page view. Within a freshness
   // window (ref_ttl_s, default 120s) the last answer is reused, which is what makes navigating
   // the docs cost zero network requests. The window is also the worst-case propagation delay
   // for a new commit; "check for new commit" forces a fetch and ignores it entirely.
@@ -167,13 +167,13 @@
       if (!raw) return null;
       var rec = JSON.parse(raw);
       if (!rec || !rec.text || !rec.at) return null;
-      if (Date.now() - rec.at >= this.refTtlMs) return null;      // window elapsed
+      if (Date.now() - rec.at >= this.refTtlMs) return null; // window elapsed
       return rec;
     } catch (e) { return null; }
   };
   VaultReader.prototype.refFreshMsLeft = function () {
     var rec = this.refCached();
-    return rec ? Math.max(0, rec.at + this.refTtlMs - Date.now()) : 0;
+    return rec ? Math.max(0, rec.at + this.refTtlMs - Date.now()): 0;
   };
 
   // open: ref → commit (+ decrypted message). The ref is served from the freshness window
@@ -188,14 +188,14 @@
       this.stats.refTtlHit++;
       this.refCheckedAt = fresh.at;
       this.log.push({ path: refId, src: 'ttl', bytes: 0, ms: 0, kind: 'ref',
-                      reason: 'the mutable HEAD pointer — still inside its ' + (this.refTtlMs / 1000) +
+                      reason: 'the mutable HEAD pointer, still inside its ' + (this.refTtlMs / 1000) +
                               's freshness window, so no request was made',
                       preview: refText, freshUntil: fresh.at + this.refTtlMs, checkedAt: fresh.at });
     } else {
       var refBytes = await this.raw('bare/refs/' + refId,
                        { kind: 'ref', reason: opts.force
-                           ? 'the mutable HEAD pointer — fetched on demand, ignoring the freshness window'
-                           : 'the mutable HEAD pointer — freshness window had elapsed, so it was refetched' });
+                           ? 'the mutable HEAD pointer (fetched on demand, ignoring the freshness window'
+                           : 'the mutable HEAD pointer) freshness window had elapsed, so it was refetched' });
       var refEntry = this._lastEntry;
       refText = await this.decryptText(refBytes);
       if (refEntry) { refEntry.preview = refText; refEntry.freshUntil = Date.now() + this.refTtlMs; }
@@ -204,10 +204,10 @@
     }
 
     var ref = JSON.parse(refText);
-    var commit   = await this.objectJson(ref.commit_id,
-                     { kind: 'commit', reason: 'the commit this ref points at — holds the tree id and the message' });
-    this.head    = ref.commit_id;
-    this.commit  = commit;
+    var commit = await this.objectJson(ref.commit_id,
+                     { kind: 'commit', reason: 'the commit this ref points at, holds the tree id and the message' });
+    this.head = ref.commit_id;
+    this.commit = commit;
     this.message = await this.decryptB64(commit.message_enc);
     return { commitId: ref.commit_id, commit: commit, message: this.message };
   };
@@ -217,9 +217,9 @@
     out = out || {}; prefix = prefix || '';
     var tree = await this.objectJson(treeId,
                  { kind: 'tree', reason: 'directory listing for /' + prefix +
-                          ' — filenames are encrypted in here, so the nav needs it' });
+                          ', filenames are encrypted in here, so the nav needs it' });
     for (var i = 0; i < (tree.entries || []).length; i++) {
-      var e    = tree.entries[i];
+      var e = tree.entries[i];
       var name = await this.decryptB64(e.name_enc);
       var full = prefix ? prefix + '/' + name : name;
       if (e.tree_id) await this.tree(e.tree_id, full, out);
@@ -241,7 +241,7 @@
         this._files = JSON.parse(cached);
         this.stats.indexMemo = true;
         this.log.push({ path: 'file index', src: 'memo', bytes: cached.length, ms: 0, kind: 'index',
-                        reason: 'path→blob map for commit ' + this.head + ' — memoised, so no tree objects were read',
+                        reason: 'path→blob map for commit ' + this.head + ', memoised, so no tree objects were read',
                         preview: JSON.stringify(this._files, null, 2) });
         return this._files;
       }
@@ -254,9 +254,9 @@
     var files = await this.files();
     if (!files[path]) throw new Error('not in vault: ' + path);
     return dec.decode(await this.object(files[path].blob_id,
-             { kind: 'blob', reason: 'content of ' + path + ' — the page you asked for' }));
+             { kind: 'blob', reason: 'content of ' + path + ', the page you asked for' }));
   };
-  VaultReader.prototype.resetStats = function () {         // clear the view, keep the caches
+  VaultReader.prototype.resetStats = function () { // clear the view, keep the caches
     this.log.length = 0;
     this.stats = { fetch: 0, cacheHit: 0, memHit: 0, refTtlHit: 0, bytesNet: 0, bytesCache: 0,
                    decrypts: 0, ms: 0, oldestCache: null, newestCache: null };
@@ -268,7 +268,7 @@
         var k = localStorage.key(i);
         if (k && k.indexOf('sgit-vdocs-idx:') === 0) localStorage.removeItem(k);
       }
-      localStorage.removeItem(this.refKey());        // drop the freshness window too
+      localStorage.removeItem(this.refKey()); // drop the freshness window too
     } catch (e) {}
     if (this.cache) { try { await caches.delete('sgit-vault-docs-v1'); this.cache = await caches.open('sgit-vault-docs-v1'); } catch (e) {} }
   };
@@ -290,7 +290,7 @@
 
   function markdown(src, basePath) {
     var lines = src.split('\n'), out = [], i = 0;
-    function resolve(href) {                                  // vault-relative → absolute vault path
+    function resolve(href) { // vault-relative → absolute vault path
       if (/^https?:|^#/.test(href)) return href;
       var base = basePath.indexOf('/') === -1 ? [] : basePath.split('/').slice(0, -1);
       var parts = href.split('/');
@@ -311,14 +311,14 @@
         continue;
       }
       if (/^\s*$/.test(ln)) { i++; continue; }
-      if (/^#{1,6}\s/.test(ln)) {                              // heading
+      if (/^#{1,6}\s/.test(ln)) { // heading
         var lvl = ln.match(/^#+/)[0].length;
         var txt = ln.replace(/^#+\s*/, '');
-        var id  = txt.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        var id = txt.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
         out.push('<h' + lvl + ' id="' + id + '">' + inline(txt) + '</h' + lvl + '>');
         i++; continue;
       }
-      if (/^\|/.test(ln) && i + 1 < lines.length && /^\|[\s:|-]+\|?\s*$/.test(lines[i + 1])) {  // table
+      if (/^\|/.test(ln) && i + 1 < lines.length && /^\|[\s:|-]+\|?\s*$/.test(lines[i + 1])) { // table
         var head = ln.split('|').slice(1, -1).map(function (c) { return c.trim(); });
         i += 2;
         var rows = [];
@@ -335,7 +335,7 @@
         out.push(t + '</table></div>');
         continue;
       }
-      if (/^[-*]\s|^\d+\.\s/.test(ln)) {                       // list
+      if (/^[-*]\s|^\d+\.\s/.test(ln)) { // list
         var ordered = /^\d+\.\s/.test(ln), items = [];
         while (i < lines.length && /^([-*]\s|\d+\.\s)/.test(lines[i])) {
           items.push(lines[i].replace(/^([-*]\s|\d+\.\s)/, '')); i++;
@@ -344,14 +344,14 @@
         out.push('<' + tag + '>' + items.map(function (it) { return '<li>' + inline(it) + '</li>'; }).join('') + '</' + tag + '>');
         continue;
       }
-      if (/^>\s?/.test(ln)) {                                  // blockquote
+      if (/^>\s?/.test(ln)) { // blockquote
         var q = [];
         while (i < lines.length && /^>\s?/.test(lines[i])) { q.push(lines[i].replace(/^>\s?/, '')); i++; }
         out.push('<blockquote>' + inline(q.join(' ')) + '</blockquote>');
         continue;
       }
       if (/^(---|\*\*\*)\s*$/.test(ln)) { out.push('<hr>'); i++; continue; }
-      var para = [];                                            // paragraph
+      var para = []; // paragraph
       while (i < lines.length && !/^\s*$/.test(lines[i]) && !/^(#{1,6}\s|```|\||[-*]\s|\d+\.\s|>|---)/.test(lines[i])) {
         para.push(lines[i]); i++;
       }
@@ -381,7 +381,7 @@
   function esc2(t) { return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
   // Minimal JSON syntax highlighter for the object inspector. Escaping happens first, then a
-  // single left-to-right pass tokenises the escaped text — strings are matched before anything
+  // single left-to-right pass tokenises the escaped text, strings are matched before anything
   // else, so a brace or digit *inside* a string is consumed by the string branch and never
   // recoloured. Safe on truncated input: an unterminated token simply fails to match and stays
   // plain. Only used when the full preview parsed as JSON, so prose is left alone.
@@ -401,8 +401,8 @@
   function ago(ms) {
     if (!ms) return '';
     var s = Math.round((Date.now() - ms) / 1000);
-    if (s < 5)    return 'just now';
-    if (s < 60)   return s + 's ago';
+    if (s < 5) return 'just now';
+    if (s < 60) return s + 's ago';
     if (s < 3600) return Math.round(s / 60) + 'm ago';
     if (s < 86400) return Math.round(s / 3600) + 'h ago';
     return Math.round(s / 86400) + 'd ago';
@@ -416,8 +416,7 @@
     if (name === 'README' || name === 'index') {
       var parts = path.split('/'); name = parts[parts.length - 2] || name;
     }
-    return name.replace(/^\d+[-_]/, '').replace(/[-_]/g, ' ')
-               .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+    return name.replace(/^\d+[-_]/, '').replace(/[-_]/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
   }
 
   D.mount = async function (cfg) {
@@ -435,7 +434,7 @@
     }
 
     var files = await reader.files();
-    var docs  = Object.keys(files).filter(function (p) { return /\.md$/.test(p); }).sort();
+    var docs = Object.keys(files).filter(function (p) { return /\.md$/.test(p); }).sort();
 
     // ---- nav, grouped by top-level folder
     var groups = {};
@@ -467,20 +466,20 @@
         '</div>' +
         '<div class="vdbg-h">cache</div>' +
         '<div class="vdbg-grid">' +
-          row('network fetches', String(s.fetch) + '  (' + fmtBytes(s.bytesNet) + ')') +
-          row('cache hits', String(s.cacheHit) + '  (' + fmtBytes(s.bytesCache) + ')') +
+          row('network fetches', String(s.fetch) + ' (' + fmtBytes(s.bytesNet) + ')') +
+          row('cache hits', String(s.cacheHit) + ' (' + fmtBytes(s.bytesCache) + ')') +
           row('memory hits', String(s.memHit)) +
           row('HEAD checks saved', String(s.refTtlHit) +
-                '  (freshness window ' + (reader.refTtlMs / 1000) + 's)') +
+                ' (freshness window ' + (reader.refTtlMs / 1000) + 's)') +
           row('next HEAD check', '<span data-ttl-live>' + ttlText() + '</span>') +
           row('decryptions', String(s.decrypts)) +
-          row('file index', s.indexMemo ? 'memoised — no tree objects read' : 'built by walking every tree') +
+          row('file index', s.indexMemo ? 'memoised, no tree objects read' : 'built by walking every tree') +
           row('transfer time', s.ms.toFixed(0) + ' ms') +
           row('cached locally', s.newestCache
-                ? stamp(s.newestCache) + '  (' + ago(s.newestCache) + ')'
-                : (s.fetch ? 'this page load — ' + stamp(Date.now()) : '—')) +
+                ? stamp(s.newestCache) + ' (' + ago(s.newestCache) + ')'
+                : (s.fetch ? 'this page load, ' + stamp(Date.now()): '—')) +
           (s.oldestCache && s.oldestCache !== s.newestCache
-                ? row('oldest entry', stamp(s.oldestCache) + '  (' + ago(s.oldestCache) + ')') : '') +
+                ? row('oldest entry', stamp(s.oldestCache) + ' (' + ago(s.oldestCache) + ')'): '') +
         '</div>' +
         '<div class="vdbg-h">objects read <span class="vdbg-dim">(newest last · click a row to inspect)</span></div>' +
         '<div class="vdbg-objs">' + (reader.log.length ? reader.log.map(function (e, i) {
@@ -494,7 +493,7 @@
                      '<span class="kind k-' + (e.kind || '').replace(/[^a-z]/g, '') + '">' + (e.kind || '?') + '</span> ' +
                      '<span class="oid">' + e.path + '</span>' +
                      '<span class="meta">' + e.bytes + 'B · ' + e.ms.toFixed(0) + 'ms' +
-                       (e.cachedAt ? ' · ' + ago(e.cachedAt) : '') + '</span>' +
+                       (e.cachedAt ? ' · ' + ago(e.cachedAt): '') + '</span>' +
                    '</div>' +
                    '<div class="objwhy">' + (e.reason || '') +
                      (e.freshUntil ? ' &middot; <span class="ttlpill" data-ttl-live="pill">next check ' + ttlText() + '</span>' : '') + '</div>' +
@@ -503,7 +502,7 @@
                           (e.preview.length > 4000 ? '\n… truncated' : '')
                         : '(not decrypted — this row is the raw fetch)') + '</pre>' +
                  '</div>';
-        }).join('') : '<span class="vdbg-dim">list cleared — navigate to a page to see exactly which objects it needs</span>') + '</div>';
+        }).join(''): '<span class="vdbg-dim">list cleared, navigate to a page to see exactly which objects it needs</span>') + '</div>';
 
       el('vdbg-body').querySelectorAll('.objrow').forEach(function (row) {
         row.querySelector('.objhead').addEventListener('click', function () {
@@ -522,7 +521,7 @@
     // exactly when the next HEAD check is due while you click around the docs.
     function ttlText() {
       var left = Math.ceil(reader.refFreshMsLeft() / 1000);
-      return left > 0 ? 'in ' + left + 's' : 'due now — the next page view re-checks';
+      return left > 0 ? 'in ' + left + 's' : 'due now, the next page view re-checks';
     }
     setInterval(function () {
       var txt = ttlText();
@@ -553,7 +552,7 @@
         var anchor = document.querySelector('.vdocs');
         if (anchor) {
           var navH = (document.querySelector('nav.site') || {}).offsetHeight || 56;
-          var y    = anchor.getBoundingClientRect().top + window.scrollY - navH - 8;
+          var y = anchor.getBoundingClientRect().top + window.scrollY - navH - 8;
           if (Math.abs(window.scrollY - y) > 4) window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
         }
       } catch (e) {
@@ -613,7 +612,7 @@
     el('vdbg-close').addEventListener('click', function () { setPanel(false); });
     el('vdbg-reset').addEventListener('click', function () {
       reader.resetStats();
-      el('vdbg-note').textContent = 'list cleared — the caches are untouched; load a page to see just its objects';
+      el('vdbg-note').textContent = 'list cleared. The caches are untouched; load a page to see just its objects';
       paintDebug();
     });
     el('vdbg-clear').addEventListener('click', async function () {
@@ -628,7 +627,7 @@
       await reader.open({ force: true });
       if (reader.head !== before) { reader._files = null; files = await reader.files(); }
       el('vdbg-note').textContent = reader.head === before
-        ? 'up to date — HEAD unchanged' : 'new commit picked up: ' + reader.head;
+        ? 'up to date, HEAD unchanged' : 'new commit picked up: ' + reader.head;
       show(decodeURIComponent(location.hash.slice(1)));
     });
 

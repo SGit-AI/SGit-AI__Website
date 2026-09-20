@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The serialised pull request — sgit use cases</title>
+<title>The serialised pull request, sgit use cases</title>
 <meta name="description" content="An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.">
 <link rel="canonical" href="https://sgit.ai/use-cases/serialised-pull-request.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/use-cases/serialised-pull-request.html">
-<meta property="og:title" content="The serialised pull request — sgit use cases">
+<meta property="og:title" content="The serialised pull request, sgit use cases">
 <meta property="og:description" content="An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.">
 <meta name="twitter:card" content="summary">
 <link rel="alternate" type="text/markdown" href="serialised-pull-request.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The serialised pull request — sgit use cases", "headline": "The serialised pull request — sgit use cases", "description": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.", "url": "https://sgit.ai/use-cases/serialised-pull-request.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The serialised pull request, sgit use cases", "headline": "The serialised pull request, sgit use cases", "description": "An agent contributes to a shared vault holding no credential at all: clone with a public read key, commit on a private branch, emit a diff; a person imports, reviews and merges. The ambient-authority problem it removes, the 5 Aug 2026 Black Hat grounding, and the honest shipped-vs-pattern table.", "url": "https://sgit.ai/use-cases/serialised-pull-request.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -21,88 +21,88 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.99</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.0</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
-  <div class="ni ni-has">
-    <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../why/index.html">Why sgit exists</a>
-      <a class="sl" href="../investors/index.html">Investors</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../docs/index.html">Documentation</a>
-      <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
-      <a class="sl" href="../try/index.html">Try it in the browser</a>
-      <a class="sl" href="../api/index.html">HTTP API</a>
-      <a class="sl" href="../docs/credentials.html">Credentials</a>
-      <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
-      <a class="sl" href="../deploy/index.html">Deploy</a>
-      <a class="sl" href="../skills/index.html">Skills</a>
-      <a class="sl" href="../docs/briefs/index.html">Briefs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
-      <a class="sl" href="../catalogue/index.html">Catalogue</a>
-      <a class="sl" href="../demos/index.html">Demos</a>
-      <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl here" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../compare/index.html">Comparisons</a>
-      <a class="sl" href="../case-studies/index.html">Case studies</a>
-      <a class="sl here" href="../use-cases/index.html">Use cases</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../updates/index.html">Updates</a>
-      <a class="sl" href="../articles/index.html">Articles</a>
-      <a class="sl" href="../admin/versions.html">Version log</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../team/index.html">How the site is run</a>
-      <a class="sl" href="../team/index.html#roles">Roles</a>
-      <a class="sl" href="../team/prompts.html">Starting prompts</a>
-      <a class="sl" href="../team/board.html">The board</a>
-    </div>
-  </div>
-  <div class="ni ni-has">
-    <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
-    <div class="sub">
-      <a class="sl" href="../network/index.html">All sites</a>
-      <a class="sl" href="../network/nhi.html">nhi</a>
-      <a class="sl" href="../network/pki.html">pki</a>
-      <a class="sl" href="../network/graphs.html">graphs</a>
-      <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
-    </div>
-  </div>
-  <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl here" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
   </div>
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.99 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.0 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Use cases</a> / The serialised pull request</p>
   <h1>The serialised pull request</h1>
   <p class="lead">An agent clones a public vault needing no credential at all, makes changes, commits, and emits a diff. A person imports that diff on another machine, reviews it, and merges. No token was issued, so no token could be stolen, scoped too widely, or left unrevoked.</p>
 
   <h2>The problem: ambient authority</h2>
-  <p>The standard way to let an agent contribute to a repository is to give it a credential — and the credential is nearly always bigger than the task. One widely used coding agent held a token scoped to <em>every repository its developer had authorised</em>. The platform capability that would fix this — a user-minted, short-lived, single-repository token — has been an open feature request since June 2026, which is the polite way of saying it does not exist.</p>
-  <p>The consequences stopped being theoretical this month. Research disclosed at Black&nbsp;Hat on <b>5 August 2026</b> showed that a GitHub issue opened by an account with <em>no repository privileges</em> was enough to reach CI secrets in the vendors' own repositories — for three leading agents, under each vendor's default, unmodified workflow configuration. The attacker did not break anything; they asked a confused deputy to use authority it already held. That is what ambient authority means, and every write-scoped agent token is a standing instance of it.</p>
+  <p>The standard way to let an agent contribute to a repository is to give it a credential, and the credential is nearly always bigger than the task. One widely used coding agent held a token scoped to <em>every repository its developer had authorised</em>. The platform capability that would fix this (a user-minted, short-lived, single-repository token) has been an open feature request since June 2026, which is the polite way of saying it does not exist.</p>
+  <p>The consequences stopped being theoretical this month. Research disclosed at Black&nbsp;Hat on <b>5 August 2026</b> showed that a GitHub issue opened by an account with <em>no repository privileges</em> was enough to reach CI secrets in the vendors' own repositories, for three leading agents, under each vendor's default, unmodified workflow configuration. The attacker did not break anything; they asked a confused deputy to use authority it already held. That is what ambient authority means, and every write-scoped agent token is a standing instance of it.</p>
 
   <h2>The workflow</h2>
   <p>In the project lead's own words, from the session where it happened:</p>
@@ -119,24 +119,24 @@
   <ul>
     <li><b>No credential is issued at all.</b> Stronger than a short-lived scoped token: there is nothing to steal, nothing to expire, nothing to revoke, and nothing for an injected instruction to spend.</li>
     <li><b>The artefact is inspectable before it takes effect.</b> A diff is reviewed; a write is discovered. The privileged action happens on the reviewer's machine, after human eyes.</li>
-    <li><b>Provenance survives per commit</b>, not per session — the history records what was proposed, not just what was merged.</li>
-    <li><b>It is capability-shaped, not trust-shaped.</b> It assumes no shared platform accounts and no fork write access, and the artefact moves by any channel — a vault, an email, a queue.</li>
+    <li><b>Provenance survives per commit</b>, not per session, the history records what was proposed, not just what was merged.</li>
+    <li><b>It is capability-shaped, not trust-shaped.</b> It assumes no shared platform accounts and no fork write access, and the artefact moves by any channel, a vault, an email, a queue.</li>
   </ul>
-  <p>Published security guidance now independently recommends exactly this shape: run analysis in a read-only job holding no publishing credentials, and pass a constrained, reviewed artefact into a separate privileged step — never one job that both consumes untrusted input and can publish. Having built the recommended control <em>before</em> the recommendation is a stronger claim than any feature comparison, so we make it plainly.</p>
+  <p>Published security guidance now independently recommends exactly this shape: run analysis in a read-only job holding no publishing credentials, and pass a constrained, reviewed artefact into a separate privileged step, never one job that both consumes untrusted input and can publish. Having built the recommended control <em>before</em> the recommendation is a stronger claim than any feature comparison, so we make it plainly.</p>
 
   <h2>The honest mechanics</h2>
   <p>What is shipped versus what is pattern, checked against the CLI rather than asserted:</p>
   <div class="tablewrap"><table>
     <tr><th>Step</th><th>Status today</th></tr>
-    <tr><td>Credential-free clone of a public vault (read key only)</td><td><b>Shipped</b> — <code>sgit clone --read-key</code>; this site publishes working read keys on its <a href="../demos/index.html">demo pages</a></td></tr>
-    <tr><td>Private-branch commits that cannot touch the shared branch</td><td><b>Shipped</b> — the <a href="../docs/two-branch-model.html">two-branch model</a></td></tr>
-    <tr><td>Emit the diff as a machine-readable artefact</td><td><b>Shipped</b> — <code>sgit history diff --json</code></td></tr>
+    <tr><td>Credential-free clone of a public vault (read key only)</td><td><b>Shipped</b>: <code>sgit clone --read-key</code>; this site publishes working read keys on its <a href="../demos/index.html">demo pages</a></td></tr>
+    <tr><td>Private-branch commits that cannot touch the shared branch</td><td><b>Shipped</b>: the <a href="../docs/two-branch-model.html">two-branch model</a></td></tr>
+    <tr><td>Emit the diff as a machine-readable artefact</td><td><b>Shipped</b>: <code>sgit history diff --json</code></td></tr>
     <tr><td>First-class import: <code>sgit diff apply</code></td><td><b>Not shipped.</b> The workflow was performed, but the import half was review-and-merge by hand. A <a href="../docs/briefs/brief-serialised-diff-and-ignore.md">brief to the CLI team</a> asks for <code>sgit diff export</code> / <code>sgit diff apply</code> as first-class commands</td></tr>
-    <tr><td>A published specification of the diff format</td><td><b>Not published.</b> If this is the headline workflow, its artefact needs a spec a third party can implement — same brief</td></tr>
+    <tr><td>A published specification of the diff format</td><td><b>Not published.</b> If this is the headline workflow, its artefact needs a spec a third party can implement, same brief</td></tr>
   </table></div>
 
   <h2>Evidence status</h2>
-  <div class="evbox ev-warn"><span class="evtag">PARTIAL — performed once, import not yet first-class</span>
+  <div class="evbox ev-warn"><span class="evtag">PARTIAL, performed once, import not yet first-class</span>
   <p>The workflow ran end to end exactly as quoted, and every step on the agent's side is a shipped command exercised daily. What keeps this from PROVEN is the import: until <code>sgit diff apply</code> exists, the human side leans on manual review-and-merge, and a workflow with a manual middle is a pattern, not a product. The brief is filed; this page upgrades itself when the commands land.</p></div>
 
   <h2>Brief for an agent</h2>
@@ -148,9 +148,9 @@
 
   <h2>Related</h2>
   <ul>
-    <li><a href="../docs/two-branch-model.html">The two-branch model</a> — why the agent's commits cannot reach the shared branch</li>
-    <li><a href="ai-agents.html">Agent state that isn't the vendor's to read</a> — the memory half of the agent story</li>
-    <li><a href="../why/index.html">The boundary map</a> — where this sits: proposing changes without write access is present; the hosted review interface is not</li>
+    <li><a href="../docs/two-branch-model.html">The two-branch model</a>, why the agent's commits cannot reach the shared branch</li>
+    <li><a href="ai-agents.html">Agent state that isn't the vendor's to read</a>, the memory half of the agent story</li>
+    <li><a href="../why/index.html">The boundary map</a>, where this sits: proposing changes without write access is present; the hosted review interface is not</li>
   </ul>
   <div class="pagenav"><a href="index.html">← Use cases</a><a href="ai-agents.html">AI agents →</a></div>
 </main>
@@ -158,9 +158,9 @@
 <footer class="site"><div class="cols">
   <div>
     <div class="brandline">sgit<span>.ai</span></div>
-    <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
-    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.99</a> · <a href="../admin/index.html">engineering</a> · <a href="serialised-pull-request.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.0</a> · <a href="../admin/index.html">engineering</a> · <a href="serialised-pull-request.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -202,7 +202,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.99';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.0';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

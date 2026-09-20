@@ -11,9 +11,9 @@
     <tr><td><code>x-sgraph-vault-enum-key</code></td><td>Append lane enumeration: <code>list</code>, <code>fetch</code>, <code>mark-processed</code></td></tr>
     <tr><td><code>x-vault-read-key</code></td><td>Read key, for public-vault routing</td></tr>
     <tr><td><code>x-vault-public</code></td><td>Public-vault routing flag</td></tr>
-    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td><a href="transfers.html">Transfer deletion</a> — SG/Send transfers, not vaults. Carries the <em>secret</em>, never the hash, and only works if a <code>delete_auth_hash</code> was set at create time</td></tr>
+    <tr><td><code>x-sgraph-transfer-delete-auth</code></td><td><a href="transfers.html">Transfer deletion</a>, SG/Send transfers, not vaults. Carries the <em>secret</em>, never the hash, and only works if a <code>delete_auth_hash</code> was set at create time</td></tr>
   </table></div>
-  <p>One capability is <b>not</b> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate — see <a href="append-lanes.html">append lanes</a>.</p>
+  <p>One capability is <b>not</b> a header: <code>append_token</code> travels in the request body of <code>/append/write</code>. That is deliberate, see <a href="append-lanes.html">append lanes</a>.</p>
 
   <h2 id="model">The hash-comparison model</h2>
   <p>The server never stores a capability key. It stores <code>SHA-256(key)</code> and, on each request, hashes what you presented and compares. Two consequences worth designing around:</p>
@@ -29,7 +29,7 @@
 
   <h2>See also</h2>
   <ul>
-    <li><a href="errors.html">Errors</a> — what a 403 means as against a 400</li>
-    <li><a href="../security/index.html">Security model</a> — the crypto these capabilities sit on</li>
+    <li><a href="errors.html">Errors</a>, what a 403 means as against a 400</li>
+    <li><a href="../security/index.html">Security model</a>, the crypto these capabilities sit on</li>
   </ul>
 </main>

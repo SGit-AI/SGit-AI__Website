@@ -1,8 +1,8 @@
-# Keys, signatures and encrypting to someone else — sgit.ai
+# Keys, signatures and encrypting to someone else, sgit.ai
 
 > The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.
 
-*Source: <https://sgit.ai/docs/pki.html> · site v0.2.99 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/pki.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 The vault key is symmetric and opens the whole vault. A keypair does the two things it cannot: prove *who* wrote something, and encrypt to somebody who holds no vault key at all. This page is the lifecycle, run end to end on the shipped CLI.
 
-**Everything below was executed, not recalled.** Every command, every output shape and every construction on this page came from running `sgit pki` on **v0.15.0** in a throwaway home directory. Where the behaviour differs from what you might expect — and in two places it does — the page says so.
+**Everything below was executed, not recalled.** Every command, every output shape and every construction on this page came from running `sgit pki` on **v0.15.0** in a throwaway home directory. Where the behaviour differs from what you might expect, and in two places it does, the page says so.
 
 ## What sgit actually generates
 
@@ -23,7 +23,7 @@ The vault key is symmetric and opens the whole vault. A keypair does the two thi
 | Encryption | **RSA-OAEP, 4096-bit** | `fingerprint` |
 | Signing | **ECDSA P-256** | `signing_fingerprint` |
 
-Encryption is **hybrid**, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault — the keypair only changes how the content key gets to the recipient.
+Encryption is **hybrid**, which is what makes it usable on files of any size: a fresh AES-256-GCM content key encrypts the payload, and RSA-OAEP wraps that content key. The same AES-256-GCM primitive as the rest of the vault, the keypair only changes how the content key gets to the recipient.
 
 Note for anyone integrating against a spec rather than the binary: this is **RSA-OAEP and ECDSA**, not X25519/Ed25519. Draft material describing an X25519 sealing layer describes a design, not what v0.15.0 ships.
 
@@ -45,7 +45,7 @@ Key pair created:
   Signing fingerprint:  sha256:69d9b4835ccf790c
 ```
 
-**Keygen prompts for a passphrase** and will not proceed without one — private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an `EOFError` rather than silently generating an unprotected key, which is the right failure.
+**Keygen prompts for a passphrase** and will not proceed without one, private keys are encrypted at rest. In a script, feed it on stdin; with no terminal at all it exits with an `EOFError` rather than silently generating an unprotected key, which is the right failure.
 
 RSA-4096 generation is not instant. Expect a pause.
 
@@ -95,7 +95,7 @@ Enter passphrase:
 Decrypted to message.txt
 ```
 
-Round trip verified. Two argument details that will bite you once each: `encrypt` takes `--recipient` (a contact’s fingerprint) and an optional `--fingerprint` for *your* signing key; `decrypt` requires `--fingerprint` — it will not guess which of your keys to try.
+Round trip verified. Two argument details that will bite you once each: `encrypt` takes `--recipient` (a contact’s fingerprint) and an optional `--fingerprint` for *your* signing key; `decrypt` requires `--fingerprint`. It will not guess which of your keys to try.
 
 ### 5 · Sign and verify
 
@@ -108,11 +108,11 @@ Detached signatures, so the signed file is unchanged. Signing uses the *signing*
 
 ## The envelope on the wire
 
-An encrypted file is base64 over a small JSON object — worth knowing if you are writing an interoperable client:
+An encrypted file is base64 over a small JSON object, worth knowing if you are writing an interoperable client:
 
 | Field | Contents | Observed size |
 |---|---|---|
-| `v` | Envelope version — `2` on v0.15.0 | — |
+| `v` | Envelope version, `2` on v0.15.0 | none |
 | `w` | The AES content key, wrapped with RSA-OAEP to the recipient | 512 bytes (4096-bit) |
 | `i` | AES-GCM IV | 12 bytes |
 | `c` | Ciphertext with its GCM tag | plaintext + 16 |
@@ -121,7 +121,7 @@ A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, s
 
 ## Where public keys live in a vault
 
-Vaults carry public PKI keys as immutable objects at `bare/keys/key-rnd-imm-*`, alongside the content store at `bare/data/obj-cas-imm-*`. They are public by construction, so nothing there needs protecting — which is exactly why a lane addressed by a public key can be written to by a stranger.
+Vaults carry public PKI keys as immutable objects at `bare/keys/key-rnd-imm-*`, alongside the content store at `bare/data/obj-cas-imm-*`. They are public by construction, so nothing there needs protecting, which is exactly why a lane addressed by a public key can be written to by a stranger.
 
 ## What this is for
 
@@ -130,8 +130,8 @@ Signing and encrypting files is useful on its own. The larger use is [**vault-to
 ## What this does not do yet
 
 - **No key revocation or rotation workflow.** There is no CRL, no expiry, no `sgit pki revoke`. If a private key is compromised, you generate a new pair and redistribute the bundle out of band.
-- **No web of trust and no directory.** Fingerprint verification is your problem — compare out of band, exactly as with SSH host keys.
-- **Fingerprints carry a `sha256:` prefix.** That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the [addressing note](vault-messaging.md#addressing) — it is a live source of confusion.
+- **No web of trust and no directory.** Fingerprint verification is your problem, compare out of band, exactly as with SSH host keys.
+- **Fingerprints carry a `sha256:` prefix.** That prefix is part of the CLI identifier, not part of any hash you might need elsewhere. See the [addressing note](vault-messaging.md#addressing). It is a live source of confusion.
 - **Signing and encryption are separate keys.** Passing the wrong fingerprint to the wrong verb fails; it does not fall back.
 
 Honest edges belong on [the limitations page](limitations.md) too, and these are listed there.

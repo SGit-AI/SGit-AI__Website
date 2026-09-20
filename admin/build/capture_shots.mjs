@@ -33,29 +33,29 @@ const VAULT    = process.argv.includes('--vault') ? process.argv[process.argv.in
 const HOSTS    = new Set(['dev.vault.sgraph.ai', 'dev.send.sgraph.ai', 'dev.sgraph.ai', 'dev.tools.sgraph.ai']);
 
 // The Algarve gallery vault — read key published on /vaults/algarve-photos.html.
-const ALGARVE = 'sgit_rk1_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98';
+const ALGARVE = 'sgit_public_read_0a0f34839d737eef0f8f66e5236990b1f397af064763e3f71dca2717015f9d15:3d04e6b9ca98';
 
-const RISK = 'sgit_rk1_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z';
+const RISK = 'sgit_public_read_a702fba803faac4369eb5d5a320b4dfa017af62bd2425fb298aac4b99e95c0ae:4zf6pf2z';
 
-const RISKGRAPH = 'sgit_rk1_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9';
+const RISKGRAPH = 'sgit_public_read_92cad4cea8f58c55f59b686c71c935225a1ba7c41ecb6922a8aa570467604f6e:0610gsp9';
 
-const EXPLORER = 'sgit_rk1_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe';
+const EXPLORER = 'sgit_public_read_1c1b95f5903e35850a9bc0541ffa09c6b5d4017cbf18817d2ad6f894127e5638:3simlnqe';
 
-const REGGRAPH = 'sgit_rk1_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz';
+const REGGRAPH = 'sgit_public_read_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1b068011695c9:73heuprz';
 
-const SUPPLEMENT = 'sgit_rk1_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
+const SUPPLEMENT = 'sgit_public_read_047186b559528058c66d1792b7345639b1238cb95c166d1d5f5b65c59813c2ee:r7zes477';
 
-const VOICEDEBRIEF = 'sgit_rk1_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d';
+const VOICEDEBRIEF = 'sgit_public_read_31e8196d3e83b37277083c29f105b8310dbac4569e22715b5e0f85d46878eec1:k6xy9z4d';
 
 // Health Score — the SANITISED republication (zc6abngv). The original vault published
 // its own write credential in home/index.html, so its read key was never publishable
 // and this is a fresh vault, not a retrofit. Never point this at the old vault id.
-const HEALTHSCORE = 'sgit_rk1_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv';
+const HEALTHSCORE = 'sgit_public_read_a76f327fb602f1619a67a15a0b756d69e82a1f7fa48438d4b6ecbebae2dc3d40:zc6abngv';
 
 // Vault App Mode POCs — republished as xth1xt78. The vault this content came from
 // had a RANDOM ref file id, which a read key cannot derive, so its read key could
 // decrypt everything and still never find HEAD. Never point this at the old id.
-const POCS = 'sgit_rk1_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78';
+const POCS = 'sgit_public_read_05f2391f22e4135ea27bca6b697dca18c54ab91b046325bef74f62f5324b8bc8:xth1xt78';
 
 /* Each shot: which surface to open, what to do, and what to crop.
    target: 'app'   → an element inside the vault app's own frame

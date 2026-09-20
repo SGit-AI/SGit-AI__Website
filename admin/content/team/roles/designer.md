@@ -1,7 +1,7 @@
 ---
 order: 7
 title: Designer
-mission: Builds and maintains the site's components — bands, cards, tables, the sibling-site card — and checks every change on a phone before it ships, because that is where the failures are visible.
+mission: Builds and maintains the site's components (bands, cards, tables, the sibling-site card) and checks every change on a phone before it ships, because that is where the failures are visible.
 owns: assets/site.css, the generated components in build_pages.py, the screenshot rigs, and the mobile check
 not: the copy (Journalist, Ambassador) or the data (vaults.json, sites/*.md)
 files: assets/site.css, assets/shots.js, admin/build/build_pages.py (the *_band and *_table generators), admin/build/capture_shots.mjs
@@ -15,8 +15,8 @@ Most reported bugs arrived as a phone screenshot from the author: three identica
 
 ## The rules it enforces
 
-- **Bands carry their own max-width** (1100px) — there is no wrapper convention, and a band without one runs full-viewport.
-- **No `img src`, no `script src`** — the validator refuses both, and it is right to.
+- **Bands carry their own max-width** (1100px). There is no wrapper convention, and a band without one runs full-viewport.
+- **No `img src`, no `script src`**: the validator refuses both, and it is right to.
 - **Text separators in generated cards**, hidden by CSS, so the markdown twin is readable.
 - **Progressive enhancement.** A sortable table ships in its best default order; the board is readable with JavaScript off.
 - **Prove the fix.** Assert the sort flipped; measure `scrollWidth` at 390; count the loaded images.

@@ -1,12 +1,12 @@
 <main class="doc" style="max-width:840px">
   <h1>Try sgit in your browser</h1>
-  <p class="lead">This page downloads a Python runtime (Pyodide, ~20&nbsp;MB) and installs the <b>real <code>sgit-ai</code> wheel from PyPI</b> — the same code <code>pip install</code> gives you — then runs it right here: a working terminal with the actual <code>sgit</code> CLI, an in-memory filesystem, and a network transport routed through your browser. Keys are derived and content encrypted locally; nothing you type leaves this page except the ciphertext sgit itself sends when <em>you</em> run a network command.</p>
-  <div class="note"><b>What this is:</b> sgit's engine, client-side. File commands run against this tab's in-memory filesystem (gone on refresh; the remote vault persists). Network commands (<code>clone</code>, <code>push</code>, <code>pull</code>, <code>doctor</code>) go straight from your browser to the SG/Send servers over CORS — the page freezes while they run (synchronous transport; it's a demo, not a product). First load is heavy (~20&nbsp;MB, cached afterwards); 600,000 PBKDF2 rounds take ~1–2&nbsp;s in WebAssembly.</div>
+  <p class="lead">This page downloads a Python runtime (Pyodide, ~20&nbsp;MB) and installs the <b>real <code>sgit-ai</code> wheel from PyPI</b>, the same code <code>pip install</code> gives you, then runs it right here: a working terminal with the actual <code>sgit</code> CLI, an in-memory filesystem, and a network transport routed through your browser. Keys are derived and content encrypted locally; nothing you type leaves this page except the ciphertext sgit itself sends when <em>you</em> run a network command.</p>
+  <div class="note"><b>What this is:</b> sgit's engine, client-side. File commands run against this tab's in-memory filesystem (gone on refresh; the remote vault persists). Network commands (<code>clone</code>, <code>push</code>, <code>pull</code>, <code>doctor</code>) go straight from your browser to the SG/Send servers over CORS, the page freezes while they run (synchronous transport; it's a demo, not a product). First load is heavy (~20&nbsp;MB, cached afterwards); 600,000 PBKDF2 rounds take ~1–2&nbsp;s in WebAssembly.</div>
 
   <div class="btnrow">
     <button class="btn" id="btn-load" type="button">Load the sgit engine (~20 MB)</button>
   </div>
-  <div class="try-term" id="term">— engine not loaded —</div>
+  <div class="try-term" id="term">engine not loaded</div>
 
   <div class="btnrow">
     <button class="btn alt" id="btn-keys" type="button" disabled>1 · Derive vault keys</button>
@@ -16,7 +16,7 @@
 
   <h2>The terminal</h2>
   <p class="small dim">The real <code>sgit</code> CLI plus a small toolbox of file commands (<code>ls</code>, <code>cd</code>, <code>cat</code>, <code>mkdir</code>, <code>echo &gt; file</code>, <code>tree</code>, …). Type <code>help</code> for the list. History with ↑/↓.</p>
-  <div class="try-term" id="shterm">— load the engine above to start —</div>
+  <div class="try-term" id="shterm">load the engine above to start</div>
   <div class="shrow">
     <span class="shp" id="shp">/workspace $</span>
     <input class="shin" id="shin" type="text" spellcheck="false" autocomplete="off" disabled placeholder="help">
@@ -34,7 +34,7 @@ vc = Vault__Crypto()
 vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
   <div class="btnrow"><button class="btn alt" id="btn-run" type="button" disabled>Run</button></div>
 
-  <p class="small dim">How this works: <a href="../docs/vault/static-hosting.html">the same site</a> serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection — the one page on this site that does.</p>
+  <p class="small dim">How this works: <a href="../docs/vault/static-hosting.html">the same site</a> serves from an encrypted vault or GitHub Pages; this page pulls Pyodide from a CDN and the wheel from PyPI at runtime, so it needs an internet connection, the one page on this site that does.</p>
 </main>
 
 <script>
@@ -51,7 +51,7 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
 
   function tlog(msg){
     if (!term) term = document.getElementById('term');
-    if (term.textContent === '— engine not loaded —') term.textContent = '';
+    if (term.textContent === 'engine not loaded') term.textContent = '';
     term.textContent += msg + '\n';
     term.scrollTop = term.scrollHeight;
   }
@@ -69,10 +69,10 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
       var loadPyodide = null;
       try {
         var sgMod = await import('https://tools.sgraph.ai/core/pyodide/v1/v1.0/v1.0.0/sg-pyodide.js');
-        loadPyodide = function(){ return sgMod.loadPyodide({ onProgress: function(e){ tlog('  [' + (e.stage||'') + '] ' + (e.detail||'')); } }); };
-        tlog('  using sg-pyodide loader from tools.sgraph.ai');
+        loadPyodide = function(){ return sgMod.loadPyodide({ onProgress: function(e){ tlog(' [' + (e.stage||'') + '] ' + (e.detail||'')); } }); };
+        tlog(' using sg-pyodide loader from tools.sgraph.ai');
       } catch (e) {
-        tlog('  tools.sgraph.ai unavailable — falling back to jsDelivr');
+        tlog(' tools.sgraph.ai unavailable, falling back to jsDelivr');
         var offMod = await import('https://cdn.jsdelivr.net/pyodide/v0.27.4/full/pyodide.mjs');
         loadPyodide = function(){ return offMod.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.27.4/full/' }); };
       }
@@ -90,7 +90,7 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
       await micropip.install('osbot-utils');
 
       tlog('› installing the real sgit-ai wheel from PyPI…');
-      var meta  = await (await fetch('https://pypi.org/pypi/sgit-ai/json')).json();
+      var meta = await (await fetch('https://pypi.org/pypi/sgit-ai/json')).json();
       var wheel = null;
       for (var i = 0; i < meta.urls.length; i++) if (meta.urls[i].filename.slice(-4) === '.whl') wheel = meta.urls[i];
       var bytes = new Uint8Array(await (await fetch(wheel.url)).arrayBuffer());
@@ -102,16 +102,16 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
 
       tlog('› wiring the browser network transport + terminal…');
       var setup = await grabText('assets/try-setup.py');
-      if (setup) { await py.runPythonAsync(setup); tlog('✓ terminal ready — network transport routed through this browser.'); shellReady(); }
-      else { tlog('! terminal setup not found — demos and console still work.'); }
+      if (setup) { await py.runPythonAsync(setup); tlog('✓ terminal ready, network transport routed through this browser.'); shellReady(); }
+      else { tlog('! terminal setup not found, demos and console still work.'); }
 
-      tlog('✓ sgit engine loaded — the buttons and terminal below run the real thing.');
+      tlog('✓ sgit engine loaded, the buttons and terminal below run the real thing.');
       btn.textContent = 'Engine loaded ✓';
       setEnabled(true);
     } catch (e) {
       tlog('✗ load failed: ' + e);
-      tlog('  (This page needs internet access to a CDN and PyPI. If you are viewing');
-      tlog('   it inside a restricted context, try the hosted site at sgit.ai.)');
+      tlog(' (This page needs internet access to a CDN and PyPI. If you are viewing');
+      tlog(' it inside a restricted context, try the hosted site at sgit.ai.)');
       btn.disabled = false; btn.textContent = 'Retry load';
     }
   }
@@ -136,9 +136,9 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
     "ms = int((time.time()-t0)*1000)",
     "rk = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
     "print(f'PBKDF2-SHA256 x 600,000 iterations: {ms} ms (in WebAssembly)')",
-    "print('read key   :', rk.hex()[:32] + '…')",
+    "print('read key :', rk.hex()[:32] + '…')",
     "print('ref file id:', 'ref-pid-muw-' + vc.derive_ref_file_id(rk, 'DEMO-VAULT'))",
-    "'— keys derived locally; the passphrase never left this page —'"
+    "'keys derived locally; the passphrase never left this page'"
   ].join('\n');
 
   var DEMO_CRYPT = [
@@ -148,37 +148,37 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
     "ct = vc.encrypt_metadata(rk, 'the server never sees this sentence')",
     "print('ciphertext (AES-256-GCM, b64):', ct[:56] + '…')",
     "pt = vc.decrypt_metadata(rk, ct)",
-    "print('decrypted  :', pt)",
-    "'— round trip: ' + ('OK' if pt == 'the server never sees this sentence' else 'FAILED') + ' —'"
+    "print('decrypted :', pt)",
+    "'round trip: ' + ('OK' if pt == 'the server never sees this sentence' else 'FAILED')"
   ].join('\n');
 
   var DEMO_VAULT = [
     "from sgit_ai.crypto.Vault__Crypto import Vault__Crypto",
     "from sgit_ai.network.api.Vault__API__In_Memory import Vault__API__In_Memory",
-    "vc  = Vault__Crypto()",
+    "vc = Vault__Crypto()",
     "api = Vault__API__In_Memory().setup()",
-    "rk  = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
+    "rk = vc.derive_read_key('not-a-real-passphrase', 'DEMO-VAULT')",
     "plaintext = b'hello from an in-browser vault'",
-    "ct  = vc.encrypt(rk, plaintext)",
+    "ct = vc.encrypt(rk, plaintext)",
     "oid = vc.compute_object_id(ct)",
     "api.write('DEMO-VAULT', oid, 'write-key', ct)",
     "print('stored object:', oid, f'({len(ct)} encrypted bytes)')",
     "back = vc.decrypt(rk, bytes(api.read('DEMO-VAULT', oid)))",
-    "print('read back    :', back.decode())",
-    "'— content-addressed, encrypted, round-tripped — entirely in this tab —'"
+    "print('read back :', back.decode())",
+    "'content-addressed, encrypted, round-tripped, entirely in this tab'"
   ].join('\n');
 
   var shHist = [], shIdx = -1;
   function shlog(msg){
     var t = document.getElementById('shterm');
-    if (t.textContent === '— load the engine above to start —') t.textContent = '';
+    if (t.textContent === 'load the engine above to start') t.textContent = '';
     t.textContent += msg + '\n';
     t.scrollTop = t.scrollHeight;
   }
   function shellReady(){
     var inp = document.getElementById('shin');
     inp.disabled = false;
-    shlog("sgit terminal ready — type 'help' to see what's here.");
+    shlog("sgit terminal ready, type 'help' to see what's here.");
     inp.addEventListener('keydown', async function(ev){
       if (ev.key === 'ArrowUp'){ if (shIdx < shHist.length - 1){ shIdx++; inp.value = shHist[shHist.length - 1 - shIdx]; } ev.preventDefault(); return; }
       if (ev.key === 'ArrowDown'){ if (shIdx > 0){ shIdx--; inp.value = shHist[shHist.length - 1 - shIdx]; } else { shIdx = -1; inp.value = ''; } ev.preventDefault(); return; }
@@ -189,8 +189,8 @@ vc.derive_keys('my-passphrase', 'DEMO-VAULT')</textarea>
       if (!line.trim()) return;
       var lc = line.trim();
       if (/^sgit(-ai)?\s+(clone|push|pull|fetch|doctor|remote)/.test(lc)) {
-        shlog('⏳ contacting the SG/Send servers — the tab freezes until this returns (synchronous transport; output appears on completion)…');
-        await new Promise(function(r){ setTimeout(r, 30); });   // let the notice paint before the blocking call
+        shlog('⏳ contacting the SG/Send servers, the tab freezes until this returns (synchronous transport; output appears on completion)…');
+        await new Promise(function(r){ setTimeout(r, 30); }); // let the notice paint before the blocking call
       }
       inp.disabled = true;
       try {
