@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -31,6 +31,8 @@ The test for the word is what happens at a link. Start inside one world, a risk 
 **Every connection you follow should teach you something.** Even when the answer is *nothing to see here*, you now know that door was empty, and that is knowledge too. Whether a link added value is for the observer, or the query, to decide; the graph's job is to make the link available and keep its provenance. The more granularity you can reach, the better your representation of reality and the better the decisions and the understanding built on it. But granularity is chosen per context: you load as much as this question needs and no more, because the rest stays one edge away. Custom views built on top of the whole, each showing one context at one granularity, are what make all of this scale.
 
 **Nobody is forced to conform.** An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/index.html) puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them.
+
+**Somebody else reached the same limit, in their own words.** The [DSIT AI Risk Toolkit vault](../vaults/dsit-ai-risk-toolkit/index.md), published here on 20 September 2026, models UK government guidance as four worlds and states as the first of its four declared limits: *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* Different author, different vocabulary, same distinction as the one above.
 
 ## Why connect everything with everything
 
@@ -233,6 +235,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | Law | Regulation Graph `73heuprz` | 207 files · 14.9 MB | [regulation-graph](../vaults/regulation-graph/index.md) |
 | Law + its interpretation | Standards Atlas GDPR `4zv4bvmu` | 116 files · 6.3 MB | [standards-atlas-gdpr](../vaults/standards-atlas-gdpr/index.md) |
 | The lift: text → typed claims → provision | VoiceDebrief · Fractal Semantic Graphs `k6xy9z4d` | 92 files · 1.2 MB | [voice-debrief](../vaults/voice-debrief/index.md) |
+| Guidance, workbook, method, frameworks | DSIT AI Risk Toolkit `0q4sfr57` | 42 files · 3.2 MB | [dsit-ai-risk-toolkit](../vaults/dsit-ai-risk-toolkit/index.md) |
 | Standard · evidence · policy | AIUC-1 conformance layer `2wzct4k7` | 649 files · 43 MB | [aiuc-1-conformance](../vaults/aiuc-1-conformance/index.md) |
 | Fact · risk · acceptance | Risk Graph Explorer `3simlnqe` | 33 files · 428 KB | [risk-graph-explorer](../vaults/risk-graph-explorer/index.md) |
 | Owner, at seven altitudes | Agentic Browser Isolation `0610gsp9` | 104 files · 2.4 MB | [agentic-browser-isolation](../vaults/agentic-browser-isolation/index.md) |

@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.3.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.3.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -93,6 +93,26 @@ graphsarticlesfractal-semantic-graphs
 The three diagrams from the page are rendered as images (the zoom, the jump, the ladder). Beside them sit the screenshots the argument rests on: the GDPR atlas at altitude zero with its own *you are at the top of the fractal* panel, the Regulation Graph's hash-verified landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an article that has not changed a word since 2016.
 
 The bare URLs at the end became links, and the vault where the idea was first worked, [VoiceDebrief · Fractal Semantic Graphs](../demos/vaults/voice-debrief/index.md), joins the list. The article is CC BY 4.0, as written.
+
+### [Vault #31 reaches the same conclusion about fractality, in its own words](#dsit-ai-risk-toolkit) [v0.3.1](../admin/versions.md)
+
+vaultsgraphsgovernmentmethod
+
+[The DSIT AI Risk Toolkit](../demos/vaults/dsit-ai-risk-toolkit/index.md) is an independent reference edition of the UK government's AI Risk Management Toolkit, and it is the first vault submitted under the `sgit_public_read_` prefix that [the credentials page](../docs/credentials.md) now asks for.
+
+It models the guidance, the official workbook, the risk method and the cited frameworks as **four separate worlds with named bridges**: 617 nodes, 694 edges, eight predicates, every one of which declares an inverse. And the first of its four declared limits is this:
+
+"Containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."
+
+That is the correction [the fractal graphs page](../demos/fractal-graphs/index.md) made yesterday, reached independently by another author in another vocabulary. The page now cites it, and the ladder gains a rung.
+
+## The honesty is the other reason it is here
+
+Every edge is labelled **curated** or **lexical**, with the limit written down: *"lexical mentions are not validated meaning."* Five source snapshots are retained with their URLs, retrieval dates and SHA-256, and two of its eight checks exist only to prove the official spreadsheet's bytes were not touched.
+
+It publishes six gaps about itself. It corrects its own earlier count, to 208 formula cells from 227, and keeps the earlier briefing rather than overwriting it. It preserves a contradiction in the source instead of resolving it: the official file is named v1.1 and its own Welcome sheet says v1.0, so both labels stay. It leaves two broken defined names broken, because repairing somebody else's document is an edit. And it declines the flattering reading, stating that starter rows are not evidence of adoption.
+
+**Audited before the key was published:** no credentials, no personal data, two published DSIT institutional contacts, the Open Government Licence acknowledged, official status disclaimed, and an all-zeros negative control that produced no clone where the real key produced 42 files.
 
 ## 2026-09-19
 

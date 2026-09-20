@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.3.0). Nothing here needs a second request. Individual pages live at the paths
+> (v0.3.1). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **30 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 30 →](demos/vaults/index.md)
+Four of **31 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 31 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -44,9 +44,9 @@ Not categories, things. Each one is a real vault you can open, and each is hard 
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-128site releases, each verified live before it was called done
+129site releases, each verified live before it was called done
 
-30vaults published with a deliberately public read key
+31vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -384,10 +384,12 @@ Every vault whose read key this site has deliberately published, with, for each 
 
 **Eight of these vaults are semantic graphs at different altitudes, each in its own ontology**: a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
 
-**30 published vaults**: 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**31 published vaults**: 7 analysis, 5 application, 5 briefing, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 31 | [DSIT AI Risk Toolkit](dsit-ai-risk-toolkit/index.md)`0q4sfr57` | UK government AI risk guidance as four connected worlds, with every edge labelled curated or lexical | Reference | 42 | 3.2 MB | 2026-09-20 |
 
 | 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 
@@ -452,6 +454,108 @@ Every vault whose read key this site has deliberately published, with, for each 
 This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) (an index of vaults that is itself a vault, updated by an sgit push with no site deploy) carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all (creation, audit, deliberate key publication, embed) is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
 
 Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt), every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
+
+
+
+==============================================================================
+# DSIT AI Risk Toolkit, as four connected worlds, a published vault
+
+> An independent reference edition of the UK DSIT AI Risk Management Toolkit: the guidance, the official workbook, the risk method and the frameworks it cites modelled as four separate worlds with named bridges, 617 nodes and 694 edges, every edge labelled curated or lexical, five hashed source snapshots, eight passing checks and six gaps published about itself.
+>
+> Page: https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / DSIT AI Risk Toolkit
+
+# A government toolkit, turned into four connected worlds
+
+**Independent and derived. Read this first.** This vault is an independent reference edition of the UK Department for Science, Innovation and Technology **AI Risk Management Toolkit**. In its own words it is *"not a formal standard, certification, conformance assessment or official DSIT service"*, and it does not imply official status or endorsement. Departmental logos and crests are not used. Source text is public sector information under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/); external standards are referenced rather than reproduced. The official publication is the authority, and where this disagrees with it, it is wrong.
+
+The interesting thing is not that a guidance document was put in a vault. It is that the guidance, the spreadsheet that accompanies it, the risk method it describes and the frameworks it cites are modelled as **four separate worlds with named bridges between them**, and the vault says plainly why that matters: *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* **617 nodes, 694 edges**, every one declaring its verb, its provenance and whether it was curated or merely found by a lexical match.
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57) · From the CLI: `sgit clone sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
+Submitted under the `sgit_public_read_` prefix, which is the form for a key published on purpose. Classified before it touched anything, and verified with an all-zeros negative control: the real key produced 42 files, the control an empty directory. [What the prefixes declare →](../../../docs/credentials.md)
+
+## See it live, here
+
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57)Seven sections and a graph canvas. It has more room in its own tab.
+
+## The idea worth stealing: four worlds, and the bridges are the point
+
+A guidance document, a spreadsheet, a risk method and a list of external frameworks are not the same kind of thing, and modelling them in one vocabulary would force three of them to pretend to be the fourth. This vault does the opposite. It declares **four worlds** and lets each keep its own shape:
+
+| World | What lives in it |
+|---|---|
+| `source` | The publication as retrieved: 30 guidance sections, 67 blocks, and the bytes they came from |
+| `risk_method` | The method the guidance describes: risk categories, treatments and appetite |
+| `workbook` | The official spreadsheet as data: 4 sheets, 490 cells, 208 of them formulas |
+| `frameworks` | The external standards the text cites, referenced and never reproduced |
+
+Eight predicates carry everything between them, and one of the vault's own eight checks is that **every predicate declares an inverse**, so a link reads correctly from whichever end you stand at: `has_artifact`, `contains`, `is_derived_from`, `defines_category`, `describes_treatment`, `describes_appetite`, `mentions`, `cites`.
+
+**It states the limit this site spent a week getting right.** Its ontology file lists four limits, and the first is *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* That is the same distinction [Fractal Semantic Graphs](../../fractal-graphs/index.md) arrives at from the other direction: a thing inside a thing inside a thing is a hierarchy, and the fractal property is the edge on which you cross into a world with its own rules. Two authors, two vocabularies, one conclusion.
+
+617 nodes across four worlds. Each connection states its verb and how it was obtained: `is_derived_from · curated` is an authored claim, `is_mentioned_by · lexical` is a string match, and the vault never lets you mistake one for the other.
+
+## The distinction that keeps it honest: curated against lexical
+
+Most attempts to connect a document to a model quietly mix two very different things: an edge somebody decided, and an edge a search found. This vault labels every assertion with which it is, on the face of the link, and then says in its limits that *"lexical mentions are not validated meaning."*
+
+That single label is what makes the graph arguable rather than impressive. A reader who disagrees with a `curated` edge is disagreeing with a person, and can say so. A `lexical` edge claims only that a word appeared. The vault also refuses the inference everyone wants to make from a compliance artefact: *"no compliance inference or organisation attestation is made."*
+
+The risk-method world, from identification to treatment. Nine categories, each an edge away from the guidance that defines it and the workbook cells that score it.
+
+## Every claim carries the bytes it came from
+
+Five source snapshots are retained inside the vault, each with its URL, its retrieval date and the **SHA-256 of the bytes**: the guidance body, two content-API responses, and the official workbook in both XLSX and ODS. Two of the eight checks exist purely to prove the originals were not touched, and they are named as plainly as that: *original XLSX bytes preserved*, *original ODS bytes preserved*.
+
+The workbook is read rather than rewritten. Cached values are not recalculated, dates stay as Excel serials, styling is not reproduced, and the vault says so. That is the difference between publishing a spreadsheet as data and publishing your opinion of a spreadsheet.
+
+*"A claim is only as useful as its trace."* Eight checks, all passing, and six known gaps published beside them.
+
+## The six gaps it publishes about itself
+
+This is the part to copy. The vault ships a `known_gaps` list, and it is not decorative:
+
+- **It corrects its own earlier number.** *"Direct OOXML recount finds 208 formula cells, correcting 227 in the retained earlier briefing."* The earlier briefing is still in the vault, uncorrected, with the correction recorded next to it rather than written over it.
+- **It preserves a contradiction in the source instead of resolving it.** The official file is named v1.1 and its own Welcome sheet says v1.0. Both labels are kept, because picking one would be an edit to somebody else's document.
+- **It refuses to repair the source.** Two defined names in the official workbook are broken. They are reported broken. *"No source repairs were made."*
+- **It declines the flattering reading.** *"Starter rows are not evidence of adoption"*, and no independent implementation, compliance assessment or adoption metric is asserted.
+- **It dates itself.** The retained briefing is a snapshot as of 20 September 2026, and external sources may change.
+- **It names what it did not build.** Formula dependency expansion and shared-formula expansion are not implemented.
+*"Inspect. Download. Query."* The official files remain unchanged, and SQLite compiled to WebAssembly runs the queries in your tab.
+
+## What it demonstrates about vaults
+
+| Feature | How this vault uses it |
+|---|---|
+| **Read, download, no write** | `fs.read` is true and `write` and `delete` are both empty arrays. The scoring sandbox is deliberately temporary and is never written back |
+| **Queries with no backend** | sql.js, which is SQLite compiled to WebAssembly, is bundled so the query view works offline. The copies were taken from the published [Regulation Graph vault](../regulation-graph/index.md) and the provenance of that decision is recorded in `NOTICE.md` |
+| **Versioned in the open** | Two releases, each with its own page and JSON record, and the version badge in the app links to the release it is showing |
+| **A licence that survives the copy** | Source text under OGL v3.0, application code separately licensable by the owner, bundled sql.js under MIT with SQLite in the public domain. Each is stated rather than blended |
+| **Machine-readable on the way out** | `downloads/graph.jsonld` keeps every assertion's provenance and partition, so the graph leaves the vault without losing what made it checkable |
+
+## The pre-publication audit
+
+Run against a full clone made with the published read key, before this page existed.
+
+| Checked | Result |
+|---|---|
+| Credentials and secrets | **None.** No vault key, no credential under any `sgit_private_` prefix, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks |
+| Personal data | **None.** Two email addresses appear, `alt.formats@dsit.gov.uk` and `psai-tech@dsit.gov.uk`, both published institutional contacts carried over from the official publication |
+| The credential itself | Submitted as `sgit_public_read_`, classified by `check_credential.py` as read-only and declared public before use |
+| Negative control | An all-zeros key with the same prefix and the same vault id produced **no clone at all**; the real key produced 42 files |
+| Its own checks | Re-read from `data/validation.json`: **8 of 8 passing**, with 6 known gaps published rather than filed away |
+| Attribution | OGL v3.0 acknowledged, no crests or logos used, external standards referenced and not reproduced, and official status explicitly disclaimed on the front page and in `NOTICE.md` |
+
+The usual rule applies to this key as to every other one here: **revocation is not retroactive**. Anyone who fetches these objects keeps them.
+
+## Derived facts
+
+42 files · 3.2 MB · app entry `index.html` · seven sections · **617 nodes, 694 edges** across 3 partitions and 4 worlds · 8 predicates, all with declared inverses · 30 guidance sections, 67 blocks · 4 workbook sheets, 490 cells, 208 formula cells · 5 hashed source snapshots retrieved 20 September 2026 · 2 released versions, current 0.1.1 · permissions `fs.read` with empty write and delete, plus downloads and external links.
+
+Published as row #31. It is also a rung on [Fractal Semantic Graphs](../../fractal-graphs/index.md), beside the [Regulation Graph](../regulation-graph/index.md) whose sql.js copies it reuses. [← All published vaults](../index.md) · [The publishing method](../publishing.md)
 
 
 
@@ -2142,6 +2246,8 @@ The test for the word is what happens at a link. Start inside one world, a risk 
 
 **Nobody is forced to conform.** An organisation, a division, a team, a single person, a regulator can each define their own world in their own vocabulary, and connect to everyone else's by drawing edges rather than by adopting a shared schema. [graphs.sgit.ai](https://graphs.sgit.ai/v1/depth/index.html) puts it as three layers: shared facts owned by nobody, per-party formulas, declared bridges between them.
 
+**Somebody else reached the same limit, in their own words.** The [DSIT AI Risk Toolkit vault](../vaults/dsit-ai-risk-toolkit/index.md), published here on 20 September 2026, models UK government guidance as four worlds and states as the first of its four declared limits: *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* Different author, different vocabulary, same distinction as the one above.
+
 ## Why connect everything with everything
 
 Because in our world **everything is already a graph, and so is every file format.** A regulation is a graph of articles; a PDF of that regulation is a graph of pages, blocks, lines and glyphs; a spreadsheet is a graph of sheets, rows, cells and formulas; a codebase is a graph of packages, classes, methods and tokens; a JSON document is a tree, which is a graph with one verb. None of them needs to be *converted into* a graph; each only needs its edges named. Once they are, the boundaries between formats stop mattering, and four things become possible that no document can do:
@@ -2343,6 +2449,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | Law | Regulation Graph `73heuprz` | 207 files · 14.9 MB | [regulation-graph](../vaults/regulation-graph/index.md) |
 | Law + its interpretation | Standards Atlas GDPR `4zv4bvmu` | 116 files · 6.3 MB | [standards-atlas-gdpr](../vaults/standards-atlas-gdpr/index.md) |
 | The lift: text → typed claims → provision | VoiceDebrief · Fractal Semantic Graphs `k6xy9z4d` | 92 files · 1.2 MB | [voice-debrief](../vaults/voice-debrief/index.md) |
+| Guidance, workbook, method, frameworks | DSIT AI Risk Toolkit `0q4sfr57` | 42 files · 3.2 MB | [dsit-ai-risk-toolkit](../vaults/dsit-ai-risk-toolkit/index.md) |
 | Standard · evidence · policy | AIUC-1 conformance layer `2wzct4k7` | 649 files · 43 MB | [aiuc-1-conformance](../vaults/aiuc-1-conformance/index.md) |
 | Fact · risk · acceptance | Risk Graph Explorer `3simlnqe` | 33 files · 428 KB | [risk-graph-explorer](../vaults/risk-graph-explorer/index.md) |
 | Owner, at seven altitudes | Agentic Browser Isolation `0610gsp9` | 104 files · 2.4 MB | [agentic-browser-isolation](../vaults/agentic-browser-isolation/index.md) |
@@ -4821,7 +4928,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.0, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.1, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5184,16 +5291,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-128**site releases since 14 August**
+129**site releases since 14 August**
 each verified live before it was called done
 
-30**vaults published with a public read key**
+31**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-69**articles and release notes**
+70**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -6874,11 +6981,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.3.0**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.3.1**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.3.0 | 2026-09-20 | this release | TWO SITE-WIDE NORMALISATIONS THE AUTHOR ASKED FOR, AND A GUARD FOR EACH. (1) THE EM-DASH IS GONE FROM PROSE: 3,200 of them, because a good many readers now find the character off-putting. Not a find-and-replace. A rewriter classified every occurrence by context and chose the punctuation the sentence actually wanted: brackets or commas around a parenthetical pair, a colon before an explanation, a full stop with the next word capitalised where the tail was an independent clause, a comma otherwise. Code was left alone by construction, and the same exclusions were written into the validator so the two agree: pre, code, svg, fenced and inline markdown code, inline script, the assets folder, the skills folder (upstream artifacts shipped verbatim) and team/board (rendered from a vault this site does not author). FOUR BUGS FOUND BY CHECKING RATHER THAN ASSUMING: a whitespace tidy reflowed the ASCII diagrams inside pre until it was made mask-aware; the pair rule bridged adjacent table cells and left seven brackets opening in one cell and closing in another, each found by a balance check and fixed by hand; the try page's JavaScript compared against placeholder text the markup no longer had, which would have broken its terminal; and a colon in front of a conjunction reads badly, so 35 became commas. (2) THE LEGACY KEY PREFIX IS GONE: 102 published read keys under sgit_rk1_ and 24 bare ones now carry sgit_public_read_, which declares the intent. The bare ones were bare for a reason worth recording: the prefixed form used to FAIL on the CLI, which is an open brief to the CLI team. Re-running the comparison suite today closed it, all six checks pass on sgit-ai v0.16.2 including prefixed clone succeeded. Only real keys were rewritten, so documentation that names the legacy prefix still names it. |
+| v0.3.1 | 2026-09-20 | this release | VAULT #31, AND IT ARRIVED AT THE SAME CONCLUSION THIS SITE SPENT A WEEK REACHING. An independent reference edition of the UK DSIT AI Risk Management Toolkit, submitted under the sgit_public_read_ prefix, which is the form the credentials page now asks for and the first submission to use it. The vault models the guidance, the official workbook, the risk method and the cited frameworks as FOUR SEPARATE WORLDS with named bridges, 617 nodes and 694 edges, and states as the first of its four declared limits: 'containment alone is not fractality. Cross-world edges make the semantic transitions inspectable.' That is the same correction the author made to the fractal graphs page on 19 September, reached by a different author in a different vocabulary, so the page now cites it and the ladder gains the rung. THE HONESTY IS THE OTHER REASON IT IS HERE: every edge is labelled curated or lexical, with the limit 'lexical mentions are not validated meaning' written down; five source snapshots are retained with their URLs, retrieval dates and SHA-256; two of its eight checks exist only to prove the official XLSX and ODS bytes were not touched; and it publishes six gaps about itself, including a correction of its own earlier count (208 formula cells, not 227), a version contradiction in the source preserved rather than resolved (the filename says v1.1, the Welcome sheet says v1.0), two broken defined names left broken because repairing somebody else's document is an edit, and the refusal to read starter rows as evidence of adoption. AUDIT: no credentials, no personal data, two published DSIT institutional contacts, OGL v3.0 acknowledged, official status disclaimed on the front page and in NOTICE.md, and an all-zeros negative control that produced no clone where the real key produced 42 files. |
+| v0.3.0 | 2026-09-20 | git 8b46d285 | TWO SITE-WIDE NORMALISATIONS THE AUTHOR ASKED FOR, AND A GUARD FOR EACH. (1) THE EM-DASH IS GONE FROM PROSE: 3,200 of them, because a good many readers now find the character off-putting. Not a find-and-replace. A rewriter classified every occurrence by context and chose the punctuation the sentence actually wanted: brackets or commas around a parenthetical pair, a colon before an explanation, a full stop with the next word capitalised where the tail was an independent clause, a comma otherwise. Code was left alone by construction, and the same exclusions were written into the validator so the two agree: pre, code, svg, fenced and inline markdown code, inline script, the assets folder, the skills folder (upstream artifacts shipped verbatim) and team/board (rendered from a vault this site does not author). FOUR BUGS FOUND BY CHECKING RATHER THAN ASSUMING: a whitespace tidy reflowed the ASCII diagrams inside pre until it was made mask-aware; the pair rule bridged adjacent table cells and left seven brackets opening in one cell and closing in another, each found by a balance check and fixed by hand; the try page's JavaScript compared against placeholder text the markup no longer had, which would have broken its terminal; and a colon in front of a conjunction reads badly, so 35 became commas. (2) THE LEGACY KEY PREFIX IS GONE: 102 published read keys under sgit_rk1_ and 24 bare ones now carry sgit_public_read_, which declares the intent. The bare ones were bare for a reason worth recording: the prefixed form used to FAIL on the CLI, which is an open brief to the CLI team. Re-running the comparison suite today closed it, all six checks pass on sgit-ai v0.16.2 including prefixed clone succeeded. Only real keys were rewritten, so documentation that names the legacy prefix still names it. |
 | v0.2.99 | 2026-09-20 | git 8aadadf9 | THE NEWEST FOUR VAULTS WERE AT THE BOTTOM OF THE TABLE, AND THE MACHINE LIST HAD THEM AT THE TOP. The author asked for the order on the published-vaults page to be fixed. Three bugs behind one symptom. (1) vaults_table() read vaults.json directly, in FILE order, while its own docstring claimed 'the rows ship newest-first in the HTML'. Vaults 27 to 30 had been appended to the end of the file rather than inserted at the top, so they rendered last: the page opened at #26 and ended at #30. (2) The llms.txt generator sorted by ordinal and was therefore correct, which means the human table and the machine list had DISAGREED for four releases, on a page whose own footnote says the two are generated from the same file and cannot drift. (3) Found on the way: the routine that lifts each read key out of its vault page knew sgit_rk1_ and sgit_private_read_ but not sgit_public_read_, so the two keys relabelled in v0.2.98 were being published in llms.txt stripped of the declaration they had just been given. THE FIX IS ONE ORDER FOR THE WHOLE SITE: _vaults() now sorts newest-first and everything reads it, and it asserts what makes that trustworthy, ordinals unique, running 1..N with no gaps, and in the same order as the published dates. Both assertions were tested by breaking the data on purpose: a duplicate ordinal and a date that contradicts its number each fail the build by name. The homepage is untouched because its hero row and its job bands use a hand-curated order, which is why this went unnoticed there. |
 | v0.2.98 | 2026-09-20 | git 245934e7 | WE PUBLISHED READ KEYS UNDER A PREFIX THAT DECLARES THEM SECRET, AND AN AGENT CORRECTLY REFUSED TO OPEN THEM. The author sent a screenshot: another agent, asked to inspect the two AIUC-1 vaults, declined because their credentials were labelled private read, and said it would not work around the restriction. It was right and our label was wrong. The CLI defines three current prefixes and says which is which in its own source: the private vault one is a WRITE credential, the private read one is read-only and KEPT SECRET, and the public read one is read-only and DELIBERATELY PUBLISHED. Seven published credentials across the two AIUC-1 pages carried the middle one. Relabelled to the public form, with a dated line on each page saying what changed and that the bytes, the access and the vault are identical. VERIFIED BEFORE RELABELLING, on sgit-ai v0.16.2: bare, legacy rk1, private read and public read all clone the same 699-file vault, an all-zeros key under the same prefix produces nothing, and the SG/Vault web loader strips all five prefixes in its own format module. THE STRUCTURAL FIX MATTERS MORE THAN THE SEVEN STRINGS. The validator now bans both current private prefixes in tracked files, using the same trailing-character rule the write-key tripwire already used, so documentation can still print a prefix as a NAME while a real key fails the build. check_credential.py learned the public prefix (publishable, and the form to use) and now REFUSES the private read one: read-only, leaks no capability, and still not publishable, because the label says the opposite of what publishing it does. NEW PAGE /docs/credentials/ explains the whole thing for the first time: two capabilities with a one-way derivation between them drawn as a diagram, the five prefixes in a table with publish-or-not per row, classification by declaration and never by shape (the CLI's own lesson: guessing from shape is what once misrouted a 64-hex passphrase to a read-only clone), why the word matters when the bytes do not, and what a read key can and cannot do including that revocation is never retroactive. Linked from the docs index, the nav, the gallery intake note and the publishing method. NOT DONE, AND A DECISION FOR THE AUTHOR: 99 published keys across 27 pages still carry the legacy rk1 prefix, which is neutral rather than wrong. |
 | v0.2.97 | 2026-09-20 | git d460cd58 | THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had another agent write 'Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema' from the sgit.ai page, for LinkedIn, and asked whether this site had a place to publish it with the missing images and infographics. It does: /articles/. The text is published as written, in the author's voice, with one italic line added at the top naming it the canonical copy and pointing at the page and the VoiceDebrief vault, and one at the bottom on reuse. Nine figures placed where the prose earns them: the three inline SVG diagrams rendered to images at two times scale (the zoom, the jump, the ladder), the GDPR atlas at altitude zero with its own 'you are at the top of the fractal' panel, the Regulation Graph landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an unchanged article, which the article calls its favourite picture in the set. The bare URLs in 'Open them' became links, with the VoiceDebrief vault added to the list. No em-dashes; the article had none and none were introduced. |
@@ -7957,6 +8065,26 @@ graphsarticlesfractal-semantic-graphs
 The three diagrams from the page are rendered as images (the zoom, the jump, the ladder). Beside them sit the screenshots the argument rests on: the GDPR atlas at altitude zero with its own *you are at the top of the fractal* panel, the Regulation Graph's hash-verified landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an article that has not changed a word since 2016.
 
 The bare URLs at the end became links, and the vault where the idea was first worked, [VoiceDebrief · Fractal Semantic Graphs](../demos/vaults/voice-debrief/index.md), joins the list. The article is CC BY 4.0, as written.
+
+### [Vault #31 reaches the same conclusion about fractality, in its own words](#dsit-ai-risk-toolkit) [v0.3.1](../admin/versions.md)
+
+vaultsgraphsgovernmentmethod
+
+[The DSIT AI Risk Toolkit](../demos/vaults/dsit-ai-risk-toolkit/index.md) is an independent reference edition of the UK government's AI Risk Management Toolkit, and it is the first vault submitted under the `sgit_public_read_` prefix that [the credentials page](../docs/credentials.md) now asks for.
+
+It models the guidance, the official workbook, the risk method and the cited frameworks as **four separate worlds with named bridges**: 617 nodes, 694 edges, eight predicates, every one of which declares an inverse. And the first of its four declared limits is this:
+
+"Containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."
+
+That is the correction [the fractal graphs page](../demos/fractal-graphs/index.md) made yesterday, reached independently by another author in another vocabulary. The page now cites it, and the ladder gains a rung.
+
+## The honesty is the other reason it is here
+
+Every edge is labelled **curated** or **lexical**, with the limit written down: *"lexical mentions are not validated meaning."* Five source snapshots are retained with their URLs, retrieval dates and SHA-256, and two of its eight checks exist only to prove the official spreadsheet's bytes were not touched.
+
+It publishes six gaps about itself. It corrects its own earlier count, to 208 formula cells from 227, and keeps the earlier briefing rather than overwriting it. It preserves a contradiction in the source instead of resolving it: the official file is named v1.1 and its own Welcome sheet says v1.0, so both labels stay. It leaves two broken defined names broken, because repairing somebody else's document is an edit. And it declines the flattering reading, stating that starter rows are not evidence of adoption.
+
+**Audited before the key was published:** no credentials, no personal data, two published DSIT institutional contacts, the Open Government Licence acknowledged, official status disclaimed, and an all-zeros negative control that produced no clone where the real key produced 42 files.
 
 ## 2026-09-19
 

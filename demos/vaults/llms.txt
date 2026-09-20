@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.3.0) from the same file the table on that page is built
+> generated at build time (v0.3.1) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (30)
+## The vaults (31)
+- **#31 DSIT AI Risk Toolkit**: UK government AI risk guidance as four connected worlds, with every edge labelled curated or lexical
+ - page: /demos/vaults/dsit-ai-risk-toolkit/index.md
+ - id `0q4sfr57` · Reference · published 2026-09-20 · 3.2 MB · 42 files
+ - read key: `sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
 - **#30 Fractional CISO application pack**: The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not
  - page: /demos/vaults/fractional-ciso-pack/index.md
  - id `eaba68j5` · Briefing · published 2026-09-18 · 19 MB · 72 files

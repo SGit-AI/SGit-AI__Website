@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.0'
+SITE_VERSION = 'v0.3.1'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,30 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.0', '2026-09-20', 'this release',
+    ('v0.3.1', '2026-09-20', 'this release',
+     "VAULT #31, AND IT ARRIVED AT THE SAME CONCLUSION THIS SITE SPENT A WEEK REACHING. An "
+     "independent reference edition of the UK DSIT AI Risk Management Toolkit, submitted under "
+     "the sgit_public_read_ prefix, which is the form the credentials page now asks for and the "
+     "first submission to use it. The vault models the guidance, the official workbook, the risk "
+     "method and the cited frameworks as FOUR SEPARATE WORLDS with named bridges, 617 nodes and "
+     "694 edges, and states as the first of its four declared limits: 'containment alone is not "
+     "fractality. Cross-world edges make the semantic transitions inspectable.' That is the same "
+     "correction the author made to the fractal graphs page on 19 September, reached by a "
+     "different author in a different vocabulary, so the page now cites it and the ladder gains "
+     "the rung. THE HONESTY IS THE OTHER REASON IT IS HERE: every edge is labelled curated or "
+     "lexical, with the limit 'lexical mentions are not validated meaning' written down; five "
+     "source snapshots are retained with their URLs, retrieval dates and SHA-256; two of its "
+     "eight checks exist only to prove the official XLSX and ODS bytes were not touched; and it "
+     "publishes six gaps about itself, including a correction of its own earlier count (208 "
+     "formula cells, not 227), a version contradiction in the source preserved rather than "
+     "resolved (the filename says v1.1, the Welcome sheet says v1.0), two broken defined names "
+     "left broken because repairing somebody else's document is an edit, and the refusal to read "
+     "starter rows as evidence of adoption. AUDIT: no credentials, no personal data, two "
+     "published DSIT institutional contacts, OGL v3.0 acknowledged, official status disclaimed on "
+     "the front page and in NOTICE.md, and an all-zeros negative control that produced no clone "
+     "where the real key produced 42 files.",
+     ),
+    ('v0.3.0', '2026-09-20', 'git 8b46d285',
      "TWO SITE-WIDE NORMALISATIONS THE AUTHOR ASKED FOR, AND A GUARD FOR EACH. (1) THE EM-DASH IS "
      "GONE FROM PROSE: 3,200 of them, because a good many readers now find the character "
      "off-putting. Not a find-and-replace. A rewriter classified every occurrence by context and "
