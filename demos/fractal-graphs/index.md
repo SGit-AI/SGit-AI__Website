@@ -1,8 +1,8 @@
 # Fractal Semantic Graphs — sgit.ai
 
-> What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
+> What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Fractal Semantic Graphs
 
-A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, and then proves it with seven published vaults you can open.
+A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, points at the vault where the idea was first worked, and then proves it with seven more published vaults you can open.
 
 ## What a Fractal Semantic Graph is
 
@@ -52,6 +52,24 @@ The one discipline that makes “everything with everything” useful rather tha
 | **Semantic graph** | Every edge is a verb with a named inverse; meaning is in connectivity, not in properties | One level: the nodes are atoms |
 | **Ontology** | The agreed vocabulary of node types and verbs | One ontology per domain; joining two by merging them is a project that usually fails |
 | **Fractal Semantic Graph** | Every node opens into a semantic graph with its own ontology, at every altitude, down to the word; ontologies are joined by declared edges, never merged: an ontology of ontologies | Where somebody has not yet named the edges between two worlds. That is a gap, and it is listed below |
+
+## Where the idea was worked first
+
+The term has a vault of its own, and it was published here before this page existed: [**VoiceDebrief · Fractal Semantic Graphs**](../vaults/voice-debrief/index.md), vault `k6xy9z4d`, row 11 of the gallery. Four apps in one vault, built in the open across two days in August 2026 against a pack of 34 architecture briefs, lifting meaning out of text (fictional voice notes first, then Article 9(2) of the EU AI Act) into typed semantic graphs. The zoom diagram at the top of this page uses Article 9(2) because that vault works the provision to exhaustion: legal annotation, altitudes, a concept graph, source-tethered tasks, a bow tie, and a cyber instantiation joined to the law node-to-node.
+
+Its `concepts/principles.md` is a register of fifteen principles, each with its origin and the date it was corrected, and several of them are the definition on this page in its first form:
+
+| Principle | In the vault's words | On this page |
+|---|---|---|
+| **P4 · Everything is a node** | “If it's mentioned, it can be focused: words, compounds, definitions, external standards, articles, actors, extracted facts.” | The smallest node is a word |
+| **P6 · Fractal descent** | “Every node opens its own neighbourhood; recursion happens on demand, not up front. Depth follows attention.” | Granularity is chosen per context |
+| **P7 · The junction rule** | “Two texts never link paragraph-to-paragraph. Each is lifted into its own nodes, and the graphs join node-to-node through the intermediate layer. This is what makes company graphs and regulation graphs composable.” | The jump between worlds, and why ontologies are joined rather than merged |
+| **P11 · Altitude** | “Each rung is the same meaning at less resolution, and compression is lossless so long as the links hold.” | The altitude you happen to be looking from |
+| **P15 · Structure points down; meaning radiates out** | “Taxonomy is merely the shape; ontology is the content.” | The meaning of a node is supplied by the ontology at its altitude |
+
+The leading brief in that vault, dated 6 August 2026, says the thing this page took five revisions to say: *“Paragraph, then section, then document, then a set of documents. Each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested.”* And the reason to do it at all: *“the interesting object is not any one of their graphs but the edges between them. That connection is where meaning lives.”* The vault's notation spec adds two laws worth carrying everywhere: every statement must read aloud as a grammatical sentence and decompose into triples with no residue, and every statement must link to the span it compresses, because *“claims from memory are not allowed anywhere in this system.”*
+
+The same vault is also mirrored in the open as a git repository, [VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs](https://github.com/VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs), plaintext tree and encrypted store side by side. Checked on 20 September 2026: the repository's 90 content files match the vault's HEAD file for file, and both last moved on 10 August.
 
 ## How far down does the graph go?
 
@@ -214,6 +232,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 |---|---|---|---|
 | Law | Regulation Graph `73heuprz` | 207 files · 14.9 MB | [regulation-graph](../vaults/regulation-graph/index.md) |
 | Law + its interpretation | Standards Atlas GDPR `4zv4bvmu` | 116 files · 6.3 MB | [standards-atlas-gdpr](../vaults/standards-atlas-gdpr/index.md) |
+| The lift: text → typed claims → provision | VoiceDebrief · Fractal Semantic Graphs `k6xy9z4d` | 92 files · 1.2 MB | [voice-debrief](../vaults/voice-debrief/index.md) |
 | Standard · evidence · policy | AIUC-1 conformance layer `2wzct4k7` | 649 files · 43 MB | [aiuc-1-conformance](../vaults/aiuc-1-conformance/index.md) |
 | Fact · risk · acceptance | Risk Graph Explorer `3simlnqe` | 33 files · 428 KB | [risk-graph-explorer](../vaults/risk-graph-explorer/index.md) |
 | Owner, at seven altitudes | Agentic Browser Isolation `0610gsp9` | 104 files · 2.4 MB | [agentic-browser-isolation](../vaults/agentic-browser-isolation/index.md) |

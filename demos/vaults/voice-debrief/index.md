@@ -2,7 +2,7 @@
 
 > Four apps in one encrypted vault: lifting meaning from fictional voice notes to Article 9(2) of the EU AI Act into typed semantic graphs — with read scoped to one folder, write nowhere, and the briefings it was built from shipped beside the work.
 
-*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -33,7 +33,7 @@ Both surfaces open automatically below. You can also [**open the app in its own 
 | Two surfaces, one vault | `_page.json` gives the vault browser a themed landing page (hero, dark mode, accent `#d9a63f`); `app.json` makes the Article 9 app auto-open. The same objects serve a document reader and an application without either being converted into the other |
 | The app-folder pattern over the bridge | from part 4 on, each app is a slim `index.html` shell plus `app/styles.css` and `app/app.js`, pulled in at runtime through `sg.loadCss` / `sg.loadJs` — the vault's own files loaded over the bridge rather than inlined into one unreadable page |
 | Licensing declared inside the vault | `LICENSE` and `NOTICE` dual-license the contents: **Apache 2.0** for anything executable, **CC BY 4.0** for the written packs — with the tie-break stated ("the more permissive reading applies"). Terms travel with the objects, not with the page that links to them |
-| Git-compatible by construction | `.gitattributes` and `.gitignore` ship inside the vault, and `guides/publish-sgit-vault-to-github.md` documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is [how this website is built](../../../case-studies/one-tree-two-remotes.md) |
+| Git-compatible by construction | `.gitattributes` and `.gitignore` ship inside the vault, and `guides/publish-sgit-vault-to-github.md` documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is [how this website was built until v0.2.84](../../../case-studies/one-tree-two-remotes.md), and how this vault is published: see the mirror note below |
 | The source travels with the work | `briefings/` is 50 files of everything this was built against, and `concepts/` carries a principles register (P1–P15, each with origin, implementation and evolution) plus a notation spec. The reasoning is *in* the artefact — the difference between a demo and a record |
 
 ## What is going on here, step by step
@@ -157,6 +157,14 @@ Two hits were ruled out by reading them, and both are worth naming because a cle
 On personal data: parts 1–3 are built on a corpus the README states is **fictional** — invented companies, invented voice notes — and the part 4 cyber instantiation is likewise a fictional provider and grid operator. The only real-world entities named are public ones: Regulation (EU) 2024/1689, ISO 31000, ISO/IEC 23894.
 
 The rule that goes with any published key applies here too: **revocation is not retroactive.** Anybody who fetches these objects keeps them, and rotating the key protects future commits only.
+
+## The vault is also on GitHub, in the open
+
+This vault practises what its own guide preaches. [VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs](https://github.com/VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs) is a public git repository holding the plaintext working tree and the encrypted `.sg_vault/bare/` store side by side, with `.sg_vault/local/` gitignored, exactly the layout `guides/publish-sgit-vault-to-github.md` describes. Checked on 20 September 2026 by cloning both: the repository's 90 content files match the vault's HEAD file for file; the repository has three commits, all on 10 August 2026, the day of the vault's last commit; and it has not moved since.
+
+Three consequences for a reader. The content is **public twice over**: anyone can read every file on GitHub without the read key, so the key on this page adds the vault's history and its app, not access. The repository is a **snapshot, not a live mirror**: if the vault moves and the repository does not, the two will drift, which is the failure this site's own mirror had before it was [retired](../../../case-studies/one-tree-two-remotes.md#stopped). And the encrypted store in the repository is safe for the reason the guide gives: everything in `bare/` is protected by the vault key, which was never committed, so git exposure of the store equals server exposure, which the zero-knowledge model already accepts.
+
+The concept this vault is named after now has a page of its own on this site, [Fractal Semantic Graphs](../../fractal-graphs/index.md), which cites this vault's principles register as the definition in its first form.
 
 ## Derived facts
 

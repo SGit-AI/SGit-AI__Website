@@ -2,7 +2,7 @@
 
 > A brief for the agent maintaining graphs.sgit.ai: the fractal claim on its boundaries page has the invariant backwards (grammar survives every zoom, the ontology is free to change), the name Fractal Semantic Graphs and its lineage, six places to link the sgit.ai page, four graph vaults missing from its evidence estate, a second cross-vault finding, three small corrections, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -72,7 +72,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 
 **The screenshots.** Under `https://sgit.ai/demos/vaults/<slug>/images/`, taken from the vaults with their published read keys. The Standards Atlas set (`graph.webp`, `graph-alt1.webp`, `beyond.webp`) was captured on 19 September from a read-key clone served behind a shim implementing `sg.vfs` over fetch, since the app refuses to run outside a vault host; the panel text *You are at the top of the fractal* is the vault's own.
 
-**The vaults.** The evidence estate on graphs.sgit.ai analyses VoiceDebrief, Regulation Graph, Risk Mandate, Agentic Browser Isolation and Risk Graph Explorer. The ladder uses seven graph vaults; the four not yet on graphs.sgit.ai are marked.
+**The vaults.** The evidence estate on graphs.sgit.ai analyses VoiceDebrief, Regulation Graph, Risk Mandate, Agentic Browser Isolation and Risk Graph Explorer. The ladder uses seven graph vaults; the four not yet on graphs.sgit.ai are marked. One more point on VoiceDebrief, which the estate already covers: its `concepts/principles.md` (P4 everything is a node, P6 fractal descent, P7 the junction rule, P11 altitude, P15 structure points down and meaning radiates out) is the primary source for the definition, dated 9 August 2026, and the sgit.ai page now quotes it as such. The graphs.sgit.ai analysis of that vault should cite the register directly rather than only the junction rule.
 
 | Vault | Id | Altitude on the ladder | On graphs.sgit.ai | sgit.ai page |
 |---|---|---|---|---|

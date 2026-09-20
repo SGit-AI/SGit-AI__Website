@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.95'
+SITE_VERSION = 'v0.2.96'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.95', '2026-09-19', 'this release',
+    ('v0.2.96', '2026-09-20', 'this release',
+     "THE VAULT NAMED AFTER THE CONCEPT WAS NOT ON THE CONCEPT'S PAGE. Asked whether the GitHub "
+     "repository VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs was in the collection, the "
+     "answer was yes: it is the plaintext mirror of vault k6xy9z4d, row 11, published on 22 "
+     "August, and cloning both showed the repository's 90 content files matching the vault's "
+     "HEAD file for file, both last moved on 10 August. What was missing was the reverse link. "
+     "The Fractal Semantic Graphs page walked seven graph vaults and never cited the one that "
+     "carries the name, the fifteen-principle register (P4 everything is a node, P6 fractal "
+     "descent, P7 the junction rule, P11 altitude, P15 structure points down and meaning "
+     "radiates out), the leading brief of 6 August whose sentence 'each level is the same "
+     "operation applied to a larger span, which is what makes the structure fractal rather "
+     "than merely nested' says in one line what this page took five revisions to reach, and the "
+     "notation spec's two laws (read aloud as a sentence and decompose into triples; link to "
+     "the span you compress, because claims from memory are not allowed). A new section, "
+     "'where the idea was worked first', quotes all of that with a principle-to-page table, "
+     "credits the Article 9(2) example in the zoom diagram to the vault that works that "
+     "provision to exhaustion, and adds the vault to the open-them table. THE VAULT'S OWN PAGE "
+     "gains a mirror section: the vault practises its own guide, plaintext tree and encrypted "
+     "store side by side on GitHub, three commits all on 10 August; the consequences stated "
+     "are that the content is public twice over (the read key adds history and the app, not "
+     "access), that the repository is a snapshot which will drift if the vault moves, and that "
+     "the encrypted store is safe in the open for the reason the guide gives. The page's line "
+     "saying this site 'is built' the same way now says 'was built until v0.2.84'. Counts "
+     "updated: the concept card and gallery note say eight graph vaults; the graphs.sgit.ai "
+     "brief asks that site to cite the principles register directly.",
+     ),
+    ('v0.2.95', '2026-09-19', 'git 2724d757',
      "THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you "
      "more detail but no new meaning, because the only verb is contains'. The author's objection, "
      "in four parts: a single layer's ontology can have a very large number of verbs, each carrying "
@@ -2183,8 +2209,8 @@ so these are the entry points that are worth more than their position in it sugg
   is, so the two cannot disagree.
 - **Fractal Semantic Graphs?** /demos/fractal-graphs/index.md defines the term (every node opens
   into a semantic graph with its own ontology, down to the word; only the grammar is shared) and then walks one grammar from
-  the text of a law to a threat in one method on one compute instance, across seven published
-  vaults, with the rungs that are still modelled rather than imported stated plainly.
+  the text of a law to a threat in one method on one compute instance, across the vault where the idea was
+  first worked and seven more, with the rungs that are still modelled rather than imported stated plainly.
 
 SCOPED INDEXES — each covers one part of this site and is regenerated on every release:
 /llms.txt (this file, everything) · /docs/llms.txt · /docs/guidance/llms.txt ·

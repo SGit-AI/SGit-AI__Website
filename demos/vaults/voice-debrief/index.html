@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.95</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.96</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -93,7 +93,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.95 &middot; 19 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.96 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / VoiceDebrief</p>
   <h1>VoiceDebrief · Fractal Semantic Graphs</h1>
@@ -130,7 +130,7 @@
     <tr><td>Two surfaces, one vault</td><td><code>_page.json</code> gives the vault browser a themed landing page (hero, dark mode, accent <code>#d9a63f</code>); <code>app.json</code> makes the Article 9 app auto-open. The same objects serve a document reader and an application without either being converted into the other</td></tr>
     <tr><td>The app-folder pattern over the bridge</td><td>from part 4 on, each app is a slim <code>index.html</code> shell plus <code>app/styles.css</code> and <code>app/app.js</code>, pulled in at runtime through <code>sg.loadCss</code> / <code>sg.loadJs</code> — the vault's own files loaded over the bridge rather than inlined into one unreadable page</td></tr>
     <tr><td>Licensing declared inside the vault</td><td><code>LICENSE</code> and <code>NOTICE</code> dual-license the contents: <b>Apache 2.0</b> for anything executable, <b>CC BY 4.0</b> for the written packs — with the tie-break stated ("the more permissive reading applies"). Terms travel with the objects, not with the page that links to them</td></tr>
-    <tr><td>Git-compatible by construction</td><td><code>.gitattributes</code> and <code>.gitignore</code> ship inside the vault, and <code>guides/publish-sgit-vault-to-github.md</code> documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is <a href="../../../case-studies/one-tree-two-remotes.html">how this website is built</a></td></tr>
+    <tr><td>Git-compatible by construction</td><td><code>.gitattributes</code> and <code>.gitignore</code> ship inside the vault, and <code>guides/publish-sgit-vault-to-github.md</code> documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is <a href="../../../case-studies/one-tree-two-remotes.html">how this website was built until v0.2.84</a>, and how this vault is published: see the mirror note below</td></tr>
     <tr><td>The source travels with the work</td><td><code>briefings/</code> is 50 files of everything this was built against, and <code>concepts/</code> carries a principles register (P1–P15, each with origin, implementation and evolution) plus a notation spec. The reasoning is <em>in</em> the artefact — the difference between a demo and a record</td></tr>
   </table></div>
 
@@ -250,12 +250,17 @@
   <p>On personal data: parts 1–3 are built on a corpus the README states is <b>fictional</b> — invented companies, invented voice notes — and the part 4 cyber instantiation is likewise a fictional provider and grid operator. The only real-world entities named are public ones: Regulation (EU) 2024/1689, ISO 31000, ISO/IEC 23894.</p>
   <p>The rule that goes with any published key applies here too: <b>revocation is not retroactive.</b> Anybody who fetches these objects keeps them, and rotating the key protects future commits only.</p>
 
+  <h2 id="mirror">The vault is also on GitHub, in the open</h2>
+  <p>This vault practises what its own guide preaches. <a href="https://github.com/VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs" rel="noopener" target="_blank">VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs</a> is a public git repository holding the plaintext working tree and the encrypted <code>.sg_vault/bare/</code> store side by side, with <code>.sg_vault/local/</code> gitignored, exactly the layout <code>guides/publish-sgit-vault-to-github.md</code> describes. Checked on 20 September 2026 by cloning both: the repository's 90 content files match the vault's HEAD file for file; the repository has three commits, all on 10 August 2026, the day of the vault's last commit; and it has not moved since.</p>
+  <p>Three consequences for a reader. The content is <b>public twice over</b>: anyone can read every file on GitHub without the read key, so the key on this page adds the vault's history and its app, not access. The repository is a <b>snapshot, not a live mirror</b>: if the vault moves and the repository does not, the two will drift, which is the failure this site's own mirror had before it was <a href="../../../case-studies/one-tree-two-remotes.html#stopped">retired</a>. And the encrypted store in the repository is safe for the reason the guide gives: everything in <code>bare/</code> is protected by the vault key, which was never committed, so git exposure of the store equals server exposure, which the zero-knowledge model already accepts.</p>
+  <p class="small dim">The concept this vault is named after now has a page of its own on this site, <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a>, which cites this vault's principles register as the definition in its first form.</p>
+
   <h2>Derived facts</h2>
   <p>92 files · 1,154 KB · 18 commits · HEAD <code>obj-cas-imm-3026ed53e995</code> · last updated 10 Aug 2026 · app entry <code>part-4/index.html</code> · 71 markdown, 11 JSON, 3 HTML — derived from the read key alone by <code>admin/build/catalogue_derive.py</code>, the same derivation that populates <a href="../../../catalogue/index.html">the catalogue</a>, with no token and no clone.</p>
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.95')
+  fetch('../../../assets/shots.js?v=v0.2.96')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -267,7 +272,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.95</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.96</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -309,7 +314,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.95';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.96';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

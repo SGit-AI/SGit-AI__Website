@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,20 @@
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-20
+
+### [The vault named after the concept was not on the concept's page](#the-vault-named-after-the-concept) [v0.2.96](../admin/versions.md)
+
+graphsvaultsmethod
+
+Asked whether the GitHub repository `VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs` was in the collection, the answer was yes. It is the plaintext mirror of [vault #11](../demos/vaults/voice-debrief/index.md), `k6xy9z4d`, published here on 22 August. Cloning both and comparing showed the repository's 90 content files matching the vault's HEAD file for file, and both last moved on 10 August.
+
+What was missing was the reverse link. [Fractal Semantic Graphs](../demos/fractal-graphs/index.md) walked seven graph vaults and never cited the one that carries the name. That vault holds the fifteen-principle register the definition comes from (P4 *everything is a node*, P6 *fractal descent*, P7 *the junction rule*, P11 *altitude*, P15 *structure points down; meaning radiates out*), the leading brief of 6 August whose one sentence says what the page took five revisions to reach (*"each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested"*), and a notation spec with two laws worth carrying everywhere: every statement must read aloud as a sentence and decompose into triples, and every statement must link to the span it compresses, because *"claims from memory are not allowed anywhere in this system."*
+
+A new section, **where the idea was worked first**, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.
+
+**The vault's own page gains a mirror section.** The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, `local/` gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.
 
 ## 2026-09-19
 

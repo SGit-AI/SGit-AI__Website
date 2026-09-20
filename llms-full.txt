@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.95). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.96). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-123site releases, each verified live before it was called done
+124site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -382,7 +382,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
-**Seven of these vaults are semantic graphs at different altitudes, each in its own ontology** — a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
+**Eight of these vaults are semantic graphs at different altitudes, each in its own ontology** — a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots.
 
 **30 published vaults** — 7 analysis, 5 application, 5 briefing, 4 record, 4 reference, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
@@ -2085,7 +2085,7 @@ The demos outgrew this page. Every vault whose read key this site publishes now 
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
 
-[Concept · 7 vaults### Fractal Semantic GraphsEvery node opens into a graph with its own ontology, down to the word; only the grammar is shared. What that means, why it is worth connecting everything with everything, and then how far down it goes: the law, the standard, the evidence, the risk, the owner, the policy, and a threat in one line of code — each a live graph in a published vault, with the pictures and the counts.Walk the ladder →](fractal-graphs/index.md)
+[Concept · 8 vaults### Fractal Semantic GraphsEvery node opens into a graph with its own ontology, down to the word; only the grammar is shared. What that means, why it is worth connecting everything with everything, and then how far down it goes: the law, the standard, the evidence, the risk, the owner, the policy, and a threat in one line of code — each a live graph in a published vault, with the pictures and the counts.Walk the ladder →](fractal-graphs/index.md)
 
 [Index · live from a vault### The catalogueAn index of vaults that is itself a vault, rendered live on this site with a published read key. The machine-first companion to the gallery.Open the catalogue →](../catalogue/index.md)
 
@@ -2110,7 +2110,7 @@ The newer pattern, used by the deck and document pages under the gallery, is the
 ==============================================================================
 # Fractal Semantic Graphs — sgit.ai
 
-> What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: seven published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
+> What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 >
 > Page: https://sgit.ai/demos/fractal-graphs/index.html
 
@@ -2118,7 +2118,7 @@ The newer pattern, used by the deck and document pages under the gallery, is the
 
 # Fractal Semantic Graphs
 
-A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, and then proves it with seven published vaults you can open.
+A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, points at the vault where the idea was first worked, and then proves it with seven more published vaults you can open.
 
 ## What a Fractal Semantic Graph is
 
@@ -2160,6 +2160,24 @@ The one discipline that makes “everything with everything” useful rather tha
 | **Semantic graph** | Every edge is a verb with a named inverse; meaning is in connectivity, not in properties | One level: the nodes are atoms |
 | **Ontology** | The agreed vocabulary of node types and verbs | One ontology per domain; joining two by merging them is a project that usually fails |
 | **Fractal Semantic Graph** | Every node opens into a semantic graph with its own ontology, at every altitude, down to the word; ontologies are joined by declared edges, never merged: an ontology of ontologies | Where somebody has not yet named the edges between two worlds. That is a gap, and it is listed below |
+
+## Where the idea was worked first
+
+The term has a vault of its own, and it was published here before this page existed: [**VoiceDebrief · Fractal Semantic Graphs**](../vaults/voice-debrief/index.md), vault `k6xy9z4d`, row 11 of the gallery. Four apps in one vault, built in the open across two days in August 2026 against a pack of 34 architecture briefs, lifting meaning out of text (fictional voice notes first, then Article 9(2) of the EU AI Act) into typed semantic graphs. The zoom diagram at the top of this page uses Article 9(2) because that vault works the provision to exhaustion: legal annotation, altitudes, a concept graph, source-tethered tasks, a bow tie, and a cyber instantiation joined to the law node-to-node.
+
+Its `concepts/principles.md` is a register of fifteen principles, each with its origin and the date it was corrected, and several of them are the definition on this page in its first form:
+
+| Principle | In the vault's words | On this page |
+|---|---|---|
+| **P4 · Everything is a node** | “If it's mentioned, it can be focused: words, compounds, definitions, external standards, articles, actors, extracted facts.” | The smallest node is a word |
+| **P6 · Fractal descent** | “Every node opens its own neighbourhood; recursion happens on demand, not up front. Depth follows attention.” | Granularity is chosen per context |
+| **P7 · The junction rule** | “Two texts never link paragraph-to-paragraph. Each is lifted into its own nodes, and the graphs join node-to-node through the intermediate layer. This is what makes company graphs and regulation graphs composable.” | The jump between worlds, and why ontologies are joined rather than merged |
+| **P11 · Altitude** | “Each rung is the same meaning at less resolution, and compression is lossless so long as the links hold.” | The altitude you happen to be looking from |
+| **P15 · Structure points down; meaning radiates out** | “Taxonomy is merely the shape; ontology is the content.” | The meaning of a node is supplied by the ontology at its altitude |
+
+The leading brief in that vault, dated 6 August 2026, says the thing this page took five revisions to say: *“Paragraph, then section, then document, then a set of documents. Each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested.”* And the reason to do it at all: *“the interesting object is not any one of their graphs but the edges between them. That connection is where meaning lives.”* The vault's notation spec adds two laws worth carrying everywhere: every statement must read aloud as a grammatical sentence and decompose into triples with no residue, and every statement must link to the span it compresses, because *“claims from memory are not allowed anywhere in this system.”*
+
+The same vault is also mirrored in the open as a git repository, [VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs](https://github.com/VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs), plaintext tree and encrypted store side by side. Checked on 20 September 2026: the repository's 90 content files match the vault's HEAD file for file, and both last moved on 10 August.
 
 ## How far down does the graph go?
 
@@ -2322,6 +2340,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 |---|---|---|---|
 | Law | Regulation Graph `73heuprz` | 207 files · 14.9 MB | [regulation-graph](../vaults/regulation-graph/index.md) |
 | Law + its interpretation | Standards Atlas GDPR `4zv4bvmu` | 116 files · 6.3 MB | [standards-atlas-gdpr](../vaults/standards-atlas-gdpr/index.md) |
+| The lift: text → typed claims → provision | VoiceDebrief · Fractal Semantic Graphs `k6xy9z4d` | 92 files · 1.2 MB | [voice-debrief](../vaults/voice-debrief/index.md) |
 | Standard · evidence · policy | AIUC-1 conformance layer `2wzct4k7` | 649 files · 43 MB | [aiuc-1-conformance](../vaults/aiuc-1-conformance/index.md) |
 | Fact · risk · acceptance | Risk Graph Explorer `3simlnqe` | 33 files · 428 KB | [risk-graph-explorer](../vaults/risk-graph-explorer/index.md) |
 | Owner, at seven altitudes | Agentic Browser Isolation `0610gsp9` | 104 files · 2.4 MB | [agentic-browser-isolation](../vaults/agentic-browser-isolation/index.md) |
@@ -4800,7 +4819,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.95, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.96, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5163,7 +5182,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-123**site releases since 14 August**
+124**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**
@@ -5172,7 +5191,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-63**articles and release notes**
+64**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5882,7 +5901,7 @@ Two smaller items worth lifting: the four-word table (graph, semantic graph, ont
 
 **The screenshots.** Under `https://sgit.ai/demos/vaults/<slug>/images/`, taken from the vaults with their published read keys. The Standards Atlas set (`graph.webp`, `graph-alt1.webp`, `beyond.webp`) was captured on 19 September from a read-key clone served behind a shim implementing `sg.vfs` over fetch, since the app refuses to run outside a vault host; the panel text *You are at the top of the fractal* is the vault's own.
 
-**The vaults.** The evidence estate on graphs.sgit.ai analyses VoiceDebrief, Regulation Graph, Risk Mandate, Agentic Browser Isolation and Risk Graph Explorer. The ladder uses seven graph vaults; the four not yet on graphs.sgit.ai are marked.
+**The vaults.** The evidence estate on graphs.sgit.ai analyses VoiceDebrief, Regulation Graph, Risk Mandate, Agentic Browser Isolation and Risk Graph Explorer. The ladder uses seven graph vaults; the four not yet on graphs.sgit.ai are marked. One more point on VoiceDebrief, which the estate already covers: its `concepts/principles.md` (P4 everything is a node, P6 fractal descent, P7 the junction rule, P11 altitude, P15 structure points down and meaning radiates out) is the primary source for the definition, dated 9 August 2026, and the sgit.ai page now quotes it as such. The graphs.sgit.ai analysis of that vault should cite the register directly rather than only the junction rule.
 
 | Vault | Id | Altitude on the ladder | On graphs.sgit.ai | sgit.ai page |
 |---|---|---|---|---|
@@ -6853,11 +6872,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version — **v0.2.95**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version — **v0.2.96**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.2.95 | 2026-09-19 | this release | THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you more detail but no new meaning, because the only verb is contains'. The author's objection, in four parts: a single layer's ontology can have a very large number of verbs, each carrying meaning; as long as the links make sense inside that ontology, knowledge is gained one link at a time and it is massive; what the fractal architecture adds is the ability, on one of those links, to jump into another universe with its own rules and definitions; and what makes that fractal is that every such self-contained world is built from the same blocks — nodes, edges, ontologies, taxonomies, triplets. The test section is rewritten on his worked example, given as a voice memo: a risk register (its own rich verbs: gives_rise_to, owned_by, reports_to, mitigates, backs) whose incident fact jumps into security operations (alerts, signals, ATT&CK, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every logged request; possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Then the two consequences he drew: every connection followed should teach you something, even 'nothing to see here', with the observer or the query deciding whether value was added; and more granularity means a better representation of reality, chosen per context, with custom views on top being what makes it scale. Plus the upward direction (all of it one node in a bigger graph, graphs composed from graphs treated as a graph all the way up, the schema itself fractal in the Mandelbrot sense). A THIRD DIAGRAM draws the jump: four worlds in a row, each a small graph in its own vocabulary, joined by a jump link on one node each, a bracket above for the bigger graph. Its texts are measured against the viewBox like the other two. The graphs.sgit.ai brief's corresponding bullet and its diagram count are updated to match. |
+| v0.2.96 | 2026-09-20 | this release | THE VAULT NAMED AFTER THE CONCEPT WAS NOT ON THE CONCEPT'S PAGE. Asked whether the GitHub repository VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs was in the collection, the answer was yes: it is the plaintext mirror of vault k6xy9z4d, row 11, published on 22 August, and cloning both showed the repository's 90 content files matching the vault's HEAD file for file, both last moved on 10 August. What was missing was the reverse link. The Fractal Semantic Graphs page walked seven graph vaults and never cited the one that carries the name, the fifteen-principle register (P4 everything is a node, P6 fractal descent, P7 the junction rule, P11 altitude, P15 structure points down and meaning radiates out), the leading brief of 6 August whose sentence 'each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested' says in one line what this page took five revisions to reach, and the notation spec's two laws (read aloud as a sentence and decompose into triples; link to the span you compress, because claims from memory are not allowed). A new section, 'where the idea was worked first', quotes all of that with a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the open-them table. THE VAULT'S OWN PAGE gains a mirror section: the vault practises its own guide, plaintext tree and encrypted store side by side on GitHub, three commits all on 10 August; the consequences stated are that the content is public twice over (the read key adds history and the app, not access), that the repository is a snapshot which will drift if the vault moves, and that the encrypted store is safe in the open for the reason the guide gives. The page's line saying this site 'is built' the same way now says 'was built until v0.2.84'. Counts updated: the concept card and gallery note say eight graph vaults; the graphs.sgit.ai brief asks that site to cite the principles register directly. |
+| v0.2.95 | 2026-09-19 | git 2724d757 | THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you more detail but no new meaning, because the only verb is contains'. The author's objection, in four parts: a single layer's ontology can have a very large number of verbs, each carrying meaning; as long as the links make sense inside that ontology, knowledge is gained one link at a time and it is massive; what the fractal architecture adds is the ability, on one of those links, to jump into another universe with its own rules and definitions; and what makes that fractal is that every such self-contained world is built from the same blocks — nodes, edges, ontologies, taxonomies, triplets. The test section is rewritten on his worked example, given as a voice memo: a risk register (its own rich verbs: gives_rise_to, owned_by, reports_to, mitigates, backs) whose incident fact jumps into security operations (alerts, signals, ATT&CK, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every logged request; possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Then the two consequences he drew: every connection followed should teach you something, even 'nothing to see here', with the observer or the query deciding whether value was added; and more granularity means a better representation of reality, chosen per context, with custom views on top being what makes it scale. Plus the upward direction (all of it one node in a bigger graph, graphs composed from graphs treated as a graph all the way up, the schema itself fractal in the Mandelbrot sense). A THIRD DIAGRAM draws the jump: four worlds in a row, each a small graph in its own vocabulary, joined by a jump link on one node each, a bracket above for the bigger graph. Its texts are measured against the viewBox like the other two. The graphs.sgit.ai brief's corresponding bullet and its diagram count are updated to match. |
 | v0.2.94 | 2026-09-19 | git f3476af0 | A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small 'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having the fractal test backwards. The author asked for it to go, and for a proper brief instead, since the sgit.ai page is now the fullest worked application of that site's two theses. The paragraph is gone; /docs/briefs/graphs-sgit-ai-fractal-semantic-graphs/ is the brief. It quotes the boundaries page's four-row table and shows that the page contradicts itself: the Recursion row says 'identical rules, no new format, no special case' while the author's own quote two paragraphs below says an article may be 'so meaty that it requires its own ontology and taxonomy, and that's the power of the fractal element'. Replacement text for the table, the test and llms.txt's sentence nine separates grammar (invariant) from ontology (free). Then: adopt the name and its lineage (already item 1 of their review r001, state 'commented'); lift the precise form of meaning-through-connectivity for the fractal case, 'the deeper you go the more you learn', and 'nobody is forced to conform'; six places to link the page; the two SVG diagrams and the Standards Atlas screenshots to reuse; the four graph vaults their evidence estate does not yet analyse (Standards Atlas GDPR, AIUC-1 conformance, Licence to Operate, ThreatModCon) and the AIUC-1 crosswalk join as a second cross-vault finding; three small corrections found on the way (5 versus 7 stakeholder altitudes in their llms.txt, sentinel.sgit.ai still named where sg-sentinel is the host, the vault count); a section on what not to change; and the prompt to paste, verbatim, at the end. No em-dashes in the brief. |
 | v0.2.93 | 2026-09-19 | git 96afb763 | The fractal graphs page description, which the markdown twin prints as its blockquote, had one em-dash left; a colon now. The ' — sgit.ai' suffix on every page title is a site-wide convention and stays until the site-wide pass is decided. |
 | v0.2.92 | 2026-09-19 | git 44f819a2 | NO EM-DASHES ON THE FRACTAL GRAPHS PAGE. The author asked for the dash to go, since a good many readers now find it off-putting. Eighty-two of them on forty-six lines, each rewritten by hand rather than by substitution: a parenthetical pair becomes commas or brackets, a dash before an explanation becomes a colon, a dash before a new thought becomes a full stop, the section headings go 'Altitude 0: the law', the diagram headers take a colon, and the ladder's header takes a middle dot. The one table cell that was a bare dash now says 'not measured'. Site-wide there are about 3,300 more across 212 source files; that pass is a separate decision and has not been made here. |
@@ -7775,6 +7795,20 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 What changed on sgit and on this site, as it happens — one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+## 2026-09-20
+
+### [The vault named after the concept was not on the concept's page](#the-vault-named-after-the-concept) [v0.2.96](../admin/versions.md)
+
+graphsvaultsmethod
+
+Asked whether the GitHub repository `VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs` was in the collection, the answer was yes. It is the plaintext mirror of [vault #11](../demos/vaults/voice-debrief/index.md), `k6xy9z4d`, published here on 22 August. Cloning both and comparing showed the repository's 90 content files matching the vault's HEAD file for file, and both last moved on 10 August.
+
+What was missing was the reverse link. [Fractal Semantic Graphs](../demos/fractal-graphs/index.md) walked seven graph vaults and never cited the one that carries the name. That vault holds the fifteen-principle register the definition comes from (P4 *everything is a node*, P6 *fractal descent*, P7 *the junction rule*, P11 *altitude*, P15 *structure points down; meaning radiates out*), the leading brief of 6 August whose one sentence says what the page took five revisions to reach (*"each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested"*), and a notation spec with two laws worth carrying everywhere: every statement must read aloud as a sentence and decompose into triples, and every statement must link to the span it compresses, because *"claims from memory are not allowed anywhere in this system."*
+
+A new section, **where the idea was worked first**, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.
+
+**The vault's own page gains a mirror section.** The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, `local/` gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.
 
 ## 2026-09-19
 
@@ -9359,7 +9393,7 @@ Both surfaces open automatically below. You can also [**open the app in its own 
 | Two surfaces, one vault | `_page.json` gives the vault browser a themed landing page (hero, dark mode, accent `#d9a63f`); `app.json` makes the Article 9 app auto-open. The same objects serve a document reader and an application without either being converted into the other |
 | The app-folder pattern over the bridge | from part 4 on, each app is a slim `index.html` shell plus `app/styles.css` and `app/app.js`, pulled in at runtime through `sg.loadCss` / `sg.loadJs` — the vault's own files loaded over the bridge rather than inlined into one unreadable page |
 | Licensing declared inside the vault | `LICENSE` and `NOTICE` dual-license the contents: **Apache 2.0** for anything executable, **CC BY 4.0** for the written packs — with the tie-break stated ("the more permissive reading applies"). Terms travel with the objects, not with the page that links to them |
-| Git-compatible by construction | `.gitattributes` and `.gitignore` ship inside the vault, and `guides/publish-sgit-vault-to-github.md` documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is [how this website is built](../../../case-studies/one-tree-two-remotes.md) |
+| Git-compatible by construction | `.gitattributes` and `.gitignore` ship inside the vault, and `guides/publish-sgit-vault-to-github.md` documents the round trip — trust-boundary analysis, the Secrets pattern, and a restore drill. The same tree can be an sgit vault and a git repository, which is [how this website was built until v0.2.84](../../../case-studies/one-tree-two-remotes.md), and how this vault is published: see the mirror note below |
 | The source travels with the work | `briefings/` is 50 files of everything this was built against, and `concepts/` carries a principles register (P1–P15, each with origin, implementation and evolution) plus a notation spec. The reasoning is *in* the artefact — the difference between a demo and a record |
 
 ## What is going on here, step by step
@@ -9483,6 +9517,14 @@ Two hits were ruled out by reading them, and both are worth naming because a cle
 On personal data: parts 1–3 are built on a corpus the README states is **fictional** — invented companies, invented voice notes — and the part 4 cyber instantiation is likewise a fictional provider and grid operator. The only real-world entities named are public ones: Regulation (EU) 2024/1689, ISO 31000, ISO/IEC 23894.
 
 The rule that goes with any published key applies here too: **revocation is not retroactive.** Anybody who fetches these objects keeps them, and rotating the key protects future commits only.
+
+## The vault is also on GitHub, in the open
+
+This vault practises what its own guide preaches. [VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs](https://github.com/VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs) is a public git repository holding the plaintext working tree and the encrypted `.sg_vault/bare/` store side by side, with `.sg_vault/local/` gitignored, exactly the layout `guides/publish-sgit-vault-to-github.md` describes. Checked on 20 September 2026 by cloning both: the repository's 90 content files match the vault's HEAD file for file; the repository has three commits, all on 10 August 2026, the day of the vault's last commit; and it has not moved since.
+
+Three consequences for a reader. The content is **public twice over**: anyone can read every file on GitHub without the read key, so the key on this page adds the vault's history and its app, not access. The repository is a **snapshot, not a live mirror**: if the vault moves and the repository does not, the two will drift, which is the failure this site's own mirror had before it was [retired](../../../case-studies/one-tree-two-remotes.md#stopped). And the encrypted store in the repository is safe for the reason the guide gives: everything in `bare/` is protected by the vault key, which was never committed, so git exposure of the store equals server exposure, which the zero-knowledge model already accepts.
+
+The concept this vault is named after now has a page of its own on this site, [Fractal Semantic Graphs](../../fractal-graphs/index.md), which cites this vault's principles register as the definition in its first form.
 
 ## Derived facts
 
