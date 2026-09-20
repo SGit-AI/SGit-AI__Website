@@ -511,6 +511,12 @@
     "desc": "How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED."
   },
   {
+    "path": "docs/credentials.html",
+    "section": "docs",
+    "title": "Vault credentials: what each one can do, and what its prefix declares — sgit.ai",
+    "desc": "Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical."
+  },
+  {
     "path": "docs/pki.html",
     "section": "docs",
     "title": "Keys, signatures and encrypting to someone else — sgit.ai",

@@ -159,7 +159,15 @@ const BANNED = [/dolt/i, /simple[\s_-]token/i, /word-word/i, /alpha(?![a-z])/i, 
   // three times, each time writing the prefix in prose, which is what prompted the precision.)
   // Belt and braces: the bare passphrase:vault_id shape above catches the body independently.
   // Its read-only sibling sgit_rk1_ is deliberately NOT banned: we publish those on purpose.
-  /sgit_vk1_[A-Za-z0-9]/];
+  /sgit_vk1_[A-Za-z0-9]/,
+  // The current-generation private prefixes, same trailing-character rule. sgit_private_vault_ is
+  // a WRITE credential and a real leak. sgit_private_read_ is read-only and leaks no capability,
+  // but it DECLARES a key meant to be kept secret: publishing one says the opposite of what we are
+  // doing, and on 20 Sep 2026 an agent correctly refused to open two of this site's own vaults for
+  // exactly that reason. A read key published on purpose carries sgit_public_read_, which is not
+  // banned. See /docs/credentials.html.
+  /sgit_private_vault_[A-Za-z0-9]/,
+  /sgit_private_read_[A-Za-z0-9]/];
 
 // 5b. the passphrase tripwire, done safely: read each secret from the gitignored admin/local/
 // tier (never present one in this tracked file) and scan the tree for it. Skips when the folder

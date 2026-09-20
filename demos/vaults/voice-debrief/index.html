@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.97</a>
+  <a class="ver" href="../../../admin/versions.html" title="Site release history">v0.2.98</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -38,6 +38,7 @@
       <a class="sl" href="../../../docs/guidance/index.html">Vault guidance</a>
       <a class="sl" href="../../../try/index.html">Try it in the browser</a>
       <a class="sl" href="../../../api/index.html">HTTP API</a>
+      <a class="sl" href="../../../docs/credentials.html">Credentials</a>
       <a class="sl" href="../../../docs/vault/index.html">SG/Vault</a>
       <a class="sl" href="../../../deploy/index.html">Deploy</a>
       <a class="sl" href="../../../skills/index.html">Skills</a>
@@ -93,7 +94,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.97 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/demos/vaults/llms.txt</span><span class="llmschip-m">v0.2.98 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / VoiceDebrief</p>
   <h1>VoiceDebrief · Fractal Semantic Graphs</h1>
@@ -245,7 +246,7 @@
 
   <h2>The audit, honestly</h2>
   <p>Every vault is audited before its read key appears here. This one arrived as a <b>vault key</b> — the legacy <code>passphrase:vault_id</code> form with no prefix to give it away — and was classified as a write credential by <code>admin/build/check_credential.py</code> before it touched anything. The vault key was stored in the gitignored tier, the read key derived from it one-way, and only the derived key appears on this page. That derivation cannot be reversed.</p>
-  <p>The content scan is <b>clean on credentials</b>: no vault key inside the vault's own files, no <code>sgit_vk1_</code> or <code>sgit_private_read_</code> string, no API keys, tokens, <code>delete_auth</code> or <code>append_token</code> values, no private-key blocks, and no <code>.vault/</code> operational bookkeeping.</p>
+  <p>The content scan is <b>clean on credentials</b>: no vault key inside the vault's own files, no credential under any <code>sgit_private_</code> prefix, which is the one scanner rule that covers every secret form, no API keys, tokens, <code>delete_auth</code> or <code>append_token</code> values, no private-key blocks, and no <code>.vault/</code> operational bookkeeping.</p>
   <p>Two hits were ruled out by reading them, and both are worth naming because a clean sheet asserted is worth less than a finding explained. A 2FA worked example contains the sentence <em>"Leaked or reused passwords can be tried at scale"</em> — prose about passwords in a risk chain, matched by a pattern looking for assignments. And <code>guides/publish-sgit-vault-to-github.md</code> contains the literal string <code>BEGIN PRIVATE KEY</code>, in a table of the things its <code>.gitignore</code> must exclude. That is the same shape as <a href="../publishing.html">a mistake this site made itself</a>: a tripwire firing on the exact string a document needs in order to teach people to recognise it.</p>
   <p>On personal data: parts 1–3 are built on a corpus the README states is <b>fictional</b> — invented companies, invented voice notes — and the part 4 cyber instantiation is likewise a fictional provider and grid operator. The only real-world entities named are public ones: Regulation (EU) 2024/1689, ISO 31000, ISO/IEC 23894.</p>
   <p>The rule that goes with any published key applies here too: <b>revocation is not retroactive.</b> Anybody who fetches these objects keeps them, and rotating the key protects future commits only.</p>
@@ -260,7 +261,7 @@
 </main>
 <script>
 (function () {
-  fetch('../../../assets/shots.js?v=v0.2.97')
+  fetch('../../../assets/shots.js?v=v0.2.98')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (t) { (0, eval)(t); })
     .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -272,7 +273,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../../admin/versions.html">v0.2.97</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../../admin/versions.html">v0.2.98</a> · <a href="../../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -314,7 +315,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.97';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.98';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

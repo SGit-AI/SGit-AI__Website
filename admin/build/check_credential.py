@@ -14,8 +14,10 @@ depended on someone looking. This makes it a check.
 
 Two mechanisms, and they cover different eras:
 
-  * PREFIX     new vaults emit sgit_vk1_ (write) and sgit_rk1_ (read). Unambiguous,
-               and the reason the prefixes exist.
+  * PREFIX     a credential declares itself: sgit_private_vault_ (write),
+               sgit_private_read_ (read, secret), sgit_public_read_ (read, published),
+               plus legacy sgit_vk1_/sgit_rk1_. Classification is by DECLARATION, never
+               by shape. See /docs/credentials.html.
   * SHAPE      legacy credentials carry no prefix and will circulate for years. A
                read key is 64 hex characters; anything else before the colon is a
                passphrase, which means a WRITE credential.
@@ -32,8 +34,11 @@ import re, sys
 # sgit_private_vault_/sgit_private_read_ pair that the CLI itself prints on `init` and
 # `clone`. Missing the latter classified a perfectly good read key as "unrecognised",
 # which is fail-closed but sends the operator looking for a way around the check.
-WRITE_PREFIXES = ('sgit_vk1_', 'sgit_private_vault_')
-READ_PREFIXES  = ('sgit_rk1_', 'sgit_private_read_')
+WRITE_PREFIXES        = ('sgit_vk1_', 'sgit_private_vault_')
+READ_PUBLIC_PREFIXES  = ('sgit_public_read_',)              # read-only, DECLARED public
+READ_LEGACY_PREFIXES  = ('sgit_rk1_',)                      # read-only, intent unstated
+READ_PRIVATE_PREFIXES = ('sgit_private_read_',)             # read-only, DECLARED secret
+READ_PREFIXES         = READ_PUBLIC_PREFIXES + READ_LEGACY_PREFIXES + READ_PRIVATE_PREFIXES
 
 RE_READ_KEY_BARE = re.compile(r'^[a-f0-9]{64}:[a-z0-9]{4,24}$')
 RE_READ_KEY_ONLY = re.compile(r'^[a-f0-9]{64}$')
@@ -58,11 +63,24 @@ class Credential_Check:
         for prefix in READ_PREFIXES:
             if s.startswith(prefix):
                 body = s[len(prefix):]
-                if RE_READ_KEY_BARE.match(body) or RE_READ_KEY_ONLY.match(body):
-                    return 'read key (prefixed)', True, 'read-only by construction — safe to publish'
-                return ('prefixed but malformed', False,
-                        'carries the read prefix but does not match <64-hex>[:<vault_id>] — do not '
-                        'publish until it is explained')
+                if not (RE_READ_KEY_BARE.match(body) or RE_READ_KEY_ONLY.match(body)):
+                    return ('prefixed but malformed', False,
+                            'carries a read prefix but does not match <64-hex>[:<vault_id>] — do not '
+                            'publish until it is explained')
+                if prefix in READ_PRIVATE_PREFIXES:
+                    # Read-only, so publishing it leaks no capability. Refused anyway: the label
+                    # declares a key meant to be kept secret, and publishing one under that label
+                    # is how an agent came to refuse two of this site's own vaults on 20 Sep 2026.
+                    return ('read key (declared PRIVATE)', False,
+                            'read-only, so nothing can be written with it — but the '
+                            'sgit_private_read prefix declares a key meant to be KEPT SECRET. '
+                            'Re-label it sgit_public_read_ (same bytes) and re-run this check')
+                if prefix in READ_PUBLIC_PREFIXES:
+                    return ('read key (public, prefixed)', True,
+                            'read-only and declared public — safe to publish, and this is the form to use')
+                return ('read key (legacy prefix)', True,
+                        'read-only by construction — safe to publish. Prefer sgit_public_read_ on new '
+                        'pages, which also declares the intent')
 
         if RE_READ_KEY_BARE.match(s) or RE_READ_KEY_ONLY.match(s):
             return 'read key (bare)', True, 'read-only by construction — safe to publish'

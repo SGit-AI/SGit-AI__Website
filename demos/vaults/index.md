@@ -2,7 +2,7 @@
 
 > Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential — no account, no write capability.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **Publishing one of your own?** [**The method is written down**](publishing.md) — the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
 
-**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them.
+**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them. A prefix also declares *intent*: `sgit_public_read_` is a read key meant to be published, which is what every row below carries or is being moved to. [**What each credential can do, and what its prefix declares →**](../../docs/credentials.md)
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 

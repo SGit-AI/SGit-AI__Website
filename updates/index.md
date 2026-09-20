@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,6 +25,26 @@ What was missing was the reverse link. [Fractal Semantic Graphs](../demos/fracta
 A new section, **where the idea was worked first**, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.
 
 **The vault's own page gains a mirror section.** The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, `local/` gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.
+
+### [We published read keys under a prefix that declares them secret, and an agent refused to open them](#the-prefix-said-private) [v0.2.98](../admin/versions.md)
+
+keyssecuritydocsagents
+
+An agent asked to inspect the two AIUC-1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction.
+
+**It was right. Our label was wrong.** The sgit CLI defines three current prefixes and states which is which in its own source: `sgit_private_vault_` is a write credential, `sgit_private_read_` is read-only and *kept secret*, and `sgit_public_read_` is read-only and *deliberately published*. Seven published credentials across [the AIUC-1 conformance layer](../demos/vaults/aiuc-1-conformance/index.md) and [the AIUC-1 catalogue](../demos/vaults/aiuc-1-graph/index.md) carried the middle one. They now carry the right one, with a dated line on each page saying what changed and that the bytes, the access and the vault are identical.
+
+**Verified before relabelling**, on sgit-ai v0.16.2: the bare form, the legacy prefix, the private read prefix and the public read prefix all clone the same 699-file vault; an all-zeros key under the same prefix produces nothing; and the SG/Vault web loader strips all five prefixes in its own format module.
+
+## The structural fix matters more than the seven strings
+
+The validator now **bans both current private prefixes in tracked files**, using the same trailing-character rule the write-key tripwire already used: documentation can print a prefix as a name, a real key fails the build. And `check_credential.py` learned the public prefix and now **refuses** the private read one. That credential is read-only and leaks no capability, and it is still not publishable, because the label says the opposite of what publishing it does.
+
+## The page that was missing
+
+[Vault credentials](../docs/credentials.md) explains this for the first time: the two capabilities and the one-way derivation between them, drawn; the five prefixes in a table with publish-or-not on each row; why classification is by declaration and never by shape, which is the CLI's own hard-won lesson; why the word matters when the bytes do not; and what a read key can and cannot do, including that revocation is never retroactive.
+
+**Not done, and a decision to make:** 99 published keys across 27 pages still carry the legacy `sgit_rk1_` prefix. That one is neutral rather than wrong, so normalising it is a consistency call, not a correction.
 
 ### [The article that introduces Fractal Semantic Graphs, published here with its pictures](#introducing-fsg-article) [v0.2.97](../admin/versions.md)
 

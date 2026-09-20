@@ -2,7 +2,7 @@
 
 > Four apps in one encrypted vault: lifting meaning from fictional voice notes to Article 9(2) of the EU AI Act into typed semantic graphs — with read scoped to one folder, write nowhere, and the briefings it was built from shipped beside the work.
 
-*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/voice-debrief/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -150,7 +150,7 @@ The vault-shaped part is that all of this is **one credential**. The apps, the s
 
 Every vault is audited before its read key appears here. This one arrived as a **vault key** — the legacy `passphrase:vault_id` form with no prefix to give it away — and was classified as a write credential by `admin/build/check_credential.py` before it touched anything. The vault key was stored in the gitignored tier, the read key derived from it one-way, and only the derived key appears on this page. That derivation cannot be reversed.
 
-The content scan is **clean on credentials**: no vault key inside the vault's own files, no `sgit_vk1_` or `sgit_private_read_` string, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks, and no `.vault/` operational bookkeeping.
+The content scan is **clean on credentials**: no vault key inside the vault's own files, no credential under any `sgit_private_` prefix, which is the one scanner rule that covers every secret form, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks, and no `.vault/` operational bookkeeping.
 
 Two hits were ruled out by reading them, and both are worth naming because a clean sheet asserted is worth less than a finding explained. A 2FA worked example contains the sentence *"Leaked or reused passwords can be tried at scale"* — prose about passwords in a risk chain, matched by a pattern looking for assignments. And `guides/publish-sgit-vault-to-github.md` contains the literal string `BEGIN PRIVATE KEY`, in a table of the things its `.gitignore` must exclude. That is the same shape as [a mistake this site made itself](../publishing.md): a tripwire firing on the exact string a document needs in order to teach people to recognise it.
 

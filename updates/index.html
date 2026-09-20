@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.97</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.2.98</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
   <div class="ni ni-has">
@@ -38,6 +38,7 @@
       <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
       <a class="sl" href="../try/index.html">Try it in the browser</a>
       <a class="sl" href="../api/index.html">HTTP API</a>
+      <a class="sl" href="../docs/credentials.html">Credentials</a>
       <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
       <a class="sl" href="../deploy/index.html">Deploy</a>
       <a class="sl" href="../skills/index.html">Skills</a>
@@ -93,7 +94,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.97 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.2.98 &middot; 20 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Updates</h1>
   <p class="lead">What changed on sgit and on this site, as it happens — one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -106,6 +107,18 @@
 <p>What was missing was the reverse link. <a href="../demos/fractal-graphs/index.html">Fractal Semantic Graphs</a> walked seven graph vaults and never cited the one that carries the name. That vault holds the fifteen-principle register the definition comes from (P4 <em>everything is a node</em>, P6 <em>fractal descent</em>, P7 <em>the junction rule</em>, P11 <em>altitude</em>, P15 <em>structure points down; meaning radiates out</em>), the leading brief of 6 August whose one sentence says what the page took five revisions to reach (<em>"each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested"</em>), and a notation spec with two laws worth carrying everywhere: every statement must read aloud as a sentence and decompose into triples, and every statement must link to the span it compresses, because <em>"claims from memory are not allowed anywhere in this system."</em></p>
 <p>A new section, <b>where the idea was worked first</b>, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.</p>
 <p><b>The vault's own page gains a mirror section.</b> The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, <code>local/</code> gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.</p>
+  </article>
+  <article class="upd" id="the-prefix-said-private">
+    <h3><a href="#the-prefix-said-private">We published read keys under a prefix that declares them secret, and an agent refused to open them</a> <a class="upd-ver" href="../admin/versions.html">v0.2.98</a></h3>
+    <p class="chips"><span class="chip">keys</span><span class="chip">security</span><span class="chip">docs</span><span class="chip">agents</span></p>
+<p>An agent asked to inspect the two AIUC-1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction.</p>
+<p><b>It was right. Our label was wrong.</b> The sgit CLI defines three current prefixes and states which is which in its own source: <code>sgit_private_vault_</code> is a write credential, <code>sgit_private_read_</code> is read-only and <em>kept secret</em>, and <code>sgit_public_read_</code> is read-only and <em>deliberately published</em>. Seven published credentials across <a href="../demos/vaults/aiuc-1-conformance/index.html">the AIUC-1 conformance layer</a> and <a href="../demos/vaults/aiuc-1-graph/index.html">the AIUC-1 catalogue</a> carried the middle one. They now carry the right one, with a dated line on each page saying what changed and that the bytes, the access and the vault are identical.</p>
+<p><b>Verified before relabelling</b>, on sgit-ai v0.16.2: the bare form, the legacy prefix, the private read prefix and the public read prefix all clone the same 699-file vault; an all-zeros key under the same prefix produces nothing; and the SG/Vault web loader strips all five prefixes in its own format module.</p>
+<h2>The structural fix matters more than the seven strings</h2>
+<p>The validator now <b>bans both current private prefixes in tracked files</b>, using the same trailing-character rule the write-key tripwire already used: documentation can print a prefix as a name, a real key fails the build. And <code>check_credential.py</code> learned the public prefix and now <b>refuses</b> the private read one. That credential is read-only and leaks no capability, and it is still not publishable, because the label says the opposite of what publishing it does.</p>
+<h2>The page that was missing</h2>
+<p><a href="../docs/credentials.html">Vault credentials</a> explains this for the first time: the two capabilities and the one-way derivation between them, drawn; the five prefixes in a table with publish-or-not on each row; why classification is by declaration and never by shape, which is the CLI's own hard-won lesson; why the word matters when the bytes do not; and what a read key can and cannot do, including that revocation is never retroactive.</p>
+<p><b>Not done, and a decision to make:</b> 99 published keys across 27 pages still carry the legacy <code>sgit_rk1_</code> prefix. That one is neutral rather than wrong, so normalising it is a consistency call, not a correction.</p>
   </article>
   <article class="upd" id="introducing-fsg-article">
     <h3><a href="#introducing-fsg-article">The article that introduces Fractal Semantic Graphs, published here with its pictures</a> <a class="upd-ver" href="../admin/versions.html">v0.2.97</a></h3>
@@ -876,7 +889,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults — clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys — every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.2.97</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.2.98</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown — for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -918,7 +931,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.97';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.2.98';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

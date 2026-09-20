@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.97'
+SITE_VERSION = 'v0.2.98'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,35 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.97', '2026-09-20', 'this release',
+    ('v0.2.98', '2026-09-20', 'this release',
+     "WE PUBLISHED READ KEYS UNDER A PREFIX THAT DECLARES THEM SECRET, AND AN AGENT CORRECTLY "
+     "REFUSED TO OPEN THEM. The author sent a screenshot: another agent, asked to inspect the two "
+     "AIUC-1 vaults, declined because their credentials were labelled private read, and said it "
+     "would not work around the restriction. It was right and our label was wrong. The CLI defines "
+     "three current prefixes and says which is which in its own source: the private vault one is a "
+     "WRITE credential, the private read one is read-only and KEPT SECRET, and the public read one "
+     "is read-only and DELIBERATELY PUBLISHED. Seven published credentials across the two AIUC-1 "
+     "pages carried the middle one. Relabelled to the public form, with a dated line on each page "
+     "saying what changed and that the bytes, the access and the vault are identical. VERIFIED "
+     "BEFORE RELABELLING, on sgit-ai v0.16.2: bare, legacy rk1, private read and public read all "
+     "clone the same 699-file vault, an all-zeros key under the same prefix produces nothing, and "
+     "the SG/Vault web loader strips all five prefixes in its own format module. THE STRUCTURAL "
+     "FIX MATTERS MORE THAN THE SEVEN STRINGS. The validator now bans both current private "
+     "prefixes in tracked files, using the same trailing-character rule the write-key tripwire "
+     "already used, so documentation can still print a prefix as a NAME while a real key fails the "
+     "build. check_credential.py learned the public prefix (publishable, and the form to use) and "
+     "now REFUSES the private read one: read-only, leaks no capability, and still not publishable, "
+     "because the label says the opposite of what publishing it does. NEW PAGE /docs/credentials/ "
+     "explains the whole thing for the first time: two capabilities with a one-way derivation "
+     "between them drawn as a diagram, the five prefixes in a table with publish-or-not per row, "
+     "classification by declaration and never by shape (the CLI's own lesson: guessing from shape "
+     "is what once misrouted a 64-hex passphrase to a read-only clone), why the word matters when "
+     "the bytes do not, and what a read key can and cannot do including that revocation is never "
+     "retroactive. Linked from the docs index, the nav, the gallery intake note and the publishing "
+     "method. NOT DONE, AND A DECISION FOR THE AUTHOR: 99 published keys across 27 pages still "
+     "carry the legacy rk1 prefix, which is neutral rather than wrong.",
+     ),
+    ('v0.2.97', '2026-09-20', 'git d460cd58',
      "THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had "
      "another agent write 'Fractal Semantic Graphs: everything connects to everything, and nobody "
      "has to share a schema' from the sgit.ai page, for LinkedIn, and asked whether this site had "
@@ -1790,6 +1818,7 @@ NAV = [
         ('docs',   'Vault guidance',  'docs/guidance/index.html'),
         ('try',    'Try it in the browser', 'try/index.html'),
         ('api',    'HTTP API',        'api/index.html'),
+        ('docs',   'Credentials',     'docs/credentials.html'),
         ('vault',  'SG/Vault',        'docs/vault/index.html'),
         ('deploy', 'Deploy',          'deploy/index.html'),
         ('skills', 'Skills',          'skills/index.html'),
@@ -2318,6 +2347,7 @@ LLMS_FACTS = {
     'docs/sgit-for-git-users.html': 'The three differences: no staging area; private clone branch per machine or agent with explicit publishing; the vault key is address + credential + encryption key in one string.',
     'docs/limitations.html':        'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
     'docs/two-branch-model.html':   'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',
+    'docs/credentials.html': 'TWO capabilities: a vault key (read+write) and a read key (read only, derived one-way, cannot be reversed). FIVE prefixes DECLARE which you hold: sgit_private_vault_ (write, never publish), sgit_private_read_ (read, keep secret), sgit_public_read_ (read, deliberately published — use this for open vaults), plus legacy sgit_vk1_/sgit_rk1_. The prefix is a DECLARATION, not crypto: strip it and the bytes are identical, and every form clones the same vault. Classification is by declaration, never by shape. Revocation is NOT retroactive.',
     'security.html':                'The server sees the vault ID, object sizes and request timing — nothing else. Sizes and timing are an acknowledged side channel.',
     'docs/agents.html':             'sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.',
     'docs/quickstart.html':         'sgit create <name> then commit/push; the vault key is printed once and there is no reset.',

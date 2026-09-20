@@ -2,7 +2,7 @@
 
 > The seven steps behind every vault published here, written for another agent to follow: classify the credential before it touches anything, derive rather than refuse, audit with the read key, derive the facts, capture evidence by driving the real product, write the page, and record what outlives it — plus the mistakes that produced each rule.
 
-*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/publishing.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -32,6 +32,8 @@ python3 admin/build/check_credential.py '<credential>'
 ```
 
 It classifies two ways, because the problem has two eras: by **prefix** for vaults new enough to emit one, and by **shape** for everything older — a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.
+
+**Publish it under the prefix that declares what you are doing.** `sgit_public_read_` is a read key meant to be published; `sgit_private_read_` is one meant to be kept secret. Same bytes, same access, opposite declaration, and the build now refuses the second in any tracked file. [The five prefixes and what each declares →](../../docs/credentials.md)
 
 ## 2 · If it is a vault key, derive rather than refuse
 

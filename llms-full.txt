@@ -1,7 +1,7 @@
 # sgit.ai — complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.2.97). Nothing here needs a second request. Individual pages live at the paths
+> (v0.2.98). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-125site releases, each verified live before it was called done
+126site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -378,7 +378,7 @@ Every vault whose read key this site has deliberately published — with, for ea
 
 **Publishing one of your own?** [**The method is written down**](publishing.md) — the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
 
-**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them.
+**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key — a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape** — a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them. A prefix also declares *intent*: `sgit_public_read_` is a read key meant to be published, which is what every row below carries or is being moved to. [**What each credential can do, and what its prefix declares →**](../../docs/credentials.md)
 
 **The two rules, applied to every row.** Read keys yes, vault keys never — a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
 
@@ -488,6 +488,8 @@ python3 admin/build/check_credential.py '<credential>'
 ```
 
 It classifies two ways, because the problem has two eras: by **prefix** for vaults new enough to emit one, and by **shape** for everything older — a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.
+
+**Publish it under the prefix that declares what you are doing.** `sgit_public_read_` is a read key meant to be published; `sgit_private_read_` is one meant to be kept secret. Same bytes, same access, opposite declaration, and the build now refuses the second in any tracked file. [The five prefixes and what each declares →](../../docs/credentials.md)
 
 ## 2 · If it is a vault key, derive rather than refuse
 
@@ -4004,7 +4006,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Concepts
 
-[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md) [Keys and signaturesEncrypting to someone who holds no vault key](pki.md)
+[sgit for git usersThe Rosetta stone: same verbs, three differences](sgit-for-git-users.md) [The two-branch modelClone branches, named branches, and why](two-branch-model.md) [The security modelWhat the server sees; the crypto stack](../security/index.md) [Vault credentialsRead keys, vault keys, and what each prefix declares](credentials.md) [Keys and signaturesEncrypting to someone who holds no vault key](pki.md)
 
 ## Messaging & the API
 
@@ -4819,7 +4821,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.97, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.2.98, rendered from a clone the release pulled first. For the live board, open the vault — the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5182,7 +5184,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-125**site releases since 14 August**
+126**site releases since 14 August**
 each verified live before it was called done
 
 30**vaults published with a public read key**
@@ -5191,7 +5193,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-66**articles and release notes**
+67**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -6872,11 +6874,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version — **v0.2.97**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version — **v0.2.98**, shown in the nav of every page — increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.2.97 | 2026-09-20 | this release | THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had another agent write 'Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema' from the sgit.ai page, for LinkedIn, and asked whether this site had a place to publish it with the missing images and infographics. It does: /articles/. The text is published as written, in the author's voice, with one italic line added at the top naming it the canonical copy and pointing at the page and the VoiceDebrief vault, and one at the bottom on reuse. Nine figures placed where the prose earns them: the three inline SVG diagrams rendered to images at two times scale (the zoom, the jump, the ladder), the GDPR atlas at altitude zero with its own 'you are at the top of the fractal' panel, the Regulation Graph landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an unchanged article, which the article calls its favourite picture in the set. The bare URLs in 'Open them' became links, with the VoiceDebrief vault added to the list. No em-dashes; the article had none and none were introduced. |
+| v0.2.98 | 2026-09-20 | this release | WE PUBLISHED READ KEYS UNDER A PREFIX THAT DECLARES THEM SECRET, AND AN AGENT CORRECTLY REFUSED TO OPEN THEM. The author sent a screenshot: another agent, asked to inspect the two AIUC-1 vaults, declined because their credentials were labelled private read, and said it would not work around the restriction. It was right and our label was wrong. The CLI defines three current prefixes and says which is which in its own source: the private vault one is a WRITE credential, the private read one is read-only and KEPT SECRET, and the public read one is read-only and DELIBERATELY PUBLISHED. Seven published credentials across the two AIUC-1 pages carried the middle one. Relabelled to the public form, with a dated line on each page saying what changed and that the bytes, the access and the vault are identical. VERIFIED BEFORE RELABELLING, on sgit-ai v0.16.2: bare, legacy rk1, private read and public read all clone the same 699-file vault, an all-zeros key under the same prefix produces nothing, and the SG/Vault web loader strips all five prefixes in its own format module. THE STRUCTURAL FIX MATTERS MORE THAN THE SEVEN STRINGS. The validator now bans both current private prefixes in tracked files, using the same trailing-character rule the write-key tripwire already used, so documentation can still print a prefix as a NAME while a real key fails the build. check_credential.py learned the public prefix (publishable, and the form to use) and now REFUSES the private read one: read-only, leaks no capability, and still not publishable, because the label says the opposite of what publishing it does. NEW PAGE /docs/credentials/ explains the whole thing for the first time: two capabilities with a one-way derivation between them drawn as a diagram, the five prefixes in a table with publish-or-not per row, classification by declaration and never by shape (the CLI's own lesson: guessing from shape is what once misrouted a 64-hex passphrase to a read-only clone), why the word matters when the bytes do not, and what a read key can and cannot do including that revocation is never retroactive. Linked from the docs index, the nav, the gallery intake note and the publishing method. NOT DONE, AND A DECISION FOR THE AUTHOR: 99 published keys across 27 pages still carry the legacy rk1 prefix, which is neutral rather than wrong. |
+| v0.2.97 | 2026-09-20 | git d460cd58 | THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had another agent write 'Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema' from the sgit.ai page, for LinkedIn, and asked whether this site had a place to publish it with the missing images and infographics. It does: /articles/. The text is published as written, in the author's voice, with one italic line added at the top naming it the canonical copy and pointing at the page and the VoiceDebrief vault, and one at the bottom on reuse. Nine figures placed where the prose earns them: the three inline SVG diagrams rendered to images at two times scale (the zoom, the jump, the ladder), the GDPR atlas at altitude zero with its own 'you are at the top of the fractal' panel, the Regulation Graph landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an unchanged article, which the article calls its favourite picture in the set. The bare URLs in 'Open them' became links, with the VoiceDebrief vault added to the list. No em-dashes; the article had none and none were introduced. |
 | v0.2.96 | 2026-09-20 | git 88f73d67 | THE VAULT NAMED AFTER THE CONCEPT WAS NOT ON THE CONCEPT'S PAGE. Asked whether the GitHub repository VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs was in the collection, the answer was yes: it is the plaintext mirror of vault k6xy9z4d, row 11, published on 22 August, and cloning both showed the repository's 90 content files matching the vault's HEAD file for file, both last moved on 10 August. What was missing was the reverse link. The Fractal Semantic Graphs page walked seven graph vaults and never cited the one that carries the name, the fifteen-principle register (P4 everything is a node, P6 fractal descent, P7 the junction rule, P11 altitude, P15 structure points down and meaning radiates out), the leading brief of 6 August whose sentence 'each level is the same operation applied to a larger span, which is what makes the structure fractal rather than merely nested' says in one line what this page took five revisions to reach, and the notation spec's two laws (read aloud as a sentence and decompose into triples; link to the span you compress, because claims from memory are not allowed). A new section, 'where the idea was worked first', quotes all of that with a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the open-them table. THE VAULT'S OWN PAGE gains a mirror section: the vault practises its own guide, plaintext tree and encrypted store side by side on GitHub, three commits all on 10 August; the consequences stated are that the content is public twice over (the read key adds history and the app, not access), that the repository is a snapshot which will drift if the vault moves, and that the encrypted store is safe in the open for the reason the guide gives. The page's line saying this site 'is built' the same way now says 'was built until v0.2.84'. Counts updated: the concept card and gallery note say eight graph vaults; the graphs.sgit.ai brief asks that site to cite the principles register directly. |
 | v0.2.95 | 2026-09-19 | git 2724d757 | THE FOLDER TREE WAS THE WRONG CONTRAST. The fractal graphs page said a hierarchy 'gives you more detail but no new meaning, because the only verb is contains'. The author's objection, in four parts: a single layer's ontology can have a very large number of verbs, each carrying meaning; as long as the links make sense inside that ontology, knowledge is gained one link at a time and it is massive; what the fractal architecture adds is the ability, on one of those links, to jump into another universe with its own rules and definitions; and what makes that fractal is that every such self-contained world is built from the same blocks — nodes, edges, ontologies, taxonomies, triplets. The test section is rewritten on his worked example, given as a voice memo: a risk register (its own rich verbs: gives_rise_to, owned_by, reports_to, mitigates, backs) whose incident fact jumps into security operations (alerts, signals, ATT&CK, attack trees), whose suspicious DNS entry jumps into the DNS estate (zones, records, every logged request; possibly millions of nodes served through an abstraction layer over SQL, a graph database or GraphQL), whose one record jumps into a packet capture. Then the two consequences he drew: every connection followed should teach you something, even 'nothing to see here', with the observer or the query deciding whether value was added; and more granularity means a better representation of reality, chosen per context, with custom views on top being what makes it scale. Plus the upward direction (all of it one node in a bigger graph, graphs composed from graphs treated as a graph all the way up, the schema itself fractal in the Mandelbrot sense). A THIRD DIAGRAM draws the jump: four worlds in a row, each a small graph in its own vocabulary, joined by a jump link on one node each, a bracket above for the bigger graph. Its texts are measured against the viewBox like the other two. The graphs.sgit.ai brief's corresponding bullet and its diagram count are updated to match. |
 | v0.2.94 | 2026-09-19 | git f3476af0 | A BRIEF FOR GRAPHS.SGIT.AI, IN PLACE OF A FOOTNOTE. The fractal graphs page carried a small 'one wording to pass upstream' paragraph about the boundaries page on graphs.sgit.ai having the fractal test backwards. The author asked for it to go, and for a proper brief instead, since the sgit.ai page is now the fullest worked application of that site's two theses. The paragraph is gone; /docs/briefs/graphs-sgit-ai-fractal-semantic-graphs/ is the brief. It quotes the boundaries page's four-row table and shows that the page contradicts itself: the Recursion row says 'identical rules, no new format, no special case' while the author's own quote two paragraphs below says an article may be 'so meaty that it requires its own ontology and taxonomy, and that's the power of the fractal element'. Replacement text for the table, the test and llms.txt's sentence nine separates grammar (invariant) from ontology (free). Then: adopt the name and its lineage (already item 1 of their review r001, state 'commented'); lift the precise form of meaning-through-connectivity for the fractal case, 'the deeper you go the more you learn', and 'nobody is forced to conform'; six places to link the page; the two SVG diagrams and the Standards Atlas screenshots to reuse; the four graph vaults their evidence estate does not yet analyse (Standards Atlas GDPR, AIUC-1 conformance, Licence to Operate, ThreatModCon) and the AIUC-1 crosswalk join as a second cross-vault finding; three small corrections found on the way (5 versus 7 stakeholder altitudes in their llms.txt, sentinel.sgit.ai still named where sg-sentinel is the host, the vault count); a section on what not to change; and the prompt to paste, verbatim, at the end. No em-dashes in the brief. |
@@ -7646,6 +7649,80 @@ Not a chat protocol, not a queue with delivery guarantees, and not anonymous —
 
 
 ==============================================================================
+# Vault credentials: what each one can do, and what its prefix declares — sgit.ai
+
+> Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
+>
+> Page: https://sgit.ai/docs/credentials.html
+
+[Home](../index.md) / [Docs](index.md) / Vault credentials
+
+# Vault credentials: what each one can do, and what its prefix declares
+
+A vault credential is the whole thing you need: the address, the capability and the decryption key, in one string. There are two capabilities, **write** and **read**, and five prefixes in circulation that declare which one you are holding and whether it was meant to be published. The prefix is a **declaration, not cryptography**: strip it and the bytes are identical. It still matters, and this page is why.
+
+**Why this page exists, with the date on it.** On 20 September 2026 an agent was asked to open two vaults published on this site and refused, because their read keys were labelled `sgit_private_read_`. It was right to refuse and our label was wrong: those keys are deliberately public, and the prefix that says so is `sgit_public_read_`. The keys were relabelled the same day, the build now refuses a private-prefixed credential in any tracked file, and this page is the explanation that was missing.
+
+## Two capabilities, and one is derived from the other
+
+A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [thirty vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
+
+*[diagram]*
+
+## The five prefixes
+
+Three are current and emitted by the CLI today. Two are legacy, released briefly in v0.15.5, accepted on input forever and never emitted again.
+
+| Prefix | Declares | Capability | Publish it? |
+|---|---|---|---|
+| `sgit_private_vault_` | A vault key, kept secret | **Read and write** | **Never.** Not in a page, a repository, a commit message, an issue or a release log |
+| `sgit_private_read_` | A read key, **kept secret** | Read only | **No.** Publishing it leaks no write capability, but the label says the opposite of what you are doing. Re-derive the string with the public prefix first |
+| `sgit_public_read_` | A read key, **deliberately published** | Read only | **Yes.** This is the form every open vault on this site should carry |
+| `sgit_vk1_`legacy | A vault key | Read and write | Never |
+| `sgit_rk1_`legacy | A read key, intent unstated | Read only | Safe, and says nothing about intent. Most pages on this site still carry this form; the bytes are the same |
+
+A credential with no prefix at all is the oldest form and still circulates. It is read as **unknown** and resolved by context, which is exactly the ambiguity the prefixes were introduced to end.
+
+## Classification is by declaration, never by shape
+
+This is the rule the CLI states in its own source, and it was learned the hard way: *"guessing from shape is what once misrouted a 64-hex passphrase to a read-only clone."* A surface that accepts read credentials must refuse a vault key because the string *says* it is one, not because it looks long enough to be a passphrase.
+
+Shape is still the backstop for the years of keys created before prefixes existed: a read key is 64 hexadecimal characters, and anything else before the colon is a passphrase, which means write. [The publishing method](../demos/vaults/publishing.md) runs both checks on every credential submitted to this site, and the front stop is one command:
+
+```
+$ python3 admin/build/check_credential.py '<credential>'
+  form      : read key (public, prefixed)
+  publish?  : YES — read-only, declared public
+  why       : the sgit_public_read_ prefix marks a key meant to be published
+```
+
+## Why the word matters when the bytes do not
+
+Relabelling a key changes nothing an attacker can use. It changes three things that people and machines rely on.
+
+- **One scanner rule covers every secret credential.** `sgit_private_` matches the vault key, the private read key, and any private credential type invented later. Publishing keys under a private prefix trains that alarm into noise, which is the failure mode where a real leak goes unnoticed because the alert fires every day.
+- **Public and private differ by a word, not a character.** That is deliberate. A tired reviewer can misread `rk1` for `vk1`; nobody misreads *public* for *private*.
+- **An agent reads the label and acts on it.** The refusal that produced this page was correct behaviour on a wrong label. An agent that ignores a *private* marker because the content happened to be on a public page is an agent that will ignore the next one too.
+
+## What a read key can and cannot do
+
+| **Can** | Clone the vault, read every file, read **every commit in its history**, and run the vault's app in a browser with no account and nothing installed |
+|---|---|
+| **Cannot** | Commit, push, delete, rotate the key, or reach any other vault. There is no privilege inside it to escalate |
+| **Costs** | Nothing to issue, and nothing to the server, which stores ciphertext either way |
+| **Does not do** | **Revocation is not retroactive.** Anyone who has fetched the objects keeps them; rotating protects future commits only. Publish a read key the way you would publish the content itself, because that is what you are doing |
+
+## What this site publishes
+
+Every vault in [the gallery](../demos/vaults/index.md) carries a read key published on purpose, and no vault key appears anywhere: the release refuses to push if a write credential reaches a tracked file, and since 20 September it refuses a `sgit_private_` credential of any kind. New pages use `sgit_public_read_`. Older pages carry the legacy `sgit_rk1_` form or a bare key, which are the same bytes and open the same way, in the CLI and in the browser.
+
+Checked against sgit-ai v0.16.2 and the SG/Vault web loader on 20 September 2026: all five prefixes plus the bare form strip to the same value and clone the same vault, verified with an all-zeros negative control that produces nothing.
+
+[← Keys and signatures](pki.md)[Publishing a vault →](../demos/vaults/publishing.md)
+
+
+
+==============================================================================
 # Keys, signatures and encrypting to someone else — sgit.ai
 
 > The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.
@@ -7810,6 +7887,26 @@ What was missing was the reverse link. [Fractal Semantic Graphs](../demos/fracta
 A new section, **where the idea was worked first**, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.
 
 **The vault's own page gains a mirror section.** The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, `local/` gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.
+
+### [We published read keys under a prefix that declares them secret, and an agent refused to open them](#the-prefix-said-private) [v0.2.98](../admin/versions.md)
+
+keyssecuritydocsagents
+
+An agent asked to inspect the two AIUC-1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction.
+
+**It was right. Our label was wrong.** The sgit CLI defines three current prefixes and states which is which in its own source: `sgit_private_vault_` is a write credential, `sgit_private_read_` is read-only and *kept secret*, and `sgit_public_read_` is read-only and *deliberately published*. Seven published credentials across [the AIUC-1 conformance layer](../demos/vaults/aiuc-1-conformance/index.md) and [the AIUC-1 catalogue](../demos/vaults/aiuc-1-graph/index.md) carried the middle one. They now carry the right one, with a dated line on each page saying what changed and that the bytes, the access and the vault are identical.
+
+**Verified before relabelling**, on sgit-ai v0.16.2: the bare form, the legacy prefix, the private read prefix and the public read prefix all clone the same 699-file vault; an all-zeros key under the same prefix produces nothing; and the SG/Vault web loader strips all five prefixes in its own format module.
+
+## The structural fix matters more than the seven strings
+
+The validator now **bans both current private prefixes in tracked files**, using the same trailing-character rule the write-key tripwire already used: documentation can print a prefix as a name, a real key fails the build. And `check_credential.py` learned the public prefix and now **refuses** the private read one. That credential is read-only and leaks no capability, and it is still not publishable, because the label says the opposite of what publishing it does.
+
+## The page that was missing
+
+[Vault credentials](../docs/credentials.md) explains this for the first time: the two capabilities and the one-way derivation between them, drawn; the five prefixes in a table with publish-or-not on each row; why classification is by declaration and never by shape, which is the CLI's own hard-won lesson; why the word matters when the bytes do not; and what a read key can and cannot do, including that revocation is never retroactive.
+
+**Not done, and a decision to make:** 99 published keys across 27 pages still carry the legacy `sgit_rk1_` prefix. That one is neutral rather than wrong, so normalising it is a consistency call, not a correction.
 
 ### [The article that introduces Fractal Semantic Graphs, published here with its pictures](#introducing-fsg-article) [v0.2.97](../admin/versions.md)
 
@@ -9521,7 +9618,7 @@ The vault-shaped part is that all of this is **one credential**. The apps, the s
 
 Every vault is audited before its read key appears here. This one arrived as a **vault key** — the legacy `passphrase:vault_id` form with no prefix to give it away — and was classified as a write credential by `admin/build/check_credential.py` before it touched anything. The vault key was stored in the gitignored tier, the read key derived from it one-way, and only the derived key appears on this page. That derivation cannot be reversed.
 
-The content scan is **clean on credentials**: no vault key inside the vault's own files, no `sgit_vk1_` or `sgit_private_read_` string, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks, and no `.vault/` operational bookkeeping.
+The content scan is **clean on credentials**: no vault key inside the vault's own files, no credential under any `sgit_private_` prefix, which is the one scanner rule that covers every secret form, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks, and no `.vault/` operational bookkeeping.
 
 Two hits were ruled out by reading them, and both are worth naming because a clean sheet asserted is worth less than a finding explained. A 2FA worked example contains the sentence *"Leaked or reused passwords can be tried at scale"* — prose about passwords in a risk chain, matched by a pattern looking for assignments. And `guides/publish-sgit-vault-to-github.md` contains the literal string `BEGIN PRIVATE KEY`, in a table of the things its `.gitignore` must exclude. That is the same shape as [a mistake this site made itself](../publishing.md): a tripwire firing on the exact string a document needs in order to teach people to recognise it.
 
@@ -10197,13 +10294,14 @@ One class of jsdom error is filtered from that test — and the vault records th
 A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph — where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. **53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges**, over five releases.
 
 **Open it yourself — the key is the whole credential.**
- Read key: `sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
- In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
+ Read key: `sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
 Published as a read key. The vault key is not published and never will be.
+Relabelled 20 September 2026: this key was published under the `sgit_private_read_` prefix, which declares a key meant to be kept secret. Same bytes, same access, wrong declaration. The prefix for a key published on purpose is `sgit_public_read_`. [What the prefixes mean →](../../../docs/credentials.md)
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)A full application — it has far more room in its own tab than in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)A full application — it has far more room in its own tab than in the frame below.
 
 ## What is in it
 
@@ -10276,13 +10374,14 @@ The source policy is unusually explicit, and worth quoting because most scrapers
 A standard tells you what good looks like. It cannot tell you whether *you* do it. This vault keeps those two questions apart with two edges that are never allowed to touch — `evidenced_by`, *does the standard say this?*, and `attested_by`, *does this subject do this?* — and then asks the question the second edge makes possible: **given what is actually evidenced, on this date, what would be insurable?**
 
 **Open it yourself — the key is the whole credential.**
- Read key: `sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
- From the CLI: `sgit clone sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
+ Read key: `sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
+ From the CLI: `sgit clone sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
 Published as a read key. The vault key is not published and never will be.
+Relabelled 20 September 2026: this key was published under the `sgit_private_read_` prefix, which declares a key meant to be kept secret. Same bytes, same access, wrong declaration. The prefix for a key published on purpose is `sgit_public_read_`. [What the prefixes mean →](../../../docs/credentials.md)
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7)Thirteen tabs and a graph canvas — it has far more room in its own tab than in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7)Thirteen tabs and a graph canvas — it has far more room in its own tab than in the frame below.
 
 ## The decks, read straight out of the vault
 

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.97",
+  "site_version": "v0.2.98",
   "updates": [
     {
       "slug": "the-vault-named-after-the-concept",
@@ -14,6 +14,19 @@
         "method"
       ],
       "summary": "Asked whether the GitHub repository VoiceDebrief/VoiceDebrief Fractal Semantic Graphs was in the collection, the answer was yes. It is the plaintext mirror of vault 11, k6xy9z4d , published here on 22 August. Cloning both and comparing showed the repository's…"
+    },
+    {
+      "slug": "the-prefix-said-private",
+      "title": "We published read keys under a prefix that declares them secret, and an agent refused to open them",
+      "date": "2026-09-20",
+      "version": "v0.2.98",
+      "tags": [
+        "keys",
+        "security",
+        "docs",
+        "agents"
+      ],
+      "summary": "An agent asked to inspect the two AIUC 1 vaults declined, and said so plainly: their credentials are labelled private read, despite being published on sgit.ai, and it would not work around that restriction. It was right. Our label was wrong. The sgit CLI defin…"
     },
     {
       "slug": "introducing-fsg-article",

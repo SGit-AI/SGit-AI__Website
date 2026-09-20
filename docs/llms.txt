@@ -1,9 +1,9 @@
 # Using sgit — sgit.ai
 
-> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.97).
+> The CLI and the model behind it — installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.2.98).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (27)
+## Pages (28)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -30,4 +30,5 @@
 - [Reading one file out of a vault](/docs/vault/reading-a-vault-file.md): The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser — and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 - [Static hosting on GitHub Pages](/docs/vault/static-hosting.md): Serve an encrypted vault and its app from GitHub Pages or S3 with zero backend: deterministic GET paths, client-side decryption, clean read-only degradation.
 - [Sending messages between vaults](/docs/vault-messaging.md): How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
+- [Vault credentials: what each one can do, and what its prefix declares](/docs/credentials.md): Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
 - [Keys, signatures and encrypting to someone else](/docs/pki.md): The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.

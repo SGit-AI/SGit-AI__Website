@@ -2,7 +2,7 @@
 
 > An unofficial, derivative machine-readable catalog of the public AIUC-1 agent standard: 53 controls, 144 requirements, 1,126 crosswalks and 1,238 nodes, where every field names the page or commit it was read from with the SHA-256 of the retrieved bytes. Not approved or endorsed by AIUC. Forked, byte for byte, into the conformance layer vault.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-graph/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -17,13 +17,14 @@
 A standard read from its own pages, normalised, cross-checked against its official changelog repository, and decomposed into one graph — where every field points back at the page or commit it came from, with the SHA-256 of the retrieved bytes and the time they were retrieved. **53 controls, 144 requirements, 1,126 crosswalks, 1,238 nodes and 3,526 edges**, over five releases.
 
 **Open it yourself — the key is the whole credential.**
- Read key: `sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
- In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
+ Read key: `sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu) · From the CLI: `sgit clone sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00:hq21tlqu`
 Published as a read key. The vault key is not published and never will be.
+Relabelled 20 September 2026: this key was published under the `sgit_private_read_` prefix, which declares a key meant to be kept secret. Same bytes, same access, wrong declaration. The prefix for a key published on purpose is `sgit_public_read_`. [What the prefixes mean →](../../../docs/credentials.md)
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)A full application — it has far more room in its own tab than in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_4435037d6936ef6986d0646ff23ed3affc46eb74bf8a65ca1f729fd5d3a4ae00%3Ahq21tlqu)A full application — it has far more room in its own tab than in the frame below.
 
 ## What is in it
 

@@ -2,7 +2,7 @@
 
 > A fork of the AIUC-1 catalogue vault that keeps every byte of it and adds one directory: attested_by kept permanently apart from evidenced_by, 53 conformance rows for a named subject where unevidenced is the default, and insurability computed as a query that turns into 53 exclusions when the date moves. Unofficial and derivative; not approved or endorsed by AIUC.
 
-*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/aiuc-1-conformance/index.html> · site v0.2.98 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -15,13 +15,14 @@
 A standard tells you what good looks like. It cannot tell you whether *you* do it. This vault keeps those two questions apart with two edges that are never allowed to touch — `evidenced_by`, *does the standard say this?*, and `attested_by`, *does this subject do this?* — and then asks the question the second edge makes possible: **given what is actually evidenced, on this date, what would be insurable?**
 
 **Open it yourself — the key is the whole credential.**
- Read key: `sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
- From the CLI: `sgit clone sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
+ Read key: `sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
+ From the CLI: `sgit clone sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072:2wzct4k7`
 Published as a read key. The vault key is not published and never will be.
+Relabelled 20 September 2026: this key was published under the `sgit_private_read_` prefix, which declares a key meant to be kept secret. Same bytes, same access, wrong declaration. The prefix for a key published on purpose is `sgit_public_read_`. [What the prefixes mean →](../../../docs/credentials.md)
 
 ## See it live, here
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_private_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7)Thirteen tabs and a graph canvas — it has far more room in its own tab than in the frame below.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_0f01d367b04f886f6c65038649b76504f4cd2ad06480d88a5e933a671e0db072%3A2wzct4k7)Thirteen tabs and a graph canvas — it has far more room in its own tab than in the frame below.
 
 ## The decks, read straight out of the vault
 

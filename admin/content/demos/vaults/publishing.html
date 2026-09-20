@@ -18,6 +18,7 @@
 <span class="d"># exit 0 → read-only, safe to publish
 # exit 1 → write credential (or unrecognised) — stop</span></pre>
   <p>It classifies two ways, because the problem has two eras: by <b>prefix</b> for vaults new enough to emit one, and by <b>shape</b> for everything older — a read key is 64 hex characters, and anything else before the colon is a passphrase, which means write.</p>
+  <p><b>Publish it under the prefix that declares what you are doing.</b> <code>sgit_public_read_</code> is a read key meant to be published; <code>sgit_private_read_</code> is one meant to be kept secret. Same bytes, same access, opposite declaration, and the build now refuses the second in any tracked file. <a href="../../docs/credentials.html">The five prefixes and what each declares &rarr;</a></p>
 
   <h2>2 · If it is a vault key, derive rather than refuse</h2>
   <p>A vault key does not block publication; it changes what you publish. Store it where the repository cannot commit it, then derive:</p>
