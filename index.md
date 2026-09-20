@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults — and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -33,7 +33,7 @@ Not categories — things. Each one is a real vault you can open, and each is ha
 
 This site, and every vault on it, is built by one person working with several AI agents — and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-124site releases, each verified live before it was called done
+125site releases, each verified live before it was called done
 
 30vaults published with a deliberately public read key
 
@@ -180,7 +180,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-07**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up — the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md) [2026-08-27**A chat box on a site with no server — the plan, and the trade it makes**Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault — and only one of those is free.Read it →](articles/chat-on-a-static-site.md)
+[2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md) [2026-09-07**The proof is two clicks behind the claim — what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild — and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up — the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots — what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md)
 
 [All articles →](articles/index.md)
 

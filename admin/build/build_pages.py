@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.2.96'
+SITE_VERSION = 'v0.2.97'
 BUILD_DATE   = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,23 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.2.96', '2026-09-20', 'this release',
+    ('v0.2.97', '2026-09-20', 'this release',
+     "THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had "
+     "another agent write 'Fractal Semantic Graphs: everything connects to everything, and nobody "
+     "has to share a schema' from the sgit.ai page, for LinkedIn, and asked whether this site had "
+     "a place to publish it with the missing images and infographics. It does: /articles/. The "
+     "text is published as written, in the author's voice, with one italic line added at the top "
+     "naming it the canonical copy and pointing at the page and the VoiceDebrief vault, and one "
+     "at the bottom on reuse. Nine figures placed where the prose earns them: the three inline "
+     "SVG diagrams rendered to images at two times scale (the zoom, the jump, the ladder), the "
+     "GDPR atlas at altitude zero with its own 'you are at the top of the fractal' panel, the "
+     "Regulation Graph landing view, the AIUC-1 explorer with two vaults on one canvas, the "
+     "ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an "
+     "unchanged article, which the article calls its favourite picture in the set. The bare URLs "
+     "in 'Open them' became links, with the VoiceDebrief vault added to the list. No em-dashes; "
+     "the article had none and none were introduced.",
+     ),
+    ('v0.2.96', '2026-09-20', 'git 88f73d67',
      "THE VAULT NAMED AFTER THE CONCEPT WAS NOT ON THE CONCEPT'S PAGE. Asked whether the GitHub "
      "repository VoiceDebrief/VoiceDebrief__Fractal-Semantic-Graphs was in the collection, the "
      "answer was yes: it is the plaintext mirror of vault k6xy9z4d, row 11, published on 22 "

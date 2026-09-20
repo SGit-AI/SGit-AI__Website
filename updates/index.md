@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens — one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.2.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.2.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,6 +25,16 @@ What was missing was the reverse link. [Fractal Semantic Graphs](../demos/fracta
 A new section, **where the idea was worked first**, quotes all of that in a principle-to-page table, credits the Article 9(2) example in the zoom diagram to the vault that works that provision to exhaustion, and adds the vault to the table of vaults to open.
 
 **The vault's own page gains a mirror section.** The vault practises its own guide: plaintext tree and encrypted store side by side on GitHub, `local/` gitignored. Three consequences are stated. The content is public twice over, so the read key adds the history and the app, not access. The repository is a snapshot, not a live mirror, and will drift if the vault moves and it does not, which is the failure this site's own mirror had before it was retired. And the encrypted store is safe in the open for the reason the guide gives.
+
+### [The article that introduces Fractal Semantic Graphs, published here with its pictures](#introducing-fsg-article) [v0.2.97](../admin/versions.md)
+
+graphsarticlesfractal-semantic-graphs
+
+[Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](../articles/introducing-fractal-semantic-graphs.md) is the introduction to the term, written for LinkedIn from [the page that defines it](../demos/fractal-graphs/index.md). LinkedIn cannot carry the diagrams, so this is the canonical copy: the same text, with nine figures placed where the prose earns them.
+
+The three diagrams from the page are rendered as images (the zoom, the jump, the ladder). Beside them sit the screenshots the argument rests on: the GDPR atlas at altitude zero with its own *you are at the top of the fractal* panel, the Regulation Graph's hash-verified landing view, the AIUC-1 explorer with two vaults on one canvas, the ThreatModCon zoom ladder, the role risk map, and Article 45's timeline of rulings over an article that has not changed a word since 2016.
+
+The bare URLs at the end became links, and the vault where the idea was first worked, [VoiceDebrief · Fractal Semantic Graphs](../demos/vaults/voice-debrief/index.md), joins the list. The article is CC BY 4.0, as written.
 
 ## 2026-09-19
 

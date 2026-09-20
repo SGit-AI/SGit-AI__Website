@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.2.96",
+  "site_version": "v0.2.97",
   "updates": [
     {
       "slug": "the-vault-named-after-the-concept",
@@ -14,6 +14,18 @@
         "method"
       ],
       "summary": "Asked whether the GitHub repository VoiceDebrief/VoiceDebrief Fractal Semantic Graphs was in the collection, the answer was yes. It is the plaintext mirror of vault 11, k6xy9z4d , published here on 22 August. Cloning both and comparing showed the repository's…"
+    },
+    {
+      "slug": "introducing-fsg-article",
+      "title": "The article that introduces Fractal Semantic Graphs, published here with its pictures",
+      "date": "2026-09-20",
+      "version": "v0.2.97",
+      "tags": [
+        "graphs",
+        "articles",
+        "fractal-semantic-graphs"
+      ],
+      "summary": "Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema is the introduction to the term, written for LinkedIn from the page that defines it. LinkedIn cannot carry the diagrams, so this is the canonical copy: the same text,…"
     },
     {
       "slug": "the-mirror-is-gone",
@@ -720,6 +732,19 @@
     }
   ],
   "articles": [
+    {
+      "slug": "introducing-fractal-semantic-graphs",
+      "title": "Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema",
+      "date": "2026-09-20",
+      "version": "v0.2.97",
+      "tags": [
+        "graphs",
+        "method",
+        "fractal-semantic-graphs",
+        "article"
+      ],
+      "summary": "The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now."
+    },
     {
       "slug": "proof-behind-the-claim",
       "title": "The proof is two clicks behind the claim — what the homepage gets wrong, and the fix",
