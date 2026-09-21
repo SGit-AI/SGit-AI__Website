@@ -45,6 +45,8 @@
 
   <p><b>One shape the vocabulary above could not express, until a vault demonstrated it.</b> An app can be granted the <em>use</em> of a credential without being given the credential: the <a href="../demos/vaults/risk-mandate/index.html">Risk Mandate vault</a> seals its OpenRouter key under the vault key, and the host makes the call on the app's behalf. So <code>ops</code> and <code>bearer</code> come apart, <code>ops:llm-chat</code> is granted while <code>bearer</code> of the key is not, and a read-key holder auditing the vault (as we did) finds ciphertext where the secret would be. Most sharing models cannot say this, because handing over the capability and handing over the credential are the same act.</p>
 
+  <div class="note"><b>The performance comparison lives on its own page.</b> "How does this compare to a graph database?" is asked often enough, and needs enough measurement behind it, that it is not an entry here. <a href="../demos/fractal-graphs/performance.html">Performance, cost, and running everywhere</a> is the answer: what a read actually costs with no live database, the cost model line by line, and the six places this is slower, all with the commands to repeat every figure.</div>
+
   <h2 id="entries">The entries</h2>
   <p>Three to start with, chosen to be different: one small and verifiable in seconds, one we lose, one that is the actual differentiator. More arrive as they are tested, not as they are thought of.</p>
 

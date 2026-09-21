@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Fractal Semantic Graphs
 
-A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, points at the vault where the idea was first worked, and then proves it with seven more published vaults you can open.
+A **semantic graph** is nodes joined by edges that mean something: every edge a verb, read in both directions. A **fractal** semantic graph is one where **every node opens into a semantic graph of its own, with its own node types, its own verbs, its own ontology**, and so does every node inside that, down to the smallest thing that still matters to the question you are asking. In most of our work that smallest node is a word, a number or a symbol. What stays constant between the worlds is not the schema but the grammar: edges are verbs, meaning lives in connectivity, every claim keeps its provenance. That is what lets everything connect to everything without anyone being forced to share a schema. For a long time we called this *graphs of graphs of graphs*, or *ontologies of ontologies of ontologies*. This page defines it, shows it, points at the vault where the idea was first worked, and then proves it with seven more published vaults you can open. If what you want is the engineering rather than the concept, [**Performance, cost, and running everywhere**](performance.md) has the measurements: what a read costs, why there is no database, and how this compares to ordinary graph engineering.
 
 ## What a Fractal Semantic Graph is
 

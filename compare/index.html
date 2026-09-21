@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.6</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.7</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -59,6 +59,7 @@
  <a class="nl here" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
  <div class="sub">
  <a class="sl here" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
  <a class="sl" href="../case-studies/index.html">Case studies</a>
  <a class="sl" href="../use-cases/index.html">Use cases</a>
  </div>
@@ -95,7 +96,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.6 &middot; 21 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.7 &middot; 21 Sep 2026</span></a></div>
 <main class="doc" style="max-width:var(--wide)">
   <p class="crumb"><a href="../index.html">Home</a> / Comparisons</p>
   <h1>Comparisons, as tests you can re-run</h1>
@@ -142,6 +143,8 @@
   <p>Written compactly, a published read key is: <code>scope:vault · ops:read · bearer:any-holder · mediation:key · duration:forever · withdrawal:future-only · observability:none</code>. Three of those seven are <b>worse</b> than a mainstream sharing link, and saying so is the point of having a vocabulary.</p>
 
   <p><b>One shape the vocabulary above could not express, until a vault demonstrated it.</b> An app can be granted the <em>use</em> of a credential without being given the credential: the <a href="../demos/vaults/risk-mandate/index.html">Risk Mandate vault</a> seals its OpenRouter key under the vault key, and the host makes the call on the app's behalf. So <code>ops</code> and <code>bearer</code> come apart, <code>ops:llm-chat</code> is granted while <code>bearer</code> of the key is not, and a read-key holder auditing the vault (as we did) finds ciphertext where the secret would be. Most sharing models cannot say this, because handing over the capability and handing over the credential are the same act.</p>
+
+  <div class="note"><b>The performance comparison lives on its own page.</b> "How does this compare to a graph database?" is asked often enough, and needs enough measurement behind it, that it is not an entry here. <a href="../demos/fractal-graphs/performance.html">Performance, cost, and running everywhere</a> is the answer: what a read actually costs with no live database, the cost model line by line, and the six places this is slower, all with the commands to repeat every figure.</div>
 
   <h2 id="entries">The entries</h2>
   <p>Three to start with, chosen to be different: one small and verifiable in seconds, one we lose, one that is the actual differentiator. More arrive as they are tested, not as they are thought of.</p>
@@ -206,7 +209,7 @@
 </main>
 <script>
 (function () {
-  fetch('../assets/compare.js?v=v0.3.6').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[compare] renderer failed to load:', e); });
+  fetch('../assets/compare.js?v=v0.3.7').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[compare] renderer failed to load:', e); });
 }());
 </script>
 
@@ -215,7 +218,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.3.6</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.7</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -257,7 +260,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.6';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.7';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

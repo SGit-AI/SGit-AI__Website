@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.6'
+SITE_VERSION = 'v0.3.7'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.6', '2026-09-21', 'this release',
+    ('v0.3.7', '2026-09-21', 'this release',
+     "THE BEST PAGE ON THE SITE WAS ALSO THE HARDEST TO FIND. Six releases of measurement went "
+     "into /demos/fractal-graphs/performance.html and it was reachable from one nav entry under "
+     "Vaults plus three content links, none of them on a landing page: the fractal page's "
+     "closing section, docs/vault/reading-a-vault-file.html, and api/vault-objects.html. The "
+     "author asked where the link actually was, which was the right question. NOW LINKED FROM "
+     "FIVE MORE PLACES, all editorial rather than nav: the HOMEPAGE, in the agents card that "
+     "already mentions sparse clones for fast cold starts, and again in that section's footer "
+     "line; the DOCS INDEX, under Concepts beside the security model and credentials, where "
+     "somebody looking for reference material will actually look; COMPARISONS, with a note "
+     "saying outright that the performance comparison lives on its own page because it needs "
+     "more measurement behind it than an entry allows, which is also the honest reason it is not "
+     "an entry there; the VAULTS INDEX, in the note that already points at the fractal ladder; "
+     "and the FRACTAL PAGE'S OWN LEAD, not just its closing section, since a reader who wants "
+     "the engineering rather than the concept should not have to reach the bottom of a long page "
+     "to find out it exists. ALSO ADDED TO THE EVIDENCE MENU beside Comparisons, in addition to "
+     "its existing place under Vaults beside Fractal graphs. A page about how fast something is "
+     "and what it costs belongs where people look for evidence, not only where its sibling "
+     "happens to live. No content changed in this release, only the ways in.",
+     ),
+    ('v0.3.6', '2026-09-21', 'git f0a8d430',
      "THE API IS A CONVENIENCE OVER THE STORE, NOT A REQUIREMENT OF IT, AND THE PAGE NOW PROVES "
      "IT WITH A NUMBER. The author's point: if performance really matters, expose the objects "
      "directly through a CDN and skip the function entirely, which is safe precisely BECAUSE "
@@ -2067,6 +2087,7 @@ NAV = [
     ]),
     ('evidence', 'Evidence', 'compare/index.html', [
         ('compare', 'Comparisons', 'compare/index.html'),
+        ('fractal', 'Performance & cost', 'demos/fractal-graphs/performance.html'),
         ('case-studies', 'Case studies', 'case-studies/index.html'),
         ('use-cases', 'Use cases', 'use-cases/index.html'),
     ]),
