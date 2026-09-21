@@ -2,7 +2,7 @@
 
 > Every rule this site enforces, with the event that produced it: classify a credential before it touches anything (a vault key once arrived labelled as a read key), read keys yes and vault keys never (we leaked our own), audit every vault before its key is published (three vaults shipped as republications), and write the method down rather than the outcome.
 
-*Source: <https://sgit.ai/lessons/index.html> · site v0.4.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/lessons/index.html> · site v0.4.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

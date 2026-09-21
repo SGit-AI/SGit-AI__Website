@@ -2,7 +2,7 @@
 
 > Seven capabilities with an MVP or a live example behind each, and two ways to build a company on them: on your own, or with the author on one of three rungs, direct hire, revenue share, or a company.
 
-*Source: <https://sgit.ai/summit/founders.html> · site v0.4.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/founders.html> · site v0.4.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
