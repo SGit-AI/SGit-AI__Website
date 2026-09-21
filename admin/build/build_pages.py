@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.8'
+SITE_VERSION = 'v0.3.9'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,51 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.8', '2026-09-21', 'this release',
+    ('v0.3.9', '2026-09-21', 'this release',
+     "A NEW ARTICLE ON THE STARTUP OPERATING AND INVESTING MODEL, FROM THE AUTHOR'S OWN VOICE "
+     "MEMO. 'The most important question is whether they miss it' states the model in three "
+     "pillars. ONE, be profitable: a startup is simply a product somebody wants to buy at a "
+     "price that is profitable to you, and if the PRODUCT is not profitable it does not scale "
+     "whatever the company's accounts say. The skill that matters is SHIPPING, daily, and not a "
+     "proof of concept or a demo or a video of a demo but a thing a stranger can use alone and "
+     "get value from, tape and vibe coding entirely acceptable. Keep the running cost near "
+     "nothing (serverless, as little live state as you can stand) which is why the file system "
+     "is the database here, and the performance page is cited for what that costs. THEN THE "
+     "PART ALMOST NOBODY DOES DELIBERATELY: give it away for a short window, then TAKE IT AWAY, "
+     "and ask the only question that matters, DO THEY MISS IT. A shrug means no product yet, "
+     "only something people accept when free, which is a much weaker signal than it feels from "
+     "the inside. Coming back is the why now, and the moment the model turns on. Then two "
+     "questions rather than one: is the price inside their value-added zone, AND is it a profit "
+     "for you, with the honest caveat that it may only be profitable at scale and the gap should "
+     "stay small enough to self fund. Revenue first; no revenue at all is not a marketing "
+     "problem. TWO, investors should be calling you: the worst time to raise is before "
+     "profitability, which is exactly when most companies do it. You bargain from weakness with "
+     "a clock running, and the worst terms are not the money, they are the CONTROL handed to "
+     "people whose job is to make money rather than to understand your business, whose opinion "
+     "now carries weight and is structurally misaligned. Stated as one of the most common and "
+     "most self-inflicted ways companies fail. The analogy is music: do not get signed before "
+     "you have the album, write the songs, record them in a bedroom studio, play locally, get "
+     "people buying, THEN take the deal as somebody who does not need one. Not 'never raise', "
+     "raise from strength. THREE, open source everything, with five reasons that each stand "
+     "alone: the technology is not the moat and believing it is shapes every decision badly; "
+     "code written to be read by strangers has cleaner boundaries; a team that has never deleted "
+     "a component will defend one too long; it is plainly better for the customer, who can read "
+     "the thing rather than trust a promise; and it is a better FOUNDER EXIT, because building "
+     "proprietary accumulates technology, much of it not even specific to the startup, that you "
+     "cannot take with you. Links out to subscriptions.sgit.ai (a subscription is a discount for "
+     "regular use, not rent on something ignored) and open-source.sgit.ai (open source is a "
+     "strategy, not a charity) rather than restating arguments those siblings already own. ONE "
+     "DIAGRAM, drawn for it: the loop from ship to give away to take away to the miss test, with "
+     "a red return path for no and the paid path for yes, and the third pillar running "
+     "underneath. AND A BUG FIXED ON THE WAY, present on EVERY article since v0.3.0: the article "
+     "title template read '{title} (sgit.ai' with no closing bracket, so nine pages shipped a "
+     "malformed title tag. It is em-dash-rewriter collateral: the paired-bracket rule opened a "
+     "bracket in one place and closed it in another, the same failure class caught in table "
+     "cells at the time but missed in the build script because the validator's prose check does "
+     "not read .py. Two more orphans from the same pass fixed in comments, and a stale '#25 the "
+     "newest' in the vaults docstring corrected to #31.",
+     ),
+    ('v0.3.8', '2026-09-21', 'git e4761f4d',
      "THE FLAGSHIP CONCEPT PAGE WAS NOT ON THE HOMEPAGE AT ALL. Fixing the routes into the "
      "performance page in v0.3.7 surfaced a larger omission: FRACTAL SEMANTIC GRAPHS, the idea "
      "this site's whole vault collection is evidence for, had no homepage presence whatsoever. "
@@ -3052,8 +3096,8 @@ def load_pages():
     # file and nothing else, so it must not need a manifest row either.
     for a in ARTICLES:
         pages.append((f'articles/{a["slug"]}.html',
-                      f'{a["title"]} (sgit.ai', a['summary'], 'articles', article_body(a)))
-    # One page per agentic role, derived) a role is added by writing its file.
+                      f'{a["title"]}, sgit.ai', a['summary'], 'articles', article_body(a)))
+    # One page per agentic role, derived, a role is added by writing its file.
     for r in ROLES:
         pages.append((f'team/roles/{r["slug"]}.html',
                       f'{r["title"]}, an agentic role on sgit.ai', r['mission'], 'roles', role_body(r)))
@@ -3136,7 +3180,7 @@ def vaults_table():
     published: the date the vault's page first appeared in git, not a date anybody typed.
 
     The # column is a PERMANENT publication ordinal (#1 is the first vault ever published
-    here, #25 the newest) not the row's position on screen. It therefore does not change
+    here, #31 the newest), not the row's position on screen. It therefore does not change
     when the table is re-sorted, and sorting by # is by construction the same ordering as
     sorting by published date. A number that renumbered on every sort said nothing at all.
     """

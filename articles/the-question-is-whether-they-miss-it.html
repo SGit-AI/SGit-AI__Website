@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The most important question is whether they miss it, sgit.ai</title>
+<meta name="description" content="A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.">
+<link rel="canonical" href="https://sgit.ai/articles/the-question-is-whether-they-miss-it.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/the-question-is-whether-they-miss-it.html">
+<meta property="og:title" content="The most important question is whether they miss it, sgit.ai">
+<meta property="og:description" content="A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.">
+<meta name="twitter:card" content="summary">
+<link rel="alternate" type="text/markdown" href="the-question-is-whether-they-miss-it.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The most important question is whether they miss it, sgit.ai", "headline": "The most important question is whether they miss it, sgit.ai", "description": "A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.", "url": "https://sgit.ai/articles/the-question-is-whether-they-miss-it.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.9</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl here" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.9 &middot; 21 Sep 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / The most important question is whether they miss it</p>
+ <h1>The most important question is whether they miss it</h1>
+ <p class="small dim">2026-09-21 &middot; <a href="../admin/versions.html">v0.3.9</a> &middot; <span class="chip">startups</span><span class="chip">strategy</span><span class="chip">open-source</span><span class="chip">investing</span><span class="chip">article</span></p>
+ <p class="lead">A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.</p>
+<p>Most advice about starting a company is about raising money. This is not that. It is the operating model I actually use, and it rests on three pillars that are easier to state than to do.</p>
+<ol>
+<li><b>Be profitable.</b> Ship a product that sells, at a price that works for you.</li>
+<li><b>Investors should be talking to you</b>, not the other way round.</li>
+<li><b>Open source everything</b>, because the technology is not the moat and you do not want to be locked into it.</li>
+</ol>
+<p>They are in that order for a reason. Each one buys you the position you need to do the next.</p>
+<figure class="shot" data-shot="startup-model.webp" data-dir="images/" data-alt="The loop. Ship something usable, give it away briefly, take it away, and find out whether anybody misses it. A no sends you back to the start with better information. A yes is the only thing that earns the right to charge, and charging at a profit is the only thing that earns the right to choose your investors."><figcaption>The loop. Ship something usable, give it away briefly, take it away, and find out whether anybody misses it. A no sends you back to the start with better information. A yes is the only thing that earns the right to charge, and charging at a profit is the only thing that earns the right to choose your investors.</figcaption></figure>
+<h2>Pillar one: ship something somebody can use</h2>
+<p>Strip away the mythology and a startup is simple. <b>You make a thing somebody wants to buy, at a price that is profitable to you.</b> That is it. Whether the <em>company</em> makes a profit in a given year is a separate question with its own answer, but if the <em>product</em> is not profitable, it does not scale, and no amount of growth will fix that.</p>
+<p>Which means the single most important skill is the ability to <b>ship</b>. Not to plan, not to pitch, not to architect. Ship. And ship every day, because shipping is how you find out what is true.</p>
+<p>Be careful with the word, though, because it has been worn smooth. Shipping does not mean a proof of concept. It does not mean a demo, or a video of a demo, or a prototype you walk somebody through on a call. <b>It means a thing somebody else can go and use, on their own, and get value from.</b> It can be held together with tape. It can be vibe coded. Nobody using it cares how it was built, and neither should you, yet.</p>
+<p>To ship that often you need the running cost to be near nothing, so build accordingly. Serverless. As few databases and as little live state as you can stand. In our case the file system <em>is</em> the database, which sounds like a compromise until you measure it: <a href="../demos/fractal-graphs/performance.html">what that actually costs, with the numbers</a> is a whole page of its own, and the summary is that with nothing running between requests the standing bill for an estate of thirty one published graphs is a third of a gigabyte of object storage.</p>
+<p>And do not underestimate the infrastructure. Getting a working thing into a stranger's hands is still, in 2026, genuinely hard, and a surprising amount of the toolchain is not designed to help you do it. <b>Solving that is not overhead, it is the first real product you build.</b> Everything after it gets cheaper.</p>
+<h2>Then give it away, and then take it away</h2>
+<p>Now hand it to people for free. Not forever: a short window, whatever unit makes sense, but short. You want the feedback loop tight, and you want the cost of generosity to stay inside what you can absorb.</p>
+<p>Just doing this solves dozens of problems you did not know you had. How do people get access. What breaks when somebody unfamiliar touches it. What they try first. What they never find. <b>The feedback starts the moment somebody who is not you has the thing.</b></p>
+<p>Then comes the part almost nobody does deliberately. <b>Take it away.</b> The trial expired. It is not available right now. Nothing else about the product changes, and no apology is needed.</p>
+<p>And now ask the only question that matters:</p>
+<div class="note"><b>Do they miss it?</b></div>
+<p>If they shrug and go back to their day, you do not have a product yet. You have something people will accept when it is free, which is a much weaker signal than it feels like from the inside. No sense of loss means no <em>why now</em>, and without a why now there is nothing to sell.</p>
+<p>If they come back and ask for it, you have something. That is the moment the whole model turns on, and it is worth engineering your trial specifically so that this moment arrives early and unambiguously.</p>
+<h2>Can you charge, and can you charge at a profit?</h2>
+<p>Two questions, and people routinely answer only the first.</p>
+<p><b>Is the price one they are happy to pay?</b> It has to sit inside the zone where they feel they are getting more than they are giving up. If you have to argue somebody into the value, the answer is no.</p>
+<p><b>And is that price profitable for you?</b> With one honest caveat: it might not be profitable today and still be the right price, if the economics clearly improve with scale. But keep it close enough that you can self fund the gap, because a gap you cannot cover yourself is how you end up back at pillar two on somebody else's terms.</p>
+<p>Revenue comes first. <b>If you cannot get revenue at all, that is the problem to solve, and it is not a marketing problem.</b> Profitability is the milestone after it, and it is the one that changes your life, for reasons that are entirely about the next pillar.</p>
+<p>A related trap, which has its own site because it deserves one: <b>do not reach for a subscription by default.</b> Charging rent for something people are not using is a worse business than being paid when you deliver. <a href="https://subscriptions.sgit.ai/">subscriptions.sgit.ai</a> makes the full argument: a subscription is a discount for regular use, not rent on something somebody ignores. Pay on demand is usually the healthier shape, for both sides.</p>
+<h2>Pillar two: the investors should be calling you</h2>
+<p>Here is the claim, stated plainly. <b>The worst possible time to raise money is before you are profitable</b>, before you have the product, before you understand the fit. Which is, of course, exactly when most companies raise.</p>
+<p>Everything follows from the negotiating position.</p>
+<p><b>You are bargaining from weakness, and both sides know it.</b> You have no product and you have a clock. Profitability does not just mean money, it means <em>time</em>: when you are not bleeding, you can wait, and being able to wait is most of what a good negotiating position is.</p>
+<p><b>So the terms are bad, and the worst of them are not about money.</b> They are about control. You hand over a say in the business to people who, in most cases, do not understand the business. They do not understand the technical properties, they have not lived the vision, and that is not a character flaw: their job is to make money. But their focus is now structurally misaligned with yours, and their opinion has been given weight. <b>I think that is one of the most common ways companies fail</b>, and it is entirely self-inflicted at the moment of signing.</p>
+<p>The analogy I keep coming back to is music. <b>Do not get signed before you have the album.</b> Write the songs. Record them, in a bedroom studio if that is what you have. Play locally. Get people listening, get people buying. <em>Then</em> take the record deal, and take it as somebody who already has an audience and does not strictly need one.</p>
+<p>That is the whole of pillar two. Not "never raise". <b>Raise from strength, on terms you set, from people who came to you because the thing already works.</b></p>
+<h2>Pillar three: open source everything</h2>
+<p>This one surprises people, because it sounds like giving away the asset. It is the opposite, and there are five reasons, each of which stands alone.</p>
+<p><b>The technology is not the moat.</b> Believing it is will shape every decision you make badly. Treating it as open from the start forces you to find the thing that actually is defensible, which is usually the data, the relationships, the distribution, or the speed at which you ship.</p>
+<p><b>You get a better architecture.</b> Code written to be read by strangers has cleaner boundaries. Not because you are more virtuous in public, but because anything embarrassing has to be fixed rather than hidden.</p>
+<p><b>You stay comfortable throwing things away.</b> A team that has never deleted a component is a team that will defend one long after it should have gone. Open source normalises disposal.</p>
+<p><b>It is better for the customer</b>, obviously, and they can tell. Nobody has to trust a promise about what happens if you disappear, because they can read the thing.</p>
+<p><b>And it is a much better exit for you, the founder.</b> This is the one people miss. Build proprietary and you will accumulate a pile of technology, much of it not even specific to the startup, that you cannot take with you. Build in the open and the work is still yours when you move on. <b>You leave with your tools.</b></p>
+<p><a href="https://open-source.sgit.ai/">open-source.sgit.ai</a> carries the longer version of this argument, and its thesis is the sentence to remember: open source is a strategy, not a charity.</p>
+<h2>Why this is on a site about encrypted vaults</h2>
+<p>Because the model has a substrate, and we have spent a year building it.</p>
+<p>Every pillar above asks for the same thing: <b>shipping a usable product should be cheap, fast, and reversible.</b> That is not a slogan, it is an infrastructure requirement, and it is most of the reason this model is hard to follow. A vault is our answer to it. Data, app, history and sources travel as one string. There is no database to run, no hosting for the reader, no account, no install. The whole <a href="../demos/vaults/index.html">published estate</a> is 2,662 files and 295 MB of object storage, with nothing running between questions, and a reader opens any of it with a single read key.</p>
+<p>Which makes the cost of shipping a small product to a few real users low enough that you can do it repeatedly, be wrong in public, take it away, and find out whether anybody missed it. <b>That loop is the product I most want other people to have</b>, and it is why the whole stack is open source, down to the <a href="../demos/fractal-graphs/performance.html">measurements</a> and the mistakes.</p>
+<p>If you are building something on this, I would like to hear about it.</p>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.3.9')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.9</a> · <a href="../admin/index.html">engineering</a> · <a href="the-question-is-whether-they-miss-it.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.9';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

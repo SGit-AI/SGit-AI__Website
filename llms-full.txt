@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.3.8). Nothing here needs a second request. Individual pages live at the paths
+> (v0.3.9). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-136site releases, each verified live before it was called done
+137site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -199,7 +199,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md) [2026-09-07**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md) [2026-09-07**The proof moved up, the homepage after the rebuild, next to the before pictures**The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.Read it →](articles/proof-moved-up.md)
+[2026-09-21**The most important question is whether they miss it**A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.Read it →](articles/the-question-is-whether-they-miss-it.md) [2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md) [2026-09-07**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.Read it →](articles/proof-behind-the-claim.md)
 
 [All articles →](articles/index.md)
 
@@ -5362,7 +5362,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.8, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5725,7 +5725,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-136**site releases since 14 August**
+137**site releases since 14 August**
 each verified live before it was called done
 
 31**vaults published with a public read key**
@@ -5734,7 +5734,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-75**articles and release notes**
+76**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -7417,11 +7417,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.3.8**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.3.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.3.8 | 2026-09-21 | this release | THE FLAGSHIP CONCEPT PAGE WAS NOT ON THE HOMEPAGE AT ALL. Fixing the routes into the performance page in v0.3.7 surfaced a larger omission: FRACTAL SEMANTIC GRAPHS, the idea this site's whole vault collection is evidence for, had no homepage presence whatsoever. It now has its own band, placed after 'What people actually ship' because that is the natural escalation: here are the things people ship, and here is what nine of them turn out to be when you look at them together. THE SECTION states the definition in one paragraph (every node opens into a graph with its OWN ontology, a regulation then its articles then the words they define, each world using vocabulary the one above never agreed to; the grammar is constant, the schema never is; for years we called it graphs of graphs of graphs) and then splits into two routes: the idea and the evidence (the jump test, a ladder of twelve rungs from the text of a law down to one compute instance, nine published vaults openable with a read key) and what it costs, measured (no live database, a 1,051-node graph opening in 94 KB and three requests, 11.2 MB of source down to a 4 KB ontology with nothing discarded). Counts were checked against the pages rather than recalled: nine rows in the open-them table, twelve linked rungs on the ladder. AND A LAYOUT BUG FIXED ON THE WAY: the homepage bands alternate background between band and band alt, and inserting a section would have broken the rhythm for everything below it, so the classes from proof through network were reassigned in order. That also corrected a pre-existing double-alt between network and the articles band. |
+| v0.3.9 | 2026-09-21 | this release | A NEW ARTICLE ON THE STARTUP OPERATING AND INVESTING MODEL, FROM THE AUTHOR'S OWN VOICE MEMO. 'The most important question is whether they miss it' states the model in three pillars. ONE, be profitable: a startup is simply a product somebody wants to buy at a price that is profitable to you, and if the PRODUCT is not profitable it does not scale whatever the company's accounts say. The skill that matters is SHIPPING, daily, and not a proof of concept or a demo or a video of a demo but a thing a stranger can use alone and get value from, tape and vibe coding entirely acceptable. Keep the running cost near nothing (serverless, as little live state as you can stand) which is why the file system is the database here, and the performance page is cited for what that costs. THEN THE PART ALMOST NOBODY DOES DELIBERATELY: give it away for a short window, then TAKE IT AWAY, and ask the only question that matters, DO THEY MISS IT. A shrug means no product yet, only something people accept when free, which is a much weaker signal than it feels from the inside. Coming back is the why now, and the moment the model turns on. Then two questions rather than one: is the price inside their value-added zone, AND is it a profit for you, with the honest caveat that it may only be profitable at scale and the gap should stay small enough to self fund. Revenue first; no revenue at all is not a marketing problem. TWO, investors should be calling you: the worst time to raise is before profitability, which is exactly when most companies do it. You bargain from weakness with a clock running, and the worst terms are not the money, they are the CONTROL handed to people whose job is to make money rather than to understand your business, whose opinion now carries weight and is structurally misaligned. Stated as one of the most common and most self-inflicted ways companies fail. The analogy is music: do not get signed before you have the album, write the songs, record them in a bedroom studio, play locally, get people buying, THEN take the deal as somebody who does not need one. Not 'never raise', raise from strength. THREE, open source everything, with five reasons that each stand alone: the technology is not the moat and believing it is shapes every decision badly; code written to be read by strangers has cleaner boundaries; a team that has never deleted a component will defend one too long; it is plainly better for the customer, who can read the thing rather than trust a promise; and it is a better FOUNDER EXIT, because building proprietary accumulates technology, much of it not even specific to the startup, that you cannot take with you. Links out to subscriptions.sgit.ai (a subscription is a discount for regular use, not rent on something ignored) and open-source.sgit.ai (open source is a strategy, not a charity) rather than restating arguments those siblings already own. ONE DIAGRAM, drawn for it: the loop from ship to give away to take away to the miss test, with a red return path for no and the paid path for yes, and the third pillar running underneath. AND A BUG FIXED ON THE WAY, present on EVERY article since v0.3.0: the article title template read '{title} (sgit.ai' with no closing bracket, so nine pages shipped a malformed title tag. It is em-dash-rewriter collateral: the paired-bracket rule opened a bracket in one place and closed it in another, the same failure class caught in table cells at the time but missed in the build script because the validator's prose check does not read .py. Two more orphans from the same pass fixed in comments, and a stale '#25 the newest' in the vaults docstring corrected to #31. |
+| v0.3.8 | 2026-09-21 | git e4761f4d | THE FLAGSHIP CONCEPT PAGE WAS NOT ON THE HOMEPAGE AT ALL. Fixing the routes into the performance page in v0.3.7 surfaced a larger omission: FRACTAL SEMANTIC GRAPHS, the idea this site's whole vault collection is evidence for, had no homepage presence whatsoever. It now has its own band, placed after 'What people actually ship' because that is the natural escalation: here are the things people ship, and here is what nine of them turn out to be when you look at them together. THE SECTION states the definition in one paragraph (every node opens into a graph with its OWN ontology, a regulation then its articles then the words they define, each world using vocabulary the one above never agreed to; the grammar is constant, the schema never is; for years we called it graphs of graphs of graphs) and then splits into two routes: the idea and the evidence (the jump test, a ladder of twelve rungs from the text of a law down to one compute instance, nine published vaults openable with a read key) and what it costs, measured (no live database, a 1,051-node graph opening in 94 KB and three requests, 11.2 MB of source down to a 4 KB ontology with nothing discarded). Counts were checked against the pages rather than recalled: nine rows in the open-them table, twelve linked rungs on the ladder. AND A LAYOUT BUG FIXED ON THE WAY: the homepage bands alternate background between band and band alt, and inserting a section would have broken the rhythm for everything below it, so the classes from proof through network were reassigned in order. That also corrected a pre-existing double-alt between network and the articles band. |
 | v0.3.7 | 2026-09-21 | git 99f0cbb8 | THE BEST PAGE ON THE SITE WAS ALSO THE HARDEST TO FIND. Six releases of measurement went into /demos/fractal-graphs/performance.html and it was reachable from one nav entry under Vaults plus three content links, none of them on a landing page: the fractal page's closing section, docs/vault/reading-a-vault-file.html, and api/vault-objects.html. The author asked where the link actually was, which was the right question. NOW LINKED FROM FIVE MORE PLACES, all editorial rather than nav: the HOMEPAGE, in the agents card that already mentions sparse clones for fast cold starts, and again in that section's footer line; the DOCS INDEX, under Concepts beside the security model and credentials, where somebody looking for reference material will actually look; COMPARISONS, with a note saying outright that the performance comparison lives on its own page because it needs more measurement behind it than an entry allows, which is also the honest reason it is not an entry there; the VAULTS INDEX, in the note that already points at the fractal ladder; and the FRACTAL PAGE'S OWN LEAD, not just its closing section, since a reader who wants the engineering rather than the concept should not have to reach the bottom of a long page to find out it exists. ALSO ADDED TO THE EVIDENCE MENU beside Comparisons, in addition to its existing place under Vaults beside Fractal graphs. A page about how fast something is and what it costs belongs where people look for evidence, not only where its sibling happens to live. No content changed in this release, only the ways in. |
 | v0.3.6 | 2026-09-21 | git f0a8d430 | THE API IS A CONVENIENCE OVER THE STORE, NOT A REQUIREMENT OF IT, AND THE PAGE NOW PROVES IT WITH A NUMBER. The author's point: if performance really matters, expose the objects directly through a CDN and skip the function entirely, which is safe precisely BECAUSE everything is encrypted. MEASURED, same client, same vault, same 106 objects, same decryption, only the path to the bytes changed: full clone through the serverless API 65.4 s; full clone against PLAIN GETS WITH NO API IN THE PATH 2.63 s; straight off a local folder 2.05 s. TWENTY FIVE TIMES FASTER with nothing about the vault changed. Honest caveat on the page: the static host was localhost so the network was free and a real CDN adds edge latency, but the client and the work were identical in both rows, so the difference is the function in the middle. IT ALREADY SHIPS: sgit clone --transport static points at any GET host, sniffs which of two published layouts it uses on the first successful read, fans out EIGHT PARALLEL REQUESTS at a time, and records every URL it touches so a test can assert no request ever carried key material. WHY IT IS SAFE: every object is ciphertext under a key the server never had and every name is a hash of those bytes, so public GETs disclose object sizes and request timing, the same side channel the API already has and which the security model already names, and nothing else. AND THE DIRECT PATH IS ALREADY IN PRODUCTION FOR LARGE FILES: anything over 4 MB (the safe margin under the serverless base64 response limit of ~4.7 MB) is handed out as a presigned URL and fetched STRAIGHT FROM STORAGE, which is also the fallback when a batch 502s. So there are already two paths to every byte and the only reason the small case goes through a function is that nobody has needed it not to. FOUR ORDINARY STORAGE OPTIONS listed: a CDN in front of the bucket, where immutable hash-named objects are the ideal cache key; ranged and parallel GETs, which is how a 100 MB or 500 MB object should be read; lower-latency storage classes such as S3 Express One Zone, named WITHOUT a number because we have not benchmarked one; and another provider entirely, since what is served is opaque bytes at deterministic paths. FINDING THE OBJECT: usually you already know the id because it is pinned in the page, and when you do not the walk is ref to commit to tree to blob, a couple of requests rather than a clone. Counted against the static host, reading one named file out of a sparse clone cost TWO requests, one of which was the client re-probing the host layout, a 404 it could skip. This is the thing git cannot do, because git packs its objects and negotiates its transport, so one file usually means cloning the repository. AND ONE GAP STATED OUTRIGHT: there is NO HISTORY-DEPTH FLAG. --sparse skips content (256 KB, 7.3 s) and --bare skips the working copy, but a full clone still takes every version, 106 blobs where the current tree is 42 files, and a sparse clone still walks all 7 commits and 28 trees. Depth control is the single change that would most improve clone time. |
 | v0.3.5 | 2026-09-21 | git 11fafba1 | THE HEADLINE LATENCY WAS A COLD START PRESENTED AS AN ARCHITECTURE COST, AND THE BATCH OPTIMISATIONS WERE MISSING. Both flagged by the author, both wrong on the page, both now measured properly. THE FIXED COST IS NOT ABOUT BYTES: six runs each, best of run, a GET returning 340 bytes took 0.331 s and a GET returning 41 KB took 0.309 s. The same. At 2.3 KB it is 0.347 s. Only at 1.0 MB does transfer appear at all, and then it is 0.300 s of a 0.647 s total. One request in the run returned in 4.8 s, which is what a cold start looks like. So the floor of about a third of a second is THE PER-INVOCATION COST OF RUNNING THIS API SERVERLESS, a deployment choice, not a property of reading encrypted data. SG/API also runs on EC2 with a warm process already listening, where that cost does not exist; not measured here, so the page puts no number on it and says so. The v0.3.4 table said 'cold network fetch 1,210 ms' as though the architecture cost that: it was the CLI figure, and it is now split into 347 ms of fixed overhead plus 300 ms of transfer, with the raw GET of the same object (0.65 s) shown beside the client one (1.21 s). BATCHING, WHICH IS THE ANSWER TO THE FIXED COST, measured on small objects so only the per-object term shows: 1 object 0.590 s, 2 in one batch 0.394 s, 5 in 0.560 s, 10 in 0.872 s, 18 in 1.528 s. That is a straight line, TIME = 0.25 s FIXED + ABOUT 71 ms PER OBJECT + TRANSFER. Eighteen objects one at a time would be roughly 6.3 s; in one batch 1.53 s, FOUR TIMES FASTER, and the saving grows with the count. THE BATCH ENDPOINT DOES MORE THAN READS, which the page had not covered at all: up to 100 operations per request, MIXED READS AND WRITES, authorised per operation, with op types read, write, write-if-match and delete. write-if-match carries the SHA-256 of the content you believe is there and IF ANY MATCH FAILS THE WHOLE BATCH IS REJECTED, which is optimistic concurrency across a set of files in one round trip with no lock anywhere. Large blobs route through presigned URLs rather than the response body. AND THE NEXT OPTIMISATION IS NAMED RATHER THAN GLOSSED: 71 ms per object inside a batch is close to linear, the signature of objects being fetched from storage one after another in the handler; fetching them concurrently would bring a 20-object batch near the cost of a 1-object batch. That, plus chunking by accumulated size rather than file count so the 502 stops happening, are the two changes that would move these numbers most, and both are in the API and the client rather than the design. |
@@ -9816,7 +9817,7 @@ Longer pieces that make an argument across several pages, what a thing means, wh
 
 **Two rules keep these from going stale.** An article never restates a fact it does not own, it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
 
-[**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+[**The most important question is whether they miss it**2026-09-21A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.startupsstrategyopen-sourceinvestingarticle](the-question-is-whether-they-miss-it.md) [**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
 
 
 
@@ -12151,7 +12152,116 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 
 ==============================================================================
-# Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema (sgit.ai
+# The most important question is whether they miss it, sgit.ai
+
+> A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.
+>
+> Page: https://sgit.ai/articles/the-question-is-whether-they-miss-it.html
+
+[Home](../index.md) / [Articles](index.md) / The most important question is whether they miss it
+
+# The most important question is whether they miss it
+
+2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
+
+A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.
+
+Most advice about starting a company is about raising money. This is not that. It is the operating model I actually use, and it rests on three pillars that are easier to state than to do.
+
+1. **Be profitable.** Ship a product that sells, at a price that works for you.
+2. **Investors should be talking to you**, not the other way round.
+3. **Open source everything**, because the technology is not the moat and you do not want to be locked into it.
+
+They are in that order for a reason. Each one buys you the position you need to do the next.
+
+The loop. Ship something usable, give it away briefly, take it away, and find out whether anybody misses it. A no sends you back to the start with better information. A yes is the only thing that earns the right to charge, and charging at a profit is the only thing that earns the right to choose your investors.
+
+## Pillar one: ship something somebody can use
+
+Strip away the mythology and a startup is simple. **You make a thing somebody wants to buy, at a price that is profitable to you.** That is it. Whether the *company* makes a profit in a given year is a separate question with its own answer, but if the *product* is not profitable, it does not scale, and no amount of growth will fix that.
+
+Which means the single most important skill is the ability to **ship**. Not to plan, not to pitch, not to architect. Ship. And ship every day, because shipping is how you find out what is true.
+
+Be careful with the word, though, because it has been worn smooth. Shipping does not mean a proof of concept. It does not mean a demo, or a video of a demo, or a prototype you walk somebody through on a call. **It means a thing somebody else can go and use, on their own, and get value from.** It can be held together with tape. It can be vibe coded. Nobody using it cares how it was built, and neither should you, yet.
+
+To ship that often you need the running cost to be near nothing, so build accordingly. Serverless. As few databases and as little live state as you can stand. In our case the file system *is* the database, which sounds like a compromise until you measure it: [what that actually costs, with the numbers](../demos/fractal-graphs/performance.md) is a whole page of its own, and the summary is that with nothing running between requests the standing bill for an estate of thirty one published graphs is a third of a gigabyte of object storage.
+
+And do not underestimate the infrastructure. Getting a working thing into a stranger's hands is still, in 2026, genuinely hard, and a surprising amount of the toolchain is not designed to help you do it. **Solving that is not overhead, it is the first real product you build.** Everything after it gets cheaper.
+
+## Then give it away, and then take it away
+
+Now hand it to people for free. Not forever: a short window, whatever unit makes sense, but short. You want the feedback loop tight, and you want the cost of generosity to stay inside what you can absorb.
+
+Just doing this solves dozens of problems you did not know you had. How do people get access. What breaks when somebody unfamiliar touches it. What they try first. What they never find. **The feedback starts the moment somebody who is not you has the thing.**
+
+Then comes the part almost nobody does deliberately. **Take it away.** The trial expired. It is not available right now. Nothing else about the product changes, and no apology is needed.
+
+And now ask the only question that matters:
+
+**Do they miss it?**
+
+If they shrug and go back to their day, you do not have a product yet. You have something people will accept when it is free, which is a much weaker signal than it feels like from the inside. No sense of loss means no *why now*, and without a why now there is nothing to sell.
+
+If they come back and ask for it, you have something. That is the moment the whole model turns on, and it is worth engineering your trial specifically so that this moment arrives early and unambiguously.
+
+## Can you charge, and can you charge at a profit?
+
+Two questions, and people routinely answer only the first.
+
+**Is the price one they are happy to pay?** It has to sit inside the zone where they feel they are getting more than they are giving up. If you have to argue somebody into the value, the answer is no.
+
+**And is that price profitable for you?** With one honest caveat: it might not be profitable today and still be the right price, if the economics clearly improve with scale. But keep it close enough that you can self fund the gap, because a gap you cannot cover yourself is how you end up back at pillar two on somebody else's terms.
+
+Revenue comes first. **If you cannot get revenue at all, that is the problem to solve, and it is not a marketing problem.** Profitability is the milestone after it, and it is the one that changes your life, for reasons that are entirely about the next pillar.
+
+A related trap, which has its own site because it deserves one: **do not reach for a subscription by default.** Charging rent for something people are not using is a worse business than being paid when you deliver. [subscriptions.sgit.ai](https://subscriptions.sgit.ai/) makes the full argument: a subscription is a discount for regular use, not rent on something somebody ignores. Pay on demand is usually the healthier shape, for both sides.
+
+## Pillar two: the investors should be calling you
+
+Here is the claim, stated plainly. **The worst possible time to raise money is before you are profitable**, before you have the product, before you understand the fit. Which is, of course, exactly when most companies raise.
+
+Everything follows from the negotiating position.
+
+**You are bargaining from weakness, and both sides know it.** You have no product and you have a clock. Profitability does not just mean money, it means *time*: when you are not bleeding, you can wait, and being able to wait is most of what a good negotiating position is.
+
+**So the terms are bad, and the worst of them are not about money.** They are about control. You hand over a say in the business to people who, in most cases, do not understand the business. They do not understand the technical properties, they have not lived the vision, and that is not a character flaw: their job is to make money. But their focus is now structurally misaligned with yours, and their opinion has been given weight. **I think that is one of the most common ways companies fail**, and it is entirely self-inflicted at the moment of signing.
+
+The analogy I keep coming back to is music. **Do not get signed before you have the album.** Write the songs. Record them, in a bedroom studio if that is what you have. Play locally. Get people listening, get people buying. *Then* take the record deal, and take it as somebody who already has an audience and does not strictly need one.
+
+That is the whole of pillar two. Not "never raise". **Raise from strength, on terms you set, from people who came to you because the thing already works.**
+
+## Pillar three: open source everything
+
+This one surprises people, because it sounds like giving away the asset. It is the opposite, and there are five reasons, each of which stands alone.
+
+**The technology is not the moat.** Believing it is will shape every decision you make badly. Treating it as open from the start forces you to find the thing that actually is defensible, which is usually the data, the relationships, the distribution, or the speed at which you ship.
+
+**You get a better architecture.** Code written to be read by strangers has cleaner boundaries. Not because you are more virtuous in public, but because anything embarrassing has to be fixed rather than hidden.
+
+**You stay comfortable throwing things away.** A team that has never deleted a component is a team that will defend one long after it should have gone. Open source normalises disposal.
+
+**It is better for the customer**, obviously, and they can tell. Nobody has to trust a promise about what happens if you disappear, because they can read the thing.
+
+**And it is a much better exit for you, the founder.** This is the one people miss. Build proprietary and you will accumulate a pile of technology, much of it not even specific to the startup, that you cannot take with you. Build in the open and the work is still yours when you move on. **You leave with your tools.**
+
+[open-source.sgit.ai](https://open-source.sgit.ai/) carries the longer version of this argument, and its thesis is the sentence to remember: open source is a strategy, not a charity.
+
+## Why this is on a site about encrypted vaults
+
+Because the model has a substrate, and we have spent a year building it.
+
+Every pillar above asks for the same thing: **shipping a usable product should be cheap, fast, and reversible.** That is not a slogan, it is an infrastructure requirement, and it is most of the reason this model is hard to follow. A vault is our answer to it. Data, app, history and sources travel as one string. There is no database to run, no hosting for the reader, no account, no install. The whole [published estate](../demos/vaults/index.md) is 2,662 files and 295 MB of object storage, with nothing running between questions, and a reader opens any of it with a single read key.
+
+Which makes the cost of shipping a small product to a few real users low enough that you can do it repeatedly, be wrong in public, take it away, and find out whether anybody missed it. **That loop is the product I most want other people to have**, and it is why the whole stack is open source, down to the [measurements](../demos/fractal-graphs/performance.md) and the mistakes.
+
+If you are building something on this, I would like to hear about it.
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema, sgit.ai
 
 > The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.
 >
@@ -12304,7 +12414,7 @@ If you build one of your own, the grammar for drawing it is at [graphs.sgit.ai/l
 
 
 ==============================================================================
-# The proof is two clicks behind the claim, what the homepage gets wrong, and the fix (sgit.ai
+# The proof is two clicks behind the claim, what the homepage gets wrong, and the fix, sgit.ai
 
 > Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
 >
@@ -12409,7 +12519,7 @@ The rebuild is the next release. The article after it will put the new homepage 
 
 
 ==============================================================================
-# The proof moved up, the homepage after the rebuild, next to the before pictures (sgit.ai
+# The proof moved up, the homepage after the rebuild, next to the before pictures, sgit.ai
 
 > The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.
 >
@@ -12484,7 +12594,7 @@ One file, `admin/content/vaults.json`, now drives the hero cards, the six jobs, 
 
 
 ==============================================================================
-# A chat box on a site with no server, the plan, and the trade it makes (sgit.ai
+# A chat box on a site with no server, the plan, and the trade it makes, sgit.ai
 
 > Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.
 >
@@ -12568,7 +12678,7 @@ It also does not know anything that is not in the catalogue. Nineteen theses, ni
 
 
 ==============================================================================
-# Twenty sites in fifteen days, and what that did to the writing (sgit.ai
+# Twenty sites in fifteen days, and what that did to the writing, sgit.ai
 
 > The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
 >
@@ -12643,7 +12753,7 @@ If you want the shortest version of what all of this is for, the [introduction](
 
 
 ==============================================================================
-# Git for things you cannot put on GitHub (sgit.ai
+# Git for things you cannot put on GitHub, sgit.ai
 
 > An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.
 >
@@ -12756,7 +12866,7 @@ This article is also published as a [LinkedIn newsletter post](https://www.linke
 
 
 ==============================================================================
-# Seven vaults, one method (sgit.ai
+# Seven vaults, one method, sgit.ai
 
 > Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
 >
@@ -12862,7 +12972,7 @@ The last line is the one to keep. Every rule above is short and specific because
 
 
 ==============================================================================
-# Green does not mean live (sgit.ai
+# Green does not mean live, sgit.ai
 
 > Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 >
