@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,7 +41,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-140site releases, each verified live before it was called done
+141site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -188,7 +188,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-21**The most important question is whether they miss it**A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.Read it →](articles/the-question-is-whether-they-miss-it.md) [2026-09-21**What SaaS refused to build is exactly what the agents need**The SaaS apocalypse, argued with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. The mistake is to confuse a brief with a product. The opportunity is to be the company that keeps the brief running.Read it →](articles/what-saas-refused-to-build.md) [2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md)
+[2026-09-21**The most important question is whether they miss it**A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.Read it →](articles/the-question-is-whether-they-miss-it.md) [2026-09-21**The SaaS apocalypse is optional**The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. Whether it happens to any given company depends on how that company behaves: Nokia when the mobile phone arrived, or Nokia when the iPhone did.Read it →](articles/what-saas-refused-to-build.md) [2026-09-20**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.Read it →](articles/introducing-fractal-semantic-graphs.md)
 
 [All articles →](articles/index.md)
 

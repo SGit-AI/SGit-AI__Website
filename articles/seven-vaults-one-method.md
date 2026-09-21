@@ -2,7 +2,7 @@
 
 > Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
 
-*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 2026-08-19 · vaultspublishingmethod
 
-Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
+***Abstract:** Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.*
 
 Between 14 and 18 August this site published seven vaults. Each one is a real encrypted vault you can open in a browser from a read key printed on its page: [a photo gallery](../demos/vaults/algarve-may-2026/index.md), [field notes](../demos/vaults/field-notes/index.md), [a patient-held supplement record](../demos/vaults/supplement-stack/index.md), [a risk register](../demos/vaults/risk-mandate/index.md), [a browser-isolation risk graph](../demos/vaults/agentic-browser-isolation/index.md), [a fact-to-risk explorer](../demos/vaults/risk-graph-explorer/index.md), and [the catalogue that indexes them](../catalogue/index.md), itself a vault.
 

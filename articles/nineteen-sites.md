@@ -2,7 +2,7 @@
 
 > The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
 
-*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 2026-08-26 · [v0.2.45](../admin/versions.md) · networkpublishingmethod
 
-The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
+***Abstract:** The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.*
 
 On 11 August this was one website. By 26 August there were **twenty repositories**, nineteen of them siblings on `*.sgit.ai`, and fifteen of those were created in the last five days of that fortnight.
 

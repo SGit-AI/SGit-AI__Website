@@ -1,7 +1,7 @@
 ---
-title: What SaaS refused to build is exactly what the agents need
+title: The SaaS apocalypse is optional
 date: 2026-09-21
-summary: The SaaS apocalypse, argued with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. The mistake is to confuse a brief with a product. The opportunity is to be the company that keeps the brief running.
+summary: The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. Whether it happens to any given company depends on how that company behaves: Nokia when the mobile phone arrived, or Nokia when the iPhone did.
 version: v0.4.2
 tags: saas, strategy, wardley-maps, agents, article
 status: published
@@ -9,7 +9,7 @@ status: published
 
 Here is the claim, stated so it can be wrong. **Most medium and large SaaS companies will struggle, spectacularly, in the medium term**, as companies and individuals build more of what they actually want instead of renting an approximation of it. Whether they survive depends on what they do next. Whether the companies that come out on top are the ones on top today is an open question, and so is whether there will be companies that big in some of these categories at all.
 
-It is still all to play for. But the ground has moved, and the best way to see how is a Wardley map.
+It is still all to play for, and the reason it is worth writing down is that the outcome is not fixed. Nokia met the arrival of the mobile phone by becoming the mobile phone company, and dominated the category for fifteen years. Nokia met the arrival of the iPhone and was gone from the category within seven. Same company, same industry, two responses. **The SaaS apocalypse is optional in exactly that sense**: it is not a forecast about the technology, it is a forecast about behaviour, and every company gets to choose which Nokia it is. The ground has moved, though, and the best way to see how is a Wardley map.
 
 !shot saas-apocalypse.webp | images/ | The SaaS product slides right along the evolution axis and becomes a substrate: a database, a message bus, a state machine. On top of that substrate, the custom brief is now cheap to make. What is not cheap is making it last, and that is the handover from explorer to villager to town planner. The mistake, drawn in red, is treating the brief as if it were already a product.
 
@@ -100,3 +100,5 @@ One prediction to close on, because it cuts against the mood. We are going to ne
 And I think something else changes. The reason large software companies were slow is the reason Fred Brooks wrote down fifty years ago: adding people to a project slows it down, because the communication overhead grows faster than the output. Two-pizza teams were the workaround. **I think we can now build much larger, much more multidisciplinary teams of humans and agents, because the communication can finally be scaled**, the passing of information, the capture of decisions, the handovers between the people who explore and the people who settle and the people who plan. We could never do that before.
 
 The companies that master that are going to be the biggest software houses of the next decade. Some of them exist today. Most of them do not yet.
+
+Which brings it back to Nokia. The apocalypse is optional. The version of it that ends with a company gone from its category is the one where it treats the screen as the moat, keeps the data locked, ships the API as a tick-box, and waits for the panic to pass, which the market has helpfully told it the panic has. The other version is the one where it notices that what it refused to build is exactly what its customers' agents are asking for, and builds it first. Both are available. Only one of them is a choice the company gets to make later.

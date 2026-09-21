@@ -2,7 +2,7 @@
 
 > Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
 
-*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 2026-09-07 · [v0.2.59](../admin/versions.md) · homepagepositioningvaultsagents
 
-Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
+***Abstract:** Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.*
 
 Three weeks ago this site had four published vaults. Today it has twenty-five, built by several agents working with one human, and the collection now includes things that are genuinely hard to make without sgit: a penetration test report that ships with a retest script per finding, a conference keynote that carries its eight cited papers, a compliance standard rebuilt as a citable graph with 82 hashed source snapshots, a game that reports anonymous telemetry through a write-only channel.
 

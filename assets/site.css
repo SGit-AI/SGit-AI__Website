@@ -183,6 +183,8 @@ main.doc h1{font-family:var(--serif);font-size:2.1rem;color:#101114;margin:.2rem
 main.doc h2{font-family:var(--serif);font-size:1.4rem;color:#101114;margin:2.2rem 0 .7rem;scroll-margin-top:70px}
 main.doc h3{font-size:1.02rem;color:#101114;margin:1.7rem 0 .5rem}
 main.doc .lead{color:#34363c;font-size:1.12rem}
+main.doc .abstract{color:#34363c;font-size:1.08rem;font-style:italic;line-height:1.55}
+main.doc .abstract b{font-weight:600}
 main.doc p, main.doc li{color:#34363c;font-size:.98rem}
 main.doc ul,main.doc ol{padding-left:1.3rem}
 main.doc li{margin:.3rem 0}

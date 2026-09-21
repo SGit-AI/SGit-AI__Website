@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.2'
+SITE_VERSION = 'v0.4.3'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,32 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.2', '2026-09-21', 'this release',
+    ('v0.4.3', '2026-09-21', 'this release',
+     "THE SAAS ARTICLE GETS ITS REAL TITLE, AND EVERY ARTICLE GETS AN ABSTRACT. Three notes "
+     "from the author on the two new articles. (1) THE TITLE NEEDED THE WORDS SAAS APOCALYPSE "
+     "IN IT, with an ironic twist, because the key move in the argument is that it has not "
+     "happened yet and remains a very strong possibility depending on how the incumbents "
+     "behave. The article is now 'The SaaS apocalypse is optional', and the twist is carried by "
+     "Nokia, twice: Nokia met the arrival of the mobile phone by becoming the mobile phone "
+     "company and dominated for fifteen years; Nokia met the arrival of the iPhone and was gone "
+     "from the category within seven. Same company, two responses. The apocalypse is optional "
+     "in exactly that sense, a forecast about behaviour rather than technology, and every "
+     "company gets to choose which Nokia it is. Added to the summary, the lead and a new "
+     "closing paragraph; the slug is unchanged so the link already given out still works. (2) "
+     "THE FIRST PARAGRAPH IS AN ABSTRACT, AND NOW SAYS SO. The author republished the startup "
+     "article on LinkedIn with the summary prefixed 'Abstract:' and set in italics, which reads "
+     "better than a bare lead, so the article template now does the same for every article: "
+     "the summary renders as an italic paragraph with a bold Abstract label, and the markdown "
+     "twin carries the same emphasis. (3) THE INFOGRAPHIC BECOMES THE HERO. The author made a "
+     "cover image for the startup article (a hand lifting one app tile out of a grid, leaving "
+     "an empty slot and a speech bubble asking for it back, over the three pillars) and asked "
+     "for it on the page, compressed. It is now the first figure of 'The most important "
+     "question is whether they miss it', re-encoded from 174 KB at 1733 wide to 94 KB at 1600 "
+     "wide, above the flow diagram rather than instead of it: the picture carries the hook, "
+     "the diagram carries the mechanism. The startups section's link to the SaaS article was "
+     "updated to the new title.",
+     ),
+    ('v0.4.2', '2026-09-21', 'git ef990399',
      "THE SAAS APOCALYPSE, ARGUED WITH DATA RATHER THAN VIBES. A second article from the "
      "author's voice memos, 'What SaaS refused to build is exactly what the agents need', and "
      "the brief was to find evidence for the claims about quality, usability, satisfaction and "
@@ -3797,7 +3822,7 @@ def article_body(a):
             f' <h1>{a["title"]}</h1>\n'
             f' <p class="small dim">{a["date"]}{ver}'
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
-            f' <p class="lead">{a["summary"]}</p>\n'
+            f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + '\n <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All articles</a></p>\n'

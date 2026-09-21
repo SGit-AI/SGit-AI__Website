@@ -7,6 +7,8 @@ tags: startups, strategy, open-source, investing, article
 status: published
 ---
 
+!shot startup-test-hero.webp | images/ | The startup test. Ship it, let them try it, take it away, and see whether anybody asks for it back.
+
 Most advice about starting a company is about raising money. This is not that. It is the operating model I actually use, and it rests on three pillars that are easier to state than to do.
 
 1. **Be profitable.** Ship a product that sells, at a price that works for you.

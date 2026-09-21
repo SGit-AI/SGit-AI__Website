@@ -2,7 +2,7 @@
 
 > The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.
 
-*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 2026-09-07 · [v0.2.60](../admin/versions.md) · homepagepositioningvaultsagents
 
-The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.
+***Abstract:** The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.*
 
 [The previous article](../articles/proof-behind-the-claim.md) made a diagnosis and a promise: the homepage led with a property nobody can look at, the proof sat two clicks away as a table, and the rebuild would be put next to those screenshots so the comparison could be made honestly. This is that comparison.
 
