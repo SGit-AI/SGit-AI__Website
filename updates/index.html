@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.4</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.5</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -95,7 +95,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.4 &middot; 21 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.5 &middot; 21 Sep 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -136,6 +136,38 @@
 <p>Which is why this scales in the direction that usually breaks things. In a schema-first system, more data means a bigger index, more memory and a bigger machine. Here the store can be gigabytes or terabytes while <b>what a question loads stays in the megabytes, because the graph is what tells you which bytes matter.</b> Adding a terabyte adds nodes you did not load.</p>
 <h2>A correction the measuring turned up</h2>
 <p>This page said 617 nodes and 694 edges, quoting the vault's page. The file as cloned today has <b>1,051 nodes and 1,289 edges</b> across five worlds, because the vault released 0.2.1 today and the graph grew. Every count on the page is now counted rather than quoted, and the drift was only visible because the vault keeps its versions instead of overwriting them.</p>
+ </article>
+ <article class="upd" id="that-was-a-cold-start-not-an-architecture-cost">
+ <h3><a href="#that-was-a-cold-start-not-an-architecture-cost">That was a cold start, not an architecture cost</a> <a class="upd-ver" href="../admin/versions.html">v0.3.5</a></h3>
+ <p class="chips"><span class="chip">architecture</span><span class="chip">performance</span><span class="chip">api</span><span class="chip">method</span></p>
+<p>Yesterday's <a href="../demos/fractal-graphs/performance.html">performance page</a> put "cold network fetch, 1,210 ms" at the top of a table and let it stand as the cost of reading encrypted data. It is not. It is mostly the cost of a serverless invocation, which is a deployment choice with a known fix, and the page now says so.</p>
+<h2>The fixed cost has nothing to do with bytes</h2>
+<p>Six runs each, best of run:</p>
+<div class="tablewrap"><table>
+<tr><th>One GET returning</th><th>Best</th><th>Median</th></tr>
+<tr><td>340 bytes</td><td>0.331 s</td><td>0.381 s</td></tr>
+<tr><td>41 KB</td><td><b>0.309 s</b></td><td>0.390 s</td></tr>
+<tr><td>2.3 KB</td><td>0.347 s</td><td>0.530 s</td></tr>
+<tr><td>1.0 MB</td><td>0.647 s</td><td>0.992 s</td></tr>
+</table></div>
+<p><b>A 340-byte response and a 41 KB response take the same time.</b> Only at a megabyte does transfer become visible, and then it is 0.300 s of the 0.647 s. One request in the run came back in 4.8 s, which is what a cold start looks like when you catch one.</p>
+<p>So the floor of roughly a third of a second is the <b>per-invocation cost of running this API serverless</b>. SG/API also runs on EC2, where a warm process is already listening and that cost does not exist. We have not measured that deployment, so the page puts no number on it, but it no longer lets the invocation model be read as an architecture cost. Where the API runs is a deployment decision, and it is the right lever when a workload is request-heavy rather than byte-heavy.</p>
+<h2>Batching is the answer, and the page was missing most of it</h2>
+<p><code>POST /api/vault/batch/{vault_id}</code> takes <b>up to 100 operations in one request</b>. Measured on small objects so that only the per-object term shows:</p>
+<div class="tablewrap"><table>
+<tr><th>Objects in one batch</th><th>Best</th><th>Per object</th></tr>
+<tr><td>1</td><td>0.590 s</td><td>590 ms</td></tr>
+<tr><td>2</td><td>0.394 s</td><td>197 ms</td></tr>
+<tr><td>10</td><td>0.872 s</td><td>87 ms</td></tr>
+<tr><td><b>18</b></td><td><b>1.528 s</b></td><td><b>85 ms</b></td></tr>
+</table></div>
+<p>That is a straight line, and the line is the cost model worth carrying:</p>
+<p><b>time ≈ 0.25 s fixed + about 71 ms per object + transfer</b></p>
+<p>Eighteen objects fetched one at a time would be about 6.3 seconds. In one batch, <b>1.53 seconds, a little over four times faster</b>, and the saving grows with the count.</p>
+<p>The endpoint also does more than reads, which the page had not covered at all. Operations are <code>read</code>, <code>write</code>, <code>write-if-match</code> and <code>delete</code>, authorised per operation, so a read-then-write cycle can be one round trip. And <code>write-if-match</code> carries the SHA-256 of the content you believe is there: <b>if any match fails, the entire batch is rejected.</b> That is optimistic concurrency across a set of files, in one request, with no lock anywhere.</p>
+<h2>The next optimisation, named rather than glossed</h2>
+<p>71 ms per object inside a batch is server-side, and it is close to linear. That is the signature of objects being fetched from storage one after another inside the handler. Fetching them concurrently would bring a twenty-object batch close to the cost of a one-object batch.</p>
+<p>That, and chunking by accumulated size rather than by file count so the 502 stops happening, are the two changes that would move these numbers most. Both are in the API and the client rather than in the design.</p>
  </article>
  <article class="upd" id="performance-and-cost">
  <h3><a href="#performance-and-cost">Graph engineering versus fractal graph, the measured answer</a> <a class="upd-ver" href="../admin/versions.html">v0.3.2</a></h3>
@@ -1021,7 +1053,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.3.4</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.5</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1063,7 +1095,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.5';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

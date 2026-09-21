@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.3.4",
+  "site_version": "v0.3.5",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -15,6 +15,19 @@
         "method"
       ],
       "summary": "Two releases of the performance page covered the mechanisms and buried the thing that actually does the work. Performance here comes from an architectural habit, and the habit is one question: what data do I need for the task at hand? Not what the system holds…"
+    },
+    {
+      "slug": "that-was-a-cold-start-not-an-architecture-cost",
+      "title": "That was a cold start, not an architecture cost",
+      "date": "2026-09-21",
+      "version": "v0.3.5",
+      "tags": [
+        "architecture",
+        "performance",
+        "api",
+        "method"
+      ],
+      "summary": "Yesterday's performance page put \"cold network fetch, 1,210 ms\" at the top of a table and let it stand as the cost of reading encrypted data. It is not. It is mostly the cost of a serverless invocation, which is a deployment choice with a known fix, and the pa…"
     },
     {
       "slug": "performance-and-cost",

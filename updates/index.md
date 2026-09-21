@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.3.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -67,6 +67,52 @@ Which is why this scales in the direction that usually breaks things. In a schem
 ## A correction the measuring turned up
 
 This page said 617 nodes and 694 edges, quoting the vault's page. The file as cloned today has **1,051 nodes and 1,289 edges** across five worlds, because the vault released 0.2.1 today and the graph grew. Every count on the page is now counted rather than quoted, and the drift was only visible because the vault keeps its versions instead of overwriting them.
+
+### [That was a cold start, not an architecture cost](#that-was-a-cold-start-not-an-architecture-cost) [v0.3.5](../admin/versions.md)
+
+architectureperformanceapimethod
+
+Yesterday's [performance page](../demos/fractal-graphs/performance.md) put "cold network fetch, 1,210 ms" at the top of a table and let it stand as the cost of reading encrypted data. It is not. It is mostly the cost of a serverless invocation, which is a deployment choice with a known fix, and the page now says so.
+
+## The fixed cost has nothing to do with bytes
+
+Six runs each, best of run:
+
+| One GET returning | Best | Median |
+|---|---|---|
+| 340 bytes | 0.331 s | 0.381 s |
+| 41 KB | **0.309 s** | 0.390 s |
+| 2.3 KB | 0.347 s | 0.530 s |
+| 1.0 MB | 0.647 s | 0.992 s |
+
+**A 340-byte response and a 41 KB response take the same time.** Only at a megabyte does transfer become visible, and then it is 0.300 s of the 0.647 s. One request in the run came back in 4.8 s, which is what a cold start looks like when you catch one.
+
+So the floor of roughly a third of a second is the **per-invocation cost of running this API serverless**. SG/API also runs on EC2, where a warm process is already listening and that cost does not exist. We have not measured that deployment, so the page puts no number on it, but it no longer lets the invocation model be read as an architecture cost. Where the API runs is a deployment decision, and it is the right lever when a workload is request-heavy rather than byte-heavy.
+
+## Batching is the answer, and the page was missing most of it
+
+`POST /api/vault/batch/{vault_id}` takes **up to 100 operations in one request**. Measured on small objects so that only the per-object term shows:
+
+| Objects in one batch | Best | Per object |
+|---|---|---|
+| 1 | 0.590 s | 590 ms |
+| 2 | 0.394 s | 197 ms |
+| 10 | 0.872 s | 87 ms |
+| **18** | **1.528 s** | **85 ms** |
+
+That is a straight line, and the line is the cost model worth carrying:
+
+**time ≈ 0.25 s fixed + about 71 ms per object + transfer**
+
+Eighteen objects fetched one at a time would be about 6.3 seconds. In one batch, **1.53 seconds, a little over four times faster**, and the saving grows with the count.
+
+The endpoint also does more than reads, which the page had not covered at all. Operations are `read`, `write`, `write-if-match` and `delete`, authorised per operation, so a read-then-write cycle can be one round trip. And `write-if-match` carries the SHA-256 of the content you believe is there: **if any match fails, the entire batch is rejected.** That is optimistic concurrency across a set of files, in one request, with no lock anywhere.
+
+## The next optimisation, named rather than glossed
+
+71 ms per object inside a batch is server-side, and it is close to linear. That is the signature of objects being fetched from storage one after another inside the handler. Fetching them concurrently would bring a twenty-object batch close to the cost of a one-object batch.
+
+That, and chunking by accumulated size rather than by file count so the 502 stops happening, are the two changes that would move these numbers most. Both are in the API and the client rather than in the design.
 
 ### [Graph engineering versus fractal graph, the measured answer](#performance-and-cost) [v0.3.2](../admin/versions.md)
 

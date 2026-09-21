@@ -12,6 +12,13 @@
       <description>Two releases of the performance page covered the mechanisms and buried the thing that actually does the work. Performance here comes from an architectural habit, and the habit is one question: what data do I need for the task at hand? Not what the system holds…</description>
     </item>
     <item>
+      <title>That was a cold start, not an architecture cost</title>
+      <link>https://sgit.ai/updates/index.html#that-was-a-cold-start-not-an-architecture-cost</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#that-was-a-cold-start-not-an-architecture-cost</guid>
+      <pubDate>2026-09-21</pubDate>
+      <description>Yesterday&#x27;s performance page put &quot;cold network fetch, 1,210 ms&quot; at the top of a table and let it stand as the cost of reading encrypted data. It is not. It is mostly the cost of a serverless invocation, which is a deployment choice with a known fix, and the pa…</description>
+    </item>
+    <item>
       <title>Graph engineering versus fractal graph, the measured answer</title>
       <link>https://sgit.ai/updates/index.html#performance-and-cost</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#performance-and-cost</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</guid>
       <pubDate>2026-09-18</pubDate>
       <description>Vault 30 is a sibling of 29 from the same generator, one day later, a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and w…</description>
-    </item>
-    <item>
-      <title>The summit sheets get a preview grid, and their numbers are dated rather than corrected</title>
-      <link>https://sgit.ai/updates/index.html#summit-sheets-preview-grid</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#summit-sheets-preview-grid</guid>
-      <pubDate>2026-09-18</pubDate>
-      <description>The four Lisbon handouts now appear on the parent page as four A4 previews (page one of each printed sheet, rendered from the PDF at build time and shown as a card) so a reader sees all four at a glance and clicks through to the page with the table, the embed…</description>
     </item>
   </channel>
 </rss>

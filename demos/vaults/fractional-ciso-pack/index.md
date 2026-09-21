@@ -2,7 +2,7 @@
 
 > Sibling of vault #29 from the same generator: a fractional CISO pack that solves the publication problem by describing a type of company rather than withholding a real one. Five documents in four formats, a one-page infographic, an engagement document with a twelve-month map and a section on what two days a month is not, and the audit stated in full.
 
-*Source: <https://sgit.ai/demos/vaults/fractional-ciso-pack/index.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/fractional-ciso-pack/index.html> · site v0.3.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

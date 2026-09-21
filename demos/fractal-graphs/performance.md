@@ -2,7 +2,7 @@
 
 > Measured answer to “performance of graph engineering versus fractal graph”: no live database, files in object storage, and the LETS cycle (Load, Extract, Transform, Save) with a disposable engine in the reader's tab. A 617-node graph opens in 94 KB and three requests, a question costs 7.8 s and 315 KB from cold against 65.4 s for a full clone, an ontology costs 4 KB, and the standing cost of thirty one published graphs is 295 MB of object storage with nothing running between questions. Plus the cost model line by line, the five places the same read key runs, fractal deployment, and six places it is slower.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/performance.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/performance.html> · site v0.3.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -50,12 +50,13 @@ The habit only makes sense if loading is genuinely cheap, so here is what the la
 
 | Step | Time for 1.0 MB | Rate |
 |---|---|---|
-| Fetch it over the network, cold, nothing cached | **1,210 ms** | the only number that matters |
+| Fixed per-request overhead, before a single byte of the file | **347 ms** | [a deployment characteristic, not an architecture cost](#fixed) |
+| Transfer of the 1.0 MB itself | **300 ms** | 3.5 MB/s on this link |
 | Read it from local disk once it is there | **2.5 ms** | 418 MB/s |
 | **Decrypt it, AES-256-GCM** | **0.35 ms** | **2,978 MB/s** |
 | Parse the JSON | 3.2 ms | the largest local cost, and it is the parser |
 
-Read that table twice. **Decryption is 0.03% of the cold fetch and about a tenth of the JSON parse.** On a 59 KB shard it is 0.025 ms, which is not a number anybody needs to plan around. The same holds in a browser, where AES-GCM runs in WebCrypto against the same hardware instructions the measurement above used. Whenever somebody assumes that encrypting the data must have cost something in speed, this is the answer: at these sizes, on ordinary compute, **encryption is free and the network is everything**. Which puts the whole question back where it belongs, on how many bytes you decided to ask for.
+Read that table twice. **Decryption is a tenth of the JSON parse, and half a thousandth of the transfer.** On a 59 KB shard it is 0.025 ms, which is not a number anybody needs to plan around. The same holds in a browser, where AES-GCM runs in WebCrypto against the same hardware instructions the measurement above used. Whenever somebody assumes that encrypting the data must have cost something in speed, this is the answer: at these sizes, on ordinary compute, **encryption is free**, the disk is free, and what is left is the request. Which puts the whole question back where it belongs, on how many requests you made and how many bytes you decided to ask for.
 
 **The design rule, stated as a budget.** If you find yourself loading gigabytes to answer a question, something is wrong upstream, and no amount of tuning will fix it. Go back and cut the data, because the fix is always in the shape of the data and never in the engine.
 
@@ -97,7 +98,7 @@ The vault is the [DSIT AI Risk Toolkit](../vaults/dsit-ai-risk-toolkit/index.md)
 | Sparse clone: every path, size and hash, no content | 256 KB | **7.3 s** |
 | Fetch one file that answers one question (a 59 KB topic shard) | 59 KB | **0.49 s** |
 | Fetch a second file (marginal cost of the next question) | 63 KB | **0.87 s** |
-| Fetch the entire graph as one file | 1.0 MB | **1.21 s** |
+| Fetch the entire graph as one file | 1.0 MB | **1.21 s**(raw GET of the same object: 0.65 s) |
 | Ask again for something already fetched | 0 | **0.18 s**, no network |
 
 The first and third rows are the whole argument. **Cloning everything costs 65 seconds. Answering a question costs 7.8 seconds and 315 KB**, and the second question costs under a second. Nothing was indexed in advance, nothing was kept warm, and no service was running before the command was typed.
@@ -129,13 +130,58 @@ This is the property underneath every number above, and it is the one most peopl
 
 | Request | Returned | Time |
 |---|---|---|
-| One object, `GET /api/vault/read/{vault_id}/bare/data/{object_id}`, no headers | 2,364 bytes of ciphertext | **0.86 s** |
-| The same, a larger object | 59,324 bytes of ciphertext | **0.63 s**, best of five 0.33 s |
+| One object, `GET /api/vault/read/{vault_id}/bare/data/{object_id}`, no headers | 2,364 bytes of ciphertext | **0.35 s** best of six |
+| The same, a larger object | 59,324 bytes of ciphertext | **0.31 s** best of six, [the same as the small one](#fixed) |
 | Five objects, one `POST /api/vault/batch/{vault_id}` | 0.08 MB | **0.87 s**, one round trip |
 | **Twenty objects, one POST** | **3.76 MB** | **2.79 s**, one round trip |
 | Forty two objects, one POST | **502** | The server's response-size limit. The CLI already handles this by splitting the chunk |
 
-Two things fall out of that table. The first is that **the transport is not the bottleneck anywhere**: twenty files and 3.76 MB, which is more than half the vault's bytes, came back in one round trip in under three seconds. The second is the honest correction to the clone figure above, which is worth stating rather than hiding.
+### What that latency actually is, and why it is not an architecture cost
+
+It would be easy to read the numbers above as the cost of reading encrypted data. They are not. Almost all of that time is **fixed per-request overhead, and it is completely insensitive to how many bytes come back**. Measured six times each, best of run:
+
+| One GET returning | Best | Median |
+|---|---|---|
+| 340 bytes | 0.331 s | 0.381 s |
+| 41 KB | **0.309 s** | 0.390 s |
+| 2.3 KB | 0.347 s | 0.530 s |
+| 1.0 MB | 0.647 s | 0.992 s |
+
+**A 340-byte response and a 41 KB response take the same time.** Only at a megabyte does transfer become visible at all, and then it accounts for 0.300 s of the 0.647 s. One request that returned in 4.8 s during the run is the shape of the thing: a cold start, not a slow read.
+
+So the floor of roughly a third of a second is **the per-invocation cost of running this API serverless**. It is a deployment choice with a known fix: SG/API also runs on EC2, where a warm process is already listening and that per-invocation cost does not exist. We have not measured that deployment here, so this page does not put a number on it, but the honest reading of the table above is that **the architecture is not what costs 350 ms, the invocation model is**, and anybody comparing this against a database on a warm connection should hold that separately.
+
+Which makes the second optimisation the interesting one, because it works on either deployment.
+
+### Batching, which is how the fixed cost gets amortised
+
+`POST /api/vault/batch/{vault_id}` takes **up to 100 operations in one request**, and they can be **mixed reads and writes**. Measured on small objects, so that bytes stay out of the way and only the per-object cost shows:
+
+| Objects in one batch | Best time | Per object |
+|---|---|---|
+| 1 | 0.590 s | 590 ms |
+| 2 | 0.394 s | 197 ms |
+| 5 | 0.560 s | 112 ms |
+| 10 | 0.872 s | 87 ms |
+| **18** | **1.528 s** | **85 ms** |
+
+That fits a straight line, and the line is the cost model worth carrying around:
+
+**time ≈ 0.25 s fixed, plus about 71 ms per object, plus transfer**
+
+Eighteen objects fetched one at a time would be about 6.3 seconds. In one batch they took **1.53 seconds, a little over four times faster**, and the saving grows with the count until the response-size ceiling stops you. This is the optimisation that matters most in practice, because it is the one that turns a page needing thirty small files into a single round trip.
+
+The batch endpoint does more than amortise reads, and the rest is worth knowing before building on it.
+
+| **Mixed reads and writes in one request** | Operations are `read`, `write`, `write-if-match` and `delete`, authorised per operation, so a read-then-write cycle can be one round trip instead of two |
+|---|---|
+| **Atomic compare-and-swap across many files** | `write-if-match` carries the SHA-256 of the content you believe is there, and **if any match fails the entire batch is rejected**. That is optimistic concurrency over a set of files, in one request, with no lock anywhere |
+| **A ceiling you will meet** | 100 operations per request is the hard limit, and there is a response-size limit well before that: our 42-object read returned 502. The CLI chunks at 50, and on a 502 it splits the chunk and then falls back to presigned S3 reads per file |
+| **Large objects route around the body** | Presigned URLs rather than the request body, so a big blob never has to fit inside a batch response at all |
+
+**The next thing worth optimising, named rather than glossed.** That 71 ms per object inside a batch is server-side work, and it is close to linear, which is the signature of the objects being fetched from storage one after another inside the handler. Fetching them concurrently would bring a twenty-object batch close to the cost of a one-object batch. That, and chunking by accumulated size rather than by file count so the 502 stops happening, are the two changes that would move these numbers most. Both are in the API and the client, not in the design.
+
+Two things fall out of all of this. The first is that **the transport is not the bottleneck anywhere**: twenty files and 3.76 MB, which is more than half the vault's bytes, came back in one round trip in under three seconds. The second is the honest correction to the clone figure above, which is worth stating rather than hiding.
 
 **Why the 65 second clone is a client-side cost, not a transport one.** The clone log says what happened: seven commits walked, twenty eight trees walked, and **106 blobs** downloaded rather than 42, because a full clone takes the history as well as the current files. Then one batch of 50 hit the server's response-size limit and fell back to fetching those 50 files one at a time, which is most of the 65 seconds. The transport moved 3.76 MB in 2.79 seconds when asked in one request. That gap is an engineering finding for the CLI, chunk by accumulated size rather than by file count, and not a property of the architecture.
 
@@ -209,7 +255,7 @@ The same shape is in the [DSIT vault](../vaults/dsit-ai-risk-toolkit/index.md), 
 | **Each world is small because each world keeps its own ontology** | There is no global schema to carry around, so a traversal stays inside one world until it deliberately crosses an edge. Crossing costs one small file. This is the performance benefit of the fractal property, and it is not an accident of it |
 | **Immutable and content addressed, so every cache is correct** | The CDN is the read replica. The browser cache is the local index. Neither can ever be stale, because an object's name is its content, and neither is a trust boundary, because what it holds is ciphertext |
 | **The address is computed, not looked up** | File ids are derived by HMAC from the read key, so reading an encrypted file is one unauthenticated GET with no discovery round trip, and twenty of them are one POST |
-| **And the design does most of it** | The habit of asking what data this question needs, on top of three layers that were already fast, beats any amount of engine tuning. Decryption runs at 2,978 MB/s and a local read at 418 MB/s, so [the only real variable is how many bytes you asked for](#design) |
+| **And the design does most of it** | The habit of asking what data this question needs, on top of three layers that were already fast, beats any amount of engine tuning. Decryption runs at 2,978 MB/s and a local read at 418 MB/s, so [the only real variables are how many requests you made and how many bytes you asked for](#design), and [a batch collapses the first of those](#batching) |
 
 ## The cost model, which is the part that changes the decision
 
@@ -244,6 +290,8 @@ Because the graph is files and the engine is disposable, the same artefact runs 
 | **A CI container or an agent's sandbox** | The read key as a variable | The same clone the human gets, in a pipeline, with the history attached so a build can assert on what changed |
 | **A static host with no backend at all** | GitHub Pages or an S3 bucket | Deterministic GET paths and client-side decryption, degrading cleanly to read only. [Documented here](../../docs/vault/static-hosting.md) |
 
+The same applies to the API itself, which is the point most easily missed. **SG/API is not tied to a serverless runtime.** The measurements on this page were taken against the serverless deployment, which is why every request carries the invocation cost described above. The same API runs on EC2, with a warm process already listening, and that cost is simply not there. **Where the API runs is a deployment decision, separate from the architecture**, and it is the right lever to reach for when a workload is request-heavy rather than byte-heavy.
+
 **And a real database comes with it, wherever it lands.** A browser tab or a function can stand up a full SQL engine over the slice it just loaded: SQLite compiled to WebAssembly, in memory, with real indexes and real joins. That is not a workaround for lacking a server. It is the same thing the managed services do, and it is worth noticing that they do it: plenty of serverless and scale-to-zero database products work by loading the dataset into an in-memory SQLite or MySQL when an instance wakes, and serving queries from there. The dataset being small enough to hold in memory is what makes them viable. **We do explicitly what they do implicitly**, with two differences: the working set is chosen by the question rather than by an instance lifecycle, and nothing has to wake up, because the engine is built where the answer is needed.
 
 This is also the disaster recovery story, and it is short. Every reader who ever cloned has a complete, verifiable copy including history. There is no primary to fail over from.
@@ -265,6 +313,7 @@ The practical consequence for anyone with a data boundary to respect: **the depl
 This page would not be worth sending if it only listed wins.
 
 - **A full clone is slow, and not for the reason it looks.** 65 seconds for 3.2 MB, but the transport returned 3.76 MB in 2.79 seconds when asked for it in one request. The clone is slow because it takes the history too, 106 blobs rather than 42 files, and because one batch of 50 exceeded the server's response-size limit and degraded to 50 individual fetches. Fixable in the client, and until it is fixed, use the sparse clone.
+- **Every request pays about a third of a second before it returns a byte**, on the serverless deployment measured here. That is the invocation, not the read, and it does not grow with the response. It is also the most improvable number on this page: batch up to a hundred operations into one request, or run SG/API on EC2 where a warm process is already listening.
 - **There is no server-side query.** Whatever the client needs, the client downloads. That is fine at a megabyte and wrong at a gigabyte, which is why partitions and pre-cut slices are a design step rather than an optimisation you reach for later.
 - **Deep traversal over a very large single-domain graph is not our ground.** Six hops across a hundred million edges in one schema is exactly what a graph database was built for. Use one. The fractal argument is about the case where those hundred million edges were never going to live in one schema in the first place.
 - **Writes are single writer per branch.** There is no concurrent multi-writer transaction, by design. [The two-branch model](../../docs/two-branch-model.md) is how several agents work without one.
@@ -285,6 +334,7 @@ $ cd sparse && time sgit fetch data/questions/security.json
   59 KB                                              0.49 s
 $ time sgit fetch data/graph.json
 1.0 MB, the whole 1,051-node graph                 1.21 s
+         the raw GET of that object, without the client: 0.65 s
 ```
 
 The transport figures used no client at all. One encrypted object, no auth header, no account:
@@ -311,7 +361,7 @@ The read key is on [the vault's page](../vaults/dsit-ai-risk-toolkit/index.md), 
 
 ## The answer to the question, in one paragraph
 
-Most of the win is a design habit rather than a technology: ask what data this question needs, and build on three layers that are already fast, the file system, a content-addressed hash store, and a graph that tells you which bytes to ask for. Decryption runs at nearly 3 GB/s and a local read at 418 MB/s, so the only variable that matters is how many bytes you decided to load, and the fractal structure is what keeps that number small, by restructuring data into context and keeping a link down to the source. Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as encrypted files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. Reading one of those files is a single unauthenticated GET, because the address was derived from the read key rather than looked up, and twenty of them are one POST. Writes go to a lane outside the commit tree, so they never contend with reads. The cached bytes are ciphertext, so every cache in the path can hold them safely and none of them can go stale, because an object's name is a hash of its content. The measured result is a 1,051-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
+Most of the win is a design habit rather than a technology: ask what data this question needs, and build on three layers that are already fast, the file system, a content-addressed hash store, and a graph that tells you which bytes to ask for. Decryption runs at nearly 3 GB/s and a local read at 418 MB/s, so what is left is the request: a fixed cost of roughly a third of a second on the serverless deployment, insensitive to size, which a batch of up to a hundred operations amortises away and a warm process on EC2 removes. The remaining variable is how many bytes you decided to load, and the fractal structure is what keeps that number small, by restructuring data into context and keeping a link down to the source. Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as encrypted files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. Reading one of those files is a single unauthenticated GET, because the address was derived from the read key rather than looked up, and twenty of them are one POST. Writes go to a lane outside the commit tree, so they never contend with reads. The cached bytes are ciphertext, so every cache in the path can hold them safely and none of them can go stale, because an object's name is a hash of its content. The measured result is a 1,051-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
 
 [← Fractal Semantic Graphs](index.md)[The vault that was measured →](../vaults/dsit-ai-risk-toolkit/index.md)
 
