@@ -19,6 +19,13 @@
       <description>Yesterday&#x27;s performance page put &quot;cold network fetch, 1,210 ms&quot; at the top of a table and let it stand as the cost of reading encrypted data. It is not. It is mostly the cost of a serverless invocation, which is a deployment choice with a known fix, and the pa…</description>
     </item>
     <item>
+      <title>Take the API out of the path, and the same clone is 25 times faster</title>
+      <link>https://sgit.ai/updates/index.html#take-the-api-out-of-the-path</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#take-the-api-out-of-the-path</guid>
+      <pubDate>2026-09-21</pubDate>
+      <description>The performance page has been measuring the API and calling it the architecture. Worth saying plainly what that API is: a convenience over a store, not a requirement of it. The store is cloud storage holding encrypted objects whose names are hashes. Nothing st…</description>
+    </item>
+    <item>
       <title>Graph engineering versus fractal graph, the measured answer</title>
       <link>https://sgit.ai/updates/index.html#performance-and-cost</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#performance-and-cost</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#brief-for-graphs-sgit-ai</guid>
       <pubDate>2026-09-19</pubDate>
       <description>The Fractal Semantic Graphs page carried a small footnote saying that graphs.sgit.ai had the fractal test backwards. The author asked for the footnote to go and for a proper brief in its place, since the sgit.ai page is now the fullest worked application of th…</description>
-    </item>
-    <item>
-      <title>Vault #30, the same pack, written for an archetype instead of a company</title>
-      <link>https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-same-pack-for-an-archetype</guid>
-      <pubDate>2026-09-18</pubDate>
-      <description>Vault 30 is a sibling of 29 from the same generator, one day later, a fractional CISO pack: two days a month, on a retainer, for a company that is already certified. The interesting thing is how it solves the publication problem. 29 described a real role and w…</description>
     </item>
   </channel>
 </rss>

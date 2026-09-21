@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.5</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.6</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -95,7 +95,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.5 &middot; 21 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.6 &middot; 21 Sep 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
@@ -168,6 +168,33 @@
 <h2>The next optimisation, named rather than glossed</h2>
 <p>71 ms per object inside a batch is server-side, and it is close to linear. That is the signature of objects being fetched from storage one after another inside the handler. Fetching them concurrently would bring a twenty-object batch close to the cost of a one-object batch.</p>
 <p>That, and chunking by accumulated size rather than by file count so the 502 stops happening, are the two changes that would move these numbers most. Both are in the API and the client rather than in the design.</p>
+ </article>
+ <article class="upd" id="take-the-api-out-of-the-path">
+ <h3><a href="#take-the-api-out-of-the-path">Take the API out of the path, and the same clone is 25 times faster</a> <a class="upd-ver" href="../admin/versions.html">v0.3.6</a></h3>
+ <p class="chips"><span class="chip">architecture</span><span class="chip">performance</span><span class="chip">api</span><span class="chip">storage</span></p>
+<p>The <a href="../demos/fractal-graphs/performance.html">performance page</a> has been measuring the API and calling it the architecture. Worth saying plainly what that API is: <b>a convenience over a store, not a requirement of it.</b> The store is cloud storage holding encrypted objects whose names are hashes. Nothing stops a reader going straight to the bucket, or to a CDN in front of it, with no function in the path at all.</p>
+<h2>The measurement</h2>
+<p>Same client, same vault, same 106 objects, same decryption. Only the path to the bytes changed.</p>
+<div class="tablewrap"><table>
+<tr><th>Path to the bytes</th><th>Full clone</th></tr>
+<tr><td>Through the serverless API</td><td><b>65.4 s</b></td></tr>
+<tr><td><b>Plain GETs, no API in the path</b></td><td><b>2.63 s</b></td></tr>
+<tr><td>Straight off a local folder</td><td>2.05 s</td></tr>
+</table></div>
+<p><b>Twenty five times faster, with nothing about the vault changed.</b> The honest caveat: that static host was on localhost, so the network was free, and a real CDN adds edge latency. But the client, the objects and the work were identical in both rows, so what the comparison isolates is the function in the middle.</p>
+<h2>It already ships</h2>
+<p><code>sgit clone --transport static</code> points at any host that answers GETs. It sniffs which of two published layouts the host uses on the first successful read, then fans out <b>eight parallel requests at a time</b>. It also records every URL it touches, so a test can assert that no request ever carried key material, which proves the property rather than asserting it.</p>
+<h2>Why it is safe to serve the bytes directly</h2>
+<p>Because there is nothing in them. Every object is ciphertext under a key the server never had, and every name is a hash of those bytes. Exposing them as ordinary public GETs discloses object sizes and request timing, which is the same exposure the API already has and which <a href="../security/index.html">the security model</a> already names as an acknowledged side channel. It discloses nothing else. That is why reads need no auth header today, and why a bucket behind a CDN is a legitimate deployment rather than a hole.</p>
+<h2>And the direct path is already in production</h2>
+<p>Anything over <b>4 MB</b> already takes it, because that is the safe margin under the serverless base64 response limit of about 4.7 MB. The client asks for a presigned URL and fetches the bytes straight from storage. The same route is the fallback when a batch returns 502.</p>
+<p>So there are already two paths to every byte, and the only reason the small case goes through a function is that nobody has needed it not to. What follows from there is ordinary storage engineering: a CDN in front of the bucket, where immutable hash-named objects are the ideal cache key; ranged and parallel GETs, which is how a 100 MB or 500 MB object should be read; lower-latency storage classes such as S3 Express One Zone, which we have not benchmarked so there is no number on the page; or another provider entirely, since what is being served is opaque bytes at deterministic paths.</p>
+<h2>Finding the object you want</h2>
+<p>Usually you already know the id, because it is pinned in the page. When you do not, the walk is short: the branch ref gives you the commit, which gives you a tree, which gives you the file or the next tree down. <b>A couple of requests, not a clone.</b></p>
+<p>Counted against the static host: reading one named file out of a sparse clone cost <b>two requests</b>, and one of those was the client re-probing which layout the host uses, a 404 it could skip by remembering the answer.</p>
+<p>This is the thing git cannot do. Pulling one file out of a git repository generally means cloning it, because the objects are packed and the transport is negotiated. Here every object is individually addressable at a deterministic path, so one file is one request against a plain web server.</p>
+<h2>One gap, stated outright</h2>
+<p><b>There is no history-depth flag.</b> <code>--sparse</code> skips the content (256 KB, 7.3 s) and <code>--bare</code> skips the working copy, but a full clone still takes every version of every file: 106 blobs where the current tree is 42 files, and a sparse clone still walks all seven commits and twenty eight trees. Depth control is the single change that would most improve clone time.</p>
  </article>
  <article class="upd" id="performance-and-cost">
  <h3><a href="#performance-and-cost">Graph engineering versus fractal graph, the measured answer</a> <a class="upd-ver" href="../admin/versions.html">v0.3.2</a></h3>
@@ -1053,7 +1080,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.3.5</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.6</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1095,7 +1122,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.5';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.6';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

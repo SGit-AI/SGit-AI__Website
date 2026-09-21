@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.3.5</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.3.6</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -95,7 +95,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.5 &middot; 21 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.6 &middot; 21 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Fractal Semantic Graphs</a> / Performance and cost</p>
   <h1>Performance, cost, and running everywhere</h1>
@@ -109,6 +109,7 @@
     <tr><td><b>What runs between questions</b></td><td>A server, its indexes, its replicas, its backups</td><td>Nothing at all</td></tr>
     <tr><td><b>Cost of admission</b></td><td>Everything must be loaded in, and conform to one schema</td><td>Publish the files and declare the ontology. Other worlds keep their own</td></tr>
     <tr><td><b>Reading one item</b></td><td>Connect, authenticate, plan, execute, serialise</td><td><b>One unauthenticated GET</b>, because the address was derived locally from the read key rather than looked up</td></tr>
+    <tr><td><b>If you need it faster</b></td><td>A bigger instance</td><td><a href="#direct">Take the API out of the path.</a> The same clone is 65.4 s through the API and <b>2.63 s</b> against plain GETs, because the store is cloud storage and the bytes are ciphertext, so serving them directly is safe</td></tr>
     <tr><td><b>Where a query runs</b></td><td>On the server, for every reader</td><td>In the reader's tab, or in a function that exists for one request</td></tr>
     <tr><td><b>Writes against reads</b></td><td>Share the engine, so they contend</td><td>An <a href="#append">append lane outside the commit tree</a>. A write never touches a branch and never blocks a read</td></tr>
     <tr><td><b>What a query costs the owner</b></td><td>Instance hours, whether anyone asks or not</td><td>The bytes that were actually read</td></tr>
@@ -323,6 +324,37 @@
   <p><b>Encryption costs 28 bytes per object, flat.</b> The two measurements above were 2,364 bytes of ciphertext for 2,336 of plaintext, and 59,324 for 59,296. That is a 12-byte nonce plus a 16-byte authentication tag, the same 28 bytes whether the file is two kilobytes or two megabytes. There is no percentage overhead to budget for and no padding to reason about.</p>
   <p><b>There are two ways to address a file, and the choice is a performance decision.</b> Pin the content-addressed object id in your page and reading it is exactly one GET, valid forever, because the id is a hash of the ciphertext and those bytes can never change. Or give a path and let the client resolve HEAD to tree to blob, which costs a small number of extra hops and always gives you the current version. Neither is better. They answer different questions, and a well-built page uses both.</p>
 
+  <h2 id="direct">If speed really matters, take the API out of the path</h2>
+  <p>Everything measured so far went through the API, and the API turned out to be most of the cost. It is worth saying plainly what that API is: <b>a convenience over a store, not a requirement of it</b>. The store is cloud storage holding encrypted objects whose names are hashes. Nothing prevents a reader going straight to the bucket, or to a CDN in front of it, with no function in the path at all.</p>
+  <p><b>And nothing much is risked by doing so</b>, which is the part that makes this a real option rather than a dangerous one. Every object is ciphertext under a key the server never had, and every name is a hash of those bytes. Exposing the objects as ordinary public GETs discloses object sizes and request timing, which is the same exposure the API already has and which <a href="../../security/index.html">the security model</a> names as an acknowledged side channel. It discloses nothing else. That is why reads need no auth header today, and it is why a bucket behind a CDN is a legitimate deployment rather than a hole.</p>
+
+  <h3>It already ships, and here is what it costs</h3>
+  <p>The CLI has a transport for exactly this. <code>--transport static</code> points at any host that answers GETs, sniffs which of two published layouts it uses on the first successful read, then fans out <b>eight parallel requests at a time</b>. It also records every URL it touches, so a test can assert that no request ever carried key material, which is the kind of check that proves a property rather than asserting one.</p>
+  <p>So the same clone can be run twice, same client, same 106 objects, same decryption, with only the path to the bytes changed.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Path to the bytes</th><th>Full clone of the same vault</th></tr>
+    <tr><td>Through the serverless API</td><td><b>65.4 s</b></td></tr>
+    <tr><td><b>Plain GETs, no API in the path</b></td><td><b>2.63 s</b></td></tr>
+    <tr><td>Straight off a local folder</td><td>2.05 s</td></tr>
+  </table></div>
+  <p><b>Twenty five times faster, with nothing about the vault changed.</b> The honest caveat: that static host was on localhost, so the network was free, and a real CDN would add edge latency. But the comparison still isolates what it is meant to, because the client, the objects and the work were identical in both rows. The difference is the function in the middle. If a workload is request-heavy, this is the lever, and it is a bigger one than any tuning inside the API.</p>
+
+  <h3>The direct path is already in production for large files</h3>
+  <p>This is not a hypothetical route. Anything over <b>4 MB</b> already takes it, because that is the safe margin under the serverless base64 response limit of about 4.7 MB. The client asks the API for a presigned URL and then <b>fetches the bytes straight from storage</b>. The same fallback catches a batch that returns 502: split the chunk, and if a single object still fails, go around the API entirely and read it presigned.</p>
+  <p>Which means the architecture already has two paths to every byte, and the only reason the small case goes through a function is that nobody has needed it not to. The options from here are ordinary storage engineering rather than anything exotic.</p>
+  <div class="tablewrap"><table>
+    <tr><td><b>A CDN in front of the bucket</b></td><td>Immutable objects with hash names are the ideal cache key. Every edge holds them correctly and forever, and reads never reach the origin twice</td></tr>
+    <tr><td><b>Ranged and parallel GETs</b></td><td>Object storage serves byte ranges, so a very large object comes down as many chunks at once rather than one stream. This is how a 100 MB or 500 MB file should be read, and it is available because the store is a standard one</td></tr>
+    <tr><td><b>Lower-latency storage classes</b></td><td>The newer single-digit-millisecond classes, such as S3 Express One Zone, exist precisely for small-object read latency. We have not benchmarked one, so there is no number here, only the observation that the store is ordinary enough to move onto one</td></tr>
+    <tr><td><b>Somewhere else entirely</b></td><td>The store is cloud storage, so it is not tied to one provider. Another object store, another CDN, or a service dedicated to serving files fast will all work, because what is being served is opaque bytes at deterministic paths</td></tr>
+  </table></div>
+
+  <h3>Finding the object you want, in a handful of requests</h3>
+  <p>Direct access is only useful if you can work out which object to ask for. In most cases you already know, because the id is pinned in the page or held in an index you have. When you do not, the walk is short: the branch ref, which gives you the commit, which gives you a tree, which gives you the file or the next tree down. <b>A couple of requests, not a clone.</b></p>
+  <p>Measured against the static host, counting every GET it received: reading one named file out of a sparse clone cost <b>two requests</b>, and one of those was the client re-probing which layout the host uses, a 404 it could skip by remembering the answer. The real cost is one GET.</p>
+  <div class="note"><b>This is the thing git cannot do.</b> Pulling one file out of a git repository generally means cloning the repository, because the objects are packed and the transport is negotiated. Here every object is individually addressable at a deterministic path, so one file is one request against a plain web server. It is also why <code>--sparse</code> exists and works: <b>structure only, 256 KB and 7.3 s, then fetch content on demand</b>, which is the shallow clone of this world. <code>--bare</code> takes the structure with no working copy at all.</div>
+  <p>One gap, stated because it is the cause of the 65 second figure: <b>there is no history-depth flag today.</b> A full clone takes every version of every file, 106 blobs where the current tree is 42 files. A sparse clone avoids the content but still walks all seven commits and twenty eight trees. Depth control, so that a reader can ask for the current tree and nothing older, is the missing option, and it would do more for clone time than anything else on this list.</p>
+
   <h2 id="library">Live evidence: a whole knowledge base served from encrypted vaults</h2>
   <p><a href="https://sgraph.ai/en-gb/library/" rel="noopener" target="_blank">sgraph.ai/en-gb/library/</a> is a public knowledge base whose content does not exist on the web server. It is a static shell that reads everything out of two encrypted vaults, in the visitor's browser, with read keys published in the page on purpose.</p>
   <div class="tablewrap"><table>
@@ -406,7 +438,7 @@
     <tr><td><b>A CI container or an agent's sandbox</b></td><td>The read key as a variable</td><td>The same clone the human gets, in a pipeline, with the history attached so a build can assert on what changed</td></tr>
     <tr><td><b>A static host with no backend at all</b></td><td>GitHub Pages or an S3 bucket</td><td>Deterministic GET paths and client-side decryption, degrading cleanly to read only. <a href="../../docs/vault/static-hosting.html">Documented here</a></td></tr>
   </table></div>
-  <p>The same applies to the API itself, which is the point most easily missed. <b>SG/API is not tied to a serverless runtime.</b> The measurements on this page were taken against the serverless deployment, which is why every request carries the invocation cost described above. The same API runs on EC2, with a warm process already listening, and that cost is simply not there. <b>Where the API runs is a deployment decision, separate from the architecture</b>, and it is the right lever to reach for when a workload is request-heavy rather than byte-heavy.</p>
+  <p>The same applies to the API itself, which is the point most easily missed. <b>SG/API is not tied to a serverless runtime.</b> The measurements on this page were taken against the serverless deployment, which is why every request carries the invocation cost described above. The same API runs on EC2, with a warm process already listening, and that cost is simply not there. And <a href="#direct">the API can be left out of the path altogether</a>, with readers going straight to the bucket or a CDN in front of it, which measured 25 times faster on the same clone. <b>Where the bytes are served from is a deployment decision, separate from the architecture</b>, and it is the right lever to reach for when a workload is request-heavy rather than byte-heavy.</p>
   <p><b>And a real database comes with it, wherever it lands.</b> A browser tab or a function can stand up a full SQL engine over the slice it just loaded: SQLite compiled to WebAssembly, in memory, with real indexes and real joins. That is not a workaround for lacking a server. It is the same thing the managed services do, and it is worth noticing that they do it: plenty of serverless and scale-to-zero database products work by loading the dataset into an in-memory SQLite or MySQL when an instance wakes, and serving queries from there. The dataset being small enough to hold in memory is what makes them viable. <b>We do explicitly what they do implicitly</b>, with two differences: the working set is chosen by the question rather than by an instance lifecycle, and nothing has to wake up, because the engine is built where the answer is needed.</p>
   <p>This is also the disaster recovery story, and it is short. Every reader who ever cloned has a complete, verifiable copy including history. There is no primary to fail over from.</p>
 
@@ -423,7 +455,8 @@
   <h2 id="limits">Where it is slower, stated plainly</h2>
   <p>This page would not be worth sending if it only listed wins.</p>
   <ul>
-    <li><b>A full clone is slow, and not for the reason it looks.</b> 65 seconds for 3.2 MB, but the transport returned 3.76 MB in 2.79 seconds when asked for it in one request. The clone is slow because it takes the history too, 106 blobs rather than 42 files, and because one batch of 50 exceeded the server's response-size limit and degraded to 50 individual fetches. Fixable in the client, and until it is fixed, use the sparse clone.</li>
+    <li><b>A full clone is slow, and not for the reason it looks.</b> 65 seconds for 3.2 MB, but the same clone against plain GETs with no API in the path took <b>2.63 seconds</b>. It is slow because it takes the history too, 106 blobs rather than 42 files, and because one batch of 50 exceeded the server's response-size limit and degraded to 50 individual fetches. None of that is the architecture. Until it is fixed, use the sparse clone or <a href="#direct">the static transport</a>.</li>
+    <li><b>There is no history-depth flag.</b> You can skip the content with <code>--sparse</code>, but you cannot yet ask for the current tree without its ancestors. That is the single change that would most improve clone time.</li>
     <li><b>Every request pays about a third of a second before it returns a byte</b>, on the serverless deployment measured here. That is the invocation, not the read, and it does not grow with the response. It is also the most improvable number on this page: batch up to a hundred operations into one request, or run SG/API on EC2 where a warm process is already listening.</li>
     <li><b>There is no server-side query.</b> Whatever the client needs, the client downloads. That is fine at a megabyte and wrong at a gigabyte, which is why partitions and pre-cut slices are a design step rather than an optimisation you reach for later.</li>
     <li><b>Deep traversal over a very large single-domain graph is not our ground.</b> Six hops across a hundred million edges in one schema is exactly what a graph database was built for. Use one. The fractal argument is about the case where those hundred million edges were never going to live in one schema in the first place.</li>
@@ -444,6 +477,10 @@
 <span class="p">$</span> <span class="cmd">time sgit fetch data/graph.json</span>
 <span class="d">  1.0 MB, the whole 1,051-node graph                 1.21 s
          the raw GET of that object, without the client: 0.65 s</span></pre>
+  <p>The direct path needs no vault host at all, only something that answers GETs:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --transport static --base-url https://&lt;any-get-host&gt;/ &lt;read-key&gt; v</span>
+<span class="d">  106 objects, 60 files extracted                    2.63 s
+  the same clone through the API:                   65.40 s</span></pre>
   <p>The transport figures used no client at all. One encrypted object, no auth header, no account:</p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">curl "https://send.sgraph.ai/api/vault/read/0q4sfr57/bare%2Fdata%2F&lt;object-id&gt;"</span>
 <span class="d">  59,324 bytes of ciphertext                         0.63 s</span>
@@ -468,7 +505,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.3.5</a> · <a href="../../admin/index.html">engineering</a> · <a href="performance.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.3.6</a> · <a href="../../admin/index.html">engineering</a> · <a href="performance.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -510,7 +547,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.5';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.6';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

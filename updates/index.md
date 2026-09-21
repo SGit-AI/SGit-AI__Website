@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.3.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.3.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -113,6 +113,50 @@ The endpoint also does more than reads, which the page had not covered at all. O
 71 ms per object inside a batch is server-side, and it is close to linear. That is the signature of objects being fetched from storage one after another inside the handler. Fetching them concurrently would bring a twenty-object batch close to the cost of a one-object batch.
 
 That, and chunking by accumulated size rather than by file count so the 502 stops happening, are the two changes that would move these numbers most. Both are in the API and the client rather than in the design.
+
+### [Take the API out of the path, and the same clone is 25 times faster](#take-the-api-out-of-the-path) [v0.3.6](../admin/versions.md)
+
+architectureperformanceapistorage
+
+The [performance page](../demos/fractal-graphs/performance.md) has been measuring the API and calling it the architecture. Worth saying plainly what that API is: **a convenience over a store, not a requirement of it.** The store is cloud storage holding encrypted objects whose names are hashes. Nothing stops a reader going straight to the bucket, or to a CDN in front of it, with no function in the path at all.
+
+## The measurement
+
+Same client, same vault, same 106 objects, same decryption. Only the path to the bytes changed.
+
+| Path to the bytes | Full clone |
+|---|---|
+| Through the serverless API | **65.4 s** |
+| **Plain GETs, no API in the path** | **2.63 s** |
+| Straight off a local folder | 2.05 s |
+
+**Twenty five times faster, with nothing about the vault changed.** The honest caveat: that static host was on localhost, so the network was free, and a real CDN adds edge latency. But the client, the objects and the work were identical in both rows, so what the comparison isolates is the function in the middle.
+
+## It already ships
+
+`sgit clone --transport static` points at any host that answers GETs. It sniffs which of two published layouts the host uses on the first successful read, then fans out **eight parallel requests at a time**. It also records every URL it touches, so a test can assert that no request ever carried key material, which proves the property rather than asserting it.
+
+## Why it is safe to serve the bytes directly
+
+Because there is nothing in them. Every object is ciphertext under a key the server never had, and every name is a hash of those bytes. Exposing them as ordinary public GETs discloses object sizes and request timing, which is the same exposure the API already has and which [the security model](../security/index.md) already names as an acknowledged side channel. It discloses nothing else. That is why reads need no auth header today, and why a bucket behind a CDN is a legitimate deployment rather than a hole.
+
+## And the direct path is already in production
+
+Anything over **4 MB** already takes it, because that is the safe margin under the serverless base64 response limit of about 4.7 MB. The client asks for a presigned URL and fetches the bytes straight from storage. The same route is the fallback when a batch returns 502.
+
+So there are already two paths to every byte, and the only reason the small case goes through a function is that nobody has needed it not to. What follows from there is ordinary storage engineering: a CDN in front of the bucket, where immutable hash-named objects are the ideal cache key; ranged and parallel GETs, which is how a 100 MB or 500 MB object should be read; lower-latency storage classes such as S3 Express One Zone, which we have not benchmarked so there is no number on the page; or another provider entirely, since what is being served is opaque bytes at deterministic paths.
+
+## Finding the object you want
+
+Usually you already know the id, because it is pinned in the page. When you do not, the walk is short: the branch ref gives you the commit, which gives you a tree, which gives you the file or the next tree down. **A couple of requests, not a clone.**
+
+Counted against the static host: reading one named file out of a sparse clone cost **two requests**, and one of those was the client re-probing which layout the host uses, a 404 it could skip by remembering the answer.
+
+This is the thing git cannot do. Pulling one file out of a git repository generally means cloning it, because the objects are packed and the transport is negotiated. Here every object is individually addressable at a deterministic path, so one file is one request against a plain web server.
+
+## One gap, stated outright
+
+**There is no history-depth flag.** `--sparse` skips the content (256 KB, 7.3 s) and `--bare` skips the working copy, but a full clone still takes every version of every file: 106 blobs where the current tree is 42 files, and a sparse clone still walks all seven commits and twenty eight trees. Depth control is the single change that would most improve clone time.
 
 ### [Graph engineering versus fractal graph, the measured answer](#performance-and-cost) [v0.3.2](../admin/versions.md)
 
