@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.5'
+SITE_VERSION = 'v0.4.6'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.5', '2026-09-21', 'this release',
+    ('v0.4.6', '2026-09-21', 'this release',
+     "THE SAAS ARTICLE TAKES ITS FINAL TITLE, AND THE ARGUMENT IT IMPLIES. 'The SaaS apocalypse "
+     "will be decided by inertia, not by AI', chosen by the author from the inertia set, and "
+     "the reason it is the right one is a claim the piece had not yet made explicitly: AI IS A "
+     "CONSTANT, AVAILABLE TO BOTH SIDES. The incumbents have the same models as the newcomers, "
+     "plus more data, more engineers and more money, and if the technology were the deciding "
+     "factor they would already have won; two and a half years in, they have not. So the "
+     "variable is inertia, in the Wardley sense: where a company sits on the evolution axis "
+     "and how much past success it has to protect, which is what decides which side of the "
+     "Nokia path each SaaS provider ends up on. FOUR PASSAGES CHANGED TO CARRY THAT. The lead "
+     "now states it outright as the reason for the title. The market section gains a paragraph "
+     "observing that the February panic and the September recovery were both staring at the "
+     "wrong variable: the panic said AI would hollow out SaaS, the recovery said it would not, "
+     "and the same models were available to the largest incumbent and a two-person company on "
+     "the day the plug-ins shipped. The incumbents section adds that they have the same AI and "
+     "more data to point it at, and that the constraint is not the models. The closing "
+     "separates the two: the strategy question is not about AI, which both sides have, but "
+     "about inertia, which only one side has. Abstract and startups link follow the title. "
+     "Slug unchanged.",
+     ),
+    ('v0.4.5', '2026-09-21', 'git 75773920',
      "OPTIONAL WAS THE WRONG WORD, AND THE AUTHOR SAID WHY. Nokia did not opt into either of "
      "its outcomes: the first time it had nothing to protect and moved, the second time it had "
      "fifteen years of success to protect and did not, and the mechanism is the climatic "
