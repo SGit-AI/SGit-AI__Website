@@ -2,7 +2,7 @@
 
 > Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
 
-*Source: <https://sgit.ai/docs/credentials.html> · site v0.4.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/credentials.html> · site v0.4.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

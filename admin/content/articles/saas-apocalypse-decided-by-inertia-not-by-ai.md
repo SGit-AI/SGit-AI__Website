@@ -7,9 +7,13 @@ tags: saas, strategy, wardley-maps, agents, article
 status: published
 ---
 
+!shot saas-inertia-hero.webp | images/ | The incumbent and the newcomer are carrying the same AI. What differs is the ball and chain of past success, and the fact that the newcomer was never on the rails in the first place.
+
 Here is the claim, stated so it can be wrong. **Most medium and large SaaS companies will struggle, spectacularly, in the medium term**, as companies and individuals build more of what they actually want instead of renting an approximation of it. Whether they survive depends on what they do next. Whether the companies that come out on top are the ones on top today is an open question, and so is whether there will be companies that big in some of these categories at all.
 
 It is still all to play for, and the reason it is worth writing down is that the outcome is not fixed. Nokia met the arrival of the mobile phone by becoming the mobile phone company, and dominated the category for fifteen years. Nokia met the arrival of the iPhone and was gone from the category within seven. Same company, same industry, two outcomes, and Nokia did not choose either of them. The first time it had nothing to protect, so it moved. The second time it had fifteen years of success to protect, and the climatic pattern Simon Wardley names did the rest: **success breeds inertia**. That is the frame for everything below, and it is why the title says what it says. **AI is not the deciding factor, because AI is available to both sides.** The incumbents have the same models the newcomers have, plus more data to point them at, more engineers and more money. If the technology decided this, they would already have won, and two and a half years in they have not. What decides it is inertia: where a company sits on the evolution axis, and how much past success it has to protect. The SaaS apocalypse is a forecast about that. It will happen to the companies with the most to protect, and it belongs to the ones with the least, which is why the interesting question is not whether the incumbents survive but who is already building on the ground they cannot move onto. The best way to see that ground is a Wardley map.
+
+> **Same AI. Different inertia.**
 
 !shot saas-apocalypse.webp | images/ | The SaaS product slides right along the evolution axis and becomes a substrate: a database, a message bus, a state machine. On top of that substrate, the custom brief is now cheap to make. What is not cheap is making it last, and that is the handover from explorer to villager to town planner. The mistake, drawn in red, is treating the brief as if it were already a product.
 

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.7'
+SITE_VERSION = 'v0.4.8'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.7', '2026-09-21', 'this release',
+    ('v0.4.8', '2026-09-21', 'this release',
+     "A HERO IMAGE THAT ARGUES THE THESIS, AND THE FOUR WORDS THAT SUMMARISE IT BETTER THAN THE "
+     "ARTICLE DID. The author made a cover for the inertia piece and revised it after review. "
+     "The first version put both carts on the same railway track, which said same race, "
+     "different speed; the revision has the newcomer OFF THE RAILS on chunky tyres with its own "
+     "tyre tracks curving away across open ground, which is the actual argument, that the "
+     "newcomers build on ground the incumbent cannot move onto, and it turns the rails into the "
+     "incumbent's constraint rather than a shared destination. The revision also drops a "
+     "decorative Mediterranean landscape that carried no meaning, and the rugged tyres remove a "
+     "reading in which the newcomer looked like a toy. What survives from the first version is "
+     "the load-bearing choice: BOTH CARTS CARRY THE SAME TEAL AI BLOCK, which is the 'AI is "
+     "available to both sides' claim made visual, while the difference between them is a stack "
+     "labelled PAST SUCCESS with a ball and chain attached, which is Wardley's climatic pattern "
+     "drawn literally. Shipped as the article's first figure, above the Wardley-axis diagram: "
+     "the picture carries the hook, the diagram carries the mechanism. Re-encoded from 2.26 MB "
+     "PNG at 1915 wide to 63 KB webp at 1600. AND THE STRAPLINE BECOMES A PULL-QUOTE: 'Same AI. "
+     "Different inertia.' states the thesis in four words, better than any sentence in the "
+     "piece, so it now sits as a block quote between the lead and the diagram.",
+     ),
+    ('v0.4.7', '2026-09-21', 'git 7ec295ce',
      "THE SAAS ARTICLE'S FILE NAME NOW MATCHES ITS TITLE. The slug had stayed at "
      "what-saas-refused-to-build through three retitlings so that links already handed out "
      "kept working; the author has now asked for the name to follow the title, with no "
