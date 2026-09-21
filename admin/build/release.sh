@@ -38,6 +38,14 @@ else
 fi
 
 step "1/5 build"
+# Link-preview cards first, because the build refuses if an article has a hero figure
+# and no card. Needs sharp, which lives with the capture harness, so it is skipped
+# where that is not installed and the build then tells you what to run.
+if node -e "require.resolve('sharp')" >/dev/null 2>&1; then
+  node admin/build/make_og_cards.mjs || die "link-preview cards failed"
+else
+  echo "   link-preview cards: sharp not installed here, skipping the regeneration"
+fi
 python3 admin/build/build_pages.py || die "build failed"
 
 step "2/5 validate (includes the key-leak tripwire)"

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.0'
+SITE_VERSION = 'v0.5.1'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,31 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.0', '2026-09-21', 'this release',
+    ('v0.5.1', '2026-09-21', 'this release',
+     "THE GUARD SHIPPED IN v0.5.0 DID NOT GUARD THE CASE THAT MATTERS, AND THE NOTE FOR IT "
+     "OVERCLAIMED. The author asked the right question: will this work for new articles that "
+     "have an image? Tested rather than assumed, and the answer was NO. og_card() falls back "
+     "to og/default.jpg when an article's card is missing, so a new article with a hero, "
+     "published without running the generator, would build clean, validate clean, and ship "
+     "with the GENERIC card. The v0.5.0 entry said the validator catches a forgotten "
+     "generator run. It does not: it only checks that the file an og:image names exists, and "
+     "the fallback always names a file that exists. Simulated to confirm, and the build "
+     "printed no complaint while the new article's og:image pointed at the default. NOW THE "
+     "BUILD REFUSES. After ARTICLES is loaded, any article whose body has a !shot figure but "
+     "no og/<slug>.jpg stops the build, names every offender and prints the command to run. "
+     "Same shape as the LLMS_SECTIONS check, which is the house pattern: the build refuses "
+     "rather than guessing. og_card()'s fallback is now documented as safe precisely because "
+     "that check has already run, so the only pages reaching the default are the ones meant "
+     "to. AND release.sh RUNS THE GENERATOR, so in practice it is automatic: step 1 calls "
+     "make_og_cards.mjs before the build when sharp resolves, and says so and skips when it "
+     "does not, at which point the build's own refusal is what catches it. PROVED BOTH WAYS: "
+     "a test article with a hero and no card stopped the build with its name and the fix; "
+     "running the generator produced the card and the same article then built with its own "
+     "og:image. So the answer to the question is: yes for a new article, automatically via "
+     "release.sh, and if the generator is ever skipped the build stops instead of quietly "
+     "shipping the wrong picture.",
+     ),
+    ('v0.5.0', '2026-09-21', 'git 7403bdaa',
      "SHARED LINKS HAD NO PICTURE, BECAUSE og:image WAS MISSING ENTIRELY. Reported from a "
      "LinkedIn compose box: pasting the SaaS article gave a title-and-domain card with no "
      "image. The head carried og:type, og:site_name, og:url, og:title and og:description, and "
@@ -2580,6 +2604,9 @@ def json_ld(path, title, desc):
 # hero plus one default, and this picks the right one. validate.js checks the file it
 # names actually exists, so forgetting to run the generator fails the build.
 def og_card(path):
+    # Safe to fall through to the default here: the ARTICLES check above has already
+    # refused the build if an article with a hero is missing its card, so the only
+    # pages that reach the fallback are the ones that are meant to.
     if path.startswith('articles/') and path.endswith('.html'):
         slug = os.path.basename(path)[:-5]
         if os.path.exists(os.path.join(ROOT, 'og', slug + '.jpg')):
@@ -3413,6 +3440,25 @@ def load_pages():
 LOADER = Content_Loader(os.path.join(ADMIN, 'content'))
 UPDATES = [u for u in LOADER.load_updates() if u['status'] == 'published']
 ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
+
+# An article with a hero figure must also have its link-preview card, or og_card() below
+# quietly falls back to og/default.jpg and the article ships with the generic card. That
+# is invisible from the page and from the validator (the tag is present and the file it
+# names exists), and it only shows up when somebody shares the link. The cards are built
+# by a separate tool because they need sharp, so this is the reminder to run it. Same
+# shape as the LLMS_SECTIONS check: the build refuses rather than guessing.
+_missing_cards = []
+for _a in ARTICLES:
+    if not re.search(r'^!shot\s+([^\s|]+)\s*\|\s*([^\s|]+)', _a['body'], re.M):
+        continue
+    if not os.path.exists(os.path.join(ROOT, 'og', _a['slug'] + '.jpg')):
+        _missing_cards.append(_a['slug'])
+if _missing_cards:
+    raise SystemExit(
+        'these articles have a hero figure but no link-preview card, so they would ship\n'
+        'with the generic default and nobody would notice until the link was shared:\n  '
+        + '\n  '.join(_missing_cards)
+        + '\nrun: node admin/build/make_og_cards.mjs')
 SITES = [x for x in LOADER.load_sites() if x['status'] == 'published']
 ROLES = LOADER.load_roles()
 ISSUES = LOADER.load_issues()
