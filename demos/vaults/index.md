@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential, no account, no write capability.
+> Thirty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.4.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.4.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,15 +10,9 @@
 
 # Published vaults
 
-Every vault whose read key this site has deliberately published, with, for each one, a page describing what it does, the features it uses, what the shape is good for, and the vault itself running live inside that page, where you will also find its read key and a link that opens it. A read key is the complete credential: no account, no token, and no write capability anywhere in it.
+Open any of these in your browser right now. Every read key here was published on purpose, and a read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault itself running live inside it.
 
-**Publishing one of your own?** [**The method is written down**](publishing.md), the seven steps behind every row below, the tools that do each one, and the mistakes that produced each rule. Written to be followed by another site's agent.
-
-**Intake, since it nearly went wrong.** A credential submitted for publication here was once a **vault key** described as a read key, a legacy `passphrase:vault_id` form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked; but the catch depended on somebody looking. Every submission now runs through `admin/build/check_credential.py` first, which refuses a write credential by **prefix** (`sgit_vk1_`, which new vaults emit) or, for anything older, by **shape**: a read key is 64 hex characters, and anything else before the colon is a passphrase. Prefixes are the better answer; the shape check covers the years of keys created before them. A prefix also declares *intent*: `sgit_public_read_` is a read key meant to be published, which is what every row below carries or is being moved to. [**What each credential can do, and what its prefix declares →**](../../docs/credentials.md)
-
-**The two rules, applied to every row.** Read keys yes, vault keys never, a read key is a capability we hand out on purpose, and it cannot become write access. And every vault is audited before its key appears here, because content travels with the key forever; findings are published on the vault’s page, not filed away.
-
-**Eight of these vaults are semantic graphs at different altitudes, each in its own ontology**: a regulation, a standard, a risk register, a threat model down to the compute instance. [**Fractal Semantic Graphs**](../fractal-graphs/index.md) defines the idea and walks them as one ladder, with screenshots, and [**Performance, cost and running everywhere**](../fractal-graphs/performance.md) measures what reading one actually costs.
+**Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
 **31 published vaults**: 7 analysis, 5 application, 5 briefing, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
@@ -87,7 +81,9 @@ Every vault whose read key this site has deliberately published, with, for each 
 
 | 1 | [Algarve · May 2026](algarve-may-2026/index.md)`3d04e6b9ca98` | A travel diary: twenty photographs in three sizes and an eight-chapter narrative | Gallery | 71 | 29 MB | 2026-08-16 |
 
-This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) (an index of vaults that is itself a vault, updated by an sgit push with no site deploy) carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The walkthrough of how a vault gets published at all (creation, audit, deliberate key publication, embed) is [the publishing method](publishing.md), with the original worked example on [the embed demo page](../vault-app-embed.md).
+Publishing one of your own? [**The method is written down**](publishing.md): the seven steps behind every row above, the tools that do each one, and the mistakes that produced each rule. The rules themselves, with the incident behind each, are on [**Lessons learned**](../../lessons/index.md), including why a read key may be published and a vault key never may.
+
+This table is the complete list, and [its machine-readable twin](llms.txt) is generated from the same file. [The catalogue](../../catalogue/index.md) (an index of vaults that is itself a vault, updated by an sgit push with no site deploy) carries a shape taxonomy and per-entry evidence status for the first nine; it is waiting on its key holder for the rest. The original worked example of creating, auditing and embedding one is on [the embed demo page](../vault-app-embed.md).
 
 Agents: this catalogue is also published as [/demos/vaults/llms.txt](llms.txt), every vault above with its id, category, size and published read key, generated from the same file this table is, so the two cannot drift. The whole-site map is [/llms.txt](../../llms.txt).
 

@@ -674,6 +674,17 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
 .btn-open{font-size:.95rem;font-weight:600;padding:.6rem 1.15rem}
 
 /* ---------- published-vaults table (generated from admin/content/vaults.json) ---------- */
+/* .vt-orient is the one orientation line above the table. It replaced four stacked .note
+   boxes that pushed the table (the thing a visitor came for) 919px down at 1280 wide and
+   2000px down at 390. A note box costs a border, 1.7rem of padding and its own margin;
+   one wrapping row costs a single line of text at desktop width and still reads as a
+   sentence plus two links on a phone. The three process notes moved to /lessons/. */
+.vt-orient{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .9rem;
+  margin:.1rem 0 1rem;padding:.5rem .8rem;font-size:.84rem;line-height:1.5;color:var(--dim);
+  background:var(--panel2);border:1px solid var(--line);border-radius:10px}
+.vt-orient span:not(.hv-sep){flex:1 1 20rem;min-width:0}
+.vt-orient b{color:#101114}
+.vt-orient a{white-space:nowrap;font-weight:600}
 .vt-count{margin:.2rem 0 .9rem;font-size:.86rem;color:var(--dim)}
 .vt{font-size:.83rem}
 .vt td{vertical-align:top}

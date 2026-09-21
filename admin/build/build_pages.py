@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.0'
+SITE_VERSION = 'v0.4.1'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,37 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.0', '2026-09-21', 'this release',
+    ('v0.4.1', '2026-09-21', 'this release',
+     "THREE DISCLAIMERS STOOD BETWEEN A VISITOR AND THE MOST POWERFUL PAGE ON THIS SITE. The "
+     "author's note: /demos/vaults/ is one of the strongest things here, and a first-time "
+     "visitor met four boxes of process, policy and incident text before a single openable "
+     "vault. Measured before the change, the table of 31 vaults began 919 px down at 1280 wide "
+     "and 2,000 px down at 390. MEASURED AFTER: 492 px and 832 px. A cut of 427 px (46 percent) "
+     "on desktop and 1,168 px (58 percent) on a phone, and five vault rows now sit above the "
+     "900 px fold where previously not even the table header did. No horizontal overflow at "
+     "either width, and the table's sort still asserted working rather than eyeballed. WHAT "
+     "CHANGED ON THE PAGE: the lead cut from 86 words to 50 and rewritten to start with the "
+     "instruction rather than the description ('Open any of these in your browser right now'); "
+     "the fractal note turned from a box into a component, a new .vt-orient strip carrying the "
+     "sentence and its two links in one flex row, 95 px down to 38 px at 1280 and 252 px to 127 "
+     "px at 390, with hidden .hv-sep separators so the markdown twin still reads as prose; and "
+     "one duplicated pointer to the publishing method deleted outright rather than moved. "
+     "NOTHING WAS THROWN AWAY, which was the author's actual instruction: the three notes were "
+     "interesting, they were just in the wrong place. They are now full entries on a new "
+     "LESSONS LEARNED page at /lessons/, in the Evidence menu beside Case studies, built on the "
+     "premise that a rule with no origin is only a preference and the first person who finds it "
+     "inconvenient will drop it. Each entry states THE RULE and WHERE IT CAME FROM: classify a "
+     "credential before it touches anything (from the submission that was a vault key described "
+     "as a read key), read keys yes and vault keys never, audit every vault before its key "
+     "appears anywhere, and write the method down rather than just the outcome. It links to the "
+     "existing case studies rather than repeating them. AND A COUNT CORRECTED ACROSS THREE "
+     "PAGES while checking the work: the ladder has NINE vaults on it, counted from the table "
+     "rather than recalled, but the vaults page said eight and the fractal page's lead said "
+     "'seven more' beside the origin vault, which is eight. Both drifted when the DSIT vault "
+     "became a rung in v0.3.1 and the surrounding prose was not updated. The homepage band "
+     "added in v0.3.8 already said nine, so the three pages now agree.",
+     ),
+    ('v0.4.0', '2026-09-21', 'git 5f8da5b0',
      "A STARTUPS SECTION, BECAUSE A LARGE PART OF WHY SGIT EXISTS IS TO LET OTHER PEOPLE BUILD "
      "ON IT. New top-level section at /startups/, in the Why menu beside Investors, and it opens "
      "by pointing at the operating model rather than the technology: the article shipped in "
@@ -2181,6 +2211,7 @@ NAV = [
         ('compare', 'Comparisons', 'compare/index.html'),
         ('fractal', 'Performance & cost', 'demos/fractal-graphs/performance.html'),
         ('case-studies', 'Case studies', 'case-studies/index.html'),
+        ('lessons', 'Lessons learned', 'lessons/index.html'),
         ('use-cases', 'Use cases', 'use-cases/index.html'),
     ]),
     ('updates', 'Updates', 'updates/index.html', [
@@ -2662,6 +2693,7 @@ LLMS_SECTIONS = [
     ('compare', 'Comparisons run as reproducible tests (the entry format, the privilege vocabulary, and the rows where vaults lose)'),
     ('use-cases', 'Use cases (task-shaped guidance: recipe, evidence status, agent brief)'),
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
+    ('lessons', 'Lessons learned (the rules this site enforces, each with the incident that produced it)'),
     ('docs', 'Docs'),
     ('api', 'HTTP API (the protocol surface: endpoints, auth headers, capability gates, limits)'),
     ('vault', 'SG/Vault platform'),

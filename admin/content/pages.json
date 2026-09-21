@@ -21,7 +21,7 @@
     "path": "demos/vaults/index.html",
     "section": "vaults",
     "title": "Published vaults, sgit.ai",
-    "desc": "Every vault whose read key sgit.ai has deliberately published: what each does, the features it uses, and the vault running live in the page. A read key is the complete credential, no account, no write capability."
+    "desc": "Thirty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it."
   },
   {
     "path": "demos/vaults/dsit-ai-risk-toolkit/index.html",
@@ -208,6 +208,12 @@
     "section": "case-studies",
     "title": "Case studies, sgit.ai",
     "desc": "Worked accounts of things that actually happened, including the ones that went wrong: a leaked vault key and its rekey, and the architecture of a live site whose host cannot read it."
+  },
+  {
+    "path": "lessons/index.html",
+    "section": "lessons",
+    "title": "Lessons learned, the rules and the incidents behind them, sgit.ai",
+    "desc": "Every rule this site enforces, with the event that produced it: classify a credential before it touches anything (a vault key once arrived labelled as a read key), read keys yes and vault keys never (we leaked our own), audit every vault before its key is published (three vaults shipped as republications), and write the method down rather than the outcome."
   },
   {
     "path": "case-studies/one-tree-two-remotes.html",

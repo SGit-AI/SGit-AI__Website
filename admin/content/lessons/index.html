@@ -1,0 +1,40 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Lessons learned</p>
+  <h1>Lessons learned</h1>
+  <p class="lead">Every rule this site enforces started as something that went wrong, or very nearly did. This page is the index of those rules with the incident behind each one attached, because a rule with no origin is only a preference, and the first person who finds it inconvenient will drop it.</p>
+  <div class="note"><b>How to read an entry.</b> <b>The rule</b> is the thing to copy, stated so it can be checked; <b>where it came from</b> is the event that produced it, kept because the event is what makes the rule survive contact with a deadline. The longer accounts live in <a href="../case-studies/index.html">case studies</a>, which are linked rather than repeated here.</div>
+
+  <h2>Classify a credential before it touches anything</h2>
+  <p><b>The rule.</b> Every credential submitted for publication is classified first, by a program, before it is used to clone, audit or render anything. <code>admin/build/check_credential.py</code> refuses a write credential by <b>prefix</b> (<code>sgit_vk1_</code>, which new vaults emit) or, for anything older, by <b>shape</b>: a read key is 64 hex characters, and anything else before the colon is a passphrase. Where a write credential arrives, the derived read key is published and the write credential is not; refusing outright just sends the sender back to try again with less care.</p>
+  <p><b>Where it came from.</b> A credential submitted for publication here was once a <b>vault key</b> described as a read key: a legacy <code>passphrase:vault_id</code> form with no prefix to give it away. It was caught, only the derived read key was published, and nothing leaked. But the catch depended on somebody looking at it, which is not a control. Prefixes are the better answer because they let a key arrive self-labelled, and a prefix also declares <em>intent</em>: <code>sgit_public_read_</code> is a read key meant to be published, which is what every row in the vaults table carries or is being moved to. The shape check covers the years of keys created before prefixes existed. <a href="../docs/credentials.html"><b>What each credential can do, and what its prefix declares &rarr;</b></a></p>
+
+  <h2>Read keys yes, vault keys never</h2>
+  <p><b>The rule.</b> A read key is a capability this site hands out on purpose, and it cannot become write access: it is derived from the vault key one way, and there is no path back. A vault key is never published, never pasted into a page, never committed. The validator enforces it rather than trusting anyone to remember: it fails the build on the write-credential prefixes and on the bare <code>passphrase:vault_id</code> shape, and it scans every tracked file for the real passphrases held in the gitignored tier.</p>
+  <p><b>Where it came from.</b> An agent hardcoded this site's own vault passphrase into a tracked file, as part of an anti-leak check. It reached three public commits and was caught only because somebody asked a question about it. The rekey, the measured blast radius and the structural fix are written up in full. <a href="../case-studies/exposed-vault-key.html"><b>The day we leaked our own vault key &rarr;</b></a></p>
+  <p>The sequel is worth reading beside it: removing a secret from git history does not remove it from GitHub, because a forgotten merged branch keeps the purged objects reachable and downloadable. <a href="../case-studies/purging-history.html"><b>Deleting files from git history &rarr;</b></a></p>
+
+  <h2>Audit every vault before its key appears anywhere</h2>
+  <p><b>The rule.</b> A vault is audited before its read key is published, and the finding is published on the vault's own page rather than filed away. The reason is that a read key is permanent: content travels with the key forever, so anything in the vault at the moment of publication is public from then on, including the history. Several vaults on this site are <em>republications</em>, a clean vault created from audited content, precisely because the original could not be corrected after the fact.</p>
+  <p><b>Where it came from.</b> Three separate audits found a plaintext write credential inside vault content that was about to be published: the strategy maps vault, the health score vault and the regulation graph vault each shipped as a sanitised republication instead. Each of those pages states its own finding. The audit step exists because in all three cases the vault looked finished and the finding was in a file nobody had opened for weeks.</p>
+
+  <h2>Write the method down, not just the outcome</h2>
+  <p><b>The rule.</b> Anything done more than twice is written as a method another agent can follow from nothing: the steps in order, the tool that does each one, and the mistake that produced each rule in it. Publishing a vault has seven such steps, from classifying the credential to recording what outlives the release.</p>
+  <p><b>Where it came from.</b> The same publication mistakes kept arriving from different directions, because the knowledge lived in whoever had done it last. A method that names the mistake beside the step is the only version that survives being handed over. <a href="../demos/vaults/publishing.html"><b>Publishing a vault: the method &rarr;</b></a></p>
+
+  <h2>Worked accounts</h2>
+  <p>Where a lesson has a full write-up with numbers, it is a case study rather than an entry here, and this page links to it rather than retelling it.</p>
+  <div class="cards" style="max-width:none;padding:0">
+    <a class="card" href="../case-studies/exposed-vault-key.html"><span class="tag">Incident</span><h3>The day we leaked our own vault key</h3><p>Three public commits, the rekey runbook, the measured blast radius (336 objects out, 90 in, zero overlap) and the structural fix that now fails the build.</p><p class="cardgo">Read the incident &rarr;</p></a>
+    <a class="card" href="../case-studies/purging-history.html"><span class="tag">Runbook</span><h3>Deleting files from git history</h3><p>15,933 files across 112 commits, why <code>git rm</code> is not deletion, why the push had to be forced, and the forgotten branch that kept the purged objects downloadable.</p><p class="cardgo">Read the runbook &rarr;</p></a>
+    <a class="card" href="../case-studies/one-tree-two-remotes.html"><span class="tag">Workflow</span><h3>One working tree, two version control systems</h3><p>76 releases in a folder that was both a vault and a git repository, the ordering rule that made it safe, and the numbers behind retiring it.</p><p class="cardgo">Read the retrospective &rarr;</p></a>
+  </div>
+
+  <h2>Where the rest of the rules live</h2>
+  <ul>
+    <li><a href="../team/index.html">How the site is run</a>: nine agentic roles, each stating the rules it enforces and the mistake behind each rule. This page is the cross-role version of the same idea.</li>
+    <li><a href="../docs/credentials.html">Vault credentials</a>: the two capabilities, the five prefixes, and why a mislabelled read key is a real problem even when the bytes are identical.</li>
+    <li><a href="../docs/limitations.html">When NOT to use sgit</a>: the edges, stated plainly, so a reader finds them here rather than the hard way.</li>
+    <li><a href="../demos/vaults/index.html">Published vaults</a>: the vaults these rules were learned on, every read key published on purpose.</li>
+  </ul>
+  <div class="pagenav"><a href="../case-studies/index.html">← Case studies</a><a href="../demos/vaults/index.html">Published vaults →</a></div>
+</main>
