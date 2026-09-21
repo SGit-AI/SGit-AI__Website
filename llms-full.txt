@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.4.9). Nothing here needs a second request. Individual pages live at the paths
+> (v0.5.0). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -11,7 +11,7 @@
 
 
 ==============================================================================
-# sgit (the encrypted git for humans and AI agents
+# sgit (the encrypted git for humans and AI agents)
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 >
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-147site releases, each verified live before it was called done
+148site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -1213,7 +1213,7 @@ The minimum viable published vault: content plus a small app, one key, no server
 
 
 ==============================================================================
-# Strategy Maps (a published vault
+# Strategy Maps (a published vault)
 
 > The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis) two app entry points in one encrypted vault, published after the audit that made a republish necessary.
 >
@@ -1291,7 +1291,7 @@ Documentation that updates without a deploy pipeline, from any writer who holds 
 
 
 ==============================================================================
-# The Vault Catalogue (a published vault
+# The Vault Catalogue (a published vault)
 
 > The index of published vaults, itself a vault, listed in itself) a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status.
 >
@@ -1706,7 +1706,7 @@ As always: revocation is not retroactive. Anyone who fetches these objects keeps
 
 
 ==============================================================================
-# The seven views, explained (Risk Graph Explorer
+# The seven views, explained (Risk Graph Explorer)
 
 > A deep walk through each view of the risk graph explorer) the estate, context, role risk map, risk chains, the register, acceptance and what happens next, with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs.
 >
@@ -3071,7 +3071,7 @@ The [first demo](vault-app-embed.md) was built without image files. This app loa
 
 
 ==============================================================================
-# sgit, on a Wardley Map (sgit.ai demos
+# sgit, on a Wardley Map (sgit.ai demos)
 
 > Six Wardley Maps analysing sgit's positioning) starting with where git wins, drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key.
 >
@@ -4375,7 +4375,7 @@ You said you'd come back with many follow-up questions. Please do, [in the open,
 
 
 ==============================================================================
-# Run your own SG/Send server (sgit.ai
+# Run your own SG/Send server (sgit.ai)
 
 > Deployment guidance for self-hosting a zero-knowledge SG/Send server) rendered live in your browser from an encrypted vault, with no copy stored on this site.
 >
@@ -5017,7 +5017,7 @@ If one of these gaps blocks you, say so on [GitHub](https://github.com/SGit-AI/S
 
 
 ==============================================================================
-# The day we leaked our own vault key (sgit.ai case study
+# The day we leaked our own vault key (sgit.ai case study)
 
 > The runbook for a leaked vault key) rotate, verify, re-point, plus a worked case study of the time it happened to this website.
 >
@@ -5317,7 +5317,7 @@ This site's board is the same idea at the smallest useful size: markdown files w
 
 
 ==============================================================================
-# Starting prompts for the regular work (sgit.ai team
+# Starting prompts for the regular work (sgit.ai team)
 
 > Twelve prompts for the tasks this site does repeatedly) publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys, each written to be pasted into a fresh agent.
 >
@@ -5420,7 +5420,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.4.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.5.0, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5654,7 +5654,7 @@ pip install sgit-ai
 
 
 ==============================================================================
-# Investors (how does your firm share data with its portfolio?
+# Investors (how does your firm share data with its portfolio?)
 
 > Six capabilities for investor operations) vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk.
 >
@@ -5783,7 +5783,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-147**site releases since 14 August**
+148**site releases since 14 August**
 each verified live before it was called done
 
 31**vaults published with a public read key**
@@ -6800,7 +6800,7 @@ The companion piece is the network infographic, which is what this one should lo
 
 
 ==============================================================================
-# Markdown and file viewers in a vault: what not to build (build brief
+# Markdown and file viewers in a vault: what not to build (build brief)
 
 > Two of the most common asks) a markdown viewer and a file/folder browser with raw views, are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
 >
@@ -7564,11 +7564,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.4.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.5.0**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.4.9 | 2026-09-21 | this release | THE PHONE MENU WOULD NOT SCROLL, AND TWO GRIDS OVERFLOWED SIDEWAYS. Reported from an iPhone: opening the top menu, you could not scroll it, unless you first scrolled the whole page, after which the menu moved. REPRODUCED AND MEASURED at iPhone 13, SE and Pixel 5 profiles. The open menu is 42 links and stands 1536px tall against a 664px viewport, with max-height none and overflow-y visible, inside a nav.site that is position:sticky. So the menu had no scroll of its own and the sticky bar pinned it at the top, leaving the last item, Security, 855px BELOW THE FOLD and reachable only by scrolling the page underneath it. Exactly the reported behaviour. THE FIX caps the open menu to the viewport and lets it scroll itself: max-height calc(100dvh - 7rem) with a 100vh line above it as the fallback, overflow-y auto, and overscroll-behavior contain so the gesture stops at the end of the menu instead of chaining to the page. The 7rem is the worst-case closed bar, 92px on an iPhone SE where the row wraps rather than the 55px it takes when it does not, plus this element's own border, padding and margin, another 17px, which on the first attempt left the nav 12px taller than the viewport. MEASURED AFTER: the menu scrolls 913px internally on an iPhone 13, 1009px on an SE, 850px on a Pixel 5; the page does not move at all (scrollY stays 0); the last item is visible; and the nav now fits inside the viewport on every profile. AND A SECOND BUG FOUND WHILE VERIFYING, unrelated to the menu and present with it closed: the homepage ran 28px wide at 320px (iPhone SE). Cause was grid-template-columns repeat(auto-fit, minmax(330px,1fr)) on .jobs, a hard floor wider than the ~285px of content box a 320px phone has, which does not shrink, it overflows. .netpick, the component behind the new fractal band on the home page and the startups section, had the same bug at 310px. Both now use minmax(min(Npx,100%),1fr), which collapses to the container below that width and changes nothing above it: desktop columns are identical at 1280. A comment records the rule, because the next person will reach for a bare minmax again. Four pages checked clean at 320 and 390. |
+| v0.5.0 | 2026-09-21 | this release | SHARED LINKS HAD NO PICTURE, BECAUSE og:image WAS MISSING ENTIRELY. Reported from a LinkedIn compose box: pasting the SaaS article gave a title-and-domain card with no image. The head carried og:type, og:site_name, og:url, og:title and og:description, and NO og:image at all, with twitter:card set to the small 'summary'. So there was nothing for a crawler to show. AND THE OBVIOUS FIX WOULD NOT HAVE WORKED EITHER: every figure on this site is WebP, and LinkedIn's crawler does not read WebP. It drops the image without a word, which is the trap, because the page looks correct and the preview is silently plain. So the cards have to be JPEG. NEW TOOL, admin/build/make_og_cards.mjs, writes 1200x630 JPEGs, the size LinkedIn documents for the large card, below which it can fall back to the small one. Every article's FIRST !shot becomes that article's card, parsed from the same markdown the page is built from so the two cannot disagree. Our heroes are wider than 1.91:1, so they are fitted rather than cropped, on a background sampled from each image's own corner, which makes the letterbox invisible on the cream covers. Eight article cards, 38 to 109 KB each, plus a drawn default card for the other 138 pages, carrying the wordmark, the tagline and pip install sgit-ai. THE HEAD now emits og:image as an ABSOLUTE url, og:image:width, og:image:height, og:image:alt, twitter:image, and twitter:card upgraded from summary to SUMMARY_LARGE_IMAGE, without which the picture is shown small or not at all. AND A GUARD, because the preview is invisible from the page itself and both failure modes are silent: validate.js check 3e fails the build if any page has no og:image, if it points at a .webp, or if the file it names does not exist, which is what would happen when somebody adds an article hero and forgets to run the generator. Proved by deleting the default card: 138 pages failed, and all passed again when it was restored. ALSO, SIXTEEN PAGE TITLES HAD AN UNBALANCED BRACKET, found because og:image:alt is built from the title and the homepage's read 'sgit (the encrypted git for humans and AI agents' with nothing closing it. Same em-dash-rewriter collateral as the article title template in v0.3.9: the paired rule opened a bracket where a dash had been and had no closing dash to convert. All sixteen closed, which fixes the browser tab and the preview alt text together. NOTE FOR SHARING: LinkedIn caches previews hard, so an already-posted link needs a pass through linkedin.com/post-inspector before it picks the image up. |
+| v0.4.9 | 2026-09-21 | git e5263c4c | THE PHONE MENU WOULD NOT SCROLL, AND TWO GRIDS OVERFLOWED SIDEWAYS. Reported from an iPhone: opening the top menu, you could not scroll it, unless you first scrolled the whole page, after which the menu moved. REPRODUCED AND MEASURED at iPhone 13, SE and Pixel 5 profiles. The open menu is 42 links and stands 1536px tall against a 664px viewport, with max-height none and overflow-y visible, inside a nav.site that is position:sticky. So the menu had no scroll of its own and the sticky bar pinned it at the top, leaving the last item, Security, 855px BELOW THE FOLD and reachable only by scrolling the page underneath it. Exactly the reported behaviour. THE FIX caps the open menu to the viewport and lets it scroll itself: max-height calc(100dvh - 7rem) with a 100vh line above it as the fallback, overflow-y auto, and overscroll-behavior contain so the gesture stops at the end of the menu instead of chaining to the page. The 7rem is the worst-case closed bar, 92px on an iPhone SE where the row wraps rather than the 55px it takes when it does not, plus this element's own border, padding and margin, another 17px, which on the first attempt left the nav 12px taller than the viewport. MEASURED AFTER: the menu scrolls 913px internally on an iPhone 13, 1009px on an SE, 850px on a Pixel 5; the page does not move at all (scrollY stays 0); the last item is visible; and the nav now fits inside the viewport on every profile. AND A SECOND BUG FOUND WHILE VERIFYING, unrelated to the menu and present with it closed: the homepage ran 28px wide at 320px (iPhone SE). Cause was grid-template-columns repeat(auto-fit, minmax(330px,1fr)) on .jobs, a hard floor wider than the ~285px of content box a 320px phone has, which does not shrink, it overflows. .netpick, the component behind the new fractal band on the home page and the startups section, had the same bug at 310px. Both now use minmax(min(Npx,100%),1fr), which collapses to the container below that width and changes nothing above it: desktop columns are identical at 1280. A comment records the rule, because the next person will reach for a bare minmax again. Four pages checked clean at 320 and 390. |
 | v0.4.8 | 2026-09-21 | git 99b37799 | A HERO IMAGE THAT ARGUES THE THESIS, AND THE FOUR WORDS THAT SUMMARISE IT BETTER THAN THE ARTICLE DID. The author made a cover for the inertia piece and revised it after review. The first version put both carts on the same railway track, which said same race, different speed; the revision has the newcomer OFF THE RAILS on chunky tyres with its own tyre tracks curving away across open ground, which is the actual argument, that the newcomers build on ground the incumbent cannot move onto, and it turns the rails into the incumbent's constraint rather than a shared destination. The revision also drops a decorative Mediterranean landscape that carried no meaning, and the rugged tyres remove a reading in which the newcomer looked like a toy. What survives from the first version is the load-bearing choice: BOTH CARTS CARRY THE SAME TEAL AI BLOCK, which is the 'AI is available to both sides' claim made visual, while the difference between them is a stack labelled PAST SUCCESS with a ball and chain attached, which is Wardley's climatic pattern drawn literally. Shipped as the article's first figure, above the Wardley-axis diagram: the picture carries the hook, the diagram carries the mechanism. Re-encoded from 2.26 MB PNG at 1915 wide to 63 KB webp at 1600. AND THE STRAPLINE BECOMES A PULL-QUOTE: 'Same AI. Different inertia.' states the thesis in four words, better than any sentence in the piece, so it now sits as a block quote between the lead and the diagram. |
 | v0.4.7 | 2026-09-21 | git 7ec295ce | THE SAAS ARTICLE'S FILE NAME NOW MATCHES ITS TITLE. The slug had stayed at what-saas-refused-to-build through three retitlings so that links already handed out kept working; the author has now asked for the name to follow the title, with no redirect from the old one. The article lives at /articles/saas-apocalypse-decided-by-inertia-not-by-ai.html, the old built page and its markdown twin are deleted rather than left as ghosts, the startups section's link follows, and the old address returns 404 on purpose. |
 | v0.4.6 | 2026-09-21 | git c6819b40 | THE SAAS ARTICLE TAKES ITS FINAL TITLE, AND THE ARGUMENT IT IMPLIES. 'The SaaS apocalypse will be decided by inertia, not by AI', chosen by the author from the inertia set, and the reason it is the right one is a claim the piece had not yet made explicitly: AI IS A CONSTANT, AVAILABLE TO BOTH SIDES. The incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won; two and a half years in, they have not. So the variable is inertia, in the Wardley sense: where a company sits on the evolution axis and how much past success it has to protect, which is what decides which side of the Nokia path each SaaS provider ends up on. FOUR PASSAGES CHANGED TO CARRY THAT. The lead now states it outright as the reason for the title. The market section gains a paragraph observing that the February panic and the September recovery were both staring at the wrong variable: the panic said AI would hollow out SaaS, the recovery said it would not, and the same models were available to the largest incumbent and a two-person company on the day the plug-ins shipped. The incumbents section adds that they have the same AI and more data to point it at, and that the constraint is not the models. The closing separates the two: the strategy question is not about AI, which both sides have, but about inertia, which only one side has. Abstract and startups link follow the title. Slug unchanged. |
@@ -7907,7 +7908,7 @@ This site is itself served from a vault, so these are the objects behind the pag
 
 
 ==============================================================================
-# API: append lanes (sgit.ai
+# API: append lanes (sgit.ai)
 
 > The six append endpoints) the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
 >
@@ -8575,7 +8576,7 @@ Honest edges belong on [the limitations page](limitations.md) too, and these are
 
 
 ==============================================================================
-# Updates (sgit.ai
+# Updates (sgit.ai)
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 >
@@ -11583,7 +11584,7 @@ That is the permission model doing exactly what it is for. The grant is short en
 
 
 ==============================================================================
-# Two games about agent permissions (a published vault
+# Two games about agent permissions (a published vault)
 
 > Two deterministic games about grants, permissions and mandates) and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site.
 >
@@ -11991,7 +11992,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 
 ==============================================================================
-# The vault: files, graphs, and the query (AIUC-1 conformance layer decks
+# The vault: files, graphs, and the query (AIUC-1 conformance layer decks)
 
 > A walkthrough of what is here) the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it
 >
@@ -12114,7 +12115,7 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 
 
 ==============================================================================
-# The problem (Licence to Operate decks
+# The problem (Licence to Operate decks)
 
 > Opens where almost everybody is standing) agents already running, and no way to say what wrong means, and lands on the delta. Stops there.
 >
@@ -12153,7 +12154,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 
 ==============================================================================
-# The map (Licence to Operate decks
+# The map (Licence to Operate decks)
 
 > A companion rather than a step: the same ladder seen from our side) the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly.
 >

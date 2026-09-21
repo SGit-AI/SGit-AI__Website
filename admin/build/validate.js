@@ -132,6 +132,25 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
   }
 }
 
+// 3e. every og:image must actually exist, and must not be WebP.
+// The link-preview image is invisible from the page itself: get it wrong and the site
+// looks perfect while every shared link renders as a bare title-and-domain card. Two
+// ways to get it wrong, both silent. The file can be missing, because the cards are
+// built by a separate tool (admin/build/make_og_cards.mjs) that somebody forgot to run
+// after adding an article hero. Or it can be WebP, which LinkedIn's crawler does not
+// read and drops without a word. Both fail the build here instead.
+{
+  for (const f of files.filter(f => f.endsWith('.html'))) {
+    const html = fs.readFileSync(f, 'utf8'), rel = path.relative(root, f);
+    const m = html.match(/<meta property="og:image" content="https:\/\/sgit\.ai\/([^"]+)"/);
+    if (!m) { fails++; console.log('OG-IMAGE FAIL', rel, '-> no og:image, the link preview will have no picture'); continue; }
+    if (/\.webp$/i.test(m[1])) { fails++; console.log('OG-IMAGE FAIL', rel, '-> .webp, which LinkedIn silently drops:', m[1]); }
+    if (!fs.existsSync(path.join(root, m[1]))) {
+      fails++; console.log('OG-IMAGE FAIL', rel, '-> file missing, run admin/build/make_og_cards.mjs:', m[1]);
+    }
+  }
+}
+
 // 4. shared JS must parse
 for (const js of ['assets/site.js', 'assets/site-chat.js', 'assets/network-chat.js']) {
   try { new vm.Script(fs.readFileSync(path.join(root, js), 'utf8')); }

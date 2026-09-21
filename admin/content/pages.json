@@ -2,7 +2,7 @@
   {
     "path": "index.html",
     "section": "home",
-    "title": "sgit (the encrypted git for humans and AI agents",
+    "title": "sgit (the encrypted git for humans and AI agents)",
     "desc": "sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open."
   },
   {
@@ -74,7 +74,7 @@
   {
     "path": "demos/vaults/strategy-maps/index.html",
     "section": "vaults",
-    "title": "Strategy Maps (a published vault",
+    "title": "Strategy Maps (a published vault)",
     "desc": "The SG/Send strategy in seven Wardley maps plus the sgit positioning analysis) two app entry points in one encrypted vault, published after the audit that made a republish necessary."
   },
   {
@@ -86,7 +86,7 @@
   {
     "path": "demos/vaults/catalogue/index.html",
     "section": "vaults",
-    "title": "The Vault Catalogue (a published vault",
+    "title": "The Vault Catalogue (a published vault)",
     "desc": "The index of published vaults, itself a vault, listed in itself) a submission queue where an entry costs a read key and one line, with published to-do lists and first-class write-key status."
   },
   {
@@ -116,7 +116,7 @@
   {
     "path": "demos/vaults/risk-graph-explorer/views/index.html",
     "section": "vaults",
-    "title": "The seven views, explained (Risk Graph Explorer",
+    "title": "The seven views, explained (Risk Graph Explorer)",
     "desc": "A deep walk through each view of the risk graph explorer) the estate, context, role risk map, risk chains, the register, acceptance and what happens next, with screenshots of the live vault and the mechanism behind each, grounded in the author’s own walkthroughs."
   },
   {
@@ -164,7 +164,7 @@
   {
     "path": "demos/sgit-maps.html",
     "section": "demos",
-    "title": "sgit, on a Wardley Map (sgit.ai demos",
+    "title": "sgit, on a Wardley Map (sgit.ai demos)",
     "desc": "Six Wardley Maps analysing sgit's positioning) starting with where git wins, drawn as inline SVG and served as a second app from the same encrypted vault as the SG/Send strategy essay: one vault, two entry points, one published read key."
   },
   {
@@ -242,7 +242,7 @@
   {
     "path": "deploy/index.html",
     "section": "deploy",
-    "title": "Run your own SG/Send server (sgit.ai",
+    "title": "Run your own SG/Send server (sgit.ai)",
     "desc": "Deployment guidance for self-hosting a zero-knowledge SG/Send server) rendered live in your browser from an encrypted vault, with no copy stored on this site."
   },
   {
@@ -314,7 +314,7 @@
   {
     "path": "case-studies/exposed-vault-key.html",
     "section": "case-studies",
-    "title": "The day we leaked our own vault key (sgit.ai case study",
+    "title": "The day we leaked our own vault key (sgit.ai case study)",
     "desc": "The runbook for a leaked vault key) rotate, verify, re-point, plus a worked case study of the time it happened to this website."
   },
   {
@@ -332,7 +332,7 @@
   {
     "path": "team/prompts.html",
     "section": "prompts",
-    "title": "Starting prompts for the regular work (sgit.ai team",
+    "title": "Starting prompts for the regular work (sgit.ai team)",
     "desc": "Twelve prompts for the tasks this site does repeatedly) publish a vault, audit it, write the update, add a sibling site, handle an inbound brief, cut a release, fix a phone bug, turn markup into data, correct a claim, update the board, re-verify the read keys, each written to be pasted into a fresh agent."
   },
   {
@@ -362,7 +362,7 @@
   {
     "path": "summit/investors.html",
     "section": "why",
-    "title": "Investors (how does your firm share data with its portfolio?",
+    "title": "Investors (how does your firm share data with its portfolio?)",
     "desc": "Six capabilities for investor operations) vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk."
   },
   {
@@ -428,7 +428,7 @@
   {
     "path": "docs/briefs/markdown-and-file-viewers.html",
     "section": "briefs",
-    "title": "Markdown and file viewers in a vault: what not to build (build brief",
+    "title": "Markdown and file viewers in a vault: what not to build (build brief)",
     "desc": "Two of the most common asks) a markdown viewer and a file/folder browser with raw views, are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder."
   },
   {
@@ -513,7 +513,7 @@
   {
     "path": "api/append-lanes.html",
     "section": "api",
-    "title": "API: append lanes (sgit.ai",
+    "title": "API: append lanes (sgit.ai)",
     "desc": "The six append endpoints) the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits."
   },
   {
@@ -550,7 +550,7 @@
     "path": "updates/index.html",
     "section": "updates",
     "dynamic": "updates",
-    "title": "Updates (sgit.ai",
+    "title": "Updates (sgit.ai)",
     "desc": "What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included."
   },
   {
@@ -660,7 +660,7 @@
   {
     "path": "demos/vaults/agent-permission-games/index.html",
     "section": "vaults",
-    "title": "Two games about agent permissions (a published vault",
+    "title": "Two games about agent permissions (a published vault)",
     "desc": "Two deterministic games about grants, permissions and mandates) and the first vault published here that phones home. Anonymous usage events go over a write-only append lane to a separate private vault, disclosed on every page with a pause switch. Built by another agent from the build brief on this site."
   },
   {
@@ -690,7 +690,7 @@
   {
     "path": "demos/vaults/aiuc-1-conformance/decks/vault.html",
     "section": "vaults",
-    "title": "The vault: files, graphs, and the query (AIUC-1 conformance layer decks",
+    "title": "The vault: files, graphs, and the query (AIUC-1 conformance layer decks)",
     "desc": "A walkthrough of what is here) the JSON the standard became, the graph you can walk, the conformance layer above it, and the chat that reads all of it"
   },
   {
@@ -714,13 +714,13 @@
   {
     "path": "demos/vaults/licence-to-operate/decks/problem.html",
     "section": "vaults",
-    "title": "The problem (Licence to Operate decks",
+    "title": "The problem (Licence to Operate decks)",
     "desc": "Opens where almost everybody is standing) agents already running, and no way to say what wrong means, and lands on the delta. Stops there."
   },
   {
     "path": "demos/vaults/licence-to-operate/decks/map.html",
     "section": "vaults",
-    "title": "The map (Licence to Operate decks",
+    "title": "The map (Licence to Operate decks)",
     "desc": "A companion rather than a step: the same ladder seen from our side) the dependency map whose every absence is a risk entry rather than a blocker, the four layers and their seams, and the rungs, with the one where insurance starts named honestly."
   },
   {

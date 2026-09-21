@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.9'
+SITE_VERSION = 'v0.5.0'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,39 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.9', '2026-09-21', 'this release',
+    ('v0.5.0', '2026-09-21', 'this release',
+     "SHARED LINKS HAD NO PICTURE, BECAUSE og:image WAS MISSING ENTIRELY. Reported from a "
+     "LinkedIn compose box: pasting the SaaS article gave a title-and-domain card with no "
+     "image. The head carried og:type, og:site_name, og:url, og:title and og:description, and "
+     "NO og:image at all, with twitter:card set to the small 'summary'. So there was nothing "
+     "for a crawler to show. AND THE OBVIOUS FIX WOULD NOT HAVE WORKED EITHER: every figure on "
+     "this site is WebP, and LinkedIn's crawler does not read WebP. It drops the image without "
+     "a word, which is the trap, because the page looks correct and the preview is silently "
+     "plain. So the cards have to be JPEG. NEW TOOL, admin/build/make_og_cards.mjs, writes "
+     "1200x630 JPEGs, the size LinkedIn documents for the large card, below which it can fall "
+     "back to the small one. Every article's FIRST !shot becomes that article's card, parsed "
+     "from the same markdown the page is built from so the two cannot disagree. Our heroes are "
+     "wider than 1.91:1, so they are fitted rather than cropped, on a background sampled from "
+     "each image's own corner, which makes the letterbox invisible on the cream covers. Eight "
+     "article cards, 38 to 109 KB each, plus a drawn default card for the other 138 pages, "
+     "carrying the wordmark, the tagline and pip install sgit-ai. THE HEAD now emits og:image "
+     "as an ABSOLUTE url, og:image:width, og:image:height, og:image:alt, twitter:image, and "
+     "twitter:card upgraded from summary to SUMMARY_LARGE_IMAGE, without which the picture is "
+     "shown small or not at all. AND A GUARD, because the preview is invisible from the page "
+     "itself and both failure modes are silent: validate.js check 3e fails the build if any "
+     "page has no og:image, if it points at a .webp, or if the file it names does not exist, "
+     "which is what would happen when somebody adds an article hero and forgets to run the "
+     "generator. Proved by deleting the default card: 138 pages failed, and all passed again "
+     "when it was restored. ALSO, SIXTEEN PAGE TITLES HAD AN UNBALANCED BRACKET, found because "
+     "og:image:alt is built from the title and the homepage's read 'sgit (the encrypted git for "
+     "humans and AI agents' with nothing closing it. Same em-dash-rewriter collateral as the "
+     "article title template in v0.3.9: the paired rule opened a bracket where a dash had been "
+     "and had no closing dash to convert. All sixteen closed, which fixes the browser tab and "
+     "the preview alt text together. NOTE FOR SHARING: LinkedIn caches previews hard, so an "
+     "already-posted link needs a pass through linkedin.com/post-inspector before it picks the "
+     "image up.",
+     ),
+    ('v0.4.9', '2026-09-21', 'git e5263c4c',
      "THE PHONE MENU WOULD NOT SCROLL, AND TWO GRIDS OVERFLOWED SIDEWAYS. Reported from an "
      "iPhone: opening the top menu, you could not scroll it, unless you first scrolled the "
      "whole page, after which the menu moved. REPRODUCED AND MEASURED at iPhone 13, SE and "
@@ -2539,6 +2571,21 @@ def json_ld(path, title, desc):
                       + '</script>' for b in blocks)
 
 
+# ---------- link previews ----------
+# og:image was simply absent, so every shared link rendered as a title-and-domain card
+# with no picture. Two things had to be true to fix it. The URL must be ABSOLUTE, and
+# the file must not be WebP: LinkedIn's crawler does not read WebP and drops the image
+# without complaint, which is the trap, because the page looks correct and the preview
+# is silently plain. admin/build/make_og_cards.mjs writes a 1200x630 JPEG per article
+# hero plus one default, and this picks the right one. validate.js checks the file it
+# names actually exists, so forgetting to run the generator fails the build.
+def og_card(path):
+    if path.startswith('articles/') and path.endswith('.html'):
+        slug = os.path.basename(path)[:-5]
+        if os.path.exists(os.path.join(ROOT, 'og', slug + '.jpg')):
+            return 'og/' + slug + '.jpg'
+    return 'og/default.jpg'
+
 def page(path, title, desc, here, body):
     # Root prefix by DEPTH, not by "is nested at all", pages now nest three deep
     # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
@@ -2564,6 +2611,7 @@ def page(path, title, desc, here, body):
                  ' .then(function (t) { (0, eval)(t); })\n'
                  " .catch(function (e) { console.error('[shots] component failed to load:', e); });\n"
                  '}());\n</script>')
+    card = og_card(path)
     html = f"""<!doctype html>
 <html lang="en" data-root="{p}">
 <head>
@@ -2577,7 +2625,12 @@ def page(path, title, desc, here, body):
 <meta property="og:url" content="https://sgit.ai/{path}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://sgit.ai/{card}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{title}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/{card}">
 <link rel="alternate" type="text/markdown" href="{md_name}" title="This page as markdown">
 {json_ld(path, title, desc)}
 {CRITICAL}

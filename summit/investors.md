@@ -1,8 +1,8 @@
-# Investors (how does your firm share data with its portfolio?
+# Investors (how does your firm share data with its portfolio?)
 
 > Six capabilities for investor operations) vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk.
 
-*Source: <https://sgit.ai/summit/investors.html> · site v0.4.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/investors.html> · site v0.5.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

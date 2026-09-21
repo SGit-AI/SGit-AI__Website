@@ -1,8 +1,8 @@
-# The day we leaked our own vault key (sgit.ai case study
+# The day we leaked our own vault key (sgit.ai case study)
 
 > The runbook for a leaked vault key) rotate, verify, re-point, plus a worked case study of the time it happened to this website.
 
-*Source: <https://sgit.ai/case-studies/exposed-vault-key.html> · site v0.4.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/exposed-vault-key.html> · site v0.5.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

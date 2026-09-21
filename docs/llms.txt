@@ -1,6 +1,6 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.4.9).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.5.0).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
 ## Pages (28)
@@ -20,7 +20,7 @@
 - [Publishing a vault’s decks onto a website](/docs/briefs/vault-decks-on-a-site.md): A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
 - [For graphs.sgit.ai: Fractal Semantic Graphs](/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.md): A brief for the agent maintaining graphs.sgit.ai: the fractal claim on its boundaries page has the invariant backwards (grammar survives every zoom, the ontology is free to change), the name Fractal Semantic Graphs and its lineage, six places to link the sgit.ai page, four graph vaults missing from its evidence estate, a second cross-vault finding, three small corrections, and the prompt to paste.
 - [An infographic of the published vaults](/docs/briefs/vault-map-infographic.md): A brief for a companion to the network infographic, grouping the 26 published vaults by use case and industry, starting with the two blockers upstream of any image: neither grouping exists in vaults.json yet, and the network infographic it copies has already gone stale in its own headline count.
-- [Markdown and file viewers in a vault: what not to build (build brief](/docs/briefs/markdown-and-file-viewers.md): Two of the most common asks) a markdown viewer and a file/folder browser with raw views, are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
+- [Markdown and file viewers in a vault: what not to build (build brief)](/docs/briefs/markdown-and-file-viewers.md): Two of the most common asks) a markdown viewer and a file/folder browser with raw views, are already in the vault platform. The ladder from zero code to a full app, the markdown rules that actually catch people, the raw-always contract for a file explorer, and the prompt to hand the builder.
 - [SG/Vault & the vault platform](/docs/vault/index.md): The official working documentation for the SGraph vault platform: the SG/Vault browser app, the SG/Send zero-knowledge API, and vault apps.
 - [Building vault apps](/docs/vault/vault-apps.md): How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
 - [The window.sg bridge](/docs/vault/sg-bridge.md): The vault app runtime: sg.* namespaces, the deny-by-default permission model, and the capabilities the host chrome provides for free.
