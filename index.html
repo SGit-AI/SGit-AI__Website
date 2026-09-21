@@ -22,7 +22,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="admin/versions.html" title="Site release history">v0.3.7</a>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.3.8</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -97,7 +97,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.7 &middot; 21 Sep 2026</span></a></div>
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.8 &middot; 21 Sep 2026</span></a></div>
 <header class="hero">
   <div class="eyebrow">Git for encrypted vaults, for humans and AI agents</div>
   <h1>A vault is a unit of work:<br>data, app, history and sources, shipped as one string</h1>
@@ -137,12 +137,23 @@
   <p class="bandcta"><a class="cta2" href="demos/vaults/index.html">All published vaults, sortable →</a></p>
 </section>
 
+<!-- the idea that connects the vaults, and the measurements behind it -->
+<section class="band" id="fractal">
+  <h2>Nine of these vaults are the same graph, at different altitudes</h2>
+  <p class="bandlede">A <b>Fractal Semantic Graph</b> is one where every node opens into a graph with <em>its own</em> ontology. A regulation, then its articles, then the words they define: each world using vocabulary the one above never agreed to. What stays constant is the grammar, never the schema, and that is what lets everything connect to everything without anyone being forced to conform. For years we called it graphs of graphs of graphs.</p>
+  <div class="netpick">
+    <a href="demos/fractal-graphs/index.html"><b>The idea, and the evidence</b><span>the jump test · a ladder of twelve rungs from the text of a law down to one compute instance · nine published vaults you can open with a read key</span></a>
+    <a href="demos/fractal-graphs/performance.html"><b>What it costs, measured</b><span>no live database · a 1,051-node graph opens in 94 KB and three requests · 11.2 MB of source down to a 4 KB ontology with nothing discarded</span></a>
+  </div>
+  <p class="bandcta"><a class="cta2" href="demos/fractal-graphs/index.html">Fractal Semantic Graphs →</a></p>
+</section>
+
 <!-- the story the whole site rests on, told as a story rather than filed as a log -->
-<section class="band" id="team">
+<section class="band alt" id="team">
   <h2>One human, a team of agents</h2>
   <p class="bandlede">This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.</p>
  <div class="team">
- <div class="t rev"><span class="num">135</span><span class="lbl">site releases, each verified live before it was called done</span></div>
+ <div class="t rev"><span class="num">136</span><span class="lbl">site releases, each verified live before it was called done</span></div>
  <div class="t rev"><span class="num">31</span><span class="lbl">vaults published with a deliberately public read key</span></div>
  <div class="t rev"><span class="num">27</span><span class="lbl">sibling sites on <code>*.sgit.ai</code>, one question each</span></div>
  <div class="t rev"><span class="num">10</span><span class="lbl">cross-team briefs filed or received, in the open</span></div>
@@ -156,7 +167,7 @@
 </section>
 
 <!-- how: the terminal walkthrough, for the developer who is now interested -->
-<section class="band alt" id="demo">
+<section class="band" id="demo">
   <h2>Under the hood, it is git</h2>
   <p class="bandlede">Same muscle memory. Files are encrypted before they leave your machine; the server stores ciphertext and hashes, nothing else.</p>
   <div class="term">
@@ -230,7 +241,7 @@
 </section>
 
 <!-- server sees -->
-<section class="band" id="zero-knowledge">
+<section class="band alt" id="zero-knowledge">
   <h2>What the server sees</h2>
   <div class="sees">
     <div class="cols">
@@ -263,7 +274,7 @@
 </section>
 
 <!-- agents -->
-<section class="band alt" id="agents">
+<section class="band" id="agents">
   <h2>Built for agents</h2>
   <p class="blurb">Agents need shared state. Shared state needs versioning, and privacy. sgit is the encrypted, versioned workspace for humans and AI agents.</p>
   <div class="cards">
@@ -275,7 +286,7 @@
 </section>
 
 <!-- trust -->
-<section class="band" id="trust">
+<section class="band alt" id="trust">
   <h2>In production, and honest about it</h2>
   <p class="blurb">sgit is in beta, powering production workflows daily. No superlatives, just the evidence, and a page that tells you when <em>not</em> to use it.</p>
   <div class="trust">
@@ -292,7 +303,7 @@
 </section>
 
 <!-- the network -->
-<section class="band alt" id="network">
+<section class="band" id="network">
   <h2>Nineteen sites, one question each</h2>
   <p class="bandlede">Most of the thinking behind sgit no longer lives on this site. It moved out to
   <b><code>*.sgit.ai</code></b>: a family of focused sites, each taking one question further than a
@@ -344,7 +355,7 @@
 </section>
 <script>
 (function () {
- fetch('assets/shots.js?v=v0.3.7')
+ fetch('assets/shots.js?v=v0.3.8')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -356,7 +367,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="admin/versions.html">v0.3.7</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="admin/versions.html">v0.3.8</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -398,7 +409,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.7';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.8';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

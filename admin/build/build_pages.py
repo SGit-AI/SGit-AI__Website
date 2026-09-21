@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.7'
+SITE_VERSION = 'v0.3.8'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.7', '2026-09-21', 'this release',
+    ('v0.3.8', '2026-09-21', 'this release',
+     "THE FLAGSHIP CONCEPT PAGE WAS NOT ON THE HOMEPAGE AT ALL. Fixing the routes into the "
+     "performance page in v0.3.7 surfaced a larger omission: FRACTAL SEMANTIC GRAPHS, the idea "
+     "this site's whole vault collection is evidence for, had no homepage presence whatsoever. "
+     "It now has its own band, placed after 'What people actually ship' because that is the "
+     "natural escalation: here are the things people ship, and here is what nine of them turn "
+     "out to be when you look at them together. THE SECTION states the definition in one "
+     "paragraph (every node opens into a graph with its OWN ontology, a regulation then its "
+     "articles then the words they define, each world using vocabulary the one above never "
+     "agreed to; the grammar is constant, the schema never is; for years we called it graphs of "
+     "graphs of graphs) and then splits into two routes: the idea and the evidence (the jump "
+     "test, a ladder of twelve rungs from the text of a law down to one compute instance, nine "
+     "published vaults openable with a read key) and what it costs, measured (no live database, "
+     "a 1,051-node graph opening in 94 KB and three requests, 11.2 MB of source down to a 4 KB "
+     "ontology with nothing discarded). Counts were checked against the pages rather than "
+     "recalled: nine rows in the open-them table, twelve linked rungs on the ladder. AND A "
+     "LAYOUT BUG FIXED ON THE WAY: the homepage bands alternate background between band and "
+     "band alt, and inserting a section would have broken the rhythm for everything below it, "
+     "so the classes from proof through network were reassigned in order. That also corrected a "
+     "pre-existing double-alt between network and the articles band.",
+     ),
+    ('v0.3.7', '2026-09-21', 'git 99f0cbb8',
      "THE BEST PAGE ON THE SITE WAS ALSO THE HARDEST TO FIND. Six releases of measurement went "
      "into /demos/fractal-graphs/performance.html and it was reachable from one nav entry under "
      "Vaults plus three content links, none of them on a landing page: the fractal page's "

@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.3.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.3.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,11 +29,19 @@ Not categories, things. Each one is a real vault you can open, and each is hard 
 
 [All published vaults, sortable →](demos/vaults/index.md)
 
+## Nine of these vaults are the same graph, at different altitudes
+
+A **Fractal Semantic Graph** is one where every node opens into a graph with *its own* ontology. A regulation, then its articles, then the words they define: each world using vocabulary the one above never agreed to. What stays constant is the grammar, never the schema, and that is what lets everything connect to everything without anyone being forced to conform. For years we called it graphs of graphs of graphs.
+
+[**The idea, and the evidence**the jump test · a ladder of twelve rungs from the text of a law down to one compute instance · nine published vaults you can open with a read key](demos/fractal-graphs/index.md) [**What it costs, measured**no live database · a 1,051-node graph opens in 94 KB and three requests · 11.2 MB of source down to a 4 KB ontology with nothing discarded](demos/fractal-graphs/performance.md)
+
+[Fractal Semantic Graphs →](demos/fractal-graphs/index.md)
+
 ## One human, a team of agents
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-135site releases, each verified live before it was called done
+136site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
