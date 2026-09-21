@@ -2,7 +2,7 @@
 
 > The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. Whether it happens to any given company depends on how that company behaves: Nokia when the mobile phone arrived, or Nokia when the iPhone did.
 
-*Source: <https://sgit.ai/articles/what-saas-refused-to-build.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/what-saas-refused-to-build.html> · site v0.4.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

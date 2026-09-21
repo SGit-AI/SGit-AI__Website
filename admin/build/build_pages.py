@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.3'
+SITE_VERSION = 'v0.4.4'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.3', '2026-09-21', 'this release',
+    ('v0.4.4', '2026-09-21', 'this release',
+     "THE STARTUP ARTICLE TAKES THE TITLE IT WAS GIVEN ON LINKEDIN. When the author republished "
+     "it there, the title gained a prefix, 'For a startup, the most important question is "
+     "whether they miss it', which says who the piece is for before it says what it argues, "
+     "and the two versions should match. Sentence case here, to match every other title on "
+     "the site. The slug is unchanged, the startups section's link text follows the new title, "
+     "and nothing else about the article moved. The SaaS article's title is under discussion "
+     "and stays as it is until the author picks one.",
+     ),
+    ('v0.4.3', '2026-09-21', 'git ca1e56f8',
      "THE SAAS ARTICLE GETS ITS REAL TITLE, AND EVERY ARTICLE GETS AN ABSTRACT. Three notes "
      "from the author on the two new articles. (1) THE TITLE NEEDED THE WORDS SAAS APOCALYPSE "
      "IN IT, with an ironic twist, because the key move in the argument is that it has not "

@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.4.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ For founders building on vaults
 
 A large part of why sgit exists is to make it cheap enough to ship something a stranger can actually use, repeatedly, and to take it away again when you need to find out whether they missed it. That loop is hard mostly because the infrastructure under it is expensive: a database to run, hosting to pay for, an account for every reader, an install before anybody sees anything. **A vault removes all four.** This section is for founders who want to build on that, and it will grow as more of them do.
 
-**The operating model comes first, because the technology is the easy part.** [**The most important question is whether they miss it →**](../articles/the-question-is-whether-they-miss-it.md) is the model this is all built to serve: ship something somebody can use, give it away briefly, take it away, and find out whether anybody noticed. Be profitable before you raise, so the investors are calling you. Open source everything, because the technology is not the moat. Read that first, then come back for the substrate.
+**The operating model comes first, because the technology is the easy part.** [**For a startup, the most important question is whether they miss it →**](../articles/the-question-is-whether-they-miss-it.md) is the model this is all built to serve: ship something somebody can use, give it away briefly, take it away, and find out whether anybody noticed. Be profitable before you raise, so the investors are calling you. Open source everything, because the technology is not the moat. Read that first, then come back for the substrate.
 
 ## What you get on day one
 

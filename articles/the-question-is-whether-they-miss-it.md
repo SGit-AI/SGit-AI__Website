@@ -1,14 +1,14 @@
-# The most important question is whether they miss it, sgit.ai
+# For a startup, the most important question is whether they miss it, sgit.ai
 
 > A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.
 
-*Source: <https://sgit.ai/articles/the-question-is-whether-they-miss-it.html> · site v0.4.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-question-is-whether-they-miss-it.html> · site v0.4.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Articles](index.md) / The most important question is whether they miss it
+[Home](../index.md) / [Articles](index.md) / For a startup, the most important question is whether they miss it
 
-# The most important question is whether they miss it
+# For a startup, the most important question is whether they miss it
 
 2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
 
