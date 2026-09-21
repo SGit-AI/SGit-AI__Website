@@ -2,7 +2,7 @@
 
 > The synthetic-user method applied to a second product one day later: 30 screenshots, 12 findings, two blocking a sale, and a headline finding that is measured rather than narrated, plus a JavaScript error on every page that had shipped and that every existing test had passed over.
 
-*Source: <https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html> · site v0.3.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/synthetic-users-riskmandate/index.html> · site v0.4.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.9'
+SITE_VERSION = 'v0.4.0'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,33 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.9', '2026-09-21', 'this release',
+    ('v0.4.0', '2026-09-21', 'this release',
+     "A STARTUPS SECTION, BECAUSE A LARGE PART OF WHY SGIT EXISTS IS TO LET OTHER PEOPLE BUILD "
+     "ON IT. New top-level section at /startups/, in the Why menu beside Investors, and it opens "
+     "by pointing at the operating model rather than the technology: the article shipped in "
+     "v0.3.9 is its centrepiece, because a founder's journey starts with the model and only then "
+     "needs the substrate. WHAT YOU GET ON DAY ONE, framed as the four costs a vault removes: a "
+     "database to run (none, nothing runs between requests so nothing is billed between "
+     "requests), hosting for your reader (none, the vault carries its own app and also runs from "
+     "a plain bucket, so deployment is a copy), an account and an install (neither, a read key "
+     "is the whole credential), and versioning bolted on later (already there, so you can take "
+     "something away and put it back). Plus the audit story: the server cannot read it, by "
+     "default rather than by tier. THE LOOP FROM FIRST VAULT TO FIRST CUSTOMER in five steps, "
+     "each linked to the page that owns it, ending on the one the stack deliberately does not "
+     "do: billing. With an honest caveat on step four, that rotating a key ends a trial but "
+     "REVOCATION IS NOT RETROACTIVE, so anybody who cloned keeps what they cloned. WHAT YOU "
+     "STILL HAVE TO BRING, which is the section that makes the rest credible: billing and "
+     "payments (not here, not planned), identity and per-user accounts (a read key is a "
+     "capability, not a login), server-side search and query (the server cannot read the "
+     "content so it cannot index it), and the judgement about what to ship. AND THE ARGUMENTS "
+     "THIS RESTS ON POINT OUTWARDS rather than being restated: open-source.sgit.ai and "
+     "subscriptions.sgit.ai already own two of the three pillars, and they are linked as sibling "
+     "cards. The section says outright that it is new, deliberately small, and will become its "
+     "own site when it outgrows a page, the way nineteen others have. Registered in pages.json, "
+     "NAV and LLMS_SECTIONS; the build's own guard caught the missing llms.txt section before "
+     "the validator caught the sitemap, which is the guard working as designed.",
+     ),
+    ('v0.3.9', '2026-09-21', 'git d856aa88',
      "A NEW ARTICLE ON THE STARTUP OPERATING AND INVESTING MODEL, FROM THE AUTHOR'S OWN VOICE "
      "MEMO. 'The most important question is whether they miss it' states the model in three "
      "pillars. ONE, be profitable: a startup is simply a product somebody wants to buy at a "
@@ -2131,6 +2157,7 @@ NAV = [
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
         ('investors', 'Investors', 'investors/index.html'),
+        ('startups', 'Startups', 'startups/index.html'),
     ]),
     ('docs', 'Docs', 'docs/index.html', [
         ('docs', 'Documentation', 'docs/index.html'),
@@ -2628,6 +2655,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 LLMS_SECTIONS = [
     ('why', 'Why this exists'),
+    ('startups', 'For startups (building a product on vaults: what you get on day one, the loop from first vault to first customer, and what you still have to bring)'),
     ('demos', 'Demos (live end-to-end examples with published read keys)'),
     ('catalogue', 'Catalogue (the index of published vaults, read keys, shapes, evidence and write-key status)'),
     ('vaults', 'Published vaults (one page per vault: description, features, live embed, and the read key that opens it)'),

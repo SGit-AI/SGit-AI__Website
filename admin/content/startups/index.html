@@ -1,0 +1,68 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / Startups</p>
+  <p class="eyebrow">For founders building on vaults</p>
+  <h1>Build your startup on sgit vaults</h1>
+  <p class="lead">A large part of why sgit exists is to make it cheap enough to ship something a stranger can actually use, repeatedly, and to take it away again when you need to find out whether they missed it. That loop is hard mostly because the infrastructure under it is expensive: a database to run, hosting to pay for, an account for every reader, an install before anybody sees anything. <b>A vault removes all four.</b> This section is for founders who want to build on that, and it will grow as more of them do.</p>
+
+  <div class="note"><b>The operating model comes first, because the technology is the easy part.</b> <a href="../articles/the-question-is-whether-they-miss-it.html"><b>The most important question is whether they miss it &rarr;</b></a> is the model this is all built to serve: ship something somebody can use, give it away briefly, take it away, and find out whether anybody noticed. Be profitable before you raise, so the investors are calling you. Open source everything, because the technology is not the moat. Read that first, then come back for the substrate.</div>
+
+  <h2 id="day-one">What you get on day one</h2>
+  <p>Not a platform to sign up for. A format, a CLI and a credential, all open source, that between them remove the four things that usually stand between you and a first user.</p>
+  <div class="tablewrap"><table>
+    <tr><th>The usual cost</th><th>On a vault</th></tr>
+    <tr><td><b>A database to run</b></td><td>None. The store is encrypted files in cloud storage, read directly. Nothing runs between requests, so nothing is billed between requests</td></tr>
+    <tr><td><b>Hosting for your reader</b></td><td>None. A vault carries its own app, and it opens in the browser with no server of yours in the path. It also runs from a plain static host or a bucket, so your deployment is a copy</td></tr>
+    <tr><td><b>An account, and an install</b></td><td>Neither. <a href="../docs/credentials.html">A read key</a> is the whole credential: the address, the capability and the decryption key in one string. You send it. They open it. There is nothing to sign up for and nothing to download</td></tr>
+    <tr><td><b>Versioning you bolt on later</b></td><td>Already there. Every change is a commit, every version is retained, and a reader can see the history, which means you can take something away and put it back without losing what was there</td></tr>
+    <tr><td><b>An audit story for the first serious customer</b></td><td>The server storing it cannot read it. That is the default, not a tier, and <a href="../security/index.html">the security model</a> states exactly what the server does see</td></tr>
+  </table></div>
+  <p>The numbers behind that are measured rather than claimed. <a href="../demos/fractal-graphs/performance.html">Performance, cost, and running everywhere</a> has the full set, and the shape of the bill is the part founders care about: <b>storage and egress only, no instance hours, and query compute paid by the reader's own device</b>. The entire published estate on this site is 2,662 files and 295 MB of object storage.</p>
+
+  <h2 id="ladder">First vault to first customer</h2>
+  <p>The point of the model is a short loop. Here is what it actually looks like on this stack, with the page that owns each step.</p>
+  <div class="tablewrap"><table>
+    <tr><td><b>1 &middot; Put the thing in a vault</b></td><td><code>pip install sgit-ai</code>, create, commit, push. <a href="../docs/quickstart.html">Five minutes</a>, and it is the same verbs as git</td></tr>
+    <tr><td><b>2 &middot; Make it usable, not demoable</b></td><td>Publish content with no code at all, or ship an app inside the vault. <a href="../docs/surfaces.html">Pick the surface first</a>: that choice decides more than anything after it</td></tr>
+    <tr><td><b>3 &middot; Give a read key to five people</b></td><td>No onboarding to build, no invites, no seats. If the content is meant to be open, use the prefix that says so</td></tr>
+    <tr><td><b>4 &middot; Take it away</b></td><td>Rotate the key and the trial is over. Nothing else about the product changes, which is the point: you are testing whether they miss it, not whether they liked the email</td></tr>
+    <tr><td><b>5 &middot; Charge, if they came back</b></td><td>The stack does not do billing, and you should not want it to. What it gives you is a cost base low enough that a small price can be a profitable one</td></tr>
+  </table></div>
+  <div class="note"><b>One honest caveat on step 4.</b> <a href="../docs/credentials.html#read">Revocation is not retroactive.</a> Anybody who cloned while they had the key keeps what they cloned. For a trial that is usually fine, and it is better to know it now than to design as though a key could be recalled.</div>
+
+  <h2 id="bring">What you still have to bring</h2>
+  <p>This section would not be worth reading if it only listed what is free. A vault is a storage, distribution and versioning layer. It is not a product, and it is deliberately not several things.</p>
+  <ul>
+    <li><b>Billing and payments.</b> Not here, not planned. Use whatever charges cards.</li>
+    <li><b>Identity and per-user accounts.</b> A read key is a capability, not a login. If you need to know <em>who</em> opened something rather than <em>that</em> it was opened, that is yours to build.</li>
+    <li><b>Server-side search and query.</b> The server cannot read the content, so it cannot index it. Whatever the client needs, the client downloads, which is fine at a megabyte and a design problem at a gigabyte.</li>
+    <li><b>The judgement about what to ship.</b> Obviously. But it is worth saying, because the cheapest part of this is now the part everybody used to spend their seed round on.</li>
+  </ul>
+  <p><a href="../docs/limitations.html">When NOT to use sgit</a> is the longer version of this list, and it is kept honest on purpose.</p>
+
+  <h2 id="arguments">The arguments this rests on, and where they live</h2>
+  <p>Two of the three pillars have a whole site to themselves, because they outgrew a section here. They are worth reading before you commit to a commercial shape.</p>
+  <div class="sib"><span class="sib-host">open-source.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Business &amp; publishing</span></span><span class="sib-sep"> &middot; </span><a class="sib-title" href="https://open-source.sgit.ai/" rel="noopener" target="_blank">Open source is a strategy &#8599;</a><span class="sib-sep"> &middot; </span><span class="sib-desc">Why giving away the technology is the commercial choice rather than the charitable one, what it does to your architecture, and why it is the better exit for a founder who wants to leave with their tools.</span><span class="sib-sep"> &middot; </span><span class="sib-thesis">&ldquo;Open source is a strategy. It is not a charity.&rdquo;</span><span class="sib-sep"> &middot; </span><span class="sib-net">part of the sgit.ai network</span></div>
+  <div class="sib"><span class="sib-host">subscriptions.sgit.ai<span class="sib-sep"> &middot; </span><span class="sib-cat">Business &amp; publishing</span></span><span class="sib-sep"> &middot; </span><a class="sib-title" href="https://subscriptions.sgit.ai/" rel="noopener" target="_blank">A subscription is not rent &#8599;</a><span class="sib-sep"> &middot; </span><span class="sib-desc">The pricing trap most founders walk into by default. Charging rent for something nobody is using is a worse business than being paid when you deliver, and pay on demand is usually the healthier shape for both sides.</span><span class="sib-sep"> &middot; </span><span class="sib-thesis">&ldquo;A subscription is a discount for regular use, not rent on something you ignore.&rdquo;</span><span class="sib-sep"> &middot; </span><span class="sib-net">part of the sgit.ai network</span></div>
+
+  <h2 id="evidence">Evidence, rather than a pitch</h2>
+  <p>Everything above is how this site itself is built, which is the only reason to believe any of it.</p>
+  <ul>
+    <li><b>Thirty one vaults published with their read keys</b>, each with a page describing what it does and the vault running live inside it. <a href="../demos/vaults/index.html">Open any of them</a> with no account and nothing installed.</li>
+    <li><b>The method is written down</b>, including the mistakes that produced each rule. <a href="../demos/vaults/publishing.html">The publishing method</a> is written to be followed by somebody else's agent.</li>
+    <li><b>The measurements are repeatable</b>, with the commands printed. <a href="../demos/fractal-graphs/performance.html">Performance and cost</a>.</li>
+    <li><b>One person, working with agents.</b> The whole estate is built this way, which is the actual claim about how small a team this needs.</li>
+  </ul>
+
+  <h2 id="start">Where to start</h2>
+  <div class="tablewrap"><table>
+    <tr><td><b>Read the model</b></td><td><a href="../articles/the-question-is-whether-they-miss-it.html">The most important question is whether they miss it</a></td></tr>
+    <tr><td><b>Ship something today</b></td><td><a href="../docs/quickstart.html">Quickstart</a>, then <a href="../docs/surfaces.html">pick your surface</a></td></tr>
+    <tr><td><b>Build with agents</b></td><td><a href="../docs/agents.html">The agent guide</a> and <a href="../skills/index.html">the skills</a>, since this is how the work actually gets done here</td></tr>
+    <tr><td><b>See what exists already</b></td><td><a href="../summit/startups.html">What exists, and what is still a design</a>, the sheet that says which is which</td></tr>
+    <tr><td><b>Raising, eventually</b></td><td><a href="../investors/index.html">sgit.ai for investors</a>, published in the open, which is the same rule this section follows</td></tr>
+  </table></div>
+
+  <div class="note"><b>This section is new, and deliberately small.</b> It will grow with the founders who use it, and when it outgrows a page it will become its own site, the way nineteen others already have. If you are building on vaults, the most useful thing you can send is what broke.</div>
+
+  <div class="pagenav"><a href="../articles/the-question-is-whether-they-miss-it.html">← The operating model</a><a href="../demos/vaults/index.html">Open a real vault →</a></div>
+</main>
