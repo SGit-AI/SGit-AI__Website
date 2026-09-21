@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.3.3",
+  "site_version": "v0.3.4",
   "updates": [
+    {
+      "slug": "the-design-is-the-performance",
+      "title": "The design is the performance, and the crypto is free",
+      "date": "2026-09-21",
+      "version": "v0.3.4",
+      "tags": [
+        "architecture",
+        "performance",
+        "graphs",
+        "method"
+      ],
+      "summary": "Two releases of the performance page covered the mechanisms and buried the thing that actually does the work. Performance here comes from an architectural habit, and the habit is one question: what data do I need for the task at hand? Not what the system holds…"
+    },
     {
       "slug": "performance-and-cost",
       "title": "Graph engineering versus fractal graph, the measured answer",

@@ -2,7 +2,7 @@
 
 > An independent reference edition of the UK DSIT AI Risk Management Toolkit: the guidance, the official workbook, the risk method and the frameworks it cites modelled as four separate worlds with named bridges, 617 nodes and 694 edges, every edge labelled curated or lexical, five hashed source snapshots, eight passing checks and six gaps published about itself.
 
-*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

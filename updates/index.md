@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,60 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-21
+
+### [The design is the performance, and the crypto is free](#the-design-is-the-performance) [v0.3.4](../admin/versions.md)
+
+architectureperformancegraphsmethod
+
+Two releases of [the performance page](../demos/fractal-graphs/performance.md) covered the mechanisms and buried the thing that actually does the work. Performance here comes from an architectural habit, and the habit is one question: **what data do I need for the task at hand?**
+
+Not what the system holds. Not what the schema allows. What *this* question needs. Once that is the first question, most performance work stops being necessary, because the expensive thing was never the engine. It was loading data nobody was going to look at.
+
+## Standing on three giants, none of them ours
+
+The second half of the habit is refusing to reinvent what is underneath.
+
+The **file system** is a high-performance indexed store with decades of tuning and the operating system's page cache in front of it. A **content-addressed hash store** sits on top: a name is a hash of the bytes, so a lookup is a path, deduplication is free, and a cache entry cannot be wrong. The **graph** sits on top of that, and it is the only part that is ours. It is also the part that decides how much a question costs, because it tells you which bytes to ask for.
+
+And the fair version of the database comparison, which usually gets told unfairly in our favour: **a database is fast largely because it keeps the working set in memory.** That is not cheating, it is the same insight. The difference is who picks the working set. A buffer pool guesses it in advance, from access patterns, for every reader at once. We pick it per question, at the moment the question is asked, and throw it away afterwards.
+
+## Measured, because the habit only works if loading is cheap
+
+On the 1.0 MB file that holds the whole DSIT graph:
+
+| Step | Time | Rate |
+|---|---|---|
+| Fetch over the network, cold | **1,210 ms** | the only number that matters |
+| Read from local disk | **2.5 ms** | 418 MB/s |
+| **Decrypt, AES-256-GCM** | **0.351 ms** | **2,978 MB/s** |
+| Parse the JSON | 3.2 ms | the largest local cost |
+
+**Decryption is 0.03% of the cold fetch and about a tenth of the JSON parse.** On a 59 KB shard it is 0.025 ms. Whenever somebody assumes encrypting the data must have cost something in speed, that is the answer: at these sizes, on ordinary compute, encryption is free and the network is everything. Which puts the question back where it belongs, on how many bytes you decided to ask for.
+
+So the design rule, as a budget. Under 100 KB is an answer. Around 1 MB is a whole world. **10 MB and up means you are loading a store rather than an answer.** Gigabytes is a design error, not a performance problem, and no tuning will fix it.
+
+## Save is where the loop compounds
+
+The step people skip in LETS. Saving is not filing the answer away, it is leaving behind an artefact cut to the shape of the **next** question. The Article 9 slice in the Regulation Graph exists because somebody answered a question about Article 9 once and saved it in a form that makes asking again cost 29 KB instead of a megabyte. Do that a few times and the expensive queries have all been pre-answered, each by the run that first needed them, with nothing decided in advance.
+
+## Restructuring into context is the compression
+
+The fractal property is usually argued as a point about meaning. It is also a point about volume. Measured in the Regulation Graph vault:
+
+| Altitude | Bytes | Against the level below |
+|---|---|---|
+| Raw Formex source, the law as published | 11,216,043 |  |
+| The graph: 1,523 nodes, 1,944 edges | 1,073,915 | **10x smaller** |
+| One article's pre-cut slice | 29,638 | **36x smaller** |
+| The ontology, the rules of this world | 4,217 | **7x smaller** |
+
+**11.2 MB down to 4.2 KB, a factor of about 2,660, with nothing thrown away**, because every level keeps the edge down to the one below. You query the small thing and follow the link only when the answer requires it.
+
+Which is why this scales in the direction that usually breaks things. In a schema-first system, more data means a bigger index, more memory and a bigger machine. Here the store can be gigabytes or terabytes while **what a question loads stays in the megabytes, because the graph is what tells you which bytes matter.** Adding a terabyte adds nodes you did not load.
+
+## A correction the measuring turned up
+
+This page said 617 nodes and 694 edges, quoting the vault's page. The file as cloned today has **1,051 nodes and 1,289 edges** across five worlds, because the vault released 0.2.1 today and the graph grew. Every count on the page is now counted rather than quoted, and the drift was only visible because the vault keeps its versions instead of overwriting them.
 
 ### [Graph engineering versus fractal graph, the measured answer](#performance-and-cost) [v0.3.2](../admin/versions.md)
 

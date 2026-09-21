@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.3'
+SITE_VERSION = 'v0.3.4'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,52 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.3', '2026-09-21', 'this release',
+    ('v0.3.4', '2026-09-21', 'this release',
+     "THE BIGGEST PERFORMANCE FACTOR IS THE DESIGN, AND THE PAGE HAD BURIED IT. The author's "
+     "point: performance here comes from architectural decisions and the design the site "
+     "promotes, because you start by asking WHAT DATA DO I NEED FOR THE TASK AT HAND. The page "
+     "now opens on that and gives it a section of its own. STANDING ON GIANTS, three layers that "
+     "are already fast and are composed rather than replaced: the file system, a high-performance "
+     "indexed store with the OS page cache in front; a content-addressed hash store on top of it, "
+     "where a name is a hash so lookup is a path, dedup is free and a cache entry cannot be "
+     "wrong; and the graph on top of that, which is the part that tells you WHICH BYTES to ask "
+     "for. AND THE FAIR VERSION OF THE DATABASE COMPARISON: a database is fast largely because it "
+     "keeps the working set in memory, which is the same insight, not cheating. The difference is "
+     "who picks the working set. A buffer pool guesses it in advance from access patterns for "
+     "every reader at once; we pick it per question at the moment the question is asked and throw "
+     "it away after. MEASURED, BECAUSE THE HABIT ONLY MAKES SENSE IF LOADING IS CHEAP, on the "
+     "1.0 MB file holding the whole DSIT graph: cold network fetch 1,210 ms; local disk read "
+     "2.5 ms at 418 MB/s; AES-256-GCM DECRYPT 0.351 ms at 2,978 MB/s; JSON parse 3.2 ms. So "
+     "decryption is 0.03 percent of the cold fetch and about a TENTH OF THE JSON PARSE, and on a "
+     "59 KB shard it is 0.025 ms. Encryption is free at these sizes and the network is "
+     "everything, which puts the question back on how many bytes you asked for. THE DESIGN RULE "
+     "AS A BUDGET: under 100 KB is an answer, around 1 MB is a whole world, 10 MB and up means "
+     "you are loading a store rather than an answer, and gigabytes is a design error that no "
+     "tuning will fix. SAVE IS WHERE THE LOOP COMPOUNDS, the LETS step people skip: saving is not "
+     "filing the answer away, it is leaving an artefact cut to the shape of the NEXT question. "
+     "The Article 9 slice exists because somebody asked about Article 9 once, so asking again "
+     "costs 29 KB instead of a megabyte. Build time replaces query time one question at a time, "
+     "paid by whoever asked first, with nothing decided in advance. RESTRUCTURING INTO CONTEXT IS "
+     "COMPRESSION, the fractal property argued as volume rather than meaning, with the measured "
+     "ladder in the Regulation Graph vault: raw Formex source 11,216,043 bytes; the graph, 1,523 "
+     "nodes and 1,944 edges, 1,073,915 bytes, 10x smaller; one article's pre-cut slice 29,638, "
+     "36x smaller; the ontology 4,217, another 7x. Top to bottom 11.2 MB down to 4.2 KB, a factor "
+     "of about 2,660, WITH NOTHING THROWN AWAY, because every level keeps the edge down to the "
+     "one below. Query the small thing, follow the link only when the answer needs it. WHICH IS "
+     "WHY IT SCALES IN THE DIRECTION THAT BREAKS SCHEMA-FIRST SYSTEMS: there, more data means a "
+     "bigger index and a bigger machine; here the store can be terabytes while what a question "
+     "loads stays in megabytes, because the graph is what tells you which bytes matter. Adding a "
+     "terabyte adds nodes you did not load. ALSO: a real SQL engine comes along wherever the "
+     "slice lands, and the managed services already work this way, loading a dataset into an "
+     "in-memory SQLite or MySQL when an instance wakes, so we do explicitly what they do "
+     "implicitly, chosen per question rather than per instance lifecycle. AND A CORRECTION FOUND "
+     "BY MEASURING: this page said 617 nodes and 694 edges, quoting the vault's page. The file as "
+     "cloned today has 1,051 NODES AND 1,289 EDGES across five worlds, because the vault released "
+     "0.2.1 on 21 September and the graph grew. Every count on the page is now counted rather "
+     "than quoted, and the drift is only visible because the vault keeps its versions rather than "
+     "overwriting them. The vault's own page still carries the figure it was published with.",
+     ),
+    ('v0.3.3', '2026-09-21', 'git 4b468e61',
      "THE PERFORMANCE PAGE WAS MISSING THE THREE THINGS THAT MAKE IT FAST. The author read "
      "v0.3.2 and named them: reading an encrypted file takes a couple of requests and the site "
      "should have the guidance; the append mode has its own performance implications; and the "
@@ -2466,7 +2511,7 @@ LLMS_FACTS = {
     'docs/limitations.html': 'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
     'docs/two-branch-model.html': 'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',
     'docs/credentials.html': 'TWO capabilities: a vault key (read+write) and a read key (read only, derived one-way, cannot be reversed). FIVE prefixes DECLARE which you hold: sgit_private_vault_ (write, never publish), sgit_private_read_ (read, keep secret), sgit_public_read_ (read, deliberately published, use this for open vaults), plus legacy sgit_vk1_/sgit_rk1_. The prefix is a DECLARATION, not crypto: strip it and the bytes are identical, and every form clones the same vault. Classification is by declaration, never by shape. Revocation is NOT retroactive.',
-    'demos/fractal-graphs/performance.html': 'NO LIVE DATABASE. A graph is encrypted files in object storage, read directly; the engine is built per question and thrown away (SQLite in WebAssembly in the tab, or a serverless function that lives one request). The cycle is LETS: Load bytes, Extract the slice plus its ontology, Transform in a disposable engine, Save the answer as NEW immutable files, never an overwrite, which is why every cache in the path is correct forever. MEASURED 21 Sep 2026 against live vaults: full clone of a 42-file 3.2MB vault 65.4s; sparse clone (every path, size and hash, no content) 7.3s and 256KB; one 59KB file 0.49s; the whole 617-node graph as one file 1.0MB in 1.21s; an already-fetched file 0.18s with no network. In-browser bytes per view: overview 94KB in 3 requests, guidance 295KB in 4, the 617-node graph 1.12MB in 5, data and queries 1.19MB in 6, against a 3.2MB vault that is never loaded whole. An ontology is 2-4KB, the entire price of crossing into another world. COST: zero instance hours, zero replicas, zero index memory, no separate backup line (every version is already kept); storage and egress only; query compute is paid by the reader device. The whole published estate is 2,662 files and 295MB. SLOWER AT: full clones, anything needing a server-side query, deep traversal over one huge single-schema graph (use a graph database), concurrent multi-writer. THE TRANSPORT: file ids are DERIVED by HMAC-SHA256 over the read key under named domains (sg-vault-v1:file-id:ref, :branch-ref, :branch-index), so a client COMPUTES an address instead of looking it up, and reading an encrypted file is ONE unauthenticated CORS GET (measured 2,364 B ciphertext in 0.86s, 59,324 B in 0.63s). One POST to /api/vault/batch/{vault_id} reads MANY: 5 objects 0.87s, 20 objects and 3.76MB in 2.79s, one round trip; 42 returned 502 (response-size limit, the CLI splits the chunk). Encryption adds a FLAT 28 bytes per object (12-byte nonce + 16-byte tag), not a percentage. Two addressing modes: pin the content-addressed obj-cas-imm id for one GET forever, or resolve HEAD to tree to blob for always-current. The 65s clone is a CLIENT-side cost (106 blobs including history, plus one 50-file batch degrading to 50 single fetches), not a transport limit. APPEND MODE: lanes live at bare/append/{token}/pending/ OUTSIDE the commit tree, so a write is one account-less POST with no read-modify-write, no commit, no tree rebuild and no lock, it never conflicts with a push and never contends with a read, and the response is deliberately blind. CACHING: the cached bytes are CIPHERTEXT so a cache is not a trust boundary, and an obj-cas-imm id is SHA-256 over the ciphertext so an entry can never be stale; refs are the exception and must not be cached. Live example: sgraph.ai/en-gb/library/ serves a whole knowledge base from two encrypted vaults behind a 270KB static shell.',
+    'demos/fractal-graphs/performance.html': 'NO LIVE DATABASE. A graph is encrypted files in object storage, read directly; the engine is built per question and thrown away (SQLite in WebAssembly in the tab, or a serverless function that lives one request). The cycle is LETS: Load bytes, Extract the slice plus its ontology, Transform in a disposable engine, Save the answer as NEW immutable files, never an overwrite, which is why every cache in the path is correct forever. MEASURED 21 Sep 2026 against live vaults: full clone of a 42-file 3.2MB vault 65.4s; sparse clone (every path, size and hash, no content) 7.3s and 256KB; one 59KB file 0.49s; the whole 617-node graph as one file 1.0MB in 1.21s; an already-fetched file 0.18s with no network. In-browser bytes per view: overview 94KB in 3 requests, guidance 295KB in 4, the 617-node graph 1.12MB in 5, data and queries 1.19MB in 6, against a 3.2MB vault that is never loaded whole. An ontology is 2-4KB, the entire price of crossing into another world. COST: zero instance hours, zero replicas, zero index memory, no separate backup line (every version is already kept); storage and egress only; query compute is paid by the reader device. The whole published estate is 2,662 files and 295MB. SLOWER AT: full clones, anything needing a server-side query, deep traversal over one huge single-schema graph (use a graph database), concurrent multi-writer. THE TRANSPORT: file ids are DERIVED by HMAC-SHA256 over the read key under named domains (sg-vault-v1:file-id:ref, :branch-ref, :branch-index), so a client COMPUTES an address instead of looking it up, and reading an encrypted file is ONE unauthenticated CORS GET (measured 2,364 B ciphertext in 0.86s, 59,324 B in 0.63s). One POST to /api/vault/batch/{vault_id} reads MANY: 5 objects 0.87s, 20 objects and 3.76MB in 2.79s, one round trip; 42 returned 502 (response-size limit, the CLI splits the chunk). Encryption adds a FLAT 28 bytes per object (12-byte nonce + 16-byte tag), not a percentage. Two addressing modes: pin the content-addressed obj-cas-imm id for one GET forever, or resolve HEAD to tree to blob for always-current. The 65s clone is a CLIENT-side cost (106 blobs including history, plus one 50-file batch degrading to 50 single fetches), not a transport limit. APPEND MODE: lanes live at bare/append/{token}/pending/ OUTSIDE the commit tree, so a write is one account-less POST with no read-modify-write, no commit, no tree rebuild and no lock, it never conflicts with a push and never contends with a read, and the response is deliberately blind. CACHING: the cached bytes are CIPHERTEXT so a cache is not a trust boundary, and an obj-cas-imm id is SHA-256 over the ciphertext so an entry can never be stale; refs are the exception and must not be cached. Live example: sgraph.ai/en-gb/library/ serves a whole knowledge base from two encrypted vaults behind a 270KB static shell. THE DESIGN IS THE BIGGEST FACTOR: start by asking WHAT DATA THIS QUESTION NEEDS, and compose three layers that are already fast (the file system with its page cache, a content-addressed hash store where a name is a hash, and the graph that tells you which bytes to ask for). A database is fast mainly because it keeps the working set in memory; same insight, but a buffer pool guesses the set in advance for all readers while we pick it per question and discard it. MEASURED on the 1.0MB graph file: cold network fetch 1,210ms, local disk read 2.5ms (418 MB/s), AES-256-GCM DECRYPT 0.351ms (2,978 MB/s), JSON parse 3.2ms. Decryption is 0.03% of the fetch and a TENTH of the JSON parse, so encryption is effectively free and the network is everything. BUDGET RULE: <100KB is an answer, ~1MB is a whole world, 10MB+ means you are loading a store not an answer, GB is a design error. SAVE COMPOUNDS: each pass leaves an artefact cut for the next question (the Article 9 slice makes re-asking cost 29KB not 1MB). SEMANTIC COMPRESSION LADDER, Regulation Graph: raw source 11,216,043 B, graph 1,073,915 B (10x), one article slice 29,638 B (36x), ontology 4,217 B (7x) = 2,660x top to bottom with NOTHING discarded, because each level keeps the edge to the one below. Therefore the store can be TB while a query stays in MB: adding data adds nodes you did not load. NOTE: the DSIT graph measured here has 1,051 nodes and 1,289 edges (its vault page says 617/694, the figure at publication before release 0.2.1).',
     'security.html': 'The server sees the vault ID, object sizes and request timing, nothing else. Sizes and timing are an acknowledged side channel.',
     'docs/agents.html': 'sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.',
     'docs/quickstart.html': 'sgit create <name> then commit/push; the vault key is printed once and there is no reset.',

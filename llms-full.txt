@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.3.3). Nothing here needs a second request. Individual pages live at the paths
+> (v0.3.4). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -44,7 +44,7 @@ Not categories, things. Each one is a real vault you can open, and each is hard 
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-131site releases, each verified live before it was called done
+132site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -2477,7 +2477,7 @@ The question a reader asked after this page went up, and it deserves a page of i
 
 # Performance, cost, and running everywhere
 
-A reader of [the Fractal Semantic Graphs page](index.md) asked the right follow-up question: what is the **performance** of this against ordinary graph engineering? The honest answer needs the architecture said out loud first, because the two are not doing the same work. We run with **no live database**. A graph is a set of files in cloud storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that lives for one request. We call the cycle **LETS**: Load, Extract, Transform, Save. Three properties do most of the work: **reading an encrypted file takes one request**, because the address is computed locally rather than looked up; **writes go to an append lane outside the commit tree**, so they never contend with reads; and **the cached bytes are ciphertext**, so every cache in the path can hold them without widening exposure. This page gives the measured numbers, taken on 21 September 2026 against live published vaults, then the cost model, then the part that matters most in practice: the same graph runs in a browser, a terminal, a function and a build container, with one read key and nothing installed.
+A reader of [the Fractal Semantic Graphs page](index.md) asked the right follow-up question: what is the **performance** of this against ordinary graph engineering? The honest answer needs the architecture said out loud first, because the two are not doing the same work. We run with **no live database**. A graph is a set of files in cloud storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that lives for one request. We call the cycle **LETS**: Load, Extract, Transform, Save. Most of the performance, though, comes from a design habit rather than a mechanism: [**start by asking what data the task at hand actually needs**](#design), and build on three layers that are already fast. Under that, three properties do the rest: **reading an encrypted file takes one request**, because the address is computed locally rather than looked up; **writes go to an append lane outside the commit tree**, so they never contend with reads; and **the cached bytes are ciphertext**, so every cache in the path can hold them without widening exposure. This page gives the measured numbers, taken on 21 September 2026 against live published vaults, then the cost model, then the part that matters most in practice: the same graph runs in a browser, a terminal, a function and a build container, with one read key and nothing installed.
 
 ## The short answer
 
@@ -2498,6 +2498,40 @@ A graph database is very good at one thing this is not trying to do, and pays fo
 
 The performance claim is therefore narrow and testable: **for the questions people actually ask of a semantic graph, the work is bounded by the answer, not by the graph**, and the numbers below are what that costs.
 
+## The real optimisation is the question, not the engine
+
+Everything below this line is detail. The architecture is fast mostly because of a design habit, and the habit is this: **start by asking what data the task at hand actually needs.** Not what the system holds, not what the schema allows, not what might be useful later. What this question needs. Once that is the first question, most performance work stops being necessary, because the expensive thing was never the engine. It was loading data nobody was going to look at.
+
+The second half of the habit is refusing to reinvent anything underneath it. **Three layers are already fast, already solved, and already free**, so the job is to compose them rather than replace them.
+
+| **The file system** | A high-performance indexed store with decades of tuning behind it and the operating system's page cache sitting in front. Nothing here writes a storage engine, because one is already installed |
+|---|---|
+| **A content-addressed hash store on top of it** | An object's name is the hash of its bytes, so a lookup is a path, deduplication is free, and a cache entry cannot be wrong. This is the layer that makes the store safe to spread everywhere |
+| **A graph on top of that** | Which tells you *which bytes to ask for*. This is the part that is actually ours, and it is the part that decides how much work a question costs |
+
+It is worth being fair about what a database does here, because the comparison is often unfair in our direction. **A database is fast largely because it keeps the working set in memory.** The buffer pool, the page cache, the in-memory index: most of the speed of a query comes from the answer already being in RAM rather than on disk. That is not cheating, it is good engineering, and it is the same insight. The difference is who chooses the working set. A database guesses it from access patterns and an eviction policy, in advance, for every reader at once. **We choose it per question, at the moment the question is asked, and throw it away afterwards.** It is the same trick, made explicit and made specific.
+
+### Neither the disk nor the decryption is the cost
+
+The habit only makes sense if loading is genuinely cheap, so here is what the layers actually cost. Measured on 21 September 2026 on an ordinary cloud container, on the 1.0 MB file that holds the whole DSIT graph.
+
+| Step | Time for 1.0 MB | Rate |
+|---|---|---|
+| Fetch it over the network, cold, nothing cached | **1,210 ms** | the only number that matters |
+| Read it from local disk once it is there | **2.5 ms** | 418 MB/s |
+| **Decrypt it, AES-256-GCM** | **0.35 ms** | **2,978 MB/s** |
+| Parse the JSON | 3.2 ms | the largest local cost, and it is the parser |
+
+Read that table twice. **Decryption is 0.03% of the cold fetch and about a tenth of the JSON parse.** On a 59 KB shard it is 0.025 ms, which is not a number anybody needs to plan around. The same holds in a browser, where AES-GCM runs in WebCrypto against the same hardware instructions the measurement above used. Whenever somebody assumes that encrypting the data must have cost something in speed, this is the answer: at these sizes, on ordinary compute, **encryption is free and the network is everything**. Which puts the whole question back where it belongs, on how many bytes you decided to ask for.
+
+**The design rule, stated as a budget.** If you find yourself loading gigabytes to answer a question, something is wrong upstream, and no amount of tuning will fix it. Go back and cut the data, because the fix is always in the shape of the data and never in the engine.
+
+| **Under 100 KB** | An answer. This is the normal case and it feels instant |
+|---|---|
+| **Around 1 MB** | A whole world at one altitude. Fine, and still under two seconds cold |
+| **10 MB and up** | You are loading a store rather than an answer. Cut a slice, or move the question to a lower altitude |
+| **Gigabytes** | A design error, not a performance problem. The graph exists so that this never has to happen |
+
 ## LETS: Load, Extract, Transform, Save
 
 The familiar cycle is ETL: extract from the sources, transform, load into the warehouse you then own and must keep alive. LETS inverts the order and the ownership. The store you already have *is* the database, so you load from it, build a throwaway engine around the slice you need, answer the question, and save the answer back as new immutable files beside the ones you read.
@@ -2508,7 +2542,9 @@ The familiar cycle is ETL: extract from the sources, transform, load into the wa
 |---|---|
 | **Extract** | Pull out the slice that the question is about, and the ontology that gives that slice its meaning. In a fractal graph these are separate files on purpose, so you can take the second without the first |
 | **Transform** | Build a throwaway engine around it. SQLite compiled to WebAssembly for tabular questions, an RDF store for triple questions, ordinary in-memory structures for traversals. It is created for this question and thrown away after it |
-| **Save** | Write the answer back as new immutable files with their provenance, a new version rather than an edit. The result is now itself loadable, which is what makes the cycle compose |
+| **Save** | Write the answer back as new immutable files with their provenance, a new version rather than an edit, and **shaped for the question that comes next**. The result is now itself loadable, which is what makes the cycle compose |
+
+**The Save step is where the compounding happens, and it is the part people skip.** Saving is not filing the answer away. It is leaving behind an artefact cut to the shape of the next question, so that the next pass through the loop loads less than this one did. The Article 9 slice in the Regulation Graph exists because somebody answered a question about Article 9 once and then saved the answer in a form that makes asking again cost 29 KB instead of a megabyte. Do that a few times and the expensive queries have all been pre-answered, each by the run that first needed them, and none of it required deciding in advance which queries would matter. **Build time replaces query time, one question at a time, paid by whoever asked first.**
 
 **The load-bearing consequence.** Because Save never overwrites, every object is immutable, and because every object is immutable, **every cache in the path is correct forever**. The browser cache, the CDN edge, the local clone and the agent's working copy never need invalidating. That is not a tuning trick. It is the reason there is no server: the hardest thing a database does for you, keeping one mutable truth consistent across readers, is a problem this architecture does not create.
 
@@ -2518,7 +2554,9 @@ All of the following was measured on 21 September 2026 from an ordinary cloud co
 
 ### Opening a graph from the command line
 
-The vault is the [DSIT AI Risk Toolkit](../vaults/dsit-ai-risk-toolkit/index.md), 42 files, 3.2 MB of content, a semantic graph of **617 nodes and 694 edges** across four worlds.
+The vault is the [DSIT AI Risk Toolkit](../vaults/dsit-ai-risk-toolkit/index.md), 42 files, 3.2 MB of content, a semantic graph of **1,051 nodes and 1,289 edges** across five worlds.
+
+**A version drift, caught by measuring.** That vault's [own page here](../vaults/dsit-ai-risk-toolkit/index.md) says 617 nodes and 694 edges, which was true when it was published on 20 September. The vault released 0.2.1 on 21 September and the graph grew. The figures on this page are from the file as cloned today, counted rather than quoted, and the discrepancy is only visible because the vault keeps its versions rather than overwriting them.
 
 | Operation | Bytes moved | Time |
 |---|---|---|
@@ -2541,7 +2579,7 @@ Bytes and request counts for each view of that vault's app, measured by instrume
 
 Four things in that chart are worth naming.
 
-- **The landing view of a 617-node semantic graph costs three requests and 94 KB.** Less than a typical web font pair. The graph file is not touched, because no question has been asked yet.
+- **The landing view of a 1,051-node semantic graph costs three requests and 94 KB.** Less than a typical web font pair. The graph file is not touched, because no question has been asked yet.
 - **The most expensive view is a third of the vault.** There is no view that loads everything, because there is no question that needs everything.
 - **The ontology is 2 KB.** In the Regulation Graph it is 4,217 bytes and fetched in 0.95 s. That is the entire price of arriving in a new world and learning its rules, which is what makes the [jump between worlds](index.md#what) affordable rather than theoretical.
 - **The query engine is 859 KB and loads only if you query.** SQLite compiled to WebAssembly ships inside the vault. A reader who never opens the query view never pays for it, and one who does pays once and then queries for free, locally, offline, for as long as the tab is open.
@@ -2612,6 +2650,25 @@ The library site above ships this as a small script loaded before any module, wh
 
 **A gap found while measuring this, reported rather than smoothed over.** Our own [caching contract](../../api/vault-objects.md) says an immutable object should be served with `Cache-Control: public, max-age=31536000, immutable` and a ref with `no-store`. On 21 September 2026 the read endpoint returned **no `Cache-Control` header at all** for an immutable object, and the CDN reported a miss. The mechanism is unaffected, because the client cache keys on the id rather than trusting a header, which is the more robust design and is exactly why the library site ships its own. But the documented header is not live on that path today, and the page that documents it should not be read as describing what is currently served.
 
+## Restructuring into context is the compression
+
+The fractal property is usually argued as a point about meaning: each world keeps its own ontology, so nothing is forced to conform. It is also, and less obviously, a point about **volume**. Restructuring data into context *is* compression, and unlike ordinary compression it costs nothing to reverse, because every level keeps the edge down to the level below.
+
+Here is the ladder with real bytes, measured in the [Regulation Graph](../vaults/regulation-graph/index.md) vault, which models the EU AI Act.
+
+| Altitude | What it is | Bytes | Against the level below |
+|---|---|---|---|
+| **The source** | The law as published, raw Formex XML, retained so every claim traces to the bytes it came from | 11,216,043 |  |
+| **The graph** | Nodes and edges: 1,523 nodes, 1,944 edges, the whole instrument | 1,073,915 | **10x smaller** |
+| **One article's slice** | Article 9, pre-cut because it was asked about | 29,638 | **36x smaller** |
+| **The ontology** | The rules of this world: partitions, namespaces, what may and may not be claimed | 4,217 | **7x smaller** |
+
+Top to bottom that is **11.2 MB down to 4.2 KB, a factor of about 2,660**, and not one byte has been thrown away. The source is still there, still hashed, still one link below. This is why the fractal structure is a performance feature rather than only a modelling one: **you query the small thing, and you follow the link down only when the answer actually requires it.** A reader asking what the Act says about risk management systems loads 29 KB. A reader who then wants to see the exact published wording follows an edge and loads that. Nobody loads 11 MB, and nobody is prevented from reaching it.
+
+The same shape is in the [DSIT vault](../vaults/dsit-ai-risk-toolkit/index.md), where 503 KB of retained sources sit under a graph, under an ontology of 2,336 bytes that explains the whole thing.
+
+**Which is why this scales in the direction that usually breaks things.** In a schema-first system, more data means a bigger index, more memory and a bigger machine: the cost of a query grows with the size of the store. Here it does not. The store can be gigabytes or terabytes, and **what a question loads stays in the megabytes, because the graph is what tells you which bytes matter.** Adding a terabyte adds nodes you did not load. That is the claim worth testing against your own data, and it is the one that makes the architecture interesting at scale rather than merely cheap at rest.
+
 ## Why it is fast, in four sentences
 
 | **Never render the graph, render the answer** | The unit of work is the question, not the dataset. Traditional graph tooling optimises traversal over a loaded graph. This skips the loading, which is the part that was expensive |
@@ -2619,6 +2676,7 @@ The library site above ships this as a small script loaded before any module, wh
 | **Each world is small because each world keeps its own ontology** | There is no global schema to carry around, so a traversal stays inside one world until it deliberately crosses an edge. Crossing costs one small file. This is the performance benefit of the fractal property, and it is not an accident of it |
 | **Immutable and content addressed, so every cache is correct** | The CDN is the read replica. The browser cache is the local index. Neither can ever be stale, because an object's name is its content, and neither is a trust boundary, because what it holds is ciphertext |
 | **The address is computed, not looked up** | File ids are derived by HMAC from the read key, so reading an encrypted file is one unauthenticated GET with no discovery round trip, and twenty of them are one POST |
+| **And the design does most of it** | The habit of asking what data this question needs, on top of three layers that were already fast, beats any amount of engine tuning. Decryption runs at 2,978 MB/s and a local read at 418 MB/s, so [the only real variable is how many bytes you asked for](#design) |
 
 ## The cost model, which is the part that changes the decision
 
@@ -2652,6 +2710,8 @@ Because the graph is files and the engine is disposable, the same artefact runs 
 | **A serverless function** | Outbound HTTPS | Load the slice, build the ephemeral engine, answer, return. Nothing to keep warm and nothing to tear down, because the function dying *is* the teardown |
 | **A CI container or an agent's sandbox** | The read key as a variable | The same clone the human gets, in a pipeline, with the history attached so a build can assert on what changed |
 | **A static host with no backend at all** | GitHub Pages or an S3 bucket | Deterministic GET paths and client-side decryption, degrading cleanly to read only. [Documented here](../../docs/vault/static-hosting.md) |
+
+**And a real database comes with it, wherever it lands.** A browser tab or a function can stand up a full SQL engine over the slice it just loaded: SQLite compiled to WebAssembly, in memory, with real indexes and real joins. That is not a workaround for lacking a server. It is the same thing the managed services do, and it is worth noticing that they do it: plenty of serverless and scale-to-zero database products work by loading the dataset into an in-memory SQLite or MySQL when an instance wakes, and serving queries from there. The dataset being small enough to hold in memory is what makes them viable. **We do explicitly what they do implicitly**, with two differences: the working set is chosen by the question rather than by an instance lifecycle, and nothing has to wake up, because the engine is built where the answer is needed.
 
 This is also the disaster recovery story, and it is short. Every reader who ever cloned has a complete, verifiable copy including history. There is no primary to fail over from.
 
@@ -2691,7 +2751,7 @@ $ time sgit clone --sparse <read-key> sparse
 $ cd sparse && time sgit fetch data/questions/security.json
   59 KB                                              0.49 s
 $ time sgit fetch data/graph.json
-1.0 MB, the whole 617-node graph                   1.21 s
+1.0 MB, the whole 1,051-node graph                 1.21 s
 ```
 
 The transport figures used no client at all. One encrypted object, no auth header, no account:
@@ -2706,11 +2766,19 @@ $ curl -X POST "https://send.sgraph.ai/api/vault/batch/0q4sfr57" \
 
 Object ids come from `sgit ls --json` against a sparse clone, which prints every path with its size and its `blob_id` without downloading anything.
 
+The disk and crypto figures are local, so they need no vault at all. Decryption was timed over 200 iterations of AES-256-GCM on random data of each size, after a warm-up, using the same `cryptography` library the CLI uses:
+
+```
+$ python3 -c "measure AESGCM(key).decrypt over 1.0 MB, 200 runs"
+0.351 ms per call                              2,978 MB/s
+  the same call on a 59 KB shard: 0.025 ms
+```
+
 The read key is on [the vault's page](../vaults/dsit-ai-risk-toolkit/index.md), published on purpose. Browser figures were taken by instrumenting the page and recording every response, so they are exact byte counts rather than estimates, with network latency excluded; the latency numbers above are from the live API over an ordinary connection. Agents: the machine-readable list of every vault, with ids and read keys, is [/demos/vaults/llms.txt](../vaults/llms.txt).
 
 ## The answer to the question, in one paragraph
 
-Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as encrypted files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. Reading one of those files is a single unauthenticated GET, because the address was derived from the read key rather than looked up, and twenty of them are one POST. Writes go to a lane outside the commit tree, so they never contend with reads. The cached bytes are ciphertext, so every cache in the path can hold them safely and none of them can go stale, because an object's name is a hash of its content. The measured result is a 617-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
+Most of the win is a design habit rather than a technology: ask what data this question needs, and build on three layers that are already fast, the file system, a content-addressed hash store, and a graph that tells you which bytes to ask for. Decryption runs at nearly 3 GB/s and a local read at 418 MB/s, so the only variable that matters is how many bytes you decided to load, and the fractal structure is what keeps that number small, by restructuring data into context and keeping a link down to the source. Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as encrypted files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. Reading one of those files is a single unauthenticated GET, because the address was derived from the read key rather than looked up, and twenty of them are one POST. Writes go to a lane outside the commit tree, so they never contend with reads. The cached bytes are ciphertext, so every cache in the path can hold them safely and none of them can go stale, because an object's name is a hash of its content. The measured result is a 1,051-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
 
 [← Fractal Semantic Graphs](index.md)[The vault that was measured →](../vaults/dsit-ai-risk-toolkit/index.md)
 
@@ -5182,7 +5250,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.3, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.3.4, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5545,7 +5613,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-131**site releases since 14 August**
+132**site releases since 14 August**
 each verified live before it was called done
 
 31**vaults published with a public read key**
@@ -5554,7 +5622,7 @@ every one audited first; findings on the page
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-72**articles and release notes**
+73**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -7237,11 +7305,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.3.3**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.3.4**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.3.3 | 2026-09-21 | this release | THE PERFORMANCE PAGE WAS MISSING THE THREE THINGS THAT MAKE IT FAST. The author read v0.3.2 and named them: reading an encrypted file takes a couple of requests and the site should have the guidance; the append mode has its own performance implications; and the immutability of the data files is what allows client-side caching of ENCRYPTED data, which is what the website and the vault web app already do. Plus a live example to point at, sgraph.ai/en-gb/library/, a high-performance site running entirely from encrypted data. FOUR NEW SECTIONS, all measured or read from published source on 21 September 2026. (1) ONE REQUEST: file ids are derived by HMAC-SHA256 over the read key under named domains (sg-vault-v1:file-id:ref, :branch-ref, :branch-index), identical constants in the CLI and the browser client, so a holder of the read key COMPUTES the address of the ref, the index and the settings before issuing any request. No discovery round trip. Reading is then a plain CORS GET with no auth header: measured 2,364 bytes of ciphertext in 0.86 s and 59,324 in 0.63 s, best of five 0.33 s. One POST to /api/vault/batch/ returned FIVE objects in 0.87 s and TWENTY objects, 3.76 MB, in 2.79 s, all in a single round trip; 42 objects returned 502, the server's response-size limit, which the CLI already handles by splitting the chunk. Encryption costs a FLAT 28 BYTES per object (12-byte nonce, 16-byte tag), confirmed on both measurements, not a percentage. And two ways to address a file, pin the content-addressed id for one GET forever, or resolve HEAD to tree to blob for always current, which is a design choice rather than a default. (2) THE 65 SECOND CLONE IS CORRECTED, because the new numbers disprove the explanation v0.3.2 gave. The clone log shows 7 commits, 28 trees and 106 BLOBS, not 42 files, because a full clone takes the history; then one batch of 50 hit the response-size limit and degraded to 50 individual fetches, which is most of the 65 seconds. The transport moved 3.76 MB in 2.79 s when asked in one request, so this is a client-side chunking bug (chunk by accumulated size, not file count) and not a property of the architecture. Said on the page in those words. (3) APPEND MODE: lanes live at bare/append/{token}/pending/, OUTSIDE the commit tree, so appends never touch a branch and never conflict with a push. A write is one account-less POST with the token in the body: no session, no read-modify-write, no commit, no tree rebuild, no lock. The response is deliberately blind (ok true, no id, no count), so the server does no extra work and leaks nothing by size or timing. Writes never contend with reads because a reader walking the graph never looks at a lane. Several anchors means several lanes, so one flooding sender cannot bury another. (4) CACHING ENCRYPTED DATA, the easy case: the cached bytes are CIPHERTEXT, so a cache is not a trust boundary and the browser cache, IndexedDB, a CDN edge and a corporate proxy can all hold vault objects without widening exposure; and an obj-cas-imm- id is SHA-256 OVER THE CIPHERTEXT, so an entry under that name can never be stale or wrong and no invalidation logic exists anywhere. Mutable refs are the exception and the failure is silent. (5) LIVE EVIDENCE: the sgraph.ai library is a 270 KB static shell (28 KB HTML plus 242 KB of CSS and components, measured) whose every article, nav entry and blog post comes out of two encrypted vaults, decrypted in the tab, with the server unable to read a word of what it serves. Its blog entries pin their content-addressed object ids in the page for a single GET, while its navigation is deliberately NOT pinned and resolves HEAD to tree to blob at runtime so it stays current. Its cache script keeps immutable objects in IndexedDB for later page loads with no network at all, collapses concurrent callers into one request, and labels every response idb-hit, inflight or network. AND A GAP FOUND WHILE MEASURING, reported rather than smoothed over: our own caching contract page says immutable objects are served Cache-Control public, max-age=31536000, immutable, and refs no-store. On 21 September 2026 the read endpoint returned NO Cache-Control header at all for an immutable object and the CDN reported a miss. The mechanism is unaffected because the client cache keys on the id rather than trusting a header, which is the more robust design, but the documented header is not live on that path today and the page now says so. |
+| v0.3.4 | 2026-09-21 | this release | THE BIGGEST PERFORMANCE FACTOR IS THE DESIGN, AND THE PAGE HAD BURIED IT. The author's point: performance here comes from architectural decisions and the design the site promotes, because you start by asking WHAT DATA DO I NEED FOR THE TASK AT HAND. The page now opens on that and gives it a section of its own. STANDING ON GIANTS, three layers that are already fast and are composed rather than replaced: the file system, a high-performance indexed store with the OS page cache in front; a content-addressed hash store on top of it, where a name is a hash so lookup is a path, dedup is free and a cache entry cannot be wrong; and the graph on top of that, which is the part that tells you WHICH BYTES to ask for. AND THE FAIR VERSION OF THE DATABASE COMPARISON: a database is fast largely because it keeps the working set in memory, which is the same insight, not cheating. The difference is who picks the working set. A buffer pool guesses it in advance from access patterns for every reader at once; we pick it per question at the moment the question is asked and throw it away after. MEASURED, BECAUSE THE HABIT ONLY MAKES SENSE IF LOADING IS CHEAP, on the 1.0 MB file holding the whole DSIT graph: cold network fetch 1,210 ms; local disk read 2.5 ms at 418 MB/s; AES-256-GCM DECRYPT 0.351 ms at 2,978 MB/s; JSON parse 3.2 ms. So decryption is 0.03 percent of the cold fetch and about a TENTH OF THE JSON PARSE, and on a 59 KB shard it is 0.025 ms. Encryption is free at these sizes and the network is everything, which puts the question back on how many bytes you asked for. THE DESIGN RULE AS A BUDGET: under 100 KB is an answer, around 1 MB is a whole world, 10 MB and up means you are loading a store rather than an answer, and gigabytes is a design error that no tuning will fix. SAVE IS WHERE THE LOOP COMPOUNDS, the LETS step people skip: saving is not filing the answer away, it is leaving an artefact cut to the shape of the NEXT question. The Article 9 slice exists because somebody asked about Article 9 once, so asking again costs 29 KB instead of a megabyte. Build time replaces query time one question at a time, paid by whoever asked first, with nothing decided in advance. RESTRUCTURING INTO CONTEXT IS COMPRESSION, the fractal property argued as volume rather than meaning, with the measured ladder in the Regulation Graph vault: raw Formex source 11,216,043 bytes; the graph, 1,523 nodes and 1,944 edges, 1,073,915 bytes, 10x smaller; one article's pre-cut slice 29,638, 36x smaller; the ontology 4,217, another 7x. Top to bottom 11.2 MB down to 4.2 KB, a factor of about 2,660, WITH NOTHING THROWN AWAY, because every level keeps the edge down to the one below. Query the small thing, follow the link only when the answer needs it. WHICH IS WHY IT SCALES IN THE DIRECTION THAT BREAKS SCHEMA-FIRST SYSTEMS: there, more data means a bigger index and a bigger machine; here the store can be terabytes while what a question loads stays in megabytes, because the graph is what tells you which bytes matter. Adding a terabyte adds nodes you did not load. ALSO: a real SQL engine comes along wherever the slice lands, and the managed services already work this way, loading a dataset into an in-memory SQLite or MySQL when an instance wakes, so we do explicitly what they do implicitly, chosen per question rather than per instance lifecycle. AND A CORRECTION FOUND BY MEASURING: this page said 617 nodes and 694 edges, quoting the vault's page. The file as cloned today has 1,051 NODES AND 1,289 EDGES across five worlds, because the vault released 0.2.1 on 21 September and the graph grew. Every count on the page is now counted rather than quoted, and the drift is only visible because the vault keeps its versions rather than overwriting them. The vault's own page still carries the figure it was published with. |
+| v0.3.3 | 2026-09-21 | git 4b468e61 | THE PERFORMANCE PAGE WAS MISSING THE THREE THINGS THAT MAKE IT FAST. The author read v0.3.2 and named them: reading an encrypted file takes a couple of requests and the site should have the guidance; the append mode has its own performance implications; and the immutability of the data files is what allows client-side caching of ENCRYPTED data, which is what the website and the vault web app already do. Plus a live example to point at, sgraph.ai/en-gb/library/, a high-performance site running entirely from encrypted data. FOUR NEW SECTIONS, all measured or read from published source on 21 September 2026. (1) ONE REQUEST: file ids are derived by HMAC-SHA256 over the read key under named domains (sg-vault-v1:file-id:ref, :branch-ref, :branch-index), identical constants in the CLI and the browser client, so a holder of the read key COMPUTES the address of the ref, the index and the settings before issuing any request. No discovery round trip. Reading is then a plain CORS GET with no auth header: measured 2,364 bytes of ciphertext in 0.86 s and 59,324 in 0.63 s, best of five 0.33 s. One POST to /api/vault/batch/ returned FIVE objects in 0.87 s and TWENTY objects, 3.76 MB, in 2.79 s, all in a single round trip; 42 objects returned 502, the server's response-size limit, which the CLI already handles by splitting the chunk. Encryption costs a FLAT 28 BYTES per object (12-byte nonce, 16-byte tag), confirmed on both measurements, not a percentage. And two ways to address a file, pin the content-addressed id for one GET forever, or resolve HEAD to tree to blob for always current, which is a design choice rather than a default. (2) THE 65 SECOND CLONE IS CORRECTED, because the new numbers disprove the explanation v0.3.2 gave. The clone log shows 7 commits, 28 trees and 106 BLOBS, not 42 files, because a full clone takes the history; then one batch of 50 hit the response-size limit and degraded to 50 individual fetches, which is most of the 65 seconds. The transport moved 3.76 MB in 2.79 s when asked in one request, so this is a client-side chunking bug (chunk by accumulated size, not file count) and not a property of the architecture. Said on the page in those words. (3) APPEND MODE: lanes live at bare/append/{token}/pending/, OUTSIDE the commit tree, so appends never touch a branch and never conflict with a push. A write is one account-less POST with the token in the body: no session, no read-modify-write, no commit, no tree rebuild, no lock. The response is deliberately blind (ok true, no id, no count), so the server does no extra work and leaks nothing by size or timing. Writes never contend with reads because a reader walking the graph never looks at a lane. Several anchors means several lanes, so one flooding sender cannot bury another. (4) CACHING ENCRYPTED DATA, the easy case: the cached bytes are CIPHERTEXT, so a cache is not a trust boundary and the browser cache, IndexedDB, a CDN edge and a corporate proxy can all hold vault objects without widening exposure; and an obj-cas-imm- id is SHA-256 OVER THE CIPHERTEXT, so an entry under that name can never be stale or wrong and no invalidation logic exists anywhere. Mutable refs are the exception and the failure is silent. (5) LIVE EVIDENCE: the sgraph.ai library is a 270 KB static shell (28 KB HTML plus 242 KB of CSS and components, measured) whose every article, nav entry and blog post comes out of two encrypted vaults, decrypted in the tab, with the server unable to read a word of what it serves. Its blog entries pin their content-addressed object ids in the page for a single GET, while its navigation is deliberately NOT pinned and resolves HEAD to tree to blob at runtime so it stays current. Its cache script keeps immutable objects in IndexedDB for later page loads with no network at all, collapses concurrent callers into one request, and labels every response idb-hit, inflight or network. AND A GAP FOUND WHILE MEASURING, reported rather than smoothed over: our own caching contract page says immutable objects are served Cache-Control public, max-age=31536000, immutable, and refs no-store. On 21 September 2026 the read endpoint returned NO Cache-Control header at all for an immutable object and the CDN reported a miss. The mechanism is unaffected because the client cache keys on the id rather than trusting a header, which is the more robust design, but the documented header is not live on that path today and the page now says so. |
 | v0.3.2 | 2026-09-21 | git 5cdd3071 | A READER ASKED FOR THE PERFORMANCE NUMBERS, SO THEY WERE MEASURED RATHER THAN ESTIMATED. The question, after the fractal graphs page went out: what is the performance of this against ordinary graph engineering? /demos/fractal-graphs/performance.html answers it, and every figure on it was taken on 21 September 2026 from an ordinary cloud container against two live published vaults, using the read keys printed on their own pages. FROM THE COMMAND LINE, against the 42-file 3.2 MB DSIT vault whose graph is 617 nodes and 694 edges: full clone 65.4 s; sparse clone, meaning every path, size and hash with no content, 7.3 s and 256 KB; one 59 KB file that answers one question 0.49 s; a second file 0.87 s; the entire graph as one 1.0 MB file 1.21 s; an already-fetched file 0.18 s with no network at all. So cloning everything costs 65 seconds and answering a question costs 7.8 seconds and 315 KB. The same sparse call against the 207-file 14.9 MB Regulation Graph took 7.06 s and 360 KB, because the index does not grow with the content. IN THE BROWSER, by instrumenting the page and recording every response, so these are exact byte counts: the landing view of that 617-node graph is 94 KB in 3 requests, guidance 295 KB in 4, the graph view 1.12 MB in 5, data and queries 1.19 MB in 6, against a 3.2 MB vault that no view ever loads whole. The ontology is 2 KB, 4,217 bytes in the Regulation Graph, which is the entire price of arriving in another world and learning its rules, and that is what makes the jump affordable rather than theoretical. The 859 KB query engine loads only if you query. THE ARCHITECTURE IS NAMED: no live database, files in object storage read directly, and LETS, meaning Load, Extract, Transform, Save, where Save writes new immutable files instead of overwriting, which is why every cache in the path is correct forever and why there is no server. THE COST MODEL IS THE OTHER HALF the author asked for: zero instance hours, zero replicas, zero index memory, no separate backup line because every version is already kept, no staging copy because a clone is a clone; storage and egress only; query compute paid by the reader's own device. The whole published estate is 2,662 files and 295 MB. Cost scales with what is read, not with what exists and not with time. RUN EVERYWHERE, on one read key: a browser tab, a terminal, a serverless function, a CI container, a static host with no backend, plus fractal deployment, where the deployment unit is a set of files and a key, so putting a graph inside a regulated environment or an air-gapped machine is a copy rather than a project, and two organisations can join their graphs by exchanging an edge and a read key without either adopting the other's schema. AND SIX PLACES IT IS SLOWER, stated plainly, including the one a graph database wins outright: six hops across a hundred million edges in one schema. The commands to repeat every measurement are on the page. |
 | v0.3.1 | 2026-09-20 | git 85f20a76 | VAULT #31, AND IT ARRIVED AT THE SAME CONCLUSION THIS SITE SPENT A WEEK REACHING. An independent reference edition of the UK DSIT AI Risk Management Toolkit, submitted under the sgit_public_read_ prefix, which is the form the credentials page now asks for and the first submission to use it. The vault models the guidance, the official workbook, the risk method and the cited frameworks as FOUR SEPARATE WORLDS with named bridges, 617 nodes and 694 edges, and states as the first of its four declared limits: 'containment alone is not fractality. Cross-world edges make the semantic transitions inspectable.' That is the same correction the author made to the fractal graphs page on 19 September, reached by a different author in a different vocabulary, so the page now cites it and the ladder gains the rung. THE HONESTY IS THE OTHER REASON IT IS HERE: every edge is labelled curated or lexical, with the limit 'lexical mentions are not validated meaning' written down; five source snapshots are retained with their URLs, retrieval dates and SHA-256; two of its eight checks exist only to prove the official XLSX and ODS bytes were not touched; and it publishes six gaps about itself, including a correction of its own earlier count (208 formula cells, not 227), a version contradiction in the source preserved rather than resolved (the filename says v1.1, the Welcome sheet says v1.0), two broken defined names left broken because repairing somebody else's document is an edit, and the refusal to read starter rows as evidence of adoption. AUDIT: no credentials, no personal data, two published DSIT institutional contacts, OGL v3.0 acknowledged, official status disclaimed on the front page and in NOTICE.md, and an all-zeros negative control that produced no clone where the real key produced 42 files. |
 | v0.3.0 | 2026-09-20 | git 8b46d285 | TWO SITE-WIDE NORMALISATIONS THE AUTHOR ASKED FOR, AND A GUARD FOR EACH. (1) THE EM-DASH IS GONE FROM PROSE: 3,200 of them, because a good many readers now find the character off-putting. Not a find-and-replace. A rewriter classified every occurrence by context and chose the punctuation the sentence actually wanted: brackets or commas around a parenthetical pair, a colon before an explanation, a full stop with the next word capitalised where the tail was an independent clause, a comma otherwise. Code was left alone by construction, and the same exclusions were written into the validator so the two agree: pre, code, svg, fenced and inline markdown code, inline script, the assets folder, the skills folder (upstream artifacts shipped verbatim) and team/board (rendered from a vault this site does not author). FOUR BUGS FOUND BY CHECKING RATHER THAN ASSUMING: a whitespace tidy reflowed the ASCII diagrams inside pre until it was made mask-aware; the pair rule bridged adjacent table cells and left seven brackets opening in one cell and closing in another, each found by a balance check and fixed by hand; the try page's JavaScript compared against placeholder text the markup no longer had, which would have broken its terminal; and a colon in front of a conjunction reads badly, so 35 became commas. (2) THE LEGACY KEY PREFIX IS GONE: 102 published read keys under sgit_rk1_ and 24 bare ones now carry sgit_public_read_, which declares the intent. The bare ones were bare for a reason worth recording: the prefixed form used to FAIL on the CLI, which is an open brief to the CLI team. Re-running the comparison suite today closed it, all six checks pass on sgit-ai v0.16.2 including prefixed clone succeeded. Only real keys were rewritten, so documentation that names the legacy prefix still names it. |
@@ -8245,6 +8314,60 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
 ## 2026-09-21
+
+### [The design is the performance, and the crypto is free](#the-design-is-the-performance) [v0.3.4](../admin/versions.md)
+
+architectureperformancegraphsmethod
+
+Two releases of [the performance page](../demos/fractal-graphs/performance.md) covered the mechanisms and buried the thing that actually does the work. Performance here comes from an architectural habit, and the habit is one question: **what data do I need for the task at hand?**
+
+Not what the system holds. Not what the schema allows. What *this* question needs. Once that is the first question, most performance work stops being necessary, because the expensive thing was never the engine. It was loading data nobody was going to look at.
+
+## Standing on three giants, none of them ours
+
+The second half of the habit is refusing to reinvent what is underneath.
+
+The **file system** is a high-performance indexed store with decades of tuning and the operating system's page cache in front of it. A **content-addressed hash store** sits on top: a name is a hash of the bytes, so a lookup is a path, deduplication is free, and a cache entry cannot be wrong. The **graph** sits on top of that, and it is the only part that is ours. It is also the part that decides how much a question costs, because it tells you which bytes to ask for.
+
+And the fair version of the database comparison, which usually gets told unfairly in our favour: **a database is fast largely because it keeps the working set in memory.** That is not cheating, it is the same insight. The difference is who picks the working set. A buffer pool guesses it in advance, from access patterns, for every reader at once. We pick it per question, at the moment the question is asked, and throw it away afterwards.
+
+## Measured, because the habit only works if loading is cheap
+
+On the 1.0 MB file that holds the whole DSIT graph:
+
+| Step | Time | Rate |
+|---|---|---|
+| Fetch over the network, cold | **1,210 ms** | the only number that matters |
+| Read from local disk | **2.5 ms** | 418 MB/s |
+| **Decrypt, AES-256-GCM** | **0.351 ms** | **2,978 MB/s** |
+| Parse the JSON | 3.2 ms | the largest local cost |
+
+**Decryption is 0.03% of the cold fetch and about a tenth of the JSON parse.** On a 59 KB shard it is 0.025 ms. Whenever somebody assumes encrypting the data must have cost something in speed, that is the answer: at these sizes, on ordinary compute, encryption is free and the network is everything. Which puts the question back where it belongs, on how many bytes you decided to ask for.
+
+So the design rule, as a budget. Under 100 KB is an answer. Around 1 MB is a whole world. **10 MB and up means you are loading a store rather than an answer.** Gigabytes is a design error, not a performance problem, and no tuning will fix it.
+
+## Save is where the loop compounds
+
+The step people skip in LETS. Saving is not filing the answer away, it is leaving behind an artefact cut to the shape of the **next** question. The Article 9 slice in the Regulation Graph exists because somebody answered a question about Article 9 once and saved it in a form that makes asking again cost 29 KB instead of a megabyte. Do that a few times and the expensive queries have all been pre-answered, each by the run that first needed them, with nothing decided in advance.
+
+## Restructuring into context is the compression
+
+The fractal property is usually argued as a point about meaning. It is also a point about volume. Measured in the Regulation Graph vault:
+
+| Altitude | Bytes | Against the level below |
+|---|---|---|
+| Raw Formex source, the law as published | 11,216,043 |  |
+| The graph: 1,523 nodes, 1,944 edges | 1,073,915 | **10x smaller** |
+| One article's pre-cut slice | 29,638 | **36x smaller** |
+| The ontology, the rules of this world | 4,217 | **7x smaller** |
+
+**11.2 MB down to 4.2 KB, a factor of about 2,660, with nothing thrown away**, because every level keeps the edge down to the one below. You query the small thing and follow the link only when the answer requires it.
+
+Which is why this scales in the direction that usually breaks things. In a schema-first system, more data means a bigger index, more memory and a bigger machine. Here the store can be gigabytes or terabytes while **what a question loads stays in the megabytes, because the graph is what tells you which bytes matter.** Adding a terabyte adds nodes you did not load.
+
+## A correction the measuring turned up
+
+This page said 617 nodes and 694 edges, quoting the vault's page. The file as cloned today has **1,051 nodes and 1,289 edges** across five worlds, because the vault released 0.2.1 today and the graph grew. Every count on the page is now counted rather than quoted, and the drift was only visible because the vault keeps its versions instead of overwriting them.
 
 ### [Graph engineering versus fractal graph, the measured answer](#performance-and-cost) [v0.3.2](../admin/versions.md)
 

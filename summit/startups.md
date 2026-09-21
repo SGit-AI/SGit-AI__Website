@@ -2,7 +2,7 @@
 
 > Nine capabilities to reuse, each naming what it runs on and how far along it is, including the ones that are still a design and say so.
 
-*Source: <https://sgit.ai/summit/startups.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/startups.html> · site v0.3.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
