@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.1'
+SITE_VERSION = 'v0.4.2'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,61 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.1', '2026-09-21', 'this release',
+    ('v0.4.2', '2026-09-21', 'this release',
+     "THE SAAS APOCALYPSE, ARGUED WITH DATA RATHER THAN VIBES. A second article from the "
+     "author's voice memos, 'What SaaS refused to build is exactly what the agents need', and "
+     "the brief was to find evidence for the claims about quality, usability, satisfaction and "
+     "value for money of medium to large SaaS. Every figure was fetched from its source rather "
+     "than recalled, and each is linked. THE MARKET HAD THIS ARGUMENT ALREADY: in the first "
+     "week of February 2026, after Anthropic shipped Claude Cowork plug-ins, roughly $285 "
+     "billion left software stocks in about 48 hours, a Jefferies trader named it the "
+     "SaaSpocalypse, Thomson Reuters fell 16% in a day, the S&P software index dropped 13% in "
+     "five sessions, and Forrester titled a piece 'SaaS as we know it is dead'. Then it "
+     "recovered, about 40% off the April low by September, on the narrative that systems of "
+     "record and proprietary data are durable moats. The article's reading: that recovery "
+     "concedes the point, because it says the DATABASE is the moat and stops defending the "
+     "screen and the seat. J.P. Morgan's Mark Murphy is quoted approvingly: it is 'an illogical "
+     "leap' to expect every company to write AND MAINTAIN a bespoke product, and the article "
+     "agrees, because that gap is where the opportunity lives. USERS WERE NEVER HAPPY, "
+     "MEASURED: Freshworks 2022, 8,698 respondents, 91% frustrated with workplace technology, "
+     "57% of the unsatisfied say software makes them less productive, 68% of leaders name hard-"
+     "to-use apps as the biggest adoption problem. Pendo 2019, 615 instrumented products, 80% "
+     "of features rarely or never used, up to $29.5 billion spent building them; the older "
+     "Standish 64% is cited WITH Mike Cohn's caveat that it came from four internal apps in a "
+     "2002 keynote and should never have been generalised. Zylo 2025, $21M a year wasted per "
+     "organisation on idle licences, up 14.2%, $4,830 SaaS spend per employee, 660 apps in a "
+     "large enterprise, lines of business controlling 70% of spend. And the spreadsheet: "
+     "Deloitte 73% prepare VAT returns in Excel, YouGov 78% of British companies say "
+     "spreadsheets support key financial decisions, read as the clearest evidence that SaaS "
+     "failed its users, since Excel is where they control the shape of the thing. WHY, IN "
+     "WARDLEY'S WORDS: past success breeds inertia, quoted from the doctrine chapter ('the pre-"
+     "existing installed base causes inertia to the change'), and the map claim stated so it "
+     "can be argued, per wardley-maps.sgit.ai's thesis that maps are claims not pictures: the "
+     "SaaS product has slid right into a substrate of database, message bus and state machine, "
+     "on which higher-order things now get built. EVERYBODY WAS ALREADY VIBE CODING, SLOWLY: "
+     "Karpathy's term from February 2025, Collins word of the year by November, described as "
+     "people writing very good briefs, which product owners always did in an environment with "
+     "a catastrophically slow loop. WHY INCUMBENTS CANNOT SIMPLY DO IT: non-functional "
+     "requirements were never funded, with Stripe's Developer Coefficient (17.3 hours a week, "
+     "42% of developer time, on maintenance and bad code, $85 billion a year) and DORA 2024 "
+     "(19% elite, high cluster shrunk 31% to 22%, low cluster grown 17% to 25%, elite deploying "
+     "182 times more often) as the evidence, and the line the author stands behind: show me a "
+     "SaaS company and I will show you a company that is highly inefficient at developing "
+     "software. THE IRONY IN ONE PARAGRAPH: portability, open schemas, a real API and data you "
+     "can take out were starved for twenty years as churn risks, and are precisely what a "
+     "customer's agent turns up needing. THE MISTAKE AND THE MONEY: confusing the brief with a "
+     "product, because SaaS was bought for being MAINTAINED, and the person who vibe coded the "
+     "replacement does not want to maintain it, so the future is village and town-planner "
+     "companies that take the brief and keep it running, paid by consumption, plus the few "
+     "incumbents who pivot to a platform for exactly that, with sgit and Fractal Semantic "
+     "Graphs named as one shape it can take. Closes on more engineers not fewer, and on Brooks: "
+     "the two-pizza limit existed because communication did not scale, and with humans and "
+     "agents it now can. ONE DIAGRAM: the SaaS product sliding right on the evolution axis into "
+     "a substrate, the explorer to villager to town planner handover on top, and the mistake "
+     "drawn in red. Linked from the startups section as the description of the market a "
+     "founder is building into.",
+     ),
+    ('v0.4.1', '2026-09-21', 'git 09c06a53',
      "THREE DISCLAIMERS STOOD BETWEEN A VISITOR AND THE MOST POWERFUL PAGE ON THIS SITE. The "
      "author's note: /demos/vaults/ is one of the strongest things here, and a first-time "
      "visitor met four boxes of process, policy and incident text before a single openable "

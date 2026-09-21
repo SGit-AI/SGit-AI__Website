@@ -2,7 +2,7 @@
 
 > How this site was developed for 76 releases in a single folder that was both an sgit vault and a git repository (the .gitignore boundary, why the encrypted ref always looked dirty to git (fresh AES-GCM IVs), the ordering rule) and why the vault mirror was retired and purged: no reader, no published read key, 91% of the repository, and seven releases shipped without it before anyone noticed.
 
-*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.4.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/one-tree-two-remotes.html> · site v0.4.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
