@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.8'
+SITE_VERSION = 'v0.4.9'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,35 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.8', '2026-09-21', 'this release',
+    ('v0.4.9', '2026-09-21', 'this release',
+     "THE PHONE MENU WOULD NOT SCROLL, AND TWO GRIDS OVERFLOWED SIDEWAYS. Reported from an "
+     "iPhone: opening the top menu, you could not scroll it, unless you first scrolled the "
+     "whole page, after which the menu moved. REPRODUCED AND MEASURED at iPhone 13, SE and "
+     "Pixel 5 profiles. The open menu is 42 links and stands 1536px tall against a 664px "
+     "viewport, with max-height none and overflow-y visible, inside a nav.site that is "
+     "position:sticky. So the menu had no scroll of its own and the sticky bar pinned it at "
+     "the top, leaving the last item, Security, 855px BELOW THE FOLD and reachable only by "
+     "scrolling the page underneath it. Exactly the reported behaviour. THE FIX caps the open "
+     "menu to the viewport and lets it scroll itself: max-height calc(100dvh - 7rem) with a "
+     "100vh line above it as the fallback, overflow-y auto, and overscroll-behavior contain so "
+     "the gesture stops at the end of the menu instead of chaining to the page. The 7rem is "
+     "the worst-case closed bar, 92px on an iPhone SE where the row wraps rather than the 55px "
+     "it takes when it does not, plus this element's own border, padding and margin, another "
+     "17px, which on the first attempt left the nav 12px taller than the viewport. MEASURED "
+     "AFTER: the menu scrolls 913px internally on an iPhone 13, 1009px on an SE, 850px on a "
+     "Pixel 5; the page does not move at all (scrollY stays 0); the last item is visible; and "
+     "the nav now fits inside the viewport on every profile. AND A SECOND BUG FOUND WHILE "
+     "VERIFYING, unrelated to the menu and present with it closed: the homepage ran 28px wide "
+     "at 320px (iPhone SE). Cause was grid-template-columns repeat(auto-fit, minmax(330px,1fr)) "
+     "on .jobs, a hard floor wider than the ~285px of content box a 320px phone has, which "
+     "does not shrink, it overflows. .netpick, the component behind the new fractal band on the "
+     "home page and the startups section, had the same bug at 310px. Both now use "
+     "minmax(min(Npx,100%),1fr), which collapses to the container below that width and changes "
+     "nothing above it: desktop columns are identical at 1280. A comment records the rule, "
+     "because the next person will reach for a bare minmax again. Four pages checked clean at "
+     "320 and 390.",
+     ),
+    ('v0.4.8', '2026-09-21', 'git 99b37799',
      "A HERO IMAGE THAT ARGUES THE THESIS, AND THE FOUR WORDS THAT SUMMARISE IT BETTER THAN THE "
      "ARTICLE DID. The author made a cover for the inertia piece and revised it after review. "
      "The first version put both carts on the same railway track, which said same race, "

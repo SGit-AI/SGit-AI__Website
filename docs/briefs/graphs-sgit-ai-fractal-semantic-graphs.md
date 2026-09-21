@@ -2,7 +2,7 @@
 
 > A brief for the agent maintaining graphs.sgit.ai: the fractal claim on its boundaries page has the invariant backwards (grammar survives every zoom, the ontology is free to change), the name Fractal Semantic Graphs and its lineage, six places to link the sgit.ai page, four graph vaults missing from its evidence estate, a second cross-vault finding, three small corrections, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.4.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.html> · site v0.4.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
