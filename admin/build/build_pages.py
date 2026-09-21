@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.4.6'
+SITE_VERSION = 'v0.4.7'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.4.6', '2026-09-21', 'this release',
+    ('v0.4.7', '2026-09-21', 'this release',
+     "THE SAAS ARTICLE'S FILE NAME NOW MATCHES ITS TITLE. The slug had stayed at "
+     "what-saas-refused-to-build through three retitlings so that links already handed out "
+     "kept working; the author has now asked for the name to follow the title, with no "
+     "redirect from the old one. The article lives at "
+     "/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html, the old built page and "
+     "its markdown twin are deleted rather than left as ghosts, the startups section's link "
+     "follows, and the old address returns 404 on purpose.",
+     ),
+    ('v0.4.6', '2026-09-21', 'git c6819b40',
      "THE SAAS ARTICLE TAKES ITS FINAL TITLE, AND THE ARGUMENT IT IMPLIES. 'The SaaS apocalypse "
      "will be decided by inertia, not by AI', chosen by the author from the inertia set, and "
      "the reason it is the right one is a claim the piece had not yet made explicitly: AI IS A "
