@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.2'
+SITE_VERSION = 'v0.3.3'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,60 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.2', '2026-09-21', 'this release',
+    ('v0.3.3', '2026-09-21', 'this release',
+     "THE PERFORMANCE PAGE WAS MISSING THE THREE THINGS THAT MAKE IT FAST. The author read "
+     "v0.3.2 and named them: reading an encrypted file takes a couple of requests and the site "
+     "should have the guidance; the append mode has its own performance implications; and the "
+     "immutability of the data files is what allows client-side caching of ENCRYPTED data, which "
+     "is what the website and the vault web app already do. Plus a live example to point at, "
+     "sgraph.ai/en-gb/library/, a high-performance site running entirely from encrypted data. "
+     "FOUR NEW SECTIONS, all measured or read from published source on 21 September 2026. (1) "
+     "ONE REQUEST: file ids are derived by HMAC-SHA256 over the read key under named domains "
+     "(sg-vault-v1:file-id:ref, :branch-ref, :branch-index), identical constants in the CLI and "
+     "the browser client, so a holder of the read key COMPUTES the address of the ref, the index "
+     "and the settings before issuing any request. No discovery round trip. Reading is then a "
+     "plain CORS GET with no auth header: measured 2,364 bytes of ciphertext in 0.86 s and "
+     "59,324 in 0.63 s, best of five 0.33 s. One POST to /api/vault/batch/ returned FIVE objects "
+     "in 0.87 s and TWENTY objects, 3.76 MB, in 2.79 s, all in a single round trip; 42 objects "
+     "returned 502, the server's response-size limit, which the CLI already handles by splitting "
+     "the chunk. Encryption costs a FLAT 28 BYTES per object (12-byte nonce, 16-byte tag), "
+     "confirmed on both measurements, not a percentage. And two ways to address a file, pin the "
+     "content-addressed id for one GET forever, or resolve HEAD to tree to blob for always "
+     "current, which is a design choice rather than a default. (2) THE 65 SECOND CLONE IS "
+     "CORRECTED, because the new numbers disprove the explanation v0.3.2 gave. The clone log "
+     "shows 7 commits, 28 trees and 106 BLOBS, not 42 files, because a full clone takes the "
+     "history; then one batch of 50 hit the response-size limit and degraded to 50 individual "
+     "fetches, which is most of the 65 seconds. The transport moved 3.76 MB in 2.79 s when asked "
+     "in one request, so this is a client-side chunking bug (chunk by accumulated size, not file "
+     "count) and not a property of the architecture. Said on the page in those words. (3) APPEND "
+     "MODE: lanes live at bare/append/{token}/pending/, OUTSIDE the commit tree, so appends never "
+     "touch a branch and never conflict with a push. A write is one account-less POST with the "
+     "token in the body: no session, no read-modify-write, no commit, no tree rebuild, no lock. "
+     "The response is deliberately blind (ok true, no id, no count), so the server does no "
+     "extra work and leaks nothing by size or timing. Writes never contend with reads because a "
+     "reader walking the graph never looks at a lane. Several anchors means several lanes, so one "
+     "flooding sender cannot bury another. (4) CACHING ENCRYPTED DATA, the easy case: the cached "
+     "bytes are CIPHERTEXT, so a cache is not a trust boundary and the browser cache, IndexedDB, "
+     "a CDN edge and a corporate proxy can all hold vault objects without widening exposure; and "
+     "an obj-cas-imm- id is SHA-256 OVER THE CIPHERTEXT, so an entry under that name can never be "
+     "stale or wrong and no invalidation logic exists anywhere. Mutable refs are the exception "
+     "and the failure is silent. (5) LIVE EVIDENCE: the sgraph.ai library is a 270 KB static "
+     "shell (28 KB HTML plus 242 KB of CSS and components, measured) whose every article, nav "
+     "entry and blog post comes out of two encrypted vaults, decrypted in the tab, with the "
+     "server unable to read a word of what it serves. Its blog entries pin their content-"
+     "addressed object ids in the page for a single GET, while its navigation is deliberately NOT "
+     "pinned and resolves HEAD to tree to blob at runtime so it stays current. Its cache script "
+     "keeps immutable objects in IndexedDB for later page loads with no network at all, collapses "
+     "concurrent callers into one request, and labels every response idb-hit, inflight or "
+     "network. AND A GAP FOUND WHILE MEASURING, reported rather than smoothed over: our own "
+     "caching contract page says immutable objects are served Cache-Control public, max-age="
+     "31536000, immutable, and refs no-store. On 21 September 2026 the read endpoint returned NO "
+     "Cache-Control header at all for an immutable object and the CDN reported a miss. The "
+     "mechanism is unaffected because the client cache keys on the id rather than trusting a "
+     "header, which is the more robust design, but the documented header is not live on that "
+     "path today and the page now says so.",
+     ),
+    ('v0.3.2', '2026-09-21', 'git 5cdd3071',
      "A READER ASKED FOR THE PERFORMANCE NUMBERS, SO THEY WERE MEASURED RATHER THAN ESTIMATED. "
      "The question, after the fractal graphs page went out: what is the performance of this "
      "against ordinary graph engineering? /demos/fractal-graphs/performance.html answers it, and "
@@ -2413,7 +2466,7 @@ LLMS_FACTS = {
     'docs/limitations.html': 'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
     'docs/two-branch-model.html': 'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',
     'docs/credentials.html': 'TWO capabilities: a vault key (read+write) and a read key (read only, derived one-way, cannot be reversed). FIVE prefixes DECLARE which you hold: sgit_private_vault_ (write, never publish), sgit_private_read_ (read, keep secret), sgit_public_read_ (read, deliberately published, use this for open vaults), plus legacy sgit_vk1_/sgit_rk1_. The prefix is a DECLARATION, not crypto: strip it and the bytes are identical, and every form clones the same vault. Classification is by declaration, never by shape. Revocation is NOT retroactive.',
-    'demos/fractal-graphs/performance.html': 'NO LIVE DATABASE. A graph is encrypted files in object storage, read directly; the engine is built per question and thrown away (SQLite in WebAssembly in the tab, or a serverless function that lives one request). The cycle is LETS: Load bytes, Extract the slice plus its ontology, Transform in a disposable engine, Save the answer as NEW immutable files, never an overwrite, which is why every cache in the path is correct forever. MEASURED 21 Sep 2026 against live vaults: full clone of a 42-file 3.2MB vault 65.4s; sparse clone (every path, size and hash, no content) 7.3s and 256KB; one 59KB file 0.49s; the whole 617-node graph as one file 1.0MB in 1.21s; an already-fetched file 0.18s with no network. In-browser bytes per view: overview 94KB in 3 requests, guidance 295KB in 4, the 617-node graph 1.12MB in 5, data and queries 1.19MB in 6, against a 3.2MB vault that is never loaded whole. An ontology is 2-4KB, the entire price of crossing into another world. COST: zero instance hours, zero replicas, zero index memory, no separate backup line (every version is already kept); storage and egress only; query compute is paid by the reader device. The whole published estate is 2,662 files and 295MB. SLOWER AT: full clones, anything needing a server-side query, deep traversal over one huge single-schema graph (use a graph database), concurrent multi-writer.',
+    'demos/fractal-graphs/performance.html': 'NO LIVE DATABASE. A graph is encrypted files in object storage, read directly; the engine is built per question and thrown away (SQLite in WebAssembly in the tab, or a serverless function that lives one request). The cycle is LETS: Load bytes, Extract the slice plus its ontology, Transform in a disposable engine, Save the answer as NEW immutable files, never an overwrite, which is why every cache in the path is correct forever. MEASURED 21 Sep 2026 against live vaults: full clone of a 42-file 3.2MB vault 65.4s; sparse clone (every path, size and hash, no content) 7.3s and 256KB; one 59KB file 0.49s; the whole 617-node graph as one file 1.0MB in 1.21s; an already-fetched file 0.18s with no network. In-browser bytes per view: overview 94KB in 3 requests, guidance 295KB in 4, the 617-node graph 1.12MB in 5, data and queries 1.19MB in 6, against a 3.2MB vault that is never loaded whole. An ontology is 2-4KB, the entire price of crossing into another world. COST: zero instance hours, zero replicas, zero index memory, no separate backup line (every version is already kept); storage and egress only; query compute is paid by the reader device. The whole published estate is 2,662 files and 295MB. SLOWER AT: full clones, anything needing a server-side query, deep traversal over one huge single-schema graph (use a graph database), concurrent multi-writer. THE TRANSPORT: file ids are DERIVED by HMAC-SHA256 over the read key under named domains (sg-vault-v1:file-id:ref, :branch-ref, :branch-index), so a client COMPUTES an address instead of looking it up, and reading an encrypted file is ONE unauthenticated CORS GET (measured 2,364 B ciphertext in 0.86s, 59,324 B in 0.63s). One POST to /api/vault/batch/{vault_id} reads MANY: 5 objects 0.87s, 20 objects and 3.76MB in 2.79s, one round trip; 42 returned 502 (response-size limit, the CLI splits the chunk). Encryption adds a FLAT 28 bytes per object (12-byte nonce + 16-byte tag), not a percentage. Two addressing modes: pin the content-addressed obj-cas-imm id for one GET forever, or resolve HEAD to tree to blob for always-current. The 65s clone is a CLIENT-side cost (106 blobs including history, plus one 50-file batch degrading to 50 single fetches), not a transport limit. APPEND MODE: lanes live at bare/append/{token}/pending/ OUTSIDE the commit tree, so a write is one account-less POST with no read-modify-write, no commit, no tree rebuild and no lock, it never conflicts with a push and never contends with a read, and the response is deliberately blind. CACHING: the cached bytes are CIPHERTEXT so a cache is not a trust boundary, and an obj-cas-imm id is SHA-256 over the ciphertext so an entry can never be stale; refs are the exception and must not be cached. Live example: sgraph.ai/en-gb/library/ serves a whole knowledge base from two encrypted vaults behind a 270KB static shell.',
     'security.html': 'The server sees the vault ID, object sizes and request timing, nothing else. Sizes and timing are an acknowledged side channel.',
     'docs/agents.html': 'sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.',
     'docs/quickstart.html': 'sgit create <name> then commit/push; the vault key is printed once and there is no reset.',

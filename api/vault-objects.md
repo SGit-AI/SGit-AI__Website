@@ -2,7 +2,7 @@
 
 > The pointer store: read, write, batch, destroy and presigned endpoints, the caching contract that separates immutable content-addressed objects from mutable refs, and the storage layout behind every vault.
 
-*Source: <https://sgit.ai/api/vault-objects.html> · site v0.3.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/vault-objects.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -44,6 +44,8 @@ Anyone writing a client needs this, and getting it wrong produces a bug that loo
 | Refs and indexes, mutable | `Cache-Control: no-store` |
 
 Immutable objects are content-addressed, so their bytes can never change and a year-long cache is safe, which is what lets a vault sit behind a CDN. Mutable refs must never be cached: a stale ref renders a previous commit’s tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees the wrong version of the vault.
+
+**Measured 21 September 2026: the immutable header is not currently being sent.** A GET of an `obj-cas-imm-` object on `/api/vault/read/` returned **no `Cache-Control` header at all**, and the CDN reported a miss. The table above is the contract, not a description of what is served on that path today. Build as though the header may be absent: cache on the id, which is a hash of the ciphertext and therefore cannot be stale, rather than on a header you were sent. That is what the client-side caches in this estate already do, and [why caching ciphertext is the easy case](../demos/fractal-graphs/performance.md#caching).
 
 ## Storage layout
 

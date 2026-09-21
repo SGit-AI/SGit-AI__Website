@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.3.2",
+  "site_version": "v0.3.3",
   "updates": [
     {
       "slug": "performance-and-cost",
@@ -15,6 +15,19 @@
         "cost"
       ],
       "summary": "A reader of the Fractal Semantic Graphs page asked the follow up that page had coming: what is the performance of this against ordinary graph engineering? Performance, cost, and running everywhere is the answer, and every figure on it was measured on 21 Septem…"
+    },
+    {
+      "slug": "one-request-append-and-ciphertext-caching",
+      "title": "One request, an append lane, and a cache full of ciphertext",
+      "date": "2026-09-21",
+      "version": "v0.3.3",
+      "tags": [
+        "architecture",
+        "performance",
+        "crypto",
+        "caching"
+      ],
+      "summary": "Yesterday's performance page answered the question it was asked and left out the three things that make the architecture fast in the first place. They have been measured and added. Reading an encrypted file takes one request The property most people do not exp…"
     },
     {
       "slug": "vault-table-order",

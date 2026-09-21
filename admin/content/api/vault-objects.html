@@ -30,6 +30,7 @@
     <tr><td>Refs and indexes, mutable</td><td><code>Cache-Control: no-store</code></td></tr>
   </table></div>
   <p>Immutable objects are content-addressed, so their bytes can never change and a year-long cache is safe, which is what lets a vault sit behind a CDN. Mutable refs must never be cached: a stale ref renders a previous commit’s tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees the wrong version of the vault.</p>
+  <div class="note"><b>Measured 21 September 2026: the immutable header is not currently being sent.</b> A GET of an <code>obj-cas-imm-</code> object on <code>/api/vault/read/</code> returned <b>no <code>Cache-Control</code> header at all</b>, and the CDN reported a miss. The table above is the contract, not a description of what is served on that path today. Build as though the header may be absent: cache on the id, which is a hash of the ciphertext and therefore cannot be stale, rather than on a header you were sent. That is what the client-side caches in this estate already do, and <a href="../demos/fractal-graphs/performance.html#caching">why caching ciphertext is the easy case</a>.</div>
 
   <h2 id="layout">Storage layout</h2>
   <pre class="shell">bare/data/obj-cas-imm-{hex}     blobs, trees, commits — content-addressed, immutable

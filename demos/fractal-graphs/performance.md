@@ -2,7 +2,7 @@
 
 > Measured answer to “performance of graph engineering versus fractal graph”: no live database, files in object storage, and the LETS cycle (Load, Extract, Transform, Save) with a disposable engine in the reader's tab. A 617-node graph opens in 94 KB and three requests, a question costs 7.8 s and 315 KB from cold against 65.4 s for a full clone, an ontology costs 4 KB, and the standing cost of thirty one published graphs is 295 MB of object storage with nothing running between questions. Plus the cost model line by line, the five places the same read key runs, fractal deployment, and six places it is slower.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/performance.html> · site v0.3.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/performance.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Performance, cost, and running everywhere
 
-A reader of [the Fractal Semantic Graphs page](index.md) asked the right follow-up question: what is the **performance** of this against ordinary graph engineering? The honest answer needs the architecture said out loud first, because the two are not doing the same work. We run with **no live database**. A graph is a set of files in cloud storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that lives for one request. We call the cycle **LETS**: Load, Extract, Transform, Save. This page gives the measured numbers, taken on 21 September 2026 against live published vaults, then the cost model, then the part that matters most in practice: the same graph runs in a browser, a terminal, a function and a build container, with one read key and nothing installed.
+A reader of [the Fractal Semantic Graphs page](index.md) asked the right follow-up question: what is the **performance** of this against ordinary graph engineering? The honest answer needs the architecture said out loud first, because the two are not doing the same work. We run with **no live database**. A graph is a set of files in cloud storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that lives for one request. We call the cycle **LETS**: Load, Extract, Transform, Save. Three properties do most of the work: **reading an encrypted file takes one request**, because the address is computed locally rather than looked up; **writes go to an append lane outside the commit tree**, so they never contend with reads; and **the cached bytes are ciphertext**, so every cache in the path can hold them without widening exposure. This page gives the measured numbers, taken on 21 September 2026 against live published vaults, then the cost model, then the part that matters most in practice: the same graph runs in a browser, a terminal, a function and a build container, with one read key and nothing installed.
 
 ## The short answer
 
@@ -21,7 +21,9 @@ A graph database is very good at one thing this is not trying to do, and pays fo
 | **Where the graph lives** | Inside a database process, in its own storage format | In ordinary files in object storage, content addressed and encrypted |
 | **What runs between questions** | A server, its indexes, its replicas, its backups | Nothing at all |
 | **Cost of admission** | Everything must be loaded in, and conform to one schema | Publish the files and declare the ontology. Other worlds keep their own |
+| **Reading one item** | Connect, authenticate, plan, execute, serialise | **One unauthenticated GET**, because the address was derived locally from the read key rather than looked up |
 | **Where a query runs** | On the server, for every reader | In the reader's tab, or in a function that exists for one request |
+| **Writes against reads** | Share the engine, so they contend | An [append lane outside the commit tree](#append). A write never touches a branch and never blocks a read |
 | **What a query costs the owner** | Instance hours, whether anyone asks or not | The bytes that were actually read |
 | **Joining two domains** | A shared schema, so a migration, so a project | An edge, because neither side gives up its own ontology |
 | **Six hops over a hundred million edges** | **Its home ground.** Nothing here competes | Not this. See [where it is slower](#limits) |
@@ -79,12 +81,77 @@ Four things in that chart are worth naming.
 
 The Regulation Graph shows the same shape at four times the size. It holds **1,523 nodes and 1,944 edges** over the EU AI Act. Its nodes file is 816 KB and its edges file 252 KB, so the graph is about 1.05 MB out of a 14.9 MB vault. Roughly 10 MB of that vault is raw source XML, retained so every claim can be traced back to the bytes it came from, and **never loaded to answer anything**. It also ships pre-cut slices: the Article 9 slice is 29,638 bytes and fetched in 0.75 s, so a question about Article 9 never touches the 1.05 MB graph at all.
 
-## Why it is fast, in three sentences
+## Getting at an encrypted file takes one request
+
+This is the property underneath every number above, and it is the one most people do not expect, because encryption is usually assumed to add a lookup. It does not here.
+
+**The address is derived, not discovered.** Every file id in a vault is produced by HMAC-SHA256 over the read key under a named domain: `sg-vault-v1:file-id:ref`, `:branch-ref`, `:branch-index`, and so on. The CLI and the browser client both do this, from the same constants. A client that holds the read key can therefore **compute the address of the branch ref, the index and the settings before making any request at all**. There is no discovery round trip, no directory to consult and no session to establish, which is the round trip that usually dominates a small read.
+
+**Reading is then a plain CORS GET with no auth header**, because the bytes are useless without the key. Measured against a live vault on 21 September 2026:
+
+| Request | Returned | Time |
+|---|---|---|
+| One object, `GET /api/vault/read/{vault_id}/bare/data/{object_id}`, no headers | 2,364 bytes of ciphertext | **0.86 s** |
+| The same, a larger object | 59,324 bytes of ciphertext | **0.63 s**, best of five 0.33 s |
+| Five objects, one `POST /api/vault/batch/{vault_id}` | 0.08 MB | **0.87 s**, one round trip |
+| **Twenty objects, one POST** | **3.76 MB** | **2.79 s**, one round trip |
+| Forty two objects, one POST | **502** | The server's response-size limit. The CLI already handles this by splitting the chunk |
+
+Two things fall out of that table. The first is that **the transport is not the bottleneck anywhere**: twenty files and 3.76 MB, which is more than half the vault's bytes, came back in one round trip in under three seconds. The second is the honest correction to the clone figure above, which is worth stating rather than hiding.
+
+**Why the 65 second clone is a client-side cost, not a transport one.** The clone log says what happened: seven commits walked, twenty eight trees walked, and **106 blobs** downloaded rather than 42, because a full clone takes the history as well as the current files. Then one batch of 50 hit the server's response-size limit and fell back to fetching those 50 files one at a time, which is most of the 65 seconds. The transport moved 3.76 MB in 2.79 seconds when asked in one request. That gap is an engineering finding for the CLI, chunk by accumulated size rather than by file count, and not a property of the architecture.
+
+**Encryption costs 28 bytes per object, flat.** The two measurements above were 2,364 bytes of ciphertext for 2,336 of plaintext, and 59,324 for 59,296. That is a 12-byte nonce plus a 16-byte authentication tag, the same 28 bytes whether the file is two kilobytes or two megabytes. There is no percentage overhead to budget for and no padding to reason about.
+
+**There are two ways to address a file, and the choice is a performance decision.** Pin the content-addressed object id in your page and reading it is exactly one GET, valid forever, because the id is a hash of the ciphertext and those bytes can never change. Or give a path and let the client resolve HEAD to tree to blob, which costs a small number of extra hops and always gives you the current version. Neither is better. They answer different questions, and a well-built page uses both.
+
+## Live evidence: a whole knowledge base served from encrypted vaults
+
+[sgraph.ai/en-gb/library/](https://sgraph.ai/en-gb/library/) is a public knowledge base whose content does not exist on the web server. It is a static shell that reads everything out of two encrypted vaults, in the visitor's browser, with read keys published in the page on purpose.
+
+| **The shell** | 28 KB of HTML plus 242 KB of CSS and components, **270 KB in total**, entirely static and cacheable by anything. Measured 21 September 2026 |
+|---|---|
+| **The content** | Every article, the navigation tree, the blog and the what's-new entries come from vaults, decrypted in the tab. The server hosting that site cannot read a word of what it is serving |
+| **Pinned reads** | Blog and what's-new entries carry their content-addressed object id in the page source, so opening one is a single GET straight to the bytes |
+| **Resolved reads** | The navigation is deliberately *not* pinned. Its own source comment says why: no hardcoded nav object id, the client resolves HEAD to tree to blob at runtime, so the nav is always current |
+| **The cache** | A small script loaded before anything else patches `fetch` and keeps immutable objects in IndexedDB. See below |
+
+That is the architecture argued on this page, running as somebody's production documentation site rather than as a demo. The interesting part is not that it works. It is that the performance profile is the one a plain static site has, while the data underneath it stays encrypted, versioned and owned by whoever holds the vault key.
+
+## Append mode: writes that never touch the graph
+
+The read path is only half of it. Writing into a vault would normally be the expensive, contended operation: read the current state, modify, commit, rebuild the tree, take a lock, resolve a conflict. **Append lanes skip all of that.**
+
+A lane lives at `bare/append/{token}/pending/`, **outside the version-controlled commit tree**. The consequence is stated plainly in [the API documentation](../../api/append-lanes.md): appends never touch a branch and never conflict with a push. The performance implications follow directly.
+
+| **A write is one POST** | The token goes in the body, and the call is **account-less**: no access token, no session, no login. Nothing is read before writing, so there is no read-modify-write cycle to lose a race in |
+|---|---|
+| **Nothing is rebuilt** | No commit, no tree, no index update, no branch move. The object is placed in a lane and that is the whole operation |
+| **Writes never contend with reads** | The lane is not in the commit tree, so a reader walking the graph never looks at it. A million appends do not slow a single read, and they cannot conflict with somebody else pushing at the same moment |
+| **The response is deliberately blind** | `{"ok":true}`, with no id and no count. The server does no extra work to compose an answer and leaks nothing about lane contents by timing or size |
+| **Senders scale sideways** | Register several anchors and each sender writes into their own lane. One correspondent flooding you does not bury another, and revoking one sender is removing one anchor with no effect on the rest |
+
+The published limits are the shape of the envelope: 5 MB per payload, 1,000 pending per token, 100 file ids per batch, 3 MB inline content, pages of 50 up to 200. This is what makes telemetry, logs, signals, control messages and state flows cheap enough to be ordinary, and it is the transport behind [vault-to-vault messaging](../../docs/vault-messaging.md). A vault whose read key is public can collect anonymous usage from its own readers without anybody holding a credential that could change it.
+
+## Caching encrypted data, which turns out to be the easy case
+
+The usual reason not to cache aggressively is that a cache becomes a second place the data lives, with its own exposure and its own staleness. Neither applies here, and both for the same reason.
+
+- **The cached bytes are ciphertext.** A cache holding them is not a trust boundary, because the decryption key never goes near it. The browser cache, IndexedDB, a CDN edge, a corporate proxy and a local clone can all hold vault objects without widening exposure by one byte. That is why a vault can sit behind a CDN at all.
+- **The name proves the bytes.** An `obj-cas-imm-` id is SHA-256 *over the ciphertext*. A cache entry under that name can never be stale and can never be wrong, so no invalidation logic is needed anywhere. It also gives deduplication without the server ever knowing a byte of plaintext, and it makes the caching rule derivable from the id alone.
+- **Mutable refs are the exception, and the failure is silent.** A stale ref renders a previous commit's tree from ciphertext that is itself perfectly valid, so nothing errors and the reader simply sees an old version of the vault. Refs must never be cached. [The caching contract](../../api/vault-objects.md) is explicit about the split.
+
+The library site above ships this as a small script loaded before any module, which patches `fetch` and does three things: keeps immutable objects in **IndexedDB so later page loads need no network round trip at all**; collapses concurrent callers for the same URL into a single request, which it says was introduced to kill a duplicate fetch between two navigation components; and times out in-flight entries after 30 seconds. It labels every response it serves, `idb-hit`, `inflight` or `network`, and emits an event per fetch, so the caching is observable rather than magic.
+
+**A gap found while measuring this, reported rather than smoothed over.** Our own [caching contract](../../api/vault-objects.md) says an immutable object should be served with `Cache-Control: public, max-age=31536000, immutable` and a ref with `no-store`. On 21 September 2026 the read endpoint returned **no `Cache-Control` header at all** for an immutable object, and the CDN reported a miss. The mechanism is unaffected, because the client cache keys on the id rather than trusting a header, which is the more robust design and is exactly why the library site ships its own. But the documented header is not live on that path today, and the page that documents it should not be read as describing what is currently served.
+
+## Why it is fast, in four sentences
 
 | **Never render the graph, render the answer** | The unit of work is the question, not the dataset. Traditional graph tooling optimises traversal over a loaded graph. This skips the loading, which is the part that was expensive |
 |---|---|
 | **Each world is small because each world keeps its own ontology** | There is no global schema to carry around, so a traversal stays inside one world until it deliberately crosses an edge. Crossing costs one small file. This is the performance benefit of the fractal property, and it is not an accident of it |
-| **Immutable and content addressed, so every cache is correct** | The CDN is the read replica. The browser cache is the local index. Neither can ever be stale, because an object's name is its content |
+| **Immutable and content addressed, so every cache is correct** | The CDN is the read replica. The browser cache is the local index. Neither can ever be stale, because an object's name is its content, and neither is a trust boundary, because what it holds is ciphertext |
+| **The address is computed, not looked up** | File ids are derived by HMAC from the read key, so reading an encrypted file is one unauthenticated GET with no discovery round trip, and twenty of them are one POST |
 
 ## The cost model, which is the part that changes the decision
 
@@ -137,7 +204,7 @@ The practical consequence for anyone with a data boundary to respect: **the depl
 
 This page would not be worth sending if it only listed wins.
 
-- **A full clone is slow.** 65 seconds for 3.2 MB, because every object is fetched and decrypted individually. If your workflow genuinely needs all of a large vault on disk, that is the price, and the answer is usually that it does not: use the sparse clone.
+- **A full clone is slow, and not for the reason it looks.** 65 seconds for 3.2 MB, but the transport returned 3.76 MB in 2.79 seconds when asked for it in one request. The clone is slow because it takes the history too, 106 blobs rather than 42 files, and because one batch of 50 exceeded the server's response-size limit and degraded to 50 individual fetches. Fixable in the client, and until it is fixed, use the sparse clone.
 - **There is no server-side query.** Whatever the client needs, the client downloads. That is fine at a megabyte and wrong at a gigabyte, which is why partitions and pre-cut slices are a design step rather than an optimisation you reach for later.
 - **Deep traversal over a very large single-domain graph is not our ground.** Six hops across a hundred million edges in one schema is exactly what a graph database was built for. Use one. The fractal argument is about the case where those hundred million edges were never going to live in one schema in the first place.
 - **Writes are single writer per branch.** There is no concurrent multi-writer transaction, by design. [The two-branch model](../../docs/two-branch-model.md) is how several agents work without one.
@@ -160,11 +227,23 @@ $ time sgit fetch data/graph.json
 1.0 MB, the whole 617-node graph                   1.21 s
 ```
 
+The transport figures used no client at all. One encrypted object, no auth header, no account:
+
+```
+$ curl "https://send.sgraph.ai/api/vault/read/0q4sfr57/bare%2Fdata%2F<object-id>"
+  59,324 bytes of ciphertext                         0.63 s
+$ curl -X POST "https://send.sgraph.ai/api/vault/batch/0q4sfr57" \
+       -d '{"operations":[{"op":"read","file_id":"bare/data/<id>"}, ...]}'
+  20 objects, 3.76 MB, one round trip                2.79 s
+```
+
+Object ids come from `sgit ls --json` against a sparse clone, which prints every path with its size and its `blob_id` without downloading anything.
+
 The read key is on [the vault's page](../vaults/dsit-ai-risk-toolkit/index.md), published on purpose. Browser figures were taken by instrumenting the page and recording every response, so they are exact byte counts rather than estimates, with network latency excluded; the latency numbers above are from the live API over an ordinary connection. Agents: the machine-readable list of every vault, with ids and read keys, is [/demos/vaults/llms.txt](../vaults/llms.txt).
 
 ## The answer to the question, in one paragraph
 
-Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. The measured result is a 617-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
+Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as encrypted files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. Reading one of those files is a single unauthenticated GET, because the address was derived from the read key rather than looked up, and twenty of them are one POST. Writes go to a lane outside the commit tree, so they never contend with reads. The cached bytes are ciphertext, so every cache in the path can hold them safely and none of them can go stale, because an object's name is a hash of its content. The measured result is a 617-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.
 
 [← Fractal Semantic Graphs](index.md)[The vault that was measured →](../vaults/dsit-ai-risk-toolkit/index.md)
 

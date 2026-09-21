@@ -2,7 +2,7 @@
 
 > The primitive under every live embed on this site: derive the address from a published read key, fetch ciphertext over CORS, decrypt in the browser, and the sandbox rules for rendering what comes back, including why a PDF is a download and not an embed.
 
-*Source: <https://sgit.ai/docs/vault/reading-a-vault-file.html> · site v0.3.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault/reading-a-vault-file.html> · site v0.3.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -71,7 +71,9 @@ Two published shapes are handled, because vaults differ in what they chose to pu
 
 Nothing is installed and nothing is signed into. The first slide of a deck costs the ref, the commit, the trees, the manifest and one slide source; every later slide in that deck is already decrypted; a screenshot is fetched once and reused. The server sees requests for opaque ids and returns ciphertext, which is the entire point: **it is serving a presentation it cannot read.**
 
-The credential on those pages is a read key, derived one-way from a vault key that is not published. Read keys can be handed out; vault keys never are. [The publishing method](../../demos/vaults/publishing.md) · [API: vault objects](../../api/vault-objects.md) · [Static hosting](static-hosting.md)
+Put numbers on it. One object came back in **0.63 s for 59,324 bytes of ciphertext** with no auth header, twenty objects came back in a single POST in 2.79 s, and encryption adds a flat 28 bytes per object rather than a percentage. The address is never looked up: file ids are derived by HMAC from the read key, so the holder computes them locally before making any request at all. [The measurements, and the commands to repeat them](../../demos/fractal-graphs/performance.md#requests).
+
+The credential on those pages is a read key, derived one-way from a vault key that is not published. Read keys can be handed out; vault keys never are. [The publishing method](../../demos/vaults/publishing.md) · [API: vault objects](../../api/vault-objects.md) · [Static hosting](static-hosting.md) · [Performance and cost](../../demos/fractal-graphs/performance.md)
 
 
 ---
