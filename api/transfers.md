@@ -2,7 +2,7 @@
 
 > The other API family on this host: a single encrypted payload uploaded once and shared as one link. The two secrets that must not be confused, the SGMETA envelope that keeps the filename off the server, the three calls, revocation that is opt-in at create time only, and when a transfer beats a vault.
 
-*Source: <https://sgit.ai/api/transfers.html> · site v0.3.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/transfers.html> · site v0.3.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

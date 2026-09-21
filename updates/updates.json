@@ -1,8 +1,21 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.3.1",
+  "site_version": "v0.3.2",
   "updates": [
+    {
+      "slug": "performance-and-cost",
+      "title": "Graph engineering versus fractal graph, the measured answer",
+      "date": "2026-09-21",
+      "version": "v0.3.2",
+      "tags": [
+        "graphs",
+        "architecture",
+        "performance",
+        "cost"
+      ],
+      "summary": "A reader of the Fractal Semantic Graphs page asked the follow up that page had coming: what is the performance of this against ordinary graph engineering? Performance, cost, and running everywhere is the answer, and every figure on it was measured on 21 Septem…"
+    },
     {
       "slug": "vault-table-order",
       "title": "The newest vaults were at the bottom of the table, and at the top of the machine list",

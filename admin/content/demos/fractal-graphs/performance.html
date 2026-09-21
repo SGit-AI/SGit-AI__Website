@@ -1,0 +1,218 @@
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Fractal Semantic Graphs</a> / Performance and cost</p>
+  <h1>Performance, cost, and running everywhere</h1>
+  <p class="lead">A reader of <a href="index.html">the Fractal Semantic Graphs page</a> asked the right follow-up question: what is the <b>performance</b> of this against ordinary graph engineering? The honest answer needs the architecture said out loud first, because the two are not doing the same work. We run with <b>no live database</b>. A graph is a set of files in cloud storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that lives for one request. We call the cycle <b>LETS</b>: Load, Extract, Transform, Save. This page gives the measured numbers, taken on 21 September 2026 against live published vaults, then the cost model, then the part that matters most in practice: the same graph runs in a browser, a terminal, a function and a build container, with one read key and nothing installed.</p>
+
+  <h2 id="short">The short answer</h2>
+  <p>A graph database is very good at one thing this is not trying to do, and pays for it in a way we are not willing to pay. Both columns below are real engineering positions. The question is which bill you want.</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Classic graph engineering</th><th>Fractal Semantic Graph</th></tr>
+    <tr><td><b>Where the graph lives</b></td><td>Inside a database process, in its own storage format</td><td>In ordinary files in object storage, content addressed and encrypted</td></tr>
+    <tr><td><b>What runs between questions</b></td><td>A server, its indexes, its replicas, its backups</td><td>Nothing at all</td></tr>
+    <tr><td><b>Cost of admission</b></td><td>Everything must be loaded in, and conform to one schema</td><td>Publish the files and declare the ontology. Other worlds keep their own</td></tr>
+    <tr><td><b>Where a query runs</b></td><td>On the server, for every reader</td><td>In the reader's tab, or in a function that exists for one request</td></tr>
+    <tr><td><b>What a query costs the owner</b></td><td>Instance hours, whether anyone asks or not</td><td>The bytes that were actually read</td></tr>
+    <tr><td><b>Joining two domains</b></td><td>A shared schema, so a migration, so a project</td><td>An edge, because neither side gives up its own ontology</td></tr>
+    <tr><td><b>Six hops over a hundred million edges</b></td><td><b>Its home ground.</b> Nothing here competes</td><td>Not this. See <a href="#limits">where it is slower</a></td></tr>
+    <tr><td><b>Answering one question over a million</b></td><td>Fast, once the server is up and loaded</td><td>Fast, and the server was never up</td></tr>
+  </table></div>
+  <p>The performance claim is therefore narrow and testable: <b>for the questions people actually ask of a semantic graph, the work is bounded by the answer, not by the graph</b>, and the numbers below are what that costs.</p>
+
+  <h2 id="lets">LETS: Load, Extract, Transform, Save</h2>
+  <p>The familiar cycle is ETL: extract from the sources, transform, load into the warehouse you then own and must keep alive. LETS inverts the order and the ownership. The store you already have <em>is</em> the database, so you load from it, build a throwaway engine around the slice you need, answer the question, and save the answer back as new immutable files beside the ones you read.</p>
+  <div class="figure">
+  <svg viewBox="0 0 1000 420" role="img" aria-label="The LETS cycle: Load bytes from encrypted object storage, Extract the slice needed into an ephemeral engine, Transform by querying it, Save the result back as new immutable files. The engine exists only for the duration of the question; the store is always the same files.">
+    <style>
+      .lt-t{font:600 14px/1 system-ui,sans-serif;fill:#101114;text-anchor:middle}
+      .lt-s{font:12px/1.3 system-ui,sans-serif;fill:#5b6170;text-anchor:middle}
+      .lt-m{font:11.5px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed;text-anchor:middle}
+      .lt-h{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.1em;text-anchor:middle}
+      .lt-box{fill:#fff;stroke:#101114;stroke-width:1.6}
+      .lt-eph{fill:#eaf0ff;stroke:#2f6fed;stroke-width:2;stroke-dasharray:6 4}
+      .lt-store{fill:#f4f6fb;stroke:#101114;stroke-width:1.6}
+      .lt-arrow{stroke:#2f6fed;stroke-width:2.2;fill:none}
+    </style>
+    <text x="500" y="30" class="lt-h">THE STORE IS THE DATABASE</text>
+    <rect x="60" y="48" width="880" height="72" rx="10" class="lt-store"/>
+    <text x="500" y="76" class="lt-t">Encrypted files in object storage. Content addressed, immutable, versioned.</text>
+    <text x="500" y="98" class="lt-s">No process is running. A read is an ordinary GET. A write adds a new object and a new commit; it never overwrites one.</text>
+
+    <path d="M200 120 L200 176" class="lt-arrow"/><path d="M194 168 L200 176 L206 168" class="lt-arrow"/>
+    <text x="150" y="152" class="lt-m">1 Load</text>
+    <path d="M800 176 L800 122" class="lt-arrow"/><path d="M794 130 L800 122 L806 130" class="lt-arrow"/>
+    <text x="852" y="152" class="lt-m">4 Save</text>
+
+    <rect x="120" y="180" width="760" height="170" rx="12" class="lt-eph"/>
+    <text x="500" y="206" class="lt-h" style="fill:#2f6fed">EPHEMERAL, LIVES FOR ONE QUESTION</text>
+
+    <rect x="160" y="228" width="200" height="96" rx="10" class="lt-box"/>
+    <text x="260" y="256" class="lt-t">Extract</text>
+    <text x="260" y="278" class="lt-s">Only the slice the</text>
+    <text x="260" y="294" class="lt-s">question needs, plus the</text>
+    <text x="260" y="310" class="lt-s">ontology that explains it</text>
+
+    <path d="M368 276 L432 276" class="lt-arrow"/><path d="M424 270 L432 276 L424 282" class="lt-arrow"/>
+
+    <rect x="440" y="228" width="200" height="96" rx="10" class="lt-box"/>
+    <text x="540" y="256" class="lt-t">Transform</text>
+    <text x="540" y="278" class="lt-s">SQLite in WebAssembly,</text>
+    <text x="540" y="294" class="lt-s">an RDF store, or plain</text>
+    <text x="540" y="310" class="lt-s">maps in memory</text>
+
+    <path d="M648 276 L712 276" class="lt-arrow"/><path d="M704 270 L712 276 L704 282" class="lt-arrow"/>
+
+    <rect x="720" y="228" width="120" height="96" rx="10" class="lt-box"/>
+    <text x="780" y="262" class="lt-t">Answer</text>
+    <text x="780" y="286" class="lt-s">rendered, or</text>
+    <text x="780" y="302" class="lt-s">saved as files</text>
+
+    <text x="500" y="382" class="lt-s">The engine is disposable. Close the tab and it is gone, with no state to reconcile and nothing left running to pay for.</text>
+    <text x="500" y="402" class="lt-s">What survives is what always survives here: files, their versions, and the provenance attached to each one.</text>
+  </svg>
+  </div>
+  <div class="tablewrap"><table>
+    <tr><td><b>Load</b></td><td>Fetch the bytes you need, straight from storage over an ordinary GET, and decrypt them where they are going to be used. No query planner, no connection pool, no session</td></tr>
+    <tr><td><b>Extract</b></td><td>Pull out the slice that the question is about, and the ontology that gives that slice its meaning. In a fractal graph these are separate files on purpose, so you can take the second without the first</td></tr>
+    <tr><td><b>Transform</b></td><td>Build a throwaway engine around it. SQLite compiled to WebAssembly for tabular questions, an RDF store for triple questions, ordinary in-memory structures for traversals. It is created for this question and thrown away after it</td></tr>
+    <tr><td><b>Save</b></td><td>Write the answer back as new immutable files with their provenance, a new version rather than an edit. The result is now itself loadable, which is what makes the cycle compose</td></tr>
+  </table></div>
+  <div class="note"><b>The load-bearing consequence.</b> Because Save never overwrites, every object is immutable, and because every object is immutable, <b>every cache in the path is correct forever</b>. The browser cache, the CDN edge, the local clone and the agent's working copy never need invalidating. That is not a tuning trick. It is the reason there is no server: the hardest thing a database does for you, keeping one mutable truth consistent across readers, is a problem this architecture does not create.</div>
+
+  <h2 id="measured">What it actually costs, measured</h2>
+  <p>All of the following was measured on 21 September 2026 from an ordinary cloud container with no special network, against two live published vaults, using the read keys printed on their own pages. Anyone can repeat it.</p>
+
+  <h3>Opening a graph from the command line</h3>
+  <p>The vault is the <a href="../vaults/dsit-ai-risk-toolkit/index.html">DSIT AI Risk Toolkit</a>, 42 files, 3.2 MB of content, a semantic graph of <b>617 nodes and 694 edges</b> across four worlds.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Operation</th><th>Bytes moved</th><th>Time</th></tr>
+    <tr><td>Full clone, every file and the whole history</td><td>15 MB on disk</td><td><b>65.4 s</b></td></tr>
+    <tr><td>Sparse clone: every path, size and hash, no content</td><td>256 KB</td><td><b>7.3 s</b></td></tr>
+    <tr><td>Fetch one file that answers one question <span class="small dim">(a 59 KB topic shard)</span></td><td>59 KB</td><td><b>0.49 s</b></td></tr>
+    <tr><td>Fetch a second file <span class="small dim">(marginal cost of the next question)</span></td><td>63 KB</td><td><b>0.87 s</b></td></tr>
+    <tr><td>Fetch the entire graph as one file</td><td>1.0 MB</td><td><b>1.21 s</b></td></tr>
+    <tr><td>Ask again for something already fetched</td><td>0</td><td><b>0.18 s</b>, no network</td></tr>
+  </table></div>
+  <p>The first and third rows are the whole argument. <b>Cloning everything costs 65 seconds. Answering a question costs 7.8 seconds and 315 KB</b>, and the second question costs under a second. Nothing was indexed in advance, nothing was kept warm, and no service was running before the command was typed.</p>
+  <p>The sparse clone deserves its own sentence, because it is the step that makes the rest cheap. For 256 KB you get the complete file list with every size and content hash, which means <b>an agent can decide what is worth reading before reading anything</b>. The same call against the much larger <a href="../vaults/regulation-graph/index.html">Regulation Graph</a> vault, 207 files and 14.9 MB, took <b>7.06 s and 360 KB</b>. The index does not grow with the content.</p>
+
+  <h3>Opening the same graph in a browser</h3>
+  <p>Bytes and request counts for each view of that vault's app, measured by instrumenting the browser. This is the number that decides whether a page feels instant, and it is the number a graph database cannot improve, because the bottleneck was never the query.</p>
+  <div class="figure">
+  <svg viewBox="0 0 960 330" role="img" aria-label="Bar chart of bytes loaded per view: overview 94 KB in 3 requests, guidance 295 KB in 4, graph 1.12 MB in 5, data and queries 1.19 MB in 6, against the whole vault at 3.2 MB.">
+    <style>
+      .bc-l{font:600 12.5px/1 system-ui,sans-serif;fill:#101114}
+      .bc-v{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#2f6fed}
+      .bc-s{font:11.5px/1 system-ui,sans-serif;fill:#5b6170}
+      .bc-h{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;fill:#8b909c;letter-spacing:.1em}
+      .bc-bar{fill:#2f6fed}
+      .bc-whole{fill:#d8dee9}
+      .bc-ax{stroke:#c8cedb;stroke-width:1}
+    </style>
+    <text x="40" y="28" class="bc-h">BYTES LOADED TO RENDER EACH VIEW</text>
+    <line x1="270" y1="44" x2="270" y2="286" class="bc-ax"/>
+
+    <text x="40" y="70" class="bc-l">Overview</text><text x="40" y="86" class="bc-s">3 requests</text>
+    <rect x="270" y="56" width="20" height="26" class="bc-bar"/>
+    <text x="300" y="75" class="bc-v">94 KB</text>
+
+    <text x="40" y="122" class="bc-l">Guidance</text><text x="40" y="138" class="bc-s">4 requests</text>
+    <rect x="270" y="108" width="59" height="26" class="bc-bar"/>
+    <text x="339" y="127" class="bc-v">295 KB</text>
+
+    <text x="40" y="174" class="bc-l">Graph</text><text x="40" y="190" class="bc-s">617 nodes, 5 requests</text>
+    <rect x="270" y="160" width="229" height="26" class="bc-bar"/>
+    <text x="509" y="179" class="bc-v">1.12 MB</text>
+
+    <text x="40" y="226" class="bc-l">Data &amp; queries</text><text x="40" y="242" class="bc-s">6 requests</text>
+    <rect x="270" y="212" width="243" height="26" class="bc-bar"/>
+    <text x="523" y="231" class="bc-v">1.19 MB</text>
+
+    <text x="40" y="278" class="bc-l">The whole vault</text><text x="40" y="294" class="bc-s">42 files, for comparison</text>
+    <rect x="270" y="264" width="640" height="26" class="bc-whole"/>
+    <text x="700" y="283" class="bc-v" style="fill:#5b6170">3.2 MB, never loaded at once</text>
+  </svg>
+  </div>
+  <p>Four things in that chart are worth naming.</p>
+  <ul>
+    <li><b>The landing view of a 617-node semantic graph costs three requests and 94 KB.</b> Less than a typical web font pair. The graph file is not touched, because no question has been asked yet.</li>
+    <li><b>The most expensive view is a third of the vault.</b> There is no view that loads everything, because there is no question that needs everything.</li>
+    <li><b>The ontology is 2 KB.</b> In the Regulation Graph it is 4,217 bytes and fetched in 0.95 s. That is the entire price of arriving in a new world and learning its rules, which is what makes the <a href="index.html#what">jump between worlds</a> affordable rather than theoretical.</li>
+    <li><b>The query engine is 859 KB and loads only if you query.</b> SQLite compiled to WebAssembly ships inside the vault. A reader who never opens the query view never pays for it, and one who does pays once and then queries for free, locally, offline, for as long as the tab is open.</li>
+  </ul>
+  <p>The Regulation Graph shows the same shape at four times the size. It holds <b>1,523 nodes and 1,944 edges</b> over the EU AI Act. Its nodes file is 816 KB and its edges file 252 KB, so the graph is about 1.05 MB out of a 14.9 MB vault. Roughly 10 MB of that vault is raw source XML, retained so every claim can be traced back to the bytes it came from, and <b>never loaded to answer anything</b>. It also ships pre-cut slices: the Article 9 slice is 29,638 bytes and fetched in 0.75 s, so a question about Article 9 never touches the 1.05 MB graph at all.</p>
+
+  <h2 id="why">Why it is fast, in three sentences</h2>
+  <div class="tablewrap"><table>
+    <tr><td><b>Never render the graph, render the answer</b></td><td>The unit of work is the question, not the dataset. Traditional graph tooling optimises traversal over a loaded graph. This skips the loading, which is the part that was expensive</td></tr>
+    <tr><td><b>Each world is small because each world keeps its own ontology</b></td><td>There is no global schema to carry around, so a traversal stays inside one world until it deliberately crosses an edge. Crossing costs one small file. This is the performance benefit of the fractal property, and it is not an accident of it</td></tr>
+    <tr><td><b>Immutable and content addressed, so every cache is correct</b></td><td>The CDN is the read replica. The browser cache is the local index. Neither can ever be stale, because an object's name is its content</td></tr>
+  </table></div>
+
+  <h2 id="cost">The cost model, which is the part that changes the decision</h2>
+  <p>Performance arguments are usually won or lost on the invoice rather than the benchmark. Here is what is on ours and what is not.</p>
+  <div class="tablewrap"><table>
+    <tr><th>What you normally pay for</th><th>Here</th></tr>
+    <tr><td>Database instance hours, around the clock</td><td><b>Zero.</b> There is no instance</td></tr>
+    <tr><td>Memory sized to hold the index</td><td><b>Zero.</b> The index is a 256 KB file, and it is the reader who holds it</td></tr>
+    <tr><td>Read replicas for concurrency</td><td><b>Zero.</b> Concurrency is the CDN's problem, and it is already solved</td></tr>
+    <tr><td>Backups, snapshots, point-in-time recovery</td><td><b>Zero as a separate line.</b> Every version is already retained, because nothing is ever overwritten</td></tr>
+    <tr><td>A staging copy of the database</td><td><b>Zero.</b> A clone is a clone. That is the whole mechanism</td></tr>
+    <tr><td>Query compute</td><td><b>Paid by the reader's own device</b>, in the tab they already have open, or by a function that ran for a fraction of a second</td></tr>
+    <tr><td>Storage</td><td><b>The only standing line.</b> Object storage at rest</td></tr>
+    <tr><td>Egress</td><td><b>The only variable line.</b> The bytes that were actually read, which the numbers above show is a small fraction of what is stored</td></tr>
+  </table></div>
+  <p>To put a size on the standing line: the entire published estate on this site, <a href="../vaults/index.html">thirty one vaults</a>, is <b>2,662 files and 295 MB</b>. That is the whole corpus, including a 66 MB vault and a 43 MB one. It sits in object storage and costs what a third of a gigabyte costs, which at every major provider's standard rate is small change per month. There is no second bill, because there is no second thing running.</p>
+  <p>The shape of this matters more than the absolute figure. <b>Cost scales with what is read, not with what exists, and not with time.</b> A graph nobody opened this month cost only its storage. A graph that got a hundred thousand readers cost its egress and nothing else, because every one of those readers brought their own compute. There is no capacity to plan, nothing to right size, and no traffic spike that can produce an outage in a component that does not exist.</p>
+  <div class="note"><b>The part that surprises people.</b> Scale to zero is normally a property you buy with a serverless platform and give back the moment you attach a database, because the database cannot scale to zero: it is holding the state. Here the state is in files, so the zero is real. Between questions, this architecture is <em>not running</em>, in the literal sense, and it still answers the next question in under a second.</div>
+
+  <h2 id="everywhere">Running everywhere, on one read key</h2>
+  <p>Because the graph is files and the engine is disposable, the same artefact runs in four very different places with no porting, no build, no account and nothing installed beyond what is already there.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Where</th><th>What it needs</th><th>What it does</th></tr>
+    <tr><td><b>A browser tab</b></td><td>The URL and the read key in the fragment</td><td>Fetches ciphertext over ordinary CORS GETs, decrypts in the page, runs SQLite in WebAssembly. <a href="../../docs/vault/reading-a-vault-file.html">The primitive is documented</a> and every live embed on this site uses it</td></tr>
+    <tr><td><b>A terminal</b></td><td><code>pip install sgit-ai</code></td><td>Clone, sparse clone, fetch one file. The measurements above were taken this way</td></tr>
+    <tr><td><b>A serverless function</b></td><td>Outbound HTTPS</td><td>Load the slice, build the ephemeral engine, answer, return. Nothing to keep warm and nothing to tear down, because the function dying <em>is</em> the teardown</td></tr>
+    <tr><td><b>A CI container or an agent's sandbox</b></td><td>The read key as a variable</td><td>The same clone the human gets, in a pipeline, with the history attached so a build can assert on what changed</td></tr>
+    <tr><td><b>A static host with no backend at all</b></td><td>GitHub Pages or an S3 bucket</td><td>Deterministic GET paths and client-side decryption, degrading cleanly to read only. <a href="../../docs/vault/static-hosting.html">Documented here</a></td></tr>
+  </table></div>
+  <p>This is also the disaster recovery story, and it is short. Every reader who ever cloned has a complete, verifiable copy including history. There is no primary to fail over from.</p>
+
+  <h2 id="fractal-deployment">Fractal deployment: the same shape at every altitude</h2>
+  <p>The architecture repeats the property the graphs have. A vault holds files. A vault can hold another vault, by reference, with its own owner and its own read key. A vault can hold the app that reads it, and that app can hold the engine that queries it. A site can read a vault it does not own. At each of those altitudes the thing you are looking at is the same kind of thing, addressed the same way, opened with the same one credential.</p>
+  <div class="tablewrap"><table>
+    <tr><td><b>Deploy one graph</b></td><td>Publish the files. The read key is the deployment</td></tr>
+    <tr><td><b>Deploy a graph of graphs</b></td><td><a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>: a link file pointing at another vault, which has its own owner, its own key and its own ontology. Nobody merges anything</td></tr>
+    <tr><td><b>Deploy it inside somebody else's boundary</b></td><td>The same files in their bucket, or their GitHub Pages, or their air-gapped copy. The app does not care where the GETs are answered from</td></tr>
+    <tr><td><b>Deploy the reader, not the data</b></td><td>A site page that reads a vault it does not own, decrypting in the visitor's browser. The trust direction inverts and <a href="../../docs/surfaces.html">the surfaces page</a> says how</td></tr>
+  </table></div>
+  <p>The practical consequence for anyone with a data boundary to respect: <b>the deployment unit is a set of files and a key</b>, so putting a graph inside a regulated environment, a customer's tenancy or a machine with no internet is a copy, not a project. And two organisations can join their graphs by exchanging an edge and a read key, without either one adopting the other's schema or hosting the other's database.</p>
+
+  <h2 id="limits">Where it is slower, stated plainly</h2>
+  <p>This page would not be worth sending if it only listed wins.</p>
+  <ul>
+    <li><b>A full clone is slow.</b> 65 seconds for 3.2 MB, because every object is fetched and decrypted individually. If your workflow genuinely needs all of a large vault on disk, that is the price, and the answer is usually that it does not: use the sparse clone.</li>
+    <li><b>There is no server-side query.</b> Whatever the client needs, the client downloads. That is fine at a megabyte and wrong at a gigabyte, which is why partitions and pre-cut slices are a design step rather than an optimisation you reach for later.</li>
+    <li><b>Deep traversal over a very large single-domain graph is not our ground.</b> Six hops across a hundred million edges in one schema is exactly what a graph database was built for. Use one. The fractal argument is about the case where those hundred million edges were never going to live in one schema in the first place.</li>
+    <li><b>Writes are single writer per branch.</b> There is no concurrent multi-writer transaction, by design. <a href="../../docs/two-branch-model.html">The two-branch model</a> is how several agents work without one.</li>
+    <li><b>Cutting good slices is real work.</b> The Article 9 slice is fast because somebody decided Article 9 was a question worth pre-answering. Build time replaces query time, and the judgement of what to cut does not come for free.</li>
+    <li><b>Revocation is not retroactive.</b> A published read key cannot be unpublished, and anyone who cloned keeps their copy. That is the same property as the disaster recovery win, seen from the other side. <a href="../../docs/credentials.html">The credentials page</a> is explicit about it.</li>
+  </ul>
+
+  <h2 id="repeat">Repeat the measurements</h2>
+  <p>Every number on this page came from these commands, against a vault whose read key is published on its own page and cannot write anything.</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgit-ai</span>
+<span class="p">$</span> <span class="cmd">time sgit clone &lt;read-key&gt; dsit</span>
+<span class="d">  42 files, 3.2 MB                                  65.4 s</span>
+<span class="p">$</span> <span class="cmd">time sgit clone --sparse &lt;read-key&gt; sparse</span>
+<span class="d">  structure only, 256 KB on disk                     7.3 s</span>
+<span class="p">$</span> <span class="cmd">cd sparse &amp;&amp; time sgit fetch data/questions/security.json</span>
+<span class="d">  59 KB                                              0.49 s</span>
+<span class="p">$</span> <span class="cmd">time sgit fetch data/graph.json</span>
+<span class="d">  1.0 MB, the whole 617-node graph                   1.21 s</span></pre>
+  <p class="small dim">The read key is on <a href="../vaults/dsit-ai-risk-toolkit/index.html">the vault's page</a>, published on purpose. Browser figures were taken by instrumenting the page and recording every response, so they are exact byte counts rather than estimates, with network latency excluded; the latency numbers above are from the live API over an ordinary connection. Agents: the machine-readable list of every vault, with ids and read keys, is <a href="../vaults/llms.txt">/demos/vaults/llms.txt</a>.</p>
+
+  <h2 id="answer">The answer to the question, in one paragraph</h2>
+  <p>Graph engineering and fractal semantic graphs are not competing on the same benchmark. A graph database makes traversal fast by first making you pay to get everything inside it, and then keeps charging while nobody is asking. A fractal semantic graph leaves the data as files, lets each domain keep its own ontology, and builds a disposable engine around the small slice a question actually touches. The measured result is a 617-node graph that opens in 94 KB, a question answered in under eight seconds from a cold start with nothing running, a marginal question under a second, and an estate of thirty one graphs whose entire standing cost is 295 MB of object storage. What you give up is deep traversal over one enormous single-schema graph. What you gain is that the graphs you could never have merged into one schema can now be connected by an edge, and that the whole thing runs in a browser tab.</p>
+
+  <div class="pagenav"><a href="index.html">← Fractal Semantic Graphs</a><a href="../vaults/dsit-ai-risk-toolkit/index.html">The vault that was measured →</a></div>
+</main>

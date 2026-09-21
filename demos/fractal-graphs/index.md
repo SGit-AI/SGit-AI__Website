@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.3.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -244,7 +244,11 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 
 Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all thirty vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
 
-[← Published vaults](../vaults/index.md)[Start at the law →](../vaults/regulation-graph/index.md)
+## How fast is it, and what does it cost?
+
+The question a reader asked after this page went up, and it deserves a page of its own: what is the performance of this against ordinary graph engineering, given that we run with **no live database**? [Performance, cost, and running everywhere](performance.md) answers it with measurements rather than adjectives. The graph is files in object storage, the engine that answers a question is built in the reader's tab and thrown away after, and the cycle is **LETS**: Load, Extract, Transform, Save. A 617-node semantic graph opens in **94 KB and three requests**. A question answered from a cold start costs **7.8 seconds and 315 KB**, against 65.4 seconds to clone everything. Arriving in a new world and learning its rules costs **4 KB**, which is why the jump between worlds is affordable rather than theoretical. The standing cost of all thirty one graphs on this site is 295 MB of object storage, with nothing running between questions. That page also lists the six places this is slower, including the one a graph database wins outright.
+
+[← Published vaults](../vaults/index.md)[Performance and cost →](performance.md)
 
 
 ---

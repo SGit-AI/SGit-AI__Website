@@ -21,7 +21,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.1</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.3.2</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -52,6 +52,7 @@
  <a class="sl" href="../catalogue/index.html">Catalogue</a>
  <a class="sl" href="../demos/index.html">Demos</a>
  <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
  </div>
  </div>
  <div class="ni ni-has">
@@ -94,11 +95,41 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.1 &middot; 20 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.3.2 &middot; 21 Sep 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+ <h2 class="upd-date">2026-09-21</h2>
+ <article class="upd" id="performance-and-cost">
+ <h3><a href="#performance-and-cost">Graph engineering versus fractal graph, the measured answer</a> <a class="upd-ver" href="../admin/versions.html">v0.3.2</a></h3>
+ <p class="chips"><span class="chip">graphs</span><span class="chip">architecture</span><span class="chip">performance</span><span class="chip">cost</span></p>
+<p>A reader of <a href="../demos/fractal-graphs/index.html">the Fractal Semantic Graphs page</a> asked the follow-up that page had coming: what is the <b>performance</b> of this against ordinary graph engineering?</p>
+<p><a href="../demos/fractal-graphs/performance.html">Performance, cost, and running everywhere</a> is the answer, and every figure on it was measured on 21 September 2026 from an ordinary cloud container against live published vaults, using the read keys printed on their own pages. Anyone can repeat the commands.</p>
+<h2>The architecture the numbers come from</h2>
+<p>We run with <b>no live database</b>. A graph is a set of encrypted files in object storage, read directly. The engine that answers a question is created when the question is asked and destroyed when it is answered, either in the reader's browser tab or in a serverless function that exists for one request. The cycle is <b>LETS</b>: Load the bytes, Extract the slice and the ontology that explains it, Transform in a disposable engine, Save the answer as new immutable files.</p>
+<p>Save never overwrites, and that one property carries the rest. Because every object is immutable, every cache in the path is correct forever, which is why there is no server: the hardest thing a database does for you, keeping one mutable truth consistent across readers, is a problem this architecture never creates.</p>
+<h2>What it costs, measured</h2>
+<p>Against the <a href="../demos/vaults/dsit-ai-risk-toolkit/index.html">DSIT AI Risk Toolkit</a> vault, 42 files, 3.2 MB, a semantic graph of 617 nodes and 694 edges:</p>
+<div class="tablewrap"><table>
+<tr><th>Operation</th><th>Time</th></tr>
+<tr><td>Full clone, every file and the whole history</td><td><b>65.4 s</b></td></tr>
+<tr><td>Sparse clone: every path, size and hash, no content</td><td><b>7.3 s</b>, 256 KB</td></tr>
+<tr><td>Fetch one file that answers one question</td><td><b>0.49 s</b>, 59 KB</td></tr>
+<tr><td>Fetch the entire graph as one file</td><td><b>1.21 s</b>, 1.0 MB</td></tr>
+<tr><td>Ask again for something already fetched</td><td><b>0.18 s</b>, no network</td></tr>
+</table></div>
+<p>Cloning everything costs 65 seconds. <b>Answering a question costs 7.8 seconds and 315 KB</b>, and the second question costs under a second. Nothing was indexed in advance and no service was running before the command was typed.</p>
+<p>In the browser, measured by recording every response, so these are exact byte counts: the landing view of that 617-node graph is <b>94 KB in three requests</b>. The graph view is 1.12 MB in five. No view loads the whole vault, because no question needs it. The ontology is <b>2 KB</b>, and 4,217 bytes in the larger Regulation Graph, which is the entire price of arriving in a new world and learning its rules. That is what makes the jump between worlds affordable rather than theoretical.</p>
+<h2>The cost model, which is where the decision usually gets made</h2>
+<p>Zero instance hours. Zero replicas. Zero index memory. No separate backup line, because every version is already kept. No staging copy, because a clone is a clone. Storage and egress only, and query compute paid by the reader's own device.</p>
+<p>The entire published estate on this site, thirty one vaults, is <b>2,662 files and 295 MB</b> of object storage. <b>Cost scales with what is read, not with what exists, and not with time.</b> Scale to zero is normally a property you give back the moment you attach a database, because the database is holding the state. Here the state is in files, so the zero is real.</p>
+<h2>Running everywhere, including inside somebody else's boundary</h2>
+<p>The same artefact runs in a browser tab, a terminal, a serverless function, a CI container and a static host with no backend, on one read key and nothing installed. That is also the fractal deployment story: the deployment unit is a set of files and a key, so putting a graph inside a regulated environment or an air-gapped machine is a copy rather than a project, and two organisations can join their graphs by exchanging an edge and a read key without either one adopting the other's schema.</p>
+<h2>And six places it is slower</h2>
+<p>The page would not be worth sending if it only listed wins. Full clones are slow. There is no server-side query, so whatever the client needs, the client downloads. Cutting good slices is real work that moves query time to build time. Writes are single writer per branch. Revocation is not retroactive.</p>
+<p>And one a graph database wins outright: six hops across a hundred million edges in a single schema is exactly what it was built for. The fractal argument is about the case where those hundred million edges were never going to live in one schema in the first place.</p>
+ </article>
  <h2 class="upd-date">2026-09-20</h2>
  <article class="upd" id="vault-table-order">
  <h3><a href="#vault-table-order">The newest vaults were at the bottom of the table, and at the top of the machine list</a> <a class="upd-ver" href="../admin/versions.html">v0.2.99</a></h3>
@@ -924,7 +955,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.3.1</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.3.2</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -966,7 +997,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.1';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.3.2';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.3.1'
+SITE_VERSION = 'v0.3.2'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,43 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.3.1', '2026-09-20', 'this release',
+    ('v0.3.2', '2026-09-21', 'this release',
+     "A READER ASKED FOR THE PERFORMANCE NUMBERS, SO THEY WERE MEASURED RATHER THAN ESTIMATED. "
+     "The question, after the fractal graphs page went out: what is the performance of this "
+     "against ordinary graph engineering? /demos/fractal-graphs/performance.html answers it, and "
+     "every figure on it was taken on 21 September 2026 from an ordinary cloud container against "
+     "two live published vaults, using the read keys printed on their own pages. FROM THE "
+     "COMMAND LINE, against the 42-file 3.2 MB DSIT vault whose graph is 617 nodes and 694 "
+     "edges: full clone 65.4 s; sparse clone, meaning every path, size and hash with no content, "
+     "7.3 s and 256 KB; one 59 KB file that answers one question 0.49 s; a second file 0.87 s; "
+     "the entire graph as one 1.0 MB file 1.21 s; an already-fetched file 0.18 s with no network "
+     "at all. So cloning everything costs 65 seconds and answering a question costs 7.8 seconds "
+     "and 315 KB. The same sparse call against the 207-file 14.9 MB Regulation Graph took 7.06 s "
+     "and 360 KB, because the index does not grow with the content. IN THE BROWSER, by "
+     "instrumenting the page and recording every response, so these are exact byte counts: the "
+     "landing view of that 617-node graph is 94 KB in 3 requests, guidance 295 KB in 4, the "
+     "graph view 1.12 MB in 5, data and queries 1.19 MB in 6, against a 3.2 MB vault that no "
+     "view ever loads whole. The ontology is 2 KB, 4,217 bytes in the Regulation Graph, which is "
+     "the entire price of arriving in another world and learning its rules, and that is what "
+     "makes the jump affordable rather than theoretical. The 859 KB query engine loads only if "
+     "you query. THE ARCHITECTURE IS NAMED: no live database, files in object storage read "
+     "directly, and LETS, meaning Load, Extract, Transform, Save, where Save writes new "
+     "immutable files instead of overwriting, which is why every cache in the path is correct "
+     "forever and why there is no server. THE COST MODEL IS THE OTHER HALF the author asked for: "
+     "zero instance hours, zero replicas, zero index memory, no separate backup line because "
+     "every version is already kept, no staging copy because a clone is a clone; storage and "
+     "egress only; query compute paid by the reader's own device. The whole published estate is "
+     "2,662 files and 295 MB. Cost scales with what is read, not with what exists and not with "
+     "time. RUN EVERYWHERE, on one read key: a browser tab, a terminal, a serverless function, a "
+     "CI container, a static host with no backend, plus fractal deployment, where the deployment "
+     "unit is a set of files and a key, so putting a graph inside a regulated environment or an "
+     "air-gapped machine is a copy rather than a project, and two organisations can join their "
+     "graphs by exchanging an edge and a read key without either adopting the other's schema. "
+     "AND SIX PLACES IT IS SLOWER, stated plainly, including the one a graph database wins "
+     "outright: six hops across a hundred million edges in one schema. The commands to repeat "
+     "every measurement are on the page.",
+     ),
+    ('v0.3.1', '2026-09-20', 'git 85f20a76',
      "VAULT #31, AND IT ARRIVED AT THE SAME CONCLUSION THIS SITE SPENT A WEEK REACHING. An "
      "independent reference edition of the UK DSIT AI Risk Management Toolkit, submitted under "
      "the sgit_public_read_ prefix, which is the form the credentials page now asks for and the "
@@ -1860,6 +1896,7 @@ NAV = [
         ('catalogue', 'Catalogue', 'catalogue/index.html'),
         ('demos', 'Demos', 'demos/index.html'),
         ('fractal', 'Fractal graphs', 'demos/fractal-graphs/index.html'),
+        ('fractal', 'Performance & cost', 'demos/fractal-graphs/performance.html'),
     ]),
     ('evidence', 'Evidence', 'compare/index.html', [
         ('compare', 'Comparisons', 'compare/index.html'),
@@ -2376,6 +2413,7 @@ LLMS_FACTS = {
     'docs/limitations.html': 'Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.',
     'docs/two-branch-model.html': 'Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.',
     'docs/credentials.html': 'TWO capabilities: a vault key (read+write) and a read key (read only, derived one-way, cannot be reversed). FIVE prefixes DECLARE which you hold: sgit_private_vault_ (write, never publish), sgit_private_read_ (read, keep secret), sgit_public_read_ (read, deliberately published, use this for open vaults), plus legacy sgit_vk1_/sgit_rk1_. The prefix is a DECLARATION, not crypto: strip it and the bytes are identical, and every form clones the same vault. Classification is by declaration, never by shape. Revocation is NOT retroactive.',
+    'demos/fractal-graphs/performance.html': 'NO LIVE DATABASE. A graph is encrypted files in object storage, read directly; the engine is built per question and thrown away (SQLite in WebAssembly in the tab, or a serverless function that lives one request). The cycle is LETS: Load bytes, Extract the slice plus its ontology, Transform in a disposable engine, Save the answer as NEW immutable files, never an overwrite, which is why every cache in the path is correct forever. MEASURED 21 Sep 2026 against live vaults: full clone of a 42-file 3.2MB vault 65.4s; sparse clone (every path, size and hash, no content) 7.3s and 256KB; one 59KB file 0.49s; the whole 617-node graph as one file 1.0MB in 1.21s; an already-fetched file 0.18s with no network. In-browser bytes per view: overview 94KB in 3 requests, guidance 295KB in 4, the 617-node graph 1.12MB in 5, data and queries 1.19MB in 6, against a 3.2MB vault that is never loaded whole. An ontology is 2-4KB, the entire price of crossing into another world. COST: zero instance hours, zero replicas, zero index memory, no separate backup line (every version is already kept); storage and egress only; query compute is paid by the reader device. The whole published estate is 2,662 files and 295MB. SLOWER AT: full clones, anything needing a server-side query, deep traversal over one huge single-schema graph (use a graph database), concurrent multi-writer.',
     'security.html': 'The server sees the vault ID, object sizes and request timing, nothing else. Sizes and timing are an acknowledged side channel.',
     'docs/agents.html': 'sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.',
     'docs/quickstart.html': 'sgit create <name> then commit/push; the vault key is printed once and there is no reset.',
