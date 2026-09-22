@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.2'
+SITE_VERSION = 'v0.5.3'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.2', '2026-09-22', 'this release',
+    ('v0.5.3', '2026-09-22', 'this release',
+     "THE NEWS ARTICLE, SECOND PASS, ON THE AUTHOR'S NOTES. The first pass described the problem "
+     "well and the solution thinly. Now: an executive summary section up front with the eight key "
+     "ideas; a section on why advertising and subscriptions are both bad for the reader (product, "
+     "hostage); the objective stated once, a commercial model that rewards investigative journalism "
+     "so usage funds it and it earns the usage, drawn as a third diagram against the race to the "
+     "bottom; the two clocks compressed, since that part is known; and the five things to sell each "
+     "given their mechanics (read key, licence to transform, evidence vault per licensee, the cut "
+     "not the content, the two prices and freshness of the verification API). The word prose is "
+     "gone from the text and the diagrams, replaced by content or the words, because the readers "
+     "this is for are the people who write it.",
+    ),
+    ('v0.5.2', '2026-09-22', 'git fcd0de3a',
      "NEW ARTICLE: THE FUTURE OF NEWS IS THE STORY VAULT, NOT THE PAYWALL. Written from a voice "
      "memo, the seven future-of-news pieces on docs.diniscruz.ai (Feb to Jul 2025, dates kept "
      "on purpose), newsroom.sgit.ai, subscriptions.sgit.ai and pt.newsroom.sgit.ai, and the "
