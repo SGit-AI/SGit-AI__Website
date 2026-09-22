@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.5'
+SITE_VERSION = 'v0.5.6'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.5', '2026-09-22', 'this release',
+    ('v0.5.6', '2026-09-22', 'this release',
+     "THE BYLINE NOW LINKS TO A PROFILE PAGE ON THIS SITE. New /about/index.html, About the "
+     "author, in the Why menu: the record (the companies, OWASP, the O2 platform), the signed "
+     "articles here, writing elsewhere (docs.diniscruz.ai, LinkedIn, open-source.sgit.ai's "
+     "fuller version of the page, wardley-maps, graphs, newsroom, GitHub), interests declared, "
+     "and how to reach or correct the author. author_url may now be site-root relative; the "
+     "byline renders it as a relative link and the JSON-LD Person gets the absolute URL. The "
+     "four signed articles point at the new page instead of LinkedIn.",
+    ),
+    ('v0.5.5', '2026-09-22', 'git 49aa9407',
      "ARTICLES GET A BYLINE. The author noticed that the news article is written in the first "
      "person and his name appears nowhere on it, on a site whose argument is provenance. New "
      "optional frontmatter, author and author_url, rendered as 'By <name>' with the link first on "
@@ -2470,6 +2479,7 @@ NAV = [
         ('why', 'Why sgit exists', 'why/index.html'),
         ('investors', 'Investors', 'investors/index.html'),
         ('startups', 'Startups', 'startups/index.html'),
+        ('about', 'About the author', 'about/index.html'),
     ]),
     ('docs', 'Docs', 'docs/index.html', [
         ('docs', 'Documentation', 'docs/index.html'),
@@ -2642,7 +2652,8 @@ def json_ld(path, title, desc):
                            "sameAs": "https://pypi.org/project/sgit-ai/"}}
     au = ARTICLE_AUTHORS.get(path)
     if au:
-        page_node["author"] = {"@type": "Person", "name": au[0], "url": au[1]}
+        u = au[1] if au[1].startswith('http') else f"https://sgit.ai/{au[1]}"
+        page_node["author"] = {"@type": "Person", "name": au[0], "url": u}
     blocks = [site, page_node] if path == 'index.html' else [page_node]
     return '\n'.join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False)
                       + '</script>' for b in blocks)
@@ -3000,6 +3011,7 @@ Quick answers (so you do not need a second request for the common questions):
 
 LLMS_SECTIONS = [
     ('why', 'Why this exists'),
+    ('about', 'About the author (Dinis Cruz: the record, the signed articles, writing elsewhere, and interests declared)'),
     ('startups', 'For startups (building a product on vaults: what you get on day one, the loop from first vault to first customer, and what you still have to bring)'),
     ('demos', 'Demos (live end-to-end examples with published read keys)'),
     ('catalogue', 'Catalogue (the index of published vaults, read keys, shapes, evidence and write-key status)'),
@@ -4078,8 +4090,14 @@ def article_body(a):
     ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
     # The byline is the first thing after the title, because an article written in the
     # first person without a name on it is a provenance failure on a site about provenance.
-    by = (f'By <a href="{a["author_url"]}" rel="author noopener" target="_blank">{a["author"]}</a> &middot; '
-          if a['author'] else '')
+    # author_url is either absolute (external profile) or site-root relative (a page here,
+    # which is the preferred form: one profile page that links out to everything else).
+    if a['author']:
+        u = a['author_url']
+        href, extra = (u, ' rel="author noopener" target="_blank"') if u.startswith('http') else ('../' + u, ' rel="author"')
+        by = f'By <a href="{href}"{extra}>{a["author"]}</a> &middot; '
+    else:
+        by = ''
     return ('<main class="doc">\n'
             f' <p class="crumb"><a href="../index.html">Home</a> / '
             f'<a href="index.html">Articles</a> / {a["title"]}</p>\n'

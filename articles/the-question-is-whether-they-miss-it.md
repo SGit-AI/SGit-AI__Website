@@ -2,7 +2,7 @@
 
 > A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.
 
-*Source: <https://sgit.ai/articles/the-question-is-whether-they-miss-it.html> · site v0.5.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-question-is-whether-they-miss-it.html> · site v0.5.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # For a startup, the most important question is whether they miss it
 
-By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
 
 ***Abstract:** A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.*
 

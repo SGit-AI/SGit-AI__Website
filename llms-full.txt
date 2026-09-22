@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.5.5). Nothing here needs a second request. Individual pages live at the paths
+> (v0.5.6). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-153site releases, each verified live before it was called done
+154site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -5420,7 +5420,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.5.5, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.5.6, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5783,7 +5783,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-153**site releases since 14 August**
+154**site releases since 14 August**
 each verified live before it was called done
 
 31**vaults published with a public read key**
@@ -5938,6 +5938,70 @@ Everything above is how this site itself is built, which is the only reason to b
 **This section is new, and deliberately small.** It will grow with the founders who use it, and when it outgrows a page it will become its own site, the way nineteen others already have. If you are building on vaults, the most useful thing you can send is what broke.
 
 [← The operating model](../articles/the-question-is-whether-they-miss-it.md)[Open a real vault →](../demos/vaults/index.md)
+
+
+
+==============================================================================
+# About the author, Dinis Cruz, sgit.ai
+
+> The provenance behind the first-person articles: the record (sgit.ai, sgraph.ai, MyFeeds.ai, The Cyber Boardroom, RiskMandate.ai, VoiceDebrief.ai, OWASP), the signed articles on this site, where else the author writes, the interests a reader should know about, and how to reach or correct him.
+>
+> Page: https://sgit.ai/about/index.html
+
+[Home](../index.md) / About the author
+
+The person behind the first-person articles
+
+# Dinis Cruz
+
+sgit.ai is built by one person and a team of agents, and the articles here that say *I* are written by the person. This page is the provenance for that byline: who I am, what I have built, where else I write, and the interests a reader should know about before taking the argument. It follows the same rule as the rest of the site, which is that a claim should be checkable without trusting me.
+
+## The record
+
+| Role | What it involves |
+|---|---|
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-one vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
+| **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
+| **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. |
+| **Founder, [RiskMandate.ai](https://riskmandate.ai/)** | The business risk layer for autonomous systems. Its field demo is [published here as a vault](../demos/vaults/risk-mandate/index.md), 124 files and 98 commits inside one encrypted store. |
+| **Founder, [VoiceDebrief.ai](https://voicedebrief.ai)** | Voice recordings into transcripts and debriefs, entirely in the browser, with nothing uploaded to a server. The vault where [Fractal Semantic Graphs were first worked](../demos/vaults/voice-debrief/index.md) came out of this work. |
+| **Former OWASP Board member** | And organiser of the OWASP Summits, Lisbon 2011 and Woburn 2017, the working-session format with no spectators and only participants that the Open Security Summit series went on to build on. Current open-source work still ships under the owasp-sbot organisation. |
+| **Creator, the O2 Platform** | The OWASP static-analysis engine of 2010 to 2012, and the first of a line of open-source tooling that continues in the osbot and mgraph families, memory_fs, Issues-FS and sgit-ai, all Apache-2.0 and all on PyPI. |
+
+## Writing on this site
+
+The articles carry a byline when they are written in the first person, and the byline links here. The unsigned articles are written in the site's own voice by the team of agents, from briefs, and say so.
+
+- [The future of news is the story vault, not the paywall](../articles/future-of-news-story-vault-not-paywall.md). The story is a graph, the article is a projection, and there are five things to sell from one graph.
+- [The SaaS apocalypse will be decided by inertia, not by AI](../articles/saas-apocalypse-decided-by-inertia-not-by-ai.md). Same AI on both sides; what differs is what each has to protect.
+- [For a startup, the most important question is whether they miss it](../articles/the-question-is-whether-they-miss-it.md). The operating model in three pillars.
+- [Introducing Fractal Semantic Graphs](../articles/introducing-fractal-semantic-graphs.md). Every node opens into a graph of its own; edges are verbs; meaning lives in connectivity.
+- [All articles](../articles/index.md), signed and unsigned.
+
+## Writing elsewhere
+
+| **[docs.diniscruz.ai](https://docs.diniscruz.ai)** | The long-form research and essays, including [the future-of-news series](https://docs.diniscruz.ai/research/the-future-of-news.html) from February to July 2025 that the news article here builds on. Published under CC BY 4.0. |
+|---|---|
+| **[LinkedIn](https://www.linkedin.com/in/diniscruz)** | Where most of the articles are first posted and discussed, and the fastest route to reach me. |
+| **[open-source.sgit.ai](https://open-source.sgit.ai/)** | My position on open source as a strategy, with [a fuller version of this page](https://open-source.sgit.ai/about/index.html): the licences, the investor materials published in the open, and the interests declared there. |
+| **[wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/)** | The maps behind the strategy arguments, on the principle that maps are claims, not pictures. |
+| **[graphs.sgit.ai](https://graphs.sgit.ai/)** | The Fractal Semantic Graphs argument in full: the grammar, the books, the worked examples and the evidence estate. |
+| **[newsroom.sgit.ai](https://newsroom.sgit.ai/)** | The newsroom design the news article draws on, and [its Portuguese newsroom](https://pt.newsroom.sgit.ai/), where I am the named editor of record. |
+| **[GitHub](https://github.com/DinisCruz)** | The code, including [the sgit CLI](https://github.com/SGit-AI/SGit-AI__CLI) and [this site's source](https://github.com/SGit-AI/SGit-AI__Website), every page as content files plus the build that renders them. |
+
+## Interests declared
+
+I run companies whose strategy the articles here describe, and which sell the running, maintained service rather than the code. The market the news article, the SaaS article and the startups section describe is one I intend to be in. Read the arguments knowing that. Two things are built in to keep it honest.
+
+- **The claims are checkable without trusting me.** The measurements are [printed with the commands that produced them](../demos/fractal-graphs/performance.md), the vaults are [open with a read key](../demos/vaults/index.md), the method is [written down with the mistakes that produced each rule](../demos/vaults/publishing.md), and [the lessons learned](../lessons/index.md) include the ones that cut against the argument.
+- **The pitch is public too.** [sgit.ai for investors](../investors/index.md) is published in the open, with the ask left visibly empty until it is stated rather than invented.
+
+## Reach me, or correct me
+
+[LinkedIn](https://www.linkedin.com/in/diniscruz) is the fastest route. Corrections and requests for this site are tracked in the open on [the board](../team/board.md), and [the repository](https://github.com/SGit-AI/SGit-AI__Website) takes issues and pull requests. If you find something wrong here, I would rather know.
+
+[← The articles](../articles/index.md)[How the site is run →](../team/index.md)
 
 
 
@@ -7566,11 +7630,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.5.5**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.5.6**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.5.5 | 2026-09-22 | this release | ARTICLES GET A BYLINE. The author noticed that the news article is written in the first person and his name appears nowhere on it, on a site whose argument is provenance. New optional frontmatter, author and author_url, rendered as 'By ' with the link first on the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in articles.json. The build refuses an author without a URL, because a byline without a link is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup model, fractal semantic graphs); the site-voice articles stay unsigned. |
+| v0.5.6 | 2026-09-22 | this release | THE BYLINE NOW LINKS TO A PROFILE PAGE ON THIS SITE. New /about/index.html, About the author, in the Why menu: the record (the companies, OWASP, the O2 platform), the signed articles here, writing elsewhere (docs.diniscruz.ai, LinkedIn, open-source.sgit.ai's fuller version of the page, wardley-maps, graphs, newsroom, GitHub), interests declared, and how to reach or correct the author. author_url may now be site-root relative; the byline renders it as a relative link and the JSON-LD Person gets the absolute URL. The four signed articles point at the new page instead of LinkedIn. |
+| v0.5.5 | 2026-09-22 | git 49aa9407 | ARTICLES GET A BYLINE. The author noticed that the news article is written in the first person and his name appears nowhere on it, on a site whose argument is provenance. New optional frontmatter, author and author_url, rendered as 'By ' with the link first on the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in articles.json. The build refuses an author without a URL, because a byline without a link is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup model, fractal semantic graphs); the site-voice articles stay unsigned. |
 | v0.5.4 | 2026-09-22 | git 73408357 | THE NEWS ARTICLE, THIRD PASS: THE FRACTAL SEMANTIC GRAPH WAS MISSING. The author read it halfway and noticed the piece said graph without saying which kind. Two new sections: the graph is fractal and meaning comes from connectivity (edges are verbs, relates_to is banned, every node opens into its own world, bridges not merges, provenance comes free when the leaf is a word tied to a byte range and a hash, corrections propagate, the empty doors are knowledge too), and the ladder stated once: trust through provenance, provenance via evidence, evidence is bytes with a hash, and every rung can be sold because none is asserted. A fourth diagram draws a story zoomed through three altitudes and sideways into a source's identity world. Links to the FSG page and graphs.sgit.ai; summary and executive summary updated to match. |
 | v0.5.3 | 2026-09-22 | git 1ddfae52 | THE NEWS ARTICLE, SECOND PASS, ON THE AUTHOR'S NOTES. The first pass described the problem well and the solution thinly. Now: an executive summary section up front with the eight key ideas; a section on why advertising and subscriptions are both bad for the reader (product, hostage); the objective stated once, a commercial model that rewards investigative journalism so usage funds it and it earns the usage, drawn as a third diagram against the race to the bottom; the two clocks compressed, since that part is known; and the five things to sell each given their mechanics (read key, licence to transform, evidence vault per licensee, the cut not the content, the two prices and freshness of the verification API). The word prose is gone from the text and the diagrams, replaced by content or the words, because the readers this is for are the people who write it. |
 | v0.5.2 | 2026-09-22 | git fcd0de3a | NEW ARTICLE: THE FUTURE OF NEWS IS THE STORY VAULT, NOT THE PAYWALL. Written from a voice memo, the seven future-of-news pieces on docs.diniscruz.ai (Feb to Jul 2025, dates kept on purpose), newsroom.sgit.ai, subscriptions.sgit.ai and pt.newsroom.sgit.ai, and the published vaults. Two clocks: Google traffic to publishers down 33% in a year and Cloudflare's billion 402s a day; the UK subscription regime brought forward to 1 Jan 2027. Reuters 2026: 17% pay, 71% of non-payers say nothing would persuade them. The counter-arguments to micropayments (Ball 2020, Guay 2026) are quoted and answered: they are about paying for prose. The story is a graph, the article is a projection, five things to sell, 60/25/10/5, x402 rails, and an honest note that no sgit.ai site is wired to any rail. Two drawn diagrams, link-preview card generated, linked from the startups section. |
@@ -12327,7 +12392,7 @@ The author recorded a series on this vault. No short has been mapped to this dec
 
 # The future of news is the story vault, not the paywall
 
-By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-22 · [v0.5.5](../admin/versions.md) · newspublishingprovenancemicropaymentssemantic-graphsarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-22 · [v0.5.5](../admin/versions.md) · newspublishingprovenancemicropaymentssemantic-graphsarticle
 
 ***Abstract:** The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.*
 
@@ -12554,7 +12619,7 @@ The industry has never lacked the material. It has lacked a way to sell it. Now 
 
 # The SaaS apocalypse will be decided by inertia, not by AI
 
-By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-21 · [v0.4.2](../admin/versions.md) · saasstrategywardley-mapsagentsarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-21 · [v0.4.2](../admin/versions.md) · saasstrategywardley-mapsagentsarticle
 
 ***Abstract:** The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.*
 
@@ -12675,7 +12740,7 @@ Which brings it back to Nokia, and to inertia. The version of the apocalypse tha
 
 # For a startup, the most important question is whether they miss it
 
-By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-21 · [v0.3.9](../admin/versions.md) · startupsstrategyopen-sourceinvestingarticle
 
 ***Abstract:** A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.*
 
@@ -12786,7 +12851,7 @@ If you are building something on this, I would like to hear about it.
 
 # Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema
 
-By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-20 · [v0.2.97](../admin/versions.md) · graphsmethodfractal-semantic-graphsarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-20 · [v0.2.97](../admin/versions.md) · graphsmethodfractal-semantic-graphsarticle
 
 ***Abstract:** The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.*
 

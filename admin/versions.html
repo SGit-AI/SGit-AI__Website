@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.5.5</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.5.6</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -35,6 +35,7 @@
  <a class="sl" href="../why/index.html">Why sgit exists</a>
  <a class="sl" href="../investors/index.html">Investors</a>
  <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../about/index.html">About the author</a>
  </div>
  </div>
  <div class="ni ni-has">
@@ -103,14 +104,15 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.5.5 &middot; 22 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.5.6 &middot; 22 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">The site version (<b>v0.5.5</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">The site version (<b>v0.5.6</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
   <div class="tablewrap"><table class="vers">
     <tr><th>Version</th><th>Date</th><th>Commit</th><th>Changes</th></tr>
- <tr><td class="vnum">v0.5.5</td><td>2026-09-22</td><td class="vid">this release</td><td>ARTICLES GET A BYLINE. The author noticed that the news article is written in the first person and his name appears nowhere on it, on a site whose argument is provenance. New optional frontmatter, author and author_url, rendered as 'By <name>' with the link first on the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in articles.json. The build refuses an author without a URL, because a byline without a link is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup model, fractal semantic graphs); the site-voice articles stay unsigned.</td></tr>
+ <tr><td class="vnum">v0.5.6</td><td>2026-09-22</td><td class="vid">this release</td><td>THE BYLINE NOW LINKS TO A PROFILE PAGE ON THIS SITE. New /about/index.html, About the author, in the Why menu: the record (the companies, OWASP, the O2 platform), the signed articles here, writing elsewhere (docs.diniscruz.ai, LinkedIn, open-source.sgit.ai's fuller version of the page, wardley-maps, graphs, newsroom, GitHub), interests declared, and how to reach or correct the author. author_url may now be site-root relative; the byline renders it as a relative link and the JSON-LD Person gets the absolute URL. The four signed articles point at the new page instead of LinkedIn.</td></tr>
+ <tr><td class="vnum">v0.5.5</td><td>2026-09-22</td><td class="vid">git 49aa9407</td><td>ARTICLES GET A BYLINE. The author noticed that the news article is written in the first person and his name appears nowhere on it, on a site whose argument is provenance. New optional frontmatter, author and author_url, rendered as 'By <name>' with the link first on the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in articles.json. The build refuses an author without a URL, because a byline without a link is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup model, fractal semantic graphs); the site-voice articles stay unsigned.</td></tr>
  <tr><td class="vnum">v0.5.4</td><td>2026-09-22</td><td class="vid">git 73408357</td><td>THE NEWS ARTICLE, THIRD PASS: THE FRACTAL SEMANTIC GRAPH WAS MISSING. The author read it halfway and noticed the piece said graph without saying which kind. Two new sections: the graph is fractal and meaning comes from connectivity (edges are verbs, relates_to is banned, every node opens into its own world, bridges not merges, provenance comes free when the leaf is a word tied to a byte range and a hash, corrections propagate, the empty doors are knowledge too), and the ladder stated once: trust through provenance, provenance via evidence, evidence is bytes with a hash, and every rung can be sold because none is asserted. A fourth diagram draws a story zoomed through three altitudes and sideways into a source's identity world. Links to the FSG page and graphs.sgit.ai; summary and executive summary updated to match.</td></tr>
  <tr><td class="vnum">v0.5.3</td><td>2026-09-22</td><td class="vid">git 1ddfae52</td><td>THE NEWS ARTICLE, SECOND PASS, ON THE AUTHOR'S NOTES. The first pass described the problem well and the solution thinly. Now: an executive summary section up front with the eight key ideas; a section on why advertising and subscriptions are both bad for the reader (product, hostage); the objective stated once, a commercial model that rewards investigative journalism so usage funds it and it earns the usage, drawn as a third diagram against the race to the bottom; the two clocks compressed, since that part is known; and the five things to sell each given their mechanics (read key, licence to transform, evidence vault per licensee, the cut not the content, the two prices and freshness of the verification API). The word prose is gone from the text and the diagrams, replaced by content or the words, because the readers this is for are the people who write it.</td></tr>
  <tr><td class="vnum">v0.5.2</td><td>2026-09-22</td><td class="vid">git fcd0de3a</td><td>NEW ARTICLE: THE FUTURE OF NEWS IS THE STORY VAULT, NOT THE PAYWALL. Written from a voice memo, the seven future-of-news pieces on docs.diniscruz.ai (Feb to Jul 2025, dates kept on purpose), newsroom.sgit.ai, subscriptions.sgit.ai and pt.newsroom.sgit.ai, and the published vaults. Two clocks: Google traffic to publishers down 33% in a year and Cloudflare's billion 402s a day; the UK subscription regime brought forward to 1 Jan 2027. Reuters 2026: 17% pay, 71% of non-payers say nothing would persuade them. The counter-arguments to micropayments (Ball 2020, Guay 2026) are quoted and answered: they are about paying for prose. The story is a graph, the article is a projection, five things to sell, 60/25/10/5, x402 rails, and an honest note that no sgit.ai site is wired to any rail. Two drawn diagrams, link-preview card generated, linked from the startups section.</td></tr>
@@ -273,7 +275,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.5.5</a> · <a href="../admin/index.html">engineering</a> · <a href="versions.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.5.6</a> · <a href="../admin/index.html">engineering</a> · <a href="versions.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -315,7 +317,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.5.5';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.5.6';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
