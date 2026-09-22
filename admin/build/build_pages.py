@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.3'
+SITE_VERSION = 'v0.5.4'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.3', '2026-09-22', 'this release',
+    ('v0.5.4', '2026-09-22', 'this release',
+     "THE NEWS ARTICLE, THIRD PASS: THE FRACTAL SEMANTIC GRAPH WAS MISSING. The author read it "
+     "halfway and noticed the piece said graph without saying which kind. Two new sections: the "
+     "graph is fractal and meaning comes from connectivity (edges are verbs, relates_to is banned, "
+     "every node opens into its own world, bridges not merges, provenance comes free when the leaf "
+     "is a word tied to a byte range and a hash, corrections propagate, the empty doors are "
+     "knowledge too), and the ladder stated once: trust through provenance, provenance via "
+     "evidence, evidence is bytes with a hash, and every rung can be sold because none is "
+     "asserted. A fourth diagram draws a story zoomed through three altitudes and sideways into a "
+     "source's identity world. Links to the FSG page and graphs.sgit.ai; summary and executive "
+     "summary updated to match.",
+    ),
+    ('v0.5.3', '2026-09-22', 'git 1ddfae52',
      "THE NEWS ARTICLE, SECOND PASS, ON THE AUTHOR'S NOTES. The first pass described the problem "
      "well and the solution thinly. Now: an executive summary section up front with the eight key "
      "ideas; a section on why advertising and subscriptions are both bad for the reader (product, "
