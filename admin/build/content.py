@@ -323,6 +323,11 @@ class Content_Loader:
                 'summary': meta['summary'], 'tags': meta.get('tags', []),
                 'version': meta.get('version', ''),
                 'status': meta.get('status', 'published'),
+                # A first-person article names its author, with a link, so the byline
+                # is provenance rather than an implication. Optional: site-voice
+                # articles leave it out and get no byline.
+                'author': meta.get('author', ''),
+                'author_url': meta.get('author_url', ''),
                 'body': body, 'where': where,
             })
         arts.sort(key=lambda a: a['date'], reverse=True)

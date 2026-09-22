@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.4'
+SITE_VERSION = 'v0.5.5'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.4', '2026-09-22', 'this release',
+    ('v0.5.5', '2026-09-22', 'this release',
+     "ARTICLES GET A BYLINE. The author noticed that the news article is written in the first "
+     "person and his name appears nowhere on it, on a site whose argument is provenance. New "
+     "optional frontmatter, author and author_url, rendered as 'By <name>' with the link first on "
+     "the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in "
+     "articles.json. The build refuses an author without a URL, because a byline without a link "
+     "is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup "
+     "model, fractal semantic graphs); the site-voice articles stay unsigned.",
+    ),
+    ('v0.5.4', '2026-09-22', 'git 73408357',
      "THE NEWS ARTICLE, THIRD PASS: THE FRACTAL SEMANTIC GRAPH WAS MISSING. The author read it "
      "halfway and noticed the piece said graph without saying which kind. Two new sections: the "
      "graph is fractal and meaning comes from connectivity (edges are verbs, relates_to is banned, "
@@ -2590,6 +2599,11 @@ def footer(p, md=''):
 # project from PyPI. sameAs links the site to the identifiers that already rank, which is
 # how an entity gets resolved to the right thing rather than to the most popular thing.
 
+# Filled once the articles are loaded: path -> (author, url). json_ld reads it at call
+# time, so an article with an author gets a schema.org Person and the rest do not.
+ARTICLE_AUTHORS = {}
+
+
 def json_ld(path, title, desc):
     site = {
         "@context": "https://schema.org",
@@ -2626,6 +2640,9 @@ def json_ld(path, title, desc):
                  "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"},
                  "about": {"@type": "SoftwareApplication", "name": "sgit",
                            "sameAs": "https://pypi.org/project/sgit-ai/"}}
+    au = ARTICLE_AUTHORS.get(path)
+    if au:
+        page_node["author"] = {"@type": "Person", "name": au[0], "url": au[1]}
     blocks = [site, page_node] if path == 'index.html' else [page_node]
     return '\n'.join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False)
                       + '</script>' for b in blocks)
@@ -3055,6 +3072,7 @@ def write_site_index(pages):
         'updates': [{'title': u['title'], 'date': u['date'], 'version': u.get('version', ''),
                      'path': f'updates/index.html#{u["slug"]}'} for u in UPDATES[:30]],
         'articles': [{'title': a['title'], 'date': a['date'], 'summary': a['summary'],
+                      'author': a['author'], 'author_url': a['author_url'],
                       'path': f'articles/{a["slug"]}.html'} for a in ARTICLES],
         'roles': [{'title': r['title'], 'mission': r['mission'], 'path': f'team/roles/{r["slug"]}.html'} for r in ROLES],
         'issues': [{'id': i['id'], 'title': i['title'], 'status': i['status'], 'role': i['role'],
@@ -3476,6 +3494,11 @@ def load_pages():
 LOADER = Content_Loader(os.path.join(ADMIN, 'content'))
 UPDATES = [u for u in LOADER.load_updates() if u['status'] == 'published']
 ARTICLES = [a for a in LOADER.load_articles() if a['status'] == 'published']
+for _a in ARTICLES:
+    if _a['author']:
+        if not _a['author_url']:
+            raise SystemExit(f"{_a['where']}: author is set but author_url is not; a byline without a link is a name, not provenance")
+        ARTICLE_AUTHORS[f"articles/{_a['slug']}.html"] = (_a['author'], _a['author_url'])
 
 # An article with a hero figure must also have its link-preview card, or og_card() below
 # quietly falls back to og/default.jpg and the article ships with the generic card. That
@@ -4053,11 +4076,15 @@ def articles_index_body():
 
 def article_body(a):
     ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
+    # The byline is the first thing after the title, because an article written in the
+    # first person without a name on it is a provenance failure on a site about provenance.
+    by = (f'By <a href="{a["author_url"]}" rel="author noopener" target="_blank">{a["author"]}</a> &middot; '
+          if a['author'] else '')
     return ('<main class="doc">\n'
             f' <p class="crumb"><a href="../index.html">Home</a> / '
             f'<a href="index.html">Articles</a> / {a["title"]}</p>\n'
             f' <h1>{a["title"]}</h1>\n'
-            f' <p class="small dim">{a["date"]}{ver}'
+            f' <p class="small dim">{by}{a["date"]}{ver}'
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])

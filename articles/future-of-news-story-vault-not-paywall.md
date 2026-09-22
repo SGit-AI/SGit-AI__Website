@@ -2,7 +2,7 @@
 
 > The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.
 
-*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.5.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.5.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The future of news is the story vault, not the paywall
 
-2026-09-22 · [v0.5.3](../admin/versions.md) · newspublishingprovenancemicropaymentssemantic-graphsarticle
+By [Dinis Cruz](https://www.linkedin.com/in/diniscruz) · 2026-09-22 · [v0.5.5](../admin/versions.md) · newspublishingprovenancemicropaymentssemantic-graphsarticle
 
 ***Abstract:** The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.*
 
@@ -33,7 +33,7 @@ The whole argument, for the reader who will not get to the end.
 - **The money goes to whoever made the fact.** A split of 60 to the original researcher, 25 to the data organisation, 10 to the journalist and 5 to the outlet, against today's model where nearly all of it stops at the outlet. The rails to pay in pence, with no fixed fee, now exist.
 - **Parts of this already run.** Hash-verified regulation graphs, a Portuguese newsroom with 92 frozen sources and an editor-gated pipeline, a penetration test sold as eight projections of one graph, and a published estate of thirty-one vaults costing a third of a gigabyte of storage. What does not run is the billing, and the article says so.
 
-The rest of this piece is the long form of those eight points, with the evidence, and with the parts of the solution spelt out in enough detail to be built.
+The rest of this piece is the long form of those ten points, with the evidence, and with the parts of the solution spelt out in enough detail to be built.
 
 ## Both models are bad for the reader
 
