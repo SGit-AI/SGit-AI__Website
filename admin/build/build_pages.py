@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.1'
+SITE_VERSION = 'v0.5.2'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.1', '2026-09-21', 'this release',
+    ('v0.5.2', '2026-09-22', 'this release',
+     "NEW ARTICLE: THE FUTURE OF NEWS IS THE STORY VAULT, NOT THE PAYWALL. Written from a voice "
+     "memo, the seven future-of-news pieces on docs.diniscruz.ai (Feb to Jul 2025, dates kept "
+     "on purpose), newsroom.sgit.ai, subscriptions.sgit.ai and pt.newsroom.sgit.ai, and the "
+     "published vaults. Two clocks: Google traffic to publishers down 33% in a year and "
+     "Cloudflare's billion 402s a day; the UK subscription regime brought forward to 1 Jan 2027. "
+     "Reuters 2026: 17% pay, 71% of non-payers say nothing would persuade them. The counter-"
+     "arguments to micropayments (Ball 2020, Guay 2026) are quoted and answered: they are about "
+     "paying for prose. The story is a graph, the article is a projection, five things to sell, "
+     "60/25/10/5, x402 rails, and an honest note that no sgit.ai site is wired to any rail. Two "
+     "drawn diagrams, link-preview card generated, linked from the startups section.",
+    ),
+    ('v0.5.1', '2026-09-21', 'git a8f931aa',
      "THE GUARD SHIPPED IN v0.5.0 DID NOT GUARD THE CASE THAT MATTERS, AND THE NOTE FOR IT "
      "OVERCLAIMED. The author asked the right question: will this work for new articles that "
      "have an image? Tested rather than assumed, and the answer was NO. og_card() falls back "

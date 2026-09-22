@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.5.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.5.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -57,6 +57,8 @@ This section would not be worth reading if it only listed what is free. A vault 
 ## The arguments this rests on, and where they live
 
 The market you are building into is described in [**The SaaS apocalypse will be decided by inertia, not by AI**](../articles/saas-apocalypse-decided-by-inertia-not-by-ai.md): most users were never happy, most features were never used, most licences sit idle, and the portability and APIs the incumbents starved to protect their moats are what an agent now needs. The opportunity it points at is the one this section is for: be the company that takes the brief and keeps it running.
+
+One market gets its own worked example, because it is the one where both the traffic and the law are moving at once. [**The future of news is the story vault, not the paywall**](../articles/future-of-news-story-vault-not-paywall.md) argues that the article is a projection of a graph, that the graph is the asset, and that there are five things to sell from it, in pence and on demand. A local newsroom, one journalist or a blogger with a beat can run that model on this stack, which is the point.
 
 Two of the three pillars have a whole site to themselves, because they outgrew a section here. They are worth reading before you commit to a commercial shape.
 
