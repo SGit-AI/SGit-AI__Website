@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.8'
+SITE_VERSION = 'v0.5.9'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.8', '2026-09-23', 'this release',
+    ('v0.5.9', '2026-09-23', 'this release',
+     "THE SOVEREIGN AI PAGE SAYS WHAT IT IS IN ITS TITLE. A reader landing from a forwarded link "
+     "had no way to know this was a proposal from sgit.ai's side. Title is now 'A proposed "
+     "partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI', the eyebrow names both "
+     "parties and calls it proposed, the lead opens by saying so and introduces the two products "
+     "in a clause each before introducing the fund. Index link, page title and About cross-link "
+     "follow.",
+    ),
+    ('v0.5.8', '2026-09-23', 'git ff7de798',
      "THE SOVEREIGN AI CASE GETS ITS ANCHORING, FROM THE FOUNDER'S OWN MEMO. New section on the "
      "partnership page, stated in the first person because only the founder can supply it: thirty "
      "years in the UK as practitioner, CISO for UK companies and founder; one UK exit; The Cyber "

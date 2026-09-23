@@ -2,7 +2,7 @@
 
 > The business case for specific partnerships between sgit.ai, RiskMandate.ai and organisations we would like to work with, made from public material only so the pages can be forwarded to anyone: what they are trying to do, what is published here that answers it, where the fit is partial, and a first concrete piece of work.
 
-*Source: <https://sgit.ai/partnerships/index.html> · site v0.5.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/index.html> · site v0.5.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,7 +27,7 @@ Each page in this section makes the case for one specific partnership, between a
 
 | Organisation | Why them | The case |
 |---|---|---|
-| **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**The case for a partnership with UK Sovereign AI →**](sovereign-ai.md) |
+| **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI →**](sovereign-ai.md) |
 
 **If you know somebody at one of these organisations**, the page is written to be forwarded as it is. It says what they do, what we do, where the two meet, and what a first step would look like, and everything on it can be checked by the person receiving it. [Who is asking, and how to reach them →](../about/index.md)
 

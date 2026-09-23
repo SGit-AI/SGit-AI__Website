@@ -1,18 +1,18 @@
-# The case for a partnership with UK Sovereign AI, sgit.ai
+# A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI
 
-> UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them.
+> A proposal from our side, published in the open. UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them.
 
-*Source: <https://sgit.ai/partnerships/sovereign-ai.html> · site v0.5.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/sovereign-ai.html> · site v0.5.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../index.md) / [Partnerships](index.md) / UK Sovereign AI
 
-Partnership case · public material only · written 23 September 2026
+A proposed partnership · sgit.ai and RiskMandate.ai with UK Sovereign AI · public material only · 23 September 2026
 
-# The case for a partnership with UK Sovereign AI
+# A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI
 
-UK Sovereign AI is Britain's sovereign venture fund for AI companies: *"backing Britain's AI founders to start here, scale here, and win everywhere."* One of its five frontiers is trust, safety and assurance, and one of the four challenge areas in its R&D procurement scheme is the safe adoption of AI agents by cybersecurity professionals. This page argues that the work published on this site and at [RiskMandate.ai](https://riskmandate.ai/) is a direct, already-built answer to both, that it is built by a founder who has been in the UK for thirty years through a UK-registered company, and that the open-source approach behind it is what makes sovereignty durable rather than one acquisition deep. It makes the argument from public material and the founder's own stated record, so it can be forwarded to anyone.
+**This is a proposal from our side, published in the open.** [sgit.ai](../index.md) (git for encrypted vaults) and [RiskMandate.ai](https://riskmandate.ai/) (the business risk layer for AI agents) are two UK-built products from the same founder and the same UK company. UK Sovereign AI is Britain's sovereign venture fund for AI companies: *"backing Britain's AI founders to start here, scale here, and win everywhere."* One of its five frontiers is trust, safety and assurance, and one of the four challenge areas in its R&D procurement scheme is the safe adoption of AI agents by cybersecurity professionals. This page argues that the work published on this site and at RiskMandate.ai is a direct, already-built answer to both, that it is built by a founder who has been in the UK for thirty years through a UK-registered company, and that the open-source approach behind it is what makes sovereignty durable rather than one acquisition deep. It makes the argument from public material and the founder's own stated record, so it can be forwarded to anyone.
 
 **Nothing on this page is confidential.** Every statement about UK Sovereign AI is taken from [sovereignai.gov.uk](https://www.sovereignai.gov.uk/) or from public reporting, and is linked. Every statement about us points at a published vault, a printed measurement or a page on this site, except [the anchoring section](#anchoring), which is the founder's own account and says so. There has been no conversation with the fund; this is the case we would make if there were one. Where it says what a partnership *could* be, that is our proposal, not their position.
 

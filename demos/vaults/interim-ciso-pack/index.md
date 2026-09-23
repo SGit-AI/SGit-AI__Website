@@ -2,7 +2,7 @@
 
 > A candidate pack delivered as an encrypted vault instead of a CV on an email: three routes for three readers, four documents each in PDF, Word, Markdown and JSON, a disclosed redaction, and a client named nowhere, with the pre-publication privacy audit stated in full.
 
-*Source: <https://sgit.ai/demos/vaults/interim-ciso-pack/index.html> · site v0.5.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/interim-ciso-pack/index.html> · site v0.5.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

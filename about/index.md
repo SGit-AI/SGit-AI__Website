@@ -2,7 +2,7 @@
 
 > The provenance behind the first-person articles: the record (sgit.ai, sgraph.ai, MyFeeds.ai, The Cyber Boardroom, RiskMandate.ai, VoiceDebrief.ai, OWASP), the signed articles on this site, where else the author writes, the interests a reader should know about, and how to reach or correct him.
 
-*Source: <https://sgit.ai/about/index.html> · site v0.5.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/about/index.html> · site v0.5.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -22,11 +22,11 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
-| **Thirty years in the UK** | Based in the UK for thirty years, as a security practitioner, a CISO for UK companies and a founder, with one UK company taken through to an exit. The intent, stated on [the Sovereign AI partnership page](../partnerships/sovereign-ai.md), is to grow more UK-based companies on this technology, in the open. |
 | **Founder, [RiskMandate.ai](https://riskmandate.ai/)** | The business risk layer for autonomous systems. Its field demo is [published here as a vault](../demos/vaults/risk-mandate/index.md), 124 files and 98 commits inside one encrypted store. |
 | **Founder, [VoiceDebrief.ai](https://voicedebrief.ai)** | Voice recordings into transcripts and debriefs, entirely in the browser, with nothing uploaded to a server. The vault where [Fractal Semantic Graphs were first worked](../demos/vaults/voice-debrief/index.md) came out of this work. |
 | **Former OWASP Board member** | And organiser of the OWASP Summits, Lisbon 2011 and Woburn 2017, the working-session format with no spectators and only participants that the Open Security Summit series went on to build on. Current open-source work still ships under the owasp-sbot organisation. |
 | **Creator, the O2 Platform** | The OWASP static-analysis engine of 2010 to 2012, and the first of a line of open-source tooling that continues in the osbot and mgraph families, memory_fs, Issues-FS and sgit-ai, all Apache-2.0 and all on PyPI. |
+| **Thirty years in the UK** | Based in the UK for thirty years, as a security practitioner, a CISO for UK companies and a founder, with one UK company taken through to an exit. The intent, stated on [the proposed partnership with UK Sovereign AI](../partnerships/sovereign-ai.md), is to grow more UK-based companies on this technology, in the open. |
 
 ## Writing on this site
 

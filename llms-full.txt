@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.5.8). Nothing here needs a second request. Individual pages live at the paths
+> (v0.5.9). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-156site releases, each verified live before it was called done
+157site releases, each verified live before it was called done
 
 31vaults published with a deliberately public read key
 
@@ -5420,7 +5420,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.5.8, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.5.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5783,7 +5783,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-156**site releases since 14 August**
+157**site releases since 14 August**
 each verified live before it was called done
 
 31**vaults published with a public read key**
@@ -5964,11 +5964,11 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
-| **Thirty years in the UK** | Based in the UK for thirty years, as a security practitioner, a CISO for UK companies and a founder, with one UK company taken through to an exit. The intent, stated on [the Sovereign AI partnership page](../partnerships/sovereign-ai.md), is to grow more UK-based companies on this technology, in the open. |
 | **Founder, [RiskMandate.ai](https://riskmandate.ai/)** | The business risk layer for autonomous systems. Its field demo is [published here as a vault](../demos/vaults/risk-mandate/index.md), 124 files and 98 commits inside one encrypted store. |
 | **Founder, [VoiceDebrief.ai](https://voicedebrief.ai)** | Voice recordings into transcripts and debriefs, entirely in the browser, with nothing uploaded to a server. The vault where [Fractal Semantic Graphs were first worked](../demos/vaults/voice-debrief/index.md) came out of this work. |
 | **Former OWASP Board member** | And organiser of the OWASP Summits, Lisbon 2011 and Woburn 2017, the working-session format with no spectators and only participants that the Open Security Summit series went on to build on. Current open-source work still ships under the owasp-sbot organisation. |
 | **Creator, the O2 Platform** | The OWASP static-analysis engine of 2010 to 2012, and the first of a line of open-source tooling that continues in the osbot and mgraph families, memory_fs, Issues-FS and sgit-ai, all Apache-2.0 and all on PyPI. |
+| **Thirty years in the UK** | Based in the UK for thirty years, as a security practitioner, a CISO for UK companies and a founder, with one UK company taken through to an exit. The intent, stated on [the proposed partnership with UK Sovereign AI](../partnerships/sovereign-ai.md), is to grow more UK-based companies on this technology, in the open. |
 
 ## Writing on this site
 
@@ -6034,7 +6034,7 @@ Each page in this section makes the case for one specific partnership, between a
 
 | Organisation | Why them | The case |
 |---|---|---|
-| **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**The case for a partnership with UK Sovereign AI →**](sovereign-ai.md) |
+| **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI →**](sovereign-ai.md) |
 
 **If you know somebody at one of these organisations**, the page is written to be forwarded as it is. It says what they do, what we do, where the two meet, and what a first step would look like, and everything on it can be checked by the person receiving it. [Who is asking, and how to reach them →](../about/index.md)
 
@@ -6043,19 +6043,19 @@ Each page in this section makes the case for one specific partnership, between a
 
 
 ==============================================================================
-# The case for a partnership with UK Sovereign AI, sgit.ai
+# A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI
 
-> UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them.
+> A proposal from our side, published in the open. UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them.
 >
 > Page: https://sgit.ai/partnerships/sovereign-ai.html
 
 [Home](../index.md) / [Partnerships](index.md) / UK Sovereign AI
 
-Partnership case · public material only · written 23 September 2026
+A proposed partnership · sgit.ai and RiskMandate.ai with UK Sovereign AI · public material only · 23 September 2026
 
-# The case for a partnership with UK Sovereign AI
+# A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI
 
-UK Sovereign AI is Britain's sovereign venture fund for AI companies: *"backing Britain's AI founders to start here, scale here, and win everywhere."* One of its five frontiers is trust, safety and assurance, and one of the four challenge areas in its R&D procurement scheme is the safe adoption of AI agents by cybersecurity professionals. This page argues that the work published on this site and at [RiskMandate.ai](https://riskmandate.ai/) is a direct, already-built answer to both, that it is built by a founder who has been in the UK for thirty years through a UK-registered company, and that the open-source approach behind it is what makes sovereignty durable rather than one acquisition deep. It makes the argument from public material and the founder's own stated record, so it can be forwarded to anyone.
+**This is a proposal from our side, published in the open.** [sgit.ai](../index.md) (git for encrypted vaults) and [RiskMandate.ai](https://riskmandate.ai/) (the business risk layer for AI agents) are two UK-built products from the same founder and the same UK company. UK Sovereign AI is Britain's sovereign venture fund for AI companies: *"backing Britain's AI founders to start here, scale here, and win everywhere."* One of its five frontiers is trust, safety and assurance, and one of the four challenge areas in its R&D procurement scheme is the safe adoption of AI agents by cybersecurity professionals. This page argues that the work published on this site and at RiskMandate.ai is a direct, already-built answer to both, that it is built by a founder who has been in the UK for thirty years through a UK-registered company, and that the open-source approach behind it is what makes sovereignty durable rather than one acquisition deep. It makes the argument from public material and the founder's own stated record, so it can be forwarded to anyone.
 
 **Nothing on this page is confidential.** Every statement about UK Sovereign AI is taken from [sovereignai.gov.uk](https://www.sovereignai.gov.uk/) or from public reporting, and is linked. Every statement about us points at a published vault, a printed measurement or a page on this site, except [the anchoring section](#anchoring), which is the founder's own account and says so. There has been no conversation with the fund; this is the case we would make if there were one. Where it says what a partnership *could* be, that is our proposal, not their position.
 
@@ -7771,11 +7771,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.5.8**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.5.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.5.8 | 2026-09-23 | this release | THE SOVEREIGN AI CASE GETS ITS ANCHORING, FROM THE FOUNDER'S OWN MEMO. New section on the partnership page, stated in the first person because only the founder can supply it: thirty years in the UK as practitioner, CISO for UK companies and founder; one UK exit; The Cyber Boardroom Limited, UK-registered and trading for almost two years, as the commercial vehicle behind sgit.ai and RiskMandate.ai; the intent to grow more UK companies on the technology. Plus the sovereignty argument: no sovereign AI without open source, because a closed champion is one acquisition away from not being sovereign, while an open substrate cannot be bought out from under the country that runs on it. The honest section now says anchoring is stated first-hand rather than documented here; the lead and the fit table carry the argument; the About page gets the same facts in one row. |
+| v0.5.9 | 2026-09-23 | this release | THE SOVEREIGN AI PAGE SAYS WHAT IT IS IN ITS TITLE. A reader landing from a forwarded link had no way to know this was a proposal from sgit.ai's side. Title is now 'A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI', the eyebrow names both parties and calls it proposed, the lead opens by saying so and introduces the two products in a clause each before introducing the fund. Index link, page title and About cross-link follow. |
+| v0.5.8 | 2026-09-23 | git ff7de798 | THE SOVEREIGN AI CASE GETS ITS ANCHORING, FROM THE FOUNDER'S OWN MEMO. New section on the partnership page, stated in the first person because only the founder can supply it: thirty years in the UK as practitioner, CISO for UK companies and founder; one UK exit; The Cyber Boardroom Limited, UK-registered and trading for almost two years, as the commercial vehicle behind sgit.ai and RiskMandate.ai; the intent to grow more UK companies on the technology. Plus the sovereignty argument: no sovereign AI without open source, because a closed champion is one acquisition away from not being sovereign, while an open substrate cannot be bought out from under the country that runs on it. The honest section now says anchoring is stated first-hand rather than documented here; the lead and the fit table carry the argument; the About page gets the same facts in one row. |
 | v0.5.7 | 2026-09-23 | git 3aa131f4 | NEW SECTION: PARTNERSHIPS, THE BUSINESS CASE MADE IN PUBLIC. /partnerships/ states the method (start with what they are trying to do, public material only, evidence not pitch, the fit stated precisely, what is not public marked) and carries the first case: UK Sovereign AI. Their mission in their words (the sovereign edge, five frontiers, the offer beyond investment, the R&D procurement scheme and its four challenge areas, the anchoring test), what sgit.ai and RiskMandate.ai have published, a fit table that maps each stated priority to vaults that can be opened now (Licence to Operate, Agentic Browser Isolation, Risk Mandate, AIUC-1 conformance, the DSIT toolkit, Regulation Graph, the performance page), three concrete partnership shapes sized to their instruments, and a section on what the page cannot tell them (anchoring, certification, stage, the partial fit). Written to be forwarded to anyone who knows somebody there. In the Why menu. |
 | v0.5.6 | 2026-09-22 | git b4213542 | THE BYLINE NOW LINKS TO A PROFILE PAGE ON THIS SITE. New /about/index.html, About the author, in the Why menu: the record (the companies, OWASP, the O2 platform), the signed articles here, writing elsewhere (docs.diniscruz.ai, LinkedIn, open-source.sgit.ai's fuller version of the page, wardley-maps, graphs, newsroom, GitHub), interests declared, and how to reach or correct the author. author_url may now be site-root relative; the byline renders it as a relative link and the JSON-LD Person gets the absolute URL. The four signed articles point at the new page instead of LinkedIn. |
 | v0.5.5 | 2026-09-22 | git 49aa9407 | ARTICLES GET A BYLINE. The author noticed that the news article is written in the first person and his name appears nowhere on it, on a site whose argument is provenance. New optional frontmatter, author and author_url, rendered as 'By ' with the link first on the date line, emitted as a schema.org Person in the page's JSON-LD, and carried in articles.json. The build refuses an author without a URL, because a byline without a link is a name, not provenance. Applied to the four first-person articles (news, SaaS, startup model, fractal semantic graphs); the site-voice articles stay unsigned. |
