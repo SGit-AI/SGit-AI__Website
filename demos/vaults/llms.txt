@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.5.9) from the same file the table on that page is built
+> generated at build time (v0.6.0) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (31)
+## The vaults (32)
+- **#32 Agent as Webmaster**: A complete business plan, with mock-ups and prototypes, written for somebody else to run
+ - page: /demos/vaults/agent-webmaster/index.md
+ - id `ikrqeu5t` · Briefing · published 2026-09-23 · 666 KB · 32 files
+ - read key: `sgit_public_read_d5ba4a106276936456b0a108b3988aa777f5402ba6699fcd67becd620fe55828:ikrqeu5t`
 - **#31 DSIT AI Risk Toolkit**: UK government AI risk guidance as four connected worlds, with every edge labelled curated or lexical
  - page: /demos/vaults/dsit-ai-risk-toolkit/index.md
  - id `0q4sfr57` · Reference · published 2026-09-20 · 3.2 MB · 42 files

@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.5.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.6.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,11 +66,21 @@ open-source.sgit.ai · Business & publishing · [Open source is a strategy ↗](
 
 subscriptions.sgit.ai · Business & publishing · [A subscription is not rent ↗](https://subscriptions.sgit.ai/) · The pricing trap most founders walk into by default. Charging rent for something nobody is using is a worse business than being paid when you deliver, and pay on demand is usually the healthier shape for both sides. · “A subscription is a discount for regular use, not rent on something you ignore.” · part of the sgit.ai network
 
+## Business plans to build on
+
+The section's other purpose: complete business plans, published as vaults, for other people to build companies on. Each one is written to be taken and run, with the numbers marked as hypotheses, the mock-ups included, and the prototypes enough to serve the first customer. The technology is not the moat, and neither is the plan.
+
+| Plan | The business | What is in the vault |
+|---|---|---|
+| [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. One operator, profitable at fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
+
+**Want one written for your idea?** The plans start as a voice memo and become a vault the same day. If you have a business that should exist on this stack and would rather somebody else ran it, [say so](../about/index.md).
+
 ## Evidence, rather than a pitch
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty one vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-two vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.

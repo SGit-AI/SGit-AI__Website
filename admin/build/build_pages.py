@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.9'
+SITE_VERSION = 'v0.6.0'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.9', '2026-09-23', 'this release',
+    ('v0.6.0', '2026-09-23', 'this release',
+     "THIRTY-SECOND VAULT, AND THE FIRST BUSINESS PLAN PUBLISHED FOR SOMEBODY ELSE TO RUN. Agent as "
+     "Webmaster (ikrqeu5t): give small businesses a website they can change by asking, with an AI agent "
+     "as the webmaster and GitHub Pages as the host. The vault carries the plan as a single-page app "
+     "with a unit-economics calculator, the same plan as eleven markdown documents, three drawn "
+     "diagrams, three invented customer sites and the operator's sales site as standalone mock-ups, "
+     "and the prototypes to serve the first customer (the agent's playbook, the GitHub Pages setup, "
+     "six worked change requests). permissions {}. Published under the method: classified, derived "
+     "one-way, audited from a read-key clone (nothing found), negative control run, facts derived. "
+     "The startups section gains 'Business plans to build on'. THE PUBLISH FOUND TWO CLI BUGS: the "
+     "auto transport treated a fresh vault's object 404 as 'no live API' and flipped push to the "
+     "read-only static transport; and push, pull, fetch, status and delete ignored --transport. "
+     "Both fixed in the CLI repository with a pinning test. Vault counts across the site move to "
+     "thirty-two; measured estate figures keep their 21 September date.",
+    ),
+    ('v0.5.9', '2026-09-23', 'git 62148934',
      "THE SOVEREIGN AI PAGE SAYS WHAT IT IS IN ITS TITLE. A reader landing from a forwarded link "
      "had no way to know this was a proposal from sgit.ai's side. Title is now 'A proposed "
      "partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI', the eyebrow names both "
