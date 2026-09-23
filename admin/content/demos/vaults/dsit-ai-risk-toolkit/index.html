@@ -1,91 +1,147 @@
 <main class="doc">
   <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / DSIT AI Risk Toolkit</p>
-  <h1>A government toolkit, turned into four connected worlds</h1>
+  <p class="eyebrow">An independent, experimental journey through the UK DSIT AI Risk Management Toolkit</p>
+  <h1>Start with an AI decision, then trace it back to the guidance</h1>
+  <p class="lead">Describe a use case, review the risk prompts that apply to it, record evidence and owners, propose controls and a reassessment trigger, and follow each step back to its source in the official guidance. The vault below is a working prototype of that journey. An eight-slide walkthrough shows it with a fictional example.</p>
+  <p class="openrow">
+    <a class="btn btn-open" href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">Try the live vault &#8599;</a>
+    <a class="btn" href="#walkthrough">View the eight-slide walkthrough &darr;</a>
+    <a class="btn" href="#walkthrough" data-dsit-pdf="1" title="Download the printed deck, decrypted in your browser">Download the PDF deck</a>
+  </p>
+  <p class="small dim">The walkthrough uses fictional data. This is an independent experiment with public UK government guidance, not an official DSIT service, assessment or certification. Nothing you enter leaves your browser tab until you export it.</p>
 
-  <div class="warnbox"><b>Independent and derived. Read this first.</b> This vault is an independent reference edition of the UK Department for Science, Innovation and Technology <b>AI Risk Management Toolkit</b>. In its own words it is <em>"not a formal standard, certification, conformance assessment or official DSIT service"</em>, and it does not imply official status or endorsement. Departmental logos and crests are not used. Source text is public sector information under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="noopener" target="_blank">Open Government Licence v3.0</a>; external standards are referenced rather than reproduced. The official publication is the authority, and where this disagrees with it, it is wrong.</div>
-
-  <p class="lead">The interesting thing is not that a guidance document was put in a vault. It is that the guidance, the spreadsheet that accompanies it, the risk method it describes and the frameworks it cites are modelled as <b>four separate worlds with named bridges between them</b>, and the vault says plainly why that matters: <em>"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."</em> <b>617 nodes, 694 edges</b>, every one declaring its verb, its provenance and whether it was curated or merely found by a lexical match.</p>
-
-  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
-  Read key: <code style="word-break:break-all">sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57</code><br>
-  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
-  From the CLI: <code>sgit clone sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57</code><br>
-  <span class="small dim">Submitted under the <code>sgit_public_read_</code> prefix, which is the form for a key published on purpose. Classified before it touched anything, and verified with an all-zeros negative control: the real key produced 42 files, the control an empty directory. <a href="../../../docs/credentials.html">What the prefixes declare &rarr;</a></span></div>
-
-  <h2>See it live, here</h2>
-  <p class="openrow"><a class="btn btn-open" href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">Open the vault in a new tab &#8599;</a><span class="small dim">Seven sections and a graph canvas. It has more room in its own tab.</span></p>
-  <div class="sgv-uiembed" data-vault="0q4sfr57" data-readkey="cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb" data-app="1"></div>
+  <h2 id="walkthrough">See the journey in eight slides</h2>
+  <p>The deck is read live out of the vault as you click: the slide source runs in a sandboxed frame with no origin and no network, each slide renders in a second frame with scripting switched off, and the five screenshots are decrypted in your browser. Use <b>notes</b> for the speaker notes, <b>focus</b> to hide the slide list, the arrow keys to move, and <b>PDF</b> to download the printed deck.</p>
+  <div class="sgv-deck" data-vault="0q4sfr57" data-readkey="cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb" data-deck="decision-first" aria-label="Eight-slide walkthrough: A decision before a risk list"></div>
+  <details class="small dim" style="margin:.4rem 0 1rem"><summary>The eight slides, in one line each</summary>
+    <ol style="margin:.5rem 0 0">
+      <li><b>A decision before a risk list.</b> The vault opens on a use case and a governance decision, not a checklist.</li>
+      <li><b>The journey.</b> Use case, relevant risks, evidence and owner, control and reassessment, original source.</li>
+      <li><b>Start with the use case.</b> Title, decision, scope and decision owner. Three synthetic examples, or your own.</li>
+      <li><b>Context changes the questions.</b> Ten context facts prioritise 153 top-level prompts; unknown answers stay open.</li>
+      <li><b>One risk, a working record.</b> Pick a source question, record evidence, owners, a control and a review trigger.</li>
+      <li><b>The graph stays underneath.</b> The research graph of 941 nodes and 4,735 edges connects question, topic and source.</li>
+      <li><b>Take the work with you.</b> A JSON export of your answers and the derived session graph; import recomputes conclusions.</li>
+      <li><b>Try a decision in the vault.</b> Bring one use case and one decision, and say where the journey is confusing.</li>
+    </ol>
+  </details>
   <script>
   (function () {
-    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
-      fetch('../../../assets/' + f)
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(function (t) { (0, eval)(t); })
-        .catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
-    });
+    ['vault-embed.js', 'vault-deck.js', 'shots.js'].reduce(function (chain, f) {
+      return chain.then(function () {
+        return fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); });
+      });
+    }, Promise.resolve()).then(function () {
+      // The hero's PDF action is the viewer's own PDF button, triggered from the page: the bytes
+      // are decrypted here and handed to the browser's download, never rendered in a frame.
+      document.querySelectorAll('[data-dsit-pdf]').forEach(function (a) {
+        a.addEventListener('click', function (ev) {
+          var b = document.querySelector('.sgv-deck .vdk-pdf');
+          if (b && !b.hidden) { ev.preventDefault(); b.click(); document.getElementById('walkthrough').scrollIntoView({ behavior: 'smooth' }); }
+        });
+      });
+    }).catch(function (e) { console.error('[decks] failed to load:', e); });
   }());
   </script>
 
-  <h2 id="worlds">The idea worth stealing: four worlds, and the bridges are the point</h2>
-  <p>A guidance document, a spreadsheet, a risk method and a list of external frameworks are not the same kind of thing, and modelling them in one vocabulary would force three of them to pretend to be the fourth. This vault does the opposite. It declares <b>four worlds</b> and lets each keep its own shape:</p>
+  <h2 id="try">What you can try in the vault</h2>
+  <p>Five steps, in the order the journey asks them. Each one is a screen in the live vault; the graph does the tracing underneath, and you do not need to learn it first.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Step</th><th>What you do</th><th>What to notice</th></tr>
+    <tr><td><b>1 &middot; Use case</b></td><td>Write the decision you need to make: a title, the governance decision, the scope, the decision owner. Or pick one of three clearly labelled synthetic examples.</td><td>The journey starts from a decision, not from a list of risks.</td></tr>
+    <tr><td><b>2 &middot; Risk prompts</b></td><td>Answer ten context facts. The 153 top-level prompts from the official guidance are prioritised for your case; unknown answers stay open.</td><td>The prompts keep the source wording. Six conservative rules propose scope changes for human review; none removes a question silently.</td></tr>
+    <tr><td><b>3 &middot; Evidence and owner</b></td><td>For a risk that applies, record an evidence reference and the people responsible.</td><td>A recorded reference is a user assertion. It is not independently verified by anything in the vault.</td></tr>
+    <tr><td><b>4 &middot; Control and reassessment</b></td><td>Propose a control and the trigger that would make you look at the risk again.</td><td>These are proposals, kept apart from the source text, and labelled as such.</td></tr>
+    <tr><td><b>5 &middot; Source</b></td><td>Follow any prompt back to the retained guidance snapshot and the GOV.UK page it came from.</td><td>Every prompt walks back to hashed source bytes. That is the graph, doing its job without being asked.</td></tr>
+  </table></div>
+  <div class="note"><b>Where your answers go.</b> Nowhere, until you say so. Draft answers live in the browser tab; <b>export the JSON before closing it</b>. The export holds your entries and a derived session graph, not copies of the source corpus, and importing it recomputes the scope conclusions. This is a prototype built to be tested with the people it is for, and the most useful thing to send back is where it confused you. <a href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">Open the journey &#8599;</a></div>
+
+  <h2 id="live">The vault, embedded</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The journey opens as the vault's home page. The earlier source-backed reference edition is one click away inside it, at <code>reference.html</code>. It has more room <a href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">in its own tab &#8599;</a>.</p>
+  <div class="sgv-uiembed" data-vault="0q4sfr57" data-readkey="cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb" data-app="1"></div>
+  <script>
+  (function () {
+    fetch('../../../assets/vault-ui-embed.js').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] embed failed to load:', e); });
+  }());
+  </script>
+
+  <h2 id="how">How it works underneath</h2>
+  <p>The journey sits on the reference edition this vault started as, and the reference edition is the reason the source trace works. Its structure has not changed; it has moved below the decision.</p>
+  <h3 id="worlds">Separate worlds, and the bridges are the point</h3>
+  <p>The guidance, the official spreadsheet, the risk method it describes, the 160 risk-question bullets and the frameworks it cites are not the same kind of thing, and modelling them in one vocabulary would force most of them to pretend to be another. The vault declares separate worlds and lets each keep its own shape, with named bridges between them. Its ontology states the limit plainly: <em>"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."</em> That is the same distinction <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a> arrives at from the other direction.</p>
   <div class="tablewrap"><table>
     <tr><th>World</th><th>What lives in it</th></tr>
     <tr><td><code>source</code></td><td>The publication as retrieved: 30 guidance sections, 67 blocks, and the bytes they came from</td></tr>
     <tr><td><code>risk_method</code></td><td>The method the guidance describes: risk categories, treatments and appetite</td></tr>
+    <tr><td><code>risk_question</code></td><td>The 160 risk-question bullets, in nine category shards, with 274 punctuation units for stable traversal and no semantic claim</td></tr>
     <tr><td><code>workbook</code></td><td>The official spreadsheet as data: 4 sheets, 490 cells, 208 of them formulas</td></tr>
     <tr><td><code>frameworks</code></td><td>The external standards the text cites, referenced and never reproduced</td></tr>
   </table></div>
-  <p>Eight predicates carry everything between them, and one of the vault's own eight checks is that <b>every predicate declares an inverse</b>, so a link reads correctly from whichever end you stand at: <code>has_artifact</code>, <code>contains</code>, <code>is_derived_from</code>, <code>defines_category</code>, <code>describes_treatment</code>, <code>describes_appetite</code>, <code>mentions</code>, <code>cites</code>.</p>
-  <div class="note"><b>It states the limit this site spent a week getting right.</b> Its ontology file lists four limits, and the first is <em>"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."</em> That is the same distinction <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a> arrives at from the other direction: a thing inside a thing inside a thing is a hierarchy, and the fractal property is the edge on which you cross into a world with its own rules. Two authors, two vocabularies, one conclusion.</div>
-  <figure class="shot" data-shot="graph.webp" data-dir="images/" data-alt="The semantic explorer: four world chips reading source, risk method, workbook and frameworks; a Security risk-category node at the centre of its neighbourhood; and an inspector listing thirteen connections, each labelled with its verb and whether it was curated or lexical."><figcaption>617 nodes across four worlds. Each connection states its verb and how it was obtained: <code>is_derived_from · curated</code> is an authored claim, <code>is_mentioned_by · lexical</code> is a string match, and the vault never lets you mistake one for the other.</figcaption></figure>
+  <figure class="shot" data-shot="graph.webp" data-dir="images/" data-alt="The semantic explorer: world chips reading source, risk method, workbook and frameworks; a Security risk-category node at the centre of its neighbourhood; and an inspector listing thirteen connections, each labelled with its verb and whether it was curated or lexical."><figcaption>The semantic explorer at the four-world edition of 20 September 2026. Each connection states its verb and how it was obtained: <code>is_derived_from · curated</code> is an authored claim, <code>is_mentioned_by · lexical</code> is a string match, and the vault never lets you mistake one for the other.</figcaption></figure>
 
-  <h2 id="lexical">The distinction that keeps it honest: curated against lexical</h2>
-  <p>Most attempts to connect a document to a model quietly mix two very different things: an edge somebody decided, and an edge a search found. This vault labels every assertion with which it is, on the face of the link, and then says in its limits that <em>"lexical mentions are not validated meaning."</em></p>
-  <p>That single label is what makes the graph arguable rather than impressive. A reader who disagrees with a <code>curated</code> edge is disagreeing with a person, and can say so. A <code>lexical</code> edge claims only that a word appeared. The vault also refuses the inference everyone wants to make from a compliance artefact: <em>"no compliance inference or organisation attestation is made."</em></p>
+  <h3 id="lexical">Curated against lexical</h3>
+  <p>Every assertion is labelled with which it is: an edge somebody decided, or an edge a search found. A reader who disagrees with a <code>curated</code> edge is disagreeing with a person. A <code>lexical</code> edge claims only that a word appeared, and the vault's own limits say <em>"lexical mentions are not validated meaning."</em> It also refuses the inference everyone wants to make from a compliance artefact: <em>"no compliance inference or organisation attestation is made."</em></p>
   <figure class="shot" data-shot="model.webp" data-dir="images/" data-alt="The risk-method world: nine risk categories from identification through to treatment, each linked back to the guidance section that defines it."><figcaption>The risk-method world, from identification to treatment. Nine categories, each an edge away from the guidance that defines it and the workbook cells that score it.</figcaption></figure>
 
-  <h2 id="evidence">Every claim carries the bytes it came from</h2>
-  <p>Five source snapshots are retained inside the vault, each with its URL, its retrieval date and the <b>SHA-256 of the bytes</b>: the guidance body, two content-API responses, and the official workbook in both XLSX and ODS. Two of the eight checks exist purely to prove the originals were not touched, and they are named as plainly as that: <em>original XLSX bytes preserved</em>, <em>original ODS bytes preserved</em>.</p>
-  <p>The workbook is read rather than rewritten. Cached values are not recalculated, dates stay as Excel serials, styling is not reproduced, and the vault says so. That is the difference between publishing a spreadsheet as data and publishing your opinion of a spreadsheet.</p>
-  <figure class="shot" data-shot="evidence.webp" data-dir="images/" data-alt="The evidence and limitations view: retained snapshots with their hashes, the deterministic checks, and the known gaps listed in the open."><figcaption><em>"A claim is only as useful as its trace."</em> Eight checks, all passing, and six known gaps published beside them.</figcaption></figure>
+  <h3 id="evidence">Every claim carries the bytes it came from</h3>
+  <p>Five source snapshots are retained inside the vault, each with its URL, its retrieval date and the SHA-256 of the bytes: the guidance body, two content-API responses, and the official workbook in both XLSX and ODS. The workbook is read rather than rewritten: cached values are not recalculated, dates stay as Excel serials, styling is not reproduced, and the vault says so. Two of its checks exist purely to prove the originals were not touched.</p>
+  <figure class="shot" data-shot="evidence.webp" data-dir="images/" data-alt="The evidence and limitations view: retained snapshots with their hashes, the deterministic checks, and the known gaps listed in the open."><figcaption><em>"A claim is only as useful as its trace."</em> The checks, all passing, and the known gaps published beside them.</figcaption></figure>
 
-  <h2 id="gaps">The six gaps it publishes about itself</h2>
-  <p>This is the part to copy. The vault ships a <code>known_gaps</code> list, and it is not decorative:</p>
+  <h3 id="gaps">The six gaps it publishes about itself</h3>
   <ul>
-    <li><b>It corrects its own earlier number.</b> <em>"Direct OOXML recount finds 208 formula cells, correcting 227 in the retained earlier briefing."</em> The earlier briefing is still in the vault, uncorrected, with the correction recorded next to it rather than written over it.</li>
-    <li><b>It preserves a contradiction in the source instead of resolving it.</b> The official file is named v1.1 and its own Welcome sheet says v1.0. Both labels are kept, because picking one would be an edit to somebody else's document.</li>
+    <li><b>It corrects its own earlier number.</b> <em>"Direct OOXML recount finds 208 formula cells, correcting 227 in the retained earlier briefing."</em> The earlier briefing stays in the vault, uncorrected, with the correction recorded beside it.</li>
+    <li><b>It preserves a contradiction in the source.</b> The official file is named v1.1 and its own Welcome sheet says v1.0. Both labels are kept.</li>
     <li><b>It refuses to repair the source.</b> Two defined names in the official workbook are broken. They are reported broken. <em>"No source repairs were made."</em></li>
     <li><b>It declines the flattering reading.</b> <em>"Starter rows are not evidence of adoption"</em>, and no independent implementation, compliance assessment or adoption metric is asserted.</li>
-    <li><b>It dates itself.</b> The retained briefing is a snapshot as of 20 September 2026, and external sources may change.</li>
+    <li><b>It dates itself.</b> The retained research briefing is a snapshot as of 20 September 2026; external sources may change.</li>
     <li><b>It names what it did not build.</b> Formula dependency expansion and shared-formula expansion are not implemented.</li>
   </ul>
   <figure class="shot" data-shot="data.webp" data-dir="images/" data-alt="The workbook and machine-readable editions view: the official files unchanged, downloadable, and queryable with SQL in the browser."><figcaption><em>"Inspect. Download. Query."</em> The official files remain unchanged, and SQLite compiled to WebAssembly runs the queries in your tab.</figcaption></figure>
 
-  <h2 id="shape">What it demonstrates about vaults</h2>
+  <h3 id="shape">What it demonstrates about vaults</h3>
   <div class="tablewrap"><table>
     <tr><th>Feature</th><th>How this vault uses it</th></tr>
-    <tr><td><b>Read, download, no write</b></td><td><code>fs.read</code> is true and <code>write</code> and <code>delete</code> are both empty arrays. The scoring sandbox is deliberately temporary and is never written back</td></tr>
+    <tr><td><b>Read and download, no write</b></td><td><code>fs.read</code> is true and <code>write</code> and <code>delete</code> are both empty arrays, with downloads and external links declared. The journey's drafts stay in the tab and are never written back</td></tr>
     <tr><td><b>Queries with no backend</b></td><td>sql.js, which is SQLite compiled to WebAssembly, is bundled so the query view works offline. The copies were taken from the published <a href="../regulation-graph/index.html">Regulation Graph vault</a> and the provenance of that decision is recorded in <code>NOTICE.md</code></td></tr>
-    <tr><td><b>Versioned in the open</b></td><td>Two releases, each with its own page and JSON record, and the version badge in the app links to the release it is showing</td></tr>
-    <tr><td><b>A licence that survives the copy</b></td><td>Source text under OGL v3.0, application code separately licensable by the owner, bundled sql.js under MIT with SQLite in the public domain. Each is stated rather than blended</td></tr>
-    <tr><td><b>Machine-readable on the way out</b></td><td><code>downloads/graph.jsonld</code> keeps every assertion's provenance and partition, so the graph leaves the vault without losing what made it checkable</td></tr>
+    <tr><td><b>Two things versioned in the open</b></td><td>The reference edition and the journey carry separate version records, each with its own release page, and the version badge in the app links to the release it is showing</td></tr>
+    <tr><td><b>A licence that survives the copy</b></td><td>Source text under OGL v3.0, application code with no additional licence assigned by the release, bundled sql.js under MIT with SQLite in the public domain, marked under MIT. Each is stated rather than blended</td></tr>
+    <tr><td><b>Machine-readable on the way out</b></td><td><code>downloads/graph.jsonld</code> keeps every assertion's provenance and partition, and the journey's JSON export carries the derived session graph, so both leave the vault without losing what made them checkable</td></tr>
+    <tr><td><b>A deck, on the site, from the vault</b></td><td>The walkthrough above follows the <a href="../../../docs/briefs/vault-decks-on-a-site.html">decks/v2 contract</a>: manifest, slide source, styling, screenshots and PDF read from the vault; controls, routing and download owned by this page</td></tr>
   </table></div>
 
-  <h2 id="audit">The pre-publication audit</h2>
-  <p>Run against a full clone made with the published read key, before this page existed.</p>
+  <h2 id="status">Status, versions and limits</h2>
   <div class="tablewrap"><table>
-    <tr><th>Checked</th><th>Result</th></tr>
-    <tr><td>Credentials and secrets</td><td><b>None.</b> No vault key, no credential under any <code>sgit_private_</code> prefix, no API keys, tokens, <code>delete_auth</code> or <code>append_token</code> values, no private-key blocks</td></tr>
-    <tr><td>Personal data</td><td><b>None.</b> Two email addresses appear, <code>alt.formats@dsit.gov.uk</code> and <code>psai-tech@dsit.gov.uk</code>, both published institutional contacts carried over from the official publication</td></tr>
-    <tr><td>The credential itself</td><td>Submitted as <code>sgit_public_read_</code>, classified by <code>check_credential.py</code> as read-only and declared public before use</td></tr>
-    <tr><td>Negative control</td><td>An all-zeros key with the same prefix and the same vault id produced <b>no clone at all</b>; the real key produced 42 files</td></tr>
-    <tr><td>Its own checks</td><td>Re-read from <code>data/validation.json</code>: <b>8 of 8 passing</b>, with 6 known gaps published rather than filed away</td></tr>
-    <tr><td>Attribution</td><td>OGL v3.0 acknowledged, no crests or logos used, external standards referenced and not reproduced, and official status explicitly disclaimed on the front page and in <code>NOTICE.md</code></td></tr>
+    <tr><th>What</th><th>As published, 23 September 2026</th></tr>
+    <tr><td><b>Main journey</b></td><td>v0.2.0, dated 23 September 2026, an independent experiment. Its record describes itself as <em>"experimental, unverified user assertions; no official DSIT endorsement or compliance assessment"</em>. Its ontology and question shards remain the v0.1.0 research snapshot</td></tr>
+    <tr><td><b>Reference edition</b></td><td>v0.2.3, dated 23 September 2026: the journey promoted to the vault home, the former reference home kept at <code>reference.html</code>, every source-backed page retained</td></tr>
+    <tr><td><b>Research graph</b></td><td>941 nodes and 4,735 edges, as stated in the deck's own notes and counted from the vault's edge shards. A separate graph from the reference edition's, and the counts are not merged</td></tr>
+    <tr><td><b>Reference graph</b></td><td>1,051 nodes and 1,289 edges in <code>data/graph.json</code>, measured from a read-key clone on 23 September 2026. The four-world edition of 20 September was 617 nodes and 694 edges; that figure is kept below as the dated snapshot it was</td></tr>
+    <tr><td><b>Checks</b></td><td>13 of 13 passing in <code>data/validation.json</code>, with 6 known gaps published beside them</td></tr>
+    <tr><td><b>Licences</b></td><td>DSIT source text: Open Government Licence v3.0, attributed, with no departmental logos or crests. Application and graph code: created for this edition, with no additional licence assigned by the release; the owner may choose one separately. Bundled sql.js and marked: MIT. SQLite: public domain</td></tr>
+    <tr><td><b>What this is not</b></td><td>Not an official DSIT service, standard, certification or conformance assessment. No validated risk scoping, no claim of organisational adoption, no user-tested effectiveness. A prototype for testing with intended users</td></tr>
   </table></div>
-  <p class="small dim">The usual rule applies to this key as to every other one here: <b>revocation is not retroactive</b>. Anyone who fetches these objects keeps them.</p>
 
-  <h2 id="facts">Derived facts</h2>
-  <p>42 files &middot; 3.2 MB &middot; app entry <code>index.html</code> &middot; seven sections &middot; <b>617 nodes, 694 edges</b> across 3 partitions and 4 worlds &middot; 8 predicates, all with declared inverses &middot; 30 guidance sections, 67 blocks &middot; 4 workbook sheets, 490 cells, 208 formula cells &middot; 5 hashed source snapshots retrieved 20 September 2026 &middot; 2 released versions, current 0.1.1 &middot; permissions <code>fs.read</code> with empty write and delete, plus downloads and external links.</p>
+  <details id="provenance" style="margin:1rem 0">
+    <summary><b>Provenance and the credential</b></summary>
+    <div class="note" style="margin-top:.6rem"><b>The key is the whole credential.</b><br>
+    Read key: <code style="word-break:break-all">sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57</code><br>
+    In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57" rel="noopener" target="_blank">open it read-only in a new tab</a> &middot;
+    From the CLI: <code>sgit clone sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57</code><br>
+    <span class="small dim">Published under the <code>sgit_public_read_</code> prefix, which is the form for a key published on purpose. It grants read and only read; the owner credential is kept outside the vault, as its README says. Classified before it touched anything, and verified with an all-zeros negative control at first publication: the real key produced 42 files, the control an empty directory. <a href="../../../docs/credentials.html">What the prefixes declare &rarr;</a></span></div>
+    <h3>Derived facts, 23 September 2026</h3>
+    <p class="small">From <code>admin/build/catalogue_derive.py 0q4sfr57 &lt;read key hex&gt;</code> and a read-key clone, no token: <b>155 files</b> &middot; 12.1 MB plaintext &middot; 14 commits &middot; HEAD <code>obj-cas-imm-16ef099d1561</code> &middot; app entry <code>index.html</code> declared in <code>.vault/app.json</code> with <code>fs.read</code>, empty <code>write</code> and <code>delete</code>, downloads and external links &middot; one deck in <code>decks/decks.json</code> (type <code>decks/v2</code>), 8 slides, 5 screenshots, PDF <code>deck/DSIT_AI_Risk_Use_Case_Journey.pdf</code> with SHA-256 <code style="word-break:break-all">36f9e16c295824c09e4acffa0c0370f4a66c0fd01c58068f733857c8de4e1cf6</code> &middot; 6 version records, current 0.2.3 &middot; 5 hashed source snapshots retrieved 20 September 2026.</p>
+    <h3>The pre-publication audit</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Checked</th><th>Result</th></tr>
+      <tr><td>Credentials and secrets</td><td><b>None.</b> No vault key, no credential under any <code>sgit_private_</code> prefix, no API keys, tokens, <code>delete_auth</code> or <code>append_token</code> values, no private-key blocks. The public read key appears in the deck's last slide and in the PDF's link annotation, on purpose</td></tr>
+      <tr><td>Personal data</td><td><b>None.</b> Two email addresses appear, <code>alt.formats@dsit.gov.uk</code> and <code>psai-tech@dsit.gov.uk</code>, both published institutional contacts carried over from the official publication. The deck's second slide paraphrases a public LinkedIn comment and says it did not verify the post or claim endorsement</td></tr>
+      <tr><td>Its own checks</td><td>Re-read from <code>data/validation.json</code>: 13 of 13 passing, 6 known gaps published</td></tr>
+      <tr><td>Attribution</td><td>OGL v3.0 acknowledged, no crests or logos used, external standards referenced and not reproduced, official status disclaimed on the front page, in <code>NOTICE.md</code> and on every slide's footer</td></tr>
+    </table></div>
+    <h3>The historical snapshot, 20 September 2026</h3>
+    <p class="small dim">First published as row #31 with 42 files, 3.2 MB, 617 nodes and 694 edges across 3 partitions and 4 worlds, 8 predicates all with declared inverses, 8 of 8 checks passing, and 2 released versions with 0.1.1 current. Those numbers described that edition and are kept here with their date. The four screenshots in the section above were taken from it.</p>
+    <p class="small dim">The usual rule applies to this key as to every other one here: <b>revocation is not retroactive</b>. Anyone who fetches these objects keeps them.</p>
+  </details>
 
-  <p class="small dim" style="margin-top:2rem">Published as row #31. It is also a rung on <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a>, beside the <a href="../regulation-graph/index.html">Regulation Graph</a> whose sql.js copies it reuses. <a href="../index.html">&larr; All published vaults</a> &middot; <a href="../publishing.html">The publishing method</a></p>
+  <p class="small dim" style="margin-top:2rem">A rung on <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a>, beside the <a href="../regulation-graph/index.html">Regulation Graph</a> whose sql.js copies it reuses. <a href="../index.html">&larr; All published vaults</a> &middot; <a href="../publishing.html">The publishing method</a> &middot; <a href="../../../docs/briefs/vault-decks-on-a-site.html">Decks from a vault, on a site</a></p>
 </main>

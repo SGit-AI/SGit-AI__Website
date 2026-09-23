@@ -2,7 +2,7 @@
 
 > Thirty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -21,7 +21,7 @@ Open any of these in your browser right now. Every read key here was published o
 
 | 32 | [Agent as Webmaster](agent-webmaster/index.md)`ikrqeu5t` | A complete business plan, with mock-ups and prototypes, written for somebody else to run | Briefing | 32 | 666 KB | 2026-09-23 |
 
-| 31 | [DSIT AI Risk Toolkit](dsit-ai-risk-toolkit/index.md)`0q4sfr57` | UK government AI risk guidance as four connected worlds, with every edge labelled curated or lexical | Reference | 42 | 3.2 MB | 2026-09-20 |
+| 31 | [DSIT AI Risk Toolkit](dsit-ai-risk-toolkit/index.md)`0q4sfr57` | Start with an AI decision and trace it back to UK DSIT guidance; an eight-slide walkthrough plays from the vault | Reference | 155 | 12.1 MB | 2026-09-20 |
 
 | 30 | [Fractional CISO application pack](fractional-ciso-pack/index.md)`eaba68j5` | The sibling of #29, written for an archetype instead of a company, so there is nothing to redact. Two days a month, a twelve-month map, and a section that says what the role is not | Briefing | 72 | 19 MB | 2026-09-18 |
 

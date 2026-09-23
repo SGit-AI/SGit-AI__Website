@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.6.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.6.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

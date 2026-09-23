@@ -1,103 +1,146 @@
-# DSIT AI Risk Toolkit, as four connected worlds, a published vault
+# Start with an AI decision, then trace it back to the guidance: the DSIT AI Risk Toolkit vault
 
-> An independent reference edition of the UK DSIT AI Risk Management Toolkit: the guidance, the official workbook, the risk method and the frameworks it cites modelled as four separate worlds with named bridges, 617 nodes and 694 edges, every edge labelled curated or lexical, five hashed source snapshots, eight passing checks and six gaps published about itself.
+> An independent, experimental journey through the UK DSIT AI Risk Management Toolkit, published as a vault: describe a use case, review the risk prompts that apply, record evidence and owners, propose controls and reassessment, and follow each step back to its source. An eight-slide walkthrough plays on the page from the encrypted vault, with the PDF as a download. Underneath: separate worlds with named bridges, every edge labelled curated or lexical, hashed source snapshots, 13 passing checks and 6 published gaps. Not an official DSIT service or certification.
 
-*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.6.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.6.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../../../index.md) / [Vaults](../index.md) / DSIT AI Risk Toolkit
 
-# A government toolkit, turned into four connected worlds
+An independent, experimental journey through the UK DSIT AI Risk Management Toolkit
 
-**Independent and derived. Read this first.** This vault is an independent reference edition of the UK Department for Science, Innovation and Technology **AI Risk Management Toolkit**. In its own words it is *"not a formal standard, certification, conformance assessment or official DSIT service"*, and it does not imply official status or endorsement. Departmental logos and crests are not used. Source text is public sector information under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/); external standards are referenced rather than reproduced. The official publication is the authority, and where this disagrees with it, it is wrong.
+# Start with an AI decision, then trace it back to the guidance
 
-The interesting thing is not that a guidance document was put in a vault. It is that the guidance, the spreadsheet that accompanies it, the risk method it describes and the frameworks it cites are modelled as **four separate worlds with named bridges between them**, and the vault says plainly why that matters: *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* **617 nodes, 694 edges**, every one declaring its verb, its provenance and whether it was curated or merely found by a lexical match.
+Describe a use case, review the risk prompts that apply to it, record evidence and owners, propose controls and a reassessment trigger, and follow each step back to its source in the official guidance. The vault below is a working prototype of that journey. An eight-slide walkthrough shows it with a fictional example.
 
-**Open it yourself. The key is the whole credential.**
- Read key: `sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
- In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57) · From the CLI: `sgit clone sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
-Submitted under the `sgit_public_read_` prefix, which is the form for a key published on purpose. Classified before it touched anything, and verified with an all-zeros negative control: the real key produced 42 files, the control an empty directory. [What the prefixes declare →](../../../docs/credentials.md)
+[Try the live vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57) [View the eight-slide walkthrough ↓](#walkthrough) [Download the PDF deck](#walkthrough)
 
-## See it live, here
+The walkthrough uses fictional data. This is an independent experiment with public UK government guidance, not an official DSIT service, assessment or certification. Nothing you enter leaves your browser tab until you export it.
 
-[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57)Seven sections and a graph canvas. It has more room in its own tab.
+## See the journey in eight slides
 
-## The idea worth stealing: four worlds, and the bridges are the point
+The deck is read live out of the vault as you click: the slide source runs in a sandboxed frame with no origin and no network, each slide renders in a second frame with scripting switched off, and the five screenshots are decrypted in your browser. Use **notes** for the speaker notes, **focus** to hide the slide list, the arrow keys to move, and **PDF** to download the printed deck.
 
-A guidance document, a spreadsheet, a risk method and a list of external frameworks are not the same kind of thing, and modelling them in one vocabulary would force three of them to pretend to be the fourth. This vault does the opposite. It declares **four worlds** and lets each keep its own shape:
+**The eight slides, in one line each**
+
+1. **A decision before a risk list.** The vault opens on a use case and a governance decision, not a checklist.
+2. **The journey.** Use case, relevant risks, evidence and owner, control and reassessment, original source.
+3. **Start with the use case.** Title, decision, scope and decision owner. Three synthetic examples, or your own.
+4. **Context changes the questions.** Ten context facts prioritise 153 top-level prompts; unknown answers stay open.
+5. **One risk, a working record.** Pick a source question, record evidence, owners, a control and a review trigger.
+6. **The graph stays underneath.** The research graph of 941 nodes and 4,735 edges connects question, topic and source.
+7. **Take the work with you.** A JSON export of your answers and the derived session graph; import recomputes conclusions.
+8. **Try a decision in the vault.** Bring one use case and one decision, and say where the journey is confusing.
+
+## What you can try in the vault
+
+Five steps, in the order the journey asks them. Each one is a screen in the live vault; the graph does the tracing underneath, and you do not need to learn it first.
+
+| Step | What you do | What to notice |
+|---|---|---|
+| **1 · Use case** | Write the decision you need to make: a title, the governance decision, the scope, the decision owner. Or pick one of three clearly labelled synthetic examples. | The journey starts from a decision, not from a list of risks. |
+| **2 · Risk prompts** | Answer ten context facts. The 153 top-level prompts from the official guidance are prioritised for your case; unknown answers stay open. | The prompts keep the source wording. Six conservative rules propose scope changes for human review; none removes a question silently. |
+| **3 · Evidence and owner** | For a risk that applies, record an evidence reference and the people responsible. | A recorded reference is a user assertion. It is not independently verified by anything in the vault. |
+| **4 · Control and reassessment** | Propose a control and the trigger that would make you look at the risk again. | These are proposals, kept apart from the source text, and labelled as such. |
+| **5 · Source** | Follow any prompt back to the retained guidance snapshot and the GOV.UK page it came from. | Every prompt walks back to hashed source bytes. That is the graph, doing its job without being asked. |
+
+**Where your answers go.** Nowhere, until you say so. Draft answers live in the browser tab; **export the JSON before closing it**. The export holds your entries and a derived session graph, not copies of the source corpus, and importing it recomputes the scope conclusions. This is a prototype built to be tested with the people it is for, and the most useful thing to send back is where it confused you. [Open the journey ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57)
+
+## The vault, embedded
+
+The journey opens as the vault's home page. The earlier source-backed reference edition is one click away inside it, at `reference.html`. It has more room [in its own tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57).
+
+## How it works underneath
+
+The journey sits on the reference edition this vault started as, and the reference edition is the reason the source trace works. Its structure has not changed; it has moved below the decision.
+
+### Separate worlds, and the bridges are the point
+
+The guidance, the official spreadsheet, the risk method it describes, the 160 risk-question bullets and the frameworks it cites are not the same kind of thing, and modelling them in one vocabulary would force most of them to pretend to be another. The vault declares separate worlds and lets each keep its own shape, with named bridges between them. Its ontology states the limit plainly: *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* That is the same distinction [Fractal Semantic Graphs](../../fractal-graphs/index.md) arrives at from the other direction.
 
 | World | What lives in it |
 |---|---|
 | `source` | The publication as retrieved: 30 guidance sections, 67 blocks, and the bytes they came from |
 | `risk_method` | The method the guidance describes: risk categories, treatments and appetite |
+| `risk_question` | The 160 risk-question bullets, in nine category shards, with 274 punctuation units for stable traversal and no semantic claim |
 | `workbook` | The official spreadsheet as data: 4 sheets, 490 cells, 208 of them formulas |
 | `frameworks` | The external standards the text cites, referenced and never reproduced |
 
-Eight predicates carry everything between them, and one of the vault's own eight checks is that **every predicate declares an inverse**, so a link reads correctly from whichever end you stand at: `has_artifact`, `contains`, `is_derived_from`, `defines_category`, `describes_treatment`, `describes_appetite`, `mentions`, `cites`.
+The semantic explorer at the four-world edition of 20 September 2026. Each connection states its verb and how it was obtained: `is_derived_from · curated` is an authored claim, `is_mentioned_by · lexical` is a string match, and the vault never lets you mistake one for the other.
 
-**It states the limit this site spent a week getting right.** Its ontology file lists four limits, and the first is *"containment alone is not fractality. Cross-world edges make the semantic transitions inspectable."* That is the same distinction [Fractal Semantic Graphs](../../fractal-graphs/index.md) arrives at from the other direction: a thing inside a thing inside a thing is a hierarchy, and the fractal property is the edge on which you cross into a world with its own rules. Two authors, two vocabularies, one conclusion.
+### Curated against lexical
 
-617 nodes across four worlds. Each connection states its verb and how it was obtained: `is_derived_from · curated` is an authored claim, `is_mentioned_by · lexical` is a string match, and the vault never lets you mistake one for the other.
-
-## The distinction that keeps it honest: curated against lexical
-
-Most attempts to connect a document to a model quietly mix two very different things: an edge somebody decided, and an edge a search found. This vault labels every assertion with which it is, on the face of the link, and then says in its limits that *"lexical mentions are not validated meaning."*
-
-That single label is what makes the graph arguable rather than impressive. A reader who disagrees with a `curated` edge is disagreeing with a person, and can say so. A `lexical` edge claims only that a word appeared. The vault also refuses the inference everyone wants to make from a compliance artefact: *"no compliance inference or organisation attestation is made."*
+Every assertion is labelled with which it is: an edge somebody decided, or an edge a search found. A reader who disagrees with a `curated` edge is disagreeing with a person. A `lexical` edge claims only that a word appeared, and the vault's own limits say *"lexical mentions are not validated meaning."* It also refuses the inference everyone wants to make from a compliance artefact: *"no compliance inference or organisation attestation is made."*
 
 The risk-method world, from identification to treatment. Nine categories, each an edge away from the guidance that defines it and the workbook cells that score it.
 
-## Every claim carries the bytes it came from
+### Every claim carries the bytes it came from
 
-Five source snapshots are retained inside the vault, each with its URL, its retrieval date and the **SHA-256 of the bytes**: the guidance body, two content-API responses, and the official workbook in both XLSX and ODS. Two of the eight checks exist purely to prove the originals were not touched, and they are named as plainly as that: *original XLSX bytes preserved*, *original ODS bytes preserved*.
+Five source snapshots are retained inside the vault, each with its URL, its retrieval date and the SHA-256 of the bytes: the guidance body, two content-API responses, and the official workbook in both XLSX and ODS. The workbook is read rather than rewritten: cached values are not recalculated, dates stay as Excel serials, styling is not reproduced, and the vault says so. Two of its checks exist purely to prove the originals were not touched.
 
-The workbook is read rather than rewritten. Cached values are not recalculated, dates stay as Excel serials, styling is not reproduced, and the vault says so. That is the difference between publishing a spreadsheet as data and publishing your opinion of a spreadsheet.
+*"A claim is only as useful as its trace."* The checks, all passing, and the known gaps published beside them.
 
-*"A claim is only as useful as its trace."* Eight checks, all passing, and six known gaps published beside them.
+### The six gaps it publishes about itself
 
-## The six gaps it publishes about itself
-
-This is the part to copy. The vault ships a `known_gaps` list, and it is not decorative:
-
-- **It corrects its own earlier number.** *"Direct OOXML recount finds 208 formula cells, correcting 227 in the retained earlier briefing."* The earlier briefing is still in the vault, uncorrected, with the correction recorded next to it rather than written over it.
-- **It preserves a contradiction in the source instead of resolving it.** The official file is named v1.1 and its own Welcome sheet says v1.0. Both labels are kept, because picking one would be an edit to somebody else's document.
+- **It corrects its own earlier number.** *"Direct OOXML recount finds 208 formula cells, correcting 227 in the retained earlier briefing."* The earlier briefing stays in the vault, uncorrected, with the correction recorded beside it.
+- **It preserves a contradiction in the source.** The official file is named v1.1 and its own Welcome sheet says v1.0. Both labels are kept.
 - **It refuses to repair the source.** Two defined names in the official workbook are broken. They are reported broken. *"No source repairs were made."*
 - **It declines the flattering reading.** *"Starter rows are not evidence of adoption"*, and no independent implementation, compliance assessment or adoption metric is asserted.
-- **It dates itself.** The retained briefing is a snapshot as of 20 September 2026, and external sources may change.
+- **It dates itself.** The retained research briefing is a snapshot as of 20 September 2026; external sources may change.
 - **It names what it did not build.** Formula dependency expansion and shared-formula expansion are not implemented.
 *"Inspect. Download. Query."* The official files remain unchanged, and SQLite compiled to WebAssembly runs the queries in your tab.
 
-## What it demonstrates about vaults
+### What it demonstrates about vaults
 
 | Feature | How this vault uses it |
 |---|---|
-| **Read, download, no write** | `fs.read` is true and `write` and `delete` are both empty arrays. The scoring sandbox is deliberately temporary and is never written back |
+| **Read and download, no write** | `fs.read` is true and `write` and `delete` are both empty arrays, with downloads and external links declared. The journey's drafts stay in the tab and are never written back |
 | **Queries with no backend** | sql.js, which is SQLite compiled to WebAssembly, is bundled so the query view works offline. The copies were taken from the published [Regulation Graph vault](../regulation-graph/index.md) and the provenance of that decision is recorded in `NOTICE.md` |
-| **Versioned in the open** | Two releases, each with its own page and JSON record, and the version badge in the app links to the release it is showing |
-| **A licence that survives the copy** | Source text under OGL v3.0, application code separately licensable by the owner, bundled sql.js under MIT with SQLite in the public domain. Each is stated rather than blended |
-| **Machine-readable on the way out** | `downloads/graph.jsonld` keeps every assertion's provenance and partition, so the graph leaves the vault without losing what made it checkable |
+| **Two things versioned in the open** | The reference edition and the journey carry separate version records, each with its own release page, and the version badge in the app links to the release it is showing |
+| **A licence that survives the copy** | Source text under OGL v3.0, application code with no additional licence assigned by the release, bundled sql.js under MIT with SQLite in the public domain, marked under MIT. Each is stated rather than blended |
+| **Machine-readable on the way out** | `downloads/graph.jsonld` keeps every assertion's provenance and partition, and the journey's JSON export carries the derived session graph, so both leave the vault without losing what made them checkable |
+| **A deck, on the site, from the vault** | The walkthrough above follows the [decks/v2 contract](../../../docs/briefs/vault-decks-on-a-site.md): manifest, slide source, styling, screenshots and PDF read from the vault; controls, routing and download owned by this page |
 
-## The pre-publication audit
+## Status, versions and limits
 
-Run against a full clone made with the published read key, before this page existed.
+| What | As published, 23 September 2026 |
+|---|---|
+| **Main journey** | v0.2.0, dated 23 September 2026, an independent experiment. Its record describes itself as *"experimental, unverified user assertions; no official DSIT endorsement or compliance assessment"*. Its ontology and question shards remain the v0.1.0 research snapshot |
+| **Reference edition** | v0.2.3, dated 23 September 2026: the journey promoted to the vault home, the former reference home kept at `reference.html`, every source-backed page retained |
+| **Research graph** | 941 nodes and 4,735 edges, as stated in the deck's own notes and counted from the vault's edge shards. A separate graph from the reference edition's, and the counts are not merged |
+| **Reference graph** | 1,051 nodes and 1,289 edges in `data/graph.json`, measured from a read-key clone on 23 September 2026. The four-world edition of 20 September was 617 nodes and 694 edges; that figure is kept below as the dated snapshot it was |
+| **Checks** | 13 of 13 passing in `data/validation.json`, with 6 known gaps published beside them |
+| **Licences** | DSIT source text: Open Government Licence v3.0, attributed, with no departmental logos or crests. Application and graph code: created for this edition, with no additional licence assigned by the release; the owner may choose one separately. Bundled sql.js and marked: MIT. SQLite: public domain |
+| **What this is not** | Not an official DSIT service, standard, certification or conformance assessment. No validated risk scoping, no claim of organisational adoption, no user-tested effectiveness. A prototype for testing with intended users |
+
+****Provenance and the credential****
+
+**The key is the whole credential.**
+ Read key: `sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb%3A0q4sfr57) · From the CLI: `sgit clone sgit_public_read_cdc00d2baaf75361d86ae1b7a40169bd98d71aaae1bd581e181a0f0ba0e0e6bb:0q4sfr57`
+Published under the `sgit_public_read_` prefix, which is the form for a key published on purpose. It grants read and only read; the owner credential is kept outside the vault, as its README says. Classified before it touched anything, and verified with an all-zeros negative control at first publication: the real key produced 42 files, the control an empty directory. [What the prefixes declare →](../../../docs/credentials.md)
+
+### Derived facts, 23 September 2026
+
+From `admin/build/catalogue_derive.py 0q4sfr57 <read key hex>` and a read-key clone, no token: **155 files** · 12.1 MB plaintext · 14 commits · HEAD `obj-cas-imm-16ef099d1561` · app entry `index.html` declared in `.vault/app.json` with `fs.read`, empty `write` and `delete`, downloads and external links · one deck in `decks/decks.json` (type `decks/v2`), 8 slides, 5 screenshots, PDF `deck/DSIT_AI_Risk_Use_Case_Journey.pdf` with SHA-256 `36f9e16c295824c09e4acffa0c0370f4a66c0fd01c58068f733857c8de4e1cf6` · 6 version records, current 0.2.3 · 5 hashed source snapshots retrieved 20 September 2026.
+
+### The pre-publication audit
 
 | Checked | Result |
 |---|---|
-| Credentials and secrets | **None.** No vault key, no credential under any `sgit_private_` prefix, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks |
-| Personal data | **None.** Two email addresses appear, `alt.formats@dsit.gov.uk` and `psai-tech@dsit.gov.uk`, both published institutional contacts carried over from the official publication |
-| The credential itself | Submitted as `sgit_public_read_`, classified by `check_credential.py` as read-only and declared public before use |
-| Negative control | An all-zeros key with the same prefix and the same vault id produced **no clone at all**; the real key produced 42 files |
-| Its own checks | Re-read from `data/validation.json`: **8 of 8 passing**, with 6 known gaps published rather than filed away |
-| Attribution | OGL v3.0 acknowledged, no crests or logos used, external standards referenced and not reproduced, and official status explicitly disclaimed on the front page and in `NOTICE.md` |
+| Credentials and secrets | **None.** No vault key, no credential under any `sgit_private_` prefix, no API keys, tokens, `delete_auth` or `append_token` values, no private-key blocks. The public read key appears in the deck's last slide and in the PDF's link annotation, on purpose |
+| Personal data | **None.** Two email addresses appear, `alt.formats@dsit.gov.uk` and `psai-tech@dsit.gov.uk`, both published institutional contacts carried over from the official publication. The deck's second slide paraphrases a public LinkedIn comment and says it did not verify the post or claim endorsement |
+| Its own checks | Re-read from `data/validation.json`: 13 of 13 passing, 6 known gaps published |
+| Attribution | OGL v3.0 acknowledged, no crests or logos used, external standards referenced and not reproduced, official status disclaimed on the front page, in `NOTICE.md` and on every slide's footer |
+
+### The historical snapshot, 20 September 2026
+
+First published as row #31 with 42 files, 3.2 MB, 617 nodes and 694 edges across 3 partitions and 4 worlds, 8 predicates all with declared inverses, 8 of 8 checks passing, and 2 released versions with 0.1.1 current. Those numbers described that edition and are kept here with their date. The four screenshots in the section above were taken from it.
 
 The usual rule applies to this key as to every other one here: **revocation is not retroactive**. Anyone who fetches these objects keeps them.
 
-## Derived facts
-
-42 files · 3.2 MB · app entry `index.html` · seven sections · **617 nodes, 694 edges** across 3 partitions and 4 worlds · 8 predicates, all with declared inverses · 30 guidance sections, 67 blocks · 4 workbook sheets, 490 cells, 208 formula cells · 5 hashed source snapshots retrieved 20 September 2026 · 2 released versions, current 0.1.1 · permissions `fs.read` with empty write and delete, plus downloads and external links.
-
-Published as row #31. It is also a rung on [Fractal Semantic Graphs](../../fractal-graphs/index.md), beside the [Regulation Graph](../regulation-graph/index.md) whose sql.js copies it reuses. [← All published vaults](../index.md) · [The publishing method](../publishing.md)
+A rung on [Fractal Semantic Graphs](../../fractal-graphs/index.md), beside the [Regulation Graph](../regulation-graph/index.md) whose sql.js copies it reuses. [← All published vaults](../index.md) · [The publishing method](../publishing.md) · [Decks from a vault, on a site](../../../docs/briefs/vault-decks-on-a-site.md)
 
 
 ---

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.0'
+SITE_VERSION = 'v0.6.1'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,25 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.0', '2026-09-23', 'this release',
+    ('v0.6.1', '2026-09-23', 'this release',
+     "THE DSIT AI RISK TOOLKIT PAGE STARTS WITH THE READER'S DECISION, AND PLAYS THE DECK. Rebuilt "
+     "from a brief: the vault has moved on since 20 September (155 files, a use-case-led journey at "
+     "v0.2.0 as the home page, reference edition v0.2.3, a decks/v2 deck 'A decision before a risk "
+     "list'), and the page still opened on four worlds and 617 nodes. Now: an outcome headline, three "
+     "actions (live vault, eight-slide walkthrough, PDF), the site-owned decks/v2 viewer mounted on "
+     "the page reading manifest, slide source, styles, five screenshots and the PDF from the vault, "
+     "a five-step 'what you can try', the vault embed, then the architecture material moved below "
+     "with the four-world screenshots dated, a status table separating journey v0.2.0, reference "
+     "v0.2.3, the research graph (941/4,735) and the reference graph (1,051/1,289) without merging "
+     "them, the licences stated (OGL v3.0 for DSIT text; no licence assigned to the new code), and "
+     "the read key, derived facts, audit and the dated 20 September snapshot in an expandable "
+     "provenance section. VIEWER: keyboard navigation (arrows, PageUp/Down, Home, End), a live "
+     "region announcing the slide, aria-current on the slide list, titled frames, focus-visible "
+     "outlines, and a counted 'N screenshots could not be read' status instead of a plausible-"
+     "looking gap. Verified through the mirror: 8 slides walked, 0 unresolved images, PDF bytes "
+     "match SHA-256 36f9e16c…, parse frame allow-scripts only, render frame no scripts.",
+    ),
+    ('v0.6.0', '2026-09-23', 'git ec7bcad8',
      "THIRTY-SECOND VAULT, AND THE FIRST BUSINESS PLAN PUBLISHED FOR SOMEBODY ELSE TO RUN. Agent as "
      "Webmaster (ikrqeu5t): give small businesses a website they can change by asking, with an AI agent "
      "as the webmaster and GitHub Pages as the host. The vault carries the plan as a single-page app "

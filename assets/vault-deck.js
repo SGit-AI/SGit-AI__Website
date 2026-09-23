@@ -222,7 +222,10 @@
   Deck.prototype.chrome = function () {
     var self = this;
     this.el.innerHTML =
-      '<div class="vdk">' +
+      // tabindex makes the viewer a keyboard target: arrows, Home and End move between slides
+      // once it has focus, and the live region below announces where you are.
+      '<div class="vdk" tabindex="0" role="region" aria-label="' + esc(this.el.getAttribute('aria-label') || 'slide deck') + '">' +
+        '<span class="vdk-live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></span>' +
         '<div class="vdk-tabs" role="tablist"></div>' +
         '<div class="vdk-bar">' +
           '<span class="vdk-title"></span>' +
@@ -239,8 +242,30 @@
           '<div class="vdk-stagewrap"><div class="vdk-scaler"></div></div>' +
         '</div>' +
         '<div class="vdk-notes" hidden></div>' +
-        '<p class="vdk-status"></p>' +
+        '<p class="vdk-status" aria-live="polite"></p>' +
       '</div>';
+
+    // Keyboard: arrows, PageUp/PageDown, Home and End, when focus is anywhere inside the
+    // viewer and not in a text field. Buttons keep their native Enter and Space.
+    this.el.addEventListener('keydown', function (ev) {
+      if (ev.defaultPrevented || ev.altKey || ev.ctrlKey || ev.metaKey) return;
+      var tag = (ev.target && ev.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
+      var k = ev.key;
+      if (k === 'ArrowRight' || k === 'PageDown') { ev.preventDefault(); self.show(self.i + 1); }
+      else if (k === 'ArrowLeft' || k === 'PageUp') { ev.preventDefault(); self.show(self.i - 1); }
+      else if (k === 'Home') { ev.preventDefault(); self.show(0); }
+      else if (k === 'End')  { ev.preventDefault(); self.show((self.slides || []).length - 1); }
+    });
+
+    // A deep link pasted into an already-open page: follow it rather than ignoring it. The
+    // viewer writes the hash itself on every slide change, so a hash that already matches the
+    // current slide is a no-op.
+    window.addEventListener('hashchange', function () {
+      var h = self.fromHash();
+      if (h.deck && h.deck !== self.deckId) return self.showDeck(h.deck, h.slide || 0);
+      if (typeof h.slide === 'number' && h.slide !== self.i) self.show(h.slide);
+    });
 
     if (this.cfg.only) this.el.querySelector('.vdk-tabs').hidden = true;
     this.el.querySelector('.vdk-tabs').innerHTML = this.decks.map(function (d) {
@@ -288,8 +313,9 @@
     }
     this.slides = this.slideCache[d.id];
 
+    var total = this.slides.length;
     this.el.querySelector('.vdk-list').innerHTML = this.slides.map(function (s, i) {
-      return '<button class="vdk-it" type="button" data-slide="' + i + '">' +
+      return '<button class="vdk-it" type="button" data-slide="' + i + '" aria-label="Slide ' + (i + 1) + ' of ' + total + ': ' + esc(s.t) + '">' +
              '<span class="vdk-n">' + String(i + 1).padStart(2, '0') + '</span>' +
              '<span>' + esc(s.t) + '</span></button>';
     }).join('');
@@ -298,9 +324,9 @@
     this.el.querySelector('.vdk-pdf').hidden = !d.pdf;
     if (pdf) this.el.querySelector('.vdk-pdf').title = 'download ' + pdf + ' from the vault';
 
+    this.okStatus = this.slides.length + ' slides, read live from vault ' + this.cfg.vault_id +
+                    ' — the deck source ran in a sandboxed frame, the slide is rendered in another with scripting off.';
     await this.show(slide || 0);
-    self.status(this.slides.length + ' slides, read live from vault ' + this.cfg.vault_id +
-                ' — the deck source ran in a sandboxed frame, the slide is rendered in another with scripting off.');
   };
 
   // Resolve the decks/v2 <img data-img="NAME"> placeholders to decrypted data: URIs.
@@ -312,12 +338,19 @@
       var n = names[i];
       if (!this.imgCache[n]) {
         try {
-          var bytes = await this.reader.readBytes('deck/img/' + n + '.jpg');
+          // Both published spellings: the AIUC-1 decks name an image bare ("cover") and the
+          // DSIT deck names it with its extension ("01-journey-home.jpg"). Appending .jpg to
+          // the second produced deck/img/01-journey-home.jpg.jpg and five missing screenshots
+          // that a glance at the slide would not have caught. The count below did.
+          var path = /\.(jpe?g|png|webp|gif|svg)$/i.test(n) ? 'deck/img/' + n : 'deck/img/' + n + '.jpg';
+          var bytes = await this.reader.readBytes(path);
           this.imgCache[n] = 'data:image/jpeg;base64,' + bytesToB64(bytes);
         } catch (e) { this.imgCache[n] = ''; }
       }
     }
     var cache = this.imgCache;
+    // Counted, not eyeballed: a slide with a silently missing screenshot looks plausible.
+    this.missing = names.filter(function (n) { return !cache[n]; });
     return html.replace(/<img([^>]*?)data-img="([A-Za-z0-9_.-]+)"([^>]*)>/g, function (all, a, name, b) {
       var uri = cache[name];
       return uri ? '<img' + a + 'src="' + uri + '"' + b + '>'
@@ -332,10 +365,19 @@
 
     this.el.querySelectorAll('.vdk-it').forEach(function (b, n) {
       b.classList.toggle('on', n === this.i);
+      if (n === this.i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     }.bind(this));
     this.el.querySelector('.vdk-count').textContent = (this.i + 1) + ' / ' + this.slides.length;
+    var live = this.el.querySelector('.vdk-live');
+    if (live) live.textContent = 'Slide ' + (this.i + 1) + ' of ' + this.slides.length + ': ' + (s.t || '');
 
     var body   = await this.withImages(s.html);
+    if (this.missing && this.missing.length) {
+      this.status(this.missing.length + ' screenshot' + (this.missing.length > 1 ? 's' : '') +
+                  ' on this slide could not be read from the vault: ' + this.missing.join(', '), true);
+    } else if (this.okStatus) {
+      this.status(this.okStatus);
+    }
     var ground = this.cfg.slide_bg || '#fff';
     var doc =
       '<meta http-equiv="Content-Security-Policy" content="' + CSP_RENDER + '">' +
@@ -361,6 +403,7 @@
                             'transform-origin:top left';
       scaler.appendChild(frame);
     }
+    frame.setAttribute('title', 'Slide ' + (this.i + 1) + ' of ' + this.slides.length + ': ' + (s.t || ''));
     frame.srcdoc = doc;
 
     var notes = this.el.querySelector('.vdk-notes');
