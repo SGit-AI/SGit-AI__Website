@@ -2,7 +2,7 @@
 
 > A ten-document briefing pack for a payments and metering platform, published as a vault while every word of it is still PROPOSED. The status is stamped on the pack index, not buried in a footnote.
 
-*Source: <https://sgit.ai/demos/vaults/payments-brief-pack/index.html> · site v0.5.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/payments-brief-pack/index.html> · site v0.5.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

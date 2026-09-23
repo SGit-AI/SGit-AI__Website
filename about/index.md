@@ -2,7 +2,7 @@
 
 > The provenance behind the first-person articles: the record (sgit.ai, sgraph.ai, MyFeeds.ai, The Cyber Boardroom, RiskMandate.ai, VoiceDebrief.ai, OWASP), the signed articles on this site, where else the author writes, the interests a reader should know about, and how to reach or correct him.
 
-*Source: <https://sgit.ai/about/index.html> · site v0.5.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/about/index.html> · site v0.5.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

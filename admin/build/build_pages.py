@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.6'
+SITE_VERSION = 'v0.5.7'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.6', '2026-09-22', 'this release',
+    ('v0.5.7', '2026-09-23', 'this release',
+     "NEW SECTION: PARTNERSHIPS, THE BUSINESS CASE MADE IN PUBLIC. /partnerships/ states the "
+     "method (start with what they are trying to do, public material only, evidence not pitch, the "
+     "fit stated precisely, what is not public marked) and carries the first case: UK Sovereign AI. "
+     "Their mission in their words (the sovereign edge, five frontiers, the offer beyond investment, "
+     "the R&D procurement scheme and its four challenge areas, the anchoring test), what sgit.ai and "
+     "RiskMandate.ai have published, a fit table that maps each stated priority to vaults that can "
+     "be opened now (Licence to Operate, Agentic Browser Isolation, Risk Mandate, AIUC-1 "
+     "conformance, the DSIT toolkit, Regulation Graph, the performance page), three concrete "
+     "partnership shapes sized to their instruments, and a section on what the page cannot tell "
+     "them (anchoring, certification, stage, the partial fit). Written to be forwarded to anyone "
+     "who knows somebody there. In the Why menu.",
+    ),
+    ('v0.5.6', '2026-09-22', 'git b4213542',
      "THE BYLINE NOW LINKS TO A PROFILE PAGE ON THIS SITE. New /about/index.html, About the "
      "author, in the Why menu: the record (the companies, OWASP, the O2 platform), the signed "
      "articles here, writing elsewhere (docs.diniscruz.ai, LinkedIn, open-source.sgit.ai's "
@@ -2480,6 +2493,7 @@ NAV = [
         ('investors', 'Investors', 'investors/index.html'),
         ('startups', 'Startups', 'startups/index.html'),
         ('about', 'About the author', 'about/index.html'),
+        ('partnerships', 'Partnerships', 'partnerships/index.html'),
     ]),
     ('docs', 'Docs', 'docs/index.html', [
         ('docs', 'Documentation', 'docs/index.html'),
@@ -3012,6 +3026,7 @@ Quick answers (so you do not need a second request for the common questions):
 LLMS_SECTIONS = [
     ('why', 'Why this exists'),
     ('about', 'About the author (Dinis Cruz: the record, the signed articles, writing elsewhere, and interests declared)'),
+    ('partnerships', 'Partnerships (the business case for specific partnerships, made from public material only: what the organisation is trying to do, what is published here that answers it, and a first concrete piece of work)'),
     ('startups', 'For startups (building a product on vaults: what you get on day one, the loop from first vault to first customer, and what you still have to bring)'),
     ('demos', 'Demos (live end-to-end examples with published read keys)'),
     ('catalogue', 'Catalogue (the index of published vaults, read keys, shapes, evidence and write-key status)'),
