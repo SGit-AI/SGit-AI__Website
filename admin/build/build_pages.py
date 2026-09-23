@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.5.7'
+SITE_VERSION = 'v0.5.8'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.5.7', '2026-09-23', 'this release',
+    ('v0.5.8', '2026-09-23', 'this release',
+     "THE SOVEREIGN AI CASE GETS ITS ANCHORING, FROM THE FOUNDER'S OWN MEMO. New section on the "
+     "partnership page, stated in the first person because only the founder can supply it: thirty "
+     "years in the UK as practitioner, CISO for UK companies and founder; one UK exit; The Cyber "
+     "Boardroom Limited, UK-registered and trading for almost two years, as the commercial vehicle "
+     "behind sgit.ai and RiskMandate.ai; the intent to grow more UK companies on the technology. "
+     "Plus the sovereignty argument: no sovereign AI without open source, because a closed champion "
+     "is one acquisition away from not being sovereign, while an open substrate cannot be bought "
+     "out from under the country that runs on it. The honest section now says anchoring is stated "
+     "first-hand rather than documented here; the lead and the fit table carry the argument; the "
+     "About page gets the same facts in one row.",
+    ),
+    ('v0.5.7', '2026-09-23', 'git 3aa131f4',
      "NEW SECTION: PARTNERSHIPS, THE BUSINESS CASE MADE IN PUBLIC. /partnerships/ states the "
      "method (start with what they are trying to do, public material only, evidence not pitch, the "
      "fit stated precisely, what is not public marked) and carries the first case: UK Sovereign AI. "

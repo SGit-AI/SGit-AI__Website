@@ -2,7 +2,7 @@
 
 > The business case for specific partnerships between sgit.ai, RiskMandate.ai and organisations we would like to work with, made from public material only so the pages can be forwarded to anyone: what they are trying to do, what is published here that answers it, where the fit is partial, and a first concrete piece of work.
 
-*Source: <https://sgit.ai/partnerships/index.html> · site v0.5.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/index.html> · site v0.5.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
