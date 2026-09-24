@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.5) from the same file the table on that page is built
+> generated at build time (v0.6.6) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (34)
+## The vaults (35)
+- **#35 Lesson Loop**: A business plan for coaches: the coach's knowledge captured at the end of every lesson, in a record the player holds
+ - page: /demos/vaults/lesson-loop/index.md
+ - id `3s9q7zl7` · Briefing · published 2026-09-24 · 407 KB · 27 files
+ - read key: `sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1:3s9q7zl7`
 - **#34 Risk Acceptance Office**: A business plan with one risk replayed: established on facts, accepted for an interval, escalated, funded and ended on facts
  - page: /demos/vaults/risk-acceptance/index.md
  - id `odn10gfp` · Briefing · published 2026-09-24 · 673 KB · 32 files

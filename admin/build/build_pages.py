@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.5'
+SITE_VERSION = 'v0.6.6'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.5', '2026-09-24', 'this release',
+    ('v0.6.6', '2026-09-24', 'this release',
+     "LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a "
+     "business plan for padel coaches, and any teacher with students: capture the coach's picture "
+     "of the player at the end of the lesson, when it is most complete, as a voice memo; an agent "
+     "turns it into a lesson note and three points for the player's next games, in the player's "
+     "own data vault; the player adds match notes and clips; and the next coach, in any club or "
+     "country, starts from a two-minute briefing. The app replays one invented player's record "
+     "across four lessons with three coaches in London and Lisbon, with the raw memos, the notes, "
+     "the player view, briefings, and a themes matrix showing what each coach saw. The plan sets "
+     "out four phases (capture first, nothing else until it works), the two-vault architecture "
+     "with a write-only lane per coach, what exists today, pay-on-demand credits instead of a "
+     "subscription, new coach income (remote reviews, drill plans, follow-ups, content), the club "
+     "variant and its tension, other teaching domains, risks (children, other players in clips, "
+     "undisclosed commissions) and a calculator that shows a small business at 200 coaches. The "
+     "coach-memo prompt is ready to paste for phase one. Listed on the business plans page."),
+    ('v0.6.5', '2026-09-24', 'git 138dbe4e',
      "EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation "
      "article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence "
      "escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); "

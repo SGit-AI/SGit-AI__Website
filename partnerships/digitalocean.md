@@ -2,7 +2,7 @@
 
 > DigitalOcean is the shortest path from "I want to try vaults" to a running server. Spaces is S3-compatible object storage with a built-in CDN, App Platform runs a container, and the DigitalOcean Marketplace explicitly invites open-source projects as 1-Click Apps. For the developers and small teams DigitalOcean serves, a one-click vault server is exactly the right size.
 
-*Source: <https://sgit.ai/partnerships/digitalocean.html> · site v0.6.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/digitalocean.html> · site v0.6.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

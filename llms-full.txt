@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.5). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.6). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **34 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 34 →](demos/vaults/index.md)
+Four of **35 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 35 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -52,9 +52,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-163site releases, each verified live before it was called done
+164site releases, each verified live before it was called done
 
-34vaults published with a deliberately public read key
+35vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -388,10 +388,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**34 published vaults**: 8 briefing, 7 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**35 published vaults**: 9 briefing, 7 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 35 | [Lesson Loop](lesson-loop/index.md)`3s9q7zl7` | A business plan for coaches: the coach's knowledge captured at the end of every lesson, in a record the player holds | Briefing | 27 | 407 KB | 2026-09-24 |
 
 | 34 | [Risk Acceptance Office](risk-acceptance/index.md)`odn10gfp` | A business plan with one risk replayed: established on facts, accepted for an interval, escalated, funded and ended on facts | Briefing | 32 | 673 KB | 2026-09-24 |
 
@@ -5476,7 +5478,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.5, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.6, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5839,10 +5841,10 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-163**site releases since 14 August**
+164**site releases since 14 August**
 each verified live before it was called done
 
-34**vaults published with a public read key**
+35**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
@@ -5979,6 +5981,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Lesson Loop**](../demos/vaults/lesson-loop/index.md) | Capture what a coach knows at the end of every lesson, in a record the player holds, and start every lesson from a briefing. Padel first, any teacher with students after. Paid on demand, with new income for coaches. | One player's record across four lessons with three coaches, eleven plan documents, the prompts for phase one, and a calculator. |
 | [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) | Run the risk acceptance loop for organisations, in the gaps of their GRC platform: every material risk on facts, held by a named person, accepted for an interval, and escalated, funded or fixed when it ends. | One invented risk replayed over six weeks, eleven plan documents, the acceptance record and risk vault specifications, three prototypes and a calculator. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) | Give every AI agent deployment a twin of its connectors: a journal of every request and response, replayed into what the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? | A working replay of an invented Gmail and Calendar session, eleven plan documents, the facts with Google's sources, the journal specification, revert rules, three prototypes and a calculator. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. One operator, profitable at fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
@@ -5991,7 +5994,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty-four vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-five vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -6030,6 +6033,7 @@ These are businesses we think should exist on top of sgit and the work published
 
 | Plan | The business | How it makes money | What is in the vault |
 |---|---|---|---|
+| [**Lesson Loop**](../demos/vaults/lesson-loop/index.md) 24 September 2026 | Capture what a padel coach knows at the end of every lesson, in a record the player holds: a voice memo, an agent, a lesson note, match notes from the player, and a two-minute briefing for the next coach, in any club or country. Works for any teacher with students. | Paid on demand, no subscription: credits for processing, about 20p a lesson note. Coaches price remote reviews, drill plans, follow-ups and content; the operator takes a share. Clubs can include notes in the lesson price. | One invented player's record across four lessons with three coaches, the themes each saw, eleven plan documents, the coach-memo and briefing prompts ready to use, the note specification, a calculator and two diagrams. |
 | [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) 24 September 2026 | Run the risk acceptance loop for organisations: every material risk established on facts, held by a named person, accepted for a stated interval, and at expiry accepted again, escalated, funded or fixed. A governance service that works in the gaps of the client's GRC platform, with a vault per material risk as its evidence pack. The foundation is argued in [Every risk is already accepted](../articles/every-risk-is-already-accepted.md). | A free acceptance audit, then a foundation engagement at £18,000, then £2,500 a month plus £60 per material risk per month. Incident support by the day, and a partner licence for consultancies. | The principles, one invented risk replayed over six weeks with a hash-chained decision record, eleven plan documents, the acceptance record and risk vault specifications, three prototypes, a calculator and three diagrams. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) 24 September 2026 | Give every AI agent deployment a twin of its connectors: a journal of every request and response to Gmail, Calendar, Drive or Slack, replayed into the views the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? The case is argued in [Before you give an agent a connector, give the connector a twin](../articles/connector-twin-before-you-deploy-an-agent.md). | A connector review once, £750 to £6,000. Then per agent per month: £15, £40 or £90 by tier. Incident replays on demand. About 380 agents cover a two-founder burn. | A working replay of an invented session with a hash chain verified in the browser, eleven plan documents, the facts with Google's sources, the journal entry specification, revert rules for Gmail and Calendar, three prototypes, a calculator and two diagrams. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) 23 September 2026 | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. | Setup £300 to £1,200. Maintenance £50 to £200 a month. Changes on demand. One operator, profitable at about fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
@@ -6079,7 +6083,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-four vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-five vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6145,7 +6149,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-four published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-five published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -6209,7 +6213,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-four vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-five vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -6293,7 +6297,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-four published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-five published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -6303,7 +6307,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-four vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-five vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -6399,7 +6403,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Thirty-four published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Thirty-five published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -6420,7 +6424,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-four published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-five published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7089,7 +7093,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-four published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-five published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 
@@ -7230,7 +7234,7 @@ A proposed partnership · sgit.ai with Anthropic · public material only · 24 S
 
 # A proposed partnership between sgit.ai and Anthropic
 
-**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its thirty-four published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its thirty-five published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 
 **Nothing on this page is confidential, and there has been no conversation yet.** Every statement about Anthropic comes from its own public pages, linked. Every statement about sgit points at the [deployment documentation](../deploy/index.md), a published vault or a page on this site. sgit is Apache-2.0, so Anthropic does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on [the AI providers page](ai-providers.md).
 
@@ -9300,11 +9304,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.5**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.6**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.5 | 2026-09-24 | this release | EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); accepted versus acceptable, with the EU AI Act's Article 9(5) quoted and scoped to providers of high-risk AI systems, which never defines acceptable; every risk with a boss and every path to the board; fractal risk registers from the board to the bytes; established by facts and ended by facts; a vault per material risk as the evidence pack of governance (proposed here); twins as the direction (designs, not built); why executives resist; and why it fits beside every GRC platform. Three new diagrams plus Risk Graph Explorer views. The thirty-fourth vault, Risk Acceptance Office (odn10gfp, 32 files), replays one invented risk over six weeks with a hash-chained decision record verified in the browser and a side-by-side of the register row, and carries the business plan: operating model, the GRC gaps, services priced per material risk, a calculator, go-to-market starting from the resistance, ninety days, risks and open questions. Research found four places where the published method disagrees with itself; the plan picks a position on each and says so. Listed on the business plans page. |
+| v0.6.6 | 2026-09-24 | this release | LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a business plan for padel coaches, and any teacher with students: capture the coach's picture of the player at the end of the lesson, when it is most complete, as a voice memo; an agent turns it into a lesson note and three points for the player's next games, in the player's own data vault; the player adds match notes and clips; and the next coach, in any club or country, starts from a two-minute briefing. The app replays one invented player's record across four lessons with three coaches in London and Lisbon, with the raw memos, the notes, the player view, briefings, and a themes matrix showing what each coach saw. The plan sets out four phases (capture first, nothing else until it works), the two-vault architecture with a write-only lane per coach, what exists today, pay-on-demand credits instead of a subscription, new coach income (remote reviews, drill plans, follow-ups, content), the club variant and its tension, other teaching domains, risks (children, other players in clips, undisclosed commissions) and a calculator that shows a small business at 200 coaches. The coach-memo prompt is ready to paste for phase one. Listed on the business plans page. |
+| v0.6.5 | 2026-09-24 | git 138dbe4e | EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); accepted versus acceptable, with the EU AI Act's Article 9(5) quoted and scoped to providers of high-risk AI systems, which never defines acceptable; every risk with a boss and every path to the board; fractal risk registers from the board to the bytes; established by facts and ended by facts; a vault per material risk as the evidence pack of governance (proposed here); twins as the direction (designs, not built); why executives resist; and why it fits beside every GRC platform. Three new diagrams plus Risk Graph Explorer views. The thirty-fourth vault, Risk Acceptance Office (odn10gfp, 32 files), replays one invented risk over six weeks with a hash-chained decision record verified in the browser and a side-by-side of the register row, and carries the business plan: operating model, the GRC gaps, services priced per material risk, a calculator, go-to-market starting from the resistance, ninety days, risks and open questions. Research found four places where the published method disagrees with itself; the plan picks a position on each and says so. Listed on the business plans page. |
 | v0.6.4 | 2026-09-24 | git 9f174c35 | PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new pages under /partnerships/, written from the vault side and each one forwardable on its own. The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), where it stands on each, honestly (Docker everywhere; AWS templates in beta; Google Cloud planned; Azure deployed by the founder but undocumented; the S3 mode targets Amazon S3 and S3-compatible stores are untested), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), and one page each for AWS, Azure, Google Cloud, IBM Cloud, the European clouds (OVHcloud, Scaleway, Hetzner, IONOS, STACKIT), DigitalOcean, Rackspace and Netlify. The AI providers hub sets out three meeting points (agents read and write vaults through a connector, vault apps call models without a key, vaults carry the agent's work) and one page each for OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs. Every provider fact is from the provider's own pages, researched today; credit amounts are left out because several could not be confirmed. Research corrected two first drafts: this site is served from GitHub Pages, not AWS, and the server's S3 mode is only proven on Amazon S3. The brief for RiskMandate.ai, built on a survey of its 79 pages and 16 policy vaults, asks for the risk side of every partnership as two behaviour policies and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), 28 and 17. |
 | v0.6.3 | 2026-09-24 | git ae3f8714 | BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of every request and response an agent makes, appended to a write-only lane, processed later and replayed into the inbox and calendar as the agent saw them, is the minimum requirement for deploying an agent with provenance, explanation and undo. Every claim about Gmail and Calendar is Google's own and linked: the API delete 'cannot be undone', Undo Send is an interface feature, trash keeps 30 days, the administrator's bulk restore 25, Vault 'isn't designed to be a backup or archive tool' and keeps one Calendar revision a day. Research corrected two first assumptions (Vault has covered Calendar since November 2023; the admin audit log does record some earlier values) and the text says so. The thirty-third vault, Connector Twin (7tkvspwp, 31 files), opens on a working replay of an invented seventeen-call Gmail and Calendar session: a slider rebuilds the inbox and calendar at any step, before and after for every write, a graded revert plan, what the agent said against what the journal shows, and a hash chain verified in the browser, which ran inside the vault host's sandbox. Behind it, the business plan: facts with sources, architecture, three capture modes, packages per agent, a calculator, go-to-market, ninety days, risks, open questions, the journal specification, revert rules and three prototypes. New page /startups/business-plans.html gives the plans their own home, listed in the Why menu, with Agent as Webmaster and Connector Twin, how to take one, and the offer to build them with partners. |
 | v0.6.2 | 2026-09-24 | git 42d40e9f | A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, /partnerships/vault-key-management.html, written to be sent to password managers, identity providers and platform credential managers who have never heard of sgit. It opens with the short version, then what we are looking for in order of preference (something that already exists, a joint pilot, an open specification), the requirements in plain terms (browser first, key kinds kept apart, release only on the user's approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, scoped keys for agents), sgit in two minutes, three new diagrams (keys travelling by hand today, what a vault is and where the key sits, a seven-step share-by-name flow), and then the detail: the key formats, why the word-based share token was removed in August (about thirty bits, recoverable in a tenth of a second on a GPU), why a vault of keys still needs a first key, and what exists against what does not. The partnerships index lists it as an open call. |
@@ -12892,6 +12897,116 @@ From `admin/build/catalogue_derive.py odn10gfp <read key hex>`, read-only, no to
 ## Notes
 
 **Where this came from.** A voice memo by the founder on 24 September 2026: risk acceptance deserves a company of its own, separate from RiskMandate.ai's focus on the insurability of agents, delivered as a governance service that works in the gaps of existing GRC platforms, with a vault per material risk as its evidence pack. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md).
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# Lesson Loop, a business plan for coaches with one player's record, published as a vault
+
+> A workflow and a business for padel coaches and any teacher with students: the coach records a voice memo at the end of the lesson, an agent turns it into a lesson note in the player's own vault, the player adds match notes, and the next coach starts from a two-minute briefing. One invented player's record across four lessons with three coaches, the themes each saw, phases, the two-vault architecture with write-only lanes for coaches, pay-on-demand credits, new coach income, a calculator, and the prompts for phase one.
+>
+> Page: https://sgit.ai/demos/vaults/lesson-loop/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Lesson Loop
+
+# Lesson Loop, a business plan for coaches with one player's record
+
+A workflow and a business for padel coaches, and for any teacher with students. At the end of every lesson the coach has the best picture of the player they will ever have, and today it is gone by the next lesson. Lesson Loop captures it at that moment: the coach records a two-minute voice memo, an agent turns it into a lesson note in the player's own vault, the player adds what happens in their games, and the next lesson, with the same coach or a different one in another city, starts from a two-minute briefing instead of from memory. Paid on demand, with new income for coaches beyond the hour on court.
+
+The lesson loop. Phase one is only the top row: a voice memo, an agent and a vault.
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1:3s9q7zl7`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1%3A3s9q7zl7) · From the CLI: `sgit clone sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1:3s9q7zl7`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, and verified with an all-zeros negative control: the real key cloned 27 files, identical to the source folder, and the control cloned nothing.
+
+## See it live, here
+
+The plan opens as an app. Pick any entry in the player's record. You can also [**open it in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1%3A3s9q7zl7).
+
+## What is in it
+
+the moment
+
+### The coach's memo, as spoken
+
+An invented player, Alex, takes four lessons with three coaches in two cities over three weeks, and plays in between. For each lesson you can read the coach's end-of-lesson voice memo exactly as spoken: two or three minutes of what they saw, what they worked on and what comes next. This is the knowledge that exists for five minutes and is normally lost.
+
+The first lesson's memo, as recorded.
+
+the player's view
+
+### Three things for the next games
+
+The agent turns the memo into a lesson note and a player view: no more than three points to take into the next game, written to the player, and the drills to practise. Instead of an hour of instructions to remember, the player has three sentences on their phone.
+
+What the player sees after lesson one.
+
+the briefing
+
+### Two minutes before the next lesson
+
+Before each lesson the coach reads a briefing that folds together every coach's notes and every match since they last saw the player. In the demo, the coach in Lisbon says it saved the first fifteen minutes, and a new coach in London starts her first lesson already knowing what three coaches saw.
+
+The briefing for the player's regular coach.
+
+three coaches
+
+### Every coach sees something different, and none of it is lost
+
+The agent tracks themes across the record. The London coach fixed the bandeja; the Lisbon coach saw that the lob came from the arm and that the player stayed back after a good lob; the second London coach confirmed both. Amber is where something was first seen or is still a problem, green is where it holds.
+
+Themes across three coaches, two matches and a clip.
+
+the business
+
+### Paid on demand, and new income for coaches
+
+No subscription. Players buy credits and spend them on processing: about 20p for a lesson note, about £1 for a short clip. Coaches price their own remote reviews, drill plans, follow-ups and content, and the operator takes a share. Clubs can include notes in the lesson price. The calculator shows it is a small business at 200 coaches and a real one at a few thousand, and every number is a hypothesis.
+
+What is sold, and who sets the price.
+
+## How it is built
+
+Two vaults: one app for everybody, one record per player. The record belongs to the player, so it travels.
+
+| Piece | What exists today |
+|---|---|
+| **Voice capture** | Claude and ChatGPT apps take voice input, and transcription apps such as Otter record and transcribe. Phase one needs nothing else on the coach's side. |
+| **An agent to process it** | The same assistant, with the prompt in the vault's `prototypes/coach-memo-prompt.md`, ready to paste. |
+| **A record the player holds** | An sgit vault per player, encrypted on the device and versioned. [Supplement Stack](../supplement-stack/index.md) and [Health Score](../health-score/index.md) are published examples of records a person holds, with a professional's view. |
+| **Write-only lanes for coaches** | [Append lanes](../../../api/append-lanes.md): a coach can add a memo, and cannot read the other lanes or change anything. |
+| **Apps that call a model without a key** | The `sg.llm` bridge, documented on [llms.sgit.ai](https://llms.sgit.ai/). |
+| **Easy key handling** | Open. It is the subject of [the call for collaboration on vault key management](../../../partnerships/vault-key-management.md). |
+
+## Beyond padel
+
+The loop fits wherever one person teaches another in sessions and knows most about the student at the end of each one: tennis, squash and pickleball, golf, music lessons, language tutoring, personal training and physiotherapy, driving instruction, climbing and swimming. The pieces do not change; each domain needs its own note template and its own themes.
+
+## The audit, honestly
+
+**What was scanned.** Every one of the 27 files, from a clone made with the published read key alone, compared byte for byte with the source folder. Patterns: vault-key shapes, every `sgit_` credential prefix, API-key shapes, private-key blocks, bearer tokens, and email addresses.
+
+**What was found.** Nothing. The player, coaches and clubs are invented, and the vault contains no email addresses at all. The negative control, an all-zeros read key against the same vault id, produced an empty directory.
+
+**What the plan says about its own risks.** Many students are children, so the plan keeps to adults until consent and a guardian's key are designed. Match clips show other players, so clips stay with the coach. Coaches' kit recommendations must declare any commercial interest, and the demo shows one that does.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py 3s9q7zl7 <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 27 · **plaintext size:** 407 KB
+- **Commits:** 2 · **last updated:** 2026-09-24 · **HEAD:** `obj-cas-imm-3e90049fe51f`
+- **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `content.json`, `diagrams/`, `index.html`, `plan/`, `player/`, `prototypes/`, `spec/`, `tools/`
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**Where this came from.** A voice memo by the founder on 24 September 2026, after several padel lessons in a few days with different coaches, each seeing something different. The founder already has a padel vault of their own, not yet published, where phase one will be tried first. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md).
 
 [← All published vaults](../index.md)
 

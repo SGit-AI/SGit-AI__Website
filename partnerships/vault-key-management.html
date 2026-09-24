@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.5</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.6</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -106,7 +106,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.5 &middot; 24 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.6 &middot; 24 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / Vault key management</p>
   <p class="eyebrow">A call for collaboration &middot; public material only &middot; 24 September 2026</p>
@@ -123,7 +123,7 @@
     <li><b>What we are asking for.</b> A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.</li>
     <li><b>The one hard rule.</b> The words must be an address, never the key. sgit once shipped a word-based token that <em>was</em> the key, and <a href="#history">removed it</a> when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.</li>
     <li><b>Who we would like to hear from.</b> Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.</li>
-    <li><b>What we bring.</b> An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-four published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.</li>
+    <li><b>What we bring.</b> An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-five published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.</li>
   </ul>
 
   <h2 id="opportunity">The opportunity</h2>
@@ -131,7 +131,7 @@
   <figure class="shot" data-shot="kkm-today.webp" data-dir="images/" data-alt="Diagram: more vaults every week, keys moving by chat, email, notes files, CI secrets and screenshots, and what that costs: no index, no safe hand-over, no taking it back, agents needing keys too. At the bottom, the gap: a key manager that knows what a vault key is and works in the browser."><figcaption>Today, vault keys travel by hand. The gap at the bottom is the thing this page is asking for.</figcaption></figure>
   <p>Three things make this worth doing now rather than later.</p>
   <div class="tablewrap"><table>
-    <tr><td><b>The number of keys is growing fast</b></td><td>One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. <a href="../demos/vaults/index.html">Thirty-four vaults are published on this site alone</a>, each with its own key.</td></tr>
+    <tr><td><b>The number of keys is growing fast</b></td><td>One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. <a href="../demos/vaults/index.html">Thirty-five vaults are published on this site alone</a>, each with its own key.</td></tr>
     <tr><td><b>Agents are starting to make vaults</b></td><td>An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. <a href="../demos/vaults/agent-webmaster/index.html">Agent as Webmaster</a> is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere.</td></tr>
     <tr><td><b>The pattern is not specific to sgit</b></td><td>Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category.</td></tr>
   </table></div>
@@ -218,7 +218,7 @@
     <tr><td><b>An open reference integration</b></td><td>The sgit side of the pilot, in the Apache-2.0 client and the browser viewer, written so another key manager could plug into the same interface.</td></tr>
     <tr><td><b>Crypto that is specified and tested</b></td><td>AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one.</td></tr>
     <tr><td><b>Keys that say what they are</b></td><td>Every sgit key carries a prefix naming its kind: <code>sgit_private_vault_</code>, <code>sgit_private_read_</code> or <code>sgit_public_read_</code>. One secret-scanner rule, <code>sgit_private_</code>, catches every private key type, and a published read key cannot be mistaken for a leak.</td></tr>
-    <tr><td><b>Real vaults to test against</b></td><td><a href="../demos/vaults/index.html">Thirty-four published vaults</a> across security, regulation, business plans and applications, each with a public read key, plus <a href="../demos/vaults/catalogue/index.html">the catalogue</a>, a vault that lists vaults, which is the closest thing today to the index a key manager would keep.</td></tr>
+    <tr><td><b>Real vaults to test against</b></td><td><a href="../demos/vaults/index.html">Thirty-five published vaults</a> across security, regulation, business plans and applications, each with a public read key, plus <a href="../demos/vaults/catalogue/index.html">the catalogue</a>, a vault that lists vaults, which is the closest thing today to the index a key manager would keep.</td></tr>
     <tr><td><b>The failures, written down</b></td><td><a href="../case-studies/exposed-vault-key.html">What to do if a vault key is exposed</a>, <a href="../demos/vaults/publishing.html">the publishing method</a> with the mistake behind each rule, and <a href="../docs/limitations.html">when not to use sgit</a>. A key manager partner should know the edges before the first call.</td></tr>
   </table></div>
 
@@ -236,7 +236,7 @@
   <h3 id="today">What exists today, and what does not</h3>
   <div class="tablewrap"><table>
     <tr><th>Exists and runs</th><th>Does not exist yet</th></tr>
-    <tr><td>Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-four published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class.</td><td>Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as <a href="../docs/limitations.html">the limitations page</a> says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build.</td></tr>
+    <tr><td>Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-five published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class.</td><td>Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as <a href="../docs/limitations.html">the limitations page</a> says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build.</td></tr>
   </table></div>
 
   <h2 id="honest">What this page does not claim</h2>
@@ -255,7 +255,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.6.5')
+ fetch('../assets/shots.js?v=v0.6.6')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -267,7 +267,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.5</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-key-management.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.6</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-key-management.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -309,7 +309,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.5';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.6';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

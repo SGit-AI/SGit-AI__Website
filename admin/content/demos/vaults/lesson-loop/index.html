@@ -1,0 +1,103 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Lesson Loop</p>
+  <h1>Lesson Loop, a business plan for coaches with one player's record</h1>
+  <p class="lead">A workflow and a business for padel coaches, and for any teacher with students. At the end of every lesson the coach has the best picture of the player they will ever have, and today it is gone by the next lesson. Lesson Loop captures it at that moment: the coach records a two-minute voice memo, an agent turns it into a lesson note in the player's own vault, the player adds what happens in their games, and the next lesson, with the same coach or a different one in another city, starts from a two-minute briefing instead of from memory. Paid on demand, with new income for coaches beyond the hour on court.</p>
+
+  <figure class="shot" data-shot="lesson-loop.webp" data-dir="images/" data-alt="Diagram: the lesson, the last five minutes where the coach records a memo, the agent, the player's vault; then the player reads three points, plays games, and the next lesson starts from a briefing. Below: what changes for the player, the coach, across coaches, and new income."><figcaption>The lesson loop. Phase one is only the top row: a voice memo, an agent and a vault.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1:3s9q7zl7</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1%3A3s9q7zl7" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1:3s9q7zl7</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, and verified with an all-zeros negative control: the real key cloned 27 files, identical to the source folder, and the control cloned nothing.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The plan opens as an app. Pick any entry in the player's record. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1%3A3s9q7zl7" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="3s9q7zl7" data-readkey="2d397a3a06c235452300c55375ebe8e470ba70a1a5263dc72679f8a78c42dfc1" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the moment</span>
+        <h3>The coach's memo, as spoken</h3>
+        <p>An invented player, Alex, takes four lessons with three coaches in two cities over three weeks, and plays in between. For each lesson you can read the coach's end-of-lesson voice memo exactly as spoken: two or three minutes of what they saw, what they worked on and what comes next. This is the knowledge that exists for five minutes and is normally lost.</p>
+      </div>
+      <figure class="shot" data-shot="memo.webp" data-dir="images/" data-alt="The first lesson's voice memo from coach Marta, as spoken, beside the player's record."><figcaption>The first lesson's memo, as recorded.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the player's view</span>
+        <h3>Three things for the next games</h3>
+        <p>The agent turns the memo into a lesson note and a player view: no more than three points to take into the next game, written to the player, and the drills to practise. Instead of an hour of instructions to remember, the player has three sentences on their phone.</p>
+      </div>
+      <figure class="shot" data-shot="player-view.webp" data-dir="images/" data-alt="The player view: three numbered focus points for the next games, and the drills."><figcaption>What the player sees after lesson one.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the briefing</span>
+        <h3>Two minutes before the next lesson</h3>
+        <p>Before each lesson the coach reads a briefing that folds together every coach's notes and every match since they last saw the player. In the demo, the coach in Lisbon says it saved the first fifteen minutes, and a new coach in London starts her first lesson already knowing what three coaches saw.</p>
+      </div>
+      <figure class="shot" data-shot="briefing.webp" data-dir="images/" data-alt="A two-minute briefing for coach Marta, covering lessons with two other coaches and two matches."><figcaption>The briefing for the player's regular coach.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">three coaches</span>
+        <h3>Every coach sees something different, and none of it is lost</h3>
+        <p>The agent tracks themes across the record. The London coach fixed the bandeja; the Lisbon coach saw that the lob came from the arm and that the player stayed back after a good lob; the second London coach confirmed both. Amber is where something was first seen or is still a problem, green is where it holds.</p>
+      </div>
+      <figure class="shot" data-shot="themes.webp" data-dir="images/" data-alt="A matrix of themes against lessons, matches and a clip, coloured amber where a problem was seen and green where it holds."><figcaption>Themes across three coaches, two matches and a clip.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the business</span>
+        <h3>Paid on demand, and new income for coaches</h3>
+        <p>No subscription. Players buy credits and spend them on processing: about 20p for a lesson note, about £1 for a short clip. Coaches price their own remote reviews, drill plans, follow-ups and content, and the operator takes a share. Clubs can include notes in the lesson price. The calculator shows it is a small business at 200 coaches and a real one at a few thousand, and every number is a hypothesis.</p>
+      </div>
+      <figure class="shot" data-shot="streams.webp" data-dir="images/" data-alt="Six revenue items as cards: lesson notes, match notes and briefings, clip processing, remote video review, drill plans and follow-ups, and coach content."><figcaption>What is sold, and who sets the price.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How it is built</h2>
+  <figure class="shot" data-shot="two-vaults.webp" data-dir="images/" data-alt="Diagram: one app vault shared by everybody; one data vault per player whose key the player holds; each coach has a read key and a write-only lane; the club has nothing by default; the host holds ciphertext only."><figcaption>Two vaults: one app for everybody, one record per player. The record belongs to the player, so it travels.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Piece</th><th>What exists today</th></tr>
+    <tr><td><b>Voice capture</b></td><td>Claude and ChatGPT apps take voice input, and transcription apps such as Otter record and transcribe. Phase one needs nothing else on the coach's side.</td></tr>
+    <tr><td><b>An agent to process it</b></td><td>The same assistant, with the prompt in the vault's <code>prototypes/coach-memo-prompt.md</code>, ready to paste.</td></tr>
+    <tr><td><b>A record the player holds</b></td><td>An sgit vault per player, encrypted on the device and versioned. <a href="../supplement-stack/index.html">Supplement Stack</a> and <a href="../health-score/index.html">Health Score</a> are published examples of records a person holds, with a professional's view.</td></tr>
+    <tr><td><b>Write-only lanes for coaches</b></td><td><a href="../../../api/append-lanes.html">Append lanes</a>: a coach can add a memo, and cannot read the other lanes or change anything.</td></tr>
+    <tr><td><b>Apps that call a model without a key</b></td><td>The <code>sg.llm</code> bridge, documented on <a href="https://llms.sgit.ai/" rel="noopener" target="_blank">llms.sgit.ai</a>.</td></tr>
+    <tr><td><b>Easy key handling</b></td><td>Open. It is the subject of <a href="../../../partnerships/vault-key-management.html">the call for collaboration on vault key management</a>.</td></tr>
+  </table></div>
+
+  <h2>Beyond padel</h2>
+  <p>The loop fits wherever one person teaches another in sessions and knows most about the student at the end of each one: tennis, squash and pickleball, golf, music lessons, language tutoring, personal training and physiotherapy, driving instruction, climbing and swimming. The pieces do not change; each domain needs its own note template and its own themes.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every one of the 27 files, from a clone made with the published read key alone, compared byte for byte with the source folder. Patterns: vault-key shapes, every <code>sgit_</code> credential prefix, API-key shapes, private-key blocks, bearer tokens, and email addresses.</p>
+  <p><b>What was found.</b> Nothing. The player, coaches and clubs are invented, and the vault contains no email addresses at all. The negative control, an all-zeros read key against the same vault id, produced an empty directory.</p>
+  <p><b>What the plan says about its own risks.</b> Many students are children, so the plan keeps to adults until consent and a guardian's key are designed. Match clips show other players, so clips stay with the coach. Coaches' kit recommendations must declare any commercial interest, and the demo shows one that does.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py 3s9q7zl7 &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 27 · <b>plaintext size:</b> 407 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-09-24 · <b>HEAD:</b> <code>obj-cas-imm-3e90049fe51f</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>app.json</code>, <code>content.json</code>, <code>diagrams/</code>, <code>index.html</code>, <code>plan/</code>, <code>player/</code>, <code>prototypes/</code>, <code>spec/</code>, <code>tools/</code></li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by the founder on 24 September 2026, after several padel lessons in a few days with different coaches, each seeing something different. The founder already has a padel vault of their own, not yet published, where phase one will be tried first. <b>Where it sits.</b> With the other <a href="../../../startups/business-plans.html">business plans published for founders</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
