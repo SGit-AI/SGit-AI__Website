@@ -1,0 +1,54 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="ai-providers.html">AI providers</a> / OpenRouter</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with OpenRouter &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and OpenRouter</h1>
+  <p class="lead"><b>OpenRouter is how the vault apps on this site reach models, and it has the credential the pattern needs.</b> A vault app calls a model through the host, and the key never reaches the page. The safest credential for that is one that is bounded: a spend limit and a reset. The independent provider report on this site records OpenRouter as "the one provider in this family that can do pattern one". We would like to make that a documented, supported pattern together.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about OpenRouter comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so OpenRouter does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="ai-providers.html">the AI providers page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>We already use it.</b> Vault apps here reach models through OpenRouter, with the key held by the host and sealed under the vault key.</li>
+    <li><b>It has the right credential.</b> <a href="https://providers.sgit.ai/" rel="noopener" target="_blank">providers.sgit.ai</a> names OpenRouter's provisioned keys, with a spend limit and a reset, as the credential pattern vault apps need.</li>
+    <li><b>It has the right data controls.</b> <a href="https://openrouter.ai/docs/guides/routing/provider-selection" rel="noopener" target="_blank">Provider routing</a> can require <code>zdr: true</code> or <code>data_collection: "deny"</code> per request, which a vault app handling sensitive content should set.</li>
+    <li><b>What we would like:</b> a review of the bounded-key pattern, a listing among the apps that work with OpenRouter, and help with the independent OpenRouter report.</li>
+    </ul>
+
+  <h2 id="map">Where vaults fit OpenRouter</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Meeting point</th><th>On OpenRouter's platform</th><th>Status</th></tr>
+    <tr><td><b>Vault apps call models</b></td><td>One API across providers, with the key held by the host</td><td>Works today.</td></tr>
+    <tr><td><b>Bounded credentials</b></td><td>Provisioned keys with a spend limit and a reset</td><td>The pattern the report recommends; the OpenRouter report itself is not built yet.</td></tr>
+    <tr><td><b>Data controls per call</b></td><td>Routing flags for zero data retention and no data collection</td><td>To adopt in the bridge.</td></tr>
+    <tr><td><b>Attribution</b></td><td><a href="https://openrouter.ai/docs/app-attribution" rel="noopener" target="_blank">App attribution through request headers</a></td><td>To adopt, so vault apps appear in OpenRouter's app listings.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with OpenRouter today</h2>
+  <p>OpenRouter is the model provider this site depends on most. It is also the one the independent report family singles out, because its keys can be bounded. The report on OpenRouter is marked "not built yet" on providers.sgit.ai, and writing it is the natural first piece of shared work.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; The bounded-key pattern</b></td><td>A documented pattern for vault apps: a provisioned key per vault or per app, with a spend limit and a reset, held by the host.</td><td>A technical review.</td></tr>
+    <tr><td><b>2 &middot; Listed as working with OpenRouter</b></td><td>sgit's bridge listed through <a href="https://openrouter.ai/works-with-openrouter" rel="noopener" target="_blank">Works with OpenRouter</a>, which takes a pull request to its list.</td><td>Self-service, with a review.</td></tr>
+    <tr><td><b>3 &middot; The independent report</b></td><td>openrouter.providers.sgit.ai: what it cost on a named workload, what broke, which credential patterns it supports.</td><td>Fact-checking of the draft.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking OpenRouter for</h2>
+  <ol>
+    <li>A review of the bounded-key pattern for vault apps.</li>
+    <li>A fact-check of the OpenRouter report before it is published.</li>
+    <li>A conversation about featured partnerships.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> OpenRouter has not endorsed sgit, and we have not spoken to anyone there about this. Product and programme descriptions quote OpenRouter's own pages and documentation as of 24 September 2026.</li>
+    <li><b>Heavy use is not a relationship.</b> We are a paying user, not a partner.</li>
+    </ul>
+
+  <h2 id="forward">If you work at OpenRouter</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="google-gemini.html">← Google Gemini</a><a href="elevenlabs.html">ElevenLabs →</a></div>
+</main>

@@ -1,0 +1,54 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="ai-providers.html">AI providers</a> / ElevenLabs</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with ElevenLabs &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and ElevenLabs</h1>
+  <p class="lead"><b>We already publish an independent report on ElevenLabs, and it ends with one clear ask.</b> The narration on this site is rendered with ElevenLabs, and <a href="https://elevenlabs.providers.sgit.ai/" rel="noopener" target="_blank">elevenlabs.providers.sgit.ai</a> records what it cost on a named workload, what broke, and which credential patterns the product supports. What would let a vault app use ElevenLabs safely, with no key in the page, is a key with a spend limit, or a short-lived token for text to speech.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about ElevenLabs comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so ElevenLabs does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="ai-providers.html">the AI providers page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>We use it and measured it.</b> The first production video cost $0.18 at list price for 1,821 characters across nine scenes, recorded on 8 September 2026.</li>
+    <li><b>Four things broke on the first run, and we wrote them down.</b> PCM output is gated to the Pro tier, stitching is not supported on v3, a scoped key lacked one permission, and one problem was ours: an encoder that added fourteen seconds of silence.</li>
+    <li><b>One credential feature is missing.</b> Keys are scoped but carry no per-key spend limit, and text to speech has no vendor-issued short-lived token, so a vault app cannot yet hold an ElevenLabs credential safely.</li>
+    <li><b>What we would like:</b> per-key spend limits or short-lived TTS tokens, and a conversation about vault agents that speak.</li>
+    </ul>
+
+  <h2 id="map">Where vaults fit ElevenLabs</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Meeting point</th><th>On ElevenLabs's platform</th><th>Status</th></tr>
+    <tr><td><b>Narrated vault content</b></td><td>Text to speech with character-level timestamps</td><td>Works today from a render script. Not yet from inside a vault app, for the reason in the next row.</td></tr>
+    <tr><td><b>Voice agents over vaults</b></td><td><a href="https://elevenlabs.io/docs/eleven-agents/customization/tools/mcp" rel="noopener" target="_blank">ElevenAgents connected to external MCP servers</a></td><td>Connector not built yet.</td></tr>
+    <tr><td><b>A safe credential in a vault app</b></td><td>A per-key spend limit, or a short-lived token for TTS</td><td>Missing. The report's main finding.</td></tr>
+    <tr><td><b>Voices</b></td><td><a href="https://elevenlabs.io/docs/eleven-creative/voices/voice-library" rel="noopener" target="_blank">The Voice Library</a></td><td>Not used by us.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with ElevenLabs today</h2>
+  <p>ElevenLabs is part of how this site makes its explainers, and it is the first provider to get a full independent report here. The report makes no demands. It records what happened and names which of four credential patterns the product can support, and the gap it finds is specific enough to be a feature request.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; A bounded credential</b></td><td>A per-key spend limit, or a short-lived token for text to speech, so a vault app can narrate without a long-lived key anywhere near the page.</td><td>A product conversation.</td></tr>
+    <tr><td><b>2 &middot; Vault agents that speak</b></td><td>An ElevenAgents agent reading a vault through a connector: a briefing, a board pack or a report, read aloud to the person it was handed to.</td><td>A technical contact.</td></tr>
+    <tr><td><b>3 &middot; Startup support</b></td><td>Characters to render the rest of the site's explainers.</td><td><a href="https://elevenlabs.io/startup-grants" rel="noopener" target="_blank">ElevenLabs Startup Grants</a>.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking ElevenLabs for</h2>
+  <ol>
+    <li>Per-key spend limits, or short-lived tokens for text to speech.</li>
+    <li>A fact-check of the independent report.</li>
+    <li>A conversation about <a href="https://elevenlabs.io/startup-grants" rel="noopener" target="_blank">ElevenLabs Startup Grants</a> and about vault agents that speak.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> ElevenLabs has not endorsed sgit, and we have not spoken to anyone there about this. Product and programme descriptions quote ElevenLabs's own pages and documentation as of 24 September 2026.</li>
+    <li><b>The report is independent.</b> ElevenLabs did not commission or review it.</li>
+    </ul>
+
+  <h2 id="forward">If you work at ElevenLabs</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="openrouter.html">← OpenRouter</a><a href="ai-providers.html">AI providers →</a></div>
+</main>

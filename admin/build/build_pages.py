@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.3'
+SITE_VERSION = 'v0.6.4'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.3', '2026-09-24', 'this release',
+    ('v0.6.4', '2026-09-24', 'this release',
+     "PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new "
+     "pages under /partnerships/, written from the vault side and each one forwardable on its own. "
+     "The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), "
+     "where it stands on each, honestly (Docker everywhere; AWS templates in beta; Google Cloud "
+     "planned; Azure deployed by the founder but undocumented; the S3 mode targets Amazon S3 and "
+     "S3-compatible stores are untested), the two partnerships in one (vaults in the cloud's "
+     "environment, and services on top of vaults), and one page each for AWS, Azure, Google Cloud, "
+     "IBM Cloud, the European clouds (OVHcloud, Scaleway, Hetzner, IONOS, STACKIT), DigitalOcean, "
+     "Rackspace and Netlify. The AI providers hub sets out three meeting points (agents read and "
+     "write vaults through a connector, vault apps call models without a key, vaults carry the "
+     "agent's work) and one page each for OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter "
+     "and ElevenLabs. Every provider fact is from the provider's own pages, researched today; "
+     "credit amounts are left out because several could not be confirmed. Research corrected two "
+     "first drafts: this site is served from GitHub Pages, not AWS, and the server's S3 mode is "
+     "only proven on Amazon S3. The brief for RiskMandate.ai, built on a survey of its 79 pages "
+     "and 16 policy vaults, asks for the risk side of every partnership as two behaviour policies "
+     "and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), "
+     "28 and 17."),
+    ('v0.6.3', '2026-09-24', 'git ae3f8714',
      "BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET "
      "THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of "
      "every request and response an agent makes, appended to a write-only lane, processed later and "

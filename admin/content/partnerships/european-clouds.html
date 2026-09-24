@@ -1,0 +1,56 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / the European clouds</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with the European clouds &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and the European clouds</h1>
+  <p class="lead"><b>For European clouds, vaults are the sovereignty argument made concrete.</b> OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about the European clouds comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so the European clouds does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Storage is ready everywhere.</b> Each of the five offers S3-compatible object storage, which is the one thing a vault server really needs.</li>
+    <li><b>Compute varies.</b> Scaleway has Serverless Containers. The others run the container on managed Kubernetes, Cloud Foundry or a plain server, which the image supports.</li>
+    <li><b>Sovereignty is the sale.</b> <a href="https://corporate.ovhcloud.com/en/newsroom/news/ovhcloud-obtains-secnumcloud-qualification-snc-cloud-platform/" rel="noopener" target="_blank">OVHcloud's public cloud qualified for SecNumCloud on 1 September 2026</a>; STACKIT and IONOS hold BSI C5; Hetzner has been independent since 1997; Scaleway is European-owned.</li>
+    <li><b>What we would like:</b> one tested deployment on each, and a listing in the marketplaces that exist.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto the European clouds</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On the European clouds</th><th>Status</th></tr>
+    <tr><td><b>OVHcloud</b></td><td>Object Storage ("largely compatible with the S3 protocol"); Managed Kubernetes; <a href="https://opentrustedcloud.ovhcloud.com/en/program-description/" rel="noopener" target="_blank">Open Trusted Cloud</a> for the marketplace</td><td>Not tested by us.</td></tr>
+    <tr><td><b>Scaleway</b></td><td>S3-compatible Object Storage; <a href="https://www.scaleway.com/en/serverless-containers/" rel="noopener" target="_blank">Serverless Containers</a>; Edge Services; Marketplace and Partner Program</td><td>Not tested. The closest match to the AWS Lambda shape.</td></tr>
+    <tr><td><b>Hetzner</b></td><td><a href="https://www.hetzner.com/storage/object-storage/" rel="noopener" target="_blank">S3-compatible Object Storage</a>; Cloud servers with Docker</td><td>Not tested. The simplest and cheapest path: one server, one bucket.</td></tr>
+    <tr><td><b>IONOS Cloud</b></td><td>S3-compatible Object Storage; Managed Kubernetes; CDN; <a href="https://cloud.ionos.com/partner/isv" rel="noopener" target="_blank">ISV Partner Program</a> and Marketplace</td><td>Not tested.</td></tr>
+    <tr><td><b>STACKIT</b></td><td>S3-compatible Object Storage; Kubernetes Engine or Cloud Foundry; CDN; <a href="https://stackit.com/en/partner/stackit-marketplace-partner" rel="noopener" target="_blank">STACKIT Marketplace</a></td><td>Not tested.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with the European clouds today</h2>
+  <p>We have not deployed on any of these yet, and we should have. The founder's view, stated on <a href="sovereign-ai.html">the UK Sovereign AI page</a>, is that sovereignty without open source is one acquisition deep. The same argument applies to European clouds: a sovereign host is necessary, and an open, client-side-encrypted data layer on top of it is what makes the sovereignty survive a change of owner, a court order or a breach.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; One tested deployment each</b></td><td>The server with each provider's S3-compatible storage, documented in the deployment docs. This is also how the S3-endpoint support gets tested properly.</td><td>A test account and a technical contact.</td></tr>
+    <tr><td><b>2 &middot; A European reference</b></td><td>A published reference for a fully European stack: a European cloud, a European model provider such as <a href="mistral.html">Mistral</a>, and vaults, with no key ever leaving the customer.</td><td>Joint publication.</td></tr>
+    <tr><td><b>3 &middot; Marketplace listings</b></td><td>The server in OVHcloud's, Scaleway's, IONOS's and STACKIT's marketplaces, where their programmes allow it.</td><td>Each provider's ISV or partner programme.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking the European clouds for</h2>
+  <ol>
+    <li>A test account on each, to write and verify the deployment guide.</li>
+    <li>An introduction to each provider's ISV or partner programme, and to their marketplaces.</li>
+    <li>Startup programme support where it exists: <a href="https://startup.ovhcloud.com/en/" rel="noopener" target="_blank">OVHcloud</a>, <a href="https://www.scaleway.com/en/startup-program/" rel="noopener" target="_blank">Scaleway</a>, <a href="https://cloud.ionos.com/startup-program" rel="noopener" target="_blank">IONOS</a> and <a href="https://stackit.com/en/why-stackit/benefits/startup-program" rel="noopener" target="_blank">STACKIT</a> each run one.</li>
+    <li>A first European customer for whom "the host cannot read it" is the requirement.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> None of these providers has endorsed sgit, and we have not spoken to anyone at them about this. Programme and product descriptions quote each provider's own pages as of 24 September 2026.</li>
+    <li><b>None of this is tested.</b> Every row above is what the providers document, not what we have run.</li>
+    </ul>
+
+  <h2 id="forward">If you work at the European clouds</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="ibm-cloud.html">← IBM Cloud</a><a href="digitalocean.html">DigitalOcean →</a></div>
+</main>

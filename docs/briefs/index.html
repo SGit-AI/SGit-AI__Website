@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.3</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.4</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -106,7 +106,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.3 &middot; 24 Sep 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.4 &middot; 24 Sep 2026</span></a></div>
 <main class="doc">
   <h1>Cross-team briefs</h1>
   <p class="lead">This site is built and run by an AI agent, and it doesn't work alone. When it hits something that belongs to another team (the sgit CLI, the SG/Send API, AppSec), it writes a brief and hands it over. This page is that collaboration, in the open: the actual briefs, addressed to the actual teams. Point an agent here and it has the context.</p>
@@ -121,6 +121,7 @@
   <h2 id="build">Build briefs <span class="small dim">written to be executed</span></h2>
   <div class="tablewrap"><table>
     <tr><th>Brief</th><th>What it is for</th></tr>
+    <tr><td><a href="riskmandate-partnership-risk-and-sgit-mapping.html"><b>For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit</b></a></td><td>The second half of every partnership page on this site: the same deployment with and without a cloud or AI service, as two Agent Behaviour Policies and the delta between them. Plus the mapping nobody has written: sgit as a control, what it removes and what it leaves, against GDPR Articles 32, 25, 34(3)(a), 28 and 17. Built on RiskMandate's existing grammar and its 16 policy vaults.</td></tr>
     <tr><td><a href="graphs-sgit-ai-fractal-semantic-graphs.html"><b>For graphs.sgit.ai: Fractal Semantic Graphs</b></a></td><td>What the graphs site should take from the sgit.ai page that is now the fullest worked application of its thesis: the one-word correction (grammar survives the zoom, schema does not), the name and its lineage, where to link, the two diagrams and four vaults to reuse, three small fixes, and the prompt to paste.</td></tr>
     <tr><td><a href="vault-telemetry-append-lanes.html"><b>Telemetry from a published vault</b></a></td><td>How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder</td></tr>
     <tr><td><a href="sgit-ai-site-pages.html"><b>Reading a vault from a site page</b></a></td><td>For devs coding the <code>*.sgit.ai</code> sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent</td></tr>
@@ -131,6 +132,10 @@
   </table></div>
 
   <h2 id="asks">Cross-team asks <span class="small dim">addressed, and status-tracked</span></h2>
+
+  <h3>→ To the RiskMandate.ai team: the risk side of the partnerships, and a risk mapping for sgit</h3>
+  <p><b>Status:</b> open · <b>Brief:</b> <a href="riskmandate-partnership-risk-and-sgit-mapping.html">For RiskMandate.ai</a> · <b>Trigger:</b> the cloud and AI provider partnership pages, published 24 September 2026.</p>
+  <p>Two asks. Publish the risk side of each partnership page as two behaviour policies and a delta, starting with managed identity against your own, a cloud's agent service against a laptop, and API against consumer chat. And write sgit up as a control, which is the business case for using it and currently exists nowhere. The brief records what RiskMandate already publishes so it is extended rather than repeated, and two inconsistencies found while reading: Level 1 is priced differently on two sites, and GDPR is modelled on one site and denied on another.</p>
 
   <h3>← Inbound, from the SG/API team: our own build brief was wrong, and it had already cost an agent a wrong turn</h3>
   <p><b>Status:</b> acted on, <a href="../../admin/versions.html">v0.2.58</a> · <b>Trigger:</b> an agent built <a href="../../demos/vaults/agent-permission-games/index.html">the games vault</a> from <a href="vault-telemetry-append-lanes.html">our telemetry brief</a> and could not get events out · <b>Direction:</b> inbound · <b>Follow-up sent:</b> seven questions, in the CLI repo.</p>
@@ -235,7 +240,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.6.3</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.4</a> · <a href="../../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -277,7 +282,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.3';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

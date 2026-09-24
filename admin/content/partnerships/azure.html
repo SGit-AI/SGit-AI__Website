@@ -1,0 +1,57 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / Microsoft Azure</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with Microsoft Azure &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and Microsoft Azure</h1>
+  <p class="lead"><b>sgit runs on Azure. We just have not written it down yet.</b> The founder has deployed the vault server on Azure and it works, but the published documentation covers Docker, AWS, Google Cloud and static hosts, not Azure. We would like to close that gap with Microsoft: a documented, reviewed deployment on Azure services, a listing in Microsoft Marketplace, and a route to the many organisations whose data already lives in Azure and Microsoft 365.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about Microsoft Azure comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so Microsoft Azure does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>The vault server is one container.</b> On Azure that is Azure Container Apps or Azure Functions, configured only by environment variables.</li>
+    <li><b>Storage is the work.</b> Azure Blob Storage is not natively S3-compatible, and the server's durable storage mode targets Amazon S3. On Azure today that means a disk volume, S3 with cross-cloud credentials, or a native Blob Storage backend, which would be the right answer and is the main engineering in this partnership.</li>
+    <li><b>Sovereignty fits.</b> Microsoft completed the <a href="https://blogs.microsoft.com/on-the-issues/2025/02/26/microsoft-completes-landmark-eu-data-boundary-offering-enhanced-data-residency-and-transparency/" rel="noopener" target="_blank">EU Data Boundary</a> in February 2025 and offers <a href="https://learn.microsoft.com/en-us/azure/azure-sovereign-clouds/microsoft-sovereign-cloud" rel="noopener" target="_blank">Microsoft Sovereign Cloud</a>. A vault adds the layer that makes it hold for the data itself: the host only ever sees ciphertext.</li>
+    <li><b>What we would like:</b> engineering help on the Blob Storage backend, a documented deployment, a place in <a href="https://learn.microsoft.com/en-us/partner-center/membership/isv-success" rel="noopener" target="_blank">ISV Success</a>, and a listing in <a href="https://learn.microsoft.com/en-us/partner-center/marketplace-offers/marketplace-containers" rel="noopener" target="_blank">Microsoft Marketplace</a>.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto Azure</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On Microsoft Azure</th><th>Status</th></tr>
+    <tr><td><b>A small stateless API</b></td><td>Azure Container Apps, or Azure Functions</td><td>Working in the founder's own deployment; not yet documented.</td></tr>
+    <tr><td><b>Object storage</b></td><td>Azure Blob Storage</td><td>Not S3-compatible. Needs a native backend, or a disk volume or cross-cloud S3 in the meantime.</td></tr>
+    <tr><td><b>Static readers</b></td><td>Azure Static Web Apps, Azure Front Door</td><td>Should work, as for any static host. Not tested by us.</td></tr>
+    <tr><td><b>Sovereign data</b></td><td>EU Data Boundary, Microsoft Sovereign Cloud</td><td>Complementary: the host holds ciphertext only, in the region chosen.</td></tr>
+    <tr><td><b>Data that already lives in Microsoft 365</b></td><td>Agents with Microsoft 365 connectors</td><td>RiskMandate.ai has published a behaviour policy for Claude with Microsoft 365, and the risk side is being written there.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with Microsoft Azure today</h2>
+  <p>Azure is the clearest case of something that works and is not yet written down. The deployment was done and it ran; what it lacks is a guide, a storage backend that uses Blob Storage natively, and a review by someone who knows Azure. The reason it has not been done is simply that our credits and our history are on AWS. That is a gap we would rather close with Microsoft than around it.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; A native Blob Storage backend</b></td><td>A storage mode for Azure Blob Storage in the open-source server, so a vault on Azure keeps its ciphertext in Azure with no cross-cloud credentials.</td><td>An engineer who knows the Blob Storage APIs, and credits to test on.</td></tr>
+    <tr><td><b>2 &middot; A documented Azure deployment</b></td><td>A guide and a template for Container Apps with Blob Storage, reviewed and published in the deployment docs next to AWS and Google Cloud.</td><td>A technical reviewer.</td></tr>
+    <tr><td><b>3 &middot; A Marketplace offer</b></td><td>The open-source server as a free container offer in Microsoft Marketplace, which supports Free and BYOL container billing.</td><td>ISV Success, part of the Microsoft AI Cloud Partner Program.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking Microsoft Azure for</h2>
+  <ol>
+    <li>Engineering help, or a reviewer, for a native Azure Blob Storage backend.</li>
+    <li>A technical review of the Azure deployment guide before we publish it.</li>
+    <li>A place in <a href="https://learn.microsoft.com/en-us/partner-center/membership/isv-success" rel="noopener" target="_blank">ISV Success</a> and a route into Microsoft Marketplace.</li>
+    <li>Credits through <a href="https://www.microsoft.com/en/startups" rel="noopener" target="_blank">Microsoft for Startups</a>, so the Azure path gets the same testing the AWS path had.</li>
+    <li>An introduction to a customer who needs encrypted handover inside an Azure estate.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> Microsoft Azure has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote Microsoft Azure's own pages as of 24 September 2026.</li>
+    <li><b>"Working" means the founder's own deployment.</b> It is not documented, not reviewed, and does not yet use Blob Storage natively.</li>
+    </ul>
+
+  <h2 id="forward">If you work at Microsoft Azure</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="aws.html">← AWS</a><a href="google-cloud.html">Google Cloud →</a></div>
+</main>

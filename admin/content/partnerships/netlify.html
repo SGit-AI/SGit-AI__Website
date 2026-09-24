@@ -1,0 +1,53 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / Netlify</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with Netlify &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and Netlify</h1>
+  <p class="lead"><b>Netlify already hosts the kind of thing a published vault is.</b> A vault can be read from a plain static host behind a CDN: the browser fetches ciphertext and decrypts it locally, with no server at all. Netlify is named in our static hosting guide for exactly that. The partnership we would like is to make "an encrypted site, readable only with a key, updated with a push" a documented pattern on Netlify.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about Netlify comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so Netlify does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Static hosting is the whole requirement.</b> A published vault is static files. Netlify's CDN serves them; the reader's browser decrypts them.</li>
+    <li><b>Named in the docs already.</b> The static hosting guide lists Netlify with GitHub Pages, S3 with CloudFront, Cloudflare Pages and Firebase.</li>
+    <li><b>The server is not needed for readers.</b> Netlify Blobs is key-value storage rather than S3, so the writing side of a vault stays on a vault server elsewhere; Netlify serves the published copy.</li>
+    <li><b>What we would like:</b> a documented pattern, and a place among <a href="https://www.netlify.com/partners/technology/" rel="noopener" target="_blank">Netlify's technology partners</a>.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto Netlify</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On Netlify</th><th>Status</th></tr>
+    <tr><td><b>Static readers</b></td><td>Netlify's CDN</td><td>Documented in our static hosting guide.</td></tr>
+    <tr><td><b>Publishing on push</b></td><td>Netlify builds from a Git push</td><td>Should work: publish the vault's ciphertext as the site. Not tested end to end.</td></tr>
+    <tr><td><b>The writing side</b></td><td>A vault server elsewhere</td><td>Netlify Blobs is not S3-compatible, so writes stay on a vault server.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with Netlify today</h2>
+  <p>Netlify is already in the static hosting guide. We have not published a vault there ourselves yet; this site is on GitHub Pages. The pattern is simple enough that the first piece of work is a short guide and one live example.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; A documented pattern</b></td><td>An encrypted site on Netlify: the vault's ciphertext deployed as static files, opened with a read key.</td><td>A technical reviewer.</td></tr>
+    <tr><td><b>2 &middot; An integration</b></td><td>A Netlify integration that publishes a vault's current state on every push.</td><td>The Technology Partner Program.</td></tr>
+    <tr><td><b>3 &middot; Open-source hosting</b></td><td>sgit's own documentation vaults hosted under the Netlify Open Source plan.</td><td>Netlify's open-source programme.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking Netlify for</h2>
+  <ol>
+    <li>A review of the static hosting pattern for Netlify.</li>
+    <li>A place in the <a href="https://www.netlify.com/partners/technology/" rel="noopener" target="_blank">Technology Partner Program</a>.</li>
+    <li>A look at the <a href="https://www.netlify.com/legal/open-source-policy/" rel="noopener" target="_blank">Netlify Open Source plan</a> for sgit's documentation.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> Netlify has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote Netlify's own pages as of 24 September 2026.</li>
+    <li><b>Only the read side fits Netlify.</b> Writing to a vault needs a vault server, which runs elsewhere.</li>
+    </ul>
+
+  <h2 id="forward">If you work at Netlify</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="rackspace.html">← Rackspace Technology</a><a href="cloud-platforms.html">Cloud platforms →</a></div>
+</main>

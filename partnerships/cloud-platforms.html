@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai</title>
+<meta name="description" content="What sgit needs from a cloud (mostly storage, a little compute), where it stands today on each (AWS templates in beta, Google Cloud planned, Azure deployed but undocumented, Docker everywhere), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), why it is good for a cloud, and one page per cloud: AWS, Azure, Google Cloud, IBM Cloud, the European clouds, DigitalOcean, Rackspace and Netlify.">
+<link rel="canonical" href="https://sgit.ai/partnerships/cloud-platforms.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/partnerships/cloud-platforms.html">
+<meta property="og:title" content="sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai">
+<meta property="og:description" content="What sgit needs from a cloud (mostly storage, a little compute), where it stands today on each (AWS templates in beta, Google Cloud planned, Azure deployed but undocumented, Docker everywhere), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), why it is good for a cloud, and one page per cloud: AWS, Azure, Google Cloud, IBM Cloud, the European clouds, DigitalOcean, Rackspace and Netlify.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="cloud-platforms.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai", "headline": "sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai", "description": "What sgit needs from a cloud (mostly storage, a little compute), where it stands today on each (AWS templates in beta, Google Cloud planned, Azure deployed but undocumented, Docker everywhere), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), why it is good for a cloud, and one page per cloud: AWS, Azure, Google Cloud, IBM Cloud, the European clouds, DigitalOcean, Rackspace and Netlify.", "url": "https://sgit.ai/partnerships/cloud-platforms.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.4</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl here" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.4 &middot; 24 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / Cloud platforms</p>
+  <p class="eyebrow">Proposed partnerships &middot; sgit.ai with the clouds &middot; public material only &middot; 24 September 2026</p>
+  <h1>sgit runs on every cloud. We would like to work with them properly.</h1>
+  <p class="lead"><b>An invitation from our side, published in the open.</b> <a href="../index.html">sgit.ai</a> makes encrypted vaults: folders versioned like git, encrypted on the owner's device, stored as ciphertext, and opened in a browser with a key. What it needs from a cloud is mostly storage and a little compute, which means it runs on all of them. Today our story is mostly AWS, for historical reasons and because our startup credits are AWS credits. It should not stay that way. This page, and the page for each cloud linked from it, sets out what vaults bring to a cloud, how the partnership could work, and what we are asking for.</p>
+
+  <div class="note"><b>Nothing on these pages is confidential, and there has been no conversation yet.</b> Every statement about a cloud comes from its own public pages, linked. Every statement about sgit points at a published vault, the <a href="../deploy/index.html">deployment documentation</a> or a page on this site. And because sgit is Apache-2.0, <b>no cloud needs our permission to run it or to build a service on it.</b> A partnership is about doing that well and together, and it would be the best validation the technology could have.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>sgit needs very little from a cloud.</b> The heavy work, encryption and decryption, happens on the user's device. The cloud holds ciphertext in object storage, and a small stateless API moves it. Readers can even be served from a plain static host behind a CDN, with no server at all.</li>
+    <li><b>So it can run anywhere.</b> The server ships as one Docker image, configured only by environment variables. Its durable storage mode targets Amazon S3 today, and most other clouds offer an S3-compatible store, so wiring those in is the obvious next step. It is not documented or tested yet.</li>
+    <li><b>Our history is AWS.</b> The AWS templates are written and in beta, and the vault service behind this site's published vaults answers from Amazon S3 behind CloudFront. Google Cloud is documented as planned. The founder has deployed it on Azure and on Google Cloud, but neither is documented yet. That gap is the first thing a partnership would close.</li>
+    <li><b>There are two partnerships in one.</b> First, deploying vaults in the cloud's environment, with documentation, reference architectures and a marketplace listing, for customers who already run there. Second, services the cloud or its partners can sell on top of vaults.</li>
+    <li><b>Vaults are sovereign by construction.</b> The host only ever holds ciphertext, in whichever region the customer picks, and moving a vault between clouds is a copy. For European clouds, that is the whole pitch.</li>
+    <li><b>We want to be where customers look.</b> That means the clouds' marketplaces, their partner programmes, and their startup programmes.</li>
+  </ul>
+
+  <h2 id="needs">What sgit needs from a cloud</h2>
+  <figure class="shot" data-shot="pt-cloud.webp" data-dir="images/" data-alt="Diagram: the browser or CLI encrypts; a small stateless API moves ciphertext; object storage holds it under opaque ids; or a static host behind a CDN serves the same ciphertext to readers. Below: deploy it, host it, build on it, keep it sovereign."><figcaption>Mostly storage, a little compute. Everything that needs a key happens on the user's device.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Piece</th><th>What it does</th><th>What it needs from a cloud</th></tr>
+    <tr><td><b>The client</b></td><td>The <code>sgit</code> CLI or a browser. Encrypts every file, file name and commit message before upload, and decrypts on the way back.</td><td>Nothing. It runs on the user's machine.</td></tr>
+    <tr><td><b>The vault API</b></td><td>Batch reads and writes of ciphertext objects, plus the write-only <a href="../api/append-lanes.html">append lanes</a>. Stateless: no database, no sessions.</td><td>One container or one function. The same image runs on Docker, AWS Lambda, ECS Fargate, EC2, Cloud Run and Heroku, configured only by environment variables.</td></tr>
+    <tr><td><b>Storage</b></td><td>Ciphertext objects under opaque identifiers. Content-addressed objects never change, so they can be cached forever.</td><td>Object storage. The server's <code>s3</code> mode uses Amazon S3 today. Other clouds' S3-compatible stores are the next step, not yet tested. A <code>disk</code> mode runs on any mounted volume, and a <code>memory</code> mode serves ephemeral and air-gapped runs.</td></tr>
+    <tr><td><b>Readers, optionally</b></td><td>A published vault can be read from a static host with no API at all: the browser fetches ciphertext and decrypts locally.</td><td>A static host and a CDN. The deployment docs name GitHub Pages, S3 with CloudFront, Netlify, Cloudflare Pages, and Cloud Storage with Firebase.</td></tr>
+  </table></div>
+  <p>That is the whole footprint. <a href="../demos/fractal-graphs/performance.html">The measured cost page</a> puts the estate behind this site at 2,662 files and 295 MB of object storage, measured on 21 September 2026. Storage and egress are the costs. There are no instance hours to speak of.</p>
+
+  <h2 id="today">Where we are today, honestly</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Target</th><th>Status</th></tr>
+    <tr><td><b>Docker, anywhere</b></td><td>Works today. Memory, disk and S3-backed modes, documented in the <a href="../deploy/index.html">deployment docs</a>.</td></tr>
+    <tr><td><b>AWS</b></td><td>The historical home. CloudFormation templates for Lambda (container image with a function URL) and ECS Fargate are written, lint-clean and in beta. There is also an EC2 appliance and runbooks for new accounts and regions. The vault service the published vaults use answers from Amazon S3 behind CloudFront, <a href="https://sg-compute.sgit.ai/" rel="noopener" target="_blank">sg-compute</a> builds agent environments on AWS, and our startup credits are AWS credits. This website itself is served from GitHub Pages.</td></tr>
+    <tr><td><b>Google Cloud</b></td><td>The image is Cloud Run-ready: it honours the injected port and is configured by environment variables. The Cloud Run guide is documented as planned. Durable storage there means either Amazon S3 with cross-cloud credentials, or native Cloud Storage, which is planned.</td></tr>
+    <tr><td><b>Microsoft Azure</b></td><td>Deployed and working in the founder's own tests. It is not documented yet.</td></tr>
+    <tr><td><b>Static hosts</b></td><td>Documented. A published vault reads from any static host behind a CDN.</td></tr>
+    <tr><td><b>Everyone else</b></td><td>Any cloud with a container runtime can run the image today with disk or memory storage. Durable object storage on a non-AWS cloud needs its S3-compatible endpoint wired in, which is not yet documented or tested. Each cloud's page says so.</td></tr>
+  </table></div>
+
+  <h2 id="two">Two partnerships in one</h2>
+  <h3>1 &middot; Vaults in your environment</h3>
+  <p>For customers who already run on a cloud and want vaults there, in their own account, region and budget. This needs:</p>
+  <ul>
+    <li>a documented deployment for the cloud's own services, reviewed by someone who knows them;</li>
+    <li>a reference architecture a customer's architect can approve;</li>
+    <li>a template the customer can launch in one step;</li>
+    <li>a marketplace listing, so procurement can buy through the channel it already uses.</li>
+  </ul>
+  <p>We will write the documentation either way. With a partner it gets reviewed, tested on credits, and published where the cloud's customers look.</p>
+  <h3>2 &middot; Services on top of vaults</h3>
+  <p>The more interesting half. Because sgit is open source, a cloud or any of its consulting partners can build and sell services on it without asking. Some that follow directly from what is published here:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Service</th><th>What the customer gets</th><th>Worked example on this site</th></tr>
+    <tr><td><b>A managed vault service</b></td><td>Vaults run for them, in their account, where the operator never holds a key.</td><td><a href="../deploy/index.html">Deployment docs</a></td></tr>
+    <tr><td><b>Encrypted data rooms</b></td><td>A deal, a board or an audit shared as one vault with a read key per party, and full history.</td><td><a href="../demos/vaults/board/index.html">The board, as a vault</a></td></tr>
+    <tr><td><b>Agent handover</b></td><td>The output of an AI agent delivered as a vault: the result, its history and its app, in one read key.</td><td><a href="../demos/vaults/pentest-report/index.html">A penetration test, delivered as a vault</a></td></tr>
+    <tr><td><b>Connector twins</b></td><td>A journal and replay of everything an agent did through Gmail, Calendar or Slack, with a revert plan.</td><td><a href="../demos/vaults/connector-twin/index.html">Connector Twin</a></td></tr>
+    <tr><td><b>Evidence and compliance vaults</b></td><td>Regulation, controls and evidence as a versioned, hash-verified record an auditor can open.</td><td><a href="../demos/vaults/aiuc-1-conformance/index.html">AIUC-1 conformance</a>, <a href="../demos/vaults/regulation-graph/index.html">Regulation Graph</a></td></tr>
+    <tr><td><b>Encrypted publishing</b></td><td>Documentation and sites served from a static host, readable only with a key, and updated with a push.</td><td><a href="../demos/vaults/deploy-docs/index.html">Deploy Docs</a></td></tr>
+  </table></div>
+
+  <h2 id="why">Why it is good for a cloud</h2>
+  <ul>
+    <li><b>It is storage-shaped.</b> Every vault is object storage and egress in the cloud's own billing, growing with use, with no competing database or runtime to displace.</li>
+    <li><b>It lives in the customer's account.</b> Nothing about sgit pulls data out of the cloud or into ours.</li>
+    <li><b>It answers the sovereignty question at the data layer.</b> The host holds ciphertext it cannot read, in the region the customer picks, so a cloud can say that and have it be true.</li>
+    <li><b>It gives agents somewhere to put their work.</b> Every cloud now sells agent platforms. Those agents need a handover format that a person can open, check and keep.</li>
+    <li><b>It carries no vendor risk for the cloud's customers.</b> Apache-2.0, with the code, the plans and the investor materials public.</li>
+  </ul>
+
+  <h2 id="pages">The pages, one per cloud</h2>
+  <p>Each page stands on its own, so it can be sent to someone who works there. Each says where we are with that cloud, how vaults map onto its services, what a partnership could be, and what we are asking for.</p>
+  <div class="tablewrap"><table id="cloud-pages">
+    <tr><th>Cloud</th><th>Why them first</th><th>The page</th></tr>
+    <!--CLOUD_ROWS:start-->
+    <tr><td><b>AWS</b></td><td>Our historical home and the only cloud with templates written. The European Sovereign Cloud makes the sovereignty argument concrete.</td><td><a href="aws.html"><b>The AWS page &rarr;</b></a></td></tr>
+    <tr><td><b>Microsoft Azure</b></td><td>Deployed by the founder and working, but undocumented. The biggest gap between what runs and what is written down.</td><td><a href="azure.html"><b>The Microsoft Azure page &rarr;</b></a></td></tr>
+    <tr><td><b>Google Cloud</b></td><td>The image is already Cloud Run-ready and the guide is planned. Cloud Marketplace now lists AI agents as well as containers.</td><td><a href="google-cloud.html"><b>The Google Cloud page &rarr;</b></a></td></tr>
+    <tr><td><b>IBM Cloud</b></td><td>IBM Sovereign Core became generally available in May 2026. Enterprise customers with regulated data are exactly the vault use case.</td><td><a href="ibm-cloud.html"><b>The IBM Cloud page &rarr;</b></a></td></tr>
+    <tr><td><b>The European clouds</b></td><td>OVHcloud, Scaleway, Hetzner, IONOS and STACKIT. S3-compatible storage everywhere, and sovereignty as the reason customers choose them.</td><td><a href="european-clouds.html"><b>The European clouds page &rarr;</b></a></td></tr>
+    <tr><td><b>DigitalOcean</b></td><td>S3-compatible Spaces with a built-in CDN, simple App Platform, and a Marketplace that explicitly invites open-source projects.</td><td><a href="digitalocean.html"><b>The DigitalOcean page &rarr;</b></a></td></tr>
+    <tr><td><b>Rackspace Technology</b></td><td>A managed-services partner across the hyperscalers, with UK sovereign clouds for government, healthcare and police.</td><td><a href="rackspace.html"><b>The Rackspace Technology page &rarr;</b></a></td></tr>
+    <tr><td><b>Netlify</b></td><td>The static host a published vault needs, already named in our deployment docs. Encrypted sites on a CDN, updated with a push.</td><td><a href="netlify.html"><b>The Netlify page &rarr;</b></a></td></tr>
+    <!--CLOUD_ROWS:end-->
+  </table></div>
+
+  <h2 id="ask">What we ask of every cloud</h2>
+  <ol>
+    <li><b>A technical review</b> of the deployment guide for your platform, by someone who knows it, before we publish it.</li>
+    <li><b>Credits to test on</b>, so the guides are run end to end rather than written from documentation.</li>
+    <li><b>A route into your marketplace</b> for the open-source server, and later for vault products built on it.</li>
+    <li><b>An introduction</b> to your startup and ISV partner teams.</li>
+    <li><b>A first customer conversation</b>, where one of your customers needs encrypted handover or sovereign storage.</li>
+  </ol>
+
+  <h2 id="honest">What these pages do not claim</h2>
+  <ul>
+    <li><b>No cloud has endorsed sgit</b>, and we have not spoken to any of them about this. Where a page describes a programme or a product, it quotes the cloud's own page.</li>
+    <li><b>"Should work" is not "tested".</b> Each page says which it is. Docker works today, the AWS templates are in beta, and the founder's Azure and Google Cloud deployments are not yet written up.</li>
+    <li><b>sgit holds no certification.</b> It is open-source software with a stated <a href="../security/index.html">security model</a> and stated <a href="../docs/limitations.html">limits</a>.</li>
+  </ul>
+
+  <h2 id="forward">If you work at one of these clouds</h2>
+  <p>These pages are written to be forwarded as they are. Everything on them can be checked by the person who receives them. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a> The same argument, from the model side, is on <a href="ai-providers.html">the AI providers page</a>.</p>
+
+  <div class="pagenav"><a href="index.html">← Partnerships</a><a href="ai-providers.html">AI providers →</a></div>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.6.4')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.4</a> · <a href="../admin/index.html">engineering</a> · <a href="cloud-platforms.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

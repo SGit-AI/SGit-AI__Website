@@ -12,6 +12,7 @@
   <h2 id="build">Build briefs <span class="small dim">written to be executed</span></h2>
   <div class="tablewrap"><table>
     <tr><th>Brief</th><th>What it is for</th></tr>
+    <tr><td><a href="riskmandate-partnership-risk-and-sgit-mapping.html"><b>For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit</b></a></td><td>The second half of every partnership page on this site: the same deployment with and without a cloud or AI service, as two Agent Behaviour Policies and the delta between them. Plus the mapping nobody has written: sgit as a control, what it removes and what it leaves, against GDPR Articles 32, 25, 34(3)(a), 28 and 17. Built on RiskMandate's existing grammar and its 16 policy vaults.</td></tr>
     <tr><td><a href="graphs-sgit-ai-fractal-semantic-graphs.html"><b>For graphs.sgit.ai: Fractal Semantic Graphs</b></a></td><td>What the graphs site should take from the sgit.ai page that is now the fullest worked application of its thesis: the one-word correction (grammar survives the zoom, schema does not), the name and its lineage, where to link, the two diagrams and four vaults to reuse, three small fixes, and the prompt to paste.</td></tr>
     <tr><td><a href="vault-telemetry-append-lanes.html"><b>Telemetry from a published vault</b></a></td><td>How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder</td></tr>
     <tr><td><a href="sgit-ai-site-pages.html"><b>Reading a vault from a site page</b></a></td><td>For devs coding the <code>*.sgit.ai</code> sites. The vault API answers plain CORS GETs with no auth header, so a page reads ciphertext directly and decrypts in the visitor's browser. The house reader to copy rather than rewrite, the trust rule that inverts once there is no vault host, the ref-caching trap that fails silently, and the prompt to hand the site's agent</td></tr>
@@ -22,6 +23,10 @@
   </table></div>
 
   <h2 id="asks">Cross-team asks <span class="small dim">addressed, and status-tracked</span></h2>
+
+  <h3>→ To the RiskMandate.ai team: the risk side of the partnerships, and a risk mapping for sgit</h3>
+  <p><b>Status:</b> open · <b>Brief:</b> <a href="riskmandate-partnership-risk-and-sgit-mapping.html">For RiskMandate.ai</a> · <b>Trigger:</b> the cloud and AI provider partnership pages, published 24 September 2026.</p>
+  <p>Two asks. Publish the risk side of each partnership page as two behaviour policies and a delta, starting with managed identity against your own, a cloud's agent service against a laptop, and API against consumer chat. And write sgit up as a control, which is the business case for using it and currently exists nowhere. The brief records what RiskMandate already publishes so it is extended rather than repeated, and two inconsistencies found while reading: Level 1 is priced differently on two sites, and GDPR is modelled on one site and denied on another.</p>
 
   <h3>← Inbound, from the SG/API team: our own build brief was wrong, and it had already cost an agent a wrong turn</h3>
   <p><b>Status:</b> acted on, <a href="../../admin/versions.html">v0.2.58</a> · <b>Trigger:</b> an agent built <a href="../../demos/vaults/agent-permission-games/index.html">the games vault</a> from <a href="vault-telemetry-append-lanes.html">our telemetry brief</a> and could not get events out · <b>Direction:</b> inbound · <b>Follow-up sent:</b> seven questions, in the CLI repo.</p>

@@ -1,0 +1,56 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / Google Cloud</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with Google Cloud &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and Google Cloud</h1>
+  <p class="lead"><b>We would like to finish the Google Cloud path with Google.</b> The vault server image is already Cloud Run-ready, the Cloud Run guide is written down as planned, and the founder has deployed it on Google Cloud. What is missing is native Cloud Storage support, a reviewed guide, and a listing in Google Cloud Marketplace, which accepts open-source container images and, now, AI agents.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about Google Cloud comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so Google Cloud does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Cloud Run is the natural home.</b> The image honours the injected port and is configured only by environment variables, as Cloud Run expects.</li>
+    <li><b>Storage is the step to take.</b> Cloud Storage offers S3 interoperability through its XML API with HMAC keys, which may be enough for the server's S3 mode; a native backend is planned. Neither is tested by us yet.</li>
+    <li><b>The marketplace fits both halves.</b> <a href="https://docs.cloud.google.com/marketplace/docs/partners/offer-products" rel="noopener" target="_blank">Google Cloud Marketplace</a> lists open-source container images, and partner agents listed there appear in the Gemini Enterprise Agent Gallery.</li>
+    <li><b>What we would like:</b> a reviewed Cloud Run guide, Cloud Storage support, a place in <a href="https://cloud.google.com/partners/become-a-partner" rel="noopener" target="_blank">Partner Advantage</a>, and a Marketplace listing.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto Google Cloud</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On Google Cloud</th><th>Status</th></tr>
+    <tr><td><b>A small stateless API</b></td><td>Cloud Run</td><td>The image is Cloud Run-ready. The guide is documented as planned; the founder has run it.</td></tr>
+    <tr><td><b>Object storage</b></td><td>Cloud Storage</td><td>S3 interoperability through the XML API may be enough for the server's S3 mode. Not tested. A native backend is planned.</td></tr>
+    <tr><td><b>Static readers</b></td><td>Cloud Storage with Cloud CDN, or Firebase Hosting</td><td>Cloud Storage with Firebase is named in the static hosting guide.</td></tr>
+    <tr><td><b>Sovereign data</b></td><td><a href="https://cloud.google.com/sovereign-cloud" rel="noopener" target="_blank">Google Cloud's sovereign offerings</a></td><td>Complementary: the host holds ciphertext only.</td></tr>
+    <tr><td><b>Agents</b></td><td>Gemini, and the Gemini Enterprise Agent Gallery</td><td>See <a href="google-gemini.html">the Google Gemini page</a> for the model side.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with Google Cloud today</h2>
+  <p>Google Cloud is the second-best documented path after AWS: the image is ready for Cloud Run and the guide is on the plan. The founder has deployed it there. What stands between that and a customer running vaults on Google Cloud is storage, a review, and a listing.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; Finish the Cloud Run path</b></td><td>A reviewed Cloud Run guide with Cloud Storage, tested end to end, in the deployment docs.</td><td>A reviewer and credits.</td></tr>
+    <tr><td><b>2 &middot; A Marketplace listing</b></td><td>The server as an open-source container image in Google Cloud Marketplace, and later a vault agent listed through the Agent Gallery.</td><td>Partner Advantage, Build engagement.</td></tr>
+    <tr><td><b>3 &middot; Gemini and vaults</b></td><td>A vault connector for Gemini CLI and Google's agent products, so agent work lands in a vault on Google Cloud.</td><td>See the Gemini page.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking Google Cloud for</h2>
+  <ol>
+    <li>A technical review of the Cloud Run guide, and help confirming Cloud Storage through its S3 interoperability.</li>
+    <li>A place in <a href="https://cloud.google.com/partners/become-a-partner" rel="noopener" target="_blank">Partner Advantage</a> and a route into Google Cloud Marketplace.</li>
+    <li>Credits through the <a href="https://cloud.google.com/startup" rel="noopener" target="_blank">Google for Startups Cloud Program</a>.</li>
+    <li>An introduction to the team behind the Gemini Enterprise Agent Gallery.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> Google Cloud has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote Google Cloud's own pages as of 24 September 2026.</li>
+    <li><b>Cloud Storage through the S3 interoperability layer is untested by us.</b> It is the obvious first thing to try, not a claim that it works.</li>
+    </ul>
+
+  <h2 id="forward">If you work at Google Cloud</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="azure.html">← Microsoft Azure</a><a href="ibm-cloud.html">IBM Cloud →</a></div>
+</main>

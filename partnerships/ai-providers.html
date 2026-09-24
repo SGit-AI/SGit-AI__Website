@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai</title>
+<meta name="description" content="Three places where a model provider meets a vault (agents read and write vaults through a connector, vault apps call models without holding a key, vaults carry the agent's work to a person), what we already do with these providers, what we ask of each, and one page per provider: OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs.">
+<link rel="canonical" href="https://sgit.ai/partnerships/ai-providers.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/partnerships/ai-providers.html">
+<meta property="og:title" content="Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai">
+<meta property="og:description" content="Three places where a model provider meets a vault (agents read and write vaults through a connector, vault apps call models without holding a key, vaults carry the agent's work to a person), what we already do with these providers, what we ask of each, and one page per provider: OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="ai-providers.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai", "headline": "Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai", "description": "Three places where a model provider meets a vault (agents read and write vaults through a connector, vault apps call models without holding a key, vaults carry the agent's work to a person), what we already do with these providers, what we ask of each, and one page per provider: OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs.", "url": "https://sgit.ai/partnerships/ai-providers.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.4</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl here" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.4 &middot; 24 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / AI providers</p>
+  <p class="eyebrow">Proposed partnerships &middot; sgit.ai with the model and voice providers &middot; public material only &middot; 24 September 2026</p>
+  <h1>Models do the work. Vaults hold it. We would like to work with the people who make the models.</h1>
+  <p class="lead"><b>An invitation from our side, published in the open.</b> Almost everything on this site was made with AI: the site itself, the thirty-three published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.</p>
+
+  <div class="note"><b>Nothing on these pages is confidential, and there has been no conversation yet.</b> Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Agents need somewhere to put their work.</b> An agent that writes a report, a site, a test or a plan produces something a person has to receive, check and keep. A vault carries the result, its history and its app as one read key.</li>
+    <li><b>Documents need to call models without leaking keys.</b> A vault app can call a language model through the host, holding no key of its own. <a href="https://llms.sgit.ai/" rel="noopener" target="_blank">llms.sgit.ai</a> documents how, including the traps.</li>
+    <li><b>Agents need to read and write encrypted data safely.</b> Read with a read key, and write only through a write-only <a href="../api/append-lanes.html">append lane</a>. That is the shape of a connector that can be switched on without handing an agent the keys to everything.</li>
+    <li><b>Every provider now has a directory.</b> OpenAI's Plugins directory, Anthropic's Connectors Directory, Mistral's connectors in Vibe, Gemini CLI extensions, OpenRouter's app listings, the ElevenLabs Voice Library. A vault connector belongs in the ones that fit.</li>
+    <li><b>We have already done independent work on some of them.</b> <a href="https://providers.sgit.ai/" rel="noopener" target="_blank">providers.sgit.ai</a> reports what a provider cost on a named workload, what broke, and where the key has to live. The ElevenLabs report is published, and the OpenRouter report is next.</li>
+  </ul>
+
+  <h2 id="meet">Where a provider meets a vault</h2>
+  <figure class="shot" data-shot="pt-ai.webp" data-dir="images/" data-alt="Diagram: three places where an AI provider meets a vault. Agents read and write vaults through a connector. Vault apps call models without holding a key. Vaults carry the agent's work to a person. Below, what each side gets."><figcaption>Three places where a model provider and a vault meet. The provider holds the model; the customer holds the keys to the data.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Meeting point</th><th>What exists today</th><th>What a partnership would add</th></tr>
+    <tr><td><b>1 &middot; Agents read and write vaults</b></td><td>The vault API, read keys, and write-only append lanes, all documented. Agents already work in vaults through the CLI.</td><td>A vault connector, as a remote MCP server, built to each directory's rules and listed there. It does not exist yet, and it is the first piece of work.</td></tr>
+    <tr><td><b>2 &middot; Vault apps call models</b></td><td>The <code>sg.llm</code> bridge: the host makes the call on the app's behalf, so no key sits in the page. <a href="../demos/vaults/risk-mandate/index.html">Risk Mandate</a> calls an LLM this way.</td><td>Credentials made for this pattern, such as keys with a spend limit and an expiry, and first-class support in each provider's documentation.</td></tr>
+    <tr><td><b>3 &middot; Vaults carry the agent's work</b></td><td>This site, most of its vaults, and the <a href="../demos/vaults/pentest-report/index.html">penetration test delivered as a vault</a> are agent work handed over this way.</td><td>A "deliver as a vault" option inside the provider's own agent products.</td></tr>
+  </table></div>
+
+  <h2 id="today">What we already do with these providers</h2>
+  <ul>
+    <li><b>This site is built and published by Claude Code sessions</b> that share state through a vault. So are the deployment docs, the briefs and most of the vaults.</li>
+    <li><b>Vault apps reach models through OpenRouter.</b> The key is held by the host, sealed under the vault key, and never reaches the page.</li>
+    <li><b>Narration is rendered with ElevenLabs</b>, and <a href="https://elevenlabs.providers.sgit.ai/" rel="noopener" target="_blank">the independent report</a> records what it cost, what broke and which credential patterns the product supports.</li>
+    <li><b>Agent behaviour policies for several of these products are already published</b> at <a href="https://riskmandate.ai/agent-behaviour-policy.html" rel="noopener" target="_blank">RiskMandate.ai</a>: what an agent can reach in Claude Code, ChatGPT on the web, Claude with Gmail, and more. The risk side of these partnerships will be written there.</li>
+  </ul>
+
+  <h2 id="pages">The pages, one per provider</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Provider</th><th>Why them</th><th>The page</th></tr>
+    <!--AI_ROWS:start-->
+    <tr><td><b>OpenAI</b></td><td>ChatGPT and Codex list MCP-based plugins in a shared directory, and the Responses API can call a remote MCP server directly.</td><td><a href="openai.html"><b>The OpenAI page &rarr;</b></a></td></tr>
+    <tr><td><b>Anthropic</b></td><td>This site is built by Claude Code sessions sharing state through a vault. Claude reaches remote MCP servers and lists them in the Connectors Directory.</td><td><a href="anthropic.html"><b>The Anthropic page &rarr;</b></a></td></tr>
+    <tr><td><b>Mistral AI</b></td><td>A European model provider with EU hosting by default and MCP connectors in Vibe and the Agents API. With a European cloud and vaults, a fully European stack.</td><td><a href="mistral.html"><b>The Mistral AI page &rarr;</b></a></td></tr>
+    <tr><td><b>Google Gemini</b></td><td>Gemini CLI lists extensions automatically from public repositories, and partner agents on Cloud Marketplace reach the Gemini Enterprise Agent Gallery.</td><td><a href="google-gemini.html"><b>The Google Gemini page &rarr;</b></a></td></tr>
+    <tr><td><b>OpenRouter</b></td><td>The provider we use most. Its keys can carry a spend limit and a reset, the one credential pattern vault apps most need.</td><td><a href="openrouter.html"><b>The OpenRouter page &rarr;</b></a></td></tr>
+    <tr><td><b>ElevenLabs</b></td><td>We render narration with ElevenLabs and have published an independent report on it. One missing credential feature would make it safe inside vault apps.</td><td><a href="elevenlabs.html"><b>The ElevenLabs page &rarr;</b></a></td></tr>
+    <!--AI_ROWS:end-->
+  </table></div>
+
+  <h2 id="ask">What we ask of every provider</h2>
+  <ol>
+    <li><b>A review of the vault connector</b> against your directory's rules, before we submit it.</li>
+    <li><b>A credential that fits a vault app</b>: a key with a spend limit, an expiry, or both, or a short-lived token the host can mint.</li>
+    <li><b>Credits or access</b> through your startup programme, so the integrations are tested rather than described.</li>
+    <li><b>A technical contact</b> for the questions documentation does not answer.</li>
+    <li><b>A shared example</b>: one piece of agent work in your product, delivered as a vault, published on both sides.</li>
+  </ol>
+
+  <h2 id="honest">What these pages do not claim</h2>
+  <ul>
+    <li><b>No provider has endorsed sgit</b>, and we have not spoken to any of them about this.</li>
+    <li><b>The vault connector does not exist yet.</b> The pages describe what it would be and which directory rules it would meet.</li>
+    <li><b>Product names change quickly.</b> Le Chat became Vibe on 12 August 2026, and OpenAI's app directory is now its Plugins directory. The pages use the names on the providers' own pages as of 24 September 2026.</li>
+    <li><b>Risk is out of scope here.</b> How the choice between providers, or between an API and a consumer chat product, changes an agent's behaviour policy belongs to RiskMandate.ai, and a brief for that work is published in <a href="../docs/briefs/index.html">the briefs</a>.</li>
+  </ul>
+
+  <h2 id="forward">If you work at one of these providers</h2>
+  <p>These pages are written to be forwarded as they are. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a> The same argument, from the infrastructure side, is on <a href="cloud-platforms.html">the cloud platforms page</a>.</p>
+
+  <div class="pagenav"><a href="cloud-platforms.html">← Cloud platforms</a><a href="index.html">Partnerships →</a></div>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.6.4')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.4</a> · <a href="../admin/index.html">engineering</a> · <a href="ai-providers.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

@@ -414,6 +414,108 @@
     "desc": "An open call to password managers, identity providers and platform credential managers. sgit vaults are encrypted on the client and opened in a browser with one key, and keys now multiply faster than people can manage them by hand. We would rather use a key manager than build one. The page explains sgit for someone new to it, states what we are looking for (something that exists, a joint pilot, or an open specification), the requirements (browser first, key kinds kept apart, release only on approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, keys for agents), a sketch of the share flow, why the old word-based token was removed, and what we would bring."
   },
   {
+    "path": "partnerships/cloud-platforms.html",
+    "section": "partnerships",
+    "title": "sgit runs on every cloud: proposed partnerships with the cloud platforms, sgit.ai",
+    "desc": "What sgit needs from a cloud (mostly storage, a little compute), where it stands today on each (AWS templates in beta, Google Cloud planned, Azure deployed but undocumented, Docker everywhere), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), why it is good for a cloud, and one page per cloud: AWS, Azure, Google Cloud, IBM Cloud, the European clouds, DigitalOcean, Rackspace and Netlify."
+  },
+  {
+    "path": "partnerships/aws.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and AWS",
+    "desc": "We would like to work with AWS more closely, and we are already most of the way there. sgit's deployment templates were written for AWS first, the vault service behind the vaults published on this site answers from Amazon S3 behind CloudFront, and our startup credits are AWS credits. What is missing is the partnership: a reviewed reference architecture, a listing in AWS Marketplace, and a route to AWS customers who need encrypted handover or sovereign storage."
+  },
+  {
+    "path": "partnerships/azure.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Microsoft Azure",
+    "desc": "sgit runs on Azure. We just have not written it down yet. The founder has deployed the vault server on Azure and it works, but the published documentation covers Docker, AWS, Google Cloud and static hosts, not Azure. We would like to close that gap with Microsoft: a documented, reviewed deployment on Azure services, a listing in Microsoft Marketplace, and a route to the many organisations whose data already lives in Azure and Microsoft 365."
+  },
+  {
+    "path": "partnerships/google-cloud.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Google Cloud",
+    "desc": "We would like to finish the Google Cloud path with Google. The vault server image is already Cloud Run-ready, the Cloud Run guide is written down as planned, and the founder has deployed it on Google Cloud. What is missing is native Cloud Storage support, a reviewed guide, and a listing in Google Cloud Marketplace, which accepts open-source container images and, now, AI agents."
+  },
+  {
+    "path": "partnerships/ibm-cloud.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and IBM Cloud",
+    "desc": "We would like to work with IBM on sovereign, regulated data. IBM made digital sovereignty a product with IBM Sovereign Core, generally available since May 2026. sgit adds the piece that makes sovereignty hold at the data layer: encrypted vaults whose host, whoever runs it, only ever sees ciphertext. IBM Cloud has the storage and the serverless compute sgit needs, and IBM's customers have the regulated data that needs it."
+  },
+  {
+    "path": "partnerships/european-clouds.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and the European clouds",
+    "desc": "For European clouds, vaults are the sovereignty argument made concrete. OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs."
+  },
+  {
+    "path": "partnerships/digitalocean.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and DigitalOcean",
+    "desc": "DigitalOcean is the shortest path from \"I want to try vaults\" to a running server. Spaces is S3-compatible object storage with a built-in CDN, App Platform runs a container, and the DigitalOcean Marketplace explicitly invites open-source projects as 1-Click Apps. For the developers and small teams DigitalOcean serves, a one-click vault server is exactly the right size."
+  },
+  {
+    "path": "partnerships/rackspace.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Rackspace Technology",
+    "desc": "Rackspace is the partner who would run vaults for customers, on whichever cloud they use. Rackspace Technology operates managed services across the major clouds and offers UK sovereign clouds for government, healthcare, police and commercial customers. sgit is open source and needs very little infrastructure, which makes it a good fit for a managed-service provider: the value is in running it well, not in the licence."
+  },
+  {
+    "path": "partnerships/netlify.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Netlify",
+    "desc": "Netlify already hosts the kind of thing a published vault is. A vault can be read from a plain static host behind a CDN: the browser fetches ciphertext and decrypts it locally, with no server at all. Netlify is named in our static hosting guide for exactly that. The partnership we would like is to make \"an encrypted site, readable only with a key, updated with a push\" a documented pattern on Netlify."
+  },
+  {
+    "path": "partnerships/ai-providers.html",
+    "section": "partnerships",
+    "title": "Models do the work, vaults hold it: proposed partnerships with the AI providers, sgit.ai",
+    "desc": "Three places where a model provider meets a vault (agents read and write vaults through a connector, vault apps call models without holding a key, vaults carry the agent's work to a person), what we already do with these providers, what we ask of each, and one page per provider: OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs."
+  },
+  {
+    "path": "partnerships/openai.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and OpenAI",
+    "desc": "We would like vaults to be where ChatGPT and Codex put work that has to be handed over. OpenAI's agents already produce reports, code and analyses that someone else has to receive, check and keep. A vault carries that result, its history and its app as one read key. OpenAI's platform now reaches remote MCP servers from the Responses API and lists MCP-based plugins in a directory shared by ChatGPT and Codex, which is exactly where a vault connector would live."
+  },
+  {
+    "path": "partnerships/anthropic.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Anthropic",
+    "desc": "This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its thirty-three published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network."
+  },
+  {
+    "path": "partnerships/mistral.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Mistral AI",
+    "desc": "A European model, a European cloud, and vaults: a fully European AI stack in which no key leaves the customer. Mistral hosts data in the EU by default, supports MCP connectors in its Agents API and in Vibe (formerly Le Chat), and runs a partner programme with an integration tier. sgit provides the encrypted data layer, open source and runnable on any European cloud. Together they make a sovereignty story that holds at every layer."
+  },
+  {
+    "path": "partnerships/google-gemini.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and Google Gemini",
+    "desc": "The quickest listing on this page is one we can do ourselves. Gemini CLI supports MCP servers, and Gemini CLI extensions are listed automatically when a public repository carries the right topic and manifest. For the enterprise side, partner agents listed on Google Cloud Marketplace appear in the Gemini Enterprise Agent Gallery. We would like to do both properly, with Google, so that agent work done with Gemini can land in a vault."
+  },
+  {
+    "path": "partnerships/openrouter.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and OpenRouter",
+    "desc": "OpenRouter is how the vault apps on this site reach models, and it has the credential the pattern needs. A vault app calls a model through the host, and the key never reaches the page. The safest credential for that is one that is bounded: a spend limit and a reset. The independent provider report on this site records OpenRouter as \"the one provider in this family that can do pattern one\". We would like to make that a documented, supported pattern together."
+  },
+  {
+    "path": "partnerships/elevenlabs.html",
+    "section": "partnerships",
+    "title": "A proposed partnership between sgit.ai and ElevenLabs",
+    "desc": "We already publish an independent report on ElevenLabs, and it ends with one clear ask. The narration on this site is rendered with ElevenLabs, and elevenlabs.providers.sgit.ai records what it cost on a named workload, what broke, and which credential patterns the product supports. What would let a vault app use ElevenLabs safely, with no key in the page, is a key with a spend limit, or a short-lived token for text to speech."
+  },
+  {
+    "path": "docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html",
+    "section": "briefs",
+    "title": "For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit",
+    "desc": "A build brief to the RiskMandate.ai team. Part A: for every cloud and AI provider on the sgit.ai partnership pages, the same deployment with and without the service as two Agent Behaviour Policies and the delta, starting with managed identity, cloud agent services, and API against consumer chat. Part B: sgit as a control, what it removes and what it leaves, mapped to GDPR Articles 32, 25, 34(3)(a), 28 and 17 and to international transfers. Built on RiskMandate's existing grammar, with the prompt to hand the builder agent."
+  },
+  {
     "path": "docs/briefs/vault-telemetry-append-lanes.html",
     "section": "briefs",
     "title": "Telemetry from a published vault, a build brief",

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A proposed partnership between sgit.ai and the European clouds</title>
+<meta name="description" content="For European clouds, vaults are the sovereignty argument made concrete. OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs.">
+<link rel="canonical" href="https://sgit.ai/partnerships/european-clouds.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/partnerships/european-clouds.html">
+<meta property="og:title" content="A proposed partnership between sgit.ai and the European clouds">
+<meta property="og:description" content="For European clouds, vaults are the sovereignty argument made concrete. OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A proposed partnership between sgit.ai and the European clouds">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="european-clouds.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "A proposed partnership between sgit.ai and the European clouds", "headline": "A proposed partnership between sgit.ai and the European clouds", "description": "For European clouds, vaults are the sovereignty argument made concrete. OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs.", "url": "https://sgit.ai/partnerships/european-clouds.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.4</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl here" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.4 &middot; 24 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / the European clouds</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with the European clouds &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and the European clouds</h1>
+  <p class="lead"><b>For European clouds, vaults are the sovereignty argument made concrete.</b> OVHcloud, Scaleway, Hetzner, IONOS and STACKIT are chosen by customers who want their data in Europe, under European law, with a European provider. sgit adds the guarantee that even the provider cannot read it: the host holds ciphertext, the keys stay with the customer, and the code is open, so nobody can be bought out from under them. Every one of these clouds offers S3-compatible object storage, which is most of what sgit needs.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about the European clouds comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so the European clouds does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Storage is ready everywhere.</b> Each of the five offers S3-compatible object storage, which is the one thing a vault server really needs.</li>
+    <li><b>Compute varies.</b> Scaleway has Serverless Containers. The others run the container on managed Kubernetes, Cloud Foundry or a plain server, which the image supports.</li>
+    <li><b>Sovereignty is the sale.</b> <a href="https://corporate.ovhcloud.com/en/newsroom/news/ovhcloud-obtains-secnumcloud-qualification-snc-cloud-platform/" rel="noopener" target="_blank">OVHcloud's public cloud qualified for SecNumCloud on 1 September 2026</a>; STACKIT and IONOS hold BSI C5; Hetzner has been independent since 1997; Scaleway is European-owned.</li>
+    <li><b>What we would like:</b> one tested deployment on each, and a listing in the marketplaces that exist.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto the European clouds</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On the European clouds</th><th>Status</th></tr>
+    <tr><td><b>OVHcloud</b></td><td>Object Storage ("largely compatible with the S3 protocol"); Managed Kubernetes; <a href="https://opentrustedcloud.ovhcloud.com/en/program-description/" rel="noopener" target="_blank">Open Trusted Cloud</a> for the marketplace</td><td>Not tested by us.</td></tr>
+    <tr><td><b>Scaleway</b></td><td>S3-compatible Object Storage; <a href="https://www.scaleway.com/en/serverless-containers/" rel="noopener" target="_blank">Serverless Containers</a>; Edge Services; Marketplace and Partner Program</td><td>Not tested. The closest match to the AWS Lambda shape.</td></tr>
+    <tr><td><b>Hetzner</b></td><td><a href="https://www.hetzner.com/storage/object-storage/" rel="noopener" target="_blank">S3-compatible Object Storage</a>; Cloud servers with Docker</td><td>Not tested. The simplest and cheapest path: one server, one bucket.</td></tr>
+    <tr><td><b>IONOS Cloud</b></td><td>S3-compatible Object Storage; Managed Kubernetes; CDN; <a href="https://cloud.ionos.com/partner/isv" rel="noopener" target="_blank">ISV Partner Program</a> and Marketplace</td><td>Not tested.</td></tr>
+    <tr><td><b>STACKIT</b></td><td>S3-compatible Object Storage; Kubernetes Engine or Cloud Foundry; CDN; <a href="https://stackit.com/en/partner/stackit-marketplace-partner" rel="noopener" target="_blank">STACKIT Marketplace</a></td><td>Not tested.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with the European clouds today</h2>
+  <p>We have not deployed on any of these yet, and we should have. The founder's view, stated on <a href="sovereign-ai.html">the UK Sovereign AI page</a>, is that sovereignty without open source is one acquisition deep. The same argument applies to European clouds: a sovereign host is necessary, and an open, client-side-encrypted data layer on top of it is what makes the sovereignty survive a change of owner, a court order or a breach.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; One tested deployment each</b></td><td>The server with each provider's S3-compatible storage, documented in the deployment docs. This is also how the S3-endpoint support gets tested properly.</td><td>A test account and a technical contact.</td></tr>
+    <tr><td><b>2 &middot; A European reference</b></td><td>A published reference for a fully European stack: a European cloud, a European model provider such as <a href="mistral.html">Mistral</a>, and vaults, with no key ever leaving the customer.</td><td>Joint publication.</td></tr>
+    <tr><td><b>3 &middot; Marketplace listings</b></td><td>The server in OVHcloud's, Scaleway's, IONOS's and STACKIT's marketplaces, where their programmes allow it.</td><td>Each provider's ISV or partner programme.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking the European clouds for</h2>
+  <ol>
+    <li>A test account on each, to write and verify the deployment guide.</li>
+    <li>An introduction to each provider's ISV or partner programme, and to their marketplaces.</li>
+    <li>Startup programme support where it exists: <a href="https://startup.ovhcloud.com/en/" rel="noopener" target="_blank">OVHcloud</a>, <a href="https://www.scaleway.com/en/startup-program/" rel="noopener" target="_blank">Scaleway</a>, <a href="https://cloud.ionos.com/startup-program" rel="noopener" target="_blank">IONOS</a> and <a href="https://stackit.com/en/why-stackit/benefits/startup-program" rel="noopener" target="_blank">STACKIT</a> each run one.</li>
+    <li>A first European customer for whom "the host cannot read it" is the requirement.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> None of these providers has endorsed sgit, and we have not spoken to anyone at them about this. Programme and product descriptions quote each provider's own pages as of 24 September 2026.</li>
+    <li><b>None of this is tested.</b> Every row above is what the providers document, not what we have run.</li>
+    </ul>
+
+  <h2 id="forward">If you work at the European clouds</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="ibm-cloud.html">← IBM Cloud</a><a href="digitalocean.html">DigitalOcean →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.4</a> · <a href="../admin/index.html">engineering</a> · <a href="european-clouds.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

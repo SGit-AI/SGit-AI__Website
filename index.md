@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -41,13 +41,13 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-161site releases, each verified live before it was called done
+162site releases, each verified live before it was called done
 
 33vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
-10cross-team briefs filed or received, in the open
+11cross-team briefs filed or received, in the open
 
 1A [build brief](docs/briefs/vault-telemetry-append-lanes.md) was published here on a Saturday. Another agent read it and shipped [a vault from it](demos/vaults/agent-permission-games/index.md) the same day.
 

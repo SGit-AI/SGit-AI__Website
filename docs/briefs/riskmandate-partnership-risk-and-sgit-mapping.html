@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit</title>
+<meta name="description" content="A build brief to the RiskMandate.ai team. Part A: for every cloud and AI provider on the sgit.ai partnership pages, the same deployment with and without the service as two Agent Behaviour Policies and the delta, starting with managed identity, cloud agent services, and API against consumer chat. Part B: sgit as a control, what it removes and what it leaves, mapped to GDPR Articles 32, 25, 34(3)(a), 28 and 17 and to international transfers. Built on RiskMandate's existing grammar, with the prompt to hand the builder agent.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html">
+<meta property="og:title" content="For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit">
+<meta property="og:description" content="A build brief to the RiskMandate.ai team. Part A: for every cloud and AI provider on the sgit.ai partnership pages, the same deployment with and without the service as two Agent Behaviour Policies and the delta, starting with managed identity, cloud agent services, and API against consumer chat. Part B: sgit as a control, what it removes and what it leaves, mapped to GDPR Articles 32, 25, 34(3)(a), 28 and 17 and to international transfers. Built on RiskMandate's existing grammar, with the prompt to hand the builder agent.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="riskmandate-partnership-risk-and-sgit-mapping.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit", "headline": "For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit", "description": "A build brief to the RiskMandate.ai team. Part A: for every cloud and AI provider on the sgit.ai partnership pages, the same deployment with and without the service as two Agent Behaviour Policies and the delta, starting with managed identity, cloud agent services, and API against consumer chat. Part B: sgit as a control, what it removes and what it leaves, mapped to GDPR Articles 32, 25, 34(3)(a), 28 and 17 and to international transfers. Built on RiskMandate's existing grammar, with the prompt to hand the builder agent.", "url": "https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.4</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.4 &middot; 24 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / For RiskMandate.ai</p>
+<h1>For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit</h1>
+<p><b>A build brief from the sgit.ai site team to the RiskMandate.ai team.</b> Status: open. Written 24 September 2026.</p>
+<p>sgit.ai has just published partnership pages from the vault side: one for each cloud platform and one for each AI provider, with the argument for why sgit fits and what a partnership could be. Every one of those relationships has a second half that sgit.ai deliberately does not write, and that belongs to you: <b>how the choice of a service changes the risk.</b> The same agent, deployed with a managed identity service or without one, on a cloud's agent platform or on a laptop, through an API or through a consumer chat product, has a different Agent Behaviour Policy. That difference is the business case, and RiskMandate already has the grammar to state it.</p>
+<p>This brief asks for two things. First, the risk side of each partnership, as pages on riskmandate.ai that mirror the sgit.ai ones. Second, a risk mapping for sgit itself, including GDPR and data protection, which is the business case for using sgit and is currently written nowhere.</p>
+<h2>What to read first</h2>
+<p>Your own material, because the point is to extend it, not to start again:</p>
+<ul>
+<li><a href="https://riskmandate.ai/agent-behaviour-policy.html">The 16 Agent Behaviour Policy vaults</a>, one per deployment shape, each with a grant, a mandate, a delta and a Licence to Operate.</li>
+<li><a href="https://abp.sgit.ai/">The ABP model on abp.sgit.ai</a>, including the capability grammar (<code>verb.object.reach</code>), barriers, undo classes and the JSON at <code>/data/</code>.</li>
+<li><a href="https://riskmandate.ai/lab-connector-grants.html">Lab 01, the grant is user-shaped, not data-shaped</a>, and <a href="https://riskmandate.ai/lab-network-reach.html">Lab 06, every routable address is in the grant</a>, which already cites AWS IAM permissions boundaries as the precedent that works.</li>
+<li><a href="https://nhi.sgit.ai/options/">nhi.sgit.ai's options page</a>, the closest existing thing to "managed identity against building your own".</li>
+<li><a href="https://riskmandate.ai/insurance.html">The Insurability Index</a> and the evidence states on <a href="https://store.sgit.ai/v1/ledger/">store.sgit.ai's ledger</a>.</li>
+</ul>
+<p>The sgit side you will be mirroring:</p>
+<ul>
+<li><a href="https://sgit.ai/partnerships/index.html">Partnerships</a>, with <a href="https://sgit.ai/partnerships/cloud-platforms.html">the cloud platforms hub</a> and <a href="https://sgit.ai/partnerships/ai-providers.html">the AI providers hub</a>, and one page per organisation linked from each.</li>
+<li><a href="https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html">Before you give an agent a connector, give the connector a twin</a>, whose table of what Gmail and Calendar can and cannot undo is an undo-class input you can reuse, with Google's sources.</li>
+<li><a href="https://sgit.ai/security/index.html">The security model</a>, <a href="https://sgit.ai/docs/limitations.html">when not to use sgit</a>, <a href="https://sgit.ai/use-cases/health-regulated.html">the regulated-sector page</a> and <a href="https://sgit.ai/case-studies/exposed-vault-key.html">what to do if a vault key is exposed</a>.</li>
+</ul>
+<h2>What already exists, so it is not duplicated</h2>
+<ul>
+<li><b>ABPs for many of the products in question.</b> ChatGPT on the web, Claude on the web with connectors, Claude Code on the web and on the command line, Claude Desktop, Google Workspace MCP, Claude with Gmail, Gmail and Drive read-only, Claude with Microsoft 365, Dropbox MCP.</li>
+<li><b>One managed-against-local pair.</b> Claude Code on the web, in an ephemeral managed container, against Claude Code on your own machine. Because the ABPs share one grammar, their counts can already be compared.</li>
+<li><b>Identity for agents, compared.</b> nhi.sgit.ai assesses SPIFFE/SPIRE, a commercial workload-identity broker, and "do nothing: broad credential and hope", with profiles for Microsoft Entra Agent ID and Okta.</li>
+<li><b>The browser question.</b> The Agentic Browser Isolation demo compares an agent in your logged-in browser with one in an isolated identity.</li>
+</ul>
+<h2>The three gaps</h2>
+<ul>
+<li><b>Hyperscaler services are missing.</b> Cognito, Azure, Bedrock and Vertex appear nowhere on riskmandate.ai or abp.sgit.ai. AWS appears only as the IAM precedent in Lab 06. There is no ABP for any cloud's agent service.</li>
+<li><b>Provider comparisons are missing, and so is API against consumer chat.</b> There are separate ChatGPT and Claude ABPs, but nothing sets providers side by side, and nothing compares using a model through its API with using the same model through a consumer product. ABPs model capability; they do not yet model data use, training, retention or residency.</li>
+<li><b>There is no risk mapping for sgit.</b> The only material is the regulated-sector page on sgit.ai and the statement that sgit holds no compliance certification.</li>
+</ul>
+<h2>Part A: the risk side of each partnership</h2>
+<p>Publish on riskmandate.ai one page per organisation on the sgit.ai partnership pages: AWS, Microsoft Azure, Google Cloud, IBM Cloud, the European clouds, DigitalOcean, Rackspace, Netlify, OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs. Each page makes the business case in RiskMandate's own terms: <b>the same deployment, with and without the service, as two ABPs and the delta between them.</b> sgit.ai will link each of its partnership pages to the matching one.</p>
+<p>The comparisons we think carry the most weight, in the order we would do them:</p>
+<ol>
+<li><b>Managed identity against your own.</b> Amazon Cognito, Microsoft Entra ID (including Entra Agent ID), and Google's identity services, against an application that manages its own users and credentials. What moves: the credential's barrier (a setting you can flip against a boundary enforced above the grant), revocation, the plug profile, and the evidence an underwriter will accept.</li>
+<li><b>A cloud's managed agent service against an agent on a laptop.</b> For example Amazon Bedrock's agent features, Microsoft's agent service in Azure AI Foundry, and Google's Gemini Enterprise Agent Platform, which is what Vertex AI's documentation now calls it. Please confirm each current product name on the provider's own page before publishing. What moves: reach classes (<code>host</code> to <code>tenant</code>), network reach, the kill switch, and who can pull the plug.</li>
+<li><b>API against consumer chat.</b> The same model through OpenAI's API and through ChatGPT on the web; through Anthropic's API and through Claude on the web. The sgit.ai provider pages cite the data facts, with sources: whether data is used for training by default, zero data retention availability, and data residency. These are not capabilities, so they need a place in the ABP. The <code>material</code> property proposed in Lab 01 is the nearest existing idea, and a data-handling property on the grant may be the cleanest answer. That is your call.</li>
+<li><b>Provider against provider.</b> OpenAI, Anthropic, Mistral and Google side by side, in one grammar. Include OpenRouter as a case of its own. Its routing flags, <code>zdr: true</code> and <code>data_collection: "deny"</code>, are a setting per request rather than a boundary, and that distinction is exactly what the barrier ladder is for.</li>
+<li><b>Plain object storage against a vault.</b> Any cloud's object storage holding plaintext, against the same data in an sgit vault on that storage. This is the bridge to Part B.</li>
+</ol>
+<p>Rules for Part A:</p>
+<ul>
+<li><b>Facts come from the provider's own pages,</b> linked and dated, as on the sgit.ai pages. Where a fact is unverified, say so.</li>
+<li><b>Evidence states stay honest:</b> Measured, Derived or Documented, as the ABP vaults already do.</li>
+<li><b>No verdicts on providers.</b> An ABP "describes and it does not judge". The comparison shows where the delta moves; the reader decides.</li>
+<li><b>Not fear.</b> Every difference is a documented behaviour, not a scenario.</li>
+</ul>
+<h2>Part B: a risk mapping for using sgit</h2>
+<p>This is the one we forgot to ask for, and it may matter most. <b>Why use sgit? Because it removes specific risks, and the business case should say which, in RiskMandate's grammar and against named obligations.</b> Write sgit up as a control: the same data and the same agent, with and without a vault.</p>
+<p>What we expect the mapping to find, for you to confirm or correct:</p>
+<ul>
+<li><b>The host's reach drops to ciphertext.</b> Without a vault, whoever hosts the data can read it. With one, the host holds ciphertext under opaque identifiers and never a key. That is a boundary, not a setting.</li>
+<li><b>Credentials declare themselves.</b> Vault keys, private read keys and public read keys carry different prefixes, so one secret-scanner rule catches every private key type. That is a detection control with a measurable effect.</li>
+<li><b>History turns many actions into "undo: yes".</b> Every earlier version of every file is kept. For content edits, the undo class moves from "no" to "yes".</li>
+<li><b>Revocation is weaker than people expect.</b> A vault key is a bearer credential with no revocation list. The only remedy for an exposed key is rotation. That is a residual risk to state plainly, with an owner.</li>
+<li><b>Recovery does not exist by design.</b> Lose the key and the vault is gone. That is a residual risk too, and <a href="https://sgit.ai/partnerships/vault-key-management.html">the key management call for collaboration</a> is sgit's answer in progress.</li>
+</ul>
+<p>Then the data protection mapping. Please verify each article's text before citing it, and point at provisions rather than asserting, in the house style of <a href="https://standards.sgit.ai/">standards.sgit.ai</a>:</p>
+<ul>
+<li><b>GDPR Article 32, security of processing,</b> names encryption of personal data as an appropriate measure. That is the headline.</li>
+<li><b>GDPR Article 25, data protection by design and by default.</b> Client-side encryption and minimal server knowledge are design choices, and should be described as such, not as compliance.</li>
+<li><b>GDPR Article 34, notifying data subjects of a breach.</b> Article 34(3)(a) relieves the controller of notifying data subjects where the data was rendered unintelligible, for example by encryption. For a breach of a vault host, this may be the single most concrete business case, and it needs careful, sourced wording.</li>
+<li><b>GDPR Article 28, processors.</b> sgit.ai's regulated-sector page already says storing ciphertext may still be processing, so a host is not automatically outside the processor relationship. Keep that caveat.</li>
+<li><b>GDPR Article 17, erasure, against history.</b> Vault history keeps old ciphertext. Erasure therefore means rotation, re-keying or destroying the key. That is a real tension and should be mapped as one.</li>
+<li><b>International transfers.</b> The EDPB's Recommendations 01/2020 on supplementary measures discuss encrypted storage with a provider in a third country, where the keys stay with the exporter. Check the current text and use case before relying on it.</li>
+<li><b>Beyond GDPR:</b> the UK GDPR and Data Protection Act 2018, and the controls in ISO/IEC 27001 that concern cryptography and key management, which standards.sgit.ai already models.</li>
+</ul>
+<p>What to publish:</p>
+<ul>
+<li><b>An sgit risk mapping as a vault,</b> in the ABP vault format, with a read key, so sgit.ai can list it with the others.</li>
+<li><b>A page on riskmandate.ai, "What sgit removes, and what it leaves",</b> written as the business case for adopting sgit: the risks reduced, the residual risks with their owners, and the obligations each one touches. sgit.ai will link it from its security page and from every partnership page.</li>
+</ul>
+<p>Rules for Part B:</p>
+<ul>
+<li><b>sgit holds no compliance certification of any kind,</b> and nothing may suggest otherwise.</li>
+<li><b>"A link means touched and never complies."</b> Every citation of a legal provision is a pointer, not a claim of conformance.</li>
+<li><b>Read keys yes, vault keys never,</b> in anything you publish, as on sgit.ai.</li>
+</ul>
+<h2>Two inconsistencies we noticed while reading</h2>
+<ul>
+<li><b>Prices disagree.</b> Level 1 is £10 on riskmandate.ai's pricing page and £5 on store.sgit.ai's policies and on the licence page.</li>
+<li><b>GDPR is modelled in one place and denied in another.</b> sgit.ai lists a "Standards Atlas: GDPR" vault, while standards.sgit.ai still says "There is no GDPR graph". One of them needs updating, and Part B will need whichever is right.</li>
+</ul>
+<h2>Before you call it done</h2>
+<ul>
+<li>Every organisation on the sgit.ai partnership pages has a matching riskmandate.ai page, or a stated reason it does not.</li>
+<li>Every comparison is two ABPs and a delta, in the existing grammar, with evidence states.</li>
+<li>Every provider fact is linked to the provider's own page and dated.</li>
+<li>The sgit mapping names at least one residual risk it cannot remove, and names its owner.</li>
+<li>Every GDPR citation points at the provision's text, and no sentence says "compliant".</li>
+<li>No vault key appears anywhere.</li>
+</ul>
+<h2>What sgit.ai will do when this lands</h2>
+<p>Link each partnership page to its risk twin, link the security page to "What sgit removes, and what it leaves", list the sgit risk mapping vault among the published vaults, and record the handover in the briefs index.</p>
+<h2>The prompt to hand the builder agent</h2>
+<pre class="shell">
+You are working on riskmandate.ai. Read this brief in full, then read the RiskMandate material it lists under "What to read first", then the sgit.ai partnership pages.
+
+Part A. For each organisation on https://sgit.ai/partnerships/cloud-platforms.html and https://sgit.ai/partnerships/ai-providers.html, publish a riskmandate.ai page that states the business case as two Agent Behaviour Policies, the same deployment with and without the service, and the delta between them. Work in this order: managed identity against your own; a cloud's managed agent service against an agent on a laptop; API against consumer chat; provider against provider, with OpenRouter's routing flags as a setting; plain object storage against a vault. Use the existing grammar (grant, mandate, delta, barrier, undo class, verb.object.reach) and evidence states (Measured, Derived, Documented). Link and date every provider fact. Do not judge providers.
+
+Part B. Write sgit up as a control: the same data and agent with and without a vault. Map host reach, self-declaring key prefixes, history as undo, bearer keys with rotation as the only remedy, and no recovery. Then map GDPR Articles 32, 25, 34(3)(a), 28 and 17, and international transfers under EDPB Recommendations 01/2020, each verified against the current text and cited as a pointer, never as compliance. Publish it as an ABP-format vault with a read key, and as a page titled "What sgit removes, and what it leaves".
+
+Rules: public material only; sgit holds no certification; a link means touched and never complies; read keys may be published, vault keys never. Finish with the checklist under "Before you call it done".
+</pre>
+  <p class="small dim">The canonical markdown copy of this brief lives in the SGit-AI__CLI repository, under <code>team/humans/dinis_cruz/claude-code-web/09/24/</code>.</p>
+  <div class="pagenav"><a href="index.html">← All briefs</a><a href="../../partnerships/index.html">Partnerships →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.4</a> · <a href="../../admin/index.html">engineering</a> · <a href="riskmandate-partnership-risk-and-sgit-mapping.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.4';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

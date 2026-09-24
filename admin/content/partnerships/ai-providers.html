@@ -1,0 +1,69 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / AI providers</p>
+  <p class="eyebrow">Proposed partnerships &middot; sgit.ai with the model and voice providers &middot; public material only &middot; 24 September 2026</p>
+  <h1>Models do the work. Vaults hold it. We would like to work with the people who make the models.</h1>
+  <p class="lead"><b>An invitation from our side, published in the open.</b> Almost everything on this site was made with AI: the site itself, the thirty-three published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.</p>
+
+  <div class="note"><b>Nothing on these pages is confidential, and there has been no conversation yet.</b> Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>Agents need somewhere to put their work.</b> An agent that writes a report, a site, a test or a plan produces something a person has to receive, check and keep. A vault carries the result, its history and its app as one read key.</li>
+    <li><b>Documents need to call models without leaking keys.</b> A vault app can call a language model through the host, holding no key of its own. <a href="https://llms.sgit.ai/" rel="noopener" target="_blank">llms.sgit.ai</a> documents how, including the traps.</li>
+    <li><b>Agents need to read and write encrypted data safely.</b> Read with a read key, and write only through a write-only <a href="../api/append-lanes.html">append lane</a>. That is the shape of a connector that can be switched on without handing an agent the keys to everything.</li>
+    <li><b>Every provider now has a directory.</b> OpenAI's Plugins directory, Anthropic's Connectors Directory, Mistral's connectors in Vibe, Gemini CLI extensions, OpenRouter's app listings, the ElevenLabs Voice Library. A vault connector belongs in the ones that fit.</li>
+    <li><b>We have already done independent work on some of them.</b> <a href="https://providers.sgit.ai/" rel="noopener" target="_blank">providers.sgit.ai</a> reports what a provider cost on a named workload, what broke, and where the key has to live. The ElevenLabs report is published, and the OpenRouter report is next.</li>
+  </ul>
+
+  <h2 id="meet">Where a provider meets a vault</h2>
+  <figure class="shot" data-shot="pt-ai.webp" data-dir="images/" data-alt="Diagram: three places where an AI provider meets a vault. Agents read and write vaults through a connector. Vault apps call models without holding a key. Vaults carry the agent's work to a person. Below, what each side gets."><figcaption>Three places where a model provider and a vault meet. The provider holds the model; the customer holds the keys to the data.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Meeting point</th><th>What exists today</th><th>What a partnership would add</th></tr>
+    <tr><td><b>1 &middot; Agents read and write vaults</b></td><td>The vault API, read keys, and write-only append lanes, all documented. Agents already work in vaults through the CLI.</td><td>A vault connector, as a remote MCP server, built to each directory's rules and listed there. It does not exist yet, and it is the first piece of work.</td></tr>
+    <tr><td><b>2 &middot; Vault apps call models</b></td><td>The <code>sg.llm</code> bridge: the host makes the call on the app's behalf, so no key sits in the page. <a href="../demos/vaults/risk-mandate/index.html">Risk Mandate</a> calls an LLM this way.</td><td>Credentials made for this pattern, such as keys with a spend limit and an expiry, and first-class support in each provider's documentation.</td></tr>
+    <tr><td><b>3 &middot; Vaults carry the agent's work</b></td><td>This site, most of its vaults, and the <a href="../demos/vaults/pentest-report/index.html">penetration test delivered as a vault</a> are agent work handed over this way.</td><td>A "deliver as a vault" option inside the provider's own agent products.</td></tr>
+  </table></div>
+
+  <h2 id="today">What we already do with these providers</h2>
+  <ul>
+    <li><b>This site is built and published by Claude Code sessions</b> that share state through a vault. So are the deployment docs, the briefs and most of the vaults.</li>
+    <li><b>Vault apps reach models through OpenRouter.</b> The key is held by the host, sealed under the vault key, and never reaches the page.</li>
+    <li><b>Narration is rendered with ElevenLabs</b>, and <a href="https://elevenlabs.providers.sgit.ai/" rel="noopener" target="_blank">the independent report</a> records what it cost, what broke and which credential patterns the product supports.</li>
+    <li><b>Agent behaviour policies for several of these products are already published</b> at <a href="https://riskmandate.ai/agent-behaviour-policy.html" rel="noopener" target="_blank">RiskMandate.ai</a>: what an agent can reach in Claude Code, ChatGPT on the web, Claude with Gmail, and more. The risk side of these partnerships will be written there.</li>
+  </ul>
+
+  <h2 id="pages">The pages, one per provider</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Provider</th><th>Why them</th><th>The page</th></tr>
+    <!--AI_ROWS:start-->
+    <tr><td><b>OpenAI</b></td><td>ChatGPT and Codex list MCP-based plugins in a shared directory, and the Responses API can call a remote MCP server directly.</td><td><a href="openai.html"><b>The OpenAI page &rarr;</b></a></td></tr>
+    <tr><td><b>Anthropic</b></td><td>This site is built by Claude Code sessions sharing state through a vault. Claude reaches remote MCP servers and lists them in the Connectors Directory.</td><td><a href="anthropic.html"><b>The Anthropic page &rarr;</b></a></td></tr>
+    <tr><td><b>Mistral AI</b></td><td>A European model provider with EU hosting by default and MCP connectors in Vibe and the Agents API. With a European cloud and vaults, a fully European stack.</td><td><a href="mistral.html"><b>The Mistral AI page &rarr;</b></a></td></tr>
+    <tr><td><b>Google Gemini</b></td><td>Gemini CLI lists extensions automatically from public repositories, and partner agents on Cloud Marketplace reach the Gemini Enterprise Agent Gallery.</td><td><a href="google-gemini.html"><b>The Google Gemini page &rarr;</b></a></td></tr>
+    <tr><td><b>OpenRouter</b></td><td>The provider we use most. Its keys can carry a spend limit and a reset, the one credential pattern vault apps most need.</td><td><a href="openrouter.html"><b>The OpenRouter page &rarr;</b></a></td></tr>
+    <tr><td><b>ElevenLabs</b></td><td>We render narration with ElevenLabs and have published an independent report on it. One missing credential feature would make it safe inside vault apps.</td><td><a href="elevenlabs.html"><b>The ElevenLabs page &rarr;</b></a></td></tr>
+    <!--AI_ROWS:end-->
+  </table></div>
+
+  <h2 id="ask">What we ask of every provider</h2>
+  <ol>
+    <li><b>A review of the vault connector</b> against your directory's rules, before we submit it.</li>
+    <li><b>A credential that fits a vault app</b>: a key with a spend limit, an expiry, or both, or a short-lived token the host can mint.</li>
+    <li><b>Credits or access</b> through your startup programme, so the integrations are tested rather than described.</li>
+    <li><b>A technical contact</b> for the questions documentation does not answer.</li>
+    <li><b>A shared example</b>: one piece of agent work in your product, delivered as a vault, published on both sides.</li>
+  </ol>
+
+  <h2 id="honest">What these pages do not claim</h2>
+  <ul>
+    <li><b>No provider has endorsed sgit</b>, and we have not spoken to any of them about this.</li>
+    <li><b>The vault connector does not exist yet.</b> The pages describe what it would be and which directory rules it would meet.</li>
+    <li><b>Product names change quickly.</b> Le Chat became Vibe on 12 August 2026, and OpenAI's app directory is now its Plugins directory. The pages use the names on the providers' own pages as of 24 September 2026.</li>
+    <li><b>Risk is out of scope here.</b> How the choice between providers, or between an API and a consumer chat product, changes an agent's behaviour policy belongs to RiskMandate.ai, and a brief for that work is published in <a href="../docs/briefs/index.html">the briefs</a>.</li>
+  </ul>
+
+  <h2 id="forward">If you work at one of these providers</h2>
+  <p>These pages are written to be forwarded as they are. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a> The same argument, from the infrastructure side, is on <a href="cloud-platforms.html">the cloud platforms page</a>.</p>
+
+  <div class="pagenav"><a href="cloud-platforms.html">← Cloud platforms</a><a href="index.html">Partnerships →</a></div>
+</main>

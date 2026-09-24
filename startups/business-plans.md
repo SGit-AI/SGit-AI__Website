@@ -2,7 +2,7 @@
 
 > Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start: Connector Twin (a journal and replay of every connector call an AI agent makes, sold per agent) and Agent as Webmaster (websites small businesses change by asking). How to take one, what every plan contains, and the offer to build them with partners.
 
-*Source: <https://sgit.ai/startups/business-plans.html> · site v0.6.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/business-plans.html> · site v0.6.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

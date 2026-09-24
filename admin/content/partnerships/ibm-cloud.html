@@ -1,0 +1,54 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / IBM Cloud</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with IBM Cloud &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and IBM Cloud</h1>
+  <p class="lead"><b>We would like to work with IBM on sovereign, regulated data.</b> IBM made digital sovereignty a product with IBM Sovereign Core, generally available since May 2026. sgit adds the piece that makes sovereignty hold at the data layer: encrypted vaults whose host, whoever runs it, only ever sees ciphertext. IBM Cloud has the storage and the serverless compute sgit needs, and IBM's customers have the regulated data that needs it.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about IBM Cloud comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so IBM Cloud does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>The fit is regulated enterprise data.</b> Data rooms, evidence for auditors, and agent work handed over inside a regulated organisation.</li>
+    <li><b>The platform pieces exist.</b> <a href="https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-compatibility-api" rel="noopener" target="_blank">IBM Cloud Object Storage</a> supports a subset of the S3 API, and IBM Code Engine runs containers.</li>
+    <li><b>Sovereignty as software.</b> <a href="https://newsroom.ibm.com/2026-05-05-think-2026-ibm-makes-digital-sovereignty-operational-with-general-availability-of-ibm-sovereign-core" rel="noopener" target="_blank">IBM Sovereign Core</a> is deployed by customers or partners on OpenShift. The vault server is one container that could sit alongside it.</li>
+    <li><b>What we would like:</b> a place in <a href="https://www.ibm.com/partnerplus/isv" rel="noopener" target="_blank">IBM Partner Plus</a>, a listing in the IBM Cloud Catalog, and a first regulated customer.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto IBM Cloud</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On IBM Cloud</th><th>Status</th></tr>
+    <tr><td><b>A small stateless API</b></td><td>IBM Code Engine, or OpenShift</td><td>Should work: it is one container. Not tested by us.</td></tr>
+    <tr><td><b>Object storage</b></td><td>IBM Cloud Object Storage</td><td>Supports a subset of the S3 API. Whether it covers what the server uses is untested.</td></tr>
+    <tr><td><b>Static readers</b></td><td>Cloud Object Storage static website hosting</td><td>Should work, as for any static host. Not tested.</td></tr>
+    <tr><td><b>Sovereign deployment</b></td><td>IBM Sovereign Core</td><td>Complementary. Not tested.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with IBM Cloud today</h2>
+  <p>We have not deployed sgit on IBM Cloud. The pieces it needs are there, and IBM's customers are the organisations for whom encrypted, versioned, auditable data is not a feature but a requirement. This page is an invitation to test that together.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; A tested deployment</b></td><td>The server on Code Engine or OpenShift with Cloud Object Storage, documented and reviewed.</td><td>A technical contact and a test account.</td></tr>
+    <tr><td><b>2 &middot; Sovereign Core pairing</b></td><td>A reference for running vaults inside a Sovereign Core deployment, so the data stays encrypted end to end.</td><td>The Sovereign Core team.</td></tr>
+    <tr><td><b>3 &middot; A Catalog listing</b></td><td>The server in the IBM Cloud Catalog, through self-service Partner Center.</td><td>IBM Partner Plus, Build track.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking IBM Cloud for</h2>
+  <ol>
+    <li>A test account and a technical contact for Code Engine and Cloud Object Storage.</li>
+    <li>A conversation with the Sovereign Core team.</li>
+    <li>A place in <a href="https://www.ibm.com/partnerplus/isv" rel="noopener" target="_blank">IBM Partner Plus</a> and a route into the <a href="https://www.ibm.com/cloud/partners/catalog-sell" rel="noopener" target="_blank">IBM Cloud Catalog</a>.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> IBM Cloud has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote IBM Cloud's own pages as of 24 September 2026.</li>
+    <li><b>Nothing here has run on IBM Cloud yet.</b> Every "should work" on this page is a reasoned expectation.</li>
+    </ul>
+
+  <h2 id="forward">If you work at IBM Cloud</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="google-cloud.html">← Google Cloud</a><a href="european-clouds.html">The European clouds →</a></div>
+</main>

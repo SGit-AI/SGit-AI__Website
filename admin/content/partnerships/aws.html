@@ -1,0 +1,58 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / <a href="cloud-platforms.html">Cloud platforms</a> / AWS</p>
+  <p class="eyebrow">A proposed partnership &middot; sgit.ai with AWS &middot; public material only &middot; 24 September 2026</p>
+  <h1>A proposed partnership between sgit.ai and AWS</h1>
+  <p class="lead"><b>We would like to work with AWS more closely, and we are already most of the way there.</b> sgit's deployment templates were written for AWS first, the vault service behind the vaults published on this site answers from Amazon S3 behind CloudFront, and our startup credits are AWS credits. What is missing is the partnership: a reviewed reference architecture, a listing in AWS Marketplace, and a route to AWS customers who need encrypted handover or sovereign storage.</p>
+
+  <div class="note"><b>Nothing on this page is confidential, and there has been no conversation yet.</b> Every statement about AWS comes from its own public pages, linked. Every statement about sgit points at the <a href="../deploy/index.html">deployment documentation</a>, a published vault or a page on this site. sgit is Apache-2.0, so AWS does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on <a href="cloud-platforms.html">the cloud platforms page</a>.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>sgit fits AWS naturally.</b> Encrypted vaults are ciphertext in Amazon S3, a small stateless API on Lambda or Fargate, and optionally a static copy behind CloudFront.</li>
+    <li><b>The templates exist.</b> CloudFormation for Lambda (a container image with a function URL) and for ECS Fargate is written, lint-clean and in beta, with an EC2 appliance and runbooks for new accounts and regions.</li>
+    <li><b>The sovereignty story is real on AWS.</b> The <a href="https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud" rel="noopener" target="_blank">AWS European Sovereign Cloud</a> has been generally available since 14 January 2026, in Brandenburg, with S3, Lambda and ECS. A vault there is ciphertext in a sovereign region, readable by nobody but the key holder.</li>
+    <li><b>What we would like:</b> a review of the templates, a listing in <a href="https://aws.amazon.com/partners/marketplace/" rel="noopener" target="_blank">AWS Marketplace</a>, a place in the <a href="https://aws.amazon.com/partners/" rel="noopener" target="_blank">AWS Partner Network</a>, and a first customer conversation.</li>
+    </ul>
+
+  <h2 id="map">How vaults map onto AWS</h2>
+  <div class="tablewrap"><table>
+    <tr><th>sgit needs</th><th>On AWS</th><th>Status</th></tr>
+    <tr><td><b>Object storage</b></td><td>Amazon S3</td><td>Works today: the server's <code>s3</code> storage mode, with buckets named per account and region.</td></tr>
+    <tr><td><b>A small stateless API</b></td><td>AWS Lambda (container image and function URL), ECS Fargate, or an EC2 appliance</td><td>CloudFormation templates written and in beta.</td></tr>
+    <tr><td><b>Static readers</b></td><td>S3 and CloudFront</td><td>Documented in the deployment docs.</td></tr>
+    <tr><td><b>Sovereign region</b></td><td>AWS European Sovereign Cloud</td><td>Not yet tested. S3, Lambda and ECS are available there, so the same templates should apply.</td></tr>
+    <tr><td><b>Agent environments</b></td><td>Ephemeral compute</td><td><a href="https://sg-compute.sgit.ai/" rel="noopener" target="_blank">sg-compute</a> builds agent environments on AWS today.</td></tr>
+    </table></div>
+
+  <h2 id="today">Where we are with AWS today</h2>
+  <p>AWS is where sgit grew up, for two reasons that have nothing to do with preference: the founder has built on AWS for years, and the startup credits sgit has are AWS credits. The result is that the AWS path is the most complete one: the templates, the runbooks, the S3 storage mode and the published vaults all run there. That is also why this page asks for more than documentation. The next step on AWS is not whether it works but whether AWS customers can find it and buy it through the channel they already use.</p>
+
+  <h2 id="proposal">What a partnership could be</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Shape</th><th>What it would be</th><th>On their side</th></tr>
+    <tr><td><b>1 &middot; A reviewed reference architecture</b></td><td>The Lambda and Fargate templates reviewed by an AWS solutions architect, published as a reference architecture, and tested end to end in a standard region and in the European Sovereign Cloud.</td><td>A partner solutions architect, and credits for the testing.</td></tr>
+    <tr><td><b>2 &middot; A Marketplace listing</b></td><td>The open-source vault server as a free container product in AWS Marketplace, launched into the customer's own account. AWS Marketplace accepts free products and container delivery.</td><td>AWS Marketplace, through the AWS Partner Network.</td></tr>
+    <tr><td><b>3 &middot; Services on top</b></td><td>Encrypted data rooms, agent handover and connector twins, offered by AWS consulting partners on their customers' accounts. Every one is published here as a working vault.</td><td>The AWS Partner Network's consulting partners.</td></tr>
+    </table></div>
+
+  <h2 id="ask">What we are asking AWS for</h2>
+  <ol>
+    <li>A review of the CloudFormation templates by someone who knows Lambda and Fargate well.</li>
+    <li>Help testing in the AWS European Sovereign Cloud.</li>
+    <li>A route into <a href="https://aws.amazon.com/partners/marketplace/" rel="noopener" target="_blank">AWS Marketplace</a> for the open-source server as a free container product.</li>
+    <li>Membership of the <a href="https://aws.amazon.com/partners/" rel="noopener" target="_blank">AWS Partner Network</a> and an introduction to the ISV team.</li>
+    <li>Continued support through <a href="https://aws.amazon.com/startups/credits/" rel="noopener" target="_blank">AWS Activate</a>, which is how the AWS path was built.</li>
+    </ol>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>No endorsement.</b> AWS has not endorsed sgit, and we have not spoken to anyone there about this. Programme and product descriptions quote AWS's own pages as of 24 September 2026.</li>
+    <li><b>Beta means beta.</b> The Lambda and Fargate templates are written and lint-clean; they are not yet a reviewed reference architecture.</li>
+    <li><b>The sovereign region is untested by us.</b> We say the templates should apply there because the services they use are available, not because we have run them.</li>
+    </ul>
+
+  <h2 id="forward">If you work at AWS</h2>
+  <p>This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <div class="pagenav"><a href="cloud-platforms.html">← Cloud platforms</a><a href="azure.html">Microsoft Azure →</a></div>
+</main>
