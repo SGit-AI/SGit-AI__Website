@@ -2,7 +2,7 @@
 
 > We would like to work with AWS more closely, and we are already most of the way there. sgit's deployment templates were written for AWS first, the vault service behind the vaults published on this site answers from Amazon S3 behind CloudFront, and our startup credits are AWS credits. What is missing is the partnership: a reviewed reference architecture, a listing in AWS Marketplace, and a route to AWS customers who need encrypted handover or sovereign storage.
 
-*Source: <https://sgit.ai/partnerships/aws.html> · site v0.6.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/aws.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

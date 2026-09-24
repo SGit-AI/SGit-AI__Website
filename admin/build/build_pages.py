@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.6'
+SITE_VERSION = 'v0.6.7'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.6', '2026-09-24', 'this release',
+    ('v0.6.7', '2026-09-24', 'this release',
+     "A BRIEF FOR RISKMANDATE: INTERVIEW PAGES, AND A CHATGPT VOICE PROMPT. New build brief in "
+     "/docs/briefs/, and an open cross-team ask. It defines a reusable interview page for "
+     "riskmandate.ai: a link sent to one person, a prompt they paste into ChatGPT and continue in "
+     "voice mode, about twenty minutes of interview, and a structured written summary they send "
+     "back. The first page is for a founder strong in UK events, marketing and content that "
+     "spreads, testing the value proposition, the name, who to reach first, events, content angles "
+     "and a thirty, sixty and ninety day plan, with candid criticism asked for explicitly. The full "
+     "prompt is in the brief, describes RiskMandate only in the words riskmandate.ai already uses, "
+     "and is ready to send today. A later step proposes returning summaries through a write-only "
+     "append lane instead of email."),
+    ('v0.6.6', '2026-09-24', 'git 23096e71',
      "LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a "
      "business plan for padel coaches, and any teacher with students: capture the coach's picture "
      "of the player at the end of the lesson, when it is most complete, as a voice memo; an agent "

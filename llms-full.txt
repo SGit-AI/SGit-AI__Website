@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.6). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.7). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,13 +52,13 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-164site releases, each verified live before it was called done
+165site releases, each verified live before it was called done
 
 35vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
-11cross-team briefs filed or received, in the open
+12cross-team briefs filed or received, in the open
 
 1A [build brief](docs/briefs/vault-telemetry-append-lanes.md) was published here on a Saturday. Another agent read it and shipped [a vault from it](demos/vaults/agent-permission-games/index.md) the same day.
 
@@ -5165,6 +5165,7 @@ This site is built and run by an AI agent, and it doesn't work alone. When it hi
 
 | Brief | What it is for |
 |---|---|
+| [**For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it**](riskmandate-interview-page-and-voice-prompt.md) | A reusable page pattern for getting feedback from people whose knowledge is in their heads: send a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes and writes up their ideas, an action plan and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The prompt is included, ready to use. |
 | [**For RiskMandate.ai: the risk side of the partnerships, and a risk mapping for sgit**](riskmandate-partnership-risk-and-sgit-mapping.md) | The second half of every partnership page on this site: the same deployment with and without a cloud or AI service, as two Agent Behaviour Policies and the delta between them. Plus the mapping nobody has written: sgit as a control, what it removes and what it leaves, against GDPR Articles 32, 25, 34(3)(a), 28 and 17. Built on RiskMandate's existing grammar and its 16 policy vaults. |
 | [**For graphs.sgit.ai: Fractal Semantic Graphs**](graphs-sgit-ai-fractal-semantic-graphs.md) | What the graphs site should take from the sgit.ai page that is now the fullest worked application of its thesis: the one-word correction (grammar survives the zoom, schema does not), the name and its lineage, where to link, the two diagrams and four vaults to reuse, three small fixes, and the prompt to paste. |
 | [**Telemetry from a published vault**](vault-telemetry-append-lanes.md) | How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. Covers the append-lane mechanism, why publishing a write-only token is safe where publishing any other credential is not, the three things to verify before building, and the prompt to hand the builder |
@@ -5175,6 +5176,12 @@ This site is built and run by an AI agent, and it doesn't work alone. When it hi
 | [**Publishing a vault**](../../demos/vaults/publishing.md) | The seven steps behind every row of the [published vaults](../../demos/vaults/index.md) table, the tools that do each one, and the mistake that produced each rule. Written to be followed by another site's agent |
 
 ## Cross-team asks addressed, and status-tracked
+
+### → To the RiskMandate.ai team: an interview page pattern, and the first page on it
+
+**Status:** open · **Brief:** [RiskMandate interview page](riskmandate-interview-page-and-voice-prompt.md)
+
+A page to send to one person, carrying a prompt they paste into ChatGPT so it interviews them by voice and writes up their feedback. The first is for a founder who is strong at UK events, marketing and content that spreads, testing the value proposition, the name, the audience, events, content angles and a ninety-day plan. The pattern is meant to be reused for investors, CISOs, insurers and GRC practitioners.
 
 ### → To the RiskMandate.ai team: the risk side of the partnerships, and a risk mapping for sgit
 
@@ -5478,7 +5485,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.6, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.7, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5841,7 +5848,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-164**site releases since 14 August**
+165**site releases since 14 August**
 each verified live before it was called done
 
 35**vaults published with a public read key**
@@ -5853,7 +5860,7 @@ one question each, own repo, own history
 80**articles and release notes**
 all with a markdown twin and an RSS feed
 
-11**cross-team briefs, in the open**
+12**cross-team briefs, in the open**
 two of them corrected this site
 
 ~4,000**tests in the CLI, mutation-tested in CI**
@@ -7540,6 +7547,162 @@ ElevenLabs is part of how this site makes its explainers, and it is the first pr
 This page is written to be forwarded as it is, and everything on it can be checked by the person who receives it. [Who is asking, and how to reach them →](../about/index.md)
 
 [← OpenRouter](openrouter.md)[AI providers →](ai-providers.md)
+
+
+
+==============================================================================
+# For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it
+
+> A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.
+>
+> Page: https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html
+
+[Home](../../index.md) / [Briefs](index.md) / RiskMandate interview page
+
+# For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it
+
+**A build brief from the sgit.ai site team to the RiskMandate.ai team.** Status: open. Written 24 September 2026.
+
+The founder wants expert feedback on RiskMandate from people whose time is scarce and whose knowledge is mostly in their heads. The first is a startup founder who has been unusually good at getting into UK events, at marketing and promotion, at content that spreads, and at making things happen. Asking such a person to read a site and write feedback rarely works. Asking them to talk for twenty minutes usually does.
+
+So the ask is a page on riskmandate.ai that a person can be sent a link to. The page carries a prompt they copy into ChatGPT. ChatGPT then interviews them in voice mode, and at the end writes up their ideas, an action plan and their candid feedback, which they send back.
+
+This will not be the last one. The same shape will be wanted for investors, for security leaders, for insurers and for GRC practitioners. So the brief asks for a reusable page pattern, and then for the first page built on it.
+
+The prompt is written out in full below and is ready to use today. The founder can send it directly while the page is being built.
+
+## What to read first
+
+- [riskmandate.ai's home page](https://riskmandate.ai/): the value proposition the interview will test, in the site's own words: "Know what your agents can do. Not what they did. What they can."
+- [For corporate](https://riskmandate.ai/for-corporate.html) and [Licence to operate](https://riskmandate.ai/licence-to-operate.html): the two framings the interviewee is most likely to react to.
+- [The published behaviour policies](https://riskmandate.ai/agent-behaviour-policy.html): the sixteen free examples, which are the most shareable thing RiskMandate has.
+- [The earlier brief from sgit.ai to RiskMandate](https://sgit.ai/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html), for the house rules on facts and claims.
+
+## Part A: the interview page pattern
+
+A page that exists to be sent to one kind of person, and that turns twenty minutes of their talking into written, usable feedback. Every page built on the pattern has the same six parts, in this order:
+
+1. **Who this is for, and why you.** Two sentences. Written to the reader, generic enough to send to anyone in that group, specific enough that they know why they were chosen.
+2. **What we want to learn.** Three to six bullets. The reader should know the questions before agreeing to answer them.
+3. **How it works, in three steps.** Copy the prompt. Paste it into a new ChatGPT chat and switch to voice. Talk for about twenty minutes, then send us the summary it writes.
+4. **The prompt**, in a box with a copy button, and a note that it also works typed, or in another assistant.
+5. **What happens to your answers.** Nothing is sent anywhere by the page. The conversation stays in the reader's own ChatGPT account until they choose to send the summary. Ask them not to share anything confidential about their own company or clients.
+6. **Send it back.** One clear route: an email address, or a form. See "Later" for a better one.
+
+Rules for every interview page:
+
+- **No tracking of what people paste.** The page is static. The prompt runs in the reader's own assistant.
+- **The prompt tells the assistant what RiskMandate is**, in a few plain sentences, because the interviewee may never have seen the site.
+- **One question at a time, short turns, in plain speech.** Voice mode reads everything aloud, so no lists, tables or long preambles during the interview.
+- **The reader controls the length.** About twenty minutes, and "skip" or "wrap up" work at any time.
+- **The write-up is the product.** The final summary must be structured, specific and attributed to the interviewee's own words where it matters.
+- **Candour is asked for explicitly.** The most useful feedback is the unflattering kind, and the prompt says so.
+
+## Part B: the first page, for a founder who knows events, marketing and content
+
+**Proposed path:** `riskmandate.ai/interview/founder-marketing.html`, or wherever the site keeps pages of this kind.
+
+**Who it is for:** founders and operators who are good at getting into events, at marketing and promotion, at content that spreads, and at making things happen, particularly in the UK.
+
+**What we want to learn:**
+
+- Whether the value proposition lands, and how they would say it instead.
+- Whether the name RiskMandate works.
+- Who RiskMandate should reach first, and where those people gather.
+- Which UK events to be at, and how to get on stage or in the room.
+- Which content angles and formats would spread.
+- What they would do in the first thirty, sixty and ninety days.
+
+### The prompt
+
+Paste everything between the lines as the first message in a new ChatGPT chat, then switch to voice mode.
+
+You are going to interview me, by voice, to help a startup called RiskMandate. Be a warm, curious, efficient interviewer. I have about twenty minutes.
+
+**What RiskMandate is.** RiskMandate.ai helps organisations know what their AI agents can do. Its line is: "Know what your agents can do. Not what they did. What they can." Its main product is an Agent Behaviour Policy: a short record, for one AI agent in one deployment, of everything the agent can actually reach, what the business authorised it to do, and the gap between the two, written so that a CEO, a CTO, a CISO and an insurer can all stand behind the same document. It builds towards a "licence to operate" for each agent: the business as the authority, the policy as the evidence, and the agent operating on stated terms for a stated period. Sixteen example policies are published free, for tools such as Claude Code, ChatGPT and Gmail connectors. The context: insurers are starting to exclude AI from cover, and businesses answer for what their agents do. RiskMandate is UK-based, early-stage and founder-led, and it is not an insurer.
+
+**Who I am.** I am a founder who is good at events, marketing, promotion, content that spreads and making things happen. Treat me as the expert. You do not need to explain marketing to me.
+
+**What RiskMandate wants from me:**
+
+1. Whether the value proposition lands, and how I would say it.
+2. Whether the name "RiskMandate" works.
+3. Who to reach first, and where they gather.
+4. Which UK events matter, and how to get on stage or into the room.
+5. Content angles and formats that would spread.
+6. A practical action plan for the next thirty, sixty and ninety days.
+7. My most candid criticism.
+
+**How to run the interview:**
+
+- Start by asking my name, what I do now, and one thing I have promoted that went well. Keep that part to two minutes.
+- Then give me the one-paragraph description of RiskMandate above, in your own words, and ask for my first reaction before anything else.
+- Then work through the seven topics. Ask one question at a time. Keep your turns short: this is voice, so no lists, no headings, and no long summaries while we talk.
+- Follow up when I say something interesting. Ask for specifics: names of events, formats, examples, numbers, people or types of people.
+- Ask me to be blunt, and do not argue with criticism. If I am vague, ask for an example.
+- About every five minutes, tell me in one sentence how far through we are.
+- If I say "skip", move on. If I say "wrap up", go straight to the summary.
+- Do not invent facts about RiskMandate. If I ask something you do not know, say so and note it as a question for the founder.
+
+**When we finish, write a summary in text**, not read aloud, with these sections:
+
+1. **First reaction**, in my words.
+2. **The value proposition**: what landed, what did not, and up to three one-line rewrites I suggested or agreed with.
+3. **The name**: my verdict, my reasons, and any alternatives or taglines I liked.
+4. **Who to reach first**, and where they gather.
+5. **Events**: a list of named UK events or kinds of event, with how to get in for each.
+6. **Content angles**: the hooks and formats I suggested, each with one example post, talk title or headline.
+7. **Action plan**: a table with next 30 days, 60 days and 90 days, and for each item who does it and what "done" looks like.
+8. **Candid criticism**: the hardest points I made, in my words.
+9. **Introductions I offered**, if any.
+10. **Open questions** for the founder.
+
+Then ask me whether I am happy for this summary to be shared with RiskMandate's founder, and remind me to copy it and send it back.
+
+### Why the prompt is built this way
+
+- **The description of RiskMandate is inside the prompt**, because the interviewee may never open the site. It uses the site's own words and claims only what the site claims, including that RiskMandate is not an insurer.
+- **The interviewee is treated as the expert.** People who are good at promotion lose patience with being explained to.
+- **Voice rules are explicit**, because voice mode will otherwise read out long structured answers.
+- **The summary is the deliverable**, with fixed sections, so answers from several interviewees can be compared side by side.
+- **Consent is asked at the end**, before anything is shared.
+
+## Later: sending the summary back without email
+
+An sgit vault can receive messages through a write-only [append lane](https://sgit.ai/api/append-lanes.html). A token that can only write is safe to publish, as [the telemetry brief](https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html) explains. A "send it back" box on the page could append the pasted summary straight into a RiskMandate vault, encrypted, with nothing stored anywhere else. Worth doing once there are several interviews to compare. Not needed for the first.
+
+## Before you call it done
+
+- The page has the six parts, in order, and reads well on a phone.
+- The copy button copies the prompt exactly, including the line breaks.
+- The prompt has been run once, end to end, in ChatGPT voice mode, and the summary came back with all ten sections.
+- Nothing on the page or in the prompt claims more than riskmandate.ai already claims.
+- The pattern is written down as a template, so the next interview page takes an hour, not a day.
+
+## Likely next pages on the same pattern
+
+- An investor, on the fundraising story.
+- A CISO, on whether they would buy a behaviour policy, and at what price.
+- An insurer or broker, on what evidence would change a decision about cover.
+- A GRC practitioner, on the acceptance loop described in "Every risk is already accepted" on sgit.ai.
+
+## The prompt to hand the builder agent
+
+```
+
+You are working on riskmandate.ai. Read this brief in full.
+
+Part A. Create a reusable "interview page" template with six parts in this order: who this is for and why you; what we want to learn; how it works in three steps (copy, paste into a new ChatGPT chat and switch to voice, talk about twenty minutes and send the summary back); the prompt in a box with a copy button; what happens to your answers (nothing is sent by the page; do not share confidential information); and how to send it back. The page is static, with no tracking.
+
+Part B. Build the first page on the template, for founders who are good at UK events, marketing, promotion and content that spreads, at /interview/founder-marketing.html or the site's equivalent. Use the prompt in this brief exactly, and only change it to correct a fact about RiskMandate that the site states differently.
+
+Run the prompt once in ChatGPT voice mode and check that the summary has all ten sections. Finish with the checklist under "Before you call it done".
+
+```
+
+The canonical markdown copy of this brief lives in the SGit-AI__CLI repository, under `team/humans/dinis_cruz/claude-code-web/09/24/`.
+
+[← All briefs](index.md)[The earlier RiskMandate brief →](riskmandate-partnership-risk-and-sgit-mapping.md)
 
 
 
@@ -9304,11 +9467,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.6**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.7**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.6 | 2026-09-24 | this release | LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a business plan for padel coaches, and any teacher with students: capture the coach's picture of the player at the end of the lesson, when it is most complete, as a voice memo; an agent turns it into a lesson note and three points for the player's next games, in the player's own data vault; the player adds match notes and clips; and the next coach, in any club or country, starts from a two-minute briefing. The app replays one invented player's record across four lessons with three coaches in London and Lisbon, with the raw memos, the notes, the player view, briefings, and a themes matrix showing what each coach saw. The plan sets out four phases (capture first, nothing else until it works), the two-vault architecture with a write-only lane per coach, what exists today, pay-on-demand credits instead of a subscription, new coach income (remote reviews, drill plans, follow-ups, content), the club variant and its tension, other teaching domains, risks (children, other players in clips, undisclosed commissions) and a calculator that shows a small business at 200 coaches. The coach-memo prompt is ready to paste for phase one. Listed on the business plans page. |
+| v0.6.7 | 2026-09-24 | this release | A BRIEF FOR RISKMANDATE: INTERVIEW PAGES, AND A CHATGPT VOICE PROMPT. New build brief in /docs/briefs/, and an open cross-team ask. It defines a reusable interview page for riskmandate.ai: a link sent to one person, a prompt they paste into ChatGPT and continue in voice mode, about twenty minutes of interview, and a structured written summary they send back. The first page is for a founder strong in UK events, marketing and content that spreads, testing the value proposition, the name, who to reach first, events, content angles and a thirty, sixty and ninety day plan, with candid criticism asked for explicitly. The full prompt is in the brief, describes RiskMandate only in the words riskmandate.ai already uses, and is ready to send today. A later step proposes returning summaries through a write-only append lane instead of email. |
+| v0.6.6 | 2026-09-24 | git 23096e71 | LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a business plan for padel coaches, and any teacher with students: capture the coach's picture of the player at the end of the lesson, when it is most complete, as a voice memo; an agent turns it into a lesson note and three points for the player's next games, in the player's own data vault; the player adds match notes and clips; and the next coach, in any club or country, starts from a two-minute briefing. The app replays one invented player's record across four lessons with three coaches in London and Lisbon, with the raw memos, the notes, the player view, briefings, and a themes matrix showing what each coach saw. The plan sets out four phases (capture first, nothing else until it works), the two-vault architecture with a write-only lane per coach, what exists today, pay-on-demand credits instead of a subscription, new coach income (remote reviews, drill plans, follow-ups, content), the club variant and its tension, other teaching domains, risks (children, other players in clips, undisclosed commissions) and a calculator that shows a small business at 200 coaches. The coach-memo prompt is ready to paste for phase one. Listed on the business plans page. |
 | v0.6.5 | 2026-09-24 | git 138dbe4e | EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); accepted versus acceptable, with the EU AI Act's Article 9(5) quoted and scoped to providers of high-risk AI systems, which never defines acceptable; every risk with a boss and every path to the board; fractal risk registers from the board to the bytes; established by facts and ended by facts; a vault per material risk as the evidence pack of governance (proposed here); twins as the direction (designs, not built); why executives resist; and why it fits beside every GRC platform. Three new diagrams plus Risk Graph Explorer views. The thirty-fourth vault, Risk Acceptance Office (odn10gfp, 32 files), replays one invented risk over six weeks with a hash-chained decision record verified in the browser and a side-by-side of the register row, and carries the business plan: operating model, the GRC gaps, services priced per material risk, a calculator, go-to-market starting from the resistance, ninety days, risks and open questions. Research found four places where the published method disagrees with itself; the plan picks a position on each and says so. Listed on the business plans page. |
 | v0.6.4 | 2026-09-24 | git 9f174c35 | PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new pages under /partnerships/, written from the vault side and each one forwardable on its own. The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), where it stands on each, honestly (Docker everywhere; AWS templates in beta; Google Cloud planned; Azure deployed by the founder but undocumented; the S3 mode targets Amazon S3 and S3-compatible stores are untested), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), and one page each for AWS, Azure, Google Cloud, IBM Cloud, the European clouds (OVHcloud, Scaleway, Hetzner, IONOS, STACKIT), DigitalOcean, Rackspace and Netlify. The AI providers hub sets out three meeting points (agents read and write vaults through a connector, vault apps call models without a key, vaults carry the agent's work) and one page each for OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs. Every provider fact is from the provider's own pages, researched today; credit amounts are left out because several could not be confirmed. Research corrected two first drafts: this site is served from GitHub Pages, not AWS, and the server's S3 mode is only proven on Amazon S3. The brief for RiskMandate.ai, built on a survey of its 79 pages and 16 policy vaults, asks for the risk side of every partnership as two behaviour policies and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), 28 and 17. |
 | v0.6.3 | 2026-09-24 | git ae3f8714 | BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of every request and response an agent makes, appended to a write-only lane, processed later and replayed into the inbox and calendar as the agent saw them, is the minimum requirement for deploying an agent with provenance, explanation and undo. Every claim about Gmail and Calendar is Google's own and linked: the API delete 'cannot be undone', Undo Send is an interface feature, trash keeps 30 days, the administrator's bulk restore 25, Vault 'isn't designed to be a backup or archive tool' and keeps one Calendar revision a day. Research corrected two first assumptions (Vault has covered Calendar since November 2023; the admin audit log does record some earlier values) and the text says so. The thirty-third vault, Connector Twin (7tkvspwp, 31 files), opens on a working replay of an invented seventeen-call Gmail and Calendar session: a slider rebuilds the inbox and calendar at any step, before and after for every write, a graded revert plan, what the agent said against what the journal shows, and a hash chain verified in the browser, which ran inside the vault host's sandbox. Behind it, the business plan: facts with sources, architecture, three capture modes, packages per agent, a calculator, go-to-market, ninety days, risks, open questions, the journal specification, revert rules and three prototypes. New page /startups/business-plans.html gives the plans their own home, listed in the Why menu, with Agent as Webmaster and Connector Twin, how to take one, and the offer to build them with partners. |

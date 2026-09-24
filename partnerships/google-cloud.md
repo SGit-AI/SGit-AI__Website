@@ -2,7 +2,7 @@
 
 > We would like to finish the Google Cloud path with Google. The vault server image is already Cloud Run-ready, the Cloud Run guide is written down as planned, and the founder has deployed it on Google Cloud. What is missing is native Cloud Storage support, a reviewed guide, and a listing in Google Cloud Marketplace, which accepts open-source container images and, now, AI agents.
 
-*Source: <https://sgit.ai/partnerships/google-cloud.html> · site v0.6.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/google-cloud.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

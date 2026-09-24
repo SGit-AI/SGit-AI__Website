@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.6).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.7).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (29)
+## Pages (30)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -13,6 +13,7 @@
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 - [Cross-team briefs](/docs/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+- [For RiskMandate.ai: an interview page](/docs/briefs/riskmandate-interview-page-and-voice-prompt.md): A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.
 - [For RiskMandate.ai: the risk side of the partnerships](/docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.md): A build brief to the RiskMandate.ai team. Part A: for every cloud and AI provider on the sgit.ai partnership pages, the same deployment with and without the service as two Agent Behaviour Policies and the delta, starting with managed identity, cloud agent services, and API against consumer chat. Part B: sgit as a control, what it removes and what it leaves, mapped to GDPR Articles 32, 25, 34(3)(a), 28 and 17 and to international transfers. Built on RiskMandate's existing grammar, with the prompt to hand the builder agent.
 - [Telemetry from a published vault](/docs/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 - [Working on a vault: start here](/docs/guidance/index.md): The first page to read before building, publishing or changing a vault. The practices that get repeated most, pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version, plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.

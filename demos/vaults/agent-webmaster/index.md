@@ -2,7 +2,7 @@
 
 > A complete business plan for a company that gives small businesses a website they can change by asking, with an AI agent as the webmaster: architecture, workflow, packages and prices, a unit-economics calculator, go-to-market, the first ninety days, the investor case, the risks, four mock-up sites and the prototypes to run the first customer. Published with its read key, written for somebody else to run.
 
-*Source: <https://sgit.ai/demos/vaults/agent-webmaster/index.html> · site v0.6.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/agent-webmaster/index.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

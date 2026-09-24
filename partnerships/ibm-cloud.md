@@ -2,7 +2,7 @@
 
 > We would like to work with IBM on sovereign, regulated data. IBM made digital sovereignty a product with IBM Sovereign Core, generally available since May 2026. sgit adds the piece that makes sovereignty hold at the data layer: encrypted vaults whose host, whoever runs it, only ever sees ciphertext. IBM Cloud has the storage and the serverless compute sgit needs, and IBM's customers have the regulated data that needs it.
 
-*Source: <https://sgit.ai/partnerships/ibm-cloud.html> · site v0.6.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/ibm-cloud.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
