@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.7'
+SITE_VERSION = 'v0.6.8'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.7', '2026-09-24', 'this release',
+    ('v0.6.8', '2026-09-24', 'this release',
+     "COMPANY X-RAY: A BUSINESS PLAN, WITH ONE COMPANY X-RAYED. New vault page and a new row in "
+     "the business plans for founders. The service reads a company's own documents together: the "
+     "customer drops them into an encrypted vault, agents run a catalogue of twelve analyses, a "
+     "person reviews, and within five working days the customer gets their questions answered, a "
+     "one-page board pack, findings that each name the file and row they rest on, and a Claude "
+     "setup to keep asking. No connectors, no integrations. The vault holds an invented company "
+     "X-rayed end to end, fourteen findings labelled read, computed or inferred, and a script that "
+     "re-runs all 46 figures from the documents. Four levels from £50 to £1,500 reuse "
+     "RiskMandate.ai's pricing pattern. Read key published on purpose; vault key in the gitignored "
+     "tier; all-zeros control empty. Thirty-six published vaults."),
+    ('v0.6.7', '2026-09-24', 'git 63f3e72c',
      "A BRIEF FOR RISKMANDATE: INTERVIEW PAGES, AND A CHATGPT VOICE PROMPT. New build brief in "
      "/docs/briefs/, and an open cross-team ask. It defines a reusable interview page for "
      "riskmandate.ai: a link sent to one person, a prompt they paste into ChatGPT and continue in "

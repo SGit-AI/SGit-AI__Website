@@ -2,7 +2,7 @@
 
 > Three places where a model provider meets a vault (agents read and write vaults through a connector, vault apps call models without holding a key, vaults carry the agent's work to a person), what we already do with these providers, what we ask of each, and one page per provider: OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs.
 
-*Source: <https://sgit.ai/partnerships/ai-providers.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/ai-providers.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-five published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-six published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 

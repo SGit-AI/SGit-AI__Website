@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.7) from the same file the table on that page is built
+> generated at build time (v0.6.8) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (35)
+## The vaults (36)
+- **#36 Company X-Ray**: A business plan for reading a company's own documents together, with one invented company X-rayed and every finding tied to its evidence
+ - page: /demos/vaults/company-xray/index.md
+ - id `ukpqjkly` · Briefing · published 2026-09-24 · 710 KB · 60 files
+ - read key: `sgit_public_read_6da900d8edd0abd580452a85f6bbe588474cecf21e5f7cbbbbad57d1bf228454:ukpqjkly`
 - **#35 Lesson Loop**: A business plan for coaches: the coach's knowledge captured at the end of every lesson, in a record the player holds
  - page: /demos/vaults/lesson-loop/index.md
  - id `3s9q7zl7` · Briefing · published 2026-09-24 · 407 KB · 27 files

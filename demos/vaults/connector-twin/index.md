@@ -2,7 +2,7 @@
 
 > A business plan for a service that journals every request and response an AI agent makes through Gmail, Calendar or any connector, and replays it into the views the agent saw, with before and after and a revert plan for every change. Opens on a working replay of an invented seventeen-call session with a hash chain verified in the browser. Facts sourced from Google's documentation, the journal specification, revert rules, prototypes, packages priced per agent and a calculator.
 
-*Source: <https://sgit.ai/demos/vaults/connector-twin/index.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/connector-twin/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

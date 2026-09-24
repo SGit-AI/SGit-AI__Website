@@ -2,7 +2,7 @@
 
 > The business case for specific partnerships between sgit.ai, RiskMandate.ai and organisations we would like to work with, made from public material only so the pages can be forwarded to anyone: what they are trying to do, what is published here that answers it, where the fit is partial, and a first concrete piece of work.
 
-*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,7 +19,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-five published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-six published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 

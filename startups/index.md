@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -72,6 +72,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Company X-Ray**](../demos/vaults/company-xray/index.md) | Read a company's own documents together: they are dropped into a vault, agents run a catalogue of analyses, a person reviews, and the customer gets their questions answered, a board pack and a Claude setup to keep asking. No connectors. | One invented company X-rayed end to end, fourteen findings tied to their evidence, a script that re-runs every figure, eleven plan documents, the catalogue, the prompts and a calculator. |
 | [**Lesson Loop**](../demos/vaults/lesson-loop/index.md) | Capture what a coach knows at the end of every lesson, in a record the player holds, and start every lesson from a briefing. Padel first, any teacher with students after. Paid on demand, with new income for coaches. | One player's record across four lessons with three coaches, eleven plan documents, the prompts for phase one, and a calculator. |
 | [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) | Run the risk acceptance loop for organisations, in the gaps of their GRC platform: every material risk on facts, held by a named person, accepted for an interval, and escalated, funded or fixed when it ends. | One invented risk replayed over six weeks, eleven plan documents, the acceptance record and risk vault specifications, three prototypes and a calculator. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) | Give every AI agent deployment a twin of its connectors: a journal of every request and response, replayed into what the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? | A working replay of an invented Gmail and Calendar session, eleven plan documents, the facts with Google's sources, the journal specification, revert rules, three prototypes and a calculator. |

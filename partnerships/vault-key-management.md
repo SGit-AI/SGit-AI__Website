@@ -2,7 +2,7 @@
 
 > An open call to password managers, identity providers and platform credential managers. sgit vaults are encrypted on the client and opened in a browser with one key, and keys now multiply faster than people can manage them by hand. We would rather use a key manager than build one. The page explains sgit for someone new to it, states what we are looking for (something that exists, a joint pilot, or an open specification), the requirements (browser first, key kinds kept apart, release only on approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, keys for agents), a sketch of the share flow, why the old word-based token was removed, and what we would bring.
 
-*Source: <https://sgit.ai/partnerships/vault-key-management.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/vault-key-management.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,7 +24,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-five published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-six published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 

@@ -2,7 +2,7 @@
 
 > A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.
 
-*Source: <https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

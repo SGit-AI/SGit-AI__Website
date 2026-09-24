@@ -2,7 +2,7 @@
 
 > An independent, experimental journey through the UK DSIT AI Risk Management Toolkit, published as a vault: describe a use case, review the risk prompts that apply, record evidence and owners, propose controls and reassessment, and follow each step back to its source. An eight-slide walkthrough plays on the page from the encrypted vault, with the PDF as a download. Underneath: separate worlds with named bridges, every edge labelled curated or lexical, hashed source snapshots, 13 passing checks and 6 published gaps. Not an official DSIT service or certification.
 
-*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.6.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/dsit-ai-risk-toolkit/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
