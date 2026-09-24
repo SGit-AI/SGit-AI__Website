@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.4'
+SITE_VERSION = 'v0.6.5'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,23 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.4', '2026-09-24', 'this release',
+    ('v0.6.5', '2026-09-24', 'this release',
+     "EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation "
+     "article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence "
+     "escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); "
+     "accepted versus acceptable, with the EU AI Act's Article 9(5) quoted and scoped to providers "
+     "of high-risk AI systems, which never defines acceptable; every risk with a boss and every path "
+     "to the board; fractal risk registers from the board to the bytes; established by facts and "
+     "ended by facts; a vault per material risk as the evidence pack of governance (proposed here); "
+     "twins as the direction (designs, not built); why executives resist; and why it fits beside "
+     "every GRC platform. Three new diagrams plus Risk Graph Explorer views. The thirty-fourth "
+     "vault, Risk Acceptance Office (odn10gfp, 32 files), replays one invented risk over six weeks "
+     "with a hash-chained decision record verified in the browser and a side-by-side of the register "
+     "row, and carries the business plan: operating model, the GRC gaps, services priced per "
+     "material risk, a calculator, go-to-market starting from the resistance, ninety days, risks "
+     "and open questions. Research found four places where the published method disagrees with "
+     "itself; the plan picks a position on each and says so. Listed on the business plans page."),
+    ('v0.6.4', '2026-09-24', 'git 9f174c35',
      "PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new "
      "pages under /partnerships/, written from the vault side and each one forwardable on its own. "
      "The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), "

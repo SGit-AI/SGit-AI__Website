@@ -2,7 +2,7 @@
 
 > We would like vaults to be where ChatGPT and Codex put work that has to be handed over. OpenAI's agents already produce reports, code and analyses that someone else has to receive, check and keep. A vault carries that result, its history and its app as one read key. OpenAI's platform now reaches remote MCP servers from the Responses API and lists MCP-based plugins in a directory shared by ChatGPT and Codex, which is exactly where a vault connector would live.
 
-*Source: <https://sgit.ai/partnerships/openai.html> · site v0.6.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/openai.html> · site v0.6.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

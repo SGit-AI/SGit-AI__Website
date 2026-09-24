@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.6.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.6.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -72,6 +72,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) | Run the risk acceptance loop for organisations, in the gaps of their GRC platform: every material risk on facts, held by a named person, accepted for an interval, and escalated, funded or fixed when it ends. | One invented risk replayed over six weeks, eleven plan documents, the acceptance record and risk vault specifications, three prototypes and a calculator. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) | Give every AI agent deployment a twin of its connectors: a journal of every request and response, replayed into what the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? | A working replay of an invented Gmail and Calendar session, eleven plan documents, the facts with Google's sources, the journal specification, revert rules, three prototypes and a calculator. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. One operator, profitable at fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
 
@@ -83,7 +84,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty-three vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-four vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.

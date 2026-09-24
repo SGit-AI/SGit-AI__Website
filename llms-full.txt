@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.4). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.5). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **33 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 33 →](demos/vaults/index.md)
+Four of **34 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 34 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -52,9 +52,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-162site releases, each verified live before it was called done
+163site releases, each verified live before it was called done
 
-33vaults published with a deliberately public read key
+34vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -199,7 +199,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-24**Before you give an agent a connector, give the connector a twin**When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.Read it →](articles/connector-twin-before-you-deploy-an-agent.md) [2026-09-22**The future of news is the story vault, not the paywall**The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.Read it →](articles/future-of-news-story-vault-not-paywall.md) [2026-09-21**The SaaS apocalypse will be decided by inertia, not by AI**The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.Read it →](articles/saas-apocalypse-decided-by-inertia-not-by-ai.md)
+[2026-09-24**Before you give an agent a connector, give the connector a twin**When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.Read it →](articles/connector-twin-before-you-deploy-an-agent.md) [2026-09-24**Every risk is already accepted. The only question is by whom, and for how long.**A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.Read it →](articles/every-risk-is-already-accepted.md) [2026-09-22**The future of news is the story vault, not the paywall**The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.Read it →](articles/future-of-news-story-vault-not-paywall.md)
 
 [All articles →](articles/index.md)
 
@@ -388,10 +388,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**33 published vaults**: 7 analysis, 7 briefing, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**34 published vaults**: 8 briefing, 7 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 34 | [Risk Acceptance Office](risk-acceptance/index.md)`odn10gfp` | A business plan with one risk replayed: established on facts, accepted for an interval, escalated, funded and ended on facts | Briefing | 32 | 673 KB | 2026-09-24 |
 
 | 33 | [Connector Twin](connector-twin/index.md)`7tkvspwp` | A business plan with a working replay: what an agent did through Gmail and Calendar, what it saw, and what can be undone | Briefing | 31 | 515 KB | 2026-09-24 |
 
@@ -5474,7 +5476,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.4, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.5, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5837,16 +5839,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-162**site releases since 14 August**
+163**site releases since 14 August**
 each verified live before it was called done
 
-33**vaults published with a public read key**
+34**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-79**articles and release notes**
+80**articles and release notes**
 all with a markdown twin and an RSS feed
 
 11**cross-team briefs, in the open**
@@ -5977,6 +5979,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) | Run the risk acceptance loop for organisations, in the gaps of their GRC platform: every material risk on facts, held by a named person, accepted for an interval, and escalated, funded or fixed when it ends. | One invented risk replayed over six weeks, eleven plan documents, the acceptance record and risk vault specifications, three prototypes and a calculator. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) | Give every AI agent deployment a twin of its connectors: a journal of every request and response, replayed into what the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? | A working replay of an invented Gmail and Calendar session, eleven plan documents, the facts with Google's sources, the journal specification, revert rules, three prototypes and a calculator. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. One operator, profitable at fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
 
@@ -5988,7 +5991,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty-three vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-four vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -6027,6 +6030,7 @@ These are businesses we think should exist on top of sgit and the work published
 
 | Plan | The business | How it makes money | What is in the vault |
 |---|---|---|---|
+| [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) 24 September 2026 | Run the risk acceptance loop for organisations: every material risk established on facts, held by a named person, accepted for a stated interval, and at expiry accepted again, escalated, funded or fixed. A governance service that works in the gaps of the client's GRC platform, with a vault per material risk as its evidence pack. The foundation is argued in [Every risk is already accepted](../articles/every-risk-is-already-accepted.md). | A free acceptance audit, then a foundation engagement at £18,000, then £2,500 a month plus £60 per material risk per month. Incident support by the day, and a partner licence for consultancies. | The principles, one invented risk replayed over six weeks with a hash-chained decision record, eleven plan documents, the acceptance record and risk vault specifications, three prototypes, a calculator and three diagrams. |
 | [**Connector Twin**](../demos/vaults/connector-twin/index.md) 24 September 2026 | Give every AI agent deployment a twin of its connectors: a journal of every request and response to Gmail, Calendar, Drive or Slack, replayed into the views the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? The case is argued in [Before you give an agent a connector, give the connector a twin](../articles/connector-twin-before-you-deploy-an-agent.md). | A connector review once, £750 to £6,000. Then per agent per month: £15, £40 or £90 by tier. Incident replays on demand. About 380 agents cover a two-founder burn. | A working replay of an invented session with a hash chain verified in the browser, eleven plan documents, the facts with Google's sources, the journal entry specification, revert rules for Gmail and Calendar, three prototypes, a calculator and two diagrams. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) 23 September 2026 | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. | Setup £300 to £1,200. Maintenance £50 to £200 a month. Changes on demand. One operator, profitable at about fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
 
@@ -6075,7 +6079,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-three vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-four vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6141,7 +6145,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-three published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-four published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -6205,7 +6209,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-three vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-four vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -6289,7 +6293,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-three published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-four published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -6299,7 +6303,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-three vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-four vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -6395,7 +6399,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Thirty-three published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Thirty-four published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -6416,7 +6420,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-three published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-four published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7085,7 +7089,7 @@ Proposed partnerships · sgit.ai with the model and voice providers · public ma
 
 # Models do the work. Vaults hold it. We would like to work with the people who make the models.
 
-**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-three published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
+**An invitation from our side, published in the open.** Almost everything on this site was made with AI: the site itself, the thirty-four published vaults, the diagrams, the narration. The models came from the providers on this page, mostly reached through OpenRouter. What we have built in return is a place for that work to live: encrypted, versioned, openable in a browser with a key, and callable by a model without anyone leaking an API key. We use these providers every day and have no relationship with any of them. This page, and the page for each provider linked from it, sets out where vaults and models meet and what a partnership could be.
 
 **Nothing on these pages is confidential, and there has been no conversation yet.** Every statement about a provider comes from its own public pages or documentation, linked. Every statement about sgit points at a published vault or a page on this site. sgit is Apache-2.0, so any provider can build on it without asking. A partnership is about building the connection properly, and being listed where the provider's users look for it.
 
@@ -7226,7 +7230,7 @@ A proposed partnership · sgit.ai with Anthropic · public material only · 24 S
 
 # A proposed partnership between sgit.ai and Anthropic
 
-**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its thirty-three published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
+**This site is already a Claude Code project, and vaults are how its sessions work together.** sgit.ai, its briefs, its deployment docs and most of its thirty-four published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network.
 
 **Nothing on this page is confidential, and there has been no conversation yet.** Every statement about Anthropic comes from its own public pages, linked. Every statement about sgit points at the [deployment documentation](../deploy/index.md), a published vault or a page on this site. sgit is Apache-2.0, so Anthropic does not need our permission to run it or to build on it. A partnership is about doing that well and together. The general argument is on [the AI providers page](ai-providers.md).
 
@@ -9296,11 +9300,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.4**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.5**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.4 | 2026-09-24 | this release | PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new pages under /partnerships/, written from the vault side and each one forwardable on its own. The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), where it stands on each, honestly (Docker everywhere; AWS templates in beta; Google Cloud planned; Azure deployed by the founder but undocumented; the S3 mode targets Amazon S3 and S3-compatible stores are untested), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), and one page each for AWS, Azure, Google Cloud, IBM Cloud, the European clouds (OVHcloud, Scaleway, Hetzner, IONOS, STACKIT), DigitalOcean, Rackspace and Netlify. The AI providers hub sets out three meeting points (agents read and write vaults through a connector, vault apps call models without a key, vaults carry the agent's work) and one page each for OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs. Every provider fact is from the provider's own pages, researched today; credit amounts are left out because several could not be confirmed. Research corrected two first drafts: this site is served from GitHub Pages, not AWS, and the server's S3 mode is only proven on Amazon S3. The brief for RiskMandate.ai, built on a survey of its 79 pages and 16 policy vaults, asks for the risk side of every partnership as two behaviour policies and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), 28 and 17. |
+| v0.6.5 | 2026-09-24 | this release | EVERY RISK IS ALREADY ACCEPTED, AND A COMPANY TO RUN THE LOOP. A first-person foundation article for readers new to risk acceptance: no deny button; accept, fund or fix, with silence escalating; the interval as the decision (the risks.sgit.ai ladder, 1 hour to 6 months); accepted versus acceptable, with the EU AI Act's Article 9(5) quoted and scoped to providers of high-risk AI systems, which never defines acceptable; every risk with a boss and every path to the board; fractal risk registers from the board to the bytes; established by facts and ended by facts; a vault per material risk as the evidence pack of governance (proposed here); twins as the direction (designs, not built); why executives resist; and why it fits beside every GRC platform. Three new diagrams plus Risk Graph Explorer views. The thirty-fourth vault, Risk Acceptance Office (odn10gfp, 32 files), replays one invented risk over six weeks with a hash-chained decision record verified in the browser and a side-by-side of the register row, and carries the business plan: operating model, the GRC gaps, services priced per material risk, a calculator, go-to-market starting from the resistance, ninety days, risks and open questions. Research found four places where the published method disagrees with itself; the plan picks a position on each and says so. Listed on the business plans page. |
+| v0.6.4 | 2026-09-24 | git 9f174c35 | PARTNERSHIPS WITH THE CLOUDS AND THE AI PROVIDERS, AND A BRIEF FOR RISKMANDATE. Sixteen new pages under /partnerships/, written from the vault side and each one forwardable on its own. The cloud platforms hub says what sgit needs from a cloud (mostly storage, a little compute), where it stands on each, honestly (Docker everywhere; AWS templates in beta; Google Cloud planned; Azure deployed by the founder but undocumented; the S3 mode targets Amazon S3 and S3-compatible stores are untested), the two partnerships in one (vaults in the cloud's environment, and services on top of vaults), and one page each for AWS, Azure, Google Cloud, IBM Cloud, the European clouds (OVHcloud, Scaleway, Hetzner, IONOS, STACKIT), DigitalOcean, Rackspace and Netlify. The AI providers hub sets out three meeting points (agents read and write vaults through a connector, vault apps call models without a key, vaults carry the agent's work) and one page each for OpenAI, Anthropic, Mistral AI, Google Gemini, OpenRouter and ElevenLabs. Every provider fact is from the provider's own pages, researched today; credit amounts are left out because several could not be confirmed. Research corrected two first drafts: this site is served from GitHub Pages, not AWS, and the server's S3 mode is only proven on Amazon S3. The brief for RiskMandate.ai, built on a survey of its 79 pages and 16 policy vaults, asks for the risk side of every partnership as two behaviour policies and a delta, and for sgit written up as a control against GDPR Articles 32, 25, 34(3)(a), 28 and 17. |
 | v0.6.3 | 2026-09-24 | git ae3f8714 | BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of every request and response an agent makes, appended to a write-only lane, processed later and replayed into the inbox and calendar as the agent saw them, is the minimum requirement for deploying an agent with provenance, explanation and undo. Every claim about Gmail and Calendar is Google's own and linked: the API delete 'cannot be undone', Undo Send is an interface feature, trash keeps 30 days, the administrator's bulk restore 25, Vault 'isn't designed to be a backup or archive tool' and keeps one Calendar revision a day. Research corrected two first assumptions (Vault has covered Calendar since November 2023; the admin audit log does record some earlier values) and the text says so. The thirty-third vault, Connector Twin (7tkvspwp, 31 files), opens on a working replay of an invented seventeen-call Gmail and Calendar session: a slider rebuilds the inbox and calendar at any step, before and after for every write, a graded revert plan, what the agent said against what the journal shows, and a hash chain verified in the browser, which ran inside the vault host's sandbox. Behind it, the business plan: facts with sources, architecture, three capture modes, packages per agent, a calculator, go-to-market, ninety days, risks, open questions, the journal specification, revert rules and three prototypes. New page /startups/business-plans.html gives the plans their own home, listed in the Why menu, with Agent as Webmaster and Connector Twin, how to take one, and the offer to build them with partners. |
 | v0.6.2 | 2026-09-24 | git 42d40e9f | A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, /partnerships/vault-key-management.html, written to be sent to password managers, identity providers and platform credential managers who have never heard of sgit. It opens with the short version, then what we are looking for in order of preference (something that already exists, a joint pilot, an open specification), the requirements in plain terms (browser first, key kinds kept apart, release only on the user's approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, scoped keys for agents), sgit in two minutes, three new diagrams (keys travelling by hand today, what a vault is and where the key sits, a seven-step share-by-name flow), and then the detail: the key formats, why the word-based share token was removed in August (about thirty bits, recoverable in a tenth of a second on a GPU), why a vault of keys still needs a first key, and what exists against what does not. The partnerships index lists it as an open call. |
 | v0.6.1 | 2026-09-23 | git 277b41b1 | THE DSIT AI RISK TOOLKIT PAGE STARTS WITH THE READER'S DECISION, AND PLAYS THE DECK. Rebuilt from a brief: the vault has moved on since 20 September (155 files, a use-case-led journey at v0.2.0 as the home page, reference edition v0.2.3, a decks/v2 deck 'A decision before a risk list'), and the page still opened on four worlds and 617 nodes. Now: an outcome headline, three actions (live vault, eight-slide walkthrough, PDF), the site-owned decks/v2 viewer mounted on the page reading manifest, slide source, styles, five screenshots and the PDF from the vault, a five-step 'what you can try', the vault embed, then the architecture material moved below with the four-world screenshots dated, a status table separating journey v0.2.0, reference v0.2.3, the research graph (941/4,735) and the reference graph (1,051/1,289) without merging them, the licences stated (OGL v3.0 for DSIT text; no licence assigned to the new code), and the read key, derived facts, audit and the dated 20 September snapshot in an expandable provenance section. VIEWER: keyboard navigation (arrows, PageUp/Down, Home, End), a live region announcing the slide, aria-current on the slide list, titled frames, focus-visible outlines, and a counted 'N screenshots could not be read' status instead of a plausible-looking gap. Verified through the mirror: 8 slides walked, 0 unresolved images, PDF bytes match SHA-256 36f9e16c…, parse frame allow-scripts only, render frame no scripts. |
@@ -11721,7 +11726,7 @@ Longer pieces that make an argument across several pages, what a thing means, wh
 
 **Two rules keep these from going stale.** An article never restates a fact it does not own, it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
 
-[**Before you give an agent a connector, give the connector a twin**2026-09-24When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.agentsconnectorsdigital-twinsprovenanceriskriskmandatearticle](connector-twin-before-you-deploy-an-agent.md) [**The future of news is the story vault, not the paywall**2026-09-22The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.newspublishingprovenancemicropaymentssemantic-graphsarticle](future-of-news-story-vault-not-paywall.md) [**The SaaS apocalypse will be decided by inertia, not by AI**2026-09-21The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.saasstrategywardley-mapsagentsarticle](saas-apocalypse-decided-by-inertia-not-by-ai.md) [**For a startup, the most important question is whether they miss it**2026-09-21A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.startupsstrategyopen-sourceinvestingarticle](the-question-is-whether-they-miss-it.md) [**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+[**Before you give an agent a connector, give the connector a twin**2026-09-24When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.agentsconnectorsdigital-twinsprovenanceriskriskmandatearticle](connector-twin-before-you-deploy-an-agent.md) [**Every risk is already accepted. The only question is by whom, and for how long.**2026-09-24A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.riskrisk-acceptancegovernancegrcfractal-semantic-graphseu-ai-actarticle](every-risk-is-already-accepted.md) [**The future of news is the story vault, not the paywall**2026-09-22The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.newspublishingprovenancemicropaymentssemantic-graphsarticle](future-of-news-story-vault-not-paywall.md) [**The SaaS apocalypse will be decided by inertia, not by AI**2026-09-21The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.saasstrategywardley-mapsagentsarticle](saas-apocalypse-decided-by-inertia-not-by-ai.md) [**For a startup, the most important question is whether they miss it**2026-09-21A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.startupsstrategyopen-sourceinvestingarticle](the-question-is-whether-they-miss-it.md) [**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
 
 
 
@@ -12786,6 +12791,107 @@ From `admin/build/catalogue_derive.py 7tkvspwp <read key hex>`, read-only, no to
 ## Notes
 
 **Where this came from.** A voice memo by the founder on 24 September 2026: a twin of what an agent can do and has done is close to a minimum requirement for deploying one, with Gmail and Calendar as the worked example, and the idea split in two, an article for the need and a business plan for the service. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md), each a vault, each written for somebody else to run.
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# Risk Acceptance Office, a business plan with one risk replayed, published as a vault
+
+> A business plan for a company that runs the risk acceptance loop in the gaps of an organisation's GRC platform: every material risk established on facts, held by a named person, accepted for a stated interval, and at expiry accepted again, escalated, funded or fixed. Opens on ten principles and a six-week replay of one invented risk with a hash-chained decision record verified in the browser, then the operating model, services priced per material risk, a calculator, go-to-market, the risks and the open questions.
+>
+> Page: https://sgit.ai/demos/vaults/risk-acceptance/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Risk Acceptance Office
+
+# Risk Acceptance Office, a business plan with one risk replayed
+
+A business plan for a company that runs the risk acceptance loop for organisations: every material risk established on facts, held by a named person, accepted for a stated interval, and at the end of that interval accepted again, escalated, funded or fixed. It works in the gaps of the client's existing GRC platform, and keeps each material risk's evidence and decisions in a vault of its own. The vault opens on the principles, then replays one invented risk over six weeks, then sets out the business. The foundation is argued in [Every risk is already accepted](../../../articles/every-risk-is-already-accepted.md).
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_3e6f04360f083cff58daa851a63d6d0fcc7f6eadb5bdca7c57acef6ef15bc93e:odn10gfp`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_3e6f04360f083cff58daa851a63d6d0fcc7f6eadb5bdca7c57acef6ef15bc93e%3Aodn10gfp) · From the CLI: `sgit clone sgit_public_read_3e6f04360f083cff58daa851a63d6d0fcc7f6eadb5bdca7c57acef6ef15bc93e:odn10gfp`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, and verified with an all-zeros negative control: the real key cloned 32 files, identical to the source folder, and the control cloned nothing.
+
+## See it live, here
+
+The replay opens as an app. Drag the slider and follow the risk from the facts that establish it to the facts that end it. You can also [**open it in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_public_read_3e6f04360f083cff58daa851a63d6d0fcc7f6eadb5bdca7c57acef6ef15bc93e%3Aodn10gfp).
+
+## What is in it
+
+the principles
+
+### Every risk is already accepted
+
+The app opens on ten principles, drawn from the method published on risks.sgit.ai, RiskMandate.ai and graphs.sgit.ai: no deny button; accept, fund or fix; the interval is the decision; a named person and no delegation; unaccepted is critical; every path ends at the board; accepted is not acceptable; established by facts and ended by facts; and GRC validates while the business accepts.
+
+The method in ten principles.
+
+escalation
+
+### An acceptance that expires, and the risk that moves up
+
+An invented payments company lets a deployment agent change its production ledger. The SRE lead accepts the risk for two weeks, with an action. The action is not done, the acceptance expires, nobody renews it, and on day 15 the risk rolls up to the platform owner, who must accept, fund or fix.
+
+Day 15: escalated to the platform owner.
+
+the interval is the decision
+
+### A funded month, then a four-hour incident
+
+The platform owner funds a four-week project and accepts for a month, the default rung. On day 24 the risk materialises: an irreversible migration stalls settlement. A four-hour acceptance follows, which is an incident response by definition, and the incident's timeline becomes a fact in the risk's own record.
+
+Day 24: the incident, as a four-hour acceptance.
+
+ended on facts
+
+### The risk ceases when the fact that ends it holds
+
+On day 41 the approval step is merged. One of the facts the risk named as ending it now holds, with its source, and on day 42 it ceases. Underneath, the same moment in a typical register row: "Open until the committee on 12 December", no evidence attached. That difference is the air gap.
+
+Day 42: ceased, on evidence.
+
+the business
+
+### A service, priced per material risk
+
+A free one-hour acceptance audit, a foundation engagement at £18,000 for one business unit, the Acceptance Office at £2,500 a month plus £60 per material risk, incident support by the day, and a partner licence for consultancies. A calculator lets every input move. Every price is marked as a hypothesis.
+
+What you sell.
+
+## What this vault demonstrates
+
+| Feature | The mechanism, not the marketing |
+|---|---|
+| **A risk as its own record** | The risk's facts, controls, holders and decisions live in `risk/`, and the decision record is fourteen hash-chained entries in `risk/record.jsonl`. It is the shape of a vault per material risk, which the plan proposes for every material risk a client carries. |
+| **A record verified in your browser** | The app recomputes the chain with the browser's own crypto and prints the head. `tools/verify-record.py` does the same offline. It passed inside the vault host's sandbox. |
+| **The air gap, shown side by side** | At every step the app shows what a typical register row says next to what the risk's record holds. The row never learns that the risk was accepted twice, expired, escalated, funded, materialised and ended. |
+| **An app with nothing requested** | `app.json` declares `"permissions": {}`. No LLM, no writes, no network. |
+| **A plan written for another operator** | Eleven plan documents, the acceptance record and risk vault specifications, and three prototypes: the acceptance audit, the acceptance meeting, and a GRC integration outline. |
+
+## The audit, honestly
+
+**What was scanned.** Every one of the 32 files, from a clone made with the published read key alone, compared byte for byte with the source folder. Patterns: vault-key shapes, every `sgit_` credential prefix, API-key shapes, private-key blocks, bearer tokens, and any email address not on the reserved `.example` domain.
+
+**What was found.** Nothing. The company, people and risk are invented. The negative control, an all-zeros read key against the same vault id, produced an empty directory.
+
+**What the research found, and the plan says.** The published method disagrees with itself in four places: two different interval ladders, whether an unaccepted risk rolls up automatically or waits, what happens at expiry, and a present-tense description of a product queue that the method's own inventory says is not built. The plan picks one position on each, says which, and lists the rest as open questions.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py odn10gfp <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 32 · **plaintext size:** 673 KB
+- **Commits:** 3 · **last updated:** 2026-09-24 · **HEAD:** `obj-cas-imm-b89dfa86528d`
+- **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `content.json`, `diagrams/`, `index.html`, `plan/`, `prototypes/`, `risk/`, `spec/`, `tools/`
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**Where this came from.** A voice memo by the founder on 24 September 2026: risk acceptance deserves a company of its own, separate from RiskMandate.ai's focus on the insurability of agents, delivered as a governance service that works in the gaps of existing GRC platforms, with a vault per material risk as its evidence pack. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md).
 
 [← All published vaults](../index.md)
 
@@ -14458,6 +14564,194 @@ The pitch is one line long, and it is not fear. It is the platform's own documen
 - [Model Context Protocol specification](https://modelcontextprotocol.io/specification)
 - [sgit.ai, append lanes](https://sgit.ai/api/append-lanes.html)
 - [twins.sgit.ai, the execution broker](https://twins.sgit.ai/broker/index.html)
+
+[← All articles](index.md)
+
+
+
+==============================================================================
+# Every risk is already accepted. The only question is by whom, and for how long., sgit.ai
+
+> A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.
+>
+> Page: https://sgit.ai/articles/every-risk-is-already-accepted.html
+
+[Home](../index.md) / [Articles](index.md) / Every risk is already accepted. The only question is by whom, and for how long.
+
+# Every risk is already accepted. The only question is by whom, and for how long.
+
+By [Dinis Cruz](../about/index.md) · 2026-09-24 · [v0.6.5](../admin/versions.md) · riskrisk-acceptancegovernancegrcfractal-semantic-graphseu-ai-actarticle
+
+***Abstract:** A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.*
+
+The acceptance loop. Establish the risk on facts, place it with a holder and the chain above them, have the holder accept it for an interval with an action, and when the interval ends, accept again, fund or fix. Silence is not a door: it escalates to the holder's boss.
+
+Here is the claim, stated so it can be wrong. **Every risk your organisation has is already accepted. Somebody is carrying it, today, whether or not anybody signed for it. The only questions worth asking are who has accepted it, and until when.** Most risk management avoids those two questions. This article is about what happens when you stop avoiding them, and it assumes you have never heard any of this before.
+
+## In short
+
+- **A risk exists the moment the exposure does.** Nobody decides whether to accept it. The organisation is carrying it from the start, signed for or not.
+- **There is no deny button.** You cannot vote a fact out of existence, and a register that lets you reject a risk lets you pretend.
+- **There are three doors: accept it for a stated interval, fund the work that reduces it, or fix it.** Silence is not a fourth door. A risk nobody accepts is treated as critical and rolls up to the holder's boss.
+- **The interval is the decision.** Accepting for four hours is declaring an incident. Accepting for a month is funding work. Accepting for six months is a named decision to wait.
+- **Accepted is not the same as acceptable.** One is an act by a named person on a date. The other is a threshold. The EU AI Act asks for residual risk to be "judged to be acceptable" and never defines the word.
+- **Every risk has a boss.** Every risk has a holder, every holder has a boss, and every path ends at the board, computed rather than reported.
+- **Risks are fractal.** A board line such as "loss of customer funds" opens into business, operational and technical risks, each with its own holder, down to the configuration file that makes it true.
+- **Established by facts, ended by facts.** Every risk names the facts that make it true, and the facts that would end it. That is what closes the gap between a register and reality.
+- **Each material risk deserves a vault of its own**: the evidence pack of governance, with its facts, decisions and history, readable by each audience with its own key.
+- **Executives resist this, and they are right that it is disruptive.** That resistance is the work, and it is why this is a governance change, not a product feature.
+- **It fits alongside every GRC platform.** It works in the gaps they leave. A [business plan for a company that does exactly this](../demos/vaults/risk-acceptance/index.md) is published with this article.
+
+## A risk you are already carrying
+
+Take one ordinary example. A company lets an AI agent run database changes in production, because it makes deployments faster. The agent's database role can write to the ledger. Some ledger migrations cannot be rolled back.
+
+From the moment that role was created, the company has been carrying a risk: the agent can change production in ways nobody can undo. Nobody decided to accept it. Nobody decided not to. It is simply there, and it will stay there until somebody changes one of the facts that make it true.
+
+Now look at how most organisations record it, if they record it at all: a row in a register. "Change risk in automated deployment. Owner: Technology. Rating: Medium. Status: Open. Next review: the risk committee in December. Evidence: none attached." Every field is reasonable. None of them says who has accepted the risk, until when, or what will happen if nothing changes.
+
+## There is no deny button
+
+The first principle sounds obvious and changes everything: **you cannot deny a risk.** As [risks.sgit.ai](https://risks.sgit.ai/) puts it, "You cannot vote a fact out of existence." If the agent's role can write to the ledger, no meeting can decide otherwise. You can change the role, or accept that it can.
+
+So the only real choices are three, each with a name against it:
+
+1. **Accept it**, personally, for a stated interval.
+2. **Fund** the work that will reduce it.
+3. **Fix** it, so that the facts that make it true stop holding.
+
+Deferral is not a fourth door. "Revisit next quarter" is not a decision, and silence is not a decision anybody can underwrite. In this model, **unaccepted is critical**: a risk nobody has accepted rests on whoever is nearest, and it rolls upward to their boss, and then to theirs, until somebody signs.
+
+## The interval is the decision
+
+Accepting a risk is never open-ended. Every acceptance is for an interval, and the interval is not a detail of the decision. It *is* the decision, because each length names a different response. This is the ladder as published on risks.sgit.ai:
+
+| Interval | What it means |
+|---|---|
+| 1 hour | "I need more data." Go and get it, then decide again. |
+| 4 hours | A priority-one incident. Trigger incident response. |
+| 1 to 2 days | A smaller incident. |
+| 1 to 2 weeks | A funded project for a team that already exists. |
+| 1 month | Assemble and fund. The default, set deliberately just above the incident line. |
+| 6 months | Do nothing, and review it then. It costs nothing, and it is legitimate, with a name on it. |
+
+Two things follow. First, **a short acceptance is an incident.** If the honest answer to "how long can we live with this?" is four hours, the organisation is not managing a risk any more; it is responding to one. Second, **a funded acceptance has a natural length**: the length of the project that will end it.
+
+When the interval ends, nothing silently continues. The same decision comes back to the same desk, with whatever evidence has arrived since. Accept again, fund or fix. If nobody does anything, the risk goes one level up, where the choice is the same.
+
+## Accepted is not acceptable
+
+Most registers blur two different questions.
+
+Two questions, four states. Accepted is an act by a named person at a dated moment. Acceptable is a threshold. The dangerous state is a risk over the line that nobody has signed for.
+
+**Accepted** is an act: a named person, on a date, for an interval. **Acceptable** is a threshold: in [RiskMandate.ai](https://riskmandate.ai/acceptable.html)'s words, "the moment that the business is happy to stop funding remediation activities". A risk can be accepted and not yet acceptable: somebody has signed for it, for a short interval, while the fix is funded. A risk can be acceptable and not accepted: probably harmless, and exactly where a register quietly goes stale. And a risk can be neither, which is the dangerous one.
+
+This distinction is now written into law for one class of organisation. Article 9(5) of the [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) requires providers of high-risk AI systems to adopt risk management measures "such that the relevant residual risk associated with each hazard, as well as the overall residual risk of the high-risk AI systems is judged to be acceptable" ([text of Article 9](https://artificialintelligenceact.eu/article/9/)). The Act never defines "acceptable". The duty to make the judgement is imposed, and the standard for making it is not supplied. An organisation has to draw its own line, and be able to show that it did.
+
+Our position is that this is not the end of the question but the beginning. Being over or under the line does not remove the need for somebody to accept what is actually being carried. **Acceptance has to happen every time a risk exists. The only debate is for how long, and for what action.**
+
+## Every risk has a boss
+
+Every risk has a holder: the person whose job it is to accept, fund or fix it. Every holder has a boss, and that boss has a boss, up to the board. So every risk has a chain, and every chain ends at the board.
+
+The role risk map in the Risk Graph Explorer vault. Every risk is assigned to somebody, and every risk reaches the board. The CTO holds 4 and sees 25 pass through; the board has 37 arrive.
+
+The [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/views/index.md) vault computes this today. Each role shows what it is **assigned**, meaning its own to deal with, and what arrives **through** it, meaning what the risk graph says must reach it. In the tool's own words: "It arrives because the risk graph says so, not because anybody reports here." No risk is orphaned, and nobody at the top is surprised by something nobody carried up.
+
+The other rule of the chain is that **nobody can accept on anybody else's behalf.** A holder's boss sees the risk arrive, and sees whether it was accepted, until when, and on what evidence. But the acceptance belongs to the person who holds it. When somebody refuses, that is visible too, and it is a finding rather than a failure. As I said in one of the recorded walkthroughs of that vault, "everybody that is going to accept it is going to push back". That pushback is the point.
+
+## From the board to the bytes
+
+A risk at the board is written in the board's language: loss of customer funds, regulatory penalty, loss of licence. That line is real, but it is not something anybody can fix. Underneath it are risks in other languages: the business risk that payments can be corrupted, the operational risk that an agent can change production irreversibly, and the technical risk that the agent's role has write access to the ledger with no approval step.
+
+One risk from the board to the bytes. Each altitude has its own holder and its own words, joined by "leads to" edges, and every altitude points at the facts and evidence beneath it. A register row in a spreadsheet is the top box on its own.
+
+This is what we call a **fractal risk register**, described on [graphs.sgit.ai](https://graphs.sgit.ai/v1/docs/fractal-risk-registers.html): "wherever there is a stakeholder accepting a risk, that entity needs a register." A database administrator's risk translates into the CISO's, the CFO's, the CEO's and the board's, each in that person's own words, joined by named edges rather than retyped. The vocabulary changes at every altitude. The grammar does not: a holder, an interval, the facts that establish it and the facts that end it.
+
+Risk chains in the Risk Graph Explorer vault. Inherent risks on the left rise by causal depth to the corporate register on the right. Click any entry to see what produced it and what it produces.
+
+This is also where [Fractal Semantic Graphs](../articles/introducing-fractal-semantic-graphs.md) stop being an abstraction. The fractal property is that on one of the links you can jump into another universe with its own rules: from the board's register into security operations, into the database estate, into one configuration file. A vulnerability at the bottom and a revenue obligation at the top are no longer in different tools with a spreadsheet between them.
+
+## Established by facts, ended by facts
+
+The single change that closes the gap between a register and reality is this: **every risk names the facts that make it true, and the facts that would end it.**
+
+In the Risk Graph Explorer, a risk is established by one cited fact, F-5, that the agent can change the production estate. Then, unusually, it carries its own end condition: "Ceases when any of these hold: F-4 reads-only-from, or F-3 absent-from." The risk ships with its own falsification condition. It is not a judgement to be argued down; it is a claim about facts, and when the facts change, the risk ends, with the evidence attached.
+
+That is also what makes disagreement productive. When a holder says "I don't buy that", the conversation becomes which fact is wrong, not whose opinion is louder. And it is what the usual register cannot do: a row typed by a person, reviewed quarterly, connected to nothing, is a record that can be perfectly maintained and entirely wrong.
+
+## One risk, six weeks
+
+Here is the whole loop on the example above, as an invented company, replayed in the [Risk Acceptance Office vault](../demos/vaults/risk-acceptance/index.md).
+
+The risk is established on day 0 on two facts, each with its source, and placed with the SRE lead. The platform owner, the CTO, the CEO and the board see it arrive through the chain. On day 1 the SRE lead accepts it for two weeks, with an action: add an approval step to the agent's production writes. On day 15 the acceptance expires. The approval step was not built, because the team was moved onto a release. Nobody renewed it, so it escalates.
+
+Day 15. The two-week acceptance expired with its action undone, so the risk rolled up to the platform owner, who must now accept, fund or fix.
+
+The platform owner funds a four-week project and accepts the risk for a month. On day 24 the risk materialises: the agent applies a migration that cannot be rolled back, and settlement stalls. The platform owner accepts for four hours, which is an incident response by definition, suspends the agent and reconciles the ledger. The incident's timeline becomes a new fact in the risk's own record. On day 41 the approval step is merged, one of the facts that the risk named as ending it now holds, and on day 42 it ceases, on evidence.
+
+Day 42. The fact that ends the risk holds, with its source, and the risk ceases. The facts that established it are still true; the one that ends it is now true as well.
+
+Now look at the register row at the same moment.
+
+The same day, two views. The register row still says "Open until the committee on 12 December", with no evidence attached. The risk's own record says who accepted it, until when, what happened, and why it ended.
+
+That difference is the air gap. Nothing in the row is wrong. It just never learned that the risk was accepted twice, expired once, escalated, funded, materialised as an incident, and ended.
+
+## A vault per risk
+
+Every material risk deserves a place to keep its own story: the facts and where they came from, the controls and their states, every acceptance with its interval and action, every escalation, every incident, and the evidence that ended it. That is the evidence pack of governance, and today it is scattered across emails, spreadsheets, screenshots and meetings nobody minuted.
+
+A vault is a natural home for it. It keeps every version of every fact and decision, proves the record was not altered afterwards, travels as one read key, and stays readable if the organisation changes its tools. The holder writes to it. Their chain up to the board gets a read key. The auditor and the insurer get their own keys when they need them, and nothing else. A corporate risk's vault can link to the vaults of the business, operational and technical risks beneath it, which makes the register fractal in storage as well as in meaning.
+
+This is a proposal, not yet a practice: the published method describes fractal registers and a chain to the board, and the idea of a vault per material risk is new here.
+
+## Twins, and where this goes
+
+On [twins.sgit.ai](https://twins.sgit.ai/actors/index.html), every action that changes the risk graph, including accepting a risk, is performed by a twin acting for a person, connected either to that person or to an agent working for them. That makes acceptance "the most evidenced act rather than the least". Twins also make risk testable: an organisation's risks, controls and decisions modelled well enough to simulate what happens when one of them changes. And risks.sgit.ai names the air gap honestly: "A twin not connected to reality is a tracked air gap."
+
+Both ideas are designs, and the twins site says so plainly: "None of this is built." I include them because they show where the model leads. Risk systems that stay at the level of a register row will always be disconnected from events. A model in which risks are established on facts, facts come from twins of the real systems, and acceptances are recorded as events, is one where the register and reality can finally be the same thing.
+
+## Why this is hard, and why people resist
+
+I want to be honest about what happened when we took this to market. With [RiskMandate.ai](https://riskmandate.ai/) we approached risk acceptance from the angle of AI agents and insurability, and it was hard for two reasons.
+
+The first is ownership. Risk acceptance is a governance matter. It has to come from the people who own governance, risk and compliance, and from the board. Sold as a feature of a security or AI product, it lands with people who do not own it.
+
+The second is resistance, and it is rational. Some of the people we worked with did not want to give their risk owners an acceptance workflow at all, because they understood, instinctively or explicitly, that it would be a very disruptive change. Today many executives accept very little, or accept only what has already been judged acceptable. Asking them to accept, personally and for a stated interval, everything they actually hold changes their job. risks.sgit.ai names the same tension: "No-deny is the strongest idea here and the hardest to sell. Removing the deny button removes the thing most executives use a register for." It also names how the model can be defeated without anybody arguing with it: "interval inflation, where everything is accepted for six months".
+
+None of that makes the model wrong. It makes it a change programme, and change programmes are run by people, one business unit at a time.
+
+## It fits alongside every GRC platform
+
+Nothing here replaces the platforms organisations already use for governance, risk and compliance. They solve real problems: the register, the workflow, the frameworks, the reporting. What they leave are gaps: between the row and the facts, between "accepted" and a clock, between a function and a named person, between one coarse row and the forty things underneath it.
+
+This model operates in those gaps. It reads the register from the platform, and writes back what the platform lacks: who accepted, until when, what happens at expiry, and a link to the evidence. Which is why I think the GRC vendors should be sponsoring and integrating with this work rather than competing with it: it makes their platforms more valuable and harder to leave.
+
+## What exists today, and what does not
+
+**Exists and runs:** the published model on [risks.sgit.ai](https://risks.sgit.ai/), the acceptance and licence-to-operate work on [RiskMandate.ai](https://riskmandate.ai/), fractal risk registers on [graphs.sgit.ai](https://graphs.sgit.ai/v1/docs/fractal-risk-registers.html), the [Risk Graph Explorer](../demos/vaults/risk-graph-explorer/index.md) vault, which computes the chain to the board, and the [Risk Acceptance Office](../demos/vaults/risk-acceptance/index.md) vault, which replays one risk's acceptance loop with a hash-chained decision record verified in your browser.
+
+**Does not exist yet:** an engine that records acceptances, runs the clocks and fires at expiry. risks.sgit.ai states plainly, in capitals, that essentially none of its model is implemented in code. The published material also leaves open exactly what happens at expiry, whether an unaccepted risk rolls up automatically or waits, and which of two published ladders is canonical. The business plan takes a position on each, and says so.
+
+## For somebody to build
+
+I think this should be a company, and possibly several. Its work is the hard part: establishing risks on facts, connecting them to the people who hold them, running the clocks, keeping the evidence, and helping executives through the change. The [Risk Acceptance Office](../demos/vaults/risk-acceptance/index.md) vault holds a business plan for it: the operating model, working in the gaps of the GRC platform, services and prices as hypotheses, a calculator, go-to-market that starts from the resistance rather than around it, the first ninety days, the risks and the open questions. It sits with the other [business plans published for founders](../startups/business-plans.md).
+
+The pitch is two questions, asked of any register: **who has accepted this, and until when?**
+
+## Sources
+
+- [risks.sgit.ai, the model, the ladder and the inventory of what is built](https://risks.sgit.ai/)
+- [risks.sgit.ai, Accepted is not acceptable](https://risks.sgit.ai/acceptable/)
+- [RiskMandate.ai, Accepted is not acceptable](https://riskmandate.ai/acceptable.html)
+- [graphs.sgit.ai, Fractal Risk Registers](https://graphs.sgit.ai/v1/docs/fractal-risk-registers.html)
+- [twins.sgit.ai, twins as actors](https://twins.sgit.ai/actors/index.html)
+- [Regulation (EU) 2024/1689, the AI Act, on EUR-Lex](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- [Article 9 of the AI Act, risk management system](https://artificialintelligenceact.eu/article/9/)
+- [The Risk Graph Explorer, the seven views](../demos/vaults/risk-graph-explorer/views/index.md)
+- [The Risk Acceptance Office vault](../demos/vaults/risk-acceptance/index.md)
 
 [← All articles](index.md)
 

@@ -2,7 +2,7 @@
 
 > sgit runs on Azure. We just have not written it down yet. The founder has deployed the vault server on Azure and it works, but the published documentation covers Docker, AWS, Google Cloud and static hosts, not Azure. We would like to close that gap with Microsoft: a documented, reviewed deployment on Azure services, a listing in Microsoft Marketplace, and a route to the many organisations whose data already lives in Azure and Microsoft 365.
 
-*Source: <https://sgit.ai/partnerships/azure.html> · site v0.6.4 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/azure.html> · site v0.6.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
