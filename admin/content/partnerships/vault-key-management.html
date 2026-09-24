@@ -1,0 +1,153 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Partnerships</a> / Vault key management</p>
+  <p class="eyebrow">A call for collaboration &middot; public material only &middot; 24 September 2026</p>
+  <h1>Who holds the keys? A call for collaboration on vault key management</h1>
+  <p class="lead"><b>We are looking for a key manager, not building one.</b> <a href="../index.html">sgit.ai</a> makes encrypted vaults: folders whose contents are locked on the owner's device before they are stored anywhere, and which open in a browser for anyone holding the right key. That works. What does not scale is the key itself. Every vault has one, people now hold dozens, AI agents are starting to create them by the hundred, and today those keys travel by copy and paste. Storing, indexing, sharing and taking back secrets is what password managers and identity providers already do well. This page asks whether one of you already has a way for us to use that, in the browser, and if not, whether you would like to build it with us in the open.</p>
+
+  <div class="note"><b>If this is the first time you have heard of sgit</b>, that is expected, and the page is written for you. It starts with the short version, then what we are asking for and the requirements, then <a href="#sgit">what sgit is in two minutes</a>, then diagrams of how it could work, and only then the detail and the evidence. Nothing here is confidential and there has been no conversation with any organisation named on it. It can be forwarded as it is.</div>
+
+  <h2 id="summary">In short</h2>
+  <ul>
+    <li><b>The product.</b> sgit is git for encrypted vaults: a versioned folder, encrypted on the client, stored on any host that cannot read it, and opened in a browser with one string, the key. It is open source under Apache-2.0.</li>
+    <li><b>The problem.</b> The key is the whole access control. There is no account, no reset and no revocation list. Lose it and the vault is gone; leak it and the only remedy is to re-encrypt under a new one. That is a key management problem, and it grows with every vault.</li>
+    <li><b>Why not solve it ourselves.</b> We could keep keys inside another vault, and we have designs for that, but the first key still has to live somewhere. Key management is a discipline of its own, with recovery, device sync, sharing, audit and enterprise policy, and it is already done well by people who do nothing else.</li>
+    <li><b>What we are asking for.</b> A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.</li>
+    <li><b>The one hard rule.</b> The words must be an address, never the key. sgit once shipped a word-based token that <em>was</em> the key, and <a href="#history">removed it</a> when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.</li>
+    <li><b>Who we would like to hear from.</b> Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.</li>
+    <li><b>What we bring.</b> An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-two published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.</li>
+  </ul>
+
+  <h2 id="opportunity">The opportunity</h2>
+  <p>Password managers solved one problem so well that people stopped noticing it: the long random string that has to be stored somewhere safe, typed nowhere, shared carefully and taken back when someone leaves. Passkeys moved the same machinery from logging in to proving who you are. Client-side encryption brings a third kind of secret into daily use, the key that opens a piece of data rather than an account, and at the moment nothing in the browser treats it as a first-class item.</p>
+  <figure class="shot" data-shot="kkm-today.webp" data-dir="images/" data-alt="Diagram: more vaults every week, keys moving by chat, email, notes files, CI secrets and screenshots, and what that costs: no index, no safe hand-over, no taking it back, agents needing keys too. At the bottom, the gap: a key manager that knows what a vault key is and works in the browser."><figcaption>Today, vault keys travel by hand. The gap at the bottom is the thing this page is asking for.</figcaption></figure>
+  <p>Three things make this worth doing now rather than later.</p>
+  <div class="tablewrap"><table>
+    <tr><td><b>The number of keys is growing fast</b></td><td>One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. <a href="../demos/vaults/index.html">Thirty-two vaults are published on this site alone</a>, each with its own key.</td></tr>
+    <tr><td><b>Agents are starting to make vaults</b></td><td>An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. <a href="../demos/vaults/agent-webmaster/index.html">Agent as Webmaster</a> is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere.</td></tr>
+    <tr><td><b>The pattern is not specific to sgit</b></td><td>Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category.</td></tr>
+  </table></div>
+
+  <h2 id="ask">What we are looking for</h2>
+  <p>In order of preference.</p>
+  <div class="tablewrap"><table>
+    <tr><th>What</th><th>What it would look like</th></tr>
+    <tr><td><b>1 &middot; Something that already exists</b></td><td>An item type, an extension API, a browser capability or an SDK in your product that lets a web page ask for a stored secret by name, with the user's approval, without the page ever seeing the rest of the store. If you have this, we would like to integrate with it and write up how, publicly, as the worked example.</td></tr>
+    <tr><td><b>2 &middot; A pilot built together</b></td><td>If the pieces exist but not the whole, a small joint pilot: your manager stores sgit keys as their own item type, shares them between your users the way it already shares passwords, and releases them to an sgit page on approval. We would do the sgit side, you would do yours, and both would be open to inspect.</td></tr>
+    <tr><td><b>3 &middot; A specification written in public</b></td><td>If this is better solved as a standard than as a product feature, a short open specification for storing, naming and releasing data keys in the browser, with sgit as the first implementation and a reference test suite, so that any key manager can support any client-side encrypted app.</td></tr>
+  </table></div>
+  <p>We are not asking for an investment, an exclusive arrangement or anyone's customer data. We are asking for the conversation, and for the answer to the question <em>"is there something I can use?"</em></p>
+
+  <h2 id="requirements">The requirements</h2>
+  <p>Written in plain terms first. <a href="#detail">The technical detail is further down.</a></p>
+  <div class="tablewrap"><table>
+    <tr><th>Requirement</th><th>Why it matters</th></tr>
+    <tr><td><b>Must &middot; Works in the browser</b></td><td>sgit vaults open in a browser tab with nothing installed. The key manager should meet that: a browser extension is fine as a first step, a capability built into the browser or the operating system is the goal.</td></tr>
+    <tr><td><b>Must &middot; Knows what kind of key it holds</b></td><td>An sgit key declares itself: a vault key reads and writes, a read key only reads, and a public read key is published on purpose. The manager should keep them apart, and must never hand a read-and-write key to a page that only asked to read.</td></tr>
+    <tr><td><b>Must &middot; Releases a key only when the user agrees</b></td><td>With a passkey, biometric or device prompt; only to the site that asked; only into that page's memory; and never to the storage host, which in sgit's design never sees a key at all.</td></tr>
+    <tr><td><b>Must &middot; Shares end to end</b></td><td>Sharing a vault with someone means your manager passing the key to theirs, encrypted so that nobody in between, including the manager's own servers, can read it. Most password managers already share passwords this way.</td></tr>
+    <tr><td><b>Must &middot; Names are addresses, not keys</b></td><td>The recipient gets a short name in plain words, easy to read out or paste, that their own manager resolves to the key it was given. Guessing or overhearing the name must give nothing, because the name is not derived from the key and the key is not derived from the name.</td></tr>
+    <tr><td><b>Must &middot; Access can be taken back</b></td><td>Stopping a share, or letting it expire, is the manager's job. Making the old key useless for good is sgit's job, by rotating it. The two should be designed to work together.</td></tr>
+    <tr><td><b>Should &middot; An index of what I hold</b></td><td>The list of vaults a person can open, with a name, whether they can read or write, who shared it and when. Today nobody has this list, including us.</td></tr>
+    <tr><td><b>Should &middot; Keys for agents, scoped and time-limited</b></td><td>An AI agent should get a read key for one vault for one task, approved by a person, recorded, and expiring on its own. <a href="https://riskmandate.ai/" rel="noopener" target="_blank">RiskMandate.ai</a> is built around exactly this question: what an agent can reach against what it was authorised to do.</td></tr>
+    <tr><td><b>Should &middot; Recovery</b></td><td>sgit has no recovery by design. A key manager with account recovery gives the owner one, without giving sgit or the host a way in.</td></tr>
+    <tr><td><b>Should &middot; No lock-in</b></td><td>Keys should move between managers in an open format, and any key manager should be able to support any client-side encrypted app, not only ours.</td></tr>
+    <tr><td><b>Nice &middot; A record of use</b></td><td>When a key was released, to which page, on which device. It is the audit trail that client-side encryption otherwise cannot give an organisation.</td></tr>
+  </table></div>
+
+  <h2 id="sgit">sgit in two minutes</h2>
+  <p>You do not need to know git or cryptography for the rest of this page, only four ideas.</p>
+  <figure class="shot" data-shot="kkm-what.webp" data-dir="images/" data-alt="Diagram: a folder versioned like git is encrypted in your browser or laptop, stored as ciphertext by any host that cannot read it, and opened in a browser by anyone holding the key. Below, the three kinds of key: vault key (read and write, never published), read key (read only, kept private), public read key (read only, published on purpose)."><figcaption>What a vault is, and where the key sits. The three kinds of key at the bottom are what a key manager would hold.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><td><b>A vault is a folder with history</b></td><td>Files, every earlier version of them, branches and merges, the way a developer's git repository works, and it can carry its own small application so it opens as a page rather than a file list.</td></tr>
+    <tr><td><b>It is locked before it leaves your device</b></td><td>Every file, name and commit message is encrypted on your machine or in your browser. What gets stored is ciphertext under meaningless identifiers. <a href="../security/index.html">The security model</a> states exactly what the host can and cannot see.</td></tr>
+    <tr><td><b>Any host will do</b></td><td>Our server, your own, a cloud bucket or a plain static site behind a CDN. <a href="../deploy/index.html">It deploys to Docker, AWS, GCP or a static host</a>, and moving a vault between them is a copy, because none of them can read it.</td></tr>
+    <tr><td><b>One string opens it</b></td><td>The key. Whoever holds it can open the vault in a browser with no account and nothing installed. That is what makes vaults easy to hand over, and it is exactly why the key needs looking after.</td></tr>
+  </table></div>
+  <p>The fastest way to understand it is to open one. <a href="../demos/vaults/dsit-ai-risk-toolkit/index.html">The DSIT AI Risk Toolkit vault</a> opens in the browser from its page, with its public read key printed underneath, and so does every vault in <a href="../demos/vaults/index.html">the list</a>.</p>
+
+  <h2 id="flows">How it could work</h2>
+  <p>A sketch, not a design. We would expect a key manager's team to improve every step of it.</p>
+  <figure class="shot" data-shot="kkm-share.webp" data-dir="images/" data-alt="Sequence diagram with five lanes: Alice, Alice's key manager, Bob's key manager, Bob's browser, the vault host. 1: Alice shares Board papers with Bob, read only. 2: her manager sends the read key to Bob's manager end to end. 3: Alice sends Bob a name in words, amber-harbour-lantern, an address not a key. 4: Bob's browser asks his manager who holds this name, and Bob approves with a passkey. 5: the manager releases the read key into page memory. 6: the browser fetches ciphertext by opaque id. 7: the ciphertext is decrypted in Bob's tab."><figcaption>Sharing a vault by name. The key moves only between the two key managers; the words move by any channel at all.</figcaption></figure>
+  <div class="tablewrap"><table>
+    <tr><th>Workflow</th><th>What the person does</th><th>What happens underneath</th></tr>
+    <tr><td><b>Open a vault I hold</b></td><td>Clicks a vault in their key manager, or opens a vault page and approves a prompt.</td><td>The page asks the browser for the key for this vault; the manager checks the site and the key kind, asks the person, and releases the key into the page's memory. The page fetches ciphertext and decrypts it locally.</td></tr>
+    <tr><td><b>Share with a person</b></td><td>Chooses "share, read only" and the recipient, then sends them the three-word name however they like.</td><td>The manager derives or selects a read key, never the vault key, and passes it to the recipient's manager end to end. The name is a random label attached to that shared item, meaningful only inside the recipient's store.</td></tr>
+    <tr><td><b>Take it back</b></td><td>Stops the share, or lets it expire.</td><td>The manager removes the item from the recipient's store. For a clean break, the owner rotates the vault in sgit, and the manager updates the remaining holders with the new key.</td></tr>
+    <tr><td><b>Give an agent access</b></td><td>Approves a request from an agent to read one vault for one task.</td><td>A read key scoped to that vault, released for a stated time, with the release recorded. The agent never sees the vault key and cannot pass on what it was not given.</td></tr>
+    <tr><td><b>Create a new vault</b></td><td>Creates it in sgit, from the command line or the browser.</td><td>The new vault key goes straight into the manager, before anything is published. Our own <a href="../demos/vaults/publishing.html">publishing method</a> records for every published vault whether its write key is escrowed or lost, because a vault whose write key is lost is frozen: it can never be corrected.</td></tr>
+  </table></div>
+
+  <h3 id="building-blocks">Building blocks that may already be there</h3>
+  <p>We are not experts in your stack, and we would like to be told what we have missed. These are the public pieces that look relevant from where we stand.</p>
+  <ul>
+    <li><b>The WebAuthn PRF extension.</b> Part of the WebAuthn specification, it lets a passkey produce a secret that a web page can turn into an encryption key, after a user-verification prompt. Some password managers already use it to unlock their own encrypted stores. It could wrap vault keys so they are only usable after a passkey prompt.</li>
+    <li><b>The Credential Management API.</b> The browser's existing way for a page to ask for a stored credential. A new credential type for data keys, or an extension of an existing one, is the shape a built-in answer might take.</li>
+    <li><b>Password manager sharing.</b> The end-to-end sharing most managers already have for passwords and notes, between people and within an organisation, is the channel for step two in the diagram above.</li>
+    <li><b>The FIDO Alliance credential exchange work.</b> Specifications for moving credentials between managers securely, which is the no-lock-in requirement from the other side.</li>
+  </ul>
+
+  <h2 id="who">Who we would like to hear from</h2>
+  <p>Organisations are named below only as examples of the kind of team we mean. There has been no conversation with any of them, and nothing here is a claim about what their products do or do not support.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Kind of organisation</th><th>For example</th><th>What they would bring</th></tr>
+    <tr><td><b>Password managers</b></td><td>1Password, Bitwarden, Proton Pass, Dashlane, Keeper, KeePassXC</td><td>The store, the sharing, the browser extension and the people who already trust them with their secrets.</td></tr>
+    <tr><td><b>Enterprise identity providers</b></td><td>Okta, Microsoft Entra ID, Ping Identity</td><td>Policy: who in an organisation may hold which vault key, joiners and leavers, and the audit trail a regulated business needs.</td></tr>
+    <tr><td><b>Platform credential managers</b></td><td>The password and passkey managers built into Apple, Google and Microsoft platforms and browsers</td><td>The native answer: a capability every web page can use, with no extension to install.</td></tr>
+    <tr><td><b>Hardware key makers</b></td><td>Yubico and other FIDO authenticator makers</td><td>Keys that never leave a device, for the vault keys that matter most.</td></tr>
+  </table></div>
+
+  <h2 id="why-you">What is in it for a partner</h2>
+  <ul>
+    <li><b>A new kind of item.</b> Data keys, alongside passwords and passkeys, for any client-side encrypted app, with sgit as the first one and the published vaults as the test bed.</li>
+    <li><b>The agent era, on your platform.</b> Scoped, expiring, approved keys for AI agents are a problem every organisation is about to have, and a key manager is the natural place to answer it.</li>
+    <li><b>Work done in the open.</b> Everything on our side is Apache-2.0 and public, so the integration can be inspected, copied and cited, and nobody is locked in, including you.</li>
+    <li><b>A partner that stays out of your lane.</b> We make the vaults. We have no plans to build a key manager, and this page exists precisely so that we do not have to.</li>
+  </ul>
+
+  <h2 id="bring">What we bring</h2>
+  <div class="tablewrap"><table>
+    <tr><td><b>An open reference integration</b></td><td>The sgit side of the pilot, in the Apache-2.0 client and the browser viewer, written so another key manager could plug into the same interface.</td></tr>
+    <tr><td><b>Crypto that is specified and tested</b></td><td>AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one.</td></tr>
+    <tr><td><b>Keys that say what they are</b></td><td>Every sgit key carries a prefix naming its kind: <code>sgit_private_vault_</code>, <code>sgit_private_read_</code> or <code>sgit_public_read_</code>. One secret-scanner rule, <code>sgit_private_</code>, catches every private key type, and a published read key cannot be mistaken for a leak.</td></tr>
+    <tr><td><b>Real vaults to test against</b></td><td><a href="../demos/vaults/index.html">Thirty-two published vaults</a> across security, regulation, business plans and applications, each with a public read key, plus <a href="../demos/vaults/catalogue/index.html">the catalogue</a>, a vault that lists vaults, which is the closest thing today to the index a key manager would keep.</td></tr>
+    <tr><td><b>The failures, written down</b></td><td><a href="../case-studies/exposed-vault-key.html">What to do if a vault key is exposed</a>, <a href="../demos/vaults/publishing.html">the publishing method</a> with the mistake behind each rule, and <a href="../docs/limitations.html">when not to use sgit</a>. A key manager partner should know the edges before the first call.</td></tr>
+  </table></div>
+
+  <h2 id="detail">The detail</h2>
+
+  <h3 id="keys">The keys, exactly</h3>
+  <p>A vault key is a passphrase and a vault identifier joined by a colon, and displayed with its prefix: <code>sgit_private_vault_&lt;passphrase&gt;:&lt;vault id&gt;</code>. From it, the client derives a read key and a write key locally, using PBKDF2 with 600,000 iterations and a per-vault salt. The read key alone can open and verify the vault but not change it, and it is what gets shared. A read key that is deliberately published carries <code>sgit_public_read_</code> instead of <code>sgit_private_read_</code>: the same bytes, a different declaration, so a scanner alert on <code>sgit_private_</code> stays meaningful. The vault identifier is a short opaque string by design, because a human-readable identifier would leak meaning into server and CDN logs, which is one more reason the friendly name has to live in the key manager and not in the vault.</p>
+
+  <h3 id="history">Why the words cannot be the key</h3>
+  <p>sgit used to have exactly the friendly name this page asks for. An earlier share token was two words and four digits, and the vault's encryption keys were derived from it directly. It was easy to read out and easy to type. A security review on 6 August 2026 found that it carried about thirty bits of entropy and could be recovered from public data in around a tenth of a second on a GPU, and the feature was removed from the client entirely on 12 August 2026 rather than patched. The lesson is the requirement: <b>a name people can say out loud cannot also be the secret</b>. It can only be a pointer to one, resolved by something that already holds the secret and already knows who is asking. That is a key manager.</p>
+
+  <h3 id="bootstrap">Why a vault of keys is not enough</h3>
+  <p>We can, and will, keep keys inside vaults: a vault that holds the read keys for a set of other vaults is a natural index, and <a href="../demos/vaults/catalogue/index.html">the catalogue</a> is a public version of it. But the key to that vault still has to be kept somewhere, and so on down. At the bottom of every chain there is one secret that a person has to hold, recover, and use on a new device, and that is the problem password managers and identity providers were built for.</p>
+
+  <h3 id="today">What exists today, and what does not</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Exists and runs</th><th>Does not exist yet</th></tr>
+    <tr><td>Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-two published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class.</td><td>Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as <a href="../docs/limitations.html">the limitations page</a> says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build.</td></tr>
+  </table></div>
+
+  <h2 id="honest">What this page does not claim</h2>
+  <ul>
+    <li><b>We have not spoken to anyone named here.</b> The examples are categories made concrete, and the page makes no statement about any product's features or roadmap.</li>
+    <li><b>Your product may already do this.</b> If so, that is the best outcome, and we would like to be told and to write it up as the worked example.</li>
+    <li><b>The flow is a sketch.</b> It shows the shape of the requirement, not a protocol. The step where a name is resolved, in particular, is where a key manager's team would know far more than we do.</li>
+    <li><b>sgit holds no certification.</b> It is open-source software with a stated security model and stated limits, not an audited product, and <a href="../use-cases/health-regulated.html">the page for regulated sectors</a> says so first.</li>
+  </ul>
+
+  <h2 id="forward">If you work on this, or know someone who does</h2>
+  <p>This page is written to be forwarded as it is. It explains what sgit is for someone who has never heard of it, what we are asking for, the requirements, how it could work, and what we would bring, and every claim on it links to something that can be opened. It is published by the founder of sgit.ai and <a href="https://riskmandate.ai/" rel="noopener" target="_blank">RiskMandate.ai</a>, through <a href="https://thecyberboardroom.com" rel="noopener" target="_blank">The Cyber Boardroom Limited</a> in the UK. <a href="../about/index.html">Who is asking, and how to reach them &rarr;</a></p>
+
+  <script>
+  (function () {
+    ['shots.js'].forEach(function (f) {
+      fetch('../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[partnerships] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <div class="pagenav"><a href="sovereign-ai.html">← UK Sovereign AI</a><a href="index.html">All partnerships →</a></div>
+</main>

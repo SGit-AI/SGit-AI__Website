@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.1'
+SITE_VERSION = 'v0.6.2'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.1', '2026-09-23', 'this release',
+    ('v0.6.2', '2026-09-24', 'this release',
+     "A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, "
+     "/partnerships/vault-key-management.html, written to be sent to password managers, identity "
+     "providers and platform credential managers who have never heard of sgit. It opens with the "
+     "short version, then what we are looking for in order of preference (something that already "
+     "exists, a joint pilot, an open specification), the requirements in plain terms (browser first, "
+     "key kinds kept apart, release only on the user's approval, end-to-end sharing, names in plain "
+     "words that are addresses and never keys, revocation, scoped keys for agents), sgit in two "
+     "minutes, three new diagrams (keys travelling by hand today, what a vault is and where the key "
+     "sits, a seven-step share-by-name flow), and then the detail: the key formats, why the "
+     "word-based share token was removed in August (about thirty bits, recoverable in a tenth of a "
+     "second on a GPU), why a vault of keys still needs a first key, and what exists against what "
+     "does not. The partnerships index lists it as an open call."),
+    ('v0.6.1', '2026-09-23', 'git 277b41b1',
      "THE DSIT AI RISK TOOLKIT PAGE STARTS WITH THE READER'S DECISION, AND PLAYS THE DECK. Rebuilt "
      "from a brief: the vault has moved on since 20 September (155 files, a use-case-led journey at "
      "v0.2.0 as the home page, reference edition v0.2.3, a decks/v2 deck 'A decision before a risk "

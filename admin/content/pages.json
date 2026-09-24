@@ -402,6 +402,12 @@
     "desc": "A proposal from our side, published in the open. UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them."
   },
   {
+    "path": "partnerships/vault-key-management.html",
+    "section": "partnerships",
+    "title": "Who holds the keys? A call for collaboration on vault key management, sgit.ai",
+    "desc": "An open call to password managers, identity providers and platform credential managers. sgit vaults are encrypted on the client and opened in a browser with one key, and keys now multiply faster than people can manage them by hand. We would rather use a key manager than build one. The page explains sgit for someone new to it, states what we are looking for (something that exists, a joint pilot, or an open specification), the requirements (browser first, key kinds kept apart, release only on approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, keys for agents), a sketch of the share flow, why the old word-based token was removed, and what we would bring."
+  },
+  {
     "path": "docs/briefs/vault-telemetry-append-lanes.html",
     "section": "briefs",
     "title": "Telemetry from a published vault, a build brief",

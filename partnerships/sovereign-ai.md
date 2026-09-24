@@ -2,7 +2,7 @@
 
 > A proposal from our side, published in the open. UK Sovereign AI names trust, safety and assurance as one of five frontiers and the safe adoption of AI agents as a procurement challenge area. This page states their mission in their own words, maps each priority to vaults published here that can be opened now (Licence to Operate, Risk Mandate, AIUC-1 conformance, the DSIT AI Risk Toolkit, Regulation Graph), states the UK anchoring in the founder's own words (thirty years in the UK, a UK exit, The Cyber Boardroom Limited as the trading company), argues that sovereignty without open source is one acquisition deep, proposes three concrete partnership shapes sized to their instruments, and lists what the page cannot tell them.
 
-*Source: <https://sgit.ai/partnerships/sovereign-ai.html> · site v0.6.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/sovereign-ai.html> · site v0.6.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

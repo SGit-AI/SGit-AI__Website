@@ -2,7 +2,7 @@
 
 > The business case for specific partnerships between sgit.ai, RiskMandate.ai and organisations we would like to work with, made from public material only so the pages can be forwarded to anyone: what they are trying to do, what is published here that answers it, where the fit is partial, and a first concrete piece of work.
 
-*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.1 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ The business case, made in public
 
 # Partnerships, argued in the open
 
-Each page in this section makes the case for one specific partnership, between an organisation we would like to work with and the companies behind this site, [sgit.ai](../index.md) and [RiskMandate.ai](https://riskmandate.ai/). The pages are built entirely from public material, theirs and ours, so there is nothing on them that either side would need to keep confidential, and they can be sent to anyone who knows somebody there. That is what they are for.
+Each page in this section makes the case for one specific partnership, or puts out one specific call for collaboration, between organisations we would like to work with and the companies behind this site, [sgit.ai](../index.md) and [RiskMandate.ai](https://riskmandate.ai/). The pages are built entirely from public material, theirs and ours, so there is nothing on them that either side would need to keep confidential, and they can be sent to anyone who knows somebody there. That is what they are for.
 
 ## How each page is written
 
@@ -28,6 +28,7 @@ Each page in this section makes the case for one specific partnership, between a
 | Organisation | Why them | The case |
 |---|---|---|
 | **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI →**](sovereign-ai.md) |
+| **Password managers and identity providers** an open call | Every sgit vault opens with one key, people now hold dozens, and agents are starting to create them by the hundred. Storing, sharing and taking back secrets in the browser is what these teams already do well, and we would rather use their answer than build our own. | [**Who holds the keys? A call for collaboration on vault key management →**](vault-key-management.md) |
 
 **If you know somebody at one of these organisations**, the page is written to be forwarded as it is. It says what they do, what we do, where the two meet, and what a first step would look like, and everything on it can be checked by the person receiving it. [Who is asking, and how to reach them →](../about/index.md)
 
