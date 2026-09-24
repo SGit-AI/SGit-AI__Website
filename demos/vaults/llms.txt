@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.2) from the same file the table on that page is built
+> generated at build time (v0.6.3) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (32)
+## The vaults (33)
+- **#33 Connector Twin**: A business plan with a working replay: what an agent did through Gmail and Calendar, what it saw, and what can be undone
+ - page: /demos/vaults/connector-twin/index.md
+ - id `7tkvspwp` · Briefing · published 2026-09-24 · 515 KB · 31 files
+ - read key: `sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860:7tkvspwp`
 - **#32 Agent as Webmaster**: A complete business plan, with mock-ups and prototypes, written for somebody else to run
  - page: /demos/vaults/agent-webmaster/index.md
  - id `ikrqeu5t` · Briefing · published 2026-09-23 · 666 KB · 32 files

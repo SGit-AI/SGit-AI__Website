@@ -1,0 +1,106 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Connector Twin</p>
+  <h1>Connector Twin, a business plan with a working replay</h1>
+  <p class="lead">A business plan for a service that gives every AI agent deployment a twin of its connectors: a journal of every request and response the agent makes to Gmail, Google Calendar or any other connected system, replayed into the views the agent saw, with a before and after for every change and a revert plan for each one. The vault opens on a working replay of an invented agent session, rebuilt from seventeen hash-chained journal entries, and then sets out the business. <b>The sales question:</b> do you know what your agents did? The case is argued in <a href="../../../articles/connector-twin-before-you-deploy-an-agent.html">Before you give an agent a connector, give the connector a twin</a>.</p>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860:7tkvspwp</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860%3A7tkvspwp" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860:7tkvspwp</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key that is kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, and verified with an all-zeros negative control: the real key cloned 31 files, identical to the source folder, and the control cloned nothing.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The replay opens as an app. Drag the slider and the inbox and calendar rebuild step by step. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860%3A7tkvspwp" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>, where the replay has more room.</p>
+  <div class="sgv-uiembed" data-vault="7tkvspwp" data-readkey="4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the question</span>
+        <h3>What an organisation can answer, with a twin and without</h3>
+        <p>The app opens on the sales question and a six-row table: what can the agent do, what did it do, what did it see, why, can you undo it, and can you show someone else. Without a twin, most answers are the agent's own summary. With one, every answer is a record.</p><p>Every claim about what Gmail and Calendar keep comes from Google's own documentation, and the plan's facts document links each one.</p>
+      </div>
+      <figure class="shot" data-shot="question.webp" data-dir="images/" data-alt="The sales question and the six-row table, without a twin and with one."><figcaption>Do you know what your agents did? The table, without a twin and with one.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the replay</span>
+        <h3>The inbox and the calendar, as the agent saw them</h3>
+        <p>An invented scheduling assistant is given a Gmail and a Calendar connector and one instruction. Its seventeen calls are the journal. The app folds them in order into the inbox and the calendar at any step, marking what the agent archived, trashed, permanently deleted, sent, moved, declined, deleted and created, with a ghost where a moved event used to be.</p><p>The twin is not a copy of the mailbox. One message the agent listed and never opened appears as an id and nothing more, because that is all the agent saw.</p>
+      </div>
+      <figure class="shot" data-shot="replay-calendar.webp" data-dir="images/" data-alt="The calendar rebuilt from the journal: a moved review with its ghost, a declined sync, a deleted supplier call and a created call."><figcaption>The calendar as the agent left it, rebuilt from the journal alone.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">before and after</span>
+        <h3>Every change, with what the twin can put back</h3>
+        <p>Pick a write and the app shows the state before and after, and a grade: exact, partial, content only, or none. Step 15 is the one that matters: a payment reminder deleted with the Gmail API's permanent delete, which Google documents as "cannot be undone". The twin still holds the full message, because the agent read it before deleting it, so its content can be put back as a new message.</p>
+      </div>
+      <figure class="shot" data-shot="replay-deleted.webp" data-dir="images/" data-alt="Step 15, before and after: the reminder is gone from Gmail, and the copy the twin holds is shown."><figcaption>Step 15: permanently deleted in Gmail, still held in the twin.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">said versus did</span>
+        <h3>The agent's summary, against the journal</h3>
+        <p>The agent's summary is true in every sentence. The journal shows that "removed the supplier call" was a delete with notifications on, so the supplier received a cancellation, and that "deleted an old reminder" was the unpaid invoice's reminder, removed permanently. That gap is what a twin exists to close.</p>
+      </div>
+      <figure class="shot" data-shot="said-vs-did.webp" data-dir="images/" data-alt="Four rows: what the summary said, what the journal shows, and whether it can be put back."><figcaption>What the agent said, what the journal shows, and what can be put back.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the revert plan</span>
+        <h3>Newest first, side effects named</h3>
+        <p>For every write up to the current step, the inverse call, newest first, with its grade and the side effect it cannot avoid: a second round of notifications, a new message id, a cancellation already sent. Executing the plan is a separate step that a person approves and that is journalled like everything else.</p>
+      </div>
+      <figure class="shot" data-shot="revert-plan.webp" data-dir="images/" data-alt="The revert plan for all seventeen steps, newest first, each graded."><figcaption>The revert plan, newest first, each step graded.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the business</span>
+        <h3>Priced per agent, with a calculator</h3>
+        <p>A connector review once (£750, £2,500 or £6,000 by size), then per agent per month: Journal £15, Twin £40, Assured £90, and incident replays on demand. Three capture modes, broker, gateway and agent-reported, which change the evidence grade rather than the price.</p><p>The calculator moves customers, agents per customer, tier, set-up and burn. At the Twin price, about 380 agents cover a two-founder burn of £14,000 a month. Every number is marked as a hypothesis.</p>
+      </div>
+      <figure class="shot" data-shot="packages.webp" data-dir="images/" data-alt="The set-up, monthly and on-demand packages as cards."><figcaption>What you sell: set-up once, per agent monthly, and on demand.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What this vault demonstrates</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Feature</th><th>The mechanism, not the marketing</th></tr>
+    <tr><td><b>A replay built from a journal, not a copy</b></td><td>The app holds seventeen entries, each a tool call, an upstream request and a response, and folds them into state. Nothing else is shipped: no snapshot of the inbox, no snapshot of the calendar. What you see at step nine is what the agent had seen by step nine.</td></tr>
+    <tr><td><b>A hash chain verified in your browser</b></td><td>Each entry carries the SHA-256 of the one before. The app recomputes the chain with the browser's own crypto and prints the head; <code>tools/verify-journal.py</code> does the same offline. It ran and passed inside the vault host's sandbox.</td></tr>
+    <tr><td><b>An app with nothing requested</b></td><td><code>app.json</code> declares <code>"permissions": {}</code>, and the vault host shows it as read-only with no read or write grants. No LLM, no writes, no network.</td></tr>
+    <tr><td><b>A specification to build against</b></td><td><code>spec/journal-entry.md</code> is the contract between capture and replay, including what is never captured. <code>spec/revert-rules.md</code> lists every Gmail and Calendar action in scope, what the platform keeps, the inverse, and the side effects.</td></tr>
+    <tr><td><b>Facts with sources</b></td><td><code>plan/02-the-facts.md</code> links every claim about Gmail, Calendar and Google Vault to Google's documentation, and marks the one thing the plan has not tested: whether an event deleted through the API appears in Calendar's trash.</td></tr>
+    <tr><td><b>Written for another operator</b></td><td>Eleven plan documents with a reading order, three prototypes (the agent-reported capture instruction, the broker, and the processor schedule), and the tools to regenerate the journal and rebuild the app.</td></tr>
+  </table></div>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every one of the 31 files, from a clone made with the published read key and nothing else, and compared byte for byte with the source folder. Patterns: vault-key shapes, every <code>sgit_</code> credential prefix, API-key shapes, private-key blocks, bearer tokens, and any email address not on the reserved <code>.example</code> domain.</p>
+  <p><b>What was found.</b> Nothing. The journal is invented: its people, companies and addresses are fictional, every address uses <code>.example</code>, and the Authorization header is recorded only as <code>[never captured]</code>. The negative control, an all-zeros read key against the same vault id, produced an empty directory.</p>
+  <p><b>What the research corrected.</b> The plan first assumed Google Vault did not cover Calendar; it has since November 2023, keeping the last revision of each day, and the facts now say so. It also first said Calendar keeps no record of edits; administrators have an audit log that records some earlier values, and the facts now say that too, with the distinction that a log is a record, not a restore.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written. The vault is correctable.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py 7tkvspwp &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 31 · <b>plaintext size:</b> 515 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-09-24 · <b>HEAD:</b> <code>obj-cas-imm-3ad848e2891f</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>app.json</code>, <code>content.json</code>, <code>diagrams/</code>, <code>index.html</code>, <code>journal/</code>, <code>plan/</code>, <code>prototypes/</code>, <code>spec/</code>, <code>tools/</code></li>
+    <li><b>File types:</b> .md ×18, .json ×4, .py ×3, .svg ×2, .webp ×2, .html ×1, .jsonl ×1</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by the founder on 24 September 2026: a twin of what an agent can do and has done is close to a minimum requirement for deploying one, with Gmail and Calendar as the worked example, and the idea split in two, an article for the need and a business plan for the service. <b>Where it sits.</b> With the other <a href="../../../startups/business-plans.html">business plans published for founders</a>, each a vault, each written for somebody else to run.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>

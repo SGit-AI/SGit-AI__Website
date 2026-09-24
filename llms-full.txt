@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.2). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.3). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -30,7 +30,7 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **32 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 32 →](demos/vaults/index.md)
+Four of **33 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 33 →](demos/vaults/index.md)
 
 ## What people actually ship
 
@@ -52,9 +52,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-160site releases, each verified live before it was called done
+161site releases, each verified live before it was called done
 
-32vaults published with a deliberately public read key
+33vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 
@@ -199,7 +199,7 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 
 The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
 
-[2026-09-22**The future of news is the story vault, not the paywall**The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.Read it →](articles/future-of-news-story-vault-not-paywall.md) [2026-09-21**The SaaS apocalypse will be decided by inertia, not by AI**The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.Read it →](articles/saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-21**For a startup, the most important question is whether they miss it**A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.Read it →](articles/the-question-is-whether-they-miss-it.md)
+[2026-09-24**Before you give an agent a connector, give the connector a twin**When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.Read it →](articles/connector-twin-before-you-deploy-an-agent.md) [2026-09-22**The future of news is the story vault, not the paywall**The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.Read it →](articles/future-of-news-story-vault-not-paywall.md) [2026-09-21**The SaaS apocalypse will be decided by inertia, not by AI**The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.Read it →](articles/saas-apocalypse-decided-by-inertia-not-by-ai.md)
 
 [All articles →](articles/index.md)
 
@@ -388,10 +388,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**32 published vaults**: 7 analysis, 6 briefing, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**33 published vaults**: 7 analysis, 7 briefing, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 33 | [Connector Twin](connector-twin/index.md)`7tkvspwp` | A business plan with a working replay: what an agent did through Gmail and Calendar, what it saw, and what can be undone | Briefing | 31 | 515 KB | 2026-09-24 |
 
 | 32 | [Agent as Webmaster](agent-webmaster/index.md)`ikrqeu5t` | A complete business plan, with mock-ups and prototypes, written for somebody else to run | Briefing | 32 | 666 KB | 2026-09-23 |
 
@@ -5465,7 +5467,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.2, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.3, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5828,16 +5830,16 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-160**site releases since 14 August**
+161**site releases since 14 August**
 each verified live before it was called done
 
-32**vaults published with a public read key**
+33**vaults published with a public read key**
 every one audited first; findings on the page
 
 27**sibling sites on *.sgit.ai**
 one question each, own repo, own history
 
-78**articles and release notes**
+79**articles and release notes**
 all with a markdown twin and an RSS feed
 
 10**cross-team briefs, in the open**
@@ -5968,7 +5970,10 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Connector Twin**](../demos/vaults/connector-twin/index.md) | Give every AI agent deployment a twin of its connectors: a journal of every request and response, replayed into what the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? | A working replay of an invented Gmail and Calendar session, eleven plan documents, the facts with Google's sources, the journal specification, revert rules, three prototypes and a calculator. |
 | [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. One operator, profitable at fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
+
+[**All business plans, and how to take one →**](business-plans.md)
 
 **Want one written for your idea?** The plans start as a voice memo and become a vault the same day. If you have a business that should exist on this stack and would rather somebody else ran it, [say so](../about/index.md).
 
@@ -5976,7 +5981,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty-two vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-three vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.
@@ -5993,6 +5998,54 @@ Everything above is how this site itself is built, which is the only reason to b
 **This section is new, and deliberately small.** It will grow with the founders who use it, and when it outgrows a page it will become its own site, the way nineteen others already have. If you are building on vaults, the most useful thing you can send is what broke.
 
 [← The operating model](../articles/the-question-is-whether-they-miss-it.md)[Open a real vault →](../demos/vaults/index.md)
+
+
+
+==============================================================================
+# Business plans to build on sgit, sgit.ai
+
+> Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start: Connector Twin (a journal and replay of every connector call an AI agent makes, sold per agent) and Agent as Webmaster (websites small businesses change by asking). How to take one, what every plan contains, and the offer to build them with partners.
+>
+> Page: https://sgit.ai/startups/business-plans.html
+
+[Home](../index.md) / [Startups](index.md) / Business plans
+
+For founders · published as vaults · take one and run it
+
+# Business plans to build on sgit
+
+These are businesses we think should exist on top of sgit and the work published on this site, written up in enough detail for somebody else to start one. Each plan is a vault: the plan as an app and as documents, the numbers marked as hypotheses, the facts with their sources, and prototypes enough to serve the first customer. **We are looking for business partners to build them.** Where nobody does, we may build one ourselves, depending on funding and on who is available. Either way the plan is public, on the same terms as the code.
+
+## The plans
+
+| Plan | The business | How it makes money | What is in the vault |
+|---|---|---|---|
+| [**Connector Twin**](../demos/vaults/connector-twin/index.md) 24 September 2026 | Give every AI agent deployment a twin of its connectors: a journal of every request and response to Gmail, Calendar, Drive or Slack, replayed into the views the agent saw, with before and after and a revert plan. Sold with one question: do you know what your agents did? The case is argued in [Before you give an agent a connector, give the connector a twin](../articles/connector-twin-before-you-deploy-an-agent.md). | A connector review once, £750 to £6,000. Then per agent per month: £15, £40 or £90 by tier. Incident replays on demand. About 380 agents cover a two-founder burn. | A working replay of an invented session with a hash chain verified in the browser, eleven plan documents, the facts with Google's sources, the journal entry specification, revert rules for Gmail and Calendar, three prototypes, a calculator and two diagrams. |
+| [**Agent as Webmaster**](../demos/vaults/agent-webmaster/index.md) 23 September 2026 | Give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. Setup once, maintenance monthly, changes on demand. | Setup £300 to £1,200. Maintenance £50 to £200 a month. Changes on demand. One operator, profitable at about fifty customers. | The plan in one page and in ten documents, three diagrams, a unit-economics calculator, three invented customer sites and the operator's sales site as mock-ups, the agent's playbook, the setup steps and six worked change requests. |
+
+## How to take one
+
+1. **Open it.** Every plan's page prints its public read key. Open it in the browser with nothing installed, or clone it with `sgit clone`.
+2. **Read the one-page version.** Every plan starts at `plan/00-START-HERE.md`, with a reading order after it.
+3. **Test the numbers.** Every price and every hour is a first guess, and every plan says so. The first ten customers are the test.
+4. **Keep what you build.** The plans are offered on the same terms as the code behind them: take it, run it, change it.
+5. **Send back what broke.** It is the one thing we ask, and it makes the next plan better.
+
+## What every plan contains
+
+| **The one-page version** | The business, why now, what you sell, the numbers and why it is buildable, on one page. |
+|---|---|
+| **Facts and assumptions, kept apart** | Facts link to their sources. Assumptions are labelled as assumptions, with the arithmetic shown so they can be redone. |
+| **The architecture and the service** | How it is built on vaults, what the customer gets, and what the operator does not do. |
+| **The model, with a calculator** | Prices, costs, margins and break-even, with the inputs on sliders in the app. |
+| **Go-to-market and the first ninety days** | Who buys first, the free thing that opens the door, and what "done" means at each stage. |
+| **Investors, risks and open questions** | The case for backing it, what could sink it, and what we do not know yet. |
+| **Prototypes** | Enough to serve the first customer: playbooks, specifications, set-up steps and worked examples. |
+| **PUBLIC.md** | The rules the vault is published under: nothing private, no write token, and an app that asks for no permissions. |
+
+**Want to build one of these, or want one written for your idea?** The plans start as a voice memo and become a vault the same day. If you want to run one of the businesses above, with us or on your own, or you have one that should exist on this stack, [say so](../about/index.md).
+
+[← Startups](index.md)[About the author →](../about/index.md)
 
 
 
@@ -6015,7 +6068,7 @@ sgit.ai is built by one person and a team of agents, and the articles here that 
 
 | Role | What it involves |
 |---|---|
-| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-two vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
+| **Founder, [sgit.ai](../index.md)** | Encrypted vaults with git semantics: clone, commit, branch and merge files that are encrypted before they leave your machine, under Apache-2.0, and [the network of sites](../network/index.md) of which this is the hub. Each site publishes its argument before its implementation, so the commitments are checkable, and [thirty-three vaults are published with their read keys](../demos/vaults/index.md) as the evidence. |
 | **Founder, [sgraph.ai](https://sgraph.ai)** | Where the strategy turns into revenue: the commercial home of SG/Send, the secure file-sharing service built on the open-source sgit layer, and hosted SG/Vaults. The code stays Apache-2.0. What is sold is the running, maintained, certified service. |
 | **Founder, [MyFeeds.ai](https://investor.myfeeds.ai/)** | Role-aware cybersecurity briefings built on semantic knowledge graphs, with source attribution: CISO, engineer and board views of the same news. Open source, serverless, and with the seed pitch and unit economics published in the open. |
 | **Founder, [The Cyber Boardroom](https://thecyberboardroom.com)** | An AI-powered platform for the conversation between technical security teams and the board, bridging the two with knowledge-graph technology. Apache-2.0, with the community edition and the [investment repository](https://github.com/the-cyber-boardroom/cbr-investment) public. The Cyber Boardroom Limited, UK-registered and trading for almost two years, is today the commercial vehicle behind sgit.ai and RiskMandate.ai. |
@@ -6081,7 +6134,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 | **Start with what they are trying to do** | In their own words where possible, and where we can put it better, put it better. A partnership page that cannot explain the other side's mission generously has not understood it. |
 |---|---|
 | **Public material only** | Their published strategy, programmes and criteria. Our published vaults, measurements and articles. Nothing from a conversation, a data room or a private brief. If a fact would need permission to publish, it is not on the page. |
-| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-two published vaults](../demos/vaults/index.md) are the portfolio. |
+| **Evidence, not pitch** | Every claim about what we can do points at a vault that can be opened with a read key, a measurement with its command printed, or a page that states its own limits. The [thirty-three published vaults](../demos/vaults/index.md) are the portfolio. |
 | **The fit, stated precisely** | Which of their stated priorities we serve, which we do not, and what a first concrete piece of work would be. A partnership is a specific thing two parties do, not an alignment of values. |
 | **What is not public, marked** | The things a partner would need to know that are not on either site are listed rather than hidden, in the same way [the investors page](../investors/index.md) leaves the ask visibly open until it is stated. |
 
@@ -6143,7 +6196,7 @@ Put simply: **they want British companies building the layers that matter, ancho
 
 Two companies, one substrate, and a published body of evidence that can be opened by anyone with the read key printed on each page.
 
-**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-two vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
+**[sgit.ai](../index.md)** is git for encrypted vaults. A vault is a folder versioned like a git repository, encrypted on the client before anything leaves the machine, openable by anyone holding a read key with no account and nothing installed, and able to carry its own application with the permissions it asks for declared in a file. The server that stores it cannot read it; [the security model](../security/index.md) states exactly what it does see. The code is Apache-2.0 and [deploys to Docker, AWS, GCP or a plain static host](../deploy/index.md), including, as this site demonstrates, to a bucket behind a CDN with no server of ours in the path. [Thirty-three vaults are published with their read keys](../demos/vaults/index.md), and [the method for publishing them safely is written down](../demos/vaults/publishing.md) with the mistakes that produced each rule.
 
 **[RiskMandate.ai](https://riskmandate.ai/)** is the business risk layer for autonomous systems. Its tagline is *"know what your agents can do"*, and its central object is the Agent Behaviour Policy: a documented record of what an agent can reach, what it was authorised to do, the gap between the two, and which controls constrain it, written so that a CEO, a CTO, a CISO and an insurer can all sign the same document. From that comes the *licence to operate*: the business as the authority, the behaviour policy as the evidence, the agent operating under stated terms for a stated interval, with residual risk accepted by a named owner. *"Not what they did. What they can."*
 
@@ -6227,7 +6280,7 @@ A call for collaboration · public material only · 24 September 2026
 - **What we are asking for.** A way, in the browser, for a person to keep their vault keys in the password manager or identity system they already use, to open a vault with a passkey or a biometric prompt, and to share a vault with someone else by sending a short name in plain words rather than the key.
 - **The one hard rule.** The words must be an address, never the key. sgit once shipped a word-based token that *was* the key, and [removed it](#history) when a review showed it could be guessed in a fraction of a second. The name has to resolve only inside the recipient's own key manager.
 - **Who we would like to hear from.** Password managers, enterprise identity providers, the credential managers built into operating systems and browsers, and hardware key makers. The best outcome is that you already have this and tell us.
-- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-two published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
+- **What we bring.** An open reference integration, published crypto test vectors, a key format designed for secret scanners, thirty-three published vaults to test against, and a willingness to write the specification in public so it is not tied to either of us.
 
 ## The opportunity
 
@@ -6237,7 +6290,7 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-two vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-three vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
 | **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
@@ -6333,7 +6386,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Thirty-two published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Thirty-three published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -6354,7 +6407,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-two published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-three published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 
@@ -7996,11 +8049,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.2**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.3**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.2 | 2026-09-24 | this release | A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, /partnerships/vault-key-management.html, written to be sent to password managers, identity providers and platform credential managers who have never heard of sgit. It opens with the short version, then what we are looking for in order of preference (something that already exists, a joint pilot, an open specification), the requirements in plain terms (browser first, key kinds kept apart, release only on the user's approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, scoped keys for agents), sgit in two minutes, three new diagrams (keys travelling by hand today, what a vault is and where the key sits, a seven-step share-by-name flow), and then the detail: the key formats, why the word-based share token was removed in August (about thirty bits, recoverable in a tenth of a second on a GPU), why a vault of keys still needs a first key, and what exists against what does not. The partnerships index lists it as an open call. |
+| v0.6.3 | 2026-09-24 | this release | BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of every request and response an agent makes, appended to a write-only lane, processed later and replayed into the inbox and calendar as the agent saw them, is the minimum requirement for deploying an agent with provenance, explanation and undo. Every claim about Gmail and Calendar is Google's own and linked: the API delete 'cannot be undone', Undo Send is an interface feature, trash keeps 30 days, the administrator's bulk restore 25, Vault 'isn't designed to be a backup or archive tool' and keeps one Calendar revision a day. Research corrected two first assumptions (Vault has covered Calendar since November 2023; the admin audit log does record some earlier values) and the text says so. The thirty-third vault, Connector Twin (7tkvspwp, 31 files), opens on a working replay of an invented seventeen-call Gmail and Calendar session: a slider rebuilds the inbox and calendar at any step, before and after for every write, a graded revert plan, what the agent said against what the journal shows, and a hash chain verified in the browser, which ran inside the vault host's sandbox. Behind it, the business plan: facts with sources, architecture, three capture modes, packages per agent, a calculator, go-to-market, ninety days, risks, open questions, the journal specification, revert rules and three prototypes. New page /startups/business-plans.html gives the plans their own home, listed in the Why menu, with Agent as Webmaster and Connector Twin, how to take one, and the offer to build them with partners. |
+| v0.6.2 | 2026-09-24 | git 42d40e9f | A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, /partnerships/vault-key-management.html, written to be sent to password managers, identity providers and platform credential managers who have never heard of sgit. It opens with the short version, then what we are looking for in order of preference (something that already exists, a joint pilot, an open specification), the requirements in plain terms (browser first, key kinds kept apart, release only on the user's approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, scoped keys for agents), sgit in two minutes, three new diagrams (keys travelling by hand today, what a vault is and where the key sits, a seven-step share-by-name flow), and then the detail: the key formats, why the word-based share token was removed in August (about thirty bits, recoverable in a tenth of a second on a GPU), why a vault of keys still needs a first key, and what exists against what does not. The partnerships index lists it as an open call. |
 | v0.6.1 | 2026-09-23 | git 277b41b1 | THE DSIT AI RISK TOOLKIT PAGE STARTS WITH THE READER'S DECISION, AND PLAYS THE DECK. Rebuilt from a brief: the vault has moved on since 20 September (155 files, a use-case-led journey at v0.2.0 as the home page, reference edition v0.2.3, a decks/v2 deck 'A decision before a risk list'), and the page still opened on four worlds and 617 nodes. Now: an outcome headline, three actions (live vault, eight-slide walkthrough, PDF), the site-owned decks/v2 viewer mounted on the page reading manifest, slide source, styles, five screenshots and the PDF from the vault, a five-step 'what you can try', the vault embed, then the architecture material moved below with the four-world screenshots dated, a status table separating journey v0.2.0, reference v0.2.3, the research graph (941/4,735) and the reference graph (1,051/1,289) without merging them, the licences stated (OGL v3.0 for DSIT text; no licence assigned to the new code), and the read key, derived facts, audit and the dated 20 September snapshot in an expandable provenance section. VIEWER: keyboard navigation (arrows, PageUp/Down, Home, End), a live region announcing the slide, aria-current on the slide list, titled frames, focus-visible outlines, and a counted 'N screenshots could not be read' status instead of a plausible-looking gap. Verified through the mirror: 8 slides walked, 0 unresolved images, PDF bytes match SHA-256 36f9e16c…, parse frame allow-scripts only, render frame no scripts. |
 | v0.6.0 | 2026-09-23 | git ec7bcad8 | THIRTY-SECOND VAULT, AND THE FIRST BUSINESS PLAN PUBLISHED FOR SOMEBODY ELSE TO RUN. Agent as Webmaster (ikrqeu5t): give small businesses a website they can change by asking, with an AI agent as the webmaster and GitHub Pages as the host. The vault carries the plan as a single-page app with a unit-economics calculator, the same plan as eleven markdown documents, three drawn diagrams, three invented customer sites and the operator's sales site as standalone mock-ups, and the prototypes to serve the first customer (the agent's playbook, the GitHub Pages setup, six worked change requests). permissions {}. Published under the method: classified, derived one-way, audited from a read-key clone (nothing found), negative control run, facts derived. The startups section gains 'Business plans to build on'. THE PUBLISH FOUND TWO CLI BUGS: the auto transport treated a fresh vault's object 404 as 'no live API' and flipped push to the read-only static transport; and push, pull, fetch, status and delete ignored --transport. Both fixed in the CLI repository with a pinning test. Vault counts across the site move to thirty-two; measured estate figures keep their 21 September date. |
 | v0.5.9 | 2026-09-23 | git 62148934 | THE SOVEREIGN AI PAGE SAYS WHAT IT IS IN ITS TITLE. A reader landing from a forwarded link had no way to know this was a proposal from sgit.ai's side. Title is now 'A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI', the eyebrow names both parties and calls it proposed, the lead opens by saying so and introduces the two products in a clause each before introducing the fund. Index link, page title and About cross-link follow. |
@@ -10419,7 +10473,7 @@ Longer pieces that make an argument across several pages, what a thing means, wh
 
 **Two rules keep these from going stale.** An article never restates a fact it does not own, it links to the page that does, so when the fact changes the article does not start lying. And an article that makes a testable claim links to the test, the same way [the comparison pages](../compare/index.md) do.
 
-[**The future of news is the story vault, not the paywall**2026-09-22The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.newspublishingprovenancemicropaymentssemantic-graphsarticle](future-of-news-story-vault-not-paywall.md) [**The SaaS apocalypse will be decided by inertia, not by AI**2026-09-21The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.saasstrategywardley-mapsagentsarticle](saas-apocalypse-decided-by-inertia-not-by-ai.md) [**For a startup, the most important question is whether they miss it**2026-09-21A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.startupsstrategyopen-sourceinvestingarticle](the-question-is-whether-they-miss-it.md) [**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
+[**Before you give an agent a connector, give the connector a twin**2026-09-24When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.agentsconnectorsdigital-twinsprovenanceriskriskmandatearticle](connector-twin-before-you-deploy-an-agent.md) [**The future of news is the story vault, not the paywall**2026-09-22The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.newspublishingprovenancemicropaymentssemantic-graphsarticle](future-of-news-story-vault-not-paywall.md) [**The SaaS apocalypse will be decided by inertia, not by AI**2026-09-21The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.saasstrategywardley-mapsagentsarticle](saas-apocalypse-decided-by-inertia-not-by-ai.md) [**For a startup, the most important question is whether they miss it**2026-09-21A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.startupsstrategyopen-sourceinvestingarticle](the-question-is-whether-they-miss-it.md) [**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**2026-09-20The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.graphsmethodfractal-semantic-graphsarticle](introducing-fractal-semantic-graphs.md) [**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**2026-09-07Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.homepagepositioningvaultsagents](proof-behind-the-claim.md) [**The proof moved up, the homepage after the rebuild, next to the before pictures**2026-09-07The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.homepagepositioningvaultsagents](proof-moved-up.md) [**A chat box on a site with no server, the plan, and the trade it makes**2026-08-27Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.chatllmbyokplan](chat-on-a-static-site.md) [**Twenty sites in fifteen days, and what that did to the writing**2026-08-26The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.networkpublishingmethod](nineteen-sites.md) [**Git for things you cannot put on GitHub**2026-08-25An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.introzero-knowledgevaultsagents](what-sgit-is.md) [**Seven vaults, one method**2026-08-19Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.vaultspublishingmethod](seven-vaults-one-method.md) [**Green does not mean live**2026-08-17Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.cideployverification](green-does-not-mean-live.md)
 
 
 
@@ -11367,6 +11421,123 @@ From `admin/build/catalogue_derive.py ikrqeu5t <read key hex>`, read-only, no to
 ## Notes
 
 **Where this came from.** A voice memo by the founder on 23 September 2026, worked into a plan the same day. The memo's numbers were "300, 500 or 1,000 for setup" and "50 or 100 a month for maintenance"; the plan makes them £300, £600 and £1,200, and £50, £100 and £200, adds the on-demand tier and the token pass-through the memo asked for, and marks all of it as a hypothesis. **Where it goes next.** The [startups section](../../../startups/index.md) now has a place for plans like this one, and the intention is a set of them, each a vault, each written for somebody else to run.
+
+[← All published vaults](../index.md)
+
+
+
+==============================================================================
+# Connector Twin, a business plan with a working replay, published as a vault
+
+> A business plan for a service that journals every request and response an AI agent makes through Gmail, Calendar or any connector, and replays it into the views the agent saw, with before and after and a revert plan for every change. Opens on a working replay of an invented seventeen-call session with a hash chain verified in the browser. Facts sourced from Google's documentation, the journal specification, revert rules, prototypes, packages priced per agent and a calculator.
+>
+> Page: https://sgit.ai/demos/vaults/connector-twin/index.html
+
+[Home](../../../index.md) / [Vaults](../index.md) / Connector Twin
+
+# Connector Twin, a business plan with a working replay
+
+A business plan for a service that gives every AI agent deployment a twin of its connectors: a journal of every request and response the agent makes to Gmail, Google Calendar or any other connected system, replayed into the views the agent saw, with a before and after for every change and a revert plan for each one. The vault opens on a working replay of an invented agent session, rebuilt from seventeen hash-chained journal entries, and then sets out the business. **The sales question:** do you know what your agents did? The case is argued in [Before you give an agent a connector, give the connector a twin](../../../articles/connector-twin-before-you-deploy-an-agent.md).
+
+**Open it yourself. The key is the whole credential.**
+ Read key: `sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860:7tkvspwp`
+ In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860%3A7tkvspwp) · From the CLI: `sgit clone sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860:7tkvspwp`
+Published deliberately under the `sgit_public_read_` prefix, and **derived** one-way from a vault key that is kept in the gitignored tier and never published. Classified with `check_credential.py` before it touched this page, and verified with an all-zeros negative control: the real key cloned 31 files, identical to the source folder, and the control cloned nothing.
+
+## See it live, here
+
+The replay opens as an app. Drag the slider and the inbox and calendar rebuild step by step. You can also [**open it in its own window ↗**](https://dev.vault.sgraph.ai/#sgit_public_read_4fb639e76d976d691c7655060e74f6d7fe13a7b96ea77d9230446977e5cdf860%3A7tkvspwp), where the replay has more room.
+
+## What is in it
+
+the question
+
+### What an organisation can answer, with a twin and without
+
+The app opens on the sales question and a six-row table: what can the agent do, what did it do, what did it see, why, can you undo it, and can you show someone else. Without a twin, most answers are the agent's own summary. With one, every answer is a record.
+
+Every claim about what Gmail and Calendar keep comes from Google's own documentation, and the plan's facts document links each one.
+
+Do you know what your agents did? The table, without a twin and with one.
+
+the replay
+
+### The inbox and the calendar, as the agent saw them
+
+An invented scheduling assistant is given a Gmail and a Calendar connector and one instruction. Its seventeen calls are the journal. The app folds them in order into the inbox and the calendar at any step, marking what the agent archived, trashed, permanently deleted, sent, moved, declined, deleted and created, with a ghost where a moved event used to be.
+
+The twin is not a copy of the mailbox. One message the agent listed and never opened appears as an id and nothing more, because that is all the agent saw.
+
+The calendar as the agent left it, rebuilt from the journal alone.
+
+before and after
+
+### Every change, with what the twin can put back
+
+Pick a write and the app shows the state before and after, and a grade: exact, partial, content only, or none. Step 15 is the one that matters: a payment reminder deleted with the Gmail API's permanent delete, which Google documents as "cannot be undone". The twin still holds the full message, because the agent read it before deleting it, so its content can be put back as a new message.
+
+Step 15: permanently deleted in Gmail, still held in the twin.
+
+said versus did
+
+### The agent's summary, against the journal
+
+The agent's summary is true in every sentence. The journal shows that "removed the supplier call" was a delete with notifications on, so the supplier received a cancellation, and that "deleted an old reminder" was the unpaid invoice's reminder, removed permanently. That gap is what a twin exists to close.
+
+What the agent said, what the journal shows, and what can be put back.
+
+the revert plan
+
+### Newest first, side effects named
+
+For every write up to the current step, the inverse call, newest first, with its grade and the side effect it cannot avoid: a second round of notifications, a new message id, a cancellation already sent. Executing the plan is a separate step that a person approves and that is journalled like everything else.
+
+The revert plan, newest first, each step graded.
+
+the business
+
+### Priced per agent, with a calculator
+
+A connector review once (£750, £2,500 or £6,000 by size), then per agent per month: Journal £15, Twin £40, Assured £90, and incident replays on demand. Three capture modes, broker, gateway and agent-reported, which change the evidence grade rather than the price.
+
+The calculator moves customers, agents per customer, tier, set-up and burn. At the Twin price, about 380 agents cover a two-founder burn of £14,000 a month. Every number is marked as a hypothesis.
+
+What you sell: set-up once, per agent monthly, and on demand.
+
+## What this vault demonstrates
+
+| Feature | The mechanism, not the marketing |
+|---|---|
+| **A replay built from a journal, not a copy** | The app holds seventeen entries, each a tool call, an upstream request and a response, and folds them into state. Nothing else is shipped: no snapshot of the inbox, no snapshot of the calendar. What you see at step nine is what the agent had seen by step nine. |
+| **A hash chain verified in your browser** | Each entry carries the SHA-256 of the one before. The app recomputes the chain with the browser's own crypto and prints the head; `tools/verify-journal.py` does the same offline. It ran and passed inside the vault host's sandbox. |
+| **An app with nothing requested** | `app.json` declares `"permissions": {}`, and the vault host shows it as read-only with no read or write grants. No LLM, no writes, no network. |
+| **A specification to build against** | `spec/journal-entry.md` is the contract between capture and replay, including what is never captured. `spec/revert-rules.md` lists every Gmail and Calendar action in scope, what the platform keeps, the inverse, and the side effects. |
+| **Facts with sources** | `plan/02-the-facts.md` links every claim about Gmail, Calendar and Google Vault to Google's documentation, and marks the one thing the plan has not tested: whether an event deleted through the API appears in Calendar's trash. |
+| **Written for another operator** | Eleven plan documents with a reading order, three prototypes (the agent-reported capture instruction, the broker, and the processor schedule), and the tools to regenerate the journal and rebuild the app. |
+
+## The audit, honestly
+
+**What was scanned.** Every one of the 31 files, from a clone made with the published read key and nothing else, and compared byte for byte with the source folder. Patterns: vault-key shapes, every `sgit_` credential prefix, API-key shapes, private-key blocks, bearer tokens, and any email address not on the reserved `.example` domain.
+
+**What was found.** Nothing. The journal is invented: its people, companies and addresses are fictional, every address uses `.example`, and the Authorization header is recorded only as `[never captured]`. The negative control, an all-zeros read key against the same vault id, produced an empty directory.
+
+**What the research corrected.** The plan first assumed Google Vault did not cover Calendar; it has since November 2023, keeping the last revision of each day, and the facts now say so. It also first said Calendar keeps no record of edits; administrators have an audit log that records some earlier values, and the facts now say that too, with the distinction that a log is a record, not a restore.
+
+**Write-key status:** escrowed, in the gitignored credential tier, before this page was written. The vault is correctable.
+
+## Derived facts
+
+From `admin/build/catalogue_derive.py 7tkvspwp <read key hex>`, read-only, no token, no clone.
+
+- **Files:** 31 · **plaintext size:** 515 KB
+- **Commits:** 2 · **last updated:** 2026-09-24 · **HEAD:** `obj-cas-imm-3ad848e2891f`
+- **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `content.json`, `diagrams/`, `index.html`, `journal/`, `plan/`, `prototypes/`, `spec/`, `tools/`
+- **File types:** .md ×18, .json ×4, .py ×3, .svg ×2, .webp ×2, .html ×1, .jsonl ×1
+- **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
+
+## Notes
+
+**Where this came from.** A voice memo by the founder on 24 September 2026: a twin of what an agent can do and has done is close to a minimum requirement for deploying one, with Gmail and Calendar as the worked example, and the idea split in two, an article for the need and a business plan for the service. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md), each a vault, each written for somebody else to run.
 
 [← All published vaults](../index.md)
 
@@ -12863,6 +13034,184 @@ Nothing has been written here yet. This section is the reason each deck has a pa
 The author recorded a series on this vault. No short has been mapped to this deck yet; until one is, [the seven shorts](../videos/index.md) are the narrated material.
 
 [← Who says yes](acceptor.md) · [All Licence to Operate decks](index.md)
+
+
+
+==============================================================================
+# Before you give an agent a connector, give the connector a twin, sgit.ai
+
+> When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.
+>
+> Page: https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html
+
+[Home](../index.md) / [Articles](index.md) / Before you give an agent a connector, give the connector a twin
+
+# Before you give an agent a connector, give the connector a twin
+
+By [Dinis Cruz](../about/index.md) · 2026-09-24 · [v0.6.3](../admin/versions.md) · agentsconnectorsdigital-twinsprovenanceriskriskmandatearticle
+
+***Abstract:** When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.*
+
+A twin of the connector. Every call the agent makes is copied, request and response, into an append-only journal in a vault. The journal is processed later and replayed into the inbox and calendar as the agent saw them, with a before and after for every change, and a revert plan that a person approves.
+
+Here is the claim, stated so it can be wrong. **If you cannot say what your agent did, what it saw when it did it, and which of its actions you can undo, you are not ready to give it a connector.** Answering those three questions takes a twin of the connector: a journal of every request and response, and a replay of that journal into the views the agent saw. It is not exotic. Everything it needs exists today.
+
+## In short
+
+- **A connector is a grant of action, not just of access.** An agent with Gmail and Calendar connectors can send, archive, trash, permanently delete, move events, decline invitations and cancel meetings, on somebody's behalf, at machine speed.
+- **For several of those actions the platform keeps no way back, and says so.** The Gmail API documents its delete as permanent: "This operation cannot be undone." Undo Send is a feature of the Gmail interface, not of the API. A moved calendar event has no version history a user can open. These are Google's own statements, linked below.
+- **What the platform does keep is not what you need.** Trash windows, an administrator's bulk restore and audit logs record that things happened. None of them records what the agent saw when it decided to act, or why.
+- **The twin is a journal plus a replay.** Capture the request and the response of every connector call, and the instruction behind it when you can. Append each entry to a write-only lane. Process the lane later. Rebuild the inbox and the calendar as the agent saw them at each step.
+- **It scales because it is not a copy of the mailbox.** It holds only what passed through the connector, which is exactly what matters for accountability and investigation.
+- **Undo becomes a list, not a promise.** For every change the twin holds the before and the after, so it can write the inverse call, and name plainly the things nobody can undo, such as an email that has been delivered.
+- **It changes the agent's behaviour policy.** "We cannot undo it" stops being an unknown and becomes a named list, and the mandate can be written against that list.
+- **Nothing here needs new technology.** Vault append lanes, client-side encryption and vault apps that rebuild views all exist. The one thing that needs more thought is when the journal gets processed, and that needs real users more than it needs design.
+- **It is published twice.** This article makes the case. [Connector Twin](../demos/vaults/connector-twin/index.md) is a vault with a working replay of an invented session and a business plan for somebody to build the service.
+
+## The question nobody can answer yet
+
+Ask anyone who has switched on an assistant's Gmail or Calendar connector a simple question: do you know what it did last Tuesday?
+
+The honest answer is usually the agent's own summary. It said it tidied the inbox and sorted out next week. Perhaps the chat was kept. Perhaps not. The inbox has moved on since, and the calendar shows the result of the changes, not the changes. If something went wrong, the first person to notice is often the one on the other end: the supplier who received a cancellation, the client whose reply never came.
+
+That is not a criticism of agents. It is what happens when a system that can act is deployed without a record of its actions. We would not accept it for a person with delegated access to a finance system, and we would not accept it for a script with production credentials. We are accepting it for agents because the connector made the grant feel like a feature.
+
+## What the platform keeps, stated precisely
+
+It matters to be exact here, because the case is made by facts, not by fear. This is what Google documents for Gmail and Calendar, checked on 24 September 2026.
+
+| Action | What Google documents | Source |
+|---|---|---|
+| Move a message to trash | Kept for 30 days: "After 30 days: The message is permanently deleted. You can't recover the message." | [Gmail Help](https://support.google.com/mail/answer/7401) |
+| Delete a message through the API | "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer messages.trash instead." | [Gmail API](https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/delete) |
+| Recover permanently deleted email | An administrator can restore a date range within 25 days, in bulk. | [Workspace Admin Help](https://knowledge.workspace.google.com/admin/support/troubleshooting/restore-a-users-permanently-deleted-email) |
+| Unsend an email | A cancellation period of 5 to 30 seconds, set in Gmail's settings. An API send has no such window. | [Gmail Help](https://support.google.com/mail/answer/2819488) |
+| Delete a calendar event | Deleted events stay in the calendar's trash for 30 days. | [Calendar Help](https://support.google.com/calendar/answer/37113) |
+| Edit a calendar event | No version history a user can open. Administrators have an audit log recording changes, including some earlier values such as the old title and times. | [Workspace Admin Help](https://knowledge.workspace.google.com/admin/reports/calendar-log-events) |
+| Google Vault | Searches Calendar since November 2023, keeping the last revision of each day. "Vault isn't designed to be a backup or archive tool", and "doesn't have any automated recovery tools." | [Vault Help](https://knowledge.workspace.google.com/vault/search/use-vault-to-search-google-calendar), [Vault FAQ](https://knowledge.workspace.google.com/vault/getting-started/google-vault-faq) |
+
+Read the table the other way round and it says this. There is a real undo for some actions, with a deadline. There is a slow, organisation-wide recovery for one, with a shorter deadline. There is a record without a restore for others, available to administrators on some editions. And there is nothing at all for a delivered email, a notification sent to attendees, or a permanent delete once the administrator's window has passed. None of these records holds what the agent was looking at when it acted, or the instruction it was following.
+
+This is not a failing of Google. These are sensible products designed for people clicking buttons, with an undo toast for the mistake you notice immediately. An agent does not notice. It makes forty calls in two minutes and writes a tidy summary.
+
+## Twin, not backup, log or replay
+
+I went back and forth on the word for this, and the choice is worth explaining.
+
+**Backup** is the wrong word, because a backup copies the mailbox. That is a different product, and customers who need it should buy it. **Log** is too small, because a log records that something happened, and what we need is the content of the exchange. **Replay** is the right verb for what you do with it, but not a name for the thing.
+
+**Twin** is right, in the sense we use it on [twins.sgit.ai](https://twins.sgit.ai/): *a digital twin is an interface to reality, not a simulation of it*, a system with properties, behaviours, functions, inputs and outputs, valued for its connection to the real thing rather than for its fidelity. A connector twin narrows that to one place, the boundary between an agent and the system it is allowed to act on. It holds what the agent could do, what it did, and, rebuilt from those, what it saw.
+
+## How it works
+
+Five steps, and each one is something we already run somewhere.
+
+**Capture.** For every connector call, copy the tool call the agent made, the request the connector sent to the platform, and the response it received. Connectors built on the Model Context Protocol exchange JSON-RPC messages, so every call and every result is already a JSON document that can be copied as it passes. When you can, capture the instruction behind the call as well: the user's request, and the agent's own statement of what it did. Never capture the Authorization header or any token. Capture is of content, never of credentials.
+
+**Append.** Write each entry to a vault [append lane](../api/append-lanes.md). An append lane is a write-only channel gated by a token the writer holds and nothing else, and its write response is exactly `{"ok": true}`, so the capture point learns nothing about what else is in the lane. The entry is not decrypted, indexed or processed when it arrives. That is what makes capture cheap enough to do for every call: it is one small POST, off the agent's hot path.
+
+**Chain.** Each entry carries the hash of the one before it, so a missing, edited or reordered entry shows to anyone holding the read key.
+
+**Process.** Later, on a schedule, a reader moves entries from pending to processed and folds them into views. This is the one step I think needs more thought. On a timer, on a threshold of pending entries, on demand when somebody opens the replay, at the end of each session: each has a cost, and the right default will come from a few real users rather than from more design. The lane's limits, five megabytes per write and a thousand pending entries per token, are the constraints to design around.
+
+**Replay and revert.** A vault app rebuilds, from the journal alone, the inbox as the agent saw it and the calendar as the agent saw it, at any step. For every change it shows the state before and after, because the agent read the before-state in order to act and the response returned the after-state. From that it writes a revert plan. Executing the plan is a separate step, approved by a person, and journalled like everything else.
+
+Here is the property I like most. **The twin is not a copy of the mailbox.** It holds only what passed through the connector. If the agent listed a message and never opened it, the twin knows its id and nothing more. That makes it scale with the agent's activity rather than with the size of the mailbox, and it is exactly the right shape for accountability: not what the inbox contained, but what the agent was looking at when it decided.
+
+## One session, replayed
+
+To make this concrete we built the replay and published it as a vault. The session is invented, with invented people at invented `.example` addresses, but every call follows the real Gmail and Calendar APIs. A scheduling assistant is given both connectors and one instruction: sort out next week, move a client review to Thursday, decline anything that clashes with Friday's offsite, clear the newsletter clutter, and reply to an architect about a proposal with a time for a call.
+
+It makes seventeen calls in under three minutes, and writes this summary:
+
+Done. Northwind review moved to Thursday 1 October at 10:00. Declined the studio sync and removed the supplier call, both clashed with the offsite. Archived three newsletters and deleted an old reminder. Replied to Sam and booked a call for Wednesday at 15:00.
+
+Every sentence of that is true. Now look at the calendar as the twin rebuilds it.
+
+The calendar as the agent saw it and left it, rebuilt from the journal. The review is moved, with a ghost of where it was. The sync is declined. The supplier call is not declined but deleted, and because the agent passed sendUpdates=all, the supplier received a cancellation.
+
+"Removed the supplier call" was a delete of an event the user organised, with notifications on, so the supplier received a cancellation. The event's own description said it was the call to settle an unpaid invoice. And "deleted an old reminder" was that invoice's payment reminder, removed with the API's permanent delete rather than moved to trash.
+
+Step 15, before and after. The payment reminder is gone from Gmail, permanently, by the platform's own description. The twin still holds the full message, because the agent read it before deleting it, so its content can be put back with messages.insert, as a new message.
+
+Neither of those is a dramatic failure. Both are exactly the kind of thing that turns up a week later as an awkward phone call. And the difference between the agent's summary and what happened is only visible because the journal holds the request and the response of each call.
+
+What the agent said, against what the journal shows, and whether each part can be put back.
+
+## Undo is a list, not a promise
+
+With the journal in hand, every change gets a grade. This is the list for the session above, and it generalises.
+
+| Action | Can the twin put it back? | What it cannot undo |
+|---|---|---|
+| Archive, relabel | Yes, exactly | Nothing |
+| Move to trash | Yes, exactly, within 30 days | Nothing |
+| Move or edit an event | Yes, exactly, from the captured before-state | The notifications already sent, and a second round when it is moved back |
+| Decline an invitation | Yes, exactly | The organiser saw the decline |
+| Delete an event | The event, re-inserted from the captured copy | The cancellation already sent |
+| Permanently delete a message | Its content, as a new message, if the agent read it in full | The original message and its id |
+| Send an email | No | The recipient has it |
+
+The value of the list is not that most of it is green. It is that the red rows are named. Once you can see that an agent's actions fall into three kinds, reversible, partly reversible and not reversible, you can govern them differently.
+
+## Where the capture runs
+
+Three places to capture, and three grades of evidence. The mode does not change what is captured. It changes what the evidence is allowed to claim.
+
+Ideally the capture runs in a **broker** that holds the credentials and makes every call on the agent's behalf, which is the [execution broker](https://twins.sgit.ai/broker/index.html) described on the twins site. Then nothing reaches the platform without passing through it, and the journal is complete by construction. The broker can also refuse, which matters for the next section. The price is that the broker holds credentials, which makes it the most valuable target in the estate.
+
+A **gateway** on the MCP or HTTP path is easier to deploy and complete for everything routed through it, and blind to anything that goes around it.
+
+And today, with no infrastructure at all, you can make it a **requirement of the agent**: every time you send a request, append a copy of what you sent and what you received to this lane, and stop if the append fails. It is all JSON already. This is the weakest mode, because an agent that skips an entry leaves a gap the chain cannot show, and the evidence should say *self-reported* on its first line. It is also infinitely better than nothing, and it is available this afternoon.
+
+## What it does to the agent's behaviour policy
+
+At [RiskMandate.ai](https://riskmandate.ai/) we write an agent behaviour policy as the record of what an agent can reach, what it was authorised to do, the gap between the two, and who accepts the residual risk. The [Licence to Operate](../demos/vaults/licence-to-operate/index.md) vault simulates exactly that for one agent.
+
+The same agent, with the same connectors, has a very different policy with a twin and without one.
+
+|  | Without a twin | With a twin |
+|---|---|---|
+| What can it do? | The scopes granted | The scopes, and which actions they allow that cannot be undone |
+| What did it do? | Its own summary | Every call, request and response, chain-verified |
+| What did it see? | Nothing | The inbox and calendar at each step |
+| Why? | Nothing, unless the chat was kept | The instruction behind each call |
+| Can you undo it? | Trash windows, sometimes | A revert plan, and a named list of what cannot be undone |
+| Can you show someone else? | Your word | An evidence chain an auditor or insurer can open |
+
+The last row is the one that changes the conversation with an insurer or a board. But the most useful change is quieter. With the list of irreversible actions in hand, the mandate can say that the agent may archive and trash freely, must ask before a permanent delete or a cancellation that notifies someone outside the organisation, and may never send to a new recipient without approval. In broker mode, the broker enforces it. That is a policy you can actually write, because for the first time you can see which action is which.
+
+So the question I would ask of any agent deployment is the simple one: **do you know what your agents did?** If the answer is the agent's own summary, the deployment has a gap, and the gap has a known shape.
+
+## What exists today, and what does not
+
+**Exists and runs:** vault [append lanes](../api/append-lanes.md), write-only and blind to the sender; client-side encryption, so the journal, which holds copies of email, is stored as ciphertext the host cannot read; vault apps that rebuild views from data in the vault; and the replay in the [Connector Twin vault](../demos/vaults/connector-twin/index.md), which folds an invented seventeen-entry journal into the inbox and the calendar, shows before and after, writes a revert plan, and verifies the hash chain in your browser.
+
+**Does not exist yet:** a gateway or broker capturing real Gmail and Calendar traffic; the processor and its schedule; revert execution; any customer. Keys matter too: a twin holds sensitive content, so who holds its keys is the first question a security team will ask, which is part of why we published [a call for collaboration on vault key management](../partnerships/vault-key-management.md).
+
+## For somebody to build
+
+I think this should be a business, and I have written it up as one, for somebody else to run or to run with us. The [Connector Twin vault](../demos/vaults/connector-twin/index.md) holds the plan: the facts with their sources, the architecture, the service in three capture modes, packages and prices as hypotheses, a calculator, go-to-market starting with managed service providers and insurers, the first ninety days, the risks, and the open questions. It sits with the other [business plans published for founders](../startups/business-plans.md).
+
+The pitch is one line long, and it is not fear. It is the platform's own documentation, read aloud to somebody who has just switched on a connector: some of what your agent can do cannot be undone, and right now you cannot tell which of it it did.
+
+## Sources
+
+- [Gmail API, users.messages.delete](https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/delete)
+- [Gmail API, users.messages.insert](https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages/insert)
+- [Gmail Help, delete or recover deleted messages](https://support.google.com/mail/answer/7401)
+- [Gmail Help, send or unsend messages](https://support.google.com/mail/answer/2819488)
+- [Workspace Admin Help, restore a user's permanently deleted email](https://knowledge.workspace.google.com/admin/support/troubleshooting/restore-a-users-permanently-deleted-email)
+- [Calendar Help, delete an event](https://support.google.com/calendar/answer/37113)
+- [Workspace Admin Help, Calendar log events](https://knowledge.workspace.google.com/admin/reports/calendar-log-events)
+- [Vault Help, search Google Calendar](https://knowledge.workspace.google.com/vault/search/use-vault-to-search-google-calendar)
+- [Vault FAQ](https://knowledge.workspace.google.com/vault/getting-started/google-vault-faq)
+- [Workspace Updates, Google Vault now supports Google Calendar](https://workspaceupdates.googleblog.com/2023/11/Google-Vault-Now-Supports-Google-Calendar.html)
+- [Model Context Protocol specification](https://modelcontextprotocol.io/specification)
+- [sgit.ai, append lanes](https://sgit.ai/api/append-lanes.html)
+- [twins.sgit.ai, the execution broker](https://twins.sgit.ai/broker/index.html)
+
+[← All articles](index.md)
 
 
 

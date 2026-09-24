@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.2",
+  "site_version": "v0.6.3",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -848,6 +848,22 @@
     }
   ],
   "articles": [
+    {
+      "slug": "connector-twin-before-you-deploy-an-agent",
+      "title": "Before you give an agent a connector, give the connector a twin",
+      "date": "2026-09-24",
+      "version": "v0.6.3",
+      "tags": [
+        "agents",
+        "connectors",
+        "digital-twins",
+        "provenance",
+        "risk",
+        "riskmandate",
+        "article"
+      ],
+      "summary": "When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault."
+    },
     {
       "slug": "future-of-news-story-vault-not-paywall",
       "title": "The future of news is the story vault, not the paywall",

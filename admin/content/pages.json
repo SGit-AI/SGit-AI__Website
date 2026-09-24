@@ -384,6 +384,12 @@
     "desc": "For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base."
   },
   {
+    "path": "startups/business-plans.html",
+    "section": "startups",
+    "title": "Business plans to build on sgit, sgit.ai",
+    "desc": "Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start: Connector Twin (a journal and replay of every connector call an AI agent makes, sold per agent) and Agent as Webmaster (websites small businesses change by asking). How to take one, what every plan contains, and the offer to build them with partners."
+  },
+  {
     "path": "about/index.html",
     "section": "about",
     "title": "About the author, Dinis Cruz, sgit.ai",
@@ -626,6 +632,12 @@
     "section": "vaults",
     "title": "Agent as Webmaster, a business plan published as a vault",
     "desc": "A complete business plan for a company that gives small businesses a website they can change by asking, with an AI agent as the webmaster: architecture, workflow, packages and prices, a unit-economics calculator, go-to-market, the first ninety days, the investor case, the risks, four mock-up sites and the prototypes to run the first customer. Published with its read key, written for somebody else to run."
+  },
+  {
+    "path": "demos/vaults/connector-twin/index.html",
+    "section": "vaults",
+    "title": "Connector Twin, a business plan with a working replay, published as a vault",
+    "desc": "A business plan for a service that journals every request and response an AI agent makes through Gmail, Calendar or any connector, and replays it into the views the agent saw, with before and after and a revert plan for every change. Opens on a working replay of an invented seventeen-call session with a hash chain verified in the browser. Facts sourced from Google's documentation, the journal specification, revert rules, prototypes, packages priced per agent and a calculator."
   },
   {
     "path": "demos/vaults/commercialisation/index.html",

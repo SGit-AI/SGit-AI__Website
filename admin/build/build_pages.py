@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.2'
+SITE_VERSION = 'v0.6.3'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,27 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.2', '2026-09-24', 'this release',
+    ('v0.6.3', '2026-09-24', 'this release',
+     "BEFORE YOU GIVE AN AGENT A CONNECTOR, GIVE THE CONNECTOR A TWIN, AND BUSINESS PLANS GET "
+     "THEIR OWN PAGE. A first-person article argues that a twin of the connector, a journal of "
+     "every request and response an agent makes, appended to a write-only lane, processed later and "
+     "replayed into the inbox and calendar as the agent saw them, is the minimum requirement for "
+     "deploying an agent with provenance, explanation and undo. Every claim about Gmail and Calendar "
+     "is Google's own and linked: the API delete 'cannot be undone', Undo Send is an interface "
+     "feature, trash keeps 30 days, the administrator's bulk restore 25, Vault 'isn't designed to be "
+     "a backup or archive tool' and keeps one Calendar revision a day. Research corrected two first "
+     "assumptions (Vault has covered Calendar since November 2023; the admin audit log does record "
+     "some earlier values) and the text says so. The thirty-third vault, Connector Twin (7tkvspwp, "
+     "31 files), opens on a working replay of an invented seventeen-call Gmail and Calendar session: "
+     "a slider rebuilds the inbox and calendar at any step, before and after for every write, a "
+     "graded revert plan, what the agent said against what the journal shows, and a hash chain "
+     "verified in the browser, which ran inside the vault host's sandbox. Behind it, the business "
+     "plan: facts with sources, architecture, three capture modes, packages per agent, a "
+     "calculator, go-to-market, ninety days, risks, open questions, the journal specification, "
+     "revert rules and three prototypes. New page /startups/business-plans.html gives the plans "
+     "their own home, listed in the Why menu, with Agent as Webmaster and Connector Twin, how to "
+     "take one, and the offer to build them with partners."),
+    ('v0.6.2', '2026-09-24', 'git 42d40e9f',
      "A CALL FOR COLLABORATION ON VAULT KEY MANAGEMENT. New page in Partnerships, "
      "/partnerships/vault-key-management.html, written to be sent to password managers, identity "
      "providers and platform credential managers who have never heard of sgit. It opens with the "
@@ -2558,6 +2578,7 @@ NAV = [
         ('why', 'Why sgit exists', 'why/index.html'),
         ('investors', 'Investors', 'investors/index.html'),
         ('startups', 'Startups', 'startups/index.html'),
+        ('startups', 'Business plans', 'startups/business-plans.html'),
         ('about', 'About the author', 'about/index.html'),
         ('partnerships', 'Partnerships', 'partnerships/index.html'),
     ]),
