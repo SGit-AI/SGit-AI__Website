@@ -78,7 +78,10 @@ $ sgit pki verify report.pdf report.pdf.sig</pre>
     <tr><td><code>w</code></td><td>The AES content key, wrapped with RSA-OAEP to the recipient</td><td>512 bytes (4096-bit)</td></tr>
     <tr><td><code>i</code></td><td>AES-GCM IV</td><td>12 bytes</td></tr>
     <tr><td><code>c</code></td><td>Ciphertext with its GCM tag</td><td>plaintext + 16</td></tr>
+    <tr><td><code>f</code></td><td>The signer's fingerprint, when <code>encrypt</code> was given <code>--fingerprint</code></td><td><span class="dim">none</span></td></tr>
+    <tr><td><code>s</code></td><td>The ECDSA signature, over <code>c</code> only</td><td><span class="dim">none</span></td></tr>
   </table></div>
+  <div class="note"><b>Two things to know when you rely on the signature</b> <span class="small dim">(checked 26 September 2026, on sgit-ai v0.16.0)</span>. First, <b>it covers the inner ciphertext <code>c</code> only</b>: not the wrapped key <code>w</code>, not the IV, and not who the message was encrypted to. Someone holding the recipient's private key could re-wrap a signed <code>c</code> to a third party. Signing the whole envelope is the recommended fix. Second, <b><code>decrypt</code> reports the signer's label, not its fingerprint</b>, and only when the signer's bundle is in your keyring. Labels are not unique, so when identity matters, verify <code>s</code> against the expected key by fingerprint yourself. Both are from <a href="append-lane-messaging.html">the append-lane write-up</a>.</div>
   <p>A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.</p>
 
   <h2 id="where">Where public keys live in a vault</h2>

@@ -2,7 +2,7 @@
 
 > Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
 
-*Source: <https://sgit.ai/docs/credentials.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/credentials.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ A vault credential is the whole thing you need: the address, the capability and 
 
 ## Two capabilities, and one is derived from the other
 
-A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [thirty vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
+A vault key carries read *and* write. A read key carries read only, and is derived from the vault key by a one-way function, so a read key can never be turned back into write access. That derivation is the whole publishing model on this site: [thirty-six vaults](../demos/vaults/index.md) hand out read keys on purpose, and not one of them can be used to change anything.
 
 *[diagram]*
 

@@ -79,17 +79,19 @@
   <p class="small dim">Checked against the shipped CLI while writing this: <code>sgit pki</code> ships <code>keygen</code>, <code>export</code>, <code>encrypt</code>, <code>decrypt</code>, <code>sign</code> and <code>verify</code>. There is <b>no append-lane command in the CLI at all</b>, so the transport is HTTP or the browser bridge, nothing else.</p>
 
   <h2 id="setup">Setting it up</h2>
+  <p class="small dim">Corrected on 26 September 2026: the examples now use <code>dev.send.sgraph.ai</code>, the only host with the append routes, and <code>configure</code> carries the access token it requires. It also replaces the anchor list rather than adding to it. See <a href="../append-lane-messaging.html">the append-lane write-up</a>.</p>
   <pre class="shell"><span class="d"># once, on the telemetry vault</span>
 $ sgit pki keygen --label "Telemetry"
 $ sgit pki export sha256:FINGERPRINT &gt; telemetry-identity.json
 
-$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
-    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "Content-Type: application/json" \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "x-sgraph-access-token: $SG_SEND_ACCESS_TOKEN" \
+    -H "Content-Type: application/json" \
     -d '{"append_anchors":["&lt;sha256 of the append_token&gt;"],
          "enum_key_hash":"&lt;sha256 of your enum_key&gt;"}'
 
 <span class="d"># reading — metadata-only listing reads ZERO payloads, so poll with this</span>
-$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
     -H "x-sgraph-vault-enum-key: $ENUM_KEY" -d '{"include_content": false}'</pre>
   <p>Filenames are server-assigned as <code>{epoch_ms}_{24-hex}.enc</code>, so they sort chronologically, which is what makes cursor pagination stable. Page with <code>after_file_id</code>. <code>mark-processed</code> is idempotent: an already-moved file comes back in <code>missing</code> rather than as an error, so a retried batch is safe.</p>
 

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.8'
+SITE_VERSION = 'v0.6.9'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,41 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.8', '2026-09-24', 'this release',
+    ('v0.6.9', '2026-09-26', 'this release',
+     "THE NEWSROOM'S FIRST BRIEFING, ANSWERED IN ONE RELEASE. sgit.newsroom.sgit.ai, the newsroom "
+     "that reads every site in the network daily, left sgit.ai a briefing: a relayed write-up of "
+     "two-way append-lane messaging between agents, a proposal, four signals and eight loose ends. "
+     "(1) THE WRITE-UP is published at /docs/append-lane-messaging.html, verbatim; the sha256 of its "
+     "text matches the hash the newsroom gave for its copy. Its section 11 listed eleven places the "
+     "docs differed from the server, found by two teams using the lanes in anger. Ten were real and "
+     "are fixed, each with a dated note: the append routes exist only on dev.send.sgraph.ai, and "
+     "every curl example pointed at send.sgraph.ai; auth failures are 404 HTML, and the guide said "
+     "403; configure needs the access token and REPLACES the anchor list; fetch and mark-processed "
+     "need the lane named; fetch serves pending files only; the payload is encoded twice; the "
+     "write-key derivation strips a prefix first; the signature covers the inner ciphertext only; "
+     "decrypt reports a label, not a fingerprint. One did not hold: no page here gave the enum key "
+     "for purge. Section 12's recommendations belong to the CLI and the server and are filed as an "
+     "open cross-team ask. (2) COUNTS ARE COMPUTED NOW. The vaults page still opened with "
+     "thirty-one while listing 36, and the business plans page described two plans while listing "
+     "five: numbers typed by hand and left behind by later releases, the failure this log's own "
+     "rule says to avoid. Seventeen current counts on twelve pages are now tokens the build fills "
+     "from vaults.json and from the plans table; dated records keep the number that was true when "
+     "written. (3) A CORRECTION TO v0.2.98, found because the newsroom could not reconcile it with "
+     "v0.3.0: recounted from git, v0.2.98 left 102 legacy-prefixed read keys in 27 tracked files, "
+     "93 in 26 content pages and 9 in one build script, not 99 across 27 pages. v0.3.0's 102 was "
+     "right. The old entry is amended in place and says so. (4) STALE AND WRONG PAGES: two asks on "
+     "the briefs index were closed long ago elsewhere (riskmandate.ai built the interview page in "
+     "its v1.34.2; the CLI prefix bug closed in our v0.3.0); the interview brief now cites "
+     "riskmandate.ai's earlier voice feedback prompt, which it should have; the key management call "
+     "names the three plans that depend on it; the Risk Acceptance vault's README said eight weeks "
+     "for a six-week replay and is fixed in a fourth commit; and the Sovereign AI page said "
+     "contracts run to five million pounds over 12 to 24 months, which no official page we could "
+     "find says: the scheme's competition guidance, read today, gives 250,000 pounds to 10 million, "
+     "most at 1 to 3 million, and numbers the agent challenge 4. (5) The newsroom's reader's log, "
+     "chat and relay pattern is published as a build brief, not adopted. A response page answers "
+     "every item, and two loose ends stay open and waiting on the founder: partnership contacts, "
+     "and documenting the Azure and Google Cloud deployments."),
+    ('v0.6.8', '2026-09-24', 'git fd203e01',
      "COMPANY X-RAY: A BUSINESS PLAN, WITH ONE COMPANY X-RAYED. New vault page and a new row in "
      "the business plans for founders. The service reads a company's own documents together: the "
      "customer drops them into an encrypted vault, agents run a catalogue of twelve analyses, a "
@@ -923,7 +957,7 @@ VERSION_LOG = [
      "is what once misrouted a 64-hex passphrase to a read-only clone), why the word matters when "
      "the bytes do not, and what a read key can and cannot do including that revocation is never "
      "retroactive. Linked from the docs index, the nav, the gallery intake note and the publishing "
-     "method. NOT DONE, AND A DECISION FOR THE AUTHOR: 99 published keys across 27 pages still "
+     "method. NOT DONE, AND A DECISION FOR THE AUTHOR: 99 published keys across 27 pages [CORRECTED IN v0.6.9: 102 keys in 27 tracked files, 93 in 26 content pages and 9 in one build script, recounted from git; this count was three short and called a script a page] still "
      "carry the legacy rk1 prefix, which is neutral rather than wrong.",),
     ('v0.2.97', '2026-09-20', 'git d460cd58',
      "THE ARTICLE THAT INTRODUCES THE TERM, WITH THE PICTURES LINKEDIN CANNOT CARRY. The author had "
@@ -3610,6 +3644,48 @@ def write_llms_full(pages):
 
 
 
+
+# ============================================================ derived counts
+# Counts that appear in prose are computed here, never typed. The newsroom at
+# sgit.newsroom.sgit.ai found three pages still saying "thirty-one" vaults and a plans page
+# describing two plans while listing five, all hand-typed numbers left behind by later
+# releases. A page writes {VAULTS_WORDS} or {PLANS_LIST} and the build fills it in.
+
+_NUM_WORDS = ('zero one two three four five six seven eight nine ten eleven twelve thirteen '
+              'fourteen fifteen sixteen seventeen eighteen nineteen').split()
+_TENS_WORDS = 'twenty thirty forty fifty sixty seventy eighty ninety'.split()
+
+
+def number_words(n):
+    if n < 20:
+        return _NUM_WORDS[n]
+    if n < 100:
+        t, u = divmod(n, 10)
+        return _TENS_WORDS[t - 2] + ('-' + _NUM_WORDS[u] if u else '')
+    return str(n)
+
+
+def business_plan_names():
+    body = open(os.path.join(ADMIN, 'content', 'startups', 'business-plans.html')).read()
+    table = body.split('id="plans"', 1)[1].split('</table>', 1)[0]
+    return re.findall(r'<a href="\.\./demos/vaults/[^"]+/index\.html"><b>([^<]+)</b></a>', table)
+
+
+def derived_tokens():
+    n_vaults = len(json.load(open(os.path.join(ADMIN, 'content', 'vaults.json'))))
+    plans = business_plan_names()
+    plan_list = ', '.join(plans[:-1]) + ' and ' + plans[-1] if len(plans) > 1 else ''.join(plans)
+    words = number_words(n_vaults)
+    return {'{VAULTS_N}': str(n_vaults), '{VAULTS_WORDS}': words, '{VAULTS_WORDS_CAP}': words[:1].upper() + words[1:],
+            '{PLANS_N}': str(len(plans)), '{PLANS_WORDS}': number_words(len(plans)),
+            '{PLANS_WORDS_CAP}': number_words(len(plans)).capitalize(), '{PLANS_LIST}': plan_list}
+
+
+def apply_tokens(text, tokens):
+    for k, v in tokens.items():
+        text = text.replace(k, v)
+    return text
+
 # ============================================================ page registry
 # Content lives in admin/content/<path>.html, one file per page, holding only the <main>
 # body. This file is the engine: template, markdown mirror, llms/robots/sitemap, and the
@@ -3622,6 +3698,7 @@ MANIFEST = os.path.join(ADMIN, 'content', 'pages.json')
 def load_pages():
     with open(MANIFEST) as f:
         rows = json.load(f)
+    tokens = derived_tokens()
     pages = []
     for r in rows:
         if r.get('dynamic') == 'versions':
@@ -3652,7 +3729,7 @@ def load_pages():
                                ('<!--TRACTION-->', investors_traction)):
                 if marker in body:
                     body = body.replace(marker, fn())
-        pages.append((r['path'], r['title'], r['desc'], r['section'], body))
+        pages.append((r['path'], r['title'], apply_tokens(r['desc'], tokens), r['section'], apply_tokens(body, tokens)))
     # One page per article, derived, an article is published by adding its markdown
     # file and nothing else, so it must not need a manifest row either.
     for a in ARTICLES:

@@ -2,7 +2,7 @@
 
 > A business plan for a service that reads a company's own documents together: the customer drops them into an encrypted vault, agents run a catalogue of twelve analyses, a person reviews, and the customer gets back their questions answered, a board pack, findings tied to the file and row they rest on, and a Claude setup to keep asking. No connectors or integrations. One invented company X-rayed end to end with fourteen findings and a script that re-runs every figure, four levels from £50 to £1,500 on the RiskMandate pattern, a calculator, the prompts and the plan.
 
-*Source: <https://sgit.ai/demos/vaults/company-xray/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/company-xray/index.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -87,6 +87,7 @@ Next to these sit the **Re-X-ray**, at £350 or £900, for when the next quarter
 | **A vault per customer** | An sgit vault, encrypted on the device, versioned, with read-only keys for sharing. The host holds ciphertext only. |
 | **The agents** | Claude Code, or any agent that can run `sgit` and Python, using the run prompt in `prototypes/run-the-xray.md`. |
 | **The handover** | Claude Projects, or ChatGPT Projects. Sharing a Claude project with colleagues needs a Team or Enterprise plan. |
+| **Easy key handling** | Open. The customer receives a vault key to drop documents in and holds the delivered vault afterwards, so the service depends on key handover being easy and safe for people who have never held one. It is the subject of [the call for collaboration on vault key management](../../../partnerships/vault-key-management.md). |
 | **Business terms for the model** | By default, Anthropic does not use inputs or outputs from its commercial products, such as Claude for Work and the API, to train models. The plan says to check the terms before the first customer and to state them on the intake page. |
 
 ## Who adds what

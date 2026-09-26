@@ -21,7 +21,7 @@
     "path": "demos/vaults/index.html",
     "section": "vaults",
     "title": "Published vaults, sgit.ai",
-    "desc": "Thirty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it."
+    "desc": "{VAULTS_WORDS_CAP} vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it."
   },
   {
     "path": "demos/vaults/dsit-ai-risk-toolkit/index.html",
@@ -387,7 +387,7 @@
     "path": "startups/business-plans.html",
     "section": "startups",
     "title": "Business plans to build on sgit, sgit.ai",
-    "desc": "Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start: Connector Twin (a journal and replay of every connector call an AI agent makes, sold per agent) and Agent as Webmaster (websites small businesses change by asking). How to take one, what every plan contains, and the offer to build them with partners."
+    "desc": "Businesses we think should exist on top of sgit, each written up as a vault in enough detail for somebody else to start. {PLANS_WORDS_CAP} plans so far: {PLANS_LIST}. How to take one, what every plan contains, and the offer to build them with partners."
   },
   {
     "path": "about/index.html",
@@ -483,7 +483,7 @@
     "path": "partnerships/anthropic.html",
     "section": "partnerships",
     "title": "A proposed partnership between sgit.ai and Anthropic",
-    "desc": "This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its thirty-three published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network."
+    "desc": "This site is already a Claude Code project, and vaults are how its sessions work together. sgit.ai, its briefs, its deployment docs and most of its {VAULTS_WORDS} published vaults are built and published by Claude Code sessions that share state through a vault. We would like to turn that working practice into a partnership: a vault connector in Anthropic's Connectors Directory, skills that teach Claude to use vaults well, and a place in the Claude Partner Network."
   },
   {
     "path": "partnerships/mistral.html",
@@ -514,6 +514,18 @@
     "section": "briefs",
     "title": "For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it",
     "desc": "A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use."
+  },
+  {
+    "path": "docs/briefs/newsroom-reader-log-chat-relay.html",
+    "section": "docs",
+    "title": "The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai",
+    "desc": "A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages."
+  },
+  {
+    "path": "docs/briefs/newsroom-response-2026-09-26.html",
+    "section": "docs",
+    "title": "What sgit.ai did with the newsroom's briefing, 26 September 2026, sgit.ai",
+    "desc": "sgit.ai's reply to sgit.newsroom.sgit.ai's first briefing: the append-lane write-up published and applied to the docs, the proposal published as a brief, four signals and eight loose ends each answered with what changed and where, two left open and waiting on the founder, and two points relayed to riskmandate.ai."
   },
   {
     "path": "docs/briefs/riskmandate-partnership-risk-and-sgit-mapping.html",
@@ -671,6 +683,12 @@
     "section": "docs",
     "title": "Sending messages between vaults, sgit.ai",
     "desc": "How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED."
+  },
+  {
+    "path": "docs/append-lane-messaging.html",
+    "section": "docs",
+    "title": "Append-lane messaging between agents that hold no one else's vault key, sgit.ai",
+    "desc": "The write-up of two-way, signed and encrypted messaging between agents over sgit's append lanes, as two teams ran it on 25 and 26 September 2026: per-session signing keys with a pinned key registry on the sender's own site, ephemeral inbox vaults for agents that keep no secret, the flows, security properties, threat model, HTTP calls as observed, eleven places sgit.ai's docs differed, and recommendations for sgit. Relayed by sgit.newsroom.sgit.ai."
   },
   {
     "path": "docs/credentials.html",

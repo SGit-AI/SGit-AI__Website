@@ -2,7 +2,7 @@
 
 > How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 
-*Source: <https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/vault-telemetry-append-lanes.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -100,18 +100,21 @@ Checked against the shipped CLI while writing this: `sgit pki` ships `keygen`, `
 
 ## Setting it up
 
+Corrected on 26 September 2026: the examples now use `dev.send.sgraph.ai`, the only host with the append routes, and `configure` carries the access token it requires. It also replaces the anchor list rather than adding to it. See [the append-lane write-up](../append-lane-messaging.md).
+
 ```
 # once, on the telemetry vault
 $ sgit pki keygen --label "Telemetry"
 $ sgit pki export sha256:FINGERPRINT > telemetry-identity.json
 
-$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
-    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "Content-Type: application/json" \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/configure/$TELEMETRY_VAULT_ID \
+    -H "x-sgraph-vault-write-key: $WRITE_KEY" -H "x-sgraph-access-token: $SG_SEND_ACCESS_TOKEN" \
+    -H "Content-Type: application/json" \
     -d '{"append_anchors":["<sha256 of the append_token>"],
          "enum_key_hash":"<sha256 of your enum_key>"}'
 
 # reading — metadata-only listing reads ZERO payloads, so poll with this
-$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/list/$TELEMETRY_VAULT_ID \
     -H "x-sgraph-vault-enum-key: $ENUM_KEY" -d '{"include_content": false}'
 ```
 

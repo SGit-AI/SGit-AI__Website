@@ -2,13 +2,15 @@
 
 > A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.
 
-*Source: <https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/riskmandate-interview-page-and-voice-prompt.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
 [Home](../../index.md) / [Briefs](index.md) / RiskMandate interview page
 
 # For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it
+
+**Added on 26 September 2026: this pattern was not new.** riskmandate.ai has run the same shape since early September, and this brief did not cite it. Its [v0.12.2](https://riskmandate.ai/versions/0.12.2.md) (8 September) added a voice-mode feedback interview prompt for people who had seen a RiskMandate presentation, which keeps turns short for voice, leads the debrief with objections and asks consent to quote; [v0.13.0](https://riskmandate.ai/versions/0.13.0.md) (9 September) added [the feedback page](https://riskmandate.ai/feedback.html) that carries it. The two prompts serve different people, one for those who saw a demo and one for experts asked in advance, and are worth comparing. riskmandate.ai built the page this brief asked for the same day, as [its first interview page](https://riskmandate.ai/interview-founder-marketing.html). Found by [the newsroom](https://sgit.newsroom.sgit.ai/signals/2026-09-24__voice-feedback-interview-came-first.html).
 
 **A build brief from the sgit.ai site team to the RiskMandate.ai team.** Status: open. Written 24 September 2026.
 

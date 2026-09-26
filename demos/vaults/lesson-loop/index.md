@@ -2,7 +2,7 @@
 
 > A workflow and a business for padel coaches and any teacher with students: the coach records a voice memo at the end of the lesson, an agent turns it into a lesson note in the player's own vault, the player adds match notes, and the next coach starts from a two-minute briefing. One invented player's record across four lessons with three coaches, the themes each saw, phases, the two-vault architecture with write-only lanes for coaches, pay-on-demand credits, new coach income, a calculator, and the prompts for phase one.
 
-*Source: <https://sgit.ai/demos/vaults/lesson-loop/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/lesson-loop/index.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

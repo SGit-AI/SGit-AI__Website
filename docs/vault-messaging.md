@@ -2,7 +2,7 @@
 
 > How two vaults exchange encrypted messages without sharing a vault key and without the sender holding an account: append lanes addressed by a token, composed with PKI. Worked example in CLI, curl and sg.append, with the one step that is not yet wired marked PROPOSED.
 
-*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault-messaging.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -67,14 +67,15 @@ $ sgit pki export sha256:a4615402a0bc23ac > my-identity.json
 Then register, against your vault, the hash of the sender’s lane address and the hash of your enumeration key:
 
 ```
-$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
     -H "x-sgraph-vault-write-key: $WRITE_KEY" \
+    -H "x-sgraph-access-token: $SG_SEND_ACCESS_TOKEN" \
     -H "Content-Type: application/json" \
     -d '{"append_anchors":["<sha256 of the append_token>"],
          "enum_key_hash":"<sha256 of your enum_key>"}'
 ```
 
-`configure` patches an existing vault manifest. It does not create a vault. A 403 means the vault ID or the write key is wrong.
+`configure` patches an existing vault manifest. It does not create a vault. It needs the SG/Send access token as well as the write key. **It replaces the anchor list**, so adding a sender means sending every existing anchor plus the new one. A **404 with an HTML page** means the vault ID or the write key is wrong. The routes are on `dev.send.sgraph.ai` only. Corrected on 26 September 2026: this paragraph said a wrong key returned 403, and the examples used `send.sgraph.ai`, which has no append routes. See [the write-up](append-lane-messaging.md) that found both.
 
 ## Deriving the lane address read this before writing code
 
@@ -98,11 +99,13 @@ $ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
 Encrypted to message.txt.enc
 
 # 2. append it to their lane
-$ curl -X POST https://send.sgraph.ai/api/vault/append/write/$THEIR_VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/write/$THEIR_VAULT_ID \
     -H "Content-Type: application/json" \
     -d '{"append_token":"'$APPEND_TOKEN'","payload":"'$(base64 -w0 message.txt.enc)'"}'
 {"ok": true}
 ```
+
+**The payload is encoded twice.** The `.enc` file is already base64 text, and the example sends base64 of that file, which is what the server and today's drainers expect. The [API page](../api/append-lanes.md#payload) gives the exact decode.
 
 **No account is needed to send.** The write endpoint requires no access token, the `append_token` is the whole gate. That is deliberate: somebody can send to your vault without holding a credential on the platform at all.
 
@@ -113,7 +116,7 @@ The response is **blind by design**: exactly `{"ok": true}`, with no file ID, no
 Poll cheaply first, a metadata-only listing reads **zero** payloads:
 
 ```
-$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/list/$VAULT_ID \
     -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
     -H "Content-Type: application/json" \
     -d '{"include_content": false}'
@@ -123,15 +126,27 @@ Filenames are server-assigned as `{epoch_ms}_{24-hex}.enc`, so they sort chronol
 
 ```
 $ curl -X POST .../append/fetch/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
-    -d '{"file_ids":["1755302400000_a3f8….enc"]}'
+    -d '{"inbox":"'$APPEND_TOKEN'","file_ids":["1755302400000_a3f8….enc"]}'
 
 $ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
 
 $ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
-    -d '{"file_ids":["1755302400000_a3f8….enc"]}'
+    -d '{"inbox":"'$APPEND_TOKEN'","file_ids":["1755302400000_a3f8….enc"]}'
 ```
 
+`fetch` and `mark-processed` both need the lane named in `inbox`: the raw token, as `list` returns it. `fetch` serves pending files only, so a drainer that wants to re-verify a signature later must keep the ciphertext itself.
+
 `mark-processed` is idempotent, a file already moved comes back in `missing` rather than as an error, so a retried batch is safe.
+
+## Two ways, and with no long-lived secret
+
+On 25 and 26 September 2026 two agent teams used this to message each other in both directions without either holding the other's vault key. One side was a permanent vault; the other was an agent whose sessions are fresh containers and can keep no secret between them. Three things made that work, and [the write-up](append-lane-messaging.md) describes each with its flows, tests and threat model:
+
+- **Signatures on every message**, checked against the lane: the lane says who holds the token, the signature says who holds the key, and the `From:` header must match both.
+- **A fresh signing key per session**, published in a key registry on the sender's own website, which the recipient pins once. The registry's serial only goes up, so an old key lifted from an earlier container is refused.
+- **An ephemeral inbox**: a vault created for one session, with a lane for each expected sender, published on the agent's site, drained while the session runs and deleted at the end.
+
+**Verify signers by fingerprint, not by label.** `sgit pki decrypt` reports the signer's label, and with a new key per session labels repeat. See [what the signature covers](pki.md#envelope).
 
 ## From inside a vault app
 
@@ -160,6 +175,7 @@ Not a chat protocol, not a queue with delivery guarantees, and not anonymous, th
 ## See also
 
 - [API, append lanes](../api/append-lanes.md): the six endpoints, gates, limits and status codes
+- [Append-lane messaging between agents](append-lane-messaging.md): the write-up of two-way use, 26 September 2026
 - [PKI](pki.md): keypair lifecycle, verified against the shipped CLI
 - [`sg.append`](vault/sg-bridge.md): the same transport from a vault app
 - [Security model](../security/index.md#pki): where the keypair sits relative to the symmetric vault key

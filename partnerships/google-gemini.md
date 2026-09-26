@@ -2,7 +2,7 @@
 
 > The quickest listing on this page is one we can do ourselves. Gemini CLI supports MCP servers, and Gemini CLI extensions are listed automatically when a public repository carries the right topic and manifest. For the enterprise side, partner agents listed on Google Cloud Marketplace appear in the Gemini Enterprise Agent Gallery. We would like to do both properly, with Google, so that agent work done with Gemini can land in a vault.
 
-*Source: <https://sgit.ai/partnerships/google-gemini.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/google-gemini.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

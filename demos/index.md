@@ -2,7 +2,7 @@
 
 > Live end-to-end demonstrations: vaults actually created, pushed, and embedded in the pages that document them, each with a deliberately published read-only key.
 
-*Source: <https://sgit.ai/demos/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/index.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,11 @@ Live, end-to-end demonstrations, each one a vault that was actually created, pus
 
 **The rule every demo follows:** the vault's *read key* is published on purpose. It is derived one-way and cannot write, so publishing it is what makes the demo openable by anyone. The vault's *write key* appears nowhere: not in these pages, not in the repos, and the build refuses to push if one ever reaches a tracked file.
 
-## Thirty vaults, one page each
+## Thirty-six vaults, one page each
 
 The demos outgrew this page. Every vault whose read key this site publishes now has its own page under [**Published vaults**](vaults/index.md), what it does, which features it uses, the audit that ran before the key was published, and the vault itself running live in the page. Thirty at the last count, from a regulation parsed into a graph to a job application delivered as a vault, and the table there is generated from the same file as [the machine-readable list](vaults/llms.txt), so the two cannot drift.
 
-[Gallery · 30 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
+[Gallery · 36 vaults### Published vaultsEvery vault with a deliberately published read key, one page per vault, the vault running live in it. Graphs, presentations, briefing packs, records, applications.Open the gallery →](vaults/index.md)
 
 [Method### How a vault gets published hereThe seven steps behind every row: classify the credential, derive rather than refuse, audit with the read key, screenshot the real app, write the page, publish the key, verify with a negative control.Read the method →](vaults/publishing.md)
 

@@ -2,7 +2,7 @@
 
 > Netlify already hosts the kind of thing a published vault is. A vault can be read from a plain static host behind a CDN: the browser fetches ciphertext and decrypts it locally, with no server at all. Netlify is named in our static hosting guide for exactly that. The partnership we would like is to make "an encrypted site, readable only with a key, updated with a push" a documented pattern on Netlify.
 
-*Source: <https://sgit.ai/partnerships/netlify.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/netlify.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

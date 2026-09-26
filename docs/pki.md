@@ -2,7 +2,7 @@
 
 > The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.
 
-*Source: <https://sgit.ai/docs/pki.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/pki.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -116,6 +116,10 @@ An encrypted file is base64 over a small JSON object, worth knowing if you are w
 | `w` | The AES content key, wrapped with RSA-OAEP to the recipient | 512 bytes (4096-bit) |
 | `i` | AES-GCM IV | 12 bytes |
 | `c` | Ciphertext with its GCM tag | plaintext + 16 |
+| `f` | The signer's fingerprint, when `encrypt` was given `--fingerprint` | none |
+| `s` | The ECDSA signature, over `c` only | none |
+
+**Two things to know when you rely on the signature** (checked 26 September 2026, on sgit-ai v0.16.0). First, **it covers the inner ciphertext `c` only**: not the wrapped key `w`, not the IV, and not who the message was encrypted to. Someone holding the recipient's private key could re-wrap a signed `c` to a third party. Signing the whole envelope is the recommended fix. Second, **`decrypt` reports the signer's label, not its fingerprint**, and only when the signer's bundle is in your keyring. Labels are not unique, so when identity matters, verify `s` against the expected key by fingerprint yourself. Both are from [the append-lane write-up](append-lane-messaging.md).
 
 A 37-byte plaintext produced a 1,076-byte file: the RSA-wrapped key dominates, so this is efficient for large payloads and heavy for tiny ones.
 

@@ -5,17 +5,32 @@
 
   <div class="note"><b>Naming.</b> This API was called <b>inbox</b> before v0.32.7. Every <code>/api/vault/inbox/*</code> URL is gone, and <code>purge</code> takes <code>folder:"pending"</code> or <code>"processed"</code>, the old <code>"inbox"</code> value returns <b>400</b>. If you are reading older material, translate.</div>
 
+  <div class="note"><b>Checked in use, 26 September 2026.</b> Two agent teams ran two-way, signed messaging over these lanes on 25 and 26 September, and wrote down every place where this page differed from what the server did. <a href="../docs/append-lane-messaging.html">Their write-up</a> is published on this site. The table below, and the sections marked <i>checked 26 September</i>, are corrected from it.</div>
+
   <h2 id="endpoints">The six endpoints</h2>
   <p>All <b>POST</b>, all under <code>/api/vault/append/</code>.</p>
   <div class="tablewrap"><table>
     <tr><th>Path</th><th>Gate</th><th>Does</th></tr>
-    <tr><td><code>configure/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code></td><td>Registers <code>append_anchors</code>, hashes of accepted senders, and <code>enum_key_hash</code></td></tr>
+    <tr><td><code>configure/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code> <b>and</b> the SG/Send access token (401 without it)</td><td>Registers <code>append_anchors</code>, hashes of accepted senders, and <code>enum_key_hash</code>. <b>It replaces the anchor list</b>: to add a sender, send every existing anchor plus the new one, or the existing lanes silently stop accepting writes</td></tr>
     <tr><td><code>write/{vault_id}</code></td><td><code>append_token</code> <b>in the body</b></td><td>Appends a payload. <b>Account-less</b>: no access token required</td></tr>
-    <tr><td><code>list/{vault_id}</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>Paginated listing, optionally with inline content</td></tr>
-    <tr><td><code>fetch/{vault_id}</code></td><td>enum key</td><td>Fetch specific file IDs, batched</td></tr>
-    <tr><td><code>mark-processed/{vault_id}</code></td><td>enum key</td><td>Moves pending → processed. Idempotent</td></tr>
-    <tr><td><code>purge/{vault_id}</code></td><td>write key</td><td>Deletes. <code>folder: "pending" | "processed"</code></td></tr>
+    <tr><td><code>list/{vault_id}</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>Paginated listing, optionally with inline content. Each entry's <code>inbox</code> is the lane's <b>raw token</b> (see below)</td></tr>
+    <tr><td><code>fetch/{vault_id}</code></td><td>enum key</td><td>Body <code>{"inbox": &lt;token&gt;, "file_ids": [...]}</code>: the lane must be named. <b>Pending files only</b>: once a file is marked processed it cannot be fetched again, so keep the ciphertext if you may need to re-verify it</td></tr>
+    <tr><td><code>mark-processed/{vault_id}</code></td><td>enum key</td><td>Body <code>{"inbox": &lt;token&gt;, "file_ids": [...]}</code>. Moves pending → processed. Idempotent</td></tr>
+    <tr><td><code>purge/{vault_id}</code></td><td>write key</td><td>Body <code>{"inbox": &lt;token&gt;, "folder": "pending" | "processed"}</code>. Deletes</td></tr>
   </table></div>
+
+  <h2 id="where">Where the routes are, and what a failure looks like <span class="small dim">checked 26 September</span></h2>
+  <ul>
+    <li><b>The routes are on <code>https://dev.send.sgraph.ai</code> only.</b> <code>send.sgraph.ai</code> has no append routes today.</li>
+    <li><b>A bad key or an unknown token returns 404 with an HTML page</b>, not a 403 with JSON. A missing field returns a JSON 400. When a call 404s, check the key before the path.</li>
+    <li><b>Getting the write key.</b> It is derived from the vault key: <code>Vault__Crypto().derive_keys_from_vault_key(vault_key)['write_key']</code>. The parser strips the <code>sgit_private_vault_</code> prefix first; deriving from the raw string gives a different key, and every call 404s.</li>
+  </ul>
+
+  <h2 id="payload">The payload, exactly <span class="small dim">checked 26 September</span></h2>
+  <p><code>sgit pki encrypt</code> writes the <code>.enc</code> file as base64 text of a JSON envelope. The <code>payload</code> sent to <code>write</code> is base64 of that file's bytes, so the envelope is <b>encoded twice</b>:</p>
+  <pre class="shell">payload  = base64(open("msg.eml.enc", "rb").read())        # sending
+envelope = json.loads(b64decode(b64decode(content)))       # draining</pre>
+  <p>A sender that encodes only once is rejected by a strict drainer. The recommendation to the sgit team is a single encoding, since the <code>.enc</code> text is already valid base64; until that changes, this is the format.</p>
 
   <h2 id="separation">Why the gates are split this way</h2>
   <p>Four capabilities, and the split is the whole design:</p>
@@ -72,6 +87,7 @@
   <h2>See also</h2>
   <ul>
     <li><a href="../docs/vault-messaging.html">Vault messaging</a>, this API composed with PKI into a worked example</li>
+    <li><a href="../docs/append-lane-messaging.html">Append-lane messaging between agents</a>, the write-up of two-way use on 25 and 26 September: per-session keys, a pinned key registry, ephemeral inboxes, the threat model and the recommendations</li>
     <li><a href="../docs/vault/sg-bridge.html"><code>sg.append</code></a>, the same six operations from a vault app</li>
     <li><a href="errors.html">Errors and limits</a></li>
   </ul>

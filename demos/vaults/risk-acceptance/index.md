@@ -2,7 +2,7 @@
 
 > A business plan for a company that runs the risk acceptance loop in the gaps of an organisation's GRC platform: every material risk established on facts, held by a named person, accepted for a stated interval, and at expiry accepted again, escalated, funded or fixed. Opens on ten principles and a six-week replay of one invented risk with a hash-chained decision record verified in the browser, then the operating model, services priced per material risk, a calculator, go-to-market, the risks and the open questions.
 
-*Source: <https://sgit.ai/demos/vaults/risk-acceptance/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/risk-acceptance/index.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -88,13 +88,13 @@ What you sell.
 From `admin/build/catalogue_derive.py odn10gfp <read key hex>`, read-only, no token, no clone.
 
 - **Files:** 32 · **plaintext size:** 673 KB
-- **Commits:** 3 · **last updated:** 2026-09-24 · **HEAD:** `obj-cas-imm-b89dfa86528d`
+- **Commits:** 4 · **last updated:** 2026-09-26 · **HEAD:** `obj-cas-imm-66843a5b5098`
 - **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `content.json`, `diagrams/`, `index.html`, `plan/`, `prototypes/`, `risk/`, `spec/`, `tools/`
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes
 
-**Where this came from.** A voice memo by the founder on 24 September 2026: risk acceptance deserves a company of its own, separate from RiskMandate.ai's focus on the insurability of agents, delivered as a governance service that works in the gaps of existing GRC platforms, with a vault per material risk as its evidence pack. **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md).
+**Where this came from.** A voice memo by the founder on 24 September 2026: risk acceptance deserves a company of its own, separate from RiskMandate.ai's focus on the insurability of agents, delivered as a governance service that works in the gaps of existing GRC platforms, with a vault per material risk as its evidence pack. **Corrected on 26 September 2026.** The vault's README said the replay ran over eight weeks; it runs six, from day 0 to day 42, as this page says. The fourth commit fixes the README and changes nothing else. Found by [the newsroom](https://sgit.newsroom.sgit.ai/). **Where it sits.** With the other [business plans published for founders](../../../startups/business-plans.md).
 
 [← All published vaults](../index.md)
 

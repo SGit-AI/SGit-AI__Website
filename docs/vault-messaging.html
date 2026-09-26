@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.8</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.9</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -106,7 +106,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.8 &middot; 24 Sep 2026</span></a></div>
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.9 &middot; 26 Sep 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / Vault messaging</p>
   <h1>Sending messages between vaults</h1>
@@ -153,12 +153,13 @@
   <pre class="shell">$ sgit pki keygen --label "My Vault Identity"
 $ sgit pki export sha256:a4615402a0bc23ac > my-identity.json</pre>
   <p>Then register, against your vault, the hash of the sender’s lane address and the hash of your enumeration key:</p>
-  <pre class="shell">$ curl -X POST https://send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
+  <pre class="shell">$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/configure/$VAULT_ID \
     -H "x-sgraph-vault-write-key: $WRITE_KEY" \
+    -H "x-sgraph-access-token: $SG_SEND_ACCESS_TOKEN" \
     -H "Content-Type: application/json" \
     -d '{"append_anchors":["&lt;sha256 of the append_token&gt;"],
          "enum_key_hash":"&lt;sha256 of your enum_key&gt;"}'</pre>
-  <p><code>configure</code> patches an existing vault manifest. It does not create a vault. A 403 means the vault ID or the write key is wrong.</p>
+  <p><code>configure</code> patches an existing vault manifest. It does not create a vault. It needs the SG/Send access token as well as the write key. <b>It replaces the anchor list</b>, so adding a sender means sending every existing anchor plus the new one. A <b>404 with an HTML page</b> means the vault ID or the write key is wrong. The routes are on <code>dev.send.sgraph.ai</code> only. <span class="small dim">Corrected on 26 September 2026: this paragraph said a wrong key returned 403, and the examples used <code>send.sgraph.ai</code>, which has no append routes. See <a href="append-lane-messaging.html">the write-up</a> that found both.</span></p>
 
   <h2 id="addressing">Deriving the lane address <span class="small dim">read this before writing code</span></h2>
   <div class="warnbox"><b>This step is not yet wired end to end, and the gap is worth stating precisely.</b><br>
@@ -177,28 +178,39 @@ $ sgit pki encrypt message.txt --recipient sha256:a4615402a0bc23ac
 Encrypted to message.txt.enc
 
 # 2. append it to their lane
-$ curl -X POST https://send.sgraph.ai/api/vault/append/write/$THEIR_VAULT_ID \
+$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/write/$THEIR_VAULT_ID \
     -H "Content-Type: application/json" \
     -d '{"append_token":"'$APPEND_TOKEN'","payload":"'$(base64 -w0 message.txt.enc)'"}'
 {"ok": true}</pre>
+  <p><b>The payload is encoded twice.</b> The <code>.enc</code> file is already base64 text, and the example sends base64 of that file, which is what the server and today's drainers expect. The <a href="../api/append-lanes.html#payload">API page</a> gives the exact decode.</p>
   <p><b>No account is needed to send.</b> The write endpoint requires no access token, the <code>append_token</code> is the whole gate. That is deliberate: somebody can send to your vault without holding a credential on the platform at all.</p>
   <p>The response is <b>blind by design</b>: exactly <code>{"ok": true}</code>, with no file ID, no count and no metadata. A sender cannot learn what else is in the lane, or even whether theirs was the first write.</p>
 
   <h2 id="receiving">Receiving</h2>
   <p>Poll cheaply first, a metadata-only listing reads <b>zero</b> payloads:</p>
-  <pre class="shell">$ curl -X POST https://send.sgraph.ai/api/vault/append/list/$VAULT_ID \
+  <pre class="shell">$ curl -X POST https://dev.send.sgraph.ai/api/vault/append/list/$VAULT_ID \
     -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
     -H "Content-Type: application/json" \
     -d '{"include_content": false}'</pre>
   <p>Filenames are server-assigned as <code>{epoch_ms}_{24-hex}.enc</code>, so they sort chronologically, which is what makes cursor pagination stable. Page with <code>after_file_id</code> set to the last ID you saw.</p>
   <pre class="shell">$ curl -X POST .../append/fetch/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
-    -d '{"file_ids":["1755302400000_a3f8….enc"]}'
+    -d '{"inbox":"'$APPEND_TOKEN'","file_ids":["1755302400000_a3f8….enc"]}'
 
 $ sgit pki decrypt message.txt.enc --fingerprint sha256:a4615402a0bc23ac
 
 $ curl -X POST .../append/mark-processed/$VAULT_ID -H "x-sgraph-vault-enum-key: $ENUM_KEY" \
-    -d '{"file_ids":["1755302400000_a3f8….enc"]}'</pre>
+    -d '{"inbox":"'$APPEND_TOKEN'","file_ids":["1755302400000_a3f8….enc"]}'</pre>
+  <p><code>fetch</code> and <code>mark-processed</code> both need the lane named in <code>inbox</code>: the raw token, as <code>list</code> returns it. <code>fetch</code> serves pending files only, so a drainer that wants to re-verify a signature later must keep the ciphertext itself.</p>
   <p><code>mark-processed</code> is idempotent, a file already moved comes back in <code>missing</code> rather than as an error, so a retried batch is safe.</p>
+
+  <h2 id="two-way">Two ways, and with no long-lived secret</h2>
+  <p>On 25 and 26 September 2026 two agent teams used this to message each other in both directions without either holding the other's vault key. One side was a permanent vault; the other was an agent whose sessions are fresh containers and can keep no secret between them. Three things made that work, and <a href="append-lane-messaging.html">the write-up</a> describes each with its flows, tests and threat model:</p>
+  <ul>
+    <li><b>Signatures on every message</b>, checked against the lane: the lane says who holds the token, the signature says who holds the key, and the <code>From:</code> header must match both.</li>
+    <li><b>A fresh signing key per session</b>, published in a key registry on the sender's own website, which the recipient pins once. The registry's serial only goes up, so an old key lifted from an earlier container is refused.</li>
+    <li><b>An ephemeral inbox</b>: a vault created for one session, with a lane for each expected sender, published on the agent's site, drained while the session runs and deleted at the end.</li>
+  </ul>
+  <p><b>Verify signers by fingerprint, not by label.</b> <code>sgit pki decrypt</code> reports the signer's label, and with a new key per session labels repeat. See <a href="pki.html#envelope">what the signature covers</a>.</p>
 
   <h2 id="bridge">From inside a vault app</h2>
   <p>The same transport through the browser bridge, with no HTTP of your own (see <a href="vault/sg-bridge.html"><code>sg.append</code></a>):</p>
@@ -223,6 +235,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
   <h2>See also</h2>
   <ul>
     <li><a href="../api/append-lanes.html">API, append lanes</a>: the six endpoints, gates, limits and status codes</li>
+    <li><a href="append-lane-messaging.html">Append-lane messaging between agents</a>: the write-up of two-way use, 26 September 2026</li>
     <li><a href="pki.html">PKI</a>: keypair lifecycle, verified against the shipped CLI</li>
     <li><a href="vault/sg-bridge.html"><code>sg.append</code></a>: the same transport from a vault app</li>
     <li><a href="../security/index.html#pki">Security model</a>: where the keypair sits relative to the symmetric vault key</li>
@@ -234,7 +247,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.8</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-messaging.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.9</a> · <a href="../admin/index.html">engineering</a> · <a href="vault-messaging.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -276,7 +289,7 @@ await sg.append.purge({ folder: 'processed' });</pre>
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.8';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.9';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

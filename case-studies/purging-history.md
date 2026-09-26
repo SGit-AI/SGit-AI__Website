@@ -2,7 +2,7 @@
 
 > How this repository dropped 15,933 files from every one of its 112 commits: the setup with two branches drawn out, why git rm is not deletion, what git filter-repo does to every commit id, why the push had to be forced and how the lease made it safe, why a forgotten merged branch kept the purged objects reachable and downloadable, what happens when it is deleted, and the order to do it in when the file is a secret.
 
-*Source: <https://sgit.ai/case-studies/purging-history.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/case-studies/purging-history.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -2,7 +2,7 @@
 
 > An open call to password managers, identity providers and platform credential managers. sgit vaults are encrypted on the client and opened in a browser with one key, and keys now multiply faster than people can manage them by hand. We would rather use a key manager than build one. The page explains sgit for someone new to it, states what we are looking for (something that exists, a joint pilot, or an open specification), the requirements (browser first, key kinds kept apart, release only on approval, end-to-end sharing, names in plain words that are addresses and never keys, revocation, keys for agents), a sketch of the share flow, why the old word-based token was removed, and what we would bring.
 
-*Source: <https://sgit.ai/partnerships/vault-key-management.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/vault-key-management.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -34,9 +34,9 @@ Today, vault keys travel by hand. The gap at the bottom is the thing this page i
 
 Three things make this worth doing now rather than later.
 
-| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-five vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
+| **The number of keys is growing fast** | One person running a few projects now holds a vault per project, per client and per shared folder, and a separate read key for each person they share with, so access can be told apart. [Thirty-six vaults are published on this site alone](../demos/vaults/index.md), each with its own key. |
 |---|---|
-| **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) is a business plan built on exactly that. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
+| **Agents are starting to make vaults** | An AI agent that builds a website for a customer, writes up a penetration test or keeps a board pack can hand the result over as a vault. Three business plans published on this site depend on exactly that: [Agent as Webmaster](../demos/vaults/agent-webmaster/index.md) hands a customer their site's vault, [Lesson Loop](../demos/vaults/lesson-loop/index.md) gives every player a vault they hold the key to, and [Company X-Ray](../demos/vaults/company-xray/index.md) hands each customer a key to drop documents into and a vault back at the end. Every one of those hand-overs is a key that has to go to a person, safely, and every agent doing the work needs a key it should not be able to paste anywhere. |
 | **The pattern is not specific to sgit** | Any end-to-end encrypted document, folder or dataset opened in a browser has the same need: a key for the data, held by the user, released to a page only when they agree. Whoever makes that easy for sgit makes it easy for the category. |
 
 ## What we are looking for
@@ -130,7 +130,7 @@ Organisations are named below only as examples of the kind of team we mean. Ther
 |---|---|
 | **Crypto that is specified and tested** | AES-256-GCM, HKDF-SHA256 and PBKDF2, with test vectors that the command-line client and the browser must match byte for byte. Keys are derived locally; the host never holds one. |
 | **Keys that say what they are** | Every sgit key carries a prefix naming its kind: `sgit_private_vault_`, `sgit_private_read_` or `sgit_public_read_`. One secret-scanner rule, `sgit_private_`, catches every private key type, and a published read key cannot be mistaken for a leak. |
-| **Real vaults to test against** | [Thirty-five published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
+| **Real vaults to test against** | [Thirty-six published vaults](../demos/vaults/index.md) across security, regulation, business plans and applications, each with a public read key, plus [the catalogue](../demos/vaults/catalogue/index.md), a vault that lists vaults, which is the closest thing today to the index a key manager would keep. |
 | **The failures, written down** | [What to do if a vault key is exposed](../case-studies/exposed-vault-key.md), [the publishing method](../demos/vaults/publishing.md) with the mistake behind each rule, and [when not to use sgit](../docs/limitations.md). A key manager partner should know the edges before the first call. |
 
 ## The detail
@@ -151,7 +151,7 @@ We can, and will, keep keys inside vaults: a vault that holds the read keys for 
 
 | Exists and runs | Does not exist yet |
 |---|---|
-| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-five published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
+| Vault keys, read keys and public read keys with self-declaring prefixes. Local derivation. Browser opening from a read key with nothing installed. Thirty-six published vaults. Guidance to keep the vault key in a password manager, which is what this page wants to make first-class. | Any integration with any key manager. Revocation, expiry or a rotation workflow in the product: rotation is a manual re-encryption today, as [the limitations page](../docs/limitations.md) says. The word-name scheme. Agent-scoped keys. All of these are what a collaboration would build. |
 
 ## What this page does not claim
 

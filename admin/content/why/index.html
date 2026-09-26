@@ -5,7 +5,7 @@
   <div class="note" style="font-size:1rem"><b>The whole thesis in one sentence:</b> you have files that need version control and collaboration, and the place they are stored must not be able to read them.<br><span class="small">Everything below is a consequence of that sentence. If it doesn't describe a problem you have, use git and a private repo. We say so on <a href="../docs/limitations.html">the page about when not to use this</a>.</span></div>
 
   <h2>git and sgit, side by side</h2>
-  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site ran both at once</b> for its first 76 releases (one working tree, two remotes) and then <a href="../case-studies/one-tree-two-remotes.html">retired the vault mirror</a>, because git was doing the deploying and nothing was reading the vault. The thirty vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.</p>
+  <p>The honest framing is not "sgit instead of git". It is two tools with different jobs, and the interesting question is which one owns which files. <b>This site ran both at once</b> for its first 76 releases (one working tree, two remotes) and then <a href="../case-studies/one-tree-two-remotes.html">retired the vault mirror</a>, because git was doing the deploying and nothing was reading the vault. The {VAULTS_WORDS} vaults it publishes are the other half of the answer: sgit owns the content whose readers hold the key; git owns the pages that describe it.</p>
 
   <div class="tablewrap"><table>
     <tr><th></th><th>git</th><th>sgit</th></tr>

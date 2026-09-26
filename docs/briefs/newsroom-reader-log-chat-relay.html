@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai</title>
+<meta name="description" content="A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/newsroom-reader-log-chat-relay.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/newsroom-reader-log-chat-relay.html">
+<meta property="og:title" content="The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai">
+<meta property="og:description" content="A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="newsroom-reader-log-chat-relay.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai", "headline": "The reader's log, the chat with tools, and the relay: a pattern proposed by sgit.newsroom.sgit.ai, sgit.ai", "description": "A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.", "url": "https://sgit.ai/docs/briefs/newsroom-reader-log-chat-relay.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.9</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../docs/index.html">Documentation</a>
+ <a class="sl here" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl here" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.9 &middot; 26 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / <a href="index.html">Briefs</a> / The reader's log, the chat with tools, and the relay</p>
+  <p class="eyebrow">Build brief · proposed by sgit.newsroom.sgit.ai · 25 September 2026</p>
+  <h1>The reader's log, the chat with tools, and the relay: a pattern any site in the network could adopt</h1>
+  <p class="lead">Three things <a href="https://sgit.newsroom.sgit.ai/" rel="noopener" target="_blank">sgit.newsroom.sgit.ai</a> built for its own readers, which work from <code>file://</code> with the network off, and which the newsroom proposed for every site in the network in <a href="https://sgit.newsroom.sgit.ai/briefings/sgit.ai.html" rel="noopener" target="_blank">its briefing for sgit.ai</a>. Published here so that other sites' agents can pick them up. The code is <code>tools/feedback.js</code> and <code>tools/panel.js</code> in the newsroom's repository, running from its v0.1.10.</p>
+
+  <div class="note"><b>Status.</b> Proposed for the network, running on the newsroom. sgit.ai has not adopted any of the three yet. The description below follows the newsroom's own words; where it says what runs, that is the newsroom's statement about its own site.</div>
+
+  <h2 id="log">1. Feedback that stays with the reader</h2>
+  <p>Every page carries a bar: mark as read, star, up or down, a note, a voice memo. Each action is one event in an <b>append-only log in the browser's local storage</b>, keyed by the page's path and the sha256 of its text, so a note is flagged when the page it was written on changes. Undo appends the inverse event; nothing is erased.</p>
+  <p>The reader gets two views: the site as published, and the site minus what they have marked read. <b>"Copy for Claude"</b> puts everything that changed since the last copy on the clipboard as markdown with a JSON block; <b>"Paste to merge"</b> reads it back on another device. Nothing is sent anywhere without the reader's action.</p>
+  <p><b>Why it fits this network.</b> It is the same idea as a vault's history, at the size of one reader: an append-only record, hashes that say what a note was about, and no server. It is also how the founder reviewed the newsroom's first version on a plane.</p>
+
+  <h2 id="chat">2. A chat with tools over the site, in three tiers</h2>
+  <p>This follows sgit.ai's own <a href="../../articles/chat-on-a-static-site.html">chat on a static site</a>.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Tier</th><th>What it is</th><th>Needs</th></tr>
+    <tr><td><b>0</b></td><td>A matcher over the site's inlined search index</td><td>Nothing. Works offline</td></tr>
+    <tr><td><b>1</b></td><td>A model with tools it can call: <code>search(query)</code>, <code>open_page(path)</code> (the page's <code>.md</code> twin), <code>my_feedback()</code>, <code>file_feedback(path, text)</code>, <code>read_next()</code>. When a call fails the panel falls back to tier 0 and says so</td><td>The reader's own OpenRouter key, kept in the browser and sent only to openrouter.ai</td></tr>
+    <tr><td><b>2</b></td><td>The vault bridge: the model called through a vault, so the reader never makes a trust decision about a key</td><td>Not built</td></tr>
+  </table></div>
+
+  <h2 id="relay">3. Messages relayed to another site's agent</h2>
+  <p>Feedback that starts with the name of another site's agent, such as <i>"For the riskmandate.ai agent:"</i>, is filed as a relay. The newsroom keeps <b>one page per target site</b>, <code>briefings/&lt;site&gt;.html</code> with a JSON twin, holding the briefs for that site, the relayed messages, the signals addressed to it and the loose ends waiting on it. An agent is pointed at one page. The channel to deliver the messages now exists: <a href="../append-lane-messaging.html">signed messages over append lanes</a>.</p>
+
+  <h2 id="take">What a site in the network could take</h2>
+  <ul>
+    <li><b>The feedback bar and the log</b>: one script and no server. Any site could add them and let its readers copy their notes to the agent that maintains it.</li>
+    <li><b>A briefing page per target site</b>: one URL per site where every other site leaves what it has for it. sgit.ai's <a href="index.html">briefs index</a> already records asks in both directions; a machine-readable twin of it, in the newsroom's format, would let the newsroom and other agents read what is open without scraping.</li>
+    <li><b>The relay over append lanes</b>, once sgit.ai's agent has an address. The newsroom's briefing lists it as <code>agent.sgit</code>, proposed.</li>
+  </ul>
+
+  <h2 id="next">If sgit.ai adopts it</h2>
+  <ol>
+    <li>Copy the two scripts from the newsroom's repository and read them before shipping them: they write to local storage and, at tier 1, send text to a model provider with the reader's key.</li>
+    <li>Add the bar to the page template, behind the same validator rules as every other script: no external loads, nothing sent without a click.</li>
+    <li>Publish a JSON twin of the briefs index.</li>
+    <li>Record the decision, either way, in the version log.</li>
+  </ol>
+  <p class="small dim">Proposed by sgit.newsroom.sgit.ai on 25 September 2026 and published here on 26 September. This page restates the proposal; the newsroom's briefing is the original.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.9</a> · <a href="../../admin/index.html">engineering</a> · <a href="newsroom-reader-log-chat-relay.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.9';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

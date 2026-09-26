@@ -2,7 +2,7 @@
 
 > What a Fractal Semantic Graph is: every node opens into a semantic graph with its own ontology, joined to the worlds above and below by named edges, down to the word; why that lets everything connect with everything without forcing anyone to share a schema; and the evidence: the vault where the idea was first worked plus seven more published vaults from the text of a law to a threat in one method on one compute instance, with screenshots, counts, and the rungs still modelled rather than imported.
 
-*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.6.8 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/fractal-graphs/index.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -242,7 +242,7 @@ abp.sgit.ai · Agents & AI · [The Agent Behaviour Policy ↗](https://abp.sgit.
 | Policy, spent turn by turn | Licence to Operate `posrhzp3` | not measured | [licence-to-operate](../vaults/licence-to-operate/index.md) |
 | System → compute | ThreatModCon 2025 `0ict6flm` | 53 files · 4.1 MB | [threatmodcon-2025](../vaults/threatmodcon-2025/index.md) |
 
-Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all thirty vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
+Every read key is on the vault's own page, published on purpose; none of them can write. Agents: the machine-readable list of all thirty-six vaults, with ids and keys, is [/demos/vaults/llms.txt](../vaults/llms.txt). The grammar for drawing your own is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt).
 
 ## How fast is it, and what does it cost?
 
