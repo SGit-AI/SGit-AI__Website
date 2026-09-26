@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.9'
+SITE_VERSION = 'v0.6.10'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,24 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.9', '2026-09-26', 'this release',
+    ('v0.6.10', '2026-09-26', 'this release',
+     "USING SGIT FROM CLAUDE ON A TEAM OR ENTERPRISE PLAN. A brief from mailbox.riskmandate, written "
+     "after an incident the same day: an agent in a Claude Cowork session could pip install sgit-ai "
+     "and could not reach sgit.ai, because the organisation's sandbox allowlist had *.sgit.ai and "
+     "not the apex, and the proxy's CONNECT 403 looked like an outage. New how-to at "
+     "/docs/how-to/claude-team-egress.html: who can change it (an Owner), which domains, a check to "
+     "paste into the session, and a symptom table. Claims about Claude's settings were checked "
+     "against Anthropic's two help-centre articles before publishing, and one was softened: the "
+     "brief saw the change reach a running session, Anthropic says settings apply to new sessions, "
+     "so the page says start a new one. The apex-versus-wildcard behaviour is labelled observed, "
+     "because the help centre does not say. A Network requirements note is now in llms.txt and on "
+     "the agents guide, and llms.txt's append-lane answer names the only host with the routes. The "
+     "brief's three CLI findings were reproduced where possible on sgit-ai v0.16.2 and filed as "
+     "SGit-AI__CLI issues 2, 3 and 4: doctor says no remote configured in a read-only clone "
+     "(reproduced; the after-push case is reported, not reproduced), clone --help omits the "
+     "prefixed read keys the site publishes (reproduced), and history log prints no commits in a "
+     "read-only clone of a four-commit vault (reproduced)."),
+    ('v0.6.9', '2026-09-26', 'git 9717a210',
      "THE NEWSROOM'S FIRST BRIEFING, ANSWERED IN ONE RELEASE. sgit.newsroom.sgit.ai, the newsroom "
      "that reads every site in the network daily, left sgit.ai a briefing: a relayed write-up of "
      "two-way append-lane messaging between agents, a proposal, four signals and eight loose ends. "
@@ -3172,6 +3189,11 @@ SCOPED INDEXES, each covers one part of this site and is regenerated on every re
 Notes for agents:
 - sgit is in beta and powers production workflows. Honest edges: /docs/limitations.md
 - Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
+- Network requirements: sgit needs HTTPS to your API server (default `dev.send.sgraph.ai`);
+  agents reading these docs also need `sgit.ai`. Sandboxed agents (e.g. Claude on Team or
+  Enterprise plans) often run behind an allowlisting proxy: `CONNECT ... 403` means the host is
+  blocked, not down. Ask the organisation Owner to allowlist `sgit.ai`, `*.sgit.ai` and
+  `*.sgraph.ai`, adding the apex domains explicitly. /docs/how-to/claude-team-egress.md
 - Vault keys are full-strength generated keys (`passphrase:vault_id`). No password reset exists.
 - Never write a vault key into a tracked file. See /case-studies/exposed-vault-key.md for
   what that costs, and /docs/guidance/index.md for the practice that prevents it.
@@ -3206,6 +3228,8 @@ Quick answers (so you do not need a second request for the common questions):
   the response is blind (`{"ok":true}`, no id, no count). The recipient lists and fetches with
   `x-sgraph-vault-enum-key` and decrypts client-side. Encrypt with `sgit pki encrypt --recipient`
   (RSA-OAEP 4096 + AES-256-GCM). Full worked example: /docs/vault-messaging.md
+  The append routes are on dev.send.sgraph.ai only. Two-way, signed use between agents, with
+  per-session keys and ephemeral inboxes: /docs/append-lane-messaging.md
 - The intended lane address is `append_token = H(recipient public key)`, so a sender can derive
   it from a published key. That derivation is PROPOSED, no shipped command emits it, so today
   you agree the token out of band. The server side is shipped. Do not code against the derivation.

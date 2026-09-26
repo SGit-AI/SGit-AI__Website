@@ -3,6 +3,9 @@
   <h1>Working with AI agents</h1>
   <p class="lead">sgit is designed to be driven by AI agents as well as humans. A vault is just a folder. The agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.</p>
 
+  <h2 id="network">Network requirements</h2>
+  <p>sgit needs HTTPS to your API server, by default <code>dev.send.sgraph.ai</code>, and agents reading these docs also need <code>sgit.ai</code>. Sandboxed agents, for example Claude on a Team or Enterprise plan, often sit behind an allowlisting proxy. If you see <code>CONNECT … 403</code>, the host is blocked, not down: ask the organisation's Owner to allow <code>sgit.ai</code>, <code>*.sgit.ai</code> and <code>*.sgraph.ai</code>, listing the apex domains explicitly. <a href="how-to/claude-team-egress.html">The how-to</a> has the steps and a check to paste.</p>
+
   <h2>The session pattern</h2>
 <pre class="shell"><span class="d"># start of session: get the workspace</span>
 <span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span>   <span class="d"># or: sgit pull, if already cloned</span>

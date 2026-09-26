@@ -2,7 +2,7 @@
 
 > A European model, a European cloud, and vaults: a fully European AI stack in which no key leaves the customer. Mistral hosts data in the EU by default, supports MCP connectors in its Agents API and in Vibe (formerly Le Chat), and runs a partner programme with an integration tier. sgit provides the encrypted data layer, open source and runnable on any European cloud. Together they make a sovereignty story that holds at every layer.
 
-*Source: <https://sgit.ai/partnerships/mistral.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/mistral.html> · site v0.6.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

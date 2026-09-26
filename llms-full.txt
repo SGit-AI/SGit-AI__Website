@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.9). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.10). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-167site releases, each verified live before it was called done
+168site releases, each verified live before it was called done
 
 36vaults published with a deliberately public read key
 
@@ -4662,7 +4662,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Messaging & the API
 
-[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [Append-lane messaging between agentsTwo-way and signed, with no one else's vault key: the write-up of 26 September](append-lane-messaging.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
+[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [Using sgit from Claude Team or EnterpriseThe network allowlist, and telling a blocked host from an outage](how-to/claude-team-egress.md) [Append-lane messaging between agentsTwo-way and signed, with no one else's vault key: the write-up of 26 September](append-lane-messaging.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
 
 ## Guides
 
@@ -4959,6 +4959,10 @@ The verdict line matters in multi-writer vaults: it distinguishes genuine confli
 
 sgit is designed to be driven by AI agents as well as humans. A vault is just a folder. The agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.
 
+## Network requirements
+
+sgit needs HTTPS to your API server, by default `dev.send.sgraph.ai`, and agents reading these docs also need `sgit.ai`. Sandboxed agents, for example Claude on a Team or Enterprise plan, often sit behind an allowlisting proxy. If you see `CONNECT … 403`, the host is blocked, not down: ask the organisation's Owner to allow `sgit.ai`, `*.sgit.ai` and `*.sgraph.ai`, listing the apex domains explicitly. [The how-to](how-to/claude-team-egress.md) has the steps and a check to paste.
+
 ## The session pattern
 
 ```
@@ -5020,6 +5024,90 @@ Give each agent a named branch; the [two-branch model](two-branch-model.md) guar
 **For Claude users:** a packaged sgit Skill teaches a Claude session this entire workflow (install, clone, work, commit, push) so cross-session persistent state works out of the box.
 
 [← The two-branch model](two-branch-model.md)[When NOT to use sgit →](limitations.md)
+
+
+
+==============================================================================
+# Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai
+
+> On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
+>
+> Page: https://sgit.ai/docs/how-to/claude-team-egress.html
+
+[Home](../../index.md) / [Docs](../index.md) / How-to / Claude Team and Enterprise egress
+
+# Using sgit from Claude on a Team or Enterprise plan: the network allowlist
+
+On Claude's Team and Enterprise plans, the network access of Claude's code sandbox (Cowork, and code execution and file creation in claude.ai) is set once for the whole organisation, by an Owner. The Team default lets `pip install sgit-ai` through and blocks every sgit host. This page says which hosts to allow, how to check from inside a session, and how to tell a blocked host from a server that is down.
+
+**Where this comes from.** An incident on 26 September 2026: an agent in a Claude Cowork cloud session, on sgit-ai v0.16.0, could install sgit and could not reach `sgit.ai`, and a second session confirmed the fix. It was written up as a brief for this site by `mailbox.riskmandate`. The statements about Claude's settings below are Anthropic's, from the two help-centre articles linked here; the statements about which domains matched are what the incident observed, and are labelled so.
+
+## Who has to do this
+
+An **Owner** of the Claude organisation. Members, and the agent itself, cannot change it. On Free, Pro and Max plans the user controls the same setting in their own settings instead. See Anthropic's [Create and edit files with Claude](https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude) and [Use Claude Cowork on Team and Enterprise plans](https://support.claude.com/en/articles/13455879-use-claude-cowork-on-team-and-enterprise-plans) for the current menu path.
+
+## The steps
+
+1. In **Organization settings → Capabilities → Code execution**, set network access to **Package managers + custom domains**, or **All domains** if your policy allows it. Anthropic's four levels are Disabled, Package managers only (the Team and Enterprise default), Package managers + custom domains, and All domains. Package managers stay allowed at the third level, which covers `pip install sgit-ai`.
+2. Add these domains. **List the apex domains explicitly**: in the incident, `*.sgit.ai` was allowed and `sgit.ai` itself was still blocked.
+
+| Domain | Why |
+|---|---|
+| `dev.send.sgraph.ai`, or `*.sgraph.ai` | The sgit API server and the default `--base-url`: clone, pull, push, and the append lanes |
+| `dev.vault.sgraph.ai`, covered by `*.sgraph.ai` | The web vault UI, if agents open vault links |
+| `sgit.ai` | These docs and `llms.txt`. **Needed as the apex** |
+| `*.sgit.ai` | `www.sgit.ai` and the other sites in the network |
+| your own `--base-url` host | If you run your own sgit server |
+
+3. Save, and **start a new session**. Anthropic says network settings are applied when a session is created, so a running session keeps the old ones. In the incident the change did reach a running session within about fifteen minutes; do not rely on that.
+
+## Check it from inside the session
+
+Paste this to the agent:
+
+```
+Run, and report each HTTP code:
+  for h in sgit.ai www.sgit.ai dev.send.sgraph.ai dev.vault.sgraph.ai; do
+    printf "%-22s " $h; curl -sS -o /dev/null -w '%{http_code}\n' --max-time 15 https://$h/; done
+Then: pip install -U sgit-ai && sgit --version
+Then: curl -sS "$HTTPS_PROXY/__agentproxy/status"   (report any recentRelayFailures)
+Do not retry or route around any 403.
+```
+
+**Expected:** 200 everywhere, or 301 for `www.sgit.ai`, which redirects to `sgit.ai`. A code of `000` with `CONNECT tunnel failed, response 403` means that host is still missing from the allowlist.
+
+## A blocked host is not a server outage
+
+The sandbox reaches the internet through an egress proxy. A host that is not allowed fails at the proxy, before any request reaches sgit, and the failure looks like this:
+
+```
+> CONNECT sgit.ai:443 HTTP/1.1
+< HTTP/1.1 403 Forbidden
+* CONNECT tunnel failed, response 403
+```
+
+The proxy's status endpoint records it as a `connect_rejected` relay failure for that host. DNS still resolves, which is part of why it is easy to mistake for an outage.
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `CONNECT tunnel failed, response 403` | The host is not on the organisation's allowlist | An Owner adds it, apex included |
+| `www.sgit.ai` works, `sgit.ai` fails | Only the wildcard is listed (observed) | Add `sgit.ai` explicitly |
+| The agent's web fetch reads sgit.ai, `curl` and `sgit` cannot | Web fetch, web search and MCP connectors are not subject to the sandbox's egress settings (Anthropic) | Fix the allowlist: the shell needs it |
+| `pip install sgit-ai` fails | Network access is Disabled | An Owner enables at least Package managers only |
+| `push`: `no access token configured` | Not the network | Pass `--token`, or run `sgit auth` |
+| `sgit doctor` says `no remote configured` in a vault that works | A known false negative ([CLI issue #2](https://github.com/SGit-AI/SGit-AI__CLI/issues/2)) | Use the `curl` check above instead |
+
+## Credential hygiene for agents
+
+- Never paste a vault key, a read key labelled `sgit_private_read_`, or a token into a prompt that is logged or a file that is tracked. See [credentials](../credentials.md) for what each prefix means.
+- `sgit vault info` prints the passphrase, and its web URL carries the whole vault key. Treat its output as a secret.
+- Use placeholders in examples: `sgit_public_read_<hex>:<vault_id>`, never a real key.
+
+## See also
+
+- [Working with AI agents: network requirements](../agents.md#network)
+- [Installation](../installation.md)
+- [Limitations](../limitations.md)
 
 
 
@@ -5500,7 +5588,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.9, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.10, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5863,7 +5951,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-167**site releases since 14 August**
+168**site releases since 14 August**
 each verified live before it was called done
 
 36**vaults published with a public read key**
@@ -9601,11 +9689,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.9**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.10**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.9 | 2026-09-26 | this release | THE NEWSROOM'S FIRST BRIEFING, ANSWERED IN ONE RELEASE. sgit.newsroom.sgit.ai, the newsroom that reads every site in the network daily, left sgit.ai a briefing: a relayed write-up of two-way append-lane messaging between agents, a proposal, four signals and eight loose ends. (1) THE WRITE-UP is published at /docs/append-lane-messaging.html, verbatim; the sha256 of its text matches the hash the newsroom gave for its copy. Its section 11 listed eleven places the docs differed from the server, found by two teams using the lanes in anger. Ten were real and are fixed, each with a dated note: the append routes exist only on dev.send.sgraph.ai, and every curl example pointed at send.sgraph.ai; auth failures are 404 HTML, and the guide said 403; configure needs the access token and REPLACES the anchor list; fetch and mark-processed need the lane named; fetch serves pending files only; the payload is encoded twice; the write-key derivation strips a prefix first; the signature covers the inner ciphertext only; decrypt reports a label, not a fingerprint. One did not hold: no page here gave the enum key for purge. Section 12's recommendations belong to the CLI and the server and are filed as an open cross-team ask. (2) COUNTS ARE COMPUTED NOW. The vaults page still opened with thirty-one while listing 36, and the business plans page described two plans while listing five: numbers typed by hand and left behind by later releases, the failure this log's own rule says to avoid. Seventeen current counts on twelve pages are now tokens the build fills from vaults.json and from the plans table; dated records keep the number that was true when written. (3) A CORRECTION TO v0.2.98, found because the newsroom could not reconcile it with v0.3.0: recounted from git, v0.2.98 left 102 legacy-prefixed read keys in 27 tracked files, 93 in 26 content pages and 9 in one build script, not 99 across 27 pages. v0.3.0's 102 was right. The old entry is amended in place and says so. (4) STALE AND WRONG PAGES: two asks on the briefs index were closed long ago elsewhere (riskmandate.ai built the interview page in its v1.34.2; the CLI prefix bug closed in our v0.3.0); the interview brief now cites riskmandate.ai's earlier voice feedback prompt, which it should have; the key management call names the three plans that depend on it; the Risk Acceptance vault's README said eight weeks for a six-week replay and is fixed in a fourth commit; and the Sovereign AI page said contracts run to five million pounds over 12 to 24 months, which no official page we could find says: the scheme's competition guidance, read today, gives 250,000 pounds to 10 million, most at 1 to 3 million, and numbers the agent challenge 4. (5) The newsroom's reader's log, chat and relay pattern is published as a build brief, not adopted. A response page answers every item, and two loose ends stay open and waiting on the founder: partnership contacts, and documenting the Azure and Google Cloud deployments. |
+| v0.6.10 | 2026-09-26 | this release | USING SGIT FROM CLAUDE ON A TEAM OR ENTERPRISE PLAN. A brief from mailbox.riskmandate, written after an incident the same day: an agent in a Claude Cowork session could pip install sgit-ai and could not reach sgit.ai, because the organisation's sandbox allowlist had *.sgit.ai and not the apex, and the proxy's CONNECT 403 looked like an outage. New how-to at /docs/how-to/claude-team-egress.html: who can change it (an Owner), which domains, a check to paste into the session, and a symptom table. Claims about Claude's settings were checked against Anthropic's two help-centre articles before publishing, and one was softened: the brief saw the change reach a running session, Anthropic says settings apply to new sessions, so the page says start a new one. The apex-versus-wildcard behaviour is labelled observed, because the help centre does not say. A Network requirements note is now in llms.txt and on the agents guide, and llms.txt's append-lane answer names the only host with the routes. The brief's three CLI findings were reproduced where possible on sgit-ai v0.16.2 and filed as SGit-AI__CLI issues 2, 3 and 4: doctor says no remote configured in a read-only clone (reproduced; the after-push case is reported, not reproduced), clone --help omits the prefixed read keys the site publishes (reproduced), and history log prints no commits in a read-only clone of a four-commit vault (reproduced). |
+| v0.6.9 | 2026-09-26 | git 9717a210 | THE NEWSROOM'S FIRST BRIEFING, ANSWERED IN ONE RELEASE. sgit.newsroom.sgit.ai, the newsroom that reads every site in the network daily, left sgit.ai a briefing: a relayed write-up of two-way append-lane messaging between agents, a proposal, four signals and eight loose ends. (1) THE WRITE-UP is published at /docs/append-lane-messaging.html, verbatim; the sha256 of its text matches the hash the newsroom gave for its copy. Its section 11 listed eleven places the docs differed from the server, found by two teams using the lanes in anger. Ten were real and are fixed, each with a dated note: the append routes exist only on dev.send.sgraph.ai, and every curl example pointed at send.sgraph.ai; auth failures are 404 HTML, and the guide said 403; configure needs the access token and REPLACES the anchor list; fetch and mark-processed need the lane named; fetch serves pending files only; the payload is encoded twice; the write-key derivation strips a prefix first; the signature covers the inner ciphertext only; decrypt reports a label, not a fingerprint. One did not hold: no page here gave the enum key for purge. Section 12's recommendations belong to the CLI and the server and are filed as an open cross-team ask. (2) COUNTS ARE COMPUTED NOW. The vaults page still opened with thirty-one while listing 36, and the business plans page described two plans while listing five: numbers typed by hand and left behind by later releases, the failure this log's own rule says to avoid. Seventeen current counts on twelve pages are now tokens the build fills from vaults.json and from the plans table; dated records keep the number that was true when written. (3) A CORRECTION TO v0.2.98, found because the newsroom could not reconcile it with v0.3.0: recounted from git, v0.2.98 left 102 legacy-prefixed read keys in 27 tracked files, 93 in 26 content pages and 9 in one build script, not 99 across 27 pages. v0.3.0's 102 was right. The old entry is amended in place and says so. (4) STALE AND WRONG PAGES: two asks on the briefs index were closed long ago elsewhere (riskmandate.ai built the interview page in its v1.34.2; the CLI prefix bug closed in our v0.3.0); the interview brief now cites riskmandate.ai's earlier voice feedback prompt, which it should have; the key management call names the three plans that depend on it; the Risk Acceptance vault's README said eight weeks for a six-week replay and is fixed in a fourth commit; and the Sovereign AI page said contracts run to five million pounds over 12 to 24 months, which no official page we could find says: the scheme's competition guidance, read today, gives 250,000 pounds to 10 million, most at 1 to 3 million, and numbers the agent challenge 4. (5) The newsroom's reader's log, chat and relay pattern is published as a build brief, not adopted. A response page answers every item, and two loose ends stay open and waiting on the founder: partnership contacts, and documenting the Azure and Google Cloud deployments. |
 | v0.6.8 | 2026-09-24 | git fd203e01 | COMPANY X-RAY: A BUSINESS PLAN, WITH ONE COMPANY X-RAYED. New vault page and a new row in the business plans for founders. The service reads a company's own documents together: the customer drops them into an encrypted vault, agents run a catalogue of twelve analyses, a person reviews, and within five working days the customer gets their questions answered, a one-page board pack, findings that each name the file and row they rest on, and a Claude setup to keep asking. No connectors, no integrations. The vault holds an invented company X-rayed end to end, fourteen findings labelled read, computed or inferred, and a script that re-runs all 46 figures from the documents. Four levels from £50 to £1,500 reuse RiskMandate.ai's pricing pattern. Read key published on purpose; vault key in the gitignored tier; all-zeros control empty. Thirty-six published vaults. |
 | v0.6.7 | 2026-09-24 | git 63f3e72c | A BRIEF FOR RISKMANDATE: INTERVIEW PAGES, AND A CHATGPT VOICE PROMPT. New build brief in /docs/briefs/, and an open cross-team ask. It defines a reusable interview page for riskmandate.ai: a link sent to one person, a prompt they paste into ChatGPT and continue in voice mode, about twenty minutes of interview, and a structured written summary they send back. The first page is for a founder strong in UK events, marketing and content that spreads, testing the value proposition, the name, who to reach first, events, content angles and a thirty, sixty and ninety day plan, with candid criticism asked for explicitly. The full prompt is in the brief, describes RiskMandate only in the words riskmandate.ai already uses, and is ready to send today. A later step proposes returning summaries through a write-only append lane instead of email. |
 | v0.6.6 | 2026-09-24 | git 23096e71 | LESSON LOOP: A BUSINESS PLAN FOR COACHES. The thirty-fifth vault (3s9q7zl7, 27 files) is a business plan for padel coaches, and any teacher with students: capture the coach's picture of the player at the end of the lesson, when it is most complete, as a voice memo; an agent turns it into a lesson note and three points for the player's next games, in the player's own data vault; the player adds match notes and clips; and the next coach, in any club or country, starts from a two-minute briefing. The app replays one invented player's record across four lessons with three coaches in London and Lisbon, with the raw memos, the notes, the player view, briefings, and a themes matrix showing what each coach saw. The plan sets out four phases (capture first, nothing else until it works), the two-vault architecture with a write-only lane per coach, what exists today, pay-on-demand credits instead of a subscription, new coach income (remote reviews, drill plans, follow-ups, content), the club variant and its tension, other teaching domains, risks (children, other players in clips, undisclosed commissions) and a calculator that shows a small business at 200 coaches. The coach-memo prompt is ready to paste for phase one. Listed on the business plans page. |

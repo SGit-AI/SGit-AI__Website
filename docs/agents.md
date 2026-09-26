@@ -2,7 +2,7 @@
 
 > The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
 
-*Source: <https://sgit.ai/docs/agents.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agents.html> · site v0.6.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,10 @@
 # Working with AI agents
 
 sgit is designed to be driven by AI agents as well as humans. A vault is just a folder. The agent reads and writes files normally; sgit handles versioning, encryption, and sync. This page covers the agent-facing surface.
+
+## Network requirements
+
+sgit needs HTTPS to your API server, by default `dev.send.sgraph.ai`, and agents reading these docs also need `sgit.ai`. Sandboxed agents, for example Claude on a Team or Enterprise plan, often sit behind an allowlisting proxy. If you see `CONNECT … 403`, the host is blocked, not down: ask the organisation's Owner to allow `sgit.ai`, `*.sgit.ai` and `*.sgraph.ai`, listing the apex domains explicitly. [The how-to](how-to/claude-team-egress.md) has the steps and a check to paste.
 
 ## The session pattern
 

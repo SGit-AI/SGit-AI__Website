@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai</title>
+<meta name="description" content="On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.">
+<link rel="canonical" href="https://sgit.ai/docs/how-to/claude-team-egress.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/how-to/claude-team-egress.html">
+<meta property="og:title" content="Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai">
+<meta property="og:description" content="On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="claude-team-egress.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai", "headline": "Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai", "description": "On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.", "url": "https://sgit.ai/docs/how-to/claude-team-egress.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.10</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../docs/index.html">Documentation</a>
+ <a class="sl here" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl here" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.10 &middot; 26 Sep 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / How-to / Claude Team and Enterprise egress</p>
+  <h1>Using sgit from Claude on a Team or Enterprise plan: the network allowlist</h1>
+  <p class="lead">On Claude's Team and Enterprise plans, the network access of Claude's code sandbox (Cowork, and code execution and file creation in claude.ai) is set once for the whole organisation, by an Owner. The Team default lets <code>pip install sgit-ai</code> through and blocks every sgit host. This page says which hosts to allow, how to check from inside a session, and how to tell a blocked host from a server that is down.</p>
+
+  <div class="note"><b>Where this comes from.</b> An incident on 26 September 2026: an agent in a Claude Cowork cloud session, on sgit-ai v0.16.0, could install sgit and could not reach <code>sgit.ai</code>, and a second session confirmed the fix. It was written up as a brief for this site by <code>mailbox.riskmandate</code>. The statements about Claude's settings below are Anthropic's, from the two help-centre articles linked here; the statements about which domains matched are what the incident observed, and are labelled so.</div>
+
+  <h2 id="who">Who has to do this</h2>
+  <p>An <b>Owner</b> of the Claude organisation. Members, and the agent itself, cannot change it. On Free, Pro and Max plans the user controls the same setting in their own settings instead. See Anthropic's <a href="https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude" rel="noopener" target="_blank">Create and edit files with Claude</a> and <a href="https://support.claude.com/en/articles/13455879-use-claude-cowork-on-team-and-enterprise-plans" rel="noopener" target="_blank">Use Claude Cowork on Team and Enterprise plans</a> for the current menu path.</p>
+
+  <h2 id="steps">The steps</h2>
+  <ol>
+    <li>In <b>Organization settings → Capabilities → Code execution</b>, set network access to <b>Package managers + custom domains</b>, or <b>All domains</b> if your policy allows it. Anthropic's four levels are Disabled, Package managers only (the Team and Enterprise default), Package managers + custom domains, and All domains. Package managers stay allowed at the third level, which covers <code>pip install sgit-ai</code>.</li>
+    <li>Add these domains. <b>List the apex domains explicitly</b>: in the incident, <code>*.sgit.ai</code> was allowed and <code>sgit.ai</code> itself was still blocked.
+      <div class="tablewrap"><table>
+        <tr><th>Domain</th><th>Why</th></tr>
+        <tr><td><code>dev.send.sgraph.ai</code>, or <code>*.sgraph.ai</code></td><td>The sgit API server and the default <code>--base-url</code>: clone, pull, push, and the append lanes</td></tr>
+        <tr><td><code>dev.vault.sgraph.ai</code>, covered by <code>*.sgraph.ai</code></td><td>The web vault UI, if agents open vault links</td></tr>
+        <tr><td><code>sgit.ai</code></td><td>These docs and <code>llms.txt</code>. <b>Needed as the apex</b></td></tr>
+        <tr><td><code>*.sgit.ai</code></td><td><code>www.sgit.ai</code> and the other sites in the network</td></tr>
+        <tr><td>your own <code>--base-url</code> host</td><td>If you run your own sgit server</td></tr>
+      </table></div>
+    </li>
+    <li>Save, and <b>start a new session</b>. Anthropic says network settings are applied when a session is created, so a running session keeps the old ones. In the incident the change did reach a running session within about fifteen minutes; do not rely on that.</li>
+  </ol>
+
+  <h2 id="verify">Check it from inside the session</h2>
+  <p>Paste this to the agent:</p>
+  <pre class="shell">Run, and report each HTTP code:
+  for h in sgit.ai www.sgit.ai dev.send.sgraph.ai dev.vault.sgraph.ai; do
+    printf "%-22s " $h; curl -sS -o /dev/null -w '%{http_code}\n' --max-time 15 https://$h/; done
+Then: pip install -U sgit-ai &amp;&amp; sgit --version
+Then: curl -sS "$HTTPS_PROXY/__agentproxy/status"   (report any recentRelayFailures)
+Do not retry or route around any 403.</pre>
+  <p><b>Expected:</b> 200 everywhere, or 301 for <code>www.sgit.ai</code>, which redirects to <code>sgit.ai</code>. A code of <code>000</code> with <code>CONNECT tunnel failed, response 403</code> means that host is still missing from the allowlist.</p>
+
+  <h2 id="symptoms">A blocked host is not a server outage</h2>
+  <p>The sandbox reaches the internet through an egress proxy. A host that is not allowed fails at the proxy, before any request reaches sgit, and the failure looks like this:</p>
+  <pre class="shell">&gt; CONNECT sgit.ai:443 HTTP/1.1
+&lt; HTTP/1.1 403 Forbidden
+* CONNECT tunnel failed, response 403</pre>
+  <p>The proxy's status endpoint records it as a <code>connect_rejected</code> relay failure for that host. DNS still resolves, which is part of why it is easy to mistake for an outage.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td><code>CONNECT tunnel failed, response 403</code></td><td>The host is not on the organisation's allowlist</td><td>An Owner adds it, apex included</td></tr>
+    <tr><td><code>www.sgit.ai</code> works, <code>sgit.ai</code> fails</td><td>Only the wildcard is listed (observed)</td><td>Add <code>sgit.ai</code> explicitly</td></tr>
+    <tr><td>The agent's web fetch reads sgit.ai, <code>curl</code> and <code>sgit</code> cannot</td><td>Web fetch, web search and MCP connectors are not subject to the sandbox's egress settings (Anthropic)</td><td>Fix the allowlist: the shell needs it</td></tr>
+    <tr><td><code>pip install sgit-ai</code> fails</td><td>Network access is Disabled</td><td>An Owner enables at least Package managers only</td></tr>
+    <tr><td><code>push</code>: <code>no access token configured</code></td><td>Not the network</td><td>Pass <code>--token</code>, or run <code>sgit auth</code></td></tr>
+    <tr><td><code>sgit doctor</code> says <code>no remote configured</code> in a vault that works</td><td>A known false negative (<a href="https://github.com/SGit-AI/SGit-AI__CLI/issues/2" rel="noopener" target="_blank">CLI issue #2</a>)</td><td>Use the <code>curl</code> check above instead</td></tr>
+  </table></div>
+
+  <h2 id="hygiene">Credential hygiene for agents</h2>
+  <ul>
+    <li>Never paste a vault key, a read key labelled <code>sgit_private_read_</code>, or a token into a prompt that is logged or a file that is tracked. See <a href="../credentials.html">credentials</a> for what each prefix means.</li>
+    <li><code>sgit vault info</code> prints the passphrase, and its web URL carries the whole vault key. Treat its output as a secret.</li>
+    <li>Use placeholders in examples: <code>sgit_public_read_&lt;hex&gt;:&lt;vault_id&gt;</code>, never a real key.</li>
+  </ul>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="../agents.html#network">Working with AI agents: network requirements</a></li>
+    <li><a href="../installation.html">Installation</a></li>
+    <li><a href="../limitations.html">Limitations</a></li>
+  </ul>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.10</a> · <a href="../../admin/index.html">engineering</a> · <a href="claude-team-egress.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.10';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

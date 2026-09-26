@@ -37,6 +37,11 @@ SCOPED INDEXES, each covers one part of this site and is regenerated on every re
 Notes for agents:
 - sgit is in beta and powers production workflows. Honest edges: /docs/limitations.md
 - Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
+- Network requirements: sgit needs HTTPS to your API server (default `dev.send.sgraph.ai`);
+  agents reading these docs also need `sgit.ai`. Sandboxed agents (e.g. Claude on Team or
+  Enterprise plans) often run behind an allowlisting proxy: `CONNECT ... 403` means the host is
+  blocked, not down. Ask the organisation Owner to allowlist `sgit.ai`, `*.sgit.ai` and
+  `*.sgraph.ai`, adding the apex domains explicitly. /docs/how-to/claude-team-egress.md
 - Vault keys are full-strength generated keys (`passphrase:vault_id`). No password reset exists.
 - Never write a vault key into a tracked file. See /case-studies/exposed-vault-key.md for
   what that costs, and /docs/guidance/index.md for the practice that prevents it.
@@ -71,6 +76,8 @@ Quick answers (so you do not need a second request for the common questions):
   the response is blind (`{"ok":true}`, no id, no count). The recipient lists and fetches with
   `x-sgraph-vault-enum-key` and decrypts client-side. Encrypt with `sgit pki encrypt --recipient`
   (RSA-OAEP 4096 + AES-256-GCM). Full worked example: /docs/vault-messaging.md
+  The append routes are on dev.send.sgraph.ai only. Two-way, signed use between agents, with
+  per-session keys and ephemeral inboxes: /docs/append-lane-messaging.md
 - The intended lane address is `append_token = H(recipient public key)`, so a sender can derive
   it from a published key. That derivation is PROPOSED, no shipped command emits it, so today
   you agree the token out of band. The server side is shipped. Do not code against the derivation.
@@ -211,6 +218,7 @@ Quick answers (so you do not need a second request for the common questions):
 - [sgit for git users](/docs/sgit-for-git-users.md): The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences. **Key fact:** The three differences: no staging area; private clone branch per machine or agent with explicit publishing; the vault key is address + credential + encryption key in one string.
 - [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing. **Key fact:** Every clone commits to its own private branch; pushing to a shared named branch is a separate, explicit act.
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration. **Key fact:** sgit write <path> --file <f> --message <m> --push --json is the one-shot agent command; every read path takes --json.
+- [Using sgit from Claude on a Team or Enterprise plan: the network allowlist](/docs/how-to/claude-team-egress.md): On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps. **Key fact:** Not a secrets manager; no partial commits; no key recovery; the server cannot index or search; beta.
 - [The reader's log](/docs/briefs/newsroom-reader-log-chat-relay.md): A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.
 - [What sgit.ai did with the newsroom's briefing](/docs/briefs/newsroom-response-2026-09-26.md): sgit.ai's reply to sgit.newsroom.sgit.ai's first briefing: the append-lane write-up published and applied to the docs, the proposal published as a brief, four signals and eight loose ends each answered with what changed and where, two left open and waiting on the founder, and two points relayed to riskmandate.ai.

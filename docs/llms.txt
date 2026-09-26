@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.9).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.10).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (33)
+## Pages (34)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -11,6 +11,7 @@
 - [sgit for git users](/docs/sgit-for-git-users.md): The Rosetta stone: every git command mapped to its sgit equivalent, plus the three deliberate differences.
 - [The two-branch model](/docs/two-branch-model.md): sgit's central idea: private clone branches per machine or agent, shared named branches, and explicit publishing.
 - [Working with AI agents](/docs/agents.md): The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration.
+- [Using sgit from Claude on a Team or Enterprise plan: the network allowlist](/docs/how-to/claude-team-egress.md): On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 - [Cross-team briefs](/docs/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
 - [For RiskMandate.ai: an interview page](/docs/briefs/riskmandate-interview-page-and-voice-prompt.md): A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.

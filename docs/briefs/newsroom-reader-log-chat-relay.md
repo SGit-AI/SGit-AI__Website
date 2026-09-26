@@ -2,7 +2,7 @@
 
 > A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.
 
-*Source: <https://sgit.ai/docs/briefs/newsroom-reader-log-chat-relay.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/newsroom-reader-log-chat-relay.html> · site v0.6.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -1,0 +1,66 @@
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Docs</a> / How-to / Claude Team and Enterprise egress</p>
+  <h1>Using sgit from Claude on a Team or Enterprise plan: the network allowlist</h1>
+  <p class="lead">On Claude's Team and Enterprise plans, the network access of Claude's code sandbox (Cowork, and code execution and file creation in claude.ai) is set once for the whole organisation, by an Owner. The Team default lets <code>pip install sgit-ai</code> through and blocks every sgit host. This page says which hosts to allow, how to check from inside a session, and how to tell a blocked host from a server that is down.</p>
+
+  <div class="note"><b>Where this comes from.</b> An incident on 26 September 2026: an agent in a Claude Cowork cloud session, on sgit-ai v0.16.0, could install sgit and could not reach <code>sgit.ai</code>, and a second session confirmed the fix. It was written up as a brief for this site by <code>mailbox.riskmandate</code>. The statements about Claude's settings below are Anthropic's, from the two help-centre articles linked here; the statements about which domains matched are what the incident observed, and are labelled so.</div>
+
+  <h2 id="who">Who has to do this</h2>
+  <p>An <b>Owner</b> of the Claude organisation. Members, and the agent itself, cannot change it. On Free, Pro and Max plans the user controls the same setting in their own settings instead. See Anthropic's <a href="https://support.claude.com/en/articles/12111783-create-and-edit-files-with-claude" rel="noopener" target="_blank">Create and edit files with Claude</a> and <a href="https://support.claude.com/en/articles/13455879-use-claude-cowork-on-team-and-enterprise-plans" rel="noopener" target="_blank">Use Claude Cowork on Team and Enterprise plans</a> for the current menu path.</p>
+
+  <h2 id="steps">The steps</h2>
+  <ol>
+    <li>In <b>Organization settings → Capabilities → Code execution</b>, set network access to <b>Package managers + custom domains</b>, or <b>All domains</b> if your policy allows it. Anthropic's four levels are Disabled, Package managers only (the Team and Enterprise default), Package managers + custom domains, and All domains. Package managers stay allowed at the third level, which covers <code>pip install sgit-ai</code>.</li>
+    <li>Add these domains. <b>List the apex domains explicitly</b>: in the incident, <code>*.sgit.ai</code> was allowed and <code>sgit.ai</code> itself was still blocked.
+      <div class="tablewrap"><table>
+        <tr><th>Domain</th><th>Why</th></tr>
+        <tr><td><code>dev.send.sgraph.ai</code>, or <code>*.sgraph.ai</code></td><td>The sgit API server and the default <code>--base-url</code>: clone, pull, push, and the append lanes</td></tr>
+        <tr><td><code>dev.vault.sgraph.ai</code>, covered by <code>*.sgraph.ai</code></td><td>The web vault UI, if agents open vault links</td></tr>
+        <tr><td><code>sgit.ai</code></td><td>These docs and <code>llms.txt</code>. <b>Needed as the apex</b></td></tr>
+        <tr><td><code>*.sgit.ai</code></td><td><code>www.sgit.ai</code> and the other sites in the network</td></tr>
+        <tr><td>your own <code>--base-url</code> host</td><td>If you run your own sgit server</td></tr>
+      </table></div>
+    </li>
+    <li>Save, and <b>start a new session</b>. Anthropic says network settings are applied when a session is created, so a running session keeps the old ones. In the incident the change did reach a running session within about fifteen minutes; do not rely on that.</li>
+  </ol>
+
+  <h2 id="verify">Check it from inside the session</h2>
+  <p>Paste this to the agent:</p>
+  <pre class="shell">Run, and report each HTTP code:
+  for h in sgit.ai www.sgit.ai dev.send.sgraph.ai dev.vault.sgraph.ai; do
+    printf "%-22s " $h; curl -sS -o /dev/null -w '%{http_code}\n' --max-time 15 https://$h/; done
+Then: pip install -U sgit-ai &amp;&amp; sgit --version
+Then: curl -sS "$HTTPS_PROXY/__agentproxy/status"   (report any recentRelayFailures)
+Do not retry or route around any 403.</pre>
+  <p><b>Expected:</b> 200 everywhere, or 301 for <code>www.sgit.ai</code>, which redirects to <code>sgit.ai</code>. A code of <code>000</code> with <code>CONNECT tunnel failed, response 403</code> means that host is still missing from the allowlist.</p>
+
+  <h2 id="symptoms">A blocked host is not a server outage</h2>
+  <p>The sandbox reaches the internet through an egress proxy. A host that is not allowed fails at the proxy, before any request reaches sgit, and the failure looks like this:</p>
+  <pre class="shell">&gt; CONNECT sgit.ai:443 HTTP/1.1
+&lt; HTTP/1.1 403 Forbidden
+* CONNECT tunnel failed, response 403</pre>
+  <p>The proxy's status endpoint records it as a <code>connect_rejected</code> relay failure for that host. DNS still resolves, which is part of why it is easy to mistake for an outage.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr>
+    <tr><td><code>CONNECT tunnel failed, response 403</code></td><td>The host is not on the organisation's allowlist</td><td>An Owner adds it, apex included</td></tr>
+    <tr><td><code>www.sgit.ai</code> works, <code>sgit.ai</code> fails</td><td>Only the wildcard is listed (observed)</td><td>Add <code>sgit.ai</code> explicitly</td></tr>
+    <tr><td>The agent's web fetch reads sgit.ai, <code>curl</code> and <code>sgit</code> cannot</td><td>Web fetch, web search and MCP connectors are not subject to the sandbox's egress settings (Anthropic)</td><td>Fix the allowlist: the shell needs it</td></tr>
+    <tr><td><code>pip install sgit-ai</code> fails</td><td>Network access is Disabled</td><td>An Owner enables at least Package managers only</td></tr>
+    <tr><td><code>push</code>: <code>no access token configured</code></td><td>Not the network</td><td>Pass <code>--token</code>, or run <code>sgit auth</code></td></tr>
+    <tr><td><code>sgit doctor</code> says <code>no remote configured</code> in a vault that works</td><td>A known false negative (<a href="https://github.com/SGit-AI/SGit-AI__CLI/issues/2" rel="noopener" target="_blank">CLI issue #2</a>)</td><td>Use the <code>curl</code> check above instead</td></tr>
+  </table></div>
+
+  <h2 id="hygiene">Credential hygiene for agents</h2>
+  <ul>
+    <li>Never paste a vault key, a read key labelled <code>sgit_private_read_</code>, or a token into a prompt that is logged or a file that is tracked. See <a href="../credentials.html">credentials</a> for what each prefix means.</li>
+    <li><code>sgit vault info</code> prints the passphrase, and its web URL carries the whole vault key. Treat its output as a secret.</li>
+    <li>Use placeholders in examples: <code>sgit_public_read_&lt;hex&gt;:&lt;vault_id&gt;</code>, never a real key.</li>
+  </ul>
+
+  <h2>See also</h2>
+  <ul>
+    <li><a href="../agents.html#network">Working with AI agents: network requirements</a></li>
+    <li><a href="../installation.html">Installation</a></li>
+    <li><a href="../limitations.html">Limitations</a></li>
+  </ul>
+</main>

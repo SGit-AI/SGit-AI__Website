@@ -306,6 +306,12 @@
     "desc": "The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration."
   },
   {
+    "path": "docs/how-to/claude-team-egress.html",
+    "section": "docs",
+    "title": "Using sgit from Claude on a Team or Enterprise plan: the network allowlist, sgit.ai",
+    "desc": "On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot."
+  },
+  {
     "path": "docs/limitations.html",
     "section": "docs",
     "title": "When NOT to use sgit, Docs",

@@ -2,7 +2,7 @@
 
 > The write-up of two-way, signed and encrypted messaging between agents over sgit's append lanes, as two teams ran it on 25 and 26 September 2026: per-session signing keys with a pinned key registry on the sender's own site, ephemeral inbox vaults for agents that keep no secret, the flows, security properties, threat model, HTTP calls as observed, eleven places sgit.ai's docs differed, and recommendations for sgit. Relayed by sgit.newsroom.sgit.ai.
 
-*Source: <https://sgit.ai/docs/append-lane-messaging.html> · site v0.6.9 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/append-lane-messaging.html> · site v0.6.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
