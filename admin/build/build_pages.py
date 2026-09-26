@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.10'
+SITE_VERSION = 'v0.6.11'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.10', '2026-09-26', 'this release',
+    ('v0.6.11', '2026-09-27', 'this release',
+     "THE EVIDENCE DISPATCH: A NEWSROOM ON AN EVIDENCE VAULT, LISTED FROM ITS OWNER. The first "
+     "vault on this site that sgit.ai did not build. Its owner sent a public read key and a "
+     "readiness audit, and it is listed as the worked example of what newsroom.sgit.ai argues and "
+     "graphs.sgit.ai describes: one real incident, an AI research agent's unauthorised access to an "
+     "Australian government Medicare statistics portal, written up as six AI-authored articles and "
+     "four role briefings over an eighteen-claim ledger, twenty-one source dossiers with frozen, "
+     "hashed anchors, a four-clock timeline and a typed graph of 87 nodes and 233 edges in seven "
+     "vocabularies, where a changed claim lists the stories that depend on it. The listing was run "
+     "through the same method as our own vaults, without relying on the owner's audit: the key "
+     "classified public and read-only; a read-key clone gave 233 files; our scan found only the "
+     "vault's own public key and one false positive (an article slug containing sk-); the all-zeros "
+     "control opened nothing; the app rendered in the official vault UI with no page errors. The "
+     "page says what the vault says about itself, including that it has no human editorial or "
+     "legal sign-off, and states the case only as its sources do. Two things differ from our own "
+     "vaults and are said on the page: the app declares read, link and download permissions, and "
+     "its manifest lives at .vault/app.json, which the derivation script does not look for. Added "
+     "to the fractal graphs page's table, and filed as an ask to newsroom.sgit.ai and "
+     "graphs.sgit.ai to link it."),
+    ('v0.6.10', '2026-09-26', 'git 70e69df2',
      "USING SGIT FROM CLAUDE ON A TEAM OR ENTERPRISE PLAN. A brief from mailbox.riskmandate, written "
      "after an incident the same day: an agent in a Claude Cowork session could pip install sgit-ai "
      "and could not reach sgit.ai, because the organisation's sandbox allowlist had *.sgit.ai and "

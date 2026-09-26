@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Thirty-six vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Thirty-seven vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**36 published vaults**: 10 briefing, 7 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**37 published vaults**: 10 briefing, 8 analysis, 5 application, 5 reference, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 37 | [The Evidence Dispatch](evidence-dispatch/index.md)`c0vf9zz8` | A newsroom on an evidence vault: six AI-authored articles on the Medicare agent case, backed by a claim ledger, source dossiers with frozen anchors, a timeline and a typed graph | Analysis | 233 | 12.8 MB | 2026-09-27 |
 
 | 36 | [Company X-Ray](company-xray/index.md)`ukpqjkly` | A business plan for reading a company's own documents together, with one invented company X-rayed and every finding tied to its evidence | Briefing | 60 | 710 KB | 2026-09-24 |
 

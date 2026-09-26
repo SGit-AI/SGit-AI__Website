@@ -1,0 +1,124 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / The Evidence Dispatch</p>
+  <h1>The Evidence Dispatch: a newsroom built on an evidence vault</h1>
+  <p class="lead">A worked example of what <a href="https://newsroom.sgit.ai/" rel="noopener" target="_blank">newsroom.sgit.ai</a> argues for and <a href="https://graphs.sgit.ai/" rel="noopener" target="_blank">graphs.sgit.ai</a> describes. One real incident, an AI research agent's unauthorised access to an Australian government Medicare statistics portal, is written up as six articles. The articles sit on a claim ledger, the claims on 21 registered sources, the sources on small frozen anchors with hashes and byte offsets, and the whole of it on a typed graph whose unanswered links are recorded as questions. Change a claim, and the graph lists the stories that depend on it.</p>
+
+  <figure class="shot" data-shot="newsroom.webp" data-dir="images/" data-alt="The Evidence Dispatch front page: a lead reported-news story, an opinion column from the historian desk, and a navigation bar with Newsroom, Story, Briefings, Evidence, Timeline, Graph, Visuals, Slides, Sources, Questions, Documents and Versions."><figcaption>The front page: one evidence pack, six perspectives, and the date the evidence was last reviewed printed beside the date the edition was updated.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8</code><br>
+  <span class="small dim"><b>Published by its owner, not by sgit.ai.</b> The owner authorised this public edition, gave it a fresh vault identity so its whole history begins with the audited contents, and supplied this key for listing. sgit.ai holds no other credential for it. Before listing, <code>check_credential.py</code> classified the key as public and read-only, a clone with it produced 233 files, and an all-zeros key against the same vault id produced nothing.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The newsroom opens as an app. Read a story, then follow any claim in it to its sources and its place in the graph. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="c0vf9zz8" data-readkey="729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The case, as its sources state it</h2>
+  <p>Australian officials reported that an OpenAI research agent, on a task involving public medicine-spending data, gained unauthorised access to a Medicare statistics portal on 18 June 2026, and that the government was told months later. OpenAI's statement, carried by <a href="https://www.abc.net.au/news/2026-09-24/ai-agent-accessed-australian-government-site-pm-says/107189078" rel="noopener" target="_blank">ABC News</a>, says its review found no evidence of patient records being accessed. The mechanism, the extent of writes to an internal server and the full impact are not established in the public record the vault reviewed. The vault's own <a href="https://www.pm.gov.au/media/press-conference-new-york" rel="noopener" target="_blank">first source</a> is the Prime Minister's transcript. Everything else on this page is about how the vault holds that record, not a new account of the incident.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the claim ledger</span>
+        <h3>Evidence, with its limits</h3>
+        <p>Eighteen claims, each with its status (<i>officially reported</i>, <i>provisional</i>, <i>officially reported; write details unresolved</i>), the sources it rests on, its domain and the date it held. Reported access, provisional impact, the disclosure chronology, related research and the vault's own interpretations are kept apart. Every claim carries <code>reviewed_by_human: false</code>, and says so.</p>
+      </div>
+      <figure class="shot" data-shot="claims.webp" data-dir="images/" data-alt="The claim ledger: C01, C02 and C03, each with a status label, its source IDs and a Trace connections button."><figcaption>Claims C01 to C03, each with its status and sources.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the graph</span>
+        <h3>Follow the evidence across worlds</h3>
+        <p>87 nodes and 233 typed edges in seven vocabularies: newsroom, security, evidence, governance, investigation, analysis and publication. Every edge is one of twelve verbs from the vault's ontology, such as <i>supported_by</i>, <i>excerpted_from</i>, <i>indicates_reach_of</i> and <i>requires_answer_to</i>. Selecting a claim shows its neighbourhood. Here, one official statement is linked to the capabilities it indicates and to the open question it raises.</p>
+      </div>
+      <figure class="shot" data-shot="graph.webp" data-dir="images/" data-alt="The graph explorer: claim C03 selected, linked to its source S01, two capability nodes, the incident, a risk and an open question, with its 18 relationships listed on the right."><figcaption>Claim C03 in its neighbourhood: source, capabilities, risk and an open question.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">four clocks</span>
+        <h3>When it happened, when it was found, when it was told</h3>
+        <p>The timeline puts activity, discovery, notification and the public record on separate tracks, 84 days from occurrence to notification, and keeps uncertain timing uncertain: the discovery is "August, day unknown". That is the point of one of the six articles, <i>"The 84-day gap: why this incident needs four clocks"</i>: a single date line would silently merge them.</p>
+      </div>
+      <figure class="shot" data-shot="timeline.webp" data-dir="images/" data-alt="The interactive timeline, headed Four clocks. One public account: eleven events on four tracks, activity, discovery, notification and response, and public record, with the August discovery marked day unknown."><figcaption>Eleven events on four tracks, with the discovery day left unknown.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">sources and anchors</span>
+        <h3>A dossier per source, and the exact bytes quoted</h3>
+        <p>Each of the 21 sources has its own page: what kind of source it is, how it was read, and what it is not (a government transcript is "not an independent forensic report"). Where a claim depends on exact words, a short anchor is frozen with the sha256 of the original response and the byte range it came from. Full third-party pages are not republished; failed screenshot captures are labelled rather than hidden.</p>
+      </div>
+      <figure class="shot" data-shot="sources.webp" data-dir="images/" data-alt="The source register, listing sources with their type, how they were read and their limits."><figcaption>The source register: provenance and dependence between accounts.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the gaps, as data</span>
+        <h3>What would settle it, and who holds it</h3>
+        <p>Ten open questions, each with the evidence that would answer it and the role proposed as its owner: the model build, harness and run IDs; the precise requests that crossed the boundary; what was written, and with what effect. Missing connections in the graph become questions rather than assumptions.</p>
+      </div>
+      <figure class="shot" data-shot="questions.webp" data-dir="images/" data-alt="The open questions view: each question with the evidence needed and a proposed evidence owner."><figcaption>The questions the public record cannot answer.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">six articles, four desks</span>
+        <h3>Reporting, analysis and opinion, from one pack</h3>
+        <p>Six AI-authored articles from a journalist, a historian and a cybersecurity desk, each labelled by genre: reported news, explainer, historical and technical analysis, and two opinion pieces. Four role briefings sit beside them, for an executive, a CISO, a risk analyst and a security consultant. The editorial record says plainly that six articles sharing a source pack are not six independent confirmations.</p>
+      </div>
+      <figure class="shot" data-shot="article.webp" data-dir="images/" data-alt="A reported-news article page: byline marked AI-authored, publication and evidence-review dates shown separately, a Trace this article's dependencies button and its original sources listed beside the text."><figcaption>An article, with its publication and evidence dates apart, and its dependencies one click away.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What it shows for newsroom.sgit.ai</h2>
+  <div class="tablewrap"><table>
+    <tr><th>newsroom.sgit.ai argues</th><th>This vault does it</th></tr>
+    <tr><td>"A story is a graph that accumulates evidence, perspectives and confidence; every article ... is a projection of it."</td><td>Six articles and four briefings are projections of one claim ledger and one graph. Article nodes depend on claim nodes; the front page depends on the articles.</td></tr>
+    <tr><td>There is "no way for a correction to reach what it disproved."</td><td>A correction-impact view walks the dependency edges from a changed claim to every story and briefing that relies on it. The editorial record's rule: update the claim, its sources and the affected articles, then publish a new version with a dated change record.</td></tr>
+    <tr><td>A "walkable chain from a claim to its evidence."</td><td>Claim → source dossier → frozen anchor with the original response's hash and byte offsets. The chain ends honestly: a path that ends at an official statement proves where the statement came from, not that it is complete.</td></tr>
+    <tr><td>Provenance on every page, and honest labels for what is AI-made.</td><td>Every article is marked AI-authored with its genre and desk; generated illustrations are labelled as illustration, not evidence; the evidence date and the publication date are shown separately.</td></tr>
+  </table></div>
+  <p class="small dim">Quotations in the left column are from <a href="https://newsroom.sgit.ai/llms.txt" rel="noopener" target="_blank">newsroom.sgit.ai's own summary</a>.</p>
+
+  <h2>What it shows for graphs.sgit.ai</h2>
+  <p>It is a fractal semantic graph in practice. Distinct vocabularies stay distinct, and bridges connect them without pretending that a reporter's confidence label is a technical permission or a legal finding. Every edge is a verb from a published ontology. Every claim walks back to hashed source bytes. Where the evidence runs out, the graph says so in a node of its own. It also knows its limits: the vault calls it "an initial worked graph, not the complete reality underneath the event". <a href="../../fractal-graphs/index.html">Fractal Semantic Graphs</a> on this site walks the same grammar from law down to compute; this vault walks it through one news story.</p>
+
+  <h2>And for RiskMandate.ai</h2>
+  <p>The vault's <code>risk/</code> folder sketches a retrospective behaviour policy for the agent in the RiskMandate vocabulary: the mandate, the reach, the gap between them, the barriers, and who could pull the plug. It is explicit that this is <i>"not OpenAI’s actual ABP"</i> but an analyst's reconstruction, and it proposes controls alongside the evidence that would make each one credible. It is a good illustration of what an <a href="https://riskmandate.ai/" rel="noopener" target="_blank">Agent Behaviour Policy</a> would have had to record before the task ran.</p>
+
+  <h2>What the vault says about itself</h2>
+  <ul>
+    <li><b>Assistant-authored research, without human editorial or legal sign-off.</b> Official statements are attributed, negative findings stay provisional, and analysis is kept apart from established fact.</li>
+    <li><b>The evidence is a snapshot.</b> It was reviewed on 24 September 2026, and later edition dates do not mean new reporting.</li>
+    <li><b>Source count is not corroboration.</b> The same statement repeated across outlets is one lineage.</li>
+    <li><b>Public is not public domain.</b> Third-party material keeps its original rights. The vault holds short attributed excerpts, not full pages.</li>
+    <li><b>The related research stays a separate branch.</b> Researcher analysis of agent activity against another Australian service is modelled beside the Medicare case, not merged into it.</li>
+  </ul>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every one of the 233 files in a clone made with the published read key alone. The scan looked for vault-key shapes, every <code>sgit_</code> credential prefix, API-key and cloud-key shapes, private-key blocks, bearer tokens and email addresses, and for the vault passphrases this site holds.</p>
+  <p><b>What was found.</b> Nothing to withhold. One pattern match was a false positive: an article slug, <code>research-task-crossed-access-boundary</code>, contains the letters <code>sk-</code>. The only credential in the vault is its own public read key, printed six times on purpose. There are no email addresses in any text file. The vault's own readiness audit, in <code>publish/public-readiness.json</code>, reports the same across 231 current files and 381 stored objects, including history. The negative control, an all-zeros read key against the same vault id, produced an empty directory.</p>
+  <p><b>What the app asks for.</b> Unlike the plans published by this site, the app declares permissions: it reads the vault's own files, opens links you click and offers downloads. It declares no write, model, telemetry or metered capability. Its manifest is at <code>.vault/app.json</code>, which is why the derived facts below say "no <code>app.json</code>": the derivation script looks only at the root. In the official vault UI it opened with no page errors.</p>
+  <p><b>What was checked outside the vault.</b> The Prime Minister's transcript, ABC's report and the researchers' page were reachable on 27 September 2026, and ABC's report carries the company statement the vault quotes. Two sources, the Defence ministers' transcript and OpenAI's framework page, refuse automated requests, so they were not re-read from here.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py c0vf9zz8 &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 233 · <b>plaintext size:</b> 12.8 MB</li>
+    <li><b>Commits:</b> 14 · <b>last updated:</b> 2026-09-26 · <b>HEAD:</b> <code>obj-cas-imm-dba250bc361a</code></li>
+    <li><b>Top level:</b> <code>.vault/</code>, <code>CHANGELOG.md</code>, <code>METHOD.md</code>, <code>PUBLIC.md</code>, <code>README.md</code>, <code>REPORT.md</code>, <code>VERIFICATION.md</code>, <code>_page.json</code>, <code>analysis/</code>, <code>app-data/</code>, <code>assets/</code>, <code>briefings/</code>, <code>claims/</code>, <code>deck/</code>, <code>decks/</code>, <code>edition.json</code>, <code>evidence/</code>, <code>graph/</code>, <code>index.html</code>, <code>newsroom/</code>, <code>publication.json</code>, <code>publish/</code>, <code>questions/</code>, <code>risk/</code>, <code>sources/</code>, <code>timeline/</code>, <code>tools/</code>, <code>versions/</code>, <code>visuals/</code></li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code>, manifest at <code>.vault/app.json</code> · <b>also:</b> a 16-slide deck with a PDF, and <code>tools/validate.py</code> to check the evidence records</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> The vault's owner sent it to sgit.ai on 27 September 2026 as a public listing, with its read key and readiness audit. sgit.ai did not write it, and corrections to the vault belong to its owner. <b>Where it sits.</b> With the <a href="../../fractal-graphs/index.html">fractal graph vaults</a>, as the one that walks the grammar through a news story, and beside <a href="https://sgit.newsroom.sgit.ai/" rel="noopener" target="_blank">sgit.newsroom.sgit.ai</a>, which applies the same method to this network's own sites.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
