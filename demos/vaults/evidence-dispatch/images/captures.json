@@ -1,0 +1,111 @@
+{
+ "vault": "c0vf9zz8",
+ "page": "https://sgit.ai/demos/vaults/evidence-dispatch/index.html",
+ "capture_scripts": "Each entry's state says how the view was set before capture (view, focus, selection, scroll and clip). The capture scripts are not published; re-running from the stated state and commit reproduces the framing.",
+ "images": [
+  {
+   "file": "newsroom.webp",
+   "sha256": "e8bdb69825e9beca60cc919a3a866599798a9eb9c18e753702eca87cd63981e3",
+   "captured_utc": "2026-09-27T00:09:46Z",
+   "viewport": "1440x900",
+   "device_scale_factor": 1.25,
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Newsroom view at the top of the page (1440x900 viewport, full viewport)"
+  },
+  {
+   "file": "infographic.webp",
+   "sha256": "ddfce1940d5e129d4db7f6a8f75c05f2533c8509fb5d2818809f9153567da200",
+   "captured_utc": "2026-09-27T00:09:48Z",
+   "viewport": "1440x900",
+   "device_scale_factor": 1.25,
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Newsroom view; the first article image (the explanatory infographic), element screenshot"
+  },
+  {
+   "file": "claims.webp",
+   "sha256": "47641b5445785f0173a5e27ebc6a3366ab9fbc5377885e9ed9d17720f68e1081",
+   "captured_utc": "2026-09-27T03:24:39.777Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 1.25,
+   "pixels": "1800x1111",
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Evidence view; scrolled so claim C02 starts under the app header; clipped at the start of C07"
+  },
+  {
+   "file": "graph.webp",
+   "sha256": "8ee036f43ed7616651d2eb8888f7eb495a2cba498995bdbb1b81375cc1676654",
+   "captured_utc": "2026-09-27T03:24:57.724Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 2,
+   "pixels": "2718x1406",
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Graph view: Evidence neighborhood, focus C03, force-directed, all edge labels, Fit view; clipped from the inspector heading to the canvas bottom"
+  },
+  {
+   "file": "correction.webp",
+   "sha256": "edcba3e61e8fca675dc760f5b8ccdbc1adf15fce3a2cc162dda2647cd41373f2",
+   "captured_utc": "2026-09-27T03:25:05.145Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 2,
+   "pixels": "2718x1406",
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Graph view: Correction impact, focus C04, force-directed, all edge labels, Fit view; clipped from the inspector heading to the canvas bottom"
+  },
+  {
+   "file": "timeline.webp",
+   "sha256": "f3fecb950a8c4f238fc975bd612dabc81f985ab1cca035c3e4cfbf23c9c748a1",
+   "captured_utc": "2026-09-27T00:10:06Z",
+   "viewport": "1440x900",
+   "device_scale_factor": 1.25,
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Timeline view; event 3 (company discovery, exact date not public) selected; scrolled 330 px (1440x900 viewport)"
+  },
+  {
+   "file": "dossier.webp",
+   "sha256": "44397e7de841ac1403aa78832e3245a36ec5f1bb9f02ab3efcfa83c54b52c4c5",
+   "captured_utc": "2026-09-27T00:11:15Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 1.25,
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Sources view; first \"Open source dossier\" (S01); scrolled so \"Captured appearance\" sits under the app header (1440x1000 viewport)"
+  },
+  {
+   "file": "article.webp",
+   "sha256": "695f336376dec735db76633c7fd4c88f2c86c6b09e06c4fdabad16430bad2bff",
+   "captured_utc": "2026-09-27T03:24:47.714Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 1.25,
+   "pixels": "1800x776",
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Lead reported-news article; section \"The reported incident\" placed under the app header; clipped before the next section"
+  },
+  {
+   "file": "questions.webp",
+   "sha256": "5d77b1d8197ac6d3f63b1e9de30542b277c228ac167f5144860829ac8a70ec99",
+   "captured_utc": "2026-09-27T03:24:42.402Z",
+   "viewport": "1440x1000",
+   "device_scale_factor": 1.25,
+   "pixels": "1800x1195",
+   "vault_version": "v0.5.1",
+   "vault_commit": "obj-cas-imm-c2f6a15e3a01",
+   "source": "read-key clone of c0vf9zz8, served locally",
+   "state": "Questions view at the top of the page; clipped before question Q04"
+  }
+ ]
+}

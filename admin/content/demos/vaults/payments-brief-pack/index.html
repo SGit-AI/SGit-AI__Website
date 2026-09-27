@@ -14,7 +14,7 @@
   <div class="sgv-uiembed" data-vault="o3m0sz3q" data-readkey="cd1987b87f719c2ff6da51128200665312afaeeadcbf7a1a20f870f03f9959f8" data-app="1"></div>
   <script>
   (function () {
-    ['vault-ui-embed.js', 'shots.js'].forEach(function (f) {
+    ['vault-ui-embed.js'].forEach(function (f) {
       fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
     });
   }());

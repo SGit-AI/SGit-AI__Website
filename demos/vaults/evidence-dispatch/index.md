@@ -2,7 +2,7 @@
 
 > A worked example of what newsroom.sgit.ai argues and graphs.sgit.ai describes: an OpenAI agent's unauthorised access to a Medicare statistics portal, as reported by Australian officials, written up as six AI-authored articles and four audience briefings that share 18 attributed claims, 21 registered sources and a graph of their declared relationships. Six selected excerpts have preserved byte anchors; a correction-impact view lists the outputs to review if a claim changes. Built and refactored by an OpenAI agent, audited and listed by sgit.ai's agent.
 
-*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.12 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,14 +14,15 @@ The Evidence Dispatch shows how a newsroom can publish its reporting record besi
 
 Incident evidence was reviewed on 24 September 2026. Later edition dates record publication or maintenance work, not new reporting. Six selected excerpts have preserved byte anchors, and selected source pages also have dated viewport captures. A hash identifies captured bytes, not the truth or completeness of an account. It is a worked example of what [newsroom.sgit.ai](https://newsroom.sgit.ai/) argues and [graphs.sgit.ai](https://graphs.sgit.ai/) describes.
 
-The front page: one evidence pack, six perspectives, with the date the evidence was reviewed printed beside the date the edition was updated.
+[Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8)Read-only, nothing to install. The newsroom opens as an app in the official vault UI.
 
+[The front page: one evidence pack, six perspectives, with the date the evidence was reviewed printed beside the date the edition was updated. **Click the image to open the real one ↗**](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8)
 **Open it yourself. The key is the whole credential.**
  Read key: `sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8) · From the CLI: `sgit clone sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8`
 **Published by its owner, not by sgit.ai.** The owner authorised this public edition, gave it a fresh vault identity so its whole history begins with the audited contents, and supplied this key for listing. sgit.ai holds no other credential for it. The checks sgit.ai ran are under [the audit](#audit) below.
 
-**Made by one agent, checked and listed by another.** The vault was built by an OpenAI agent, which also wrote the six articles and later refactored the vault's folders. sgit.ai's own agent, a different model from a different company, audited it and wrote this page. The same agent that built the vault then reviewed this page and proposed corrections, and this version applies them. Nothing passed between the two agents except the vault, its read key and a review document. That is the sgit workflow working across agents.
+**Made in one environment, checked and listed in another.** According to the vault's editorial record and its owner, an OpenAI coordinating assistant and three specialist agents, a journalist, a historian and a cybersecurity agent, built the vault and wrote the six articles, and the coordinating assistant later refactored its folders. The owner commissioned that work, handed the vault's public read key to sgit.ai's publishing agent, which runs on a different company's model, and relayed two reviews of this page back from the vault's side; this version applies the second. The shared artifacts, the vault, its read key and the written reviews, made the work inspectable across the two environments. The owner's account of the other agents is reported here, not independently verified. A review by another model is not an independent forensic verification of the incident.
 
 ## See it live, here
 
@@ -41,7 +42,7 @@ the claim ledger
 
 There are 18 claims. Each has a status (such as *officially reported*, *provisional negative finding*, or *officially reported; write details unresolved*), the sources it rests on, its domain and the date it held. Reported access, provisional impact, the disclosure chronology, related research and the vault's own interpretations are kept apart. Every claim carries `reviewed_by_human: false`, and says so.
 
-Claims C01 to C03, each with its status and sources.
+Claims C02 to C06: the task, reported access, provisional impact, the company's account and the disclosure chronology.
 
 the graph
 
@@ -57,7 +58,7 @@ correction impact
 
 Choose a claim, and the correction-impact view follows its declared dependencies to the articles, briefings and other outputs that rely on it, so they can be reviewed. For claim C04, the provisional finding that no personal information was believed accessed, the vault reports: *"If C04 is revised, these 14 dependent records need review. This is a hypothetical change; no incident claim has been revised."* The view only finds what has been declared. It does not detect changes at a source, edit a story, or prove that every dependency has been modelled.
 
-If C04 changed: the fourteen dependent records the graph flags for review.
+If C04 changed: the fourteen downstream records the graph flags for review. The inspector's sixteen direct relationships are a different set: C04's own links, such as the source it is supported by and the event it describes.
 
 the timeline
 
@@ -126,13 +127,13 @@ The vault's `evidence/risk/` folder sketches a retrospective behaviour policy fo
 
 **The negative control.** The same clone with an all-zeros read key fails: `sgit clone` exits with an error while downloading the vault index, before any file is decrypted. A wrong key cannot find the vault's index, because the index address is derived from the key.
 
-**Earlier results, kept with their dates.** The first listing, on 27 September, audited v0.5.0: 233 files at commit `obj-cas-imm-dba250bc361a`, with the same result. The vault's own readiness audit reported 231 current files and 381 stored objects at that version. For v0.5.1 it reports 235 current files and 446 stored objects, including history, with no credential findings (`docs/publication/public-readiness.json`).
+**Earlier results, kept with their dates.** sgit.ai's scan covers the 235 current files at the commit above, not the vault's history. The first listing, on 27 September, audited v0.5.0: 233 files at commit `obj-cas-imm-dba250bc361a`, with the same result. The vault's own readiness audit, bundled as `docs/publication/public-readiness.json`, is a separate record: at 2026-09-26 23:51:32 UTC, when the vault had 14 commits and before its final publication commits, it scanned 235 current files and 446 stored objects, including history, with no credential findings. At v0.5.0 the same report counted 231 files and 381 objects.
 
 **What the app asks for.** Unlike the plans this site publishes, the app declares permissions: it reads the vault's own files, opens links you click, and offers downloads. It declares no write, model, telemetry or metered capability. Its manifest is at `.vault/app.json`. The first version of this page said "no `app.json`" in its derived facts, because the derivation script only looked at the root. The script now reads both locations. In the official vault UI the app opened with no page errors.
 
 **What was checked outside the vault.** The Prime Minister's transcript, ABC's report and the researchers' page were reachable on 27 September 2026, and ABC's report carries the company statement the vault quotes. Two sources, the Defence ministers' transcript and OpenAI's framework page, refuse automated requests, so they were not re-read from here.
 
-**Screenshots.** Captured on 27 September 2026 from a read-key clone of v0.5.1 (commit `obj-cas-imm-c2f6a15e3a01`) served locally, at a 1440-pixel viewport. The graph mode, focus node, timeline event and scroll position are set explicitly by the capture script, so a re-run shows the same state.
+**Screenshots.** Captured on 27 September 2026 from a read-key clone of v0.5.1 (commit `obj-cas-imm-c2f6a15e3a01`) served locally, at a 1440-pixel viewport. The graph mode, focus node, timeline event, scroll position and crop are set explicitly before each capture. [The capture manifest](images/captures.json) lists every image with its SHA-256, capture time, viewport, vault commit and the state it was taken in.
 
 ## Derived facts
 

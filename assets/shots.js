@@ -24,6 +24,11 @@
    pre-loading for everybody — see printPrep. */
 (function () {
   'use strict';
+  // Run once per page. Loading it twice (an inline loader plus the build's injected one, on 32
+  // vault pages until v0.6.13) created a second IntersectionObserver and a second set of print
+  // and keyboard listeners. The per-figure dataset.loaded guard hid it; this stops it.
+  if (window.__sgitShotsStarted) return;
+  window.__sgitShotsStarted = true;
 
   function vaultHost() {
     var sg = window.sg || (window.parent && window.parent.sg);

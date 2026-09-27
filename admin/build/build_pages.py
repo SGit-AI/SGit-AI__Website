@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.12'
+SITE_VERSION = 'v0.6.13'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,31 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.12', '2026-09-27', 'this release',
+    ('v0.6.13', '2026-09-27', 'this release',
+     "A SECOND REVIEW OF THE EVIDENCE DISPATCH PAGE, AND A LOADER THAT RAN TWICE ON 33 PAGES. The "
+     "vault's agent reviewed v0.6.12 and found five things, all confirmed before changing anything. "
+     "(1) The claims screenshot showed C02 to C06 while its caption said C01 to C03, because the "
+     "capture script inherited the previous view's scroll; the new capture starts cleanly at C02 "
+     "and the caption says what it shows. (2) shots.js loaded twice: the inline loader on every "
+     "vault page fetched it, and the build injected a second, versioned copy because its guard "
+     "looked for the literal assets/shots.js while the inline code built the path from parts. The "
+     "per-figure guard hid it, but each run added an IntersectionObserver and a set of print and "
+     "keyboard listeners. Fixed three ways: 32 pages plus the DSIT page no longer load it "
+     "themselves, the build's guard now recognises any mention of shots.js, and shots.js refuses "
+     "to start twice. The review saw it on one page; the same pattern was on 33. (3) The "
+     "cross-agent note named one agent and said nothing else passed between them; it now "
+     "describes the coordinating assistant and three specialist agents, the owner who commissioned "
+     "the work and carried the key and two reviews between the environments, and says that this "
+     "is the owner's account, not something we verified. v0.6.12's entry is amended in place. (4) "
+     "Crops: graph and correction impact now start at the top of the controls and inspector "
+     "panel, the article and questions at clean section boundaries, and the correction caption "
+     "explains fourteen downstream records against sixteen direct relationships. (5) The vault's "
+     "readiness numbers are tied to that report's own timestamp and commit count, apart from our "
+     "scan of the current files, and a capture manifest (images/captures.json) gives every image's "
+     "SHA-256, time, viewport, commit and state. Asked for by the founder at the same time: an "
+     "Open the vault button under the lead, and the main image is now a link to the vault, so the "
+     "natural next step from the picture is the real thing."),
+    ('v0.6.12', '2026-09-27', 'git 65da1140',
      "THE EVIDENCE DISPATCH PAGE, CORRECTED BY THE AGENT THAT BUILT THE VAULT. The vault's author, "
      "another company's agent, refactored the vault's folders (v0.5.1) and reviewed our listing. "
      "Most of the review was right, and the page is rewritten on it: we had written that every "
@@ -48,7 +72,7 @@ VERSION_LOG = [
      "page said the vault had no app manifest. The v0.6.11 entry is amended in place. The page now "
      "also says what this case shows about the workflow: one company's agent built, wrote and "
      "refactored the vault, another's audited and listed it, and nothing passed between them but "
-     "the vault, its read key and a review."),
+     "the vault, its read key and a review [CORRECTED IN v0.6.13: this is the owner's account, relayed; the owner commissioned the work and carried the key and two reviews between the environments, and the vault side was a coordinating assistant and three specialist agents, not one agent]."),
     ('v0.6.11', '2026-09-27', 'git 2719284a',
      "THE EVIDENCE DISPATCH: A NEWSROOM ON AN EVIDENCE VAULT, LISTED FROM ITS OWNER. The first "
      "vault on this site that sgit.ai did not build. Its owner sent a public read key and a "
@@ -2959,7 +2983,11 @@ def page(path, title, desc, here, body):
     # class string instead missed `class="shot net-shot"` and silently left an index
     # page with figures and no loader, which is the same failure this block exists to
     # prevent. Detect on the thing the consumer looks for, not on how it was written.
-    if 'data-shot="' in body and 'assets/shots.js' not in body:
+    # v0.6.13: the guard looked for the literal 'assets/shots.js', while 33 pages loaded it
+    # through a loop that joins '../../../assets/' + f, so both ran. Any mention of shots.js
+    # in the body now counts as the page loading it itself, and those pages were changed to
+    # leave the loading to this block, which is the single, versioned loader.
+    if 'data-shot="' in body and 'shots.js' not in body:
         body += (f'\n<script>\n(function () {{\n'
                  f" fetch('{p}assets/shots.js?v={SITE_VERSION}')\n"
                  ' .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
