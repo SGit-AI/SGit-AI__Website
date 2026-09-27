@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.14'
+SITE_VERSION = 'v0.6.15'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.14', '2026-09-27', 'this release',
+    ('v0.6.15', '2026-09-27', 'this release',
+     "A SUPPLY CHAIN OF VAULTS. New article from two voice memos recorded after a programme on "
+     "food security: the food chain is a series of hops that keep their own records, mostly in "
+     "spreadsheets, the big buyer is the one party with real systems and names the price once it "
+     "holds enough of a farm's output, and all of that is logistics, which is what generative AI "
+     "used the way this site uses it is good at. It describes a chain of encrypted vaults joined by "
+     "append lanes and a typed graph, the use-GenAI-not-to-use-GenAI pattern with the villagers "
+     "and town planners from the SaaS article, the hypothesis that this lowers prices, and two "
+     "dogmas: that falling prices are always bad, and that sharing is giving things away. Three "
+     "diagrams. RESEARCH, AND WHAT DID NOT SURVIVE IT: the memo credited the buyer-power argument "
+     "to a name the transcription mangled; the mechanism it describes is Giblin and Doctorow's "
+     "Chokepoint Capitalism, and the article cites that and Doctorow's Enshittification. A search "
+     "summary attributed to CSIS a venture partner's estimate that 80% of US startups build on "
+     "Chinese base models; the CSIS page does not contain it, and the claim was dropped before "
+     "publication. The ONS 'changing price of everyday goods' page is cited at its "
+     "www.ons.gov.uk address because the visual.ons.gov.uk one no longer resolves. Every other "
+     "figure was read from its source: Sustain's food pound, the FAO Food Loss Index, the GCA 2025 "
+     "survey, the fair dealing regulations, McKinsey's 2021 early-adopter gains (stated as large "
+     "firms' gains, not a farm's), the BIS history of deflations, the Commission's data figures, "
+     "DeepSeek's own GPU-hour count, and Apertus. The article says where the evidence stops and the "
+     "hypothesis starts, and that nobody has yet run a season through vaults."),
+    ('v0.6.14', '2026-09-27', 'git 8f77a502',
      "THE FIRST SCREENSHOT ON EVERY VAULT PAGE NOW OPENS THE VAULT. v0.6.13 did this by hand on "
      "one page, wrapping the figure in a link; the founder asked for it everywhere a vault exists, "
      "since the natural next step from a picture of a vault is the vault. Done in the build, not "

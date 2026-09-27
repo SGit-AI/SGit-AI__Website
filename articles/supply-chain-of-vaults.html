@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down, sgit.ai</title>
+<meta name="description" content="The conversation about food security and the cost of living keeps asking for new ideas and keeps producing the same ones, and the loudest thing said about AI in that conversation is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models for every industry and language, and sharing the journey rather than the curated success story.">
+<link rel="canonical" href="https://sgit.ai/articles/supply-chain-of-vaults.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/supply-chain-of-vaults.html">
+<meta property="og:title" content="A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down, sgit.ai">
+<meta property="og:description" content="The conversation about food security and the cost of living keeps asking for new ideas and keeps producing the same ones, and the loudest thing said about AI in that conversation is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models for every industry and language, and sharing the journey rather than the curated success story.">
+<meta property="og:image" content="https://sgit.ai/og/supply-chain-of-vaults.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/supply-chain-of-vaults.jpg">
+<link rel="alternate" type="text/markdown" href="supply-chain-of-vaults.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down, sgit.ai", "headline": "A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down, sgit.ai", "description": "The conversation about food security and the cost of living keeps asking for new ideas and keeps producing the same ones, and the loudest thing said about AI in that conversation is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models for every industry and language, and sharing the journey rather than the curated success story.", "url": "https://sgit.ai/articles/supply-chain-of-vaults.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.15</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl here" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.15 &middot; 27 Sep 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down</p>
+ <h1>A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-09-27 &middot; <a href="../admin/versions.html">v0.6.15</a> &middot; <span class="chip">supply-chain</span><span class="chip">food</span><span class="chip">genai</span><span class="chip">vaults</span><span class="chip">fractal-semantic-graphs</span><span class="chip">open-source</span><span class="chip">creative-commons</span><span class="chip">deflation</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> The conversation about food security and the cost of living keeps asking for new ideas and keeps producing the same ones, and the loudest thing said about AI in that conversation is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models for every industry and language, and sharing the journey rather than the curated success story.</em></p>
+<figure class="shot" data-shot="supply-chain-today.webp" data-dir="images/" data-alt="The food pound today. One kilo of supermarket apples at £2.20: the grower spends 76p and keeps 3p. Every hop keeps its own record, mostly in spreadsheets; the big buyer is the one party with real systems, and once it holds a large share of a farm&#x27;s output it names the price. Figures from Sustain&#x27;s Unpicking Food Prices and the FAO Food Loss Index."><figcaption>The food pound today. One kilo of supermarket apples at £2.20: the grower spends 76p and keeps 3p. Every hop keeps its own record, mostly in spreadsheets; the big buyer is the one party with real systems, and once it holds a large share of a farm's output it names the price. Figures from Sustain's Unpicking Food Prices and the FAO Food Loss Index.</figcaption></figure>
+<p>I was listening to a programme about food security and the cost of living, and what struck me was not what was said but how little of it was new. The panel agreed that we need new ideas. Then it produced the ideas it has been producing for twenty years: subsidise this, regulate that, ask the supermarkets to be kinder. The dogma runs so deep that the request for novelty and the absence of it can sit in the same sentence without anyone noticing.</p>
+<p>The one genuinely new thing available to that conversation is generative AI, and the conversation has already decided what it thinks about it. It is dangerous, it is a bubble, it is coming for jobs, and anyone who says otherwise is selling something. I think much of that fear is manufactured, a good deal of it by the same investor-driven ecosystem that sells the frontier models, and I think the result is a kind of AI fatigue in which rational people roll their eyes and stop looking. We saw the same cycle with the web. What we are missing, while we roll our eyes, is that generative AI used well is a massive amplifier of the supply chain, and that the supply chain is where the cost of living is actually decided.</p>
+<p>This article makes that case with whatever evidence I could find, and it says plainly where the evidence stops and my hypothesis starts.</p>
+<h2>In short</h2>
+<ul>
+<li><b>The food chain is a series of hops that each keep their own records and share as little as they can.</b> Surveys put the share of supply chain managers who run on spreadsheets at about two thirds. The FAO estimates that 13% of the world's food is lost between harvest and retail.</li>
+<li><b>The one party with real systems is the big buyer, and it uses them.</b> Once a buyer holds a large share of a farm's output, it names the price. This is not malice. It is the mechanism Rebecca Giblin and Cory Doctorow call a chokepoint, and Sustain's figures show what it leaves the farmer: 3p on a £2.20 kilo of apples.</li>
+<li><b>All of that is logistics, and logistics is a data problem.</b> Orders, grades, deliveries, prices and payments are records that today are typed five times and reconciled by email.</li>
+<li><b>A supply chain of vaults changes who holds the data.</b> One encrypted vault per party, joined by append lanes and a typed graph, with no platform in the middle that sees every farm's numbers. Every piece of this exists on sgit today; the chain is the proposal.</li>
+<li><b>Use GenAI not to use GenAI.</b> The model is used once, to generate the custom tool each piece of the chain needs from that piece's own brief. Production runs on plain files with no model in the line, kept working by the small companies this site has called villagers and town planners.</li>
+<li><b>The hypothesis is that this brings the price of goods down</b>, and the evidence is partial: early adopters of AI planning report large gains, but they are large firms, and nobody has run this for a farm.</li>
+<li><b>Two dogmas are in the way.</b> That falling prices are always bad, which 140 years of data at the BIS does not support for goods prices. And that sharing is giving things away, when the cost we never calculate is the cost of not sharing.</li>
+<li><b>Openness is the other half.</b> Open source and Creative Commons for the workflows, open-weight models for every industry and language, and sharing the journey rather than the curated success story.</li>
+</ul>
+<h2>What the food pound says</h2>
+<p>In December 2022 the campaign group Sustain published <a href="https://www.sustainweb.org/reports/dec22-unpicking-food-prices/">Unpicking Food Prices</a>, which followed five everyday items from the farm to the till. For a kilo of supermarket apples selling at £2.20, the grower's costs were 76p and their profit 3p, about 1% of the shelf price. For a wrapped sliced loaf at £1.14, the cereal farmer spent 9.03p to grow the wheat in it and kept 0.09p. For a pack of four beefburgers, the processor's profit was ten times the farmer's. The numbers are from 2022, and prices have moved since, but the shape has not: the party that takes the most risk and does the most physical work keeps the least.</p>
+<p>Between that farmer and that shelf sit a packer, a haulier, a wholesaler or processor, a distribution centre and a retailer, and each of them keeps its own record of the same consignment. Ask how those records are kept and the answer is spreadsheets. A <a href="https://www.supplychaindive.com/news/supply-chain-innovation-survey-BluJay-AdelanteSCM/530263/">survey reported by Supply Chain Dive</a> found two thirds of companies treating Excel as a supply chain system; <a href="https://www.sdcexec.com/sourcing-procurement/financial-management-software/news/22952891/loghub-majority-of-supply-chain-professionals-still-use-manual-spreadsheets-study">another</a> found spreadsheets to be the primary operational tool for nearly half of supply chain professionals. Both surveys were run by software vendors with an interest in the answer, so treat the exact figures with care. The direction is not in doubt, and anyone who has worked near a farm gate will recognise it. An order, a delivery note, a grade, a price and a payment date are typed in five times, reconciled by email and disputed on the phone.</p>
+<p>The loss that produces is not only administrative. The FAO's <a href="https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/1231-global-food-losses/en/">Food Loss Index</a> puts the share of food lost between harvest and retail, before it reaches a shop, at 13.3% in 2023, slightly worse than when monitoring began in 2015. Some of that is biology. A good deal of it is information: produce graded to the wrong specification, delivered to the wrong window, held because nobody upstream could see demand.</p>
+<h2>The chokepoint</h2>
+<p>There is one party in the chain that does not run on spreadsheets. The big buyer has forecasting systems, contract systems, and the data of every supplier it deals with. That is what lets it do the thing every farmer describes: it buys a large share of a farm's output, and once it holds 20%, 30% or 40% of what a farm produces, it can name the price, because the farm has no other distribution channel and cannot afford to lose the volume.</p>
+<p>I want to be careful about how I describe this, because it is not malice. It is ordinary business practice, and it is what any of us would do holding the same cards. Rebecca Giblin and Cory Doctorow gave it a name in <a href="https://en.wikipedia.org/wiki/Chokepoint_Capitalism">Chokepoint Capitalism</a>: a powerful buyer locks in the people who sell to it, makes the market hostile to alternatives, and then uses that position to take more than its share of the value. Their book is about music, publishing and screenwriting, but a farmer will read the chapters on Spotify and Amazon and recognise every move. Doctorow's later book, <a href="https://en.wikipedia.org/wiki/Enshittification">Enshittification</a>, describes the same cycle from the platform's side: good to users until they are locked in, then good to business customers until they are locked in, then good to nobody but itself. His argument is that none of this is an iron law of economics. It is the result of specific choices, and choices can be changed.</p>
+<p>The UK has tried to change them by regulation, and it is worth being honest about how far that goes. The <a href="https://www.gov.uk/government/news/improved-treatment-of-grocery-suppliers-despite-poor-amazon-performance">Groceries Code Adjudicator</a> has policed the fourteen largest retailers since 2013, and its 2025 survey found things improving: 30% of suppliers reported a code issue, down from 33%, and perceived compliance averaged 93%, though it ranged from 98% at the best retailer to 66% at Amazon, which the adjudicator opened an investigation into. Under the Agriculture Act 2020 the government has also begun writing fair dealing rules sector by sector, <a href="https://hansard.parliament.uk/Lords/2024-03-25/debates/DAE17DAB-652D-4BE1-9731-3D2267C887FF/FairDealingObligations%28Milk%29Regulations2024">milk in 2024</a> and <a href="https://hansard.parliament.uk/Lords/2025-05-12/debates/99E126DB-3D2A-40A9-B604-B789420F2CB8/FairDealingObligations%28Pigs%29Regulations2025">pigs in 2025</a>, with eggs and fresh produce reviewed. These are good things. They also share a limit: they regulate the conduct of the party with the systems, and leave the party without them exactly where it was. A code of practice does not give a grower a forecast, a second buyer or a tool that fits their farm. The big buyers can absorb a compliance regime; a compliance regime is, in a sense, a thing only big buyers can afford to follow.</p>
+<h2>All of it is logistics</h2>
+<p>Look at what the chokepoint is actually made of. It is not the buyer's trucks or its shelves. It is that the buyer knows things the grower does not: what demand looks like next month, what every other supplier is charging, which grade will be accepted and which rejected, when the payment will actually land. It is information, held by one party, and the systems that hold it. Everything between the field and the shelf is a workflow, and every workflow is a set of records moving between parties. Orders, grades, deliveries, prices, payments, disputes. That is logistics, and logistics is a data problem before it is a transport problem.</p>
+<p>That is precisely the kind of problem that generative AI, used the way this site uses it, is good at. Not answering questions in a chat window, but capturing everything, structuring it, connecting it, and documenting it so completely that a process which used to live in three people's heads and a spreadsheet becomes something a machine can run and a stranger can audit. Every page on this site was made that way, and the <a href="../articles/introducing-fractal-semantic-graphs.html">Fractal Semantic Graphs</a> work is about exactly the case a supply chain presents: many parties, each with its own vocabulary, nobody willing to adopt anyone else's schema, and a need to connect across the boundaries anyway.</p>
+<h2>A supply chain of vaults</h2>
+<figure class="shot" data-shot="supply-chain-vaults.webp" data-dir="images/" data-alt="The same chain, as vaults. Every party holds its own encrypted, versioned record and its own key. Orders and answers travel over append lanes; the shopper can follow a read key on the label back to the field. No platform in the middle sees every farm&#x27;s numbers. Every piece exists on sgit today; joining them into a working chain is the proposal."><figcaption>The same chain, as vaults. Every party holds its own encrypted, versioned record and its own key. Orders and answers travel over append lanes; the shopper can follow a read key on the label back to the field. No platform in the middle sees every farm's numbers. Every piece exists on sgit today; joining them into a working chain is the proposal.</figcaption></figure>
+<p>Here is the shape of it. Every party in the chain, the grower, the packer, the haulier, the wholesaler, the buyer, holds its own vault: an encrypted, versioned record of everything that concerns it, held on any host, readable by nobody who does not hold a key, including the host. The grower's vault holds fields, yields, costs, grades, and every order and payment. The buyer's vault holds forecasts, orders and the contract terms it is now obliged to show its suppliers.</p>
+<p>Between the vaults run <a href="../api/append-lanes.html">append lanes</a>: write-only channels through which one party can put a file into another's vault without being able to read anything there. An order is a file the buyer appends to the grower's lane. The delivery note, the grade and the payment are files that answer it. Nothing is retyped. Nothing goes by email. Two agent teams ran <a href="../docs/append-lane-messaging.html">exactly this kind of two-way, signed messaging</a> between vaults on 25 and 26 September, without either holding the other's key.</p>
+<p>Across the vaults runs one graph. Each vault keeps its own vocabulary, because a grower and a wholesaler will never agree a schema and should not have to. Typed edges join them: this delivery fulfils that order, this grade was given to that consignment, this loss happened on that leg. That is what makes waste visible. The 13% the FAO counts is invisible today because it falls between records nobody joins.</p>
+<p>Four things change. Records are typed once and read many times. There is nobody in the middle: no platform that sees every farm's numbers and sells them back as a service, because the vaults are encrypted before they leave the party that owns them. Waste, delay and disputed grades become queries on a graph rather than arguments on the phone. And the tools are the grower's own, which brings me to the part that matters most.</p>
+<p>What this does not do also needs saying. It does not stop a buyer that holds 40% of a farm's output from naming a price. Leverage still needs distribution. What it does is make the grower's costs, the buyer's terms and the alternatives visible, cheaply, to the grower, and make the next buyer reachable at the cost of sharing a read key. That is a smaller claim than "fixing the supply chain", and it is the one I can defend.</p>
+<h2>Use GenAI not to use GenAI</h2>
+<figure class="shot" data-shot="supply-chain-genai.webp" data-dir="images/" data-alt="Where the model sits, and where it does not. The model is used once, to turn a grower&#x27;s brief into a working tool. A small company takes the tool and runs it. Production is plain files and plain code, with no prompt in the path and nothing metered per call. The pattern is the one in &quot;The SaaS apocalypse will be decided by inertia, not by AI&quot; on this site."><figcaption>Where the model sits, and where it does not. The model is used once, to turn a grower's brief into a working tool. A small company takes the tool and runs it. Production is plain files and plain code, with no prompt in the path and nothing metered per call. The pattern is the one in "The SaaS apocalypse will be decided by inertia, not by AI" on this site.</figcaption></figure>
+<p>The phrase I keep using is that I use GenAI not to use GenAI. In production, in the line, there is no model. What the model is for is building the thing that runs in the line.</p>
+<p>A grower, or a packer, or a co-op, describes their piece of the chain in their own words: the orders they take, the grades they give, the invoices they chase, the way their particular buyer wants a delivery note laid out. An agent turns that into a working tool, in an afternoon, with the vault as its store. Then a small company takes the finished tool and runs it: hardens it, versions it, secures it, keeps it working, and does the same for a hundred other growers, paid because it keeps working rather than by the seat. I wrote about those companies in <a href="../articles/saas-apocalypse-decided-by-inertia-not-by-ai.html">the SaaS apocalypse article</a> and called them villagers and town planners, after the roles on wardley-maps.sgit.ai. This is the next phase of vibe coding, and it is the phase that makes it safe: the explorer builds with the model, the villager runs what was built, and the model is nowhere near the order that lands at four in the morning.</p>
+<p>That order matters for three reasons. The tool fits, because it was made from that grower's words; fit is the one thing the spreadsheet always had and the big buyer's ERP never will. The tool is cheap to run, because plain files on a small host cost almost nothing, and a cost base that low is what lets prices fall without anyone in the chain losing their margin. And the tool is open by default, because the brief, the tool and the method are published, the way this site publishes its own, so the next grower starts from the last one's work rather than from a blank sheet.</p>
+<p>Today the only people in the chain with good software, good ERPs and good management structure are the big platforms, and they are the ones making money across the board. That is the asymmetry a custom tool per party removes.</p>
+<h2>The hypothesis, and what the evidence says</h2>
+<p>My hypothesis is that a supply chain run this way brings the price of food and goods down. I asked for validation and here is what I found, with its limits.</p>
+<p>McKinsey <a href="https://www.mckinsey.com/industries/metals-and-mining/our-insights/succeeding-in-the-ai-supply-chain-revolution">reported in 2021</a> that early adopters of AI-enabled supply chain management had improved logistics costs by 15%, inventory levels by 35% and service levels by 65% against slower competitors. Those are large companies, and the gains are from demand forecasting and planning at a scale a farm does not have; the number tells you what is possible when information is joined, not what a grower would see. The FAO's 13.3% loss before retail is a floor on what better information could recover, and its own estimate of the value lost is about USD 400 billion a year. The spreadsheet surveys tell you how far most of the chain is from the starting line.</p>
+<p>What nobody has measured is the effect on a farm, a packer or a wholesaler of tools that fit them, records that are typed once, and a second buyer reachable at the cost of a read key. That is the experiment. It is also, I think, where government money should go. Instead of investing in regulation, which the big buyers can follow and which does nothing for the party without systems, invest in the pieces of the supply chain that are not working: the tooling, the shared vocabularies, the villager companies that will keep a thousand small custom tools running. It is cheaper than a subsidy and, unlike a subsidy, it compounds.</p>
+<h2>The deflation dogma</h2>
+<p>There is a second dogma in the way, and it is the belief that falling prices are bad. I have never understood it. What is wrong with prices being where they were a year ago, or five years ago? In technology we have lived with falling prices for as long as the industry has existed. The ONS found that <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/thechangingpriceofeverydaygoodsandservices/2017-07-11">the price of laptops, PCs and tablets fell 76% between 2005 and 2016</a>, and audio-visual equipment has fallen almost every year since its index began. It did not stop anybody buying a computer.</p>
+<p>The standard worry is real and the <a href="https://www.bankofengland.co.uk/explainers/what-is-deflation">Bank of England states it plainly</a>: if people expect prices to fall they may delay spending, and debts fixed in money terms get heavier as prices drop. But that is a description of a demand collapse, not of a productivity gain. The BIS looked at <a href="https://www.bis.org/publ/qtrpdf/r_qt1503e.pdf">140 years of data across 38 economies</a> and found the link between falling goods prices and lower growth to be weak, and to come largely from the Great Depression; the deflations that hurt were in asset prices, especially property, and especially with private debt attached. In the postwar period, growth in years of goods price deflation was slightly higher than in other years. A cheaper loaf because the chain wasted less is not a Japanese lost decade. It is what technology has done for every other good.</p>
+<p>The reason these decisions look uncoordinated is that they are. Nobody has the data joined up well enough to argue from facts, so the argument is made from dogma. That is the thing that changes when the chain is a graph: the effect of a change in the buyer's terms on the grower's margin becomes a query, and the conversation about food prices can finally be had on evidence.</p>
+<h2>The other half: openness</h2>
+<p>The first memo I recorded for this article was about logistics. The second was about the thing I forgot, which is sharing, and it may be the more important half.</p>
+<p>Mention open source or Creative Commons in a room full of people who run supply chains and two things happen. First, many of them do not know what the terms mean. Second, somebody steers the conversation to communism, socialism and how that did not work, as though publishing a grading specification were the abolition of property. We showed, over thirty years, that openness works in software. Most of the world's infrastructure runs on it. What we have not yet shown is that it works for the rest of industry, and the supply chain is where to show it.</p>
+<p>People do not share for two reasons. The first is that it is not easy. It is easy for me now, because I have an optimised workflow: I record a voice memo, an agent researches it and drafts it, I review it, and it is live on this site the same day, with its sources. This article is that workflow. Before I had it, the cost of sharing an idea was a week, and so most ideas were never shared. The second reason is the belief that an idea is precious and will be copied. Everyone in a startup knows that ideas are cheap and execution is everything, and yet the instinct persists.</p>
+<p>What we never calculate is the economic cost of not sharing. The European Commission estimates that <a href="https://www.deloitte.com/lu/en/Industries/technology/perspectives/the-eu-data-act-what-does-it-mean-for-you.html">about 80% of industrial data is never used</a>, and its own <a href="https://digital-strategy.ec.europa.eu/en/policies/strategy-data">data strategy</a> cites OECD work putting the benefit of more business-to-business data sharing at between 1% and 2.5% of GDP. Those are big, soft numbers, and I do not lean on them for precision. I lean on them because they are the only attempt anybody has made to count the cost of the default, which is silence. In the supply chain that cost is paid every day: every grower who learns the hard way what a buyer will reject learns it alone, and the lesson dies with the season.</p>
+<p>And when people do share, they share the curated success story, per medium, in the form that medium rewards. The real stories, the ones with the failures in them, are the ones worth sharing, and they need somewhere to live that is not a slide. That is why the vaults on this site publish the whole journey rather than the result: <a href="../demos/vaults/company-xray/index.html">a plan with its wrong turns</a>, <a href="../demos/vaults/evidence-dispatch/index.html">a newsroom with every claim tied to its source</a>, a <a href="../admin/versions.html">version log</a> that records what each release got wrong and how it was caught. Imagine every farmer and every supplier able to learn from what the others did, what worked and what did not, at the cost of opening a vault.</p>
+<p>The same argument applies to the models. Companies operating on open-weight models, and today that largely means Chinese ones, all have the equivalent of a frontier model, and the constraints they were placed under, especially on compute, produced efficiency. DeepSeek's <a href="https://arxiv.org/abs/2412.19437">technical report</a> says its V3 model needed 2.788 million GPU hours on export-restricted H800 chips for its full training, a run that, as <a href="https://www.csis.org/analysis/what-know-about-chinese-ai-models">CSIS</a> notes, the company priced at about USD 5.6 million; and by <a href="https://www.datagravity.dev/p/chinas-open-weight-takeover">one analyst's count</a>, Chinese open-weight models were about 61% of the tokens served through OpenRouter by May 2026. Whatever the exact figures, the consequence in the West is that most companies pay for AI access when they could have the option not to. And the same openness that gave everybody a near-frontier model makes it possible to have models per industry, per language and per culture: Switzerland's <a href="https://ethz.ch/en/news-and-events/eth-news/news/2025/09/press-release-apertus-a-fully-open-transparent-multilingual-language-model.html">Apertus</a>, released in September 2025 with its weights, data and method all open, covers more than a thousand languages with 40% of its training data in languages other than English. A model that speaks a grower's language and knows a sector's vocabulary is not a luxury for the supply chain. It is the thing that makes the brief in the first figure possible.</p>
+<p>So my point is a simple one. The supply chain needs a much greater degree of openness, open source and Creative Commons are the proven way to get it, and the workflow that makes sharing cheap already exists. We have shown it works for software. Now we can show it works for everything the software was written to manage.</p>
+<h2>What exists today, and what does not</h2>
+<p>Every piece named in the second figure exists on sgit and is published on this site: encrypted vaults with git semantics, read keys that can be handed to a stranger, <a href="../api/append-lanes.html">append lanes</a> and the two-way messaging built on them, typed graphs across vaults, and vault apps that run in the browser with the permissions they ask for declared in a file. The workflow in the third figure, an explorer building with agents and a small company running the result, is how this site itself is made and maintained.</p>
+<p>What does not exist is the chain. Nobody has put a grower, a packer and a buyer on vaults and run a season through them. The grading vocabularies are not written. The villager companies for agriculture do not exist yet. The hypothesis about prices is a hypothesis. This article is the brief for the experiment, published in the open so that somebody can run it, and so that when they do, the journey is shared and not only the result.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.sustainweb.org/reports/dec22-unpicking-food-prices/">Sustain, Unpicking food prices: where does your food pound go, and why do farmers get so little? (December 2022)</a></li>
+<li><a href="https://www.fao.org/sustainable-development-goals-data-portal/data/indicators/1231-global-food-losses/en/">FAO, SDG indicator 12.3.1a, the Food Loss Index</a></li>
+<li><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest">ONS, Consumer price inflation, UK: latest bulletin</a></li>
+<li><a href="https://www.supplychaindive.com/news/supply-chain-innovation-survey-BluJay-AdelanteSCM/530263/">Supply Chain Dive, Two-thirds of companies consider Excel a supply chain system</a></li>
+<li><a href="https://www.sdcexec.com/sourcing-procurement/financial-management-software/news/22952891/loghub-majority-of-supply-chain-professionals-still-use-manual-spreadsheets-study">Supply and Demand Chain Executive, Majority of supply chain professionals still use manual spreadsheets</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chokepoint_Capitalism">Giblin and Doctorow, Chokepoint Capitalism (2022)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Enshittification">Doctorow, Enshittification: Why Everything Suddenly Got Worse and What to Do About It (2025)</a></li>
+<li><a href="https://www.gov.uk/government/news/improved-treatment-of-grocery-suppliers-despite-poor-amazon-performance">Groceries Code Adjudicator, 2025 annual survey results</a></li>
+<li><a href="https://hansard.parliament.uk/Lords/2024-03-25/debates/DAE17DAB-652D-4BE1-9731-3D2267C887FF/FairDealingObligations%28Milk%29Regulations2024">Hansard, Fair Dealing Obligations (Milk) Regulations 2024</a></li>
+<li><a href="https://hansard.parliament.uk/Lords/2025-05-12/debates/99E126DB-3D2A-40A9-B604-B789420F2CB8/FairDealingObligations%28Pigs%29Regulations2025">Hansard, Fair Dealing Obligations (Pigs) Regulations 2025</a></li>
+<li><a href="https://www.mckinsey.com/industries/metals-and-mining/our-insights/succeeding-in-the-ai-supply-chain-revolution">McKinsey, Succeeding in the AI supply-chain revolution (2021)</a></li>
+<li><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/thechangingpriceofeverydaygoodsandservices/2017-07-11">ONS, The changing price of everyday goods and services (July 2017)</a></li>
+<li><a href="https://www.bankofengland.co.uk/explainers/what-is-deflation">Bank of England, What is deflation?</a></li>
+<li><a href="https://www.bis.org/publ/qtrpdf/r_qt1503e.pdf">Borio, Erdem, Filardo and Hofmann, The costs of deflations: a historical perspective, BIS Quarterly Review, March 2015</a></li>
+<li><a href="https://digital-strategy.ec.europa.eu/en/policies/strategy-data">European Commission, A European strategy for data</a></li>
+<li><a href="https://www.deloitte.com/lu/en/Industries/technology/perspectives/the-eu-data-act-what-does-it-mean-for-you.html">Deloitte, The EU Data Act: what does it mean for you? (the 80% figure)</a></li>
+<li><a href="https://arxiv.org/abs/2412.19437">DeepSeek-V3 technical report (December 2024)</a></li>
+<li><a href="https://www.datagravity.dev/p/chinas-open-weight-takeover">Data Gravity, China's open-weight takeover</a></li>
+<li><a href="https://www.csis.org/analysis/what-know-about-chinese-ai-models">CSIS, What to know about Chinese AI models</a></li>
+<li><a href="https://ethz.ch/en/news-and-events/eth-news/news/2025/09/press-release-apertus-a-fully-open-transparent-multilingual-language-model.html">ETH Zurich, Apertus: a fully open, transparent, multilingual language model (September 2025)</a></li>
+<li><a href="../articles/saas-apocalypse-decided-by-inertia-not-by-ai.html">On this site: The SaaS apocalypse will be decided by inertia, not by AI</a></li>
+<li><a href="../articles/introducing-fractal-semantic-graphs.html">On this site: Fractal Semantic Graphs</a></li>
+<li><a href="../api/append-lanes.html">On this site: Append lanes</a>, and <a href="../docs/append-lane-messaging.html">append-lane messaging between agents</a></li>
+</ul>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.6.15')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.15</a> · <a href="../admin/index.html">engineering</a> · <a href="supply-chain-of-vaults.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.15';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>
