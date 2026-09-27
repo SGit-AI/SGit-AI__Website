@@ -80,15 +80,26 @@
     img.addEventListener('load', function () { fig.classList.add('shot--in'); });
     img.addEventListener('error', function () { failed(fig, name); });
 
+    // A figure with data-href is a picture of something that can be opened: the image
+    // becomes a link to it (v0.6.14, every vault page's first screenshot opens its vault).
+    var node = img;
+    var href = fig.getAttribute('data-href');
+    if (href) {
+      node = document.createElement('a');
+      node.className = 'shot-link';
+      node.href = href; node.target = '_blank'; node.rel = 'noopener';
+      node.setAttribute('aria-label', fig.getAttribute('data-href-label') || 'Open the real thing in a new tab');
+      node.appendChild(img);
+    }
     var sg = vaultHost();
     if (!sg) {                       // the ordinary web: hand the URL straight over
       img.src = path;
-      fig.insertBefore(img, fig.firstChild);
+      fig.insertBefore(node, fig.firstChild);
       return;
     }
     sg.vfs.read(path).then(function (data) {
       img.src = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));
-      fig.insertBefore(img, fig.firstChild);
+      fig.insertBefore(node, fig.firstChild);
     }, function () { failed(fig, name); });
   }
 

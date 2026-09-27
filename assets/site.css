@@ -686,10 +686,10 @@ a.net-main .net-sum{display:block;color:var(--dim);font-size:.9rem;line-height:1
    the points where a reader is deciding: the top, the embed, and the end. */
 .openrow{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:1rem 0}
 /* a screenshot that opens the real thing: the figure is wrapped in a link to the vault (v0.6.13) */
-a.shot-link{display:block;color:inherit;text-decoration:none}
-a.shot-link figure.shot img{transition:box-shadow .2s ease,border-color .2s ease}
-a.shot-link:hover figure.shot img,a.shot-link:focus-visible figure.shot img{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent)}
-a.shot-link figcaption b{color:var(--accent-dk)}
+figure.shot a.shot-link{display:block;color:inherit;text-decoration:none;cursor:pointer}
+figure.shot a.shot-link img{transition:box-shadow .2s ease,border-color .2s ease}
+figure.shot a.shot-link:hover img,figure.shot a.shot-link:focus-visible img{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent)}
+figure.shot[data-href] figcaption b{color:var(--accent-dk)}
 .btn-open{font-size:.95rem;font-weight:600;padding:.6rem 1.15rem}
 
 /* ---------- published-vaults table (generated from admin/content/vaults.json) ---------- */

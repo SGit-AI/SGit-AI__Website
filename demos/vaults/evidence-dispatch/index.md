@@ -2,7 +2,7 @@
 
 > A worked example of what newsroom.sgit.ai argues and graphs.sgit.ai describes: an OpenAI agent's unauthorised access to a Medicare statistics portal, as reported by Australian officials, written up as six AI-authored articles and four audience briefings that share 18 attributed claims, 21 registered sources and a graph of their declared relationships. Six selected excerpts have preserved byte anchors; a correction-impact view lists the outputs to review if a claim changes. Built and refactored by an OpenAI agent, audited and listed by sgit.ai's agent.
 
-*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.13 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.14 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,8 @@ Incident evidence was reviewed on 24 September 2026. Later edition dates record 
 
 [Open the vault in a new tab ↗](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8)Read-only, nothing to install. The newsroom opens as an app in the official vault UI.
 
-[The front page: one evidence pack, six perspectives, with the date the evidence was reviewed printed beside the date the edition was updated. **Click the image to open the real one ↗**](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8)
+The front page: one evidence pack, six perspectives, with the date the evidence was reviewed printed beside the date the edition was updated.
+
 **Open it yourself. The key is the whole credential.**
  Read key: `sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8`
  In the official UI: [open it read-only in a new tab](https://dev.vault.sgraph.ai/#sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2%3Ac0vf9zz8) · From the CLI: `sgit clone sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8`

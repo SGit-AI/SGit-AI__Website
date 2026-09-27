@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.13'
+SITE_VERSION = 'v0.6.14'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.13', '2026-09-27', 'this release',
+    ('v0.6.14', '2026-09-27', 'this release',
+     "THE FIRST SCREENSHOT ON EVERY VAULT PAGE NOW OPENS THE VAULT. v0.6.13 did this by hand on "
+     "one page, wrapping the figure in a link; the founder asked for it everywhere a vault exists, "
+     "since the natural next step from a picture of a vault is the vault. Done in the build, not "
+     "in 37 content files: on a vault page the build finds the page's own open-in-the-official-UI "
+     "link and marks the first figure with it (data-href), and shots.js, which creates every "
+     "image, wraps that image in the link and labels it. The figure's own markup is untouched, "
+     "which matters because on 20 pages the first screenshot sits inside a walkthrough grid whose "
+     "CSS addresses figures as direct children; wrapping the figure would have broken the grid. "
+     "The caption gains 'Click the image to open the real one'. 34 of the 38 vault pages carry "
+     "screenshots, and all 34 are linked; the other four have no figures to link. The two "
+     "synthetic-users pages were missed by the first pattern because their links carry a language "
+     "path before the fragment, and the pattern now allows one. The gallery index has no single "
+     "vault and is skipped. The evidence-dispatch page drops its hand-written wrapper and "
+     "gets the same treatment as the rest."),
+    ('v0.6.13', '2026-09-27', 'git b6ee8603',
      "A SECOND REVIEW OF THE EVIDENCE DISPATCH PAGE, AND A LOADER THAT RAN TWICE ON 33 PAGES. The "
      "vault's agent reviewed v0.6.12 and found five things, all confirmed before changing anything. "
      "(1) The claims screenshot showed C02 to C06 while its caption said C01 to C03, because the "
@@ -2974,6 +2989,24 @@ def page(path, title, desc, here, body):
     # Same cache-busting as the bootstrap, applied to the components a page body
     # fetches for itself. Done here so no content file has to remember it.
     body = re.sub(r"(assets/[a-z-]+\.js)'", r"\1?v=" + SITE_VERSION + "'", body)
+    # On a vault page, the first screenshot is a picture of something the reader can open:
+    # the build marks it with the page's own "open in the official UI" link, and shots.js
+    # turns the image into that link. Asked for by the founder on 27 September (v0.6.14):
+    # the natural next step from the picture should be the real thing.
+    if path.startswith('demos/vaults/') and path != 'demos/vaults/index.html' and 'data-href=' not in body:
+        m_url = re.search(r'href="(https://dev\.vault\.sgraph\.ai/[^"]*#[^"]+)"', body)
+        m_fig = re.search(r'<figure class="shot[^"]*"(?![^>]*data-href)[^>]*data-shot="[^"]+"[^>]*>', body)
+        if m_url and m_fig:
+            fig_open = m_fig.group(0)
+            marked = fig_open[:-1] + f' data-href="{m_url.group(1)}" data-href-label="Open this vault in a new tab">'
+            end = body.find('</figure>', m_fig.end())
+            block = body[m_fig.end():end]
+            tail = ' <b>Click the image to open the real one &#8599;</b>'
+            if '</figcaption>' in block:
+                block = block.replace('</figcaption>', tail + '</figcaption>', 1)
+            else:
+                block += f'<figcaption>{tail.strip()}</figcaption>'
+            body = body[:m_fig.start()] + marked + block + body[end:]
     # A page with walkthrough figures needs the component that fills them. Markdown
     # content types emit those figures from a `!shot` line, and a markdown author has
     # no place to put a script tag, so the engine notices and wires it, rather than
