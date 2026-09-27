@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.15'
+SITE_VERSION = 'v0.6.16'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.15', '2026-09-27', 'this release',
+    ('v0.6.16', '2026-09-27', 'this release',
+     "THE OPEN-MODELS PASSAGE OF THE SUPPLY CHAIN ARTICLE, SAID PROPERLY. The author read the "
+     "article and found the point about open-weight models understated: it is not that Chinese "
+     "models are cheap, it is that economies building on open weights have an under-reported "
+     "advantage, because a near-frontier model can run inside a company's own environment and be "
+     "innovated on, and the model is one small, very important part of a working solution. The "
+     "passage now says that, with the two standard objections answered as the author answers them: "
+     "air-gapped operation and ordinary security controls handle call-home and data leakage, and "
+     "the harness and workflow handle bias, which closed models carry too. Source added: the "
+     "US-China Economic and Security Review Commission's Two Loops paper (March 2026), whose key "
+     "findings make the same argument from the other side, read from the PDF itself rather than "
+     "a summary. The In short bullet and the summary follow.",),
+    ('v0.6.15', '2026-09-27', 'git e783118b',
      "A SUPPLY CHAIN OF VAULTS. New article from two voice memos recorded after a programme on "
      "food security: the food chain is a series of hops that keep their own records, mostly in "
      "spreadsheets, the big buyer is the one party with real systems and names the price once it "
