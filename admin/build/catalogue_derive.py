@@ -96,10 +96,14 @@ def derive(vault_id, read_key, endpoint='https://dev.send.sgraph.ai'):
     # An app entry is whatever app.json declares, at whatever depth — not every
     # vault app lives at the root. Fall back to any HTML only when app.json is
     # present but declares nothing parsable.
+    # The manifest may be at the root (app.json) or in the host directory (.vault/app.json),
+    # which the vault UI also reads. The Evidence Dispatch, listed in v0.6.11, uses the second,
+    # and this script reported "no app.json" for an app that opened fine.
     entries = []
-    if 'app.json' in files:
+    manifest = next((m for m in ('app.json', '.vault/app.json') if m in files), None)
+    if manifest:
         try:
-            app = json.loads(v.obj(v.blobs['app.json']))
+            app = json.loads(v.obj(v.blobs[manifest]))
         except Exception:
             app = {}
         declared = app.get('entry')
@@ -121,7 +125,7 @@ def derive(vault_id, read_key, endpoint='https://dev.send.sgraph.ai'):
         f'- **HEAD:** `{v.head}`',
         f'- **Top level:** {", ".join("`" + t + "`" for t in tops)}',
         f'- **File types:** ' + ', '.join(f'{k} ×{n}' for k, n in sorted(exts.items(), key=lambda x: -x[1])),
-        f'- **Vault app:** {"yes — entries: " + ", ".join("`" + e + "`" for e in sorted(entries)) if entries else "no `app.json`"}',
+        f'- **Vault app:** {"yes — entries: " + ", ".join("`" + e + "`" for e in sorted(entries)) + " (manifest `" + manifest + "`)" if entries else "no `app.json` or `.vault/app.json`"}',
         f'- **Browser-renderable:** {"yes (app present)" if entries else ("markdown only" if any(p.endswith(".md") for p in files) else "raw files")}',
         f'- **Derived:** {datetime.now(tz=timezone.utc):%Y-%m-%d} · endpoint `{endpoint.replace("https://", "")}` · read-only, no token',
     ]

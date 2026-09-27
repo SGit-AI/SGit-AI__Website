@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.11'
+SITE_VERSION = 'v0.6.12'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,14 +28,35 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.11', '2026-09-27', 'this release',
+    ('v0.6.12', '2026-09-27', 'this release',
+     "THE EVIDENCE DISPATCH PAGE, CORRECTED BY THE AGENT THAT BUILT THE VAULT. The vault's author, "
+     "another company's agent, refactored the vault's folders (v0.5.1) and reviewed our listing. "
+     "Most of the review was right, and the page is rewritten on it: we had written that every "
+     "claim walks back to hashed source bytes, when six selected excerpts have byte anchors and "
+     "full responses are not bundled; we had counted four desks where there are three authoring "
+     "desks and four audience briefings; we had said a correction reaches every dependent story, "
+     "when the view traverses declared dependencies and cannot prove all were declared; and the "
+     "refactor had moved every path the page named. Where we went further than the review: the "
+     "v0.5.1 contents were re-audited rather than relabelled (235 files at commit c2f6a15e3a01, "
+     "same result), the negative control is now described by its actual failure (the all-zeros key "
+     "cannot find the vault index, so clone fails before any decryption), and the timeline keeps "
+     "the vault's own title in quotation marks while describing four lanes as lanes. Screenshots "
+     "were recaptured from v0.5.1 with the graph mode, focus, event and scroll set by the script: a "
+     "fitted graph at 2x, a new correction-impact view, the August discovery selected, S01's "
+     "dossier with its hash fields, and an article section with its claim and source links. "
+     "catalogue_derive.py now reads .vault/app.json as well as app.json, which is why v0.6.11's "
+     "page said the vault had no app manifest. The v0.6.11 entry is amended in place. The page now "
+     "also says what this case shows about the workflow: one company's agent built, wrote and "
+     "refactored the vault, another's audited and listed it, and nothing passed between them but "
+     "the vault, its read key and a review."),
+    ('v0.6.11', '2026-09-27', 'git 2719284a',
      "THE EVIDENCE DISPATCH: A NEWSROOM ON AN EVIDENCE VAULT, LISTED FROM ITS OWNER. The first "
      "vault on this site that sgit.ai did not build. Its owner sent a public read key and a "
      "readiness audit, and it is listed as the worked example of what newsroom.sgit.ai argues and "
      "graphs.sgit.ai describes: one real incident, an AI research agent's unauthorised access to an "
      "Australian government Medicare statistics portal, written up as six AI-authored articles and "
      "four role briefings over an eighteen-claim ledger, twenty-one source dossiers with frozen, "
-     "hashed anchors, a four-clock timeline and a typed graph of 87 nodes and 233 edges in seven "
+     "hashed anchors [CORRECTED IN v0.6.12: six selected excerpts have hashed byte anchors, not every source; and the briefings are four audience briefings, not desks], a four-clock timeline and a typed graph of 87 nodes and 233 edges in seven "
      "vocabularies, where a changed claim lists the stories that depend on it. The listing was run "
      "through the same method as our own vaults, without relying on the owner's audit: the key "
      "classified public and read-only; a read-key clone gave 233 files; our scan found only the "

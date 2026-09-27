@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.11) from the same file the table on that page is built
+> generated at build time (v0.6.12) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -13,9 +13,9 @@
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
 ## The vaults (37)
-- **#37 The Evidence Dispatch**: A newsroom on an evidence vault: six AI-authored articles on the Medicare agent case, backed by a claim ledger, source dossiers with frozen anchors, a timeline and a typed graph
+- **#37 The Evidence Dispatch**: A newsroom on an evidence vault: six AI-authored articles on the Medicare agent case, sharing an attributed claim ledger, source dossiers, a timeline and a graph of declared relationships
  - page: /demos/vaults/evidence-dispatch/index.md
- - id `c0vf9zz8` · Analysis · published 2026-09-27 · 12.8 MB · 233 files
+ - id `c0vf9zz8` · Analysis · published 2026-09-27 · 13.0 MB · 235 files
  - read key: `sgit_public_read_729cefe8a889901dcdb51e1e10f86578e5344409d2423ecc73b3c9de1d3105b2:c0vf9zz8`
 - **#36 Company X-Ray**: A business plan for reading a company's own documents together, with one invented company X-rayed and every finding tied to its evidence
  - page: /demos/vaults/company-xray/index.md
