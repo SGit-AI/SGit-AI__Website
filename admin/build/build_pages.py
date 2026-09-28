@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.16'
+SITE_VERSION = 'v0.6.17'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,23 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.16', '2026-09-27', 'this release',
+    ('v0.6.17', '2026-09-28', 'this release',
+     "THE SUPPLY CHAIN ARTICLE CREDITS THE PROGRAMME THAT PROMPTED IT. The article is about to be "
+     "sent to the panel and producers of the BBC Radio 4 programme it came from, and its opening "
+     "paragraph criticised them without naming them. Three changes from the author's change "
+     "request: the opening paragraph now names The Cost of Food, The Food Programme recorded live "
+     "at the Abergavenny Food Festival, and says the usual tools matter before adding one more; a "
+     "credit note follows it, naming the presenter, panel and producer, linking the episode, and "
+     "crediting Sustain's Unpicking Food Prices, which one panellist helped write; and a CC BY 4.0 "
+     "notice closes the article. Two softenings the author agreed to: the second paragraph now "
+     "addresses the wider food debate rather than that conversation, and the abstract's first "
+     "sentence follows the new opening instead of repeating the old criticism. The rest of the "
+     "article is unchanged. THE BUILD LEARNED TWO ARTICLE FIELDS: updated, shown in the byline "
+     "next to the original date, and license, a URL that becomes the page's link rel=license and "
+     "the JSON-LD license, so the notice in the body and the metadata come from one line. Six other "
+     "articles carry a CC BY 4.0 sentence in their body but not the field; they are listed for the "
+     "author and left alone in this pass.",),
+    ('v0.6.16', '2026-09-27', 'git 4030f39f',
      "THE OPEN-MODELS PASSAGE OF THE SUPPLY CHAIN ARTICLE, SAID PROPERLY. The author read the "
      "article and found the point about open-weight models understated: it is not that Chinese "
      "models are cheap, it is that economies building on open weights have an under-reported "
@@ -2948,6 +2964,15 @@ def footer(p, md=''):
 # Filled once the articles are loaded: path -> (author, url). json_ld reads it at call
 # time, so an article with an author gets a schema.org Person and the rest do not.
 ARTICLE_AUTHORS = {}
+# Same shape for licences: path -> licence URL, from the article's `license:` front matter.
+# json_ld and the <head> both read it, so the notice printed in the body, the JSON-LD
+# license and <link rel="license"> all come from one line in one file.
+ARTICLE_LICENSES = {}
+
+
+def license_link(path):
+    lic = ARTICLE_LICENSES.get(path)
+    return f'<link rel="license" href="{lic}">\n' if lic else ''
 
 
 def json_ld(path, title, desc):
@@ -2990,6 +3015,8 @@ def json_ld(path, title, desc):
     if au:
         u = au[1] if au[1].startswith('http') else f"https://sgit.ai/{au[1]}"
         page_node["author"] = {"@type": "Person", "name": au[0], "url": u}
+    if ARTICLE_LICENSES.get(path):
+        page_node["license"] = ARTICLE_LICENSES[path]
     blocks = [site, page_node] if path == 'index.html' else [page_node]
     return '\n'.join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False)
                       + '</script>' for b in blocks)
@@ -3069,7 +3096,7 @@ def page(path, title, desc, here, body):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="https://sgit.ai/{path}">
-<meta property="og:type" content="website">
+{license_link(path)}<meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/{path}">
 <meta property="og:title" content="{title}">
@@ -3920,6 +3947,8 @@ for _a in ARTICLES:
         if not _a['author_url']:
             raise SystemExit(f"{_a['where']}: author is set but author_url is not; a byline without a link is a name, not provenance")
         ARTICLE_AUTHORS[f"articles/{_a['slug']}.html"] = (_a['author'], _a['author_url'])
+    if _a['license']:
+        ARTICLE_LICENSES[f"articles/{_a['slug']}.html"] = _a['license']
 
 # An article with a hero figure must also have its link-preview card, or og_card() below
 # quietly falls back to og/default.jpg and the article ships with the generic card. That
@@ -4511,7 +4540,8 @@ def article_body(a):
             f' <p class="crumb"><a href="../index.html">Home</a> / '
             f'<a href="index.html">Articles</a> / {a["title"]}</p>\n'
             f' <h1>{a["title"]}</h1>\n'
-            f' <p class="small dim">{by}{a["date"]}{ver}'
+            f' <p class="small dim">{by}{a["date"]}'
+            + (f' &middot; updated {a["updated"]}' if a.get('updated') else '') + ver
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])

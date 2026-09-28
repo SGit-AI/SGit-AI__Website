@@ -318,11 +318,22 @@ class Content_Loader:
             self._require(meta, ['title', 'date', 'summary'], where)
             if not self.RE_DATE.match(meta['date']):
                 raise Content_Error(f'{where}: date must be YYYY-MM-DD, got {meta["date"]!r}')
+            updated = meta.get('updated', '')
+            if updated and not self.RE_DATE.match(updated):
+                raise Content_Error(f'{where}: updated must be YYYY-MM-DD, got {updated!r}')
+            if updated and updated < meta['date']:
+                raise Content_Error(f'{where}: updated ({updated}) is before date ({meta["date"]})')
             arts.append({
                 'slug': fn[:-3], 'title': meta['title'], 'date': meta['date'],
                 'summary': meta['summary'], 'tags': meta.get('tags', []),
                 'version': meta.get('version', ''),
                 'status': meta.get('status', 'published'),
+                # Optional. `updated` is the date of the last substantive change, shown in
+                # the byline next to the original date. `license` is a URL: it becomes the
+                # page's <link rel="license"> and the JSON-LD license, so the notice in the
+                # body and the metadata cannot disagree.
+                'updated': updated,
+                'license': meta.get('license', ''),
                 # A first-person article names its author, with a link, so the byline
                 # is provenance rather than an implication. Optional: site-voice
                 # articles leave it out and get no byline.

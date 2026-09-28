@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.16",
+  "site_version": "v0.6.17",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -852,7 +852,7 @@
       "slug": "supply-chain-of-vaults",
       "title": "A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down",
       "date": "2026-09-27",
-      "version": "v0.6.16",
+      "version": "v0.6.17",
       "tags": [
         "supply-chain",
         "food",
@@ -864,7 +864,7 @@
         "deflation",
         "article"
       ],
-      "summary": "The conversation about food security and the cost of living keeps asking for new ideas and keeps producing the same ones, and the loudest thing said about AI in that conversation is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models that run inside a company's own environment and can be built on, the under-reported advantage of the economies already using them, and sharing the journey rather than the curated success story."
+      "summary": "A BBC Radio 4 discussion on the cost of food asked for new ideas, and the loudest thing usually said about AI in the food debate is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models that run inside a company's own environment and can be built on, the under-reported advantage of the economies already using them, and sharing the journey rather than the curated success story."
     },
     {
       "slug": "connector-twin-before-you-deploy-an-agent",

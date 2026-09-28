@@ -39,9 +39,10 @@ for (const f of files.filter(f => f.endsWith('.html'))) {
 
   // 2. authoring contract: no declarative refs to vault files.
   // The contract exists because the vault host cannot serve a declarative fetch of a vault
-  // path — stylesheets, scripts and images must come through the bridge. <link rel="canonical">
-  // and rel="alternate" fetch nothing; they are metadata a crawler reads, so they are exempt.
-  const bad = html.match(/<link(?![^>]*rel="(?:canonical|alternate)")[^>]*href=(?!"data:)|<script[^>]+src=|<img[^>]+src=/g);
+  // path — stylesheets, scripts and images must come through the bridge. <link rel="canonical">,
+  // rel="alternate" and rel="license" fetch nothing; they are metadata a crawler reads, so
+  // they are exempt.
+  const bad = html.match(/<link(?![^>]*rel="(?:canonical|alternate|license)")[^>]*href=(?!"data:)|<script[^>]+src=|<img[^>]+src=/g);
   if (bad) { fails++; console.log('CONTRACT FAIL', rel, bad); }
 
   // 3. internal links must resolve
