@@ -3,6 +3,7 @@ title: The proof moved up, the homepage after the rebuild, next to the before pi
 date: 2026-09-07
 summary: The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.
 version: v0.2.60
+license: https://creativecommons.org/licenses/by/4.0/
 tags: homepage, positioning, vaults, agents
 status: published
 ---

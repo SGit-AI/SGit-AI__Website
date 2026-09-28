@@ -2,7 +2,7 @@
 
 > Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
 
-*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.6.17 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.6.18 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -100,6 +100,8 @@ The honest ledger:
 The last line is the one to keep. Every rule above is short and specific because it was learned by getting something wrong, in public, and writing down what it cost.
 
 *The full method, step by step, is on [the publishing playbook](../demos/vaults/publishing.md). The vaults themselves are in [the catalogue](../catalogue/index.md), each with the read key that opens it.*
+
+*© 2026 Dinis Cruz and the sgit.ai team. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
 
 [← All articles](index.md)
 

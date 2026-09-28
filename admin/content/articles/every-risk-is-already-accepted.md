@@ -5,6 +5,7 @@ author: Dinis Cruz
 author_url: about/index.html
 summary: A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.
 version: v0.6.5
+license: https://creativecommons.org/licenses/by/4.0/
 tags: risk, risk-acceptance, governance, grc, fractal-semantic-graphs, eu-ai-act, article
 status: published
 ---
@@ -177,3 +178,5 @@ The pitch is two questions, asked of any register: **who has accepted this, and 
 - [Article 9 of the AI Act, risk management system](https://artificialintelligenceact.eu/article/9/)
 - [The Risk Graph Explorer, the seven views](/demos/vaults/risk-graph-explorer/views/index.html)
 - [The Risk Acceptance Office vault](/demos/vaults/risk-acceptance/index.html)
+
+*© 2026 Dinis Cruz. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*

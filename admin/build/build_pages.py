@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.17'
+SITE_VERSION = 'v0.6.18'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,28 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.17', '2026-09-28', 'this release',
+    ('v0.6.18', '2026-09-28', 'this release',
+     "THE TOKEN BILL NOBODY IS SENDING. New article from a voice memo and a LinkedIn post: a media "
+     "analyst's week of Cloudflare logs showed AI answer engines fetching a small site 16,000 times "
+     "and sending ten readers back. The usual reading is a tragedy of the commons, and the article "
+     "makes a second one: those fetches are a cost to the fetcher too, every one a page of HTML "
+     "parsed and tokenised, more than half of them re-fetches of unchanged pages, on a web where "
+     "ninety per cent of crawled pages are unique and defeat every cache. Measured here for the "
+     "first time: the markdown twin of a page on this site is 62% fewer tokens than its HTML, over "
+     "all 183 pages that have twins (1,290,795 to 488,625, cl100k_base), against Cloudflare's own "
+     "example of 81%. The ladder of easy-to-read has four rungs, a markdown twin, a date and a hash, "
+     "frozen hashed sources and a typed graph, and every rung already exists on this site. Every "
+     "payment rail built so far prices the content and none prices the format; the proposal is a "
+     "share of the provider's saving, paid in money or in the provider's own tokens, with the "
+     "News Corp deal's cash-and-credits as the precedent. The per-site arithmetic is small and the "
+     "article says so, lists six objections including the analyst's own, and names the three "
+     "numbers in the providers' logs that would settle it. Two figures, drawn as SVG. Twenty-nine "
+     "external sources, every one fetched and checked; the analyst's newsletter returned 403 so only the "
+     "LinkedIn post is cited. LICENCES ON EVERY ARTICLE: the license field from v0.6.17 is now set "
+     "on all fourteen articles, and the seven that had no notice in their body have one, worded so "
+     "it covers the article's own text and leaves quoted material and linked sources under their "
+     "own licences.",),
+    ('v0.6.17', '2026-09-28', 'git bcb99f91',
      "THE SUPPLY CHAIN ARTICLE CREDITS THE PROGRAMME THAT PROMPTED IT. The article is about to be "
      "sent to the panel and producers of the BBC Radio 4 programme it came from, and its opening "
      "paragraph criticised them without naming them. Three changes from the author's change "

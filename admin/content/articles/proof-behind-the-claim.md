@@ -3,6 +3,7 @@ title: The proof is two clicks behind the claim, what the homepage gets wrong, a
 date: 2026-09-07
 summary: Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
 version: v0.2.59
+license: https://creativecommons.org/licenses/by/4.0/
 tags: homepage, positioning, vaults, agents
 status: published
 ---

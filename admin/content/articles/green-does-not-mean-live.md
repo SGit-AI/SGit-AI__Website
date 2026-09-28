@@ -2,6 +2,7 @@
 title: Green does not mean live
 date: 2026-08-17
 version: v0.2.33
+license: https://creativecommons.org/licenses/by/4.0/
 tags: ci, deploy, verification
 summary: Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 ---
@@ -88,3 +89,5 @@ All three are acceptable against the failure they replace. The first one to bite
 ---
 
 *The release script is [in the repository](https://github.com/SGit-AI/SGit-AI__CLI); the releases described here are [v0.2.31 to v0.2.33](/admin/versions.html).*
+
+*© 2026 Dinis Cruz and the sgit.ai team. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
