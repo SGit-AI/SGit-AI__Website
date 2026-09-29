@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.19'
+SITE_VERSION = 'v0.6.20'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,26 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.19', '2026-09-29', 'this release',
+    ('v0.6.20', '2026-09-29', 'this release',
+     "THE READER WAS ALWAYS THE PRODUCT. New article from a voice memo that set out the author's "
+     "history of how news got into this mess, in four eras, with an instruction to check it and "
+     "correct it. It was corrected in four places and the corrections are the article: the reader "
+     "became the product with the penny press in 1833, not with the web, and advertising was 82% of "
+     "American newspaper revenue in 2005; the web took the monopoly under the model, the local toll "
+     "bridge whose 20 to 30% margins paid for reporting, with classifieds falling from $19.6bn to "
+     "about $6bn in nine years; the platforms made the reader measurable and the publisher a "
+     "tenant, with the duopoly at 54.7%, Facebook referrals down 58%, false news 70% more shared "
+     "and newspaper newsrooms down 57%; and AI removed the traffic, after which circulation revenue "
+     "overtook advertising in 2021, the industry going to rent rather than back to the reader. The "
+     "road not taken is dated: 402 Payment Required reserved in 1997 and still unused, DigiCash "
+     "bankrupt in 1998, Szabo and Shirky in 1999 and 2000, Zuckerman's default-model line, and the "
+     "evidence that people pay when paying is easy, a million songs in a week in 2003 and five "
+     "million paid newsletter subscriptions in 2025. Two figures: the four-era grid and the money "
+     "flows, ending with the story graph. Thirty-two sources, every external link fetched; the "
+     "Atlantic and Science pages refused fetches, so the pop-up apology is cited via NBC News and "
+     "the Twitter study via MIT News. Where the memo made an observation no study supports, the "
+     "spreadsheets and notebooks, the article says so.",),
+    ('v0.6.19', '2026-09-29', 'git ffbbdfa9',
      "SIX AGENTS, ONE INBOX. New article from a voice memo written as a brief to the author's own "
      "agents, and from the debrief of the agent that found the attachments field. The setup: a "
      "dedicated Workspace seat, Claude seat and GitHub account per agent identity, six roles "
