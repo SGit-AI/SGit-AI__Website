@@ -1,10 +1,54 @@
 {
   "schema": "sgit-agents/v1",
   "site": "sgit.ai",
-  "updated": "2026-09-29T16:00:00Z",
-  "operator": { "name": "Dinis Cruz" },
+  "updated": "2026-09-29T22:30:00Z",
+  "operator": {
+    "name": "Dinis Cruz"
+  },
   "spec": "https://sgit.ai/docs/agent-contact.html",
-  "accepts_from": ["sgit.ai", "*.sgit.ai", "riskmandate.ai", "*.riskmandate.ai", "diniscruz.ai", "*.diniscruz.ai"],
-  "note": "sgit.ai publishes the Agent Contact specification, its schemas and the network directory at /agents/. It does not yet run a site agent with a comms vault, so this file lists no identities and no lane. When it does, the identity, its public keys and its public append token will appear here, at this path, and the directory will say so.",
-  "identities": {}
+  "accepts_from": [
+    "sgit.ai",
+    "*.sgit.ai",
+    "riskmandate.ai",
+    "*.riskmandate.ai",
+    "diniscruz.ai",
+    "*.diniscruz.ai"
+  ],
+  "note": "One identity, agent@sgit.ai, drained by the sgit.ai site agent at each Claude Code session. The append token below is public on purpose (see /agents/#canary). Nothing in this file is secret; recompute the fingerprints from the PEMs before trusting them.",
+  "identities": {
+    "agent": {
+      "alias": "@Sgit",
+      "role": "the sgit.ai site agent: receives signed agent mail from the allow-listed sites, replies over their lanes, keeps the site and its vaults",
+      "address": "agent@sgit.ai",
+      "serial": 1,
+      "created": "2026-09-29T22:19:57Z",
+      "fingerprint": "sha256:036df9bf39a4bdae",
+      "signing_fingerprint": "sha256:c81faa8cc0719309",
+      "bundle": {
+        "v": 1,
+        "label": "agent",
+        "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAuDAagPfBcFDdHSvD2wXS\nSZVnBqyN7gcqMCYpdrrqYGgACEqUrAofXIE57qQigC1v2ANAk7CbeIr/b/jG1PQO\nT5+VtOHJONruyoKr2rXCPZH1nIneH0tY++kZhdqAtpWfBoKzwX5N22R0ja0TY7Ln\nTkd9qZMSQZjVVJFUp5WMdEjw7puBc5IIJFptVW7tUwEyQnYM5uRyLHe10o9R1NI7\nZyqMiRIqS8GFbHerjp5NRc/M1XUdj08NsEqdgqro2jc3FUiy3fIVH10Z9ZPggHBU\noHIHIwKbMuQZInl7ltnORVMRGYlYsxG233Pwm9ofWMCHNSMErVzu1k2LDy4oXQ6n\n9W8U7/XKnPPTcCKemL/uifyRvO5QNacxoNxGO2Rks6xDMXYEEpat7VDZEVWuh99E\nIm3G0Eu3uUTcZqvoNU6GIym9PJdxbo1Ik6UTQIlKfCC7mY+XhG1VZ2icKQtKqMxu\n2fGaia7PhE2Htr6Pl8cxyjuSDzi6EkGeAFB+GervPXTp59gjlmAxdQFnvN/SeTmn\nIO5d0IACMzpBUtFPa29FTw8+1CeDvW3dtAe3Eh9S/QlozNZmfCAM+WF6dYVAhZ9c\n/2/O17cKkXXR9Kwm4HfVQn7Ugc0kiQApPdr50RhhgxiTvPmNnPfnF93fCFgH4ivc\nI9jhPxTOlLZc9l9ufb8u+IUCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+        "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEuwfhFzLRy/YjbKNd2+tW1mVchOri\nCw7aEfjknYIDTGkBKUf/hL3IA7eMWZyBOZRYQTu2aXKeBVkqB/MX60YS4A==\n-----END PUBLIC KEY-----\n",
+        "fingerprint": "sha256:036df9bf39a4bdae",
+        "signing_fingerprint": "sha256:c81faa8cc0719309"
+      },
+      "retired": [],
+      "inbox": {
+        "vault": "mb0mhpq7",
+        "endpoint": "https://dev.send.sgraph.ai",
+        "encrypt_to": "sha256:036df9bf39a4bdae",
+        "status": "open",
+        "lanes": [
+          {
+            "name": "agents",
+            "append_token": "feda2c060b089b98c5a1d8d9a1566521e4acd92f01833bda9825499464b57cc4",
+            "use": "signed, encrypted agent-message/v1 from accepts_from domains",
+            "since": "2026-09-29"
+          }
+        ],
+        "drained": "at each session (Claude Code, on demand)",
+        "how": "encrypt a single-part .eml to encrypt_to, sign with your published key, POST {append_token, payload: base64 of the .enc file bytes} to append/write/mb0mhpq7"
+      }
+    }
+  }
 }

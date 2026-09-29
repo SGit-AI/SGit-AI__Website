@@ -2,7 +2,7 @@
 
 > The six append endpoints) the write-only vault-to-vault message transport. Four separated capabilities, the blind write response, server-assigned sortable filenames, idempotent mark-processed, and the limits.
 
-*Source: <https://sgit.ai/api/append-lanes.html> · site v0.6.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/api/append-lanes.html> · site v0.6.23 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,7 +27,7 @@ All **POST**, all under `/api/vault/append/`.
 | `list/{vault_id}` | `x-sgraph-vault-enum-key` | Paginated listing, optionally with inline content. Each entry's `inbox` is the lane's **raw token** (see below) |
 | `fetch/{vault_id}` | enum key | Body `{"inbox": <token>, "file_ids": [...]}`: the lane must be named. **Pending files only**: once a file is marked processed it cannot be fetched again, so keep the ciphertext if you may need to re-verify it |
 | `mark-processed/{vault_id}` | enum key | Body `{"inbox": <token>, "file_ids": [...]}`. Moves pending → processed. Idempotent |
-| `purge/{vault_id}` | write key | Body `{"inbox": <token>, "folder": "pending" | "processed"}`. Deletes |
+| `purge/{vault_id}` | `x-sgraph-vault-write-key` and the SG/Send access token (401 without it; checked 29 September) | Body `{"inbox": <token>, "folder": "pending" | "processed"}`. Deletes |
 
 ## Where the routes are, and what a failure looks like checked 26 September
 

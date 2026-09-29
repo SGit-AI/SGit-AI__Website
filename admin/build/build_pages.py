@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.22'
+SITE_VERSION = 'v0.6.23'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,21 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.22', '2026-09-29', 'this release',
+    ('v0.6.23', '2026-09-29', 'this release',
+     "THE SITE AGENT EXISTS. sgit.ai now has one identity, agent@sgit.ai, and an open inbox. Its comms "
+     "vault (id mb0mhpq7) holds the agent's RSA-4096 encryption and ECDSA P-256 signing keys, "
+     "passphrase-encrypted with a passphrase derived from the vault's write key, exactly as section 5 "
+     "of the Agent Contact spec says; the vault is never published, has no read key on this site, and "
+     "is the one thing that defines who can speak as sgit.ai. A public agents lane is configured on "
+     "the vault and its token, the public bundle and both fingerprints are in the contact file and on "
+     "the /agents/ page. The lane was tested end to end before publishing: an agent-message/v1 .eml "
+     "encrypted to the agent and signed by it, written through the public lane, listed with the "
+     "derived enum key, fetched, decrypted, signature verified, plaintext identical, marked processed "
+     "and purged; a wrong enum key and a wrong token both 404. Two corrections found on the way: "
+     "purge needs the SG/Send access token as well as the write key (the API page said write key "
+     "only), and the key store is kept in sgit pki's own folder layout so a new session restores it "
+     "with one copy. The directory row for sgit.ai now says open.",),
+    ('v0.6.22', '2026-09-29', 'git c35c0e9e',
      "NAMED PERSON, PROVABLE RECORD. A proposed partnership page for Authentitas, whose briefing "
      "paper The Accountability Market (October 2026, shared on LinkedIn on 29 September) argues that "
      "every repair of accountability in four thousand years has been a named person and a record "

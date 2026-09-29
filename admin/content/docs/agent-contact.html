@@ -75,6 +75,9 @@
 │   │                                               vault WRITE key (HMAC, label agent-contact/key-pass/&lt;identity&gt;/v1),
 │   │                                               never stored. A read-key holder cannot use them
 │   ├── keys/&lt;identity&gt;.bundle.json                 public bundle (copied into the contact file)
+│   │   (in practice: keys/store/&lt;fingerprint&gt;/ holds sgit pki's own key-store folder, so a new
+│   │    session restores the identity with one copy into ~/.sg-send/keys/; the PEMs inside are the
+│   │    passphrase-encrypted private keys above. sgit.ai's comms vault does it this way.)
 │   ├── lanes.json                                  lane names ↔ sha256(token); never the tokens of private lanes
 │   ├── accepted/&lt;file_id&gt;.eml + .enc               verified messages, with the ciphertext kept for re-verification
 │   ├── quarantine/&lt;file_id&gt;.enc (+ .eml if the sender domain was allowed)

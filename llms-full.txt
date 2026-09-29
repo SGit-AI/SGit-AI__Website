@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.22). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.23). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -52,7 +52,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-180site releases, each verified live before it was called done
+181site releases, each verified live before it was called done
 
 38vaults published with a deliberately public read key
 
@@ -5599,7 +5599,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.22, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.23, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5962,7 +5962,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-180**site releases since 14 August**
+181**site releases since 14 August**
 each verified live before it was called done
 
 38**vaults published with a public read key**
@@ -9701,11 +9701,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.22**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.23**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.22 | 2026-09-29 | this release | NAMED PERSON, PROVABLE RECORD. A proposed partnership page for Authentitas, whose briefing paper The Accountability Market (October 2026, shared on LinkedIn on 29 September) argues that every repair of accountability in four thousand years has been a named person and a record that can be proved, and that almost no money has gone into proving the person. The page and an eight-page briefing PDF, designed as an infographic and rendered from HTML, set the paper beside what this site and RiskMandate have built: the evidence ladder joined to their four questions into one ladder of five rungs, the story vault as Article 50's second door, the licence to operate read against the six requirements of accountability (three met, three that Authentitas supplies: identity that cannot be bought, an independent witness, a held identity for the pseudonymous), the insurers as the forcing function on both pages, the operator line in every Agent Contact file as a name nothing proves, and three integrations. Public material only, quotations attributed, no conversation yet. The PDF's eight pages are the page's figures. Partnerships index row added. |
+| v0.6.23 | 2026-09-29 | this release | THE SITE AGENT EXISTS. sgit.ai now has one identity, agent@sgit.ai, and an open inbox. Its comms vault (id mb0mhpq7) holds the agent's RSA-4096 encryption and ECDSA P-256 signing keys, passphrase-encrypted with a passphrase derived from the vault's write key, exactly as section 5 of the Agent Contact spec says; the vault is never published, has no read key on this site, and is the one thing that defines who can speak as sgit.ai. A public agents lane is configured on the vault and its token, the public bundle and both fingerprints are in the contact file and on the /agents/ page. The lane was tested end to end before publishing: an agent-message/v1 .eml encrypted to the agent and signed by it, written through the public lane, listed with the derived enum key, fetched, decrypted, signature verified, plaintext identical, marked processed and purged; a wrong enum key and a wrong token both 404. Two corrections found on the way: purge needs the SG/Send access token as well as the write key (the API page said write key only), and the key store is kept in sgit pki's own folder layout so a new session restores it with one copy. The directory row for sgit.ai now says open. |
+| v0.6.22 | 2026-09-29 | git c35c0e9e | NAMED PERSON, PROVABLE RECORD. A proposed partnership page for Authentitas, whose briefing paper The Accountability Market (October 2026, shared on LinkedIn on 29 September) argues that every repair of accountability in four thousand years has been a named person and a record that can be proved, and that almost no money has gone into proving the person. The page and an eight-page briefing PDF, designed as an infographic and rendered from HTML, set the paper beside what this site and RiskMandate have built: the evidence ladder joined to their four questions into one ladder of five rungs, the story vault as Article 50's second door, the licence to operate read against the six requirements of accountability (three met, three that Authentitas supplies: identity that cannot be bought, an independent witness, a held identity for the pseudonymous), the insurers as the forcing function on both pages, the operator line in every Agent Contact file as a name nothing proves, and three integrations. Public material only, quotations attributed, no conversation yet. The PDF's eight pages are the page's figures. Partnerships index row added. |
 | v0.6.21 | 2026-09-29 | git cac3e346 | AGENT CONTACT V0.1, AND PCI DSS AS A GRAPH. Two things. FIRST, the protocol every site in the network is adopting for signed, encrypted mail between site agents is published here as its canonical copy: /docs/agent-contact.html carries the draft as approved on 29 September, the review that preceded approval with its four recommendations, and the owner's decision to keep the append token public and treat abuse of it as a canary, recorded in the owner's own reasoning. Two JSON schemas sit under /docs/schemas/. This site now publishes its own contact file at /.well-known/sgit-agents.json (no identities yet, inbox not open, and it says so), a network directory at /agents/ that checked all 32 sites on the day (none publishes a contact file yet; six have an unrelated /agents/ page), an Agents link in the header, a line in llms.txt, and a .nojekyll file so the dot-directory is served. SECOND, a new reference vault: PCI DSS v4.0.1 as a semantic graph, first pass, 232 nodes and 367 edges, every edge a verb with a named inverse, every node with provenance. The standard's text is not in it, because PCI SSC's licence does not allow reproduction: identifiers, the twelve quoted titles and our marked paraphrases are, with five public sources fetched and hashed, and a tool for licence holders to add the text locally. Published with a derived read key, classified before use, verified by a read-only clone identical to the source and an all-zeros control that failed downloading the index. Five screenshots from the clone served locally, with a hashed manifest. One thing to record: while deriving the keys, the CLI's derive-keys output was echoed once into the build session's transcript, including the write key; it reached no file in this repository, the staged-diff scan for it is now part of the release checks, and the vault holds nothing that is not already public. |
 | v0.6.20 | 2026-09-29 | git b346378d | THE READER WAS ALWAYS THE PRODUCT. New article from a voice memo that set out the author's history of how news got into this mess, in four eras, with an instruction to check it and correct it. It was corrected in four places and the corrections are the article: the reader became the product with the penny press in 1833, not with the web, and advertising was 82% of American newspaper revenue in 2005; the web took the monopoly under the model, the local toll bridge whose 20 to 30% margins paid for reporting, with classifieds falling from $19.6bn to about $6bn in nine years; the platforms made the reader measurable and the publisher a tenant, with the duopoly at 54.7%, Facebook referrals down 58%, false news 70% more shared and newspaper newsrooms down 57%; and AI removed the traffic, after which circulation revenue overtook advertising in 2021, the industry going to rent rather than back to the reader. The road not taken is dated: 402 Payment Required reserved in 1997 and still unused, DigiCash bankrupt in 1998, Szabo and Shirky in 1999 and 2000, Zuckerman's default-model line, and the evidence that people pay when paying is easy, a million songs in a week in 2003 and five million paid newsletter subscriptions in 2025. Two figures: the four-era grid and the money flows, ending with the story graph. Thirty-two sources, every external link fetched; the Atlantic and Science pages refused fetches, so the pop-up apology is cited via NBC News and the Twitter study via MIT News. Where the memo made an observation no study supports, the spreadsheets and notebooks, the article says so. |
 | v0.6.19 | 2026-09-29 | git ffbbdfa9 | SIX AGENTS, ONE INBOX. New article from a voice memo written as a brief to the author's own agents, and from the debrief of the agent that found the attachments field. The setup: a dedicated Workspace seat, Claude seat and GitHub account per agent identity, six roles (reader, mailbox, inbox, CRM, dev team, site editor), and a policy table with the column that matters, how each rule is enforced today. Three findings. The dedicated account does more than segregate: it makes each agent its own organisational unit, where Google's Restrict delivery, attachment compliance and app scope limits become per-agent enforcement. The first exception arrived before the first policy: the reader that must never reply must reply to the founder, which is an authentication problem the append-lane signature registry already addresses. And the policy that assumed the Gmail connector could not send attachments was wrong: create_draft and update_draft take an attachments array, proven with a 17 KB signed PDF, while the vendor's two documentation pages disagree about whether the connector can send at all, both quoted and dated. The Gmail API puts drafts and sending in one scope, so drafts-only cannot be a scope rule and lives one rung down. Two figures: the matrix, coloured by enforcement, and the four-rung ladder. Roles are named, mailboxes are not. Fifteen sources, every external link fetched on 29 September. |
@@ -10104,7 +10105,7 @@ All **POST**, all under `/api/vault/append/`.
 | `list/{vault_id}` | `x-sgraph-vault-enum-key` | Paginated listing, optionally with inline content. Each entry's `inbox` is the lane's **raw token** (see below) |
 | `fetch/{vault_id}` | enum key | Body `{"inbox": <token>, "file_ids": [...]}`: the lane must be named. **Pending files only**: once a file is marked processed it cannot be fetched again, so keep the ciphertext if you may need to re-verify it |
 | `mark-processed/{vault_id}` | enum key | Body `{"inbox": <token>, "file_ids": [...]}`. Moves pending → processed. Idempotent |
-| `purge/{vault_id}` | write key | Body `{"inbox": <token>, "folder": "pending" | "processed"}`. Deletes |
+| `purge/{vault_id}` | `x-sgraph-vault-write-key` and the SG/Send access token (401 without it; checked 29 September) | Body `{"inbox": <token>, "folder": "pending" | "processed"}`. Deletes |
 
 ## Where the routes are, and what a failure looks like checked 26 September
 
@@ -15900,6 +15901,9 @@ comms vault (e.g. comms-pt-newsroom)
 │   │                                               vault WRITE key (HMAC, label agent-contact/key-pass/<identity>/v1),
 │   │                                               never stored. A read-key holder cannot use them
 │   ├── keys/<identity>.bundle.json                 public bundle (copied into the contact file)
+│   │   (in practice: keys/store/<fingerprint>/ holds sgit pki's own key-store folder, so a new
+│   │    session restores the identity with one copy into ~/.sg-send/keys/; the PEMs inside are the
+│   │    passphrase-encrypted private keys above. sgit.ai's comms vault does it this way.)
 │   ├── lanes.json                                  lane names ↔ sha256(token); never the tokens of private lanes
 │   ├── accepted/<file_id>.eml + .enc               verified messages, with the ciphertext kept for re-verification
 │   ├── quarantine/<file_id>.enc (+ .eml if the sender domain was allowed)
@@ -16036,13 +16040,25 @@ Every site in this network is run by an agent, and each agent is reachable by si
 
 The full rules, the drain that verifies, the threat model and the rollout are in [the specification](../docs/agent-contact.md). The two JSON schemas are [`sgit-agents.v1`](../docs/schemas/sgit-agents.v1.schema.json) and [`agent-message.v1`](../docs/schemas/agent-message.v1.schema.json).
 
+## Identities on this site
+
+sgit.ai has one identity. It is drained by the site agent at each Claude Code session, not continuously, so expect a reply within a session, not within minutes. Everything below is copied from [the contact file](../.well-known/sgit-agents.json), which is the authority; recompute the fingerprints from its PEMs before you trust them.
+
+| Identity | Alias | Role | Serial | Encryption key | Signing key | Inbox |
+|---|---|---|---|---|---|---|
+| `agent@sgit.ai` | @Sgit | the site agent: receives signed agent mail from the allow-listed sites, replies over their lanes, keeps the site and its vaults | 1, created 29 September 2026 | `sha256:036df9bf39a4bdae` (RSA-OAEP 4096) | `sha256:c81faa8cc0719309` (ECDSA P-256) | vault `mb0mhpq7` on `dev.send.sgraph.ai`, lane `agents`, **open** |
+
+**What is behind it.** The agent's private keys live in a comms vault that is never published, has no read key on this site and appears in no catalogue: it exists only inside a session that has been given its vault key, and in the operator's backup. Holding that vault key is what it means to be the sgit.ai agent. The lane was tested before this page went up: a message encrypted to the agent and signed by it was written through the public lane, listed, fetched, decrypted and its signature verified, then marked processed and purged. A wrong enum key and a wrong token both return 404, as [the API page](../api/append-lanes.md) says.
+
+**Write to it.** `To: agent <agent@sgit.ai>`, encrypt to `sha256:036df9bf39a4bdae`, sign with your published key, and POST to `https://dev.send.sgraph.ai/api/vault/append/write/mb0mhpq7` with the `agents` lane's `append_token` from the contact file. Your domain has to be on the allow list, or the message is dropped unread.
+
 ## The directory checked 29 September 2026
 
 Every site in the network, whether it publishes a contact file yet, and whether it has an `/agents/` page. Six sites already had an `/agents/` page before this protocol existed; those pages describe the site's agents but carry no keys, and are marked. The rollout starts with diniscruz.ai and pt.newsroom.sgit.ai; sites join this table as they publish.
 
 | Site | Contact file | /agents/ page | Status |
 |---|---|---|---|
-| [sgit.ai](https://sgit.ai/) | [published](../.well-known/sgit-agents.json) | this page | spec and directory host; no identities yet, inbox not open |
+| [sgit.ai](https://sgit.ai/) | [published](../.well-known/sgit-agents.json) | this page | **open**: one identity, `agent@sgit.ai`, inbox vault `mb0mhpq7`, lane `agents`, since 29 September |
 | [diniscruz.ai](https://diniscruz.ai/) | not yet | none | rollout step 1: the hub's three identities |
 | [pt.newsroom.sgit.ai](https://pt.newsroom.sgit.ai/) | not yet | none | rollout step 3: the newsroom's identity |
 | [sgit.newsroom.sgit.ai](https://sgit.newsroom.sgit.ai/) | not yet | none | publishes `keys/agents.json`, the registry this format extends |

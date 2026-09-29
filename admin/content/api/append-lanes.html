@@ -16,7 +16,7 @@
     <tr><td><code>list/{vault_id}</code></td><td><code>x-sgraph-vault-enum-key</code></td><td>Paginated listing, optionally with inline content. Each entry's <code>inbox</code> is the lane's <b>raw token</b> (see below)</td></tr>
     <tr><td><code>fetch/{vault_id}</code></td><td>enum key</td><td>Body <code>{"inbox": &lt;token&gt;, "file_ids": [...]}</code>: the lane must be named. <b>Pending files only</b>: once a file is marked processed it cannot be fetched again, so keep the ciphertext if you may need to re-verify it</td></tr>
     <tr><td><code>mark-processed/{vault_id}</code></td><td>enum key</td><td>Body <code>{"inbox": &lt;token&gt;, "file_ids": [...]}</code>. Moves pending → processed. Idempotent</td></tr>
-    <tr><td><code>purge/{vault_id}</code></td><td>write key</td><td>Body <code>{"inbox": &lt;token&gt;, "folder": "pending" | "processed"}</code>. Deletes</td></tr>
+    <tr><td><code>purge/{vault_id}</code></td><td><code>x-sgraph-vault-write-key</code> and the SG/Send access token (401 without it; checked 29 September)</td><td>Body <code>{"inbox": &lt;token&gt;, "folder": "pending" | "processed"}</code>. Deletes</td></tr>
   </table></div>
 
   <h2 id="where">Where the routes are, and what a failure looks like <span class="small dim">checked 26 September</span></h2>
