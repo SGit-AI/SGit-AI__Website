@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.23'
+SITE_VERSION = 'v0.6.24'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,21 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.23', '2026-09-29', 'this release',
+    ('v0.6.24', '2026-09-29', 'this release',
+     "WHO WROTE THIS, AND WHAT IT IS A COMMENT ON. The Authentitas response PDF and page, revised on the "
+     "owner's notes. Every page of the PDF now carries a byline naming the agent that wrote it, "
+     "agent@sgit.ai, and the model, the way Article 50 asks; the byline is not typed by hand but "
+     "generated from admin/build/agent_byline.json, which the agent's session keeps current from its own "
+     "session record, and the same file feeds the {AGENT_BYLINE} token on pages. The cover now says "
+     "plainly that the whole document is a comment on The Accountability Market and shows the paper's "
+     "first page; the page shows it too. Every integration with Authentitas is marked as proposed, not "
+     "built, on the cover, on the ladder, in the six-requirements table, on the operator page and on the "
+     "proposal page, with a caveat that there has been no conversation and no code. The word for the "
+     "steps of a ladder that the owner did not want is gone from the PDF and the page; it remains in "
+     "twenty other pages of this site, listed for a decision. Also this release: the comms vault's drain "
+     "tool verifies signatures the way sgit makes them (raw r||s over the ciphertext bytes), and the "
+     "third self-test was accepted end to end against the live contact file.",),
+    ('v0.6.23', '2026-09-29', 'git 66356409',
      "THE SITE AGENT EXISTS. sgit.ai now has one identity, agent@sgit.ai, and an open inbox. Its comms "
      "vault (id mb0mhpq7) holds the agent's RSA-4096 encryption and ECDSA P-256 signing keys, "
      "passphrase-encrypted with a passphrase derived from the vault's write key, exactly as section 5 "
@@ -3974,7 +3988,28 @@ def derived_tokens():
     words = number_words(n_vaults)
     return {'{VAULTS_N}': str(n_vaults), '{VAULTS_WORDS}': words, '{VAULTS_WORDS_CAP}': words[:1].upper() + words[1:],
             '{PLANS_N}': str(len(plans)), '{PLANS_WORDS}': number_words(len(plans)),
-            '{PLANS_WORDS_CAP}': number_words(len(plans)).capitalize(), '{PLANS_LIST}': plan_list}
+            '{PLANS_WORDS_CAP}': number_words(len(plans)).capitalize(), '{PLANS_LIST}': plan_list,
+            '{AGENT_BYLINE}': agent_byline_html()}
+
+
+def agent_byline():
+    # admin/build/agent_byline.json is kept current by the agent's own session; the model fields come
+    # from the session's get_session call. Documents written by the agent carry it (EU AI Act, Article 50).
+    return json.load(open(os.path.join(ADMIN, 'build', 'agent_byline.json')))
+
+
+def agent_byline_text(b=None):
+    b = b or agent_byline()
+    return (f"Written by {b['agent']}, the sgit.ai site agent ({b['model_name']}, {b['model_id']}), "
+            f"for {b['for']}. AI-generated text, disclosed as Article 50 of the EU AI Act asks; "
+            f"the person with editorial responsibility is Dinis Cruz.")
+
+
+def agent_byline_html(b=None):
+    b = b or agent_byline()
+    return (f'<a href="{b["agent_page"]}">{b["agent"]}</a>, the sgit.ai site agent ({b["model_name"]}, '
+            f'<code>{b["model_id"]}</code>), for {b["for"]}. AI-generated text, disclosed as Article 50 of the '
+            f'EU AI Act asks; the person with editorial responsibility is Dinis Cruz.')
 
 
 def apply_tokens(text, tokens):
