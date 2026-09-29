@@ -4,71 +4,235 @@
   "title": "sgit-agents/v1: the contact file a site publishes at /.well-known/sgit-agents.json",
   "description": "Agent Contact v0.1. Public keys, fingerprints and the public append lane of each agent identity a site runs. Never contains a vault key, write key, enum key, private key, access token or private per-sender append token.",
   "type": "object",
-  "required": ["schema", "site", "updated", "operator", "spec", "accepts_from", "identities"],
+  "required": [
+    "schema",
+    "site",
+    "updated",
+    "operator",
+    "spec",
+    "accepts_from",
+    "identities"
+  ],
   "additionalProperties": false,
   "properties": {
-    "schema": { "const": "sgit-agents/v1" },
-    "site": { "type": "string", "description": "The hostname this file is served from. Keys are trusted because this host serves them over HTTPS at the standard path.", "pattern": "^[a-z0-9.-]+$" },
-    "updated": { "type": "string", "format": "date-time" },
-    "operator": {
-      "type": "object", "required": ["name"], "additionalProperties": false,
-      "properties": { "name": { "type": "string" }, "human": { "type": "string", "description": "The operator's own identity alias, if published" } }
+    "schema": {
+      "const": "sgit-agents/v1"
     },
-    "spec": { "type": "string", "format": "uri", "description": "The version of Agent Contact this file follows" },
+    "site": {
+      "type": "string",
+      "description": "The hostname this file is served from. Keys are trusted because this host serves them over HTTPS at the standard path.",
+      "pattern": "^[a-z0-9.-]+$"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "operator": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "human": {
+          "type": "string",
+          "description": "The operator's own identity alias, if published"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "A monitored mailbox for people and for agents without a lane. Optional; added 29 September 2026, additive to v1"
+        }
+      }
+    },
+    "spec": {
+      "type": "string",
+      "format": "uri",
+      "description": "The version of Agent Contact this file follows"
+    },
     "accepts_from": {
-      "type": "array", "items": { "type": "string", "pattern": "^(\\*\\.)?[a-z0-9.-]+$" },
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(\\*\\.)?[a-z0-9.-]+$"
+      },
       "description": "Allow list of sender domains. A wildcard entry matches subdomains only; list apex domains explicitly."
     },
-    "note": { "type": "string" },
+    "note": {
+      "type": "string"
+    },
     "identities": {
       "type": "object",
       "description": "One slot per identity; the key is the identity name that appears before the @ in agent-message From and To headers.",
       "additionalProperties": {
         "type": "object",
-        "required": ["alias", "role", "address", "serial", "created", "fingerprint", "signing_fingerprint", "bundle", "inbox"],
+        "required": [
+          "alias",
+          "role",
+          "address",
+          "serial",
+          "created",
+          "fingerprint",
+          "signing_fingerprint",
+          "bundle",
+          "inbox"
+        ],
         "additionalProperties": false,
         "properties": {
-          "alias": { "type": "string" },
-          "role": { "type": "string" },
-          "address": { "type": "string", "pattern": "^[^@\\s]+@[a-z0-9.-]+$", "description": "<identity>@<site>" },
-          "serial": { "type": "integer", "minimum": 0, "description": "Only ever goes up. A key change is also a commit to the site's repository." },
-          "created": { "type": "string", "format": "date-time" },
-          "fingerprint": { "$ref": "#/$defs/fingerprint", "description": "sgit pki fingerprint of the encryption key: sha256: plus 16 hex of the SPKI DER. Readers recompute it from the PEM and reject the file if it differs." },
-          "signing_fingerprint": { "$ref": "#/$defs/fingerprint" },
+          "alias": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+            "pattern": "^[^@\\s]+@[a-z0-9.-]+$",
+            "description": "<identity>@<site>"
+          },
+          "serial": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Only ever goes up. A key change is also a commit to the site's repository."
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fingerprint": {
+            "$ref": "#/$defs/fingerprint",
+            "description": "sgit pki fingerprint of the encryption key: sha256: plus 16 hex of the SPKI DER. Readers recompute it from the PEM and reject the file if it differs."
+          },
+          "signing_fingerprint": {
+            "$ref": "#/$defs/fingerprint"
+          },
           "bundle": {
-            "type": "object", "required": ["v", "label", "encrypt", "sign", "fingerprint", "signing_fingerprint"], "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "v",
+              "label",
+              "encrypt",
+              "sign",
+              "fingerprint",
+              "signing_fingerprint"
+            ],
+            "additionalProperties": false,
             "properties": {
-              "v": { "const": 1 },
-              "label": { "type": "string" },
-              "encrypt": { "$ref": "#/$defs/pem" },
-              "sign": { "$ref": "#/$defs/pem" },
-              "fingerprint": { "$ref": "#/$defs/fingerprint" },
-              "signing_fingerprint": { "$ref": "#/$defs/fingerprint" }
+              "v": {
+                "const": 1
+              },
+              "label": {
+                "type": "string"
+              },
+              "encrypt": {
+                "$ref": "#/$defs/pem"
+              },
+              "sign": {
+                "$ref": "#/$defs/pem"
+              },
+              "fingerprint": {
+                "$ref": "#/$defs/fingerprint"
+              },
+              "signing_fingerprint": {
+                "$ref": "#/$defs/fingerprint"
+              }
             }
           },
           "retired": {
             "type": "array",
-            "items": { "type": "object", "required": ["serial", "fingerprint", "signing_fingerprint", "retired"], "additionalProperties": false,
-              "properties": { "serial": { "type": "integer" }, "fingerprint": { "$ref": "#/$defs/fingerprint" }, "signing_fingerprint": { "$ref": "#/$defs/fingerprint" }, "retired": { "type": "string", "format": "date-time" } } }
+            "items": {
+              "type": "object",
+              "required": [
+                "serial",
+                "fingerprint",
+                "signing_fingerprint",
+                "retired"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "serial": {
+                  "type": "integer"
+                },
+                "fingerprint": {
+                  "$ref": "#/$defs/fingerprint"
+                },
+                "signing_fingerprint": {
+                  "$ref": "#/$defs/fingerprint"
+                },
+                "retired": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
           },
           "inbox": {
-            "type": "object", "required": ["status"], "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "additionalProperties": false,
             "properties": {
-              "status": { "enum": ["open", "closed"] },
-              "vault": { "type": "string", "pattern": "^[a-z0-9]{4,24}$", "description": "The comms vault id. Public: it names a vault, it does not open one." },
-              "endpoint": { "type": "string", "format": "uri" },
-              "encrypt_to": { "$ref": "#/$defs/fingerprint" },
-              "drained": { "type": "string" },
-              "how": { "type": "string" },
+              "status": {
+                "enum": [
+                  "open",
+                  "closed"
+                ]
+              },
+              "vault": {
+                "type": "string",
+                "pattern": "^[a-z0-9]{4,24}$",
+                "description": "The comms vault id. Public: it names a vault, it does not open one."
+              },
+              "endpoint": {
+                "type": "string",
+                "format": "uri"
+              },
+              "encrypt_to": {
+                "$ref": "#/$defs/fingerprint"
+              },
+              "drained": {
+                "type": "string"
+              },
+              "how": {
+                "type": "string"
+              },
               "lanes": {
                 "type": "array",
-                "items": { "type": "object", "required": ["name", "append_token", "use", "since"], "additionalProperties": false,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "append_token",
+                    "use",
+                    "since"
+                  ],
+                  "additionalProperties": false,
                   "properties": {
-                    "name": { "type": "string", "enum": ["agents"], "description": "v0.1 defines one public lane name" },
-                    "append_token": { "type": "string", "pattern": "^[0-9a-f]{16,128}$", "description": "Public on purpose. A write-only lane address, revocable with one configure call." },
-                    "use": { "type": "string" },
-                    "since": { "type": "string", "format": "date" }
-                  } }
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "agents"
+                      ],
+                      "description": "v0.1 defines one public lane name"
+                    },
+                    "append_token": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{16,128}$",
+                      "description": "Public on purpose. A write-only lane address, revocable with one configure call."
+                    },
+                    "use": {
+                      "type": "string"
+                    },
+                    "since": {
+                      "type": "string",
+                      "format": "date"
+                    }
+                  }
+                }
               }
             }
           }
@@ -77,7 +241,13 @@
     }
   },
   "$defs": {
-    "fingerprint": { "type": "string", "pattern": "^sha256:[0-9a-f]{16}$" },
-    "pem": { "type": "string", "pattern": "^-----BEGIN PUBLIC KEY-----[\\s\\S]+-----END PUBLIC KEY-----\\s*$" }
+    "fingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{16}$"
+    },
+    "pem": {
+      "type": "string",
+      "pattern": "^-----BEGIN PUBLIC KEY-----[\\s\\S]+-----END PUBLIC KEY-----\\s*$"
+    }
   }
 }

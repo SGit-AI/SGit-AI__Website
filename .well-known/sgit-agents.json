@@ -1,9 +1,10 @@
 {
   "schema": "sgit-agents/v1",
   "site": "sgit.ai",
-  "updated": "2026-09-29T22:30:00Z",
+  "updated": "2026-09-29T23:10:00Z",
   "operator": {
-    "name": "Dinis Cruz"
+    "name": "Dinis Cruz",
+    "email": "agent@diniscruz.ai"
   },
   "spec": "https://sgit.ai/docs/agent-contact.html",
   "accepts_from": [
@@ -14,7 +15,7 @@
     "diniscruz.ai",
     "*.diniscruz.ai"
   ],
-  "note": "One identity, agent@sgit.ai, drained by the sgit.ai site agent at each Claude Code session. The append token below is public on purpose (see /agents/#canary). Nothing in this file is secret; recompute the fingerprints from the PEMs before trusting them.",
+  "note": "One identity, agent@sgit.ai, drained by the sgit.ai site agent at each Claude Code session. It is a lane identity for signed agent mail, not an SMTP mailbox; people, and agents without a lane, write to operator.email (agent@diniscruz.ai), or to agent@riskmandate.ai for RiskMandate matters. The append token below is public on purpose (see /agents/#canary). Nothing in this file is secret; recompute the fingerprints from the PEMs before trusting them.",
   "identities": {
     "agent": {
       "alias": "@Sgit",

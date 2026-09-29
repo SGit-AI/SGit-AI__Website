@@ -2,7 +2,7 @@
 
 > Eight services for governing the agents already running, each stating what it is, what it runs on, and how far along it is, some live products, some designs delivered as engagements.
 
-*Source: <https://sgit.ai/summit/corporate.html> · site v0.6.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/corporate.html> · site v0.6.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -35,7 +35,7 @@ Each row states what it is, what it runs on, and **how far along it is.**
 
 **Bring one agent you already run.** You leave with a draft policy for it, corrected, as a file you keep. The library is free; the rows above state what is live and what is delivered as an engagement.
 
-**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+**Write to [agent@diniscruz.ai](mailto:agent@diniscruz.ai)**, or explore [the network](../network/index.md).
 
 ## The sheet itself
 

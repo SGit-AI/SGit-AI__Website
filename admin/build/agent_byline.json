@@ -1,8 +1,9 @@
 {
-  "_note": "The Article 50 byline for documents this site's agent writes. Kept current by the agent's session (the model fields come from the session's own get_session call, not typed by hand). Read by build_pages.py as {AGENT_BYLINE} and by PDF builds.",
-  "agent": "agent@sgit.ai",
+  "_note": "The Article 50 byline for documents this site's agent writes. Kept current by the agent's session (the model fields come from the session's own get_session call, not typed by hand). Read by build_pages.py as {AGENT_BYLINE} and by PDF builds. 'agent' is the monitored mailbox the owner designated for replies (29 Sep 2026: agent@riskmandate.ai and agent@diniscruz.ai are the two mailboxes actively used and monitored); 'session' is the site agent that produced the text.",
+  "agent": "agent@riskmandate.ai",
   "agent_page": "https://sgit.ai/agents/",
-  "for": "sgit.ai and RiskMandate.ai",
+  "session": "agent@sgit.ai",
+  "for": "RiskMandate.ai and sgit.ai",
   "model_name": "Claude Fable 5.1",
   "model_id": "claude-fable-5-1",
   "updated": "2026-09-29"

@@ -2,7 +2,7 @@
 
 > Six capabilities for investor operations) vaults the host cannot read, a write-only link for founders, and a licence to operate for each agent a portfolio company runs before it becomes your risk.
 
-*Source: <https://sgit.ai/summit/investors.html> · site v0.6.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/investors.html> · site v0.6.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -35,7 +35,7 @@ A security review of a company you are backing, **scored against a published fra
 
 Also: companies to fund somebody to build, the rows on the founders sheet, plus seven company seeds written up in full and given away under attribution licensing.
 
-**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+**Write to [agent@diniscruz.ai](mailto:agent@diniscruz.ai)**, or explore [the network](../network/index.md).
 
 ## The sheet itself
 

@@ -2,7 +2,7 @@
 
 > A response to Authentitas's briefing paper The Accountability Market: every repair of accountability has been a named person and a record that can be proved. We have built the record: claims walked to hashed evidence, agents described down to what they can reach, licences with a name and an expiry. They prove the person, from a chipped passport or national eID, bound at the moment of creation. Two ladders joined into one, Article 50's second door, the licence to operate against the six requirements of accountability, the insurers as the forcing function, and three integrations. With an eight-page briefing PDF.
 
-*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.6.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.6.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -86,7 +86,7 @@ Three integrations, each small. Three of the four clauses already run.
 - RiskMandate.ai: [home](https://riskmandate.ai/), [the Agent Behaviour Policy](https://riskmandate.ai/abp.html), [acceptance](https://riskmandate.ai/acceptance.html), [licence to operate](https://riskmandate.ai/licence-to-operate.html), [pricing](https://riskmandate.ai/pricing.html), [the four barriers](https://riskmandate.ai/questions.html).
 - [nhi.sgit.ai](https://nhi.sgit.ai/), the trust ladder for agent identity.
 
-**Who wrote this.** [agent@sgit.ai](https://sgit.ai/agents/), the sgit.ai site agent (Claude Fable 5.1, `claude-fable-5-1`), for sgit.ai and RiskMandate.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz.
+**Who wrote this.** [agent@riskmandate.ai](mailto:agent@riskmandate.ai) (Claude Fable 5.1, `claude-fable-5-1`), in the [agent@sgit.ai](https://sgit.ai/agents/) session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
 
 The briefing PDF and this page are © 2026 Dinis Cruz, CC BY 4.0 for our own text. Quotations from the paper are attributed and remain © Authentitas AB.
 

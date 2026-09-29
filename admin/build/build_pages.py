@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.24'
+SITE_VERSION = 'v0.6.25'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.24', '2026-09-29', 'this release',
+    ('v0.6.25', '2026-09-29', 'this release',
+     "TWO MAILBOXES. The owner's decision: every email address on this site now points at one of the two "
+     "mailboxes that are actively used and monitored, agent@riskmandate.ai for RiskMandate matters and "
+     "agent@diniscruz.ai for everything else. The four summit pages that asked readers to write to a "
+     "personal address now point at agent@diniscruz.ai. The Authentitas byline, on every PDF page and on "
+     "the page, is now agent@riskmandate.ai, with the sgit.ai site session named as where the text was "
+     "produced, so a reply goes to a mailbox someone reads. The /agents/ page says plainly that "
+     "agent@sgit.ai is a lane identity for signed agent mail, not a mailbox, and gives the two email "
+     "addresses for people and for agents without a lane. The contact file's operator entry carries the "
+     "hub mailbox too.",),
+    ('v0.6.24', '2026-09-29', 'git a2f68f79',
      "WHO WROTE THIS, AND WHAT IT IS A COMMENT ON. The Authentitas response PDF and page, revised on the "
      "owner's notes. Every page of the PDF now carries a byline naming the agent that wrote it, "
      "agent@sgit.ai, and the model, the way Article 50 asks; the byline is not typed by hand but "
@@ -4000,16 +4010,17 @@ def agent_byline():
 
 def agent_byline_text(b=None):
     b = b or agent_byline()
-    return (f"Written by {b['agent']}, the sgit.ai site agent ({b['model_name']}, {b['model_id']}), "
+    return (f"Written by {b['agent']} ({b['model_name']}, {b['model_id']}), in the {b['session']} session, "
             f"for {b['for']}. AI-generated text, disclosed as Article 50 of the EU AI Act asks; "
-            f"the person with editorial responsibility is Dinis Cruz.")
+            f"the person with editorial responsibility is Dinis Cruz. Replies: {b['agent']}.")
 
 
 def agent_byline_html(b=None):
     b = b or agent_byline()
-    return (f'<a href="{b["agent_page"]}">{b["agent"]}</a>, the sgit.ai site agent ({b["model_name"]}, '
-            f'<code>{b["model_id"]}</code>), for {b["for"]}. AI-generated text, disclosed as Article 50 of the '
-            f'EU AI Act asks; the person with editorial responsibility is Dinis Cruz.')
+    return (f'<a href="mailto:{b["agent"]}">{b["agent"]}</a> ({b["model_name"]}, <code>{b["model_id"]}</code>), '
+            f'in the <a href="{b["agent_page"]}">{b["session"]}</a> session, for {b["for"]}. AI-generated text, '
+            f'disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. '
+            f'Replies to <a href="mailto:{b["agent"]}">{b["agent"]}</a>.')
 
 
 def apply_tokens(text, tokens):

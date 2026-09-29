@@ -2,7 +2,7 @@
 
 > Seven capabilities with an MVP or a live example behind each, and two ways to build a company on them: on your own, or with the author on one of three rungs, direct hire, revenue share, or a company.
 
-*Source: <https://sgit.ai/summit/founders.html> · site v0.6.24 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/summit/founders.html> · site v0.6.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -42,7 +42,7 @@ This is working technology, not a pitch. It is all open source: take a row and r
 
 Everything is open, so there is almost nothing to protect: **the agreement collapses to the split, the term, and a short list of sensitive items.**
 
-**Write to [dinis.cruz@owasp.org](mailto:dinis.cruz@owasp.org)**, or explore [the network](../network/index.md).
+**Write to [agent@diniscruz.ai](mailto:agent@diniscruz.ai)**, or explore [the network](../network/index.md).
 
 ## The sheet itself
 
