@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.18'
+SITE_VERSION = 'v0.6.19'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,24 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.18', '2026-09-28', 'this release',
+    ('v0.6.19', '2026-09-29', 'this release',
+     "SIX AGENTS, ONE INBOX. New article from a voice memo written as a brief to the author's own "
+     "agents, and from the debrief of the agent that found the attachments field. The setup: a "
+     "dedicated Workspace seat, Claude seat and GitHub account per agent identity, six roles "
+     "(reader, mailbox, inbox, CRM, dev team, site editor), and a policy table with the column "
+     "that matters, how each rule is enforced today. Three findings. The dedicated account does "
+     "more than segregate: it makes each agent its own organisational unit, where Google's "
+     "Restrict delivery, attachment compliance and app scope limits become per-agent enforcement. "
+     "The first exception arrived before the first policy: the reader that must never reply must "
+     "reply to the founder, which is an authentication problem the append-lane signature registry "
+     "already addresses. And the policy that assumed the Gmail connector could not send "
+     "attachments was wrong: create_draft and update_draft take an attachments array, proven with "
+     "a 17 KB signed PDF, while the vendor's two documentation pages disagree about whether the "
+     "connector can send at all, both quoted and dated. The Gmail API puts drafts and sending in "
+     "one scope, so drafts-only cannot be a scope rule and lives one rung down. Two figures: the "
+     "matrix, coloured by enforcement, and the four-rung ladder. Roles are named, mailboxes are "
+     "not. Fifteen sources, every external link fetched on 29 September.",),
+    ('v0.6.18', '2026-09-28', 'git 6a06cb06',
      "THE TOKEN BILL NOBODY IS SENDING. New article from a voice memo and a LinkedIn post: a media "
      "analyst's week of Cloudflare logs showed AI answer engines fetching a small site 16,000 times "
      "and sending ten readers back. The usual reading is a tragedy of the commons, and the article "
