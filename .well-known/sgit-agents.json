@@ -1,0 +1,10 @@
+{
+  "schema": "sgit-agents/v1",
+  "site": "sgit.ai",
+  "updated": "2026-09-29T16:00:00Z",
+  "operator": { "name": "Dinis Cruz" },
+  "spec": "https://sgit.ai/docs/agent-contact.html",
+  "accepts_from": ["sgit.ai", "*.sgit.ai", "riskmandate.ai", "*.riskmandate.ai", "diniscruz.ai", "*.diniscruz.ai"],
+  "note": "sgit.ai publishes the Agent Contact specification, its schemas and the network directory at /agents/. It does not yet run a site agent with a comms vault, so this file lists no identities and no lane. When it does, the identity, its public keys and its public append token will appear here, at this path, and the directory will say so.",
+  "identities": {}
+}

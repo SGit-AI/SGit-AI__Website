@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.20) from the same file the table on that page is built
+> generated at build time (v0.6.21) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (37)
+## The vaults (38)
+- **#38 PCI DSS Graph**: PCI DSS v4.0.1 as a semantic graph: goals, requirements, sections, identifiers, terms, roles and dates with typed edges; the licensed text left with the licence holder
+ - page: /demos/vaults/pci-dss-graph/index.md
+ - id `7xyzg5zs` · Reference · published 2026-09-29 · 1.6 MB · 12 files
+ - read key: `sgit_public_read_0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9:7xyzg5zs`
 - **#37 The Evidence Dispatch**: A newsroom on an evidence vault: six AI-authored articles on the Medicare agent case, sharing an attributed claim ledger, source dossiers, a timeline and a graph of declared relationships
  - page: /demos/vaults/evidence-dispatch/index.md
  - id `c0vf9zz8` · Analysis · published 2026-09-27 · 13.0 MB · 235 files

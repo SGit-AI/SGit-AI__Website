@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sgit.ai/docs/schemas/agent-message.v1.schema.json",
+  "title": "agent-message/v1: the parsed headers of a message between site agents",
+  "description": "Agent Contact v0.1. The plaintext is a single-part RFC 2822 .eml, UTF-8, Markdown body, at most 256 KB, no attachments. On the wire it is sgit pki's envelope, encrypted to the recipient and signed by the sender. This schema describes the parsed headers a drain validates after decryption.",
+  "type": "object",
+  "required": ["From", "To", "Date", "Subject", "Message-ID", "X-EmailFS-Kind", "X-Agent-Contact", "X-Agent-Key-Serial", "Content-Type"],
+  "additionalProperties": true,
+  "properties": {
+    "From": { "$ref": "#/$defs/address", "description": "<identity>@<site>. The identity must exist in that site's contact file." },
+    "To": { "$ref": "#/$defs/address", "description": "Exactly one address, and it must be the recipient's own. This is the check that defeats re-wrapping, because sgit's signature covers the ciphertext only." },
+    "Date": { "type": "string", "description": "RFC 2822. Accepted within 7 days back and 10 minutes ahead." },
+    "Subject": { "type": "string", "maxLength": 998 },
+    "Message-ID": { "type": "string", "pattern": "^<[^@\\s]+@[a-z0-9.-]+>$", "description": "<unique@sender-site>. A duplicate is refused as a replay." },
+    "In-Reply-To": { "type": "string" },
+    "References": { "type": "string" },
+    "X-EmailFS-Kind": { "enum": ["task", "question", "reply", "notification", "handoff", "debrief"] },
+    "X-Agent-Contact": { "type": "string", "format": "uri", "pattern": "^https://[a-z0-9.-]+/\\.well-known/sgit-agents\\.json$", "description": "Must be https://<From domain>/.well-known/sgit-agents.json. Any other URL is rejected before it is fetched." },
+    "X-Agent-Key-Serial": { "type": "integer", "minimum": 0 },
+    "X-Agent-Reply-To": { "$ref": "#/$defs/address" },
+    "X-Agent-Flow": { "type": "string", "description": "The named flow (agent behaviour policy) this message belongs to, when it asks for an automatic action. Outside a flow a verified message still goes to a human." },
+    "Content-Type": { "type": "string", "pattern": "^text/plain;\\s*charset=utf-8$" }
+  },
+  "$defs": {
+    "address": { "type": "string", "pattern": "^([^<>@\\s]+\\s+)?<?[^<>@\\s]+@[a-z0-9.-]+>?$" }
+  }
+}

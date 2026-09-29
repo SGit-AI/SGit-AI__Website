@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.20'
+SITE_VERSION = 'v0.6.21'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,29 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.20', '2026-09-29', 'this release',
+    ('v0.6.21', '2026-09-29', 'this release',
+     "AGENT CONTACT V0.1, AND PCI DSS AS A GRAPH. Two things. FIRST, the protocol every site in the "
+     "network is adopting for signed, encrypted mail between site agents is published here as its "
+     "canonical copy: /docs/agent-contact.html carries the draft as approved on 29 September, the "
+     "review that preceded approval with its four recommendations, and the owner's decision to keep "
+     "the append token public and treat abuse of it as a canary, recorded in the owner's own "
+     "reasoning. Two JSON schemas sit under /docs/schemas/. This site now publishes its own contact "
+     "file at /.well-known/sgit-agents.json (no identities yet, inbox not open, and it says so), a "
+     "network directory at /agents/ that checked all 32 sites on the day (none publishes a contact "
+     "file yet; six have an unrelated /agents/ page), an Agents link in the header, a line in "
+     "llms.txt, and a .nojekyll file so the dot-directory is served. SECOND, a new reference vault: "
+     "PCI DSS v4.0.1 as a semantic graph, first pass, 232 nodes and 367 edges, every edge a verb "
+     "with a named inverse, every node with provenance. The standard's text is not in it, because "
+     "PCI SSC's licence does not allow reproduction: identifiers, the twelve quoted titles and our "
+     "marked paraphrases are, with five public sources fetched and hashed, and a tool for licence "
+     "holders to add the text locally. Published with a derived read key, classified before use, "
+     "verified by a read-only clone identical to the source and an all-zeros control that failed "
+     "downloading the index. Five screenshots from the clone served locally, with a hashed manifest. "
+     "One thing to record: while deriving the keys, the CLI's derive-keys output was echoed once "
+     "into the build session's transcript, including the write key; it reached no file in this "
+     "repository, the staged-diff scan for it is now part of the release checks, and the vault "
+     "holds nothing that is not already public.",),
+    ('v0.6.20', '2026-09-29', 'git b346378d',
      "THE READER WAS ALWAYS THE PRODUCT. New article from a voice memo that set out the author's "
      "history of how news got into this mess, in four eras, with an instruction to check it and "
      "correct it. It was corrected in four places and the corrections are the article: the reader "
@@ -2908,6 +2930,7 @@ NAV = [
         ('fractal', 'Fractal graphs', 'demos/fractal-graphs/index.html'),
         ('fractal', 'Performance & cost', 'demos/fractal-graphs/performance.html'),
     ]),
+    ('agents', 'Agents', 'agents/index.html', []),
     ('evidence', 'Evidence', 'compare/index.html', [
         ('compare', 'Comparisons', 'compare/index.html'),
         ('fractal', 'Performance & cost', 'demos/fractal-graphs/performance.html'),
@@ -3405,6 +3428,8 @@ SCOPED INDEXES, each covers one part of this site and is regenerated on every re
 /docs/vault/llms.txt · /api/llms.txt · /demos/vaults/llms.txt
 
 Notes for agents:
+- Agent Contact: this site's contact file is /.well-known/sgit-agents.json (schema sgit-agents/v1);
+  the protocol is /docs/agent-contact.md and the network directory is /agents/index.md.
 - sgit is in beta and powers production workflows. Honest edges: /docs/limitations.md
 - Install: pip install sgit-ai (Python >= 3.11; entry points `sgit` and `sgit-ai`)
 - Network requirements: sgit needs HTTPS to your API server (default `dev.send.sgraph.ai`);
@@ -3471,6 +3496,7 @@ LLMS_SECTIONS = [
     ('case-studies', 'Case studies (worked accounts of what actually happened, with numbers)'),
     ('lessons', 'Lessons learned (the rules this site enforces, each with the incident that produced it)'),
     ('docs', 'Docs'),
+    ('agents', 'Agents (the Agent Contact directory: which sites publish a contact file at /.well-known/sgit-agents.json, and how to write to one)'),
     ('api', 'HTTP API (the protocol surface: endpoints, auth headers, capability gates, limits)'),
     ('vault', 'SG/Vault platform'),
     ('deploy', 'Deploy (rendered live from an encrypted vault)'),

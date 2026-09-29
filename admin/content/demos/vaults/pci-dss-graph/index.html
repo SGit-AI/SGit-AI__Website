@@ -1,0 +1,87 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / PCI DSS Graph</p>
+  <h1>PCI DSS v4.0.1 as a semantic graph, first pass</h1>
+  <p class="lead">The Payment Card Industry Data Security Standard, version 4.0.1, as a typed graph you can click through: six goals, twelve principal requirements, 63 sections, 85 individual requirement identifiers, nine appendices, 21 defined terms, eight roles, the assessment artefacts, the merchant levels and the four dates that matter, joined by 367 edges, every one a verb with a named inverse. It exists so that the standard can be <b>connected</b>: a risk that cites a section, an evidence file that satisfies a control, a regulation that overlaps with a requirement. The text of the standard is not in it, on purpose, and the page says why.</p>
+
+  <figure class="shot" data-shot="overview.webp" data-dir="images/" data-alt="The app as it opens: counts along the top, the goal tree down the left from Goal 1 through the appendices, and the standard node on the right with its four rules, its provenance and its edges."><figcaption>The graph as it opens. Counts, the tree by goal, and the standard node with the rules of the graph. Rendered from the read-key clone, served locally.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9:7xyzg5zs</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9%3A7xyzg5zs" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9:7xyzg5zs</code><br>
+  <span class="small dim">This key is published on purpose, under the <code>sgit_public_read_</code> prefix. It is <b>derived</b> one way from a vault key that is kept in the gitignored tier and never published. <code>check_credential.py</code> classified it before it was put on this page. A read-only clone with it produced twelve files identical to the source folder; an all-zeros key as a control failed while downloading the vault index.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app. Click any node in the tree; the card shows what it is, where it comes from, and its edges in both directions. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9%3A7xyzg5zs" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="7xyzg5zs" data-readkey="0de0b2f3a337f0a495df2dad8243d2cd2f7dbba3de57921b75e08b7fbe11dcc9" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>Why the text is not in it</h2>
+  <p>PCI DSS is copyright PCI Security Standards Council, LLC, and is distributed from its Document Library under a licence that does not allow reproduction or derivative works. Every other reference graph on this site is built from a source that can be copied and hashed: the EU AI Act from its official Formex XML, a government toolkit from its published pages. That is not available here, so the rules of this vault are different and are stated in the graph itself. Identifiers are facts about the document and are in. The short official titles of the twelve requirements are quoted from a public secondary source, hashed in the vault. The 63 section subjects, the defined terms, the roles and the appendices are <b>our own one-line paraphrases</b>, each marked <code>provenance: paraphrase</code>. And each individual requirement is an identifier and nothing else.</p>
+  <p>For the people who need the text, which is everyone who actually has to comply, the vault ships <code>tools/import_official.py</code>. A licence holder runs it against the PDF they downloaded, it extracts the numbered requirements into a local file, and the app shows the text beside every identifier. That file stays on their machine or a private branch. The published graph carries the structure; the licence holder's copy carries the standard.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">a section</span>
+        <h3>Every node is a card with edges in both directions</h3>
+        <p>Section 3.3 is the one everybody in payments knows: sensitive authentication data is not stored after authorization. Its card shows our paraphrase, its provenance, the edge <code>turns_on</code> to the term it depends on, the edge <code>part_of</code> back to Requirement 3, and its individual requirement identifiers below it. Read from the term's side, the same edge is <code>bears_on</code>. Nothing on the card is asserted without saying where it came from.</p>
+      </div>
+      <figure class="shot" data-shot="section.webp" data-dir="images/" data-alt="Section 3.3 selected in the tree, with its card: type and number, the paraphrase, the provenance line, edges out and edges in."><figcaption>Section 3.3, with its edges out and its edges in.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the terms</span>
+        <h3>The vocabulary is a graph too</h3>
+        <p>Account data is cardholder data plus sensitive authentication data; the PAN is a kind of cardholder data; full track data, the card verification code and the PIN are kinds of SAD. Those <code>is_a</code> edges are what let a question like "which sections bear on anything derived from the PAN" be a query rather than a reading. Twenty-one terms, each with a one-line paraphrase and the appendix that is the authority for it.</p>
+      </div>
+      <figure class="shot" data-shot="term.webp" data-dir="images/" data-alt="The Terms tab with sensitive authentication data selected: its definition, its three kinds via has_kind, and the sections that turn on it."><figcaption>Sensitive authentication data: what it is a kind of, what its kinds are, and which sections turn on it.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">roles and assessment</span>
+        <h3>Who assesses whom, with what</h3>
+        <p>The Council qualifies QSAs, ISAs and ASVs. A QSA or an ISA produces the Report on Compliance. An ASV performs the quarterly external scan. Payment brands set the merchant levels, and each level validates with a ROC or a self-assessment questionnaire, of which there are nine types by payment channel. Merchants rely on service providers and acquirers. It is the part of the standard that is usually a diagram in a slide deck, here as edges that can be walked from either end.</p>
+      </div>
+      <figure class="shot" data-shot="roles.webp" data-dir="images/" data-alt="The Roles tab with Qualified Security Assessor selected: qualified by PCI SSC, produces the ROC, assesses the standard."><figcaption>A QSA: qualified by the Council, produces the ROC, assesses the standard.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">an identifier</span>
+        <h3>The individual requirements, and where their identifiers come from</h3>
+        <p>Microsoft publishes, under the MIT licence, the Azure Policy initiative it maps to PCI DSS v4.0.1, and its policy groups are named by requirement identifier. That file is in the vault with its hash, and the 85 identifiers it names are the individual requirement nodes here, each with a <code>mapped_by</code> edge to the initiative. It is a citable list, not a complete one. The card for an identifier says so, and says what a licence holder can do about it.</p>
+      </div>
+      <figure class="shot" data-shot="control.webp" data-dir="images/" data-alt="Requirement 9.4.1.2 selected: identifier only, the licence notice explaining why, and the edge mapped_by to the Azure Policy initiative."><figcaption>An individual requirement: the identifier, the notice, and the mapping it was cited from.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>The rules of the graph, and the sources</h2>
+  <ul>
+    <li>Every node carries <code>provenance</code>: a source node whose file and SHA-256 are in the same graph, or the word <code>paraphrase</code>.</li>
+    <li>Every edge is a verb with a named inverse. Seventeen verb pairs, listed in the graph and in the README.</li>
+    <li>Five sources, fetched on 29 September 2026 and hashed: the PCI SSC announcement of v4.0.1 (11 June 2024, "no additional or deleted requirements"), the v4.x resource hub, the Document Library page, the Wikipedia article for the twelve requirement titles, and the Azure Policy file for the identifiers.</li>
+    <li>Four dates as milestone nodes: v4.0 published 31 March 2022; v4.0.1 published 11 June 2024; v4.0 retired 31 December 2024; the future-dated requirements mandatory from 31 March 2025.</li>
+    <li>Built by <code>tools/build_graph.py</code> from tables in that file, with no model in the line. A wrong paraphrase is a one-line fix and a commit.</li>
+  </ul>
+
+  <h2>What to connect next</h2>
+  <p>This is a first pass, made in an afternoon so that there is something to connect to. The obvious edges, in the order they are worth adding: a risk register whose risks <code>cite</code> a section here, which the <a href="../risk-graph-explorer/index.html">Risk Graph Explorer</a> already has the shape for; an evidence vault whose artefacts <code>satisfy</code> a control, with hashes, the way <a href="../evidence-dispatch/index.html">The Evidence Dispatch</a> ties claims to bytes; the <a href="../regulation-graph/index.html">Regulation Graph</a>, where the EU AI Act's obligations overlap with Requirements 6, 10 and 12; SAQ eligibility, once cited from the SAQ documents; and the list of which controls became mandatory on 31 March 2025. Every one of those is an edge between two vaults, which is what <a href="../../fractal-graphs/index.html">a fractal graph</a> is for.</p>
+
+  <h2>Files</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Path</th><th>What</th></tr>
+    <tr><td><code>index.html</code>, <code>app.json</code></td><td>The app, opened when the vault opens; requests no permissions, calls no model, writes nothing</td></tr>
+    <tr><td><code>graph/pci-dss-v4.0.1.graph.json</code></td><td>The graph: schema <code>sgit-graph/v1</code>, 232 nodes, 367 edges, the verb table and the counts</td></tr>
+    <tr><td><code>sources/</code></td><td>The five public pages the graph rests on, with their hashes in the graph</td></tr>
+    <tr><td><code>tools/build_graph.py</code></td><td>The tables and the generator</td></tr>
+    <tr><td><code>tools/import_official.py</code></td><td>For licence holders: fill the identifiers with the standard's text, locally</td></tr>
+    <tr><td><code>README.md</code>, <code>PUBLIC.md</code></td><td>What it is, what it deliberately is not, and what anyone may do with it</td></tr>
+  </table></div>
+</main>

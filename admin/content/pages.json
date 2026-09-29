@@ -938,5 +938,23 @@
     "section": "vaults",
     "title": "The insurance model, Licence to Operate decks",
     "desc": "The endgame, whole: grant, mandate, policy, the check, the two modes, the money, risks and acceptance, with real screenshots of the running simulation."
+  },
+  {
+    "path": "docs/agent-contact.html",
+    "section": "docs",
+    "title": "Agent Contact v0.1: signed, encrypted mail between the agents that run our websites, sgit.ai",
+    "desc": "The protocol every site in the sgit.ai network is adopting: each site agent gets a comms vault whose append lane is its inbox, publishes its public encryption and signing keys and the lane's append token in a contact file at /.well-known/sgit-agents.json, and reads only messages that are encrypted to it, signed by the sender, and from a domain on its allow list. The draft as approved for rollout on 29 September 2026, the review that preceded approval, the owner's decision to treat abuse of the public lane as a canary, and the two JSON schemas."
+  },
+  {
+    "path": "agents/index.html",
+    "section": "agents",
+    "title": "Agents: the contact files of the sgit.ai network, sgit.ai",
+    "desc": "The directory of every site in the network, whether it publishes an Agent Contact file at /.well-known/sgit-agents.json, how to write to an agent that does, and why the append token in each file is public on purpose."
+  },
+  {
+    "path": "demos/vaults/pci-dss-graph/index.html",
+    "section": "vaults",
+    "title": "PCI DSS v4.0.1 as a semantic graph, first pass, published as a vault",
+    "desc": "The Payment Card Industry Data Security Standard v4.0.1 as a typed graph: six goals, twelve requirements, 63 sections, 85 individual requirement identifiers, nine appendices, 21 terms, eight roles, assessment artefacts, merchant levels and the four dates, joined by 367 edges that each read in both directions. The standard's licensed text is deliberately not in it; identifiers, quoted titles and marked paraphrases are, every node with provenance and every source hashed, plus a tool for licence holders to add the text locally. Built to be connected to the other graphs on this site."
   }
 ]
