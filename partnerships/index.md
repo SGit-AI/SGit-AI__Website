@@ -2,7 +2,7 @@
 
 > The business case for specific partnerships between sgit.ai, RiskMandate.ai and organisations we would like to work with, made from public material only so the pages can be forwarded to anyone: what they are trying to do, what is published here that answers it, where the fit is partial, and a first concrete piece of work.
 
-*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.21 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/index.html> · site v0.6.22 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,6 +27,7 @@ Each page in this section makes the case for one specific partnership, or puts o
 
 | Organisation | Why them | The case |
 |---|---|---|
+| **Authentitas** authentitas.com | Its briefing paper argues that every repair of accountability has been a named person and a record that can be proved, and that almost no money has gone into proving the person behind the work. We have built the record; they prove the person. The licence to operate, the story vault and the agent contact file each have one line that is a name and nothing more. | [**Named person, provable record: sgit.ai and RiskMandate.ai with Authentitas →**](authentitas.md) |
 | **UK Sovereign AI** sovereignai.gov.uk | Britain's £500 million sovereign venture fund for AI companies, with trust, safety and assurance as one of its five frontiers and an R&D procurement scheme whose challenge areas include the safe adoption of AI agents. Almost everything published here is an answer to a question they have asked in public. | [**A proposed partnership between sgit.ai, RiskMandate.ai and UK Sovereign AI →**](sovereign-ai.md) |
 | **Password managers and identity providers** an open call | Every sgit vault opens with one key, people now hold dozens, and agents are starting to create them by the hundred. Storing, sharing and taking back secrets in the browser is what these teams already do well, and we would rather use their answer than build our own. | [**Who holds the keys? A call for collaboration on vault key management →**](vault-key-management.md) |
 | **The cloud platforms** AWS, Azure, Google Cloud, IBM, Europe, and more | sgit needs mostly storage and a little compute, so it runs on every cloud. Our story is AWS for historical reasons and because our credits are AWS credits; Azure and Google Cloud work but are not yet documented. One page per cloud, on deploying vaults there and the services that can be built on them. | [**sgit runs on every cloud →**](cloud-platforms.md) |

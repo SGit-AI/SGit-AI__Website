@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.21'
+SITE_VERSION = 'v0.6.22'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,21 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.21', '2026-09-29', 'this release',
+    ('v0.6.22', '2026-09-29', 'this release',
+     "NAMED PERSON, PROVABLE RECORD. A proposed partnership page for Authentitas, whose briefing "
+     "paper The Accountability Market (October 2026, shared on LinkedIn on 29 September) argues that "
+     "every repair of accountability in four thousand years has been a named person and a record "
+     "that can be proved, and that almost no money has gone into proving the person. The page and an "
+     "eight-page briefing PDF, designed as an infographic and rendered from HTML, set the paper "
+     "beside what this site and RiskMandate have built: the evidence ladder joined to their four "
+     "questions into one ladder of five rungs, the story vault as Article 50's second door, the "
+     "licence to operate read against the six requirements of accountability (three met, three that "
+     "Authentitas supplies: identity that cannot be bought, an independent witness, a held identity "
+     "for the pseudonymous), the insurers as the forcing function on both pages, the operator line in "
+     "every Agent Contact file as a name nothing proves, and three integrations. Public material "
+     "only, quotations attributed, no conversation yet. The PDF's eight pages are the page's figures. "
+     "Partnerships index row added.",),
+    ('v0.6.21', '2026-09-29', 'git cac3e346',
      "AGENT CONTACT V0.1, AND PCI DSS AS A GRAPH. Two things. FIRST, the protocol every site in the "
      "network is adopting for signed, encrypted mail between site agents is published here as its "
      "canonical copy: /docs/agent-contact.html carries the draft as approved on 29 September, the "
