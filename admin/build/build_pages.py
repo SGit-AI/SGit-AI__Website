@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.26'
+SITE_VERSION = 'v0.6.27'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.26', '2026-09-30', 'this release',
+    ('v0.6.27', '2026-09-30', 'this release',
+     "KIT BAG'S FIGURES, WHERE THE BUILD CAN SEE THEM. The ten figures for the Kit Bag page were "
+     "committed under admin/content instead of beside the built page, so v0.6.26 shipped with the "
+     "page and without its images. Moved. The first attempt to fix it reused the v0.6.26 subject and "
+     "the release check refused to tag it, as it should, so this is its own release.",),
+    ('v0.6.26', '2026-09-30', 'git 0824c472',
      "KIT BAG: THE SIXTH BUSINESS PLAN, AND THE POLICY IS THE CONTROL. A recovery-shopping companion "
      "for football and padel players on the shop the founder uses, as a Chrome extension you build "
      "yourself, or your agent does, and load from a folder. No store, on purpose, which removed three "
