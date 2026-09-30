@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.27'
+SITE_VERSION = 'v0.6.28'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.27', '2026-09-30', 'this release',
+    ('v0.6.28', '2026-09-30', 'this release',
+     "THE ULTIMATE INSIDER. An article that is the first pass at a conference talk, written from two "
+     "voice memos so the founder can show the people they are talking to about speaking a concrete "
+     "direction. Three things arriving at once: agents as the insider threat that never scaled before, "
+     "because insiders were humans or static code and an agent is a reasoning engine in a loop with "
+     "skills; infrastructure designed for none of it, with no journals, backups by the day, unmanaged "
+     "identities, permissions that are the union of everything, and a habit of failing on its own; and "
+     "risk management on spreadsheets, at the speed of quarters, when the decisions have to be made in "
+     "seconds and in advance. Five 2025 incidents carry act one (Replit, Gemini CLI, Amazon Q, EchoLeak, "
+     "the AI-orchestrated espionage campaign), the AWS and Cloudflare outages and ToolShell carry act "
+     "two, the 48 per cent spreadsheet figure and the Gartner and MIT numbers carry act three; aviation's "
+     "confidential reporting system against cyber's slipped 72-hour rule explains why we do not see "
+     "more. The turn is the way out through the ABP, layered containment, graphs, the licence to "
+     "operate and insurance, ending on the irony that constraint is what earns an agent autonomy. "
+     "Every number linked; the practice observations marked as the author's. One figure, OG card built.",),
+    ('v0.6.27', '2026-09-30', 'git 665a7295',
      "KIT BAG'S FIGURES, WHERE THE BUILD CAN SEE THEM. The ten figures for the Kit Bag page were "
      "committed under admin/content instead of beside the built page, so v0.6.26 shipped with the "
      "page and without its images. Moved. The first attempt to fix it reused the v0.6.26 subject and "
