@@ -2,7 +2,7 @@
 
 > For founders: a vault removes the four costs that usually stand between you and a first user (a database to run, hosting for your reader, an account, an install), so you can ship something usable, give it away briefly, take it away, and find out whether they missed it. What you get on day one, the ladder from first vault to first customer, what you still have to bring (billing, identity, server-side query), and the measured cost base.
 
-*Source: <https://sgit.ai/startups/index.html> · site v0.6.25 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/startups/index.html> · site v0.6.26 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -72,6 +72,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 | Plan | The business | What is in the vault |
 |---|---|---|
+| [**Kit Bag**](../demos/vaults/kit-bag/index.md) | A Chrome extension you build yourself and load from a folder, for recovery shopping on one shop, with its Agent Behaviour Policy written first. Open source that an agent customises per person; a policy that admits it is the only control. Given away. | The working extension and its fixture test, the policy in prose and JSON, two stacks, an encrypted record, a register, the build-it-yourself checks and the chapter for whoever commercialises it. |
 | [**Company X-Ray**](../demos/vaults/company-xray/index.md) | Read a company's own documents together: they are dropped into a vault, agents run a catalogue of analyses, a person reviews, and the customer gets their questions answered, a board pack and a Claude setup to keep asking. No connectors. | One invented company X-rayed end to end, fourteen findings tied to their evidence, a script that re-runs every figure, eleven plan documents, the catalogue, the prompts and a calculator. |
 | [**Lesson Loop**](../demos/vaults/lesson-loop/index.md) | Capture what a coach knows at the end of every lesson, in a record the player holds, and start every lesson from a briefing. Padel first, any teacher with students after. Paid on demand, with new income for coaches. | One player's record across four lessons with three coaches, eleven plan documents, the prompts for phase one, and a calculator. |
 | [**Risk Acceptance Office**](../demos/vaults/risk-acceptance/index.md) | Run the risk acceptance loop for organisations, in the gaps of their GRC platform: every material risk on facts, held by a named person, accepted for an interval, and escalated, funded or fixed when it ends. | One invented risk replayed over six weeks, eleven plan documents, the acceptance record and risk vault specifications, three prototypes and a calculator. |
@@ -86,7 +87,7 @@ The section's other purpose: complete business plans, published as vaults, for o
 
 Everything above is how this site itself is built, which is the only reason to believe any of it.
 
-- **Thirty-eight vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
+- **Thirty-nine vaults published with their read keys**, each with a page describing what it does and the vault running live inside it. [Open any of them](../demos/vaults/index.md) with no account and nothing installed.
 - **The method is written down**, including the mistakes that produced each rule. [The publishing method](../demos/vaults/publishing.md) is written to be followed by somebody else's agent.
 - **The measurements are repeatable**, with the commands printed. [Performance and cost](../demos/fractal-graphs/performance.md).
 - **One person, working with agents.** The whole estate is built this way, which is the actual claim about how small a team this needs.

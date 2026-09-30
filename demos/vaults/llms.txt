@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.25) from the same file the table on that page is built
+> generated at build time (v0.6.26) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (38)
+## The vaults (39)
+- **#39 Kit Bag**: A business plan for a Chrome extension you build yourself and load from a folder, with its Agent Behaviour Policy written first and every barrier typed
+ - page: /demos/vaults/kit-bag/index.md
+ - id `r53ldcxt` · Briefing · published 2026-09-30 · 565 KB · 33 files
+ - read key: `sgit_public_read_2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848:r53ldcxt`
 - **#38 PCI DSS Graph**: PCI DSS v4.0.1 as a semantic graph: goals, requirements, sections, identifiers, terms, roles and dates with typed edges; the licensed text left with the licence holder
  - page: /demos/vaults/pci-dss-graph/index.md
  - id `7xyzg5zs` · Reference · published 2026-09-29 · 1.6 MB · 12 files

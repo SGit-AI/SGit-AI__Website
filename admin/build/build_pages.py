@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.25'
+SITE_VERSION = 'v0.6.26'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,25 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.25', '2026-09-29', 'this release',
+    ('v0.6.26', '2026-09-30', 'this release',
+     "KIT BAG: THE SIXTH BUSINESS PLAN, AND THE POLICY IS THE CONTROL. A recovery-shopping companion "
+     "for football and padel players on the shop the founder uses, as a Chrome extension you build "
+     "yourself, or your agent does, and load from a folder. No store, on purpose, which removed three "
+     "rows from the brief's register and left the interesting ones. Two ideas ride on the small tool "
+     "and the plan is about them: open-source apps that an agent customises per person, with the vault "
+     "as the distribution channel; and an Agent Behaviour Policy written before the code, in "
+     "RiskMandate's four questions, that types every barrier honestly. Thirteen rows: four boundaries "
+     "Chrome enforces (product and basket paths only, no other site, no background, no model endpoint "
+     "until granted), three settings our code enforces, five expectations nothing enforces, one none. "
+     "The extension works: facts from the shop's own ld+json (eleven real product pages checked), one "
+     "click presses the shop's own button, an AES-256-GCM record under the person's passphrase with "
+     "export to an sgit-ready tree, an optional model ask that shows its body first, and a Policy tab. "
+     "A Playwright fixture test proves the customer's name in the page header never reaches the record. "
+     "Two stacks of label facts, a sample record, a register as an acceptance record, the checks a "
+     "customising agent runs, and a chapter for whoever commercialises it. Vault r53ldcxt, 33 files, "
+     "read key classified, clone identical, negative control empty. Plans table and startups index "
+     "gained a row.",),
+    ('v0.6.25', '2026-09-29', 'git c9a0b6ab',
      "TWO MAILBOXES. The owner's decision: every email address on this site now points at one of the two "
      "mailboxes that are actively used and monitored, agent@riskmandate.ai for RiskMandate matters and "
      "agent@diniscruz.ai for everything else. The four summit pages that asked readers to write to a "

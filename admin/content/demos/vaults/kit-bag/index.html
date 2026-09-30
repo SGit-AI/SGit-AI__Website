@@ -1,0 +1,118 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Kit Bag</p>
+  <h1>Kit Bag, a business plan for an extension you build yourself, with its policy written first</h1>
+  <p class="lead">A recovery-shopping companion for football and padel players on hollandandbarrett.com, the shop the author actually uses: label facts read from the page's own structured data, stacks, one item added to the basket per click by pressing the shop's own button, an encrypted record the person holds, and an optional model ask that shows its request before it sends it. It is a Chrome extension, and it is not on the Chrome Web Store. You build it yourself, or your agent does, and load it from a folder. Two ideas ride on that small tool, and the plan is about them.</p>
+
+  <figure class="shot" data-shot="two-ideas.webp" data-dir="images/" data-alt="Diagram in three steps: the open-source app published in a vault; an agent customises it per person, allowed to narrow the policy and to widen it only in writing; loaded unpacked in Chrome with no store, no review, no listing. Below, what this changes for stores, permissions, monetisation and the record."><figcaption>Publish the source. Let an agent make it yours. Load it from a folder. The vault is the distribution channel and the policy travels with every copy.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848:r53ldcxt</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848%3Ar53ldcxt" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848:r53ldcxt</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, and verified with an all-zeros read key as the negative control.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The plan opens as an app: the two ideas, the policy with every row typed, the stacks, a sample record, the register, how to build your own and what a business inherits. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848%3Ar53ldcxt" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="r53ldcxt" data-readkey="2777cf970b68ef8be761a63351991d1e73a2ab6a423eb66abd234bb9a6d0f848" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>Idea one: apps you build for yourself, from source somebody published</h2>
+  <p>For fifteen years a Chrome extension has meant a product: somebody else's, reviewed by a store, permissions negotiated with a form, updated when they choose, monetised how they choose. Most of the value of an extension, though, is one person's: their shop, their sport, their regimen, their rules about what a script may touch. This plan takes the other road. The source is published, open, in a vault anyone can read. A person who wants it gives the read key to an agent and says: make it mine. Change the stacks to my sport. Drop the chatbot. Tighten the policy so it cannot see my account page at all. Then load it unpacked in Chrome, from the folder, with no store, no review, no listing and no permissions dialogue with anyone but Chrome itself. <b>An open-source app is the starting point, and an agent customises it per person.</b> The app's job is to be worth starting from, small enough to read in an afternoon, and to carry its own policy so the customising agent knows what it must not break.</p>
+  <p>This also leaves the problems of publishing to whoever wants to publish. The plan's last chapter is written for them: the store, a name and a mark, the retailer conversation, support when the site changes, the claims rules that bite a listing, and key custody. Loading unpacked removed three rows from the original brief's risk register. It did not remove the interesting ones.</p>
+
+  <h2>Idea two: the policy is the control, and it says so</h2>
+  <p>A content script on a retailer's site can read the whole page. Signed in, that includes what the header says about the customer, and on the pages that show them, orders, addresses and the last four digits of a card. It can click any button, checkout included. It can call the shop's own endpoints as the customer, with the customer's cookies. Every browser-side helper has that reach, from Greasemonkey scripts to the agentic browsers of 2025, and almost none writes down what it does with it. This one did, before any code was written, in RiskMandate's four questions: <b>the grant</b>, measured from the manifest; <b>the mandate</b>, elicited from the owner; <b>the delta</b>, listed; and for every row in the delta, <b>the barrier and its kind</b>. A boundary the platform enforces, a setting our own code enforces, an expectation that nothing enforces, or none.</p>
+
+  <figure class="shot" data-shot="what-stands-in-the-way.webp" data-dir="images/" data-alt="Three columns: the grant, what a content script on the shop can reach; the mandate, the six things Kit Bag is for; and what stands in the way, thirteen rows counted as four boundaries Chrome enforces, three settings our code enforces, five expectations nothing enforces, and one none."><figcaption>Thirteen rows. Four boundaries, and the rest is code as written. That is the condition of every script that runs in a page, and the reason the table exists.</figcaption></figure>
+
+  <p>The count is the point. Chrome enforces four things: the script runs only on product and basket paths, on no other site, never in the background, and reaches no model endpoint until the person grants one. Everything else that keeps the extension away from the account page and the checkout button is a rule in the code, and a rule in the code is changed by editing the code. <b>The policy is, at first, the only thing standing between the tool and the user's data.</b> We would rather say that in a table than hide it in a privacy policy. It is also why the customising agent needs the policy: it is the thing it must not loosen without telling the person. The rule in <code>abp.json</code> is one sentence: narrow any row freely; widen a boundary, or turn a setting into an expectation, only in writing.</p>
+
+  <figure class="shot" data-shot="app-policy.webp" data-dir="images/" data-alt="The policy section of the plan app: the counts of boundary, setting, expectation and none, and the delta table with each row's barrier, kind and who enforces it."><figcaption>The delta table in the app, from the same <code>abp.json</code> the extension carries.</figcaption></figure>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the extension</span>
+        <h3>Label facts from the page's own structured data</h3>
+        <p>The shop publishes an <code>application/ld+json</code> Product block on every product page, and it carries the name, brand, SKU, price, availability, ingredients, directions and nutrition. Kit Bag reads that block and nothing else on the page. The panel shows the facts, dated, and offers four actions: save the facts, add to a stack, record a purchase, add to basket. The last presses the shop's own button, once, and reports whether it found it.</p>
+      </div>
+      <figure class="shot" data-shot="panel-facts.webp" data-dir="images/" data-alt="The Kit Bag panel on the fixture product page: the collagen peptides facts, price and stock tag, the label's directions, and the four action buttons."><figcaption>The Facts tab on the test fixture, a stand-in page shaped like the shop's, with one real product's public data.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">tested, not promised</span>
+        <h3>The customer's name never reaches the record</h3>
+        <p>The fixture page deliberately shows a signed-in customer in its header: a name, an order count, a card ending. The Playwright test saves the facts, records a purchase, exports the record and asserts that none of those three strings is in it, that the record at rest is AES-256-GCM ciphertext, that one click on Add to basket added exactly one item to the page's counter, and that the Policy tab shows the same thirteen rows as <code>abp.json</code>. Row d5 of the policy is an expectation. The test is what makes it a checked one.</p>
+      </div>
+      <figure class="shot" data-shot="fixture-facts.webp" data-dir="images/" data-alt="The fixture product page with a header reading Hi Alex Moreno, 3 orders, card ending 4421, and the Kit Bag panel open beside it."><figcaption>The fixture: a header full of customer details, and a panel that is proven not to read them.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the policy tab</span>
+        <h3>The table, inside the tool</h3>
+        <p>The panel's fifth tab is the policy itself: the counts, the thirteen rows, the kind of each barrier coloured. Somebody who loads a customised copy can read what it may and may not do without opening a file. The panel's copy is inlined from <code>abp.json</code> by a build step, and one of the checks an agent runs is that the two still agree.</p>
+      </div>
+      <figure class="shot" data-shot="panel-policy.webp" data-dir="images/" data-alt="The Policy tab in the panel: kinds explained, counts, and the thirteen-row table with coloured kinds."><figcaption>The Policy tab. Green is a boundary, blue a setting, amber an expectation, red none.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the record</span>
+        <h3>Encrypted in the browser, exported as files, versioned with sgit</h3>
+        <p>The kit bag is shaped like the <a href="../supplement-stack/index.html">Supplement Stack</a> record: stacks, products with dated facts, purchases, doses as what happened rather than what was planned, notes, every model ask kept whole, and a log of every action with the page it was on. The passphrase derives the key with PBKDF2-SHA256 and the record is sealed with AES-256-GCM, the primitives sgit uses. Export downloads the tree as one file; a small tool writes it out as folders; <code>sgit init --existing</code> makes it a vault with history. There is no recovery, by design, and the plan says so at first run.</p>
+      </div>
+      <figure class="shot" data-shot="panel-record.webp" data-dir="images/" data-alt="The Record tab: counts of stacks, products, purchases, doses, asks and log lines, the dose and note actions, export, and the last log lines."><figcaption>The Record tab after the test saved facts and a purchase.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the stacks</span>
+        <h3>Label facts only, from eleven real products</h3>
+        <p>Two templates ship: a padel weekend and a football pre-season block, twelve items from eleven products whose facts were read from the shop's structured data on 30 September 2026. Each item carries the price and availability as seen that day, the label's directions, and why the author put it there, which is a fact about the author rather than a claim about the product. Nothing states a benefit. The UK's retained Nutrition and Health Claims Regulation says what a seller may claim; a stack claims nothing.</p>
+      </div>
+      <figure class="shot" data-shot="app-stack.webp" data-dir="images/" data-alt="The padel weekend stack in the plan app: six items with prices as seen, stock, and a line for each on why the author put it there."><figcaption>The padel weekend stack. Prices dated, reasons attributed, no claims.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the register</span>
+        <h3>Eight risks, as an acceptance record</h3>
+        <p>Written the way the <a href="../risk-acceptance/index.html">Risk Acceptance Office</a> plan says: established on facts, held by a named person, accepted until a date, then accepted again, escalated or fixed. There is no deny button. Loading unpacked removed the store review, the affiliate policy and the listing takedown from the brief's register. What is left is the site changing under the button, a lost passphrase, the browser profile, label facts read as advice, the optional model call, a customising agent widening the policy quietly, a retailer's objection, and Chrome's own roadmap. The retailer row is about objection rather than law: the person using the tool is the retailer's customer, in their own browser, and permission is not the retailer's to grant.</p>
+      </div>
+      <figure class="shot" data-shot="app-register.webp" data-dir="images/" data-alt="The register table in the plan app: eight rows, each with the risk, what it is established on, who holds it, until when, and the decision."><figcaption>The register in the app, parsed from the same Markdown table in the vault.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>Build it yourself, or have an agent do it</h2>
+  <p>Clone the vault with the read key above. Open <code>chrome://extensions</code>, turn on Developer mode, choose Load unpacked, pick <code>kit-bag/extension/</code>. Read the Policy tab. Or hand the read key to a Claude Code or Codex session with: make it mine, my sport, my shop, drop the chatbot, keep every boundary, write any policy change into <code>abp.json</code>. The checks it runs before handing the folder back are four: the manifest's grant is unchanged, the expectations still hold in the code, the policy file and the panel's copy agree, and the fixture test passes. They are cheap, and they are the whole point.</p>
+
+  <h2>For whoever commercialises this</h2>
+  <p>The author built this for themself and will not run a business on it. Publish it and you inherit the store review, a name and a mark of your own, the retailer conversation, support when the site changes, and the claims rules that bite a listing. Without publishing you still inherit key custody, and the honest options are no recovery, stated loudly, or the person's own vault key, backed up by them. Six ways to pay that keep the policy true: paid stacks from coaches and physios, which ties to <a href="../lesson-loop/index.html">Lesson Loop</a>, whose players already hold a record with the same training load in it; a club or team subscription; white-label for a physiotherapy practice or a gym; more retailers, since the parser reads <code>ld+json</code> and most large shops publish it; affiliate links, disclosed and on user action, which Chrome's policy permits; or the retailer adopting it, at which point it stops being independent and says so. What you may not do and still call it this: widen a boundary without writing it down, add telemetry without a row, hold a user's key, make a health claim, or use the retailer's mark as though you were them.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every one of the 33 files, from a clone made with the published read key alone, compared byte for byte with the source folder. Patterns: vault-key shapes, every <code>sgit_</code> credential prefix, the SG/Send access token, email addresses.</p>
+  <p><b>What was found.</b> Nothing. The sample record's person is invented. The product facts are the shop's own public structured data, dated. The vault contains no email addresses. The negative control, an all-zeros read key against the same vault id, produced no clone.</p>
+  <p><b>What the plan says about its own risks.</b> The add-to-basket button is rendered by the shop's client-side code and was not present in the fetched HTML, so the extension finds it by its text at click time and degrades to a link when it cannot; that click was exercised against the fixture, not the live shop, from the build environment. The basket comparison is a heuristic. The model ask, when enabled, sends product facts to an endpoint the person configured with their own account; the body is shown first and kept. Everything the extension does not do, it does not do because the code says so, which is what the policy's table is for.</p>
+  <p><b>Independence.</b> Not affiliated with, endorsed by or sponsored by Holland &amp; Barrett, whose name is used descriptively to say which shop the tool works on. No affiliate links, codes or ads. No contact with the retailer was sought, on purpose; the register says why.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py r53ldcxt &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 33 · <b>plaintext size:</b> 565 KB</li>
+    <li><b>Commits:</b> 2 · <b>last updated:</b> 2026-09-30 · <b>HEAD:</b> <code>obj-cas-imm-047ee30c1a88</code></li>
+    <li><b>Top level:</b> <code>PUBLIC.md</code>, <code>README.md</code>, <code>app.json</code>, <code>content.json</code>, <code>diagrams/</code>, <code>extension/</code>, <code>index.html</code>, <code>plan/</code>, <code>record/</code>, <code>stacks/</code>, <code>tools/</code></li>
+    <li><b>File types:</b> .md ×12, .json ×9, .py ×3, .html ×2, .svg ×2, .webp ×2, .js ×1, .css ×1, .mjs ×1</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A brief the founder drafted with Perplexity on 30 September 2026 for an independent Holland &amp; Barrett companion extension, then a conversation that changed three things: no store, so the extension is loaded unpacked and the publishing problems are left in writing to whoever wants them; no letter to the retailer, because the client side is the customer's; and the Agent Behaviour Policy written before the code, because on a content script the policy is initially the only control, and the plan should say so rather than hide it. The founder is a customer of the shop and plays both sports; the stacks are theirs.</p>
+  <p><b>Who wrote this.</b> {AGENT_BYLINE}</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
