@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.28'
+SITE_VERSION = 'v0.6.29'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,22 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.28', '2026-09-30', 'this release',
+    ('v0.6.29', '2026-10-01', 'this release',
+     "CUSTOM UIS ARE NOT THE EXCEPTION. An article from a voice memo that weaves the site's threads "
+     "into one argument about following up: every message has a graph, and the graph has altitudes "
+     "(the block, the message, the conversation, the company, the contact), which is where fractal "
+     "semantic graphs were always going. Email is a medium, so a message is designed for the "
+     "recipient's moment, as a projection of the conversation for one reader, the way the story vault "
+     "treats an article; the thread is history you can fold away, and the one you already sent can be "
+     "re-presented. A custom interface per message, thread, topic or question is not an exception but "
+     "the left edge of the Wardley strip: genesis, custom, product, commodity, with the cards, the "
+     "board, the voice debrief, the vault-app proofs of concept, deploy-docs, Kit Bag and the webmaster "
+     "plan as the strip moving. The worked example is a page an agent built in an afternoon that lists "
+     "the PDFs still owed and gives a place to drop them through an append lane, so the to-do and the "
+     "place to act are one page. It compounds, because each interface teaches the agent how its user "
+     "works and because automation outruns any inbox, so the interface becomes the prioritisation; and "
+     "it is an agent surface, so it gets a policy. One figure, OG card built.",),
+    ('v0.6.28', '2026-09-30', 'git f44752ff',
      "THE ULTIMATE INSIDER. An article that is the first pass at a conference talk, written from two "
      "voice memos so the founder can show the people they are talking to about speaking a concrete "
      "direction. Three things arriving at once: agents as the insider threat that never scaled before, "

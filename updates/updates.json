@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.28",
+  "site_version": "v0.6.29",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -848,6 +848,26 @@
     }
   ],
   "articles": [
+    {
+      "slug": "custom-uis-are-not-the-exception",
+      "title": "Custom UIs are not the exception: the inbox in 2026, where every message has its own universe",
+      "date": "2026-10-01",
+      "version": "v0.6.29",
+      "tags": [
+        "inbox",
+        "email",
+        "custom-ui",
+        "fractal-semantic-graphs",
+        "vault-apps",
+        "append-lanes",
+        "email-fs",
+        "wardley-maps",
+        "agents",
+        "riskmandate",
+        "article"
+      ],
+      "summary": "The hardest part of working with many people and many agents is not doing the work, it is following up: every person has a different context, and the thread you both hold carries actions, questions, statements and decisions that nobody can see. This article weaves together what this site has built over the past months, fractal semantic graphs, six agents on one inbox, append lanes and Email-FS, vault apps, the story vault, the connector twin, the business plans, into one argument. Every message deserves a graph, at the altitude of the contact, the company, the conversation, the message and the block inside it. Email is a medium, so the design brief for a message is the recipient's moment, not the sender's thread, and the thread itself, by now, is pointless. A custom interface per message, thread, topic or question is not an exception; it is how interfaces now get made, the way Wardley maps say everything gets made: you are always either building a new one or recycling one that exists, and each one you build commoditises a thing so that next time you just send it. The worked example is a page an agent built in an afternoon that lists the PDFs still owed and gives a place to drop them, through a vault's append lane, so the to-do and the place to act are one page. It compounds, because each interface teaches the agent how its user wants to work, and because automation creates more work than any inbox can hold, so the interface becomes the prioritisation. And it has to be governed, because an interface is an agent surface too."
+    },
     {
       "slug": "ultimate-insider-three-collisions",
       "title": "The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up",
