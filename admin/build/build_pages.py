@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.43'
+SITE_VERSION = 'v0.6.44'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.43', '2026-10-02', 'this release',
+    ('v0.6.44', '2026-10-02', 'this release',
+     "THE DRAFT'S FIGURES, TO FIT. On the live page the three inline figures of the event plan ran their "
+     "text past the boxes, because the web fonts set wider than the estimates the SVG was drawn with. "
+     "Wider canvases, wider boxes, shorter lines.",),
+    ('v0.6.43', '2026-10-02', 'git 93391b60',
      "A DRAFTS FOLDER. A place for a page that is shared by link before it is public: drafts/ is "
      "not walked by the validator, not listed in the sitemap, disallowed in robots.txt and marked "
      "noindex, and nothing links to it, which is the point. Each draft is a self-contained HTML file "
