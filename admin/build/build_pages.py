@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.42'
+SITE_VERSION = 'v0.6.43'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.42', '2026-10-02', 'this release',
+    ('v0.6.43', '2026-10-02', 'this release',
+     "A DRAFTS FOLDER. A place for a page that is shared by link before it is public: drafts/ is "
+     "not walked by the validator, not listed in the sitemap, disallowed in robots.txt and marked "
+     "noindex, and nothing links to it, which is the point. Each draft is a self-contained HTML file "
+     "with a slug nobody would guess. The first one is the execution plan for a one-day London "
+     "workshop event with RiskMandate, DECID:R and the Open Security Summit, written for the two "
+     "organisers to argue with; nothing in it is confidential and nothing in it is agreed.",),
+    ('v0.6.42', '2026-10-02', 'git 23d0aad3',
      "REPLICATING THE AGENTIC INBOX. A new article, written from a voice memo the day two calls asked "
      "how to copy the setup: a practical walkthrough in phases, from one Claude session with a policy to "
      "a team of roles talking in files through a vault, with the accounts first (a Workspace mailbox and "
@@ -3915,6 +3922,7 @@ def write_robots():
     text = f"""# sgit.ai, everything here is public and intended to be indexed.
 User-agent: *
 Allow: /
+Disallow: /drafts/
 
 Sitemap: https://sgit.ai/sitemap.xml
 

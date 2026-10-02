@@ -20,6 +20,10 @@ function walk(d) {
     // gitignored, never published, and full of vendored HTML and prose that would
     // otherwise fail every check here.
     if (e.name === '.sg_vault' || e.name === '.git' || e.name === 'node_modules') return [];
+    // drafts/ holds pages shared by link before they are public: self-contained HTML, not in
+    // the sitemap, noindex, and nothing links to them, which is the point. The orphan, mirror
+    // and sitemap checks would all fail them by design, so they are not walked.
+    if (e.name === 'drafts' && d === root) return [];
     if (e.name === 'content' && path.basename(d) === 'admin') return [];
     const p = path.join(d, e.name);
     return e.isDirectory() ? walk(p) : [p];

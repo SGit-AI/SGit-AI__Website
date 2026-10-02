@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Agents and Incidents Day · draft · sgit.ai</title>
+<meta name="description" content="Execution plan, draft 1, for a one-day workshop event in London by RiskMandate, DECID:R and the Open Security Summit. Shared by link; not public.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working document, one measure for prose, full-width bands for the three pictures and the tables. */
+:root{
+  --bg:#f5f6f3; --panel:#ffffff; --panel2:#eceee8; --line:#d7dad2; --fg:#182020; --dim:#5a6360; --dim2:#8a918e;
+  --rm:#0f766e; --rm-soft:#dbeeeb;      /* RiskMandate: the policy */
+  --dr:#b4432c; --dr-soft:#f6e1dc;      /* DECID:R: the incident */
+  --oss:#2b5fa8; --oss-soft:#dde6f4;    /* Open Security Summit: the method */
+  --amber:#a16207; --amber-soft:#f7ecd4;
+  --display:"Archivo",ui-sans-serif,system-ui,sans-serif; --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#13181a;--panel:#1b2124;--panel2:#232a2d;--line:#303a3c;--fg:#e8ebe6;--dim:#a2aba6;--dim2:#6f7976;--rm:#3fb3a6;--rm-soft:#163a37;--dr:#e2735a;--dr-soft:#3e231d;--oss:#6e9fe0;--oss-soft:#1d2d44;--amber:#d9a441;--amber-soft:#3a2f16;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#13181a;--panel:#1b2124;--panel2:#232a2d;--line:#303a3c;--fg:#e8ebe6;--dim:#a2aba6;--dim2:#6f7976;--rm:#3fb3a6;--rm-soft:#163a37;--dr:#e2735a;--dr-soft:#3e231d;--oss:#6e9fe0;--oss-soft:#1d2d44;--amber:#d9a441;--amber-soft:#3a2f16;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-block:0 4rem;padding-inline:16px}
+.wrap{max-width:1040px;margin:0 auto}
+.measure{max-width:720px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;letter-spacing:-.01em;line-height:1.15}
+h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;margin:1.6rem 0 .6rem}
+h2{font-size:1.45rem;font-weight:700;margin:2.6rem 0 .8rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+h3{font-size:1.05rem;font-weight:700;margin:1.4rem 0 .4rem}
+p{margin:.6rem 0}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:2rem}
+.lede{font-size:1.12rem;color:var(--fg);max-width:760px}
+.status{display:inline-flex;gap:.5rem;align-items:center;font-family:var(--mono);font-size:.72rem;color:var(--dim);border:1px dashed var(--line);border-radius:999px;padding:.25rem .7rem;margin:.6rem 0 0}
+.status i{width:.5rem;height:.5rem;border-radius:50%;background:var(--amber);display:inline-block}
+.small{font-size:.86rem;color:var(--dim)}
+a{color:var(--rm);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--rm) 40%,transparent)}
+a:hover{border-bottom-color:var(--rm)}
+ul,ol{padding-left:1.25rem}li{margin:.3rem 0}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel2);padding:.05em .35em;border-radius:4px}
+/* figures */
+figure{margin:1.4rem 0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1rem .6rem;overflow-x:auto}
+figure svg{width:100%;height:auto;display:block;font-family:var(--body);max-width:100%}
+figcaption{font-family:var(--mono);font-size:.74rem;color:var(--dim);margin-top:.6rem;line-height:1.5}
+.band{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:1.2rem 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;min-width:0}
+.tile h3{margin:.1rem 0 .4rem;font-size:1rem}
+.tile .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.tile.rm{border-top:4px solid var(--rm)}.tile.dr{border-top:4px solid var(--dr)}.tile.oss{border-top:4px solid var(--oss)}
+.pill{display:inline-block;font-family:var(--mono);font-size:.7rem;border-radius:999px;padding:.1rem .55rem;border:1px solid var(--line);color:var(--dim)}
+.pill.rm{background:var(--rm-soft);color:var(--rm);border-color:transparent}.pill.dr{background:var(--dr-soft);color:var(--dr);border-color:transparent}.pill.oss{background:var(--oss-soft);color:var(--oss);border-color:transparent}.pill.amber{background:var(--amber-soft);color:var(--amber);border-color:transparent}
+.tablewrap{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th{text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:var(--panel2);padding:.55rem .8rem}
+td{padding:.6rem .8rem;border-top:1px solid var(--line);vertical-align:top;line-height:1.5}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:.84rem}
+.note{background:var(--panel);border-left:4px solid var(--amber);padding:.8rem 1rem;border-radius:0 10px 10px 0;margin:1.2rem 0}
+.decide{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;margin:1.2rem 0}
+.decide ol li{margin:.5rem 0}
+.timeline{display:grid;gap:.5rem;margin:1rem 0}
+.tl{display:grid;grid-template-columns:110px 1fr;gap:.8rem;align-items:start;padding:.6rem .8rem;background:var(--panel);border:1px solid var(--line);border-radius:8px;min-width:0}
+.tl b{font-family:var(--mono);font-size:.78rem;color:var(--dim);font-weight:500;padding-top:.15rem}
+@media (max-width:520px){.tl{grid-template-columns:1fr}}
+.foot{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--dim)}
+:focus-visible{outline:2px solid var(--rm);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<p class="eyebrow">Execution plan · draft 1 · 2 October 2026 · for Dinis and Jemma</p>
+<h1>Agents and Incidents Day</h1>
+<p class="lede">A one-day, workshop-only event in central London, run the way the Open Security Summit was run: no presentations, every table producing something, everything released under Creative Commons. RiskMandate brings the agent behaviour policies. DECID:R brings the incident. The summit brings the method. Every participant leaves with a policy for an agent they actually run, a debrief from an incident they actually decided, and an encrypted vault holding both.</p>
+<p class="status"><i></i> not public · a page for the three organisers to argue with · figures are proposals, not prices</p>
+
+<figure aria-label="The offering: three partners, what each brings, and what a participant leaves with">
+<svg viewBox="0 0 1000 420" role="img">
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  <g font-size="12.5" fill="var(--fg)">
+    <!-- three partners -->
+    <g>
+      <rect x="20" y="40" width="270" height="118" rx="10" fill="var(--rm-soft)"/>
+      <text x="36" y="66" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--rm)">RISKMANDATE · THE POLICY</text>
+      <text x="36" y="92" font-weight="700" font-size="15">Agent Behaviour Policies</text>
+      <text x="36" y="114" fill="var(--dim)">reach · mandate · gap · barriers, written at the table</text>
+      <text x="36" y="134" fill="var(--dim)">for an agent the participant really runs</text>
+    </g>
+    <g>
+      <rect x="20" y="172" width="270" height="118" rx="10" fill="var(--dr-soft)"/>
+      <text x="36" y="198" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--dr)">DECID:R · THE INCIDENT</text>
+      <text x="36" y="224" font-weight="700" font-size="15">A live crisis tabletop</text>
+      <text x="36" y="246" fill="var(--dim)">six decision points under time pressure,</text>
+      <text x="36" y="266" fill="var(--dim)">trust, capacity, containment and cost tracked live</text>
+    </g>
+    <g>
+      <rect x="20" y="304" width="270" height="96" rx="10" fill="var(--oss-soft)"/>
+      <text x="36" y="330" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--oss)">OPEN SECURITY SUMMIT · THE METHOD</text>
+      <text x="36" y="356" font-weight="700" font-size="15">Working sessions, not talks</text>
+      <text x="36" y="378" fill="var(--dim)">facilitators from the community, outcomes published</text>
+    </g>
+    <!-- arrows to the day -->
+    <g stroke="var(--dim2)" stroke-width="1.6" fill="none" marker-end="url(#arr)" color="var(--dim2)">
+      <path d="M292 99 C 340 99, 340 210, 388 210"/>
+      <path d="M292 231 L 388 231"/>
+      <path d="M292 352 C 340 352, 340 252, 388 252"/>
+    </g>
+    <!-- the day -->
+    <rect x="392" y="120" width="230" height="220" rx="12" fill="var(--panel2)" stroke="var(--line)"/>
+    <text x="507" y="150" text-anchor="middle" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--dim)">ONE DAY · LONDON</text>
+    <text x="507" y="182" text-anchor="middle" font-weight="700" font-size="16">Six tables, three rounds</text>
+    <text x="507" y="206" text-anchor="middle" fill="var(--dim)">each table one agent, one incident</text>
+    <text x="507" y="236" text-anchor="middle" font-weight="600" fill="var(--dr)">run twice:</text>
+    <text x="507" y="256" text-anchor="middle" fill="var(--fg)">without a policy, then with one</text>
+    <text x="507" y="290" text-anchor="middle" fill="var(--dim)">pen and paper at some tables,</text>
+    <text x="507" y="308" text-anchor="middle" fill="var(--dim)">laptops at others</text>
+    <!-- arrow to the participant -->
+    <g stroke="var(--dim2)" stroke-width="1.6" fill="none" marker-end="url(#arr)" color="var(--dim2)"><path d="M624 230 L 700 230"/></g>
+    <!-- what they leave with -->
+    <rect x="704" y="40" width="276" height="360" rx="12" fill="var(--panel)" stroke="var(--line)"/>
+    <text x="720" y="68" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--dim)">EVERY PARTICIPANT LEAVES WITH</text>
+    <g font-size="13">
+      <circle cx="728" cy="100" r="5" fill="var(--rm)"/><text x="742" y="104" font-weight="600">A behaviour policy for their agent</text>
+      <text x="742" y="122" fill="var(--dim)">corrected at the table, signed by a facilitator</text>
+      <circle cx="728" cy="156" r="5" fill="var(--dr)"/><text x="742" y="160" font-weight="600">A debrief pack and a runbook</text>
+      <text x="742" y="178" fill="var(--dim)">from the incident their table decided</text>
+      <circle cx="728" cy="212" r="5" fill="var(--rm)"/><text x="742" y="216" font-weight="600">An encrypted vault of their own</text>
+      <text x="742" y="234" fill="var(--dim)">holding both, with a key only they hold</text>
+      <circle cx="728" cy="268" r="5" fill="var(--oss)"/><text x="742" y="272" font-weight="600">The day's outcomes, CC BY</text>
+      <text x="742" y="290" fill="var(--dim)">every table's scenario, policy and debrief</text>
+      <circle cx="728" cy="324" r="5" fill="var(--amber)"/><text x="742" y="328" font-weight="600">A before-and-after they ran themselves</text>
+      <text x="742" y="346" fill="var(--dim)">the same incident with and without a policy</text>
+    </g>
+    <text x="720" y="388" font-family="var(--mono)" font-size="10.5" fill="var(--dim)">declared value per seat: see the ticket section</text>
+  </g>
+</svg>
+<figcaption>The offering in one picture. Three partners, one day, one thing each participant takes home. The before-and-after is the angle: the same incident run at the same table without a behaviour policy, then with one.</figcaption>
+</figure>
+
+<h2>Why this, why the three of us</h2>
+<div class="measure">
+<p>The Open Security Summit ran from 2018 at Woburn Forest Center Parcs as a five-day working event, organised by Dinis Cruz and Jemma Davis. Its own description still holds: <em>"This is not a conference with uni-directional presentations."</em> Every session was a working session aimed at a specific problem, and the 2018 summit alone, with more than two hundred participants, produced outcomes that are still in use, among them the Mobile Security Testing Guide work, the OWASP threat modelling pages and the Application Security Guide for CISOs. The thing people remember is not a talk. It is that they made something with strangers in a room and it was published the same week.</p>
+<p>The two problems this day puts on the tables are the two that the same community is stuck on in 2026, and they are the same problem seen from two ends. RiskMandate's question is <em>what can your agent do, and what did you actually ask it to do</em>: reach, mandate, the gap between them, and the barriers that stand in the gap, typed honestly as a boundary, a setting, an expectation or nothing. DECID:R's question is <em>when it goes wrong, what do you decide, and what does each decision cost</em>: six decision points under time pressure, with public trust, operational capacity, threat containment and financial cost tracked live, and a debrief and runbook at the end. Put together, a table can write the policy for an agent, run the incident that agent could cause, and see how different the incident is when the policy exists. That is the day.</p>
+<p>Nothing here is a product launch. Everything a table produces, scenario, policy, decisions, debrief, is released under CC BY, as the summit did. The participants are the authors.</p>
+</div>
+
+<h2>The shape of the day</h2>
+<div class="measure">
+<p>Full day, one venue, six tables. Three rounds of ninety minutes, each table a different agent and a different audience, participants choosing a table per round. Each round runs the DECID:R scenario twice: once for an organisation with no behaviour policy, and once with the policy the table has just written. The facilitator keeps the two decision traces and the two sets of metrics side by side for the readout.</p>
+</div>
+
+<figure aria-label="The day: six tables in a ring, the three rounds, the opening and the readout">
+<svg viewBox="0 0 1000 470" role="img">
+  <g font-size="12.5" fill="var(--fg)">
+    <!-- the room -->
+    <rect x="20" y="30" width="560" height="410" rx="14" fill="var(--panel2)" stroke="var(--line)"/>
+    <text x="36" y="56" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--dim)">THE ROOM · TABLES ROUND THE OUTSIDE, THE FLOOR IN THE MIDDLE</text>
+    <!-- six tables -->
+    <g font-size="11.5">
+      <rect x="60" y="80" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--rm)" stroke-width="2"/>
+      <text x="72" y="100" font-weight="700">1 · The inbox agent</text><text x="72" y="118" fill="var(--dim)">mail, calendar, drafts</text><text x="72" y="136" fill="var(--dim)">prompt injection by email</text><text x="72" y="154" font-family="var(--mono)" font-size="10" fill="var(--rm)">laptops</text>
+      <rect x="225" y="80" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--rm)" stroke-width="2"/>
+      <text x="237" y="100" font-weight="700">2 · The coding agent</text><text x="237" y="118" fill="var(--dim)">a repo, a CI, a secret</text><text x="237" y="136" fill="var(--dim)">a dependency that lies</text><text x="237" y="154" font-family="var(--mono)" font-size="10" fill="var(--rm)">laptops</text>
+      <rect x="390" y="80" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--rm)" stroke-width="2"/>
+      <text x="402" y="100" font-weight="700">3 · The browser agent</text><text x="402" y="118" fill="var(--dim)">an extension, a checkout</text><text x="402" y="136" fill="var(--dim)">the page that tells it what to do</text><text x="402" y="154" font-family="var(--mono)" font-size="10" fill="var(--rm)">pen and paper</text>
+      <rect x="60" y="330" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--rm)" stroke-width="2"/>
+      <text x="72" y="350" font-weight="700">4 · The customer-data agent</text><text x="72" y="368" fill="var(--dim)">a CRM, a connector</text><text x="72" y="386" fill="var(--dim)">the export nobody asked for</text><text x="72" y="404" font-family="var(--mono)" font-size="10" fill="var(--rm)">pen and paper</text>
+      <rect x="225" y="330" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--rm)" stroke-width="2"/>
+      <text x="237" y="350" font-weight="700">5 · The cloud agent</text><text x="237" y="368" fill="var(--dim)">a key with no spend cap</text><text x="237" y="386" fill="var(--dim)">the bill as the incident</text><text x="237" y="404" font-family="var(--mono)" font-size="10" fill="var(--rm)">laptops</text>
+      <rect x="390" y="330" width="150" height="86" rx="8" fill="var(--panel)" stroke="var(--dr)" stroke-width="2"/>
+      <text x="402" y="350" font-weight="700">6 · The board table</text><text x="402" y="368" fill="var(--dim)">who accepted the gap,</text><text x="402" y="386" fill="var(--dim)">and until when</text><text x="402" y="404" font-family="var(--mono)" font-size="10" fill="var(--dr)">pen and paper</text>
+    </g>
+    <!-- floor -->
+    <rect x="120" y="190" width="360" height="118" rx="60" fill="var(--panel)" stroke="var(--line)" stroke-dasharray="4 4"/>
+    <text x="300" y="232" text-anchor="middle" font-weight="700" font-size="14">The floor</text>
+    <text x="300" y="254" text-anchor="middle" fill="var(--dim)">opening and readout happen here, standing</text>
+    <text x="300" y="274" text-anchor="middle" fill="var(--dim)">the shared DECID:R display on the long wall</text>
+    <!-- the day, right column -->
+    <text x="620" y="56" font-family="var(--mono)" font-size="10.5" letter-spacing="1.5" fill="var(--dim)">THE DAY</text>
+    <g font-size="12.5">
+      <rect x="620" y="70" width="360" height="52" rx="8" fill="var(--oss-soft)"/>
+      <text x="634" y="92" font-weight="700">09:00 · Open, standing, 30 minutes</text><text x="634" y="110" fill="var(--dim)">the one incident everyone will run, shown once; pick a table</text>
+      <rect x="620" y="130" width="360" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="634" y="152" font-weight="700">09:30 · Round one, 90 minutes</text><text x="634" y="170" fill="var(--dim)">write the policy for the table's agent, run the incident without it</text>
+      <rect x="620" y="190" width="360" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="634" y="212" font-weight="700">11:15 · Round two, 90 minutes</text><text x="634" y="230" fill="var(--dim)">change table or stay; run the incident with the policy; compare</text>
+      <rect x="620" y="250" width="360" height="40" rx="8" fill="var(--panel2)"/>
+      <text x="634" y="275" fill="var(--dim)">12:45 · Lunch, at the tables, the vaults get written</text>
+      <rect x="620" y="298" width="360" height="52" rx="8" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="634" y="320" font-weight="700">13:45 · Round three, 90 minutes</text><text x="634" y="338" fill="var(--dim)">the board table runs for everyone: who accepts what is left</text>
+      <rect x="620" y="358" width="360" height="52" rx="8" fill="var(--oss-soft)"/>
+      <text x="634" y="380" font-weight="700">15:30 · Readout, standing, 45 minutes</text><text x="634" y="398" fill="var(--dim)">six tables, six before-and-afters, published before people leave</text>
+      <text x="634" y="432" font-family="var(--mono)" font-size="10.5" fill="var(--dim)">16:15 · close · drinks if a sponsor wants to be remembered</text>
+    </g>
+  </g>
+</svg>
+<figcaption>Six tables round the room, the floor in the middle for the two standing sessions. Tables 1 to 5 are one agent each, matched to the people who run that kind of agent; table 6 is the board, where the gap that is left gets accepted by somebody with a name. Laptop tables use DECID:R and the vaults live; paper tables use the printed decision cards and the policy worksheet.</figcaption>
+</figure>
+
+<h3>The two-run rule</h3>
+<div class="measure">
+<p>Every table runs its incident twice, and the order matters. First, the organisation with no policy: the agent has the reach the connector gives it and nothing written down, and the table decides the six points as that organisation would. Then the table writes the policy, in RiskMandate's four parts, for that same agent, and runs the incident again as the organisation that has it. The facilitator keeps both traces. The readout is six pairs of traces, and the question for the room is what the policy changed: which decisions it removed, which it made cheaper, and which it made no difference to at all. That last category is the honest one, and the summit's record is that honest outcomes are the ones that get reused.</p>
+</div>
+
+<h2>Who should be at which table</h2>
+<figure aria-label="Target people: six audiences matched to six tables">
+<svg viewBox="0 0 1000 300" role="img">
+  <g font-size="12" fill="var(--fg)">
+    <g>
+      <rect x="20" y="30" width="150" height="240" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="35" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--rm)">TABLE 1</text>
+      <text x="35" y="80" font-weight="700" font-size="13">Operators of an</text><text x="35" y="97" font-weight="700" font-size="13">inbox agent</text>
+      <text x="35" y="124" fill="var(--dim)">founders, EAs, ops</text><text x="35" y="142" fill="var(--dim)">leads who already</text><text x="35" y="160" fill="var(--dim)">let an agent read</text><text x="35" y="178" fill="var(--dim)">their mail</text>
+      <text x="35" y="214" font-size="11" fill="var(--dim2)">reach: send as them</text><text x="35" y="232" font-size="11" fill="var(--dim2)">incident: an email</text><text x="35" y="250" font-size="11" fill="var(--dim2)">that gives orders</text>
+    </g>
+    <g>
+      <rect x="183" y="30" width="150" height="240" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="198" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--rm)">TABLE 2</text>
+      <text x="198" y="80" font-weight="700" font-size="13">Engineering leads</text><text x="198" y="97" font-weight="700" font-size="13">with coding agents</text>
+      <text x="198" y="124" fill="var(--dim)">CTOs, platform and</text><text x="198" y="142" fill="var(--dim)">AppSec people whose</text><text x="198" y="160" fill="var(--dim)">agents open pull</text><text x="198" y="178" fill="var(--dim)">requests</text>
+      <text x="198" y="214" font-size="11" fill="var(--dim2)">reach: the repo, CI</text><text x="198" y="232" font-size="11" fill="var(--dim2)">incident: a package</text><text x="198" y="250" font-size="11" fill="var(--dim2)">that is not what it says</text>
+    </g>
+    <g>
+      <rect x="346" y="30" width="150" height="240" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="361" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--rm)">TABLE 3</text>
+      <text x="361" y="80" font-weight="700" font-size="13">Product and</text><text x="361" y="97" font-weight="700" font-size="13">consumer teams</text>
+      <text x="361" y="124" fill="var(--dim)">people shipping</text><text x="361" y="142" fill="var(--dim)">extensions, agentic</text><text x="361" y="160" fill="var(--dim)">browsers, shopping</text><text x="361" y="178" fill="var(--dim)">helpers</text>
+      <text x="361" y="214" font-size="11" fill="var(--dim2)">reach: the whole page</text><text x="361" y="232" font-size="11" fill="var(--dim2)">incident: a page that</text><text x="361" y="250" font-size="11" fill="var(--dim2)">instructs the agent</text>
+    </g>
+    <g>
+      <rect x="509" y="30" width="150" height="240" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="524" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--rm)">TABLE 4</text>
+      <text x="524" y="80" font-weight="700" font-size="13">Data protection</text><text x="524" y="97" font-weight="700" font-size="13">and privacy</text>
+      <text x="524" y="124" fill="var(--dim)">DPOs, privacy</text><text x="524" y="142" fill="var(--dim)">counsel, CRM and</text><text x="524" y="160" fill="var(--dim)">RevOps owners with</text><text x="524" y="178" fill="var(--dim)">agents on customers</text>
+      <text x="524" y="214" font-size="11" fill="var(--dim2)">reach: every record</text><text x="524" y="232" font-size="11" fill="var(--dim2)">incident: an export</text><text x="524" y="250" font-size="11" fill="var(--dim2)">to the wrong place</text>
+    </g>
+    <g>
+      <rect x="672" y="30" width="150" height="240" rx="10" fill="var(--panel)" stroke="var(--line)"/>
+      <text x="687" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--rm)">TABLE 5</text>
+      <text x="687" y="80" font-weight="700" font-size="13">Cloud and</text><text x="687" y="97" font-weight="700" font-size="13">FinOps</text>
+      <text x="687" y="124" fill="var(--dim)">infrastructure and</text><text x="687" y="142" fill="var(--dim)">finance people who</text><text x="687" y="160" fill="var(--dim)">pay the model and</text><text x="687" y="178" fill="var(--dim)">cloud bills</text>
+      <text x="687" y="214" font-size="11" fill="var(--dim2)">reach: a key, no cap</text><text x="687" y="232" font-size="11" fill="var(--dim2)">incident: the bill</text><text x="687" y="250" font-size="11" fill="var(--dim2)">is the breach</text>
+    </g>
+    <g>
+      <rect x="835" y="30" width="145" height="240" rx="10" fill="var(--panel)" stroke="var(--dr)"/>
+      <text x="850" y="56" font-family="var(--mono)" font-size="10" letter-spacing="1.2" fill="var(--dr)">TABLE 6</text>
+      <text x="850" y="80" font-weight="700" font-size="13">The board</text><text x="850" y="97" font-weight="700" font-size="13">and risk owners</text>
+      <text x="850" y="124" fill="var(--dim)">NEDs, CISOs, risk</text><text x="850" y="142" fill="var(--dim)">and audit, insurers:</text><text x="850" y="160" fill="var(--dim)">the people who</text><text x="850" y="178" fill="var(--dim)">accept what is left</text>
+      <text x="850" y="214" font-size="11" fill="var(--dim2)">reach: all of the above</text><text x="850" y="232" font-size="11" fill="var(--dim2)">incident: the one</text><text x="850" y="250" font-size="11" fill="var(--dim2)">that reaches them</text>
+    </g>
+  </g>
+</svg>
+<figcaption>Six audiences, six tables. The first five are the people who already run that kind of agent, which is who the policy is for. The sixth is the people who sign: the day ends with the gap each table could not close being accepted, by name, for a stated period, which is the only honest ending an incident has.</figcaption>
+</figure>
+
+<h2>What each partner puts in, and what a seat is worth</h2>
+<div class="band">
+  <div class="tile rm"><span class="k">RiskMandate · Dinis</span><h3>A policy per participant, and a vault</h3>
+    <p class="small">Each participant leaves with an Agent Behaviour Policy for an agent they run, corrected at the table and signed off by a facilitator, in an encrypted vault they hold the key to. On the <a href="https://store.sgit.ai/policies/">published ladder</a> that sits between the £500 corrected tier and the £1,500 reviewed-and-signed tier; a facilitator signs it in the room but there is no second session afterwards. <b>Proposed declared value: £750 per seat.</b></p></div>
+  <div class="tile dr"><span class="k">DECID:R · Jemma</span><h3>A facilitated exercise, debrief and runbook</h3>
+    <p class="small">The table's incident, run live on the platform, with the un-watermarked debrief pack and the generated runbook taken home. DECID:R prices per organisation; its Gold tier puts two senior facilitators in a room for a day with a bespoke scenario. <b>Jemma to put the number on it.</b> If it is also £750, the seat carries a clean £1,500 declared value, which is a sentence that sells itself.</p></div>
+  <div class="tile oss"><span class="k">Open Security Summit · both</span><h3>The method, the facilitators, the licence</h3>
+    <p class="small">The working-session format, the facilitators from the community, the outcomes published under CC BY the same day, and the name. The summit's pedigree is what makes a workshop-only day credible to people who have sat through too many talks.</p></div>
+</div>
+
+<div class="note"><b>Open question for Jemma.</b> The DECID:R site quotes per organisation and does not publish a per-seat number. The plan needs one, even an indicative one, before the ticket page can say what a seat is worth. Everything in the ticket section below assumes £750 and should be re-cut once there is a real figure.</div>
+
+<h2>Money: sponsors first, then tickets</h2>
+<div class="measure">
+<p>The model from the memo, made concrete. It costs nothing to announce the day and open the first thirty seats; those seats are underwritten by sponsors, and every seat after them is paid. Once the first thirty are gone and a venue is in hand, the date is fixed and the rest is marketing.</p>
+</div>
+<div class="tablewrap"><table>
+<tr><th>What</th><th>Who pays</th><th class="num">Proposed</th><th>What they get</th></tr>
+<tr><td><b>Headline sponsor</b></td><td>one company</td><td class="num">£10,000</td><td>name on the day, logo on every published outcome and vault page, five seats, a short standing slot at the open (no slides), first refusal on the next one</td></tr>
+<tr><td><b>Venue sponsor</b></td><td>a company with a floor in central London</td><td class="num">in kind</td><td>same logo rights as a supporter plus the host's welcome at the open; saves the single largest cash line</td></tr>
+<tr><td><b>Food and drink sponsor</b></td><td>one company, or the venue sponsor</td><td class="num">in kind or £3,000</td><td>lunch at the tables and the drinks at the close, with the credit where people are eating</td></tr>
+<tr><td><b>Supporter</b></td><td>up to six companies</td><td class="num">£1,000 each</td><td>logo on the outcomes and the ticket page, one seat</td></tr>
+<tr><td><b>First thirty seats</b></td><td>covered by the sponsors above</td><td class="num">£0 to the participant</td><td>offered to the two communities first; the registration is an append lane on the event vault, so it opens the day this page goes public</td></tr>
+<tr><td><b>Seats 31 to 80</b></td><td>participants or their employers</td><td class="num">£350 to £450</td><td>against a declared value of £1,500; the final number set once the first thirty are gone</td></tr>
+</table></div>
+<div class="measure">
+<p>A central London workshop space for sixty to eighty people lists at roughly £850 to £1,500 for the day on the venue marketplaces, with full catering taking that to the £150-a-head range for quality rooms, so a cash budget of £8,000 to £12,000 covers venue, food, print, the DECID:R room display and a buffer. The headline sponsor alone covers it. Supporters and paid seats are then margin, which the three of us split by a formula agreed before the first ticket sells, not after.</p>
+<p>One more line, from the memo: event organisers who already run security days in London would take a share for bringing their audience. A seventy-thirty split of paid-seat revenue in their favour on the seats they bring is a fair starting offer, and it costs us nothing until a seat sells. Candidates are the people who run the London security meetups and the CISO dinner circuits, and the smaller conference producers; names to be agreed between Dinis and Jemma, who know them.</p>
+</div>
+
+<h2>What already exists to build on</h2>
+<div class="tablewrap"><table>
+<tr><th>Piece</th><th>State</th><th>Where</th></tr>
+<tr><td>The policy method: reach, mandate, gap, barriers, with sixteen published examples and a four-tier store</td><td>live</td><td><a href="https://riskmandate.ai/abp.html">riskmandate.ai</a>, <a href="https://store.sgit.ai/policies/">store.sgit.ai</a></td></tr>
+<tr><td>The crisis tabletop platform: 33 or more branching scenarios across 15 sectors, host console, live metrics, debrief and runbook export</td><td>live</td><td><a href="https://decidr.live/how-it-works">decidr.live</a></td></tr>
+<tr><td>A vault per participant, with a read key the participant holds and an append lane for registration</td><td>live, used daily</td><td><a href="https://sgit.ai/">sgit.ai</a>, <a href="https://sgit.ai/api/append-lanes.html">append lanes</a></td></tr>
+<tr><td>The agentic inbox walkthrough: table 1's scenario, as run</td><td>published 2 Oct</td><td><a href="https://sgit.ai/articles/replicating-the-agentic-inbox.html">the walkthrough</a>, <a href="https://sgit.ai/articles/six-agents-one-inbox.html">six agents, one inbox</a></td></tr>
+<tr><td>The browser-extension policy written before the code: table 3's scenario</td><td>published</td><td><a href="https://sgit.ai/demos/vaults/kit-bag/index.html">Kit Bag</a></td></tr>
+<tr><td>The provider spend-cap map: table 5's scenario</td><td>in a brief</td><td><a href="https://sgit.ai/docs/briefs/riskmandate-sandbox-twins-and-tokens.html">the sandbox brief</a></td></tr>
+<tr><td>Risk acceptance as the ending: table 6's frame</td><td>published</td><td><a href="https://sgit.ai/articles/every-risk-is-already-accepted.html">every risk is already accepted</a></td></tr>
+<tr><td>Footprint and blast radius: how the readout compares the two runs</td><td>under review</td><td><a href="https://sgit.ai/articles/footprint-and-blast-radius.html">the article</a></td></tr>
+<tr><td>The summit's working-session format and its outcomes record</td><td>2018 to 2024</td><td><a href="https://2018.open-security-summit.org/outcomes/">2018 outcomes</a>, <a href="https://open-security-summit.org/about/">about</a></td></tr>
+</table></div>
+
+<h2>Operational plan</h2>
+<div class="measure"><p>Ten weeks from the day this page is agreed. The first two weeks cost nothing but conversations; the date is not fixed until the venue is.</p></div>
+<div class="timeline">
+  <div class="tl"><b>Week 0</b><span><b>Agree the plan.</b> Dinis and Jemma: name, full day or half, the seat value on the DECID:R side, the split, the two candidate dates. Decide the licence line once: CC BY 4.0 on every outcome.</span></div>
+  <div class="tl"><b>Week 1</b><span><b>Open the first thirty.</b> Publish the page on both sites. Registration writes to the event vault's append lane; no form service, no mailing list, the vault is the list. Announce to the summit community, the RiskMandate early-access members and the DECID:R customer base.</span></div>
+  <div class="tl"><b>Weeks 1 to 3</b><span><b>Find the venue and the headline sponsor.</b> Two asks, run in parallel, each with a one-page version of this plan. The venue sponsor is the easier ask: a company with a floor and a reason to be seen hosting this. The date is fixed the day the venue says yes.</span></div>
+  <div class="tl"><b>Weeks 2 to 5</b><span><b>Recruit six facilitators and six scribes.</b> From the summit's track leaders and the two communities. One facilitator briefing call, one written brief per table (scenario, policy worksheet, the two-run rule, the readout format). Scribes write the outcomes into the table's vault as the day runs.</span></div>
+  <div class="tl"><b>Weeks 3 to 6</b><span><b>Write the six scenarios.</b> Each in DECID:R's shape (six decision points, three options each) and each with a matching policy worksheet. Dinis drafts the agent and the policy side; Jemma drafts the incident side; one rehearsal per table, remote, with the facilitator.</span></div>
+  <div class="tl"><b>Weeks 4 to 8</b><span><b>Sell seats 31 to 80 and the supporter slots.</b> Through the event-organiser partners on the split, and directly. Price set at week 4 from the first-thirty take-up.</span></div>
+  <div class="tl"><b>Week 8</b><span><b>Provision.</b> One vault per registered participant, pre-seeded with the policy worksheet for their chosen table and the day's agenda; a read key sent the week before, the write key handed over at the door. Print the paper tables' decision cards and worksheets.</span></div>
+  <div class="tl"><b>Week 9</b><span><b>Dry run.</b> Table 1 and table 6 run end to end with the organisers as participants, including the readout and the publishing step. Fix what breaks.</span></div>
+  <div class="tl"><b>Week 10</b><span><b>The day.</b> Publish the outcomes vault before the close. Within a week: a write-up on each of the three sites, the six before-and-after pairs as the headline, and the question of whether to run it again.</span></div>
+</div>
+
+<h3>Roles on the day</h3>
+<div class="band">
+  <div class="tile"><span class="k">Two hosts</span><p class="small">Dinis and Jemma run the open and the readout, standing, and float between tables. Neither facilitates a table.</p></div>
+  <div class="tile"><span class="k">Six facilitators</span><p class="small">One per table, from the community. Runs the policy worksheet, then the two DECID:R runs, then prepares the table's two-minute readout.</p></div>
+  <div class="tile"><span class="k">Six scribes</span><p class="small">One per table. Writes the policy, the decisions and the debrief into the table's vault as they happen, so publishing at 15:30 is a push, not a write-up.</p></div>
+  <div class="tile"><span class="k">One operator</span><p class="small">Keeps the shared display, the vaults and the append lane working. Hands out write keys at the door. Has the printed fallbacks.</p></div>
+</div>
+
+<h3>Things that go wrong, and what we do</h3>
+<ul class="measure">
+  <li><b>No headline sponsor by week 4.</b> Run it anyway at sixty seats with the venue sponsor and supporters, and price seats 31 to 60 at the top of the range. The first thirty stay free; that promise is the reputation.</li>
+  <li><b>A table has no participants.</b> Collapse to five tables at the open; the facilitator joins the board table, which always fills.</li>
+  <li><b>Wi-Fi fails.</b> Every laptop table has the paper version of its scenario and worksheet. DECID:R's display is the only thing that needs the network, and the operator has the scenarios exported.</li>
+  <li><b>Someone brings a real incident.</b> Good. The board table takes it after the readout, unrecorded, and nothing from it is published.</li>
+</ul>
+
+<h2>Decisions the two of you need to make</h2>
+<div class="decide"><ol>
+  <li><b>Full day or half day.</b> The memo leans full day, and the two-run rule needs ninety-minute rounds, so this plan is a full day. A half day would be two rounds and no board table. Say which.</li>
+  <li><b>The name.</b> Working title here is Agents and Incidents Day. Alternatives on the table: <em>Control and Respond</em>, <em>The Gap Day</em>, or simply <em>Open Security Summit London, agents edition</em>, which borrows the pedigree directly.</li>
+  <li><b>The DECID:R seat value</b>, and whether the Gold-tier two-facilitators-in-the-room is what Jemma brings, or the platform with community facilitators.</li>
+  <li><b>The split</b> between the three parties on supporter money and paid seats, agreed before the first seat sells.</li>
+  <li><b>Two candidate dates.</b> Ten weeks from a week-0 decision in early October lands in mid-December; the honest alternative is the second half of January. Pick both and let the venue decide.</li>
+  <li><b>Who writes to whom first.</b> The venue ask and the headline ask should go out from the person with the warmer relationship, with this page attached.</li>
+</ol></div>
+
+<h2>What the page becomes when it goes public</h2>
+<div class="measure">
+<p>This draft is for the three organisers. The public version is shorter and has three jobs: say what the day is in one screen (the first picture above), let someone take one of the first thirty seats (a form that writes to the append lane, no account), and let a sponsor see the three tiers and write to one address. It goes on riskmandate.ai and on sgit.ai as the same page, and on decidr.live if Jemma wants it there, with the registration lane shared between them so there is one list.</p>
+<p>Every number on this page is a proposal. The ones that will survive are the ones the first thirty registrations and the first sponsor conversation confirm.</p>
+</div>
+
+<p class="foot">Draft 1, written 2 October 2026 by the sgit.ai site agent from a voice memo by Dinis Cruz, for Dinis Cruz and Jemma Davis. Facts about the summit, DECID:R and venue costs come from the public pages linked in the text, read on 2 October 2026. DECID:R's site does not name its founders; the statement that Jemma created it is Dinis's. Nothing here has been agreed with anyone yet.</p>
+</div>
+
+</html>
