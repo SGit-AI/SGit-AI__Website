@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.29'
+SITE_VERSION = 'v0.6.30'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.29', '2026-10-01', 'this release',
+    ('v0.6.30', '2026-10-02', 'this release',
+     "THE ARTICLE, REVIEWED BY THE TEAM IT DESCRIBES. Custom UIs are not the exception, revised on a "
+     "review from the RiskMandate agent team's CRM agent. Four additions: it starts with the user, one "
+     "interface per moment and the test that every question asked in chat that a page could have answered "
+     "is the next interface; eight days, not one afternoon, the stream in which ten agents and one human "
+     "went from an empty vault to a working outreach practice, with the counts from the commit history "
+     "(seven vaults, sixteen interface releases, about 230 commits, over 550 agent messages, six written "
+     "policies, four keys rotated in a day after an agent's own leak check); who builds them, the team "
+     "map and the one-direction flow of work; and two interfaces as mock-ups with placeholder names plus "
+     "the policy explainer that goes out in first emails. Tone: every absolute claim of the form nobody "
+     "has done this is gone, replaced by what we found and what we did; the inbox that joins the pieces is "
+     "being built, not absent. Five figures from the review pack, no contact data in any of them.",),
+    ('v0.6.29', '2026-10-01', 'git fa4b4889',
      "CUSTOM UIS ARE NOT THE EXCEPTION. An article from a voice memo that weaves the site's threads "
      "into one argument about following up: every message has a graph, and the graph has altitudes "
      "(the block, the message, the conversation, the company, the contact), which is where fractal "
