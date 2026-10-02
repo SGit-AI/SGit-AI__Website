@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.44'
+SITE_VERSION = 'v0.6.45'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.44', '2026-10-02', 'this release',
+    ('v0.6.45', '2026-10-02', 'this release',
+     "THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions "
+     "at the same table, the incident without a policy and then with one; a single room sponsor at ten "
+     "thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about "
+     "fifteen hundred pounds of value each, seats after that paid, the surplus split evenly. The page now "
+     "opens with four pictures that carry the model, starting from the participant: what you bring, what "
+     "you leave with, the evening, who pays for what, and the three partners. A messaging section writes "
+     "the pitch, the invitation, the offer and the sponsor ask in the participant's terms first.",),
+    ('v0.6.44', '2026-10-02', 'git e57663ef',
      "THE DRAFT'S FIGURES, TO FIT. On the live page the three inline figures of the event plan ran their "
      "text past the boxes, because the web fonts set wider than the estimates the SVG was drawn with. "
      "Wider canvases, wider boxes, shorter lines.",),
