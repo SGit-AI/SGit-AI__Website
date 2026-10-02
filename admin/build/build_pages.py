@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.30'
+SITE_VERSION = 'v0.6.31'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.30', '2026-10-02', 'this release',
+    ('v0.6.31', '2026-10-02', 'this release',
+     "WHAT EMAIL BECOMES. The Custom UIs article gains its last section, from the second review pack and "
+     "the founder's memo: the transport stays, SMTP or an append lane, same message, same file; above it "
+     "the message is a node in a graph and each reader gets the shape their moment needs, one word, a "
+     "card, an email, a voice prompt, a board or the whole graph, as simple as the moment allows and as "
+     "complex as the situation requires. The shape adapts to urgency, focus, language and culture, the "
+     "relationship, and to whether the reader is an agent. Fractal semantic graphs stop being a theory "
+     "because each reader stops at the altitude they need, and the article reconciles its own earlier "
+     "line: email is still the medium a sender reaches for, but the graph is now the medium that carries "
+     "the meaning and email is one of its views. The loop closes it: moment, shape, decision, record, "
+     "better shape, with interfaces maturing at different speeds; better models make the loop faster and "
+     "the structure is what lets them. Two figures with placeholder names; a bullet and a closing line.",),
+    ('v0.6.30', '2026-10-02', 'git 3716f8ff',
      "THE ARTICLE, REVIEWED BY THE TEAM IT DESCRIBES. Custom UIs are not the exception, revised on a "
      "review from the RiskMandate agent team's CRM agent. Four additions: it starts with the user, one "
      "interface per moment and the test that every question asked in chat that a page could have answered "
