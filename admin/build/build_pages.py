@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.45'
+SITE_VERSION = 'v0.6.46'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,9 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.45', '2026-10-02', 'this release',
+    ('v0.6.46', '2026-10-02', 'this release',
+     "TWO LABELS TRIMMED on the event plan's pictures, where the last words touched the box edge.",),
+    ('v0.6.45', '2026-10-02', 'git e79c2927',
      "THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions "
      "at the same table, the incident without a policy and then with one; a single room sponsor at ten "
      "thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about "

@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.45). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.46). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-203site releases, each verified live before it was called done
+204site releases, each verified live before it was called done
 
 39vaults published with a deliberately public read key
 
@@ -5621,7 +5621,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.45, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.46, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5984,7 +5984,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-203**site releases since 14 August**
+204**site releases since 14 August**
 each verified live before it was called done
 
 39**vaults published with a public read key**
@@ -9974,11 +9974,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.45**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.46**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.45 | 2026-10-02 | this release | THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions at the same table, the incident without a policy and then with one; a single room sponsor at ten thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about fifteen hundred pounds of value each, seats after that paid, the surplus split evenly. The page now opens with four pictures that carry the model, starting from the participant: what you bring, what you leave with, the evening, who pays for what, and the three partners. A messaging section writes the pitch, the invitation, the offer and the sponsor ask in the participant's terms first. |
+| v0.6.46 | 2026-10-02 | this release | TWO LABELS TRIMMED on the event plan's pictures, where the last words touched the box edge. |
+| v0.6.45 | 2026-10-02 | git e79c2927 | THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions at the same table, the incident without a policy and then with one; a single room sponsor at ten thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about fifteen hundred pounds of value each, seats after that paid, the surplus split evenly. The page now opens with four pictures that carry the model, starting from the participant: what you bring, what you leave with, the evening, who pays for what, and the three partners. A messaging section writes the pitch, the invitation, the offer and the sponsor ask in the participant's terms first. |
 | v0.6.44 | 2026-10-02 | git e57663ef | THE DRAFT'S FIGURES, TO FIT. On the live page the three inline figures of the event plan ran their text past the boxes, because the web fonts set wider than the estimates the SVG was drawn with. Wider canvases, wider boxes, shorter lines. |
 | v0.6.43 | 2026-10-02 | git 93391b60 | A DRAFTS FOLDER. A place for a page that is shared by link before it is public: drafts/ is not walked by the validator, not listed in the sitemap, disallowed in robots.txt and marked noindex, and nothing links to it, which is the point. Each draft is a self-contained HTML file with a slug nobody would guess. The first one is the execution plan for a one-day London workshop event with RiskMandate, DECID:R and the Open Security Summit, written for the two organisers to argue with; nothing in it is confidential and nothing in it is agreed. |
 | v0.6.42 | 2026-10-02 | git 23d0aad3 | REPLICATING THE AGENTIC INBOX. A new article, written from a voice memo the day two calls asked how to copy the setup: a practical walkthrough in phases, from one Claude session with a policy to a team of roles talking in files through a vault, with the accounts first (a Workspace mailbox and a Claude Team seat of the agent's own, connectors enabled by the owner and connected by the agent's account, the person's calendar shared read-only) and one rule that never changes: the agent drafts, a person sends. On its own page, deliberately: the agents who run the roles will add their own account of each role in the next revision. One figure, the four phases. Its graph is written, so it takes its place in the cards, the threads and the map like the others. |
