@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.34'
+SITE_VERSION = 'v0.6.35'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.34', '2026-10-02', 'this release',
+    ('v0.6.35', '2026-10-02', 'this release',
+     "FIGURES TO SCALE, ABSTRACT TO SIZE. A desktop screenshot of the Custom UIs article showed its "
+     "abstract running to two thousand characters and the six tall review figures sitting at the full "
+     "column width, each taller than a screen and with internal type larger than the article's own. The "
+     "figure directive gains an optional fourth field, narrow (62% of the measure) or medium (78%), "
+     "centred, full width again on phones, with the lightbox still opening the full image; the six tall "
+     "figures are narrow and the policy explainer is medium. The abstract is now eight sentences.",),
+    ('v0.6.34', '2026-10-02', 'git 75111d24',
      "SAID PLAINLY. The closing section of the Custom UIs article drops the checkable-claim framing "
      "altogether: a claim is checkable by nature and the article is made of them, so prefixing one with a "
      "caveat was redundant. The section is now titled The future of email, the summary bullet and the "

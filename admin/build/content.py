@@ -164,15 +164,19 @@ class Content_Loader:
                     f'</div>')
                 continue
 
-            # !shot filename.webp | dir | caption   — a walkthrough figure
+            # !shot filename.webp | dir | caption [| narrow|medium]   — a walkthrough figure.
+            # The optional fourth field narrows a tall figure so it does not dominate the column:
+            # narrow = 62% of the measure, medium = 78%. Readers get the full size in the lightbox.
             if line.startswith('!shot '):
                 flush_para(); flush_list()
                 parts = [p.strip() for p in line[6:].split('|')]
                 name = parts[0]
                 sdir = parts[1] if len(parts) > 1 and parts[1] else 'images/'
                 cap = parts[2] if len(parts) > 2 else ''
+                size = parts[3] if len(parts) > 3 and parts[3] in ('narrow', 'medium') else ''
+                cls = 'shot' + (f' shot--{size}' if size else '')
                 out.append(
-                    f'<figure class="shot" data-shot="{html.escape(name, quote=True)}" '
+                    f'<figure class="{cls}" data-shot="{html.escape(name, quote=True)}" '
                     f'data-dir="{html.escape(sdir, quote=True)}" '
                     f'data-alt="{html.escape(cap, quote=True)}">'
                     f'<figcaption>{self.inline(cap, depth, where)}</figcaption></figure>')

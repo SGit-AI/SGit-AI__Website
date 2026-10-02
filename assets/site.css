@@ -409,6 +409,11 @@ figure.shot{margin:0;opacity:0;transition:opacity .35s ease}
 figure.shot.shot--in,figure.shot.shot--failed{opacity:1}
 figure.shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);background:var(--term-bg)}
 figure.shot figcaption{font-size:.75rem;color:var(--dim);margin-top:.5rem;font-family:var(--mono);line-height:1.5}
+/* Tall figures (infographics, phone mock-ups, timelines) at full measure dwarf the text beside them.
+   The !shot directive's fourth field narrows them; the lightbox still opens the full image. */
+figure.shot.shot--narrow{max-width:62%;margin:0 auto}
+figure.shot.shot--medium{max-width:78%;margin:0 auto}
+@media (max-width:720px){figure.shot.shot--narrow,figure.shot.shot--medium{max-width:100%}}
 @media (max-width:820px){
   .wt-row{grid-template-columns:1fr;gap:1rem}
   .wt-row.wt-alt > .wt-text{order:0}
