@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.31'
+SITE_VERSION = 'v0.6.32'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.31', '2026-10-02', 'this release',
+    ('v0.6.32', '2026-10-02', 'this release',
+     "THE FUTURE OF EMAIL, STATED SO IT CAN BE WRONG. The Custom UIs article gains its closing argument. "
+     "Earlier announcements of the future of email, Wave, AMP for Email, Slack, Hey, lost to the inbox "
+     "because they needed the recipient to install something. Two things are true now that were not then: "
+     "messages are increasingly read by an agent on the recipient's behalf, and those agents reshape badly "
+     "because the message carries no structure, the same problem the token bill article found for "
+     "websites. So the claim, in a form that can be falsified: the future of email is sender-served "
+     "structure, read by the recipient's agent, with the inbox as one view of the graph. Email-FS is the "
+     "structure, Agent Contact is how agents exchange it, the vault is where the graph lives, and a plain "
+     "email still works on day one. A bullet in the summary, a line in the front-matter summary, and the "
+     "token bill article joined the threads list.",),
+    ('v0.6.31', '2026-10-02', 'git 780ddcde',
      "WHAT EMAIL BECOMES. The Custom UIs article gains its last section, from the second review pack and "
      "the founder's memo: the transport stays, SMTP or an append lane, same message, same file; above it "
      "the message is a node in a graph and each reader gets the shape their moment needs, one word, a "
