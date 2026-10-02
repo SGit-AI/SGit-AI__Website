@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -23,15 +23,15 @@ Four of **39 published vaults**. Each opens with a read key printed on its page,
 
 ## Start with an argument, not a menu
 
-The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 21 so far, three newest here.
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 22 so far, three newest here.
 
-[2026-10-02Agents & policy6 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md) [2026-10-02Startups & strategy2 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](articles/price-it-then-give-it-away.md) [2026-10-01Graphs & knowledge9 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](articles/custom-uis-are-not-the-exception.md)
+[2026-10-02Agents & policy7 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md) [2026-10-02Startups & strategy2 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](articles/price-it-then-give-it-away.md) [2026-10-02Agents & policy6 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](articles/replicating-the-agentic-inbox.md)
 
+- [Custom UIs are not the exception](articles/custom-uis-are-not-the-exception.md) · 2026-10-01
 - [The ultimate insider](articles/ultimate-insider-three-collisions.md) · 2026-09-30
 - [The reader was always the product](articles/how-news-got-here.md) · 2026-09-29
 - [Six agents, one inbox](articles/six-agents-one-inbox.md) · 2026-09-29
 - [Sixteen thousand fetches, ten clicks, and a token bill nobody…](articles/token-bill-nobody-is-sending.md) · 2026-09-28
-- [A supply chain of vaults](articles/supply-chain-of-vaults.md) · 2026-09-27
 
 [All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
@@ -55,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-199site releases, each verified live before it was called done
+200site releases, each verified live before it was called done
 
 39vaults published with a deliberately public read key
 

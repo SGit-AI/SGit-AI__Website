@@ -2,7 +2,7 @@
 
 > When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.
 
-*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -182,6 +182,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 ### Continued by
 
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 - [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.

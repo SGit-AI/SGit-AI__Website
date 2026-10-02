@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.41",
+  "site_version": "v0.6.42",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -87,6 +87,7 @@
         "six-agents-one-inbox"
       ],
       "links_in": [
+        "replicating-the-agentic-inbox",
         "ultimate-insider-three-collisions"
       ],
       "graph": {
@@ -570,6 +571,258 @@
       }
     },
     {
+      "slug": "replicating-the-agentic-inbox",
+      "title": "Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send",
+      "date": "2026-10-02",
+      "updated": "",
+      "url": "https://sgit.ai/articles/replicating-the-agentic-inbox.html",
+      "markdown": "https://sgit.ai/articles/replicating-the-agentic-inbox.md",
+      "card": "https://sgit.ai/articles/cards/replicating-the-agentic-inbox.webp",
+      "teaser": "How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.",
+      "topics": [
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "email",
+        "inbox",
+        "agent-behaviour-policy",
+        "riskmandate",
+        "claude",
+        "google-workspace",
+        "connectors",
+        "vaults",
+        "email-fs",
+        "walkthrough",
+        "article"
+      ],
+      "links_out": [
+        "six-agents-one-inbox",
+        "custom-uis-are-not-the-exception",
+        "footprint-and-blast-radius",
+        "connector-twin-before-you-deploy-an-agent",
+        "ultimate-insider-three-collisions"
+      ],
+      "links_in": [
+        "six-agents-one-inbox"
+      ],
+      "graph": {
+        "slug": "replicating-the-agentic-inbox",
+        "teaser": "How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.",
+        "topics": [
+          "agents-and-policy",
+          "vaults-and-method"
+        ],
+        "core_idea": "Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a team without ever breaking that rule.",
+        "nodes": [
+          {
+            "id": "state-machine",
+            "label": "Claude as a state machine",
+            "kind": "concept",
+            "summary": "Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops."
+          },
+          {
+            "id": "own-accounts",
+            "label": "Accounts of the agent's own",
+            "kind": "method",
+            "summary": "A Workspace mailbox on a domain you own, a Claude Team seat, a GitHub account on the same identity; never your own inbox."
+          },
+          {
+            "id": "connectors",
+            "label": "Connectors enabled, then connected",
+            "kind": "artefact",
+            "summary": "On a Team plan the owner enables connectors for the organisation; the agent's own account then connects, so the OAuth grants live only there."
+          },
+          {
+            "id": "calendar-ro",
+            "label": "Calendar shared read-only",
+            "kind": "method",
+            "summary": "The person's calendar is shared to the agent's account with read access, so it knows what is going on without being able to move anything."
+          },
+          {
+            "id": "inbox-agent",
+            "label": "The inbox agent",
+            "kind": "artefact",
+            "summary": "The one session that reads the mailbox, labels, moves, summarises and writes replies to Drafts."
+          },
+          {
+            "id": "policy-first",
+            "label": "Policy before the first run",
+            "kind": "method",
+            "summary": "Reach, mandate, gap and barriers written before the agent runs, even when there is only one agent."
+          },
+          {
+            "id": "roles",
+            "label": "Roles: inbox, writer, CRM, dev team",
+            "kind": "concept",
+            "summary": "Each role a session with a policy short enough to check; the policies share the reach and differ in the mandate."
+          },
+          {
+            "id": "email-fs",
+            "label": "Email-FS lite",
+            "kind": "artefact",
+            "summary": "An inbox per agent as a folder in a vault; a message is a file with typed blocks, a reply is another file, and the vault keeps every version."
+          },
+          {
+            "id": "drafts-rule",
+            "label": "The agent drafts, a person sends",
+            "kind": "claim",
+            "summary": "Nothing is sent by an agent; everything lands in Drafts and the person reads, edits and presses send."
+          },
+          {
+            "id": "security-exception",
+            "label": "The security exception",
+            "kind": "example",
+            "summary": "The one message that goes out without waiting is written into the policy as a named exception rather than left as a habit."
+          },
+          {
+            "id": "interfaces",
+            "label": "Interfaces for the moment",
+            "kind": "artefact",
+            "summary": "Cards, drop zones and boards built by agents in an afternoon because the data was already files in a vault; each one gets a policy."
+          },
+          {
+            "id": "record",
+            "label": "The record",
+            "kind": "concept",
+            "summary": "Every message a file, every draft in the mailbox, every decision a row: a footprint that can be read afterwards without touching anything."
+          },
+          {
+            "id": "trust",
+            "label": "Trust built from the record",
+            "kind": "claim",
+            "summary": "You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up."
+          },
+          {
+            "id": "schedule-later",
+            "label": "Schedules come later",
+            "kind": "question",
+            "summary": "Running the sessions on a schedule is where this ends up, but start with sessions you open yourself; the schedule gets its own article."
+          }
+        ],
+        "edges": [
+          {
+            "from": "own-accounts",
+            "to": "connectors",
+            "rel": "leads-to"
+          },
+          {
+            "from": "own-accounts",
+            "to": "calendar-ro",
+            "rel": "extends"
+          },
+          {
+            "from": "own-accounts",
+            "to": "inbox-agent",
+            "rel": "leads-to"
+          },
+          {
+            "from": "policy-first",
+            "to": "inbox-agent",
+            "rel": "depends-on"
+          },
+          {
+            "from": "inbox-agent",
+            "to": "drafts-rule",
+            "rel": "depends-on"
+          },
+          {
+            "from": "security-exception",
+            "to": "drafts-rule",
+            "rel": "example-of"
+          },
+          {
+            "from": "inbox-agent",
+            "to": "roles",
+            "rel": "leads-to"
+          },
+          {
+            "from": "roles",
+            "to": "email-fs",
+            "rel": "depends-on"
+          },
+          {
+            "from": "roles",
+            "to": "policy-first",
+            "rel": "extends"
+          },
+          {
+            "from": "state-machine",
+            "to": "roles",
+            "rel": "produces"
+          },
+          {
+            "from": "state-machine",
+            "to": "email-fs",
+            "rel": "depends-on"
+          },
+          {
+            "from": "email-fs",
+            "to": "record",
+            "rel": "produces"
+          },
+          {
+            "from": "roles",
+            "to": "interfaces",
+            "rel": "leads-to"
+          },
+          {
+            "from": "interfaces",
+            "to": "policy-first",
+            "rel": "extends"
+          },
+          {
+            "from": "record",
+            "to": "trust",
+            "rel": "produces"
+          },
+          {
+            "from": "drafts-rule",
+            "to": "trust",
+            "rel": "produces"
+          },
+          {
+            "from": "state-machine",
+            "to": "schedule-later",
+            "rel": "leads-to"
+          },
+          {
+            "from": "own-accounts",
+            "to": "trust",
+            "rel": "depends-on"
+          }
+        ],
+        "links": {
+          "articles": [
+            "six-agents-one-inbox",
+            "custom-uis-are-not-the-exception",
+            "footprint-and-blast-radius",
+            "connector-twin-before-you-deploy-an-agent",
+            "ultimate-insider-three-collisions"
+          ],
+          "pages": [
+            "/docs/append-lane-messaging.html",
+            "/docs/agent-contact.html"
+          ],
+          "sites": [
+            "https://riskmandate.ai/abp.html",
+            "https://riskmandate.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "Nothing is sent by an agent.",
+            "why": "The rule that never changes, and the reason the setup gives the person more control rather than less."
+          },
+          {
+            "text": "You do not have to believe what the agent says it did. You can read what it did.",
+            "why": "Why the record is the point for someone learning to trust a set of agents."
+          }
+        ]
+      }
+    },
+    {
       "slug": "custom-uis-are-not-the-exception",
       "title": "Custom UIs are not the exception: the inbox in 2026, where every message has its own universe",
       "date": "2026-10-01",
@@ -606,7 +859,8 @@
         "ultimate-insider-three-collisions"
       ],
       "links_in": [
-        "footprint-and-blast-radius"
+        "footprint-and-blast-radius",
+        "replicating-the-agentic-inbox"
       ],
       "graph": {
         "slug": "custom-uis-are-not-the-exception",
@@ -896,6 +1150,7 @@
       ],
       "links_in": [
         "footprint-and-blast-radius",
+        "replicating-the-agentic-inbox",
         "custom-uis-are-not-the-exception"
       ],
       "graph": {
@@ -1397,7 +1652,7 @@
       "slug": "six-agents-one-inbox",
       "title": "Six agents, one inbox: what a real multi-agent setup taught me about access policies",
       "date": "2026-09-29",
-      "updated": "",
+      "updated": "2026-10-02",
       "url": "https://sgit.ai/articles/six-agents-one-inbox.html",
       "markdown": "https://sgit.ai/articles/six-agents-one-inbox.md",
       "card": "https://sgit.ai/articles/cards/six-agents-one-inbox.webp",
@@ -1417,10 +1672,12 @@
         "article"
       ],
       "links_out": [
-        "connector-twin-before-you-deploy-an-agent"
+        "connector-twin-before-you-deploy-an-agent",
+        "replicating-the-agentic-inbox"
       ],
       "links_in": [
         "footprint-and-blast-radius",
+        "replicating-the-agentic-inbox",
         "custom-uis-are-not-the-exception",
         "ultimate-insider-three-collisions"
       ],
@@ -2224,6 +2481,7 @@
       "links_out": [],
       "links_in": [
         "footprint-and-blast-radius",
+        "replicating-the-agentic-inbox",
         "custom-uis-are-not-the-exception",
         "ultimate-insider-three-collisions",
         "six-agents-one-inbox"

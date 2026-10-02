@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,7 +14,7 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-21 of 21 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
+22 of 22 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
 ## How the articles connect
 
@@ -52,7 +52,7 @@ Add two words to the Agent Behaviour Policy: footprint, what the agent actually 
 
 > The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
 
-builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
 
@@ -84,6 +84,38 @@ A price is a statement of what you think the thing is worth, and giving it away 
 > None of that is zero, and all of it is paid by them. The part that is easy to leave out: the offer costs the other side attention and schedule, and that cost is what the programme measures.
 
 builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
+
+## [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md)
+
+2026-10-02 · Agents & policyVaults & method
+
+Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a team without ever breaking that rule.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 18 edges**
+
+- **Claude as a state machine** (concept) Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops.
+- **Accounts of the agent's own** (method) A Workspace mailbox on a domain you own, a Claude Team seat, a GitHub account on the same identity; never your own inbox.
+- **Connectors enabled, then connected** (artefact) On a Team plan the owner enables connectors for the organisation; the agent's own account then connects, so the OAuth grants live only there.
+- **Calendar shared read-only** (method) The person's calendar is shared to the agent's account with read access, so it knows what is going on without being able to move anything.
+- **The inbox agent** (artefact) The one session that reads the mailbox, labels, moves, summarises and writes replies to Drafts.
+- **Policy before the first run** (method) Reach, mandate, gap and barriers written before the agent runs, even when there is only one agent.
+- **Roles: inbox, writer, CRM, dev team** (concept) Each role a session with a policy short enough to check; the policies share the reach and differ in the mandate.
+- **Email-FS lite** (artefact) An inbox per agent as a folder in a vault; a message is a file with typed blocks, a reply is another file, and the vault keeps every version.
+- **The agent drafts, a person sends** (claim) Nothing is sent by an agent; everything lands in Drafts and the person reads, edits and presses send.
+- **The security exception** (example) The one message that goes out without waiting is written into the policy as a named exception rather than left as a habit.
+- **Interfaces for the moment** (artefact) Cards, drop zones and boards built by agents in an afternoon because the data was already files in a vault; each one gets a policy.
+- **The record** (concept) Every message a file, every draft in the mailbox, every decision a row: a footprint that can be read afterwards without touching anything.
+- **Trust built from the record** (claim) You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up.
+- **Schedules come later** (question) Running the sessions on a schedule is where this ends up, but start with sessions you open yourself; the schedule gets its own article.
+
+> Nothing is sent by an agent. The rule that never changes, and the reason the setup gives the person more control rather than less.
+
+> You do not have to believe what the agent says it did. You can read what it did. Why the record is the point for someone learning to trust a set of agents.
+
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md)
 
@@ -117,7 +149,7 @@ Every message has a graph with altitudes, so a message is designed for the recip
 
 > The graph is the medium. Email, cards, voice and boards are views of it. The turn where email stops being the medium and becomes one projection of the graph.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
 
 ## [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md)
 
@@ -151,7 +183,7 @@ Agents are the insider threat that never scaled before, the infrastructure was d
 
 > The more you can constrain an agent, the more you can trust it, and the more autonomy you can afford to give it. The irony the talk would end on, and the turn from the problem to the way out.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
 ## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
 
@@ -218,7 +250,7 @@ Write an agent's access policy as a table with a column for how each rule is enf
 
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
-builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 
@@ -319,7 +351,7 @@ If you cannot say what your agent did, what it saw when it did it, and which of 
 
 > The value of the list is not that most of it is green. It is that the red rows are named. Why the twin changes governance: irreversible actions become a named list the mandate can be written against.
 
-continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md)
 

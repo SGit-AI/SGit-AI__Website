@@ -2,7 +2,7 @@
 
 > For the past few weeks I have run agents on dedicated accounts, a Google Workspace seat, a Claude Team seat and a GitHub account per agent, and split the work across six roles: a scheduled reader of the inbox, a mailbox agent that drafts, an inbox agent that sends, a CRM agent, a dev team agent and a site editor. This article is what that setup taught me, and it is mostly about the gap between the policy I wanted and what the tools can enforce. Three findings. The account, not the session, is the blast radius, so a dedicated account per agent is the first real control anyone has, and it turns out to do more than segregate, because it puts each agent in its own organisational unit where Google's compliance rules become per-agent enforcement. The first exception arrived before the first policy was written: the reader that must never reply must reply when the message comes from me, which is an authentication problem, not a permissions one. And the policy I had written on the assumption that the Gmail connector could not send attachments was wrong, because an agent found the attachments field, proved it with a signed PDF, and wrote up how. The vendor's own two documentation pages disagree about whether the connector can send at all. So the article ends with a table of every rule in the setup against how it is enforced today, by identity, by scope, by a compliance rule, by an approval prompt or by nothing but the agent's good behaviour, and with the argument that a policy is only as real as its worst row.
 
-*Source: <https://sgit.ai/articles/six-agents-one-inbox.html> · site v0.6.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/six-agents-one-inbox.html> · site v0.6.42 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # Six agents, one inbox: what a real multi-agent setup taught me about access policies
 
-By [Dinis Cruz](../about/index.md) · 2026-09-29 · [v0.6.19](../admin/versions.md) · agentsconnectorsaccess-policiesnon-human-identitygmailgithubriskmandatesecurityarticle
+By [Dinis Cruz](../about/index.md) · 2026-09-29 · updated 2026-10-02 · [v0.6.19](../admin/versions.md) · agentsconnectorsaccess-policiesnon-human-identitygmailgithubriskmandatesecurityarticle
 
 ***Abstract:** For the past few weeks I have run agents on dedicated accounts, a Google Workspace seat, a Claude Team seat and a GitHub account per agent, and split the work across six roles: a scheduled reader of the inbox, a mailbox agent that drafts, an inbox agent that sends, a CRM agent, a dev team agent and a site editor. This article is what that setup taught me, and it is mostly about the gap between the policy I wanted and what the tools can enforce. Three findings. The account, not the session, is the blast radius, so a dedicated account per agent is the first real control anyone has, and it turns out to do more than segregate, because it puts each agent in its own organisational unit where Google's compliance rules become per-agent enforcement. The first exception arrived before the first policy was written: the reader that must never reply must reply when the message comes from me, which is an authentication problem, not a permissions one. And the policy I had written on the assumption that the Gmail connector could not send attachments was wrong, because an agent found the attachments field, proved it with a signed PDF, and wrote up how. The vendor's own two documentation pages disagree about whether the connector can send at all. So the article ends with a table of every rule in the setup against how it is enforced today, by identity, by scope, by a compliance rule, by an approval prompt or by nothing but the agent's good behaviour, and with the argument that a policy is only as real as its worst row.*
 
@@ -113,6 +113,8 @@ Here is the policy for the setup, one rule per row, with the column that matters
 
 Read the last column top to bottom and the shape of the problem is clear. The rows that touch identity, code and vaults are enforced, because accounts, repositories and keys are boundaries the platform or the mathematics maintains. The rows that touch mail are admin rules and approvals, which is good, and better than I expected before I understood organisational units. And two rows are *told*. One of them, the reply-to-me rule, has a known fix and a bounded failure. The other, *acts outside its role*, is the row every agent policy in the world shares, and no setting anywhere enforces it. It is the reason the [connector twin](../articles/connector-twin-before-you-deploy-an-agent.md) exists: if you cannot prevent it, you must at least be able to see it afterwards.
 
+**Follow-up, 2 October 2026.** The step-by-step version of this setup, in phases from one Claude session to the roles described here, is now its own article: [Replicating the agentic inbox](../articles/replicating-the-agentic-inbox.md). This page stays the argument about the policy rows; that one is the walkthrough.
+
 ## What I would tell somebody starting this
 
 1. **Buy the segregation.** A Workspace seat per agent is £7 a month. It is the only control that covers mail, files, code and connectors at once, and it is the precondition for every admin rule below.
@@ -156,10 +158,12 @@ Agents & policy[This article as a graph →](graphs.md#six-agents-one-inbox)
 ### Builds on
 
 - [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md) An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.
+- [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 
 ### Continued by
 
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 - [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 

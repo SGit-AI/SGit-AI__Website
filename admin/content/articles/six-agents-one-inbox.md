@@ -1,6 +1,7 @@
 ---
 title: Six agents, one inbox: what a real multi-agent setup taught me about access policies
 date: 2026-09-29
+updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html
 summary: For the past few weeks I have run agents on dedicated accounts, a Google Workspace seat, a Claude Team seat and a GitHub account per agent, and split the work across six roles: a scheduled reader of the inbox, a mailbox agent that drafts, an inbox agent that sends, a CRM agent, a dev team agent and a site editor. This article is what that setup taught me, and it is mostly about the gap between the policy I wanted and what the tools can enforce. Three findings. The account, not the session, is the blast radius, so a dedicated account per agent is the first real control anyone has, and it turns out to do more than segregate, because it puts each agent in its own organisational unit where Google's compliance rules become per-agent enforcement. The first exception arrived before the first policy was written: the reader that must never reply must reply when the message comes from me, which is an authentication problem, not a permissions one. And the policy I had written on the assumption that the Gmail connector could not send attachments was wrong, because an agent found the attachments field, proved it with a signed PDF, and wrote up how. The vendor's own two documentation pages disagree about whether the connector can send at all. So the article ends with a table of every rule in the setup against how it is enforced today, by identity, by scope, by a compliance rule, by an approval prompt or by nothing but the agent's good behaviour, and with the argument that a policy is only as real as its worst row.
@@ -108,6 +109,8 @@ Here is the policy for the setup, one rule per row, with the column that matters
 | Acts outside its role | no | no | no | no | no | no | **Told** |
 
 Read the last column top to bottom and the shape of the problem is clear. The rows that touch identity, code and vaults are enforced, because accounts, repositories and keys are boundaries the platform or the mathematics maintains. The rows that touch mail are admin rules and approvals, which is good, and better than I expected before I understood organisational units. And two rows are *told*. One of them, the reply-to-me rule, has a known fix and a bounded failure. The other, *acts outside its role*, is the row every agent policy in the world shares, and no setting anywhere enforces it. It is the reason the [connector twin](/articles/connector-twin-before-you-deploy-an-agent.html) exists: if you cannot prevent it, you must at least be able to see it afterwards.
+
+> **Follow-up, 2 October 2026.** The step-by-step version of this setup, in phases from one Claude session to the roles described here, is now its own article: [Replicating the agentic inbox](/articles/replicating-the-agentic-inbox.html). This page stays the argument about the policy rows; that one is the walkthrough.
 
 ## What I would tell somebody starting this
 

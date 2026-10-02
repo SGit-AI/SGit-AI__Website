@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.41'
+SITE_VERSION = 'v0.6.42'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.41', '2026-10-02', 'this release',
+    ('v0.6.42', '2026-10-02', 'this release',
+     "REPLICATING THE AGENTIC INBOX. A new article, written from a voice memo the day two calls asked "
+     "how to copy the setup: a practical walkthrough in phases, from one Claude session with a policy to "
+     "a team of roles talking in files through a vault, with the accounts first (a Workspace mailbox and "
+     "a Claude Team seat of the agent's own, connectors enabled by the owner and connected by the agent's "
+     "account, the person's calendar shared read-only) and one rule that never changes: the agent drafts, "
+     "a person sends. On its own page, deliberately: the agents who run the roles will add their own "
+     "account of each role in the next revision. One figure, the four phases. Its graph is written, so it "
+     "takes its place in the cards, the threads and the map like the others.",),
+    ('v0.6.41', '2026-10-02', 'git 31bd8b25',
      "THE MAP LABELS, ACTUALLY FIXED. v0.6.40 said the labels on the article map no longer overprinted; "
      "they still did at the very top and bottom, because with twenty-one articles the two neighbours of "
      "the top node sit at seventeen degrees, just inside the band that put their labels above them too. "
