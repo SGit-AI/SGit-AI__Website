@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.36'
+SITE_VERSION = 'v0.6.37'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.36', '2026-10-02', 'this release',
+    ('v0.6.37', '2026-10-02', 'this release',
+     "THE RISKMANDATE SANDBOX, AS A BRIEF. A project brief, written here first because the parts live "
+     "here, for a place where a behaviour policy is tested rather than read: a real model runs against "
+     "three stacked twins, the inbox store, the Gmail OAuth connector with its scopes enforced, and the "
+     "MCP connector with its permission prompts, with the policy on and off, and the two footprints sit "
+     "side by side. The Librarian of the __Send project answered six questions against v0.33.69: the vault "
+     "chat with tools and a memory file system shipped in June, the bridge shipped with OpenRouter only and "
+     "its own one-dollar session limits marked not security, the one-shot articles never published, the "
+     "twins entirely on paper, and the credits model specified three times with the page to sell from "
+     "always the missing piece. Four ways a model gets called from a browser with no server, the "
+     "OpenRouter clauses that separate reselling access from shipping a product, the gateways that already "
+     "resell, a map of which providers can cap spending and which only alert, and a build plan with the "
+     "first demo at step three. One illustrative figure. Status: draft for the founders.",),
+    ('v0.6.36', '2026-10-02', 'git 14a7e67e',
      "FOOTPRINT AND BLAST RADIUS. A new article proposes two additions to RiskMandate's Agent Behaviour "
      "Policy, whose four words, reach, mandate, gap and barriers, are all written before an agent runs. "
      "Footprint is what the agent actually did, read afterwards from logs, vault history or a connector "

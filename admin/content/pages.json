@@ -516,6 +516,12 @@
     "desc": "We already publish an independent report on ElevenLabs, and it ends with one clear ask. The narration on this site is rendered with ElevenLabs, and elevenlabs.providers.sgit.ai records what it cost on a named workload, what broke, and which credential patterns the product supports. What would let a vault app use ElevenLabs safely, with no key in the page, is a key with a spend limit, or a short-lived token for text to speech."
   },
   {
+    "path": "docs/briefs/riskmandate-sandbox-twins-and-tokens.html",
+    "section": "briefs",
+    "title": "The RiskMandate sandbox: three twins, one policy, a real model, and the question of whose key",
+    "desc": "A project brief for a place where an Agent Behaviour Policy is tested rather than read. A real model runs against a simulated inbox, through a simulated OAuth connector and a simulated MCP connector, with and without a policy, and the two footprints sit side by side. What already exists in the __Send project and on this site, the four ways a model gets called from a browser with no server, what the providers' terms say about selling keys, a map of who can cap spending, and the build plan."
+  },
+  {
     "path": "docs/briefs/riskmandate-footprint-and-blast-radius.html",
     "section": "briefs",
     "title": "For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy",
