@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.46'
+SITE_VERSION = 'v0.6.47'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.46', '2026-10-02', 'this release',
+    ('v0.6.47', '2026-10-02', 'this release',
+     "THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at "
+     "£1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers "
+     "round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, "
+     "and proposes one room-wide incident on the shared display rather than six platform runs, with the "
+     "tables differing in the policies they write.",),
+    ('v0.6.46', '2026-10-02', 'git dcff5281',
      "TWO LABELS TRIMMED on the event plan's pictures, where the last words touched the box edge.",),
     ('v0.6.45', '2026-10-02', 'git e79c2927',
      "THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions "
