@@ -2,7 +2,7 @@
 
 > A response to Authentitas's briefing paper The Accountability Market: every repair of accountability has been a named person and a record that can be proved. We have built the record: claims walked to hashed evidence, agents described down to what they can reach, licences with a name and an expiry. They prove the person, from a chipped passport or national eID, bound at the moment of creation. Two ladders joined into one, Article 50's second door, the licence to operate against the six requirements of accountability, the insurers as the forcing function, and three integrations. With an eight-page briefing PDF.
 
-*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.6.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/partnerships/authentitas.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

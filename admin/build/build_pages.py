@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.37'
+SITE_VERSION = 'v0.6.38'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.37', '2026-10-02', 'this release',
+    ('v0.6.38', '2026-10-02', 'this release',
+     "PRICE IT, THEN GIVE IT AWAY. A new article, the follow-up to the question is whether they miss "
+     "it, written from a voice memo as a moment-in-time record and as a brief for the agents who will run "
+     "it: define the product, price it, deliver it at a cost that grows a step at a time, offer it free to "
+     "the people who already know you, and find out, brutally, whether you have a product. The cost on the "
+     "other side is never zero, even at a price of zero, so the exercise is to measure it and cut it. "
+     "The published facts it rests on: RiskMandate's four tiers at ten, fifty, five hundred and fifteen "
+     "hundred pounds, and the invite-only early access programme live since 30 September. One figure: the "
+     "ladder, the two costs, the fork. Also: the footprint and blast radius article and its brief now carry "
+     "a status line saying the founders are still reviewing the proposal and will decide how to make it "
+     "happen with the RiskMandate team, and the ultimate insider article points to it.",),
+    ('v0.6.37', '2026-10-02', 'git 6a3c3095',
      "THE RISKMANDATE SANDBOX, AS A BRIEF. A project brief, written here first because the parts live "
      "here, for a place where a behaviour policy is tested rather than read: a real model runs against "
      "three stacked twins, the inbox store, the Gmail OAuth connector with its scopes enforced, and the "

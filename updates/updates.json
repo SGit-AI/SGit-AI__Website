@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.37",
+  "site_version": "v0.6.38",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -866,6 +866,24 @@
         "article"
       ],
       "summary": "RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back."
+    },
+    {
+      "slug": "price-it-then-give-it-away",
+      "title": "Price it, then give it away: the early access programme as the next step after \"do they miss it\"",
+      "date": "2026-10-02",
+      "version": "v0.6.38",
+      "tags": [
+        "startups",
+        "strategy",
+        "pricing",
+        "early-access",
+        "riskmandate",
+        "agent-behaviour-policy",
+        "go-to-market",
+        "agents",
+        "article"
+      ],
+      "summary": "The follow-up to \"the most important question is whether they miss it\". The step after giving something away is to define a product, put a price on it that makes sense to you, find a way to deliver it at a cost that grows a step at a time rather than a curve, and then offer it, free, to the people who already know you: early adopters, power users, past customers. What that measures is brutal. The price is a statement of what you think it is worth; the test is whether people take it at zero. If they say it is interesting but they have no time, it does not fit the team, or it is hard to deploy, the problem is not the price, and you go back to the drawing board. The part that is easy to leave out is that free is never free for the other side: engaging costs them attention, thinking and schedule, so the exercise is to measure that cost and cut it, until the service costs you the least and costs them the least. Written as a record of where this came from, and as a brief for the agents who will run it."
     },
     {
       "slug": "custom-uis-are-not-the-exception",

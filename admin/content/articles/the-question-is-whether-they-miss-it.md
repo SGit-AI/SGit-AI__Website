@@ -1,6 +1,7 @@
 ---
 title: For a startup, the most important question is whether they miss it
 date: 2026-09-21
+updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html
 summary: A startup operating and investing model in three pillars. Ship something somebody can actually use, give it away briefly, then take it away and find out whether anybody notices. Be profitable before you raise, so the investors are calling you rather than the other way round. And open source everything, because the technology was never the moat.
@@ -91,6 +92,8 @@ This one surprises people, because it sounds like giving away the asset. It is t
 **And it is a much better exit for you, the founder.** This is the one people miss. Build proprietary and you will accumulate a pile of technology, much of it not even specific to the startup, that you cannot take with you. Build in the open and the work is still yours when you move on. **You leave with your tools.**
 
 [open-source.sgit.ai](https://open-source.sgit.ai/) carries the longer version of this argument, and its thesis is the sentence to remember: open source is a strategy, not a charity.
+
+> **Follow-up, 2 October 2026.** The step after this one, defining the product, pricing it, delivering it at a cost that grows a step at a time, and offering it free to the people who already know you, is in [Price it, then give it away](/articles/price-it-then-give-it-away.html), written when RiskMandate's early access programme went live.
 
 ## Why this is on a site about encrypted vaults
 

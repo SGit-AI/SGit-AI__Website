@@ -2,7 +2,7 @@
 
 > A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.
 
-*Source: <https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html> · site v0.6.37 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy
 
-**A vocabulary brief from the sgit.ai site team to the RiskMandate.ai team.** Status: open. Written 2 October 2026.
+**A vocabulary brief from the sgit.ai site team to the RiskMandate.ai team.** Status: under review by the founders; how to make it happen will be decided with the RiskMandate team. Written 2 October 2026.
 
 The founder proposed two additions to the policy's vocabulary in conversation on 2 October, and the argument is written up in full in the article [Footprint and blast radius: what the agent actually did, and what it would have cost](../../articles/footprint-and-blast-radius.md). This brief carries the part that is yours: what to add to the policy, the schema, and the questions we could not settle from here. Read the article first; it is the reasoning. This is the ask.
 
