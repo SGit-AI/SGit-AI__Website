@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.33'
+SITE_VERSION = 'v0.6.34'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.33', '2026-10-02', 'this release',
+    ('v0.6.34', '2026-10-02', 'this release',
+     "SAID PLAINLY. The closing section of the Custom UIs article drops the checkable-claim framing "
+     "altogether: a claim is checkable by nature and the article is made of them, so prefixing one with a "
+     "caveat was redundant. The section is now titled The future of email, the summary bullet and the "
+     "front-matter line state the idea without preamble, and the body says what it would take for it to "
+     "fail and leaves it there.",),
+    ('v0.6.33', '2026-10-02', 'git 644cd5b5',
      "A CLAIM ANYONE CAN CHECK. The closing section of the Custom UIs article loses the phrase stated so "
      "it can be wrong, which read as negative and odd, in the title, the summary bullet, the front-matter "
      "line and two sentences of the body. The idea is the same, that the claim about the future of email "
