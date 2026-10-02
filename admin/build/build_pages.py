@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.39'
+SITE_VERSION = 'v0.6.40'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.39', '2026-10-02', 'this release',
+    ('v0.6.40', '2026-10-02', 'this release',
+     "THE GRAPHS, PUBLISHED AS DATA. The founder asked whether the new article cards and graphs were "
+     "generated from data rather than written into HTML. They were, but the data itself was not "
+     "published: the build consumed the JSON and emitted only pages. Now it also emits the JSON. "
+     "articles/graphs.json carries every article with its teaser, topics, tags, card, the links to "
+     "and from other articles already resolved, and its full graph, plus the topic list, node kinds "
+     "and edge relations, so a page or an agent can draw the whole map from one fetch; "
+     "articles/graphs/<slug>.json is each article's graph on its own. The graphs page says so and "
+     "links both. Also: the labels on the article map no longer overprint each other at the top and "
+     "bottom of the circle, and the map is wider so long titles on the right are not cut.",),
+    ('v0.6.39', '2026-10-02', 'git 115a49a1',
      "THE ARTICLES, MADE FINDABLE. Twenty-one articles had become a wall of summaries, and the "
      "founder asked for a layout a reader can actually use. Three things. EVERY ARTICLE NOW HAS A "
      "SEMANTIC GRAPH beside it (admin/content/articles/graphs/<slug>.json): a one-sentence teaser, "
@@ -4481,7 +4491,7 @@ def graph_svg(g, w=760, h=440):
     return ''.join(out)
 
 
-def articles_map_svg(w=760, h=600):
+def articles_map_svg(w=880, h=600):
     import math
     arts = list(reversed(ARTICLES)) # oldest first round the circle
     cx, cy, r = w / 2, h / 2, min(w, h) / 2 - 110
@@ -4509,7 +4519,7 @@ def articles_map_svg(w=760, h=600):
         else:
             # the two neighbours of a top or bottom node sit at almost its height: nudge their
             # labels outward vertically so they clear the label above or below
-            nudge = (10 if s > 0 else -10) if abs(c) < 0.6 else 0
+            nudge = (-10 if s > 0 else 10) if abs(c) < 0.6 else 0
             tx, ty, anchor = x + (rad + 8) * (1 if c > 0 else -1), y + 4 + nudge, ('start' if c > 0 else 'end')
         out.append(f'<a href="{a["slug"]}.html"><circle cx="{x:.0f}" cy="{y:.0f}" r="{rad}" fill="#0f766e">'
                    f'<title>{_esc(a["title"])} ({a["date"]}): links to {len(ARTICLE_OUT[a["slug"]])}, linked by {n_in}</title></circle>'
@@ -4524,8 +4534,12 @@ def articles_graphs_body():
            ' <h1>The articles as graphs</h1>',
            ' <p class="lead">Every article here has a semantic graph beside it: the ideas it rests on, the claims it makes, '
            'the methods and the examples, and how they connect. The map first, then one graph per article. '
-           'Hover a node for its summary and an edge for its relation; the files themselves are in '
-           '<code>admin/content/articles/graphs/</code>.</p>',
+           'Hover a node for its summary and an edge for its relation.</p>',
+           ' <p class="small dim">The graphs are data first and pictures second. Take them as JSON: '
+           '<a href="graphs.json">all articles in one file</a>, with the topics, the teasers and the links '
+           'between articles resolved, or one file per article at <code>articles/graphs/&lt;slug&gt;.json</code> '
+           '(for example <a href="graphs/footprint-and-blast-radius.json">this one</a>). The pages on this site are '
+           'rendered from the same files at build time; nothing here is hand-written HTML.</p>',
            f' <p class="small dim">{len(GRAPHS)} of {len(ARTICLES)} articles have a graph. The map draws every article in '
            'date order round the circle, sized by how many other articles link to it.</p>',
            ' <h2 id="map">How the articles connect</h2>',
@@ -5225,5 +5239,38 @@ manifest = json.dumps({
 with open(os.path.join(ROOT, 'updates', 'updates.json'), 'w') as f:
     f.write(manifest)
 print(f'wrote updates/updates.json ({len(manifest)} bytes)')
+
+# The article graphs, published as data. The pages above are rendered from these at build
+# time, but a reader, an agent or another site should be able to take the graph itself:
+# one file per article at articles/graphs/<slug>.json, and one combined file with the
+# topics, the teasers and the links between articles already resolved, so a consumer
+# needs one fetch to draw the whole map. Derived, never hand-edited, like updates.json.
+os.makedirs(os.path.join(ROOT, 'articles', 'graphs'), exist_ok=True)
+_pub_graphs = []
+for _a in ARTICLES:
+    _g = GRAPHS.get(_a['slug'])
+    _entry = {
+        'slug': _a['slug'], 'title': _a['title'], 'date': _a['date'], 'updated': _a.get('updated', ''),
+        'url': f'https://sgit.ai/articles/{_a["slug"]}.html',
+        'markdown': f'https://sgit.ai/articles/{_a["slug"]}.md',
+        'card': f'https://sgit.ai/articles/cards/{art_card_img(_a)}',
+        'teaser': art_teaser(_a), 'topics': art_topics(_a), 'tags': _a['tags'],
+        'links_out': ARTICLE_OUT[_a['slug']], 'links_in': ARTICLE_IN[_a['slug']],
+        'graph': ({k: v for k, v in _g.items() if k != 'where'} if _g else None),
+    }
+    _pub_graphs.append(_entry)
+    if _g:
+        with open(os.path.join(ROOT, 'articles', 'graphs', _a['slug'] + '.json'), 'w') as f:
+            f.write(json.dumps({k: v for k, v in _g.items() if k != 'where'}, indent=2, ensure_ascii=False) + '\n')
+_combined = json.dumps({
+    'site': 'https://sgit.ai', 'generated': BUILD_DATE, 'site_version': SITE_VERSION,
+    'schema': 'https://sgit.ai/articles/graphs.html',
+    'topics': [{'id': t[0], 'label': t[1].replace('&amp;', '&'), 'means': t[2]} for t in TOPICS],
+    'node_kinds': sorted(LOADER.NODE_KINDS), 'edge_relations': sorted(LOADER.EDGE_RELS),
+    'articles': _pub_graphs,
+}, indent=2, ensure_ascii=False)
+with open(os.path.join(ROOT, 'articles', 'graphs.json'), 'w') as f:
+    f.write(_combined + '\n')
+print(f'wrote articles/graphs.json ({len(_combined)} bytes, {len(GRAPHS)} graphs) and {len(GRAPHS)} per-article files')
 print(f'content: {len(UPDATES)} updates, {len(ARTICLES)} articles')
 print('done:', len(PAGES), 'pages', SITE_VERSION)

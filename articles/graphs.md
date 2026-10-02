@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,9 @@
 
 # The articles as graphs
 
-Every article here has a semantic graph beside it: the ideas it rests on, the claims it makes, the methods and the examples, and how they connect. The map first, then one graph per article. Hover a node for its summary and an edge for its relation; the files themselves are in `admin/content/articles/graphs/`.
+Every article here has a semantic graph beside it: the ideas it rests on, the claims it makes, the methods and the examples, and how they connect. The map first, then one graph per article. Hover a node for its summary and an edge for its relation.
+
+The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
 21 of 21 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
