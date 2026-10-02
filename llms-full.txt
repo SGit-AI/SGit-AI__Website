@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.40). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.41). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-198site releases, each verified live before it was called done
+199site releases, each verified live before it was called done
 
 39vaults published with a deliberately public read key
 
@@ -5621,7 +5621,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.40, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.41, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5984,7 +5984,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-198**site releases since 14 August**
+199**site releases since 14 August**
 each verified live before it was called done
 
 39**vaults published with a public read key**
@@ -9974,11 +9974,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.40**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.41**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.40 | 2026-10-02 | this release | THE GRAPHS, PUBLISHED AS DATA. The founder asked whether the new article cards and graphs were generated from data rather than written into HTML. They were, but the data itself was not published: the build consumed the JSON and emitted only pages. Now it also emits the JSON. articles/graphs.json carries every article with its teaser, topics, tags, card, the links to and from other articles already resolved, and its full graph, plus the topic list, node kinds and edge relations, so a page or an agent can draw the whole map from one fetch; articles/graphs/.json is each article's graph on its own. The graphs page says so and links both. Also: the labels on the article map no longer overprint each other at the top and bottom of the circle, and the map is wider so long titles on the right are not cut. |
+| v0.6.41 | 2026-10-02 | this release | THE MAP LABELS, ACTUALLY FIXED. v0.6.40 said the labels on the article map no longer overprinted; they still did at the very top and bottom, because with twenty-one articles the two neighbours of the top node sit at seventeen degrees, just inside the band that put their labels above them too. The band is narrower now, so only the one node nearest each pole takes the label above or below, and its neighbours take side labels nudged toward the centre. |
+| v0.6.40 | 2026-10-02 | git 0b9e1389 | THE GRAPHS, PUBLISHED AS DATA. The founder asked whether the new article cards and graphs were generated from data rather than written into HTML. They were, but the data itself was not published: the build consumed the JSON and emitted only pages. Now it also emits the JSON. articles/graphs.json carries every article with its teaser, topics, tags, card, the links to and from other articles already resolved, and its full graph, plus the topic list, node kinds and edge relations, so a page or an agent can draw the whole map from one fetch; articles/graphs/.json is each article's graph on its own. The graphs page says so and links both. Also: the labels on the article map no longer overprint each other at the top and bottom of the circle, and the map is wider so long titles on the right are not cut. |
 | v0.6.39 | 2026-10-02 | git 115a49a1 | THE ARTICLES, MADE FINDABLE. Twenty-one articles had become a wall of summaries, and the founder asked for a layout a reader can actually use. Three things. EVERY ARTICLE NOW HAS A SEMANTIC GRAPH beside it (admin/content/articles/graphs/.json): a one-sentence teaser, one or two topics from a fixed list of six, the core idea, the concepts and claims as nodes with typed edges, the links the article makes, and a quote or two. THE INDEX is rebuilt from them: the newest article featured with its picture and core idea, a filter by topic and a search box, a grid of picture cards with one-sentence teasers, and the threads between articles read from the links they make. Every article ends with a THREADS block: what it builds on, what continues it, its topics, and a link to its graph. A GRAPHS PAGE draws the map of the articles and each article's own graph as SVG, deterministic layouts so the same file always draws the same picture. The homepage band moves up to second place, directly under the four vaults, with picture cards and teasers instead of summaries. Card thumbnails are cut from the hero cards by make_og_cards.mjs. The updates page gains a contents list. Still to come from the same brief: date-based article folders holding the text, the graph and the materials, with the old links kept, and a newsroom-style front page. |
 | v0.6.38 | 2026-10-02 | git d2a2832e | PRICE IT, THEN GIVE IT AWAY. A new article, the follow-up to the question is whether they miss it, written from a voice memo as a moment-in-time record and as a brief for the agents who will run it: define the product, price it, deliver it at a cost that grows a step at a time, offer it free to the people who already know you, and find out, brutally, whether you have a product. The cost on the other side is never zero, even at a price of zero, so the exercise is to measure it and cut it. The published facts it rests on: RiskMandate's four tiers at ten, fifty, five hundred and fifteen hundred pounds, and the invite-only early access programme live since 30 September. One figure: the ladder, the two costs, the fork. Also: the footprint and blast radius article and its brief now carry a status line saying the founders are still reviewing the proposal and will decide how to make it happen with the RiskMandate team, and the ultimate insider article points to it. |
 | v0.6.37 | 2026-10-02 | git 6a3c3095 | THE RISKMANDATE SANDBOX, AS A BRIEF. A project brief, written here first because the parts live here, for a place where a behaviour policy is tested rather than read: a real model runs against three stacked twins, the inbox store, the Gmail OAuth connector with its scopes enforced, and the MCP connector with its permission prompts, with the policy on and off, and the two footprints sit side by side. The Librarian of the __Send project answered six questions against v0.33.69: the vault chat with tools and a memory file system shipped in June, the bridge shipped with OpenRouter only and its own one-dollar session limits marked not security, the one-shot articles never published, the twins entirely on paper, and the credits model specified three times with the page to sell from always the missing piece. Four ways a model gets called from a browser with no server, the OpenRouter clauses that separate reselling access from shipping a product, the gateways that already resell, a map of which providers can cap spending and which only alert, and a build plan with the first demo at step three. One illustrative figure. Status: draft for the founders. |

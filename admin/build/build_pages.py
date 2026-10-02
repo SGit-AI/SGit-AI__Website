@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.40'
+SITE_VERSION = 'v0.6.41'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.40', '2026-10-02', 'this release',
+    ('v0.6.41', '2026-10-02', 'this release',
+     "THE MAP LABELS, ACTUALLY FIXED. v0.6.40 said the labels on the article map no longer overprinted; "
+     "they still did at the very top and bottom, because with twenty-one articles the two neighbours of "
+     "the top node sit at seventeen degrees, just inside the band that put their labels above them too. "
+     "The band is narrower now, so only the one node nearest each pole takes the label above or below, "
+     "and its neighbours take side labels nudged toward the centre.",),
+    ('v0.6.40', '2026-10-02', 'git 0b9e1389',
      "THE GRAPHS, PUBLISHED AS DATA. The founder asked whether the new article cards and graphs were "
      "generated from data rather than written into HTML. They were, but the data itself was not "
      "published: the build consumed the JSON and emitted only pages. Now it also emits the JSON. "
@@ -4514,8 +4520,11 @@ def articles_map_svg(w=880, h=600):
         # labels sit outside the circle, on the side the node is on; near the top and the
         # bottom they go above or below instead, so neighbours do not overprint each other
         c, s = math.cos(ang), math.sin(ang)
-        if abs(c) < 0.3:
-            tx, ty, anchor = x, y + (-(rad + 14) if s < 0 else rad + 20), 'middle'
+        if abs(c) < 0.2:
+            # two nodes can share a pole (an even split either side of it): the one on the
+            # right takes a second line, so the two centred labels stack instead of overprinting
+            extra = 14 if c > 0 else 0
+            tx, ty, anchor = x, y + (-(rad + 14 + extra) if s < 0 else rad + 20 + extra), 'middle'
         else:
             # the two neighbours of a top or bottom node sit at almost its height: nudge their
             # labels outward vertically so they clear the label above or below

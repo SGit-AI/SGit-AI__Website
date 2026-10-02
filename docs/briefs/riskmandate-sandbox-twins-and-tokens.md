@@ -2,7 +2,7 @@
 
 > A project brief for a place where an Agent Behaviour Policy is tested rather than read. A real model runs against a simulated inbox, through a simulated OAuth connector and a simulated MCP connector, with and without a policy, and the two footprints sit side by side. What already exists in the __Send project and on this site, the four ways a model gets called from a browser with no server, what the providers' terms say about selling keys, a map of who can cap spending, and the build plan.
 
-*Source: <https://sgit.ai/docs/briefs/riskmandate-sandbox-twins-and-tokens.html> · site v0.6.40 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/riskmandate-sandbox-twins-and-tokens.html> · site v0.6.41 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
