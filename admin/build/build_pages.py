@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.32'
+SITE_VERSION = 'v0.6.33'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.32', '2026-10-02', 'this release',
+    ('v0.6.33', '2026-10-02', 'this release',
+     "A CLAIM ANYONE CAN CHECK. The closing section of the Custom UIs article loses the phrase stated so "
+     "it can be wrong, which read as negative and odd, in the title, the summary bullet, the front-matter "
+     "line and two sentences of the body. The idea is the same, that the claim about the future of email "
+     "is made in a form that can be checked against what happens, and it now says so plainly.",),
+    ('v0.6.32', '2026-10-02', 'git 1fcf1f39',
      "THE FUTURE OF EMAIL, STATED SO IT CAN BE WRONG. The Custom UIs article gains its closing argument. "
      "Earlier announcements of the future of email, Wave, AMP for Email, Slack, Hey, lost to the inbox "
      "because they needed the recipient to install something. Two things are true now that were not then: "
