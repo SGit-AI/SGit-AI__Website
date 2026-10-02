@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.47'
+SITE_VERSION = 'v0.6.48'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.47', '2026-10-02', 'this release',
+    ('v0.6.48', '2026-10-02', 'this release',
+     "£3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with "
+     "the two £1,500 halves shown wherever there is room so anyone can check it against the two price "
+     "lists. The decision about which line to use is closed.",),
+    ('v0.6.47', '2026-10-02', 'git 0a01c548',
      "THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at "
      "£1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers "
      "round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, "

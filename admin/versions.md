@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.47 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.47**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.48**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.47 | 2026-10-02 | this release | THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at £1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, and proposes one room-wide incident on the shared display rather than six platform runs, with the tables differing in the policies they write. |
+| v0.6.48 | 2026-10-02 | this release | £3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with the two £1,500 halves shown wherever there is room so anyone can check it against the two price lists. The decision about which line to use is closed. |
+| v0.6.47 | 2026-10-02 | git 0a01c548 | THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at £1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, and proposes one room-wide incident on the shared display rather than six platform runs, with the tables differing in the policies they write. |
 | v0.6.46 | 2026-10-02 | git dcff5281 | TWO LABELS TRIMMED on the event plan's pictures, where the last words touched the box edge. |
 | v0.6.45 | 2026-10-02 | git e79c2927 | THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions at the same table, the incident without a policy and then with one; a single room sponsor at ten thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about fifteen hundred pounds of value each, seats after that paid, the surplus split evenly. The page now opens with four pictures that carry the model, starting from the participant: what you bring, what you leave with, the evening, who pays for what, and the three partners. A messaging section writes the pitch, the invitation, the offer and the sponsor ask in the participant's terms first. |
 | v0.6.44 | 2026-10-02 | git e57663ef | THE DRAFT'S FIGURES, TO FIT. On the live page the three inline figures of the event plan ran their text past the boxes, because the web fonts set wider than the estimates the SVG was drawn with. Wider canvases, wider boxes, shorter lines. |
