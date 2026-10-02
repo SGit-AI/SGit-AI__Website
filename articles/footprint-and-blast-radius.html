@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Footprint and blast radius: what the agent actually did, and what it would have cost, sgit.ai</title>
+<meta name="description" content="RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.">
+<link rel="canonical" href="https://sgit.ai/articles/footprint-and-blast-radius.html">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/footprint-and-blast-radius.html">
+<meta property="og:title" content="Footprint and blast radius: what the agent actually did, and what it would have cost, sgit.ai">
+<meta property="og:description" content="RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.">
+<meta property="og:image" content="https://sgit.ai/og/footprint-and-blast-radius.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Footprint and blast radius: what the agent actually did, and what it would have cost, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/footprint-and-blast-radius.jpg">
+<link rel="alternate" type="text/markdown" href="footprint-and-blast-radius.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Footprint and blast radius: what the agent actually did, and what it would have cost, sgit.ai", "headline": "Footprint and blast radius: what the agent actually did, and what it would have cost, sgit.ai", "description": "RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.", "url": "https://sgit.ai/articles/footprint-and-blast-radius.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.36</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl here" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.36 &middot; 2 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Footprint and blast radius: what the agent actually did, and what it would have cost</p>
+ <h1>Footprint and blast radius: what the agent actually did, and what it would have cost</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-02 &middot; <a href="../admin/versions.html">v0.6.36</a> &middot; <span class="chip">agents</span><span class="chip">agent-behaviour-policy</span><span class="chip">riskmandate</span><span class="chip">footprint</span><span class="chip">blast-radius</span><span class="chip">risk-management</span><span class="chip">logs</span><span class="chip">connector-twin</span><span class="chip">vaults</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.</em></p>
+<figure class="shot" data-shot="fp-gap-map.webp" data-dir="images/" data-alt="The gap as a map, for an illustrative inbox agent. Every row is something the agent can reach. The bands say whether a row is in the mandate, and whether the footprint has touched it. The barrier column is RiskMandate&#x27;s four kinds. The shading is blast radius, what it would cost if the row were used in full today, hatched where there is no way back. The red dots are footprint in the gap, which is a near miss. The row to fix first is high blast radius, irreversible, with nothing but an expectation in front of it, whether or not the footprint has reached it yet. Placeholder capabilities and counts."><figcaption>The gap as a map, for an illustrative inbox agent. Every row is something the agent can reach. The bands say whether a row is in the mandate, and whether the footprint has touched it. The barrier column is RiskMandate's four kinds. The shading is blast radius, what it would cost if the row were used in full today, hatched where there is no way back. The red dots are footprint in the gap, which is a near miss. The row to fix first is high blast radius, irreversible, with nothing but an expectation in front of it, whether or not the footprint has reached it yet. Placeholder capabilities and counts.</figcaption></figure>
+<div class="note"><b>A note on what this is.</b> A proposal to extend the vocabulary of <a href="https://riskmandate.ai/abp.html">RiskMandate's Agent Behaviour Policy</a>, written on sgit.ai because the evidence for it lives here: the connector twin, the vaults' own history, and a team of agents whose policies we can hold up against what they did. RiskMandate's four words are reach, mandate, gap and barriers. Earlier pages on both sites, including the <a href="../articles/ultimate-insider-three-collisions.html">ultimate insider</a> talk proposal, called the reach the grant and the gap the delta; they are the same things. The two words proposed here are new to the policy, not to the industry. A companion <a href="../docs/briefs/riskmandate-footprint-and-blast-radius.html">brief to the RiskMandate team</a> carries the schema changes.</div>
+<h2>In short</h2>
+<ul>
+<li><b>The policy is written before the agent runs.</b> Reach is what it can do, measured. Mandate is what you asked it to do. The gap is the difference, in both directions. Barriers are what stands in the way of each row of the gap, typed as a boundary, a setting, an expectation or nothing, and only a boundary is a control.</li>
+<li><b>Footprint is what it actually did, read afterwards.</b> From the connector's audit log, the model's tool-call log, the vault's commit history, the append lane's record, or a connector twin's replay. Nothing sits inline. Nobody needs production access. It accumulates, so some of what it shows only appears over weeks.</li>
+<li><b>Footprint in the gap is a near miss.</b> The agent went somewhere you did not ask it to go and nothing stopped it. Each one resolves one of two ways: add the row to the mandate, because the mandate was incomplete, or put a boundary in front of it.</li>
+<li><b>Dormant mandate is a finding too.</b> A row you asked for that the footprint never shows. The mandate asked for too much, or a check you were relying on never ran, or the agent cannot do it and the reach inventory missed the shortfall.</li>
+<li><b>Read alone, the footprint is the mandate as practised.</b> For an agent that has no written policy, it is the fastest honest way to write one: here is what your agent does, now tell me which rows you meant.</li>
+<li><b>Blast radius is the measure, not another set.</b> It is what it would cost the business if a row were used in full, today. It is defined over the reach, because whoever takes the agent over inherits its reach and ignores its mandate. It changes with context while the row does not. And it has a second axis the industry usually leaves out: whether there is a way back.</li>
+<li><b>The gap plus blast radius is the risk.</b> The gap is exposure. Blast radius is impact. The person who accepts a gap is accepting its blast radius, and until now the policy did not say what that was.</li>
+</ul>
+<h2>Four words, written before anything happens</h2>
+<p>RiskMandate's policy starts from a simple observation that keeps proving true: what an agent can do and what it was asked to do are different lists, and almost nobody has written down either. So the method measures the <b>reach</b> from the deployment itself, the account, the connectors, the credentials, the tools. It elicits the <b>mandate</b> from the owner, in minutes, in their words. It derives the <b>gap</b>, which runs in both directions: excess, where the agent can and you did not ask, and shortfall, where you asked and it cannot. And for every row of the excess it records the <b>barrier</b>, typed honestly. A boundary is enforced above the agent's reach, so it cannot flip it. A setting is a switch the agent's own account could flip. An expectation is a rule in prose, enforced by nobody. None is none. Only the boundary is a control, and most of what organisations call controls turn out to be expectations once they are typed. The <a href="../demos/vaults/kit-bag/index.html">Kit Bag</a> plan did this for a browser extension before any code was written and found thirteen rows in the gap, four of them stopped by the platform and the rest by nothing but the code as written.</p>
+<p>All four of those words describe the agent before it runs. That is deliberate and it is the method's strength: the point is to decide in advance, so that the decision exists before the incident does. But it leaves out the one thing that an incident review always asks for first, which is what actually happened.</p>
+<h2>The fifth set: footprint</h2>
+<p>The footprint is the set of things the agent actually did, in a period, read from the record afterwards. It is the same kind of thing as the reach and the mandate, a list of rows, which is what makes the comparisons below possible. It is different in one way that matters: it is evidence, not a decision.</p>
+<p>Where does it come from? From wherever the agent's actions leave a trace, and there are more of those than people expect:</p>
+<ul>
+<li>The connector's own audit log. Google Workspace, Microsoft 365 and the rest record what an account did, and an agent runs as an account.</li>
+<li>The model provider's record of tool calls, where the deployment keeps it.</li>
+<li>A <a href="../articles/connector-twin-before-you-deploy-an-agent.html">connector twin</a>, which records what the agent saw and asked for at the connector and can replay it. It was argued for as a deployment requirement; it is also the cleanest footprint recorder there is, because it sits exactly where the actions cross the line.</li>
+<li>A vault's commit history. Every agent on this site that works in a vault leaves a signed, versioned record of every file it touched, and the <a href="../api/append-lanes.html">append lanes</a> record every message that went down them.</li>
+<li>The agent's own messages. Agents here talk to each other in files, and a file is a trace.</li>
+</ul>
+<p>Three properties follow from reading rather than intercepting. It is <b>passive</b>: nothing sits inline, nothing adds latency, nothing can break the agent by being there. It needs <b>no production access</b>: a copy of the logs, or a read key to the vault, is enough, which is why an outside reviewer can do it. And it <b>accumulates over time</b>: the first week's footprint says little, the twelfth week's says a great deal, and some findings only exist at the twelfth week.</p>
+<h2>What the footprint reveals</h2>
+<p>Put the footprint beside the mandate and the reach, and four things fall out.</p>
+<p><b>Footprint in the gap.</b> The agent did something that is within its reach and outside its mandate, and whatever barrier was there did not stop it, because it was an expectation or nothing. In the safety disciplines this is a near miss, and it is the most valuable kind of finding there is, because it arrives before the damage. It resolves one of two ways, and the owner decides which. Either the mandate was incomplete, which is normal for a new agent, and the row joins the mandate. Or the agent should not have gone there, and the row gets a boundary. Either way the gap shrinks, and the policy is more honest than it was.</p>
+<p><b>Dormant mandate.</b> A row the owner asked for that the footprint never shows. This one has three possible causes, and telling them apart is the review. The mandate may be over-stated: the owner asked for things the job does not need, which is how permissions creep in the first place, and the row should go. Or a check the owner was relying on never ran: the mandate said "escalate to a human when a payment is mentioned", fourteen payment threads went past, and the escalation row is empty. That is a control that exists on paper only, and finding it from the logs is better than finding it from the incident. Or the agent cannot do it at all, and the shortfall side of the gap missed it. One caveat that the method has to carry: some rows are supposed to be dormant. "May escalate" should rarely fire. So each mandate row wants a hint of how often the owner expects to see it, always, sometimes, rarely, hopefully never, and the comparison is against that.</p>
+<p><b>Footprint outside the reach.</b> This should be impossible by construction, so when it appears, the reach inventory is wrong, and that is a finding about the measurement rather than the agent.</p>
+<p><b>Barrier hits.</b> Attempts that a boundary stopped are also in the record, and they are the footprint of the barriers. A boundary that stops something every week has earned its place. An expectation, by definition, has no hits, because nothing was there to record the stop.</p>
+<figure class="shot shot--medium" data-shot="fp-written-vs-practised.webp" data-dir="images/" data-alt="The mandate as written beside the mandate as practised, for the same illustrative agent. Four rows used, two dormant, two excursions into the gap. The left side is a set of decisions made in advance. The right side is evidence. The owner decides what each difference means."><figcaption>The mandate as written beside the mandate as practised, for the same illustrative agent. Four rows used, two dormant, two excursions into the gap. The left side is a set of decisions made in advance. The right side is evidence. The owner decides what each difference means.</figcaption></figure>
+<h2>The mandate as practised</h2>
+<p>Turn the comparison round and it becomes a way to write a policy for an agent that has none, which is most agents. Read the footprint for a month and you have the mandate as practised: the rows the agent actually uses, in order of frequency, with the near misses marked. Put that in front of the owner and the conversation is a different one from the usual elicitation. Not "what do you want this agent to do?", which produces a wish list, but "here is what your agent does; which of these did you mean, and which of these worries you?" The written mandate that comes out of that is grounded in evidence from the first draft.</p>
+<p>This matters most for agents at the genesis end of the strip, built in an afternoon and running for months, where nobody wrote anything down because the thing was an experiment until it was not. The <a href="../articles/custom-uis-are-not-the-exception.html">Custom UIs</a> article described a team of ten agents that grew that way in eight days. Six of them have a written policy; the footprint is how the other four get one without anyone having to remember what they were for.</p>
+<h2>Blast radius: the measure, not a sixth set</h2>
+<p>Reach, mandate, gap, barriers and footprint are all lists of rows. Blast radius is not. It is a measure that attaches to a row, or to a set of rows: what it would cost the business if that row were used in full, today.</p>
+<p>The term comes from explosives and the cloud operators made it ordinary. AWS uses it for the scope of a failure, the chaos engineering people for the scope of an experiment, and the identity vendors for the scope of a credential. It needs no definition fight, which is why it is the right word. In the policy it should mean one narrow thing: the impact if the agent's reach were exercised, by the agent or by whoever controls it.</p>
+<p>That last clause is the reason to define blast radius over the reach and not over the mandate. An attacker who takes an agent over, through a prompt injection, a poisoned document, a compromised skill, inherits the agent's reach and ignores its mandate entirely. The <a href="../articles/ultimate-insider-three-collisions.html">ultimate insider</a> has a blast radius, and it is the reach. The mandate tells you what you hoped for. The reach tells you what you are exposed to.</p>
+<p>Three things make the measure useful rather than decorative.</p>
+<p><b>It is about the business, not the system.</b> "Can delete the database" is a row of the reach. Its blast radius is not "the database"; it is what the business loses when the database is gone, which depends entirely on what is in it, who depends on it, and whether there is a copy. The same row on a staging database full of test data and on the production ledger the week before the audit has the same name and a completely different blast radius. This is why blast radius connects the policy to the risk register rather than to the infrastructure diagram: it is the impact column, and the person who owns the impact is the person who fills it in.</p>
+<p><b>It has a before reading and an after reading.</b> Potential blast radius is computed from the reach, before the agent runs: the worst the deployment could do. Realised blast radius is what the footprint actually touched, read against the context at the time. The first is what you accept when you deploy. The second is what you learn when you review. They should converge as the policy matures, and when they do not, the gap is where the surprises are.</p>
+<p><b>It has a second axis: whether there is a way back.</b> The industry's blast radius is usually a scope, how far the damage spreads. For agents the more useful second question is whether the damage can be undone. Sending an email as the owner cannot be unsent. Permanently deleting a message is, as the platform's own documentation says, permanent. Forwarding mail to an outside address is quietly reversible for the mailbox and not at all for the mail that already left. Writing to an append-only vault with history can be rolled back in a minute. Two rows with the same scope and different reversibility are not the same risk, and the policy should say so.</p>
+<h2>Same footprint, different blast radius</h2>
+<p>The property that took longest to see is that the footprint is fixed and the blast radius is not. An action, once taken, is a row in the record and stays there. What it would have cost depends on the moment.</p>
+<figure class="shot shot--medium" data-shot="fp-same-footprint.webp" data-dir="images/" data-alt="Same footprint, different blast radius. An agent drops a staging table three times over two months. The row in the footprint is identical each time. On day three the table was empty and nobody noticed. On day twenty-two it held a week of test data and somebody shrugged. On day forty-one it held six weeks of real records and it was the incident. The footprint lets the review say: this is not the first time. Illustrative."><figcaption>Same footprint, different blast radius. An agent drops a staging table three times over two months. The row in the footprint is identical each time. On day three the table was empty and nobody noticed. On day twenty-two it held a week of test data and somebody shrugged. On day forty-one it held six weeks of real records and it was the incident. The footprint lets the review say: this is not the first time. Illustrative.</figcaption></figure>
+<p>Picture an agent with a cleanup step that drops a staging table. The first time it runs, the table is nearly empty, and nobody notices. The second time, there is a week of test data in it, and somebody shrugs. The third time, six weeks of real records have been landing in that table because another process changed, and it is the incident. The action is the same row, three times. If the footprint was being read, the review on day forty-one can say something that is otherwise impossible to say: this is not the first time. The same row is in the footprint on day three and day twenty-two. It was a near miss twice before the table had anything in it.</p>
+<p>That sentence is worth the whole method. It turns the incident from a surprise into the third occurrence of a known pattern, and it means the near miss could have been caught at the first occurrence, when it cost nothing, if anyone had been looking at the footprint against the gap. The safety disciplines learned this a long time ago: the incidents and the near misses are the same events with different luck, and the organisations that get safer are the ones that review the near misses. The footprint is how you get near misses for agents without waiting for the luck to run out.</p>
+<h2>What the cloud already does, and what it cannot</h2>
+<p>None of the comparison idea is new, and the article would be dishonest to pretend otherwise. The cloud identity tooling has been comparing permissions granted with permissions used for years. <a href="https://aws.amazon.com/about-aws/whats-new/2023/11/iam-access-analyzer-inspecting-unused-access">AWS IAM Access Analyzer</a> added unused-access findings in November 2023 and, from <a href="https://aws.amazon.com/about-aws/whats-new/2024/06/aws-iam-access-analyzer-refine-unused-access/">June 2024</a>, recommends a refined policy from the access activity. Google Cloud's <a href="https://cloud.google.com/iam/docs/recommender-overview">role recommendations</a> compare a principal's permissions with those used in the last ninety days and will not recommend removing one that was used. Microsoft Entra's <a href="https://learn.microsoft.com/en-us/entra/permissions-management/overview">Permission Creep Index</a> scores the difference between permissions granted and permissions exercised, weighted by how much damage the permissions could do, which is a blast radius over the grant, and Microsoft's own <a href="https://techcommunity.microsoft.com/blog/microsoft-entra-blog/2023-state-of-cloud-permissions-risks-report-now-published/1061397">report</a> on it found workload identities using under five per cent of what they were granted. These are the footprint against the reach, done at scale, and anyone deploying agents on a cloud should turn them on.</p>
+<p>What they cannot do is the other half, because a permission set carries no statement of intent. There is no mandate in an IAM policy, so there is no such thing as a dormant mandate, no "you asked for a check and it never ran", no near miss in the sense of "the agent went where you did not mean it to", only "the identity used a permission". The owner's intent is the thing the Agent Behaviour Policy adds, and once it exists the footprint can be read against it. That is the whole proposal: take a comparison the cloud already makes and give it the one input it never had.</p>
+<h2>What vaults change</h2>
+<p>This site is about encrypted vaults, so it is fair to ask what they have to do with any of this. Two things, and they are different.</p>
+<p>The first is that a vault is a footprint recorder by construction. Every commit is signed, versioned and append-only; every message down an append lane is recorded with its token and its time; a read key lets a reviewer read all of that without touching anything. An agent that works in a vault leaves a footprint whether or not anyone intended to collect one, and a reviewer can read it from outside production with a key that cannot write. The connector twin does the same for the connectors, which is where most agents' reach actually lives.</p>
+<p>The second is reversibility, which is the axis the industry's blast radius leaves out. Barriers shrink the reach. Containment and reversibility shrink the blast radius, and they are different levers. A read key caps the blast radius of a row at disclosure. A lane token caps it at queue pollution. Only a vault key reaches the integrity of the record, and even then the history is there to roll back to. Most of what sgit does for agents, once you look at it through this lens, is shrink the irreversible part of the blast radius: the agent can do a great deal, and almost none of it is permanent.</p>
+<figure class="shot shot--medium" data-shot="fp-before-during-after.webp" data-dir="images/" data-alt="Before, during, after. Reach, mandate, gap and barriers are written before the agent runs. Barriers act during. The footprint is read after, from logs, traffic and vault history, with nothing inline and no production access. Blast radius has a potential reading, from the reach, and a realised reading, from the footprint. Findings go back into the policy."><figcaption>Before, during, after. Reach, mandate, gap and barriers are written before the agent runs. Barriers act during. The footprint is read after, from logs, traffic and vault history, with nothing inline and no production access. Blast radius has a potential reading, from the reach, and a realised reading, from the footprint. Findings go back into the policy.</figcaption></figure>
+<h2>Reading our own footprint</h2>
+<p>The honest status is that this is a proposal with the pieces in place and the worked example still to do. We have ten agents, six with a written policy, all working in vaults, all talking in files, with eight days of commit history and several hundred messages between them. The next step is to read that footprint against the six policies and publish the result: which rows were used, which were dormant, where the footprint went into the gap, and what each finding resolved into. We are building that now, and it will be the second article. The counts will come from the vaults' history and nothing in it will name a contact or quote a message.</p>
+<p>What we expect to find, from having watched it happen, is that the near misses are mostly mandate gaps rather than misbehaviour, because the mandates were written quickly for agents that were still changing, and that at least one check we wrote into a policy has never fired. We would rather publish that than claim the method and leave the evidence to the reader's imagination.</p>
+<h2>What to add to the policy</h2>
+<p>The brief to the RiskMandate team asks for five things, in this order of usefulness:</p>
+<ol>
+<li><b>Footprint as a section of the policy</b>, with a period, a source for each row, and the four derived findings: footprint in the gap, dormant mandate, footprint outside reach, barrier hits.</li>
+<li><b>An expected-use hint on every mandate row</b>: always, sometimes, rarely, hopefully never. Without it, a dormant row cannot be told from a contingency that was never needed.</li>
+<li><b>Blast radius on every row of the gap</b>, on a short scale the owner fills in against the business, with the reversible-or-not flag beside it. Five steps is plenty. The figure at the top uses none, low, a bad day, serious, the business.</li>
+<li><b>The mandate as practised</b> as a view the tooling can produce from a footprint alone, for agents with no written policy yet.</li>
+<li><b>A review cadence</b>, because the footprint accumulates and the blast radius moves. Monthly for a new agent, quarterly once the potential and the realised readings have converged.</li>
+</ol>
+<p>With those, the policy says what the agent can do, what you asked, what stands in the way, what it actually did, and what each of those would cost. That is the risk, written down, in a form a risk owner can accept or refuse, and in a form an auditor can check against the logs without asking anyone for access.</p>
+<h2>Threads woven here</h2>
+<ul>
+<li><a href="../articles/ultimate-insider-three-collisions.html">The ultimate insider</a>: why an agent's reach, not its mandate, is what an attacker inherits.</li>
+<li><a href="../articles/every-risk-is-already-accepted.html">Every risk is already accepted</a>: the person who accepts the gap is accepting its blast radius, and the policy should say what that is.</li>
+<li><a href="../articles/connector-twin-before-you-deploy-an-agent.html">Before you give an agent a connector, give the connector a twin</a>: the footprint recorder at the line where the reach is exercised.</li>
+<li><a href="../articles/six-agents-one-inbox.html">Six agents, one inbox</a>: the first policy on this site, written before the near misses.</li>
+<li><a href="../articles/custom-uis-are-not-the-exception.html">Custom UIs are not the exception</a>: the ten agents whose footprint we will read next.</li>
+<li>Vaults: <a href="../demos/vaults/kit-bag/index.html">Kit Bag</a>, a policy written before the code; <a href="../demos/vaults/connector-twin/index.html">Connector Twin</a>; <a href="../demos/vaults/risk-mandate/index.html">RiskMandate</a>; <a href="../demos/vaults/risk-acceptance/index.html">Risk acceptance</a>.</li>
+<li><a href="https://riskmandate.ai/">RiskMandate.ai</a> for the policy itself, and the <a href="../docs/briefs/riskmandate-footprint-and-blast-radius.html">brief</a> that carries this proposal to its team.</li>
+</ul>
+<p><em>Drafted from a conversation with Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session. The four figures are illustrative: an inbox agent with placeholder capabilities and counts, and a staging table that nobody owns. The industry references were checked against the vendors' own pages on 2 October 2026.</em></p>
+<p><em>© 2026 Dinis Cruz. This article's own text is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.</em></p>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.6.36')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.36</a> · <a href="../admin/index.html">engineering</a> · <a href="footprint-and-blast-radius.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.36';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

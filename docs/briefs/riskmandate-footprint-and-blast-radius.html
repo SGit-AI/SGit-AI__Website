@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy</title>
+<meta name="description" content="A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html">
+<meta property="og:title" content="For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy">
+<meta property="og:description" content="A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="riskmandate-footprint-and-blast-radius.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy", "headline": "For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy", "description": "A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.", "url": "https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.36</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.36 &middot; 2 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / RiskMandate: footprint and blast radius</p>
+  <h1>For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy</h1>
+
+<p><b>A vocabulary brief from the sgit.ai site team to the RiskMandate.ai team.</b> Status: open. Written 2 October 2026.</p>
+<p>The founder proposed two additions to the policy's vocabulary in conversation on 2 October, and the argument is written up in full in the article <a href="../../articles/footprint-and-blast-radius.html">Footprint and blast radius: what the agent actually did, and what it would have cost</a>. This brief carries the part that is yours: what to add to the policy, the schema, and the questions we could not settle from here. Read the article first; it is the reasoning. This is the ask.</p>
+
+<h2>What to read first</h2>
+<ul>
+<li><a href="../../articles/footprint-and-blast-radius.html">The article</a>, including the lead figure, which is the proposal in one frame: the gap as a map, each row shaded by blast radius and marked if there is no way back.</li>
+<li><a href="https://riskmandate.ai/abp.html" rel="noopener" target="_blank">Your own abp.html</a>, which at the time of writing defines the four primitives as grant, mandate, delta and barrier. The founder tells us the current words are reach, mandate, gap and barriers. The article uses the current words and notes the older ones; see the first question below.</li>
+<li><a href="../../articles/connector-twin-before-you-deploy-an-agent.html">The connector twin article</a>, because the twin is the footprint recorder for connectors, and <a href="../../api/append-lanes.html">append lanes</a>, because the lane record is the footprint recorder for vaults.</li>
+<li><a href="riskmandate-partnership-risk-and-sgit-mapping.html">The earlier brief</a>, for the house rules on facts and claims, which apply here too: no "nobody has", no "the first"; say what we found and what we did.</li>
+</ul>
+
+<h2>The two words</h2>
+<p><b>Footprint.</b> The set of things the agent actually did in a period, read afterwards from the record: the connector's audit log, the model's tool-call log, the vault's commit history, the append lane's record, a connector twin's replay. The same kind of thing as reach and mandate, a list of rows, which is what makes the comparisons possible. Evidence, not a decision. Passive, no production access, accumulates over time.</p>
+<p><b>Blast radius.</b> Not a set; a measure that attaches to a row or a set of rows. What it would cost the business if that row were used in full, today. Defined over the reach, because whoever takes the agent over inherits its reach and ignores its mandate. Two readings: potential, from the reach, before the agent runs; realised, from the footprint, against the context at the time. Two axes: how much, on a short scale the owner fills in against the business, and whether there is a way back.</p>
+<p>Derived terms the article uses and we would like the policy to share, so that the two sites do not fork:</p>
+<ul>
+<li><b>Footprint in the gap</b>: a near miss. Resolves to a mandate edit (the mandate was incomplete) or a new boundary (the agent should not have gone there). The owner decides which.</li>
+<li><b>Dormant mandate</b>: a mandate row the footprint never shows. Three causes: over-stated mandate, a check that never ran, or a shortfall the reach missed. Judged against the row's expected-use hint, below.</li>
+<li><b>Footprint outside reach</b>: should be impossible; when it appears, the reach inventory is wrong.</li>
+<li><b>Barrier hits</b>: attempts a boundary stopped. The footprint of the barriers.</li>
+<li><b>The mandate as practised</b>: the footprint read alone, as a view, for an agent with no written policy yet. The mandate as written is the one the owner gave.</li>
+</ul>
+
+<h2>The ask, in order of usefulness</h2>
+<ol>
+<li><b>Footprint as a section of the policy.</b> A period, a source per row, and the four derived findings listed above. The section is produced from evidence, never hand-edited, in the same way the gap is derived and never hand-edited today.</li>
+<li><b>An expected-use hint on every mandate row.</b> One of <code>always</code>, <code>sometimes</code>, <code>rarely</code>, <code>hopefully-never</code>. Without it a dormant row cannot be told from a contingency that was never needed. "Escalate to a human when a payment is mentioned" is hopefully-never on a quiet month and a finding when fourteen payment threads passed.</li>
+<li><b>Blast radius on every row of the gap</b>, on a five-step scale the owner fills in against the business, with the reversibility flag beside it. The article uses <code>none</code>, <code>low</code>, <code>bad-day</code>, <code>serious</code>, <code>the-business</code>; use your own words if you have better ones, but keep it to five and keep it the owner's judgement, not the tool's. The blast radius of the gap as a whole is what the risk owner accepts; the policy should say it.</li>
+<li><b>The mandate as practised as a view</b> the tooling can produce from a footprint alone, for the elicitation conversation: "here is what your agent does; which of these did you mean, and which worries you?"</li>
+<li><b>A review cadence.</b> Monthly for a new agent, quarterly once the potential and realised blast radius readings have converged, because the footprint accumulates and the context moves.</li>
+</ol>
+
+<h2>Schema sketch</h2>
+<p>Field names are suggestions. The shapes are what matter: the footprint is derived, every row names its source, and blast radius lives on the gap rows with the reversibility flag beside it.</p>
+<pre><code>{
+  "mandate": [
+    { "capability": "escalate when a payment is mentioned",
+      "expected_use": "hopefully-never" }
+  ],
+  "gap": [
+    { "capability": "send as the owner",
+      "direction": "excess",
+      "barrier": { "kind": "expectation", "enforced_by": "nobody" },
+      "blast_radius": { "level": "the-business", "reversible": false,
+                        "basis": "mail sent in the founder's name cannot be unsent",
+                        "assessed_by": "owner", "assessed_on": "2026-10-02" } }
+  ],
+  "footprint": {
+    "period": { "from": "2026-09-01", "to": "2026-09-30" },
+    "sources": ["workspace-audit-log", "vault-history:&lt;vault-id&gt;", "connector-twin:gmail"],
+    "rows": [
+      { "capability": "send as the owner", "count": 3, "source": "workspace-audit-log",
+        "finding": "footprint-in-gap", "first_seen": "2026-09-12", "last_seen": "2026-09-27" },
+      { "capability": "escalate when a payment is mentioned", "count": 0,
+        "finding": "dormant-mandate", "context": "14 payment threads in period" }
+    ],
+    "barrier_hits": [ { "capability": "delete messages permanently", "count": 2, "barrier": "boundary" } ]
+  }
+}</code></pre>
+<p>Values above are illustrative. No real footprint has been published yet.</p>
+
+<h2>What sgit.ai will do</h2>
+<ul>
+<li><b>Read our own footprint.</b> Ten agents, six with a written policy, all in vaults, eight days of history and several hundred messages between them. We will read the footprint against the six policies and publish which rows were used, which were dormant, where the footprint went into the gap, and what each finding resolved into. Counts from the vaults' history; no contact named, no message quoted. We are building that now, and it is the second article.</li>
+<li><b>Record footprints by default.</b> Append lanes already record every message with its token and time, and vault history records every file. We will document how to read both as a footprint with a read key only, so a reviewer never needs a write credential or production access.</li>
+<li><b>Keep the vocabulary aligned.</b> Once you settle the words and the schema, we will update the article and the earlier pages on this site that still say grant and delta.</li>
+</ul>
+
+<h2>Questions for you</h2>
+<ol>
+<li><b>Which words are current?</b> abp.html says grant, mandate, delta, barrier. The founder says reach, mandate, gap, barriers. The article uses the second set and notes the first. If the site is mid-rename, say so and we will align; if both are meant to live, say which is canonical.</li>
+<li><b>Is blast radius a field on the gap row, or a separate table keyed by capability?</b> We lean to the field, because the person filling it in is looking at the gap row when they do it. A separate table makes the potential and realised readings easier to compare over time. Your call.</li>
+<li><b>Who assesses blast radius?</b> We say the owner, against the business, and the tool never guesses it. If you want a default to make the form faster, make it the top of the scale, so that the owner's job is to argue it down.</li>
+<li><b>How should the policy carry the footprint's sources?</b> A reviewer needs to know where each row came from to trust it. A short enum of source kinds plus a free identifier is our suggestion.</li>
+</ol>
+
+<p><b>House rules, restated.</b> The comparison of permissions granted with permissions used is not new: AWS IAM Access Analyzer, Google Cloud's role recommendations and Microsoft Entra's Permission Creep Index all do it, and the article cites them. What the policy adds is the mandate, the owner's intent, which a permission set does not carry, and which is what makes a near miss and a dormant mandate possible to name. Say that, and nothing larger.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.36</a> · <a href="../../admin/index.html">engineering</a> · <a href="riskmandate-footprint-and-blast-radius.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.36';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

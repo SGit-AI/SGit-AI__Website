@@ -516,6 +516,12 @@
     "desc": "We already publish an independent report on ElevenLabs, and it ends with one clear ask. The narration on this site is rendered with ElevenLabs, and elevenlabs.providers.sgit.ai records what it cost on a named workload, what broke, and which credential patterns the product supports. What would let a vault app use ElevenLabs safely, with no key in the page, is a key with a spend limit, or a short-lived token for text to speech."
   },
   {
+    "path": "docs/briefs/riskmandate-footprint-and-blast-radius.html",
+    "section": "briefs",
+    "title": "For RiskMandate.ai: footprint and blast radius, two additions to the Agent Behaviour Policy",
+    "desc": "A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current."
+  },
+  {
     "path": "docs/briefs/riskmandate-interview-page-and-voice-prompt.html",
     "section": "briefs",
     "title": "For RiskMandate.ai: an interview page, and a ChatGPT voice prompt to run it",

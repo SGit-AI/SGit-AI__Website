@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.35'
+SITE_VERSION = 'v0.6.36'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.35', '2026-10-02', 'this release',
+    ('v0.6.36', '2026-10-02', 'this release',
+     "FOOTPRINT AND BLAST RADIUS. A new article proposes two additions to RiskMandate's Agent Behaviour "
+     "Policy, whose four words, reach, mandate, gap and barriers, are all written before an agent runs. "
+     "Footprint is what the agent actually did, read afterwards from logs, vault history or a connector "
+     "twin, with nothing inline and no production access; against the mandate it yields near misses "
+     "(footprint in the gap) and dormant rows (asked for, never seen), and read alone it is the mandate as "
+     "practised. Blast radius is the measure on any row: what it would cost the business if used in full, "
+     "today, with a reversibility flag, defined over the reach because whoever takes the agent over "
+     "inherits the reach. Four illustrative figures, led by the gap as a map, each row shaded by what it "
+     "would cost and hatched where there is no way back. The cloud identity tools that already compare "
+     "permissions granted with permissions used are cited, and what they lack, a mandate, is said plainly. "
+     "A companion brief carries the schema changes and four questions to the RiskMandate team, including "
+     "which words are current, since their abp.html still reads grant and delta.",),
+    ('v0.6.35', '2026-10-02', 'git 3ee0be54',
      "FIGURES TO SCALE, ABSTRACT TO SIZE. A desktop screenshot of the Custom UIs article showed its "
      "abstract running to two thousand characters and the six tall review figures sitting at the full "
      "column width, each taller than a screen and with internal type larger than the article's own. The "

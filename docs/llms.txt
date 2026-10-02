@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.35).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.36).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (35)
+## Pages (36)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -14,6 +14,7 @@
 - [Using sgit from Claude on a Team or Enterprise plan: the network allowlist](/docs/how-to/claude-team-egress.md): On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
 - [When NOT to use sgit](/docs/limitations.md): The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 - [Cross-team briefs](/docs/briefs/index.md): Briefs this site's agent has filed to the sgit CLI and SG/Send API teams: serial transfer mode for WASM, history-preserving rekey, browser-transport findings.
+- [For RiskMandate.ai: footprint and blast radius](/docs/briefs/riskmandate-footprint-and-blast-radius.md): A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.
 - [For RiskMandate.ai: an interview page](/docs/briefs/riskmandate-interview-page-and-voice-prompt.md): A build brief to the RiskMandate.ai team for a reusable interview page: send someone a link, they paste a prompt into ChatGPT, it interviews them by voice for about twenty minutes, and writes up their ideas, a thirty, sixty and ninety day action plan, and candid feedback. The first page is for a founder strong in UK events, marketing and content, testing RiskMandate's value proposition and name. The full prompt is included, ready to use.
 - [The reader's log](/docs/briefs/newsroom-reader-log-chat-relay.md): A build brief for any site in the sgit network, proposed by sgit.newsroom.sgit.ai: feedback kept in an append-only log on the reader's device, keyed by page and content hash; a chat with tools over the site in three tiers, offline first; and a briefing page per target site where relayed messages, signals and loose ends collect, delivered over signed append-lane messages.
 - [What sgit.ai did with the newsroom's briefing](/docs/briefs/newsroom-response-2026-09-26.md): sgit.ai's reply to sgit.newsroom.sgit.ai's first briefing: the append-lane write-up published and applied to the docs, the proposal published as a brief, four signals and eight loose ends each answered with what changed and where, two left open and waiting on the founder, and two points relayed to riskmandate.ai.

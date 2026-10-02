@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="admin/versions.html" title="Site release history">v0.6.35</a>
+  <a class="ver" href="admin/versions.html" title="Site release history">v0.6.36</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -108,7 +108,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.35 &middot; 2 Oct 2026</span></a></div>
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.36 &middot; 2 Oct 2026</span></a></div>
 <header class="hero">
   <div class="eyebrow">Git for encrypted vaults, for humans and AI agents</div>
   <h1>A vault is a unit of work:<br>data, app, history and sources, shipped as one string</h1>
@@ -164,10 +164,10 @@
   <h2>One human, a team of agents</h2>
   <p class="bandlede">This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.</p>
  <div class="team">
- <div class="t rev"><span class="num">193</span><span class="lbl">site releases, each verified live before it was called done</span></div>
+ <div class="t rev"><span class="num">194</span><span class="lbl">site releases, each verified live before it was called done</span></div>
  <div class="t rev"><span class="num">39</span><span class="lbl">vaults published with a deliberately public read key</span></div>
  <div class="t rev"><span class="num">27</span><span class="lbl">sibling sites on <code>*.sgit.ai</code>, one question each</span></div>
- <div class="t rev"><span class="num">15</span><span class="lbl">cross-team briefs filed or received, in the open</span></div>
+ <div class="t rev"><span class="num">16</span><span class="lbl">cross-team briefs filed or received, in the open</span></div>
   </div>
   <div class="team-story">
     <div class="beat rev"><span class="k">1</span><span>A <a href="docs/briefs/vault-telemetry-append-lanes.html">build brief</a> was published here on a Saturday. Another agent read it and shipped <a href="demos/vaults/agent-permission-games/index.html">a vault from it</a> the same day.</span></div>
@@ -333,6 +333,12 @@
  <h2>Start with an argument, not a menu</h2>
  <p class="bandlede">The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.</p>
  <div class="artcards">
+ <a class="artcard" href="articles/footprint-and-blast-radius.html">
+ <span class="artcard-date">2026-10-02</span>
+ <b>Footprint and blast radius: what the agent actually did, and what it would have cost</b>
+ <span class="artcard-sum">RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.</span>
+ <span class="artcard-go">Read it &rarr;</span>
+ </a>
  <a class="artcard" href="articles/custom-uis-are-not-the-exception.html">
  <span class="artcard-date">2026-10-01</span>
  <b>Custom UIs are not the exception: the inbox in 2026, where every message has its own universe</b>
@@ -343,12 +349,6 @@
  <span class="artcard-date">2026-09-30</span>
  <b>The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up</b>
  <span class="artcard-sum">A first pass at an argument I intend to give as a conference talk, written down here so I can show it to the people I am talking to about speaking. Three things are arriving at once. Agents are the insider threat that never scaled before, because insiders were humans or static code, and an agent is a reasoning engine in a loop with tools and skills we have never put inside a company. Our business and security infrastructure was designed for none of it: no journaling, backups by the day, identities everywhere and permissions that are the union of everything ever needed, and it fails on its own without any agent's help. And the discipline that is supposed to decide what to do about all this runs on spreadsheets, at a speed measured in quarters, when the decisions now have to be made in seconds and in advance. Each is a known problem. Together they describe a company that cannot see what its agents can do, cannot stop them when they do it, and cannot decide fast enough to fund either. The evidence is public and it is getting worse, and the reason we do not see more of it is that nobody has to report. The second half of the talk is the way out, and it runs through everything this site has been building, with one irony at its centre: the more you constrain an agent, the more you can trust it, and the more autonomy you can afford to give it.</span>
- <span class="artcard-go">Read it &rarr;</span>
- </a>
- <a class="artcard" href="articles/how-news-got-here.html">
- <span class="artcard-date">2026-09-29</span>
- <b>The reader was always the product: a corrected history of how news got into this mess</b>
- <span class="artcard-sum">This started as a voice memo setting out my understanding of how the publishing and news industry got to where it is, in four eras, print, web, platforms and AI, and an instruction to check it and correct it. The research corrected it in four places, and the corrections are the article. The reader did not become the product when the web arrived; the reader has been the product since the penny press of 1833, and by 2005 advertising was 82% of American newspaper revenue. What the web took was not the business model but the monopoly underneath it, the local toll bridge that let a paper charge what it liked and fund reporting with margins of 20 to 30 per cent; classifieds alone fell from $19.6 billion to about $6 billion in nine years. The platforms then made the reader a measurable product and the publisher a tenant: Google and Meta took over half of American digital advertising by 2017, Facebook referrals fell 58% in six years, false news travelled 70% further than true, and newspaper newsrooms lost 57% of their staff. AI removed the traffic itself, and the industry's answer has been to go back to selling to readers, by subscription, so that circulation revenue now exceeds advertising for the first time in living memory. The road not taken was there from the start, a payment code reserved in the web's own protocol in 1997 and never used, and the evidence that people pay when paying is easy, from a million songs in a week in 2003 to five million paid newsletter subscriptions in 2025, is what the story vault work on this site is built on.</span>
  <span class="artcard-go">Read it &rarr;</span>
  </a>
  </div>
@@ -366,7 +366,7 @@
 </section>
 <script>
 (function () {
- fetch('assets/shots.js?v=v0.6.35')
+ fetch('assets/shots.js?v=v0.6.36')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -378,7 +378,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="admin/versions.html">v0.6.35</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="admin/versions.html">v0.6.36</a> · <a href="admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -420,7 +420,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.35';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.36';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
