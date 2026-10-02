@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,76 @@
 What changed on sgit and on this site, as it happens, one entry per story rather than per release. The [version log](../admin/versions.md) is the complete technical record; this is the readable one.
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
+
+**67 entries, newest first**
+
+- 2026-09-21[The design is the performance, and the crypto is free](#the-design-is-the-performance)
+- 2026-09-21[That was a cold start, not an architecture cost](#that-was-a-cold-start-not-an-architecture-cost)
+- 2026-09-21[Take the API out of the path, and the same clone is 25 times faster](#take-the-api-out-of-the-path)
+- 2026-09-21[Graph engineering versus fractal graph, the measured answer](#performance-and-cost)
+- 2026-09-21[One request, an append lane, and a cache full of ciphertext](#one-request-append-and-ciphertext-caching)
+- 2026-09-20[The newest vaults were at the bottom of the table, and at the top of the machine list](#vault-table-order)
+- 2026-09-20[The vault named after the concept was not on the concept's page](#the-vault-named-after-the-concept)
+- 2026-09-20[We published read keys under a prefix that declares them secret, and an agent refused to open them](#the-prefix-said-private)
+- 2026-09-20[The em-dash is gone from the prose, and so is the legacy key prefix](#no-more-em-dashes)
+- 2026-09-20[The article that introduces Fractal Semantic Graphs, published here with its pictures](#introducing-fsg-article)
+- 2026-09-20[Vault #31 reaches the same conclusion about fractality, in its own words](#dsit-ai-risk-toolkit)
+- 2026-09-19[The site's own vault mirror is gone, deleted, purged from history, force-pushed](#the-mirror-is-gone)
+- 2026-09-19[The jump, what the fractal property actually adds](#the-jump)
+- 2026-09-19[The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with](#llms-txt-routing)
+- 2026-09-19[The ladder's right column looked like links and was not, now it is](#ladder-links)
+- 2026-09-19[How far down does the graph go? A page for the question that got three bare URLs](#how-far-down-does-the-graph-go)
+- 2026-09-19[Fractal Semantic Graphs, the page now leads with the definition](#fractal-semantic-graphs-defined)
+- 2026-09-19[Fractal means the inside is different, not the same. The definition had it backwards](#fractal-means-different-not-same)
+- 2026-09-19[Deleting files from git history, the exact scenario, drawn out](#deleting-files-from-history)
+- 2026-09-19[A brief for graphs.sgit.ai, in place of a footnote](#brief-for-graphs-sgit-ai)
+- 2026-09-18[Vault #30, the same pack, written for an archetype instead of a company](#the-same-pack-for-an-archetype)
+- 2026-09-18[The summit sheets get a preview grid, and their numbers are dated rather than corrected](#summit-sheets-preview-grid)
+- 2026-09-17[The Lisbon summit sheets, as pages, and as the PDFs they were handed out as](#the-lisbon-summit-sheets)
+- 2026-09-17[A job application as a vault, and the privacy audit published beside it](#a-job-application-as-a-vault)
+- 2026-09-16[The synthetic-user method runs a second time, and the second run is the better argument](#synthetic-users-second-run)
+- 2026-09-15[Synthetic users, five people who do not exist, shopping](#synthetic-users)
+- 2026-09-10[The transfer API gets documented, and a dangling reference closes](#the-transfer-api-gets-documented)
+- 2026-09-09[The shorts page rewritten for someone who arrives with no context](#the-shorts-page-rewritten-for-a-cold-arrival)
+- 2026-09-09[The llms.txt stops being a URL you have to guess](#the-llms-txt-stops-being-a-url-you-guess)
+- 2026-09-09[The build brief for putting a vault's decks on a website](#the-build-brief-for-decks-on-a-site)
+- 2026-09-09[The agent chip becomes one object, and the network list catches up with the org](#the-agent-chip-and-the-network-catches-up)
+- 2026-09-09[Seven shorts on the Licence to Operate vault, indexed, and put in the right order](#seven-shorts-on-the-licence-to-operate)
+- 2026-09-09[One front door for vault guidance, and every document moved under /docs/](#one-front-door-for-vault-guidance)
+- 2026-09-09[The second build brief, and it mostly says don't build it](#markdown-and-file-viewers-what-not-to-build)
+- 2026-09-09[Guidance now splits by surface, and the third surface finally has its own brief](#guidance-splits-by-surface)
+- 2026-09-09[Decks and PDFs read straight out of a vault, with the viewer owned by the site](#decks-read-straight-out-of-a-vault)
+- 2026-09-09[A page per deck, a focus mode, and a vault catalogue an agent can read](#a-page-per-deck-and-a-catalogue-agents-can-read)
+- 2026-09-09[A brief for the vault map infographic, which spends its first half on why not to start with the picture](#a-brief-for-the-vault-map-infographic)
+- 2026-09-07[Two new sections, the team, written for the agents; and investors, in the open](#the-team-for-the-agents-and-investors-in-the-open)
+- 2026-09-07[The proof moved up, the homepage, rebuilt to show vaults before it explains them](#the-proof-moved-up)
+- 2026-09-07[The diagnosis before the rebuild, and a card for pointing at the sibling sites](#the-diagnosis-before-the-rebuild)
+- 2026-09-07[The board moves into a vault of its own, and its read key is published](#the-board-moves-into-a-vault)
+- 2026-09-07[Our build brief was wrong, and the team that owns the code said so precisely](#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so)
+- 2026-09-07[Ask this site, a pane on every page whose model calls tools over the site's own content](#ask-this-site)
+- 2026-09-06[The vaults table stops being a key dump, sortable, categorised, newest first](#the-vaults-table-you-can-sort)
+- 2026-09-06[The brief came back as a vault, and it is the first one here that phones home](#the-brief-came-back-as-a-vault)
+- 2026-09-06[Briefs gets a second kind, references written to be executed, not asks waiting on a reply](#briefs-gets-a-second-kind)
+- 2026-09-05[Provenance is not conformance, the AIUC-1 vault, forked and layered](#provenance-is-not-conformance)
+- 2026-08-27[The directory answers questions now, and the default tier needs no key](#the-directory-answers-questions-now)
+- 2026-08-27[An insurance policy for an agent, and the delta is the risk](#the-delta-is-the-risk)
+- 2026-08-27[A standard as a graph, and the one line that makes it trustworthy](#a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy)
+- 2026-08-27[A three-minute pitch, delivered from a vault, and the first grant that is not empty](#a-pitch-delivered-from-a-vault)
+- 2026-08-26[Nineteen sibling sites, and a way to find the one that is yours](#nineteen-sites-and-a-way-to-find-yours)
+- 2026-08-26[Articles get a place on the homepage, and a band gets its width back](#articles-get-a-home-and-a-band-gets-its-width-back)
+- 2026-08-26[A conference keynote as a vault, the deck, its exports, and the research it came from](#a-conference-keynote-as-a-vault)
+- 2026-08-25[Six vaults published, three held back, and the check that nearly missed one](#six-vaults-published-three-held-back)
+- 2026-08-22[The ninth published vault, four apps in one tree, and a reader that asked for nothing it did not need](#the-ninth-vault-four-apps-in-one-tree)
+- 2026-08-22[An ordinary commit should not be able to take the site down](#an-ordinary-commit-should-not-be-able-to-take-the-site-down)
+- 2026-08-21[A fourth sibling site, and the first one that links back](#the-first-sibling-that-links-back)
+- 2026-08-20[The audit that stopped a publication, and the vault we built instead](#the-audit-that-stopped-a-publication)
+- 2026-08-20[A third sibling site, one that says, at the top of every page, that it does not exist](#a-third-sibling-site-that-says-it-does-not-exist)
+- 2026-08-19[The first two sibling sites, with screenshots](#the-first-two-sibling-sites)
+- 2026-08-18[Verify the fix pack, not just the bug](#verify-the-fix-pack-not-just-the-bug)
+- 2026-08-18[The API reference we did not have](#the-api-reference-we-did-not-have)
+- 2026-08-17[Three walkthroughs, read back as documents](#three-walkthroughs-read-back-as-documents)
+- 2026-08-17[Printing stopped costing every reader](#printing-stopped-costing-every-reader)
+- 2026-08-17[Green does not mean live](#green-does-not-mean-live)
 
 ## 2026-09-21
 

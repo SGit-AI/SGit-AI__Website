@@ -2,7 +2,7 @@
 
 > Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
 
-*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -99,6 +99,16 @@ That card is new as of this article. The `*.sgit.ai` sites exist so each topic c
 The rebuild is the next release. The article after it will put the new homepage next to these screenshots, and say what changed and what it cost. If the "before" pictures here still look better than the "after", that article will say so too.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
+
+## Threads
+
+Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-behind-the-claim)
+
+### Continued by
+
+- [The proof moved up, the homepage after the rebuild, next to the before pictures](proof-moved-up.md) The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

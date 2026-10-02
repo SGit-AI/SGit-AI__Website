@@ -2,7 +2,7 @@
 
 > The SaaS apocalypse has not happened yet, and the market has already declared it cancelled once. It remains a very strong possibility, argued here with data rather than vibes. Most users were never happy, most features were never used, and most licences sit idle, because success bred inertia and inertia bred lock-in. Now anybody can brief the software they actually want, and the portability, APIs and schemas that SaaS companies refused to build are precisely what an agent needs. It will be decided by inertia, not by AI, because AI is available to both sides: the incumbents have the same models as the newcomers, plus more data, more engineers and more money, and if the technology were the deciding factor they would already have won. Nokia when the mobile phone arrived had nothing to protect, and moved. Nokia when the iPhone arrived had fifteen years of success to protect, and did not. Which side of that path each SaaS provider ends up on will be settled by where it sits on the evolution axis and how much it has to protect, which is why the newcomers, not the incumbents, are the ones to watch.
 
-*Source: <https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -117,6 +117,16 @@ The companies that master that are going to be the biggest software houses of th
 Which brings it back to Nokia, and to inertia. The version of the apocalypse that ends with a company gone from its category is not a decision anybody takes. It is what happens by default when a company treats the screen as the moat, keeps the data locked, ships the API as a tick-box, and waits for the panic to pass, which the market has helpfully told it the panic has. Every one of those is the natural behaviour of a business with fifteen years of success to protect. The other version requires acting against that inertia: noticing that what it refused to build is exactly what its customers' agents are asking for, and building it before somebody with nothing to protect does. That is the strategy question, and it is not a question about AI, which both sides have. It is a question about inertia, which only one side has. The newcomers have already answered it, because for them there was never anything in the way.
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+Startups & strategy[This article as a graph →](graphs.md#saas-apocalypse-decided-by-inertia-not-by-ai)
+
+### Continued by
+
+- [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](supply-chain-of-vaults.md) The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

@@ -2,7 +2,7 @@
 
 > Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.
 
-*Source: <https://sgit.ai/articles/chat-on-a-static-site.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/chat-on-a-static-site.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -78,6 +78,16 @@ It does not answer questions *about* the subjects. Ask it how to threat-model a 
 It also does not know anything that is not in the catalogue. Nineteen theses, nineteen summaries, nineteen categories, all quoted from each site's own words rather than paraphrased, which is the same rule the [directory](../network/index.md) follows.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
+
+## Threads
+
+Site & engineering[This article as a graph →](graphs.md#chat-on-a-static-site)
+
+### Continued by
+
+- [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

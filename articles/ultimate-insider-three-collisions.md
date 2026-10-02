@@ -2,7 +2,7 @@
 
 > A first pass at an argument I intend to give as a conference talk, written down here so I can show it to the people I am talking to about speaking. Three things are arriving at once. Agents are the insider threat that never scaled before, because insiders were humans or static code, and an agent is a reasoning engine in a loop with tools and skills we have never put inside a company. Our business and security infrastructure was designed for none of it: no journaling, backups by the day, identities everywhere and permissions that are the union of everything ever needed, and it fails on its own without any agent's help. And the discipline that is supposed to decide what to do about all this runs on spreadsheets, at a speed measured in quarters, when the decisions now have to be made in seconds and in advance. Each is a known problem. Together they describe a company that cannot see what its agents can do, cannot stop them when they do it, and cannot decide fast enough to fund either. The evidence is public and it is getting worse, and the reason we do not see more of it is that nobody has to report. The second half of the talk is the way out, and it runs through everything this site has been building, with one irony at its centre: the more you constrain an agent, the more you can trust it, and the more autonomy you can afford to give it.
 
-*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -127,6 +127,25 @@ If you are one of the people I have been talking to about speaking, this is the 
 *Drafted from two voice memos by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session. The observations about attackers, near misses and internal systems are the author's from practice; every number is linked to its source.*
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+Agents & policy[This article as a graph →](graphs.md#ultimate-insider-three-collisions)
+
+### Builds on
+
+- [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
+- [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
+- [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md) An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.
+- [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
+
+### Continued by
+
+- [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

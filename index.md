@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,6 +20,20 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
 Four of **39 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 39 →](demos/vaults/index.md)
+
+## Start with an argument, not a menu
+
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 21 so far, three newest here.
+
+[2026-10-02Agents & policy6 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md) [2026-10-02Startups & strategy2 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](articles/price-it-then-give-it-away.md) [2026-10-01Graphs & knowledge9 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](articles/custom-uis-are-not-the-exception.md)
+
+- [The ultimate insider](articles/ultimate-insider-three-collisions.md) · 2026-09-30
+- [The reader was always the product](articles/how-news-got-here.md) · 2026-09-29
+- [Six agents, one inbox](articles/six-agents-one-inbox.md) · 2026-09-29
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody…](articles/token-bill-nobody-is-sending.md) · 2026-09-28
+- [A supply chain of vaults](articles/supply-chain-of-vaults.md) · 2026-09-27
+
+[All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
 ## What people actually ship
 
@@ -41,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-196site releases, each verified live before it was called done
+197site releases, each verified live before it was called done
 
 39vaults published with a deliberately public read key
 
@@ -183,14 +197,6 @@ Most of the thinking behind sgit no longer lives on this site. It moved out to *
 [**Agents & AI**identity for agents · calling an LLM with no API key · how the code is written](network/index.md#agents-ai) [**Risk & governance**you cannot deny a risk · cite the provision · the requirements nobody writes down](network/index.md#risk-governance) [**Graphs & method**meaning lives in the edges · issues as files · maps are claims](network/index.md#graphs-method) [**Security & infrastructure**a key registry for agents · an edge guard · ephemeral environments](network/index.md#security-infrastructure) [**Business & publishing**open source is a strategy · subscriptions are not rent · provenance as the product](network/index.md#business-publishing)
 
 [Find the one that answers your question →](network/index.md)
-
-## Start with an argument, not a menu
-
-The articles are the readable way in: one page, one argument, with the screenshots and the links to check it. If you only read one thing here, read one of these.
-
-[2026-10-02**Footprint and blast radius: what the agent actually did, and what it would have cost**RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.Read it →](articles/footprint-and-blast-radius.md) [2026-10-02**Price it, then give it away: the early access programme as the next step after "do they miss it"**The follow-up to "the most important question is whether they miss it". The step after giving something away is to define a product, put a price on it that makes sense to you, find a way to deliver it at a cost that grows a step at a time rather than a curve, and then offer it, free, to the people who already know you: early adopters, power users, past customers. What that measures is brutal. The price is a statement of what you think it is worth; the test is whether people take it at zero. If they say it is interesting but they have no time, it does not fit the team, or it is hard to deploy, the problem is not the price, and you go back to the drawing board. The part that is easy to leave out is that free is never free for the other side: engaging costs them attention, thinking and schedule, so the exercise is to measure that cost and cut it, until the service costs you the least and costs them the least. Written as a record of where this came from, and as a brief for the agents who will run it.Read it →](articles/price-it-then-give-it-away.md) [2026-10-01**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Following up is harder than doing the work, because every person has a different context and the thread you share hides its own structure. This article weaves the site's threads into one argument. Every message has a graph, with altitudes from the block to the contact. Email is a medium, so a message is designed for the recipient's moment, not the sender's thread. A custom interface per message or moment is not an exception; it is how interfaces now get made, each one commoditising the next. Ten agents and one human built more than a dozen of them in eight days. The future of email is sender-served structure, read by the recipient's agent, with the inbox as one view of the graph. And an interface is an agent surface, so it gets a policy.Read it →](articles/custom-uis-are-not-the-exception.md)
-
-[All articles →](articles/index.md)
 
 Encrypted vaults. **Git workflows.** Zero knowledge.
 

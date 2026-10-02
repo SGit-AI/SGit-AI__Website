@@ -2,7 +2,7 @@
 
 > The follow-up to "the most important question is whether they miss it". The step after giving something away is to define a product, put a price on it that makes sense to you, find a way to deliver it at a cost that grows a step at a time rather than a curve, and then offer it, free, to the people who already know you: early adopters, power users, past customers. What that measures is brutal. The price is a statement of what you think it is worth; the test is whether people take it at zero. If they say it is interesting but they have no time, it does not fit the team, or it is hard to deploy, the problem is not the price, and you go back to the drawing board. The part that is easy to leave out is that free is never free for the other side: engaging costs them attention, thinking and schedule, so the exercise is to measure that cost and cut it, until the service costs you the least and costs them the least. Written as a record of where this came from, and as a brief for the agents who will run it.
 
-*Source: <https://sgit.ai/articles/price-it-then-give-it-away.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/price-it-then-give-it-away.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -104,6 +104,20 @@ And the site is becoming the memory. An agent that picks this programme up in a 
 *Drafted from a voice memo by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session. The prices and the programme's wording were read from the published pages on 2 October 2026 and are quoted, not paraphrased. The figure is illustrative: the cost bars are relative, not measured. No customer is named and no message is quoted.*
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+Startups & strategyAgents & policy[This article as a graph →](graphs.md#price-it-then-give-it-away)
+
+### Builds on
+
+- [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
+
+### Continued by
+
+- [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

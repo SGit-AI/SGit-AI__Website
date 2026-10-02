@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.38</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.39</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -107,11 +107,80 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.38 &middot; 2 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.39 &middot; 2 Oct 2026</span></a></div>
 <main class="doc">
  <h1>Updates</h1>
  <p class="lead">What changed on sgit and on this site, as it happens, one entry per story rather than per release. The <a href="../admin/versions.html">version log</a> is the complete technical record; this is the readable one.</p>
  <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; <a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>
+ <details class="updtoc" open><summary>67 entries, newest first</summary><ul>
+<li><span class="dim">2026-09-21</span> <a href="#the-design-is-the-performance">The design is the performance, and the crypto is free</a></li>
+<li><span class="dim">2026-09-21</span> <a href="#that-was-a-cold-start-not-an-architecture-cost">That was a cold start, not an architecture cost</a></li>
+<li><span class="dim">2026-09-21</span> <a href="#take-the-api-out-of-the-path">Take the API out of the path, and the same clone is 25 times faster</a></li>
+<li><span class="dim">2026-09-21</span> <a href="#performance-and-cost">Graph engineering versus fractal graph, the measured answer</a></li>
+<li><span class="dim">2026-09-21</span> <a href="#one-request-append-and-ciphertext-caching">One request, an append lane, and a cache full of ciphertext</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#vault-table-order">The newest vaults were at the bottom of the table, and at the top of the machine list</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#the-vault-named-after-the-concept">The vault named after the concept was not on the concept's page</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#the-prefix-said-private">We published read keys under a prefix that declares them secret, and an agent refused to open them</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#no-more-em-dashes">The em-dash is gone from the prose, and so is the legacy key prefix</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#introducing-fsg-article">The article that introduces Fractal Semantic Graphs, published here with its pictures</a></li>
+<li><span class="dim">2026-09-20</span> <a href="#dsit-ai-risk-toolkit">Vault #31 reaches the same conclusion about fractality, in its own words</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#the-mirror-is-gone">The site's own vault mirror is gone, deleted, purged from history, force-pushed</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#the-jump">The jump, what the fractal property actually adds</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#llms-txt-routing">The root llms.txt was pointing agents at two 404s, and burying the guidance it should lead with</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#ladder-links">The ladder's right column looked like links and was not, now it is</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#how-far-down-does-the-graph-go">How far down does the graph go? A page for the question that got three bare URLs</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#fractal-semantic-graphs-defined">Fractal Semantic Graphs, the page now leads with the definition</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#fractal-means-different-not-same">Fractal means the inside is different, not the same. The definition had it backwards</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#deleting-files-from-history">Deleting files from git history, the exact scenario, drawn out</a></li>
+<li><span class="dim">2026-09-19</span> <a href="#brief-for-graphs-sgit-ai">A brief for graphs.sgit.ai, in place of a footnote</a></li>
+<li><span class="dim">2026-09-18</span> <a href="#the-same-pack-for-an-archetype">Vault #30, the same pack, written for an archetype instead of a company</a></li>
+<li><span class="dim">2026-09-18</span> <a href="#summit-sheets-preview-grid">The summit sheets get a preview grid, and their numbers are dated rather than corrected</a></li>
+<li><span class="dim">2026-09-17</span> <a href="#the-lisbon-summit-sheets">The Lisbon summit sheets, as pages, and as the PDFs they were handed out as</a></li>
+<li><span class="dim">2026-09-17</span> <a href="#a-job-application-as-a-vault">A job application as a vault, and the privacy audit published beside it</a></li>
+<li><span class="dim">2026-09-16</span> <a href="#synthetic-users-second-run">The synthetic-user method runs a second time, and the second run is the better argument</a></li>
+<li><span class="dim">2026-09-15</span> <a href="#synthetic-users">Synthetic users, five people who do not exist, shopping</a></li>
+<li><span class="dim">2026-09-10</span> <a href="#the-transfer-api-gets-documented">The transfer API gets documented, and a dangling reference closes</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#the-shorts-page-rewritten-for-a-cold-arrival">The shorts page rewritten for someone who arrives with no context</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#the-llms-txt-stops-being-a-url-you-guess">The llms.txt stops being a URL you have to guess</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#the-build-brief-for-decks-on-a-site">The build brief for putting a vault's decks on a website</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#the-agent-chip-and-the-network-catches-up">The agent chip becomes one object, and the network list catches up with the org</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#seven-shorts-on-the-licence-to-operate">Seven shorts on the Licence to Operate vault, indexed, and put in the right order</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#one-front-door-for-vault-guidance">One front door for vault guidance, and every document moved under /docs/</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#markdown-and-file-viewers-what-not-to-build">The second build brief, and it mostly says don't build it</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#guidance-splits-by-surface">Guidance now splits by surface, and the third surface finally has its own brief</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#decks-read-straight-out-of-a-vault">Decks and PDFs read straight out of a vault, with the viewer owned by the site</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#a-page-per-deck-and-a-catalogue-agents-can-read">A page per deck, a focus mode, and a vault catalogue an agent can read</a></li>
+<li><span class="dim">2026-09-09</span> <a href="#a-brief-for-the-vault-map-infographic">A brief for the vault map infographic, which spends its first half on why not to start with the picture</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#the-team-for-the-agents-and-investors-in-the-open">Two new sections, the team, written for the agents; and investors, in the open</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#the-proof-moved-up">The proof moved up, the homepage, rebuilt to show vaults before it explains them</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#the-diagnosis-before-the-rebuild">The diagnosis before the rebuild, and a card for pointing at the sibling sites</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#the-board-moves-into-a-vault">The board moves into a vault of its own, and its read key is published</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#our-brief-was-wrong-and-the-team-that-owns-the-code-said-so">Our build brief was wrong, and the team that owns the code said so precisely</a></li>
+<li><span class="dim">2026-09-07</span> <a href="#ask-this-site">Ask this site, a pane on every page whose model calls tools over the site's own content</a></li>
+<li><span class="dim">2026-09-06</span> <a href="#the-vaults-table-you-can-sort">The vaults table stops being a key dump, sortable, categorised, newest first</a></li>
+<li><span class="dim">2026-09-06</span> <a href="#the-brief-came-back-as-a-vault">The brief came back as a vault, and it is the first one here that phones home</a></li>
+<li><span class="dim">2026-09-06</span> <a href="#briefs-gets-a-second-kind">Briefs gets a second kind, references written to be executed, not asks waiting on a reply</a></li>
+<li><span class="dim">2026-09-05</span> <a href="#provenance-is-not-conformance">Provenance is not conformance, the AIUC-1 vault, forked and layered</a></li>
+<li><span class="dim">2026-08-27</span> <a href="#the-directory-answers-questions-now">The directory answers questions now, and the default tier needs no key</a></li>
+<li><span class="dim">2026-08-27</span> <a href="#the-delta-is-the-risk">An insurance policy for an agent, and the delta is the risk</a></li>
+<li><span class="dim">2026-08-27</span> <a href="#a-standard-as-a-graph-and-the-line-that-makes-it-trustworthy">A standard as a graph, and the one line that makes it trustworthy</a></li>
+<li><span class="dim">2026-08-27</span> <a href="#a-pitch-delivered-from-a-vault">A three-minute pitch, delivered from a vault, and the first grant that is not empty</a></li>
+<li><span class="dim">2026-08-26</span> <a href="#nineteen-sites-and-a-way-to-find-yours">Nineteen sibling sites, and a way to find the one that is yours</a></li>
+<li><span class="dim">2026-08-26</span> <a href="#articles-get-a-home-and-a-band-gets-its-width-back">Articles get a place on the homepage, and a band gets its width back</a></li>
+<li><span class="dim">2026-08-26</span> <a href="#a-conference-keynote-as-a-vault">A conference keynote as a vault, the deck, its exports, and the research it came from</a></li>
+<li><span class="dim">2026-08-25</span> <a href="#six-vaults-published-three-held-back">Six vaults published, three held back, and the check that nearly missed one</a></li>
+<li><span class="dim">2026-08-22</span> <a href="#the-ninth-vault-four-apps-in-one-tree">The ninth published vault, four apps in one tree, and a reader that asked for nothing it did not need</a></li>
+<li><span class="dim">2026-08-22</span> <a href="#an-ordinary-commit-should-not-be-able-to-take-the-site-down">An ordinary commit should not be able to take the site down</a></li>
+<li><span class="dim">2026-08-21</span> <a href="#the-first-sibling-that-links-back">A fourth sibling site, and the first one that links back</a></li>
+<li><span class="dim">2026-08-20</span> <a href="#the-audit-that-stopped-a-publication">The audit that stopped a publication, and the vault we built instead</a></li>
+<li><span class="dim">2026-08-20</span> <a href="#a-third-sibling-site-that-says-it-does-not-exist">A third sibling site, one that says, at the top of every page, that it does not exist</a></li>
+<li><span class="dim">2026-08-19</span> <a href="#the-first-two-sibling-sites">The first two sibling sites, with screenshots</a></li>
+<li><span class="dim">2026-08-18</span> <a href="#verify-the-fix-pack-not-just-the-bug">Verify the fix pack, not just the bug</a></li>
+<li><span class="dim">2026-08-18</span> <a href="#the-api-reference-we-did-not-have">The API reference we did not have</a></li>
+<li><span class="dim">2026-08-17</span> <a href="#three-walkthroughs-read-back-as-documents">Three walkthroughs, read back as documents</a></li>
+<li><span class="dim">2026-08-17</span> <a href="#printing-stopped-costing-every-reader">Printing stopped costing every reader</a></li>
+<li><span class="dim">2026-08-17</span> <a href="#green-does-not-mean-live">Green does not mean live</a></li>
+ </ul></details>
  <h2 class="upd-date">2026-09-21</h2>
  <article class="upd" id="the-design-is-the-performance">
  <h3><a href="#the-design-is-the-performance">The design is the performance, and the crypto is free</a> <a class="upd-ver" href="../admin/versions.html">v0.3.4</a></h3>
@@ -1092,7 +1161,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.38</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.39</a> · <a href="../admin/index.html">engineering</a> · <a href="index.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -1134,7 +1203,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.38';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.39';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

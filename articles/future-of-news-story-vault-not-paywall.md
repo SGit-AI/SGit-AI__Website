@@ -2,7 +2,7 @@
 
 > The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.
 
-*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -223,6 +223,22 @@ The story was always a graph. The article was always a projection. The reader wh
 The industry has never lacked the material. It has lacked a way to sell it. Now it has one, and the only question that matters is the same one I would ask of any product: [when it is taken away, does anybody miss it?](../articles/the-question-is-whether-they-miss-it.md) Take away the words and, increasingly, nobody does. Take away the graph, and the lawyer, the analyst, the regulator and the agent all notice on the same afternoon.
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-of-news-story-vault-not-paywall)
+
+### Builds on
+
+- [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
+
+### Continued by
+
+- [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+- [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

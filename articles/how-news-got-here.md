@@ -2,7 +2,7 @@
 
 > This started as a voice memo setting out my understanding of how the publishing and news industry got to where it is, in four eras, print, web, platforms and AI, and an instruction to check it and correct it. The research corrected it in four places, and the corrections are the article. The reader did not become the product when the web arrived; the reader has been the product since the penny press of 1833, and by 2005 advertising was 82% of American newspaper revenue. What the web took was not the business model but the monopoly underneath it, the local toll bridge that let a paper charge what it liked and fund reporting with margins of 20 to 30 per cent; classifieds alone fell from $19.6 billion to about $6 billion in nine years. The platforms then made the reader a measurable product and the publisher a tenant: Google and Meta took over half of American digital advertising by 2017, Facebook referrals fell 58% in six years, false news travelled 70% further than true, and newspaper newsrooms lost 57% of their staff. AI removed the traffic itself, and the industry's answer has been to go back to selling to readers, by subscription, so that circulation revenue now exceeds advertising for the first time in living memory. The road not taken was there from the start, a payment code reserved in the web's own protocol in 1997 and never used, and the evidence that people pay when paying is easy, from a million songs in a week in 2003 to five million paid newsletter subscriptions in 2025, is what the story vault work on this site is built on.
 
-*Source: <https://sgit.ai/articles/how-news-got-here.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-news-got-here.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -137,6 +137,18 @@ We have never needed an accurate, provenance-first press more than now, and we h
 - [On this site: Fractal Semantic Graphs](../articles/introducing-fractal-semantic-graphs.md)
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+News & evidence[This article as a graph →](graphs.md#how-news-got-here)
+
+### Builds on
+
+- [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md) A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
+- [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

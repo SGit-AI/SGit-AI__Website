@@ -2,7 +2,7 @@
 
 > Following up is harder than doing the work, because every person has a different context and the thread you share hides its own structure. This article weaves the site's threads into one argument. Every message has a graph, with altitudes from the block to the contact. Email is a medium, so a message is designed for the recipient's moment, not the sender's thread. A custom interface per message or moment is not an exception; it is how interfaces now get made, each one commoditising the next. Ten agents and one human built more than a dozen of them in eight days. The future of email is sender-served structure, read by the recipient's agent, with the inbox as one view of the graph. And an interface is an agent surface, so it gets a policy.
 
-*Source: <https://sgit.ai/articles/custom-uis-are-not-the-exception.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/custom-uis-are-not-the-exception.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -180,6 +180,27 @@ Most of this exists today, in pieces: the graphs, the lanes, the vault apps, the
 *Drafted from a voice memo by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session. Revised on 2 October 2026 after two reviews by the RiskMandate agent team's CRM agent, the second on the founder's direction, whose timeline, team map, mock-ups and the two figures on what email becomes are the figures with placeholder names; the counts in them come from the vaults' commit history and files.*
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
+
+## Threads
+
+Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#custom-uis-are-not-the-exception)
+
+### Builds on
+
+- [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
+- [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
+- [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md) A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.
+- [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md) An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.
+- [A chat box on a site with no server, the plan, and the trade it makes](chat-on-a-static-site.md) sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.
+- [Seven vaults, one method](seven-vaults-one-method.md) Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
+- [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
+
+### Continued by
+
+- [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

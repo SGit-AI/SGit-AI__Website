@@ -348,6 +348,64 @@ class Content_Loader:
         arts.sort(key=lambda a: a['date'], reverse=True)
         return arts
 
+    # The fixed topic list the article graphs use. Kept here, next to the loader that
+    # enforces it, so the README in articles/graphs/ and the code cannot disagree.
+    TOPICS = [
+        ('agents-and-policy', 'Agents &amp; policy', 'agents, behaviour policies, permissions, insider risk'),
+        ('vaults-and-method', 'Vaults &amp; method', 'sgit, vaults, the publishing method, proofs and audits'),
+        ('news-and-evidence', 'News &amp; evidence', 'newsrooms, evidence, claims, the token bill'),
+        ('startups-and-strategy', 'Startups &amp; strategy', 'business models, pricing, open source, early access'),
+        ('graphs-and-knowledge', 'Graphs &amp; knowledge', 'fractal semantic graphs, altitudes, memory, interfaces'),
+        ('site-and-engineering', 'Site &amp; engineering', 'how this site and its network are built'),
+    ]
+    NODE_KINDS = {'concept', 'claim', 'method', 'artefact', 'example', 'question'}
+    EDGE_RELS = {'extends', 'depends-on', 'compared-with', 'contrasts', 'produces', 'example-of', 'answers', 'leads-to'}
+
+    def load_article_graphs(self):
+        """admin/content/articles/graphs/<slug>.json — the semantic graph of each article:
+        teaser, topics, core idea, nodes, edges, links, quotes. See the README beside them.
+        Returns {slug: graph}. A graph that breaks the schema fails the build, because the
+        cards, the threads and the graphs page are all derived from it."""
+        base = os.path.join(self.root, 'articles', 'graphs')
+        out = {}
+        if not os.path.isdir(base):
+            return out
+        topic_ids = {t[0] for t in self.TOPICS}
+        for fn in sorted(os.listdir(base)):
+            if not fn.endswith('.json'):
+                continue
+            where = f'articles/graphs/{fn}'
+            with open(os.path.join(base, fn)) as f:
+                try:
+                    g = json.load(f)
+                except ValueError as e:
+                    raise Content_Error(f'{where}: not valid JSON ({e})')
+            slug = fn[:-5]
+            if g.get('slug') != slug:
+                raise Content_Error(f'{where}: slug {g.get("slug")!r} does not match the file name')
+            teaser = (g.get('teaser') or '').strip()
+            if not teaser or len(teaser) > 170:
+                raise Content_Error(f'{where}: teaser must be one sentence of at most 160 characters (got {len(teaser)})')
+            topics = g.get('topics') or []
+            if not topics or not set(topics) <= topic_ids:
+                raise Content_Error(f'{where}: topics must be one or two of {sorted(topic_ids)}')
+            ids = set()
+            for n in g.get('nodes', []):
+                if n.get('kind') not in self.NODE_KINDS:
+                    raise Content_Error(f'{where}: node {n.get("id")!r} has unknown kind {n.get("kind")!r}')
+                ids.add(n['id'])
+            for e in g.get('edges', []):
+                if e.get('from') not in ids or e.get('to') not in ids:
+                    raise Content_Error(f'{where}: edge {e} names a node that is not in the file')
+                if e.get('rel') not in self.EDGE_RELS:
+                    raise Content_Error(f'{where}: edge relation {e.get("rel")!r} is not in the list')
+            g.setdefault('links', {}).setdefault('articles', [])
+            g['links'].setdefault('pages', []); g['links'].setdefault('sites', [])
+            g.setdefault('quotes', [])
+            g['where'] = where
+            out[slug] = g
+        return out
+
     def _load_md_dir(self, subdir, required, where_prefix):
         """One file per thing, frontmatter + markdown body — the shape every content
         type here already has. Returns dicts with slug/body/where plus every

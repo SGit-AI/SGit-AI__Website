@@ -2,7 +2,7 @@
 
 > The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.
 
-*Source: <https://sgit.ai/articles/introducing-fractal-semantic-graphs.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/introducing-fractal-semantic-graphs.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -147,6 +147,21 @@ Everything in this article is a live graph you can open. Every read key is publi
 If you build one of your own, the grammar for drawing it is at [graphs.sgit.ai/llms.txt](https://graphs.sgit.ai/llms.txt), and it is written for agents as much as for people. I would like to see what you connect to what.
 
 *This article is released under the Creative Commons Attribution 4.0 International licence (CC BY 4.0). The diagrams are inline SVG on the Fractal Semantic Graphs page and may be reused under the same terms; the screenshots are of published vaults, taken with their published read keys.*
+
+## Threads
+
+Graphs & knowledge[This article as a graph →](graphs.md#introducing-fractal-semantic-graphs)
+
+### Continued by
+
+- [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+- [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
+- [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
+- [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
+- [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](supply-chain-of-vaults.md) The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.
+- [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

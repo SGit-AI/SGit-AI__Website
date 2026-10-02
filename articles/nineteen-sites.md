@@ -2,7 +2,7 @@
 
 > The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
 
-*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -69,6 +69,16 @@ Adding the twentieth site to this index is writing one markdown file with a cate
 If you want the shortest version of what all of this is for, the [introduction](../articles/what-sgit-is.md) is one page. If you want the one site that answers your particular question, [the directory](../network/index.md) is built to send you there.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
+
+## Threads
+
+Site & engineeringVaults & method[This article as a graph →](graphs.md#nineteen-sites)
+
+### Builds on
+
+- [Git for things you cannot put on GitHub](what-sgit-is.md) sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

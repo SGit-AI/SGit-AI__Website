@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.38'
+SITE_VERSION = 'v0.6.39'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,23 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.38', '2026-10-02', 'this release',
+    ('v0.6.39', '2026-10-02', 'this release',
+     "THE ARTICLES, MADE FINDABLE. Twenty-one articles had become a wall of summaries, and the "
+     "founder asked for a layout a reader can actually use. Three things. EVERY ARTICLE NOW HAS A "
+     "SEMANTIC GRAPH beside it (admin/content/articles/graphs/<slug>.json): a one-sentence teaser, "
+     "one or two topics from a fixed list of six, the core idea, the concepts and claims as nodes "
+     "with typed edges, the links the article makes, and a quote or two. THE INDEX is rebuilt from "
+     "them: the newest article featured with its picture and core idea, a filter by topic and a "
+     "search box, a grid of picture cards with one-sentence teasers, and the threads between "
+     "articles read from the links they make. Every article ends with a THREADS block: what it "
+     "builds on, what continues it, its topics, and a link to its graph. A GRAPHS PAGE draws the map "
+     "of the articles and each article's own graph as SVG, deterministic layouts so the same file "
+     "always draws the same picture. The homepage band moves up to second place, directly under "
+     "the four vaults, with picture cards and teasers instead of summaries. Card thumbnails are "
+     "cut from the hero cards by make_og_cards.mjs. The updates page gains a contents list. Still "
+     "to come from the same brief: date-based article folders holding the text, the graph and the "
+     "materials, with the old links kept, and a newsroom-style front page.",),
+    ('v0.6.38', '2026-10-02', 'git d2a2832e',
      "PRICE IT, THEN GIVE IT AWAY. A new article, the follow-up to the question is whether they miss "
      "it, written from a voice memo as a moment-in-time record and as a brief for the agents who will run "
      "it: define the product, price it, deliver it at a cost that grows a step at a time, offer it free to "
@@ -4220,6 +4236,10 @@ def load_pages():
     for a in ARTICLES:
         pages.append((f'articles/{a["slug"]}.html',
                       f'{a["title"]}, sgit.ai', a['summary'], 'articles', article_body(a)))
+    pages.append(('articles/graphs.html', 'The articles as graphs, sgit.ai',
+                  'Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it '
+                  'makes, and how they connect, plus a map of how the articles link to each other.',
+                  'articles', articles_graphs_body()))
     # One page per agentic role, derived, a role is added by writing its file.
     for r in ROLES:
         pages.append((f'team/roles/{r["slug"]}.html',
@@ -4249,6 +4269,299 @@ for _a in ARTICLES:
         ARTICLE_AUTHORS[f"articles/{_a['slug']}.html"] = (_a['author'], _a['author_url'])
     if _a['license']:
         ARTICLE_LICENSES[f"articles/{_a['slug']}.html"] = _a['license']
+
+# ------------------------------------------------------------ article graphs and threads
+# Every article has (or will have) a semantic graph beside it: admin/content/articles/graphs/
+# <slug>.json, with a one-sentence teaser, one or two topics from a fixed list, the core idea,
+# the concepts and how they connect, and the links the article makes. The cards on the index
+# and the homepage, the threads block at the foot of every article, and the graphs page are
+# all derived from these. Before the graph exists, the card falls back to the first sentence
+# of the summary and to a topic guessed from the tags, so an article is never without a card.
+GRAPHS = LOADER.load_article_graphs()
+TOPICS = LOADER.TOPICS
+TOPIC_LABEL = {t[0]: t[1] for t in TOPICS}
+TAG_TOPIC = {
+    'agents': 'agents-and-policy', 'riskmandate': 'agents-and-policy', 'agent-behaviour-policy': 'agents-and-policy',
+    'insider-threat': 'agents-and-policy', 'connectors': 'agents-and-policy', 'security': 'agents-and-policy',
+    'access-policies': 'agents-and-policy', 'non-human-identity': 'agents-and-policy', 'risk': 'agents-and-policy',
+    'risk-management': 'agents-and-policy', 'risk-acceptance': 'agents-and-policy', 'governance': 'agents-and-policy',
+    'news': 'news-and-evidence', 'provenance': 'news-and-evidence', 'micropayments': 'news-and-evidence',
+    'advertising': 'news-and-evidence', 'history': 'news-and-evidence', 'tokens': 'news-and-evidence',
+    'llms-txt': 'news-and-evidence',
+    'startups': 'startups-and-strategy', 'strategy': 'startups-and-strategy', 'open-source': 'startups-and-strategy',
+    'investing': 'startups-and-strategy', 'pricing': 'startups-and-strategy', 'early-access': 'startups-and-strategy',
+    'go-to-market': 'startups-and-strategy', 'saas': 'startups-and-strategy', 'economics': 'startups-and-strategy',
+    'positioning': 'startups-and-strategy',
+    'fractal-semantic-graphs': 'graphs-and-knowledge', 'semantic-graphs': 'graphs-and-knowledge',
+    'graphs': 'graphs-and-knowledge', 'custom-ui': 'graphs-and-knowledge', 'inbox': 'graphs-and-knowledge',
+    'ci': 'site-and-engineering', 'deploy': 'site-and-engineering', 'homepage': 'site-and-engineering',
+    'network': 'site-and-engineering', 'chat': 'site-and-engineering', 'verification': 'site-and-engineering',
+    'vaults': 'vaults-and-method', 'method': 'vaults-and-method', 'publishing': 'vaults-and-method',
+    'intro': 'vaults-and-method', 'zero-knowledge': 'vaults-and-method', 'supply-chain': 'vaults-and-method',
+    'digital-twins': 'vaults-and-method',
+}
+_RE_ART_LINK = re.compile(r'\]\((?:\.\./articles/|/articles/)?([a-z0-9\-]+)\.html')
+_SLUGS = {a['slug'] for a in ARTICLES}
+BY_SLUG = {a['slug']: a for a in ARTICLES}
+# The thread graph between articles, read from the links the markdown actually makes, so a
+# new cross-reference appears on both articles' pages by being written and nowhere else.
+ARTICLE_OUT = {a['slug']: [s for s in dict.fromkeys(_RE_ART_LINK.findall(a['body']))
+                           if s in _SLUGS and s != a['slug']] for a in ARTICLES}
+ARTICLE_IN = {s: [o['slug'] for o in ARTICLES if s in ARTICLE_OUT[o['slug']]] for s in _SLUGS}
+
+
+def _esc(s):
+    return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+
+
+def art_teaser(a):
+    g = GRAPHS.get(a['slug'])
+    if g:
+        return g['teaser']
+    first = re.split(r'(?<=[.!?])\s', a['summary'].strip())[0]
+    return first if len(first) <= 200 else first[:197].rstrip() + '…'
+
+
+def art_topics(a):
+    g = GRAPHS.get(a['slug'])
+    if g:
+        return g['topics']
+    seen = []
+    for t in a['tags']:
+        tp = TAG_TOPIC.get(t)
+        if tp and tp not in seen:
+            seen.append(tp)
+    return seen[:2] or ['vaults-and-method']
+
+
+def art_card_img(a):
+    return a['slug'] + '.webp' if os.path.exists(os.path.join(ROOT, 'articles', 'cards', a['slug'] + '.webp')) else 'default.webp'
+
+
+def _topic_chips(topics):
+    return ''.join(f'<span class="tchip">{TOPIC_LABEL[t]}</span>' for t in topics)
+
+
+def _card_fig(a, pre):
+    return (f'<figure class="shot cardshot" data-shot="{art_card_img(a)}" data-dir="{pre}cards/" '
+            f'data-alt="{_esc(a["title"])}"></figure>')
+
+
+def art_card(a, pre=''):
+    """One card: picture, date and topic, title, one-sentence teaser."""
+    topics = art_topics(a)
+    text = _esc(' '.join([a['title'], art_teaser(a), ' '.join(a['tags'])]).lower())
+    n_out, n_in = len(ARTICLE_OUT[a['slug']]), len(ARTICLE_IN[a['slug']])
+    threads = (f'<span class="acard-threads">{n_out + n_in} thread{"s" if n_out + n_in != 1 else ""}</span>'
+               if n_out + n_in else '')
+    return (f'<a class="acard" href="{pre}{a["slug"]}.html" data-topics="{" ".join(topics)}" data-text="{text}">'
+            f'{_card_fig(a, pre)}'
+            f'<span class="acard-meta"><span class="acard-date">{a["date"]}</span>{_topic_chips(topics[:1])}{threads}</span>'
+            f'<b>{a["title"]}</b>'
+            f'<span class="acard-teaser">{art_teaser(a)}</span>'
+            '</a>')
+
+
+def art_featured(a, pre=''):
+    """The newest article, with room to breathe: picture, teaser, and the core idea."""
+    g = GRAPHS.get(a['slug'], {})
+    topics = art_topics(a)
+    text = _esc(' '.join([a['title'], art_teaser(a), ' '.join(a['tags'])]).lower())
+    idea = g.get('core_idea') or ''
+    more = ''
+    if idea and idea.strip() != art_teaser(a).strip():
+        more = f'<span class="afeat-idea">{idea}</span>'
+    return (f'<a class="afeat acard" href="{pre}{a["slug"]}.html" data-topics="{" ".join(topics)}" data-text="{text}">'
+            f'{_card_fig(a, pre)}'
+            f'<span class="afeat-text">'
+            f'<span class="acard-meta"><span class="acard-kicker">Latest</span><span class="acard-date">{a["date"]}</span>{_topic_chips(topics)}</span>'
+            f'<b>{a["title"]}</b>'
+            f'<span class="afeat-teaser">{art_teaser(a)}</span>{more}'
+            f'<span class="artcard-go">Read it &rarr;</span>'
+            '</span></a>')
+
+
+def articles_filter_bar():
+    counts = Counter(t for a in ARTICLES for t in art_topics(a))
+    chips = [f'<button type="button" class="achip" data-topic="" aria-pressed="true">All <span>{len(ARTICLES)}</span></button>']
+    for tid, label, _ in TOPICS:
+        if counts.get(tid):
+            chips.append(f'<button type="button" class="achip" data-topic="{tid}" aria-pressed="false">{label} <span>{counts[tid]}</span></button>')
+    return (' <div class="afilter" role="toolbar" aria-label="Filter the articles">' + ''.join(chips)
+            + ' <input type="search" class="asearch" placeholder="Search titles, teasers and tags" aria-label="Search the articles"></div>')
+
+
+ARTICLES_FILTER_JS = """<script>
+(function () {
+  var cards = [].slice.call(document.querySelectorAll('.acard'));
+  var chips = [].slice.call(document.querySelectorAll('.achip'));
+  var q = document.querySelector('.asearch');
+  var empty = document.getElementById('aempty');
+  var topic = '';
+  if (!cards.length) return;
+  function apply() {
+    var s = (q && q.value || '').toLowerCase().trim(), n = 0;
+    cards.forEach(function (c) {
+      var ok = (!topic || (' ' + c.getAttribute('data-topics') + ' ').indexOf(' ' + topic + ' ') >= 0)
+            && (!s || (c.getAttribute('data-text') || '').indexOf(s) >= 0);
+      c.hidden = !ok; if (ok) n++;
+    });
+    if (empty) empty.hidden = n > 0;
+  }
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      topic = b.getAttribute('data-topic') || '';
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      apply();
+    });
+  });
+  if (q) q.addEventListener('input', apply);
+}());
+</script>"""
+
+
+def _art_link_li(slug, pre=''):
+    a = BY_SLUG[slug]
+    return f'<li><a href="{pre}{slug}.html">{a["title"]}</a> <span class="dim">{art_teaser(a)}</span></li>'
+
+
+def article_threads_block(a):
+    """The foot of every article: its topics, the articles it builds on, the ones that
+    continue it, and the link to its graph. Derived from the links in the markdown."""
+    out_, in_ = ARTICLE_OUT[a['slug']], ARTICLE_IN[a['slug']]
+    has_graph = a['slug'] in GRAPHS
+    cols = []
+    if out_:
+        cols.append('<div><h3>Builds on</h3><ul>' + ''.join(_art_link_li(s) for s in out_) + '</ul></div>')
+    if in_:
+        cols.append('<div><h3>Continued by</h3><ul>' + ''.join(_art_link_li(s) for s in in_) + '</ul></div>')
+    graph = (f'<a href="graphs.html#{a["slug"]}">This article as a graph &rarr;</a>' if has_graph
+             else '<span class="dim">Graph not written yet.</span>')
+    return ('\n<section class="athreads" id="threads">\n'
+            f' <h2>Threads</h2>\n'
+            f' <p class="athreads-meta">{_topic_chips(art_topics(a))} {graph}</p>\n'
+            + (f' <div class="athreads-cols">{"".join(cols)}</div>\n' if cols else
+               ' <p class="small dim">No other article links here yet.</p>\n')
+            + ' <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>\n'
+            '</section>')
+
+
+# ---- SVG renderings of the graphs. Deterministic layouts (an ellipse for a single article,
+# a circle in date order for the map) rather than a force simulation: the same file always
+# draws the same picture, which is what a reader comparing two versions needs.
+KIND_COLOUR = {'concept': '#0f766e', 'claim': '#b45309', 'method': '#2b5fa8', 'artefact': '#1f7a4d',
+               'example': '#a16207', 'question': '#8a8d94'}
+
+
+def graph_svg(g, w=760, h=440):
+    import math
+    nodes = g.get('nodes', [])
+    if not nodes:
+        return ''
+    cx, cy, rx, ry = w / 2, h / 2, w / 2 - 215, h / 2 - 44
+    pos = {}
+    for i, n in enumerate(nodes):
+        ang = -math.pi / 2 + 2 * math.pi * i / len(nodes)
+        pos[n['id']] = (cx + rx * math.cos(ang), cy + ry * math.sin(ang), ang)
+    out = [f'<svg class="agraph-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" '
+           f'aria-label="{_esc(g.get("core_idea", ""))}">']
+    for e in g.get('edges', []):
+        x1, y1, _ = pos[e['from']]; x2, y2, _ = pos[e['to']]
+        out.append(f'<line x1="{x1:.0f}" y1="{y1:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" stroke="#c9c4b6" stroke-width="1.2">'
+                   f'<title>{_esc(e["from"])} {_esc(e["rel"])} {_esc(e["to"])}</title></line>')
+    for n in nodes:
+        x, y, ang = pos[n['id']]
+        right = math.cos(ang) >= 0
+        tx = x + (12 if right else -12)
+        out.append(f'<g><circle cx="{x:.0f}" cy="{y:.0f}" r="6.5" fill="{KIND_COLOUR.get(n["kind"], "#666")}">'
+                   f'<title>{_esc(n.get("summary", ""))}</title></circle>'
+                   f'<text x="{tx:.0f}" y="{y + 4:.0f}" font-size="12" text-anchor="{"start" if right else "end"}" '
+                   f'fill="#1c1d21">{_esc(n["label"] if len(n["label"]) <= 32 else n["label"][:31].rstrip() + "…")}</text></g>')
+    out.append('</svg>')
+    return ''.join(out)
+
+
+def articles_map_svg(w=760, h=600):
+    import math
+    arts = list(reversed(ARTICLES)) # oldest first round the circle
+    cx, cy, r = w / 2, h / 2, min(w, h) / 2 - 110
+    pos = {}
+    for i, a in enumerate(arts):
+        ang = -math.pi / 2 + 2 * math.pi * i / len(arts)
+        pos[a['slug']] = (cx + r * math.cos(ang), cy + r * math.sin(ang), ang)
+    out = [f'<svg class="amap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" '
+           'aria-label="The articles, in date order round a circle, joined by the links they make to each other">']
+    for s, outs in ARTICLE_OUT.items():
+        for t in outs:
+            x1, y1, _ = pos[s]; x2, y2, _ = pos[t]
+            out.append(f'<path d="M {x1:.0f} {y1:.0f} Q {cx:.0f} {cy:.0f} {x2:.0f} {y2:.0f}" fill="none" '
+                       f'stroke="#0f766e" stroke-opacity=".28" stroke-width="1.3"><title>{_esc(BY_SLUG[s]["title"])} links to {_esc(BY_SLUG[t]["title"])}</title></path>')
+    for a in arts:
+        x, y, ang = pos[a['slug']]
+        n_in = len(ARTICLE_IN[a['slug']])
+        label = _short(a['title'], 36)
+        rad = 5 + 2 * n_in
+        # labels sit outside the circle, on the side the node is on; near the top and the
+        # bottom they go above or below instead, so neighbours do not overprint each other
+        c, s = math.cos(ang), math.sin(ang)
+        if abs(c) < 0.3:
+            tx, ty, anchor = x, y + (-(rad + 14) if s < 0 else rad + 20), 'middle'
+        else:
+            # the two neighbours of a top or bottom node sit at almost its height: nudge their
+            # labels outward vertically so they clear the label above or below
+            nudge = (10 if s > 0 else -10) if abs(c) < 0.6 else 0
+            tx, ty, anchor = x + (rad + 8) * (1 if c > 0 else -1), y + 4 + nudge, ('start' if c > 0 else 'end')
+        out.append(f'<a href="{a["slug"]}.html"><circle cx="{x:.0f}" cy="{y:.0f}" r="{rad}" fill="#0f766e">'
+                   f'<title>{_esc(a["title"])} ({a["date"]}): links to {len(ARTICLE_OUT[a["slug"]])}, linked by {n_in}</title></circle>'
+                   f'<text x="{tx:.0f}" y="{ty:.0f}" font-size="11.5" text-anchor="{anchor}" fill="#1c1d21">{_esc(label)}</text></a>')
+    out.append('</svg>')
+    return ''.join(out)
+
+
+def articles_graphs_body():
+    out = ['<main class="doc">',
+           ' <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Graphs</p>',
+           ' <h1>The articles as graphs</h1>',
+           ' <p class="lead">Every article here has a semantic graph beside it: the ideas it rests on, the claims it makes, '
+           'the methods and the examples, and how they connect. The map first, then one graph per article. '
+           'Hover a node for its summary and an edge for its relation; the files themselves are in '
+           '<code>admin/content/articles/graphs/</code>.</p>',
+           f' <p class="small dim">{len(GRAPHS)} of {len(ARTICLES)} articles have a graph. The map draws every article in '
+           'date order round the circle, sized by how many other articles link to it.</p>',
+           ' <h2 id="map">How the articles connect</h2>',
+           ' <div class="amap">' + articles_map_svg() + '</div>']
+    for a in ARTICLES:
+        g = GRAPHS.get(a['slug'])
+        out.append(f' <section class="agraph" id="{a["slug"]}">')
+        out.append(f' <h2><a href="{a["slug"]}.html">{a["title"]}</a></h2>')
+        out.append(f' <p class="small dim">{a["date"]} &middot; {_topic_chips(art_topics(a))}</p>')
+        if not g:
+            out.append(' <p class="dim">Graph not written yet.</p></section>')
+            continue
+        out.append(f' <p class="agraph-idea">{g.get("core_idea", "")}</p>')
+        out.append(' ' + graph_svg(g))
+        legend = ''.join(f'<span class="klegend"><i style="background:{KIND_COLOUR[k]}"></i>{k}</span>'
+                         for k in ('concept', 'claim', 'method', 'artefact', 'example', 'question')
+                         if any(n['kind'] == k for n in g['nodes']))
+        out.append(f' <p class="small dim agraph-legend">{legend}</p>')
+        out.append(f' <details class="agraph-nodes"><summary>{len(g["nodes"])} nodes, {len(g["edges"])} edges</summary><ul>')
+        for n in g['nodes']:
+            out.append(f'<li><b>{n["label"]}</b> <span class="dim">({n["kind"]})</span> {n.get("summary", "")}</li>')
+        out.append(' </ul></details>')
+        for qt in g.get('quotes', [])[:2]:
+            out.append(f' <blockquote class="agraph-quote">{qt["text"]}<span class="dim"> {qt.get("why", "")}</span></blockquote>')
+        rel = []
+        if ARTICLE_OUT[a['slug']]:
+            rel.append('builds on ' + ', '.join(f'<a href="#{s}">{BY_SLUG[s]["title"]}</a>' for s in ARTICLE_OUT[a['slug']]))
+        if ARTICLE_IN[a['slug']]:
+            rel.append('continued by ' + ', '.join(f'<a href="#{s}">{BY_SLUG[s]["title"]}</a>' for s in ARTICLE_IN[a['slug']]))
+        if rel:
+            out.append(f' <p class="small dim">{"; ".join(rel)}.</p>')
+        out.append(' </section>')
+    out.append(' <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>')
+    out.append('</main>')
+    return '\n'.join(out)
+
 
 # An article with a hero figure must also have its link-preview card, or og_card() below
 # quietly falls back to og/default.jpg and the article ships with the generic card. That
@@ -4290,6 +4603,12 @@ def updates_body():
            'the complete technical record; this is the readable one.</p>',
            ' <p class="small dim">Follow along: <a href="feed.xml">RSS</a> &middot; '
            '<a href="updates.json">JSON</a>. Every entry links to the release that carries it.</p>']
+    # A contents list first. Sixty-odd entries on one page is a long scroll, and a reader
+    # looking for one of them should not have to make it.
+    out.append(f' <details class="updtoc" open><summary>{len(UPDATES)} entries, newest first</summary><ul>')
+    for u in UPDATES:
+        out.append(f'<li><span class="dim">{u["date"]}</span> <a href="#{u["slug"]}">{u["title"]}</a></li>')
+    out.append(' </ul></details>')
     last_date = None
     for u in UPDATES:
         if u['date'] != last_date:
@@ -4566,21 +4885,18 @@ def home_articles_band():
     not work through a docs tree will read one argued page. So they get a place on the
     homepage, and it is generated rather than hand-listed so a new article appears there
     by being written, which is the same rule as everywhere else here."""
-    cards = []
-    for a in ARTICLES[:3]:
-        cards.append(f' <a class="artcard" href="articles/{a["slug"]}.html">\n'
-            f' <span class="artcard-date">{a["date"]}</span>\n'
-            f' <b>{a["title"]}</b>\n'
-            f' <span class="artcard-sum">{a["summary"]}</span>\n'
-            f' <span class="artcard-go">Read it &rarr;</span>\n'
-            f' </a>')
+    cards = [' ' + art_card(a, pre='articles/') for a in ARTICLES[:3]]
+    also = ''.join(f'<li><a href="articles/{a["slug"]}.html">{_short(a["title"], 64)}</a>'
+                   f'<span class="dim"> &middot; {a["date"]}</span></li>' for a in ARTICLES[3:8])
     return ('<section class="band alt" id="articles">\n'
             ' <h2>Start with an argument, not a menu</h2>\n'
             ' <p class="bandlede">The articles are the readable way in: one page, one argument, '
-            'with the screenshots and the links to check it. If you only read one thing here, '
-            'read one of these.</p>\n'
-            ' <div class="artcards">\n' + '\n'.join(cards) + '\n </div>\n'
-            ' <p class="bandcta"><a class="cta2" href="articles/index.html">All articles &rarr;</a></p>\n'
+            'with the figures and the links to check it. They carry most of what this site believes, '
+            f'so they come before the menu. {len(ARTICLES)} so far, three newest here.</p>\n'
+            ' <div class="agrid home">\n' + '\n'.join(cards) + '\n </div>\n'
+            f' <ul class="aalso">{also}</ul>\n'
+            ' <p class="bandcta"><a class="cta2" href="articles/index.html">All articles, by topic &rarr;</a>'
+            ' &nbsp;&middot;&nbsp; <a class="cta2" href="articles/graphs.html">The articles as graphs &rarr;</a></p>\n'
             '</section>')
 
 
@@ -4801,27 +5117,56 @@ def site_body(x):
 
 
 def articles_index_body():
+    """The articles index: the newest piece with room to breathe, a filter by topic and a
+    search box, then one card per article with its picture and a one-sentence teaser, and
+    the threads between them. The wall of summaries it replaces (v0.6.38 and before) made
+    twenty-one good articles impossible to scan; the summaries are still on each article."""
+    newest, rest = ARTICLES[0], ARTICLES[1:]
     out = ['<main class="doc">',
            ' <h1>Articles</h1>',
-           ' <p class="lead">Longer pieces that make an argument across several pages, what a '
-           'thing means, why it is shaped that way, and what it cost to find out. Shorter, dated '
-           'notes on individual changes are in <a href="../updates/index.html">updates</a>.</p>',
-           ' <div class="note"><b>Two rules keep these from going stale.</b> An article never '
-           'restates a fact it does not own, it links to the page that does, so when the fact '
-           'changes the article does not start lying. And an article that makes a testable claim '
-           'links to the test, the same way <a href="../compare/index.html">the comparison '
-           'pages</a> do.</div>',
-           ' <div class="artlist">']
-    for a in ARTICLES:
-        out.append(f' <a class="art" href="{a["slug"]}.html">'
-                   f'<b>{a["title"]}</b>'
-                   f'<span class="art-date">{a["date"]}</span>'
-                   f'<span class="art-sum">{a["summary"]}</span>'
-                   + (f'<span class="chips">{_chips(a["tags"])}</span>' if a['tags'] else '')
-                   + '</a>')
+           ' <p class="lead">One page, one argument, with the figures and the links to check it. '
+           f'{len(ARTICLES)} so far. Filter by what you came for, or read them '
+           '<a href="graphs.html">as graphs</a>. Shorter, dated notes on individual changes are in '
+           '<a href="../updates/index.html">updates</a>.</p>',
+           ' ' + art_featured(newest),
+           articles_filter_bar(),
+           ' <div class="agrid" id="agrid">']
+    for a in rest:
+        out.append(' ' + art_card(a))
     out.append(' </div>')
+    out.append(' <p class="dim" id="aempty" hidden>Nothing matches. Clear the search or pick another topic.</p>')
+    # the threads: which article builds on which, from the links the articles make
+    threaded = [a for a in ARTICLES if ARTICLE_OUT[a['slug']] or ARTICLE_IN[a['slug']]]
+    out.append(' <h2 id="threads">How they connect</h2>')
+    out.append(' <p class="small dim">Read from the links the articles make to each other. '
+               '<a href="graphs.html#map">The same thing drawn as a map</a>, and every article as its own graph.</p>')
+    out.append(' <ul class="athreadlist">')
+    for a in threaded:
+        bits = []
+        if ARTICLE_OUT[a['slug']]:
+            bits.append('builds on ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_OUT[a['slug']]))
+        if ARTICLE_IN[a['slug']]:
+            bits.append('continued by ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_IN[a['slug']]))
+        out.append(f' <li><a href="{a["slug"]}.html"><b>{_short(a["title"])}</b></a> <span class="dim">{"; ".join(bits)}.</span></li>')
+    out.append(' </ul>')
+    out.append(' <div class="note"><b>Two rules keep these from going stale.</b> An article never '
+               'restates a fact it does not own, it links to the page that does, so when the fact '
+               'changes the article does not start lying. And an article that makes a testable claim '
+               'links to the test, the same way <a href="../compare/index.html">the comparison '
+               'pages</a> do.</div>')
     out.append('</main>')
+    out.append(ARTICLES_FILTER_JS)
     return '\n'.join(out)
+
+
+def _short(title, n=52):
+    """A title cut at the colon or the first full stop, or at a word boundary before n
+    characters, for the dense lists where the full title would be a paragraph."""
+    t = re.split(r':|\.\s', title)[0].strip()
+    if len(t) <= n:
+        return t
+    cut = t[:n].rsplit(' ', 1)[0].rstrip(',;')
+    return cut + '…'
 
 
 def article_body(a):
@@ -4845,6 +5190,7 @@ def article_body(a):
             + (f' &middot; {_chips(a["tags"])}' if a['tags'] else '') + '</p>\n'
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
+            + article_threads_block(a)
             + '\n <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All articles</a></p>\n'
             '</main>')

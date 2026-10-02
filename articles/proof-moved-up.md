@@ -2,7 +2,7 @@
 
 > The previous article diagnosed a homepage that led with encryption and buried twenty-five real vaults under a table. This is the rebuild, put beside those screenshots, what moved, what was cut, what it is generated from, and the one thing it still cannot show.
 
-*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-moved-up.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -69,6 +69,16 @@ The previous article named a gap, and the rebuild did not close it: **no publish
 One file, `admin/content/vaults.json`, now drives the hero cards, the six jobs, the sortable table and the vault count on the team band. Adding a vault is adding a row; promoting one to the front door is setting a field. The homepage stopped being a page somebody edits and became a view over the site's own data, which is the same rule the articles band, the network directory and the update feed already followed. It just took the homepage longest to get there.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0.*
+
+## Threads
+
+Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-moved-up)
+
+### Builds on
+
+- [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](proof-behind-the-claim.md) The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

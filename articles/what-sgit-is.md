@@ -2,7 +2,7 @@
 
 > An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.
 
-*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -107,6 +107,16 @@ If you would rather not install anything, [every vault opens in the browser](../
 This article is also published as a [LinkedIn newsletter post](https://www.linkedin.com/pulse/git-things-you-cannot-put-github-dinis-cruz-qwrte/), same argument, same screenshots, for readers who live there.
 
 *Written by Dinis Cruz and the agentic team working with him. Licensed CC BY 4.0, reuse it, quote it, argue with it.*
+
+## Threads
+
+Vaults & method[This article as a graph →](graphs.md#what-sgit-is)
+
+### Continued by
+
+- [Twenty sites in fifteen days, and what that did to the writing](nineteen-sites.md) One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 

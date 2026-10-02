@@ -2,7 +2,7 @@
 
 > A media analyst posted a week of Cloudflare logs this weekend, showing AI answer engines fetching a small publisher's pages 16,000 times and sending 10 readers back, and called it predatory. The numbers are consistent with everything Cloudflare, TollBit and Wikimedia have published, and the usual reading is a tragedy of the commons, to be fixed by pricing the withdrawal. This article makes a second reading that the debate has missed: those 16,000 fetches are also a cost to the fetcher. Every one is a page of HTML parsed, extracted and turned into tokens, more than half of them re-fetches of pages that have not changed, on a web where ninety per cent of what crawlers process is unique and so defeats every cache. Measured on this site's own 183 pages, the markdown twin of a page is 62% fewer tokens than the HTML; Cloudflare's own example is 81%. Dates, hashes and change signals remove whole fetches; frozen, hashed sources remove the verification round trips; a typed graph lets an agent load the altitude a question needs rather than the page. Every payment rail built so far, pay per crawl, RSL, Microsoft's marketplace, Perplexity's pool, Cloudflare's pay per use, prices the content. None prices the format. The hypothesis is that a publisher who serves structure is saving the provider money the provider is already spending, and that a share of the saving, paid in money or in the provider's own tokens, is a monetisation angle that needs no licensing deal and works for a site with ten clicks a week. The arithmetic for a single site is small and the article says so. It also says what data would settle the question, and notes that this site has already been running the publisher's half of the experiment.
 
-*Source: <https://sgit.ai/articles/token-bill-nobody-is-sending.html> · site v0.6.38 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/token-bill-nobody-is-sending.html> · site v0.6.39 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -163,6 +163,22 @@ The commons reading says the answer engines are taking without paying, and it is
 - [On this site: The Evidence Dispatch](../demos/vaults/evidence-dispatch/index.md), [the version log](../admin/versions.md) and [llms.txt](../llms.txt)
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences. The token measurements were made on 28 September 2026 with the cl100k_base tokenizer over the 183 pages of this site that have markdown twins.*
+
+## Threads
+
+News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#token-bill-nobody-is-sending)
+
+### Builds on
+
+- [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md) A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.
+- [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
+
+### Continued by
+
+- [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+- [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
+
+[All articles](index.md) · [All graphs](graphs.md)
 
 [← All articles](index.md)
 
