@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.53'
+SITE_VERSION = 'v0.6.54'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.53', '2026-10-03', 'this release',
+    ('v0.6.54', '2026-10-03', 'this release',
+     "MEMORY IS NOT A SPECTATOR SPORT. A new article on agentic memory as context management: many "
+     "context-specific memories rather than one store, fractal so an agent loads only the altitude its "
+     "question needs, published and open so they can be fetched and cited, shared through vaults, with "
+     "provenance on every item. It reads the industry fairly (vendor memory features, MemGPT to Mem0 and "
+     "Zep, Letta's filesystem benchmark, Manus, Anthropic's context engineering guidance and memory tool) "
+     "and uses the session that wrote it as the evidence. Four figures. Two stale facts the site's own "
+     "memory carried are now measured at build time instead of remembered: llms.txt said the full-text "
+     "file was about 155 KB when it was 2.5 MB, and graphs.json and updates.json said they were "
+     "generated on 15 August. Two more are named in the article and left standing: the 617-node figure "
+     "on the fractal graphs index, and the updates feed that stops on 21 September.",),
+    ('v0.6.53', '2026-10-03', 'git 77644f73',
      "ARTICLE AND VAULT POINT AT EACH OTHER. The code review article gains a nine-view contact sheet of the "
      "vault app and an 'open the vault' box in its worked-example section, and every screenshot it draws from "
      "a vault page's own image folder now links to that vault page: a build rule for articles, in the same "
@@ -3770,7 +3781,7 @@ Notes for agents:
   vault moved to /docs/guidance/ and the build briefs to /docs/briefs/.
 
 If your tooling cannot follow links out of this file, fetch /llms-full.txt, every page of
-this site concatenated into one document (~155 KB). One request gets the complete set.
+this site concatenated into one document ({LLMS_FULL_SIZE}). One request gets the complete set.
 
 Quick answers (so you do not need a second request for the common questions):
 - Does sgit do the git operations you know? Yes for: init, create, clone, status, commit,
@@ -3983,6 +3994,11 @@ def write_llms(pages):
     if optional:
         out.append('## Optional\n' + '\n'.join(optional) + '\n')
     text = '\n'.join(out)
+    # The size of llms-full.txt is measured, not remembered: a stale figure here was a
+    # false memory for every agent that read it (it said ~155 KB while the file was 2.5 MB).
+    full = os.path.join(ROOT, 'llms-full.txt')
+    size = os.path.getsize(full) if os.path.exists(full) else 0
+    text = text.replace('{LLMS_FULL_SIZE}', f'about {size / 1048576:.1f} MB' if size >= 1048576 else f'about {size // 1024} KB')
     with open(os.path.join(ROOT, 'llms.txt'), 'w') as f:
         f.write(text)
     return text
@@ -5323,10 +5339,10 @@ for path, title, desc, here, body in PAGES:
     page(path, title, desc, here, body)
     md_total += write_md(path, title, desc, body)
 print(f'wrote {len(PAGES)} markdown mirrors ({md_total} bytes)')
-print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 write_site_index(PAGES)
 write_scoped_llms(PAGES)
 print('wrote llms-full.txt (%d bytes)' % len(write_llms_full(PAGES)))
+print('wrote llms.txt (%d bytes)' % len(write_llms(PAGES)))
 print('wrote robots.txt (%d bytes)' % len(write_robots()))
 print('wrote sitemap.xml (%d bytes)' % len(write_sitemap(PAGES, BUILD_DATE)))
 
@@ -5336,7 +5352,7 @@ with open(os.path.join(ROOT, 'updates', 'feed.xml'), 'w') as f:
     feed = LOADER.render_feed(UPDATES); f.write(feed)
 print(f'wrote updates/feed.xml ({len(feed)} bytes, {min(len(UPDATES), 20)} items)')
 manifest = json.dumps({
-    'site': 'https://sgit.ai', 'generated': BUILD_DATE, 'site_version': SITE_VERSION,
+    'site': 'https://sgit.ai', 'generated': __import__('datetime').date.today().isoformat(), 'site_version': SITE_VERSION,
     'updates': [{k: u[k] for k in ('slug', 'title', 'date', 'version', 'tags', 'summary')}
                  for u in UPDATES],
     'articles': [{k: a[k] for k in ('slug', 'title', 'date', 'version', 'tags', 'summary')}
@@ -5369,7 +5385,7 @@ for _a in ARTICLES:
         with open(os.path.join(ROOT, 'articles', 'graphs', _a['slug'] + '.json'), 'w') as f:
             f.write(json.dumps({k: v for k, v in _g.items() if k != 'where'}, indent=2, ensure_ascii=False) + '\n')
 _combined = json.dumps({
-    'site': 'https://sgit.ai', 'generated': BUILD_DATE, 'site_version': SITE_VERSION,
+    'site': 'https://sgit.ai', 'generated': __import__('datetime').date.today().isoformat(), 'site_version': SITE_VERSION,
     'schema': 'https://sgit.ai/articles/graphs.html',
     'topics': [{'id': t[0], 'label': t[1].replace('&amp;', '&'), 'means': t[2]} for t in TOPICS],
     'node_kinds': sorted(LOADER.NODE_KINDS), 'edge_relations': sorted(LOADER.EDGE_RELS),
