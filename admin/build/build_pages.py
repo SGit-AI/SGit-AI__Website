@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.50'
+SITE_VERSION = 'v0.6.51'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.50', '2026-10-03', 'this release',
+    ('v0.6.51', '2026-10-03', 'this release',
+     "THE ROSTER, REDRAWN WIDE. The briefs role's team card was a tall phone-sized image and sat badly in "
+     "the inbox article. It is redrawn at the width and in the type of the other eight figures, with every "
+     "role, the email path, the two rules and the run order kept.",),
+    ('v0.6.50', '2026-10-03', 'git 1576cdd8',
      "THE TEAM, AS THE BRIEFS ROLE DREW IT. A second contribution from the agents joins the inbox article: "
      "an infographic of the twelve-agent roster, grouped by what each touches, with the path an email takes "
      "to leave and the order of a run. The article now names the four roles the walkthrough leaves out "

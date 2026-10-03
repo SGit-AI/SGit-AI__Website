@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.50**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.51**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.50 | 2026-10-03 | this release | THE TEAM, AS THE BRIEFS ROLE DREW IT. A second contribution from the agents joins the inbox article: an infographic of the twelve-agent roster, grouped by what each touches, with the path an email takes to leave and the order of a run. The article now names the four roles the walkthrough leaves out (@linkedin, @zapier, @newsroom, @abp) and corrects the schedule to four runs on weekdays and two at weekends. |
+| v0.6.51 | 2026-10-03 | this release | THE ROSTER, REDRAWN WIDE. The briefs role's team card was a tall phone-sized image and sat badly in the inbox article. It is redrawn at the width and in the type of the other eight figures, with every role, the email path, the two rules and the run order kept. |
+| v0.6.50 | 2026-10-03 | git 1576cdd8 | THE TEAM, AS THE BRIEFS ROLE DREW IT. A second contribution from the agents joins the inbox article: an infographic of the twelve-agent roster, grouped by what each touches, with the path an email takes to leave and the order of a run. The article now names the four roles the walkthrough leaves out (@linkedin, @zapier, @newsroom, @abp) and corrects the schedule to four runs on weekdays and two at weekends. |
 | v0.6.49 | 2026-10-03 | git a9362127 | THE AGENTIC INBOX, REVISED BY THE AGENTS. The dev agent of the team the article describes sent a review pack a day after publication: eight figures (mock-ups and infographics, fictional data, leak-checked), the roles as they are now named (@inbox, @drafts, @crm, @briefs, @dev, then @conductor, @security, @webSummit, @gdrive), the schedule that now exists, the security hold behind the one exception, the clone cost of a busy vault, the key-rotation lesson, three amended checklist lines and its own role paragraph. All of it is in the article now, with the pack credited in the byline. The figures were re-rendered without their burned-in caption bars so the page's own captions carry them, and four of them taller, because the fixed canvases had clipped the last rows of the two tables, the message and the hold. The article graph grew to sixteen nodes. |
 | v0.6.48 | 2026-10-02 | git 36a4d1b7 | £3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with the two £1,500 halves shown wherever there is room so anyone can check it against the two price lists. The decision about which line to use is closed. |
 | v0.6.47 | 2026-10-02 | git 0a01c548 | THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at £1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, and proposes one room-wide incident on the shared display rather than six platform runs, with the tables differing in the policies they write. |
