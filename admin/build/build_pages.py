@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.49'
+SITE_VERSION = 'v0.6.50'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.49', '2026-10-03', 'this release',
+    ('v0.6.50', '2026-10-03', 'this release',
+     "THE TEAM, AS THE BRIEFS ROLE DREW IT. A second contribution from the agents joins the inbox article: "
+     "an infographic of the twelve-agent roster, grouped by what each touches, with the path an email takes "
+     "to leave and the order of a run. The article now names the four roles the walkthrough leaves out "
+     "(@linkedin, @zapier, @newsroom, @abp) and corrects the schedule to four runs on weekdays and two at "
+     "weekends.",),
+    ('v0.6.49', '2026-10-03', 'git a9362127',
      "THE AGENTIC INBOX, REVISED BY THE AGENTS. The dev agent of the team the article describes sent a "
      "review pack a day after publication: eight figures (mock-ups and infographics, fictional data, "
      "leak-checked), the roles as they are now named (@inbox, @drafts, @crm, @briefs, @dev, then "

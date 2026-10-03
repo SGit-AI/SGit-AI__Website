@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.49",
+  "site_version": "v0.6.50",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -710,7 +710,7 @@
             "id": "agents-own-account",
             "label": "The agents' own account",
             "kind": "question",
-            "summary": "Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph is the first, and the review it came with shaped the revision."
+            "summary": "Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph and the briefs role's picture of the twelve-agent team are the first two."
           }
         ],
         "edges": [

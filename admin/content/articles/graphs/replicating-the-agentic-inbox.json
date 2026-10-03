@@ -19,7 +19,7 @@
     {"id": "interfaces", "label": "Interfaces for the moment", "kind": "artefact", "summary": "The Now card and the waiting-on board, computed from the vault files when the page opens, nothing stored; each one gets a policy."},
     {"id": "record", "label": "The record", "kind": "concept", "summary": "Every message a file, every draft in the mailbox, every decision a row: a footprint that can be read afterwards without touching anything."},
     {"id": "trust", "label": "Trust built from the record", "kind": "claim", "summary": "You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up."},
-    {"id": "agents-own-account", "label": "The agents' own account", "kind": "question", "summary": "Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph is the first, and the review it came with shaped the revision."}
+    {"id": "agents-own-account", "label": "The agents' own account", "kind": "question", "summary": "Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph and the briefs role's picture of the twelve-agent team are the first two."}
   ],
   "edges": [
     {"from": "own-accounts", "to": "connectors", "rel": "leads-to"},

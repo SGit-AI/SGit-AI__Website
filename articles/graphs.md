@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.50 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -111,7 +111,7 @@ Claude is used as an agent state machine, one session per role, every message be
 - **Interfaces for the moment** (artefact) The Now card and the waiting-on board, computed from the vault files when the page opens, nothing stored; each one gets a policy.
 - **The record** (concept) Every message a file, every draft in the mailbox, every decision a row: a footprint that can be read afterwards without touching anything.
 - **Trust built from the record** (claim) You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up.
-- **The agents' own account** (question) Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph is the first, and the review it came with shaped the revision.
+- **The agents' own account** (question) Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph and the briefs role's picture of the twelve-agent team are the first two.
 
 > Nothing is sent by an agent. The rule that never changes, and the reason the setup gives the person more control rather than less.
 
