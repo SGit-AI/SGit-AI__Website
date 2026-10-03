@@ -89,6 +89,10 @@ The air gaps I complained about in 2012 are still there, and they are the place 
 
 I wanted the example to be real code, and I wanted every number in it to be checkable, so it uses the sgit command-line tool, which is Apache-2.0 and whose conventions I know, and it uses Python's own parser rather than a model. The vault is at [Code Review Graphs](/demos/vaults/code-review-graphs/index.html), the read key is on that page, and the three scripts that made it are inside.
 
+!shot collage.webp | ../demos/vaults/code-review-graphs/images/ | The nine views of the vault app: the ladder, the stories, the package graph, the classes, the methods, the two method streams, one commit read upwards, the pattern checks and the test map. Every screenshot in this section is a picture of the real vault, and clicking one opens its page, where the vault runs live with its read key.
+
+> **Open the vault.** [Code Review Graphs](/demos/vaults/code-review-graphs/index.html) has the read key on the page, the app running live, a walkthrough of each view, and the three scripts that made it. A read key is the whole credential: clone it, read everything, change nothing.
+
 !shot overview.webp | ../demos/vaults/code-review-graphs/images/ | The vault as it opens: the ladder of seven altitudes, with how many nodes at each one commit touched. Click a rung to open its layer.
 
 At commit `397be83` the tool is 427 Python files and 30,606 lines. Read from the syntax tree, that is 13 packages with 45 import relations between them, 377 classes of which 361 are Type_Safe, 1,111 methods, 2,592 calls that resolve inside the repository, and 177,313 syntax-tree nodes. Seventy-two commands were parsed out of the argument-parser wiring, each with the method that handles it. Eleven user stories were written by hand from the command help, in Given, When, Then, each naming the commands it uses; that is the one layer a person wrote, and the app says so. Three hundred and forty-two test modules were mapped to the classes they import, which gave 47 classes that no test imports, without running a test.

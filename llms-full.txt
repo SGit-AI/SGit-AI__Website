@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.52). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.53). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-210site releases, each verified live before it was called done
+211site releases, each verified live before it was called done
 
 40vaults published with a deliberately public read key
 
@@ -5623,7 +5623,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.52, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.53, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5986,7 +5986,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-210**site releases since 14 August**
+211**site releases since 14 August**
 each verified live before it was called done
 
 40**vaults published with a public read key**
@@ -9976,11 +9976,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.52**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.53**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.52 | 2026-10-03 | this release | CODE REVIEW AS A FRACTAL SEMANTIC GRAPH. A new article argues that source code is already layers within layers, each a graph with its own vocabulary, and that a code review should diff every layer: a refactor moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the climb from changed methods to the stories that can reach them. It revisits method streams from the O2 Platform, cites C4, Gherkin, code property graphs and the 2024-2025 evidence on generated code, and ends with a company for somebody to build. With it, a new vault, Code Review Graphs: the sgit CLI at two commits read from its syntax tree with nothing run, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two method streams, ten house-rule checks and one commit read upwards, with a browsing app and the scripts that made it. Read key published; the vault page proves the key clones and cannot push. Five new figures in the shared style; the article graph has fifteen nodes. |
+| v0.6.53 | 2026-10-03 | this release | ARTICLE AND VAULT POINT AT EACH OTHER. The code review article gains a nine-view contact sheet of the vault app and an 'open the vault' box in its worked-example section, and every screenshot it draws from a vault page's own image folder now links to that vault page: a build rule for articles, in the same tab, with the caption saying so. The vault page gains a box under its lead naming the article as the argument and a closing 'Read the article' section. shots.js learned a per-figure link target. |
+| v0.6.52 | 2026-10-03 | git e9d1e85f | CODE REVIEW AS A FRACTAL SEMANTIC GRAPH. A new article argues that source code is already layers within layers, each a graph with its own vocabulary, and that a code review should diff every layer: a refactor moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the climb from changed methods to the stories that can reach them. It revisits method streams from the O2 Platform, cites C4, Gherkin, code property graphs and the 2024-2025 evidence on generated code, and ends with a company for somebody to build. With it, a new vault, Code Review Graphs: the sgit CLI at two commits read from its syntax tree with nothing run, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two method streams, ten house-rule checks and one commit read upwards, with a browsing app and the scripts that made it. Read key published; the vault page proves the key clones and cannot push. Five new figures in the shared style; the article graph has fifteen nodes. |
 | v0.6.51 | 2026-10-03 | git ca720692 | THE ROSTER, REDRAWN WIDE. The briefs role's team card was a tall phone-sized image and sat badly in the inbox article. It is redrawn at the width and in the type of the other eight figures, with every role, the email path, the two rules and the run order kept. |
 | v0.6.50 | 2026-10-03 | git 1576cdd8 | THE TEAM, AS THE BRIEFS ROLE DREW IT. A second contribution from the agents joins the inbox article: an infographic of the twelve-agent roster, grouped by what each touches, with the path an email takes to leave and the order of a run. The article now names the four roles the walkthrough leaves out (@linkedin, @zapier, @newsroom, @abp) and corrects the schedule to four runs on weekdays and two at weekends. |
 | v0.6.49 | 2026-10-03 | git a9362127 | THE AGENTIC INBOX, REVISED BY THE AGENTS. The dev agent of the team the article describes sent a review pack a day after publication: eight figures (mock-ups and infographics, fictional data, leak-checked), the roles as they are now named (@inbox, @drafts, @crm, @briefs, @dev, then @conductor, @security, @webSummit, @gdrive), the schedule that now exists, the security hold behind the one exception, the clone cost of a busy vault, the key-rotation lesson, three amended checklist lines and its own role paragraph. All of it is in the article now, with the pack credited in the byline. The figures were re-rendered without their burned-in caption bars so the page's own captions carry them, and four of them taller, because the fixed canvases had clipped the last rows of the two tables, the message and the hold. The article graph grew to sixteen nodes. |
@@ -16648,6 +16649,8 @@ A key that does not match its fingerprint, a serial that went down, a lane that 
 
 One real codebase, the `sgit-ai` command-line tool, read as a fractal semantic graph from its own syntax tree: eleven user stories at the top, then 72 commands, 13 packages, 427 modules, 377 classes, 1,111 methods and the 2,592 calls between them, down to 177,313 syntax-tree nodes. Two method streams, the code on one path and only that code. One commit read upwards, from the seven methods it changed to the nine commands and six stories that can reach them. Ten house rules checked against the graph. Nothing in it was produced by running the code. It is the worked example for the article [Code review as a fractal semantic graph](../../../articles/code-review-as-a-fractal-semantic-graph.md).
 
+**The argument is in the article.** This vault is the worked example for [**Code review as a fractal semantic graph**](../../../articles/code-review-as-a-fractal-semantic-graph.md): why source code is already layers within layers, what C4 and Gherkin saw, why a review should diff every layer, how a refactor and a fix look different in the graph, method streams from the O2 Platform, and what makes the whole thing trustworthy. Read it for the why; this page is the how, with the numbers.
+
 The ladder as the vault opens: seven altitudes of one repository, with how many nodes at each one commit touched. Rendered from the read-key clone, served locally.
 
 **Open it yourself. The key is the whole credential.**
@@ -16710,6 +16713,10 @@ The network package's classes, with one opened.
 ## What to connect next
 
 The stories are hand-written; the next pass has a model propose them from the command help and the tests, and a person accept or correct each. The call graph stops at the repository's edge; the standard library and the dependencies are counted, not followed. The syntax-tree layer is fingerprinted but not yet diffed node by node. And this vault analyses one Python project with its own strong conventions; a second language is the test of whether the layers hold their shape. All of the scripts are in the vault, Apache-2.0 like the code they read.
+
+## Read the article
+
+[**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**](../../../articles/code-review-as-a-fractal-semantic-graph.md). The case this vault demonstrates, with five figures, the prior art it builds on, the evidence on generated code, what does not exist yet, and a company for somebody to build.
 
 
 
@@ -16988,6 +16995,10 @@ The air gaps I complained about in 2012 are still there, and they are the place 
 ## The worked example
 
 I wanted the example to be real code, and I wanted every number in it to be checkable, so it uses the sgit command-line tool, which is Apache-2.0 and whose conventions I know, and it uses Python's own parser rather than a model. The vault is at [Code Review Graphs](../demos/vaults/code-review-graphs/index.md), the read key is on that page, and the three scripts that made it are inside.
+
+The nine views of the vault app: the ladder, the stories, the package graph, the classes, the methods, the two method streams, one commit read upwards, the pattern checks and the test map. Every screenshot in this section is a picture of the real vault, and clicking one opens its page, where the vault runs live with its read key.
+
+**Open the vault.** [Code Review Graphs](../demos/vaults/code-review-graphs/index.md) has the read key on the page, the app running live, a walkthrough of each view, and the three scripts that made it. A read key is the whole credential: clone it, read everything, change nothing.
 
 The vault as it opens: the ladder of seven altitudes, with how many nodes at each one commit touched. Click a rung to open its layer.
 

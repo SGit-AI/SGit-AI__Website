@@ -2,7 +2,7 @@
 
 > Source code is a very good example of a fractal semantic graph. It has layers within layers, and each one is a graph with its own vocabulary: what the user is trying to do, the features and flows, the components people draw as architecture, the classes, the methods and the calls between them, the syntax tree, and on down to the machine code if you want it. C4 saw the layers and stopped at four; Gherkin got the top layer into a shape people could write and then glued it to the code with regular expressions. What changed is that naming a node and the verb to the next one is now cheap, because a language model can do it from the syntax tree, once per change, and write the result as files. This article argues that code review should read a change at every one of those layers, and that two things fall out when it does: a refactor is a change that moves the bottom layers and leaves the top ones still, and a bug fix is a change that is visible at the top as a story that now holds. It revisits method streams, the review technique from the OWASP O2 Platform in 2012, as one script over a syntax tree with resolved calls. It comes with a worked example published as a vault: the sgit command-line tool, 377 classes and 1,111 methods, read as layered graphs with nothing run, including one real commit read upwards from the seven methods it changed to the nine commands and six user stories it can reach. And it says what makes the whole thing trustworthy, which is not getting the graph right but getting it to where users, experts and tests can correct it. There is a company in this for somebody to build.
 
-*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -92,6 +92,10 @@ The air gaps I complained about in 2012 are still there, and they are the place 
 ## The worked example
 
 I wanted the example to be real code, and I wanted every number in it to be checkable, so it uses the sgit command-line tool, which is Apache-2.0 and whose conventions I know, and it uses Python's own parser rather than a model. The vault is at [Code Review Graphs](../demos/vaults/code-review-graphs/index.md), the read key is on that page, and the three scripts that made it are inside.
+
+The nine views of the vault app: the ladder, the stories, the package graph, the classes, the methods, the two method streams, one commit read upwards, the pattern checks and the test map. Every screenshot in this section is a picture of the real vault, and clicking one opens its page, where the vault runs live with its read key.
+
+**Open the vault.** [Code Review Graphs](../demos/vaults/code-review-graphs/index.md) has the read key on the page, the app running live, a walkthrough of each view, and the three scripts that made it. A read key is the whole credential: clone it, read everything, change nothing.
 
 The vault as it opens: the ladder of seven altitudes, with how many nodes at each one commit touched. Click a rung to open its layer.
 

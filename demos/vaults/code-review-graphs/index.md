@@ -2,7 +2,7 @@
 
 > One real codebase read as a fractal semantic graph from its syntax tree: eleven stories, 72 commands, 13 packages, 377 classes, 1,111 methods and 2,592 calls, two method streams, one commit read upwards to the nine commands and six stories it can reach, and ten house rules checked against the graph. Nothing produced by running the code; the scripts are in the vault.
 
-*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.53 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # Code review graphs: the sgit CLI, layer by layer
 
 One real codebase, the `sgit-ai` command-line tool, read as a fractal semantic graph from its own syntax tree: eleven user stories at the top, then 72 commands, 13 packages, 427 modules, 377 classes, 1,111 methods and the 2,592 calls between them, down to 177,313 syntax-tree nodes. Two method streams, the code on one path and only that code. One commit read upwards, from the seven methods it changed to the nine commands and six stories that can reach them. Ten house rules checked against the graph. Nothing in it was produced by running the code. It is the worked example for the article [Code review as a fractal semantic graph](../../../articles/code-review-as-a-fractal-semantic-graph.md).
+
+**The argument is in the article.** This vault is the worked example for [**Code review as a fractal semantic graph**](../../../articles/code-review-as-a-fractal-semantic-graph.md): why source code is already layers within layers, what C4 and Gherkin saw, why a review should diff every layer, how a refactor and a fix look different in the graph, method streams from the O2 Platform, and what makes the whole thing trustworthy. Read it for the why; this page is the how, with the numbers.
 
 The ladder as the vault opens: seven altitudes of one repository, with how many nodes at each one commit touched. Rendered from the read-key clone, served locally.
 
@@ -74,6 +76,10 @@ The network package's classes, with one opened.
 ## What to connect next
 
 The stories are hand-written; the next pass has a model propose them from the command help and the tests, and a person accept or correct each. The call graph stops at the repository's edge; the standard library and the dependencies are counted, not followed. The syntax-tree layer is fingerprinted but not yet diffed node by node. And this vault analyses one Python project with its own strong conventions; a second language is the test of whether the layers hold their shape. All of the scripts are in the vault, Apache-2.0 like the code they read.
+
+## Read the article
+
+[**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**](../../../articles/code-review-as-a-fractal-semantic-graph.md). The case this vault demonstrates, with five figures, the prior art it builds on, the evidence on generated code, what does not exist yet, and a company for somebody to build.
 
 
 ---

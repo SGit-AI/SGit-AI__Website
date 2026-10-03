@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.52</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.53</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -108,7 +108,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.52 &middot; 3 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.53 &middot; 3 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Git for things you cannot put on GitHub</p>
  <h1>Git for things you cannot put on GitHub</h1>
@@ -140,7 +140,7 @@
 <p>They range from a photo library to Regulation (EU) 2024/1689 parsed from official Formex XML into 1,523 nodes and 1,944 edges. Before writing this I cloned all nineteen from their published keys: <b>1,389 files, no failures.</b></p>
 <h2>The part that surprises people</h2>
 <p>A vault can contain an <em>application</em>, not just documents, and that application runs against the vault without ever being handed a credential.</p>
-<figure class="shot" data-shot="permissions.webp" data-dir="../demos/vaults/risk-graph-explorer/images/" data-alt="`&quot;permissions&quot;: {}`, the app requests nothing, and is granted nothing."><figcaption><code>"permissions": {}</code>, the app requests nothing, and is granted nothing.</figcaption></figure>
+<figure class="shot" data-shot="permissions.webp" data-dir="../demos/vaults/risk-graph-explorer/images/" data-alt="`&quot;permissions&quot;: {}`, the app requests nothing, and is granted nothing." data-href="../demos/vaults/risk-graph-explorer/index.html" data-href-label="Open the vault page" data-href-target="_self"><figcaption><code>"permissions": {}</code>, the app requests nothing, and is granted nothing. <b>Click the image to open the vault page &#8599;</b></figcaption></figure>
 <p>Look at <code>"permissions": {}</code> in that file. The app asks for no filesystem access at all. It still renders the whole risk graph, because the host reads the vault and passes results in. The app never sees a key. <b>Capability without credential</b>, and it means you can run code you did not write against data you care about, with the blast radius set by a config file you can read in one screen.</p>
 <h2>Why there is a network of sites</h2>
 <p>sgit.ai is one of <b>nineteen</b> sites on <code>*.sgit.ai</code>, each taking one question further than a section could. Most of the thinking behind sgit now lives out there rather than here.</p>
@@ -176,7 +176,7 @@ sgit clone sgit_public_read_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.6.52')
+ fetch('../assets/shots.js?v=v0.6.53')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -188,7 +188,7 @@ sgit clone sgit_public_read_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.52</a> · <a href="../admin/index.html">engineering</a> · <a href="what-sgit-is.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.53</a> · <a href="../admin/index.html">engineering</a> · <a href="what-sgit-is.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -230,7 +230,7 @@ sgit clone sgit_public_read_c004daae386e8d17fa648884acc527018bd4ea1116ad673fb2f1
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.52';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.53';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

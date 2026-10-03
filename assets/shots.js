@@ -87,7 +87,7 @@
     if (href) {
       node = document.createElement('a');
       node.className = 'shot-link';
-      node.href = href; node.target = '_blank'; node.rel = 'noopener';
+      node.href = href; node.target = fig.getAttribute('data-href-target') || '_blank'; node.rel = 'noopener';
       node.setAttribute('aria-label', fig.getAttribute('data-href-label') || 'Open the real thing in a new tab');
       node.appendChild(img);
     }

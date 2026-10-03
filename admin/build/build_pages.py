@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.52'
+SITE_VERSION = 'v0.6.53'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.52', '2026-10-03', 'this release',
+    ('v0.6.53', '2026-10-03', 'this release',
+     "ARTICLE AND VAULT POINT AT EACH OTHER. The code review article gains a nine-view contact sheet of the "
+     "vault app and an 'open the vault' box in its worked-example section, and every screenshot it draws from "
+     "a vault page's own image folder now links to that vault page: a build rule for articles, in the same "
+     "tab, with the caption saying so. The vault page gains a box under its lead naming the article as the "
+     "argument and a closing 'Read the article' section. shots.js learned a per-figure link target.",),
+    ('v0.6.52', '2026-10-03', 'git e9d1e85f',
      "CODE REVIEW AS A FRACTAL SEMANTIC GRAPH. A new article argues that source code is already layers within "
      "layers, each a graph with its own vocabulary, and that a code review should diff every layer: a refactor "
      "moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the "
@@ -3445,6 +3451,25 @@ def page(path, title, desc, here, body):
             else:
                 block += f'<figcaption>{tail.strip()}</figcaption>'
             body = body[:m_fig.start()] + marked + block + body[end:]
+    # In an article, a figure drawn from a vault page's own image folder is a picture of
+    # that vault: the build links it to the vault page, in the same tab, so a reader who
+    # sees the screenshot can go on to the real thing (v0.6.53, asked for on 3 October).
+    if path.startswith('articles/'):
+        def _link_vault_fig(m):
+            fig_open, slug = m.group(1), m.group(2)
+            if 'data-href=' in fig_open:
+                return m.group(0)
+            marked = fig_open[:-1] + (f' data-href="../demos/vaults/{slug}/index.html" '
+                                      f'data-href-label="Open the vault page" data-href-target="_self">')
+            block = m.group(3)
+            tail = ' <b>Click the image to open the vault page &#8599;</b>'
+            if '</figcaption>' in block:
+                block = block.replace('</figcaption>', tail + '</figcaption>', 1)
+            else:
+                block += f'<figcaption>{tail.strip()}</figcaption>'
+            return marked + block + '</figure>'
+        body = re.sub(r'(<figure class="shot[^"]*"[^>]*data-dir="\.\./demos/vaults/([a-z0-9-]+)/images/"[^>]*>)(.*?)</figure>',
+                      _link_vault_fig, body, flags=re.S)
     # A page with walkthrough figures needs the component that fills them. Markdown
     # content types emit those figures from a `!shot` line, and a markdown author has
     # no place to put a script tag, so the engine notices and wires it, rather than
