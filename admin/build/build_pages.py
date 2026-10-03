@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.51'
+SITE_VERSION = 'v0.6.52'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.51', '2026-10-03', 'this release',
+    ('v0.6.52', '2026-10-03', 'this release',
+     "CODE REVIEW AS A FRACTAL SEMANTIC GRAPH. A new article argues that source code is already layers within "
+     "layers, each a graph with its own vocabulary, and that a code review should diff every layer: a refactor "
+     "moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the "
+     "climb from changed methods to the stories that can reach them. It revisits method streams from the O2 "
+     "Platform, cites C4, Gherkin, code property graphs and the 2024-2025 evidence on generated code, and ends "
+     "with a company for somebody to build. With it, a new vault, Code Review Graphs: the sgit CLI at two commits "
+     "read from its syntax tree with nothing run, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven "
+     "stories, two method streams, ten house-rule checks and one commit read upwards, with a browsing app and the "
+     "scripts that made it. Read key published; the vault page proves the key clones and cannot push. Five new "
+     "figures in the shared style; the article graph has fifteen nodes.",),
+    ('v0.6.51', '2026-10-03', 'git ca720692',
      "THE ROSTER, REDRAWN WIDE. The briefs role's team card was a tall phone-sized image and sat badly in "
      "the inbox article. It is redrawn at the width and in the type of the other eight figures, with every "
      "role, the email path, the two rules and the run order kept.",),

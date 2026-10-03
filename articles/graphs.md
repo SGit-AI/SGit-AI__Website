@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,44 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-22 of 22 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
+23 of 23 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
 ## How the articles connect
 
 *[diagram]*
+
+## [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md)
+
+2026-10-03 · Graphs & knowledgeStartups & strategy
+
+Source code is already a fractal semantic graph, stories to syntax tree and below, so a code review should diff every layer: a refactor moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the climb from changed methods to the stories that can reach them.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**15 nodes, 20 edges**
+
+- **Source code is a fractal semantic graph** (claim) Stories, flows, components, classes, methods and calls, the syntax tree, and down to the machine: each layer a graph with its own node types and verbs, and you change universe between them.
+- **C4 and Gherkin: right instinct, fixed levels** (concept) C4 named four levels and left the code level optional; Gherkin shaped the top rung and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply.
+- **Naming is now the cheap part** (claim) A model can say what a function does, which story a command serves and the verb between two nodes, from the syntax tree, once per change, as structured files.
+- **Start from the syntax tree** (method) The tree survives reformatting and renaming; derive deterministically what a parser can, and spend the model on what it cannot know.
+- **Every source file produces a pile of files** (method) Classes, methods and calls, package edges, fingerprints, tests, pattern results, kept as JSON next to the code in git, a vault or both; regenerated only on change.
+- **Diff every layer** (method) A refactor moves the bottom layers and leaves the top still; a fix moves the bottom and is visible at the top as a story holding again, with a test; a leak is a forbidden edge.
+- **Blast radius as the climb** (concept) From the methods a change touched, up the call graph with dynamic dispatch, to the commands and stories that can reach them, before anything runs.
+- **Method streams** (method) Follow the call tree from one method and write out only that code; a 2012 O2 Platform review technique, now one script over a syntax tree with resolved calls.
+- **The sgit CLI, read as layers** (example) 427 files, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two streams, ten rules, one commit read upwards; nothing run; published as a vault.
+- **One commit, read upwards** (example) Seven methods changed, no signature or field moved, six tests added; the climb reaches nine commands and six stories. The shape of a fix, and the commit message agrees.
+- **Reality corrects the graph** (claim) You do not have to get the graph right; users confirm the top, experts confirm their rung, tests confirm execution, and every correction is a commit.
+- **Patterns are findings** (claim) Folder shape, type shape, test shape and size shape are queries over the graph; the rules a project states most firmly are the ones that hold.
+- **The review burden of generated code** (example) More cloned code and less refactoring, lower delivery stability with adoption, developers reporting almost-right answers and longer debugging: the answer is a different diff, not a faster reviewer.
+- **What does not exist yet** (question) Proposed stories and edges from a model, node-level tree diffs, a second language, the interface layer, execution paths compared to predicted streams, and the review surface itself.
+- **A company to build** (concept) A review that reads every layer, keeps the graph as files the customer owns, runs their rules as queries and improves with every correction; defensible through the record, not the model.
+
+> You do not have to get the graph right. You have to get it to where user behaviour, the people who know each layer, and the tests can confirm or correct it. The condition that makes a model-derived graph of a codebase usable at all.
+
+> The answer is not a faster reviewer reading the same diff. It is a different diff. The article's claim about the review burden of generated code.
+
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
 ## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
 
@@ -52,7 +85,7 @@ Add two words to the Agent Behaviour Policy: footprint, what the agent actually 
 
 > The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
 
-builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
 
@@ -151,7 +184,7 @@ Every message has a graph with altitudes, so a message is designed for the recip
 
 > The graph is the medium. Email, cards, voice and boards are views of it. The turn where email stops being the medium and becomes one projection of the graph.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
 
 ## [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md)
 
@@ -386,7 +419,7 @@ Every risk an organisation has is already accepted by somebody, so the only ques
 
 > Nothing in the row is wrong. It just never learned that the risk was accepted twice, expired once, escalated, funded, materialised as an incident, and ended. The air gap between a register and reality, shown on one row at one moment.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md)
 
@@ -518,7 +551,7 @@ Every unit of knowledge is already a graph in its owner's vocabulary, and a shor
 
 > Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them. The evidence that the method does work, not just that it is defined: the amended-articles finding came from the join.
 
-continued by [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
 ## [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](proof-behind-the-claim.md)
 

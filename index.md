@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -19,19 +19,19 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 [Reference, **AIUC-1 conformance layer**, The AIUC-1 standard as a graph, plus a conformance layer that computes insurability, Open it →](demos/vaults/aiuc-1-conformance/index.md) [Application, **Agent permission games**, Two games about grants and mandates, the first vault here that phones home, Open it →](demos/vaults/agent-permission-games/index.md) [Presentation, **AI vs. AI, Black Hat EU 2025**, The Black Hat EU 2025 keynote, with its PDF exports and eight research papers, Open it →](demos/vaults/blackhat-eu-2025/index.md) [Report, **Penetration Test Report**, A penetration test report (fictional) with a re-test script per finding, Open it →](demos/vaults/pentest-report/index.md)
 
-Four of **39 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 39 →](demos/vaults/index.md)
+Four of **40 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 40 →](demos/vaults/index.md)
 
 ## Start with an argument, not a menu
 
-The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 22 so far, three newest here.
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 23 so far, three newest here.
 
-[2026-10-02Agents & policy7 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md) [2026-10-02Startups & strategy2 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](articles/price-it-then-give-it-away.md) [2026-10-02Agents & policy6 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](articles/replicating-the-agentic-inbox.md)
+[2026-10-03Graphs & knowledge4 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](articles/code-review-as-a-fractal-semantic-graph.md) [2026-10-02Agents & policy8 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md) [2026-10-02Startups & strategy2 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](articles/price-it-then-give-it-away.md)
 
+- [Replicating the agentic inbox](articles/replicating-the-agentic-inbox.md) · 2026-10-02
 - [Custom UIs are not the exception](articles/custom-uis-are-not-the-exception.md) · 2026-10-01
 - [The ultimate insider](articles/ultimate-insider-three-collisions.md) · 2026-09-30
 - [The reader was always the product](articles/how-news-got-here.md) · 2026-09-29
 - [Six agents, one inbox](articles/six-agents-one-inbox.md) · 2026-09-29
-- [Sixteen thousand fetches, ten clicks, and a token bill nobody…](articles/token-bill-nobody-is-sending.md) · 2026-09-28
 
 [All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
@@ -55,9 +55,9 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-209site releases, each verified live before it was called done
+210site releases, each verified live before it was called done
 
-39vaults published with a deliberately public read key
+40vaults published with a deliberately public read key
 
 27sibling sites on `*.sgit.ai`, one question each
 

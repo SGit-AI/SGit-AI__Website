@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Thirty-nine vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.51 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.52 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**39 published vaults**: 11 briefing, 8 analysis, 6 reference, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**40 published vaults**: 11 briefing, 8 analysis, 7 reference, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 40 | [Code Review Graphs](code-review-graphs/index.md)`7w90lvd3` | The sgit CLI read as layered graphs from its syntax tree: eleven stories, 72 commands, 13 packages, 377 classes, 1,111 methods and 2,592 calls, two method streams, one commit read upwards to the stories it reaches, and ten house-rule checks | Reference | 20 | 4.2 MB | 2026-10-03 |
 
 | 39 | [Kit Bag](kit-bag/index.md)`r53ldcxt` | A business plan for a Chrome extension you build yourself and load from a folder, with its Agent Behaviour Policy written first and every barrier typed | Briefing | 33 | 565 KB | 2026-09-30 |
 

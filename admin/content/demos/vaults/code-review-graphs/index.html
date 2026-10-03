@@ -1,0 +1,75 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Code Review Graphs</p>
+  <h1>Code review graphs: the sgit CLI, layer by layer</h1>
+  <p class="lead">One real codebase, the <code>sgit-ai</code> command-line tool, read as a fractal semantic graph from its own syntax tree: eleven user stories at the top, then 72 commands, 13 packages, 427 modules, 377 classes, 1,111 methods and the 2,592 calls between them, down to 177,313 syntax-tree nodes. Two method streams, the code on one path and only that code. One commit read upwards, from the seven methods it changed to the nine commands and six stories that can reach them. Ten house rules checked against the graph. Nothing in it was produced by running the code. It is the worked example for the article <a href="../../../articles/code-review-as-a-fractal-semantic-graph.html">Code review as a fractal semantic graph</a>.</p>
+
+  <figure class="shot" data-shot="overview.webp" data-dir="images/" data-alt="The app as it opens: the ladder of seven altitudes from stories to the syntax tree, with counts on the right and the number of nodes at each altitude that one commit touched."><figcaption>The ladder as the vault opens: seven altitudes of one repository, with how many nodes at each one commit touched. Rendered from the read-key clone, served locally.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_d27c20b6309ff0ad3ab228372d174a04d1c40e44e2d3077465bf1d998b4e1578:7w90lvd3</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_d27c20b6309ff0ad3ab228372d174a04d1c40e44e2d3077465bf1d998b4e1578%3A7w90lvd3" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_d27c20b6309ff0ad3ab228372d174a04d1c40e44e2d3077465bf1d998b4e1578:7w90lvd3</code><br>
+  <span class="small dim">This key is published on purpose, under the <code>sgit_public_read_</code> prefix. It is <b>derived</b> one way from a vault key that is kept in the gitignored tier and never published. <code>check_credential.py</code> classified it as a public read key before it was put on this page. A read-only clone with it produced the same twenty files as the source folder, and a commit and push from that clone were refused with "cloned read-only". An all-zeros key as a control failed to find a vault.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app. Pick a layer along the top, filter the classes or methods, open a method stream, or read the commit upwards. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_d27c20b6309ff0ad3ab228372d174a04d1c40e44e2d3077465bf1d998b4e1578%3A7w90lvd3" rel="noopener" target="_blank"><b>open it in its own window &#8599;</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="7w90lvd3" data-readkey="d27c20b6309ff0ad3ab228372d174a04d1c40e44e2d3077465bf1d998b4e1578" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>What was derived, and from what</h2>
+  <p>The source is the <code>sgit-ai</code> repository at two commits: <code>0e4727f</code>, and <code>397be83</code>, whose message reads "auto transport no longer flips a fresh vault to read-only on an object 404". Three scripts in the vault's <code>tools/</code> folder did the work. <code>analyse.py</code> parses every file with Python's own parser and writes one JSON file per layer: packages and the imports between them, classes with their bases and typed fields, methods with the calls that resolve inside the repository, the commands parsed out of the argparse wiring, the test modules mapped to the classes they import, and ten pattern checks. <code>stream.py</code> follows the call tree from one method and writes the code on that path as one file. <code>delta.py</code> compares the two snapshots' method fingerprints and climbs the reverse call graph, including dynamic dispatch, to the commands and stories a change can reach. The stories are the one layer written by hand, from the CLI's help text; everything under them is derived, and the app says which is which.</p>
+  <p>Call resolution is static and conservative. <code>self.x()</code> resolves through the class and its bases; <code>self.field.x()</code> through the field's declared type, which is why typed fields matter; constructors by imported name; a call to a base class method is taken to reach its subclasses. What cannot be resolved is counted, not guessed. That is a floor on the graph, not a ceiling: the article says what a model would add on top of it.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">one commit, read upwards</span>
+        <h3>The blast radius of a change, before anyone runs it</h3>
+        <p>The text diff of the commit is 75 lines added and 7 removed in three files. The graph reads the same change at every altitude: one method in the transport class and six command handlers changed; no signature, field or class shape moved; a test module with six tests was added. Climbing the call graph from the changed methods reaches nine of the 72 commands and six of the eleven stories. The pattern across the rungs, bodies moved and shapes still and a new assertion, is the shape of a fix; a refactor is its mirror image.</p>
+      </div>
+      <figure class="shot" data-shot="delta.webp" data-dir="images/" data-alt="The delta view: the commit subject, a red ladder with stories 6 of 11, commands 9 of 72, packages 2 of 13, modules 2 of 427, classes 2 of 377, methods 7 of 1,111 and 57 syntax-tree nodes added, then the fix-or-refactor table and the commit message."><figcaption>Commit 397be83 at every altitude, the fix-or-refactor reading, and the commit message beside it as evidence to check.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">packages</span>
+        <h3>The architecture people draw, read from the code</h3>
+        <p>Twelve packages and the 45 import relations between them, weighted by how many modules import. It is the whiteboard picture, except that nobody drew it and the two packages the commit touched are red. Every circle opens into the class graph beneath it, which has a different vocabulary: typed fields and base classes instead of imports.</p>
+      </div>
+      <figure class="shot" data-shot="packages.webp" data-dir="images/" data-alt="A ring of twelve package circles sized by class count, joined by weighted arrows; cli and network are red."><figcaption>The package graph. Arrow weight is the number of importing modules; red is touched by the commit.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">method streams</span>
+        <h3>The code on one path, and only that code</h3>
+        <p>The stream from <code>cmd_push</code> to depth five is 100 methods and 1,703 lines from 20 classes: 7.5 percent of the repository's method code, and the whole of what a reviewer of "publish a new vault" has to read. The clone stream is 32 methods and 469 lines. Both are written out in full as Markdown in the vault, in breadth-first order, with each method's source.</p>
+      </div>
+      <figure class="shot" data-shot="streams.webp" data-dir="images/" data-alt="Two cards, push and clone, each with method, line, class and module counts, a bar showing the share of the repository's method lines, and the push stream expanded as an indented list."><figcaption>The two streams, with the push stream's 100 methods expanded by depth.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">patterns</span>
+        <h3>The house rules, checked against the graph</h3>
+        <p>Ten rules from the project's own CLAUDE.md and coding practice, each run as a query over the graph. No raw primitives in Type_Safe fields holds on all but 19 of 755 fields. No module-level functions has eleven exceptions in 427 modules. No static methods, immutable defaults only, nothing but imports in the CLI package's init file, and no init files under tests all hold. A mirrored test file per domain class is missing for 143 of 253. The ordering is itself a finding: the rules stated most firmly hold best.</p>
+      </div>
+      <figure class="shot" data-shot="patterns.webp" data-dir="images/" data-alt="A table of ten rules with their source, a violation count pill and the number of nodes checked, with expandable violation lists."><figcaption>The ten checks, their counts, and the nodes checked.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">classes and tests</span>
+        <h3>A class is a card with its edges, including the tests that import it</h3>
+        <p>Filter the 377 classes by name or package and open one: its typed fields, its methods, the classes it has fields of and the classes that have fields of it, its subclasses, and the test modules that import it. The tests view turns that around, per package: which classes no test imports, read from the imports without running anything.</p>
+      </div>
+      <figure class="shot" data-shot="classes.webp" data-dir="images/" data-alt="The classes view filtered to network, with the first class opened as a card showing fields, methods, neighbours and the tests that import it."><figcaption>The network package's classes, with one opened.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What to connect next</h2>
+  <p>The stories are hand-written; the next pass has a model propose them from the command help and the tests, and a person accept or correct each. The call graph stops at the repository's edge; the standard library and the dependencies are counted, not followed. The syntax-tree layer is fingerprinted but not yet diffed node by node. And this vault analyses one Python project with its own strong conventions; a second language is the test of whether the layers hold their shape. All of the scripts are in the vault, Apache-2.0 like the code they read.</p>
+</main>

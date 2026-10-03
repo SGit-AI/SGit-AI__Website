@@ -970,6 +970,12 @@
     "desc": "The directory of every site in the network, whether it publishes an Agent Contact file at /.well-known/sgit-agents.json, how to write to an agent that does, and why the append token in each file is public on purpose."
   },
   {
+    "path": "demos/vaults/code-review-graphs/index.html",
+    "section": "vaults",
+    "title": "Code review graphs: the sgit CLI, layer by layer, published as a vault",
+    "desc": "One real codebase read as a fractal semantic graph from its syntax tree: eleven stories, 72 commands, 13 packages, 377 classes, 1,111 methods and 2,592 calls, two method streams, one commit read upwards to the nine commands and six stories it can reach, and ten house rules checked against the graph. Nothing produced by running the code; the scripts are in the vault."
+  },
+  {
     "path": "demos/vaults/pci-dss-graph/index.html",
     "section": "vaults",
     "title": "PCI DSS v4.0.1 as a semantic graph, first pass, published as a vault",
