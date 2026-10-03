@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -89,27 +89,29 @@ builds on [For a startup, the most important question is whether they miss it](#
 
 2026-10-02 · Agents & policyVaults & method
 
-Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a team without ever breaking that rule.
+Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a scheduled team without ever breaking that rule.
 
 *[diagram]*
 **concept**claim**method**artefact**example**question
 
-**14 nodes, 18 edges**
+**16 nodes, 21 edges**
 
-- **Claude as a state machine** (concept) Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops.
+- **Claude as a state machine** (concept) Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops; the conductor makes this literal.
 - **Accounts of the agent's own** (method) A Workspace mailbox on a domain you own, a Claude Team seat, a GitHub account on the same identity; never your own inbox.
 - **Connectors enabled, then connected** (artefact) On a Team plan the owner enables connectors for the organisation; the agent's own account then connects, so the OAuth grants live only there.
-- **Calendar shared read-only** (method) The person's calendar is shared to the agent's account with read access, so it knows what is going on without being able to move anything.
-- **The inbox agent** (artefact) The one session that reads the mailbox, labels, moves, summarises and writes replies to Drafts.
-- **Policy before the first run** (method) Reach, mandate, gap and barriers written before the agent runs, even when there is only one agent.
-- **Roles: inbox, writer, CRM, dev team** (concept) Each role a session with a policy short enough to check; the policies share the reach and differ in the mandate.
-- **Email-FS lite** (artefact) An inbox per agent as a folder in a vault; a message is a file with typed blocks, a reply is another file, and the vault keeps every version.
-- **The agent drafts, a person sends** (claim) Nothing is sent by an agent; everything lands in Drafts and the person reads, edits and presses send.
-- **The security exception** (example) The one message that goes out without waiting is written into the policy as a named exception rather than left as a habit.
-- **Interfaces for the moment** (artefact) Cards, drop zones and boards built by agents in an afternoon because the data was already files in a vault; each one gets a policy.
+- **The inbox role** (artefact) The one session that reads the mailbox, labels, moves, summarises and captures what people wrote into the CRM.
+- **The policy as a table** (method) Reach, mandate, gap and barriers written before the first run; most barriers in front of a single session are the policy and nothing technical, and the table says so.
+- **Roles: @inbox, @drafts, @crm, @briefs, @dev** (concept) Each role a session with a policy short enough to check; every account has the same reach to the mailbox, two have it in their mandate, one may write.
+- **Email-FS lite** (artefact) A message is a file with email headers and typed blocks; mailroom, inbox, done and outbox folders; each role writes only its own folders; one commit per cycle after a leak check.
+- **The agent drafts, a person sends** (claim) Nothing is sent by an agent; the draft is Cc'd to the person, its hash is logged, and the inbox role records the send from the Sent folder afterwards.
+- **The security hold** (example) The one exception: the security role may send one email to one address on a critical finding, and writes a hold file that stops every agent and every run until a person releases it.
+- **The conductor** (artefact) A scheduled session that runs every role exactly once in a fixed order with a time box, leak-checks and pushes after each step, and writes a report; a security role runs first and last.
+- **The clone cost** (claim) Clone time grows with the number of commits, not file size; fifty commits a day made a seven-minute clone after three days. Commit once per run and compact when a clone passes five minutes.
+- **A leaked write key means a new vault** (method) History keeps what was committed, so a key quoted in a committed file is fixed by a fresh vault seeded from the current files, not by a redaction; scan for other people's secret shapes too.
+- **Interfaces for the moment** (artefact) The Now card and the waiting-on board, computed from the vault files when the page opens, nothing stored; each one gets a policy.
 - **The record** (concept) Every message a file, every draft in the mailbox, every decision a row: a footprint that can be read afterwards without touching anything.
 - **Trust built from the record** (claim) You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up.
-- **Schedules come later** (question) Running the sessions on a schedule is where this ends up, but start with sessions you open yourself; the schedule gets its own article.
+- **The agents' own account** (question) Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph is the first, and the review it came with shaped the revision.
 
 > Nothing is sent by an agent. The rule that never changes, and the reason the setup gives the person more control rather than less.
 

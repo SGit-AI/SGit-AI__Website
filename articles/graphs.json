@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-08-15",
-  "site_version": "v0.6.48",
+  "site_version": "v0.6.49",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -574,7 +574,7 @@
       "slug": "replicating-the-agentic-inbox",
       "title": "Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send",
       "date": "2026-10-02",
-      "updated": "",
+      "updated": "2026-10-03",
       "url": "https://sgit.ai/articles/replicating-the-agentic-inbox.html",
       "markdown": "https://sgit.ai/articles/replicating-the-agentic-inbox.md",
       "card": "https://sgit.ai/articles/cards/replicating-the-agentic-inbox.webp",
@@ -614,13 +614,13 @@
           "agents-and-policy",
           "vaults-and-method"
         ],
-        "core_idea": "Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a team without ever breaking that rule.",
+        "core_idea": "Claude is used as an agent state machine, one session per role, every message between agents a file in a vault and every outgoing email a draft a person sends; the phases take you from one session to a scheduled team without ever breaking that rule.",
         "nodes": [
           {
             "id": "state-machine",
             "label": "Claude as a state machine",
             "kind": "concept",
-            "summary": "Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops."
+            "summary": "Each role is one session that reads its state from a vault, does one kind of work, writes files back and stops; the conductor makes this literal."
           },
           {
             "id": "own-accounts",
@@ -635,52 +635,64 @@
             "summary": "On a Team plan the owner enables connectors for the organisation; the agent's own account then connects, so the OAuth grants live only there."
           },
           {
-            "id": "calendar-ro",
-            "label": "Calendar shared read-only",
-            "kind": "method",
-            "summary": "The person's calendar is shared to the agent's account with read access, so it knows what is going on without being able to move anything."
-          },
-          {
             "id": "inbox-agent",
-            "label": "The inbox agent",
+            "label": "The inbox role",
             "kind": "artefact",
-            "summary": "The one session that reads the mailbox, labels, moves, summarises and writes replies to Drafts."
+            "summary": "The one session that reads the mailbox, labels, moves, summarises and captures what people wrote into the CRM."
           },
           {
-            "id": "policy-first",
-            "label": "Policy before the first run",
+            "id": "policy-table",
+            "label": "The policy as a table",
             "kind": "method",
-            "summary": "Reach, mandate, gap and barriers written before the agent runs, even when there is only one agent."
+            "summary": "Reach, mandate, gap and barriers written before the first run; most barriers in front of a single session are the policy and nothing technical, and the table says so."
           },
           {
             "id": "roles",
-            "label": "Roles: inbox, writer, CRM, dev team",
+            "label": "Roles: @inbox, @drafts, @crm, @briefs, @dev",
             "kind": "concept",
-            "summary": "Each role a session with a policy short enough to check; the policies share the reach and differ in the mandate."
+            "summary": "Each role a session with a policy short enough to check; every account has the same reach to the mailbox, two have it in their mandate, one may write."
           },
           {
             "id": "email-fs",
             "label": "Email-FS lite",
             "kind": "artefact",
-            "summary": "An inbox per agent as a folder in a vault; a message is a file with typed blocks, a reply is another file, and the vault keeps every version."
+            "summary": "A message is a file with email headers and typed blocks; mailroom, inbox, done and outbox folders; each role writes only its own folders; one commit per cycle after a leak check."
           },
           {
             "id": "drafts-rule",
             "label": "The agent drafts, a person sends",
             "kind": "claim",
-            "summary": "Nothing is sent by an agent; everything lands in Drafts and the person reads, edits and presses send."
+            "summary": "Nothing is sent by an agent; the draft is Cc'd to the person, its hash is logged, and the inbox role records the send from the Sent folder afterwards."
           },
           {
-            "id": "security-exception",
-            "label": "The security exception",
+            "id": "security-hold",
+            "label": "The security hold",
             "kind": "example",
-            "summary": "The one message that goes out without waiting is written into the policy as a named exception rather than left as a habit."
+            "summary": "The one exception: the security role may send one email to one address on a critical finding, and writes a hold file that stops every agent and every run until a person releases it."
+          },
+          {
+            "id": "conductor",
+            "label": "The conductor",
+            "kind": "artefact",
+            "summary": "A scheduled session that runs every role exactly once in a fixed order with a time box, leak-checks and pushes after each step, and writes a report; a security role runs first and last."
+          },
+          {
+            "id": "clone-cost",
+            "label": "The clone cost",
+            "kind": "claim",
+            "summary": "Clone time grows with the number of commits, not file size; fifty commits a day made a seven-minute clone after three days. Commit once per run and compact when a clone passes five minutes."
+          },
+          {
+            "id": "key-rotation",
+            "label": "A leaked write key means a new vault",
+            "kind": "method",
+            "summary": "History keeps what was committed, so a key quoted in a committed file is fixed by a fresh vault seeded from the current files, not by a redaction; scan for other people's secret shapes too."
           },
           {
             "id": "interfaces",
             "label": "Interfaces for the moment",
             "kind": "artefact",
-            "summary": "Cards, drop zones and boards built by agents in an afternoon because the data was already files in a vault; each one gets a policy."
+            "summary": "The Now card and the waiting-on board, computed from the vault files when the page opens, nothing stored; each one gets a policy."
           },
           {
             "id": "record",
@@ -695,10 +707,10 @@
             "summary": "You do not have to believe what the agent says it did; you can read what it did, and give it more as the drafts you did not change pile up."
           },
           {
-            "id": "schedule-later",
-            "label": "Schedules come later",
+            "id": "agents-own-account",
+            "label": "The agents' own account",
             "kind": "question",
-            "summary": "Running the sessions on a schedule is where this ends up, but start with sessions you open yourself; the schedule gets its own article."
+            "summary": "Each role describes what it reads, writes and refuses, in its own words; the dev role's paragraph is the first, and the review it came with shaped the revision."
           }
         ],
         "edges": [
@@ -709,16 +721,11 @@
           },
           {
             "from": "own-accounts",
-            "to": "calendar-ro",
-            "rel": "extends"
-          },
-          {
-            "from": "own-accounts",
             "to": "inbox-agent",
             "rel": "leads-to"
           },
           {
-            "from": "policy-first",
+            "from": "policy-table",
             "to": "inbox-agent",
             "rel": "depends-on"
           },
@@ -728,7 +735,7 @@
             "rel": "depends-on"
           },
           {
-            "from": "security-exception",
+            "from": "security-hold",
             "to": "drafts-rule",
             "rel": "example-of"
           },
@@ -744,7 +751,7 @@
           },
           {
             "from": "roles",
-            "to": "policy-first",
+            "to": "policy-table",
             "rel": "extends"
           },
           {
@@ -754,13 +761,33 @@
           },
           {
             "from": "state-machine",
-            "to": "email-fs",
+            "to": "conductor",
+            "rel": "leads-to"
+          },
+          {
+            "from": "conductor",
+            "to": "security-hold",
             "rel": "depends-on"
+          },
+          {
+            "from": "conductor",
+            "to": "clone-cost",
+            "rel": "produces"
+          },
+          {
+            "from": "clone-cost",
+            "to": "key-rotation",
+            "rel": "compared-with"
           },
           {
             "from": "email-fs",
             "to": "record",
             "rel": "produces"
+          },
+          {
+            "from": "record",
+            "to": "key-rotation",
+            "rel": "leads-to"
           },
           {
             "from": "roles",
@@ -769,7 +796,7 @@
           },
           {
             "from": "interfaces",
-            "to": "policy-first",
+            "to": "policy-table",
             "rel": "extends"
           },
           {
@@ -783,14 +810,14 @@
             "rel": "produces"
           },
           {
-            "from": "state-machine",
-            "to": "schedule-later",
-            "rel": "leads-to"
-          },
-          {
             "from": "own-accounts",
             "to": "trust",
             "rel": "depends-on"
+          },
+          {
+            "from": "roles",
+            "to": "agents-own-account",
+            "rel": "leads-to"
           }
         ],
         "links": {
@@ -803,7 +830,8 @@
           ],
           "pages": [
             "/docs/append-lane-messaging.html",
-            "/docs/agent-contact.html"
+            "/docs/agent-contact.html",
+            "/docs/briefs/vault-telemetry-append-lanes.html"
           ],
           "sites": [
             "https://riskmandate.ai/abp.html",
@@ -818,6 +846,10 @@
           {
             "text": "You do not have to believe what the agent says it did. You can read what it did.",
             "why": "Why the record is the point for someone learning to trust a set of agents."
+          },
+          {
+            "text": "A leaked write key means a new vault, not an edit.",
+            "why": "The lesson the record taught on day five: history keeps what was committed."
           }
         ]
       }

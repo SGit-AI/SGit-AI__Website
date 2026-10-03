@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.48 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.49 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.48**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.49**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.48 | 2026-10-02 | this release | £3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with the two £1,500 halves shown wherever there is room so anyone can check it against the two price lists. The decision about which line to use is closed. |
+| v0.6.49 | 2026-10-03 | this release | THE AGENTIC INBOX, REVISED BY THE AGENTS. The dev agent of the team the article describes sent a review pack a day after publication: eight figures (mock-ups and infographics, fictional data, leak-checked), the roles as they are now named (@inbox, @drafts, @crm, @briefs, @dev, then @conductor, @security, @webSummit, @gdrive), the schedule that now exists, the security hold behind the one exception, the clone cost of a busy vault, the key-rotation lesson, three amended checklist lines and its own role paragraph. All of it is in the article now, with the pack credited in the byline. The figures were re-rendered without their burned-in caption bars so the page's own captions carry them, and four of them taller, because the fixed canvases had clipped the last rows of the two tables, the message and the hold. The article graph grew to sixteen nodes. |
+| v0.6.48 | 2026-10-02 | git 36a4d1b7 | £3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with the two £1,500 halves shown wherever there is room so anyone can check it against the two price lists. The decision about which line to use is closed. |
 | v0.6.47 | 2026-10-02 | git 0a01c548 | THE EVENT PLAN, DRAFT 3. The DECID:R value is confirmed: a facilitated 90-minute session lists at £1,200, typically up to twenty people and fifty done, and the evening runs two, which the organisers round to £1,500, the same as the RiskMandate side. The page now says about £1,500 from each partner, and proposes one room-wide incident on the shared display rather than six platform runs, with the tables differing in the policies they write. |
 | v0.6.46 | 2026-10-02 | git dcff5281 | TWO LABELS TRIMMED on the event plan's pictures, where the last words touched the box edge. |
 | v0.6.45 | 2026-10-02 | git e79c2927 | THE EVENT PLAN, DRAFT 2. After the two organisers' first call: an evening, not a day; two sessions at the same table, the incident without a policy and then with one; a single room sponsor at ten thousand pounds, in cash or as the venue with food and drink; the first thirty seats free at about fifteen hundred pounds of value each, seats after that paid, the surplus split evenly. The page now opens with four pictures that carry the model, starting from the participant: what you bring, what you leave with, the evening, who pays for what, and the three partners. A messaging section writes the pitch, the invitation, the offer and the sponsor ask in the participant's terms first. |

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.48'
+SITE_VERSION = 'v0.6.49'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.48', '2026-10-02', 'this release',
+    ('v0.6.49', '2026-10-03', 'this release',
+     "THE AGENTIC INBOX, REVISED BY THE AGENTS. The dev agent of the team the article describes sent a "
+     "review pack a day after publication: eight figures (mock-ups and infographics, fictional data, "
+     "leak-checked), the roles as they are now named (@inbox, @drafts, @crm, @briefs, @dev, then "
+     "@conductor, @security, @webSummit, @gdrive), the schedule that now exists, the security hold "
+     "behind the one exception, the clone cost of a busy vault, the key-rotation lesson, three amended "
+     "checklist lines and its own role paragraph. All of it is in the article now, with the pack credited "
+     "in the byline. The figures were re-rendered without their burned-in caption bars so the page's own "
+     "captions carry them, and four of them taller, because the fixed canvases had clipped the last rows "
+     "of the two tables, the message and the hold. The article graph grew to sixteen nodes.",),
+    ('v0.6.48', '2026-10-02', 'git 36a4d1b7',
      "£3,000 A SEAT. The event plan's value line is the sum of the two sides, about £3,000 a seat, with "
      "the two £1,500 halves shown wherever there is room so anyone can check it against the two price "
      "lists. The decision about which line to use is closed.",),
