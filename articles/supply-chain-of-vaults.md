@@ -163,7 +163,15 @@ Vaults & methodStartups & strategy[This article as a graph →](graphs.md#supply
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Want the next one by email.** Send an email to [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe) (the link fills in the subject and a line of text). An agent reads that mailbox and manages the list. [Subscribe by email](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe)
+**Want the next one by email.** Your address is encrypted in your browser to the key of the agent that manages the list and dropped into a write-only lane on an encrypted vault. [How it works](../docs/briefs/subscribe-lane-agent-brief.md).
+
+Email addressName, optionalWebsiteI am happy for sgit.ai to keep this address in a private vault and email me new articles. I can ask to be removed by replying to any message.
+
+[Send it as an email instead →](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.)
+
+**Sent, encrypted, into the vault.** The lane answers only `ok`, by design, so there is no receipt. If nothing arrives, email [agent@riskmandate.ai](mailto:agent@riskmandate.ai).
+
+This form needs JavaScript. Email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) instead.
 
 Prefer a feed? [updates/feed.xml](../updates/feed.xml) carries the dated notes.
 

@@ -29,11 +29,17 @@ def find_vault_root():
 
 VERSION_LOG = [
     ('v0.6.56', '2026-10-04', 'this release',
-     "SUBSCRIBE TO THE ARTICLES. The articles index and the foot of every article now carry a subscribe "
-     "block that is one mailto link to agent@riskmandate.ai with the subject and body filled in, plus a "
-     "Subscribe link in every page footer. No form, no script, no third-party service: the agent behind "
-     "that mailbox manages the list. Built by subscribe_block() in the generator, styled by .subscribe "
-     "in site.css."),
+     "SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a "
+     "subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP "
+     "4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only "
+     "`subscribe` append lane of a new vault, the same pattern as the contact form on riskmandate.ai. If "
+     "anything fails, or there is no JavaScript, the same request is offered as a plain email to the same "
+     "agent. The vault id, lane token and key are public in /.well-known/sgit-subscribe.json; the only "
+     "secret is the vault key, held outside this repository. A new brief, /docs/briefs/"
+     "subscribe-lane-agent-brief.html, tells the agent how to drain the lane, with a drain script that "
+     "was run end to end (browser to lane to decrypted message) before release. Found on the way: "
+     "`configure` returns 404 on a vault that has never been pushed, which looks exactly like the "
+     "documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator."),
     ('v0.6.55', '2026-10-04', 'previous release',
      "THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread "
      "written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, "
@@ -3356,7 +3362,7 @@ def footer(p, md=''):
     <a href="{p}case-studies/index.html">Case studies</a>
     <a href="{p}skills/index.html">Skills for AI agents</a>
     <a href="{p}docs/briefs/index.html">Cross-team briefs</a>
-    <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles">Subscribe to new articles</a>
+    <a href="{p}articles/index.html#subscribe">Subscribe to new articles</a>
     <a href="{p}llms.txt">llms.txt</a>
     <a href="{p}llms-full.txt">llms-full.txt</a>
     <a href="{p}admin/index.html">Admin &amp; engineering</a>
@@ -3517,6 +3523,13 @@ def page(path, title, desc, here, body):
                  ' .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
                  ' .then(function (t) { (0, eval)(t); })\n'
                  " .catch(function (e) { console.error('[shots] component failed to load:', e); });\n"
+                 '}());\n</script>')
+    if 'data-subscribe' in body and 'subscribe.js' not in body:
+        body += (f'\n<script>\n(function () {{\n'
+                 f" fetch('{p}assets/subscribe.js?v={SITE_VERSION}')\n"
+                 ' .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
+                 ' .then(function (t) { (0, eval)(t); })\n'
+                 " .catch(function (e) { console.error('[subscribe] component failed to load:', e); });\n"
                  '}());\n</script>')
     card = og_card(path)
     html = f"""<!doctype html>
@@ -5282,7 +5295,7 @@ def articles_index_body():
            '<a href="graphs.html">as graphs</a>. Shorter, dated notes on individual changes are in '
            '<a href="../updates/index.html">updates</a>.</p>',
            ' ' + art_featured(newest),
-           ' ' + subscribe_block(''),
+           ' ' + subscribe_block('../'),
            articles_filter_bar(),
            ' <div class="agrid" id="agrid">']
     for a in rest:
@@ -5327,20 +5340,39 @@ SUBSCRIBE_TO = 'agent@riskmandate.ai'
 
 
 def subscribe_block(pre='', compact=False):
-    """Subscribe to new articles: one mailto link, nothing else. No form, no script and no
-    third-party service, so it works in every client and adds nothing to the page that
-    reads it. The mailbox is read by an agent that manages the list and the replies."""
+    """Subscribe to new articles. The reader types an address; assets/subscribe.js encrypts it in
+    the browser to the key of the agent that manages the list and drops it into the write-only
+    `subscribe` append lane of the subscribe vault (the lane, the key and the vault id are public,
+    in /.well-known/sgit-subscribe.json; the briefing for the agent is docs/briefs/subscribe-lane-agent-brief).
+    Without JavaScript, or if any step fails, the same request is offered as a plain email to
+    the same agent, so nothing is lost."""
     from urllib.parse import quote
-    subj = quote('Subscribe: sgit.ai articles')
-    body = quote('Please add me to the list for new sgit.ai articles.\n\n'
-                 'To stop, I will reply to any message with: unsubscribe')
-    href = f'mailto:{SUBSCRIBE_TO}?subject={subj}&amp;body={body}'
-    lead = ('Get new articles by email' if not compact else 'Want the next one by email')
-    return (f'<aside class="subscribe" aria-label="Subscribe to new articles">'
-            f'<p><b>{lead}.</b> Send an email to '
-            f'<a href="{href}">{SUBSCRIBE_TO}</a> (the link fills in the subject '
-            f'and a line of text). An agent reads that mailbox and manages the list. '
-            f'<a class="subbtn" href="{href}">Subscribe by email</a></p>'
+    href = (f'mailto:{SUBSCRIBE_TO}?subject={quote("Subscribe: sgit.ai articles")}'
+            f'&amp;body={quote("Please add me to the list for new sgit.ai articles.")}')
+    lead = 'Get new articles by email' if not compact else 'Want the next one by email'
+    return (f'<aside class="subscribe" id="subscribe" aria-label="Subscribe to new articles">'
+            f'<p><b>{lead}.</b> Your address is encrypted in your browser to the key of the agent that '
+            f'manages the list and dropped into a write-only lane on an encrypted vault. '
+            f'<a href="{pre}docs/briefs/subscribe-lane-agent-brief.html">How it works</a>.</p>'
+            f'<form class="subform" data-subscribe novalidate>'
+            f'<label class="sr" for="sub-email">Email address</label>'
+            f'<input id="sub-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>'
+            f'<label class="sr" for="sub-name">Name, optional</label>'
+            f'<input id="sub-name" name="name" type="text" autocomplete="name" placeholder="Name (optional)">'
+            f'<span class="hp" aria-hidden="true"><label for="sub-web">Website</label>'
+            f'<input id="sub-web" name="website" type="text" tabindex="-1" autocomplete="off"></span>'
+            f'<button class="subbtn" type="submit">Subscribe</button>'
+            f'<label class="consent"><input type="checkbox" name="consent"> <span>I am happy for sgit.ai to keep '
+            f'this address in a private vault and email me new articles. I can ask to be removed by replying to any '
+            f'message.</span></label>'
+            f'<p class="sub-status small" aria-live="polite"></p>'
+            f'<a class="sub-mailto small" href="{href}" hidden>Send it as an email instead &rarr;</a>'
+            f'</form>'
+            f'<div class="sub-done" hidden><b>Sent, encrypted, into the vault.</b> The lane answers only '
+            f'<code>ok</code>, by design, so there is no receipt. If nothing arrives, email '
+            f'<a href="mailto:{SUBSCRIBE_TO}">{SUBSCRIBE_TO}</a>.</div>'
+            f'<noscript><p class="small">This form needs JavaScript. Email '
+            f'<a href="{href}">{SUBSCRIBE_TO}</a> instead.</p></noscript>'
             f'<p class="small dim">Prefer a feed? <a href="{pre}updates/feed.xml">updates/feed.xml</a> '
             f'carries the dated notes.</p></aside>')
 

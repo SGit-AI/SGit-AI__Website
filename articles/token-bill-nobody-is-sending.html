@@ -218,7 +218,7 @@
  <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="future-of-news-story-vault-not-paywall.html">The future of news is the story vault, not the paywall</a> <span class="dim">A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.</span></li><li><a href="introducing-fractal-semantic-graphs.html">Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema</a> <span class="dim">A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.</span></li></ul></div><div><h3>Continued by</h3><ul><li><a href="memory-is-not-a-spectator-sport.html">Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one</a> <span class="dim">Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.</span></li><li><a href="custom-uis-are-not-the-exception.html">Custom UIs are not the exception: the inbox in 2026, where every message has its own universe</a> <span class="dim">Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.</span></li><li><a href="how-news-got-here.html">The reader was always the product: a corrected history of how news got into this mess</a> <span class="dim">News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.</span></li></ul></div></div>
  <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
 </section>
- <aside class="subscribe" aria-label="Subscribe to new articles"><p><b>Want the next one by email.</b> Send an email to <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&amp;body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe">agent@riskmandate.ai</a> (the link fills in the subject and a line of text). An agent reads that mailbox and manages the list. <a class="subbtn" href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&amp;body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe">Subscribe by email</a></p><p class="small dim">Prefer a feed? <a href="../updates/feed.xml">updates/feed.xml</a> carries the dated notes.</p></aside>
+ <aside class="subscribe" id="subscribe" aria-label="Subscribe to new articles"><p><b>Want the next one by email.</b> Your address is encrypted in your browser to the key of the agent that manages the list and dropped into a write-only lane on an encrypted vault. <a href="../docs/briefs/subscribe-lane-agent-brief.html">How it works</a>.</p><form class="subform" data-subscribe novalidate><label class="sr" for="sub-email">Email address</label><input id="sub-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><label class="sr" for="sub-name">Name, optional</label><input id="sub-name" name="name" type="text" autocomplete="name" placeholder="Name (optional)"><span class="hp" aria-hidden="true"><label for="sub-web">Website</label><input id="sub-web" name="website" type="text" tabindex="-1" autocomplete="off"></span><button class="subbtn" type="submit">Subscribe</button><label class="consent"><input type="checkbox" name="consent"> <span>I am happy for sgit.ai to keep this address in a private vault and email me new articles. I can ask to be removed by replying to any message.</span></label><p class="sub-status small" aria-live="polite"></p><a class="sub-mailto small" href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&amp;body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles." hidden>Send it as an email instead &rarr;</a></form><div class="sub-done" hidden><b>Sent, encrypted, into the vault.</b> The lane answers only <code>ok</code>, by design, so there is no receipt. If nothing arrives, email <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</div><noscript><p class="small">This form needs JavaScript. Email <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&amp;body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.">agent@riskmandate.ai</a> instead.</p></noscript><p class="small dim">Prefer a feed? <a href="../updates/feed.xml">updates/feed.xml</a> carries the dated notes.</p></aside>
  <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
 </main>
 <script>
@@ -227,6 +227,14 @@
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+<script>
+(function () {
+ fetch('../assets/subscribe.js?v=v0.6.56')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[subscribe] component failed to load:', e); });
 }());
 </script>
 
@@ -269,7 +277,7 @@
     <a href="../case-studies/index.html">Case studies</a>
     <a href="../skills/index.html">Skills for AI agents</a>
     <a href="../docs/briefs/index.html">Cross-team briefs</a>
-    <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles">Subscribe to new articles</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
     <a href="../llms.txt">llms.txt</a>
     <a href="../llms-full.txt">llms-full.txt</a>
     <a href="../admin/index.html">Admin &amp; engineering</a>
