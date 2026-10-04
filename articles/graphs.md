@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-24 of 24 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
+25 of 25 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
 ## How the articles connect
 
 *[diagram]*
+
+## [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md)
+
+2026-10-04 · Agents & policyVaults & method
+
+The quoted wall under a reply is redundant and occupies the space where a reader asks what they need to know; replace it with a short, reader-specific state of the thread, derived from the record and linking back to it, drafted by the agent team's drafts role from typed blocks and reviewed by a person, and run as an experiment rather than a format.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**14 nodes, 17 edges**
+
+- **The quoted wall is redundant** (claim) Every reply ships the whole thread to a reader who already has it, and the clients hide it on arrival behind a trimmed-content link.
+- **The reader's questions** (concept) Where are we, what was decided, what is open and whose, what happens next and do I act, who is on this thread now; the wall holds the material and answers none of them.
+- **End with the state of the thread** (method) Decided, open, next, on copy, sources: a hundred words written for this reader, with links to the messages condensed, which stay in the thread as the record.
+- **Written for one reader** (claim) The same thread condenses differently for the counterparty, the newcomer and the colleague who read everything; the question is what this person needs now.
+- **Who is on copy is part of the state** (claim) Who joined, who left, which participants are agents: facts every newcomer needs that no quoted wall carries.
+- **Derived, not the record** (concept) The tail points back at the thread instead of repeating it; if the tail is wrong the record underneath is not, and the reader can check in one tap.
+- **Netiquette, BLUF, Minto, TL;DR, ADRs** (example) RFC 1855 asked for a summary instead of the full quote in 1995; the Army's bottom line up front; the Pyramid Principle; decision records with a Status line.
+- **Reader-side AI summaries** (example) Superhuman, Shortwave, Copilot in Outlook, Apple Mail and Gmail now compute a summary at the top of a thread for the reader, privately and regenerated each time.
+- **Sender's statement versus reader's view** (concept) The client summary belongs to one reader and nobody stands behind it; the tail is reviewed, shared with everyone on copy, in the record, and can be argued with.
+- **The drafts role writes it** (method) From the typed blocks the inbox role already captures, for a chosen reader, with message ids cited and a hash logged; the person edits and sends; the inbox role records what went out.
+- **Personal, so configurable** (method) Five rows, one line, or the wall back: the reader's preference is a row in their folder in the CRM; text first, richer forms are variants.
+- **An experiment, not a format** (method) Four variants rotated by thread for a month on one person's correspondence, with measurements the record can take and the results published either way.
+- **What would make this wrong** (question) Readers scrolling to the quotes anyway, condensations corrected in more than a few replies in ten, clients mangling the rows.
+- **What does not exist yet** (question) The drafts role writing tails automatically, the preference row, the templates, the measurement report, the month of data and the follow-up.
+
+> The wall is shipped with every message and hidden on arrival, which is the clearest possible sign that it is the wrong thing to ship. The observation the proposal starts from.
+
+> The client's summary says what the thread looks like from here; the tail says what the sender believes it is. How the proposal differs from the AI summaries mail clients already compute.
+
+builds on [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md)
 
@@ -84,7 +116,7 @@ Memory for agents is context management: many context-specific memories, fractal
 
 > Provenance is what lets memory be shared without being trusted, and it is the part that a vector store cannot give you, because a similarity score is not a source. Why every item in the memory carries its source.
 
-builds on [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away).
+builds on [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply).
 
 ## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
 
@@ -183,7 +215,7 @@ Claude is used as an agent state machine, one session per role, every message be
 
 > You do not have to believe what the agent says it did. You can read what it did. Why the record is the point for someone learning to trust a set of agents.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md)
 
@@ -217,7 +249,7 @@ Every message has a graph with altitudes, so a message is designed for the recip
 
 > The graph is the medium. Email, cards, voice and boards are views of it. The turn where email stops being the medium and becomes one projection of the graph.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
 
 ## [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md)
 
@@ -318,7 +350,7 @@ Write an agent's access policy as a table with a column for how each rule is enf
 
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
-builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 

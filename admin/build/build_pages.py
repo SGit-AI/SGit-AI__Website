@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.54'
+SITE_VERSION = 'v0.6.55'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.54', '2026-10-03', 'this release',
+    ('v0.6.55', '2026-10-04', 'this release',
+     "THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread "
+     "written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, "
+     "drafted by the drafts role from the typed blocks the inbox role already keeps and reviewed by a "
+     "person. It credits the precedents (RFC 1855's summary-instead-of-quote in 1995, bottom line up "
+     "front, Minto, TL;DR, decision records) and the reader-side AI summaries in Gmail, Outlook, Apple "
+     "Mail, Superhuman and Shortwave, and draws the line between a sender's reviewed statement and a "
+     "reader's private view. It ends as an experiment on the author's own correspondence: four variants, "
+     "what the record can measure, and what would show the idea is wrong. Five mock-up figures with a "
+     "fictional thread.",),
+    ('v0.6.54', '2026-10-03', 'git 25fd0ca1',
      "MEMORY IS NOT A SPECTATOR SPORT. A new article on agentic memory as context management: many "
      "context-specific memories rather than one store, fractal so an agent loads only the altitude its "
      "question needs, published and open so they can be fetched and cited, shared through vaults, with "

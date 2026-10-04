@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -23,15 +23,15 @@ Four of **40 published vaults**. Each opens with a read key printed on its page,
 
 ## Start with an argument, not a menu
 
-The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 24 so far, three newest here.
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 25 so far, three newest here.
 
-[2026-10-03Graphs & knowledge5 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](articles/code-review-as-a-fractal-semantic-graph.md) [2026-10-03Graphs & knowledge7 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](articles/memory-is-not-a-spectator-sport.md) [2026-10-02Agents & policy8 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](articles/footprint-and-blast-radius.md)
+[2026-10-04Agents & policy4 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](articles/the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge5 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](articles/code-review-as-a-fractal-semantic-graph.md) [2026-10-03Graphs & knowledge8 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](articles/memory-is-not-a-spectator-sport.md)
 
+- [Footprint and blast radius](articles/footprint-and-blast-radius.md) · 2026-10-02
 - [Price it, then give it away](articles/price-it-then-give-it-away.md) · 2026-10-02
 - [Replicating the agentic inbox](articles/replicating-the-agentic-inbox.md) · 2026-10-02
 - [Custom UIs are not the exception](articles/custom-uis-are-not-the-exception.md) · 2026-10-01
 - [The ultimate insider](articles/ultimate-insider-three-collisions.md) · 2026-09-30
-- [The reader was always the product](articles/how-news-got-here.md) · 2026-09-29
 
 [All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
@@ -55,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-212site releases, each verified live before it was called done
+213site releases, each verified live before it was called done
 
 40vaults published with a deliberately public read key
 

@@ -2,7 +2,7 @@
 
 > People ask how my agents remember, and the honest answer is that memory is the thing I have been building all along without calling it that. The industry's picture of agentic memory is one store that everything gets pumped into and retrieved from by similarity. Mine is the opposite. Memory is context management: giving an agent the right context for the moment, and no more, because context has a cost in tokens and in attention. It is many memories, not one, because context is specific: the inbox has its rules, the news has its rules, a contact in the CRM has a world of its own, and forcing them into one ontology would lose what each knows. It is fractal, principles at the top in a few kilobytes and the code at the bottom, so an agent loads the altitude its question lives at. It is published and open, because an agent can fetch, quote and link what is public, with a URL for every claim and a hash for every file. And it is shared between agents through vaults, so a session can end and the next one, or a different agent, or a person, picks up from the same files. This article says how that works, what it cost, where the industry's tools and this approach agree and differ, and where mine falls short, with the evidence of the session that wrote it: one Claude Code session across several context resets that revised an article from another team's review, wrote two more, published a vault and shipped six releases in a day, remembering nothing between resets except what the files remembered for it.
 
-*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.6.54 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -161,6 +161,10 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#memory-
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 - [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md) Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
+
+### Continued by
+
+- [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md) End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
