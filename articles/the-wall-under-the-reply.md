@@ -2,7 +2,7 @@
 
 > Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
 
-*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -127,6 +127,10 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Want the next one by email.** Send an email to [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe) (the link fills in the subject and a line of text). An agent reads that mailbox and manages the list. [Subscribe by email](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe)
+
+Prefer a feed? [updates/feed.xml](../updates/feed.xml) carries the dated notes.
 
 [← All articles](index.md)
 

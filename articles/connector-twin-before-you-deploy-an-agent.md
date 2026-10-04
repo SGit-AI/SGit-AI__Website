@@ -2,7 +2,7 @@
 
 > When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.
 
-*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -188,6 +188,10 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Want the next one by email.** Send an email to [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe) (the link fills in the subject and a line of text). An agent reads that mailbox and manages the list. [Subscribe by email](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe)
+
+Prefer a feed? [updates/feed.xml](../updates/feed.xml) carries the dated notes.
 
 [← All articles](index.md)
 

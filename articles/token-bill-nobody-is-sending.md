@@ -2,7 +2,7 @@
 
 > A media analyst posted a week of Cloudflare logs this weekend, showing AI answer engines fetching a small publisher's pages 16,000 times and sending 10 readers back, and called it predatory. The numbers are consistent with everything Cloudflare, TollBit and Wikimedia have published, and the usual reading is a tragedy of the commons, to be fixed by pricing the withdrawal. This article makes a second reading that the debate has missed: those 16,000 fetches are also a cost to the fetcher. Every one is a page of HTML parsed, extracted and turned into tokens, more than half of them re-fetches of pages that have not changed, on a web where ninety per cent of what crawlers process is unique and so defeats every cache. Measured on this site's own 183 pages, the markdown twin of a page is 62% fewer tokens than the HTML; Cloudflare's own example is 81%. Dates, hashes and change signals remove whole fetches; frozen, hashed sources remove the verification round trips; a typed graph lets an agent load the altitude a question needs rather than the page. Every payment rail built so far, pay per crawl, RSL, Microsoft's marketplace, Perplexity's pool, Cloudflare's pay per use, prices the content. None prices the format. The hypothesis is that a publisher who serves structure is saving the provider money the provider is already spending, and that a share of the saving, paid in money or in the provider's own tokens, is a monetisation angle that needs no licensing deal and works for a site with ten clicks a week. The arithmetic for a single site is small and the article says so. It also says what data would settle the question, and notes that this site has already been running the publisher's half of the experiment.
 
-*Source: <https://sgit.ai/articles/token-bill-nobody-is-sending.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/token-bill-nobody-is-sending.html> · site v0.6.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -180,6 +180,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#token-b
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Want the next one by email.** Send an email to [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe) (the link fills in the subject and a line of text). An agent reads that mailbox and manages the list. [Subscribe by email](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.%0A%0ATo%20stop%2C%20I%20will%20reply%20to%20any%20message%20with%3A%20unsubscribe)
+
+Prefer a feed? [updates/feed.xml](../updates/feed.xml) carries the dated notes.
 
 [← All articles](index.md)
 

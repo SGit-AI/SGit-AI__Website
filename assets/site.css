@@ -210,6 +210,13 @@ main.doc td{padding:.55rem .8rem;border-top:1px solid var(--line);vertical-align
 .warnbox{border:1px solid var(--line);border-left:3px solid var(--yellow);background:var(--panel);border-radius:0 10px 10px 0;
   padding:.8rem 1rem;font-size:.85rem;color:#34363c;margin:1.2rem 0;box-shadow:var(--shadow)}
 .note b,.warnbox b{color:#101114}
+.subscribe{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel);border-radius:0 10px 10px 0;
+  padding:.8rem 1rem;margin:1.4rem 0;font-size:.88rem;color:#34363c;box-shadow:var(--shadow)}
+.subscribe p{margin:.2rem 0}
+.subscribe .subbtn{display:inline-block;margin:.3rem 0 0 .4rem;padding:.3rem .8rem;border:1px solid var(--accent);border-radius:6px;
+  font-weight:600;text-decoration:none}
+.subscribe .subbtn:hover,.subscribe .subbtn:focus-visible{background:var(--accent);color:#fff}
+@media print{.subscribe{display:none}}
 .pagenav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.8rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.85rem}
 
 /* docs hub */

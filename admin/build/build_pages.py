@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.55'
+SITE_VERSION = 'v0.6.56'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.55', '2026-10-04', 'this release',
+    ('v0.6.56', '2026-10-04', 'this release',
+     "SUBSCRIBE TO THE ARTICLES. The articles index and the foot of every article now carry a subscribe "
+     "block that is one mailto link to agent@riskmandate.ai with the subject and body filled in, plus a "
+     "Subscribe link in every page footer. No form, no script, no third-party service: the agent behind "
+     "that mailbox manages the list. Built by subscribe_block() in the generator, styled by .subscribe "
+     "in site.css."),
+    ('v0.6.55', '2026-10-04', 'previous release',
      "THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread "
      "written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, "
      "drafted by the drafts role from the typed blocks the inbox role already keeps and reviewed by a "
@@ -3350,6 +3356,7 @@ def footer(p, md=''):
     <a href="{p}case-studies/index.html">Case studies</a>
     <a href="{p}skills/index.html">Skills for AI agents</a>
     <a href="{p}docs/briefs/index.html">Cross-team briefs</a>
+    <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles">Subscribe to new articles</a>
     <a href="{p}llms.txt">llms.txt</a>
     <a href="{p}llms-full.txt">llms-full.txt</a>
     <a href="{p}admin/index.html">Admin &amp; engineering</a>
@@ -5275,6 +5282,7 @@ def articles_index_body():
            '<a href="graphs.html">as graphs</a>. Shorter, dated notes on individual changes are in '
            '<a href="../updates/index.html">updates</a>.</p>',
            ' ' + art_featured(newest),
+           ' ' + subscribe_block(''),
            articles_filter_bar(),
            ' <div class="agrid" id="agrid">']
     for a in rest:
@@ -5315,6 +5323,28 @@ def _short(title, n=52):
     return cut + '…'
 
 
+SUBSCRIBE_TO = 'agent@riskmandate.ai'
+
+
+def subscribe_block(pre='', compact=False):
+    """Subscribe to new articles: one mailto link, nothing else. No form, no script and no
+    third-party service, so it works in every client and adds nothing to the page that
+    reads it. The mailbox is read by an agent that manages the list and the replies."""
+    from urllib.parse import quote
+    subj = quote('Subscribe: sgit.ai articles')
+    body = quote('Please add me to the list for new sgit.ai articles.\n\n'
+                 'To stop, I will reply to any message with: unsubscribe')
+    href = f'mailto:{SUBSCRIBE_TO}?subject={subj}&amp;body={body}'
+    lead = ('Get new articles by email' if not compact else 'Want the next one by email')
+    return (f'<aside class="subscribe" aria-label="Subscribe to new articles">'
+            f'<p><b>{lead}.</b> Send an email to '
+            f'<a href="{href}">{SUBSCRIBE_TO}</a> (the link fills in the subject '
+            f'and a line of text). An agent reads that mailbox and manages the list. '
+            f'<a class="subbtn" href="{href}">Subscribe by email</a></p>'
+            f'<p class="small dim">Prefer a feed? <a href="{pre}updates/feed.xml">updates/feed.xml</a> '
+            f'carries the dated notes.</p></aside>')
+
+
 def article_body(a):
     ver = (f' &middot; <a href="../admin/versions.html">{a["version"]}</a>' if a['version'] else '')
     # The byline is the first thing after the title, because an article written in the
@@ -5337,6 +5367,7 @@ def article_body(a):
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + article_threads_block(a)
+            + '\n ' + subscribe_block('../', compact=True)
             + '\n <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All articles</a></p>\n'
             '</main>')
