@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.55'
+SITE_VERSION = 'v0.6.56'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.55', '2026-10-04', 'this release',
+    ('v0.6.56', '2026-10-04', 'this release',
+     "THE ARTICLE, CONDENSED BY ANOTHER MODEL. The reply-tail article gains a closing section with the "
+     "one-page infographic ChatGPT produced from the published text a few hours after release, kept in "
+     "that model's own style and credited, because a condensation made for a reader by a different model "
+     "is the thing the article proposes, done to the article. The caption says the thread is fictional "
+     "and the addresses are placeholders.",),
+    ('v0.6.55', '2026-10-04', 'git 12ba9608',
      "THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread "
      "written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, "
      "drafted by the drafts role from the typed blocks the inbox role already keeps and reviewed by a "

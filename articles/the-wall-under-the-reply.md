@@ -2,7 +2,7 @@
 
 > Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
 
-*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.55 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.56 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The wall under the reply: end an email with the state of the thread, not the thread
 
-By [Dinis Cruz](../about/index.md) · 2026-10-04 · [v0.6.55](../admin/versions.md) · emailagentsemail-fscontextreplysummarynetiquetteblufdraftsexperimentriskmandatearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-04 · updated 2026-10-04 · [v0.6.56](../admin/versions.md) · emailagentsemail-fscontextreplysummarynetiquetteblufdraftsexperimentriskmandatearticle
 
 ***Abstract:** Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.*
 
@@ -93,6 +93,14 @@ And what would make this wrong, stated now so that it cannot be softened later. 
 **Exists and runs:** the typed blocks in Email-FS and the drafts role that writes replies from them, with the hash and the Sent-folder record; the per-contact folders in the CRM where a reader's preference would live; the reader-side summaries in Gmail, Outlook, Apple Mail, Superhuman and Shortwave, cited above; the three decades of guidance from RFC 1855 to the Email Charter; and the first hand-written tails on my own replies, which are what prompted the memo.
 
 **Does not exist yet:** the drafts role writing the tail automatically from the blocks, with the reader chosen and the Cc changes computed; the preference row in the CRM; the four variants as templates; the measurements as a report the inbox role can produce from the record; the month of data; and the follow-up that says what the data showed. All of it is small, and the first three are a week of the agent team's work.
+
+## The article, condensed by another model
+
+A few hours after this was published, Dinis fed it to ChatGPT and asked for an infographic. What came back is below, and it belongs here for a reason beyond being a good picture: it is a one-page state of this article, made for a reader, by a model that was not the one that drafted it. The five rows are there, the Cc change is there, the human-in-the-loop workflow and the four variants and the evaluation signals are there, and nothing was invented. It is the thing the article proposes, done to the article.
+
+The article as a one-page state, generated with ChatGPT from the published text on 4 October 2026 and credited by it to the source. The thread shown is fictional; the example addresses are the model's placeholders, not real mailboxes. The style is the other model's, kept as it came, because who made a condensation is part of its provenance.
+
+Two things worth noticing. The picture is a reader's view, not the sender's: it says what the article looks like from outside, and it is right about that. And it was cheap, which is the point of the whole proposal: the state of a long thing, written for one reader, is now something an agent produces in a minute and a person checks in less. The argument of the memory article applies here too. Two models, one published source, and a condensation that cites where it came from.
 
 ## Threads woven here
 
