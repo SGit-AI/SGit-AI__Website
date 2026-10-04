@@ -5,7 +5,7 @@ updated: 2026-10-04
 author: Dinis Cruz
 author_url: about/index.html
 summary: Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
-version: v0.6.56
+version: v0.6.57
 license: https://creativecommons.org/licenses/by/4.0/
 tags: email, agents, email-fs, context, reply, summary, netiquette, bluf, drafts, experiment, riskmandate, article
 status: published
@@ -13,7 +13,7 @@ status: published
 
 !shot tail-wall-vs-tail.webp | images/ | The same reply twice. Left, as mail clients make it: the whole thread pasted under a two-line answer, for a reader who already has the thread. Right, ending with a short state of the thread written for this reader, with links to the messages it condenses. Mock-up with fictional names, addresses and thread.
 
-> **Where this comes from, and what is behind it.** A voice memo on 4 October 2026, about something I have already started asking the agents to do. It follows directly from three published pieces: [Custom UIs are not the exception](/articles/custom-uis-are-not-the-exception.html), which already said "send the summary, not the thread" and described the typed blocks the agents pass between themselves; [Replicating the agentic inbox](/articles/replicating-the-agentic-inbox.html), which has the drafts role that would write this; and [Memory is not a spectator sport](/articles/memory-is-not-a-spectator-sport.html), whose question, what does this agent need in its window right now, is the reader's question too. The history and the current tools were researched on 4 October 2026 at the URLs in the sources, and the gaps in that research are stated where they fall.
+> **Where this comes from, and what is behind it.** A voice memo on 4 October 2026, about something I have already started asking the agents to do. It follows directly from three published pieces: [Custom UIs are not the exception](/articles/custom-uis-are-not-the-exception.html), which already said "send the summary, not the thread" and described the typed blocks the agents pass between themselves; [Replicating the agentic inbox](/articles/replicating-the-agentic-inbox.html), which has the drafts role that would write this; and [Memory is not a spectator sport](/articles/memory-is-not-a-spectator-sport.html), whose question, what does this agent need in its window right now, is the reader's question too. The history and the current tools were researched on 4 October 2026 at the URLs in the sources, and the gaps in that research are stated where they fall. Dinis also posted the article [on LinkedIn](https://www.linkedin.com/pulse/wall-under-reply-end-email-state-thread-dinis-cruz-fpc0e/) the same day.
 
 ## In short
 
@@ -75,7 +75,7 @@ The Cc row deserves a word of its own, because it is the one that surprised me w
 
 ## The experiment
 
-I do not know what the tail should look like, and I distrust anyone who says they do, because the format is personal, the readers differ, and the clients differ. So rather than publish a format, I am publishing an experiment, and I am going to run it on my own correspondence, which the memo put bluntly: use all my interactions to experiment.
+I do not know what the tail should look like, because the format is personal, the readers differ, and the clients differ. So rather than publish a format, I am publishing an experiment, and I am going to run it on my own correspondence via the agent@riskmandate.ai agentic team, which the memo put bluntly: use all my interactions to experiment.
 
 !shot tail-experiments.webp | images/ | Four variants to run on one person's correspondence for a month, rotating by thread: three sentences of prose, labelled rows, an ASCII timeline, an HTML card with a text fallback. What the record can measure, and what would show the idea is wrong. Fictional thread throughout.
 

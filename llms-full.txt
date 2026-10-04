@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.56). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.57). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-214site releases, each verified live before it was called done
+215site releases, each verified live before it was called done
 
 40vaults published with a deliberately public read key
 
@@ -5623,7 +5623,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.56, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.57, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5986,7 +5986,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-214**site releases since 14 August**
+215**site releases since 14 August**
 each verified live before it was called done
 
 40**vaults published with a public read key**
@@ -9976,11 +9976,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.56**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.57**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.56 | 2026-10-04 | this release | THE ARTICLE, CONDENSED BY ANOTHER MODEL. The reply-tail article gains a closing section with the one-page infographic ChatGPT produced from the published text a few hours after release, kept in that model's own style and credited, because a condensation made for a reader by a different model is the thing the article proposes, done to the article. The caption says the thread is fictional and the addresses are placeholders. |
+| v0.6.57 | 2026-10-04 | this release | THE EXPERIMENT PARAGRAPH, IN THE AUTHOR'S WORDS. The reply-tail article's experiment paragraph now reads as Dinis rewrote it for the LinkedIn repost: the experiment runs on his own correspondence via the agent@riskmandate.ai agentic team, and the note box links the LinkedIn repost. A revised version of the one-page condensation arrived without the third-party placeholder domain but with the site's name misspelled in its credit line, so the first version stays until a clean one comes. |
+| v0.6.56 | 2026-10-04 | git b5a36310 | THE ARTICLE, CONDENSED BY ANOTHER MODEL. The reply-tail article gains a closing section with the one-page infographic ChatGPT produced from the published text a few hours after release, kept in that model's own style and credited, because a condensation made for a reader by a different model is the thing the article proposes, done to the article. The caption says the thread is fictional and the addresses are placeholders. |
 | v0.6.55 | 2026-10-04 | git 12ba9608 | THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, drafted by the drafts role from the typed blocks the inbox role already keeps and reviewed by a person. It credits the precedents (RFC 1855's summary-instead-of-quote in 1995, bottom line up front, Minto, TL;DR, decision records) and the reader-side AI summaries in Gmail, Outlook, Apple Mail, Superhuman and Shortwave, and draws the line between a sender's reviewed statement and a reader's private view. It ends as an experiment on the author's own correspondence: four variants, what the record can measure, and what would show the idea is wrong. Five mock-up figures with a fictional thread. |
 | v0.6.54 | 2026-10-03 | git 25fd0ca1 | MEMORY IS NOT A SPECTATOR SPORT. A new article on agentic memory as context management: many context-specific memories rather than one store, fractal so an agent loads only the altitude its question needs, published and open so they can be fetched and cited, shared through vaults, with provenance on every item. It reads the industry fairly (vendor memory features, MemGPT to Mem0 and Zep, Letta's filesystem benchmark, Manus, Anthropic's context engineering guidance and memory tool) and uses the session that wrote it as the evidence. Four figures. Two stale facts the site's own memory carried are now measured at build time instead of remembered: llms.txt said the full-text file was about 155 KB when it was 2.5 MB, and graphs.json and updates.json said they were generated on 15 August. Two more are named in the article and left standing: the 617-node figure on the fractal graphs index, and the updates feed that stops on 21 September. |
 | v0.6.53 | 2026-10-03 | git 77644f73 | ARTICLE AND VAULT POINT AT EACH OTHER. The code review article gains a nine-view contact sheet of the vault app and an 'open the vault' box in its worked-example section, and every screenshot it draws from a vault page's own image folder now links to that vault page: a build rule for articles, in the same tab, with the caption saying so. The vault page gains a box under its lead naming the article as the argument and a closing 'Read the article' section. shots.js learned a per-figure link target. |
@@ -16918,13 +16919,13 @@ The briefing PDF and this page are © 2026 Dinis Cruz, CC BY 4.0 for our own tex
 
 # The wall under the reply: end an email with the state of the thread, not the thread
 
-By [Dinis Cruz](../about/index.md) · 2026-10-04 · updated 2026-10-04 · [v0.6.56](../admin/versions.md) · emailagentsemail-fscontextreplysummarynetiquetteblufdraftsexperimentriskmandatearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-04 · updated 2026-10-04 · [v0.6.57](../admin/versions.md) · emailagentsemail-fscontextreplysummarynetiquetteblufdraftsexperimentriskmandatearticle
 
 ***Abstract:** Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.*
 
 The same reply twice. Left, as mail clients make it: the whole thread pasted under a two-line answer, for a reader who already has the thread. Right, ending with a short state of the thread written for this reader, with links to the messages it condenses. Mock-up with fictional names, addresses and thread.
 
-**Where this comes from, and what is behind it.** A voice memo on 4 October 2026, about something I have already started asking the agents to do. It follows directly from three published pieces: [Custom UIs are not the exception](../articles/custom-uis-are-not-the-exception.md), which already said "send the summary, not the thread" and described the typed blocks the agents pass between themselves; [Replicating the agentic inbox](../articles/replicating-the-agentic-inbox.md), which has the drafts role that would write this; and [Memory is not a spectator sport](../articles/memory-is-not-a-spectator-sport.md), whose question, what does this agent need in its window right now, is the reader's question too. The history and the current tools were researched on 4 October 2026 at the URLs in the sources, and the gaps in that research are stated where they fall.
+**Where this comes from, and what is behind it.** A voice memo on 4 October 2026, about something I have already started asking the agents to do. It follows directly from three published pieces: [Custom UIs are not the exception](../articles/custom-uis-are-not-the-exception.md), which already said "send the summary, not the thread" and described the typed blocks the agents pass between themselves; [Replicating the agentic inbox](../articles/replicating-the-agentic-inbox.md), which has the drafts role that would write this; and [Memory is not a spectator sport](../articles/memory-is-not-a-spectator-sport.md), whose question, what does this agent need in its window right now, is the reader's question too. The history and the current tools were researched on 4 October 2026 at the URLs in the sources, and the gaps in that research are stated where they fall. Dinis also posted the article [on LinkedIn](https://www.linkedin.com/pulse/wall-under-reply-end-email-state-thread-dinis-cruz-fpc0e/) the same day.
 
 ## In short
 
@@ -16986,7 +16987,7 @@ The Cc row deserves a word of its own, because it is the one that surprised me w
 
 ## The experiment
 
-I do not know what the tail should look like, and I distrust anyone who says they do, because the format is personal, the readers differ, and the clients differ. So rather than publish a format, I am publishing an experiment, and I am going to run it on my own correspondence, which the memo put bluntly: use all my interactions to experiment.
+I do not know what the tail should look like, because the format is personal, the readers differ, and the clients differ. So rather than publish a format, I am publishing an experiment, and I am going to run it on my own correspondence via the agent@riskmandate.ai agentic team, which the memo put bluntly: use all my interactions to experiment.
 
 Four variants to run on one person's correspondence for a month, rotating by thread: three sentences of prose, labelled rows, an ASCII timeline, an HTML card with a text fallback. What the record can measure, and what would show the idea is wrong. Fictional thread throughout.
 

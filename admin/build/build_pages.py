@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.56'
+SITE_VERSION = 'v0.6.57'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.56', '2026-10-04', 'this release',
+    ('v0.6.57', '2026-10-04', 'this release',
+     "THE EXPERIMENT PARAGRAPH, IN THE AUTHOR'S WORDS. The reply-tail article's experiment paragraph now "
+     "reads as Dinis rewrote it for the LinkedIn repost: the experiment runs on his own correspondence "
+     "via the agent@riskmandate.ai agentic team, and the note box links the LinkedIn repost. A revised "
+     "version of the one-page condensation arrived without the third-party placeholder domain but with "
+     "the site's name misspelled in its credit line, so the first version stays until a clean one comes.",),
+    ('v0.6.56', '2026-10-04', 'git b5a36310',
      "THE ARTICLE, CONDENSED BY ANOTHER MODEL. The reply-tail article gains a closing section with the "
      "one-page infographic ChatGPT produced from the published text a few hours after release, kept in "
      "that model's own style and credited, because a condensation made for a reader by a different model "
