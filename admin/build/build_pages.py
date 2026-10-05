@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.59'
+SITE_VERSION = 'v0.6.60'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.59', '2026-10-05', 'this release',
+    ('v0.6.60', '2026-10-05', 'this release',
+     "IF SOMEBODY BUILT A COMPANY ON CODE REVIEW. A follow-up to the code review article, written to answer a "
+     "reader's questions and a voice memo: what is fractal in a fractal semantic graph (the grammar) and what "
+     "is not (the layers, which each company defines); the projected graph built from stories before the code "
+     "exists and the derived graph built from the code, with the review as the join; the layers the first "
+     "example had but did not name; stories as rules and examples rather than prose; a refactor as relative "
+     "to the layer held still, which the first article stated too narrowly; deploys and infrastructure as "
+     "rungs of the same graph; who reads the code at each stage of evolution, after Wardley; reshaping the "
+     "change rather than reviewing it as it arrived; budgets per altitude and the five whys as the loop that "
+     "makes the next review cheaper; and open source as the only business model that fits. Six figures.",),
+    ('v0.6.59', '2026-10-05', 'git e885e517',
      "THE IDENTITY WE WANTED TO GIVE THE AGENTS. A new article captures the week a plan to give every agent "
      "and user a Google Workspace identity from one tenant met Google's terms: the resale and function-account "
      "clauses in their current wording, with one correction to the design pack's own citation (the 'substitute "

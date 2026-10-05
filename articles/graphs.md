@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,45 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-26 of 26 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
+27 of 27 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
 ## How the articles connect
 
 *[diagram]*
+
+## [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](if-somebody-built-a-company-on-code-review.md)
+
+2026-10-05 · Graphs & knowledgeStartups & strategy
+
+What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each rung to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.
+
+*[diagram]*
+**concept**claim**method**example
+
+**16 nodes, 17 edges**
+
+- **The grammar is fractal, the layers are yours** (claim) Nodes, edges, an ontology, a taxonomy and the move between altitudes are constant; which layers exist, what they are called and where they stop are decided by the company, its culture, languages and stack.
+- **Fractal is a precise claim** (concept) Self-similarity, scale invariance, composition and recursion, as the July 2026 architecture brief defined it; none of the four names a layer.
+- **The projected graph** (method) Built top down before the code exists: objectives, stories with rules and examples, features and flows, the commands and surfaces they will touch, components as far as design can honestly see.
+- **The derived graph** (method) Built bottom up from the syntax tree with no model in line: fingerprinted nodes, resolved calls, classes, modules, the commands the code exposes, and proposed stories marked as proposed.
+- **The review is the join** (claim) Three outcomes: a match, where a derived surface serves a projected story; derived but not projected, a bug or an unwritten story; projected but not derived, the plan or the forgotten thing.
+- **Stories as rules and examples** (method) Example Mapping's cards as the top rung: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one.
+- **A refactor is relative to the held layer** (claim) A refactor is a change where some layers move and one chosen layer, the one with the tests or the contract, does not; an architecture migration holding only the client interface is a refactor at a higher altitude.
+- **The deploy is a rung** (concept) Pipelines, environments, running services, configuration and secrets form a graph with its own verbs; a change's reach continues through it, and the non-functional requirements live there.
+- **Who reads the code depends on the map** (claim) Explorer code is read for intent, mostly by agents; villager code is read all the way down; town planner code is read by deterministic checks at the boundary, with a person for exceptions. The company sits in the two moves.
+- **Reshape the change before reviewing it** (method) Split a change by reach: provably no behaviour, merged by a check; reaches tested behaviour, checks plus a glance; reaches a mission-critical path, the right people. Review is sorting, not saying no.
+- **Replicate reality first** (method) Derive what a parser can, let a model propose the rest marked proposed, confront the graph with users, experts and tests, version everything so a review can be replayed as the graph was.
+- **A budget per altitude, per change** (method) Deterministic checks always run; the delta re-derives only what changed; models get small budgets and hard stops; onboarding starts at one point and continues; handed-on work carries its budget and never widens it.
+- **The five whys fix the layer below** (method) Every finding at one layer is a question about the layer below, and the fix goes there as a rule or a graph query, so the next change like it is caught for the price of a query. Not whack-a-mole.
+- **Compare the blast radius to the intent** (claim) Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per rung that moved; measure increments as projected nodes gaining a derived match.
+- **Open source is the only model that fits** (claim) The layers are the customer's and the loop runs where the code is; sell the customised deployment, the running of the loop and the accumulated rules; give away the grammar, the parser and the model.
+- **What the first article got wrong** (example) The refactor sentence was one refactor at one altitude; the seven altitudes were one repository's layers; the text skipped the commands and modules the delta had and the figure showed.
+
+> The grammar is fractal. The layers are yours. The distinction the whole answer turns on, and the reason a review product has to learn each company's layers rather than impose its own.
+
+> Review is not saying no. It is sorting what can go fast from what must go slow, and giving the slow part to people who have the context to decide well. The job of the product, stated as a job to the change rather than to the reviewer.
+
+builds on [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
 
 ## [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md)
 
@@ -117,7 +151,7 @@ Source code is already a fractal semantic graph, stories to syntax tree and belo
 
 > The answer is not a faster reviewer reading the same diff. It is a different diff. The article's claim about the review burden of generated code.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
 
 ## [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md)
 
@@ -184,7 +218,7 @@ Add two words to the Agent Behaviour Policy: footprint, what the agent actually 
 
 > The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
 
-builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
 
@@ -485,7 +519,7 @@ If you cannot say what your agent did, what it saw when it did it, and which of 
 
 > The value of the list is not that most of it is green. It is that the red rows are named. Why the twin changes governance: irreversible actions become a named list the mandate can be written against.
 
-continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md)
 
@@ -585,7 +619,7 @@ AI is available to both sides, so the SaaS apocalypse will be decided by inertia
 
 > The things SaaS companies refused to build, to protect their moats, are precisely the things an agent needs. The irony the article calls the whole piece in one paragraph: the moat is now what the customer's agent cannot get past.
 
-continued by [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults).
+continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults).
 
 ## [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md)
 
@@ -617,7 +651,7 @@ A startup operating model in three pillars: be profitable, make investors come t
 
 > The worst possible time to raise money is before you are profitable, before you have the product, before you understand the fit. Pillar two stated plainly, and the reason profitability comes first.
 
-builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
+builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
 
 ## [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md)
 
@@ -650,7 +684,7 @@ Every unit of knowledge is already a graph in its owner's vocabulary, and a shor
 
 > Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them. The evidence that the method does work, not just that it is defined: the amended-articles finding came from the join.
 
-continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+continued by [If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
 ## [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](proof-behind-the-claim.md)
 
