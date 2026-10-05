@@ -2,7 +2,7 @@
 
 > Source code is a very good example of a fractal semantic graph. It has layers within layers, and each one is a graph with its own vocabulary: what the user is trying to do, the features and flows, the components people draw as architecture, the classes, the methods and the calls between them, the syntax tree, and on down to the machine code if you want it. C4 saw the layers and stopped at four; Gherkin got the top layer into a shape people could write and then glued it to the code with regular expressions. What changed is that naming a node and the verb to the next one is now cheap, because a language model can do it from the syntax tree, once per change, and write the result as files. This article argues that code review should read a change at every one of those layers, and that two things fall out when it does: a refactor is a change that moves the bottom layers and leaves the top ones still, and a bug fix is a change that is visible at the top as a story that now holds. It revisits method streams, the review technique from the OWASP O2 Platform in 2012, as one script over a syntax tree with resolved calls. It comes with a worked example published as a vault: the sgit command-line tool, 377 classes and 1,111 methods, read as layered graphs with nothing run, including one real commit read upwards from the seven methods it changed to the nine commands and six user stories it can reach. And it says what makes the whole thing trustworthy, which is not getting the graph right but getting it to where users, experts and tests can correct it. There is a company in this for somebody to build.
 
-*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -182,6 +182,7 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#cod
 
 ### Continued by
 
+- [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [If somebody built a company on code review: how I would do it, and why it is only now possible](if-somebody-built-a-company-on-code-review.md) A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
 

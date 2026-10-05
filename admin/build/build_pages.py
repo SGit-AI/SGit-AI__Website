@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.64'
+SITE_VERSION = 'v0.6.65'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.64', '2026-10-05', 'this release',
+    ('v0.6.65', '2026-10-05', 'this release',
+     "HOW MUCH OF THIS DID I WRITE? A new article measures the session that wrote the last twenty articles: "
+     "every word the author sent, every word that came back, the rounds each piece went through, the "
+     "corrections by kind, and the record the memos stood on. Three figures and a published dataset with the "
+     "method and its limits. Seven articles accounted for by hand.",),
+    ('v0.6.64', '2026-10-05', 'git 0ad26f6e',
      "THE SOURCES, LINKED. Every piece of earlier writing the code review company article weaves in now links "
      "to its public copy: the SG/Send team briefs and articles on GitHub as markdown, the diniscruz.ai posts, "
      "the Villager team brief in the sgit CLI repository, Wardley's own posts, Example Mapping, the SecDevOps "

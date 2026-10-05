@@ -2,7 +2,7 @@
 
 > A reader of the code review article replied with seven good questions, and a voice memo of mine answered them with a change of frame: if somebody were building a company on code review, this is how I would do it. The answers turn on a distinction the first article did not make clearly enough. What is fractal in a fractal semantic graph is the grammar; which layers exist is decided by each company, and a product that standardises them away loses the thing it was meant to review. Two things make the rest possible only now. One technology can read every layer, from strategy to bytecode, so the graphs can be built at every altitude and built close to reality. And that moves code review from an art of opinion and power to a science of facts, provided the models are used to build, prune and maintain the graphs and then taken out of the line. From there: a projected graph from stories before the code exists and a derived graph from the code, with the review as the join; a refactor as relative to the layer held still, correcting the first article; the deploy as a layer; who reads the code at each stage of evolution, after Wardley; reshaping a change by reach; budgets as the objective good enough and the five whys as the loop; behaviour policies for the agents doing the work; and open source as the only model that fits.
 
-*Source: <https://sgit.ai/articles/if-somebody-built-a-company-on-code-review.html> · site v0.6.64 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/if-somebody-built-a-company-on-code-review.html> · site v0.6.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -253,6 +253,10 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#if-
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md) An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
+
+### Continued by
+
+- [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
