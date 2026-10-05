@@ -2,7 +2,7 @@
 
 > Every number in the article How much of this did I write? as a file in a vault: the session's messages, releases and days; per-article ledgers with the turns behind each; the corrections and their latency; the article dependency map three levels deep; the article's own fractal from strategy to data; the record the memos stood on; seventy-five article versions with a diff between any two; and a screenshot and hash of each cited source. With the app that reads them.
 
-*Source: <https://sgit.ai/demos/vaults/how-much-evidence/index.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/how-much-evidence/index.html> · site v0.6.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -81,6 +81,8 @@ files and versions
 A viewer for the data files as tables and collapsible JSON, the seventy-five saved versions of twenty-two articles as markdown, and a diff between any two versions of an article, paragraph by paragraph, the same algorithm as the site's diff pages. The provenance captures sit beside them: each cited source as fetched on 5 October, with its HTTP status, byte length, SHA-256 and a screenshot of its first screen.
 
 The files view, comparing two versions of the article.
+
+**Fixed the same evening.** The first push of this vault routed its views on the browser's hash, which inside the vault host does nothing, so every view link was dead there; a parallel session found it, the rule is now in [the vault-app guidance](../../../docs/vault/vault-apps.md), and the app was re-pushed with the route held in a variable and the host's minimal chrome. A fresh read-only clone carries the fix; the version in the vault's own file viewer is the first one.
 
 ## What to connect next
 

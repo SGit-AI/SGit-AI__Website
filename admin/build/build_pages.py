@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.71'
+SITE_VERSION = 'v0.6.72'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.71', '2026-10-05', 'this release',
+    ('v0.6.72', '2026-10-05', 'this release',
+     "THE EVIDENCE VAULT TAKES THE ROUTER FIX. The How Much Evidence vault app now holds its route in a "
+     "variable and marks its links native, so its views work inside the vault host where the hash router "
+     "was dead, and declares the host's minimal chrome; pushed to the vault with its write key and verified "
+     "from a fresh read-only clone. The how-much article's section on form, workflow and tools records the "
+     "two things that arrived while it was being revised: the subscribe form and this fix. The vault page "
+     "carries a note.",),
+    ('v0.6.71', '2026-10-05', 'git b67511e0',
      "MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now "
      "declares \"hud\": {\"mode\": \"minimal\"} in app.json unless it has a reason not to: the guidance "
      "front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published "

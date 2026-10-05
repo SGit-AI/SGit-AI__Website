@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.71). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.72). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-229site releases, each verified live before it was called done
+230site releases, each verified live before it was called done
 
 41vaults published with a deliberately public read key
 
@@ -5627,7 +5627,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.71, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.72, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5990,7 +5990,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-229**site releases since 14 August**
+230**site releases since 14 August**
 each verified live before it was called done
 
 41**vaults published with a public read key**
@@ -10191,11 +10191,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.71**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.72**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.71 | 2026-10-05 | this release | MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now declares "hud": {"mode": "minimal"} in app.json unless it has a reason not to: the guidance front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published create-vault-apps skill all say so. Found while checking why the How Much Evidence vault's links did nothing: its views route on location.hash, and inside the host the app is an about:srcdoc frame where setting the hash does not fire hashchange, so every view link was dead. The fix (route held in a variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. The vault itself needs its write key to take the fix. |
+| v0.6.72 | 2026-10-05 | this release | THE EVIDENCE VAULT TAKES THE ROUTER FIX. The How Much Evidence vault app now holds its route in a variable and marks its links native, so its views work inside the vault host where the hash router was dead, and declares the host's minimal chrome; pushed to the vault with its write key and verified from a fresh read-only clone. The how-much article's section on form, workflow and tools records the two things that arrived while it was being revised: the subscribe form and this fix. The vault page carries a note. |
+| v0.6.71 | 2026-10-05 | git b67511e0 | MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now declares "hud": {"mode": "minimal"} in app.json unless it has a reason not to: the guidance front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published create-vault-apps skill all say so. Found while checking why the How Much Evidence vault's links did nothing: its views route on location.hash, and inside the host the app is an about:srcdoc frame where setting the hash does not fire hashchange, so every view link was dead. The fix (route held in a variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. The vault itself needs its write key to take the fix. |
 | v0.6.70 | 2026-10-05 | released with v0.6.71 | SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP 4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only `subscribe` append lane of a new vault, the same pattern as the contact form on riskmandate.ai. If anything fails, or there is no JavaScript, the same request is offered as a plain email to the same agent. The vault id, lane token and key are public in /.well-known/sgit-subscribe.json; the only secret is the vault key, held outside this repository. A new brief, /docs/briefs/subscribe-lane-agent-brief.html, tells the agent how to drain the lane, with a drain script that was run end to end (browser to lane to decrypted message) before release. Found on the way: `configure` returns 404 on a vault that has never been pushed, which looks exactly like the documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator. |
 | v0.6.69 | 2026-10-05 | git ae21f758 | THE INVESTIGATION GITHUB OWES ITS CUSTOMERS. A new article written during the GitHub Actions incident of 5 October 2026 that held the previous release in its queue: why a fault reaching every customer of the platform the world deploys through is a near miss for all of them and a statement about how it is built; what aviation does instead, from ICAO Annex 13 and the NTSB to NASA's confidential near-miss reporting; the first, second and third story, told for the UK air traffic control failure, the 2024 security update outage and tonight; the what-if ladder; why the market does not fix it; why the old objection to independent investigation, that the evidence is too confidential and expensive to share, has expired now that signed vaults with one-way read keys exist; what the arriving regulation does and does not do; and four things to ask for. Five figures, one of them the incident's own timeline beside this site's queued release. |
 | v0.6.68 | 2026-10-05 | git f7e55192 | THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the message ids behind each; 28 corrections with their latency; the 29-article dependency map with every article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions with a diff between any two; and a hash and screenshot of each cited source; with a nine-view app, built by a data scientist agent and a developer agent from a brief. The article is revised to the vault's numbers and says where its first version was wrong (eleven compactions, not twenty-two; 148 authored messages, not 281), gains a section on the vault with four of its views and one on why a published trail is a better universe for a model to learn from, and its ledger now has eight rows. Vault page with the read key. |
@@ -17045,6 +17046,8 @@ A viewer for the data files as tables and collapsible JSON, the seventy-five sav
 
 The files view, comparing two versions of the article.
 
+**Fixed the same evening.** The first push of this vault routed its views on the browser's hash, which inside the vault host does nothing, so every view link was dead there; a parallel session found it, the rule is now in [the vault-app guidance](../../../docs/vault/vault-apps.md), and the app was re-pushed with the route held in a variable and the host's minimal chrome. A fresh read-only clone carries the fix; the version in the vault's own file viewer is the first one.
+
 ## What to connect next
 
 The messages are attributed to articles; they are not yet attributed to the vaults, pages and business plans the other hundred and four fed, which is the next ledger. The corrections are a hand-written catalogue; the next pass has a model propose them from the turns and a person confirm each. The evidence fractal is one article's; the same five columns could be built for every article from its graph file. And the brief for the due diligence article arrived as an uploaded transcript rather than a typed message, which the parser cannot see, so that article shows no input; the next version of the parser reads uploads.
@@ -17250,7 +17253,7 @@ The briefing PDF and this page are © 2026 Dinis Cruz, CC BY 4.0 for our own tex
 
 The article [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](../how-much-of-this-did-i-write.md), compared paragraph by paragraph between two versions. From: d234ea8cf, 2026-10-05, site v0.6.66: the map redrawn, the workflow named, the changes shown. To: the working tree, the version being built now.
 
-13 paragraphs added, 0 removed, 16 changed in place, 56 unchanged. About 1,286 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line. Figures appear as their file names. Generated by admin/build/article_diff.py from the git history.
+14 paragraphs added, 0 removed, 16 changed in place, 56 unchanged. About 1,492 words added and 0 removed. Insertions are marked like this, deletions like this; unchanged runs are folded to one line. Figures appear as their file names. Generated by admin/build/article_diff.py from the git history.
 
 1 unchanged paragraph
 
@@ -17288,7 +17291,11 @@ The two from 5 October show the two things the ratio hides. The identity article
 
 This article is the eighth row: a WhatsApp exchange and a memo, a reading and a second memo, 4,037 words in three messages, 5,236 words out at the second version, and a vault behind the third. So the ratio of words out to words in runs from one to about four,five, with the identity article as an outlier in both directions depending on what you count. It is the least interesting number here, and I would not want anyone to read it as a productivity multiplier. The memo is where the ideas are. The corrections are where the direction is. The article is where the research and the prose are, and the research is the part I could never have done at this pace by hand.
 
-22 unchanged paragraphs, under What the corrections were, What the memos were standing on, The form, the workflow and the tools
+21 unchanged paragraphs, under What the corrections were, What the memos were standing on, The form, the workflow and the tools
+
+Two things the memo asked for arrived while this article was being revised, and they belong here as examples of the same habit. The first is the subscribe form now at the foot of this article and on the articles index, built in a parallel session: the reader's address is encrypted in the browser to the key of the agent that runs the list and dropped into a write-only lane on a vault, with the vault id, the lane token and the public key published on purpose and the vault key kept off the site, which is the feedback loop the memo asked for, built with the same pieces as everything else here. The second is a bug that session found in the evidence vault behind this article while checking it: inside the vault host the app runs in a frame where assigning the browser's hash does not fire the event the router listened for, so every view link was dead. The rule went into the site's vault-app guidance, the fix went into the app the same evening with the vault's write key, and a fresh read-only clone carries it. Found by use, fixed in hours, written down so the next app does not repeat it.
+
+1 unchanged paragraph
 
 ## The evidence, as a vault
 
@@ -17347,7 +17354,7 @@ The articles could be shorter. Several of these could be half the length with th
 
 # How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was
 
-By [Dinis Cruz](../about/index.md) · 2026-10-05 · updated 2026-10-05 · [v0.6.68](../admin/versions.md) · agentic-writingprovenanceevidencememoryvoice-memoshuman-in-the-loopllmssgitarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-05 · updated 2026-10-05 · [v0.6.72](../admin/versions.md) · agentic-writingprovenanceevidencememoryvoice-memoshuman-in-the-loopllmssgitarticle
 
 ***Abstract:** A friend who received a reply from one of my agents said the amount of text I manage to produce is baffling, and the honest answer deserved numbers rather than a shrug. So this article measures the session that wrote the last twenty articles on this site: every word I typed or spoke, every word that came back, how many times each piece went round, what the corrections were, and what the memos were standing on. The picture is not the one people assume, in either direction. I did not type the articles, and the model did not write them from a prompt. Over four weeks I sent about 65,000 words in 148 messages, 55,000 of them in thirty-seven voice memos, and the agent published 96,000 words of articles and wrote another 76,000 to me about them, through 123 releases, 135 web searches and 26 research agents. No article came from a one-line prompt; the shortest brief was a single memo of 1,943 words, the longest ran to twenty-one messages. Eight articles are accounted for by hand, memo by memo and correction by correction, and every number is a row in a published vault. And the input that matters most is not in the session at all: the last article quotes thirty-three pieces of my earlier writing, from a 2010 open source tool to briefs written with other agents this summer, which the agent found because they were published. The corrections I make are rarely to hallucinations. They are to briefs that needed to be better, because a model that can go in any direction needs someone with a direction. That is why the people who have one are not out of a job. They are the input.*
 
@@ -17429,6 +17436,8 @@ The pipeline, as it stands today. A memo arrives, usually as a transcript with t
 The tools inside it were almost all built on the day they were needed, because something was slow. The figure renderer was built when a set of figures from another agent clipped at fixed heights. The vault bundler was built for the code review vault. The code analysers, the delta reader and the method stream extractor were built for the code review article, in an afternoon, and are published with the vault. The transcript parser that produced the numbers in this article was built this afternoon, in about forty lines. And when I asked, while reading the revision of this article, for a way to see what had changed rather than re-read nine thousand words, the agent built a diff tool that compares two versions of an article paragraph by paragraph and publishes the result as a page, which is how [the changes to this article](../articles/diffs/how-much-of-this-did-i-write.md) can be read. The map of the articles was improved in the same hour because reading it for this article showed it needed to be.
 
 This is the part I most want other people to take from the exercise. The productivity is not the model. It is the model inside a form I control, where any step that is not working can be replaced with a tool the same day, and where two years of those tools have accumulated into a toolkit, all of it open source, that a new session inherits. I have the power to shape the technology I use, and I use it constantly: this is not effective, build a tool for it. A team that adopts the model without that habit gets the model's speed on the first draft and none of it afterwards.
+
+Two things the memo asked for arrived while this article was being revised, and they belong here as examples of the same habit. The first is the subscribe form now at the foot of this article and on the articles index, built in a parallel session: the reader's address is encrypted in the browser to the key of the agent that runs the list and dropped into a write-only lane on a vault, with the vault id, the lane token and the public key published on purpose and the vault key kept off the site, which is the feedback loop the memo asked for, built with the same pieces as everything else here. The second is a bug that session found in the evidence vault behind this article while checking it: inside the vault host the app runs in a frame where assigning the browser's hash does not fire the event the router listened for, so every view link was dead. The rule went into the site's vault-app guidance, the fix went into the app the same evening with the vault's write key, and a fresh read-only clone carries it. Found by use, fixed in hours, written down so the next app does not repeat it.
 
 Two smaller things belong here because the memos raised them. The first is that the work is queued. I send memos and corrections in the order I have them, often several at once while the agent is mid-task, and the agent processes them in an order that makes sense, so a thought that arrives while something else is being built is not lost, which suits the way my mind works far better than any to-do list ever did. The second is that the images other models make from these articles go through the same rounds. The infographic at the end of this article is the second version; the first put the emphasis on the numbers and I asked for it to be rebuilt around the one idea in the middle of the piece that I think is the strongest, and the second version has two numbers wrong, which the caption names. Images are drafts too.
 
