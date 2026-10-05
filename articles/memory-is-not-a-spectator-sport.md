@@ -2,7 +2,7 @@
 
 > People ask how my agents remember, and the honest answer is that memory is the thing I have been building all along without calling it that. The industry's picture of agentic memory is one store that everything gets pumped into and retrieved from by similarity. Mine is the opposite. Memory is context management: giving an agent the right context for the moment, and no more, because context has a cost in tokens and in attention. It is many memories, not one, because context is specific: the inbox has its rules, the news has its rules, a contact in the CRM has a world of its own, and forcing them into one ontology would lose what each knows. It is fractal, principles at the top in a few kilobytes and the code at the bottom, so an agent loads the altitude its question lives at. It is published and open, because an agent can fetch, quote and link what is public, with a URL for every claim and a hash for every file. And it is shared between agents through vaults, so a session can end and the next one, or a different agent, or a person, picks up from the same files. This article says how that works, what it cost, where the industry's tools and this approach agree and differ, and where mine falls short, with the evidence of the session that wrote it: one Claude Code session across several context resets that revised an article from another team's review, wrote two more, published a vault and shipped six releases in a day, remembering nothing between resets except what the files remembered for it.
 
-*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.6.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -168,6 +168,8 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#memory-
 - [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md) End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

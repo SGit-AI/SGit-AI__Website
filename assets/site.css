@@ -210,6 +210,25 @@ main.doc td{padding:.55rem .8rem;border-top:1px solid var(--line);vertical-align
 .warnbox{border:1px solid var(--line);border-left:3px solid var(--yellow);background:var(--panel);border-radius:0 10px 10px 0;
   padding:.8rem 1rem;font-size:.85rem;color:#34363c;margin:1.2rem 0;box-shadow:var(--shadow)}
 .note b,.warnbox b{color:#101114}
+.subscribe{border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--panel);border-radius:0 10px 10px 0;
+  padding:.8rem 1rem;margin:1.4rem 0;font-size:.88rem;color:#34363c;box-shadow:var(--shadow)}
+.subscribe p{margin:.2rem 0}
+.subform{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:.6rem 0 .2rem}
+.subform input[type=email],.subform input[type=text]{flex:1 1 13rem;min-width:0;padding:.45rem .65rem;border:1px solid var(--line);
+  border-radius:6px;font:inherit;background:#fff;color:#101114}
+.subform input:focus-visible,.subform button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.subform .subbtn{padding:.45rem 1rem;border:1px solid var(--accent);border-radius:6px;background:var(--accent);color:#fff;font:inherit;
+  font-weight:600;cursor:pointer}
+.subform .subbtn:disabled{opacity:.6;cursor:progress}
+.subform .consent{flex:1 1 100%;display:flex;gap:.5rem;align-items:flex-start;font-size:.8rem;color:var(--dim)}
+.subform .consent input{margin-top:.2rem}
+.subform .sub-status{flex:1 1 100%;margin:0;min-height:1.1em}
+.subform .sub-status.warn{color:#8a5a00}
+.subform .sub-status.ok{color:#1c6b3a}
+.subform .sub-mailto{flex:1 1 100%}
+.sr,.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sub-done{margin:.6rem 0 .2rem;padding:.6rem .8rem;border:1px solid var(--line);border-radius:6px;background:var(--panel2)}
+@media print{.subscribe{display:none}}
 .pagenav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.8rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.85rem}
 
 /* docs hub */

@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.68).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.69).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (38)
+## Pages (39)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -24,6 +24,7 @@
 - [Telemetry from a published vault](/docs/briefs/vault-telemetry-append-lanes.md): How one vault sends messages to another, and how a vault whose read key is public reports anonymous usage back to its author. The append-lane mechanism, why a write-only token is the one credential that survives being published inside a public vault, the three things to verify before building, and the prompt to hand the builder agent.
 - [Working on a vault: start here](/docs/guidance/index.md): The first page to read before building, publishing or changing a vault. The practices that get repeated most, pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version, plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
 - [Three surfaces: which one are you building for?](/docs/surfaces.md): _page.json inside a vault, an HTML vault app, or a page on a *.sgit.ai site: what each can do, which credential each uses, and the trust direction that inverts between them, plus the same job done on all three, and where each surface’s guidance lives.
+- [For agent@riskmandate.ai: draining the subscribe lane](/docs/briefs/subscribe-lane-agent-brief.md): How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.
 - [Reading a vault from a *.sgit.ai site page](/docs/briefs/sgit-ai-site-pages.md): For devs coding the estate’s sites: the vault API answers plain CORS GETs with no auth header, so a site page reads ciphertext directly and decrypts in the visitor’s browser. The house reader to copy rather than rewrite, the trust rule that inverts on this surface, the ref-caching trap, and the prompt to hand the site’s agent.
 - [Publishing a vault’s decks onto a website](/docs/briefs/vault-decks-on-a-site.md): A build brief for an agent with a vault full of presentations: the decks/v2 contract a vault must publish, the split that keeps it safe (the viewer is the site’s, the data is the vault’s), the two sandboxed frames and their CSPs, why a PDF must be a download rather than an embed, the two bugs we hit, and the prompt to hand the builder.
 - [For graphs.sgit.ai: Fractal Semantic Graphs](/docs/briefs/graphs-sgit-ai-fractal-semantic-graphs.md): A brief for the agent maintaining graphs.sgit.ai: the fractal claim on its boundaries page has the invariant backwards (grammar survives every zoom, the ontology is free to change), the name Fractal Semantic Graphs and its lineage, six places to link the sgit.ai page, four graph vaults missing from its evidence estate, a second cross-vault finding, three small corrections, and the prompt to paste.
