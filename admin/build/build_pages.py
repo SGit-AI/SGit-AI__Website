@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.70'
+SITE_VERSION = 'v0.6.71'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,7 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.70', '2026-10-05', 'this release',
+    ('v0.6.71', '2026-10-05', 'this release',
      "MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now "
      "declares \"hud\": {\"mode\": \"minimal\"} in app.json unless it has a reason not to: the guidance "
      "front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published "
@@ -38,7 +38,7 @@ VERSION_LOG = [
      "variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the "
      "host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. "
      "The vault itself needs its write key to take the fix."),
-    ('v0.6.69', '2026-10-05', 'unreleased, shipped with v0.6.70',
+    ('v0.6.70', '2026-10-05', 'released with v0.6.71',
      "SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a "
      "subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP "
      "4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only "
@@ -50,6 +50,17 @@ VERSION_LOG = [
      "was run end to end (browser to lane to decrypted message) before release. Found on the way: "
      "`configure` returns 404 on a vault that has never been pushed, which looks exactly like the "
      "documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator."),
+    ('v0.6.69', '2026-10-05', 'git ae21f758',
+     "THE INVESTIGATION GITHUB OWES ITS CUSTOMERS. A new article written during the GitHub Actions incident "
+     "of 5 October 2026 that held the previous release in its queue: why a fault reaching every customer of "
+     "the platform the world deploys through is a near miss for all of them and a statement about how it is "
+     "built; what aviation does instead, from ICAO Annex 13 and the NTSB to NASA's confidential near-miss "
+     "reporting; the first, second and third story, told for the UK air traffic control failure, the 2024 "
+     "security update outage and tonight; the what-if ladder; why the market does not fix it; why the old "
+     "objection to independent investigation, that the evidence is too confidential and expensive to share, "
+     "has expired now that signed vaults with one-way read keys exist; what the arriving regulation does and "
+     "does not do; and four things to ask for. Five figures, one of them the incident's own timeline beside "
+     "this site's queued release.",),
     ('v0.6.68', '2026-10-05', 'git f7e55192',
      "THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the "
      "how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the "

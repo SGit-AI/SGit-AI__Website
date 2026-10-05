@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.70",
+  "site_version": "v0.6.71",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -932,6 +932,27 @@
         "article"
       ],
       "summary": "Last week I set out to give every agent, and every user, a real identity: a Google Workspace account of its own, provisioned by us, with a mailbox, a calendar, a drive and a login, the data encrypted by sgit before it reached Google and the key unwrapped by a passkey. Four design documents later the plan had changed shape under its own research, because Google's terms do not allow one organisation's tenant to hold other organisations' people as part of a commercial product, and an account assigned to a function rather than a human is named in the acceptable use policy. This article captures that moment: what was wanted, what the terms say in their current wording with one correction to our own documents, the five options that were on the table, the rule that no secret can live inside an identity provider because whoever controls the login can become the user, and the keyring that fell out of it, a browser-only secrets store unlocked by a passkey that an administrator with full access to the project cannot read. It ends with the question I keep coming back to. Every project I know needs to log users in, keep sensitive data for them in a way a regulator will accept, and now give identities to the agents that work for them. Each of those has good products. None of them is all three, and the research found nothing on the shelf that is. Unless we are missing something obvious, in which case the design pack is published to be corrected."
+    },
+    {
+      "slug": "the-investigation-github-owes-its-customers",
+      "title": "The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered",
+      "date": "2026-10-05",
+      "version": "v0.6.69",
+      "tags": [
+        "incidents",
+        "resilience",
+        "github",
+        "near-misses",
+        "second-stories",
+        "blast-radius",
+        "investigation",
+        "aviation",
+        "regulation",
+        "vaults",
+        "sgit",
+        "article"
+      ],
+      "summary": "At 19:11 UTC on 5 October 2026 GitHub's status page said it was investigating degraded performance for Actions. For the next two hours, every customer in every region could not reliably start a workflow, which for most of the world's software is the same as not being able to deploy. This site's own release sat in the queue, was cancelled by the incident, and went live two hours late on a retry. The status page said \"delays\", then \"degraded availability\", and will say \"resolved\". Nobody outside GitHub will learn which component failed, what it could reach, why the scope of one fault was everyone, or whether the same roll of the dice had come up before. This article argues that incidents at platforms this critical should be treated the way aviation treats them: investigated by somebody independent whose only job is prevention, reported whether or not the consequence was severe, published with the evidence, and followed through to the second story, why the system allowed it, and the third, why nobody paid to change it. The objection has always been that the evidence is confidential, enormous and expensive to gather. It is not any more. Encrypted vaults with one-way read keys, signed records, per-party access and agents that read a graph make the aviation docket affordable for a ninety-minute fault. The companies that depend on GitHub cannot see how close to the wind it flies, and that, not the outage, is the risk nobody has signed for."
     },
     {
       "slug": "the-wall-under-the-reply",

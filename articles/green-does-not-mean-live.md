@@ -2,7 +2,7 @@
 
 > Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 
-*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.6.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -107,7 +107,9 @@ All three are acceptable against the failure they replace. The first one to bite
 
 Site & engineering[This article as a graph →](graphs.md#green-does-not-mean-live)
 
-No other article links here yet.
+### Continued by
+
+- [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
