@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.72",
+  "site_version": "v0.6.73",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -731,7 +731,7 @@
             "id": "the-consequence",
             "label": "The consequence that was missing",
             "kind": "claim",
-            "summary": "Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability nobody outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too."
+            "summary": "Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability that few outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too."
           },
           {
             "id": "incumbents-too",
@@ -1180,7 +1180,7 @@
           "agents-and-policy",
           "vaults-and-method"
         ],
-        "core_idea": "A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why nobody paid to change it; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.",
+        "core_idea": "A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why the fix was not paid for; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.",
         "nodes": [
           {
             "id": "the-incident",
@@ -1192,7 +1192,7 @@
             "id": "two-records",
             "label": "The status page is the whole record",
             "kind": "claim",
-            "summary": "Delays, degraded, resolved: true words chosen with care that never name the component, its reach, the scope or whether the same thing nearly happened before."
+            "summary": "Delays, degraded, resolved: true words chosen with care that do not name the component, its reach, the scope or whether the same thing nearly happened before."
           },
           {
             "id": "everybody",
@@ -1222,13 +1222,13 @@
             "id": "three-stories",
             "label": "First, second and third story",
             "kind": "concept",
-            "summary": "What happened; why the system allowed it; why nobody paid to change it. Software write-ups stop at the first; the third is where the money is."
+            "summary": "What happened; why the system allowed it; why the fix was not paid for. Software write-ups stop at the first; the third is where the money is."
           },
           {
             "id": "whatif",
             "label": "The what-if ladder",
             "kind": "question",
-            "summary": "A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius nobody has published, for the platform or for countries."
+            "summary": "A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius that has not been published, for the platform or for countries."
           },
           {
             "id": "market",

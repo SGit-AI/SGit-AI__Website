@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.72 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -111,7 +111,7 @@ Software due diligence was a questionnaire answered by the vendor and disconnect
 - **Two kinds of bug** (concept) Bugs in reviewed deterministic parts have reasons; bugs from unreviewed generated code are in places no story asked for, repeat, and reveal something structural each time.
 - **Risk-based, not pure** (claim) What counts as enough rises with what the software can do to the buyer; a startup on a prototype passes by saying so; the same sentence from a vendor of mission-critical software is the finding.
 - **The behaviour policy is the due diligence document** (claim) A buyer reads off the blast radius, which controls are enforced by the identity and which are wishes, and which risks the vendor has accepted on the buyer's behalf; its absence is a finding before any code is read.
-- **The consequence that was missing** (claim) Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability nobody outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too.
+- **The consequence that was missing** (claim) Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability that few outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too.
 - **Most companies already do not understand their software** (claim) People moved on, merges were made by people who left, documentation describes an earlier system; the agent asks them the same questions for the first time.
 - **The startup's two advantages** (claim) It can play the same game as the biggest buyer with the same open source tools, and it has less code to understand; double down on understandability and make it the reason to buy.
 - **Duties arriving before visibility** (example) Software bills of materials, the Cyber Resilience Act and the revised Product Liability Directive create duties and evidence rights; none tells a buyer whether a vendor understands its software; the agent connects the duties to the facts.
@@ -162,7 +162,7 @@ builds on [The wall under the reply: end an email with the state of the thread, 
 
 2026-10-05 · Agents & policyVaults & method
 
-A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why nobody paid to change it; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.
+A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why the fix was not paid for; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.
 
 *[diagram]*
 **concept**claim**method**example**question
@@ -170,13 +170,13 @@ A fault that reaches every customer of a platform the world deploys through is a
 **14 nodes, 14 edges**
 
 - **What happened on 5 October** (example) From 19:11 UTC hosted runners stopped being reliably assigned for every customer; by 20:47 degraded availability; this site's release was cancelled by it and went live two hours late on a retry.
-- **The status page is the whole record** (claim) Delays, degraded, resolved: true words chosen with care that never name the component, its reach, the scope or whether the same thing nearly happened before.
+- **The status page is the whole record** (claim) Delays, degraded, resolved: true words chosen with care that do not name the component, its reach, the scope or whether the same thing nearly happened before.
 - **Everybody is the point** (claim) A fault reaching one customer is an incident; a fault reaching all of them at once is a statement about isolation on the one component that gates every deploy, and a near miss for everyone who needed to ship a fix.
 - **What aviation does** (method) Independent investigators whose sole objective is prevention, mandatory reporting of serious incidents, confidential near-miss reporting in the tens of thousands a year, preliminary reports within weeks, full dockets, tracked recommendations.
 - **A near miss gets the same investigation** (claim) Because the systemic causes are the same and the only difference is luck; actual damage is usually a tenth of what was possible; you don't build safety on luck.
 - **Count the rolls of the dice** (method) How many times the same event happened where they got away with it; from a one-off to a predictable statistic; do the people who depend on you consent to that risk.
-- **First, second and third story** (concept) What happened; why the system allowed it; why nobody paid to change it. Software write-ups stop at the first; the third is where the money is.
-- **The what-if ladder** (question) A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius nobody has published, for the platform or for countries.
+- **First, second and third story** (concept) What happened; why the system allowed it; why the fix was not paid for. Software write-ups stop at the first; the third is where the money is.
+- **The what-if ladder** (question) A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius that has not been published, for the platform or for countries.
 - **Why the market does not fix it** (claim) Customers cannot see how close to the wind the platform flies; only incidents that reach the status page are known; with the barrier to exit this high, uptime becomes marketing and the business case for hardening cannot be made from inside.
 - **The objection has expired** (claim) Evidence was confidential, enormous and expensive to share; signed, versioned vaults, one-way read keys per party, agents under a behaviour policy and findings as a graph make the aviation docket affordable for a ninety-minute fault.
 - **How the evidence would move** (method) Provider captures and signs; reviews and redacts, never rewrites; investigator reads by need; each customer gets its own derived vault; findings published as a graph linked to evidence hashes with recommendations held open.

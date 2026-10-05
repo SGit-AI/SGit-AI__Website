@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.72'
+SITE_VERSION = 'v0.6.73'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.72', '2026-10-05', 'this release',
+    ('v0.6.73', '2026-10-05', 'this release',
+     "SAY WHAT WAS FOUND, NOT WHAT NOBODY HAS. A review of absolutes in the four most recent articles, at the "
+     "author's request: 'nobody has counted', 'impossible for a buyer', 'never scaled', 'every customer' and "
+     "the like are replaced with what the evidence supports (few, rarely, I know of no public count, every "
+     "customer on hosted runners), in the text, the figures and the graph files of the investigation, due "
+     "diligence and code review company articles. The validator now lists remaining absolutes in article "
+     "prose as an advisory warning on every build.",),
+    ('v0.6.72', '2026-10-05', 'git 534f0b22',
      "THE EVIDENCE VAULT TAKES THE ROUTER FIX. The How Much Evidence vault app now holds its route in a "
      "variable and marks its links native, so its views work inside the vault host where the hash router "
      "was dead, and declares the host's minimal chrome; pushed to the vault with its write key and verified "

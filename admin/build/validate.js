@@ -262,6 +262,27 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
   }
 }
 
+// 5c2. absolutes in article prose: advisory, not a failure.
+//
+// "Nobody has", "never", "impossible", "everyone": a claim about the whole world that the article
+// cannot have checked reads as alarmist and costs the rest of the piece its credibility, which
+// the author flagged on 5 October 2026 ("there are companies that have second or even third
+// paths to production, they are just not very common"). This lists each one so the writer sees
+// it before the release; it does not fail the build, because some are quotes and some are
+// facts about a named record.
+{
+  const pat = /\b(nobody (has|can|will|outside|paid|knows)|no one has|never (scaled|had a way|been asked)|impossible for|everyone, everywhere|does not exist anywhere|the first to)\b/gi;
+  let n = 0;
+  for (const f of files.filter(f => /\.md$/.test(f))) {
+    const rel = path.relative(root, f).replace(/\\/g, '/');
+    if (!rel.startsWith('articles/') || rel.startsWith('articles/diffs/')) continue;
+    const prose = fs.readFileSync(f, 'utf8').replace(/```[\s\S]*?```/g, ' ').replace(/`[^`\n]*`/g, ' ').replace(/"[^"\n]{0,200}"/g, ' ');
+    const hits = prose.match(pat) || [];
+    if (hits.length) { n += hits.length; console.log('ABSOLUTE WARN', rel, '->', [...new Set(hits.map(h => h.toLowerCase()))].join(', ')); }
+  }
+  if (n) console.log(`ABSOLUTE WARN total: ${n} (advisory; say what was found, not what nobody has)`);
+}
+
 // 5d. the word "rung", in article prose only.
 //
 // Removed from every article in v0.6.62 at the author's request: the ladder metaphor had made
