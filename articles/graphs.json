@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.60",
+  "site_version": "v0.6.61",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -322,7 +322,7 @@
       "slug": "the-identity-we-wanted-to-give-the-agents",
       "title": "The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard",
       "date": "2026-10-05",
-      "updated": "",
+      "updated": "2026-10-05",
       "url": "https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html",
       "markdown": "https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.md",
       "card": "https://sgit.ai/articles/cards/the-identity-we-wanted-to-give-the-agents.webp",
@@ -348,6 +348,7 @@
         "article"
       ],
       "links_out": [
+        "the-wall-under-the-reply",
         "six-agents-one-inbox",
         "replicating-the-agentic-inbox",
         "footprint-and-blast-radius",
@@ -615,7 +616,9 @@
         "memory-is-not-a-spectator-sport",
         "six-agents-one-inbox"
       ],
-      "links_in": [],
+      "links_in": [
+        "the-identity-we-wanted-to-give-the-agents"
+      ],
       "graph": {
         "slug": "the-wall-under-the-reply",
         "teaser": "End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.",

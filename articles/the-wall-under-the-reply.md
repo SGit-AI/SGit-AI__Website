@@ -2,7 +2,7 @@
 
 > Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
 
-*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -133,6 +133,10 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 - [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
+
+### Continued by
+
+- [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

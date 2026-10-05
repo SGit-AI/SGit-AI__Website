@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.60'
+SITE_VERSION = 'v0.6.61'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,11 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.60', '2026-10-05', 'this release',
+    ('v0.6.61', '2026-10-05', 'this release',
+     "THE IDENTITY ARTICLE AS ONE PAGE, BY ANOTHER MODEL. The identity article gains a closing section with "
+     "the infographic ChatGPT made from its published text, checked claim by claim against the article before "
+     "it went up, with the one paraphrase in its last panel named as a paraphrase.",),
+    ('v0.6.60', '2026-10-05', 'git 4fab1507',
      "IF SOMEBODY BUILT A COMPANY ON CODE REVIEW. A follow-up to the code review article, written to answer a "
      "reader's questions and a voice memo: what is fractal in a fractal semantic graph (the grammar) and what "
      "is not (the layers, which each company defines); the projected graph built from stories before the code "

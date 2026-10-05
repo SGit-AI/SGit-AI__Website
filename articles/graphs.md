@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -86,7 +86,7 @@ A plan to give every agent and user a Workspace identity from one tenant was sto
 
 > The law describes the property; the market does not sell it. The gap the article ends on: login, zero-knowledge storage and agent identity are still three separate jobs.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md)
 
@@ -118,7 +118,7 @@ The quoted wall under a reply is redundant and occupies the space where a reader
 
 > The client's summary says what the thread looks like from here; the tail says what the sender believes it is. How the proposal differs from the AI summaries mail clients already compute.
 
-builds on [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+builds on [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents).
 
 ## [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md)
 

@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,7 +25,7 @@ Four of **40 published vaults**. Each opens with a read key printed on its page,
 
 The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 27 so far, three newest here.
 
-[2026-10-05Graphs & knowledge6 threads**If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built**A reader's seven questions answered as a company plan: the grammar is fractal, the layers are the customer's, and review is the join of intent and code.](articles/if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy4 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](articles/the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy4 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](articles/the-wall-under-the-reply.md)
+[2026-10-05Graphs & knowledge6 threads**If somebody built a company on code review: the grammar is fractal, the layers are yours, and the review is the join between what was meant and what was built**A reader's seven questions answered as a company plan: the grammar is fractal, the layers are the customer's, and review is the join of intent and code.](articles/if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy5 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](articles/the-identity-we-wanted-to-give-the-agents.md) [2026-10-04Agents & policy5 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](articles/the-wall-under-the-reply.md)
 
 - [Code review as a fractal semantic graph](articles/code-review-as-a-fractal-semantic-graph.md) · 2026-10-03
 - [Memory is not a spectator sport](articles/memory-is-not-a-spectator-sport.md) · 2026-10-03
@@ -55,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-218site releases, each verified live before it was called done
+219site releases, each verified live before it was called done
 
 40vaults published with a deliberately public read key
 

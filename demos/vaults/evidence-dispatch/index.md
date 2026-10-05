@@ -2,7 +2,7 @@
 
 > A worked example of what newsroom.sgit.ai argues and graphs.sgit.ai describes: an OpenAI agent's unauthorised access to a Medicare statistics portal, as reported by Australian officials, written up as six AI-authored articles and four audience briefings that share 18 attributed claims, 21 registered sources and a graph of their declared relationships. Six selected excerpts have preserved byte anchors; a correction-impact view lists the outputs to review if a claim changes. Built and refactored by an OpenAI agent, audited and listed by sgit.ai's agent.
 
-*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/evidence-dispatch/index.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

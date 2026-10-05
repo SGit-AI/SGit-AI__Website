@@ -2,7 +2,7 @@
 
 > Last week I set out to give every agent, and every user, a real identity: a Google Workspace account of its own, provisioned by us, with a mailbox, a calendar, a drive and a login, the data encrypted by sgit before it reached Google and the key unwrapped by a passkey. Four design documents later the plan had changed shape under its own research, because Google's terms do not allow one organisation's tenant to hold other organisations' people as part of a commercial product, and an account assigned to a function rather than a human is named in the acceptable use policy. This article captures that moment: what was wanted, what the terms say in their current wording with one correction to our own documents, the five options that were on the table, the rule that no secret can live inside an identity provider because whoever controls the login can become the user, and the keyring that fell out of it, a browser-only secrets store unlocked by a passkey that an administrator with full access to the project cannot read. It ends with the question I keep coming back to. Every project I know needs to log users in, keep sensitive data for them in a way a regulator will accept, and now give identities to the agents that work for them. Each of those has good products. None of them is all three, and the research found nothing on the shelf that is. Unless we are missing something obvious, in which case the design pack is published to be corrected.
 
-*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.60 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard
 
-By [Dinis Cruz](../about/index.md) · 2026-10-05 · [v0.6.59](../admin/versions.md) · identityagentssecretspasskeyswebauthnprfgoogle-workspaceidentity-platformcognitozero-knowledgegdprriskmandatesgitarticle
+By [Dinis Cruz](../about/index.md) · 2026-10-05 · updated 2026-10-05 · [v0.6.61](../admin/versions.md) · identityagentssecretspasskeyswebauthnprfgoogle-workspaceidentity-platformcognitozero-knowledgegdprriskmandatesgitarticle
 
 ***Abstract:** Last week I set out to give every agent, and every user, a real identity: a Google Workspace account of its own, provisioned by us, with a mailbox, a calendar, a drive and a login, the data encrypted by sgit before it reached Google and the key unwrapped by a passkey. Four design documents later the plan had changed shape under its own research, because Google's terms do not allow one organisation's tenant to hold other organisations' people as part of a commercial product, and an account assigned to a function rather than a human is named in the acceptable use policy. This article captures that moment: what was wanted, what the terms say in their current wording with one correction to our own documents, the five options that were on the table, the rule that no secret can live inside an identity provider because whoever controls the login can become the user, and the keyring that fell out of it, a browser-only secrets store unlocked by a passkey that an administrator with full access to the project cannot read. It ends with the question I keep coming back to. Every project I know needs to log users in, keep sensitive data for them in a way a regulator will accept, and now give identities to the agents that work for them. Each of those has good products. None of them is all three, and the research found nothing on the shelf that is. Unless we are missing something obvious, in which case the design pack is published to be corrected.*
 
@@ -114,6 +114,12 @@ So, unless I am missing something obvious, which is a real possibility and the r
 
 **Does not exist yet:** any of the MVP. The repository holds a README and a licence. The pipeline, the probe pages, the keyring library, the password manager, the admin pages, the compatibility matrix, the acceptance test and its write-up are the nine releases in the brief's build order, and each will appear in that site's own reality file before it is described in the present tense anywhere. An agreement with Google for a shared Workspace tier. A customer's agent with a mailbox. A product, from anyone, that does all three jobs.
 
+## The article as one page, by another model
+
+As with [the reply-tail article](../articles/the-wall-under-the-reply.md), Dinis fed the published text to ChatGPT and asked for an infographic. It is below, and it was checked against the article before it went up: the seat price, the two clauses and the correction, the five options with their mailbox and terms columns, the free tiers, the rule, the keyring's five properties and its algorithms, the agent identity points and the three-jobs gap are all as the article has them, and nothing was invented. One thing to read with care: the closing line in the picture's last panel is credited to the article but is the other model's condensation of its ending, not a sentence from it. The article's own words are "Every project I know needs those three. The research found good products for each and nothing that is all of them."
+
+The article as a one-page state, generated with ChatGPT from the published text on 5 October 2026 and credited by it to the source. The style, the slogans in the margins and the closing paraphrase are the other model's, kept as they came, because who made a condensation is part of its provenance.
+
 ## Threads woven here
 
 - [Who holds the keys?](../partnerships/vault-key-management.md): the partnership call of 24 September that asked for this, including scoped and time-limited keys for agents.
@@ -144,6 +150,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-identi
 
 ### Builds on
 
+- [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md) End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 - [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
