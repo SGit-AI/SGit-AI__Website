@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.62'
+SITE_VERSION = 'v0.6.63'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.62', '2026-10-05', 'this release',
+    ('v0.6.63', '2026-10-05', 'this release',
+     "WHY IT IS ONLY NOW POSSIBLE. The code review company article gains the two ideas its author found missing "
+     "on first read: that one technology can now read every layer from strategy to bytecode, which is what makes "
+     "a graph at every altitude buildable and close to reality and why earlier attempts failed; and that this "
+     "moves code review from an art of opinion and power to a science of facts, with budgets as the objective "
+     "good enough and the condition that the models build and maintain the graphs and then leave the line. "
+     "Agent Behaviour Policies are woven in as the control on the reviewing agents. The title and summary are "
+     "shortened. Graph updated.",),
+    ('v0.6.62', '2026-10-05', 'git 4d6a7b92',
      "NO MORE RUNGS. The word is gone from every article, its graph JSON, the code review vault page and the "
      "eleven figures of the two code review articles, at the author's request and in the spirit of the em-dash "
      "rule: a graph has layers and altitudes, a ladder has steps, a price list has tiers. The validator now "

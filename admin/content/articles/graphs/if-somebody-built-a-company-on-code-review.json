@@ -1,23 +1,29 @@
 {
   "slug": "if-somebody-built-a-company-on-code-review",
-  "teaser": "A reader's seven questions answered as a company plan: the grammar is fractal, the layers are the customer's, and review is the join of intent and code.",
+  "teaser": "A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.",
   "topics": [
     "graphs-and-knowledge",
     "startups-and-strategy"
   ],
-  "core_idea": "What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each layer to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.",
+  "core_idea": "One technology can now read every layer from strategy to bytecode, which makes a graph at every altitude buildable and close to reality, and moves code review from an art of opinion to a science of facts if the models build, prune and maintain the graphs and then leave the line; what is fractal is the grammar and the layers are each company's own, so a code review company projects a graph from stories, derives one from code, reviews the join, holds one layer still to call a change a refactor, reshapes changes by reach, budgets per altitude as the objective good enough, runs its agents under behaviour policies, and gives the grammar away.",
   "nodes": [
+    {
+      "id": "one-reader-every-layer",
+      "label": "One technology can read every layer",
+      "kind": "claim",
+      "summary": "From a board objective to a syntax tree in one path or through sub-agents of the same kind; what people did by instinct between altitudes becomes buildable, and buildable close to reality, for the first time at scale."
+    },
+    {
+      "id": "art-to-science",
+      "label": "From art to science",
+      "kind": "claim",
+      "summary": "Review was opinion, taste and power because there was no fact base; the map says where the code is and the graph says what a change reaches, and the models get review there only by building and maintaining the graphs and then leaving the line."
+    },
     {
       "id": "grammar-vs-layers",
       "label": "The grammar is fractal, the layers are yours",
       "kind": "claim",
       "summary": "Nodes, edges, an ontology, a taxonomy and the move between altitudes are constant; which layers exist, what they are called and where they stop are decided by the company, its culture, languages and stack."
-    },
-    {
-      "id": "fractal-precise",
-      "label": "Fractal is a precise claim",
-      "kind": "concept",
-      "summary": "Self-similarity, scale invariance, composition and recursion, as the July 2026 architecture brief defined it; none of the four names a layer."
     },
     {
       "id": "projected-graph",
@@ -80,6 +86,12 @@
       "summary": "Deterministic checks always run; the delta re-derives only what changed; models get small budgets and hard stops; onboarding starts at one point and continues; handed-on work carries its budget and never widens it."
     },
     {
+      "id": "behaviour-policies",
+      "label": "The reviewing agents run under a policy",
+      "kind": "method",
+      "summary": "Every agent deriving, proposing or summarising runs under an Agent Behaviour Policy written before its first run: which repositories, which actions, where it writes, what it spends; the control on the reviewers' own blast radius."
+    },
+    {
       "id": "five-whys",
       "label": "The five whys fix the layer below",
       "kind": "method",
@@ -106,9 +118,34 @@
   ],
   "edges": [
     {
-      "from": "fractal-precise",
-      "to": "grammar-vs-layers",
+      "from": "one-reader-every-layer",
+      "to": "art-to-science",
+      "rel": "leads-to"
+    },
+    {
+      "from": "one-reader-every-layer",
+      "to": "derived-graph",
       "rel": "produces"
+    },
+    {
+      "from": "art-to-science",
+      "to": "who-reads",
+      "rel": "depends-on"
+    },
+    {
+      "from": "art-to-science",
+      "to": "budgets",
+      "rel": "leads-to"
+    },
+    {
+      "from": "budgets",
+      "to": "behaviour-policies",
+      "rel": "depends-on"
+    },
+    {
+      "from": "behaviour-policies",
+      "to": "reshape",
+      "rel": "extends"
     },
     {
       "from": "grammar-vs-layers",
@@ -198,7 +235,8 @@
       "saas-apocalypse-decided-by-inertia-not-by-ai",
       "footprint-and-blast-radius",
       "connector-twin-before-you-deploy-an-agent",
-      "the-question-is-whether-they-miss-it"
+      "the-question-is-whether-they-miss-it",
+      "six-agents-one-inbox"
     ],
     "pages": [
       "/demos/vaults/code-review-graphs/index.html",
@@ -210,10 +248,15 @@
       "https://open-source.sgit.ai/",
       "https://wardley-maps.sgit.ai/",
       "https://diniscruz.ai/2025/06/10/explorers-villagers-and-town-planners-understanding-the-generative-ai-divide.md",
-      "https://cucumber.io/blog/bdd/example-mapping-introduction/"
+      "https://cucumber.io/blog/bdd/example-mapping-introduction/",
+      "https://riskmandate.ai/abp.html"
     ]
   },
   "quotes": [
+    {
+      "text": "A model in the line on every change is the art again with a different reviewer.",
+      "why": "The condition on which the move from art to science depends: the models build and maintain the graphs, then leave the line."
+    },
     {
       "text": "The grammar is fractal. The layers are yours.",
       "why": "The distinction the whole answer turns on, and the reason a review product has to learn each company's layers rather than impose its own."
