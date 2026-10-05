@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.69'
+SITE_VERSION = 'v0.6.70'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.69', '2026-10-05', 'this release',
+    ('v0.6.70', '2026-10-05', 'this release',
+     "MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now "
+     "declares \"hud\": {\"mode\": \"minimal\"} in app.json unless it has a reason not to: the guidance "
+     "front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published "
+     "create-vault-apps skill all say so. Found while checking why the How Much Evidence vault's links did "
+     "nothing: its views route on location.hash, and inside the host the app is an about:srcdoc frame where "
+     "setting the hash does not fire hashchange, so every view link was dead. The fix (route held in a "
+     "variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the "
+     "host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. "
+     "The vault itself needs its write key to take the fix."),
+    ('v0.6.69', '2026-10-05', 'unreleased, shipped with v0.6.70',
      "SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a "
      "subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP "
      "4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only "

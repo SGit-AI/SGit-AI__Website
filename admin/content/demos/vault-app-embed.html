@@ -19,7 +19,7 @@
 <pre class="shell">demo-vault-gallery/
 ├── index.html      <span class="d"># the app — one file, contract-compliant</span>
 ├── content.json    <span class="d"># the editable content the app reads over the bridge</span>
-├── app.json        <span class="d"># { "entry": "index.html", "present": true, "auto_open": true }</span>
+├── app.json        <span class="d"># { "entry": "index.html", "present": true, "auto_open": true, "hud": { "mode": "minimal" } }</span>
 └── README.md</pre>
   <p><b>2, Make the folder a vault and push it.</b></p>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit init --existing .</span>

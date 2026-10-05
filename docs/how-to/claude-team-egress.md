@@ -2,7 +2,7 @@
 
 > On Claude Team and Enterprise plans an Owner sets the code sandbox's network access for the whole organisation, and the default blocks every sgit host. Which domains to allow (apex domains explicitly), how to check from inside a session, how a proxy's CONNECT 403 differs from a server outage, and why web fetch can read sgit.ai while the shell cannot.
 
-*Source: <https://sgit.ai/docs/how-to/claude-team-egress.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/how-to/claude-team-egress.html> · site v0.6.70 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

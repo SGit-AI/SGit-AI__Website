@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.69). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.70). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-227site releases, each verified live before it was called done
+228site releases, each verified live before it was called done
 
 41vaults published with a deliberately public read key
 
@@ -2991,7 +2991,7 @@ Loads ~10 encrypted objects from `dev.send.sgraph.ai` and decrypts them here. No
 demo-vault-gallery/
 ├── index.html      # the app — one file, contract-compliant
 ├── content.json    # the editable content the app reads over the bridge
-├── app.json        # { "entry": "index.html", "present": true, "auto_open": true }
+├── app.json        # { "entry": "index.html", "present": true, "auto_open": true, "hud": { "mode": "minimal" } }
 └── README.md
 ```
 
@@ -5627,7 +5627,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.69, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.70, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5990,7 +5990,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-227**site releases since 14 August**
+228**site releases since 14 August**
 each verified live before it was called done
 
 41**vaults published with a public read key**
@@ -8612,6 +8612,8 @@ versions/v0.15.1.json    { "version", "date", "commit", "vault",
 | **Every credential test needs a negative control** | `sgit clone` creates a directory whether or not the key is valid. The marker that discriminates is `.sg_vault/local/clone_mode.json`. We called a leak once on a directory that an all-zeros key produced identically |
 | **Anything rendered stays one click from its bytes** | A reader that only shows its own interpretation asks to be trusted; one that also shows the source offers to be checked. `_page.json` has `{ } Source`; this site gives every page a `.md` twin |
 | **Deny by default in `app.json`** | Declare the narrowest permission that works, and write down why each grant exists. `"permissions": {}` is a real answer and often the right one |
+| **Minimal chrome by default: `"hud": {"mode": "minimal"}`** | The host's full HUD adds a browser toolbar, a URL bar and a row of buttons above an app that has its own navigation, and inside an embed on this site it is a frame inside a frame. Every vault app this estate publishes declares `minimal` in `app.json` unless it has a stated reason not to. It keeps the title, Open Vault and the read-only badge, and the host still shows consent prompts and external-link confirms |
+| **An app that routes itself never assigns `location.hash`** | In the host the app is an `about:srcdoc` frame, where setting the hash re-navigates instead of firing `hashchange`, so a hash router's links silently do nothing. Keep the route in a variable, catch `a[href^="#"]` in a window-capture click handler with `preventDefault`, mark the links `data-sg-native`, and use the hash only when the page runs on its own. The How Much Evidence vault shipped with this bug on 5 October 2026 and every view link was dead |
 | **Manifests at build time, files on click** | A vault can be tens of megabytes. Do not re-derive at runtime what the build already knew, and do not fetch what nobody opened |
 | **Content exists once** | If a paragraph is in the vault and again in a page about the vault, they will disagree, and the vault is the one that is right |
 | **State the gap rather than papering over it** | A page that names what it is missing is more useful than one that quietly omits it. Measured, not guessed |
@@ -9634,9 +9636,11 @@ Keep content in data files, not in HTML, so you (or an agent) can edit captions,
   "present":     true,        # boot into App Mode instead of the file browser
   "title":       "My app",
   "permissions": { "fs": { "read": true } },
-  "hud":         { "mode": "full" }
+  "hud":         { "mode": "minimal" }
 }
 ```
+
+`"minimal"` is this estate's default: the host keeps the title bar, Open Vault and the read-only badge, and drops the browser-style toolbar an app with its own navigation does not need. Use `"full"` for a multi-page vault site that relies on the host's back, forward and URL bar. Either way the host still shows consent prompts and external-link confirms.
 
 One rule with teeth: **an app cannot write its own manifest**: `.vault/**` and the legacy root `app.json` are a protected floor (`EPROTECTED`). The manifest *is* the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.
 
@@ -10187,11 +10191,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.69**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.70**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.69 | 2026-10-05 | this release | SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP 4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only `subscribe` append lane of a new vault, the same pattern as the contact form on riskmandate.ai. If anything fails, or there is no JavaScript, the same request is offered as a plain email to the same agent. The vault id, lane token and key are public in /.well-known/sgit-subscribe.json; the only secret is the vault key, held outside this repository. A new brief, /docs/briefs/subscribe-lane-agent-brief.html, tells the agent how to drain the lane, with a drain script that was run end to end (browser to lane to decrypted message) before release. Found on the way: `configure` returns 404 on a vault that has never been pushed, which looks exactly like the documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator. |
+| v0.6.70 | 2026-10-05 | this release | MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now declares "hud": {"mode": "minimal"} in app.json unless it has a reason not to: the guidance front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published create-vault-apps skill all say so. Found while checking why the How Much Evidence vault's links did nothing: its views route on location.hash, and inside the host the app is an about:srcdoc frame where setting the hash does not fire hashchange, so every view link was dead. The fix (route held in a variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. The vault itself needs its write key to take the fix. |
+| v0.6.69 | 2026-10-05 | unreleased, shipped with v0.6.70 | SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP 4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only `subscribe` append lane of a new vault, the same pattern as the contact form on riskmandate.ai. If anything fails, or there is no JavaScript, the same request is offered as a plain email to the same agent. The vault id, lane token and key are public in /.well-known/sgit-subscribe.json; the only secret is the vault key, held outside this repository. A new brief, /docs/briefs/subscribe-lane-agent-brief.html, tells the agent how to drain the lane, with a drain script that was run end to end (browser to lane to decrypted message) before release. Found on the way: `configure` returns 404 on a vault that has never been pushed, which looks exactly like the documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator. |
 | v0.6.68 | 2026-10-05 | git f7e55192 | THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the message ids behind each; 28 corrections with their latency; the 29-article dependency map with every article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions with a diff between any two; and a hash and screenshot of each cited source; with a nine-view app, built by a data scientist agent and a developer agent from a brief. The article is revised to the vault's numbers and says where its first version was wrong (eleven compactions, not twenty-two; 148 authored messages, not 281), gains a section on the vault with four of its views and one on why a published trail is a better universe for a model to learn from, and its ledger now has eight rows. Vault page with the read key. |
 | v0.6.67 | 2026-10-05 | git 8616d828 | SEND AN AGENT, NOT A SPREADSHEET. A new article turns the code review company to face the buyer: due diligence never scaled because it was a questionnaire answered by the vendor and disconnected from the code; a buyer can now send a prompt or a small agent under a behaviour policy into the vendor's environment and get back a derived graph of what reaches production unreviewed, what is documented and threat modelled, what the bugs touched and which agents act under what policy, with the vendor redacting but not rewriting. Risk-based tiers, the behaviour policy as the due diligence document, the regulation arriving before the visibility (SBOMs, the Cyber Resilience Act, the Product Liability Directive), the evidence that review is being skipped, and the startup's two advantages. Five figures. |
 | v0.6.66 | 2026-10-05 | git d234ea8c | THE MAP REDRAWN, THE WORKFLOW NAMED, THE CHANGES SHOWN. The article map on the graphs page is redrawn with labels set along each node's radius, so none collide and none floats off the ring as one did; edges are weighted by how often one article mentions another and coloured by direction in time, with a line of numbers under the map. The how-much article gains a section on the form, the workflow and the tools, two figures of the map and its own graph, the second infographic by another model with its two wrong numbers named, corrected citation counts (seventeen of twenty-seven, not nineteen), and a link to a new kind of page: the changes to an article between two versions, paragraph by paragraph, from a diff tool built today. |
