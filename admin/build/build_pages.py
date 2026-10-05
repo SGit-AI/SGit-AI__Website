@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.66'
+SITE_VERSION = 'v0.6.67'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.66', '2026-10-05', 'this release',
+    ('v0.6.67', '2026-10-05', 'this release',
+     "SEND AN AGENT, NOT A SPREADSHEET. A new article turns the code review company to face the buyer: due "
+     "diligence never scaled because it was a questionnaire answered by the vendor and disconnected from the "
+     "code; a buyer can now send a prompt or a small agent under a behaviour policy into the vendor's "
+     "environment and get back a derived graph of what reaches production unreviewed, what is documented and "
+     "threat modelled, what the bugs touched and which agents act under what policy, with the vendor redacting "
+     "but not rewriting. Risk-based tiers, the behaviour policy as the due diligence document, the regulation "
+     "arriving before the visibility (SBOMs, the Cyber Resilience Act, the Product Liability Directive), the "
+     "evidence that review is being skipped, and the startup's two advantages. Five figures.",),
+    ('v0.6.66', '2026-10-05', 'git d234ea8c',
      "THE MAP REDRAWN, THE WORKFLOW NAMED, THE CHANGES SHOWN. The article map on the graphs page is redrawn with "
      "labels set along each node's radius, so none collide and none floats off the ring as one did; edges are "
      "weighted by how often one article mentions another and coloured by direction in time, with a line of "

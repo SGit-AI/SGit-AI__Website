@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.66",
+  "site_version": "v0.6.67",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -888,6 +888,27 @@
         "article"
       ],
       "summary": "A reader of the code review article replied with seven good questions, and a voice memo of mine answered them with a change of frame: if somebody were building a company on code review, this is how I would do it. The answers turn on a distinction the first article did not make clearly enough. What is fractal in a fractal semantic graph is the grammar; which layers exist is decided by each company, and a product that standardises them away loses the thing it was meant to review. Two things make the rest possible only now. One technology can read every layer, from strategy to bytecode, so the graphs can be built at every altitude and built close to reality. And that moves code review from an art of opinion and power to a science of facts, provided the models are used to build, prune and maintain the graphs and then taken out of the line. From there: a projected graph from stories before the code exists and a derived graph from the code, with the review as the join; a refactor as relative to the layer held still, correcting the first article; the deploy as a layer; who reads the code at each stage of evolution, after Wardley; reshaping a change by reach; budgets as the objective good enough and the five whys as the loop; behaviour policies for the agents doing the work; and open source as the only model that fits."
+    },
+    {
+      "slug": "send-an-agent-not-a-spreadsheet",
+      "title": "Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it",
+      "date": "2026-10-05",
+      "version": "v0.6.67",
+      "tags": [
+        "due-diligence",
+        "code-review",
+        "agent-behaviour-policies",
+        "blast-radius",
+        "threat-models",
+        "sbom",
+        "cyber-resilience-act",
+        "product-liability",
+        "startups",
+        "ai-generated-code",
+        "fractal-semantic-graphs",
+        "article"
+      ],
+      "summary": "The last article asked how I would build a company on code review. This one turns it round. The buyers of software have always wanted to know whether a vendor understands what it is selling them, and have never been able to find out, because due diligence was a questionnaire: a spreadsheet of questions answered by the people being asked, disconnected from the code, too expensive to do properly and out of date on arrival. That has changed in the same way code review has. A buyer can now send a prompt, or a small agent under a behaviour policy, to run inside the vendor's environment and come back with a graph of what is actually there: what reaches production that no person reviewed, whether the documentation matches the code, whether there is a threat model and who wrote it, what the last fifty bugs touched, which agents touch the pipeline and under what policy. The vendor reads what leaves before it leaves, and can redact but not rewrite, because the answer is derived rather than written, and companies are careful about what goes on a record. The test is risk-based, not pure: a startup that says it generated its code fast, that the product is not mission-critical and here are the mitigations has passed. What fails is not knowing. That is the consequence that has been missing for the companies that stopped reviewing code, let the engineers go and let anyone prompt features into production: their customers, their investors and their acquirers are about to be able to see it. A startup should double down on understandability, because it has less code and the same tools, and the best way to build the code review company may be to sell it to the people who buy software rather than the people who write it."
     },
     {
       "slug": "the-identity-we-wanted-to-give-the-agents",
