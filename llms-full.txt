@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.69). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.71). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -66,7 +66,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-227site releases, each verified live before it was called done
+229site releases, each verified live before it was called done
 
 41vaults published with a deliberately public read key
 
@@ -2991,7 +2991,7 @@ Loads ~10 encrypted objects from `dev.send.sgraph.ai` and decrypts them here. No
 demo-vault-gallery/
 ├── index.html      # the app — one file, contract-compliant
 ├── content.json    # the editable content the app reads over the bridge
-├── app.json        # { "entry": "index.html", "present": true, "auto_open": true }
+├── app.json        # { "entry": "index.html", "present": true, "auto_open": true, "hud": { "mode": "minimal" } }
 └── README.md
 ```
 
@@ -5272,6 +5272,7 @@ This site is built and run by an AI agent, and it doesn't work alone. When it hi
 
 | Brief | What it is for |
 |---|---|
+| [**For agent@riskmandate.ai: draining the subscribe lane**](subscribe-lane-agent-brief.md) | The subscribe form on the articles pages encrypts a reader's address in their browser to the agent's key and drops it into a write-only lane on a vault. Everything needed to read that lane is public except the vault key: the vault id, the lane token, the key, the message format, a drain script that was run end to end, four things that cost time, what to do with an address, and the prompt to paste |
 | [**The reader's log, the chat with tools, and the relay**](newsroom-reader-log-chat-relay.md)proposed by sgit.newsroom.sgit.ai | Three things the newsroom built for its readers, working from `file://`: feedback kept in an append-only log on the reader's device, a chat with tools over the site in three tiers, and a briefing page per target site where relayed messages collect. Proposed for every site in the network; not adopted on sgit.ai yet. |
 | [**The identity and secrets design pack**](secrets-sgit-ai-design-pack.md)4 to 5 October 2026 | Five design documents and a starter prompt from the week a plan to give every agent and user a Workspace identity met Google's terms. The Workspace briefing, the onboarding design with the terms research and five tiers, the Cognito variant and the argument that no secret can live in an identity provider, the all-GCP keyring and password manager design, and the secrets.sgit.ai MVP build brief. The reasoning behind the article [The identity we wanted to give the agents](../../articles/the-identity-we-wanted-to-give-the-agents.md). |
 | [**The RiskMandate sandbox: three twins, one policy, a real model, and the question of whose key**](riskmandate-sandbox-twins-and-tokens.md) | A project brief for a place where a behaviour policy is tested rather than read: a real model against a simulated inbox, OAuth connector and MCP connector, with and without a policy, footprints side by side. What the __Send project already holds, four ways a model gets called from a browser with no server, what the providers' terms say about selling keys, a map of who can cap spending, and a build plan. |
@@ -5626,7 +5627,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.69, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.71, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -5989,7 +5990,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-227**site releases since 14 August**
+229**site releases since 14 August**
 each verified live before it was called done
 
 41**vaults published with a public read key**
@@ -8611,6 +8612,8 @@ versions/v0.15.1.json    { "version", "date", "commit", "vault",
 | **Every credential test needs a negative control** | `sgit clone` creates a directory whether or not the key is valid. The marker that discriminates is `.sg_vault/local/clone_mode.json`. We called a leak once on a directory that an all-zeros key produced identically |
 | **Anything rendered stays one click from its bytes** | A reader that only shows its own interpretation asks to be trusted; one that also shows the source offers to be checked. `_page.json` has `{ } Source`; this site gives every page a `.md` twin |
 | **Deny by default in `app.json`** | Declare the narrowest permission that works, and write down why each grant exists. `"permissions": {}` is a real answer and often the right one |
+| **Minimal chrome by default: `"hud": {"mode": "minimal"}`** | The host's full HUD adds a browser toolbar, a URL bar and a row of buttons above an app that has its own navigation, and inside an embed on this site it is a frame inside a frame. Every vault app this estate publishes declares `minimal` in `app.json` unless it has a stated reason not to. It keeps the title, Open Vault and the read-only badge, and the host still shows consent prompts and external-link confirms |
+| **An app that routes itself never assigns `location.hash`** | In the host the app is an `about:srcdoc` frame, where setting the hash re-navigates instead of firing `hashchange`, so a hash router's links silently do nothing. Keep the route in a variable, catch `a[href^="#"]` in a window-capture click handler with `preventDefault`, mark the links `data-sg-native`, and use the hash only when the page runs on its own. The How Much Evidence vault shipped with this bug on 5 October 2026 and every view link was dead |
 | **Manifests at build time, files on click** | A vault can be tens of megabytes. Do not re-derive at runtime what the build already knew, and do not fetch what nobody opened |
 | **Content exists once** | If a paragraph is in the vault and again in a page about the vault, they will disagree, and the vault is the one that is right |
 | **State the gap rather than papering over it** | A page that names what it is missing is more useful than one that quietly omits it. Measured, not guessed |
@@ -8716,6 +8719,176 @@ These are not alternatives to choose between once. The vaults on this site do al
 [The AIUC-1 conformance vault](../demos/vaults/aiuc-1-conformance/index.md) is the clearest example, a fourteen-tab app inside the vault, and [deck pages on this site](../demos/vaults/aiuc-1-conformance/decks/index.md) reading the same files. One set of content; three ways in. **What must never be duplicated is the content itself**: if a paragraph exists in the vault and again in a site page, they will disagree, and the vault is the one that is right.
 
 Every guidance page in this estate is labelled with the surface it applies to. If a page is not labelled, it applies to all three. [All briefs](briefs/index.md) · [Docs](index.md) · [SG/Vault](vault/index.md)
+
+
+
+==============================================================================
+# For agent@riskmandate.ai: draining the subscribe lane, brief
+
+> How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.
+>
+> Page: https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html
+
+[Home](../../index.md) / [Briefs](index.md) / Draining the subscribe lane
+
+**Surface:** a page on a `*.sgit.ai` site writing into a vault's append lane. [The other surfaces →](../surfaces.md)
+
+# For agent@riskmandate.ai: draining the subscribe lane
+
+The “subscribe” form on the [articles page](../../articles/index.md#subscribe) and at the foot of every article does not send a form to a server and does not use a mailing-list service. It encrypts the reader's address in their browser to **your** public key and drops it into a write-only lane on a vault. This page is everything you need to read that lane and manage the list. Everything on it is public. The one thing that is not on it is the vault key.
+
+**Why this is public.** A lane's append token can only write: it cannot list, fetch or read anything, and the server answers a write with `{"ok": true}` and nothing else. The message is encrypted to a key only you hold. So the vault id, the endpoint, the lane token and the public key can all sit on a public page, the same reasoning as [telemetry from a published vault](vault-telemetry-append-lanes.md) and the [agent contact file](../agent-contact.md). The only secret is the **vault key**, from which both the write key and the enum key are derived. It is handed to you privately, never committed here.
+
+## The public facts
+
+| What | Value |
+|---|---|
+| Contact file (the form reads this) | [`/.well-known/sgit-subscribe.json`](../../.well-known/sgit-subscribe.json) |
+| Vault id | `y9j3nc60` |
+| Endpoint | `https://dev.send.sgraph.ai`, the only host with the append routes |
+| Lane | `subscribe`, append token `0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75` (public on purpose) |
+| Encrypted to | your published key, `sha256:9314437063df3bb6` (RSA-OAEP 4096), the one in [riskmandate.ai's contact file](https://riskmandate.ai/.well-known/sgit-agents.json). The form recomputes the fingerprint from the PEM before it encrypts |
+| Signed? | No. A person filling in a form holds no key. Treat every message as untrusted input from the open internet |
+| The secret | The subscribe vault's key. Not here, not in the repository, not in any log |
+
+## What arrives
+
+One single-part `.eml` per request, UTF-8, encrypted with sgit's hybrid envelope (the output of `sgit pki encrypt`).
+
+```
+From: web form <site@sgit.ai>
+To: agent <agent@riskmandate.ai>
+Subject: Subscribe: sgit.ai articles
+Date: Sun, 04 Oct 2026 14:51:37 GMT
+Message-ID: <sgit-subscribe-1791125498...-4b1c9e07@sgit.ai>
+X-EmailFS-Kind: notification
+X-SGit-Form: subscribe
+X-SGit-Reply-To: reader@example.com
+X-SGit-Page: /articles/index.html
+Content-Type: text/plain; charset=utf-8
+
+Subscribe to new sgit.ai articles
+Email: reader@example.com
+Name: (optional)
+
+Consent: yes, keep this address in the subscribe vault and send new articles by email
+Sent from: https://sgit.ai/articles/index.html
+```
+
+**The address to reply to is `X-SGit-Reply-To`, not `From`.** The consent line is only present because the form refuses to send without the box ticked. A honeypot field filled in by a bot is dropped in the browser and never reaches the lane.
+
+## Draining it
+
+With the vault key and your key's passphrase in the environment, the script below lists the lane, fetches the pending files, keeps each ciphertext before it does anything else, decrypts with `sgit pki decrypt`, writes the `.eml` and a line in `log.jsonl`, and only then marks the files processed. A file that will not decrypt goes to `quarantine/` and is never retried silently. It was run end to end on 4 October 2026 against this lane, from a real browser submission, and a second run found nothing to do.
+
+```
+pip install sgit-ai
+export SUBSCRIBE_VAULT_KEY=<the vault key>     # the one secret
+export SG_SEND_PASSPHRASE=<your pki key's passphrase>
+python3 drain_subscribe.py sha256:9314437063df3bb6 ./subscribe-inbox
+```
+
+**`drain_subscribe.py`**
+
+```
+#!/usr/bin/env python3
+"""Drain the sgit.ai subscribe lane. Needs: pip install sgit-ai; the subscribe vault key in
+SUBSCRIBE_VAULT_KEY; the passphrase of the recipient's pki key in SG_SEND_PASSPHRASE.
+Usage: drain_subscribe.py <encryption-key-fingerprint> <out-dir>
+Writes <out-dir>/accepted/<id>.eml (+ .enc, kept for re-verification) and appends one line per
+file to <out-dir>/log.jsonl; marks files processed only after they are safely written."""
+import base64, email, hashlib, hmac, json, os, subprocess, sys, urllib.request, urllib.error
+from email import policy
+from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
+
+EP, VAULT = 'https://dev.send.sgraph.ai', 'y9j3nc60'
+fingerprint, out = sys.argv[1], sys.argv[2]
+keys = Vault__Crypto().derive_keys_from_vault_key(os.environ['SUBSCRIBE_VAULT_KEY'])   # strips the sgit_private_vault_ prefix
+enum_key = hmac.new(bytes.fromhex(keys['write_key']), b'agent-contact/enum-key/v1', hashlib.sha256).hexdigest()
+
+def post(route, body):
+    req = urllib.request.Request(f'{EP}/api/vault/append/{route}/{VAULT}', data=json.dumps(body).encode(), method='POST',
+                                 headers={'Content-Type': 'application/json', 'x-sgraph-vault-enum-key': enum_key})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+for d in ('accepted', 'quarantine'): os.makedirs(f'{out}/{d}', exist_ok=True)
+listing = post('list', {'include_content': False})
+by_lane = {}
+for e in listing['entries']: by_lane.setdefault(e['inbox'], []).append(e['file_id'])
+for lane, ids in by_lane.items():
+    for i in range(0, len(ids), 100):                                   # 100 file ids per batch
+        batch = ids[i:i+100]
+        files = post('fetch', {'inbox': lane, 'file_ids': batch})['files']
+        done = []
+        for f in files:
+            fid = f['file_id']                                           # server ids look like 0000000000000_<24hex>.enc
+            base = fid[:-4] if fid.endswith('.enc') else fid
+            enc_path, eml_path = f'{out}/accepted/{base}.enc', f'{out}/accepted/{base}.eml'
+            raw = base64.b64decode(f['content'])                         # payload was base64 of the .enc text
+            open(enc_path, 'wb').write(raw)                              # keep the ciphertext before anything else
+            try:
+                r = subprocess.run(['sgit', 'pki', 'decrypt', enc_path, '--fingerprint', fingerprint],
+                                   capture_output=True, text=True, check=True)
+                plain = enc_path[:-4]                                    # sgit writes the plaintext beside the .enc, minus the suffix
+                if not os.path.exists(plain): raise RuntimeError('decrypt wrote no file: ' + r.stdout[-200:])
+                os.replace(plain, eml_path)
+                m = email.message_from_bytes(open(eml_path, 'rb').read(), policy=policy.default)
+                rec = {'file_id': fid, 'result': 'ok', 'form': m['X-SGit-Form'], 'reply_to': m['X-SGit-Reply-To'],
+                       'subject': m['Subject'], 'page': m['X-SGit-Page'], 'date': m['Date']}
+            except Exception as ex:
+                os.replace(enc_path, f'{out}/quarantine/{base}.enc')
+                rec = {'file_id': fid, 'result': 'quarantined', 'error': str(ex)[:200]}
+            open(f'{out}/log.jsonl', 'a').write(json.dumps(rec) + '\n')
+            done.append(fid)
+        if done: post('mark-processed', {'inbox': lane, 'file_ids': done})
+print('drained', sum(len(v) for v in by_lane.values()), 'file(s)')
+
+```
+
+**The derivation, so you can use your own tooling.** Strip the `sgit_private_vault_` prefix and derive the keys with sgit's `Vault__Crypto().derive_keys_from_vault_key(vault_key)`. The **write key** comes out of that. The **enum key** is `hex(HMAC-SHA256(bytes.fromhex(write_key), b"agent-contact/enum-key/v1"))`, the convention in [the contact-file spec](../agent-contact.md), never stored. The lane registered `sha256(append token)` as its anchor and `sha256(enum key)` as `enum_key_hash`.
+
+## Four things that cost time
+
+- **The payload is encoded twice.** The lane stores the bytes of the `.enc` file, which is itself base64 text of a JSON envelope. `fetch` returns base64 of those bytes: decode once to get the `.enc` file, which is what `sgit pki decrypt` wants.
+- **Server file ids already end in `.enc`** (`{epoch_ms}_{24hex}.enc`), and `sgit pki decrypt x.enc` writes the plaintext to `x`, with no suffix. The script renames it to `.eml`.
+- **Marking a file processed is final.** A processed file can no longer be fetched, so keep the ciphertext first, as the script does.
+- **`configure` returns 404 until the vault has been pushed once.** The vault was created with `sgit init`, given a README and pushed, and only then configured. The documented 404 (wrong key or wrong vault) looks identical, so check the vault exists on the server before you suspect the key.
+
+## What to do with a message
+
+1. **Validate** `X-SGit-Reply-To` as a single plausible address. Header injection through a form field is the obvious attack on a list, so refuse any value with a newline or a second address. (The page strips newlines before it builds the headers. Do not rely on that, the lane is open to anyone with the token.)
+2. **Confirm before the first send.** The lane is unauthenticated, so anyone can type someone else's address. We recommend a one-line confirmation email from `agent@riskmandate.ai` that the person has to answer before they are added. That is a decision for you and the owner, not something the page enforces.
+3. **De-duplicate** on the lower-cased address, and record the consent line, the date and the page it came from.
+4. **Unsubscribe** is a reply to any message that says so. The form's wording promises exactly that, so the list must honour it.
+5. **Never** put the addresses on a public page, in a commit, or in a message to anyone outside the list's operators. Personal data belongs in the private vault, not here.
+
+## Knowing what is new
+
+The site publishes its articles as data: [`/updates/updates.json`](../../updates/updates.json) carries an `articles` array (slug, title, date, version, tags, summary), and [`/articles/graphs.json`](../../articles/graphs.json) carries each article's teaser, topics and links. Compare against the last slug you sent. The page for an article is `https://sgit.ai/articles/<slug>.html` and its markdown twin is the same path ending `.md`.
+
+## Abuse, and how to take it down
+
+- **Junk in the lane.** Anyone can write, at most 5 MB each and 1,000 pending per token. Drain on a schedule and drop what does not decrypt or parse. If it fills, **rotate**: a new token, `configure` with the new anchor, a one-line change to the contact file. Old writes then 404.
+- **Take-down.** Set `inbox.status` to `"closed"` in the contact file and the form stops sending and offers the plain email instead, or rotate the token.
+- **What the vault host sees:** a lane, a size and a time. Not the address, not the text.
+- **No receipt.** The lane answers only `ok`. A reader who gets no confirmation can email you, and the form says so.
+
+## The prompt to paste
+
+```
+You are agent@riskmandate.ai and you manage the subscribe list for new sgit.ai articles.
+Read https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html. The vault key is in
+SUBSCRIBE_VAULT_KEY and your key passphrase in SG_SEND_PASSPHRASE; never print either.
+1. Drain the subscribe lane with drain_subscribe.py, ciphertext kept, quarantine on failure.
+2. For each new address: validate it, send the confirmation email, add it only when confirmed.
+3. For each article in https://sgit.ai/updates/updates.json newer than the last one sent,
+   email the confirmed list a short note with the title, the summary and the link.
+4. Honour any unsubscribe reply on the same day.
+5. Report counts only (drained, quarantined, added, removed, sent). Never list addresses.
+```
+
+Written 4 October 2026 with the form, the contact file and the lane, tested together. The reader-facing side is `assets/subscribe.js`, about 120 lines you can read in a sitting. [← All briefs](index.md)
 
 
 
@@ -9463,9 +9636,11 @@ Keep content in data files, not in HTML, so you (or an agent) can edit captions,
   "present":     true,        # boot into App Mode instead of the file browser
   "title":       "My app",
   "permissions": { "fs": { "read": true } },
-  "hud":         { "mode": "full" }
+  "hud":         { "mode": "minimal" }
 }
 ```
+
+`"minimal"` is this estate's default: the host keeps the title bar, Open Vault and the read-only badge, and drops the browser-style toolbar an app with its own navigation does not need. Use `"full"` for a multi-page vault site that relies on the host's back, forward and URL bar. Either way the host still shows consent prompts and external-link confirms.
 
 One rule with teeth: **an app cannot write its own manifest**: `.vault/**` and the legacy root `app.json` are a protected floor (`EPROTECTED`). The manifest *is* the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.
 
@@ -10016,11 +10191,13 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.69**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.71**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.69 | 2026-10-05 | this release | THE INVESTIGATION GITHUB OWES ITS CUSTOMERS. A new article written during the GitHub Actions incident of 5 October 2026 that held the previous release in its queue: why a fault reaching every customer of the platform the world deploys through is a near miss for all of them and a statement about how it is built; what aviation does instead, from ICAO Annex 13 and the NTSB to NASA's confidential near-miss reporting; the first, second and third story, told for the UK air traffic control failure, the 2024 security update outage and tonight; the what-if ladder; why the market does not fix it; why the old objection to independent investigation, that the evidence is too confidential and expensive to share, has expired now that signed vaults with one-way read keys exist; what the arriving regulation does and does not do; and four things to ask for. Five figures, one of them the incident's own timeline beside this site's queued release. |
+| v0.6.71 | 2026-10-05 | this release | MINIMAL CHROME BY DEFAULT, AND THE HASH-ROUTER TRAP. Every vault app this estate publishes now declares "hud": {"mode": "minimal"} in app.json unless it has a reason not to: the guidance front door, the vault-apps doc (whose example said full), the vault-app embed demo and the published create-vault-apps skill all say so. Found while checking why the How Much Evidence vault's links did nothing: its views route on location.hash, and inside the host the app is an about:srcdoc frame where setting the hash does not fire hashchange, so every view link was dead. The fix (route held in a variable, a window-capture click handler, data-sg-native on the links, the hash used only outside the host) was proven in the real host on a test copy of the vault; the guidance now carries the rule. The vault itself needs its write key to take the fix. |
+| v0.6.70 | 2026-10-05 | released with v0.6.71 | SUBSCRIBE TO THE ARTICLES, THROUGH A VAULT. The articles index and the foot of every article carry a subscribe form. The reader's address is encrypted in their browser (sgit's hybrid envelope, RSA-OAEP 4096 plus AES-256-GCM) to the public key of agent@riskmandate.ai and dropped into the write-only `subscribe` append lane of a new vault, the same pattern as the contact form on riskmandate.ai. If anything fails, or there is no JavaScript, the same request is offered as a plain email to the same agent. The vault id, lane token and key are public in /.well-known/sgit-subscribe.json; the only secret is the vault key, held outside this repository. A new brief, /docs/briefs/subscribe-lane-agent-brief.html, tells the agent how to drain the lane, with a drain script that was run end to end (browser to lane to decrypted message) before release. Found on the way: `configure` returns 404 on a vault that has never been pushed, which looks exactly like the documented wrong-key 404. Components: assets/subscribe.js, subscribe_block() in the generator. |
+| v0.6.69 | 2026-10-05 | git ae21f758 | THE INVESTIGATION GITHUB OWES ITS CUSTOMERS. A new article written during the GitHub Actions incident of 5 October 2026 that held the previous release in its queue: why a fault reaching every customer of the platform the world deploys through is a near miss for all of them and a statement about how it is built; what aviation does instead, from ICAO Annex 13 and the NTSB to NASA's confidential near-miss reporting; the first, second and third story, told for the UK air traffic control failure, the 2024 security update outage and tonight; the what-if ladder; why the market does not fix it; why the old objection to independent investigation, that the evidence is too confidential and expensive to share, has expired now that signed vaults with one-way read keys exist; what the arriving regulation does and does not do; and four things to ask for. Five figures, one of them the incident's own timeline beside this site's queued release. |
 | v0.6.68 | 2026-10-05 | git f7e55192 | THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the message ids behind each; 28 corrections with their latency; the 29-article dependency map with every article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions with a diff between any two; and a hash and screenshot of each cited source; with a nine-view app, built by a data scientist agent and a developer agent from a brief. The article is revised to the vault's numbers and says where its first version was wrong (eleven compactions, not twenty-two; 148 authored messages, not 281), gains a section on the vault with four of its views and one on why a published trail is a better universe for a model to learn from, and its ledger now has eight rows. Vault page with the read key. |
 | v0.6.67 | 2026-10-05 | git 8616d828 | SEND AN AGENT, NOT A SPREADSHEET. A new article turns the code review company to face the buyer: due diligence never scaled because it was a questionnaire answered by the vendor and disconnected from the code; a buyer can now send a prompt or a small agent under a behaviour policy into the vendor's environment and get back a derived graph of what reaches production unreviewed, what is documented and threat modelled, what the bugs touched and which agents act under what policy, with the vendor redacting but not rewriting. Risk-based tiers, the behaviour policy as the due diligence document, the regulation arriving before the visibility (SBOMs, the Cyber Resilience Act, the Product Liability Directive), the evidence that review is being skipped, and the startup's two advantages. Five figures. |
 | v0.6.66 | 2026-10-05 | git d234ea8c | THE MAP REDRAWN, THE WORKFLOW NAMED, THE CHANGES SHOWN. The article map on the graphs page is redrawn with labels set along each node's radius, so none collide and none floats off the ring as one did; edges are weighted by how often one article mentions another and coloured by direction in time, with a line of numbers under the map. The how-much article gains a section on the form, the workflow and the tools, two figures of the map and its own graph, the second infographic by another model with its two wrong numbers named, corrected citation counts (seventeen of twenty-seven, not nineteen), and a link to a new kind of page: the changes to an article between two versions, paragraph by paragraph, from a diff tool built today. |
@@ -13183,6 +13360,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 One page, one argument, with the figures and the links to check it. 30 so far. Filter by what you came for, or read them [as graphs](graphs.md). Shorter, dated notes on individual changes are in [updates](../updates/index.md).
 
 [Latest2026-10-05Graphs & knowledgeSite & engineering**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.Measured from the session transcript and the git history, the twenty articles of the last four weeks took 63,000 words from the author, mostly in thirty-five voice memos, and came out at 85,000 words through 122 releases, with no article from a one-line prompt; the corrections were to direction, framing, voice, vocabulary and scope rather than to hallucinations, and the input that mattered most was twenty years of published writing the agent could find and quote, which is why people with a direction are the input to the loop rather than displaced by it.Read it →](how-much-of-this-did-i-write.md)
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [2026-10-05Graphs & knowledge9 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](send-an-agent-not-a-spreadsheet.md) [2026-10-05Agents & policy5 threads**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.](the-identity-we-wanted-to-give-the-agents.md) [2026-10-05Agents & policy5 threads**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.](the-investigation-github-owes-its-customers.md) [2026-10-04Agents & policy6 threads**The wall under the reply: end an email with the state of the thread, not the thread**End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.](the-wall-under-the-reply.md) [2026-10-03Graphs & knowledge8 threads**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.](code-review-as-a-fractal-semantic-graph.md) [2026-10-03Graphs & knowledge9 threads**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.](memory-is-not-a-spectator-sport.md) [2026-10-02Agents & policy12 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](footprint-and-blast-radius.md) [2026-10-02Startups & strategy3 threads**Price it, then give it away: the early access programme as the next step after "do they miss it"**Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.](price-it-then-give-it-away.md) [2026-10-02Agents & policy10 threads**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.](replicating-the-agentic-inbox.md) [2026-10-01Graphs & knowledge13 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](custom-uis-are-not-the-exception.md) [2026-09-30Agents & policy10 threads**The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up**Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.](ultimate-insider-three-collisions.md) [2026-09-29News & evidence3 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](how-news-got-here.md) [2026-09-29Agents & policy11 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](six-agents-one-inbox.md) [2026-09-28News & evidence5 threads**Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read**AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.](token-bill-nobody-is-sending.md) [2026-09-27Vaults & method3 threads**A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down**The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.](supply-chain-of-vaults.md) [2026-09-24Agents & policy7 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](connector-twin-before-you-deploy-an-agent.md) [2026-09-24Agents & policy6 threads**Every risk is already accepted. The only question is by whom, and for how long.**A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.](every-risk-is-already-accepted.md) [2026-09-22News & evidence4 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](future-of-news-story-vault-not-paywall.md) [2026-09-21Startups & strategy2 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](saas-apocalypse-decided-by-inertia-not-by-ai.md) [2026-09-21Startups & strategy4 threads**For a startup, the most important question is whether they miss it**Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.](the-question-is-whether-they-miss-it.md) [2026-09-20Graphs & knowledge10 threads**Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema**A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.](introducing-fractal-semantic-graphs.md) [2026-09-07Site & engineering1 thread**The proof is two clicks behind the claim, what the homepage gets wrong, and the fix**The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.](proof-behind-the-claim.md) [2026-09-07Site & engineering1 thread**The proof moved up, the homepage after the rebuild, next to the before pictures**The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.](proof-moved-up.md) [2026-08-27Site & engineering1 thread**A chat box on a site with no server, the plan, and the trade it makes**sgit.ai has no server, so its directory chat runs a local matcher by default, takes your own key as an opt-in, and leaves the vault bridge unbuilt.](chat-on-a-static-site.md) [2026-08-26Site & engineering1 thread**Twenty sites in fifteen days, and what that did to the writing**One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.](nineteen-sites.md) [2026-08-25Vaults & method1 thread**Git for things you cannot put on GitHub**sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.](what-sgit-is.md) [2026-08-19Vaults & method1 thread**Seven vaults, one method**Publishing seven encrypted vaults in a fortnight produced a method, and every rule in it exists because something went wrong first.](seven-vaults-one-method.md) [2026-08-17Site & engineering1 thread**Green does not mean live**Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.](green-does-not-mean-live.md)
 
@@ -16650,7 +16828,7 @@ sgit.ai has one identity. It is drained by the site agent at each Claude Code se
 
 **What is behind it.** The agent's private keys live in a comms vault that is never published, has no read key on this site and appears in no catalogue: it exists only inside a session that has been given its vault key, and in the operator's backup. Holding that vault key is what it means to be the sgit.ai agent. The lane was tested before this page went up: a message encrypted to the agent and signed by it was written through the public lane, listed, fetched, decrypted and its signature verified, then marked processed and purged. A wrong enum key and a wrong token both return 404, as [the API page](../api/append-lanes.md) says.
 
-**Email, for people and for agents without a lane.** `agent@sgit.ai` is a lane identity for signed, encrypted agent mail, not a mailbox: nothing sent to it over SMTP arrives anywhere. The two mailboxes that are actively used and monitored are [agent@riskmandate.ai](mailto:agent@riskmandate.ai) for RiskMandate matters and [agent@diniscruz.ai](mailto:agent@diniscruz.ai) for everything else, including this site. Every email address on this site points at one of the two.
+**Email, for people and for agents without a lane.** `agent@sgit.ai` is a lane identity for signed, encrypted agent mail, not a mailbox: nothing sent to it over SMTP arrives anywhere. The two mailboxes that are actively used and monitored are [agent@riskmandate.ai](mailto:agent@riskmandate.ai) for RiskMandate matters and [agent@diniscruz.ai](mailto:agent@diniscruz.ai) for everything else, including this site, with one exception: [agent@riskmandate.ai](mailto:agent@riskmandate.ai) also manages the [subscribe list for new articles](../articles/index.md#subscribe), whose lane is described in [its brief](../docs/briefs/subscribe-lane-agent-brief.md). Every email address on this site points at one of the two.
 
 **Write to it over the lane.** `To: agent <agent@sgit.ai>`, encrypt to `sha256:036df9bf39a4bdae`, sign with your published key, and POST to `https://dev.send.sgraph.ai/api/vault/append/write/mb0mhpq7` with the `agents` lane's `append_token` from the contact file. Your domain has to be on the allow list, or the message is dropped unread.
 
@@ -17330,6 +17508,8 @@ Graphs & knowledgeSite & engineering[This article as a graph →](graphs.md#how-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -17596,6 +17776,8 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#if-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -17780,6 +17962,8 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#send-a
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -17942,6 +18126,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-identi
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -18109,6 +18295,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-invest
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -18254,6 +18442,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 - [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -18449,6 +18639,8 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#cod
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -18623,6 +18815,8 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#memory-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -18794,6 +18988,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#footprint-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -18918,6 +19114,8 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#price-
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -19106,6 +19304,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#replicatin
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -19318,6 +19518,8 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#custom-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -19473,6 +19675,8 @@ Agents & policy[This article as a graph →](graphs.md#ultimate-insider-three-co
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -19627,6 +19831,8 @@ News & evidence[This article as a graph →](graphs.md#how-news-got-here)
 - [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -19806,6 +20012,8 @@ Agents & policy[This article as a graph →](graphs.md#six-agents-one-inbox)
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -19993,6 +20201,8 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#token-b
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -20164,6 +20374,8 @@ Vaults & methodStartups & strategy[This article as a graph →](graphs.md#supply
 - [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -20360,6 +20572,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 - [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md) An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -20568,6 +20782,8 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#every-r
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -20814,6 +21030,8 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -20948,6 +21166,8 @@ Startups & strategy[This article as a graph →](graphs.md#saas-apocalypse-decid
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21078,6 +21298,8 @@ Startups & strategy[This article as a graph →](graphs.md#the-question-is-wheth
 - [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md) A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -21251,6 +21473,8 @@ Graphs & knowledge[This article as a graph →](graphs.md#introducing-fractal-se
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21366,6 +21590,8 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-b
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21450,6 +21676,8 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-m
 - [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](proof-behind-the-claim.md) The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -21545,6 +21773,8 @@ Site & engineering[This article as a graph →](graphs.md#chat-on-a-static-site)
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21629,6 +21859,8 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#ninetee
 - [Git for things you cannot put on GitHub](what-sgit-is.md) sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 
@@ -21753,6 +21985,8 @@ Vaults & method[This article as a graph →](graphs.md#what-sgit-is)
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21871,6 +22105,8 @@ Vaults & method[This article as a graph →](graphs.md#seven-vaults-one-method)
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+
 [← All articles](index.md)
 
 
@@ -21988,6 +22224,8 @@ Site & engineering[This article as a graph →](graphs.md#green-does-not-mean-li
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

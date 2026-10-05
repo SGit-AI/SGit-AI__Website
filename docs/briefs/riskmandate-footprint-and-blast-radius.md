@@ -2,7 +2,7 @@
 
 > A vocabulary brief to the RiskMandate.ai team. The policy's four words, reach, mandate, gap and barriers, are written before the agent runs. Footprint is what the agent actually did, read afterwards from logs, vault history or a connector twin, and compared with the mandate it gives near misses and dormant rows. Blast radius is the measure on any row: what it would cost the business if used in full, with a reversibility flag. Five asks in order of usefulness, a schema sketch, and four questions, including which words are current.
 
-*Source: <https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/riskmandate-footprint-and-blast-radius.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

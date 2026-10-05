@@ -2,7 +2,7 @@
 
 > Twenty-five real vaults a stranger can open in one click are the most persuasive thing on this site, and the homepage shows none of them. It leads with encryption, which cannot be seen, and buries the artefacts under a table. This is the diagnosis, with screenshots, before the rebuild, and the second article will show what changed.
 
-*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/proof-behind-the-claim.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -109,6 +109,8 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-b
 - [The proof moved up, the homepage after the rebuild, next to the before pictures](proof-moved-up.md) The rebuilt homepage puts four real vaults under one sentence, picks six by the job they do, and computes its numbers at build time from the site's own data.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

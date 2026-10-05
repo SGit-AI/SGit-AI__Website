@@ -2,7 +2,7 @@
 
 > Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
 
-*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -140,6 +140,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 - [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

@@ -2,7 +2,7 @@
 
 > The first page to read before building, publishing or changing a vault. The practices that get repeated most, pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version, plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
 
-*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -54,6 +54,8 @@ versions/v0.15.1.json    { "version", "date", "commit", "vault",
 | **Every credential test needs a negative control** | `sgit clone` creates a directory whether or not the key is valid. The marker that discriminates is `.sg_vault/local/clone_mode.json`. We called a leak once on a directory that an all-zeros key produced identically |
 | **Anything rendered stays one click from its bytes** | A reader that only shows its own interpretation asks to be trusted; one that also shows the source offers to be checked. `_page.json` has `{ } Source`; this site gives every page a `.md` twin |
 | **Deny by default in `app.json`** | Declare the narrowest permission that works, and write down why each grant exists. `"permissions": {}` is a real answer and often the right one |
+| **Minimal chrome by default: `"hud": {"mode": "minimal"}`** | The host's full HUD adds a browser toolbar, a URL bar and a row of buttons above an app that has its own navigation, and inside an embed on this site it is a frame inside a frame. Every vault app this estate publishes declares `minimal` in `app.json` unless it has a stated reason not to. It keeps the title, Open Vault and the read-only badge, and the host still shows consent prompts and external-link confirms |
+| **An app that routes itself never assigns `location.hash`** | In the host the app is an `about:srcdoc` frame, where setting the hash re-navigates instead of firing `hashchange`, so a hash router's links silently do nothing. Keep the route in a variable, catch `a[href^="#"]` in a window-capture click handler with `preventDefault`, mark the links `data-sg-native`, and use the hash only when the page runs on its own. The How Much Evidence vault shipped with this bug on 5 October 2026 and every view link was dead |
 | **Manifests at build time, files on click** | A vault can be tens of megabytes. Do not re-derive at runtime what the build already knew, and do not fetch what nobody opened |
 | **Content exists once** | If a paragraph is in the vault and again in a page about the vault, they will disagree, and the vault is the one that is right |
 | **State the gap rather than papering over it** | A page that names what it is missing is more useful than one that quietly omits it. Measured, not guessed |

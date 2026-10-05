@@ -2,7 +2,7 @@
 
 > At 19:11 UTC on 5 October 2026 GitHub's status page said it was investigating degraded performance for Actions. For the next two hours, every customer in every region could not reliably start a workflow, which for most of the world's software is the same as not being able to deploy. This site's own release sat in the queue, was cancelled by the incident, and went live two hours late on a retry. The status page said "delays", then "degraded availability", and will say "resolved". Nobody outside GitHub will learn which component failed, what it could reach, why the scope of one fault was everyone, or whether the same roll of the dice had come up before. This article argues that incidents at platforms this critical should be treated the way aviation treats them: investigated by somebody independent whose only job is prevention, reported whether or not the consequence was severe, published with the evidence, and followed through to the second story, why the system allowed it, and the third, why nobody paid to change it. The objection has always been that the evidence is confidential, enormous and expensive to gather. It is not any more. Encrypted vaults with one-way read keys, signed records, per-party access and agents that read a graph make the aviation docket affordable for a ninety-minute fault. The companies that depend on GitHub cannot see how close to the wind it flies, and that, not the outage, is the risk nobody has signed for.
 
-*Source: <https://sgit.ai/articles/the-investigation-github-owes-its-customers.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-investigation-github-owes-its-customers.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -160,6 +160,8 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-invest
 - [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

@@ -171,9 +171,22 @@ Why this shape:
   "entry": "index.html",
   "present": true,
   "auto_open": true,
-  "title": "Whatever the page is called"
+  "title": "Whatever the page is called",
+  "hud": { "mode": "minimal" }
 }
 ```
+
+**sgit.ai house default (added 2026-10-05): `"hud": {"mode": "minimal"}`.** Every vault app the
+sgit.ai estate publishes declares it unless there is a stated reason not to: the app has its own
+navigation, and the full HUD's toolbar and URL bar add a second one, a frame inside a frame when the
+app is embedded in a site page. Use `"full"` for multi-page vault sites that rely on the host's
+back, forward and URL bar.
+
+**If your app routes itself (a hash router), never assign `location.hash` inside the host.** The
+app is an `about:srcdoc` frame there, and setting the hash re-navigates rather than firing
+`hashchange`, so every link silently does nothing. Keep the route in a variable, catch
+`a[href^="#"]` in a window-capture click handler with `preventDefault()`, mark the links
+`data-sg-native`, and use the hash only when the page runs on its own (`file://`, a plain page).
 
 With `present:true`, opening the vault boots straight into App Mode rather than the file browser. I set `auto_open:true` as well in every app this session and they did auto-launch, but I confirmed only `present` against the host source — treat `auto_open` as belt-and-braces until verified. Without `app.json` at all, the user lands on the file browser and has to click `index.html` manually.
 

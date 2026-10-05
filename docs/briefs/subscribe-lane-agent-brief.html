@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For agent@riskmandate.ai: draining the subscribe lane, brief</title>
+<meta name="description" content="How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.">
+<link rel="canonical" href="https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html">
+<meta property="og:title" content="For agent@riskmandate.ai: draining the subscribe lane, brief">
+<meta property="og:description" content="How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="For agent@riskmandate.ai: draining the subscribe lane, brief">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="subscribe-lane-agent-brief.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "For agent@riskmandate.ai: draining the subscribe lane, brief", "headline": "For agent@riskmandate.ai: draining the subscribe lane, brief", "description": "How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.", "url": "https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.71</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl here" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.71 &middot; 5 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / Draining the subscribe lane</p>
+  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site writing into a vault's append lane. <a href="../surfaces.html">The other surfaces &rarr;</a></p>
+  <h1>For agent@riskmandate.ai: draining the subscribe lane</h1>
+  <p class="lead">The &ldquo;subscribe&rdquo; form on the <a href="../../articles/index.html#subscribe">articles page</a> and at the foot of every article does not send a form to a server and does not use a mailing-list service. It encrypts the reader's address in their browser to <b>your</b> public key and drops it into a write-only lane on a vault. This page is everything you need to read that lane and manage the list. Everything on it is public. The one thing that is not on it is the vault key.</p>
+
+  <div class="note"><b>Why this is public.</b> A lane's append token can only write: it cannot list, fetch or read anything, and the server answers a write with <code>{"ok": true}</code> and nothing else. The message is encrypted to a key only you hold. So the vault id, the endpoint, the lane token and the public key can all sit on a public page, the same reasoning as <a href="vault-telemetry-append-lanes.html">telemetry from a published vault</a> and the <a href="../agent-contact.html">agent contact file</a>. The only secret is the <b>vault key</b>, from which both the write key and the enum key are derived. It is handed to you privately, never committed here.</div>
+
+  <h2 id="facts">The public facts</h2>
+  <div class="tablewrap"><table>
+    <tr><th>What</th><th>Value</th></tr>
+    <tr><td>Contact file (the form reads this)</td><td><a href="../../.well-known/sgit-subscribe.json"><code>/.well-known/sgit-subscribe.json</code></a></td></tr>
+    <tr><td>Vault id</td><td><code>y9j3nc60</code></td></tr>
+    <tr><td>Endpoint</td><td><code>https://dev.send.sgraph.ai</code>, the only host with the append routes</td></tr>
+    <tr><td>Lane</td><td><code>subscribe</code>, append token <code>0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75</code> (public on purpose)</td></tr>
+    <tr><td>Encrypted to</td><td>your published key, <code>sha256:9314437063df3bb6</code> (RSA-OAEP 4096), the one in <a href="https://riskmandate.ai/.well-known/sgit-agents.json">riskmandate.ai's contact file</a>. The form recomputes the fingerprint from the PEM before it encrypts</td></tr>
+    <tr><td>Signed?</td><td>No. A person filling in a form holds no key. Treat every message as untrusted input from the open internet</td></tr>
+    <tr><td>The secret</td><td>The subscribe vault's key. Not here, not in the repository, not in any log</td></tr>
+  </table></div>
+
+  <h2 id="message">What arrives</h2>
+  <p>One single-part <code>.eml</code> per request, UTF-8, encrypted with sgit's hybrid envelope (the output of <code>sgit pki encrypt</code>).</p>
+  <pre>From: web form &lt;site@sgit.ai&gt;
+To: agent &lt;agent@riskmandate.ai&gt;
+Subject: Subscribe: sgit.ai articles
+Date: Sun, 04 Oct 2026 14:51:37 GMT
+Message-ID: &lt;sgit-subscribe-1791125498...-4b1c9e07@sgit.ai&gt;
+X-EmailFS-Kind: notification
+X-SGit-Form: subscribe
+X-SGit-Reply-To: reader@example.com
+X-SGit-Page: /articles/index.html
+Content-Type: text/plain; charset=utf-8
+
+Subscribe to new sgit.ai articles
+Email: reader@example.com
+Name: (optional)
+
+Consent: yes, keep this address in the subscribe vault and send new articles by email
+Sent from: https://sgit.ai/articles/index.html</pre>
+  <p><b>The address to reply to is <code>X-SGit-Reply-To</code>, not <code>From</code>.</b> The consent line is only present because the form refuses to send without the box ticked. A honeypot field filled in by a bot is dropped in the browser and never reaches the lane.</p>
+
+  <h2 id="drain">Draining it</h2>
+  <p>With the vault key and your key's passphrase in the environment, the script below lists the lane, fetches the pending files, keeps each ciphertext before it does anything else, decrypts with <code>sgit pki decrypt</code>, writes the <code>.eml</code> and a line in <code>log.jsonl</code>, and only then marks the files processed. A file that will not decrypt goes to <code>quarantine/</code> and is never retried silently. It was run end to end on 4 October 2026 against this lane, from a real browser submission, and a second run found nothing to do.</p>
+  <pre>pip install sgit-ai
+export SUBSCRIBE_VAULT_KEY=&lt;the vault key&gt;     # the one secret
+export SG_SEND_PASSPHRASE=&lt;your pki key's passphrase&gt;
+python3 drain_subscribe.py sha256:9314437063df3bb6 ./subscribe-inbox</pre>
+  <details><summary><code>drain_subscribe.py</code></summary>
+  <pre>#!/usr/bin/env python3
+&quot;&quot;&quot;Drain the sgit.ai subscribe lane. Needs: pip install sgit-ai; the subscribe vault key in
+SUBSCRIBE_VAULT_KEY; the passphrase of the recipient&#x27;s pki key in SG_SEND_PASSPHRASE.
+Usage: drain_subscribe.py &lt;encryption-key-fingerprint&gt; &lt;out-dir&gt;
+Writes &lt;out-dir&gt;/accepted/&lt;id&gt;.eml (+ .enc, kept for re-verification) and appends one line per
+file to &lt;out-dir&gt;/log.jsonl; marks files processed only after they are safely written.&quot;&quot;&quot;
+import base64, email, hashlib, hmac, json, os, subprocess, sys, urllib.request, urllib.error
+from email import policy
+from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
+
+EP, VAULT = &#x27;https://dev.send.sgraph.ai&#x27;, &#x27;y9j3nc60&#x27;
+fingerprint, out = sys.argv[1], sys.argv[2]
+keys = Vault__Crypto().derive_keys_from_vault_key(os.environ[&#x27;SUBSCRIBE_VAULT_KEY&#x27;])   # strips the sgit_private_vault_ prefix
+enum_key = hmac.new(bytes.fromhex(keys[&#x27;write_key&#x27;]), b&#x27;agent-contact/enum-key/v1&#x27;, hashlib.sha256).hexdigest()
+
+def post(route, body):
+    req = urllib.request.Request(f&#x27;{EP}/api/vault/append/{route}/{VAULT}&#x27;, data=json.dumps(body).encode(), method=&#x27;POST&#x27;,
+                                 headers={&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;x-sgraph-vault-enum-key&#x27;: enum_key})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+for d in (&#x27;accepted&#x27;, &#x27;quarantine&#x27;): os.makedirs(f&#x27;{out}/{d}&#x27;, exist_ok=True)
+listing = post(&#x27;list&#x27;, {&#x27;include_content&#x27;: False})
+by_lane = {}
+for e in listing[&#x27;entries&#x27;]: by_lane.setdefault(e[&#x27;inbox&#x27;], []).append(e[&#x27;file_id&#x27;])
+for lane, ids in by_lane.items():
+    for i in range(0, len(ids), 100):                                   # 100 file ids per batch
+        batch = ids[i:i+100]
+        files = post(&#x27;fetch&#x27;, {&#x27;inbox&#x27;: lane, &#x27;file_ids&#x27;: batch})[&#x27;files&#x27;]
+        done = []
+        for f in files:
+            fid = f[&#x27;file_id&#x27;]                                           # server ids look like 0000000000000_&lt;24hex&gt;.enc
+            base = fid[:-4] if fid.endswith(&#x27;.enc&#x27;) else fid
+            enc_path, eml_path = f&#x27;{out}/accepted/{base}.enc&#x27;, f&#x27;{out}/accepted/{base}.eml&#x27;
+            raw = base64.b64decode(f[&#x27;content&#x27;])                         # payload was base64 of the .enc text
+            open(enc_path, &#x27;wb&#x27;).write(raw)                              # keep the ciphertext before anything else
+            try:
+                r = subprocess.run([&#x27;sgit&#x27;, &#x27;pki&#x27;, &#x27;decrypt&#x27;, enc_path, &#x27;--fingerprint&#x27;, fingerprint],
+                                   capture_output=True, text=True, check=True)
+                plain = enc_path[:-4]                                    # sgit writes the plaintext beside the .enc, minus the suffix
+                if not os.path.exists(plain): raise RuntimeError(&#x27;decrypt wrote no file: &#x27; + r.stdout[-200:])
+                os.replace(plain, eml_path)
+                m = email.message_from_bytes(open(eml_path, &#x27;rb&#x27;).read(), policy=policy.default)
+                rec = {&#x27;file_id&#x27;: fid, &#x27;result&#x27;: &#x27;ok&#x27;, &#x27;form&#x27;: m[&#x27;X-SGit-Form&#x27;], &#x27;reply_to&#x27;: m[&#x27;X-SGit-Reply-To&#x27;],
+                       &#x27;subject&#x27;: m[&#x27;Subject&#x27;], &#x27;page&#x27;: m[&#x27;X-SGit-Page&#x27;], &#x27;date&#x27;: m[&#x27;Date&#x27;]}
+            except Exception as ex:
+                os.replace(enc_path, f&#x27;{out}/quarantine/{base}.enc&#x27;)
+                rec = {&#x27;file_id&#x27;: fid, &#x27;result&#x27;: &#x27;quarantined&#x27;, &#x27;error&#x27;: str(ex)[:200]}
+            open(f&#x27;{out}/log.jsonl&#x27;, &#x27;a&#x27;).write(json.dumps(rec) + &#x27;\n&#x27;)
+            done.append(fid)
+        if done: post(&#x27;mark-processed&#x27;, {&#x27;inbox&#x27;: lane, &#x27;file_ids&#x27;: done})
+print(&#x27;drained&#x27;, sum(len(v) for v in by_lane.values()), &#x27;file(s)&#x27;)
+</pre>
+  </details>
+  <p><b>The derivation, so you can use your own tooling.</b> Strip the <code>sgit_private_vault_</code> prefix and derive the keys with sgit's <code>Vault__Crypto().derive_keys_from_vault_key(vault_key)</code>. The <b>write key</b> comes out of that. The <b>enum key</b> is <code>hex(HMAC-SHA256(bytes.fromhex(write_key), b"agent-contact/enum-key/v1"))</code>, the convention in <a href="../agent-contact.html">the contact-file spec</a>, never stored. The lane registered <code>sha256(append token)</code> as its anchor and <code>sha256(enum key)</code> as <code>enum_key_hash</code>.</p>
+
+  <h2 id="gotchas">Four things that cost time</h2>
+  <ul>
+    <li><b>The payload is encoded twice.</b> The lane stores the bytes of the <code>.enc</code> file, which is itself base64 text of a JSON envelope. <code>fetch</code> returns base64 of those bytes: decode once to get the <code>.enc</code> file, which is what <code>sgit pki decrypt</code> wants.</li>
+    <li><b>Server file ids already end in <code>.enc</code></b> (<code>{epoch_ms}_{24hex}.enc</code>), and <code>sgit pki decrypt x.enc</code> writes the plaintext to <code>x</code>, with no suffix. The script renames it to <code>.eml</code>.</li>
+    <li><b>Marking a file processed is final.</b> A processed file can no longer be fetched, so keep the ciphertext first, as the script does.</li>
+    <li><b><code>configure</code> returns 404 until the vault has been pushed once.</b> The vault was created with <code>sgit init</code>, given a README and pushed, and only then configured. The documented 404 (wrong key or wrong vault) looks identical, so check the vault exists on the server before you suspect the key.</li>
+  </ul>
+
+  <h2 id="policy">What to do with a message</h2>
+  <ol>
+    <li><b>Validate</b> <code>X-SGit-Reply-To</code> as a single plausible address. Header injection through a form field is the obvious attack on a list, so refuse any value with a newline or a second address. (The page strips newlines before it builds the headers. Do not rely on that, the lane is open to anyone with the token.)</li>
+    <li><b>Confirm before the first send.</b> The lane is unauthenticated, so anyone can type someone else's address. We recommend a one-line confirmation email from <code>agent@riskmandate.ai</code> that the person has to answer before they are added. That is a decision for you and the owner, not something the page enforces.</li>
+    <li><b>De-duplicate</b> on the lower-cased address, and record the consent line, the date and the page it came from.</li>
+    <li><b>Unsubscribe</b> is a reply to any message that says so. The form's wording promises exactly that, so the list must honour it.</li>
+    <li><b>Never</b> put the addresses on a public page, in a commit, or in a message to anyone outside the list's operators. Personal data belongs in the private vault, not here.</li>
+  </ol>
+
+  <h2 id="send">Knowing what is new</h2>
+  <p>The site publishes its articles as data: <a href="../../updates/updates.json"><code>/updates/updates.json</code></a> carries an <code>articles</code> array (slug, title, date, version, tags, summary), and <a href="../../articles/graphs.json"><code>/articles/graphs.json</code></a> carries each article's teaser, topics and links. Compare against the last slug you sent. The page for an article is <code>https://sgit.ai/articles/&lt;slug&gt;.html</code> and its markdown twin is the same path ending <code>.md</code>.</p>
+
+  <h2 id="abuse">Abuse, and how to take it down</h2>
+  <ul>
+    <li><b>Junk in the lane.</b> Anyone can write, at most 5 MB each and 1,000 pending per token. Drain on a schedule and drop what does not decrypt or parse. If it fills, <b>rotate</b>: a new token, <code>configure</code> with the new anchor, a one-line change to the contact file. Old writes then 404.</li>
+    <li><b>Take-down.</b> Set <code>inbox.status</code> to <code>"closed"</code> in the contact file and the form stops sending and offers the plain email instead, or rotate the token.</li>
+    <li><b>What the vault host sees:</b> a lane, a size and a time. Not the address, not the text.</li>
+    <li><b>No receipt.</b> The lane answers only <code>ok</code>. A reader who gets no confirmation can email you, and the form says so.</li>
+  </ul>
+
+  <h2 id="prompt">The prompt to paste</h2>
+  <pre>You are agent@riskmandate.ai and you manage the subscribe list for new sgit.ai articles.
+Read https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html. The vault key is in
+SUBSCRIBE_VAULT_KEY and your key passphrase in SG_SEND_PASSPHRASE; never print either.
+1. Drain the subscribe lane with drain_subscribe.py, ciphertext kept, quarantine on failure.
+2. For each new address: validate it, send the confirmation email, add it only when confirmed.
+3. For each article in https://sgit.ai/updates/updates.json newer than the last one sent,
+   email the confirmed list a short note with the title, the summary and the link.
+4. Honour any unsubscribe reply on the same day.
+5. Report counts only (drained, quarantined, added, removed, sent). Never list addresses.</pre>
+
+  <p class="small dim">Written 4 October 2026 with the form, the contact file and the lane, tested together. The reader-facing side is <code>assets/subscribe.js</code>, about 120 lines you can read in a sitting. <a href="index.html">&larr; All briefs</a></p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.71</a> · <a href="../../admin/index.html">engineering</a> · <a href="subscribe-lane-agent-brief.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.71';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

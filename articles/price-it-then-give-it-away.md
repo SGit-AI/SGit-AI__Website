@@ -2,7 +2,7 @@
 
 > The follow-up to "the most important question is whether they miss it". The step after giving something away is to define a product, put a price on it that makes sense to you, find a way to deliver it at a cost that grows a step at a time rather than a curve, and then offer it, free, to the people who already know you: early adopters, power users, past customers. What that measures is brutal. The price is a statement of what you think it is worth; the test is whether people take it at zero. If they say it is interesting but they have no time, it does not fit the team, or it is hard to deploy, the problem is not the price, and you go back to the drawing board. The part that is easy to leave out is that free is never free for the other side: engaging costs them attention, thinking and schedule, so the exercise is to measure that cost and cut it, until the service costs you the least and costs them the least. Written as a record of where this came from, and as a brief for the agents who will run it.
 
-*Source: <https://sgit.ai/articles/price-it-then-give-it-away.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/price-it-then-give-it-away.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -119,6 +119,8 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#price-
 - [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md) Ship something usable, give it away briefly, take it away and see whether anybody misses it; charge at a profit before you talk to investors.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

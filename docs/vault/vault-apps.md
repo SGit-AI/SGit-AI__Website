@@ -2,7 +2,7 @@
 
 > How to build apps that live inside encrypted vaults: the project shape, app.json, the authoring contract, and shipping with sgit push.
 
-*Source: <https://sgit.ai/docs/vault/vault-apps.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/vault/vault-apps.html> · site v0.6.71 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -33,9 +33,11 @@ Keep content in data files, not in HTML, so you (or an agent) can edit captions,
   "present":     true,        # boot into App Mode instead of the file browser
   "title":       "My app",
   "permissions": { "fs": { "read": true } },
-  "hud":         { "mode": "full" }
+  "hud":         { "mode": "minimal" }
 }
 ```
+
+`"minimal"` is this estate's default: the host keeps the title bar, Open Vault and the read-only badge, and drops the browser-style toolbar an app with its own navigation does not need. Use `"full"` for a multi-page vault site that relies on the host's back, forward and URL bar. Either way the host still shows consent prompts and external-link confirms.
 
 One rule with teeth: **an app cannot write its own manifest**: `.vault/**` and the legacy root `app.json` are a protected floor (`EPROTECTED`). The manifest *is* the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.
 

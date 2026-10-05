@@ -17,8 +17,9 @@
   "present":     true,        <span class="d"># boot into App Mode instead of the file browser</span>
   "title":       "My app",
   "permissions": { "fs": { "read": true } },
-  "hud":         { "mode": "full" }
+  "hud":         { "mode": "minimal" }
 }</pre>
+  <p><code>"minimal"</code> is this estate's default: the host keeps the title bar, Open Vault and the read-only badge, and drops the browser-style toolbar an app with its own navigation does not need. Use <code>"full"</code> for a multi-page vault site that relies on the host's back, forward and URL bar. Either way the host still shows consent prompts and external-link confirms.</p>
   <p>One rule with teeth: <b>an app cannot write its own manifest</b>: <code>.vault/**</code> and the legacy root <code>app.json</code> are a protected floor (<code>EPROTECTED</code>). The manifest <em>is</em> the grant; letting an app edit it would defeat the model. Edit it via the vault browser or sgit.</p>
 
   <h2>The authoring contract</h2>
