@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.65'
+SITE_VERSION = 'v0.6.66'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.65', '2026-10-05', 'this release',
+    ('v0.6.66', '2026-10-05', 'this release',
+     "THE MAP REDRAWN, THE WORKFLOW NAMED, THE CHANGES SHOWN. The article map on the graphs page is redrawn with "
+     "labels set along each node's radius, so none collide and none floats off the ring as one did; edges are "
+     "weighted by how often one article mentions another and coloured by direction in time, with a line of "
+     "numbers under the map. The how-much article gains a section on the form, the workflow and the tools, two "
+     "figures of the map and its own graph, the second infographic by another model with its two wrong numbers "
+     "named, corrected citation counts (seventeen of twenty-seven, not nineteen), and a link to a new kind of "
+     "page: the changes to an article between two versions, paragraph by paragraph, from a diff tool built today.",),
+    ('v0.6.65', '2026-10-05', 'git 6ba12b0a',
      "HOW MUCH OF THIS DID I WRITE? A new article measures the session that wrote the last twenty articles: "
      "every word the author sent, every word that came back, the rounds each piece went through, the "
      "corrections by kind, and the record the memos stood on. Three figures and a published dataset with the "
@@ -4685,44 +4693,72 @@ def graph_svg(g, w=760, h=440):
     return ''.join(out)
 
 
-def articles_map_svg(w=880, h=600):
-    import math
-    arts = list(reversed(ARTICLES)) # oldest first round the circle
-    cx, cy, r = w / 2, h / 2, min(w, h) / 2 - 110
+def articles_map_svg(w=960, h=880):
+    """The map of the articles: every article in date order round a circle, joined by the
+    links the markdown makes. Labels are set along each node's own radius, so twenty-eight
+    of them never overprint and none floats off the ring (v0.6.66 fixed a label that did).
+    Node size is how many articles link to it. Edge width is how many times the linking
+    article mentions the linked one. Colour is direction in time: an article citing an older
+    one is the ordinary case; an older article pointing at a newer one means the older page
+    was updated after the newer one existed, which is the record being kept current."""
+    import math, collections
+    arts = list(reversed(ARTICLES))  # oldest first round the circle
+    order = {a['slug']: i for i, a in enumerate(arts)}
+    cx, cy, r = w / 2, h / 2, min(w, h) / 2 - 218
     pos = {}
     for i, a in enumerate(arts):
         ang = -math.pi / 2 + 2 * math.pi * i / len(arts)
         pos[a['slug']] = (cx + r * math.cos(ang), cy + r * math.sin(ang), ang)
+    weights = {a['slug']: collections.Counter(t for t in _RE_ART_LINK.findall(a['body']) if t in _SLUGS and t != a['slug'])
+               for a in ARTICLES}
     out = [f'<svg class="amap-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" role="img" '
            'aria-label="The articles, in date order round a circle, joined by the links they make to each other">']
-    for s, outs in ARTICLE_OUT.items():
+    for s_, outs in ARTICLE_OUT.items():
         for t in outs:
-            x1, y1, _ = pos[s]; x2, y2, _ = pos[t]
+            x1, y1, _ = pos[s_]; x2, y2, _ = pos[t]
+            n = weights[s_][t]
+            forward = order[s_] < order[t]  # an older article linking a newer one
+            col = '#b45309' if forward else '#0f766e'
             out.append(f'<path d="M {x1:.0f} {y1:.0f} Q {cx:.0f} {cy:.0f} {x2:.0f} {y2:.0f}" fill="none" '
-                       f'stroke="#0f766e" stroke-opacity=".28" stroke-width="1.3"><title>{_esc(BY_SLUG[s]["title"])} links to {_esc(BY_SLUG[t]["title"])}</title></path>')
+                       f'stroke="{col}" stroke-opacity="{0.22 + min(n, 4) * 0.08:.2f}" stroke-width="{0.9 + 0.5 * min(n, 5):.1f}">'
+                       f'<title>{_esc(BY_SLUG[s_]["title"])} links to {_esc(BY_SLUG[t]["title"])}'
+                       f'{" (" + str(n) + " times)" if n > 1 else ""}{"; the older article was updated to point forward" if forward else ""}</title></path>')
     for a in arts:
         x, y, ang = pos[a['slug']]
         n_in = len(ARTICLE_IN[a['slug']])
-        label = _short(a['title'], 36)
-        rad = 5 + 2 * n_in
-        # labels sit outside the circle, on the side the node is on; near the top and the
-        # bottom they go above or below instead, so neighbours do not overprint each other
-        c, s = math.cos(ang), math.sin(ang)
-        if abs(c) < 0.2:
-            # two nodes can share a pole (an even split either side of it): the one on the
-            # right takes a second line, so the two centred labels stack instead of overprinting
-            extra = 14 if c > 0 else 0
-            tx, ty, anchor = x, y + (-(rad + 14 + extra) if s < 0 else rad + 20 + extra), 'middle'
-        else:
-            # the two neighbours of a top or bottom node sit at almost its height: nudge their
-            # labels outward vertically so they clear the label above or below
-            nudge = (-10 if s > 0 else 10) if abs(c) < 0.6 else 0
-            tx, ty, anchor = x + (rad + 8) * (1 if c > 0 else -1), y + 4 + nudge, ('start' if c > 0 else 'end')
-        out.append(f'<a href="{a["slug"]}.html"><circle cx="{x:.0f}" cy="{y:.0f}" r="{rad}" fill="#0f766e">'
+        rad = 4.5 + 1.8 * n_in
+        label = _short(a['title'], 30)
+        deg = math.degrees(ang)
+        right = math.cos(ang) >= 0
+        # the label runs along the node's own radius, outward; on the left half it is turned
+        # 180 degrees and anchored at its end so it still reads left to right
+        lx, ly = x + (rad + 7) * math.cos(ang), y + (rad + 7) * math.sin(ang)
+        rot = deg if right else deg + 180
+        out.append(f'<a href="{a["slug"]}.html"><circle cx="{x:.0f}" cy="{y:.0f}" r="{rad:.1f}" fill="#0f766e">'
                    f'<title>{_esc(a["title"])} ({a["date"]}): links to {len(ARTICLE_OUT[a["slug"]])}, linked by {n_in}</title></circle>'
-                   f'<text x="{tx:.0f}" y="{ty:.0f}" font-size="11.5" text-anchor="{anchor}" fill="#1c1d21">{_esc(label)}</text></a>')
+                   f'<text x="{lx:.0f}" y="{ly:.0f}" font-size="11" text-anchor="{"start" if right else "end"}" dominant-baseline="middle" '
+                   f'transform="rotate({rot:.1f} {lx:.0f} {ly:.0f})" fill="#1c1d21">{_esc(label)}</text></a>')
     out.append('</svg>')
     return ''.join(out)
+
+
+def articles_map_stats():
+    """One line of numbers under the map, computed from the same links the map draws."""
+    import collections
+    arts = list(reversed(ARTICLES)); order = {a['slug']: i for i, a in enumerate(arts)}
+    n_links = sum(len(v) for v in ARTICLE_OUT.values())
+    n_mentions = sum(len(_RE_ART_LINK.findall(a['body'])) for a in ARTICLES)
+    citing_earlier = sum(1 for a in ARTICLES if any(order[t] < order[a['slug']] for t in ARTICLE_OUT[a['slug']]))
+    forward = sum(1 for s_, outs in ARTICLE_OUT.items() for t in outs if order[s_] < order[t])
+    most_in = max(ARTICLES, key=lambda a: len(ARTICLE_IN[a['slug']]))
+    most_out = max(ARTICLES, key=lambda a: len(ARTICLE_OUT[a['slug']]))
+    isolated = [a for a in ARTICLES if not ARTICLE_OUT[a['slug']] and not ARTICLE_IN[a['slug']]]
+    return (f'<p class="small dim">{len(ARTICLES)} articles, {n_links} links between them ({n_mentions} mentions in all). '
+            f'{citing_earlier} articles cite an earlier one; {forward} links in amber run from an older article to a newer one, '
+            f'which means the older page was updated after the newer one existed. Most linked: '
+            f'<a href="#{most_in["slug"]}">{_esc(_short(most_in["title"], 48))}</a> ({len(ARTICLE_IN[most_in["slug"]])} articles link to it). '
+            f'Most linking: <a href="#{most_out["slug"]}">{_esc(_short(most_out["title"], 48))}</a> ({len(ARTICLE_OUT[most_out["slug"]])} links out). '
+            f'{len(isolated)} article{"s" if len(isolated) != 1 else ""} not yet linked either way.</p>')
 
 
 def articles_graphs_body():
@@ -4738,9 +4774,13 @@ def articles_graphs_body():
            '(for example <a href="graphs/footprint-and-blast-radius.json">this one</a>). The pages on this site are '
            'rendered from the same files at build time; nothing here is hand-written HTML.</p>',
            f' <p class="small dim">{len(GRAPHS)} of {len(ARTICLES)} articles have a graph. The map draws every article in '
-           'date order round the circle, sized by how many other articles link to it.</p>',
+           'date order round the circle, oldest at the top and clockwise from there, sized by how many other articles '
+           'link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an '
+           'older article that was updated to point at a newer one. Thicker edges are articles that mention each other '
+           'more than once.</p>',
            ' <h2 id="map">How the articles connect</h2>',
-           ' <div class="amap">' + articles_map_svg() + '</div>']
+           ' <div class="amap">' + articles_map_svg() + '</div>',
+           ' ' + articles_map_stats()]
     for a in ARTICLES:
         g = GRAPHS.get(a['slug'])
         out.append(f' <section class="agraph" id="{a["slug"]}">')

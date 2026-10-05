@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.65 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.66 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.65**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.66**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.65 | 2026-10-05 | this release | HOW MUCH OF THIS DID I WRITE? A new article measures the session that wrote the last twenty articles: every word the author sent, every word that came back, the rounds each piece went through, the corrections by kind, and the record the memos stood on. Three figures and a published dataset with the method and its limits. Seven articles accounted for by hand. |
+| v0.6.66 | 2026-10-05 | this release | THE MAP REDRAWN, THE WORKFLOW NAMED, THE CHANGES SHOWN. The article map on the graphs page is redrawn with labels set along each node's radius, so none collide and none floats off the ring as one did; edges are weighted by how often one article mentions another and coloured by direction in time, with a line of numbers under the map. The how-much article gains a section on the form, the workflow and the tools, two figures of the map and its own graph, the second infographic by another model with its two wrong numbers named, corrected citation counts (seventeen of twenty-seven, not nineteen), and a link to a new kind of page: the changes to an article between two versions, paragraph by paragraph, from a diff tool built today. |
+| v0.6.65 | 2026-10-05 | git 6ba12b0a | HOW MUCH OF THIS DID I WRITE? A new article measures the session that wrote the last twenty articles: every word the author sent, every word that came back, the rounds each piece went through, the corrections by kind, and the record the memos stood on. Three figures and a published dataset with the method and its limits. Seven articles accounted for by hand. |
 | v0.6.64 | 2026-10-05 | git 0ad26f6e | THE SOURCES, LINKED. Every piece of earlier writing the code review company article weaves in now links to its public copy: the SG/Send team briefs and articles on GitHub as markdown, the diniscruz.ai posts, the Villager team brief in the sgit CLI repository, Wardley's own posts, Example Mapping, the SecDevOps book, and the sibling sites. The article also gains its one-page condensation by another model as a closing section, checked against the text, with two paraphrases in quotation marks named as such. |
 | v0.6.63 | 2026-10-05 | git 9e4d1cb4 | WHY IT IS ONLY NOW POSSIBLE. The code review company article gains the two ideas its author found missing on first read: that one technology can now read every layer from strategy to bytecode, which is what makes a graph at every altitude buildable and close to reality and why earlier attempts failed; and that this moves code review from an art of opinion and power to a science of facts, with budgets as the objective good enough and the condition that the models build and maintain the graphs and then leave the line. Agent Behaviour Policies are woven in as the control on the reviewing agents. The title and summary are shortened. Graph updated. |
 | v0.6.62 | 2026-10-05 | git 4d6a7b92 | NO MORE RUNGS. The word is gone from every article, its graph JSON, the code review vault page and the eleven figures of the two code review articles, at the author's request and in the spirit of the em-dash rule: a graph has layers and altitudes, a ladder has steps, a price list has tiers. The validator now fails any article that uses it. Elsewhere on the site the word remains until those pages are rewritten. |
