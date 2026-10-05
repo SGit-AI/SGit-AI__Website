@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.58'
+SITE_VERSION = 'v0.6.59'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.58', '2026-10-05', 'this release',
+    ('v0.6.59', '2026-10-05', 'this release',
+     "THE IDENTITY WE WANTED TO GIVE THE AGENTS. A new article captures the week a plan to give every agent "
+     "and user a Google Workspace identity from one tenant met Google's terms: the resale and function-account "
+     "clauses in their current wording, with one correction to the design pack's own citation (the 'substitute "
+     "service' clause is in the legacy free-edition agreement, not the current terms); the five options; the "
+     "rule that no secret can live inside an identity provider; the passkey-unlocked keyring that fell out of "
+     "it; what the industry's agent identities do and do not do; and the gap the research confirmed, that "
+     "login, zero-knowledge storage and agent identity are still three separate jobs. Five figures. With it, "
+     "the five design documents and the starter prompt are published as a brief, the identity and secrets "
+     "design pack, as written and to be corrected.",),
+    ('v0.6.58', '2026-10-05', 'git 413c644f',
      "THE CORRECTED ONE-PAGE CONDENSATION. The reply-tail article's infographic by another model is now the "
      "third version: the placeholder third-party domain is gone, the credit spells the site correctly, and "
      "the fictional reply is dated on the right weekday. One stray hyphen remains in a label and stays, as "

@@ -243,7 +243,9 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
 // rendered from a vault this site does not author, so its wording is not ours to change.
 // (The box-drawing characters in the ASCII diagrams are a different codepoint and never match.)
 {
-  const exemptDirs = ['skills/', 'assets/', 'node_modules/'];
+  // docs/briefs/secrets-sgit-ai-design-pack/ holds design documents published as written, to be
+  // corrected in their own repository; their punctuation is not this site's to change (v0.6.59).
+  const exemptDirs = ['skills/', 'assets/', 'node_modules/', 'docs/briefs/secrets-sgit-ai-design-pack/'];
   const exemptFiles = ['team/board.html', 'team/board.md'];
   for (const f of files.filter(f => /\.(html|md)$/.test(f))) {
     const rel = path.relative(root, f).replace(/\\/g, '/');

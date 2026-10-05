@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,11 +14,45 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-25 of 25 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
+26 of 26 articles have a graph. The map draws every article in date order round the circle, sized by how many other articles link to it.
 
 ## How the articles connect
 
 *[diagram]*
+
+## [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md)
+
+2026-10-05 · Agents & policyVaults & method
+
+A plan to give every agent and user a Workspace identity from one tenant was stopped by Google's resale and function-account clauses; the design moved to a login product plus a bucket of ciphertext plus a browser keyring that only the user's passkey can open, on the rule that no secret can live inside an identity provider, and the week exposed that login, zero-knowledge storage and agent identity are still three separate jobs.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**16 nodes, 17 edges**
+
+- **A real identity for every agent and user** (concept) A Workspace seat per person and per agent from our tenant: mailbox, calendar, drive, login, with sgit encrypting before Google and a passkey as the only decryptor.
+- **Workspace has no admin-proof zone** (claim) A super administrator can reach any Drive; client-side encryption is Enterprise Plus and Education only; so encryption happens in sgit, before Google.
+- **The resale and function-account clauses** (claim) Current Cloud terms forbid selling, reselling, sublicensing or distributing the Services; the acceptable use policy names reselling End User Accounts in a product and accounts assigned to functions rather than humans.
+- **A correction to our own pack** (example) The 'substitute or similar service' clause cited as section 2.6 is in the legacy free-edition agreement the standard-terms URL still serves, not in the current terms.
+- **Five options, one table** (method) Shared Workspace (needs Google's agreement), Identity Platform plus bucket (chosen), customer's own Workspace, private customer cloud, Cognito plus S3 as the AWS variant.
+- **No secret can live in the login** (claim) Whoever administers identity can reset a password, mint a token or sign in as anyone; the authority to decrypt must come from the user's authenticator.
+- **Login decides paths; the passkey decides meaning** (concept) The identity provider and the bucket rules decide which paths a user may touch; the passkey decides whether the bytes mean anything; an administrator fakes the first, never the second.
+- **The code is the boundary** (claim) Whoever controls the repository or DNS controls the app; so host away from the cloud project, vendor and hash every dependency, scope the passkey to one subdomain, never the apex.
+- **The keyring** (artefact) One encrypted file per user holding a key pair and every small secret, unlocked by passkey PRF with a recovery code as second method, shared through per-user public keys, using sgit pki's algorithms.
+- **A password manager first** (method) Every risky piece in one small product; the acceptance test is to hand a project owner a user id and ask for one plaintext field, then publish the attempt.
+- **Passkey PRF: most places, not everywhere** (example) WebAuthn Level 3 became a Recommendation in August 2026; Chrome, Edge, Safari 18 and desktop Firefox ship PRF; Bitwarden and Dashlane unlock vaults with it; the MVP ships a compatibility matrix.
+- **Agents are not seats** (claim) An agent gets a service identity, a lane for signed mail and a keyring entry a person releases, scoped and time-limited; our own agents keep their mailboxes because they are our organisation's.
+- **Agent identity from the vendors** (example) Entra Agent ID, Okta for AI Agents, Google Cloud Agent Identity on SPIFFE, Anthropic's managed-agent vaults: workload identity that says which agent, not which person's key.
+- **Three jobs, still separate** (claim) Login is solved; zero-knowledge per-user storage exists in pieces; agent identity exists for machines; nothing on the shelf is all three, and the joins are a startup's first month.
+- **The regulator describes the property** (example) Articles 32 and 34(3)(a) and the EDPB's 'if the confidentiality of the key is intact' favour keys the operator cannot break; the market does not sell it.
+- **Unless we are missing something obvious** (question) The design pack is published to be corrected; the nearest off-the-shelf answers found were two small password-derived open-source backends.
+
+> Login decides which paths you may touch. The passkey decides whether the bytes mean anything. An administrator can fake the first and never the second. The rule the whole design rests on, and why no secret can live inside an identity provider.
+
+> The law describes the property; the market does not sell it. The gap the article ends on: login, zero-knowledge storage and agent identity are still three separate jobs.
+
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md)
 
@@ -150,7 +184,7 @@ Add two words to the Agent Behaviour Policy: footprint, what the agent actually 
 
 > The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
 
-builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
 
@@ -215,7 +249,7 @@ Claude is used as an agent state machine, one session per role, every message be
 
 > You do not have to believe what the agent says it did. You can read what it did. Why the record is the point for someone learning to trust a set of agents.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md)
 
@@ -283,7 +317,7 @@ Agents are the insider threat that never scaled before, the infrastructure was d
 
 > The more you can constrain an agent, the more you can trust it, and the more autonomy you can afford to give it. The irony the talk would end on, and the turn from the problem to the way out.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
 ## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
 
@@ -350,7 +384,7 @@ Write an agent's access policy as a table with a column for how each rule is enf
 
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
-builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 

@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.58 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.59 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.58**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.59**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.58 | 2026-10-05 | this release | THE CORRECTED ONE-PAGE CONDENSATION. The reply-tail article's infographic by another model is now the third version: the placeholder third-party domain is gone, the credit spells the site correctly, and the fictional reply is dated on the right weekday. One stray hyphen remains in a label and stays, as it came. |
+| v0.6.59 | 2026-10-05 | this release | THE IDENTITY WE WANTED TO GIVE THE AGENTS. A new article captures the week a plan to give every agent and user a Google Workspace identity from one tenant met Google's terms: the resale and function-account clauses in their current wording, with one correction to the design pack's own citation (the 'substitute service' clause is in the legacy free-edition agreement, not the current terms); the five options; the rule that no secret can live inside an identity provider; the passkey-unlocked keyring that fell out of it; what the industry's agent identities do and do not do; and the gap the research confirmed, that login, zero-knowledge storage and agent identity are still three separate jobs. Five figures. With it, the five design documents and the starter prompt are published as a brief, the identity and secrets design pack, as written and to be corrected. |
+| v0.6.58 | 2026-10-05 | git 413c644f | THE CORRECTED ONE-PAGE CONDENSATION. The reply-tail article's infographic by another model is now the third version: the placeholder third-party domain is gone, the credit spells the site correctly, and the fictional reply is dated on the right weekday. One stray hyphen remains in a label and stays, as it came. |
 | v0.6.57 | 2026-10-04 | git 025e22b7 | THE EXPERIMENT PARAGRAPH, IN THE AUTHOR'S WORDS. The reply-tail article's experiment paragraph now reads as Dinis rewrote it for the LinkedIn repost: the experiment runs on his own correspondence via the agent@riskmandate.ai agentic team, and the note box links the LinkedIn repost. A revised version of the one-page condensation arrived without the third-party placeholder domain but with the site's name misspelled in its credit line, so the first version stays until a clean one comes. |
 | v0.6.56 | 2026-10-04 | git b5a36310 | THE ARTICLE, CONDENSED BY ANOTHER MODEL. The reply-tail article gains a closing section with the one-page infographic ChatGPT produced from the published text a few hours after release, kept in that model's own style and credited, because a condensation made for a reader by a different model is the thing the article proposes, done to the article. The caption says the thread is fictional and the addresses are placeholders. |
 | v0.6.55 | 2026-10-04 | git 12ba9608 | THE WALL UNDER THE REPLY. A new article proposes ending an email reply with the state of the thread written for this reader (decided, open, next, who is on copy, sources) instead of the quoted wall, drafted by the drafts role from the typed blocks the inbox role already keeps and reviewed by a person. It credits the precedents (RFC 1855's summary-instead-of-quote in 1995, bottom line up front, Minto, TL;DR, decision records) and the reader-side AI summaries in Gmail, Outlook, Apple Mail, Superhuman and Shortwave, and draws the line between a sender's reviewed statement and a reader's private view. It ends as an experiment on the author's own correspondence: four variants, what the record can measure, and what would show the idea is wrong. Five mock-up figures with a fictional thread. |
