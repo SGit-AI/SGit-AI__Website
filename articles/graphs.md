@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.67 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,12 +29,13 @@ The graphs are data first and pictures second. Take them as JSON: [all articles 
 Measured from the session transcript and the git history, the twenty articles of the last four weeks took 63,000 words from the author, mostly in thirty-five voice memos, and came out at 85,000 words through 122 releases, with no article from a one-line prompt; the corrections were to direction, framing, voice, vocabulary and scope rather than to hallucinations, and the input that mattered most was twenty years of published writing the agent could find and quote, which is why people with a direction are the input to the loop rather than displaced by it.
 
 *[diagram]*
-**concept**claim**method**example**question
+**concept**claim**method**artefact**example**question
 
-**13 nodes, 13 edges**
+**15 nodes, 17 edges**
 
 - **How much of this did I write?** (question) A friend found the volume of text baffling; the answer that I write briefs and review drafts is true and unbelieved, so the session was measured instead.
 - **The session record as evidence** (method) The Claude Code transcript parsed for who said what and when, joined to the site's git history; limits stated, dataset published beside the article.
+- **The evidence, as a vault** (artefact) Every number as a file in a published vault with a read key: messages, releases, days, ledgers with message ids, corrections with latency, the dependency map, the article's own fractal, versions with diffs and provenance captures; built by two agents from a brief in an afternoon, and it corrected the article twice.
 - **The scale** (example) 281 messages and 62,896 words in, 52,719 of them in thirty-five voice memos; twenty articles and 85,209 words out, 94 figures, 122 releases, 135 searches, 22 research agents.
 - **No article from a one-line prompt** (claim) The shortest brief was one memo of 1,943 words; the longest ran to twenty-nine messages; the median article took three releases.
 - **Seven articles accounted for by hand** (example) From 2,395 words in and 2,447 out over five rounds, to 4,522 words in plus a reader's email and 9,289 out over five; the ratio runs from one to four and is the least interesting number.
@@ -46,6 +47,7 @@ Measured from the session transcript and the git history, the twenty articles of
 - **The compounding** (claim) Nineteen of twenty-seven articles cite an earlier one; corrections become rules in the build; each article is the distillation the next assumes.
 - **The experts are the input** (claim) Direction, angle, taste and experience are what the loop needs from a person; the architect and the reviewer scale the same way the writing does.
 - **What is open** (question) The articles could be shorter; attribution is hand-checked for seven; the oldest record is quoted not counted; the conversations behind the memos are in no record.
+- **A better universe to learn from** (claim) The published trail of an idea, with its graphs, corrections and versions, is a better thing for a model to learn from than everything ever written without context; the vault behind this article is the next brief.
 
 > I rarely experience hallucinations; I experience briefs that need to be better. The finding of the corrections list: one fact wrong, the rest a model choosing a reasonable direction and a person saying which one was meant.
 

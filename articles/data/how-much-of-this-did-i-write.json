@@ -1,347 +1,211 @@
 {
  "generated": "2026-10-05",
- "window": {
-  "from": "2026-09-09",
-  "to": "2026-10-05",
-  "source": "the Claude Code session transcript for session_01TmkCxwhGKtFAgoPJdxhNvo and the git history of the sgit.ai website"
+ "superseded_by": {
+  "vault": "How Much Evidence",
+  "vault_id": "kd0xhy6z",
+  "page": "https://sgit.ai/demos/vaults/how-much-evidence/index.html",
+  "note": "The full dataset, the scripts and the findings live in the vault; this file carries the session totals and the hand-check reconciliation so the article's numbers can be checked without opening it."
  },
- "method": {
-  "user_turns": "main-thread user messages, excluding tool results, system reminders, skill loads and compaction summaries",
-  "long_memo": "a user turn of more than 400 words, almost always a voice memo transcript",
-  "words_out": "article body words excluding front matter and figure directives",
-  "rounds": "commits that changed the article's markdown file",
-  "hand_verified": "the seven articles in 'articles_hand_verified' had their input turns checked by hand; the per-article input for the other articles is not published because memos that fed vaults and pages rather than articles are not separable automatically"
- },
- "session_totals": {
-  "user_turns": 281,
-  "user_words": 62896,
-  "long_memos": 35,
-  "long_memo_words": 52719,
-  "uploaded_files": 15,
-  "images_sent": 32,
-  "agent_prose_words_to_user": 74456,
-  "agent_turns": 6032,
-  "tool_calls": {
-   "Bash": 1952,
-   "Read": 529,
-   "Edit": 382,
-   "Write": 240,
-   "WebFetch": 190,
-   "WebSearch": 135,
-   "Agent": 22
+ "corrections_to_the_first_version": [
+  "context compactions: 11 events, not 22 (summary and boundary records were both counted)",
+  "messages: 148 authored, not 281 (client-injected image placeholders and switches were counted as messages)",
+  "the reply-tail ledger had counted the identity design pack upload as one of its turns"
+ ],
+ "session": {
+  "window": {
+   "from": "2026-09-09",
+   "to": "2026-10-05"
   },
-  "context_compactions": 22,
-  "site_releases": 122,
-  "releases_since_session_start_11_aug": 141,
-  "articles_published": 20,
-  "article_words": 85209,
-  "figures": 94,
-  "article_commits": 68
+  "generated": "2026-10-05",
+  "totals": {
+   "user_turns": 266,
+   "user_words": 65323,
+   "long_memos": 37,
+   "long_memo_words": 55473,
+   "uploads": 18,
+   "images": 48,
+   "agent_turns": 6170,
+   "agent_text_words": 75993,
+   "tool_calls": {
+    "Bash": 2001,
+    "Read": 546,
+    "Edit": 382,
+    "Write": 243,
+    "WebFetch": 190,
+    "WebSearch": 135,
+    "TaskUpdate": 81,
+    "TaskCreate": 43,
+    "ToolSearch": 29,
+    "Agent": 26,
+    "SendUserFile": 21,
+    "Grep": 16,
+    "Artifact": 13,
+    "Skill": 12,
+    "mcp__github__search_issues": 3,
+    "mcp__github__issue_write": 3,
+    "mcp__Claude_Code_Remote__add_repo": 2,
+    "mcp__Claude_Code_Remote__list_repos": 2,
+    "mcp__github__pull_request_read": 2,
+    "mcp__github__actions_list": 2,
+    "mcp__github__search_repositories": 1,
+    "TaskStop": 1,
+    "mcp__github__create_pull_request": 1,
+    "mcp__github__merge_pull_request": 1,
+    "mcp__Claude_Code_Remote__get_session": 1
+   },
+   "research_agents": 26,
+   "compactions": 11,
+   "site_releases": 123,
+   "articles": 22,
+   "article_words": 96451,
+   "figures": 105
+  }
  },
- "articles_hand_verified": [
+ "hand_check": [
   {
    "slug": "introducing-fractal-semantic-graphs",
-   "memos": 2,
-   "turns": 21,
-   "words_in": 2395,
-   "words_out": 2447,
-   "rounds": 5,
-   "figures": 9,
-   "note": "the most back and forth; includes a 1,060-word correction of the folder-tree analogy"
+   "published_turns": 21,
+   "published_words": 2395,
+   "published_memos": 2,
+   "vault_turns": 21,
+   "vault_words": 2395,
+   "vault_memos": 2,
+   "turn_ids": [
+    "T019",
+    "T020",
+    "T021",
+    "T022",
+    "T023",
+    "T024",
+    "T025",
+    "T026",
+    "T027",
+    "T028",
+    "T029",
+    "T030",
+    "T031",
+    "T032",
+    "T033",
+    "T034",
+    "T035",
+    "T036",
+    "T037",
+    "T038",
+    "T039"
+   ]
   },
   {
    "slug": "saas-apocalypse-decided-by-inertia-not-by-ai",
-   "memos": 1,
-   "turns": 9,
-   "words_in": 3190,
-   "words_out": 3425,
-   "rounds": 5,
-   "figures": 2,
-   "note": "one 2,797-word memo; the title took four rounds"
+   "published_turns": 9,
+   "published_words": 3190,
+   "published_memos": 1,
+   "vault_turns": 10,
+   "vault_words": 3214,
+   "vault_memos": 1,
+   "turn_ids": [
+    "T057",
+    "T058",
+    "T059",
+    "T060",
+    "T061",
+    "T062",
+    "T063",
+    "T064",
+    "T066",
+    "T067"
+   ]
   },
   {
    "slug": "code-review-as-a-fractal-semantic-graph",
-   "memos": 1,
-   "turns": 11,
-   "words_in": 2047,
-   "words_out": 4989,
-   "rounds": 3,
-   "figures": 9,
-   "note": "one memo; a 20-file vault built alongside"
+   "published_turns": 11,
+   "published_words": 2047,
+   "published_memos": 1,
+   "vault_turns": 11,
+   "vault_words": 2047,
+   "vault_memos": 1,
+   "turn_ids": [
+    "T226",
+    "T227",
+    "T228",
+    "T229",
+    "T230",
+    "T231",
+    "T232",
+    "T233",
+    "T234",
+    "T235",
+    "T236"
+   ]
   },
   {
    "slug": "memory-is-not-a-spectator-sport",
-   "memos": 1,
-   "turns": 5,
-   "words_in": 1099,
-   "words_out": 4401,
-   "rounds": 1,
-   "figures": 4,
-   "note": "one memo, almost no corrections"
+   "published_turns": 5,
+   "published_words": 1099,
+   "published_memos": 1,
+   "vault_turns": 5,
+   "vault_words": 1099,
+   "vault_memos": 1,
+   "turn_ids": [
+    "T237",
+    "T238",
+    "T239",
+    "T240",
+    "T241"
+   ]
   },
   {
    "slug": "the-wall-under-the-reply",
-   "memos": 1,
-   "turns": 11,
-   "words_in": 942,
-   "words_out": 3470,
-   "rounds": 4,
-   "figures": 6,
-   "note": "short memo; one paragraph rewritten by the author; three versions of one image"
+   "published_turns": 11,
+   "published_words": 942,
+   "published_memos": 1,
+   "vault_turns": 8,
+   "vault_words": 666,
+   "vault_memos": 1,
+   "turn_ids": [
+    "T242",
+    "T243",
+    "T244",
+    "T245",
+    "T246",
+    "T247",
+    "T248",
+    "T249"
+   ]
   },
   {
    "slug": "the-identity-we-wanted-to-give-the-agents",
-   "memos": 1,
-   "turns": 10,
-   "words_in": 398,
-   "words_in_brought": 17503,
-   "words_out": 4397,
-   "rounds": 2,
-   "figures": 6,
-   "note": "398 words in session plus a five-document design pack written that week"
+   "published_turns": 10,
+   "published_words": 398,
+   "published_memos": 1,
+   "vault_turns": 10,
+   "vault_words": 395,
+   "vault_memos": 0,
+   "turn_ids": [
+    "T250",
+    "T251",
+    "T252",
+    "T253",
+    "T254",
+    "T255",
+    "T256",
+    "T257",
+    "T259",
+    "T260"
+   ]
   },
   {
    "slug": "if-somebody-built-a-company-on-code-review",
-   "memos": 2,
-   "turns": 8,
-   "words_in": 4522,
-   "words_in_pasted": 1401,
-   "words_out": 9289,
-   "rounds": 5,
-   "figures": 7,
-   "note": "two memos (3,312 and 1,072 words) and a reader's 1,401-word email; three rounds of additions"
+   "published_turns": 8,
+   "published_words": 5923,
+   "published_memos": 2,
+   "vault_turns": 3,
+   "vault_words": 5920,
+   "vault_memos": 2,
+   "turn_ids": [
+    "T258",
+    "T261",
+    "T262"
+   ]
   }
- ],
- "articles_output_metrics": [
-  {
-   "slug": "introducing-fractal-semantic-graphs",
-   "title": "Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema",
-   "date": "2026-09-20",
-   "words": 2447,
-   "figures": 9,
-   "ext_links": 4,
-   "own_links": 4,
-   "internal_links": 0,
-   "commits": 5
-  },
-  {
-   "slug": "the-question-is-whether-they-miss-it",
-   "title": "For a startup, the most important question is whether they miss it",
-   "date": "2026-09-21",
-   "words": 1763,
-   "figures": 2,
-   "ext_links": 3,
-   "own_links": 2,
-   "internal_links": 1,
-   "commits": 7
-  },
-  {
-   "slug": "saas-apocalypse-decided-by-inertia-not-by-ai",
-   "title": "The SaaS apocalypse will be decided by inertia, not by AI",
-   "date": "2026-09-21",
-   "words": 3425,
-   "figures": 2,
-   "ext_links": 16,
-   "own_links": 2,
-   "internal_links": 0,
-   "commits": 5
-  },
-  {
-   "slug": "future-of-news-story-vault-not-paywall",
-   "title": "The future of news is the story vault, not the paywall",
-   "date": "2026-09-22",
-   "words": 7670,
-   "figures": 4,
-   "ext_links": 35,
-   "own_links": 22,
-   "internal_links": 1,
-   "commits": 7
-  },
-  {
-   "slug": "connector-twin-before-you-deploy-an-agent",
-   "title": "Before you give an agent a connector, give the connector a twin",
-   "date": "2026-09-24",
-   "words": 3036,
-   "figures": 5,
-   "ext_links": 16,
-   "own_links": 3,
-   "internal_links": 0,
-   "commits": 2
-  },
-  {
-   "slug": "every-risk-is-already-accepted",
-   "title": "Every risk is already accepted. The only question is by whom, and for how long.",
-   "date": "2026-09-24",
-   "words": 3186,
-   "figures": 8,
-   "ext_links": 9,
-   "own_links": 6,
-   "internal_links": 1,
-   "commits": 2
-  },
-  {
-   "slug": "supply-chain-of-vaults",
-   "title": "A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down",
-   "date": "2026-09-27",
-   "words": 4506,
-   "figures": 3,
-   "ext_links": 24,
-   "own_links": 0,
-   "internal_links": 2,
-   "commits": 3
-  },
-  {
-   "slug": "token-bill-nobody-is-sending",
-   "title": "Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read",
-   "date": "2026-09-28",
-   "words": 5107,
-   "figures": 2,
-   "ext_links": 30,
-   "own_links": 0,
-   "internal_links": 2,
-   "commits": 2
-  },
-  {
-   "slug": "six-agents-one-inbox",
-   "title": "Six agents, one inbox: what a real multi-agent setup taught me about access policies",
-   "date": "2026-09-29",
-   "words": 3628,
-   "figures": 2,
-   "ext_links": 13,
-   "own_links": 2,
-   "internal_links": 2,
-   "commits": 3
-  },
-  {
-   "slug": "how-news-got-here",
-   "title": "The reader was always the product: a corrected history of how news got into this mess",
-   "date": "2026-09-29",
-   "words": 3934,
-   "figures": 2,
-   "ext_links": 30,
-   "own_links": 0,
-   "internal_links": 3,
-   "commits": 1
-  },
-  {
-   "slug": "ultimate-insider-three-collisions",
-   "title": "The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up",
-   "date": "2026-09-30",
-   "words": 3752,
-   "figures": 1,
-   "ext_links": 31,
-   "own_links": 8,
-   "internal_links": 5,
-   "commits": 2
-  },
-  {
-   "slug": "custom-uis-are-not-the-exception",
-   "title": "Custom UIs are not the exception: the inbox in 2026, where every message has its own universe",
-   "date": "2026-10-01",
-   "words": 5173,
-   "figures": 8,
-   "ext_links": 7,
-   "own_links": 6,
-   "internal_links": 8,
-   "commits": 7
-  },
-  {
-   "slug": "footprint-and-blast-radius",
-   "title": "Footprint and blast radius: what the agent actually did, and what it would have cost",
-   "date": "2026-10-02",
-   "words": 3643,
-   "figures": 4,
-   "ext_links": 8,
-   "own_links": 2,
-   "internal_links": 5,
-   "commits": 2
-  },
-  {
-   "slug": "price-it-then-give-it-away",
-   "title": "Price it, then give it away: the early access programme as the next step after \"do they miss it\"",
-   "date": "2026-10-02",
-   "words": 2631,
-   "figures": 1,
-   "ext_links": 3,
-   "own_links": 2,
-   "internal_links": 1,
-   "commits": 2
-  },
-  {
-   "slug": "replicating-the-agentic-inbox",
-   "title": "Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send",
-   "date": "2026-10-02",
-   "words": 4762,
-   "figures": 9,
-   "ext_links": 3,
-   "own_links": 2,
-   "internal_links": 5,
-   "commits": 4
-  },
-  {
-   "slug": "code-review-as-a-fractal-semantic-graph",
-   "title": "Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it",
-   "date": "2026-10-03",
-   "words": 4989,
-   "figures": 9,
-   "ext_links": 34,
-   "own_links": 4,
-   "internal_links": 4,
-   "commits": 3
-  },
-  {
-   "slug": "memory-is-not-a-spectator-sport",
-   "title": "Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one",
-   "date": "2026-10-03",
-   "words": 4401,
-   "figures": 4,
-   "ext_links": 27,
-   "own_links": 4,
-   "internal_links": 7,
-   "commits": 1
-  },
-  {
-   "slug": "the-wall-under-the-reply",
-   "title": "The wall under the reply: end an email with the state of the thread, not the thread",
-   "date": "2026-10-04",
-   "words": 3470,
-   "figures": 6,
-   "ext_links": 19,
-   "own_links": 1,
-   "internal_links": 4,
-   "commits": 4
-  },
-  {
-   "slug": "the-identity-we-wanted-to-give-the-agents",
-   "title": "The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard",
-   "date": "2026-10-05",
-   "words": 4397,
-   "figures": 6,
-   "ext_links": 31,
-   "own_links": 0,
-   "internal_links": 5,
-   "commits": 2
-  },
-  {
-   "slug": "if-somebody-built-a-company-on-code-review",
-   "title": "If somebody built a company on code review: how I would do it, and why it is only now possible",
-   "date": "2026-10-05",
-   "words": 9289,
-   "figures": 7,
-   "ext_links": 37,
-   "own_links": 33,
-   "internal_links": 7,
-   "commits": 4
-  }
- ],
- "corpus": {
-  "sgit_ai_articles": 27,
-  "article_to_article_links": 65,
-  "articles_citing_an_earlier_one": 19,
-  "links_to_prior_own_writing": 42,
-  "diniscruz_ai_posts_2024_2025": 107,
-  "send_team_record_markdown_files": 3025,
-  "send_team_record_own_folders": 1682,
-  "cli_repo_brief_files": 91
- }
+ ]
 }

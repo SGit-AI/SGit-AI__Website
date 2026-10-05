@@ -1,0 +1,88 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / How Much Evidence</p>
+  <h1>The evidence behind one article, published as a vault</h1>
+  <p class="lead">Every number in <a href="../../../articles/how-much-of-this-did-i-write.html">How much of this did I write?</a> comes from a file in this vault: the session's messages, releases and days as rows; the per-article ledgers with the turns behind each; the catalogue of corrections and how long each waited; the map of how the articles cite each other, with every article's own graph; the article's own fractal from strategy to data; the record the memos stood on; seventy-five saved versions of twenty-two articles with a diff between any two; and a screenshot and hash of each cited source as it stood on 5 October 2026. The app that reads them is in the vault too.</p>
+
+  <div class="note"><b>The argument is in the article.</b> This vault is the worked example for <a href="../../../articles/how-much-of-this-did-i-write.html"><b>How much of this did I write?</b></a>, which measures the session that wrote the last twenty-two articles on this site and asks what the input actually was. The article's first version was built from an earlier cut of the same data; where the vault's numbers differ, the article says so and the vault's <code>hand_check.json</code> shows both.</div>
+
+  <figure class="shot" data-shot="collage.webp" data-dir="images/" data-alt="Nine screenshots of the vault app in a grid: overview tiles and sparkline, the timeline of words per day with release ticks, the per-article ledger, the corrections by kind with latency, the dependency ring, the five-column evidence fractal, the record by era, the provenance captures, and a version diff."><figcaption>The nine views of the vault app. Every screenshot on this page is a picture of the real vault, and clicking one opens the article it belongs to.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_02e541ca5f9aec53b4f7242ce1c9c801e10749cd48907457aa8d6023c211d6f9:kd0xhy6z</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_02e541ca5f9aec53b4f7242ce1c9c801e10749cd48907457aa8d6023c211d6f9%3Akd0xhy6z" rel="noopener" target="_blank">open it read-only in a new tab</a><br>
+  From the CLI: <code>sgit clone sgit_public_read_02e541ca5f9aec53b4f7242ce1c9c801e10749cd48907457aa8d6023c211d6f9:kd0xhy6z</code><br>
+  <span class="small dim">This key is published on purpose, under the <code>sgit_public_read_</code> prefix. It is <b>derived</b> one way from a vault key that is kept in the gitignored tier and never published. <code>check_credential.py</code> classifies it as read-only and safe to publish. A clone with it can read every file and change none; the write key stays with the author.</span></div>
+
+  <h2>See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app. Pick a view on the left: the overview, the timeline, the ledger, the corrections, the dependencies, the evidence fractal, the record, the files and versions. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_02e541ca5f9aec53b4f7242ce1c9c801e10749cd48907457aa8d6023c211d6f9%3Akd0xhy6z" rel="noopener" target="_blank">open it in the official UI</a>.</p>
+  <div class="sgv-uiembed" data-vault="kd0xhy6z" data-readkey="02e541ca5f9aec53b4f7242ce1c9c801e10749cd48907457aa8d6023c211d6f9" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load: ' + e); });
+    });
+  }());
+  </script>
+
+  <h2>What was derived, and from what</h2>
+  <p>The source is the Claude Code session that has run this site since 11 August 2026, read from 9 September to 18:50 on 5 October: 19,899 events, parsed for the author's messages, the agent's prose and tool calls, the research agents it launched and the times its context was compacted. The transcript itself is private and is not in the vault; the derived rows are, and the two scripts that derived them are in <code>tools/</code>. The second source is the site's git history, read for every commit in the window and every version of every article. The third is the articles themselves and the graph file beside each. Nothing was typed in by hand except the catalogue of corrections, which is marked as such, and the fractal of the article's own argument.</p>
+  <p>Attribution of a message to an article is exact for the nine articles checked by hand, with the message ids listed, and a stated heuristic for the rest. A hundred and four of the 266 rows feed vaults, pages and the site rather than any article, and are left unattributed rather than forced. Two numbers in the article's first version were corrected by this data: the session's context was compacted eleven times, not twenty-two, and the message count had included rows the client injects when the agent reads a screenshot. The vault keeps both counts.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">timeline</span>
+        <h3>Twenty-seven days, as words and releases</h3>
+        <p>Per day: what the author sent, with the long memos in dark teal, and what the agent wrote back in blue, with amber ticks for the 123 releases labelled by version, red diamonds for the eleven compactions and black dots for the days an article went out. Twenty releases on 21 September, nineteen on 2 October, five silent days, and a 143-hour gap in the second week.</p>
+      </div>
+      <figure class="shot" data-shot="timeline.webp" data-dir="images/" data-alt="Stacked bars per day of memo words, other author words and agent words, with release ticks above and compaction diamonds below."><figcaption>The timeline view.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">ledger</span>
+        <h3>One row per article, with the messages behind it</h3>
+        <p>Words in against words out, turns, memos, rounds and figures for every article in the window, with a badge saying whether the input was attributed by hand or by the heuristic. Open a row and the messages themselves are listed with their kind and first line, beside the releases that touched the article, and a note where the article's published ledger and the vault's count differ.</p>
+      </div>
+      <figure class="shot" data-shot="ledger-detail.webp" data-dir="images/" data-alt="The ledger detail for the code review company article: input, output and link summaries, the hand-check note, the three turns and the four releases."><figcaption>The ledger, opened on one article.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">corrections</span>
+        <h3>Twenty-eight corrections, and how long each waited</h3>
+        <p>The catalogue from the article, one card each, grouped by kind, with the fifteen that became rules marked. Beside it, the latency: a median of thirty-eight minutes from a release to the author's next correction of the same article, and of five minutes from the correction to the release that carried it, with the twenty attributed correction turns as dots on a log scale.</p>
+      </div>
+      <figure class="shot" data-shot="corrections.webp" data-dir="images/" data-alt="Counts of corrections by kind as bars with the became-a-rule share darker, latency medians, a dot plot, and the first two correction cards."><figcaption>The corrections view.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">dependencies</span>
+        <h3>Who references this, three levels deep</h3>
+        <p>The twenty-nine articles in date order round a ring, sized by how many cite them, teal edges back in time and amber edges forward. Click one and the panel shows what it builds on and what continued it, one, two or three hops out, with mention counts, and under that the article's own semantic graph nodes grouped by kind. The fractal semantic graphs article has ten articles standing on it and stands on none.</p>
+      </div>
+      <figure class="shot" data-shot="dependencies.webp" data-dir="images/" data-alt="The ring of articles with the fractal semantic graphs article focused, and a side panel listing the ten articles that continue it to depth two."><figcaption>The dependencies view, focused on the most-cited article.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">evidence</span>
+        <h3>The article as a fractal: strategy to data</h3>
+        <p>Five columns: the three things the article argues for, the six concepts its sections develop, the thirteen claims in its summary list, the twenty-eight pieces of evidence those claims rest on, and the fourteen data files the evidence is derived from. Click any node and its paths light up and down, and a trace panel lists the chain from a claim to the file and field that measures it.</p>
+      </div>
+      <figure class="shot" data-shot="evidence.webp" data-dir="images/" data-alt="Five columns of cards from strategy to data with curves between them, one claim selected and its chain highlighted."><figcaption>The evidence view, with one claim traced to its data.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">files and versions</span>
+        <h3>Every file, every version, and the diff between any two</h3>
+        <p>A viewer for the data files as tables and collapsible JSON, the seventy-five saved versions of twenty-two articles as markdown, and a diff between any two versions of an article, paragraph by paragraph, the same algorithm as the site's diff pages. The provenance captures sit beside them: each cited source as fetched on 5 October, with its HTTP status, byte length, SHA-256 and a screenshot of its first screen.</p>
+      </div>
+      <figure class="shot" data-shot="versions-diff.webp" data-dir="images/" data-alt="The versions sub-view comparing v0.6.65 and v0.6.66 of the article with insertions in green and a deletion in red."><figcaption>The files view, comparing two versions of the article.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>What to connect next</h2>
+  <p>The messages are attributed to articles; they are not yet attributed to the vaults, pages and business plans the other hundred and four fed, which is the next ledger. The corrections are a hand-written catalogue; the next pass has a model propose them from the turns and a person confirm each. The evidence fractal is one article's; the same five columns could be built for every article from its graph file. And the brief for the due diligence article arrived as an uploaded transcript rather than a typed message, which the parser cannot see, so that article shows no input; the next version of the parser reads uploads.</p>
+
+  <h2>Read the article</h2>
+  <p><a href="../../../articles/how-much-of-this-did-i-write.html"><b>How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was</b></a>. The argument, the figures and the corrections, with the vault as its evidence.</p>
+</main>

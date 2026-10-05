@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.67",
+  "site_version": "v0.6.68",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -109,6 +109,12 @@
             "summary": "The Claude Code transcript parsed for who said what and when, joined to the site's git history; limits stated, dataset published beside the article."
           },
           {
+            "id": "evidence-vault",
+            "label": "The evidence, as a vault",
+            "kind": "artefact",
+            "summary": "Every number as a file in a published vault with a read key: messages, releases, days, ledgers with message ids, corrections with latency, the dependency map, the article's own fractal, versions with diffs and provenance captures; built by two agents from a brief in an afternoon, and it corrected the article twice."
+          },
+          {
             "id": "scale",
             "label": "The scale",
             "kind": "example",
@@ -173,6 +179,12 @@
             "label": "What is open",
             "kind": "question",
             "summary": "The articles could be shorter; attribution is hand-checked for seven; the oldest record is quoted not counted; the conversations behind the memos are in no record."
+          },
+          {
+            "id": "better-universe",
+            "label": "A better universe to learn from",
+            "kind": "claim",
+            "summary": "The published trail of an idea, with its graphs, corrections and versions, is a better thing for a model to learn from than everything ever written without context; the vault behind this article is the next brief."
           }
         ],
         "edges": [
@@ -240,6 +252,26 @@
             "from": "the-record",
             "to": "what-is-open",
             "rel": "contrasts"
+          },
+          {
+            "from": "the-record",
+            "to": "evidence-vault",
+            "rel": "produces"
+          },
+          {
+            "from": "evidence-vault",
+            "to": "corrections",
+            "rel": "extends"
+          },
+          {
+            "from": "evidence-vault",
+            "to": "better-universe",
+            "rel": "leads-to"
+          },
+          {
+            "from": "published-memory",
+            "to": "better-universe",
+            "rel": "leads-to"
           }
         ],
         "links": {
@@ -252,6 +284,7 @@
             "the-wall-under-the-reply"
           ],
           "pages": [
+            "/demos/vaults/how-much-evidence/index.html",
             "/articles/data/how-much-of-this-did-i-write.json",
             "/articles/graphs.html",
             "/articles/index.html"
@@ -270,6 +303,10 @@
           {
             "text": "The agent is fast because the record exists.",
             "why": "The real input is twenty years of published writing, not the memo."
+          },
+          {
+            "text": "The vaults, the graphs and the diffs are the product, not the articles.",
+            "why": "Why the evidence behind the article is published as a vault and treated as the next brief."
           }
         ]
       }

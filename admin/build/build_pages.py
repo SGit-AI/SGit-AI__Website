@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.67'
+SITE_VERSION = 'v0.6.68'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.67', '2026-10-05', 'this release',
+    ('v0.6.68', '2026-10-05', 'this release',
+     "THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the "
+     "how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the "
+     "message ids behind each; 28 corrections with their latency; the 29-article dependency map with every "
+     "article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions "
+     "with a diff between any two; and a hash and screenshot of each cited source; with a nine-view app, built by "
+     "a data scientist agent and a developer agent from a brief. The article is revised to the vault's numbers and "
+     "says where its first version was wrong (eleven compactions, not twenty-two; 148 authored messages, not 281), "
+     "gains a section on the vault with four of its views and one on why a published trail is a better universe "
+     "for a model to learn from, and its ledger now has eight rows. Vault page with the read key.",),
+    ('v0.6.67', '2026-10-05', 'git 8616d828',
      "SEND AN AGENT, NOT A SPREADSHEET. A new article turns the code review company to face the buyer: due "
      "diligence never scaled because it was a questionnaire answered by the vendor and disconnected from the "
      "code; a buyer can now send a prompt or a small agent under a behaviour policy into the vendor's "
