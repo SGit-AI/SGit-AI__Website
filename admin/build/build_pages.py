@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.68'
+SITE_VERSION = 'v0.6.69'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.68', '2026-10-05', 'this release',
+    ('v0.6.69', '2026-10-05', 'this release',
+     "THE INVESTIGATION GITHUB OWES ITS CUSTOMERS. A new article written during the GitHub Actions incident "
+     "of 5 October 2026 that held the previous release in its queue: why a fault reaching every customer of "
+     "the platform the world deploys through is a near miss for all of them and a statement about how it is "
+     "built; what aviation does instead, from ICAO Annex 13 and the NTSB to NASA's confidential near-miss "
+     "reporting; the first, second and third story, told for the UK air traffic control failure, the 2024 "
+     "security update outage and tonight; the what-if ladder; why the market does not fix it; why the old "
+     "objection to independent investigation, that the evidence is too confidential and expensive to share, "
+     "has expired now that signed vaults with one-way read keys exist; what the arriving regulation does and "
+     "does not do; and four things to ask for. Five figures, one of them the incident's own timeline beside "
+     "this site's queued release.",),
+    ('v0.6.68', '2026-10-05', 'git f7e55192',
      "THE EVIDENCE BEHIND ONE ARTICLE, AS A VAULT. A new vault, How Much Evidence, holds every number in the "
      "how-much article as a file: the session's 266 rows, 124 releases and 27 days; per-article ledgers with the "
      "message ids behind each; 28 corrections with their latency; the 29-article dependency map with every "

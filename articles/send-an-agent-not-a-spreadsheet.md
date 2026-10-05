@@ -2,7 +2,7 @@
 
 > The last article asked how I would build a company on code review. This one turns it round. The buyers of software have always wanted to know whether a vendor understands what it is selling them, and have never been able to find out, because due diligence was a questionnaire: a spreadsheet of questions answered by the people being asked, disconnected from the code, too expensive to do properly and out of date on arrival. That has changed in the same way code review has. A buyer can now send a prompt, or a small agent under a behaviour policy, to run inside the vendor's environment and come back with a graph of what is actually there: what reaches production that no person reviewed, whether the documentation matches the code, whether there is a threat model and who wrote it, what the last fifty bugs touched, which agents touch the pipeline and under what policy. The vendor reads what leaves before it leaves, and can redact but not rewrite, because the answer is derived rather than written, and companies are careful about what goes on a record. The test is risk-based, not pure: a startup that says it generated its code fast, that the product is not mission-critical and here are the mitigations has passed. What fails is not knowing. That is the consequence that has been missing for the companies that stopped reviewing code, let the engineers go and let anyone prompt features into production: their customers, their investors and their acquirers are about to be able to see it. A startup should double down on understandability, because it has less code and the same tools, and the best way to build the code review company may be to sell it to the people who buy software rather than the people who write it.
 
-*Source: <https://sgit.ai/articles/send-an-agent-not-a-spreadsheet.html> · site v0.6.68 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/send-an-agent-not-a-spreadsheet.html> · site v0.6.69 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -172,6 +172,10 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#send-a
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 - [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md) An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.
 - [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](supply-chain-of-vaults.md) The food chain is a data problem: one encrypted vault per party, joined by append lanes and a typed graph, could cut the waste that keeps prices high.
+
+### Continued by
+
+- [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
