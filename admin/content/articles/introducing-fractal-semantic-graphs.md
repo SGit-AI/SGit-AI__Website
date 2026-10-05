@@ -82,15 +82,15 @@ The banned verb is the one I get the most pushback on, so let me defend it. Two 
 
 A definition is cheap. So we published the ladder.
 
-Eleven altitudes, each one a live graph in its own vocabulary, modelled by its own author, and every rung joined to the next by a named edge. From the top: the law, the standard, the evidence behind the standard, the fact about your estate, the risk it gives rise to, the owner, the acceptance, the insuring policy, the agent, the system, the compute instance.
+Eleven altitudes, each one a live graph in its own vocabulary, modelled by its own author, and every altitude joined to the next by a named edge. From the top: the law, the standard, the evidence behind the standard, the fact about your estate, the risk it gives rise to, the owner, the acceptance, the insuring policy, the agent, the system, the compute instance.
 
-!shot fsg-ladder.webp | images/ | The ladder: eleven altitudes, eleven ontologies, one grammar. Each rung names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key.
+!shot fsg-ladder.webp | images/ | The ladder: eleven altitudes, eleven ontologies, one grammar. Each altitude names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key.
 
 At the top sits the EU AI Act, parsed from the official XML into 113 articles, 500 paragraphs, 417 points, 180 recitals, 13 annexes and 68 definitions: 1,523 nodes and 1,944 edges, with the SHA-256 of the retrieved bytes at the end of every provenance chain. When something elsewhere says "touches Article 12", this is the graph that can say what Article 12 says and prove the bytes.
 
 !shot regulation-overview.webp | images/ | The Regulation Graph's landing view: the counts, both instruments with their CELEX identifiers and the hash of the retrieved bytes, and application dates kept as versioned properties rather than bare facts.
 
-One rung down is the AIUC-1 agent standard as data: 53 controls, 2,788 nodes, 11,610 edges. Its explorer loads two vaults as one graph, and one of the packs it loads is literally the AI Act by article from the vault above. That join is where a crosswalk stops being a string. The standard publishes 1,126 crosswalks as text. 62 of them resolve into node identifiers in the regulation graph. And the traversal returns something neither graph knew on its own: 8 of the 27 articles reached have since been amended, so the crosswalk was written against text that no longer says what it said.
+One altitude down is the AIUC-1 agent standard as data: 53 controls, 2,788 nodes, 11,610 edges. Its explorer loads two vaults as one graph, and one of the packs it loads is literally the AI Act by article from the vault above. That join is where a crosswalk stops being a string. The standard publishes 1,126 crosswalks as text. 62 of them resolve into node identifiers in the regulation graph. And the traversal returns something neither graph knew on its own: 8 of the 27 articles reached have since been amended, so the crosswalk was written against text that no longer says what it said.
 
 That is the whole argument in one number. Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them.
 
@@ -98,9 +98,9 @@ That is the whole argument in one number. Two graphs, built by different people 
 
 At the bottom of the ladder is a threat model that is itself a graph of graphs: eleven linked models zooming from Customer through Business, Application, Component, Package, Class and Method, down to Source Code, Environment, Runtime and Compute. 51 nodes, 179 threats. The demonstration is a single SQL injection traced upward from the method it lives in to the revenue it puts at risk, and then framed four ways, for the board, the CISO, the CTO and the developer, from one fact.
 
-!shot threatmodcon-ladder.webp | images/ | The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom rung is a compute instance.
+!shot threatmodcon-ladder.webp | images/ | The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom altitude is a compute instance.
 
-In between are the rungs that make this useful to people who are not engineers: a register where answers become facts and facts give rise to risks, an org chart with risks flowing up it until every path terminates at the board, and the same exposure read at seven stakeholder altitudes, each owning it in their own words.
+In between are the altitudes that make this useful to people who are not engineers: a register where answers become facts and facts give rise to risks, an org chart with risks flowing up it until every path terminates at the board, and the same exposure read at seven stakeholder altitudes, each owning it in their own words.
 
 !shot role-risk-map.webp | images/ | The role risk map: what a role holds against what arrives through it because the graph says it must. Nothing stops short of the board.
 
@@ -112,11 +112,11 @@ My favourite single picture in the whole set is Article 45 of the GDPR. The text
 
 I would rather tell you this than have you find it.
 
-The bottom four rungs of the threat model, environment through compute, are nodes an author placed, not a live import from a CMDB, an infrastructure repository or a cloud account. The grammar to receive such an import exists. The connector that emits it is not published yet.
+The bottom four altitudes of the threat model, environment through compute, are nodes an author placed, not a live import from a CMDB, an infrastructure repository or a cloud account. The grammar to receive such an import exists. The connector that emits it is not published yet.
 
 Enterprise architecture is a gap. No published graph holds an EA repository joined upward to obligations, and that is the layer between the standard and the system that the ladder cannot yet point at.
 
-The crosswalks resolve at article level only, where the regulation graph has paragraphs. The GDPR atlas is a seed pass from May, and six of its 227 edges use the banned `relates` verb, because the rule was written after that graph was. And the agent rung is a vocabulary, not yet a join: we have the 23 capability primitives that describe what an agent can do, and no published graph yet imports a real permission set and computes the difference against what the operator intended, at scale.
+The crosswalks resolve at article level only, where the regulation graph has paragraphs. The GDPR atlas is a seed pass from May, and six of its 227 edges use the banned `relates` verb, because the rule was written after that graph was. And the agent altitude is a vocabulary, not yet a join: we have the 23 capability primitives that describe what an agent can do, and no published graph yet imports a real permission set and computes the difference against what the operator intended, at scale.
 
 Named gaps get filled. Unnamed ones do not. That is why they are on the page.
 

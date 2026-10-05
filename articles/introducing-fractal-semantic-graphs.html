@@ -27,7 +27,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.61</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.62</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -108,7 +108,7 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.61 &middot; 5 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.62 &middot; 5 Oct 2026</span></a></div>
 <main class="doc">
  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema</p>
  <h1>Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema</h1>
@@ -150,24 +150,24 @@
 <p>The banned verb is the one I get the most pushback on, so let me defend it. Two things always relate. An edge with no verb constrains nothing and cannot narrow a query. The granularity of the verb is the precision of the question you will later be able to ask. Every time somebody reaches for <code>relates_to</code> they are deferring the thinking to whoever has to read the graph later, and that person is usually you.</p>
 <h2>The evidence: eleven altitudes, seven vaults, one grammar</h2>
 <p>A definition is cheap. So we published the ladder.</p>
-<p>Eleven altitudes, each one a live graph in its own vocabulary, modelled by its own author, and every rung joined to the next by a named edge. From the top: the law, the standard, the evidence behind the standard, the fact about your estate, the risk it gives rise to, the owner, the acceptance, the insuring policy, the agent, the system, the compute instance.</p>
-<figure class="shot" data-shot="fsg-ladder.webp" data-dir="images/" data-alt="The ladder: eleven altitudes, eleven ontologies, one grammar. Each rung names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key."><figcaption>The ladder: eleven altitudes, eleven ontologies, one grammar. Each rung names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key.</figcaption></figure>
+<p>Eleven altitudes, each one a live graph in its own vocabulary, modelled by its own author, and every altitude joined to the next by a named edge. From the top: the law, the standard, the evidence behind the standard, the fact about your estate, the risk it gives rise to, the owner, the acceptance, the insuring policy, the agent, the system, the compute instance.</p>
+<figure class="shot" data-shot="fsg-ladder.webp" data-dir="images/" data-alt="The ladder: eleven altitudes, eleven ontologies, one grammar. Each altitude names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key."><figcaption>The ladder: eleven altitudes, eleven ontologies, one grammar. Each altitude names the published vault where that altitude is a live graph, and on the page each name is a link to the vault and its read key.</figcaption></figure>
 <p>At the top sits the EU AI Act, parsed from the official XML into 113 articles, 500 paragraphs, 417 points, 180 recitals, 13 annexes and 68 definitions: 1,523 nodes and 1,944 edges, with the SHA-256 of the retrieved bytes at the end of every provenance chain. When something elsewhere says "touches Article 12", this is the graph that can say what Article 12 says and prove the bytes.</p>
 <figure class="shot" data-shot="regulation-overview.webp" data-dir="images/" data-alt="The Regulation Graph&#x27;s landing view: the counts, both instruments with their CELEX identifiers and the hash of the retrieved bytes, and application dates kept as versioned properties rather than bare facts."><figcaption>The Regulation Graph's landing view: the counts, both instruments with their CELEX identifiers and the hash of the retrieved bytes, and application dates kept as versioned properties rather than bare facts.</figcaption></figure>
-<p>One rung down is the AIUC-1 agent standard as data: 53 controls, 2,788 nodes, 11,610 edges. Its explorer loads two vaults as one graph, and one of the packs it loads is literally the AI Act by article from the vault above. That join is where a crosswalk stops being a string. The standard publishes 1,126 crosswalks as text. 62 of them resolve into node identifiers in the regulation graph. And the traversal returns something neither graph knew on its own: 8 of the 27 articles reached have since been amended, so the crosswalk was written against text that no longer says what it said.</p>
+<p>One altitude down is the AIUC-1 agent standard as data: 53 controls, 2,788 nodes, 11,610 edges. Its explorer loads two vaults as one graph, and one of the packs it loads is literally the AI Act by article from the vault above. That join is where a crosswalk stops being a string. The standard publishes 1,126 crosswalks as text. 62 of them resolve into node identifiers in the regulation graph. And the traversal returns something neither graph knew on its own: 8 of the 27 articles reached have since been amended, so the crosswalk was written against text that no longer says what it said.</p>
 <p>That is the whole argument in one number. Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them.</p>
 <figure class="shot" data-shot="aiuc-two-vaults.webp" data-dir="images/" data-alt="Two vaults on one canvas. The chip row is the join: the standard, its crosswalks, another vault&#x27;s articles, the conformance layer, bow ties, acceptances."><figcaption>Two vaults on one canvas. The chip row is the join: the standard, its crosswalks, another vault's articles, the conformance layer, bow ties, acceptances.</figcaption></figure>
 <p>At the bottom of the ladder is a threat model that is itself a graph of graphs: eleven linked models zooming from Customer through Business, Application, Component, Package, Class and Method, down to Source Code, Environment, Runtime and Compute. 51 nodes, 179 threats. The demonstration is a single SQL injection traced upward from the method it lives in to the revenue it puts at risk, and then framed four ways, for the board, the CISO, the CTO and the developer, from one fact.</p>
-<figure class="shot" data-shot="threatmodcon-ladder.webp" data-dir="images/" data-alt="The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom rung is a compute instance."><figcaption>The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom rung is a compute instance.</figcaption></figure>
-<p>In between are the rungs that make this useful to people who are not engineers: a register where answers become facts and facts give rise to risks, an org chart with risks flowing up it until every path terminates at the board, and the same exposure read at seven stakeholder altitudes, each owning it in their own words.</p>
+<figure class="shot" data-shot="threatmodcon-ladder.webp" data-dir="images/" data-alt="The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom altitude is a compute instance."><figcaption>The zoom ladder, counted: 11 layers, 51 nodes, 179 threats. The bottom altitude is a compute instance.</figcaption></figure>
+<p>In between are the altitudes that make this useful to people who are not engineers: a register where answers become facts and facts give rise to risks, an org chart with risks flowing up it until every path terminates at the board, and the same exposure read at seven stakeholder altitudes, each owning it in their own words.</p>
 <figure class="shot" data-shot="role-risk-map.webp" data-dir="images/" data-alt="The role risk map: what a role holds against what arrives through it because the graph says it must. Nothing stops short of the board."><figcaption>The role risk map: what a role holds against what arrives through it because the graph says it must. Nothing stops short of the board.</figcaption></figure>
 <p>My favourite single picture in the whole set is Article 45 of the GDPR. The text has not changed a word since 2016. What it permits has flipped four times: Safe Harbour, Schrems I, Privacy Shield, Schrems II, the Data Privacy Framework, and an appeal pending. The atlas draws that as a timeline of ruling nodes over one unchanged article node. The text is a constant. Its meaning is the graph. That is why a static PDF of a law is wrong and a versioned graph is not.</p>
 <figure class="shot" data-shot="gdpr-article-45.webp" data-dir="images/" data-alt="One article, five rulings, twenty-five years. Safe Harbour to a pending CJEU appeal, over an Article 45 that has not changed a word."><figcaption>One article, five rulings, twenty-five years. Safe Harbour to a pending CJEU appeal, over an Article 45 that has not changed a word.</figcaption></figure>
 <h2>What is still modelled rather than imported</h2>
 <p>I would rather tell you this than have you find it.</p>
-<p>The bottom four rungs of the threat model, environment through compute, are nodes an author placed, not a live import from a CMDB, an infrastructure repository or a cloud account. The grammar to receive such an import exists. The connector that emits it is not published yet.</p>
+<p>The bottom four altitudes of the threat model, environment through compute, are nodes an author placed, not a live import from a CMDB, an infrastructure repository or a cloud account. The grammar to receive such an import exists. The connector that emits it is not published yet.</p>
 <p>Enterprise architecture is a gap. No published graph holds an EA repository joined upward to obligations, and that is the layer between the standard and the system that the ladder cannot yet point at.</p>
-<p>The crosswalks resolve at article level only, where the regulation graph has paragraphs. The GDPR atlas is a seed pass from May, and six of its 227 edges use the banned <code>relates</code> verb, because the rule was written after that graph was. And the agent rung is a vocabulary, not yet a join: we have the 23 capability primitives that describe what an agent can do, and no published graph yet imports a real permission set and computes the difference against what the operator intended, at scale.</p>
+<p>The crosswalks resolve at article level only, where the regulation graph has paragraphs. The GDPR atlas is a seed pass from May, and six of its 227 edges use the banned <code>relates</code> verb, because the rule was written after that graph was. And the agent altitude is a vocabulary, not yet a join: we have the 23 capability primitives that describe what an agent can do, and no published graph yet imports a real permission set and computes the difference against what the operator intended, at scale.</p>
 <p>Named gaps get filled. Unnamed ones do not. That is why they are on the page.</p>
 <h2>Why now</h2>
 <p>Three things changed in the last year that make this practical rather than academic.</p>
@@ -195,7 +195,7 @@
 </main>
 <script>
 (function () {
- fetch('../assets/shots.js?v=v0.6.61')
+ fetch('../assets/shots.js?v=v0.6.62')
  .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
  .then(function (t) { (0, eval)(t); })
  .catch(function (e) { console.error('[shots] component failed to load:', e); });
@@ -207,7 +207,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.61</a> · <a href="../admin/index.html">engineering</a> · <a href="introducing-fractal-semantic-graphs.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.62</a> · <a href="../admin/index.html">engineering</a> · <a href="introducing-fractal-semantic-graphs.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -249,7 +249,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.61';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.62';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

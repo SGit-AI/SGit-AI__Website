@@ -21,7 +21,7 @@
     {"id": "provenance-from-the-word", "label": "Provenance comes free", "kind": "claim",
      "summary": "When the leaf is a word connected to the byte range it came from and the hash of the file that held it, every claim at every altitude above it is traceable to source."},
     {"id": "the-ladder", "label": "The ladder of eleven altitudes", "kind": "artefact",
-     "summary": "Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every rung joined to the next by a named edge."},
+     "summary": "Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every altitude joined to the next by a named edge."},
     {"id": "regulation-graph", "label": "Regulation Graph", "kind": "artefact",
      "summary": "The EU AI Act parsed from the official XML into 1,523 nodes and 1,944 edges, with the SHA-256 of the retrieved bytes at the end of every provenance chain."},
     {"id": "crosswalk-finding", "label": "The crosswalk finding", "kind": "example",
@@ -31,7 +31,7 @@
     {"id": "threat-model-ladder", "label": "Threat model zoom ladder", "kind": "artefact",
      "summary": "Eleven linked models, 51 nodes and 179 threats, tracing a single SQL injection from the method it lives in to the revenue it puts at risk."},
     {"id": "named-gaps", "label": "What is still modelled rather than imported", "kind": "question",
-     "summary": "The bottom four rungs are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent rung is a vocabulary not yet a join."},
+     "summary": "The bottom four altitudes are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent altitude is a vocabulary not yet a join."},
     {"id": "why-now", "label": "Why now", "kind": "claim",
      "summary": "Naming edges became the cheap part, agents acting on the world make provenance mandatory, and the schema wars are over because nobody won."}
   ],

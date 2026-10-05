@@ -2,7 +2,7 @@
 
 > Every release of the sgit.ai site: version, date, vault commit, and changes. The version increments on every push.
 
-*Source: <https://sgit.ai/admin/versions.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/admin/versions.html> · site v0.6.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,11 +10,12 @@
 
 # Release history
 
-The site version (**v0.6.61**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.62**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.61 | 2026-10-05 | this release | THE IDENTITY ARTICLE AS ONE PAGE, BY ANOTHER MODEL. The identity article gains a closing section with the infographic ChatGPT made from its published text, checked claim by claim against the article before it went up, with the one paraphrase in its last panel named as a paraphrase. |
+| v0.6.62 | 2026-10-05 | this release | NO MORE RUNGS. The word is gone from every article, its graph JSON, the code review vault page and the eleven figures of the two code review articles, at the author's request and in the spirit of the em-dash rule: a graph has layers and altitudes, a ladder has steps, a price list has tiers. The validator now fails any article that uses it. Elsewhere on the site the word remains until those pages are rewritten. |
+| v0.6.61 | 2026-10-05 | git a3108bd2 | THE IDENTITY ARTICLE AS ONE PAGE, BY ANOTHER MODEL. The identity article gains a closing section with the infographic ChatGPT made from its published text, checked claim by claim against the article before it went up, with the one paraphrase in its last panel named as a paraphrase. |
 | v0.6.60 | 2026-10-05 | git 4fab1507 | IF SOMEBODY BUILT A COMPANY ON CODE REVIEW. A follow-up to the code review article, written to answer a reader's questions and a voice memo: what is fractal in a fractal semantic graph (the grammar) and what is not (the layers, which each company defines); the projected graph built from stories before the code exists and the derived graph built from the code, with the review as the join; the layers the first example had but did not name; stories as rules and examples rather than prose; a refactor as relative to the layer held still, which the first article stated too narrowly; deploys and infrastructure as rungs of the same graph; who reads the code at each stage of evolution, after Wardley; reshaping the change rather than reviewing it as it arrived; budgets per altitude and the five whys as the loop that makes the next review cheaper; and open source as the only business model that fits. Six figures. |
 | v0.6.59 | 2026-10-05 | git e885e517 | THE IDENTITY WE WANTED TO GIVE THE AGENTS. A new article captures the week a plan to give every agent and user a Google Workspace identity from one tenant met Google's terms: the resale and function-account clauses in their current wording, with one correction to the design pack's own citation (the 'substitute service' clause is in the legacy free-edition agreement, not the current terms); the five options; the rule that no secret can live inside an identity provider; the passkey-unlocked keyring that fell out of it; what the industry's agent identities do and do not do; and the gap the research confirmed, that login, zero-knowledge storage and agent identity are still three separate jobs. Five figures. With it, the five design documents and the starter prompt are published as a brief, the identity and secrets design pack, as written and to be corrected. |
 | v0.6.58 | 2026-10-05 | git 413c644f | THE CORRECTED ONE-PAGE CONDENSATION. The reply-tail article's infographic by another model is now the third version: the placeholder third-party domain is gone, the credit spells the site correctly, and the fictional reply is dated on the right weekday. One stray hyphen remains in a label and stays, as it came. |

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.61'
+SITE_VERSION = 'v0.6.62'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.61', '2026-10-05', 'this release',
+    ('v0.6.62', '2026-10-05', 'this release',
+     "NO MORE RUNGS. The word is gone from every article, its graph JSON, the code review vault page and the "
+     "eleven figures of the two code review articles, at the author's request and in the spirit of the em-dash "
+     "rule: a graph has layers and altitudes, a ladder has steps, a price list has tiers. The validator now "
+     "fails any article that uses it. Elsewhere on the site the word remains until those pages are rewritten.",),
+    ('v0.6.61', '2026-10-05', 'git a3108bd2',
      "THE IDENTITY ARTICLE AS ONE PAGE, BY ANOTHER MODEL. The identity article gains a closing section with "
      "the infographic ChatGPT made from its published text, checked claim by claim against the article before "
      "it went up, with the one paraphrase in its last panel named as a paraphrase.",),

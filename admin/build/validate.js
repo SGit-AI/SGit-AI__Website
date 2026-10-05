@@ -262,5 +262,28 @@ for (const f of files.filter(f => /\.(html|css|js|md|json)$/.test(f)
   }
 }
 
+// 5d. the word "rung", in article prose only.
+//
+// Removed from every article in v0.6.62 at the author's request: the ladder metaphor had made
+// "rung" the house word for a layer of a fractal graph, a step of an enforcement ladder or a
+// pricing tier, and it had become an irritant in the same way the em-dash had. The plain word
+// for the thing is used instead: layer or altitude for a graph, step for a ladder, tier for a
+// price. The check covers articles/ (pages, markdown mirrors and graph JSON); the rest of the
+// site keeps its wording until it is rewritten.
+{
+  for (const f of files.filter(f => /\.(html|md|json)$/.test(f))) {
+    const rel = path.relative(root, f).replace(/\\/g, '/');
+    if (!rel.startsWith('articles/')) continue;
+    const prose = fs.readFileSync(f, 'utf8')
+      .replace(/<pre\b[\s\S]*?<\/pre>/gi, ' ')
+      .replace(/<code\b[\s\S]*?<\/code>/gi, ' ')
+      .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+      .replace(/```[\s\S]*?```/g, ' ')
+      .replace(/`[^`\n]*`/g, ' ');
+    const m = prose.match(/\b[Rr]ungs?\b/);
+    if (m) { fails++; console.log('RUNG FAIL', rel, '-> say layer, altitude, step or tier'); }
+  }
+}
+
 console.log(fails === 0 ? `ALL CHECKS PASS (${files.length} files)` : `FAILURES: ${fails}`);
 process.exit(fails === 0 ? 0 : 1);

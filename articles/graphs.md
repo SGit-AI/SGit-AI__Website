@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,7 +24,7 @@ The graphs are data first and pictures second. Take them as JSON: [all articles 
 
 2026-10-05 · Graphs & knowledgeStartups & strategy
 
-What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each rung to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.
+What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each layer to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.
 
 *[diagram]*
 **concept**claim**method**example
@@ -36,15 +36,15 @@ What is fractal in a fractal semantic graph is the grammar, and which layers exi
 - **The projected graph** (method) Built top down before the code exists: objectives, stories with rules and examples, features and flows, the commands and surfaces they will touch, components as far as design can honestly see.
 - **The derived graph** (method) Built bottom up from the syntax tree with no model in line: fingerprinted nodes, resolved calls, classes, modules, the commands the code exposes, and proposed stories marked as proposed.
 - **The review is the join** (claim) Three outcomes: a match, where a derived surface serves a projected story; derived but not projected, a bug or an unwritten story; projected but not derived, the plan or the forgotten thing.
-- **Stories as rules and examples** (method) Example Mapping's cards as the top rung: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one.
+- **Stories as rules and examples** (method) Example Mapping's cards as the top layer: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one.
 - **A refactor is relative to the held layer** (claim) A refactor is a change where some layers move and one chosen layer, the one with the tests or the contract, does not; an architecture migration holding only the client interface is a refactor at a higher altitude.
-- **The deploy is a rung** (concept) Pipelines, environments, running services, configuration and secrets form a graph with its own verbs; a change's reach continues through it, and the non-functional requirements live there.
+- **The deploy is a layer** (concept) Pipelines, environments, running services, configuration and secrets form a graph with its own verbs; a change's reach continues through it, and the non-functional requirements live there.
 - **Who reads the code depends on the map** (claim) Explorer code is read for intent, mostly by agents; villager code is read all the way down; town planner code is read by deterministic checks at the boundary, with a person for exceptions. The company sits in the two moves.
 - **Reshape the change before reviewing it** (method) Split a change by reach: provably no behaviour, merged by a check; reaches tested behaviour, checks plus a glance; reaches a mission-critical path, the right people. Review is sorting, not saying no.
 - **Replicate reality first** (method) Derive what a parser can, let a model propose the rest marked proposed, confront the graph with users, experts and tests, version everything so a review can be replayed as the graph was.
 - **A budget per altitude, per change** (method) Deterministic checks always run; the delta re-derives only what changed; models get small budgets and hard stops; onboarding starts at one point and continues; handed-on work carries its budget and never widens it.
 - **The five whys fix the layer below** (method) Every finding at one layer is a question about the layer below, and the fix goes there as a rule or a graph query, so the next change like it is caught for the price of a query. Not whack-a-mole.
-- **Compare the blast radius to the intent** (claim) Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per rung that moved; measure increments as projected nodes gaining a derived match.
+- **Compare the blast radius to the intent** (claim) Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per layer that moved; measure increments as projected nodes gaining a derived match.
 - **Open source is the only model that fits** (claim) The layers are the customer's and the loop runs where the code is; sell the customised deployment, the running of the loop and the accumulated rules; give away the grammar, the parser and the model.
 - **What the first article got wrong** (example) The refactor sentence was one refactor at one altitude; the seven altitudes were one repository's layers; the text skipped the commands and modules the delta had and the figure showed.
 
@@ -132,7 +132,7 @@ Source code is already a fractal semantic graph, stories to syntax tree and belo
 **15 nodes, 20 edges**
 
 - **Source code is a fractal semantic graph** (claim) Stories, flows, components, classes, methods and calls, the syntax tree, and down to the machine: each layer a graph with its own node types and verbs, and you change universe between them.
-- **C4 and Gherkin: right instinct, fixed levels** (concept) C4 named four levels and left the code level optional; Gherkin shaped the top rung and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply.
+- **C4 and Gherkin: right instinct, fixed levels** (concept) C4 named four levels and left the code level optional; Gherkin shaped the top layer and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply.
 - **Naming is now the cheap part** (claim) A model can say what a function does, which story a command serves and the verb between two nodes, from the syntax tree, once per change, as structured files.
 - **Start from the syntax tree** (method) The tree survives reformatting and renaming; derive deterministically what a parser can, and spend the model on what it cannot know.
 - **Every source file produces a pile of files** (method) Classes, methods and calls, package edges, fingerprints, tests, pattern results, kept as JSON next to the code in git, a vault or both; regenerated only on change.
@@ -141,7 +141,7 @@ Source code is already a fractal semantic graph, stories to syntax tree and belo
 - **Method streams** (method) Follow the call tree from one method and write out only that code; a 2012 O2 Platform review technique, now one script over a syntax tree with resolved calls.
 - **The sgit CLI, read as layers** (example) 427 files, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two streams, ten rules, one commit read upwards; nothing run; published as a vault.
 - **One commit, read upwards** (example) Seven methods changed, no signature or field moved, six tests added; the climb reaches nine commands and six stories. The shape of a fix, and the commit message agrees.
-- **Reality corrects the graph** (claim) You do not have to get the graph right; users confirm the top, experts confirm their rung, tests confirm execution, and every correction is a commit.
+- **Reality corrects the graph** (claim) You do not have to get the graph right; users confirm the top, experts confirm their layer, tests confirm execution, and every correction is a commit.
 - **Patterns are findings** (claim) Folder shape, type shape, test shape and size shape are queries over the graph; the rules a project states most firmly are the ones that hold.
 - **The review burden of generated code** (example) More cloned code and less refactoring, lower delivery stability with adoption, developers reporting almost-right answers and longer debugging: the answer is a different diff, not a faster reviewer.
 - **What does not exist yet** (question) Proposed stories and edges from a model, node-level tree diffs, a second language, the interface layer, execution paths compared to predicted streams, and the review surface itself.
@@ -234,7 +234,7 @@ A price is a statement of what you think the thing is worth, and giving it away 
 - **Do they miss it** (concept) The earlier article's test: hand the thing to people for free, briefly, then take it away, and ask whether they miss it.
 - **Define the product** (method) For RiskMandate the thing somebody receives is an Agent Behaviour Policy for one agent, as an encrypted vault the customer holds the keys to, with the mandate corrected for their deployment.
 - **Price it before you give it away** (claim) A price is a statement of what you think the thing is worth, and giving it away at that stated price to people who know you is the cleanest test of whether the statement is true.
-- **The four-rung ladder** (artefact) Ten pounds for the pack downloaded, fifty for a working vault, five hundred for the vault corrected for your situation, fifteen hundred for two sessions and a professional's signature.
+- **The four-tier ladder** (artefact) Ten pounds for the pack downloaded, fifty for a working vault, five hundred for the vault corrected for your situation, fifteen hundred for two sessions and a professional's signature.
 - **Cost that grows a step at a time** (method) The agentic workflow means the marginal customer costs a little more, not a lot more, so serving the twentieth customer costs close to serving the second.
 - **Offer it to the people who already know you** (method) Early adopters, power users and past customers get the first twenty, as a thank-you and as the best possible test group, because their silence means the most.
 - **Free is never free for the other side** (claim) Engaging costs them reading, thinking, deciding and finding a slot, so the first measurement the programme makes is of that attrition and the exercise is to reduce it.
@@ -448,7 +448,7 @@ The fetches that answer engines make are a token cost to the fetcher as well as 
 - **Baekdal wants an audience** (question) Tokens are not an audience, though structure is what makes a citation land on the right paragraph and tokens are the budget that builds the site the reader arrives at.
 - **What would settle it** (question) Three numbers per domain for a week of real retrieval, the tokens spent on HTML, the tokens the twin would have cost and the fetches a change signal would have skipped, live in the providers' logs.
 
-> Every rung exists today. What does not exist is anyone paying for them. The gap the proposal is written to fill: the publisher's half of the exchange is already built.
+> Every step exists today. What does not exist is anyone paying for them. The gap the proposal is written to fill: the publisher's half of the exchange is already built.
 
 > It is not new money. It is money being spent today, by the answer engines, on reading the web the hard way. Why a rebate on waste is the easiest money in the negotiation to agree to.
 
@@ -672,12 +672,12 @@ Every unit of knowledge is already a graph in its owner's vocabulary, and a shor
 - **The five-rule grammar** (method) Every edge is a verb with an inverse, relates_to is banned, properties carry data never meaning, supersede never delete, and never render the whole graph.
 - **relates_to is banned** (claim) An edge with no verb constrains nothing and cannot narrow a query; the granularity of the verb is the precision of the question you will later be able to ask.
 - **Provenance comes free** (claim) When the leaf is a word connected to the byte range it came from and the hash of the file that held it, every claim at every altitude above it is traceable to source.
-- **The ladder of eleven altitudes** (artefact) Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every rung joined to the next by a named edge.
+- **The ladder of eleven altitudes** (artefact) Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every altitude joined to the next by a named edge.
 - **Regulation Graph** (artefact) The EU AI Act parsed from the official XML into 1,523 nodes and 1,944 edges, with the SHA-256 of the retrieved bytes at the end of every provenance chain.
 - **The crosswalk finding** (example) Joining the AIUC-1 standard to the regulation graph showed that 8 of the 27 articles reached have since been amended, a finding that existed in neither graph on its own.
 - **GDPR Article 45** (example) The text has not changed a word since 2016 while what it permits has flipped four times, drawn as a timeline of ruling nodes over one unchanged article node.
 - **Threat model zoom ladder** (artefact) Eleven linked models, 51 nodes and 179 threats, tracing a single SQL injection from the method it lives in to the revenue it puts at risk.
-- **What is still modelled rather than imported** (question) The bottom four rungs are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent rung is a vocabulary not yet a join.
+- **What is still modelled rather than imported** (question) The bottom four altitudes are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent altitude is a vocabulary not yet a join.
 - **Why now** (claim) Naming edges became the cheap part, agents acting on the world make provenance mandatory, and the schema wars are over because nobody won.
 
 > There is no top and no bottom. There is only the altitude you happen to be looking from, and how much definition you choose to load at it. The definition of fractal in one line: no privileged level, no single schema.

@@ -17,7 +17,7 @@
       "id": "fixed-levels",
       "label": "C4 and Gherkin: right instinct, fixed levels",
       "kind": "concept",
-      "summary": "C4 named four levels and left the code level optional; Gherkin shaped the top rung and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply."
+      "summary": "C4 named four levels and left the code level optional; Gherkin shaped the top layer and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply."
     },
     {
       "id": "naming-is-cheap",
@@ -71,7 +71,7 @@
       "id": "reality-loop",
       "label": "Reality corrects the graph",
       "kind": "claim",
-      "summary": "You do not have to get the graph right; users confirm the top, experts confirm their rung, tests confirm execution, and every correction is a commit."
+      "summary": "You do not have to get the graph right; users confirm the top, experts confirm their layer, tests confirm execution, and every correction is a commit."
     },
     {
       "id": "patterns-are-findings",

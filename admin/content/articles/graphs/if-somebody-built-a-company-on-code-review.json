@@ -5,7 +5,7 @@
     "graphs-and-knowledge",
     "startups-and-strategy"
   ],
-  "core_idea": "What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each rung to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.",
+  "core_idea": "What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each layer to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.",
   "nodes": [
     {
       "id": "grammar-vs-layers",
@@ -41,7 +41,7 @@
       "id": "rules-and-examples",
       "label": "Stories as rules and examples",
       "kind": "method",
-      "summary": "Example Mapping's cards as the top rung: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one."
+      "summary": "Example Mapping's cards as the top layer: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one."
     },
     {
       "id": "held-layer",
@@ -50,8 +50,8 @@
       "summary": "A refactor is a change where some layers move and one chosen layer, the one with the tests or the contract, does not; an architecture migration holding only the client interface is a refactor at a higher altitude."
     },
     {
-      "id": "deploy-rung",
-      "label": "The deploy is a rung",
+      "id": "deploy-layer",
+      "label": "The deploy is a layer",
       "kind": "concept",
       "summary": "Pipelines, environments, running services, configuration and secrets form a graph with its own verbs; a change's reach continues through it, and the non-functional requirements live there."
     },
@@ -89,7 +89,7 @@
       "id": "compare-to-intent",
       "label": "Compare the blast radius to the intent",
       "kind": "claim",
-      "summary": "Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per rung that moved; measure increments as projected nodes gaining a derived match."
+      "summary": "Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per layer that moved; measure increments as projected nodes gaining a derived match."
     },
     {
       "id": "open-source-only",
@@ -146,7 +146,7 @@
       "rel": "example-of"
     },
     {
-      "from": "deploy-rung",
+      "from": "deploy-layer",
       "to": "grammar-vs-layers",
       "rel": "example-of"
     },

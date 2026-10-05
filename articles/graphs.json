@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-05",
-  "site_version": "v0.6.61",
+  "site_version": "v0.6.62",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -98,7 +98,7 @@
           "graphs-and-knowledge",
           "startups-and-strategy"
         ],
-        "core_idea": "What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each rung to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.",
+        "core_idea": "What is fractal in a fractal semantic graph is the grammar, and which layers exist is each company's own, so a code review company should project a graph from stories before the code exists, derive one from the code as it is written, review the join, hold one layer still to call a change a refactor, route each layer to the people who can judge it, reshape changes by reach before anyone reads them, budget per altitude, push every fix to the layer below, and give the grammar away because the layers and the loop belong to the customer.",
         "nodes": [
           {
             "id": "grammar-vs-layers",
@@ -134,7 +134,7 @@
             "id": "rules-and-examples",
             "label": "Stories as rules and examples",
             "kind": "method",
-            "summary": "Example Mapping's cards as the top rung: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one."
+            "summary": "Example Mapping's cards as the top layer: a story node whose children are rules, whose children are examples a test or a run can satisfy; prose stories were the right first layer and the wrong final one."
           },
           {
             "id": "held-layer",
@@ -143,8 +143,8 @@
             "summary": "A refactor is a change where some layers move and one chosen layer, the one with the tests or the contract, does not; an architecture migration holding only the client interface is a refactor at a higher altitude."
           },
           {
-            "id": "deploy-rung",
-            "label": "The deploy is a rung",
+            "id": "deploy-layer",
+            "label": "The deploy is a layer",
             "kind": "concept",
             "summary": "Pipelines, environments, running services, configuration and secrets form a graph with its own verbs; a change's reach continues through it, and the non-functional requirements live there."
           },
@@ -182,7 +182,7 @@
             "id": "compare-to-intent",
             "label": "Compare the blast radius to the intent",
             "kind": "claim",
-            "summary": "Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per rung that moved; measure increments as projected nodes gaining a derived match."
+            "summary": "Not to the old code: to the projected graph, the commit message, the existing documentation and the stories. Report one line per layer that moved; measure increments as projected nodes gaining a derived match."
           },
           {
             "id": "open-source-only",
@@ -239,7 +239,7 @@
             "rel": "example-of"
           },
           {
-            "from": "deploy-rung",
+            "from": "deploy-layer",
             "to": "grammar-vs-layers",
             "rel": "example-of"
           },
@@ -887,7 +887,7 @@
             "id": "fixed-levels",
             "label": "C4 and Gherkin: right instinct, fixed levels",
             "kind": "concept",
-            "summary": "C4 named four levels and left the code level optional; Gherkin shaped the top rung and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply."
+            "summary": "C4 named four levels and left the code level optional; Gherkin shaped the top layer and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply."
           },
           {
             "id": "naming-is-cheap",
@@ -941,7 +941,7 @@
             "id": "reality-loop",
             "label": "Reality corrects the graph",
             "kind": "claim",
-            "summary": "You do not have to get the graph right; users confirm the top, experts confirm their rung, tests confirm execution, and every correction is a commit."
+            "summary": "You do not have to get the graph right; users confirm the top, experts confirm their layer, tests confirm execution, and every correction is a commit."
           },
           {
             "id": "patterns-are-findings",
@@ -1734,7 +1734,7 @@
           },
           {
             "id": "the-ladder",
-            "label": "The four-rung ladder",
+            "label": "The four-tier ladder",
             "kind": "artefact",
             "summary": "Ten pounds for the pack downloaded, fifty for a working vault, five hundred for the vault corrected for your situation, fifteen hundred for two sessions and a professional's signature."
           },
@@ -3556,7 +3556,7 @@
         },
         "quotes": [
           {
-            "text": "Every rung exists today. What does not exist is anyone paying for them.",
+            "text": "Every step exists today. What does not exist is anyone paying for them.",
             "why": "The gap the proposal is written to fill: the publisher's half of the exchange is already built."
           },
           {
@@ -5203,7 +5203,7 @@
             "id": "the-ladder",
             "label": "The ladder of eleven altitudes",
             "kind": "artefact",
-            "summary": "Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every rung joined to the next by a named edge."
+            "summary": "Eleven altitudes, each a live graph in its own vocabulary, from the law down to the compute instance, every altitude joined to the next by a named edge."
           },
           {
             "id": "regulation-graph",
@@ -5233,7 +5233,7 @@
             "id": "named-gaps",
             "label": "What is still modelled rather than imported",
             "kind": "question",
-            "summary": "The bottom four rungs are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent rung is a vocabulary not yet a join."
+            "summary": "The bottom four altitudes are placed by an author, enterprise architecture is missing, crosswalks resolve at article level only, and the agent altitude is a vocabulary not yet a join."
           },
           {
             "id": "why-now",

@@ -2,7 +2,7 @@
 
 > One real codebase read as a fractal semantic graph from its syntax tree: eleven stories, 72 commands, 13 packages, 377 classes, 1,111 methods and 2,592 calls, two method streams, one commit read upwards to the nine commands and six stories it can reach, and ten house rules checked against the graph. Nothing produced by running the code; the scripts are in the vault.
 
-*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.61 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/code-review-graphs/index.html> · site v0.6.62 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -37,7 +37,7 @@ one commit, read upwards
 
 ### The blast radius of a change, before anyone runs it
 
-The text diff of the commit is 75 lines added and 7 removed in three files. The graph reads the same change at every altitude: one method in the transport class and six command handlers changed; no signature, field or class shape moved; a test module with six tests was added. Climbing the call graph from the changed methods reaches nine of the 72 commands and six of the eleven stories. The pattern across the rungs, bodies moved and shapes still and a new assertion, is the shape of a fix; a refactor is its mirror image.
+The text diff of the commit is 75 lines added and 7 removed in three files. The graph reads the same change at every altitude: one method in the transport class and six command handlers changed; no signature, field or class shape moved; a test module with six tests was added. Climbing the call graph from the changed methods reaches nine of the 72 commands and six of the eleven stories. The pattern across the layers, bodies moved and shapes still and a new assertion, is the shape of a fix; a refactor is its mirror image.
 
 Commit 397be83 at every altitude, the fix-or-refactor reading, and the commit message beside it as evidence to check.
 
