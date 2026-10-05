@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.57'
+SITE_VERSION = 'v0.6.58'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,12 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.57', '2026-10-04', 'this release',
+    ('v0.6.58', '2026-10-05', 'this release',
+     "THE CORRECTED ONE-PAGE CONDENSATION. The reply-tail article's infographic by another model is now the "
+     "third version: the placeholder third-party domain is gone, the credit spells the site correctly, and "
+     "the fictional reply is dated on the right weekday. One stray hyphen remains in a label and stays, as "
+     "it came.",),
+    ('v0.6.57', '2026-10-04', 'git 025e22b7',
      "THE EXPERIMENT PARAGRAPH, IN THE AUTHOR'S WORDS. The reply-tail article's experiment paragraph now "
      "reads as Dinis rewrote it for the LinkedIn repost: the experiment runs on his own correspondence "
      "via the agent@riskmandate.ai agentic team, and the note box links the LinkedIn repost. A revised "
