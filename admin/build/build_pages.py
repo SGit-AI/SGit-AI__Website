@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.63'
+SITE_VERSION = 'v0.6.64'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.63', '2026-10-05', 'this release',
+    ('v0.6.64', '2026-10-05', 'this release',
+     "THE SOURCES, LINKED. Every piece of earlier writing the code review company article weaves in now links "
+     "to its public copy: the SG/Send team briefs and articles on GitHub as markdown, the diniscruz.ai posts, "
+     "the Villager team brief in the sgit CLI repository, Wardley's own posts, Example Mapping, the SecDevOps "
+     "book, and the sibling sites. The article also gains its one-page condensation by another model as a "
+     "closing section, checked against the text, with two paraphrases in quotation marks named as such.",),
+    ('v0.6.63', '2026-10-05', 'git 9e4d1cb4',
      "WHY IT IS ONLY NOW POSSIBLE. The code review company article gains the two ideas its author found missing "
      "on first read: that one technology can now read every layer from strategy to bytecode, which is what makes "
      "a graph at every altitude buildable and close to reality and why earlier attempts failed; and that this "
