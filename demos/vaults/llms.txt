@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.76) from the same file the table on that page is built
+> generated at build time (v0.6.77) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (41)
+## The vaults (42)
+- **#42 Deck Vault**: A business plan for an author-first home for presentations: every author's decks in a vault the host cannot read, access decided by keys, seven roles no single company holds, pay once with 85% to the author, provenance as the product; ten plan documents, a right-of-access letter, a register and a working mock built as web components
+ - page: /demos/vaults/deck-vault/index.md
+ - id `13djtu3j` · Briefing · published 2026-10-06 · 214 KB · 55 files
+ - read key: `sgit_public_read_d0cf85231f15ce35ff42079574be33db1f3d8eba4a470b941c9ffaf8b5c76336:13djtu3j`
 - **#41 How Much Evidence**: The data behind the article How much of this did I write?: 266 messages, 124 releases and 27 days as rows; per-article ledgers with the turns behind each; 28 corrections with their latency; the 29-article dependency map with every article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions with diffs; and a hash and screenshot of each cited source, with the app that reads them
  - page: /demos/vaults/how-much-evidence/index.md
  - id `kd0xhy6z` · Reference · published 2026-10-05 · 7.6 MB · 116 files

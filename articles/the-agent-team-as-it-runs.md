@@ -2,7 +2,7 @@
 
 > The walkthrough told you how to build the agentic inbox in phases. This is the stack as it runs today, written up from the agents' own field notes so that it can be referenced and copied: twelve Claude agents on dedicated accounts, each with one focus and a behaviour policy; encrypted vaults the host cannot read, driven by sgit, as the only memory; messages between agents as files in each other's mailroom; a CRM that is one folder per person with provenance on every fact and a hash on every message; a conductor that runs the team four times a day with a security role first and last; and a mailbox the agents draft in but never send from. It then does two things the field notes did not. It names the security and privacy properties as properties, client-side encryption with keys handed out of band, read keys that cannot write, a leak check before every commit, rotation by new vault, a record that is read afterwards against the policy, and a three-way distinction between public, private-ish and personal information in which the team's vaults are built to hold the first two and refuse the third, with rules that can be scoped per customer and written to protect the person on the other end. And it maps every piece of the setup to the idea on this site that it implements, vaults, behaviour policies, fractal semantic graphs, memory as files, so that nothing in it has to be taken on trust. It ends on the question the setup leaves open, who gives the mandate over information, which gets a document of its own.
 
-*Source: <https://sgit.ai/articles/the-agent-team-as-it-runs.html> · site v0.6.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-agent-team-as-it-runs.html> · site v0.6.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -299,6 +299,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-agent-
 ### Continued by
 
 - [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
+- [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](the-deck-i-could-not-download.md) One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

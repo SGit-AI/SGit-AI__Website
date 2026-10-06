@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Forty-one vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-two vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.77 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**41 published vaults**: 11 briefing, 8 analysis, 8 reference, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**42 published vaults**: 12 briefing, 8 analysis, 8 reference, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 42 | [Deck Vault](deck-vault/index.md)`13djtu3j` | A business plan for an author-first home for presentations: every author's decks in a vault the host cannot read, access decided by keys, seven roles no single company holds, pay once with 85% to the author, provenance as the product; ten plan documents, a right-of-access letter, a register and a working mock built as web components | Briefing | 55 | 214 KB | 2026-10-06 |
 
 | 41 | [How Much Evidence](how-much-evidence/index.md)`kd0xhy6z` | The data behind the article How much of this did I write?: 266 messages, 124 releases and 27 days as rows; per-article ledgers with the turns behind each; 28 corrections with their latency; the 29-article dependency map with every article's graph; the article's own fractal from strategy to data; the record by era; 75 article versions with diffs; and a hash and screenshot of each cited source, with the app that reads them | Reference | 116 | 7.6 MB | 2026-10-05 |
 

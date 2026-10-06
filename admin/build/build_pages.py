@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.76'
+SITE_VERSION = 'v0.6.77'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.76', '2026-10-06', 'this release',
+    ('v0.6.77', '2026-10-06', 'this release',
+     "THE DECK I COULD NOT DOWNLOAD. An article and a business-plan vault written after one presentation on "
+     "SlideShare was offered as a 30-day trial and £10.99 a month while the deck's author receives nothing, "
+     "under an uploader agreement quoted in the article that grants a royalty-free, sublicensable licence to "
+     "monetise and train models on the work. The article gives the platform's history to the September 2021 "
+     "paywall, why fifteen years of embeds and links have kept it in place, what an author can ask for today "
+     "under the right of access and the EU copyright transparency duty, and the design of the service the "
+     "author would have chosen: every author's decks in a vault the host cannot read, access by keys, seven "
+     "roles no single company holds, pay once with 85% to the author. The Deck Vault (13djtu3j) carries the "
+     "plan's ten documents, the right-of-access letter, a register and a working mock built as web components "
+     "and bundled for the vault host; published with its read key, verified by a read-only clone and an "
+     "all-zeros negative control. Six figures and eight app screenshots.",),
+    ('v0.6.76', '2026-10-06', 'git 83369cae',
      "TWO ARTICLES ON PERSONAL AGENTS. The first describes the RiskMandate agent team as it runs, from the "
      "agents' own field notes: twelve agents on dedicated accounts, encrypted vaults as the only memory, "
      "messages as files, a CRM of one folder per person, a conductor with security first and last, and a "
