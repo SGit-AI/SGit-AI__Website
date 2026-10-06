@@ -2,7 +2,7 @@
 
 > How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.6.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.6.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

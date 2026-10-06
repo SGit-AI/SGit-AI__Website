@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Every sgit repository: how the sites, the tools and the code are built, guidance</title>
+<meta name="description" content="The page above the vault guidance, the team section, coding.sgit.ai and nfrs.sgit.ai: what every repository in the estate carries regardless of what it is for. The brief published in full, written by a person or an agent; the reality and corrections files; one version going up on every push; the gate and the release discipline; the review folder with its self set; the code rules by reference to coding.sgit.ai; credentials; the requirements that are not features; people, agents and writing; and two checklists, one for a new repository and one for an existing one.">
+<link rel="canonical" href="https://sgit.ai/docs/guidance/repositories.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/guidance/repositories.html">
+<meta property="og:title" content="Every sgit repository: how the sites, the tools and the code are built, guidance">
+<meta property="og:description" content="The page above the vault guidance, the team section, coding.sgit.ai and nfrs.sgit.ai: what every repository in the estate carries regardless of what it is for. The brief published in full, written by a person or an agent; the reality and corrections files; one version going up on every push; the gate and the release discipline; the review folder with its self set; the code rules by reference to coding.sgit.ai; credentials; the requirements that are not features; people, agents and writing; and two checklists, one for a new repository and one for an existing one.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Every sgit repository: how the sites, the tools and the code are built, guidance">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="repositories.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Every sgit repository: how the sites, the tools and the code are built, guidance", "headline": "Every sgit repository: how the sites, the tools and the code are built, guidance", "description": "The page above the vault guidance, the team section, coding.sgit.ai and nfrs.sgit.ai: what every repository in the estate carries regardless of what it is for. The brief published in full, written by a person or an agent; the reality and corrections files; one version going up on every push; the gate and the release discipline; the review folder with its self set; the code rules by reference to coding.sgit.ai; credentials; the requirements that are not features; people, agents and writing; and two checklists, one for a new repository and one for an existing one.", "url": "https://sgit.ai/docs/guidance/repositories.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.75</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../../docs/index.html">Documentation</a>
+ <a class="sl here" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl here" href="../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl here" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../articles/index.html">Articles</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/guidance/llms.txt</span><span class="llmschip-m">v0.6.75 &middot; 6 Oct 2026</span></a></div>
+<main class="doc" style="max-width:var(--wide)">
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Guidance</a> / Every repository</p>
+  <h1>Every sgit repository: how the sites, the tools and the code are built</h1>
+  <p class="lead">The page to read before starting or changing any repository in this estate, whether it is a <code>*.sgit.ai</code> site, a tool such as the sgit CLI, a vault app or a service. Until now this guidance lived in four places, each covering one slice: <a href="index.html">the vault guidance</a> here, which says of itself that it stops at vaults; <a href="../../team/index.html">the team section</a>, which is how this one site is run; <a href="https://coding.sgit.ai/">coding.sgit.ai</a>, which measured how the code is written; and <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a>, which holds the requirements that are not features. This page is the one above them: what every repository carries regardless of what it is for, with the edge to the page that owns each detail. It is short on purpose and mostly links, for the reason <a href="index.html#why">the vault guidance gives</a>.</p>
+
+  <div class="note"><b>The one-minute version.</b> A repository here starts from a <b>brief, published in full</b>, written by a person or by an agent from the person's words. It carries a <b>reality file</b> that says what exists, a <b>corrections file</b> that says where the brief was wrong, <b>one version number</b> that goes up on every push, a <b>gate</b> that fails the build, and from now a <b>review folder</b> that reads every change upwards to the brief. Code follows <b>the house style coding.sgit.ai measured</b>, not a style somebody preferred. <b>Read keys may be published; vault keys never.</b> A release is not done until the live thing serves the new version. Every number on a page is counted, not remembered, and the page says what it does not prove.</div>
+
+  <p class="small dim">Status: first version, written 6 October 2026 from what sgit.ai, coding.sgit.ai, nfrs.sgit.ai, the sgit CLI and the SG/Send repository actually do, and from the briefs that started the secrets.sgit.ai repository. Where the five disagree, this page says which to follow and why; where it is wrong, the first repository to find out records it in its corrections file and this page is corrected from there.</p>
+
+  <h2 id="kinds">1. Three kinds of repository, one shape</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Kind</th><th>Examples</th><th>What differs</th></tr>
+    <tr><td><b>A site</b></td><td>sgit.ai, coding.sgit.ai, nfrs.sgit.ai, graphs.sgit.ai and the rest of <a href="../../network/index.html">the network</a>; secrets.sgit.ai next</td><td>Static HTML built by a script from content files, deployed by GitHub Pages from the development branch; every page has a <code>.md</code> twin and the site has an <code>llms.txt</code>; nav and footer injected at build so they cannot drift; a participant disclosure</td></tr>
+    <tr><td><b>A tool or library</b></td><td>the sgit CLI, osbot-utils, the Send server and its services</td><td>Python under the Type_Safe rules with a test suite that runs against real objects; a package version in one file; releases tagged and published</td></tr>
+    <tr><td><b>A vault app or a component set</b></td><td>the Code Review Graphs app, the How Much Evidence app, the tools components, the review navigator this page asks for</td><td>JavaScript as native web components, three files each on one base component, no framework and no build step; versions shown in the app's own chrome; published as a vault with a read key</td></tr>
+  </table></div>
+  <p>What is the same is everything below. A site is not excused from tests because it is content, and a tool is not excused from a brief because it is code.</p>
+
+  <h2 id="carries">2. What every repository carries</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Thing</th><th>Where it lives and what it is for</th><th>The page that owns it</th></tr>
+    <tr><td><b>The brief, in full</b></td><td>The document the work started from, published as written, dated, with its status, and never edited to look right afterwards. A brief may be written by a person or by an agent from a voice memo or a conversation; what makes it the brief is that the person read it and said go. Corrections go in the corrections file, not into the brief.</td><td><a href="../briefs/index.html">The briefs</a>; <a href="https://coding.sgit.ai/network/index.html">coding.sgit.ai on the network</a>: "a commissioning brief published in full, a static site written from it"</td></tr>
+    <tr><td><b>The reality file</b></td><td>What exists, by domain, kept current by whoever ships. The rule from the Send repository's Librarian: a feature that is not in the reality file does not exist, and nobody may say a thing works because a brief describes it.</td><td><a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/dev/team/roles/librarian/reality/README.md">The Librarian's reality files</a>; <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai, the reality system</a></td></tr>
+    <tr><td><b>The corrections file</b></td><td><code>BRIEF-CORRECTIONS.md</code>, or the equivalent the brief names: where the brief was wrong, what was found, what was done instead. Every brief on this site says it will be corrected from this file; a repository without one has nowhere to put the finding.</td><td><a href="../briefs/code-review-graphs-in-the-repository.html">The review brief</a>, section 12; <a href="../briefs/secrets-sgit-ai-design-pack.html">the secrets design pack</a>, the initial prompt</td></tr>
+    <tr><td><b>One version, going up on every push</b></td><td>A single source of truth for the version, in the repository root or the build script, bumped on every push, shown on every page or in the app's chrome, and linked to a release history with a sentence per release that says what changed and why, not "UI improvements".</td><td><a href="index.html#versions">Version everything, show the version</a>; <a href="../../admin/versions.html">this site's release history</a></td></tr>
+    <tr><td><b>The gate</b></td><td>A validator that fails the build and a release script that refuses to push until it passes. What it checks is the repository's business, listed on its admin page; that it exists and is run before every push is not.</td><td>Section 4 below; <a href="../../admin/index.html">this site's admin page</a></td></tr>
+    <tr><td><b>Tests that run against real things</b></td><td>No mocks. Tests build the real object, call the real code and check the real result; a credential test has a negative control; a crypto test has a published vector.</td><td><a href="https://coding.sgit.ai/rules/index.html">coding.sgit.ai, the rules and the four testing non-negotiables</a>; <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai, testing</a></td></tr>
+    <tr><td><b>The review folder</b></td><td><code>review/</code>: the project as layered graphs, intent written from the brief and the code derived from the tree, every commit read upwards, a navigator, and <code>review/self/</code> reviewing the tool itself. New repositories from the first commit; existing ones from their next change.</td><td><a href="../briefs/code-review-graphs-in-the-repository.html">Code review graphs in the repository</a></td></tr>
+    <tr><td><b>Roles and a board, as files</b></td><td>Who does what, as one file per role with the rules it enforces and the mistake behind each; the work as files with a status line, in the repository or in a vault of its own. A new agent reads the team page and one role and begins.</td><td><a href="../../team/index.html">How this site is run</a>; <a href="https://issues-fs.sgit.ai/">issues-fs.sgit.ai</a>; the Explorer team in the CLI repository</td></tr>
+    <tr><td><b>A credentials tier that is never committed</b></td><td>A gitignored directory for keys, scanned by a tripwire before every commit, with the write key escrowed there before anything is published. The repository's own secrets and other people's are both scanned for.</td><td>Section 6 below; <a href="../../demos/vaults/publishing.html">Publishing: the method</a></td></tr>
+    <tr><td><b>Machine-readable twins</b></td><td>On a site, a <code>.md</code> twin for every page and an <code>llms.txt</code> at the root and per section, generated from the same data as the pages. On a tool, the same role is played by the reality file and the docs an agent is pointed at first.</td><td><a href="../../llms.txt">this site's llms.txt</a>; <a href="https://coding.sgit.ai/html/index.html">coding.sgit.ai on the markdown twin</a></td></tr>
+    <tr><td><b>Licences and the disclosure</b></td><td>Code Apache-2.0, content CC BY 4.0, each file or page saying which; a site published by the project that builds what it measures says so on a participant disclosure page.</td><td><a href="https://open-source.sgit.ai/">open-source.sgit.ai</a>; <a href="https://coding.sgit.ai/about/participant.html">coding.sgit.ai's disclosure</a></td></tr>
+  </table></div>
+
+  <h2 id="release">3. The release discipline</h2>
+  <ul>
+    <li><b>Bump, build, validate, push, verify.</b> In that order, by one script, every time. The version goes up on every push, the commit subject carries it, the validator must pass, and the script polls the live thing for the new version and aborts if it never appears. A clean push is not a release.</li>
+    <li><b>One sentence per release</b> in the release history, saying what changed and why, in words a reader can act on. The history is the repository's memory and the first place an agent in a fresh session reads.</li>
+    <li><b>Publish, then correct above the mistake.</b> When another team's review or a reader finds the work wrong, the correction is published where the mistake was, dated, with the mistake left visible. This has run for every release of this site since 14 August 2026 and the count is computed on the homepage, not typed.</li>
+    <li><b>Count, don't remember.</b> Every number on a page is computed from the thing it counts; every number in prose is checked against a file that day and the file is named.</li>
+    <li><b>Say what it is worth.</b> Each release states precisely what it does not prove. A measured finding, a position with the evidence attached and a guess are three different things and are labelled as such.</li>
+  </ul>
+
+  <h2 id="gate">4. The gate</h2>
+  <p>Each repository decides what its gate checks and lists it on its admin or engineering page. The checks below are the ones that exist today in at least one repository and have each caught a real defect; a new repository starts from this list and removes nothing without saying why in its corrections file.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Check</th><th>What it caught</th><th>Where it runs today</th></tr>
+    <tr><td>Every internal link resolves against the real file tree; a page nothing links to fails</td><td>Orphan pages that were published and unfindable</td><td>sgit.ai validator</td></tr>
+    <tr><td>Every inline script and site script parse-checks</td><td>A syntax error that only showed on one page</td><td>sgit.ai validator</td></tr>
+    <tr><td>No <code>&lt;link href&gt;</code>, <code>&lt;script src&gt;</code> or <code>&lt;img src&gt;</code> reaches outside a vault app</td><td>Apps that worked on a dev machine and not in the host</td><td>sgit.ai validator, the vault-app contract</td></tr>
+    <tr><td>Every page has its <code>.md</code> twin and appears in <code>llms.txt</code></td><td>Pages agents could not read</td><td>sgit.ai validator</td></tr>
+    <tr><td>Banned words and retired names; em-dashes in prose; unsupported absolutes as an advisory</td><td>Legacy naming, and prose that sounded alarmist</td><td>sgit.ai validator</td></tr>
+    <tr><td>The leak tripwire: sgit credential shapes, private key markers, cloud key prefixes, named people's data, and the secret parts of every locally held vault key, against the staged diff</td><td>A vault key in a log, a live third-party key in a field that matched no sgit pattern</td><td>sgit.ai release script; the method in <a href="../../demos/vaults/publishing.html">Publishing</a></td></tr>
+    <tr><td>Type_Safe structural guards: no raw primitives in schema classes, no module-level functions, round-trip <code>from_json(obj.json()).json() == obj.json()</code></td><td>Schemas that serialised differently from how they parsed</td><td>sgit CLI and Send test suites</td></tr>
+    <tr><td>Crypto test vectors against the browser's output, byte for byte</td><td>A derivation that matched itself and not the Web Crypto API</td><td>sgit CLI</td></tr>
+    <tr><td>Determinism: the same inputs produce byte-identical derived files</td><td>Not yet caught anything; required by the review brief</td><td>The review folder, section 8 of its brief</td></tr>
+    <tr><td>Freshness: a derived folder older than the tree it describes fails</td><td>Not yet caught anything; required by the review brief</td><td>The review folder</td></tr>
+  </table></div>
+  <p>The secrets.sgit.ai MVP brief names its own version of this an eight-check gate; it is the newest and it is the one a new repository should copy first. coding.sgit.ai's finding stands and should be read as a warning: as of its last count, no linter, formatter or type-checker ran anywhere in the estate, and the structural guards were the whole automated enforcement surface. Enforcement lives in each repository's gate or it does not live.</p>
+
+  <h2 id="code">5. The code, by reference</h2>
+  <p>The style is not a preference; it was counted out of the code and published with the numbers that do not flatter. This page does not restate it. The rules a new repository adopts on day one, with the page that owns each:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Language</th><th>The rules that matter most</th><th>Read</th></tr>
+    <tr><td><b>Python</b></td><td>Type_Safe for every data class; <code>Safe_Str</code>, <code>Safe_Int</code> and their domain subclasses instead of raw primitives; classes for everything, no module-level functions, no static methods; immutable defaults; one idea per file; per-block alignment of annotations; the round-trip invariant for every schema; no Pydantic, no boto3 in domain code, no mocks.</td><td><a href="https://coding.sgit.ai/python/index.html">coding.sgit.ai, Python</a>; the CLI repository's <code>CLAUDE.md</code></td></tr>
+    <tr><td><b>JavaScript</b></td><td>Native web components, no framework, no bundler, no build step; exactly three files per component with the same basename; a base component that supplies the lifecycle, self-location through <code>static jsUrl = import.meta.url</code>, and <code>onReady()</code> instead of <code>connectedCallback</code>; events namespaced and dispatched through <code>document</code> with <code>bubbles</code> and <code>composed</code>; frozen, centralised constants; ESM only. A large single-file app is a build output, never a source.</td><td><a href="https://coding.sgit.ai/javascript/index.html">coding.sgit.ai, JavaScript</a></td></tr>
+    <tr><td><b>HTML</b></td><td>A component's markup is a fragment; semantic elements, a real control for every interaction, ARIA on each; <code>data-*</code> for behaviour and classes for styling, never mixed; nav and footer injected at build time; a markdown twin for every page.</td><td><a href="https://coding.sgit.ai/html/index.html">coding.sgit.ai, HTML</a></td></tr>
+    <tr><td><b>CSS</b></td><td><code>:host</code> first; every colour a token and no literal colour outside the token file; per-block value alignment; flexbox with gap; no BEM, because shadow DOM removes the leak it was written for.</td><td><a href="https://coding.sgit.ai/css/index.html">coding.sgit.ai, CSS</a></td></tr>
+    <tr><td><b>Bash</b></td><td>As little as possible; generated shell from a Python section pattern where it is needed.</td><td><a href="https://coding.sgit.ai/bash/index.html">coding.sgit.ai, Bash</a></td></tr>
+    <tr><td><b>Dependencies</b></td><td>Nothing fetched at build or run time that is not vendored, pinned and hashed; a public component served from a versioned path is pinned at the depth the consumer wants, major, minor or exact.</td><td><a href="https://coding.sgit.ai/javascript/index.html">the versioned CDN path</a>; <a href="../briefs/code-review-graphs-in-the-repository.html">the review brief</a>, section 8</td></tr>
+  </table></div>
+  <p>coding.sgit.ai also lists what is not settled: semicolons, two banner styles, a legacy event namespace, the underscore-private rule that contradicts a Python rule. A repository picks one answer to each, writes it in its gate, and records the choice in its corrections file so the site can be updated. It does not reopen the question in every file.</p>
+
+  <h2 id="credentials">6. Credentials</h2>
+  <ul>
+    <li><b>Read keys yes, vault keys never.</b> A read key is derived one-way and cannot become write access. A vault key is write access and has no partly-public form. Escrow the write key before publishing, not after.</li>
+    <li><b>Scan for other people's secrets too.</b> A scan built for sgit credential shapes will not catch a provider's API key in a field with an unrelated name. The tripwire checks the generic shapes as well, and the secret part of every key the repository has ever held locally.</li>
+    <li><b>Every credential test needs a negative control.</b> A clone succeeds as a directory whether or not the key was valid; the marker that discriminates is the clone mode file. A test that would pass with a wrong input has proven nothing.</li>
+    <li><b>Session-only credentials stay in the session.</b> A comms vault, an access token or a write key an agent is handed for a task is used in that session and never written to a repository, a vault or a page. Masked output is the default when a tool prints a key.</li>
+    <li><b>Nothing a repository needs to run is a secret.</b> Configuration that differs per environment is read at run time in the browser or from the environment; a repository that cannot build without a secret has a design problem, not a configuration problem.</li>
+  </ul>
+  <p>The method, with the classification step that comes before anything touches a key: <a href="../../demos/vaults/publishing.html">Publishing: the method</a>; the key classes themselves: <a href="../credentials.html">Vault credentials</a>.</p>
+
+  <h2 id="review">7. The review</h2>
+  <p>From 6 October 2026 every repository carries a <code>review/</code> folder as <a href="../briefs/code-review-graphs-in-the-repository.html">the review brief</a> specifies: the intent written top down from the brief, by a person or an agent and accepted by a person; the code derived bottom up from the syntax tree by a parser, never by a model; the join between the two with a coverage figure; every commit read upwards to the surfaces and stories it can reach, with the claim in the commit message checked against the evidence; a navigator built as web components; and <code>review/self/</code>, the same folder for the tool, both green before a release. A repository that starts after this date builds it before its first source file. One that already has history starts from its next commit and lets the graph grow along the paths people walk. secrets.sgit.ai is the first of the former; this site and the sgit CLI are the first two of the latter.</p>
+
+  <h2 id="nfrs">8. The requirements that are not features</h2>
+  <p>Version control, reliability, resilience, security, backups, consistency, explainability and documentation are the project's own list, written before any site existed, and <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a> is its table of contents: testing and CI, resilience, the reality system, budgets as a discipline, project management, and an honest column with a scorecard and a page that names backups as a gap. A repository does not restate them. It adds one row to the honest column for itself: which of these it meets, measured, and which it does not yet, said plainly. The budgets page applies to agents in particular: each script in a pipeline has a time and size budget written down, and a run that exceeds it is a finding rather than a delay.</p>
+
+  <h2 id="people">9. People and agents</h2>
+  <ul>
+    <li><b>Briefs come from a person's words, in either hand.</b> The person speaks or writes; an agent often drafts; the person accepts. Both are recorded. An agent never edits the person's own briefs directory; it writes next to it, under its own name and date.</li>
+    <li><b>Roles are files</b> with the rules each enforces and the mistake that produced each rule; a starting prompt per role; a board of work as files. The sgit.ai team section and the Explorer team in the CLI repository are the two instances, and they mirror each other on purpose.</li>
+    <li><b>Agents run under a behaviour policy.</b> What an agent may reach, what it is mandated to do, the gap between the two and the barriers in place are written before it runs, in the shape <a href="https://riskmandate.ai/abp.html">RiskMandate's Agent Behaviour Policy</a> gives; its footprint afterwards is read from the logs and compared.</li>
+    <li><b>Other teams review the work</b>, and the review is published with the reply. The newsroom's briefing to this site and the answer to it are the pattern; a review that stays in a chat did not happen.</li>
+  </ul>
+
+  <h2 id="writing">10. Writing</h2>
+  <ul>
+    <li>State the status of everything: published, draft, proposed, verified, reconstructed. Say when a thing does not exist yet rather than describing it in the present tense.</li>
+    <li>Source every claim to a file, a commit, a count or a named document; where a claim is a position, attach the evidence and call it a position.</li>
+    <li>Avoid absolutes the evidence does not carry: say what was found and what was done, not what nobody has or what is impossible. The validator lists them as an advisory on every build of this site.</li>
+    <li>No em-dashes in prose; sentences with verbs; numbers in tables; figures with fictional names and example domains only, and no real contact data.</li>
+    <li>Publish the finding. An audit result, a gap, a correction goes on the page, not in a file nobody reads.</li>
+  </ul>
+
+  <h2 id="checklists">11. Two checklists</h2>
+  <div class="tablewrap"><table>
+    <tr><th>A new repository, before the first source file</th><th>An existing repository, in this order</th></tr>
+    <tr><td>
+      <ol>
+        <li>The brief, published in full, with its status and date, and the initial prompt that will start the first session.</li>
+        <li><code>BRIEF-CORRECTIONS.md</code>, empty, and the reality file, saying nothing exists.</li>
+        <li>The version in one place, the release history with its first entry, the release script that bumps, builds, validates, pushes and verifies live.</li>
+        <li>The gate, starting from section 4 with nothing removed.</li>
+        <li>The gitignored credentials tier and the leak tripwire wired into the release script.</li>
+        <li><code>review/intent/</code> from the brief, each node carrying its section; the navigator's shell and base component; <code>review/self/</code> for the tools.</li>
+        <li>The roles file and the board, even if one person and one agent fill every role.</li>
+        <li>The licence notices and, for a site, the participant disclosure, the <code>.md</code> twins and <code>llms.txt</code>.</li>
+        <li>The code rules from section 5 copied into the gate as checks, not into a document as wishes.</li>
+        <li>The honest column row on nfrs.sgit.ai, saying what is not yet met.</li>
+      </ol>
+    </td><td>
+      <ol>
+        <li>Find the brief it started from and publish it as it was; if there was none, write down that there was none.</li>
+        <li>Add the corrections file and the reality file, and fill the reality file from the code, not from memory.</li>
+        <li>Check the version is one number in one place that goes up on every push; if not, make it so before anything else.</li>
+        <li>Run the leak tripwire over the whole history once, and over the staged diff from now on.</li>
+        <li>Add <code>review/</code> from the next commit, delta first, and <code>review/self/</code> with it.</li>
+        <li>Compare the gate with section 4 and add what is missing, one check per release.</li>
+        <li>Write the roles that are actually being played and the board that actually exists.</li>
+        <li>Add the honest column row, including the gaps the first six steps found.</li>
+      </ol>
+    </td></tr>
+  </table></div>
+
+  <h2 id="elsewhere">12. Where the rest lives</h2>
+  <p>This page is the node above four others and it should stay that way. For vaults specifically, <a href="index.html">Working on a vault: start here</a>. For how one site is run day to day, <a href="../../team/index.html">the team section</a>. For how code is written, measured, <a href="https://coding.sgit.ai/">coding.sgit.ai</a>. For what a system owes the people who depend on it, <a href="https://nfrs.sgit.ai/">nfrs.sgit.ai</a>. For the grammar every graph in the estate uses, <a href="https://graphs.sgit.ai/">graphs.sgit.ai</a>. For the open-source position and the licences, <a href="https://open-source.sgit.ai/">open-source.sgit.ai</a>. For the whole map of sites and what each answers to, <a href="../../network/index.html">the network</a>. If a question about a repository is answered on none of these, that is a gap, and the place to record it is this page's own corrections, in <a href="../briefs/index.html">the briefs</a> as a reply.</p>
+
+  <p class="small dim">Written 6 October 2026 by the sgit.ai site team, after the author asked whether a central guidance for the estate's repositories existed and the check found that it did not. Companion material: the vault guidance, the team section, the review brief, the secrets design pack, coding.sgit.ai and nfrs.sgit.ai. CC BY 4.0.</p>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.75</a> · <a href="../../admin/index.html">engineering</a> · <a href="repositories.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.75';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

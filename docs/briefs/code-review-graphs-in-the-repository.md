@@ -2,7 +2,7 @@
 
 > A build brief that turns the two code review articles into a thing a repository carries: a review folder of layered graphs, intent written top down from the brief and the code derived bottom up from the syntax tree, joined, with every commit read upwards to the stories it can reach, and a single self-contained page that walks from a story to a source line and back. New projects start at full coverage from the first commit; existing projects start from the changes. The tool is held to the same standard as the code, with a second review set that reviews the tool itself. Build order, acceptance tests, what not to do, open questions, and the prompt to hand the builder agent.
 
-*Source: <https://sgit.ai/docs/briefs/code-review-graphs-in-the-repository.html> · site v0.6.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/code-review-graphs-in-the-repository.html> · site v0.6.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,19 +10,21 @@
 
 # Code review graphs in the repository: a build brief for secrets.sgit.ai, and for every agent that writes code
 
-**A build brief from the sgit.ai site team, written to be executed.** Status: ready to build; nothing in it exists yet as a whole. Written 6 October 2026 from a voice memo, for the `SGit-AI__Website__Secrets` repository first and for every repository an agent writes code in after that. It turns the two code review articles into a thing a repository carries: a folder of layered graphs, regenerated on every change, with a page that lets a person walk from a user story to a source line and back. The code review articles said the review itself, the thing that sits on a change and shows it at every layer, did not exist. This is the requirement for it.
+**A build brief from the sgit.ai site team, written to be executed.** Status: ready to build; nothing in it exists yet as a whole. Written 6 October 2026 from a voice memo, for the `SGit-AI__Website__Secrets` repository first and for every repository an agent writes code in after that. It turns the two code review articles into a thing a repository carries: a folder of layered graphs, regenerated on every change, with a navigator, built as web components in the house style, that lets a person walk from a user story to a source line and back. The code review articles said the review itself, the thing that sits on a change and shows it at every layer, did not exist. This is the requirement for it.
 
-**How to use this brief.** Read it once, then work through section 10 in order; each step ends with a release and an entry in the project's reality file. Where it says PROPOSED or VERIFY FIRST, test before building on it. Where you find it wrong, write what you found in `review/BRIEF-CORRECTIONS.md` and carry on; this brief will be corrected from that file. The worked example behind it is the [Code Review Graphs vault](../../demos/vaults/code-review-graphs/index.md), whose scripts and file shapes you may lift wholesale; the argument behind it is in [Code review as a fractal semantic graph](../../articles/code-review-as-a-fractal-semantic-graph.md) and [If somebody built a company on code review](../../articles/if-somebody-built-a-company-on-code-review.md). The lesson of the evidence vault, that a hash router is dead inside the vault host, is in [the vault-app guidance](../vault/vault-apps.md) and applies to the page this brief asks for.
+Revised the same day it was published, after the author read it: the intent layers are written by a person *or an agent*, since the first draft of most briefs here is an agent's transcription of a voice memo; and the navigator is no longer one self-contained HTML file but a set of web components in the shape [coding.sgit.ai](https://coding.sgit.ai/javascript/index.html) documents, one visualiser per file shape, with a first proposal for its layout in section 7. The reasons are given where the changes are.
+
+**How to use this brief.** Read it once, then work through section 10 in order; each step ends with a release and an entry in the project's reality file. Where it says PROPOSED or VERIFY FIRST, test before building on it. Where you find it wrong, write what you found in `review/BRIEF-CORRECTIONS.md` and carry on; this brief will be corrected from that file. The worked example behind it is the [Code Review Graphs vault](../../demos/vaults/code-review-graphs/index.md), whose scripts and file shapes you may lift wholesale; the argument behind it is in [Code review as a fractal semantic graph](../../articles/code-review-as-a-fractal-semantic-graph.md) and [If somebody built a company on code review](../../articles/if-somebody-built-a-company-on-code-review.md). The lesson of the evidence vault, that a hash router is dead inside the vault host, is in [the vault-app guidance](../vault/vault-apps.md) and applies to the navigator this brief asks for. The code style the navigator must follow is the one [coding.sgit.ai](https://coding.sgit.ai/) measured out of the estate's own code, on its [JavaScript](https://coding.sgit.ai/javascript/index.html), [HTML](https://coding.sgit.ai/html/index.html) and [CSS](https://coding.sgit.ai/css/index.html) pages. What every sgit repository carries regardless of what it is for, this folder among it, is on [the repository guidance page](../guidance/repositories.md).
 
 The review folder a repository carries: one grammar, two directions, two review sets. Not a vault and not a service.
 
 ## 1. What this is
 
-A folder, `review/`, at the root of the repository, that holds the project as layered graphs: what the software is meant to do, written top down from the brief as stories with their rules and examples, flows, components and the deploy shape; what the code actually is, derived bottom up from the syntax tree as files, methods and their calls, classes, modules, the surfaces the code exposes, the tests and the deploy; the join between the two; every commit read upwards to the stories it can reach; the code on one path as method streams; the house rules as queries over the graph with their results; and a single self-contained page that lets a person navigate all of it, down to the source lines, with no server and no dependencies.
+A folder, `review/`, at the root of the repository, that holds the project as layered graphs: what the software is meant to do, written top down from the brief as stories with their rules and examples, flows, components and the deploy shape; what the code actually is, derived bottom up from the syntax tree as files, methods and their calls, classes, modules, the surfaces the code exposes, the tests and the deploy; the join between the two; every commit read upwards to the stories it can reach; the code on one path as method streams; the house rules as queries over the graph with their results; and a navigator, a set of web components with one visualiser per file shape, that lets a person move through all of it down to the source lines, with no server, no framework and no build step.
 
 It is a folder and not a vault because it travels with the code, is diffed with the code, is reviewed with the code and is regenerated by the pipeline that ships the code. A vault is how a snapshot of it is published to someone who does not hold the repository, and the Code Review Graphs vault shows that already. Nothing in this brief needs a vault to work.
 
-It is regenerated, never hand-maintained, with two exceptions that are marked as such: the intent layers, which a person writes from the brief, and the proposals a model makes about things a parser cannot see, which carry `"proposed": true` until a person or a run confirms them.
+It is regenerated, never hand-maintained, with two exceptions that are marked as such: the intent layers, which a person or an agent writes from the brief and a person accepts, and the proposals a model makes about things a parser cannot see, which carry `"proposed": true` until a person or a run confirms them.
 
 ## 2. Two modes, one folder
 
@@ -70,15 +72,36 @@ review/
   checks/
     rules.json              the house rules as queries over the graph
     results.json            each rule's violations and the count checked, per commit
-  ui/
-    index.html              the navigator: one file, inline CSS and JS, no dependencies
+  ui/                       the navigator: web components in the coding.sgit.ai shape; no framework, no build step
+    README.md               which component renders which file shape, one to one
+    index.html              the shell: loads the tokens and the components, holds the layout, nothing else
+    tokens.css              the design tokens; the only file under ui/ where a colour is written
+    components/
+      review-base/          the base component the others extend: self-locating, loads its .html and
+                            .css, reads a JSON file with the bundle as fallback, holds the route, emits events
+      review-ladder/        the layers as a rail with counts; red where a selected change moved them
+        review-ladder.js    behaviour
+        review-ladder.html  markup, a fragment
+        review-ladder.css   styles, tokens only
+      review-tree/          story > rule > example, and module > class > method; one component, both shapes
+      review-node/          one node: name, type, layer, source link, properties, edges in and out
+      review-source/        code with line numbers, the node's lines marked, a change's lines highlighted
+      review-reach/         who reaches this: callers, surfaces, flows, stories, by hop, with counts
+      review-change/        one commit read upwards, from changes/<hash>.json
+      review-join/          matched, derived only, projected only, and the coverage figure
+      review-stream/        the code on one path in call order, from streams/<entry>.json
+      review-checks/        rules, violations, trend; a violation opens its node
+      review-search/        find a node by name across layers
+      review-crumb/         the path walked so far, each step a way back
+      review-set/           the switch between review/ and review/self/
   tools/
     derive.py               files, methods, classes, modules, surfaces, tests, deploy from the tree
+    derive_js.py            the same file shapes for JavaScript and HTML, the first new parser
     join.py                 intent against graph
     change.py               one commit read upwards
     stream.py               a method stream from an entry point
     check.py                rules over the graph
-    bundle.py               inlines the data into ui/index.html for the vault or a static host
+    bundle.py               inlines ui/ and the data into dist/index.html for the vault host; the source stays split
     freshness.py            fails when review/ is older than the code it describes
   self/                     the same folder, for the code in review/tools and review/ui
 ```
@@ -87,11 +110,11 @@ The vault's scripts, `analyse.py`, `delta.py` and `stream.py`, are the first ver
 
 ## 5. The intent layers, and who writes them
 
-A person writes `intent/`, from the brief, before the code, in the shape Example Mapping gave the top of the ladder: a story is a node whose children are rules, each rule a node whose children are examples, and an example is the smallest thing a test or a recorded run can satisfy. Each example names the surface it expects to touch, a page, a route, a command, a function, in the words the brief uses, which is how the join finds it later. Flows are ordered steps that name the surfaces they pass through. Components are the boxes the brief draws, with the edges the brief draws between them, and with `"honest_depth"` set where design stops seeing and wishful thinking would start. The deploy file says which environments exist, what runs in each, and what reaches what.
+A person or an agent writes `intent/`, from the brief, before the code. In practice the first draft is usually an agent's: the brief itself is often an agent's transcription of a voice memo, and the same session can turn it into nodes. What makes it intent rather than a proposal is that a person reads it back as a graph and accepts it, and each node records who wrote it and who accepted it. It is written in the shape Example Mapping gave the top of the ladder: a story is a node whose children are rules, each rule a node whose children are examples, and an example is the smallest thing a test or a recorded run can satisfy. Each example names the surface it expects to touch, a page, a route, a command, a function, in the words the brief uses, which is how the join finds it later. Flows are ordered steps that name the surfaces they pass through. Components are the boxes the brief draws, with the edges the brief draws between them, and with `"honest_depth"` set where design stops seeing and wishful thinking would start. The deploy file says which environments exist, what runs in each, and what reaches what.
 
-For `secrets.sgit.ai` the intent is already written, as prose, in the MVP build brief: the components in its section 3.1, the flows in 3.2, the pages and their checks in section 6, the keyring specification in section 8, the environments in section 4 and the pipeline in section 9. The first task is to turn that prose into `intent/` without adding anything, with each node carrying the section it came from, so that the person who wrote the brief can read it back as a graph and correct it before any code exists. That is the review the author of this brief wants to do first: read the design as a navigable graph, find the places where the brief has a component with nothing under it or a flow that touches a surface no component provides, and decide.
+For `secrets.sgit.ai` the intent is already written, as prose, in the MVP build brief: the components in its section 3.1, the flows in 3.2, the pages and their checks in section 6, the keyring specification in section 8, the environments in section 4 and the pipeline in section 9. The first task, an agent's, is to turn that prose into `intent/` without adding anything, with each node carrying the section it came from, so that the person who commissioned the brief can read it back as a graph and correct it before any code exists. That is the review the author of this brief wants to do first: read the design as a navigable graph, find the places where the brief has a component with nothing under it or a flow that touches a surface no component provides, and decide.
 
-A model may propose intent nodes, from the brief or later from the code, and every one it proposes is marked `"proposed": true` with the model, the prompt and the date until a person accepts it, at which point the mark is replaced by who accepted it and when. The page shows proposed nodes in a different colour. A proposed node never counts towards coverage.
+A node an agent writes from the brief at the person's request, and the person accepts, is intent. A node a model adds on its own, from the brief or later from the code, is a proposal, and every one it proposes is marked `"proposed": true` with the model, the prompt and the date until a person accepts it, at which point the mark is replaced by who accepted it and when. The page shows proposed nodes in a different colour. A proposed node never counts towards coverage.
 
 ## 6. The change file
 
@@ -99,9 +122,31 @@ Every commit that touches source produces `review/changes/<hash>.json`, written 
 
 The report is one line per layer that moved and nothing for the layers that did not. A refactor that holds the class shapes reports two lines and a held-as-claimed; a fix reports the layers it climbed to the story that now holds and whether a test was added; a change that reached a layer its description did not mention reports that layer in a different colour.
 
-## 7. The page
+## 7. The navigator: components, one per file shape
 
-`review/ui/index.html` is one file, inline CSS and JavaScript, no external scripts, fonts or images, that runs from the repository on a local static server, from GitHub Pages at `/review/` when the project publishes it, and inside a vault when the folder is published as one. It reads the JSON files beside it, falling back to an inlined bundle that `bundle.py` produces. It keeps its route in a variable and marks its own links native, using the browser's hash only when it runs on its own, because inside the vault host a hash router is dead; the evidence vault shipped with that bug and this page does not.
+**Not one file.** The first draft of this brief asked for a single self-contained HTML page with inline CSS and JavaScript. That is the wrong shape for code that is to be reviewed by the same standard as the project. A four-thousand-line file has one node in `methods.json` worth the name, no classes, no module boundary and no call graph a reviewer can walk, so `review/self/` would have almost nothing to show, and the tool would fail its own test on the first day. The vault apps this site has published so far are built that way, and the evidence vault's dead router is the kind of defect that shape hides.
+
+**The shape it takes instead** is the one [coding.sgit.ai](https://coding.sgit.ai/javascript/index.html) counted out of the estate's own fifty JavaScript files and wrote down: native web components, no framework, no bundler, no build step; every component exactly three files with the same basename in its own directory, `.js` for behaviour, `.html` for markup as a fragment, `.css` for styles; a base component that supplies the lifecycle, so a component sets `static jsUrl = import.meta.url` to locate itself, names its `resourceName` and `sharedCssPaths`, and overrides `onReady()` rather than `connectedCallback`; events namespaced and dispatched through `document` with `bubbles` and `composed` set; state as underscore-prefixed instance fields; frozen, centralised constants. The HTML half follows the [HTML page](https://coding.sgit.ai/html/index.html): semantic elements, ARIA on every control, `data-*` for behaviour and classes for styling, never mixed. The CSS half follows the [CSS page](https://coding.sgit.ai/css/index.html): `:host` first, every colour a token from `tokens.css` and none written anywhere else, per-block alignment, no BEM because shadow DOM removes the problem it solved. The base component here is `review-base`, written on the pattern of the tools' `SgComponent`; whether it imports that class or is a sibling of it is the first entry for the corrections file, because the import would be the one external dependency in the folder.
+
+**One visualiser per file shape.** The folder's JSON files are only as useful as the ways to look at them, so the rule is one to one and written down in `ui/README.md`: `intent/stories.json` and the derived trees render in `review-tree`; a node of any layer in `review-node`, with its lines in `review-source`; `changes/<hash>.json` in `review-change`; `join/` in `review-join`; `streams/` in `review-stream`; `checks/` in `review-checks`; the layer counts in `review-ladder`. A new file shape in the folder is not finished until it has a component, and a component is not finished until `review/self/` shows its methods and the change that added it.
+
+**The base component**, `review-base`, is where the things every visualiser needs live once: reading a JSON file by path with the inlined bundle as fallback; resolving a node identifier to its layer, file and record; the event bus, `review:select` for a node, `review:route` for a view, `review:set` for the switch between the project and the tool; the route held in a variable and the hash touched only when the shell runs on its own, because inside the vault host a hash router is dead, the evidence vault shipped with that bug and this navigator does not; and the source resolver that opens a file at a range of lines. `index.html` is the only HTML document in the folder. It loads `tokens.css` and the components, lays them out, shows the version in its top bar as the vault guidance requires, and does nothing else.
+
+A first proposal for the navigator's layout. Each region is one component; the names in the corners are the component names in section 4. The content is illustrative.
+
+**A first proposal for what it looks like.** Five regions, each a component or a short stack of them, laid out by the shell:
+
+- **Top bar.** `review-set` at the left, the project or the tool. `review-search` in the middle. `review-crumb` under it, the path walked so far, each step a way back. The version at the right, linked to its entry in the project's release history.
+- **Left rail.** `review-ladder`: the layers top to bottom, stories, rules, examples, flows, components, surfaces, modules, classes, methods, lines, each with its count and, under the intent layers, its coverage. Clicking a layer makes the centre show that layer. When a change is selected, the layers it moved turn red and the ones it held stay grey, which is the second article's held-layer rule drawn as a rail.
+- **Centre.** The current view: `review-tree` for the intent and derived trees, `review-change` for a commit, `review-join` for the three columns, `review-stream` for a path, `review-checks` for the rules. Walking down is clicking a child in the tree; the ladder's highlight moves with you.
+- **Right panel.** The selected node, as a stack: `review-node` with its name, type, source link, properties and edges; `review-reach` with who reaches it, one, two and three hops out, each entry clickable, which is how walking up works; `review-source` with the lines, marked for the node and highlighted for the selected change. Proposed nodes are drawn in the amber the site uses for things not yet confirmed.
+- **Bottom strip.** The commits as a timeline, newest at the right, each a small bar coloured by its claim, fix, feature or refactor, with a hollow bar where the claim and the evidence disagree. Clicking one selects the change; the ladder, the centre and the right panel follow.
+
+The layout is a proposal and the component boundaries are the requirement. A project may lay the regions out differently; it may not merge two components into one because it was quicker, and it may not add a visualiser outside `components/`.
+
+**Where this goes next.** The components carry nothing that belongs to one project. The file shapes are the folder's, the colours are in `tokens.css`, and the data is read by path. They are written so that they can be lifted into a repository of their own and served from a versioned path in the way the tools components are, `components/<name>/v1/v1.0/v1.0.0/`, with every `review/` folder importing them at a pinned version, and that is the intended end state: a separate project, reviewed by its own `review/` folder, that every other project's navigator is made of. For now they live in `review/ui/components/` so that the first project can build them, review them and find out what they need to be. The cut to a separate repository is a step in the build order, not a decision to take now.
+
+**Where it runs.** From the repository on a local static server; from GitHub Pages at `/review/` when the project publishes it; and inside a vault when the folder is published as one, for which `bundle.py` inlines the components and the data into `dist/index.html` while the source stays split. Every link in every component is marked native and routes through the base component, so the same code works in all three places.
 
 What a person can do on it, and the acceptance test for each:
 
@@ -111,10 +156,10 @@ What a person can do on it, and the acceptance test for each:
 - **See the join.** Three columns: matched, derived-not-projected, projected-not-derived, with the coverage figure at the top and each gap openable as a finding. Acceptance: the figure in the page equals the figure in `README.md`, which is written by the same script.
 - **Open a stream.** Pick an entry point and a depth; read the code on that path and only that code, in call order, with the share of the repository it represents. Acceptance: the stream matches `streams/<entry>.json` byte for byte in its node list.
 - **Run the checks.** The rules, their violations, the nodes checked, and the trend per commit. Acceptance: a violation opens the node and the lines it is about.
-- **Switch sets.** A control at the top switches between `review/` and `review/self/`, the project and the tool, with everything above working identically on both.
-- **Search and deep-link.** Find any node by name; every view has an address that survives a reload when the page runs on its own.
+- **Switch sets.** `review-set` switches between `review/` and `review/self/`, the project and the tool, with everything above working identically on both. Acceptance: on the self set, the component rendering the view appears in the tree it is rendering.
+- **Search and deep-link.** Find any node by name; every view has an address that survives a reload when the shell runs on its own.
 
-The page is read-only. It never writes to the repository; acceptance of a proposed node is done by a script that edits the JSON and is committed like any other change, so that the graph's history is the repository's history.
+The navigator is read-only. It never writes to the repository; acceptance of a proposed node is done by a script that edits the JSON and is committed like any other change, so that the graph's history is the repository's history.
 
 ## 8. The engineering standard for the tool
 
@@ -125,7 +170,8 @@ The code in `review/tools` and `review/ui` is as critical as the code it reviews
 - **No model in line.** Derived layers come from parsers. A model may propose, never derive; its proposals are marked and are not inputs to any other derived file.
 - **Sourced.** Every derived node carries path, lines and hash; a node without a source is a bug the test suite catches.
 - **Fresh or failing.** `freshness.py` runs in the pipeline's validate step and fails the build when any file in `graph/` was derived from a tree whose hash differs from the tree being built, or when a commit that touched source has no change file.
-- **House style.** The project's own rules apply: no dependencies that are not vendored, pinned and hashed; the eight-check gate; no em-dashes in prose; the tone rules; every number in `README.md` generated, never typed.
+- **House style.** The project's own rules apply: no dependencies that are not vendored, pinned and hashed; the eight-check gate; no em-dashes in prose; the tone rules; every number in `README.md` generated, never typed. For the navigator, the JavaScript, HTML and CSS conventions on coding.sgit.ai apply as written: three files per component, the base component's lifecycle, no literal colours outside `tokens.css`, `data-*` for behaviour and classes for styling, every interactive element a real control with an accessible name, no `onclick` attributes. The checks in `checks/rules.json` for the self set are those rules as queries, so the tool measures its own style the way coding.sgit.ai measured the estate's.
+- **The UI is reviewed as code.** `review/self/` covers `ui/components` as well as `tools/`: each component is a module in `modules.json`, each of its methods a node in `methods.json`, each event it emits or listens for an edge. A component with no nodes beneath it is a parser bug or a component that should not exist, and either is a finding.
 - **Tested the way the project is tested.** Known-answer fixtures: a small repository under `review/tools/fixtures/` with a known graph, a known change and a known stream, and tests that the scripts reproduce them. The sgit CLI at commit `397be83` is a second fixture, because its numbers are published and can be checked against the vault.
 - **Budgeted.** Each script has a time and size budget per run, declared in `tools/budgets.json`, and the change path never regenerates more than the files touched and their reach unless asked to.
 
@@ -143,14 +189,15 @@ The code in `review/tools` and `review/ui` is as critical as the code it reviews
 | Step | Deliverable | Done when |
 |---|---|---|
 | 0 | `review/` skeleton, the schemas as JSON Schema files in `tools/schemas/`, the fixture repository, `freshness.py` wired into validate. | The build fails on a stale folder and passes on a fresh empty one. |
-| 1 | `intent/` for secrets.sgit.ai, from the MVP brief, every node carrying its section; the page's intent view. | The author of the brief has walked it as a graph and recorded corrections in `BRIEF-CORRECTIONS.md`. |
-| 2 | `derive.py` for Python lifted from the vault; `review/self/` built for the tools themselves. | The tool reviews itself; both sets open in the page. |
-| 3 | `derive.py` for JavaScript and HTML (functions, modules, the pages and routes as surfaces); `graph/` for the secrets site as it exists at that step. | Coverage figure appears on the README and in the page's join view. |
-| 4 | `change.py` and the change view; every commit from here on carries a change file. | A commit read upwards renders with no network; the claim-versus-evidence line is right for a fix and for a refactor fixture. |
-| 5 | `stream.py` and the walk-down to source lines with highlighting; walk-up with hop counts. | Story to line in six clicks; method to its stories in two. |
-| 6 | `check.py` with the project's house rules as queries; the checks view with trend. | Every rule in the project's guidance has a query or an entry saying why it cannot have one. |
-| 7 | `bundle.py`; the folder published once as a vault with a read key, as the Code Review Graphs vault was, and linked from the project's site. | The page runs identically in the repo, on Pages and in the vault host. |
+| 1 | `intent/` for secrets.sgit.ai, from the MVP brief, every node carrying its section; the shell, `tokens.css`, `review-base`, `review-tree`, `review-node` and `review-crumb`, enough to walk the intent. | The person who commissioned the brief has walked it as a graph and recorded corrections in `BRIEF-CORRECTIONS.md`. |
+| 2 | `derive.py` for Python lifted from the vault; `derive_js.py` for the components; `review/self/` built for the tools and the components; `review-set` and `review-ladder`. | The tool reviews itself; both sets open in the navigator; each component appears in the self set's tree. |
+| 3 | `derive_js.py` extended to the secrets site's pages and routes as surfaces; `graph/` for the site as it exists at that step; `review-join`. | Coverage figure appears on the README and in the join view, from the same script. |
+| 4 | `change.py`, `review-change`, the moved-layer marking on the ladder and the bottom strip; every commit from here on carries a change file. | A commit read upwards renders with no network; the claim-versus-evidence line is right for a fix and for a refactor fixture. |
+| 5 | `stream.py`, `review-source`, `review-reach` and `review-stream`: the walk down to source lines with highlighting and the walk up with hop counts. | Story to line in six clicks; method to its stories in two. |
+| 6 | `check.py` with the project's house rules as queries, including the coding.sgit.ai rules for the components; `review-checks` with trend. | Every rule in the project's guidance has a query or an entry saying why it cannot have one; the self set's checks are green. |
+| 7 | `bundle.py` producing `dist/index.html`; the folder published once as a vault with a read key, as the Code Review Graphs vault was, and linked from the project's site. | The navigator runs identically in the repo, on Pages and in the vault host. |
 | 8 | The delta-first mode applied to this site's repository and the sgit CLI's, starting from their next commit. | Each has a `review/` with at least one change file and a growing graph; the CLI's matches the published vault for the commit it covers. |
+| 9 | The components lifted into a repository of their own, served from a versioned path, with their own `review/`; the first two projects import them at a pinned version. | Both projects' navigators run from the shared components with no local copy, and the components' own self set is green. |
 
 ## 11. What not to do
 
@@ -160,10 +207,12 @@ The code in `review/tools` and `review/ui` is as critical as the code it reviews
 - Do not hand-maintain any file in `graph/`, `join/`, `changes/`, `streams/` or `checks/results.json`; if a number is wrong, fix the script.
 - Do not start an existing repository with a full derivation because it seems tidier; start with the change.
 - Do not ship the tool at a lower standard than the project; the self set is not optional.
+- Do not build the navigator as one file, or pull in a framework or a bundler to avoid writing components. The split is what makes the tool reviewable; the single file is a build output for the vault host and nothing else.
 
 ## 12. Open questions, to be answered in the corrections file
 
-- The right parser for JavaScript and HTML that keeps the tool dependency-free: a vendored, pinned, hashed parser is acceptable; a build-time download is not. VERIFY FIRST which one produces stable function identities across edits.
+- The right parser for JavaScript and HTML that keeps the tool dependency-free: a vendored, pinned, hashed parser is acceptable; a build-time download is not. VERIFY FIRST which one produces stable function identities across edits, and that it can read a component's three files as one module with the `data-*` hooks in the markup resolved to the handlers in the script.
+- Whether `review-base` imports the tools' `SgComponent` from its versioned path or is written beside it as a sibling with the same contract. PROPOSED: a sibling at first, so the folder has no network dependency, and a shared base once the components move to their own repository in step 9.
 - How examples are matched to tests by execution rather than by import, in a browser-only project whose tests are pages: PROPOSED, a test page writes which example ids it satisfied to a results file the derivation reads.
 - Whether the deploy layer should be derived from Terraform and workflow files or declared and checked; PROPOSED both, with the join reporting the difference.
 - How large a change file may be before it is split; PROPOSED, never; if a change is too large to read upwards it is too large to merge.
@@ -177,13 +226,15 @@ https://sgit.ai/docs/briefs/code-review-graphs-in-the-repository.html. Read that
 build brief in docs/design/. Work through the brief's section 10 in order, starting at step 0. Rules
 never to break: derived files come from parsers, never from you; every node carries its source;
 the same inputs produce byte-identical files; review/self/ is built and green before any release;
-the page is one file with no dependencies and never assigns location.hash. Lift the vault's scripts
-where they fit and say where you changed them. When the brief is wrong, write what you found in
-review/BRIEF-CORRECTIONS.md and carry on. Step 1 is for a person to read: turn the MVP brief into
-intent/ without adding anything, each node carrying its section, and stop for review.
+the navigator is web components in the shape coding.sgit.ai documents, three files each on one
+base component, one visualiser per file shape, no framework, no build step, colours only in
+tokens.css, and it never assigns location.hash. Lift the vault's scripts where they fit and say
+where you changed them. When the brief is wrong, write what you found in review/BRIEF-CORRECTIONS.md
+and carry on. Step 1 is yours to draft and a person's to accept: turn the MVP brief into intent/
+without adding anything, each node carrying its section, and stop for review.
 ```
 
-Written 6 October 2026 by the sgit.ai site team from a voice memo. Companion material: the two code review articles, the Code Review Graphs vault and its scripts, the vault-app guidance, and the secrets.sgit.ai design pack. Published under CC BY 4.0; to be corrected from the corrections file of the first repository that builds it.
+Written 6 October 2026 by the sgit.ai site team from a voice memo, and revised the same day from a second one. Companion material: the two code review articles, the Code Review Graphs vault and its scripts, the vault-app guidance, and the secrets.sgit.ai design pack. Published under CC BY 4.0; to be corrected from the corrections file of the first repository that builds it.
 
 
 ---

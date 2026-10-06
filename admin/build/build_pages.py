@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.74'
+SITE_VERSION = 'v0.6.75'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.74', '2026-10-06', 'this release',
+    ('v0.6.75', '2026-10-06', 'this release',
+     "EVERY REPOSITORY, ONE PAGE. The author asked whether a central guidance existed for how the estate's "
+     "sites, tools and code are built, and the check found four partial ones and no page above them. "
+     "/docs/guidance/repositories.html is that page: what every repository carries regardless of kind, the "
+     "brief in full written by a person or an agent, the reality and corrections files, one version going up "
+     "on every push, the gate, the release discipline, the review folder, the code rules by reference to "
+     "coding.sgit.ai, credentials, the NFRs, people and agents, writing, and two checklists. The review brief "
+     "is revised from the author's reading: intent is written by a person or an agent and accepted by a "
+     "person, and the navigator is no longer one file but web components in the coding.sgit.ai shape, one "
+     "visualiser per file shape, with a first layout proposal and a wireframe, and a step that lifts the "
+     "components into their own project.",),
+    ('v0.6.74', '2026-10-06', 'git 3c9348eb',
      "THE REVIEW FOLDER, AS A BRIEF. A build brief, written for secrets.sgit.ai first and for every agent that "
      "writes code after that, turns the two code review articles into a thing a repository carries: a review "
      "folder of layered graphs, intent written top down from the brief and the code derived bottom up from the "
@@ -3388,6 +3399,7 @@ NAV = [
     ('docs', 'Docs', 'docs/index.html', [
         ('docs', 'Documentation', 'docs/index.html'),
         ('docs', 'Vault guidance', 'docs/guidance/index.html'),
+        ('docs', 'Every repository', 'docs/guidance/repositories.html'),
         ('try', 'Try it in the browser', 'try/index.html'),
         ('api', 'HTTP API', 'api/index.html'),
         ('docs', 'Credentials', 'docs/credentials.html'),
@@ -4355,6 +4367,13 @@ def write_scoped_llms(pages):
 - A file explorer with raw always available, in the same vault: "raw is the point, a catalog
   that asks to be trusted has to be readable in the form it was written."
 - Decks read live out of a vault onto a site: /demos/vaults/aiuc-1-conformance/decks/index.md
+
+## Not a vault? Every repository, one page
+What every repository in the estate carries regardless of kind, a site, a tool, an app: the
+brief in full (written by a person or an agent, accepted by a person), the reality and
+corrections files, one version going up on every push, the gate, the release discipline, the
+review/ folder with its self set, the code rules by reference to coding.sgit.ai, credentials,
+and two checklists. /docs/guidance/repositories.md
 
 ## Follow the edge. The answer is often on another domain
 This site covers vaults and sgit, and deliberately stops there. An agent that stops at this

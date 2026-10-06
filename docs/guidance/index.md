@@ -2,7 +2,7 @@
 
 > The first page to read before building, publishing or changing a vault. The practices that get repeated most, pick the surface, do not rebuild what the platform has, publish read keys never vault keys, version everything and show the version, plus routes to the brief that answers each question, and out to coding.sgit.ai, nfrs.sgit.ai and graphs.sgit.ai.
 
-*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.6.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/guidance/index.html> · site v0.6.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,8 @@
 The first page to read before building, publishing or changing a vault, human or agent. It is deliberately short and made almost entirely of edges: the practices that get repeated most, and a route to the page that actually answers each question. If you are an agent and you fetch one thing, fetch [`/docs/guidance/llms.txt`](llms.txt), which is this page in the form you prefer.
 
 **The one-minute version.** Pick your [surface](../surfaces.md) first, it changes every other answer. **Do not build what the platform already has**: markdown, file trees and page layouts are free. **Publish a read key, never a vault key.** **Version everything and show the version**, linked to what changed. **Anything rendered stays one click from the bytes it was rendered from.**
+
+**Not a vault?** This page covers vaults and stops there. What every repository in the estate carries, a site, a tool or an app, the brief, the reality and corrections files, the version, the gate, the review folder, the code rules and the credentials rules, is on [**Every sgit repository →**](repositories.md), the page above this one.
 
 ## Read in this order
 
