@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.75 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.76 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -23,15 +23,15 @@ Four of **41 published vaults**. Each opens with a read key printed on its page,
 
 ## Start with an argument, not a menu
 
-The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 30 so far, three newest here.
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 32 so far, three newest here.
 
-[2026-10-05Graphs & knowledge6 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](articles/how-much-of-this-did-i-write.md) [2026-10-05Graphs & knowledge10 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](articles/if-somebody-built-a-company-on-code-review.md) [2026-10-05Agents & policy8 threads**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.](articles/send-an-agent-not-a-spreadsheet.md)
+[2026-10-06Agents & policy10 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](articles/a-personal-agent-that-keeps-your-secrets.md) [2026-10-06Agents & policy12 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](articles/the-agent-team-as-it-runs.md) [2026-10-05Graphs & knowledge6 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](articles/how-much-of-this-did-i-write.md)
 
+- [If somebody built a company on code review](articles/if-somebody-built-a-company-on-code-review.md) · 2026-10-05
+- [Send an agent, not a spreadsheet](articles/send-an-agent-not-a-spreadsheet.md) · 2026-10-05
 - [The identity we wanted to give the agents](articles/the-identity-we-wanted-to-give-the-agents.md) · 2026-10-05
 - [The investigation GitHub owes its customers](articles/the-investigation-github-owes-its-customers.md) · 2026-10-05
 - [The wall under the reply](articles/the-wall-under-the-reply.md) · 2026-10-04
-- [Code review as a fractal semantic graph](articles/code-review-as-a-fractal-semantic-graph.md) · 2026-10-03
-- [Memory is not a spectator sport](articles/memory-is-not-a-spectator-sport.md) · 2026-10-03
 
 [All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
@@ -55,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-233site releases, each verified live before it was called done
+234site releases, each verified live before it was called done
 
 41vaults published with a deliberately public read key
 

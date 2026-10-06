@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-06",
-  "site_version": "v0.6.75",
+  "site_version": "v0.6.76",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -54,6 +54,584 @@
     "produces"
   ],
   "articles": [
+    {
+      "slug": "a-personal-agent-that-keeps-your-secrets",
+      "title": "A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser",
+      "date": "2026-10-06",
+      "updated": "2026-10-06",
+      "url": "https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html",
+      "markdown": "https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.md",
+      "card": "https://sgit.ai/articles/cards/a-personal-agent-that-keeps-your-secrets.webp",
+      "teaser": "The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.",
+      "topics": [
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "personal-agents",
+        "agent-behaviour-policy",
+        "encryption",
+        "confidential-computing",
+        "enclaves",
+        "webgpu",
+        "privacy",
+        "data-sovereignty",
+        "vaults",
+        "sgit",
+        "riskmandate",
+        "meta-muse",
+        "openclaw",
+        "article"
+      ],
+      "links_out": [
+        "the-agent-team-as-it-runs",
+        "footprint-and-blast-radius",
+        "ultimate-insider-three-collisions",
+        "what-sgit-is",
+        "six-agents-one-inbox",
+        "the-identity-we-wanted-to-give-the-agents",
+        "memory-is-not-a-spectator-sport",
+        "introducing-fractal-semantic-graphs",
+        "connector-twin-before-you-deploy-an-agent"
+      ],
+      "links_in": [
+        "the-agent-team-as-it-runs"
+      ],
+      "graph": {
+        "slug": "a-personal-agent-that-keeps-your-secrets",
+        "teaser": "The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.",
+        "topics": [
+          "agents-and-policy",
+          "vaults-and-method"
+        ],
+        "core_idea": "The personal agent became a product category in 2026, an always-on agent with a cloud computer, memory as files and connectors into a person's life; read through RiskMandate's behaviour policy the products differ most on the barrier, with Meta's Sentinel a boundary on actions and most others settings, while the mandate is unwritten and liability sits with the user; read for data sovereignty most sit in the vendor's corner, with Meta's own engineers saying today's protection is policy not cryptography and Apple's Private Cloud Compute the published design that does most; a page per person is a memory about non-users with no route to it; the vendors' memory and this site's CRM converged on files, no database and a page per person, so the privacy question is who holds the keys, not architecture; a privacy-first design puts memory in vaults the host holds as ciphertext, a behaviour policy as the permission authority, compute in the browser or an attested enclave with a per-task key released by the user's device and destroyed after, the frontier model only for the step that needs it, and a folder per person the person can read; what exists and what does not is stated, and the question of who gives the mandate over information is left for its own document.",
+        "nodes": [
+          {
+            "id": "category-arrived",
+            "label": "The year the agent got a computer",
+            "kind": "example",
+            "summary": "Spark in May, Scout in June, Siri AI in June, Grok Bot in August, Muse in September, dots in September, Alexa+ in February, Cowork from January; OpenClaw, self-hosted and open source, as the acknowledged origin of the shape."
+          },
+          {
+            "id": "openclaw-lineage",
+            "label": "The shape came from a self-hosted project",
+            "kind": "claim",
+            "summary": "A personal agent as a small operating system of files, built by one developer for himself, then productised; Meta confirmed Muse was heavily inspired by it."
+          },
+          {
+            "id": "lens-actions",
+            "label": "Lens one: what stops the agent",
+            "kind": "method",
+            "summary": "Reach, mandate, gap, barriers and footprint applied to products: the reach is the user's life, the mandate is unwritten, liability sits with the user, and the barriers differ."
+          },
+          {
+            "id": "sentinel-boundary",
+            "label": "A separate permission authority is a boundary",
+            "kind": "claim",
+            "summary": "Muse's Sentinel decides every connector action and every byte of egress outside the agent's reach, stronger on actions than the team's drafts-only rule; rules and approval prompts elsewhere are settings."
+          },
+          {
+            "id": "blast-radius-shown",
+            "label": "The blast radius was demonstrated",
+            "kind": "example",
+            "summary": "A Mac zero-day redirecting dictation, a crafted link exfiltrating from a browser agent, exposed self-hosted endpoints and malicious skills: the reach exercised by someone other than the user."
+          },
+          {
+            "id": "lens-data",
+            "label": "Lens two: who can read what it knows",
+            "kind": "method",
+            "summary": "Where it rests, encrypted by whom, who processes, who can be compelled, what trains, what deletes; the products answer the encryption question least."
+          },
+          {
+            "id": "policy-not-crypto",
+            "label": "Today's protection is policy, not cryptography",
+            "kind": "claim",
+            "summary": "Meta's engineers say the Secure VM does not prevent Meta accessing data to support, secure or operate the service; the Confidential VM with a user-held key is with trusted testers and promised for later in the year."
+          },
+          {
+            "id": "pcc-design",
+            "label": "The published design that does most",
+            "kind": "example",
+            "summary": "Apple's Private Cloud Compute: stateless, attested nodes, the device wrapping keys only to measurements in a public log, two independent roots of trust."
+          },
+          {
+            "id": "non-users",
+            "label": "The people who never signed up",
+            "kind": "question",
+            "summary": "A page per person is a memory about non-users; the vendor says such information is not linked to an account and rights can only be honoured where it is; the ICO and the CNIL have named the risk."
+          },
+          {
+            "id": "what-pays",
+            "label": "What pays for it, and how much to trust",
+            "kind": "claim",
+            "summary": "Transaction fees, subscriptions, hardware, a foundation; companies whose other products are advertising and engagement, a policy keeping the agent's data from ads, and a personal arithmetic of reach against benefit."
+          },
+          {
+            "id": "convergence",
+            "label": "Same shape, different keys",
+            "kind": "claim",
+            "summary": "A vendor's memory and the team's CRM both arrived at files, no database and a page per person filled from evidence; the privacy question is who holds the keys, who reads, what stops the agent and what pays, not architecture."
+          },
+          {
+            "id": "design-vaults",
+            "label": "Memory in vaults the host cannot read",
+            "kind": "method",
+            "summary": "Every file encrypted client-side, the host holding ciphertext; vault key, one-way read key and append lane as three reaches; one vault per scope until scoped reads exist; nothing trains because nothing can read."
+          },
+          {
+            "id": "design-authority",
+            "label": "The behaviour policy as the permission authority",
+            "kind": "method",
+            "summary": "A separate authority enforcing a written policy: measured reach, written mandate, typed barriers, the send kept with the person for the irreversible, the footprint read from the vault afterwards."
+          },
+          {
+            "id": "design-compute",
+            "label": "Browser first, enclave second, frontier last",
+            "kind": "method",
+            "summary": "Small models in the browser for triage and summaries over a locally decrypted vault; an attested enclave with GPUs for what the device cannot do; the frontier model only for the step that needs it with no standing access."
+          },
+          {
+            "id": "design-key-release",
+            "label": "Temporary access to one slice, with a public key",
+            "kind": "method",
+            "summary": "The device scopes a task to files, verifies the enclave's attestation, wraps a fresh key to its public key, the enclave decrypts in memory and encrypts results back, the key dies with the task, and the grant is a file in the vault."
+          },
+          {
+            "id": "residual-limits",
+            "label": "What the operator still sees",
+            "kind": "question",
+            "summary": "Timing and sizes, vendor-controlled attestation roots, physical memory-bus attacks, and a key policy a support ticket can restore: the design's own gap, to be typed honestly."
+          },
+          {
+            "id": "exists-not",
+            "label": "What exists today, and what does not",
+            "kind": "question",
+            "summary": "Vaults, read keys, lanes, the policy and the team exist; the permission authority, the enclave image, the device-side key release, scoped reads, revocation and signed authorship do not; a five-step build order."
+          },
+          {
+            "id": "mandate-underneath",
+            "label": "Who gives the mandate over information?",
+            "kind": "question",
+            "summary": "Information given to a person was not given to an agent or to what it passes it to; a different question from who holds the key, left for its own document, with the mechanisms it would need already named."
+          }
+        ],
+        "edges": [
+          {
+            "from": "category-arrived",
+            "to": "openclaw-lineage",
+            "rel": "depends-on"
+          },
+          {
+            "from": "category-arrived",
+            "to": "lens-actions",
+            "rel": "leads-to"
+          },
+          {
+            "from": "category-arrived",
+            "to": "lens-data",
+            "rel": "leads-to"
+          },
+          {
+            "from": "lens-actions",
+            "to": "sentinel-boundary",
+            "rel": "example-of"
+          },
+          {
+            "from": "lens-actions",
+            "to": "blast-radius-shown",
+            "rel": "example-of"
+          },
+          {
+            "from": "lens-data",
+            "to": "policy-not-crypto",
+            "rel": "example-of"
+          },
+          {
+            "from": "lens-data",
+            "to": "pcc-design",
+            "rel": "example-of"
+          },
+          {
+            "from": "policy-not-crypto",
+            "to": "pcc-design",
+            "rel": "contrasts"
+          },
+          {
+            "from": "lens-data",
+            "to": "non-users",
+            "rel": "leads-to"
+          },
+          {
+            "from": "lens-data",
+            "to": "what-pays",
+            "rel": "leads-to"
+          },
+          {
+            "from": "openclaw-lineage",
+            "to": "convergence",
+            "rel": "leads-to"
+          },
+          {
+            "from": "convergence",
+            "to": "design-vaults",
+            "rel": "leads-to"
+          },
+          {
+            "from": "sentinel-boundary",
+            "to": "design-authority",
+            "rel": "leads-to"
+          },
+          {
+            "from": "pcc-design",
+            "to": "design-key-release",
+            "rel": "leads-to"
+          },
+          {
+            "from": "design-vaults",
+            "to": "design-compute",
+            "rel": "depends-on"
+          },
+          {
+            "from": "design-compute",
+            "to": "design-key-release",
+            "rel": "depends-on"
+          },
+          {
+            "from": "design-key-release",
+            "to": "residual-limits",
+            "rel": "leads-to"
+          },
+          {
+            "from": "design-authority",
+            "to": "exists-not",
+            "rel": "leads-to"
+          },
+          {
+            "from": "residual-limits",
+            "to": "exists-not",
+            "rel": "leads-to"
+          },
+          {
+            "from": "non-users",
+            "to": "mandate-underneath",
+            "rel": "leads-to"
+          },
+          {
+            "from": "exists-not",
+            "to": "mandate-underneath",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "the-agent-team-as-it-runs",
+            "footprint-and-blast-radius",
+            "six-agents-one-inbox",
+            "ultimate-insider-three-collisions",
+            "the-identity-we-wanted-to-give-the-agents",
+            "memory-is-not-a-spectator-sport",
+            "introducing-fractal-semantic-graphs",
+            "what-sgit-is",
+            "connector-twin-before-you-deploy-an-agent"
+          ],
+          "pages": [
+            "docs/credentials.html",
+            "security/index.html",
+            "docs/limitations.html"
+          ],
+          "sites": [
+            "https://riskmandate.ai/abp.html",
+            "https://muse.ai/privacy",
+            "https://security.apple.com/blog/private-cloud-compute/",
+            "https://docs.openclaw.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "The privacy question is not a question of architecture. The files can be the same files.",
+            "why": "Why the convergence on file-based memory is good news: what differs is who holds the keys."
+          },
+          {
+            "text": "Who gives the mandate over a piece of information is a different question from who holds the key.",
+            "why": "The question the design does not answer, and the mechanisms it would need."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "the-agent-team-as-it-runs",
+      "title": "The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from",
+      "date": "2026-10-06",
+      "updated": "2026-10-06",
+      "url": "https://sgit.ai/articles/the-agent-team-as-it-runs.html",
+      "markdown": "https://sgit.ai/articles/the-agent-team-as-it-runs.md",
+      "card": "https://sgit.ai/articles/cards/the-agent-team-as-it-runs.webp",
+      "teaser": "Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.",
+      "topics": [
+        "agents-and-policy",
+        "vaults-and-method"
+      ],
+      "tags": [
+        "agents",
+        "agent-behaviour-policy",
+        "riskmandate",
+        "vaults",
+        "sgit",
+        "email-fs",
+        "crm",
+        "provenance",
+        "encryption",
+        "privacy",
+        "data-classes",
+        "fractal-semantic-graphs",
+        "claude",
+        "google-workspace",
+        "article"
+      ],
+      "links_out": [
+        "replicating-the-agentic-inbox",
+        "six-agents-one-inbox",
+        "a-personal-agent-that-keeps-your-secrets",
+        "footprint-and-blast-radius",
+        "every-risk-is-already-accepted",
+        "custom-uis-are-not-the-exception",
+        "introducing-fractal-semantic-graphs",
+        "memory-is-not-a-spectator-sport",
+        "connector-twin-before-you-deploy-an-agent",
+        "the-wall-under-the-reply",
+        "the-identity-we-wanted-to-give-the-agents"
+      ],
+      "links_in": [
+        "a-personal-agent-that-keeps-your-secrets"
+      ],
+      "graph": {
+        "slug": "the-agent-team-as-it-runs",
+        "teaser": "Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.",
+        "topics": [
+          "agents-and-policy",
+          "vaults-and-method"
+        ],
+        "core_idea": "A running team of twelve Claude agents is described as a system and as a set of properties: each agent a role on a dedicated account with a behaviour policy; encrypted vaults the host cannot read as the only memory; messages between agents as email files in a mailroom; a CRM of one folder per person with provenance and hashes; a conductor with a security role first and last; drafts only, a person sends; identity and encryption as the strong barriers and policy as the weak one, said plainly; three classes of information, public, private-ish and personal, with the vaults built to refuse the third and rules scoped per customer or written for the recipient; each piece mapped to the idea on the site that argued for it; and the open question of who gives the mandate over information.",
+        "nodes": [
+          {
+            "id": "the-picture",
+            "label": "One line: phone, sessions, vaults, drafts, people",
+            "kind": "concept",
+            "summary": "The person talks from a phone; agents work in cloud sessions, keep everything as encrypted files, leave email as drafts; the person sends; a conductor runs the team four times a day."
+          },
+          {
+            "id": "account-blast-radius",
+            "label": "The account is the blast radius",
+            "kind": "claim",
+            "summary": "A dedicated Workspace, a dedicated Claude Team account, vault keys per session and a separate personal agent; a mistake stays inside one account, and this is the first control because it depends on nobody behaving."
+          },
+          {
+            "id": "twelve-roles",
+            "label": "Twelve agents, one focus each",
+            "kind": "concept",
+            "summary": "Each agent is a role with a brief and a behaviour policy; eleven of twelve policies forbid sending; one role reads the mailbox, one writes drafts into it, none sends."
+          },
+          {
+            "id": "email-fs",
+            "label": "Email, but as files",
+            "kind": "method",
+            "summary": "Agents drop .eml files into each other's mailroom folder in the shared vault; the recipient moves them to inbox and done; every message has a sender, recipient, kind and references; the vault keeps every version."
+          },
+          {
+            "id": "conductor",
+            "label": "The conductor and the session steps",
+            "kind": "method",
+            "summary": "Four runs a day, security first and last, one step per agent of up to twelve minutes; a session checks for a hold, snapshots, pulls, works, leak-checks, commits and ends with a card measured from the transcript."
+          },
+          {
+            "id": "crm-folder",
+            "label": "Memory is one folder per person",
+            "kind": "method",
+            "summary": "Plain JSON and Markdown: a record, an append-only ledger, every message with provenance and a hash, meeting notes, a graph of interests against what meets them, a generated summary; no database."
+          },
+          {
+            "id": "four-rules",
+            "label": "The rules never negotiated",
+            "kind": "claim",
+            "summary": "Keys never in a file; no agent sends, with one named exception and a hold behind it; no agent changes a schedule; create anywhere, edit your own."
+          },
+          {
+            "id": "barriers-graded",
+            "label": "Barriers typed honestly",
+            "kind": "claim",
+            "summary": "Identity and encryption are strong by construction; grant and record are medium; policy is weak and many rows rely on it; the honest column is where the next tooling goes."
+          },
+          {
+            "id": "security-properties",
+            "label": "The security properties, as properties",
+            "kind": "concept",
+            "summary": "The host cannot read the memory; a reader cannot write; a writer can be given only a slot; keys never touch a file; a leaked write key means a new vault; the team can be stopped; inbound is data; everything is read afterwards."
+          },
+          {
+            "id": "three-classes",
+            "label": "Public, private-ish, personal",
+            "kind": "claim",
+            "summary": "The vaults hold public and private-ish information and refuse personal; most of what a company agent handles is public or nearly so, which bounds the worst case before encryption is counted."
+          },
+          {
+            "id": "rules-per-customer",
+            "label": "Rules per customer, rules for the recipient",
+            "kind": "method",
+            "summary": "A policy per agent and a folder per person let a rule be scoped to one relationship or written to protect the person on the other end: capture only what the work needs, show them what is held."
+          },
+          {
+            "id": "files-graphs-state-machine",
+            "label": "Files, graphs and a state machine",
+            "kind": "concept",
+            "summary": "Every piece of state is a file; the CRM graph and the team are the same fractal grammar at two altitudes; each role reads state, does one kind of work, writes state and stops."
+          },
+          {
+            "id": "pieces-mapped",
+            "label": "Every piece has an argument on this site",
+            "kind": "example",
+            "summary": "Dedicated accounts, behaviour policies, drafts only, the session card, the twin, graded barriers, vaults, lanes, rotation, fractal graphs, memory with provenance, interfaces from files, the agents' identity."
+          },
+          {
+            "id": "not-working",
+            "label": "What is not working yet",
+            "kind": "question",
+            "summary": "Two registers disagree; vault-to-vault messaging needs a person; one agent holds most open work; no daily brief channel; most barriers are policy-only because the platform cannot remove send tools per agent."
+          },
+          {
+            "id": "mandate-over-information",
+            "label": "Who gives the mandate over information?",
+            "kind": "question",
+            "summary": "Something sent to a person was not sent to a team of agents or to what they pass it to next; the setup holds less and says what it holds; the question gets a document of its own."
+          }
+        ],
+        "edges": [
+          {
+            "from": "the-picture",
+            "to": "account-blast-radius",
+            "rel": "depends-on"
+          },
+          {
+            "from": "the-picture",
+            "to": "twelve-roles",
+            "rel": "depends-on"
+          },
+          {
+            "from": "twelve-roles",
+            "to": "email-fs",
+            "rel": "depends-on"
+          },
+          {
+            "from": "email-fs",
+            "to": "conductor",
+            "rel": "leads-to"
+          },
+          {
+            "from": "twelve-roles",
+            "to": "crm-folder",
+            "rel": "produces"
+          },
+          {
+            "from": "twelve-roles",
+            "to": "four-rules",
+            "rel": "depends-on"
+          },
+          {
+            "from": "four-rules",
+            "to": "barriers-graded",
+            "rel": "leads-to"
+          },
+          {
+            "from": "barriers-graded",
+            "to": "security-properties",
+            "rel": "extends"
+          },
+          {
+            "from": "account-blast-radius",
+            "to": "security-properties",
+            "rel": "example-of"
+          },
+          {
+            "from": "security-properties",
+            "to": "three-classes",
+            "rel": "leads-to"
+          },
+          {
+            "from": "three-classes",
+            "to": "rules-per-customer",
+            "rel": "leads-to"
+          },
+          {
+            "from": "crm-folder",
+            "to": "files-graphs-state-machine",
+            "rel": "example-of"
+          },
+          {
+            "from": "conductor",
+            "to": "files-graphs-state-machine",
+            "rel": "example-of"
+          },
+          {
+            "from": "files-graphs-state-machine",
+            "to": "pieces-mapped",
+            "rel": "leads-to"
+          },
+          {
+            "from": "barriers-graded",
+            "to": "not-working",
+            "rel": "leads-to"
+          },
+          {
+            "from": "rules-per-customer",
+            "to": "mandate-over-information",
+            "rel": "leads-to"
+          },
+          {
+            "from": "three-classes",
+            "to": "mandate-over-information",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "replicating-the-agentic-inbox",
+            "six-agents-one-inbox",
+            "footprint-and-blast-radius",
+            "connector-twin-before-you-deploy-an-agent",
+            "every-risk-is-already-accepted",
+            "introducing-fractal-semantic-graphs",
+            "memory-is-not-a-spectator-sport",
+            "the-wall-under-the-reply",
+            "the-identity-we-wanted-to-give-the-agents",
+            "custom-uis-are-not-the-exception",
+            "a-personal-agent-that-keeps-your-secrets"
+          ],
+          "pages": [
+            "docs/credentials.html",
+            "docs/append-lane-messaging.html",
+            "docs/agent-contact.html",
+            "docs/briefs/code-review-graphs-in-the-repository.html"
+          ],
+          "sites": [
+            "https://riskmandate.ai/abp.html"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "A policy can ask an agent not to look; an account boundary means there is nothing there to see.",
+            "why": "Why the dedicated account is the first control and not the policy."
+          },
+          {
+            "text": "A memory that can be shown to its subject is a memory that has been kept to what can be shown.",
+            "why": "The privacy design showing through the product design: the what-we-know-about-you pack."
+          },
+          {
+            "text": "Something a person sent to one of us was sent to a person. It was not sent to a team of agents.",
+            "why": "The question the setup leaves open, stated so it can be worked on."
+          }
+        ]
+      }
+    },
     {
       "slug": "how-much-of-this-did-i-write",
       "title": "How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was",
@@ -910,7 +1488,10 @@
         "footprint-and-blast-radius",
         "ultimate-insider-three-collisions"
       ],
-      "links_in": [],
+      "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs"
+      ],
       "graph": {
         "slug": "the-identity-we-wanted-to-give-the-agents",
         "teaser": "A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.",
@@ -1403,6 +1984,7 @@
         "six-agents-one-inbox"
       ],
       "links_in": [
+        "the-agent-team-as-it-runs",
         "how-much-of-this-did-i-write",
         "the-identity-we-wanted-to-give-the-agents"
       ],
@@ -1930,6 +2512,8 @@
         "price-it-then-give-it-away"
       ],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs",
         "how-much-of-this-did-i-write",
         "the-wall-under-the-reply"
       ],
@@ -2208,6 +2792,8 @@
         "six-agents-one-inbox"
       ],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs",
         "if-somebody-built-a-company-on-code-review",
         "send-an-agent-not-a-spreadsheet",
         "the-identity-we-wanted-to-give-the-agents",
@@ -2732,6 +3318,7 @@
         "ultimate-insider-three-collisions"
       ],
       "links_in": [
+        "the-agent-team-as-it-runs",
         "how-much-of-this-did-i-write",
         "the-identity-we-wanted-to-give-the-agents",
         "the-wall-under-the-reply",
@@ -3022,6 +3609,7 @@
         "ultimate-insider-three-collisions"
       ],
       "links_in": [
+        "the-agent-team-as-it-runs",
         "the-wall-under-the-reply",
         "code-review-as-a-fractal-semantic-graph",
         "memory-is-not-a-spectator-sport",
@@ -3315,6 +3903,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
         "the-identity-we-wanted-to-give-the-agents",
         "the-investigation-github-owes-its-customers",
         "footprint-and-blast-radius",
@@ -3844,6 +4433,8 @@
         "replicating-the-agentic-inbox"
       ],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs",
         "if-somebody-built-a-company-on-code-review",
         "send-an-agent-not-a-spreadsheet",
         "the-identity-we-wanted-to-give-the-agents",
@@ -4656,6 +5247,8 @@
       ],
       "links_out": [],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs",
         "if-somebody-built-a-company-on-code-review",
         "send-an-agent-not-a-spreadsheet",
         "footprint-and-blast-radius",
@@ -4919,6 +5512,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "the-agent-team-as-it-runs",
         "send-an-agent-not-a-spreadsheet",
         "the-investigation-github-owes-its-customers",
         "code-review-as-a-fractal-semantic-graph",
@@ -5935,6 +6529,8 @@
       ],
       "links_out": [],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
+        "the-agent-team-as-it-runs",
         "how-much-of-this-did-i-write",
         "if-somebody-built-a-company-on-code-review",
         "code-review-as-a-fractal-semantic-graph",
@@ -7012,6 +7608,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "a-personal-agent-that-keeps-your-secrets",
         "nineteen-sites"
       ],
       "graph": {

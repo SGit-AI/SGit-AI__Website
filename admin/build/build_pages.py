@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.75'
+SITE_VERSION = 'v0.6.76'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.75', '2026-10-06', 'this release',
+    ('v0.6.76', '2026-10-06', 'this release',
+     "TWO ARTICLES ON PERSONAL AGENTS. The first describes the RiskMandate agent team as it runs, from the "
+     "agents' own field notes: twelve agents on dedicated accounts, encrypted vaults as the only memory, "
+     "messages as files, a CRM of one folder per person, a conductor with security first and last, and a "
+     "mailbox nobody sends from; then the security properties as properties, three classes of information "
+     "the vaults hold or refuse, and every piece mapped to the idea on this site that argued for it. The "
+     "second reads the 2026 personal agents, Muse, dots, Spark, Autopilot, Alexa+, Siri AI, Cowork and "
+     "OpenClaw, through the behaviour policy and through data sovereignty, with each fact dated and marked as "
+     "vendor statement or report, and then designs a privacy-first personal agent on vaults, a policy as the "
+     "permission authority, browser compute first and an attested enclave with per-task key release second. "
+     "Thirteen figures.",),
+    ('v0.6.75', '2026-10-06', 'git 4733eaf8',
      "EVERY REPOSITORY, ONE PAGE. The author asked whether a central guidance existed for how the estate's "
      "sites, tools and code are built, and the check found four partial ones and no page above them. "
      "/docs/guidance/repositories.html is that page: what every repository carries regardless of kind, the "
