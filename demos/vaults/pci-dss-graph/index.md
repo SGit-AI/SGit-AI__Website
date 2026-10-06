@@ -2,7 +2,7 @@
 
 > The Payment Card Industry Data Security Standard v4.0.1 as a typed graph: six goals, twelve requirements, 63 sections, 85 individual requirement identifiers, nine appendices, 21 terms, eight roles, assessment artefacts, merchant levels and the four dates, joined by 367 edges that each read in both directions. The standard's licensed text is deliberately not in it; identifiers, quoted titles and marked paraphrases are, every node with provenance and every source hashed, plus a tool for licence holders to add the text locally. Built to be connected to the other graphs on this site.
 
-*Source: <https://sgit.ai/demos/vaults/pci-dss-graph/index.html> · site v0.6.73 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/pci-dss-graph/index.html> · site v0.6.74 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

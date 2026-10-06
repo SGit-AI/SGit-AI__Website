@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.73'
+SITE_VERSION = 'v0.6.74'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.73', '2026-10-05', 'this release',
+    ('v0.6.74', '2026-10-06', 'this release',
+     "THE REVIEW FOLDER, AS A BRIEF. A build brief, written for secrets.sgit.ai first and for every agent that "
+     "writes code after that, turns the two code review articles into a thing a repository carries: a review "
+     "folder of layered graphs, intent written top down from the brief and the code derived bottom up from the "
+     "syntax tree, joined, every commit read upwards to the stories it can reach, and one self-contained page "
+     "that walks from a story to a source line and back. New projects start at full coverage from the first "
+     "commit; existing projects start from the changes. The tool is held to the same standard as the code, with "
+     "a second review set that reviews the tool itself. Linked from both code review articles where they said "
+     "the review did not exist yet.",),
+    ('v0.6.73', '2026-10-05', 'git dc11503b',
      "SAY WHAT WAS FOUND, NOT WHAT NOBODY HAS. A review of absolutes in the four most recent articles, at the "
      "author's request: 'nobody has counted', 'impossible for a buyer', 'never scaled', 'every customer' and "
      "the like are replaced with what the evidence supports (few, rarely, I know of no public count, every "

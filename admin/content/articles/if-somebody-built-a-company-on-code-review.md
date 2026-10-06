@@ -1,11 +1,11 @@
 ---
 title: If somebody built a company on code review: how I would do it, and why it is only now possible
 date: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html
 summary: A reader of the code review article replied with seven good questions, and a voice memo of mine answered them with a change of frame: if somebody were building a company on code review, this is how I would do it. The answers turn on a distinction the first article did not make clearly enough. What is fractal in a fractal semantic graph is the grammar; which layers exist is decided by each company, and a product that standardises them away loses the thing it was meant to review. Two things make the rest possible only now. One technology can read every layer, from strategy to bytecode, so the graphs can be built at every altitude and built close to reality. And that moves code review from an art of opinion and power to a science of facts, provided the models are used to build, prune and maintain the graphs and then taken out of the line. From there: a projected graph from stories before the code exists and a derived graph from the code, with the review as the join; a refactor as relative to the layer held still, correcting the first article; the deploy as a layer; who reads the code at each stage of evolution, after Wardley; reshaping a change by reach; budgets as the objective good enough and the five whys as the loop; behaviour policies for the agents doing the work; and open source as the only model that fits.
-version: v0.6.64
+version: v0.6.74
 license: https://creativecommons.org/licenses/by/4.0/
 tags: code-review, fractal-semantic-graphs, graphs, wardley-maps, agent-behaviour-policies, explorer-villager-town-planner, example-mapping, refactoring, blast-radius, five-whys, open-source, startups, ai-generated-code, article
 status: published
@@ -199,7 +199,7 @@ Three corrections to the first article, so they are in one place. The sentence a
 
 Two things the vault page said and the article did not, now reconciled. The vault page describes the fix shape as "bodies moved and shapes still and a new assertion" and calls a refactor "its mirror image"; under the held-layer rule both are changes that hold the class shapes, and the difference is that the fix adds an assertion and moves a story, while the refactor adds none and moves none. The page's wording stays, with this paragraph as the gloss.
 
-What is open. The projected graph has not been built for a real project from a brief forward; this site's own briefs and reality files are the nearest thing and they are reconciled by hand. Rules and examples as the top layer, matched to tests by execution, is on the vault's list and has moved up it. The deploy layer has not been derived for any repository here. And the thing the first article ended on is still true: the review itself, the thing that sits on a change and shows it at every altitude, does not exist yet. What exists is a vault with the layers, a reader's seven questions, and this answer to them.
+What is open. The projected graph has not been built for a real project from a brief forward; this site's own briefs and reality files are the nearest thing and they are reconciled by hand. Rules and examples as the top layer, matched to tests by execution, is on the vault's list and has moved up it. The deploy layer has not been derived for any repository here. And the thing the first article ended on is still true: the review itself, the thing that sits on a change and shows it at every altitude, does not exist yet. What exists is a vault with the layers, a reader's seven questions, and this answer to them. The day after this was published, the requirement for it was written down as a build brief, [Code review graphs in the repository](/docs/briefs/code-review-graphs-in-the-repository.html): a folder a repository carries rather than a vault, full coverage from the first commit for new projects and delta first for existing ones, a page from story to source line and back, and the tool reviewed by a second copy of itself.
 
 ## The article as one page, by another model
 
@@ -210,6 +210,7 @@ As with the two articles before it, Dinis fed the published text to ChatGPT and 
 ## Threads woven here
 
 - [Code review as a fractal semantic graph](/articles/code-review-as-a-fractal-semantic-graph.html), the article this one answers and corrects, and its worked example, [Code Review Graphs](/demos/vaults/code-review-graphs/index.html).
+- [Code review graphs in the repository](/docs/briefs/code-review-graphs-in-the-repository.html), the build brief that followed: the review folder, the two modes, the navigator page and the tool reviewing itself, written for secrets.sgit.ai and for every agent that writes code.
 - [Introducing fractal semantic graphs](/articles/introducing-fractal-semantic-graphs.html), the grammar: nodes, edges, altitudes and the move between them.
 - [The SaaS apocalypse will be decided by inertia, not by AI](/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html), the explorer, villager and town planner handover as this site has used it.
 - [Footprint and blast radius](/articles/footprint-and-blast-radius.html), the same measure applied to agents rather than code, and [Six agents, one inbox](/articles/six-agents-one-inbox.html), the behaviour policies the reviewing agents would run under.

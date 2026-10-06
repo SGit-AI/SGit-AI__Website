@@ -146,6 +146,7 @@ What is defensible is the record and the loop, not the model. Models will be com
 - [Custom UIs are not the exception](/articles/custom-uis-are-not-the-exception.html): interfaces built from graphs in an afternoon, which is what the review surface will be.
 - [Every risk is already accepted](/articles/every-risk-is-already-accepted.html): the risk graph and the explorer built on it, the same method one domain over.
 - [Code Review Graphs](/demos/vaults/code-review-graphs/index.html): the worked example, as a vault with its read key.
+- [If somebody built a company on code review](/articles/if-somebody-built-a-company-on-code-review.html): the follow-up that answers a reader's seven questions and corrects this article on refactoring; and [Code review graphs in the repository](/docs/briefs/code-review-graphs-in-the-repository.html), the build brief that asks for the review this article said did not exist yet, as a folder a repository carries.
 - [Fractal semantic graphs, the demo page](/demos/fractal-graphs/index.html), and the [ThreatModCon 2025 vault](/demos/vaults/threatmodcon-2025/index.html), whose ladder already runs from customer to compute.
 - [coding.sgit.ai](https://coding.sgit.ai/) and [nfrs.sgit.ai](https://nfrs.sgit.ai/): the two sites that measure this site's own code and practice, and the hypothesis that quality is visible as shape.
 
