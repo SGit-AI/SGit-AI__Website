@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-06",
-  "site_version": "v0.6.79",
+  "site_version": "v0.6.80",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -882,13 +882,13 @@
     },
     {
       "slug": "the-mandate-stack",
-      "title": "The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there",
+      "title": "The Mandate Stack: a multi-agent system in production, layer by layer",
       "date": "2026-10-06",
       "updated": "2026-10-06",
       "url": "https://sgit.ai/articles/the-mandate-stack.html",
       "markdown": "https://sgit.ai/articles/the-mandate-stack.md",
       "card": "https://sgit.ai/articles/cards/the-mandate-stack.webp",
-      "teaser": "The record says agent projects stall for five reasons. One multi-agent system runs anyway: eight layers, one written mandate per agent, and one human who sends.",
+      "teaser": "A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.",
       "topics": [
         "agents-and-policy",
         "graphs-and-knowledge"
@@ -906,6 +906,8 @@
         "governance",
         "human-in-the-loop",
         "production",
+        "wardley-maps",
+        "mermaid",
         "claude",
         "google-workspace",
         "article"
@@ -934,30 +936,24 @@
       "links_in": [],
       "graph": {
         "slug": "the-mandate-stack",
-        "teaser": "The record says agent projects stall for five reasons. One multi-agent system runs anyway: eight layers, one written mandate per agent, and one human who sends.",
+        "teaser": "A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.",
         "topics": [
           "agents-and-policy",
           "graphs-and-knowledge"
         ],
-        "core_idea": "Between June 2025 and July 2026 the published record on agentic AI is a record of pilots that stall for unclear value, cost, trust, security and governance; RiskMandate runs its business with about fifteen agents and one person anyway, and the agent that runs its CRM described the setup as eight layers, rented compute and channels, encrypted vaults as shared memory with mail as files and append lanes, a vault per domain, semantic graphs over people, teams and policies, a scheduled conductor with security first and last, written behaviour policies with grant, mandate, gap and barrier, and a human who holds the one irreversible step; the loop that makes it hold treats the draft as a release candidate for the whole pipeline with the recipient's reply closing it, and each reason the record gives for failure maps to a mechanism in the stack; the name is a working one and nothing planned is included.",
+        "core_idea": "RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM described the setup as eight layers: rented compute and channels, encrypted vaults as shared memory with mail as files and append lanes, a vault per domain, semantic graphs over people, contexts, teams and policies, a scheduled conductor with security first and last, written behaviour policies with grant, mandate, gap and barrier, and a human who holds the one irreversible step; the world writes in from the left and nothing leaves without the person on the right; the loop that makes it hold treats the draft as a release candidate for the whole pipeline with the recipient's reply closing it; two Wardley maps show what the team is commoditising (shared memory, the CLI, on encrypted storage) and what it is productising (the policies, the graphs); and the published record of agent projects that stall for unclear value, cost, trust, security and governance is read last, each reason mapped to the mechanism that answers it; the name is a working one and nothing planned is included.",
         "nodes": [
-          {
-            "id": "the-record",
-            "label": "The record is of pilots that stall",
-            "kind": "claim",
-            "summary": "Gartner, S&P Global, McKinsey, Deloitte, KPMG and Forrester, June 2025 to July 2026: cancelled, paused or trapped in pilot, for unclear value, cost, trust, security and governance."
-          },
-          {
-            "id": "fair-reading",
-            "label": "Agents do reach production, at the draft",
-            "kind": "claim",
-            "summary": "Google Cloud and LangChain surveys show agents in production; Gmail, Outlook, Superhuman and Shortwave all shipped the same pattern: the agent drafts, the person sends."
-          },
           {
             "id": "one-that-runs",
             "label": "One that runs",
             "kind": "example",
             "summary": "About fifteen agents and one person run RiskMandate's relationships, research, writing and events every few hours; the briefing was written by the agent that runs the CRM."
+          },
+          {
+            "id": "outside-in",
+            "label": "The world writes in, the person sends",
+            "kind": "concept",
+            "summary": "Email, the subscribe form, other teams' agents and an event extension enter from the left as data; the person enters from the right through Claude and Gmail; nothing leaves unsent by them."
           },
           {
             "id": "rented-layers",
@@ -1020,34 +1016,35 @@
             "summary": "Every fact carries source, capture method and hash; the cause is fixed where it came from; model error reported as the rarest of the three."
           },
           {
+            "id": "two-maps",
+            "label": "Commoditise the memory, productise the mandate",
+            "kind": "claim",
+            "summary": "Two Wardley maps, from outside and inside: shared memory and the sgit CLI pushed toward commodity on encrypted storage; the policies and the graphs pulled from genesis toward product. Placements are claims."
+          },
+          {
             "id": "why-it-holds",
-            "label": "Five reasons, each answering the record",
+            "label": "Five reasons it holds",
             "kind": "claim",
             "summary": "Small versioned control surface; the human at the irreversible step; state as files; meaning on the read path; everything leaves a trail."
           },
           {
-            "id": "working-name",
-            "label": "A working name",
+            "id": "not-in-it",
+            "label": "A working name, and what is not in it",
             "kind": "question",
-            "summary": "The Mandate Stack carries the mandate and the layers but not the human who sends; a better name may come; the description is what matters."
+            "summary": "The Mandate Stack carries the mandate and the layers but not the human who sends; nothing planned is included; unsigned authorship, no key revocation, policy-only barriers, and who gives the mandate over information stay open."
           },
           {
-            "id": "not-in-it",
-            "label": "What is not in it",
-            "kind": "question",
-            "summary": "Nothing planned; unsigned authorship, no key revocation, policy-only barriers, no permission authority; and who gives the mandate over information."
+            "id": "the-record",
+            "label": "The record is of pilots that stall",
+            "kind": "claim",
+            "summary": "Gartner, S&P Global, McKinsey, Deloitte, KPMG and Forrester, June 2025 to July 2026: cancelled, paused or trapped in pilot, for unclear value, cost, trust, security and governance; the same surveys show agents shipping where the workflow stops at the draft."
           }
         ],
         "edges": [
           {
-            "from": "the-record",
-            "to": "fair-reading",
-            "rel": "contrasts"
-          },
-          {
-            "from": "the-record",
-            "to": "one-that-runs",
-            "rel": "contrasts"
+            "from": "one-that-runs",
+            "to": "outside-in",
+            "rel": "depends-on"
           },
           {
             "from": "one-that-runs",
@@ -1090,14 +1087,14 @@
             "rel": "leads-to"
           },
           {
-            "from": "human-sends",
-            "to": "draft-release-candidate",
+            "from": "outside-in",
+            "to": "human-sends",
             "rel": "extends"
           },
           {
-            "from": "fair-reading",
+            "from": "human-sends",
             "to": "draft-release-candidate",
-            "rel": "example-of"
+            "rel": "extends"
           },
           {
             "from": "draft-release-candidate",
@@ -1110,8 +1107,28 @@
             "rel": "extends"
           },
           {
+            "from": "shared-memory",
+            "to": "two-maps",
+            "rel": "example-of"
+          },
+          {
+            "from": "governance",
+            "to": "two-maps",
+            "rel": "example-of"
+          },
+          {
             "from": "traced-to-source",
             "to": "why-it-holds",
+            "rel": "leads-to"
+          },
+          {
+            "from": "two-maps",
+            "to": "why-it-holds",
+            "rel": "extends"
+          },
+          {
+            "from": "why-it-holds",
+            "to": "not-in-it",
             "rel": "leads-to"
           },
           {
@@ -1120,19 +1137,9 @@
             "rel": "answers"
           },
           {
-            "from": "why-it-holds",
-            "to": "working-name",
-            "rel": "leads-to"
-          },
-          {
-            "from": "governance",
-            "to": "not-in-it",
-            "rel": "leads-to"
-          },
-          {
-            "from": "working-name",
-            "to": "not-in-it",
-            "rel": "leads-to"
+            "from": "the-record",
+            "to": "one-that-runs",
+            "rel": "contrasts"
           }
         ],
         "links": {
@@ -1170,12 +1177,14 @@
             "docs/briefs/riskmandate-footprint-and-blast-radius.html",
             "docs/briefs/riskmandate-sandbox-twins-and-tokens.html",
             "docs/briefs/secrets-sgit-ai-design-pack.html",
+            "docs/briefs/subscribe-lane-agent-brief.html",
             "articles/graphs.html"
           ],
           "sites": [
             "https://riskmandate.ai/abp.html",
             "https://graphs.sgit.ai/",
-            "https://risks.sgit.ai/"
+            "https://risks.sgit.ai/",
+            "https://wardley-maps.sgit.ai/"
           ]
         },
         "quotes": [
@@ -1185,7 +1194,7 @@
           },
           {
             "text": "The record is of pilots that stall, not of a technology that cannot ship.",
-            "why": "The fair reading of the surveys the article is written against."
+            "why": "The fair reading of the surveys, kept for the end."
           }
         ]
       }

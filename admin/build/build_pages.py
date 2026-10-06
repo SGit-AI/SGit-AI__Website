@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.79'
+SITE_VERSION = 'v0.6.80'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.79', '2026-10-06', 'this release',
+    ('v0.6.80', '2026-10-06', 'this release',
+     "THE MANDATE STACK, REVISED. The article now leads with the system that runs and its eight layers, and the "
+     "published record of agent projects that stall moves to a closing section for readers who ask why a running "
+     "system is worth writing down. The stack figure is recoloured as one gradient from compute to the human, with "
+     "a column that says what each layer gives the team instead of naming pages that cannot be clicked. Two figures "
+     "added: the left-to-right flow from the outside world through the layers to the person who sends, and two "
+     "Wardley maps rendered with Mermaid's wardley-beta from sources printed in the article, one from the outside "
+     "(a person who writes to the team) and one from the inside (the person running the business) with the "
+     "movement the team is making: shared memory and the sgit CLI pushed toward commodity on encrypted storage, "
+     "the behaviour policies and the graphs pulled from genesis toward product. Placements are stated as claims.",),
+    ('v0.6.79', '2026-10-06', 'git dfc8f597',
      "THE MANDATE STACK. An article that sets one multi-agent system in production beside the published record "
      "of agent projects that stall: Gartner's cancellation prediction, S&P Global's abandonment survey, McKinsey, "
      "Deloitte, KPMG and Forrester between June 2025 and July 2026, each dated and labelled, with the reversals "

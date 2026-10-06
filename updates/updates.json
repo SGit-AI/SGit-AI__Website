@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-06",
-  "site_version": "v0.6.79",
+  "site_version": "v0.6.80",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -922,9 +922,9 @@
     },
     {
       "slug": "the-mandate-stack",
-      "title": "The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there",
+      "title": "The Mandate Stack: a multi-agent system in production, layer by layer",
       "date": "2026-10-06",
-      "version": "v0.6.79",
+      "version": "v0.6.80",
       "tags": [
         "agents",
         "agent-behaviour-policy",
@@ -938,11 +938,13 @@
         "governance",
         "human-in-the-loop",
         "production",
+        "wardley-maps",
+        "mermaid",
         "claude",
         "google-workspace",
         "article"
       ],
-      "summary": "The published record on agentic AI from June 2025 to July 2026 is a record of pilots that stall. Gartner expects more than 40% of agentic projects to be cancelled by the end of 2027; S&P Global found 42% of companies abandoning most of their AI initiatives; McKinsey found at most one in ten scaling agents in any one function; KPMG found half of its respondents scaling back agent rollouts because costs outran returns. This article sets one running system beside that record. RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article then names the feedback loop that makes it hold, the draft as a release candidate with the recipient closing the loop, and maps each reason the record gives for failure to the mechanism in the stack that answers it. Every layer is linked to the article or document on this site where it was worked out. The name is a working one, and nothing planned is included."
+      "summary": "RiskMandate runs its business with about fifteen agents and one person, every few hours, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends, names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop, and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. The name is a working one, and nothing planned is included."
     },
     {
       "slug": "why-my-agents-do-not-run-on-my-laptop",

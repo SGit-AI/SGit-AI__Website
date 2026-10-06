@@ -2,7 +2,7 @@
 
 > Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
 
-*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.6.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/seven-vaults-one-method.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -109,7 +109,7 @@ Vaults & method[This article as a graph →](graphs.md#seven-vaults-one-method)
 
 ### Continued by
 
-- [The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there](the-mandate-stack.md) The record says agent projects stall for five reasons. One multi-agent system runs anyway: eight layers, one written mandate per agent, and one human who sends.
+- [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 
 [All articles](index.md) · [All graphs](graphs.md)

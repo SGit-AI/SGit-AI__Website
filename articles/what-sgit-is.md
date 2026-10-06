@@ -2,7 +2,7 @@
 
 > An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.
 
-*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.6.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/what-sgit-is.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -115,7 +115,7 @@ Vaults & method[This article as a graph →](graphs.md#what-sgit-is)
 ### Continued by
 
 - [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
-- [The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there](the-mandate-stack.md) The record says agent projects stall for five reasons. One multi-agent system runs anyway: eight layers, one written mandate per agent, and one human who sends.
+- [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [Twenty sites in fifteen days, and what that did to the writing](nineteen-sites.md) One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.
 
 [All articles](index.md) · [All graphs](graphs.md)

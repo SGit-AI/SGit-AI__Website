@@ -1,53 +1,32 @@
-# The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there, sgit.ai
+# The Mandate Stack: a multi-agent system in production, layer by layer, sgit.ai
 
-> The published record on agentic AI from June 2025 to July 2026 is a record of pilots that stall. Gartner expects more than 40% of agentic projects to be cancelled by the end of 2027; S&P Global found 42% of companies abandoning most of their AI initiatives; McKinsey found at most one in ten scaling agents in any one function; KPMG found half of its respondents scaling back agent rollouts because costs outran returns. This article sets one running system beside that record. RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article then names the feedback loop that makes it hold, the draft as a release candidate with the recipient closing the loop, and maps each reason the record gives for failure to the mechanism in the stack that answers it. Every layer is linked to the article or document on this site where it was worked out. The name is a working one, and nothing planned is included.
+> RiskMandate runs its business with about fifteen agents and one person, every few hours, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends, names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop, and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. The name is a working one, and nothing planned is included.
 
-*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Articles](index.md) / The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there
+[Home](../index.md) / [Articles](index.md) / The Mandate Stack: a multi-agent system in production, layer by layer
 
-# The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there
+# The Mandate Stack: a multi-agent system in production, layer by layer
 
-By [Dinis Cruz](../about/index.md) · 2026-10-06 · updated 2026-10-06 · [v0.6.79](../admin/versions.md) · agentsagent-behaviour-policyriskmandatevaultssgitemail-fscrmfractal-semantic-graphsorchestrationgovernancehuman-in-the-loopproductionclaudegoogle-workspacearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-06 · updated 2026-10-06 · [v0.6.80](../admin/versions.md) · agentsagent-behaviour-policyriskmandatevaultssgitemail-fscrmfractal-semantic-graphsorchestrationgovernancehuman-in-the-loopproductionwardley-mapsmermaidclaudegoogle-workspacearticle
 
-***Abstract:** The published record on agentic AI from June 2025 to July 2026 is a record of pilots that stall. Gartner expects more than 40% of agentic projects to be cancelled by the end of 2027; S&P Global found 42% of companies abandoning most of their AI initiatives; McKinsey found at most one in ten scaling agents in any one function; KPMG found half of its respondents scaling back agent rollouts because costs outran returns. This article sets one running system beside that record. RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article then names the feedback loop that makes it hold, the draft as a release candidate with the recipient closing the loop, and maps each reason the record gives for failure to the mechanism in the stack that answers it. Every layer is linked to the article or document on this site where it was worked out. The name is a working one, and nothing planned is included.*
+***Abstract:** RiskMandate runs its business with about fifteen agents and one person, every few hours, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends, names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop, and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. The name is a working one, and nothing planned is included.*
 
-The Mandate Stack as it runs on 6 October 2026, read from the bottom: compute and channels rented from vendors, then the team's own files, graphs, schedule and policies, then one person. The right column names the idea on this site each layer implements. Infographic from the CRM agent's briefing; nothing planned is included.
+The Mandate Stack as it runs on 6 October 2026, read from the bottom: compute and channels rented from vendors, then the team's own files, graphs, schedule and policies, then one person. The right column says what each layer gives the team. Infographic from the CRM agent's briefing; nothing planned is included.
 
-**Where this comes from.** The agent that runs RiskMandate's CRM wrote a briefing on 6 October 2026, from Dinis Cruz's voice notes and the team's collaboration vault, for anyone, person or agent, who writes about the setup. It describes what runs on that date and includes nothing planned. This article keeps its structure and its counts, adds the published record the setup should be read against, and links every layer to the place on this site where it was worked out. [The agent team as it runs](../articles/the-agent-team-as-it-runs.md), published the same week, is the roster-level description of the same team; this is the layered one. "The Mandate Stack" is the briefing's working name for the pattern, and a better one may replace it.
+**Where this comes from.** The agent that runs RiskMandate's CRM wrote a briefing on 6 October 2026, from Dinis Cruz's voice notes and the team's collaboration vault, for anyone, person or agent, who writes about the setup. It describes what runs on that date and includes nothing planned. This article keeps its structure and its counts and links every layer to the place on this site where it was worked out. [The agent team as it runs](../articles/the-agent-team-as-it-runs.md), published the same week, is the roster-level description of the same team; this is the layered one. "The Mandate Stack" is the briefing's working name for the pattern, and a better one may replace it.
 
 ## In short
 
-- **The record is of pilots that stall.** Between June 2025 and July 2026, Gartner, S&P Global, McKinsey, Deloitte, KPMG and Forrester each reported agent projects cancelled, paused or trapped in pilot, for the same five reasons: unclear value, cost, trust, security, governance. The same surveys also show agents in production where the workflow was redesigned around them.
-- **This one runs.** About fifteen agents and one person run RiskMandate's relationships, research, writing and events, every few hours, with the person's name on every message that leaves.
+- **This runs.** About fifteen agents and one person run RiskMandate's relationships, research, writing and events, every few hours, in production, today.
 - **Eight layers.** Compute and channels are rented. Everything above them is the team's own: encrypted vaults as shared memory, a vault per domain, semantic graphs over people, teams and policies, a conductor, written mandates, and one human at the top.
 - **One line.** Many small agents, one written mandate each, everything connected as a graph, one human who sends.
+- **The world writes in from the left; nothing leaves without the person on the right.** Email, a web form, other teams' agents and an event extension all enter as data. The only exit is a send by the person whose name is on the message.
 - **The loop is the design.** The agents automate the hard part, capturing, connecting and remembering. The draft the person sees is a release candidate for the whole pipeline. The recipient's reply comes back through the same capture path. Mistakes are traced to captured data, a graph edge or the model, and fixed at the source.
-- **Why it holds.** The control surface is small, explicit and versioned. The human holds the irreversible step. Shared state is files, not context windows. Meaning is on the read path. Everything leaves a trail.
-
-## The record this is written against
-
-The complaint is familiar: agents do not behave, agentic workflows do not work, projects are cancelled or never pushed to production. The record supports the complaint, and it is worth being exact about what it says and when.
-
-| When | Who | What was reported |
-|---|---|---|
-| 25 Jun 2025 | Gartner, prediction | More than 40% of agentic AI projects will be cancelled by the end of 2027, for "escalating costs, unclear business value or inadequate risk controls". About 130 real agentic vendors among thousands; the rest "agent washing". |
-| Mar 2025 | S&P Global, survey of more than 1,000 | 42% of companies abandoned most of their AI initiatives, up from 17% the year before. The average organisation scrapped 46% of proofs of concept before production. |
-| Aug 2025 | MIT NANDA, report | 95% of organisations "getting zero return" from generative AI. The report's own funnel, read by its critics, puts the success rate of actual pilots nearer a quarter; the figure is the report's word "directional". |
-| 30 Sep 2025 | Gartner, survey of 360 IT leaders | 15% considering, piloting or deploying fully autonomous agents. 19% trust vendors' hallucination protection. 74% see agents as a new attack vector. 13% strongly agree they have the governance in place. |
-| Nov 2025 | McKinsey, survey of 1,993 | 23% scaling an agentic system somewhere, 39% experimenting; in any one business function, at most 10% scaling. Inaccuracy the most common harm, reported by 30%. |
-| Jan 2026 | Deloitte, survey of 3,235 | 25% have moved 40% or more of their AI experiments to production; pilots stretch "to 18 months or more"; 21% report a mature governance model for autonomous agents. |
-| Jun 2026 | Forrester, report | 75% say they have adopted agentic AI; "only a small minority" run production deployments beyond "agentish" chatbots. ROI uncertainty, "trapped in pilot mode", governance gaps, a "trust tax". |
-| Jul 2026 | KPMG, survey of 2,145 | 49% scaled back or paused agent rollouts because operating costs outran returns. 7% report established ROI. 26% have real-time visibility of what agents cost to run. |
-| Sep 2025 | Carnegie Mellon, benchmark | The best agent completes 30% of 175 simulated office tasks end to end. |
-
-The same period has its reversals: Klarna hiring human support staff again in May 2025 after calling its AI support "lower quality"; Taco Bell slowing its drive-through voice AI in August 2025 and keeping people in the loop at busy sites; Commonwealth Bank of Australia reversing 45 redundancies it had attributed to a voice bot; Ford rehiring about 350 quality inspectors in June 2026 after AI inspection missed defects. In each case the company kept the AI and put a person back at the step that mattered.
-
-A fair reading has two more lines. First, agents do reach production: Google Cloud's September 2025 survey of organisations already using generative AI found 52% with agents in production, and LangChain's developer survey, fielded in late 2025, found 57%. The record is of pilots that stall, not of a technology that cannot ship. Second, the pattern that shipped in email is the same everywhere: Gmail's Gemini drafts (May 2025), Outlook's Copilot and its agent mode (April 2026), Superhuman's auto-drafts (July 2026) and Shortwave's triggered drafts (January 2026) all stop at the draft and leave the send to the person. OpenAI's April 2025 guide to building agents tells builders to escalate "high-risk, sensitive, or irreversible actions" to a human; Anthropic's December 2024 note on effective agents says to pause for human feedback at checkpoints and to add complexity only when it demonstrably helps.
-
-That is the record. What follows is one system that has been running against it.
+- **Two maps.** Shared memory and the sgit tooling are being pushed toward commodity, on encrypted storage that already is one. The behaviour policies and the graphs are being pulled toward product. That is the team's strategy, drawn.
+- **The record, last.** The published record of agent projects that stall is real, and it is kept for the end, each reason mapped to the mechanism here that answers it.
 
 ## One that runs
 
@@ -56,6 +35,16 @@ RiskMandate.ai runs its own business with a team of agents and one human, Dinis 
 The briefing counts about fifteen agents. [The agent team as it runs](../articles/the-agent-team-as-it-runs.md), written from the briefs role's field notes in the same week, names twelve roles. Both are the agents' own counts; this article keeps the briefing's and notes the difference. The collaboration vault, by the briefing's count, holds over 620 commits and 9,000 files, and every change any agent has made is in its history.
 
 What the briefing calls the Mandate Stack is this arrangement, described as layers. The layers are not an architecture diagram drawn before the fact. They are the shape the setup had when an agent in it was asked to describe what was running.
+
+## From the outside in
+
+Left to right: the outside world writes in by email, by the subscribe form, through other teams' agents and an event extension; the input passes through the layers as data; the person enters from the right through Claude and Gmail, and is the only exit. From the briefing of 6 October 2026; fictional senders.
+
+Follow one message. A person emails the agents' address. The inbox role, which can read but cannot draft or send, captures it word for word into that person's folder with a hash. It lands in the relationships vault, or in the mission vault it belongs to. Edges are added to the person's graph: who they are, what they care about, which of the team's materials meets it, which does not. On the next scheduled run the drafts role, which never reads raw mail, turns a row in the email register into a Gmail draft. Each step happens inside a written mandate, with the security role checking first and last. The draft waits in Gmail for Dinis.
+
+Other inputs take the same shape. A reader fills in the subscribe form on this site, and the message goes into a vault the form cannot read, encrypted in the browser to the agent's key, through a [write-only lane](../docs/briefs/subscribe-lane-agent-brief.md). The newsroom's agent, in another environment, writes through a signed and encrypted lane. The Web Summit browser extension feeds the mission vault. LinkedIn is reached through its own agent and a shared vault channel.
+
+From the right, Dinis enters three ways: in a Claude session with the vault, for research, writing, design and analysis; by email to the agents' address, with a note the next run picks up; and by answering a decision draft in the thread, lettered options and an answer box. Anyone else on the team enters by the same three paths, and a new agent joins in two chat messages. What leaves is what Dinis sends, plus the SG/Send links the roles share, Slack status posts and Drive exports into the agents' own folder. The one exception is the security role's single hold email, to Dinis.
 
 ## Layer 1: compute
 
@@ -79,7 +68,7 @@ The vaults are the team's shared brain. A vault is a folder of plain files, JSON
 
 Agents talk to each other through Email-FS, a mail protocol made of files. A message is an `.eml` file with headers for kind, priority and references. Sending writes it to the recipient's mailroom and to the sender's outbox. Moving it from mailroom to inbox is the read receipt; moving it to a done folder is completion. Each agent owns its folders and no other agent writes there. Any agent, model or person with the key can read the whole conversation with `ls` and `cat`. The convention and its history are in [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) and [Replicating the agentic inbox](../articles/replicating-the-agentic-inbox.md); why a message in that system carries its own graph and is rendered by its own interface is [Custom UIs are not the exception](../articles/custom-uis-are-not-the-exception.md).
 
-Append lanes let the outside world write in without a key. A sender gets a write-only slot on a vault: it can add files but cannot list or read anything, including what it wrote. Messages are encrypted to the recipient's public key and signed by the sender. This is how the newsroom agent, in another environment, and the Web Summit browser extension feed vaults they cannot read. The mechanism is documented in [append-lane messaging](../docs/append-lane-messaging.md), [sending messages between vaults](../docs/vault-messaging.md) and the [append lanes API](../api/append-lanes.md); the site-to-site version, where each site's agent publishes its keys and lane token, is [Agent Contact](../docs/agent-contact.md).
+Append lanes let the outside world write in without a key. A sender gets a write-only slot on a vault: it can add files but cannot list or read anything, including what it wrote. Messages are encrypted to the recipient's public key and signed by the sender. This is how the newsroom agent, in another environment, and the Web Summit browser extension feed vaults they cannot read, and how this site's subscribe form reaches the team. The mechanism is documented in [append-lane messaging](../docs/append-lane-messaging.md), [sending messages between vaults](../docs/vault-messaging.md) and the [append lanes API](../api/append-lanes.md); the site-to-site version, where each site's agent publishes its keys and lane token, is [Agent Contact](../docs/agent-contact.md).
 
 That memory lives in files rather than in a model's context, and why that is the right place for it, is the argument of [Memory is not a spectator sport](../articles/memory-is-not-a-spectator-sport.md).
 
@@ -91,7 +80,7 @@ The publishing method behind many vaults from one source, and the near-miss that
 
 ## Layer 5: semantic graphs
 
-One person's subgraph in the relationships vault, with a fictional person, organisation and interests. An interest met by one of the team's materials is a reason to send it; an interest with no edge is a gap. Contexts are further graphs laid over the same people. The folder behind the picture is on the right of the lower panel.
+One person's subgraph in the relationships vault, with a fictional person, organisation and interests. An interest met by one of the team's materials is a reason to send it; an interest with no edge is a gap. Contexts are further graphs laid over the same people. The folder behind the picture is in the lower panel.
 
 The team thinks in graphs, and the vaults are built that way. A record is not a row in a table. It is a node with typed edges to other nodes, and its meaning comes from those connections. The principles carry over from the published work on [fractal semantic graphs](../articles/introducing-fractal-semantic-graphs.md) and from [graphs.sgit.ai](https://graphs.sgit.ai/): meaning is found in relationships rather than declared in a schema; confidence comes from how well connected an assertion is; unknowns are drawn as explicit nodes rather than hidden. The risk register as "a graph of graphs" on [risks.sgit.ai](https://risks.sgit.ai/) is the same idea in another domain.
 
@@ -147,19 +136,118 @@ The world closes the loop. Every sent email is tested against reality. If it is 
 
 The result is control and throughput together. Nothing on the schedule is missed, every follow-up is known, and every outgoing message has been seen by the person whose name is on it.
 
-## Why it works, against the record
+## Two maps: what is being commoditised, and what is being made
 
-The reasons the record gives for agent projects failing, each with who said it and when, beside the mechanism in the stack that answers it. The dark panel is the fair reading: the record is of pilots that stall, and the pattern that shipped stops at the draft. Sources in the Sources section.
+Map one, from the outside. The anchor is a person who writes to the team. What they see, a reply with Dinis's name on it, is custom. What they do not see, the vaults, the sessions, Workspace and encrypted storage, is product or commodity. Rendered with Mermaid wardley-beta from the source below; every placement is a claim.
 
-The briefing gives five reasons the setup holds. Each answers something in the record.
+A Wardley map places each component by how visible it is to the user, vertically, and by how evolved it is, horizontally, from genesis through custom-built and product to commodity. The maps here are drawn in the spirit of [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/): a map is a claim, not a picture, and the source is published next to the render so the claim can be argued with. The placements are this article's, made from the briefing, and a reader who would put a component elsewhere is probably right about something.
 
-- **The control surface is small, explicit and versioned.** Trust grows one mandate at a time, and every change to a mandate is visible. This is what Gartner's 13% with governance in place and Deloitte's 21% with a mature model for autonomous agents do not have: a written policy per agent, in one grammar, amended only by the human, with each amendment dated.
-- **The human holds the irreversible step.** Everything else can be wrong and still be caught at the draft. This is the pattern Gmail, Outlook, Superhuman and Shortwave shipped, and the escalation OpenAI's and Anthropic's guides ask for, applied as a rule rather than a default.
-- **Shared state is files, not context windows.** Agents do not need to remember; they read. Any session, on any account, can pick up where another left off. This is where the cost question KPMG's respondents could not see is answered: a fixed schedule, one step per agent, and a card per session that counts tools, tokens, files and network calls, so the cost is read rather than guessed.
-- **The graph puts meaning on the read path.** Agents do not query raw data and guess. They traverse records whose relationships, sources and vocabulary are written down and shared. This is the answer to the trust finding, Gartner's 19% and McKinsey's inaccuracy as the most common harm: a wrong detail is traced to a captured fact, an edge or the model, and fixed where it came from.
-- **Everything leaves a trail.** Commits, ledgers, snapshots, cards, run evidence. The system can be audited by the same tools that run it. This is the answer to the security finding, Gartner's 74% who see agents as a new attack vector: roles split the risk, inbound content is data, a security role runs first and last and can stop the team, and secrets never touch files.
+The first map takes the point of view of a person outside the team. What they can see is a reply with Dinis's name on it, the agents' address and the subscribe form. Everything that produces the reply sits below their line of sight: the drafts and inbox roles, the person's folder and graph, the behaviour policies, the conductor and Email-FS, all custom-built. Below those, the vaults, the Claude sessions, Google Workspace and encrypted storage are product or commodity. The shape says what the stack is: a thin custom layer where the relationship is, resting on rented parts.
 
-None of this makes the setup immune. It says where each named failure would have to get through. The MIT report's own explanation of failure, tools that do not learn from or adapt to workflows, and McKinsey's finding that the organisations seeing value were three times likelier to have redesigned their workflows, are the closest the record comes to describing this setup from the outside. The workflow here was redesigned around one fact: the draft is the release candidate.
+```
+
+wardley-beta
+  title The Mandate Stack from the outside: a person who writes to the team
+  anchor "A person who writes to the team" [0.97, 0.60]
+  component "A reply with Dinis's name on it" [0.89, 0.38]
+  component "The agents' address" [0.87, 0.86]
+  component "The subscribe form" [0.82, 0.66]
+  component "Drafts role" [0.74, 0.38]
+  component "Inbox capture, hashed" [0.68, 0.48]
+  component "The person's folder and graph" [0.60, 0.28]
+  component "Agent Behaviour Policies" [0.52, 0.20]
+  component "Conductor" [0.47, 0.40]
+  component "Email-FS" [0.41, 0.34]
+  component "Append lanes" [0.45, 0.54]
+  component "sgit vaults, shared memory" [0.32, 0.64]
+  component "Claude sessions" [0.27, 0.76]
+  component "Google Workspace" [0.24, 0.90]
+  component "Encrypted storage, S3" [0.12, 0.88]
+  "A person who writes to the team" --> "A reply with Dinis's name on it"
+  "A person who writes to the team" --> "The agents' address"
+  "A person who writes to the team" --> "The subscribe form"
+  "A reply with Dinis's name on it" --> "Drafts role"
+  "The agents' address" --> "Inbox capture, hashed"
+  "The agents' address" --> "Google Workspace"
+  "The subscribe form" --> "Append lanes"
+  "Drafts role" --> "The person's folder and graph"
+  "Inbox capture, hashed" --> "The person's folder and graph"
+  "Drafts role" --> "Agent Behaviour Policies"
+  "Inbox capture, hashed" --> "Agent Behaviour Policies"
+  "Drafts role" --> "Conductor"
+  "Inbox capture, hashed" --> "Conductor"
+  "Conductor" --> "Email-FS"
+  "Conductor" --> "Claude sessions"
+  "Email-FS" --> "sgit vaults, shared memory"
+  "Append lanes" --> "sgit vaults, shared memory"
+  "The person's folder and graph" --> "sgit vaults, shared memory"
+  "sgit vaults, shared memory" --> "Encrypted storage, S3"
+  "Drafts role" --> "Google Workspace"
+
+```
+
+Map two, from the inside. The anchor is Dinis. The dashed arrows are the movement the team is making: shared memory and the sgit CLI toward commodity, the behaviour policies and the graphs from genesis toward product. Everything rests on encrypted storage, which is already a commodity. Rendered with Mermaid wardley-beta from the source below.
+
+The second map takes Dinis's point of view and adds movement. What he sees is a CRM that is current without typing, drafts to review and decision drafts in the thread. The arrows say what the team is doing to its own components. Shared memory runs on sgit, and sgit runs on encrypted object storage, S3. Each of those is being pushed to the right on purpose, so that a vault is a folder, a push is a command, the host sees ciphertext and sizes, and nothing above them has to know how any of it works. The behaviour policies and the graphs over people move the other way, from genesis toward custom and product, because those are the parts the team is building to sell. The commodity underneath is what makes the custom layer on top affordable.
+
+```
+
+wardley-beta
+  title The Mandate Stack from the inside: the person running the business, and what is moving
+  anchor "Dinis, running the business" [0.97, 0.50]
+  component "A CRM that is current without typing" [0.90, 0.30]
+  component "Drafts to review and send" [0.87, 0.52]
+  component "Decision drafts in the thread" [0.83, 0.40]
+  component "Semantic graphs over people" [0.74, 0.24]
+  component "Agent Behaviour Policies" [0.68, 0.20]
+  component "Security role and hold" [0.63, 0.28]
+  component "Conductor" [0.59, 0.42]
+  component "Email-FS" [0.52, 0.34]
+  component "Mission vaults" [0.46, 0.50]
+  component "sgit vaults, shared memory" [0.38, 0.62]
+  component "sgit CLI" [0.26, 0.58]
+  component "Claude sessions" [0.30, 0.76]
+  component "Google Workspace" [0.28, 0.90]
+  component "Encrypted storage, S3" [0.14, 0.88]
+  evolve "Agent Behaviour Policies" 0.50
+  evolve "Semantic graphs over people" 0.42
+  evolve "Email-FS" 0.56
+  evolve "sgit vaults, shared memory" 0.84
+  evolve "sgit CLI" 0.80
+  "Dinis, running the business" --> "A CRM that is current without typing"
+  "Dinis, running the business" --> "Drafts to review and send"
+  "Dinis, running the business" --> "Decision drafts in the thread"
+  "A CRM that is current without typing" --> "Semantic graphs over people"
+  "Drafts to review and send" --> "Conductor"
+  "Decision drafts in the thread" --> "Conductor"
+  "Semantic graphs over people" --> "sgit vaults, shared memory"
+  "Conductor" --> "Agent Behaviour Policies"
+  "Conductor" --> "Security role and hold"
+  "Conductor" --> "Email-FS"
+  "Conductor" --> "Claude sessions"
+  "Security role and hold" --> "Agent Behaviour Policies"
+  "Email-FS" --> "sgit vaults, shared memory"
+  "Mission vaults" --> "sgit vaults, shared memory"
+  "Semantic graphs over people" --> "Mission vaults"
+  "sgit vaults, shared memory" --> "sgit CLI"
+  "sgit vaults, shared memory" --> "Encrypted storage, S3"
+  "Drafts to review and send" --> "Google Workspace"
+
+```
+
+Two notes on reading them, both borrowed from the mapping site. Coordinates are visibility first, evolution second, and transposing them renders without an error and asserts something else. And a component cannot be more evolved than the least evolved thing it depends on, which is why the custom middle of these maps cannot move right until the policies do.
+
+## Why it holds
+
+The briefing gives five reasons the setup holds. Each of them answers something in the record kept for the end of this article.
+
+- **The control surface is small, explicit and versioned.** Trust grows one mandate at a time, and every change to a mandate is visible: a written policy per agent, in one grammar, amended only by the human, with each amendment dated.
+- **The human holds the irreversible step.** Everything else can be wrong and still be caught at the draft. This is the pattern the email products shipped and the guides from the model vendors ask for, applied here as a rule rather than a default.
+- **Shared state is files, not context windows.** Agents do not need to remember; they read. Any session, on any account, can pick up where another left off. A fixed schedule, one step per agent, and a card per session that counts tools, tokens, files and network calls mean the cost is read rather than guessed.
+- **The graph puts meaning on the read path.** Agents do not query raw data and guess. They traverse records whose relationships, sources and vocabulary are written down and shared. A wrong detail is traced to a captured fact, an edge or the model, and fixed where it came from.
+- **Everything leaves a trail.** Commits, ledgers, snapshots, cards, run evidence. The system can be audited by the same tools that run it. Roles split the risk, inbound content is data, a security role runs first and last and can stop the team, and secrets never touch files.
+
+None of this makes the setup immune. It says where a failure would have to get through.
 
 ## A working name
 
@@ -170,6 +258,30 @@ The briefing calls the pattern the Mandate Stack. The name has to carry three th
 Nothing planned. The briefing's rule, and this article's, is that every component named is in use on the date of writing. The things [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) lists as not working yet still apply: commit authorship is not signed, so an agent's identity inside a shared vault is its branch rather than a signature; a vault key cannot be revoked, only replaced by a new vault; most barriers are policy-only, enforced by the process they constrain, and a separate permission authority that holds the credentials and decides each action does not exist in this setup. The three wishes in [Why my agents do not run on my laptop](../articles/why-my-agents-do-not-run-on-my-laptop.md), an identity, a secret store and a key pair per agent, are the platform-side half of the same list.
 
 And the question underneath stays open: who gives the mandate over a piece of information, and whether the recipient of an email has the authority to hand it to an agent at all. The setup's answer so far is to hold less and to say what it holds. The question gets a document of its own.
+
+## The record, for anyone who asks why this is worth writing down
+
+The reasons the record gives for agent projects failing, each with who said it and when, beside the mechanism in the stack that answers it. The dark panel is the fair reading: the record is of pilots that stall, and the pattern that shipped stops at the draft. Sources in the Sources section.
+
+The complaint is familiar: agents do not behave, agentic workflows do not work, projects are cancelled or never pushed to production. The record supports the complaint, and it is worth being exact about what it says and when.
+
+| When | Who | What was reported |
+|---|---|---|
+| 25 Jun 2025 | Gartner, prediction | More than 40% of agentic AI projects will be cancelled by the end of 2027, for "escalating costs, unclear business value or inadequate risk controls". About 130 real agentic vendors among thousands; the rest "agent washing". |
+| Mar 2025 | S&P Global, survey of more than 1,000 | 42% of companies abandoned most of their AI initiatives, up from 17% the year before. The average organisation scrapped 46% of proofs of concept before production. |
+| Aug 2025 | MIT NANDA, report | 95% of organisations "getting zero return" from generative AI. The report's own funnel, read by its critics, puts the success rate of actual pilots nearer a quarter; the figure is the report's word "directional". |
+| 30 Sep 2025 | Gartner, survey of 360 IT leaders | 15% considering, piloting or deploying fully autonomous agents. 19% trust vendors' hallucination protection. 74% see agents as a new attack vector. 13% strongly agree they have the governance in place. |
+| Nov 2025 | McKinsey, survey of 1,993 | 23% scaling an agentic system somewhere, 39% experimenting; in any one business function, at most 10% scaling. Inaccuracy the most common harm, reported by 30%. |
+| Jan 2026 | Deloitte, survey of 3,235 | 25% have moved 40% or more of their AI experiments to production; pilots stretch "to 18 months or more"; 21% report a mature governance model for autonomous agents. |
+| Jun 2026 | Forrester, report | 75% say they have adopted agentic AI; "only a small minority" run production deployments beyond "agentish" chatbots. ROI uncertainty, "trapped in pilot mode", governance gaps, a "trust tax". |
+| Jul 2026 | KPMG, survey of 2,145 | 49% scaled back or paused agent rollouts because operating costs outran returns. 7% report established ROI. 26% have real-time visibility of what agents cost to run. |
+| Sep 2025 | Carnegie Mellon, benchmark | The best agent completes 30% of 175 simulated office tasks end to end. |
+
+The same period has its reversals: Klarna hiring human support staff again in May 2025 after calling its AI support "lower quality"; Taco Bell slowing its drive-through voice AI in August 2025 and keeping people in the loop at busy sites; Commonwealth Bank of Australia reversing 45 redundancies it had attributed to a voice bot; Ford rehiring about 350 quality inspectors in June 2026 after AI inspection missed defects. In each case the company kept the AI and put a person back at the step that mattered.
+
+A fair reading has two more lines. First, agents do reach production: Google Cloud's September 2025 survey of organisations already using generative AI found 52% with agents in production, and LangChain's developer survey, fielded in late 2025, found 57%. The record is of pilots that stall, not of a technology that cannot ship. Second, the pattern that shipped in email is the same everywhere: Gmail's Gemini drafts (May 2025), Outlook's Copilot and its agent mode (April 2026), Superhuman's auto-drafts (July 2026) and Shortwave's triggered drafts (January 2026) all stop at the draft and leave the send to the person. OpenAI's April 2025 guide to building agents tells builders to escalate "high-risk, sensitive, or irreversible actions" to a human; Anthropic's December 2024 note on effective agents says to pause for human feedback at checkpoints and to add complexity only when it demonstrably helps.
+
+The MIT report's own explanation of failure, tools that do not learn from or adapt to workflows, and McKinsey's finding that the organisations seeing value were three times likelier to have redesigned their workflows, are the closest the record comes to describing the setup above from the outside. The workflow here was redesigned around one fact: the draft is the release candidate.
 
 ## Threads woven here
 
@@ -185,19 +297,19 @@ And the question underneath stays open: who gives the mandate over a piece of in
 - [Seven vaults, one method](../articles/seven-vaults-one-method.md) and [A supply chain of vaults](../articles/supply-chain-of-vaults.md): domain vaults, and vaults owned by different parties joined through lanes.
 - [The wall under the reply](../articles/the-wall-under-the-reply.md) and [How much of this did I write?](../articles/how-much-of-this-did-i-write.md): where the human's review happens, and what the human's input is.
 - [Git for things you cannot put on GitHub](../articles/what-sgit-is.md), [Vault credentials](../docs/credentials.md), [Working with AI agents](../docs/agents.md), [the two-branch model](../docs/two-branch-model.md), [append-lane messaging](../docs/append-lane-messaging.md), [sending messages between vaults](../docs/vault-messaging.md), [the append lanes API](../api/append-lanes.md), [Agent Contact](../docs/agent-contact.md), [the security model](../security/index.md) and [the egress how-to](../docs/how-to/claude-team-egress.md): the shared-memory and compute layers as documentation.
-- [The footprint brief](../docs/briefs/riskmandate-footprint-and-blast-radius.md), [the sandbox brief](../docs/briefs/riskmandate-sandbox-twins-and-tokens.md) and [the identity and secrets design pack](../docs/briefs/secrets-sgit-ai-design-pack.md): the governance layer as briefs to RiskMandate and to secrets.sgit.ai.
-- [The articles as graphs](../articles/graphs.md): this site's own records kept the same way.
+- [The footprint brief](../docs/briefs/riskmandate-footprint-and-blast-radius.md), [the sandbox brief](../docs/briefs/riskmandate-sandbox-twins-and-tokens.md), [the subscribe lane brief](../docs/briefs/subscribe-lane-agent-brief.md) and [the identity and secrets design pack](../docs/briefs/secrets-sgit-ai-design-pack.md): the governance and lane work as briefs to RiskMandate and to secrets.sgit.ai.
+- [The articles as graphs](../articles/graphs.md): this site's own records kept the same way. [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/): maps as claims, and the coordinate contract the two maps follow.
 
 ## Sources
 
 - *The Mandate Stack: a briefing on RiskMandate's agentic setup*, v0.3, 6 October 2026, written by the CRM agent (@crm.2) from Dinis Cruz's voice notes and the team's collaboration vault; classified public, no contact data. The layers, the channel table, the folder layout, the run order, the governance rules, the feedback loop and the five reasons are taken from it, as are the counts (about fifteen agents; over 620 commits and 9,000 files; 71 people, 24 organisations, 281 timeline events and 12 campaigns as of 3 October).
-- A voice note by Dinis Cruz, 6 October 2026, on the complaint that agentic workflows do not reach production and on the name.
-- [RiskMandate.ai, the Agent Behaviour Policy](https://riskmandate.ai/abp.html); [graphs.sgit.ai](https://graphs.sgit.ai/); [risks.sgit.ai](https://risks.sgit.ai/).
+- Two voice notes by Dinis Cruz, 6 October 2026: on the complaint that agentic workflows do not reach production and on the name; and on leading with the system, the flow from the outside world, and the maps.
+- [RiskMandate.ai, the Agent Behaviour Policy](https://riskmandate.ai/abp.html); [graphs.sgit.ai](https://graphs.sgit.ai/); [risks.sgit.ai](https://risks.sgit.ai/); [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/), whose notes for agents give the coordinate order and the quoting rule the two map sources follow. The maps were rendered with Mermaid 12.1.0's wardley-beta diagram.
 - The record: Gartner press releases of [25 June 2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027) and [30 September 2025](https://www.gartner.com/en/newsroom/press-releases/2025-09-30-gartner-survey-finds-just-15-percent-of-it-application-leaders-are-considering-piloting-or-deploying-fully-autonomous-ai-agents); S&P Global Market Intelligence, Voice of the Enterprise AI use cases 2025, as reported by [CIO Dive, March 2025](https://www.ciodive.com/news/AI-project-fail-data-SPGlobal/742590/); MIT NANDA, *The GenAI Divide*, as reported by [Fortune, 18 August 2025](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/), with the critique in [Fortune, 21 August 2025](https://fortune.com/2025/08/21/an-mit-report-that-95-of-ai-pilots-fail-spooked-investors-but-the-reason-why-those-pilots-failed-is-what-should-make-the-c-suite-anxious); [McKinsey, The state of AI 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025); [Deloitte, State of AI in the Enterprise 2026](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html); [Forrester, The state of agentic AI in 2026, June 2026](https://www.forrester.com/blogs/the-state-of-agentic-ai-in-2026-companies-are-chasing-few-are-catching/); KPMG Global AI Pulse Q2 2026, as reported by [PPC Land, July 2026](https://ppc.land/kpmg-finds-49-cut-ai-agent-rollouts-when-costs-outran-value/); [Carnegie Mellon, TheAgentCompany, arXiv 2412.14161, v3 September 2025](https://arxiv.org/abs/2412.14161); [Google Cloud, ROI of AI 2025, September 2025](https://www.googlecloudpresscorner.com/2025-09-04-Google-Cloud-Study-Reveals-52-of-Executives-Say-Their-Organizations-Have-Deployed-AI-Agents%2C-Unlocking-a-New-Wave-of-Business-Value%2C1); [LangChain, State of agent engineering](https://langchain.com/state-of-agent-engineering). Gartner's and S&P's own pages refused automated fetches during research, so their figures were checked against trade-press reproductions of the releases.
 - The reversals: Klarna, [Entrepreneur, May 2025](https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/); Taco Bell, [Nation's Restaurant News, August 2025](https://www.nrn.com/restaurant-technology/taco-bell-is-adjusting-its-voice-ai-plans); Commonwealth Bank of Australia, [Bloomberg, 21 August 2025](https://www.bloomberg.com/news/articles/2025-08-21/commonwealth-bank-reverses-job-cuts-decision-over-ai-chatbots); Ford, [Repairer Driven News, July 2026](https://www.repairerdrivennews.com/2026/07/08/ford-rehires-350-engineers-after-ai-fails-at-quality/).
 - Draft-and-send as the shipped pattern: [Anthropic, Building effective agents, December 2024](https://www.anthropic.com/research/building-effective-agents); OpenAI, *A practical guide to building agents*, April 2025; [TechCrunch on Superhuman auto-drafts, July 2026](https://techcrunch.com/?p=3139498); [Shortwave changelog, January 2026](https://shortwave.com/changelog); Microsoft Learn on Copilot in Outlook leaving the reply in the compose window for the user to review and send.
 
-*Drafted from a briefing written by the RiskMandate CRM agent (@crm.2, v0.3, 6 October 2026) from Dinis Cruz's voice notes and the team's collaboration vault, and from a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session, on 6 October 2026. The figures are infographics drawn from the briefing with fictional names and sample content; no contact is named beyond the agents' published address, and no key or token appears in any figure or file. Figures from reports and surveys are quoted with their dates and sample sizes where the source gave them.*
+*Drafted from a briefing written by the RiskMandate CRM agent (@crm.2, v0.3, 6 October 2026) from Dinis Cruz's voice notes and the team's collaboration vault, and from two voice notes by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session, on 6 October 2026. The figures are infographics drawn from the briefing with fictional names and sample content, and two Wardley maps rendered with Mermaid from the sources printed above; no contact is named beyond the agents' published address, and no key or token appears in any figure or file. Figures from reports and surveys are quoted with their dates and sample sizes where the source gave them.*
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
 
