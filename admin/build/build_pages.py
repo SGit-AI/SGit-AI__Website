@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.77'
+SITE_VERSION = 'v0.6.78'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.77', '2026-10-06', 'this release',
+    ('v0.6.78', '2026-10-06', 'this release',
+     "WHY MY AGENTS DO NOT RUN ON MY LAPTOP. An article on why no model runs on the author's laptop and the "
+     "agents run on four cloud surfaces instead. An operating system has two hard walls, the kernel and the "
+     "user account, and an agent on a laptop runs inside the one marked you, with no boundary between it and "
+     "the SSH keys, cloud credentials, password-manager session and browser cookies the account can read; the "
+     "desktop agents' prompts and sandboxes are settings enforced by the process they constrain. Fifteen months "
+     "of reported incidents, July 2025 to September 2026, show what a mistake or an injected instruction reaches. "
+     "The setup: Claude chat with nothing connected, Cowork with no repositories, Claude Code on the web with one "
+     "repository and an allowlist, ChatGPT with no assets, and a vault the host cannot read as the shared drive "
+     "between them, keys handed per session. The trade-offs accepted, three wishes (identity, secrets and a key "
+     "pair per agent), and the caveat that a dedicated machine with separate accounts is a different model, to be "
+     "reported on after it has been run. Links the earlier posts on the topic. Six figures.",),
+    ('v0.6.77', '2026-10-06', 'git 5a9ea907',
      "THE DECK I COULD NOT DOWNLOAD. An article and a business-plan vault written after one presentation on "
      "SlideShare was offered as a 30-day trial and £10.99 a month while the deck's author receives nothing, "
      "under an uploader agreement quoted in the article that grants a royalty-free, sublicensable licence to "

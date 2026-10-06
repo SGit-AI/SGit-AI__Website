@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-06",
-  "site_version": "v0.6.77",
+  "site_version": "v0.6.78",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -919,6 +919,30 @@
         "article"
       ],
       "summary": "I wanted one presentation from SlideShare and was offered a 30-day trial and then £10.99 a month. The author of the deck receives nothing from that subscription, under an uploader agreement that grants the platform a royalty-free licence to monetise, charge for, sublicense and train models on the work, and I am one of those authors, with 69 decks uploaded over fifteen years. This article does three things. It says what happened to SlideShare, from a 2006 start through LinkedIn and Scribd to the September 2021 paywall, and why a service with a PDF viewer and a file store has not been replaced: fifteen years of embeds and links, which is inertia in Wardley's sense. It sets out what an author can ask the old platform for today, under the right of access and, in the EU, the copyright transparency duty, including the two questions platforms do not expect, how many downloads and what revenue. And it designs the service the author would have chosen, on the primitives this site already publishes: every author's decks in a vault the host cannot read, access decided by keys rather than settings, a read key for what is free, a receipt turned into a ten-minute key for what is paid once, a revocable grant for what is private, decryption in the browser, an attested enclave for the one step that needs plaintext, seven roles that no single company holds, and a split of 85% to the author on a ledger the author can recompute. The plan is published as a vault with a working mock, the Deck Vault, with its economics worked for one author and its risks as an acceptance register. The marginal cost is storage and bandwidth, which are near zero; the hard row is the fixed part of a card fee, which the plan says so about rather than hides. Somebody should build it. The author will build the first step for their own decks."
+    },
+    {
+      "slug": "why-my-agents-do-not-run-on-my-laptop",
+      "title": "Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has",
+      "date": "2026-10-06",
+      "version": "v0.6.78",
+      "tags": [
+        "agents",
+        "security",
+        "laptop",
+        "isolation",
+        "claude",
+        "cowork",
+        "claude-code",
+        "chatgpt",
+        "vaults",
+        "sgit",
+        "agent-behaviour-policy",
+        "prompt-injection",
+        "mcp",
+        "blast-radius",
+        "article"
+      ],
+      "summary": "I do not run any model or agent on my laptop, and I am asked why often enough to write it down. The reason is not a worry about models. It is a fact about operating systems: they have two hard walls, the kernel and the user account, and an agent on my laptop runs inside the wall marked \"me\", where it can read everything I can read, SSH keys, cloud credentials, the password manager's session, every site my browser is signed into. The rules the desktop agents add on top are settings, enforced by the process they constrain, and fifteen months of incidents show what happens when a mistake or an injected instruction reaches the account. So the agents run in four places that are not my laptop: Claude chat, with nothing connected and search across past chats switched off, for thinking; Claude Cowork in the cloud, with no repositories, for most of the agentic work; Claude Code on the web, with one repository per session and a network allowlist, when code has to change; and ChatGPT with no assets at all. What makes this workable is a vault as the shared drive between them: encrypted on the agent's side, keys handed to a session out of band, commit, pull, push, so the laptop passes keys and nothing else. The article gives the setup, the evidence, what the OS can and cannot isolate, the usability trade-offs, the three things I wish the platforms gave me, identity, secrets and a key pair per agent, and one caveat: this is about a laptop that holds the main account. A dedicated machine with separate accounts and nothing of mine on it is a different model, which I will try and report on later."
     },
     {
       "slug": "how-much-of-this-did-i-write",
