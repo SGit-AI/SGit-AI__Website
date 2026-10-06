@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.78'
+SITE_VERSION = 'v0.6.79'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.78', '2026-10-06', 'this release',
+    ('v0.6.79', '2026-10-06', 'this release',
+     "THE MANDATE STACK. An article that sets one multi-agent system in production beside the published record "
+     "of agent projects that stall: Gartner's cancellation prediction, S&P Global's abandonment survey, McKinsey, "
+     "Deloitte, KPMG and Forrester between June 2025 and July 2026, each dated and labelled, with the reversals "
+     "and the fair reading that agents do ship where the workflow stops at the draft. Built from a briefing the "
+     "RiskMandate CRM agent wrote on 6 October 2026, it describes the setup in eight layers, rented compute and "
+     "channels, encrypted vaults as shared memory with mail as files and append lanes, a vault per domain, "
+     "semantic graphs over people, contexts, teams and policies, a conductor with security at both ends, written "
+     "behaviour policies, and one human who sends; then the feedback loop in which the draft is the release "
+     "candidate and the recipient closes the loop; then each reason the record gives for failure mapped to the "
+     "mechanism that answers it. Every layer is hyperlinked to the article or document on this site where it was "
+     "worked out. The name is a working one; nothing planned is included. Six figures.",),
+    ('v0.6.78', '2026-10-06', 'git 269b6e39',
      "WHY MY AGENTS DO NOT RUN ON MY LAPTOP. An article on why no model runs on the author's laptop and the "
      "agents run on four cloud surfaces instead. An operating system has two hard walls, the kernel and the "
      "user account, and an agent on a laptop runs inside the one marked you, with no boundary between it and "

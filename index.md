@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -23,15 +23,15 @@ Four of **42 published vaults**. Each opens with a read key printed on its page,
 
 ## Start with an argument, not a menu
 
-The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 34 so far, three newest here.
+The articles are the readable way in: one page, one argument, with the figures and the links to check it. They carry most of what this site believes, so they come before the menu. 35 so far, three newest here.
 
-[2026-10-06Agents & policy12 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](articles/a-personal-agent-that-keeps-your-secrets.md) [2026-10-06Agents & policy14 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](articles/the-agent-team-as-it-runs.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](articles/the-deck-i-could-not-download.md)
+[2026-10-06Agents & policy12 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](articles/a-personal-agent-that-keeps-your-secrets.md) [2026-10-06Agents & policy15 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](articles/the-agent-team-as-it-runs.md) [2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](articles/the-deck-i-could-not-download.md)
 
+- [The Mandate Stack](articles/the-mandate-stack.md) · 2026-10-06
 - [Why my agents do not run on my laptop](articles/why-my-agents-do-not-run-on-my-laptop.md) · 2026-10-06
 - [How much of this did I write? The numbers behind twenty…](articles/how-much-of-this-did-i-write.md) · 2026-10-05
 - [If somebody built a company on code review](articles/if-somebody-built-a-company-on-code-review.md) · 2026-10-05
 - [Send an agent, not a spreadsheet](articles/send-an-agent-not-a-spreadsheet.md) · 2026-10-05
-- [The identity we wanted to give the agents](articles/the-identity-we-wanted-to-give-the-agents.md) · 2026-10-05
 
 [All articles, by topic →](articles/index.md) · [The articles as graphs →](articles/graphs.md)
 
@@ -55,7 +55,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-236site releases, each verified live before it was called done
+237site releases, each verified live before it was called done
 
 42vaults published with a deliberately public read key
 

@@ -2,7 +2,7 @@
 
 > I do not run any model or agent on my laptop, and I am asked why often enough to write it down. The reason is not a worry about models. It is a fact about operating systems: they have two hard walls, the kernel and the user account, and an agent on my laptop runs inside the wall marked "me", where it can read everything I can read, SSH keys, cloud credentials, the password manager's session, every site my browser is signed into. The rules the desktop agents add on top are settings, enforced by the process they constrain, and fifteen months of incidents show what happens when a mistake or an injected instruction reaches the account. So the agents run in four places that are not my laptop: Claude chat, with nothing connected and search across past chats switched off, for thinking; Claude Cowork in the cloud, with no repositories, for most of the agentic work; Claude Code on the web, with one repository per session and a network allowlist, when code has to change; and ChatGPT with no assets at all. What makes this workable is a vault as the shared drive between them: encrypted on the agent's side, keys handed to a session out of band, commit, pull, push, so the laptop passes keys and nothing else. The article gives the setup, the evidence, what the OS can and cannot isolate, the usability trade-offs, the three things I wish the platforms gave me, identity, secrets and a key pair per agent, and one caveat: this is about a laptop that holds the main account. A dedicated machine with separate accounts and nothing of mine on it is a different model, which I will try and report on later.
 
-*Source: <https://sgit.ai/articles/why-my-agents-do-not-run-on-my-laptop.html> · site v0.6.78 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/why-my-agents-do-not-run-on-my-laptop.html> · site v0.6.79 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -154,6 +154,10 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#why-my-age
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 - [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
+
+### Continued by
+
+- [The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there](the-mandate-stack.md) The record says agent projects stall for five reasons. One multi-agent system runs anyway: eight layers, one written mandate per agent, and one human who sends.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

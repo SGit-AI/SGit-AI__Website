@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-06",
-  "site_version": "v0.6.78",
+  "site_version": "v0.6.79",
   "updates": [
     {
       "slug": "the-design-is-the-performance",
@@ -919,6 +919,30 @@
         "article"
       ],
       "summary": "I wanted one presentation from SlideShare and was offered a 30-day trial and then £10.99 a month. The author of the deck receives nothing from that subscription, under an uploader agreement that grants the platform a royalty-free licence to monetise, charge for, sublicense and train models on the work, and I am one of those authors, with 69 decks uploaded over fifteen years. This article does three things. It says what happened to SlideShare, from a 2006 start through LinkedIn and Scribd to the September 2021 paywall, and why a service with a PDF viewer and a file store has not been replaced: fifteen years of embeds and links, which is inertia in Wardley's sense. It sets out what an author can ask the old platform for today, under the right of access and, in the EU, the copyright transparency duty, including the two questions platforms do not expect, how many downloads and what revenue. And it designs the service the author would have chosen, on the primitives this site already publishes: every author's decks in a vault the host cannot read, access decided by keys rather than settings, a read key for what is free, a receipt turned into a ten-minute key for what is paid once, a revocable grant for what is private, decryption in the browser, an attested enclave for the one step that needs plaintext, seven roles that no single company holds, and a split of 85% to the author on a ledger the author can recompute. The plan is published as a vault with a working mock, the Deck Vault, with its economics worked for one author and its risks as an acceptance register. The marginal cost is storage and bandwidth, which are near zero; the hard row is the fixed part of a card fee, which the plan says so about rather than hides. Somebody should build it. The author will build the first step for their own decks."
+    },
+    {
+      "slug": "the-mandate-stack",
+      "title": "The Mandate Stack: a multi-agent system in production, layer by layer, against the record of agent projects that never got there",
+      "date": "2026-10-06",
+      "version": "v0.6.79",
+      "tags": [
+        "agents",
+        "agent-behaviour-policy",
+        "riskmandate",
+        "vaults",
+        "sgit",
+        "email-fs",
+        "crm",
+        "fractal-semantic-graphs",
+        "orchestration",
+        "governance",
+        "human-in-the-loop",
+        "production",
+        "claude",
+        "google-workspace",
+        "article"
+      ],
+      "summary": "The published record on agentic AI from June 2025 to July 2026 is a record of pilots that stall. Gartner expects more than 40% of agentic projects to be cancelled by the end of 2027; S&P Global found 42% of companies abandoning most of their AI initiatives; McKinsey found at most one in ten scaling agents in any one function; KPMG found half of its respondents scaling back agent rollouts because costs outran returns. This article sets one running system beside that record. RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article then names the feedback loop that makes it hold, the draft as a release candidate with the recipient closing the loop, and maps each reason the record gives for failure to the mechanism in the stack that answers it. Every layer is linked to the article or document on this site where it was worked out. The name is a working one, and nothing planned is included."
     },
     {
       "slug": "why-my-agents-do-not-run-on-my-laptop",
