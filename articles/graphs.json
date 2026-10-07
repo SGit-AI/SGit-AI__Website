@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.98",
+  "site_version": "v0.6.100",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -55,6 +55,441 @@
   ],
   "articles": [
     {
+      "slug": "liquid-content-needs-water",
+      "title": "Liquid content needs water: liquefy the journalist's notebook, not the finished product",
+      "date": "2026-10-07",
+      "updated": "",
+      "url": "https://sgit.ai/articles/liquid-content-needs-water.html",
+      "markdown": "https://sgit.ai/articles/liquid-content-needs-water.md",
+      "card": "https://sgit.ai/articles/cards/liquid-content-needs-water.webp",
+      "teaser": "A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.",
+      "topics": [
+        "news-and-evidence",
+        "graphs-and-knowledge"
+      ],
+      "tags": [
+        "journalism",
+        "liquid-content",
+        "story-vault",
+        "fractal-semantic-graphs",
+        "newsroom",
+        "personalisation",
+        "micropayments",
+        "agents",
+        "ft-strategies",
+        "article"
+      ],
+      "links_out": [
+        "introducing-fractal-semantic-graphs",
+        "future-of-news-story-vault-not-paywall",
+        "custom-uis-are-not-the-exception",
+        "the-bridge-followed-to-the-end",
+        "how-much-of-this-did-i-write",
+        "how-news-got-here",
+        "token-bill-nobody-is-sending"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "liquid-content-needs-water",
+        "teaser": "A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.",
+        "topics": [
+          "news-and-evidence",
+          "graphs-and-knowledge"
+        ],
+        "core_idea": "Liquid content, journalism built from datafied components, is right in its instincts, but what makes content liquid is the reporting inside it, so the way in is not a reinvention of newsroom norms but putting the experienced journalist and their existing workflow at the centre, liquefying their notebook into a story graph as they work, keeping the writing theirs because writing is how the story is found, bringing in experts paid for time and credibility, personalising by intersecting the reader's graph with the story's, keeping editorial direction rather than readers' tastes as the brief, and getting paid per use down the graph rather than only through advertising, subscriptions and licensing.",
+        "nodes": [
+          {
+            "id": "liquid-content",
+            "label": "Liquid content, as FT Strategies defines it",
+            "kind": "concept",
+            "summary": "Content made of datafied atomic objects, quotes, events, dates, rather than finished products; clay kept wet."
+          },
+          {
+            "id": "agree",
+            "label": "What the guide gets right",
+            "kind": "claim",
+            "summary": "Data journalism as the model, honest open questions, structure behind every front end, pay-per-query with agents."
+          },
+          {
+            "id": "water",
+            "label": "Liquid needs water: the reporting",
+            "kind": "claim",
+            "summary": "What makes content liquid is the notebook, interviews, documents and hypotheses, kept with their sources as a graph."
+          },
+          {
+            "id": "clay",
+            "label": "The limit of clay",
+            "kind": "concept",
+            "summary": "By the time it is clay the sources and doubts are mixed in and gone; a graph keeps them."
+          },
+          {
+            "id": "method-exists",
+            "label": "The method already exists",
+            "kind": "claim",
+            "summary": "Centuries of journalistic practice need tools, not reinvention; bring back the experienced journalists."
+          },
+          {
+            "id": "desk",
+            "label": "A desk built around the journalist",
+            "kind": "method",
+            "summary": "Capture the notebook as it is kept, a custom interface per journalist, a graph they can see and correct."
+          },
+          {
+            "id": "writing",
+            "label": "Writing is how the story is found",
+            "kind": "claim",
+            "summary": "The journalist writes the article and discovers the narrative; other projections come from the graph and are checked against it."
+          },
+          {
+            "id": "experts",
+            "label": "Experts a newsroom could rarely afford",
+            "kind": "concept",
+            "summary": "Historians, analysts, professors, practitioners, paid for time and for the credibility they lend, credited in the graph."
+          },
+          {
+            "id": "is-not",
+            "label": "The three 'is not's, with a graph underneath",
+            "kind": "method",
+            "summary": "Archives can be liquefied, interfaces are built from the graph, and personalisation means graph intersection."
+          },
+          {
+            "id": "intersection",
+            "label": "Personalisation as the meeting of two graphs",
+            "kind": "concept",
+            "summary": "The reader's role, company, time, depth and language meet the story's claims; only there is something to say."
+          },
+          {
+            "id": "tastes",
+            "label": "Readers' tastes are not the brief",
+            "kind": "claim",
+            "summary": "Prioritising what readers click is the path to clickbait; readers pay for a publication's judgment and direction."
+          },
+          {
+            "id": "money",
+            "label": "Paid per use, down the edges",
+            "kind": "claim",
+            "summary": "Beyond retention, ads and licensing: per use, per agent question, per claim to who found it, per citation."
+          },
+          {
+            "id": "seo-geo",
+            "label": "The structure has a value to whoever reads it",
+            "kind": "question",
+            "summary": "Publishers did the indexing work for search engines for free; structuring for AI engines should be priced."
+          },
+          {
+            "id": "start",
+            "label": "Start with one journalist",
+            "kind": "method",
+            "summary": "One topic, one reporter's notebook, one desk, one expert, one extra projection, then liquefy what the next story touches."
+          }
+        ],
+        "edges": [
+          {
+            "from": "water",
+            "to": "liquid-content",
+            "rel": "extends"
+          },
+          {
+            "from": "agree",
+            "to": "liquid-content",
+            "rel": "answers"
+          },
+          {
+            "from": "clay",
+            "to": "water",
+            "rel": "contrasts"
+          },
+          {
+            "from": "water",
+            "to": "method-exists",
+            "rel": "leads-to"
+          },
+          {
+            "from": "method-exists",
+            "to": "desk",
+            "rel": "produces"
+          },
+          {
+            "from": "desk",
+            "to": "writing",
+            "rel": "depends-on"
+          },
+          {
+            "from": "desk",
+            "to": "experts",
+            "rel": "leads-to"
+          },
+          {
+            "from": "is-not",
+            "to": "liquid-content",
+            "rel": "extends"
+          },
+          {
+            "from": "intersection",
+            "to": "is-not",
+            "rel": "example-of"
+          },
+          {
+            "from": "tastes",
+            "to": "writing",
+            "rel": "compared-with"
+          },
+          {
+            "from": "money",
+            "to": "experts",
+            "rel": "depends-on"
+          },
+          {
+            "from": "seo-geo",
+            "to": "money",
+            "rel": "extends"
+          },
+          {
+            "from": "start",
+            "to": "desk",
+            "rel": "depends-on"
+          },
+          {
+            "from": "start",
+            "to": "water",
+            "rel": "produces"
+          }
+        ],
+        "links": {
+          "articles": [
+            "the-bridge-followed-to-the-end",
+            "story-vault-meets-reader-skills",
+            "future-of-news-story-vault-not-paywall",
+            "how-news-got-here",
+            "token-bill-nobody-is-sending",
+            "custom-uis-are-not-the-exception",
+            "introducing-fractal-semantic-graphs",
+            "how-much-of-this-did-i-write"
+          ],
+          "pages": [
+            "demos/vaults/bridge-simulation/index.html"
+          ],
+          "sites": [
+            "https://www.ftstrategies.com/en-gb/insights/liquid-content-demystifying-ai-for-news-publishers"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "If content is to be liquid, it needs water in it, and the water is not the format.",
+            "why": "Where the article departs from the guide: liquidity comes from the reporting, not the product."
+          },
+          {
+            "text": "Part of the skill of a journalist is writing the article, because writing it is how they discover the narrative.",
+            "why": "Why AI should not write everything."
+          },
+          {
+            "text": "Readers' needs should shape the projections. They should not replace the direction.",
+            "why": "The line between personalisation and clickbait."
+          }
+        ]
+      }
+    },
+    {
+      "slug": "the-bridge-followed-to-the-end",
+      "title": "The bridge, followed to the end: what one local story is worth when it is kept as a graph",
+      "date": "2026-10-07",
+      "updated": "",
+      "url": "https://sgit.ai/articles/the-bridge-followed-to-the-end.html",
+      "markdown": "https://sgit.ai/articles/the-bridge-followed-to-the-end.md",
+      "card": "https://sgit.ai/articles/cards/the-bridge-followed-to-the-end.webp",
+      "teaser": "A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.",
+      "topics": [
+        "news-and-evidence",
+        "graphs-and-knowledge"
+      ],
+      "tags": [
+        "journalism",
+        "local-news",
+        "reader-skills",
+        "liquid-utility",
+        "story-vault",
+        "fractal-semantic-graphs",
+        "micropayments",
+        "agents",
+        "simulation",
+        "article"
+      ],
+      "links_out": [
+        "story-vault-meets-reader-skills"
+      ],
+      "links_in": [
+        "liquid-content-needs-water",
+        "story-vault-meets-reader-skills"
+      ],
+      "graph": {
+        "slug": "the-bridge-followed-to-the-end",
+        "teaser": "A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.",
+        "topics": [
+          "news-and-evidence",
+          "graphs-and-knowledge"
+        ],
+        "core_idea": "Played out as a simulation on a story vault, one local bridge closure shows the value of journalism as getting a disputed fact right and keeping it right: newsworthy on five days but needed on fifty-seven, used through Reader Skills by readers whose own graphs meet the story graph at shared anchors and who decide better with it, bought by institutions and agents who need the same claims, cheaper for agents than searching, and paid for in small amounts that walk back down the claims to the reporter, the paper and the residents whose evidence the graph names.",
+        "nodes": [
+          {
+            "id": "the-closure",
+            "label": "A bridge closes; the council says one week",
+            "kind": "example",
+            "summary": "A fictional town's main crossing shuts for urgent repairs; the official estimate is a week."
+          },
+          {
+            "id": "the-work",
+            "label": "The journalism is getting the date right",
+            "kind": "claim",
+            "summary": "The contract says three weeks, the engineer five to seven; the reporter finds both and the paper runs the contradiction."
+          },
+          {
+            "id": "supersede",
+            "label": "Each correction supersedes the last",
+            "kind": "method",
+            "summary": "The graph keeps every estimate with its date, so it can say what was believed on any day and why."
+          },
+          {
+            "id": "news-vs-need",
+            "label": "Newsworthy on five days, needed on fifty-seven",
+            "kind": "claim",
+            "summary": "The paper leads with the story five times; readers need its current state every day it is closed."
+          },
+          {
+            "id": "reader-graphs",
+            "label": "Each reader's graph meets the story",
+            "kind": "concept",
+            "summary": "Home, school, routes and customers held on the reader's device, joined to the claims at shared anchors."
+          },
+          {
+            "id": "three-readers",
+            "label": "A parent, a café owner, a plumber",
+            "kind": "example",
+            "summary": "The same claims become a walking route, a stock plan and a job schedule."
+          },
+          {
+            "id": "decisions",
+            "label": "Better decisions, counted",
+            "kind": "claim",
+            "summary": "A club booked in time, £640 of stock not wasted, £1,200 of relief claimed, nine hours of driving saved."
+          },
+          {
+            "id": "without",
+            "label": "Without it: stale pages, rumours, nobody accountable",
+            "kind": "claim",
+            "summary": "The council page says a week for nine days, a group says Friday, TV covers day one and day forty-six."
+          },
+          {
+            "id": "buyers",
+            "label": "Buyers who do not read the paper",
+            "kind": "concept",
+            "summary": "Highways teams, investors and national desks need the same graph for regional and national decisions."
+          },
+          {
+            "id": "agents",
+            "label": "Agents spend less and are right",
+            "kind": "claim",
+            "summary": "Searching costs about $377 over the closure and finds the stale page; asking the newsroom costs about $54."
+          },
+          {
+            "id": "money",
+            "label": "£2,707, walked back to the sources",
+            "kind": "artefact",
+            "summary": "Small amounts from 1,596 readers and businesses plus institutions; 35% to the reporter, £203 to a resident."
+          },
+          {
+            "id": "vault",
+            "label": "The simulation as a vault",
+            "kind": "artefact",
+            "summary": "Every figure computed from written assumptions by a build script, published with its read key."
+          }
+        ],
+        "edges": [
+          {
+            "from": "the-closure",
+            "to": "the-work",
+            "rel": "leads-to"
+          },
+          {
+            "from": "the-work",
+            "to": "supersede",
+            "rel": "depends-on"
+          },
+          {
+            "from": "supersede",
+            "to": "news-vs-need",
+            "rel": "answers"
+          },
+          {
+            "from": "reader-graphs",
+            "to": "three-readers",
+            "rel": "produces"
+          },
+          {
+            "from": "three-readers",
+            "to": "decisions",
+            "rel": "produces"
+          },
+          {
+            "from": "decisions",
+            "to": "without",
+            "rel": "contrasts"
+          },
+          {
+            "from": "the-work",
+            "to": "buyers",
+            "rel": "leads-to"
+          },
+          {
+            "from": "buyers",
+            "to": "agents",
+            "rel": "extends"
+          },
+          {
+            "from": "decisions",
+            "to": "money",
+            "rel": "leads-to"
+          },
+          {
+            "from": "agents",
+            "to": "money",
+            "rel": "leads-to"
+          },
+          {
+            "from": "vault",
+            "to": "money",
+            "rel": "produces"
+          },
+          {
+            "from": "news-vs-need",
+            "to": "reader-graphs",
+            "rel": "leads-to"
+          }
+        ],
+        "links": {
+          "articles": [
+            "story-vault-meets-reader-skills",
+            "future-of-news-story-vault-not-paywall"
+          ],
+          "pages": [
+            "demos/vaults/bridge-simulation/index.html"
+          ],
+          "sites": [
+            "https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "An article is written once. A maintained claim, kept current until the bridge opens, is a service.",
+            "why": "Why the value of a local story outlives its news cycle."
+          },
+          {
+            "text": "As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source.",
+            "why": "Why agents should pay for local journalism."
+          }
+        ]
+      }
+    },
+    {
       "slug": "story-vault-meets-reader-skills",
       "title": "Story vault underneath, Reader Skills on top: why local journalism has the most to gain",
       "date": "2026-10-07",
@@ -81,9 +516,12 @@
       ],
       "links_out": [
         "future-of-news-story-vault-not-paywall",
-        "how-news-got-here"
+        "how-news-got-here",
+        "the-bridge-followed-to-the-end"
       ],
-      "links_in": [],
+      "links_in": [
+        "the-bridge-followed-to-the-end"
+      ],
       "graph": {
         "slug": "story-vault-meets-reader-skills",
         "teaser": "Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.",
@@ -3122,6 +3560,7 @@
         "the-wall-under-the-reply"
       ],
       "links_in": [
+        "liquid-content-needs-water",
         "the-mandate-stack"
       ],
       "graph": {
@@ -5601,6 +6040,7 @@
         "ultimate-insider-three-collisions"
       ],
       "links_in": [
+        "liquid-content-needs-water",
         "the-mandate-stack",
         "the-agent-team-as-it-runs",
         "the-wall-under-the-reply",
@@ -6180,6 +6620,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "liquid-content-needs-water",
         "story-vault-meets-reader-skills",
         "the-deck-i-could-not-download"
       ],
@@ -6712,6 +7153,7 @@
         "introducing-fractal-semantic-graphs"
       ],
       "links_in": [
+        "liquid-content-needs-water",
         "memory-is-not-a-spectator-sport",
         "custom-uis-are-not-the-exception",
         "how-news-got-here"
@@ -7786,6 +8228,7 @@
         "the-question-is-whether-they-miss-it"
       ],
       "links_in": [
+        "liquid-content-needs-water",
         "story-vault-meets-reader-skills",
         "the-deck-i-could-not-download",
         "custom-uis-are-not-the-exception",
@@ -8544,6 +8987,7 @@
       ],
       "links_out": [],
       "links_in": [
+        "liquid-content-needs-water",
         "the-behaviour-policy-is-the-business-logic",
         "ai-baseline-control-framework",
         "the-mandate-stack",

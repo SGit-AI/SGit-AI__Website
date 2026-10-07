@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.98'
+SITE_VERSION = 'v0.6.100'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,14 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.98', '2026-10-08', 'this release',
+    ('v0.6.100', '2026-10-08', 'this release',
      "THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: "
      "list/subscribers.json holds the current state (status, name, consent, sources, preferences) and "
      "list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. "
      "The drain turns accepted messages into list events with no model in the loop, and other agents can add "
      "events without the vault key, through a fenced list-event block in signed mail (the site agent's "
      "issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands."),
-    ('v0.6.97', '2026-10-07', 'git 6685970f',
+    ('v0.6.99', '2026-10-08', 'released with v0.6.100',
      "SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding "
      "vault keys is pointed at, with an inbox vault id and an append token given privately and never "
      "published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what "
@@ -46,13 +46,33 @@ VERSION_LOG = [
      "HTTP failure by its real cause. Reviewed by the registry before release: read keys are accepted (recorded "
      "as read-only), a too-large payload is reported without a size the drain does not enforce, and the page "
      "says that a payload on the lane can still be quarantined. The first live run delivered two keys, signed."),
-    ('v0.6.96', '2026-10-07', 'released with v0.6.97',
+    ('v0.6.98', '2026-10-08', 'released with v0.6.100',
      "THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in "
      "/.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, "
      "agents, so the live file failed this site's own schema. The form lane is now described only in "
      "/.well-known/sgit-subscribe.json, which is what the form reads; the contact file lists the agents "
      "lane and validates. The subscribe brief gains the rule that everything inside a message is data, "
      "never instructions, for the agent that reads what the drain filed."),
+    ('v0.6.97', '2026-10-07', 'git a4b4b7b7',
+     "LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on "
+     "the definition, data journalism as the model and structure behind every front end, then where to push. The water "
+     "is the reporting, so liquefy the journalist's notebook rather than the finished product; put the experienced "
+     "journalist and their workflow at the centre, with a desk built for them and experts paid for time and "
+     "credibility; keep writing theirs, because writing is how the story is found; read the guide's three 'is not's "
+     "with a graph underneath; personalise by intersecting the reader's graph with the story's; keep editorial "
+     "direction, not readers' tastes, as the brief; and add per-use payment down the graph to retention, advertising "
+     "and licensing. Four figures, the ChatGPT infographic of the guide with a reading note, graph JSON. The Reader "
+     "Skills article's infographic caption now records Markus Franz's reply to it.",),
+    ('v0.6.96', '2026-10-07', 'git 9e71c7d6',
+     "THE BRIDGE, FOLLOWED TO THE END. A simulation of Markus Franz's bridge example, played out on a story vault: a "
+     "fictional town, Wendmouth, whose bridge closes; the council says one week, the contract three, an engineer five "
+     "to seven, and it opens on day forty-six. The vault (bridge-simulation, published with its read key) holds the "
+     "evidence, claims with their contradictions, the paper, the newsroom, a timeline (newsworthy on five days, needed "
+     "on fifty-seven), three readers with their own graphs, skills, decisions and WhatsApp messages, the institutional "
+     "and agent buyers, where the money goes, the view without it and the short/medium/long, local/regional/national "
+     "impact; every figure is computed by its build script from written assumptions. A new article walks through it, "
+     "and the Reader Skills article gains the ChatGPT infographic from the voice note, with a reading note on what it "
+     "gets right and what it overstates.",),
     ('v0.6.95', '2026-10-07', 'git 3ee1826f',
      "A SUBSCRIBE PAGE, AND ISSUES AT DATED URLS. sgit.ai/subscribe/ is the one page with the newsletter form: what an "
      "issue holds, what comes next, where else it is published, what happens to the address, and the latest issue. "

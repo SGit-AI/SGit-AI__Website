@@ -1,0 +1,86 @@
+---
+title: The bridge, followed to the end: what one local story is worth when it is kept as a graph
+date: 2026-10-07
+time: 22:30
+author: Dinis Cruz
+author_url: about/index.html
+summary: A simulation of Markus Franz's bridge example, played out on a story vault from the council's first notice to the first car across. A fictional town's main bridge closes; the council says one week, the contract on site says three, an independent engineer says five to seven, and it opens after forty-six days. The paper leads with it five times; readers need it on fifty-seven days. Three readers, a parent, a café owner on the far bank and a plumber who works both banks, use the same claims in three different ways, each from their own graph, and make better decisions with them: an after-school club booked in time, £640 of stock not wasted and £1,200 of relief claimed, nine hours of driving saved. A county highways team, an investor, a national desk and a routing agent buy from the same graph, and the agent spends a seventh of what it would have spent searching, and is right from the first week. Everything they pay, £2,707 in the simulation, walks back down the claims to the reporter, the paper and the resident whose photos were the evidence. The vault is published with its read key.
+version: v0.6.96
+license: https://creativecommons.org/licenses/by/4.0/
+tags: journalism, local-news, reader-skills, liquid-utility, story-vault, fractal-semantic-graphs, micropayments, agents, simulation, article
+status: published
+---
+
+!shot bw-paper.webp | images/ | The Wendmouth Courier on 2 November, in the simulation: the headline is one projection of the story graph, and the tracker beside it shows every source's reopening date. Everything in the simulation is fictional.
+
+Where I live, a bridge closed. It was a nightmare on the school run, and a nightmare for the businesses on the other side, because suddenly the people who used to walk in could not reach them. Nothing seemed coordinated. You could not tell whether it would be a week or a season. You looked on social media, on the council's website, on a local news page that had last been updated on the day it closed, and nobody you asked was accountable for the answer.
+
+Markus Franz used the same example in [The Article Is Only the Beginning](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/), and I wrote earlier today about [how his Reader Skills sit on top of a story vault](/articles/story-vault-meets-reader-skills.html). This article plays his example out in full, as a working simulation, from the first notice to the reopening: the journalism, the paper, three readers, the institutions and agents that also need the answer, and where the money goes. Everything in it is fictional, the town of Wendmouth, the Mill Street Bridge, the Courier and its staff, the readers, the contractor and every figure. The [vault](/demos/vaults/bridge-simulation/index.html) is published with its read key, and every number below is computed by its build script from assumptions written down in it.
+
+## The journalism is getting the date right
+
+!shot bw-conflict.webp | images/ | Three answers to the only question that mattered, as the newsroom held them on 15 October: an official estimate, a documented contract and an expert assessment, each with its evidence and a confidence that comes from how independent that evidence is.
+
+On 12 October the council announced that the bridge would close on the 19th for urgent bearing repairs and was "expected to reopen within a week". That is the headline, and most coverage stops there.
+
+The reporter did not. On the 14th she found the contract on the procurement portal: three weeks, £186,000. Two workers on site said the same, "if nothing else turns up"; they are flagged anonymous at the node, so every projection redacts them. On the 15th she called an independent structural engineer, who said five to seven weeks is typical for this repair. Three sources, three dates, and two of them independent of each other and of the council. The paper ran it: *Bridge contract runs three weeks, not one; engineer warns of six.*
+
+That is the work of the journalist, and it is what a reader is paying for: not the prose, but getting the fact right when the official version is wrong. The council moved its date to mid-November on the 21st. On 2 November a second defect was found and the contract was extended by three weeks. The bridge reopened on 4 December, day forty-six, inside the engineer's range and almost six weeks past the council's first date. In the story graph each of those is a claim, and each correction supersedes the last rather than replacing it, so the graph can still say what was believed on any day and why.
+
+Sometimes the text is not even the product. Markus makes the point that much of what a reader needs is deterministic: a date, a stop, a route, a yes or no. The value of the journalism is that the date is right, sourced and current.
+
+## Newsworthy on five days, needed on fifty-seven
+
+!shot bw-timeline.webp | images/ | Top: what each source said the reopening date would be, day by day. Bottom: the five days the paper led with the story, against the fifty-seven days readers needed its current state.
+
+This is the chart I think matters most. A story is newsworthy at the beginning and at the end: the closure, the scandal in the middle if there is one, the reopening. The paper in the simulation leads with the bridge on five days. But the information is valuable every day it is closed, to everybody who has to plan around it, and in the simulation readers need its current state on fifty-seven days. The thirteen days on which something actually changed are the days the tracker earns its keep: the update, the alert, the correction, sent to the people it affects.
+
+That gap between the news cycle and the need is where the money has been left on the table. An article is written once. A maintained claim, kept current until the bridge opens, is a service.
+
+## Three readers, three graphs, one story
+
+!shot bw-meet.webp | images/ | Three readers' graphs meet the story graph at shared anchors: the bridge, the footbridge, the bypass, a bus route and a stop. Green claims are current; grey ones have been superseded and are kept.
+
+Every reader has a graph of their own: where they live, where their children go to school, which bus they take, where their business is and where its customers come from. In the simulation it is held on the reader's device and not sent anywhere. Where it touches the story graph, at a place, a route, a stop, the Reader Skills have something to answer, and the same claims answer three people differently.
+
+**Hannah** lives on the south bank. Her two children are at the primary school on the north bank, and she takes the 08:05 bus. On the 15th, the day the contract story ran, she booked the after-school club for three weeks, before the places filled; on the 16th the tracker told her the bus stop was moving and the diverted bus would take eighteen minutes longer, and that the footbridge would stay open, twelve minutes on foot. She walked. When the second defect was reported she extended the club the same evening. She paid £2.28 over seven weeks. By her own reckoning it was worth about £180 of pay she did not lose and seventeen hours she did not spend on buses.
+
+!shot bw-hannah-graph.webp | images/ | Hannah's graph meets the story graph: her home, her children's school, her routines and routes on the left, held on her device; the anchors both graphs share; the claims that reach her through them.
+
+**Dev** runs a café on the north bank, where about sixty per cent of his morning trade walks across the bridge. On the 15th he had three dates in front of him and the confidence attached to each, and he planned on six weeks: stock orders cut by forty per cent, one member of staff moved to a coffee cart at the north end of the footbridge, where Hannah and everybody else on foot now passed. On 2 November he applied for the council's disruption relief with the dates and the Courier's claims as evidence, before the scheme was capped. He paid £5.76. He kept about £640 of stock out of the bin and received £1,200 of relief.
+
+**Marco** is a plumber with jobs on both banks. On the 19th he started clustering jobs by bank and crossing once a day, after ten. From the 26th the cycle club's queue data put a number on it: about eight minutes after ten, against a median of twenty-four and a peak of forty-one at eight. He added a time allowance to cross-river quotes until December. His scheduling agent asked the tracker each morning rather than searching the web. He paid 54p, in alerts and skill runs. He saved about nine hours of driving.
+
+!shot bw-hannah-phone.webp | images/ | What Hannah received, as WhatsApp messages from the tracker: seven messages over seven weeks, each one about her route, each with its source. | small
+
+The intersection is the point. The footbridge is a route for Hannah and a customer flow for Dev; the bypass is a cost for Marco and a clue for Dev about who still comes. One set of claims, kept once, by one reporter, serves all of them, and the vault shows exactly which claim reached whom, through which anchor.
+
+## With accurate information, and without it
+
+The vault puts each decision beside its counterfactual, the way the closure usually goes. Without the tracker, Hannah plans on one week, takes the diverted bus for the first week, is late three days running, and finds the after-school club full by the second. Dev orders for normal trade three times, once for each date the council gives, and applies for relief late. Marco crosses at peak and absorbs the detour on fixed prices.
+
+The sources in that version of events are familiar. The council's page says "within a week" until the 21st; its new date, when it comes, is on page forty-one of a cabinet report. The local Facebook group says it is opening on Friday, two hundred shares. Regional television covers the closure on day one and the reopening on day forty-six. Nobody in that list is accountable for the answer, and nobody is paid to keep it right.
+
+## The buyers who do not read the paper
+
+Local information has buyers far beyond the local reader. In the simulation a county highways team licenses the evidence vault, because a second defect on one bridge is a question about eight others of the same design, and brings two inspections forward. An analyst at a fund that holds the contractor's parent licenses it commercially, because contract variations like this one, across three councils, are a pattern worth raising on a results call. A national desk writing about ageing bridges pays to cite the local claims and passes a penny per reader back down. Short, medium and long term, local, regional and national: the vault lays out who needs the same graph for which decision.
+
+!shot bw-agent.webp | images/ | One question an agent asks every morning: is the bridge open, and when will it be? Searching on its own, it reads six pages, spends about sixteen cents and finds the council's first page; asking the newsroom, it spends about two cents and is right.
+
+And then there are agents. A regional delivery firm's routing agent plans 140 vans a day across the river. Asked whether the bridge is open and when it will reopen, it can search, read and reconcile: five searches, six pages, about forty-five thousand tokens, and the page that ranks first is the council's original "within a week". Or it can ask the newsroom that keeps the claim current, for a penny. In the simulation, over 2,392 questions, searching costs about $377 in tokens and is wrong for the first week; asking costs about $54 including the pennies, and is right from the 15th. As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source. The token prices are illustrative and the vault says so; the shape of the comparison is the point.
+
+## Where the money goes
+
+!shot bw-money.webp | images/ | Who paid, and where it went: £2,707 from 1,596 readers and businesses, four institutions and an agent; 35% to the reporter, 45% to the Courier, 10% to the evidence contributors, 10% to infrastructure and payments. The prices, volumes and split are assumptions written in the vault's build script.
+
+In the simulation, one closure earns £2,707. Most of it, £2,408, is small amounts from the town: 1,240 people following the bridge for thirty pence a week while it was closed, forty-six businesses on a business tracker, 310 people paying per alert, five thousand skill runs at two pence. The institutions and the agent add £291. Thirty-five per cent goes to the reporter, £948 for one story kept right for seven weeks; forty-five per cent to the Courier; ten per cent to infrastructure and payments; and ten per cent to the people whose evidence the claims rest on, shared by how many claims each supported. Priya, the resident who photographed the site notice, the footbridge sign and the first traffic, receives £203. The cycle club that logged the bypass queues twice a day receives £68.
+
+Interviewees are not paid. The Courier does not pay for comment, and an anonymous source cannot be paid without being identified. The people paid are the people whose evidence the graph names, which is the mechanism this whole series keeps returning to: *a page that cannot name its source cannot pay it.*
+
+Every figure here is an assumption, and the vault writes them down where anybody can change them and run it again. What does not depend on the assumptions is the shape: a local story kept as a graph is worth something every day it matters, to everybody it touches, in amounts small enough to pay without thinking, and the graph knows whom to pay.
+
+## What the simulation is for
+
+It is not a forecast. It is a way to see the argument whole, with the parts that are usually invisible drawn in: the reporter's work behind the date, the readers' own graphs and where they meet the story, the decisions made better, the buyers beyond the town, the agents, and the money walking back. Markus asked what journalism could help someone do. In one bridge closure, the answer is: plan a school run, keep a café open, price a job, inspect eight bridges, route a hundred and forty vans, and know, every day until it reopens, that the answer is right and who is answerable for it.
+
+*Drafted from a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026. The simulation, its town, people, organisations, dates and figures are fictional, and every number above is computed by the vault's build script from assumptions written in it. Markus Franz's bridge example and his terms, Liquid Utility and Reader Skills, are credited to his article. The opening anecdote is the author's own experience, not part of the simulation.*

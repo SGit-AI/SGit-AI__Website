@@ -19,6 +19,10 @@ That is the opening of [The Article Is Only the Beginning](https://www.linkedin.
 
 His proposal is called **Liquid Utility**: trusted journalistic knowledge, combined with reusable methods and appropriate tools, to help someone understand, follow or act on what matters to them. He delivers it through six **Reader Skills**, bounded journalistic capabilities a reader can use directly: Understand, Update, Relate, Compare, Follow and Act. It is careful about what it does not claim. A skill is not a safety guarantee. The case for a publisher over a generic assistant has to rest on original access, maintained data, local reporting and editorial accountability, and even then the service has to be demonstrably better at a particular task. And the business test is kept visible: reach, utility, relationship, reciprocity, measured rather than assumed.
 
+!shot lu-chatgpt-infographic.webp | images/ | An infographic of Markus Franz's article, made with ChatGPT from the article's text and posted under his LinkedIn post, where he replied that he liked "how clearly you visualised the shift from Liquid Content to Liquid Utility". Faithful on the six skills, the layers and the safeguards; see the note below for what it adds and what it drops. | medium
+
+> **Reading the infographic against the article.** It gets the substance right: the gap, Liquid Utility, the six Reader Skills, the layered system, the safeguards and the advice to start small. Four things to know. The taglines ("Same facts. A more useful tomorrow", "People informed, people empowered, stronger societies", "Real journalism. Greater possibilities") and the line "Trust turns useful services into lasting relationships" are the infographic's, not Markus's. "An AI feature alone is not the advantage. Reliability is" is a fair compression, but his own wording is more careful: the publisher's case *would have to rest* on original access, maintained data, local reporting and accountability, and even then the service must be demonstrably better for a particular task. It drops his qualifiers, that the six skills are a proposed framework rather than a universal taxonomy and that reach, utility, relationship and reciprocity are a hypothesis to measure rather than a funnel. And it leaves out his evidence on search and clicks, and his boundary that "relevant to me" must not become "nothing beyond my immediate interests".
+
 I replied under his post that this is close to what I argue in [The future of news is the story vault, not the paywall](/articles/future-of-news-story-vault-not-paywall.html). His answer is the reason this article exists:
 
 > **Markus Franz, in reply.** "Your Story Vault starts underneath the article: claims, evidence, sources, versions and provenance become the durable asset, while the article is one projection of that graph. Liquid Utility starts from the other end: the reader has a job to do, and journalism should turn trusted knowledge into a capability. [...] Story Vault answers: what do we know, and why can it be trusted? Reader Skills answer: what can we reliably help someone do with it?"
@@ -76,6 +80,10 @@ Markus's advice is to start with *"one maintained topic and one tightly scoped s
 - **Publish the ledger.** What was used, by whom, and where the money went, so that the reciprocity Markus wants to measure is visible to the readers being asked for it.
 
 One local topic, one vault, one service, one ledger. If it works, the second topic is cheaper, because the methods are reusable, which is his point, and the graph grammar is shared, which is mine.
+
+## Played out in full
+
+The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](/articles/the-bridge-followed-to-the-end.html), with its [vault](/demos/vaults/bridge-simulation/index.html). Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
 
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
 
