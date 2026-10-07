@@ -57,7 +57,7 @@
       var id = 'sgit-subscribe-' + Date.now() + '-' + Math.random().toString(16).slice(2, 10) + '@sgit.ai';
       var hdr = [
         'From: web form <site@sgit.ai>',
-        'To: agent <agent@riskmandate.ai>',
+        'To: subscribe <subscribe@sgit.ai>',
         'Subject: Subscribe: sgit.ai articles',
         'Date: ' + new Date().toUTCString(),
         'Message-ID: <' + id + '>',
