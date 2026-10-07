@@ -2,7 +2,7 @@
 
 > Markus Franz published "The Article Is Only the Beginning" on 7 October 2026, proposing Liquid Utility, journalism that helps people understand, follow and act rather than only read, and six Reader Skills to deliver it, with a bridge closure as the example. He then wrote, under my comment, that his idea and the story vault connect at an architectural level: the story vault answers what we know and why it can be trusted, Reader Skills answer what we can reliably help someone do with it. This article draws that connection. Each of his six skills turns out to be an operation the story graph already supports, and each safeguard he asks for is a property the graph already has: versions for Update, supersede edges for corrections, freshness for "could not check", a flag at the node for protected sources. His bridge is drawn as a graph. And his article adds the piece our monetisation had not mapped: locality, where the trust relationship and the brand are strongest. Local contributors feed local journalists, local stories feed national and international ones, and if every use pays back down the chain of claims it rests on, small payments from many people fund the reporting nearest to them.
 
-*Source: <https://sgit.ai/articles/story-vault-meets-reader-skills.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/story-vault-meets-reader-skills.html> · site v0.6.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -21,6 +21,10 @@ A bridge closes for six weeks. The reporting is clear: what happened, why the re
 That is the opening of [The Article Is Only the Beginning](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/), published by Markus Franz on 7 October 2026, and it holds two lines worth keeping: *"The article has done its job. You still have a job to do."*
 
 His proposal is called **Liquid Utility**: trusted journalistic knowledge, combined with reusable methods and appropriate tools, to help someone understand, follow or act on what matters to them. He delivers it through six **Reader Skills**, bounded journalistic capabilities a reader can use directly: Understand, Update, Relate, Compare, Follow and Act. It is careful about what it does not claim. A skill is not a safety guarantee. The case for a publisher over a generic assistant has to rest on original access, maintained data, local reporting and editorial accountability, and even then the service has to be demonstrably better at a particular task. And the business test is kept visible: reach, utility, relationship, reciprocity, measured rather than assumed.
+
+An infographic of Markus Franz's article, made with ChatGPT from the article's text. Faithful on the six skills, the layers and the safeguards; see the note below for what it adds and what it drops.
+
+**Reading the infographic against the article.** It gets the substance right: the gap, Liquid Utility, the six Reader Skills, the layered system, the safeguards and the advice to start small. Four things to know. The taglines ("Same facts. A more useful tomorrow", "People informed, people empowered, stronger societies", "Real journalism. Greater possibilities") and the line "Trust turns useful services into lasting relationships" are the infographic's, not Markus's. "An AI feature alone is not the advantage. Reliability is" is a fair compression, but his own wording is more careful: the publisher's case *would have to rest* on original access, maintained data, local reporting and accountability, and even then the service must be demonstrably better for a particular task. It drops his qualifiers, that the six skills are a proposed framework rather than a universal taxonomy and that reach, utility, relationship and reciprocity are a hypothesis to measure rather than a funnel. And it leaves out his evidence on search and clicks, and his boundary that "relevant to me" must not become "nothing beyond my immediate interests".
 
 I replied under his post that this is close to what I argue in [The future of news is the story vault, not the paywall](../articles/future-of-news-story-vault-not-paywall.md). His answer is the reason this article exists:
 
@@ -80,6 +84,10 @@ Markus's advice is to start with *"one maintained topic and one tightly scoped s
 
 One local topic, one vault, one service, one ledger. If it works, the second topic is cheaper, because the methods are reusable, which is his point, and the graph grammar is shared, which is mine.
 
+## Played out in full
+
+The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md), with its [vault](../demos/vaults/bridge-simulation/index.md). Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
+
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
 
 *Drafted from Markus Franz's article and LinkedIn post of 7 October 2026, his reply to my comment, and a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026. Quotations from Markus Franz are from his published article and his public reply, credited and linked; Liquid Utility, Reader Skills and Journalism as a Capability System are his terms. The mapping, the bridge graph, the payment chain and its illustrative split are ours. Places, dates and hashes in the bridge figure are illustrative.*
@@ -92,6 +100,11 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#story-v
 
 - [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md) A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
+- [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md) A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
+
+### Continued by
+
+- [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md) A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

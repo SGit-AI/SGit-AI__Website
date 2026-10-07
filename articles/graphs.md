@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,43 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-40 of 40 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+41 of 41 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-40 articles, 159 links between them (279 mentions in all). 31 articles cite an earlier one; 5 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+41 articles, 161 links between them (281 mentions in all). 32 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md)
+
+2026-10-07 · News & evidenceGraphs & knowledge
+
+Played out as a simulation on a story vault, one local bridge closure shows the value of journalism as getting a disputed fact right and keeping it right: newsworthy on five days but needed on fifty-seven, used through Reader Skills by readers whose own graphs meet the story graph at shared anchors and who decide better with it, bought by institutions and agents who need the same claims, cheaper for agents than searching, and paid for in small amounts that walk back down the claims to the reporter, the paper and the residents whose evidence the graph names.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**12 nodes, 12 edges**
+
+- **A bridge closes; the council says one week** (example) A fictional town's main crossing shuts for urgent repairs; the official estimate is a week.
+- **The journalism is getting the date right** (claim) The contract says three weeks, the engineer five to seven; the reporter finds both and the paper runs the contradiction.
+- **Each correction supersedes the last** (method) The graph keeps every estimate with its date, so it can say what was believed on any day and why.
+- **Newsworthy on five days, needed on fifty-seven** (claim) The paper leads with the story five times; readers need its current state every day it is closed.
+- **Each reader's graph meets the story** (concept) Home, school, routes and customers held on the reader's device, joined to the claims at shared anchors.
+- **A parent, a café owner, a plumber** (example) The same claims become a walking route, a stock plan and a job schedule.
+- **Better decisions, counted** (claim) A club booked in time, £640 of stock not wasted, £1,200 of relief claimed, nine hours of driving saved.
+- **Without it: stale pages, rumours, nobody accountable** (claim) The council page says a week for nine days, a group says Friday, TV covers day one and day forty-six.
+- **Buyers who do not read the paper** (concept) Highways teams, investors and national desks need the same graph for regional and national decisions.
+- **Agents spend less and are right** (claim) Searching costs about $377 over the closure and finds the stale page; asking the newsroom costs about $54.
+- **£2,707, walked back to the sources** (artefact) Small amounts from 1,596 readers and businesses plus institutions; 35% to the reporter, £203 to a resident.
+- **The simulation as a vault** (artefact) Every figure computed from written assumptions by a build script, published with its read key.
+
+> An article is written once. A maintained claim, kept current until the bridge opens, is a service. Why the value of a local story outlives its news cycle.
+
+> As agents start planning school runs, deliveries and site visits for people, the cheapest thing they can buy is an accurate, maintained, accountable source. Why agents should pay for local journalism.
+
+builds on [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills); continued by [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills).
 
 ## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
 
@@ -51,7 +81,7 @@ Markus Franz's Liquid Utility proposes Reader Skills that help people understand
 
 > Use it, and pay the people who found it out. The clause the monetisation adds to Markus Franz's closing line.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end); continued by [The bridge, followed to the end: what one local story is worth when it is kept as a graph](#the-bridge-followed-to-the-end).
 
 ## [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md)
 

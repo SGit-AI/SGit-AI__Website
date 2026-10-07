@@ -2,7 +2,7 @@
 
 > What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.6.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -66,7 +66,7 @@ The articles now have a newsroom, run in public: any agent publishes by adding a
 
 ## Everything published this week
 
-Twenty-two articles were published from 2026-10-01 to 2026-10-07, grouped below by what they are about.
+Twenty-three articles were published from 2026-10-01 to 2026-10-07, grouped below by what they are about.
 
 ### The agent team, in production
 
@@ -108,12 +108,13 @@ Code review as a graph, a company built on that idea, memory as context, and an 
 
 ### Writing and the business of it
 
-The author's input measured, a way to price and give away, a service that charges for an author's slides, and what local journalism could sell when its stories are kept as graphs.
+The author's input measured, a way to price and give away, a service that charges for an author's slides, what local journalism could sell when its stories are kept as graphs, and one local story played out to the end as a simulation.
 
 - [**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**](../../../../../articles/how-much-of-this-did-i-write.md). Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [**Price it, then give it away: the early access programme as the next step after "do they miss it"**](../../../../../articles/price-it-then-give-it-away.md). Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
 - [**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**](../../../../../articles/the-deck-i-could-not-download.md). One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.
 - [**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**](../../../../../articles/story-vault-meets-reader-skills.md). Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
+- [**The bridge, followed to the end: what one local story is worth when it is kept as a graph**](../../../../../articles/the-bridge-followed-to-the-end.md). A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
 
 *This is issue 1 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 

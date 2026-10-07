@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.95'
+SITE_VERSION = 'v0.6.96'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.95', '2026-10-07', 'this release',
+    ('v0.6.96', '2026-10-07', 'this release',
+     "THE BRIDGE, FOLLOWED TO THE END. A simulation of Markus Franz's bridge example, played out on a story vault: a "
+     "fictional town, Wendmouth, whose bridge closes; the council says one week, the contract three, an engineer five "
+     "to seven, and it opens on day forty-six. The vault (bridge-simulation, published with its read key) holds the "
+     "evidence, claims with their contradictions, the paper, the newsroom, a timeline (newsworthy on five days, needed "
+     "on fifty-seven), three readers with their own graphs, skills, decisions and WhatsApp messages, the institutional "
+     "and agent buyers, where the money goes, the view without it and the short/medium/long, local/regional/national "
+     "impact; every figure is computed by its build script from written assumptions. A new article walks through it, "
+     "and the Reader Skills article gains the ChatGPT infographic from the voice note, with a reading note on what it "
+     "gets right and what it overstates.",),
+    ('v0.6.95', '2026-10-07', 'git 3ee1826f',
      "A SUBSCRIBE PAGE, AND ISSUES AT DATED URLS. sgit.ai/subscribe/ is the one page with the newsletter form: what an "
      "issue holds, what comes next, where else it is published, what happens to the address, and the latest issue. "
      "Everywhere else the form becomes one line pointing there: the newsletter index (which now opens on its issues), "
