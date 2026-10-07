@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example on a story vault: a fictional bridge closure from first notice to reopening, the journalism that got the date right, three readers whose graphs meet the story graph, institutions and an agent buying from it, and where every penny goes. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.96 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

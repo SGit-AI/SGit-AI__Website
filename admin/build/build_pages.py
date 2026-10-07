@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.96'
+SITE_VERSION = 'v0.6.97'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,17 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.96', '2026-10-07', 'this release',
+    ('v0.6.97', '2026-10-07', 'this release',
+     "LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on "
+     "the definition, data journalism as the model and structure behind every front end, then where to push. The water "
+     "is the reporting, so liquefy the journalist's notebook rather than the finished product; put the experienced "
+     "journalist and their workflow at the centre, with a desk built for them and experts paid for time and "
+     "credibility; keep writing theirs, because writing is how the story is found; read the guide's three 'is not's "
+     "with a graph underneath; personalise by intersecting the reader's graph with the story's; keep editorial "
+     "direction, not readers' tastes, as the brief; and add per-use payment down the graph to retention, advertising "
+     "and licensing. Four figures, the ChatGPT infographic of the guide with a reading note, graph JSON. The Reader "
+     "Skills article's infographic caption now records Markus Franz's reply to it.",),
+    ('v0.6.96', '2026-10-07', 'git 9e71c7d6',
      "THE BRIDGE, FOLLOWED TO THE END. A simulation of Markus Franz's bridge example, played out on a story vault: a "
      "fictional town, Wendmouth, whose bridge closes; the council says one week, the contract three, an engineer five "
      "to seven, and it opens on day forty-six. The vault (bridge-simulation, published with its read key) holds the "
