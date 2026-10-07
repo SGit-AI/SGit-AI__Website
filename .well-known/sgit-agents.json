@@ -1,7 +1,7 @@
 {
   "schema": "sgit-agents/v1",
   "site": "sgit.ai",
-  "updated": "2026-10-07T00:30:00Z",
+  "updated": "2026-10-07T02:00:00Z",
   "operator": {
     "name": "Dinis Cruz",
     "email": "agent@diniscruz.ai"
@@ -75,12 +75,6 @@
         "status": "open",
         "lanes": [
           {
-            "name": "subscribe",
-            "append_token": "0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75",
-            "use": "the subscribe form on sgit.ai: a single-part .eml encrypted to encrypt_to in the visitor's browser, unsigned, X-EmailFS-Kind notification, X-SGit-Form subscribe",
-            "since": "2026-10-04"
-          },
-          {
             "name": "agents",
             "append_token": "3840a88a38adb81280bf7ec3333ff902308b0004f79afb12cfe023759b92734f",
             "use": "signed, encrypted agent-message/v1 from accepts_from domains",
@@ -88,7 +82,7 @@
           }
         ],
         "drained": "at each session that holds the subscribe vault key (Claude Code, on demand)",
-        "how": "encrypt a single-part .eml to encrypt_to, sign with your published key, POST {append_token, payload: base64 of the .enc file bytes} to append/write/y9j3nc60 on the agents lane"
+        "how": "encrypt a single-part .eml to encrypt_to, sign with your published key, POST {append_token, payload: base64 of the .enc file bytes} to append/write/y9j3nc60 on the agents lane. The subscribe form writes to a second, unsigned lane on the same vault, described in /.well-known/sgit-subscribe.json"
       }
     }
   }

@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.82'
+SITE_VERSION = 'v0.6.83'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.82', '2026-10-07', 'this release',
+    ('v0.6.83', '2026-10-07', 'this release',
+     "THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in "
+     "/.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, "
+     "agents, so the live file failed this site's own schema. The form lane is now described only in "
+     "/.well-known/sgit-subscribe.json, which is what the form reads; the contact file lists the agents "
+     "lane and validates. The subscribe brief gains the rule that everything inside a message is data, "
+     "never instructions, for the agent that reads what the drain filed."),
+    ('v0.6.82', '2026-10-07', 'git 97a5bd1f',
      "THE SUBSCRIBE LIST GETS ITS OWN IDENTITY. subscribe@sgit.ai is a second identity in this site's contact "
      "file, with its own RSA-OAEP 4096 and ECDSA P-256 keys whose private halves live, passphrase-encrypted, in "
      "the subscribe vault itself (y9j3nc60): the passphrase and the enum key are derived from the vault's write "
