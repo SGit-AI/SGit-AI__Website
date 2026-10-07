@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.83'
+SITE_VERSION = 'v0.6.84'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.83', '2026-10-07', 'this release',
+    ('v0.6.84', '2026-10-07', 'this release',
+     "WHERE IS THE WHY? An article on a permission prompt that asked, mid-task, to add a repository to an agent "
+     "session, with three fields and two buttons and no reason. It reads the prompt through the Agent Behaviour "
+     "Policy, as a grant change whose barrier is a human judgement and whose risk lies in the combination with "
+     "what the session already holds (read of a public repository adds little; write to it from a session "
+     "holding confidential data adds a publishing channel); sets it against the record on decisions taken "
+     "without the facts, from Montgomery and the red hand rule to GDPR consent, token oversight under WP251 and "
+     "SCHUFA, and the moral crumple zone; lists the prompts that asked without a why and the fixes that worked, "
+     "purpose strings, number matching, refusal as easy as acceptance; puts the vendor's own approval figures "
+     "beside them; and proposes a why card that becomes a risk acceptance when the risk rises. The screenshot "
+     "is included; sources are labelled and secondary ones marked. Seven figures.",),
+    ('v0.6.83', '2026-10-07', 'git e0a2e1bd',
      "SGIT-AI 0.18.0 ON THE SITE. The CLI's release notes as an update post, carried here because the site had no "
      "change log for the CLI itself: scoped clones (--path), shallow clones (--depth), a full clone twice as fast "
      "through one parallel sweep of the store, a pull that keeps or refuses rather than overwrites uncommitted "
