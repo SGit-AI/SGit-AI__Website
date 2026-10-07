@@ -2,7 +2,7 @@
 
 > Every reply we send carries the whole thread underneath it, pasted in for a reader who already has the thread. That wall is redundant, and the space it takes is the most valuable space in the message, because it is where the reader looks when they ask the only question that matters: what do I need to know in this context? This article proposes ending a reply with a short state of the thread instead, written for this reader. Where we are, what was decided and by whom, what is still open and who owns it, what happens next and whether the reader has to do anything, who is on copy and who joined since they last looked, and links to the messages condensed, which stay in the thread as the record. The idea is not new in its parts, and the article says so: netiquette asked for a summary instead of the full quote in 1995, the military calls it bottom line up front, the mail clients now put an AI summary at the top of a thread for the reader. What is different here is that the tail is written for the recipient rather than computed for the reader, says who is on copy, is structured enough for an agent to read, is drafted by the agent team's drafts role from the typed blocks it already keeps, and is reviewed by a person before it goes. The format is personal and nobody knows what it should look like yet, so the article ends with an experiment to run on one person's correspondence, four variants, what the record can measure, and what would show the idea is wrong.
 
-*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-wall-under-the-reply.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -149,7 +149,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 
 **Posting this article on LinkedIn?** The cover is [the-wall-under-the-reply.jpg](../articles/banners/the-wall-under-the-reply.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

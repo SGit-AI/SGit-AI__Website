@@ -2,7 +2,7 @@
 
 > I do not run any model or agent on my laptop, and I am asked why often enough to write it down. The reason is not a worry about models. It is a fact about operating systems: they have two hard walls, the kernel and the user account, and an agent on my laptop runs inside the wall marked "me", where it can read everything I can read, SSH keys, cloud credentials, the password manager's session, every site my browser is signed into. The rules the desktop agents add on top are settings, enforced by the process they constrain, and fifteen months of incidents show what happens when a mistake or an injected instruction reaches the account. So the agents run in four places that are not my laptop: Claude chat, with nothing connected and search across past chats switched off, for thinking; Claude Cowork in the cloud, with no repositories, for most of the agentic work; Claude Code on the web, with one repository per session and a network allowlist, when code has to change; and ChatGPT with no assets at all. What makes this workable is a vault as the shared drive between them: encrypted on the agent's side, keys handed to a session out of band, commit, pull, push, so the laptop passes keys and nothing else. The article gives the setup, the evidence, what the OS can and cannot isolate, the usability trade-offs, the three things I wish the platforms gave me, identity, secrets and a key pair per agent, and one caveat: this is about a laptop that holds the main account. A dedicated machine with separate accounts and nothing of mine on it is a different model, which I will try and report on later.
 
-*Source: <https://sgit.ai/articles/why-my-agents-do-not-run-on-my-laptop.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/why-my-agents-do-not-run-on-my-laptop.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -170,7 +170,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#why-my-age
 
 **Posting this article on LinkedIn?** The cover is [why-my-agents-do-not-run-on-my-laptop.jpg](../articles/banners/why-my-agents-do-not-run-on-my-laptop.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

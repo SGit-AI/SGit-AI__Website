@@ -2,7 +2,7 @@
 
 > A first pass at an argument I intend to give as a conference talk, written down here so I can show it to the people I am talking to about speaking. Three things are arriving at once. Agents are the insider threat that never scaled before, because insiders were humans or static code, and an agent is a reasoning engine in a loop with tools and skills we have never put inside a company. Our business and security infrastructure was designed for none of it: no journaling, backups by the day, identities everywhere and permissions that are the union of everything ever needed, and it fails on its own without any agent's help. And the discipline that is supposed to decide what to do about all this runs on spreadsheets, at a speed measured in quarters, when the decisions now have to be made in seconds and in advance. Each is a known problem. Together they describe a company that cannot see what its agents can do, cannot stop them when they do it, and cannot decide fast enough to fund either. The evidence is public and it is getting worse, and the reason we do not see more of it is that nobody has to report. The second half of the talk is the way out, and it runs through everything this site has been building, with one irony at its centre: the more you constrain an agent, the more you can trust it, and the more autonomy you can afford to give it.
 
-*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -156,7 +156,7 @@ Agents & policy[This article as a graph →](graphs.md#ultimate-insider-three-co
 
 **Posting this article on LinkedIn?** The cover is [ultimate-insider-three-collisions.jpg](../articles/banners/ultimate-insider-three-collisions.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

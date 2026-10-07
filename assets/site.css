@@ -1209,3 +1209,5 @@ aside.lkit b{color:var(--fg)}
 p.dquote-src{margin:-.9rem 0 1.4rem 1.1rem;font-size:.82rem;color:var(--dim)}
 ul.dlist{padding-left:1.2rem}
 ul.dlist li{margin:.5rem 0;line-height:1.55}
+p.subteaser{margin:1.6rem 0;padding:.9rem 1.1rem;border-top:2px solid var(--fg);border-bottom:1px solid var(--line2);font-size:.95rem;color:#34363c}
+p.subteaser .cta2{white-space:nowrap}

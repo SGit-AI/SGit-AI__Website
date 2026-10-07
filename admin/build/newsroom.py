@@ -287,7 +287,14 @@ class Newsroom:
             if meta.get('status', 'published') != 'published':
                 continue
             cites = [s for s in _list(meta.get('cites', '')) if self._article(s, where)]
-            issues.append(dict(meta, slug=slug, number=n, body=body, where=where, cites=cites,
+            # URL: articles/newsletter/YYYY/MM/DD/NNN-<words>.html. <words> is `slug:` in the
+            # frontmatter, or the first words of the title; the file keeps its NNN-date name.
+            words = meta.get('slug') or '-'.join(re.findall(r'[a-z0-9]+', meta['title'].lower())[:7])
+            if not RE_SLUG.match(words):
+                raise Content_Error(f'{where}: slug {words!r} must be lower-case words joined by hyphens')
+            url_slug = f'{m.group(1)}-{words}'
+            issues.append(dict(meta, id=slug, slug=url_slug, path=f'{meta["date"].replace("-", "/")}/{url_slug}',
+                               number=n, body=body, where=where, cites=cites,
                                linkedin=meta.get('linkedin', '')))
         issues.sort(key=lambda i: i['number'], reverse=True)
         return issues

@@ -2,11 +2,11 @@
 
 > Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them.
 
-*Source: <https://sgit.ai/articles/index.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/index.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.94
+Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.95
 
 # SGit Newsroom
 
@@ -42,7 +42,7 @@ From the editor Second edition, the same day. The lead moves to the open AI gove
 
 [Collection · 6 articles**Thinking with a Wardley map**Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.](../articles/collections/wardley-maps.md)[Collection · 4 articles**What the human brings**Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.](../articles/collections/what-the-human-brings.md)[Collection · 7 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../articles/collections/behaviour-policy-in-practice.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Get the SGit Newsroom newsletter.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 ## Every article, newest first
 

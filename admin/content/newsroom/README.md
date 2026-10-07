@@ -18,7 +18,7 @@ featured collections) is written by the Editor only. Anyone else asks with a pit
 | `pitches/YYYY-MM-DD__<slug>.md` | a request for placement | anyone; the Editor edits `status` only |
 | `board/<id>-<slug>.md` | the desk's kanban: backlog, doing, review, done | Editor |
 | `log/YYYY/MM/DD/HHMM__<role>__<slug>.md` | one record per desk run, append-only | each role, its own |
-| `newsletter/NNN-YYYY-MM-DD.md` | a newsletter issue: `title`, `date`, `summary`, `dek` (banner line), `ideas` (`|`-separated, banner), `cites`, `linkedin` (URL once posted) | Journalist |
+| `newsletter/NNN-YYYY-MM-DD.md` | a newsletter issue, published at `articles/newsletter/YYYY/MM/DD/NNN-<slug>.html`: `title`, `date`, `slug`, `summary`, `dek` (banner line), `ideas` (`|`-separated, banner), `cites`, `linkedin` (URL once posted) | Journalist |
 
 Directives available in notes and collections, on top of the article markdown:
 
@@ -40,7 +40,7 @@ Tools:
 Readers subscribe to the newsletter, not to articles. An issue is due a week after the last or once
 five articles have been published since it; desk.py says when. Each issue is cross-posted as a
 LinkedIn article in Deterministic GenAI: upload its cover from articles/banners/, paste the title,
-select and copy the issue's body from its page (a quote's source is a plain paragraph after the quote, because LinkedIn drops anything inside a blockquote after its first paragraph), then set `linkedin:` in the issue file.
+select and copy the issue's body from its page (in an issue a quote has no source line; the paragraph before it must link the article it quotes, and the build checks that), then set `linkedin:` in the issue file. End the LinkedIn article with the subscribe paragraph and, optionally, articles/banners/subscribe.jpg; both point at https://sgit.ai/subscribe/, the one page with the form.
 
 A placement naming an article that does not exist is skipped and reported, never a build failure:
 a contributor's rename must not be blocked by a file only the Editor may edit.

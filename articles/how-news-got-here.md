@@ -2,7 +2,7 @@
 
 > This started as a voice memo setting out my understanding of how the publishing and news industry got to where it is, in four eras, print, web, platforms and AI, and an instruction to check it and correct it. The research corrected it in four places, and the corrections are the article. The reader did not become the product when the web arrived; the reader has been the product since the penny press of 1833, and by 2005 advertising was 82% of American newspaper revenue. What the web took was not the business model but the monopoly underneath it, the local toll bridge that let a paper charge what it liked and fund reporting with margins of 20 to 30 per cent; classifieds alone fell from $19.6 billion to about $6 billion in nine years. The platforms then made the reader a measurable product and the publisher a tenant: Google and Meta took over half of American digital advertising by 2017, Facebook referrals fell 58% in six years, false news travelled 70% further than true, and newspaper newsrooms lost 57% of their staff. AI removed the traffic itself, and the industry's answer has been to go back to selling to readers, by subscription, so that circulation revenue now exceeds advertising for the first time in living memory. The road not taken was there from the start, a payment code reserved in the web's own protocol in 1997 and never used, and the evidence that people pay when paying is easy, from a million songs in a week in 2003 to five million paid newsletter subscriptions in 2025, is what the story vault work on this site is built on.
 
-*Source: <https://sgit.ai/articles/how-news-got-here.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-news-got-here.html> · site v0.6.95 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -157,7 +157,7 @@ News & evidence[This article as a graph →](graphs.md#how-news-got-here)
 
 **Posting this article on LinkedIn?** The cover is [how-news-got-here.jpg](../articles/banners/how-news-got-here.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

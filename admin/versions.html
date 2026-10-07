@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.94</a>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.95</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -39,7 +39,7 @@
  <a class="sl" href="../articles/desk/index.html">From the desk</a>
  <a class="sl" href="../articles/graphs.html">As graphs</a>
  <a class="sl" href="../newsroom/index.html">How it runs</a>
- <a class="sl" href="../articles/newsletter/index.html#subscribe">Subscribe</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
  </div>
  </div>
  <div class="ni ni-has">
@@ -115,14 +115,15 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.94 &middot; 7 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.95 &middot; 7 Oct 2026</span></a></div>
 <main class="doc">
   <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Admin</a> / Versions</p>
   <h1>Release history</h1>
-  <p class="lead">The site version (<b>v0.6.94</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
+  <p class="lead">The site version (<b>v0.6.95</b>, shown in the nav of every page) increments on every release. Each release is one git commit on the <code>dev</code> branch of <code>SGit-AI/SGit-AI__Website</code>, and the git log is the authoritative audit trail; this page is the human-readable index of it.</p>
   <div class="tablewrap"><table class="vers">
     <tr><th>Version</th><th>Date</th><th>Commit</th><th>Changes</th></tr>
- <tr><td class="vnum">v0.6.94</td><td>2026-10-07</td><td class="vid">this release</td><td>STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from his public reply to a comment and a voice note: each of his six skills mapped to an operation on the story graph and each of his safeguards to a property it already has; his bridge closure drawn as a graph in which one supersede edge is the update, the alert and the correction; and the local angle his piece adds, local contributors and local outlets paid back down the chain of claims that regional, national and international stories rest on, with an illustrative split and the loop it starts. His words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1.</td></tr>
+ <tr><td class="vnum">v0.6.95</td><td>2026-10-07</td><td class="vid">this release</td><td>A SUBSCRIBE PAGE, AND ISSUES AT DATED URLS. sgit.ai/subscribe/ is the one page with the newsletter form: what an issue holds, what comes next, where else it is published, what happens to the address, and the latest issue. Everywhere else the form becomes one line pointing there: the newsletter index (which now opens on its issues), the front page, the foot of every article and of every issue. A 1920x1080 subscribe cover is rendered for the end of a LinkedIn article. Issues move to articles/newsletter/YYYY/MM/DD/NNN-<slug>.html (slug from the issue's frontmatter); Issue 1 is now .../2026/10/07/001-agents-doing-real-work.html, moved before its LinkedIn post went out, and the one link to the old address was updated. In an issue a quote no longer carries a From line: the owner's edit of the LinkedIn version read better without, since every quote follows a paragraph that links its article. The build now requires exactly that, and fails a quote whose paragraph does not (tested).</td></tr>
+ <tr><td class="vnum">v0.6.94</td><td>2026-10-07</td><td class="vid">git 24e14a65</td><td>STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from his public reply to a comment and a voice note: each of his six skills mapped to an operation on the story graph and each of his safeguards to a property it already has; his bridge closure drawn as a graph in which one supersede edge is the update, the alert and the correction; and the local angle his piece adds, local contributors and local outlets paid back down the chain of claims that regional, national and international stories rest on, with an illustrative split and the loop it starts. His words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1.</td></tr>
  <tr><td class="vnum">v0.6.93</td><td>2026-10-07</td><td class="vid">git d86d0b70</td><td>ARTICLES IN THE ORDER THEY WENT OUT. Four articles went out today and Latest listed them by filename, so the newest sat third. Articles now carry an optional time: HH:MM in UTC, and every list of articles (Latest, the archive, the wire, the front's freshness check, the feed) sorts by date and then time. Without the field the build uses the time the file was first committed, when that commit is on the article's date. All 37 articles that have a same-day commit now carry it explicitly, backfilled from git, so the order does not depend on a clone's history; the two that were backdated keep none and sort after the timed ones of their day. The feed's pubDate now carries the time instead of midnight. Documented in CONTENT.md and on How to publish.</td></tr>
  <tr><td class="vnum">v0.6.92</td><td>2026-10-07</td><td class="vid">git b757ef64</td><td>NEWSLETTER ISSUE 1, OPENING ON THE TOPICS. The issue opened by explaining what the newsletter is; a new reader cares about what the week was about. The intro, the summary and the subtitle now lead with the question the week's articles answer, what it takes to let agents do real work for a business, and the four sides they answer it from. The behaviour-policy-as-business-logic article gets a paragraph and a checked quote in the agents section. Not yet posted to LinkedIn, so the issue changes before it goes out.</td></tr>
  <tr><td class="vnum">v0.6.91</td><td>2026-10-07</td><td class="vid">git d6609661</td><td>THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules (own account, secrets held by the platform, tools switched off, sending needs a person), an agent's behaviour policy is the company's own business logic, function, process, relationship and purpose, which many organisations never wrote down because their software enforced it by omission, and which agents bypass by working through APIs. One fictional firm's email agent walked through six layers with an owner and a barrier per rule; the rules counted into backed by a control, governed by an accepted risk, and hope; five rules shown moving when a kind of product that already exists enforces them; the link to AI BCF RG.2 and AC.3; and why the upper layers read like skills. Three figures, a graph, and a pitch to the Editor.</td></tr>
@@ -384,7 +385,7 @@
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../admin/versions.html">v0.6.94</a> · <a href="../admin/index.html">engineering</a> · <a href="versions.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.95</a> · <a href="../admin/index.html">engineering</a> · <a href="versions.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -427,7 +428,7 @@
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.94';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.95';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

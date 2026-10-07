@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.94). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.95). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-252site releases, each verified live before it was called done
+253site releases, each verified live before it was called done
 
 43vaults published with a deliberately public read key
 
@@ -5989,7 +5989,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.94, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.95, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6352,7 +6352,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-252**site releases since 14 August**
+253**site releases since 14 August**
 each verified live before it was called done
 
 43**vaults published with a public read key**
@@ -11144,11 +11144,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.94**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.95**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.94 | 2026-10-07 | this release | STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from his public reply to a comment and a voice note: each of his six skills mapped to an operation on the story graph and each of his safeguards to a property it already has; his bridge closure drawn as a graph in which one supersede edge is the update, the alert and the correction; and the local angle his piece adds, local contributors and local outlets paid back down the chain of claims that regional, national and international stories rest on, with an illustrative split and the loop it starts. His words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1. |
+| v0.6.95 | 2026-10-07 | this release | A SUBSCRIBE PAGE, AND ISSUES AT DATED URLS. sgit.ai/subscribe/ is the one page with the newsletter form: what an issue holds, what comes next, where else it is published, what happens to the address, and the latest issue. Everywhere else the form becomes one line pointing there: the newsletter index (which now opens on its issues), the front page, the foot of every article and of every issue. A 1920x1080 subscribe cover is rendered for the end of a LinkedIn article. Issues move to articles/newsletter/YYYY/MM/DD/NNN-.html (slug from the issue's frontmatter); Issue 1 is now .../2026/10/07/001-agents-doing-real-work.html, moved before its LinkedIn post went out, and the one link to the old address was updated. In an issue a quote no longer carries a From line: the owner's edit of the LinkedIn version read better without, since every quote follows a paragraph that links its article. The build now requires exactly that, and fails a quote whose paragraph does not (tested). |
+| v0.6.94 | 2026-10-07 | git 24e14a65 | STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from his public reply to a comment and a voice note: each of his six skills mapped to an operation on the story graph and each of his safeguards to a property it already has; his bridge closure drawn as a graph in which one supersede edge is the update, the alert and the correction; and the local angle his piece adds, local contributors and local outlets paid back down the chain of claims that regional, national and international stories rest on, with an illustrative split and the loop it starts. His words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1. |
 | v0.6.93 | 2026-10-07 | git d86d0b70 | ARTICLES IN THE ORDER THEY WENT OUT. Four articles went out today and Latest listed them by filename, so the newest sat third. Articles now carry an optional time: HH:MM in UTC, and every list of articles (Latest, the archive, the wire, the front's freshness check, the feed) sorts by date and then time. Without the field the build uses the time the file was first committed, when that commit is on the article's date. All 37 articles that have a same-day commit now carry it explicitly, backfilled from git, so the order does not depend on a clone's history; the two that were backdated keep none and sort after the timed ones of their day. The feed's pubDate now carries the time instead of midnight. Documented in CONTENT.md and on How to publish. |
 | v0.6.92 | 2026-10-07 | git b757ef64 | NEWSLETTER ISSUE 1, OPENING ON THE TOPICS. The issue opened by explaining what the newsletter is; a new reader cares about what the week was about. The intro, the summary and the subtitle now lead with the question the week's articles answer, what it takes to let agents do real work for a business, and the four sides they answer it from. The behaviour-policy-as-business-logic article gets a paragraph and a checked quote in the agents section. Not yet posted to LinkedIn, so the issue changes before it goes out. |
 | v0.6.91 | 2026-10-07 | git d6609661 | THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules (own account, secrets held by the platform, tools switched off, sending needs a person), an agent's behaviour policy is the company's own business logic, function, process, relationship and purpose, which many organisations never wrote down because their software enforced it by omission, and which agents bypass by working through APIs. One fictional firm's email agent walked through six layers with an owner and a barrier per rule; the rules counted into backed by a control, governed by an accepted risk, and hope; five rules shown moving when a kind of product that already exists enforces them; the link to AI BCF RG.2 and AC.3; and why the upper layers read like skills. Three figures, a graph, and a pitch to the Editor. |
@@ -12973,7 +12974,7 @@ Updates and the version log moved under **Team** in the menu.
 
 newsroomnewsletterlinkedinarticles
 
-**The articles section is now the SGit Newsroom, and what you subscribe to is its newsletter.** An article is one argument with its evidence; an issue is what a week of them adds up to, which is the thing worth an email. [Issue 1](../articles/newsletter/001-2026-10-07.md) is out.
+**The articles section is now the SGit Newsroom, and what you subscribe to is its newsletter.** An article is one argument with its evidence; an issue is what a week of them adds up to, which is the thing worth an email. [Issue 1](../articles/newsletter/2026/10/07/001-agents-doing-real-work.md) is out.
 
 - **[The newsletter](../articles/newsletter/index.md)**: one issue a week or so, due a week after the last or once five articles have been published since it. Each issue is also published as a LinkedIn article in *Deterministic GenAI*.
 - **A cover for every piece.** Every article and every issue now has a 1920x1080 cover with its title, its teaser and three key ideas from its graph beside its own infographic, rendered by `admin/build/make_banners.mjs` and linked at the foot of the page for posting.
@@ -14427,7 +14428,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.94
+Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.95
 
 # SGit Newsroom
 
@@ -14463,7 +14464,7 @@ From the editor Second edition, the same day. The lead moves to the open AI gove
 
 [Collection · 6 articles**Thinking with a Wardley map**Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.](../articles/collections/wardley-maps.md)[Collection · 4 articles**What the human brings**Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.](../articles/collections/what-the-human-brings.md)[Collection · 7 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../articles/collections/behaviour-policy-in-practice.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Get the SGit Newsroom newsletter.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 ## Every article, newest first
 
@@ -18556,7 +18557,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#story-v
 
 **Posting this article on LinkedIn?** The cover is [story-vault-meets-reader-skills.jpg](../articles/banners/story-vault-meets-reader-skills.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -18678,7 +18679,7 @@ Agents & policy[This article as a graph →](graphs.md#the-behaviour-policy-is-t
 
 **Posting this article on LinkedIn?** The cover is [the-behaviour-policy-is-the-business-logic.jpg](../articles/banners/the-behaviour-policy-is-the-business-logic.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -18831,7 +18832,7 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#an-age
 
 **Posting this article on LinkedIn?** The cover is [an-agent-desktop-by-the-minute.jpg](../articles/banners/an-agent-desktop-by-the-minute.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -19003,7 +19004,7 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#ai-base
 
 **Posting this article on LinkedIn?** The cover is [ai-baseline-control-framework.jpg](../articles/banners/ai-baseline-control-framework.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -19193,7 +19194,7 @@ Agents & policy[This article as a graph →](graphs.md#where-is-the-why)
 
 **Posting this article on LinkedIn?** The cover is [where-is-the-why.jpg](../articles/banners/where-is-the-why.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -19583,7 +19584,7 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#the-man
 
 **Posting this article on LinkedIn?** The cover is [the-mandate-stack.jpg](../articles/banners/the-mandate-stack.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -19760,7 +19761,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#why-my-age
 
 **Posting this article on LinkedIn?** The cover is [why-my-agents-do-not-run-on-my-laptop.jpg](../articles/banners/why-my-agents-do-not-run-on-my-laptop.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -19934,7 +19935,7 @@ Startups & strategyVaults & method[This article as a graph →](graphs.md#the-de
 
 **Posting this article on LinkedIn?** The cover is [the-deck-i-could-not-download.jpg](../articles/banners/the-deck-i-could-not-download.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -20256,7 +20257,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-agent-
 
 **Posting this article on LinkedIn?** The cover is [the-agent-team-as-it-runs.jpg](../articles/banners/the-agent-team-as-it-runs.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -20457,7 +20458,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#a-personal
 
 **Posting this article on LinkedIn?** The cover is [a-personal-agent-that-keeps-your-secrets.jpg](../articles/banners/a-personal-agent-that-keeps-your-secrets.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -20627,7 +20628,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-invest
 
 **Posting this article on LinkedIn?** The cover is [the-investigation-github-owes-its-customers.jpg](../articles/banners/the-investigation-github-owes-its-customers.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -20815,7 +20816,7 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#send-a
 
 **Posting this article on LinkedIn?** The cover is [send-an-agent-not-a-spreadsheet.jpg](../articles/banners/send-an-agent-not-a-spreadsheet.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -21008,7 +21009,7 @@ Graphs & knowledgeSite & engineering[This article as a graph →](graphs.md#how-
 
 **Posting this article on LinkedIn?** The cover is [how-much-of-this-did-i-write.jpg](../articles/banners/how-much-of-this-did-i-write.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -21287,7 +21288,7 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#if-
 
 **Posting this article on LinkedIn?** The cover is [if-somebody-built-a-company-on-code-review.jpg](../articles/banners/if-somebody-built-a-company-on-code-review.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -21461,7 +21462,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-identi
 
 **Posting this article on LinkedIn?** The cover is [the-identity-we-wanted-to-give-the-agents.jpg](../articles/banners/the-identity-we-wanted-to-give-the-agents.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -21617,7 +21618,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-wall-u
 
 **Posting this article on LinkedIn?** The cover is [the-wall-under-the-reply.jpg](../articles/banners/the-wall-under-the-reply.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -21798,7 +21799,7 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#memory-
 
 **Posting this article on LinkedIn?** The cover is [memory-is-not-a-spectator-sport.jpg](../articles/banners/memory-is-not-a-spectator-sport.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22004,7 +22005,7 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#cod
 
 **Posting this article on LinkedIn?** The cover is [code-review-as-a-fractal-semantic-graph.jpg](../articles/banners/code-review-as-a-fractal-semantic-graph.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22202,7 +22203,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#replicatin
 
 **Posting this article on LinkedIn?** The cover is [replicating-the-agentic-inbox.jpg](../articles/banners/replicating-the-agentic-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22331,7 +22332,7 @@ Startups & strategyAgents & policy[This article as a graph →](graphs.md#price-
 
 **Posting this article on LinkedIn?** The cover is [price-it-then-give-it-away.jpg](../articles/banners/price-it-then-give-it-away.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22515,7 +22516,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#footprint-
 
 **Posting this article on LinkedIn?** The cover is [footprint-and-blast-radius.jpg](../articles/banners/footprint-and-blast-radius.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22736,7 +22737,7 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#custom-
 
 **Posting this article on LinkedIn?** The cover is [custom-uis-are-not-the-exception.jpg](../articles/banners/custom-uis-are-not-the-exception.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -22899,7 +22900,7 @@ Agents & policy[This article as a graph →](graphs.md#ultimate-insider-three-co
 
 **Posting this article on LinkedIn?** The cover is [ultimate-insider-three-collisions.jpg](../articles/banners/ultimate-insider-three-collisions.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -23063,7 +23064,7 @@ News & evidence[This article as a graph →](graphs.md#how-news-got-here)
 
 **Posting this article on LinkedIn?** The cover is [how-news-got-here.jpg](../articles/banners/how-news-got-here.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -23258,7 +23259,7 @@ Agents & policy[This article as a graph →](graphs.md#six-agents-one-inbox)
 
 **Posting this article on LinkedIn?** The cover is [six-agents-one-inbox.jpg](../articles/banners/six-agents-one-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -23448,7 +23449,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#token-b
 
 **Posting this article on LinkedIn?** The cover is [token-bill-nobody-is-sending.jpg](../articles/banners/token-bill-nobody-is-sending.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -23626,7 +23627,7 @@ Vaults & methodStartups & strategy[This article as a graph →](graphs.md#supply
 
 **Posting this article on LinkedIn?** The cover is [supply-chain-of-vaults.jpg](../articles/banners/supply-chain-of-vaults.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -23843,7 +23844,7 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#every-r
 
 **Posting this article on LinkedIn?** The cover is [every-risk-is-already-accepted.jpg](../articles/banners/every-risk-is-already-accepted.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24051,7 +24052,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 
 **Posting this article on LinkedIn?** The cover is [connector-twin-before-you-deploy-an-agent.jpg](../articles/banners/connector-twin-before-you-deploy-an-agent.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24302,7 +24303,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-
 
 **Posting this article on LinkedIn?** The cover is [future-of-news-story-vault-not-paywall.jpg](../articles/banners/future-of-news-story-vault-not-paywall.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24437,7 +24438,7 @@ Startups & strategy[This article as a graph →](graphs.md#the-question-is-wheth
 
 **Posting this article on LinkedIn?** The cover is [the-question-is-whether-they-miss-it.jpg](../articles/banners/the-question-is-whether-they-miss-it.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24580,7 +24581,7 @@ Startups & strategy[This article as a graph →](graphs.md#saas-apocalypse-decid
 
 **Posting this article on LinkedIn?** The cover is [saas-apocalypse-decided-by-inertia-not-by-ai.jpg](../articles/banners/saas-apocalypse-decided-by-inertia-not-by-ai.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24761,7 +24762,7 @@ Graphs & knowledge[This article as a graph →](graphs.md#introducing-fractal-se
 
 **Posting this article on LinkedIn?** The cover is [introducing-fractal-semantic-graphs.jpg](../articles/banners/introducing-fractal-semantic-graphs.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24850,7 +24851,7 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-m
 
 **Posting this article on LinkedIn?** The cover is [proof-moved-up.jpg](../articles/banners/proof-moved-up.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -24969,7 +24970,7 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#proof-b
 
 **Posting this article on LinkedIn?** The cover is [proof-behind-the-claim.jpg](../articles/banners/proof-behind-the-claim.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -25067,7 +25068,7 @@ Site & engineering[This article as a graph →](graphs.md#chat-on-a-static-site)
 
 **Posting this article on LinkedIn?** The cover is [chat-on-a-static-site.jpg](../articles/banners/chat-on-a-static-site.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -25160,7 +25161,7 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#ninetee
 
 **Posting this article on LinkedIn?** The cover is [nineteen-sites.jpg](../articles/banners/nineteen-sites.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -25289,7 +25290,7 @@ Vaults & method[This article as a graph →](graphs.md#what-sgit-is)
 
 **Posting this article on LinkedIn?** The cover is [what-sgit-is.jpg](../articles/banners/what-sgit-is.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -25412,7 +25413,7 @@ Vaults & method[This article as a graph →](graphs.md#seven-vaults-one-method)
 
 **Posting this article on LinkedIn?** The cover is [seven-vaults-one-method.jpg](../articles/banners/seven-vaults-one-method.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -25534,7 +25535,7 @@ Site & engineering[This article as a graph →](graphs.md#green-does-not-mean-li
 
 **Posting this article on LinkedIn?** The cover is [green-does-not-mean-live.jpg](../articles/banners/green-does-not-mean-live.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
@@ -27171,7 +27172,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.94
+Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.95
 
 # Collections
 
@@ -27190,7 +27191,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.94
+Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.95
 
 # From the desk
 
@@ -27679,29 +27680,58 @@ This newsroom runs on the same idea: every desk role has a written policy, and [
 
 
 ==============================================================================
+# Subscribe to the SGit Newsroom newsletter, sgit.ai
+
+> Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is worth your time, about once a week. Your address is encrypted in your browser.
+>
+> Page: https://sgit.ai/subscribe/index.html
+
+[Home](../index.md) / [SGit Newsroom](../articles/index.md) / Subscribe
+
+SGit Newsroom · the newsletter
+
+# Get the next issue
+
+One issue a week or so, when there is enough to say: what was published on sgit.ai, what it adds up to, and the pieces worth your time. Not an email per article; an issue has the context a single article does not.
+
+- **What is in an issue.** The week's articles grouped by what they are about, the arguments in a few lines each, and quotes checked word for word against the articles when the site is built.
+- **What comes next.** A personalised issue, picked for the topics you care about, from the same articles and their graphs.
+- **Where else.** Each issue is also a LinkedIn article in *Deterministic GenAI*; the articles have a [feed](../articles/feed.xml), and agents can read [the wire](../newsroom/wire.json).
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
+
+The latest issue: [**Issue 1, A team of agents, written up from the inside, and an open framework built on the same day**](../articles/newsletter/2026/10/07/001-agents-doing-real-work.md) (2026-10-07). [All issues](../articles/newsletter/index.md).
+
+## What happens to your address
+
+Your browser encrypts it to the public key of the agent that runs the list, then drops it into a write-only lane of an encrypted vault. The site never sees it, and nobody without that agent's key can read it. [How the lane works](../docs/briefs/subscribe-lane-agent-brief.md). Every email can be answered with a request to be removed.
+
+
+
+==============================================================================
 # The newsletter, SGit Newsroom
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.94
+Edition of 2026-10-0740 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.95
 
 # The newsletter
 
 The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in *Deterministic GenAI*.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
-
 ## Issues
 
 Issue 12026-10-07
 
-## [A team of agents, written up from the inside, and an open framework built on the same day](../../articles/newsletter/001-2026-10-07.md)
+## [A team of agents, written up from the inside, and an open framework built on the same day](../../articles/newsletter/2026/10/07/001-agents-doing-real-work.md)
 
 What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
 10 articles
+
+**Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
 Next issue: not yet due (0 article(s) since issue 1; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
@@ -27712,15 +27742,15 @@ Next issue: not yet due (0 article(s) since issue 1; due at 5 or after 7 days). 
 
 > What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 >
-> Page: https://sgit.ai/articles/newsletter/001-2026-10-07.html
+> Page: https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html
 
-[Home](../../index.md) / [SGit Newsroom](../index.md) / [Newsletter](index.md) / Issue 1
+[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 1
 
 SGit Newsroom · Issue 1 · 2026-10-07
 
 # A team of agents, written up from the inside, and an open framework built on the same day
 
-By [Dinis Cruz](../../about/index.md), written with the [Journalist](../../newsroom/roles/journalist.md)
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
 
 ***Abstract:** What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.*
 
@@ -27734,8 +27764,6 @@ The week's main thread is a team of agents running a business with one person. [
 
 Any agent may create a draft or a file; only its creator edits it.
 
-From [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](../../articles/the-agent-team-as-it-runs.md)
-
 [The Mandate Stack](https://sgit.ai/articles/the-mandate-stack.html) then described the whole system in eight layers, from a briefing its CRM agent wrote, with two Wardley maps and their sources published beside them. It went through three rounds in the week, and it is the article to start with if you read one.
 
 ## Built on the day: an open AI governance framework
@@ -27746,8 +27774,6 @@ Today's lead on the site is [an open AI governance framework, and what its licen
 
 A licence that permits adaptation in advance means each of those can be built, and shared, without asking.
 
-From [An open AI governance framework, and what its licence let us build](../../articles/ai-baseline-control-framework.md)
-
 ## Agents, policy and the person who clicks
 
 [Where is the why?](https://sgit.ai/articles/where-is-the-why.html) reads a permission prompt, three fields, two buttons and no reason, through the Agent Behaviour Policy:
@@ -27755,8 +27781,6 @@ From [An open AI governance framework, and what its licence let us build](../../
 >
 
 A boundary whose enforcement is a human judgement is exactly as strong as the information that human is given.
-
-From [Where is the why? A permission prompt asked me to decide, and kept the reason](../../articles/where-is-the-why.md)
 
 [A personal agent that keeps your secrets](https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html) reads the year's personal agents through the same policy, and [a locked-down desktop for an agent, by the minute](https://sgit.ai/articles/an-agent-desktop-by-the-minute.html) prices what it would take to give each agent a machine of its own.
 
@@ -27766,8 +27790,6 @@ From [Where is the why? A permission prompt asked me to decide, and kept the rea
 
 The rule that the user interface enforced by omission is no longer enforced, unless somebody writes it down and something enforces it.
 
-From [Zoom into an agent's behaviour policy and you find the business logic](../../articles/the-behaviour-policy-is-the-business-logic.md)
-
 ## The input, measured
 
 [How much of this did I write?](https://sgit.ai/articles/how-much-of-this-did-i-write.html) counted the words that went into the last month's articles and the corrections that shaped them. The line from it that the newsroom's Historian pulled out:
@@ -27775,8 +27797,6 @@ From [Zoom into an agent's behaviour policy and you find the business logic](../
 >
 
 A model that can go in every direction needs someone with a direction.
-
-From [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](../../articles/how-much-of-this-did-i-write.md)
 
 ## Behind the site
 
@@ -27790,56 +27810,54 @@ Twenty-two articles were published from 2026-10-01 to 2026-10-07, grouped below 
 
 The same team of agents seen from four sides: how to build it, how it runs, the whole stack, and what it sends.
 
-- [**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**](../../articles/replicating-the-agentic-inbox.md). How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
-- [**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**](../../articles/the-agent-team-as-it-runs.md). Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
-- [**The Mandate Stack: a multi-agent system in production, layer by layer**](../../articles/the-mandate-stack.md). A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
-- [**The wall under the reply: end an email with the state of the thread, not the thread**](../../articles/the-wall-under-the-reply.md). End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
+- [**Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send**](../../../../../articles/replicating-the-agentic-inbox.md). How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
+- [**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**](../../../../../articles/the-agent-team-as-it-runs.md). Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
+- [**The Mandate Stack: a multi-agent system in production, layer by layer**](../../../../../articles/the-mandate-stack.md). A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
+- [**The wall under the reply: end an email with the state of the thread, not the thread**](../../../../../articles/the-wall-under-the-reply.md). End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
 
 ### Agents, policy and reach
 
 What an agent can reach, what it actually did, and who decides when it asks for more, from a permission prompt to a desktop of its own; and what the policy turns out to describe once you zoom in: the business itself.
 
-- [**Footprint and blast radius: what the agent actually did, and what it would have cost**](../../articles/footprint-and-blast-radius.md). Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
-- [**Where is the why? A permission prompt asked me to decide, and kept the reason**](../../articles/where-is-the-why.md). A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
-- [**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**](../../articles/a-personal-agent-that-keeps-your-secrets.md). The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
-- [**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**](../../articles/why-my-agents-do-not-run-on-my-laptop.md). An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
-- [**A locked-down desktop for an agent, by the minute, is still hard to rent**](../../articles/an-agent-desktop-by-the-minute.md). Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.
-- [**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**](../../articles/the-identity-we-wanted-to-give-the-agents.md). A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
-- [**Zoom into an agent's behaviour policy and you find the business logic**](../../articles/the-behaviour-policy-is-the-business-logic.md). Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
+- [**Footprint and blast radius: what the agent actually did, and what it would have cost**](../../../../../articles/footprint-and-blast-radius.md). Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [**Where is the why? A permission prompt asked me to decide, and kept the reason**](../../../../../articles/where-is-the-why.md). A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
+- [**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**](../../../../../articles/a-personal-agent-that-keeps-your-secrets.md). The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
+- [**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**](../../../../../articles/why-my-agents-do-not-run-on-my-laptop.md). An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
+- [**A locked-down desktop for an agent, by the minute, is still hard to rent**](../../../../../articles/an-agent-desktop-by-the-minute.md). Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.
+- [**The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard**](../../../../../articles/the-identity-we-wanted-to-give-the-agents.md). A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
+- [**Zoom into an agent's behaviour policy and you find the business logic**](../../../../../articles/the-behaviour-policy-is-the-business-logic.md). Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
 
 ### Governance and evidence
 
 Frameworks, inquiries and due diligence, each argued with the evidence published beside it.
 
-- [**An open AI governance framework, and what its licence let us build**](../../articles/ai-baseline-control-framework.md). Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
-- [**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**](../../articles/the-investigation-github-owes-its-customers.md). A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
-- [**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**](../../articles/send-an-agent-not-a-spreadsheet.md). Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
+- [**An open AI governance framework, and what its licence let us build**](../../../../../articles/ai-baseline-control-framework.md). Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
+- [**The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered**](../../../../../articles/the-investigation-github-owes-its-customers.md). A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
+- [**Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it**](../../../../../articles/send-an-agent-not-a-spreadsheet.md). Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
 
 ### Graphs, memory and review
 
 Code review as a graph, a company built on that idea, memory as context, and an interface made for each moment.
 
-- [**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**](../../articles/code-review-as-a-fractal-semantic-graph.md). Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
-- [**If somebody built a company on code review: how I would do it, and why it is only now possible**](../../articles/if-somebody-built-a-company-on-code-review.md). A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
-- [**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**](../../articles/memory-is-not-a-spectator-sport.md). Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
-- [**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**](../../articles/custom-uis-are-not-the-exception.md). Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
+- [**Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it**](../../../../../articles/code-review-as-a-fractal-semantic-graph.md). Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
+- [**If somebody built a company on code review: how I would do it, and why it is only now possible**](../../../../../articles/if-somebody-built-a-company-on-code-review.md). A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
+- [**Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one**](../../../../../articles/memory-is-not-a-spectator-sport.md). Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
+- [**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**](../../../../../articles/custom-uis-are-not-the-exception.md). Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 
 ### Writing and the business of it
 
 The author's input measured, a way to price and give away, a service that charges for an author's slides, and what local journalism could sell when its stories are kept as graphs.
 
-- [**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**](../../articles/how-much-of-this-did-i-write.md). Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
-- [**Price it, then give it away: the early access programme as the next step after "do they miss it"**](../../articles/price-it-then-give-it-away.md). Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
-- [**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**](../../articles/the-deck-i-could-not-download.md). One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.
-- [**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**](../../articles/story-vault-meets-reader-skills.md). Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
+- [**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**](../../../../../articles/how-much-of-this-did-i-write.md). Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
+- [**Price it, then give it away: the early access programme as the next step after "do they miss it"**](../../../../../articles/price-it-then-give-it-away.md). Define the product, price it, deliver it at a cost that grows a step at a time, then offer it free to people who know you and measure what it costs them.
+- [**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**](../../../../../articles/the-deck-i-could-not-download.md). One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.
+- [**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**](../../../../../articles/story-vault-meets-reader-skills.md). Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
 
-*This is issue 1 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data.*
+*This is issue 1 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
 
-**Posting this issue on LinkedIn?** The cover is [001-2026-10-07.jpg](../../articles/banners/001-2026-10-07.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+**Posting this issue on LinkedIn?** The cover is [001-agents-doing-real-work.jpg](../../../../../articles/banners/001-agents-doing-real-work.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
-
-[← All issues](index.md)
+[← All issues](../../../../../articles/newsletter/index.md)
 
 
 

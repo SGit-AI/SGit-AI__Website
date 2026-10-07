@@ -686,7 +686,7 @@
    "out": "articles/banners/green-does-not-mean-live.jpg"
   },
   {
-   "slug": "001-2026-10-07",
+   "slug": "001-agents-doing-real-work",
    "kind": "issue",
    "kicker": "SGit Newsroom · Issue 1",
    "date": "2026-10-07",
@@ -704,8 +704,30 @@
     "articles/cards/the-behaviour-policy-is-the-business-logic.webp",
     "articles/cards/how-much-of-this-did-i-write.webp"
    ],
-   "url": "sgit.ai/articles/newsletter/001-2026-10-07.html",
-   "out": "articles/banners/001-2026-10-07.jpg"
+   "url": "sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html",
+   "out": "articles/banners/001-agents-doing-real-work.jpg"
+  },
+  {
+   "slug": "subscribe",
+   "kind": "subscribe",
+   "kicker": "SGit Newsroom · Newsletter",
+   "date": "2026-10-07",
+   "author": "Dinis Cruz",
+   "title": "Get the next issue of the SGit Newsroom",
+   "teaser": "One issue a week or so: what was published, what it adds up to, and what is worth your time.",
+   "ideas": [
+    "The week's articles, grouped by what they are about",
+    "Every quote checked word for word against its article",
+    "Next: an issue picked for what you care about"
+   ],
+   "mosaic": [
+    "articles/cards/story-vault-meets-reader-skills.webp",
+    "articles/cards/the-behaviour-policy-is-the-business-logic.webp",
+    "articles/cards/an-agent-desktop-by-the-minute.webp",
+    "articles/cards/ai-baseline-control-framework.webp"
+   ],
+   "url": "sgit.ai/subscribe/",
+   "out": "articles/banners/subscribe.jpg"
   }
  ]
 }
