@@ -2,7 +2,7 @@
 
 > A BBC Radio 4 discussion on the cost of food asked for new ideas, and the loudest thing usually said about AI in the food debate is that it is dangerous. This article argues the opposite case, with the evidence it could find. The food chain from a field to a shelf is a series of hops that each keep their own records, mostly in spreadsheets, and share as little as they can; the one party with real systems is the big buyer, and once it holds a large share of a farm's output it names the price, which is the mechanism Giblin and Doctorow call a chokepoint. All of that is logistics, and logistics is what generative AI, used the way this site uses it, is good at: capture everything, structure it, and generate the small, custom tool each piece of the chain needs, then run production without a model in the line. A supply chain of encrypted vaults, one per party, joined by append lanes and a typed graph, is described piece by piece, with what exists today and what is proposed kept apart. The hypothesis that this lowers the price of goods is set against the evidence: two thirds of supply chains on spreadsheets, 13% of food lost before retail, and the gains early adopters of AI planning report. It then takes on two dogmas, that falling prices are always bad, which the BIS's own history of deflations does not support, and that sharing is giving things away, when the uncounted cost is the cost of not sharing. It closes with the second memo's case for openness: open source and Creative Commons for supply chain workflows, open-weight models that run inside a company's own environment and can be built on, the under-reported advantage of the economies already using them, and sharing the journey rather than the curated success story.
 
-*Source: <https://sgit.ai/articles/supply-chain-of-vaults.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/supply-chain-of-vaults.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -169,7 +169,9 @@ Vaults & methodStartups & strategy[This article as a graph →](graphs.md#supply
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [supply-chain-of-vaults.jpg](../articles/banners/supply-chain-of-vaults.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

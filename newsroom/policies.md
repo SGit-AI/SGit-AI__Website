@@ -2,13 +2,13 @@
 
 > What each newsroom role may write, generated from the role files the policy checker reads.
 
-*Source: <https://sgit.ai/newsroom/policies.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/policies.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Articles](../articles/index.md) / [Newsroom](index.md) / Behaviour policies
+[Home](../index.md) / [SGit Newsroom](../articles/index.md) / [How it runs](index.md) / Behaviour policies
 
-The newsroom
+SGit Newsroom · how it runs
 
 # Behaviour policies
 
@@ -20,6 +20,7 @@ A behaviour policy, in [RiskMandate's terms](https://riskmandate.ai/abp.html), s
 |---|---|---|---|---|---|---|
 | `admin/build/*` | · | · | · | · | writes | · |
 | `admin/build/build_pages.py` | · | · | · | writes | writes | · |
+| `admin/build/make_banners.mjs` | · | · | · | writes | writes | · |
 | `admin/build/make_og_cards.mjs` | · | · | · | writes | writes | · |
 | `admin/content/articles/*` | · | writes | · | · | · | writes |
 | `admin/content/newsroom/README.md` | writes | · | · | · | · | · |
@@ -27,9 +28,11 @@ A behaviour policy, in [RiskMandate's terms](https://riskmandate.ai/abp.html), s
 | `admin/content/newsroom/collections/*` | · | · | writes | · | · | · |
 | `admin/content/newsroom/front.json` | writes | · | · | · | · | · |
 | `admin/content/newsroom/log/*` | writes | writes | writes | writes | writes | · |
+| `admin/content/newsroom/newsletter/*` | · | writes | · | · | · | · |
 | `admin/content/newsroom/notes/*` | writes | writes | writes | · | · | · |
 | `admin/content/newsroom/pitches/*` | status | writes | writes | writes | writes | writes |
 | `admin/content/updates/*` | · | writes | · | · | · | writes |
+| `articles/banners/*` | · | writes | · | writes | · | writes |
 | `articles/cards/*` | · | writes | · | writes | · | writes |
 | `articles/data/*` | · | writes | · | · | · | writes |
 | `articles/images/*` | · | writes | · | · | · | writes |

@@ -98,7 +98,8 @@
       return;
     }
     sg.vfs.read(path).then(function (data) {
-      img.src = URL.createObjectURL(new Blob([data], { type: 'image/webp' }));
+      var ext = (path.split('.').pop() || '').toLowerCase();
+      img.src = URL.createObjectURL(new Blob([data], { type: ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : ext === 'png' ? 'image/png' : 'image/webp' }));
       fig.insertBefore(node, fig.firstChild);
     }, function () { failed(fig, name); });
   }

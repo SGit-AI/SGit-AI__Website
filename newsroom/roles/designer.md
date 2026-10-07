@@ -2,13 +2,13 @@
 
 > Owns how the articles section looks and reads. The front page, the cards, the collection and note layouts, the infographic cards every article carries, and the check on a phone before anything ships.
 
-*Source: <https://sgit.ai/newsroom/roles/designer.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/designer.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../../index.md) / [Articles](../../articles/index.md) / [Newsroom](../index.md) / Designer
+[Home](../../index.md) / [SGit Newsroom](../../articles/index.md) / [How it runs](../index.md) / Designer
 
-The newsroom
+SGit Newsroom · how it runs
 
 # Designer
 
@@ -32,6 +32,8 @@ Read by `admin/build/policy_check.py --role designer`. Paths the role may create
 - `og/*`
 - `admin/content/newsroom/pitches/*`
 - `admin/content/newsroom/log/*`
+- `admin/build/make_banners.mjs`
+- `articles/banners/*`
 
 ## What the role does
 

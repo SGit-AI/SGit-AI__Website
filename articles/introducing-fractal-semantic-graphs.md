@@ -2,7 +2,7 @@
 
 > The introduction to the term. Four words and only one of them new; the test that decides whether something deserves the word, worked from a risk register to a TCP packet; why every file format is already a graph; the five-rule grammar; the evidence, eleven altitudes across seven live vaults; what is still modelled rather than imported; and why now.
 
-*Source: <https://sgit.ai/articles/introducing-fractal-semantic-graphs.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/introducing-fractal-semantic-graphs.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -171,7 +171,9 @@ Graphs & knowledge[This article as a graph →](graphs.md#introducing-fractal-se
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [introducing-fractal-semantic-graphs.jpg](../articles/banners/introducing-fractal-semantic-graphs.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

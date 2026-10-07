@@ -2,13 +2,13 @@
 
 > One entry per run of a newsroom role: what changed on the front, what was decided, what is next.
 
-*Source: <https://sgit.ai/newsroom/log.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/log.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Articles](../articles/index.md) / [Newsroom](index.md) / The desk log
+[Home](../index.md) / [SGit Newsroom](../articles/index.md) / [How it runs](index.md) / The desk log
 
-The newsroom
+SGit Newsroom · how it runs
 
 # The desk log
 

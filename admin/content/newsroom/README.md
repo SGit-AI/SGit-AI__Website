@@ -1,4 +1,4 @@
-# The newsroom
+# The SGit Newsroom
 
 The editorial layer over the articles. Rendered publicly at https://sgit.ai/newsroom/.
 
@@ -18,6 +18,7 @@ featured collections) is written by the Editor only. Anyone else asks with a pit
 | `pitches/YYYY-MM-DD__<slug>.md` | a request for placement | anyone; the Editor edits `status` only |
 | `board/<id>-<slug>.md` | the desk's kanban: backlog, doing, review, done | Editor |
 | `log/YYYY/MM/DD/HHMM__<role>__<slug>.md` | one record per desk run, append-only | each role, its own |
+| `newsletter/NNN-YYYY-MM-DD.md` | a newsletter issue: `title`, `date`, `summary`, `dek` (banner line), `ideas` (`|`-separated, banner), `cites`, `linkedin` (URL once posted) | Journalist |
 
 Directives available in notes and collections, on top of the article markdown:
 
@@ -30,6 +31,13 @@ Tools:
 
     python3 admin/build/desk.py                       the desk report: what the Editor should do next
     python3 admin/build/policy_check.py --role <r>    did this branch write only what role <r> may?
+    node admin/build/make_banners.mjs                 1920x1080 LinkedIn covers for articles and issues
+                                                      (run after the build; release.sh does both)
+
+Readers subscribe to the newsletter, not to articles. An issue is due a week after the last or once
+five articles have been published since it; desk.py says when. Each issue is cross-posted as a
+LinkedIn article in Deterministic GenAI: upload its cover from articles/banners/, paste the title,
+use the issue page's Copy for LinkedIn button for the body, then set `linkedin:` in the issue file.
 
 A placement naming an article that does not exist is skipped and reported, never a build failure:
 a contributor's rename must not be blocked by a file only the Editor may edit.

@@ -4,7 +4,7 @@ title: Designer
 mission: Owns how the articles section looks and reads. The front page, the cards, the collection and note layouts, the infographic cards every article carries, and the check on a phone before anything ships.
 claim: If the front page looks like a list of links, or an article card cannot be read at 390 pixels wide, the Designer has failed.
 owns: the article and newsroom components in admin/build/build_pages.py, the front and card styles in assets/site.css, the card images
-writes: assets/site.css, admin/build/build_pages.py, admin/build/make_og_cards.mjs, articles/cards/*, og/*, admin/content/newsroom/pitches/*, admin/content/newsroom/log/*
+writes: assets/site.css, admin/build/build_pages.py, admin/build/make_og_cards.mjs, articles/cards/*, og/*, admin/content/newsroom/pitches/*, admin/content/newsroom/log/*, admin/build/make_banners.mjs, articles/banners/*
 reads: admin/content/newsroom/front.json, the screenshots
 never: decide what leads (the Editor), change copy (the Journalist), or add an external font, script or image host
 cadence: when a component changes, and a phone-width pass on the front after every edition

@@ -29,7 +29,7 @@ from content import Content_Loader          # noqa: E402
 from newsroom import Newsroom               # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
-SOURCE = re.compile(r'^(admin/|assets/|articles/(images|cards|data)/|og/)')
+SOURCE = re.compile(r'^(admin/|assets/|articles/(images|cards|data|banners)/|og/)')
 GENERATED = re.compile(r'^admin/(index|versions)\.(html|md)$|^admin/llms\.txt$|^assets/site-index\.json$')
 BUILD = 'admin/build/build_pages.py'
 

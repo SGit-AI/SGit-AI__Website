@@ -2,7 +2,7 @@
 
 > When an AI agent is given a Gmail or Google Calendar connector, it can read, send, move, decline and permanently delete on somebody's behalf, and for several of those actions the platform itself documents that there is no way back. This article argues that a twin of the connector is the minimum requirement for deploying an agent with confidence. The twin is a journal of every request and response the agent makes, appended as it happens to a write-only lane, processed later, and replayed into the inbox and calendar as the agent saw them, with a before and after for every change and a revert plan for each one. It gives provenance, explanation and a named list of what can and cannot be undone, and it changes the agent's behaviour policy from a hope into a list. Every claim about Gmail and Calendar is taken from Google's own documentation and linked. A working replay of an invented session, and a business plan for the service, are published alongside it as a vault.
 
-*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -199,7 +199,9 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 
 - [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [connector-twin-before-you-deploy-an-agent.jpg](../articles/banners/connector-twin-before-you-deploy-an-agent.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

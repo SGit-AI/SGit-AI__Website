@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.88'
+SITE_VERSION = 'v0.6.89'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.88', '2026-10-07', 'this release',
+    ('v0.6.89', '2026-10-07', 'this release',
+     "THE SGIT NEWSROOM AND ITS NEWSLETTER. The articles section is named the SGit Newsroom in the menu and on the "
+     "front; the backstage pages become How it runs, and every URL is unchanged. A newsletter content type: one file "
+     "per issue in admin/content/newsroom/newsletter/, NNN-YYYY-MM-DD.md, rendered with the desk directives so its "
+     "quotes are checked against the articles at build time, cross-posted as a LinkedIn article in Deterministic GenAI "
+     "(the URL goes in the issue file once posted; the newsletter's own URL is left blank until supplied rather than "
+     "guessed). desk.py says when an issue is due: a week after the last or five articles since it. Issue 1 is out. "
+     "A cover for every article and issue: admin/build/make_banners.mjs renders 1920x1080 JPEGs through Playwright "
+     "from a manifest the build writes (title, teaser, three key ideas from the graph's claims, the article's own "
+     "hero, or for an issue the cards of what it covers), re-rendering only what changed; release.sh runs it between "
+     "two builds. An issue page has a Copy for LinkedIn button that makes every link absolute. The subscribe form "
+     "now subscribes to the newsletter. The quote check now allows a capitalised first letter, the convention for a "
+     "quote that starts mid-sentence; it caught one such quote in Issue 1.",),
+    ('v0.6.88', '2026-10-07', 'git a46446bf',
      "THE NEWSROOM'S FIRST EDITOR RUN. A release that touches only the Editor's files and the release lines, "
      "checked with policy_check.py --role editor. The second edition of the articles front: the open AI governance "
      "framework leads, raised from the highlight its pitch asked for because it carries the most checkable evidence "
@@ -3543,14 +3556,16 @@ NAV = [
     # Articles first (v0.6.85). They are where most of what this site argues lives, and until
     # this release they sat second under Updates, the least-read section. The group is owned
     # by the newsroom (admin/content/newsroom/): the front page, the desk, the collections.
-    ('articles', 'Articles', 'articles/index.html', [
+    # Labelled Newsroom from v0.6.89: the SGit Newsroom is the front end of the back office.
+    ('articles', 'Newsroom', 'articles/index.html', [
         ('articles', 'Front page', 'articles/index.html'),
+        ('newsletter', 'Newsletter', 'articles/newsletter/index.html'),
         ('all', 'Every article', 'articles/index.html#all'),
         ('collections', 'Collections', 'articles/collections/index.html'),
         ('desk', 'From the desk', 'articles/desk/index.html'),
         ('graphs', 'As graphs', 'articles/graphs.html'),
-        ('newsroom', 'The newsroom', 'newsroom/index.html'),
-        ('subscribe', 'Subscribe', 'articles/index.html#subscribe'),
+        ('newsroom', 'How it runs', 'newsroom/index.html'),
+        ('subscribe', 'Subscribe', 'articles/newsletter/index.html#subscribe'),
     ]),
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
@@ -4197,6 +4212,7 @@ LLMS_SECTIONS = [
     ('updates', 'Updates (dated posts: what changed, one entry per story)'),
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
     ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
+    ('newsletter', 'The newsletter (the regular SGit Newsroom issue: what was published and what it adds up to, also posted on LinkedIn)'),
     ('desk', 'From the desk (short pieces written from the articles: nuggets, threads across articles, the week in one page)'),
     ('newsroom', 'The newsroom (how articles are written, placed and connected: desk roles, behaviour policies, the board, the run log, and newsroom/wire.json for subscriber agents)'),
     ('network', 'The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)'),
@@ -5648,11 +5664,14 @@ def subscribe_block(pre='', compact=False):
     Without JavaScript, or if any step fails, the same request is offered as a plain email to
     the same agent, so nothing is lost."""
     from urllib.parse import quote
-    href = (f'mailto:{SUBSCRIBE_TO}?subject={quote("Subscribe: sgit.ai articles")}'
-            f'&amp;body={quote("Please add me to the list for new sgit.ai articles.")}')
-    lead = 'Get new articles by email' if not compact else 'Want the next one by email'
-    return (f'<aside class="subscribe" id="subscribe" aria-label="Subscribe to new articles">'
-            f'<p><b>{lead}.</b> Your address is encrypted in your browser to the key of the agent that '
+    href = (f'mailto:{SUBSCRIBE_TO}?subject={quote("Subscribe: SGit Newsroom newsletter")}'
+            f'&amp;body={quote("Please add me to the SGit Newsroom newsletter.")}')
+    # From v0.6.89 the subscription is to the newsletter, not to every article: an issue has the
+    # context a single article does not, and an email per article would be noise.
+    lead = 'Get the SGit Newsroom newsletter' if not compact else 'Get the next issue by email'
+    return (f'<aside class="subscribe" id="subscribe" aria-label="Subscribe to the newsletter">'
+            f'<p><b>{lead}.</b> One issue a week or so: what was published, what it adds up to, what is worth your time. '
+            f'A personalised issue, picked for what you care about, comes next. Your address is encrypted in your browser to the key of the agent that '
             f'manages the list and dropped into a write-only lane on an encrypted vault. '
             f'<a href="{pre}docs/briefs/subscribe-lane-agent-brief.html">How it works</a>.</p>'
             f'<form class="subform" data-subscribe novalidate>'
@@ -5665,7 +5684,7 @@ def subscribe_block(pre='', compact=False):
             f'<button class="subbtn" type="submit">Subscribe</button>'
             f'<label class="consent"><input type="checkbox" name="consent"> <span>I am happy for the agent at '
             f'{SUBSCRIBE_TO}, which runs this list for sgit.ai, to keep this address in a private vault and email '
-            f'me new articles. I can ask to be removed by replying to any message.</span></label>'
+            f'me the SGit Newsroom newsletter. I can ask to be removed by replying to any message.</span></label>'
             f'<p class="sub-status small" aria-live="polite"></p>'
             f'<a class="sub-mailto small" href="{href}" hidden>Send it as an email instead &rarr;</a>'
             f'</form>'
@@ -5701,6 +5720,7 @@ def article_body(a):
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + article_threads_block(a)
             + article_desk_block(a)
+            + linkedin_kit(a['slug'], '../')
             + '\n ' + subscribe_block('../', compact=True)
             + '\n <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All articles</a></p>\n'
@@ -5779,7 +5799,10 @@ def desk_md(body, depth, where):
             out.append('<div class="agrid dcard">' + art_card(BY_SLUG[slug], pre=root + 'articles/') + '</div>')
         elif m_q.group(2):
             text = m_q.group(2).strip()
-            if _plain(text) not in _plain(BY_SLUG[slug]['body']):
+            # word for word, except that a quote may capitalise its first letter when it starts
+            # mid-sentence in the article, as quotations conventionally do
+            q, body = _plain(text), _plain(BY_SLUG[slug]['body'])
+            if q not in body and (q[:1].swapcase() + q[1:]) not in body:
                 raise Content_Error(f'{where}: the quote is not in {slug}.md word for word: {text[:80]!r}')
             out.append(_quote_html(slug, text, root))
         else:
@@ -5857,20 +5880,21 @@ def _latest_rail(n, root, title='Latest'):
 
 
 def articles_subnav(cur, root):
-    items = [('front', 'Front page', 'articles/index.html'), ('all', 'Every article', 'articles/index.html#all'),
+    items = [('front', 'Front page', 'articles/index.html'), ('newsletter', 'Newsletter', 'articles/newsletter/index.html'),
+             ('all', 'Every article', 'articles/index.html#all'),
              ('collections', 'Collections', 'articles/collections/index.html'),
              ('desk', 'From the desk', 'articles/desk/index.html'), ('graphs', 'As graphs', 'articles/graphs.html'),
-             ('newsroom', 'The newsroom', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'articles/index.html#subscribe')]
-    return ('<nav class="fsub" aria-label="Articles">' + ''.join(
+             ('newsroom', 'How it runs', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'articles/newsletter/index.html#subscribe')]
+    return ('<nav class="fsub" aria-label="SGit Newsroom">' + ''.join(
         f'<a href="{root}{h}"{_CUR if k == cur else ""}>{l}</a>' for k, l, h in items) + '</nav>')
 
 
-def _masthead(root, cur, title='Articles', sub=''):
+def _masthead(root, cur, title='SGit Newsroom', sub=''):
     fr = NEWS.front
     ed = f'Edition of {fr["edition"]}' if fr['edition'] else 'Unedited'
     return (f'<header class="fmast">'
             f'<p class="fdateline"><span>{ed}</span><span>{len(ARTICLES)} articles &middot; {len(NEWS.notes)} desk notes '
-            f'&middot; {len(NEWS.collections)} collections</span><span>sgit.ai &middot; {SITE_VERSION}</span></p>'
+            f'&middot; {len(NEWS.collections)} collections &middot; {len(NEWS.issues)} issue{"s" if len(NEWS.issues) != 1 else ""}</span><span>sgit.ai &middot; {SITE_VERSION}</span></p>'
             f'<h1>{title}</h1>'
             + (f'<p class="fmast-sub">{sub}</p>' if sub else '')
             + articles_subnav(cur, root) + '</header>')
@@ -5949,7 +5973,7 @@ def home_articles_band():
                   f'{_esc(_short(a["title"], 84))}</a></li>' for a in latest)
     notes = ''.join(_note_teaser(n, '') for n in NEWS.notes[:nn])
     return ('<section class="band alt front-band" id="articles">\n <div class="inner-wide">\n'
-            ' <div class="fband-head"><h2>Start with an argument, not a menu</h2>'
+            ' <div class="fband-head"><p class="eyebrow">SGit Newsroom</p><h2>Start with an argument, not a menu</h2>'
             f'<p class="bandlede">The articles carry most of what this site believes, with the figures, the data and the links '
             f'to check it. {number_words(len(ARTICLES)).capitalize()} so far; the newsroom picks where to start.</p></div>\n'
             ' <div class="ftop">' + (_lead_block(lead, '') if lead else '')
@@ -5957,7 +5981,7 @@ def home_articles_band():
             ' <div class="fhighs home">' + ''.join(_high_card(h, '') for h in highs) + '</div>\n'
             ' <p class="bandcta"><a class="cta2" href="articles/index.html">The front page &rarr;</a>'
             ' &nbsp;&middot;&nbsp; <a class="cta2" href="articles/collections/index.html">Collections &rarr;</a>'
-            ' &nbsp;&middot;&nbsp; <a class="cta2" href="newsroom/index.html">How the newsroom works &rarr;</a></p>\n'
+            ' &nbsp;&middot;&nbsp; <a class="cta2" href="articles/newsletter/index.html">The newsletter &rarr;</a></p>\n'
             ' </div>\n</section>')
 
 
@@ -6041,7 +6065,8 @@ def article_desk_block(a):
 
 NEWSROOM_TABS = [('index', 'Overview', 'index.html'), ('roles', 'Roles', 'index.html#roles'),
                  ('policies', 'Policies', 'policies.html'), ('publish', 'How to publish', 'publish.html'),
-                 ('board', 'Board', 'board.html'), ('log', 'Log', 'log.html'), ('wire', 'The wire', 'wire.json')]
+                 ('board', 'Board', 'board.html'), ('log', 'Log', 'log.html'), ('newsletter', 'Newsletter', '../articles/newsletter/index.html'),
+                 ('wire', 'The wire', 'wire.json')]
 
 
 def newsroom_subnav(cur, pre=''):
@@ -6050,9 +6075,9 @@ def newsroom_subnav(cur, pre=''):
 
 
 def _nr_head(cur, title, lead, pre=''):
-    return (f' <p class="crumb"><a href="{pre}../index.html">Home</a> / <a href="{pre}../articles/index.html">Articles</a> / '
-            + (f'<a href="{pre}index.html">Newsroom</a> / ' if cur != 'index' else '') + f'{title}</p>\n'
-            f' <p class="eyebrow">The newsroom</p>\n <h1>{title}</h1>\n <p class="lead">{lead}</p>\n'
+    return (f' <p class="crumb"><a href="{pre}../index.html">Home</a> / <a href="{pre}../articles/index.html">SGit Newsroom</a> / '
+            + (f'<a href="{pre}index.html">How it runs</a> / ' if cur != 'index' else '') + f'{title}</p>\n'
+            f' <p class="eyebrow">SGit Newsroom &middot; how it runs</p>\n <h1>{title}</h1>\n <p class="lead">{lead}</p>\n'
             + newsroom_subnav(cur, pre) + '\n')
 
 
@@ -6093,9 +6118,14 @@ def newsroom_index_body():
     fr = NEWS.front
     last = NEWS.log[0] if NEWS.log else None
     open_p = [p for p in NEWS.pitches if p['status'] == 'open']
-    return ('<main class="doc newsroom">\n' + _nr_head('index', 'The newsroom',
-        'How the articles on this site get written, placed and connected, by one person and a desk of agents. '
+    return ('<main class="doc newsroom">\n' + _nr_head('index', 'How the SGit Newsroom runs',
+        'How the articles on this site get written, placed, connected and sent, by one person and a desk of agents. '
         'Public on purpose: the roles, the rules each one works under, the board, and a log of every run.')
+        + '<p>The <a href="../articles/index.html">SGit Newsroom</a> is the public front of a back office: the agents, the '
+        'vaults they work in, the contact list and the subscribe lane. What reaches a reader goes through here: an article, '
+        'a desk note, a <a href="../articles/newsletter/index.html">newsletter issue</a>. Its sibling '
+        '<a href="https://newsroom.sgit.ai/">newsroom.sgit.ai</a> is where the method is argued and tested; this is the '
+        'method running on one site, every day.</p>\n'
         + '<div class="note"><b>The one rule, and the one exception.</b> Publishing is adding one file: any agent that '
         'writes an article has published it, live, at the top of Latest, in the feed and in the wire, with no approval step. '
         'The exception is <b>placement</b>. What leads, what is highlighted, what the homepage carries: one role, the '
@@ -6264,8 +6294,169 @@ def newsroom_log_body():
         'what was decided, what is next.') + (items or '<p class="dim">No runs yet.</p>') + '\n</main>')
 
 
+# ---------------------------------------------------------------- the newsletter and the banners
+# The SGit Newsroom's regular issue: what was published, what it adds up to, and the pieces
+# worth a reader's time. One file per issue in admin/content/newsroom/newsletter/, the same
+# text cross-posted as a LinkedIn article in the Deterministic GenAI newsletter. The page is
+# laid out the way LinkedIn lays out an article (cover, title, abstract, body) so that copying
+# the rendered body into LinkedIn's editor carries it over; the cover is a 1920x1080 banner
+# rendered by admin/build/make_banners.mjs from the data below.
+
+# The URL is left empty until the author supplies it; a guessed URL would be a broken link with
+# the author's name on it. With no URL the name renders as text.
+LINKEDIN_NEWSLETTER = ('Deterministic GenAI', '')
+
+
+def _nl_name(root=''):
+    name, url = LINKEDIN_NEWSLETTER
+    return f'<a href="{url}" rel="noopener" target="_blank">{name}</a>' if url else f'<i>{name}</i>'
+BANNER_DIR = 'articles/banners'
+
+
+def _first_shot(a):
+    m = re.search(r'^!shot\s+([^|\s]+)\s*\|\s*([^|]*?)\s*\|', a['body'], re.M)
+    if not m:
+        return None
+    p = os.path.normpath(os.path.join('articles', m.group(2).strip() or 'images/', m.group(1).strip()))
+    return p if os.path.exists(os.path.join(ROOT, p)) else None
+
+
+def article_ideas(a, n=3):
+    """The key ideas a banner carries: the article's own `ideas:` (separated by |) if it has
+    them, else the claims in its graph, then its methods, then its concepts."""
+    if a.get('ideas'):
+        return [x.strip() for x in a['ideas'].split('|') if x.strip()][:n]
+    nodes = GRAPHS.get(a['slug'], {}).get('nodes', [])
+    out = []
+    for kind in ('claim', 'method', 'concept'):
+        out += [x['label'] for x in nodes if x['kind'] == kind and x['label'] not in out]
+    return out[:n]
+
+
+def banner_path(slug):
+    return f'{BANNER_DIR}/{slug}.jpg'
+
+
+def has_banner(slug):
+    return os.path.exists(os.path.join(ROOT, banner_path(slug)))
+
+
+def write_banner_manifest():
+    """The input make_banners.mjs renders from: one entry per article and per issue. Written
+    by the build so the banner tool never parses markdown or graphs itself."""
+    entries = []
+    for a in ARTICLES:
+        entries.append({'slug': a['slug'], 'kind': 'article', 'kicker': 'SGit Newsroom', 'date': a['date'],
+                        'author': a['author'] or 'sgit.ai', 'title': a['title'], 'teaser': art_teaser(a),
+                        'ideas': article_ideas(a), 'hero': _first_shot(a),
+                        'url': f'sgit.ai/articles/{a["slug"]}.html', 'out': banner_path(a['slug'])})
+    for i in NEWS.issues:
+        entries.append({'slug': i['slug'], 'kind': 'issue', 'kicker': f'SGit Newsroom · Issue {i["number"]}',
+                        'date': i['date'], 'author': 'Dinis Cruz', 'title': i['title'], 'teaser': i.get('dek') or i['summary'],
+                        'ideas': [x.strip() for x in i.get('ideas', '').split('|') if x.strip()][:3],
+                        'mosaic': [f'articles/cards/{art_card_img(BY_SLUG[s])}' for s in i['cites'][:4]],
+                        'url': f'sgit.ai/articles/newsletter/{i["slug"]}.html', 'out': banner_path(i['slug'])})
+    os.makedirs(os.path.join(ROOT, BANNER_DIR), exist_ok=True)
+    s = json.dumps({'size': [1920, 1080], 'generated_by': 'admin/build/build_pages.py', 'entries': entries},
+                   indent=1, ensure_ascii=False) + '\n'
+    with open(os.path.join(ROOT, BANNER_DIR, 'manifest.json'), 'w') as f:
+        f.write(s)
+    return s
+
+
+def linkedin_kit(slug, root, what='article'):
+    """A small block at the foot of an article or issue: the cover image at LinkedIn's size,
+    and how to post it. Not part of what gets copied."""
+    if not has_banner(slug):
+        return ''
+    return (f'\n<aside class="lkit" aria-label="For LinkedIn"><b>Posting this {what} on LinkedIn?</b> '
+            f'The cover is <a href="{root}{banner_path(slug)}" download>{slug}.jpg</a> (1920&times;1080, title and key ideas on it). '
+            'Upload it as the article cover, paste the title, then copy the body from this page.</aside>')
+
+
+def _issue_link(i, root):
+    li = (f' &middot; <a href="{_esc(i["linkedin"])}" rel="noopener" target="_blank">on LinkedIn &#8599;</a>' if i['linkedin'] else '')
+    fig = (f'<figure class="shot cardshot" data-shot="{i["slug"]}.jpg" data-dir="{root}{BANNER_DIR}/" data-alt="{_esc(i["title"])}"></figure>'
+           if has_banner(i['slug']) else '')
+    return (f'<article class="nlissue"><a class="nlissue-fig" href="{root}articles/newsletter/{i["slug"]}.html">{fig}</a>'
+            f'<div><p class="acard-meta"><span class="fkick">Issue {i["number"]}</span><span class="acard-date">{i["date"]}</span></p>'
+            f'<h2><a href="{root}articles/newsletter/{i["slug"]}.html">{_esc(i["title"])}</a></h2>'
+            f'<p>{_esc(i["summary"])}</p><p class="small dim">{len(i["cites"])} articles{li}</p></div></article>')
+
+
+def newsletter_index_body():
+    root = '../../'
+    due, why = NEWS.issue_due()
+    name, url = LINKEDIN_NEWSLETTER
+    out = ['<main class="front">', _masthead(root, 'newsletter', 'The newsletter',
+           'The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth your '
+           'time. Weekly, or sooner when there is enough to say. The same issue goes out as a LinkedIn article in '
+           f'{_nl_name()}.'),
+           '<section class="fband">' + subscribe_block(root) + '</section>',
+           '<section class="fband"><h2 class="fsect">Issues</h2>']
+    out += [_issue_link(i, root) for i in NEWS.issues] or ['<p class="dim">The first issue is being written.</p>']
+    out.append(f'<p class="small dim">Next issue: {"due now" if due else "not yet due"} ({_esc(why)}). '
+               'Issues are written by the <a href="../../newsroom/roles/journalist.html">Journalist</a> from the articles\' '
+               'own data; every quote is checked against its article when the site is built.</p></section></main>')
+    return '\n'.join(out)
+
+
+COPY_JS = """<script>
+(function () {
+  var b = document.querySelector('[data-copy-issue]');
+  var src = document.getElementById('issue-body');
+  if (!b || !src) return;
+  b.addEventListener('click', function () {
+    // links on the page are relative (the site also renders inside a vault); on LinkedIn they
+    // must be absolute, so the copy carries https://sgit.ai/... for every internal link
+    var c = src.cloneNode(true), root = document.documentElement.getAttribute('data-root') || '';
+    var base = new URL(root, location.href).href;
+    [].forEach.call(c.querySelectorAll('a[href]'), function (a) {
+      var abs = new URL(a.getAttribute('href'), location.href).href;
+      a.setAttribute('href', abs.indexOf(base) === 0 ? 'https://sgit.ai/' + abs.slice(base.length) : abs);
+    });
+    var html = c.innerHTML, text = c.innerText || src.innerText;
+    var done = function (ok) { b.textContent = ok ? 'Copied: paste into the LinkedIn article body' : 'Select the text below and copy it'; };
+    try {
+      navigator.clipboard.write([new ClipboardItem({'text/html': new Blob([html], {type: 'text/html'}),
+                                                   'text/plain': new Blob([text], {type: 'text/plain'})})])
+        .then(function () { done(true); }, function () { done(false); });
+    } catch (e) { done(false); }
+  });
+}());
+</script>"""
+
+
+def issue_body(i):
+    root = '../../'
+    name, url = LINKEDIN_NEWSLETTER
+    banner = (f'<figure class="shot nlbanner" data-shot="{i["slug"]}.jpg" data-dir="{root}{BANNER_DIR}/" '
+              f'data-alt="{_esc(i["title"])}"></figure>\n' if has_banner(i['slug']) else '')
+    li = (f' &middot; <a href="{_esc(i["linkedin"])}" rel="noopener" target="_blank">read it on LinkedIn &#8599;</a>'
+          if i['linkedin'] else '')
+    return ('<main class="doc nlpage">\n'
+            f' <p class="crumb"><a href="{root}index.html">Home</a> / <a href="../index.html">SGit Newsroom</a> / '
+            f'<a href="index.html">Newsletter</a> / Issue {i["number"]}</p>\n'
+            + banner +
+            f' <p class="eyebrow">SGit Newsroom &middot; Issue {i["number"]} &middot; {i["date"]}</p>\n'
+            f' <h1>{_esc(i["title"])}</h1>\n'
+            f' <p class="small dim">By <a href="{root}about/index.html" rel="author">Dinis Cruz</a>, written with the '
+            f'<a href="{root}newsroom/roles/{i["role"]}.html">{_esc(i["role"]).capitalize()}</a>{li}</p>\n'
+            ' <p class="nlcopy"><button type="button" class="subbtn" data-copy-issue>Copy for LinkedIn</button> '
+            '<span class="small dim">copies the abstract and body below, links and formatting included</span></p>\n'
+            f' <div id="issue-body"><p><em><b>Abstract:</b> {_esc(i["summary"])}</em></p>\n'
+            + desk_md(i['body'], 2, i['where'])
+            + f'\n<p><em>This is issue {i["number"]} of the SGit Newsroom newsletter, also published on LinkedIn in '
+              f'{_nl_name()}. Every article it links to is on '
+              f'<a href="https://sgit.ai/articles/index.html">sgit.ai</a>, with its sources and its data.</em></p></div>\n'
+            + linkedin_kit(i['slug'], root, 'issue')
+            + '\n ' + subscribe_block(root, compact=True)
+            + '\n <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All issues</a></p>\n</main>\n'
+            + COPY_JS)
+
+
 def newsroom_pages():
-    out = [('newsroom/index.html', 'The newsroom, sgit.ai',
+    out = [('newsroom/index.html', 'How the SGit Newsroom runs, sgit.ai',
             'How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, '
             'their behaviour policies, the front and why, desk health, the board and the run log.', 'newsroom', newsroom_index_body()),
            ('newsroom/policies.html', 'Behaviour policies, the sgit.ai newsroom',
@@ -6284,6 +6475,12 @@ def newsroom_pages():
         out.append((f'newsroom/roles/{r["slug"]}.html', f'{r["title"]}, a newsroom role on sgit.ai', r['mission'], 'newsroom', newsroom_role_body(r)))
     for c in NEWS.collections:
         out.append((f'articles/collections/{c["id"]}.html', f'{c["title"]}, a collection, sgit.ai', c['dek'], 'collections', collection_body(c)))
+    out.append(('articles/newsletter/index.html', 'The newsletter, SGit Newsroom',
+                'The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth '
+                'reading, also published on LinkedIn.', 'newsletter', newsletter_index_body()))
+    for i in NEWS.issues:
+        out.append((f'articles/newsletter/{i["slug"]}.html', f'Issue {i["number"]}: {i["title"]}, SGit Newsroom',
+                    i['summary'], 'newsletter', issue_body(i)))
     for n in NEWS.notes:
         out.append((f'articles/desk/{n["slug"]}.html', f'{n["title"]}, sgit.ai desk', n['summary'], 'desk', note_body(n)))
     return out
@@ -6309,6 +6506,10 @@ def write_wire():
         'notes': [{'slug': n['slug'], 'title': n['title'], 'date': n['date'], 'kind': n['kind'], 'role': n['role'],
                    'summary': n['summary'], 'cites': n['cites'], 'url': f'{base}articles/desk/{n["slug"]}.html',
                    'markdown': f'{base}articles/desk/{n["slug"]}.md'} for n in NEWS.notes],
+        'newsletter': [{'number': i['number'], 'slug': i['slug'], 'title': i['title'], 'date': i['date'],
+                        'summary': i['summary'], 'cites': i['cites'], 'linkedin': i['linkedin'] or None,
+                        'url': f'{base}articles/newsletter/{i["slug"]}.html',
+                        'banner': (f'{base}{banner_path(i["slug"])}' if has_banner(i['slug']) else None)} for i in NEWS.issues],
         'collections': [{'id': c['id'], 'title': c['title'], 'dek': c['dek'], 'curator': c['curator'],
                          'updated': c['updated'], 'articles': c['slugs'],
                          'url': f'{base}articles/collections/{c["id"]}.html'} for c in NEWS.collections],
@@ -6325,6 +6526,8 @@ def write_articles_feed():
     items = [(a['date'], a['title'], f'https://sgit.ai/articles/{a["slug"]}.html', a['summary']) for a in ARTICLES]
     items += [(n['date'], f'{NOTE_KINDS[n["kind"]]}: {n["title"]}', f'https://sgit.ai/articles/desk/{n["slug"]}.html', n['summary'])
               for n in NEWS.notes]
+    items += [(i['date'], f'Newsletter, issue {i["number"]}: {i["title"]}', f'https://sgit.ai/articles/newsletter/{i["slug"]}.html',
+               i['summary']) for i in NEWS.issues]
     items.sort(key=lambda x: x[0], reverse=True)
 
     def x(s):
@@ -6402,6 +6605,7 @@ _combined = json.dumps({
 with open(os.path.join(ROOT, 'articles', 'graphs.json'), 'w') as f:
     f.write(_combined + '\n')
 print(f'wrote articles/graphs.json ({len(_combined)} bytes, {len(GRAPHS)} graphs) and {len(GRAPHS)} per-article files')
+print(f'wrote {BANNER_DIR}/manifest.json ({len(write_banner_manifest())} bytes); render with node admin/build/make_banners.mjs')
 print(f'wrote newsroom/wire.json ({len(write_wire())} bytes) and articles/feed.xml ({len(write_articles_feed())} bytes)')
 print(f'content: {len(UPDATES)} updates, {len(ARTICLES)} articles')
 print(f'newsroom: {len(NEWS.roles)} roles, {len(NEWS.notes)} notes, {len(NEWS.collections)} collections, {len(NEWS.pitches)} pitches, {len(NEWS.findings)} findings')

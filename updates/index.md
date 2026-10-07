@@ -2,7 +2,7 @@
 
 > What changed on sgit and on this site, as it happens) one entry per story rather than per release, each linked to the release that carries it. RSS and JSON feeds included.
 
-*Source: <https://sgit.ai/updates/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/updates/index.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,9 +12,10 @@ What changed on sgit and on this site, as it happens, one entry per story rather
 
 Follow along: [RSS](feed.xml) · [JSON](updates.json). Every entry links to the release that carries it.
 
-**69 entries, newest first**
+**70 entries, newest first**
 
 - 2026-10-07[The articles get a newsroom: publish by adding a file, placement by one editor](#the-newsroom)
+- 2026-10-07[The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter)
 - 2026-10-07[sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast](#sgit-ai-0-18-0)
 - 2026-09-21[The design is the performance, and the crypto is free](#the-design-is-the-performance)
 - 2026-09-21[That was a cold start, not an architecture cost](#that-was-a-cold-start-not-an-architecture-cost)
@@ -99,6 +100,18 @@ newsroomarticlesagentsagent-behaviour-policypublishing
 - **The rule underneath** is the agent team's own, *create anywhere, edit your own*, adopted after "only one agent may draft" [became a bottleneck in two days](../articles/desk/create-anywhere-edit-your-own.md).
 
 Updates and the version log moved under **Team** in the menu.
+
+### [The SGit Newsroom, and a newsletter instead of an email per article](#sgit-newsroom-newsletter) [v0.6.89](../admin/versions.md)
+
+newsroomnewsletterlinkedinarticles
+
+**The articles section is now the SGit Newsroom, and what you subscribe to is its newsletter.** An article is one argument with its evidence; an issue is what a week of them adds up to, which is the thing worth an email. [Issue 1](../articles/newsletter/001-2026-10-07.md) is out.
+
+- **[The newsletter](../articles/newsletter/index.md)**: one issue a week or so, due a week after the last or once five articles have been published since it. Each issue is also published as a LinkedIn article in *Deterministic GenAI*.
+- **A cover for every piece.** Every article and every issue now has a 1920x1080 cover with its title, its teaser and three key ideas from its graph beside its own infographic, rendered by `admin/build/make_banners.mjs` and linked at the foot of the page for posting.
+- **Copy for LinkedIn.** An issue page has a button that copies its body with every link made absolute, ready to paste into LinkedIn's editor.
+- **The subscribe form** now subscribes you to the newsletter. A personalised issue comes next.
+- **Naming.** The menu says Newsroom; the backstage pages are [How it runs](../newsroom/index.md). Links that were shared before still work.
 
 ### [sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast](#sgit-ai-0-18-0) [v0.6.83](../admin/versions.md)
 

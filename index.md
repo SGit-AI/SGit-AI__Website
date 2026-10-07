@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -21,6 +21,8 @@ Pure Python · two runtime dependencies · Apache-2.0 · [or try it in your brow
 
 Four of **43 published vaults**. Each opens with a read key printed on its page, no account, nothing to install, and the server that stores it cannot read it. [See all 43 →](demos/vaults/index.md)
 
+SGit Newsroom
+
 ## Start with an argument, not a menu
 
 The articles carry most of what this site believes, with the figures, the data and the links to check it. Thirty-eight so far; the newsroom picks where to start.
@@ -38,7 +40,7 @@ The articles carry most of what this site believes, with the figures, the data a
 
 [The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
 
-[The front page →](articles/index.md) · [Collections →](articles/collections/index.md) · [How the newsroom works →](newsroom/index.md)
+[The front page →](articles/index.md) · [Collections →](articles/collections/index.md) · [The newsletter →](articles/newsletter/index.md)
 
 ## What people actually ship
 
@@ -60,7 +62,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-246site releases, each verified live before it was called done
+247site releases, each verified live before it was called done
 
 43vaults published with a deliberately public read key
 

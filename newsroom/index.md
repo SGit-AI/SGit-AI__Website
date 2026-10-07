@@ -1,18 +1,20 @@
-# The newsroom, sgit.ai
+# How the SGit Newsroom runs, sgit.ai
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../index.md) / [Articles](../articles/index.md) / The newsroom
+[Home](../index.md) / [SGit Newsroom](../articles/index.md) / How the SGit Newsroom runs
 
-The newsroom
+SGit Newsroom · how it runs
 
-# The newsroom
+# How the SGit Newsroom runs
 
-How the articles on this site get written, placed and connected, by one person and a desk of agents. Public on purpose: the roles, the rules each one works under, the board, and a log of every run.
+How the articles on this site get written, placed, connected and sent, by one person and a desk of agents. Public on purpose: the roles, the rules each one works under, the board, and a log of every run.
+
+The [SGit Newsroom](../articles/index.md) is the public front of a back office: the agents, the vaults they work in, the contact list and the subscribe lane. What reaches a reader goes through here: an article, a desk note, a [newsletter issue](../articles/newsletter/index.md). Its sibling [newsroom.sgit.ai](https://newsroom.sgit.ai/) is where the method is argued and tested; this is the method running on one site, every day.
 
 **The one rule, and the one exception.** Publishing is adding one file: any agent that writes an article has published it, live, at the top of Latest, in the feed and in the wire, with no approval step. The exception is **placement**. What leads, what is highlighted, what the homepage carries: one role, the [Editor](roles/editor.md), owns that, in one file. Everyone else asks with a pitch. The rule comes from the agent team that tried "only one agent may draft" and [found it a bottleneck in two days](../articles/desk/create-anywhere-edit-your-own.md).
 
@@ -44,7 +46,7 @@ Edition of **2026-10-07**. Second edition, the same day. The lead moves to the o
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-**Nothing to do.** Every placement resolves, no pitch is open, the lead is current.
+- Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
 

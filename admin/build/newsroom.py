@@ -21,6 +21,7 @@ Layout (all under admin/content/newsroom/):
     pitches/YYYY-MM-DD__<slug>.md                a request for placement. Anyone; append-only
     board/<id>-<slug>.md                         the desk's kanban, one card per file
     log/YYYY/MM/DD/<HHMM>__<role>__<slug>.md     one record per desk run. Append-only
+    newsletter/<NNN>-<YYYY-MM-DD>.md             one newsletter issue per file, cross-posted to LinkedIn
 
 A placement that names an article which does not exist (renamed, held back) does NOT fail
 the build. A contributor's rename must never be blocked by a file only the Editor may edit,
@@ -49,6 +50,9 @@ PITCH_ASKS = {'lead', 'highlight', 'homepage', 'collection', 'note'}
 PITCH_STATUS = {'open', 'accepted', 'declined', 'parked'}
 MAX_HIGHLIGHTS = 4
 LEAD_STALE_DAYS = 3   # a lead older than this, with newer unplaced articles, is flagged
+ISSUE_DUE_DAYS = 7        # a newsletter issue is due a week after the last one...
+ISSUE_DUE_ARTICLES = 5    # ...or once this many articles have been published since it
+RE_ISSUE = re.compile(r'^(\d{3})-(\d{4}-\d{2}-\d{2})$')
 
 
 def _list(v):
@@ -73,6 +77,7 @@ class Newsroom:
         self.pitches = self._load_pitches()
         self.board = self._load_board()
         self.log = self._load_log()
+        self.issues = self._load_newsletter()
 
     # ------------------------------------------------------------------ helpers
 
@@ -259,6 +264,50 @@ class Newsroom:
         runs.sort(key=lambda r: (r['date'], r['time']), reverse=True)
         return runs
 
+    # ------------------------------------------------------------------ newsletter
+
+    def _load_newsletter(self):
+        """newsletter/<NNN>-<YYYY-MM-DD>.md: the issue number and date are the file name, so
+        two issues cannot share a number without two files saying so. `covers` is the date
+        range of the articles the issue is about; `linkedin` is the URL once it is posted."""
+        issues, nums = [], set()
+        for full, where in self._walk('newsletter'):
+            slug = os.path.basename(full)[:-3]
+            m = RE_ISSUE.match(slug)
+            if not m:
+                raise Content_Error(f'{where}: an issue file is named NNN-YYYY-MM-DD.md')
+            meta, body = self._md(full, where)
+            self.L._require(meta, ['title', 'date', 'summary', 'role'], where)
+            if meta['date'] != m.group(2):
+                raise Content_Error(f'{where}: date {meta["date"]} does not match the file name')
+            n = int(m.group(1))
+            if n in nums:
+                raise Content_Error(f'{where}: issue number {n} is used twice')
+            nums.add(n)
+            if meta.get('status', 'published') != 'published':
+                continue
+            cites = [s for s in _list(meta.get('cites', '')) if self._article(s, where)]
+            issues.append(dict(meta, slug=slug, number=n, body=body, where=where, cites=cites,
+                               linkedin=meta.get('linkedin', '')))
+        issues.sort(key=lambda i: i['number'], reverse=True)
+        return issues
+
+    def issue_due(self):
+        """(due, reason): an issue is due a week after the last, or once enough articles
+        have been published since it. Measured on article dates, which are the record."""
+        import datetime as _dt
+        if not self.issues:
+            return True, 'no issue has been published yet'
+        last = self.issues[0]
+        since = [a for a in self.articles if a['date'] > last['date']]
+        newest = self.articles[0]['date'] if self.articles else last['date']
+        days = (_dt.date.fromisoformat(newest) - _dt.date.fromisoformat(last['date'])).days
+        if len(since) >= ISSUE_DUE_ARTICLES:
+            return True, f'{len(since)} articles since issue {last["number"]} ({last["date"]})'
+        if since and days >= ISSUE_DUE_DAYS:
+            return True, f'{days} days and {len(since)} article(s) since issue {last["number"]}'
+        return False, f'{len(since)} article(s) since issue {last["number"]}; due at {ISSUE_DUE_ARTICLES} or after {ISSUE_DUE_DAYS} days'
+
     # ------------------------------------------------------------------ derived
 
     def lead(self):
@@ -311,6 +360,12 @@ class Newsroom:
         if fresh:
             out.append(('todo', 'front.json', f'{len(fresh)} article(s) published since the {edition} edition: '
                         + ', '.join(a['slug'] for a in fresh[:6])))
+        due, why = self.issue_due()
+        if due:
+            out.append(('todo', 'newsletter/', f'a newsletter issue is due: {why}'))
+        for i in self.issues:
+            if not i['linkedin']:
+                out.append(('info', i['where'], f'issue {i["number"]} has no linkedin: URL yet; add it once it is posted'))
         for p in self.pitches:
             if p['status'] == 'open':
                 out.append(('todo', p['where'], f'open pitch from {p["from"]}: {p["ask"]} for {p["article"]}'))

@@ -2,13 +2,13 @@
 
 > Reads across the articles for what none of them says alone. The line in the middle of one piece that turns out to be the thesis of five, the rule learned twice, the pattern on its third appearance, and publishes each as a short note or a collection with the evidence linked.
 
-*Source: <https://sgit.ai/newsroom/roles/historian.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/roles/historian.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-[Home](../../index.md) / [Articles](../../articles/index.md) / [Newsroom](../index.md) / Historian
+[Home](../../index.md) / [SGit Newsroom](../../articles/index.md) / [How it runs](../index.md) / Historian
 
-The newsroom
+SGit Newsroom · how it runs
 
 # Historian
 

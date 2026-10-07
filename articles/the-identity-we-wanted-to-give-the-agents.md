@@ -2,7 +2,7 @@
 
 > Last week I set out to give every agent, and every user, a real identity: a Google Workspace account of its own, provisioned by us, with a mailbox, a calendar, a drive and a login, the data encrypted by sgit before it reached Google and the key unwrapped by a passkey. Four design documents later the plan had changed shape under its own research, because Google's terms do not allow one organisation's tenant to hold other organisations' people as part of a commercial product, and an account assigned to a function rather than a human is named in the acceptable use policy. This article captures that moment: what was wanted, what the terms say in their current wording with one correction to our own documents, the five options that were on the table, the rule that no secret can live inside an identity provider because whoever controls the login can become the user, and the keyring that fell out of it, a browser-only secrets store unlocked by a passkey that an administrator with full access to the project cannot read. It ends with the question I keep coming back to. Every project I know needs to log users in, keep sensitive data for them in a way a regulator will accept, and now give identities to the agents that work for them. Each of those has good products. None of them is all three, and the research found nothing on the shelf that is. Unless we are missing something obvious, in which case the design pack is published to be corrected.
 
-*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -165,7 +165,9 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-identi
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [the-identity-we-wanted-to-give-the-agents.jpg](../articles/banners/the-identity-we-wanted-to-give-the-agents.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+
+**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
 [← All articles](index.md)
 

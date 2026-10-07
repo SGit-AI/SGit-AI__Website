@@ -1193,3 +1193,16 @@ table.poltable td.pol-n{color:var(--dim2);text-align:center}
   .nboard{grid-template-columns:1fr}
   .fsub{gap:.2rem .9rem}
 }
+/* ---------- the newsletter (v0.6.89) ---------- */
+figure.nlbanner{margin:0 0 1.4rem;aspect-ratio:16/9;background:var(--panel2);border:1px solid var(--line);border-radius:10px;overflow:hidden;opacity:1}
+figure.nlbanner img{width:100%;height:100%;object-fit:cover;display:block;border:0;border-radius:0;box-shadow:none}
+.nlcopy{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.4rem 0 1.4rem}
+.nlpage #issue-body{border-top:1px solid var(--line);padding-top:1rem}
+article.nlissue{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:1.4rem;align-items:start;border-top:1px solid var(--line2);padding:1.1rem 0}
+article.nlissue h2{font-family:var(--serif);font-size:1.35rem;margin:.2rem 0 .4rem;line-height:1.25}
+article.nlissue h2 a{color:#101114}
+article.nlissue figure.cardshot{margin:0;aspect-ratio:16/9;background:var(--panel2);border:1px solid var(--line);opacity:1}
+article.nlissue figure.cardshot img{width:100%;height:100%;object-fit:cover;display:block;border:0;border-radius:0;box-shadow:none}
+aside.lkit{margin:2rem 0 0;padding:.8rem 1rem;border:1px dashed var(--line2);border-radius:10px;font-size:.88rem;color:var(--dim);background:var(--panel)}
+aside.lkit b{color:var(--fg)}
+@media (max-width:720px){article.nlissue{grid-template-columns:1fr}}
