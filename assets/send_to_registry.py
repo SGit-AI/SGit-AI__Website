@@ -42,7 +42,8 @@ vbJhaDZkYW8fEJBVmTeYIdPxSAk9C/+kwFgmaeJMfop6RJWPJhoLhxhlgfNLcTUr
 4i9ETwJnopdaZaWRZErzNBsCAwEAAQ==
 -----END PUBLIC KEY-----
 '''
-KEY_SHAPE = re.compile(r'^(sgit_private_vault_)?[A-Za-z0-9]{8,64}:[a-z0-9]{8}$')
+# the prefixes in https://sgit.ai/docs/credentials.html; a read key is accepted and recorded as read-only
+KEY_SHAPE = re.compile(r'^(sgit_(private_vault|private_read|public_read|vk1|rk1)_)?[A-Za-z0-9]{8,64}:[a-z0-9]{8}$')
 
 
 def registry_key():
@@ -89,7 +90,7 @@ def main():
     items = body.get('vaults') if 'vaults' in body else [body]
     for n, it in enumerate(items):                         # say which entry is wrong, never what the key is
         if not KEY_SHAPE.fullmatch((it.get('vault_key') or '').strip()):
-            sys.exit(f'vaults[{n}].vault_key is not a vault key (expected sgit_private_vault_<passphrase>:<vault id>)')
+            sys.exit(f'vaults[{n}].vault_key is not a vault key or read key (expected e.g. sgit_private_vault_<passphrase>:<vault id>)')
 
     payload = base64.b64encode(seal(registry_key(), json.dumps(body)).encode()).decode()   # lane payload = b64(.enc text)
     req = urllib.request.Request(f'{ENDPOINT}/api/vault/append/write/{a.vault_id}', method='POST',
@@ -99,11 +100,13 @@ def main():
     try:
         with urllib.request.urlopen(req, timeout=60) as r:
             print(f'HTTP {r.status} {r.read().decode()[:40]}  vault ids: {", ".join(ids) or "(none)"}')
+            print('On the lane is not the same as accepted: the registry can still quarantine a payload for its schema, '
+                  'size or decryption. If you need confirmation, ask the registry owner.')
     except urllib.error.HTTPError as e:
         why = {404: 'the token is unknown, revoked or rotated, or the vault id is wrong (the two look the same by design): '
                     'check the id, then stop and ask for a current token and id',
                400: 'the request was malformed (a token that is not hex, or a missing field)',
-               413: 'the payload is over 5 MB; send fewer keys per handover',
+               413: 'the payload is too large; send fewer keys per handover',
                507: 'the lane is full (1000 pending files); tell the registry owner'}.get(e.code, 'stop and report this code')
         sys.exit(f'HTTP {e.code}: {why}. Nothing else to try.')
     except urllib.error.URLError as e:

@@ -36,7 +36,9 @@ VERSION_LOG = [
      "inconsistencies resolved: the vault id is withheld everywhere, the token and id together are treated "
      "as a write credential, and the sender script (/assets/send_to_registry.py) pins the registry key's "
      "fingerprint before sealing, reads the token from the environment, never prints a key, and names each "
-     "HTTP failure by its real cause."),
+     "HTTP failure by its real cause. Reviewed by the registry before release: read keys are accepted (recorded "
+     "as read-only), a too-large payload is reported without a size the drain does not enforce, and the page "
+     "says that a payload on the lane can still be quarantined. The first live run delivered two keys, signed."),
     ('v0.6.83', '2026-10-07', 'git d0a7b6e7',
      "THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in "
      "/.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, "

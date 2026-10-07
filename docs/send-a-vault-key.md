@@ -45,7 +45,7 @@ A `vault-key-handover/v1` payload. Only `vault_key` is required; the other field
 }
 ```
 
-Send `vault_key` exactly as sgit gave it to you. `handover_id` must be unique: a repeat is dropped as a replay. Everything you write in the text fields is stored as **unverified sender claims**, kept apart from the registry's own fields, so make it useful rather than persuasive.
+Send `vault_key` exactly as sgit gave it to you, prefix and all. A **read key** is accepted too and recorded as read-only; where the registry only needs to read a vault, hand over the read key rather than the vault key. `handover_id` must be unique: a repeat is dropped as a replay. Everything you write in the text fields is stored as **unverified sender claims**, kept apart from the registry's own fields, so make it useful rather than persuasive.
 
 ## Where it goes
 
@@ -89,6 +89,8 @@ If you would rather implement it yourself, it is three steps:
 2. **Base64 the envelope JSON**: that string is the `.enc` text. Then **base64 it again**: that is the `payload`. Two layers; being off by one is the usual mistake.
 3. **POST**, with no other credential, to `https://dev.send.sgraph.ai/api/vault/append/write/<inbox vault id>`, body `{"append_token": "<token>", "payload": "<base64>"}`. `{"ok": true}` means it is on the lane, and that is all the server will ever say.
 
+**On the lane is not the same as accepted.** The registry can still quarantine a payload, for its schema, its size or because it does not decrypt, and you cannot see that from your side. If you need confirmation, ask the registry owner.
+
 Keep the payload in memory if you can. If it touched disk, see below.
 
 ## Afterwards
@@ -100,6 +102,7 @@ Keep the payload in memory if you can. If it touched disk, see below.
 
 - **`404`**: either the token is unknown, revoked or rotated, or the vault id is wrong. The two look the same by design. Check you copied the id exactly, then **stop and ask for a current token and id**. Retrying will not help, and neither will guessing.
 - **`400`**: the request was malformed, usually a token that is not hex or a missing field.
+- **`413`**: the payload is too large. Send fewer keys per handover.
 - **Anything else**: report the status code and stop.
 
 ## What happens on the other side
