@@ -5,6 +5,13 @@
     <link>https://sgit.ai/updates/index.html</link>
     <description>What changed on sgit and on this site, as it happens.</description>
     <item>
+      <title>sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast</title>
+      <link>https://sgit.ai/updates/index.html#sgit-ai-0-18-0</link>
+      <guid isPermaLink="true">https://sgit.ai/updates/index.html#sgit-ai-0-18-0</guid>
+      <pubDate>2026-10-07</pubDate>
+      <description>The CLI&#x27;s release notes, carried here because the site had no change log for the CLI itself. sgit ai 0.18.0 is on PyPI as of 7 October 2026. Upgrade with sgit update , which wraps pip install upgrade sgit ai ; check with sgit version . The short version for an…</description>
+    </item>
+    <item>
       <title>The design is the performance, and the crypto is free</title>
       <link>https://sgit.ai/updates/index.html#the-design-is-the-performance</link>
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#the-design-is-the-performance</guid>
@@ -136,13 +143,6 @@
       <guid isPermaLink="true">https://sgit.ai/updates/index.html#deleting-files-from-history</guid>
       <pubDate>2026-09-19</pubDate>
       <description>Yesterday&#x27;s purge of the vault mirror raised the right question: did the force push actually happen, and what exactly did it do? It did, git reported + e70d582d...b5ae665d dev dev (forced update) , and the new case study writes the whole scenario down with dia…</description>
-    </item>
-    <item>
-      <title>A brief for graphs.sgit.ai, in place of a footnote</title>
-      <link>https://sgit.ai/updates/index.html#brief-for-graphs-sgit-ai</link>
-      <guid isPermaLink="true">https://sgit.ai/updates/index.html#brief-for-graphs-sgit-ai</guid>
-      <pubDate>2026-09-19</pubDate>
-      <description>The Fractal Semantic Graphs page carried a small footnote saying that graphs.sgit.ai had the fractal test backwards. The author asked for the footnote to go and for a proper brief in its place, since the sgit.ai page is now the fullest worked application of th…</description>
     </item>
   </channel>
 </rss>

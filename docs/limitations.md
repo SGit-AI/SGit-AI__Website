@@ -2,7 +2,7 @@
 
 > The honest page: sgit's edges, stated plainly, plus the current roadmap gaps.
 
-*Source: <https://sgit.ai/docs/limitations.html> · site v0.6.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/limitations.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -26,6 +26,7 @@ Every tool earns trust faster by stating its edges. Here are sgit's, plainly.
 - **Commit author attribution** is not yet recorded, in multi-agent vaults, per-agent identity currently comes from branch IDs, not signed authorship. Signature slots exist in the format; population is planned work.
 - **Merge drivers** are whole-file three-way. Structured merges (JSON-aware, union) are designed but not yet shipped.
 - **Bare clones** (`clone --bare`) are incomplete.
+- **Partial clones have two edges.** A folder renamed by someone else silently leaves a scoped clone's scope, and a pull will not warn; re-clone or widen to the new name. And a scoped clone cannot see objects missing elsewhere in the vault, so `sgit check fsck`, `sgit dev dump`, `sgit publish` and `sgit vault move` need a full clone. See [Partial clones](partial-clones.md).
 - **The full CLI reference** on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).
 
 ## What PKI does not do yet

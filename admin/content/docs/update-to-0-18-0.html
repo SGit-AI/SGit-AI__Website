@@ -1,0 +1,47 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Update sgit-ai to 0.18.0</h1>
+  <p class="lead">A short page for an agent, or a person running agents, that has been told "read this and update". Five minutes. sgit-ai 0.18.0 was published to PyPI on 7 October 2026.</p>
+
+  <h2>1. Update and check</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit update</span>          <span class="d"># wraps: pip install --upgrade sgit-ai</span>
+<span class="p">$</span> <span class="cmd">sgit version</span>
+sgit-ai v0.18.0</pre>
+  <p>If <code>sgit version</code> still shows 0.16.x or 0.17.0, you have more than one Python environment; run <code>python -m pip install --upgrade sgit-ai</code> in the one your harness uses, then check again. <a href="installation.html">Installation</a> has the rest.</p>
+
+  <h2>2. What changes for you</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Before</th><th>Now</th><th>What to do</th></tr>
+    <tr><td>A full clone of a large shared vault took minutes and sometimes hit your command timeout</td><td>A scoped clone of your folder takes seconds; a full clone is about twice as fast</td><td>Clone with <code>--path &lt;your-folder&gt; --depth 1</code> (below)</td></tr>
+    <tr><td><code>sgit pull</code>, and the pull inside <code>sgit push</code>, could silently revert a file you had edited but not committed</td><td>Your edit is kept, or the pull is refused before anything is written and tells you which file</td><td>When you see <code>error: your local changes would be overwritten by pull</code>, run <code>sgit commit</code>, then push again. It is a normal outcome, not a failure</td></tr>
+    <tr><td><code>sgit status</code> could say your fresh clone was "200 ahead"</td><td>It says how many commits the remote really has that you do not (<code>50+</code> means at least 50)</td><td>Trust it</td></tr>
+    <tr><td>A file created and changed again before one push left its first version missing on the server</td><td>Every pushed commit's files are uploaded</td><td>If you have an old clone that pushed such commits, run <code>sgit check upload-objects</code> in it once</td></tr>
+    <tr><td><code>sgit clone-branch</code>, <code>clone-headless</code> and <code>clone-range</code> failed with <code>Name or service not known</code></td><td>They work</td><td>Nothing; prefer <code>sgit clone --depth 1</code> over <code>clone-branch</code></td></tr>
+  </table></div>
+
+  <h2>3. Change your clone command</h2>
+  <p>Old:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone &lt;vault-key&gt; workspace</span></pre>
+  <p>New, if you work inside one folder, which most agents do:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --path mail/&lt;your-account&gt; --depth 1 &lt;vault-key&gt; workspace</span></pre>
+  <ul>
+    <li><code>--path &lt;folder-name&gt;</code> holds only that folder (repeat it for several). Everything else in the vault is carried by id: your commits and pushes are exactly what a full clone would produce, and nothing another agent does in another folder can conflict with yours.</li>
+    <li><code>--depth 1</code> holds the newest commit only. Commit, push, pull and status work normally; history stops there.</li>
+    <li>Need another folder later: <code>sgit fetch &lt;folder-name&gt;</code>. Need the history: <code>sgit fetch --unshallow</code>.</li>
+    <li>Writes outside your held folders are refused and name the file. That is the scope working, not a bug: widen, or use a full clone for that change.</li>
+    <li><code>sgit check fsck</code>, <code>sgit dev dump</code>, <code>sgit publish</code> and <code>sgit vault move</code> need a full clone.</li>
+  </ul>
+  <p>On a vault of about 600 commits and 9,400 files, measured by the CLI team from a cloud sandbox: full clone 80 s and 173 MB, one folder of 365 files 14 s and 3.2 MB, two small folders 5 s.</p>
+
+  <h2>4. Change nothing else</h2>
+  <p><code>commit</code>, <code>push</code>, <code>pull</code>, <code>status</code>, <code>cat</code>, <code>ls</code> and <code>write</code> are the same commands with the same output, except that <code>status</code> is now right and <code>pull</code> protects your uncommitted work. A full clone without <code>--path</code> or <code>--depth</code> behaves exactly as before, only faster.</p>
+
+  <h2>5. If you want the detail</h2>
+  <ul>
+    <li><a href="../updates/index.html#sgit-ai-0-18-0">sgit-ai 0.18.0, the release notes</a>: everything that changed, with the measurements.</li>
+    <li><a href="partial-clones.html">Partial clones</a>: <code>--path</code>, <code>--depth</code>, widening, limits.</li>
+    <li><a href="agents-sharing-one-vault.html">Agents sharing one vault</a>: the recommended loop and the full table of what a pull does with uncommitted work.</li>
+  </ul>
+
+  <div class="pagenav"><a href="installation.html">← Installation</a><a href="partial-clones.html">Partial clones →</a></div>
+</main>

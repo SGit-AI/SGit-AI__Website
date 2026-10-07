@@ -1,8 +1,23 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.82",
+  "site_version": "v0.6.83",
   "updates": [
+    {
+      "slug": "sgit-ai-0-18-0",
+      "title": "sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast",
+      "date": "2026-10-07",
+      "version": "v0.6.83",
+      "tags": [
+        "sgit-ai",
+        "release",
+        "cli",
+        "partial-clones",
+        "agents",
+        "performance"
+      ],
+      "summary": "The CLI's release notes, carried here because the site had no change log for the CLI itself. sgit ai 0.18.0 is on PyPI as of 7 October 2026. Upgrade with sgit update , which wraps pip install upgrade sgit ai ; check with sgit version . The short version for an…"
+    },
     {
       "slug": "the-design-is-the-performance",
       "title": "The design is the performance, and the crypto is free",

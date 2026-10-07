@@ -18,6 +18,7 @@
     <li><b>Commit author attribution</b> is not yet recorded, in multi-agent vaults, per-agent identity currently comes from branch IDs, not signed authorship. Signature slots exist in the format; population is planned work.</li>
     <li><b>Merge drivers</b> are whole-file three-way. Structured merges (JSON-aware, union) are designed but not yet shipped.</li>
     <li><b>Bare clones</b> (<code>clone --bare</code>) are incomplete.</li>
+    <li><b>Partial clones have two edges.</b> A folder renamed by someone else silently leaves a scoped clone's scope, and a pull will not warn; re-clone or widen to the new name. And a scoped clone cannot see objects missing elsewhere in the vault, so <code>sgit check fsck</code>, <code>sgit dev dump</code>, <code>sgit publish</code> and <code>sgit vault move</code> need a full clone. See <a href="partial-clones.html">Partial clones</a>.</li>
     <li><b>The full CLI reference</b> on this site is still being wired to its generator (it will be produced from the CLI's own argument parser on every release, so it can never go stale).</li>
   </ul>
 

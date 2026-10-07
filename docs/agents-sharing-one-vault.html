@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agents sharing one vault, sgit Docs</title>
+<meta name="description" content="The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.">
+<link rel="canonical" href="https://sgit.ai/docs/agents-sharing-one-vault.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/agents-sharing-one-vault.html">
+<meta property="og:title" content="Agents sharing one vault, sgit Docs">
+<meta property="og:description" content="The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Agents sharing one vault, sgit Docs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="agents-sharing-one-vault.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Agents sharing one vault, sgit Docs", "headline": "Agents sharing one vault, sgit Docs", "description": "The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.", "url": "https://sgit.ai/docs/agents-sharing-one-vault.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.83</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../docs/index.html">Documentation</a>
+ <a class="sl here" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl here" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl here" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../updates/index.html">Updates<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../articles/index.html">Articles</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.83 &middot; 7 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Agents sharing one vault</h1>
+  <p class="lead">For a team of agents that keep one vault between them: several of them cloning, committing and pushing at the same time, each many times a day, with a vault that has grown to hundreds of commits. Everything on this page was worked out on exactly that setup, a shared CRM vault maintained by around ten agents, and the numbers are from it.</p>
+  <p class="small dim">For sgit-ai 0.18.0 or newer. The practices here depend on behaviour that older versions do not have; check with <code>sgit version</code>, upgrade with <code>sgit update</code> (<a href="update-to-0-18-0.html">what changed</a>).</p>
+
+  <h2>The loop</h2>
+  <p>Each agent, each session:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --path mail/&lt;my-account&gt; --depth 1 &lt;vault-key&gt; workspace</span>   <span class="d"># once per session, 5 to 15 s</span>
+<span class="p">$</span> <span class="cmd">cd workspace</span>
+<span class="d"># … read and write files inside mail/&lt;my-account&gt;/ …</span>
+<span class="p">$</span> <span class="cmd">sgit status</span>                       <span class="d"># what changed, and whether the remote moved</span>
+<span class="p">$</span> <span class="cmd">sgit commit -m "what I did"</span>
+<span class="p">$</span> <span class="cmd">sgit push</span>                         <span class="d"># pulls first, merges, uploads only what is new</span></pre>
+  <p>Why each line is the way it is:</p>
+  <p><b>Clone scoped and shallow.</b> An agent that works in one folder has no use for the other agents' folders or for months of history. On the example vault the full clone is 80 s and 173 MB; one folder with one commit of history is 14 s and 3 MB, two small folders are 5 s. Agent harnesses often give a command two or three minutes; a full clone of a growing vault crosses that eventually, a scoped clone does not. Details and limits: <a href="partial-clones.html">Partial clones</a>.</p>
+  <p><b>Keep the clone for the session, not forever.</b> A clone directory is cheap to make. An agent that resumes an old clone starts with a stale working copy and an old <code>sgit</code>; a fresh clone starts current.</p>
+  <p><b><code>sgit status</code> before you commit.</b> It says what the remote has done since you cloned, with real numbers:</p>
+<pre class="shell">On branch: branch-clone-… → branch-named-…
+  Remote: remote has 3 new commits — run: sgit pull</pre>
+  <p><code>50+</code> means more than status fetched to count; it is a lower bound, not a guess. Before 0.18.0 this line could say your fresh clone was hundreds of commits <em>ahead</em> when it was one commit behind. That is fixed.</p>
+  <p><b><code>sgit push</code> pulls first.</b> It merges what others pushed, then uploads. Only new objects go up: your commit, the folders on the way down to your change, and the changed files.</p>
+
+  <h2 id="uncommitted">What happens to work you have not committed</h2>
+  <p>This is the behaviour the team most needed and the one that changed in 0.18.0. A pull used to write the whole incoming tree over the working copy, so an edit you had not committed yet was replaced by the committed version, even when the incoming commits never touched that file, and <code>sgit status</code> then reported the vault in sync. Three agents reported losing work that way in one week.</p>
+  <p>A pull now follows git's rules, and decides before it writes anything:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Your working copy</th><th>The incoming commits</th><th>Result</th></tr>
+    <tr><td>changed <code>threads/today.md</code>, not committed</td><td>did not touch it</td><td>kept; pull reports <code>Kept 1 uncommitted change(s) the incoming commits did not touch</code></td></tr>
+    <tr><td>changed <code>threads/today.md</code>, not committed</td><td>changed it too</td><td>pull refused, nothing written</td></tr>
+    <tr><td>deleted <code>old.md</code>, not committed</td><td>did not touch it</td><td>stays deleted</td></tr>
+    <tr><td>deleted <code>old.md</code>, not committed</td><td>changed it</td><td>pull refused</td></tr>
+    <tr><td>created <code>new.md</code>, not tracked</td><td>created <code>new.md</code> with the same bytes</td><td>fine</td></tr>
+    <tr><td>created <code>new.md</code>, not tracked</td><td>created <code>new.md</code> with different bytes</td><td>pull refused</td></tr>
+    <tr><td>created <code>scratch.md</code>, not tracked</td><td>nothing</td><td>left alone</td></tr>
+  </table></div>
+  <p>A refused pull looks like this and has changed nothing, on disk or in the store:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit push</span>
+error: your local changes would be overwritten by pull:
+  mail/crm.example/threads/today.md  (your uncommitted edit would be overwritten)
+commit them (sgit commit) or stash them (sgit vault stash) and pull again; nothing was changed</pre>
+  <p>Do what it says: <code>sgit commit</code>, then push again; the merge happens on committed work, where a conflict is visible and resolvable (<code>sgit resolve</code>). An agent should treat this message as a normal outcome, not an error to retry.</p>
+  <p>"Changed" is measured the way <code>sgit status</code> measures it, by content rather than timestamps, so the two never disagree.</p>
+  <p class="small dim">Re-run by this site on 7 October 2026 on a throwaway vault with sgit-ai 0.18.0: a scoped clone with an uncommitted edit pulled a teammate's commit to another folder and kept the edit; a full clone with an uncommitted edit to a file the incoming commit changed was refused by name, and the file was untouched afterwards. <code>sgit status</code> on both read <code>remote has 1 new commit</code>.</p>
+
+  <h2>Staying out of each other's way</h2>
+  <ul>
+    <li><b>One folder per agent, scoped clones.</b> Two scoped clones in different folders cannot produce a merge conflict: each carries the other's folder by id and only its own folder rebuilt. Shared folders (<code>runs/</code>, <code>docs/</code>) are where conflicts can happen; keep writes there append-only or one-owner where you can.</li>
+    <li><b>Many agents cloning at once is fine.</b> Reads go through 16 parallel connections per client, reuse one TLS connection per host, and a throttled request (HTTP 429) is retried with back-off. Ten agents cloning in the same minute will not fail each other.</li>
+    <li><b>Commit often, push when a unit of work is done.</b> Every pushed commit's files are uploaded, a 0.18.0 fix: a file created and changed again before one push used to leave its first version missing on the server. If a clone made before 0.18.0 pushed such a commit, <code>sgit check upload-objects</code> from that clone sends the missing objects.</li>
+    <li><b><code>sgit push --branch-only</code></b> shares work in progress without touching the named branch. It sends only what the server does not already have.</li>
+  </ul>
+
+  <h2>When something is slow or fails</h2>
+  <ul>
+    <li><b>Clone slower than expected?</b> Check it is scoped: a clone that only holds <code>mail/…</code> has no <code>docs/</code> on disk. A full clone of a 600-commit vault is 80 s on a laggy path; if yours takes minutes, run <code>sgit version</code>: the sweep that makes it 80 s arrived in 0.18.0.</li>
+    <li><b><code>error: … needs the whole vault</code>:</b> you are on a partial clone and ran <code>fsck</code>, <code>dump</code>, <code>publish</code> or <code>vault move</code>. Use a full clone for those.</li>
+    <li><b><code>error: this clone holds only part of the vault … needs more of it</code>:</b> a command met an object the scope never fetched. Widen with <code>sgit fetch &lt;folder-name&gt;</code> or <code>sgit fetch --unshallow</code>, or use a full clone.</li>
+    <li><b><code>sgit doctor</code></b> checks the remote, the token and the version.</li>
+  </ul>
+
+  <h2>A session, end to end</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit update &amp;&amp; sgit version</span>
+sgit-ai v0.18.0
+<span class="p">$</span> <span class="cmd">sgit clone --path mail/crm.example --depth 1 &lt;vault-key&gt; work &amp;&amp; cd work</span>      <span class="d"># 14 s</span>
+<span class="p">$</span> <span class="cmd">sgit cat mail/crm.example/contacts.md</span>
+…
+<span class="p">$</span> <span class="cmd">printf '\n- 2026-10-07: called, left message\n' &gt;&gt; mail/crm.example/threads/acme.md</span>
+<span class="p">$</span> <span class="cmd">sgit status</span>
+  ~ mail/crm.example/threads/acme.md
+<span class="p">$</span> <span class="cmd">sgit commit -m "crm: acme call"</span>
+<span class="p">$</span> <span class="cmd">sgit push</span>
+Merged (no file changes).
+
+Push complete. Named branch updated.
+  Pushed 1 commit(s), 6 object(s) uploaded.
+  commit obj-cas-imm-…</pre>
+  <p>Six objects: the commit, the new root tree, the new <code>mail/</code> tree, the new <code>mail/crm.example/</code> tree, its new <code>threads/</code> tree, and the one changed file. Everything else in the vault was carried by id.</p>
+  <p>The team this was worked out on is described in <a href="../articles/the-agent-team-as-it-runs.html">The agent team as it runs</a> and <a href="../articles/the-mandate-stack.html">The Mandate Stack</a>; the vault is their shared memory layer.</p>
+
+  <div class="pagenav"><a href="partial-clones.html">← Partial clones</a><a href="limitations.html">When NOT to use sgit →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.83</a> · <a href="../admin/index.html">engineering</a> · <a href="agents-sharing-one-vault.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.83';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

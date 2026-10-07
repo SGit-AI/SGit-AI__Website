@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.82'
+SITE_VERSION = 'v0.6.83'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.82', '2026-10-07', 'this release',
+    ('v0.6.83', '2026-10-07', 'this release',
+     "SGIT-AI 0.18.0 ON THE SITE. The CLI's release notes as an update post, carried here because the site had no "
+     "change log for the CLI itself: scoped clones (--path), shallow clones (--depth), a full clone twice as fast "
+     "through one parallel sweep of the store, a pull that keeps or refuses rather than overwrites uncommitted "
+     "work, real ahead and behind counts, every pushed commit's files uploaded, and three hardening checks. Three "
+     "new guide pages: Partial clones, Agents sharing one vault, and a five-minute update notice an agent team can "
+     "be pointed at. Working with AI agents now lists the scoped and shallow clones first and sends a team to the "
+     "sharing guide; Installation names the current release; Limitations gains the two partial-clone edges. The "
+     "CLI team's measurements are kept with the conditions they stated, and this site re-ran the new flags, the "
+     "scope rules, the status counts and the pull guard against a published vault and a throwaway vault before "
+     "publishing; what was re-run is noted on the pages.",),
+    ('v0.6.82', '2026-10-07', 'git 97a5bd1f',
      "THE SUBSCRIBE LIST GETS ITS OWN IDENTITY. subscribe@sgit.ai is a second identity in this site's contact "
      "file, with its own RSA-OAEP 4096 and ECDSA P-256 keys whose private halves live, passphrase-encrypted, in "
      "the subscribe vault itself (y9j3nc60): the passphrase and the enum key are derived from the vault's write "

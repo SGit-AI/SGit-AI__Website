@@ -2,7 +2,7 @@
 
 > sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 
-*Source: <https://sgit.ai/docs/index.html> · site v0.6.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/index.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,7 +24,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Guides
 
-[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page, pick this first](surfaces.md) [Working with AI agentswrite, --json, sparse clones, multi-agent patterns](agents.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
+[Working on a vault: start hereThe practices that get repeated most, and where each answer lives](guidance/index.md) [Three surfaces_page.json, a vault app, or a site page, pick this first](surfaces.md) [Working with AI agentswrite, --json, the clone modes, multi-agent patterns](agents.md) [Partial clones--path and --depth: clone one folder in seconds, widen or deepen later](partial-clones.md) [Agents sharing one vaultThe loop for a team on one vault, and what a pull does with uncommitted work](agents-sharing-one-vault.md) [Update sgit-ai to 0.18.0Five minutes: update, check, change your clone command](update-to-0-18-0.md) [Use casesFive workflows, all on shipped commands](../use-cases/index.md) [SG/Vault platformThe browser app, vault apps, the window.sg bridge](vault/index.md)
 
 ## Project
 

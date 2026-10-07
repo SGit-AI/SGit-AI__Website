@@ -13,7 +13,7 @@
 <span class="d"># end of session: persist the state</span>
 <span class="p">$</span> <span class="cmd">sgit commit -m "session: findings and next steps"</span>
 <span class="p">$</span> <span class="cmd">sgit push</span></pre>
-  <p>The next session (hours or weeks later, on any machine) runs <code>sgit pull</code> and continues. State survives the context window, encrypted end to end.</p>
+  <p>The next session (hours or weeks later, on any machine) runs <code>sgit pull</code> and continues. State survives the context window, encrypted end to end. On a vault that has grown large, an agent that works in one folder should clone only that folder: <code>sgit clone --path &lt;folder&gt; --depth 1</code>, seconds instead of minutes, with the same commit and push. <a href="partial-clones.html">Partial clones</a> explains it; <a href="agents-sharing-one-vault.html">Agents sharing one vault</a> is the loop for a team.</p>
 
   <h2><code>sgit write</code>, the surgical commit</h2>
   <p>When an agent needs to record one result, cloning a whole vault is waste. <code>write</code> commits a file directly to the vault HEAD in a single call: no working-directory scan, no full clone needed.</p>
@@ -37,15 +37,18 @@
   </table></div>
 
   <h2>Fast cold starts</h2>
-  <p>Agents run on time budgets. Three clone modes keep startup cheap:</p>
+  <p>Agents run on time budgets. Five clone modes keep startup cheap; the first two arrived in sgit-ai 0.18.0 and are the usual choice for an agent:</p>
   <ul>
-    <li><code>sgit clone --sparse</code>, structure now, file content on demand via <code>sgit fetch &lt;path&gt;</code>.</li>
+    <li><code>sgit clone --path &lt;folder&gt;</code>, a scoped clone: only the folders you work in, everything else carried by id. Writes outside the held folders are refused by name, and two scoped clones in different folders cannot conflict. Widen later with <code>sgit fetch &lt;folder&gt;</code>. On a 600-commit, 9,400-file vault: one folder in 14 s against 80 s for the whole vault.</li>
+    <li><code>sgit clone --depth 1</code>, a shallow clone: the whole tree at HEAD, no history. Combine with <code>--path</code>; deepen later with <code>sgit fetch --unshallow</code>.</li>
+    <li><code>sgit clone --sparse</code>, structure now, file content on demand via <code>sgit fetch &lt;path&gt;</code>. A scoped clone is usually the better fit, because it holds the files it will read without a round trip per file.</li>
     <li><code>sgit clone-branch</code>, full history, but only HEAD's content.</li>
     <li><code>sgit clone-headless</code>, credentials only: derive keys and write config, fetch nothing.</li>
   </ul>
+  <p>A full clone itself is about twice as fast since 0.18.0: the store is listed once and downloaded in one parallel sweep. Details, limits and measurements: <a href="partial-clones.html">Partial clones</a>.</p>
 
   <h2>Multi-agent collaboration</h2>
-  <p>Give each agent a named branch; the <a href="two-branch-model.html">two-branch model</a> guarantees isolation of work-in-progress. Two commands make peer review safe:</p>
+  <p>For a team of agents on one vault, read <a href="agents-sharing-one-vault.html">Agents sharing one vault</a> first: one folder per agent in a scoped clone, <code>sgit status</code> before committing, and what a pull does with work you have not committed, which since 0.18.0 is kept or refused by name rather than overwritten. Then the branch-level tools: give each agent a named branch; the <a href="two-branch-model.html">two-branch model</a> guarantees isolation of work-in-progress. Two commands make peer review safe:</p>
   <ul>
     <li><code>sgit history show &lt;commit&gt;</code> and <code>sgit history diff</code> are <b>read-only</b>: they fetch missing objects on demand without merging, so an agent can inspect a peer's commit without touching its own working copy.</li>
     <li><code>sgit resolve --show</code> renders base/ours/theirs with a per-file verdict, so genuine conflicts are distinguishable from noise, by a human or by an agent.</li>

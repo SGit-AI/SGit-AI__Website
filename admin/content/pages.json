@@ -303,7 +303,25 @@
     "path": "docs/agents.html",
     "section": "docs",
     "title": "Working with AI agents, sgit Docs",
-    "desc": "The agent-facing surface: sgit write, --json everywhere, sparse clones, the session pattern, and multi-agent collaboration."
+    "desc": "The agent-facing surface: sgit write, --json everywhere, the clone modes including scoped and shallow clones, the session pattern, and multi-agent collaboration."
+  },
+  {
+    "path": "docs/partial-clones.html",
+    "section": "docs",
+    "title": "Partial clones: a folder scope and a history depth, sgit Docs",
+    "desc": "sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges."
+  },
+  {
+    "path": "docs/agents-sharing-one-vault.html",
+    "section": "docs",
+    "title": "Agents sharing one vault, sgit Docs",
+    "desc": "The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten."
+  },
+  {
+    "path": "docs/update-to-0-18-0.html",
+    "section": "docs",
+    "title": "Update sgit-ai to 0.18.0, sgit Docs",
+    "desc": "Five minutes for an agent team: sgit update, check the version, change the clone command to --path and --depth, and what to do when a pull is refused. Published 7 October 2026."
   },
   {
     "path": "docs/how-to/claude-team-egress.html",

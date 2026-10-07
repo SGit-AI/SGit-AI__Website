@@ -2,7 +2,7 @@
 
 > Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
 
-*Source: <https://sgit.ai/docs/installation.html> · site v0.6.82 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/installation.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -24,7 +24,7 @@ This installs two entry points: `sgit` and `sgit-ai` (they are identical, use wh
 
 ```
 $ sgit version
-sgit-ai v0.14.x
+sgit-ai v0.18.0
 $ sgit doctor
 ✓ remote reachable   ✓ TLS ok   ✓ config valid
 ```
@@ -36,6 +36,8 @@ $ sgit doctor
 ```
 $ sgit update   # wraps pip install --upgrade sgit-ai
 ```
+
+The current release is 0.18.0, published 7 October 2026. If `sgit version` still shows an older number after `sgit update`, you have more than one Python environment; run `python -m pip install --upgrade sgit-ai` in the one your tools use. What changed, and the one command an agent team should change: [Update sgit-ai to 0.18.0](update-to-0-18-0.md).
 
 [← What is sgit](what-is-sgit.md)[Quickstart →](quickstart.md)
 
