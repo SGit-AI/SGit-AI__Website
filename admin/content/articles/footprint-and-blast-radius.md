@@ -1,6 +1,7 @@
 ---
 title: Footprint and blast radius: what the agent actually did, and what it would have cost
 date: 2026-10-02
+time: 08:47
 updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html

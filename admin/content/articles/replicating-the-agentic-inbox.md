@@ -1,6 +1,7 @@
 ---
 title: Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send
 date: 2026-10-02
+time: 17:45
 updated: 2026-10-03
 author: Dinis Cruz
 author_url: about/index.html

@@ -1,6 +1,7 @@
 ---
 title: The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from
 date: 2026-10-06
+time: 11:21
 updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html

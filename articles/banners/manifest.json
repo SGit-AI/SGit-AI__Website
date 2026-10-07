@@ -6,21 +6,21 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
-   "slug": "ai-baseline-control-framework",
+   "slug": "the-behaviour-policy-is-the-business-logic",
    "kind": "article",
    "kicker": "SGit Newsroom",
    "date": "2026-10-07",
    "author": "Dinis Cruz",
-   "title": "An open AI governance framework, and what its licence let us build",
-   "teaser": "Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.",
+   "title": "Zoom into an agent's behaviour policy and you find the business logic",
+   "teaser": "Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.",
    "ideas": [
-    "The Access controls have no equivalent in the three",
-    "ShareAlike keeps the tools open",
-    "The law links controls listed separately"
+    "Above the mechanics is the business",
+    "Vendors cannot model each customer's business",
+    "Agents work through the API, not the screen"
    ],
-   "hero": "articles/images/bcf-shape.webp",
-   "url": "sgit.ai/articles/ai-baseline-control-framework.html",
-   "out": "articles/banners/ai-baseline-control-framework.jpg"
+   "hero": "articles/images/policy-stack.webp",
+   "url": "sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html",
+   "out": "articles/banners/the-behaviour-policy-is-the-business-logic.jpg"
   },
   {
    "slug": "an-agent-desktop-by-the-minute",
@@ -40,21 +40,21 @@
    "out": "articles/banners/an-agent-desktop-by-the-minute.jpg"
   },
   {
-   "slug": "the-behaviour-policy-is-the-business-logic",
+   "slug": "ai-baseline-control-framework",
    "kind": "article",
    "kicker": "SGit Newsroom",
    "date": "2026-10-07",
    "author": "Dinis Cruz",
-   "title": "Zoom into an agent's behaviour policy and you find the business logic",
-   "teaser": "Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.",
+   "title": "An open AI governance framework, and what its licence let us build",
+   "teaser": "Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.",
    "ideas": [
-    "Above the mechanics is the business",
-    "Vendors cannot model each customer's business",
-    "Agents work through the API, not the screen"
+    "The Access controls have no equivalent in the three",
+    "ShareAlike keeps the tools open",
+    "The law links controls listed separately"
    ],
-   "hero": "articles/images/policy-stack.webp",
-   "url": "sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html",
-   "out": "articles/banners/the-behaviour-policy-is-the-business-logic.jpg"
+   "hero": "articles/images/bcf-shape.webp",
+   "url": "sgit.ai/articles/ai-baseline-control-framework.html",
+   "out": "articles/banners/ai-baseline-control-framework.jpg"
   },
   {
    "slug": "where-is-the-why",
@@ -72,57 +72,6 @@
    "hero": "articles/images/why-missing.webp",
    "url": "sgit.ai/articles/where-is-the-why.html",
    "out": "articles/banners/where-is-the-why.jpg"
-  },
-  {
-   "slug": "a-personal-agent-that-keeps-your-secrets",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-06",
-   "author": "Dinis Cruz",
-   "title": "A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser",
-   "teaser": "The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.",
-   "ideas": [
-    "The shape came from a self-hosted project",
-    "A separate permission authority is a boundary",
-    "Today's protection is policy, not cryptography"
-   ],
-   "hero": "articles/images/pa-landscape.webp",
-   "url": "sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html",
-   "out": "articles/banners/a-personal-agent-that-keeps-your-secrets.jpg"
-  },
-  {
-   "slug": "the-agent-team-as-it-runs",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-06",
-   "author": "Dinis Cruz",
-   "title": "The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from",
-   "teaser": "Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.",
-   "ideas": [
-    "The account is the blast radius",
-    "The rules never negotiated",
-    "Barriers typed honestly"
-   ],
-   "hero": "articles/images/team-the-picture.webp",
-   "url": "sgit.ai/articles/the-agent-team-as-it-runs.html",
-   "out": "articles/banners/the-agent-team-as-it-runs.jpg"
-  },
-  {
-   "slug": "the-deck-i-could-not-download",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-06",
-   "author": "Dinis Cruz",
-   "title": "The deck I could not download: an author-first home for presentations, as a business plan somebody else can build",
-   "teaser": "One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.",
-   "ideas": [
-    "What the author agreed to",
-    "Three complaints, and the one that is not",
-    "Why it has not been replaced"
-   ],
-   "hero": "articles/images/sv-paywall.webp",
-   "url": "sgit.ai/articles/the-deck-i-could-not-download.html",
-   "out": "articles/banners/the-deck-i-could-not-download.jpg"
   },
   {
    "slug": "the-mandate-stack",
@@ -159,6 +108,91 @@
    "out": "articles/banners/why-my-agents-do-not-run-on-my-laptop.jpg"
   },
   {
+   "slug": "the-deck-i-could-not-download",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-06",
+   "author": "Dinis Cruz",
+   "title": "The deck I could not download: an author-first home for presentations, as a business plan somebody else can build",
+   "teaser": "One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.",
+   "ideas": [
+    "What the author agreed to",
+    "Three complaints, and the one that is not",
+    "Why it has not been replaced"
+   ],
+   "hero": "articles/images/sv-paywall.webp",
+   "url": "sgit.ai/articles/the-deck-i-could-not-download.html",
+   "out": "articles/banners/the-deck-i-could-not-download.jpg"
+  },
+  {
+   "slug": "the-agent-team-as-it-runs",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-06",
+   "author": "Dinis Cruz",
+   "title": "The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from",
+   "teaser": "Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.",
+   "ideas": [
+    "The account is the blast radius",
+    "The rules never negotiated",
+    "Barriers typed honestly"
+   ],
+   "hero": "articles/images/team-the-picture.webp",
+   "url": "sgit.ai/articles/the-agent-team-as-it-runs.html",
+   "out": "articles/banners/the-agent-team-as-it-runs.jpg"
+  },
+  {
+   "slug": "a-personal-agent-that-keeps-your-secrets",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-06",
+   "author": "Dinis Cruz",
+   "title": "A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser",
+   "teaser": "The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.",
+   "ideas": [
+    "The shape came from a self-hosted project",
+    "A separate permission authority is a boundary",
+    "Today's protection is policy, not cryptography"
+   ],
+   "hero": "articles/images/pa-landscape.webp",
+   "url": "sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html",
+   "out": "articles/banners/a-personal-agent-that-keeps-your-secrets.jpg"
+  },
+  {
+   "slug": "the-investigation-github-owes-its-customers",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-05",
+   "author": "Dinis Cruz",
+   "title": "The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered",
+   "teaser": "A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.",
+   "ideas": [
+    "The status page is the whole record",
+    "Everybody is the point",
+    "A near miss gets the same investigation"
+   ],
+   "hero": "articles/images/inv-one-incident-two-records.webp",
+   "url": "sgit.ai/articles/the-investigation-github-owes-its-customers.html",
+   "out": "articles/banners/the-investigation-github-owes-its-customers.jpg"
+  },
+  {
+   "slug": "send-an-agent-not-a-spreadsheet",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-05",
+   "author": "Dinis Cruz",
+   "title": "Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it",
+   "teaser": "Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.",
+   "ideas": [
+    "Due diligence was a form",
+    "Derived, not composed",
+    "A threat model is the fastest read of a team"
+   ],
+   "hero": "articles/images/dd-form-vs-agent.webp",
+   "url": "sgit.ai/articles/send-an-agent-not-a-spreadsheet.html",
+   "out": "articles/banners/send-an-agent-not-a-spreadsheet.jpg"
+  },
+  {
    "slug": "how-much-of-this-did-i-write",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -193,23 +227,6 @@
    "out": "articles/banners/if-somebody-built-a-company-on-code-review.jpg"
   },
   {
-   "slug": "send-an-agent-not-a-spreadsheet",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-05",
-   "author": "Dinis Cruz",
-   "title": "Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it",
-   "teaser": "Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.",
-   "ideas": [
-    "Due diligence was a form",
-    "Derived, not composed",
-    "A threat model is the fastest read of a team"
-   ],
-   "hero": "articles/images/dd-form-vs-agent.webp",
-   "url": "sgit.ai/articles/send-an-agent-not-a-spreadsheet.html",
-   "out": "articles/banners/send-an-agent-not-a-spreadsheet.jpg"
-  },
-  {
    "slug": "the-identity-we-wanted-to-give-the-agents",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -225,23 +242,6 @@
    "hero": "articles/images/idf-wanted-vs-terms.webp",
    "url": "sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html",
    "out": "articles/banners/the-identity-we-wanted-to-give-the-agents.jpg"
-  },
-  {
-   "slug": "the-investigation-github-owes-its-customers",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-05",
-   "author": "Dinis Cruz",
-   "title": "The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered",
-   "teaser": "A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.",
-   "ideas": [
-    "The status page is the whole record",
-    "Everybody is the point",
-    "A near miss gets the same investigation"
-   ],
-   "hero": "articles/images/inv-one-incident-two-records.webp",
-   "url": "sgit.ai/articles/the-investigation-github-owes-its-customers.html",
-   "out": "articles/banners/the-investigation-github-owes-its-customers.jpg"
   },
   {
    "slug": "the-wall-under-the-reply",
@@ -261,23 +261,6 @@
    "out": "articles/banners/the-wall-under-the-reply.jpg"
   },
   {
-   "slug": "code-review-as-a-fractal-semantic-graph",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-10-03",
-   "author": "Dinis Cruz",
-   "title": "Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it",
-   "teaser": "Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.",
-   "ideas": [
-    "Source code is a fractal semantic graph",
-    "Naming is now the cheap part",
-    "Reality corrects the graph"
-   ],
-   "hero": "articles/images/crg-ladder.webp",
-   "url": "sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html",
-   "out": "articles/banners/code-review-as-a-fractal-semantic-graph.jpg"
-  },
-  {
    "slug": "memory-is-not-a-spectator-sport",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -295,21 +278,38 @@
    "out": "articles/banners/memory-is-not-a-spectator-sport.jpg"
   },
   {
-   "slug": "footprint-and-blast-radius",
+   "slug": "code-review-as-a-fractal-semantic-graph",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-03",
+   "author": "Dinis Cruz",
+   "title": "Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it",
+   "teaser": "Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.",
+   "ideas": [
+    "Source code is a fractal semantic graph",
+    "Naming is now the cheap part",
+    "Reality corrects the graph"
+   ],
+   "hero": "articles/images/crg-ladder.webp",
+   "url": "sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html",
+   "out": "articles/banners/code-review-as-a-fractal-semantic-graph.jpg"
+  },
+  {
+   "slug": "replicating-the-agentic-inbox",
    "kind": "article",
    "kicker": "SGit Newsroom",
    "date": "2026-10-02",
    "author": "Dinis Cruz",
-   "title": "Footprint and blast radius: what the agent actually did, and what it would have cost",
-   "teaser": "Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.",
+   "title": "Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send",
+   "teaser": "How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.",
    "ideas": [
-    "Reading, not intercepting",
-    "A vault is a footprint recorder by construction",
-    "The gap plus blast radius is the risk"
+    "The agent drafts, a person sends",
+    "The clone cost",
+    "Trust built from the record"
    ],
-   "hero": "articles/images/fp-gap-map.webp",
-   "url": "sgit.ai/articles/footprint-and-blast-radius.html",
-   "out": "articles/banners/footprint-and-blast-radius.jpg"
+   "hero": "articles/images/inbox-four-phases.webp",
+   "url": "sgit.ai/articles/replicating-the-agentic-inbox.html",
+   "out": "articles/banners/replicating-the-agentic-inbox.jpg"
   },
   {
    "slug": "price-it-then-give-it-away",
@@ -329,21 +329,21 @@
    "out": "articles/banners/price-it-then-give-it-away.jpg"
   },
   {
-   "slug": "replicating-the-agentic-inbox",
+   "slug": "footprint-and-blast-radius",
    "kind": "article",
    "kicker": "SGit Newsroom",
    "date": "2026-10-02",
    "author": "Dinis Cruz",
-   "title": "Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send",
-   "teaser": "How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.",
+   "title": "Footprint and blast radius: what the agent actually did, and what it would have cost",
+   "teaser": "Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.",
    "ideas": [
-    "The agent drafts, a person sends",
-    "The clone cost",
-    "Trust built from the record"
+    "Reading, not intercepting",
+    "A vault is a footprint recorder by construction",
+    "The gap plus blast radius is the risk"
    ],
-   "hero": "articles/images/inbox-four-phases.webp",
-   "url": "sgit.ai/articles/replicating-the-agentic-inbox.html",
-   "out": "articles/banners/replicating-the-agentic-inbox.jpg"
+   "hero": "articles/images/fp-gap-map.webp",
+   "url": "sgit.ai/articles/footprint-and-blast-radius.html",
+   "out": "articles/banners/footprint-and-blast-radius.jpg"
   },
   {
    "slug": "custom-uis-are-not-the-exception",
@@ -448,23 +448,6 @@
    "out": "articles/banners/supply-chain-of-vaults.jpg"
   },
   {
-   "slug": "connector-twin-before-you-deploy-an-agent",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-09-24",
-   "author": "Dinis Cruz",
-   "title": "Before you give an agent a connector, give the connector a twin",
-   "teaser": "An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.",
-   "ideas": [
-    "A connector is a grant of action",
-    "The platform keeps no way back for some actions",
-    "The twin is not a copy of the mailbox"
-   ],
-   "hero": "articles/images/connector-twin-pipeline.webp",
-   "url": "sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html",
-   "out": "articles/banners/connector-twin-before-you-deploy-an-agent.jpg"
-  },
-  {
    "slug": "every-risk-is-already-accepted",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -480,6 +463,23 @@
    "hero": "articles/images/risk-acceptance-loop.webp",
    "url": "sgit.ai/articles/every-risk-is-already-accepted.html",
    "out": "articles/banners/every-risk-is-already-accepted.jpg"
+  },
+  {
+   "slug": "connector-twin-before-you-deploy-an-agent",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-09-24",
+   "author": "Dinis Cruz",
+   "title": "Before you give an agent a connector, give the connector a twin",
+   "teaser": "An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.",
+   "ideas": [
+    "A connector is a grant of action",
+    "The platform keeps no way back for some actions",
+    "The twin is not a copy of the mailbox"
+   ],
+   "hero": "articles/images/connector-twin-pipeline.webp",
+   "url": "sgit.ai/articles/connector-twin-before-you-deploy-an-agent.html",
+   "out": "articles/banners/connector-twin-before-you-deploy-an-agent.jpg"
   },
   {
    "slug": "future-of-news-story-vault-not-paywall",
@@ -499,23 +499,6 @@
    "out": "articles/banners/future-of-news-story-vault-not-paywall.jpg"
   },
   {
-   "slug": "saas-apocalypse-decided-by-inertia-not-by-ai",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-09-21",
-   "author": "Dinis Cruz",
-   "title": "The SaaS apocalypse will be decided by inertia, not by AI",
-   "teaser": "Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.",
-   "ideas": [
-    "The claim, stated so it can be wrong",
-    "AI is available to both sides",
-    "The database is the moat"
-   ],
-   "hero": "articles/images/saas-inertia-hero.webp",
-   "url": "sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
-   "out": "articles/banners/saas-apocalypse-decided-by-inertia-not-by-ai.jpg"
-  },
-  {
    "slug": "the-question-is-whether-they-miss-it",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -531,6 +514,23 @@
    "hero": "articles/images/startup-test-hero.webp",
    "url": "sgit.ai/articles/the-question-is-whether-they-miss-it.html",
    "out": "articles/banners/the-question-is-whether-they-miss-it.jpg"
+  },
+  {
+   "slug": "saas-apocalypse-decided-by-inertia-not-by-ai",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-09-21",
+   "author": "Dinis Cruz",
+   "title": "The SaaS apocalypse will be decided by inertia, not by AI",
+   "teaser": "Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.",
+   "ideas": [
+    "The claim, stated so it can be wrong",
+    "AI is available to both sides",
+    "The database is the moat"
+   ],
+   "hero": "articles/images/saas-inertia-hero.webp",
+   "url": "sgit.ai/articles/saas-apocalypse-decided-by-inertia-not-by-ai.html",
+   "out": "articles/banners/saas-apocalypse-decided-by-inertia-not-by-ai.jpg"
   },
   {
    "slug": "introducing-fractal-semantic-graphs",
@@ -550,23 +550,6 @@
    "out": "articles/banners/introducing-fractal-semantic-graphs.jpg"
   },
   {
-   "slug": "proof-behind-the-claim",
-   "kind": "article",
-   "kicker": "SGit Newsroom",
-   "date": "2026-09-07",
-   "author": "sgit.ai",
-   "title": "The proof is two clicks behind the claim, what the homepage gets wrong, and the fix",
-   "teaser": "The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.",
-   "ideas": [
-    "Encryption is a property you cannot look at",
-    "The proof is a table, two clicks away",
-    "Opened by one string"
-   ],
-   "hero": "articles/images/before-hero.webp",
-   "url": "sgit.ai/articles/proof-behind-the-claim.html",
-   "out": "articles/banners/proof-behind-the-claim.jpg"
-  },
-  {
    "slug": "proof-moved-up",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -582,6 +565,23 @@
    "hero": "articles/images/before-hero.webp",
    "url": "sgit.ai/articles/proof-moved-up.html",
    "out": "articles/banners/proof-moved-up.jpg"
+  },
+  {
+   "slug": "proof-behind-the-claim",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-09-07",
+   "author": "sgit.ai",
+   "title": "The proof is two clicks behind the claim, what the homepage gets wrong, and the fix",
+   "teaser": "The homepage leads with encryption, which cannot be seen, while twenty-five vaults a stranger can open in one click sit two clicks away in a table.",
+   "ideas": [
+    "Encryption is a property you cannot look at",
+    "The proof is a table, two clicks away",
+    "Opened by one string"
+   ],
+   "hero": "articles/images/before-hero.webp",
+   "url": "sgit.ai/articles/proof-behind-the-claim.html",
+   "out": "articles/banners/proof-behind-the-claim.jpg"
   },
   {
    "slug": "chat-on-a-static-site",

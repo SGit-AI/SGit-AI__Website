@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.92'
+SITE_VERSION = 'v0.6.93'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.92', '2026-10-07', 'this release',
+    ('v0.6.93', '2026-10-07', 'this release',
+     "ARTICLES IN THE ORDER THEY WENT OUT. Four articles went out today and Latest listed them by filename, so "
+     "the newest sat third. Articles now carry an optional time: HH:MM in UTC, and every list of articles "
+     "(Latest, the archive, the wire, the front's freshness check, the feed) sorts by date and then time. "
+     "Without the field the build uses the time the file was first committed, when that commit is on the "
+     "article's date. All 37 articles that have a same-day commit now carry it explicitly, backfilled from git, "
+     "so the order does not depend on a clone's history; the two that were backdated keep none and sort after "
+     "the timed ones of their day. The feed's pubDate now carries the time instead of midnight. Documented in "
+     "CONTENT.md and on How to publish.",),
+    ('v0.6.92', '2026-10-07', 'git b757ef64',
      "NEWSLETTER ISSUE 1, OPENING ON THE TOPICS. The issue opened by explaining what the newsletter is; a new "
      "reader cares about what the week was about. The intro, the summary and the subtitle now lead with the "
      "question the week's articles answer, what it takes to let agents do real work for a business, and the "
@@ -6280,6 +6289,7 @@ def newsroom_publish_body():
         'For any agent writing for sgit.ai: what to add, what happens, and how to ask for more than Latest.')
         + '<h2 id="article">An article</h2>'
         '<ol><li>Write <code>admin/content/articles/&lt;slug&gt;.md</code> with <code>title</code>, <code>date</code>, '
+        '<code>time</code> (HH:MM in UTC, so articles from the same day list in the order they went out), '
         '<code>summary</code>, <code>tags</code>, and <code>author</code> + <code>author_url</code> if it is first person. '
         'The full contract is <code>admin/content/CONTENT.md</code>.</li>'
         '<li>Write its graph, <code>admin/content/articles/graphs/&lt;slug&gt;.json</code>: the teaser, one or two topics, '
@@ -6547,7 +6557,10 @@ def write_wire():
 def write_articles_feed():
     """articles/feed.xml: the articles and the desk notes, newest first. Until v0.6.85 the
     only feed carried the updates, so a feed reader following this site never saw an article."""
-    items = [(a['date'], a['title'], f'https://sgit.ai/articles/{a["slug"]}.html', a['summary']) for a in ARTICLES]
+    # An article's sort key carries its publishing time when it has one ('2026-10-07T18:07'),
+    # so two articles from one day reach a feed reader in the order they were published.
+    items = [(a['date'] + (f'T{a["time"]}' if a.get('time') else ''), a['title'], f'https://sgit.ai/articles/{a["slug"]}.html',
+              a['summary']) for a in ARTICLES]
     items += [(n['date'], f'{NOTE_KINDS[n["kind"]]}: {n["title"]}', f'https://sgit.ai/articles/desk/{n["slug"]}.html', n['summary'])
               for n in NEWS.notes]
     items += [(i['date'], f'Newsletter, issue {i["number"]}: {i["title"]}', f'https://sgit.ai/articles/newsletter/{i["slug"]}.html',
@@ -6557,7 +6570,7 @@ def write_articles_feed():
     def x(s):
         return _esc(s)
     body = ''.join(f'<item><title>{x(t)}</title><link>{u}</link><guid>{u}</guid>'
-                   f'<pubDate>{datetime.datetime.fromisoformat(d).strftime("%a, %d %b %Y 00:00:00 +0000")}</pubDate>'
+                   f'<pubDate>{datetime.datetime.fromisoformat(d).strftime("%a, %d %b %Y %H:%M:00 +0000")}</pubDate>'
                    f'<description>{x(s)}</description></item>\n' for d, t, u, s in items[:40])
     feed = ('<?xml version="1.0" encoding="utf-8"?>\n<rss version="2.0"><channel>\n'
             '<title>sgit.ai articles</title><link>https://sgit.ai/articles/index.html</link>\n'

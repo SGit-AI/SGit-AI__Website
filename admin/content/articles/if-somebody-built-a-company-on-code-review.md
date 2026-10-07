@@ -1,6 +1,7 @@
 ---
 title: If somebody built a company on code review: how I would do it, and why it is only now possible
 date: 2026-10-05
+time: 12:42
 updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html

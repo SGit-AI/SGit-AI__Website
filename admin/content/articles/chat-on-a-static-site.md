@@ -1,6 +1,7 @@
 ---
 title: A chat box on a site with no server, the plan, and the trade it makes
 date: 2026-08-27
+time: 08:32
 summary: Nineteen sibling sites is too many to browse, so the directory now answers questions. The design problem is that sgit.ai has no server and no vault host, which means the honest options are a local matcher, a key in your browser, or moving the page into a vault, and only one of those is free.
 version: v0.2.47
 license: https://creativecommons.org/licenses/by/4.0/

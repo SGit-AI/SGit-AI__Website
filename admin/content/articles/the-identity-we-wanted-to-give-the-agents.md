@@ -1,6 +1,7 @@
 ---
 title: The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard
 date: 2026-10-05
+time: 01:17
 updated: 2026-10-05
 author: Dinis Cruz
 author_url: about/index.html

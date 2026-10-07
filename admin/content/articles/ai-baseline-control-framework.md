@@ -1,6 +1,7 @@
 ---
 title: An open AI governance framework, and what its licence let us build
 date: 2026-10-07
+time: 15:13
 author: Dinis Cruz
 author_url: about/index.html
 summary: Jan van Dijke published the AI Baseline Control Framework on 2 October 2026, twenty controls for organisations that deploy AI, in five categories and three types, each with why it matters and how to put it in place, mapped to the NIST AI RMF, ISO/IEC 42001 and the EU AI Act, and licensed CC BY-SA 4.0. Part one is about the framework, what it does well, what it adds that the three it maps to do not, and why an open licence matters more for a control framework than for most documents. Part two is what the licence made possible on the day: the CSV export converted into a semantic graph with an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents and a database that runs in the browser, joined to the EU AI Act's own text, published as a vault under the same licence, with a fractal graph view that walks from the framework down to a paragraph of law, and the six things the graph found that the CSV does not say.

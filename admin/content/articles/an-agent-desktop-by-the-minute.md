@@ -1,6 +1,7 @@
 ---
 title: A locked-down desktop for an agent, by the minute, is still hard to rent
 date: 2026-10-07
+time: 15:19
 author: Dinis Cruz
 author_url: about/index.html
 summary: We want to give each agent a desktop of its own, away from the laptop, that a person can watch and take over, that can reach only what its task needs, that holds no secret it could leak, that is thrown away afterwards, and that is billed for the minutes it works. In October 2026 every one of those properties can be bought somewhere, and no single product we looked at offers all of them. This article lays out the nine properties, puts nine products against them from their own documentation, prices two hours of work a day on each, and explains the three things that make it hard: macOS cannot be leased for less than a day and Apple's licence limits what a leased Mac is for; the strongest isolation controls are weeks old or in private beta; and prompt injection is not solved, so the desktop has to be the barrier rather than the model. It proposes what we would build from what exists, and closes with the startup credit programmes that would pay for trying it, verified on the day, with how to apply.

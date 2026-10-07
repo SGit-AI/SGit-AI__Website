@@ -1,6 +1,7 @@
 ---
 title: Git for things you cannot put on GitHub
 date: 2026-08-25
+time: 03:14
 summary: An introduction to sgit and sgit.ai, what an encrypted vault is, why version control had to be rebuilt to get one, and what nineteen published vaults look like when the server storing them cannot read a byte.
 version: v0.2.42
 license: https://creativecommons.org/licenses/by/4.0/

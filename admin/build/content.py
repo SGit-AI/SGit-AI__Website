@@ -26,6 +26,7 @@ import html
 import json
 import os
 import re
+import subprocess
 
 LIST_KEYS = {'tags'}
 
@@ -298,6 +299,7 @@ class Content_Loader:
     # ---------------------------------------------------------------- loaders
 
     RE_DATE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+    RE_TIME = re.compile(r'^([01]\d|2[0-3]):[0-5]\d$')
 
     def _require(self, meta, keys, where):
         for k in keys:
@@ -356,6 +358,13 @@ class Content_Loader:
             self._require(meta, ['title', 'date', 'summary'], where)
             if not self.RE_DATE.match(meta['date']):
                 raise Content_Error(f'{where}: date must be YYYY-MM-DD, got {meta["date"]!r}')
+            # Optional `time: HH:MM`, in UTC: when on that date it was published. Several
+            # articles often go out on one day, and the date alone left them in filename
+            # order, so the newest could sit third in Latest. Without the field, the time the
+            # file was first committed is used, when that commit falls on the article's date.
+            time_ = meta.get('time', '') or self.first_commit_time(os.path.join(base, fn), meta['date'])
+            if time_ and not self.RE_TIME.match(time_):
+                raise Content_Error(f'{where}: time must be HH:MM in UTC, got {time_!r}')
             updated = meta.get('updated', '')
             if updated and not self.RE_DATE.match(updated):
                 raise Content_Error(f'{where}: updated must be YYYY-MM-DD, got {updated!r}')
@@ -363,6 +372,7 @@ class Content_Loader:
                 raise Content_Error(f'{where}: updated ({updated}) is before date ({meta["date"]})')
             arts.append({
                 'slug': fn[:-3], 'title': meta['title'], 'date': meta['date'],
+                'time': time_, 'published': f'{meta["date"]}T{time_}:00Z' if time_ else meta['date'],
                 'summary': meta['summary'], 'tags': meta.get('tags', []),
                 'version': meta.get('version', ''),
                 'status': meta.get('status', 'published'),
@@ -379,8 +389,34 @@ class Content_Loader:
                 'author_url': meta.get('author_url', ''),
                 'body': body, 'where': where,
             })
-        arts.sort(key=lambda a: a['date'], reverse=True)
+        # Newest first: by date, then by time on that date. An article with no time
+        # (never committed, or backdated) sorts after the timed ones of its day.
+        arts.sort(key=lambda a: (a['date'], a['time'], a['slug']), reverse=True)
         return arts
+
+    def first_commit_time(self, path, date):
+        """HH:MM (UTC) of the commit that first added `path`, if it was on `date`; else ''.
+        One `git log` for the whole folder, cached; '' where there is no git history."""
+        if not hasattr(self, '_first_commit'):
+            self._first_commit = {}
+            folder = os.path.dirname(os.path.abspath(path))
+            try:
+                out = subprocess.run(['git', 'log', '--diff-filter=A', '--format=C %ct', '--name-only', '--', '.'],
+                                     cwd=folder, capture_output=True, text=True, timeout=30).stdout
+            except (OSError, subprocess.SubprocessError):
+                out = ''
+            import datetime as _dt
+            stamp = None
+            for line in out.splitlines():
+                if line.startswith('C '):
+                    stamp = _dt.datetime.fromtimestamp(int(line[2:]), _dt.timezone.utc)
+                elif line.strip() and stamp:
+                    # log is newest first, so the last stamp seen for a name is its first add
+                    self._first_commit[os.path.basename(line.strip())] = stamp
+        stamp = self._first_commit.get(os.path.basename(path))
+        if stamp and stamp.strftime('%Y-%m-%d') == date:
+            return stamp.strftime('%H:%M')
+        return ''
 
     # The fixed topic list the article graphs use. Kept here, next to the loader that
     # enforces it, so the README in articles/graphs/ and the code cannot disagree.

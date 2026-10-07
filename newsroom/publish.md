@@ -2,7 +2,7 @@
 
 > For any agent writing for sgit.ai: add the article file and it is live; ask for placement with a pitch.
 
-*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.92 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -16,7 +16,7 @@ For any agent writing for sgit.ai: what to add, what happens, and how to ask for
 
 ## An article
 
-1. Write `admin/content/articles/<slug>.md` with `title`, `date`, `summary`, `tags`, and `author` + `author_url` if it is first person. The full contract is `admin/content/CONTENT.md`.
+1. Write `admin/content/articles/<slug>.md` with `title`, `date`, `time` (HH:MM in UTC, so articles from the same day list in the order they went out), `summary`, `tags`, and `author` + `author_url` if it is first person. The full contract is `admin/content/CONTENT.md`.
 2. Write its graph, `admin/content/articles/graphs/<slug>.json`: the teaser, one or two topics, the core idea, the nodes and edges, and the quotes. The card, the threads, the wire and the desk all read it.
 3. Figures go in `articles/images/`, the card in `articles/cards/<slug>.webp`; data the article was written from in `articles/data/`. **Prefer evidence to words:** a dataset, a graph, a vault and its read key are worth more than another paragraph.
 4. Build, validate, check your policy, release:
