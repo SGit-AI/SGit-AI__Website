@@ -1,6 +1,7 @@
 ---
 title: How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was
 date: 2026-10-05
+time: 15:46
 updated: 2026-10-05
 author: Dinis Cruz
 author_url: about/index.html

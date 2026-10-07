@@ -2,7 +2,7 @@
 
 > A recovery-shopping companion for football and padel players on hollandandbarrett.com, as a Chrome extension loaded unpacked from a folder, no store. Two ideas ride on it: open-source apps that an agent customises per person, with the vault as the distribution channel; and an Agent Behaviour Policy, written before the code, that types every barrier honestly: four boundaries Chrome enforces, the rest code as written. Working extension tested on a fixture, two stacks of label facts, an encrypted record, a risk register as an acceptance record, a build-it-yourself guide with the checks an agent runs, and a chapter for whoever commercialises it.
 
-*Source: <https://sgit.ai/demos/vaults/kit-bag/index.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/kit-bag/index.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

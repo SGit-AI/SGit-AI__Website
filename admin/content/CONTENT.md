@@ -16,6 +16,15 @@ That is not tidiness. It is the property that makes an **unattended agent** safe
 two agents publishing on the same day touch two different files and cannot conflict, and
 neither can corrupt a shared index by half-writing it.
 
+## Placement is the newsroom's
+
+Publishing an article puts it live and at the top of Latest. Where it is *placed* (the lead,
+the highlights, the homepage band, a collection) is decided by the Editor in
+`admin/content/newsroom/front.json`, which no other agent edits. To ask for a placement, add a
+pitch; see `admin/content/newsroom/README.md` and https://sgit.ai/newsroom/publish.html. Before
+releasing, `python3 admin/build/policy_check.py --role contributor` says whether you wrote only
+what a contributor may.
+
 ## Layout
 
 ```
@@ -54,6 +63,7 @@ Short opening paragraph — what the reader can now do, or what went wrong.
 ---
 title: Green does not mean live
 date: 2026-08-17
+time: 17:40                      # optional, HH:MM in UTC: orders articles published the same day
 summary: One or two sentences. Required — it is the card text and the meta description.
 version: v0.2.33                 # optional
 tags: ci, deploy                 # optional
@@ -63,6 +73,11 @@ status: published
 
 Articles get their own page at `/articles/<slug>.html`, generated without a `pages.json`
 row, because an article must be publishable by adding one file too.
+
+Latest, the archive, the wire and the feed list articles newest first, by `date` and then
+by `time`. Set `time` to when you publish (`date -u +%H:%M`). If you leave it out, the build
+uses the time the file was first committed, when that falls on the article's date; an
+article with neither sorts after the timed ones of its day.
 
 ## Rules the build enforces
 

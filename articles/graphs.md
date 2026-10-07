@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,302 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-35 of 35 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+40 of 40 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-35 articles, 135 links between them (250 mentions in all). 25 articles cite an earlier one; 15 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (13 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+40 articles, 159 links between them (279 mentions in all). 31 articles cite an earlier one; 5 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
+
+2026-10-07 · News & evidenceGraphs & knowledge
+
+Markus Franz's Liquid Utility proposes Reader Skills that help people understand, update, relate, compare, follow and act on journalism; the story vault keeps reporting as a versioned graph of claims tied to hashed evidence; put together, each skill is an operation on the graph and each safeguard he asks for is a property the graph already has, his bridge closure becomes a graph in which one supersede edge is the update, the alert and the correction, and his emphasis on locality supplies what the vault's economics had not mapped: local contributors and local journalists sit where trust is strongest, stories travel up to national and international outlets, and if every use pays back down the chain of claims it rests on, small payments from many people fund the reporting nearest to them.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**13 nodes, 13 edges**
+
+- **Liquid Utility** (concept) Markus Franz: trusted journalistic knowledge plus reusable methods and tools, to help someone understand, follow or act.
+- **Six Reader Skills** (concept) Understand, Update, Relate, Compare, Follow, Act: bounded capabilities a reader uses directly.
+- **The story vault** (concept) Claims tied to hashed evidence, versioned, superseded rather than deleted; the article is one projection.
+- **What we know, and what we can help someone do** (claim) Markus Franz's reply: the vault answers why it can be trusted, the skills answer what it can reliably help someone do.
+- **Each skill is an operation on the graph** (method) Update is a diff between versions, Follow a subscription on claims, Relate a join held on the reader's side.
+- **His safeguards are graph properties** (claim) Corrections as supersede edges, protected sources flagged at the node, freshness for could-not-check.
+- **The bridge closure as a graph** (example) One supersede edge is the update, the alert and the correction at once; the reader's route stays on the reader's side.
+- **Local is where the trust is** (claim) Everything that touches the day is local; readers can check local reporting themselves, so trust and brand form there.
+- **The local contributor is a node** (concept) Residents and local sources are named or flagged, linked to the claims their evidence supports, and verified.
+- **Every use pays back down the chain** (method) National and international stories that rest on local claims pay for them per use; shares reach the contributor.
+- **Is this still current?** (artefact) The verification API: a paid, maintained answer about a claim, and how a local newsroom gets paid for being right.
+- **Trust, use, payment, reporting, evidence, trust** (claim) Small payments from many people about the things nearest to them fund the next local story.
+- **One topic, one vault, one service, one ledger** (question) Markus's tightly scoped service, kept as a story vault, with contributors recorded and the ledger published.
+
+> Over a pile of articles, Update is a summarisation problem. Over a story graph, it is a diff. Why the story vault makes Reader Skills dependable.
+
+> Use it, and pay the people who found it out. The clause the monetisation adds to Markus Franz's closing line.
+
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
+
+## [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md)
+
+2026-10-07 · Agents & policy
+
+The first rules written for an agent are mechanical and vendors enforce them well, but every layer above them is the company's own business logic: how a function is done, the steps a process goes through, who a client is right now, and what the company is for; much of that logic was never written down because software enforced it by omission, and agents working through APIs bypass that; a behaviour policy built in layers, each refining the one below with its own owner, can hold it, can count how much of it is backed by a control, by an accepted risk or by hope, and gives vendors a written rule to enforce and a number to move, which is what lets the business hand work to agents and scale.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 14 edges**
+
+- **The bottom layers are mechanics** (concept) Own account, secrets held by the platform, tools switched off, sending needs a person: boundaries vendors enforce well.
+- **send_message ran with no prompt** (example) The measured Gmail deployment: thirty tools, sending unprompted, trashing behind an approval. Mechanics need measuring.
+- **Above the mechanics is the business** (claim) Function, process, relationship and organisation layers, each a set of rules a manager would say out loud, each with its own owner.
+- **Vendors cannot model each customer's business** (claim) To scale they build what is the same for everybody; the business layers differ per company and are often unwritten.
+- **Software was the law** (concept) Approval chains, RBAC and workflows encoded the rules; a missing button was a control.
+- **Agents work through the API, not the screen** (claim) The rule the interface enforced by omission is no longer enforced unless it is written down.
+- **Policies inside policies** (method) Each layer refines the one below inside the room it allows, from tool permissions up to what the company is for.
+- **Shared facts, own formulas, declared bridges** (concept) The ABP vocabulary's three layers: customers extend it in their own vault without changing the shared one.
+- **Control, accepted risk, or hope** (method) Each rule is backed by a boundary, governed by a named acceptance with an expiry, or resting on hope; the counts are the finding.
+- **Five, six and six of seventeen** (example) In the fictional firm the platform layer is all control and the organisation layer all hope.
+- **A vendor control moves one written rule** (method) Send gateways, content checks, ledger approvals and blocked-recipient lists each move a rule from hope or acceptance to control.
+- **Frameworks already ask for the description** (artefact) AI BCF RG.2 asks that what an autonomous system does is described; AC.3 asks for a named owner.
+- **The upper layers read like skills** (claim) A skill says how; a policy layer says what is allowed, who owns it and what stands in the way. Together they codify the business.
+- **A real inbox, layered and counted** (question) Write the upper layers above the measured Gmail deployment, publish the counts, then again with a vendor's control in the path.
+
+> The rule that the user interface enforced by omission is no longer enforced, unless somebody writes it down and something enforces it. Why agents force business logic out of software and into policy.
+
+> A control attached to a written rule is worth more than one switched on in general, because the customer can see what it bought. Why the behaviour policy is a good integration point for vendors.
+
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework).
+
+## [A locked-down desktop for an agent, by the minute, is still hard to rent](an-agent-desktop-by-the-minute.md)
+
+2026-10-07 · Agents & policyStartups & strategy
+
+A desktop safe to hand to an agent needs isolation, an egress allowlist, secrets kept outside, its own identity, a live view, a record, a clean reset, billing that follows the work and the right operating system; in October 2026 each exists somewhere and no product we read has all nine; Linux sandboxes come closest, with key controls in beta, Windows agent desktops arrived in June, and macOS cannot be leased for less than 24 hours under Apple's licence, which also limits leased Macs to developer services; because prompt injection is not solved the desktop has to be the barrier, so the proposal is one mandate per task, a fresh desktop per task by operating system, and a vault outside every desktop, paid for at first by startup programmes listed with how to apply.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 14 edges**
+
+- **A desktop per agent, billed by the minute** (question) Can a locked-down desktop be rented for the two to eight hours a day an agent uses it?
+- **Nine properties of a locked-down desktop** (concept) Isolation, egress allowlist, secrets outside, own identity, live view, record, reset, billing that follows work, the right OS.
+- **The desktop is the agent's grant** (concept) Read through the Agent Behaviour Policy, the box keeps what the agent can reach close to what the task needs.
+- **No product has all nine** (claim) Nine products read from their own documentation on 7 October 2026; each property exists somewhere.
+- **Linux sandboxes come closest** (example) E2B and Daytona: microVMs or VMs, deny-by-default egress, proxy-held secrets, per-second billing; some controls in beta.
+- **Windows agent desktops arrived in June** (example) Windows 365 for Agents and Amazon WorkSpaces for AI agents, both generally available in June 2026.
+- **macOS leases last at least a day** (claim) Apple's licence requires 24-hour leases, so two hours of work buys a day, at up to $1,040 a month on AWS.
+- **Leased Macs are for developer services** (question) Whether a general agent desktop on a leased Mac fits Apple's Permitted Developer Services is a legal question.
+- **Native computer use and governed computer use do not meet** (claim) The desktop app runs on a person's Pro or Max machine; the API tool needs a Linux environment you supply.
+- **Prompt injection is not solved** (claim) About 1% success in Anthropic's own browser tests still represents meaningful risk, so the box must be the barrier.
+- **One mandate per task, a fresh desktop per task** (method) Linux by default, Windows for Windows tools, macOS only for development by the day, configured from the task's mandate.
+- **A vault outside every desktop** (method) Outputs, setup, mandate and footprint go to an encrypted sgit vault the desktop can append to and cannot rewrite.
+- **Startup programmes, verified with how to apply** (artefact) E2B, Daytona, Scaleway, AWS, Microsoft, Google, Cloudflare, Modal and Anthropic, with amounts, criteria and links.
+- **What only running it will tell** (question) Takeover reliability, paused state over days, allowlist breakage, recording cost, Windows against Linux on one task.
+
+> The Mac is not expensive per hour; it is expensive because the hour you can buy is a day. Why the macOS bars in the cost figure are long.
+
+> The model's own defences reduce how often that matters, and do not replace it. Why the desktop, not the model, is the barrier.
+
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why).
+
+## [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md)
+
+2026-10-07 · Graphs & knowledgeAgents & policy
+
+The AI Baseline Control Framework is a practical, deployer-focused set of twenty AI governance controls in five categories and three types, each with a why and a how and a mapping to the NIST AI RMF, ISO/IEC 42001 and the EU AI Act; its Access category covers what an AI system can reach, which the three it maps to do not; its CC BY-SA licence and CSV export let it be converted on the day into a semantic graph with an ontology, a taxonomy, linked data, documents and a browser database, joined by id to a graph of the AI Act, and walked as a fractal graph from the framework down to a paragraph of law, which surfaced findings the list does not state and kept every addition labelled apart from the source.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**15 nodes, 15 edges**
+
+- **AI BCF: twenty controls for deployers** (artefact) Five categories, three types, a why and a how per control, mapped to NIST AI RMF, ISO/IEC 42001 and the AI Act; v1.0, 2 October 2026.
+- **Baseline, Tier II, Trigger** (concept) Trigger controls apply only when a stated condition holds, which keeps the framework proportionate across organisation sizes.
+- **The Access controls have no equivalent in the three** (claim) AC.1 to AC.4: access reviews, named identities, accountable owners and the access model for AI systems themselves.
+- **Grant, mandate and owner** (concept) The Agent Behaviour Policy's words for what an agent can reach, what it may do, and who answers for it.
+- **CC BY-SA 4.0 says yes in advance** (concept) Share and adapt for any purpose with credit, changes indicated and the same licence on what is shared.
+- **ShareAlike keeps the tools open** (claim) A framework is worth the tools built on it; ShareAlike keeps shared tools as open as the framework.
+- **A CSV export turned a reading into a dataset** (example) One row per control, sources in one column, a URL per control: the input for the whole conversion.
+- **One CSV in, five shapes out** (method) A deterministic build writes a graph, an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty documents and a SQLite database.
+- **Every edge says where it came from** (method) Source, structure, parser-derived, derived-join and overlay, shown in every view so additions are never mistaken for the framework.
+- **Five altitudes, one grammar** (example) The graph view walks from the framework to a category, a control, a cited clause and the paragraph of the AI Act it resolves to.
+- **Two vaults joined by matching ids** (method) AI Act citations resolve to the Regulation Graph's nodes because both graphs keep the same grammar.
+- **The law links controls listed separately** (claim) The AI Act's own cross-references connect four pairs of Comply controls by seven paths.
+- **Four cited articles were amended in 2026** (claim) Articles 4, 5, 27 and 50, amended by Regulation (EU) 2026/1744; GV.3, CM.1, CM.2 and CM.4 are the controls to re-read first.
+- **SQL and triples in the browser** (artefact) sql.js builds the tables in the page; a triple console asks the same graph from either end through declared inverses.
+- **If the framework publishes its own graph** (question) It should be authoritative, and this vault should be superseded by it rather than merged into it.
+
+> for now there is only Export as CSV on https://aibcf.org/controls/ on the top right. Good suggestions! The framework author's reply, and the input the whole conversion was built from.
+
+> A licence that permits adaptation in advance means each of those can be built, and shared, without asking. Why an open licence matters more for a control framework than for most documents.
+
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph); continued by [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic).
+
+## [Where is the why? A permission prompt asked me to decide, and kept the reason](where-is-the-why.md)
+
+2026-10-07 · Agents & policy
+
+A permission prompt that asks a person to approve an agent's grant change without saying which session asks, why, what changes, what it could cost and what a no would do, leaves the person a choice between breaking the work and owning a decision they could not judge; read through the Agent Behaviour Policy it is a mid-session grant change whose barrier is a human judgement as strong as the information given, and whose risk lies in the combination with what the session already holds; courts and regulators across medicine, contract, data protection and automated decisions mostly put the duty to disclose on whoever asks and deny weight to token sign-offs, while in practice blame lands on the nearest person; the fixes that worked, purpose strings, number matching and context, refusal as easy as acceptance, all put the reason or the context into the prompt; so the proposal is a why card that carries the reason, the change in reach, the cost, the decline path and a record, and becomes a risk acceptance when the risk rises.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**14 nodes, 15 edges**
+
+- **Three fields, two buttons, no reason** (example) Owner, repository, access; Decline or Allow once; not which session, which step, which instruction, what changes or what a no costs.
+- **Decline breaks the work, Allow buys accountability** (claim) Both offered answers carry an unstated cost; the answer that removes both, a reason, was not on the screen.
+- **A prompt is a grant change mid-session** (concept) The question is what the session becomes once it holds this and what it already holds, not whether the resource is safe.
+- **Read is small, write is a publishing channel** (claim) Read of a public repository adds little; write to it from a session holding confidential data adds an exfiltration path.
+- **A barrier that is a person** (claim) Enforced by the host, so the agent cannot click it; as strong as the information the person is given.
+- **93% approved, 13.6% caught** (example) Vendor figures: most agent prompts are approved, and planted dangerous commands are rarely caught, less so as prompts pile up.
+- **Fewer prompts leaves the hard ones** (claim) Sandboxing and classifiers remove the easy prompts; the remaining ones need the reason most, and the classifier's own misses are about consent covering the action.
+- **The asker must disclose** (concept) Montgomery, the red hand rule, Berman and Nguyen, the Consumer Rights Act and GDPR Article 7 put the duty to make information usable on whoever asks.
+- **A token sign-off is not a human decision** (concept) WP251 and SCHUFA: oversight must be meaningful, and a determining machine output stays automated even when a person signs.
+- **Blame lands on the nearest person** (claim) Elish's moral crumple zone and the Post Office Horizon cases: in practice the click is the record, and it carries the person's name.
+- **The fixes put the why into the prompt** (example) Apple's required purpose strings, Microsoft's number matching with app and location, the CNIL's refusal as easy as acceptance.
+- **The why card** (method) Who asks, why with the instruction quoted, what changes, what it could cost, if you decline, scope and record; allow for task, decline and continue, ask, park.
+- **When the risk rises, a risk acceptance** (method) A grant change that raises the session's blast radius names who accepts it, for how long and what ends it, and is recorded as such.
+- **Which session asked, and why** (question) Not known: the prompt did not say; nor whether its fields are configurable; vendor figures not replicated; not legal advice.
+
+> A boundary whose enforcement is a human judgement is exactly as strong as the information that human is given. Why the prompt is a real barrier and a weak one at the same time.
+
+> In practice, the click is the record, and the click has the person's name on it. The gap between where the law puts the duty and where the blame lands.
+
+builds on [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework).
+
+## [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md)
+
+2026-10-06 · Agents & policyGraphs & knowledge
+
+RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM described the setup as eight layers: rented compute and channels, encrypted vaults as shared memory with mail as files and append lanes, a vault per domain, semantic graphs over people, contexts, teams and policies, a scheduled conductor with security first and last, written behaviour policies with grant, mandate, gap and barrier, and a human who holds the one irreversible step; the world writes in from the left and nothing leaves without the person on the right; the loop that makes it hold treats the draft as a release candidate for the whole pipeline with the recipient's reply closing it; two Wardley maps show what the team is commoditising (shared memory, the CLI, on encrypted storage) and what it is productising (the policies, the graphs); and the published record of agent projects that stall for unclear value, cost, trust, security and governance is read last, each reason mapped to the mechanism that answers it; the name is a working one and nothing planned is included.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**17 nodes, 23 edges**
+
+- **One that runs** (example) About fifteen agents and one person run RiskMandate's relationships, research, writing and events every few hours; the briefing was written by the agent that runs the CRM.
+- **The world writes in, the person sends** (concept) Email, the subscribe form, other teams' agents and an event extension enter from the left as data; the person enters from the right through Claude and Gmail; nothing leaves unsent by them.
+- **Compute and channels are rented** (concept) Cowork and Claude Code cloud sessions; one Workspace identity cut into roles; the send row has no agent in it.
+- **Shared memory is files the host cannot read** (method) Encrypted, versioned vaults cloned per session; agent mail as files in each other's mailroom; append lanes for outsiders who hold no key.
+- **A vault per domain and per mission** (method) One vault for relationships, one per project with its own owner, policy and key holders; least privilege applied to context.
+- **Every record is a node with typed edges** (concept) People, their work, interests and the team's materials; contexts as graphs over the same people; the team's requests, each ABP and the custody register as graphs.
+- **A missing edge is a reason not to send** (claim) An interest met by a material is a reason to send it; an interest with no edge is something to make or a reason not to email; nudges come from edges, not lists.
+- **A conductor with security at both ends** (method) Open and lock, security, drafts, inbox, briefs, CRM, mission, research, dev, security, a card to the human, stop; the order is a design decision.
+- **One written mandate per agent** (method) Grant, mandate, gap and barrier in one grammar; roles split the risk; drafts only; a security hold; secrets never in files; a card per session; a custody register.
+- **One human holds the irreversible step** (claim) No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft.
+- **The vault is an app platform, not storage** (concept) A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool.
+- **The draft is the release candidate** (concept) The whole pipeline has run before the person sees the draft; reviewing it is QA on the system and where the thinking happens; the recipient's reply closes the loop.
+- **Mistakes traced to captured data, an edge or the model** (method) Every fact carries source, capture method and hash; the cause is fixed where it came from; model error reported as the rarest of the three.
+- **Commoditise the memory, productise the mandate** (claim) Two Wardley maps, from outside and inside: shared memory and the sgit CLI pushed toward commodity on encrypted storage; the policies and the graphs pulled from genesis toward product. Placements are claims.
+- **Five reasons it holds** (claim) Small versioned control surface; the human at the irreversible step; state as files; meaning on the read path; everything leaves a trail.
+- **A working name, and what is not in it** (question) The Mandate Stack carries the mandate and the layers but not the human who sends; nothing planned is included; unsigned authorship, no key revocation, policy-only barriers, and who gives the mandate over information stay open.
+- **The record is of pilots that stall** (claim) Gartner, S&P Global, McKinsey, Deloitte, KPMG and Forrester, June 2025 to July 2026: cancelled, paused or trapped in pilot, for unclear value, cost, trust, security and governance; the same surveys show agents shipping where the workflow stops at the draft.
+
+> Many small agents, one written mandate each, everything connected as a graph, one human who sends. The one-line version of the pattern, and the part the working name leaves out.
+
+> The record is of pilots that stall, not of a technology that cannot ship. The fair reading of the surveys, kept for the end.
+
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Git for things you cannot put on GitHub](#what-sgit-is), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Seven vaults, one method](#seven-vaults-one-method), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites); continued by [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why).
+
+## [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md)
+
+2026-10-06 · Agents & policyVaults & method
+
+No model runs on the author's laptop because a process there runs as the author and the operating system has no boundary inside a user account between an agent and the SSH keys, cloud credentials, password manager session, browser cookies and files; the desktop agents' prompts and sandboxes are settings enforced by the process they constrain, and fifteen months of incidents show what a mistake or an injected instruction reaches; so the agents run on four cloud surfaces chosen by reach, Claude chat with nothing connected, Cowork with no repositories, Claude Code with one repository and an allowlist, ChatGPT with no assets, and a vault the host cannot read is the shared drive between them, with keys handed per session; the trade-offs are accepted, three wishes remain, identity, secrets and a key pair per agent, and the caveat is that a dedicated machine with separate accounts is a different model to be reported on later.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**12 nodes, 13 edges**
+
+- **Why not run it on the laptop** (question) No business need for an offline model; the one thing a local agent would need to offer, isolation better than the cloud's, is the thing none offers.
+- **An operating system has two hard walls** (claim) The kernel and the user account; inside one account there is no boundary between an agent and the keys, credentials, sessions and files the account can read.
+- **The desktop agents add settings, not boundaries** (claim) Approval prompts, allow lists and process sandboxes are enforced by the process they constrain; the vendor's own docs list credential files as the default read scope and call the boundary a permission prompt.
+- **Fifteen months of incidents** (example) Deleted home directories and drives, repositories executing before the trust prompt, hidden instructions exfiltrating secrets, tens of thousands of exposed self-hosted gateways, a local sandbox escape reaching SSH keys; every one fixed, the pattern remaining.
+- **The lethal trifecta is the laptop's default** (concept) Private data, untrusted content and a way out are all present on a laptop by default: the account, every file read, and the user's network.
+- **Four places the agents run** (method) Claude chat with nothing connected for thinking; Cowork in the cloud with no repositories for the team; Claude Code on the web with one repository and an allowlist for code; ChatGPT with no assets as a second model.
+- **The vault is the shared drive** (method) Encrypted on the agent's side, keys handed per session out of band, clone or pull, work, leak check, commit, push; the next session pulls; the laptop passes keys and nothing else.
+- **Same mandate, two deployments** (claim) On the laptop the grant is the account and barriers are expectations; in a cloud session the grant is small and barriers are boundaries; injection is stopped in neither, and what it reaches differs.
+- **What it costs** (claim) No agents without a connection, a key per session by hand, no per-session secrets in Cowork so one vault per scope, chat without cross-chat memory, two products with two flows; accepted.
+- **Identity, secrets and a key pair per agent** (question) An agent identity the platform knows with signed commits; secrets injected and revocable per agent; a key pair per agent; each exists in pieces on this site and none as a product feature.
+- **The dedicated machine is a different model** (question) A second machine with separate accounts and nothing of the author's on it has an empty wall marked that user; closer to the cloud model; to be run and reported on later, not before.
+- **What exists and what does not** (question) The setup runs and the team's twelve-agent version runs; the three wishes, a desktop agent running as a separate user by default, and the dedicated-machine report do not exist yet.
+
+> A mistake inside a boundary is a bad afternoon. The same mistake inside "me" is an incident. Why hallucination is the wrong word for what goes wrong with a local agent.
+
+> The barrier that holds is the small grant, not a cleverer filter. Prompt injection is not prevented by the cloud; what the injected instruction can reach is.
+
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
+
+## [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](the-deck-i-could-not-download.md)
+
+2026-10-06 · Startups & strategyVaults & method
+
+A reader is sold a 30-day trial and a monthly subscription for a single presentation while the deck's author receives nothing, under an uploader agreement that grants a royalty-free, sublicensable licence to monetise and train models on the work; the platform persists through fifteen years of embeds and links, which is inertia; an author can ask today for counts and recipients under the right of access and, in some EU states, for revenues under the copyright transparency duty; and the service the author would have chosen can be built on this site's primitives: every author's decks in a vault the host cannot read, access decided by keys, decryption in the browser, an attested enclave for the one step that needs plaintext, seven separable roles, pay once with 85% to the author on a ledger they can recompute, provenance as the product; the plan is published as a vault with a working mock, with its economics worked and the card-fee floor stated as the hard row.
+
+*[diagram]*
+**claim**method**artefact**example**question
+
+**13 nodes, 16 edges**
+
+- **One download, one subscription decision** (example) A 30-day trial then £10.99 a month ($11.99 in the US) for a single file, no one-off option unless the author switched a setting on, which was reported as off by default when the paywall arrived in September 2021.
+- **What the author agreed to** (claim) The uploader agreement grants a royalty-free, sublicensable licence to monetise, charge for, advertise against and train models on the work, and does not entitle the author to any payment; the same company forbids users from training on the content.
+- **Three complaints, and the one that is not** (claim) The reader is sold a subscription for one file; the author has no say and no share; the author does not know where the work went. The licence allows all of it, so the complaint is that the service the author would have chosen does not exist.
+- **Why it has not been replaced** (claim) Fifteen years of embeds, backlinks and search ranking; about forty million visits a month, mostly from search; past success breeds inertia, and the authors' links are what the incumbent holds.
+- **What an author can ask for today** (method) Switch the download setting on; send a right-of-access request for the counts and the recipients, with the EDPB's derived-data guidance and the Court's ruling on naming recipients; in some EU states, the copyright transparency duty on all revenues generated; the UK did not implement it.
+- **The author holds the keys** (method) Every author's decks in a vault the host cannot read; a publishing key bound to a passkey; a content key per deck; a read key for what is free; a receipt turned into a ten-minute key; a revocable grant; decryption in the browser; an enclave for the one step that needs plaintext.
+- **Seven roles, no single owner** (method) Storage host, key service, unlock service, payments, identity and provenance, the front, add-ons; no party holds more than one of the content, the keys and the money; each can be provided per country, profession or company.
+- **Read free, pay once, grant and revoke** (method) A read is a count on the author's ledger; a one-off payment becomes a receipt the enclave turns into a short key; a grant is wrapped to a recipient and revoked by re-keying; a downloaded file is the reader's and the plan says so.
+- **Near-zero marginal cost, and the card-fee floor** (claim) Serving one author's shelf for a month costs less than the incumbent charges one reader for one download; the hard row is 1.5% plus 20p with a 30p minimum, which the plan states and gets under with wallets, batching and an open payments protocol.
+- **85% to the author, on a ledger they can recompute** (claim) The platform's 15% pays the card fee and lives on top-ups, batching and add-ons at a 70% author share; the statement is reconciled to the author's ledger, never the reverse.
+- **What the service sells is provenance** (claim) This file, with this hash, published by this person, bound to a key in tiers; a conference, an employer, a journalist and a reader each have a cheap question answered.
+- **The plan as a vault with a working mock** (artefact) Ten plan documents, the data, the right-of-access letter, a register of ten accepted risks, and an app of web components bundled for the vault host: the shelf, a deck page, the author's view, the roles, the flows, the economics, the rights.
+- **What exists, and what does not** (question) Vaults, read keys, lanes and browser decryption exist; the deck enclave, grants as a service, the receipt that becomes a key, the migration tool and a sub-five-pence rail for a person do not; step zero is the author's own 69 decks.
+
+> A setting lives on a server and changes when the server's owner changes. A key lives with the author and is verified by anyone. The whole design in two sentences: access by keys, not by settings.
+
+> The right the platform reserves for itself it withholds from its users. The asymmetry in the terms on model training, stated without overstating the licence.
+
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai).
+
+## [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md)
+
+2026-10-06 · Agents & policyVaults & method
+
+A running team of twelve Claude agents is described as a system and as a set of properties: each agent a role on a dedicated account with a behaviour policy; encrypted vaults the host cannot read as the only memory; messages between agents as email files in a mailroom; a CRM of one folder per person with provenance and hashes; a conductor with a security role first and last; drafts only, a person sends; identity and encryption as the strong barriers and policy as the weak one, said plainly; three classes of information, public, private-ish and personal, with the vaults built to refuse the third and rules scoped per customer or written for the recipient; each piece mapped to the idea on the site that argued for it; and the open question of who gives the mandate over information.
+
+*[diagram]*
+**concept**claim**method**example**question
+
+**15 nodes, 17 edges**
+
+- **One line: phone, sessions, vaults, drafts, people** (concept) The person talks from a phone; agents work in cloud sessions, keep everything as encrypted files, leave email as drafts; the person sends; a conductor runs the team four times a day.
+- **The account is the blast radius** (claim) A dedicated Workspace, a dedicated Claude Team account, vault keys per session and a separate personal agent; a mistake stays inside one account, and this is the first control because it depends on nobody behaving.
+- **Twelve agents, one focus each** (concept) Each agent is a role with a brief and a behaviour policy; eleven of twelve policies forbid sending; one role reads the mailbox, one writes drafts into it, none sends.
+- **Email, but as files** (method) Agents drop .eml files into each other's mailroom folder in the shared vault; the recipient moves them to inbox and done; every message has a sender, recipient, kind and references; the vault keeps every version.
+- **The conductor and the session steps** (method) Four runs a day, security first and last, one step per agent of up to twelve minutes; a session checks for a hold, snapshots, pulls, works, leak-checks, commits and ends with a card measured from the transcript.
+- **Memory is one folder per person** (method) Plain JSON and Markdown: a record, an append-only ledger, every message with provenance and a hash, meeting notes, a graph of interests against what meets them, a generated summary; no database.
+- **The rules never negotiated** (claim) Keys never in a file; no agent sends, with one named exception and a hold behind it; no agent changes a schedule; create anywhere, edit your own.
+- **Barriers typed honestly** (claim) Identity and encryption are strong by construction; grant and record are medium; policy is weak and many rows rely on it; the honest column is where the next tooling goes.
+- **The security properties, as properties** (concept) The host cannot read the memory; a reader cannot write; a writer can be given only a slot; keys never touch a file; a leaked write key means a new vault; the team can be stopped; inbound is data; everything is read afterwards.
+- **Public, private-ish, personal** (claim) The vaults hold public and private-ish information and refuse personal; most of what a company agent handles is public or nearly so, which bounds the worst case before encryption is counted.
+- **Rules per customer, rules for the recipient** (method) A policy per agent and a folder per person let a rule be scoped to one relationship or written to protect the person on the other end: capture only what the work needs, show them what is held.
+- **Files, graphs and a state machine** (concept) Every piece of state is a file; the CRM graph and the team are the same fractal grammar at two altitudes; each role reads state, does one kind of work, writes state and stops.
+- **Every piece has an argument on this site** (example) Dedicated accounts, behaviour policies, drafts only, the session card, the twin, graded barriers, vaults, lanes, rotation, fractal graphs, memory with provenance, interfaces from files, the agents' identity.
+- **What is not working yet** (question) Two registers disagree; vault-to-vault messaging needs a person; one agent holds most open work; no daily brief channel; most barriers are policy-only because the platform cannot remove send tools per agent.
+- **Who gives the mandate over information?** (question) Something sent to a person was not sent to a team of agents or to what they pass it to next; the setup holds less and says what it holds; the question gets a document of its own.
+
+> A policy can ask an agent not to look; an account boundary means there is nothing there to see. Why the dedicated account is the first control and not the policy.
+
+> A memory that can be shown to its subject is a memory that has been kept to what can be shown. The privacy design showing through the product design: the what-we-know-about-you pack.
+
+builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md)
 
@@ -56,136 +345,72 @@ The personal agent became a product category in 2026, an always-on agent with a 
 
 > Who gives the mandate over a piece of information is a different question from who holds the key. The question the design does not answer, and the mechanisms it would need.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Git for things you cannot put on GitHub](#what-sgit-is), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent); continued by [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Git for things you cannot put on GitHub](#what-sgit-is), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent); continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs).
 
-## [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md)
+## [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md)
 
-2026-10-06 · Agents & policyVaults & method
+2026-10-05 · Agents & policyVaults & method
 
-A running team of twelve Claude agents is described as a system and as a set of properties: each agent a role on a dedicated account with a behaviour policy; encrypted vaults the host cannot read as the only memory; messages between agents as email files in a mailroom; a CRM of one folder per person with provenance and hashes; a conductor with a security role first and last; drafts only, a person sends; identity and encryption as the strong barriers and policy as the weak one, said plainly; three classes of information, public, private-ish and personal, with the vaults built to refuse the third and rules scoped per customer or written for the recipient; each piece mapped to the idea on the site that argued for it; and the open question of who gives the mandate over information.
-
-*[diagram]*
-**concept**claim**method**example**question
-
-**15 nodes, 17 edges**
-
-- **One line: phone, sessions, vaults, drafts, people** (concept) The person talks from a phone; agents work in cloud sessions, keep everything as encrypted files, leave email as drafts; the person sends; a conductor runs the team four times a day.
-- **The account is the blast radius** (claim) A dedicated Workspace, a dedicated Claude Team account, vault keys per session and a separate personal agent; a mistake stays inside one account, and this is the first control because it depends on nobody behaving.
-- **Twelve agents, one focus each** (concept) Each agent is a role with a brief and a behaviour policy; eleven of twelve policies forbid sending; one role reads the mailbox, one writes drafts into it, none sends.
-- **Email, but as files** (method) Agents drop .eml files into each other's mailroom folder in the shared vault; the recipient moves them to inbox and done; every message has a sender, recipient, kind and references; the vault keeps every version.
-- **The conductor and the session steps** (method) Four runs a day, security first and last, one step per agent of up to twelve minutes; a session checks for a hold, snapshots, pulls, works, leak-checks, commits and ends with a card measured from the transcript.
-- **Memory is one folder per person** (method) Plain JSON and Markdown: a record, an append-only ledger, every message with provenance and a hash, meeting notes, a graph of interests against what meets them, a generated summary; no database.
-- **The rules never negotiated** (claim) Keys never in a file; no agent sends, with one named exception and a hold behind it; no agent changes a schedule; create anywhere, edit your own.
-- **Barriers typed honestly** (claim) Identity and encryption are strong by construction; grant and record are medium; policy is weak and many rows rely on it; the honest column is where the next tooling goes.
-- **The security properties, as properties** (concept) The host cannot read the memory; a reader cannot write; a writer can be given only a slot; keys never touch a file; a leaked write key means a new vault; the team can be stopped; inbound is data; everything is read afterwards.
-- **Public, private-ish, personal** (claim) The vaults hold public and private-ish information and refuse personal; most of what a company agent handles is public or nearly so, which bounds the worst case before encryption is counted.
-- **Rules per customer, rules for the recipient** (method) A policy per agent and a folder per person let a rule be scoped to one relationship or written to protect the person on the other end: capture only what the work needs, show them what is held.
-- **Files, graphs and a state machine** (concept) Every piece of state is a file; the CRM graph and the team are the same fractal grammar at two altitudes; each role reads state, does one kind of work, writes state and stops.
-- **Every piece has an argument on this site** (example) Dedicated accounts, behaviour policies, drafts only, the session card, the twin, graded barriers, vaults, lanes, rotation, fractal graphs, memory with provenance, interfaces from files, the agents' identity.
-- **What is not working yet** (question) Two registers disagree; vault-to-vault messaging needs a person; one agent holds most open work; no daily brief channel; most barriers are policy-only because the platform cannot remove send tools per agent.
-- **Who gives the mandate over information?** (question) Something sent to a person was not sent to a team of agents or to what they pass it to next; the setup holds less and says what it holds; the question gets a document of its own.
-
-> A policy can ask an agent not to look; an account boundary means there is nothing there to see. Why the dedicated account is the first control and not the policy.
-
-> A memory that can be shown to its subject is a memory that has been kept to what can be shown. The privacy design showing through the product design: the what-we-know-about-you pack.
-
-builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop).
-
-## [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](the-deck-i-could-not-download.md)
-
-2026-10-06 · Startups & strategyVaults & method
-
-A reader is sold a 30-day trial and a monthly subscription for a single presentation while the deck's author receives nothing, under an uploader agreement that grants a royalty-free, sublicensable licence to monetise and train models on the work; the platform persists through fifteen years of embeds and links, which is inertia; an author can ask today for counts and recipients under the right of access and, in some EU states, for revenues under the copyright transparency duty; and the service the author would have chosen can be built on this site's primitives: every author's decks in a vault the host cannot read, access decided by keys, decryption in the browser, an attested enclave for the one step that needs plaintext, seven separable roles, pay once with 85% to the author on a ledger they can recompute, provenance as the product; the plan is published as a vault with a working mock, with its economics worked and the card-fee floor stated as the hard row.
-
-*[diagram]*
-**claim**method**artefact**example**question
-
-**13 nodes, 16 edges**
-
-- **One download, one subscription decision** (example) A 30-day trial then £10.99 a month ($11.99 in the US) for a single file, no one-off option unless the author switched a setting on, which was reported as off by default when the paywall arrived in September 2021.
-- **What the author agreed to** (claim) The uploader agreement grants a royalty-free, sublicensable licence to monetise, charge for, advertise against and train models on the work, and does not entitle the author to any payment; the same company forbids users from training on the content.
-- **Three complaints, and the one that is not** (claim) The reader is sold a subscription for one file; the author has no say and no share; the author does not know where the work went. The licence allows all of it, so the complaint is that the service the author would have chosen does not exist.
-- **Why it has not been replaced** (claim) Fifteen years of embeds, backlinks and search ranking; about forty million visits a month, mostly from search; past success breeds inertia, and the authors' links are what the incumbent holds.
-- **What an author can ask for today** (method) Switch the download setting on; send a right-of-access request for the counts and the recipients, with the EDPB's derived-data guidance and the Court's ruling on naming recipients; in some EU states, the copyright transparency duty on all revenues generated; the UK did not implement it.
-- **The author holds the keys** (method) Every author's decks in a vault the host cannot read; a publishing key bound to a passkey; a content key per deck; a read key for what is free; a receipt turned into a ten-minute key; a revocable grant; decryption in the browser; an enclave for the one step that needs plaintext.
-- **Seven roles, no single owner** (method) Storage host, key service, unlock service, payments, identity and provenance, the front, add-ons; no party holds more than one of the content, the keys and the money; each can be provided per country, profession or company.
-- **Read free, pay once, grant and revoke** (method) A read is a count on the author's ledger; a one-off payment becomes a receipt the enclave turns into a short key; a grant is wrapped to a recipient and revoked by re-keying; a downloaded file is the reader's and the plan says so.
-- **Near-zero marginal cost, and the card-fee floor** (claim) Serving one author's shelf for a month costs less than the incumbent charges one reader for one download; the hard row is 1.5% plus 20p with a 30p minimum, which the plan states and gets under with wallets, batching and an open payments protocol.
-- **85% to the author, on a ledger they can recompute** (claim) The platform's 15% pays the card fee and lives on top-ups, batching and add-ons at a 70% author share; the statement is reconciled to the author's ledger, never the reverse.
-- **What the service sells is provenance** (claim) This file, with this hash, published by this person, bound to a key in tiers; a conference, an employer, a journalist and a reader each have a cheap question answered.
-- **The plan as a vault with a working mock** (artefact) Ten plan documents, the data, the right-of-access letter, a register of ten accepted risks, and an app of web components bundled for the vault host: the shelf, a deck page, the author's view, the roles, the flows, the economics, the rights.
-- **What exists, and what does not** (question) Vaults, read keys, lanes and browser decryption exist; the deck enclave, grants as a service, the receipt that becomes a key, the migration tool and a sub-five-pence rail for a person do not; step zero is the author's own 69 decks.
-
-> A setting lives on a server and changes when the server's owner changes. A key lives with the author and is verified by anyone. The whole design in two sentences: access by keys, not by settings.
-
-> The right the platform reserves for itself it withholds from its users. The asymmetry in the terms on model training, stated without overstating the licence.
-
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai).
-
-## [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md)
-
-2026-10-06 · Agents & policyGraphs & knowledge
-
-RiskMandate runs its business with about fifteen agents and one person, and the agent that runs its CRM described the setup as eight layers: rented compute and channels, encrypted vaults as shared memory with mail as files and append lanes, a vault per domain, semantic graphs over people, contexts, teams and policies, a scheduled conductor with security first and last, written behaviour policies with grant, mandate, gap and barrier, and a human who holds the one irreversible step; the world writes in from the left and nothing leaves without the person on the right; the loop that makes it hold treats the draft as a release candidate for the whole pipeline with the recipient's reply closing it; two Wardley maps show what the team is commoditising (shared memory, the CLI, on encrypted storage) and what it is productising (the policies, the graphs); and the published record of agent projects that stall for unclear value, cost, trust, security and governance is read last, each reason mapped to the mechanism that answers it; the name is a working one and nothing planned is included.
+A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why the fix was not paid for; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.
 
 *[diagram]*
 **concept**claim**method**example**question
 
-**17 nodes, 23 edges**
+**14 nodes, 14 edges**
 
-- **One that runs** (example) About fifteen agents and one person run RiskMandate's relationships, research, writing and events every few hours; the briefing was written by the agent that runs the CRM.
-- **The world writes in, the person sends** (concept) Email, the subscribe form, other teams' agents and an event extension enter from the left as data; the person enters from the right through Claude and Gmail; nothing leaves unsent by them.
-- **Compute and channels are rented** (concept) Cowork and Claude Code cloud sessions; one Workspace identity cut into roles; the send row has no agent in it.
-- **Shared memory is files the host cannot read** (method) Encrypted, versioned vaults cloned per session; agent mail as files in each other's mailroom; append lanes for outsiders who hold no key.
-- **A vault per domain and per mission** (method) One vault for relationships, one per project with its own owner, policy and key holders; least privilege applied to context.
-- **Every record is a node with typed edges** (concept) People, their work, interests and the team's materials; contexts as graphs over the same people; the team's requests, each ABP and the custody register as graphs.
-- **A missing edge is a reason not to send** (claim) An interest met by a material is a reason to send it; an interest with no edge is something to make or a reason not to email; nudges come from edges, not lists.
-- **A conductor with security at both ends** (method) Open and lock, security, drafts, inbox, briefs, CRM, mission, research, dev, security, a card to the human, stop; the order is a design decision.
-- **One written mandate per agent** (method) Grant, mandate, gap and barrier in one grammar; roles split the risk; drafts only; a security hold; secrets never in files; a card per session; a custody register.
-- **One human holds the irreversible step** (claim) No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft.
-- **The vault is an app platform, not storage** (concept) A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool.
-- **The draft is the release candidate** (concept) The whole pipeline has run before the person sees the draft; reviewing it is QA on the system and where the thinking happens; the recipient's reply closes the loop.
-- **Mistakes traced to captured data, an edge or the model** (method) Every fact carries source, capture method and hash; the cause is fixed where it came from; model error reported as the rarest of the three.
-- **Commoditise the memory, productise the mandate** (claim) Two Wardley maps, from outside and inside: shared memory and the sgit CLI pushed toward commodity on encrypted storage; the policies and the graphs pulled from genesis toward product. Placements are claims.
-- **Five reasons it holds** (claim) Small versioned control surface; the human at the irreversible step; state as files; meaning on the read path; everything leaves a trail.
-- **A working name, and what is not in it** (question) The Mandate Stack carries the mandate and the layers but not the human who sends; nothing planned is included; unsigned authorship, no key revocation, policy-only barriers, and who gives the mandate over information stay open.
-- **The record is of pilots that stall** (claim) Gartner, S&P Global, McKinsey, Deloitte, KPMG and Forrester, June 2025 to July 2026: cancelled, paused or trapped in pilot, for unclear value, cost, trust, security and governance; the same surveys show agents shipping where the workflow stops at the draft.
+- **What happened on 5 October** (example) From 19:11 UTC hosted runners stopped being reliably assigned for every customer; by 20:47 degraded availability; this site's release was cancelled by it and went live two hours late on a retry.
+- **The status page is the whole record** (claim) Delays, degraded, resolved: true words chosen with care that do not name the component, its reach, the scope or whether the same thing nearly happened before.
+- **Everybody is the point** (claim) A fault reaching one customer is an incident; a fault reaching all of them at once is a statement about isolation on the one component that gates every deploy, and a near miss for everyone who needed to ship a fix.
+- **What aviation does** (method) Independent investigators whose sole objective is prevention, mandatory reporting of serious incidents, confidential near-miss reporting in the tens of thousands a year, preliminary reports within weeks, full dockets, tracked recommendations.
+- **A near miss gets the same investigation** (claim) Because the systemic causes are the same and the only difference is luck; actual damage is usually a tenth of what was possible; you don't build safety on luck.
+- **Count the rolls of the dice** (method) How many times the same event happened where they got away with it; from a one-off to a predictable statistic; do the people who depend on you consent to that risk.
+- **First, second and third story** (concept) What happened; why the system allowed it; why the fix was not paid for. Software write-ups stop at the first; the third is where the money is.
+- **The what-if ladder** (question) A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius that has not been published, for the platform or for countries.
+- **Why the market does not fix it** (claim) Customers cannot see how close to the wind the platform flies; only incidents that reach the status page are known; with the barrier to exit this high, uptime becomes marketing and the business case for hardening cannot be made from inside.
+- **The objection has expired** (claim) Evidence was confidential, enormous and expensive to share; signed, versioned vaults, one-way read keys per party, agents under a behaviour policy and findings as a graph make the aviation docket affordable for a ninety-minute fault.
+- **How the evidence would move** (method) Provider captures and signs; reviews and redacts, never rewrites; investigator reads by need; each customer gets its own derived vault; findings published as a graph linked to evidence hashes with recommendations held open.
+- **What the regulation does and does not do** (example) Incident reporting duties and critical third-party regimes are arriving; none yet requires an independent published second story for a platform outage.
+- **Four things to ask for** (method) A published second story within thirty days for every status-page incident; near misses counted and reported in aggregate; evidence captured into a signed record as a matter of course; an independent reader when an incident reaches everyone.
+- **Help the people inside** (claim) Engineers who know where the single points of failure are cannot make the business case against revenue without evidence; a readable record makes it for them.
 
-> Many small agents, one written mandate each, everything connected as a graph, one human who sends. The one-line version of the pattern, and the part the working name leaves out.
+> A fault that reaches one customer is an incident. A fault that reaches every customer at once is a statement about how the system is built. Why the scope of tonight's fault, not its duration, is what deserves the inquiry.
 
-> The record is of pilots that stall, not of a technology that cannot ship. The fair reading of the surveys, kept for the end.
+> A system too complicated to understand and too fragile to change is not a reason to leave it alone. It is the single point of failure, named. The third story, and why it needs an investigator who does not report to the budget it is about.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Git for things you cannot put on GitHub](#what-sgit-is), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Seven vaults, one method](#seven-vaults-one-method), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
+builds on [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Green does not mean live](#green-does-not-mean-live), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
-## [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md)
+## [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md)
 
-2026-10-06 · Agents & policyVaults & method
+2026-10-05 · Agents & policyStartups & strategy
 
-No model runs on the author's laptop because a process there runs as the author and the operating system has no boundary inside a user account between an agent and the SSH keys, cloud credentials, password manager session, browser cookies and files; the desktop agents' prompts and sandboxes are settings enforced by the process they constrain, and fifteen months of incidents show what a mistake or an injected instruction reaches; so the agents run on four cloud surfaces chosen by reach, Claude chat with nothing connected, Cowork with no repositories, Claude Code with one repository and an allowlist, ChatGPT with no assets, and a vault the host cannot read is the shared drive between them, with keys handed per session; the trade-offs are accepted, three wishes remain, identity, secrets and a key pair per agent, and the caveat is that a dedicated machine with separate accounts is a different model to be reported on later.
+Software due diligence was a questionnaire answered by the vendor and disconnected from the code; a buyer can now send a prompt or a small agent under a behaviour policy to run inside the vendor's environment and derive a graph of what reaches production unreviewed, what is documented and threat modelled, what the bugs touched and which agents act under what policy, with the vendor redacting but not rewriting; the test is risk-based, the behaviour policy is the due diligence document for the agents, the companies that stopped reading their code are about to meet the consequence they have not had, a startup should double down on understandability, and the code review company is better sold to buyers than to developers.
 
 *[diagram]*
 **concept**claim**method**example**question
 
-**12 nodes, 13 edges**
+**15 nodes, 16 edges**
 
-- **Why not run it on the laptop** (question) No business need for an offline model; the one thing a local agent would need to offer, isolation better than the cloud's, is the thing none offers.
-- **An operating system has two hard walls** (claim) The kernel and the user account; inside one account there is no boundary between an agent and the keys, credentials, sessions and files the account can read.
-- **The desktop agents add settings, not boundaries** (claim) Approval prompts, allow lists and process sandboxes are enforced by the process they constrain; the vendor's own docs list credential files as the default read scope and call the boundary a permission prompt.
-- **Fifteen months of incidents** (example) Deleted home directories and drives, repositories executing before the trust prompt, hidden instructions exfiltrating secrets, tens of thousands of exposed self-hosted gateways, a local sandbox escape reaching SSH keys; every one fixed, the pattern remaining.
-- **The lethal trifecta is the laptop's default** (concept) Private data, untrusted content and a way out are all present on a laptop by default: the account, every file read, and the user's network.
-- **Four places the agents run** (method) Claude chat with nothing connected for thinking; Cowork in the cloud with no repositories for the team; Claude Code on the web with one repository and an allowlist for code; ChatGPT with no assets as a second model.
-- **The vault is the shared drive** (method) Encrypted on the agent's side, keys handed per session out of band, clone or pull, work, leak check, commit, push; the next session pulls; the laptop passes keys and nothing else.
-- **Same mandate, two deployments** (claim) On the laptop the grant is the account and barriers are expectations; in a cloud session the grant is small and barriers are boundaries; injection is stopped in neither, and what it reaches differs.
-- **What it costs** (claim) No agents without a connection, a key per session by hand, no per-session secrets in Cowork so one vault per scope, chat without cross-chat memory, two products with two flows; accepted.
-- **Identity, secrets and a key pair per agent** (question) An agent identity the platform knows with signed commits; secrets injected and revocable per agent; a key pair per agent; each exists in pieces on this site and none as a product feature.
-- **The dedicated machine is a different model** (question) A second machine with separate accounts and nothing of the author's on it has an empty wall marked that user; closer to the cloud model; to be run and reported on later, not before.
-- **What exists and what does not** (question) The setup runs and the team's twelve-agent version runs; the three wishes, a desktop agent running as a separate user by default, and the dedicated-machine report do not exist yet.
+- **Due diligence was a form** (claim) A spreadsheet of questions answered by the people being asked, measuring whether a document with the right title exists, disconnected from the code and out of date on arrival; built because nothing better was possible.
+- **Companies will not lie on a record** (concept) Questionnaires invite careful, composed, defensible answers with room in them; a false statement on a record comes back with a lawyer, so the room is where the risk lives.
+- **Send an agent, not a spreadsheet** (method) A prompt and a small agent under a behaviour policy run inside the vendor's environment, derive graphs of practices and code, write files the vendor reviews before anything leaves, and deliver what is shown in a vault only the buyer opens.
+- **Derived, not composed** (claim) The vendor keeps the redaction marker and loses the pen: a map read from the repository can be withheld but not described into shape, and a false map is a false statement on a record.
+- **Questions where silence is an answer** (method) Does code reach production unreviewed; is there a threat model and who wrote it; does the documentation match the code; what did the last fifty bugs touch; which agents touch the pipeline; who still understands it.
+- **A threat model is the fastest read of a team** (claim) Thin means the team does not know what it protects; gaps seen and decided about mean a team that knows where the lines are; the critical unknown vulnerability is almost never in it.
+- **Two kinds of bug** (concept) Bugs in reviewed deterministic parts have reasons; bugs from unreviewed generated code are in places no story asked for, repeat, and reveal something structural each time.
+- **Risk-based, not pure** (claim) What counts as enough rises with what the software can do to the buyer; a startup on a prototype passes by saying so; the same sentence from a vendor of mission-critical software is the finding.
+- **The behaviour policy is the due diligence document** (claim) A buyer reads off the blast radius, which controls are enforced by the identity and which are wishes, and which risks the vendor has accepted on the buyer's behalf; its absence is a finding before any code is read.
+- **The consequence that was missing** (claim) Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability that few outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too.
+- **Most companies already do not understand their software** (claim) People moved on, merges were made by people who left, documentation describes an earlier system; the agent asks them the same questions for the first time.
+- **The startup's two advantages** (claim) It can play the same game as the biggest buyer with the same open source tools, and it has less code to understand; double down on understandability and make it the reason to buy.
+- **Duties arriving before visibility** (example) Software bills of materials, the Cyber Resilience Act and the revised Product Liability Directive create duties and evidence rights; none tells a buyer whether a vendor understands its software; the agent connects the duties to the facts.
+- **Sell it to the buyers** (claim) The code review company is better sold as due diligence to those who buy, invest in and acquire software than as review to developers who have been told they do not need it; the vendor runs it on itself first.
+- **What is open** (question) The agent does not exist; the pieces do; the first vendor it should run against is this site's own repository, with the results published.
 
-> A mistake inside a boundary is a bad afternoon. The same mistake inside "me" is an incident. Why hallucination is the wrong word for what goes wrong with a local agent.
+> The questionnaire gave the vendor the pen. The agent takes the pen away and leaves the vendor the redaction marker, and that is the whole change. Why a derived answer differs from a composed one even though the vendor still controls what leaves.
 
-> The barrier that holds is the small grant, not a cleverer filter. Prompt injection is not prevented by the cloud; what the injected instruction can reach is.
+> A vendor that does not know what reaches production unreviewed does not know what reaches production. The first question, and why the non-answer is the finding.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
+builds on [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults); continued by [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers).
 
 ## [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md)
 
@@ -254,40 +479,7 @@ One technology can now read every layer from strategy to bytecode, which makes a
 
 > The grammar is fractal. The layers are yours. The distinction the whole answer turns on, and the reason a review product has to learn each company's layers rather than impose its own.
 
-builds on [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
-
-## [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md)
-
-2026-10-05 · Agents & policyStartups & strategy
-
-Software due diligence was a questionnaire answered by the vendor and disconnected from the code; a buyer can now send a prompt or a small agent under a behaviour policy to run inside the vendor's environment and derive a graph of what reaches production unreviewed, what is documented and threat modelled, what the bugs touched and which agents act under what policy, with the vendor redacting but not rewriting; the test is risk-based, the behaviour policy is the due diligence document for the agents, the companies that stopped reading their code are about to meet the consequence they have not had, a startup should double down on understandability, and the code review company is better sold to buyers than to developers.
-
-*[diagram]*
-**concept**claim**method**example**question
-
-**15 nodes, 16 edges**
-
-- **Due diligence was a form** (claim) A spreadsheet of questions answered by the people being asked, measuring whether a document with the right title exists, disconnected from the code and out of date on arrival; built because nothing better was possible.
-- **Companies will not lie on a record** (concept) Questionnaires invite careful, composed, defensible answers with room in them; a false statement on a record comes back with a lawyer, so the room is where the risk lives.
-- **Send an agent, not a spreadsheet** (method) A prompt and a small agent under a behaviour policy run inside the vendor's environment, derive graphs of practices and code, write files the vendor reviews before anything leaves, and deliver what is shown in a vault only the buyer opens.
-- **Derived, not composed** (claim) The vendor keeps the redaction marker and loses the pen: a map read from the repository can be withheld but not described into shape, and a false map is a false statement on a record.
-- **Questions where silence is an answer** (method) Does code reach production unreviewed; is there a threat model and who wrote it; does the documentation match the code; what did the last fifty bugs touch; which agents touch the pipeline; who still understands it.
-- **A threat model is the fastest read of a team** (claim) Thin means the team does not know what it protects; gaps seen and decided about mean a team that knows where the lines are; the critical unknown vulnerability is almost never in it.
-- **Two kinds of bug** (concept) Bugs in reviewed deterministic parts have reasons; bugs from unreviewed generated code are in places no story asked for, repeat, and reveal something structural each time.
-- **Risk-based, not pure** (claim) What counts as enough rises with what the software can do to the buyer; a startup on a prototype passes by saying so; the same sentence from a vendor of mission-critical software is the finding.
-- **The behaviour policy is the due diligence document** (claim) A buyer reads off the blast radius, which controls are enforced by the identity and which are wishes, and which risks the vendor has accepted on the buyer's behalf; its absence is a finding before any code is read.
-- **The consequence that was missing** (claim) Companies that stopped reviewing, let engineers go and let anyone prompt features into production accumulated liability that few outside could see; a buyer who can send an agent is the consequence, and investors and acquirers get it too.
-- **Most companies already do not understand their software** (claim) People moved on, merges were made by people who left, documentation describes an earlier system; the agent asks them the same questions for the first time.
-- **The startup's two advantages** (claim) It can play the same game as the biggest buyer with the same open source tools, and it has less code to understand; double down on understandability and make it the reason to buy.
-- **Duties arriving before visibility** (example) Software bills of materials, the Cyber Resilience Act and the revised Product Liability Directive create duties and evidence rights; none tells a buyer whether a vendor understands its software; the agent connects the duties to the facts.
-- **Sell it to the buyers** (claim) The code review company is better sold as due diligence to those who buy, invest in and acquire software than as review to developers who have been told they do not need it; the vendor runs it on itself first.
-- **What is open** (question) The agent does not exist; the pieces do; the first vendor it should run against is this site's own repository, with the results published.
-
-> The questionnaire gave the vendor the pen. The agent takes the pen away and leaves the vendor the redaction marker, and that is the whole change. Why a derived answer differs from a composed one even though the vendor still controls what leaves.
-
-> A vendor that does not know what reaches production unreviewed does not know what reaches production. The first question, and why the non-answer is the finding.
-
-builds on [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults); continued by [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers).
+builds on [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph).
 
 ## [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md)
 
@@ -321,39 +513,7 @@ A plan to give every agent and user a Workspace identity from one tenant was sto
 
 > The law describes the property; the market does not sell it. The gap the article ends on: login, zero-knowledge storage and agent identity are still three separate jobs.
 
-builds on [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
-
-## [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md)
-
-2026-10-05 · Agents & policyVaults & method
-
-A fault that reaches every customer of a platform the world deploys through is a near miss for all of them and a statement about how the platform is built, and it deserves what aviation gives its incidents: an independent investigator whose only job is prevention, mandatory and confidential reporting, published evidence, and the second and third story, why the system allowed it and why the fix was not paid for; the old objection that software incident evidence is too confidential and expensive to share has expired, because signed, versioned vaults with one-way read keys and agents that read the graph make the aviation docket affordable for a ninety-minute fault.
-
-*[diagram]*
-**concept**claim**method**example**question
-
-**14 nodes, 14 edges**
-
-- **What happened on 5 October** (example) From 19:11 UTC hosted runners stopped being reliably assigned for every customer; by 20:47 degraded availability; this site's release was cancelled by it and went live two hours late on a retry.
-- **The status page is the whole record** (claim) Delays, degraded, resolved: true words chosen with care that do not name the component, its reach, the scope or whether the same thing nearly happened before.
-- **Everybody is the point** (claim) A fault reaching one customer is an incident; a fault reaching all of them at once is a statement about isolation on the one component that gates every deploy, and a near miss for everyone who needed to ship a fix.
-- **What aviation does** (method) Independent investigators whose sole objective is prevention, mandatory reporting of serious incidents, confidential near-miss reporting in the tens of thousands a year, preliminary reports within weeks, full dockets, tracked recommendations.
-- **A near miss gets the same investigation** (claim) Because the systemic causes are the same and the only difference is luck; actual damage is usually a tenth of what was possible; you don't build safety on luck.
-- **Count the rolls of the dice** (method) How many times the same event happened where they got away with it; from a one-off to a predictable statistic; do the people who depend on you consent to that risk.
-- **First, second and third story** (concept) What happened; why the system allowed it; why the fix was not paid for. Software write-ups stop at the first; the third is where the money is.
-- **The what-if ladder** (question) A day, a week, a corruption that cannot be restored, a withdrawal of service by decision: each a dependency question with a blast radius that has not been published, for the platform or for countries.
-- **Why the market does not fix it** (claim) Customers cannot see how close to the wind the platform flies; only incidents that reach the status page are known; with the barrier to exit this high, uptime becomes marketing and the business case for hardening cannot be made from inside.
-- **The objection has expired** (claim) Evidence was confidential, enormous and expensive to share; signed, versioned vaults, one-way read keys per party, agents under a behaviour policy and findings as a graph make the aviation docket affordable for a ninety-minute fault.
-- **How the evidence would move** (method) Provider captures and signs; reviews and redacts, never rewrites; investigator reads by need; each customer gets its own derived vault; findings published as a graph linked to evidence hashes with recommendations held open.
-- **What the regulation does and does not do** (example) Incident reporting duties and critical third-party regimes are arriving; none yet requires an independent published second story for a platform outage.
-- **Four things to ask for** (method) A published second story within thirty days for every status-page incident; near misses counted and reported in aggregate; evidence captured into a signed record as a matter of course; an independent reader when an incident reaches everyone.
-- **Help the people inside** (claim) Engineers who know where the single points of failure are cannot make the business case against revenue without evidence; a readable record makes it for them.
-
-> A fault that reaches one customer is an incident. A fault that reaches every customer at once is a statement about how the system is built. Why the scope of tonight's fault, not its duration, is what deserves the inquiry.
-
-> A system too complicated to understand and too fragile to change is not a reason to leave it alone. It is the single point of failure, named. The third story, and why it needs an investigator who does not report to the budget it is about.
-
-builds on [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Green does not mean live](#green-does-not-mean-live), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+builds on [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md)
 
@@ -385,40 +545,7 @@ The quoted wall under a reply is redundant and occupies the space where a reader
 
 > The client's summary says what the thread looks like from here; the tail says what the sender believes it is. How the proposal differs from the AI summaries mail clients already compute.
 
-builds on [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents).
-
-## [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md)
-
-2026-10-03 · Graphs & knowledgeStartups & strategy
-
-Source code is already a fractal semantic graph, stories to syntax tree and below, so a code review should diff every layer: a refactor moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the climb from changed methods to the stories that can reach them.
-
-*[diagram]*
-**concept**claim**method**example**question
-
-**15 nodes, 20 edges**
-
-- **Source code is a fractal semantic graph** (claim) Stories, flows, components, classes, methods and calls, the syntax tree, and down to the machine: each layer a graph with its own node types and verbs, and you change universe between them.
-- **C4 and Gherkin: right instinct, fixed levels** (concept) C4 named four levels and left the code level optional; Gherkin shaped the top layer and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply.
-- **Naming is now the cheap part** (claim) A model can say what a function does, which story a command serves and the verb between two nodes, from the syntax tree, once per change, as structured files.
-- **Start from the syntax tree** (method) The tree survives reformatting and renaming; derive deterministically what a parser can, and spend the model on what it cannot know.
-- **Every source file produces a pile of files** (method) Classes, methods and calls, package edges, fingerprints, tests, pattern results, kept as JSON next to the code in git, a vault or both; regenerated only on change.
-- **Diff every layer** (method) A refactor moves the bottom layers and leaves the top still; a fix moves the bottom and is visible at the top as a story holding again, with a test; a leak is a forbidden edge.
-- **Blast radius as the climb** (concept) From the methods a change touched, up the call graph with dynamic dispatch, to the commands and stories that can reach them, before anything runs.
-- **Method streams** (method) Follow the call tree from one method and write out only that code; a 2012 O2 Platform review technique, now one script over a syntax tree with resolved calls.
-- **The sgit CLI, read as layers** (example) 427 files, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two streams, ten rules, one commit read upwards; nothing run; published as a vault.
-- **One commit, read upwards** (example) Seven methods changed, no signature or field moved, six tests added; the climb reaches nine commands and six stories. The shape of a fix, and the commit message agrees.
-- **Reality corrects the graph** (claim) You do not have to get the graph right; users confirm the top, experts confirm their layer, tests confirm execution, and every correction is a commit.
-- **Patterns are findings** (claim) Folder shape, type shape, test shape and size shape are queries over the graph; the rules a project states most firmly are the ones that hold.
-- **The review burden of generated code** (example) More cloned code and less refactoring, lower delivery stability with adoption, developers reporting almost-right answers and longer debugging: the answer is a different diff, not a faster reviewer.
-- **What does not exist yet** (question) Proposed stories and edges from a model, node-level tree diffs, a second language, the interface layer, execution paths compared to predicted streams, and the review surface itself.
-- **A company to build** (concept) A review that reads every layer, keeps the graph as files the customer owns, runs their rules as queries and improves with every correction; defensible through the record, not the model.
-
-> You do not have to get the graph right. You have to get it to where user behaviour, the people who know each layer, and the tests can confirm or correct it. The condition that makes a model-derived graph of a codebase usable at all.
-
-> The answer is not a faster reviewer reading the same diff. It is a different diff. The article's claim about the review burden of generated code.
-
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
+builds on [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents).
 
 ## [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md)
 
@@ -451,72 +578,40 @@ Memory for agents is context management: many context-specific memories, fractal
 
 > Provenance is what lets memory be shared without being trusted, and it is the part that a vector store cannot give you, because a similarity score is not a source. Why every item in the memory carries its source.
 
-builds on [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply).
+builds on [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply).
 
-## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
+## [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md)
 
-2026-10-02 · Agents & policyVaults & method
+2026-10-03 · Graphs & knowledgeStartups & strategy
 
-Add two words to the Agent Behaviour Policy: footprint, what the agent actually did, read afterwards from the record and compared with the mandate, and blast radius, what a row of its reach would cost the business if used in full today, with whether there is a way back.
-
-*[diagram]*
-**concept**claim**method**artefact**example**question
-
-**16 nodes, 21 edges**
-
-- **Reach, mandate, gap and barriers** (concept) RiskMandate's policy is written before the agent runs: reach is what it can do, mandate what you asked, gap the difference in both directions, barriers what stands in the way.
-- **Only a boundary is a control** (concept) A barrier is a boundary, a setting, an expectation or nothing, and most of what organisations call controls turn out to be expectations once they are typed.
-- **Footprint** (concept) The set of things the agent actually did, in a period, read from the record afterwards; the same kind of list as the reach and the mandate, but evidence rather than a decision.
-- **Where the footprint comes from** (artefact) The connector's audit log, the model provider's tool-call record, a connector twin's replay, a vault's commit history, the append lanes and the agents' own messages.
-- **Reading, not intercepting** (claim) Nothing sits inline, a copy of the logs or a read key is enough so an outside reviewer can do it, and the footprint accumulates so some findings only exist at the twelfth week.
-- **Footprint in the gap** (concept) The agent did something within its reach and outside its mandate and nothing stopped it, which is a near miss, and it resolves by adding the row to the mandate or putting a boundary in front of it.
-- **Dormant mandate** (concept) A row the owner asked for that the footprint never shows: an over-stated mandate, a check that was relied on and never ran, or a shortfall the reach inventory missed.
-- **Expected-use hint** (method) Each mandate row wants a hint of how often the owner expects to see it, always, sometimes, rarely, hopefully never, so a dormant row can be told from a contingency that was never needed.
-- **The mandate as practised** (method) Read the footprint for a month and you have the rows the agent actually uses, with the near misses marked, as the first draft of a policy for an agent that has none.
-- **Blast radius** (concept) What it would cost the business if a row were used in full, today, defined over the reach because whoever takes the agent over inherits its reach and ignores its mandate.
-- **Whether there is a way back** (concept) Two rows with the same scope and different reversibility are not the same risk, and the policy should say so.
-- **Same footprint, different blast radius** (example) An agent drops a staging table three times over two months; the row is identical each time, and only on day forty-one, when it held six weeks of real records, is it the incident.
-- **What the cloud already does** (example) AWS, Google Cloud and Microsoft Entra already compare permissions granted with permissions used, but a permission set carries no statement of intent, so there is no dormant mandate.
-- **A vault is a footprint recorder by construction** (claim) Every commit is signed, versioned and append-only, so an agent working in a vault leaves a footprint whether or not anyone intended to collect one, and most of what sgit does shrinks the irreversible part of the blast radius.
-- **The gap plus blast radius is the risk** (claim) The gap is exposure, blast radius is impact, and the person who accepts a gap is accepting its blast radius, which until now the policy did not state.
-- **Reading our own footprint** (question) Ten agents, six with a written policy, eight days of commit history; the footprint against the six policies is still to be read and published as the second article.
-
-> The mandate tells you what you hoped for. The reach tells you what you are exposed to. Why blast radius is defined over the reach, not the mandate: an attacker inherits the reach.
-
-> The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
-
-builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
-
-## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
-
-2026-10-02 · Startups & strategyAgents & policy
-
-A price is a statement of what you think the thing is worth, and giving it away at that price to people who already know you is the cleanest test of whether the statement is true, provided you measure and cut what the free offer costs them.
+Source code is already a fractal semantic graph, stories to syntax tree and below, so a code review should diff every layer: a refactor moves the bottom and leaves the top still, a fix is a story that holds again, and the blast radius is the climb from changed methods to the stories that can reach them.
 
 *[diagram]*
-**concept**claim**method**artefact
+**concept**claim**method**example**question
 
-**13 nodes, 17 edges**
+**15 nodes, 20 edges**
 
-- **Do they miss it** (concept) The earlier article's test: hand the thing to people for free, briefly, then take it away, and ask whether they miss it.
-- **Define the product** (method) For RiskMandate the thing somebody receives is an Agent Behaviour Policy for one agent, as an encrypted vault the customer holds the keys to, with the mandate corrected for their deployment.
-- **Price it before you give it away** (claim) A price is a statement of what you think the thing is worth, and giving it away at that stated price to people who know you is the cleanest test of whether the statement is true.
-- **The four-tier ladder** (artefact) Ten pounds for the pack downloaded, fifty for a working vault, five hundred for the vault corrected for your situation, fifteen hundred for two sessions and a professional's signature.
-- **Cost that grows a step at a time** (method) The agentic workflow means the marginal customer costs a little more, not a lot more, so serving the twentieth customer costs close to serving the second.
-- **Offer it to the people who already know you** (method) Early adopters, power users and past customers get the first twenty, as a thank-you and as the best possible test group, because their silence means the most.
-- **Free is never free for the other side** (claim) Engaging costs them reading, thinking, deciding and finding a slot, so the first measurement the programme makes is of that attrition and the exercise is to reduce it.
-- **Do not make them apply** (method) "We have twenty of these in the first round. Would you like one? If not, I will give it to someone else" is honest about scarcity and leaves them nothing to do but say yes or no.
-- **RiskMandate early access programme** (artefact) Live on 30 September 2026, invite only, it gives the five-hundred-pound tier to people who already run an agent with real access and asks them to say where it is wrong.
-- **The answer is brutal either way** (claim) If friendlies take it and ask for more, the question becomes price; if they say it is interesting but have no time, the problem is not the price and you go back to the drawing board.
-- **What we count** (method) Policies created, customised, used, and scenarios run, plus corrections received and the minutes each step cost the person on the other side.
-- **For the agents running this** (method) The list, the short message with no application, the clock on every step, daily counts, every stop recorded as a product change, a stop rule set before the first message, and this article as the record.
-- **The site is becoming the memory** (claim) An agent picking this up in a year should read, in order, the earlier article, the published offer, this article and the vault holding the counts, so it gets context rather than instructions.
+- **Source code is a fractal semantic graph** (claim) Stories, flows, components, classes, methods and calls, the syntax tree, and down to the machine: each layer a graph with its own node types and verbs, and you change universe between them.
+- **C4 and Gherkin: right instinct, fixed levels** (concept) C4 named four levels and left the code level optional; Gherkin shaped the top layer and glued it to code with regular expressions. Both saw the shape before anything could fill it cheaply.
+- **Naming is now the cheap part** (claim) A model can say what a function does, which story a command serves and the verb between two nodes, from the syntax tree, once per change, as structured files.
+- **Start from the syntax tree** (method) The tree survives reformatting and renaming; derive deterministically what a parser can, and spend the model on what it cannot know.
+- **Every source file produces a pile of files** (method) Classes, methods and calls, package edges, fingerprints, tests, pattern results, kept as JSON next to the code in git, a vault or both; regenerated only on change.
+- **Diff every layer** (method) A refactor moves the bottom layers and leaves the top still; a fix moves the bottom and is visible at the top as a story holding again, with a test; a leak is a forbidden edge.
+- **Blast radius as the climb** (concept) From the methods a change touched, up the call graph with dynamic dispatch, to the commands and stories that can reach them, before anything runs.
+- **Method streams** (method) Follow the call tree from one method and write out only that code; a 2012 O2 Platform review technique, now one script over a syntax tree with resolved calls.
+- **The sgit CLI, read as layers** (example) 427 files, 377 classes, 1,111 methods, 2,592 calls, 72 commands, eleven stories, two streams, ten rules, one commit read upwards; nothing run; published as a vault.
+- **One commit, read upwards** (example) Seven methods changed, no signature or field moved, six tests added; the climb reaches nine commands and six stories. The shape of a fix, and the commit message agrees.
+- **Reality corrects the graph** (claim) You do not have to get the graph right; users confirm the top, experts confirm their layer, tests confirm execution, and every correction is a commit.
+- **Patterns are findings** (claim) Folder shape, type shape, test shape and size shape are queries over the graph; the rules a project states most firmly are the ones that hold.
+- **The review burden of generated code** (example) More cloned code and less refactoring, lower delivery stability with adoption, developers reporting almost-right answers and longer debugging: the answer is a different diff, not a faster reviewer.
+- **What does not exist yet** (question) Proposed stories and edges from a model, node-level tree diffs, a second language, the interface layer, execution paths compared to predicted streams, and the review surface itself.
+- **A company to build** (concept) A review that reads every layer, keeps the graph as files the customer owns, runs their rules as queries and improves with every correction; defensible through the record, not the model.
 
-> A price is a statement of what you think the thing is worth. Giving it away at that stated price, to people who know you, is the cleanest test of whether the statement is true. The whole method in two sentences: the price is set first and the free offer is the test of it.
+> You do not have to get the graph right. You have to get it to where user behaviour, the people who know each layer, and the tests can confirm or correct it. The condition that makes a model-derived graph of a codebase usable at all.
 
-> None of that is zero, and all of it is paid by them. The part that is easy to leave out: the offer costs the other side attention and schedule, and that cost is what the programme measures.
+> The answer is not a faster reviewer reading the same diff. It is a different diff. The article's claim about the review burden of generated code.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review); continued by [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport).
 
 ## [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md)
 
@@ -550,7 +645,72 @@ Claude is used as an agent state machine, one session per role, every message be
 
 > You do not have to believe what the agent says it did. You can read what it did. Why the record is the point for someone learning to trust a set of agents.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+
+## [Price it, then give it away: the early access programme as the next step after "do they miss it"](price-it-then-give-it-away.md)
+
+2026-10-02 · Startups & strategyAgents & policy
+
+A price is a statement of what you think the thing is worth, and giving it away at that price to people who already know you is the cleanest test of whether the statement is true, provided you measure and cut what the free offer costs them.
+
+*[diagram]*
+**concept**claim**method**artefact
+
+**13 nodes, 17 edges**
+
+- **Do they miss it** (concept) The earlier article's test: hand the thing to people for free, briefly, then take it away, and ask whether they miss it.
+- **Define the product** (method) For RiskMandate the thing somebody receives is an Agent Behaviour Policy for one agent, as an encrypted vault the customer holds the keys to, with the mandate corrected for their deployment.
+- **Price it before you give it away** (claim) A price is a statement of what you think the thing is worth, and giving it away at that stated price to people who know you is the cleanest test of whether the statement is true.
+- **The four-tier ladder** (artefact) Ten pounds for the pack downloaded, fifty for a working vault, five hundred for the vault corrected for your situation, fifteen hundred for two sessions and a professional's signature.
+- **Cost that grows a step at a time** (method) The agentic workflow means the marginal customer costs a little more, not a lot more, so serving the twentieth customer costs close to serving the second.
+- **Offer it to the people who already know you** (method) Early adopters, power users and past customers get the first twenty, as a thank-you and as the best possible test group, because their silence means the most.
+- **Free is never free for the other side** (claim) Engaging costs them reading, thinking, deciding and finding a slot, so the first measurement the programme makes is of that attrition and the exercise is to reduce it.
+- **Do not make them apply** (method) "We have twenty of these in the first round. Would you like one? If not, I will give it to someone else" is honest about scarcity and leaves them nothing to do but say yes or no.
+- **RiskMandate early access programme** (artefact) Live on 30 September 2026, invite only, it gives the five-hundred-pound tier to people who already run an agent with real access and asks them to say where it is wrong.
+- **The answer is brutal either way** (claim) If friendlies take it and ask for more, the question becomes price; if they say it is interesting but have no time, the problem is not the price and you go back to the drawing board.
+- **What we count** (method) Policies created, customised, used, and scenarios run, plus corrections received and the minutes each step cost the person on the other side.
+- **For the agents running this** (method) The list, the short message with no application, the clock on every step, daily counts, every stop recorded as a product change, a stop rule set before the first message, and this article as the record.
+- **The site is becoming the memory** (claim) An agent picking this up in a year should read, in order, the earlier article, the published offer, this article and the vault holding the counts, so it gets context rather than instructions.
+
+> A price is a statement of what you think the thing is worth. Giving it away at that stated price, to people who know you, is the cleanest test of whether the statement is true. The whole method in two sentences: the price is set first and the free offer is the test of it.
+
+> None of that is zero, and all of it is paid by them. The part that is easy to leave out: the offer costs the other side attention and schedule, and that cost is what the programme measures.
+
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it).
+
+## [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md)
+
+2026-10-02 · Agents & policyVaults & method
+
+Add two words to the Agent Behaviour Policy: footprint, what the agent actually did, read afterwards from the record and compared with the mandate, and blast radius, what a row of its reach would cost the business if used in full today, with whether there is a way back.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**16 nodes, 21 edges**
+
+- **Reach, mandate, gap and barriers** (concept) RiskMandate's policy is written before the agent runs: reach is what it can do, mandate what you asked, gap the difference in both directions, barriers what stands in the way.
+- **Only a boundary is a control** (concept) A barrier is a boundary, a setting, an expectation or nothing, and most of what organisations call controls turn out to be expectations once they are typed.
+- **Footprint** (concept) The set of things the agent actually did, in a period, read from the record afterwards; the same kind of list as the reach and the mandate, but evidence rather than a decision.
+- **Where the footprint comes from** (artefact) The connector's audit log, the model provider's tool-call record, a connector twin's replay, a vault's commit history, the append lanes and the agents' own messages.
+- **Reading, not intercepting** (claim) Nothing sits inline, a copy of the logs or a read key is enough so an outside reviewer can do it, and the footprint accumulates so some findings only exist at the twelfth week.
+- **Footprint in the gap** (concept) The agent did something within its reach and outside its mandate and nothing stopped it, which is a near miss, and it resolves by adding the row to the mandate or putting a boundary in front of it.
+- **Dormant mandate** (concept) A row the owner asked for that the footprint never shows: an over-stated mandate, a check that was relied on and never ran, or a shortfall the reach inventory missed.
+- **Expected-use hint** (method) Each mandate row wants a hint of how often the owner expects to see it, always, sometimes, rarely, hopefully never, so a dormant row can be told from a contingency that was never needed.
+- **The mandate as practised** (method) Read the footprint for a month and you have the rows the agent actually uses, with the near misses marked, as the first draft of a policy for an agent that has none.
+- **Blast radius** (concept) What it would cost the business if a row were used in full, today, defined over the reach because whoever takes the agent over inherits its reach and ignores its mandate.
+- **Whether there is a way back** (concept) Two rows with the same scope and different reversibility are not the same risk, and the policy should say so.
+- **Same footprint, different blast radius** (example) An agent drops a staging table three times over two months; the row is identical each time, and only on day forty-one, when it held six weeks of real records, is it the incident.
+- **What the cloud already does** (example) AWS, Google Cloud and Microsoft Entra already compare permissions granted with permissions used, but a permission set carries no statement of intent, so there is no dormant mandate.
+- **A vault is a footprint recorder by construction** (claim) Every commit is signed, versioned and append-only, so an agent working in a vault leaves a footprint whether or not anyone intended to collect one, and most of what sgit does shrinks the irreversible part of the blast radius.
+- **The gap plus blast radius is the risk** (claim) The gap is exposure, blast radius is impact, and the person who accepts a gap is accepting its blast radius, which until now the policy did not state.
+- **Reading our own footprint** (question) Ten agents, six with a written policy, eight days of commit history; the footprint against the six policies is still to be read and published as the second article.
+
+> The mandate tells you what you hoped for. The reach tells you what you are exposed to. Why blast radius is defined over the reach, not the mandate: an attacker inherits the reach.
+
+> The footprint is how you get near misses for agents without waiting for the luck to run out. The payoff of reading the footprint against the gap: incidents and near misses are the same events with different luck.
+
+builds on [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox); continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md)
 
@@ -584,7 +744,7 @@ Every message has a graph with altitudes, so a message is designed for the recip
 
 > The graph is the medium. Email, cards, voice and boards are views of it. The turn where email stops being the medium and becomes one projection of the graph.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [A chat box on a site with no server, the plan, and the trade it makes](#chat-on-a-static-site), [Seven vaults, one method](#seven-vaults-one-method), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius).
 
 ## [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md)
 
@@ -618,7 +778,7 @@ Agents are the insider threat that never scaled before, the infrastructure was d
 
 > The more you can constrain an agent, the more you can trust it, and the more autonomy you can afford to give it. The irony the talk would end on, and the turn from the problem to the way out.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception).
 
 ## [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md)
 
@@ -651,7 +811,7 @@ The reader has been the product since 1833 and the money has always flowed to wh
 
 > The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
@@ -685,7 +845,7 @@ Write an agent's access policy as a table with a column for how each rule is enf
 
 > The only way to know what a connector can do is to try. The attachment finding showed a policy written from documentation was wrong.
 
-builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox); continued by [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md)
 
@@ -753,40 +913,7 @@ The food chain is logistics, logistics is a data problem, and a supply chain of 
 
 > What we never calculate is the economic cost of not sharing. The second memo's argument, that openness is the other half of the case.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai); continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet).
-
-## [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md)
-
-2026-09-24 · Agents & policyVaults & method
-
-If you cannot say what your agent did, what it saw when it did it, and which of its actions you can undo, you are not ready to give it a connector, and a twin of the connector, a journal plus a replay, answers all three.
-
-*[diagram]*
-**concept**claim**method**artefact**example**question
-
-**15 nodes, 19 edges**
-
-- **A connector is a grant of action** (claim) An agent with Gmail and Calendar connectors can send, archive, trash, permanently delete, move events, decline invitations and cancel meetings on somebody's behalf, at machine speed.
-- **The platform keeps no way back for some actions** (claim) The Gmail API documents its delete as permanent, Undo Send is a feature of the interface not the API, and a moved calendar event has no version history a user can open.
-- **What the platform keeps** (concept) Trash windows, an administrator's bulk restore and audit logs record that things happened, but none records what the agent saw when it decided to act, or why.
-- **Connector twin** (concept) A journal of every request and response the agent makes, and a replay of that journal into the views the agent saw.
-- **Twin, not backup, log or replay** (concept) A backup copies the mailbox, a log is too small, replay is the verb; a twin is an interface to reality, valued for its connection to the real thing.
-- **Capture** (method) For every connector call, copy the tool call the agent made, the request sent to the platform and the response received, and never the Authorization header or any token.
-- **Append lane** (artefact) A write-only channel gated by a token the writer holds, whose write response is exactly {"ok": true}, so the capture point learns nothing about what else is in the lane.
-- **Chain** (method) Each entry carries the hash of the one before it, so a missing, edited or reordered entry shows to anyone holding the read key.
-- **When the journal gets processed** (question) On a timer, on a threshold of pending entries, on demand or at the end of each session; the right default will come from a few real users rather than from more design.
-- **Replay and revert** (method) A vault app rebuilds the inbox and the calendar as the agent saw them at any step, shows before and after for every change, and writes a revert plan a person approves.
-- **The twin is not a copy of the mailbox** (claim) It holds only what passed through the connector, so it scales with the agent's activity rather than with the size of the mailbox.
-- **One session, replayed** (example) An invented scheduling assistant makes seventeen calls in under three minutes and writes a true summary that hides a cancellation sent to a supplier and a permanently deleted payment reminder.
-- **Undo is a list, not a promise** (claim) Every change gets a grade, reversible, partly reversible or not reversible, and the value of the list is that the red rows are named.
-- **Broker, gateway or requirement of the agent** (concept) Three places to capture and three grades of evidence; the mode does not change what is captured, it changes what the evidence is allowed to claim.
-- **What it does to the agent's behaviour policy** (concept) With the list of irreversible actions in hand the mandate can say what the agent may do freely, must ask before, and may never do without approval.
-
-> If you cannot say what your agent did, what it saw when it did it, and which of its actions you can undo, you are not ready to give it a connector. The claim the whole article is built to defend, stated so it can be wrong.
-
-> The value of the list is not that most of it is green. It is that the red rows are named. Why the twin changes governance: irreversible actions become a named list the mandate can be written against.
-
-continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [The SaaS apocalypse will be decided by inertia, not by AI](#saas-apocalypse-decided-by-inertia-not-by-ai); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet).
 
 ## [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md)
 
@@ -819,7 +946,40 @@ Every risk an organisation has is already accepted by somebody, so the only ques
 
 > Nothing in the row is wrong. It just never learned that the risk was accepted twice, expired once, escalated, funded, materialised as an incident, and ended. The air gap between a register and reality, shown on one row at one moment.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+
+## [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md)
+
+2026-09-24 · Agents & policyVaults & method
+
+If you cannot say what your agent did, what it saw when it did it, and which of its actions you can undo, you are not ready to give it a connector, and a twin of the connector, a journal plus a replay, answers all three.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**15 nodes, 19 edges**
+
+- **A connector is a grant of action** (claim) An agent with Gmail and Calendar connectors can send, archive, trash, permanently delete, move events, decline invitations and cancel meetings on somebody's behalf, at machine speed.
+- **The platform keeps no way back for some actions** (claim) The Gmail API documents its delete as permanent, Undo Send is a feature of the interface not the API, and a moved calendar event has no version history a user can open.
+- **What the platform keeps** (concept) Trash windows, an administrator's bulk restore and audit logs record that things happened, but none records what the agent saw when it decided to act, or why.
+- **Connector twin** (concept) A journal of every request and response the agent makes, and a replay of that journal into the views the agent saw.
+- **Twin, not backup, log or replay** (concept) A backup copies the mailbox, a log is too small, replay is the verb; a twin is an interface to reality, valued for its connection to the real thing.
+- **Capture** (method) For every connector call, copy the tool call the agent made, the request sent to the platform and the response received, and never the Authorization header or any token.
+- **Append lane** (artefact) A write-only channel gated by a token the writer holds, whose write response is exactly {"ok": true}, so the capture point learns nothing about what else is in the lane.
+- **Chain** (method) Each entry carries the hash of the one before it, so a missing, edited or reordered entry shows to anyone holding the read key.
+- **When the journal gets processed** (question) On a timer, on a threshold of pending entries, on demand or at the end of each session; the right default will come from a few real users rather than from more design.
+- **Replay and revert** (method) A vault app rebuilds the inbox and the calendar as the agent saw them at any step, shows before and after for every change, and writes a revert plan a person approves.
+- **The twin is not a copy of the mailbox** (claim) It holds only what passed through the connector, so it scales with the agent's activity rather than with the size of the mailbox.
+- **One session, replayed** (example) An invented scheduling assistant makes seventeen calls in under three minutes and writes a true summary that hides a cancellation sent to a supplier and a permanently deleted payment reminder.
+- **Undo is a list, not a promise** (claim) Every change gets a grade, reversible, partly reversible or not reversible, and the value of the list is that the red rows are named.
+- **Broker, gateway or requirement of the agent** (concept) Three places to capture and three grades of evidence; the mode does not change what is captured, it changes what the evidence is allowed to claim.
+- **What it does to the agent's behaviour policy** (concept) With the list of irreversible actions in hand the mandate can say what the agent may do freely, must ask before, and may never do without approval.
+
+> If you cannot say what your agent did, what it saw when it did it, and which of its actions you can undo, you are not ready to give it a connector. The claim the whole article is built to defend, stated so it can be wrong.
+
+> The value of the list is not that most of it is green. It is that the red rows are named. Why the twin changes governance: irreversible actions become a named list the mandate can be written against.
+
+continued by [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox).
 
 ## [The future of news is the story vault, not the paywall](future-of-news-story-vault-not-paywall.md)
 
@@ -853,7 +1013,39 @@ The story is a graph and the article is a projection, so a newsroom that keeps t
 
 > The story is a graph. The article is a projection. Sell the graph. The shift the five products follow from, in three sentences.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending).
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending).
+
+## [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md)
+
+2026-09-21 · Startups & strategy
+
+A startup operating model in three pillars: be profitable, make investors come to you, and open source everything, each buying the position needed for the next.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**14 nodes, 16 edges**
+
+- **Three pillars** (concept) Be profitable, have investors talking to you, and open source everything, in that order because each one buys you the position you need to do the next.
+- **Ship** (method) Shipping means a thing somebody else can go and use, on their own, and get value from, not a proof of concept or a demo.
+- **Near-zero running cost** (method) To ship that often the running cost must be near nothing: serverless, as little live state as you can stand, and in our case the file system is the database.
+- **Give it away** (method) Hand it to people for free for a short window, because the feedback starts the moment somebody who is not you has the thing.
+- **Take it away** (method) The trial expired, it is not available right now, nothing else about the product changes, and no apology is needed.
+- **Do they miss it?** (question) If they shrug you have something people will accept when it is free; if they come back and ask for it, you have something.
+- **Charge, and charge at a profit** (claim) Two questions, is the price one they are happy to pay and is that price profitable for you, and people routinely answer only the first.
+- **No subscription by default** (claim) Charging rent for something people are not using is a worse business than being paid when you deliver.
+- **Raise from strength** (claim) The worst possible time to raise money is before you are profitable, because you are bargaining from weakness and the worst terms are about control.
+- **Do not get signed before you have the album** (example) Write the songs, record them, get people buying, then take the record deal as somebody who already has an audience.
+- **Open source everything** (method) It sounds like giving away the asset and is the opposite, for five reasons that each stand alone.
+- **The technology is not the moat** (claim) Treating it as open from the start forces you to find the thing that actually is defensible, usually the data, the relationships, the distribution, or the speed at which you ship.
+- **You leave with your tools** (claim) Build in the open and the work is still yours when you move on.
+- **The vault as substrate** (artefact) A vault carries data, app, history and sources as one string, with no database to run and no hosting for the reader, so shipping a small product is cheap, fast and reversible.
+
+> It means a thing somebody else can go and use, on their own, and get value from. The definition of shipping that the whole loop depends on.
+
+> The worst possible time to raise money is before you are profitable, before you have the product, before you understand the fit. Pillar two stated plainly, and the reason profitability comes first.
+
+builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
 
 ## [The SaaS apocalypse will be decided by inertia, not by AI](saas-apocalypse-decided-by-inertia-not-by-ai.md)
 
@@ -888,38 +1080,6 @@ AI is available to both sides, so the SaaS apocalypse will be decided by inertia
 
 continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults).
 
-## [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md)
-
-2026-09-21 · Startups & strategy
-
-A startup operating model in three pillars: be profitable, make investors come to you, and open source everything, each buying the position needed for the next.
-
-*[diagram]*
-**concept**claim**method**artefact**example**question
-
-**14 nodes, 16 edges**
-
-- **Three pillars** (concept) Be profitable, have investors talking to you, and open source everything, in that order because each one buys you the position you need to do the next.
-- **Ship** (method) Shipping means a thing somebody else can go and use, on their own, and get value from, not a proof of concept or a demo.
-- **Near-zero running cost** (method) To ship that often the running cost must be near nothing: serverless, as little live state as you can stand, and in our case the file system is the database.
-- **Give it away** (method) Hand it to people for free for a short window, because the feedback starts the moment somebody who is not you has the thing.
-- **Take it away** (method) The trial expired, it is not available right now, nothing else about the product changes, and no apology is needed.
-- **Do they miss it?** (question) If they shrug you have something people will accept when it is free; if they come back and ask for it, you have something.
-- **Charge, and charge at a profit** (claim) Two questions, is the price one they are happy to pay and is that price profitable for you, and people routinely answer only the first.
-- **No subscription by default** (claim) Charging rent for something people are not using is a worse business than being paid when you deliver.
-- **Raise from strength** (claim) The worst possible time to raise money is before you are profitable, because you are bargaining from weakness and the worst terms are about control.
-- **Do not get signed before you have the album** (example) Write the songs, record them, get people buying, then take the record deal as somebody who already has an audience.
-- **Open source everything** (method) It sounds like giving away the asset and is the opposite, for five reasons that each stand alone.
-- **The technology is not the moat** (claim) Treating it as open from the start forces you to find the thing that actually is defensible, usually the data, the relationships, the distribution, or the speed at which you ship.
-- **You leave with your tools** (claim) Build in the open and the work is still yours when you move on.
-- **The vault as substrate** (artefact) A vault carries data, app, history and sources as one string, with no database to run and no hosting for the reader, so shipping a small product is cheap, fast and reversible.
-
-> It means a thing somebody else can go and use, on their own, and get value from. The definition of shipping that the whole loop depends on.
-
-> The worst possible time to raise money is before you are profitable, before you have the product, before you understand the fit. Pillar two stated plainly, and the reason profitability comes first.
-
-builds on [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away); continued by [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Price it, then give it away: the early access programme as the next step after "do they miss it"](#price-it-then-give-it-away), [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall).
-
 ## [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md)
 
 2026-09-20 · Graphs & knowledge
@@ -951,7 +1111,37 @@ Every unit of knowledge is already a graph in its owner's vocabulary, and a shor
 
 > Two graphs, built by different people for different purposes in different vocabularies, joined by declared edges, produced a finding that did not exist in either of them. The evidence that the method does work, not just that it is defined: the amended-articles finding came from the join.
 
-continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+continued by [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
+
+## [The proof moved up, the homepage after the rebuild, next to the before pictures](proof-moved-up.md)
+
+2026-09-07 · Site & engineeringVaults & method
+
+The homepage stopped being a page somebody edits and became a view over the site's own data, with real vaults placed before the mechanism and the one unproven claim left unpretended.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**12 nodes, 14 edges**
+
+- **The reframed sentence** (claim) The hero changed from "the encrypted git for humans and AI agents" to "a vault is a unit of work: data, app, history and sources, shipped as one string", with encryption as the subordinate clause.
+- **Four real vaults in the hero** (artefact) Four published vaults with their screenshots sit under the sentence, chosen by a hero field in the vault data, so changing the front door is a data edit, not a page edit.
+- **What people actually ship** (artefact) Six vaults chosen by the job they do, hand over a report, publish a standard, give a talk, pitch an investor, ship a game, give an agent a workspace, and none of the six lines is about encryption.
+- **A vault as a unit** (concept) Retest scripts that travel with the findings and cited papers that never separate from the deck are properties of a vault as a unit, which a newcomer can actually feel.
+- **One human, a team of agents** (artefact) A band with four numbers computed at build time, releases, vaults, sibling sites, briefs, and the loop told in three beats with the artefacts linked.
+- **The numbers are not typed** (method) Releases come from the version log, vaults from the vault data, sites from the network directory and briefs from the briefs page, so a wrong number means the site is wrong somewhere else too.
+- **What was cut** (example) The abstract use-case band and the three-doors band were cut, and the terminal walkthrough moved down under the heading Under the hood, it is git.
+- **Nine bands before, nine after** (example) Three bands were cut and three added, corrected in v0.2.61 after counting rather than remembering, and 1,370 words became 1,332 with ten screenshots.
+- **What it cannot show yet** (question) No published vault demonstrates two agents on one vault, their branches and a human merging them, and the team band is written so that it does not pretend otherwise.
+- **admin/content/vaults.json** (artefact) One file now drives the hero cards, the six jobs, the sortable table and the vault count; adding a vault is adding a row and promoting one is setting a field.
+- **The homepage as a view over data** (claim) The homepage stopped being a page somebody edits and became a view over the site's own data, the rule the articles band, network directory and update feed already followed.
+- **Beside the before pictures** (method) The rebuild is put next to the previous article's screenshots so the comparison can be made honestly, including what it still cannot show.
+
+> If a number on that band is wrong, the site is wrong somewhere else too, and that is the right dependency. The rule behind the rebuild: nothing on the homepage is typed, everything is computed from the site's own records.
+
+> That is the trade: pictures of real things instead of paragraphs about them. What actually changed, stated against the byte and word counts rather than as a slogan.
+
+builds on [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](#proof-behind-the-claim).
 
 ## [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](proof-behind-the-claim.md)
 
@@ -983,36 +1173,6 @@ Encryption is a property you cannot look at, so the homepage should put the real
 > A claim on a homepage with no artefact behind it is exactly what this site says it does not do. The gap the article names against itself: the multi-agent merge claim has no published vault behind it.
 
 continued by [The proof moved up, the homepage after the rebuild, next to the before pictures](#proof-moved-up).
-
-## [The proof moved up, the homepage after the rebuild, next to the before pictures](proof-moved-up.md)
-
-2026-09-07 · Site & engineeringVaults & method
-
-The homepage stopped being a page somebody edits and became a view over the site's own data, with real vaults placed before the mechanism and the one unproven claim left unpretended.
-
-*[diagram]*
-**concept**claim**method**artefact**example**question
-
-**12 nodes, 14 edges**
-
-- **The reframed sentence** (claim) The hero changed from "the encrypted git for humans and AI agents" to "a vault is a unit of work: data, app, history and sources, shipped as one string", with encryption as the subordinate clause.
-- **Four real vaults in the hero** (artefact) Four published vaults with their screenshots sit under the sentence, chosen by a hero field in the vault data, so changing the front door is a data edit, not a page edit.
-- **What people actually ship** (artefact) Six vaults chosen by the job they do, hand over a report, publish a standard, give a talk, pitch an investor, ship a game, give an agent a workspace, and none of the six lines is about encryption.
-- **A vault as a unit** (concept) Retest scripts that travel with the findings and cited papers that never separate from the deck are properties of a vault as a unit, which a newcomer can actually feel.
-- **One human, a team of agents** (artefact) A band with four numbers computed at build time, releases, vaults, sibling sites, briefs, and the loop told in three beats with the artefacts linked.
-- **The numbers are not typed** (method) Releases come from the version log, vaults from the vault data, sites from the network directory and briefs from the briefs page, so a wrong number means the site is wrong somewhere else too.
-- **What was cut** (example) The abstract use-case band and the three-doors band were cut, and the terminal walkthrough moved down under the heading Under the hood, it is git.
-- **Nine bands before, nine after** (example) Three bands were cut and three added, corrected in v0.2.61 after counting rather than remembering, and 1,370 words became 1,332 with ten screenshots.
-- **What it cannot show yet** (question) No published vault demonstrates two agents on one vault, their branches and a human merging them, and the team band is written so that it does not pretend otherwise.
-- **admin/content/vaults.json** (artefact) One file now drives the hero cards, the six jobs, the sortable table and the vault count; adding a vault is adding a row and promoting one is setting a field.
-- **The homepage as a view over data** (claim) The homepage stopped being a page somebody edits and became a view over the site's own data, the rule the articles band, network directory and update feed already followed.
-- **Beside the before pictures** (method) The rebuild is put next to the previous article's screenshots so the comparison can be made honestly, including what it still cannot show.
-
-> If a number on that band is wrong, the site is wrong somewhere else too, and that is the right dependency. The rule behind the rebuild: nothing on the homepage is typed, everything is computed from the site's own records.
-
-> That is the trade: pictures of real things instead of paragraphs about them. What actually changed, stated against the byte and word counts rather than as a slogan.
-
-builds on [The proof is two clicks behind the claim, what the homepage gets wrong, and the fix](#proof-behind-the-claim).
 
 ## [A chat box on a site with no server, the plan, and the trade it makes](chat-on-a-static-site.md)
 
@@ -1105,7 +1265,7 @@ sgit gives the files people say they cannot put on GitHub the history, branches 
 
 > We would rather be checkable than impressive. The house style that the live vaults, the version log and the NOT BUILT pages all follow.
 
-continued by [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
+continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
 
 ## [Seven vaults, one method](seven-vaults-one-method.md)
 

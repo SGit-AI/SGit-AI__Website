@@ -1,8 +1,8 @@
 # Published vaults, sgit.ai
 
-> Forty-two vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
+> Forty-three vaults you can open in your browser right now, every read key published on purpose. A read key is the whole credential: no account, nothing to install, no write capability in it. Each row opens a page with what the vault does and the vault running live inside it.
 
-*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/index.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,10 +14,12 @@ Open any of these in your browser right now. Every read key here was published o
 
 **Nine are semantic graphs**, each in its own ontology, from a regulation down to a compute instance. · [The ladder, walked →](../fractal-graphs/index.md) · [What reading one costs →](../fractal-graphs/performance.md)
 
-**42 published vaults**: 12 briefing, 8 analysis, 8 reference, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
+**43 published vaults**: 12 briefing, 9 reference, 8 analysis, 5 application, 4 record, 3 presentation, 1 gallery, 1 report. Newest first; **click any heading to sort**. Every read key and the live link are on the vault's own page.
 
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
+
+| 43 | [AI BCF as a graph](aibcf-graph/index.md)`lop5iqzw` | Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles | Reference | 143 | 3.0 MB | 2026-10-07 |
 
 | 42 | [Deck Vault](deck-vault/index.md)`13djtu3j` | A business plan for an author-first home for presentations: every author's decks in a vault the host cannot read, access decided by keys, seven roles no single company holds, pay once with 85% to the author, provenance as the product; ten plan documents, a right-of-access letter, a register and a working mock built as web components | Briefing | 55 | 214 KB | 2026-10-06 |
 

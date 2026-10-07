@@ -1,6 +1,7 @@
 ---
 title: The deck I could not download: an author-first home for presentations, as a business plan somebody else can build
 date: 2026-10-06
+time: 13:08
 updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html

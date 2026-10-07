@@ -2,7 +2,7 @@
 
 > A first pass at an argument I intend to give as a conference talk, written down here so I can show it to the people I am talking to about speaking. Three things are arriving at once. Agents are the insider threat that never scaled before, because insiders were humans or static code, and an agent is a reasoning engine in a loop with tools and skills we have never put inside a company. Our business and security infrastructure was designed for none of it: no journaling, backups by the day, identities everywhere and permissions that are the union of everything ever needed, and it fails on its own without any agent's help. And the discipline that is supposed to decide what to do about all this runs on spreadsheets, at a speed measured in quarters, when the decisions now have to be made in seconds and in advance. Each is a known problem. Together they describe a company that cannot see what its agents can do, cannot stop them when they do it, and cannot decide fast enough to fund either. The evidence is public and it is getting worse, and the reason we do not see more of it is that nobody has to report. The second half of the talk is the way out, and it runs through everything this site has been building, with one irony at its centre: the more you constrain an agent, the more you can trust it, and the more autonomy you can afford to give it.
 
-*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/ultimate-insider-three-collisions.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -142,18 +142,21 @@ Agents & policy[This article as a graph →](graphs.md#ultimate-insider-three-co
 
 ### Continued by
 
-- [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
+- [Where is the why? A permission prompt asked me to decide, and kept the reason](where-is-the-why.md) A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md) An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
-- [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
+- [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
-- [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
+- [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
 - [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
+- [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [ultimate-insider-three-collisions.jpg](../articles/banners/ultimate-insider-three-collisions.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

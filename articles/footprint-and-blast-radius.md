@@ -2,7 +2,7 @@
 
 > RiskMandate's Agent Behaviour Policy is written before an agent runs, in four words: reach, mandate, gap and barriers. This article proposes two more. The footprint is what the agent actually did, read afterwards from logs, traffic and vault history, with nobody inline and no production access needed. Compared with the mandate it gives two kinds of finding: footprint in the gap, which is a near miss, and dormant mandate, which is a check that never ran or a mandate that asked for too much. Read on its own it gives the mandate as practised, a policy reverse-engineered from evidence. Blast radius is the measure that goes with any of them: what it would cost the business if a row of the reach were used in full, today. The same footprint can carry a different blast radius on different days, which is why a near miss on an empty table and an incident on a full one are the same row in the record. One figure carries the whole argument: the gap as a map, each row shaded by what it would cost and marked if there is no way back.
 
-*Source: <https://sgit.ai/articles/footprint-and-blast-radius.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/footprint-and-blast-radius.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -156,21 +156,28 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#footprint-
 
 ### Continued by
 
-- [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
-- [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
+- [Where is the why? A permission prompt asked me to decide, and kept the reason](where-is-the-why.md) A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md) An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
-- [If somebody built a company on code review: how I would do it, and why it is only now possible](if-somebody-built-a-company-on-code-review.md) A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
-- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
-- [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
+- [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
+- [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
+- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
+- [If somebody built a company on code review: how I would do it, and why it is only now possible](if-somebody-built-a-company-on-code-review.md) A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
+- [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](the-identity-we-wanted-to-give-the-agents.md) A week of designing identities for agents and users met Google's terms; what survived is a passkey-unlocked keyring and a gap nobody sells.
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 - [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](replicating-the-agentic-inbox.md) How to copy a working agentic email setup in phases: a mailbox and Claude seat of the agent's own, one session with a policy, then roles talking in files.
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+## From the desk
+
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+
+**Posting this article on LinkedIn?** The cover is [footprint-and-blast-radius.jpg](../articles/banners/footprint-and-blast-radius.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

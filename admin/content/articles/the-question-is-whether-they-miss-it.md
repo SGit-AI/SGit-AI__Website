@@ -1,6 +1,7 @@
 ---
 title: For a startup, the most important question is whether they miss it
 date: 2026-09-21
+time: 14:48
 updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html

@@ -47,6 +47,15 @@ else
   echo "   link-preview cards: sharp not installed here, skipping the regeneration"
 fi
 python3 admin/build/build_pages.py || die "build failed"
+# LinkedIn covers for the articles and newsletter issues (1920x1080), rendered from the manifest
+# the build just wrote, then a second build so the pages pick up any cover that is new. Needs
+# Playwright; skipped where it is not installed, and the pages simply show no cover yet.
+if node -e "require.resolve('playwright')" >/dev/null 2>&1 || [ -d "$(npm root -g 2>/dev/null)/playwright" ]; then
+  node admin/build/make_banners.mjs || die "banners failed"
+  python3 admin/build/build_pages.py >/dev/null || die "build failed (after banners)"
+else
+  echo "   banners: playwright not installed here, skipping"
+fi
 
 step "2/5 validate (includes the key-leak tripwire)"
 # validate.js reads every demo vault's write key from the gitignored admin/local/demo-keys/

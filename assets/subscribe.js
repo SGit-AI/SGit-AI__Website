@@ -1,4 +1,4 @@
-// subscribe.js — the "subscribe to new articles" form.
+// subscribe.js — the "subscribe to the newsletter" form.
 //
 // What the reader types is encrypted in this browser to the public key of the agent that
 // manages the list (sgit's hybrid envelope v2, built with Web Crypto: a fresh AES-256-GCM key,
@@ -48,7 +48,7 @@
     var field = function (n) { var el = form.elements[n]; return el ? String(el.value || '').trim() : ''; };
     var one = function (s) { return s.replace(/[\r\n]+/g, ' '); };
     var plain = function () {
-      var lines = ['Subscribe to new sgit.ai articles', 'Email: ' + one(field('email'))];
+      var lines = ['Subscribe to the SGit Newsroom newsletter', 'Email: ' + one(field('email'))];
       if (field('name')) lines.push('Name: ' + one(field('name')));
       return lines.join('\n');
     };
@@ -58,7 +58,7 @@
       var hdr = [
         'From: web form <site@sgit.ai>',
         'To: subscribe <subscribe@sgit.ai>',
-        'Subject: Subscribe: sgit.ai articles',
+        'Subject: Subscribe: SGit Newsroom newsletter',
         'Date: ' + new Date().toUTCString(),
         'Message-ID: <' + id + '>',
         'X-EmailFS-Kind: notification',
@@ -67,13 +67,13 @@
         'X-SGit-Page: ' + one(location.pathname),
         'Content-Type: text/plain; charset=utf-8'
       ];
-      var body = plain() + '\n\nConsent: yes, keep this address in the subscribe vault and send new articles by email'
+      var body = plain() + '\n\nConsent: yes, keep this address in the subscribe vault and send the SGit Newsroom newsletter by email'
         + '\nSent from: ' + location.href + '\n';
       return hdr.join('\r\n') + '\r\n\r\n' + body.replace(/\r?\n/g, '\r\n');
     }
 
     function mailtoFallback(why) {
-      mailto.href = 'mailto:agent@riskmandate.ai?subject=' + encodeURIComponent('Subscribe: sgit.ai articles')
+      mailto.href = 'mailto:agent@riskmandate.ai?subject=' + encodeURIComponent('Subscribe: SGit Newsroom newsletter')
         + '&body=' + encodeURIComponent(plain() + '\n');
       mailto.hidden = false;
       why = String(why || '');
@@ -85,7 +85,7 @@
       e.preventDefault();
       if (field('website')) { say('Subscribed.', 'ok'); return; }                 // honeypot: bots fill it, people never see it
       var email = field('email');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please give an email address the articles can be sent to.', 'warn'); form.elements.email.focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Please give an email address the newsletter can be sent to.', 'warn'); form.elements.email.focus(); return; }
       if (!form.elements.consent.checked) { say('Please tick the box: it is your permission to keep this address and email you.', 'warn'); return; }
       button.disabled = true; say('Fetching the key and encrypting…');
       try {

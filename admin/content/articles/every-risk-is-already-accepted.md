@@ -1,6 +1,7 @@
 ---
 title: Every risk is already accepted. The only question is by whom, and for how long.
 date: 2026-09-24
+time: 14:13
 author: Dinis Cruz
 author_url: about/index.html
 summary: A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.

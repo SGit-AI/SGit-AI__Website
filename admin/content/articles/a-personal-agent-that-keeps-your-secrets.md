@@ -1,6 +1,7 @@
 ---
 title: A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser
 date: 2026-10-06
+time: 11:21
 updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html

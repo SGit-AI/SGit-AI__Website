@@ -1,6 +1,7 @@
 ---
 title: The Mandate Stack: a multi-agent system in production, layer by layer
 date: 2026-10-06
+time: 23:03
 author: Dinis Cruz
 author_url: about/index.html
 summary: RiskMandate runs its business with about fifteen agents and one person, four times a day on a schedule and whenever the person sits down with them, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends; explains why the vault is an app platform rather than storage, and the loop in which a friction becomes a tool in the same session and the tools compound; names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop; and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. Everything described is in use.

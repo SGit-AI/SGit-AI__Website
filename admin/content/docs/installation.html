@@ -9,13 +9,14 @@
 
   <h2>Verify</h2>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit version</span>
-sgit-ai v0.14.x
+sgit-ai v0.18.0
 <span class="p">$</span> <span class="cmd">sgit doctor</span>
 <span class="g">✓</span> remote reachable   <span class="g">✓</span> TLS ok   <span class="g">✓</span> config valid</pre>
   <p><code>sgit doctor</code> checks connectivity and configuration and prints per-OS fix instructions for the common problems (including SSL certificate issues). Add <code>--json</code> if a script or an agent is doing the checking.</p>
 
   <h2>Upgrade</h2>
 <pre class="shell"><span class="p">$</span> <span class="cmd">sgit update</span>   <span class="d"># wraps pip install --upgrade sgit-ai</span></pre>
+  <p>The current release is 0.18.0, published 7 October 2026. If <code>sgit version</code> still shows an older number after <code>sgit update</code>, you have more than one Python environment; run <code>python -m pip install --upgrade sgit-ai</code> in the one your tools use. What changed, and the one command an agent team should change: <a href="update-to-0-18-0.html">Update sgit-ai to 0.18.0</a>.</p>
 
   <div class="pagenav"><a href="what-is-sgit.html">← What is sgit</a><a href="quickstart.html">Quickstart →</a></div>
 </main>

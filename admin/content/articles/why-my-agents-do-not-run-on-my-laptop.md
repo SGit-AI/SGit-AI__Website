@@ -1,6 +1,7 @@
 ---
 title: Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has
 date: 2026-10-06
+time: 17:49
 updated: 2026-10-06
 author: Dinis Cruz
 author_url: about/index.html

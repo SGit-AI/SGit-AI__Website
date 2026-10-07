@@ -2,7 +2,7 @@
 
 > A foundation article on risk acceptance, for readers who have never met the idea. A risk exists the moment the exposure does, so an organisation is always carrying it; the only open questions are who has accepted it, and until when. There is no deny button, only three doors (accept for a stated interval, fund the work, or fix it), and silence escalates. The interval is the decision, from four hours, which is an incident, to six months, which is a named decision to wait. Accepted is not the same as acceptable, which matters because the EU AI Act requires providers of high-risk AI systems to have residual risk judged acceptable, and never defines the word. Every risk has a holder, every holder has a boss, and every path ends at the board. Every risk is established by facts and ended by facts, from the board down to the configuration file, which is what closes the gap between a register and reality. The article walks one invented risk through six weeks, argues that each material risk deserves a vault of its own as its evidence pack, explains why executives resist the model, and shows why it fits alongside every GRC platform rather than replacing one. A business plan for a company that runs this loop is published with it.
 
-*Source: <https://sgit.ai/articles/every-risk-is-already-accepted.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/every-risk-is-already-accepted.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -195,17 +195,22 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#every-r
 
 ### Continued by
 
-- [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md) Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
+- [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
+- [Where is the why? A permission prompt asked me to decide, and kept the reason](where-is-the-why.md) A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
-- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
+- [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
 - [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](the-investigation-github-owes-its-customers.md) A global GitHub Actions outage read the way aviation reads an incident: independent inquiry, near-miss reporting, second and third stories, vaults for the evidence.
+- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [every-risk-is-already-accepted.jpg](../articles/banners/every-risk-is-already-accepted.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

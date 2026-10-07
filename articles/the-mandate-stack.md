@@ -2,7 +2,7 @@
 
 > RiskMandate runs its business with about fifteen agents and one person, four times a day on a schedule and whenever the person sits down with them, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends; explains why the vault is an app platform rather than storage, and the loop in which a friction becomes a tool in the same session and the tools compound; names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop; and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. Everything described is in use.
 
-*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -365,9 +365,25 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#the-man
 - [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md) End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
 - [Twenty sites in fifteen days, and what that did to the writing](nineteen-sites.md) One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.
 
+### Continued by
+
+- [A locked-down desktop for an agent, by the minute, is still hard to rent](an-agent-desktop-by-the-minute.md) Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.
+- [Where is the why? A permission prompt asked me to decide, and kept the reason](where-is-the-why.md) A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.
+
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+## From the desk
+
+- [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
+- [Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom](desk/create-anywhere-edit-your-own.md) thread, 2026-10-07
+- [A model that can go in every direction needs someone with a direction](desk/a-model-that-can-go-in-every-direction.md) nugget, 2026-10-07
+- [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
+- [What the human brings](collections/what-the-human-brings.md) collection, 4 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+
+**Posting this article on LinkedIn?** The cover is [the-mandate-stack.jpg](../articles/banners/the-mandate-stack.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

@@ -1,6 +1,7 @@
 ---
 title: Twenty sites in fifteen days, and what that did to the writing
 date: 2026-08-26
+time: 14:59
 summary: The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
 version: v0.2.45
 license: https://creativecommons.org/licenses/by/4.0/

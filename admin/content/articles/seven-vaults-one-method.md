@@ -1,6 +1,7 @@
 ---
 title: Seven vaults, one method
 date: 2026-08-19
+time: 16:59
 license: https://creativecommons.org/licenses/by/4.0/
 tags: vaults, publishing, method
 summary: Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.

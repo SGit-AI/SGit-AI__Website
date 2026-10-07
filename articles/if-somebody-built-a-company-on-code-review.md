@@ -2,7 +2,7 @@
 
 > A reader of the code review article replied with seven good questions, and a voice memo of mine answered them with a change of frame: if somebody were building a company on code review, this is how I would do it. The answers turn on a distinction the first article did not make clearly enough. What is fractal in a fractal semantic graph is the grammar; which layers exist is decided by each company, and a product that standardises them away loses the thing it was meant to review. Two things make the rest possible only now. One technology can read every layer, from strategy to bytecode, so the graphs can be built at every altitude and built close to reality. And that moves code review from an art of opinion and power to a science of facts, provided the models are used to build, prune and maintain the graphs and then taken out of the line. From there: a projected graph from stories before the code exists and a derived graph from the code, with the review as the join; a refactor as relative to the layer held still, correcting the first article; the deploy as a layer; who reads the code at each stage of evolution, after Wardley; reshaping a change by reach; budgets as the objective good enough and the five whys as the loop; behaviour policies for the agents doing the work; and open source as the only model that fits.
 
-*Source: <https://sgit.ai/articles/if-somebody-built-a-company-on-code-review.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/if-somebody-built-a-company-on-code-review.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -258,13 +258,21 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#if-
 ### Continued by
 
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
-- [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
+- [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+## From the desk
+
+- [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
+- [A model that can go in every direction needs someone with a direction](desk/a-model-that-can-go-in-every-direction.md) nugget, 2026-10-07
+- [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
+
+**Posting this article on LinkedIn?** The cover is [if-somebody-built-a-company-on-code-review.jpg](../articles/banners/if-somebody-built-a-company-on-code-review.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

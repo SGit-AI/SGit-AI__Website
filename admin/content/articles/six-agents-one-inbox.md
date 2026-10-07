@@ -1,6 +1,7 @@
 ---
 title: Six agents, one inbox: what a real multi-agent setup taught me about access policies
 date: 2026-09-29
+time: 11:35
 updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html

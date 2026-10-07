@@ -2,7 +2,7 @@
 
 > How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste.
 
-*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

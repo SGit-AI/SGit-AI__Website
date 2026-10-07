@@ -1,6 +1,7 @@
 ---
 title: The wall under the reply: end an email with the state of the thread, not the thread
 date: 2026-10-04
+time: 13:41
 updated: 2026-10-05
 author: Dinis Cruz
 author_url: about/index.html

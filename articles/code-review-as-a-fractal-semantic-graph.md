@@ -2,7 +2,7 @@
 
 > Source code is a very good example of a fractal semantic graph. It has layers within layers, and each one is a graph with its own vocabulary: what the user is trying to do, the features and flows, the components people draw as architecture, the classes, the methods and the calls between them, the syntax tree, and on down to the machine code if you want it. C4 saw the layers and stopped at four; Gherkin got the top layer into a shape people could write and then glued it to the code with regular expressions. What changed is that naming a node and the verb to the next one is now cheap, because a language model can do it from the syntax tree, once per change, and write the result as files. This article argues that code review should read a change at every one of those layers, and that two things fall out when it does: a refactor is a change that moves the bottom layers and leaves the top ones still, and a bug fix is a change that is visible at the top as a story that now holds. It revisits method streams, the review technique from the OWASP O2 Platform in 2012, as one script over a syntax tree with resolved calls. It comes with a worked example published as a vault: the sgit command-line tool, 377 classes and 1,111 methods, read as layered graphs with nothing run, including one real commit read upwards from the seven methods it changed to the nine commands and six user stories it can reach. And it says what makes the whole thing trustworthy, which is not getting the graph right but getting it to where users, experts and tests can correct it. There is a company in this for somebody to build.
 
-*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/code-review-as-a-fractal-semantic-graph.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -184,15 +184,22 @@ Graphs & knowledgeStartups & strategy[This article as a graph →](graphs.md#cod
 
 ### Continued by
 
+- [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
+- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
 - [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [If somebody built a company on code review: how I would do it, and why it is only now possible](if-somebody-built-a-company-on-code-review.md) A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.
-- [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](send-an-agent-not-a-spreadsheet.md) Due diligence never scaled because it was a form; a buyer can now send an agent into a vendor's environment and read what the code and the practices are.
 - [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](memory-is-not-a-spectator-sport.md) Agentic memory as context management: many published, fractal, provenance-carrying memories rather than one store, shown in the session that wrote the article.
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+## From the desk
+
+- [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
+
+**Posting this article on LinkedIn?** The cover is [code-review-as-a-fractal-semantic-graph.jpg](../articles/banners/code-review-as-a-fractal-semantic-graph.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 

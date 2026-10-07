@@ -1,6 +1,7 @@
 ---
 title: Custom UIs are not the exception: the inbox in 2026, where every message has its own universe
 date: 2026-10-01
+time: 22:56
 updated: 2026-10-02
 author: Dinis Cruz
 author_url: about/index.html

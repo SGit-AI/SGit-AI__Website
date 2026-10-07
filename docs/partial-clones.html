@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Partial clones: a folder scope and a history depth, sgit Docs</title>
+<meta name="description" content="sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.">
+<link rel="canonical" href="https://sgit.ai/docs/partial-clones.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/partial-clones.html">
+<meta property="og:title" content="Partial clones: a folder scope and a history depth, sgit Docs">
+<meta property="og:description" content="sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Partial clones: a folder scope and a history depth, sgit Docs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="partial-clones.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Partial clones: a folder scope and a history depth, sgit Docs", "headline": "Partial clones: a folder scope and a history depth, sgit Docs", "description": "sgit clone --path holds one folder and carries the rest by id; --depth holds the newest commits only. Measured on a 600-commit vault: one folder in 14 s against 80 s for the whole vault. The rules, widening with sgit fetch, the commands that need a full clone, and the two edges.", "url": "https://sgit.ai/docs/partial-clones.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.97</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../docs/index.html">Documentation</a>
+ <a class="sl here" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl here" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl here" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.97 &middot; 7 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Partial clones: a folder scope and a history depth</h1>
+  <p class="lead">A full clone downloads every version of every file in the vault. For a small vault that is the right default. For a vault a team has worked in for months it is not: a few hundred commits and several thousand files mean minutes of download for an agent that will touch three files in one folder. Two options cut the clone down to what the work needs, and both keep <code>commit</code>, <code>push</code> and <code>pull</code> working normally.</p>
+  <p class="small dim">For sgit-ai 0.18.0 or newer. Check with <code>sgit version</code>; upgrade with <code>sgit update</code> (<a href="update-to-0-18-0.html">what changed</a>).</p>
+
+  <div class="tablewrap"><table>
+    <tr><th>Option</th><th>What the clone holds</th><th>Use it when</th></tr>
+    <tr><td><code>--path &lt;folder-name&gt;</code></td><td>The named folders, their files, and the folders on the way down to them. Everything else by id only.</td><td>You work inside one or a few folders.</td></tr>
+    <tr><td><code>--depth N</code></td><td>The whole tree at HEAD, but only the newest N commits of history.</td><td>You need the files, not the history.</td></tr>
+    <tr><td>both</td><td>The named folders, newest N commits.</td><td>An agent doing a bounded task in its own folder. The usual choice for agent teams.</td></tr>
+  </table></div>
+
+  <h2>Measured</h2>
+  <p>On a shared CRM vault of about 600 commits and 9,400 files, from one client in a cloud sandbox whose network path adds latency to every request, so a plain connection does better. The numbers are the CLI team's, from the vault the release was built against.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Clone</th><th>Time</th><th>Objects</th><th>Download</th></tr>
+    <tr><td>full</td><td>80 s</td><td>18,720</td><td>173 MB</td></tr>
+    <tr><td><code>--path mail/crm.example</code> (one folder, 365 files)</td><td>14 s</td><td>429</td><td>3.2 MB</td></tr>
+    <tr><td><code>--path runs --path docs</code> (two small folders)</td><td>5 s</td><td></td><td></td></tr>
+    <tr><td><code>--path mail/crm.example --depth 1</code></td><td>14 s</td><td></td><td></td></tr>
+  </table></div>
+  <p>Checked by this site on 7 October 2026 against a small published vault (<a href="../demos/vaults/deck-vault/index.html">the Deck Vault</a>, 55 files, 3 commits) from the same kind of sandbox: a full read-only clone took 9.7 s; <code>--path plan --depth 1</code> took 3.0 s and wrote the 11 files of that folder and nothing else. The ratio is what matters, and it grows with the vault.</p>
+
+  <h2>The example used on this page</h2>
+  <p>A CRM vault maintained by a team of agents. Each agent has a mailbox-style folder it owns, plus shared folders. Most of an agent's session is reads and writes inside its own <code>mail/&lt;my-account&gt;/</code> folder.</p>
+<pre class="shell">mail/
+  crm.example/        one agent's folder: contacts, threads, notes
+  ops.example/        another agent's
+runs/                 run logs, appended by everyone
+docs/                 shared documents
+README.md</pre>
+
+  <h2 id="path">Scoped clone: <code>--path</code></h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --path mail/crm.example &lt;vault-key&gt; workspace</span>
+
+Cloned into workspace/
+  Vault ID:  …
+  Transport: api
+  Branch:    branch-clone-…
+  HEAD:      obj-cas-imm-…
+  Scope:     mail/crm.example  (other folders carried by id; widen: sgit fetch &lt;folder-name&gt;)
+<span class="p">$</span> <span class="cmd">cd workspace</span>
+<span class="p">$</span> <span class="cmd">find . -type f -not -path './.sg_vault/*'</span>
+./mail/crm.example/contacts.md
+./mail/crm.example/threads/2026-10-06.md
+...</pre>
+  <p>Only the held folder is on disk. <code>sgit status</code>, <code>sgit ls</code> and <code>sgit cat</code> see the held folder. There is no <code>docs/</code> directory, and that is not an error: the clone knows <code>docs/</code> exists and what its id is, and carries that id untouched into every commit it makes.</p>
+  <p>Work normally inside the folder:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">echo "called back" &gt;&gt; mail/crm.example/threads/2026-10-06.md</span>
+<span class="p">$</span> <span class="cmd">sgit status</span>
+On branch: branch-clone-… → branch-named-…
+  Remote: in sync with remote
+
+  ~ mail/crm.example/threads/2026-10-06.md
+<span class="p">$</span> <span class="cmd">sgit commit -m "crm: call-back note"</span>
+<span class="p">$</span> <span class="cmd">sgit push</span></pre>
+  <p>The pushed commit contains the whole vault, exactly as a full clone's commit would: your folder rebuilt, every other folder by the id the vault already had for it. A teammate on a full clone pulls it and sees only your change. The ids match byte for byte because tree encryption is deterministic; a test in the CLI suite asserts that a scoped commit's tree id equals the one a full clone would produce.</p>
+
+  <h3>Rules of a scoped clone</h3>
+  <ul>
+    <li><b>Writes outside the held folders are refused, by name.</b> <code>sgit commit</code> with a stray <code>docs/notes.md</code> in the working copy stops with the message <code>this clone holds only mail/crm.example; files outside it cannot be committed from here: docs/notes.md</code>. Widen the clone (below) or use a full clone for that change.</li>
+    <li><b>Two scoped clones in different folders never conflict.</b> Out-of-scope entries are always taken from the remote by id, so agent A in <code>mail/crm.example/</code> and agent B in <code>docs/</code> can commit and push in any order without a merge conflict. Two agents in the <em>same</em> folder merge like any two clones do.</li>
+    <li><b>Pull fetches only what is held.</b> A teammate's change to <code>docs/</code> costs a scoped clone one commit object and the folders on the spine, a few objects, not the changed files.</li>
+    <li><b>Uncommitted edits survive a pull</b>, exactly as on a full clone; see <a href="agents-sharing-one-vault.html">Agents sharing one vault</a>.</li>
+    <li><b>Several folders:</b> repeat the flag, <code>--path mail/crm.example --path docs</code>. A folder inside a held folder is already held; listing both collapses to the wider one.</li>
+    <li><b>Paths are vault-relative folders.</b> <code>..</code>, absolute paths and drive letters are refused.</li>
+  </ul>
+
+  <h3 id="widen">Widening later: <code>sgit fetch &lt;folder-name&gt;</code></h3>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit fetch docs</span>
+  ✓  docs  (12 file(s), 15 object(s) fetched)
+  Scope is now: mail/crm.example, docs</pre>
+  <p>The folder is fetched from HEAD, written to disk and recorded in the clone's config, so it stays held across pulls and branch switches. Widening never overwrites your work: if a file is already on disk under that folder and its bytes differ from the vault's, the widen refuses and names it. Move the file aside and widen again. A folder already held returns at once.</p>
+
+  <h3>Commands that need the whole vault</h3>
+  <p><code>sgit check fsck</code>, <code>sgit dev dump</code>, <code>sgit publish</code> and <code>sgit vault move</code> stop on a scoped or shallow clone:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit check fsck</span>
+error: `sgit check fsck` needs the whole vault, and this clone holds only part of it
+(folders: mail/crm.example). Run it from a full clone, or widen this one:
+`sgit fetch &lt;folder-name&gt;` adds a folder, `sgit fetch --unshallow` fetches the history.</pre>
+  <p>Any other command that happens to need an object the clone never fetched says the same thing in its own words, rather than suggesting the vault is corrupt.</p>
+
+  <h2 id="depth">Shallow clone: <code>--depth N</code></h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit clone --depth 1 &lt;vault-key&gt; workspace</span>
+…
+  History:   shallow, 1 boundary commit(s)  (deepen: sgit fetch --unshallow)</pre>
+  <p>The whole tree at HEAD and the newest commit only (N commits for <code>--depth N</code>). The commit where history stops is recorded as a boundary. <code>commit</code>, <code>push</code>, <code>pull</code> and <code>status</code> work normally; the named branch only ever moves forward, so every later commit descends from the boundary and the clone never needs what lies behind it. History commands stop there and say so:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit history log --oneline</span>
+a1b2c3d  crm: call-back note
+  … history stops here: shallow clone (1 boundary commit); sgit fetch --unshallow fetches the rest</pre>
+
+  <h3>Deepening later: <code>sgit fetch --unshallow</code></h3>
+  <p>On a whole-vault shallow clone this fetches everything behind the boundary in one parallel sweep, the same sweep a full clone uses. On a scoped shallow clone it fetches the commit objects only, which is what <code>history log</code> and <code>status</code> need; files and folders stay scoped. The command reports <code>History fetched: N object(s); this clone is no longer shallow.</code>, or <code>This clone already has the full history.</code> on a clone that is already full.</p>
+
+  <h2>Choosing</h2>
+  <ul>
+    <li><b>An agent that works in its own folder for a bounded task:</b> <code>--path &lt;folder-name&gt; --depth 1</code>. The clone is seconds, the push carries only the change, and nothing another agent does elsewhere in the vault can conflict with it.</li>
+    <li><b>An agent that reviews or rewrites across the vault:</b> a full clone. At 600 commits it is 80 s on the measured path, and the sweep keeps it close to linear in the vault's size.</li>
+    <li><b>A reader that wants one file:</b> no clone at all. <code>sgit cat</code> and <code>sgit write</code> work against the server directly; see <a href="agents.html">Working with AI agents</a>.</li>
+    <li><b>Sparse (<code>--sparse</code>) still exists:</b> structure now, file content on demand. A scoped clone is usually the better fit for an agent, because it holds the files it will read without a round trip per file.</li>
+  </ul>
+
+  <h2>What a partial clone cannot do yet</h2>
+  <ul>
+    <li>A folder renamed by someone else silently leaves your scope: the clone holds <code>mail/old/</code> by name, and after the rename the vault has <code>mail/new/</code> in its place. A pull will not warn. Re-clone or widen to the new name.</li>
+    <li>Scoped clones cannot see objects missing elsewhere in the vault, so <code>sgit check fsck</code> needs a full clone.</li>
+  </ul>
+  <p class="small dim">Source: the CLI team's release brief for 0.18.0, 7 October 2026, with its measurements kept under the conditions it stated; the scope rules, the refusal messages, widening and the whole-vault refusal were re-run by this site against a published vault on the same day.</p>
+
+  <div class="pagenav"><a href="agents.html">← Working with AI agents</a><a href="agents-sharing-one-vault.html">Agents sharing one vault →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.97</a> · <a href="../admin/index.html">engineering</a> · <a href="partial-clones.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.97';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

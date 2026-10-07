@@ -2,7 +2,7 @@
 
 > The news industry runs on two commercial models, advertising and subscriptions, and both are bad for the reader. One sells the reader to somebody else. The other charges rent on something most people have stopped using. Both are now being dismantled from outside, by a search layer that has stopped sending traffic and by consumer law that arrives in January 2027. This article is about what to build instead, in practical terms. The objective is a commercial model that rewards investigative journalism, so that the expensive, evidenced kind of reporting drives usage, usage drives revenue that depends on neither search nor renewals, and that revenue funds more of the same. The mechanism is to stop selling the article and start selling what the article was made from. The story is a graph, a fractal semantic graph in which meaning comes from connectivity and every claim walks down to hashed evidence, so that trust comes through provenance and provenance comes via evidence. The article is one projection of it. From that one graph a newsroom can sell five things, on demand and in pence, to readers, to firms and to agents, and every payment walks back to the people who made the facts. It is built, in parts, on things we have already published.
 
-*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/future-of-news-story-vault-not-paywall.html> · site v0.6.97 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -234,6 +234,7 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-
 
 ### Continued by
 
+- [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
 - [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](the-deck-i-could-not-download.md) One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.
 - [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](custom-uis-are-not-the-exception.md) Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.
 - [The reader was always the product: a corrected history of how news got into this mess](how-news-got-here.md) News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.
@@ -241,7 +242,9 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
+**Posting this article on LinkedIn?** The cover is [future-of-news-story-vault-not-paywall.jpg](../articles/banners/future-of-news-story-vault-not-paywall.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+**Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
 
