@@ -2,7 +2,7 @@
 
 > I wanted one presentation from SlideShare and was offered a 30-day trial and then £10.99 a month. The author of the deck receives nothing from that subscription, under an uploader agreement that grants the platform a royalty-free licence to monetise, charge for, sublicense and train models on the work, and I am one of those authors, with 69 decks uploaded over fifteen years. This article does three things. It says what happened to SlideShare, from a 2006 start through LinkedIn and Scribd to the September 2021 paywall, and why a service with a PDF viewer and a file store has not been replaced: fifteen years of embeds and links, which is inertia in Wardley's sense. It sets out what an author can ask the old platform for today, under the right of access and, in the EU, the copyright transparency duty, including the two questions platforms do not expect, how many downloads and what revenue. And it designs the service the author would have chosen, on the primitives this site already publishes: every author's decks in a vault the host cannot read, access decided by keys rather than settings, a read key for what is free, a receipt turned into a ten-minute key for what is paid once, a revocable grant for what is private, decryption in the browser, an attested enclave for the one step that needs plaintext, seven roles that no single company holds, and a split of 85% to the author on a ledger the author can recompute. The plan is published as a vault with a working mock, the Deck Vault, with its economics worked for one author and its risks as an acceptance register. The marginal cost is storage and bandwidth, which are near zero; the hard row is the fixed part of a card fee, which the plan says so about rather than hides. Somebody should build it. The author will build the first step for their own decks.
 
-*Source: <https://sgit.ai/articles/the-deck-i-could-not-download.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-deck-i-could-not-download.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -160,6 +160,10 @@ Startups & strategyVaults & method[This article as a graph →](graphs.md#the-de
 - [The SaaS apocalypse will be decided by inertia, not by AI](saas-apocalypse-decided-by-inertia-not-by-ai.md) Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 

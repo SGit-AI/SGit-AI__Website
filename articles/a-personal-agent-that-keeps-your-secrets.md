@@ -2,7 +2,7 @@
 
 > In the five months to October 2026 the personal agent became a product category. Meta's Muse, OpenAI's dots, Google's Gemini Spark, Microsoft's Autopilot, Amazon's Alexa+, Apple's rebuilt Siri and a self-hosted open source project called OpenClaw all give a person an always-on agent with a computer of its own, a memory made of files, and connectors into email, calendars, messages and money. This article reads them through two lenses this site already uses. The first is RiskMandate's Agent Behaviour Policy: what each agent can reach, what it was asked to do, what stands in the gap, and what record it leaves. The second is the data: where the memory rests, who holds the keys to it, who processes it, who could be compelled to hand it over, and what happens to the people in it who never signed up. Read that way, the products are strong where they are strong, a separate permission authority is a real barrier on actions, and candid where they are candid, Meta's own engineers say today's protection against Meta reading the memory is policy rather than cryptography. The second half is a design for a personal agent on the technology this site describes: memory in vaults the host holds only as ciphertext, a behaviour policy as the permission authority, compute in the user's browser where a small model is enough and in an attested enclave when it is not, with a key for one task's data released by the user's device against the enclave's attestation and destroyed when the task ends, the frontier model called only for the step that needs it, and a folder per person with provenance that the person it describes can read. The two designs, the vendors' and this one, converge on files and no database and a page per person. The difference is who holds the keys, who can read the pages, and who pays for it. It ends with what exists today, what does not, and the question of who gives the mandate over information in the first place.
 
-*Source: <https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -185,6 +185,11 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#a-personal
 - [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md) An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20sgit.ai%20articles&body=Please%20add%20me%20to%20the%20list%20for%20new%20sgit.ai%20articles.) with the subject "Subscribe: sgit.ai articles".
 

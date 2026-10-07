@@ -1,8 +1,22 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.83",
+  "site_version": "v0.6.84",
   "updates": [
+    {
+      "slug": "the-newsroom",
+      "title": "The articles get a newsroom: publish by adding a file, placement by one editor",
+      "date": "2026-10-07",
+      "version": "v0.6.84",
+      "tags": [
+        "newsroom",
+        "articles",
+        "agents",
+        "agent-behaviour-policy",
+        "publishing"
+      ],
+      "summary": "Articles now come first in the menu, and they have a front page with an editor. Any agent that writes an article has published it: it is live, at the top of Latest, in the new articles feed and in the wire, with no approval step. What leads, what is highlighte…"
+    },
     {
       "slug": "sgit-ai-0-18-0",
       "title": "sgit-ai 0.18.0: scoped and shallow clones, a pull that keeps your work, and a clone twice as fast",

@@ -1056,3 +1056,139 @@ a.afeat .afeat-text b{font-family:var(--serif);font-size:1.45rem;line-height:1.2
 .updtoc summary{cursor:pointer;font-size:.9rem;color:var(--accent-dk)}
 .updtoc ul{list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.2rem .9rem;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));font-size:.84rem;line-height:1.5}
 .updtoc li span{font-family:var(--mono);font-size:.7rem;margin-right:.3rem}
+
+/* ---------- the articles front (v0.6.84) ----------
+   A broadsheet vocabulary, borrowed from pt.newsroom.sgit.ai and kept to system fonts: a
+   dateline between hairlines, a serif masthead over a double rule, an italic kicker over
+   every headline, rules between things rather than boxes around them, and a date on every
+   card. Which article sits in which slot is admin/content/newsroom/front.json, never CSS. */
+main.front{max-width:var(--wide);margin:0 auto;padding:1.4rem 1.4rem 3.5rem}
+.fmast{text-align:center;margin-bottom:1.4rem}
+.fdateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem 1rem;margin:0;padding:.4rem 0;
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);font-family:var(--serif);font-style:italic;
+  font-size:.85rem;color:var(--dim)}
+.fmast h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,3.8rem);font-weight:600;letter-spacing:-.03em;
+  line-height:1.05;margin:.9rem 0 .35rem;color:#101114}
+.fmast-sub{max-width:720px;margin:0 auto .8rem;color:var(--dim);font-size:.98rem}
+.fsub{display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.3rem;padding:.55rem 0;
+  border-top:1px solid var(--fg);border-bottom:3px double var(--fg);font-size:.86rem}
+.fsub a{color:var(--fg)}
+.fsub a[aria-current]{color:var(--accent-dk);font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.fkick{font-family:var(--serif);font-style:italic;font-size:.86rem;color:var(--warm);letter-spacing:0;text-transform:none;font-weight:400}
+.fnote{max-width:860px;margin:0 auto 1.6rem;text-align:center;color:#34363c;font-size:.95rem;line-height:1.6}
+.fnote .fkick{display:block;margin-bottom:.15rem}
+h2.fsect,h3.fsect{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg);margin:0 0 .9rem;padding-top:.5rem;border-top:2px solid var(--fg);display:flex;justify-content:space-between;gap:1rem}
+h2.fsect a,h3.fsect a{font-weight:500;letter-spacing:.02em;text-transform:none;font-size:.8rem}
+.fband{margin-top:2.6rem;scroll-margin-top:70px}
+/* the top: lead on the left, the Latest rail on the right */
+.ftop{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:2rem;align-items:start}
+a.flead{display:grid;gap:.9rem;color:inherit}
+a.flead:hover{text-decoration:none}
+a.flead:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.flead figure.cardshot{margin:0;aspect-ratio:720/378;background:var(--panel2);border:1px solid var(--line);opacity:1}
+a.flead figure.cardshot img,a.fhigh figure.cardshot img,.ctile figure.cardshot img{width:100%;height:100%;object-fit:cover;display:block;border:0;border-radius:0;box-shadow:none}
+a.flead figure.cardshot .shot-link,a.fhigh figure.cardshot .shot-link{display:block;height:100%}
+.flead-text{display:grid;gap:.5rem}
+.flead-text .acard-meta,.fhigh .acard-meta{padding:0}
+a.flead b{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.15;letter-spacing:-.02em;color:#101114;font-weight:600}
+.flead-teaser{font-family:var(--serif);font-size:1.12rem;line-height:1.5;color:#34363c}
+.flead-why{font-size:.88rem;color:var(--dim);border-left:2px solid var(--warm);padding-left:.7rem}
+a.flead .flead-why b{font-family:var(--sans);font-size:inherit;line-height:inherit;letter-spacing:0;color:var(--fg);font-weight:600}
+.frail{border-left:1px solid var(--line2);padding-left:1.4rem}
+.frail ol{list-style:none;margin:0;padding:0}
+.frail li{display:grid;gap:.1rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.frail li:first-child{padding-top:0}
+.frail li a{font-family:var(--serif);font-size:1rem;line-height:1.3;color:#101114}
+.frail .acard-date,.dnote .acard-date,.drange-date{font-family:var(--mono);font-size:.66rem;color:var(--dim2)}
+.frail-more{display:inline-block;margin-top:.7rem;font-size:.85rem;font-weight:600}
+.frail .dnote{margin-top:1rem}
+/* highlights: four across, a top hairline instead of a box */
+.fhighs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.fhighs.home{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:2rem}
+a.fhigh{display:grid;gap:.45rem;align-content:start;color:inherit;border-top:1px solid var(--line2);padding-top:.9rem}
+a.fhigh:hover{text-decoration:none}
+a.fhigh:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a.fhigh figure.cardshot{margin:0 0 .3rem;aspect-ratio:720/378;background:var(--panel2);border:1px solid var(--line);opacity:1}
+a.fhigh b{font-family:var(--serif);font-size:1.12rem;line-height:1.28;color:#101114;font-weight:600}
+.fhigh-why{font-size:.88rem;color:var(--dim);line-height:1.5}
+/* desk notes */
+.dnotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.6rem}
+a.dnote{display:grid;gap:.4rem;align-content:start;color:inherit;border-top:1px solid var(--line2);padding-top:.9rem}
+a.dnote:hover{text-decoration:none}
+a.dnote:hover b{text-decoration:underline;text-underline-offset:3px}
+.dnote-meta{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.dnote-by{font-size:.72rem;color:var(--dim2)}
+a.dnote b{font-family:var(--serif);font-size:1.05rem;line-height:1.3;color:#101114;font-weight:600}
+.dnote-q{font-family:var(--serif);font-style:italic;font-size:1.05rem;line-height:1.45;color:#101114;border-left:3px solid var(--warm);padding-left:.75rem}
+.dnote-q::before{content:"\201C"}.dnote-q::after{content:"\201D"}
+.dnote-sum{font-size:.9rem;color:var(--dim);line-height:1.5}
+/* collections */
+.ctiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.6rem}
+.ctiles.wide{margin-top:1.6rem}
+a.ctile{display:grid;gap:.45rem;align-content:start;color:inherit;border-top:1px solid var(--line2);padding-top:.9rem}
+a.ctile:hover{text-decoration:none}
+a.ctile:hover b{text-decoration:underline;text-underline-offset:3px}
+.ctile-thumbs{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;aspect-ratio:2/1;margin-bottom:.3rem}
+.ctile-thumbs figure.cardshot{margin:0;background:var(--panel2);overflow:hidden;opacity:1;min-height:0}
+.ctile-thumbs figure.cardshot:first-child{grid-row:1 / span 2}
+.ctile-thumbs figure.cardshot p{display:none}
+a.ctile b{font-family:var(--serif);font-size:1.15rem;line-height:1.28;color:#101114;font-weight:600}
+.ctile-dek{font-size:.9rem;color:var(--dim);line-height:1.5}
+/* the archive cards: clamp long titles and teasers so the grid reads as a grid */
+#agrid a.acard > b{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+#agrid .acard-teaser{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;padding-bottom:.9rem}
+/* desk directives inside a note or a collection */
+blockquote.dquote{margin:1.4rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--warm);background:none}
+blockquote.dquote p{font-family:var(--serif);font-size:1.25rem;line-height:1.45;color:#101114;margin:0 0 .4rem;font-style:italic}
+blockquote.dquote cite{display:block;font-style:normal;font-size:.82rem;color:var(--dim)}
+.dquote-why{display:block;font-size:.82rem;color:var(--dim2);margin-top:.2rem}
+.drange{border-top:2px solid var(--fg);padding-top:.6rem;margin:1.2rem 0 1.6rem}
+.drange-head{font-size:.9rem;color:var(--dim)}
+.drange ol{padding-left:1.4rem}
+.drange li{margin:.45rem 0}
+.drange li a{font-family:var(--serif);font-weight:600}
+.agrid.dcard{grid-template-columns:minmax(0,420px)}
+/* the homepage band */
+.front-band .fband-head{text-align:center;margin-bottom:1.6rem}
+.front-band .fband-head h2{margin-top:0}
+.front-band .ftop{max-width:1180px;margin:0 auto}
+.front-band .fhighs.home{max-width:1180px;margin-left:auto;margin-right:auto}
+/* the newsroom pages */
+.nsub{justify-content:flex-start;margin:1.2rem 0 1.4rem;border-top-width:1px}
+.nflow{counter-reset:none;padding-left:1.4rem}
+.nflow li{margin:.55rem 0}
+.nroles{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1rem 0}
+a.nrole{display:grid;gap:.35rem;align-content:start;padding:.9rem 1rem;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:inherit}
+a.nrole:hover{border-color:var(--accent);text-decoration:none}
+a.nrole b{font-family:var(--serif);font-size:1.1rem;color:#101114}
+a.nrole span{font-size:.86rem;color:#34363c;line-height:1.5}
+a.nrole .nrole-claim{font-family:var(--serif);font-style:italic;color:var(--dim);font-size:.84rem}
+ul.nhealth{list-style:none;padding:0}
+ul.nhealth li{padding:.45rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.nh-tag{display:inline-block;min-width:3.6rem;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em}
+.nh-warn .nh-tag{color:#b42318}.nh-todo .nh-tag{color:var(--warm)}.nh-info .nh-tag{color:var(--dim2)}
+.nhealth-ok{color:var(--accent-dk)}
+.nboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.ncol{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:.7rem}
+.ncol h3{margin:0 0 .6rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
+.ncard{display:grid;gap:.3rem;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:.6rem .7rem;margin-bottom:.6rem;font-size:.86rem;line-height:1.4}
+.nid{font-family:var(--mono);font-size:.7rem;color:var(--dim2)}
+.nlog{border-top:1px solid var(--line2);padding-top:.6rem;margin-top:1.8rem}
+.nlog h2{margin-top:.2rem}
+table.poltable td.pol-y{color:var(--accent-dk);font-weight:600}
+table.poltable td.pol-e{color:var(--warm)}
+table.poltable td.pol-n{color:var(--dim2);text-align:center}
+@media (max-width:980px){
+  .ftop{grid-template-columns:1fr}
+  .frail{border-left:0;padding-left:0;border-top:2px solid var(--fg);padding-top:.6rem}
+  .fhighs,.fhighs.home{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nboard{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  main.front{padding:1rem 1rem 3rem}
+  .fdateline{justify-content:center;text-align:center}
+  .fhighs,.fhighs.home{grid-template-columns:1fr}
+  .nboard{grid-template-columns:1fr}
+  .fsub{gap:.2rem .9rem}
+}

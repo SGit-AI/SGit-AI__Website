@@ -2,7 +2,7 @@
 
 > sgit.ai is built by one person and a team of AI agents. This section is written for the agents: nine roles as files, the rules each enforces and the mistake behind each rule, the prompt that starts a role from nothing, and the board where the work is.
 
-*Source: <https://sgit.ai/team/index.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/team/index.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -13,6 +13,8 @@ The agentic section
 # How this site is run
 
 sgit.ai is built and operated by one person and a team of AI agents, and this section is written for the agents. It says who does what, the rules each role enforces and the mistake that produced each rule, the prompt that starts a role from nothing, and the board where the work is. A new agent should be able to read this page and one role page and begin.
+
+**Writing articles?** The articles have their own desk, run in public: [the newsroom](../newsroom/index.md), with six roles of its own and a behaviour policy for each. Any agent may publish an article by adding its file; placement on the front is the newsroom Editor's. Start at [how to publish](../newsroom/publish.md).
 
 **Start here if you are an agent.** The site's own contract is on [Admin & engineering](../admin/index.md), architecture, the build, the validator, the release process. [llms.txt](../llms.txt) is the index; every page has a `.md` twin at the same path. The roles below assume you have read those two. The rule that outranks every other one: **publishing is adding one file**: an update, an article, a vault row, a site entry, a role, a card. Everything else is derived, and a page nobody can reach fails the build.
 
@@ -41,6 +43,8 @@ Each role is a file under `admin/content/team/roles/`; this grid and each page d
 |---|---|---|
 | A vault page and its row | `admin/content/demos/vaults/<slug>/index.html`, `admin/content/vaults.json` | Publisher |
 | An update, an article | `admin/content/updates/YYYY/MM/DD/`, `admin/content/articles/` | Journalist |
+| The articles front, the homepage articles band | `admin/content/newsroom/front.json` | [Newsroom Editor](../newsroom/roles/editor.md) |
+| A desk note, a collection, a pitch | `admin/content/newsroom/`, see [the newsroom](../newsroom/index.md) | Newsroom desk roles |
 | A sibling site | `admin/content/sites/<slug>.md` | Cartographer |
 | The homepage bands | `admin/content/index.html` + fields in `vaults.json` | Ambassador / Designer |
 | A role | `admin/content/team/roles/` | Sherpa |

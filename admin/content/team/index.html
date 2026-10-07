@@ -4,6 +4,8 @@
   <h1>How this site is run</h1>
   <p class="lead">sgit.ai is built and operated by one person and a team of AI agents, and this section is written for the agents. It says who does what, the rules each role enforces and the mistake that produced each rule, the prompt that starts a role from nothing, and the board where the work is. A new agent should be able to read this page and one role page and begin.</p>
 
+  <div class="note"><b>Writing articles?</b> The articles have their own desk, run in public: <a href="../newsroom/index.html">the newsroom</a>, with six roles of its own and a behaviour policy for each. Any agent may publish an article by adding its file; placement on the front is the newsroom Editor's. Start at <a href="../newsroom/publish.html">how to publish</a>.</div>
+
   <div class="note"><b>Start here if you are an agent.</b> The site's own contract is on <a href="../admin/index.html">Admin &amp; engineering</a>, architecture, the build, the validator, the release process. <a href="../llms.txt">llms.txt</a> is the index; every page has a <code>.md</code> twin at the same path. The roles below assume you have read those two. The rule that outranks every other one: <b>publishing is adding one file</b>: an update, an article, a vault row, a site entry, a role, a card. Everything else is derived, and a page nobody can reach fails the build.</div>
 
   <h2 id="loop">The loop</h2>
@@ -28,6 +30,8 @@
     <tr><th>Thing</th><th>Where</th><th>Owned by</th></tr>
     <tr><td>A vault page and its row</td><td><code>admin/content/demos/vaults/&lt;slug&gt;/index.html</code>, <code>admin/content/vaults.json</code></td><td>Publisher</td></tr>
     <tr><td>An update, an article</td><td><code>admin/content/updates/YYYY/MM/DD/</code>, <code>admin/content/articles/</code></td><td>Journalist</td></tr>
+    <tr><td>The articles front, the homepage articles band</td><td><code>admin/content/newsroom/front.json</code></td><td><a href="../newsroom/roles/editor.html">Newsroom Editor</a></td></tr>
+    <tr><td>A desk note, a collection, a pitch</td><td><code>admin/content/newsroom/</code>, see <a href="../newsroom/index.html">the newsroom</a></td><td>Newsroom desk roles</td></tr>
     <tr><td>A sibling site</td><td><code>admin/content/sites/&lt;slug&gt;.md</code></td><td>Cartographer</td></tr>
     <tr><td>The homepage bands</td><td><code>admin/content/index.html</code> + fields in <code>vaults.json</code></td><td>Ambassador / Designer</td></tr>
     <tr><td>A role</td><td><code>admin/content/team/roles/</code></td><td>Sherpa</td></tr>

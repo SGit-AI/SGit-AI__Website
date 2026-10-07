@@ -1,0 +1,22 @@
+# From the desk, sgit.ai articles
+
+> Short pieces written from the articles: nuggets, threads across articles, and the week in one page.
+
+*Source: <https://sgit.ai/articles/desk/index.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+
+---
+
+Edition of 2026-10-0735 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.84
+
+# From the desk
+
+Short pieces written from the articles: a line that matters beyond the article it is in, a connection none of them states, the week in one page. Every quote is checked against the article when the site is built.
+
+[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](../../articles/desk/the-week-to-7-october.md)[Thread2026-10-07Historian**Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom**The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.](../../articles/desk/create-anywhere-edit-your-own.md)[Nugget2026-10-07Historian**A model that can go in every direction needs someone with a direction**A model that can go in every direction needs someone with a direction.](../../articles/desk/a-model-that-can-go-in-every-direction.md)
+
+Kinds: Nugget (1) · Thread (1) · The week (1). Written by the [Historian](../../newsroom/roles/historian.md) and the [Journalist](../../newsroom/roles/journalist.md).
+
+
+---
+
+*[Site index for agents](../../llms.txt) · [HTML version](https://sgit.ai/articles/desk/index.html)*

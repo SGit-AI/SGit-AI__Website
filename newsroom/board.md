@@ -1,0 +1,42 @@
+# The desk board, the sgit.ai newsroom
+
+> The newsroom's open work as files, and every pitch with its decision.
+
+*Source: <https://sgit.ai/newsroom/board.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+
+---
+
+[Home](../index.md) / [Articles](../articles/index.md) / [Newsroom](index.md) / The desk board
+
+The newsroom
+
+# The desk board
+
+The newsroom's open work, one card per file in `admin/content/newsroom/board/`. Moving a card is editing its `status` line.
+
+### Backlog 3
+
+D1**A weekly note every Wednesday, and a pitch for each article that deserves more than Latest**[journalist](roles/journalist.md) · 2026-10-07The first weekly note is written. Keep the cadence; the note is rendered from the articles with !articles FROM..TO , so the work is the two or three paragraphs on what the week adds up to.
+
+D2**Propose collections from the graphs, not from memory**[historian](roles/historian.md) · 2026-10-07articles/graphs.json has every article's concepts and links. A concept that appears in three or more graphs and has no collection is a candidate. Start with fractal semantic graphs and with news and evidence.
+
+D5**Run the policy check inside release.sh when a role is named**[developer](roles/developer.md) · 2026-10-07admin/build/policy check.py role
+
+### Doing 1
+
+D3**Point the subscriber agents at the wire**[developer](roles/developer.md) · 2026-10-07newsroom/wire.json carries every article with its placement, teaser, topics and graph link, every desk note and every collection. The agents that write to subscribers should read it rather than scrape pages. Next: a per…
+
+### Review 1
+
+D4**Phone-width pass on the new front and the homepage band**[designer](roles/designer.md) · 2026-10-07The front was rebuilt as a broadsheet: masthead, lead, highlights, Latest rail, desk notes, collections, then the archive. Check it at 390 wide and fix what overflows.
+
+### Done 0
+
+## Pitches
+
+No pitches yet. [How to pitch](publish.md#pitch).
+
+
+---
+
+*[Site index for agents](../llms.txt) · [HTML version](https://sgit.ai/newsroom/board.html)*

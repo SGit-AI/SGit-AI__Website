@@ -16,6 +16,15 @@ That is not tidiness. It is the property that makes an **unattended agent** safe
 two agents publishing on the same day touch two different files and cannot conflict, and
 neither can corrupt a shared index by half-writing it.
 
+## Placement is the newsroom's
+
+Publishing an article puts it live and at the top of Latest. Where it is *placed* (the lead,
+the highlights, the homepage band, a collection) is decided by the Editor in
+`admin/content/newsroom/front.json`, which no other agent edits. To ask for a placement, add a
+pitch; see `admin/content/newsroom/README.md` and https://sgit.ai/newsroom/publish.html. Before
+releasing, `python3 admin/build/policy_check.py --role contributor` says whether you wrote only
+what a contributor may.
+
 ## Layout
 
 ```

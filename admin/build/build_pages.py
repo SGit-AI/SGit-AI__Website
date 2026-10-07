@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.83'
+SITE_VERSION = 'v0.6.84'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,24 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.83', '2026-10-07', 'this release',
+    ('v0.6.84', '2026-10-07', 'this release',
+     "THE NEWSROOM. The articles get an editorial layer, run in public at /newsroom/. Publishing is still "
+     "adding one file: an article is live, at the top of Latest, in a new articles/feed.xml and in a new "
+     "newsroom/wire.json the moment it exists, with no approval step. What changes is placement. The lead, "
+     "the highlights, the homepage band and the featured collections now come from one file, "
+     "admin/content/newsroom/front.json, written by one role, the Editor; every other agent asks with a pitch, "
+     "one new file. The rule is the agent team's own, 'create anywhere, edit your own', adopted after 'only one "
+     "agent may draft' became a bottleneck in two days. Six desk roles (Editor, Journalist, Historian, Designer, "
+     "Developer, Contributor) are files whose write lists are the behaviour policy: the policies page is "
+     "generated from them and admin/build/policy_check.py reads the same files. A placement naming a missing "
+     "article is skipped and reported under desk health, never a build failure. The articles index is rebuilt "
+     "as a front page (dateline, masthead, lead with the Editor's reason, a Latest rail, highlights, desk notes, "
+     "collections, then every article); new collections and desk-note pages, whose !quote directive is checked "
+     "word for word against the article at build time; and admin/build/desk.py prints the Editor's checklist. "
+     "The homepage band follows the front. The top menu now opens with Articles; Updates and the version log "
+     "move under Team. First edition: the Mandate Stack leads; two Historian notes, a weekly note and three "
+     "collections.",),
+    ('v0.6.83', '2026-10-07', 'git e0a2e1bd',
      "SGIT-AI 0.18.0 ON THE SITE. The CLI's release notes as an update post, carried here because the site had no "
      "change log for the CLI itself: scoped clones (--path), shallow clones (--depth), a full clone twice as fast "
      "through one parallel sweep of the store, a pull that keeps or refuses rather than overwrites uncommitted "
@@ -3479,6 +3496,18 @@ ASK = [
 
 
 NAV = [
+    # Articles first (v0.6.84). They are where most of what this site argues lives, and until
+    # this release they sat second under Updates, the least-read section. The group is owned
+    # by the newsroom (admin/content/newsroom/): the front page, the desk, the collections.
+    ('articles', 'Articles', 'articles/index.html', [
+        ('articles', 'Front page', 'articles/index.html'),
+        ('all', 'Every article', 'articles/index.html#all'),
+        ('collections', 'Collections', 'articles/collections/index.html'),
+        ('desk', 'From the desk', 'articles/desk/index.html'),
+        ('graphs', 'As graphs', 'articles/graphs.html'),
+        ('newsroom', 'The newsroom', 'newsroom/index.html'),
+        ('subscribe', 'Subscribe', 'articles/index.html#subscribe'),
+    ]),
     ('why', 'Why', 'why/index.html', [
         ('why', 'Why sgit exists', 'why/index.html'),
         ('investors', 'Investors', 'investors/index.html'),
@@ -3514,16 +3543,13 @@ NAV = [
         ('lessons', 'Lessons learned', 'lessons/index.html'),
         ('use-cases', 'Use cases', 'use-cases/index.html'),
     ]),
-    ('updates', 'Updates', 'updates/index.html', [
-        ('updates', 'Updates', 'updates/index.html'),
-        ('articles', 'Articles', 'articles/index.html'),
-        ('admin', 'Version log', 'admin/versions.html'),
-    ]),
     ('team', 'Team', 'team/index.html', [
         ('team', 'How the site is run', 'team/index.html'),
         ('roles', 'Roles', 'team/index.html#roles'),
         ('prompts', 'Starting prompts', 'team/prompts.html'),
         ('board', 'The board', 'team/board.html'),
+        ('updates', 'Updates', 'updates/index.html'),
+        ('admin', 'Version log', 'admin/versions.html'),
     ]),
     ('network', 'Network', 'network/index.html', [
         ('network', 'All sites', 'network/index.html'),
@@ -4126,6 +4152,9 @@ LLMS_SECTIONS = [
     ('investors', 'Investors (the pitch in the open: architecture, computed traction, business model, and the ask left open until stated)'),
     ('updates', 'Updates (dated posts: what changed, one entry per story)'),
     ('articles', 'Articles (longer pieces that argue across pages, with the evidence linked)'),
+    ('collections', 'Collections (articles read together, each set with an introduction saying what it shows that no single article does)'),
+    ('desk', 'From the desk (short pieces written from the articles: nuggets, threads across articles, the week in one page)'),
+    ('newsroom', 'The newsroom (how articles are written, placed and connected: desk roles, behaviour policies, the board, the run log, and newsroom/wire.json for subscriber agents)'),
     ('network', 'The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)'),
     ('home', 'Optional'),
     ('security', 'Optional'),
@@ -4658,6 +4687,9 @@ def load_pages():
                   'Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it '
                   'makes, and how they connect, plus a map of how the articles link to each other.',
                   'articles', articles_graphs_body()))
+    # The newsroom: the backstage pages, the collections and the desk notes, all derived
+    # from admin/content/newsroom/ (see the newsroom section below).
+    pages.extend(newsroom_pages())
     # One page per agentic role, derived, a role is added by writing its file.
     for r in ROLES:
         pages.append((f'team/roles/{r["slug"]}.html',
@@ -5335,28 +5367,6 @@ def investors_traction():
     return f' <div class="team inv-nums">\n{tiles}\n </div>'
 
 
-def home_articles_band():
-    """The articles band on the homepage, derived from ARTICLES.
-
-    Articles turned out to be the readable surface over all of this, a reader who will
-    not work through a docs tree will read one argued page. So they get a place on the
-    homepage, and it is generated rather than hand-listed so a new article appears there
-    by being written, which is the same rule as everywhere else here."""
-    cards = [' ' + art_card(a, pre='articles/') for a in ARTICLES[:3]]
-    also = ''.join(f'<li><a href="articles/{a["slug"]}.html">{_short(a["title"], 64)}</a>'
-                   f'<span class="dim"> &middot; {a["date"]}</span></li>' for a in ARTICLES[3:8])
-    return ('<section class="band alt" id="articles">\n'
-            ' <h2>Start with an argument, not a menu</h2>\n'
-            ' <p class="bandlede">The articles are the readable way in: one page, one argument, '
-            'with the figures and the links to check it. They carry most of what this site believes, '
-            f'so they come before the menu. {len(ARTICLES)} so far, three newest here.</p>\n'
-            ' <div class="agrid home">\n' + '\n'.join(cards) + '\n </div>\n'
-            f' <ul class="aalso">{also}</ul>\n'
-            ' <p class="bandcta"><a class="cta2" href="articles/index.html">All articles, by topic &rarr;</a>'
-            ' &nbsp;&middot;&nbsp; <a class="cta2" href="articles/graphs.html">The articles as graphs &rarr;</a></p>\n'
-            '</section>')
-
-
 def network_chat_block():
     """The 'which of these is mine?' panel, and the catalogue it runs on.
 
@@ -5573,50 +5583,6 @@ def site_body(x):
             '</main>')
 
 
-def articles_index_body():
-    """The articles index: the newest piece with room to breathe, a filter by topic and a
-    search box, then one card per article with its picture and a one-sentence teaser, and
-    the threads between them. The wall of summaries it replaces (v0.6.38 and before) made
-    twenty-one good articles impossible to scan; the summaries are still on each article."""
-    newest, rest = ARTICLES[0], ARTICLES[1:]
-    out = ['<main class="doc">',
-           ' <h1>Articles</h1>',
-           ' <p class="lead">One page, one argument, with the figures and the links to check it. '
-           f'{len(ARTICLES)} so far. Filter by what you came for, or read them '
-           '<a href="graphs.html">as graphs</a>. Shorter, dated notes on individual changes are in '
-           '<a href="../updates/index.html">updates</a>.</p>',
-           ' ' + art_featured(newest),
-           ' ' + subscribe_block('../'),
-           articles_filter_bar(),
-           ' <div class="agrid" id="agrid">']
-    for a in rest:
-        out.append(' ' + art_card(a))
-    out.append(' </div>')
-    out.append(' <p class="dim" id="aempty" hidden>Nothing matches. Clear the search or pick another topic.</p>')
-    # the threads: which article builds on which, from the links the articles make
-    threaded = [a for a in ARTICLES if ARTICLE_OUT[a['slug']] or ARTICLE_IN[a['slug']]]
-    out.append(' <h2 id="threads">How they connect</h2>')
-    out.append(' <p class="small dim">Read from the links the articles make to each other. '
-               '<a href="graphs.html#map">The same thing drawn as a map</a>, and every article as its own graph.</p>')
-    out.append(' <ul class="athreadlist">')
-    for a in threaded:
-        bits = []
-        if ARTICLE_OUT[a['slug']]:
-            bits.append('builds on ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_OUT[a['slug']]))
-        if ARTICLE_IN[a['slug']]:
-            bits.append('continued by ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_IN[a['slug']]))
-        out.append(f' <li><a href="{a["slug"]}.html"><b>{_short(a["title"])}</b></a> <span class="dim">{"; ".join(bits)}.</span></li>')
-    out.append(' </ul>')
-    out.append(' <div class="note"><b>Two rules keep these from going stale.</b> An article never '
-               'restates a fact it does not own, it links to the page that does, so when the fact '
-               'changes the article does not start lying. And an article that makes a testable claim '
-               'links to the test, the same way <a href="../compare/index.html">the comparison '
-               'pages</a> do.</div>')
-    out.append('</main>')
-    out.append(ARTICLES_FILTER_JS)
-    return '\n'.join(out)
-
-
 def _short(title, n=52):
     """A title cut at the colon or the first full stop, or at a word boundary before n
     characters, for the dense lists where the full title would be a paragraph."""
@@ -5664,8 +5630,8 @@ def subscribe_block(pre='', compact=False):
             f'<a href="mailto:{SUBSCRIBE_TO}">{SUBSCRIBE_TO}</a>.</div>'
             f'<noscript><p class="small">This form needs JavaScript. Email '
             f'<a href="{href}">{SUBSCRIBE_TO}</a> instead.</p></noscript>'
-            f'<p class="small dim">Prefer a feed? <a href="{pre}updates/feed.xml">updates/feed.xml</a> '
-            f'carries the dated notes.</p></aside>')
+            f'<p class="small dim">Prefer a feed? <a href="{pre}articles/feed.xml">articles/feed.xml</a> carries the '
+            f'articles and the desk notes; agents can read <a href="{pre}newsroom/wire.json">the wire</a>.</p></aside>')
 
 
 def article_body(a):
@@ -5690,10 +5656,644 @@ def article_body(a):
             f' <p class="abstract"><em><b>Abstract:</b> {a["summary"]}</em></p>\n'
             + LOADER.md_to_html(a['body'], depth=1, where=a['where'])
             + article_threads_block(a)
+            + article_desk_block(a)
             + '\n ' + subscribe_block('../', compact=True)
             + '\n <p class="small dim" style="margin-top:2rem">'
               '<a href="index.html">&larr; All articles</a></p>\n'
             '</main>')
+
+
+# ============================================================ the newsroom
+# The editorial layer over the articles (admin/build/newsroom.py has the model and the rules).
+# Publishing stays adding one file: an article is live, in Latest, the archive, the feed and
+# the wire as soon as it exists. Placement (the lead, the highlights, the homepage band, the
+# featured collections) is the Editor's, in admin/content/newsroom/front.json, and nobody
+# else's. Everything below renders from those files; nothing on these pages is hand-listed.
+from newsroom import Newsroom, NOTE_KINDS, BOARD_STATUS
+
+NEWS = Newsroom(LOADER, os.path.join(ADMIN, 'content'), ARTICLES)
+NOTES_BY_SLUG = {n['slug']: n for n in NEWS.notes}
+NOTES_CITING = {a['slug']: [n for n in NEWS.notes if a['slug'] in n['cites']] for a in ARTICLES}
+COLLECTIONS_OF = {a['slug']: [c for c in NEWS.collections if a['slug'] in c['slugs']] for a in ARTICLES}
+for _lvl, _where, _text in NEWS.findings:
+    print(f'newsroom {_lvl}: {_where}: {_text}')
+
+
+def _plain(md):
+    """Markdown reduced to its words, for checking that a quote is really in an article:
+    links to their text, emphasis and code marks dropped, quotes straightened, whitespace
+    collapsed."""
+    s = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', md)
+    s = re.sub(r'[*`]', '', s)
+    s = s.replace('“', '"').replace('”', '"').replace('’', "'").replace('‘', "'")
+    return re.sub(r'\s+', ' ', s).strip()
+
+
+def _quote_html(slug, text, root, why=''):
+    a = BY_SLUG[slug]
+    return (f'<blockquote class="dquote"><p>{_esc(text)}</p>'
+            f'<cite>From <a href="{root}articles/{slug}.html">{_esc(a["title"])}</a>, {a["date"]}</cite>'
+            + (f'<span class="dquote-why">{_esc(why)}</span>' if why else '') + '</blockquote>')
+
+
+def _range_list(lo, hi, root):
+    xs = [a for a in ARTICLES if lo <= a['date'] <= hi]
+    items = ''.join(f'<li><span class="drange-date">{a["date"]}</span> <a href="{root}articles/{a["slug"]}.html">'
+                    f'{_esc(a["title"])}</a><span class="dim"> {_esc(art_teaser(a))}</span></li>' for a in xs)
+    return (f'<div class="drange"><p class="drange-head"><b>{number_words(len(xs)).capitalize()} article'
+            f'{"s" if len(xs) != 1 else ""}</b> published from {lo} to {hi}, newest first, each with the one-sentence '
+            f'teaser from its graph.</p><ol>{items}</ol></div>')
+
+
+def desk_md(body, depth, where):
+    """Article markdown, plus four directives that make a short note out of the data the
+    articles already carry. A quote is checked against the article's text at build time,
+    so a note cannot misquote, and when the article changes the build says so."""
+    root = '../' * depth
+    out, buf = [], []
+
+    def flush():
+        if buf:
+            out.append(LOADER.md_to_html('\n'.join(buf), depth=depth, where=where))
+            buf.clear()
+
+    for line in body.split('\n'):
+        m_q = re.match(r'^!quote\s+([a-z0-9\-]+)\s*(?:\|\s*(.+?)|#(\d+))\s*$', line)
+        m_a = re.match(r'^!article\s+([a-z0-9\-]+)\s*$', line)
+        m_r = re.match(r'^!articles\s+(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\s*$', line)
+        if not (m_q or m_a or m_r):
+            buf.append(line)
+            continue
+        flush()
+        if m_r:
+            out.append(_range_list(m_r.group(1), m_r.group(2), root))
+            continue
+        slug = (m_q or m_a).group(1)
+        if slug not in BY_SLUG:
+            raise Content_Error(f'{where}: {line.split()[0]} names {slug!r}, which is not a published article')
+        if m_a:
+            out.append('<div class="agrid dcard">' + art_card(BY_SLUG[slug], pre=root + 'articles/') + '</div>')
+        elif m_q.group(2):
+            text = m_q.group(2).strip()
+            if _plain(text) not in _plain(BY_SLUG[slug]['body']):
+                raise Content_Error(f'{where}: the quote is not in {slug}.md word for word: {text[:80]!r}')
+            out.append(_quote_html(slug, text, root))
+        else:
+            qs = GRAPHS.get(slug, {}).get('quotes', [])
+            n = int(m_q.group(3))
+            if not 1 <= n <= len(qs):
+                raise Content_Error(f'{where}: {slug} has {len(qs)} quotes in its graph; #{n} does not exist')
+            out.append(_quote_html(slug, qs[n - 1]['text'], root, qs[n - 1].get('why', '')))
+    flush()
+    return '\n'.join(out)
+
+
+# ---------------------------------------------------------------- shared pieces
+
+_CUR = ' aria-current="page"'
+
+
+def _kicker(s):
+    return f'<span class="fkick">{_esc(s)}</span>' if s else ''
+
+
+def _note_teaser(n, root, show_kind=True):
+    """A desk note as a row: kind, title, summary. A nugget shows its first quote instead,
+    because the quote is the point of a nugget."""
+    q = re.search(r'^!quote\s+([a-z0-9\-]+)\s*\|\s*(.+?)\s*$', n['body'], re.M)
+    lead = (f'<span class="dnote-q">{_esc(q.group(2))}</span>' if n['kind'] == 'nugget' and q
+            else f'<span class="dnote-sum">{_esc(n["summary"])}</span>')
+    kind = f'<span class="fkick">{NOTE_KINDS[n["kind"]]}</span>' if show_kind else ''
+    return (f'<a class="dnote dnote-{n["kind"]}" href="{root}articles/desk/{n["slug"]}.html">'
+            f'<span class="dnote-meta">{kind}<span class="acard-date">{n["date"]}</span>'
+            f'<span class="dnote-by">{_esc(n["role"]).capitalize()}</span></span>'
+            f'<b>{_esc(n["title"])}</b>{lead}</a>')
+
+
+def _collection_tile(c, root):
+    thumbs = ''.join(f'<figure class="shot cardshot" data-shot="{art_card_img(BY_SLUG[s])}" '
+                     f'data-dir="{root}articles/cards/" data-alt="{_esc(BY_SLUG[s]["title"])}"></figure>'
+                     for s in c['slugs'][:3])
+    return (f'<a class="ctile" href="{root}articles/collections/{c["id"]}.html">'
+            f'<span class="ctile-thumbs">{thumbs}</span>'
+            f'<span class="fkick">Collection &middot; {len(c["slugs"])} articles</span>'
+            f'<b>{_esc(c["title"])}</b><span class="ctile-dek">{_esc(c["dek"])}</span></a>')
+
+
+def _lead_block(slot, root, big=True):
+    a = BY_SLUG[slot['slug']]
+    g = GRAPHS.get(a['slug'], {})
+    fig = (f'<figure class="shot cardshot" data-shot="{art_card_img(a)}" data-dir="{root}articles/cards/" '
+           f'data-alt="{_esc(a["title"])}"></figure>')
+    why = f'<span class="flead-why"><b>Why it leads.</b> {_esc(slot["why"])}</span>' if slot.get('why') else ''
+    return (f'<a class="flead{" big" if big else ""}" href="{root}articles/{a["slug"]}.html">{fig}'
+            f'<span class="flead-text"><span class="acard-meta">{_kicker(slot.get("kicker") or "Lead")}'
+            f'<span class="acard-date">{a["date"]}</span>{_topic_chips(art_topics(a)[:1])}</span>'
+            f'<b>{_esc(a["title"])}</b>'
+            f'<span class="flead-teaser">{_esc(art_teaser(a))}</span>{why}'
+            f'<span class="artcard-go">Read it &rarr;</span></span></a>')
+
+
+def _high_card(slot, root):
+    a = BY_SLUG[slot['slug']]
+    return (f'<a class="fhigh" href="{root}articles/{a["slug"]}.html">'
+            f'<figure class="shot cardshot" data-shot="{art_card_img(a)}" data-dir="{root}articles/cards/" '
+            f'data-alt="{_esc(a["title"])}"></figure>'
+            f'<span class="acard-meta">{_kicker(slot.get("kicker"))}<span class="acard-date">{a["date"]}</span></span>'
+            f'<b>{_esc(_short(a["title"], 90))}</b>'
+            f'<span class="fhigh-why">{_esc(slot.get("why") or art_teaser(a))}</span></a>')
+
+
+def _latest_rail(n, root, title='Latest'):
+    xs = NEWS.latest(n)
+    lis = ''.join(f'<li><span class="acard-date">{a["date"]}</span><a href="{root}articles/{a["slug"]}.html">'
+                  f'{_esc(_short(a["title"], 84))}</a></li>' for a in xs)
+    return (f'<aside class="frail" aria-label="{title}"><h2 class="fsect">{title}</h2><ol>{lis}</ol>'
+            f'<a class="frail-more" href="{root}articles/index.html#all">Every article, {len(ARTICLES)} &rarr;</a></aside>')
+
+
+def articles_subnav(cur, root):
+    items = [('front', 'Front page', 'articles/index.html'), ('all', 'Every article', 'articles/index.html#all'),
+             ('collections', 'Collections', 'articles/collections/index.html'),
+             ('desk', 'From the desk', 'articles/desk/index.html'), ('graphs', 'As graphs', 'articles/graphs.html'),
+             ('newsroom', 'The newsroom', 'newsroom/index.html'), ('subscribe', 'Subscribe', 'articles/index.html#subscribe')]
+    return ('<nav class="fsub" aria-label="Articles">' + ''.join(
+        f'<a href="{root}{h}"{_CUR if k == cur else ""}>{l}</a>' for k, l, h in items) + '</nav>')
+
+
+def _masthead(root, cur, title='Articles', sub=''):
+    fr = NEWS.front
+    ed = f'Edition of {fr["edition"]}' if fr['edition'] else 'Unedited'
+    return (f'<header class="fmast">'
+            f'<p class="fdateline"><span>{ed}</span><span>{len(ARTICLES)} articles &middot; {len(NEWS.notes)} desk notes '
+            f'&middot; {len(NEWS.collections)} collections</span><span>sgit.ai &middot; {SITE_VERSION}</span></p>'
+            f'<h1>{title}</h1>'
+            + (f'<p class="fmast-sub">{sub}</p>' if sub else '')
+            + articles_subnav(cur, root) + '</header>')
+
+
+# ---------------------------------------------------------------- the articles front
+
+def articles_index_body():
+    """The front page of the articles, laid out like a broadsheet: dateline and masthead,
+    the lead with the Editor's reason, the Latest rail (every article, newest first, with no
+    placement needed), the highlights, the desk, the collections, then every article with
+    the topic filter and search. Which article sits where comes from front.json alone."""
+    root = '../'
+    lead = NEWS.lead()
+    fr = NEWS.front
+    out = ['<main class="front">',
+           _masthead(root, 'front', sub='One page, one argument, with the figures, the data and the links to check '
+                     'it. Every article is live the moment it is written; the front is the '
+                     '<a href="../newsroom/index.html">newsroom</a>\'s choice of where to start.')]
+    if fr['note']:
+        out.append(f'<p class="fnote"><span class="fkick">From the editor</span> {_esc(fr["note"])} '
+                   f'<a href="../newsroom/log.html">The desk log &rarr;</a></p>')
+    out.append('<div class="ftop">' + (_lead_block(lead, root) if lead else '') + _latest_rail(10, root) + '</div>')
+    if fr['highlights']:
+        out.append('<section class="fband"><h2 class="fsect">Highlights</h2><div class="fhighs">'
+                   + ''.join(_high_card(h, root) for h in fr['highlights']) + '</div></section>')
+    if NEWS.notes:
+        out.append('<section class="fband"><h2 class="fsect">From the desk <a href="desk/index.html">all notes &rarr;</a></h2>'
+                   '<div class="dnotes">' + ''.join(_note_teaser(n, root) for n in NEWS.notes[:4]) + '</div></section>')
+    feat = [c for cid in fr['collections'] for c in NEWS.collections if c['id'] == cid] or NEWS.collections[:3]
+    if feat:
+        out.append('<section class="fband"><h2 class="fsect">Collections <a href="collections/index.html">all collections &rarr;</a></h2>'
+                   '<div class="ctiles">' + ''.join(_collection_tile(c, root) for c in feat) + '</div></section>')
+    out.append('<section class="fband" id="subscribe">' + subscribe_block('../') + '</section>')
+    out.append(f'<section class="fband" id="all"><h2 class="fsect">Every article, newest first</h2>')
+    out.append(articles_filter_bar())
+    out.append(' <div class="agrid" id="agrid">')
+    for a in ARTICLES:
+        out.append(' ' + art_card(a))
+    out.append(' </div>')
+    out.append(' <p class="dim" id="aempty" hidden>Nothing matches. Clear the search or pick another topic.</p></section>')
+    threaded = [a for a in ARTICLES if ARTICLE_OUT[a['slug']] or ARTICLE_IN[a['slug']]]
+    out.append('<section class="fband"><h2 class="fsect" id="threads">How they connect</h2>')
+    out.append(' <p class="small dim">Read from the links the articles make to each other. '
+               '<a href="graphs.html#map">The same thing drawn as a map</a>, and every article as its own graph.</p>')
+    out.append(' <ul class="athreadlist">')
+    for a in threaded:
+        bits = []
+        if ARTICLE_OUT[a['slug']]:
+            bits.append('builds on ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_OUT[a['slug']]))
+        if ARTICLE_IN[a['slug']]:
+            bits.append('continued by ' + ', '.join(f'<a href="{s}.html">{_short(BY_SLUG[s]["title"])}</a>' for s in ARTICLE_IN[a['slug']]))
+        out.append(f' <li><a href="{a["slug"]}.html"><b>{_short(a["title"])}</b></a> <span class="dim">{"; ".join(bits)}.</span></li>')
+    out.append(' </ul>')
+    out.append(' <div class="note"><b>Two rules keep these from going stale.</b> An article never '
+               'restates a fact it does not own, it links to the page that does, so when the fact '
+               'changes the article does not start lying. And an article that makes a testable claim '
+               'links to the test, the same way <a href="../compare/index.html">the comparison '
+               'pages</a> do.</div></section>')
+    out.append('</main>')
+    out.append(ARTICLES_FILTER_JS)
+    return '\n'.join(out)
+
+
+def home_articles_band():
+    """The homepage band: the Editor's lead, the first highlights, the newest few, and the
+    newest desk note. Counts come from front.json's `homepage`; with no front.json it is
+    the newest article and the next three, which is what the band showed before v0.6.84."""
+    hp = NEWS.front.get('homepage') or {}
+    nh, nl, nn = int(hp.get('highlights', 3)), int(hp.get('latest', 5)), int(hp.get('notes', 1))
+    lead = NEWS.lead()
+    highs = NEWS.front['highlights'][:nh] or [{'slug': a['slug'], 'kicker': '', 'why': ''} for a in ARTICLES[1:1 + nh]]
+    shown = {lead['slug']} | {h['slug'] for h in highs} if lead else set()
+    latest = [a for a in NEWS.latest() if a['slug'] not in shown][:nl]
+    lis = ''.join(f'<li><span class="acard-date">{a["date"]}</span><a href="articles/{a["slug"]}.html">'
+                  f'{_esc(_short(a["title"], 84))}</a></li>' for a in latest)
+    notes = ''.join(_note_teaser(n, '') for n in NEWS.notes[:nn])
+    return ('<section class="band alt front-band" id="articles">\n <div class="inner-wide">\n'
+            ' <div class="fband-head"><h2>Start with an argument, not a menu</h2>'
+            f'<p class="bandlede">The articles carry most of what this site believes, with the figures, the data and the links '
+            f'to check it. {number_words(len(ARTICLES)).capitalize()} so far; the newsroom picks where to start.</p></div>\n'
+            ' <div class="ftop">' + (_lead_block(lead, '') if lead else '')
+            + f'<aside class="frail"><h3 class="fsect">Also new</h3><ol>{lis}</ol>' + notes + '</aside></div>\n'
+            ' <div class="fhighs home">' + ''.join(_high_card(h, '') for h in highs) + '</div>\n'
+            ' <p class="bandcta"><a class="cta2" href="articles/index.html">The front page &rarr;</a>'
+            ' &nbsp;&middot;&nbsp; <a class="cta2" href="articles/collections/index.html">Collections &rarr;</a>'
+            ' &nbsp;&middot;&nbsp; <a class="cta2" href="newsroom/index.html">How the newsroom works &rarr;</a></p>\n'
+            ' </div>\n</section>')
+
+
+# ---------------------------------------------------------------- collections and desk notes
+
+def collections_index_body():
+    root = '../../'
+    out = ['<main class="front">', _masthead(root, 'collections', 'Collections',
+           'Articles read together. Each collection is curated by the Historian, says in its introduction '
+           'what the set shows that no single article does, and grows when a new article joins the pattern.'),
+           '<div class="ctiles wide">' + ''.join(_collection_tile(c, root) for c in NEWS.collections) + '</div>',
+           '<p class="small dim">A collection is one file in <code>admin/content/newsroom/collections/</code>. '
+           '<a href="../../newsroom/publish.html">How the desk publishes</a>.</p>', '</main>']
+    return '\n'.join(out)
+
+
+def collection_body(c):
+    root = '../../'
+    cards = ''.join(art_card(BY_SLUG[s], pre=root + 'articles/') for s in c['slugs'])
+    return ('<main class="doc">\n'
+            f' <p class="crumb"><a href="{root}index.html">Home</a> / <a href="../index.html">Articles</a> / '
+            f'<a href="index.html">Collections</a> / {_esc(c["title"])}</p>\n'
+            f' <p class="eyebrow">Collection &middot; {len(c["slugs"])} articles &middot; curated by the '
+            f'<a href="{root}newsroom/roles/{c["curator"]}.html">{_esc(c["curator"]).capitalize()}</a> &middot; updated {c["updated"]}</p>\n'
+            f' <h1>{_esc(c["title"])}</h1>\n <p class="lead">{_esc(c["dek"])}</p>\n'
+            + desk_md(c['body'], 2, c['where'])
+            + f'\n <h2>The articles</h2>\n <div class="agrid">{cards}</div>\n'
+            f' <p class="small dim"><a href="index.html">&larr; All collections</a> &middot; '
+            f'<a href="../index.html">The front page</a></p>\n</main>')
+
+
+def desk_index_body():
+    root = '../../'
+    groups = []
+    for k, label in NOTE_KINDS.items():
+        xs = [n for n in NEWS.notes if n['kind'] == k]
+        if xs:
+            groups.append((label, xs))
+    out = ['<main class="front">', _masthead(root, 'desk', 'From the desk',
+           'Short pieces written from the articles: a line that matters beyond the article it is in, a connection '
+           'none of them states, the week in one page. Every quote is checked against the article when the site is built.'),
+           '<div class="dnotes wide">' + ''.join(_note_teaser(n, root) for n in NEWS.notes) + '</div>']
+    if not NEWS.notes:
+        out.append('<p class="dim">No notes yet.</p>')
+    out.append('<p class="small dim">Kinds: ' + ' &middot; '.join(f'{l} ({len(xs)})' for l, xs in groups)
+               + '. Written by the <a href="../../newsroom/roles/historian.html">Historian</a> and the '
+               '<a href="../../newsroom/roles/journalist.html">Journalist</a>.</p>')
+    out.append('</main>')
+    return '\n'.join(out)
+
+
+def note_body(n):
+    root = '../../'
+    cites = ''.join(_art_link_li(s, root + 'articles/') for s in n['cites'])
+    return ('<main class="doc dnote-page">\n'
+            f' <p class="crumb"><a href="{root}index.html">Home</a> / <a href="../index.html">Articles</a> / '
+            f'<a href="index.html">From the desk</a> / {NOTE_KINDS[n["kind"]]}</p>\n'
+            f' <p class="eyebrow">{NOTE_KINDS[n["kind"]]} &middot; {n["date"]} &middot; by the '
+            f'<a href="{root}newsroom/roles/{n["role"]}.html">{_esc(n["role"]).capitalize()}</a></p>\n'
+            f' <h1>{_esc(n["title"])}</h1>\n <p class="abstract"><em>{_esc(n["summary"])}</em></p>\n'
+            + desk_md(n['body'], 2, n['where'])
+            + (f'\n <section class="athreads"><h2>Rests on</h2><ul>{cites}</ul></section>' if cites else '')
+            + f'\n <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; From the desk</a> &middot; '
+            f'<a href="../index.html">The front page</a></p>\n</main>')
+
+
+def article_desk_block(a):
+    """At the foot of an article: the desk notes that cite it and the collections it is in,
+    so a reader finishing one piece is shown what the desk found across it."""
+    notes, cols = NOTES_CITING[a['slug']], COLLECTIONS_OF[a['slug']]
+    if not notes and not cols:
+        return ''
+    lis = ''.join(f'<li><a href="desk/{n["slug"]}.html">{_esc(n["title"])}</a> '
+                  f'<span class="dim">{NOTE_KINDS[n["kind"]].lower()}, {n["date"]}</span></li>' for n in notes)
+    lis += ''.join(f'<li><a href="collections/{c["id"]}.html">{_esc(c["title"])}</a> '
+                   f'<span class="dim">collection, {len(c["slugs"])} articles</span></li>' for c in cols)
+    return f'\n<section class="athreads" id="desk"><h2>From the desk</h2><ul>{lis}</ul></section>'
+
+
+# ---------------------------------------------------------------- the newsroom (public, backstage)
+
+NEWSROOM_TABS = [('index', 'Overview', 'index.html'), ('roles', 'Roles', 'index.html#roles'),
+                 ('policies', 'Policies', 'policies.html'), ('publish', 'How to publish', 'publish.html'),
+                 ('board', 'Board', 'board.html'), ('log', 'Log', 'log.html'), ('wire', 'The wire', 'wire.json')]
+
+
+def newsroom_subnav(cur, pre=''):
+    return ('<nav class="fsub nsub" aria-label="Newsroom">' + ''.join(
+        f'<a href="{pre}{h}"{_CUR if k == cur else ""}>{l}</a>' for k, l, h in NEWSROOM_TABS) + '</nav>')
+
+
+def _nr_head(cur, title, lead, pre=''):
+    return (f' <p class="crumb"><a href="{pre}../index.html">Home</a> / <a href="{pre}../articles/index.html">Articles</a> / '
+            + (f'<a href="{pre}index.html">Newsroom</a> / ' if cur != 'index' else '') + f'{title}</p>\n'
+            f' <p class="eyebrow">The newsroom</p>\n <h1>{title}</h1>\n <p class="lead">{lead}</p>\n'
+            + newsroom_subnav(cur, pre) + '\n')
+
+
+def _health_html(limit=None):
+    rows = NEWS.health(lambda s: s in GRAPHS, lambda s: art_card_img(BY_SLUG[s]) != 'default.webp')
+    if not rows:
+        return '<p class="nhealth-ok"><b>Nothing to do.</b> Every placement resolves, no pitch is open, the lead is current.</p>'
+    label = {'warn': 'Fix', 'todo': 'To do', 'info': 'Note'}
+    order = {'warn': 0, 'todo': 1, 'info': 2}
+    rows = sorted(rows, key=lambda r: order[r[0]])
+    more = len(rows) - limit if limit and len(rows) > limit else 0
+    rows = rows[:limit] if limit else rows
+    lis = ''.join(f'<li class="nh-{l}"><span class="nh-tag">{label[l]}</span> <code>{_esc(w)}</code> {_esc(t)}</li>' for l, w, t in rows)
+    return f'<ul class="nhealth">{lis}</ul>' + (f'<p class="small dim">and {more} more; <code>python3 admin/build/desk.py</code> lists them all.</p>' if more else '')
+
+
+def _role_cards(pre):
+    return '<div class="nroles">' + ''.join(
+        f'<a class="nrole" href="{pre}roles/{r["slug"]}.html"><b>{_esc(r["title"])}</b>'
+        f'<span>{_esc(r["mission"])}</span><span class="nrole-claim">{_esc(r["claim"])}</span></a>' for r in NEWS.roles) + '</div>'
+
+
+def _front_table(pre):
+    fr = NEWS.front
+    rows = []
+    lead = NEWS.lead()
+    if lead:
+        rows.append(('Lead', lead['slug'], lead.get('why', '') or 'newest article, no lead set'))
+    rows += [('Highlight', h['slug'], h.get('why', '')) for h in fr['highlights']]
+    rows += [('Collection', c['id'], c['dek']) for cid in fr['collections'] for c in NEWS.collections if c['id'] == cid]
+    trs = ''.join(f'<tr><td>{k}</td><td><a href="{pre}../articles/'
+                  + (f'collections/{s}.html' if k == 'Collection' else f'{s}.html') + f'">{_esc(s)}</a></td><td>{_esc(w)}</td></tr>'
+                  for k, s, w in rows)
+    return f'<div class="tablewrap"><table><tr><th>Slot</th><th>What</th><th>Why, in the Editor\'s words</th></tr>{trs}</table></div>'
+
+
+def newsroom_index_body():
+    fr = NEWS.front
+    last = NEWS.log[0] if NEWS.log else None
+    open_p = [p for p in NEWS.pitches if p['status'] == 'open']
+    return ('<main class="doc newsroom">\n' + _nr_head('index', 'The newsroom',
+        'How the articles on this site get written, placed and connected, by one person and a desk of agents. '
+        'Public on purpose: the roles, the rules each one works under, the board, and a log of every run.')
+        + '<div class="note"><b>The one rule, and the one exception.</b> Publishing is adding one file: any agent that '
+        'writes an article has published it, live, at the top of Latest, in the feed and in the wire, with no approval step. '
+        'The exception is <b>placement</b>. What leads, what is highlighted, what the homepage carries: one role, the '
+        '<a href="roles/editor.html">Editor</a>, owns that, in one file. Everyone else asks with a pitch. '
+        'The rule comes from the agent team that tried "only one agent may draft" and '
+        '<a href="../articles/desk/create-anywhere-edit-your-own.html">found it a bottleneck in two days</a>.</div>\n'
+        '<h2 id="flow">How a piece moves</h2>\n'
+        '<ol class="nflow">'
+        '<li><b>Written.</b> A contributor or the Journalist adds <code>admin/content/articles/&lt;slug&gt;.md</code>, '
+        'its graph, figures and card. The build makes it a page.</li>'
+        '<li><b>Live.</b> The release ships it: its URL, the top of <a href="../articles/index.html#all">Latest</a>, '
+        '<a href="../articles/feed.xml">the feed</a>, <a href="wire.json">the wire</a>. Nobody has been asked.</li>'
+        '<li><b>Pitched</b> (optional). Anyone adds <code>admin/content/newsroom/pitches/&lt;date&gt;__&lt;slug&gt;.md</code> '
+        'asking for the lead, a highlight, the homepage or a collection.</li>'
+        '<li><b>Placed.</b> On its run the Editor reads what is new, answers the pitches, and rewrites '
+        '<code>front.json</code> with a reason for every slot.</li>'
+        '<li><b>Connected.</b> The Historian reads across the articles and publishes what none says alone, as a '
+        '<a href="../articles/desk/index.html">desk note</a> or a <a href="../articles/collections/index.html">collection</a>; '
+        'the Journalist writes the week.</li>'
+        '<li><b>Sent.</b> The agents that write to subscribers read the wire, not the pages, and pick for each reader '
+        'from the topics, the graphs and the desk notes.</li></ol>\n'
+        f'<h2 id="front">Today\'s front, and why</h2>\n<p>Edition of <b>{fr["edition"] or "none yet"}</b>. '
+        f'{_esc(fr["note"])}</p>\n' + _front_table('') + '\n'
+        '<h2 id="health">Desk health</h2>\n<p class="small dim">Computed at every build from the files: placements that '
+        'point at nothing, articles published since the edition, open pitches, articles without a graph or a card. '
+        'The same list is what <code>python3 admin/build/desk.py</code> prints for the Editor.</p>\n'
+        + _health_html(12) + '\n'
+        f'<h2 id="roles">The desk: {number_words(len(NEWS.roles))} roles</h2>\n'
+        '<p>Each role is a file under <code>admin/content/newsroom/roles/</code> with a mission, a sentence that says '
+        'when it has failed, and a write list that is its behaviour policy. The definitions of the Historian and the '
+        'Journalist come from the <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/tree/HEAD/team/roles">SG/Send '
+        'agent team</a>; the site-operations roles (Sherpa, Publisher, Release engineer) are on <a href="../team/index.html">the team page</a>.</p>\n'
+        + _role_cards('') + '\n'
+        f'<h2 id="latest-run">Latest run</h2>\n'
+        + (f'<p><b>{last["date"]} {last["time"]}, {_esc(last["role"]).capitalize()}:</b> {_esc(last["title"])}. '
+           f'<a href="log.html#{last["slug"]}">Read the entry &rarr;</a></p>\n' if last else '<p class="dim">No runs logged.</p>\n')
+        + f'<p>{len(open_p)} open pitch{"es" if len(open_p) != 1 else ""} &middot; '
+        + ' &middot; '.join(f'{len([c for c in NEWS.board if c["status"] == s])} {s}' for s in BOARD_STATUS)
+        + ' on <a href="board.html">the board</a>.</p>\n'
+        '<h2 id="agents">For the agents that write to subscribers</h2>\n'
+        '<p>The point of all of this is a source the personal-newsletter agents can trust. They read '
+        '<a href="wire.json"><code>newsroom/wire.json</code></a>: every article with its date, teaser, topics, placement, '
+        'graph and markdown twin; every desk note with what it cites; every collection. One fetch, no scraping. The RSS '
+        'version is <a href="../articles/feed.xml"><code>articles/feed.xml</code></a>.</p>\n'
+        '</main>')
+
+
+def newsroom_role_body(r):
+    pol = ''.join(f'<li><code>{_esc(g)}</code></li>' for g in r['writes'])
+    ed = ''.join(f'<li><code>{_esc(g)}</code> (status lines only)</li>' for g in r['edits'])
+    return ('<main class="doc newsroom">\n' + _nr_head('roles', r['title'], _esc(r['mission']), '../')
+            + f'<div class="note"><b>It has failed when:</b> {_esc(r["claim"][3:] if r["claim"].startswith("If ") else r["claim"])}</div>\n'
+            '<div class="tablewrap"><table>'
+            f'<tr><th>Owns</th><td>{_esc(r["owns"])}</td></tr>'
+            f'<tr><th>Never</th><td>{_esc(r["never"])}</td></tr>'
+            + (f'<tr><th>Cadence</th><td>{_esc(r["cadence"])}</td></tr>' if r.get('cadence') else '')
+            + '</table></div>\n'
+            f'<h2 id="policy">Write policy</h2><p class="small dim">Read by <code>admin/build/policy_check.py --role {r["slug"]}</code>. '
+            f'Paths the role may create or change:</p><ul>{pol}{ed}</ul>\n'
+            + LOADER.md_to_html(r['body'], depth=2, where=r['where'])
+            + '\n<p class="small dim" style="margin-top:2rem"><a href="../index.html#roles">&larr; All desk roles</a></p>\n</main>')
+
+
+def newsroom_policies_body():
+    paths = sorted({g for r in NEWS.roles for g in r['writes'] + r['edits']})
+    head = ''.join(f'<th>{_esc(r["title"])}</th>' for r in NEWS.roles)
+    trs = []
+    for p in paths:
+        # the same matcher policy_check.py uses, so admin/build/* covers build_pages.py here too
+        def cell(r):
+            ok, why = NEWS.may_write(r['slug'], p.replace('*', 'x'))
+            return ('<td class="pol-n">&middot;</td>' if not ok else
+                    '<td class="pol-e">status</td>' if why.startswith('edits') else '<td class="pol-y">writes</td>')
+        cells = ''.join(cell(r) for r in NEWS.roles)
+        trs.append(f'<tr><td><code>{_esc(p)}</code></td>{cells}</tr>')
+    nevers = ''.join(f'<li><b>{_esc(r["title"])}</b> never: {_esc(r["never"])}.</li>' for r in NEWS.roles)
+    return ('<main class="doc newsroom">\n' + _nr_head('policies', 'Behaviour policies',
+        'What each desk role may write, generated from the same role files the policy checker reads, so this table '
+        'and the check cannot disagree.')
+        + '<p>A behaviour policy, in <a href="https://riskmandate.ai/abp.html">RiskMandate\'s terms</a>, says what an agent can '
+        'reach, what it was asked to do, the gap between the two and the barriers in the gap. For a desk of agents working in '
+        'one repository, the reach is every file and the mandate is a short list of paths. The barrier is a check: '
+        '<code>python3 admin/build/policy_check.py --role &lt;role&gt;</code> lists every file a branch changed that is outside '
+        'the role\'s list. Generated pages are outside every list and ignored by the check, because the build writes them; '
+        'the release lines in <code>build_pages.py</code> (<code>SITE_VERSION</code> and the <code>VERSION_LOG</code>) are '
+        'shared by every role that releases.</p>\n'
+        f'<div class="tablewrap"><table class="poltable"><tr><th>Path</th>{head}</tr>{"".join(trs)}</table></div>\n'
+        f'<h2 id="never">What each role never does</h2><ul>{nevers}</ul>\n'
+        '<h2 id="principles">Three principles</h2><ul>'
+        '<li><b>Create anywhere, edit your own.</b> Any role adds files; only a file\'s author edits it. The one exception is a '
+        'pitch\'s <code>status</code> line, which is how the Editor answers.</li>'
+        '<li><b>One owner for each shared surface.</b> The front is the Editor\'s, collections are the Historian\'s, the build '
+        'is the Developer\'s. Ownership is what stops two agents rewriting the same thing in turn.</li>'
+        '<li><b>Flag, do not fix.</b> A problem in another role\'s file becomes a pitch, a board card or a correction note. '
+        'From the <a href="https://github.com/the-cyber-boardroom/SGraph-AI__App__Send/blob/HEAD/team/roles/librarian/ROLE.md">SG/Send '
+        'Librarian</a>.</li></ul>\n</main>')
+
+
+def newsroom_publish_body():
+    return ('<main class="doc newsroom">\n' + _nr_head('publish', 'How to publish',
+        'For any agent writing for sgit.ai: what to add, what happens, and how to ask for more than Latest.')
+        + '<h2 id="article">An article</h2>'
+        '<ol><li>Write <code>admin/content/articles/&lt;slug&gt;.md</code> with <code>title</code>, <code>date</code>, '
+        '<code>summary</code>, <code>tags</code>, and <code>author</code> + <code>author_url</code> if it is first person. '
+        'The full contract is <code>admin/content/CONTENT.md</code>.</li>'
+        '<li>Write its graph, <code>admin/content/articles/graphs/&lt;slug&gt;.json</code>: the teaser, one or two topics, '
+        'the core idea, the nodes and edges, and the quotes. The card, the threads, the wire and the desk all read it.</li>'
+        '<li>Figures go in <code>articles/images/</code>, the card in <code>articles/cards/&lt;slug&gt;.webp</code>; '
+        'data the article was written from in <code>articles/data/</code>. <b>Prefer evidence to words:</b> a dataset, a '
+        'graph, a vault and its read key are worth more than another paragraph.</li>'
+        '<li>Build, validate, check your policy, release:'
+        '<pre class="shell">python3 admin/build/build_pages.py\nnode admin/build/validate.js\n'
+        'python3 admin/build/policy_check.py --role contributor\n./admin/build/release.sh "site vX.Y.Z: ..."</pre></li></ol>'
+        '<p>The article is now live and at the top of Latest. You did not need the desk, and you did not touch '
+        '<code>front.json</code>.</p>'
+        '<h2 id="pitch">Asking for a placement</h2>'
+        '<p>Add one file, <code>admin/content/newsroom/pitches/YYYY-MM-DD__&lt;slug&gt;.md</code>:</p>'
+        '<pre class="shell">---\ndate: 2026-10-07\nfrom: contributor\nask: lead          # lead | highlight | homepage | collection | note\n'
+        'article: the-slug\nstatus: open\n---\nWhy this article, why now, what it shows that the current front does not.</pre>'
+        '<p>The Editor answers on its next run by changing <code>status</code> to accepted, declined or parked, with a '
+        '<code>decision:</code> line. Open pitches are listed under <a href="index.html#health">desk health</a>.</p>'
+        '<h2 id="notes">A desk note</h2>'
+        '<p>Desk roles write <code>admin/content/newsroom/notes/YYYY/MM/DD/&lt;slug&gt;.md</code> with <code>title</code>, '
+        '<code>date</code>, <code>kind</code> (nugget, thread, weekly, brief, correction), <code>role</code>, <code>cites</code> '
+        '(article slugs) and <code>summary</code>. Four directives make a note out of the articles\' own data:</p>'
+        '<pre class="shell">!quote &lt;slug&gt; | &lt;exact text&gt;     checked word for word against the article\n'
+        '!quote &lt;slug&gt; #&lt;n&gt;               the n-th quote in the article\'s graph\n'
+        '!article &lt;slug&gt;                  the article\'s card\n'
+        '!articles 2026-10-01..2026-10-07   every article in the range, with its teaser and the count</pre>'
+        '<p>A note that misquotes an article fails the build, and so does a note whose quote stops being true '
+        'because the article changed. The desk then has to decide which one is right.</p>'
+        '<h2 id="breaks">What cannot break</h2>'
+        '<p>If <code>front.json</code> names an article that was renamed or held back, the build skips that slot, falls back '
+        'to the newest article for the lead, and lists the problem under desk health. A contributor\'s rename is never '
+        'blocked by a file only the Editor may edit.</p>\n</main>')
+
+
+def newsroom_board_body():
+    cols = []
+    for s in BOARD_STATUS:
+        cards = ''.join(f'<div class="ncard"><span class="nid">{_esc(c["id"])}</span> <b>{_esc(c["title"])}</b>'
+                        f'<span class="small dim"><a href="roles/{c["role"]}.html">{_esc(c["role"])}</a> &middot; {c["opened"]}</span>'
+                        f'<span class="small">{LOADER.md_to_text(c["body"], 220)}</span></div>'
+                        for c in NEWS.board if c['status'] == s)
+        cols.append(f'<div class="ncol"><h3>{s.capitalize()} <span class="dim">{len([c for c in NEWS.board if c["status"] == s])}</span></h3>{cards}</div>')
+    pitches = ''.join(f'<tr><td>{p["date"]}</td><td>{_esc(p["from"])}</td><td>{_esc(p["ask"])}</td>'
+                      f'<td>{_esc(p["article"])}</td><td>{_esc(p["status"])}</td><td>{_esc(p.get("decision", ""))}</td></tr>'
+                      for p in NEWS.pitches)
+    return ('<main class="doc newsroom">\n' + _nr_head('board', 'The desk board',
+        'The newsroom\'s open work, one card per file in <code>admin/content/newsroom/board/</code>. Moving a card is '
+        'editing its <code>status</code> line.')
+        + f'<div class="nboard">{"".join(cols)}</div>\n'
+        '<h2 id="pitches">Pitches</h2>'
+        + (f'<div class="tablewrap"><table><tr><th>Date</th><th>From</th><th>Ask</th><th>Article</th><th>Status</th>'
+           f'<th>Decision</th></tr>{pitches}</table></div>' if pitches else
+           '<p class="dim">No pitches yet. <a href="publish.html#pitch">How to pitch</a>.</p>')
+        + '\n</main>')
+
+
+def newsroom_log_body():
+    items = ''.join(f'<article class="nlog" id="{r["slug"]}"><p class="eyebrow">{r["date"]} {r["time"]} &middot; '
+                    f'<a href="roles/{r["role"]}.html">{_esc(r["role"]).capitalize()}</a></p><h2>{_esc(r["title"])}</h2>'
+                    + LOADER.md_to_html(r['body'], depth=1, where=r['where']) + '</article>' for r in NEWS.log)
+    return ('<main class="doc newsroom">\n' + _nr_head('log', 'The desk log',
+        'One entry per run of a desk role, newest first, each its own file and never edited after the run. What changed, '
+        'what was decided, what is next.') + (items or '<p class="dim">No runs yet.</p>') + '\n</main>')
+
+
+def newsroom_pages():
+    out = [('newsroom/index.html', 'The newsroom, sgit.ai',
+            'How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, '
+            'their behaviour policies, the front and why, desk health, the board and the run log.', 'newsroom', newsroom_index_body()),
+           ('newsroom/policies.html', 'Behaviour policies, the sgit.ai newsroom',
+            'What each newsroom role may write, generated from the role files the policy checker reads.', 'newsroom', newsroom_policies_body()),
+           ('newsroom/publish.html', 'How to publish, the sgit.ai newsroom',
+            'For any agent writing for sgit.ai: add the article file and it is live; ask for placement with a pitch.', 'newsroom', newsroom_publish_body()),
+           ('newsroom/board.html', 'The desk board, the sgit.ai newsroom',
+            'The newsroom\'s open work as files, and every pitch with its decision.', 'newsroom', newsroom_board_body()),
+           ('newsroom/log.html', 'The desk log, the sgit.ai newsroom',
+            'One entry per run of a newsroom role: what changed on the front, what was decided, what is next.', 'newsroom', newsroom_log_body()),
+           ('articles/collections/index.html', 'Collections, sgit.ai articles',
+            'Articles read together, each set with an introduction saying what it shows that no single article does.', 'collections', collections_index_body()),
+           ('articles/desk/index.html', 'From the desk, sgit.ai articles',
+            'Short pieces written from the articles: nuggets, threads across articles, and the week in one page.', 'desk', desk_index_body())]
+    for r in NEWS.roles:
+        out.append((f'newsroom/roles/{r["slug"]}.html', f'{r["title"]}, a newsroom role on sgit.ai', r['mission'], 'newsroom', newsroom_role_body(r)))
+    for c in NEWS.collections:
+        out.append((f'articles/collections/{c["id"]}.html', f'{c["title"]}, a collection, sgit.ai', c['dek'], 'collections', collection_body(c)))
+    for n in NEWS.notes:
+        out.append((f'articles/desk/{n["slug"]}.html', f'{n["title"]}, sgit.ai desk', n['summary'], 'desk', note_body(n)))
+    return out
+
+
+def write_wire():
+    """newsroom/wire.json: everything a subscriber agent needs in one fetch. Articles with
+    placement, notes with what they cite, collections, the front and its reason."""
+    base = 'https://sgit.ai/'
+    wire = {
+        'site': 'https://sgit.ai', 'generated': datetime.date.today().isoformat(), 'site_version': SITE_VERSION,
+        'about': base + 'newsroom/index.html',
+        'front': {'edition': NEWS.front['edition'], 'note': NEWS.front['note'],
+                  'lead': NEWS.lead(), 'highlights': NEWS.front['highlights'], 'collections': NEWS.front['collections']},
+        'topics': [{'id': t[0], 'label': t[1].replace('&amp;', '&'), 'means': t[2]} for t in TOPICS],
+        'articles': [{'slug': a['slug'], 'title': a['title'], 'date': a['date'], 'updated': a.get('updated', ''),
+                      'author': a['author'], 'url': f'{base}articles/{a["slug"]}.html',
+                      'markdown': f'{base}articles/{a["slug"]}.md', 'card': f'{base}articles/cards/{art_card_img(a)}',
+                      'graph': (f'{base}articles/graphs/{a["slug"]}.json' if a['slug'] in GRAPHS else None),
+                      'teaser': art_teaser(a), 'summary': a['summary'], 'topics': art_topics(a), 'tags': a['tags'],
+                      'placement': NEWS.placement_of(a['slug']),
+                      'notes': [n['slug'] for n in NOTES_CITING[a['slug']]]} for a in ARTICLES],
+        'notes': [{'slug': n['slug'], 'title': n['title'], 'date': n['date'], 'kind': n['kind'], 'role': n['role'],
+                   'summary': n['summary'], 'cites': n['cites'], 'url': f'{base}articles/desk/{n["slug"]}.html',
+                   'markdown': f'{base}articles/desk/{n["slug"]}.md'} for n in NEWS.notes],
+        'collections': [{'id': c['id'], 'title': c['title'], 'dek': c['dek'], 'curator': c['curator'],
+                         'updated': c['updated'], 'articles': c['slugs'],
+                         'url': f'{base}articles/collections/{c["id"]}.html'} for c in NEWS.collections],
+    }
+    s = json.dumps(wire, indent=2, ensure_ascii=False) + '\n'
+    with open(os.path.join(ROOT, 'newsroom', 'wire.json'), 'w') as f:
+        f.write(s)
+    return s
+
+
+def write_articles_feed():
+    """articles/feed.xml: the articles and the desk notes, newest first. Until v0.6.84 the
+    only feed carried the updates, so a feed reader following this site never saw an article."""
+    items = [(a['date'], a['title'], f'https://sgit.ai/articles/{a["slug"]}.html', a['summary']) for a in ARTICLES]
+    items += [(n['date'], f'{NOTE_KINDS[n["kind"]]}: {n["title"]}', f'https://sgit.ai/articles/desk/{n["slug"]}.html', n['summary'])
+              for n in NEWS.notes]
+    items.sort(key=lambda x: x[0], reverse=True)
+
+    def x(s):
+        return _esc(s)
+    body = ''.join(f'<item><title>{x(t)}</title><link>{u}</link><guid>{u}</guid>'
+                   f'<pubDate>{datetime.datetime.fromisoformat(d).strftime("%a, %d %b %Y 00:00:00 +0000")}</pubDate>'
+                   f'<description>{x(s)}</description></item>\n' for d, t, u, s in items[:40])
+    feed = ('<?xml version="1.0" encoding="utf-8"?>\n<rss version="2.0"><channel>\n'
+            '<title>sgit.ai articles</title><link>https://sgit.ai/articles/index.html</link>\n'
+            '<description>Articles and desk notes from sgit.ai, newest first.</description>\n' + body + '</channel></rss>\n')
+    with open(os.path.join(ROOT, 'articles', 'feed.xml'), 'w') as f:
+        f.write(feed)
+    return feed
 
 
 PAGES = load_pages()
@@ -5758,5 +6358,7 @@ _combined = json.dumps({
 with open(os.path.join(ROOT, 'articles', 'graphs.json'), 'w') as f:
     f.write(_combined + '\n')
 print(f'wrote articles/graphs.json ({len(_combined)} bytes, {len(GRAPHS)} graphs) and {len(GRAPHS)} per-article files')
+print(f'wrote newsroom/wire.json ({len(write_wire())} bytes) and articles/feed.xml ({len(write_articles_feed())} bytes)')
 print(f'content: {len(UPDATES)} updates, {len(ARTICLES)} articles')
+print(f'newsroom: {len(NEWS.roles)} roles, {len(NEWS.notes)} notes, {len(NEWS.collections)} collections, {len(NEWS.pitches)} pitches, {len(NEWS.findings)} findings')
 print('done:', len(PAGES), 'pages', SITE_VERSION)

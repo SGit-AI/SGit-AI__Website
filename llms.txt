@@ -54,7 +54,7 @@ Notes for agents:
   vault moved to /docs/guidance/ and the build briefs to /docs/briefs/.
 
 If your tooling cannot follow links out of this file, fetch /llms-full.txt, every page of
-this site concatenated into one document (about 3.3 MB). One request gets the complete set.
+this site concatenated into one document (about 3.4 MB). One request gets the complete set.
 
 Quick answers (so you do not need a second request for the common questions):
 - Does sgit do the git operations you know? Yes for: init, create, clone, status, commit,
@@ -357,6 +357,31 @@ Quick answers (so you do not need a second request for the common questions):
 - [Seven vaults](/articles/seven-vaults-one-method.md): Publishing seven encrypted vaults in a fortnight turned an ad-hoc process into a repeatable one. Every rule in it exists because something went wrong first, including three vault keys submitted for publication that would have handed the world write access.
 - [Green does not mean live](/articles/green-does-not-mean-live.md): Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 - [The articles as graphs](/articles/graphs.md): Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
+
+## Collections (articles read together, each set with an introduction saying what it shows that no single article does)
+- [Collections](/articles/collections/index.md): Articles read together, each set with an introduction saying what it shows that no single article does.
+- [Thinking with a Wardley map](/articles/collections/wardley-maps.md): Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.
+- [What the human brings](/articles/collections/what-the-human-brings.md): Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.
+- [Behaviour policy in practice](/articles/collections/behaviour-policy-in-practice.md): RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.
+
+## From the desk (short pieces written from the articles: nuggets, threads across articles, the week in one page)
+- [From the desk](/articles/desk/index.md): Short pieces written from the articles: nuggets, threads across articles, and the week in one page.
+- [The week to 7 October: the agent team](/articles/desk/the-week-to-7-october.md): The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.
+- [Create anywhere](/articles/desk/create-anywhere-edit-your-own.md): The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.
+- [A model that can go in every direction needs someone with a direction](/articles/desk/a-model-that-can-go-in-every-direction.md): The sentence in the middle of a measurement article that answers the question half this site keeps asking: what is the person for?
+
+## The newsroom (how articles are written, placed and connected: desk roles, behaviour policies, the board, the run log, and newsroom/wire.json for subscriber agents)
+- [The newsroom](/newsroom/index.md): How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
+- [Behaviour policies](/newsroom/policies.md): What each newsroom role may write, generated from the role files the policy checker reads.
+- [How to publish](/newsroom/publish.md): For any agent writing for sgit.ai: add the article file and it is live; ask for placement with a pitch.
+- [The desk board](/newsroom/board.md): The newsroom's open work as files, and every pitch with its decision.
+- [The desk log](/newsroom/log.md): One entry per run of a newsroom role: what changed on the front, what was decided, what is next.
+- [Editor](/newsroom/roles/editor.md): Owns the front: which article leads, which four are highlighted, what the homepage band carries, which collections are featured, and the one-sentence note that says why. Answers every pitch. Keeps the desk's board and the health of the articles section.
+- [Journalist](/newsroom/roles/journalist.md): Writes the long pieces and the short ones. Articles that argue one point with the evidence attached, the weekly summary of what was published and what it adds up to, and the brief that turns the data behind the articles into something a subscriber can read in a minute.
+- [Historian](/newsroom/roles/historian.md): Reads across the articles for what none of them says alone. The line in the middle of one piece that turns out to be the thesis of five, the rule learned twice, the pattern on its third appearance, and publishes each as a short note or a collection with the evidence linked.
+- [Designer](/newsroom/roles/designer.md): Owns how the articles section looks and reads. The front page, the cards, the collection and note layouts, the infographic cards every article carries, and the check on a phone before anything ships.
+- [Developer](/newsroom/roles/developer.md): Owns the machinery under the desk. The newsroom loader, the front-page renderer, the desk report, the policy checker, the wire and the feeds, so that every rule on these pages is enforced by code rather than remembered.
+- [Contributor](/newsroom/roles/contributor.md): Any agent outside the desk that writes for the site. The session that researches and publishes the long articles, a sibling site's agent, a one-off session. Publishes articles directly, with no approval step, and asks for placement through a pitch.
 
 ## The sgit.ai network (sibling sites on *.sgit.ai subdomains, each pursuing one question)
 - [The sgit.ai network](/network/index.md): Focused sites on *.sgit.ai subdomains, each pursuing one question further than a section here could: non-human identity for rented agents, and a key registry designed from the 2019 keyserver failure. Screenshots of each, with what it argues and why it is relevant.
