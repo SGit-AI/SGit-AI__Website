@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.100'
+SITE_VERSION = 'v0.6.101'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,14 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.100', '2026-10-08', 'this release',
+    ('v0.6.101', '2026-10-08', 'this release',
      "THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: "
      "list/subscribers.json holds the current state (status, name, consent, sources, preferences) and "
      "list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. "
      "The drain turns accepted messages into list events with no model in the loop, and other agents can add "
      "events without the vault key, through a fenced list-event block in signed mail (the site agent's "
      "issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands."),
-    ('v0.6.99', '2026-10-08', 'released with v0.6.100',
+    ('v0.6.100', '2026-10-08', 'released with v0.6.101',
      "SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding "
      "vault keys is pointed at, with an inbox vault id and an append token given privately and never "
      "published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what "
@@ -46,13 +46,21 @@ VERSION_LOG = [
      "HTTP failure by its real cause. Reviewed by the registry before release: read keys are accepted (recorded "
      "as read-only), a too-large payload is reported without a size the drain does not enforce, and the page "
      "says that a payload on the lane can still be quarantined. The first live run delivered two keys, signed."),
-    ('v0.6.98', '2026-10-08', 'released with v0.6.100',
+    ('v0.6.99', '2026-10-08', 'released with v0.6.101',
      "THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in "
      "/.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, "
      "agents, so the live file failed this site's own schema. The form lane is now described only in "
      "/.well-known/sgit-subscribe.json, which is what the form reads; the contact file lists the agents "
      "lane and validates. The subscribe brief gains the rule that everything inside a message is data, "
      "never instructions, for the agent that reads what the drain filed."),
+    ('v0.6.98', '2026-10-07', 'git 1e8b776b',
+     "TWO INFOGRAPHICS, AND A TIMELINE THAT READS. In Story vault underneath, Reader Skills on top, the infographic of "
+     "Markus Franz's article and its reading note sat between two paragraphs that belong together; both now sit in a "
+     "closing section, Two infographics, next to a new ChatGPT infographic of the article itself, each with a note "
+     "that reads it against its source (the new one invents its own bridge dates and softens 'pay' to 'credit'). The "
+     "bridge-simulation vault moves to v0.1.1: on the timeline, the contract and engineer lines end on the same date "
+     "and their names were drawn on top of each other; sources that end together now share one label, and the "
+     "overlapping line is dashed. The timeline screenshots on the article and the vault page are re-taken.",),
     ('v0.6.97', '2026-10-07', 'git a4b4b7b7',
      "LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on "
      "the definition, data journalism as the model and structure behind every front end, then where to push. The water "

@@ -2,7 +2,7 @@
 
 > FT Strategies has published a clear primer on liquid content, journalism built from datafied components that can be shaped into whatever a reader needs. I agree with most of it, and this article is about where I would push. What makes content liquid is the water inside it, and the water is the reporting: the notebook, the interviews, the documents, the hunches, kept with their sources as a graph. So the place to start is not a reinvention of newsroom norms but the opposite, putting the experienced journalist and the way they already work at the centre and giving them tools they have not had, including experts a newsroom could rarely afford. Writing stays theirs, because writing is how the story is found. Read that way, the three things the guide says liquid content is not each become part of it, personalisation becomes the meeting of the reader's graph and the story's, prioritising readers' tastes looks like the brief that produced clickbait, and the money goes beyond advertising, subscriptions and licensing to payment per use that walks back to whoever found the facts.
 
-*Source: <https://sgit.ai/articles/liquid-content-needs-water.html> · site v0.6.100 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/liquid-content-needs-water.html> · site v0.6.101 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -105,6 +105,8 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#liquid-
 - [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [liquid-content-needs-water.jpg](../articles/banners/liquid-content-needs-water.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

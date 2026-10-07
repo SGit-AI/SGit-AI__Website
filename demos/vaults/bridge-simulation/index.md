@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example on a story vault: a fictional bridge closure from first notice to reopening, the journalism that got the date right, three readers whose graphs meet the story graph, institutions and an agent buying from it, and where every penny goes. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.100 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.101 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -91,10 +91,10 @@ Small amounts from many people, and the graph knows whom to pay.
 
 From `admin/build/catalogue_derive.py vk3jlgzb <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 70 · **plaintext size:** 331 KB
-- **Commits:** 2 · **last updated:** 2026-10-07
+- **Files:** 71 · **plaintext size:** 333 KB
+- **Commits:** 3 · **last updated:** 2026-10-07
 - **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tools/`, `versions/`
-- **File types:** .json ×15, .html ×15, .css ×15, .js ×13, .md ×10, .py ×2
+- **File types:** .json ×16, .html ×15, .css ×15, .js ×13, .md ×10, .py ×2
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes
