@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>For agent@riskmandate.ai: draining the subscribe lane, brief</title>
-<meta name="description" content="How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.">
+<title>Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief</title>
+<meta name="description" content="How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste.">
 <link rel="canonical" href="https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="sgit.ai">
 <meta property="og:url" content="https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html">
-<meta property="og:title" content="For agent@riskmandate.ai: draining the subscribe lane, brief">
-<meta property="og:description" content="How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.">
+<meta property="og:title" content="Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief">
+<meta property="og:description" content="How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste.">
 <meta property="og:image" content="https://sgit.ai/og/default.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="For agent@riskmandate.ai: draining the subscribe lane, brief">
+<meta property="og:image:alt" content="Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
 <link rel="alternate" type="text/markdown" href="subscribe-lane-agent-brief.md" title="This page as markdown">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "For agent@riskmandate.ai: draining the subscribe lane, brief", "headline": "For agent@riskmandate.ai: draining the subscribe lane, brief", "description": "How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste.", "url": "https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief", "headline": "Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief", "description": "How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste.", "url": "https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
 <style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
 </head>
 <body>
@@ -26,7 +26,7 @@
 <nav class="site"><div class="row">
   <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
   <span class="stage-pill">beta</span>
-  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.81</a>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.6.82</a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
   <div class="nav-items">
  <div class="ni ni-has">
@@ -108,31 +108,41 @@
   <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
 </div></nav>
 
-<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.81 &middot; 7 Oct 2026</span></a></div>
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.6.82 &middot; 7 Oct 2026</span></a></div>
 <main class="doc">
-  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / Draining the subscribe lane</p>
-  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site writing into a vault's append lane. <a href="../surfaces.html">The other surfaces &rarr;</a></p>
-  <h1>For agent@riskmandate.ai: draining the subscribe lane</h1>
-  <p class="lead">The &ldquo;subscribe&rdquo; form on the <a href="../../articles/index.html#subscribe">articles page</a> and at the foot of every article does not send a form to a server and does not use a mailing-list service. It encrypts the reader's address in their browser to <b>your</b> public key and drops it into a write-only lane on a vault. This page is everything you need to read that lane and manage the list. Everything on it is public. The one thing that is not on it is the vault key.</p>
+  <p class="crumb"><a href="../../index.html">Home</a> / <a href="index.html">Briefs</a> / The subscribe list</p>
+  <p class="surface"><b>Surface:</b> a page on a <code>*.sgit.ai</code> site writing into a vault's append lanes. <a href="../surfaces.html">The other surfaces &rarr;</a></p>
+  <h1>Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes</h1>
+  <p class="lead">The &ldquo;subscribe&rdquo; form on the <a href="../../articles/index.html#subscribe">articles page</a> and at the foot of every article does not post to a server and does not use a mailing-list service. It encrypts the reader's address in their browser to the key of <code>subscribe@sgit.ai</code> and drops it into a write-only lane on that identity's own vault. The same vault holds the identity's private keys, so <b>whoever holds the vault key runs the list</b>: today that is the session that built it, and the vault key is to be handed to <code>agent@riskmandate.ai</code>, which manages the list. This page is everything else. All of it is public.</p>
 
-  <div class="note"><b>Why this is public.</b> A lane's append token can only write: it cannot list, fetch or read anything, and the server answers a write with <code>{"ok": true}</code> and nothing else. The message is encrypted to a key only you hold. So the vault id, the endpoint, the lane token and the public key can all sit on a public page, the same reasoning as <a href="vault-telemetry-append-lanes.html">telemetry from a published vault</a> and the <a href="../agent-contact.html">agent contact file</a>. The only secret is the <b>vault key</b>, from which both the write key and the enum key are derived. It is handed to you privately, never committed here.</div>
+  <div class="note"><b>Why this is public.</b> A lane's append token can only write: it cannot list, fetch or read anything, and the server answers a write with <code>{"ok": true}</code> and nothing else. Messages are encrypted to a key whose private half is in the vault, passphrase-encrypted under a passphrase derived from the vault's <i>write</i> key. So the vault id, the endpoint, the lane tokens and the public keys can sit on a public page, the same reasoning as <a href="vault-telemetry-append-lanes.html">telemetry from a published vault</a> and the <a href="../agent-contact.html">agent contact file</a>. The one secret is the <b>vault key</b>. It is handed over privately, never committed here.</div>
 
   <h2 id="facts">The public facts</h2>
   <div class="tablewrap"><table>
     <tr><th>What</th><th>Value</th></tr>
-    <tr><td>Contact file (the form reads this)</td><td><a href="../../.well-known/sgit-subscribe.json"><code>/.well-known/sgit-subscribe.json</code></a></td></tr>
-    <tr><td>Vault id</td><td><code>y9j3nc60</code></td></tr>
-    <tr><td>Endpoint</td><td><code>https://dev.send.sgraph.ai</code>, the only host with the append routes</td></tr>
-    <tr><td>Lane</td><td><code>subscribe</code>, append token <code>0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75</code> (public on purpose)</td></tr>
-    <tr><td>Encrypted to</td><td>your published key, <code>sha256:9314437063df3bb6</code> (RSA-OAEP 4096), the one in <a href="https://riskmandate.ai/.well-known/sgit-agents.json">riskmandate.ai's contact file</a>. The form recomputes the fingerprint from the PEM before it encrypts</td></tr>
-    <tr><td>Signed?</td><td>No. A person filling in a form holds no key. Treat every message as untrusted input from the open internet</td></tr>
+    <tr><td>Identity</td><td><code>subscribe@sgit.ai</code>, alias @Subscribe, serial 1, created 7 October 2026, published as identity <code>subscribe</code> in <a href="../../.well-known/sgit-agents.json">this site's contact file</a></td></tr>
+    <tr><td>Encryption key</td><td><code>sha256:d85b358000612e4e</code> (RSA-OAEP 4096)</td></tr>
+    <tr><td>Signing key</td><td><code>sha256:982824d45c797623</code> (ECDSA P-256)</td></tr>
+    <tr><td>Vault</td><td><code>y9j3nc60</code> on <code>https://dev.send.sgraph.ai</code>, the only host with the append routes</td></tr>
+    <tr><td>Lane <code>subscribe</code></td><td>the form, unsigned, append token <code>0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75</code>. The form reads <a href="../../.well-known/sgit-subscribe.json"><code>/.well-known/sgit-subscribe.json</code></a> and recomputes the fingerprint from the PEM before it encrypts</td></tr>
+    <tr><td>Lane <code>agents</code></td><td>signed agent mail from the allow-listed sites (the contact file's <code>accepts_from</code>); its token is in the contact file</td></tr>
     <tr><td>The secret</td><td>The subscribe vault's key. Not here, not in the repository, not in any log</td></tr>
   </table></div>
+
+  <h2 id="vault">What is in the vault</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Path</th><th>What</th></tr>
+    <tr><td><code>agent-contact/identity.json</code></td><td>public facts, and the exact entry this site publishes, so the two cannot drift</td></tr>
+    <tr><td><code>agent-contact/keys/store/sha256_d85b358000612e4e/</code></td><td><code>sgit pki</code>'s own key store, private PEMs passphrase-encrypted</td></tr>
+    <tr><td><code>agent-contact/accepted/</code>, <code>quarantine/</code>, <code>log.jsonl</code>, <code>sent/</code></td><td>what arrived (ciphertext always kept, plaintext only when it decrypted and, on the agents lane, verified), and what was sent</td></tr>
+    <tr><td><code>tools/subscribe_agent.py</code></td><td><code>drain</code> both lanes, and <code>send</code> signed agent mail</td></tr>
+  </table></div>
+  <p><b>Every secret is derived from the vault key, none stored.</b> Derive the keys with sgit's <code>Vault__Crypto().derive_keys_from_vault_key(vault_key)</code> (it strips the <code>sgit_private_vault_</code> prefix). Then, with <code>wk = bytes.fromhex(write_key)</code>: the <b>enum key</b> (list, fetch, mark-processed) is <code>hex(HMAC-SHA256(wk, "agent-contact/enum-key/v1"))</code>, and the <b>key passphrase</b> is <code>hex(HMAC-SHA256(wk, "agent-contact/key-pass/subscribe/v1"))</code>, the conventions in <a href="../agent-contact.html">the contact-file spec</a>. Because both come from the write key, a read-key holder can open neither. The vault also carries sgit's own branch-signing key, as every sgit vault does; it cannot decrypt the lanes.</p>
 
   <h2 id="message">What arrives</h2>
   <p>One single-part <code>.eml</code> per request, UTF-8, encrypted with sgit's hybrid envelope (the output of <code>sgit pki encrypt</code>).</p>
   <pre>From: web form &lt;site@sgit.ai&gt;
-To: agent &lt;agent@riskmandate.ai&gt;
+To: subscribe &lt;subscribe@sgit.ai&gt;
 Subject: Subscribe: sgit.ai articles
 Date: Sun, 04 Oct 2026 14:51:37 GMT
 Message-ID: &lt;sgit-subscribe-1791125498...-4b1c9e07@sgit.ai&gt;
@@ -150,74 +160,21 @@ Consent: yes, keep this address in the subscribe vault and send new articles by 
 Sent from: https://sgit.ai/articles/index.html</pre>
   <p><b>The address to reply to is <code>X-SGit-Reply-To</code>, not <code>From</code>.</b> The consent line is only present because the form refuses to send without the box ticked. A honeypot field filled in by a bot is dropped in the browser and never reaches the lane.</p>
 
-  <h2 id="drain">Draining it</h2>
-  <p>With the vault key and your key's passphrase in the environment, the script below lists the lane, fetches the pending files, keeps each ciphertext before it does anything else, decrypts with <code>sgit pki decrypt</code>, writes the <code>.eml</code> and a line in <code>log.jsonl</code>, and only then marks the files processed. A file that will not decrypt goes to <code>quarantine/</code> and is never retried silently. It was run end to end on 4 October 2026 against this lane, from a real browser submission, and a second run found nothing to do.</p>
+  <h2 id="drain">Draining it, and writing back</h2>
   <pre>pip install sgit-ai
-export SUBSCRIBE_VAULT_KEY=&lt;the vault key&gt;     # the one secret
-export SG_SEND_PASSPHRASE=&lt;your pki key's passphrase&gt;
-python3 drain_subscribe.py sha256:9314437063df3bb6 ./subscribe-inbox</pre>
-  <details><summary><code>drain_subscribe.py</code></summary>
-  <pre>#!/usr/bin/env python3
-&quot;&quot;&quot;Drain the sgit.ai subscribe lane. Needs: pip install sgit-ai; the subscribe vault key in
-SUBSCRIBE_VAULT_KEY; the passphrase of the recipient&#x27;s pki key in SG_SEND_PASSPHRASE.
-Usage: drain_subscribe.py &lt;encryption-key-fingerprint&gt; &lt;out-dir&gt;
-Writes &lt;out-dir&gt;/accepted/&lt;id&gt;.eml (+ .enc, kept for re-verification) and appends one line per
-file to &lt;out-dir&gt;/log.jsonl; marks files processed only after they are safely written.&quot;&quot;&quot;
-import base64, email, hashlib, hmac, json, os, subprocess, sys, urllib.request, urllib.error
-from email import policy
-from sgit_ai.crypto.Vault__Crypto import Vault__Crypto
-
-EP, VAULT = &#x27;https://dev.send.sgraph.ai&#x27;, &#x27;y9j3nc60&#x27;
-fingerprint, out = sys.argv[1], sys.argv[2]
-keys = Vault__Crypto().derive_keys_from_vault_key(os.environ[&#x27;SUBSCRIBE_VAULT_KEY&#x27;])   # strips the sgit_private_vault_ prefix
-enum_key = hmac.new(bytes.fromhex(keys[&#x27;write_key&#x27;]), b&#x27;agent-contact/enum-key/v1&#x27;, hashlib.sha256).hexdigest()
-
-def post(route, body):
-    req = urllib.request.Request(f&#x27;{EP}/api/vault/append/{route}/{VAULT}&#x27;, data=json.dumps(body).encode(), method=&#x27;POST&#x27;,
-                                 headers={&#x27;Content-Type&#x27;: &#x27;application/json&#x27;, &#x27;x-sgraph-vault-enum-key&#x27;: enum_key})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
-
-for d in (&#x27;accepted&#x27;, &#x27;quarantine&#x27;): os.makedirs(f&#x27;{out}/{d}&#x27;, exist_ok=True)
-listing = post(&#x27;list&#x27;, {&#x27;include_content&#x27;: False})
-by_lane = {}
-for e in listing[&#x27;entries&#x27;]: by_lane.setdefault(e[&#x27;inbox&#x27;], []).append(e[&#x27;file_id&#x27;])
-for lane, ids in by_lane.items():
-    for i in range(0, len(ids), 100):                                   # 100 file ids per batch
-        batch = ids[i:i+100]
-        files = post(&#x27;fetch&#x27;, {&#x27;inbox&#x27;: lane, &#x27;file_ids&#x27;: batch})[&#x27;files&#x27;]
-        done = []
-        for f in files:
-            fid = f[&#x27;file_id&#x27;]                                           # server ids look like 0000000000000_&lt;24hex&gt;.enc
-            base = fid[:-4] if fid.endswith(&#x27;.enc&#x27;) else fid
-            enc_path, eml_path = f&#x27;{out}/accepted/{base}.enc&#x27;, f&#x27;{out}/accepted/{base}.eml&#x27;
-            raw = base64.b64decode(f[&#x27;content&#x27;])                         # payload was base64 of the .enc text
-            open(enc_path, &#x27;wb&#x27;).write(raw)                              # keep the ciphertext before anything else
-            try:
-                r = subprocess.run([&#x27;sgit&#x27;, &#x27;pki&#x27;, &#x27;decrypt&#x27;, enc_path, &#x27;--fingerprint&#x27;, fingerprint],
-                                   capture_output=True, text=True, check=True)
-                plain = enc_path[:-4]                                    # sgit writes the plaintext beside the .enc, minus the suffix
-                if not os.path.exists(plain): raise RuntimeError(&#x27;decrypt wrote no file: &#x27; + r.stdout[-200:])
-                os.replace(plain, eml_path)
-                m = email.message_from_bytes(open(eml_path, &#x27;rb&#x27;).read(), policy=policy.default)
-                rec = {&#x27;file_id&#x27;: fid, &#x27;result&#x27;: &#x27;ok&#x27;, &#x27;form&#x27;: m[&#x27;X-SGit-Form&#x27;], &#x27;reply_to&#x27;: m[&#x27;X-SGit-Reply-To&#x27;],
-                       &#x27;subject&#x27;: m[&#x27;Subject&#x27;], &#x27;page&#x27;: m[&#x27;X-SGit-Page&#x27;], &#x27;date&#x27;: m[&#x27;Date&#x27;]}
-            except Exception as ex:
-                os.replace(enc_path, f&#x27;{out}/quarantine/{base}.enc&#x27;)
-                rec = {&#x27;file_id&#x27;: fid, &#x27;result&#x27;: &#x27;quarantined&#x27;, &#x27;error&#x27;: str(ex)[:200]}
-            open(f&#x27;{out}/log.jsonl&#x27;, &#x27;a&#x27;).write(json.dumps(rec) + &#x27;\n&#x27;)
-            done.append(fid)
-        if done: post(&#x27;mark-processed&#x27;, {&#x27;inbox&#x27;: lane, &#x27;file_ids&#x27;: done})
-print(&#x27;drained&#x27;, sum(len(v) for v in by_lane.values()), &#x27;file(s)&#x27;)
-</pre>
-  </details>
-  <p><b>The derivation, so you can use your own tooling.</b> Strip the <code>sgit_private_vault_</code> prefix and derive the keys with sgit's <code>Vault__Crypto().derive_keys_from_vault_key(vault_key)</code>. The <b>write key</b> comes out of that. The <b>enum key</b> is <code>hex(HMAC-SHA256(bytes.fromhex(write_key), b"agent-contact/enum-key/v1"))</code>, the convention in <a href="../agent-contact.html">the contact-file spec</a>, never stored. The lane registered <code>sha256(append token)</code> as its anchor and <code>sha256(enum key)</code> as <code>enum_key_hash</code>.</p>
+sgit clone &lt;vault key&gt; subscribe &amp;&amp; cd subscribe
+export SUBSCRIBE_VAULT_KEY=&lt;vault key&gt;          # the one secret; nothing else is needed
+python3 tools/subscribe_agent.py drain
+python3 tools/subscribe_agent.py send agent@sgit.ai "Re: test" reply.md --kind reply --in-reply-to "&lt;message-id&gt;"
+sgit commit -m "drain" &amp;&amp; sgit push</pre>
+  <p><code>drain</code> lists both lanes, keeps each ciphertext before anything else, decrypts with the identity's key and only then marks the files processed. On the <code>subscribe</code> lane a message is accepted if it decrypts. On the <code>agents</code> lane it is accepted only if <code>To</code> is <code>subscribe@sgit.ai</code>, the sender's domain is on the allow list, and the signature verifies against the signing key the sender's own site publishes, with the fingerprints recomputed from the PEMs; anything else goes to <code>quarantine/</code>. <code>send</code> looks the recipient up in its site's contact file, encrypts to it, signs with this identity's key and writes to the recipient's <code>agents</code> lane.</p>
+  <p><b>Tested on 7 October 2026</b> from a fresh clone holding only the vault key: a signed message from the identity to itself was accepted and verified; an unsigned message and one signed with an unpublished key, both on the <code>agents</code> lane, were quarantined for those reasons. One earlier form submission, encrypted on 5 October to the key this list used before (RiskMandate's), is kept in <code>quarantine/</code>.</p>
 
   <h2 id="gotchas">Four things that cost time</h2>
   <ul>
     <li><b>The payload is encoded twice.</b> The lane stores the bytes of the <code>.enc</code> file, which is itself base64 text of a JSON envelope. <code>fetch</code> returns base64 of those bytes: decode once to get the <code>.enc</code> file, which is what <code>sgit pki decrypt</code> wants.</li>
-    <li><b>Server file ids already end in <code>.enc</code></b> (<code>{epoch_ms}_{24hex}.enc</code>), and <code>sgit pki decrypt x.enc</code> writes the plaintext to <code>x</code>, with no suffix. The script renames it to <code>.eml</code>.</li>
-    <li><b>Marking a file processed is final.</b> A processed file can no longer be fetched, so keep the ciphertext first, as the script does.</li>
+    <li><b>If you use <code>sgit pki decrypt</code> instead of the tool: server file ids already end in <code>.enc</code></b> (<code>{epoch_ms}_{24hex}.enc</code>), and <code>sgit pki decrypt x.enc</code> writes the plaintext to <code>x</code>, with no suffix. The vault's tool decrypts in Python and writes the <code>.eml</code> itself.</li>
+    <li><b>Marking a file processed is final.</b> A processed file can no longer be fetched, so keep the ciphertext first, as the tool does.</li>
     <li><b><code>configure</code> returns 404 until the vault has been pushed once.</b> The vault was created with <code>sgit init</code>, given a README and pushed, and only then configured. The documented 404 (wrong key or wrong vault) looks identical, so check the vault exists on the server before you suspect the key.</li>
   </ul>
 
@@ -242,17 +199,18 @@ print(&#x27;drained&#x27;, sum(len(v) for v in by_lane.values()), &#x27;file(s)&
   </ul>
 
   <h2 id="prompt">The prompt to paste</h2>
-  <pre>You are agent@riskmandate.ai and you manage the subscribe list for new sgit.ai articles.
+  <pre>You run the subscribe list for new sgit.ai articles as subscribe@sgit.ai.
 Read https://sgit.ai/docs/briefs/subscribe-lane-agent-brief.html. The vault key is in
-SUBSCRIBE_VAULT_KEY and your key passphrase in SG_SEND_PASSPHRASE; never print either.
-1. Drain the subscribe lane with drain_subscribe.py, ciphertext kept, quarantine on failure.
+SUBSCRIBE_VAULT_KEY; never print it or anything derived from it.
+1. Clone the vault and run tools/subscribe_agent.py drain. Commit and push what it filed.
 2. For each new address: validate it, send the confirmation email, add it only when confirmed.
 3. For each article in https://sgit.ai/updates/updates.json newer than the last one sent,
    email the confirmed list a short note with the title, the summary and the link.
 4. Honour any unsubscribe reply on the same day.
-5. Report counts only (drained, quarantined, added, removed, sent). Never list addresses.</pre>
+5. Answer agent mail on the agents lane with tools/subscribe_agent.py send.
+6. Report counts only (drained, quarantined, added, removed, sent). Never list addresses.</pre>
 
-  <p class="small dim">Written 4 October 2026 with the form, the contact file and the lane, tested together. The reader-facing side is <code>assets/subscribe.js</code>, about 120 lines you can read in a sitting. <a href="index.html">&larr; All briefs</a></p>
+  <p class="small dim">Written 4 October 2026 with the form, the contact file and the lane, tested together; revised 7 October 2026 when the identity and its keys moved into the vault and the agents lane was added. The reader-facing side is <code>assets/subscribe.js</code>, about 120 lines. <a href="index.html">&larr; All briefs</a></p>
 </main>
 
 <footer class="site"><div class="cols">
@@ -260,7 +218,7 @@ SUBSCRIBE_VAULT_KEY and your key passphrase in SG_SEND_PASSPHRASE; never print e
     <div class="brandline">sgit<span>.ai</span></div>
     <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
     <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
-    <p class="verline">site <a href="../../admin/versions.html">v0.6.81</a> · <a href="../../admin/index.html">engineering</a> · <a href="subscribe-lane-agent-brief.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.6.82</a> · <a href="../../admin/index.html">engineering</a> · <a href="subscribe-lane-agent-brief.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
   </div>
   <div>
     <h4>Docs</h4>
@@ -303,7 +261,7 @@ SUBSCRIBE_VAULT_KEY and your key passphrase in SG_SEND_PASSPHRASE; never print e
 </div></footer>
 
 <script>
-(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.81';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.82';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
 function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
 function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
 async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}

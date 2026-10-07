@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.81'
+SITE_VERSION = 'v0.6.82'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.81', '2026-10-07', 'this release',
+    ('v0.6.82', '2026-10-07', 'this release',
+     "THE SUBSCRIBE LIST GETS ITS OWN IDENTITY. subscribe@sgit.ai is a second identity in this site's contact "
+     "file, with its own RSA-OAEP 4096 and ECDSA P-256 keys whose private halves live, passphrase-encrypted, in "
+     "the subscribe vault itself (y9j3nc60): the passphrase and the enum key are derived from the vault's write "
+     "key, so the vault key is the one secret and whoever holds it runs the list. The form now encrypts to this "
+     "identity instead of to RiskMandate's key; a second lane, agents, takes signed agent mail and is verified "
+     "against the sender's own contact file. The vault carries its own drain-and-send tool, tested from a fresh "
+     "clone with only the vault key: a signed self-test accepted, an unsigned and a forged message quarantined. "
+     "The brief is rewritten around it, and the agents page lists the new identity. Built on a sibling branch "
+     "by the session that made the keys, reviewed here with the four fingerprints recomputed from the PEMs, and "
+     "merged.",),
+    ('v0.6.81', '2026-10-07', 'git bd3c5079',
      "THE MANDATE STACK, ROUND THREE, AND A SOURCE BLOCK FOR THE BUILD. A new article directive, !source "
      "label | image, placed before a code fence, renders the fence as a collapsed details block with a copy "
      "button and a link to the rendered image, so a diagram's source travels with its render without taking "

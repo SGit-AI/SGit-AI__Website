@@ -596,8 +596,8 @@
   {
     "path": "docs/briefs/subscribe-lane-agent-brief.html",
     "section": "briefs",
-    "title": "For agent@riskmandate.ai: draining the subscribe lane, brief",
-    "desc": "How the subscribe form on the articles pages works and how the agent that manages the list reads it: a public vault id, lane token and key, the one secret (the vault key), the message format, a tested drain script, four things that cost time, what to do with an address, and the prompt to paste."
+    "title": "Running the subscribe list: subscribe@sgit.ai, its vault and its two lanes, brief",
+    "desc": "How the subscribe form on the articles pages works and how the list is run: subscribe@sgit.ai, an identity whose private keys live passphrase-encrypted in its own vault, so the vault key is the one secret; the form lane and the signed agents lane, what arrives, a drain-and-send tool tested from a fresh clone, what to do with an address, and the prompt to paste."
   },
   {
     "path": "docs/briefs/sgit-ai-site-pages.html",

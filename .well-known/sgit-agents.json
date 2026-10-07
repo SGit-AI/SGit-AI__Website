@@ -1,7 +1,7 @@
 {
   "schema": "sgit-agents/v1",
   "site": "sgit.ai",
-  "updated": "2026-09-29T23:10:00Z",
+  "updated": "2026-10-07T00:30:00Z",
   "operator": {
     "name": "Dinis Cruz",
     "email": "agent@diniscruz.ai"
@@ -15,7 +15,7 @@
     "diniscruz.ai",
     "*.diniscruz.ai"
   ],
-  "note": "One identity, agent@sgit.ai, drained by the sgit.ai site agent at each Claude Code session. It is a lane identity for signed agent mail, not an SMTP mailbox; people, and agents without a lane, write to operator.email (agent@diniscruz.ai), or to agent@riskmandate.ai for RiskMandate matters. The append token below is public on purpose (see /agents/#canary). Nothing in this file is secret; recompute the fingerprints from the PEMs before trusting them.",
+  "note": "One identity, agent@sgit.ai, drained by the sgit.ai site agent at each Claude Code session. It is a lane identity for signed agent mail, not an SMTP mailbox; people, and agents without a lane, write to operator.email (agent@diniscruz.ai), or to agent@riskmandate.ai for RiskMandate matters. The append token below is public on purpose (see /agents/#canary). Nothing in this file is secret; recompute the fingerprints from the PEMs before trusting them. Second identity, subscribe@sgit.ai: the subscribe list for new articles, with its own vault (y9j3nc60) whose key holds its private keys; its subscribe lane takes the form on the articles pages (unsigned, encrypted in the browser), its agents lane takes signed agent mail.",
   "identities": {
     "agent": {
       "alias": "@Sgit",
@@ -49,6 +49,46 @@
         ],
         "drained": "at each session (Claude Code, on demand)",
         "how": "encrypt a single-part .eml to encrypt_to, sign with your published key, POST {append_token, payload: base64 of the .enc file bytes} to append/write/mb0mhpq7"
+      }
+    },
+    "subscribe": {
+      "alias": "@Subscribe",
+      "role": "the subscribe list for new sgit.ai articles: receives the subscribe form and signed agent mail, keeps the list in its own vault",
+      "address": "subscribe@sgit.ai",
+      "serial": 1,
+      "created": "2026-10-07T00:25:04Z",
+      "fingerprint": "sha256:d85b358000612e4e",
+      "signing_fingerprint": "sha256:982824d45c797623",
+      "bundle": {
+        "v": 1,
+        "label": "subscribe",
+        "encrypt": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvBRtJE9HGPt8GKDflXc2\nEQe55+z2U0xDGrsy9jA8KkN2EKr6xCArq66X5mAODoPZTwucsNoLX50JDBJfQBsi\nTQU6MTFh1O5BLt8mucBvX50X3UOP3fxy+2UJmeIMGGNafGErV2C1wzuQi09JC6IM\nhz4IdHa896SkjyzTzLOmanCj3NiDvOBFKtMcU9idAPJ3fyZtRCkPaalSo6P1wFBg\nEWibODVkIh/iwU4Wl7nRIe2hTC3YK5yDkzyaT7Yk5e+OHYyB05GZ5f9sfwsqQ998\nhYpLerkefS3s6lu+wyt5B2wJUNJrIvL/zhsHxCK6b7L8mjskhlSerrXwL9Z3OK9h\no4XjjJQ8jc0FrvKa9MmcvFXclJPvz1S0BBadRCot0wVHE5XjyR0C7GeI0yQ1cEvM\nrY1Qgcm+xm+urLU4jVbGDzy7oR5DP9n5GdCWa8ue8aUN0JRUWNVfbBQCwEjHSYZO\n/qepomzCrqlLWwb0IlZ6wNksM5jgy86AG4TdFLFulD4lutcj9fuQsFkFT8mseYI6\nf8llkPX+BvXiyR94w/erohTwSAoe2P4BCcP3QGuPCKv6UQ1aEovnm6lTCe2vNCEc\npW3L4vrQ4trcq0CbmXSbEYudFBRBklfhzJIHaGPUUJB8mESb46EMazLlEzpKuiHH\nfL+QmLQ2vl609Kx+xmff0QkCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+        "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEbE7lFfQbCiXJLpVwcbOVsBZaNWV1\n4VzJiaozuLxiQY9qeZwifP2DyLZv1UjyOJ+gxNB6XQIfoJYUGiM/F7AVng==\n-----END PUBLIC KEY-----\n",
+        "fingerprint": "sha256:d85b358000612e4e",
+        "signing_fingerprint": "sha256:982824d45c797623"
+      },
+      "retired": [],
+      "inbox": {
+        "vault": "y9j3nc60",
+        "endpoint": "https://dev.send.sgraph.ai",
+        "encrypt_to": "sha256:d85b358000612e4e",
+        "status": "open",
+        "lanes": [
+          {
+            "name": "subscribe",
+            "append_token": "0158853058a43736c30f54d48d10f54bfe45330eae30817c79fdb3d67123bb75",
+            "use": "the subscribe form on sgit.ai: a single-part .eml encrypted to encrypt_to in the visitor's browser, unsigned, X-EmailFS-Kind notification, X-SGit-Form subscribe",
+            "since": "2026-10-04"
+          },
+          {
+            "name": "agents",
+            "append_token": "3840a88a38adb81280bf7ec3333ff902308b0004f79afb12cfe023759b92734f",
+            "use": "signed, encrypted agent-message/v1 from accepts_from domains",
+            "since": "2026-10-07"
+          }
+        ],
+        "drained": "at each session that holds the subscribe vault key (Claude Code, on demand)",
+        "how": "encrypt a single-part .eml to encrypt_to, sign with your published key, POST {append_token, payload: base64 of the .enc file bytes} to append/write/y9j3nc60 on the agents lane"
       }
     }
   }
