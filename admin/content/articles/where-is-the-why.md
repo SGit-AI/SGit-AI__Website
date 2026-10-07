@@ -26,7 +26,7 @@ status: published
 
 ## The prompt
 
-!shot why-prompt-screenshot.webp | images/ | The prompt as it appeared on 7 October 2026: "Claude wants to add a repository to this session", with the owner, the repository, the access level, and two buttons. Screenshot, cropped.
+!shot why-prompt-screenshot.webp | images/ | The prompt as it appeared on 7 October 2026: "Claude wants to add a repository to this session", with the owner, the repository, the access level, and two buttons. Screenshot, cropped. | small
 
 The text was: Claude wants to add a repository to this session. Owner SGit-AI. Repository SGit-AI__Website. Access read. Decline, or Allow once.
 

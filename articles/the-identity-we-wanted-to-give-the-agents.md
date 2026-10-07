@@ -2,7 +2,7 @@
 
 > Last week I set out to give every agent, and every user, a real identity: a Google Workspace account of its own, provisioned by us, with a mailbox, a calendar, a drive and a login, the data encrypted by sgit before it reached Google and the key unwrapped by a passkey. Four design documents later the plan had changed shape under its own research, because Google's terms do not allow one organisation's tenant to hold other organisations' people as part of a commercial product, and an account assigned to a function rather than a human is named in the acceptable use policy. This article captures that moment: what was wanted, what the terms say in their current wording with one correction to our own documents, the five options that were on the table, the rule that no secret can live inside an identity provider because whoever controls the login can become the user, and the keyring that fell out of it, a browser-only secrets store unlocked by a passkey that an administrator with full access to the project cannot read. It ends with the question I keep coming back to. Every project I know needs to log users in, keep sensitive data for them in a way a regulator will accept, and now give identities to the agents that work for them. Each of those has good products. None of them is all three, and the research found nothing on the shelf that is. Unless we are missing something obvious, in which case the design pack is published to be corrected.
 
-*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-identity-we-wanted-to-give-the-agents.html> · site v0.6.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -158,6 +158,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-identi
 
 ### Continued by
 
+- [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
 - [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.

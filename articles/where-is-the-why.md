@@ -2,7 +2,7 @@
 
 > An agent session asked, in the middle of a task, to add a repository. The prompt showed three fields, owner, repository and access, and two buttons, Decline and Allow once. It did not say which session was asking, why, what the session would be able to do afterwards that it could not do before, or what would happen on a no. The session was one of several, and one of them was working on a vault holding confidential data. This article reads that prompt through the Agent Behaviour Policy, where a permission prompt is a request to change the grant mid-session and a barrier whose strength is the information the person is given; sets it against what courts, regulators and research have said about decisions taken without the facts, from Montgomery's consent forms and the red hand rule to GDPR's informed consent, token human oversight, and the moral crumple zone; lists the other prompts that asked without a why and the fixes that worked, from Apple's purpose strings and Microsoft's number matching to the CNIL's rule that refusing must be as easy as accepting; puts Anthropic's own figures on how often people approve agent prompts beside them; and proposes a why card, a prompt that carries its reason, its change in reach, its cost, the path if declined, and a record, and that turns into a risk acceptance when the risk rises.
 
-*Source: <https://sgit.ai/articles/where-is-the-why.html> · site v0.6.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/where-is-the-why.html> · site v0.6.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -173,6 +173,10 @@ Agents & policy[This article as a graph →](graphs.md#where-is-the-why)
 - [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md) An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
 - [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md) The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.
+
+### Continued by
+
+- [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

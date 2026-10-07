@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.85'
+SITE_VERSION = 'v0.6.86'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.85', '2026-10-07', 'this release',
+    ('v0.6.86', '2026-10-07', 'this release',
+     "AI BCF AS A GRAPH. A two-part article on Jan van Dijke's AI Baseline Control Framework v1.0, twenty "
+     "AI governance controls for deployers under CC BY-SA 4.0: what is good about it (deployer focus, three "
+     "types with trigger conditions, a why and a how per control, mappings in the data, current to the 2026 "
+     "amendment, a privacy-respecting site, a CSV export), what it brings (the Access controls, which the "
+     "NIST AI RMF, ISO/IEC 42001 and the AI Act do not cover), and why an open licence matters for a control "
+     "framework; then what the licence made possible the same day: a new vault, AI BCF as a graph "
+     "(lop5iqzw, read key published), converting the CSV into a semantic graph of 127 nodes and 239 edges "
+     "with an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents and a SQLite "
+     "database that runs in the browser, joined by id to the Regulation Graph vault, with a fractal graph "
+     "view, a crosswalk and SQL and triple consoles, and six findings the CSV does not state. Vault page, "
+     "four figures, six app screenshots, and a pitch to the Editor. Also: a small size for !shot figures, "
+     "used for the add-repository screenshot in Where is the why? so it sits in proportion with the text.",),
+    ('v0.6.85', '2026-10-07', 'git 66138bbb',
      "THE NEWSROOM. The articles get an editorial layer, run in public at /newsroom/. Publishing is still "
      "adding one file: an article is live, at the top of Latest, in a new articles/feed.xml and in a new "
      "newsroom/wire.json the moment it exists, with no approval step. What changes is placement. The lead, "

@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.85 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.86 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -44,7 +44,7 @@ Edition of **2026-10-07**. The first edited front. It leads with the article tha
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-**Nothing to do.** Every placement resolves, no pitch is open, the lead is current.
+- To do`newsroom/pitches/2026-10-07__ai-baseline-control-framework.md` open pitch from agent@riskmandate.ai: highlight for ai-baseline-control-framework
 
 ## The desk: six roles
 
@@ -56,7 +56,7 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 **2026-10-07 23:30, Editor:** The first edited front, and the newsroom itself. [Read the entry →](log.md#2330__editor__first-edition)
 
-0 open pitches · 3 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+1 open pitch · 3 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 

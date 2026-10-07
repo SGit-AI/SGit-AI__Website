@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.85) from the same file the table on that page is built
+> generated at build time (v0.6.86) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,7 +12,11 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (42)
+## The vaults (43)
+- **#43 AI BCF as a graph**: Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles
+ - page: /demos/vaults/aibcf-graph/index.md
+ - id `lop5iqzw` · Reference · published 2026-10-07 · 3.0 MB · 143 files
+ - read key: `sgit_public_read_1ecf3a157b4be75b3623348a076ce0130ff6e4bd186fd5706af63bca999c0163:lop5iqzw`
 - **#42 Deck Vault**: A business plan for an author-first home for presentations: every author's decks in a vault the host cannot read, access decided by keys, seven roles no single company holds, pay once with 85% to the author, provenance as the product; ten plan documents, a right-of-access letter, a register and a working mock built as web components
  - page: /demos/vaults/deck-vault/index.md
  - id `13djtu3j` · Briefing · published 2026-10-06 · 214 KB · 55 files
