@@ -1,13 +1,23 @@
 {
   "edition": "2026-10-07",
   "editor": "editor",
-  "note": "The first edited front. It leads with the article that shows a multi-agent system in production with its maps and sources published beside it, and highlights the pieces this week's articles keep pointing back to: the measured human input, the team as it runs, the personal agents read through policy, and the footprint idea the rest of October builds on.",
+  "note": "Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.",
   "lead": {
-    "slug": "the-mandate-stack",
-    "kicker": "In production",
-    "why": "About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries."
+    "slug": "ai-baseline-control-framework",
+    "kicker": "Open framework, built on",
+    "why": "Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site."
   },
   "highlights": [
+    {
+      "slug": "where-is-the-why",
+      "kicker": "The person's side",
+      "why": "A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given."
+    },
+    {
+      "slug": "the-mandate-stack",
+      "kicker": "In production",
+      "why": "About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them."
+    },
     {
       "slug": "how-much-of-this-did-i-write",
       "kicker": "Measured",
@@ -16,17 +26,7 @@
     {
       "slug": "the-agent-team-as-it-runs",
       "kicker": "Field notes",
-      "why": "The rule the newsroom itself now runs on: create anywhere, edit your own."
-    },
-    {
-      "slug": "a-personal-agent-that-keeps-your-secrets",
-      "kicker": "Read through policy",
-      "why": "Seven personal agents read through the same behaviour policy, and a design that holds no vendor key."
-    },
-    {
-      "slug": "footprint-and-blast-radius",
-      "kicker": "Much cited",
-      "why": "Of everything published in October, the piece the other articles link to most."
+      "why": "The rule the newsroom itself runs on: create anywhere, edit your own."
     }
   ],
   "homepage": {

@@ -1,6 +1,6 @@
 ---
 date: 2026-10-07
-time: 23:30
+time: 12:40 UTC
 role: editor
 title: The first edited front, and the newsroom itself
 changed: admin/content/newsroom/front.json, admin/content/newsroom/collections/*, admin/content/newsroom/notes/2026/10/07/*

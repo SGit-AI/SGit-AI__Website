@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.87). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.88). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -36,18 +36,18 @@ Four of **43 published vaults**. Each opens with a read key printed on its page,
 
 The articles carry most of what this site believes, with the figures, the data and the links to check it. Thirty-eight so far; the newsroom picks where to start.
 
-[In production2026-10-06Agents & policy**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.**Why it leads.** About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries.Read it →](articles/the-mandate-stack.md)
+[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](articles/ai-baseline-control-framework.md)
 
 ### Also new
 
-1. 2026-10-07[An open AI governance framework, and what its licence let us build](articles/ai-baseline-control-framework.md)
-2. 2026-10-07[A locked-down desktop for an agent, by the minute, is still hard to rent](articles/an-agent-desktop-by-the-minute.md)
-3. 2026-10-07[Where is the why? A permission prompt asked me to decide, and kept the reason](articles/where-is-the-why.md)
+1. 2026-10-07[A locked-down desktop for an agent, by the minute, is still hard to rent](articles/an-agent-desktop-by-the-minute.md)
+2. 2026-10-06[A personal agent that keeps your secrets](articles/a-personal-agent-that-keeps-your-secrets.md)
+3. 2026-10-06[The agent team as it runs](articles/the-agent-team-as-it-runs.md)
 4. 2026-10-06[The deck I could not download](articles/the-deck-i-could-not-download.md)
 5. 2026-10-06[Why my agents do not run on my laptop](articles/why-my-agents-do-not-run-on-my-laptop.md)
 [The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](articles/desk/the-week-to-7-october.md)
 
-[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself now runs on: create anywhere, edit your own.](articles/the-agent-team-as-it-runs.md)[Read through policy2026-10-06**A personal agent that keeps your secrets**Seven personal agents read through the same behaviour policy, and a design that holds no vendor key.](articles/a-personal-agent-that-keeps-your-secrets.md)
+[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
 
 [The front page →](articles/index.md) · [Collections →](articles/collections/index.md) · [How the newsroom works →](newsroom/index.md)
 
@@ -71,7 +71,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-245site releases, each verified live before it was called done
+246site releases, each verified live before it was called done
 
 43vaults published with a deliberately public read key
 
@@ -5987,7 +5987,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.87, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.88, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6350,7 +6350,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-245**site releases since 14 August**
+246**site releases since 14 August**
 each verified live before it was called done
 
 43**vaults published with a public read key**
@@ -11142,11 +11142,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.87**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.88**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.87 | 2026-10-07 | this release | AN AGENT DESKTOP BY THE MINUTE. An article on how hard it is in October 2026 to rent a desktop that is safe to hand to an agent and billed for the minutes it works: nine properties a locked-down agent desktop needs (isolation, an egress allowlist, secrets kept outside, its own identity, a live view, a record, a clean reset, billing that follows the work, the right operating system); nine products set against them from their own documentation (E2B, Daytona, Modal, Browserbase, Windows 365 for Agents, Amazon WorkSpaces for AI agents, AWS EC2 Mac, Scaleway Apple silicon, Cua), none with all nine; two hours a day priced on each; Apple's 24-hour lease minimum and its developer-services purpose clause; why Claude's native and governed computer use do not meet; why the desktop, not the model, has to be the barrier; a proposal from what exists; and the startup credit programmes that would pay for testing it, verified on the day, with how to apply. Three figures. |
+| v0.6.88 | 2026-10-07 | this release | THE NEWSROOM'S FIRST EDITOR RUN. A release that touches only the Editor's files and the release lines, checked with policy_check.py --role editor. The second edition of the articles front: the open AI governance framework leads, raised from the highlight its pitch asked for because it carries the most checkable evidence of anything new (a vault with its read key, a browser database, a join to the AI Act); where is the why? joins the highlights and the Mandate Stack moves from lead to highlight. The first pitch on the desk, from agent@riskmandate.ai, is answered in its status line; its collection request goes to the Historian as board card D6, because collections are the Historian's. The log records a correction: the first entry's time was a placeholder, now the commit's 12:40 UTC. |
+| v0.6.87 | 2026-10-07 | git 76fafd89 | AN AGENT DESKTOP BY THE MINUTE. An article on how hard it is in October 2026 to rent a desktop that is safe to hand to an agent and billed for the minutes it works: nine properties a locked-down agent desktop needs (isolation, an egress allowlist, secrets kept outside, its own identity, a live view, a record, a clean reset, billing that follows the work, the right operating system); nine products set against them from their own documentation (E2B, Daytona, Modal, Browserbase, Windows 365 for Agents, Amazon WorkSpaces for AI agents, AWS EC2 Mac, Scaleway Apple silicon, Cua), none with all nine; two hours a day priced on each; Apple's 24-hour lease minimum and its developer-services purpose clause; why Claude's native and governed computer use do not meet; why the desktop, not the model, has to be the barrier; a proposal from what exists; and the startup credit programmes that would pay for testing it, verified on the day, with how to apply. Three figures. |
 | v0.6.86 | 2026-10-07 | git 9e42bb6a | AI BCF AS A GRAPH. A two-part article on Jan van Dijke's AI Baseline Control Framework v1.0, twenty AI governance controls for deployers under CC BY-SA 4.0: what is good about it (deployer focus, three types with trigger conditions, a why and a how per control, mappings in the data, current to the 2026 amendment, a privacy-respecting site, a CSV export), what it brings (the Access controls, which the NIST AI RMF, ISO/IEC 42001 and the AI Act do not cover), and why an open licence matters for a control framework; then what the licence made possible the same day: a new vault, AI BCF as a graph (lop5iqzw, read key published), converting the CSV into a semantic graph of 127 nodes and 239 edges with an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents and a SQLite database that runs in the browser, joined by id to the Regulation Graph vault, with a fractal graph view, a crosswalk and SQL and triple consoles, and six findings the CSV does not state. Vault page, four figures, six app screenshots, and a pitch to the Editor. Also: a small size for !shot figures, used for the add-repository screenshot in Where is the why? so it sits in proportion with the text. |
 | v0.6.85 | 2026-10-07 | git 66138bbb | THE NEWSROOM. The articles get an editorial layer, run in public at /newsroom/. Publishing is still adding one file: an article is live, at the top of Latest, in a new articles/feed.xml and in a new newsroom/wire.json the moment it exists, with no approval step. What changes is placement. The lead, the highlights, the homepage band and the featured collections now come from one file, admin/content/newsroom/front.json, written by one role, the Editor; every other agent asks with a pitch, one new file. The rule is the agent team's own, 'create anywhere, edit your own', adopted after 'only one agent may draft' became a bottleneck in two days. Six desk roles (Editor, Journalist, Historian, Designer, Developer, Contributor) are files whose write lists are the behaviour policy: the policies page is generated from them and admin/build/policy_check.py reads the same files. A placement naming a missing article is skipped and reported under desk health, never a build failure. The articles index is rebuilt as a front page (dateline, masthead, lead with the Editor's reason, a Latest rail, highlights, desk notes, collections, then every article); new collections and desk-note pages, whose !quote directive is checked word for word against the article at build time; and admin/build/desk.py prints the Editor's checklist. The homepage band follows the front. The top menu now opens with Articles; Updates and the version log move under Team. First edition: the Mandate Stack leads; two Historian notes, a weekly note and three collections. |
 | v0.6.84 | 2026-10-07 | git b92f41f8 | WHERE IS THE WHY? An article on a permission prompt that asked, mid-task, to add a repository to an agent session, with three fields and two buttons and no reason. It reads the prompt through the Agent Behaviour Policy, as a grant change whose barrier is a human judgement and whose risk lies in the combination with what the session already holds (read of a public repository adds little; write to it from a session holding confidential data adds a publishing channel); sets it against the record on decisions taken without the facts, from Montgomery and the red hand rule to GDPR consent, token oversight under WP251 and SCHUFA, and the moral crumple zone; lists the prompts that asked without a why and the fixes that worked, purpose strings, number matching, refusal as easy as acceptance; puts the vendor's own approval figures beside them; and proposes a why card that becomes a risk acceptance when the risk rises. The screenshot is included; sources are labelled and secondary ones marked. Seven figures. |
@@ -14405,15 +14406,15 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.87
+Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.88
 
 # Articles
 
 One page, one argument, with the figures, the data and the links to check it. Every article is live the moment it is written; the front is the [newsroom](../newsroom/index.md)'s choice of where to start.
 
-From the editor The first edited front. It leads with the article that shows a multi-agent system in production with its maps and sources published beside it, and highlights the pieces this week's articles keep pointing back to: the measured human input, the team as it runs, the personal agents read through policy, and the footprint idea the rest of October builds on. [The desk log →](../newsroom/log.md)
+From the editor Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side. [The desk log →](../newsroom/log.md)
 
-[In production2026-10-06Agents & policy**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.**Why it leads.** About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries.Read it →](../articles/the-mandate-stack.md)
+[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](../articles/ai-baseline-control-framework.md)
 
 ## Latest
 
@@ -14431,7 +14432,7 @@ From the editor The first edited front. It leads with the article that shows a m
 
 ## Highlights
 
-[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](../articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself now runs on: create anywhere, edit your own.](../articles/the-agent-team-as-it-runs.md)[Read through policy2026-10-06**A personal agent that keeps your secrets**Seven personal agents read through the same behaviour policy, and a design that holds no vendor key.](../articles/a-personal-agent-that-keeps-your-secrets.md)[Much cited2026-10-02**Footprint and blast radius**Of everything published in October, the piece the other articles link to most.](../articles/footprint-and-blast-radius.md)
+[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](../articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](../articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](../articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself runs on: create anywhere, edit your own.](../articles/the-agent-team-as-it-runs.md)
 
 ## From the desk [all notes →](desk/index.md)
 
@@ -26504,15 +26505,15 @@ How the articles on this site get written, placed and connected, by one person a
 
 ## Today's front, and why
 
-Edition of **2026-10-07**. The first edited front. It leads with the article that shows a multi-agent system in production with its maps and sources published beside it, and highlights the pieces this week's articles keep pointing back to: the measured human input, the team as it runs, the personal agents read through policy, and the footprint idea the rest of October builds on.
+Edition of **2026-10-07**. Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.
 
 | Slot | What | Why, in the Editor's words |
 |---|---|---|
-| Lead | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries. |
+| Lead | [ai-baseline-control-framework](../articles/ai-baseline-control-framework.md) | Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site. |
+| Highlight | [where-is-the-why](../articles/where-is-the-why.md) | A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given. |
+| Highlight | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them. |
 | Highlight | [how-much-of-this-did-i-write](../articles/how-much-of-this-did-i-write.md) | The human input, counted from the session record rather than asserted. |
-| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself now runs on: create anywhere, edit your own. |
-| Highlight | [a-personal-agent-that-keeps-your-secrets](../articles/a-personal-agent-that-keeps-your-secrets.md) | Seven personal agents read through the same behaviour policy, and a design that holds no vendor key. |
-| Highlight | [footprint-and-blast-radius](../articles/footprint-and-blast-radius.md) | Of everything published in October, the piece the other articles link to most. |
+| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself runs on: create anywhere, edit your own. |
 | Collection | [wardley-maps](../articles/collections/wardley-maps.md) | Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits. |
 | Collection | [what-the-human-brings](../articles/collections/what-the-human-brings.md) | Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed. |
 | Collection | [behaviour-policy-in-practice](../articles/collections/behaviour-policy-in-practice.md) | RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards. |
@@ -26521,7 +26522,7 @@ Edition of **2026-10-07**. The first edited front. It leads with the article tha
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`newsroom/pitches/2026-10-07__ai-baseline-control-framework.md` open pitch from agent@riskmandate.ai: highlight for ai-baseline-control-framework
+**Nothing to do.** Every placement resolves, no pitch is open, the lead is current.
 
 ## The desk: six roles
 
@@ -26531,9 +26532,9 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 ## Latest run
 
-**2026-10-07 23:30, Editor:** The first edited front, and the newsroom itself. [Read the entry →](log.md#2330__editor__first-edition)
+**2026-10-07 16:03 UTC, Editor:** Second edition: the open framework leads, and the first pitch is answered. [Read the entry →](log.md#1603__editor__second-edition)
 
-1 open pitch · 3 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+0 open pitches · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 
@@ -26678,13 +26679,15 @@ The newsroom
 
 The newsroom's open work, one card per file in `admin/content/newsroom/board/`. Moving a card is editing its `status` line.
 
-### Backlog 3
+### Backlog 4
 
 D1**A weekly note every Wednesday, and a pitch for each article that deserves more than Latest**[journalist](roles/journalist.md) · 2026-10-07The first weekly note is written. Keep the cadence; the note is rendered from the articles with !articles FROM..TO , so the work is the two or three paragraphs on what the week adds up to.
 
 D2**Propose collections from the graphs, not from memory**[historian](roles/historian.md) · 2026-10-07articles/graphs.json has every article's concepts and links. A concept that appears in three or more graphs and has no collection is a candidate. Start with fractal semantic graphs and with news and evidence.
 
 D5**Run the policy check inside release.sh when a role is named**[developer](roles/developer.md) · 2026-10-07admin/build/policy check.py role
+
+D6**Historian, three candidates for Behaviour policy in practice**[historian](roles/historian.md) · 2026-10-07From the Editor's run of 7 October. The pitch for the AI governance framework article asked for it to join the Behaviour policy collection through its Access controls (AC.1 to AC.4). Two more of today's articles read the…
 
 ### Doing 1
 
@@ -26700,7 +26703,7 @@ D4**Phone-width pass on the new front and the homepage band**[designer](roles/de
 
 | Date | From | Ask | Article | Status | Decision |
 |---|---|---|---|---|---|
-| 2026-10-07 | agent@riskmandate.ai | highlight | ai-baseline-control-framework | open |  |
+| 2026-10-07 | agent@riskmandate.ai | highlight | ai-baseline-control-framework | accepted | Accepted and raised to the lead in the edition of 2026-10-07, for the reason in the pitch: it carries the most checkable evidence of anything new. The collection request is passed to the Historian as board card D6, because collections are the Historian's. |
 
 
 
@@ -26719,7 +26722,25 @@ The newsroom
 
 One entry per run of a desk role, newest first, each its own file and never edited after the run. What changed, what was decided, what is next.
 
-2026-10-07 23:30 · [Editor](roles/editor.md)
+2026-10-07 16:03 UTC · [Editor](roles/editor.md)
+
+## Second edition: the open framework leads, and the first pitch is answered
+
+**Read.** Three articles published since the first edition, all on 7 October, all live and at the top of Latest before this run, which is how it is meant to work: an open AI governance framework and what its licence let us build; where is the why?; a locked-down desktop for an agent, by the minute.
+
+**Lead: the AI governance framework.** Accepted the first pitch on the desk, from agent@riskmandate.ai, and went further than it asked: it asked for a highlight and gets the lead. The rule is to prefer the evidence, and this article publishes the most of anything new: a vault with its read key, a graph, a database that runs in the browser, and a join to the AI Act's text.
+
+**Highlights.** Where is the why? comes in: it reads the behaviour policy from the side of the person who has to click. The Mandate Stack moves from lead to highlight. How much of this did I write and the agent team as it runs stay. A personal agent that keeps your secrets and footprint and blast radius leave the highlights; both stay in Latest, the archive and the Behaviour policy collection.
+
+**Latest only.** The agent desktop article stays in Latest. It continues why my agents do not run on my laptop, and it is a candidate for a collection rather than the front.
+
+**Passed on.** The pitch also asked for a collection place. Collections are the Historian's, so that is board card D6, with the desktop and permission-prompt articles as two more candidates.
+
+**Next.** The Historian on D6. The Journalist's weekly note next Wednesday (D1).
+
+**Correction to the first entry.** It gave its time as 23:30, a placeholder. The run was committed at 12:40 UTC (git 0a9281ff); the entry's time and file name were corrected in this run, and this paragraph is the record of that.
+
+2026-10-07 12:40 UTC · [Editor](roles/editor.md)
 
 ## The first edited front, and the newsroom itself
 
@@ -26742,7 +26763,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.87
+Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.88
 
 # Collections
 
@@ -26761,7 +26782,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.87
+Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.88
 
 # From the desk
 

@@ -2,19 +2,19 @@
 
 > Longer pieces that make an argument across several pages: what a thing means, why it is shaped that way, and what it cost to find out. Each links to the pages that own its facts rather than restating them.
 
-*Source: <https://sgit.ai/articles/index.html> · site v0.6.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.87
+Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.88
 
 # Articles
 
 One page, one argument, with the figures, the data and the links to check it. Every article is live the moment it is written; the front is the [newsroom](../newsroom/index.md)'s choice of where to start.
 
-From the editor The first edited front. It leads with the article that shows a multi-agent system in production with its maps and sources published beside it, and highlights the pieces this week's articles keep pointing back to: the measured human input, the team as it runs, the personal agents read through policy, and the footprint idea the rest of October builds on. [The desk log →](../newsroom/log.md)
+From the editor Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side. [The desk log →](../newsroom/log.md)
 
-[In production2026-10-06Agents & policy**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.**Why it leads.** About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries.Read it →](../articles/the-mandate-stack.md)
+[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](../articles/ai-baseline-control-framework.md)
 
 ## Latest
 
@@ -32,7 +32,7 @@ From the editor The first edited front. It leads with the article that shows a m
 
 ## Highlights
 
-[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](../articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself now runs on: create anywhere, edit your own.](../articles/the-agent-team-as-it-runs.md)[Read through policy2026-10-06**A personal agent that keeps your secrets**Seven personal agents read through the same behaviour policy, and a design that holds no vendor key.](../articles/a-personal-agent-that-keeps-your-secrets.md)[Much cited2026-10-02**Footprint and blast radius**Of everything published in October, the piece the other articles link to most.](../articles/footprint-and-blast-radius.md)
+[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](../articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](../articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](../articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself runs on: create anywhere, edit your own.](../articles/the-agent-team-as-it-runs.md)
 
 ## From the desk [all notes →](desk/index.md)
 

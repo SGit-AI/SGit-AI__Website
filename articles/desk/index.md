@@ -2,11 +2,11 @@
 
 > Short pieces written from the articles: nuggets, threads across articles, and the week in one page.
 
-*Source: <https://sgit.ai/articles/desk/index.html> · site v0.6.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/desk/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.87
+Edition of 2026-10-0738 articles · 3 desk notes · 3 collectionssgit.ai · v0.6.88
 
 # From the desk
 

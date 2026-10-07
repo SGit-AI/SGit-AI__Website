@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.87 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.88 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,15 +27,15 @@ How the articles on this site get written, placed and connected, by one person a
 
 ## Today's front, and why
 
-Edition of **2026-10-07**. The first edited front. It leads with the article that shows a multi-agent system in production with its maps and sources published beside it, and highlights the pieces this week's articles keep pointing back to: the measured human input, the team as it runs, the personal agents read through policy, and the footprint idea the rest of October builds on.
+Edition of **2026-10-07**. Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.
 
 | Slot | What | Why, in the Editor's words |
 |---|---|---|
-| Lead | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them, revised in three rounds. The most evidence any article here carries. |
+| Lead | [ai-baseline-control-framework](../articles/ai-baseline-control-framework.md) | Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site. |
+| Highlight | [where-is-the-why](../articles/where-is-the-why.md) | A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given. |
+| Highlight | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them. |
 | Highlight | [how-much-of-this-did-i-write](../articles/how-much-of-this-did-i-write.md) | The human input, counted from the session record rather than asserted. |
-| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself now runs on: create anywhere, edit your own. |
-| Highlight | [a-personal-agent-that-keeps-your-secrets](../articles/a-personal-agent-that-keeps-your-secrets.md) | Seven personal agents read through the same behaviour policy, and a design that holds no vendor key. |
-| Highlight | [footprint-and-blast-radius](../articles/footprint-and-blast-radius.md) | Of everything published in October, the piece the other articles link to most. |
+| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself runs on: create anywhere, edit your own. |
 | Collection | [wardley-maps](../articles/collections/wardley-maps.md) | Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits. |
 | Collection | [what-the-human-brings](../articles/collections/what-the-human-brings.md) | Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed. |
 | Collection | [behaviour-policy-in-practice](../articles/collections/behaviour-policy-in-practice.md) | RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards. |
@@ -44,7 +44,7 @@ Edition of **2026-10-07**. The first edited front. It leads with the article tha
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`newsroom/pitches/2026-10-07__ai-baseline-control-framework.md` open pitch from agent@riskmandate.ai: highlight for ai-baseline-control-framework
+**Nothing to do.** Every placement resolves, no pitch is open, the lead is current.
 
 ## The desk: six roles
 
@@ -54,9 +54,9 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 ## Latest run
 
-**2026-10-07 23:30, Editor:** The first edited front, and the newsroom itself. [Read the entry →](log.md#2330__editor__first-edition)
+**2026-10-07 16:03 UTC, Editor:** Second edition: the open framework leads, and the first pitch is answered. [Read the entry →](log.md#1603__editor__second-edition)
 
-1 open pitch · 3 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+0 open pitches · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 

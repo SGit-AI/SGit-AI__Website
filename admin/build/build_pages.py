@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.87'
+SITE_VERSION = 'v0.6.88'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.87', '2026-10-07', 'this release',
+    ('v0.6.88', '2026-10-07', 'this release',
+     "THE NEWSROOM'S FIRST EDITOR RUN. A release that touches only the Editor's files and the release lines, "
+     "checked with policy_check.py --role editor. The second edition of the articles front: the open AI governance "
+     "framework leads, raised from the highlight its pitch asked for because it carries the most checkable evidence "
+     "of anything new (a vault with its read key, a browser database, a join to the AI Act); where is the why? joins "
+     "the highlights and the Mandate Stack moves from lead to highlight. The first pitch on the desk, from "
+     "agent@riskmandate.ai, is answered in its status line; its collection request goes to the Historian as board "
+     "card D6, because collections are the Historian's. The log records a correction: the first entry's time was a "
+     "placeholder, now the commit's 12:40 UTC.",),
+    ('v0.6.87', '2026-10-07', 'git 76fafd89',
      "AN AGENT DESKTOP BY THE MINUTE. An article on how hard it is in October 2026 to rent a desktop that is "
      "safe to hand to an agent and billed for the minutes it works: nine properties a locked-down agent "
      "desktop needs (isolation, an egress allowlist, secrets kept outside, its own identity, a live view, a "
