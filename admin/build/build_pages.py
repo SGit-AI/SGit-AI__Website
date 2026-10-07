@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.90'
+SITE_VERSION = 'v0.6.91'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.90', '2026-10-07', 'this release',
+    ('v0.6.91', '2026-10-07', 'this release',
+     "THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules "
+     "(own account, secrets held by the platform, tools switched off, sending needs a person), an agent's "
+     "behaviour policy is the company's own business logic, function, process, relationship and purpose, which "
+     "many organisations never wrote down because their software enforced it by omission, and which agents "
+     "bypass by working through APIs. One fictional firm's email agent walked through six layers with an owner "
+     "and a barrier per rule; the rules counted into backed by a control, governed by an accepted risk, and hope; "
+     "five rules shown moving when a kind of product that already exists enforces them; the link to AI BCF RG.2 "
+     "and AC.3; and why the upper layers read like skills. Three figures, a graph, and a pitch to the Editor.",),
+    ('v0.6.90', '2026-10-07', 'git feb73516',
      "THE NEWSLETTER, AFTER ITS FIRST PASTE INTO LINKEDIN. Issue 1 was posted and three things came back. A quote's "
      "source sat in a cite inside the blockquote and LinkedIn dropped it, so the source is now a paragraph after the "
      "quote, everywhere the desk quotes. The Copy for LinkedIn button is gone: selecting the page and copying works "

@@ -2,7 +2,7 @@
 
 > Jan van Dijke published the AI Baseline Control Framework on 2 October 2026, twenty controls for organisations that deploy AI, in five categories and three types, each with why it matters and how to put it in place, mapped to the NIST AI RMF, ISO/IEC 42001 and the EU AI Act, and licensed CC BY-SA 4.0. Part one is about the framework, what it does well, what it adds that the three it maps to do not, and why an open licence matters more for a control framework than for most documents. Part two is what the licence made possible on the day: the CSV export converted into a semantic graph with an ontology, a SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents and a database that runs in the browser, joined to the EU AI Act's own text, published as a vault under the same licence, with a fractal graph view that walks from the framework down to a paragraph of law, and the six things the graph found that the CSV does not say.
 
-*Source: <https://sgit.ai/articles/ai-baseline-control-framework.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/ai-baseline-control-framework.html> · site v0.6.91 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -156,6 +156,10 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#ai-base
 - [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](introducing-fractal-semantic-graphs.md) A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.
 - [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
 - [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](code-review-as-a-fractal-semantic-graph.md) Source code is layers within layers, each a graph with its own vocabulary; code review should read a change at every one, and a vault shows it done on real code.
+
+### Continued by
+
+- [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md) Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

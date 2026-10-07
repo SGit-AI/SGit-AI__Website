@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zoom into an agent's behaviour policy and you find the business logic, sgit.ai</title>
+<meta name="description" content="The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.">
+<link rel="canonical" href="https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html">
+<link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html">
+<meta property="og:title" content="Zoom into an agent's behaviour policy and you find the business logic, sgit.ai">
+<meta property="og:description" content="The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.">
+<meta property="og:image" content="https://sgit.ai/og/the-behaviour-policy-is-the-business-logic.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Zoom into an agent's behaviour policy and you find the business logic, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/the-behaviour-policy-is-the-business-logic.jpg">
+<link rel="alternate" type="text/markdown" href="the-behaviour-policy-is-the-business-logic.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Zoom into an agent's behaviour policy and you find the business logic, sgit.ai", "headline": "Zoom into an agent's behaviour policy and you find the business logic, sgit.ai", "description": "The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.", "url": "https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}, "author": {"@type": "Person", "name": "Dinis Cruz", "url": "https://sgit.ai/about/index.html"}, "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.6.91</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../articles/newsletter/index.html#subscribe">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../docs/index.html">Documentation</a>
+ <a class="sl" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.6.91 &middot; 7 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Articles</a> / Zoom into an agent's behaviour policy and you find the business logic</p>
+ <h1>Zoom into an agent's behaviour policy and you find the business logic</h1>
+ <p class="small dim">By <a href="../about/index.html" rel="author">Dinis Cruz</a> &middot; 2026-10-07 &middot; <a href="../admin/versions.html">v0.6.91</a> &middot; <span class="chip">agents</span><span class="chip">agent-behaviour-policy</span><span class="chip">business-logic</span><span class="chip">fractal-semantic-graphs</span><span class="chip">controls</span><span class="chip">risk-acceptance</span><span class="chip">rbac</span><span class="chip">skills</span><span class="chip">integrations</span><span class="chip">article</span></p>
+ <p class="abstract"><em><b>Abstract:</b> The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale.</em></p>
+<figure class="shot" data-shot="policy-stack.webp" data-dir="images/" data-alt="One fictional firm&#x27;s email agent, layer by layer, with the barrier that stands in the way of each rule. The bottom two layers are mechanics; the four above them are the firm&#x27;s business."><figcaption>One fictional firm's email agent, layer by layer, with the barrier that stands in the way of each rule. The bottom two layers are mechanics; the four above them are the firm's business.</figcaption></figure>
+<p>The first rules anybody writes for an agent are easy. Do not send email, only draft it. Do not delete anything. Use your own account, not mine. They are short, they are the same in every company, and they are the rules I wrote first when I set up <a href="../articles/six-agents-one-inbox.html">six agents on one inbox</a>.</p>
+<p>Then you keep going, and something changes. Which drafts may it send once a person has looked? Replies only, or new conversations too? To clients, or to anybody? Can it mention a price? Can it chase an invoice that finance has not approved? Can it write to a client who is in a dispute with us? Can it write to a candidate about the outcome of an interview? A few questions in, you are no longer describing an agent. You are describing the business.</p>
+<p>That is the point of this article. Zoom into an <a href="https://riskmandate.ai/abp.html">Agent Behaviour Policy</a> and, below the first layer or two, what you are capturing is business logic: how this company works, function by function and process by process, up to what it is for. Much of it has never been written down. The tools that sell agent controls mostly stop before it. And it is the part that decides whether an agent can be trusted with real work.</p>
+<h2>The bottom is mechanics, and vendors do it well</h2>
+<p>The lowest layers of the example in the figure above are mechanical. The agent signs in as its own account. It never holds the mailbox password; the platform holds the token. Deleting mail is switched off by an administrator. Forwarding to outside domains is blocked. Sending needs a person.</p>
+<p>These are the controls platforms are good at, and they matter more than they look. The difference between an administrator and an ordinary user is one of the oldest controls in computing, and it is still the one that decides most of what an agent can reach. Secrets held by the platform rather than the agent, tools switched off rather than discouraged, an identity per agent rather than a shared login: each of these is a <b>boundary</b> in the behaviour policy's terms, enforced by something the agent's own grant does not include, and so a real control.</p>
+<p>They are also less obvious than they sound. When the agent operating a Google Workspace mailbox <a href="https://abp.sgit.ai/gmail/measured/index.html">measured its own connector</a>, on 19 September, it found thirty tools; on that account <code>send_message</code> ran with no prompt while trashing a message stopped for an approval. The mechanics are where a policy starts, and getting them right takes measurement, not reading the documentation.</p>
+<h2>Above the mechanics is the business</h2>
+<p>Go one layer up and the rules stop being the same in every company.</p>
+<p><b>The function.</b> How this firm does email. Reply inside existing threads; a new recipient needs a person. Never quote a price or a discount; pricing goes to sales. Every sent mail is copied to a log the agent cannot edit.</p>
+<p><b>The process.</b> The steps a piece of work goes through. An invoice goes out only after finance has approved it in the ledger. No email tells a candidate the outcome of a hiring decision. A complaint reaches a named person within one working hour.</p>
+<p><b>The relationship.</b> Who this customer is to us, right now. During an open dispute, nothing goes to that client except through legal. Key accounts get a reviewed draft rather than a sent mail.</p>
+<p><b>The organisation.</b> What the company is for. Treat customers fairly: no pressure, no hidden terms. Or, in another company, win back every customer who cancels.</p>
+<p>None of these is exotic. Each is a sentence a manager would say out loud. Together they are the firm's business logic as it applies to one agent doing one job, and each layer has a different owner: IT and security, the head of operations, finance and HR and legal, the account managers, the board.</p>
+<h2>Why the vendors stop at the mechanics</h2>
+<p>A platform that sells agent controls is in a catch. It has to add value to every customer, and it has to scale, so it builds what is the same for everybody: roles, switches, secret stores, tool permissions, approval prompts. Those are worth having. But the layers above are different in every company, they change every week, and in many companies they are not written anywhere a product could read them. A vendor that tries to model each customer's business becomes a consultancy; one that does not is left selling the bottom of the stack.</p>
+<p>That is not a criticism of the vendors. It is the shape of the problem. The mechanical layer is a product. The business layers are the customer's, and the customer has to write them.</p>
+<h2>Software was the law</h2>
+<p>Why have so many companies never written this down? Because they did not need to. Their software was the law.</p>
+<p>For decades the rules of engagement lived in the systems people used. A clerk could not send an unapproved invoice because the finance system had no button for it until the approval was recorded. A support agent could not see a customer's payment details because their role did not include the screen. Approval chains, role-based access control, field-level permissions, workflow engines: these are business logic, encoded in software, and often far more complex than anybody would choose to write in prose. They are also important. They are where privacy decisions live, who can see what, who can do what, and much of what governance means in practice.</p>
+<p>An agent breaks that arrangement. It works through APIs, not screens. It can call the endpoint the button would have called, without the screen that hid the button. The rule that the user interface enforced by omission is no longer enforced, unless somebody writes it down and something enforces it. The behaviour policy is where it gets written down.</p>
+<h2>Policies inside policies</h2>
+<p>The structure I have found that can hold this is a fractal one: behaviour policies inside behaviour policies, each layer refining the one below, inside the room the one below allows.</p>
+<p>At the bottom are the foundational controls: identity, secrets, what the platform switches on and off, a few levels of privilege from administrator upwards. Above them, the soft controls that the agent enforces on itself, or that another agent checks. Above those, the function, the process, the relationship. And at the top, whatever the company says it is for. That top layer is the company's to define. It might be to treat customers fairly. It might be to maximise revenue from every account. A behaviour policy describes; <a href="https://riskmandate.ai/abp.html">it does not judge</a>. But a policy that is written down can be read, and a company whose top layer says it treats customers fairly, with the layers beneath to show it, has something to show that a company without one does not.</p>
+<p>This is the same grammar as the rest of the site's <a href="../articles/introducing-fractal-semantic-graphs.html">fractal semantic graphs</a>: the same small set of rules at every level, so one reader and one set of tools work from the board's principle down to a single tool permission. It is also how the behaviour policy itself is already built. The ABP's vocabulary is <a href="https://abp.sgit.ai/model/graph/layers/index.html">three layers</a>: shared facts owned by nobody, each party's own formulas over those facts, and declared bridges between vocabularies. A customer extends it by adding nodes in its own vault, never by asking for a change in ours.</p>
+<h2>How much of it is hope?</h2>
+<figure class="shot" data-shot="policy-hope.webp" data-dir="images/" data-alt="The worked example, counted. Each rule is backed by a control, governed by an accepted risk with an owner and an expiry, or resting on hope. The proportions are illustrative; the shape is the point."><figcaption>The worked example, counted. Each rule is backed by a control, governed by an accepted risk with an owner and an expiry, or resting on hope. The proportions are illustrative; the shape is the point.</figcaption></figure>
+<p>Once the rules are written in layers, a question becomes answerable that is usually only felt: how much of this agent's behaviour is actually enforced?</p>
+<p>The behaviour policy already records, for every rule, which of four things stands in the way: nothing, an <b>expectation</b> (a rule in prose, enforced by nobody), a <b>setting</b> the agent's own account can flip, or a <b>boundary</b> enforced above it. Only the last is a control. Add one more fact, whether a named person has accepted the risk of the rule not being enforced, with an expiry, and every rule lands in one of three states: backed by a control, governed by an accepted risk, or resting on hope.</p>
+<p>In the example, five of the seventeen rules are backed by a control, six are governed by an accepted risk, and six are hope. The shape is the finding. The platform layer is all control. The organisation layer is all hope. In between, the more specific a rule is to this firm, the more it rests on the agent behaving and on somebody having <a href="../articles/every-risk-is-already-accepted.html">accepted that it might not</a>. That is not a failure; most of a business has always run on people behaving as asked. But it is worth knowing which is which, and with an agent it can be counted.</p>
+<h2>Where the vendors plug in</h2>
+<figure class="shot" data-shot="policy-plug.webp" data-dir="images/" data-alt="Five rules from the example, and the control that would move each one. Every control is a kind of product that already exists; what is new is that it enforces a rule the customer wrote."><figcaption>Five rules from the example, and the control that would move each one. Every control is a kind of product that already exists; what is new is that it enforces a rule the customer wrote.</figcaption></figure>
+<p>This is also where the catch for vendors comes undone. A vendor does not have to model the customer's business. It has to enforce the parts of the customer's written policy that its product can reach.</p>
+<p>A send gateway that holds mail to an address the thread has not seen moves "a new recipient needs a person" from an accepted risk to a control. An outbound content check moves "never quote a price" from hope to a control. A finance system that answers "is this invoice approved?" to a gateway the agent cannot reach moves the invoice rule. A blocked-recipients list that legal maintains moves the dispute rule. The principle at the top has no single control, but sampling sent mail against it, with a named reviewer, turns hope into an accepted risk.</p>
+<p>Each of these is a product somebody already sells. What changes is that it now enforces a rule at the layer the customer wrote it, and the policy can count the move. A control attached to a written rule is worth more than one switched on in general, because the customer can see what it bought. That is why I think the behaviour policy is a good place for vendors to integrate rather than a threat to them: it gives their controls a rule to enforce and a number to move, and it lets several vendors each own a different row without any of them having to own the whole business.</p>
+<p>It is also why the frameworks are starting to ask for this. The <a href="../articles/ai-baseline-control-framework.html">AI Baseline Control Framework</a> asks, in RG.2, that for every AI system acting autonomously "what it does is described", and, in AC.3, that each one has a named owner. The description RG.2 asks for is the layers above the mechanics. The owner AC.3 asks for is the person whose name goes on each layer.</p>
+<h2>It looks a lot like a skill</h2>
+<p>Read the upper layers of the example again and they look less like access control and more like a skill: the instructions that tell an agent how a function is done here. How we answer clients. How an invoice goes out. What we never say about price. A skill file and a behaviour policy layer are written by the same people, about the same work, for the same agent.</p>
+<p>The difference is what each one carries. A skill says how. A policy layer says what is allowed, who owns the rule, and what stands in the way of breaking it. Written together, they are the business codified for an agent: the functions, the processes, the relationships and the principles, with the controls and the acceptances attached. That is what lets the business hand real work to agents and still know what it handed over. It is also what lets it scale: the knowledge that lived in a few people's heads, and in software nobody could read, becomes something an agent can follow, a person can review and a control can enforce.</p>
+<h2>What comes next</h2>
+<p>The example here is fictional on purpose, so the shape is clear. The next step is a real one: take the <a href="https://abp.sgit.ai/gmail/measured/index.html">measured Gmail deployment</a> as the bottom two layers, write the function, process and relationship layers above it for one real inbox, count the three states, and publish it as a vault with its read key. Then do it again with a vendor's control in the path, and publish the count before and after.</p>
+<p><em>Drafted from a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026. The firm, its rules and its counts are illustrative. The measured Gmail figures and the ABP's barrier kinds and layers are from abp.sgit.ai and riskmandate.ai as published that day. The kinds of product named in the third figure are categories, not recommendations, and no vendor was contacted.</em></p>
+<section class="athreads" id="threads">
+ <h2>Threads</h2>
+ <p class="athreads-meta"><span class="tchip">Agents &amp; policy</span> <a href="graphs.html#the-behaviour-policy-is-the-business-logic">This article as a graph &rarr;</a></p>
+ <div class="athreads-cols"><div><h3>Builds on</h3><ul><li><a href="six-agents-one-inbox.html">Six agents, one inbox: what a real multi-agent setup taught me about access policies</a> <span class="dim">An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.</span></li><li><a href="introducing-fractal-semantic-graphs.html">Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema</a> <span class="dim">A fractal semantic graph has no privileged level and no single schema: each world keeps its own vocabulary and connects to others through named edges.</span></li><li><a href="every-risk-is-already-accepted.html">Every risk is already accepted. The only question is by whom, and for how long.</a> <span class="dim">A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.</span></li><li><a href="ai-baseline-control-framework.html">An open AI governance framework, and what its licence let us build</a> <span class="dim">Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.</span></li></ul></div></div>
+ <p class="small dim"><a href="index.html">All articles</a> &middot; <a href="graphs.html">All graphs</a></p>
+</section>
+<aside class="lkit" aria-label="For LinkedIn"><b>Posting this article on LinkedIn?</b> The cover is <a href="../articles/banners/the-behaviour-policy-is-the-business-logic.jpg" download>the-behaviour-policy-is-the-business-logic.jpg</a> (1920&times;1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>
+ <aside class="subscribe" id="subscribe" aria-label="Subscribe to the newsletter"><p><b>Get the next issue by email.</b> One issue a week or so: what was published, what it adds up to, what is worth your time. A personalised issue, picked for what you care about, comes next. Your address is encrypted in your browser to the key of the agent that manages the list and dropped into a write-only lane on an encrypted vault. <a href="../docs/briefs/subscribe-lane-agent-brief.html">How it works</a>.</p><form class="subform" data-subscribe novalidate><label class="sr" for="sub-email">Email address</label><input id="sub-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required><label class="sr" for="sub-name">Name, optional</label><input id="sub-name" name="name" type="text" autocomplete="name" placeholder="Name (optional)"><span class="hp" aria-hidden="true"><label for="sub-web">Website</label><input id="sub-web" name="website" type="text" tabindex="-1" autocomplete="off"></span><button class="subbtn" type="submit">Subscribe</button><label class="consent"><input type="checkbox" name="consent"> <span>I am happy for the agent at agent@riskmandate.ai, which runs this list for sgit.ai, to keep this address in a private vault and email me the SGit Newsroom newsletter. I can ask to be removed by replying to any message.</span></label><p class="sub-status small" aria-live="polite"></p><a class="sub-mailto small" href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&amp;body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter." hidden>Send it as an email instead &rarr;</a></form><div class="sub-done" hidden><b>Sent, encrypted, into the vault.</b> The lane answers only <code>ok</code>, by design, so there is no receipt. If nothing arrives, email <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</div><noscript><p class="small">This form needs JavaScript. Email <a href="mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&amp;body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.">agent@riskmandate.ai</a> instead.</p></noscript><p class="small dim">Prefer a feed? <a href="../articles/feed.xml">articles/feed.xml</a> carries the articles and the desk notes; agents can read <a href="../newsroom/wire.json">the wire</a>.</p></aside>
+ <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All articles</a></p>
+</main>
+<script>
+(function () {
+ fetch('../assets/shots.js?v=v0.6.91')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+<script>
+(function () {
+ fetch('../assets/subscribe.js?v=v0.6.91')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[subscribe] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.6.91</a> · <a href="../admin/index.html">engineering</a> · <a href="the-behaviour-policy-is-the-business-logic.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.6.91';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+</script>
+</body>
+</html>

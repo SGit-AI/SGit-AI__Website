@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.6.91 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -46,6 +46,7 @@ Edition of **2026-10-07**. Second edition, the same day. The lead moves to the o
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
+- To do`newsroom/pitches/2026-10-07__the-behaviour-policy-is-the-business-logic.md` open pitch from agent@riskmandate.ai: highlight for the-behaviour-policy-is-the-business-logic
 - Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
@@ -58,7 +59,7 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 **2026-10-07 16:03 UTC, Editor:** Second edition: the open framework leads, and the first pitch is answered. [Read the entry →](log.md#1603__editor__second-edition)
 
-0 open pitches · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+1 open pitch · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 

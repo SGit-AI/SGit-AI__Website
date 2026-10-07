@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.90",
+  "site_version": "v0.6.91",
   "updates": [
     {
       "slug": "the-newsroom",
@@ -931,6 +931,25 @@
         "article"
       ],
       "summary": "We want to give each agent a desktop of its own, away from the laptop, that a person can watch and take over, that can reach only what its task needs, that holds no secret it could leak, that is thrown away afterwards, and that is billed for the minutes it works. In October 2026 every one of those properties can be bought somewhere, and no single product we looked at offers all of them. This article lays out the nine properties, puts nine products against them from their own documentation, prices two hours of work a day on each, and explains the three things that make it hard: macOS cannot be leased for less than a day and Apple's licence limits what a leased Mac is for; the strongest isolation controls are weeks old or in private beta; and prompt injection is not solved, so the desktop has to be the barrier rather than the model. It proposes what we would build from what exists, and closes with the startup credit programmes that would pay for trying it, verified on the day, with how to apply."
+    },
+    {
+      "slug": "the-behaviour-policy-is-the-business-logic",
+      "title": "Zoom into an agent's behaviour policy and you find the business logic",
+      "date": "2026-10-07",
+      "version": "v0.6.91",
+      "tags": [
+        "agents",
+        "agent-behaviour-policy",
+        "business-logic",
+        "fractal-semantic-graphs",
+        "controls",
+        "risk-acceptance",
+        "rbac",
+        "skills",
+        "integrations",
+        "article"
+      ],
+      "summary": "The first rules anybody writes for an agent are mechanical. Do not send, only draft. Do not delete. Use your own account. Vendors are good at those, and should be. Zoom in on any real agent's behaviour policy, though, and within a few layers you are writing how this company does email, which steps an invoice goes through, who a client is to it this week, and what the company is for. That is business logic, and many organisations have never written it down, because their software was the law. This article walks one fictional firm's email agent through six layers, from the platform to the board, records what stands in the way of each rule, counts how much of the policy is backed by a control, how much by an accepted risk and how much by hope, and shows where a vendor's existing control plugs in. The argument is that a behaviour policy built in layers, each refining the one below and each with its own owner, is the only way to describe agent behaviour at the granularity a business actually runs at, that vendors cannot and should not try to model it for each customer, and that writing it down is what lets the business scale."
     },
     {
       "slug": "where-is-the-why",
