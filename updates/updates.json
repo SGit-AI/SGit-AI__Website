@@ -1,13 +1,13 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.84",
+  "site_version": "v0.6.85",
   "updates": [
     {
       "slug": "the-newsroom",
       "title": "The articles get a newsroom: publish by adding a file, placement by one editor",
       "date": "2026-10-07",
-      "version": "v0.6.84",
+      "version": "v0.6.85",
       "tags": [
         "newsroom",
         "articles",
@@ -877,6 +877,26 @@
     }
   ],
   "articles": [
+    {
+      "slug": "where-is-the-why",
+      "title": "Where is the why? A permission prompt asked me to decide, and kept the reason",
+      "date": "2026-10-07",
+      "version": "v0.6.84",
+      "tags": [
+        "agents",
+        "agent-behaviour-policy",
+        "human-in-the-loop",
+        "permission-prompts",
+        "security-ux",
+        "consent",
+        "accountability",
+        "risk-acceptance",
+        "claude-code",
+        "mcp",
+        "article"
+      ],
+      "summary": "An agent session asked, in the middle of a task, to add a repository. The prompt showed three fields, owner, repository and access, and two buttons, Decline and Allow once. It did not say which session was asking, why, what the session would be able to do afterwards that it could not do before, or what would happen on a no. The session was one of several, and one of them was working on a vault holding confidential data. This article reads that prompt through the Agent Behaviour Policy, where a permission prompt is a request to change the grant mid-session and a barrier whose strength is the information the person is given; sets it against what courts, regulators and research have said about decisions taken without the facts, from Montgomery's consent forms and the red hand rule to GDPR's informed consent, token human oversight, and the moral crumple zone; lists the other prompts that asked without a why and the fixes that worked, from Apple's purpose strings and Microsoft's number matching to the CNIL's rule that refusing must be as easy as accepting; puts Anthropic's own figures on how often people approve agent prompts beside them; and proposes a why card, a prompt that carries its reason, its change in reach, its cost, the path if declined, and a record, and that turns into a risk acceptance when the risk rises."
+    },
     {
       "slug": "a-personal-agent-that-keeps-your-secrets",
       "title": "A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser",

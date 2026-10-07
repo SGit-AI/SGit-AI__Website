@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.84'
+SITE_VERSION = 'v0.6.85'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,7 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.84', '2026-10-07', 'this release',
+    ('v0.6.85', '2026-10-07', 'this release',
      "THE NEWSROOM. The articles get an editorial layer, run in public at /newsroom/. Publishing is still "
      "adding one file: an article is live, at the top of Latest, in a new articles/feed.xml and in a new "
      "newsroom/wire.json the moment it exists, with no approval step. What changes is placement. The lead, "
@@ -45,6 +45,17 @@ VERSION_LOG = [
      "The homepage band follows the front. The top menu now opens with Articles; Updates and the version log "
      "move under Team. First edition: the Mandate Stack leads; two Historian notes, a weekly note and three "
      "collections.",),
+    ('v0.6.84', '2026-10-07', 'git b92f41f8',
+     "WHERE IS THE WHY? An article on a permission prompt that asked, mid-task, to add a repository to an agent "
+     "session, with three fields and two buttons and no reason. It reads the prompt through the Agent Behaviour "
+     "Policy, as a grant change whose barrier is a human judgement and whose risk lies in the combination with "
+     "what the session already holds (read of a public repository adds little; write to it from a session "
+     "holding confidential data adds a publishing channel); sets it against the record on decisions taken "
+     "without the facts, from Montgomery and the red hand rule to GDPR consent, token oversight under WP251 and "
+     "SCHUFA, and the moral crumple zone; lists the prompts that asked without a why and the fixes that worked, "
+     "purpose strings, number matching, refusal as easy as acceptance; puts the vendor's own approval figures "
+     "beside them; and proposes a why card that becomes a risk acceptance when the risk rises. The screenshot "
+     "is included; sources are labelled and secondary ones marked. Seven figures.",),
     ('v0.6.83', '2026-10-07', 'git e0a2e1bd',
      "SGIT-AI 0.18.0 ON THE SITE. The CLI's release notes as an update post, carried here because the site had no "
      "change log for the CLI itself: scoped clones (--path), shallow clones (--depth), a full clone twice as fast "
@@ -3496,7 +3507,7 @@ ASK = [
 
 
 NAV = [
-    # Articles first (v0.6.84). They are where most of what this site argues lives, and until
+    # Articles first (v0.6.85). They are where most of what this site argues lives, and until
     # this release they sat second under Updates, the least-read section. The group is owned
     # by the newsroom (admin/content/newsroom/): the front page, the desk, the collections.
     ('articles', 'Articles', 'articles/index.html', [
@@ -5894,7 +5905,7 @@ def articles_index_body():
 def home_articles_band():
     """The homepage band: the Editor's lead, the first highlights, the newest few, and the
     newest desk note. Counts come from front.json's `homepage`; with no front.json it is
-    the newest article and the next three, which is what the band showed before v0.6.84."""
+    the newest article and the next three, which is what the band showed before v0.6.85."""
     hp = NEWS.front.get('homepage') or {}
     nh, nl, nn = int(hp.get('highlights', 3)), int(hp.get('latest', 5)), int(hp.get('notes', 1))
     lead = NEWS.lead()
@@ -6276,7 +6287,7 @@ def write_wire():
 
 
 def write_articles_feed():
-    """articles/feed.xml: the articles and the desk notes, newest first. Until v0.6.84 the
+    """articles/feed.xml: the articles and the desk notes, newest first. Until v0.6.85 the
     only feed carried the updates, so a feed reader following this site never saw an article."""
     items = [(a['date'], a['title'], f'https://sgit.ai/articles/{a["slug"]}.html', a['summary']) for a in ARTICLES]
     items += [(n['date'], f'{NOTE_KINDS[n["kind"]]}: {n["title"]}', f'https://sgit.ai/articles/desk/{n["slug"]}.html', n['summary'])
