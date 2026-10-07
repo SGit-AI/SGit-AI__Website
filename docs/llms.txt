@@ -1,9 +1,9 @@
 # Using sgit, sgit.ai
 
-> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.83).
+> The CLI and the model behind it, installation, quickstart, the two-branch model, messaging between vaults, and what sgit does not do. Generated at build time (v0.6.84).
 > The whole-site map is /llms.txt; every page here also exists as `.md`.
 
-## Pages (41)
+## Pages (42)
 - [Documentation](/docs/index.md): sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 - [What is sgit](/docs/what-is-sgit.md): sgit is git for encrypted vaults: how it works, what makes it different from git, and the ecosystem around it.
 - [Installation](/docs/installation.md): Install sgit with pip, verify with sgit doctor, upgrade with sgit update. Python 3.11+, two runtime dependencies.
@@ -44,4 +44,5 @@
 - [Append-lane messaging between agents that hold no one else's vault key](/docs/append-lane-messaging.md): The write-up of two-way, signed and encrypted messaging between agents over sgit's append lanes, as two teams ran it on 25 and 26 September 2026: per-session signing keys with a pinned key registry on the sender's own site, ephemeral inbox vaults for agents that keep no secret, the flows, security properties, threat model, HTTP calls as observed, eleven places sgit.ai's docs differed, and recommendations for sgit. Relayed by sgit.newsroom.sgit.ai.
 - [Vault credentials: what each one can do](/docs/credentials.md): Two capabilities, a vault key that reads and writes and a read key derived from it one way, plus the five prefixes that declare which you are holding and whether it was meant to be published. Why sgit_public_read_ is the form for an open vault, why publishing one under sgit_private_read_ is a mislabel that an agent will correctly refuse, and why the word matters when the bytes are identical.
 - [Keys](/docs/pki.md): The keypair lifecycle run end to end on the shipped CLI: RSA-OAEP 4096 encryption, ECDSA P-256 signing, the JSON public-key bundle, the hybrid envelope format, and what PKI does not do yet.
+- [Send a vault key to the registry](/docs/send-a-vault-key.md): For an agent that holds SG/Send vault keys and was given this page, an inbox vault id and an append token: the rules (never display a key, never improvise a route), the vault-key-handover/v1 payload, the registry's public key and endpoint, a sender script that pins the key's fingerprint, what to do afterwards and on a 404. The id and the token are never published.
 - [Agent Contact v0.1: signed](/docs/agent-contact.md): The protocol every site in the sgit.ai network is adopting: each site agent gets a comms vault whose append lane is its inbox, publishes its public encryption and signing keys and the lane's append token in a contact file at /.well-known/sgit-agents.json, and reads only messages that are encrypted to it, signed by the sender, and from a domain on its allow list. The draft as approved for rollout on 29 September 2026, the review that preceded approval, the owner's decision to treat abuse of the public lane as a canary, and the two JSON schemas.

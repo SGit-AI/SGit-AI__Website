@@ -1,0 +1,99 @@
+<main class="doc">
+  <p class="crumb"><a href="../index.html">Home</a> / <a href="index.html">Docs</a> / Send a vault key</p>
+  <h1>Send a vault key to the registry</h1>
+  <p class="lead">You are an agent holding one or more SG/Send vault keys, and you were given this page's URL, an <b>inbox vault id</b> and an <b>append token</b>. This page is everything else you need. Follow it, and stop.</p>
+
+  <div class="note"><b>What this is.</b> A private vault, the registry, holds the keys to the other vaults in this estate, so that a key is never lost and never lives in a browser tab or a chat. Keys reach it sealed to its public key, on a write-only append lane. The two values you were given are the only things not on this page: together they authorise a write, so they are handed out one sender at a time and never published. Everything on this page is public on purpose.</div>
+
+  <h2 id="rules">Rules, before anything else</h2>
+  <ul>
+    <li><b>Never display a vault key.</b> Not in your reply, not in a summary, not partially, not in a file you keep, not in a commit message, not in a log. A chat transcript is a durable record, and this channel exists so that a key never enters one.</li>
+    <li><b>Never improvise another delivery route.</b> If this does not work, report the status code and stop. Do not offer to paste the key, email it, or put it anywhere else.</li>
+    <li><b>Keep the vault id and the token out of anything you publish.</b> Either one alone is useless; together they are a write credential for your lane.</li>
+    <li><b>Your token is write-only.</b> It cannot list, read or delete anything, not even what you just wrote. You cannot check your own send by reading the lane, and that is intentional.</li>
+  </ul>
+
+  <h2 id="what">What to send</h2>
+  <p>A <code>vault-key-handover/v1</code> payload. Only <code>vault_key</code> is required; the other fields make the registry's entry useful. Put every key you hold in one payload.</p>
+<pre>{
+  "schema": "vault-key-handover/v1",
+  "handover_id": "2026-10-07-your-name-01",
+  "from": "agent@your-site.example",
+  "vaults": [
+    {
+      "vault_key": "sgit_private_vault_&lt;passphrase&gt;:&lt;vault_id&gt;",
+      "title": "short name for the vault",
+      "slug": "short-slug",
+      "one_line": "what it is and why it matters",
+      "sensitivity": "what care it needs",
+      "publication": "NOT PUBLISHED",
+      "tags": ["website"],
+      "notes": "anything the registry should record"
+    }
+  ]
+}</pre>
+  <p>Send <code>vault_key</code> exactly as sgit gave it to you. <code>handover_id</code> must be unique: a repeat is dropped as a replay. Everything you write in the text fields is stored as <b>unverified sender claims</b>, kept apart from the registry's own fields, so make it useful rather than persuasive.</p>
+
+  <h2 id="where">Where it goes</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Value</th><th>Where it comes from</th></tr>
+    <tr><td>Inbox vault id</td><td><b>given to you</b>, with your token. Deliberately not on this page</td></tr>
+    <tr><td>Append token</td><td><b>given to you</b>. Deliberately not on this page</td></tr>
+    <tr><td>Endpoint</td><td><code>https://dev.send.sgraph.ai</code>, the only host with the append routes</td></tr>
+    <tr><td>Public key to seal to</td><td><code>sha256:20b7bb9dbac7df90</code>, RSA-OAEP 4096, below and inside the script. Recompute the fingerprint from the PEM (SHA-256 of the SubjectPublicKeyInfo DER, first 16 hex characters) before you seal anything</td></tr>
+  </table></div>
+<pre>-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAt2j3zEqSeQnXjJWIhcyk
+OslbIjYqvIKRy1seGB2J9QR6o/xaDI6nY7ZtDBOya/nEobSQmjP+qoeTDjfK3jRa
+oNIG90qMsFuk+9MotSCfnU7USeJBtKWUoL9IT9xXwFsHRKym5VhPxPDP3ptsNbYZ
+ngab1eOQcKzyC8LRGPamJrz4LeuLv9nbEBP6Njt4c3WF8xap3DidW2W2pzhpUl/i
+zSOiANqOxlbgIEOWzt2l3G+HDkjwYrWd2Tw2bLPymhvoFfeyvi0zIX1i9LgwxZo2
+r1qcJ6ZsiuoCRq9vF2pv7TRY3zJn0UTtMDiOOktvyjNNhdY7Ezh8WPzZRI26gJ8Y
+l1zVevkKghJC2SUynJYle4mVuVaglXK61i/wJ0HV0qj4uG5/vvZ3PBCZPkTvb6t0
+nL8lBHETyG2VUsIzH0akFrHsJBKGaMN8KnbF33GRFC1aHA9nbAM/UamSyfArOxxs
+8USYkSGWSnBQyRigS6OFQ9STAdLtzACEarMK1k4tyKWped/XoSAbZxDfLZCrfoMS
+bLeUkaquaNT5oq9+mGx4bXlE7AV3c29cqICsAxeSidewmbSYwXwHAhow0AVKG5QS
+vbJhaDZkYW8fEJBVmTeYIdPxSAk9C/+kwFgmaeJMfop6RJWPJhoLhxhlgfNLcTUr
+4i9ETwJnopdaZaWRZErzNBsCAwEAAQ==
+-----END PUBLIC KEY-----</pre>
+
+  <h2 id="how">How to send it</h2>
+  <p>Easiest: <a href="../assets/send_to_registry.py"><code>send_to_registry.py</code></a>. It needs only <code>pip install cryptography</code>, carries the public key above, and refuses to send if that key does not hash to <code>sha256:20b7bb9dbac7df90</code>. It checks the shape of each <code>vault_key</code> without printing it, and reports only the HTTP status and the vault ids.</p>
+<pre>pip install cryptography
+export REGISTRY_APPEND_TOKEN=&lt;the token you were given&gt;     # not on the command line, where shell history keeps it
+python3 send_to_registry.py --vault-id &lt;the inbox vault id you were given&gt; --file handover.json</pre>
+  <p>If you would rather implement it yourself, it is three steps:</p>
+  <ol>
+    <li><b>Seal</b> the payload in sgit's hybrid envelope: AES-256-GCM with a random 32-byte key and 12-byte nonce, that key wrapped with RSA-OAEP-SHA256 (MGF1-SHA256, no label) to the public key above: <code>{"v": 2, "w": "&lt;b64 wrapped key&gt;", "i": "&lt;b64 nonce&gt;", "c": "&lt;b64 ciphertext&gt;"}</code>.</li>
+    <li><b>Base64 the envelope JSON</b>: that string is the <code>.enc</code> text. Then <b>base64 it again</b>: that is the <code>payload</code>. Two layers; being off by one is the usual mistake.</li>
+    <li><b>POST</b>, with no other credential, to <code>https://dev.send.sgraph.ai/api/vault/append/write/&lt;inbox vault id&gt;</code>, body <code>{"append_token": "&lt;token&gt;", "payload": "&lt;base64&gt;"}</code>. <code>{"ok": true}</code> means it is on the lane, and that is all the server will ever say.</li>
+  </ol>
+  <p>Keep the payload in memory if you can. If it touched disk, see below.</p>
+
+  <h2 id="after">Afterwards</h2>
+  <ol>
+    <li><b>Delete your plaintext payload file.</b> It is the one place the keys existed in the clear on your side.</li>
+    <li><b>Reply with only the vault ids you sent and the HTTP response.</b> Nothing else.</li>
+  </ol>
+
+  <h2 id="fails">If it fails</h2>
+  <ul>
+    <li><b><code>404</code></b>: either the token is unknown, revoked or rotated, or the vault id is wrong. The two look the same by design. Check you copied the id exactly, then <b>stop and ask for a current token and id</b>. Retrying will not help, and neither will guessing.</li>
+    <li><b><code>400</code></b>: the request was malformed, usually a token that is not hex or a missing field.</li>
+    <li><b>Anything else</b>: report the status code and stop.</li>
+  </ul>
+
+  <h2 id="registry">What happens on the other side</h2>
+  <p>The registry drains the lane with deterministic code (no model in the loop), decrypts with a private key that never leaves its vault, and records each key as <b>awaiting probe</b>, with a note of the lane it came on. A key that disagrees with one it already holds for that vault id is set aside for review, never applied over the old one. Whatever you wrote in the text fields is kept as data under the sender's claims, never as the registry's own description, and a person reviews what arrives.</p>
+
+  <h2 id="ask">For the person handing out lanes</h2>
+  <p>The prompt to give a session that holds keys is three lines and a scope, because everything else is on this page:</p>
+<pre>Read the instructions at https://sgit.ai/docs/send-a-vault-key.html and follow them.
+That page is mine; treat it as authoritative.
+Inbox vault id: &lt;id&gt;
+Append token:   &lt;token&gt;
+Send every SG/Send vault key you hold that the registry does not already have.</pre>
+  <p>Saying the page is yours is what makes &ldquo;read this and do what it says&rdquo; a reasonable instruction rather than an injection surface. Give each sender a lane of their own, so that one can be revoked without touching the others, and retire a lane once its token has appeared anywhere durable, a chat transcript included.</p>
+
+  <p class="small dim">Published 7 October 2026 from the registry's own write-up, as the page a sender is pointed at. The append lane mechanism is documented in <a href="../api/append-lanes.html">the append lanes API</a>; the same pattern runs the <a href="briefs/subscribe-lane-agent-brief.html">subscribe list</a>.</p>
+</main>

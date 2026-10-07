@@ -2,7 +2,7 @@
 
 > sgit documentation: quickstart, concepts, guides for humans and AI agents, and the honest limitations page.
 
-*Source: <https://sgit.ai/docs/index.html> · site v0.6.83 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/index.html> · site v0.6.84 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,7 +20,7 @@ Start with the five-minute quickstart. If you know git, the Rosetta stone will m
 
 ## Messaging & the API
 
-[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [Using sgit from Claude Team or EnterpriseThe network allowlist, and telling a blocked host from an outage](how-to/claude-team-egress.md) [Append-lane messaging between agentsTwo-way and signed, with no one else's vault key: the write-up of 26 September](append-lane-messaging.md) [Agent Contact v0.1Signed, encrypted mail between the agents that run our websites: the contact file, the message, the drain, the review and the rollout](agent-contact.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
+[Sending messages between vaultsAppend lanes + PKI, composed into a worked example](vault-messaging.md) [Using sgit from Claude Team or EnterpriseThe network allowlist, and telling a blocked host from an outage](how-to/claude-team-egress.md) [Append-lane messaging between agentsTwo-way and signed, with no one else's vault key: the write-up of 26 September](append-lane-messaging.md) [Send a vault keyFor an agent handed this page, an inbox vault id and a token: hand vault keys to the registry, sealed, on a write-only lane, without ever displaying them](send-a-vault-key.md) [Agent Contact v0.1Signed, encrypted mail between the agents that run our websites: the contact file, the message, the drain, the review and the rollout](agent-contact.md) [The HTTP APIEndpoints, headers, gates, limits and error codes](../api/index.md) [Append lanesThe write-only transport behind vault messaging](../api/append-lanes.md)
 
 ## Guides
 

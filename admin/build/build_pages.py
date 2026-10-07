@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.83'
+SITE_VERSION = 'v0.6.84'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.83', '2026-10-07', 'this release',
+    ('v0.6.84', '2026-10-07', 'this release',
+     "SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding "
+     "vault keys is pointed at, with an inbox vault id and an append token given privately and never "
+     "published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what "
+     "to do afterwards and on a failure. Taken from the vault registry write-up's Section 0, with its "
+     "inconsistencies resolved: the vault id is withheld everywhere, the token and id together are treated "
+     "as a write credential, and the sender script (/assets/send_to_registry.py) pins the registry key's "
+     "fingerprint before sealing, reads the token from the environment, never prints a key, and names each "
+     "HTTP failure by its real cause."),
+    ('v0.6.83', '2026-10-07', 'git d0a7b6e7',
      "THE CONTACT FILE VALIDATES AGAIN. v0.6.81 listed the subscribe identity's form lane in "
      "/.well-known/sgit-agents.json under the name subscribe, but sgit-agents/v1 defines one lane name, "
      "agents, so the live file failed this site's own schema. The form lane is now described only in "
