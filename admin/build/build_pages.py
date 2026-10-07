@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.97'
+SITE_VERSION = 'v0.6.98'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,14 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.97', '2026-10-07', 'this release',
+    ('v0.6.98', '2026-10-08', 'this release',
+     "THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: "
+     "list/subscribers.json holds the current state (status, name, consent, sources, preferences) and "
+     "list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. "
+     "The drain turns accepted messages into list events with no model in the loop, and other agents can add "
+     "events without the vault key, through a fenced list-event block in signed mail (the site agent's "
+     "issue-sent, a forwarded unsubscribe). The subscribe brief gains the section and the commands."),
+    ('v0.6.97', '2026-10-07', 'git 6685970f',
      "SEND A VAULT KEY. A new page, /docs/send-a-vault-key.html, is the instructions URL a session holding "
      "vault keys is pointed at, with an inbox vault id and an append token given privately and never "
      "published: the rules, the vault-key-handover/v1 payload, the registry's public key and endpoint, what "
