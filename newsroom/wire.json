@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.86",
+  "site_version": "v0.6.87",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
     "edition": "2026-10-07",
@@ -100,6 +100,39 @@
         "fractal-semantic-graphs",
         "sqlite",
         "vaults",
+        "article"
+      ],
+      "placement": [],
+      "notes": []
+    },
+    {
+      "slug": "an-agent-desktop-by-the-minute",
+      "title": "A locked-down desktop for an agent, by the minute, is still hard to rent",
+      "date": "2026-10-07",
+      "updated": "",
+      "author": "Dinis Cruz",
+      "url": "https://sgit.ai/articles/an-agent-desktop-by-the-minute.html",
+      "markdown": "https://sgit.ai/articles/an-agent-desktop-by-the-minute.md",
+      "card": "https://sgit.ai/articles/cards/an-agent-desktop-by-the-minute.webp",
+      "graph": "https://sgit.ai/articles/graphs/an-agent-desktop-by-the-minute.json",
+      "teaser": "Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.",
+      "summary": "We want to give each agent a desktop of its own, away from the laptop, that a person can watch and take over, that can reach only what its task needs, that holds no secret it could leak, that is thrown away afterwards, and that is billed for the minutes it works. In October 2026 every one of those properties can be bought somewhere, and no single product we looked at offers all of them. This article lays out the nine properties, puts nine products against them from their own documentation, prices two hours of work a day on each, and explains the three things that make it hard: macOS cannot be leased for less than a day and Apple's licence limits what a leased Mac is for; the strongest isolation controls are weeks old or in private beta; and prompt injection is not solved, so the desktop has to be the barrier rather than the model. It proposes what we would build from what exists, and closes with the startup credit programmes that would pay for trying it, verified on the day, with how to apply.",
+      "topics": [
+        "agents-and-policy",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "agents",
+        "agent-desktops",
+        "computer-use",
+        "sandboxes",
+        "isolation",
+        "egress",
+        "secrets",
+        "macos",
+        "windows-365",
+        "startup-programmes",
+        "agent-behaviour-policy",
         "article"
       ],
       "placement": [],

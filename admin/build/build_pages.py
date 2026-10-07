@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.86'
+SITE_VERSION = 'v0.6.87'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,18 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.86', '2026-10-07', 'this release',
+    ('v0.6.87', '2026-10-07', 'this release',
+     "AN AGENT DESKTOP BY THE MINUTE. An article on how hard it is in October 2026 to rent a desktop that is "
+     "safe to hand to an agent and billed for the minutes it works: nine properties a locked-down agent "
+     "desktop needs (isolation, an egress allowlist, secrets kept outside, its own identity, a live view, a "
+     "record, a clean reset, billing that follows the work, the right operating system); nine products set "
+     "against them from their own documentation (E2B, Daytona, Modal, Browserbase, Windows 365 for Agents, "
+     "Amazon WorkSpaces for AI agents, AWS EC2 Mac, Scaleway Apple silicon, Cua), none with all nine; two "
+     "hours a day priced on each; Apple's 24-hour lease minimum and its developer-services purpose clause; "
+     "why Claude's native and governed computer use do not meet; why the desktop, not the model, has to be "
+     "the barrier; a proposal from what exists; and the startup credit programmes that would pay for testing "
+     "it, verified on the day, with how to apply. Three figures.",),
+    ('v0.6.86', '2026-10-07', 'git 9e42bb6a',
      "AI BCF AS A GRAPH. A two-part article on Jan van Dijke's AI Baseline Control Framework v1.0, twenty "
      "AI governance controls for deployers under CC BY-SA 4.0: what is good about it (deployer focus, three "
      "types with trigger conditions, a why and a how per control, mappings in the data, current to the 2026 "
