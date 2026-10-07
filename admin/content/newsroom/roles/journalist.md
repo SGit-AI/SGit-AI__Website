@@ -16,7 +16,7 @@ The articles are the site's main output, and the direction set for them now is *
 Then the short forms, which only exist because the long ones are data-rich:
 
 - **The week** (`kind: weekly`): what was published in the last seven days, rendered from the articles themselves with `!articles FROM..TO`, and two or three paragraphs on what it adds up to.
-- **The newsletter** (`admin/content/newsroom/newsletter/NNN-YYYY-MM-DD.md`): the regular issue, due a week after the last or once five articles have been published since it (`desk.py` says when). Written with the same directives, cross-posted as a LinkedIn article: render the cover with `node admin/build/make_banners.mjs`, upload it, paste the title, use the page's Copy for LinkedIn button for the body, then add the post's URL as `linkedin:` in the issue file.
+- **The newsletter** (`admin/content/newsroom/newsletter/NNN-YYYY-MM-DD.md`): the regular issue, due a week after the last or once five articles have been published since it (`desk.py` says when). Written with the same directives, cross-posted as a LinkedIn article: render the cover with `node admin/build/make_banners.mjs`, upload it, paste the title, select and copy the body from the page; group the issue's article list by theme with `!list`, and promise completeness with `!covers`, then add the post's URL as `linkedin:` in the issue file.
 - **Brief** (`kind: brief`): one finding from the data behind the articles, a count from `articles/graphs.json` or a dataset in `articles/data/`, said in under three hundred words.
 
 ## How to get an article placed

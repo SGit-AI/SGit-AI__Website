@@ -1206,3 +1206,6 @@ article.nlissue figure.cardshot img{width:100%;height:100%;object-fit:cover;disp
 aside.lkit{margin:2rem 0 0;padding:.8rem 1rem;border:1px dashed var(--line2);border-radius:10px;font-size:.88rem;color:var(--dim);background:var(--panel)}
 aside.lkit b{color:var(--fg)}
 @media (max-width:720px){article.nlissue{grid-template-columns:1fr}}
+p.dquote-src{margin:-.9rem 0 1.4rem 1.1rem;font-size:.82rem;color:var(--dim)}
+ul.dlist{padding-left:1.2rem}
+ul.dlist li{margin:.5rem 0;line-height:1.55}

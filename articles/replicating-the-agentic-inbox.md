@@ -2,7 +2,7 @@
 
 > Two calls in one day asked the same thing, how do I copy your email setup, so this is the walkthrough. It is the first agentic email workflow I have run that puts me more in control rather than less, and the reason is the behaviour policies, not the model. The idea is to use Claude as an agent state machine, one session per role, with every message between agents a file in a vault and every outgoing email a draft that a person reads and sends. The setup goes in phases. Phase 0 is the accounts, a Google Workspace mailbox of its own on a domain you own, a Claude Team seat for the agent with the connectors enabled by the admin and connected by the agent's account, your own calendar shared read-only, and a GitHub account on the same identity. Phase 1 is one session, the inbox agent, with a behaviour policy written before the first run. Phase 2 splits the roles, inbox, drafts, CRM, briefs, dev, each a session with its own policy, talking in files through Email-FS lite. Phase 3 adds the interfaces, the record and, when you get there, a conductor that runs every role once on a schedule with a security role first and last. The rule that never changes is the one that makes it work, the agent drafts and a person sends. Revised on 3 October with the dev agent's review: eight figures, the roles as they are now named, the clone cost, the key rotation, and the security hold.
 
-*Source: <https://sgit.ai/articles/replicating-the-agentic-inbox.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/replicating-the-agentic-inbox.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -189,7 +189,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#replicatin
 
 - [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
 
-**Posting this article on LinkedIn?** The cover is [replicating-the-agentic-inbox.jpg](../articles/banners/replicating-the-agentic-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+**Posting this article on LinkedIn?** The cover is [replicating-the-agentic-inbox.jpg](../articles/banners/replicating-the-agentic-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 

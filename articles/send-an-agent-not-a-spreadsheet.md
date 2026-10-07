@@ -2,7 +2,7 @@
 
 > The last article asked how I would build a company on code review. This one turns it round. The buyers of software have long wanted to know whether a vendor understands what it is selling them, and have never been able to find out, because due diligence was a questionnaire: a spreadsheet of questions answered by the people being asked, disconnected from the code, too expensive to do properly and out of date on arrival. That has changed in the same way code review has. A buyer can now send a prompt, or a small agent under a behaviour policy, to run inside the vendor's environment and come back with a graph of what is actually there: what reaches production that no person reviewed, whether the documentation matches the code, whether there is a threat model and who wrote it, what the last fifty bugs touched, which agents touch the pipeline and under what policy. The vendor reads what leaves before it leaves, and can redact but not rewrite, because the answer is derived rather than written, and companies are careful about what goes on a record. The test is risk-based, not pure: a startup that says it generated its code fast, that the product is not mission-critical and here are the mitigations has passed. What fails is not knowing. That is the consequence that has been missing for the companies that stopped reviewing code, let the engineers go and let anyone prompt features into production: their customers, their investors and their acquirers are about to be able to see it. A startup should double down on understandability, because it has less code and the same tools, and the best way to build the code review company may be to sell it to the people who buy software rather than the people who write it.
 
-*Source: <https://sgit.ai/articles/send-an-agent-not-a-spreadsheet.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/send-an-agent-not-a-spreadsheet.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -179,7 +179,7 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#send-a
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Posting this article on LinkedIn?** The cover is [send-an-agent-not-a-spreadsheet.jpg](../articles/banners/send-an-agent-not-a-spreadsheet.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+**Posting this article on LinkedIn?** The cover is [send-an-agent-not-a-spreadsheet.jpg](../articles/banners/send-an-agent-not-a-spreadsheet.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 

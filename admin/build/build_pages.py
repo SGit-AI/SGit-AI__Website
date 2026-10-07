@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.89'
+SITE_VERSION = 'v0.6.90'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.89', '2026-10-07', 'this release',
+    ('v0.6.90', '2026-10-07', 'this release',
+     "THE NEWSLETTER, AFTER ITS FIRST PASTE INTO LINKEDIN. Issue 1 was posted and three things came back. A quote's "
+     "source sat in a cite inside the blockquote and LinkedIn dropped it, so the source is now a paragraph after the "
+     "quote, everywhere the desk quotes. The Copy for LinkedIn button is gone: selecting the page and copying works "
+     "as well, links included. The full list of the week's articles was one long dated list; it is now grouped by "
+     "theme with a line of introduction each, through a new !list directive, and a new !covers directive makes the "
+     "grouping a promise the build checks: every article in the range must appear in some list, or the build fails "
+     "and names what is missing (tested by dropping one).",),
+    ('v0.6.89', '2026-10-07', 'git 9b643765',
      "THE SGIT NEWSROOM AND ITS NEWSLETTER. The articles section is named the SGit Newsroom in the menu and on the "
      "front; the backstage pages become How it runs, and every URL is unchanged. A newsletter content type: one file "
      "per issue in admin/content/newsroom/newsletter/, NNN-YYYY-MM-DD.md, rendered with the desk directives so its "
@@ -5754,10 +5762,13 @@ def _plain(md):
 
 
 def _quote_html(slug, text, root, why=''):
+    # The source is a paragraph AFTER the blockquote, not a <cite> inside it: pasted into
+    # LinkedIn's editor, a blockquote keeps its first paragraph and drops the rest, and the
+    # attribution vanished with it (Issue 1, 7 October).
     a = BY_SLUG[slug]
-    return (f'<blockquote class="dquote"><p>{_esc(text)}</p>'
-            f'<cite>From <a href="{root}articles/{slug}.html">{_esc(a["title"])}</a>, {a["date"]}</cite>'
-            + (f'<span class="dquote-why">{_esc(why)}</span>' if why else '') + '</blockquote>')
+    return (f'<blockquote class="dquote"><p>{_esc(text)}</p></blockquote>'
+            f'<p class="dquote-src">From <a href="{root}articles/{slug}.html">{_esc(a["title"])}</a>'
+            + (f'. {_esc(why)}' if why else '') + '</p>')
 
 
 def _range_list(lo, hi, root):
@@ -5775,6 +5786,7 @@ def desk_md(body, depth, where):
     so a note cannot misquote, and when the article changes the build says so."""
     root = '../' * depth
     out, buf = [], []
+    covers, listed = [], []    # !covers ranges, and every slug named by a !list
 
     def flush():
         if buf:
@@ -5785,6 +5797,25 @@ def desk_md(body, depth, where):
         m_q = re.match(r'^!quote\s+([a-z0-9\-]+)\s*(?:\|\s*(.+?)|#(\d+))\s*$', line)
         m_a = re.match(r'^!article\s+([a-z0-9\-]+)\s*$', line)
         m_r = re.match(r'^!articles\s+(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\s*$', line)
+        m_l = re.match(r'^!list\s+(.+)$', line)
+        m_c = re.match(r'^!covers\s+(\d{4}-\d{2}-\d{2})\.\.(\d{4}-\d{2}-\d{2})\s*$', line)
+        if m_l or m_c:
+            flush()
+            if m_c:
+                covers.append((m_c.group(1), m_c.group(2)))
+                n = len([a for a in ARTICLES if m_c.group(1) <= a['date'] <= m_c.group(2)])
+                out.append(f'<p class="drange-head">{number_words(n).capitalize()} article{"s" if n != 1 else ""} '
+                           f'were published from {m_c.group(1)} to {m_c.group(2)}, grouped below by what they are about.</p>')
+                continue
+            slugs = [x.strip() for x in m_l.group(1).split(',') if x.strip()]
+            for x in slugs:
+                if x not in BY_SLUG:
+                    raise Content_Error(f'{where}: !list names {x!r}, which is not a published article')
+            listed.extend(slugs)
+            out.append('<ul class="dlist">' + ''.join(
+                f'<li><a href="{root}articles/{x}.html"><b>{_esc(BY_SLUG[x]["title"])}</b></a>. {_esc(art_teaser(BY_SLUG[x]))}</li>'
+                for x in slugs) + '</ul>')
+            continue
         if not (m_q or m_a or m_r):
             buf.append(line)
             continue
@@ -5812,6 +5843,11 @@ def desk_md(body, depth, where):
                 raise Content_Error(f'{where}: {slug} has {len(qs)} quotes in its graph; #{n} does not exist')
             out.append(_quote_html(slug, qs[n - 1]['text'], root, qs[n - 1].get('why', '')))
     flush()
+    # !covers is a promise: every article in the range appears in one of the !list blocks
+    for lo, hi in covers:
+        missing = [a['slug'] for a in ARTICLES if lo <= a['date'] <= hi and a['slug'] not in listed]
+        if missing:
+            raise Content_Error(f'{where}: !covers {lo}..{hi} but no !list names: {", ".join(missing)}')
     return '\n'.join(out)
 
 
@@ -6254,7 +6290,9 @@ def newsroom_publish_body():
         '<pre class="shell">!quote &lt;slug&gt; | &lt;exact text&gt;     checked word for word against the article\n'
         '!quote &lt;slug&gt; #&lt;n&gt;               the n-th quote in the article\'s graph\n'
         '!article &lt;slug&gt;                  the article\'s card\n'
-        '!articles 2026-10-01..2026-10-07   every article in the range, with its teaser and the count</pre>'
+        '!articles 2026-10-01..2026-10-07   every article in the range, with its teaser and the count\n'
+        '!list &lt;slug&gt;, &lt;slug&gt;, ...          a hand-grouped list, title and teaser\n'
+        '!covers 2026-10-01..2026-10-07     every article in the range must appear in a !list, or the build fails</pre>'
         '<p>A note that misquotes an article fails the build, and so does a note whose quote stops being true '
         'because the article changed. The desk then has to decide which one is right.</p>'
         '<h2 id="breaks">What cannot break</h2>'
@@ -6371,7 +6409,7 @@ def linkedin_kit(slug, root, what='article'):
         return ''
     return (f'\n<aside class="lkit" aria-label="For LinkedIn"><b>Posting this {what} on LinkedIn?</b> '
             f'The cover is <a href="{root}{banner_path(slug)}" download>{slug}.jpg</a> (1920&times;1080, title and key ideas on it). '
-            'Upload it as the article cover, paste the title, then copy the body from this page.</aside>')
+            'Upload it as the article cover, paste the title, then select and copy the body from this page.</aside>')
 
 
 def _issue_link(i, root):
@@ -6401,32 +6439,6 @@ def newsletter_index_body():
     return '\n'.join(out)
 
 
-COPY_JS = """<script>
-(function () {
-  var b = document.querySelector('[data-copy-issue]');
-  var src = document.getElementById('issue-body');
-  if (!b || !src) return;
-  b.addEventListener('click', function () {
-    // links on the page are relative (the site also renders inside a vault); on LinkedIn they
-    // must be absolute, so the copy carries https://sgit.ai/... for every internal link
-    var c = src.cloneNode(true), root = document.documentElement.getAttribute('data-root') || '';
-    var base = new URL(root, location.href).href;
-    [].forEach.call(c.querySelectorAll('a[href]'), function (a) {
-      var abs = new URL(a.getAttribute('href'), location.href).href;
-      a.setAttribute('href', abs.indexOf(base) === 0 ? 'https://sgit.ai/' + abs.slice(base.length) : abs);
-    });
-    var html = c.innerHTML, text = c.innerText || src.innerText;
-    var done = function (ok) { b.textContent = ok ? 'Copied: paste into the LinkedIn article body' : 'Select the text below and copy it'; };
-    try {
-      navigator.clipboard.write([new ClipboardItem({'text/html': new Blob([html], {type: 'text/html'}),
-                                                   'text/plain': new Blob([text], {type: 'text/plain'})})])
-        .then(function () { done(true); }, function () { done(false); });
-    } catch (e) { done(false); }
-  });
-}());
-</script>"""
-
-
 def issue_body(i):
     root = '../../'
     name, url = LINKEDIN_NEWSLETTER
@@ -6442,17 +6454,14 @@ def issue_body(i):
             f' <h1>{_esc(i["title"])}</h1>\n'
             f' <p class="small dim">By <a href="{root}about/index.html" rel="author">Dinis Cruz</a>, written with the '
             f'<a href="{root}newsroom/roles/{i["role"]}.html">{_esc(i["role"]).capitalize()}</a>{li}</p>\n'
-            ' <p class="nlcopy"><button type="button" class="subbtn" data-copy-issue>Copy for LinkedIn</button> '
-            '<span class="small dim">copies the abstract and body below, links and formatting included</span></p>\n'
-            f' <div id="issue-body"><p><em><b>Abstract:</b> {_esc(i["summary"])}</em></p>\n'
+                       f' <div id="issue-body"><p><em><b>Abstract:</b> {_esc(i["summary"])}</em></p>\n'
             + desk_md(i['body'], 2, i['where'])
             + f'\n<p><em>This is issue {i["number"]} of the SGit Newsroom newsletter, also published on LinkedIn in '
               f'{_nl_name()}. Every article it links to is on '
               f'<a href="https://sgit.ai/articles/index.html">sgit.ai</a>, with its sources and its data.</em></p></div>\n'
             + linkedin_kit(i['slug'], root, 'issue')
             + '\n ' + subscribe_block(root, compact=True)
-            + '\n <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All issues</a></p>\n</main>\n'
-            + COPY_JS)
+            + '\n <p class="small dim" style="margin-top:2rem"><a href="index.html">&larr; All issues</a></p>\n</main>\n')
 
 
 def newsroom_pages():

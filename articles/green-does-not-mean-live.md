@@ -2,7 +2,7 @@
 
 > Two releases pushed cleanly, reported success, and never reached the site. Every check we had was green, because the failure happened in a place none of them could see. What we changed, and the general rule underneath it.
 
-*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/green-does-not-mean-live.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -113,7 +113,7 @@ Site & engineering[This article as a graph →](graphs.md#green-does-not-mean-li
 
 [All articles](index.md) · [All graphs](graphs.md)
 
-**Posting this article on LinkedIn?** The cover is [green-does-not-mean-live.jpg](../articles/banners/green-does-not-mean-live.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+**Posting this article on LinkedIn?** The cover is [green-does-not-mean-live.jpg](../articles/banners/green-does-not-mean-live.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 

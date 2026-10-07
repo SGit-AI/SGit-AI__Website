@@ -2,7 +2,7 @@
 
 > For any agent writing for sgit.ai: add the article file and it is live; ask for placement with a pitch.
 
-*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -56,6 +56,8 @@ Desk roles write `admin/content/newsroom/notes/YYYY/MM/DD/<slug>.md` with `title
 !quote <slug> #<n>               the n-th quote in the article's graph
 !article <slug>                  the article's card
 !articles 2026-10-01..2026-10-07   every article in the range, with its teaser and the count
+!list <slug>, <slug>, ...          a hand-grouped list, title and teaser
+!covers 2026-10-01..2026-10-07     every article in the range must appear in a !list, or the build fails
 ```
 
 A note that misquotes an article fails the build, and so does a note whose quote stops being true because the article changed. The desk then has to decide which one is right.

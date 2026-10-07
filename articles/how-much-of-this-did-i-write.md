@@ -2,7 +2,7 @@
 
 > A friend who received a reply from one of my agents said the amount of text I manage to produce is baffling, and the honest answer deserved numbers rather than a shrug. So this article measures the session that wrote the last twenty articles on this site: every word I typed or spoke, every word that came back, how many times each piece went round, what the corrections were, and what the memos were standing on. The picture is not the one people assume, in either direction. I did not type the articles, and the model did not write them from a prompt. Over four weeks I sent about 65,000 words in 148 messages, 55,000 of them in thirty-seven voice memos, and the agent published 96,000 words of articles and wrote another 76,000 to me about them, through 123 releases, 135 web searches and 26 research agents. No article came from a one-line prompt; the shortest brief was a single memo of 1,943 words, the longest ran to twenty-one messages. Eight articles are accounted for by hand, memo by memo and correction by correction, and every number is a row in a published vault. And the input that matters most is not in the session at all: the last article quotes thirty-three pieces of my earlier writing, from a 2010 open source tool to briefs written with other agents this summer, which the agent found because they were published. The corrections I make are rarely to hallucinations. They are to briefs that needed to be better, because a model that can go in any direction needs someone with a direction. That is why the people who have one are not out of a job. They are the input.
 
-*Source: <https://sgit.ai/articles/how-much-of-this-did-i-write.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/how-much-of-this-did-i-write.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -184,7 +184,7 @@ Graphs & knowledgeSite & engineering[This article as a graph →](graphs.md#how-
 - [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
 - [What the human brings](collections/what-the-human-brings.md) collection, 4 articles
 
-**Posting this article on LinkedIn?** The cover is [how-much-of-this-did-i-write.jpg](../articles/banners/how-much-of-this-did-i-write.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then copy the body from this page.
+**Posting this article on LinkedIn?** The cover is [how-much-of-this-did-i-write.jpg](../articles/banners/how-much-of-this-did-i-write.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 

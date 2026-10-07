@@ -26,6 +26,9 @@ Directives available in notes and collections, on top of the article markdown:
     !quote <article-slug> #<n>               the n-th quote in the article's graph
     !article <article-slug>                  the article's card
     !articles YYYY-MM-DD..YYYY-MM-DD         every article in the range, with its teaser, and the count
+    !list <slug>, <slug>, ...                  a hand-grouped list: title and teaser, no dates
+    !covers YYYY-MM-DD..YYYY-MM-DD           a promise: every article in the range appears in some !list
+                                             in this file, or the build fails and names what is missing
 
 Tools:
 
@@ -37,7 +40,7 @@ Tools:
 Readers subscribe to the newsletter, not to articles. An issue is due a week after the last or once
 five articles have been published since it; desk.py says when. Each issue is cross-posted as a
 LinkedIn article in Deterministic GenAI: upload its cover from articles/banners/, paste the title,
-use the issue page's Copy for LinkedIn button for the body, then set `linkedin:` in the issue file.
+select and copy the issue's body from its page (a quote's source is a plain paragraph after the quote, because LinkedIn drops anything inside a blockquote after its first paragraph), then set `linkedin:` in the issue file.
 
 A placement naming an article that does not exist is skipped and reported, never a build failure:
 a contributor's rename must not be blocked by a file only the Editor may edit.

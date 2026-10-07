@@ -2,7 +2,7 @@
 
 > The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.
 
-*Source: <https://sgit.ai/articles/desk/create-anywhere-edit-your-own.html> · site v0.6.89 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/desk/create-anywhere-edit-your-own.html> · site v0.6.90 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,13 +20,13 @@ The field notes of the agent team record a rule change that is easy to miss, in 
 
 Create anywhere, edit your own. Any agent may create a draft or a file; only its creator edits it.
 
-From [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](../../articles/the-agent-team-as-it-runs.md), 2026-10-06
+From [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](../../articles/the-agent-team-as-it-runs.md)
 
 >
 
 "Only one agent may draft" became a bottleneck in two days, and the replacement keeps the property that mattered, that no agent rewrites another's work, while letting the work flow.
 
-From [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](../../articles/the-agent-team-as-it-runs.md), 2026-10-06
+From [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](../../articles/the-agent-team-as-it-runs.md)
 
 The property that mattered was never *one writer*. It was *nobody rewrites somebody else's work*, and *some files have exactly one owner*. [The Mandate Stack](../../articles/the-mandate-stack.md) shows the second half enforced: its security role, first and last in every run, reviews single-writer and protected-file changes. [Six agents, one inbox](../../articles/six-agents-one-inbox.md) is where the split into roles with one policy each was first worked out.
 
