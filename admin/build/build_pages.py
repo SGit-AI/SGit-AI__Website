@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.93'
+SITE_VERSION = 'v0.6.94'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,16 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.93', '2026-10-07', 'this release',
+    ('v0.6.94', '2026-10-07', 'this release',
+     "STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid "
+     "Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from "
+     "his public reply to a comment and a voice note: each of his six skills mapped to an operation on the "
+     "story graph and each of his safeguards to a property it already has; his bridge closure drawn as a "
+     "graph in which one supersede edge is the update, the alert and the correction; and the local angle his "
+     "piece adds, local contributors and local outlets paid back down the chain of claims that regional, "
+     "national and international stories rest on, with an illustrative split and the loop it starts. His "
+     "words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1.",),
+    ('v0.6.93', '2026-10-07', 'git d86d0b70',
      "ARTICLES IN THE ORDER THEY WENT OUT. Four articles went out today and Latest listed them by filename, so "
      "the newest sat third. Articles now carry an optional time: HH:MM in UTC, and every list of articles "
      "(Latest, the archive, the wire, the front's freshness check, the feed) sorts by date and then time. "

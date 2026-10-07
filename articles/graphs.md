@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,44 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-39 of 39 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+40 of 40 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-39 articles, 157 links between them (277 mentions in all). 30 articles cite an earlier one; 5 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+40 articles, 159 links between them (279 mentions in all). 31 articles cite an earlier one; 5 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md)
+
+2026-10-07 · News & evidenceGraphs & knowledge
+
+Markus Franz's Liquid Utility proposes Reader Skills that help people understand, update, relate, compare, follow and act on journalism; the story vault keeps reporting as a versioned graph of claims tied to hashed evidence; put together, each skill is an operation on the graph and each safeguard he asks for is a property the graph already has, his bridge closure becomes a graph in which one supersede edge is the update, the alert and the correction, and his emphasis on locality supplies what the vault's economics had not mapped: local contributors and local journalists sit where trust is strongest, stories travel up to national and international outlets, and if every use pays back down the chain of claims it rests on, small payments from many people fund the reporting nearest to them.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**13 nodes, 13 edges**
+
+- **Liquid Utility** (concept) Markus Franz: trusted journalistic knowledge plus reusable methods and tools, to help someone understand, follow or act.
+- **Six Reader Skills** (concept) Understand, Update, Relate, Compare, Follow, Act: bounded capabilities a reader uses directly.
+- **The story vault** (concept) Claims tied to hashed evidence, versioned, superseded rather than deleted; the article is one projection.
+- **What we know, and what we can help someone do** (claim) Markus Franz's reply: the vault answers why it can be trusted, the skills answer what it can reliably help someone do.
+- **Each skill is an operation on the graph** (method) Update is a diff between versions, Follow a subscription on claims, Relate a join held on the reader's side.
+- **His safeguards are graph properties** (claim) Corrections as supersede edges, protected sources flagged at the node, freshness for could-not-check.
+- **The bridge closure as a graph** (example) One supersede edge is the update, the alert and the correction at once; the reader's route stays on the reader's side.
+- **Local is where the trust is** (claim) Everything that touches the day is local; readers can check local reporting themselves, so trust and brand form there.
+- **The local contributor is a node** (concept) Residents and local sources are named or flagged, linked to the claims their evidence supports, and verified.
+- **Every use pays back down the chain** (method) National and international stories that rest on local claims pay for them per use; shares reach the contributor.
+- **Is this still current?** (artefact) The verification API: a paid, maintained answer about a claim, and how a local newsroom gets paid for being right.
+- **Trust, use, payment, reporting, evidence, trust** (claim) Small payments from many people about the things nearest to them fund the next local story.
+- **One topic, one vault, one service, one ledger** (question) Markus's tightly scoped service, kept as a story vault, with contributors recorded and the ledger published.
+
+> Over a pile of articles, Update is a summarisation problem. Over a story graph, it is a diff. Why the story vault makes Reader Skills dependable.
+
+> Use it, and pay the people who found it out. The clause the monetisation adds to Markus Franz's closing line.
+
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here).
 
 ## [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md)
 
@@ -780,7 +811,7 @@ The reader has been the product since 1833 and the money has always flowed to wh
 
 > The fix is to stop charging for the road and start charging for the cargo. The four eras end here: the money followed whoever owned distribution, so the proposal is to sell the evidence itself.
 
-builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
+builds on [The future of news is the story vault, not the paywall](#future-of-news-story-vault-not-paywall), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download).
 
 ## [Six agents, one inbox: what a real multi-agent setup taught me about access policies](six-agents-one-inbox.md)
 
@@ -982,7 +1013,7 @@ The story is a graph and the article is a projection, so a newsroom that keeps t
 
 > The story is a graph. The article is a projection. Sell the graph. The shift the five products follow from, in three sentences.
 
-builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending).
+builds on [For a startup, the most important question is whether they miss it](#the-question-is-whether-they-miss-it); continued by [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](#story-vault-meets-reader-skills), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [The reader was always the product: a corrected history of how news got into this mess](#how-news-got-here), [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](#token-bill-nobody-is-sending).
 
 ## [For a startup, the most important question is whether they miss it](the-question-is-whether-they-miss-it.md)
 

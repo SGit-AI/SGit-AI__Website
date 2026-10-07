@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-07",
-  "site_version": "v0.6.93",
+  "site_version": "v0.6.94",
   "updates": [
     {
       "slug": "the-newsroom",
@@ -890,6 +890,25 @@
     }
   ],
   "articles": [
+    {
+      "slug": "story-vault-meets-reader-skills",
+      "title": "Story vault underneath, Reader Skills on top: why local journalism has the most to gain",
+      "date": "2026-10-07",
+      "version": "v0.6.94",
+      "tags": [
+        "journalism",
+        "local-news",
+        "liquid-utility",
+        "reader-skills",
+        "story-vault",
+        "fractal-semantic-graphs",
+        "provenance",
+        "micropayments",
+        "verification",
+        "article"
+      ],
+      "summary": "Markus Franz published \"The Article Is Only the Beginning\" on 7 October 2026, proposing Liquid Utility, journalism that helps people understand, follow and act rather than only read, and six Reader Skills to deliver it, with a bridge closure as the example. He then wrote, under my comment, that his idea and the story vault connect at an architectural level: the story vault answers what we know and why it can be trusted, Reader Skills answer what we can reliably help someone do with it. This article draws that connection. Each of his six skills turns out to be an operation the story graph already supports, and each safeguard he asks for is a property the graph already has: versions for Update, supersede edges for corrections, freshness for \"could not check\", a flag at the node for protected sources. His bridge is drawn as a graph. And his article adds the piece our monetisation had not mapped: locality, where the trust relationship and the brand are strongest. Local contributors feed local journalists, local stories feed national and international ones, and if every use pays back down the chain of claims it rests on, small payments from many people fund the reporting nearest to them."
+    },
     {
       "slug": "the-behaviour-policy-is-the-business-logic",
       "title": "Zoom into an agent's behaviour policy and you find the business logic",

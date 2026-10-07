@@ -2,7 +2,7 @@
 
 > A build brief that turns the two code review articles into a thing a repository carries: a review folder of layered graphs, intent written top down from the brief and the code derived bottom up from the syntax tree, joined, with every commit read upwards to the stories it can reach, and a single self-contained page that walks from a story to a source line and back. New projects start at full coverage from the first commit; existing projects start from the changes. The tool is held to the same standard as the code, with a second review set that reviews the tool itself. Build order, acceptance tests, what not to do, open questions, and the prompt to hand the builder agent.
 
-*Source: <https://sgit.ai/docs/briefs/code-review-graphs-in-the-repository.html> · site v0.6.93 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/briefs/code-review-graphs-in-the-repository.html> · site v0.6.94 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
