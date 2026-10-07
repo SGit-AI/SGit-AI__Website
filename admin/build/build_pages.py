@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.97'
+SITE_VERSION = 'v0.6.98'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,15 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.97', '2026-10-07', 'this release',
+    ('v0.6.98', '2026-10-07', 'this release',
+     "TWO INFOGRAPHICS, AND A TIMELINE THAT READS. In Story vault underneath, Reader Skills on top, the infographic of "
+     "Markus Franz's article and its reading note sat between two paragraphs that belong together; both now sit in a "
+     "closing section, Two infographics, next to a new ChatGPT infographic of the article itself, each with a note "
+     "that reads it against its source (the new one invents its own bridge dates and softens 'pay' to 'credit'). The "
+     "bridge-simulation vault moves to v0.1.1: on the timeline, the contract and engineer lines end on the same date "
+     "and their names were drawn on top of each other; sources that end together now share one label, and the "
+     "overlapping line is dashed. The timeline screenshots on the article and the vault page are re-taken.",),
+    ('v0.6.97', '2026-10-07', 'git a4b4b7b7',
      "LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on "
      "the definition, data journalism as the model and structure behind every front end, then where to push. The water "
      "is the reporting, so liquefy the journalist's notebook rather than the finished product; put the experienced "

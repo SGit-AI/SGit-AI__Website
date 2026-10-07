@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.97). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.98). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-255site releases, each verified live before it was called done
+256site releases, each verified live before it was called done
 
 44vaults published with a deliberately public read key
 
@@ -406,7 +406,7 @@ Open any of these in your browser right now. Every read key here was published o
 | # | Vault | What it is | Category | Files | Size | Published |
 |---|---|---|---|---|---|---|
 
-| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions | Reference | 70 | 331 KB | 2026-10-07 |
+| 44 | [The Mill Street Bridge](bridge-simulation/index.md)`vk3jlgzb` | A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions | Reference | 71 | 333 KB | 2026-10-07 |
 
 | 43 | [AI BCF as a graph](aibcf-graph/index.md)`lop5iqzw` | Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles | Reference | 143 | 3.0 MB | 2026-10-07 |
 
@@ -5991,7 +5991,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.97, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.98, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6354,7 +6354,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-255**site releases since 14 August**
+256**site releases since 14 August**
 each verified live before it was called done
 
 44**vaults published with a public read key**
@@ -9493,10 +9493,10 @@ Small amounts from many people, and the graph knows whom to pay.
 
 From `admin/build/catalogue_derive.py vk3jlgzb <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 70 · **plaintext size:** 331 KB
-- **Commits:** 2 · **last updated:** 2026-10-07
+- **Files:** 71 · **plaintext size:** 333 KB
+- **Commits:** 3 · **last updated:** 2026-10-07
 - **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tools/`, `versions/`
-- **File types:** .json ×15, .html ×15, .css ×15, .js ×13, .md ×10, .py ×2
+- **File types:** .json ×16, .html ×15, .css ×15, .js ×13, .md ×10, .py ×2
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes
@@ -11254,11 +11254,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.97**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.98**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.97 | 2026-10-07 | this release | LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on the definition, data journalism as the model and structure behind every front end, then where to push. The water is the reporting, so liquefy the journalist's notebook rather than the finished product; put the experienced journalist and their workflow at the centre, with a desk built for them and experts paid for time and credibility; keep writing theirs, because writing is how the story is found; read the guide's three 'is not's with a graph underneath; personalise by intersecting the reader's graph with the story's; keep editorial direction, not readers' tastes, as the brief; and add per-use payment down the graph to retention, advertising and licensing. Four figures, the ChatGPT infographic of the guide with a reading note, graph JSON. The Reader Skills article's infographic caption now records Markus Franz's reply to it. |
+| v0.6.98 | 2026-10-07 | this release | TWO INFOGRAPHICS, AND A TIMELINE THAT READS. In Story vault underneath, Reader Skills on top, the infographic of Markus Franz's article and its reading note sat between two paragraphs that belong together; both now sit in a closing section, Two infographics, next to a new ChatGPT infographic of the article itself, each with a note that reads it against its source (the new one invents its own bridge dates and softens 'pay' to 'credit'). The bridge-simulation vault moves to v0.1.1: on the timeline, the contract and engineer lines end on the same date and their names were drawn on top of each other; sources that end together now share one label, and the overlapping line is dashed. The timeline screenshots on the article and the vault page are re-taken. |
+| v0.6.97 | 2026-10-07 | git a4b4b7b7 | LIQUID CONTENT NEEDS WATER. A reply to FT Strategies' guide to liquid content (Sofia Giannuzzi): agreement on the definition, data journalism as the model and structure behind every front end, then where to push. The water is the reporting, so liquefy the journalist's notebook rather than the finished product; put the experienced journalist and their workflow at the centre, with a desk built for them and experts paid for time and credibility; keep writing theirs, because writing is how the story is found; read the guide's three 'is not's with a graph underneath; personalise by intersecting the reader's graph with the story's; keep editorial direction, not readers' tastes, as the brief; and add per-use payment down the graph to retention, advertising and licensing. Four figures, the ChatGPT infographic of the guide with a reading note, graph JSON. The Reader Skills article's infographic caption now records Markus Franz's reply to it. |
 | v0.6.96 | 2026-10-07 | git 9e71c7d6 | THE BRIDGE, FOLLOWED TO THE END. A simulation of Markus Franz's bridge example, played out on a story vault: a fictional town, Wendmouth, whose bridge closes; the council says one week, the contract three, an engineer five to seven, and it opens on day forty-six. The vault (bridge-simulation, published with its read key) holds the evidence, claims with their contradictions, the paper, the newsroom, a timeline (newsworthy on five days, needed on fifty-seven), three readers with their own graphs, skills, decisions and WhatsApp messages, the institutional and agent buyers, where the money goes, the view without it and the short/medium/long, local/regional/national impact; every figure is computed by its build script from written assumptions. A new article walks through it, and the Reader Skills article gains the ChatGPT infographic from the voice note, with a reading note on what it gets right and what it overstates. |
 | v0.6.95 | 2026-10-07 | git 3ee1826f | A SUBSCRIBE PAGE, AND ISSUES AT DATED URLS. sgit.ai/subscribe/ is the one page with the newsletter form: what an issue holds, what comes next, where else it is published, what happens to the address, and the latest issue. Everywhere else the form becomes one line pointing there: the newsletter index (which now opens on its issues), the front page, the foot of every article and of every issue. A 1920x1080 subscribe cover is rendered for the end of a LinkedIn article. Issues move to articles/newsletter/YYYY/MM/DD/NNN-.html (slug from the issue's frontmatter); Issue 1 is now .../2026/10/07/001-agents-doing-real-work.html, moved before its LinkedIn post went out, and the one link to the old address was updated. In an issue a quote no longer carries a From line: the owner's edit of the LinkedIn version read better without, since every quote follows a paragraph that links its article. The build now requires exactly that, and fails a quote whose paragraph does not (tested). |
 | v0.6.94 | 2026-10-07 | git 24e14a65 | STORY VAULT UNDERNEATH, READER SKILLS ON TOP. An article on the intersection of Markus Franz's Liquid Utility and Reader Skills (The Article Is Only the Beginning, 7 October 2026) with the story vault, from his public reply to a comment and a voice note: each of his six skills mapped to an operation on the story graph and each of his safeguards to a property it already has; his bridge closure drawn as a graph in which one supersede edge is the update, the alert and the correction; and the local angle his piece adds, local contributors and local outlets paid back down the chain of claims that regional, national and international stories rest on, with an illustrative split and the loop it starts. His words quoted verbatim and credited. Three figures, a graph, a cover, a pitch; listed in newsletter issue 1. |
@@ -14540,7 +14541,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.97
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.98
 
 # SGit Newsroom
 
@@ -18680,6 +18681,8 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#liquid-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+**Posting this article on LinkedIn?** The cover is [liquid-content-needs-water.jpg](../articles/banners/liquid-content-needs-water.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
 [← All articles](index.md)
@@ -18821,10 +18824,6 @@ That is the opening of [The Article Is Only the Beginning](https://www.linkedin.
 
 His proposal is called **Liquid Utility**: trusted journalistic knowledge, combined with reusable methods and appropriate tools, to help someone understand, follow or act on what matters to them. He delivers it through six **Reader Skills**, bounded journalistic capabilities a reader can use directly: Understand, Update, Relate, Compare, Follow and Act. It is careful about what it does not claim. A skill is not a safety guarantee. The case for a publisher over a generic assistant has to rest on original access, maintained data, local reporting and editorial accountability, and even then the service has to be demonstrably better at a particular task. And the business test is kept visible: reach, utility, relationship, reciprocity, measured rather than assumed.
 
-An infographic of Markus Franz's article, made with ChatGPT from the article's text and posted under his LinkedIn post, where he replied that he liked "how clearly you visualised the shift from Liquid Content to Liquid Utility". Faithful on the six skills, the layers and the safeguards; see the note below for what it adds and what it drops.
-
-**Reading the infographic against the article.** It gets the substance right: the gap, Liquid Utility, the six Reader Skills, the layered system, the safeguards and the advice to start small. Four things to know. The taglines ("Same facts. A more useful tomorrow", "People informed, people empowered, stronger societies", "Real journalism. Greater possibilities") and the line "Trust turns useful services into lasting relationships" are the infographic's, not Markus's. "An AI feature alone is not the advantage. Reliability is" is a fair compression, but his own wording is more careful: the publisher's case *would have to rest* on original access, maintained data, local reporting and accountability, and even then the service must be demonstrably better for a particular task. It drops his qualifiers, that the six skills are a proposed framework rather than a universal taxonomy and that reach, utility, relationship and reciprocity are a hypothesis to measure rather than a funnel. And it leaves out his evidence on search and clicks, and his boundary that "relevant to me" must not become "nothing beyond my immediate interests".
-
 I replied under his post that this is close to what I argue in [The future of news is the story vault, not the paywall](../articles/future-of-news-story-vault-not-paywall.md). His answer is the reason this article exists:
 
 **Markus Franz, in reply.** "Your Story Vault starts underneath the article: claims, evidence, sources, versions and provenance become the durable asset, while the article is one projection of that graph. Liquid Utility starts from the other end: the reader has a job to do, and journalism should turn trusted knowledge into a capability. [...] Story Vault answers: what do we know, and why can it be trusted? Reader Skills answer: what can we reliably help someone do with it?"
@@ -18888,6 +18887,18 @@ One local topic, one vault, one service, one ledger. If it works, the second top
 The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md), with its [vault](../demos/vaults/bridge-simulation/index.md). Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
 
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
+
+## Two infographics
+
+ChatGPT made an infographic of this article from its published text, and another of Markus's article, which I posted under his LinkedIn post. Both are worth having, and both are worth reading against their source, so each has a note.
+
+The infographic of this article, made with ChatGPT from its published text. Faithful on the two questions, the graph underneath, the six skills, the safeguards, locality and the place to start; the note below says where it departs.
+
+**Reading it against this article.** It follows the argument closely: what the story vault answers and what Reader Skills answer, the graph underneath with evidence, claims and versions, each skill as an operation on it, the safeguards, locality, facts travelling up and attribution flowing back down, and one topic, one vault, one service, one ledger. It is careful in the right place, marking the micropayments as proposed and not yet implemented, which is what this article says. Three things to know. Its bridge has its own illustrative dates: closed from 7 October and reopening on 20 October, moved earlier from the 27th, where the figure above has the bridge closing on 13 October, the council notice dated 9 October and the reopening moved later, from 24 November to 1 December. Its closing line says "credit the people who found it", where this article says pay them, and paying them is the point. And "Trust turns local information into lasting value", like the words in the margins, is the infographic's own; one of those words is misspelt, "informalton".
+
+The infographic of Markus Franz's article, made with ChatGPT from the article's text and posted under his LinkedIn post, where he replied that he liked "how clearly you visualised the shift from Liquid Content to Liquid Utility". Faithful on the six skills, the layers and the safeguards; the note below says what it adds and what it drops.
+
+**Reading it against Markus's article.** It gets the substance right: the gap, Liquid Utility, the six Reader Skills, the layered system, the safeguards and the advice to start small. Four things to know. The taglines ("Same facts. A more useful tomorrow", "People informed, people empowered, stronger societies", "Real journalism. Greater possibilities") and the line "Trust turns useful services into lasting relationships" are the infographic's, not Markus's. "An AI feature alone is not the advantage. Reliability is" is a fair compression, but his own wording is more careful: the publisher's case *would have to rest* on original access, maintained data, local reporting and accountability, and even then the service must be demonstrably better for a particular task. It drops his qualifiers, that the six skills are a proposed framework rather than a universal taxonomy and that reach, utility, relationship and reciprocity are a hypothesis to measure rather than a funnel. And it leaves out his evidence on search and clicks, and his boundary that "relevant to me" must not become "nothing beyond my immediate interests".
 
 *Drafted from Markus Franz's article and LinkedIn post of 7 October 2026, his reply to my comment, and a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026. Quotations from Markus Franz are from his published article and his public reply, credited and linked; Liquid Utility, Reader Skills and Journalism as a Capability System are his terms. The mapping, the bridge graph, the payment chain and its illustrative split are ours. Places, dates and hashes in the bridge figure are illustrative.*
 
@@ -27592,7 +27603,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.97
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.98
 
 # Collections
 
@@ -27611,7 +27622,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.97
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.98
 
 # From the desk
 
@@ -28135,7 +28146,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.97
+Edition of 2026-10-0742 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.98
 
 # The newsletter
 
