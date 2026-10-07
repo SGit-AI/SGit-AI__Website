@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
-  "generated": "2026-10-06",
-  "site_version": "v0.6.80",
+  "generated": "2026-10-07",
+  "site_version": "v0.6.81",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -884,7 +884,7 @@
       "slug": "the-mandate-stack",
       "title": "The Mandate Stack: a multi-agent system in production, layer by layer",
       "date": "2026-10-06",
-      "updated": "2026-10-06",
+      "updated": "2026-10-07",
       "url": "https://sgit.ai/articles/the-mandate-stack.html",
       "markdown": "https://sgit.ai/articles/the-mandate-stack.md",
       "card": "https://sgit.ai/articles/cards/the-mandate-stack.webp",
@@ -906,6 +906,8 @@
         "governance",
         "human-in-the-loop",
         "production",
+        "vault-apps",
+        "custom-ui",
         "wardley-maps",
         "mermaid",
         "claude",
@@ -931,7 +933,8 @@
         "every-risk-is-already-accepted",
         "ultimate-insider-three-collisions",
         "how-much-of-this-did-i-write",
-        "the-wall-under-the-reply"
+        "the-wall-under-the-reply",
+        "nineteen-sites"
       ],
       "links_in": [],
       "graph": {
@@ -1002,6 +1005,12 @@
             "label": "One human holds the irreversible step",
             "kind": "claim",
             "summary": "No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft."
+          },
+          {
+            "id": "tool-loop",
+            "label": "The vault is an app platform, not storage",
+            "kind": "concept",
+            "summary": "A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool."
           },
           {
             "id": "draft-release-candidate",
@@ -1092,6 +1101,21 @@
             "rel": "extends"
           },
           {
+            "from": "shared-memory",
+            "to": "tool-loop",
+            "rel": "leads-to"
+          },
+          {
+            "from": "graph-layer",
+            "to": "tool-loop",
+            "rel": "depends-on"
+          },
+          {
+            "from": "tool-loop",
+            "to": "two-maps",
+            "rel": "extends"
+          },
+          {
             "from": "human-sends",
             "to": "draft-release-candidate",
             "rel": "extends"
@@ -1162,7 +1186,8 @@
             "supply-chain-of-vaults",
             "the-wall-under-the-reply",
             "how-much-of-this-did-i-write",
-            "what-sgit-is"
+            "what-sgit-is",
+            "nineteen-sites"
           ],
           "pages": [
             "docs/credentials.html",
@@ -1178,6 +1203,14 @@
             "docs/briefs/riskmandate-sandbox-twins-and-tokens.html",
             "docs/briefs/secrets-sgit-ai-design-pack.html",
             "docs/briefs/subscribe-lane-agent-brief.html",
+            "docs/briefs/code-review-graphs-in-the-repository.html",
+            "docs/vault/vault-apps.html",
+            "docs/surfaces.html",
+            "demos/vaults/deck-vault/index.html",
+            "demos/vaults/how-much-evidence/index.html",
+            "demos/vaults/connector-twin/index.html",
+            "demos/vaults/risk-graph-explorer/index.html",
+            "demos/vaults/kit-bag/index.html",
             "articles/graphs.html"
           ],
           "sites": [
@@ -8224,7 +8257,9 @@
       "links_out": [
         "what-sgit-is"
       ],
-      "links_in": [],
+      "links_in": [
+        "the-mandate-stack"
+      ],
       "graph": {
         "slug": "nineteen-sites",
         "teaser": "One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.",

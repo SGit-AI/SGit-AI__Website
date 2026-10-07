@@ -68,6 +68,12 @@
       "summary": "No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft."
     },
     {
+      "id": "tool-loop",
+      "label": "The vault is an app platform, not storage",
+      "kind": "concept",
+      "summary": "A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool."
+    },
+    {
       "id": "draft-release-candidate",
       "label": "The draft is the release candidate",
       "kind": "concept",
@@ -156,6 +162,21 @@
       "rel": "extends"
     },
     {
+      "from": "shared-memory",
+      "to": "tool-loop",
+      "rel": "leads-to"
+    },
+    {
+      "from": "graph-layer",
+      "to": "tool-loop",
+      "rel": "depends-on"
+    },
+    {
+      "from": "tool-loop",
+      "to": "two-maps",
+      "rel": "extends"
+    },
+    {
       "from": "human-sends",
       "to": "draft-release-candidate",
       "rel": "extends"
@@ -226,7 +247,8 @@
       "supply-chain-of-vaults",
       "the-wall-under-the-reply",
       "how-much-of-this-did-i-write",
-      "what-sgit-is"
+      "what-sgit-is",
+      "nineteen-sites"
     ],
     "pages": [
       "docs/credentials.html",
@@ -242,6 +264,14 @@
       "docs/briefs/riskmandate-sandbox-twins-and-tokens.html",
       "docs/briefs/secrets-sgit-ai-design-pack.html",
       "docs/briefs/subscribe-lane-agent-brief.html",
+      "docs/briefs/code-review-graphs-in-the-repository.html",
+      "docs/vault/vault-apps.html",
+      "docs/surfaces.html",
+      "demos/vaults/deck-vault/index.html",
+      "demos/vaults/how-much-evidence/index.html",
+      "demos/vaults/connector-twin/index.html",
+      "demos/vaults/risk-graph-explorer/index.html",
+      "demos/vaults/kit-bag/index.html",
       "articles/graphs.html"
     ],
     "sites": [

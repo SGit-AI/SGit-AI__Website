@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.6.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,7 +20,7 @@ The graphs are data first and pictures second. Take them as JSON: [all articles 
 
 *[diagram]*
 
-35 articles, 134 links between them (248 mentions in all). 25 articles cite an earlier one; 15 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (13 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (19 links out). 0 articles not yet linked either way.
+35 articles, 135 links between them (250 mentions in all). 25 articles cite an earlier one; 15 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (13 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
 
 ## [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md)
 
@@ -131,7 +131,7 @@ RiskMandate runs its business with about fifteen agents and one person, and the 
 *[diagram]*
 **concept**claim**method**example**question
 
-**16 nodes, 20 edges**
+**17 nodes, 23 edges**
 
 - **One that runs** (example) About fifteen agents and one person run RiskMandate's relationships, research, writing and events every few hours; the briefing was written by the agent that runs the CRM.
 - **The world writes in, the person sends** (concept) Email, the subscribe form, other teams' agents and an event extension enter from the left as data; the person enters from the right through Claude and Gmail; nothing leaves unsent by them.
@@ -143,6 +143,7 @@ RiskMandate runs its business with about fifteen agents and one person, and the 
 - **A conductor with security at both ends** (method) Open and lock, security, drafts, inbox, briefs, CRM, mission, research, dev, security, a card to the human, stop; the order is a design decision.
 - **One written mandate per agent** (method) Grant, mandate, gap and barrier in one grammar; roles split the risk; drafts only; a security hold; secrets never in files; a card per session; a custody register.
 - **One human holds the irreversible step** (claim) No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft.
+- **The vault is an app platform, not storage** (concept) A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool.
 - **The draft is the release candidate** (concept) The whole pipeline has run before the person sees the draft; reviewing it is QA on the system and where the thinking happens; the recipient's reply closes the loop.
 - **Mistakes traced to captured data, an edge or the model** (method) Every fact carries source, capture method and hash; the cause is fixed where it came from; model error reported as the rarest of the three.
 - **Commoditise the memory, productise the mandate** (claim) Two Wardley maps, from outside and inside: shared memory and the sgit CLI pushed toward commodity on encrypted storage; the policies and the graphs pulled from genesis toward product. Placements are claims.
@@ -154,7 +155,7 @@ RiskMandate runs its business with about fifteen agents and one person, and the 
 
 > The record is of pilots that stall, not of a technology that cannot ship. The fair reading of the surveys, kept for the end.
 
-builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Git for things you cannot put on GitHub](#what-sgit-is), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Seven vaults, one method](#seven-vaults-one-method), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply).
+builds on [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents), [Git for things you cannot put on GitHub](#what-sgit-is), [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Seven vaults, one method](#seven-vaults-one-method), [A supply chain of vaults: how GenAI, open data and small custom tools could bring the price of food down](#supply-chain-of-vaults), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [If somebody built a company on code review: how I would do it, and why it is only now possible](#if-somebody-built-a-company-on-code-review), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](#how-much-of-this-did-i-write), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [Twenty sites in fifteen days, and what that did to the writing](#nineteen-sites).
 
 ## [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](why-my-agents-do-not-run-on-my-laptop.md)
 
@@ -1073,7 +1074,7 @@ A body of work outgrew the site it was published in and split into nineteen sibl
 
 > One character of drift, and the link is dead. The concrete cost of splitting: a link between sites is a claim about another site that has to be checked.
 
-builds on [Git for things you cannot put on GitHub](#what-sgit-is).
+builds on [Git for things you cannot put on GitHub](#what-sgit-is); continued by [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
 
 ## [Git for things you cannot put on GitHub](what-sgit-is.md)
 

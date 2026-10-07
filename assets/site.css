@@ -443,6 +443,19 @@ figure.shot.shot--medium{max-width:78%;margin:0 auto}
 .sgv-embed-frame{border:1px solid var(--line2);border-radius:12px;
   background:#0e1116;box-shadow:var(--shadow)}
 
+/* details.src: a diagram's source, collapsed under its render. The summary reads as a
+   line of prose in the .md twin; the copy button is skipped there. */
+details.src{border:1px solid var(--line);border-radius:10px;margin:.6rem 0 1.2rem;background:var(--panel)}
+details.src summary{cursor:pointer;padding:.6rem .9rem;font-size:.86rem;color:#34363c;list-style:none;display:flex;gap:.6rem;align-items:baseline}
+details.src summary::-webkit-details-marker{display:none}
+details.src summary::before{content:"\25B8";color:var(--accent);flex:none}
+details.src[open] summary::before{content:"\25BE"}
+details.src summary::after{content:"view source";margin-left:auto;font-size:.78rem;color:var(--accent-dk)}
+details.src[open] summary::after{content:"hide source"}
+details.src .src-bar{display:flex;gap:1rem;align-items:center;padding:0 .9rem .4rem;font-size:.82rem}
+details.src .src-copy{font:inherit;font-size:.8rem;cursor:pointer;border:1px solid var(--line);border-radius:6px;background:#fff;padding:.15rem .6rem;color:#101114}
+details.src .src-copy:hover{background:var(--panel2)}
+details.src pre.shell{margin:0 .9rem .9rem;max-height:420px;overflow:auto;font-size:.78rem}
 details.faq{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin:.5rem 0;
   box-shadow:var(--shadow);overflow:hidden}
 details.faq summary{cursor:pointer;padding:.75rem 1rem;font-size:.9rem;font-weight:600;color:#101114;

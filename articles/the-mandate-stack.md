@@ -1,8 +1,8 @@
 # The Mandate Stack: a multi-agent system in production, layer by layer, sgit.ai
 
-> RiskMandate runs its business with about fifteen agents and one person, every few hours, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends, names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop, and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. The name is a working one, and nothing planned is included.
+> RiskMandate runs its business with about fifteen agents and one person, four times a day on a schedule and whenever the person sits down with them, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends; explains why the vault is an app platform rather than storage, and the loop in which a friction becomes a tool in the same session and the tools compound; names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop; and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. Everything described is in use.
 
-*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-mandate-stack.html> · site v0.6.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,20 +10,21 @@
 
 # The Mandate Stack: a multi-agent system in production, layer by layer
 
-By [Dinis Cruz](../about/index.md) · 2026-10-06 · updated 2026-10-06 · [v0.6.80](../admin/versions.md) · agentsagent-behaviour-policyriskmandatevaultssgitemail-fscrmfractal-semantic-graphsorchestrationgovernancehuman-in-the-loopproductionwardley-mapsmermaidclaudegoogle-workspacearticle
+By [Dinis Cruz](../about/index.md) · 2026-10-06 · updated 2026-10-07 · [v0.6.81](../admin/versions.md) · agentsagent-behaviour-policyriskmandatevaultssgitemail-fscrmfractal-semantic-graphsorchestrationgovernancehuman-in-the-loopproductionvault-appscustom-uiwardley-mapsmermaidclaudegoogle-workspacearticle
 
-***Abstract:** RiskMandate runs its business with about fifteen agents and one person, every few hours, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends, names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop, and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. The name is a working one, and nothing planned is included.*
+***Abstract:** RiskMandate runs its business with about fifteen agents and one person, four times a day on a schedule and whenever the person sits down with them, with the person's name on every message that leaves. The agent that runs its CRM wrote the briefing this article is built from. The system is described in eight layers, from rented compute and channels, through encrypted vaults as shared memory, domain vaults, semantic graphs over people and policies, a scheduled conductor and written behaviour policies, to a human who holds the one step that cannot be undone. The article follows an input from the outside world through the layers to the person who sends; explains why the vault is an app platform rather than storage, and the loop in which a friction becomes a tool in the same session and the tools compound; names the feedback loop that makes the setup hold, the draft as a release candidate with the recipient closing the loop; and draws two Wardley maps with Mermaid, from the outside and from the inside, showing what the team is turning into a commodity and what it is turning into a product. Every layer is linked to the article or document on this site where it was worked out. The published record of agent projects that stall is kept for the end, each reason mapped to the mechanism that answers it. Everything described is in use.*
 
-The Mandate Stack as it runs on 6 October 2026, read from the bottom: compute and channels rented from vendors, then the team's own files, graphs, schedule and policies, then one person. The right column says what each layer gives the team. Infographic from the CRM agent's briefing; nothing planned is included.
+The Mandate Stack as it runs on 6 October 2026, read from the bottom: compute and channels rented from vendors, then the team's own files, graphs, schedule and policies, then one person above a line of their own. The right column says what each layer gives the team. Infographic from the CRM agent's briefing; everything shown is in use.
 
-**Where this comes from.** The agent that runs RiskMandate's CRM wrote a briefing on 6 October 2026, from Dinis Cruz's voice notes and the team's collaboration vault, for anyone, person or agent, who writes about the setup. It describes what runs on that date and includes nothing planned. This article keeps its structure and its counts and links every layer to the place on this site where it was worked out. [The agent team as it runs](../articles/the-agent-team-as-it-runs.md), published the same week, is the roster-level description of the same team; this is the layered one. "The Mandate Stack" is the briefing's working name for the pattern, and a better one may replace it.
+**Where this comes from.** The agent that runs RiskMandate's CRM wrote a briefing on 6 October 2026, from Dinis Cruz's voice notes and the team's collaboration vault, for anyone, person or agent, who writes about the setup. It describes what runs on that date, and everything in it is in use. This article keeps its structure and its counts and links every layer to the place on this site where it was worked out. [The agent team as it runs](../articles/the-agent-team-as-it-runs.md), published the same week, is the roster-level description of the same team; this is the layered one. "The Mandate Stack" is the briefing's working name for the pattern, and a better one may replace it.
 
 ## In short
 
-- **This runs.** About fifteen agents and one person run RiskMandate's relationships, research, writing and events, every few hours, in production, today.
+- **This runs.** About fifteen agents and one person run RiskMandate's relationships, research, writing and events, four times a day on a schedule and whenever Dinis sits down with them, in production, today.
 - **Eight layers.** Compute and channels are rented. Everything above them is the team's own: encrypted vaults as shared memory, a vault per domain, semantic graphs over people, teams and policies, a conductor, written mandates, and one human at the top.
 - **One line.** Many small agents, one written mandate each, everything connected as a graph, one human who sends.
 - **The world writes in from the left; nothing leaves without the person on the right.** Email, a web form, other teams' agents and an event extension all enter as data. The only exit is a send by the person whose name is on the message.
+- **The vault is an app platform, not storage.** A model that writes good HTML and a vault that serves it give one person a loop: hit a friction, build the tool in the same session, deploy it into the vault, use it, repeat. The tools compound, down to an interface for one person. Without that loop, this would be another project that stalled.
 - **The loop is the design.** The agents automate the hard part, capturing, connecting and remembering. The draft the person sees is a release candidate for the whole pipeline. The recipient's reply comes back through the same capture path. Mistakes are traced to captured data, a graph edge or the model, and fixed at the source.
 - **Two maps.** Shared memory and the sgit tooling are being pushed toward commodity, on encrypted storage that already is one. The behaviour policies and the graphs are being pulled toward product. That is the team's strategy, drawn.
 - **The record, last.** The published record of agent projects that stall is real, and it is kept for the end, each reason mapped to the mechanism here that answers it.
@@ -96,7 +97,7 @@ The team thinks in graphs, and the vaults are built that way. A record is not a 
 
 One conductor run: open and lock, security, drafts, inbox, briefs, CRM, the event mission, research, dev, security again, a card to Dinis, stop. The order is a design decision. Beside the schedule: emailing the agent, live sessions, joining in two messages. Order from the briefing of 6 October 2026.
 
-The conductor runs on a schedule. It opens a run, takes a lock, gives each agent one step in a fixed order, records evidence in a runs folder, briefs Dinis and stops. The order is security first, then drafts, inbox, briefs, CRM, the event mission, research, dev, and security last. Drafts owed to Dinis are made before anyone else acts; contact folders are brought up to date before the briefs and the CRM use them; security opens so that a hold stops the run before any agent moves, and closes so that what the run changed is reviewed. The briefing gives the cadence as every four hours; [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) and [the walkthrough](../articles/replicating-the-agentic-inbox.md) give it as four runs a day on weekdays. Both are the agents' descriptions of the same schedule.
+The conductor runs four times a day. It opens a run, takes a lock, gives each agent one step in a fixed order, records evidence in a runs folder, briefs Dinis and stops. The order is security first, then drafts, inbox, briefs, CRM, the event mission, research, dev, and security last. Drafts owed to Dinis are made before anyone else acts; contact folders are brought up to date before the briefs and the CRM use them; security opens so that a hold stops the run before any agent moves, and closes so that what the run changed is reviewed. On top of the four scheduled runs, every session Dinis starts with an agent does the same kind of work sooner, so in practice the team is active far more often than the schedule alone would make it.
 
 Dinis can simply email the agent. A note to the agents' address, catalogue this, look at this, map this, is picked up on the next run, filed into the right folder and acted on within the agents' mandates. Because the schedule is regular, inputs do not pile up. Live sessions run alongside, for research, writing, design and analysis done in conversation, under the same rules and leaving the same trail. Joining takes two chat messages: a prompt and the vault key. The new agent clones the vault, runs the onboarding script, gets its folders, a brief template and a draft policy, and announces itself to the team.
 
@@ -122,6 +123,20 @@ Dinis makes decisions, amends mandates, and sends. The four rules that are never
 
 The top layer is one person because the irreversible step is one step. Everything below it can be wrong and still be caught there.
 
+## The vault is not storage: the tool loop
+
+Read, eval, print, loop, applied to a business: a friction, a request in the session, a tool as HTML, deployed into the vault, used and corrected. The loop stops when a piece of work no longer calls for a tool. Below: apps already deployed into vaults on this site.
+
+The layers above could be read as a storage architecture with a CRM on top. That is not what makes them work. The vault is an application platform: a folder of files the host cannot read, served as a web app by the vault host, so that anything a model can write as HTML can be deployed by committing it. [Building vault apps](../docs/vault/vault-apps.md) is the contract, and [three surfaces](../docs/surfaces.md) is the choice between a page inside the vault, a vault app and a page on a site.
+
+Put that beside a model that writes good interfaces, and one person gets a loop. Something is hard to see at a glance: who has the ball, what a person's graph looks like, which messages are owed. Ask for a view of it, in the same session, from the same files. The model builds the tool as HTML, sized to the one use case. It is committed and pushed, and the next session, on any account, has it. It is used on real work, and what it gets wrong goes back to the start. Read, eval, print, loop, applied to a business rather than to a line of code.
+
+Three things follow. The tools compound: the team's own interfaces, the team picture drawn from open Email-FS messages, the session card, the hold shown on every page, the onboarding script, came out of the same loop as the CRM's. The interfaces go down to the person: a contact can have a view of their own, and some do, because building it costs a session rather than a project, and because the record it reads from is a graph with its edges written down. And research is the same loop pointed at a question: extract the data, build the graph, map it, analyse it, which is why a research agent exists. A data-science agent would join the same way; there is not one today.
+
+The loop has a natural stop. A piece of work is mature when it no longer calls for a tool. That is the commoditising arrow in the second map below: once a view is boring, it is done, and the next friction is somewhere else. Most of what the stack does was possible before with a bigger team, and much of it has been done before. The loop is what makes it possible for one person, and it is why the setup kept growing instead of stalling.
+
+The pattern is already on this site in other clothes. [Custom UIs are not the exception](../articles/custom-uis-are-not-the-exception.md) makes the argument for the inbox, where every message gets the interface for its moment. The vaults in the business plans section each carry an app built this way: [the Deck Vault](../demos/vaults/deck-vault/index.md), eight web components bundled into one page; [the evidence vault](../demos/vaults/how-much-evidence/index.md) behind [How much of this did I write?](../articles/how-much-of-this-did-i-write.md); [the connector twin](../demos/vaults/connector-twin/index.md) with its replay; [the risk graph explorer](../demos/vaults/risk-graph-explorer/index.md); [Kit Bag](../demos/vaults/kit-bag/index.md), a browser extension shipped in a vault. The code review navigator in [the review-folder brief](../docs/briefs/code-review-graphs-in-the-repository.md) is the same move for repositories. [Twenty sites in fifteen days](../articles/nineteen-sites.md) is what the loop did to a network of websites.
+
 ## The feedback loop: the draft is pre-production
 
 Nine steps, six of them the agents' on the schedule: capture, graph, research, write, register, format. The draft in Gmail is the release candidate. The send is the person's. The recipient's reply comes back through step one. Below: the three causes a mistake is traced to, and the two levels of error correction. From the briefing of 6 October 2026.
@@ -144,8 +159,11 @@ A Wardley map places each component by how visible it is to the user, vertically
 
 The first map takes the point of view of a person outside the team. What they can see is a reply with Dinis's name on it, the agents' address and the subscribe form. Everything that produces the reply sits below their line of sight: the drafts and inbox roles, the person's folder and graph, the behaviour policies, the conductor and Email-FS, all custom-built. Below those, the vaults, the Claude sessions, Google Workspace and encrypted storage are product or commodity. The shape says what the stack is: a thin custom layer where the relationship is, resting on rented parts.
 
-```
+**Map one, the Mermaid wardley-beta source**
 
+[rendered image](images/ms-map-user.webp)
+
+```
 wardley-beta
   title The Mandate Stack from the outside: a person who writes to the team
   anchor "A person who writes to the team" [0.97, 0.60]
@@ -183,21 +201,24 @@ wardley-beta
   "The person's folder and graph" --> "sgit vaults, shared memory"
   "sgit vaults, shared memory" --> "Encrypted storage, S3"
   "Drafts role" --> "Google Workspace"
-
 ```
 
-Map two, from the inside. The anchor is Dinis. The dashed arrows are the movement the team is making: shared memory and the sgit CLI toward commodity, the behaviour policies and the graphs from genesis toward product. Everything rests on encrypted storage, which is already a commodity. Rendered with Mermaid wardley-beta from the source below.
+Map two, from the inside. The anchor is Dinis. The dashed arrows are the movement the team is making: shared memory and the sgit CLI toward commodity, the behaviour policies, the graphs and the custom interfaces from genesis toward product. Everything rests on encrypted storage, which is already a commodity. Rendered with Mermaid wardley-beta from the source below.
 
-The second map takes Dinis's point of view and adds movement. What he sees is a CRM that is current without typing, drafts to review and decision drafts in the thread. The arrows say what the team is doing to its own components. Shared memory runs on sgit, and sgit runs on encrypted object storage, S3. Each of those is being pushed to the right on purpose, so that a vault is a folder, a push is a command, the host sees ciphertext and sizes, and nothing above them has to know how any of it works. The behaviour policies and the graphs over people move the other way, from genesis toward custom and product, because those are the parts the team is building to sell. The commodity underneath is what makes the custom layer on top affordable.
+The second map takes Dinis's point of view and adds movement. What he sees is a CRM that is current without typing, drafts to review, decision drafts in the thread, and the custom interfaces the tool loop produces. The arrows say what the team is doing to its own components. Shared memory runs on sgit, and sgit runs on encrypted object storage, S3. Each of those is being pushed to the right on purpose, so that a vault is a folder, a push is a command, the host sees ciphertext and sizes, and nothing above them has to know how any of it works. The behaviour policies, the graphs over people and the custom interfaces move the other way, from genesis toward custom and product, because those are the parts the team is building to sell. The commodity underneath is what makes the custom layer on top affordable.
+
+**Map two, the Mermaid wardley-beta source**
+
+[rendered image](images/ms-map-team.webp)
 
 ```
-
 wardley-beta
   title The Mandate Stack from the inside: the person running the business, and what is moving
   anchor "Dinis, running the business" [0.97, 0.50]
   component "A CRM that is current without typing" [0.90, 0.30]
   component "Drafts to review and send" [0.87, 0.52]
   component "Decision drafts in the thread" [0.83, 0.40]
+  component "Custom UIs per use case" [0.79, 0.26]
   component "Semantic graphs over people" [0.74, 0.24]
   component "Agent Behaviour Policies" [0.68, 0.20]
   component "Security role and hold" [0.63, 0.28]
@@ -212,11 +233,15 @@ wardley-beta
   evolve "Agent Behaviour Policies" 0.50
   evolve "Semantic graphs over people" 0.42
   evolve "Email-FS" 0.56
+  evolve "Custom UIs per use case" 0.44
   evolve "sgit vaults, shared memory" 0.84
   evolve "sgit CLI" 0.80
   "Dinis, running the business" --> "A CRM that is current without typing"
   "Dinis, running the business" --> "Drafts to review and send"
   "Dinis, running the business" --> "Decision drafts in the thread"
+  "Dinis, running the business" --> "Custom UIs per use case"
+  "Custom UIs per use case" --> "sgit vaults, shared memory"
+  "Custom UIs per use case" --> "Claude sessions"
   "A CRM that is current without typing" --> "Semantic graphs over people"
   "Drafts to review and send" --> "Conductor"
   "Decision drafts in the thread" --> "Conductor"
@@ -232,7 +257,6 @@ wardley-beta
   "sgit vaults, shared memory" --> "sgit CLI"
   "sgit vaults, shared memory" --> "Encrypted storage, S3"
   "Drafts to review and send" --> "Google Workspace"
-
 ```
 
 Two notes on reading them, both borrowed from the mapping site. Coordinates are visibility first, evolution second, and transposing them renders without an error and asserts something else. And a component cannot be more evolved than the least evolved thing it depends on, which is why the custom middle of these maps cannot move right until the policies do.
@@ -255,7 +279,7 @@ The briefing calls the pattern the Mandate Stack. The name has to carry three th
 
 ## What is not in it
 
-Nothing planned. The briefing's rule, and this article's, is that every component named is in use on the date of writing. The things [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) lists as not working yet still apply: commit authorship is not signed, so an agent's identity inside a shared vault is its branch rather than a signature; a vault key cannot be revoked, only replaced by a new vault; most barriers are policy-only, enforced by the process they constrain, and a separate permission authority that holds the credentials and decides each action does not exist in this setup. The three wishes in [Why my agents do not run on my laptop](../articles/why-my-agents-do-not-run-on-my-laptop.md), an identity, a secret store and a key pair per agent, are the platform-side half of the same list.
+Every component named above is in use on the date of writing; that was the briefing's rule and it is this article's. What is not in it is the list of things the team knows it lacks. The things [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) lists as not working yet still apply: commit authorship is not signed, so an agent's identity inside a shared vault is its branch rather than a signature; a vault key cannot be revoked, only replaced by a new vault; most barriers are policy-only, enforced by the process they constrain, and a separate permission authority that holds the credentials and decides each action does not exist in this setup. The three wishes in [Why my agents do not run on my laptop](../articles/why-my-agents-do-not-run-on-my-laptop.md), an identity, a secret store and a key pair per agent, are the platform-side half of the same list.
 
 And the question underneath stays open: who gives the mandate over a piece of information, and whether the recipient of an email has the authority to hand it to an agent at all. The setup's answer so far is to hold less and to say what it holds. The question gets a document of its own.
 
@@ -298,18 +322,19 @@ The MIT report's own explanation of failure, tools that do not learn from or ada
 - [The wall under the reply](../articles/the-wall-under-the-reply.md) and [How much of this did I write?](../articles/how-much-of-this-did-i-write.md): where the human's review happens, and what the human's input is.
 - [Git for things you cannot put on GitHub](../articles/what-sgit-is.md), [Vault credentials](../docs/credentials.md), [Working with AI agents](../docs/agents.md), [the two-branch model](../docs/two-branch-model.md), [append-lane messaging](../docs/append-lane-messaging.md), [sending messages between vaults](../docs/vault-messaging.md), [the append lanes API](../api/append-lanes.md), [Agent Contact](../docs/agent-contact.md), [the security model](../security/index.md) and [the egress how-to](../docs/how-to/claude-team-egress.md): the shared-memory and compute layers as documentation.
 - [The footprint brief](../docs/briefs/riskmandate-footprint-and-blast-radius.md), [the sandbox brief](../docs/briefs/riskmandate-sandbox-twins-and-tokens.md), [the subscribe lane brief](../docs/briefs/subscribe-lane-agent-brief.md) and [the identity and secrets design pack](../docs/briefs/secrets-sgit-ai-design-pack.md): the governance and lane work as briefs to RiskMandate and to secrets.sgit.ai.
+- [Building vault apps](../docs/vault/vault-apps.md), [three surfaces](../docs/surfaces.md) and [the review-folder brief](../docs/briefs/code-review-graphs-in-the-repository.md): the contract the tool loop deploys against, and the same loop applied to repositories. [Twenty sites in fifteen days](../articles/nineteen-sites.md): the loop applied to websites.
 - [The articles as graphs](../articles/graphs.md): this site's own records kept the same way. [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/): maps as claims, and the coordinate contract the two maps follow.
 
 ## Sources
 
 - *The Mandate Stack: a briefing on RiskMandate's agentic setup*, v0.3, 6 October 2026, written by the CRM agent (@crm.2) from Dinis Cruz's voice notes and the team's collaboration vault; classified public, no contact data. The layers, the channel table, the folder layout, the run order, the governance rules, the feedback loop and the five reasons are taken from it, as are the counts (about fifteen agents; over 620 commits and 9,000 files; 71 people, 24 organisations, 281 timeline events and 12 campaigns as of 3 October).
-- Two voice notes by Dinis Cruz, 6 October 2026: on the complaint that agentic workflows do not reach production and on the name; and on leading with the system, the flow from the outside world, and the maps.
+- Three voice notes by Dinis Cruz, 6 and 7 October 2026: on the complaint that agentic workflows do not reach production and on the name; on leading with the system, the flow from the outside world, and the maps; and on the vault as an app platform, the tool loop, the schedule of four runs a day, and the source blocks.
 - [RiskMandate.ai, the Agent Behaviour Policy](https://riskmandate.ai/abp.html); [graphs.sgit.ai](https://graphs.sgit.ai/); [risks.sgit.ai](https://risks.sgit.ai/); [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/), whose notes for agents give the coordinate order and the quoting rule the two map sources follow. The maps were rendered with Mermaid 12.1.0's wardley-beta diagram.
 - The record: Gartner press releases of [25 June 2025](https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027) and [30 September 2025](https://www.gartner.com/en/newsroom/press-releases/2025-09-30-gartner-survey-finds-just-15-percent-of-it-application-leaders-are-considering-piloting-or-deploying-fully-autonomous-ai-agents); S&P Global Market Intelligence, Voice of the Enterprise AI use cases 2025, as reported by [CIO Dive, March 2025](https://www.ciodive.com/news/AI-project-fail-data-SPGlobal/742590/); MIT NANDA, *The GenAI Divide*, as reported by [Fortune, 18 August 2025](https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/), with the critique in [Fortune, 21 August 2025](https://fortune.com/2025/08/21/an-mit-report-that-95-of-ai-pilots-fail-spooked-investors-but-the-reason-why-those-pilots-failed-is-what-should-make-the-c-suite-anxious); [McKinsey, The state of AI 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025); [Deloitte, State of AI in the Enterprise 2026](https://www.deloitte.com/au/en/issues/generative-ai/state-of-ai-in-enterprise.html); [Forrester, The state of agentic AI in 2026, June 2026](https://www.forrester.com/blogs/the-state-of-agentic-ai-in-2026-companies-are-chasing-few-are-catching/); KPMG Global AI Pulse Q2 2026, as reported by [PPC Land, July 2026](https://ppc.land/kpmg-finds-49-cut-ai-agent-rollouts-when-costs-outran-value/); [Carnegie Mellon, TheAgentCompany, arXiv 2412.14161, v3 September 2025](https://arxiv.org/abs/2412.14161); [Google Cloud, ROI of AI 2025, September 2025](https://www.googlecloudpresscorner.com/2025-09-04-Google-Cloud-Study-Reveals-52-of-Executives-Say-Their-Organizations-Have-Deployed-AI-Agents%2C-Unlocking-a-New-Wave-of-Business-Value%2C1); [LangChain, State of agent engineering](https://langchain.com/state-of-agent-engineering). Gartner's and S&P's own pages refused automated fetches during research, so their figures were checked against trade-press reproductions of the releases.
 - The reversals: Klarna, [Entrepreneur, May 2025](https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/); Taco Bell, [Nation's Restaurant News, August 2025](https://www.nrn.com/restaurant-technology/taco-bell-is-adjusting-its-voice-ai-plans); Commonwealth Bank of Australia, [Bloomberg, 21 August 2025](https://www.bloomberg.com/news/articles/2025-08-21/commonwealth-bank-reverses-job-cuts-decision-over-ai-chatbots); Ford, [Repairer Driven News, July 2026](https://www.repairerdrivennews.com/2026/07/08/ford-rehires-350-engineers-after-ai-fails-at-quality/).
 - Draft-and-send as the shipped pattern: [Anthropic, Building effective agents, December 2024](https://www.anthropic.com/research/building-effective-agents); OpenAI, *A practical guide to building agents*, April 2025; [TechCrunch on Superhuman auto-drafts, July 2026](https://techcrunch.com/?p=3139498); [Shortwave changelog, January 2026](https://shortwave.com/changelog); Microsoft Learn on Copilot in Outlook leaving the reply in the compose window for the user to review and send.
 
-*Drafted from a briefing written by the RiskMandate CRM agent (@crm.2, v0.3, 6 October 2026) from Dinis Cruz's voice notes and the team's collaboration vault, and from two voice notes by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session, on 6 October 2026. The figures are infographics drawn from the briefing with fictional names and sample content, and two Wardley maps rendered with Mermaid from the sources printed above; no contact is named beyond the agents' published address, and no key or token appears in any figure or file. Figures from reports and surveys are quoted with their dates and sample sizes where the source gave them.*
+*Drafted from a briefing written by the RiskMandate CRM agent (@crm.2, v0.3, 6 October 2026) from Dinis Cruz's voice notes and the team's collaboration vault, and from three voice notes by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Fable 5.1, claude-fable-5-1) in the sgit.ai site session, on 6 October 2026. The figures are infographics drawn from the briefing with fictional names and sample content, and two Wardley maps rendered with Mermaid from the sources printed above; no contact is named beyond the agents' published address, and no key or token appears in any figure or file. Figures from reports and surveys are quoted with their dates and sample sizes where the source gave them.*
 
 *© 2026 Dinis Cruz. This article's own text is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You're free to share and adapt it, as long as you give credit. Quoted material and linked sources keep their own licences.*
 
@@ -338,6 +363,7 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#the-man
 - [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](ultimate-insider-three-collisions.md) Agents, the infrastructure meant to contain them, and risk management run on spreadsheets are arriving at once, and together they are one scenario.
 - [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
 - [The wall under the reply: end an email with the state of the thread, not the thread](the-wall-under-the-reply.md) End an email reply with the state of the thread for this reader, not the quoted wall: decided, open, next, who is on copy, with links to the record.
+- [Twenty sites in fifteen days, and what that did to the writing](nineteen-sites.md) One site became twenty repositories in fifteen days because each argument needed its own version history, and the index now starts from a question.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

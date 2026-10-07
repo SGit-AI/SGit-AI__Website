@@ -91,6 +91,21 @@ class Content_Loader:
         rules — plus one site-specific block, the `!shot` figure, which emits the
         walkthrough figure the screenshot component fills at runtime."""
         out, para, lst, fence = [], [], None, None
+        # `!source label | image` immediately before a ``` fence wraps that fence in a
+        # collapsed <details> with a copy button, so a diagram's source travels with its
+        # render without taking the reader's screen. The .md twin gets the code block
+        # and a link to the rendered image, because the twin is the copy an agent reads.
+        src_pending, src_lines = None, []
+
+        def flush_source():
+            label, img = src_pending
+            code = '\n'.join(src_lines)
+            out.append(
+                f'<details class="src"><summary>{self.inline(label, depth, where)}</summary>'
+                f'<div class="src-bar"><button type="button" class="src-copy" '
+                f'data-copy="{html.escape(code, quote=True)}"><span class="cp">copy</span></button>'
+                + (f'<a href="{html.escape(img, quote=True)}">rendered image</a>' if img else '')
+                + f'</div><pre class="shell">{html.escape(code, quote=False)}</pre></details>')
 
         def flush_para():
             if para:
@@ -112,16 +127,34 @@ class Content_Loader:
 
             if fence is not None:
                 if line.strip().startswith('```'):
-                    out.append('</pre>')
+                    if fence == 'source':
+                        flush_source()
+                        src_pending, src_lines = None, []
+                    else:
+                        out.append('</pre>')
                     fence = None
+                elif fence == 'source':
+                    src_lines.append(line)
                 else:
                     out.append(html.escape(line, quote=False))
                 continue
+            if line.startswith('!source '):
+                flush_para(); flush_list()
+                parts = [p.strip() for p in line[8:].split('|')]
+                if not parts or not parts[0]:
+                    raise Content_Error(f'{where}: !source needs label [| image]')
+                src_pending = (parts[0], parts[1] if len(parts) > 1 else '')
+                continue
             if line.strip().startswith('```'):
                 flush_para(); flush_list()
-                out.append('<pre class="shell">')
-                fence = True
+                if src_pending:
+                    fence = 'source'
+                else:
+                    out.append('<pre class="shell">')
+                    fence = True
                 continue
+            if src_pending:
+                raise Content_Error(f'{where}: !source must be followed directly by a ``` fence')
 
             if not line.strip():
                 flush_para(); flush_list()
@@ -254,7 +287,7 @@ class Content_Loader:
 
     def md_to_text(self, md, limit=260):
         """Plain-text summary for the manifest and the feed."""
-        t = re.sub(r'!(shot|site) .*', '', md)
+        t = re.sub(r'!(shot|site|source) .*', '', md)
         t = re.sub(r'```.*?```', '', t, flags=re.S)
         t = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', t)
         t = re.sub(r'[#>*`_-]', ' ', t)

@@ -2,7 +2,7 @@
 
 > The thinking behind sgit stopped fitting on one site. It moved out to nineteen siblings on *.sgit.ai, what forced the split, what it cost, and why the index into them now starts with a question instead of a list.
 
-*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.6.80 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/nineteen-sites.html> · site v0.6.81 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -77,6 +77,10 @@ Site & engineeringVaults & method[This article as a graph →](graphs.md#ninetee
 ### Builds on
 
 - [Git for things you cannot put on GitHub](what-sgit-is.md) sgit is git for files you cannot put on GitHub: encrypted before they leave your machine, versioned like git, stored where the server cannot read a byte.
+
+### Continued by
+
+- [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

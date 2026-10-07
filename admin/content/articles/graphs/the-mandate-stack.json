@@ -14,6 +14,7 @@
     {"id": "conductor", "label": "A conductor with security at both ends", "kind": "method", "summary": "Open and lock, security, drafts, inbox, briefs, CRM, mission, research, dev, security, a card to the human, stop; the order is a design decision."},
     {"id": "governance", "label": "One written mandate per agent", "kind": "method", "summary": "Grant, mandate, gap and barrier in one grammar; roles split the risk; drafts only; a security hold; secrets never in files; a card per session; a custody register."},
     {"id": "human-sends", "label": "One human holds the irreversible step", "kind": "claim", "summary": "No agent sends, replies or forwards; everything below can be wrong and still be caught at the draft."},
+    {"id": "tool-loop", "label": "The vault is an app platform, not storage", "kind": "concept", "summary": "A friction becomes a tool as HTML in the same session, deployed into the vault, used and corrected; tools compound down to an interface for one person; the loop stops when a piece of work no longer calls for a tool."},
     {"id": "draft-release-candidate", "label": "The draft is the release candidate", "kind": "concept", "summary": "The whole pipeline has run before the person sees the draft; reviewing it is QA on the system and where the thinking happens; the recipient's reply closes the loop."},
     {"id": "traced-to-source", "label": "Mistakes traced to captured data, an edge or the model", "kind": "method", "summary": "Every fact carries source, capture method and hash; the cause is fixed where it came from; model error reported as the rarest of the three."},
     {"id": "two-maps", "label": "Commoditise the memory, productise the mandate", "kind": "claim", "summary": "Two Wardley maps, from outside and inside: shared memory and the sgit CLI pushed toward commodity on encrypted storage; the policies and the graphs pulled from genesis toward product. Placements are claims."},
@@ -32,6 +33,9 @@
     {"from": "conductor", "to": "governance", "rel": "depends-on"},
     {"from": "governance", "to": "human-sends", "rel": "leads-to"},
     {"from": "outside-in", "to": "human-sends", "rel": "extends"},
+    {"from": "shared-memory", "to": "tool-loop", "rel": "leads-to"},
+    {"from": "graph-layer", "to": "tool-loop", "rel": "depends-on"},
+    {"from": "tool-loop", "to": "two-maps", "rel": "extends"},
     {"from": "human-sends", "to": "draft-release-candidate", "rel": "extends"},
     {"from": "draft-release-candidate", "to": "traced-to-source", "rel": "depends-on"},
     {"from": "no-edge-gap", "to": "traced-to-source", "rel": "extends"},
@@ -44,8 +48,8 @@
     {"from": "the-record", "to": "one-that-runs", "rel": "contrasts"}
   ],
   "links": {
-    "articles": ["the-agent-team-as-it-runs", "replicating-the-agentic-inbox", "six-agents-one-inbox", "why-my-agents-do-not-run-on-my-laptop", "footprint-and-blast-radius", "every-risk-is-already-accepted", "ultimate-insider-three-collisions", "connector-twin-before-you-deploy-an-agent", "the-identity-we-wanted-to-give-the-agents", "introducing-fractal-semantic-graphs", "code-review-as-a-fractal-semantic-graph", "if-somebody-built-a-company-on-code-review", "memory-is-not-a-spectator-sport", "custom-uis-are-not-the-exception", "seven-vaults-one-method", "supply-chain-of-vaults", "the-wall-under-the-reply", "how-much-of-this-did-i-write", "what-sgit-is"],
-    "pages": ["docs/credentials.html", "docs/agents.html", "docs/two-branch-model.html", "docs/append-lane-messaging.html", "docs/vault-messaging.html", "api/append-lanes.html", "docs/agent-contact.html", "security/index.html", "docs/how-to/claude-team-egress.html", "docs/briefs/riskmandate-footprint-and-blast-radius.html", "docs/briefs/riskmandate-sandbox-twins-and-tokens.html", "docs/briefs/secrets-sgit-ai-design-pack.html", "docs/briefs/subscribe-lane-agent-brief.html", "articles/graphs.html"],
+    "articles": ["the-agent-team-as-it-runs", "replicating-the-agentic-inbox", "six-agents-one-inbox", "why-my-agents-do-not-run-on-my-laptop", "footprint-and-blast-radius", "every-risk-is-already-accepted", "ultimate-insider-three-collisions", "connector-twin-before-you-deploy-an-agent", "the-identity-we-wanted-to-give-the-agents", "introducing-fractal-semantic-graphs", "code-review-as-a-fractal-semantic-graph", "if-somebody-built-a-company-on-code-review", "memory-is-not-a-spectator-sport", "custom-uis-are-not-the-exception", "seven-vaults-one-method", "supply-chain-of-vaults", "the-wall-under-the-reply", "how-much-of-this-did-i-write", "what-sgit-is", "nineteen-sites"],
+    "pages": ["docs/credentials.html", "docs/agents.html", "docs/two-branch-model.html", "docs/append-lane-messaging.html", "docs/vault-messaging.html", "api/append-lanes.html", "docs/agent-contact.html", "security/index.html", "docs/how-to/claude-team-egress.html", "docs/briefs/riskmandate-footprint-and-blast-radius.html", "docs/briefs/riskmandate-sandbox-twins-and-tokens.html", "docs/briefs/secrets-sgit-ai-design-pack.html", "docs/briefs/subscribe-lane-agent-brief.html", "docs/briefs/code-review-graphs-in-the-repository.html", "docs/vault/vault-apps.html", "docs/surfaces.html", "demos/vaults/deck-vault/index.html", "demos/vaults/how-much-evidence/index.html", "demos/vaults/connector-twin/index.html", "demos/vaults/risk-graph-explorer/index.html", "demos/vaults/kit-bag/index.html", "articles/graphs.html"],
     "sites": ["https://riskmandate.ai/abp.html", "https://graphs.sgit.ai/", "https://risks.sgit.ai/", "https://wardley-maps.sgit.ai/"]
   },
   "quotes": [

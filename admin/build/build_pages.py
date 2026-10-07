@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.80'
+SITE_VERSION = 'v0.6.81'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.80', '2026-10-06', 'this release',
+    ('v0.6.81', '2026-10-07', 'this release',
+     "THE MANDATE STACK, ROUND THREE, AND A SOURCE BLOCK FOR THE BUILD. A new article directive, !source "
+     "label | image, placed before a code fence, renders the fence as a collapsed details block with a copy "
+     "button and a link to the rendered image, so a diagram's source travels with its render without taking "
+     "the reader's screen; the markdown twin gets the code block and the image link, because the twin is the "
+     "copy an agent reads. The two Wardley map sources in the Mandate Stack article use it. The article gains "
+     "a section on the vault as an app platform rather than storage: the loop in which a friction becomes a "
+     "tool as HTML in the same session, is deployed into the vault, used and corrected, with the tools "
+     "compounding down to an interface for one person, and the apps already deployed into vaults on this site "
+     "as the evidence; a figure for it; and a custom-interfaces component on the inside map. The stack figure "
+     "gives the human layer its own colour and its own line. The schedule is stated as four runs a day plus "
+     "whatever a live session starts. The phrase about nothing planned is gone; everything described is in use.",),
+    ('v0.6.80', '2026-10-06', 'git 692b7984',
      "THE MANDATE STACK, REVISED. The article now leads with the system that runs and its eight layers, and the "
      "published record of agent projects that stall moves to a closing section for readers who ask why a running "
      "system is worth writing down. The stack figure is recoloured as one gradient from compute to the human, with "
