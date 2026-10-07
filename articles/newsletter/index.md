@@ -2,11 +2,11 @@
 
 > The regular issue of the SGit Newsroom: what was published, what it adds up to, and the pieces worth reading, also published on LinkedIn.
 
-*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.6.91 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/index.html> · site v0.6.92 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
-Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.91
+Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.92
 
 # The newsletter
 
@@ -20,9 +20,9 @@ Issue 12026-10-07
 
 ## [A team of agents, written up from the inside, and an open framework built on the same day](../../articles/newsletter/001-2026-10-07.md)
 
-The first issue of the SGit Newsroom newsletter covers the busiest week of articles on sgit.ai so far. Most of it is one story told at three depths, a team of agents running a business, from the walkthrough to the field notes to the full stack. Around it: personal agents read through behaviour policy, review as a science, the author's input measured, and, today, an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
+What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-9 articles
+10 articles
 
 Next issue: not yet due (0 article(s) since issue 1; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 

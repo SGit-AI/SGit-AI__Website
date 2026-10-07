@@ -15,7 +15,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.91'
+SITE_VERSION = 'v0.6.92'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +28,13 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.91', '2026-10-07', 'this release',
+    ('v0.6.92', '2026-10-07', 'this release',
+     "NEWSLETTER ISSUE 1, OPENING ON THE TOPICS. The issue opened by explaining what the newsletter is; a new "
+     "reader cares about what the week was about. The intro, the summary and the subtitle now lead with the "
+     "question the week's articles answer, what it takes to let agents do real work for a business, and the "
+     "four sides they answer it from. The behaviour-policy-as-business-logic article gets a paragraph and a "
+     "checked quote in the agents section. Not yet posted to LinkedIn, so the issue changes before it goes out.",),
+    ('v0.6.91', '2026-10-07', 'git d6609661',
      "THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules "
      "(own account, secrets held by the platform, tools switched off, sending needs a person), an agent's "
      "behaviour policy is the company's own business logic, function, process, relationship and purpose, which "

@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.6.91). Nothing here needs a second request. Individual pages live at the paths
+> (v0.6.92). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-249site releases, each verified live before it was called done
+250site releases, each verified live before it was called done
 
 43vaults published with a deliberately public read key
 
@@ -5989,7 +5989,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.91, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.6.92, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6352,7 +6352,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-249**site releases since 14 August**
+250**site releases since 14 August**
 each verified live before it was called done
 
 43**vaults published with a public read key**
@@ -11144,11 +11144,12 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.6.91**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
+The site version (**v0.6.92**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
-| v0.6.91 | 2026-10-07 | this release | THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules (own account, secrets held by the platform, tools switched off, sending needs a person), an agent's behaviour policy is the company's own business logic, function, process, relationship and purpose, which many organisations never wrote down because their software enforced it by omission, and which agents bypass by working through APIs. One fictional firm's email agent walked through six layers with an owner and a barrier per rule; the rules counted into backed by a control, governed by an accepted risk, and hope; five rules shown moving when a kind of product that already exists enforces them; the link to AI BCF RG.2 and AC.3; and why the upper layers read like skills. Three figures, a graph, and a pitch to the Editor. |
+| v0.6.92 | 2026-10-07 | this release | NEWSLETTER ISSUE 1, OPENING ON THE TOPICS. The issue opened by explaining what the newsletter is; a new reader cares about what the week was about. The intro, the summary and the subtitle now lead with the question the week's articles answer, what it takes to let agents do real work for a business, and the four sides they answer it from. The behaviour-policy-as-business-logic article gets a paragraph and a checked quote in the agents section. Not yet posted to LinkedIn, so the issue changes before it goes out. |
+| v0.6.91 | 2026-10-07 | git d6609661 | THE BEHAVIOUR POLICY IS THE BUSINESS LOGIC. An article from a voice note: below the first mechanical rules (own account, secrets held by the platform, tools switched off, sending needs a person), an agent's behaviour policy is the company's own business logic, function, process, relationship and purpose, which many organisations never wrote down because their software enforced it by omission, and which agents bypass by working through APIs. One fictional firm's email agent walked through six layers with an owner and a barrier per rule; the rules counted into backed by a control, governed by an accepted risk, and hope; five rules shown moving when a kind of product that already exists enforces them; the link to AI BCF RG.2 and AC.3; and why the upper layers read like skills. Three figures, a graph, and a pitch to the Editor. |
 | v0.6.90 | 2026-10-07 | git feb73516 | THE NEWSLETTER, AFTER ITS FIRST PASTE INTO LINKEDIN. Issue 1 was posted and three things came back. A quote's source sat in a cite inside the blockquote and LinkedIn dropped it, so the source is now a paragraph after the quote, everywhere the desk quotes. The Copy for LinkedIn button is gone: selecting the page and copying works as well, links included. The full list of the week's articles was one long dated list; it is now grouped by theme with a line of introduction each, through a new !list directive, and a new !covers directive makes the grouping a promise the build checks: every article in the range must appear in some list, or the build fails and names what is missing (tested by dropping one). |
 | v0.6.89 | 2026-10-07 | git 9b643765 | THE SGIT NEWSROOM AND ITS NEWSLETTER. The articles section is named the SGit Newsroom in the menu and on the front; the backstage pages become How it runs, and every URL is unchanged. A newsletter content type: one file per issue in admin/content/newsroom/newsletter/, NNN-YYYY-MM-DD.md, rendered with the desk directives so its quotes are checked against the articles at build time, cross-posted as a LinkedIn article in Deterministic GenAI (the URL goes in the issue file once posted; the newsletter's own URL is left blank until supplied rather than guessed). desk.py says when an issue is due: a week after the last or five articles since it. Issue 1 is out. A cover for every article and issue: admin/build/make_banners.mjs renders 1920x1080 JPEGs through Playwright from a manifest the build writes (title, teaser, three key ideas from the graph's claims, the article's own hero, or for an issue the cards of what it covers), re-rendering only what changed; release.sh runs it between two builds. An issue page has a Copy for LinkedIn button that makes every link absolute. The subscribe form now subscribes to the newsletter. The quote check now allows a capitalised first letter, the convention for a quote that starts mid-sentence; it caught one such quote in Issue 1. |
 | v0.6.88 | 2026-10-07 | git a46446bf | THE NEWSROOM'S FIRST EDITOR RUN. A release that touches only the Editor's files and the release lines, checked with policy_check.py --role editor. The second edition of the articles front: the open AI governance framework leads, raised from the highlight its pitch asked for because it carries the most checkable evidence of anything new (a vault with its read key, a browser database, a join to the AI Act); where is the why? joins the highlights and the Mandate Stack moves from lead to highlight. The first pitch on the desk, from agent@riskmandate.ai, is answered in its status line; its collection request goes to the Historian as board card D6, because collections are the Historian's. The log records a correction: the first entry's time was a placeholder, now the commit's 12:40 UTC. |
@@ -14424,7 +14425,7 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.91
+Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.92
 
 # SGit Newsroom
 
@@ -27028,7 +27029,7 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.91
+Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.92
 
 # Collections
 
@@ -27047,7 +27048,7 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.91
+Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.92
 
 # From the desk
 
@@ -27542,7 +27543,7 @@ This newsroom runs on the same idea: every desk role has a written policy, and [
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.91
+Edition of 2026-10-0739 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.6.92
 
 # The newsletter
 
@@ -27556,9 +27557,9 @@ Issue 12026-10-07
 
 ## [A team of agents, written up from the inside, and an open framework built on the same day](../../articles/newsletter/001-2026-10-07.md)
 
-The first issue of the SGit Newsroom newsletter covers the busiest week of articles on sgit.ai so far. Most of it is one story told at three depths, a team of agents running a business, from the walkthrough to the field notes to the full stack. Around it: personal agents read through behaviour policy, review as a science, the author's input measured, and, today, an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
+What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-9 articles
+10 articles
 
 Next issue: not yet due (0 article(s) since issue 1; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
 
@@ -27567,7 +27568,7 @@ Next issue: not yet due (0 article(s) since issue 1; due at 5 or after 7 days). 
 ==============================================================================
 # Issue 1: A team of agents, written up from the inside, and an open framework built on the same day, SGit Newsroom
 
-> The first issue of the SGit Newsroom newsletter covers the busiest week of articles on sgit.ai so far. Most of it is one story told at three depths, a team of agents running a business, from the walkthrough to the field notes to the full stack. Around it: personal agents read through behaviour policy, review as a science, the author's input measured, and, today, an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
+> What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 >
 > Page: https://sgit.ai/articles/newsletter/001-2026-10-07.html
 
@@ -27579,9 +27580,9 @@ SGit Newsroom · Issue 1 · 2026-10-07
 
 By [Dinis Cruz](../../about/index.md), written with the [Journalist](../../newsroom/roles/journalist.md)
 
-***Abstract:** The first issue of the SGit Newsroom newsletter covers the busiest week of articles on sgit.ai so far. Most of it is one story told at three depths, a team of agents running a business, from the walkthrough to the field notes to the full stack. Around it: personal agents read through behaviour policy, review as a science, the author's input measured, and, today, an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.*
+***Abstract:** What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.*
 
-This is the first issue of a newsletter that replaces an email per article. An article on sgit.ai is one argument with its evidence; an issue is what the week's arguments add up to, so it is the thing worth sending. A personalised version, picked for what each reader cares about, comes next.
+What does it take to let agents do real work for a business, and still know what they will do? This week's articles answer from four sides. A team of agents running a small business, written up from the inside. The behaviour policy that says what each agent may do, and what it turns out to describe once you look closely: the business itself. The desktops and the permission prompts those agents need. And an open AI governance framework, turned into something you can query within a day of reading it. Every article publishes its evidence beside it, so each claim can be checked.
 
 ## One story, three depths
 
@@ -27616,6 +27617,14 @@ A boundary whose enforcement is a human judgement is exactly as strong as the in
 From [Where is the why? A permission prompt asked me to decide, and kept the reason](../../articles/where-is-the-why.md)
 
 [A personal agent that keeps your secrets](https://sgit.ai/articles/a-personal-agent-that-keeps-your-secrets.html) reads the year's personal agents through the same policy, and [a locked-down desktop for an agent, by the minute](https://sgit.ai/articles/an-agent-desktop-by-the-minute.html) prices what it would take to give each agent a machine of its own.
+
+[Zoom into an agent's behaviour policy](https://sgit.ai/articles/the-behaviour-policy-is-the-business-logic.html) goes one level further. Below the first rules, do not send and do not delete, the policy is the firm's own business logic: how it does email, which steps an invoice goes through, who a client is this week. Much of that used to be enforced by software that simply had no button for it, and agents do not use the buttons:
+
+>
+
+The rule that the user interface enforced by omission is no longer enforced, unless somebody writes it down and something enforces it.
+
+From [Zoom into an agent's behaviour policy and you find the business logic](../../articles/the-behaviour-policy-is-the-business-logic.md)
 
 ## The input, measured
 
