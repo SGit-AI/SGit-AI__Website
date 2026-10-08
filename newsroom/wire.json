@@ -1,41 +1,41 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.7.10",
+  "site_version": "v0.7.11",
   "about": "https://sgit.ai/newsroom/index.html",
   "front": {
-    "edition": "2026-10-07",
-    "note": "Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.",
+    "edition": "2026-10-08",
+    "note": "Third edition. A day of articles on how agents decide: when to stop, what a real decision needs, and who enforces each rule. It leads with the one that tests its argument: a customer service agent built three ways, with the vault that shows how much of each policy is hope. Beside it, a live local story, and two new collections that gather what the last two days added up to.",
     "lead": {
-      "slug": "ai-baseline-control-framework",
-      "kicker": "Open framework, built on",
-      "why": "Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site."
+      "slug": "hope-or-enforcement",
+      "kicker": "Built three ways",
+      "why": "One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep."
     },
     "highlights": [
       {
-        "slug": "where-is-the-why",
-        "kicker": "The person's side",
-        "why": "A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given."
+        "slug": "agency-is-not-a-yes",
+        "kicker": "A scale for deciding",
+        "why": "Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale."
       },
       {
-        "slug": "the-mandate-stack",
-        "kicker": "In production",
-        "why": "About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them."
+        "slug": "the-waiting-room-knew-first",
+        "kicker": "Live, local",
+        "why": "A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening."
       },
       {
-        "slug": "how-much-of-this-did-i-write",
-        "kicker": "Measured",
-        "why": "The human input, counted from the session record rather than asserted."
+        "slug": "every-mistake-added-a-rule",
+        "kicker": "Complexity",
+        "why": "When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping."
       },
       {
-        "slug": "the-agent-team-as-it-runs",
-        "kicker": "Field notes",
-        "why": "The rule the newsroom itself runs on: create anywhere, edit your own."
+        "slug": "the-behaviour-policy-is-the-business-logic",
+        "kicker": "Pitched, accepted",
+        "why": "Zoom into an agent's policy and you find the business: the rules the user interface used to enforce by omission."
       }
     ],
     "collections": [
-      "wardley-maps",
-      "what-the-human-brings",
+      "how-agents-decide",
+      "local-news-kept-as-evidence",
       "behaviour-policy-in-practice"
     ]
   },
@@ -102,7 +102,10 @@
         "news-deserts",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "highlight",
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -177,8 +180,12 @@
         "agent-behaviour-policy",
         "article"
       ],
-      "placement": [],
-      "notes": []
+      "placement": [
+        "collection:how-agents-decide"
+      ],
+      "notes": [
+        "range-is-the-feature-so-the-stop-is-designed"
+      ]
     },
     {
       "slug": "agency-is-not-a-yes",
@@ -210,8 +217,13 @@
         "vaults",
         "article"
       ],
-      "placement": [],
-      "notes": []
+      "placement": [
+        "highlight",
+        "collection:how-agents-decide"
+      ],
+      "notes": [
+        "range-is-the-feature-so-the-stop-is-designed"
+      ]
     },
     {
       "slug": "hope-or-enforcement",
@@ -244,8 +256,14 @@
         "vaults",
         "article"
       ],
-      "placement": [],
-      "notes": []
+      "placement": [
+        "lead",
+        "collection:how-agents-decide",
+        "collection:behaviour-policy-in-practice"
+      ],
+      "notes": [
+        "range-is-the-feature-so-the-stop-is-designed"
+      ]
     },
     {
       "slug": "who-are-you-protecting-against",
@@ -278,7 +296,9 @@
         "vaults",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:how-agents-decide"
+      ],
       "notes": []
     },
     {
@@ -313,8 +333,13 @@
         "chatgpt",
         "article"
       ],
-      "placement": [],
-      "notes": []
+      "placement": [
+        "highlight",
+        "collection:how-agents-decide"
+      ],
+      "notes": [
+        "range-is-the-feature-so-the-stop-is-designed"
+      ]
     },
     {
       "slug": "liquid-content-needs-water",
@@ -344,7 +369,9 @@
         "ft-strategies",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -375,7 +402,9 @@
         "simulation",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -406,7 +435,9 @@
         "verification",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -436,7 +467,10 @@
         "integrations",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "highlight",
+        "collection:behaviour-policy-in-practice"
+      ],
       "notes": []
     },
     {
@@ -469,7 +503,9 @@
         "agent-behaviour-policy",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:behaviour-policy-in-practice"
+      ],
       "notes": []
     },
     {
@@ -503,7 +539,7 @@
         "article"
       ],
       "placement": [
-        "lead"
+        "collection:behaviour-policy-in-practice"
       ],
       "notes": []
     },
@@ -536,7 +572,7 @@
         "article"
       ],
       "placement": [
-        "highlight"
+        "collection:how-agents-decide"
       ],
       "notes": []
     },
@@ -578,7 +614,6 @@
         "article"
       ],
       "placement": [
-        "highlight",
         "collection:wardley-maps",
         "collection:what-the-human-brings",
         "collection:behaviour-policy-in-practice"
@@ -701,7 +736,6 @@
         "article"
       ],
       "placement": [
-        "highlight",
         "collection:what-the-human-brings",
         "collection:behaviour-policy-in-practice"
       ],
@@ -844,11 +878,11 @@
         "article"
       ],
       "placement": [
-        "highlight",
         "collection:wardley-maps",
         "collection:what-the-human-brings"
       ],
       "notes": [
+        "range-is-the-feature-so-the-stop-is-designed",
         "the-week-to-7-october",
         "a-model-that-can-go-in-every-direction"
       ]
@@ -1220,7 +1254,9 @@
         "economics",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -1399,7 +1435,9 @@
         "semantic-graphs",
         "article"
       ],
-      "placement": [],
+      "placement": [
+        "collection:local-news-kept-as-evidence"
+      ],
       "notes": []
     },
     {
@@ -1649,6 +1687,23 @@
   ],
   "notes": [
     {
+      "slug": "range-is-the-feature-so-the-stop-is-designed",
+      "title": "Range is the feature, so the stop has to be designed",
+      "date": "2026-10-08",
+      "kind": "thread",
+      "role": "historian",
+      "summary": "Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.",
+      "cites": [
+        "knowing-when-to-stop",
+        "every-mistake-added-a-rule",
+        "agency-is-not-a-yes",
+        "hope-or-enforcement",
+        "how-much-of-this-did-i-write"
+      ],
+      "url": "https://sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.html",
+      "markdown": "https://sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.md"
+    },
+    {
       "slug": "the-week-to-7-october",
       "title": "The week to 7 October: the agent team, written up from the inside",
       "date": "2026-10-07",
@@ -1701,6 +1756,26 @@
   ],
   "newsletter": [
     {
+      "number": 2,
+      "slug": "002-how-agents-decide",
+      "title": "How agents decide, when they stop, and a local story kept as evidence",
+      "date": "2026-10-08",
+      "summary": "A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.",
+      "cites": [
+        "hope-or-enforcement",
+        "agency-is-not-a-yes",
+        "knowing-when-to-stop",
+        "the-waiting-room-knew-first",
+        "every-mistake-added-a-rule",
+        "who-are-you-protecting-against",
+        "encrypted-memory-for-isolated-agents",
+        "the-bridge-followed-to-the-end"
+      ],
+      "linkedin": null,
+      "url": "https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html",
+      "banner": "https://sgit.ai/articles/banners/002-how-agents-decide.jpg"
+    },
+    {
       "number": 1,
       "slug": "001-agents-doing-real-work",
       "title": "A team of agents, written up from the inside, and an open framework built on the same day",
@@ -1718,12 +1793,28 @@
         "an-agent-desktop-by-the-minute",
         "if-somebody-built-a-company-on-code-review"
       ],
-      "linkedin": null,
+      "linkedin": "https://www.linkedin.com/pulse/team-agents-written-up-from-inside-open-framework-built-dinis-cruz-sxf4e",
       "url": "https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html",
       "banner": "https://sgit.ai/articles/banners/001-agents-doing-real-work.jpg"
     }
   ],
   "collections": [
+    {
+      "id": "how-agents-decide",
+      "title": "How agents decide, and when they stop",
+      "dek": "What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.",
+      "curator": "historian",
+      "updated": "2026-10-08",
+      "articles": [
+        "agency-is-not-a-yes",
+        "knowing-when-to-stop",
+        "every-mistake-added-a-rule",
+        "hope-or-enforcement",
+        "who-are-you-protecting-against",
+        "where-is-the-why"
+      ],
+      "url": "https://sgit.ai/articles/collections/how-agents-decide.html"
+    },
     {
       "id": "wardley-maps",
       "title": "Thinking with a Wardley map",
@@ -1739,6 +1830,22 @@
         "the-deck-i-could-not-download"
       ],
       "url": "https://sgit.ai/articles/collections/wardley-maps.html"
+    },
+    {
+      "id": "local-news-kept-as-evidence",
+      "title": "Local news, kept as evidence",
+      "dek": "A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph.",
+      "curator": "historian",
+      "updated": "2026-10-08",
+      "articles": [
+        "story-vault-meets-reader-skills",
+        "the-bridge-followed-to-the-end",
+        "the-waiting-room-knew-first",
+        "liquid-content-needs-water",
+        "future-of-news-story-vault-not-paywall",
+        "how-news-got-here"
+      ],
+      "url": "https://sgit.ai/articles/collections/local-news-kept-as-evidence.html"
     },
     {
       "id": "what-the-human-brings",
@@ -1759,7 +1866,7 @@
       "title": "Behaviour policy in practice",
       "dek": "RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.",
       "curator": "historian",
-      "updated": "2026-10-07",
+      "updated": "2026-10-08",
       "articles": [
         "six-agents-one-inbox",
         "connector-twin-before-you-deploy-an-agent",
@@ -1767,7 +1874,11 @@
         "the-agent-team-as-it-runs",
         "why-my-agents-do-not-run-on-my-laptop",
         "a-personal-agent-that-keeps-your-secrets",
-        "the-mandate-stack"
+        "the-mandate-stack",
+        "the-behaviour-policy-is-the-business-logic",
+        "hope-or-enforcement",
+        "ai-baseline-control-framework",
+        "an-agent-desktop-by-the-minute"
       ],
       "url": "https://sgit.ai/articles/collections/behaviour-policy-in-practice.html"
     }

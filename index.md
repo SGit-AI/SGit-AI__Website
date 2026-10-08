@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -27,18 +27,18 @@ SGit Newsroom
 
 The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-nine so far; the newsroom picks where to start.
 
-[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](articles/ai-baseline-control-framework.md)
+[Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-08[The waiting room knew first](articles/the-waiting-room-knew-first.md)
-2. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
-3. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
-4. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
-5. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
-[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](articles/desk/the-week-to-7-october.md)
+1. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
+2. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
+3. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](articles/who-are-you-protecting-against.md)
+4. 2026-10-07[Liquid content needs water](articles/liquid-content-needs-water.md)
+5. 2026-10-07[The bridge, followed to the end](articles/the-bridge-followed-to-the-end.md)
+[Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
-[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
+[A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
 
 [The front page →](articles/index.md) · [Collections →](articles/collections/index.md) · [The newsletter →](articles/newsletter/index.md)
 
@@ -62,7 +62,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-272site releases, each verified live before it was called done
+273site releases, each verified live before it was called done
 
 48vaults published with a deliberately public read key
 

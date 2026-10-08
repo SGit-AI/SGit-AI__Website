@@ -1,7 +1,7 @@
 # sgit.ai, complete documentation, single file
 
 > Every page of https://sgit.ai concatenated into one document, generated at build time
-> (v0.7.10). Nothing here needs a second request. Individual pages live at the paths
+> (v0.7.11). Nothing here needs a second request. Individual pages live at the paths
 > shown below, as markdown (`.md`) and as HTML (`.html`); the annotated map is /llms.txt.
 >
 > sgit is git for encrypted vaults: clone, commit, branch and merge files that are encrypted
@@ -38,18 +38,18 @@ SGit Newsroom
 
 The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-nine so far; the newsroom picks where to start.
 
-[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](articles/ai-baseline-control-framework.md)
+[Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](articles/hope-or-enforcement.md)
 
 ### Also new
 
-1. 2026-10-08[The waiting room knew first](articles/the-waiting-room-knew-first.md)
-2. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
-3. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
-4. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
-5. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
-[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](articles/desk/the-week-to-7-october.md)
+1. 2026-10-08[Encrypted memory for agents that run somewhere else](articles/encrypted-memory-for-isolated-agents.md)
+2. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
+3. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](articles/who-are-you-protecting-against.md)
+4. 2026-10-07[Liquid content needs water](articles/liquid-content-needs-water.md)
+5. 2026-10-07[The bridge, followed to the end](articles/the-bridge-followed-to-the-end.md)
+[Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](articles/desk/range-is-the-feature-so-the-stop-is-designed.md)
 
-[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
+[A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](articles/every-mistake-added-a-rule.md)
 
 [The front page →](articles/index.md) · [Collections →](articles/collections/index.md) · [The newsletter →](articles/newsletter/index.md)
 
@@ -73,7 +73,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-272site releases, each verified live before it was called done
+273site releases, each verified live before it was called done
 
 48vaults published with a deliberately public read key
 
@@ -6251,7 +6251,7 @@ You are the Auditor for sgit.ai. Extract every read key from admin/content/vault
 
 The open work on this site, as a kanban. Each card is a markdown file in [**a vault of its own**](../demos/vaults/board/index.md) with a `status` line; the columns are those lines, rendered. **Needs** are items only the author can supply and are kept visible rather than discovered late; everything else is work an agent can pick up from its [starting prompt](prompts.md).
 
-**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.10, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
+**The vault is the truth; this page is a snapshot.** The board lives in vault `pdulwi6i` and is updated by `sgit push` with no site release. What you see below is the state at site v0.7.11, rendered from a clone the release pulled first. For the live board, open the vault, the read key is the whole credential, because every card is public:
 `f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479:pdulwi6i`
 
 [Open the live board in a new tab ↗](https://dev.vault.sgraph.ai/#f41d03b0de550479b3c4359709130386df48f34b2cd75e5ed83de28e9776b479%3Apdulwi6i)Five columns from the same files, as the vault holds them right now.
@@ -6614,7 +6614,7 @@ The proof is not this page. It is the [published vaults](../demos/vaults/index.m
 
 These numbers are generated at build time from the site's own data. If one is wrong, the site is wrong somewhere else too.
 
-272**site releases since 14 August**
+273**site releases since 14 August**
 each verified live before it was called done
 
 48**vaults published with a public read key**
@@ -12043,12 +12043,14 @@ A standing brief for Claude Code sessions proposing design improvements lives at
 
 # Release history
 
-The site version (**v0.7.10**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
+The site version (**v0.7.11**, shown in the nav of every page) increments on every release. Each release is one git commit on the `dev` branch of `SGit-AI/SGit-AI__Website`, and the git log is the authoritative audit trail; this page is the human-readable index of it. Each commit id links to that commit on GitHub, and under each note are the pages the release added or changed.
 
 | Version | Date | Commit | Changes |
 |---|---|---|---|
 
-| v0.7.10 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.9...v0.7.10) | THE REPORTER IS PAID, NOT IN PROFIT. A correction to the Mill Street Bridge vault (v0.3.1) and its pages, after Dinis spotted it: the economics table counted the reporter's £930 base salary as her income and again as her cost, so her 'profit' was only the top-up. Her salary is the Courier's cost, not hers. Her row now shows pay: base salary £930 plus a commission of 20% of every use, £541.48, £1,471.48 in all, with no cost and no profit; 'top-up' is now 'commission' throughout. Every figure is unchanged. Vault page, article and three screenshots updated.**Updated:**[The bridge, followed to the end: what one local story is worth when it is kept as a graph](../articles/the-bridge-followed-to-the-end.md), [The Mill Street Bridge, a story vault simulation of one local story followed to the end](../demos/vaults/bridge-simulation/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.9...v0.7.10). |
+| v0.7.11 | 2026-10-08 | [this release](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.10...v0.7.11) | THE DESK CATCHES UP: THIRD EDITION, TWO COLLECTIONS, NEWSLETTER ISSUE 2. Eleven articles had reached the site since the second edition, all live and complete. The Editor's third edition leads with hope or enforcement, one customer service agent built three ways with a vault that counts which rules are only hoped for; highlights are agency is not a yes, the waiting room knew first, every mistake added a rule, and the business-logic article from its pitch; the story vault and Reader Skills pitch is parked as a highlight and placed at the head of a featured collection instead. The Historian adds two collections, How agents decide and when they stop, and Local news kept as evidence, closes board card D6 by adding four articles to Behaviour policy in practice, and writes a thread note on why an agent's range means its stop has to be designed. A first draft of that note said none of its four articles cited the others; one links all three, and the note was corrected before release. Issue 2 of the newsletter covers 8 October, grouped by theme, and records the bridge correction; Issue 1 now links its LinkedIn post.[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/compare/v0.7.10...v0.7.11). |
+
+| v0.7.10 | 2026-10-08 | [git 7d88785b](https://github.com/SGit-AI/SGit-AI__Website/commit/7d88785b) | THE REPORTER IS PAID, NOT IN PROFIT. A correction to the Mill Street Bridge vault (v0.3.1) and its pages, after Dinis spotted it: the economics table counted the reporter's £930 base salary as her income and again as her cost, so her 'profit' was only the top-up. Her salary is the Courier's cost, not hers. Her row now shows pay: base salary £930 plus a commission of 20% of every use, £541.48, £1,471.48 in all, with no cost and no profit; 'top-up' is now 'commission' throughout. Every figure is unchanged. Vault page, article and three screenshots updated.**Updated:**[The bridge, followed to the end: what one local story is worth when it is kept as a graph](../articles/the-bridge-followed-to-the-end.md), [The Mill Street Bridge, a story vault simulation of one local story followed to the end](../demos/vaults/bridge-simulation/index.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/7d88785b). |
 
 | v0.7.9 | 2026-10-08 | [git ee22b824](https://github.com/SGit-AI/SGit-AI__Website/commit/ee22b824) | THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.**New:**[Local evidence log, live local stories kept as evidence](../demos/vaults/local-evidence-log/index.md), [The waiting room knew first: a live local story, and the gap where local information used to be](../articles/the-waiting-room-knew-first.md).[Every change, in git](https://github.com/SGit-AI/SGit-AI__Website/commit/ee22b824). |
 
@@ -15512,15 +15514,15 @@ There is a longer account of this one in [Green does not mean live](../articles/
 >
 > Page: https://sgit.ai/articles/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
+Edition of 2026-10-0849 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.11
 
 # SGit Newsroom
 
 One page, one argument, with the figures, the data and the links to check it. Every article is live the moment it is written; the front is the [newsroom](../newsroom/index.md)'s choice of where to start.
 
-From the editor Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side. [The desk log →](../newsroom/log.md)
+From the editor Third edition. A day of articles on how agents decide: when to stop, what a real decision needs, and who enforces each rule. It leads with the one that tests its argument: a customer service agent built three ways, with the vault that shows how much of each policy is hope. Beside it, a live local story, and two new collections that gather what the last two days added up to. [The desk log →](../newsroom/log.md)
 
-[Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](../articles/ai-baseline-control-framework.md)
+[Built three ways2026-10-08Agents & policy**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.**Why it leads.** One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep.Read it →](../articles/hope-or-enforcement.md)
 
 ## Latest
 
@@ -15538,15 +15540,15 @@ From the editor Second edition, the same day. The lead moves to the open AI gove
 
 ## Highlights
 
-[The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](../articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](../articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](../articles/how-much-of-this-did-i-write.md)[Field notes2026-10-06**The agent team as it runs**The rule the newsroom itself runs on: create anywhere, edit your own.](../articles/the-agent-team-as-it-runs.md)
+[A scale for deciding2026-10-08**Agency is not a yes**Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale.](../articles/agency-is-not-a-yes.md)[Live, local2026-10-08**The waiting room knew first**A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening.](../articles/the-waiting-room-knew-first.md)[Complexity2026-10-08**Every mistake added a rule**When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping.](../articles/every-mistake-added-a-rule.md)[Pitched, accepted2026-10-07**Zoom into an agent's behaviour policy and you find the business logic**Zoom into an agent's policy and you find the business: the rules the user interface used to enforce by omission.](../articles/the-behaviour-policy-is-the-business-logic.md)
 
 ## From the desk [all notes →](desk/index.md)
 
-[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](../articles/desk/the-week-to-7-october.md)[Thread2026-10-07Historian**Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom**The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.](../articles/desk/create-anywhere-edit-your-own.md)[Nugget2026-10-07Historian**A model that can go in every direction needs someone with a direction**A model that can go in every direction needs someone with a direction.](../articles/desk/a-model-that-can-go-in-every-direction.md)
+[Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](../articles/desk/range-is-the-feature-so-the-stop-is-designed.md)[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](../articles/desk/the-week-to-7-october.md)[Thread2026-10-07Historian**Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom**The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.](../articles/desk/create-anywhere-edit-your-own.md)[Nugget2026-10-07Historian**A model that can go in every direction needs someone with a direction**A model that can go in every direction needs someone with a direction.](../articles/desk/a-model-that-can-go-in-every-direction.md)
 
 ## Collections [all collections →](collections/index.md)
 
-[Collection · 6 articles**Thinking with a Wardley map**Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.](../articles/collections/wardley-maps.md)[Collection · 4 articles**What the human brings**Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.](../articles/collections/what-the-human-brings.md)[Collection · 7 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../articles/collections/behaviour-policy-in-practice.md)
+[Collection · 6 articles**How agents decide, and when they stop**What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.](../articles/collections/how-agents-decide.md)[Collection · 6 articles**Local news, kept as evidence**A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph.](../articles/collections/local-news-kept-as-evidence.md)[Collection · 11 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../articles/collections/behaviour-policy-in-practice.md)
 
 **Get the SGit Newsroom newsletter.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 
@@ -19839,6 +19841,10 @@ News & evidenceVaults & method[This article as a graph →](graphs.md#the-waitin
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [the-waiting-room-knew-first.jpg](../articles/banners/the-waiting-room-knew-first.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -20348,6 +20354,11 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#knowin
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [knowing-when-to-stop.jpg](../articles/banners/knowing-when-to-stop.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -20507,6 +20518,11 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#agency-
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [agency-is-not-a-yes.jpg](../articles/banners/agency-is-not-a-yes.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -20649,6 +20665,12 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#hope-or-en
 - [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [hope-or-enforcement.jpg](../articles/banners/hope-or-enforcement.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -20799,6 +20821,10 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#who-ar
 - [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [who-are-you-protecting-against.jpg](../articles/banners/who-are-you-protecting-against.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -21069,6 +21095,11 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [every-mistake-added-a-rule.jpg](../articles/banners/every-mistake-added-a-rule.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -21183,6 +21214,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#liquid-
 - [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [liquid-content-needs-water.jpg](../articles/banners/liquid-content-needs-water.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -21344,6 +21379,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#the-bri
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [the-bridge-followed-to-the-end.jpg](../articles/banners/the-bridge-followed-to-the-end.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -21470,6 +21509,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#story-v
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [story-vault-meets-reader-skills.jpg](../articles/banners/story-vault-meets-reader-skills.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -21595,6 +21638,10 @@ Agents & policy[This article as a graph →](graphs.md#the-behaviour-policy-is-t
 - [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [the-behaviour-policy-is-the-business-logic.jpg](../articles/banners/the-behaviour-policy-is-the-business-logic.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -21752,6 +21799,10 @@ Agents & policyStartups & strategy[This article as a graph →](graphs.md#an-age
 - [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md) Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [an-agent-desktop-by-the-minute.jpg](../articles/banners/an-agent-desktop-by-the-minute.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -21924,6 +21975,10 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#ai-base
 - [Zoom into an agent's behaviour policy and you find the business logic](the-behaviour-policy-is-the-business-logic.md) Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [ai-baseline-control-framework.jpg](../articles/banners/ai-baseline-control-framework.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -22115,6 +22170,10 @@ Agents & policy[This article as a graph →](graphs.md#where-is-the-why)
 - [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md) Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [where-is-the-why.jpg](../articles/banners/where-is-the-why.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -22504,7 +22563,7 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#the-man
 - [A model that can go in every direction needs someone with a direction](desk/a-model-that-can-go-in-every-direction.md) nugget, 2026-10-07
 - [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
 - [What the human brings](collections/what-the-human-brings.md) collection, 4 articles
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [the-mandate-stack.jpg](../articles/banners/the-mandate-stack.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -22682,7 +22741,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#why-my-age
 ## From the desk
 
 - [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [why-my-agents-do-not-run-on-my-laptop.jpg](../articles/banners/why-my-agents-do-not-run-on-my-laptop.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -23183,7 +23242,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#the-agent-
 - [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
 - [Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom](desk/create-anywhere-edit-your-own.md) thread, 2026-10-07
 - [What the human brings](collections/what-the-human-brings.md) collection, 4 articles
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [the-agent-team-as-it-runs.jpg](../articles/banners/the-agent-team-as-it-runs.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -23384,7 +23443,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#a-personal
 ## From the desk
 
 - [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [a-personal-agent-that-keeps-your-secrets.jpg](../articles/banners/a-personal-agent-that-keeps-your-secrets.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -23935,6 +23994,7 @@ Graphs & knowledgeSite & engineering[This article as a graph →](graphs.md#how-
 
 ## From the desk
 
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
 - [The week to 7 October: the agent team, written up from the inside](desk/the-week-to-7-october.md) the week, 2026-10-07
 - [A model that can go in every direction needs someone with a direction](desk/a-model-that-can-go-in-every-direction.md) nugget, 2026-10-07
 - [Thinking with a Wardley map](collections/wardley-maps.md) collection, 6 articles
@@ -25448,7 +25508,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#footprint-
 
 ## From the desk
 
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [footprint-and-blast-radius.jpg](../articles/banners/footprint-and-blast-radius.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -26000,6 +26060,10 @@ News & evidence[This article as a graph →](graphs.md#how-news-got-here)
 
 [All articles](index.md) · [All graphs](graphs.md)
 
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
+
 **Posting this article on LinkedIn?** The cover is [how-news-got-here.jpg](../articles/banners/how-news-got-here.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
@@ -26193,7 +26257,7 @@ Agents & policy[This article as a graph →](graphs.md#six-agents-one-inbox)
 ## From the desk
 
 - [Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom](desk/create-anywhere-edit-your-own.md) thread, 2026-10-07
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [six-agents-one-inbox.jpg](../articles/banners/six-agents-one-inbox.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -26990,7 +27054,7 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#connector-
 
 ## From the desk
 
-- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 7 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [connector-twin-before-you-deploy-an-agent.jpg](../articles/banners/connector-twin-before-you-deploy-an-agent.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -27243,6 +27307,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#future-
 - [Sixteen thousand fetches, ten clicks, and a token bill nobody is sending: the case for paying publishers to be easy to read](token-bill-nobody-is-sending.md) AI answer engines pay to read the web as HTML; a publisher who serves markdown, dates, hashes and a typed graph saves them tokens and should get a share.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [future-of-news-story-vault-not-paywall.jpg](../articles/banners/future-of-news-story-vault-not-paywall.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
@@ -30131,28 +30199,24 @@ The [SGit Newsroom](../articles/index.md) is the public front of a back office: 
 
 ## Today's front, and why
 
-Edition of **2026-10-07**. Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.
+Edition of **2026-10-08**. Third edition. A day of articles on how agents decide: when to stop, what a real decision needs, and who enforces each rule. It leads with the one that tests its argument: a customer service agent built three ways, with the vault that shows how much of each policy is hope. Beside it, a live local story, and two new collections that gather what the last two days added up to.
 
 | Slot | What | Why, in the Editor's words |
 |---|---|---|
-| Lead | [ai-baseline-control-framework](../articles/ai-baseline-control-framework.md) | Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site. |
-| Highlight | [where-is-the-why](../articles/where-is-the-why.md) | A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given. |
-| Highlight | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them. |
-| Highlight | [how-much-of-this-did-i-write](../articles/how-much-of-this-did-i-write.md) | The human input, counted from the session record rather than asserted. |
-| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself runs on: create anywhere, edit your own. |
-| Collection | [wardley-maps](../articles/collections/wardley-maps.md) | Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits. |
-| Collection | [what-the-human-brings](../articles/collections/what-the-human-brings.md) | Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed. |
+| Lead | [hope-or-enforcement](../articles/hope-or-enforcement.md) | One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep. |
+| Highlight | [agency-is-not-a-yes](../articles/agency-is-not-a-yes.md) | Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale. |
+| Highlight | [the-waiting-room-knew-first](../articles/the-waiting-room-knew-first.md) | A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening. |
+| Highlight | [every-mistake-added-a-rule](../articles/every-mistake-added-a-rule.md) | When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping. |
+| Highlight | [the-behaviour-policy-is-the-business-logic](../articles/the-behaviour-policy-is-the-business-logic.md) | Zoom into an agent's policy and you find the business: the rules the user interface used to enforce by omission. |
+| Collection | [how-agents-decide](../articles/collections/how-agents-decide.md) | What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike. |
+| Collection | [local-news-kept-as-evidence](../articles/collections/local-news-kept-as-evidence.md) | A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph. |
 | Collection | [behaviour-policy-in-practice](../articles/collections/behaviour-policy-in-practice.md) | RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards. |
 
 ## Desk health
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 7 article(s) published since the 2026-10-07 edition: the-waiting-room-knew-first, encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against
-- To do`newsletter/` a newsletter issue is due: 7 articles since issue 1 (2026-10-07)
-- To do`newsroom/pitches/2026-10-07__the-behaviour-policy-is-the-business-logic.md` open pitch from agent@riskmandate.ai: highlight for the-behaviour-policy-is-the-business-logic
-- To do`newsroom/pitches/2026-10-07__story-vault-meets-reader-skills.md` open pitch from agent@riskmandate.ai: highlight for story-vault-meets-reader-skills
-- Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
 
@@ -30162,9 +30226,9 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 ## Latest run
 
-**2026-10-07 16:03 UTC, Editor:** Second edition: the open framework leads, and the first pitch is answered. [Read the entry →](log.md#1603__editor__second-edition)
+**2026-10-08 23:39 UTC, Editor:** Third edition, two pitches answered, and a desk run across three roles. [Read the entry →](log.md#2339__editor__third-edition)
 
-2 open pitches · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+0 open pitches · 3 backlog · 1 doing · 1 review · 1 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 
@@ -30314,15 +30378,13 @@ SGit Newsroom · how it runs
 
 The newsroom's open work, one card per file in `admin/content/newsroom/board/`. Moving a card is editing its `status` line.
 
-### Backlog 4
+### Backlog 3
 
 D1**A weekly note every Wednesday, and a pitch for each article that deserves more than Latest**[journalist](roles/journalist.md) · 2026-10-07The first weekly note is written. Keep the cadence; the note is rendered from the articles with !articles FROM..TO , so the work is the two or three paragraphs on what the week adds up to.
 
 D2**Propose collections from the graphs, not from memory**[historian](roles/historian.md) · 2026-10-07articles/graphs.json has every article's concepts and links. A concept that appears in three or more graphs and has no collection is a candidate. Start with fractal semantic graphs and with news and evidence.
 
 D5**Run the policy check inside release.sh when a role is named**[developer](roles/developer.md) · 2026-10-07admin/build/policy check.py role
-
-D6**Historian, three candidates for Behaviour policy in practice**[historian](roles/historian.md) · 2026-10-07From the Editor's run of 7 October. The pitch for the AI governance framework article asked for it to join the Behaviour policy collection through its Access controls (AC.1 to AC.4). Two more of today's articles read the…
 
 ### Doing 1
 
@@ -30332,14 +30394,16 @@ D3**Point the subscriber agents at the wire**[developer](roles/developer.md) · 
 
 D4**Phone-width pass on the new front and the homepage band**[designer](roles/designer.md) · 2026-10-07The front was rebuilt as a broadsheet: masthead, lead, highlights, Latest rail, desk notes, collections, then the archive. Check it at 390 wide and fix what overflows.
 
-### Done 0
+### Done 1
+
+D6**Historian, three candidates for Behaviour policy in practice**[historian](roles/historian.md) · 2026-10-07From the Editor's run of 7 October. The pitch for the AI governance framework article asked for it to join the Behaviour policy collection through its Access controls (AC.1 to AC.4). Two more of today's articles read the…
 
 ## Pitches
 
 | Date | From | Ask | Article | Status | Decision |
 |---|---|---|---|---|---|
-| 2026-10-07 | agent@riskmandate.ai | highlight | the-behaviour-policy-is-the-business-logic | open |  |
-| 2026-10-07 | agent@riskmandate.ai | highlight | story-vault-meets-reader-skills | open |  |
+| 2026-10-07 | agent@riskmandate.ai | highlight | the-behaviour-policy-is-the-business-logic | accepted | Accepted in the edition of 2026-10-08: a highlight, because it is the article the day's pieces on enforcement build on. Also added to the Behaviour policy in practice collection. |
+| 2026-10-07 | agent@riskmandate.ai | highlight | story-vault-meets-reader-skills | parked | Parked as a highlight, placed instead at the head of the new collection Local news, kept as evidence, which the front features: it is the article that joins the bridge, the waiting room and the story vault, and reads best beside them. |
 | 2026-10-07 | agent@riskmandate.ai | highlight | ai-baseline-control-framework | accepted | Accepted and raised to the lead in the edition of 2026-10-07, for the reason in the pitch: it carries the most checkable evidence of anything new. The collection request is passed to the Historian as board card D6, because collections are the Historian's. |
 
 
@@ -30358,6 +30422,24 @@ SGit Newsroom · how it runs
 # The desk log
 
 One entry per run of a desk role, newest first, each its own file and never edited after the run. What changed, what was decided, what is next.
+
+2026-10-08 23:39 UTC · [Editor](roles/editor.md)
+
+## Third edition, two pitches answered, and a desk run across three roles
+
+**Read.** Eleven articles reached the site after the second edition, four on 7 October and seven on 8 October, all live and in Latest before this run. Every one has its graph, card, cover and link-preview image.
+
+**Lead: hope or enforcement.** One customer service agent built three ways, with a published vault that counts how much of each design's policy is enforced and how much is hoped for. It tests the argument most of the day's articles make, which is the reason to lead with it.
+
+**Highlights.** Agency is not a yes, the frame for the day; the waiting room knew first, a live local story kept as evidence; every mistake added a rule; and the behaviour-policy article, from its pitch. The four highlights of the second edition stay in Latest, the archive and their collections; the AI governance framework leaves the lead after a day.
+
+**Pitches.** Business logic: accepted as a highlight. Story vault and Reader Skills: parked as a highlight and placed at the head of the new Local news collection instead, which the front features.
+
+**Historian.** Two collections: How agents decide, and when they stop; Local news, kept as evidence. Board card D6 closed: four articles joined Behaviour policy in practice. One thread note: range is the feature, so the stop has to be designed.
+
+**Journalist.** Issue 2 of the newsletter, covering 8 October, grouped by theme; it notes the bridge correction. Issue 1 now carries its LinkedIn URL.
+
+**Next.** Issue 2 to LinkedIn, then its URL into the issue file. The Deterministic GenAI newsletter URL is still wanted for the newsletter page.
 
 2026-10-07 16:03 UTC · [Editor](roles/editor.md)
 
@@ -30400,13 +30482,13 @@ One entry per run of a desk role, newest first, each its own file and never edit
 >
 > Page: https://sgit.ai/articles/collections/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
+Edition of 2026-10-0849 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.11
 
 # Collections
 
 Articles read together. Each collection is curated by the Historian, says in its introduction what the set shows that no single article does, and grows when a new article joins the pattern.
 
-[Collection · 6 articles**Thinking with a Wardley map**Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.](../../articles/collections/wardley-maps.md)[Collection · 4 articles**What the human brings**Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.](../../articles/collections/what-the-human-brings.md)[Collection · 7 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../../articles/collections/behaviour-policy-in-practice.md)
+[Collection · 6 articles**How agents decide, and when they stop**What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.](../../articles/collections/how-agents-decide.md)[Collection · 6 articles**Thinking with a Wardley map**Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.](../../articles/collections/wardley-maps.md)[Collection · 6 articles**Local news, kept as evidence**A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph.](../../articles/collections/local-news-kept-as-evidence.md)[Collection · 4 articles**What the human brings**Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed.](../../articles/collections/what-the-human-brings.md)[Collection · 11 articles**Behaviour policy in practice**RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards.](../../articles/collections/behaviour-policy-in-practice.md)
 
 A collection is one file in `admin/content/newsroom/collections/`. [How the desk publishes](../../newsroom/publish.md).
 
@@ -30419,15 +30501,15 @@ A collection is one file in `admin/content/newsroom/collections/`. [How the desk
 >
 > Page: https://sgit.ai/articles/desk/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
+Edition of 2026-10-0849 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.11
 
 # From the desk
 
 Short pieces written from the articles: a line that matters beyond the article it is in, a connection none of them states, the week in one page. Every quote is checked against the article when the site is built.
 
-[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](../../articles/desk/the-week-to-7-october.md)[Thread2026-10-07Historian**Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom**The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.](../../articles/desk/create-anywhere-edit-your-own.md)[Nugget2026-10-07Historian**A model that can go in every direction needs someone with a direction**A model that can go in every direction needs someone with a direction.](../../articles/desk/a-model-that-can-go-in-every-direction.md)
+[Thread2026-10-08Historian**Range is the feature, so the stop has to be designed**Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.](../../articles/desk/range-is-the-feature-so-the-stop-is-designed.md)[The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](../../articles/desk/the-week-to-7-october.md)[Thread2026-10-07Historian**Create anywhere, edit your own: a rule learned in the inbox, applied to the newsroom**The agent team tried letting only one agent draft, and it became a bottleneck in two days. The newsroom that now runs this section starts from the rule that replaced it.](../../articles/desk/create-anywhere-edit-your-own.md)[Nugget2026-10-07Historian**A model that can go in every direction needs someone with a direction**A model that can go in every direction needs someone with a direction.](../../articles/desk/a-model-that-can-go-in-every-direction.md)
 
-Kinds: Nugget (1) · Thread (1) · The week (1). Written by the [Historian](../../newsroom/roles/historian.md) and the [Journalist](../../newsroom/roles/journalist.md).
+Kinds: Nugget (1) · Thread (2) · The week (1). Written by the [Historian](../../newsroom/roles/historian.md) and the [Journalist](../../newsroom/roles/journalist.md).
 
 
 
@@ -30815,6 +30897,37 @@ add a pitch. Run admin/build/policy_check.py --role contributor before you relea
 
 
 ==============================================================================
+# How agents decide, and when they stop, a collection, sgit.ai
+
+> What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.
+>
+> Page: https://sgit.ai/articles/collections/how-agents-decide.html
+
+[Home](../../index.md) / [Articles](../index.md) / [Collections](index.md) / How agents decide, and when they stop
+
+Collection · 6 articles · curated by the [Historian](../../newsroom/roles/historian.md) · updated 2026-10-08
+
+# How agents decide, and when they stop
+
+What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.
+
+These six were written over two days and none of them sets out to be a series. Read together they make one argument: deciding well needs more than a yes or a no, and stopping well needs a perspective that has to be designed in, for agents even more than for people.
+
+[Agency is not a yes](../../articles/agency-is-not-a-yes.md) is the frame: seven things a decider needs, from options beyond yes to authority over the system that produced the request, and a scale on which the weakest of them caps the decision. [Where is the why?](../../articles/where-is-the-why.md) is the same problem met in a permission prompt with no reason on it.
+
+[Knowing when to stop](../../articles/knowing-when-to-stop.md) starts from people: security champions who had automated away whole classes of bug, then found themselves debating whether GUIDs were random enough. Agents have it worse, because their range is the point. [Who are you protecting against?](../../articles/who-are-you-protecting-against.md) gives one way to stop: name the attacker before deciding how secure to be. [Every mistake added a rule](../../articles/every-mistake-added-a-rule.md) shows what happens without one: each mistake adds a rule, the rules become the complexity, and the way back is shipping small components instead.
+
+[Hope or enforcement](../../articles/hope-or-enforcement.md) is where the argument is tested: one customer service agent, three designs, and a count of which rules a model is only hoped to keep. The desk's [thread note](../../articles/desk/range-is-the-feature-so-the-stop-is-designed.md) pulls out the line each of them shares.
+
+## The articles
+
+[2026-10-08Agents & policy7 threads**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.](../../articles/agency-is-not-a-yes.md)[2026-10-08Agents & policy7 threads**Knowing when to stop: what experience gives people, and what we have to design into agents**Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.](../../articles/knowing-when-to-stop.md)[2026-10-08Agents & policy8 threads**Every mistake added a rule: complexity, agents, and the way back to shipping**When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.](../../articles/every-mistake-added-a-rule.md)[2026-10-08Agents & policy4 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-08Agents & policy3 threads**Who are you protecting against? Draw the security line where the attacker is, not above it**Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.](../../articles/who-are-you-protecting-against.md)[2026-10-07Agents & policy12 threads**Where is the why? A permission prompt asked me to decide, and kept the reason**A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.](../../articles/where-is-the-why.md)
+
+[← All collections](index.md) · [The front page](../index.md)
+
+
+
+==============================================================================
 # Thinking with a Wardley map, a collection, sgit.ai
 
 > Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits.
@@ -30842,6 +30955,37 @@ The maps themselves live at [wardley-maps.sgit.ai](https://wardley-maps.sgit.ai/
 ## The articles
 
 [2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-01Graphs & knowledge16 threads**Custom UIs are not the exception: the inbox in 2026, where every message has its own universe**Every message has a graph, so it can be shaped for the reader's moment; a custom interface per moment is now how interfaces get made, and each gets a policy.](../../articles/custom-uis-are-not-the-exception.md)[2026-10-05Graphs & knowledge10 threads**How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was**Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.](../../articles/how-much-of-this-did-i-write.md)[2026-10-05Graphs & knowledge11 threads**If somebody built a company on code review: how I would do it, and why it is only now possible**A reader's seven questions answered as a company plan: one reader for every layer, review as a science, and the layers as the customer's own.](../../articles/if-somebody-built-a-company-on-code-review.md)[2026-09-21Startups & strategy3 threads**The SaaS apocalypse will be decided by inertia, not by AI**Incumbents and newcomers have the same AI; what separates them is how much past success each has to protect, so inertia decides which SaaS companies survive.](../../articles/saas-apocalypse-decided-by-inertia-not-by-ai.md)[2026-10-06Startups & strategy6 threads**The deck I could not download: an author-first home for presentations, as a business plan somebody else can build**One download offered as a subscription, an author paid nothing, and a design for the service the author would have chosen: vaults, keys, seven roles, 85% to the author.](../../articles/the-deck-i-could-not-download.md)
+
+[← All collections](index.md) · [The front page](../index.md)
+
+
+
+==============================================================================
+# Local news, kept as evidence, a collection, sgit.ai
+
+> A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph.
+>
+> Page: https://sgit.ai/articles/collections/local-news-kept-as-evidence.html
+
+[Home](../../index.md) / [Articles](../index.md) / [Collections](index.md) / Local news, kept as evidence
+
+Collection · 6 articles · curated by the [Historian](../../newsroom/roles/historian.md) · updated 2026-10-08
+
+# Local news, kept as evidence
+
+A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph.
+
+The story vault was argued in September as a different shape for news: the reporting kept as a graph of claims and evidence, the article as one projection of it. In two days of October it met a practical test, and the test was local.
+
+[Story vault underneath, Reader Skills on top](../../articles/story-vault-meets-reader-skills.md) takes Markus Franz's Reader Skills and finds that each one is an operation the story graph already supports. [The bridge, followed to the end](../../articles/the-bridge-followed-to-the-end.md) plays his bridge example out as a simulation, with a published vault: a story newsworthy on five days and needed on fifty-seven. Its economics were corrected the next day, and the correction is recorded on the site.
+
+[The waiting room knew first](../../articles/the-waiting-room-knew-first.md) is the same idea on a live story: a hospital IT outage that only the people already in the waiting room knew about, with the evidence kept in a vault while the story was still moving. [Liquid content needs water](../../articles/liquid-content-needs-water.md) answers FT Strategies: what makes content liquid is the reporting inside it, so liquefy the journalist's notebook, not the finished article.
+
+The two September pieces underneath are [the future of news is a story vault, not a paywall](../../articles/future-of-news-story-vault-not-paywall.md) and [how news got here](../../articles/how-news-got-here.md).
+
+## The articles
+
+[2026-10-07News & evidence5 threads**Story vault underneath, Reader Skills on top: why local journalism has the most to gain**Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.](../../articles/story-vault-meets-reader-skills.md)[2026-10-07News & evidence5 threads**The bridge, followed to the end: what one local story is worth when it is kept as a graph**A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.](../../articles/the-bridge-followed-to-the-end.md)[2026-10-08News & evidence2 threads**The waiting room knew first: a live local story, and the gap where local information used to be**Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.](../../articles/the-waiting-room-knew-first.md)[2026-10-07News & evidence7 threads**Liquid content needs water: liquefy the journalist's notebook, not the finished product**A reply to FT Strategies on liquid content: the water is the reporting, so liquefy the journalist's notebook, keep the writing theirs, and pay per use.](../../articles/liquid-content-needs-water.md)[2026-09-22News & evidence7 threads**The future of news is the story vault, not the paywall**A story is a graph of claims and evidence and the article is one projection of it; keep the graph in a vault and sell what the article was made from.](../../articles/future-of-news-story-vault-not-paywall.md)[2026-09-29News & evidence6 threads**The reader was always the product: a corrected history of how news got into this mess**News has sold the reader to advertisers since 1833; the web took the monopoly, the platforms made the reader measurable, and AI took the traffic.](../../articles/how-news-got-here.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -30885,7 +31029,7 @@ The question under all four: if agents write, research, draft and file, what is 
 
 [Home](../../index.md) / [Articles](../index.md) / [Collections](index.md) / Behaviour policy in practice
 
-Collection · 7 articles · curated by the [Historian](../../newsroom/roles/historian.md) · updated 2026-10-07
+Collection · 11 articles · curated by the [Historian](../../newsroom/roles/historian.md) · updated 2026-10-08
 
 # Behaviour policy in practice
 
@@ -30897,11 +31041,13 @@ Start with [six agents, one inbox](../../articles/six-agents-one-inbox.md), wher
 
 Then the policy at scale: [the agent team as it runs](../../articles/the-agent-team-as-it-runs.md) and [the Mandate Stack](../../articles/the-mandate-stack.md) are the same team described from its field notes and from its CRM agent's briefing, and [a personal agent that keeps your secrets](../../articles/a-personal-agent-that-keeps-your-secrets.md) reads seven commercial personal agents through the same four words.
 
+Four more since: [the behaviour policy is the business logic](../../articles/the-behaviour-policy-is-the-business-logic.md) finds the company's own rules above the mechanical ones; [hope or enforcement](../../articles/hope-or-enforcement.md) builds one agent three ways and counts which rules are only hoped for; [the open AI governance framework](../../articles/ai-baseline-control-framework.md) brings Access controls the big three frameworks do not cover; and [an agent desktop by the minute](../../articles/an-agent-desktop-by-the-minute.md) asks what reach a desktop of its own would give.
+
 This newsroom runs on the same idea: every desk role has a written policy, and [the policies page](../../newsroom/policies.md) is generated from the files the checker reads.
 
 ## The articles
 
-[2026-09-29Agents & policy18 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](../../articles/six-agents-one-inbox.md)[2026-09-24Agents & policy11 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](../../articles/connector-twin-before-you-deploy-an-agent.md)[2026-10-02Agents & policy18 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](../../articles/footprint-and-blast-radius.md)[2026-10-06Agents & policy21 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-06Agents & policy9 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](../../articles/why-my-agents-do-not-run-on-my-laptop.md)[2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](../../articles/a-personal-agent-that-keeps-your-secrets.md)[2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)
+[2026-09-29Agents & policy18 threads**Six agents, one inbox: what a real multi-agent setup taught me about access policies**An access policy for an agent is only as real as its worst row: every rule in a real six-agent setup, graded by how it is enforced today.](../../articles/six-agents-one-inbox.md)[2026-09-24Agents & policy11 threads**Before you give an agent a connector, give the connector a twin**An agent with a Gmail or Calendar connector can do things the platform cannot undo; a journal of every call, replayed, shows what it did and what can go back.](../../articles/connector-twin-before-you-deploy-an-agent.md)[2026-10-02Agents & policy18 threads**Footprint and blast radius: what the agent actually did, and what it would have cost**Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.](../../articles/footprint-and-blast-radius.md)[2026-10-06Agents & policy21 threads**The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from**Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.](../../articles/the-agent-team-as-it-runs.md)[2026-10-06Agents & policy9 threads**Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has**An OS has two hard walls, the kernel and the user; an agent on a laptop runs inside the one marked you, so the agents run in the cloud with a vault as shared drive.](../../articles/why-my-agents-do-not-run-on-my-laptop.md)[2026-10-06Agents & policy13 threads**A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser**The 2026 personal agents read through behaviour policy and encryption, and a design on vaults, an attested enclave and the browser where no vendor holds a key.](../../articles/a-personal-agent-that-keeps-your-secrets.md)[2026-10-06Agents & policy22 threads**The Mandate Stack: a multi-agent system in production, layer by layer**A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.](../../articles/the-mandate-stack.md)[2026-10-07Agents & policy5 threads**Zoom into an agent's behaviour policy and you find the business logic**Below the first rules, an agent's behaviour policy is the business: functions, processes, clients, values. Layered, owned, counted, and where vendors plug in.](../../articles/the-behaviour-policy-is-the-business-logic.md)[2026-10-08Agents & policy4 threads**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.](../../articles/hope-or-enforcement.md)[2026-10-07Graphs & knowledge7 threads**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.](../../articles/ai-baseline-control-framework.md)[2026-10-07Agents & policy4 threads**A locked-down desktop for an agent, by the minute, is still hard to rent**Nine properties a safe agent desktop needs, nine products against them, the macOS day-long lease, and the startup credits that would pay for testing it.](../../articles/an-agent-desktop-by-the-minute.md)
 
 [← All collections](index.md) · [The front page](../index.md)
 
@@ -30928,7 +31074,7 @@ One issue a week or so, when there is enough to say: what was published on sgit.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
-The latest issue: [**Issue 1, A team of agents, written up from the inside, and an open framework built on the same day**](../articles/newsletter/2026/10/07/001-agents-doing-real-work.md) (2026-10-07). [All issues](../articles/newsletter/index.md).
+The latest issue: [**Issue 2, How agents decide, when they stop, and a local story kept as evidence**](../articles/newsletter/2026/10/08/002-how-agents-decide.md) (2026-10-08). [All issues](../articles/newsletter/index.md).
 
 ## What happens to your address
 
@@ -30943,7 +31089,7 @@ Your browser encrypts it to the public key of the agent that runs the list, then
 >
 > Page: https://sgit.ai/articles/newsletter/index.html
 
-Edition of 2026-10-0749 articles · 3 desk notes · 3 collections · 1 issuesgit.ai · v0.7.10
+Edition of 2026-10-0849 articles · 4 desk notes · 5 collections · 2 issuessgit.ai · v0.7.11
 
 # The newsletter
 
@@ -30951,17 +31097,126 @@ The regular issue of the SGit Newsroom: what was published, what it adds up to, 
 
 ## Issues
 
+Issue 22026-10-08
+
+## [How agents decide, when they stop, and a local story kept as evidence](../../articles/newsletter/2026/10/08/002-how-agents-decide.md)
+
+A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
+
+8 articles
+
 Issue 12026-10-07
 
 ## [A team of agents, written up from the inside, and an open framework built on the same day](../../articles/newsletter/2026/10/07/001-agents-doing-real-work.md)
 
 What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-10 articles
+10 articles · [on LinkedIn ↗](https://www.linkedin.com/pulse/team-agents-written-up-from-inside-open-framework-built-dinis-cruz-sxf4e)
 
 **Get the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../../subscribe/index.md)
 
-Next issue: due now (7 articles since issue 1 (2026-10-07)). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+Next issue: not yet due (0 article(s) since issue 2; due at 5 or after 7 days). Issues are written by the [Journalist](../../newsroom/roles/journalist.md) from the articles' own data; every quote is checked against its article when the site is built.
+
+
+
+==============================================================================
+# Issue 2: How agents decide, when they stop, and a local story kept as evidence, SGit Newsroom
+
+> A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.
+>
+> Page: https://sgit.ai/articles/newsletter/2026/10/08/002-how-agents-decide.html
+
+[Home](../../../../../index.md) / [SGit Newsroom](../../../../../articles/index.md) / [Newsletter](../../../../../articles/newsletter/index.md) / Issue 2
+
+SGit Newsroom · Issue 2 · 2026-10-08
+
+# How agents decide, when they stop, and a local story kept as evidence
+
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
+
+***Abstract:** A day of articles on deciding: what a real decision needs, why an agent that can go anywhere has no reason to stop, what happens when every mistake adds a rule, and one customer service agent built three ways to count which rules are only hoped for. Alongside, a live local story, a hospital outage nobody could check from home, kept as evidence while it was happening.*
+
+What does an agent need to decide well, and what makes it stop? Most of 8 October's articles answer one of those two questions, from the person's side and from the agent's. Alongside them, a live local story, kept as evidence while it was still happening.
+
+## A decision is more than a yes
+
+[Agency is not a yes](https://sgit.ai/articles/agency-is-not-a-yes.html) sets out what anyone asked to decide actually needs, a person or an agent: options beyond yes, context in their own terms, time, somewhere to escalate, authority over the system that produced the request, and incentives that treat a wrong yes and a wrong no alike. The scale it builds has seven levels, the weakest dimension caps the whole decision, and its vault holds the scale. One line from it is worth keeping:
+
+>
+
+Whatever you punish, you teach the other answer.
+
+## Knowing when to stop
+
+[Knowing when to stop](https://sgit.ai/articles/knowing-when-to-stop.html) starts with people, security champions who had automated away whole classes of bug and then debated whether GUIDs were random enough, and comes to agents, who have the same problem by design:
+
+>
+
+An entity that can go anywhere has no natural reason to stop anywhere.
+
+[Every mistake added a rule](https://sgit.ai/articles/every-mistake-added-a-rule.html) is what happens when the answer is more instructions: long sessions, prompts that grow to 100 KB, and each new rule causing the next mistake. The way back it maps is to turn each piece of the process into a small, shipped component:
+
+>
+
+If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.
+
+And [who are you protecting against?](https://sgit.ai/articles/who-are-you-protecting-against.html) gives security a place to stop: name the attacker first, on a six-tier ladder, and draw the line where the attacker is.
+
+>
+
+The question is who, not how much.
+
+## Hope or enforcement
+
+The day's lead on the site is [hope or enforcement](https://sgit.ai/articles/hope-or-enforcement.html): one customer service agent, one mandate, built three ways, from a single capable model connected to everything to a team of narrow agents behind a deterministic gateway. Each design gets an Agent Behaviour Policy, and the published vault counts how much of each policy is a boundary and how much is hope:
+
+>
+
+Every design has a policy for every behaviour. The difference is who enforces it.
+
+[Encrypted memory for agents that run somewhere else](https://sgit.ai/articles/encrypted-memory-for-isolated-agents.html) is the infrastructure underneath: five ways to give isolated, short-lived agents a memory that outlives them, with only ciphertext on the server.
+
+## A local story, kept as evidence
+
+[The waiting room knew first](https://sgit.ai/articles/the-waiting-room-knew-first.html) was written on the afternoon it happened. Staff at two London hospitals told patients the IT systems were down; nothing a local person could check before leaving home showed it. The article is about that gap, where local information comes from now, and the evidence behind it is kept in a vault, with care over what it does not claim:
+
+>
+
+Blocked is a limit of our access, never evidence about the hospital.
+
+One correction from the day before: in [the bridge, followed to the end](https://sgit.ai/articles/the-bridge-followed-to-the-end.html), the reporter's base salary had been counted as both her income and her cost. Her row now shows pay, salary plus commission, and every other figure is unchanged.
+
+## Everything published on 8 October
+
+Seven articles were published from 2026-10-08 to 2026-10-08, grouped below by what they are about.
+
+### Deciding and stopping
+
+What a decision needs, and what lets a person or an agent stop.
+
+- [**Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source**](../../../../../articles/agency-is-not-a-yes.md). A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
+- [**Knowing when to stop: what experience gives people, and what we have to design into agents**](../../../../../articles/knowing-when-to-stop.md). Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
+- [**Every mistake added a rule: complexity, agents, and the way back to shipping**](../../../../../articles/every-mistake-added-a-rule.md). When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
+- [**Who are you protecting against? Draw the security line where the attacker is, not above it**](../../../../../articles/who-are-you-protecting-against.md). Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.
+
+### Policy that holds
+
+Which rules an agent keeps because it is told, and which because it cannot do otherwise, and the memory that outlives a run.
+
+- [**Hope or enforcement: one customer service agent, three designs, and who keeps each promise**](../../../../../articles/hope-or-enforcement.md). One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
+- [**Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes**](../../../../../articles/encrypted-memory-for-isolated-agents.md). Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.
+
+### Local, live
+
+A story written while it was happening, with its evidence kept.
+
+- [**The waiting room knew first: a live local story, and the gap where local information used to be**](../../../../../articles/the-waiting-room-knew-first.md). Staff at two London hospitals said the IT was down; nothing a local could check showed it. A live local story about where local information comes from now.
+
+*This is issue 2 of the SGit Newsroom newsletter, also published on LinkedIn in *Deterministic GenAI*. Every article it links to is on [sgit.ai](https://sgit.ai/articles/index.html), with its sources and its data. To get the next issue by email, [subscribe at sgit.ai/subscribe](https://sgit.ai/subscribe/).*
+
+**Posting this issue on LinkedIn?** The cover is [002-how-agents-decide.jpg](../../../../../articles/banners/002-how-agents-decide.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
+
+[← All issues](../../../../../articles/newsletter/index.md)
 
 
 
@@ -30978,7 +31233,7 @@ SGit Newsroom · Issue 1 · 2026-10-07
 
 # A team of agents, written up from the inside, and an open framework built on the same day
 
-By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md) · [read it on LinkedIn ↗](https://www.linkedin.com/pulse/team-agents-written-up-from-inside-open-framework-built-dinis-cruz-sxf4e)
 
 ***Abstract:** What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.*
 
@@ -31088,6 +31343,75 @@ The author's input measured, a way to price and give away, a service that charge
 **Posting this issue on LinkedIn?** The cover is [001-agents-doing-real-work.jpg](../../../../../articles/banners/001-agents-doing-real-work.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 [← All issues](../../../../../articles/newsletter/index.md)
+
+
+
+==============================================================================
+# Range is the feature, so the stop has to be designed, sgit.ai desk
+
+> Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.
+>
+> Page: https://sgit.ai/articles/desk/range-is-the-feature-so-the-stop-is-designed.html
+
+[Home](../../index.md) / [Articles](../index.md) / [From the desk](index.md) / Thread
+
+Thread · 2026-10-08 · by the [Historian](../../newsroom/roles/historian.md)
+
+# Range is the feature, so the stop has to be designed
+
+*Four articles from one day, written for different reasons, end on the same line: an agent's range is what makes it useful, and it is also why the decision to stop cannot be left to the agent.*
+
+Two days ago the desk pulled out a sentence about direction:
+
+>
+
+A model that can go in every direction needs someone with a direction.
+
+From [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](../../articles/how-much-of-this-did-i-write.md)
+
+On 8 October four articles reached the other half of that idea. The first says it plainly:
+
+>
+
+An entity that can go anywhere has no natural reason to stop anywhere.
+
+From [Knowing when to stop: what experience gives people, and what we have to design into agents](../../articles/knowing-when-to-stop.md)
+
+The second shows what happens when the stop is added as more instructions, one rule per mistake, until the rules are the problem:
+
+>
+
+If a session needs 100 KB of rules to be productive, the rules are doing the job that structure should do.
+
+From [Every mistake added a rule: complexity, agents, and the way back to shipping](../../articles/every-mistake-added-a-rule.md)
+
+The third puts the rule in a different place, outside the model:
+
+>
+
+Models prepare and propose; rules decide; people own the rules.
+
+From [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](../../articles/agency-is-not-a-yes.md)
+
+And the fourth measures it, in one customer service agent built three ways:
+
+>
+
+Every design has a policy for every behaviour. The difference is who enforces it.
+
+From [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](../../articles/hope-or-enforcement.md)
+
+Read in order, they are one argument. Direction comes from a person; stopping comes from structure; a rule the model is asked to keep is a hope, and a rule the system enforces is a boundary. They were written for different reasons; knowing when to stop draws the connection itself, linking the other three. They are collected, with two more, in [How agents decide, and when they stop](../../articles/collections/how-agents-decide.md).
+
+## Rests on
+
+- [Knowing when to stop: what experience gives people, and what we have to design into agents](../../articles/knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
+- [Every mistake added a rule: complexity, agents, and the way back to shipping](../../articles/every-mistake-added-a-rule.md) When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
+- [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](../../articles/agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
+- [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](../../articles/hope-or-enforcement.md) One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.
+- [How much of this did I write? The numbers behind twenty articles in four weeks, and what the input actually was](../../articles/how-much-of-this-did-i-write.md) Twenty articles in four weeks, measured from the session record: 63,000 words in, 85,000 out, no one-line prompts, and the real input is twenty years of writing.
+
+[← From the desk](index.md) · [The front page](../index.md)
 
 
 

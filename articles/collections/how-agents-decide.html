@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-root="../../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How agents decide, and when they stop, a collection, sgit.ai</title>
+<meta name="description" content="What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.">
+<link rel="canonical" href="https://sgit.ai/articles/collections/how-agents-decide.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/articles/collections/how-agents-decide.html">
+<meta property="og:title" content="How agents decide, and when they stop, a collection, sgit.ai">
+<meta property="og:description" content="What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="How agents decide, and when they stop, a collection, sgit.ai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="how-agents-decide.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "How agents decide, and when they stop, a collection, sgit.ai", "headline": "How agents decide, and when they stop, a collection, sgit.ai", "description": "What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.", "url": "https://sgit.ai/articles/collections/how-agents-decide.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../../admin/versions.html" title="Site release history">v0.7.11</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl here" href="../../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../articles/index.html">Front page</a>
+ <a class="sl" href="../../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../../articles/index.html#all">Every article</a>
+ <a class="sl here" href="../../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../../subscribe/index.html">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../../investors/index.html">Investors</a>
+ <a class="sl" href="../../startups/index.html">Startups</a>
+ <a class="sl" href="../../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../../about/index.html">About the author</a>
+ <a class="sl" href="../../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../docs/index.html">Documentation</a>
+ <a class="sl" href="../../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl" href="../../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../../api/index.html">HTTP API</a>
+ <a class="sl" href="../../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../../deploy/index.html">Deploy</a>
+ <a class="sl" href="../../skills/index.html">Skills</a>
+ <a class="sl" href="../../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../../demos/index.html">Demos</a>
+ <a class="sl" href="../../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../compare/index.html">Comparisons</a>
+ <a class="sl" href="../../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../team/index.html">How the site is run</a>
+ <a class="sl" href="../../team/index.html#roles">Roles</a>
+ <a class="sl" href="../../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../../team/board.html">The board</a>
+ <a class="sl" href="../../updates/index.html">Updates</a>
+ <a class="sl" href="../../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../../network/index.html">All sites</a>
+ <a class="sl" href="../../network/nhi.html">nhi</a>
+ <a class="sl" href="../../network/pki.html">pki</a>
+ <a class="sl" href="../../network/graphs.html">graphs</a>
+ <a class="sl" href="../../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="../../llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/llms.txt</span><span class="llmschip-m">v0.7.11 &middot; 8 Oct 2026</span></a></div>
+<main class="doc">
+ <p class="crumb"><a href="../../index.html">Home</a> / <a href="../index.html">Articles</a> / <a href="index.html">Collections</a> / How agents decide, and when they stop</p>
+ <p class="eyebrow">Collection &middot; 6 articles &middot; curated by the <a href="../../newsroom/roles/historian.html">Historian</a> &middot; updated 2026-10-08</p>
+ <h1>How agents decide, and when they stop</h1>
+ <p class="lead">What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike.</p>
+<p>These six were written over two days and none of them sets out to be a series. Read together they make one argument: deciding well needs more than a yes or a no, and stopping well needs a perspective that has to be designed in, for agents even more than for people.</p>
+<p><a href="../../articles/agency-is-not-a-yes.html">Agency is not a yes</a> is the frame: seven things a decider needs, from options beyond yes to authority over the system that produced the request, and a scale on which the weakest of them caps the decision. <a href="../../articles/where-is-the-why.html">Where is the why?</a> is the same problem met in a permission prompt with no reason on it.</p>
+<p><a href="../../articles/knowing-when-to-stop.html">Knowing when to stop</a> starts from people: security champions who had automated away whole classes of bug, then found themselves debating whether GUIDs were random enough. Agents have it worse, because their range is the point. <a href="../../articles/who-are-you-protecting-against.html">Who are you protecting against?</a> gives one way to stop: name the attacker before deciding how secure to be. <a href="../../articles/every-mistake-added-a-rule.html">Every mistake added a rule</a> shows what happens without one: each mistake adds a rule, the rules become the complexity, and the way back is shipping small components instead.</p>
+<p><a href="../../articles/hope-or-enforcement.html">Hope or enforcement</a> is where the argument is tested: one customer service agent, three designs, and a count of which rules a model is only hoped to keep. The desk's <a href="../../articles/desk/range-is-the-feature-so-the-stop-is-designed.html">thread note</a> pulls out the line each of them shares.</p>
+ <h2>The articles</h2>
+ <div class="agrid"><a class="acard" href="../../articles/agency-is-not-a-yes.html" data-topics="agents-and-policy graphs-and-knowledge" data-text="agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source a yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a qa step that fixes the source. agency accountability human-in-the-loop decision-making agents agent-behaviour-policy provenance fractal-semantic-graphs eu-ai-act maturity-model vaults article"><figure class="shot cardshot" data-shot="agency-is-not-a-yes.webp" data-dir="../../articles/cards/" data-alt="Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source"></figure><span class="acard-meta"><span class="acard-date">2026-10-08</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">7 threads</span></span><b>Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source</b><span class="acard-teaser">A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.</span></a><a class="acard" href="../../articles/knowing-when-to-stop.html" data-topics="agents-and-policy startups-and-strategy" data-text="knowing when to stop: what experience gives people, and what we have to design into agents knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective. agents knowing-when-to-stop diminishing-returns seniority security threat-modelling kpis goodhart wardley-maps constraints fire shipping agent-behaviour-policy article"><figure class="shot cardshot" data-shot="knowing-when-to-stop.webp" data-dir="../../articles/cards/" data-alt="Knowing when to stop: what experience gives people, and what we have to design into agents"></figure><span class="acard-meta"><span class="acard-date">2026-10-08</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">7 threads</span></span><b>Knowing when to stop: what experience gives people, and what we have to design into agents</b><span class="acard-teaser">Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.</span></a><a class="acard" href="../../articles/every-mistake-added-a-rule.html" data-topics="agents-and-policy site-and-engineering" data-text="every mistake added a rule: complexity, agents, and the way back to shipping when every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work. agents complexity wardley-maps engineering-practice context-window compaction memory shipping founders nfrs testing cowork chatgpt article"><figure class="shot cardshot" data-shot="every-mistake-added-a-rule.webp" data-dir="../../articles/cards/" data-alt="Every mistake added a rule: complexity, agents, and the way back to shipping"></figure><span class="acard-meta"><span class="acard-date">2026-10-08</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">8 threads</span></span><b>Every mistake added a rule: complexity, agents, and the way back to shipping</b><span class="acard-teaser">When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.</span></a><a class="acard" href="../../articles/hope-or-enforcement.html" data-topics="agents-and-policy vaults-and-method" data-text="hope or enforcement: one customer service agent, three designs, and who keeps each promise one customer service agent built three ways, each with an agent behaviour policy: how much of each policy is hope, and what one run can reach. agents agent-behaviour-policy customer-service multi-agent orchestration harness blast-radius prompt-injection tokens riskmandate simulation vaults article"><figure class="shot cardshot" data-shot="hope-or-enforcement.webp" data-dir="../../articles/cards/" data-alt="Hope or enforcement: one customer service agent, three designs, and who keeps each promise"></figure><span class="acard-meta"><span class="acard-date">2026-10-08</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">4 threads</span></span><b>Hope or enforcement: one customer service agent, three designs, and who keeps each promise</b><span class="acard-teaser">One customer service agent built three ways, each with an Agent Behaviour Policy: how much of each policy is hope, and what one run can reach.</span></a><a class="acard" href="../../articles/who-are-you-protecting-against.html" data-topics="agents-and-policy startups-and-strategy" data-text="who are you protecting against? draw the security line where the attacker is, not above it before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped mac mini read against it, and eight startups drawing their line. security threat-modelling threat-agents attack-trees mitre-attack nist ncsc startups founders air-gap cloud vaults article"><figure class="shot cardshot" data-shot="who-are-you-protecting-against.webp" data-dir="../../articles/cards/" data-alt="Who are you protecting against? Draw the security line where the attacker is, not above it"></figure><span class="acard-meta"><span class="acard-date">2026-10-08</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">3 threads</span></span><b>Who are you protecting against? Draw the security line where the attacker is, not above it</b><span class="acard-teaser">Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.</span></a><a class="acard" href="../../articles/where-is-the-why.html" data-topics="agents-and-policy" data-text="where is the why? a permission prompt asked me to decide, and kept the reason a prompt asked for a decision and kept the reason. read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt. agents agent-behaviour-policy human-in-the-loop permission-prompts security-ux consent accountability risk-acceptance claude-code mcp article"><figure class="shot cardshot" data-shot="where-is-the-why.webp" data-dir="../../articles/cards/" data-alt="Where is the why? A permission prompt asked me to decide, and kept the reason"></figure><span class="acard-meta"><span class="acard-date">2026-10-07</span><span class="tchip">Agents &amp; policy</span><span class="acard-threads">12 threads</span></span><b>Where is the why? A permission prompt asked me to decide, and kept the reason</b><span class="acard-teaser">A prompt asked for a decision and kept the reason. Read through the policy, the law on uninformed consent, and the fixes that worked: put the why in the prompt.</span></a></div>
+ <p class="small dim"><a href="index.html">&larr; All collections</a> &middot; <a href="../index.html">The front page</a></p>
+</main>
+<script>
+(function () {
+ fetch('../../assets/shots.js?v=v0.7.11')
+ .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+ .then(function (t) { (0, eval)(t); })
+ .catch(function (e) { console.error('[shots] component failed to load:', e); });
+}());
+</script>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../../admin/versions.html">v0.7.11</a> · <a href="../../admin/index.html">engineering</a> · <a href="how-agents-decide.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../../docs/surfaces.html">Three surfaces</a>
+    <a href="../../docs/installation.html">Installation</a>
+    <a href="../../docs/quickstart.html">Quickstart</a>
+    <a href="../../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../../docs/agents.html">Working with AI agents</a>
+    <a href="../../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../../security/index.html">Security</a>
+    <a href="../../why/index.html">Why does this exist?</a>
+    <a href="../../use-cases/index.html">Use cases</a>
+    <a href="../../case-studies/index.html">Case studies</a>
+    <a href="../../skills/index.html">Skills for AI agents</a>
+    <a href="../../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../../llms.txt">llms.txt</a>
+    <a href="../../llms-full.txt">llms-full.txt</a>
+    <a href="../../admin/index.html">Admin &amp; engineering</a>
+    <a href="../../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.11';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

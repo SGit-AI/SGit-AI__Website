@@ -2,7 +2,7 @@
 
 > How the articles on sgit.ai are written, placed and connected by one person and a desk of agents: the roles, their behaviour policies, the front and why, desk health, the board and the run log.
 
-*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/index.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -29,28 +29,24 @@ The [SGit Newsroom](../articles/index.md) is the public front of a back office: 
 
 ## Today's front, and why
 
-Edition of **2026-10-07**. Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.
+Edition of **2026-10-08**. Third edition. A day of articles on how agents decide: when to stop, what a real decision needs, and who enforces each rule. It leads with the one that tests its argument: a customer service agent built three ways, with the vault that shows how much of each policy is hope. Beside it, a live local story, and two new collections that gather what the last two days added up to.
 
 | Slot | What | Why, in the Editor's words |
 |---|---|---|
-| Lead | [ai-baseline-control-framework](../articles/ai-baseline-control-framework.md) | Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site. |
-| Highlight | [where-is-the-why](../articles/where-is-the-why.md) | A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given. |
-| Highlight | [the-mandate-stack](../articles/the-mandate-stack.md) | About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them. |
-| Highlight | [how-much-of-this-did-i-write](../articles/how-much-of-this-did-i-write.md) | The human input, counted from the session record rather than asserted. |
-| Highlight | [the-agent-team-as-it-runs](../articles/the-agent-team-as-it-runs.md) | The rule the newsroom itself runs on: create anywhere, edit your own. |
-| Collection | [wardley-maps](../articles/collections/wardley-maps.md) | Six articles that place something on the evolution axis, from genesis to commodity, and argue from where it sits. |
-| Collection | [what-the-human-brings](../articles/collections/what-the-human-brings.md) | Where the person sits in a loop of agents: the direction, the review, the one step that cannot be undone, measured rather than assumed. |
+| Lead | [hope-or-enforcement](../articles/hope-or-enforcement.md) | One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep. |
+| Highlight | [agency-is-not-a-yes](../articles/agency-is-not-a-yes.md) | Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale. |
+| Highlight | [the-waiting-room-knew-first](../articles/the-waiting-room-knew-first.md) | A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening. |
+| Highlight | [every-mistake-added-a-rule](../articles/every-mistake-added-a-rule.md) | When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping. |
+| Highlight | [the-behaviour-policy-is-the-business-logic](../articles/the-behaviour-policy-is-the-business-logic.md) | Zoom into an agent's policy and you find the business: the rules the user interface used to enforce by omission. |
+| Collection | [how-agents-decide](../articles/collections/how-agents-decide.md) | What a real decision needs, who enforces each rule, and why an agent that can go anywhere has no reason to stop: six articles on deciding, for people and agents alike. |
+| Collection | [local-news-kept-as-evidence](../articles/collections/local-news-kept-as-evidence.md) | A bridge closure followed to the end, a hospital outage nobody could check from home, and the case that local journalism has the most to gain from keeping its reporting as a graph. |
 | Collection | [behaviour-policy-in-practice](../articles/collections/behaviour-policy-in-practice.md) | RiskMandate's Agent Behaviour Policy applied to real agents: one inbox, a team of twelve, the personal agents of 2026, and what an agent actually did afterwards. |
 
 ## Desk health
 
 Computed at every build from the files: placements that point at nothing, articles published since the edition, open pitches, articles without a graph or a card. The same list is what `python3 admin/build/desk.py` prints for the Editor.
 
-- To do`front.json` 7 article(s) published since the 2026-10-07 edition: the-waiting-room-knew-first, encrypted-memory-for-isolated-agents, knowing-when-to-stop, agency-is-not-a-yes, hope-or-enforcement, who-are-you-protecting-against
-- To do`newsletter/` a newsletter issue is due: 7 articles since issue 1 (2026-10-07)
-- To do`newsroom/pitches/2026-10-07__the-behaviour-policy-is-the-business-logic.md` open pitch from agent@riskmandate.ai: highlight for the-behaviour-policy-is-the-business-logic
-- To do`newsroom/pitches/2026-10-07__story-vault-meets-reader-skills.md` open pitch from agent@riskmandate.ai: highlight for story-vault-meets-reader-skills
-- Note`newsroom/newsletter/001-2026-10-07.md` issue 1 has no linkedin: URL yet; add it once it is posted
+- Note`newsroom/newsletter/002-2026-10-08.md` issue 2 has no linkedin: URL yet; add it once it is posted
 
 ## The desk: six roles
 
@@ -60,9 +56,9 @@ Each role is a file under `admin/content/newsroom/roles/` with a mission, a sent
 
 ## Latest run
 
-**2026-10-07 16:03 UTC, Editor:** Second edition: the open framework leads, and the first pitch is answered. [Read the entry →](log.md#1603__editor__second-edition)
+**2026-10-08 23:39 UTC, Editor:** Third edition, two pitches answered, and a desk run across three roles. [Read the entry →](log.md#2339__editor__third-edition)
 
-2 open pitches · 4 backlog · 1 doing · 1 review · 0 done on [the board](board.md).
+0 open pitches · 3 backlog · 1 doing · 1 review · 1 done on [the board](board.md).
 
 ## For the agents that write to subscribers
 

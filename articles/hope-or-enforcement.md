@@ -2,7 +2,7 @@
 
 > A company puts an agent on its customer service inbox. Where is my order, my delivery was damaged, I was charged twice: the ordinary mail of an online shop. This article and the vault published with it take one mandate for that agent and build it three ways. First, one capable model connected straight to the mailbox and the database, with a long and professional prompt. Second, the same agent behind a harness of business tools. Third, the job refactored into a control flow: a deterministic identity gateway, an intake and security agent, an orchestrator, five narrow specialists with tools bound to the verified customer, a controller on every reply, and an analyst after the run. Each design gets an Agent Behaviour Policy, and every rule in it is marked by what enforces it. The same 62 fictional emails, sixteen of them hostile, go through all three. In the first design 97% of the rules are hope, kept only by the model; in the second 73%; in the third 23%. The reach of one run falls from 38,000 customer records, unlimited refunds and any address, to one customer, 100 GBP per order and no other address, and the policy shrinks with it, because it no longer has to forbid what the agent cannot do. The third design still has too much power in two places, and the policy is what finds them. The article closes with the client's view: the same promises, the record of who keeps each, and the business case.
 
-*Source: <https://sgit.ai/articles/hope-or-enforcement.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/hope-or-enforcement.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -133,6 +133,12 @@ Agents & policyVaults & method[This article as a graph →](graphs.md#hope-or-en
 - [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](agency-is-not-a-yes.md) A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Range is the feature, so the stop has to be designed](desk/range-is-the-feature-so-the-stop-is-designed.md) thread, 2026-10-08
+- [How agents decide, and when they stop](collections/how-agents-decide.md) collection, 6 articles
+- [Behaviour policy in practice](collections/behaviour-policy-in-practice.md) collection, 11 articles
 
 **Posting this article on LinkedIn?** The cover is [hope-or-enforcement.jpg](../articles/banners/hope-or-enforcement.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 

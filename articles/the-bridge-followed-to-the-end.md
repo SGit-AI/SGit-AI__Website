@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example, played out on a story vault from the council's first notice to the first car across. A fictional town's main bridge closes; the council says one week, the contract on site says three, an independent engineer says five to seven, and it opens after forty-six days. The paper leads with it five times; readers need it on fifty-seven days. Three readers, a parent, a café owner on the far bank and a plumber who works both banks, use the same claims in three different ways, each from their own graph, and make better decisions with them: an after-school club booked in time, £640 of stock not wasted and £1,200 of relief claimed, nine hours of driving saved. A county highways team, an investor, a national desk and a routing agent buy from the same graph, and the agent spends a seventh of what it would have spent searching, and is right from the first week. Everything they pay, £2,707 in the simulation, walks back down the claims to the reporter, the paper and the resident whose photos were the evidence. The vault is published with its read key.
 
-*Source: <https://sgit.ai/articles/the-bridge-followed-to-the-end.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-bridge-followed-to-the-end.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -158,6 +158,10 @@ News & evidenceGraphs & knowledge[This article as a graph →](graphs.md#the-bri
 - [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [the-bridge-followed-to-the-end.jpg](../articles/banners/the-bridge-followed-to-the-end.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 

@@ -2,7 +2,7 @@
 
 > This afternoon, at two London hospitals, staff told the people in front of them that the IT systems were down. One waiting room was announced at about five hours, and a doctor said the problem was national. Nothing a person could check before leaving home showed any of it: no notice from the trust, no post, no local story, no dated search result. This is not a story about one hospital, whose staff were working through it, and it is not yet a story about a national outage, which has not been confirmed. It is a story about where local information is supposed to come from now. The information existed; it reached people only once they were already in the waiting room. Northern Ireland publishes live emergency waits for every hospital, updated tonight at 10.20 pm, and Wales has a live service; England has no national equivalent, and I found no live or disruption page for the trust involved. Local news has thinned out, and the social feeds that used to carry this kind of thing have fragmented. So I have started a vault to log this as a live local story, with the evidence separated by level, the public sources checked on a schedule, and an enquiry to the trust that my agent will send. It is the real counterpart of the fictional bridge story, and the first of several.
 
-*Source: <https://sgit.ai/articles/the-waiting-room-knew-first.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/the-waiting-room-knew-first.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -157,6 +157,10 @@ News & evidenceVaults & method[This article as a graph →](graphs.md#the-waitin
 - [Story vault underneath, Reader Skills on top: why local journalism has the most to gain](story-vault-meets-reader-skills.md) Markus Franz's Reader Skills on top, the story vault underneath: each skill is a graph query, and local stories can pay back down their chain of sources.
 
 [All articles](index.md) · [All graphs](graphs.md)
+
+## From the desk
+
+- [Local news, kept as evidence](collections/local-news-kept-as-evidence.md) collection, 6 articles
 
 **Posting this article on LinkedIn?** The cover is [the-waiting-room-knew-first.jpg](../articles/banners/the-waiting-room-knew-first.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 

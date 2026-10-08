@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.10'
+SITE_VERSION = 'v0.7.11'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,19 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.10', '2026-10-08', 'this release',
+    ('v0.7.11', '2026-10-08', 'this release',
+     "THE DESK CATCHES UP: THIRD EDITION, TWO COLLECTIONS, NEWSLETTER ISSUE 2. Eleven articles had reached the site "
+     "since the second edition, all live and complete. The Editor's third edition leads with hope or enforcement, one "
+     "customer service agent built three ways with a vault that counts which rules are only hoped for; highlights are "
+     "agency is not a yes, the waiting room knew first, every mistake added a rule, and the business-logic article from "
+     "its pitch; the story vault and Reader Skills pitch is parked as a highlight and placed at the head of a featured "
+     "collection instead. The Historian adds two collections, How agents decide and when they stop, and Local news kept "
+     "as evidence, closes board card D6 by adding four articles to Behaviour policy in practice, and writes a thread "
+     "note on why an agent's range means its stop has to be designed. A first draft of that note said none of its four "
+     "articles cited the others; one links all three, and the note was corrected before release. Issue 2 of the "
+     "newsletter covers 8 October, grouped by theme, and records the bridge correction; Issue 1 now links its LinkedIn "
+     "post.",),
+    ('v0.7.10', '2026-10-08', 'git 7d88785b',
      "THE REPORTER IS PAID, NOT IN PROFIT. A correction to the Mill Street Bridge vault (v0.3.1) and its pages, after Dinis spotted it: the economics table counted the reporter's £930 base salary as her income and again as her cost, so her 'profit' was only the top-up. Her salary is the Courier's cost, not hers. Her row now shows pay: base salary £930 plus a commission of 20% of every use, £541.48, £1,471.48 in all, with no cost and no profit; 'top-up' is now 'commission' throughout. Every figure is unchanged. Vault page, article and three screenshots updated.",),
     ('v0.7.9', '2026-10-08', 'git ee22b824',
      "THE WAITING ROOM KNEW FIRST. A new article and a new vault, from a live local story. On the afternoon of 8 October 2026 staff at two London hospitals of one trust said the IT systems were down, about five hours was announced, and a doctor called it national; nothing a local person could check before leaving home showed it. The article is about the gap, not the hospital: where local information comes from now, what parts of the UK already publish (Northern Ireland live emergency waits for every hospital, Wales live, England no national page), the thinning of local news and social feeds, and the narrow legal duty to warn. The vault, Local evidence log (92yb24y9, read key published), keeps the evidence by six levels, fourteen claims and what would resolve them, twenty six sources with how each was reached, the leads that do not fit, sixteen places a local could look, the enquiry to the trust (drafted, not sent), and scheduled source re-checks; 16-check gate, audited with the read key. No patient details anywhere. Vault page, four figures, graph JSON.",),

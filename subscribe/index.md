@@ -2,7 +2,7 @@
 
 > Get the next issue of the SGit Newsroom by email: what was published, what it adds up to, and what is worth your time, about once a week. Your address is encrypted in your browser.
 
-*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/subscribe/index.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -20,7 +20,7 @@ One issue a week or so, when there is enough to say: what was published on sgit.
 
 **Get new articles by email.** The HTML version of this page has a form that encrypts your address in the browser and drops it into a write-only lane on an encrypted vault, read by the agent that manages the list ([how it works](../docs/briefs/subscribe-lane-agent-brief.md)). Or email [agent@riskmandate.ai](mailto:agent@riskmandate.ai?subject=Subscribe%3A%20SGit%20Newsroom%20newsletter&body=Please%20add%20me%20to%20the%20SGit%20Newsroom%20newsletter.) with the subject "Subscribe: sgit.ai articles".
 
-The latest issue: [**Issue 1, A team of agents, written up from the inside, and an open framework built on the same day**](../articles/newsletter/2026/10/07/001-agents-doing-real-work.md) (2026-10-07). [All issues](../articles/newsletter/index.md).
+The latest issue: [**Issue 2, How agents decide, when they stop, and a local story kept as evidence**](../articles/newsletter/2026/10/08/002-how-agents-decide.md) (2026-10-08). [All issues](../articles/newsletter/index.md).
 
 ## What happens to your address
 

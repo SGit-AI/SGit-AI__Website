@@ -2,7 +2,7 @@
 
 > What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.
 
-*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.7.10 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/newsletter/2026/10/07/001-agents-doing-real-work.html> · site v0.7.11 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -12,7 +12,7 @@ SGit Newsroom · Issue 1 · 2026-10-07
 
 # A team of agents, written up from the inside, and an open framework built on the same day
 
-By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md)
+By [Dinis Cruz](../../../../../about/index.md), written with the [Journalist](../../../../../newsroom/roles/journalist.md) · [read it on LinkedIn ↗](https://www.linkedin.com/pulse/team-agents-written-up-from-inside-open-framework-built-dinis-cruz-sxf4e)
 
 ***Abstract:** What it takes to let agents do real work for a business, from four sides: a team of agents running a small business, written up from the inside; the behaviour policy that says what each agent may do, and the business logic it turns out to hold; the desktops and permission prompts those agents need; and an open AI governance framework turned into a graph, a database and a walk down to EU law within a day of reading it.*
 

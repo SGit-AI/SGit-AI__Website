@@ -1,32 +1,32 @@
 {
-  "edition": "2026-10-07",
+  "edition": "2026-10-08",
   "editor": "editor",
-  "note": "Second edition, the same day. The lead moves to the open AI governance framework, because it carries more checkable evidence than anything else published today: a vault with its read key, a database that runs in the browser, and a walk from a control down to a paragraph of the AI Act. The Mandate Stack stays on the front as a highlight, beside the new piece on permission prompts, which reads the same behaviour policy from the person's side.",
+  "note": "Third edition. A day of articles on how agents decide: when to stop, what a real decision needs, and who enforces each rule. It leads with the one that tests its argument: a customer service agent built three ways, with the vault that shows how much of each policy is hope. Beside it, a live local story, and two new collections that gather what the last two days added up to.",
   "lead": {
-    "slug": "ai-baseline-control-framework",
-    "kicker": "Open framework, built on",
-    "why": "Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site."
+    "slug": "hope-or-enforcement",
+    "kicker": "Built three ways",
+    "why": "One mandate, three designs and a published vault: the behaviour-policy argument measured rather than asserted, down to which rules a model is only hoped to keep."
   },
   "highlights": [
     {
-      "slug": "where-is-the-why",
-      "kicker": "The person's side",
-      "why": "A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given."
+      "slug": "agency-is-not-a-yes",
+      "kicker": "A scale for deciding",
+      "why": "Seven dimensions, seven levels, and the line below which a decider carries liability rather than agency. Its own vault holds the scale."
     },
     {
-      "slug": "the-mandate-stack",
-      "kicker": "In production",
-      "why": "About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them."
+      "slug": "the-waiting-room-knew-first",
+      "kicker": "Live, local",
+      "why": "A hospital IT outage nobody could check from home, kept as evidence in a vault while it was still happening."
     },
     {
-      "slug": "how-much-of-this-did-i-write",
-      "kicker": "Measured",
-      "why": "The human input, counted from the session record rather than asserted."
+      "slug": "every-mistake-added-a-rule",
+      "kicker": "Complexity",
+      "why": "When every agent mistake adds a rule, the rules become the problem. Mapped, with the way back to shipping."
     },
     {
-      "slug": "the-agent-team-as-it-runs",
-      "kicker": "Field notes",
-      "why": "The rule the newsroom itself runs on: create anywhere, edit your own."
+      "slug": "the-behaviour-policy-is-the-business-logic",
+      "kicker": "Pitched, accepted",
+      "why": "Zoom into an agent's policy and you find the business: the rules the user interface used to enforce by omission."
     }
   ],
   "homepage": {
@@ -35,8 +35,8 @@
     "notes": 1
   },
   "collections": [
-    "wardley-maps",
-    "what-the-human-brings",
+    "how-agents-decide",
+    "local-news-kept-as-evidence",
     "behaviour-policy-in-practice"
   ],
   "off_latest": []
