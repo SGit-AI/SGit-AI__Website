@@ -2,7 +2,7 @@
 
 > Deployment guidance for self-hosting a zero-knowledge SG/Send server) rendered live in your browser from an encrypted vault, with no copy stored on this site.
 
-*Source: <https://sgit.ai/deploy/index.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/deploy/index.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -11,6 +11,8 @@
 # Run your own SG/Send server
 
 Deployment guidance for standing up your own zero-knowledge vault server, Docker, AWS, GCP, Heroku, or a static host. **These pages are not part of this website.** They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.
+
+To give agents encrypted memory on your own server, start with [Self-hosting a vault server for agents](../docs/self-host-for-agents.md) and the article [Encrypted memory for agents that run somewhere else](../articles/encrypted-memory-for-isolated-agents.md). One correction while these pages catch up: sgit takes `--base-url`, not `--endpoint`, for example `sgit clone --base-url http://localhost:8080 --token <access-token> <vault-key>`.
 
 **How this page works:** the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai, when the SG/Send team runs `sgit push`, the next load of this page has it. Open the **vault panel** (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. [**Full architecture, with diagrams →**](../case-studies/live-vault-docs.md)
 

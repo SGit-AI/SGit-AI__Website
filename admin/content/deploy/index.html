@@ -2,6 +2,7 @@
   <p class="crumb"><a href="../index.html">Home</a> / Deploy</p>
   <h1>Run your own SG/Send server</h1>
   <p class="lead">Deployment guidance for standing up your own zero-knowledge vault server, Docker, AWS, GCP, Heroku, or a static host. <b>These pages are not part of this website.</b> They live in an encrypted vault maintained by the SG/Send team, and your browser is decrypting them right now with a published read-only key.</p>
+  <p class="small">To give agents encrypted memory on your own server, start with <a href="../docs/self-host-for-agents.html">Self-hosting a vault server for agents</a> and the article <a href="../articles/encrypted-memory-for-isolated-agents.html">Encrypted memory for agents that run somewhere else</a>. One correction while these pages catch up: sgit takes <code>--base-url</code>, not <code>--endpoint</code>, for example <code>sgit clone --base-url http://localhost:8080 --token &lt;access-token&gt; &lt;vault-key&gt;</code>.</p>
   <div class="note"><b>How this page works:</b> the vault's ciphertext is fetched straight from the SG/Send server over CORS, and the AES-256-GCM decryption happens in this tab using the Web Crypto API. There is no build step and no copy of the content on sgit.ai, when the SG/Send team runs <code>sgit push</code>, the next load of this page has it. Open the <b>vault panel</b> (right edge) to watch the objects being fetched, see which came from cache, and check the exact commit you are reading. <a href="../case-studies/live-vault-docs.html"><b>Full architecture, with diagrams →</b></a></div>
 </main>
 

@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.7.6",
+  "site_version": "v0.7.7",
   "updates": [
     {
       "slug": "the-newsroom",
@@ -890,6 +890,33 @@
     }
   ],
   "articles": [
+    {
+      "slug": "encrypted-memory-for-isolated-agents",
+      "title": "Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes",
+      "date": "2026-10-08",
+      "version": "v0.7.7",
+      "tags": [
+        "agents",
+        "agentic-memory",
+        "self-hosting",
+        "deployment",
+        "docker",
+        "docker-compose",
+        "kubernetes",
+        "mac-mini",
+        "aws",
+        "cloudfront",
+        "fargate",
+        "lambda",
+        "zero-knowledge",
+        "encryption",
+        "partial-clones",
+        "sgit",
+        "isolation",
+        "article"
+      ],
+      "summary": "Agents are safer when they run in isolated places: a cloud VM, a local VM, a container on a Mac mini, a GPU machine, a job that exists for one task. Isolation takes away the shared drive, and ephemeral compute takes away the disk, so the memory has to live somewhere else, somewhere the owner controls and a breach does not expose. This article maps how to give those agents encrypted memory with sgit and a vault server you run yourself: one container, an access token, storage in a folder or a bucket, and only ciphertext on the server. Five patterns, each drawn as a diagram with its Mermaid source: a Mac mini with Docker Compose, the life of one ephemeral agent run with a scoped clone, Kubernetes, a private cloud VPC with CloudFront in front, and two servers holding one vault. Every command was run against a local server for this article, including a scoped clone, a push from a second agent, replication to a second server and a restore after a restart, and a search of the server's storage that found none of the plaintext."
+    },
     {
       "slug": "knowing-when-to-stop",
       "title": "Knowing when to stop: what experience gives people, and what we have to design into agents",

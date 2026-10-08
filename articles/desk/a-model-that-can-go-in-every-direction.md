@@ -2,7 +2,7 @@
 
 > The sentence in the middle of a measurement article that answers the question half this site keeps asking: what is the person for?
 
-*Source: <https://sgit.ai/articles/desk/a-model-that-can-go-in-every-direction.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/desk/a-model-that-can-go-in-every-direction.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

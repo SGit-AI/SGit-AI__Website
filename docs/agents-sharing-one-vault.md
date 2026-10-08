@@ -2,7 +2,7 @@
 
 > The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten.
 
-*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agents-sharing-one-vault.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -113,7 +113,7 @@ Six objects: the commit, the new root tree, the new `mail/` tree, the new `mail/
 
 The team this was worked out on is described in [The agent team as it runs](../articles/the-agent-team-as-it-runs.md) and [The Mandate Stack](../articles/the-mandate-stack.md); the vault is their shared memory layer.
 
-[← Partial clones](partial-clones.md)[When NOT to use sgit →](limitations.md)
+[← Partial clones](partial-clones.md)[Self-hosting for agents →](self-host-for-agents.md)
 
 
 ---

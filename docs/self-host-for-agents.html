@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Self-hosting a vault server for agents, sgit Docs</title>
+<meta name="description" content="Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080).">
+<link rel="canonical" href="https://sgit.ai/docs/self-host-for-agents.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="sgit.ai">
+<meta property="og:url" content="https://sgit.ai/docs/self-host-for-agents.html">
+<meta property="og:title" content="Self-hosting a vault server for agents, sgit Docs">
+<meta property="og:description" content="Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080).">
+<meta property="og:image" content="https://sgit.ai/og/default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Self-hosting a vault server for agents, sgit Docs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sgit.ai/og/default.jpg">
+<link rel="alternate" type="text/markdown" href="self-host-for-agents.md" title="This page as markdown">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "name": "Self-hosting a vault server for agents, sgit Docs", "headline": "Self-hosting a vault server for agents, sgit Docs", "description": "Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080).", "url": "https://sgit.ai/docs/self-host-for-agents.html", "inLanguage": "en", "isPartOf": {"@type": "WebSite", "name": "sgit.ai", "url": "https://sgit.ai"}, "about": {"@type": "SoftwareApplication", "name": "sgit", "sameAs": "https://pypi.org/project/sgit-ai/"}}</script>
+<style>html{background:#faf9f5}body{margin:0;background:#faf9f5;color:#1c1d21;font-family:ui-sans-serif,system-ui,sans-serif;opacity:0;transition:opacity .25s;animation:sg-reveal 0s linear 1.6s forwards}html.ready body{opacity:1;animation:none}@keyframes sg-reveal{to{opacity:1}}</style><noscript><style>body{opacity:1;animation:none}</style></noscript>
+</head>
+<body>
+
+<nav class="site"><div class="row">
+  <a class="brand" href="../index.html">sgit<span>.ai</span></a>
+  <span class="stage-pill">beta</span>
+  <a class="ver" href="../admin/versions.html" title="Site release history">v0.7.7</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menu">Menu</button>
+  <div class="nav-items">
+ <div class="ni ni-has">
+ <a class="nl" href="../articles/index.html">Newsroom<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../articles/index.html">Front page</a>
+ <a class="sl" href="../articles/newsletter/index.html">Newsletter</a>
+ <a class="sl" href="../articles/index.html#all">Every article</a>
+ <a class="sl" href="../articles/collections/index.html">Collections</a>
+ <a class="sl" href="../articles/desk/index.html">From the desk</a>
+ <a class="sl" href="../articles/graphs.html">As graphs</a>
+ <a class="sl" href="../newsroom/index.html">How it runs</a>
+ <a class="sl" href="../subscribe/index.html">Subscribe</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../why/index.html">Why<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../why/index.html">Why sgit exists</a>
+ <a class="sl" href="../investors/index.html">Investors</a>
+ <a class="sl" href="../startups/index.html">Startups</a>
+ <a class="sl" href="../startups/business-plans.html">Business plans</a>
+ <a class="sl" href="../about/index.html">About the author</a>
+ <a class="sl" href="../partnerships/index.html">Partnerships</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl here" href="../docs/index.html">Docs<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl here" href="../docs/index.html">Documentation</a>
+ <a class="sl here" href="../docs/guidance/index.html">Vault guidance</a>
+ <a class="sl here" href="../docs/guidance/repositories.html">Every repository</a>
+ <a class="sl" href="../try/index.html">Try it in the browser</a>
+ <a class="sl" href="../api/index.html">HTTP API</a>
+ <a class="sl here" href="../docs/credentials.html">Credentials</a>
+ <a class="sl" href="../docs/vault/index.html">SG/Vault</a>
+ <a class="sl" href="../deploy/index.html">Deploy</a>
+ <a class="sl" href="../skills/index.html">Skills</a>
+ <a class="sl" href="../docs/briefs/index.html">Briefs</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../demos/vaults/index.html">Vaults<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../demos/vaults/index.html">Published vaults</a>
+ <a class="sl" href="../catalogue/index.html">Catalogue</a>
+ <a class="sl" href="../demos/index.html">Demos</a>
+ <a class="sl" href="../demos/fractal-graphs/index.html">Fractal graphs</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../agents/index.html">Agents</a></div>
+ <div class="ni ni-has">
+ <a class="nl" href="../compare/index.html">Evidence<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../compare/index.html">Comparisons</a>
+ <a class="sl" href="../demos/fractal-graphs/performance.html">Performance & cost</a>
+ <a class="sl" href="../case-studies/index.html">Case studies</a>
+ <a class="sl" href="../lessons/index.html">Lessons learned</a>
+ <a class="sl" href="../use-cases/index.html">Use cases</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../team/index.html">Team<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../team/index.html">How the site is run</a>
+ <a class="sl" href="../team/index.html#roles">Roles</a>
+ <a class="sl" href="../team/prompts.html">Starting prompts</a>
+ <a class="sl" href="../team/board.html">The board</a>
+ <a class="sl" href="../updates/index.html">Updates</a>
+ <a class="sl" href="../admin/versions.html">Version log</a>
+ </div>
+ </div>
+ <div class="ni ni-has">
+ <a class="nl" href="../network/index.html">Network<span class="caret">&#9662;</span></a>
+ <div class="sub">
+ <a class="sl" href="../network/index.html">All sites</a>
+ <a class="sl" href="../network/nhi.html">nhi</a>
+ <a class="sl" href="../network/pki.html">pki</a>
+ <a class="sl" href="../network/graphs.html">graphs</a>
+ <a class="sl" href="../network/sg-sentinel.html">sg-sentinel</a>
+ </div>
+ </div>
+ <div class="ni"><a class="nl" href="../security/index.html">Security</a></div>
+  </div>
+  <a class="gh" href="https://github.com/SGit-AI/SGit-AI__CLI">&#9733; GitHub</a>
+</div></nav>
+
+<div class="llmschip"><a href="llms.txt" title="Regenerated on every release. If this page changed and that stamp did not, the index has not caught up."><span class="llmschip-k"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/></svg>for agents</span><span class="llmschip-p">/docs/llms.txt</span><span class="llmschip-m">v0.7.7 &middot; 8 Oct 2026</span></a></div>
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Self-hosting a vault server for agents</h1>
+  <p class="lead">Encrypted memory for agents that run in isolated places: VMs, containers, a Mac mini, GPU machines, jobs that last one task. One SG/Send container with an access token, storage in a folder or an S3 bucket, and <code>sgit</code> in each agent. The server stores ciphertext; the agents and you hold the keys. The why, and five deployment patterns drawn as diagrams, are in the article <a href="../articles/encrypted-memory-for-isolated-agents.html">Encrypted memory for agents that run somewhere else</a>.</p>
+  <p class="small dim">Tested on 8 October 2026 with sgit-ai 0.20.0 and sgraph-ai-app-send 0.33.0 (the package inside the image) against a local server. Sections that were not run here say so. Every server setting is documented in the <a href="../deploy/index.html">deployment docs</a>.</p>
+
+  <h2 id="server">1. Run the server</h2>
+  <p>With Docker, on any amd64 or arm64 machine, including Apple silicon:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">export SG_ACCESS_TOKEN=$(openssl rand -hex 32)</span>    <span class="d"># keep it in a password manager</span>
+<span class="p">$</span> <span class="cmd">docker run -d --name vault -p 127.0.0.1:8080:8080 \
+    -e SGRAPH_SEND__ACCESS_TOKEN="$SG_ACCESS_TOKEN" \
+    -v "$PWD/sg-data:/data" diniscruz/sg-send-vault:v0.33.0</span></pre>
+  <p>Without Docker, from pip, which runs the same code with the same command as the image:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgraph-ai-app-send "mcp&lt;2"</span>
+<span class="p">$</span> <span class="cmd">SEND__STORAGE_MODE=disk SEND__DISK_PATH=./sg-data \
+  SGRAPH_SEND__ACCESS_TOKEN="$SG_ACCESS_TOKEN" \
+  python -m sgraph_ai_app_send__docker.serve</span></pre>
+  <p>Check it, with and without the token:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8080/api/info/health</span>
+401
+<span class="p">$</span> <span class="cmd">curl -H "x-sgraph-access-token: $SG_ACCESS_TOKEN" http://localhost:8080/api/info/health</span>
+{"status":"ok"}</pre>
+  <div class="tablewrap"><table>
+    <tr><th>Setting</th><th>Values</th><th>Notes</th></tr>
+    <tr><td><code>SGRAPH_SEND__ACCESS_TOKEN</code></td><td>a long random string</td><td>Gates every route, reads included. Header <code>x-sgraph-access-token</code>; the browser UI has a sign-in form.</td></tr>
+    <tr><td><code>SEND__STORAGE_MODE</code></td><td><code>disk</code>, <code>s3</code>, <code>memory</code></td><td>The image sets <code>disk</code>. <code>memory</code> is emptied by a restart.</td></tr>
+    <tr><td><code>SEND__DISK_PATH</code></td><td>a path</td><td>The image uses <code>/data</code>. This folder is the whole memory: back it up.</td></tr>
+    <tr><td><code>SEND__S3_BUCKET</code></td><td>a bucket name</td><td>For <code>s3</code> mode, with the usual AWS credentials. Needed for more than one replica.</td></tr>
+  </table></div>
+
+  <h2 id="vault">2. Create the memory vault</h2>
+  <p>From the machine you administer from, not from an agent:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">mkdir memory &amp;&amp; cd memory &amp;&amp; mkdir -p agents/a1 agents/a2 shared</span>
+<span class="p">$</span> <span class="cmd">echo "# a1 notes" &gt; agents/a1/notes.md; echo "# a2 notes" &gt; agents/a2/notes.md; echo "# brief" &gt; shared/brief.md</span>
+<span class="p">$</span> <span class="cmd">sgit init --base-url http://localhost:8080 --token "$SG_ACCESS_TOKEN" .</span>
+Vault created!  Vault ID: …
+  Vault key: …            <span class="d"># the whole credential: store it now, show it to no one</span>
+<span class="p">$</span> <span class="cmd">sgit commit "memory layout"</span>
+<span class="p">$</span> <span class="cmd">sgit push --token "$SG_ACCESS_TOKEN"</span>
+Pushed 1 commit(s), 3 object(s) uploaded.</pre>
+  <p>Use <code>--base-url</code>. The deployment docs show <code>--endpoint</code> in three places; sgit 0.20.0 answers <code>unrecognized arguments: --endpoint</code>.</p>
+
+  <h2 id="agent">3. The agent's entry point</h2>
+  <p>The whole memory protocol, run once per task. It expects the base URL, the access token, the agent's id, and a file holding the key to its vault:</p>
+<pre class="shell">#!/bin/sh
+set -e
+sgit clone --base-url "$SG_BASE_URL" --token "$SG_ACCESS_TOKEN" \
+     --path "agents/$AGENT_ID" --depth 1 "$(cat "$VAULT_KEY_FILE")" /work/memory
+cd /work/memory
+# ... the agent reads agents/$AGENT_ID/, does one task, writes what it learned ...
+sgit commit "$AGENT_ID run $(date -u +%FT%TZ)"
+sgit push                     <span class="d"># pulls first; uses the token the clone saved</span></pre>
+  <p class="small dim">Run as written against the local server: the clone held one folder, the commit and push uploaded one object, and a full clone elsewhere pulled the change.</p>
+  <ul>
+    <li><b><code>--path</code> and <code>--depth 1</code></b> keep the start fast as the vault grows: one folder of a 600-commit vault in 14 s, against 80 s for all of it (<a href="partial-clones.html">Partial clones</a>).</li>
+    <li><b><code>--path</code> is not an access boundary.</b> The clone holds the vault key, and <code>sgit fetch agents/a2</code> widens it to another agent's folder. For agents that must not read each other's memory, use one vault per agent, and read keys for what an agent only reads.</li>
+    <li><b>The clone keeps the vault key and the access token</b> in <code>.sg_vault/local/</code>, so that <code>sgit push</code> works without them on the command line. Delete the working directory, or the container, when the task ends.</li>
+    <li>Several agents pushing to one vault is the setup in <a href="agents-sharing-one-vault.html">Agents sharing one vault</a>.</li>
+  </ul>
+
+  <h2 id="compose">4. Docker Compose: a Mac mini or any single host</h2>
+<pre class="shell">services:
+  vault:
+    image: diniscruz/sg-send-vault:v0.33.0
+    environment:
+      SEND__STORAGE_MODE: disk
+      SEND__DISK_PATH: /data
+      SGRAPH_SEND__ACCESS_TOKEN: ${SG_ACCESS_TOKEN}
+    volumes:
+      - ./sg-data:/data
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+  agent-a1:
+    image: your-agent-image          <span class="d"># anything with sgit-ai and the entry point above</span>
+    environment:
+      SG_BASE_URL: http://vault:8080
+      SG_ACCESS_TOKEN: ${SG_ACCESS_TOKEN}
+      AGENT_ID: a1
+      VAULT_KEY_FILE: /run/secrets/a1_vault_key
+    secrets: [a1_vault_key]
+    depends_on: [vault]
+
+secrets:
+  a1_vault_key:
+    file: ./keys/a1.vault-key</pre>
+  <p class="small dim">Not run here: this session had no Docker daemon. It uses only the image's documented settings.</p>
+  <p>Back up <code>./sg-data</code> with whatever you already use for folders. It holds ciphertext, hashes and vault ids, so the backup does not need to be trusted with the contents. To reach the server from other devices, put TLS in front (the deployment docs suggest Caddy) on a network you control; the vault UI needs a secure context in the browser.</p>
+
+  <h2 id="k8s">5. Kubernetes</h2>
+  <p>One Deployment for the server, a Service only the cluster can reach, a NetworkPolicy that admits only agent pods, and a Job per agent task. Create the secrets first:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">kubectl create namespace agent-memory</span>
+<span class="p">$</span> <span class="cmd">kubectl -n agent-memory create secret generic vault-access-token --from-literal=token="$SG_ACCESS_TOKEN"</span>
+<span class="p">$</span> <span class="cmd">kubectl -n agent-memory create secret generic agent-a1-vault-key --from-file=vault-key=./keys/a1.vault-key</span></pre>
+<pre class="shell">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: {name: vault-data, namespace: agent-memory}
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: {requests: {storage: 10Gi}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: sg-send-vault, namespace: agent-memory}
+spec:
+  replicas: 1                       <span class="d"># disk storage: one writer. More replicas need SEND__STORAGE_MODE=s3</span>
+  strategy: {type: Recreate}
+  selector: {matchLabels: {app: sg-send-vault}}
+  template:
+    metadata: {labels: {app: sg-send-vault}}
+    spec:
+      containers:
+        - name: vault
+          image: diniscruz/sg-send-vault:v0.33.0
+          ports: [{containerPort: 8080}]
+          env:
+            - {name: SEND__STORAGE_MODE, value: disk}
+            - {name: SEND__DISK_PATH, value: /data}
+            - name: SGRAPH_SEND__ACCESS_TOKEN
+              valueFrom: {secretKeyRef: {name: vault-access-token, key: token}}
+          volumeMounts: [{name: data, mountPath: /data}]
+      volumes:
+        - {name: data, persistentVolumeClaim: {claimName: vault-data}}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: vault, namespace: agent-memory}
+spec:
+  type: ClusterIP
+  selector: {app: sg-send-vault}
+  ports: [{port: 8080, targetPort: 8080}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: vault-from-agents-only, namespace: agent-memory}
+spec:
+  podSelector: {matchLabels: {app: sg-send-vault}}
+  policyTypes: [Ingress]
+  ingress:
+    - from: [{podSelector: {matchLabels: {role: agent}}}]
+      ports: [{port: 8080}]
+---
+apiVersion: batch/v1
+kind: Job
+metadata: {generateName: agent-a1-, namespace: agent-memory}   <span class="d"># kubectl create, not apply</span>
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 600
+  template:
+    metadata: {labels: {role: agent}}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: agent
+          image: your-agent-image
+          command: ["/entrypoint.sh"]
+          env:
+            - {name: SG_BASE_URL, value: "http://vault:8080"}
+            - {name: AGENT_ID, value: a1}
+            - {name: VAULT_KEY_FILE, value: /secrets/vault-key}
+            - name: SG_ACCESS_TOKEN
+              valueFrom: {secretKeyRef: {name: vault-access-token, key: token}}
+          volumeMounts:
+            - {name: key, mountPath: /secrets, readOnly: true}
+            - {name: work, mountPath: /work}
+      volumes:
+        - {name: key, secret: {secretName: agent-a1-vault-key}}
+        - {name: work, emptyDir: {}}</pre>
+  <p class="small dim">Not run on a cluster for this guide; it parses as YAML and uses only the image's documented settings. A NetworkPolicy only takes effect with a network plugin that enforces it.</p>
+
+  <h2 id="cloud">6. The cloud</h2>
+  <p>The deployment docs have CloudFormation templates for <a href="../deploy/index.html">Lambda, Fargate and EC2</a>, marked as written and lint-clean with live validation in progress. As written they put a public endpoint in front: a Function URL, a load balancer, or an instance with its own certificate. For agents, the shape the article draws is the same container in a private subnet, <code>s3</code> storage, agents reaching it on a private address, a VPN to any machine outside, and CloudFront with a VPC origin if you want the vault UI from a phone. Treat that as a design to adapt the templates to, not a template.</p>
+
+  <h2 id="replicas">7. A second server</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit remote add origin https://vault.home.example --default</span>
+<span class="p">$</span> <span class="cmd">sgit remote add backup https://vault.cloud.example</span>
+<span class="p">$</span> <span class="cmd">sgit push --remote backup</span>
+Vault structure re-synced to server.</pre>
+  <p>The second server then holds the same encrypted vault, and a clone from it matches. Servers do not replicate to each other: schedule the push to <code>backup</code>, or have agents push to both. A server that lost the vault, a <code>memory</code>-mode server after a restart for example, is restored by the same push from any clone with the vault key; tested here, the fresh clone came back at the same commit.</p>
+
+  <h2 id="breach">8. What the server holds</h2>
+  <p>After the tests on this page the test vault's storage was 26 files, 228 KB: encrypted objects named by hash, encrypted keys, refs, and a manifest of three fields, the vault id, a hash of the write key and the creation time. A search of all of it for the text the agents wrote, and for the file and folder names, found nothing. Someone with the storage can see vault ids, sizes and timing, and can delete; they cannot read. The keys are with the agents and with you, so protect those places: ephemeral containers, secrets mounted only where needed, one vault per trust boundary.</p>
+
+  <h2 id="trouble">When something goes wrong</h2>
+  <div class="tablewrap"><table>
+    <tr><th>You see</th><th>What it means</th><th>Do this</th></tr>
+    <tr><td><code>unrecognized arguments: --endpoint</code></td><td>The flag in the deployment docs is not the CLI's</td><td>Use <code>--base-url</code></td></tr>
+    <tr><td><code>401</code> from the server</td><td>No token, or the wrong one</td><td>Pass <code>--token</code>, or the <code>x-sgraph-access-token</code> header</td></tr>
+    <tr><td><code>Server.__init__() takes 2 positional arguments but 3 were given</code> at start-up</td><td>A pip install pulled <code>mcp</code> 2.x</td><td><code>pip install "mcp&lt;2"</code></td></tr>
+    <tr><td><code>address already in use</code> on 8080</td><td>The serve module binds 8080</td><td>Map another host port in Docker, or run <code>uvicorn sgraph_ai_app_send__docker.app:create_app --factory --port 8081</code></td></tr>
+    <tr><td><code>warning: you are using a PRIVATE key against a plain http:// URL</code></td><td>The token travels in the clear, and the key is in argv</td><td>Fine on one host's Docker network; put TLS in front beyond it</td></tr>
+    <tr><td>A clone fails after the server restarted</td><td><code>memory</code> mode was emptied</td><td><code>sgit push</code> from any clone, or use <code>disk</code> or <code>s3</code></td></tr>
+    <tr><td><code>sgit doctor</code> reports the token rejected while push works</td><td>Seen in this test: doctor did not use the token saved by <code>--token</code></td><td>Trust a real <code>sgit push</code> or the health check with the header</td></tr>
+  </table></div>
+
+  <div class="pagenav"><a href="agents-sharing-one-vault.html">← Agents sharing one vault</a><a href="limitations.html">When NOT to use sgit →</a></div>
+</main>
+
+<footer class="site"><div class="cols">
+  <div>
+    <div class="brandline">sgit<span>.ai</span></div>
+    <p>sgit is git for encrypted vaults, clone, commit, branch and merge files that are encrypted with AES-256-GCM before they leave your machine. Open source, Apache-2.0, in beta and powering production workflows.</p>
+    <p class="vaultnote">🔒 Thirty vaults on this site open in your browser with published read keys, every byte decrypted client-side, none of it readable by the server that stores it. The pages that describe them are ordinary static files. The medium is the message.</p>
+    <p class="verline">site <a href="../admin/versions.html">v0.7.7</a> · <a href="../admin/index.html">engineering</a> · <a href="self-host-for-agents.md" title="The same page as plain markdown, for agents, and for reading without the styling">this page as markdown</a></p>
+  </div>
+  <div>
+    <h4>Docs</h4>
+    <a href="../docs/what-is-sgit.html">What is sgit</a>
+    <a href="../docs/guidance/index.html">Working on a vault: start here</a>
+    <a href="../docs/surfaces.html">Three surfaces</a>
+    <a href="../docs/installation.html">Installation</a>
+    <a href="../docs/quickstart.html">Quickstart</a>
+    <a href="../docs/sgit-for-git-users.html">sgit for git users</a>
+    <a href="../docs/agents.html">Working with AI agents</a>
+    <a href="../docs/limitations.html">When NOT to use sgit</a>
+  </div>
+  <div>
+    <h4>SG/Vault platform</h4>
+    <a href="../docs/vault/index.html">SG/Vault &amp; the platform</a>
+    <a href="../docs/vault/vault-apps.html">Building vault apps</a>
+    <a href="../docs/vault/sg-bridge.html">The window.sg bridge</a>
+    <a href="../docs/vault/content-authoring.html">Content authoring</a>
+    <a href="../docs/vault/sub-vaults.html">Sub-vaults</a>
+    <a href="../docs/vault/git-and-vaults.html">Git repos inside vaults</a>
+    <a href="../docs/vault/reading-a-vault-file.html">Reading a vault file</a>
+    <a href="../docs/vault/static-hosting.html">Static hosting</a>
+    <a href="https://sgraph.ai">More at sgraph.ai</a>
+  </div>
+  <div>
+    <h4>Project</h4>
+    <a href="https://github.com/SGit-AI/SGit-AI__CLI">GitHub</a>
+    <a href="../security/index.html">Security</a>
+    <a href="../why/index.html">Why does this exist?</a>
+    <a href="../use-cases/index.html">Use cases</a>
+    <a href="../case-studies/index.html">Case studies</a>
+    <a href="../skills/index.html">Skills for AI agents</a>
+    <a href="../docs/briefs/index.html">Cross-team briefs</a>
+    <a href="../articles/index.html#subscribe">Subscribe to new articles</a>
+    <a href="../llms.txt">llms.txt</a>
+    <a href="../llms-full.txt">llms-full.txt</a>
+    <a href="../admin/index.html">Admin &amp; engineering</a>
+    <a href="../admin/versions.html">Release history</a>
+  </div>
+</div></footer>
+
+<script>
+(function(){var R=document.documentElement.getAttribute('data-root')||'';var V='?v=' + 'v0.7.7';var C=[R,'','../','/'].filter(function(v,i,a){return a.indexOf(v)===i});
+function wait(ms){return new Promise(function(res){var t=Date.now();(function p(){if(window.sg)return res(window.sg);if(Date.now()-t>ms)return res(null);setTimeout(p,60)})()})}
+function grab(sg,p){return new Promise(function(res){(async function(){if(sg&&sg.vfs&&sg.vfs.readText){try{var t=await sg.vfs.readText(p);if(t)return res(t)}catch(e){}}try{var r=await fetch(p+V);if(r.ok)return res(await r.text())}catch(e){}res(null)})()})}
+async function css(sg){for(var i=0;i<C.length;i++){var p=C[i]+'assets/site.css';if(sg&&sg.loadCss){try{await sg.loadCss(p);return}catch(e){}}var t=await grab(sg,p);if(t){var s=document.createElement('style');s.textContent=t;document.head.appendChild(s);return}}}
+async function js(sg,name){name=name||'assets/site.js';for(var i=0;i<C.length;i++){var p=C[i]+name;if(sg&&sg.loadJs){try{await sg.loadJs(p);return}catch(e){}}var t=await grab(sg,p);if(t){try{(0,eval)(t)}catch(e){console.error('[site] js failed',name,e)}return}}}
+async function boot(){var inVault=false;try{inVault=(window!==window.parent)||location.protocol==='blob:'}catch(e){inVault=true}
+var sg=inVault?await wait(2500):null;window.__sgitBoot={roots:C,grab:function(p){return grab(sg,p)},version:V};await css(sg);await js(sg);document.documentElement.classList.add('ready');js(sg,'assets/site-chat.js');try{window.parent&&window.parent.postMessage({type:'sg-app-ready'},'*')}catch(e){}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+var mine=V.slice(3),last=0;
+function fresh(){if(location.hostname!=='sgit.ai'||Date.now()-last<60000)return;last=Date.now();
+fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){t=(t||'').trim();if(!/^v[0-9]+[.][0-9]+[.][0-9]+$/.test(t)||t===mine)return;
+var k='sgit.fresh:'+location.pathname;try{if(sessionStorage.getItem(k)===t)return;sessionStorage.setItem(k,t)}catch(e){}
+var u=new URL(location.href);u.searchParams.set('v',t);location.replace(u.href)}).catch(function(){})}
+try{var u=new URL(location.href);if(u.searchParams.get('v')===mine){u.searchParams.delete('v');history.replaceState(history.state,'',u.pathname+u.search+u.hash)}}catch(e){}
+fresh();addEventListener('pageshow',function(e){if(e.persisted){last=0;fresh()}});document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')fresh()});
+})();
+</script>
+</body>
+</html>

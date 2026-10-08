@@ -2,7 +2,7 @@
 
 > Every number in the article How much of this did I write? as a file in a vault: the session's messages, releases and days; per-article ledgers with the turns behind each; the corrections and their latency; the article dependency map three levels deep; the article's own fractal from strategy to data; the record the memos stood on; seventy-five article versions with a diff between any two; and a screenshot and hash of each cited source. With the app that reads them.
 
-*Source: <https://sgit.ai/demos/vaults/how-much-evidence/index.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/how-much-evidence/index.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

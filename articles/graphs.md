@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.7 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,44 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-47 of 47 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+48 of 48 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-47 articles, 191 links between them (316 mentions in all). 38 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+48 articles, 195 links between them (321 mentions in all). 39 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Fractal Semantic Graphs](#introducing-fractal-semantic-graphs) (17 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](encrypted-memory-for-isolated-agents.md)
+
+2026-10-08 · Vaults & methodAgents & policySite & engineering
+
+Agents are safer in isolated places, but isolation takes away the shared drive and ephemeral compute takes away the disk, so their memory has to live somewhere the owner controls and a breach does not expose; a self-hosted SG/Send container with an access token and storage in a folder or bucket, with sgit in each agent, gives them that: scoped clones make each run fast, the server holds only ciphertext, any clone can restore any server, and the trust sits with the agents and their keys, so a scoped clone is speed, not a boundary, and one vault per trust boundary is the rule.
+
+*[diagram]*
+**concept**claim**method**artefact**example**question
+
+**13 nodes, 14 edges**
+
+- **Isolated agents lose their memory** (claim) No shared drive in the box, and no disk that survives ephemeral compute.
+- **Owner-controlled, reachable, breach-safe** (concept) The three conditions the memory has to meet.
+- **One vault container, an access token** (artefact) diniscruz/sg-send-vault, port 8080, storage in a folder, S3 or memory.
+- **Start with a Mac mini** (method) Vault container next to agent containers; back up one folder of ciphertext.
+- **One agent run** (method) Scoped shallow clone, one task, commit, push, delete the container.
+- **Scoped clones make it fast** (example) One folder of a 600-commit vault in 14 s against 80 s for the whole.
+- **A scoped clone is not a boundary** (claim) sgit fetch widened a1's clone to a2's folder: one vault per trust boundary.
+- **Kubernetes: a Deployment and Jobs** (method) One replica on disk or more on S3, ClusterIP, NetworkPolicy, a Secret per agent.
+- **The cloud, with no public route** (method) EC2 or Fargate in a private subnet, S3, VPN to the Mac mini, CloudFront for phones.
+- **Two servers, one vault** (example) Push to a backup remote; any clone restored a memory-mode server after a restart.
+- **A breach gives away ciphertext** (claim) No plaintext, no file names in storage; vault ids, sizes, timing, a write-key hash.
+- **The trust sits with the agents** (claim) Writing agents hold the vault key on disk; ephemeral boxes and per-agent secrets matter.
+- **What is ready and what is not** (question) The image runs; cloud templates are in progress; use --base-url, not --endpoint.
+
+> An agent that starts every run from nothing repeats work, loses what it found, and cannot hand anything to the next agent. Why isolated agents need memory outside the box.
+
+> `--path` decides what is downloaded, not what can be read. Scoped clones are speed, not an access boundary.
+
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs).
 
 ## [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md)
 
@@ -141,7 +172,7 @@ Security decisions start with who the threat agent is, what the attack vector is
 
 > So the air gap protects against an attacker who, for a firm like this, does not really exist, and pays for it with the tools that defend against the attackers who do. The Mac mini, read against the ladder.
 
-builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted); continued by [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop).
 
 ## [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md)
 
@@ -333,7 +364,7 @@ A desktop safe to hand to an agent needs isolation, an egress allowlist, secrets
 
 > The model's own defences reduce how often that matters, and do not replace it. Why the desktop, not the model, is the barrier.
 
-builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why).
+builds on [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why); continued by [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents).
 
 ## [An open AI governance framework, and what its licence let us build](ai-baseline-control-framework.md)
 
@@ -463,7 +494,7 @@ No model runs on the author's laptop because a process there runs as the author 
 
 > The barrier that holds is the small grant, not a cleverer filter. Prompt injection is not prevented by the cloud; what the injected instruction can reach is.
 
-builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
+builds on [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets); continued by [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [A locked-down desktop for an agent, by the minute, is still hard to rent](#an-agent-desktop-by-the-minute), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack).
 
 ## [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](the-deck-i-could-not-download.md)
 
@@ -527,7 +558,7 @@ A running team of twelve Claude agents is described as a system and as a set of 
 
 > A memory that can be shown to its subject is a memory that has been kept to what can be shown. The privacy design showing through the product design: the what-we-know-about-you pack.
 
-builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
+builds on [Replicating the agentic inbox: a walkthrough from one Claude session to a team of agents that never press send](#replicating-the-agentic-inbox), [Six agents, one inbox: what a real multi-agent setup taught me about access policies](#six-agents-one-inbox), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted), [Custom UIs are not the exception: the inbox in 2026, where every message has its own universe](#custom-uis-are-not-the-exception), [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs), [Memory is not a spectator sport: how a web of open sites, graphs and vaults became the memory for sessions like this one](#memory-is-not-a-spectator-sport), [Before you give an agent a connector, give the connector a twin](#connector-twin-before-you-deploy-an-agent), [The wall under the reply: end an email with the state of the thread, not the thread](#the-wall-under-the-reply), [The identity we wanted to give the agents: a week of design, the line in Google's terms, and why login plus secrets is still too hard](#the-identity-we-wanted-to-give-the-agents); continued by [Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes](#encrypted-memory-for-isolated-agents), [Knowing when to stop: what experience gives people, and what we have to design into agents](#knowing-when-to-stop), [Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source](#agency-is-not-a-yes), [Hope or enforcement: one customer service agent, three designs, and who keeps each promise](#hope-or-enforcement), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [Why my agents do not run on my laptop: chat, Cowork and Code in the cloud, a vault as the shared drive, and the two walls an operating system has](#why-my-agents-do-not-run-on-my-laptop), [The deck I could not download: an author-first home for presentations, as a business plan somebody else can build](#the-deck-i-could-not-download), [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](#a-personal-agent-that-keeps-your-secrets).
 
 ## [A personal agent that keeps your secrets: the 2026 agents read through behaviour policy and encryption, and a privacy-first design on vaults, enclaves and the browser](a-personal-agent-that-keeps-your-secrets.md)
 

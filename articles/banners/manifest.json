@@ -6,6 +6,23 @@
  "generated_by": "admin/build/build_pages.py",
  "entries": [
   {
+   "slug": "encrypted-memory-for-isolated-agents",
+   "kind": "article",
+   "kicker": "SGit Newsroom",
+   "date": "2026-10-08",
+   "author": "Dinis Cruz",
+   "title": "Encrypted memory for agents that run somewhere else: sgit deployment patterns, from a Mac mini to Kubernetes",
+   "teaser": "Agents in isolated, ephemeral places need memory that outlives them. Five sgit deployment patterns, from a Mac mini to Kubernetes, with ciphertext-only servers.",
+   "ideas": [
+    "Isolated agents lose their memory",
+    "A scoped clone is not a boundary",
+    "A breach gives away ciphertext"
+   ],
+   "hero": "articles/images/dp-overview.webp",
+   "url": "sgit.ai/articles/encrypted-memory-for-isolated-agents.html",
+   "out": "articles/banners/encrypted-memory-for-isolated-agents.jpg"
+  },
+  {
    "slug": "knowing-when-to-stop",
    "kind": "article",
    "kicker": "SGit Newsroom",
@@ -840,10 +857,10 @@
     "Next: an issue picked for what you care about"
    ],
    "mosaic": [
+    "articles/cards/encrypted-memory-for-isolated-agents.webp",
     "articles/cards/knowing-when-to-stop.webp",
     "articles/cards/agency-is-not-a-yes.webp",
-    "articles/cards/hope-or-enforcement.webp",
-    "articles/cards/who-are-you-protecting-against.webp"
+    "articles/cards/hope-or-enforcement.webp"
    ],
    "url": "sgit.ai/subscribe/",
    "out": "articles/banners/subscribe.jpg"

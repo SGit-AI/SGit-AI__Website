@@ -1,0 +1,198 @@
+<main class="doc">
+  <p class="crumb"><a href="index.html">Docs</a> / Guides</p>
+  <h1>Self-hosting a vault server for agents</h1>
+  <p class="lead">Encrypted memory for agents that run in isolated places: VMs, containers, a Mac mini, GPU machines, jobs that last one task. One SG/Send container with an access token, storage in a folder or an S3 bucket, and <code>sgit</code> in each agent. The server stores ciphertext; the agents and you hold the keys. The why, and five deployment patterns drawn as diagrams, are in the article <a href="../articles/encrypted-memory-for-isolated-agents.html">Encrypted memory for agents that run somewhere else</a>.</p>
+  <p class="small dim">Tested on 8 October 2026 with sgit-ai 0.20.0 and sgraph-ai-app-send 0.33.0 (the package inside the image) against a local server. Sections that were not run here say so. Every server setting is documented in the <a href="../deploy/index.html">deployment docs</a>.</p>
+
+  <h2 id="server">1. Run the server</h2>
+  <p>With Docker, on any amd64 or arm64 machine, including Apple silicon:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">export SG_ACCESS_TOKEN=$(openssl rand -hex 32)</span>    <span class="d"># keep it in a password manager</span>
+<span class="p">$</span> <span class="cmd">docker run -d --name vault -p 127.0.0.1:8080:8080 \
+    -e SGRAPH_SEND__ACCESS_TOKEN="$SG_ACCESS_TOKEN" \
+    -v "$PWD/sg-data:/data" diniscruz/sg-send-vault:v0.33.0</span></pre>
+  <p>Without Docker, from pip, which runs the same code with the same command as the image:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">pip install sgraph-ai-app-send "mcp&lt;2"</span>
+<span class="p">$</span> <span class="cmd">SEND__STORAGE_MODE=disk SEND__DISK_PATH=./sg-data \
+  SGRAPH_SEND__ACCESS_TOKEN="$SG_ACCESS_TOKEN" \
+  python -m sgraph_ai_app_send__docker.serve</span></pre>
+  <p>Check it, with and without the token:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8080/api/info/health</span>
+401
+<span class="p">$</span> <span class="cmd">curl -H "x-sgraph-access-token: $SG_ACCESS_TOKEN" http://localhost:8080/api/info/health</span>
+{"status":"ok"}</pre>
+  <div class="tablewrap"><table>
+    <tr><th>Setting</th><th>Values</th><th>Notes</th></tr>
+    <tr><td><code>SGRAPH_SEND__ACCESS_TOKEN</code></td><td>a long random string</td><td>Gates every route, reads included. Header <code>x-sgraph-access-token</code>; the browser UI has a sign-in form.</td></tr>
+    <tr><td><code>SEND__STORAGE_MODE</code></td><td><code>disk</code>, <code>s3</code>, <code>memory</code></td><td>The image sets <code>disk</code>. <code>memory</code> is emptied by a restart.</td></tr>
+    <tr><td><code>SEND__DISK_PATH</code></td><td>a path</td><td>The image uses <code>/data</code>. This folder is the whole memory: back it up.</td></tr>
+    <tr><td><code>SEND__S3_BUCKET</code></td><td>a bucket name</td><td>For <code>s3</code> mode, with the usual AWS credentials. Needed for more than one replica.</td></tr>
+  </table></div>
+
+  <h2 id="vault">2. Create the memory vault</h2>
+  <p>From the machine you administer from, not from an agent:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">mkdir memory &amp;&amp; cd memory &amp;&amp; mkdir -p agents/a1 agents/a2 shared</span>
+<span class="p">$</span> <span class="cmd">echo "# a1 notes" &gt; agents/a1/notes.md; echo "# a2 notes" &gt; agents/a2/notes.md; echo "# brief" &gt; shared/brief.md</span>
+<span class="p">$</span> <span class="cmd">sgit init --base-url http://localhost:8080 --token "$SG_ACCESS_TOKEN" .</span>
+Vault created!  Vault ID: …
+  Vault key: …            <span class="d"># the whole credential: store it now, show it to no one</span>
+<span class="p">$</span> <span class="cmd">sgit commit "memory layout"</span>
+<span class="p">$</span> <span class="cmd">sgit push --token "$SG_ACCESS_TOKEN"</span>
+Pushed 1 commit(s), 3 object(s) uploaded.</pre>
+  <p>Use <code>--base-url</code>. The deployment docs show <code>--endpoint</code> in three places; sgit 0.20.0 answers <code>unrecognized arguments: --endpoint</code>.</p>
+
+  <h2 id="agent">3. The agent's entry point</h2>
+  <p>The whole memory protocol, run once per task. It expects the base URL, the access token, the agent's id, and a file holding the key to its vault:</p>
+<pre class="shell">#!/bin/sh
+set -e
+sgit clone --base-url "$SG_BASE_URL" --token "$SG_ACCESS_TOKEN" \
+     --path "agents/$AGENT_ID" --depth 1 "$(cat "$VAULT_KEY_FILE")" /work/memory
+cd /work/memory
+# ... the agent reads agents/$AGENT_ID/, does one task, writes what it learned ...
+sgit commit "$AGENT_ID run $(date -u +%FT%TZ)"
+sgit push                     <span class="d"># pulls first; uses the token the clone saved</span></pre>
+  <p class="small dim">Run as written against the local server: the clone held one folder, the commit and push uploaded one object, and a full clone elsewhere pulled the change.</p>
+  <ul>
+    <li><b><code>--path</code> and <code>--depth 1</code></b> keep the start fast as the vault grows: one folder of a 600-commit vault in 14 s, against 80 s for all of it (<a href="partial-clones.html">Partial clones</a>).</li>
+    <li><b><code>--path</code> is not an access boundary.</b> The clone holds the vault key, and <code>sgit fetch agents/a2</code> widens it to another agent's folder. For agents that must not read each other's memory, use one vault per agent, and read keys for what an agent only reads.</li>
+    <li><b>The clone keeps the vault key and the access token</b> in <code>.sg_vault/local/</code>, so that <code>sgit push</code> works without them on the command line. Delete the working directory, or the container, when the task ends.</li>
+    <li>Several agents pushing to one vault is the setup in <a href="agents-sharing-one-vault.html">Agents sharing one vault</a>.</li>
+  </ul>
+
+  <h2 id="compose">4. Docker Compose: a Mac mini or any single host</h2>
+<pre class="shell">services:
+  vault:
+    image: diniscruz/sg-send-vault:v0.33.0
+    environment:
+      SEND__STORAGE_MODE: disk
+      SEND__DISK_PATH: /data
+      SGRAPH_SEND__ACCESS_TOKEN: ${SG_ACCESS_TOKEN}
+    volumes:
+      - ./sg-data:/data
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+  agent-a1:
+    image: your-agent-image          <span class="d"># anything with sgit-ai and the entry point above</span>
+    environment:
+      SG_BASE_URL: http://vault:8080
+      SG_ACCESS_TOKEN: ${SG_ACCESS_TOKEN}
+      AGENT_ID: a1
+      VAULT_KEY_FILE: /run/secrets/a1_vault_key
+    secrets: [a1_vault_key]
+    depends_on: [vault]
+
+secrets:
+  a1_vault_key:
+    file: ./keys/a1.vault-key</pre>
+  <p class="small dim">Not run here: this session had no Docker daemon. It uses only the image's documented settings.</p>
+  <p>Back up <code>./sg-data</code> with whatever you already use for folders. It holds ciphertext, hashes and vault ids, so the backup does not need to be trusted with the contents. To reach the server from other devices, put TLS in front (the deployment docs suggest Caddy) on a network you control; the vault UI needs a secure context in the browser.</p>
+
+  <h2 id="k8s">5. Kubernetes</h2>
+  <p>One Deployment for the server, a Service only the cluster can reach, a NetworkPolicy that admits only agent pods, and a Job per agent task. Create the secrets first:</p>
+<pre class="shell"><span class="p">$</span> <span class="cmd">kubectl create namespace agent-memory</span>
+<span class="p">$</span> <span class="cmd">kubectl -n agent-memory create secret generic vault-access-token --from-literal=token="$SG_ACCESS_TOKEN"</span>
+<span class="p">$</span> <span class="cmd">kubectl -n agent-memory create secret generic agent-a1-vault-key --from-file=vault-key=./keys/a1.vault-key</span></pre>
+<pre class="shell">apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: {name: vault-data, namespace: agent-memory}
+spec:
+  accessModes: [ReadWriteOnce]
+  resources: {requests: {storage: 10Gi}}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: {name: sg-send-vault, namespace: agent-memory}
+spec:
+  replicas: 1                       <span class="d"># disk storage: one writer. More replicas need SEND__STORAGE_MODE=s3</span>
+  strategy: {type: Recreate}
+  selector: {matchLabels: {app: sg-send-vault}}
+  template:
+    metadata: {labels: {app: sg-send-vault}}
+    spec:
+      containers:
+        - name: vault
+          image: diniscruz/sg-send-vault:v0.33.0
+          ports: [{containerPort: 8080}]
+          env:
+            - {name: SEND__STORAGE_MODE, value: disk}
+            - {name: SEND__DISK_PATH, value: /data}
+            - name: SGRAPH_SEND__ACCESS_TOKEN
+              valueFrom: {secretKeyRef: {name: vault-access-token, key: token}}
+          volumeMounts: [{name: data, mountPath: /data}]
+      volumes:
+        - {name: data, persistentVolumeClaim: {claimName: vault-data}}
+---
+apiVersion: v1
+kind: Service
+metadata: {name: vault, namespace: agent-memory}
+spec:
+  type: ClusterIP
+  selector: {app: sg-send-vault}
+  ports: [{port: 8080, targetPort: 8080}]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata: {name: vault-from-agents-only, namespace: agent-memory}
+spec:
+  podSelector: {matchLabels: {app: sg-send-vault}}
+  policyTypes: [Ingress]
+  ingress:
+    - from: [{podSelector: {matchLabels: {role: agent}}}]
+      ports: [{port: 8080}]
+---
+apiVersion: batch/v1
+kind: Job
+metadata: {generateName: agent-a1-, namespace: agent-memory}   <span class="d"># kubectl create, not apply</span>
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 600
+  template:
+    metadata: {labels: {role: agent}}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: agent
+          image: your-agent-image
+          command: ["/entrypoint.sh"]
+          env:
+            - {name: SG_BASE_URL, value: "http://vault:8080"}
+            - {name: AGENT_ID, value: a1}
+            - {name: VAULT_KEY_FILE, value: /secrets/vault-key}
+            - name: SG_ACCESS_TOKEN
+              valueFrom: {secretKeyRef: {name: vault-access-token, key: token}}
+          volumeMounts:
+            - {name: key, mountPath: /secrets, readOnly: true}
+            - {name: work, mountPath: /work}
+      volumes:
+        - {name: key, secret: {secretName: agent-a1-vault-key}}
+        - {name: work, emptyDir: {}}</pre>
+  <p class="small dim">Not run on a cluster for this guide; it parses as YAML and uses only the image's documented settings. A NetworkPolicy only takes effect with a network plugin that enforces it.</p>
+
+  <h2 id="cloud">6. The cloud</h2>
+  <p>The deployment docs have CloudFormation templates for <a href="../deploy/index.html">Lambda, Fargate and EC2</a>, marked as written and lint-clean with live validation in progress. As written they put a public endpoint in front: a Function URL, a load balancer, or an instance with its own certificate. For agents, the shape the article draws is the same container in a private subnet, <code>s3</code> storage, agents reaching it on a private address, a VPN to any machine outside, and CloudFront with a VPC origin if you want the vault UI from a phone. Treat that as a design to adapt the templates to, not a template.</p>
+
+  <h2 id="replicas">7. A second server</h2>
+<pre class="shell"><span class="p">$</span> <span class="cmd">sgit remote add origin https://vault.home.example --default</span>
+<span class="p">$</span> <span class="cmd">sgit remote add backup https://vault.cloud.example</span>
+<span class="p">$</span> <span class="cmd">sgit push --remote backup</span>
+Vault structure re-synced to server.</pre>
+  <p>The second server then holds the same encrypted vault, and a clone from it matches. Servers do not replicate to each other: schedule the push to <code>backup</code>, or have agents push to both. A server that lost the vault, a <code>memory</code>-mode server after a restart for example, is restored by the same push from any clone with the vault key; tested here, the fresh clone came back at the same commit.</p>
+
+  <h2 id="breach">8. What the server holds</h2>
+  <p>After the tests on this page the test vault's storage was 26 files, 228 KB: encrypted objects named by hash, encrypted keys, refs, and a manifest of three fields, the vault id, a hash of the write key and the creation time. A search of all of it for the text the agents wrote, and for the file and folder names, found nothing. Someone with the storage can see vault ids, sizes and timing, and can delete; they cannot read. The keys are with the agents and with you, so protect those places: ephemeral containers, secrets mounted only where needed, one vault per trust boundary.</p>
+
+  <h2 id="trouble">When something goes wrong</h2>
+  <div class="tablewrap"><table>
+    <tr><th>You see</th><th>What it means</th><th>Do this</th></tr>
+    <tr><td><code>unrecognized arguments: --endpoint</code></td><td>The flag in the deployment docs is not the CLI's</td><td>Use <code>--base-url</code></td></tr>
+    <tr><td><code>401</code> from the server</td><td>No token, or the wrong one</td><td>Pass <code>--token</code>, or the <code>x-sgraph-access-token</code> header</td></tr>
+    <tr><td><code>Server.__init__() takes 2 positional arguments but 3 were given</code> at start-up</td><td>A pip install pulled <code>mcp</code> 2.x</td><td><code>pip install "mcp&lt;2"</code></td></tr>
+    <tr><td><code>address already in use</code> on 8080</td><td>The serve module binds 8080</td><td>Map another host port in Docker, or run <code>uvicorn sgraph_ai_app_send__docker.app:create_app --factory --port 8081</code></td></tr>
+    <tr><td><code>warning: you are using a PRIVATE key against a plain http:// URL</code></td><td>The token travels in the clear, and the key is in argv</td><td>Fine on one host's Docker network; put TLS in front beyond it</td></tr>
+    <tr><td>A clone fails after the server restarted</td><td><code>memory</code> mode was emptied</td><td><code>sgit push</code> from any clone, or use <code>disk</code> or <code>s3</code></td></tr>
+    <tr><td><code>sgit doctor</code> reports the token rejected while push works</td><td>Seen in this test: doctor did not use the token saved by <code>--token</code></td><td>Trust a real <code>sgit push</code> or the health check with the header</td></tr>
+  </table></div>
+
+  <div class="pagenav"><a href="agents-sharing-one-vault.html">← Agents sharing one vault</a><a href="limitations.html">When NOT to use sgit →</a></div>
+</main>

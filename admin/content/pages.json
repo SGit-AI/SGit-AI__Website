@@ -318,6 +318,12 @@
     "desc": "The loop for a team of agents on one vault with sgit-ai 0.18.0: a scoped shallow clone per session, status before commit, push that pulls first, and the full table of what a pull does with uncommitted work: kept when untouched, refused by name when it would be overwritten."
   },
   {
+    "path": "docs/self-host-for-agents.html",
+    "section": "docs",
+    "title": "Self-hosting a vault server for agents, sgit Docs",
+    "desc": "Encrypted memory for agents in VMs, containers, a Mac mini or ephemeral jobs: run the SG/Send container with an access token and a storage folder, create the vault, the agent's clone-work-push entry point, Docker Compose, Kubernetes manifests, the cloud, a second server, what the server holds, and the errors you may meet (--endpoint, mcp<2, port 8080)."
+  },
+  {
     "path": "docs/update-to-0-18-0.html",
     "section": "docs",
     "title": "Update sgit-ai to 0.18.0, sgit Docs",
