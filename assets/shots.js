@@ -104,11 +104,25 @@
     }, function () { failed(fig, name); });
   }
 
+  // Trail cards (v0.6.102): the same two paths as fill(), for a card thumbnail drawn as a background.
+  function trails() {
+    var sg = vaultHost();
+    [].forEach.call(document.querySelectorAll('[data-trail-img]'), function (el) {
+      var path = el.getAttribute('data-trail-img');
+      if (!sg) { el.style.backgroundImage = 'url("' + path.replace(/"/g, '%22') + '")'; return; }
+      sg.vfs.read(path).then(function (data) {
+        var ext = (path.split('.').pop() || '').toLowerCase();
+        el.style.backgroundImage = 'url("' + URL.createObjectURL(new Blob([data], { type: ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : ext === 'png' ? 'image/png' : 'image/webp' })) + '")';
+      }, function () { /* a missing thumbnail leaves the card readable */ });
+    });
+  }
+
   function all() {
     return [].slice.call(document.querySelectorAll('figure.shot[data-shot]'));
   }
 
   function start() {
+    trails();
     var figs = all();
     if (!figs.length) return;
     // forEach passes (value, index) — never hand it fill directly, or the index

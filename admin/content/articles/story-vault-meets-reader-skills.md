@@ -25,6 +25,8 @@ I replied under his post that this is close to what I argue in [The future of ne
 
 He is right, and the connection is tighter than either article said on its own. This is the drawing of it.
 
+!trail bridge
+
 ## Each Reader Skill is a question the graph can already answer
 
 The story vault keeps what was reported as a graph: claims, each tied to evidence that has been fetched, saved and hashed; sources, with how recently each was checked; versions, where a correction supersedes a claim rather than deleting it. The article is one projection of that graph. The figure at the top puts Markus's six skills on top of it, and each one becomes an operation.
@@ -79,7 +81,7 @@ One local topic, one vault, one service, one ledger. If it works, the second top
 
 ## Played out in full
 
-The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](/articles/the-bridge-followed-to-the-end.html), with its [vault](/demos/vaults/bridge-simulation/index.html). Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
+The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](/articles/the-bridge-followed-to-the-end.html), with its [vault](/demos/vaults/bridge-simulation/index.html), which since version 0.2 also counts the costs, the two years of long tail, the stories after it and the trust they build. Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
 
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
 

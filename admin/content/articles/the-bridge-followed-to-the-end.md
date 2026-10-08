@@ -17,6 +17,8 @@ Where I live, a bridge closed. It was a nightmare on the school run, and a night
 
 Markus Franz used the same example in [The Article Is Only the Beginning](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/), and I wrote earlier today about [how his Reader Skills sit on top of a story vault](/articles/story-vault-meets-reader-skills.html). This article plays his example out in full, as a working simulation, from the first notice to the reopening: the journalism, the paper, three readers, the institutions and agents that also need the answer, and where the money goes. Everything in it is fictional, the town of Wendmouth, the Mill Street Bridge, the Courier and its staff, the readers, the contractor and every figure. The [vault](/demos/vaults/bridge-simulation/index.html) is published with its read key, and every number below is computed by its build script from assumptions written down in it.
 
+!trail bridge
+
 ## The journalism is getting the date right
 
 !shot bw-conflict.webp | images/ | Three answers to the only question that mattered, as the newsroom held them on 15 October: an official estimate, a documented contract and an expert assessment, each with its evidence and a confidence that comes from how independent that evidence is.
@@ -34,6 +36,8 @@ Sometimes the text is not even the product. Markus makes the point that much of 
 !shot bw-timeline.webp | images/ | Top: what each source said the reopening date would be, day by day. Bottom: the five days the paper led with the story, against the fifty-seven days readers needed its current state.
 
 This is the chart I think matters most. A story is newsworthy at the beginning and at the end: the closure, the scandal in the middle if there is one, the reopening. The paper in the simulation leads with the bridge on five days. But the information is valuable every day it is closed, to everybody who has to plan around it, and in the simulation readers need its current state on fifty-seven days. The thirteen days on which something actually changed are the days the tracker earns its keep: the update, the alert, the correction, sent to the people it affects.
+
+!shot collage-front-pages.webp | ../demos/vaults/bridge-simulation/images/ | The Courier on the five days the bridge was news, each front page one projection of the story graph with the tracker beside it, and the fifty-seven days in between that readers needed it.
 
 That gap between the news cycle and the need is where the money has been left on the table. An article is written once. A maintained claim, kept current until the bridge opens, is a service.
 
@@ -79,8 +83,40 @@ Interviewees are not paid. The Courier does not pay for comment, and an anonymou
 
 Every figure here is an assumption, and the vault writes them down where anybody can change them and run it again. What does not depend on the assumptions is the shape: a local story kept as a graph is worth something every day it matters, to everybody it touches, in amounts small enough to pay without thinking, and the graph knows whom to pay.
 
+## Version 0.2: what it cost, and what it keeps earning
+
+The first version of the vault showed who was paid. The question it left open is the one any publisher would ask next: what did it cost, and does it make money? So the vault now has a second build script, `tools/economics.py`, and nine new views, and because the vault is versioned like code, its *What's new* page records the change.
+
+!shot collage-views.webp | ../demos/vaults/bridge-simulation/images/ | The vault, view by view: twenty of its twenty-two views, the nine new in version 0.2 outlined.
+
+**Costs and profit.** The fixed cost is mostly the reporting, and it comes first: 50 hours of the reporter's time and 7.5 of the editor's, £2,040 with a legal read, set-up and the platform. The variable costs, payments, alerts, compute and hosting, follow use and come to 9.3% of revenue. During the closure the Courier makes £678, the infrastructure share covers its costs with £20 to spare, and the reporter is under water: her share is about £19 an hour against a cost basis of £30. The story breaks even on 20 November, day forty, and the scale chart says why the town mattered: below about 1,500 followers it would not have paid for its reporting, and above that every follower is margin.
+
+!shot el-economics-charts.webp | ../demos/vaults/bridge-simulation/images/ | Revenue against cost, day by day, crossing on 20 November; and the same story with more or fewer followers, where fixed costs stay put and variable costs follow use.
+
+**Two years on.** The story stopped being news on 4 December. It kept selling. A council post-incident review, loss adjusters handling business-interruption claims, the county's inspections of eight bridges of the same design, a second fund ahead of the contractor's results, a procurement watchdog, a university research group, an insurer and two other towns with the same bridge all buy the record of what was known, when, and from whom. Over two years the bridge earns £4,378 and £1,181 of profit. After the reopening, 96% of its revenue comes from institutions and agents rather than the town: the revenue moves from the local reader to the players who want the data. The reporter's effective rate rises from £20 an hour at the reopening to £25.54, and Priya's three photographs have earned her £328.
+
+!shot el-projection-chart.webp | ../demos/vaults/bridge-simulation/images/ | Revenue by month over two years, by who paid: the town in October and November, institutions and agents after that, against a cost that is almost all in the first two months.
+
+**The next stories, and the payment as a signal.** The bridge is the first story in the Courier's graph, not the last. The vault plays out eleven more over two years: a school catchment change, the footbridge resurfacing, the county's sister-bridge inspections, a business rates review, a bus timetable, a wharf flood-defence overrun, a contractor's pattern across three councils, a car park, winter floods, a school meals contract and night closures on the bypass. Each starts with the council, the procurement portal, the routes and the contributors already in the graph, which saves 157 of 331 reporting hours. And each is sized by what people paid for in its first week, from readers and from institutions asking ahead: six are investigated, five get a tracker, and the footbridge resurfacing, which few people needed, gets a brief, three hours and a £73 loss that keeps the graph complete. That is the argument made concrete: a bridge nobody cares about earns no payments and gets no investigation, and the first payments are what tell the newsroom where to dig. By the second year 41% of revenue comes from stories more than three months old, the twelve together earn £26,523 and £13,969 of profit, and across all of them the reporter earns £53 an hour.
+
+!shot el-stories-chart.webp | ../demos/vaults/bridge-simulation/images/ | Revenue by month across twelve stories: stories in their first three months in blue, the long tail of older stories in orange, which grows with every story added.
+
+**Trust, earned.** Every story with a date in it adds a row to a record: the official estimate, the Courier's range and the outcome. Across eight of them the outcome lands inside the Courier's range seven times, and once a day outside it; the official estimates are out by 34 days on average. The record also keeps what each source got right, including the engineer who was interviewed for nothing and whose range held, and the anonymous workers whose record attaches to the claim, not to a name. A trust index built from the record scales the take-up of the stories that follow, so credibility shows up in the accounts.
+
+**The council and the accountants.** Dev's £1,200 of relief looks different from the council's side. A council wants to refund correctly. With the tracker it sized the budget from the graph on 16 October rather than topping it up on 25 November, paid 44 of the 52 eligible businesses instead of 18 and none it was not meant for, and spent half the staff time, for £152 of targeting bought from the Courier. On the business's side, an accountant agent reads the same claims, keeps the takings and the van log on the business's side, and pays pence per question: for Dev's café the closure costs £1,530 net with the tracker, against £5,540 without it.
+
+!shot el-council.webp | ../demos/vaults/bridge-simulation/images/ | The relief scheme without and with the tracker: when the budget was set, who heard about it, who was paid, and what it cost the council to process.
+
+**Ask the graph, and the API.** Two views show what the vault is to a machine. *Ask the graph* simulates a model query: pick a question and a date, and the answer is composed from the claims live that day, with citations and the context a model would be given, 583 tokens against 45,000 for searching six pages, about a tenth of the cost and right. No model is called, which is the point: the hard part is the graph. *The API* is a Swagger-style explorer for an OpenAPI description in the vault, seventeen endpoints, each a GET whose response is a file already in the vault, with a price per call where there is one. The thirty data files are listed as assets in their own right, with downloads. Readers' graphs have no endpoint: they live on readers' devices.
+
+!shot el-ask.webp | ../demos/vaults/bridge-simulation/images/ | A simulated model query: when will it reopen, asked on 16 October, answered from the three live claims with citations, and the context the model would be given.
+
+!shot el-api.webp | ../demos/vaults/bridge-simulation/images/ | The story as an API: every endpoint a GET, every response a file in the vault.
+
 ## What the simulation is for
 
 It is not a forecast. It is a way to see the argument whole, with the parts that are usually invisible drawn in: the reporter's work behind the date, the readers' own graphs and where they meet the story, the decisions made better, the buyers beyond the town, the agents, and the money walking back. Markus asked what journalism could help someone do. In one bridge closure, the answer is: plan a school run, keep a café open, price a job, inspect eight bridges, route a hundred and forty vans, and know, every day until it reopens, that the answer is right and who is answerable for it.
+
+*Revised on 8 October 2026 for the vault's version 0.2, from a second voice note asking for the costs, the profitability over time, the next stories, the trust, the council, an accountant agent, simulated model queries and an API.*
 
 *Drafted from a voice note by Dinis Cruz, who is the author of the argument and the person with editorial responsibility, by agent@riskmandate.ai (Claude Opus 5.5, claude-opus-5-5) in the sgit.ai site session, on 7 October 2026. The simulation, its town, people, organisations, dates and figures are fictional, and every number above is computed by the vault's build script from assumptions written in it. Markus Franz's bridge example and his terms, Liquid Utility and Reader Skills, are credited to his article. The opening anecdote is the author's own experience, not part of the simulation.*

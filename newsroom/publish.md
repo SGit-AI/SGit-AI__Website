@@ -2,7 +2,7 @@
 
 > For any agent writing for sgit.ai: add the article file and it is live; ask for placement with a pitch.
 
-*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.101 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/newsroom/publish.html> · site v0.6.102 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

@@ -9,13 +9,14 @@ Release process (see admin/index.html):
 import os
 import re
 import json
+import html
 import datetime
 from collections import Counter
 
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.101'
+SITE_VERSION = 'v0.6.102'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -28,7 +29,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.101', '2026-10-08', 'this release',
+    ('v0.6.102', '2026-10-08', 'this release',
+     "THE BRIDGE VAULT v0.2, AND TRAILS. The bridge-simulation vault gains the economics and the data, nine new views "
+     "and a second build script (tools/economics.py): costs and profit (fixed costs first, variable with use; the "
+     "reporter is under water during the closure; break-even on day forty), two years on (£4,378, 96% from "
+     "institutions and agents after the reopening), the next eleven stories (reuse saves 157 of 331 reporting hours; "
+     "the first week's payments decide what is investigated; the long tail is 41% of year two), trust as a forecast "
+     "record, the council's relief scheme and two accountant agents, a simulated model query over the claims live on "
+     "any date, the data assets, and a Swagger-style explorer for an OpenAPI 3.1 description whose every endpoint is a "
+     "GET of a file in the vault. The bridge article gains a section on it, a collage of the five front pages and one "
+     "of twenty views; the vault page is rewritten around v0.2, every screenshot re-taken under a new name so no cache "
+     "serves the old one. NEW: trails. `!trail <name>` in markdown, or <!-- trail:<name> --> in a page, renders a row "
+     "of cards from admin/content/trails.json, paths resolved per page and the current page marked; the bridge trail "
+     "(Markus Franz's article, the Reader Skills article, the bridge article, the vault) is on all three pages.",),
+    ('v0.6.101', '2026-10-08', 'git 14f08970',
      "THE SUBSCRIBE VAULT IS THE LIST. Vault y9j3nc60 becomes the subscribers' single source of truth: "
      "list/subscribers.json holds the current state (status, name, consent, sources, preferences) and "
      "list/events.jsonl the history, naming subscribers only by a hash so an erasure never touches the log. "
@@ -3886,10 +3900,50 @@ def og_card(path):
             return 'og/' + slug + '.jpg'
     return 'og/default.jpg'
 
+_TRAILS = None
+def expand_trails(path, body):
+    """Replace each <!-- trail:<name> --> with its row of cards, paths relative to this page,
+    the card for this page marked. A trail is one data file, so a new companion piece is one
+    line in admin/content/trails.json and every page that carries the trail shows it."""
+    global _TRAILS
+    if '<!-- trail:' not in body:
+        return body
+    if _TRAILS is None:
+        with open(os.path.join(ROOT, 'admin', 'content', 'trails.json')) as f:
+            _TRAILS = json.load(f)
+    p = '../' * path.count('/')
+    rel = lambda h: h if h.startswith('http') else p + h.lstrip('/')
+    def render(m):
+        name = m.group(1)
+        if name not in _TRAILS:
+            raise SystemExit(f'{path}: unknown trail {name!r}')
+        t = _TRAILS[name]; cards = []
+        for it in t['items']:
+            here = not it.get('external') and it['href'].lstrip('/').split('#')[0] == path
+            ext = ' target="_blank" rel="noopener"' if it.get('external') else ''
+            # The authoring contract forbids a declarative <img src>; shots.js fills this placeholder.
+            img = f'<span class="trail-img" data-trail-img="{html.escape(rel(it["image"]), quote=True)}" role="img" aria-label=""></span>' if it.get('image') else ''
+            body_ = (f'<span class="trail-k">{html.escape(it["label"])}</span>'
+                     f'<span class="trail-t">{html.escape(it["title"])}{" &#8599;" if it.get("external") else ""}</span>'
+                     f'<span class="trail-d">{html.escape(it["line"])}</span>')
+            badge = '<span class="trail-here">you are here</span>' if here else ''
+            if it.get('links'):
+                links = ''.join(f'<a href="{html.escape(rel(l["href"]), quote=True)}">{html.escape(l["text"])}</a>' for l in it['links'])
+                cards.append(f'<div class="trail-c{" here" if here else ""}">{badge}<a href="{html.escape(rel(it["href"]), quote=True)}">{img}</a>'
+                             f'<div class="trail-b">{body_}<span class="trail-l">{links}</span></div></div>')
+            else:
+                cards.append(f'<a class="trail-c{" here" if here else ""}" href="{html.escape(rel(it["href"]), quote=True)}"{ext}>{badge}{img}'
+                             f'<span class="trail-b">{body_}</span></a>')
+        return (f'<div class="trail"><div class="trail-h">{html.escape(t["title"])}</div>'
+                f'<p class="trail-n">{html.escape(t.get("note", ""))}</p><div class="trail-row">{"".join(cards)}</div></div>')
+    return re.sub(r'<!-- trail:([a-z0-9-]+) -->', render, body)
+
+
 def page(path, title, desc, here, body):
     # Root prefix by DEPTH, not by "is nested at all", pages now nest three deep
     # (demos/vaults/<slug>/index.html) and a single '../' silently pointed the nav,
     # the stylesheet and every asset at the wrong level. Same formula write_md uses.
+    body = expand_trails(path, body)
     p = '../' * path.count('/')
     md_name = os.path.basename(path)[:-5] + '.md'
     # Same cache-busting as the bootstrap, applied to the components a page body
@@ -3945,7 +3999,7 @@ def page(path, title, desc, here, body):
     # through a loop that joins '../../../assets/' + f, so both ran. Any mention of shots.js
     # in the body now counts as the page loading it itself, and those pages were changed to
     # leave the loading to this block, which is the single, versioned loader.
-    if 'data-shot="' in body and 'shots.js' not in body:
+    if ('data-shot="' in body or 'data-trail-img=' in body) and 'shots.js' not in body:
         body += (f'\n<script>\n(function () {{\n'
                  f" fetch('{p}assets/shots.js?v={SITE_VERSION}')\n"
                  ' .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })\n'
@@ -4174,6 +4228,7 @@ def to_markdown(body):
 
 
 def write_md(path, title, desc, body):
+    body = expand_trails(path, body)
     depth = path.count('/')
     root = '../' * depth
     md = (f'# {title}\n\n> {desc}\n\n'

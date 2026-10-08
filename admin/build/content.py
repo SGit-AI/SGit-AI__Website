@@ -198,6 +198,14 @@ class Content_Loader:
                     f'</div>')
                 continue
 
+            # !trail <name>   — a row of cards tying companion pieces together (admin/content/trails.json).
+            # Emitted as a marker; build_pages.expand_trails renders it per page, so the same trail
+            # resolves its paths at any depth and marks the page the reader is on.
+            if line.startswith('!trail '):
+                flush_para(); flush_list()
+                out.append(f'<!-- trail:{html.escape(line[7:].strip())} -->')
+                continue
+
             # !shot filename.webp | dir | caption [| small|narrow|medium]   — a walkthrough figure.
             # The optional fourth field narrows a tall figure so it does not dominate the column:
             # small = 42% of the measure (screenshots of a dialog), narrow = 62%, medium = 78%.
@@ -289,7 +297,7 @@ class Content_Loader:
 
     def md_to_text(self, md, limit=260):
         """Plain-text summary for the manifest and the feed."""
-        t = re.sub(r'!(shot|site|source) .*', '', md)
+        t = re.sub(r'!(shot|site|source|trail) .*', '', md)
         t = re.sub(r'```.*?```', '', t, flags=re.S)
         t = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', t)
         t = re.sub(r'[#>*`_-]', ' ', t)

@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.6.101) from the same file the table on that page is built
+> generated at build time (v0.6.102) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -13,9 +13,9 @@
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
 ## The vaults (44)
-- **#44 The Mill Street Bridge**: A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions
+- **#44 The Mill Street Bridge**: A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds costs and profit, two years of long tail, eleven later stories that reuse the graph, a trust record, the council and two accountant agents, simulated model queries, data assets and an API
  - page: /demos/vaults/bridge-simulation/index.md
- - id `vk3jlgzb` · Reference · published 2026-10-07 · 333 KB · 71 files
+ - id `vk3jlgzb` · Reference · published 2026-10-07 · 640 KB · 106 files
  - read key: `sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705:vk3jlgzb`
 - **#43 AI BCF as a graph**: Jan van Dijke's AI Baseline Control Framework v1.0 (CC BY-SA 4.0) converted from its CSV export into a semantic graph: ontology, SKOS taxonomy, JSON-LD and Turtle, eighty hyperlinked documents, a SQLite database that runs in the browser, and a join from every AI Act citation to the law's text in the Regulation Graph vault; a fractal graph view, a crosswalk, SQL and triple-pattern consoles
  - page: /demos/vaults/aibcf-graph/index.md
