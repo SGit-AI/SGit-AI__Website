@@ -1,7 +1,7 @@
 # Published vaults on sgit.ai
 
 > The catalogue of encrypted vaults published at https://sgit.ai/demos/vaults/index.html,
-> generated at build time (v0.7.2) from the same file the table on that page is built
+> generated at build time (v0.7.3) from the same file the table on that page is built
 > from, so this list and that table cannot drift apart.
 >
 > Every vault below is opened by a READ KEY: a 64-character hex string and a vault id, derived
@@ -12,8 +12,12 @@
 > The server stores ciphertext under opaque ids and cannot read any of this. How a browser
 > reads one file out of a vault is written up at /vault/reading-a-vault-file.md.
 
-## The vaults (44)
-- **#44 The Mill Street Bridge**: A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, four institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase
+## The vaults (45)
+- **#45 Threat-sized security**: Who are you actually protecting against? A six-tier ladder of attackers built on NIST SP 800-30, the NCSC and MITRE ATT&CK; eight fictional startups with attack trees and the line each should draw; an air-gapped Mac mini compared with an isolated one; and five questions to draw your own line
+ - page: /demos/vaults/threat-sized-security/index.md
+ - id `zwlqqvkm` · Reference · published 2026-10-08 · 472 KB · 55 files
+ - read key: `sgit_public_read_206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260:zwlqqvkm`
+- **#44 The Mill Street Bridge**: A simulation of Markus Franz's bridge example on a story vault: one fictional local bridge closure from first notice to reopening, the journalism that got the date right, the paper on five dates, three readers whose own graphs meet the story graph, three institutions and an agent buying from the same graph, and where every penny goes; every figure computed from written assumptions; v0.2 adds the economics and the data, v0.3 a new navigation, four themes and a reviewed, gated codebase
  - page: /demos/vaults/bridge-simulation/index.md
  - id `vk3jlgzb` · Reference · published 2026-10-07 · 908 KB · 126 files
  - read key: `sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705:vk3jlgzb`

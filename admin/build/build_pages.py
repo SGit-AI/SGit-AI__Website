@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.7.2'
+SITE_VERSION = 'v0.7.3'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,8 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.7.2', '2026-10-08', 'this release',
+    ('v0.7.3', '2026-10-08', 'this release',
+     "WHO ARE YOU PROTECTING AGAINST? A new article and a new vault. The article, from a voice memo, starts from an entrepreneur's design, a Mac mini that will never touch the internet, with nothing installed and the application written in the Perl that ships with macOS, and asks who that protects against: three questions (threat agent, attack vector, sophistication), a six-tier ladder from your own mistakes to states built on NIST SP 800-30, the NCSC's commodity, targeted and elevated threats and MITRE ATT&CK, the note that DSIT's AI Risk Management Toolkit asks who the new threat actors are without defining them, the Mac mini read tier by tier, local versus cloud, and selling better than the customer's baseline rather than beyond their needs. The vault, Threat-sized security (zwlqqvkm, read key published), holds the ladder, eight fictional startups each with assets, an attack tree with an ATT&CK technique on every branch and the line it should draw, a compare matrix, the Mac mini comparison and a five-question questionnaire; four themes, a 19-check gate, audited with the read key. Vault page, five figures, graph JSON. The bridge simulation's catalogue line now says three institutions, as its pages do.",),    ('v0.7.2', '2026-10-08', 'git cb675bdc',
      "THE VERSIONS PAGE LINKS TO WHAT CHANGED, AND PAGES REFRESH THEMSELVES. Each commit id on this page now links to the commit on GitHub (the newest row to the comparison with the release before), and under each note are the pages that release added or changed, read from git once per release and cached in admin/build/version_changes.json so a build without the history still has them. And a fix for pages that stayed stale on an iPad: GitHub Pages sends every page with a ten-minute cache the site cannot change, and Safari can show a tab from memory long after that. Every page now asks /version.txt, uncached, which release is live, on load, when the tab comes back and when it is restored from memory; if the page is from an older release it reloads once under a URL no cache has seen, then tidies the address. Only on sgit.ai, never in the vault host or a local preview.",),
     ('v0.7.1', '2026-10-08', 'git 647cb6f4',
      "EVERY MISTAKE ADDED A RULE. A new article on complexity, for the founders who have become engineers with agents and are doing the right thing: a friend's verification, run by agents in Cowork with ChatGPT reviewing, where the code holds and the process breaks (compaction, lost outputs, 100 KB prompts, scripts edited in place, rules against the harness, rules breeding rules). Two Mermaid Wardley maps show complexity as a position, a custom-built blob of process where commodities already exist, and the same process with each piece made small, shipped and moved right. Then the principles: map it, commoditise small chunks and let them compound, ship and stop, small sessions and your own context, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, five environments, reverse-engineer the path, learn the engineering that exists; and direct answers on compaction, audit cards and what deserves a STOP. The friend is not named and the project not described. Four figures, graph JSON.",),

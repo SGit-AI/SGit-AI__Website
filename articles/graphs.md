@@ -2,7 +2,7 @@
 
 > Every article on sgit.ai as a semantic graph: the ideas it rests on, the claims it makes, and how they connect, plus a map of how the articles link to each other.
 
-*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.2 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/graphs.html> · site v0.7.3 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -14,13 +14,45 @@ Every article here has a semantic graph beside it: the ideas it rests on, the cl
 
 The graphs are data first and pictures second. Take them as JSON: [all articles in one file](graphs.json), with the topics, the teasers and the links between articles resolved, or one file per article at `articles/graphs/<slug>.json` (for example [this one](graphs/footprint-and-blast-radius.json)). The pages on this site are rendered from the same files at build time; nothing here is hand-written HTML.
 
-43 of 43 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
+44 of 44 articles have a graph. The map draws every article in date order round the circle, oldest at the top and clockwise from there, sized by how many other articles link to it. Teal edges run from an article to an earlier one it cites; amber edges run the other way, from an older article that was updated to point at a newer one. Thicker edges are articles that mention each other more than once.
 
 ## How the articles connect
 
 *[diagram]*
 
-43 articles, 175 links between them (298 mentions in all). 34 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+44 articles, 176 links between them (299 mentions in all). 35 articles cite an earlier one; 6 links in amber run from an older article to a newer one, which means the older page was updated after the newer one existed. Most linked: [Six agents, one inbox](#six-agents-one-inbox) (16 articles link to it). Most linking: [The Mandate Stack](#the-mandate-stack) (20 links out). 0 articles not yet linked either way.
+
+## [Who are you protecting against? Draw the security line where the attacker is, not above it](who-are-you-protecting-against.md)
+
+2026-10-08 · Agents & policyStartups & strategy
+
+Security decisions start with who the threat agent is, what the attack vector is and how sophisticated they are; read against a ladder from your own mistakes to elevated threats, grounded in NIST SP 800-30, the NCSC and MITRE ATT&CK, most startups should plan up to organised crime for money, do the basics consistently because they beat most attackers, sell something better than the customer's baseline rather than beyond their needs, prefer isolation and visibility over disconnection, and write down what they accept above their ceiling, because drawing the line too high slows everything, can create new holes and can stop the technology being used.
+
+*[diagram]*
+**concept**claim**method**artefact**example
+
+**14 nodes, 14 edges**
+
+- **An air-gapped Mac mini written in Perl** (example) No network, nothing installed, the OS's Perl, USB transfers: a design that buys technical debt.
+- **Who, how, how sophisticated** (method) Threat agent, attack vector and sophistication come before any control.
+- **Six tiers of attacker** (concept) Mistakes, bots, activists, organised crime, targeted commercial and insiders, elevated threats.
+- **The toolkit asks, but does not define** (claim) DSIT's AI Risk Management Toolkit asks who the new threat actors are and points elsewhere for the answer.
+- **The basics beat most of the ladder** (claim) Defending well against commodity threats makes a very hard target for all attackers (NCSC).
+- **Few survive the top tier** (claim) Very few commercial organisations can withstand a determined state; deploy inside the customer's controls.
+- **The Mac mini read against the ladder** (example) Worse for mistakes, equal for bots, mostly irrelevant to ransomware, no help at the top; adds a USB path.
+- **Isolate, do not disconnect** (method) No inbound ports, outbound allowlist, containers, scanning, logs: visibility from mainstream tools.
+- **Local versus cloud, the same mistake** (claim) On-premises for security often means more holes and fewer experts watching them.
+- **Better than what they have, not beyond what they need** (claim) The customer's baseline is the bar; a line drawn too high is a disservice to both sides.
+- **Threat-sized security, the vault** (artefact) Eight fictional startups, attack trees mapped to ATT&CK, a line for each, and a questionnaire.
+- **Attack trees with ATT&CK on every branch** (method) Schneier's goal-rooted trees, each leaf a technique, a tier and a cost; the line draws itself.
+- **Write down what you accept** (method) Above the ceiling is an accepted risk with a reason and a review date, not a failure.
+- **Publish the threat model and ask** (method) One page, public, reviewed by people who have seen the attack before.
+
+> The question is who, not how much. The article's thesis in one line.
+
+> So the air gap protects against an attacker who, for a firm like this, does not really exist, and pays for it with the tools that defend against the attackers who do. The Mac mini, read against the ladder.
+
+builds on [Every risk is already accepted. The only question is by whom, and for how long.](#every-risk-is-already-accepted).
 
 ## [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md)
 
@@ -1043,7 +1075,7 @@ Every risk an organisation has is already accepted by somebody, so the only ques
 
 > Nothing in the row is wrong. It just never learned that the risk was accepted twice, expired once, escalated, funded, materialised as an incident, and ended. The air gap between a register and reality, shown on one row at one moment.
 
-builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
+builds on [Fractal Semantic Graphs: everything connects to everything, and nobody has to share a schema](#introducing-fractal-semantic-graphs); continued by [Who are you protecting against? Draw the security line where the attacker is, not above it](#who-are-you-protecting-against), [Every mistake added a rule: complexity, agents, and the way back to shipping](#every-mistake-added-a-rule), [Zoom into an agent's behaviour policy and you find the business logic](#the-behaviour-policy-is-the-business-logic), [An open AI governance framework, and what its licence let us build](#ai-baseline-control-framework), [Where is the why? A permission prompt asked me to decide, and kept the reason](#where-is-the-why), [The Mandate Stack: a multi-agent system in production, layer by layer](#the-mandate-stack), [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](#the-agent-team-as-it-runs), [The investigation GitHub owes its customers: why a global outage of a platform the world deploys through deserves an aviation-style inquiry, and how the evidence could now be gathered](#the-investigation-github-owes-its-customers), [Send an agent, not a spreadsheet: the next generation of software due diligence, and why the companies that stopped reading their code are about to be asked about it](#send-an-agent-not-a-spreadsheet), [Code review as a fractal semantic graph: source code is already one, and the review should read every layer of it](#code-review-as-a-fractal-semantic-graph), [Footprint and blast radius: what the agent actually did, and what it would have cost](#footprint-and-blast-radius), [The ultimate insider: agents, the infrastructure that cannot hold them, and risk management that cannot keep up](#ultimate-insider-three-collisions).
 
 ## [Before you give an agent a connector, give the connector a twin](connector-twin-before-you-deploy-an-agent.md)
 

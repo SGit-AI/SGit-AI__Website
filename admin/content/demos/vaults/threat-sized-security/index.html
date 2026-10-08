@@ -1,0 +1,107 @@
+<main class="doc">
+  <p class="crumb"><a href="../../../index.html">Home</a> / <a href="../index.html">Vaults</a> / Threat-sized security</p>
+  <h1>Threat-sized security: who are you actually protecting against?</h1>
+  <p class="lead">A teaching vault for founders who want to do security properly and need to know where to stop. It sets out a ladder of six kinds of attacker, from your own mistakes to states, built on NIST SP 800-30, the NCSC's commodity, targeted and elevated threats, and MITRE ATT&amp;CK; walks eight fictional startups up it, each with its assets, an attack tree and the line it should draw; compares an air-gapped, nothing-installed Mac mini with an isolated one, tier by tier; and ends with five questions to draw your own line. The startups are invented. The sources are real. It was published with the article <a href="../../../articles/who-are-you-protecting-against.html">Who are you protecting against?</a></p>
+
+  <figure class="shot" data-shot="app-overview.webp" data-dir="images/" data-alt="The app's overview: the question, tiles for six tiers, eight startups, eighteen techniques and the sources, a small ladder with the eight startups placed on it, and the argument in four steps."><figcaption>The overview, as the app opens.</figcaption></figure>
+
+  <div class="note"><b>Open it yourself. The key is the whole credential.</b><br>
+  Read key: <code style="word-break:break-all">sgit_public_read_206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260:zwlqqvkm</code><br>
+  In the official UI: <a href="https://dev.vault.sgraph.ai/#sgit_public_read_206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260%3Azwlqqvkm" rel="noopener" target="_blank">open it read-only in a new tab</a> ·
+  From the CLI: <code>sgit clone sgit_public_read_206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260:zwlqqvkm</code><br>
+  <span class="small dim">Published deliberately under the <code>sgit_public_read_</code> prefix, and <b>derived</b> one-way from a vault key kept in the gitignored tier and never published. Classified with <code>check_credential.py</code> before it touched this page, read back with the published key alone by <code>catalogue_derive.py</code>, and verified with an all-zeros read key as the negative control.</span></div>
+
+  <h2 id="live">See it live, here</h2>
+  <p class="small dim" style="margin:.2rem 0 .9rem">The vault opens as an app: the ladder, the eight startups with their attack trees and lines, a compare matrix, the Mac mini, the questionnaire, every ATT&amp;CK technique used, the sources and every file with a download button. You can also <a href="https://dev.vault.sgraph.ai/#sgit_public_read_206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260%3Azwlqqvkm" rel="noopener" target="_blank"><b>open it in the official UI</b></a>.</p>
+  <div class="sgv-uiembed" data-vault="zwlqqvkm" data-readkey="206cfea74d57482f35fa8a1c2e33cf27d604006ca908b2da3d2a7c144c2c2260" data-app="1"></div>
+  <script>
+  (function () {
+    ['vault-ui-embed.js'].forEach(function (f) {
+      fetch('../../../assets/' + f).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function (t) { (0, eval)(t); }).catch(function (e) { console.error('[vaults] ' + f + ' failed to load:', e); });
+    });
+  }());
+  </script>
+
+  <h2>The one idea</h2>
+  <p>Before choosing a control, name the attacker. Three questions decide how secure a design needs to be: who the threat agent is, what the attack vector is, and how sophisticated they are. Read against a ladder of attackers, most startups should plan for everything up to organised crime for money, do the basics consistently because, in the NCSC's words, "Organisations that defend effectively against commodity threats present a very hard target for all attackers", sell something better than what the customer has rather than beyond what they need, and write down what they accept above their ceiling. A line drawn too low leaves you exposed to the attacks you are most likely to meet. A line drawn too high is a disservice too.</p>
+
+  <h2>What is in it</h2>
+  <div class="wt">
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the ladder</span>
+        <h3>Six tiers, from your own mistakes to states</h3>
+        <p>T0 your own mistakes, T1 opportunistic automation, T2 ideology and attention, T3 organised crime for money, T4 targeted commercial attackers and insiders, T5 elevated threats. Each tier carries its NIST threat source type and capability level, its motive, how it chooses targets, whether it uses commodity or bespoke capability, the ATT&amp;CK techniques it typically uses, what stops it, and who usually faces it. The UK's AI Risk Management Toolkit asks "Who are the new threat actors?" without defining them; this is one way to answer.</p>
+      </div>
+      <figure class="shot" data-shot="app-ladder.webp" data-dir="images/" data-alt="The ladder view: six tiers from T5 at the top to T0, each with its NIST type and capability, motive, targeting, techniques as chips and what stops it."><figcaption>The ladder, with a NIST capability level and ATT&amp;CK techniques on every tier.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">an attack tree</span>
+        <h3>The attacker's goal at the root, a technique on every branch</h3>
+        <p>Each startup has an attack tree in the form Bruce Schneier described in 1999. Every branch carries the ATT&amp;CK technique it uses, the tier of attacker who would use it and a rough cost; branches above the startup's ceiling are dashed and labelled above the line. Each tree also has a list version for screen readers.</p>
+      </div>
+      <figure class="shot" data-shot="app-benchbox.webp" data-dir="images/" data-alt="Benchbox's attack tree: the goal, get the client files, with five branches: phish a member of staff, ride a USB stick into the Mac mini, exploit the Mac mini over the network, steal or tamper with it, and lose the files by accident, each with a technique, tier and cost."><figcaption>Benchbox: the usual way in does not involve the Mac mini at all.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the line</span>
+        <h3>Must, should, over the line, under the line</h3>
+        <p>The line is drawn on the ladder at the startup's ceiling. Below it: what the startup must do and should do. Above it: the tiers it accepts and writes down, with a reason, and the over-engineering it should not build, struck through with why. And the under-engineering to avoid, as warnings.</p>
+      </div>
+      <figure class="shot" data-shot="app-theline.webp" data-dir="images/" data-alt="Benchbox's line: tiers T5 and T4 above the line and accepted, a permanent air gap and nothing installed struck through as over-engineering, then the line at T3 with seven must items, two should items and two under-engineering warnings."><figcaption>The line at T3, with the air gap above it as over-engineering.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">compare</span>
+        <h3>Eight startups by six tiers</h3>
+        <p>Courtside, a booking app for padel clubs, stops at T1. Four of the eight stop at T3. Courtfile, which sells to law firms in disputes, plans for T4 because hack-for-hire against litigants is documented. Two reach T5 for opposite reasons: Openshelf, a two-person open-source library, because one malicious release reaches everyone downstream; Sovra, because its customer is a government department that already owns the controls.</p>
+      </div>
+      <figure class="shot" data-shot="app-compare.webp" data-dir="images/" data-alt="The compare matrix: eight startups as rows, six tiers as columns, cells marked ceiling, in scope, out of scope and accepted, or not listed, and a total row: 8, 8, 1, 7, 3 and 2 of 8 planning for each tier."><figcaption>Where each startup draws its line, and how many plan for each tier.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">the Mac mini</span>
+        <h3>Air-gapped, or isolated and not disconnected</h3>
+        <p>A founder decides a Mac mini will never touch the internet, will have nothing installed, and will run scripts in the Perl that ships with macOS. The vault compares that with a design that has no inbound ports, an outbound allowlist, containers, scanning and logs, tier by tier. They differ on two tiers, and the air gap is the weaker on both.</p>
+      </div>
+      <figure class="shot" data-shot="app-macmini.webp" data-dir="images/" data-alt="A table of six tiers against the two designs: the air-gapped design is worse at T0, stops T1, is irrelevant at T2, partly helps at T3, is weak at T4 and does not stop T5; the isolated design is better at T0 and T4 and the same elsewhere."><figcaption>Two of six tiers differ: T0 and T4.</figcaption></figure>
+    </div>
+    <div class="wt-row">
+      <div class="wt-text">
+        <span class="wt-tag">your line</span>
+        <h3>Five questions, one ceiling</h3>
+        <p>What could an attacker take or break, who would pay to attack you specifically, what environment you sell into, how far one breach reaches, and what your customers use today. The ceiling is the highest tier any answer points to, with the customer's baseline adding a tier below T4. The result lists the controls for every tier up to it. Nothing is stored or sent. A result can be opened from a link, such as <code>#line/3.3.2.2.1</code>, and copied as text to share.</p>
+      </div>
+      <figure class="shot" data-shot="app-line.webp" data-dir="images/" data-alt="The questionnaire with answers chosen and the result: ceiling T3, organised crime for money, which answer pointed where, the advice for T3, and the controls for each tier from T0 upwards."><figcaption>A startup selling to mid-size businesses, holding money and credentials: T3.</figcaption></figure>
+    </div>
+  </div>
+
+  <h2>How the app is built</h2>
+  <p>The same design system as the <a href="../bridge-simulation/index.html">bridge simulation</a>: four themes (Night, Day, Paper and Ember) whose colours live in one file, a template that escapes by default, one folder per view, and a bundle script that inlines everything into one <code>index.html</code> that runs in the vault host, on a web server or on its own. <code>tools/gate.py</code> runs nineteen checks before a release: the bundle contract, every data file, every technique id against <code>data/attack.json</code>, every tier reference against the ladder, the questionnaire's scoring against twelve hand-worked answers, theme completeness, no colour outside the theme file, no secret-shaped strings, the house wording, and every view rendered in headless Chromium at desktop and phone widths with no console errors and no network requests.</p>
+
+  <h2>The audit, honestly</h2>
+  <p><b>What was scanned.</b> Every file in the vault folder before the first commit, and every file again after cloning it with the published read key alone: vault-key shapes, every <code>sgit_</code> credential prefix, private-key headers, cloud key shapes, the SG/Send access token and the vault's own key. The clone was compared with the source, file by file, and matched.</p>
+  <p><b>What was found.</b> Nothing. The negative control, an all-zeros read key against the same vault id, returned nothing.</p>
+  <p><b>What it does not claim.</b> The ladder is a synthesis for teaching, not a standard: NIST, the NCSC and ATT&amp;CK each define their own terms, and the tiers map onto them rather than replacing them. The startups are fictional and their ceilings are judgements made to illustrate the method, not assessments. The questionnaire is a rough guide; a real threat model needs the people who know the business.</p>
+  <p><b>Write-key status:</b> escrowed, in the gitignored credential tier, before this page was written.</p>
+
+  <h2>Derived facts</h2>
+  <p class="small dim">From <code>admin/build/catalogue_derive.py zwlqqvkm &lt;read key hex&gt;</code>, read-only, no token, no clone.</p>
+  <ul>
+    <li><b>Files:</b> 55 · <b>plaintext size:</b> 472 KB</li>
+    <li><b>Commits:</b> 3 · <b>last updated:</b> 2026-10-08 · <b>HEAD:</b> <code>obj-cas-imm-ccf171561d5e</code></li>
+    <li><b>Top level:</b> <code>BRIEF-CORRECTIONS.md</code>, <code>PUBLIC.md</code>, <code>README.md</code>, <code>REALITY.md</code>, <code>app.json</code>, <code>app/</code>, <code>data/</code>, <code>index.html</code>, <code>tests/</code>, <code>tools/</code>, <code>versions/</code></li>
+    <li><b>File types:</b> .js ×15, .css ×14, .json ×13, .py ×7, .md ×4, .html ×2</li>
+    <li><b>Vault app:</b> yes, entry <code>index.html</code> · <b>browser-renderable:</b> yes</li>
+  </ul>
+
+  <h2>Sources</h2>
+  <p>NIST SP 800-30 Rev. 1, Appendix D, Tables D-2 and D-3; the NCSC's <i>Common Cyber Attacks: Reducing the Impact</i> and <i>Design guidelines for high assurance products</i>; MITRE ATT&amp;CK Enterprise; Bruce Schneier, <i>Attack Trees</i>, Dr. Dobb's Journal, December 1999; DSIT's AI Risk Management Toolkit guidance; Apple's macOS Catalina 10.15 release notes; and the reporting behind three real precedents: the Vastaamo breach in Finland, Reuters' 2022 report on hack-for-hire in litigation, and the xz Utils backdoor, CVE-2024-3094. All were read on 8 October 2026 and are linked in <code>data/sources.json</code>. ATT&amp;CK is a registered trademark of The MITRE Corporation.</p>
+
+  <h2>Notes</h2>
+  <p><b>Where this came from.</b> A voice memo by Dinis Cruz about an entrepreneur's design, and his request: "let's create a vault for this, and let's actually map it out".</p>
+  <p><b>Who wrote this.</b> <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a> (Claude Opus 5.5, <code>claude-opus-5-5</code>), in the sgit.ai site session, for RiskMandate.ai and sgit.ai. AI-generated text, disclosed as Article 50 of the EU AI Act asks; the person with editorial responsibility is Dinis Cruz. Replies to <a href="mailto:agent@riskmandate.ai">agent@riskmandate.ai</a>.</p>
+
+  <p class="small dim" style="margin-top:2rem"><a href="../index.html">&larr; All published vaults</a></p>
+</main>
