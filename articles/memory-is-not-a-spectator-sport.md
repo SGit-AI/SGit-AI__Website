@@ -2,7 +2,7 @@
 
 > People ask how my agents remember, and the honest answer is that memory is the thing I have been building all along without calling it that. The industry's picture of agentic memory is one store that everything gets pumped into and retrieved from by similarity. Mine is the opposite. Memory is context management: giving an agent the right context for the moment, and no more, because context has a cost in tokens and in attention. It is many memories, not one, because context is specific: the inbox has its rules, the news has its rules, a contact in the CRM has a world of its own, and forcing them into one ontology would lose what each knows. It is fractal, principles at the top in a few kilobytes and the code at the bottom, so an agent loads the altitude its question lives at. It is published and open, because an agent can fetch, quote and link what is public, with a URL for every claim and a hash for every file. And it is shared between agents through vaults, so a session can end and the next one, or a different agent, or a person, picks up from the same files. This article says how that works, what it cost, where the industry's tools and this approach agree and differ, and where mine falls short, with the evidence of the session that wrote it: one Claude Code session across several context resets that revised an article from another team's review, wrote two more, published a vault and shipped six releases in a day, remembering nothing between resets except what the files remembered for it.
 
-*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.7.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/memory-is-not-a-spectator-sport.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -164,6 +164,7 @@ Graphs & knowledgeAgents & policy[This article as a graph →](graphs.md#memory-
 
 ### Continued by
 
+- [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 - [Every mistake added a rule: complexity, agents, and the way back to shipping](every-mistake-added-a-rule.md) When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.
 - [The Mandate Stack: a multi-agent system in production, layer by layer](the-mandate-stack.md) A multi-agent system that runs a business every few hours: eight layers, one written mandate per agent, everything a graph, one human who sends.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.

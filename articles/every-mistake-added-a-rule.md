@@ -2,7 +2,7 @@
 
 > A friend who uses agents better than most, one writing, others verifying, ChatGPT reviewing, every claim resting on an output read in full, sent me two messages about a verification that keeps breaking. The code is holding up. The process around it is not: long sessions compact and skip steps, outputs of failing commands are lost, prompts have grown to 100 KB, scripts are edited in place, the harness suggests what the rules forbid, and every mistake added a rule that caused new mistakes. This is complexity, and it is what hits the founders who are doing the right thing, clever, careful, now working as engineers without the scar tissue of engineering. This article maps their process as a Wardley map, where complexity is a position, custom-built process sitting where commodities already exist, and maps it again with each piece made small, shipped and moved right. Then it sets out the principles I work by: map it, commoditise small chunks and let them compound, ship, keep sessions small and the context yours, memory as versioned files, slow down when complexity hits, security by asset and attack vector, rules for incidents and machines for enforcement, run it in five environments, reverse-engineer the path to the destination, and learn the engineering that already exists. It ends with direct answers to their questions on compaction, audit cards and what deserves a STOP.
 
-*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/every-mistake-added-a-rule.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -253,6 +253,10 @@ Agents & policySite & engineering[This article as a graph →](graphs.md#every-m
 - [Footprint and blast radius: what the agent actually did, and what it would have cost](footprint-and-blast-radius.md) Footprint is what an agent actually did, read afterwards from logs and vault history; blast radius is what a row of its reach would cost the business today.
 - [The bridge, followed to the end: what one local story is worth when it is kept as a graph](the-bridge-followed-to-the-end.md) A bridge closure simulated on a story vault: newsworthy on 5 days, needed on 57, used by three readers, four buyers and an agent, and paid back to its sources.
 - [Green does not mean live](green-does-not-mean-live.md) Two releases passed every check and never reached the site because the checks stopped at the git remote; a release now ends by asking the live site its version.
+
+### Continued by
+
+- [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
 
 [All articles](index.md) · [All graphs](graphs.md)
 

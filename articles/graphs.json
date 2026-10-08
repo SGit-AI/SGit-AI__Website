@@ -1,7 +1,7 @@
 {
   "site": "https://sgit.ai",
   "generated": "2026-10-08",
-  "site_version": "v0.7.5",
+  "site_version": "v0.7.6",
   "schema": "https://sgit.ai/articles/graphs.html",
   "topics": [
     {
@@ -55,6 +55,195 @@
   ],
   "articles": [
     {
+      "slug": "knowing-when-to-stop",
+      "title": "Knowing when to stop: what experience gives people, and what we have to design into agents",
+      "date": "2026-10-08",
+      "updated": "",
+      "url": "https://sgit.ai/articles/knowing-when-to-stop.html",
+      "markdown": "https://sgit.ai/articles/knowing-when-to-stop.md",
+      "card": "https://sgit.ai/articles/cards/knowing-when-to-stop.webp",
+      "teaser": "Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.",
+      "topics": [
+        "agents-and-policy",
+        "startups-and-strategy"
+      ],
+      "tags": [
+        "agents",
+        "knowing-when-to-stop",
+        "diminishing-returns",
+        "seniority",
+        "security",
+        "threat-modelling",
+        "kpis",
+        "goodhart",
+        "wardley-maps",
+        "constraints",
+        "fire",
+        "shipping",
+        "agent-behaviour-policy",
+        "article"
+      ],
+      "links_out": [
+        "agency-is-not-a-yes",
+        "how-much-of-this-did-i-write",
+        "who-are-you-protecting-against",
+        "every-mistake-added-a-rule",
+        "hope-or-enforcement",
+        "memory-is-not-a-spectator-sport",
+        "the-agent-team-as-it-runs"
+      ],
+      "links_in": [],
+      "graph": {
+        "slug": "knowing-when-to-stop",
+        "teaser": "Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.",
+        "topics": [
+          "agents-and-policy",
+          "startups-and-strategy"
+        ],
+        "core_idea": "Knowing when to stop is the hardest call in most work: for people it comes from perspective, knowing the attackers, the phase of the business, the bottleneck and what good enough looks like, which is much of what seniority is; good teams without it defend against movie plots or hit every KPI without moving the business; agents have the same problem by design because their range is the feature, so they keep going; the answer for both is constraints that carry perspective, direction, a mandate, memory with the bigger picture, graphs that narrow the scope, a stop named in advance, one kind of work per step, a reviewer with agency, and shipping often enough to see whether it mattered.",
+        "nodes": [
+          {
+            "id": "variability",
+            "label": "Variability is the feature",
+            "kind": "claim",
+            "summary": "Agents can go in every direction; that is what makes them useful, and why they need direction."
+          },
+          {
+            "id": "seniority",
+            "label": "What seniority gives you",
+            "kind": "concept",
+            "summary": "The bigger picture: strategy, the real risks, moving between tactical and strategic."
+          },
+          {
+            "id": "guid",
+            "label": "Debating whether GUIDs are random enough",
+            "kind": "example",
+            "summary": "Teams that automated away bug classes then defended against a movie plot; 122 random bits."
+          },
+          {
+            "id": "permission",
+            "label": "Giving permission to take risks",
+            "kind": "claim",
+            "summary": "Perspective, not common sense: technically possible, and it does not matter here."
+          },
+          {
+            "id": "kpi",
+            "label": "Every KPI hit, needle still",
+            "kind": "example",
+            "summary": "Teams reverse-engineer metrics; when a measure becomes a target it stops measuring."
+          },
+          {
+            "id": "phase",
+            "label": "Which phase are you in?",
+            "kind": "method",
+            "summary": "A Wardley map says whether polish is right or waste, and where the bottleneck is."
+          },
+          {
+            "id": "art",
+            "label": "Art is knowing when to stop",
+            "kind": "claim",
+            "summary": "Good enough and diminishing returns; shipping and observability as the feedback loop."
+          },
+          {
+            "id": "agents",
+            "label": "Why it is harder for agents",
+            "kind": "claim",
+            "summary": "A wide range of skills and no natural limit: fix the small thing, then the bigger one, then all twenty."
+          },
+          {
+            "id": "parkinson",
+            "label": "Work expands to fill the team",
+            "kind": "concept",
+            "summary": "Parkinson 1955; any entity that can do work, put in a team, will find work."
+          },
+          {
+            "id": "constraints",
+            "label": "Constraints that carry perspective",
+            "kind": "method",
+            "summary": "FIRE rather than draconian rules: direction, mandate, memory, graphs, a named stop, one step, review, shipping."
+          }
+        ],
+        "edges": [
+          {
+            "from": "variability",
+            "to": "agents",
+            "rel": "leads-to"
+          },
+          {
+            "from": "seniority",
+            "to": "permission",
+            "rel": "produces"
+          },
+          {
+            "from": "guid",
+            "to": "permission",
+            "rel": "example-of"
+          },
+          {
+            "from": "kpi",
+            "to": "phase",
+            "rel": "answers"
+          },
+          {
+            "from": "art",
+            "to": "kpi",
+            "rel": "answers"
+          },
+          {
+            "from": "agents",
+            "to": "seniority",
+            "rel": "contrasts"
+          },
+          {
+            "from": "parkinson",
+            "to": "agents",
+            "rel": "extends"
+          },
+          {
+            "from": "constraints",
+            "to": "agents",
+            "rel": "answers"
+          },
+          {
+            "from": "constraints",
+            "to": "seniority",
+            "rel": "depends-on"
+          }
+        ],
+        "links": {
+          "articles": [
+            "agency-is-not-a-yes",
+            "who-are-you-protecting-against",
+            "every-mistake-added-a-rule",
+            "hope-or-enforcement",
+            "how-much-of-this-did-i-write",
+            "memory-is-not-a-spectator-sport",
+            "the-agent-team-as-it-runs"
+          ],
+          "pages": [],
+          "sites": [
+            "https://wardley-maps.sgit.ai/",
+            "https://nfrs.sgit.ai/",
+            "https://abp.sgit.ai/"
+          ]
+        },
+        "quotes": [
+          {
+            "text": "An entity that can go anywhere has no natural reason to stop anywhere.",
+            "why": "Why agents need the stop designed in."
+          },
+          {
+            "text": "What I found myself doing, in that meeting and in many others across the business, was giving people permission to take risks.",
+            "why": "Perspective as the senior contribution."
+          },
+          {
+            "text": "Each puts the bigger picture where the decision is made, which is what lets a person, or an agent, decide that the next thing is not worth doing.",
+            "why": "Constraints that carry perspective."
+          }
+        ]
+      }
+    },
+    {
       "slug": "agency-is-not-a-yes",
       "title": "Agency is not a yes: a scale for human and agent decisions, from rubber stamp to the reviewer who fixes the source",
       "date": "2026-10-08",
@@ -89,7 +278,9 @@
         "every-risk-is-already-accepted",
         "the-agent-team-as-it-runs"
       ],
-      "links_in": [],
+      "links_in": [
+        "knowing-when-to-stop"
+      ],
       "graph": {
         "slug": "agency-is-not-a-yes",
         "teaser": "A yes or no is not agency: seven dimensions, a seven-level scale for people and agents, and the review as a QA step that fixes the source.",
@@ -308,6 +499,7 @@
         "the-agent-team-as-it-runs"
       ],
       "links_in": [
+        "knowing-when-to-stop",
         "agency-is-not-a-yes"
       ],
       "graph": {
@@ -517,7 +709,9 @@
       "links_out": [
         "every-risk-is-already-accepted"
       ],
-      "links_in": [],
+      "links_in": [
+        "knowing-when-to-stop"
+      ],
       "graph": {
         "slug": "who-are-you-protecting-against",
         "teaser": "Before deciding how secure to be, name the attacker: a six-tier ladder, an air-gapped Mac mini read against it, and eight startups drawing their line.",
@@ -757,7 +951,9 @@
         "the-bridge-followed-to-the-end",
         "green-does-not-mean-live"
       ],
-      "links_in": [],
+      "links_in": [
+        "knowing-when-to-stop"
+      ],
       "graph": {
         "slug": "every-mistake-added-a-rule",
         "teaser": "When every agent mistake adds a rule, complexity wins: map the process, move each piece right as a small shipped component, and keep the rigour for the work.",
@@ -3457,6 +3653,7 @@
         "the-identity-we-wanted-to-give-the-agents"
       ],
       "links_in": [
+        "knowing-when-to-stop",
         "agency-is-not-a-yes",
         "hope-or-enforcement",
         "every-mistake-added-a-rule",
@@ -4512,6 +4709,7 @@
         "the-wall-under-the-reply"
       ],
       "links_in": [
+        "knowing-when-to-stop",
         "agency-is-not-a-yes",
         "liquid-content-needs-water",
         "the-mandate-stack"
@@ -5612,6 +5810,7 @@
         "price-it-then-give-it-away"
       ],
       "links_in": [
+        "knowing-when-to-stop",
         "every-mistake-added-a-rule",
         "the-mandate-stack",
         "the-agent-team-as-it-runs",

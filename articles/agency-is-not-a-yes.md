@@ -2,7 +2,7 @@
 
 > We talk about the human in the loop as if the loop were the point. Most of the time the human, or the agent put in the same place, is asked for a yes or a no, and that is the least interesting part of a decision. This article sets out what agency actually needs, for a person and for an agent: options beyond yes, context in the decider's own terms, the ability to look behind what they are shown, time or tokens, incentives that treat a wrong yes and a wrong no alike, somewhere to escalate, and authority over the system that produced the request. It turns those into a scale of seven levels, from the rubber stamp to the delegator, where the weakest dimension caps the whole decision, and scores fourteen cases from the record and from my own agent team, from a prompt that asks to add label 756-459-3214 to the one email an agent of mine is allowed to send. Below level 3, the decider holds the liability for a decision the system made, and accountability belongs to whoever designed the decision point and up their chain. Above it, the review stops being a sign-off and becomes a QA step: each draft is a chance to validate everything that led to it, to fix the source rather than the output, and to think better. And when a kind of draft keeps going out unchanged, it becomes a rule that runs without review. A vault published with the article holds the scale, the cases and an assessment anyone can run on their own decision points.
 
-*Source: <https://sgit.ai/articles/agency-is-not-a-yes.html> · site v0.7.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/agency-is-not-a-yes.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -144,7 +144,13 @@ Agents & policyGraphs & knowledge[This article as a graph →](graphs.md#agency-
 - [Every risk is already accepted. The only question is by whom, and for how long.](every-risk-is-already-accepted.md) A risk exists the moment the exposure does, so somebody is already carrying it; the only questions worth asking are who has accepted it and until when.
 - [The agent team as it runs: one person, twelve agents, encrypted vaults, and a mailbox nobody sends from](the-agent-team-as-it-runs.md) Twelve agents on dedicated accounts, encrypted vaults as the only memory, messages as files, a folder per person, and a mailbox nobody sends from.
 
+### Continued by
+
+- [Knowing when to stop: what experience gives people, and what we have to design into agents](knowing-when-to-stop.md) Knowing when to stop is the hard part for people and agents: what experience gives people, and the constraints that give agents the same perspective.
+
 [All articles](index.md) · [All graphs](graphs.md)
+
+**Posting this article on LinkedIn?** The cover is [agency-is-not-a-yes.jpg](../articles/banners/agency-is-not-a-yes.jpg) (1920×1080, title and key ideas on it). Upload it as the article cover, paste the title, then select and copy the body from this page.
 
 **Want the next issue by email.** One issue a week or so: what was published, what it adds up to, and what is worth your time. [Subscribe to the SGit Newsroom →](../subscribe/index.md)
 

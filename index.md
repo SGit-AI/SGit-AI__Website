@@ -2,7 +2,7 @@
 
 > sgit is git for encrypted vaults) and a vault is a unit of work: data, app, history and sources, versioned like git and handed over with a single read key. No account, no hosting, nothing to install for the reader; the server stores ciphertext it cannot read. Twenty-five real vaults you can open.
 
-*Source: <https://sgit.ai/index.html> · site v0.7.5 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/index.html> · site v0.7.6 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -25,17 +25,17 @@ SGit Newsroom
 
 ## Start with an argument, not a menu
 
-The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-six so far; the newsroom picks where to start.
+The articles carry most of what this site believes, with the figures, the data and the links to check it. Forty-seven so far; the newsroom picks where to start.
 
 [Open framework, built on2026-10-07Graphs & knowledge**An open AI governance framework, and what its licence let us build**Twenty open AI governance controls under CC BY-SA, why the licence matters, and the same day's conversion into a graph, a database and a walk down to EU law.**Why it leads.** Twenty open controls, read for what they add, then converted the same day into a published vault, a graph and a browser database joined to the AI Act. The most evidence of anything new on the site.Read it →](articles/ai-baseline-control-framework.md)
 
 ### Also new
 
-1. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
-2. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
-3. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](articles/who-are-you-protecting-against.md)
-4. 2026-10-08[Every mistake added a rule](articles/every-mistake-added-a-rule.md)
-5. 2026-10-07[Liquid content needs water](articles/liquid-content-needs-water.md)
+1. 2026-10-08[Knowing when to stop](articles/knowing-when-to-stop.md)
+2. 2026-10-08[Agency is not a yes](articles/agency-is-not-a-yes.md)
+3. 2026-10-08[Hope or enforcement](articles/hope-or-enforcement.md)
+4. 2026-10-08[Who are you protecting against? Draw the security line where the attacker is, not…](articles/who-are-you-protecting-against.md)
+5. 2026-10-08[Every mistake added a rule](articles/every-mistake-added-a-rule.md)
 [The week2026-10-07Journalist**The week to 7 October: the agent team, written up from the inside**The busiest week of articles on the site so far, and most of it is one story told three times at increasing depth: a team of agents running a business, from the walkthrough to the field notes to the full stack.](articles/desk/the-week-to-7-october.md)
 
 [The person's side2026-10-07**Where is the why? A permission prompt asked me to decide, and kept the reason**A permission prompt read through the behaviour policy: a barrier that is a human judgement is only as strong as the information given.](articles/where-is-the-why.md)[In production2026-10-06**The Mandate Stack**About fifteen agents, one person, eight layers, two Wardley maps with their sources beside them.](articles/the-mandate-stack.md)[Measured2026-10-05**How much of this did I write? The numbers behind twenty articles in four weeks, and what…**The human input, counted from the session record rather than asserted.](articles/how-much-of-this-did-i-write.md)
@@ -62,7 +62,7 @@ A **Fractal Semantic Graph** is one where every node opens into a graph with *it
 
 This site, and every vault on it, is built by one person working with several AI agents, and the agents build for each other. The state that makes that possible is a vault: versioned, shareable, and readable by whoever holds the key.
 
-267site releases, each verified live before it was called done
+268site releases, each verified live before it was called done
 
 47vaults published with a deliberately public read key
 
