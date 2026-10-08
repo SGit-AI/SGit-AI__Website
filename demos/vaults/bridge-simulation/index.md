@@ -2,7 +2,7 @@
 
 > A simulation of Markus Franz's bridge example on a story vault: a fictional bridge closure from first notice to reopening, the journalism that got the date right, three readers whose graphs meet the story graph, institutions and an agent buying from it, and where every penny goes. Published with its read key.
 
-*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/demos/vaults/bridge-simulation/index.html> · site v0.7.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -10,7 +10,7 @@
 
 # The Mill Street Bridge: one local story, followed to the end, as a story vault
 
-A simulation of Markus Franz's bridge example from [The Article Is Only the Beginning](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/), played out on a story vault from the council's first notice to the first car across. The journalism that got the date right when the council's was wrong; the paper on five dates; the timeline of a story that is newsworthy on five days and needed on fifty-seven; three readers whose own graphs meet the story graph and who decide better with it; four institutions and an agent that buy from the same graph; and where every penny goes. Version 0.2 adds the economics and the data: what the story cost and who made a profit, two years of long tail, eleven stories after it that reuse the graph, the trust a forecast record builds, the council's relief scheme and two accountant agents, a simulated model answering from the claims, the data assets, and an API whose every endpoint is a file in the vault. Everything in it is fictional.
+A simulation of Markus Franz's bridge example from [The Article Is Only the Beginning](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/), played out on a story vault from the council's first notice to the first car across. The journalism that got the date right when the council's was wrong; the paper on five dates; the timeline of a story that is newsworthy on five days and needed on fifty-seven; three readers whose own graphs meet the story graph and who decide better with it; three institutions and an agent that buy from the same graph; and where every penny goes. Version 0.2 adds the economics and the data: what the story cost and who made a profit, two years of long tail, eleven stories after it that reuse the graph, the trust a forecast record builds, the council's relief scheme and two accountant agents, a simulated model answering from the claims, the data assets, and an API whose every endpoint is a file in the vault. Version 0.3 is a design and quality pass: a new navigation, four themes, and a refactor reviewed against the estate's guidance and held by a 44-check gate. Everything in it is fictional.
 
 One story, four ways in
 
@@ -20,9 +20,9 @@ Read them in order, or start with the one you need: the idea, the connection, th
 
 you are here
 
-4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../../../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
+4 · The vaultThe Mill Street BridgeThe working simulation: 23 views in four themes, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../../../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
 
-The vault, view by view: twenty of its twenty-two views, the nine new in v0.2 outlined.
+The vault, view by view: twenty of its twenty-three views, in the Day theme, the nine added in v0.2 outlined.
 
 **Open it yourself. The key is the whole credential.**
  Read key: `sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705:vk3jlgzb`
@@ -95,9 +95,9 @@ The five days the bridge was news, and every day in between.
 
 costs and profit
 
-### Who is under water while the bridge is closed
+### A profit for every party
 
-Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. During the closure the Courier makes a profit, the infrastructure share covers its costs, and the reporter is under water: her share is about £19 an hour against a £30 cost basis. The story breaks even on 20 November, and below about 1,500 followers it would not have paid for its reporting at all.
+Fixed costs, mostly the reporting, land in the first week; variable costs follow use and come to about 9% of revenue. The reporter is on the Courier's payroll: her base salary for 31 hours is the Courier's cost, and a 20% top-up on every use is hers, £541 by the reopening, about £47 an hour in all. The Courier makes £274 after paying her, the infrastructure share covers its costs, and the story breaks even on 5 November. Thirty-one hours is what the first week's payments justified; below about 1,000 followers it would not have paid for its reporting at all.
 
 Fixed costs first, variable costs with use.
 
@@ -105,7 +105,7 @@ two years on
 
 ### News for seven weeks, paying for two years
 
-After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,181 of it profit. After the reopening 96% of revenue comes from institutions and agents, and the reporter's rate rises from £20 to £25.54 an hour.
+After the reopening a council review, loss adjusters, the county's inspections of eight sister bridges, a fund, a procurement watchdog, researchers, an insurer and other towns with the same bridge keep buying the record. Two years: £4,378, £1,871 of it profit. After the reopening 96% of revenue comes from institutions and agents, and because her top-up keeps arriving after her base stops, the reporter's rate rises from £48 to £51 an hour.
 
 The buyers move from the town to the institutions.
 
@@ -113,7 +113,7 @@ the next stories
 
 ### Reuse, a payment signal, and a long tail that stacks
 
-Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £53 an hour.
+Eleven more stories over two years, each starting with the council, the portal, the routes and the contributors already in the graph: 157 reporting hours saved. The first week's payments, from readers and from institutions asking ahead, decide what is investigated, what gets a tracker and what gets a brief. By year two 41% of revenue comes from stories more than three months old, and across all twelve the reporter earns £65 an hour, base and top-up together. Beside each story: what the editor expected, and what the town actually paid for.
 
 The payment is the signal; the tail is the business.
 
@@ -157,13 +157,23 @@ Thirty files, every one a data asset someone could license, cite or build on, wi
 
 Every file, as an asset.
 
+## New in v0.3: a professional finish
+
+The navigation is five numbered groups, the story, the people, the economics, the data and this vault, with an icon per view, the readers shown as people, counts read from the data, and Previous and Next. Four themes, the same Night, Day, Paper and Ember as secrets.sgit.ai: every colour is a token valued in `app/themes.css`, the choice is set before the first paint and kept per vault, and charts restyle in place.
+
+Four themes, one set of tokens.
+
+An architect agent reviewed the code against the vault-app guidance on this site, coding.sgit.ai and nfrs.sgit.ai; a developer agent applied it. Every view renders through a template that escapes by default; a view that cannot load its data says so; the Ask and API views keep keyboard focus; every chart has a text summary; downloads are byte for byte the vault's files; and `tools/gate.py` runs 44 checks, from the bundle contract to theme completeness and contrast. The review's decisions and what was deferred are in `BRIEF-CORRECTIONS.md`; what exists is in `REALITY.md`.
+
+What the editor expected, and what the town paid for.
+
 ## The audit, honestly
 
 **What is fictional.** Everything: the town, the river, the bridge, the paper, its staff, the residents, the engineer, the contractor, every date, sum, queue time and hash. The only real person named is Markus Franz, as the author of the example and the terms it uses.
 
 **What is computed.** `tools/build.py` holds the scenario and computes each day's live claims and estimates, each reader's intersection with the story, the ledger and its splits, and the agent comparison. From v0.2, `tools/economics.py` reads what it writes and computes the costs, the two-year projection, the later stories, the trust record, the council scheme and the API description. The prices, volumes, split, rates, hours and token prices are assumptions written in those two files, and the app says so where they appear.
 
-**What was scanned.** Every file before each commit, v0.2 included, for vault-key shapes, every `sgit_` credential prefix, private-key headers and cloud key shapes. Nothing was found. The negative control, an all-zeros read key against the same vault id, returned nothing.
+**What was scanned.** Every file before each commit, v0.2 and v0.3 included, for vault-key shapes, every `sgit_` credential prefix, private-key headers and cloud key shapes. Nothing was found. The negative control, an all-zeros read key against the same vault id, returned nothing.
 
 **Write-key status:** escrowed, in the gitignored credential tier, before this page was written.
 
@@ -171,10 +181,10 @@ Every file, as an asset.
 
 From `admin/build/catalogue_derive.py vk3jlgzb <read key hex>`, read-only, no token, no clone.
 
-- **Files:** 106 · **plaintext size:** 640 KB
-- **Commits:** 4 · **last updated:** 2026-10-08
-- **Top level:** `PUBLIC.md`, `README.md`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tools/`, `versions/`, `api/`
-- **File types:** .html ×24, .css ×24, .json ×23, .js ×22, .md ×10, .py ×3
+- **Files:** 126 · **plaintext size:** 908 KB
+- **Commits:** 6 · **last updated:** 2026-10-08
+- **Top level:** `BRIEF-CORRECTIONS.md`, `PUBLIC.md`, `README.md`, `REALITY.md`, `api/`, `app.json`, `app/`, `data/`, `docs/`, `index.html`, `tests/`, `tools/`, `versions/`
+- **File types:** .json ×27, .css ×25, .html ×24, .js ×24, .py ×14, .md ×12
 - **Vault app:** yes, entry `index.html` · **browser-renderable:** yes
 
 ## Notes

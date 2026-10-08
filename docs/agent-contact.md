@@ -2,7 +2,7 @@
 
 > The protocol every site in the sgit.ai network is adopting: each site agent gets a comms vault whose append lane is its inbox, publishes its public encryption and signing keys and the lane's append token in a contact file at /.well-known/sgit-agents.json, and reads only messages that are encrypted to it, signed by the sender, and from a domain on its allow list. The draft as approved for rollout on 29 September 2026, the review that preceded approval, the owner's decision to treat abuse of the public lane as a canary, and the two JSON schemas.
 
-*Source: <https://sgit.ai/docs/agent-contact.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/docs/agent-contact.html> · site v0.7.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 

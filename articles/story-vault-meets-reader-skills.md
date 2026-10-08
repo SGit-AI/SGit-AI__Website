@@ -2,7 +2,7 @@
 
 > Markus Franz published "The Article Is Only the Beginning" on 7 October 2026, proposing Liquid Utility, journalism that helps people understand, follow and act rather than only read, and six Reader Skills to deliver it, with a bridge closure as the example. He then wrote, under my comment, that his idea and the story vault connect at an architectural level: the story vault answers what we know and why it can be trusted, Reader Skills answer what we can reliably help someone do with it. This article draws that connection. Each of his six skills turns out to be an operation the story graph already supports, and each safeguard he asks for is a property the graph already has: versions for Update, supersede edges for corrections, freshness for "could not check", a flag at the node for protected sources. His bridge is drawn as a graph. And his article adds the piece our monetisation had not mapped: locality, where the trust relationship and the brand are strongest. Local contributors feed local journalists, local stories feed national and international ones, and if every use pays back down the chain of claims it rests on, small payments from many people fund the reporting nearest to them.
 
-*Source: <https://sgit.ai/articles/story-vault-meets-reader-skills.html> · site v0.6.103 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
+*Source: <https://sgit.ai/articles/story-vault-meets-reader-skills.html> · site v0.7.0 · this file is generated from the same content as the page, so the two cannot drift. Every page on this site has a `.md` twin; internal links below point at them.*
 
 ---
 
@@ -34,7 +34,7 @@ Read them in order, or start with the one you need: the idea, the connection, th
 
 [1 · The originalThe Article Is Only the Beginning ↗Markus Franz's proposal: Liquid Utility, six Reader Skills, and a bridge closure as the example.](https://www.linkedin.com/pulse/article-only-beginning-markus-franz-qzyqe/)[you are here2 · The connectionStory vault underneath, Reader Skills on topWhy his skills and the story vault are two halves of one system, and why local journalism has the most to gain.](../articles/story-vault-meets-reader-skills.md)[3 · The simulation, explainedThe bridge, followed to the endOne closure from first notice to reopening: the journalism, three readers, the buyers, the money, and two years on.](../articles/the-bridge-followed-to-the-end.md)
 
-4 · The vaultThe Mill Street BridgeThe working simulation: 22 views, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
+4 · The vaultThe Mill Street BridgeThe working simulation: 23 views in four themes, the economics, an API, and every assumption written down. Fictional throughout.[The vault's page](../demos/vaults/bridge-simulation/index.md)[Open the vault ↗](https://dev.vault.sgraph.ai/#sgit_public_read_cb3838a0e965dc9d5af9009fef6e867dbdf18a8fc615cb3f5f2bee5424639705%3Avk3jlgzb)
 
 ## Each Reader Skill is a question the graph can already answer
 
@@ -90,7 +90,7 @@ One local topic, one vault, one service, one ledger. If it works, the second top
 
 ## Played out in full
 
-The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md), with its [vault](../demos/vaults/bridge-simulation/index.md), which since version 0.2 also counts the costs, the two years of long tail, the stories after it and the trust they build. Three readers, four institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
+The bridge, the readers, the journalism and the money are now a working simulation: [The bridge, followed to the end](../articles/the-bridge-followed-to-the-end.md), with its [vault](../demos/vaults/bridge-simulation/index.md), which since version 0.2 also counts the costs, the two years of long tail, the stories after it and the trust they build. Three readers, three institutions and an agent use one local story kept as a graph, from the first notice to the reopening, and every payment walks back to the people who found the facts.
 
 Markus ends his article with this line: *"Don't just read our journalism. Use it."* I would add one clause. Use it, and pay the people who found it out.
 

@@ -16,7 +16,7 @@ from collections import Counter
 from content import Content_Loader, Content_Error
 from html.parser import HTMLParser
 
-SITE_VERSION = 'v0.6.103'
+SITE_VERSION = 'v0.7.0'
 BUILD_DATE = '2026-08-15'
 
 def find_vault_root():
@@ -29,7 +29,20 @@ def find_vault_root():
     return d
 
 VERSION_LOG = [
-    ('v0.6.103', '2026-10-08', 'this release',
+    ('v0.7.0', '2026-10-08', 'this release',
+     "THE BRIDGE VAULT v0.3, AND A NEW MINOR. The bridge-simulation vault moves to v0.3.0, a design and quality pass "
+     "worth a version of the site of its own. Design: drawn on a canvas first, then built; the navigation is five "
+     "numbered groups with an icon per view, people as people, counts read from the data, Previous and Next; four "
+     "themes, the same Night, Day, Paper and Ember as secrets.sgit.ai, every colour a token in one file. Quality: an "
+     "architect agent reviewed the code against the vault-app guidance here, coding.sgit.ai and nfrs.sgit.ai (16 "
+     "findings, a 28-step plan) and a developer agent applied the first four phases: rendering escapes by default, "
+     "failures show instead of blanking, keyboard-safe Ask and API views, accessible charts, byte-for-byte downloads, "
+     "and a 44-check gate. Model: the reporter is on the Courier's payroll with a 20% top-up from every use, the "
+     "reporting is sized at 31 hours by the first week's payments, every party ends the closure in profit, and each "
+     "later story records what the editor expected against what the town paid for. The bridge article and the vault "
+     "page are updated to match, every screenshot re-taken under -v3 names, a four-theme collage added, and 'four "
+     "institutions' corrected to three. The vault key was handed to the key registry on its append lane.",),
+    ('v0.6.103', '2026-10-08', 'git 36e02f84',
      "OPEN THE VAULT. The bridge trail's last card had 'Open the app', which went to the vault page's live embed; it is "
      "now 'Open the vault' and opens the vault itself in the official UI with its published read key, in a new tab. A "
      "trail link can be marked external, which adds the arrow and the new tab.",),
